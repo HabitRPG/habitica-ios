@@ -82,19 +82,8 @@ NSString *currentUserID;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    self.topHeaderNavigationController.shouldHideTopHeader = NO;
-    [self.topHeaderNavigationController setAlternativeHeaderView:self.navbarView];
-    [self.topHeaderNavigationController showHeaderWithAnimated:NO];
-    
     [super viewWillAppear:animated];
     
-    UINavigationController<TopHeaderNavigationControllerProtocol> *navigationController =
-        (UINavigationController<TopHeaderNavigationControllerProtocol> *)self.navigationController;
-    self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(navigationController.contentInset, 0, 0, 0);
-    [self.tableView setContentInset:(UIEdgeInsetsMake(navigationController.contentInset, 0, -150, 0))];
-    
-    self.topHeaderNavigationController.navbarVisibleColor = [UIColor purple300];
-    self.topHeaderNavigationController.hideNavbar = YES;
     if (![currentUserID isEqualToString:[HRPGManager.sharedManager getUser].id]) {
         // user has changed. Reload data.
         currentUserID = [HRPGManager.sharedManager getUser].id;
@@ -155,6 +144,25 @@ NSString *currentUserID;
             [self.tableView reloadData];
         }
         self.navbarColor = [UIColor purple300];
+    }
+}
+
+-(void)setNavbarColor:(UIColor *)navbarColor {
+    _navbarColor = navbarColor;
+    self.topHeaderCoordinator.navbarVisibleColor = navbarColor;
+    self.navbarView.backgroundColor = navbarColor;
+}
+
+- (void)viewDidLayoutSubviews {
+    if (self.worldBossHeaderView) {
+        CGFloat newHeight = self.worldBossHeaderView.intrinsicContentSize.height;
+        if (newHeight != self.worldBossHeaderView.frame.size.height) {
+            CGRect frame = self.worldBossHeaderView.frame;
+            self.worldBossHeaderView.frame = CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, newHeight);
+            self.tableView.tableHeaderView = self.worldBossHeaderView;
+            [self.tableView layoutIfNeeded];
+
+        }
     }
 }
 

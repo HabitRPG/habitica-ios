@@ -42,7 +42,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rdf-Mj-RXC">
-                    <rect key="frame" x="72" y="0.0" width="219" height="72"/>
+                    <rect key="frame" x="72" y="0.0" width="199" height="72"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
@@ -60,7 +60,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EZj-6g-7yy">
-                    <rect key="frame" x="299" y="0.0" width="24" height="72"/>
+                    <rect key="frame" x="279" y="0.0" width="24" height="72"/>
                     <constraints>
                         <constraint firstAttribute="width" priority="500" constant="46" id="EB4-Lt-Hax"/>
                     </constraints>
@@ -81,7 +81,7 @@
                 <constraint firstAttribute="bottom" secondItem="EZj-6g-7yy" secondAttribute="bottom" id="P6J-2g-5Jn"/>
                 <constraint firstAttribute="bottom" secondItem="u7w-qy-bea" secondAttribute="bottom" id="Rur-BT-TwQ"/>
                 <constraint firstAttribute="bottom" secondItem="Z4n-km-qTV" secondAttribute="bottom" constant="16" id="WOt-fT-hcf"/>
-                <constraint firstItem="u7w-qy-bea" firstAttribute="leading" secondItem="EZj-6g-7yy" secondAttribute="trailing" constant="12" id="XxV-y5-Qsc"/>
+                <constraint firstItem="u7w-qy-bea" firstAttribute="leading" secondItem="EZj-6g-7yy" secondAttribute="trailing" constant="32" id="XxV-y5-Qsc"/>
                 <constraint firstItem="rdf-Mj-RXC" firstAttribute="leading" secondItem="Z4n-km-qTV" secondAttribute="trailing" constant="12" id="ZCw-Dv-qV0"/>
                 <constraint firstItem="EZj-6g-7yy" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="gKZ-PC-rEf"/>
                 <constraint firstAttribute="bottom" secondItem="rdf-Mj-RXC" secondAttribute="bottom" id="hbe-L8-e8Q"/>

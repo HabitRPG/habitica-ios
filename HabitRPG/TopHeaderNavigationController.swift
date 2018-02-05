@@ -42,7 +42,7 @@ protocol TopHeaderNavigationControllerProtocol: class {
 
 class TopHeaderViewController: UINavigationController, TopHeaderNavigationControllerProtocol {
     @objc public var state: HRPGTopHeaderState = HRPGTopHeaderStateVisible
-    @objc public let defaultNavbarHiddenColor = UIColor.purple300() ?? UIColor.white
+    @objc public let defaultNavbarHiddenColor = UIColor.purple300()
     @objc public let defaultNavbarVisibleColor = UIColor.white
     private var headerView: UIView?
     private var alternativeHeaderView: UIView?

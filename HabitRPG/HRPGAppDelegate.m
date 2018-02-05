@@ -106,9 +106,11 @@
     NSString *lastContentFetchVersion = [[NSUserDefaults standardUserDefaults] objectForKey:@"lastContentFetchVersion"];
     NSString *currentBuildNumber = [[NSBundle mainBundle]
                                     objectForInfoDictionaryKey:(NSString *)kCFBundleVersionKey];
-    if (lastContentFetch == nil || [lastContentFetch timeIntervalSinceNow] < -82800 || ![lastContentFetchVersion isEqualToString:currentBuildNumber]) {
+    if (lastContentFetch == nil || [lastContentFetch timeIntervalSinceNow] < -43200 || ![lastContentFetchVersion isEqualToString:currentBuildNumber]) {
         [[NSUserDefaults standardUserDefaults] setObject:currentBuildNumber forKey:@"lastContentFetchVersion"];
-        [[HRPGManager sharedManager] fetchContent:nil onError:nil];
+        [[HRPGManager sharedManager] fetchContent:^{
+            [[HRPGManager sharedManager] fetchWorldState: nil onError: nil];
+        } onError:nil];
     }
 }
 

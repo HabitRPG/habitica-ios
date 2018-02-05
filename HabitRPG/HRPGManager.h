@@ -384,6 +384,8 @@
 
 - (void)reroll:(void (^)())successBlock onError:(void (^)())errorBlock;
 
+- (void)fetchWorldState:(void (^)())successBlock onError:(void (^)())errorBlock;
+
 - (NSManagedObjectContext *)getManagedObjectContext;
 
 - (void)displayNetworkError;

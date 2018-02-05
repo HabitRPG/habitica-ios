@@ -2264,6 +2264,22 @@ NSString *currentUser;
                           statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
 
+    RKObjectMapping *worldStateMapping = [RKObjectMapping mappingForClass:[HabiticaWorldState class]];
+    [worldStateMapping addAttributeMappingsFromDictionary:@{
+                                                     @"worldBoss.active" : @"worldBossActive",
+                                                     @"worldBoss.key": @"worldBossKey",
+                                                     @"worldBoss.progress.hp": @"worldBossHealth",
+                                                     @"worldBoss.progress.rrage": @"worldBossRage"
+                                                     }];
+    worldStateMapping.assignsDefaultValueForMissingAttributes = NO;
+    responseDescriptor = [RKResponseDescriptor
+                          responseDescriptorWithMapping:worldStateMapping
+                          method:RKRequestMethodPOST
+                          pathPattern:@"world-state"
+                          keyPath:@"data"
+                          statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+    
 
     [[RKObjectManager sharedManager].HTTPClient setDefaultHeader:@"x-client" value:@"habitica-ios"];
 
@@ -5429,6 +5445,24 @@ NSString *currentUser;
                                             [self.networkIndicatorController endNetworking];
                                             return;
                                         }];
+}
+
+- (void)fetchWorldState:(void (^)())successBlock
+                       onError:(void (^)())errorBlock {
+    [self.networkIndicatorController beginNetworking];
+    [[RKObjectManager sharedManager] getObject:nil path:@"world-state" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        [self.networkIndicatorController endNetworking];
+        if (successBlock) {
+            successBlock();
+        }
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        [self handleNetworkError:operation withError:error];
+        if (errorBlock) {
+            errorBlock();
+        }
+        [self.networkIndicatorController endNetworking];
+        return;
+    }];
 }
 
 - (void)displayNetworkError {

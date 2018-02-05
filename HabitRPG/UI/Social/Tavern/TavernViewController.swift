@@ -26,6 +26,8 @@ class TavernViewController: HRPGUIViewController, UIScrollViewDelegate, NSFetche
         self.segmentedControl.selectedSegmentIndex = 0
         self.segmentedControl.tintColor = UIColor.purple300()
         self.segmentedControl.addTarget(self, action: #selector(TavernViewController.switchView(_:)), for: .valueChanged)
+        segmentedControl.backgroundColor = .red
+        segmentedControl.isHidden = false
         topHeaderCoordinator?.hideHeader = false
         topHeaderCoordinator?.alternativeHeader = segmentedControl
 

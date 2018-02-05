@@ -16,17 +16,40 @@ class WorldBossMenuHeader: UIView {
     @IBOutlet weak var hearthIconView: UIImageView!
     @IBOutlet weak var healthProgressBar: ProgressBar!
     @IBOutlet weak var statBarView: UIView!
+    @IBOutlet weak var collapseButton: UIButton!
+    @IBOutlet weak var topStackView: UIStackView!
+    
+    private var quest: Quest?
+    
+    var isCollapsed: Bool = false {
+        didSet {
+            if isCollapsed {
+                hideBossArt()
+            } else {
+                showBossArt()
+            }
+            superview?.setNeedsLayout()
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         hearthIconView.image = HabiticaIcons.imageOfHeartDarkBg
         healthProgressBar.barColor = UIColor.red50()
         healthProgressBar.barBackgroundColor = UIColor(white: 1.0, alpha: 0.16)
+        
+        let userDefaults = UserDefaults()
+        if userDefaults.bool(forKey: "worldBossArtCollapsed") {
+            hideBossArt()
+        }
     }
     
     @objc
     func configure(quest: Quest) {
-        HRPGManager.shared().setImage("quest_\(quest.key ?? "")", withFormat: "png", on: bossImageView)
+        self.quest = quest
+        if !isCollapsed {
+            HRPGManager.shared().setImage("quest_\(quest.key ?? "")", withFormat: "png", on: bossImageView)
+        }
         bossImageView.backgroundColor = quest.uicolorMedium
         bossNameLabel.text = quest.bossName
         healthProgressBar.maxValue = CGFloat(quest.bossHp?.floatValue ?? 0)
@@ -37,5 +60,41 @@ class WorldBossMenuHeader: UIView {
     @objc
     func configure(group: Group) {
         healthProgressBar.value = CGFloat(group.questHP.floatValue)
+    }
+
+    @IBAction func collapseButtonTapped(_ sender: Any) {
+        isCollapsed = true
+    }
+    
+    @objc
+    func showBossArt() {
+        topStackView.axis = .vertical
+        HRPGManager.shared().setImage("quest_\(quest?.key ?? "")", withFormat: "png", on: bossImageView)
+        collapseButton.isHidden = false
+        bossNameLabel.textAlignment = .right
+        typeLabel.textColor = .white
+        
+        let userDefaults = UserDefaults()
+        userDefaults.set(false, forKey: "worldBossArtCollapsed")
+    }
+    
+    @objc
+    func hideBossArt() {
+        topStackView.axis = .horizontal
+        bossImageView.image = nil
+        collapseButton.isHidden = true
+        bossNameLabel.textAlignment = .left
+        typeLabel.textColor = UIColor.red100()
+        
+        let userDefaults = UserDefaults()
+        userDefaults.set(true, forKey: "worldBossArtCollapsed")
+    }
+    
+    override var intrinsicContentSize: CGSize {
+        if isCollapsed {
+            return CGSize(width: frame.width, height: 70)
+        } else {
+            return CGSize(width: frame.width, height: 99)
+        }
     }
 }
