@@ -14,6 +14,7 @@ class TavernViewController: HRPGUIViewController, UIScrollViewDelegate, NSFetche
     @IBOutlet weak var scrollViewTopConstraint: NSLayoutConstraint!
     
     let tavernID = "00000000-0000-4000-A000-000000000000"
+    let segmentedWrapper = PaddedView()
     let segmentedControl = UISegmentedControl(items: [NSLocalizedString("Tavern", comment: ""), NSLocalizedString("Chat", comment: "")])
     
     var detailViewController: TavernDetailViewController?
@@ -26,10 +27,10 @@ class TavernViewController: HRPGUIViewController, UIScrollViewDelegate, NSFetche
         self.segmentedControl.selectedSegmentIndex = 0
         self.segmentedControl.tintColor = UIColor.purple300()
         self.segmentedControl.addTarget(self, action: #selector(TavernViewController.switchView(_:)), for: .valueChanged)
-        segmentedControl.backgroundColor = .red
         segmentedControl.isHidden = false
         topHeaderCoordinator?.hideHeader = false
-        topHeaderCoordinator?.alternativeHeader = segmentedControl
+        segmentedWrapper.containedView = self.segmentedControl
+        topHeaderCoordinator?.alternativeHeader = segmentedWrapper
 
         scrollView.delegate = self
         
@@ -82,8 +83,6 @@ class TavernViewController: HRPGUIViewController, UIScrollViewDelegate, NSFetche
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let segmentedWrapper = PaddedView()
-        segmentedWrapper.containedView = self.segmentedControl
         if let navController = self.hrpgTopHeaderNavigationController() {
             scrollViewTopConstraint.constant = navController.contentInset
         }

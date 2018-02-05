@@ -30,7 +30,8 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate,
     var showOwned = true
     var showNotOwned = true
     @objc var shownGuilds: [String]?
-
+    
+    let segmentedWrapper = PaddedView()
     let segmentedFilterControl = UISegmentedControl(items: [NSLocalizedString("My Challenges", comment: ""), NSLocalizedString("Public Challenges", comment: "")])
 
     override func viewDidLoad() {
@@ -44,20 +45,13 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate,
         self.segmentedFilterControl.selectedSegmentIndex = 0
         self.segmentedFilterControl.tintColor = UIColor.purple300()
         self.segmentedFilterControl.addTarget(self, action: #selector(ChallengeTableViewController.switchFilter(_:)), for: .valueChanged)
+        segmentedWrapper.containedView = self.segmentedFilterControl
+        topHeaderCoordinator?.alternativeHeader = segmentedWrapper
+        topHeaderCoordinator.hideHeader = false
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        let segmentedWrapper = PaddedView()
-        segmentedWrapper.containedView = self.segmentedFilterControl
-        
-        if let navController = self.topHeaderNavigationController {
-            navController.setAlternativeHeaderView(segmentedWrapper)
-            navController.setShouldHideTopHeader(true, animated: false)
-            self.tableView.contentInset = UIEdgeInsets(top: navController.contentInset, left: 0 as CGFloat, bottom: 0 as CGFloat, right: 0 as CGFloat)
-            self.tableView.scrollIndicatorInsets = UIEdgeInsets(top: navController.contentInset, left: 0 as CGFloat, bottom: 0 as CGFloat, right: 0 as CGFloat)
-        }
         
         let subscriber = Signal<Bool, NSError>.Observer(value: {[weak self] in
             self?.handleJoinLeave(isMember: $0)
@@ -85,15 +79,6 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate,
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        if let navController = self.topHeaderNavigationController {
-            navController.setNavigationBarColors(1)
-            navController.hideNavbar = false
-            navController.showHeader(animated: true)
-            navController.setShouldHideTopHeader(false, animated: true)
-            self.tableView.contentInset = UIEdgeInsets(top: navController.contentInset, left: 0 as CGFloat, bottom: 0 as CGFloat, right: 0 as CGFloat)
-            self.tableView.scrollIndicatorInsets = UIEdgeInsets(top: navController.contentInset, left: 0 as CGFloat, bottom: 0 as CGFloat, right: 0 as CGFloat)
-        }
         
         self.tableView.scrollRectToVisible(CGRect(x: 0, y: 0, width: 1, height: 1), animated: true)
     }

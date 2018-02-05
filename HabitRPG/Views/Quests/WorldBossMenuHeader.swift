@@ -39,9 +39,7 @@ class WorldBossMenuHeader: UIView {
         healthProgressBar.barBackgroundColor = UIColor(white: 1.0, alpha: 0.16)
         
         let userDefaults = UserDefaults()
-        if userDefaults.bool(forKey: "worldBossArtCollapsed") {
-            hideBossArt()
-        }
+        isCollapsed = userDefaults.bool(forKey: "worldBossArtCollapsed")
     }
     
     @objc
