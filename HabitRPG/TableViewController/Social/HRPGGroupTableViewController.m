@@ -176,7 +176,11 @@
         self.sizeTextView.text = message.text;
     }
     
-    CGSize suggestedSize = [self.sizeTextView sizeThatFits:CGSizeMake(self.viewWidth - 41, CGFLOAT_MAX)];
+    CGFloat spacing = 41;
+    if ([message.user isEqualToString:self.user.username]) {
+        spacing = 97;
+    }
+    CGSize suggestedSize = [self.sizeTextView sizeThatFits:CGSizeMake(self.viewWidth - spacing, CGFLOAT_MAX)];
     
     CGFloat rowHeight = suggestedSize.height + 72;
     if (self.expandedChatPath != nil && self.expandedChatPath.item == indexPath.item) {
@@ -193,7 +197,11 @@
     ChatMessage *message = [self chatMessageAtIndexPath:objectIndexPath];
     self.sizeTextView.text = message.text;
     
-    CGSize suggestedSize = [self.sizeTextView sizeThatFits:CGSizeMake(self.viewWidth - 41, CGFLOAT_MAX)];
+    CGFloat spacing = 41;
+    if ([message.user isEqualToString:self.user.username]) {
+        spacing = 97;
+    }
+    CGSize suggestedSize = [self.sizeTextView sizeThatFits:CGSizeMake(self.viewWidth - spacing, CGFLOAT_MAX)];
     
     CGFloat rowHeight = suggestedSize.height + 72;
     if (self.expandedChatPath.item == indexPath.item) {

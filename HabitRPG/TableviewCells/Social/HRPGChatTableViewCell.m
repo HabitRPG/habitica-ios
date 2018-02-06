@@ -148,6 +148,8 @@
     [self.deleteButton setHidden:!self.isOwnMessage ];
     if (self.isOwnMessage) {
         self.leftMarginConstraint.constant = 64;
+    } else {
+        self.leftMarginConstraint.constant = 8;
     }
     
     [self showHideExtraButtons:isExpanded];
@@ -155,6 +157,8 @@
     if ([message.text rangeOfString:[NSString stringWithFormat:@"@%@", username]].location !=
         NSNotFound) {
         self.messageWrapper.backgroundColor = [UIColor purple600];
+    } else {
+        self.messageWrapper.backgroundColor = [UIColor whiteColor];
     }
 }
 
@@ -195,6 +199,8 @@
 
     if (self.isOwnMessage) {
         self.leftMarginConstraint.constant = 64;
+    } else {
+        self.leftMarginConstraint.constant = 8;
     }
 }
 
