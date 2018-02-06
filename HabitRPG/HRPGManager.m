@@ -1431,7 +1431,7 @@ NSString *currentUser;
         @"quest.progress.rage" : @"questRage",
         @"quest.active" : @"questActive",
         @"quest.leader" : @"questLeader",
-        @"quest.extra.worldDmg": @"rageStrikes",
+        @"quest.extra": @"rageStrikes",
         @"privacy" : @"privacy",
         @"type" : @"type",
         @"memberCount" : @"memberCount",
@@ -2043,7 +2043,7 @@ NSString *currentUser;
         @"(key).colors.dark": @"colorDark",
         @"(key).colors.medium": @"colorMedium",
         @"(key).colors.light": @"colorLight",
-        @"(key).colors.a": @"colorExtraLight",
+        @"(key).colors.extralight": @"colorExtraLight",
         @"@metadata.mapping.rootKeyPath" : @"type"
     }];
     questMapping.identificationAttributes = @[ @"key" ];
@@ -2271,7 +2271,6 @@ NSString *currentUser;
                                                      @"worldBoss.progress.hp": @"worldBossHealth",
                                                      @"worldBoss.progress.rrage": @"worldBossRage"
                                                      }];
-    worldStateMapping.assignsDefaultValueForMissingAttributes = NO;
     responseDescriptor = [RKResponseDescriptor
                           responseDescriptorWithMapping:worldStateMapping
                           method:RKRequestMethodPOST

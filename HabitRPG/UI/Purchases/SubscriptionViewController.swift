@@ -27,7 +27,7 @@ class SubscriptionViewController: HRPGBaseViewController {
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         #if DEBUG
-            appleValidator = AppleReceiptValidator(service: .sandbox)
+            appleValidator = AppleReceiptValidator(service: .production, sharedSecret: itunesSharedSecret)
         #else
             appleValidator = AppleReceiptValidator(service: .production, sharedSecret: itunesSharedSecret)
         #endif
@@ -36,7 +36,7 @@ class SubscriptionViewController: HRPGBaseViewController {
 
     required init?(coder aDecoder: NSCoder) {
         #if DEBUG
-            appleValidator = AppleReceiptValidator(service: .sandbox)
+            appleValidator = AppleReceiptValidator(service: .production, sharedSecret: itunesSharedSecret)
         #else
             appleValidator = AppleReceiptValidator(service: .production, sharedSecret: itunesSharedSecret)
         #endif

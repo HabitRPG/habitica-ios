@@ -99,6 +99,10 @@
 
     [self.swiftAppDelegate handleMaintenanceScreen];
     [[[ConfigRepository alloc] init] fetchremoteConfig];
+    
+    
+    
+    [[HRPGManager sharedManager] fetchWorldState: nil onError: nil];
 }
 
 - (void)loadContent {
