@@ -58,6 +58,10 @@ class WorldBossMenuHeader: UIView {
     @objc
     func configure(group: Group) {
         healthProgressBar.value = CGFloat(group.questHP.floatValue)
+
+        let userDefaults = UserDefaults()
+        isCollapsed = userDefaults.bool(forKey: "worldBossArtCollapsed")
+        
     }
 
     @IBAction func collapseButtonTapped(_ sender: Any) {
