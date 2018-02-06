@@ -16,6 +16,8 @@
 @property User *user;
 @property(nonatomic) NSArray *suggestedGuilds;
 
+@property BOOL fetchedGuilds;
+
 @end
 
 @implementation HRPGGuildsOverviewViewController
@@ -258,9 +260,10 @@
     NSError *error;
     _suggestedGuilds = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
 
-    if (_suggestedGuilds.count < guilds.count) {
+    if (_suggestedGuilds.count < guilds.count && !self.fetchedGuilds) {
         [[HRPGManager sharedManager] fetchGroups:@"publicGuilds"
                               onSuccess:^() {
+                                  self.fetchedGuilds = YES;
                                   _suggestedGuilds = nil;
                                   if ([self.tableView numberOfSections] != [self numberOfSectionsInTableView:self.tableView]) {
                                       if ([self.tableView numberOfSections] < 3) {
