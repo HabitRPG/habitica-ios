@@ -105,6 +105,8 @@
                 [composeViewController setToRecipients:@[ self.supportEmail ] ];
                 [composeViewController setSubject:@"[iOS] Feedback"];
                 [self presentViewController:composeViewController animated:YES completion:nil];
+            } else {
+                [self showNoEmailAlert];
             }
             break;
         }
@@ -118,6 +120,8 @@
                 [composeViewController setMessageBody:[self createDeviceInformationString]
                                                isHTML:NO];
                 [self presentViewController:composeViewController animated:YES completion:nil];
+            } else {
+                [self showNoEmailAlert];
             }
             break;
         }
@@ -198,6 +202,12 @@
                                                                [[HRPGManager sharedManager] getUser].id]];
 
     return informationString;
+}
+
+- (void)showNoEmailAlert {
+    HabiticaAlertController *alert = [HabiticaAlertController alertWithTitle:NSLocalizedString(@"Error", nil) message:[NSString stringWithFormat:NSLocalizedString(@"To report a bug using the in-app reporting option, you need to configure an email account in the iOS mail app. Alternatively, you can send an email to %@ using your preferred email client", nil), self.supportEmail]];
+    [alert addCloseActionWithHandler:nil];
+    [alert show];
 }
 
 @end
