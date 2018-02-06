@@ -1431,7 +1431,7 @@ NSString *currentUser;
         @"quest.progress.rage" : @"questRage",
         @"quest.active" : @"questActive",
         @"quest.leader" : @"questLeader",
-        @"quest.extra": @"rageStrikes",
+        @"quest.extra.worldDmg": @"rageStrikes",
         @"privacy" : @"privacy",
         @"type" : @"type",
         @"memberCount" : @"memberCount",
