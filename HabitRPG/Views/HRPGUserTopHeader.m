@@ -169,7 +169,7 @@ NSInteger rowOffset = 16;
         self.magicLabel.isActive = NO;
         self.magicLabel.value = @0;
         if (reachedLevelTen) {
-            self.magicLabel = NSLocalizedString(@"Unlocks after selecting a class", nil);
+            self.magicLabel.labelView.text = NSLocalizedString(@"Unlocks after selecting a class", nil);
         } else {
             self.magicLabel.labelView.text = NSLocalizedString(@"Unlocks at level 10", nil);
         }
@@ -183,12 +183,20 @@ NSInteger rowOffset = 16;
         self.usernameLabel.textColor = self.user.contributorColor;
         self.levelLabel.textColor = self.user.contributorColor;
     }
-    if (![self.user.preferences.disableClass boolValue]) {
+    if (![self.user.preferences.disableClass boolValue] && reachedLevelTen) {
         self.levelLabel.text =
         [NSString stringWithFormat:NSLocalizedString(@"Level %@ %@", nil), self.user.level,
          NSLocalizedString([self.user.hclass capitalizedString], nil)];
-        self.classImageView.image =
-        [UIImage imageNamed:[NSString stringWithFormat:@"icon_%@", self.user.hclass]];
+        NSString *habitClass = self.user.hclass;
+        if ([habitClass isEqualToString:@"warrior"]) {
+            self.classImageView.image = [HabiticaIcons imageOfWarriorLightBg];
+        } else if ([habitClass isEqualToString:@"wizard"]) {
+            self.classImageView.image = [HabiticaIcons imageOfMageLightBg];
+        } else if ([habitClass isEqualToString:@"healer"]) {
+            self.classImageView.image = [HabiticaIcons imageOfHealerLightBg];
+        } else if ([habitClass isEqualToString:@"rogue"]) {
+            self.classImageView.image = [HabiticaIcons imageOfRogueLightBg];
+        }
         self.classImageViewWidthConstraint.constant = 36;
     } else {
         self.levelLabel.text =
