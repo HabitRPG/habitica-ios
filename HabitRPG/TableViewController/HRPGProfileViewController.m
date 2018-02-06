@@ -145,6 +145,7 @@ NSString *currentUserID;
         }
         self.navbarColor = [UIColor purple300];
     }
+    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:1]] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 -(void)setNavbarColor:(UIColor *)navbarColor {
@@ -348,6 +349,7 @@ NSString *currentUserID;
         title = NSLocalizedString(@"Stats", nil);
     } else if (indexPath.section == 1 && indexPath.item == 0) {
         title = NSLocalizedString(@"Tavern", nil);
+        cellName = @"RewardCell";
     } else if (indexPath.section == 1 && indexPath.item == 1) {
         title = NSLocalizedString(@"Party", nil);
         accessibilityLabel = title;
@@ -406,6 +408,16 @@ NSString *currentUserID;
     NSOperatingSystemVersion ios10_0_0 = (NSOperatingSystemVersion){10, 0, 0};
     if ([[NSProcessInfo processInfo] isOperatingSystemAtLeastVersion:ios10_0_0]) {
         label.adjustsFontForContentSizeCategory = YES;
+    }
+    
+    UILabel *detailLabel = [cell viewWithTag:3];
+    detailLabel.text = nil;
+    if (indexPath.section == 1 && indexPath.item == 0) {
+        if (self.worldBossHeaderView != nil) {
+            detailLabel.text = NSLocalizedString(@"Active World Boss", nil);
+            detailLabel.font = [CustomFontMetrics scaledSystemFontOfSize:12 compatibleWith:nil];
+            detailLabel.textColor = self.navbarColor;
+        }
     }
     UIImageView *indicatorView = [cell viewWithTag:2];
     indicatorView.hidden = !showIndicator;
