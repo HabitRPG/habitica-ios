@@ -39,7 +39,9 @@ class ChallengeDetailsTableViewController: MultiModelTableViewController {
         
         viewModel?.joinLeaveStyleProvider.promptProperty.signal.observeValues({ [weak self] prompt in
             if let alertController = prompt {
-                self?.present(alertController, animated: true, completion: nil)
+                alertController.modalTransitionStyle = .crossDissolve
+                alertController.modalPresentationStyle = .overCurrentContext
+                self?.parent?.present(alertController, animated: true, completion: nil)
             }
         })
         
