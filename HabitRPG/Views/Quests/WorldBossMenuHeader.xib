@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="99"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yGV-W1-LPc">
+                <imageView clipsSubviews="YES" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yGV-W1-LPc">
                     <rect key="frame" x="0.0" y="-29" width="375" height="99"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HK4-17-uQ6">
@@ -46,13 +46,12 @@
                         <constraint firstItem="uGv-gC-OKZ" firstAttribute="leading" secondItem="HK4-17-uQ6" secondAttribute="leading" constant="16" id="yUG-Ww-8Id"/>
                     </constraints>
                 </view>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Rov-gF-HQo">
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="Rov-gF-HQo">
                     <rect key="frame" x="16" y="6" width="343" height="58"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G4v-Ut-KAZ">
-                            <rect key="frame" x="0.0" y="0.0" width="343" height="25.5"/>
-                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="23"/>
-                            <state key="normal">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G4v-Ut-KAZ">
+                            <rect key="frame" x="327" y="0.0" width="16" height="25.5"/>
+                            <state key="normal" image="Close">
                                 <color key="titleColor" red="0.98809523809523814" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
@@ -60,7 +59,7 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hJc-6y-9cJ">
-                            <rect key="frame" x="0.0" y="25.5" width="343" height="18"/>
+                            <rect key="frame" x="304" y="25.5" width="39" height="18"/>
                             <constraints>
                                 <constraint firstAttribute="height" priority="500" constant="21" id="bQi-XH-a6I"/>
                             </constraints>
@@ -69,7 +68,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m5y-zi-ABN">
-                            <rect key="frame" x="0.0" y="43.5" width="343" height="14.5"/>
+                            <rect key="frame" x="312" y="43.5" width="31" height="14.5"/>
                             <constraints>
                                 <constraint firstAttribute="height" priority="500" constant="21" id="teN-J4-hHP"/>
                             </constraints>
@@ -108,4 +107,7 @@
             <point key="canvasLocation" x="24.5" y="-212.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="Close" width="16" height="16"/>
+    </resources>
 </document>

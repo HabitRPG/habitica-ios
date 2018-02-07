@@ -18,6 +18,7 @@
 @property(nonatomic) NSFetchedResultsController *tavernFetchedResultsController;
 @property(nonatomic) WorldBossMenuHeader *worldBossHeaderView;
 @property(nonatomic) UIColor *navbarColor;
+@property(nonatomic) UIColor *worldBossTintColor;
 @end
 
 @implementation HRPGProfileViewController
@@ -133,8 +134,9 @@ NSString *currentUserID;
                 self.tableView.tableHeaderView = self.worldBossHeaderView;
                 Quest *quest = result[0];
                 [self.worldBossHeaderView configureWithQuest:quest];
-                [self.tableView reloadData];
                 self.navbarColor = quest.uicolorDark;
+                self.worldBossTintColor = quest.uicolorExtraLight;
+                [self.tableView reloadData];
             }
         }
         [self.worldBossHeaderView configureWithGroup:tavern];
@@ -417,7 +419,7 @@ NSString *currentUserID;
         if (self.worldBossHeaderView != nil) {
             detailLabel.text = NSLocalizedString(@"Active World Boss", nil);
             detailLabel.font = [CustomFontMetrics scaledSystemFontOfSize:12 compatibleWith:nil];
-            detailLabel.textColor = self.navbarColor;
+            detailLabel.textColor = self.worldBossTintColor;
         }
     }
     UIImageView *indicatorView = [cell viewWithTag:2];

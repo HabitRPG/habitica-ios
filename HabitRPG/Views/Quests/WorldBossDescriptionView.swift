@@ -30,6 +30,7 @@ class WorldBossDescriptionView: UIView {
         didSet {
             title = "The \(bossName ?? "") attacks!"
             actionPromptLabel.text = NSLocalizedString("Defeat the Boss to earn special rewards and save Habitica from The \(bossName ?? "") Terror!", comment: "")
+            actionPromptLabel.horizontalPadding = 16
         }
     }
     

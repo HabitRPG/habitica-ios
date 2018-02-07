@@ -40,6 +40,8 @@ class WorldBossMenuHeader: UIView {
         
         let userDefaults = UserDefaults()
         isCollapsed = userDefaults.bool(forKey: "worldBossArtCollapsed")
+        
+        topStackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(bossArtTapped)))
     }
     
     @objc
@@ -71,6 +73,7 @@ class WorldBossMenuHeader: UIView {
     @objc
     func showBossArt() {
         topStackView.axis = .vertical
+        topStackView.alignment = .trailing
         HRPGManager.shared().setImage("quest_\(quest?.key ?? "")", withFormat: "png", on: bossImageView)
         collapseButton.isHidden = false
         bossNameLabel.textAlignment = .right
@@ -83,6 +86,7 @@ class WorldBossMenuHeader: UIView {
     @objc
     func hideBossArt() {
         topStackView.axis = .horizontal
+        topStackView.alignment = .fill
         bossImageView.image = nil
         collapseButton.isHidden = true
         bossNameLabel.textAlignment = .left
@@ -98,5 +102,22 @@ class WorldBossMenuHeader: UIView {
         } else {
             return CGSize(width: frame.width, height: 99)
         }
+    }
+    
+    @objc
+    func bossArtTapped() {
+        guard let quest = self.quest else {
+            return
+        }
+        let alertController = HabiticaAlertController.alert(title: NSLocalizedString("What’s a World Boss?", comment: ""))
+        let view = Bundle.main.loadNibNamed("WorldBossDescription", owner: nil, options: nil)?.last as? WorldBossDescriptionView
+        view?.bossName = quest.bossName
+        view?.questColorLight = quest.uicolorLight
+        view?.questColorExtraLight = quest.uicolorExtraLight
+        alertController.contentView = view
+        alertController.titleBackgroundColor = quest.uicolorLight
+        alertController.addCloseAction()
+        alertController.show()
+        alertController.titleLabel.textColor = .white
     }
 }
