@@ -20,6 +20,7 @@ class GroupChatViewController: SLKTextViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        hidesBottomBarWhenPushed = true
         self.sizeTextView.textContainerInset = .zero
         self.sizeTextView.contentInset = .zero
         self.sizeTextView.font = CustomFontMetrics.scaledSystemFont(ofSize: 15)
@@ -42,53 +43,7 @@ class GroupChatViewController: SLKTextViewController {
                                                     guard let item = anyItem as? ChatMessage else {
                                                         return
                                                     }
-                                                    var isExpanded = false
-                                                    if let expandedChatPath = self?.expandedChatPath, let indexPath = indexPath {
-                                                        isExpanded = expandedChatPath == indexPath
-                                                    }
-                                                    cell.configure(for: item,
-                                                                   withUserID: self?.user?.id,
-                                                                   withUsername: self?.user?.username,
-                                                                   isModerator: self?.user?.isModerator() ?? false,
-                                                                   isExpanded: isExpanded)
-                                                    
-                                                    cell.profileAction = {
-                                                        guard let profileViewController = self?.storyboard?.instantiateViewController(withIdentifier: "UserProfileViewController") as? HRPGUserProfileViewController else {
-                                                            return
-                                                        }
-                                                        profileViewController.userID = item.uuid
-                                                        profileViewController.username = item.user
-                                                        self?.navigationController?.pushViewController(profileViewController, animated: true)
-                                                    }
-                                                    cell.flagAction = {
-                                                        
-                                                    }
-                                                    cell.replyAction = {
-                                                        self?.textView.text = "@\(item.user ?? "")"
-                                                    }
-                                                    cell.plusOneAction = {
-                                                        HRPGManager.shared().like(item, withGroup: self?.groupID, onSuccess: {
-                                                            if let path = indexPath {
-                                                                self?.tableView?.reloadRows(at: [path], with: .automatic)
-                                                            }
-                                                        }, onError: nil)
-                                                    }
-                                                    cell.copyAction = {
-                                                        let pasteboard = UIPasteboard.general
-                                                        pasteboard.string = item.text
-                                                    }
-                                                    cell.deleteAction = {
-                                                        HRPGManager.shared().delete(item, withGroup: self?.groupID, onSuccess: nil, onError: nil)
-                                                    }
-                                                    cell.expandAction = {
-                                                        if let path = indexPath {
-                                                            self?.expandSelectedCell(path)
-                                                        }
-                                                    }
-                                                    
-                                                    if let transform = self?.tableView?.transform {
-                                                        cell.transform = transform
-                                                    }
+                                                    self?.configure(cell: cell, item: item, indexPath: indexPath)
             }, fetchRequest: {[weak self] (fetchRequest) in
                 fetchRequest?.sortDescriptors = [NSSortDescriptor(key: "timestamp", ascending: false)]
                 fetchRequest?.predicate = NSPredicate(format: "group.id == %@", self?.groupID ?? "")
@@ -106,13 +61,13 @@ class GroupChatViewController: SLKTextViewController {
     }
     
     override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        super.scrollViewWillBeginDragging(scrollView)
-        
         dismissKeyboard(true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        view.setNeedsLayout()
         
         self.refresh()
     }
@@ -185,6 +140,56 @@ class GroupChatViewController: SLKTextViewController {
             self.tableView?.beginUpdates()
             self.tableView?.reloadRows(at: [indexPath], with: .automatic)
             self.tableView?.endUpdates()
+        }
+    }
+    
+    private func configure(cell: HRPGChatTableViewCell, item: ChatMessage, indexPath: IndexPath?) {
+        var isExpanded = false
+        if let expandedChatPath = self.expandedChatPath, let indexPath = indexPath {
+            isExpanded = expandedChatPath == indexPath
+        }
+        cell.configure(for: item,
+                       withUserID: self.user?.id,
+                       withUsername: self.user?.username,
+                       isModerator: self.user?.isModerator() ?? false,
+                       isExpanded: isExpanded)
+        
+        cell.profileAction = {
+            guard let profileViewController = self.storyboard?.instantiateViewController(withIdentifier: "UserProfileViewController") as? HRPGUserProfileViewController else {
+                return
+            }
+            profileViewController.userID = item.uuid
+            profileViewController.username = item.user
+            self.navigationController?.pushViewController(profileViewController, animated: true)
+        }
+        cell.flagAction = {
+            
+        }
+        cell.replyAction = {
+            self.textView.text = "@\(item.user ?? "")"
+        }
+        cell.plusOneAction = {
+            HRPGManager.shared().like(item, withGroup: self.groupID, onSuccess: {
+                if let path = indexPath {
+                    self.tableView?.reloadRows(at: [path], with: .automatic)
+                }
+            }, onError: nil)
+        }
+        cell.copyAction = {
+            let pasteboard = UIPasteboard.general
+            pasteboard.string = item.text
+        }
+        cell.deleteAction = {
+            HRPGManager.shared().delete(item, withGroup: self.groupID, onSuccess: nil, onError: nil)
+        }
+        cell.expandAction = {
+            if let path = indexPath {
+                self.expandSelectedCell(path)
+            }
+        }
+        
+        if let transform = self.tableView?.transform {
+            cell.transform = transform
         }
     }
 }
