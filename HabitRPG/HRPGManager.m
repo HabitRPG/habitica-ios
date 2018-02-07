@@ -2856,6 +2856,11 @@ NSString *currentUser;
     [self.networkIndicatorController beginNetworking];
 
     NSDictionary *params = @{ @"type" : groupType };
+    Group *oldTavern = [[[SocialRepository alloc] init] getGroup:@"00000000-0000-4000-A000-000000000000"];
+    NSString *questKey = oldTavern.questKey;
+    NSNumber *questActive = oldTavern.questActive;
+    NSNumber *questHP = oldTavern.questHP;
+    NSNumber *questRage = oldTavern.questRage;
     [[RKObjectManager sharedManager] getObjectsAtPath:@"groups"
         parameters:params
         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
@@ -2879,6 +2884,12 @@ NSString *currentUser;
                 for (NSObject *obj in guilds) {
                     if ([obj isKindOfClass:[Group class]]) {
                         Group *guild = (Group *) obj;
+                        if ([guild.id isEqualToString:@"00000000-0000-4000-A000-000000000000"]) {
+                            guild.questKey = questKey;
+                            guild.questActive = questActive;
+                            guild.questHP = questHP;
+                            guild.questRage = questRage;
+                        }
                         guild.type = @"guild";
                     }
                 }

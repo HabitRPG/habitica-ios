@@ -10,6 +10,7 @@ import Foundation
 
 class SocialRepository: BaseRepository {
     
+    @objc
     func getGroup(_ id: String) -> Group? {
         return makeFetchRequest(entityName: "Group", predicate: NSPredicate(format: "id == %@", id))
     }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class BaseRepository {
+class BaseRepository: NSObject {
     
     lazy var managedObjectContext: NSManagedObjectContext = {
         return HRPGManager.shared().getManagedObjectContext()
