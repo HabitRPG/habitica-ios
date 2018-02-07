@@ -66,8 +66,7 @@ class GroupChatViewController: SLKTextViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        view.setNeedsLayout()
+        checkGuidelinesAccepted()
         
         self.refresh()
     }
@@ -192,4 +191,33 @@ class GroupChatViewController: SLKTextViewController {
             cell.transform = transform
         }
     }
+    
+    private func checkGuidelinesAccepted() {
+        if !(user?.flags.communityGuidelinesAccepted?.boolValue ?? false) {
+            let acceptButton = UIButton()
+            acceptButton.setTitle(NSLocalizedString("Read Community Guidelines", comment: ""), for: .normal)
+            acceptButton.backgroundColor = .white
+            acceptButton.setTitleColor(UIColor.purple300(), for: .normal)
+            acceptButton.addTarget(self, action: #selector(openGuidelinesView), for: .touchUpInside)
+            acceptButton.frame = CGRect(x: 0, y: 0, width: textInputbar.frame.size.width, height: textInputbar.frame.size.height)
+            acceptButton.tag = 2
+            textInputbar.addSubview(acceptButton)
+        } else {
+            let button = textInputbar.viewWithTag(2)
+            button?.removeFromSuperview()
+        }
+    }
+    
+    @objc
+    private func openGuidelinesView() {
+        self.performSegue(withIdentifier: "GuidelinesSegue", sender: self)
+    }
+    
+    @IBAction func unwindToAcceptGuidelines(_ segue: UIStoryboardSegue) {
+        HRPGManager.shared().updateUser(["flags.communityGuidelinesAccepted": true], onSuccess: {[weak self] in
+            self?.user?.flags.communityGuidelinesAccepted = NSNumber(value: true)
+            self?.checkGuidelinesAccepted()
+        }, onError: nil)
+    }
+
 }

@@ -2195,7 +2195,7 @@ Invite friends now to earn a Quest Scroll!</string>
                         <viewControllerLayoutGuide type="bottom" id="2nR-i8-He8"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ye8-1F-ID7">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vLc-mV-bsJ">
@@ -2209,11 +2209,11 @@ Invite friends now to earn a Quest Scroll!</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <webView tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MHB-Pq-EF3">
-                                <rect key="frame" x="0.0" y="136.5" width="375" height="530.5"/>
+                                <rect key="frame" x="0.0" y="136.5" width="375" height="466.5"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q7z-X9-NMm">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="559" width="375" height="44"/>
                                 <items>
                                     <barButtonItem systemItem="cancel" id="WTk-yZ-gdz">
                                         <connections>
@@ -2228,7 +2228,7 @@ Invite friends now to earn a Quest Scroll!</string>
                                     </barButtonItem>
                                     <barButtonItem title="Accept Guidelines" id="Qsp-FO-gTG">
                                         <connections>
-                                            <segue destination="Ema-og-wxc" kind="unwind" unwindAction="unwindToAcceptGuidelines:" id="Znv-rX-H9n"/>
+                                            <segue destination="Ema-og-wxc" kind="unwind" unwindAction="unwindToAcceptGuidelines:" id="MFO-oR-Ihp"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -2837,6 +2837,9 @@ Invite friends now to earn a Quest Scroll!</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <connections>
+                        <segue destination="qim-an-Lm9" kind="presentation" identifier="GuidelinesSegue" modalPresentationStyle="pageSheet" id="UUp-aA-Ao9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sad-6H-WsP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2852,7 +2855,7 @@ Invite friends now to earn a Quest Scroll!</string>
     <inferredMetricsTieBreakers>
         <segue reference="jBF-PN-2IP"/>
         <segue reference="VPE-S9-CFY"/>
-        <segue reference="CUP-gn-Xug"/>
+        <segue reference="UUp-aA-Ao9"/>
         <segue reference="kns-o3-fej"/>
         <segue reference="2KU-R3-vSq"/>
         <segue reference="Hfa-0k-B92"/>
