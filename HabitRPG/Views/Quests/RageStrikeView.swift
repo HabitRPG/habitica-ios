@@ -103,9 +103,9 @@ class RageStrikeView: UIView {
         case "tavern":
             return NSLocalizedString("Daniel the inn keeper", comment: "")
         case "questShop":
-            return "Ian"
+            return NSLocalizedString("Ian the Quest Guide", comment: "")
         case "seasonalShop":
-            return "Leslie"
+            return NSLocalizedString("Seasonal Sorceress", comment: "")
         case "stable":
             return NSLocalizedString("Matt the beast master", comment: "")
         default:
