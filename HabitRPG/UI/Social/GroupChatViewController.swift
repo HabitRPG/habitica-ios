@@ -105,6 +105,12 @@ class GroupChatViewController: SLKTextViewController {
         self.textView.registerMarkdownFormattingSymbol("~~", withTitle: "Strike")
     }
     
+    override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        super.scrollViewWillBeginDragging(scrollView)
+        
+        dismissKeyboard(true)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
