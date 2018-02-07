@@ -85,13 +85,14 @@ class ToastView: UIView {
     }
     
     @objc
-    public convenience init(healthDiff: Float, magicDiff: Float, expDiff: Float, goldDiff: Float, background: ToastColor) {
+    public convenience init(healthDiff: Float, magicDiff: Float, expDiff: Float, goldDiff: Float, questDamage: Float, background: ToastColor) {
         self.init(frame: CGRect.zero)
         accessibilityLabel = "You received "
         addStatsView(HabiticaIcons.imageOfHeartDarkBg, diff: healthDiff, label: "Health")
         addStatsView(HabiticaIcons.imageOfExperience, diff: expDiff, label: "Experience")
         addStatsView(HabiticaIcons.imageOfMagic, diff: magicDiff, label: "Mana")
         addStatsView(HabiticaIcons.imageOfGold, diff: goldDiff, label: "Gold")
+        addStatsView(HabiticaIcons.imageOfDamage, diff: questDamage, label: "Damage")
         options.backgroundColor = background
         loadOptions()
     }

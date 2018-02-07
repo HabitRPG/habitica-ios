@@ -669,7 +669,8 @@ NSString *currentUser;
         @"exp" : @"experience",
         @"_tmp.drop.key" : @"dropKey",
         @"_tmp.drop.type" : @"dropType",
-        @"_tmp.drop.dialog" : @"dropNote"
+        @"_tmp.drop.dialog" : @"dropNote",
+        @"_tmp.quest.progressDelta" : @"questDamage"
     }];
     [upDownMapping setAssignsDefaultValueForMissingAttributes:NO];
     responseDescriptor = [RKResponseDescriptor
@@ -3117,7 +3118,8 @@ NSString *currentUser;
             [self displayTaskSuccessNotification:healthDiff
                               withExperienceDiff:expDiff
                                     withGoldDiff:goldDiff
-                                   withMagicDiff:magicDiff];
+                                   withMagicDiff:magicDiff
+                                 withQuestDamage:taskResponse.questDamage];
             if ([task.type isEqualToString:@"daily"] || [task.type isEqualToString:@"todo"]) {
                 task.completed = @([withDirection isEqualToString:@"up"]);
             }
@@ -5481,7 +5483,8 @@ NSString *currentUser;
 - (void)displayTaskSuccessNotification:(NSNumber *)healthDiff
                     withExperienceDiff:(NSNumber *)expDiff
                           withGoldDiff:(NSNumber *)goldDiff
-                         withMagicDiff:(NSNumber *)magicDiff {
+                         withMagicDiff:(NSNumber *)magicDiff
+                         withQuestDamage:(NSNumber *)questDamage {
     ToastColor notificationColor = ToastColorGreen;
     if ([healthDiff intValue] < 0) {
         notificationColor = ToastColorRed;
@@ -5489,7 +5492,12 @@ NSString *currentUser;
     if (![self.user hasClassSelected]) {
         magicDiff = @0;
     }
-    ToastView *toastView = [[ToastView alloc] initWithHealthDiff:healthDiff.floatValue magicDiff:magicDiff.floatValue expDiff:expDiff.floatValue goldDiff:goldDiff.floatValue background:notificationColor];
+    ToastView *toastView = [[ToastView alloc] initWithHealthDiff:healthDiff.floatValue
+                                                       magicDiff:magicDiff.floatValue
+                                                         expDiff:expDiff.floatValue
+                                                        goldDiff:goldDiff.floatValue
+                                                     questDamage:questDamage.floatValue
+                                                      background:notificationColor];
     [ToastManager showWithToast:toastView];
 }
 

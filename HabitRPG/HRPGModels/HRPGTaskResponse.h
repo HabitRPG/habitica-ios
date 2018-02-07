@@ -18,5 +18,6 @@
 @property(nonatomic, retain) NSString *dropType;
 @property(nonatomic, retain) NSString *dropKey;
 @property(nonatomic, retain) NSString *dropNote;
+@property(nonatomic, retain) NSNumber *questDamage;
 
 @end
