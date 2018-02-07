@@ -134,7 +134,7 @@ class RageStrikeView: UIView {
             alertController.containerView.insertArrangedSubview(npcImageView, at: 0)
             alertController.titleLabel.textColor = .white
         } else {
-            let string = NSLocalizedString("The DysHeartener attacks!\nThe World Boss will lash out and attack one of our friendly shopkeepers once its rage bar fills. Keep up with your Dailies to try and prevent it from happening!", comment: "")
+            let string = NSLocalizedString("Be careful...\nThe World Boss will lash out and attack one of our friendly shopkeepers once its rage bar fills. Keep up with your Dailies to try and prevent it from happening!", comment: "")
             let attributedString = NSMutableAttributedString(string: string)
             let firstLineRange = NSRange(location: 0, length: string.components(separatedBy: "\n")[0].count)
             attributedString.addAttribute(.font, value: CustomFontMetrics.scaledSystemFont(ofSize: 17), range: firstLineRange)
