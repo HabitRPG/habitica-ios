@@ -130,10 +130,6 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
         return min(statusBarSize.width, statusBarSize.height)
     }
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return self.navigationBar.barStyle == UIBarStyle.black ? UIStatusBarStyle.lightContent : UIStatusBarStyle.default
-    }
-    
      @objc public var contentInset: CGFloat {
         if self.shouldHideTopHeader {
             return 0
@@ -288,11 +284,12 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
     
     private func updateStatusbarColor() {
         let isLightColor = self.upperBackgroundView.backgroundColor?.isLight() ?? true
-        if self.navigationBar.barStyle == .default && !isLightColor {
-            self.navigationBar.barStyle = .black
+        let currentStyle = UIApplication.shared.statusBarStyle
+        if currentStyle == .default && !isLightColor {
+            UIApplication.shared.statusBarStyle = .lightContent
             self.setNeedsStatusBarAppearanceUpdate()
-        } else if self.navigationBar.barStyle == .black && isLightColor {
-            self.navigationBar.barStyle = .default
+        } else if currentStyle == .lightContent && isLightColor {
+            UIApplication.shared.statusBarStyle = .default
             self.setNeedsStatusBarAppearanceUpdate()
         }
     }

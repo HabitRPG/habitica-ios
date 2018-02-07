@@ -97,6 +97,7 @@ NSString *currentUserID;
         [self.tableView reloadData];
     }
     self.navigationItem.title = NSLocalizedString(@"Menu", nil);
+    
 }
 
 - (void)refresh {

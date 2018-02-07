@@ -16,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yGV-W1-LPc">
-                    <rect key="frame" x="0.0" y="-30" width="375" height="100"/>
+                    <rect key="frame" x="0.0" y="-29" width="375" height="99"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HK4-17-uQ6">
                     <rect key="frame" x="0.0" y="70" width="375" height="30"/>
@@ -83,7 +83,7 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="HK4-17-uQ6" secondAttribute="bottom" constant="-1" id="5yj-vU-LGs"/>
-                <constraint firstItem="yGV-W1-LPc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="-30" id="HcU-Uv-Vu3"/>
+                <constraint firstItem="yGV-W1-LPc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="-29" id="HcU-Uv-Vu3"/>
                 <constraint firstAttribute="trailing" secondItem="HK4-17-uQ6" secondAttribute="trailing" id="KDm-fd-mDI"/>
                 <constraint firstItem="HK4-17-uQ6" firstAttribute="top" secondItem="Rov-gF-HQo" secondAttribute="bottom" constant="6" id="Mal-iv-zMb"/>
                 <constraint firstItem="HK4-17-uQ6" firstAttribute="top" secondItem="yGV-W1-LPc" secondAttribute="bottom" id="Mwp-ES-PMh"/>
