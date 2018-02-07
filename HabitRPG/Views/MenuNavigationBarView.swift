@@ -19,13 +19,22 @@ class MenuNavigationBarView: UIView {
     @IBOutlet weak var messagesButton: UIButton!
     @IBOutlet weak var settingsButton: UIButton!
     
-    
     // MARK: - Private Helper Methods
     
     @objc
     public func configure(user: User) {
         usernameLabel.text = user.username
-        user.setAvatarSubview(avatarView, showsBackground: true, showsMount: false, showsPet: false)
+        if avatarView.subviews.count == 0 {
+            if let avatar = user.getAvatarViewShowsBackground(true, showsMount: false, showsPet: false) {
+                avatarView.addSubview(avatar)
+                avatarView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-(-10)-[avatar]-(0)-|", options: .init(rawValue: 0), metrics: nil, views: ["avatar": avatar]))
+                avatarView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-(-15)-[avatar]-(-10)-|", options: .init(rawValue: 0), metrics: nil, views: ["avatar": avatar]))
+                
+                setNeedsUpdateConstraints()
+                setNeedsLayout()
+                layoutIfNeeded()
+            }
+        }
     }
     
     @IBAction func messageButtonTapped(_ sender: Any) {
