@@ -97,7 +97,7 @@ class QuestProgressBarView: UIView {
     
     private func updatePendingLabel() {
         pendingView.isHidden = pendingTitle.count == 0
-        pendingLabel.text = "\(formatter.string(from: NSNumber(value: Int(pendingValue))) ?? "") \(pendingTitle)"
+        pendingLabel.text = "\(formatter.string(from: NSNumber(value: pendingValue)) ?? "") \(pendingTitle)"
     }
     
     override init(frame: CGRect) {
@@ -132,6 +132,7 @@ class QuestProgressBarView: UIView {
             formatter.usesGroupingSeparator = true
             formatter.numberStyle = .decimal
             formatter.locale = NSLocale.current
+            formatter.maximumFractionDigits = 1
             
             setNeedsUpdateConstraints()
             updateConstraints()

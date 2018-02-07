@@ -1364,6 +1364,9 @@
 		29FC8867201B7B61002B3D3F /* Quests */ = {
 			isa = PBXGroup;
 			children = (
+				298119B01F50453100F9FB39 /* QuestGoalView.swift */,
+				298119B41F5048C000F9FB39 /* QuestGoalView.xib */,
+				29E16314200E629800685640 /* QuestProgressBarView.swift */,
 				29E16316200E632200685640 /* QuestProgressBarView.xib */,
 				29E16310200E5FEA00685640 /* QuestProgressView.xib */,
 				29E16312200E619400685640 /* QuestProgressView.swift */,
@@ -2012,9 +2015,6 @@
 				D9525F9C1E64739900C529B8 /* PaddedView.swift */,
 				D9CE90441E4CDD6200702578 /* PillView.swift */,
 				29FC8861201A300B002B3D3F /* ProgressBar.swift */,
-				298119B01F50453100F9FB39 /* QuestGoalView.swift */,
-				298119B41F5048C000F9FB39 /* QuestGoalView.xib */,
-				29E16314200E629800685640 /* QuestProgressBarView.swift */,
 				29FC8867201B7B61002B3D3F /* Quests */,
 				29701FE51F56DABC0097BBCC /* RoundedView.swift */,
 				293282131F389CC000D42961 /* SetupCustomizationItemView.swift */,
