@@ -185,7 +185,7 @@
     NSDictionary *viewDictionary = @{
         @"background" : @(showsBackground && self.preferences.background.length),
         @"mount-body" : @(showsMount && self.currentMount.length),
-        @"chair" : @(self.preferences.chair.length),
+        @"chair" : @(self.preferences.chair.length && ![self.preferences.chair isEqualToString:@"none"]),
         @"back" : @(outfit.back.length && [self _isAvailableGear:outfit.back]),
         @"skin" : @YES,
         @"shirt" : @YES,
