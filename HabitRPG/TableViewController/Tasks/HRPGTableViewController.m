@@ -15,6 +15,7 @@
 #import "NSString+Emoji.h"
 #import <POP/POP.h>
 #import "UIColor+Habitica.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGTableViewController ()<UISearchBarDelegate, UITableViewDragDelegate, UITableViewDropDelegate>
 @property NSString *readableName;
@@ -31,6 +32,8 @@
 @property NSTimer *scrollTimer;
 @property CGFloat autoScrollSpeed;
 @property Task *movedTask;
+
+@property NSMutableDictionary *heightAtIndexPath;
 @end
 
 @implementation HRPGTableViewController
@@ -83,6 +86,8 @@ NSIndexPath  *sourceIndexPath = nil; ///< Initial index path, where gesture begi
                                                    initWithTarget:self action:@selector(longPressGestureRecognized:)];
         [self.tableView addGestureRecognizer:longPress];
     }
+    
+    self.heightAtIndexPath = [NSMutableDictionary new];
 }
 
 - (NSString *)getCellNibName {
@@ -114,6 +119,15 @@ NSIndexPath  *sourceIndexPath = nil; ///< Initial index path, where gesture begi
     if (self.scrollToTaskAfterLoading) {
         [self scrollToTaskWithId:self.scrollToTaskAfterLoading];
         self.scrollToTaskAfterLoading = nil;
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSNumber *height = [self.heightAtIndexPath objectForKey:indexPath];
+    if(height) {
+        return height.floatValue;
+    } else {
+        return UITableViewAutomaticDimension;
     }
 }
 
@@ -568,6 +582,8 @@ NSIndexPath  *sourceIndexPath = nil; ///< Initial index path, where gesture begi
 - (void)tableView:(UITableView *)tableView
       willDisplayCell:(UITableViewCell *)cell
     forRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSNumber *height = @(cell.frame.size.height);
+    [self.heightAtIndexPath setObject:height forKey:indexPath];
     if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
         [cell setSeparatorInset:UIEdgeInsetsZero];
     }
