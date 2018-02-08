@@ -2228,7 +2228,7 @@ NSString *currentUser;
     challengeTaskOrderMapping.identificationAttributes = @[ @"id" ];
     
     [challengeMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"tasksOrder.habits" toKeyPath:@"habits" withMapping:challengeTaskOrderMapping]];
-    [challengeMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"tasksOrder.dailies" toKeyPath:@"dailies" withMapping:challengeTaskOrderMapping]];
+    [challengeMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"tasksOrder.dailys" toKeyPath:@"dailies" withMapping:challengeTaskOrderMapping]];
     [challengeMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"tasksOrder.todos" toKeyPath:@"todos" withMapping:challengeTaskOrderMapping]];
     [challengeMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"tasksOrder.rewards" toKeyPath:@"rewards" withMapping:challengeTaskOrderMapping]];
     
@@ -2255,7 +2255,7 @@ NSString *currentUser;
     [objectManager addResponseDescriptor:responseDescriptor];
     
     RKEntityMapping *challengeTaskMapping = [RKEntityMapping mappingForEntityForName:@"ChallengeTask" inManagedObjectStore:managedObjectStore];
-    [challengeTaskMapping addAttributeMappingsFromArray:@[@"id", @"up", @"down", @"text", @"type"]];
+    [challengeTaskMapping addAttributeMappingsFromArray:@[@"id", @"up", @"down", @"text", @"type", @"notes", @"value"]];
     challengeTaskMapping.identificationAttributes = @[@"id"];
     responseDescriptor = [RKResponseDescriptor
                           responseDescriptorWithMapping:challengeTaskMapping
