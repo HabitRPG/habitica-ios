@@ -195,7 +195,7 @@ class GroupChatViewController: SLKTextViewController {
     private func checkGuidelinesAccepted() {
         if !(user?.flags.communityGuidelinesAccepted?.boolValue ?? false) {
             let acceptButton = UIButton()
-            acceptButton.setTitle(NSLocalizedString("Read Community Guidelines", comment: ""), for: .normal)
+            acceptButton.setTitle(NSLocalizedString("Post a message", comment: ""), for: .normal)
             acceptButton.backgroundColor = .white
             acceptButton.setTitleColor(UIColor.purple300(), for: .normal)
             acceptButton.addTarget(self, action: #selector(openGuidelinesView), for: .touchUpInside)
