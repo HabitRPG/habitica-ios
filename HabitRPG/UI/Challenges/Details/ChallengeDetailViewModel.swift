@@ -185,7 +185,7 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
                                                                                          rightAttributeProvider: self.endChallengeStyleProvider, rightInputs: self.endChallengeStyleProvider)
         }
         ownedChallengeSignal.filter(Challenge.isPublished(_:)).observeValues { _ in
-            //self.mainButtonItemProperty.value = ButtonCellMultiModelDataSourceItem(attributeProvider: self.participantsStyleProvider, inputs: self.participantsStyleProvider, identifier: "mainButton")
+            self.mainButtonItemProperty.value = ButtonCellMultiModelDataSourceItem(attributeProvider: self.participantsStyleProvider, inputs: self.participantsStyleProvider, identifier: "mainButton")
         }
         ownedChallengeSignal.filter({ !Challenge.isPublished($0) }).observeValues { _ in
             self.mainButtonItemProperty.value = ButtonCellMultiModelDataSourceItem(attributeProvider: self.publishStyleProvider, inputs: self.publishStyleProvider, identifier: "mainButton")
