@@ -153,6 +153,9 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
             
             let rewardsSection = MultiModelDataSourceSection()
             rewardsSection.title = "Rewards"
+            rewardsSection.items = challenge.rewards?.map({ (task) -> MultiModelDataSourceItem in
+                return RewardMultiModelDataSourceItem<ChallengeRewardTableViewCell>(task, identifier: "reward")
+            })
             self.rewardsSectionProperty.value = rewardsSection
         }
     }
@@ -352,6 +355,23 @@ class ChallengeTaskMultiModelDataSourceItem<T>: ConcreteMultiModelDataSourceItem
     override func configureCell(_ cell: UITableViewCell) {
         if let clazzCell: T = cell as? T {
             clazzCell.configure(task: challengeTask)
+        }
+    }
+}
+
+// MARK: -
+
+class RewardMultiModelDataSourceItem<T>: ConcreteMultiModelDataSourceItem<T> where T: ChallengeRewardTableViewCell {
+    private let challengeTask: ChallengeTask
+    
+    public init(_ challengeTask: ChallengeTask, identifier: String) {
+        self.challengeTask = challengeTask
+        super.init(identifier: identifier)
+    }
+    
+    override func configureCell(_ cell: UITableViewCell) {
+        if let clazzCell: T = cell as? T {
+            clazzCell.configure(reward: challengeTask)
         }
     }
 }

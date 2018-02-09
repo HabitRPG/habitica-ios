@@ -16,6 +16,10 @@ enum CurrencyCountViewSize {
     case normal, large
 }
 
+enum CurrencyCountViewOrientation {
+    case vertical, horizontal
+}
+
 class HRPGCurrencyCountView: UIView {
     
     @objc public var amount = 0 {
@@ -43,6 +47,12 @@ class HRPGCurrencyCountView: UIView {
     public var viewSize: CurrencyCountViewSize = .normal {
         didSet {
             updateSize()
+        }
+    }
+    
+    public var orientation: CurrencyCountViewOrientation = .horizontal {
+        didSet {
+            updateOrientation()
         }
     }
     
@@ -90,17 +100,8 @@ class HRPGCurrencyCountView: UIView {
         addSubview(countLabel)
         addSubview(currencyImageView)
         
-        let viewDictionary = ["image": self.currencyImageView, "label": self.countLabel]
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[image]-4-[label]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDictionary))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[image]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDictionary))
-        
-        addConstraint(NSLayoutConstraint.init(item: countLabel,
-                                              attribute: NSLayoutAttribute.centerY,
-                                              relatedBy: NSLayoutRelation.equal,
-                                              toItem: self,
-                                              attribute: NSLayoutAttribute.centerY,
-                                              multiplier: 1,
-                                              constant: 0))
+        addConstraints(longwaysConstraints())
+        addConstraints(shortwaysConstraints())
         
         widthConstraint = NSLayoutConstraint.init(item: currencyImageView,
                                                   attribute: NSLayoutAttribute.width,
@@ -145,6 +146,13 @@ class HRPGCurrencyCountView: UIView {
         layoutIfNeeded()
     }
     
+    private func updateOrientation() {
+        self.removeConstraints(self.constraints)
+        
+        addConstraints(longwaysConstraints())
+        addConstraints(shortwaysConstraints())
+    }
+    
     private func updateStateValues() {
         switch state {
         case .normal:
@@ -157,6 +165,45 @@ class HRPGCurrencyCountView: UIView {
             countLabel.textColor = .gray400()
             currencyImageView.alpha = 0.3
         }
+    }
+    
+    private func longwaysConstraints() -> [NSLayoutConstraint] {
+        let viewDictionary = ["image": self.currencyImageView, "label": self.countLabel]
+        let orientationChar = orientation == .horizontal ? "H" : "V"
+        var constraints = NSLayoutConstraint.constraints(withVisualFormat: "\(orientationChar):|-0-[image]-4-[label]-0-|",
+                                                        options: NSLayoutFormatOptions(rawValue: 0),
+                                                        metrics: nil,
+                                                        views: viewDictionary)
+        
+        if orientation == .vertical {
+            constraints.append(NSLayoutConstraint.init(item: countLabel,
+                                                       attribute: NSLayoutAttribute.centerX,
+                                                       relatedBy: NSLayoutRelation.equal,
+                                                       toItem: self,
+                                                       attribute: NSLayoutAttribute.centerX,
+                                                       multiplier: 1,
+                                                       constant: 0))
+        }
+        return constraints
+    }
+    
+    private func shortwaysConstraints() -> [NSLayoutConstraint] {
+        let viewDictionary = ["image": self.currencyImageView, "label": self.countLabel]
+        let orientationChar = orientation == .horizontal ? "V" : "H"
+        var constraints = NSLayoutConstraint.constraints(withVisualFormat: "\(orientationChar):|-0-[image]-0-|",
+                                                         options: NSLayoutFormatOptions(rawValue: 0),
+                                                         metrics: nil,
+                                                         views: viewDictionary)
+        if orientation == .horizontal {
+            constraints.append(NSLayoutConstraint.init(item: countLabel,
+                                                       attribute: NSLayoutAttribute.centerY,
+                                                       relatedBy: NSLayoutRelation.equal,
+                                                       toItem: self,
+                                                       attribute: NSLayoutAttribute.centerY,
+                                                       multiplier: 1,
+                                                       constant: 0))
+        }
+        return constraints
     }
     
     //Helper methods since objc can't access swift enums
