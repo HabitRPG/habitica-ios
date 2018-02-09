@@ -205,7 +205,7 @@
 }
 
 - (void)showNoEmailAlert {
-    HabiticaAlertController *alert = [HabiticaAlertController alertWithTitle:NSLocalizedString(@"Error", nil) message:[NSString stringWithFormat:NSLocalizedString(@"To report a bug using the in-app reporting option, you need to configure an email account in the iOS mail app. Alternatively, you can send an email to %@ using your preferred email client", nil), self.supportEmail]];
+    HabiticaAlertController *alert = [HabiticaAlertController alertWithTitle:NSLocalizedString(@"Your email isn't set up yet", nil) message:[NSString stringWithFormat:NSLocalizedString(@"Whoops, looks like you haven't set up your email on this phone yet. Configure an account in the iOS mail app to use this quick-reporting option, or just email us directly at mobile@habitica.com", nil), self.supportEmail]];
     [alert addCloseActionWithHandler:nil];
     [alert show];
 }
