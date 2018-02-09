@@ -24,16 +24,17 @@ class MenuNavigationBarView: UIView {
     @objc
     public func configure(user: User) {
         usernameLabel.text = user.username
-        if avatarView.subviews.count == 0 {
-            if let avatar = user.getAvatarViewShowsBackground(true, showsMount: false, showsPet: false) {
-                avatarView.addSubview(avatar)
-                avatarView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-(-10)-[avatar]-(0)-|", options: .init(rawValue: 0), metrics: nil, views: ["avatar": avatar]))
-                avatarView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-(-15)-[avatar]-(-10)-|", options: .init(rawValue: 0), metrics: nil, views: ["avatar": avatar]))
-                
-                setNeedsUpdateConstraints()
-                setNeedsLayout()
-                layoutIfNeeded()
-            }
+        if avatarView.subviews.count != 0 {
+            avatarView.subviews.forEach({ (view) in view.removeFromSuperview() })
+        }
+        if let avatar = user.getAvatarViewShowsBackground(true, showsMount: false, showsPet: false) {
+            avatarView.addSubview(avatar)
+            avatarView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-(-10)-[avatar]-(0)-|", options: .init(rawValue: 0), metrics: nil, views: ["avatar": avatar]))
+            avatarView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-(-15)-[avatar]-(-10)-|", options: .init(rawValue: 0), metrics: nil, views: ["avatar": avatar]))
+            
+            setNeedsUpdateConstraints()
+            setNeedsLayout()
+            layoutIfNeeded()
         }
     }
     
