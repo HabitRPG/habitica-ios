@@ -100,9 +100,7 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
     }
     
     var topHeaderHeight: CGFloat {
-        if self.shouldHideTopHeader {
-            return 0
-        } else if let header = self.alternativeHeaderView {
+        if let header = self.alternativeHeaderView {
             return header.intrinsicContentSize.height
         } else {
             return defaultHeaderHeight
@@ -228,8 +226,6 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
     func setNewFrame(_ frame: CGRect) {
         self.backgroundView.frame = frame
         self.setNavigationBarColors(self.shouldHideTopHeader ? 0 : 1)
-        self.alternativeHeaderView?.alpha = self.shouldHideTopHeader ? 0 : 1
-        self.headerView?.alpha = self.shouldHideTopHeader ? 0 : 1
     }
     
     @objc
@@ -307,6 +303,7 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
             self.backgroundView.addSubview(header)
             self.bottomBorderView.isHidden = true
             header.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: header.intrinsicContentSize.height)
+            header.alpha = 1
             header.layoutSubviews()
         }
         self.viewWillLayoutSubviews()

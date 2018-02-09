@@ -9,6 +9,7 @@
 #import "HRPGNewsViewController.h"
 #import "Amplitude.h"
 #import "HRPGManager.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGNewsViewController ()
 
@@ -18,6 +19,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.topHeaderCoordinator.hideHeader = YES;
 
     NSURLRequest *request = [NSURLRequest
         requestWithURL:[NSURL URLWithString:@"https://habitica.com/static/new-stuff"]];

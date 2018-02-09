@@ -131,7 +131,7 @@ class QuestProgressView: UIView {
         gradientView.endColor = colorLight
         descriptionSeparator.backgroundColor = colorLight
         questArtSeparator.backgroundColor = colorLight
-        let description = try? Down(markdownString: quest.notes).toHabiticaAttributedString()
+        let description = try? Down(markdownString: quest.notes.replacingOccurrences(of: "<br>", with: "\n")).toHabiticaAttributedString()
         description?.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: description?.length ?? 0))
         descriptionTextView.attributedText = description
         

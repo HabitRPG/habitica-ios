@@ -1538,6 +1538,8 @@
 				D92A084A1D33FA08000F8B66 /* HRPGShopViewController.m */,
 				29E162E3200227AA00685640 /* HRPGUIViewController.h */,
 				29E162E4200227AA00685640 /* HRPGUIViewController.m */,
+				D9722B1819B7AEA1009D8AD3 /* HRPGNewsViewController.h */,
+				D9722B1919B7AEA1009D8AD3 /* HRPGNewsViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -2432,8 +2434,6 @@
 				D903B78B1DCA4C25001F2893 /* HRPGNotificationManager.m */,
 				D922F0AC19217C2300B197EA /* HRPGEmptySerializer.h */,
 				D922F0AD19217C2300B197EA /* HRPGEmptySerializer.m */,
-				D9722B1819B7AEA1009D8AD3 /* HRPGNewsViewController.h */,
-				D9722B1919B7AEA1009D8AD3 /* HRPGNewsViewController.m */,
 				D9722B7E19BD041E009D8AD3 /* HRPGNavigationController.h */,
 				D9722B7F19BD041E009D8AD3 /* HRPGNavigationController.m */,
 				29E1630A200D050E00685640 /* TopHeaderNavigationController.swift */,

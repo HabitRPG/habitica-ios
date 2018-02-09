@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "HRPGManager.h"
+#import "HRPGUIViewController.h"
 
-@interface HRPGNewsViewController : UIViewController<UIWebViewDelegate>
+@interface HRPGNewsViewController : HRPGUIViewController<UIWebViewDelegate>
 @property(weak, nonatomic) IBOutlet UIWebView *newsWebView;
 @property(weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingIndicator;
 
