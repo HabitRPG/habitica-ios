@@ -35,7 +35,7 @@ extension Challenge {
     }
     
     static func isOwner(of challenge: Challenge?) -> Bool {
-        return challenge?.leaderId == HRPGManager.shared().user.id
+        return false //challenge?.leaderId == HRPGManager.shared().user.id
     }
     
     static func isPublished(_ challenge: Challenge?) -> Bool {
