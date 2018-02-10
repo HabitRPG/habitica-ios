@@ -64,6 +64,9 @@
     
     [application setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
     
+    HRPGInAppPurchasesUtil *purchaseUtil = [[HRPGInAppPurchasesUtil alloc] init];
+    [purchaseUtil registerTransactionObserver];
+    
     return YES;
 }
 

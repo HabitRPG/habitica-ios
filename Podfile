@@ -49,7 +49,7 @@ target 'Habitica' do
 
   pod 'Down'
 
-  pod 'PopupDialog', :git => 'https://github.com/Orderella/PopupDialog.git', :branch => 'development'
+  pod 'PopupDialog'
   pod 'Alamofire', '~> 4.5'
   pod 'SwiftLint'
   pod 'Eureka'
