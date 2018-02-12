@@ -133,6 +133,7 @@ class QuestProgressView: UIView {
         questArtSeparator.backgroundColor = colorLight
         let description = try? Down(markdownString: quest.notes.replacingOccurrences(of: "<br>", with: "\n")).toHabiticaAttributedString()
         description?.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: description?.length ?? 0))
+        description?.append(NSAttributedString(string: "\n"))
         descriptionTextView.attributedText = description
         
         bossArtCarret.tintColor = colorExtraLight
@@ -144,6 +145,8 @@ class QuestProgressView: UIView {
                 rageStrikeView.questIdentifier = quest.key ?? ""
             }
         }
+        
+        descriptionTextView.sizeToFit()
     }
     
     @objc
