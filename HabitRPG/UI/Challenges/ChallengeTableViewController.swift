@@ -32,7 +32,7 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate,
     @objc var shownGuilds: [String]?
     
     let segmentedWrapper = PaddedView()
-    let segmentedFilterControl = UISegmentedControl(items: [NSLocalizedString("My Challenges", comment: ""), NSLocalizedString("Public Challenges", comment: "")])
+    let segmentedFilterControl = UISegmentedControl(items: [NSLocalizedString("My Challenges", comment: ""), NSLocalizedString("Discover", comment: "")])
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +40,9 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate,
         self.leaveInteractor = LeaveChallengeInteractor(presentingViewController: self)
 
         self.configureTableView()
-        HRPGManager.shared().fetchChallenges(nil, onError: nil)
+        HRPGManager.shared().fetchChallenges({
+            HRPGManager.shared().fetchUser(nil, onError: nil)
+        }, onError: nil)
         
         self.segmentedFilterControl.selectedSegmentIndex = 0
         self.segmentedFilterControl.tintColor = UIColor.purple300()

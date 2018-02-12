@@ -19,19 +19,23 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="63.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cVm-Uu-O6V">
-                        <rect key="frame" x="64" y="11" width="200" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cVm-Uu-O6V">
+                        <rect key="frame" x="64" y="12" width="200" height="19.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" red="0.30588235289999999" green="0.2901960784" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tabbar_rewards" translatesAutoresizingMaskIntoConstraints="NO" id="zZk-c9-Qhd">
-                        <rect key="frame" x="16" y="16" width="192.5" height="32"/>
+                        <rect key="frame" x="16" y="16" width="32" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="32" id="Rfn-Wp-6H7"/>
+                            <constraint firstAttribute="height" constant="32" id="t57-OL-mid"/>
+                        </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mpG-Sg-gIs">
                         <rect key="frame" x="272" y="0.0" width="48" height="64"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2lL-hT-505" customClass="HRPGCurrencyCountView" customModule="Habitica" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2lL-hT-505" customClass="HRPGCurrencyCountView" customModule="Habitica" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="8" width="48" height="48"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -40,11 +44,13 @@
                         <constraints>
                             <constraint firstItem="2lL-hT-505" firstAttribute="centerX" secondItem="mpG-Sg-gIs" secondAttribute="centerX" id="EgY-tB-4Q6"/>
                             <constraint firstItem="2lL-hT-505" firstAttribute="centerY" secondItem="mpG-Sg-gIs" secondAttribute="centerY" id="MN7-fk-IDU"/>
+                            <constraint firstAttribute="bottom" secondItem="2lL-hT-505" secondAttribute="bottom" constant="8" id="Pjm-aB-X5k"/>
+                            <constraint firstItem="2lL-hT-505" firstAttribute="top" secondItem="mpG-Sg-gIs" secondAttribute="top" constant="8" id="c3m-ao-Ydt"/>
                             <constraint firstAttribute="width" constant="48" id="qvw-m5-nvR"/>
                         </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U5d-0A-6rp">
-                        <rect key="frame" x="64" y="35" width="200" height="18"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U5d-0A-6rp">
+                        <rect key="frame" x="64" y="31.5" width="200" height="21.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.52941176469999995" green="0.50588235290000005" blue="0.56470588239999997" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
