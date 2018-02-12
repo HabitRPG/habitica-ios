@@ -2274,7 +2274,7 @@ NSString *currentUser;
                                                      }];
     responseDescriptor = [RKResponseDescriptor
                           responseDescriptorWithMapping:worldStateMapping
-                          method:RKRequestMethodPOST
+                          method:RKRequestMethodGET
                           pathPattern:@"world-state"
                           keyPath:@"data"
                           statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
@@ -5466,6 +5466,16 @@ NSString *currentUser;
                        onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
     [[RKObjectManager sharedManager] getObject:nil path:@"world-state" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        HabiticaWorldState *state = [mappingResult dictionary][@"data"];
+        Group *tavern = [[[SocialRepository alloc] init] getGroup:@"00000000-0000-4000-A000-000000000000"];
+        if (tavern == nil) {
+            tavern = [NSEntityDescription insertNewObjectForEntityForName:@"Group" inManagedObjectContext:[self getManagedObjectContext]];
+            tavern.id = @"00000000-0000-4000-A000-000000000000";
+        }
+        tavern.questActive = [NSNumber numberWithBool:state.worldBossActive];
+        tavern.questKey = state.worldBossKey;
+        tavern.questHP = [NSNumber numberWithLong:state.worldBossHealth];
+        tavern.questRage = [NSNumber numberWithLong:state.worldBossRage];
         [self.networkIndicatorController endNetworking];
         if (successBlock) {
             successBlock();

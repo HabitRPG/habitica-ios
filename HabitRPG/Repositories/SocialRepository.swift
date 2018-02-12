@@ -8,6 +8,7 @@
 
 import Foundation
 
+@objc
 class SocialRepository: BaseRepository {
     
     @objc

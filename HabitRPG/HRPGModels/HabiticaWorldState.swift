@@ -10,8 +10,8 @@ import Foundation
 
 class HabiticaWorldState: NSObject {
     
-    public var worldBossActive: Bool = false
-    public var worldBossKey: String?
-    public var worldBossHealth: Int?
-    public var worldBossRage: Int?
+    @objc public var worldBossActive: Bool = false
+    @objc public var worldBossKey: String = ""
+    @objc public var worldBossHealth: Int = 0
+    @objc public var worldBossRage: Int = 0
 }
