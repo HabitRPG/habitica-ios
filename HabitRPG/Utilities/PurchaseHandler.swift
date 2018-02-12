@@ -41,13 +41,20 @@ class PurchaseHandler: NSObject {
         }
         hasCompletionHandler = true
         SwiftyStoreKit.completeTransactions(atomically: false) { products in
-            print(String(describing: products))
+            if products.count > 0 {
+                for product in products {
+                    CLSLogv("Purchase: %@ %@", getVaList([product.productId, NSNumber(value: product.needsFinishTransaction)]))
+                }
+                let error = NSError(domain: SKErrorDomain, code: -1001, userInfo: nil)
+                Crashlytics.sharedInstance().recordError(error)
+            }
             SwiftyStoreKit.fetchReceipt(forceRefresh: false) { result in
                 switch result {
                 case .success(let receiptData):
                     for product in products {
                         if product.transaction.transactionState == .purchased || product.transaction.transactionState == .restored {
                             if product.needsFinishTransaction {
+                                
                                 if self.isInAppPurchase(product.productId) {
                                     self.activatePurchase(product.productId, receipt: receiptData) { status in
                                         if status {
@@ -71,7 +78,7 @@ class PurchaseHandler: NSObject {
                                             Crashlytics.sharedInstance().recordError(error)
                                         }
                                     })
-
+                                    
                                 }
                             }
                         }
