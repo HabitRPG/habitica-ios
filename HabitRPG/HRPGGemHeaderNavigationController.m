@@ -8,7 +8,6 @@
 
 #import "HRPGGemHeaderNavigationController.h"
 #import "UIColor+Habitica.h"
-#import "Habitica-Swift.h"
 
 @interface HRPGGemHeaderNavigationController ()
 @property(nonatomic, strong) UIView *headerView;
@@ -63,8 +62,6 @@
     [self.view insertSubview:self.backgroundView belowSubview:self.upperBackgroundView];
     
     self.headerYPosition = [self bgViewOffset];
-    
-    [PurchaseHandler.shared completionHandler];
 }
 
 - (void)viewWillLayoutSubviews {

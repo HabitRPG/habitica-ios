@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftyStoreKit
+import StoreKit
 import Keys
 import Crashlytics
 
@@ -16,6 +17,9 @@ class PurchaseHandler: NSObject {
 
     static let IAPIdentifiers = ["com.habitrpg.ios.Habitica.4gems", "com.habitrpg.ios.Habitica.21gems",
                               "com.habitrpg.ios.Habitica.42gems", "com.habitrpg.ios.Habitica.84gems"
+    ]
+    static let subscriptionIdentifiers = ["subscription1month", "com.habitrpg.ios.habitica.subscription.3month",
+                       "com.habitrpg.ios.habitica.subscription.6month", "com.habitrpg.ios.habitica.subscription.12month"
     ]
     
     private let itunesSharedSecret = HabiticaKeys().itunesSharedSecret
@@ -50,6 +54,24 @@ class PurchaseHandler: NSObject {
                                             SwiftyStoreKit.finishTransaction(product.transaction)
                                         }
                                     }
+                                } else if self.isSubscription(product.productId) {
+                                    SwiftyStoreKit.verifyReceipt(using: self.appleValidator, completion: { (verificationResult) in
+                                        switch verificationResult {
+                                        case .success(let receipt):
+                                            if self.isValidSubscription(product.productId, receipt: receipt) {
+                                                self.activateSubscription(product.productId, receipt: receipt) { status in
+                                                    if status {
+                                                        SwiftyStoreKit.finishTransaction(product.transaction)
+                                                    }
+                                                }
+                                            } else {
+                                                SwiftyStoreKit.finishTransaction(product.transaction)
+                                            }
+                                        case .error(let error):
+                                            Crashlytics.sharedInstance().recordError(error)
+                                        }
+                                    })
+
                                 }
                             }
                         }
@@ -113,6 +135,40 @@ class PurchaseHandler: NSObject {
         switch purchaseResult {
         case .purchased:
             return true
+        case .notPurchased:
+            return false
+        }
+    }
+    
+    func activateSubscription(_ identifier: String, receipt: ReceiptInfo, completion: @escaping (Bool) -> Void) {
+        if let lastReceipt = receipt["latest_receipt"] as? String {
+            HRPGManager.shared().subscribe(identifier, withReceipt: lastReceipt, onSuccess: {
+                completion(true)
+            }, onError: {
+                completion(false)
+            })
+        }
+    }
+    
+    func isSubscription(_ identifier: String) -> Bool {
+        return  PurchaseHandler.subscriptionIdentifiers.contains(identifier)
+    }
+    
+    func isValidSubscription(_ identifier: String, receipt: ReceiptInfo) -> Bool {
+        if !isSubscription(identifier) {
+            return false
+        }
+        let purchaseResult = SwiftyStoreKit.verifySubscription(
+            ofType: .autoRenewable,
+            productId: identifier,
+            inReceipt: receipt,
+            validUntil: Date()
+        )
+        switch purchaseResult {
+        case .purchased:
+            return true
+        case .expired:
+            return false
         case .notPurchased:
             return false
         }

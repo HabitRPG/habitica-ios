@@ -70,7 +70,6 @@ class SubscriptionViewController: HRPGBaseViewController {
             self.tableView.scrollIndicatorInsets = inset
         }
         retrieveProductList()
-        completionHandler()
 
         self.user = HRPGManager.shared().getUser()
 
@@ -85,43 +84,14 @@ class SubscriptionViewController: HRPGBaseViewController {
         }
     }
 
-    func completionHandler() {
-        SwiftyStoreKit.completeTransactions(atomically: false) { products in
-            SwiftyStoreKit.verifyReceipt(using: self.appleValidator, forceRefresh: true) { result in
-                switch result {
-                case .success(let receipt):
-                    for product in products {
-                        if product.transaction.transactionState == .purchased || product.transaction.transactionState == .restored {
-                            if product.needsFinishTransaction {
-                                if self.isSubscription(product.productId) {
-                                    if self.isValidSubscription(product.productId, receipt: receipt) {
-                                        self.activateSubscription(product.productId, receipt: receipt) { status in
-                                            if status {
-                                                SwiftyStoreKit.finishTransaction(product.transaction)
-                                            }
-                                        }
-                                    } else {
-                                        SwiftyStoreKit.finishTransaction(product.transaction)
-                                    }
-                                }
-                            }
-                        }
-                    }
-                default:
-                    return
-                }
-            }
-        }
-    }
-
     func retrieveProductList() {
-        SwiftyStoreKit.retrieveProductsInfo(Set(identifiers)) { (result) in
+        SwiftyStoreKit.retrieveProductsInfo(Set(PurchaseHandler.subscriptionIdentifiers)) { (result) in
             self.products = Array(result.retrievedProducts)
             self.products?.sort(by: { (product1, product2) -> Bool in
-                guard let firstIndex = self.identifiers.index(of: product1.productIdentifier) else {
+                guard let firstIndex = PurchaseHandler.subscriptionIdentifiers.index(of: product1.productIdentifier) else {
                     return false
                 }
-                guard let secondIndex = self.identifiers.index(of: product2.productIdentifier) else {
+                guard let secondIndex = PurchaseHandler.subscriptionIdentifiers.index(of: product2.productIdentifier) else {
                     return true
                 }
                 return firstIndex < secondIndex
@@ -343,7 +313,7 @@ class SubscriptionViewController: HRPGBaseViewController {
     }
 
     func isSubscription(_ identifier: String) -> Bool {
-        return  self.identifiers.contains(identifier)
+        return  PurchaseHandler.subscriptionIdentifiers.contains(identifier)
     }
 
     func isValidSubscription(_ identifier: String, receipt: ReceiptInfo) -> Bool {

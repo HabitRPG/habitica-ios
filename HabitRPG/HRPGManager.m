@@ -4828,6 +4828,7 @@ NSString *currentUser;
             return;
         }
         failure:^(RKObjectRequestOperation *operation, NSError *error) {
+            [CrashlyticsKit recordError:error];
             RKErrorMessage *errorMessage = [error userInfo][RKObjectMapperErrorObjectsKey][0];
             if ([errorMessage.errorMessage isEqualToString:@"INVALID_ITEM_PURCHASED"]) {
                 if (successBlock) {
@@ -4859,7 +4860,7 @@ NSString *currentUser;
     
     [[RKObjectManager sharedManager] postObject:nil
                                            path:@"iap/ios/subscribe"
-                                     parameters:@{@"sku": sku, @"receipt":receipt}
+                                     parameters:@{@"sku": sku, @"receipt": receipt}
                                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                             [self fetchUser:^() {
                                                 NSError *executeError = nil;

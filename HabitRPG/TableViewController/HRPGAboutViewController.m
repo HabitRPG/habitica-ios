@@ -195,7 +195,7 @@
                                                 [NSString stringWithCString:systemInfo.machine
                                                                    encoding:NSUTF8StringEncoding]]];
     [informationString
-        appendString:[NSString stringWithFormat:NSLocalizedString(@"App Version: %@\n", nil),
+        appendString:[NSString stringWithFormat:@"App Version: %@\n",
                                                 [[NSBundle mainBundle] infoDictionary]
                                                     [@"CFBundleShortVersionString"]]];
     [informationString appendString:[NSString stringWithFormat:@"User UUID: %@\n",

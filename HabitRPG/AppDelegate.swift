@@ -48,6 +48,11 @@ class HabiticaAppDelegate: NSObject {
     }
     
     @objc
+    func setupPurchaseHandling() {
+        PurchaseHandler.shared.completionHandler()
+    }
+    
+    @objc
     func handleInitialLaunch() {
         let defaults = UserDefaults.standard
         if !defaults.bool(forKey: "wasLaunchedBefore") {
