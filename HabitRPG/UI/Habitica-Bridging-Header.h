@@ -48,3 +48,4 @@
 #import "HRPGInboxChatViewController.h"
 #import <SlackTextViewController/SLKTextViewController.h>
 #import "HRPGTaskProtocol.h"
+#import "HRPGFlagInformationOverlayView.h"

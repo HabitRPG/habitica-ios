@@ -9,6 +9,7 @@
 import UIKit
 import SlackTextViewController
 import Down
+import KLCPopup
 
 class GroupChatViewController: SLKTextViewController {
     
@@ -161,8 +162,18 @@ class GroupChatViewController: SLKTextViewController {
             profileViewController.username = item.user
             self.navigationController?.pushViewController(profileViewController, animated: true)
         }
-        cell.flagAction = {
-            
+        cell.flagAction = {[weak self] in
+            guard let view = Bundle.main.loadNibNamed("HRPGFlagInformationOverlayView", owner: self, options: nil)?.first as? HRPGFlagInformationOverlayView else {
+                return
+            }
+            view.username = item.user
+            view.message = item.text
+            view.flagAction = {
+                HRPGManager.shared().flagMessage(item, withGroup: self?.groupID, onSuccess: nil, onError: nil)
+            }
+            view.sizeToFit()
+            let popup = KLCPopup(contentView: view, showType: KLCPopupShowType.bounceIn, dismissType: KLCPopupDismissType.bounceOut, maskType: KLCPopupMaskType.dimmed, dismissOnBackgroundTouch: true, dismissOnContentTouch: false)
+            popup?.show()
         }
         cell.replyAction = {
             self.textView.text = "@\(item.user ?? "")"
