@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		29028BB120319E4000B7F704 /* RageStrikeActiveContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29028BB020319E4000B7F704 /* RageStrikeActiveContentView.xib */; };
 		290458D02021D6C60032BC5E /* TopHeaderCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290458CF2021D6C60032BC5E /* TopHeaderCoordinator.swift */; };
 		2904FC7D2028BE8000CFB741 /* HabiticaWorldState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2904FC7C2028BE8000CFB741 /* HabiticaWorldState.swift */; };
 		2907267E1F74279C00545550 /* TimeTravelersCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2907267D1F74279C00545550 /* TimeTravelersCollectionViewDataSource.swift */; };
@@ -411,7 +412,7 @@
 		D9D17CCE1E6736B500AD9232 /* ChallengeDetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CCD1E6736B500AD9232 /* ChallengeDetailHeaderView.xib */; };
 		D9D17CD01E673CCC00AD9232 /* UIView-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D17CCF1E673CCC00AD9232 /* UIView-Extensions.swift */; };
 		D9D17CD21E6898E400AD9232 /* HabitTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CD11E6898E400AD9232 /* HabitTableViewCell.xib */; };
-		D9D17CD41E68995000AD9232 /* BuildFile in Resources */ = {isa = PBXBuildFile; };
+		D9D17CD41E68995000AD9232 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		D9D17CD61E6899A800AD9232 /* ToDoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CD51E6899A800AD9232 /* ToDoTableViewCell.xib */; };
 		D9D17CD81E6899F100AD9232 /* HRPGRewardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CD71E6899F100AD9232 /* HRPGRewardTableViewCell.xib */; };
 		D9D17CDA1E69C68000AD9232 /* ChallengeDetailAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CD91E69C68000AD9232 /* ChallengeDetailAlert.xib */; };
@@ -474,6 +475,7 @@
 
 /* Begin PBXFileReference section */
 		281AC256BB298E2B402BE5DF /* Pods-HabiticaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HabiticaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HabiticaTests/Pods-HabiticaTests.debug.xcconfig"; sourceTree = "<group>"; };
+		29028BB020319E4000B7F704 /* RageStrikeActiveContentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RageStrikeActiveContentView.xib; sourceTree = "<group>"; };
 		290458CF2021D6C60032BC5E /* TopHeaderCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopHeaderCoordinator.swift; sourceTree = "<group>"; };
 		2904FC7C2028BE8000CFB741 /* HabiticaWorldState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabiticaWorldState.swift; sourceTree = "<group>"; };
 		2907267D1F74279C00545550 /* TimeTravelersCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTravelersCollectionViewDataSource.swift; sourceTree = "<group>"; };
@@ -1375,6 +1377,7 @@
 				29E16310200E5FEA00685640 /* QuestProgressView.xib */,
 				29E16312200E619400685640 /* QuestProgressView.swift */,
 				29FC885320175C70002B3D3F /* RageStrikeView.swift */,
+				29028BB020319E4000B7F704 /* RageStrikeActiveContentView.xib */,
 				29FC88552017B840002B3D3F /* CollapsibleTitle.swift */,
 				29FC88592017C039002B3D3F /* CollapsibleStackView.swift */,
 				29FC885D2018D858002B3D3F /* WorldBossDescription.xib */,
@@ -2654,13 +2657,13 @@
 				293BB4A11FD06E7E003B6F4F /* BulkStatsAllocationView.xib in Resources */,
 				49E378532009542C00E0DA3D /* ChallengeTableViewHeaderView.xib in Resources */,
 				498E4D001FA17C1A006933FF /* ChallengeCategoriesTableViewCell.xib in Resources */,
-				D9D17CD41E68995000AD9232 /* BuildFile in Resources */,
+				D9D17CD41E68995000AD9232 /* (null) in Resources */,
 				29AAA1611F2B597400029737 /* SpeechbubbleView.xib in Resources */,
 				29FC885E2018D858002B3D3F /* WorldBossDescription.xib in Resources */,
 				293BB4A31FD07603003B6F4F /* StatsSliderView.xib in Resources */,
-				D9D17CD41E68995000AD9232 /* BuildFile in Resources */,
+				D9D17CD41E68995000AD9232 /* (null) in Resources */,
 				29E16311200E5FEA00685640 /* QuestProgressView.xib in Resources */,
-				D9D17CD41E68995000AD9232 /* BuildFile in Resources */,
+				D9D17CD41E68995000AD9232 /* (null) in Resources */,
 				D9BB45CA1E76DF260002AE2E /* DailyTableViewCell.xib in Resources */,
 				D9D17CD81E6899F100AD9232 /* HRPGRewardTableViewCell.xib in Resources */,
 				29B6AD4A1F2A0C9800AC8878 /* LoginEntryView.xib in Resources */,
@@ -2678,6 +2681,7 @@
 				29FC8864201B78D6002B3D3F /* WorldBossMenuHeader.xib in Resources */,
 				49005B701F17E7AC004830D9 /* Shops.storyboard in Resources */,
 				493ECBB51F47A58F0099B1FC /* HRPGItemStatsView.xib in Resources */,
+				29028BB120319E4000B7F704 /* RageStrikeActiveContentView.xib in Resources */,
 				D90EA03D19D60B53001EABE4 /* TodoIntro.png in Resources */,
 				D9BBF32E1DBD128700C4114C /* ShopAdFooter.xib in Resources */,
 				D9D17CD61E6899A800AD9232 /* ToDoTableViewCell.xib in Resources */,

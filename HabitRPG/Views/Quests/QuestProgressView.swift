@@ -141,6 +141,7 @@ class QuestProgressView: UIView {
         for view in rageStrikeContainer.arrangedSubviews {
             if let rageStrikeView = view as? RageStrikeView {
                 rageStrikeView.bossName = quest.bossName ?? ""
+                rageStrikeView.questIdentifier = quest.key ?? ""
             }
         }
     }

@@ -32,13 +32,13 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="hIR-Qr-gyg">
-                    <rect key="frame" x="57" y="196.99999999999997" width="300" height="342.33333333333326"/>
+                    <rect key="frame" x="57" y="220.99999999999997" width="300" height="294.33333333333326"/>
                     <subviews>
                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cq5-lH-VwH">
-                            <rect key="frame" x="0.0" y="0.0" width="300" height="342.33333333333331"/>
+                            <rect key="frame" x="0.0" y="0.0" width="300" height="294.33333333333331"/>
                             <subviews>
-                                <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="TfL-K4-Ks4">
-                                    <rect key="frame" x="0.0" y="0.0" width="300" height="342.33333333333331"/>
+                                <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="TfL-K4-Ks4">
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="294.33333333333331"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gtQ-qL-FhW">
                                             <rect key="frame" x="0.0" y="0.0" width="300" height="44.333333333333336"/>
@@ -63,10 +63,10 @@
                                             </constraints>
                                         </view>
                                         <scrollView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RtW-7X-FcT">
-                                            <rect key="frame" x="0.0" y="68.333333333333314" width="300" height="200"/>
+                                            <rect key="frame" x="0.0" y="44.333333333333314" width="300" height="200"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ZV8-ae-TgB">
-                                                    <rect key="frame" x="16" y="0.0" width="268" height="1"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="300" height="1"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" priority="500" constant="1" id="eOJ-y0-GwI"/>
                                                         <constraint firstAttribute="width" priority="500" constant="160" id="osO-3d-A6O"/>
@@ -75,16 +75,16 @@
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstItem="ZV8-ae-TgB" firstAttribute="leading" secondItem="RtW-7X-FcT" secondAttribute="leading" constant="16" id="AfP-za-B49"/>
+                                                <constraint firstItem="ZV8-ae-TgB" firstAttribute="leading" secondItem="RtW-7X-FcT" secondAttribute="leading" id="AfP-za-B49"/>
                                                 <constraint firstAttribute="width" priority="500" constant="200" id="FPp-ei-BTt"/>
                                                 <constraint firstAttribute="bottom" secondItem="ZV8-ae-TgB" secondAttribute="bottom" id="FYL-NO-9VC"/>
-                                                <constraint firstAttribute="trailing" secondItem="ZV8-ae-TgB" secondAttribute="trailing" constant="16" id="IaR-dC-ZUw"/>
+                                                <constraint firstAttribute="trailing" secondItem="ZV8-ae-TgB" secondAttribute="trailing" id="IaR-dC-ZUw"/>
                                                 <constraint firstAttribute="height" constant="200" id="cbB-05-7SZ"/>
                                                 <constraint firstItem="ZV8-ae-TgB" firstAttribute="top" secondItem="RtW-7X-FcT" secondAttribute="top" id="gNK-Mx-i25"/>
                                             </constraints>
                                         </scrollView>
                                         <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="NTK-Ff-M86">
-                                            <rect key="frame" x="0.0" y="292.33333333333331" width="300" height="50"/>
+                                            <rect key="frame" x="0.0" y="244.33333333333331" width="300" height="50"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iee-IM-xUZ">
                                                     <rect key="frame" x="-0.33333333333334281" y="-1" width="300" height="51"/>
@@ -123,7 +123,7 @@
                                 <constraint firstItem="TfL-K4-Ks4" firstAttribute="top" secondItem="Cq5-lH-VwH" secondAttribute="top" id="Nkc-CG-08T"/>
                                 <constraint firstItem="TfL-K4-Ks4" firstAttribute="leading" secondItem="Cq5-lH-VwH" secondAttribute="leading" id="gBP-jK-QaK"/>
                                 <constraint firstAttribute="trailing" secondItem="TfL-K4-Ks4" secondAttribute="trailing" id="ivm-py-k0T"/>
-                                <constraint firstAttribute="width" secondItem="ZV8-ae-TgB" secondAttribute="width" constant="32" id="ox2-6g-PiN"/>
+                                <constraint firstAttribute="width" secondItem="ZV8-ae-TgB" secondAttribute="width" id="ox2-6g-PiN"/>
                             </constraints>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -132,7 +132,7 @@
                             </userDefinedRuntimeAttributes>
                         </view>
                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TbI-aA-bqR">
-                            <rect key="frame" x="0.0" y="-197" width="300" height="50"/>
+                            <rect key="frame" x="0.0" y="-221" width="300" height="50"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="5sM-4R-vXw"/>

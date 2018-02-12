@@ -73,6 +73,23 @@ class HabiticaAlertController: UIViewController {
         }
     }
     
+    var contentViewInsets: UIEdgeInsets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16) {
+        didSet {
+            if containerView != nil {
+                containerView.layoutMargins = contentViewInsets
+                containerView.isLayoutMarginsRelativeArrangement = true
+            }
+        }
+    }
+    
+    var containerViewSpacing: CGFloat = 24 {
+        didSet {
+            if containerView != nil {
+                containerView.spacing = containerViewSpacing
+            }
+        }
+    }
+    
     var closeTitle: String?
     
     convenience init(title newTitle: String?, message newMessage: String? = nil) {
@@ -225,12 +242,14 @@ class HabiticaAlertController: UIViewController {
         if containerView == nil {
             return
         }
+        containerView.layoutMargins = contentViewInsets
+        containerView.isLayoutMarginsRelativeArrangement = true
         if contentView == nil && message == nil {
             containerView.superview?.isHidden = true
             alertStackView.spacing = 0
         } else {
             containerView.superview?.isHidden = false
-            alertStackView.spacing = 24
+            alertStackView.spacing = containerViewSpacing
         }
         if let view = contentView {
             if let oldView = containerView.arrangedSubviews.first {

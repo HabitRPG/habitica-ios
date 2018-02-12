@@ -26,6 +26,7 @@ class RageStrikeView: UIView {
     
     var locationIdentifier: String = ""
     
+    var questIdentifier = ""
     var bossName = ""
     
     init() {
@@ -125,13 +126,27 @@ class RageStrikeView: UIView {
             attributedString.addAttribute(.font, value: CustomFontMetrics.scaledSystemFont(ofSize: 17), range: firstLineRange)
             attributedString.addAttribute(.foregroundColor, value: UIColor.black, range: firstLineRange)
             attributedString.addAttribute(.font, value: CustomFontMetrics.scaledSystemFont(ofSize: 15), range: NSRange.init(location: firstLineRange.length, length: string.count - firstLineRange.length))
-            let alertController = HabiticaAlertController.alert(title: NSLocalizedString("The \(locationName) was Attacked!", comment: ""), attributedMessage: attributedString)
+            let alertController = HabiticaAlertController.alert(title: NSLocalizedString("The \(locationName) was Attacked!", comment: ""))
+            alertController.contentViewInsets = UIEdgeInsets(top: 0, left: 0, bottom: 16, right: 0)
+            alertController.containerViewSpacing = 0
             alertController.titleBackgroundColor = UIColor.orange50()
             alertController.addCloseAction()
-            let npcImageView = UIImageView()
-            HRPGManager.shared().setImage("npc_alex", withFormat: "png", on: npcImageView)
+            guard let contentView = Bundle.main.loadNibNamed("RageStrikeActiveContentView", owner: self, options: nil)?.first as? UIView else {
+                return
+            }
+            let npcBackgroundView = contentView.viewWithTag(1) as? UIImageView
+            let npcSceneView = contentView.viewWithTag(2) as? UIImageView
+            let label = contentView.viewWithTag(3) as? UITextView
+            
+            HRPGManager.shared().getImage("\(locationIdentifier)_background_\(questIdentifier)", withFormat: "png", onSuccess: { (image) in
+                npcBackgroundView?.image = image?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: UIImageResizingMode.tile)
+            }, onError: {})
+            HRPGManager.shared().setImage("\(locationIdentifier)_scene_\(questIdentifier)", withFormat: "png", on: npcSceneView)
+            label?.attributedText = attributedString
+            label?.textAlignment = .center
+            alertController.contentView = contentView
             alertController.show()
-            alertController.containerView.insertArrangedSubview(npcImageView, at: 0)
+            alertController.view.setNeedsLayout()
             alertController.titleLabel.textColor = .white
         } else {
             let string = NSLocalizedString("Be careful...\nThe World Boss will lash out and attack one of our friendly shopkeepers once its rage bar fills. Keep up with your Dailies to try and prevent it from happening!", comment: "")
