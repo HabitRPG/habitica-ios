@@ -29,7 +29,7 @@ class WorldBossDescriptionView: UIView {
     var bossName: String? {
         didSet {
             title = "The \(bossName ?? "") attacks!"
-            actionPromptLabel.text = NSLocalizedString("Defeat the Boss to earn special rewards and save Habitica from The \(bossName ?? "") Terror!", comment: "")
+            actionPromptLabel.text = NSLocalizedString("Defeat the Boss to earn special rewards and save Habitica from \(bossName ?? "")'s Terror!", comment: "")
             actionPromptLabel.horizontalPadding = 16
         }
     }
