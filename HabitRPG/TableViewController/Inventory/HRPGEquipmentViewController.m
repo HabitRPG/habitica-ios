@@ -187,10 +187,10 @@
             typeName = NSLocalizedString(@"Armor", nil);
         } else if (indexPath.item == 4) {
             searchedKey = outfit.body;
-            typeName = NSLocalizedString(@"Body", nil);
+            typeName = NSLocalizedString(@"Body Accessory", nil);
         } else if (indexPath.item == 5) {
             searchedKey = outfit.back;
-            typeName = NSLocalizedString(@"Back", nil);
+            typeName = NSLocalizedString(@"Back Accessory", nil);
         } else if (indexPath.item == 6) {
             searchedKey = outfit.shield;
             typeName = NSLocalizedString(@"Shield", nil);
