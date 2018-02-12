@@ -566,6 +566,7 @@ NSString *currentUserID;
     userLevel = [user.level integerValue];
     if (user != nil) {
         [self.navbarView configureWithUser:user];
+        [self.worldBossHeaderView configureWithUser:user];
     }
 }
 

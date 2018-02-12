@@ -114,7 +114,7 @@
         self.messageTextView.textColor = [UIColor gray10];
     } else {
         self.usernameLabel.text = nil;
-        self.usernameLabel.contributorLevel = 0
+        self.usernameLabel.contributorLevel = 0;
         self.backgroundColor = [UIColor red500];
         self.messageTextView.textColor = [UIColor red50];
     }

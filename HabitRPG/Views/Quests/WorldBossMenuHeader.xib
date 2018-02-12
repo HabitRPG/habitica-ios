@@ -28,21 +28,42 @@
                             </constraints>
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dJe-Za-QdU" customClass="ProgressBar" customModule="Habitica" customModuleProvider="target">
-                            <rect key="frame" x="42" y="11" width="317" height="8"/>
+                            <rect key="frame" x="42" y="11" width="266.5" height="8"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="8" id="8Gi-ZE-Cw1"/>
                             </constraints>
                         </view>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dh5-hL-ljZ">
+                            <rect key="frame" x="320.5" y="6" width="18" height="18"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="18" id="TQs-kZ-jnb"/>
+                                <constraint firstAttribute="width" constant="18" id="hdH-y9-4NQ"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="+0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ig-ZT-kQI">
+                            <rect key="frame" x="342.5" y="0.0" width="16.5" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" priority="500" constant="42" id="Ohf-wW-M28"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="dJe-Za-QdU" secondAttribute="trailing" constant="16" id="0Ze-dG-ROS"/>
                         <constraint firstItem="dJe-Za-QdU" firstAttribute="leading" secondItem="uGv-gC-OKZ" secondAttribute="trailing" constant="8" id="86C-Vj-oI3"/>
                         <constraint firstItem="dJe-Za-QdU" firstAttribute="centerY" secondItem="HK4-17-uQ6" secondAttribute="centerY" id="8Bd-BR-lQj"/>
                         <constraint firstItem="uGv-gC-OKZ" firstAttribute="top" secondItem="HK4-17-uQ6" secondAttribute="top" id="FwK-Nq-lIN"/>
+                        <constraint firstItem="dh5-hL-ljZ" firstAttribute="leading" secondItem="dJe-Za-QdU" secondAttribute="trailing" constant="12" id="Hcf-Or-RE9"/>
+                        <constraint firstItem="dh5-hL-ljZ" firstAttribute="centerY" secondItem="HK4-17-uQ6" secondAttribute="centerY" id="IEd-aS-rPI"/>
+                        <constraint firstAttribute="bottom" secondItem="7Ig-ZT-kQI" secondAttribute="bottom" id="N1y-t3-xy7"/>
+                        <constraint firstAttribute="trailing" secondItem="7Ig-ZT-kQI" secondAttribute="trailing" constant="16" id="UDh-Gc-qf3"/>
                         <constraint firstAttribute="bottom" secondItem="uGv-gC-OKZ" secondAttribute="bottom" id="jlS-FL-H6w"/>
+                        <constraint firstItem="7Ig-ZT-kQI" firstAttribute="top" secondItem="HK4-17-uQ6" secondAttribute="top" id="v27-b8-vdx"/>
                         <constraint firstAttribute="height" constant="30" id="xLk-Il-zkw"/>
+                        <constraint firstItem="7Ig-ZT-kQI" firstAttribute="leading" secondItem="dh5-hL-ljZ" secondAttribute="trailing" constant="4" id="yPu-lu-B2o"/>
                         <constraint firstItem="uGv-gC-OKZ" firstAttribute="leading" secondItem="HK4-17-uQ6" secondAttribute="leading" constant="16" id="yUG-Ww-8Id"/>
                     </constraints>
                 </view>
@@ -79,7 +100,7 @@
                     </subviews>
                 </stackView>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.19634472150259064" green="0.19634472150259064" blue="0.19634472150259064" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="HK4-17-uQ6" secondAttribute="bottom" constant="-1" id="5yj-vU-LGs"/>
                 <constraint firstItem="yGV-W1-LPc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="-29" id="HcU-Uv-Vu3"/>
@@ -100,6 +121,8 @@
                 <outlet property="collapseButton" destination="G4v-Ut-KAZ" id="WtQ-kx-DEB"/>
                 <outlet property="healthProgressBar" destination="dJe-Za-QdU" id="a8l-cm-iug"/>
                 <outlet property="hearthIconView" destination="uGv-gC-OKZ" id="bRq-g8-Jec"/>
+                <outlet property="pendingDamageIcon" destination="dh5-hL-ljZ" id="cgo-Vz-qQE"/>
+                <outlet property="pendingDamageLabel" destination="7Ig-ZT-kQI" id="nCY-ic-CUi"/>
                 <outlet property="statBarView" destination="HK4-17-uQ6" id="GPn-r0-XY8"/>
                 <outlet property="topStackView" destination="Rov-gF-HQo" id="PU9-xi-qgi"/>
                 <outlet property="typeLabel" destination="m5y-zi-ABN" id="8uo-2a-rRM"/>

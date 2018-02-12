@@ -3125,6 +3125,8 @@ NSString *currentUser;
 
             NSNumber *goldDiff = @([taskResponse.gold floatValue] - [self.user.gold floatValue]);
             self.user.gold = taskResponse.gold ? taskResponse.gold : self.user.gold;
+            
+            self.user.pendingDamage = [NSNumber numberWithFloat:(self.user.pendingDamage.floatValue+taskResponse.questDamage.floatValue)];
 
             [self displayTaskSuccessNotification:healthDiff
                               withExperienceDiff:expDiff

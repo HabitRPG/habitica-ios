@@ -18,6 +18,10 @@ class WorldBossMenuHeader: UIView {
     @IBOutlet weak var statBarView: UIView!
     @IBOutlet weak var collapseButton: UIButton!
     @IBOutlet weak var topStackView: UIStackView!
+    @IBOutlet weak var pendingDamageIcon: UIImageView!
+    @IBOutlet weak var pendingDamageLabel: UILabel!
+    
+    var formatter = NumberFormatter()
     
     private var quest: Quest?
     
@@ -42,6 +46,9 @@ class WorldBossMenuHeader: UIView {
         isCollapsed = userDefaults.bool(forKey: "worldBossArtCollapsed")
         
         topStackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(bossArtTapped)))
+        pendingDamageIcon.image = HabiticaIcons.imageOfDamage
+        
+        formatter.maximumFractionDigits = 1
     }
     
     @objc
@@ -63,7 +70,11 @@ class WorldBossMenuHeader: UIView {
 
         let userDefaults = UserDefaults()
         isCollapsed = userDefaults.bool(forKey: "worldBossArtCollapsed")
-        
+    }
+    
+    @objc
+    func configure(user: User) {
+        pendingDamageLabel.text = "+\(formatter.string(from: user.pendingDamage) ?? "0")"
     }
 
     @IBAction func collapseButtonTapped(_ sender: Any) {
