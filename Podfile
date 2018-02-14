@@ -34,7 +34,7 @@ target 'Habitica' do
   pod 'Google/Analytics'
   pod 'KLCPopup'
   pod 'EAIntroView'
-  pod 'Amplitude-iOS', '~> 3.14.1'
+  pod 'Amplitude-iOS', '~> 4.0.4'
   pod 'Masonry'
   pod "SlackTextViewController"
   pod 'AppAuth'
