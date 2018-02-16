@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="64" id="J2x-WM-FFd" customClass="SystemMessageTableViewCell" customModule="Habitica" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="464" height="64"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="J2x-WM-FFd" id="q0r-La-dpf">
+                <rect key="frame" x="0.0" y="0.0" width="464" height="63.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="MvK-5y-wnf">
+                        <rect key="frame" x="8" y="4" width="448" height="55.5"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="JzK-vM-imC">
+                                <rect key="frame" x="8" y="12" width="432" height="31.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" priority="500" constant="21" id="Isz-3B-LHI"/>
+                                </constraints>
+                                <color key="textColor" red="0.37997829910000003" green="0.1982949376" blue="0.70615965130000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="JzK-vM-imC" firstAttribute="top" secondItem="MvK-5y-wnf" secondAttribute="top" constant="12" id="54B-ge-Lmn"/>
+                            <constraint firstAttribute="trailing" secondItem="JzK-vM-imC" secondAttribute="trailing" constant="8" id="DdP-aY-0h3"/>
+                            <constraint firstAttribute="height" priority="500" constant="40" id="E7F-in-Fgw"/>
+                            <constraint firstItem="JzK-vM-imC" firstAttribute="leading" secondItem="MvK-5y-wnf" secondAttribute="leading" constant="8" id="NF8-SU-YHQ"/>
+                            <constraint firstAttribute="bottom" secondItem="JzK-vM-imC" secondAttribute="bottom" constant="12" id="lvf-Oj-FO1"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="4"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" red="0.88328301909999996" green="0.87696492670000004" blue="0.89030760529999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" red="0.97592383620000001" green="0.97666221860000002" blue="0.97603815790000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="MvK-5y-wnf" secondAttribute="trailing" constant="8" id="PY6-oL-z8Y"/>
+                    <constraint firstItem="MvK-5y-wnf" firstAttribute="top" secondItem="q0r-La-dpf" secondAttribute="top" constant="4" id="W8Z-pS-IMt"/>
+                    <constraint firstAttribute="bottom" secondItem="MvK-5y-wnf" secondAttribute="bottom" constant="4" id="k6Y-wn-skM"/>
+                    <constraint firstItem="MvK-5y-wnf" firstAttribute="leading" secondItem="q0r-La-dpf" secondAttribute="leading" constant="8" id="zVo-85-0f9"/>
+                </constraints>
+            </tableViewCellContentView>
+            <gestureRecognizers/>
+            <connections>
+                <outlet property="leftMarginConstraint" destination="zVo-85-0f9" id="btx-eI-5ax"/>
+                <outlet property="messageTextView" destination="JzK-vM-imC" id="jLz-PH-l0s"/>
+                <outlet property="messageWrapper" destination="MvK-5y-wnf" id="7OX-RS-sNf"/>
+            </connections>
+            <point key="canvasLocation" x="228" y="187"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -26,6 +26,6 @@
 @property(nonatomic, retain) NSString *backerNpc;
 @property(nonatomic, retain) NSSet *likes;
 
-@property NSAttributedString *attributedText;
+@property(nullable, nonatomic, retain) NSAttributedString *attributedText;
 
 @end

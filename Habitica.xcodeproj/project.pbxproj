@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		29028BB120319E4000B7F704 /* RageStrikeActiveContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29028BB020319E4000B7F704 /* RageStrikeActiveContentView.xib */; };
+		29028C402037067000B7F704 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29028C3F2037067000B7F704 /* ChatTableViewCell.swift */; };
+		29028C422037131C00B7F704 /* SystemMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29028C412037131C00B7F704 /* SystemMessageTableViewCell.swift */; };
+		29028C442037132A00B7F704 /* SystemMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29028C432037132A00B7F704 /* SystemMessageTableViewCell.xib */; };
 		290458D02021D6C60032BC5E /* TopHeaderCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290458CF2021D6C60032BC5E /* TopHeaderCoordinator.swift */; };
 		2904FC7D2028BE8000CFB741 /* HabiticaWorldState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2904FC7C2028BE8000CFB741 /* HabiticaWorldState.swift */; };
 		2907267E1F74279C00545550 /* TimeTravelersCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2907267D1F74279C00545550 /* TimeTravelersCollectionViewDataSource.swift */; };
@@ -320,7 +323,6 @@
 		D98F5AEC190566CA002F8223 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = D98F5AEB190566CA002F8223 /* User.m */; };
 		D98F5AEF1905C090002F8223 /* HRPGQuestParticipantsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D98F5AEE1905C090002F8223 /* HRPGQuestParticipantsViewController.m */; };
 		D98F5AF21905DE86002F8223 /* HRPGPartyMembersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D98F5AF11905DE86002F8223 /* HRPGPartyMembersViewController.m */; };
-		D98F5DBE1C6A1D770035CBEC /* HRPGChatTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D98F5DBD1C6A1D770035CBEC /* HRPGChatTableViewCell.m */; };
 		D98F5DC11C6A1DA60035CBEC /* HRPGGroupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D98F5DC01C6A1DA60035CBEC /* HRPGGroupTableViewController.m */; };
 		D98F5DC31C6A34540035CBEC /* ChatMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D98F5DC21C6A34540035CBEC /* ChatMessageCell.xib */; };
 		D98F5DC91C6A45800035CBEC /* ChatMessageLike+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D98F5DC61C6A45800035CBEC /* ChatMessageLike+CoreDataProperties.m */; };
@@ -412,7 +414,7 @@
 		D9D17CCE1E6736B500AD9232 /* ChallengeDetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CCD1E6736B500AD9232 /* ChallengeDetailHeaderView.xib */; };
 		D9D17CD01E673CCC00AD9232 /* UIView-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D17CCF1E673CCC00AD9232 /* UIView-Extensions.swift */; };
 		D9D17CD21E6898E400AD9232 /* HabitTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CD11E6898E400AD9232 /* HabitTableViewCell.xib */; };
-		D9D17CD41E68995000AD9232 /* BuildFile in Resources */ = {isa = PBXBuildFile; };
+		D9D17CD41E68995000AD9232 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		D9D17CD61E6899A800AD9232 /* ToDoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CD51E6899A800AD9232 /* ToDoTableViewCell.xib */; };
 		D9D17CD81E6899F100AD9232 /* HRPGRewardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CD71E6899F100AD9232 /* HRPGRewardTableViewCell.xib */; };
 		D9D17CDA1E69C68000AD9232 /* ChallengeDetailAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CD91E69C68000AD9232 /* ChallengeDetailAlert.xib */; };
@@ -476,6 +478,9 @@
 /* Begin PBXFileReference section */
 		281AC256BB298E2B402BE5DF /* Pods-HabiticaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HabiticaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HabiticaTests/Pods-HabiticaTests.debug.xcconfig"; sourceTree = "<group>"; };
 		29028BB020319E4000B7F704 /* RageStrikeActiveContentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RageStrikeActiveContentView.xib; sourceTree = "<group>"; };
+		29028C3F2037067000B7F704 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
+		29028C412037131C00B7F704 /* SystemMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemMessageTableViewCell.swift; sourceTree = "<group>"; };
+		29028C432037132A00B7F704 /* SystemMessageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SystemMessageTableViewCell.xib; sourceTree = "<group>"; };
 		290458CF2021D6C60032BC5E /* TopHeaderCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopHeaderCoordinator.swift; sourceTree = "<group>"; };
 		2904FC7C2028BE8000CFB741 /* HabiticaWorldState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabiticaWorldState.swift; sourceTree = "<group>"; };
 		2907267D1F74279C00545550 /* TimeTravelersCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTravelersCollectionViewDataSource.swift; sourceTree = "<group>"; };
@@ -943,8 +948,6 @@
 		D98F5AEE1905C090002F8223 /* HRPGQuestParticipantsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGQuestParticipantsViewController.m; sourceTree = "<group>"; };
 		D98F5AF01905DE86002F8223 /* HRPGPartyMembersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGPartyMembersViewController.h; sourceTree = "<group>"; };
 		D98F5AF11905DE86002F8223 /* HRPGPartyMembersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGPartyMembersViewController.m; sourceTree = "<group>"; };
-		D98F5DBC1C6A1D770035CBEC /* HRPGChatTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGChatTableViewCell.h; sourceTree = "<group>"; };
-		D98F5DBD1C6A1D770035CBEC /* HRPGChatTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGChatTableViewCell.m; sourceTree = "<group>"; };
 		D98F5DBF1C6A1DA60035CBEC /* HRPGGroupTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGGroupTableViewController.h; sourceTree = "<group>"; };
 		D98F5DC01C6A1DA60035CBEC /* HRPGGroupTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGGroupTableViewController.m; sourceTree = "<group>"; };
 		D98F5DC21C6A34540035CBEC /* ChatMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatMessageCell.xib; sourceTree = "<group>"; };
@@ -2050,9 +2053,10 @@
 		D9C0E51B1C6515AD0062C89A /* Social */ = {
 			isa = PBXGroup;
 			children = (
-				D98F5DBC1C6A1D770035CBEC /* HRPGChatTableViewCell.h */,
-				D98F5DBD1C6A1D770035CBEC /* HRPGChatTableViewCell.m */,
+				29028C3F2037067000B7F704 /* ChatTableViewCell.swift */,
 				D98F5DC21C6A34540035CBEC /* ChatMessageCell.xib */,
+				29028C412037131C00B7F704 /* SystemMessageTableViewCell.swift */,
+				29028C432037132A00B7F704 /* SystemMessageTableViewCell.xib */,
 				D9C0E51C1C6515B30062C89A /* Guilds */,
 			);
 			path = Social;
@@ -2657,13 +2661,14 @@
 				293BB4A11FD06E7E003B6F4F /* BulkStatsAllocationView.xib in Resources */,
 				49E378532009542C00E0DA3D /* ChallengeTableViewHeaderView.xib in Resources */,
 				498E4D001FA17C1A006933FF /* ChallengeCategoriesTableViewCell.xib in Resources */,
-				D9D17CD41E68995000AD9232 /* BuildFile in Resources */,
+				29028C442037132A00B7F704 /* SystemMessageTableViewCell.xib in Resources */,
+				D9D17CD41E68995000AD9232 /* (null) in Resources */,
 				29AAA1611F2B597400029737 /* SpeechbubbleView.xib in Resources */,
 				29FC885E2018D858002B3D3F /* WorldBossDescription.xib in Resources */,
 				293BB4A31FD07603003B6F4F /* StatsSliderView.xib in Resources */,
-				D9D17CD41E68995000AD9232 /* BuildFile in Resources */,
+				D9D17CD41E68995000AD9232 /* (null) in Resources */,
 				29E16311200E5FEA00685640 /* QuestProgressView.xib in Resources */,
-				D9D17CD41E68995000AD9232 /* BuildFile in Resources */,
+				D9D17CD41E68995000AD9232 /* (null) in Resources */,
 				D9BB45CA1E76DF260002AE2E /* DailyTableViewCell.xib in Resources */,
 				D9D17CD81E6899F100AD9232 /* HRPGRewardTableViewCell.xib in Resources */,
 				29B6AD4A1F2A0C9800AC8878 /* LoginEntryView.xib in Resources */,
@@ -3290,6 +3295,7 @@
 				D903B78C1DCA4C25001F2893 /* HRPGNotificationManager.m in Sources */,
 				49DCB7C21F40D7F10079FDD0 /* HRPGShopBannerView.swift in Sources */,
 				494E540B1F2D894D0003683C /* HRPGShopCollectionViewDataSource.swift in Sources */,
+				29028C402037067000B7F704 /* ChatTableViewCell.swift in Sources */,
 				29FC8862201A300B002B3D3F /* ProgressBar.swift in Sources */,
 				D93422B91AB792B5003AFCDE /* UIColor+LighterDarker.m in Sources */,
 				D92A08591D3520D8000F8B66 /* Shop+CoreDataProperties.m in Sources */,
@@ -3352,6 +3358,7 @@
 				D9ADD34E1943BBB6006202C1 /* Food.m in Sources */,
 				D99BC43419D4C34A006DC132 /* OnePasswordExtension.m in Sources */,
 				D97C71EA18F32FEE0089FDC6 /* Reward.m in Sources */,
+				29028C422037131C00B7F704 /* SystemMessageTableViewCell.swift in Sources */,
 				29B3FEBA1F9A6FAD000B12CF /* AuthenticationSettingsViewController.swift in Sources */,
 				493ECBB71F47D7E10099B1FC /* HRPGGearSetItem.swift in Sources */,
 				49DCB7AC1F39239D0079FDD0 /* HRPGSimpleShopItemView.swift in Sources */,
@@ -3366,7 +3373,6 @@
 				293282181F39E1A400D42961 /* WelcomeViewController.swift in Sources */,
 				D9AEA8A11C733BFA00FE6158 /* HRPGGroupAboutTableViewController.m in Sources */,
 				491C6E5B2020FE64005030A2 /* Challenge-Extensions.swift in Sources */,
-				D98F5DBE1C6A1D770035CBEC /* HRPGChatTableViewCell.m in Sources */,
 				2957B8C81F4DCF7800E836EF /* RewardFormController.swift in Sources */,
 				D98830D51BADD4220018594D /* HRPGLoadingViewController.m in Sources */,
 				D96C85451DCBAC90003E3616 /* HRPGStreakAchievementNotification.m in Sources */,

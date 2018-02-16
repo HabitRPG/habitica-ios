@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="127" id="XSH-GM-86g" customClass="HRPGChatTableViewCell">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="127" id="XSH-GM-86g" customClass="ChatTableViewCell" customModule="Habitica" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="464" height="127"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XSH-GM-86g" id="QoR-9C-CZD">
@@ -22,7 +22,7 @@
                         <rect key="frame" x="8" y="4" width="448" height="118.5"/>
                         <subviews>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YoQ-TM-ipq" customClass="UsernameLabel" customModule="Habitica" customModuleProvider="target">
-                                <rect key="frame" x="12" y="12" width="79" height="20.5"/>
+                                <rect key="frame" x="12" y="8" width="79" height="20.5"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="500" constant="21" id="c3e-0H-2Xp"/>
@@ -33,7 +33,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="TbF-Ge-g2M">
-                                <rect key="frame" x="8" y="47" width="432" height="28"/>
+                                <rect key="frame" x="8" y="44.5" width="432" height="30.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="500" constant="21" id="rNi-MH-cry"/>
@@ -44,7 +44,7 @@
                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xNL-2w-tsy">
-                                <rect key="frame" x="12" y="32.5" width="28" height="14.5"/>
+                                <rect key="frame" x="12" y="28.5" width="28" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="500" constant="18" id="DRm-UR-Ai4"/>
                                     <constraint firstAttribute="width" priority="500" constant="42" id="Me3-Ds-xZZ"/>
@@ -125,13 +125,31 @@
                                     <constraint firstAttribute="height" constant="36" id="SMC-KR-CqC"/>
                                 </constraints>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Staff" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rx1-HL-DWe" customClass="PaddedLabel" customModule="Habitica" customModuleProvider="target">
+                                <rect key="frame" x="99" y="8.5" width="27.5" height="20"/>
+                                <color key="backgroundColor" red="0.37997829910000003" green="0.1982949376" blue="0.70615965130000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" priority="500" constant="42" id="AkV-nq-fGJ"/>
+                                    <constraint firstAttribute="height" constant="20" id="cDa-8s-zhg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="xNL-2w-tsy" firstAttribute="top" secondItem="YoQ-TM-ipq" secondAttribute="bottom" id="2v6-Bi-yPU"/>
                             <constraint firstAttribute="height" priority="500" constant="40" id="92r-dD-rkJ"/>
-                            <constraint firstItem="YoQ-TM-ipq" firstAttribute="top" secondItem="73G-Ol-XzR" secondAttribute="top" constant="12" id="D01-wR-b6n"/>
+                            <constraint firstItem="YoQ-TM-ipq" firstAttribute="top" secondItem="73G-Ol-XzR" secondAttribute="top" constant="8" id="D01-wR-b6n"/>
                             <constraint firstItem="YoQ-TM-ipq" firstAttribute="leading" secondItem="73G-Ol-XzR" secondAttribute="leading" constant="12" id="DGE-vR-fPl"/>
+                            <constraint firstItem="rx1-HL-DWe" firstAttribute="centerY" secondItem="YoQ-TM-ipq" secondAttribute="centerY" id="L6S-Pz-THI"/>
+                            <constraint firstItem="rx1-HL-DWe" firstAttribute="leading" secondItem="YoQ-TM-ipq" secondAttribute="trailing" constant="8" id="LIs-gO-lTg"/>
                             <constraint firstItem="TbF-Ge-g2M" firstAttribute="leading" secondItem="73G-Ol-XzR" secondAttribute="leading" constant="8" id="Q3Q-xZ-RaP"/>
                             <constraint firstItem="t1D-ft-H8i" firstAttribute="leading" secondItem="73G-Ol-XzR" secondAttribute="leading" constant="12" id="RXP-mE-uYT"/>
                             <constraint firstItem="bFH-4J-Pe0" firstAttribute="top" secondItem="73G-Ol-XzR" secondAttribute="top" constant="8" id="SUw-sl-cRG"/>
@@ -139,6 +157,7 @@
                             <constraint firstItem="TbF-Ge-g2M" firstAttribute="top" secondItem="xNL-2w-tsy" secondAttribute="bottom" id="Z8Z-gN-jOT"/>
                             <constraint firstAttribute="trailing" secondItem="bFH-4J-Pe0" secondAttribute="trailing" constant="8" id="e54-4S-a1o"/>
                             <constraint firstItem="xNL-2w-tsy" firstAttribute="leading" secondItem="73G-Ol-XzR" secondAttribute="leading" constant="12" id="vaK-fl-hbZ"/>
+                            <constraint firstItem="bFH-4J-Pe0" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="rx1-HL-DWe" secondAttribute="trailing" constant="8" id="xka-iS-hna"/>
                             <constraint firstAttribute="bottom" secondItem="t1D-ft-H8i" secondAttribute="bottom" id="yMf-Kb-jQB"/>
                             <constraint firstItem="t1D-ft-H8i" firstAttribute="top" secondItem="TbF-Ge-g2M" secondAttribute="bottom" constant="8" id="yeP-P4-S7K"/>
                         </constraints>
@@ -160,12 +179,13 @@
             <gestureRecognizers/>
             <connections>
                 <outlet property="deleteButton" destination="dUD-VU-Sa0" id="Gfd-tq-BVV"/>
-                <outlet property="extraButtonsHeightContraint" destination="SMC-KR-CqC" id="7wq-3T-6g4"/>
+                <outlet property="extraButtonsHeightConstraint" destination="SMC-KR-CqC" id="O7h-Sb-Q7P"/>
                 <outlet property="extraButtonsStackView" destination="t1D-ft-H8i" id="bbV-iK-hBW"/>
                 <outlet property="leftMarginConstraint" destination="jiB-De-5sK" id="ubO-AA-xTD"/>
                 <outlet property="messageTextView" destination="TbF-Ge-g2M" id="ej9-Rj-7Cp"/>
-                <outlet property="messageWrapper" destination="73G-Ol-XzR" id="5H9-Dn-wM2"/>
+                <outlet property="messageWrapper" destination="73G-Ol-XzR" id="vXg-1a-Qzj"/>
                 <outlet property="plusOneButton" destination="bFH-4J-Pe0" id="h50-yg-naf"/>
+                <outlet property="positionLabel" destination="rx1-HL-DWe" id="YvB-bG-FUT"/>
                 <outlet property="reportButton" destination="sSF-K3-LSE" id="Dzi-2j-JP4"/>
                 <outlet property="timeLabel" destination="xNL-2w-tsy" id="WaV-Wb-kyX"/>
                 <outlet property="usernameLabel" destination="YoQ-TM-ipq" id="VgH-YO-VP6"/>

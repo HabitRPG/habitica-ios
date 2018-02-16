@@ -9,7 +9,6 @@
 #import "HRPGInboxChatViewController.h"
 #import "InboxMessage.h"
 #import "UIViewController+Markdown.h"
-#import "HRPGChatTableViewCell.h"
 #import "HRPGUserProfileViewController.h"
 #import "HRPGFlagInformationOverlayView.h"
 #import "KLCPopup.h"
@@ -106,7 +105,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    HRPGChatTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ChatMessageCell"];
+    ChatTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ChatMessageCell"];
     cell.transform = self.tableView.transform;
     [self configureCell:cell atIndexPath:indexPath withAnimation:NO];
     return cell;
@@ -271,12 +270,12 @@
     [self.tableView endUpdates];
 }
 
-- (void)configureCell:(HRPGChatTableViewCell *)cell
+- (void)configureCell:(ChatTableViewCell *)cell
           atIndexPath:(NSIndexPath *)indexPath
         withAnimation:(BOOL)animate {
     InboxMessage *message = [self.fetchedResultsController objectAtIndexPath:indexPath];
     __weak HRPGInboxChatViewController *weakSelf = self;
-    cell.profileAction = ^() {
+    /*cell.profileAction = ^() {
         HRPGUserProfileViewController *profileViewController =
         [weakSelf.storyboard instantiateViewControllerWithIdentifier:@"UserProfileViewController"];
         profileViewController.userID = message.userID;
@@ -294,7 +293,7 @@
         [self expandSelectedCell:indexPath];
     };
     
-    [cell configureForInboxMessage:message withUser:self.user isExpanded:[self.expandedChatPath isEqual:indexPath]];
+    [cell configureForInboxMessage:message withUser:self.user isExpanded:[self.expandedChatPath isEqual:indexPath]];*/
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

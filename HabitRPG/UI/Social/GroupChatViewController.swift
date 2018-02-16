@@ -38,7 +38,7 @@ class GroupChatViewController: SLKTextViewController {
                                                  entityName: "ChatMessage",
                                                  cellIdentifier: "ChatMessageCell",
                                                  configureCellBlock: {[weak self] (anyCell, anyItem, indexPath) in
-                                                    guard let cell = anyCell as? HRPGChatTableViewCell else {
+                                                    guard let cell = anyCell as? ChatTableViewCell else {
                                                         return
                                                     }
                                                     guard let item = anyItem as? ChatMessage else {
@@ -124,15 +124,15 @@ class GroupChatViewController: SLKTextViewController {
         }
         self.expandedChatPath = indexPath
         if let expandedPath = oldExpandedPath, indexPath.item != expandedPath.item {
-            let oldCell = self.tableView?.cellForRow(at: expandedPath) as? HRPGChatTableViewCell
-            let cell = self.tableView?.cellForRow(at: indexPath) as? HRPGChatTableViewCell
+            let oldCell = self.tableView?.cellForRow(at: expandedPath) as? ChatTableViewCell
+            let cell = self.tableView?.cellForRow(at: indexPath) as? ChatTableViewCell
             self.tableView?.beginUpdates()
             cell?.isExpanded = true
             oldCell?.isExpanded = false
             self.tableView?.reloadRows(at: [indexPath, expandedPath], with: .automatic)
             self.tableView?.endUpdates()
         } else {
-            let cell = self.tableView?.cellForRow(at: indexPath) as? HRPGChatTableViewCell
+            let cell = self.tableView?.cellForRow(at: indexPath) as? ChatTableViewCell
             cell?.isExpanded = !(cell?.isExpanded ?? false)
             if !(cell?.isExpanded ?? false) {
                 self.expandedChatPath = nil
@@ -143,14 +143,14 @@ class GroupChatViewController: SLKTextViewController {
         }
     }
     
-    private func configure(cell: HRPGChatTableViewCell, item: ChatMessage, indexPath: IndexPath?) {
+    private func configure(cell: ChatTableViewCell, item: ChatMessage, indexPath: IndexPath?) {
         var isExpanded = false
         if let expandedChatPath = self.expandedChatPath, let indexPath = indexPath {
             isExpanded = expandedChatPath == indexPath
         }
-        cell.configure(for: item,
-                       withUserID: self.user?.id,
-                       withUsername: self.user?.username,
+        cell.configure(chatMessage: item,
+                       userID: self.user?.id ?? "",
+                       username: self.user?.username ?? "",
                        isModerator: self.user?.isModerator() ?? false,
                        isExpanded: isExpanded)
         
@@ -162,7 +162,7 @@ class GroupChatViewController: SLKTextViewController {
             profileViewController.username = item.user
             self.navigationController?.pushViewController(profileViewController, animated: true)
         }
-        cell.flagAction = {[weak self] in
+        cell.reportAction = {[weak self] in
             guard let view = Bundle.main.loadNibNamed("HRPGFlagInformationOverlayView", owner: self, options: nil)?.first as? HRPGFlagInformationOverlayView else {
                 return
             }

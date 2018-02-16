@@ -50,6 +50,8 @@
 
     UINib *nib = [UINib nibWithNibName:@"ChatMessageCell" bundle:nil];
     [[self tableView] registerNib:nib forCellReuseIdentifier:@"ChatMessageCell"];
+    UINib *systemNib = [UINib nibWithNibName:@"SystemMessageTableViewCell" bundle:nil];
+    [[self tableView] registerNib:systemNib forCellReuseIdentifier:@"SystemMessageCell"];
 
     self.user = [[HRPGManager sharedManager] getUser];
     
@@ -164,31 +166,6 @@
     }
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.chatSectionIndex != indexPath.section) {
-        return [super tableView:tableView heightForRowAtIndexPath:indexPath];
-    }
-    NSIndexPath *objectIndexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:0];
-    ChatMessage *message = [self chatMessageAtIndexPath:objectIndexPath];
-    if (message.attributedText && message.attributedText.length > 0) {
-        self.sizeTextView.attributedText = [message.attributedText attributedSubstringFromRange:NSMakeRange(0, message.attributedText.length-1)];
-    } else {
-        self.sizeTextView.text = message.text;
-    }
-    
-    CGFloat spacing = 41;
-    if ([message.user isEqualToString:self.user.username]) {
-        spacing = 97;
-    }
-    CGSize suggestedSize = [self.sizeTextView sizeThatFits:CGSizeMake(self.viewWidth - spacing, CGFLOAT_MAX)];
-    
-    CGFloat rowHeight = suggestedSize.height + 72;
-    if (self.expandedChatPath != nil && self.expandedChatPath.item == indexPath.item) {
-        rowHeight += 36;
-    }
-    return rowHeight;
-}
-
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.chatSectionIndex != indexPath.section) {
         return [super tableView:tableView heightForRowAtIndexPath:indexPath];
@@ -276,12 +253,20 @@
     } else if (indexPath.section == [self chatSectionIndex] - 1) {
         cellname = @"ComposeCell";
     } else if (indexPath.section == [self chatSectionIndex]) {
-        cellname = @"ChatMessageCell";
+        NSIndexPath *objectIndexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:0];
+        ChatMessage *message = [self chatMessageAtIndexPath:objectIndexPath];
+        if (message.user) {
+            cellname = @"ChatMessageCell";
+        } else if (message) {
+            cellname = @"SystemMessageCell";
+        }
     }
-    UITableViewCell *cell =
-        [tableView dequeueReusableCellWithIdentifier:cellname forIndexPath:indexPath];
-    if (indexPath.section == [self chatSectionIndex]) {
-        [self configureChatMessageCell:(HRPGChatTableViewCell *)cell atIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellname forIndexPath:indexPath];
+    if ([cellname isEqualToString:@"ChatMessageCell"]) {
+        [self configureChatMessageCell:(ChatTableViewCell *)cell atIndexPath:indexPath];
+    } else if ([cellname isEqualToString:@"SystemMessageCell"]) {
+        NSIndexPath *objectIndexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:0];
+        [(SystemMessageTableViewCell *)cell configureWithChatMessage:[self chatMessageAtIndexPath:objectIndexPath]];
     } else if ([cellname isEqualToString:@"LoadingCell"]) {
         UIActivityIndicatorView *activityIndicator = [cell viewWithTag:1];
         [activityIndicator startAnimating];
@@ -360,7 +345,7 @@
         case NSFetchedResultsChangeUpdate: {
             UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
             if ([cell isKindOfClass:[NSString class]]) {
-                [self configureChatMessageCell:(HRPGChatTableViewCell *)cell atIndexPath:indexPath];
+                [self configureChatMessageCell:(ChatTableViewCell *)cell atIndexPath:indexPath];
             }
             break;
         }
@@ -428,12 +413,13 @@
     }
 }
 
-- (void)configureChatMessageCell:(HRPGChatTableViewCell *)cell
+- (void)configureChatMessageCell:(ChatTableViewCell *)cell
                      atIndexPath:(NSIndexPath *)indexPath {
     NSIndexPath *objectIndexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:0];
     ChatMessage *message = [self chatMessageAtIndexPath:objectIndexPath];
     
-    [cell configureForMessage:message withUserID:self.user.id withUsername:self.user.username isModerator:[self.user isModerator] isExpanded:[self.expandedChatPath isEqual:indexPath]];
+    [cell configureWithChatMessage:message userID:self.user.id username:self.user.username isModerator:[self.user isModerator] isExpanded:[self.expandedChatPath isEqual:indexPath]];
+    
     cell.profileAction = ^() {
         HRPGUserProfileViewController *profileViewController =
             [self.storyboard instantiateViewControllerWithIdentifier:@"UserProfileViewController"];
@@ -441,7 +427,7 @@
         profileViewController.username = message.user;
         [self.navigationController pushViewController:profileViewController animated:YES];
     };
-    cell.flagAction = ^() {
+    cell.reportAction = ^() {
         NSArray *nibViews = [[NSBundle mainBundle] loadNibNamed:@"HRPGFlagInformationOverlayView"
                                                           owner:self
                                                         options:nil];
@@ -509,7 +495,7 @@
     }
     self.expandedChatPath = indexPath;
     if (expandedPath == nil || indexPath.item == expandedPath.item) {
-        HRPGChatTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+        ChatTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
         cell.isExpanded = !cell.isExpanded;
         if (!cell.isExpanded) {
             self.expandedChatPath = nil;
@@ -518,8 +504,8 @@
         [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
         [self.tableView endUpdates];
     } else {
-        HRPGChatTableViewCell *oldCell = [self.tableView cellForRowAtIndexPath:expandedPath];
-        HRPGChatTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+        ChatTableViewCell *oldCell = [self.tableView cellForRowAtIndexPath:expandedPath];
+        ChatTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
         [self.tableView beginUpdates];
         cell.isExpanded = YES;
         oldCell.isExpanded = NO;

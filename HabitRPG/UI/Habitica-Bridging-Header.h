@@ -43,7 +43,6 @@
 #import "HRPGCopyTableViewCell.h"
 #import "HRPGUIViewController.h"
 #import "HRPGGGuidelinesViewController.h"
-#import "HRPGChatTableViewCell.h"
 #import "HRPGUserProfileViewController.h"
 #import "HRPGInboxChatViewController.h"
 #import <SlackTextViewController/SLKTextViewController.h>
