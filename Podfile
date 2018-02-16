@@ -53,6 +53,8 @@ target 'Habitica' do
 
   pod 'PopupDialog', :git => 'https://github.com/Orderella/PopupDialog.git', :branch => 'development'
   pod 'Alamofire', '~> 4.5'
+  pod 'SwiftyJSON'
+  pod 'Realm'
   pod 'SwiftLint'
   pod 'Eureka'
 

@@ -100,6 +100,9 @@ PODS:
     - ReactiveSwift (~> 3.1)
   - ReactiveSwift (3.1.0):
     - Result (~> 3.2)
+  - Realm (3.1.1):
+    - Realm/Headers (= 3.1.1)
+  - Realm/Headers (3.1.1)
   - RestKit (0.27.2):
     - RestKit/Core (= 0.27.2)
   - RestKit/Core (0.27.2):
@@ -125,6 +128,7 @@ PODS:
   - SnapKit (4.0.0)
   - SOCKit (1.1)
   - SwiftLint (0.24.2)
+  - SwiftyJSON (4.0.0)
   - SwiftyStoreKit (0.13.0)
   - TransitionKit (2.2.1)
   - VTAcknowledgementsViewController (1.4)
@@ -163,11 +167,13 @@ DEPENDENCIES:
   - PopupDialog (from `https://github.com/Orderella/PopupDialog.git`, branch `development`)
   - Quick (~> 1.2.0)
   - ReactiveCocoa (~> 7)
+  - Realm
   - RestKit
   - SeedsSDK
   - SlackTextViewController
   - SnapKit (~> 4.0.0)
   - SwiftLint
+  - SwiftyJSON
   - SwiftyStoreKit
   - VTAcknowledgementsViewController
   - XLForm
@@ -221,6 +227,7 @@ SPEC CHECKSUMS:
   Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
   ReactiveCocoa: 105ad96f6b8711f1ee7d165fc96587479298053b
   ReactiveSwift: 5b26d2e988fe0eed2daf48c4054d1de74db50184
+  Realm: 42d1c38a5b1bbcc828b48a7ce702cb86fc68adf4
   RestKit: 556c913b0640c5bc5a9cb972361504e3ed628a1d
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
   RKValueTransformers: e5ed67e3811229b616fe01bddeeafe3bb337b1b9
@@ -229,6 +236,7 @@ SPEC CHECKSUMS:
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   SOCKit: c7376ac262bea9115b8f749358f762522a47d392
   SwiftLint: 2aa21b96c8d13396a051bc1cb659d2ce1e0075b0
+  SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
   SwiftyStoreKit: df6a58aba530128e1c5d5ae4fe7d191e5ac50d5d
   TransitionKit: 9ceccda4cd0cdc0a05ef85eb235e5a3292c3c250
   VTAcknowledgementsViewController: d62bb400ca68e240680906bcfa2a2b380d39b30f

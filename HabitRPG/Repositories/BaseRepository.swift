@@ -8,7 +8,9 @@
 
 import Foundation
 
-class BaseRepository: NSObject {
+class BaseRepository<T: BaseLocalRepository>: NSObject {
+    
+    let localRepository = T.init()
     
     lazy var managedObjectContext: NSManagedObjectContext = {
         return HRPGManager.shared().getManagedObjectContext()
