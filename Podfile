@@ -49,6 +49,8 @@ target 'Habitica' do
 
   pod 'Down'
 
+  pod 'SnapKit', '~> 4.0.0'
+
   pod 'PopupDialog', :git => 'https://github.com/Orderella/PopupDialog.git', :branch => 'development'
   pod 'Alamofire', '~> 4.5'
   pod 'SwiftLint'
@@ -59,6 +61,15 @@ target 'Habitica' do
       pod 'OHHTTPStubs'
       pod 'Quick', '~> 1.2.0'
       pod 'Nimble', '~> 7.0.0'
-      pod 'iOSSnapshotTestCase', git: 'https://github.com/uber/ios-snapshot-test-case.git'
+      pod 'iOSSnapshotTestCase'
   end
+  
+  target 'Habitica Snapshots' do
+      inherit! :search_paths
+      pod 'OHHTTPStubs'
+      pod 'Quick', '~> 1.2.0'
+      pod 'Nimble', '~> 7.0.0'
+      pod 'iOSSnapshotTestCase'
+  end
+
 end

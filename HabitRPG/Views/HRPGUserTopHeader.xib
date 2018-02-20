@@ -116,7 +116,7 @@
                         <constraint firstAttribute="trailing" secondItem="NYA-2D-ZUB" secondAttribute="trailing" constant="8" id="ycy-f0-k5v"/>
                     </constraints>
                 </view>
-                <view userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UWI-d8-sGn">
+                <view userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UWI-d8-sGn" customClass="AvatarView" customModule="Habitica" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="110" height="115"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="115" id="538-Gt-fjD">

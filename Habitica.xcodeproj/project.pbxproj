@@ -62,6 +62,7 @@
 		298119AF1F5040DA00F9FB39 /* QuestDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298119AE1F5040DA00F9FB39 /* QuestDetailView.swift */; };
 		298119B11F50453100F9FB39 /* QuestGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298119B01F50453100F9FB39 /* QuestGoalView.swift */; };
 		298119B51F5048C000F9FB39 /* QuestGoalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 298119B41F5048C000F9FB39 /* QuestGoalView.xib */; };
+		298409CD203C3283003AD202 /* AvatarViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298409CA203C2B4A003AD202 /* AvatarViewTests.swift */; };
 		2986EB0B1FCC63F900B316F6 /* AttributePointsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2986EB0A1FCC63F900B316F6 /* AttributePointsViewController.swift */; };
 		299BD6221F505DFA00E22935 /* PaddedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299BD6211F505DFA00E22935 /* PaddedLabel.swift */; };
 		299BD62D1F541EFC00E22935 /* Quest+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 299BD6261F541EFC00E22935 /* Quest+CoreDataClass.m */; };
@@ -117,6 +118,8 @@
 		29FC8862201A300B002B3D3F /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC8861201A300B002B3D3F /* ProgressBar.swift */; };
 		29FC8864201B78D6002B3D3F /* WorldBossMenuHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29FC8863201B78D6002B3D3F /* WorldBossMenuHeader.xib */; };
 		29FC8866201B7B5B002B3D3F /* WorldBossMenuHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC8865201B7B5B002B3D3F /* WorldBossMenuHeader.swift */; };
+		29FEB278202B491600EA245A /* Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FEB277202B491600EA245A /* Avatar.swift */; };
+		29FEB27A202B4F0400EA245A /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FEB279202B4F0400EA245A /* AvatarView.swift */; };
 		49005B6E1F17DDF9004830D9 /* Shop.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49005B6D1F17DDF9004830D9 /* Shop.storyboard */; };
 		49005B701F17E7AC004830D9 /* Shops.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49005B6F1F17E7AC004830D9 /* Shops.storyboard */; };
 		49005B721F180589004830D9 /* HRPGCurrencyCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49005B711F180588004830D9 /* HRPGCurrencyCountView.swift */; };
@@ -185,6 +188,7 @@
 		49F145A12016674F00AAC434 /* ChallengeCategory+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F145A02016674F00AAC434 /* ChallengeCategory+CoreDataProperties.m */; };
 		823F7132DD74058859184F61 /* Pods_HabiticaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC1D483830288A543073AEBA /* Pods_HabiticaTests.framework */; };
 		98A4DBF01B643BC100A9E2A8 /* HRPGSearchDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 98A4DBEF1B643BC100A9E2A8 /* HRPGSearchDataManager.m */; };
+		C5F01A11F4A9ED7974598C1E /* Pods_Habitica_Snapshots.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAD902171AE5A8C0E6177D71 /* Pods_Habitica_Snapshots.framework */; };
 		CF54FEE0D3F7F352ECA56F23 /* HRPGContentResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = CF54FD820D81110D9EF4756E /* HRPGContentResponse.m */; };
 		D902AD871B53E1B60098A1BD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D902AD861B53E1B60098A1BD /* GoogleService-Info.plist */; };
 		D902AD8A1B540AE30098A1BD /* HRPGBaseCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D902AD891B540AE30098A1BD /* HRPGBaseCollectionViewController.m */; };
@@ -537,6 +541,7 @@
 		298119AE1F5040DA00F9FB39 /* QuestDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestDetailView.swift; sourceTree = "<group>"; };
 		298119B01F50453100F9FB39 /* QuestGoalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestGoalView.swift; sourceTree = "<group>"; };
 		298119B41F5048C000F9FB39 /* QuestGoalView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestGoalView.xib; sourceTree = "<group>"; };
+		298409CA203C2B4A003AD202 /* AvatarViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarViewTests.swift; sourceTree = "<group>"; };
 		2986EB0A1FCC63F900B316F6 /* AttributePointsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributePointsViewController.swift; sourceTree = "<group>"; };
 		299BD6211F505DFA00E22935 /* PaddedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddedLabel.swift; sourceTree = "<group>"; };
 		299BD6251F541EFC00E22935 /* Quest+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Quest+CoreDataClass.h"; sourceTree = "<group>"; };
@@ -598,6 +603,9 @@
 		29FC8861201A300B002B3D3F /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		29FC8863201B78D6002B3D3F /* WorldBossMenuHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WorldBossMenuHeader.xib; sourceTree = "<group>"; };
 		29FC8865201B7B5B002B3D3F /* WorldBossMenuHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldBossMenuHeader.swift; sourceTree = "<group>"; };
+		29FEB277202B491600EA245A /* Avatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Avatar.swift; sourceTree = "<group>"; };
+		29FEB279202B4F0400EA245A /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
+		2AA9CAD02350FFCB017F32D0 /* Pods-Habitica Snapshots.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica Snapshots.release.xcconfig"; path = "Pods/Target Support Files/Pods-Habitica Snapshots/Pods-Habitica Snapshots.release.xcconfig"; sourceTree = "<group>"; };
 		2FD6A8DD61F63B61871C94A9 /* Pods-Habitica.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Habitica/Pods-Habitica.debug.xcconfig"; sourceTree = "<group>"; };
 		2FDBD03FA52D6A93D9B664CE /* Pods_Habitica.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BC569DB4F5A31ED940986A5 /* Pods-Habitica.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica.release.xcconfig"; path = "Pods/Target Support Files/Pods-Habitica/Pods-Habitica.release.xcconfig"; sourceTree = "<group>"; };
@@ -680,6 +688,8 @@
 		49F145A02016674F00AAC434 /* ChallengeCategory+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ChallengeCategory+CoreDataProperties.m"; sourceTree = "<group>"; };
 		98A4DBEE1B643BC100A9E2A8 /* HRPGSearchDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGSearchDataManager.h; sourceTree = "<group>"; };
 		98A4DBEF1B643BC100A9E2A8 /* HRPGSearchDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGSearchDataManager.m; sourceTree = "<group>"; };
+		9C2AF135C6B99AC360682846 /* Pods-Habitica Snapshots.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica Snapshots.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Habitica Snapshots/Pods-Habitica Snapshots.debug.xcconfig"; sourceTree = "<group>"; };
+		AAD902171AE5A8C0E6177D71 /* Pods_Habitica_Snapshots.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica_Snapshots.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC1D483830288A543073AEBA /* Pods_HabiticaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HabiticaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF54F3C3C288710775DDD5A9 /* HRPGContentResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGContentResponse.h; sourceTree = "<group>"; };
 		CF54FD820D81110D9EF4756E /* HRPGContentResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGContentResponse.m; sourceTree = "<group>"; };
@@ -1214,6 +1224,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5F01A11F4A9ED7974598C1E /* Pods_Habitica_Snapshots.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1520,6 +1531,8 @@
 				3BC569DB4F5A31ED940986A5 /* Pods-Habitica.release.xcconfig */,
 				281AC256BB298E2B402BE5DF /* Pods-HabiticaTests.debug.xcconfig */,
 				FF94C85B3E405C2849F2375A /* Pods-HabiticaTests.release.xcconfig */,
+				9C2AF135C6B99AC360682846 /* Pods-Habitica Snapshots.debug.xcconfig */,
+				2AA9CAD02350FFCB017F32D0 /* Pods-Habitica Snapshots.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1660,6 +1673,7 @@
 			children = (
 				D946E5C01B30A89500806BE6 /* NSDate+NSDateMock.h */,
 				D946E5C11B30A89500806BE6 /* NSDate+NSDateMock.m */,
+				298409CA203C2B4A003AD202 /* AvatarViewTests.swift */,
 			);
 			name = Mocks;
 			sourceTree = "<group>";
@@ -1950,6 +1964,7 @@
 				2957B8C91F4ED7C800E836EF /* Currency.swift */,
 				293BB49E1FCDCD33003B6F4F /* Stats.swift */,
 				2904FC7C2028BE8000CFB741 /* HabiticaWorldState.swift */,
+				29FEB277202B491600EA245A /* Avatar.swift */,
 			);
 			name = Models;
 			path = HRPGModels;
@@ -1982,6 +1997,7 @@
 		D9C000311928F85E003D4E4C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				29FEB279202B4F0400EA245A /* AvatarView.swift */,
 				293BB4A01FD06E7E003B6F4F /* BulkStatsAllocationView.xib */,
 				299BD6311F5420A300E22935 /* Challenges */,
 				4904C73F1F1ED87400F80723 /* GradientImageView.swift */,
@@ -2408,6 +2424,7 @@
 				D9EB4EB318CB4A9400BB2094 /* XCTest.framework */,
 				2FDBD03FA52D6A93D9B664CE /* Pods_Habitica.framework */,
 				BC1D483830288A543073AEBA /* Pods_HabiticaTests.framework */,
+				AAD902171AE5A8C0E6177D71 /* Pods_Habitica_Snapshots.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -2494,9 +2511,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 29701FF41F5848890097BBCC /* Build configuration list for PBXNativeTarget "Habitica Snapshots" */;
 			buildPhases = (
+				835CD31D8EE12936E1E31F64 /* [CP] Check Pods Manifest.lock */,
 				29701FE71F5848880097BBCC /* Sources */,
 				29701FE81F5848880097BBCC /* Frameworks */,
 				29701FE91F5848880097BBCC /* Resources */,
+				AEB059D10376C45FB9485AD4 /* [CP] Embed Pods Frameworks */,
+				5D2B18D3D7B0F2997CE533D5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2825,6 +2845,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Habitica/Pods-Habitica-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		5D2B18D3D7B0F2997CE533D5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Habitica Snapshots/Pods-Habitica Snapshots-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		6992AA14F29A6357120A21A1 /* uD83DuDCE6 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2838,6 +2873,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		835CD31D8EE12936E1E31F64 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Habitica Snapshots-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9134C996D72DCF63C6CF68A7 /* [CP] Embed Pods Frameworks */ = {
@@ -2878,6 +2931,7 @@
 				"${BUILT_PRODUCTS_DIR}/SOCKit/SOCKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SeedsSDK/SeedsSDK.framework",
 				"${BUILT_PRODUCTS_DIR}/SlackTextViewController/SlackTextViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyStoreKit/SwiftyStoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/TransitionKit/TransitionKit.framework",
 				"${BUILT_PRODUCTS_DIR}/VTAcknowledgementsViewController/VTAcknowledgementsViewController.framework",
@@ -2920,6 +2974,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SOCKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SeedsSDK.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SlackTextViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyStoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TransitionKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/VTAcknowledgementsViewController.framework",
@@ -2932,6 +2987,30 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Habitica/Pods-Habitica-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AEB059D10376C45FB9485AD4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Habitica Snapshots/Pods-Habitica Snapshots-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
+				"${BUILT_PRODUCTS_DIR}/OHHTTPStubs/OHHTTPStubs.framework",
+				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
+				"${BUILT_PRODUCTS_DIR}/iOSSnapshotTestCase/FBSnapshotTestCase.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OHHTTPStubs.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSnapshotTestCase.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Habitica Snapshots/Pods-Habitica Snapshots-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B2FE1A291D097FDD8A4DD843 /* 📦 Embed Pods Frameworks */ = {
@@ -3065,6 +3144,7 @@
 				496C1C871FA54E0F0058771A /* ChallengeDetailsSpecs.swift in Sources */,
 				D946E5C21B30A89500806BE6 /* NSDate+NSDateMock.m in Sources */,
 				D92C0C411B8745DF000AF799 /* HRPGAPITests.m in Sources */,
+				298409CD203C3283003AD202 /* AvatarViewTests.swift in Sources */,
 				D9709A501E7F17150005F35B /* TaskDetailLineViewTests.swift in Sources */,
 				D9709A4E1E7F13330005F35B /* ChallengeTableViewControllerTests.swift in Sources */,
 			);
@@ -3136,6 +3216,7 @@
 				49A4646B1FCD18FD00E14A5D /* HRPGButtonViewModel.swift in Sources */,
 				29AAA15F1F2B596900029737 /* SpeechbubbleView.swift in Sources */,
 				D979AD1A1AF3E70400D59FAE /* HRPGCustomizationsOverviewController.m in Sources */,
+				29FEB278202B491600EA245A /* Avatar.swift in Sources */,
 				D98F5AF21905DE86002F8223 /* HRPGPartyMembersViewController.m in Sources */,
 				D96BFC511E1930A500266EEF /* Signal-Extensions.swift in Sources */,
 				D9436AC91C64F880008D1171 /* HRPGGuildsOverviewViewController.m in Sources */,
@@ -3233,6 +3314,7 @@
 				D95D039C1C74E3E900D6BFB3 /* ImprovementCategory.m in Sources */,
 				D9B11C8C18D63D4E00AB4D23 /* HRPGTabBarController.m in Sources */,
 				D9D0451C1C2B1AEC00630244 /* Reminder.m in Sources */,
+				29FEB27A202B4F0400EA245A /* AvatarView.swift in Sources */,
 				D94FEDEB1BB314B10046A52E /* HRPGGroupFormViewController.m in Sources */,
 				D97ED0B21E6DE3BF006C2A26 /* LeaveChallengeInteractor.swift in Sources */,
 				29FC88602018DB64002B3D3F /* WorldBossDescriptionView.swift in Sources */,
@@ -3550,6 +3632,7 @@
 /* Begin XCBuildConfiguration section */
 		29701FF21F5848890097BBCC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9C2AF135C6B99AC360682846 /* Pods-Habitica Snapshots.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -3573,6 +3656,7 @@
 		};
 		29701FF31F5848890097BBCC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2AA9CAD02350FFCB017F32D0 /* Pods-Habitica Snapshots.release.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;

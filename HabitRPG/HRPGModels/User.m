@@ -179,36 +179,7 @@
         make.height.equalTo(avatarView.mas_width).multipliedBy(boxSize.height / boxSize.width);
     }];
 
-    Outfit *outfit = [self.preferences.useCostume boolValue] ? self.costume : self.equipped;
-
-    // avatar view layer availability @YES or @NO
-    NSDictionary *viewDictionary = @{
-        @"background" : @(showsBackground && self.preferences.background.length),
-        @"mount-body" : @(showsMount && self.currentMount.length),
-        @"chair" : @(self.preferences.chair.length && ![self.preferences.chair isEqualToString:@"none"]),
-        @"back" : @(outfit.back.length && [self _isAvailableGear:outfit.back]),
-        @"skin" : @YES,
-        @"shirt" : @YES,
-        @"armor" : @(outfit.armor.length && [self _isAvailableGear:outfit.armor]),
-        @"body" : @(outfit.body.length && [self _isAvailableGear:outfit.body]),
-        @"head_0" : @YES,
-        @"hair-base" : @(self.preferences.hairBase.integerValue),
-        @"hair-bangs" : @(self.preferences.hairBangs.integerValue),
-        @"hair-mustache" : @(self.preferences.hairMustache.integerValue),
-        @"hair-beard" : @(self.preferences.hairBeard.integerValue),
-        @"eyewear" : @(outfit.eyewear.length && [self _isAvailableGear:outfit.eyewear]),
-        @"head" : @(outfit.head.length && [self _isAvailableGear:outfit.head]),
-        @"head-accessory" :
-            @(outfit.headAccessory.length && [self _isAvailableGear:outfit.headAccessory]),
-        @"hair-flower" : @(self.preferences.hairFlower.integerValue),
-        @"shield" : @(outfit.shield.length && [self _isAvailableGear:outfit.shield]),
-        @"weapon" : @(outfit.weapon.length && [self _isAvailableGear:outfit.weapon]),
-        @"visual-buff" : [self getVisualBuff].length ? @YES : @NO,
-        @"mount-head" : @(showsMount && self.currentMount.length),
-        @"zzz" : [self.preferences.sleep boolValue] && !isFainted ? @YES : @NO,
-        @"knockout" : isFainted ? @YES : @NO,
-        @"pet" : @(showsPet && self.currentPet.length)
-    };
+    NSDictionary *viewDictionary = [self getAvatarViewDictionary:showsBackground showsMount:showsMount showsPet:showsPet isFainted:isFainted];
 
     // avatar view layer order
     NSArray *viewOrder = nil;
@@ -272,6 +243,42 @@
     }];
 
     return avatarView;
+}
+
+- (NSDictionary *)getAvatarViewDictionary:(BOOL)showsBackground
+                               showsMount:(BOOL)showsMount
+                                 showsPet:(BOOL)showsPet
+                                isFainted:(BOOL)isFainted {
+    Outfit *outfit = [self.preferences.useCostume boolValue] ? self.costume : self.equipped;
+    
+    // avatar view layer availability @YES or @NO
+    return @{
+                                     @"background" : @(showsBackground && self.preferences.background.length),
+                                     @"mount-body" : @(showsMount && self.currentMount.length),
+                                     @"chair" : @(self.preferences.chair.length && ![self.preferences.chair isEqualToString:@"none"]),
+                                     @"back" : @(outfit.back.length && [self _isAvailableGear:outfit.back]),
+                                     @"skin" : @YES,
+                                     @"shirt" : @YES,
+                                     @"armor" : @(outfit.armor.length && [self _isAvailableGear:outfit.armor]),
+                                     @"body" : @(outfit.body.length && [self _isAvailableGear:outfit.body]),
+                                     @"head_0" : @YES,
+                                     @"hair-base" : @(self.preferences.hairBase.integerValue),
+                                     @"hair-bangs" : @(self.preferences.hairBangs.integerValue),
+                                     @"hair-mustache" : @(self.preferences.hairMustache.integerValue),
+                                     @"hair-beard" : @(self.preferences.hairBeard.integerValue),
+                                     @"eyewear" : @(outfit.eyewear.length && [self _isAvailableGear:outfit.eyewear]),
+                                     @"head" : @(outfit.head.length && [self _isAvailableGear:outfit.head]),
+                                     @"head-accessory" :
+                                         @(outfit.headAccessory.length && [self _isAvailableGear:outfit.headAccessory]),
+                                     @"hair-flower" : @(self.preferences.hairFlower.integerValue),
+                                     @"shield" : @(outfit.shield.length && [self _isAvailableGear:outfit.shield]),
+                                     @"weapon" : @(outfit.weapon.length && [self _isAvailableGear:outfit.weapon]),
+                                     @"visual-buff" : [self getVisualBuff].length ? @YES : @NO,
+                                     @"mount-head" : @(showsMount && self.currentMount.length),
+                                     @"zzz" : [self.preferences.sleep boolValue] && !isFainted ? @YES : @NO,
+                                     @"knockout" : isFainted ? @YES : @NO,
+                                     @"pet" : @(showsPet && self.currentPet.length)
+                                     };
 }
 
 - (UIColor *)classColor {

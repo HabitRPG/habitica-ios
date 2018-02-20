@@ -14,18 +14,15 @@
 
 @interface HRPGUserTopHeader ()
 
-@property(weak, nonatomic) IBOutlet UIView *avatarView;
+@property(weak, nonatomic) IBOutlet AvatarView *avatarView;
 
 @property(weak, nonatomic) IBOutlet HRPGLabeledProgressBar *healthLabel;
-
 @property(weak, nonatomic) IBOutlet HRPGLabeledProgressBar *experienceLabel;
-
 @property(weak, nonatomic) IBOutlet HRPGLabeledProgressBar *magicLabel;
 
 @property UIView *darkerBackground;
 
 @property(weak, nonatomic) IBOutlet UILabel *levelLabel;
-
 @property(weak, nonatomic) IBOutlet UILabel *usernameLabel;
 
 @property(weak, nonatomic) IBOutlet UIImageView *classImageView;
@@ -147,7 +144,7 @@ NSInteger rowOffset = 16;
 
 - (void)setData {
     self.user = [self getUser];
-    [self.user setAvatarSubview:self.avatarView showsBackground:YES showsMount:YES showsPet:YES];
+    [self.avatarView setAvatar:self.user];
     self.healthLabel.value = self.user.health;
     if ([self.user.maxHealth integerValue] > 0) {
         self.healthLabel.maxValue = self.user.maxHealth;
@@ -187,7 +184,7 @@ NSInteger rowOffset = 16;
         self.levelLabel.text =
         [NSString stringWithFormat:NSLocalizedString(@"Level %@ %@", nil), self.user.level,
          NSLocalizedString([self.user.hclass capitalizedString], nil)];
-        NSString *habitClass = self.user.hclass;
+        NSString *habitClass = self.user.dirtyClass;
         if ([habitClass isEqualToString:@"warrior"]) {
             self.classImageView.image = [HabiticaIcons imageOfWarriorLightBg];
         } else if ([habitClass isEqualToString:@"wizard"]) {
@@ -204,7 +201,6 @@ NSInteger rowOffset = 16;
         self.classImageView.image = nil;
         self.classImageViewWidthConstraint.constant = 0;
     }
-    
     
     self.gemView.amount = [@([self.user.balance floatValue] * 4) integerValue];
     self.goldView.amount = [self.user.gold integerValue];

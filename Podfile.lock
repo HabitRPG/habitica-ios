@@ -122,6 +122,7 @@ PODS:
   - RKValueTransformers (1.1.3)
   - SeedsSDK (0.5.0)
   - SlackTextViewController (1.9.6)
+  - SnapKit (4.0.0)
   - SOCKit (1.1)
   - SwiftLint (0.24.2)
   - SwiftyStoreKit (0.13.0)
@@ -148,7 +149,7 @@ DEPENDENCIES:
   - FBSDKLoginKit (~> 4)
   - FLEX (~> 2.0)
   - Google/Analytics
-  - iOSSnapshotTestCase (from `https://github.com/uber/ios-snapshot-test-case.git`)
+  - iOSSnapshotTestCase
   - KeychainAccess
   - Keys (from `Pods/CocoaPodsKeys`)
   - KLCPopup
@@ -165,6 +166,7 @@ DEPENDENCIES:
   - RestKit
   - SeedsSDK
   - SlackTextViewController
+  - SnapKit (~> 4.0.0)
   - SwiftLint
   - SwiftyStoreKit
   - VTAcknowledgementsViewController
@@ -172,8 +174,6 @@ DEPENDENCIES:
   - YYWebImage (~> 1.0.5)
 
 EXTERNAL SOURCES:
-  iOSSnapshotTestCase:
-    :git: https://github.com/uber/ios-snapshot-test-case.git
   Keys:
     :path: Pods/CocoaPodsKeys
   PopupDialog:
@@ -181,9 +181,6 @@ EXTERNAL SOURCES:
     :git: https://github.com/Orderella/PopupDialog.git
 
 CHECKOUT OPTIONS:
-  iOSSnapshotTestCase:
-    :commit: 9b21499208a46435d4a327314838475acec878c0
-    :git: https://github.com/uber/ios-snapshot-test-case.git
   PopupDialog:
     :commit: 91d634b1068d91be2658a63959f79e209e03ecb9
     :git: https://github.com/Orderella/PopupDialog.git
@@ -208,7 +205,7 @@ SPEC CHECKSUMS:
   Google: 98da4b1a60ed0beb80a290387a28333406a1eb90
   GoogleAnalytics: f42cc53a87a51fe94334821868d9c8481ff47a7b
   GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
-  iOSSnapshotTestCase: f4face7b736d8e1ec14e3b031a71786b3bd6f1fa
+  iOSSnapshotTestCase: 415bd84f9dbba4ff45fede49d800bc7332fbedac
   ISO8601DateFormatterValueTransformer: 52da467d6ec899d6aedda8e48280ac92e8ee97e6
   KeychainAccess: 94c5540b32eabf7bc32bfb976a268e8ea05fd6da
   Keys: af65e23feef2a047b3277b1ef0399f1209ef9d46
@@ -229,6 +226,7 @@ SPEC CHECKSUMS:
   RKValueTransformers: e5ed67e3811229b616fe01bddeeafe3bb337b1b9
   SeedsSDK: 8de27e088c15ff3eba33a6d2941ec507e4a5bb95
   SlackTextViewController: b854e62c1c156336bc4fd409c6ca79b5773e8f9d
+  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   SOCKit: c7376ac262bea9115b8f749358f762522a47d392
   SwiftLint: 2aa21b96c8d13396a051bc1cb659d2ce1e0075b0
   SwiftyStoreKit: df6a58aba530128e1c5d5ae4fe7d191e5ac50d5d
@@ -239,6 +237,6 @@ SPEC CHECKSUMS:
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: 3f754b3ca52d9f1e9a3820e0d76e1cecec20c55b
+PODFILE CHECKSUM: dbb528c99211a45e8aea84b24d5f039e21c96bf1
 
 COCOAPODS: 1.4.0

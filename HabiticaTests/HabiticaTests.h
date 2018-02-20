@@ -10,6 +10,7 @@
 #import "HRPGManager.h"
 #import "FBSnapshotTestCase/FBSnapshotTestCase.h"
 
+
 @interface HabiticaTests : FBSnapshotTestCase
 @property HRPGManager *sharedManager;
 
