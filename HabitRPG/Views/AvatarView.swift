@@ -99,6 +99,13 @@ class AvatarView: UIView {
         "pet": petConstraints
     ]
     
+    lazy private var specialConstraintsDictionary = [
+        "weapon_special_0": weaponSpecialConstraints,
+        "weapon_special_1": weaponSpecial1Constraints,
+        "head_special_0": headSpecialConstraints,
+        "head_special_1": headSpecialConstraints
+    ]
+    
     let keepRatioConstraints: ((AvatarView, YYAnimatedImageView, UIImage?, CGSize) -> Void) = { superview, view, image, size in
         view.snp.makeConstraints { (make) -> Void in
             make.height.equalTo(view.snp.width).multipliedBy((image?.size.height ?? 1) / (image?.size.width ?? 1))
@@ -106,67 +113,67 @@ class AvatarView: UIView {
         }
     }
     
-    let backgroundConstraints: ((AvatarView, YYAnimatedImageView, CGSize) -> Void) = { superview, view, size in
+    let backgroundConstraints: ((AvatarView, YYAnimatedImageView, CGSize, CGFloat) -> Void) = { superview, view, size, offset in
         view.snp.makeConstraints { (make) -> Void in
             make.edges.equalTo(superview)
         }
     }
     
-    let characterConstraints: ((AvatarView, YYAnimatedImageView, CGSize) -> Void) = { superview, view, size in
+    let characterConstraints: ((AvatarView, YYAnimatedImageView, CGSize, CGFloat) -> Void) = { superview, view, size, offset in
         view.snp.makeConstraints { (make) -> Void in
             if size.width <= 90 {
                 make.leading.equalTo(superview)
             } else {
-                make.leading.equalTo(superview.snp.trailing).multipliedBy(25 / size.width)
+                make.leading.equalTo(superview.snp.trailing).multipliedBy(24 / size.width)
             }
-            make.top.equalTo(superview).offset(0)
+            make.top.equalTo(superview).offset(offset)
         }
     }
     
-    let mountConstraints: ((AvatarView, YYAnimatedImageView, CGSize) -> Void) = { superview, view, size in
+    let mountConstraints: ((AvatarView, YYAnimatedImageView, CGSize, CGFloat) -> Void) = { superview, view, size, offset in
         view.snp.makeConstraints { (make) -> Void in
-            make.leading.equalTo(superview.snp.trailing).multipliedBy(25/size.width)
-            make.top.equalTo(superview.snp.bottom).multipliedBy(18/size.width)
+            make.leading.equalTo(superview.snp.trailing).multipliedBy(24/size.width)
+            make.top.equalTo(superview.snp.bottom).multipliedBy(17/size.width)
         }
     }
     
-    let petConstraints: ((AvatarView, YYAnimatedImageView, CGSize) -> Void) = { superview, view, size in
+    let petConstraints: ((AvatarView, YYAnimatedImageView, CGSize, CGFloat) -> Void) = { superview, view, size, offset in
         view.snp.makeConstraints { (make) -> Void in
             make.leading.equalTo(superview)
             make.bottom.equalTo(superview)
         }
     }
     
-    let weaponSpecialConstraint: ((AvatarView, YYAnimatedImageView, CGSize) -> Void) = { superview, view, size in
+    let weaponSpecialConstraints: ((AvatarView, YYAnimatedImageView, CGSize, CGFloat) -> Void) = { superview, view, size, offset in
         view.snp.makeConstraints { (make) -> Void in
             if size.width <= 90 {
                 make.leading.equalTo(superview.snp.trailing).multipliedBy(-12 / size.width)
             } else {
-                make.leading.equalTo(superview).multipliedBy(13.0 / size.width)
+                make.leading.equalTo(superview.snp.trailing).multipliedBy(13.0 / size.width)
             }
-            make.top.equalTo(superview).multipliedBy(12.0 / size.height)
+            make.top.equalTo(superview).offset(offset)
         }
     }
     
-    let weaponSpecial1Constraint: ((AvatarView, YYAnimatedImageView, CGSize) -> Void) = { superview, view, size in
+    let weaponSpecial1Constraints: ((AvatarView, YYAnimatedImageView, CGSize, CGFloat) -> Void) = { superview, view, size, offset in
         view.snp.makeConstraints { (make) -> Void in
             if size.width <= 90 {
                 make.leading.equalTo(superview.snp.trailing).multipliedBy(-12 / size.width)
             } else {
-                make.leading.equalTo(superview).multipliedBy(13.0 / size.width)
+                make.leading.equalTo(superview.snp.trailing).multipliedBy(12.0 / size.width)
             }
-            make.top.equalTo(superview).offset(0+3)
+            make.top.equalTo(superview).offset(offset)
         }
     }
     
-    let headSpecialConstraint: ((AvatarView, YYAnimatedImageView, CGSize) -> Void) = { superview, view, size in
+    let headSpecialConstraints: ((AvatarView, YYAnimatedImageView, CGSize, CGFloat) -> Void) = { superview, view, size, offset in
         view.snp.makeConstraints { (make) -> Void in
             if size.width <= 90 {
                 make.leading.equalTo(superview)
             } else {
-                make.leading.equalTo(superview.snp.trailing).multipliedBy(13.0 / size.width)
+                make.leading.equalTo(superview.snp.trailing).multipliedBy(24 / size.width)
             }
-            make.top.equalTo(superview).multipliedBy(12.0 / size.height)
+            make.top.equalTo(superview).offset(offset+3)
         }
     }
     
@@ -202,7 +209,7 @@ class AvatarView: UIView {
             if viewDictionary[type] ?? false {
                 let imageView = imageViews[index]
                 imageView.isHidden = false
-                setConstraints(imageView, type: type, size: boxSize)
+                setConstraints(imageView, type: type, size: boxSize, viewDictionary: viewDictionary)
                 setImage(imageView, type: type, size: boxSize)
             } else {
                 let imageView = imageViews[index]
@@ -213,10 +220,8 @@ class AvatarView: UIView {
         
         setNeedsLayout()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
-            if let action = self.onRenderingFinished {
-                action()
-            }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.onRenderingFinished?()
         }
     }
     
@@ -226,19 +231,32 @@ class AvatarView: UIView {
                 return YYImage(data: data, scale: 1.0)
             }
             return image
-        }) { (image, _, _, _, error) in
+        }, completion: { (image, _, _, _, error) in
             if type != "background" {
                 self.keepRatioConstraints(self, imageView, image, size)
             }
+            
             if error != nil {
-                print(error?.localizedDescription)
+                print(error?.localizedDescription ?? "")
             }
-        }
+        })
     }
     
-    private func setConstraints(_ imageView: YYAnimatedImageView, type: String, size: CGSize) {
+    private func setConstraints(_ imageView: YYAnimatedImageView, type: String, size: CGSize, viewDictionary: [String: Bool]) {
         imageView.snp.removeConstraints()
-        constraintsDictionary[type]?(self, imageView, size)
+        var offset: CGFloat = 0
+        if !(viewDictionary["mount-head"] ?? false) {
+            offset = 28
+            if viewDictionary["pet"] ?? false {
+                offset -= 3
+            }
+        }
+        let name = nameDictionary[type] ?? ""
+        if let name = name, specialConstraintsDictionary[name] != nil {
+            specialConstraintsDictionary[name]?(self, imageView, size, offset)
+        } else {
+            constraintsDictionary[type]?(self, imageView, size, offset)
+        }
     }
     
     private func getFormat(name: String) -> String {

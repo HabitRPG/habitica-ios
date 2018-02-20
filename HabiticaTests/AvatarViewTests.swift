@@ -45,7 +45,7 @@ class AvatarViewTests: HabiticaTests {
         
         waitUntil(timeout: 5) { (done) in
             self.avatarView.onRenderingFinished = {
-                self.FBSnapshotVerifyView(self.avatarView)
+                self.FBSnapshotVerifyView(self.avatarView, tolerance: 0.1)
                 done()
             }
         }
@@ -76,7 +76,7 @@ class AvatarViewTests: HabiticaTests {
         
         waitUntil(timeout: 5) { (done) in
             self.avatarView.onRenderingFinished = {
-                self.FBSnapshotVerifyView(self.avatarView)
+                self.FBSnapshotVerifyView(self.avatarView, tolerance: 0.1)
                 done()
             }
         }
@@ -107,7 +107,7 @@ class AvatarViewTests: HabiticaTests {
         
         waitUntil(timeout: 5) { (done) in
             self.avatarView.onRenderingFinished = {
-                self.FBSnapshotVerifyView(self.avatarView)
+                self.FBSnapshotVerifyView(self.avatarView, tolerance: 0.1)
                 done()
             }
         }
@@ -141,7 +141,7 @@ class AvatarViewTests: HabiticaTests {
         
         waitUntil(timeout: 5) { (done) in
             self.avatarView.onRenderingFinished = {
-                self.FBSnapshotVerifyView(self.avatarView)
+                self.FBSnapshotVerifyView(self.avatarView, tolerance: 0.1)
                 done()
             }
         }
@@ -165,7 +165,7 @@ class AvatarViewTests: HabiticaTests {
         
         waitUntil(timeout: 5) { (done) in
             self.avatarView.onRenderingFinished = {
-                self.FBSnapshotVerifyView(self.avatarView)
+                self.FBSnapshotVerifyView(self.avatarView, tolerance: 0.1)
                 done()
             }
         }
@@ -178,9 +178,8 @@ class AvatarViewTests: HabiticaTests {
         avatarView.showBackground = true
         
         let avatar = TestAvatar(background: "yellow",
-                                chair: "blanck",
-                                skin: "915533",
-                                shirt: "pink",
+                                skin: "f5a76e",
+                                shirt: "blue",
                                 armor: "armor_special_1",
                                 hairColor: "brown",
                                 hairBase: "1",
@@ -194,7 +193,7 @@ class AvatarViewTests: HabiticaTests {
         
         waitUntil(timeout: 5) { (done) in
             self.avatarView.onRenderingFinished = {
-                self.FBSnapshotVerifyView(self.avatarView)
+                self.FBSnapshotVerifyView(self.avatarView, tolerance: 0.1)
                 done()
             }
         }
@@ -219,7 +218,7 @@ class AvatarViewTests: HabiticaTests {
         
         waitUntil(timeout: 5) { (done) in
             self.avatarView.onRenderingFinished = {
-                self.FBSnapshotVerifyView(self.avatarView)
+                self.FBSnapshotVerifyView(self.avatarView, tolerance: 0.1)
                 done()
             }
         }
