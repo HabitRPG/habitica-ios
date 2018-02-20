@@ -35,7 +35,7 @@ protocol Avatar {
     var pet: String? { get }
 
     var isSleep: Bool { get }
-    var size: String { get }
+    var size: String? { get }
 }
 
 extension Avatar {
@@ -84,8 +84,8 @@ extension Avatar {
             "chair": "chair_\(chair ?? "")",
             "back": back,
             "skin": isSleep ? "skin_\(skin ?? "")_sleep" : "skin_\(skin ?? "")",
-            "shirt": "\(size)_shirt_\( shirt ?? "")",
-            "armor": "\(size)_\(armor ?? "")",
+            "shirt": "\(size ?? "slim")_shirt_\( shirt ?? "")",
+            "armor": "\(size ?? "slim")_\(armor ?? "")",
             "body": body,
             "head_0": "head_0",
             "hair-base": "hair_base_\(hairBase ?? "")_\(hairColor ?? "")",
@@ -108,8 +108,8 @@ extension Avatar {
 
 extension User: Avatar {
 
-    private var displayedOutfit: Outfit {
-        if preferences.useCostume?.boolValue == true {
+    private var displayedOutfit: Outfit? {
+        if preferences?.useCostume?.boolValue == true {
             return costume
         } else {
             return equipped
@@ -117,74 +117,74 @@ extension User: Avatar {
     }
     
     var background: String? {
-        return preferences.background
+        return preferences?.background
     }
     var chair: String? {
-        return preferences.chair
+        return preferences?.chair
     }
     
     var back: String? {
-        return displayedOutfit.back
+        return displayedOutfit?.back
     }
     
     var skin: String? {
-        return preferences.skin
+        return preferences?.skin
     }
     
     var shirt: String? {
-        return preferences.shirt
+        return preferences?.shirt
     }
     
     var armor: String? {
-        return displayedOutfit.armor
+        return displayedOutfit?.armor
     }
     
     var body: String? {
-        return displayedOutfit.body
+        return displayedOutfit?.body
     }
     
     var hairColor: String? {
-        return preferences.hairColor
+        return preferences?.hairColor
     }
     
     var hairBase: String? {
-        return preferences.hairBase
+        return preferences?.hairBase
     }
     
     var hairBangs: String? {
-        return preferences.hairBangs
+        return preferences?.hairBangs
     }
     
     var hairMustache: String? {
-        return preferences.hairMustache
+        return preferences?.hairMustache
     }
     
     var hairBeard: String? {
-        return preferences.hairBeard
+        return preferences?.hairBeard
     }
     
     var eyewear: String? {
-        return displayedOutfit.eyewear
+        return displayedOutfit?.eyewear
     }
     
     var head: String? {
-        return displayedOutfit.head
+        return displayedOutfit?.head
     }
     
     var headAccessory: String? {
-        return displayedOutfit.headAccessory
+        return displayedOutfit?.headAccessory
     }
     
     var hairFlower: String? {
-        return preferences.hairFlower
+        return preferences?.hairFlower
     }
     
     var shield: String? {
-        return displayedOutfit.shield
+        return displayedOutfit?.shield
     }
     
     var weapon: String? {
-        return displayedOutfit.weapon
+        return displayedOutfit?.weapon
     }
     
     var visualBuff: String? {
@@ -204,10 +204,73 @@ extension User: Avatar {
     }
     
     var isSleep: Bool {
-        return preferences.sleep?.boolValue ?? false
+        return preferences?.sleep?.boolValue ?? false
     }
     
-    var size: String {
-        return preferences.size ?? ""
+    var size: String? {
+        return preferences?.size
+    }
+}
+
+extension ChatMessageAvatar: Avatar {
+
+    private var displayedOutfit: Outfit? {
+        if preferences?.useCostume?.boolValue == true {
+            return costume
+        } else {
+            return equipped
+        }
+    }
+    
+    var back: String? {
+        return displayedOutfit?.back
+    }
+    
+    var armor: String? {
+        return displayedOutfit?.armor
+    }
+    
+    var body: String? {
+        return displayedOutfit?.body
+    }
+    
+    var eyewear: String? {
+        return displayedOutfit?.eyewear
+    }
+    
+    var head: String? {
+        return displayedOutfit?.head
+    }
+    
+    var headAccessory: String? {
+        return displayedOutfit?.headAccessory
+    }
+
+    var shield: String? {
+        return displayedOutfit?.shield
+    }
+    
+    var weapon: String? {
+        return displayedOutfit?.weapon
+    }
+    
+    var visualBuff: String? {
+        return nil
+    }
+    
+    var mount: String? {
+        return currentMount
+    }
+    
+    var knockout: String? {
+        return nil
+    }
+    
+    var pet: String? {
+        return currentPet
+    }
+    
+    var isSleep: Bool {
+        return preferences?.sleep?.boolValue ?? false
     }
 }

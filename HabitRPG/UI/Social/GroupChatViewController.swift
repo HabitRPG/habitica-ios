@@ -84,7 +84,7 @@ class GroupChatViewController: SLKTextViewController {
                 guard let message = item as? ChatMessage else {
                     return
                 }
-                message.attributedText = try? Down(markdownString: message.text).toHabiticaAttributedString()
+                message.attributedText = try? Down(markdownString: message.text ?? "").toHabiticaAttributedString()
             }
             DispatchQueue.main.async {
                 if let rows = self?.tableView?.indexPathsForVisibleRows {
@@ -204,7 +204,7 @@ class GroupChatViewController: SLKTextViewController {
     }
     
     private func checkGuidelinesAccepted() {
-        if !(user?.flags.communityGuidelinesAccepted?.boolValue ?? false) {
+        if !(user?.flags?.communityGuidelinesAccepted?.boolValue ?? false) {
             let acceptButton = UIButton()
             acceptButton.setTitle(NSLocalizedString("Post a message", comment: ""), for: .normal)
             acceptButton.backgroundColor = .white
@@ -226,7 +226,7 @@ class GroupChatViewController: SLKTextViewController {
     
     @IBAction func unwindToAcceptGuidelines(_ segue: UIStoryboardSegue) {
         HRPGManager.shared().updateUser(["flags.communityGuidelinesAccepted": true], onSuccess: {[weak self] in
-            self?.user?.flags.communityGuidelinesAccepted = NSNumber(value: true)
+            self?.user?.flags?.communityGuidelinesAccepted = NSNumber(value: true)
             self?.checkGuidelinesAccepted()
         }, onError: nil)
     }

@@ -14,7 +14,7 @@ protocol ChallengeCreatorCellDelegate: class {
 }
 
 class ChallengeCreatorTableViewCell: UITableViewCell, ChallengeConfigurable {
-    @IBOutlet weak var avatarView: UIView!
+    @IBOutlet weak var avatarView: AvatarView!
     @IBOutlet weak var userNameLabel: UILabel!
     
     weak var delegate: ChallengeCreatorCellDelegate?
@@ -22,17 +22,7 @@ class ChallengeCreatorTableViewCell: UITableViewCell, ChallengeConfigurable {
     private var user: User? {
         didSet {
             if let member = user {
-                if avatarView.subviews.count == 0 {
-                    if let avatar = member.getAvatarViewShowsBackground(true, showsMount: false, showsPet: false) {
-                        avatarView.addSubview(avatar)
-                        avatarView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-(-10)-[avatar]-(0)-|", options: .init(rawValue: 0), metrics: nil, views: ["avatar": avatar]))
-                        avatarView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-(-15)-[avatar]-(-10)-|", options: .init(rawValue: 0), metrics: nil, views: ["avatar": avatar]))
-                        
-                        setNeedsUpdateConstraints()
-                        setNeedsLayout()
-                        layoutIfNeeded()
-                    }
-                }
+                avatarView.avatar = member
             }
         }
     }

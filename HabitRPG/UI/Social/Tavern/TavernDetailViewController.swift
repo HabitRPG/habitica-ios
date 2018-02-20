@@ -113,7 +113,7 @@ class TavernDetailViewController: UIViewController {
     
     func configureInnButton(disabled: Bool = false) {
         innButton.isEnabled = !disabled
-        if HRPGManager.shared().getUser().preferences.sleep?.boolValue ?? false {
+        if HRPGManager.shared().getUser().preferences?.sleep?.boolValue ?? false {
             innButton.setTitle(NSLocalizedString("Resume Damage", comment: ""), for: .normal)
         } else {
             innButton.setTitle(NSLocalizedString("Pause Damage", comment: ""), for: .normal)
@@ -124,7 +124,7 @@ class TavernDetailViewController: UIViewController {
         if segue.identifier == "GuidelinesSegue" {
             let navigationController = segue.destination as? UINavigationController
             let guidelinesController = navigationController?.topViewController as? HRPGGGuidelinesViewController
-            guidelinesController?.needsAccepting = !(HRPGManager.shared().getUser().flags.communityGuidelinesAccepted?.boolValue ?? false)
+            guidelinesController?.needsAccepting = !(HRPGManager.shared().getUser().flags?.communityGuidelinesAccepted?.boolValue ?? false)
         }
     }
 }

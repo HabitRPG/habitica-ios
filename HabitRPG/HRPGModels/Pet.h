@@ -8,6 +8,7 @@
 
 #import <CoreData/CoreData.h>
 #import <Foundation/Foundation.h>
+#import <UIkit/UIKit.h>
 #import "Food.h"
 
 @interface Pet : NSManagedObject

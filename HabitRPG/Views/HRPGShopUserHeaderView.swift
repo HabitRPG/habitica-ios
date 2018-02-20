@@ -48,7 +48,7 @@ class HRPGShopUserHeaderView: UIView, NSFetchedResultsControllerDelegate {
             usernameLabel.text = user.username
             usernameLabel.textColor = user.contributorColor()
             
-            if let shouldDisable = user.preferences.disableClass, !shouldDisable.boolValue, let userClass = user.hclass {
+            if let shouldDisable = user.preferences?.disableClass, !shouldDisable.boolValue, let userClass = user.hclass {
                 userClassImageView.isHidden = false
                 userClassImageView.image = UIImage(named: "icon_\(userClass)")
             } else {

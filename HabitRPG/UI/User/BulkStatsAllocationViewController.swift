@@ -11,7 +11,7 @@ import UIKit
 class BulkStatsAllocationViewController: UIViewController {
     
     let user = HRPGManager.shared().getUser()
-    lazy var pointsToAllocate: Int = self.user?.pointsToAllocate?.intValue ?? 0
+    lazy var pointsToAllocate: Int = self.user?.pointsToAllocate.intValue ?? 0
     
     var pointsAllocated: Int {
         get {
@@ -40,10 +40,10 @@ class BulkStatsAllocationViewController: UIViewController {
         intelligenceSliderView.maxValue = pointsToAllocate
         constitutionSliderView.maxValue = pointsToAllocate
         perceptionSliderView.maxValue = pointsToAllocate
-        strengthSliderView.originalValue = user?.strength.intValue ?? 0
-        intelligenceSliderView.originalValue = user?.intelligence.intValue ?? 0
-        constitutionSliderView.originalValue = user?.constitution.intValue ?? 0
-        perceptionSliderView.originalValue = user?.perception.intValue ?? 0
+        strengthSliderView.originalValue = user?.strength?.intValue ?? 0
+        intelligenceSliderView.originalValue = user?.intelligence?.intValue ?? 0
+        constitutionSliderView.originalValue = user?.constitution?.intValue ?? 0
+        perceptionSliderView.originalValue = user?.perception?.intValue ?? 0
         
         strengthSliderView.allocateAction = {[weak self] value in
             self?.checkRedistribution(excludedSlider: self?.strengthSliderView)

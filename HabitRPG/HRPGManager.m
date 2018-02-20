@@ -1469,6 +1469,30 @@ NSString *currentUser;
         addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"likes"
                                                                        toKeyPath:@"likes"
                                                                      withMapping:likeMapping]];
+    RKEntityMapping *chatAvatarMapping = [RKEntityMapping mappingForEntityForName:@"ChatMessageAvatar"
+                                                       inManagedObjectStore:managedObjectStore];
+    [chatAvatarMapping addAttributeMappingsFromDictionary:@{
+                                                     @"preferences.size": @"size",
+                                                     @"preferences.shirt": @"shirt",
+                                                     @"preferences.skin": @"skin",
+                                                     @"preferences.background": @"background",
+                                                     @"preferences.chair": @"chair",
+                                                     @"preferences.hair.color": @"hairColor",
+                                                     @"preferences.hair.bangs": @"hairBangs",
+                                                     @"preferences.hair.base": @"hairBase",
+                                                     @"preferences.hair.mustache": @"hairMustache",
+                                                     @"preferences.hair.beard": @"hairBeard",
+                                                     @"preferences.hair.flower": @"hairFlower",
+                                                     @"preferences.costume": @"useCostume",
+                                                     @"items.currentPet": @"currentPet",
+                                                     @"items.currentMount": @"currentMount"
+                                                     }];
+    [chatAvatarMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"items.gear.equipped" toKeyPath:@"equipped" withMapping:userOutfitMapping]];
+    [chatAvatarMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"items.gear.costume" toKeyPath:@"costume" withMapping:userOutfitMapping]];
+    [chatMapping
+     addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"userStyles"
+                                                                    toKeyPath:@"avatar"
+                                                                  withMapping:chatAvatarMapping]];
     [entityMapping
         addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"chat"
                                                                        toKeyPath:@"chatmessages"

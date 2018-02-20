@@ -13,29 +13,25 @@ class MenuNavigationBarView: UIView {
     @objc public var messagesAction: (() -> Void)?
     @objc public var settingsAction: (() -> Void)?
     
-    @IBOutlet weak var avatarView: UIView!
+    @IBOutlet weak var avatarView: AvatarView!
     @IBOutlet weak var usernameLabel: UILabel!
     
     @IBOutlet weak var messagesButton: UIButton!
     @IBOutlet weak var settingsButton: UIButton!
     
     // MARK: - Private Helper Methods
+   
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        avatarView.showPet = false
+        avatarView.showMount = false
+        avatarView.size = .compact
+    }
     
     @objc
     public func configure(user: User) {
         usernameLabel.text = user.username
-        if avatarView.subviews.count != 0 {
-            avatarView.subviews.forEach({ (view) in view.removeFromSuperview() })
-        }
-        if let avatar = user.getAvatarViewShowsBackground(true, showsMount: false, showsPet: false) {
-            avatarView.addSubview(avatar)
-            avatarView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-(-10)-[avatar]-(0)-|", options: .init(rawValue: 0), metrics: nil, views: ["avatar": avatar]))
-            avatarView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-(-15)-[avatar]-(-10)-|", options: .init(rawValue: 0), metrics: nil, views: ["avatar": avatar]))
-            
-            setNeedsUpdateConstraints()
-            setNeedsLayout()
-            layoutIfNeeded()
-        }
+        avatarView.avatar = user
     }
     
     @IBAction func messageButtonTapped(_ sender: Any) {

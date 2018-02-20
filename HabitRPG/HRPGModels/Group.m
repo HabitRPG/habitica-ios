@@ -7,7 +7,7 @@
 //
 
 #import "Group.h"
-#import "ChatMessage.h"
+#import "ChatMessage+CoreDataClass.h"
 @implementation Group
 
 @dynamic hdescription;

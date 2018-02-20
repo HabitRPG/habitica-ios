@@ -19,77 +19,77 @@
 
 @interface User : NSManagedObject
 
-@property(nonatomic, retain) NSString *loginname;
-@property(nonatomic, retain) NSString *photoUrl;
-@property(nonatomic, retain) NSNumber *balance;
-@property(nonatomic, retain) NSString *blurb;
-@property(nonatomic, retain) NSNumber *strength;
-@property(nonatomic, retain) NSNumber *intelligence;
-@property(nonatomic, retain) NSNumber *constitution;
-@property(nonatomic, retain) NSNumber *perception;
-@property(nonatomic, retain) NSNumber *contributorLevel;
-@property(nonatomic, retain) NSString *contributorText;
-@property(nonatomic, retain) NSString *currentMount;
-@property(nonatomic, retain) NSString *currentPet;
-@property(nonatomic, retain) NSString *email;
-@property(nonatomic, retain) NSNumber *experience;
-@property(nonatomic, retain) NSNumber *gold;
-@property(nonatomic, retain, getter=getCleanedClassName) NSString *hclass;
-@property(nonatomic, readonly, getter=getDirtyClassName) NSString *dirtyClass;
-@property(nonatomic, retain) NSNumber *health;
-@property(nonatomic, retain) NSString *id;
-@property(nonatomic, retain) NSString *invitedParty;
-@property(nonatomic, retain) NSString *invitedPartyName;
-@property(nonatomic, retain) NSNumber *level;
-@property(nonatomic, retain) NSNumber *magic;
-@property(nonatomic, retain) NSNumber *maxHealth;
-@property(nonatomic, retain) NSNumber *maxMagic;
-@property(nonatomic, retain) NSDate *memberSince;
-@property(nonatomic, retain) NSNumber *nextLevel;
-@property(nonatomic, retain) NSNumber *participateInQuest;
-@property(nonatomic, retain) NSString *username;
-@property(nonatomic, retain) NSSet *groups;
-@property(nonatomic, retain) NSSet *ownedEggs;
-@property(nonatomic, retain) NSSet *ownedFood;
-@property(nonatomic, retain) NSSet *ownedGear;
-@property(nonatomic, retain) NSSet *ownedHatchingPotions;
-@property(nonatomic, retain) NSSet *ownedQuests;
-@property(nonatomic, retain) Group *party;
-@property(nonatomic, retain) NSSet *rewards;
-@property(nonatomic, retain) NSSet *tags;
-@property(nonatomic, retain) NSSet *tasks;
-@property(nonatomic, retain) NSDate *lastLogin;
-@property(nonatomic, retain) NSDate *lastAvatarFull;
-@property(nonatomic, retain) NSDate *lastAvatarNoPet;
-@property(nonatomic, retain) NSDate *lastAvatarHead;
-@property(nonatomic, retain) NSString *partyOrder;
-@property(nonatomic, retain) NSNumber *partyPosition;
-@property(nonatomic, retain) NSNumber *petCount;
-@property(nonatomic, retain) NSString *partyID;
-@property(nonatomic, retain) NSSet *pushDevices;
-@property(nonatomic, retain) NSNumber *inboxOptOut;
-@property(nonatomic, retain) NSNumber *inboxNewMessages;
-@property(nonatomic, retain) NSString *facebookID;
-@property(nonatomic, retain) NSString *googleID;
-@property(nonatomic, retain) SubscriptionPlan *subscriptionPlan;
-@property(nonatomic, retain) NSDate *lastCron;
-@property(nonatomic, retain) NSNumber *needsCron;
-@property(nonatomic, retain) NSNumber *loginIncentives;
-@property(nonatomic, retain) NSNumber *pointsToAllocate;
-@property(nonatomic, retain) NSNumber *pendingDamage;
+@property(nonnull, nonatomic, retain) NSString *loginname;
+@property(nonnull, nonatomic, retain) NSString *photoUrl;
+@property(nonnull, nonatomic, retain) NSNumber *balance;
+@property(nonnull, nonatomic, retain) NSString *blurb;
+@property(nullable, nonatomic, retain) NSNumber *strength;
+@property(nullable, nonatomic, retain) NSNumber *intelligence;
+@property(nullable, nonatomic, retain) NSNumber *constitution;
+@property(nullable, nonatomic, retain) NSNumber *perception;
+@property(nonnull, nonatomic, retain) NSNumber *contributorLevel;
+@property(nonnull, nonatomic, retain) NSString *contributorText;
+@property(nonnull, nonatomic, retain) NSString *currentMount;
+@property(nonnull, nonatomic, retain) NSString *currentPet;
+@property(nonnull, nonatomic, retain) NSString *email;
+@property(nonnull, nonatomic, retain) NSNumber *experience;
+@property(nonnull, nonatomic, retain) NSNumber *gold;
+@property(nullable, nonatomic, retain, getter=getCleanedClassName) NSString *hclass;
+@property(nonnull, nonatomic, readonly, getter=getDirtyClassName) NSString *dirtyClass;
+@property(nonnull, nonatomic, retain) NSNumber *health;
+@property(nonnull, nonatomic, retain) NSString *id;
+@property(nonnull, nonatomic, retain) NSString *invitedParty;
+@property(nonnull, nonatomic, retain) NSString *invitedPartyName;
+@property(nonnull, nonatomic, retain) NSNumber *level;
+@property(nonnull, nonatomic, retain) NSNumber *magic;
+@property(nonnull, nonatomic, retain) NSNumber *maxHealth;
+@property(nonnull, nonatomic, retain) NSNumber *maxMagic;
+@property(nonnull, nonatomic, retain) NSDate *memberSince;
+@property(nonnull, nonatomic, retain) NSNumber *nextLevel;
+@property(nonnull, nonatomic, retain) NSNumber *participateInQuest;
+@property(nonnull, nonatomic, retain) NSString *username;
+@property(nonnull, nonatomic, retain) NSSet *groups;
+@property(nonnull, nonatomic, retain) NSSet *ownedEggs;
+@property(nonnull, nonatomic, retain) NSSet *ownedFood;
+@property(nonnull, nonatomic, retain) NSSet *ownedGear;
+@property(nonnull, nonatomic, retain) NSSet *ownedHatchingPotions;
+@property(nonnull, nonatomic, retain) NSSet *ownedQuests;
+@property(nonnull, nonatomic, retain) Group *party;
+@property(nonnull, nonatomic, retain) NSSet *rewards;
+@property(nonnull, nonatomic, retain) NSSet *tags;
+@property(nonnull, nonatomic, retain) NSSet *tasks;
+@property(nonnull, nonatomic, retain) NSDate *lastLogin;
+@property(nonnull, nonatomic, retain) NSDate *lastAvatarFull;
+@property(nonnull, nonatomic, retain) NSDate *lastAvatarNoPet;
+@property(nonnull, nonatomic, retain) NSDate *lastAvatarHead;
+@property(nonnull, nonatomic, retain) NSString *partyOrder;
+@property(nonnull, nonatomic, retain) NSNumber *partyPosition;
+@property(nonnull, nonatomic, retain) NSNumber *petCount;
+@property(nonnull, nonatomic, retain) NSString *partyID;
+@property(nonnull, nonatomic, retain) NSSet *pushDevices;
+@property(nonnull, nonatomic, retain) NSNumber *inboxOptOut;
+@property(nonnull, nonatomic, retain) NSNumber *inboxNewMessages;
+@property(nonnull, nonatomic, retain) NSString *facebookID;
+@property(nonnull, nonatomic, retain) NSString *googleID;
+@property(nonnull, nonatomic, retain) SubscriptionPlan *subscriptionPlan;
+@property(nonnull, nonatomic, retain) NSDate *lastCron;
+@property(nonnull, nonatomic, retain) NSNumber *needsCron;
+@property(nonnull, nonatomic, retain) NSNumber *loginIncentives;
+@property(nonnull, nonatomic, retain) NSNumber *pointsToAllocate;
+@property(nonnull, nonatomic, retain) NSNumber *pendingDamage;
 
-@property(nonatomic, retain) Preferences *preferences;
-@property(nonatomic, retain) Outfit *costume;
-@property(nonatomic, retain) Outfit *equipped;
-@property(nonatomic, retain) Flags *flags;
-@property(nonatomic, retain) Buff *buff;
-@property(nonatomic, retain) SpecialItems *specialItems;
-@property(nonatomic, retain) NSSet *challenges;
+@property(nullable, nonatomic, retain) Preferences *preferences;
+@property(nullable, nonatomic, retain) Outfit *costume;
+@property(nullable, nonatomic, retain) Outfit *equipped;
+@property(nullable, nonatomic, retain) Flags *flags;
+@property(nullable, nonatomic, retain) Buff *buff;
+@property(nullable, nonatomic, retain) SpecialItems *specialItems;
+@property(nullable, nonatomic, retain) NSSet *challenges;
 
-@property(nonatomic, retain, setter=setPetCountFromArray:) NSDictionary *petCountArray;
-@property(nonatomic, retain, setter=setCustomizationsDictionary:)
+@property(nullable, nonatomic, retain, setter=setPetCountFromArray:) NSDictionary *petCountArray;
+@property(nullable, nonatomic, retain, setter=setCustomizationsDictionary:)
     NSDictionary *customizationsDictionary;
-@property(nonatomic) NSArray *challengeArray;
+@property(nullable, nonatomic) NSArray *challengeArray;
 
 @end
 
@@ -99,85 +99,103 @@
 
 @interface User (CoreDataGeneratedAccessors)
 
-- (void)addGroupsObject:(Group *)value;
+- (void)addGroupsObject:(Group *_Nonnull)value;
 
-- (void)removeGroupsObject:(Group *)value;
+- (void)removeGroupsObject:(Group *_Nonnull)value;
 
-- (void)addGroups:(NSSet *)values;
+- (void)addGroups:(NSSet *_Nonnull)values;
 
-- (void)removeGroups:(NSSet *)values;
+- (void)removeGroups:(NSSet *_Nonnull)values;
 
-- (void)addOwnedEggsObject:(Egg *)value;
+- (void)addOwnedEggsObject:(Egg *_Nonnull)value;
 
-- (void)removeOwnedEggsObject:(Egg *)value;
+- (void)removeOwnedEggsObject:(Egg *_Nonnull)value;
 
-- (void)addOwnedEggs:(NSSet *)values;
+- (void)addOwnedEggs:(NSSet *_Nonnull)values;
 
-- (void)removeOwnedEggs:(NSSet *)values;
+- (void)removeOwnedEggs:(NSSet *_Nonnull)values;
 
-- (void)addOwnedFoodObject:(NSManagedObject *)value;
+- (void)addOwnedFoodObject:(NSManagedObject *_Nonnull)value;
 
-- (void)removeOwnedFoodObject:(NSManagedObject *)value;
+- (void)removeOwnedFoodObject:(NSManagedObject *_Nonnull)value;
 
-- (void)addOwnedFood:(NSSet *)values;
+- (void)addOwnedFood:(NSSet *_Nonnull)values;
 
-- (void)removeOwnedFood:(NSSet *)values;
+- (void)removeOwnedFood:(NSSet *_Nonnull)values;
 
-- (void)addOwnedGearObject:(Gear *)value;
+- (void)addOwnedGearObject:(Gear *_Nonnull)value;
 
-- (void)removeOwnedGearObject:(Gear *)value;
+- (void)removeOwnedGearObject:(Gear *_Nonnull)value;
 
-- (void)addOwnedGear:(NSSet *)values;
+- (void)addOwnedGear:(NSSet *_Nonnull)values;
 
-- (void)removeOwnedGear:(NSSet *)values;
+- (void)removeOwnedGear:(NSSet *_Nonnull)values;
 
-- (void)addOwnedHatchingPotionsObject:(NSManagedObject *)value;
+- (void)addOwnedHatchingPotionsObject:(NSManagedObject *_Nonnull)value;
 
-- (void)removeOwnedHatchingPotionsObject:(NSManagedObject *)value;
+- (void)removeOwnedHatchingPotionsObject:(NSManagedObject *_Nonnull)value;
 
-- (void)addOwnedHatchingPotions:(NSSet *)values;
+- (void)addOwnedHatchingPotions:(NSSet *_Nonnull)values;
 
-- (void)removeOwnedHatchingPotions:(NSSet *)values;
+- (void)removeOwnedHatchingPotions:(NSSet *_Nonnull)values;
 
-- (void)addOwnedQuestsObject:(Quest *)value;
+- (void)addOwnedQuestsObject:(Quest *_Nonnull)value;
 
-- (void)removeOwnedQuestsObject:(Quest *)value;
+- (void)removeOwnedQuestsObject:(Quest *_Nonnull)value;
 
-- (void)addOwnedQuests:(NSSet *)values;
+- (void)addOwnedQuests:(NSSet *_Nonnull)values;
 
-- (void)removeOwnedQuests:(NSSet *)values;
+- (void)removeOwnedQuests:(NSSet *_Nonnull)values;
 
-- (void)addTagsObject:(Tag *)value;
+- (void)addTagsObject:(Tag *_Nonnull)value;
 
-- (void)removeTagsObject:(Tag *)value;
+- (void)removeTagsObject:(Tag *_Nonnull)value;
 
-- (void)addTags:(NSSet *)values;
+- (void)addTags:(NSSet *_Nonnull)values;
 
-- (void)removeTags:(NSSet *)values;
+- (void)removeTags:(NSSet *_Nonnull)values;
 
-- (void)addChallengesObject:(Challenge *)value;
+- (void)addChallengesObject:(Challenge *_Nonnull)value;
 
-- (void)removeChallengesObject:(Challenge *)value;
+- (void)removeChallengesObject:(Challenge *_Nonnull)value;
 
-- (void)addChallenges:(NSSet *)values;
+- (void)addChallenges:(NSSet *_Nonnull)values;
 
-- (void)removeChallenges:(NSSet *)values;
+- (void)removeChallenges:(NSSet *_Nonnull)values;
 
-- (void)addTasksObject:(Task *)value;
+- (void)addTasksObject:(Task *_Nonnull)value;
 
-- (void)removeTasksObject:(Task *)value;
+- (void)removeTasksObject:(Task *_Nonnull)value;
 
-- (void)addTasks:(NSSet *)values;
+- (void)addTasks:(NSSet *_Nonnull)values;
 
-- (void)removeTasks:(NSSet *)values;
+- (void)removeTasks:(NSSet *_Nonnull)values;
 
-- (void)addCustomizationsObject:(Customization *)value;
+- (void)addCustomizationsObject:(Customization *_Nonnull)value;
 
-- (void)removeCustomizationsObject:(Customization *)value;
+- (void)removeCustomizationsObject:(Customization *_Nonnull)value;
 
-- (void)addCustomizations:(NSSet *)values;
+- (void)addCustomizations:(NSSet *_Nonnull)values;
 
-- (void)removeCustomizations:(NSSet *)values;
+- (void)removeCustomizations:(NSSet *_Nonnull)values;
+
+- (UIColor *_Nonnull)classColor;
+
+- (UIColor *_Nonnull)contributorColor;
+
+- (NSArray *_Nonnull)equippedArray;
+
+- (NSString *_Nonnull)hashedValueForAccountName;
+
+- (BOOL)hasSeenTutorialStepWithIdentifier:(NSString *_Nonnull)identifier;
+
+- (BOOL)didCronRunToday;
+
+- (BOOL)isSubscribed;
+
+- (BOOL)hasClassSelected;
+
+- (BOOL)isModerator;
 
 - (void)setAvatarSubview:(UIView *)view
          showsBackground:(BOOL)showsBackground
@@ -186,7 +204,6 @@
 - (UIView *)getAvatarViewShowsBackground:(BOOL)showsBackground
                               showsMount:(BOOL)showsMount
                                 showsPet:(BOOL)showsPet;
-
 - (void)setAvatarSubview:(UIView *)view
          showsBackground:(BOOL)showsBackground
               showsMount:(BOOL)showsMount
@@ -197,21 +214,4 @@
                                 showsPet:(BOOL)showsPet
                                isFainted:(BOOL)isFainted;
 
-- (UIColor *)classColor;
-
-- (UIColor *)contributorColor;
-
-- (NSArray *)equippedArray;
-
-- (NSString *)hashedValueForAccountName;
-
-- (BOOL)hasSeenTutorialStepWithIdentifier:(NSString *)identifier;
-
-- (BOOL)didCronRunToday;
-
-- (BOOL)isSubscribed;
-
-- (BOOL)hasClassSelected;
-
-- (BOOL)isModerator;
 @end

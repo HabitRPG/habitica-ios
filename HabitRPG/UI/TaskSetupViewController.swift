@@ -135,7 +135,7 @@ enum SetupTaskCategory {
 
 class TaskSetupViewController: UIViewController, TypingTextViewController {
     
-    @IBOutlet weak var avatarView: UIView!
+    @IBOutlet weak var avatarView: AvatarView!
 
     @IBOutlet weak var workCategoryButton: UIButton!
     @IBOutlet weak var exerciseCategoryButton: UIButton!
@@ -157,8 +157,13 @@ class TaskSetupViewController: UIViewController, TypingTextViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        avatarView.showBackground = false
+        avatarView.showMount = false
+        avatarView.showPet = false
+        avatarView.size = .compact
+        
         user = HRPGManager.shared().getUser()
-        user?.setAvatarSubview(avatarView, showsBackground: false, showsMount: false, showsPet: false)
+        avatarView.avatar = user
         
         initButtons()
     
@@ -270,6 +275,8 @@ class TaskSetupViewController: UIViewController, TypingTextViewController {
     
     func startTyping() {
         speechBubbleView.animateTextView()
-        user?.setAvatarSubview(avatarView, showsBackground: false, showsMount: false, showsPet: false)
+        if let user = self.user {
+            avatarView.avatar = user
+        }
     }
 }

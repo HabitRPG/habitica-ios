@@ -48,3 +48,5 @@
 #import <SlackTextViewController/SLKTextViewController.h>
 #import "HRPGTaskProtocol.h"
 #import "HRPGFlagInformationOverlayView.h"
+#import "ChatMessageAvatar+CoreDataClass.h"
+#import "ChatMessageLike.h"

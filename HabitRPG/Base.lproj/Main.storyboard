@@ -2357,7 +2357,7 @@ and helps keep Habitica running</string>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <view userInteractionEnabled="NO" tag="3" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZH9-se-4sr">
+                                        <view userInteractionEnabled="NO" tag="3" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZH9-se-4sr" customClass="AvatarView" customModule="Habitica" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="3" width="140" height="209"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="140" id="pkT-vT-XC3"/>

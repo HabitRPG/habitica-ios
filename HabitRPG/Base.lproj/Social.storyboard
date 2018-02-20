@@ -1435,7 +1435,7 @@ Invite friends now to earn a Quest Scroll!</string>
                                     <rect key="frame" x="0.0" y="0.0" width="341" height="99.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view userInteractionEnabled="NO" tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="r7M-p0-7Or">
+                                        <view userInteractionEnabled="NO" tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="r7M-p0-7Or" customClass="AvatarView" customModule="Habitica" customModuleProvider="target">
                                             <rect key="frame" x="8" y="5" width="90" height="90"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="r7M-p0-7Or" secondAttribute="height" multiplier="1:1" id="cHc-fG-I98"/>
@@ -1620,7 +1620,7 @@ Invite friends now to earn a Quest Scroll!</string>
                                             <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <view userInteractionEnabled="NO" tag="8" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WBQ-iv-nmE">
+                                        <view userInteractionEnabled="NO" tag="8" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WBQ-iv-nmE" customClass="AvatarView" customModule="Habitica" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="140" height="147"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="147" id="6EA-WH-yjN"/>
@@ -2858,7 +2858,7 @@ Invite friends now to earn a Quest Scroll!</string>
         <segue reference="UUp-aA-Ao9"/>
         <segue reference="kns-o3-fej"/>
         <segue reference="2KU-R3-vSq"/>
-        <segue reference="Hfa-0k-B92"/>
+        <segue reference="THm-jt-yJG"/>
         <segue reference="EV0-ra-m7s"/>
         <segue reference="bEM-KI-Si8"/>
         <segue reference="C12-ty-sO4"/>

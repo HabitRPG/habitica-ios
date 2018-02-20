@@ -164,14 +164,14 @@ class AttributePointsVieController: HRPGUIViewController {
         constitutionStatsView.levelValue = levelStat
         perceptionStatsView.levelValue = levelStat
         
-        totalStrength += user.buff.strength?.intValue ?? 0
-        totalIntelligence += user.buff.intelligence?.intValue ?? 0
-        totalConstitution += user.buff.constitution?.intValue ?? 0
-        totalPerception += user.buff.perception?.intValue ?? 0
-        strengthStatsView.buffValue = user.buff.strength?.intValue ?? 0
-        intelligenceStatsView.buffValue = user.buff.intelligence?.intValue ?? 0
-        constitutionStatsView.buffValue = user.buff.constitution?.intValue ?? 0
-        perceptionStatsView.buffValue = user.buff.perception?.intValue ?? 0
+        totalStrength += user.buff?.strength?.intValue ?? 0
+        totalIntelligence += user.buff?.intelligence?.intValue ?? 0
+        totalConstitution += user.buff?.constitution?.intValue ?? 0
+        totalPerception += user.buff?.perception?.intValue ?? 0
+        strengthStatsView.buffValue = user.buff?.strength?.intValue ?? 0
+        intelligenceStatsView.buffValue = user.buff?.intelligence?.intValue ?? 0
+        constitutionStatsView.buffValue = user.buff?.constitution?.intValue ?? 0
+        perceptionStatsView.buffValue = user.buff?.perception?.intValue ?? 0
         
         totalStrength += user.strength?.intValue ?? 0
         totalIntelligence += user.intelligence?.intValue ?? 0
@@ -190,14 +190,14 @@ class AttributePointsVieController: HRPGUIViewController {
     private func fetchGearStats(user: User) {
         let fetchRequest = NSFetchRequest<Gear>(entityName: "Gear")
         var keys = [String]()
-        keys.append(user.equipped.armor ?? "")
-        keys.append(user.equipped.back ?? "")
-        keys.append(user.equipped.body ?? "")
-        keys.append(user.equipped.eyewear ?? "")
-        keys.append(user.equipped.head ?? "")
-        keys.append(user.equipped.headAccessory ?? "")
-        keys.append(user.equipped.weapon ?? "")
-        keys.append(user.equipped.shield ?? "")
+        keys.append(user.equipped?.armor ?? "")
+        keys.append(user.equipped?.back ?? "")
+        keys.append(user.equipped?.body ?? "")
+        keys.append(user.equipped?.eyewear ?? "")
+        keys.append(user.equipped?.head ?? "")
+        keys.append(user.equipped?.headAccessory ?? "")
+        keys.append(user.equipped?.weapon ?? "")
+        keys.append(user.equipped?.shield ?? "")
         fetchRequest.predicate = NSPredicate(format: "key in %@", keys)
         let result = try? HRPGManager.shared().getManagedObjectContext().fetch(fetchRequest)
         if let gear = result {
@@ -266,7 +266,7 @@ class AttributePointsVieController: HRPGUIViewController {
         autoAllocationSwitch.isOn = useAutoAllocation
         distributionStackView.isHidden = !useAutoAllocation
         distributionBackground.isHidden = !useAutoAllocation
-        if useAutoAllocation, let allocationMode = user?.preferences.allocationMode {
+        if useAutoAllocation, let allocationMode = user?.preferences?.allocationMode {
             switch allocationMode {
             case "flat":
                 distributeEvenlyCheckmark.isHidden = false
@@ -287,7 +287,7 @@ class AttributePointsVieController: HRPGUIViewController {
     }
     
     @IBAction func autoAllocationChanged(_ sender: UISwitch) {
-        user?.preferences.automaticAllocation = NSNumber(value: sender.isOn)
+        user?.preferences?.automaticAllocation = NSNumber(value: sender.isOn)
         updateAutoAllocatonViews()
         HRPGManager.shared().updateUser(["preferences.automaticAllocation": sender.isOn], onSuccess: {[weak self] in
             self?.updateAutoAllocatonViews()
@@ -333,7 +333,7 @@ class AttributePointsVieController: HRPGUIViewController {
     }
     
     private func setAllocationMode(_ mode: String) {
-        user?.preferences.allocationMode = mode
+        user?.preferences?.allocationMode = mode
         updateAutoAllocatonViews()
         HRPGManager.shared().updateUser(["preferences.allocationMode": mode], onSuccess: {[weak self] in
             self?.updateAutoAllocatonViews()

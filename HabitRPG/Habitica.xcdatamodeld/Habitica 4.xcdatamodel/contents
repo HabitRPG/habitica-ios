@@ -1,0 +1,629 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="17B1003" minimumToolsVersion="Xcode 4.3" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+    <entity name="Buff" representedClassName="Buff" syncable="YES">
+        <attribute name="constitution" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="intelligence" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="perception" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="seafoam" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="shinySeed" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="snowball" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="spookySparkles" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="streak" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="strength" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="userID" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="buff" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="BuyableItem" representedClassName="BuyableItem" isAbstract="YES" parentEntity="Item" syncable="YES">
+        <attribute name="canBuy" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+    </entity>
+    <entity name="Challenge" representedClassName="Challenge" syncable="YES">
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="leaderId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="leaderName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="memberCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="official" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="prize" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="shortName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="categories" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ChallengeCategory" inverseName="challenge" inverseEntity="ChallengeCategory" syncable="YES"/>
+        <relationship name="dailies" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ChallengeTask" inverseName="dailyChallenge" inverseEntity="ChallengeTask" syncable="YES"/>
+        <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="challenges" inverseEntity="Group" syncable="YES"/>
+        <relationship name="habits" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ChallengeTask" inverseName="habitChallenge" inverseEntity="ChallengeTask" syncable="YES"/>
+        <relationship name="rewards" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ChallengeTask" inverseName="rewardChallenge" inverseEntity="ChallengeTask" syncable="YES"/>
+        <relationship name="todos" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ChallengeTask" inverseName="todoChallenge" inverseEntity="ChallengeTask" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="challenges" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="ChallengeCategory" representedClassName="ChallengeCategory" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="slug" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="challenge" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Challenge" inverseName="categories" inverseEntity="Challenge" syncable="YES"/>
+    </entity>
+    <entity name="ChallengeTask" representedClassName="ChallengeTask" syncable="YES">
+        <attribute name="attribute" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="completed" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="down" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="order" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="priority" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="up" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="value" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="dailyChallenge" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Challenge" inverseName="dailies" inverseEntity="Challenge" syncable="YES"/>
+        <relationship name="habitChallenge" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Challenge" inverseName="habits" inverseEntity="Challenge" syncable="YES"/>
+        <relationship name="rewardChallenge" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Challenge" inverseName="rewards" inverseEntity="Challenge" syncable="YES"/>
+        <relationship name="todoChallenge" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Challenge" inverseName="todos" inverseEntity="Challenge" syncable="YES"/>
+    </entity>
+    <entity name="ChatMessage" representedClassName="ChatMessage" syncable="YES">
+        <attribute name="attributedText" optional="YES" transient="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="backerLevel" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="backerNpc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="contributorLevel" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="contributorText" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="user" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="avatar" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ChatMessageAvatar" inverseName="message" inverseEntity="ChatMessageAvatar" syncable="YES"/>
+        <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="chatmessages" inverseEntity="Group" syncable="YES"/>
+        <relationship name="likes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ChatMessageLike" inverseName="messages" inverseEntity="ChatMessageLike" syncable="YES"/>
+        <relationship name="userObject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="chatmessages" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="ChatMessageAvatar" representedClassName="ChatMessageAvatar" syncable="YES">
+        <attribute name="background" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="chair" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="currentMount" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="currentPet" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hairBangs" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hairBase" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hairBeard" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hairColor" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hairFlower" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hairMustache" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="shirt" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="size" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="skin" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sleep" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="useCostume" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="costume" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Outfit" syncable="YES"/>
+        <relationship name="equipped" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Outfit" syncable="YES"/>
+        <relationship name="message" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ChatMessage" inverseName="avatar" inverseEntity="ChatMessage" syncable="YES"/>
+        <relationship name="preferences" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Preferences" syncable="YES"/>
+    </entity>
+    <entity name="ChatMessageLike" representedClassName="ChatMessageLike" syncable="YES">
+        <attribute name="userID" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="messages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ChatMessage" inverseName="likes" inverseEntity="ChatMessage" syncable="YES"/>
+    </entity>
+    <entity name="ChecklistItem" representedClassName="ChecklistItem" syncable="YES">
+        <attribute name="completed" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="task" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Task" inverseName="checklist" inverseEntity="Task" syncable="YES"/>
+    </entity>
+    <entity name="Customization" representedClassName="Customization" syncable="YES">
+        <attribute name="group" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="price" optional="YES" attributeType="Integer 16" defaultValueString="2" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="purchasable" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="purchased" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="set" optional="YES" attributeType="String" defaultValueString=" " syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Egg" representedClassName="Egg" parentEntity="BuyableItem" syncable="YES">
+        <attribute name="adjective" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mountText" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="ownedEggs" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="FAQ" representedClassName="FAQ" syncable="YES">
+        <attribute name="index" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="iosAnswer" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mobileAnswer" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="question" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="webAnswer" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Flags" representedClassName="Flags" syncable="YES">
+        <attribute name="armoireEmpty" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="armoireEnabled" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="armoireOpened" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="classSelected" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="communityGuidelinesAccepted" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="cronCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="dropsEnabled" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="habitNewStuff" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="itemsEnabled" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="rebirthEnabled" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="userID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="welcomed" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="commonTutorialSteps" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TutorialSteps" inverseName="commonUserFlags" inverseEntity="TutorialSteps" syncable="YES"/>
+        <relationship name="iOSTutorialSteps" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TutorialSteps" inverseName="iosUserFlags" inverseEntity="TutorialSteps" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="flags" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="Food" representedClassName="Food" parentEntity="BuyableItem" syncable="YES">
+        <attribute name="article" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="target" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="ownedFood" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="Gear" representedClassName="Gear" syncable="YES">
+        <attribute name="con" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="eventEnd" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="eventStart" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="index" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="intelligence" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="klass" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="owned" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="per" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="set" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="specialClass" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="str" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="value" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="ownedGear" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="Group" representedClassName="Group" syncable="YES">
+        <attribute name="balance" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="hdescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isMember" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="memberCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="privacy" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="questActive" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="questHP" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="questKey" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="questLeader" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="questRage" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="rageStrikes" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="summary" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="unreadMessages" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="challenges" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Challenge" inverseName="group" inverseEntity="Challenge" syncable="YES"/>
+        <relationship name="chatmessages" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ChatMessage" inverseName="group" inverseEntity="ChatMessage" syncable="YES"/>
+        <relationship name="collectStatus" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="QuestCollect" inverseName="group" inverseEntity="QuestCollect" syncable="YES"/>
+        <relationship name="groupMembers" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="groups" inverseEntity="User" syncable="YES"/>
+        <relationship name="leader" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="leadedParty" inverseEntity="User" syncable="YES"/>
+        <relationship name="member" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="party" inverseEntity="User" syncable="YES"/>
+        <relationship name="questParticipants" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="quest" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="HatchingPotion" representedClassName="HatchingPotion" parentEntity="Item" syncable="YES">
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="ownedHatchingPotions" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="ImprovementCategory" representedClassName="ImprovementCategory" syncable="YES">
+        <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isActive" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="preferences" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Preferences" inverseName="improvementCategories" inverseEntity="Preferences" syncable="YES"/>
+    </entity>
+    <entity name="InAppReward" representedClassName="InAppReward" parentEntity="MetaReward" syncable="YES">
+        <attribute name="availableUntil" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="currency" optional="YES" attributeType="String" defaultValueString="gold" syncable="YES"/>
+        <attribute name="imageName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isSuggested" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="lastPurchased" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="locked" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="path" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pinType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="purchaseType" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="InboxMessage" representedClassName="InboxMessage" syncable="YES">
+        <attribute name="attributedText" optional="YES" transient="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="backerLevel" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="backerNpc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="contributorLevel" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="contributorText" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sending" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="sent" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="sort" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="userID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="inboxMessages" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="Item" representedClassName="Item" isAbstract="YES" syncable="YES">
+        <attribute name="dialog" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isSubscriberItem" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="owned" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" defaultValueString="Quest" syncable="YES"/>
+        <attribute name="value" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+    </entity>
+    <entity name="MetaReward" representedClassName="MetaReward" isAbstract="YES" syncable="YES">
+        <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="order" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="rewardType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="value" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
+    </entity>
+    <entity name="Outfit" representedClassName="Outfit" syncable="YES">
+        <attribute name="armor" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="back" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="body" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="chair" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="eyewear" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="head" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="headAccessory" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="shield" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="userID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="weapon" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="userCostume" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="costume" inverseEntity="User" syncable="YES"/>
+        <relationship name="userEquipped" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="equipped" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="Pet" representedClassName="Pet" syncable="YES">
+        <attribute name="asMount" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="niceMountName" optional="YES" transient="YES" syncable="YES"/>
+        <attribute name="nicePetName" optional="YES" transient="YES" attributeType="String" syncable="YES"/>
+        <attribute name="trained" optional="YES" attributeType="Integer 16" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" defaultValueString=" " syncable="YES"/>
+        <relationship name="mountOwner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="ownedMounts" inverseEntity="User" syncable="YES"/>
+        <relationship name="petOwner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="ownedPets" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="Preferences" representedClassName="Preferences" syncable="YES">
+        <attribute name="allocationMode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="automaticAllocation" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="background" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="chair" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dayStart" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="disableClass" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="hairBangs" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hairBase" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hairBeard" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hairColor" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hairFlower" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hairMustache" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="language" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="shirt" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="size" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="skin" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sleep" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="timezoneOffset" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="useCostume" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="userID" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="improvementCategories" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ImprovementCategory" inverseName="preferences" inverseEntity="ImprovementCategory" syncable="YES"/>
+        <relationship name="pushNotifications" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PushNotifications" inverseName="preferences" inverseEntity="PushNotifications" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="preferences" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="PushDevice" representedClassName="PushDevice" syncable="YES">
+        <attribute name="regId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="pushDevices" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="PushNotifications" representedClassName="PushNotifications" syncable="YES">
+        <attribute name="giftedGems" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="giftedSubscription" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="invitedGuild" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="invitedParty" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="invitedQuest" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="newPM" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="questStarted" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="unsubscribeFromAll" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="userID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="wonChallenge" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="preferences" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Preferences" inverseName="pushNotifications" inverseEntity="Preferences" syncable="YES"/>
+    </entity>
+    <entity name="Quest" representedClassName="Quest" parentEntity="BuyableItem" syncable="YES">
+        <attribute name="bossDef" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="bossHp" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="bossName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="bossRage" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="bossStr" optional="YES" attributeType="Float" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="colorDark" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="colorExtraLight" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="colorLight" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="colorMedium" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="completition" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dropExp" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="dropGp" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="previous" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rageDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rageTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="collect" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="QuestCollect" inverseName="quest" inverseEntity="QuestCollect" syncable="YES"/>
+        <relationship name="itemDrops" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="QuestReward" inverseName="quest" inverseEntity="QuestReward" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="ownedQuests" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="QuestCollect" representedClassName="QuestCollect" syncable="YES">
+        <attribute name="collectCount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="count" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="collectStatus" inverseEntity="Group" syncable="YES"/>
+        <relationship name="quest" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Quest" inverseName="collect" inverseEntity="Quest" syncable="YES"/>
+    </entity>
+    <entity name="QuestReward" representedClassName="QuestReward" syncable="YES">
+        <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="onlyOwner" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="quest" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Quest" inverseName="itemDrops" inverseEntity="Quest" syncable="YES"/>
+    </entity>
+    <entity name="Reminder" representedClassName="Reminder" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="time" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="task" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Task" inverseName="reminders" inverseEntity="Task" syncable="YES"/>
+    </entity>
+    <entity name="Reward" representedClassName="Reward" parentEntity="MetaReward" syncable="YES">
+        <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="rewards" inverseEntity="Tag" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="rewards" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="Shop" representedClassName="Shop" syncable="YES">
+        <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imageName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="categories" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ShopCategory" inverseName="shop" inverseEntity="ShopCategory" syncable="YES"/>
+    </entity>
+    <entity name="ShopCategory" representedClassName="ShopCategory" syncable="YES">
+        <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="index" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="path" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pinType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="purchaseAll" optional="YES" attributeType="Boolean" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ShopItem" inverseName="category" inverseEntity="ShopItem" syncable="YES"/>
+        <relationship name="shop" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Shop" inverseName="categories" inverseEntity="Shop" syncable="YES"/>
+    </entity>
+    <entity name="ShopItem" representedClassName="ShopItem" syncable="YES">
+        <attribute name="availableUntil" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="currency" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imageName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="index" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="isSubscriberItem" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="itemsLeft" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastPurchased" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="locked" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="path" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pinType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="purchaseType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="unlockCondition" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="value" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ShopCategory" inverseName="items" inverseEntity="ShopCategory" syncable="YES"/>
+    </entity>
+    <entity name="SpecialItems" representedClassName="SpecialItems" syncable="YES">
+        <attribute name="birthday" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="greeting" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="nye" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="seafoam" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="shinySeed" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="snowball" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="spookySparkles" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="thankyou" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="userID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="valentine" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="specialItems" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="Spell" representedClassName="Spell" syncable="YES">
+        <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="klass" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="level" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="mana" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="target" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" spotlightIndexingEnabled="YES" syncable="YES"/>
+    </entity>
+    <entity name="SubscriptionPlan" representedClassName="SubscriptionPlan" syncable="YES">
+        <attribute name="consecutiveTrinkets" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="count" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="customerId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="dateTerminated" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="gemCapExtra" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="gemsBought" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="mysteryItemCount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="owner" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="paymentMethod" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="planId" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="subscriptionPlan" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="Tag" representedClassName="Tag" syncable="YES">
+        <attribute name="challenge" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="order" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="rewards" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Reward" inverseName="tags" inverseEntity="Reward" syncable="YES"/>
+        <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="tags" inverseEntity="Task" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="tags" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="Task" representedClassName="Task" syncable="YES">
+        <attribute name="attribute" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="challengeID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="completed" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="counterDown" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="counterUp" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="daysOfMonth" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="down" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="duedate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="everyX" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="frequency" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="friday" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isDue" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="monday" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="nextDue" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="order" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="priority" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="saturday" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="streak" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="sunday" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="thursday" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="tuesday" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="up" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="value" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="wednesday" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="weeksOfMonth" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="yesterDaily" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="checklist" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="ChecklistItem" inverseName="task" inverseEntity="ChecklistItem" syncable="YES"/>
+        <relationship name="reminders" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Reminder" inverseName="task" inverseEntity="Reminder" syncable="YES"/>
+        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="tasks" inverseEntity="Tag" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="tasks" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="TutorialSteps" representedClassName="TutorialSteps" syncable="YES">
+        <attribute name="identifier" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="shownInView" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="wasShown" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="commonUserFlags" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Flags" inverseName="commonTutorialSteps" inverseEntity="Flags" syncable="YES"/>
+        <relationship name="iosUserFlags" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Flags" inverseName="iOSTutorialSteps" inverseEntity="Flags" syncable="YES"/>
+    </entity>
+    <entity name="UnreadMessages" syncable="YES">
+        <attribute name="groupID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hasUnread" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="unreadMessages" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="User" representedClassName="User" syncable="YES">
+        <attribute name="balance" optional="YES" attributeType="Float" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="blurb" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="buffstreak" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="constitution" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="contributions" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="contributorLevel" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="contributorText" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="currentMount" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="currentPet" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dropsEnabled" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="experience" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="facebookID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="gold" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="googleID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hclass" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="health" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="inboxNewMessages" optional="YES" attributeType="Integer 16" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="inboxOptOut" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="intelligence" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="invitedParty" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="invitedPartyName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="itemsEnabled" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="lastAvatarFull" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="lastAvatarHead" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="lastAvatarNoPet" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="lastCron" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="lastLogin" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="lastSetupStep" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="level" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="loginIncentives" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="loginname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="magic" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="maxHealth" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="maxMagic" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="memberSince" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="needsCron" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="nextLevel" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="participateInQuest" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="partyID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="partyOrder" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="partyPosition" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="pendingDamage" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="perception" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="petCount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="petCountArray" optional="YES" transient="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="photoUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pointsToAllocate" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="strength" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="trainingConstitution" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="trainingIntelligence" optional="YES" attributeType="Integer 16" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="trainingPerception" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="trainingStrength" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="unallocatedPoints" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="buff" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Buff" inverseName="user" inverseEntity="Buff" syncable="YES"/>
+        <relationship name="challenges" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Challenge" inverseName="user" inverseEntity="Challenge" syncable="YES"/>
+        <relationship name="chatmessages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ChatMessage" inverseName="userObject" inverseEntity="ChatMessage" syncable="YES"/>
+        <relationship name="costume" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Outfit" inverseName="userCostume" inverseEntity="Outfit" syncable="YES"/>
+        <relationship name="equipped" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Outfit" inverseName="userEquipped" inverseEntity="Outfit" syncable="YES"/>
+        <relationship name="flags" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Flags" inverseName="user" inverseEntity="Flags" syncable="YES"/>
+        <relationship name="groups" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Group" inverseName="groupMembers" inverseEntity="Group" syncable="YES"/>
+        <relationship name="inboxMessages" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="InboxMessage" inverseName="user" inverseEntity="InboxMessage" syncable="YES"/>
+        <relationship name="leadedParty" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="leader" inverseEntity="Group" syncable="YES"/>
+        <relationship name="ownedEggs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Egg" inverseName="user" inverseEntity="Egg" syncable="YES"/>
+        <relationship name="ownedFood" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Food" inverseName="user" inverseEntity="Food" syncable="YES"/>
+        <relationship name="ownedGear" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Gear" inverseName="user" inverseEntity="Gear" syncable="YES"/>
+        <relationship name="ownedHatchingPotions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="HatchingPotion" inverseName="user" inverseEntity="HatchingPotion" syncable="YES"/>
+        <relationship name="ownedMounts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Pet" inverseName="mountOwner" inverseEntity="Pet" syncable="YES"/>
+        <relationship name="ownedPets" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Pet" inverseName="petOwner" inverseEntity="Pet" syncable="YES"/>
+        <relationship name="ownedQuests" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Quest" inverseName="user" inverseEntity="Quest" syncable="YES"/>
+        <relationship name="party" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="member" inverseEntity="Group" syncable="YES"/>
+        <relationship name="preferences" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Preferences" inverseName="user" inverseEntity="Preferences" syncable="YES"/>
+        <relationship name="pushDevices" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="PushDevice" inverseName="owner" inverseEntity="PushDevice" syncable="YES"/>
+        <relationship name="quest" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="questParticipants" inverseEntity="Group" syncable="YES"/>
+        <relationship name="rewards" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Reward" inverseName="user" inverseEntity="Reward" syncable="YES"/>
+        <relationship name="specialItems" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="SpecialItems" inverseName="user" inverseEntity="SpecialItems" syncable="YES"/>
+        <relationship name="subscriptionPlan" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="SubscriptionPlan" inverseName="user" inverseEntity="SubscriptionPlan" syncable="YES"/>
+        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Tag" inverseName="user" inverseEntity="Tag" syncable="YES"/>
+        <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Task" inverseName="user" inverseEntity="Task" syncable="YES"/>
+        <relationship name="unreadMessages" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="UnreadMessages" inverseName="user" inverseEntity="UnreadMessages" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Buff" positionX="9" positionY="153" width="128" height="210"/>
+        <element name="BuyableItem" positionX="0" positionY="0" width="128" height="60"/>
+        <element name="Challenge" positionX="9" positionY="153" width="128" height="315"/>
+        <element name="ChallengeCategory" positionX="9" positionY="153" width="128" height="105"/>
+        <element name="ChallengeTask" positionX="9" positionY="153" width="128" height="270"/>
+        <element name="ChatMessage" positionX="0" positionY="0" width="128" height="255"/>
+        <element name="ChatMessageAvatar" positionX="9" positionY="153" width="128" height="330"/>
+        <element name="ChatMessageLike" positionX="0" positionY="0" width="128" height="75"/>
+        <element name="ChecklistItem" positionX="0" positionY="0" width="128" height="105"/>
+        <element name="Customization" positionX="0" positionY="0" width="128" height="180"/>
+        <element name="Egg" positionX="0" positionY="0" width="128" height="90"/>
+        <element name="FAQ" positionX="27" positionY="135" width="128" height="120"/>
+        <element name="Flags" positionX="9" positionY="153" width="128" height="270"/>
+        <element name="Food" positionX="0" positionY="0" width="128" height="90"/>
+        <element name="Gear" positionX="0" positionY="0" width="128" height="300"/>
+        <element name="Group" positionX="0" positionY="0" width="128" height="390"/>
+        <element name="HatchingPotion" positionX="0" positionY="0" width="128" height="60"/>
+        <element name="ImprovementCategory" positionX="0" positionY="0" width="128" height="90"/>
+        <element name="InAppReward" positionX="18" positionY="162" width="128" height="180"/>
+        <element name="InboxMessage" positionX="9" positionY="153" width="128" height="255"/>
+        <element name="Item" positionX="0" positionY="0" width="128" height="165"/>
+        <element name="MetaReward" positionX="0" positionY="0" width="128" height="150"/>
+        <element name="Outfit" positionX="0" positionY="0" width="128" height="240"/>
+        <element name="Pet" positionX="0" positionY="0" width="128" height="165"/>
+        <element name="Preferences" positionX="0" positionY="0" width="128" height="390"/>
+        <element name="PushDevice" positionX="18" positionY="162" width="128" height="90"/>
+        <element name="PushNotifications" positionX="9" positionY="153" width="128" height="210"/>
+        <element name="Quest" positionX="0" positionY="0" width="128" height="315"/>
+        <element name="QuestCollect" positionX="0" positionY="0" width="128" height="135"/>
+        <element name="QuestReward" positionX="9" positionY="153" width="128" height="120"/>
+        <element name="Reminder" positionX="0" positionY="0" width="128" height="105"/>
+        <element name="Reward" positionX="0" positionY="0" width="128" height="90"/>
+        <element name="Shop" positionX="9" positionY="153" width="128" height="120"/>
+        <element name="ShopCategory" positionX="18" positionY="162" width="128" height="180"/>
+        <element name="ShopItem" positionX="27" positionY="171" width="128" height="315"/>
+        <element name="SpecialItems" positionX="18" positionY="162" width="128" height="210"/>
+        <element name="Spell" positionX="0" positionY="0" width="128" height="150"/>
+        <element name="SubscriptionPlan" positionX="9" positionY="153" width="128" height="225"/>
+        <element name="Tag" positionX="0" positionY="0" width="128" height="150"/>
+        <element name="Task" positionX="0" positionY="0" width="128" height="585"/>
+        <element name="TutorialSteps" positionX="0" positionY="0" width="128" height="135"/>
+        <element name="UnreadMessages" positionX="0" positionY="0" width="128" height="90"/>
+        <element name="User" positionX="0" positionY="0" width="128" height="1275"/>
+    </elements>
+</model>

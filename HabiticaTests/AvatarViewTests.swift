@@ -249,7 +249,7 @@ class TestAvatar: Avatar {
     var knockout: String?
     var pet: String?
     var isSleep: Bool
-    var size: String
+    var size: String?
     
     init(background: String? = nil,
          mount: String? = nil,

@@ -11,6 +11,7 @@ import DateTools
 
 class ChatTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var avatarView: AvatarView!
     @IBOutlet weak private var messageWrapper: UIView!
     @IBOutlet weak private var usernameLabel: UsernameLabel!
     @IBOutlet weak private var positionLabel: PaddedLabel!
@@ -39,10 +40,11 @@ class ChatTableViewCell: UITableViewCell {
     private var isOwnMessage = false {
         didSet {
             if isOwnMessage {
-                leftMarginConstraint.constant = 64
+                leftMarginConstraint.constant = 74
             } else {
                 leftMarginConstraint.constant = 8
             }
+            avatarView.isHidden = isOwnMessage
             reportButton.isHidden = isOwnMessage
             if !isModerator {
                 deleteButton.isHidden = !isOwnMessage
@@ -93,6 +95,10 @@ class ChatTableViewCell: UITableViewCell {
         selectionStyle = .none
         backgroundColor = .white
         
+        avatarView.size = .compact
+        avatarView.showMount = false
+        avatarView.showPet = false
+        
         positionLabel.horizontalPadding = 8
     }
     
@@ -102,20 +108,24 @@ class ChatTableViewCell: UITableViewCell {
         isPrivateMessage = false
         self.isModerator = isModerator
         isOwnMessage = chatMessage.uuid == userID
-        wasMentioned = chatMessage.text.range(of: username) != nil
+        wasMentioned = chatMessage.text?.range(of: username) != nil
 
-        usernameLabel.text = chatMessage.user.unicodeEmoji
-        contributorLevel = chatMessage.contributorLevel.intValue
+        usernameLabel.text = chatMessage.user?.unicodeEmoji
+        contributorLevel = chatMessage.contributorLevel?.intValue ?? 0
         messageTextView.textColor = UIColor.gray10()
         
-        stylePlusOneButton(likes: chatMessage.likes as? Set<ChatMessageLike>, userID: userID)
+        stylePlusOneButton(likes: chatMessage.likes, userID: userID)
         
         setTimeStamp(date: chatMessage.timestamp)
         
         if chatMessage.attributedText?.length ?? 0 > 0 {
             messageTextView.attributedText = chatMessage.attributedText
         } else {
-            messageTextView.text = chatMessage.text.unicodeEmoji
+            messageTextView.text = chatMessage.text?.unicodeEmoji
+        }
+        
+        if !isOwnMessage {
+            avatarView.avatar = chatMessage.avatar
         }
     }
     

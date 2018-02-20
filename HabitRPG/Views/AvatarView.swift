@@ -11,6 +11,12 @@ import YYWebImage
 import SnapKit
 
 @objc
+enum AvatarViewSize: Int {
+    case compact
+    case regular
+}
+
+@objc
 @IBDesignable
 class AvatarView: UIView {
 
@@ -27,6 +33,7 @@ class AvatarView: UIView {
     @IBInspectable @objc var showMount: Bool = true
     @IBInspectable @objc var showPet: Bool = true
     @IBInspectable @objc var isFainted: Bool = false
+    @objc var size: AvatarViewSize = .regular
     
     public var onRenderingFinished: (() -> Void)?
     
@@ -203,7 +210,7 @@ class AvatarView: UIView {
         }
         let viewDictionary = avatar.getViewDictionary(showsBackground: showBackground, showsMount: showMount, showsPet: showPet, isFainted: isFainted)
         
-        let boxSize = (showBackground || showPet || showMount) ? CGSize(width: 140, height: 147) : CGSize(width: 90, height: 90)
+        let boxSize = size == .regular ? CGSize(width: 140, height: 147) : CGSize(width: 90, height: 90)
         
         viewOrder.enumerated().forEach({ (index, type) in
             if viewDictionary[type] ?? false {
@@ -245,7 +252,7 @@ class AvatarView: UIView {
     private func setConstraints(_ imageView: YYAnimatedImageView, type: String, size: CGSize, viewDictionary: [String: Bool]) {
         imageView.snp.removeConstraints()
         var offset: CGFloat = 0
-        if !(viewDictionary["mount-head"] ?? false) {
+        if !(viewDictionary["mount-head"] ?? false) && size.height > 90 {
             offset = 28
             if viewDictionary["pet"] ?? false {
                 offset -= 3

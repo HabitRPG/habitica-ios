@@ -313,7 +313,7 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController {
         if newCustomization.path == "glasses" {
             var key: String?
             if newCustomization.key.count == 0 {
-                key = user?.equipped.eyewear
+                key = user?.equipped?.eyewear
             } else {
                 key = newCustomization.key
             }
@@ -378,25 +378,25 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController {
         if let user = self.user {
             switch customization.subcategory {
             case .size:
-                return customization.key == user.preferences.size ?? ""
+                return customization.key == user.preferences?.size ?? ""
             case .shirt:
-                return customization.key == user.preferences.shirt ?? ""
+                return customization.key == user.preferences?.shirt ?? ""
             case .color:
                 if customization.category == .skin {
-                    return customization.key == user.preferences.skin ?? ""
+                    return customization.key == user.preferences?.skin ?? ""
                 } else {
-                    return customization.key == user.preferences.hairColor ?? ""
+                    return customization.key == user.preferences?.hairColor ?? ""
                 }
             case .ponytail:
-                return customization.key == user.preferences.hairBase ?? ""
+                return customization.key == user.preferences?.hairBase ?? ""
             case .bangs:
-                return customization.key == user.preferences.hairBangs ?? ""
+                return customization.key == user.preferences?.hairBangs ?? ""
             case .flower:
-                return customization.key == user.preferences.hairFlower ?? ""
+                return customization.key == user.preferences?.hairFlower ?? ""
             case .glasses:
-                return customization.key == user.equipped.eyewear ?? ""
+                return customization.key == user.equipped?.eyewear ?? ""
             case .wheelchair:
-                return "chair_"+customization.key == user.preferences.chair ?? "" || customization.key == user.preferences.chair ?? "" || (customization.key == "none" && user.preferences.chair == nil)
+                return "chair_"+customization.key == user.preferences?.chair ?? "" || customization.key == user.preferences?.chair ?? "" || (customization.key == "none" && user.preferences?.chair == nil)
             default:
                 return false
             }

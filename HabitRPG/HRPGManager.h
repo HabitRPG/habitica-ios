@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <RestKit/CoreData.h>
-#import "ChatMessage.h"
+#import "ChatMessage+CoreDataClass.h"
 #import "Food.h"
 #import "Group.h"
 #import "MetaReward.h"

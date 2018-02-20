@@ -30,7 +30,7 @@ class SetupCustomizationRepository {
     static private func getBodyCustomizations(subcategory: AvatarCustomizationSubcategory?, user: User) -> [SetupCustomization] {
         switch subcategory {
         case .some(.shirt):
-            return getShirts(size: user.preferences.size)
+            return getShirts(size: user.preferences?.size)
         case .some(.size):
             return getSizes()
         default:
@@ -41,9 +41,9 @@ class SetupCustomizationRepository {
     static private func getHairCustomizations(subcategory: AvatarCustomizationSubcategory?, user: User) -> [SetupCustomization] {
         switch subcategory {
         case .some(.bangs):
-            return getBangs(color: user.preferences.hairColor)
+            return getBangs(color: user.preferences?.hairColor)
         case .some(.ponytail):
-            return getPonytails(color: user.preferences.hairColor)
+            return getPonytails(color: user.preferences?.hairColor)
         case .some(.color):
             return getHairColors()
         default:

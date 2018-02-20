@@ -21,6 +21,6 @@ class SystemMessageTableViewCell: UITableViewCell {
     
     @objc
     func configure(chatMessage: ChatMessage) {
-        messageTextView.text = chatMessage.text.unicodeEmoji.replacingOccurrences(of: "`", with: "")
+        messageTextView.text = chatMessage.text?.unicodeEmoji.replacingOccurrences(of: "`", with: "")
     }
 }
