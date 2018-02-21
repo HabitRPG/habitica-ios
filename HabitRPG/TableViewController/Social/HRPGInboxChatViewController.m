@@ -14,6 +14,7 @@
 #import "KLCPopup.h"
 #import "UIViewController+HRPGTopHeaderNavigationController.h"
 #import "Habitica-Swift.h"
+#import "NSString+Emoji.h"
 
 @interface HRPGInboxChatViewController ()
 
@@ -70,7 +71,7 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         for (InboxMessage *message in self.fetchedResultsController.fetchedObjects) {
             if (!message.attributedText) {
-                message.attributedText = [self renderMarkdown:message.text];
+                message.attributedText = [self renderMarkdown:[message.text stringByReplacingEmojiCheatCodesWithUnicode]];
             }
         }
         dispatch_async(dispatch_get_main_queue(), ^{

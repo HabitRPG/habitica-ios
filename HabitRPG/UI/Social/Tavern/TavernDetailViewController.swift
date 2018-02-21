@@ -119,12 +119,4 @@ class TavernDetailViewController: UIViewController {
             innButton.setTitle(NSLocalizedString("Pause Damage", comment: ""), for: .normal)
         }
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "GuidelinesSegue" {
-            let navigationController = segue.destination as? UINavigationController
-            let guidelinesController = navigationController?.topViewController as? HRPGGGuidelinesViewController
-            guidelinesController?.needsAccepting = !(HRPGManager.shared().getUser().flags?.communityGuidelinesAccepted?.boolValue ?? false)
-        }
-    }
 }

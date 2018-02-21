@@ -616,18 +616,18 @@
                                 <rect key="frame" x="0.0" y="612.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HNT-KM-bR0" id="mPy-Oj-EL0">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="myz-7S-qTU">
-                                            <rect key="frame" x="15" y="6" width="31.5" height="19.5"/>
+                                            <rect key="frame" x="16" y="6" width="31.5" height="19.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Zn4-yO-HSS">
-                                            <rect key="frame" x="15" y="25.5" width="40.5" height="13.5"/>
+                                            <rect key="frame" x="16" y="25.5" width="40.5" height="13.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -644,7 +644,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zEu-Ws-OPd">
-                                            <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
+                                            <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -661,7 +661,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aoA-I4-cSP">
-                                            <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
+                                            <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <string key="text">Play Habitica with friends to stay accountable!
 Battle monsters and create Challenges!
@@ -1872,26 +1872,16 @@ Invite friends now to earn a Quest Scroll!</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <webView tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MHB-Pq-EF3">
-                                <rect key="frame" x="0.0" y="136.5" width="375" height="466.5"/>
+                                <rect key="frame" x="0.0" y="140.5" width="375" height="462.5"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q7z-X9-NMm">
                                 <rect key="frame" x="0.0" y="559" width="375" height="44"/>
                                 <items>
-                                    <barButtonItem systemItem="cancel" id="WTk-yZ-gdz">
-                                        <connections>
-                                            <action selector="dismissGuidelines:" destination="9bP-JK-x68" id="it3-ez-As3"/>
-                                        </connections>
-                                    </barButtonItem>
                                     <barButtonItem systemItem="flexibleSpace" id="0Qh-yN-l7g"/>
                                     <barButtonItem systemItem="done" id="oPS-ob-V16">
                                         <connections>
                                             <action selector="dismissGuidelines:" destination="9bP-JK-x68" id="05O-PD-3Bo"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem title="Accept Guidelines" id="Qsp-FO-gTG">
-                                        <connections>
-                                            <segue destination="Ema-og-wxc" kind="unwind" unwindAction="unwindToAcceptGuidelines:" id="MFO-oR-Ihp"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -1899,28 +1889,25 @@ Invite friends now to earn a Quest Scroll!</string>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="MHB-Pq-EF3" firstAttribute="leading" secondItem="ye8-1F-ID7" secondAttribute="leadingMargin" constant="-16" id="4zJ-gA-ynL"/>
+                            <constraint firstItem="MHB-Pq-EF3" firstAttribute="leading" secondItem="ye8-1F-ID7" secondAttribute="leading" id="4zJ-gA-ynL"/>
                             <constraint firstItem="q7z-X9-NMm" firstAttribute="trailing" secondItem="MHB-Pq-EF3" secondAttribute="trailing" id="5C1-hr-LU1"/>
-                            <constraint firstItem="vLc-mV-bsJ" firstAttribute="leading" secondItem="ye8-1F-ID7" secondAttribute="leadingMargin" id="LTR-bM-VzV"/>
+                            <constraint firstItem="vLc-mV-bsJ" firstAttribute="leading" secondItem="ye8-1F-ID7" secondAttribute="leading" constant="16" id="LTR-bM-VzV"/>
                             <constraint firstItem="q7z-X9-NMm" firstAttribute="leading" secondItem="MHB-Pq-EF3" secondAttribute="leading" id="QaG-qE-GE9"/>
-                            <constraint firstItem="vLc-mV-bsJ" firstAttribute="trailing" secondItem="ye8-1F-ID7" secondAttribute="trailingMargin" id="QgU-ng-rcP"/>
+                            <constraint firstItem="vLc-mV-bsJ" firstAttribute="trailing" secondItem="ye8-1F-ID7" secondAttribute="trailing" constant="-16" id="QgU-ng-rcP"/>
                             <constraint firstItem="q7z-X9-NMm" firstAttribute="bottom" secondItem="2nR-i8-He8" secondAttribute="top" id="YXM-XC-JUB"/>
                             <constraint firstItem="2nR-i8-He8" firstAttribute="top" secondItem="MHB-Pq-EF3" secondAttribute="bottom" id="j60-Dh-lYf"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="MHB-Pq-EF3" secondAttribute="trailing" constant="-16" id="nUk-dF-buf"/>
-                            <constraint firstItem="MHB-Pq-EF3" firstAttribute="top" secondItem="vLc-mV-bsJ" secondAttribute="bottom" constant="8" id="vYd-OT-Gpm"/>
-                            <constraint firstItem="vLc-mV-bsJ" firstAttribute="top" secondItem="ZIw-I0-BSm" secondAttribute="bottom" id="yjM-ay-FT1"/>
+                            <constraint firstAttribute="trailing" secondItem="MHB-Pq-EF3" secondAttribute="trailing" id="nUk-dF-buf"/>
+                            <constraint firstItem="MHB-Pq-EF3" firstAttribute="top" secondItem="vLc-mV-bsJ" secondAttribute="bottom" constant="12" id="vYd-OT-Gpm"/>
+                            <constraint firstItem="vLc-mV-bsJ" firstAttribute="top" secondItem="ye8-1F-ID7" secondAttribute="topMargin" id="yjM-ay-FT1"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="67e-Nv-XcL"/>
                     <connections>
-                        <outlet property="acceptButton" destination="Qsp-FO-gTG" id="1Ww-60-azm"/>
-                        <outlet property="cancelButton" destination="WTk-yZ-gdz" id="ON6-4y-B7x"/>
                         <outlet property="doneButton" destination="oPS-ob-V16" id="EVk-jL-TKx"/>
                         <outlet property="toolbar" destination="q7z-X9-NMm" id="z2J-7z-m0f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7rw-WV-q3G" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="Ema-og-wxc" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="743" y="4344"/>
         </scene>

@@ -95,13 +95,20 @@ class GroupChatViewController: SLKTextViewController {
         self.renderAttributedTexts()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        let acceptView = view.viewWithTag(999)
+        acceptView?.frame = CGRect(x: 0, y: view.frame.size.height-90, width: view.frame.size.width, height: 90)
+    }
+    
     private func renderAttributedTexts() {
         DispatchQueue.global(qos: .background).async {[weak self] in
             for item in self?.dataSource?.items() ?? [] {
                 guard let message = item as? ChatMessage else {
                     return
                 }
-                message.attributedText = try? Down(markdownString: message.text ?? "").toHabiticaAttributedString()
+                message.attributedText = try? Down(markdownString: message.text?.unicodeEmoji ?? "").toHabiticaAttributedString()
             }
             DispatchQueue.main.async {
                 if let rows = self?.tableView?.indexPathsForVisibleRows {
@@ -232,18 +239,24 @@ class GroupChatViewController: SLKTextViewController {
     }
     
     private func checkGuidelinesAccepted() {
-        if !(user?.flags?.communityGuidelinesAccepted?.boolValue ?? false) {
-            let acceptButton = UIButton()
-            acceptButton.setTitle(NSLocalizedString("Post a message", comment: ""), for: .normal)
-            acceptButton.backgroundColor = .white
-            acceptButton.setTitleColor(UIColor.purple300(), for: .normal)
-            acceptButton.addTarget(self, action: #selector(openGuidelinesView), for: .touchUpInside)
-            acceptButton.frame = CGRect(x: 0, y: 0, width: textInputbar.frame.size.width, height: textInputbar.frame.size.height)
-            acceptButton.tag = 2
-            textInputbar.addSubview(acceptButton)
+        let acceptView = view.viewWithTag(999)
+        if true {
+        //if !(user?.flags?.communityGuidelinesAccepted?.boolValue ?? false) {
+            if acceptView != nil {
+                return
+            }
+            guard let acceptView = Bundle.main.loadNibNamed("GuidelinesPromptView", owner: self, options: nil)?[0] as? UIView else {
+                return
+            }
+            let acceptButton = acceptView.viewWithTag(1) as? UIButton
+            acceptButton?.addTarget(self, action: #selector(acceptGuidelines), for: .touchUpInside)
+            let descriptionButton = acceptView.viewWithTag(2) as? UIButton
+            descriptionButton?.addTarget(self, action: #selector(openGuidelinesView), for: .touchUpInside)
+            acceptView.frame = CGRect(x: 0, y: view.frame.size.height-90, width: view.frame.size.width, height: 90)
+            acceptView.tag = 999
+            view.addSubview(acceptView)
         } else {
-            let button = textInputbar.viewWithTag(2)
-            button?.removeFromSuperview()
+            acceptView?.removeFromSuperview()
         }
     }
     
@@ -253,10 +266,15 @@ class GroupChatViewController: SLKTextViewController {
     }
     
     @IBAction func unwindToAcceptGuidelines(_ segue: UIStoryboardSegue) {
+        acceptGuidelines()
+    }
+    
+    @objc
+    private func acceptGuidelines() {
         HRPGManager.shared().updateUser(["flags.communityGuidelinesAccepted": true], onSuccess: {[weak self] in
             self?.user?.flags?.communityGuidelinesAccepted = NSNumber(value: true)
             self?.checkGuidelinesAccepted()
-        }, onError: nil)
+            }, onError: nil)
     }
 
 }

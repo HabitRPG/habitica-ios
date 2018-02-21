@@ -79,6 +79,7 @@
 		29A0FD79203DBDAD00590BDE /* ChatMessageLike+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 29A0FD78203DBDAD00590BDE /* ChatMessageLike+CoreDataClass.m */; };
 		29A0FD7E203DBDEA00590BDE /* ChatMessageFlag+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 29A0FD7C203DBDEA00590BDE /* ChatMessageFlag+CoreDataClass.m */; };
 		29A0FD7F203DBDEA00590BDE /* ChatMessageFlag+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 29A0FD7D203DBDEA00590BDE /* ChatMessageFlag+CoreDataProperties.m */; };
+		29A0FD81203DF49900590BDE /* GuidelinesPromptView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29A0FD80203DF49900590BDE /* GuidelinesPromptView.xib */; };
 		29A1B9B91F6ACC2F0055CF57 /* UIAlertAction-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A1B9B81F6ACC2F0055CF57 /* UIAlertAction-Extensions.swift */; };
 		29AAA15D1F2A3AA600029737 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AAA15C1F2A3AA600029737 /* GradientView.swift */; };
 		29AAA15F1F2B596900029737 /* SpeechbubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AAA15E1F2B596900029737 /* SpeechbubbleView.swift */; };
@@ -578,6 +579,7 @@
 		29A0FD7B203DBDEA00590BDE /* ChatMessageFlag+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ChatMessageFlag+CoreDataClass.h"; sourceTree = "<group>"; };
 		29A0FD7C203DBDEA00590BDE /* ChatMessageFlag+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ChatMessageFlag+CoreDataClass.m"; sourceTree = "<group>"; };
 		29A0FD7D203DBDEA00590BDE /* ChatMessageFlag+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ChatMessageFlag+CoreDataProperties.m"; sourceTree = "<group>"; };
+		29A0FD80203DF49900590BDE /* GuidelinesPromptView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GuidelinesPromptView.xib; sourceTree = "<group>"; };
 		29A1B9B81F6ACC2F0055CF57 /* UIAlertAction-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertAction-Extensions.swift"; sourceTree = "<group>"; };
 		29AAA15C1F2A3AA600029737 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		29AAA15E1F2B596900029737 /* SpeechbubbleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechbubbleView.swift; sourceTree = "<group>"; };
@@ -2095,6 +2097,7 @@
 				29E162DF1FFBBDDC00685640 /* UsernameLabel.swift */,
 				2980E6081EEA25CD005B7100 /* YesterdailiesDialogView.swift */,
 				2980E6061EEA1F55005B7100 /* YesterdailiesDialogView.xib */,
+				29A0FD80203DF49900590BDE /* GuidelinesPromptView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2738,6 +2741,7 @@
 				4924314F202CD19A00288278 /* ChallengeRewardTableViewCell.xib in Resources */,
 				D99BC43319D4C34A006DC132 /* 1Password.xcassets in Resources */,
 				49E6F57E1FF9A2AE0062C8B2 /* DoubleButtonTableViewCell.xib in Resources */,
+				29A0FD81203DF49900590BDE /* GuidelinesPromptView.xib in Resources */,
 				49DCB7C41F40D80B0079FDD0 /* HRPGShopBannerView.xib in Resources */,
 				D905D08C1DE241D200CABF55 /* HRPGLoginIncentiveOverlayView.xib in Resources */,
 				498E4CF81FA17B7F006933FF /* ChallengeButtonTableViewCell.xib in Resources */,
