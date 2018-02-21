@@ -60,7 +60,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tYH-A3-umq" customClass="PaddedLabel" customModule="Habitica" customModuleProvider="target">
-                    <rect key="frame" x="290" y="18" width="18" height="18"/>
+                    <rect key="frame" x="292" y="17" width="18" height="18"/>
                     <color key="backgroundColor" red="0.8642459511756897" green="0.25403845310211182" blue="0.4108315110206604" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="18" id="B2b-N0-nuR"/>

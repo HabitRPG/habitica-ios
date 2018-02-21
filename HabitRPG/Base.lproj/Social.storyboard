@@ -730,7 +730,7 @@ Invite friends now to earn a Quest Scroll!</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l0T-VN-VjE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1773" y="1876"/>
+            <point key="canvasLocation" x="1858" y="1903"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="amF-HH-oTT">
@@ -2666,13 +2666,13 @@ Invite friends now to earn a Quest Scroll!</string>
     <inferredMetricsTieBreakers>
         <segue reference="pVi-Sz-5E7"/>
         <segue reference="gAH-Zh-PJ3"/>
-        <segue reference="0iv-RI-hdf"/>
-        <segue reference="vfM-rh-2w8"/>
-        <segue reference="9hs-wq-6bn"/>
+        <segue reference="jBF-PN-2IP"/>
+        <segue reference="VPE-S9-CFY"/>
+        <segue reference="CUP-gn-Xug"/>
         <segue reference="kns-o3-fej"/>
         <segue reference="2KU-R3-vSq"/>
         <segue reference="636-nl-5aS"/>
-        <segue reference="b7A-2J-zBB"/>
+        <segue reference="EV0-ra-m7s"/>
         <segue reference="C12-ty-sO4"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.6058621407" green="0.38462612029999999" blue="0.99835687880000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

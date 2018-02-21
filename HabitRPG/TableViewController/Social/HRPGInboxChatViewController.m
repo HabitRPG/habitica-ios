@@ -275,7 +275,7 @@
         withAnimation:(BOOL)animate {
     InboxMessage *message = [self.fetchedResultsController objectAtIndexPath:indexPath];
     __weak HRPGInboxChatViewController *weakSelf = self;
-    /*cell.profileAction = ^() {
+    cell.profileAction = ^() {
         HRPGUserProfileViewController *profileViewController =
         [weakSelf.storyboard instantiateViewControllerWithIdentifier:@"UserProfileViewController"];
         profileViewController.userID = message.userID;
@@ -293,7 +293,7 @@
         [self expandSelectedCell:indexPath];
     };
     
-    [cell configureForInboxMessage:message withUser:self.user isExpanded:[self.expandedChatPath isEqual:indexPath]];*/
+    [cell configureWithInboxMessage:message previousMessage:[self itemAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row+1 inSection:indexPath.section]] nextMessage:[self itemAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row-1 inSection:indexPath.section]] user:self.user isExpanded:[self.expandedChatPath isEqual:indexPath]];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -336,6 +336,17 @@
         [self.tableView reloadRowsAtIndexPaths:@[indexPath, expandedPath] withRowAnimation:UITableViewRowAnimationNone];
         [self.tableView endUpdates];
     }
+}
+
+- (InboxMessage *_Nullable)itemAtIndexPath:(NSIndexPath *)indexPath {
+    InboxMessage *item  = nil;
+    if ([[self.fetchedResultsController sections] count] > [indexPath section]){
+        id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:[indexPath section]];
+        if ([sectionInfo numberOfObjects] > [indexPath row]){
+            item = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        }
+    }
+    return item;
 }
 
 @end

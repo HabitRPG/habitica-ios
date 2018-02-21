@@ -235,6 +235,7 @@
     HRPGItemViewController *itemViewController = (HRPGItemViewController *)itemNavigationController.topViewController;
     itemViewController.itemType = @"quests";
     itemViewController.shouldDismissAfterAction = YES;
+    itemViewController.modalPresentationStyle = UIModalPresentationFormSheet;
     [self.navigationController presentViewController:itemNavigationController animated:YES completion:nil];
 }
 

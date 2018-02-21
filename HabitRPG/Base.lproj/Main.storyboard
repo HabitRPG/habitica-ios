@@ -762,7 +762,7 @@
                         <segue destination="Eg1-Bx-Zdn" kind="show" identifier="CustomizationSegue" id="w7r-aq-PPf"/>
                         <segue destination="Kau-eC-iCv" kind="show" identifier="FAQSegue" id="Ndm-2R-Hd2"/>
                         <segue destination="Bwt-cz-wxO" kind="show" identifier="ShopsSegue" id="fqC-VU-hsx"/>
-                        <segue destination="6X4-ER-0VC" kind="presentation" identifier="SettingsSegue" modalPresentationStyle="pageSheet" id="iEJ-Rx-jir"/>
+                        <segue destination="6X4-ER-0VC" kind="presentation" identifier="SettingsSegue" modalPresentationStyle="formSheet" id="iEJ-Rx-jir"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YVG-cg-SZN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1637,7 +1637,7 @@
                     </collectionView>
                     <navigationItem key="navigationItem" title="Pets" id="4dW-yC-5Ar"/>
                     <connections>
-                        <segue destination="tLB-b1-3s8" kind="presentation" identifier="FeedSegue" id="HqS-75-pYX"/>
+                        <segue destination="tLB-b1-3s8" kind="presentation" identifier="FeedSegue" modalPresentationStyle="formSheet" id="HqS-75-pYX"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2P3-bh-otW" userLabel="First Responder" sceneMemberID="firstResponder"/>

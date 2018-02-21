@@ -164,7 +164,7 @@ class ChatTableViewCell: UITableViewCell {
     }
     
     @objc
-    func configure(inboxMessage: InboxMessage, previousMessage: ChatMessage?, nextMessage: ChatMessage?, user: User, isExpanded: Bool) {
+    func configure(inboxMessage: InboxMessage, previousMessage: InboxMessage?, nextMessage: InboxMessage?, user: User, isExpanded: Bool) {
         self.isExpanded = isExpanded
         isPrivateMessage = true
         plusOneButton.isHidden = true
@@ -188,7 +188,7 @@ class ChatTableViewCell: UITableViewCell {
             messageTextView.text = inboxMessage.text?.unicodeEmoji
         }
         
-        if previousMessage?.uuid == inboxMessage.userID {
+        if previousMessage?.userID == inboxMessage.userID {
             topMarginConstraint.constant = 2
             avatarView.isHidden = true
         } else {
@@ -196,7 +196,7 @@ class ChatTableViewCell: UITableViewCell {
             avatarView.isHidden = isOwnMessage
         }
         
-        if nextMessage?.uuid == inboxMessage.userID {
+        if nextMessage?.userID == inboxMessage.userID {
             bottomMarginConstraint.constant = 2
         } else {
             bottomMarginConstraint.constant = 4
