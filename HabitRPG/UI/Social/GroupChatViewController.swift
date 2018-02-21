@@ -240,8 +240,7 @@ class GroupChatViewController: SLKTextViewController {
     
     private func checkGuidelinesAccepted() {
         let acceptView = view.viewWithTag(999)
-        if true {
-        //if !(user?.flags?.communityGuidelinesAccepted?.boolValue ?? false) {
+        if !(user?.flags?.communityGuidelinesAccepted?.boolValue ?? false) {
             if acceptView != nil {
                 return
             }
