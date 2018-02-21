@@ -8,7 +8,7 @@
 
 #import "HRPGCoreDataDatasourceDelegate.h"
 
-typedef void (^TableViewCellConfigureBlock)(id cell, id item, NSIndexPath *indexPath);
+typedef void (^TableViewCellConfigureBlock)(id _Nullable cell, id item, NSIndexPath *indexPath);
 typedef void (^FetchRequestConfigureBlock)(NSFetchRequest *fetchRequestBlock);
 typedef NSString*(^CellIdentifierBlock)(id item, NSIndexPath *indexPath);
 
@@ -27,9 +27,9 @@ typedef NSString*(^CellIdentifierBlock)(id item, NSIndexPath *indexPath);
                  fetchRequestBlock:(FetchRequestConfigureBlock)fetchRequestBlock
                      asDelegateFor:(UITableView *)tableView;
 
-- (id)itemAtIndexPath:(NSIndexPath *)indexPath;
-- (id)cellAtIndexPath:(NSIndexPath *)indexPath;
-- (NSArray *)items;
+- (_Nullable id)itemAtIndexPath:(NSIndexPath *_Nonnull)indexPath;
+- (_Nullable id)cellAtIndexPath:(NSIndexPath *_Nonnull)indexPath;
+- (NSArray *_Nullable)items;
 - (NSInteger)numberOfSections;
 
 - (void)reconfigureFetchRequest;

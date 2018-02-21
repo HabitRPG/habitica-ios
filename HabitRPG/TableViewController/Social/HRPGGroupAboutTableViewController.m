@@ -150,7 +150,6 @@
                           .class isSubclassOfClass:HRPGGroupTableViewController.class]) {
                   HRPGGroupTableViewController *vc =
                       (HRPGGroupTableViewController *)weakSelf.presentingViewController;
-                  [vc fetchGroup];
                   self.group = vc.group;
                   [self.tableView reloadData];
               }

@@ -34,41 +34,6 @@
     return YES;
 }
 
-- (void)refresh {
-    if (!self.groupID) {
-        [[HRPGManager sharedManager] fetchUser:^{
-            if (self) {
-                if (self.user.partyID) {
-                    [self refresh];
-                } else {
-                    [self.refreshControl endRefreshing];
-                }
-            }
-        } onError:^{
-                if (self) {
-                    [self.refreshControl endRefreshing];
-                }
-            }];
-        return;
-    }
-    [[HRPGManager sharedManager] fetchGroup:@"party"
-        onSuccess:^() {
-            if (self) {
-                [self.refreshControl endRefreshing];
-                [self fetchGroup];
-                self.group.unreadMessages = @NO;
-                [[HRPGManager sharedManager] chatSeen:self.group.id];
-                [self reloadQuest];
-            }
-        }
-        onError:^() {
-            if (self) {
-                [self.refreshControl endRefreshing];
-                [[HRPGManager sharedManager] displayNetworkError];
-            }
-        }];
-}
-
 - (NSString *)groupID {
     return self.user.partyID;
 }
@@ -78,15 +43,6 @@
         [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:1 inSection:0]];
     return [self.tableView convertRect:cell.frame
                                 toView:self.parentViewController.parentViewController.view];
-}
-
-- (void)fetchGroup {
-    if (self.groupID) {
-        [super fetchGroup];
-    } else {
-        self.group = nil;
-        [self.tableView reloadData];
-    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -147,7 +103,6 @@
             [[HRPGManager sharedManager] joinGroup:self.user.invitedParty
                 withType:@"party"
                 onSuccess:^() {
-                    [self fetchGroup];
                     [self.tableView reloadData];
                 }
                 onError:nil];
@@ -267,7 +222,6 @@
     } else {
         [[HRPGManager sharedManager] createGroup:formViewController.group
                               onSuccess:^() {
-                                  [self fetchGroup];
                                   [self.tableView reloadData];
                               }
                                 onError:nil];

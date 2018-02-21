@@ -8,101 +8,36 @@
 
 import UIKit
 
-class TavernViewController: HRPGUIViewController, UIScrollViewDelegate, NSFetchedResultsControllerDelegate {
-        
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var scrollViewTopConstraint: NSLayoutConstraint!
-    
-    let tavernID = "00000000-0000-4000-A000-000000000000"
-    let segmentedWrapper = PaddedView()
-    let segmentedControl = UISegmentedControl(items: [NSLocalizedString("Tavern", comment: ""), NSLocalizedString("Chat", comment: "")])
-    
-    var detailViewController: TavernDetailViewController?
-    var chatViewController: GroupChatViewController?
-    
-    private var fetchedResultsController: NSFetchedResultsController<Group>?
+class TavernViewController: SplitSocialViewController {
+
+    private var tavernDetailViewController: TavernDetailViewController?
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        self.segmentedControl.selectedSegmentIndex = 0
-        self.segmentedControl.tintColor = UIColor.purple300()
-        self.segmentedControl.addTarget(self, action: #selector(TavernViewController.switchView(_:)), for: .valueChanged)
-        segmentedControl.isHidden = false
-        topHeaderCoordinator?.hideHeader = false
-        segmentedWrapper.containedView = self.segmentedControl
-        topHeaderCoordinator?.alternativeHeader = segmentedWrapper
-
-        scrollView.delegate = self
-        
+        groupID = "00000000-0000-4000-A000-000000000000"
         for childViewController in self.childViewControllers {
             if let viewController = childViewController as? TavernDetailViewController {
-                detailViewController = viewController
-            }
-            if let viewController = childViewController as? GroupChatViewController {
-                chatViewController = viewController
+                tavernDetailViewController = viewController
             }
         }
         
-        chatViewController?.groupID = tavernID
-        
-        fetchGroup()
+        super.viewDidLoad()
+
+        scrollView.delegate = self
+
+        chatViewController?.groupID = groupID
     }
     
-    private func fetchGroup() {
-        let fetchRequest: NSFetchRequest<Group> = SocialRepository().getFetchRequest(entityName: "Group",
-                                                                    predicate: NSPredicate(format: "id == %@", "00000000-0000-4000-A000-000000000000")
-            )
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: false)]
-        fetchedResultsController = NSFetchedResultsController<Group>(fetchRequest: fetchRequest, managedObjectContext: HRPGManager.shared().getManagedObjectContext(), sectionNameKeyPath: nil, cacheName: nil)
-        fetchedResultsController?.delegate = self
-        
-        try? fetchedResultsController?.performFetch()
-        
-        setGroup()
-    }
-    
-    private func setGroup() {
-        if let items = fetchedResultsController?.fetchedObjects, items.count > 0 {
+    override internal func setGroup() {
+        if let detailViewController = self.tavernDetailViewController, let items = fetchedResultsController?.fetchedObjects, items.count > 0 {
             let group = items[0]
-            detailViewController?.group = group
+            detailViewController.group = group
             
             if let questKey = group.questKey {
                 let quest = InventoryRepository().getQuest(questKey)
-                detailViewController?.quest = quest
+                detailViewController.quest = quest
             } else {
-                detailViewController?.quest = nil
+                detailViewController.quest = nil
             }
         }
-    }
-    
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let currentPage = getCurrentPage()
-        self.segmentedControl.selectedSegmentIndex = currentPage
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        if let navController = self.hrpgTopHeaderNavigationController() {
-            scrollViewTopConstraint.constant = navController.contentInset
-        }
-    }
-    
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        setGroup()
-    }
-    
-    @objc
-    func switchView(_ segmentedControl: UISegmentedControl) {
-        scrollTo(page: segmentedControl.selectedSegmentIndex)
-    }
-    
-    func getCurrentPage() -> Int {
-        return Int(scrollView.contentOffset.x / scrollView.frame.size.width)
-    }
-    
-    func scrollTo(page: Int) {
-        let point = CGPoint(x: scrollView.frame.size.width * CGFloat(page), y: 0)
-        scrollView .setContentOffset(point, animated: true)
     }
 }

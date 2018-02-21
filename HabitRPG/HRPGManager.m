@@ -1469,6 +1469,15 @@ NSString *currentUser;
         addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"likes"
                                                                        toKeyPath:@"likes"
                                                                      withMapping:likeMapping]];
+    RKEntityMapping *flagMapping = [RKEntityMapping mappingForEntityForName:@"ChatMessageFlag"
+                                                       inManagedObjectStore:managedObjectStore];
+    flagMapping.forceCollectionMapping = YES;
+    [flagMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"userID"];
+    flagMapping.identificationAttributes = @[ @"userID" ];
+    [chatMapping
+     addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"flags"
+                                                                    toKeyPath:@"flags"
+                                                                  withMapping:flagMapping]];
     RKEntityMapping *chatAvatarMapping = [RKEntityMapping mappingForEntityForName:@"ChatMessageAvatar"
                                                        inManagedObjectStore:managedObjectStore];
     [chatAvatarMapping addAttributeMappingsFromDictionary:@{

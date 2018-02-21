@@ -12,6 +12,7 @@ import DateTools
 class ChatTableViewCell: UITableViewCell {
     
     @IBOutlet weak var avatarView: AvatarView!
+    @IBOutlet weak var avatarWrapper: UIView!
     @IBOutlet weak private var messageWrapper: UIView!
     @IBOutlet weak private var usernameLabel: UsernameLabel!
     @IBOutlet weak private var positionLabel: PaddedLabel!
@@ -22,7 +23,11 @@ class ChatTableViewCell: UITableViewCell {
     @IBOutlet weak private var reportButton: UIButton!
     @IBOutlet weak private var deleteButton: UIButton!
     @IBOutlet weak private var leftMarginConstraint: NSLayoutConstraint!
+    @IBOutlet weak private var topMarginConstraint: NSLayoutConstraint!
+    @IBOutlet weak private var bottomMarginConstraint: NSLayoutConstraint!
     @IBOutlet weak private var extraButtonsHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var avatarWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var reportView: UIButton!
     
     @objc public var profileAction: (() -> Void)?
     @objc public var reportAction: (() -> Void)?
@@ -39,11 +44,7 @@ class ChatTableViewCell: UITableViewCell {
     
     private var isOwnMessage = false {
         didSet {
-            if isOwnMessage {
-                leftMarginConstraint.constant = 74
-            } else {
-                leftMarginConstraint.constant = 8
-            }
+            updateLeftMargin()
             avatarView.isHidden = isOwnMessage
             reportButton.isHidden = isOwnMessage
             if !isModerator {
@@ -55,6 +56,12 @@ class ChatTableViewCell: UITableViewCell {
     private var isModerator = false {
         didSet {
             deleteButton.isHidden = false
+        }
+    }
+    private var isAvatarHidden = false {
+        didSet {
+            avatarWrapper.isHidden = isAvatarHidden
+            updateLeftMargin()
         }
     }
     
@@ -100,10 +107,16 @@ class ChatTableViewCell: UITableViewCell {
         avatarView.showPet = false
         
         positionLabel.horizontalPadding = 8
+        
+        if frame.size.width < 375 {
+            isAvatarHidden = true
+        }
+        
+        reportView.setImage(#imageLiteral(resourceName: "ChatReport").withRenderingMode(.alwaysTemplate), for: .normal)
     }
     
     @objc
-    func configure(chatMessage: ChatMessage, userID: String, username: String, isModerator: Bool, isExpanded: Bool) {
+    func configure(chatMessage: ChatMessage, previousMessage: ChatMessage?, nextMessage: ChatMessage?, userID: String, username: String, isModerator: Bool, isExpanded: Bool) {
         self.isExpanded = isExpanded
         isPrivateMessage = false
         self.isModerator = isModerator
@@ -124,17 +137,39 @@ class ChatTableViewCell: UITableViewCell {
             messageTextView.text = chatMessage.text?.unicodeEmoji
         }
         
-        if !isOwnMessage {
-            avatarView.avatar = chatMessage.avatar
+        if previousMessage?.uuid == chatMessage.uuid {
+            topMarginConstraint.constant = 2
+            avatarView.isHidden = true
+        } else {
+            topMarginConstraint.constant = 4
+            avatarView.isHidden = isOwnMessage
+
+            if !isOwnMessage && !isAvatarHidden {
+                avatarView.avatar = chatMessage.avatar
+            }
+        }
+        
+        if nextMessage?.uuid == chatMessage.uuid {
+            bottomMarginConstraint.constant = 2
+        } else {
+            bottomMarginConstraint.constant = 4
+        }
+        
+        if let flags = chatMessage.flags, isModerator && flags.count > 0 {
+            reportView.isHidden = false
+            reportView.setTitle("\(flags.count)", for: .normal)
+        } else {
+            reportView.isHidden = true
         }
     }
     
     @objc
-    func configure(inboxMessage: InboxMessage, user: User, isExpanded: Bool) {
+    func configure(inboxMessage: InboxMessage, previousMessage: ChatMessage?, nextMessage: ChatMessage?, user: User, isExpanded: Bool) {
         self.isExpanded = isExpanded
         isPrivateMessage = true
         plusOneButton.isHidden = true
         isOwnMessage = inboxMessage.sent?.boolValue ?? false
+        isAvatarHidden = true
         if inboxMessage.sent?.boolValue ?? false {
             usernameLabel.text = user.username.unicodeEmoji
             contributorLevel = user.contributorLevel.intValue
@@ -152,7 +187,20 @@ class ChatTableViewCell: UITableViewCell {
         } else {
             messageTextView.text = inboxMessage.text?.unicodeEmoji
         }
-
+        
+        if previousMessage?.uuid == inboxMessage.userID {
+            topMarginConstraint.constant = 2
+            avatarView.isHidden = true
+        } else {
+            topMarginConstraint.constant = 4
+            avatarView.isHidden = isOwnMessage
+        }
+        
+        if nextMessage?.uuid == inboxMessage.userID {
+            bottomMarginConstraint.constant = 2
+        } else {
+            bottomMarginConstraint.constant = 4
+        }
     }
     
     private func setTimeStamp(date: Date?) {
@@ -161,7 +209,7 @@ class ChatTableViewCell: UITableViewCell {
     
     private func stylePlusOneButton(likes: Set<ChatMessageLike>?, userID: String) {
         plusOneButton.setTitle(nil, for: .normal)
-        plusOneButton.setTitleColor(UIColor.gray50(), for: .normal)
+        plusOneButton.setTitleColor(UIColor.gray300(), for: .normal)
         plusOneButton.tintColor = UIColor.gray300()
         var wasLiked = false
         if let likes = likes {
@@ -256,5 +304,16 @@ class ChatTableViewCell: UITableViewCell {
         } else {
             extraButtonsHeightConstraint.constant = 0
         }
+    }
+    
+    private func updateLeftMargin() {
+        var margin: CGFloat = 12
+        if isAvatarHidden {
+            margin = 8
+        }
+        if isOwnMessage {
+            margin += 64
+        }
+        leftMarginConstraint.constant = margin
     }
 }

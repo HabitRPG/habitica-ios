@@ -28,6 +28,8 @@ class GroupChatViewController: SLKTextViewController {
         
         let nib = UINib(nibName: "ChatMessageCell", bundle: nil)
         self.tableView?.register(nib, forCellReuseIdentifier: "ChatMessageCell")
+        let systemNib = UINib(nibName: "SystemMessageTableViewCell", bundle: nil)
+        self.tableView?.register(systemNib, forCellReuseIdentifier: "SystemMessageCell")
         
         self.tableView?.separatorStyle = .none
         self.tableView?.rowHeight = UITableViewAutomaticDimension
@@ -36,19 +38,35 @@ class GroupChatViewController: SLKTextViewController {
         
         self.dataSource = HRPGCoreDataDataSource(managedObjectContext: HRPGManager.shared().getManagedObjectContext(),
                                                  entityName: "ChatMessage",
-                                                 cellIdentifier: "ChatMessageCell",
+                                                 cellIdentifier: nil,
                                                  configureCellBlock: {[weak self] (anyCell, anyItem, indexPath) in
-                                                    guard let cell = anyCell as? ChatTableViewCell else {
-                                                        return
-                                                    }
                                                     guard let item = anyItem as? ChatMessage else {
                                                         return
                                                     }
-                                                    self?.configure(cell: cell, item: item, indexPath: indexPath)
+                                                    if let cell = anyCell as? ChatTableViewCell {
+                                                        self?.configure(cell: cell, item: item, indexPath: indexPath)
+                                                        return
+                                                    }
+                                                    if let cell = anyCell as? SystemMessageTableViewCell {
+                                                        cell.configure(chatMessage: item)
+                                                        if let transform = self?.tableView?.transform {
+                                                            cell.transform = transform
+                                                        }
+                                                        return
+                                                    }
             }, fetchRequest: {[weak self] (fetchRequest) in
                 fetchRequest?.sortDescriptors = [NSSortDescriptor(key: "timestamp", ascending: false)]
                 fetchRequest?.predicate = NSPredicate(format: "group.id == %@", self?.groupID ?? "")
             }, asDelegateFor: self.tableView)
+        
+        self.dataSource?.cellIdentifierBlock = { (item, indexPath) in
+            if let message = item as? ChatMessage {
+                if message.user == nil {
+                    return "SystemMessageCell"
+                }
+            }
+            return "ChatMessageCell"
+        }
         
         if #available(iOS 10.0, *) {
             self.tableView?.refreshControl = UIRefreshControl()
@@ -74,7 +92,6 @@ class GroupChatViewController: SLKTextViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
         self.renderAttributedTexts()
     }
     
@@ -114,6 +131,10 @@ class GroupChatViewController: SLKTextViewController {
             HRPGManager.shared().fetchGroup(self?.groupID, onSuccess: nil, onError: nil)
         }, onError: nil)
         
+        if let expandedIndexPath = self.expandedChatPath {
+            expandSelectedCell(expandedIndexPath)
+        }
+        
         super.didPressRightButton(sender)
     }
     
@@ -149,6 +170,8 @@ class GroupChatViewController: SLKTextViewController {
             isExpanded = expandedChatPath == indexPath
         }
         cell.configure(chatMessage: item,
+                       previousMessage: dataSource?.item(at: IndexPath(item: (indexPath?.item ?? 0)+1, section: indexPath?.section ?? 0)) as? ChatMessage,
+                       nextMessage: dataSource?.item(at: IndexPath(item: (indexPath?.item ?? 0)-1, section: indexPath?.section ?? 0)) as? ChatMessage,
                        userID: self.user?.id ?? "",
                        username: self.user?.username ?? "",
                        isModerator: self.user?.isModerator() ?? false,
@@ -172,7 +195,12 @@ class GroupChatViewController: SLKTextViewController {
                 HRPGManager.shared().flagMessage(item, withGroup: self?.groupID, onSuccess: nil, onError: nil)
             }
             view.sizeToFit()
-            let popup = KLCPopup(contentView: view, showType: KLCPopupShowType.bounceIn, dismissType: KLCPopupDismissType.bounceOut, maskType: KLCPopupMaskType.dimmed, dismissOnBackgroundTouch: true, dismissOnContentTouch: false)
+            let popup = KLCPopup(contentView: view,
+                                 showType: KLCPopupShowType.bounceIn,
+                                 dismissType: KLCPopupDismissType.bounceOut,
+                                 maskType: KLCPopupMaskType.dimmed,
+                                 dismissOnBackgroundTouch: true,
+                                 dismissOnContentTouch: false)
             popup?.show()
         }
         cell.replyAction = {

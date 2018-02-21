@@ -18,14 +18,6 @@
 
 @implementation HRPGQuestGroupTableViewController
 
-- (int)chatSectionIndex {
-    if ([self displayQuestSection]) {
-        return 3;
-    } else {
-        return [super chatSectionIndex];
-    }
-}
-
 - (bool)canInviteToQuest {
     return NO;
 }
@@ -35,11 +27,6 @@
                          onSuccess:^() {
                              if (self) {
                                  [self.refreshControl endRefreshing];
-                                 [self fetchGroup];
-                                 if (![self.groupID isEqualToString:@"00000000-0000-4000-A000-000000000000"]) {
-                                     self.group.unreadMessages = @NO;
-                                     [[HRPGManager sharedManager] chatSeen:self.group.id];
-                                 }
                                  [self reloadQuest];
                              }
                          }

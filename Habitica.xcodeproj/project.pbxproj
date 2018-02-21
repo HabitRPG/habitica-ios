@@ -76,6 +76,9 @@
 		299BD6351F54346F00E22935 /* QuestDetailRewardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 299BD6341F54346F00E22935 /* QuestDetailRewardView.xib */; };
 		299BD6371F5457E100E22935 /* HabiticaIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299BD6361F5457E100E22935 /* HabiticaIcons.swift */; };
 		299BD63A1F557FE700E22935 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299BD6391F557FE700E22935 /* AuthenticationManager.swift */; };
+		29A0FD79203DBDAD00590BDE /* ChatMessageLike+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 29A0FD78203DBDAD00590BDE /* ChatMessageLike+CoreDataClass.m */; };
+		29A0FD7E203DBDEA00590BDE /* ChatMessageFlag+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 29A0FD7C203DBDEA00590BDE /* ChatMessageFlag+CoreDataClass.m */; };
+		29A0FD7F203DBDEA00590BDE /* ChatMessageFlag+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 29A0FD7D203DBDEA00590BDE /* ChatMessageFlag+CoreDataProperties.m */; };
 		29A1B9B91F6ACC2F0055CF57 /* UIAlertAction-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A1B9B81F6ACC2F0055CF57 /* UIAlertAction-Extensions.swift */; };
 		29AAA15D1F2A3AA600029737 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AAA15C1F2A3AA600029737 /* GradientView.swift */; };
 		29AAA15F1F2B596900029737 /* SpeechbubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AAA15E1F2B596900029737 /* SpeechbubbleView.swift */; };
@@ -122,6 +125,9 @@
 		29FC8862201A300B002B3D3F /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC8861201A300B002B3D3F /* ProgressBar.swift */; };
 		29FC8864201B78D6002B3D3F /* WorldBossMenuHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29FC8863201B78D6002B3D3F /* WorldBossMenuHeader.xib */; };
 		29FC8866201B7B5B002B3D3F /* WorldBossMenuHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC8865201B7B5B002B3D3F /* WorldBossMenuHeader.swift */; };
+		29FD8AA0203D753F0094322E /* SplitSocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FD8A9F203D753F0094322E /* SplitSocialViewController.swift */; };
+		29FD8AA3203D7D010094322E /* PartyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FD8AA2203D7D010094322E /* PartyViewController.swift */; };
+		29FD8AA7203DA42A0094322E /* NSLayoutConstraint-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FD8AA6203DA42A0094322E /* NSLayoutConstraint-Extensions.swift */; };
 		29FEB278202B491600EA245A /* Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FEB277202B491600EA245A /* Avatar.swift */; };
 		29FEB27A202B4F0400EA245A /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FEB279202B4F0400EA245A /* AvatarView.swift */; };
 		49005B6E1F17DDF9004830D9 /* Shop.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49005B6D1F17DDF9004830D9 /* Shop.storyboard */; };
@@ -333,7 +339,6 @@
 		D98F5DC11C6A1DA60035CBEC /* HRPGGroupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D98F5DC01C6A1DA60035CBEC /* HRPGGroupTableViewController.m */; };
 		D98F5DC31C6A34540035CBEC /* ChatMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D98F5DC21C6A34540035CBEC /* ChatMessageCell.xib */; };
 		D98F5DC91C6A45800035CBEC /* ChatMessageLike+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D98F5DC61C6A45800035CBEC /* ChatMessageLike+CoreDataProperties.m */; };
-		D98F5DCA1C6A45800035CBEC /* ChatMessageLike.m in Sources */ = {isa = PBXBuildFile; fileRef = D98F5DC81C6A45800035CBEC /* ChatMessageLike.m */; };
 		D98F5DCD1C6CB1330035CBEC /* HRPGFlagInformationOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = D98F5DCC1C6CB1330035CBEC /* HRPGFlagInformationOverlayView.m */; };
 		D98F5DD11C6CB4BE0035CBEC /* HRPGFlagInformationOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D98F5DD01C6CB4BE0035CBEC /* HRPGFlagInformationOverlayView.xib */; };
 		D98F5DD71C6CFFC60035CBEC /* HRPGPartyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D98F5DD61C6CFFC60035CBEC /* HRPGPartyTableViewController.m */; };
@@ -567,6 +572,12 @@
 		299BD6341F54346F00E22935 /* QuestDetailRewardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestDetailRewardView.xib; sourceTree = "<group>"; };
 		299BD6361F5457E100E22935 /* HabiticaIcons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabiticaIcons.swift; sourceTree = "<group>"; };
 		299BD6391F557FE700E22935 /* AuthenticationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
+		29A0FD77203DBDAD00590BDE /* ChatMessageLike+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ChatMessageLike+CoreDataClass.h"; sourceTree = "<group>"; };
+		29A0FD78203DBDAD00590BDE /* ChatMessageLike+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ChatMessageLike+CoreDataClass.m"; sourceTree = "<group>"; };
+		29A0FD7A203DBDEA00590BDE /* ChatMessageFlag+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ChatMessageFlag+CoreDataProperties.h"; sourceTree = "<group>"; };
+		29A0FD7B203DBDEA00590BDE /* ChatMessageFlag+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ChatMessageFlag+CoreDataClass.h"; sourceTree = "<group>"; };
+		29A0FD7C203DBDEA00590BDE /* ChatMessageFlag+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ChatMessageFlag+CoreDataClass.m"; sourceTree = "<group>"; };
+		29A0FD7D203DBDEA00590BDE /* ChatMessageFlag+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ChatMessageFlag+CoreDataProperties.m"; sourceTree = "<group>"; };
 		29A1B9B81F6ACC2F0055CF57 /* UIAlertAction-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertAction-Extensions.swift"; sourceTree = "<group>"; };
 		29AAA15C1F2A3AA600029737 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		29AAA15E1F2B596900029737 /* SpeechbubbleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechbubbleView.swift; sourceTree = "<group>"; };
@@ -615,6 +626,9 @@
 		29FC8861201A300B002B3D3F /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		29FC8863201B78D6002B3D3F /* WorldBossMenuHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WorldBossMenuHeader.xib; sourceTree = "<group>"; };
 		29FC8865201B7B5B002B3D3F /* WorldBossMenuHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldBossMenuHeader.swift; sourceTree = "<group>"; };
+		29FD8A9F203D753F0094322E /* SplitSocialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitSocialViewController.swift; sourceTree = "<group>"; };
+		29FD8AA2203D7D010094322E /* PartyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyViewController.swift; sourceTree = "<group>"; };
+		29FD8AA6203DA42A0094322E /* NSLayoutConstraint-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint-Extensions.swift"; sourceTree = "<group>"; };
 		29FEB277202B491600EA245A /* Avatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Avatar.swift; sourceTree = "<group>"; };
 		29FEB279202B4F0400EA245A /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		2AA9CAD02350FFCB017F32D0 /* Pods-Habitica Snapshots.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica Snapshots.release.xcconfig"; path = "Pods/Target Support Files/Pods-Habitica Snapshots/Pods-Habitica Snapshots.release.xcconfig"; sourceTree = "<group>"; };
@@ -973,8 +987,6 @@
 		D98F5DC21C6A34540035CBEC /* ChatMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatMessageCell.xib; sourceTree = "<group>"; };
 		D98F5DC51C6A45800035CBEC /* ChatMessageLike+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ChatMessageLike+CoreDataProperties.h"; sourceTree = "<group>"; };
 		D98F5DC61C6A45800035CBEC /* ChatMessageLike+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ChatMessageLike+CoreDataProperties.m"; sourceTree = "<group>"; };
-		D98F5DC71C6A45800035CBEC /* ChatMessageLike.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatMessageLike.h; sourceTree = "<group>"; };
-		D98F5DC81C6A45800035CBEC /* ChatMessageLike.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatMessageLike.m; sourceTree = "<group>"; };
 		D98F5DCB1C6CB1330035CBEC /* HRPGFlagInformationOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGFlagInformationOverlayView.h; sourceTree = "<group>"; };
 		D98F5DCC1C6CB1330035CBEC /* HRPGFlagInformationOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGFlagInformationOverlayView.m; sourceTree = "<group>"; };
 		D98F5DD01C6CB4BE0035CBEC /* HRPGFlagInformationOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HRPGFlagInformationOverlayView.xib; path = ../HRPGFlagInformationOverlayView.xib; sourceTree = "<group>"; };
@@ -1376,6 +1388,8 @@
 		29E16318200E849000685640 /* Social */ = {
 			isa = PBXGroup;
 			children = (
+				29FD8AA1203D7CF60094322E /* Party */,
+				29FD8A9F203D753F0094322E /* SplitSocialViewController.swift */,
 				29E1631E200F62CB00685640 /* GroupChatViewController.swift */,
 				29E16319200E849400685640 /* Tavern */,
 			);
@@ -1402,14 +1416,20 @@
 				29E16312200E619400685640 /* QuestProgressView.swift */,
 				29FC885320175C70002B3D3F /* RageStrikeView.swift */,
 				29028BB020319E4000B7F704 /* RageStrikeActiveContentView.xib */,
-				29FC88552017B840002B3D3F /* CollapsibleTitle.swift */,
-				29FC88592017C039002B3D3F /* CollapsibleStackView.swift */,
 				29FC885D2018D858002B3D3F /* WorldBossDescription.xib */,
 				29FC885F2018DB64002B3D3F /* WorldBossDescriptionView.swift */,
 				29FC8863201B78D6002B3D3F /* WorldBossMenuHeader.xib */,
 				29FC8865201B7B5B002B3D3F /* WorldBossMenuHeader.swift */,
 			);
 			path = Quests;
+			sourceTree = "<group>";
+		};
+		29FD8AA1203D7CF60094322E /* Party */ = {
+			isa = PBXGroup;
+			children = (
+				29FD8AA2203D7D010094322E /* PartyViewController.swift */,
+			);
+			path = Party;
 			sourceTree = "<group>";
 		};
 		4908642C1F4530DC00BD9896 /* Shop */ = {
@@ -1706,6 +1726,7 @@
 				29ED1AFE1F339ACF005A3895 /* UIColor-Extensions.swift */,
 				D9D17CCF1E673CCC00AD9232 /* UIView-Extensions.swift */,
 				491C6E5A2020FE64005030A2 /* Challenge-Extensions.swift */,
+				29FD8AA6203DA42A0094322E /* NSLayoutConstraint-Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -2010,6 +2031,8 @@
 				29FEB279202B4F0400EA245A /* AvatarView.swift */,
 				293BB4A01FD06E7E003B6F4F /* BulkStatsAllocationView.xib */,
 				299BD6311F5420A300E22935 /* Challenges */,
+				29FC88552017B840002B3D3F /* CollapsibleTitle.swift */,
+				29FC88592017C039002B3D3F /* CollapsibleStackView.swift */,
 				4904C73F1F1ED87400F80723 /* GradientImageView.swift */,
 				29AAA15C1F2A3AA600029737 /* GradientView.swift */,
 				29B3FEBB1F9E3B17000B12CF /* HabiticaAlertController.swift */,
@@ -2169,14 +2192,6 @@
 		D9C3D01D19509E4C00D22A4A /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
-				298409CF203C8645003AD202 /* ChatMessage+CoreDataProperties.h */,
-				298409D0203C8645003AD202 /* ChatMessage+CoreDataClass.h */,
-				298409D1203C8645003AD202 /* ChatMessage+CoreDataClass.m */,
-				298409D2203C8645003AD202 /* ChatMessage+CoreDataProperties.m */,
-				298409D3203C8645003AD202 /* ChatMessageAvatar+CoreDataProperties.h */,
-				298409D4203C8645003AD202 /* ChatMessageAvatar+CoreDataClass.h */,
-				298409D5203C8645003AD202 /* ChatMessageAvatar+CoreDataClass.m */,
-				298409D6203C8645003AD202 /* ChatMessageAvatar+CoreDataProperties.m */,
 				D9E46AFF1DABCD9100E390D7 /* Buff+CoreDataClass.h */,
 				D9E46B001DABCD9100E390D7 /* Buff+CoreDataClass.m */,
 				D9E46B011DABCD9100E390D7 /* Buff+CoreDataProperties.h */,
@@ -2195,8 +2210,20 @@
 				D9BB45CE1E7713E80002AE2E /* ChallengeTask+CoreDataClass.m */,
 				D9BB45CF1E7713E80002AE2E /* ChallengeTask+CoreDataProperties.h */,
 				D9BB45D01E7713E80002AE2E /* ChallengeTask+CoreDataProperties.m */,
-				D98F5DC71C6A45800035CBEC /* ChatMessageLike.h */,
-				D98F5DC81C6A45800035CBEC /* ChatMessageLike.m */,
+				298409D0203C8645003AD202 /* ChatMessage+CoreDataClass.h */,
+				298409D1203C8645003AD202 /* ChatMessage+CoreDataClass.m */,
+				298409CF203C8645003AD202 /* ChatMessage+CoreDataProperties.h */,
+				298409D2203C8645003AD202 /* ChatMessage+CoreDataProperties.m */,
+				298409D4203C8645003AD202 /* ChatMessageAvatar+CoreDataClass.h */,
+				298409D5203C8645003AD202 /* ChatMessageAvatar+CoreDataClass.m */,
+				298409D3203C8645003AD202 /* ChatMessageAvatar+CoreDataProperties.h */,
+				298409D6203C8645003AD202 /* ChatMessageAvatar+CoreDataProperties.m */,
+				29A0FD7B203DBDEA00590BDE /* ChatMessageFlag+CoreDataClass.h */,
+				29A0FD7C203DBDEA00590BDE /* ChatMessageFlag+CoreDataClass.m */,
+				29A0FD7A203DBDEA00590BDE /* ChatMessageFlag+CoreDataProperties.h */,
+				29A0FD7D203DBDEA00590BDE /* ChatMessageFlag+CoreDataProperties.m */,
+				29A0FD77203DBDAD00590BDE /* ChatMessageLike+CoreDataClass.h */,
+				29A0FD78203DBDAD00590BDE /* ChatMessageLike+CoreDataClass.m */,
 				D98F5DC51C6A45800035CBEC /* ChatMessageLike+CoreDataProperties.h */,
 				D98F5DC61C6A45800035CBEC /* ChatMessageLike+CoreDataProperties.m */,
 				D9B5C0BE18D5EFF400C8D1B7 /* ChecklistItem.h */,
@@ -3214,18 +3241,19 @@
 				D9BB45D61E79968B0002AE2E /* ChallengeFilterAlert.swift in Sources */,
 				D9D593671D008C7500D6C388 /* PushDevice.m in Sources */,
 				D97C71F318F364950089FDC6 /* HRPGEquipmentViewController.m in Sources */,
+				29FD8AA0203D753F0094322E /* SplitSocialViewController.swift in Sources */,
 				299BD63A1F557FE700E22935 /* AuthenticationManager.swift in Sources */,
 				D9FC1A871BC2D8A300B97D23 /* TutorialSteps.m in Sources */,
 				D98AD5541943986100AF6174 /* HRPGMountViewController.m in Sources */,
 				D980373919956E46004C8871 /* HRPGEquipmentDetailViewController.m in Sources */,
 				29ED1AFB1F338E5D005A3895 /* SetupCustomizationRepository.swift in Sources */,
-				D98F5DCA1C6A45800035CBEC /* ChatMessageLike.m in Sources */,
 				D96C85421DCB6501003E3616 /* HRPGDropsEnabledNotification.m in Sources */,
 				D9A1A27E1BA593D900903567 /* HRPGRewardTableViewCell.m in Sources */,
 				290726811F750FC400545550 /* ShopCategory+CoreDataClass.m in Sources */,
 				2957B8A81F4B071700E836EF /* InAppReward+CoreDataClass.m in Sources */,
 				29E1631F200F62CB00685640 /* GroupChatViewController.swift in Sources */,
 				299BD62F1F541EFC00E22935 /* QuestReward+CoreDataClass.m in Sources */,
+				29A0FD7E203DBDEA00590BDE /* ChatMessageFlag+CoreDataClass.m in Sources */,
 				D9BB45591E71AFAF0002AE2E /* Down-Extensions.swift in Sources */,
 				D9D593611D0058AE00D6C388 /* HRPGInboxChatViewController.m in Sources */,
 				D92A085A1D3520D8000F8B66 /* Shop.m in Sources */,
@@ -3300,6 +3328,7 @@
 				D9D9EF981D54E51C00FC89C1 /* HRPGQRCodeView.m in Sources */,
 				D9E46B031DABCD9100E390D7 /* Buff+CoreDataClass.m in Sources */,
 				4908641D1F43DE2B00BD9896 /* HRPGInsufficientGemsViewController.swift in Sources */,
+				29FD8AA7203DA42A0094322E /* NSLayoutConstraint-Extensions.swift in Sources */,
 				D95D03951C74AA5500D6BFB3 /* Outfit+CoreDataProperties.m in Sources */,
 				D914398A1BAF14C40006999E /* UIImage+withColor.m in Sources */,
 				D97ED0B01E6DBC87006C2A26 /* Interactor.swift in Sources */,
@@ -3398,6 +3427,7 @@
 				29028C402037067000B7F704 /* ChatTableViewCell.swift in Sources */,
 				29FC8862201A300B002B3D3F /* ProgressBar.swift in Sources */,
 				D93422B91AB792B5003AFCDE /* UIColor+LighterDarker.m in Sources */,
+				29FD8AA3203D7D010094322E /* PartyViewController.swift in Sources */,
 				D92A08591D3520D8000F8B66 /* Shop+CoreDataProperties.m in Sources */,
 				D92761611CCFBEAD0049ECAC /* Flags+CoreDataProperties.m in Sources */,
 				D9D593661D008C7500D6C388 /* PushDevice+CoreDataProperties.m in Sources */,
@@ -3458,10 +3488,12 @@
 				D99BC43419D4C34A006DC132 /* OnePasswordExtension.m in Sources */,
 				D97C71EA18F32FEE0089FDC6 /* Reward.m in Sources */,
 				29028C422037131C00B7F704 /* SystemMessageTableViewCell.swift in Sources */,
+				29A0FD7F203DBDEA00590BDE /* ChatMessageFlag+CoreDataProperties.m in Sources */,
 				29B3FEBA1F9A6FAD000B12CF /* AuthenticationSettingsViewController.swift in Sources */,
 				298409DA203C8645003AD202 /* ChatMessageAvatar+CoreDataProperties.m in Sources */,
 				493ECBB71F47D7E10099B1FC /* HRPGGearSetItem.swift in Sources */,
 				49DCB7AC1F39239D0079FDD0 /* HRPGSimpleShopItemView.swift in Sources */,
+				29A0FD79203DBDAD00590BDE /* ChatMessageLike+CoreDataClass.m in Sources */,
 				299BD6371F5457E100E22935 /* HabiticaIcons.swift in Sources */,
 				29B3FEAF1F9A33AB000B12CF /* APISettingsViewController.swift in Sources */,
 				498E4CFB1FA17B9E006933FF /* ChallengeCreatorTableViewCell.swift in Sources */,

@@ -2,7 +2,7 @@
 //  ChatMessage+CoreDataProperties.m
 //  Habitica
 //
-//  Created by Phillip Thelen on 20.02.18.
+//  Created by Phillip Thelen on 21.02.18.
 //  Copyright © 2018 HabitRPG Inc. All rights reserved.
 //
 //
@@ -29,5 +29,6 @@
 @dynamic group;
 @dynamic likes;
 @dynamic userObject;
+@dynamic flags;
 
 @end

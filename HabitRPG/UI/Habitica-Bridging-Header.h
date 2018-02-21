@@ -49,4 +49,5 @@
 #import "HRPGTaskProtocol.h"
 #import "HRPGFlagInformationOverlayView.h"
 #import "ChatMessageAvatar+CoreDataClass.h"
-#import "ChatMessageLike.h"
+#import "ChatMessageLike+CoreDataClass.h"
+#import "HRPGGroupTableViewController.h"

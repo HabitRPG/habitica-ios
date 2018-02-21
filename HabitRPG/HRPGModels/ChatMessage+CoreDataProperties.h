@@ -2,13 +2,13 @@
 //  ChatMessage+CoreDataProperties.h
 //  Habitica
 //
-//  Created by Phillip Thelen on 20.02.18.
+//  Created by Phillip Thelen on 21.02.18.
 //  Copyright © 2018 HabitRPG Inc. All rights reserved.
 //
 //
 
 #import "ChatMessage+CoreDataClass.h"
-
+#import "ChatMessageFlag+CoreDataClass.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -30,6 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) Group *group;
 @property (nullable, nonatomic, retain) NSSet<ChatMessageLike *> *likes;
 @property (nullable, nonatomic, retain) User *userObject;
+@property (nullable, nonatomic, retain) NSSet<ChatMessageFlag *> *flags;
 
 @end
 
@@ -39,6 +40,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)removeLikesObject:(ChatMessageLike *)value;
 - (void)addLikes:(NSSet<ChatMessageLike *> *)values;
 - (void)removeLikes:(NSSet<ChatMessageLike *> *)values;
+
+- (void)addFlagsObject:(ChatMessageFlag *)value;
+- (void)removeFlagsObject:(ChatMessageFlag *)value;
+- (void)addFlags:(NSSet<ChatMessageFlag *> *)values;
+- (void)removeFlags:(NSSet<ChatMessageFlag *> *)values;
 
 @end
 

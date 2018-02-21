@@ -10,6 +10,7 @@
 #import "HRPGGroupTableViewController.h"
 #import "NSString+Emoji.h"
 #import "UIColor+Habitica.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGGuildsOverviewViewController ()
 
@@ -190,8 +191,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UITableViewCell *)sender {
     if ([segue.identifier isEqualToString:@"ShowGuildSegue"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
-        HRPGGroupTableViewController *tableviewController =
-                segue.destinationViewController;
+        SplitSocialViewController *tableviewController = segue.destinationViewController;
         if (indexPath.section == 0) {
             Group *guild = [self.fetchedResultsController objectAtIndexPath:indexPath];
             tableviewController.groupID = guild.id;

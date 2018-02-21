@@ -1,5 +1,5 @@
 //
-//  ChatMessageLike+CoreDataProperties.h
+//  ChatMessageFlag+CoreDataProperties.h
 //  Habitica
 //
 //  Created by Phillip Thelen on 21.02.18.
@@ -7,21 +7,21 @@
 //
 //
 
-#import "ChatMessageLike+CoreDataClass.h"
+#import "ChatMessageFlag+CoreDataClass.h"
 
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ChatMessageLike (CoreDataProperties)
+@interface ChatMessageFlag (CoreDataProperties)
 
-+ (NSFetchRequest<ChatMessageLike *> *)fetchRequest;
++ (NSFetchRequest<ChatMessageFlag *> *)fetchRequest;
 
 @property (nullable, nonatomic, copy) NSString *userID;
 @property (nullable, nonatomic, retain) NSSet<ChatMessage *> *messages;
 
 @end
 
-@interface ChatMessageLike (CoreDataGeneratedAccessors)
+@interface ChatMessageFlag (CoreDataGeneratedAccessors)
 
 - (void)addMessagesObject:(ChatMessage *)value;
 - (void)removeMessagesObject:(ChatMessage *)value;

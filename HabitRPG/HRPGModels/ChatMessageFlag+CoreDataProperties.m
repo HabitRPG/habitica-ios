@@ -1,5 +1,5 @@
 //
-//  ChatMessageLike+CoreDataProperties.m
+//  ChatMessageFlag+CoreDataProperties.m
 //  Habitica
 //
 //  Created by Phillip Thelen on 21.02.18.
@@ -7,11 +7,11 @@
 //
 //
 
-#import "ChatMessageLike+CoreDataProperties.h"
+#import "ChatMessageFlag+CoreDataProperties.h"
 
-@implementation ChatMessageLike (CoreDataProperties)
+@implementation ChatMessageFlag (CoreDataProperties)
 
-+ (NSFetchRequest<ChatMessageLike *> *)fetchRequest {
++ (NSFetchRequest<ChatMessageFlag *> *)fetchRequest {
 	return [[NSFetchRequest alloc] initWithEntityName:@"ChatMessageFlag"];
 }
 

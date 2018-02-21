@@ -70,7 +70,8 @@
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="user" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="avatar" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ChatMessageAvatar" inverseName="message" inverseEntity="ChatMessageAvatar" syncable="YES"/>
+        <relationship name="avatar" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="ChatMessageAvatar" inverseName="message" inverseEntity="ChatMessageAvatar" syncable="YES"/>
+        <relationship name="flags" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ChatMessageFlag" inverseName="messages" inverseEntity="ChatMessageFlag" syncable="YES"/>
         <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="chatmessages" inverseEntity="Group" syncable="YES"/>
         <relationship name="likes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ChatMessageLike" inverseName="messages" inverseEntity="ChatMessageLike" syncable="YES"/>
         <relationship name="userObject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="chatmessages" inverseEntity="User" syncable="YES"/>
@@ -95,6 +96,10 @@
         <relationship name="equipped" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Outfit" syncable="YES"/>
         <relationship name="message" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ChatMessage" inverseName="avatar" inverseEntity="ChatMessage" syncable="YES"/>
         <relationship name="preferences" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Preferences" syncable="YES"/>
+    </entity>
+    <entity name="ChatMessageFlag" representedClassName="ChatMessageFlag" syncable="YES">
+        <attribute name="userID" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="messages" optional="YES" toMany="YES" deletionRule="No Action" destinationEntity="ChatMessage" inverseName="flags" inverseEntity="ChatMessage" syncable="YES"/>
     </entity>
     <entity name="ChatMessageLike" representedClassName="ChatMessageLike" syncable="YES">
         <attribute name="userID" optional="YES" attributeType="String" syncable="YES"/>
@@ -587,7 +592,7 @@
         <element name="Challenge" positionX="9" positionY="153" width="128" height="315"/>
         <element name="ChallengeCategory" positionX="9" positionY="153" width="128" height="105"/>
         <element name="ChallengeTask" positionX="9" positionY="153" width="128" height="270"/>
-        <element name="ChatMessage" positionX="0" positionY="0" width="128" height="255"/>
+        <element name="ChatMessage" positionX="0" positionY="0" width="128" height="270"/>
         <element name="ChatMessageAvatar" positionX="9" positionY="153" width="128" height="330"/>
         <element name="ChatMessageLike" positionX="0" positionY="0" width="128" height="75"/>
         <element name="ChecklistItem" positionX="0" positionY="0" width="128" height="105"/>
@@ -625,5 +630,6 @@
         <element name="TutorialSteps" positionX="0" positionY="0" width="128" height="135"/>
         <element name="UnreadMessages" positionX="0" positionY="0" width="128" height="90"/>
         <element name="User" positionX="0" positionY="0" width="128" height="1275"/>
+        <element name="ChatMessageFlag" positionX="9" positionY="153" width="128" height="75"/>
     </elements>
 </model>

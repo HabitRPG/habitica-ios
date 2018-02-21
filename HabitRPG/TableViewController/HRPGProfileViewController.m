@@ -277,13 +277,11 @@ NSString *currentUserID;
         [self.navigationController pushViewController:tavernViewController animated:YES];
     } else if (indexPath.section == 1 && indexPath.item == 1) {
         UIStoryboard *secondStoryBoard = [UIStoryboard storyboardWithName:@"Social" bundle:nil];
-        UIViewController *partyViewController =
-            [secondStoryBoard instantiateViewControllerWithIdentifier:@"PartyViewController"];
+        UIViewController *partyViewController = [secondStoryBoard instantiateViewControllerWithIdentifier:@"PartyViewController"];
         [self.navigationController pushViewController:partyViewController animated:YES];
     } else if (indexPath.section == 1 && indexPath.item == 2) {
         UIStoryboard *secondStoryBoard = [UIStoryboard storyboardWithName:@"Social" bundle:nil];
-        UIViewController *guildsViewController = [secondStoryBoard
-                                                  instantiateViewControllerWithIdentifier:@"GuildsOverviewViewController"];
+        UIViewController *guildsViewController = [secondStoryBoard instantiateViewControllerWithIdentifier:@"GuildsOverviewViewController"];
         [self.navigationController pushViewController:guildsViewController animated:YES];
     } else if (indexPath.section == 1 && indexPath.item == 3) {
         UIStoryboard *secondStoryBoard = [UIStoryboard storyboardWithName:@"Social" bundle:nil];
