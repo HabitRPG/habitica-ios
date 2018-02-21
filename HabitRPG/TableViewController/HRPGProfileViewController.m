@@ -41,7 +41,7 @@ NSString *currentUserID;
         UIStoryboard *secondStoryBoard = [UIStoryboard storyboardWithName:@"Social" bundle:nil];
         UIViewController *inboxViewController =
         [secondStoryBoard instantiateViewControllerWithIdentifier:@"InboxNavigationViewController"];
-        inboxViewController.modalPresentationStyle = UIModalPresentationPageSheet;
+        inboxViewController.modalPresentationStyle = UIModalPresentationFormSheet;
         [weakSelf presentViewController:inboxViewController animated:YES completion:nil];
     }];
     [self.navbarView setSettingsAction:^{
