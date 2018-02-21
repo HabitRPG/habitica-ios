@@ -302,6 +302,9 @@
         if ([user.party.unreadMessages boolValue]) {
             badgeCount++;
         }
+        if (user.inboxNewMessages.integerValue > 0) {
+            badgeCount++;
+        }
     }
     
     if (badgeCount > 0) {

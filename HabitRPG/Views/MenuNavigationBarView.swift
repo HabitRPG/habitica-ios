@@ -18,6 +18,7 @@ class MenuNavigationBarView: UIView {
     
     @IBOutlet weak var messagesButton: UIButton!
     @IBOutlet weak var settingsButton: UIButton!
+    @IBOutlet weak var messagesBadge: PaddedLabel!
     
     // MARK: - Private Helper Methods
    
@@ -26,12 +27,19 @@ class MenuNavigationBarView: UIView {
         avatarView.showPet = false
         avatarView.showMount = false
         avatarView.size = .compact
+        messagesBadge.horizontalPadding = 4
     }
     
     @objc
     public func configure(user: User) {
         usernameLabel.text = user.username
         avatarView.avatar = user
+        if user.inboxNewMessages.intValue > 0 {
+            messagesBadge.text = user.inboxNewMessages.stringValue
+            messagesBadge.isHidden = false
+        } else {
+            messagesBadge.isHidden = true
+        }
     }
     
     @IBAction func messageButtonTapped(_ sender: Any) {

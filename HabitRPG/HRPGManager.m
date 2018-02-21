@@ -4231,7 +4231,7 @@ NSString *currentUser;
                                            path:@"user/mark-pms-read"
                                      parameters:nil
                                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                            [self getUser].inboxNewMessages = 0;
+                                            [self getUser].inboxNewMessages = @0;
                                             NSError *executeError = nil;
                                             [[self getManagedObjectContext] saveToPersistentStore:&executeError];
                                             [self.networkIndicatorController endNetworking];
