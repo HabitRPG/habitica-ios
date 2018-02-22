@@ -133,10 +133,12 @@ class GroupChatViewController: SLKTextViewController {
     
     override func didPressRightButton(_ sender: Any?) {
         self.textView.refreshFirstResponder()
-        
-        HRPGManager.shared().chatMessage(self.textView.text, withGroup: self.groupID, onSuccess: {[weak self] in
+        let message = self.textView.text
+        HRPGManager.shared().chatMessage(message, withGroup: self.groupID, onSuccess: {[weak self] in
             HRPGManager.shared().fetchGroup(self?.groupID, onSuccess: nil, onError: nil)
-        }, onError: nil)
+        }, onError: {
+            self.textView.text = message
+        })
         
         if let expandedIndexPath = self.expandedChatPath {
             expandSelectedCell(expandedIndexPath)
