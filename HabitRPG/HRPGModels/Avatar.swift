@@ -215,7 +215,7 @@ extension User: Avatar {
 extension ChatMessageAvatar: Avatar {
 
     private var displayedOutfit: Outfit? {
-        if preferences?.useCostume?.boolValue == true {
+        if useCostume?.boolValue == true {
             return costume
         } else {
             return equipped
@@ -271,6 +271,6 @@ extension ChatMessageAvatar: Avatar {
     }
     
     var isSleep: Bool {
-        return preferences?.sleep?.boolValue ?? false
+        return false
     }
 }

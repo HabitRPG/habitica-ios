@@ -34,7 +34,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) Outfit *costume;
 @property (nullable, nonatomic, retain) Outfit *equipped;
 @property (nullable, nonatomic, retain) ChatMessage *message;
-@property (nullable, nonatomic, retain) Preferences *preferences;
 
 @end
 

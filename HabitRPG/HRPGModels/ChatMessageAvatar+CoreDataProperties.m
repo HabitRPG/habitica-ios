@@ -33,6 +33,5 @@
 @dynamic costume;
 @dynamic equipped;
 @dynamic message;
-@dynamic preferences;
 
 @end
