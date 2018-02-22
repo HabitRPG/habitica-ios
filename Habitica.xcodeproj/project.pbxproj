@@ -110,6 +110,7 @@
 		29E1631B200E84AC00685640 /* TavernViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E1631A200E84AC00685640 /* TavernViewController.swift */; };
 		29E1631D200F62C100685640 /* TavernDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E1631C200F62C100685640 /* TavernDetailViewController.swift */; };
 		29E1631F200F62CB00685640 /* GroupChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E1631E200F62CB00685640 /* GroupChatViewController.swift */; };
+		29E779F8203F30A40079F269 /* HRPGGemCapReachedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E779F7203F30A40079F269 /* HRPGGemCapReachedViewController.swift */; };
 		29ED1AFB1F338E5D005A3895 /* SetupCustomizationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ED1AFA1F338E5D005A3895 /* SetupCustomizationRepository.swift */; };
 		29ED1AFD1F338ECC005A3895 /* SetupCustomization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ED1AFC1F338ECC005A3895 /* SetupCustomization.swift */; };
 		29ED1AFF1F339ACF005A3895 /* UIColor-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ED1AFE1F339ACF005A3895 /* UIColor-Extensions.swift */; };
@@ -611,6 +612,7 @@
 		29E1631A200E84AC00685640 /* TavernViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TavernViewController.swift; sourceTree = "<group>"; };
 		29E1631C200F62C100685640 /* TavernDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TavernDetailViewController.swift; sourceTree = "<group>"; };
 		29E1631E200F62CB00685640 /* GroupChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupChatViewController.swift; sourceTree = "<group>"; };
+		29E779F7203F30A40079F269 /* HRPGGemCapReachedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRPGGemCapReachedViewController.swift; sourceTree = "<group>"; };
 		29ED1AFA1F338E5D005A3895 /* SetupCustomizationRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupCustomizationRepository.swift; sourceTree = "<group>"; };
 		29ED1AFC1F338ECC005A3895 /* SetupCustomization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupCustomization.swift; sourceTree = "<group>"; };
 		29ED1AFE1F339ACF005A3895 /* UIColor-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor-Extensions.swift"; sourceTree = "<group>"; };
@@ -1442,6 +1444,7 @@
 				4908641C1F43DE2B00BD9896 /* HRPGInsufficientGemsViewController.swift */,
 				4908642D1F45316700BD9896 /* HRPGInsufficientGoldViewController.swift */,
 				4908642F1F45318600BD9896 /* HRPGInsufficientHourglassesViewController.swift */,
+				29E779F7203F30A40079F269 /* HRPGGemCapReachedViewController.swift */,
 			);
 			name = Shop;
 			sourceTree = "<group>";
@@ -3226,6 +3229,7 @@
 				D903B7891DCA2BE6001F2893 /* HRPGNotification.m in Sources */,
 				49E3784F200912BA00E0DA3D /* ResizableTableViewCell.swift in Sources */,
 				D97CCDBC19A7AFFA00DA128A /* HRPGArrayViewController.m in Sources */,
+				29E779F8203F30A40079F269 /* HRPGGemCapReachedViewController.swift in Sources */,
 				29FC8866201B7B5B002B3D3F /* WorldBossMenuHeader.swift in Sources */,
 				D97C71E418ECE09A0089FDC6 /* HRPGSpellViewController.m in Sources */,
 				2986EB0B1FCC63F900B316F6 /* AttributePointsViewController.swift in Sources */,

@@ -110,13 +110,6 @@ class HRPGCurrencyCountView: UIView {
                                                   attribute: NSLayoutAttribute.notAnAttribute,
                                                   multiplier: 1,
                                                   constant: viewSize == .normal ? 18 : 24)
-        heightConstraint = NSLayoutConstraint.init(item: currencyImageView,
-                                                   attribute: NSLayoutAttribute.height,
-                                                   relatedBy: NSLayoutRelation.equal,
-                                                   toItem: nil,
-                                                   attribute: NSLayoutAttribute.notAnAttribute,
-                                                   multiplier: 1,
-                                                   constant: viewSize == .normal ? 16 : 20)
         if let width = widthConstraint {
             currencyImageView.addConstraint(width)
         }

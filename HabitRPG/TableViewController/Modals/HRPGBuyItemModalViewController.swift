@@ -135,23 +135,31 @@ class HRPGBuyItemModalViewController: UIViewController {
             let statsView = HRPGItemStatsView(frame: CGRect.zero)
             if let gear = inventoryRepository.getGear(key) {
                 statsView.configure(gear: gear)
+                if let user = HRPGManager.shared().getUser(), user.hclass != gear.klass {
+                    
+                }
             }
             addItemAndDetails(itemView, statsView, to: contentView)
         }
     }
     
     func updateBuyButton() {
-        var isLocked = false
+        var isLocked = itemIsLocked()
         if let item = self.item {
             if let currencyString = item.currency, let currency = Currency(rawValue: currencyString) {
                 currencyCountView.currency = currency
             }
             currencyCountView.amount = item.value?.intValue ?? 0
-            isLocked = item.locked?.boolValue ?? false
+            
+            if item.key == "gem" && item.itemsLeft?.intValue == 0 {
+                isLocked = true
+            }
         } else if let reward = self.reward {
             if let inAppReward = reward as? InAppReward, let currencyString = inAppReward.currency, let currency = Currency(rawValue: currencyString) {
                 currencyCountView.currency = currency
-                isLocked = inAppReward.locked?.boolValue ?? false
+                if inAppReward.key == "gem" && inAppReward.itemsLeft?.intValue == 0 {
+                    isLocked = true
+                }
             } else {
                 currencyCountView.currency = .gold
             }
@@ -318,6 +326,8 @@ class HRPGBuyItemModalViewController: UIViewController {
                     viewControllerName = "InsufficientHourglassesViewController"
                 } else if currency == .gem {
                     viewControllerName = "InsufficientGemsViewController"
+                } else if key == "gem" {
+                    viewControllerName = "GemCapReachedViewController"
                 } else {
                     viewControllerName = "InsufficientGoldViewController"
                 }
@@ -342,12 +352,16 @@ class HRPGBuyItemModalViewController: UIViewController {
 
             } else if currency == .gem || purchaseType == "gems" {
                 HRPGManager.shared().purchaseItem(key, withPurchaseType: purchaseType, withText: text, withImageName: imageName, onSuccess: successBlock, onError: {
-                    HRPGBuyItemModalViewController.displayViewController(name: "InsufficientGemsViewController", parent: topViewController)
+                    if key == "gem" {
+                        HRPGBuyItemModalViewController.displayViewController(name: "GemCapReachedViewController", parent: topViewController)
+                    } else {
+                        HRPGBuyItemModalViewController.displayViewController(name: "InsufficientGemsViewController", parent: topViewController)
+                    }
                 })
             } else if purchaseType == "fortify" {
                 HRPGManager.shared().reroll(successBlock, onError: {
                     HRPGBuyItemModalViewController.displayViewController(name: "InsufficientGoldViewController", parent: topViewController)
-                });
+                })
             } else {
                 if currency == .gold && purchaseType == "quests" {
                     HRPGManager.shared().purchaseQuest(key, withText: text, withImageName: imageName, onSuccess: successBlock, onError: {

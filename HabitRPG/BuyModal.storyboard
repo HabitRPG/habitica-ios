@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="PIR-jb-93G">
-    <device id="retina4_7" orientation="portrait">
+    <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -19,31 +19,29 @@
                         <viewControllerLayoutGuide type="bottom" id="2rS-0a-WMm"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="38B-cY-EDq">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="di7-JQ-KmH" customClass="HRPGCloseableShopModalView" customModule="Habitica" customModuleProvider="target">
-                                <rect key="frame" x="16" y="206" width="343" height="256"/>
+                                <rect key="frame" x="184" y="384" width="400" height="256"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g3P-N6-MBj">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="400" height="50"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="JUY-rH-EEf">
-                                                <rect key="frame" x="157" y="11.5" width="174" height="27"/>
+                                                <rect key="frame" x="214" y="11.5" width="174" height="27"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="X0F-mm-9ZG" customClass="HRPGCurrencyCountView" customModule="Habitica" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="50" height="27"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" priority="500" constant="30" id="08u-bA-HWY"/>
-                                                            <constraint firstAttribute="height" constant="27" id="3II-fP-LWN"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="IJ2-cU-jHd" customClass="HRPGCurrencyCountView" customModule="Habitica" customModuleProvider="target">
                                                         <rect key="frame" x="62" y="0.0" width="50" height="27"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="27" id="WG7-2j-UoT"/>
                                                             <constraint firstAttribute="width" priority="500" constant="30" id="nBd-0k-tKA"/>
                                                         </constraints>
                                                     </view>
@@ -51,11 +49,13 @@
                                                         <rect key="frame" x="124" y="0.0" width="50" height="27"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="27" id="95M-lM-Pj8"/>
                                                             <constraint firstAttribute="width" priority="500" constant="30" id="WkU-Nk-Tfs"/>
                                                         </constraints>
                                                     </view>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="27" id="PRO-Gn-4s9"/>
+                                                </constraints>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your balance:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b9i-sB-wsY">
                                                 <rect key="frame" x="20" y="16" width="93" height="18"/>
@@ -74,13 +74,13 @@
                                         </constraints>
                                     </view>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7w1-M9-yF5">
-                                        <rect key="frame" x="0.0" y="144" width="343" height="58"/>
+                                        <rect key="frame" x="0.0" y="144" width="400" height="58"/>
                                         <subviews>
                                             <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lLq-BF-AiO">
-                                                <rect key="frame" x="0.0" y="8" width="343" height="50"/>
+                                                <rect key="frame" x="0.0" y="8" width="400" height="50"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TiK-yj-cOf">
-                                                        <rect key="frame" x="0.0" y="0.0" width="171.5" height="50"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="200" height="50"/>
                                                         <color key="backgroundColor" red="0.97647058819999999" green="0.96862745098039216" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="GpK-xG-o2L"/>
@@ -91,17 +91,17 @@
                                                         </connections>
                                                     </button>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e3z-QN-KcI">
-                                                        <rect key="frame" x="171.5" y="0.0" width="171.5" height="50"/>
+                                                        <rect key="frame" x="200" y="0.0" width="200" height="50"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SaL-Vs-PkR">
-                                                                <rect key="frame" x="85.5" y="0.0" width="2" height="50"/>
+                                                                <rect key="frame" x="99.5" y="0.0" width="2" height="50"/>
                                                                 <color key="backgroundColor" red="0.97597450017929077" green="0.96980291604995728" blue="0.99977797269821167" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="2" id="nYp-3B-VF4"/>
                                                                 </constraints>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Buy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j5D-EL-LRQ">
-                                                                <rect key="frame" x="47.5" y="0.0" width="31" height="50"/>
+                                                                <rect key="frame" x="61.5" y="0.0" width="31" height="50"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <bool key="isElement" value="NO"/>
                                                                 </accessibility>
@@ -113,7 +113,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <view contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="few-vN-72G" customClass="HRPGCurrencyCountView" customModule="Habitica" customModuleProvider="target">
-                                                                <rect key="frame" x="94.5" y="0.0" width="60" height="50"/>
+                                                                <rect key="frame" x="108.5" y="0.0" width="60" height="50"/>
                                                                 <color key="backgroundColor" red="0.97597450017929077" green="0.96980291604995728" blue="0.99977797269821167" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" priority="500" constant="60" id="bZB-jm-BNG"/>
@@ -163,9 +163,11 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="g3P-N6-MBj" firstAttribute="leading" secondItem="di7-JQ-KmH" secondAttribute="leading" id="7BC-XA-ec7"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="400" id="8Yo-n4-O11"/>
                                     <constraint firstItem="7w1-M9-yF5" firstAttribute="leading" secondItem="di7-JQ-KmH" secondAttribute="leading" id="AuG-OG-Qcq"/>
                                     <constraint firstAttribute="bottom" secondItem="7w1-M9-yF5" secondAttribute="bottom" constant="54" id="Jzc-Cn-zWx"/>
                                     <constraint firstAttribute="trailing" secondItem="g3P-N6-MBj" secondAttribute="trailing" id="eU2-BY-Y0X"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="304" id="feR-UH-dIg"/>
                                     <constraint firstItem="g3P-N6-MBj" firstAttribute="top" secondItem="di7-JQ-KmH" secondAttribute="top" id="vHL-AB-uLU"/>
                                     <constraint firstAttribute="trailing" secondItem="7w1-M9-yF5" secondAttribute="trailing" id="y7C-0u-AZp"/>
                                 </constraints>
@@ -173,9 +175,11 @@
                         </subviews>
                         <color key="backgroundColor" red="0.21176470588235294" green="0.12549019607843137" blue="0.36470588235294116" alpha="0.59681732382550334" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="di7-JQ-KmH" secondAttribute="trailing" id="bns-ts-j04"/>
-                            <constraint firstItem="di7-JQ-KmH" firstAttribute="centerY" secondItem="38B-cY-EDq" secondAttribute="centerY" id="fGG-31-Xw4"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="di7-JQ-KmH" secondAttribute="leading" id="sG4-hv-dAv"/>
+                            <constraint firstItem="di7-JQ-KmH" firstAttribute="centerY" secondItem="38B-cY-EDq" secondAttribute="centerY" id="Q1F-5J-4iQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="di7-JQ-KmH" secondAttribute="trailing" priority="99" id="bns-ts-j04"/>
+                            <constraint firstItem="di7-JQ-KmH" firstAttribute="centerY" relation="greaterThanOrEqual" secondItem="38B-cY-EDq" secondAttribute="centerY" id="fGG-31-Xw4"/>
+                            <constraint firstItem="di7-JQ-KmH" firstAttribute="leading" secondItem="38B-cY-EDq" secondAttribute="leadingMargin" priority="999" id="sG4-hv-dAv"/>
+                            <constraint firstItem="di7-JQ-KmH" firstAttribute="centerX" secondItem="38B-cY-EDq" secondAttribute="centerX" id="yEc-ov-YpB"/>
                         </constraints>
                     </view>
                     <connections>
@@ -192,6 +196,7 @@
                         <segue destination="MH9-dz-o73" kind="presentation" identifier="insufficientGold" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="u8d-fK-uyg"/>
                         <segue destination="mJy-hz-jsh" kind="presentation" identifier="insufficientGems" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="zrE-Fe-jVF"/>
                         <segue destination="H4v-s7-uWa" kind="presentation" identifier="insufficientHourglasses" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="jVb-ok-r5b"/>
+                        <segue destination="zpD-3z-FmV" kind="presentation" identifier="gemCapReached" modalPresentationStyle="currentContext" modalTransitionStyle="crossDissolve" id="x7p-gZ-L9n"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="84L-qz-qXD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -207,27 +212,27 @@
                         <viewControllerLayoutGuide type="bottom" id="h9m-1V-pC1"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="yYx-4g-8hd">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GRl-EB-mZX" customClass="HRPGCloseableShopModalView" customModule="Habitica" customModuleProvider="target">
-                                <rect key="frame" x="16" y="188.5" width="343" height="290"/>
+                                <rect key="frame" x="184" y="367" width="400" height="290"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="290" id="KO8-zR-per"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CV4-Pe-f0l">
-                                <rect key="frame" x="16" y="188.5" width="343" height="236"/>
+                                <rect key="frame" x="184" y="367" width="400" height="236"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not enough Gems" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C3v-IP-fUG">
-                                        <rect key="frame" x="99.5" y="15" width="144" height="21"/>
+                                        <rect key="frame" x="128" y="15" width="144" height="21"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <color key="textColor" red="0.40784313729999999" green="0.38431372549999998" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f5k-Rr-PH2" customClass="HRPGSimpleShopItemView" customModule="Habitica" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="46" width="343" height="140"/>
+                                        <rect key="frame" x="0.0" y="46" width="400" height="140"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="image" keyPath="image" value="84_gems"/>
@@ -236,7 +241,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u6f-ro-Ehm">
-                                        <rect key="frame" x="0.0" y="186" width="343" height="50"/>
+                                        <rect key="frame" x="0.0" y="186" width="400" height="50"/>
                                         <color key="backgroundColor" red="0.97647058819999999" green="0.96862745100000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="Enx-lB-SGa"/>
@@ -253,6 +258,7 @@
                                     <constraint firstItem="f5k-Rr-PH2" firstAttribute="leading" secondItem="CV4-Pe-f0l" secondAttribute="leading" id="01C-e5-4Ow"/>
                                     <constraint firstItem="u6f-ro-Ehm" firstAttribute="leading" secondItem="CV4-Pe-f0l" secondAttribute="leading" id="0Tq-kI-UQx"/>
                                     <constraint firstItem="f5k-Rr-PH2" firstAttribute="top" secondItem="CV4-Pe-f0l" secondAttribute="top" constant="46" id="2D2-wk-Z97"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="400" id="4VI-9X-igy"/>
                                     <constraint firstItem="C3v-IP-fUG" firstAttribute="top" secondItem="CV4-Pe-f0l" secondAttribute="top" constant="15" id="Fgn-yr-Rv4"/>
                                     <constraint firstItem="u6f-ro-Ehm" firstAttribute="top" secondItem="f5k-Rr-PH2" secondAttribute="bottom" id="Kif-FR-gcR"/>
                                     <constraint firstAttribute="trailing" secondItem="u6f-ro-Ehm" secondAttribute="trailing" id="Lyg-dJ-SHX"/>
@@ -269,11 +275,12 @@
                         </subviews>
                         <color key="backgroundColor" red="0.21176470589999999" green="0.12549019610000001" blue="0.36470588240000001" alpha="0.59681732379999997" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="GRl-EB-mZX" secondAttribute="trailing" id="4sX-Rf-7m6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="GRl-EB-mZX" secondAttribute="trailing" priority="999" id="4sX-Rf-7m6"/>
                             <constraint firstItem="CV4-Pe-f0l" firstAttribute="bottom" secondItem="GRl-EB-mZX" secondAttribute="bottom" constant="-54" id="4zS-XU-DS0"/>
                             <constraint firstItem="CV4-Pe-f0l" firstAttribute="trailing" secondItem="GRl-EB-mZX" secondAttribute="trailing" id="IMs-2l-hyd"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="GRl-EB-mZX" secondAttribute="leading" id="IhD-Wv-2Ul"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="GRl-EB-mZX" secondAttribute="leading" priority="999" id="IhD-Wv-2Ul"/>
                             <constraint firstItem="CV4-Pe-f0l" firstAttribute="top" secondItem="GRl-EB-mZX" secondAttribute="top" id="eOv-3v-Ehm"/>
+                            <constraint firstItem="CV4-Pe-f0l" firstAttribute="centerX" secondItem="yYx-4g-8hd" secondAttribute="centerX" id="vg6-jz-juN"/>
                             <constraint firstItem="GRl-EB-mZX" firstAttribute="centerY" secondItem="yYx-4g-8hd" secondAttribute="centerY" id="vi2-d2-auQ"/>
                             <constraint firstItem="CV4-Pe-f0l" firstAttribute="leading" secondItem="GRl-EB-mZX" secondAttribute="leading" id="wnS-7F-i96"/>
                         </constraints>
@@ -287,7 +294,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nxf-1J-VGp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="326" y="-258"/>
+            <point key="canvasLocation" x="352" y="-315"/>
         </scene>
         <!--Insufficient Gold View Controller-->
         <scene sceneID="cWi-pm-kiG">
@@ -298,20 +305,20 @@
                         <viewControllerLayoutGuide type="bottom" id="Q1P-3l-hBT"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="VOR-qR-YWz">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XMT-e1-oa1" customClass="HRPGShopModalBgView" customModule="Habitica" customModuleProvider="target">
-                                <rect key="frame" x="16" y="212" width="343" height="243"/>
+                                <rect key="frame" x="184" y="390.5" width="400" height="243"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not enough Gold" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MAF-Nb-1hY">
-                                        <rect key="frame" x="104" y="15" width="135" height="21"/>
+                                        <rect key="frame" x="132.5" y="15" width="135" height="21"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <color key="textColor" red="0.40784313729999999" green="0.38431372549999998" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wl4-Aq-qfJ">
-                                        <rect key="frame" x="0.0" y="193" width="343" height="50"/>
+                                        <rect key="frame" x="0.0" y="193" width="400" height="50"/>
                                         <color key="backgroundColor" red="0.97647058819999999" green="0.96862745100000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="pMb-uf-UO2"/>
@@ -323,7 +330,7 @@
                                         </connections>
                                     </button>
                                     <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="JPn-ef-wu2" customClass="HRPGSimpleShopItemView" customModule="Habitica" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="52" width="343" height="139"/>
+                                        <rect key="frame" x="0.0" y="52" width="400" height="139"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="139" id="clb-WV-yX3"/>
@@ -336,6 +343,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="400" id="2Cu-fW-mpB"/>
                                     <constraint firstAttribute="bottom" secondItem="JPn-ef-wu2" secondAttribute="bottom" constant="52" id="Nkn-ZU-KX2"/>
                                     <constraint firstAttribute="trailing" secondItem="JPn-ef-wu2" secondAttribute="trailing" id="ULB-jH-tAh"/>
                                     <constraint firstItem="JPn-ef-wu2" firstAttribute="top" secondItem="XMT-e1-oa1" secondAttribute="top" constant="52" id="XeJ-zN-ZBI"/>
@@ -350,8 +358,9 @@
                         </subviews>
                         <color key="backgroundColor" red="0.21176470589999999" green="0.12549019610000001" blue="0.36470588240000001" alpha="0.59681732379999997" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="leadingMargin" secondItem="XMT-e1-oa1" secondAttribute="leading" id="bgq-EB-dUX"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="XMT-e1-oa1" secondAttribute="trailing" id="cbM-vg-RNH"/>
+                            <constraint firstItem="XMT-e1-oa1" firstAttribute="centerX" secondItem="VOR-qR-YWz" secondAttribute="centerX" id="2Cb-H9-Eci"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="XMT-e1-oa1" secondAttribute="leading" priority="999" id="bgq-EB-dUX"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="XMT-e1-oa1" secondAttribute="trailing" priority="999" id="cbM-vg-RNH"/>
                             <constraint firstItem="XMT-e1-oa1" firstAttribute="centerY" secondItem="VOR-qR-YWz" secondAttribute="centerY" id="iKD-78-OwC"/>
                         </constraints>
                     </view>
@@ -364,7 +373,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9IY-XY-972" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1105" y="77"/>
+            <point key="canvasLocation" x="1041" y="-315"/>
         </scene>
         <!--Insufficient Hourglasses View Controller-->
         <scene sceneID="IKx-VE-RcY">
@@ -375,27 +384,27 @@
                         <viewControllerLayoutGuide type="bottom" id="R8r-Qm-gts"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="X3q-EW-gRp">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HsQ-qc-HER" customClass="HRPGCloseableShopModalView" customModule="Habitica" customModuleProvider="target">
-                                <rect key="frame" x="16" y="188.5" width="343" height="290"/>
+                                <rect key="frame" x="184" y="367" width="400" height="290"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="290" id="xEE-Ej-P9q"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vg2-zG-ztx">
-                                <rect key="frame" x="16" y="188.5" width="343" height="236"/>
+                                <rect key="frame" x="184" y="367" width="400" height="236"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not enough Hourglasses" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z4L-Zx-0jp">
-                                        <rect key="frame" x="73" y="15" width="197" height="21"/>
+                                        <rect key="frame" x="101.5" y="15" width="197" height="21"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <color key="textColor" red="0.40784313729999999" green="0.38431372549999998" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8iQ-Ji-0DG" customClass="HRPGSimpleShopItemView" customModule="Habitica" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="46" width="343" height="139"/>
+                                        <rect key="frame" x="0.0" y="46" width="400" height="139"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="title" value="You'll need more Mystic Hourglasses to buy this item!"/>
@@ -403,7 +412,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4E3-xU-II9">
-                                        <rect key="frame" x="0.0" y="186" width="343" height="50"/>
+                                        <rect key="frame" x="0.0" y="186" width="400" height="50"/>
                                         <color key="backgroundColor" red="0.97647058819999999" green="0.96862745100000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="S4I-Ib-Kbi"/>
@@ -419,6 +428,7 @@
                                 <constraints>
                                     <constraint firstItem="Z4L-Zx-0jp" firstAttribute="centerX" secondItem="Vg2-zG-ztx" secondAttribute="centerX" id="3RT-LQ-dXo"/>
                                     <constraint firstAttribute="bottom" secondItem="4E3-xU-II9" secondAttribute="bottom" id="4ra-9s-RVb"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="400" id="5eG-Qe-8Cx"/>
                                     <constraint firstItem="8iQ-Ji-0DG" firstAttribute="top" secondItem="Vg2-zG-ztx" secondAttribute="top" constant="46" id="GPD-Rc-93b"/>
                                     <constraint firstAttribute="trailing" secondItem="4E3-xU-II9" secondAttribute="trailing" id="MmT-ir-CGE"/>
                                     <constraint firstItem="4E3-xU-II9" firstAttribute="leading" secondItem="Vg2-zG-ztx" secondAttribute="leading" id="Z7l-iz-nGC"/>
@@ -437,13 +447,14 @@
                         <color key="backgroundColor" red="0.21176470589999999" green="0.12549019610000001" blue="0.36470588240000001" alpha="0.59681732379999997" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Vg2-zG-ztx" firstAttribute="top" secondItem="HsQ-qc-HER" secondAttribute="top" id="0Tr-fS-nFh"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="HsQ-qc-HER" secondAttribute="trailing" id="QAN-zN-8le"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="HsQ-qc-HER" secondAttribute="leading" id="TVQ-1V-A3V"/>
+                            <constraint firstItem="Vg2-zG-ztx" firstAttribute="centerX" secondItem="X3q-EW-gRp" secondAttribute="centerX" id="GrR-fO-zhr"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="HsQ-qc-HER" secondAttribute="trailing" priority="999" id="QAN-zN-8le"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="HsQ-qc-HER" secondAttribute="leading" priority="999" id="TVQ-1V-A3V"/>
                             <constraint firstItem="Vg2-zG-ztx" firstAttribute="bottom" secondItem="HsQ-qc-HER" secondAttribute="bottom" constant="-54" id="eYE-bX-1Eo"/>
                             <constraint firstItem="HsQ-qc-HER" firstAttribute="centerY" secondItem="X3q-EW-gRp" secondAttribute="centerY" id="fH8-72-MTS"/>
                             <constraint firstItem="HsQ-qc-HER" firstAttribute="centerX" secondItem="X3q-EW-gRp" secondAttribute="centerX" id="fMc-PP-bMe"/>
                             <constraint firstItem="Vg2-zG-ztx" firstAttribute="trailing" secondItem="HsQ-qc-HER" secondAttribute="trailing" id="mVB-ZO-gGF"/>
-                            <constraint firstItem="Vg2-zG-ztx" firstAttribute="leading" secondItem="HsQ-qc-HER" secondAttribute="leading" id="uMW-5N-dkY"/>
+                            <constraint firstItem="Vg2-zG-ztx" firstAttribute="leading" secondItem="HsQ-qc-HER" secondAttribute="leading" priority="999" id="uMW-5N-dkY"/>
                         </constraints>
                     </view>
                     <connections>
@@ -458,8 +469,88 @@
             </objects>
             <point key="canvasLocation" x="326" y="441"/>
         </scene>
+        <!--Gem Cap Reached View Controller-->
+        <scene sceneID="peQ-a6-nLQ">
+            <objects>
+                <viewController storyboardIdentifier="GemCapReachedViewController" id="zpD-3z-FmV" customClass="HRPGGemCapReachedViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ftV-pg-6fG"/>
+                        <viewControllerLayoutGuide type="bottom" id="3kT-Jn-D84"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aTg-Aw-jGl">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6YK-vA-Y5L" customClass="HRPGCloseableShopModalView" customModule="Habitica" customModuleProvider="target">
+                                <rect key="frame" x="184" y="367" width="400" height="290"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="290" id="jdk-ck-jVa"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cDm-Nx-OXI">
+                                <rect key="frame" x="184" y="367" width="400" height="236"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monthly Gem Cap Reached" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="osQ-wn-dQZ">
+                                        <rect key="frame" x="92" y="15" width="216.5" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <color key="textColor" red="0.40784313729999999" green="0.38431372549999998" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UVF-vB-P8d" customClass="HRPGSimpleShopItemView" customModule="Habitica" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="46" width="400" height="190"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="image" value="21_gems"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="title">
+                                                <string key="value">You have bought all the Gems you can this month. More become available within the first three days of each month. Thanks for subscribing!</string>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="shouldHideNotes" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="UVF-vB-P8d" secondAttribute="bottom" id="9tp-88-e2R"/>
+                                    <constraint firstAttribute="trailing" secondItem="UVF-vB-P8d" secondAttribute="trailing" id="A3y-6X-nyF"/>
+                                    <constraint firstItem="UVF-vB-P8d" firstAttribute="top" secondItem="cDm-Nx-OXI" secondAttribute="top" constant="46" id="DuU-2d-du5"/>
+                                    <constraint firstItem="osQ-wn-dQZ" firstAttribute="top" secondItem="cDm-Nx-OXI" secondAttribute="top" constant="15" id="GLf-g5-PXu"/>
+                                    <constraint firstItem="UVF-vB-P8d" firstAttribute="leading" secondItem="cDm-Nx-OXI" secondAttribute="leading" id="NZe-mf-vUF"/>
+                                    <constraint firstItem="osQ-wn-dQZ" firstAttribute="centerX" secondItem="cDm-Nx-OXI" secondAttribute="centerX" id="byP-NH-UpF"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="400" id="phY-DB-542"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.21176470589999999" green="0.12549019610000001" blue="0.36470588240000001" alpha="0.59681732379999997" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="cDm-Nx-OXI" firstAttribute="top" secondItem="6YK-vA-Y5L" secondAttribute="top" id="4Js-T6-vdL"/>
+                            <constraint firstItem="cDm-Nx-OXI" firstAttribute="bottom" secondItem="6YK-vA-Y5L" secondAttribute="bottom" constant="-54" id="6mM-QS-Khp"/>
+                            <constraint firstItem="cDm-Nx-OXI" firstAttribute="trailing" secondItem="6YK-vA-Y5L" secondAttribute="trailing" id="GIZ-by-bAT"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="6YK-vA-Y5L" secondAttribute="leading" priority="999" id="Hz7-Ib-dlz"/>
+                            <constraint firstItem="6YK-vA-Y5L" firstAttribute="centerY" secondItem="aTg-Aw-jGl" secondAttribute="centerY" id="Lhi-W0-hKU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="6YK-vA-Y5L" secondAttribute="trailing" priority="999" id="Mvc-nH-f3g"/>
+                            <constraint firstItem="cDm-Nx-OXI" firstAttribute="leading" secondItem="6YK-vA-Y5L" secondAttribute="leading" id="TLi-vM-3UZ"/>
+                            <constraint firstItem="cDm-Nx-OXI" firstAttribute="centerX" secondItem="aTg-Aw-jGl" secondAttribute="centerX" id="Y6q-WW-L32"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backgroundModalView" destination="6YK-vA-Y5L" id="cc2-i8-JSQ"/>
+                        <outlet property="imageTextView" destination="UVF-vB-P8d" id="JR3-Mx-Fby"/>
+                        <outlet property="titleLabel" destination="osQ-wn-dQZ" id="7g8-BU-ky5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YZo-Cd-iuC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1041" y="441"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="21_gems" width="47" height="54"/>
         <image name="84_gems" width="65" height="63"/>
     </resources>
     <color key="tintColor" red="0.6058621407" green="0.38462612029999999" blue="0.99835687880000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
