@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "FAQ.h"
+#import "HRPGUIViewController.h"
 
-@interface HRPGFAQDetailViewController : UIViewController
+@interface HRPGFAQDetailViewController : HRPGUIViewController
 
 @property FAQ *faq;
 @property(weak, nonatomic) IBOutlet UILabel *questionLabel;

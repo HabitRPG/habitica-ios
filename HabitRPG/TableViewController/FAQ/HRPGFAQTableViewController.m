@@ -12,6 +12,7 @@
 #import "TutorialSteps.h"
 #import "HRPGCoreDataDataSource.h"
 #import "UIColor+Habitica.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGFAQTableViewController ()
 
@@ -24,6 +25,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.topHeaderCoordinator.hideHeader = true;
 
     [self setupTableView];
     

@@ -18,16 +18,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.topHeaderCoordinator.hideHeader = true;
 
     self.questionLabel.text = self.faq.question;
     self.answerTextView.attributedText = [self renderMarkdown:[self.faq getRelevantAnswer]];
     self.answerTextView.textContainerInset = UIEdgeInsetsMake(0, 16, 16, 16);
-
-    if ([self hrpgTopHeaderNavigationController]) {
-        if ([self hrpgTopHeaderNavigationController].state != HRPGTopHeaderStateHidden) {
-            [[self hrpgTopHeaderNavigationController] scrollView:nil scrolledToPosition:0];
-        }
-    }
 }
 
 @end
