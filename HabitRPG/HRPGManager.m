@@ -4205,6 +4205,9 @@ NSString *currentUser;
 }
 
 - (void)chatSeen:(NSString *)group {
+    if (group == nil || group.length == 0) {
+        return;
+    }
     [self.networkIndicatorController beginNetworking];
 
     [[RKObjectManager sharedManager] postObject:nil
