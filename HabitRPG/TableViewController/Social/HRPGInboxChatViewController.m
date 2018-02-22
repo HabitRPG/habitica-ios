@@ -294,7 +294,7 @@
         [self expandSelectedCell:indexPath];
     };
     
-    [cell configureWithInboxMessage:message previousMessage:[self itemAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row-1 inSection:indexPath.section]] nextMessage:[self itemAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row+1 inSection:indexPath.section]] user:self.user isExpanded:[self.expandedChatPath isEqual:indexPath]];
+    [cell configureWithInboxMessage:message previousMessage:[self itemAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row+1 inSection:indexPath.section]] nextMessage:[self itemAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row-1 inSection:indexPath.section]] user:self.user isExpanded:[self.expandedChatPath isEqual:indexPath]];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

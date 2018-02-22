@@ -188,7 +188,7 @@ class ChatTableViewCell: UITableViewCell {
             messageTextView.text = inboxMessage.text?.unicodeEmoji
         }
         
-        if previousMessage?.userID == inboxMessage.userID {
+        if previousMessage?.sent?.boolValue == inboxMessage.sent?.boolValue {
             topMarginConstraint.constant = 2
             avatarView.isHidden = true
         } else {
@@ -196,7 +196,7 @@ class ChatTableViewCell: UITableViewCell {
             avatarView.isHidden = isOwnMessage
         }
         
-        if nextMessage?.userID == inboxMessage.userID {
+        if nextMessage?.sent?.boolValue == inboxMessage.sent?.boolValue {
             bottomMarginConstraint.constant = 2
         } else {
             bottomMarginConstraint.constant = 4
