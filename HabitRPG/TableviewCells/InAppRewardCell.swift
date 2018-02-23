@@ -52,7 +52,7 @@ class InAppRewardCell: UICollectionViewCell {
                 infoImageView.image = HabiticaIcons.imageOfItemIndicatorLimited
                 infoImageView.isHidden = false
                 infoLabel.isHidden = true
-            } else {
+            } else if isLocked == false {
                 infoImageView.isHidden = true
                 infoLabel.isHidden = true
             }
