@@ -45,6 +45,7 @@
 #import "ShopItem+CoreDataClass.h"
 #import "Habitica-Swift.h"
 #import <Keys/HabiticaKeys.h>
+#import "NSString+Emoji.h"
 
 @interface HRPGManager ()
 @property HRPGNetworkIndicatorController *networkIndicatorController;
@@ -2840,21 +2841,24 @@ NSString *currentUser;
         parameters:nil
         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
             NSError *executeError = nil;
-            if ([groupID isEqualToString:@"party"]) {
-                Group *party = [mappingResult dictionary][@"data"];
-                if ([party isKindOfClass:[NSArray class]]) {
-                    NSArray *array = (NSArray *)party;
-                    if (array.count > 0) {
-                        party = array[0];
-                    }
-                }
-                if (party && [party.type isEqualToString:@"party"] &&
-                    ![party.id isEqualToString:[self getUser].partyID]) {
-                    [self getUser].partyID = party.id;
-                    [[NSNotificationCenter defaultCenter] postNotificationName:@"partyChanged"
-                                                                        object:party];
+            Group *group = [mappingResult dictionary][@"data"];
+            if ([group isKindOfClass:[NSArray class]]) {
+                NSArray *array = (NSArray *)group;
+                if (array.count > 0) {
+                    group = array[0];
                 }
             }
+            if (group && [group.type isEqualToString:@"party"] && ![group.id isEqualToString:[self getUser].partyID]) {
+                [self getUser].partyID = group.id;
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"partyChanged"
+                                                                    object:group];
+            }
+            
+            NSError *error;
+            for (ChatMessage *message in group.chatmessages) {
+                message.attributedText = [HabiticaMarkdownHelper toHabiticaAttributedString:[message.text stringByReplacingEmojiCheatCodesWithUnicode] error:&error];
+            }
+            
             [self handleNotifications:[mappingResult dictionary][@"notifications"]];
             [[self getManagedObjectContext] saveToPersistentStore:&executeError];
             if (successBlock) {

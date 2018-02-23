@@ -90,11 +90,6 @@ class GroupChatViewController: SLKTextViewController {
         self.refresh()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.renderAttributedTexts()
-    }
-    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
@@ -102,20 +97,8 @@ class GroupChatViewController: SLKTextViewController {
         acceptView?.frame = CGRect(x: 0, y: view.frame.size.height-90, width: view.frame.size.width, height: 90)
     }
     
-    private func renderAttributedTexts() {
-        DispatchQueue.global(qos: .background).async {[weak self] in
-            for item in self?.dataSource?.items() ?? [] {
-                guard let message = item as? ChatMessage else {
-                    return
-                }
-                message.attributedText = try? Down(markdownString: message.text?.unicodeEmoji ?? "").toHabiticaAttributedString()
-            }
-            DispatchQueue.main.async {
-                if let rows = self?.tableView?.indexPathsForVisibleRows {
-                    self?.tableView?.reloadRows(at: rows, with: .automatic)
-                }
-            }
-        }
+    private func render(message: ChatMessage) {
+        message.attributedText = try? Down(markdownString: message.text?.unicodeEmoji ?? "").toHabiticaAttributedString()
     }
     
     @objc

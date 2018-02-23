@@ -22,30 +22,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="di7-JQ-KmH" customClass="HRPGCloseableShopModalView" customModule="Habitica" customModuleProvider="target">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="di7-JQ-KmH" customClass="HRPGCloseableShopModalView" customModule="Habitica" customModuleProvider="target">
                                 <rect key="frame" x="184" y="384" width="400" height="256"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g3P-N6-MBj">
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g3P-N6-MBj">
                                         <rect key="frame" x="0.0" y="0.0" width="400" height="50"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="JUY-rH-EEf">
+                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="JUY-rH-EEf">
                                                 <rect key="frame" x="214" y="11.5" width="174" height="27"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="X0F-mm-9ZG" customClass="HRPGCurrencyCountView" customModule="Habitica" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X0F-mm-9ZG" customClass="HRPGCurrencyCountView" customModule="Habitica" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="50" height="27"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" priority="500" constant="30" id="08u-bA-HWY"/>
                                                         </constraints>
                                                     </view>
-                                                    <view contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="IJ2-cU-jHd" customClass="HRPGCurrencyCountView" customModule="Habitica" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IJ2-cU-jHd" customClass="HRPGCurrencyCountView" customModule="Habitica" customModuleProvider="target">
                                                         <rect key="frame" x="62" y="0.0" width="50" height="27"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" priority="500" constant="30" id="nBd-0k-tKA"/>
                                                         </constraints>
                                                     </view>
-                                                    <view contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="mhw-rd-Afi" customClass="HRPGCurrencyCountView" customModule="Habitica" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mhw-rd-Afi" customClass="HRPGCurrencyCountView" customModule="Habitica" customModuleProvider="target">
                                                         <rect key="frame" x="124" y="0.0" width="50" height="27"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <constraints>
@@ -57,7 +57,7 @@
                                                     <constraint firstAttribute="height" constant="27" id="PRO-Gn-4s9"/>
                                                 </constraints>
                                             </stackView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your balance:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b9i-sB-wsY">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Your balance:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b9i-sB-wsY">
                                                 <rect key="frame" x="20" y="16" width="93" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" red="0.40784313725490196" green="0.38431372549019605" blue="0.45490196078431372" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -73,13 +73,13 @@
                                             <constraint firstItem="b9i-sB-wsY" firstAttribute="centerY" secondItem="g3P-N6-MBj" secondAttribute="centerY" id="jk3-uk-5fM"/>
                                         </constraints>
                                     </view>
-                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7w1-M9-yF5">
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7w1-M9-yF5">
                                         <rect key="frame" x="0.0" y="144" width="400" height="58"/>
                                         <subviews>
-                                            <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lLq-BF-AiO">
+                                            <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lLq-BF-AiO">
                                                 <rect key="frame" x="0.0" y="8" width="400" height="50"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TiK-yj-cOf">
+                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TiK-yj-cOf">
                                                         <rect key="frame" x="0.0" y="0.0" width="200" height="50"/>
                                                         <color key="backgroundColor" red="0.97647058819999999" green="0.96862745098039216" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
@@ -90,17 +90,17 @@
                                                             <action selector="pinPressed" destination="PIR-jb-93G" eventType="touchUpInside" id="j3p-xc-GGo"/>
                                                         </connections>
                                                     </button>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e3z-QN-KcI">
+                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e3z-QN-KcI">
                                                         <rect key="frame" x="200" y="0.0" width="200" height="50"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SaL-Vs-PkR">
+                                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SaL-Vs-PkR">
                                                                 <rect key="frame" x="99.5" y="0.0" width="2" height="50"/>
                                                                 <color key="backgroundColor" red="0.97597450017929077" green="0.96980291604995728" blue="0.99977797269821167" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="2" id="nYp-3B-VF4"/>
                                                                 </constraints>
                                                             </view>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Buy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j5D-EL-LRQ">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" ambiguous="YES" text="Buy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j5D-EL-LRQ">
                                                                 <rect key="frame" x="61.5" y="0.0" width="31" height="50"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <bool key="isElement" value="NO"/>
@@ -112,7 +112,7 @@
                                                                 <color key="textColor" red="0.6058621407" green="0.38462612029999999" blue="0.99835687880000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <view contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="few-vN-72G" customClass="HRPGCurrencyCountView" customModule="Habitica" customModuleProvider="target">
+                                                            <view contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="few-vN-72G" customClass="HRPGCurrencyCountView" customModule="Habitica" customModuleProvider="target">
                                                                 <rect key="frame" x="108.5" y="0.0" width="60" height="50"/>
                                                                 <color key="backgroundColor" red="0.97597450017929077" green="0.96980291604995728" blue="0.99977797269821167" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>

@@ -224,6 +224,10 @@
     if (self.emptyText) {
         [self configureEmptyLabel];
     }
+    
+    if (self.controllerDidChangeContent) {
+        self.controllerDidChangeContent();
+    }
 }
 
 - (void)configureEmptyLabel {

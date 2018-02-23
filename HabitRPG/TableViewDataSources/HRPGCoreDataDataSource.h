@@ -14,11 +14,12 @@ typedef NSString*(^CellIdentifierBlock)(id item, NSIndexPath *indexPath);
 
 @interface HRPGCoreDataDataSource : NSObject <UITableViewDataSource, NSFetchedResultsControllerDelegate>
 
-@property NSString *sectionNameKeyPath;
+@property NSString * _Nullable sectionNameKeyPath;
 @property BOOL haveEmptyHeaderTitles;
 @property NSString *emptyText;
 @property CellIdentifierBlock cellIdentifierBlock;
 @property (weak) id<HRPGCoreDataDataSourceDelegate> delegate;
+@property void (^controllerDidChangeContent)();
 
 - (id)initWithManagedObjectContext:(NSManagedObjectContext *)managedObjectContext
                         entityName:(NSString *)entityName
@@ -33,5 +34,6 @@ typedef NSString*(^CellIdentifierBlock)(id item, NSIndexPath *indexPath);
 - (NSInteger)numberOfSections;
 
 - (void)reconfigureFetchRequest;
+
 
 @end
