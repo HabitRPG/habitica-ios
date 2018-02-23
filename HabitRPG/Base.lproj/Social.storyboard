@@ -1068,7 +1068,7 @@ Invite friends now to earn a Quest Scroll!</string>
             <objects>
                 <tableViewController id="LJL-4h-PRX" customClass="ChallengeDetailsTableViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="mSs-Sh-idc">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -1836,87 +1836,68 @@ Invite friends now to earn a Quest Scroll!</string>
         <!--Navigation Controller-->
         <scene sceneID="oPz-d7-ciS">
             <objects>
-                <navigationController navigationBarHidden="YES" id="qim-an-Lm9" sceneMemberID="viewController">
+                <navigationController id="qim-an-Lm9" sceneMemberID="viewController">
                     <nil key="simulatedTopBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="D6q-kU-EGb">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="9bP-JK-x68" kind="relationship" relationship="rootViewController" id="O3A-2F-UE9"/>
+                        <segue destination="DzW-iF-bFP" kind="relationship" relationship="rootViewController" id="uef-uz-H0n"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6js-fE-uo3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="23" y="4344"/>
         </scene>
-        <!--Guidelines View Controller-->
-        <scene sceneID="GoI-Yd-4vz">
+        <!--Guidelines-->
+        <scene sceneID="wQI-5q-dJR">
             <objects>
-                <viewController id="9bP-JK-x68" customClass="HRPGGGuidelinesViewController" sceneMemberID="viewController">
+                <viewController id="DzW-iF-bFP" customClass="GuidelinesViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ZIw-I0-BSm"/>
-                        <viewControllerLayoutGuide type="bottom" id="2nR-i8-He8"/>
+                        <viewControllerLayoutGuide type="top" id="Elm-iZ-Evw"/>
+                        <viewControllerLayoutGuide type="bottom" id="jjC-Ag-kKu"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="ye8-1F-ID7">
+                    <view key="view" contentMode="scaleToFill" id="0az-3L-YFU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vLc-mV-bsJ">
-                                <rect key="frame" x="16" y="20" width="343" height="108.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" priority="500" constant="47" id="IaA-tL-F4e"/>
-                                </constraints>
-                                <string key="text">If you would like to post messages in the Tavern or any party or guild chat, please first read our  Community Guidelines and then click "Accept Guidelines" button below to indicate that you accept them.</string>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <webView tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MHB-Pq-EF3">
-                                <rect key="frame" x="0.0" y="140.5" width="375" height="462.5"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </webView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q7z-X9-NMm">
-                                <rect key="frame" x="0.0" y="559" width="375" height="44"/>
-                                <items>
-                                    <barButtonItem systemItem="flexibleSpace" id="0Qh-yN-l7g"/>
-                                    <barButtonItem systemItem="done" id="oPS-ob-V16">
-                                        <connections>
-                                            <action selector="dismissGuidelines:" destination="9bP-JK-x68" id="05O-PD-3Bo"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="vH0-3y-TsP">
+                                <rect key="frame" x="16" y="64" width="343" height="539"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="MHB-Pq-EF3" firstAttribute="leading" secondItem="ye8-1F-ID7" secondAttribute="leading" id="4zJ-gA-ynL"/>
-                            <constraint firstItem="q7z-X9-NMm" firstAttribute="trailing" secondItem="MHB-Pq-EF3" secondAttribute="trailing" id="5C1-hr-LU1"/>
-                            <constraint firstItem="vLc-mV-bsJ" firstAttribute="leading" secondItem="ye8-1F-ID7" secondAttribute="leading" constant="16" id="LTR-bM-VzV"/>
-                            <constraint firstItem="q7z-X9-NMm" firstAttribute="leading" secondItem="MHB-Pq-EF3" secondAttribute="leading" id="QaG-qE-GE9"/>
-                            <constraint firstItem="vLc-mV-bsJ" firstAttribute="trailing" secondItem="ye8-1F-ID7" secondAttribute="trailing" constant="-16" id="QgU-ng-rcP"/>
-                            <constraint firstItem="q7z-X9-NMm" firstAttribute="bottom" secondItem="2nR-i8-He8" secondAttribute="top" id="YXM-XC-JUB"/>
-                            <constraint firstItem="2nR-i8-He8" firstAttribute="top" secondItem="MHB-Pq-EF3" secondAttribute="bottom" id="j60-Dh-lYf"/>
-                            <constraint firstAttribute="trailing" secondItem="MHB-Pq-EF3" secondAttribute="trailing" id="nUk-dF-buf"/>
-                            <constraint firstItem="MHB-Pq-EF3" firstAttribute="top" secondItem="vLc-mV-bsJ" secondAttribute="bottom" constant="12" id="vYd-OT-Gpm"/>
-                            <constraint firstItem="vLc-mV-bsJ" firstAttribute="top" secondItem="ye8-1F-ID7" secondAttribute="topMargin" id="yjM-ay-FT1"/>
+                            <constraint firstAttribute="bottom" secondItem="vH0-3y-TsP" secondAttribute="bottom" id="Qio-Zw-zp0"/>
+                            <constraint firstItem="vH0-3y-TsP" firstAttribute="leading" secondItem="0az-3L-YFU" secondAttribute="leadingMargin" id="dQl-3Y-4uE"/>
+                            <constraint firstItem="vH0-3y-TsP" firstAttribute="top" secondItem="Elm-iZ-Evw" secondAttribute="bottom" id="lTT-9e-iWE"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vH0-3y-TsP" secondAttribute="trailing" id="on6-Kd-3MI"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="67e-Nv-XcL"/>
+                    <navigationItem key="navigationItem" title="Guidelines" id="KAs-8j-2dX">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="wp2-vE-4oA">
+                            <connections>
+                                <action selector="doneButtonTapped:" destination="DzW-iF-bFP" id="lhB-Bx-fVS"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="doneButton" destination="oPS-ob-V16" id="EVk-jL-TKx"/>
-                        <outlet property="toolbar" destination="q7z-X9-NMm" id="z2J-7z-m0f"/>
+                        <outlet property="textView" destination="vH0-3y-TsP" id="f8j-zd-d7P"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7rw-WV-q3G" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4g0-iG-kmS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="743" y="4344"/>
+            <point key="canvasLocation" x="730" y="4343"/>
         </scene>
         <!--Challenges-->
         <scene sceneID="Zhw-TJ-o2n">
             <objects>
                 <tableViewController storyboardIdentifier="ChallengeTableViewController" id="BE2-xn-Wwl" customClass="ChallengeTableViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="86" sectionHeaderHeight="28" sectionFooterHeight="28" id="SWx-Y1-cyG">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -2654,7 +2635,7 @@ Invite friends now to earn a Quest Scroll!</string>
         <segue reference="pVi-Sz-5E7"/>
         <segue reference="gAH-Zh-PJ3"/>
         <segue reference="jBF-PN-2IP"/>
-        <segue reference="VPE-S9-CFY"/>
+        <segue reference="wNf-J0-D2P"/>
         <segue reference="UUp-aA-Ao9"/>
         <segue reference="kns-o3-fej"/>
         <segue reference="2KU-R3-vSq"/>

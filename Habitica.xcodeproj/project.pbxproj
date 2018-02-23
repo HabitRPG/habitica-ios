@@ -115,6 +115,7 @@
 		29ED1AFD1F338ECC005A3895 /* SetupCustomization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ED1AFC1F338ECC005A3895 /* SetupCustomization.swift */; };
 		29ED1AFF1F339ACF005A3895 /* UIColor-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ED1AFE1F339ACF005A3895 /* UIColor-Extensions.swift */; };
 		29F89F1A1F47882A004E5B84 /* String-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F89F191F47882A004E5B84 /* String-Extensions.swift */; };
+		29FC5A6B20406932008E88C8 /* GuidelinesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC5A6A20406932008E88C8 /* GuidelinesViewController.swift */; };
 		29FC884C2010CC8A002B3D3F /* SocialRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC884B2010CC8A002B3D3F /* SocialRepository.swift */; };
 		29FC884E2010CCC2002B3D3F /* BaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC884D2010CCC2002B3D3F /* BaseRepository.swift */; };
 		29FC885220134A8F002B3D3F /* PurchaseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC885120134A8F002B3D3F /* PurchaseHandler.swift */; };
@@ -434,7 +435,6 @@
 		D9D17CDA1E69C68000AD9232 /* ChallengeDetailAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CD91E69C68000AD9232 /* ChallengeDetailAlert.xib */; };
 		D9D17CDE1E6AFFD900AD9232 /* ChallengeDetailAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D17CDD1E6AFFD900AD9232 /* ChallengeDetailAlert.swift */; };
 		D9D21731198D509100023367 /* HRPGDeathView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D21730198D509000023367 /* HRPGDeathView.m */; };
-		D9D44C111B0A0C73000732B4 /* HRPGGGuidelinesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D44C101B0A0C73000732B4 /* HRPGGGuidelinesViewController.m */; };
 		D9D593581D004CC900D6C388 /* HRPGInboxTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D593571D004CC900D6C388 /* HRPGInboxTableViewController.m */; };
 		D9D5935D1D00523800D6C388 /* InboxMessage+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D5935A1D00523800D6C388 /* InboxMessage+CoreDataProperties.m */; };
 		D9D5935E1D00523800D6C388 /* InboxMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D5935C1D00523800D6C388 /* InboxMessage.m */; };
@@ -617,6 +617,7 @@
 		29ED1AFC1F338ECC005A3895 /* SetupCustomization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupCustomization.swift; sourceTree = "<group>"; };
 		29ED1AFE1F339ACF005A3895 /* UIColor-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor-Extensions.swift"; sourceTree = "<group>"; };
 		29F89F191F47882A004E5B84 /* String-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String-Extensions.swift"; sourceTree = "<group>"; };
+		29FC5A6A20406932008E88C8 /* GuidelinesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidelinesViewController.swift; sourceTree = "<group>"; };
 		29FC884B2010CC8A002B3D3F /* SocialRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialRepository.swift; sourceTree = "<group>"; };
 		29FC884D2010CCC2002B3D3F /* BaseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRepository.swift; sourceTree = "<group>"; };
 		29FC885020121771002B3D3F /* Habitica 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Habitica 2.xcdatamodel"; sourceTree = "<group>"; };
@@ -1175,8 +1176,6 @@
 		D9D17CDD1E6AFFD900AD9232 /* ChallengeDetailAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeDetailAlert.swift; sourceTree = "<group>"; };
 		D9D2172F198D509000023367 /* HRPGDeathView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGDeathView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D9D21730198D509000023367 /* HRPGDeathView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGDeathView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		D9D44C0F1B0A0C73000732B4 /* HRPGGGuidelinesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGGGuidelinesViewController.h; sourceTree = "<group>"; };
-		D9D44C101B0A0C73000732B4 /* HRPGGGuidelinesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGGGuidelinesViewController.m; sourceTree = "<group>"; };
 		D9D593561D004CC900D6C388 /* HRPGInboxTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGInboxTableViewController.h; sourceTree = "<group>"; };
 		D9D593571D004CC900D6C388 /* HRPGInboxTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGInboxTableViewController.m; sourceTree = "<group>"; };
 		D9D593591D00523800D6C388 /* InboxMessage+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "InboxMessage+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -2516,8 +2515,7 @@
 				D9E46AFC1DAB98D700E390D7 /* HRPGGemHeaderNavigationController.m */,
 				D9AEEA711ACEDD470076951B /* HRPGWebViewController.h */,
 				D9AEEA721ACEDD470076951B /* HRPGWebViewController.m */,
-				D9D44C0F1B0A0C73000732B4 /* HRPGGGuidelinesViewController.h */,
-				D9D44C101B0A0C73000732B4 /* HRPGGGuidelinesViewController.m */,
+				29FC5A6A20406932008E88C8 /* GuidelinesViewController.swift */,
 				D98830D31BADD4220018594D /* HRPGLoadingViewController.h */,
 				D98830D41BADD4220018594D /* HRPGLoadingViewController.m */,
 				299BD6391F557FE700E22935 /* AuthenticationManager.swift */,
@@ -3217,6 +3215,7 @@
 				D93432571D5A2B9500025412 /* HRPGChoosePMRecipientViewController.m in Sources */,
 				D9F1E3F11E576E430034D0F4 /* Task+CoreDataClass.m in Sources */,
 				98A4DBF01B643BC100A9E2A8 /* HRPGSearchDataManager.m in Sources */,
+				29FC5A6B20406932008E88C8 /* GuidelinesViewController.swift in Sources */,
 				D9D0451B1C2B1AEC00630244 /* Reminder+CoreDataProperties.m in Sources */,
 				D9C7C1F018E26BBB0083F4E4 /* Egg.m in Sources */,
 				D9A1A2811BA7029D00903567 /* NSDate+DaysSince.m in Sources */,
@@ -3417,7 +3416,6 @@
 				D9BB455B1E71C52F0002AE2E /* TaskTableViewCell.swift in Sources */,
 				29E16315200E629800685640 /* QuestProgressBarView.swift in Sources */,
 				49E378512009540500E0DA3D /* ChallengeTableViewHeaderView.swift in Sources */,
-				D9D44C111B0A0C73000732B4 /* HRPGGGuidelinesViewController.m in Sources */,
 				D9EB4E9F18CB4A9400BB2094 /* HRPGAppDelegate.m in Sources */,
 				493ECBCB1F4DD81B0099B1FC /* HRPGShopsOverviewViewModel.swift in Sources */,
 				2957B8BC1F4B4DDE00E836EF /* InAppRewardCell.swift in Sources */,
