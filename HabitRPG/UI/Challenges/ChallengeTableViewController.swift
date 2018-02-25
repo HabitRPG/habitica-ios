@@ -78,12 +78,6 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate,
 
         self.tableView.tableHeaderView = headerView
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        self.tableView.scrollRectToVisible(CGRect(x: 0, y: 0, width: 1, height: 1), animated: true)
-    }
 
     override func viewWillDisappear(_ animated: Bool) {
         disposable.dispose()
