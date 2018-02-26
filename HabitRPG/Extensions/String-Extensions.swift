@@ -47,4 +47,23 @@ extension String {
             return ""
         }
     }
+    
+    public static func forTaskQuality(task: HRPGTaskProtocol) -> String {
+        let taskValue = task.value?.intValue ?? 0
+        if taskValue < -20 {
+            return NSLocalizedString("Worst", comment: "")
+        } else if taskValue < -10 {
+            return NSLocalizedString("Worse", comment: "")
+        } else if taskValue < -1 {
+            return NSLocalizedString("Bad", comment: "")
+        } else if taskValue < 1 {
+            return NSLocalizedString("Neutral", comment: "")
+        } else if taskValue < 5 {
+            return NSLocalizedString("Good", comment: "")
+        } else if taskValue < 10 {
+            return NSLocalizedString("Better", comment: "")
+        } else {
+            return NSLocalizedString("Best", comment: "")
+        }
+    }
 }

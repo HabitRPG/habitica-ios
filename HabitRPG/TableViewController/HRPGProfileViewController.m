@@ -358,6 +358,7 @@ NSString *currentUserID;
         if (user) {
             if ([user.party.unreadMessages boolValue]) {
                 showIndicator = YES;
+                accessibilityLabel = [accessibilityLabel stringByAppendingString:@" has unread messages"];
             }
         }
     } else if (indexPath.section == 1 && indexPath.item == 2) {
@@ -402,6 +403,8 @@ NSString *currentUserID;
         [tableView dequeueReusableCellWithIdentifier:cellName forIndexPath:indexPath];
     if (accessibilityLabel) {
         cell.accessibilityLabel = accessibilityLabel;
+    } else {
+        cell.accessibilityLabel = title;
     }
     UILabel *label = [cell viewWithTag:1];
     label.text = title;

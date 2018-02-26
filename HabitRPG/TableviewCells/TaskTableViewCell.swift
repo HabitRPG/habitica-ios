@@ -16,6 +16,7 @@ class TaskTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var taskDetailLine: TaskDetailLineView!
+    @IBOutlet weak var mainTaskWrapper: UIView!
     //swiftlint:disable private_outlet
 
     @objc
@@ -47,8 +48,14 @@ class TaskTableViewCell: UITableViewCell {
     }
     
     func applyAccessibility(_ task: Task) {
-        self.shouldGroupAccessibilityChildren = true
-        self.isAccessibilityElement = true
-        self.accessibilityHint = NSLocalizedString("Double tap to edit", comment: "")
+        self.mainTaskWrapper.accessibilityCustomActions = []
+        self.mainTaskWrapper.shouldGroupAccessibilityChildren = true
+        self.mainTaskWrapper.isAccessibilityElement = true
+        self.mainTaskWrapper.accessibilityHint = NSLocalizedString("Double tap to edit", comment: "")
+        self.mainTaskWrapper.accessibilityLabel = "\(task.text ?? "")"
+        self.mainTaskWrapper.accessibilityLabel = "\(self.accessibilityLabel ?? ""), Value: \(String.forTaskQuality(task: task))"
+        if let notes = task.notes, !notes.isEmpty {
+            self.mainTaskWrapper.accessibilityLabel = "\(self.accessibilityLabel ?? ""), \(notes)"
+        }
     }
 }

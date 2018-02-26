@@ -83,16 +83,12 @@
         }
     };
     
-    UITapGestureRecognizer *btnTapRecognizer =
-    [[UITapGestureRecognizer alloc] initWithTarget:self
-                                            action:@selector(expandSelectedCell:)];
-    btnTapRecognizer.numberOfTapsRequired = 1;
-    [cell.checklistIndicator addGestureRecognizer:btnTapRecognizer];
+    cell.checklistIndicatorTouched = ^() {
+        [self expandSelectedCell:indexPath];
+    };
 }
 
-- (void)expandSelectedCell:(UITapGestureRecognizer *)gesture {
-    CGPoint p = [gesture locationInView:self.tableView];
-    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:p];
+- (void)expandSelectedCell:(NSIndexPath *)indexPath {
     NSIndexPath *expandedPath = self.expandedIndexPath;
     if ([self.tableView numberOfRowsInSection:0] < expandedPath.item) {
         expandedPath = nil;

@@ -24,8 +24,13 @@ class CheckedTableViewCell: TaskTableViewCell {
     weak var task: HRPGTaskProtocol?
     @objc var isExpanded = false
     @objc var checkboxTouched: (() -> Void)?
+    @objc var checklistIndicatorTouched: (() -> Void)?
     @objc var checklistItemTouched: ((_ item: ChecklistItem) -> Void)?
 
+    override func awakeFromNib() {
+        checklistIndicator.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(expandTask)))
+    }
+    
     override func configure(task: HRPGTaskProtocol) {
         self.task = task
         super.configure(task: task)
@@ -122,13 +127,16 @@ class CheckedTableViewCell: TaskTableViewCell {
                         action(item)
                     }
                 }
+                checkbox.shouldGroupAccessibilityChildren = true
+                checkbox.isAccessibilityElement = true
             }
         }
     }
     
     override func applyAccessibility(_ task: Task) {
         super.applyAccessibility(task)
-        self.accessibilityCustomActions = [UIAccessibilityCustomAction(name: NSLocalizedString("Complete Task", comment: ""), target: self, selector: #selector(checkTask))]
+        self.mainTaskWrapper?.accessibilityCustomActions?.append(UIAccessibilityCustomAction(name: NSLocalizedString("Complete Task", comment: ""), target: self, selector: #selector(checkTask)))
+
         var stateText = ""
         if task.type == "daily" {
             if task.isDue?.boolValue ?? false {
@@ -142,12 +150,29 @@ class CheckedTableViewCell: TaskTableViewCell {
         if task.completed?.boolValue ?? false {
             stateText = NSLocalizedString("Completed", comment: "")
         }
-        self.accessibilityLabel = "\(stateText), \(task.text ?? "")"
+        self.mainTaskWrapper?.accessibilityLabel = "\(stateText), \(accessibilityLabel ?? "")"
+        
+        if let checklistCount = task.checklist?.count, checklistCount > 0 {
+            self.mainTaskWrapper?.accessibilityLabel = "\(accessibilityLabel ?? ""), \(checklistCount) checklist items"
+            self.isAccessibilityElement = false
+            if isExpanded {
+                self.mainTaskWrapper?.accessibilityCustomActions?.append(UIAccessibilityCustomAction(name: NSLocalizedString("Collapse checklist", comment: ""), target: self, selector: #selector(expandTask)))
+            } else {
+                self.mainTaskWrapper?.accessibilityCustomActions?.append(UIAccessibilityCustomAction(name: NSLocalizedString("Expand checklist", comment: ""), target: self, selector: #selector(expandTask)))
+            }
+        }
     }
     
     @objc
     func checkTask() {
         if let action = checkboxTouched {
+            action()
+        }
+    }
+    
+    @objc
+    func expandTask() {
+        if let action = checklistIndicatorTouched {
             action()
         }
     }
