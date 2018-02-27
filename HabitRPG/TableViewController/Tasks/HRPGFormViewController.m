@@ -534,7 +534,11 @@
             }
             if ([key isEqualToString:@"repeatsOn"]) {
                 XLFormOptionsObject *value = formValues[key];
-                NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitWeekOfMonth fromDate:((XLFormOptionsObject *)formValues[@"startDate"]).valueData];
+                NSDate *startDate = ((XLFormOptionsObject *)formValues[@"startDate"]).valueData;
+                if (startDate == nil) {
+                    startDate = [NSDate date];
+                }
+                NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitWeekOfMonth fromDate:startDate];
                 NSMutableSet *daysOfMonth = [[NSMutableSet alloc] init];
                 NSMutableSet *weeksOfMonth = [[NSMutableSet alloc] init];
                 if ([value.valueData isEqualToString:@"daysOfMonth"]) {
