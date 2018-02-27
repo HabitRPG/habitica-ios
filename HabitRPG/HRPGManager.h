@@ -411,11 +411,6 @@
 
 - (void)resetSavedDatabase:(BOOL)withUserData onComplete:(void (^)())completitionBlock;
 
-- (void)displayTaskSuccessNotification:(NSNumber *)healthDiff
-                    withExperienceDiff:(NSNumber *)expDiff
-                          withGoldDiff:(NSNumber *)goldDiff
-                         withMagicDiff:(NSNumber *)magicDiff;
-
 - (void)changeUseAppBadge:(BOOL)useAppBadge;
 
 - (void)togglePinnedItem:(NSString *)pinType

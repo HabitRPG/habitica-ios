@@ -11,8 +11,8 @@
 
 @interface HRPGLabeledProgressBar ()
 
-
 @property ProgressBar *progressBar;
+@property NSNumberFormatter *numberFormatter;
 
 @end
 
@@ -38,6 +38,12 @@
 }
 
 - (void)initViews {
+    self.numberFormatter = [[NSNumberFormatter alloc] init];
+    self.numberFormatter.generatesDecimalNumbers = true;
+    self.numberFormatter.usesGroupingSeparator = true;
+    self.numberFormatter.maximumFractionDigits = 1;
+    self.numberFormatter.minimumIntegerDigits = 1;
+
     self.color = [UIColor blackColor];
 
     self.progressBar = [[ProgressBar alloc] init];
@@ -98,19 +104,20 @@
 }
 
 - (void)setLabelViewText {
-    if ([self.value floatValue] < 1) {
-        self.labelView.text =
-            [NSString stringWithFormat:@"%.1f / %@", [self.value floatValue], self.maxValue];
+    NSNumber *currentValue = self.value;
+    if ([self.value floatValue] > 1 || [self.value floatValue] < 0) {
+        currentValue =[[NSNumber alloc] initWithDouble:floor([self.value floatValue])];
     } else {
-        self.labelView.text =
-            [NSString stringWithFormat:@"%ld / %@", (long)ceil([self.value integerValue]), self.maxValue];
+        currentValue =[[NSNumber alloc] initWithDouble:ceil([self.value floatValue] * 10) / 10];
     }
+    self.labelView.text = [NSString stringWithFormat:@"%@ / %@", [self.numberFormatter stringFromNumber:currentValue],  [self.numberFormatter stringFromNumber:self.maxValue]];
+
     [self applyAccessibility];
 }
 
 - (void)setFontSize:(NSInteger)fontSize {
     UIFont *scaledFont = [CustomFontMetrics scaledSystemFontOfSize:fontSize compatibleWith:nil];
-    _fontSize = scaledFont.pointSize;
+    _fontSize = (NSInteger) scaledFont.pointSize;
     self.typeView.font = scaledFont;
     self.labelView.font = scaledFont;
     [self updateViewFrames];

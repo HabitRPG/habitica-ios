@@ -9,6 +9,7 @@
 import XCTest
 @testable import Habitica
 import Nimble
+
 class TaskDetailLineViewTests: HabiticaTests {
     
     let taskDetailLine = TaskDetailLineView(frame: CGRect(x: 0, y: 0, width: 350, height: 21))

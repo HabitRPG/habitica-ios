@@ -469,6 +469,7 @@
 		D9FC1A7E1BC28F4700B97D23 /* HRPGTypingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D9FC1A7D1BC28F4700B97D23 /* HRPGTypingLabel.m */; };
 		D9FC1A861BC2D8A300B97D23 /* TutorialSteps+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D9FC1A831BC2D8A300B97D23 /* TutorialSteps+CoreDataProperties.m */; };
 		D9FC1A871BC2D8A300B97D23 /* TutorialSteps.m in Sources */ = {isa = PBXBuildFile; fileRef = D9FC1A851BC2D8A300B97D23 /* TutorialSteps.m */; };
+		DC2C41815D97E02EF9D3BEF9 /* HRPGLabeledProgressBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2C40206801F9FB5D6D6190 /* HRPGLabeledProgressBarTests.swift */; };
 		F9E64EEA9B65CE54DBB87415 /* Pods_Habitica.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FDBD03FA52D6A93D9B664CE /* Pods_Habitica.framework */; };
 /* End PBXBuildFile section */
 
@@ -1241,6 +1242,7 @@
 		D9FC1A831BC2D8A300B97D23 /* TutorialSteps+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TutorialSteps+CoreDataProperties.m"; sourceTree = "<group>"; };
 		D9FC1A841BC2D8A300B97D23 /* TutorialSteps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialSteps.h; sourceTree = "<group>"; };
 		D9FC1A851BC2D8A300B97D23 /* TutorialSteps.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialSteps.m; sourceTree = "<group>"; };
+		DC2C40206801F9FB5D6D6190 /* HRPGLabeledProgressBarTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGLabeledProgressBarTests.swift; sourceTree = "<group>"; };
 		FF94C85B3E405C2849F2375A /* Pods-HabiticaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HabiticaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HabiticaTests/Pods-HabiticaTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1741,6 +1743,7 @@
 				D9709A4C1E7F130F0005F35B /* Challenges */,
 				D9709A481E7F00320005F35B /* Tasks */,
 				D957043B1E151BF7004F6804 /* Login */,
+				DC2C4F94176B40E92E73BD9E /* Views */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -2551,6 +2554,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		DC2C4F94176B40E92E73BD9E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DC2C40206801F9FB5D6D6190 /* HRPGLabeledProgressBarTests.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -3195,6 +3206,7 @@
 				298409CD203C3283003AD202 /* AvatarViewTests.swift in Sources */,
 				D9709A501E7F17150005F35B /* TaskDetailLineViewTests.swift in Sources */,
 				D9709A4E1E7F13330005F35B /* ChallengeTableViewControllerTests.swift in Sources */,
+				DC2C41815D97E02EF9D3BEF9 /* HRPGLabeledProgressBarTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

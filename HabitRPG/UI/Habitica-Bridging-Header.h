@@ -50,3 +50,4 @@
 #import "ChatMessageAvatar+CoreDataClass.h"
 #import "ChatMessageLike+CoreDataClass.h"
 #import "HRPGGroupTableViewController.h"
+#import "HRPGLabeledProgressBar.h"
