@@ -22,6 +22,7 @@ env:
     - SeedsReleaseShareInterstitial=123
     - SeedsDevShareInterstitial=123
     - ItunesSharedSecret=123
+    - StagingKey=123
     - FB_REFERENCE_IMAGE_DIR="./ReferenceImages_32"
   matrix:
     - DESTINATION="platform=iOS Simulator,name=iPhone 6,OS=9.3"
