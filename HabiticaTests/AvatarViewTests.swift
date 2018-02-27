@@ -41,13 +41,13 @@ class AvatarViewTests: HabiticaTests {
                                 isSleep: true,
                                 size: "broad"
                                 )
-        avatarView.avatar = avatar
         
         waitUntil(timeout: 5) { (done) in
             self.avatarView.onRenderingFinished = {
                 self.FBSnapshotVerifyView(self.avatarView, tolerance: 0.1)
                 done()
             }
+            self.avatarView.avatar = avatar
         }
     }
     
@@ -72,13 +72,13 @@ class AvatarViewTests: HabiticaTests {
                                 isSleep: true,
                                 size: "broad"
         )
-        avatarView.avatar = avatar
         
         waitUntil(timeout: 5) { (done) in
             self.avatarView.onRenderingFinished = {
                 self.FBSnapshotVerifyView(self.avatarView, tolerance: 0.1)
                 done()
             }
+            self.avatarView.avatar = avatar
         }
     }
     
@@ -103,13 +103,13 @@ class AvatarViewTests: HabiticaTests {
                                 isSleep: true,
                                 size: "broad"
         )
-        avatarView.avatar = avatar
         
         waitUntil(timeout: 5) { (done) in
             self.avatarView.onRenderingFinished = {
                 self.FBSnapshotVerifyView(self.avatarView, tolerance: 0.1)
                 done()
             }
+            self.avatarView.avatar = avatar
         }
     }
     
@@ -137,13 +137,13 @@ class AvatarViewTests: HabiticaTests {
                                 isSleep: true,
                                 size: "broad"
         )
-        avatarView.avatar = avatar
         
         waitUntil(timeout: 5) { (done) in
             self.avatarView.onRenderingFinished = {
                 self.FBSnapshotVerifyView(self.avatarView, tolerance: 0.1)
                 done()
             }
+            self.avatarView.avatar = avatar
         }
     }
     
@@ -161,13 +161,13 @@ class AvatarViewTests: HabiticaTests {
                                 hairBangs: "1",
                                 size: "broad"
         )
-        avatarView.avatar = avatar
         
         waitUntil(timeout: 5) { (done) in
             self.avatarView.onRenderingFinished = {
                 self.FBSnapshotVerifyView(self.avatarView, tolerance: 0.1)
                 done()
             }
+            self.avatarView.avatar = avatar
         }
     }
     
@@ -189,13 +189,13 @@ class AvatarViewTests: HabiticaTests {
                                 weapon: "weapon_special_1",
                                 size: "broad"
         )
-        avatarView.avatar = avatar
         
         waitUntil(timeout: 5) { (done) in
             self.avatarView.onRenderingFinished = {
                 self.FBSnapshotVerifyView(self.avatarView, tolerance: 0.1)
                 done()
             }
+            self.avatarView.avatar = avatar
         }
     }
     
@@ -214,13 +214,13 @@ class AvatarViewTests: HabiticaTests {
                                 hairBangs: "3",
                                 size: "broad"
         )
-        avatarView.avatar = avatar
         
         waitUntil(timeout: 5) { (done) in
             self.avatarView.onRenderingFinished = {
                 self.FBSnapshotVerifyView(self.avatarView, tolerance: 0.1)
                 done()
             }
+            self.avatarView.avatar = avatar
         }
     }
 }

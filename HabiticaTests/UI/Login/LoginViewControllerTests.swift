@@ -33,19 +33,4 @@ class LoginViewControllerTests: HabiticaTests {
         super.tearDown()
     }
     
-    func testLoginView_Login() {
-        TraitController.defaultTraitConfigs.forEach { (device, orientation) in
-            let (sparent, _) = traitControllers(device: device, orientation: orientation, child: self.navigationController!)
-            FBSnapshotVerifyView(sparent.view, identifier: "\(device)_\(orientation)")
-        }
-    }
-    
-    func testLoginScreen_Register() {
-        self.loginViewController!.registerBeginButtonPressed()
-        TraitController.defaultTraitConfigs.forEach { (device, orientation) in
-            let (sparent, _) = traitControllers(device: device, orientation: orientation, child: self.navigationController!)
-            FBSnapshotVerifyView(sparent.view, identifier: "\(device)_\(orientation)")
-        }
-    }
-    
 }

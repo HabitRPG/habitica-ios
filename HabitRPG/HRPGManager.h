@@ -30,6 +30,7 @@
 @property(nonatomic, readonly) BOOL hasAuthentication;
 
 + (HRPGManager *)sharedManager;
++ (HRPGManager *)uninitializedSharedManager;
 
 - (void)loadObjectManager:(RKManagedObjectStore *)existingManagedObjectStore;
 

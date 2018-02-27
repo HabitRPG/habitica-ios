@@ -209,9 +209,9 @@ class AvatarView: UIView {
             return
         }
         let viewDictionary = avatar.getViewDictionary(showsBackground: showBackground, showsMount: showMount, showsPet: showPet, isFainted: isFainted)
-        
+
         let boxSize = size == .regular ? CGSize(width: 140, height: 147) : CGSize(width: 90, height: 90)
-        
+
         viewOrder.enumerated().forEach({ (index, type) in
             if viewDictionary[type] ?? false {
                 let imageView = imageViews[index]
@@ -224,11 +224,13 @@ class AvatarView: UIView {
                 imageView.isHidden = true
             }
         })
-        
+
         setNeedsLayout()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.onRenderingFinished?()
+
+        if let action = self.onRenderingFinished {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                action()
+            }
         }
     }
     

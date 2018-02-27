@@ -60,13 +60,21 @@
 RKManagedObjectStore *managedObjectStore;
 NSUserDefaults *defaults;
 NSString *currentUser;
+static HRPGManager *sharedManager = nil;
+static dispatch_once_t onceToken;
+
 
 + (HRPGManager *)sharedManager {
-    static HRPGManager *sharedManager = nil;
-    static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedManager = [[self alloc] init];
         [sharedManager loadObjectManager:nil];
+    });
+    return sharedManager;
+}
+
++ (HRPGManager *)uninitializedSharedManager {
+    dispatch_once(&onceToken, ^{
+        sharedManager = [[self alloc] init];
     });
     return sharedManager;
 }

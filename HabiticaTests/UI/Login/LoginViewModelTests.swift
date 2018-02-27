@@ -83,6 +83,7 @@ class LoginViewModelTests: HabiticaTests {
     }
     
     func testOnePasswordButtonVisibility() {
+        self.viewModel.inputs.setAuthType(authType: .login)
         self.viewModel.inputs.onePassword(isAvailable: true)
         self.onePasswordHiddenObserver.assertLastValue(value: false)
         self.viewModel.inputs.onePassword(isAvailable: false)

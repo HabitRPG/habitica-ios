@@ -39,7 +39,7 @@ void SwizzleClassMethod(Class c, SEL orig, SEL new) {
 
 - (void)setUp {
     [super setUp];
-    NSURL *modelURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"HabitRPG" ofType:@"momd"]];
+    NSURL *modelURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Habitica" ofType:@"momd"]];
     NSManagedObjectModel *managedObjectModel = [[[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL] mutableCopy];
     NSPersistentStoreCoordinator *persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:managedObjectModel];
     self.managedObjectContext = [[NSManagedObjectContext alloc] init];
@@ -48,8 +48,8 @@ void SwizzleClassMethod(Class c, SEL orig, SEL new) {
     self.task = [NSEntityDescription insertNewObjectForEntityForName:@"Task" inManagedObjectContext:self.managedObjectContext];
     self.task.text = @"None";
     self.task.frequency = @"weekly";
-    self.task.saturday = [NSNumber numberWithBool:NO];
-    self.task.sunday = [NSNumber numberWithBool:YES];
+    self.task.saturday = @NO;
+    self.task.sunday = @YES;
 }
 
 - (void)tearDown {
@@ -90,7 +90,7 @@ void SwizzleClassMethod(Class c, SEL orig, SEL new) {
 
 - (void)testDailyTodayNotDue {
     self.task.frequency = @"daily";
-    self.task.everyX = [NSNumber numberWithInt:2];
+    self.task.everyX = @2;
     [NSDate setMockDate:@"2015/06/20 21:00:00"];
     self.task.startDate = [NSDate date];
     [NSDate setMockDate:@"2015/06/21 20:00:00"];
@@ -100,7 +100,7 @@ void SwizzleClassMethod(Class c, SEL orig, SEL new) {
 - (void)testDailyTodayDue {
     self.task.frequency = @"daily";
     [NSDate setMockDate:@"2015/06/21 0:00:00"];
-    self.task.everyX = [NSNumber numberWithInt:2];
+    self.task.everyX = @2;
     self.task.startDate = [NSDate date];
     XCTAssert([self.task dueToday], @"due on day where due");
 }
@@ -108,7 +108,7 @@ void SwizzleClassMethod(Class c, SEL orig, SEL new) {
 - (void)testDailyTodayNotDueWithOffset {
     self.task.frequency = @"daily";
     [NSDate setMockDate:@"2015/06/20 0:00:00"];
-    self.task.everyX = [NSNumber numberWithInt:2];
+    self.task.everyX = @2;
     self.task.startDate = [NSDate date];
     [NSDate setMockDate:@"2015/06/21 20:00:00"];
     XCTAssertFalse([self.task dueTodayWithOffset:5], @"not due on day where not due after offset");
@@ -117,7 +117,7 @@ void SwizzleClassMethod(Class c, SEL orig, SEL new) {
 - (void)testDailyTodayDueWithOffset {
     self.task.frequency = @"daily";
     [NSDate setMockDate:@"2015/06/21 20:00:00"];
-    self.task.everyX = [NSNumber numberWithInt:2];
+    self.task.everyX = @2;
     self.task.startDate = [NSDate date];
     XCTAssert([self.task dueTodayWithOffset:5], @"due on day where due after offset");
 }
@@ -125,7 +125,7 @@ void SwizzleClassMethod(Class c, SEL orig, SEL new) {
 - (void)testDailyNotTodayNotDueWithOffset {
     self.task.frequency = @"daily";
     [NSDate setMockDate:@"2015/06/21 2:00:00"];
-    self.task.everyX = [NSNumber numberWithInt:2];
+    self.task.everyX = @2;
     self.task.startDate = [NSDate date];
     [NSDate setMockDate:@"2015/06/22 20:00:00"];
     XCTAssertFalse([self.task dueTodayWithOffset:5], @"not due on day where due before offset");
@@ -134,7 +134,7 @@ void SwizzleClassMethod(Class c, SEL orig, SEL new) {
 - (void)testDailyNotTodayDueWithOffset {
     self.task.frequency = @"daily";
     [NSDate setMockDate:@"2015/06/21 20:00:00"];
-    self.task.everyX = [NSNumber numberWithInt:2];
+    self.task.everyX = @2;
     self.task.startDate = [NSDate date];
     [NSDate setMockDate:@"2015/06/22 2:00:00"];
     XCTAssert([self.task dueTodayWithOffset:5], @"due on day where not due before offset");

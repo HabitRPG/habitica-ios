@@ -9,10 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 #import "HabiticaTests.h"
-#import <RestKit/RestKit.h>
-#import "HRPGManager.h"
 #import "OHHTTPStubs.h"
-
+#import "HabiticaTests-Swift.h"
 
 @implementation HabiticaTests
 
@@ -26,14 +24,7 @@
 - (void)initializeCoreDataStorage {
     [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:@"com.habitrpg.ios.Habitica"];
     
-    self.sharedManager = [[HRPGManager alloc] init];
-    NSURL *modelURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Habitica" ofType:@"momd"]];
-    NSManagedObjectModel *managedObjectModel = [[[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL] mutableCopy];
-    RKManagedObjectStore *managedObjectStore = [[RKManagedObjectStore alloc] initWithManagedObjectModel:managedObjectModel];
-    NSError *error = nil;
-    [managedObjectStore addInMemoryPersistentStore:&error];
-    [managedObjectStore createManagedObjectContexts];
-    [self.sharedManager loadObjectManager:managedObjectStore];
+    [HRPGManager setupTestManager];
 }
 
 

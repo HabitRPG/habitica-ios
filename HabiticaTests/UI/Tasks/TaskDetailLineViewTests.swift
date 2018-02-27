@@ -24,7 +24,7 @@ class TaskDetailLineViewTests: HabiticaTests {
         dateFormatter.timeStyle = .none
         taskDetailLine.dateFormatter = dateFormatter
         
-        guard let task = NSEntityDescription.insertNewObject(forEntityName: "Task", into: self.sharedManager.getManagedObjectContext()) as? Task else {
+        guard let task = NSEntityDescription.insertNewObject(forEntityName: "Task", into: HRPGManager.shared().getManagedObjectContext()) as? Task else {
             return;
         }
         self.task = task
@@ -50,7 +50,7 @@ class TaskDetailLineViewTests: HabiticaTests {
     }
     
     func testTagsVisible() {
-        guard let tag = NSEntityDescription.insertNewObject(forEntityName: "Tag", into: self.sharedManager.getManagedObjectContext()) as? Tag else {
+        guard let tag = NSEntityDescription.insertNewObject(forEntityName: "Tag", into: HRPGManager.shared().getManagedObjectContext()) as? Tag else {
             return;
         }
         tag.id = "id"
@@ -72,7 +72,7 @@ class TaskDetailLineViewTests: HabiticaTests {
     }
     
     func testReminderVisible() {
-        guard let reminder = NSEntityDescription.insertNewObject(forEntityName: "Reminder", into: self.sharedManager.getManagedObjectContext()) as? Reminder else {
+        guard let reminder = NSEntityDescription.insertNewObject(forEntityName: "Reminder", into: HRPGManager.shared().getManagedObjectContext()) as? Reminder else {
             return;
         }
         task.reminders = NSOrderedSet(array: [reminder])
@@ -85,6 +85,7 @@ class TaskDetailLineViewTests: HabiticaTests {
     
     func testStreakVisible() {
         task.streak = NSNumber(integerLiteral: 2)
+        task.type = "daily"
         taskDetailLine.configure(task: task)
         expect(self.taskDetailLine.challengeIconView.isHidden) == true
         expect(self.taskDetailLine.tagIconView.isHidden) == true

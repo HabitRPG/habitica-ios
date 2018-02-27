@@ -12,7 +12,6 @@
 
 
 @interface HabiticaTests : FBSnapshotTestCase
-@property HRPGManager *sharedManager;
 
 -(void)initializeCoreDataStorage;
 -(void)setUpStubs;

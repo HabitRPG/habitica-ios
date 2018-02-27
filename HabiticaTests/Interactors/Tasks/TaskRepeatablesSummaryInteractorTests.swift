@@ -22,7 +22,7 @@ class TaskRepeatablesSummaryInteractorTests: HabiticaTests {
         super.setUp()
         
         self.initializeCoreDataStorage()
-        guard let task = NSEntityDescription.insertNewObject(forEntityName: "Task", into: self.sharedManager.getManagedObjectContext()) as? Task else {
+        guard let task = NSEntityDescription.insertNewObject(forEntityName: "Task", into: HRPGManager.shared().getManagedObjectContext()) as? Task else {
             return;
         }
         self.task = task
