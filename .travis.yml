@@ -2,7 +2,8 @@ language: objective-c
 cache: cocoapods
 osx_image: xcode9.2
 install:
-  - rvm install ruby-2.2.2
+  - rvm install ruby-2.3.3
+  - bundle update
   - bundle install
   - brew update
   - brew install swiftlint || true
