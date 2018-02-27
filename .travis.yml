@@ -3,10 +3,7 @@ cache: cocoapods
 osx_image: xcode9.2
 install:
   - rvm install ruby-2.2.2
-  - gem install cocoapods
-  - gem install xcpretty -N
-  - gem install xcpretty-travis-formatter
-  - gem install cocoapods-keys -v 1.7.0
+  - bundle install
   - brew update
   - brew install swiftlint || true
   - brew upgrade swiftlint || true
@@ -27,7 +24,7 @@ env:
     - FB_REFERENCE_IMAGE_DIR="./ReferenceImages_32"
   matrix:
     - DESTINATION="platform=iOS Simulator,name=iPhone 6,OS=9.3"
-    - DESTINATION="platform=iOS Simulator,name=iPhone 6,OS=10.1"
+    - DESTINATION="platform=iOS Simulator,name=iPhone 6,OS=10.3"
     - DESTINATION="platform=iOS Simulator,name=iPhone 8,OS=11.2"
 script:
   - set -o pipefail
