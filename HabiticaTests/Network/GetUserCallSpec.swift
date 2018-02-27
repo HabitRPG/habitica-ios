@@ -22,17 +22,11 @@ class GetUserCallSpec: QuickSpec {
                     let call = GetUserCall(configuration: HRPGServerConfig.stub)
                     
                     waitUntil(timeout: 0.5) { done in
-                        call.fetchUser().startWithResult({ (result) in
-                            switch result {
-                            case let .success(user):
-                                expect(user).toNot(beNil())
-                                break
-                            default:
-                                expect(false).to(beTrue())
-                                break
-                            }
+                        call.userSignal.observeValues({ user in
+                            expect(user).toNot(beNil())
                             done()
                         })
+                        call.fire()
                     }
                 }
             }

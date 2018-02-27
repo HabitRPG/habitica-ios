@@ -51,7 +51,7 @@
     dateFormatter.timeStyle = NSDateFormatterNoStyle;
     cell.taskDetailLine.dateFormatter = dateFormatter;
     
-    [cell configureNewWithTask:task];
+    [cell configureWithTask:task];
     cell.checkBox.wasTouched = ^() {
 //        if (![task.currentlyChecking boolValue]) {
 //            task.currentlyChecking = @YES;

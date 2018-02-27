@@ -142,9 +142,6 @@
 		4908641D1F43DE2B00BD9896 /* HRPGInsufficientGemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4908641C1F43DE2B00BD9896 /* HRPGInsufficientGemsViewController.swift */; };
 		4908642E1F45316700BD9896 /* HRPGInsufficientGoldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4908642D1F45316700BD9896 /* HRPGInsufficientGoldViewController.swift */; };
 		490864301F45318600BD9896 /* HRPGInsufficientHourglassesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4908642F1F45318600BD9896 /* HRPGInsufficientHourglassesViewController.swift */; };
-		491C6E5B2020FE64005030A2 /* Challenge-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491C6E5A2020FE64005030A2 /* Challenge-Extensions.swift */; };
-		4924314E202CD19A00288278 /* ChallengeRewardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4924314C202CD19A00288278 /* ChallengeRewardTableViewCell.swift */; };
-		4924314F202CD19A00288278 /* ChallengeRewardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4924314D202CD19A00288278 /* ChallengeRewardTableViewCell.xib */; };
 		491063F31F8027070057707D /* tasks.json in Resources */ = {isa = PBXBuildFile; fileRef = 491063F21F8027070057707D /* tasks.json */; };
 		491063F41F80276C0057707D /* tasks.json in Resources */ = {isa = PBXBuildFile; fileRef = 491063F21F8027070057707D /* tasks.json */; };
 		491063F61F807D410057707D /* TodosTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491063F51F807D410057707D /* TodosTableViewController.swift */; };
@@ -155,6 +152,9 @@
 		491064011F80823F0057707D /* HRPGUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491064001F80823F0057707D /* HRPGUser.swift */; };
 		491064021F8083680057707D /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = D94461901AB355940015215E /* user.json */; };
 		491064051F8083E60057707D /* TasksDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 491064041F8083E60057707D /* TasksDataSource.m */; };
+		491C6E5B2020FE64005030A2 /* Challenge-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491C6E5A2020FE64005030A2 /* Challenge-Extensions.swift */; };
+		4924314E202CD19A00288278 /* ChallengeRewardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4924314C202CD19A00288278 /* ChallengeRewardTableViewCell.swift */; };
+		4924314F202CD19A00288278 /* ChallengeRewardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4924314D202CD19A00288278 /* ChallengeRewardTableViewCell.xib */; };
 		492EAFBD1F7DB3D500C802EF /* TasksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492EAFBC1F7DB3D500C802EF /* TasksViewModel.swift */; };
 		492EAFC01F7E9B4C00C802EF /* TasksViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492EAFBF1F7E9B4C00C802EF /* TasksViewModelSpec.swift */; };
 		493576281F7009C800F1EC2E /* HRPGTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493576271F7009C800F1EC2E /* HRPGTask.swift */; };
@@ -449,7 +449,7 @@
 		D9D17CCE1E6736B500AD9232 /* ChallengeDetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CCD1E6736B500AD9232 /* ChallengeDetailHeaderView.xib */; };
 		D9D17CD01E673CCC00AD9232 /* UIView-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D17CCF1E673CCC00AD9232 /* UIView-Extensions.swift */; };
 		D9D17CD21E6898E400AD9232 /* HabitTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CD11E6898E400AD9232 /* HabitTableViewCell.xib */; };
-		D9D17CD41E68995000AD9232 /* (null) in Resources */ = {isa = PBXBuildFile; };
+		D9D17CD41E68995000AD9232 /* BuildFile in Resources */ = {isa = PBXBuildFile; };
 		D9D17CD61E6899A800AD9232 /* ToDoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CD51E6899A800AD9232 /* ToDoTableViewCell.xib */; };
 		D9D17CD81E6899F100AD9232 /* HRPGRewardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CD71E6899F100AD9232 /* HRPGRewardTableViewCell.xib */; };
 		D9D17CDA1E69C68000AD9232 /* ChallengeDetailAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CD91E69C68000AD9232 /* ChallengeDetailAlert.xib */; };
@@ -669,9 +669,6 @@
 		4908641C1F43DE2B00BD9896 /* HRPGInsufficientGemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGInsufficientGemsViewController.swift; sourceTree = "<group>"; };
 		4908642D1F45316700BD9896 /* HRPGInsufficientGoldViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGInsufficientGoldViewController.swift; sourceTree = "<group>"; };
 		4908642F1F45318600BD9896 /* HRPGInsufficientHourglassesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGInsufficientHourglassesViewController.swift; sourceTree = "<group>"; };
-		491C6E5A2020FE64005030A2 /* Challenge-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Challenge-Extensions.swift"; sourceTree = "<group>"; };
-		4924314C202CD19A00288278 /* ChallengeRewardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeRewardTableViewCell.swift; sourceTree = "<group>"; };
-		4924314D202CD19A00288278 /* ChallengeRewardTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeRewardTableViewCell.xib; sourceTree = "<group>"; };
 		491063F21F8027070057707D /* tasks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = tasks.json; path = HabiticaTests/Fixtures/tasks.json; sourceTree = SOURCE_ROOT; };
 		491063F51F807D410057707D /* TodosTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodosTableViewController.swift; sourceTree = "<group>"; };
 		491063F81F807E3B0057707D /* GetTasksCallSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTasksCallSpec.swift; sourceTree = "<group>"; };
@@ -681,6 +678,9 @@
 		491064001F80823F0057707D /* HRPGUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRPGUser.swift; sourceTree = "<group>"; };
 		491064031F8083E60057707D /* TasksDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TasksDataSource.h; sourceTree = "<group>"; };
 		491064041F8083E60057707D /* TasksDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TasksDataSource.m; sourceTree = "<group>"; };
+		491C6E5A2020FE64005030A2 /* Challenge-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Challenge-Extensions.swift"; sourceTree = "<group>"; };
+		4924314C202CD19A00288278 /* ChallengeRewardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeRewardTableViewCell.swift; sourceTree = "<group>"; };
+		4924314D202CD19A00288278 /* ChallengeRewardTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeRewardTableViewCell.xib; sourceTree = "<group>"; };
 		492EAFBC1F7DB3D500C802EF /* TasksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewModel.swift; sourceTree = "<group>"; };
 		492EAFBF1F7E9B4C00C802EF /* TasksViewModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewModelSpec.swift; sourceTree = "<group>"; };
 		493576271F7009C800F1EC2E /* HRPGTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGTask.swift; sourceTree = "<group>"; };
@@ -2828,14 +2828,14 @@
 				49E378532009542C00E0DA3D /* ChallengeTableViewHeaderView.xib in Resources */,
 				498E4D001FA17C1A006933FF /* ChallengeCategoriesTableViewCell.xib in Resources */,
 				29028C442037132A00B7F704 /* SystemMessageTableViewCell.xib in Resources */,
-				D9D17CD41E68995000AD9232 /* (null) in Resources */,
+				D9D17CD41E68995000AD9232 /* BuildFile in Resources */,
 				29AAA1611F2B597400029737 /* SpeechbubbleView.xib in Resources */,
 				29FC885E2018D858002B3D3F /* WorldBossDescription.xib in Resources */,
 				293BB4A31FD07603003B6F4F /* StatsSliderView.xib in Resources */,
-				D9D17CD41E68995000AD9232 /* (null) in Resources */,
+				D9D17CD41E68995000AD9232 /* BuildFile in Resources */,
 				29E16311200E5FEA00685640 /* QuestProgressView.xib in Resources */,
 				491064021F8083680057707D /* user.json in Resources */,
-				D9D17CD41E68995000AD9232 /* (null) in Resources */,
+				D9D17CD41E68995000AD9232 /* BuildFile in Resources */,
 				D9BB45CA1E76DF260002AE2E /* DailyTableViewCell.xib in Resources */,
 				D9D17CD81E6899F100AD9232 /* HRPGRewardTableViewCell.xib in Resources */,
 				29B6AD4A1F2A0C9800AC8878 /* LoginEntryView.xib in Resources */,
@@ -3058,10 +3058,12 @@
 				"${BUILT_PRODUCTS_DIR}/DynamicBlurView/DynamicBlurView.framework",
 				"${BUILT_PRODUCTS_DIR}/EAIntroView/EAIntroView.framework",
 				"${BUILT_PRODUCTS_DIR}/EARestrictedScrollView/EARestrictedScrollView.framework",
+				"${BUILT_PRODUCTS_DIR}/Eson/Eson.framework",
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FLEX/FLEX.framework",
+				"${BUILT_PRODUCTS_DIR}/FunkyNetwork/FunkyNetwork.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/ISO8601DateFormatterValueTransformer/ISO8601DateFormatterValueTransformer.framework",
 				"${BUILT_PRODUCTS_DIR}/KLCPopup/KLCPopup.framework",
@@ -3070,6 +3072,7 @@
 				"${BUILT_PRODUCTS_DIR}/MRProgress/MRProgress.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/NSString+Emoji/NSString_Emoji.framework",
+				"${BUILT_PRODUCTS_DIR}/OHHTTPStubs-b1c8d455/OHHTTPStubs.framework",
 				"${BUILT_PRODUCTS_DIR}/PDKeychainBindingsController/PDKeychainBindingsController.framework",
 				"${BUILT_PRODUCTS_DIR}/PopupDialog/PopupDialog.framework",
 				"${BUILT_PRODUCTS_DIR}/RKValueTransformers/RKValueTransformers.framework",
@@ -3101,10 +3104,12 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DynamicBlurView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EAIntroView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EARestrictedScrollView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eson.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLEX.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FunkyNetwork.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ISO8601DateFormatterValueTransformer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KLCPopup.framework",
@@ -3113,6 +3118,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MRProgress.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NSString_Emoji.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OHHTTPStubs.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PDKeychainBindingsController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PopupDialog.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RKValueTransformers.framework",
@@ -3145,15 +3151,15 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Habitica Snapshots/Pods-Habitica Snapshots-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/OHHTTPStubs.default-Core-JSON-NSURLSession-OHPathHelpers/OHHTTPStubs.framework",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
-				"${BUILT_PRODUCTS_DIR}/OHHTTPStubs/OHHTTPStubs.framework",
 				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
 				"${BUILT_PRODUCTS_DIR}/iOSSnapshotTestCase/FBSnapshotTestCase.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OHHTTPStubs.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSnapshotTestCase.framework",
 			);
@@ -3192,7 +3198,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CAC33FCF49D4A93D53AF498F /* [CP] Embed Pods Frameworks */ = {
@@ -3202,15 +3208,15 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-HabiticaTests/Pods-HabiticaTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/OHHTTPStubs.default-Core-JSON-NSURLSession-OHPathHelpers/OHHTTPStubs.framework",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
-				"${BUILT_PRODUCTS_DIR}/OHHTTPStubs/OHHTTPStubs.framework",
 				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
 				"${BUILT_PRODUCTS_DIR}/iOSSnapshotTestCase/FBSnapshotTestCase.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OHHTTPStubs.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSnapshotTestCase.framework",
 			);
@@ -3234,7 +3240,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D940A7E01B0CF7E900370F2E /* ShellScript */ = {
@@ -3432,7 +3438,6 @@
 				29E163092008E7B600685640 /* Habitica.xcdatamodeld in Sources */,
 				29255E4B1F3E236C0094A3E3 /* ToastManager.swift in Sources */,
 				494E54041F2D20C70003683C /* HRPGShopOverviewTableViewDataSource.m in Sources */,
-				D92C60F81BD3F28A005F68CC /* HRPGAccountDetailViewController.m in Sources */,
 				491063F61F807D410057707D /* TodosTableViewController.swift in Sources */,
 				D9CD2DD51BCAA6F700B1304B /* UIViewController+TutorialSteps.m in Sources */,
 				D96C853F1DCB631B003E3616 /* HRPGBaseNotificationView.m in Sources */,

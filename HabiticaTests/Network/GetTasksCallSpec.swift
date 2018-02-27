@@ -22,17 +22,11 @@ class GetTasksCallSpec: QuickSpec {
                     let call = GetTasksCall(configuration: HRPGServerConfig.stub)
                     
                     waitUntil(timeout: 0.5) { done in
-                        call.fetchTasks().startWithResult({ (result) in
-                            switch result {
-                            case let .success(tasks):
-                                expect(tasks).toNot(beNil())
-                                break
-                            default:
-                                expect(false).to(beTrue())
-                                break
-                            }
+                        call.arraySignal.observeValues({ (tasks) in
+                            expect(tasks).toNot(beNil())
                             done()
                         })
+                        call.fire()
                     }
                 }
             }

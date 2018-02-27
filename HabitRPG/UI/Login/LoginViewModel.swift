@@ -338,7 +338,7 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
         self.sharedManager?.setCredentials()
         self.sharedManager?.fetchUser({[weak self] in
             self?.sharedManager?.fetchWorldState({
-                GetTasksCall().fetchTasks().start()
+                GetTasksCall().fire()
                 self?.onSuccessfulLoginProperty.value = ()
             }, onError: {
                 self?.onSuccessfulLoginProperty.value = ()

@@ -10,6 +10,8 @@
 #import "ChecklistItem.h"
 #import "HRPGTaskProtocol.h"
 
+@class HRPGChecklistItem;
+
 @interface HRPGCheckBoxView : UIView
 
 @property(nonatomic) bool checked;

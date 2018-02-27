@@ -10,32 +10,19 @@ import UIKit
 import FunkyNetwork
 import Eson
 import ReactiveSwift
+import Result
 
 public class ResponseArrayCall<T: NSObject>: AuthenticatedCall {
+    public lazy var arraySignal: Signal<[T]?, NoError> = jsonSignal.map(ResponseArrayCall.parse)
     
-    func execute() -> SignalProducer<[T]?, NSError> {
-        return jsonProducer()
-            .flatMap(.concat, parse)
-            .flatMapError { error -> SignalProducer<[T]?, NSError> in
-                let isHandled = DefaultNetworkErrorHandler.handleError(error: error)
-                if !isHandled {
-                    
-                }
-                return SignalProducer(error: error)
+    static func parse(_ json: Any) -> [T]? {
+        if let jsonObject = json as? [String: AnyObject], let data = jsonObject["data"] {
+            if data is [[String: AnyObject]] {
+                let responseArray = Eson().fromJsonDictionary(json as? [String : AnyObject], clazz: ResponseArray<T>.self)
+                return responseArray?.dataArray()
+            }
         }
-    }
-    
-    func parse(_ json: Any) -> SignalProducer<[T]?, NSError> {
-        return SignalProducer(value: json)
-            .map { json in
-                if let jsonObject = json as? [String: AnyObject], let data = jsonObject["data"] {
-                    if data is [Dictionary<String, AnyObject>] {
-                        let responseArray = Eson().fromJsonDictionary(json as? [String : AnyObject], clazz: ResponseArray<T>.self)
-                        return responseArray?.dataArray()
-                    }
-                }
-                return nil
-        }
+        return nil
     }
 
 }

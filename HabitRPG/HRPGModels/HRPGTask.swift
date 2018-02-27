@@ -8,74 +8,38 @@
 
 import UIKit
 
-public class HRPGTask: NSObject {
-    var text = ""
-    var notes = ""
-    var attribute = ""
-    var challengeID = ""
-    var completed = false
-    var dateCreated: Date?
-    var down = false
-    var duedate: Date?
-    var everyX = 1
-    var frequency = ""
-    var friday = false
-    var id = ""
-    var monday = false
-    var order = 0
-    var priority: Float = 1.0
-    var saturday = false
-    var startDate: Date?
-    var streak = 0
-    var sunday = false
-    var thursday = false
-    var tuesday = false
-    var type = ""
-    var up = false
-    var value = 0.0
-    var wednesday = false
-    var isDue = false
-    var yesterdaily = false
-    var counterUp = 0
-    var counterDown = 0
-    var nextDue: Date?
-    var currentlyChecking = false
+public class HRPGTask: NSObject, HRPGTaskProtocol {
+    @objc public var text: String? = ""
+    @objc public var notes: String? = ""
+    @objc public var attribute: String? = ""
+    @objc var challengeID = ""
+    @objc public var completed: NSNumber? = false
+    @objc var dateCreated: Date?
+    @objc public var down: NSNumber? = false
+    @objc var duedate: Date?
+    @objc var everyX = 1
+    @objc var frequency = ""
+    @objc var friday = false
+    @objc public var id: String? = ""
+    @objc var monday = false
+    @objc public var order: NSNumber? = 0
+    @objc public var priority: NSNumber? = 1.0
+    @objc var saturday = false
+    @objc var startDate: Date?
+    @objc var streak = 0
+    @objc var sunday = false
+    @objc var thursday = false
+    @objc var tuesday = false
+    @objc public var type: String? = ""
+    @objc public var up: NSNumber? = false
+    @objc public var value: NSNumber? = 0.0
+    @objc var wednesday = false
+    @objc var isDue = false
+    @objc var yesterdaily = false
+    @objc var counterUp = 0
+    @objc var counterDown = 0
+    @objc var nextDue: Date?
+    @objc var currentlyChecking = false
     
-    var checklist = [HRPGChecklistItem]()
-    
-    public func taskColor() -> UIColor {
-        if value < -20 {
-            return UIColor.darkRed10()
-        } else if value < -10 {
-            return UIColor.red10()
-        } else if value < -1 {
-            return UIColor.orange10()
-        } else if value < 1 {
-            return UIColor.yellow10()
-        } else if value < 5 {
-            return UIColor.green10()
-        } else if value < 10 {
-            return UIColor.teal10()
-        } else {
-            return UIColor.blue10()
-        }
-    }
-    
-    public func lightTaskColor() -> UIColor {
-        if value < -20 {
-            return UIColor.darkRed100()
-        } else if value < -10 {
-            return UIColor.red100()
-        } else if value < -1 {
-            return UIColor.orange100()
-        } else if value < 1 {
-            return UIColor.yellow100()
-        } else if value < 5 {
-            return UIColor.green100()
-        } else if value < 10 {
-            return UIColor.teal100()
-        } else {
-            return UIColor.blue100()
-        }
-    }
+    @objc var checklist = [HRPGChecklistItem]()
 }

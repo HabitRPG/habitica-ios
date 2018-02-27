@@ -51,26 +51,4 @@ class TaskTableViewCell: UITableViewCell {
         self.isAccessibilityElement = true
         self.accessibilityHint = NSLocalizedString("Double tap to edit", comment: "")
     }
-    
-    func configureNew(task: HRPGTask) {
-        self.titleLabel.text = task.text.unicodeEmoji
-        self.titleLabel.font = UIFont.preferredFont(forTextStyle: .body)
-        self.titleLabel.textColor = .gray10()
-        self.subtitleLabel.textColor = .gray200()
-        
-        let trimmedNotes = task.notes.trimmingCharacters(in: .whitespacesAndNewlines)
-        if trimmedNotes.characters.count > 0 {
-            self.subtitleLabel.text = trimmedNotes.unicodeEmoji
-            self.subtitleLabel.font = UIFont.preferredFont(forTextStyle: .footnote)
-            self.subtitleLabel.isHidden = false
-        } else {
-            self.subtitleLabel.text = nil
-            self.subtitleLabel.isHidden = true
-        }
-        
-        self.taskDetailLine.configureNew(task: task)
-        self.taskDetailLine.isHidden = !self.taskDetailLine.hasContent
-        
-        self.setNeedsLayout()
-    }
 }

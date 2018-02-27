@@ -62,28 +62,6 @@ class CheckedTableViewCell: TaskTableViewCell {
         self.checklistIndicator.layoutIfNeeded()
     }
     
-    override func configureNew(task: HRPGTask) {
-        self.newTask = task
-        super.configureNew(task: task)
-        self.checkBox.configure(for: task)
-        
-        handleNewChecklist(task)
-        
-        if task.completed {
-            self.checklistIndicator.backgroundColor = .gray500()
-            self.titleLabel.textColor = .gray300()
-            self.backgroundColor = .gray600()
-        } else {
-            self.backgroundColor = .white
-            self.titleLabel.textColor = .gray10()
-        }
-        
-        self.titleLabel.backgroundColor = self.backgroundColor
-        self.subtitleLabel.backgroundColor = self.backgroundColor
-        
-        self.checklistIndicator.layoutIfNeeded()
-    }
-    
     func handleChecklist(_ task: Task) {
         if let value = task.value {
             self.checklistIndicator.backgroundColor = UIColor.forTaskValueLight(value)
@@ -107,28 +85,6 @@ class CheckedTableViewCell: TaskTableViewCell {
         
         if isExpanded {
             addChecklistViews(task: task)
-        }
-    }
-    
-    func handleNewChecklist(_ task: HRPGTask) {
-        self.checklistIndicator.backgroundColor = task.lightTaskColor()
-        self.checklistLeftBorderView.backgroundColor = task.taskColor()
-        self.checklistRightBorderView.backgroundColor = task.taskColor()
-        self.checklistIndicator.isHidden = false
-        self.checklistIndicator.translatesAutoresizingMaskIntoConstraints = false
-        let checklistCount = task.checklist.count
-        
-        var checkedCount = 0
-        if checklistCount > 0 {
-            for item in task.checklist where item.completed {
-                checkedCount += 1
-            }
-        }
-        
-        checklistSetup(checkedCount, checklistCount)
-        
-        if isExpanded {
-            addNewChecklistViews(task: task)
         }
     }
     

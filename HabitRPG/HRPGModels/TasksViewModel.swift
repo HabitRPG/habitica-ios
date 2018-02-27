@@ -39,22 +39,16 @@ class TasksViewModel: TasksViewModelType, TasksViewModelInputs, TasksViewModelOu
         }
     }
     
-    let refreshProperty = MutableProperty()
+    let refreshProperty = MutableProperty(())
     func refresh() {
         self.refreshProperty.value = ()
     }
     
     func downloadTasks() {
-        tasksCall.fetchTasks().startWithResult { (result) in
-            switch result {
-            case let .success(tasks):
-                self.tasksProperty.value = tasks
-                break
-            case let .failure(error):
-                print(error)
-                break
-            }
+        tasksCall.arraySignal.observeValues { tasks in
+            self.tasksProperty.value = tasks
         }
+        tasksCall.fire()
     }
     
     var inputs: TasksViewModelInputs { return self }

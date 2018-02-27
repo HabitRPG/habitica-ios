@@ -178,26 +178,26 @@
     [self setup];
 }
 
-- (void)configureForHRPGChecklistItem:(HRPGChecklistItem *)item withTitle:(BOOL)withTitle {
-    self.checked = item.completed || item.currentlyChecking;
-    if (self.label == nil && withTitle) {
-        self.label = [[UILabel alloc] init];
-        self.label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
-        [self addSubview:self.label];
-        
-        if (self.checked) {
-            NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc] initWithString:item.text];
-            [attributeString addAttribute:NSStrikethroughStyleAttributeName
-                                    value:@2
-                                    range:NSMakeRange(0, [attributeString length])];
-            self.label.attributedText = attributeString;
-        } else {
-            self.label.text = item.text;
-        }
-    }
-    
-    [self setup];
-}
+//- (void)configureForHRPGChecklistItem:(HRPGChecklistItem *)item withTitle:(BOOL)withTitle {
+//    self.checked = item.completed || item.currentlyChecking;
+//    if (self.label == nil && withTitle) {
+//        self.label = [[UILabel alloc] init];
+//        self.label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
+//        [self addSubview:self.label];
+//        
+//        if (self.checked) {
+//            NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc] initWithString:item.text];
+//            [attributeString addAttribute:NSStrikethroughStyleAttributeName
+//                                    value:@2
+//                                    range:NSMakeRange(0, [attributeString length])];
+//            self.label.attributedText = attributeString;
+//        } else {
+//            self.label.text = item.text;
+//        }
+//    }
+//    
+//    [self setup];
+//}
 
 - (void)setup {
     self.label.textColor = self.checked ? [UIColor gray400] : [UIColor gray100];
