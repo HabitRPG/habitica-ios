@@ -1,6 +1,6 @@
 language: objective-c
 cache: cocoapods
-osx_image: xcode8.2
+osx_image: xcode9.2
 install:
   - rvm install ruby-2.2.2
   - gem install cocoapods
@@ -26,13 +26,13 @@ env:
     - ItunesSharedSecret=123
     - FB_REFERENCE_IMAGE_DIR="./ReferenceImages_32"
   matrix:
-    - DESTINATION="platform=iOS Simulator,name=iPhone 6,OS=8.4"
     - DESTINATION="platform=iOS Simulator,name=iPhone 6,OS=9.3"
     - DESTINATION="platform=iOS Simulator,name=iPhone 6,OS=10.1"
+    - DESTINATION="platform=iOS Simulator,name=iPhone 8,OS=11.2"
 script:
   - set -o pipefail
-  - xcodebuild -workspace Habitica.xcworkspace -scheme HabiticaTests -destination "$DESTINATION" -sdk iphonesimulator10.2 clean build build-for-testing ONLY_ACTIVE_ARCH=NO | xcpretty  -f `xcpretty-travis-formatter`
-  - xcodebuild -workspace Habitica.xcworkspace -scheme HabiticaTests -destination "$DESTINATION" -sdk iphonesimulator10.2 test-without-building ONLY_ACTIVE_ARCH=NO | xcpretty  -f `xcpretty-travis-formatter`
+  - xcodebuild -workspace Habitica.xcworkspace -scheme HabiticaTests -destination "$DESTINATION" -sdk iphonesimulator11.2 clean build build-for-testing ONLY_ACTIVE_ARCH=NO | xcpretty  -f `xcpretty-travis-formatter`
+  - xcodebuild -workspace Habitica.xcworkspace -scheme HabiticaTests -destination "$DESTINATION" -sdk iphonesimulator11.2 test-without-building ONLY_ACTIVE_ARCH=NO | xcpretty  -f `xcpretty-travis-formatter`
   - find /Users/travis/Library/Developer/Xcode/DerivedData/Habitica* -type f | grep "Logs/Test" | grep -i ".log" | xargs cat
   - swiftlint
 after_success:
