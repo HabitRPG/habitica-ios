@@ -50,10 +50,13 @@ class TutorialStepView: UIView {
             
             self.backgroundView.dimColor = UIColor.purple50().withAlphaComponent(0.6)
             
+            self.shouldGroupAccessibilityChildren = true
+            self.isAccessibilityElement = true
+            
             self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewTapped)))
         }
     }
-    
+
     func loadViewFromNib() -> UIView? {
         
         let bundle = Bundle(for: type(of: self))
@@ -111,6 +114,8 @@ class TutorialStepView: UIView {
         if textList.count == 0 {
              speechbubbleView.caretView.isHidden = true
         }
+        self.accessibilityLabel = text
+        UIAccessibilityPostNotification(UIAccessibilityLayoutChangedNotification, self)
     }
     
     @objc
