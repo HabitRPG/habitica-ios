@@ -161,6 +161,8 @@ class ChatTableViewCell: UITableViewCell {
         } else {
             reportView.isHidden = true
         }
+        
+        applyAccessibility()
     }
     
     @objc
@@ -201,6 +203,8 @@ class ChatTableViewCell: UITableViewCell {
         } else {
             bottomMarginConstraint.constant = 4
         }
+        
+        applyAccessibility()
     }
     
     private func setTimeStamp(date: Date?) {
@@ -319,5 +323,22 @@ class ChatTableViewCell: UITableViewCell {
             margin += 64
         }
         leftMarginConstraint.constant = margin
+    }
+    
+    private func applyAccessibility() {
+        accessibilityLabel = "\(usernameLabel.text ?? ""), \(timeLabel.text ?? ""), \(messageTextView.text ?? "")"
+        shouldGroupAccessibilityChildren = true
+        messageTextView.isAccessibilityElement = false
+        plusOneButton.isAccessibilityElement = false
+        accessibilityCustomActions = [
+            UIAccessibilityCustomAction(name: NSLocalizedString("Reply to Message", comment: ""), target: self, selector: #selector(replyButtonTapped(_:))),
+            UIAccessibilityCustomAction(name: NSLocalizedString("Copy Message", comment: ""), target: self, selector: #selector(copyButtonTapped(_:)))
+        ]
+        if isOwnMessage {
+            accessibilityCustomActions?.append(UIAccessibilityCustomAction(name: NSLocalizedString("Delete Message", comment: ""), target: self, selector: #selector(deleteButtonTapped(_:))))
+        } else {
+            accessibilityCustomActions?.append(UIAccessibilityCustomAction(name: NSLocalizedString("Like Message", comment: ""), target: self, selector: #selector(plusOneButtonTapped(_:))))
+            accessibilityCustomActions?.append(UIAccessibilityCustomAction(name: NSLocalizedString("Report Message", comment: ""), target: self, selector: #selector(reportButtonTapped(_:))))
+        }
     }
 }

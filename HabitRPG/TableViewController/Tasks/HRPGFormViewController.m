@@ -786,7 +786,12 @@
     if ([self.taskType isEqualToString:@"daily"]) {
         if (section == 2) {
             NSDictionary<NSString *, XLFormOptionsObject *> *values = [self.form formValues];
-            NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitWeekOfMonth fromDate:values[@"startDate"].valueData];
+            
+            NSDate *startDate = ((XLFormOptionsObject *)values[@"startDate"]).valueData;
+            if (startDate == nil) {
+                startDate = [NSDate date];
+            }
+            NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitWeekOfMonth fromDate:startDate];
             NSMutableSet *daysOfMonth = [[NSMutableSet alloc] init];
             NSMutableSet *weeksOfMonth = [[NSMutableSet alloc] init];
             if ([values[@"repeatsOn"].valueData isEqualToString:@"daysOfMonth"]) {

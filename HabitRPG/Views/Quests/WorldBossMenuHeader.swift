@@ -62,6 +62,7 @@ class WorldBossMenuHeader: UIView {
         healthProgressBar.maxValue = CGFloat(quest.bossHp?.floatValue ?? 0)
         typeLabel.text = "World Boss"
         statBarView.backgroundColor = quest.uicolorDark
+        configureAccessibility()
     }
     
     @objc
@@ -70,11 +71,22 @@ class WorldBossMenuHeader: UIView {
 
         let userDefaults = UserDefaults()
         isCollapsed = userDefaults.bool(forKey: "worldBossArtCollapsed")
+        
+        configureAccessibility()
     }
     
     @objc
     func configure(user: User) {
         pendingDamageLabel.text = "+\(formatter.string(from: user.pendingDamage) ?? "0")"
+        configureAccessibility()
+    }
+    
+    private func configureAccessibility() {
+        isAccessibilityElement = true
+        shouldGroupAccessibilityChildren = true
+        collapseButton.isAccessibilityElement = false
+        accessibilityHint = NSLocalizedString("Double tap to hide boss art", comment: "")
+        accessibilityLabel = "\(quest?.bossName ?? ""), World Boss, pending damage: \(pendingDamageLabel.text ?? "")"
     }
 
     @IBAction func collapseButtonTapped(_ sender: Any) {
