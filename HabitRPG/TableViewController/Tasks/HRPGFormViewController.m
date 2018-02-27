@@ -542,9 +542,9 @@
                 NSMutableSet *daysOfMonth = [[NSMutableSet alloc] init];
                 NSMutableSet *weeksOfMonth = [[NSMutableSet alloc] init];
                 if ([value.valueData isEqualToString:@"daysOfMonth"]) {
-                    [daysOfMonth addObject:[NSNumber numberWithInteger:components.day]];
+                    [daysOfMonth addObject:@(components.day)];
                 } else {
-                    [weeksOfMonth addObject:[NSNumber numberWithInteger:components.weekOfMonth]];
+                    [weeksOfMonth addObject:@(components.weekOfMonth)];
                 }
                 self.task.daysOfMonth = daysOfMonth;
                 self.task.weeksOfMonth = weeksOfMonth;

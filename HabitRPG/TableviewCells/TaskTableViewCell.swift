@@ -53,9 +53,9 @@ class TaskTableViewCell: UITableViewCell {
         self.mainTaskWrapper.isAccessibilityElement = true
         self.mainTaskWrapper.accessibilityHint = NSLocalizedString("Double tap to edit", comment: "")
         self.mainTaskWrapper.accessibilityLabel = "\(task.text ?? "")"
-        self.mainTaskWrapper.accessibilityLabel = "\(self.accessibilityLabel ?? ""), Value: \(String.forTaskQuality(task: task))"
+        self.mainTaskWrapper.accessibilityLabel = "\(self.mainTaskWrapper.accessibilityLabel ?? ""), Value: \(String.forTaskQuality(task: task))"
         if let notes = task.notes, !notes.isEmpty {
-            self.mainTaskWrapper.accessibilityLabel = "\(self.accessibilityLabel ?? ""), \(notes)"
+            self.mainTaskWrapper.accessibilityLabel = "\(self.mainTaskWrapper.accessibilityLabel ?? ""), \(notes)"
         }
     }
 }

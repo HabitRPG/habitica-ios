@@ -127,8 +127,10 @@ class CheckedTableViewCell: TaskTableViewCell {
                         action(item)
                     }
                 }
+                checkbox.accessibilityLabel = item.text
                 checkbox.shouldGroupAccessibilityChildren = true
                 checkbox.isAccessibilityElement = true
+                checkbox.accessibilityHint = NSLocalizedString("Double tap to complete", comment: "")
             }
         }
     }
@@ -150,10 +152,10 @@ class CheckedTableViewCell: TaskTableViewCell {
         if task.completed?.boolValue ?? false {
             stateText = NSLocalizedString("Completed", comment: "")
         }
-        self.mainTaskWrapper?.accessibilityLabel = "\(stateText), \(accessibilityLabel ?? "")"
+        self.mainTaskWrapper?.accessibilityLabel = "\(stateText), \(mainTaskWrapper.accessibilityLabel ?? "")"
         
         if let checklistCount = task.checklist?.count, checklistCount > 0 {
-            self.mainTaskWrapper?.accessibilityLabel = "\(accessibilityLabel ?? ""), \(checklistCount) checklist items"
+            self.mainTaskWrapper?.accessibilityLabel = "\(mainTaskWrapper.accessibilityLabel ?? ""), \(checklistCount) checklist items"
             self.isAccessibilityElement = false
             if isExpanded {
                 self.mainTaskWrapper?.accessibilityCustomActions?.append(UIAccessibilityCustomAction(name: NSLocalizedString("Collapse checklist", comment: ""), target: self, selector: #selector(expandTask)))
