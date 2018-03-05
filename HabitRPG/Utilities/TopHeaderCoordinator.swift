@@ -35,7 +35,7 @@ class TopHeaderCoordinator: NSObject {
         guard let navController = topHeaderNavigationController else {
             return
         }
-        let insets = UIEdgeInsets(top: navController.contentInset, left: 0, bottom: 0, right: 0)
+        var insets = UIEdgeInsets(top: navController.contentInset, left: 0, bottom: 0, right: 0)
         scrollView?.contentInset = insets
         scrollView?.scrollIndicatorInsets = insets
         if navController.state == HRPGTopHeaderStateHidden {
@@ -75,7 +75,11 @@ class TopHeaderCoordinator: NSObject {
         
         navController.view.setNeedsLayout()
         
-        let insets = UIEdgeInsets(top: navController.contentInset, left: 0, bottom: 0, right: 0)
+        let existingInsets = scrollView?.contentInset
+        var insets = UIEdgeInsets(top: navController.contentInset, left: 0, bottom: 0, right: 0)
+        if existingInsets?.bottom != 0 {
+            insets = UIEdgeInsets(top: navController.contentInset + ((existingInsets?.top ?? 0) - navController.contentInset), left: 0, bottom: existingInsets?.bottom ?? 0, right: 0)
+        }
         scrollView?.contentInset = insets
         scrollView?.scrollIndicatorInsets = insets
         if navController.state == HRPGTopHeaderStateHidden {

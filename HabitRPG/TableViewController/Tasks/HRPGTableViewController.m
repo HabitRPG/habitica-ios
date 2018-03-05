@@ -54,8 +54,7 @@ NSIndexPath  *sourceIndexPath = nil; ///< Initial index path, where gesture begi
     [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refresh;
 
-    self.searchBar =
-        [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 48)];
+    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 48)];
     self.searchBar.placeholder = NSLocalizedString(@"Search", nil);
     self.searchBar.delegate = self;
     self.searchBar.backgroundImage = [[UIImage alloc] init];
