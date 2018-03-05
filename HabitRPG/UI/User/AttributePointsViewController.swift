@@ -114,11 +114,7 @@ class AttributePointsVieController: HRPGUIViewController {
     
     private func allocate(_ attribute: String) {
         HRPGManager.shared().allocateAttributePoint(attribute, onSuccess: {[weak self] in
-            self?.updateStats()
-            self?.updateUser()
         }, onError: {[weak self] in
-            self?.updateStats()
-            self?.updateUser()
         })
     }
     
