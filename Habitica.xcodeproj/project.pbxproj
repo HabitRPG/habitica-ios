@@ -94,6 +94,7 @@
 		29B3FEBA1F9A6FAD000B12CF /* AuthenticationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B3FEB91F9A6FAD000B12CF /* AuthenticationSettingsViewController.swift */; };
 		29B3FEBC1F9E3B17000B12CF /* HabiticaAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B3FEBB1F9E3B17000B12CF /* HabiticaAlertController.swift */; };
 		29B3FEBE1F9E3DC3000B12CF /* HabiticaAlertController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29B3FEBD1F9E3DC3000B12CF /* HabiticaAlertController.xib */; };
+		29B586E7204D79ED00301955 /* UIButton-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B586E6204D79ED00301955 /* UIButton-Extensions.swift */; };
 		29B6AD4A1F2A0C9800AC8878 /* LoginEntryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29B6AD491F2A0C9700AC8878 /* LoginEntryView.xib */; };
 		29B6AD4C1F2A0DBE00AC8878 /* LoginEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B6AD4B1F2A0DBE00AC8878 /* LoginEntryView.swift */; };
 		29E162E01FFBBDDC00685640 /* UsernameLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E162DF1FFBBDDC00685640 /* UsernameLabel.swift */; };
@@ -596,6 +597,7 @@
 		29B3FEB91F9A6FAD000B12CF /* AuthenticationSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationSettingsViewController.swift; sourceTree = "<group>"; };
 		29B3FEBB1F9E3B17000B12CF /* HabiticaAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabiticaAlertController.swift; sourceTree = "<group>"; };
 		29B3FEBD1F9E3DC3000B12CF /* HabiticaAlertController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HabiticaAlertController.xib; sourceTree = "<group>"; };
+		29B586E6204D79ED00301955 /* UIButton-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton-Extensions.swift"; sourceTree = "<group>"; };
 		29B6AD491F2A0C9700AC8878 /* LoginEntryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginEntryView.xib; sourceTree = "<group>"; };
 		29B6AD4B1F2A0DBE00AC8878 /* LoginEntryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginEntryView.swift; sourceTree = "<group>"; };
 		29E162DF1FFBBDDC00685640 /* UsernameLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameLabel.swift; sourceTree = "<group>"; };
@@ -1734,6 +1736,7 @@
 				D9D17CCF1E673CCC00AD9232 /* UIView-Extensions.swift */,
 				491C6E5A2020FE64005030A2 /* Challenge-Extensions.swift */,
 				29FD8AA6203DA42A0094322E /* NSLayoutConstraint-Extensions.swift */,
+				29B586E6204D79ED00301955 /* UIButton-Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -3337,6 +3340,7 @@
 				29255E4B1F3E236C0094A3E3 /* ToastManager.swift in Sources */,
 				494E54041F2D20C70003683C /* HRPGShopOverviewTableViewDataSource.m in Sources */,
 				D9CD2DD51BCAA6F700B1304B /* UIViewController+TutorialSteps.m in Sources */,
+				29B586E7204D79ED00301955 /* UIButton-Extensions.swift in Sources */,
 				D96C853F1DCB631B003E3616 /* HRPGBaseNotificationView.m in Sources */,
 				49F145A12016674F00AAC434 /* ChallengeCategory+CoreDataProperties.m in Sources */,
 				D905D08F1DE2431100CABF55 /* HRPGLoginIncentiveOverlayView.m in Sources */,

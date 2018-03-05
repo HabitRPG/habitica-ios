@@ -20,7 +20,7 @@ class StatsView: UIView {
     @IBOutlet private weak var allocatedValueLabel: UILabel!
     @IBOutlet private weak var allocatedLabel: UILabel!
     @IBOutlet private weak var allocatedBackgroundView: UIView!
-    @IBOutlet private weak var allocateButton: UIImageView!
+    @IBOutlet private weak var allocateButton: UIButton!
     
     @IBInspectable var title: String? {
         didSet {
@@ -102,9 +102,8 @@ class StatsView: UIView {
             addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["view": view]))
             addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["view": view]))
             
-            allocateButton.image = HabiticaIcons.imageOfAttributeAllocateButton
-            let recognizer = UITapGestureRecognizer(target: self, action: #selector(allocateButtonTapped))
-            allocateButton.addGestureRecognizer(recognizer)
+            allocateButton.setImage(HabiticaIcons.imageOfAttributeAllocateButton, for: .normal)
+            allocateButton.tintColor = UIColor(red: 0.529, green: 0.506, blue: 0.565, alpha: 1.000)
             
             setNeedsUpdateConstraints()
             updateConstraints()
@@ -114,10 +113,10 @@ class StatsView: UIView {
     }
     
     @objc
-    func allocateButtonTapped() {
+    @IBAction func allocateButtonTapped(_ sender: Any) {
+        allocateButton.backgroundColor = UIColor.gray500()
         if let action = allocateAction {
             action()
         }
     }
-    
 }
