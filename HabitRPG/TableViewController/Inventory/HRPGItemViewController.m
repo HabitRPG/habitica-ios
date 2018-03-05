@@ -321,6 +321,8 @@ float textWidth;
     } else if ([item.key isEqualToString:@"inventory_present"]) {
         extraItem = NSLocalizedString(@"Open", nil);
         destructiveButton = nil;
+    } else if ([item.key isEqualToString:@"Saddle"]){
+        destructiveButton = nil;
     }
     self.selectedItem = item;
 
@@ -361,9 +363,13 @@ float textWidth;
     }]];
     }
     
-    UITableViewCell *selectedCell = [self.dataSource cellAtIndexPath:indexPath];
-    alertController.popoverPresentationController.sourceView = selectedCell;
-    [self presentViewController:alertController animated:YES completion:nil];
+    if (alertController.actions.count > 1) {
+        UITableViewCell *selectedCell = [self.dataSource cellAtIndexPath:indexPath];
+        alertController.popoverPresentationController.sourceView = selectedCell;
+        [self presentViewController:alertController animated:YES completion:nil];
+    } else {
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    }
 }
 
 - (void)actionSheetClickedButtonAtIndex:(NSInteger)buttonIndex {
