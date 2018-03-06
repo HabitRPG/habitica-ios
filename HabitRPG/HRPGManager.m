@@ -4894,7 +4894,7 @@ static dispatch_once_t onceToken;
             }
             if (operation.HTTPRequestOperation.response.statusCode == 503) {
                 [self displayServerError];
-            } else {
+            } else if (operation.HTTPRequestOperation.response.statusCode != 401) {
                 [self displayNetworkError];
             }
             if (errorBlock) {
@@ -4933,7 +4933,7 @@ static dispatch_once_t onceToken;
                                         failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                             if (operation.HTTPRequestOperation.response.statusCode == 503) {
                                                 [self displayServerError];
-                                            } else {
+                                            } else if (operation.HTTPRequestOperation.response.statusCode != 401) {
                                                 [self displayNetworkError];
                                             }
                                             if (errorBlock) {
