@@ -8,6 +8,7 @@
 
 import UIKit
 import Down
+import Habitica_Models
 
 @objc
 class TaskTableViewCell: UITableViewCell {
@@ -20,7 +21,7 @@ class TaskTableViewCell: UITableViewCell {
     //swiftlint:disable private_outlet
 
     @objc
-    func configure(task: HRPGTaskProtocol) {
+    func configure(task: TaskProtocol) {
         if let text = task.text {
             self.titleLabel.attributedText = try? Down(markdownString: text.unicodeEmoji).toHabiticaAttributedString()
         }
@@ -42,12 +43,10 @@ class TaskTableViewCell: UITableViewCell {
 
         self.setNeedsLayout()
         
-        if let task = task as? Task {
-            self.applyAccessibility(task)
-        }
+        self.applyAccessibility(task)
     }
     
-    func applyAccessibility(_ task: Task) {
+    func applyAccessibility(_ task: TaskProtocol) {
         self.mainTaskWrapper.accessibilityCustomActions = []
         self.mainTaskWrapper.shouldGroupAccessibilityChildren = true
         self.mainTaskWrapper.isAccessibilityElement = true

@@ -2,7 +2,11 @@ platform :ios, '9.3'
 use_frameworks!
 inhibit_all_warnings!
 
+workspace 'Habitica'
+
+
 plugin 'cocoapods-keys', {
+  :project => "Habitica",
   :keys => [
     "GoogleClient",
     "GoogleRedirectUrl",
@@ -18,7 +22,13 @@ plugin 'cocoapods-keys', {
   ]
 }
 
+def reactive_pods
+  pod 'ReactiveCocoa', '~> 7'
+  pod 'ReactiveObjCBridge'
+end
+
 target 'Habitica' do
+  project 'Habitica.xcodeproj'
   # RestKit 0.27, this commit fixes some iOS10 issues
   pod 'RestKit'
   pod 'PDKeychainBindingsController', '~> 0.0.1'
@@ -43,7 +53,7 @@ target 'Habitica' do
   pod 'FBSDKCoreKit', '~> 4'
   pod 'FBSDKLoginKit', '~> 4'
 
-  pod 'ReactiveCocoa', '~> 7'
+  reactive_pods
 
   pod 'SwiftyStoreKit'
 
@@ -53,8 +63,7 @@ target 'Habitica' do
 
   pod 'PopupDialog', :git => 'https://github.com/Orderella/PopupDialog.git', :branch => 'development'
   pod 'Alamofire', '~> 4.5'
-  pod 'SwiftyJSON'
-  pod 'Realm'
+  pod 'RealmSwift'
   pod 'SwiftLint'
   pod 'Eureka'
 
@@ -74,4 +83,18 @@ target 'Habitica' do
       pod 'iOSSnapshotTestCase'
   end
 
+end
+
+
+target "Habitica API Client" do
+  project 'Habitica API Client/Habitica API Client.xcodeproj'
+  pod "Alamofire", '~> 4.5'
+  reactive_pods
+end
+
+
+target "Habitica Database" do
+  project 'Habitica Database/Habitica Database.xcodeproj'
+  pod "RealmSwift"
+  reactive_pods
 end

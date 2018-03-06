@@ -34,6 +34,8 @@
 @property Task *movedTask;
 
 @property NSMutableDictionary *heightAtIndexPath;
+
+@property TaskTableViewDataSource *dataSource;
 @end
 
 @implementation HRPGTableViewController
@@ -43,6 +45,8 @@ NSIndexPath  *sourceIndexPath = nil; ///< Initial index path, where gesture begi
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.dataSource = [[TaskTableViewDataSource alloc] initWithPredicate:[self getPredicate]];
+    self.dataSource.viewController = self;
     
     UINib *nib = [UINib nibWithNibName:[self getCellNibName] bundle:nil];
     [[self tableView] registerNib:nib forCellReuseIdentifier:@"Cell"];
@@ -103,10 +107,6 @@ NSIndexPath  *sourceIndexPath = nil; ///< Initial index path, where gesture begi
     } else {
         self.searchBar.text = [HRPGSearchDataManager sharedManager].searchString;
     }
-
-    [self.fetchedResultsController.fetchRequest setPredicate:[self getPredicate]];
-    NSError *error;
-    [self.fetchedResultsController performFetch:&error];
 
     [self.tableView reloadData];
     
@@ -258,6 +258,7 @@ NSIndexPath  *sourceIndexPath = nil; ///< Initial index path, where gesture begi
     } onError:^() {
         [weakSelf.refreshControl endRefreshing];
     }];
+    [[Repositories taskRepository] retrieveTasks];
 }
 
 - (NSPredicate *)getPredicate {
@@ -309,10 +310,7 @@ NSIndexPath  *sourceIndexPath = nil; ///< Initial index path, where gesture begi
     self.filterType =
         [defaults integerForKey:[NSString stringWithFormat:@"%@Filter", self.typeName]];
 
-    [self.fetchedResultsController.fetchRequest setPredicate:[self getPredicate]];
-    [self.fetchedResultsController.fetchRequest setSortDescriptors:[self getSortDescriptors]];
-    NSError *error;
-    [self.fetchedResultsController performFetch:&error];
+    self.dataSource.predicate = [self getPredicate];
     [self.tableView reloadData];
 
     NSInteger filterCount = 0;
@@ -403,32 +401,6 @@ NSIndexPath  *sourceIndexPath = nil; ///< Initial index path, where gesture begi
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return [self.fetchedResultsController sections].count;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if ([self.fetchedResultsController sections].count == 0) {
-        return 0;
-    }
-    return [[self.fetchedResultsController sections][section] numberOfObjects];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView
-         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section > [self.fetchedResultsController sections].count - 1) {
-        UITableViewCell *cell =
-            [tableView dequeueReusableCellWithIdentifier:@"EmptyCell" forIndexPath:indexPath];
-        return cell;
-    }
-
-    NSString *cellname = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellname forIndexPath:indexPath];
-
-    [self configureCell:cell atIndexPath:indexPath withAnimation:NO];
-    return cell;
-}
-
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     return true;
 }
@@ -471,113 +443,6 @@ NSIndexPath  *sourceIndexPath = nil; ///< Initial index path, where gesture begi
     }
 }
 
-- (NSFetchedResultsController *)fetchedResultsController {
-    if (_fetchedResultsController != nil) {
-        return _fetchedResultsController;
-    }
-
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Task"
-                                              inManagedObjectContext:self.managedObjectContext];
-    [fetchRequest setReturnsObjectsAsFaults:NO];
-    [fetchRequest setEntity:entity];
-    [fetchRequest setFetchBatchSize:20];
-    [fetchRequest setPredicate:[self getPredicate]];
-
-    [fetchRequest setSortDescriptors:[self getSortDescriptors]];
-
-    NSFetchedResultsController *aFetchedResultsController =
-        [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
-                                            managedObjectContext:self.managedObjectContext
-                                              sectionNameKeyPath:nil
-                                                       cacheName:nil];
-    aFetchedResultsController.delegate = self;
-    self.fetchedResultsController = aFetchedResultsController;
-
-    NSError *error = nil;
-    if (![self.fetchedResultsController performFetch:&error]) {
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
-    }
-
-    return _fetchedResultsController;
-}
-
-- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
-    if (self.userDrivenDataUpdate) return;
-    [self.tableView beginUpdates];
-}
-
-- (void)controller:(NSFetchedResultsController *)controller
-    didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
-             atIndex:(NSUInteger)sectionIndex
-       forChangeType:(NSFetchedResultsChangeType)type {
-    if (self.userDrivenDataUpdate) return;
-    switch (type) {
-        case NSFetchedResultsChangeInsert:
-            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex]
-                          withRowAnimation:UITableViewRowAnimationFade];
-            break;
-
-        case NSFetchedResultsChangeDelete:
-            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex]
-                          withRowAnimation:UITableViewRowAnimationFade];
-            break;
-
-        case NSFetchedResultsChangeUpdate:
-            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:sectionIndex]
-                          withRowAnimation:UITableViewRowAnimationAutomatic];
-            break;
-
-        case NSFetchedResultsChangeMove:
-            break;
-    }
-}
-
-- (void)controller:(NSFetchedResultsController *)controller
-    didChangeObject:(id)anObject
-        atIndexPath:(NSIndexPath *)indexPath
-      forChangeType:(NSFetchedResultsChangeType)type
-       newIndexPath:(NSIndexPath *)newIndexPath {
-    if (self.userDrivenDataUpdate) return;
-    UITableView *tableView = self.tableView;
-
-    switch (type) {
-        case NSFetchedResultsChangeInsert:
-            [tableView insertRowsAtIndexPaths:@[ newIndexPath ]
-                             withRowAnimation:UITableViewRowAnimationFade];
-            break;
-
-        case NSFetchedResultsChangeDelete: {
-            [tableView deleteRowsAtIndexPaths:@[ indexPath ]
-                             withRowAnimation:UITableViewRowAnimationFade];
-            break;
-        }
-
-        case NSFetchedResultsChangeUpdate:
-            [self
-                configureCell:[tableView cellForRowAtIndexPath:indexPath]
-                  atIndexPath:indexPath
-                withAnimation:YES];
-            break;
-
-        case NSFetchedResultsChangeMove:
-            if (indexPath.item == newIndexPath.item) {
-                return;
-            }
-            [tableView deleteRowsAtIndexPaths:@[ indexPath ]
-                             withRowAnimation:UITableViewRowAnimationFade];
-            [tableView insertRowsAtIndexPaths:@[ newIndexPath ]
-                             withRowAnimation:UITableViewRowAnimationFade];
-            break;
-    }
-}
-
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    if (self.userDrivenDataUpdate) return;
-    [self.tableView endUpdates];
-}
-
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
 
@@ -602,13 +467,6 @@ NSIndexPath  *sourceIndexPath = nil; ///< Initial index path, where gesture begi
 }
 
 - (Task *)taskAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.fetchedResultsController.sections.count > indexPath.section) {
-        id<NSFetchedResultsSectionInfo> sectionInfo =
-            [self.fetchedResultsController sections][indexPath.section];
-        if ([sectionInfo numberOfObjects] > indexPath.item) {
-            return [self.fetchedResultsController objectAtIndexPath:indexPath];
-        }
-    }
     return nil;
 }
 
@@ -623,10 +481,6 @@ NSIndexPath  *sourceIndexPath = nil; ///< Initial index path, where gesture begi
     if ([[HRPGSearchDataManager sharedManager].searchString isEqualToString:@""]) {
         [HRPGSearchDataManager sharedManager].searchString = nil;
     }
-
-    [self.fetchedResultsController.fetchRequest setPredicate:[self getPredicate]];
-    NSError *error;
-    [self.fetchedResultsController performFetch:&error];
 
     [self.tableView reloadData];
 }
@@ -647,10 +501,6 @@ NSIndexPath  *sourceIndexPath = nil; ///< Initial index path, where gesture begi
 
     [HRPGSearchDataManager sharedManager].searchString = nil;
 
-    [self.fetchedResultsController.fetchRequest setPredicate:[self getPredicate]];
-    NSError *error;
-    [self.fetchedResultsController performFetch:&error];
-
     [searchBar resignFirstResponder];
 
     [self.tableView reloadData];
@@ -659,7 +509,7 @@ NSIndexPath  *sourceIndexPath = nil; ///< Initial index path, where gesture begi
 - (void)scrollToTaskWithId:(NSString *)taskID {
     NSInteger index = 0;
     NSIndexPath *indexPath;
-    for (Task *task in self.fetchedResultsController.fetchedObjects) {
+    /*for (Task *task in self.fetchedResultsController.fetchedObjects) {
         if ([task.id isEqualToString:taskID]) {
             indexPath = [NSIndexPath indexPathForItem:index inSection:0];
             break;
@@ -670,7 +520,7 @@ NSIndexPath  *sourceIndexPath = nil; ///< Initial index path, where gesture begi
         [self.tableView scrollToRowAtIndexPath:indexPath
                               atScrollPosition:UITableViewScrollPositionMiddle
                                       animated:YES];
-    }
+    }*/
 }
 
 #pragma mark - Navigation
@@ -741,7 +591,7 @@ NSIndexPath  *sourceIndexPath = nil; ///< Initial index path, where gesture begi
 }
 
 - (NSArray<UIDragItem *> *)tableView:(UITableView *)tableView itemsForBeginningDragSession:(id<UIDragSession>)session atIndexPath:(NSIndexPath *)indexPath NS_AVAILABLE_IOS(11.0) {
-    self.movedTask = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    self.movedTask = [self.dataSource objectAt:indexPath];
     NSString *taskName = self.movedTask.text;
     sourceIndexPath = indexPath;
     
@@ -763,13 +613,13 @@ NSIndexPath  *sourceIndexPath = nil; ///< Initial index path, where gesture begi
 - (UITableViewDropProposal *)tableView:(UITableView *)tableView dropSessionDidUpdate:(id<UIDropSession>)session withDestinationIndexPath:(NSIndexPath *)destinationIndexPath NS_AVAILABLE_IOS(11.0) {
     int taskOrder = 0;
     self.movedTask.order = [NSNumber numberWithInteger:destinationIndexPath.item];
-    for (Task *task in self.fetchedResultsController.fetchedObjects) {
+    /*for (Task *task in self.fetchedResultsController.fetchedObjects) {
         if ([task.id isEqualToString:self.movedTask.id]) {
             break;
         }
         task.order = [NSNumber numberWithInteger:taskOrder];
         taskOrder++;
-    }
+    }*/
     return [[UITableViewDropProposal alloc] initWithDropOperation:UIDropOperationMove intent:UITableViewDropIntentInsertAtDestinationIndexPath];
 }
 

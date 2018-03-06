@@ -150,4 +150,3 @@ class SplitSocialViewController: HRPGUIViewController, UIScrollViewDelegate, NSF
         scrollView.setContentOffset(point, animated: animated)
     }
 }
-

@@ -10,6 +10,10 @@
 #import "ChecklistItem.h"
 #import "HRPGTaskProtocol.h"
 
+@interface HRPGCheckmarkLayer : CALayer
+@property  CGFloat drawPercentage;
+@end
+
 @interface HRPGCheckBoxView : UIView
 
 @property(nonatomic) bool checked;

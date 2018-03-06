@@ -9,6 +9,8 @@
 import Foundation
 import PDKeychainBindingsController
 import KeychainAccess
+import Habitica_API_Client
+
 class AuthenticationManager: NSObject {
     
     @objc static let shared = AuthenticationManager()
@@ -39,6 +41,7 @@ class AuthenticationManager: NSObject {
         set(newUserId) {
             let defaults = UserDefaults.standard
             defaults.set(newUserId, forKey: "currentUserId")
+            NetworkAuthenticationManager.shared.currentUserId = newUserId
         }
     }
     
@@ -54,6 +57,7 @@ class AuthenticationManager: NSObject {
             if let userId = self.currentUserId {
                 keychain[userId] = newKey
             }
+            NetworkAuthenticationManager.shared.currentUserKey = newKey
         }
     }
     

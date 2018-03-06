@@ -66,7 +66,7 @@
     };
     
     __weak DailyTableViewCell *weakCell = cell;
-    cell.checklistItemTouched = ^(ChecklistItem *item) {
+    /*cell.checklistItemTouched = ^(ChecklistItem *item) {
         if (![item.currentlyChecking boolValue]) {
             item.currentlyChecking = @YES;
             item.completed = @(![item.completed boolValue]);
@@ -81,7 +81,7 @@
                                                       item.currentlyChecking = @NO;
                                                   }];
         }
-    };
+    };*/
     
     cell.checklistIndicatorTouched = ^() {
         [self expandSelectedCell:indexPath];

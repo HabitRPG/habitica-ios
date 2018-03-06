@@ -15,7 +15,6 @@
 #import "ChallengeTask+CoreDataClass.h"
 #import "ChecklistItem.h"
 #import "HRPGCheckBoxView.h"
-#import "HRPGHabitButtons.h"
 #import "Reminder.h"
 #import "Tag.h"
 #import "Shop.h"
@@ -51,3 +50,4 @@
 #import "ChatMessageLike+CoreDataClass.h"
 #import "HRPGGroupTableViewController.h"
 #import "HRPGLabeledProgressBar.h"
+#import "HRPGTableViewController.h"

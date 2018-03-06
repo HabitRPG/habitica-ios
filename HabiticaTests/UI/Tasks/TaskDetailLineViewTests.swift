@@ -8,12 +8,14 @@
 
 import XCTest
 @testable import Habitica
+import Habitica_Models
 import Nimble
+
 
 class TaskDetailLineViewTests: HabiticaTests {
     
     let taskDetailLine = TaskDetailLineView(frame: CGRect(x: 0, y: 0, width: 350, height: 21))
-    var task = Task()
+    var task = TestTask()
     
     override func setUp() {
         super.setUp()
@@ -24,10 +26,7 @@ class TaskDetailLineViewTests: HabiticaTests {
         dateFormatter.timeStyle = .none
         taskDetailLine.dateFormatter = dateFormatter
         
-        guard let task = NSEntityDescription.insertNewObject(forEntityName: "Task", into: HRPGManager.shared().getManagedObjectContext()) as? Task else {
-            return;
-        }
-        self.task = task
+        self.task = TestTask()
         task.text = "Task Title"
         task.notes = "Task notes"
         task.type = "habit"
@@ -54,7 +53,7 @@ class TaskDetailLineViewTests: HabiticaTests {
             return;
         }
         tag.id = "id"
-        task.tags = Set(arrayLiteral: tag)
+        //task.tags = Set(arrayLiteral: tag)
         taskDetailLine.configure(task: task)
         expect(self.taskDetailLine.challengeIconView.isHidden) == true
         expect(self.taskDetailLine.tagIconView.isHidden) == false
@@ -75,7 +74,7 @@ class TaskDetailLineViewTests: HabiticaTests {
         guard let reminder = NSEntityDescription.insertNewObject(forEntityName: "Reminder", into: HRPGManager.shared().getManagedObjectContext()) as? Reminder else {
             return;
         }
-        task.reminders = NSOrderedSet(array: [reminder])
+        //task.reminders = NSOrderedSet(array: [reminder])
         taskDetailLine.configure(task: task)
         expect(self.taskDetailLine.challengeIconView.isHidden) == true
         expect(self.taskDetailLine.tagIconView.isHidden) == true
@@ -84,7 +83,7 @@ class TaskDetailLineViewTests: HabiticaTests {
     }
     
     func testStreakVisible() {
-        task.streak = NSNumber(integerLiteral: 2)
+        task.streak = 2
         task.type = "daily"
         taskDetailLine.configure(task: task)
         expect(self.taskDetailLine.challengeIconView.isHidden) == true
@@ -95,7 +94,7 @@ class TaskDetailLineViewTests: HabiticaTests {
     }
     
     func testStreakHiddenIfZero() {
-        task.streak = NSNumber(integerLiteral: 0)
+        task.streak = 0
         taskDetailLine.configure(task: task)
         expect(self.taskDetailLine.challengeIconView.isHidden) == true
         expect(self.taskDetailLine.tagIconView.isHidden) == true
@@ -138,4 +137,28 @@ class TaskDetailLineViewTests: HabiticaTests {
         expect(self.taskDetailLine.calendarIconView.isHidden) == false
         expect(self.taskDetailLine.detailLabel.text) == "Due in 3 days"
     }
+}
+
+class TestTask: TaskProtocol {
+    var tags: [TagProtocol] = []
+    var checklist: [ChecklistItemProtocol] = []
+    var reminders: [ReminderProtocol] = []
+    
+    var id: String?
+    var text: String?
+    var notes: String?
+    var type: String?
+    var value: Float = 0
+    var attribute: String?
+    var completed: Bool = false
+    var down: Bool = false
+    var up: Bool = false
+    var order: Int = 0
+    var priority: Float = 0
+    var counterUp: Int = 0
+    var counterDown: Int = 0
+    var duedate: Date?
+    var isDue: Bool = false
+    var streak: Int = 0
+    var challengeID: String?
 }

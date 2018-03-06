@@ -51,7 +51,7 @@
                                     </view>
                                 </subviews>
                             </stackView>
-                            <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2kE-Y1-vPl" customClass="HRPGHabitButtons">
+                            <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2kE-Y1-vPl" customClass="HabitButton" customModule="Habitica" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="48" height="95.5"/>
                                 <color key="backgroundColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -59,7 +59,7 @@
                                     <constraint firstAttribute="width" constant="48" id="Ht0-fn-NQv"/>
                                 </constraints>
                             </view>
-                            <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OhG-0e-MXk" customClass="HRPGHabitButtons">
+                            <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OhG-0e-MXk" customClass="HabitButton" customModule="Habitica" customModuleProvider="target">
                                 <rect key="frame" x="327" y="0.0" width="48" height="95.5"/>
                                 <color key="backgroundColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>

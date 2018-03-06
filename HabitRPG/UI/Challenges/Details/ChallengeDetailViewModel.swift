@@ -354,7 +354,7 @@ class ChallengeTaskMultiModelDataSourceItem<T>: ConcreteMultiModelDataSourceItem
     
     override func configureCell(_ cell: UITableViewCell) {
         if let clazzCell: T = cell as? T {
-            clazzCell.configure(task: challengeTask)
+            //clazzCell.configure(task: challengeTask)
         }
     }
 }

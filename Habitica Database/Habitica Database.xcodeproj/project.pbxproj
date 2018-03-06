@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		175E06DDF89F66BE894D1E3E /* Pods_Habitica_Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D821314C12B6448718FD4120 /* Pods_Habitica_Database.framework */; };
+		292DEE3F204D9D810086D5F7 /* Habitica_API_Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE40204D9D810086D5F7 /* Habitica_API_Client.framework */; };
+		292DEE41204D9D860086D5F7 /* Habitica_Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE42204D9D860086D5F7 /* Habitica_Models.framework */; };
+		292DEE66204DCB010086D5F7 /* BaseLocalRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE65204DCB010086D5F7 /* BaseLocalRepository.swift */; };
+		292DEE68204DCCB40086D5F7 /* TaskLocalRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE67204DCCB40086D5F7 /* TaskLocalRepository.swift */; };
+		292DEE6B204DCF2E0086D5F7 /* RealmTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE6A204DCF2E0086D5F7 /* RealmTask.swift */; };
+		292DEE6E204DD94E0086D5F7 /* ReactiveRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE6D204DD94E0086D5F7 /* ReactiveRealm.swift */; };
+		292DEE80204E3A000086D5F7 /* RealmTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE7F204E3A000086D5F7 /* RealmTag.swift */; };
+		292DEE84204E41AF0086D5F7 /* RealmChecklistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE83204E41AF0086D5F7 /* RealmChecklistItem.swift */; };
+		292DEE8A204E49600086D5F7 /* RealmReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE89204E49600086D5F7 /* RealmReminder.swift */; };
 		298FB9B6204D9338004DDACC /* Habitica_Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 298FB9AC204D9338004DDACC /* Habitica_Database.framework */; };
 		298FB9BB204D9338004DDACC /* Habitica_DatabaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298FB9BA204D9338004DDACC /* Habitica_DatabaseTests.swift */; };
 		298FB9BD204D9338004DDACC /* Habitica_Database.h in Headers */ = {isa = PBXBuildFile; fileRef = 298FB9AF204D9338004DDACC /* Habitica_Database.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -23,12 +33,24 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A9C077122E72759532BE95C /* Pods-Habitica Database.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica Database.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Habitica Database/Pods-Habitica Database.release.xcconfig"; sourceTree = "<group>"; };
+		292DEE40204D9D810086D5F7 /* Habitica_API_Client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_API_Client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		292DEE42204D9D860086D5F7 /* Habitica_Models.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_Models.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		292DEE65204DCB010086D5F7 /* BaseLocalRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseLocalRepository.swift; sourceTree = "<group>"; };
+		292DEE67204DCCB40086D5F7 /* TaskLocalRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskLocalRepository.swift; sourceTree = "<group>"; };
+		292DEE6A204DCF2E0086D5F7 /* RealmTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmTask.swift; sourceTree = "<group>"; };
+		292DEE6D204DD94E0086D5F7 /* ReactiveRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactiveRealm.swift; sourceTree = "<group>"; };
+		292DEE7F204E3A000086D5F7 /* RealmTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmTag.swift; sourceTree = "<group>"; };
+		292DEE83204E41AF0086D5F7 /* RealmChecklistItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmChecklistItem.swift; sourceTree = "<group>"; };
+		292DEE89204E49600086D5F7 /* RealmReminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmReminder.swift; sourceTree = "<group>"; };
 		298FB9AC204D9338004DDACC /* Habitica_Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Habitica_Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		298FB9AF204D9338004DDACC /* Habitica_Database.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Habitica_Database.h; sourceTree = "<group>"; };
 		298FB9B0204D9338004DDACC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		298FB9B5204D9338004DDACC /* Habitica DatabaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Habitica DatabaseTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		298FB9BA204D9338004DDACC /* Habitica_DatabaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habitica_DatabaseTests.swift; sourceTree = "<group>"; };
 		298FB9BC204D9338004DDACC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D821314C12B6448718FD4120 /* Pods_Habitica_Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica_Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FBC613B665533F6D81509FD4 /* Pods-Habitica Database.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica Database.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Habitica Database/Pods-Habitica Database.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +58,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				292DEE41204D9D860086D5F7 /* Habitica_Models.framework in Frameworks */,
+				292DEE3F204D9D810086D5F7 /* Habitica_API_Client.framework in Frameworks */,
+				175E06DDF89F66BE894D1E3E /* Pods_Habitica_Database.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,12 +75,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		292DEE3E204D9D810086D5F7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				292DEE42204D9D860086D5F7 /* Habitica_Models.framework */,
+				292DEE40204D9D810086D5F7 /* Habitica_API_Client.framework */,
+				D821314C12B6448718FD4120 /* Pods_Habitica_Database.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		292DEE69204DCF240086D5F7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				292DEE6A204DCF2E0086D5F7 /* RealmTask.swift */,
+				292DEE7F204E3A000086D5F7 /* RealmTag.swift */,
+				292DEE83204E41AF0086D5F7 /* RealmChecklistItem.swift */,
+				292DEE89204E49600086D5F7 /* RealmReminder.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		292DEE6C204DCFDA0086D5F7 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				292DEE65204DCB010086D5F7 /* BaseLocalRepository.swift */,
+				292DEE67204DCCB40086D5F7 /* TaskLocalRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
 		298FB9A2204D9338004DDACC = {
 			isa = PBXGroup;
 			children = (
 				298FB9AE204D9338004DDACC /* Habitica Database */,
 				298FB9B9204D9338004DDACC /* Habitica DatabaseTests */,
 				298FB9AD204D9338004DDACC /* Products */,
+				292DEE3E204D9D810086D5F7 /* Frameworks */,
+				F0456787638F3B237BE48F81 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,6 +128,9 @@
 		298FB9AE204D9338004DDACC /* Habitica Database */ = {
 			isa = PBXGroup;
 			children = (
+				292DEE6D204DD94E0086D5F7 /* ReactiveRealm.swift */,
+				292DEE69204DCF240086D5F7 /* Models */,
+				292DEE6C204DCFDA0086D5F7 /* Repositories */,
 				298FB9AF204D9338004DDACC /* Habitica_Database.h */,
 				298FB9B0204D9338004DDACC /* Info.plist */,
 			);
@@ -84,6 +144,15 @@
 				298FB9BC204D9338004DDACC /* Info.plist */,
 			);
 			path = "Habitica DatabaseTests";
+			sourceTree = "<group>";
+		};
+		F0456787638F3B237BE48F81 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FBC613B665533F6D81509FD4 /* Pods-Habitica Database.debug.xcconfig */,
+				1A9C077122E72759532BE95C /* Pods-Habitica Database.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -104,10 +173,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 298FB9C0204D9338004DDACC /* Build configuration list for PBXNativeTarget "Habitica Database" */;
 			buildPhases = (
+				A8001DCFA0AD202CB6AC8AD1 /* [CP] Check Pods Manifest.lock */,
 				298FB9A7204D9338004DDACC /* Sources */,
 				298FB9A8204D9338004DDACC /* Frameworks */,
 				298FB9A9204D9338004DDACC /* Headers */,
 				298FB9AA204D9338004DDACC /* Resources */,
+				E6F4372B3395FA5D41D41C42 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -148,6 +219,7 @@
 				TargetAttributes = {
 					298FB9AB204D9338004DDACC = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 					298FB9B4204D9338004DDACC = {
@@ -191,11 +263,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		A8001DCFA0AD202CB6AC8AD1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Habitica Database-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E6F4372B3395FA5D41D41C42 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-Habitica Database/Pods-Habitica Database-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		298FB9A7204D9338004DDACC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				292DEE68204DCCB40086D5F7 /* TaskLocalRepository.swift in Sources */,
+				292DEE66204DCB010086D5F7 /* BaseLocalRepository.swift in Sources */,
+				292DEE80204E3A000086D5F7 /* RealmTag.swift in Sources */,
+				292DEE84204E41AF0086D5F7 /* RealmChecklistItem.swift in Sources */,
+				292DEE6E204DD94E0086D5F7 /* ReactiveRealm.swift in Sources */,
+				292DEE6B204DCF2E0086D5F7 /* RealmTask.swift in Sources */,
+				292DEE8A204E49600086D5F7 /* RealmReminder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,7 +382,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -321,7 +436,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -333,7 +448,9 @@
 		};
 		298FB9C1204D9338004DDACC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FBC613B665533F6D81509FD4 /* Pods-Habitica Database.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -348,6 +465,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.habitica.Habitica-Database";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -355,7 +473,9 @@
 		};
 		298FB9C2204D9338004DDACC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1A9C077122E72759532BE95C /* Pods-Habitica Database.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -378,6 +498,7 @@
 		298FB9C4204D9338004DDACC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				INFOPLIST_FILE = "Habitica DatabaseTests/Info.plist";
@@ -392,6 +513,7 @@
 		298FB9C5204D9338004DDACC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				INFOPLIST_FILE = "Habitica DatabaseTests/Info.plist";

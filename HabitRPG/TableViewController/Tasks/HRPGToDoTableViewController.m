@@ -65,7 +65,7 @@
     };
     
     __weak ToDoTableViewCell *weakCell = cell;
-    cell.checklistItemTouched = ^(ChecklistItem *item) {
+    /*cell.checklistItemTouched = ^(ChecklistItemProtocol *item) {
         if (![item.currentlyChecking boolValue]) {
             item.currentlyChecking = @YES;
             item.completed = @(![item.completed boolValue]);
@@ -80,7 +80,7 @@
                                                       item.currentlyChecking = @NO;
                                                   }];
         }
-    };
+    };*/
     
     cell.taskDetailLine.dateFormatter = self.dateFormatter;
     [cell configureWithTask:task];
@@ -109,9 +109,9 @@
 - (void)didChangeFilter:(NSNotification *)notification {
     [super didChangeFilter:notification];
     if (self.filterType == TaskToDoFilterTypeDone) {
-        if ([self.fetchedResultsController fetchedObjects].count == 0) {
+        /*if ([self.fetchedResultsController fetchedObjects].count == 0) {
             [[HRPGManager sharedManager] fetchCompletedTasks:nil onError:nil];
-        }
+        }*/
     }
 }
 

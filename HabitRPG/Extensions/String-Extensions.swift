@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Habitica_Models
 
 extension String {
 
@@ -48,8 +49,8 @@ extension String {
         }
     }
     
-    public static func forTaskQuality(task: HRPGTaskProtocol) -> String {
-        let taskValue = task.value?.intValue ?? 0
+    public static func forTaskQuality(task: TaskProtocol) -> String {
+        let taskValue = task.value
         if taskValue < -20 {
             return NSLocalizedString("Worst", comment: "")
         } else if taskValue < -10 {

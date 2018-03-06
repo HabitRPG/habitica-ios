@@ -7,7 +7,6 @@
 //
 
 #import "HRPGHabitTableViewController.h"
-#import "HRPGHabitButtons.h"
 #import "Habitica-Swift.h"
 
 @interface HRPGHabitTableViewController ()

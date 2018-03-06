@@ -13,7 +13,8 @@ import Crashlytics
 import Keys
 import Amplitude_iOS
 import Alamofire
-
+import Habitica_API_Client
+import RealmSwift
 //This will eventually replace the old ObjC AppDelegate once that code is ported to swift.
 //Reason for adding this class now is mostly, to configure PopupDialogs dim color.
 class HabiticaAppDelegate: NSObject {
@@ -50,6 +51,17 @@ class HabiticaAppDelegate: NSObject {
     @objc
     func setupPurchaseHandling() {
         PurchaseHandler.shared.completionHandler()
+    }
+    
+    @objc
+    func setupNetworkAuthentication() {
+        NetworkAuthenticationManager.shared.currentUserId = AuthenticationManager.shared.currentUserId
+        NetworkAuthenticationManager.shared.currentUserKey = AuthenticationManager.shared.currentUserKey
+    }
+    
+    @objc
+    func setupDatabase() {
+        Realm.Configuration.defaultConfiguration.deleteRealmIfMigrationNeeded = true
     }
     
     @objc

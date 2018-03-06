@@ -10,9 +10,7 @@
 #import "UIColor+Habitica.h"
 #import "Habitica-Swift.h"
 
-@interface HRPGCheckmarkLayer : CALayer
-@property  CGFloat drawPercentage;
-@end
+
 
 @implementation HRPGCheckmarkLayer
 @dynamic drawPercentage;

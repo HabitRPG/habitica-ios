@@ -1,15 +1,17 @@
 //
 //  ReactiveRealm.swift
-//  Flytrap
+//  Habitica Database
 //
-//  Created by Phillip Thelen on 13.02.18.
-//  Copyright © 2018 Phillip Thelen. All rights reserved.
+//  Created by Phillip Thelen on 05.03.18.
+//  Copyright © 2018 HabitRPG Inc. All rights reserved.
 //
 
+import Foundation
 import ReactiveSwift
 import Result
 import RealmSwift
 
+// swiftlint:disable force_try
 public enum ReactiveSwiftRealmError:Error{
     case wrongThread
     case deletedInAnotherThread
@@ -318,6 +320,17 @@ public extension ReactiveRealmQueryable where Self:Object{
         }
     }
     
+    public static func findBy(predicate: NSPredicate, realm: Realm = try! Realm()) -> SignalProducer<Results<Self>,ReactiveSwiftRealmError>{
+        return SignalProducer{ observer,_ in
+            if !Thread.isMainThread {
+                observer.send(error: .wrongThread)
+                return
+            }
+            observer.send(value: realm.objects(Self.self).filter(predicate))
+        }
+    }
+    
+    
     public static func findAll(realm:Realm = try! Realm()) -> SignalProducer<Results<Self>,ReactiveSwiftRealmError>{
         return SignalProducer{ observer,_ in
             if !Thread.isMainThread {
@@ -333,21 +346,21 @@ public extension SignalProducerProtocol where Value: NotificationEmitter, Error 
     
     /**
      Transform Results<T> into a reactive source
-     :returns: signal containing updated values and optional RealmChangeset when changed
+     :returns: signal containing updated values and optional ReactiveChangeset when changed
      */
     
-    public typealias RealmReactiveResults = (value:Self.Value,changes:RealmChangeset?)
+    public typealias ReactiveResults = (value:Self.Value,changes:ReactiveChangeset?)
     
-    public  func reactive() -> SignalProducer<RealmReactiveResults, ReactiveSwiftRealmError> {
-        return producer.flatMap(.latest) {results -> SignalProducer<RealmReactiveResults, ReactiveSwiftRealmError> in
+    public  func reactive() -> SignalProducer<ReactiveResults, ReactiveSwiftRealmError> {
+        return producer.flatMap(.latest) {results -> SignalProducer<ReactiveResults, ReactiveSwiftRealmError> in
             return SignalProducer { observer, lifetime in
                 let notificationToken = results.observe { (changes: RealmCollectionChange) in
                     switch changes {
                     case .initial:
-                        observer.send(value: (value: results, changes: RealmChangeset(initial: true, deleted: [], inserted: (0..<results.count).map {$0}, updated: [])))
+                        observer.send(value: (value: results, changes: ReactiveChangeset(initial: true, deleted: [], inserted: (0..<results.count).map {$0}, updated: [])))
                         break
                     case .update(let values, let deletes, let inserts, let updates):
-                        observer.send(value: (value: values, changes: RealmChangeset(initial: false, deleted: deletes, inserted: inserts, updated: updates)))
+                        observer.send(value: (value: values, changes: ReactiveChangeset(initial: false, deleted: deletes, inserted: inserts, updated: updates)))
                         break
                     case .error(let error):
                         // An error occurred while opening the Realm file on the background worker thread
@@ -409,11 +422,11 @@ public protocol NotificationEmitter {
 extension Results:NotificationEmitter{}
 
 /**
- `RealmChangeset` is a struct that contains the data about a single realm change set.
+ `ReactiveChangeset` is a struct that contains the data about a single realm change set.
  
  It includes the insertions, modifications, and deletions indexes in the data set that the current notification is about.
  */
-public struct RealmChangeset {
+public struct ReactiveChangeset {
     
     public let initial: Bool
     
@@ -448,5 +461,7 @@ public protocol SortableRealmResults {
 
 extension Results:SortableRealmResults{}
 
-public typealias RealmReactiveResults<Value: RealmCollectionValue> = (value:Results<Value>,changes:RealmChangeset?)
+public typealias RealmReactiveResults<Value: RealmCollectionValue> = (value:Results<Value>,changes:ReactiveChangeset?)
+public typealias ReactiveResults<Value: Collection> = (value:Value,changes:ReactiveChangeset?)
 
+// swiftlint:enable force_try

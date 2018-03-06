@@ -8,16 +8,33 @@
 
 import Foundation
 
-protocol TaskProtocol {
-    var id: String
-    var text: String
-    var notes: String
-    var type: String
-    var value: Float
-    var attribute: String
-    var completed: Bool
-    var down: Bool
-    var up: Bool
-    var order: Int
-    var priority: Float
+@objc
+public protocol TaskProtocol {
+    var id: String? { get set }
+    var text: String? { get set }
+    var notes: String? { get set }
+    var type: String? { get set }
+    var value: Float { get set }
+    var attribute: String? { get set }
+    var completed: Bool { get set }
+    var down: Bool { get set }
+    var up: Bool { get set }
+    var order: Int { get set }
+    var priority: Float { get set }
+    var counterUp: Int { get set }
+    var counterDown: Int { get set }
+    var duedate: Date? { get set }
+    var isDue: Bool { get set }
+    var streak: Int { get set }
+    var challengeID: String? { get set }
+    var tags: [TagProtocol] { get set }
+    var checklist: [ChecklistItemProtocol] { get set }
+    var reminders: [ReminderProtocol] { get set }
+}
+
+extension TaskProtocol {
+    
+    public func dueToday(withOffset: Int) -> Bool {
+        return isDue
+    }
 }

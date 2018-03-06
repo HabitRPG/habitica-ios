@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "HRPGBaseViewController.h"
 
-@interface HRPGTableViewController : HRPGBaseViewController<NSFetchedResultsControllerDelegate>
+@interface HRPGTableViewController : HRPGBaseViewController
 
 - (void)refresh;
 
@@ -21,7 +21,6 @@
 
 - (Task *)taskAtIndexPath:(NSIndexPath *)indexPath;
 
-@property(strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 - (NSPredicate *)getPredicate;
 
 - (void)scrollToTaskWithId:(NSString *)taskID;
