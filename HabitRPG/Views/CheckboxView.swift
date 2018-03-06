@@ -150,8 +150,15 @@ class CheckboxView: UIView {
         label.frame = CGRect(x: leftOffset, y: 0, width: frame.size.width - leftOffset, height: frame.size.height)
     }
     
+    override func draw(_ rect: CGRect) {
+    }
+    
     override func draw(_ layer: CALayer, in ctx: CGContext) {
         UIGraphicsPushContext(ctx)
+        
+        ctx.clear(frame)
+        backgroundColor?.setFill()
+        ctx.fill(frame)
 
         let horizontalCenter = centerCheckbox ? frame.size.width / 2 : padding + size / 2
         let borderPath = UIBezierPath(roundedRect: CGRect(x: horizontalCenter - size / 2, y: frame.size.height / 2 - size / 2, width: size, height: size), cornerRadius: boxCornerRadius)
