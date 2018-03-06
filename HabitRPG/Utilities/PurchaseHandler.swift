@@ -62,23 +62,24 @@ class PurchaseHandler: NSObject {
                                         }
                                     }
                                 } else if self.isSubscription(product.productId) {
-                                    SwiftyStoreKit.verifyReceipt(using: self.appleValidator, completion: { (verificationResult) in
-                                        switch verificationResult {
-                                        case .success(let receipt):
-                                            if self.isValidSubscription(product.productId, receipt: receipt) {
-                                                self.activateSubscription(product.productId, receipt: receipt) { status in
-                                                    if status {
-                                                        SwiftyStoreKit.finishTransaction(product.transaction)
+                                    if !HRPGManager.shared().getUser().isSubscribed() {
+                                        SwiftyStoreKit.verifyReceipt(using: self.appleValidator, completion: { (verificationResult) in
+                                            switch verificationResult {
+                                            case .success(let receipt):
+                                                if self.isValidSubscription(product.productId, receipt: receipt) {
+                                                    self.activateSubscription(product.productId, receipt: receipt) { status in
+                                                        if status {
+                                                            SwiftyStoreKit.finishTransaction(product.transaction)
+                                                        }
                                                     }
+                                                } else {
+                                                    SwiftyStoreKit.finishTransaction(product.transaction)
                                                 }
-                                            } else {
-                                                SwiftyStoreKit.finishTransaction(product.transaction)
+                                            case .error(let error):
+                                                Crashlytics.sharedInstance().recordError(error)
                                             }
-                                        case .error(let error):
-                                            Crashlytics.sharedInstance().recordError(error)
-                                        }
-                                    })
-                                    
+                                        })
+                                    }
                                 }
                             }
                         }
