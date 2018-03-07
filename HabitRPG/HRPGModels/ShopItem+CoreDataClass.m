@@ -16,8 +16,10 @@
     [self didAccessValueForKey:@"imageName"];
     if (imageName) {
         return imageName;
-    } else {
+    } else if (self.key != nil) {
         return [@"shop_" stringByAppendingString:self.key];
+    } else {
+        return @"";
     }
 }
 

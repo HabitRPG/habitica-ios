@@ -77,7 +77,11 @@ class WorldBossMenuHeader: UIView {
     
     @objc
     func configure(user: User) {
-        pendingDamageLabel.text = "+\(formatter.string(from: user.pendingDamage) ?? "0")"
+        if user.pendingDamage != nil {
+            pendingDamageLabel.text = "+\(formatter.string(from: user.pendingDamage) ?? "0")"
+        } else {
+            pendingDamageLabel.text = "+0"
+        }
         configureAccessibility()
     }
     
