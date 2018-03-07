@@ -14,6 +14,7 @@
 		292DEEAD205038CB0086D5F7 /* TaskResponseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEEAC205038CB0086D5F7 /* TaskResponseProtocol.swift */; };
 		29323E1020504DA600AC6D6F /* UserProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E0F20504DA600AC6D6F /* UserProtocol.swift */; };
 		29323E1220504DCE00AC6D6F /* StatsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E1120504DCE00AC6D6F /* StatsProtocol.swift */; };
+		29323E2120505E8E00AC6D6F /* HabiticaObjcModelBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = 29323E2020505E8E00AC6D6F /* HabiticaObjcModelBridge.h */; };
 		298FB9DA204D9404004DDACC /* Habitica_Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 298FB9D0204D9403004DDACC /* Habitica_Models.framework */; };
 		298FB9DF204D9404004DDACC /* Habitica_ModelsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298FB9DE204D9404004DDACC /* Habitica_ModelsTests.swift */; };
 		298FB9E1204D9404004DDACC /* Habitica_Models.h in Headers */ = {isa = PBXBuildFile; fileRef = 298FB9D3204D9403004DDACC /* Habitica_Models.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -38,6 +39,7 @@
 		292DEEAC205038CB0086D5F7 /* TaskResponseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskResponseProtocol.swift; sourceTree = "<group>"; };
 		29323E0F20504DA600AC6D6F /* UserProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProtocol.swift; sourceTree = "<group>"; };
 		29323E1120504DCE00AC6D6F /* StatsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsProtocol.swift; sourceTree = "<group>"; };
+		29323E2020505E8E00AC6D6F /* HabiticaObjcModelBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HabiticaObjcModelBridge.h; sourceTree = "<group>"; };
 		298FB9D0204D9403004DDACC /* Habitica_Models.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Habitica_Models.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		298FB9D3204D9403004DDACC /* Habitica_Models.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Habitica_Models.h; sourceTree = "<group>"; };
 		298FB9D4204D9403004DDACC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				298FB9D4204D9403004DDACC /* Info.plist */,
 				292DEE33204D950E0086D5F7 /* Tasks */,
 				292DEE59204DAA000086D5F7 /* HabiticaModel.swift */,
+				29323E2020505E8E00AC6D6F /* HabiticaObjcModelBridge.h */,
 			);
 			path = "Habitica Models";
 			sourceTree = "<group>";
@@ -133,6 +136,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29323E2120505E8E00AC6D6F /* HabiticaObjcModelBridge.h in Headers */,
 				298FB9E1204D9404004DDACC /* Habitica_Models.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

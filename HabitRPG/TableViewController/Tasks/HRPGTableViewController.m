@@ -16,6 +16,7 @@
 #import <POP/POP.h>
 #import "UIColor+Habitica.h"
 #import "Habitica-Swift.h"
+#import "HabiticaObjcModelBridge.h"
 
 @interface HRPGTableViewController ()<UISearchBarDelegate, UITableViewDragDelegate, UITableViewDropDelegate>
 @property NSString *readableName;
@@ -503,7 +504,7 @@ NSIndexPath  *sourceIndexPath = nil; ///< Initial index path, where gesture begi
 - (void)scrollToTaskWithId:(NSString *)taskID {
     NSInteger index = 0;
     NSIndexPath *indexPath;
-    /*for (Task *task in self.fetchedResultsController.fetchedObjects) {
+    for (Task *task in self.dataSource.tasks) {
         if ([task.id isEqualToString:taskID]) {
             indexPath = [NSIndexPath indexPathForItem:index inSection:0];
             break;
@@ -514,7 +515,7 @@ NSIndexPath  *sourceIndexPath = nil; ///< Initial index path, where gesture begi
         [self.tableView scrollToRowAtIndexPath:indexPath
                               atScrollPosition:UITableViewScrollPositionMiddle
                                       animated:YES];
-    }*/
+    }
 }
 
 #pragma mark - Navigation
@@ -607,13 +608,13 @@ NSIndexPath  *sourceIndexPath = nil; ///< Initial index path, where gesture begi
 - (UITableViewDropProposal *)tableView:(UITableView *)tableView dropSessionDidUpdate:(id<UIDropSession>)session withDestinationIndexPath:(NSIndexPath *)destinationIndexPath NS_AVAILABLE_IOS(11.0) {
     int taskOrder = 0;
     self.movedTask.order = [NSNumber numberWithInteger:destinationIndexPath.item];
-    /*for (Task *task in self.fetchedResultsController.fetchedObjects) {
+    for (Task *task in self.dataSource.tasks) {
         if ([task.id isEqualToString:self.movedTask.id]) {
             break;
         }
         task.order = [NSNumber numberWithInteger:taskOrder];
         taskOrder++;
-    }*/
+    }
     return [[UITableViewDropProposal alloc] initWithDropOperation:UIDropOperationMove intent:UITableViewDropIntentInsertAtDestinationIndexPath];
 }
 

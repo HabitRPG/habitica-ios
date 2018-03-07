@@ -29,7 +29,7 @@ class TaskTableViewDataSource: BaseReactiveDataSource, UITableViewDataSource {
     
     internal let repository = TaskRepository()
     
-    private var tasks = [TaskProtocol]()
+    @objc var tasks = [TaskProtocol]()
     private var expandedIndexPath: IndexPath?
     
     @objc
