@@ -31,4 +31,34 @@ public class TaskLocalRepository: BaseLocalRepository {
             return (value.map({ (task) -> TaskProtocol in return task }), changeset)
         })
     }
+    
+    public func getTask(id: String) -> SignalProducer<TaskProtocol?, ReactiveSwiftRealmError> {
+        return RealmTask.findBy(query: "id == '\(id)'").reactive().map({ (tasks, changes) -> TaskProtocol? in
+            return tasks.first
+        })
+    }
+    
+    public func updateScoredTask(id: String, direction: TaskScoringDirection, response: TaskResponseProtocol) {
+        getTask(id: id).take(first: 1).skipNil().on(value: { realmTask in
+            try? self.realm?.write {
+                if let delta = response.delta {
+                    realmTask.value = realmTask.value + delta
+                }
+                if realmTask.type != TaskType.habit.rawValue {
+                    realmTask.completed = direction == .up
+                    if direction == .up {
+                        realmTask.streak += 1
+                    }
+                } else {
+                    if direction == .up {
+                        realmTask.counterUp += 1
+                    }
+                    if direction == .down {
+                        realmTask.counterDown += 1
+                    }
+                }
+
+            }
+        }).start()
+    }
 }

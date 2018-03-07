@@ -8,6 +8,18 @@
 
 import Foundation
 
+public enum TaskType: String {
+    case habit
+    case daily
+    case todo
+    case reward
+}
+
+public enum TaskScoringDirection: String {
+    case up
+    case down
+}
+
 @objc
 public protocol TaskProtocol {
     var id: String? { get set }

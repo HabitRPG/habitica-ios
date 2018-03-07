@@ -29,11 +29,19 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
         return localRepository.getTasks(predicate: predicate)
     }
     
-    func score(task: TaskProtocol, direction: TaskScoringDirection) -> Signal<TaskResponse?, NoError> {
+    func score(task: TaskProtocol, direction: TaskScoringDirection) -> Signal<TaskResponseProtocol?, NoError> {
         let call = ScoreTaskCall(task: task, direction: direction)
         call.fire()
         return call.objectSignal.on(value: {[weak self] taskResponse in
-            let toastView = ToastView(healthDiff: taskResponse?.health ?? 0, magicDiff: taskResponse?.magic ?? 0, expDiff: taskResponse?.experience ?? 0, goldDiff: taskResponse?.gold ?? 0, questDamage: 0, background: .green)
+            if task.type != "reward", let taskId = task.id, let response = taskResponse {
+                self?.localRepository.updateScoredTask(id: taskId, direction: direction, response: response)
+            }
+            let toastView = ToastView(healthDiff: taskResponse?.health ?? 0,
+                                      magicDiff: taskResponse?.magic ?? 0,
+                                      expDiff: taskResponse?.experience ?? 0,
+                                      goldDiff: taskResponse?.gold ?? 0,
+                                      questDamage: 0,
+                                      background: .green)
             ToastManager.show(toast: toastView)
         })
     }

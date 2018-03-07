@@ -24,7 +24,7 @@
 		292DEE9F204F4B8F0086D5F7 /* RetrieveTasksCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE9E204F4B8F0086D5F7 /* RetrieveTasksCall.swift */; };
 		292DEEA1204F625B0086D5F7 /* DateDecodingStrategy-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEEA0204F625B0086D5F7 /* DateDecodingStrategy-Extension.swift */; };
 		292DEEA9204F71290086D5F7 /* ScoreTaskCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEEA8204F71290086D5F7 /* ScoreTaskCall.swift */; };
-		292DEEAB204F76A10086D5F7 /* TaskResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEEAA204F76A10086D5F7 /* TaskResponse.swift */; };
+		292DEEB1205039CA0086D5F7 /* TaskResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEEB0205039CA0086D5F7 /* TaskResponse.swift */; };
 		29B586FC204D92CF00301955 /* Habitica_API_Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29B586F2204D92CF00301955 /* Habitica_API_Client.framework */; };
 		29B58701204D92CF00301955 /* Habitica_API_ClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B58700204D92CF00301955 /* Habitica_API_ClientTests.swift */; };
 		29B58703204D92CF00301955 /* Habitica_API_Client.h in Headers */ = {isa = PBXBuildFile; fileRef = 29B586F5204D92CF00301955 /* Habitica_API_Client.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -61,7 +61,7 @@
 		292DEE9E204F4B8F0086D5F7 /* RetrieveTasksCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveTasksCall.swift; sourceTree = "<group>"; };
 		292DEEA0204F625B0086D5F7 /* DateDecodingStrategy-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateDecodingStrategy-Extension.swift"; sourceTree = "<group>"; };
 		292DEEA8204F71290086D5F7 /* ScoreTaskCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreTaskCall.swift; sourceTree = "<group>"; };
-		292DEEAA204F76A10086D5F7 /* TaskResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskResponse.swift; sourceTree = "<group>"; };
+		292DEEB0205039CA0086D5F7 /* TaskResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskResponse.swift; sourceTree = "<group>"; };
 		29B586F2204D92CF00301955 /* Habitica_API_Client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Habitica_API_Client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		29B586F5204D92CF00301955 /* Habitica_API_Client.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Habitica_API_Client.h; sourceTree = "<group>"; };
 		29B586F6204D92CF00301955 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -128,7 +128,7 @@
 				292DEE7D204E37670086D5F7 /* APITag.swift */,
 				292DEE87204E490A0086D5F7 /* APIReminder.swift */,
 				292DEEA8204F71290086D5F7 /* ScoreTaskCall.swift */,
-				292DEEAA204F76A10086D5F7 /* TaskResponse.swift */,
+				292DEEB0205039CA0086D5F7 /* TaskResponse.swift */,
 			);
 			path = Tasks;
 			sourceTree = "<group>";
@@ -436,7 +436,7 @@
 				292DEE8F204F49D50086D5F7 /* AuthenticatedCall.swift in Sources */,
 				292DEE93204F4A430086D5F7 /* ResponseArrayCall.swift in Sources */,
 				292DEE99204F4A870086D5F7 /* ResponseArray.swift in Sources */,
-				292DEEAB204F76A10086D5F7 /* TaskResponse.swift in Sources */,
+				292DEEB1205039CA0086D5F7 /* TaskResponse.swift in Sources */,
 				292DEE82204E411C0086D5F7 /* APIChecklistItem.swift in Sources */,
 				292DEE91204F4A0F0086D5F7 /* HabiticaServerConfig.swift in Sources */,
 				292DEE4F204DA3870086D5F7 /* RetrieveTasksCall.swift in Sources */,
