@@ -25,6 +25,7 @@
 - (void)viewDidLoad {
     self.readableName = NSLocalizedString(@"Daily", nil);
     self.typeName = @"daily";
+    self.dataSource = [[DailyTableViewDataSoure alloc] initWithPredicate:[self getPredicate]];
     [super viewDidLoad];
 
     self.tutorialIdentifier = @"dailies";

@@ -20,6 +20,7 @@
 		298FB9B6204D9338004DDACC /* Habitica_Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 298FB9AC204D9338004DDACC /* Habitica_Database.framework */; };
 		298FB9BB204D9338004DDACC /* Habitica_DatabaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298FB9BA204D9338004DDACC /* Habitica_DatabaseTests.swift */; };
 		298FB9BD204D9338004DDACC /* Habitica_Database.h in Headers */ = {isa = PBXBuildFile; fileRef = 298FB9AF204D9338004DDACC /* Habitica_Database.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EFA96FFA3536BF094D7B36B3 /* Pods_Habitica_DatabaseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 930CE9895A927708C0C96A90 /* Pods_Habitica_DatabaseTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +35,7 @@
 
 /* Begin PBXFileReference section */
 		1A9C077122E72759532BE95C /* Pods-Habitica Database.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica Database.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Habitica Database/Pods-Habitica Database.release.xcconfig"; sourceTree = "<group>"; };
+		1D84CF561C90D7C295416F02 /* Pods-Habitica DatabaseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica DatabaseTests.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Habitica DatabaseTests/Pods-Habitica DatabaseTests.release.xcconfig"; sourceTree = "<group>"; };
 		292DEE40204D9D810086D5F7 /* Habitica_API_Client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_API_Client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		292DEE42204D9D860086D5F7 /* Habitica_Models.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_Models.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		292DEE65204DCB010086D5F7 /* BaseLocalRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseLocalRepository.swift; sourceTree = "<group>"; };
@@ -49,6 +51,8 @@
 		298FB9B5204D9338004DDACC /* Habitica DatabaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Habitica DatabaseTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		298FB9BA204D9338004DDACC /* Habitica_DatabaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habitica_DatabaseTests.swift; sourceTree = "<group>"; };
 		298FB9BC204D9338004DDACC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		46F1FDA07144B10D37712F09 /* Pods-Habitica DatabaseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica DatabaseTests.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Habitica DatabaseTests/Pods-Habitica DatabaseTests.debug.xcconfig"; sourceTree = "<group>"; };
+		930CE9895A927708C0C96A90 /* Pods_Habitica_DatabaseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica_DatabaseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D821314C12B6448718FD4120 /* Pods_Habitica_Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica_Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBC613B665533F6D81509FD4 /* Pods-Habitica Database.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica Database.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Habitica Database/Pods-Habitica Database.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -69,6 +73,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				298FB9B6204D9338004DDACC /* Habitica_Database.framework in Frameworks */,
+				EFA96FFA3536BF094D7B36B3 /* Pods_Habitica_DatabaseTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +86,7 @@
 				292DEE42204D9D860086D5F7 /* Habitica_Models.framework */,
 				292DEE40204D9D810086D5F7 /* Habitica_API_Client.framework */,
 				D821314C12B6448718FD4120 /* Pods_Habitica_Database.framework */,
+				930CE9895A927708C0C96A90 /* Pods_Habitica_DatabaseTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -151,6 +157,8 @@
 			children = (
 				FBC613B665533F6D81509FD4 /* Pods-Habitica Database.debug.xcconfig */,
 				1A9C077122E72759532BE95C /* Pods-Habitica Database.release.xcconfig */,
+				46F1FDA07144B10D37712F09 /* Pods-Habitica DatabaseTests.debug.xcconfig */,
+				1D84CF561C90D7C295416F02 /* Pods-Habitica DatabaseTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -193,9 +201,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 298FB9C3204D9338004DDACC /* Build configuration list for PBXNativeTarget "Habitica DatabaseTests" */;
 			buildPhases = (
+				779F748F3603084DA5F2CB78 /* [CP] Check Pods Manifest.lock */,
 				298FB9B1204D9338004DDACC /* Sources */,
 				298FB9B2204D9338004DDACC /* Frameworks */,
 				298FB9B3204D9338004DDACC /* Resources */,
+				983C9FA03B70C3B601E33E84 /* [CP] Embed Pods Frameworks */,
+				3B09EFDF631199874D8A181B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -264,6 +275,79 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		3B09EFDF631199874D8A181B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-Habitica DatabaseTests/Pods-Habitica DatabaseTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		779F748F3603084DA5F2CB78 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Habitica DatabaseTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		983C9FA03B70C3B601E33E84 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/../Pods/Target Support Files/Pods-Habitica DatabaseTests/Pods-Habitica DatabaseTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/OHHTTPStubs.default-Core-JSON-NSURLSession-OHPathHelpers/OHHTTPStubs.framework",
+				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
+				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
+				"${BUILT_PRODUCTS_DIR}/iOSSnapshotTestCase/FBSnapshotTestCase.framework",
+				"${BUILT_PRODUCTS_DIR}/Keys/Keys.framework",
+				"${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/ReactiveObjC/ReactiveObjC.framework",
+				"${BUILT_PRODUCTS_DIR}/ReactiveObjCBridge/ReactiveObjCBridge.framework",
+				"${BUILT_PRODUCTS_DIR}/ReactiveSwift/ReactiveSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OHHTTPStubs.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSnapshotTestCase.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Keys.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveObjC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveObjCBridge.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-Habitica DatabaseTests/Pods-Habitica DatabaseTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		A8001DCFA0AD202CB6AC8AD1 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -497,6 +581,7 @@
 		};
 		298FB9C4204D9338004DDACC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 46F1FDA07144B10D37712F09 /* Pods-Habitica DatabaseTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -512,6 +597,7 @@
 		};
 		298FB9C5204D9338004DDACC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1D84CF561C90D7C295416F02 /* Pods-Habitica DatabaseTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

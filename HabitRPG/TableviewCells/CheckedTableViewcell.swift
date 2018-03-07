@@ -144,7 +144,8 @@ class CheckedTableViewCell: TaskTableViewCell {
         }
         self.mainTaskWrapper?.accessibilityLabel = "\(stateText), \(mainTaskWrapper.accessibilityLabel ?? "")"
         
-        /*if let checklistCount = task.checklist?.count, checklistCount > 0 {
+        let checklistCount = task.checklist.count
+        if checklistCount > 0 {
             self.mainTaskWrapper?.accessibilityLabel = "\(mainTaskWrapper.accessibilityLabel ?? ""), \(checklistCount) checklist items"
             self.isAccessibilityElement = false
             if isExpanded {
@@ -152,7 +153,7 @@ class CheckedTableViewCell: TaskTableViewCell {
             } else {
                 self.mainTaskWrapper?.accessibilityCustomActions?.append(UIAccessibilityCustomAction(name: NSLocalizedString("Expand checklist", comment: ""), target: self, selector: #selector(expandTask)))
             }
-        }*/
+        }
     }
     
     @objc

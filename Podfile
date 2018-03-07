@@ -27,6 +27,13 @@ def reactive_pods
   pod 'ReactiveObjCBridge'
 end
 
+def test_pods
+  pod 'OHHTTPStubs'
+  pod 'Quick', '~> 1.2.0'
+  pod 'Nimble', '~> 7.0.0'
+  pod 'iOSSnapshotTestCase'
+end
+
 target 'Habitica' do
   project 'Habitica.xcodeproj'
   # RestKit 0.27, this commit fixes some iOS10 issues
@@ -66,21 +73,16 @@ target 'Habitica' do
   pod 'RealmSwift'
   pod 'SwiftLint'
   pod 'Eureka'
+  pod 'FunkyNetwork'
 
   target 'HabiticaTests' do
-      inherit! :search_paths
-      pod 'OHHTTPStubs'
-      pod 'Quick', '~> 1.2.0'
-      pod 'Nimble', '~> 7.0.0'
-      pod 'iOSSnapshotTestCase'
+    inherit! :search_paths
+    test_pods
   end
   
   target 'Habitica Snapshots' do
-      inherit! :search_paths
-      pod 'OHHTTPStubs'
-      pod 'Quick', '~> 1.2.0'
-      pod 'Nimble', '~> 7.0.0'
-      pod 'iOSSnapshotTestCase'
+    inherit! :search_paths
+    test_pods
   end
 
 end
@@ -88,8 +90,13 @@ end
 
 target "Habitica API Client" do
   project 'Habitica API Client/Habitica API Client.xcodeproj'
-  pod "Alamofire", '~> 4.5'
+  pod 'FunkyNetwork'
   reactive_pods
+
+  target 'Habitica API ClientTests' do
+    inherit! :search_paths
+    test_pods
+  end
 end
 
 
@@ -97,4 +104,9 @@ target "Habitica Database" do
   project 'Habitica Database/Habitica Database.xcodeproj'
   pod "RealmSwift"
   reactive_pods
+
+  target 'Habitica DatabaseTests' do
+    inherit! :search_paths
+    test_pods
+  end
 end

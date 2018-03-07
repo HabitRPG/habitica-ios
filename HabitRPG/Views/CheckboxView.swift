@@ -84,11 +84,38 @@ class CheckboxView: UIView {
             }
         }
         
-        setNeedsDisplay()
+        layer.setNeedsDisplay()
     }
     
     func configure(checklistItem: ChecklistItemProtocol, withTitle: Bool) {
+        checked = checklistItem.completed
+        if let layer = self.layer as? HRPGCheckmarkLayer {
+            layer.drawPercentage = checked ? 1 : 0
+        }
+        if withTitle {
+            label.font = UIFont.preferredFont(forTextStyle: .subheadline)
+            if label.superview == nil {
+                self.addSubview(label)
+            }
+            if checked {
+                let attributedString = NSMutableAttributedString(string: checklistItem.text ?? "")
+                attributedString.addAttribute(.strikethroughStyle, value: NSNumber(value: 2), range: NSRange(location: 0, length: attributedString.length))
+                label.attributedText = attributedString
+            } else {
+                label.text = checklistItem.text
+            }
+        }
         
+        label.textColor = checked ? UIColor.gray400() : UIColor.gray100()
+        backgroundColor = UIColor.clear
+        boxFillColor = checked ? UIColor.gray400() : UIColor.clear
+        boxBorderColor = checked ? nil : UIColor.gray400()
+        checkColor = UIColor.gray200()
+        cornerRadius = 3
+        centerCheckbox = false
+        size = 22
+        borderedBox = true
+        layer.setNeedsDisplay()
     }
     
     @objc
@@ -123,16 +150,9 @@ class CheckboxView: UIView {
         label.frame = CGRect(x: leftOffset, y: 0, width: frame.size.width - leftOffset, height: frame.size.height)
     }
     
-    override func draw(_ rect: CGRect) {
-    }
-    
     override func draw(_ layer: CALayer, in ctx: CGContext) {
         UIGraphicsPushContext(ctx)
-        
-        ctx.clear(frame)
-        backgroundColor?.setFill()
-        ctx.fill(frame)
-        
+
         let horizontalCenter = centerCheckbox ? frame.size.width / 2 : padding + size / 2
         let borderPath = UIBezierPath(roundedRect: CGRect(x: horizontalCenter - size / 2, y: frame.size.height / 2 - size / 2, width: size, height: size), cornerRadius: boxCornerRadius)
         if boxBorderColor != nil {

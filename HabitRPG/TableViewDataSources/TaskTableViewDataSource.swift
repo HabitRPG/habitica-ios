@@ -27,15 +27,16 @@ class TaskTableViewDataSource: BaseReactiveDataSource, UITableViewDataSource {
     
     @objc var predicate: NSPredicate
     
-    private let repository = TaskRepository()
+    internal let repository = TaskRepository()
     
     private var tasks = [TaskProtocol]()
+    private var expandedIndexPath: IndexPath?
     
     @objc
     init(predicate: NSPredicate) {
         self.predicate = predicate
         super.init()
-        repository.getTasks(predicate: predicate).on(value: { (tasks, changes) in
+        disposable.inner.add(repository.getTasks(predicate: predicate).on(value: { (tasks, changes) in
             self.tasks = tasks
             if changes?.initial == true {
                 self.tableView?.reloadData()
@@ -48,11 +49,22 @@ class TaskTableViewDataSource: BaseReactiveDataSource, UITableViewDataSource {
                 self.tableView?.deleteRows(at: changes.deleted.map({ IndexPath(row: $0, section: 0) }), with: .automatic)
                 self.tableView?.reloadRows(at: changes.updated.map({ IndexPath(row: $0, section: 0) }), with: .automatic)
                 self.tableView?.endUpdates()
-            }        }).start()
+            }
+            
+        }).start())
     }
     
     @objc
-    func object(at indexPath: IndexPath) -> TaskProtocol {
+    func retrieveTasks(completed: (() -> Void)?) {
+        disposable.inner.add(repository.retrieveTasks().observeCompleted {
+            if let action = completed {
+                action()
+            }
+        })
+    }
+    
+    @objc
+    func object(at indexPath: IndexPath) -> TaskProtocol? {
         return tasks[indexPath.item]
     }
     
@@ -66,9 +78,38 @@ class TaskTableViewDataSource: BaseReactiveDataSource, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        if let taskCell = cell as? TaskTableViewCell {
-            taskCell.configure(task: object(at: indexPath))
+        if let taskCell = cell as? TaskTableViewCell, let task = object(at: indexPath) {
+            configure(cell: taskCell, indexPath: indexPath, task: task)
         }
         return cell
+    }
+    
+    func configure(cell: TaskTableViewCell, indexPath: IndexPath, task: TaskProtocol) {
+        if let checkedCell = cell as? CheckedTableViewCell {
+            checkedCell.isExpanded = self.expandedIndexPath?.item == indexPath.item
+        }
+        cell.configure(task: task)
+    }
+    
+    internal func expandSelectedCell(indexPath: IndexPath) {
+        var expandedPath = self.expandedIndexPath
+        if tableView?.numberOfRows(inSection: 0) ?? 0 < (expandedPath?.item ?? 0) {
+            expandedPath = nil
+        }
+        self.expandedIndexPath = indexPath
+        if expandedPath == nil || indexPath.item == expandedPath?.item {
+            if expandedPath?.item == self.expandedIndexPath?.item {
+                self.expandedIndexPath = nil
+            }
+            tableView?.beginUpdates()
+            tableView?.reloadRows(at: [indexPath], with: .none)
+            tableView?.endUpdates()
+        } else {
+            if let path = expandedPath {
+                tableView?.beginUpdates()
+                tableView?.reloadRows(at: [indexPath, path], with: .none)
+                tableView?.endUpdates()
+            }
+        }
     }
 }

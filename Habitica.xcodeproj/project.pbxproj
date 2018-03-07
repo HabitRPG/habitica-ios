@@ -32,6 +32,9 @@
 		292DEE74204DECF60086D5F7 /* BaseReactiveDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE73204DECF60086D5F7 /* BaseReactiveDataSource.swift */; };
 		292DEE76204E053D0086D5F7 /* HabitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE75204E053D0086D5F7 /* HabitButton.swift */; };
 		292DEE78204E1FFD0086D5F7 /* CheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE77204E1FFD0086D5F7 /* CheckboxView.swift */; };
+		292DEE8D204F458B0086D5F7 /* HabitTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE8C204F458B0086D5F7 /* HabitTableViewDataSource.swift */; };
+		292DEEA5204F6F6C0086D5F7 /* DailyTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEEA4204F6F6C0086D5F7 /* DailyTableViewDataSource.swift */; };
+		292DEEA7204F6F8C0086D5F7 /* TodoTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEEA6204F6F8C0086D5F7 /* TodoTableViewDataSource.swift */; };
 		293282141F389CC000D42961 /* SetupCustomizationItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293282131F389CC000D42961 /* SetupCustomizationItemView.swift */; };
 		293282161F389DBB00D42961 /* SetupCustomizationItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 293282151F389DBB00D42961 /* SetupCustomizationItemView.xib */; };
 		293282181F39E1A400D42961 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293282171F39E1A400D42961 /* WelcomeViewController.swift */; };
@@ -528,6 +531,9 @@
 		292DEE73204DECF60086D5F7 /* BaseReactiveDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseReactiveDataSource.swift; sourceTree = "<group>"; };
 		292DEE75204E053D0086D5F7 /* HabitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitButton.swift; sourceTree = "<group>"; };
 		292DEE77204E1FFD0086D5F7 /* CheckboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxView.swift; sourceTree = "<group>"; };
+		292DEE8C204F458B0086D5F7 /* HabitTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitTableViewDataSource.swift; sourceTree = "<group>"; };
+		292DEEA4204F6F6C0086D5F7 /* DailyTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTableViewDataSource.swift; sourceTree = "<group>"; };
+		292DEEA6204F6F8C0086D5F7 /* TodoTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewDataSource.swift; sourceTree = "<group>"; };
 		293282131F389CC000D42961 /* SetupCustomizationItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupCustomizationItemView.swift; sourceTree = "<group>"; };
 		293282151F389DBB00D42961 /* SetupCustomizationItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetupCustomizationItemView.xib; sourceTree = "<group>"; };
 		293282171F39E1A400D42961 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -1322,6 +1328,17 @@
 			path = Implementations;
 			sourceTree = "<group>";
 		};
+		292DEE8B204F455E0086D5F7 /* Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				292DEE6F204DEB120086D5F7 /* TaskTableViewDataSource.swift */,
+				292DEE8C204F458B0086D5F7 /* HabitTableViewDataSource.swift */,
+				292DEEA4204F6F6C0086D5F7 /* DailyTableViewDataSource.swift */,
+				292DEEA6204F6F8C0086D5F7 /* TodoTableViewDataSource.swift */,
+			);
+			name = Tasks;
+			sourceTree = "<group>";
+		};
 		2957B8AA1F4B297300E836EF /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -1505,7 +1522,7 @@
 				494E54021F2D20C70003683C /* HRPGShopOverviewTableViewDataSource.h */,
 				494E54031F2D20C70003683C /* HRPGShopOverviewTableViewDataSource.m */,
 				49DCECA61F96ECEF00982E99 /* MultiModelDataSource.swift */,
-				292DEE6F204DEB120086D5F7 /* TaskTableViewDataSource.swift */,
+				292DEE8B204F455E0086D5F7 /* Tasks */,
 			);
 			name = TVDataSources;
 			sourceTree = "<group>";
@@ -3011,6 +3028,7 @@
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FLEX/FLEX.framework",
+				"${BUILT_PRODUCTS_DIR}/FunkyNetwork/FunkyNetwork.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/ISO8601DateFormatterValueTransformer/ISO8601DateFormatterValueTransformer.framework",
 				"${BUILT_PRODUCTS_DIR}/KLCPopup/KLCPopup.framework",
@@ -3019,6 +3037,7 @@
 				"${BUILT_PRODUCTS_DIR}/MRProgress/MRProgress.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/NSString+Emoji/NSString_Emoji.framework",
+				"${BUILT_PRODUCTS_DIR}/OHHTTPStubs-b1c8d455/OHHTTPStubs.framework",
 				"${BUILT_PRODUCTS_DIR}/PDKeychainBindingsController/PDKeychainBindingsController.framework",
 				"${BUILT_PRODUCTS_DIR}/PopupDialog/PopupDialog.framework",
 				"${BUILT_PRODUCTS_DIR}/RKValueTransformers/RKValueTransformers.framework",
@@ -3058,6 +3077,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLEX.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FunkyNetwork.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ISO8601DateFormatterValueTransformer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KLCPopup.framework",
@@ -3066,6 +3086,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MRProgress.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NSString_Emoji.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OHHTTPStubs.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PDKeychainBindingsController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PopupDialog.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RKValueTransformers.framework",
@@ -3102,15 +3123,15 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Habitica Snapshots/Pods-Habitica Snapshots-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/OHHTTPStubs.default-Core-JSON-NSURLSession-OHPathHelpers/OHHTTPStubs.framework",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
-				"${BUILT_PRODUCTS_DIR}/OHHTTPStubs/OHHTTPStubs.framework",
 				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
 				"${BUILT_PRODUCTS_DIR}/iOSSnapshotTestCase/FBSnapshotTestCase.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OHHTTPStubs.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSnapshotTestCase.framework",
 			);
@@ -3159,15 +3180,15 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-HabiticaTests/Pods-HabiticaTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/OHHTTPStubs.default-Core-JSON-NSURLSession-OHPathHelpers/OHHTTPStubs.framework",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
-				"${BUILT_PRODUCTS_DIR}/OHHTTPStubs/OHHTTPStubs.framework",
 				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
 				"${BUILT_PRODUCTS_DIR}/iOSSnapshotTestCase/FBSnapshotTestCase.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OHHTTPStubs.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSnapshotTestCase.framework",
 			);
@@ -3322,6 +3343,7 @@
 				299BD62F1F541EFC00E22935 /* QuestReward+CoreDataClass.m in Sources */,
 				29A0FD7E203DBDEA00590BDE /* ChatMessageFlag+CoreDataClass.m in Sources */,
 				D9BB45591E71AFAF0002AE2E /* Down-Extensions.swift in Sources */,
+				292DEEA7204F6F8C0086D5F7 /* TodoTableViewDataSource.swift in Sources */,
 				D9D593611D0058AE00D6C388 /* HRPGInboxChatViewController.m in Sources */,
 				292DEE70204DEB120086D5F7 /* TaskTableViewDataSource.swift in Sources */,
 				D92A085A1D3520D8000F8B66 /* Shop.m in Sources */,
@@ -3539,6 +3561,8 @@
 				D9436AC11C63A4BB008D1171 /* UIViewController+Markdown.m in Sources */,
 				D92CDAE418CB83EF0006C242 /* HRPGDailyTableViewController.m in Sources */,
 				D9BB455D1E71C8C70002AE2E /* CheckedTableViewcell.swift in Sources */,
+				292DEEA5204F6F6C0086D5F7 /* DailyTableViewDataSource.swift in Sources */,
+				292DEE8D204F458B0086D5F7 /* HabitTableViewDataSource.swift in Sources */,
 				494E54151F2F07290003683C /* HRPGFetchedResultsCollectionViewDataSource.swift in Sources */,
 				D9FC1A7E1BC28F4700B97D23 /* HRPGTypingLabel.m in Sources */,
 				D94AADB7192A56E800546C8E /* HRPGSpellTaskController.m in Sources */,
@@ -3772,7 +3796,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = Habitica;
 			};
 			name = Debug;
@@ -3795,7 +3819,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.habitica.Habitica-Snapshots";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = Habitica;
 			};
 			name = Release;
@@ -3871,7 +3895,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "HabiticaTests/UI/Login/HabiticaTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Habitica.app/Habitica";
 			};
 			name = Debug;
@@ -3942,7 +3966,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "HabiticaTests/UI/Login/HabiticaTests-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Habitica.app/Habitica";
 			};
 			name = Release;

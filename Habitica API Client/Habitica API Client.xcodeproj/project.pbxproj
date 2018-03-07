@@ -8,17 +8,27 @@
 
 /* Begin PBXBuildFile section */
 		292DEE44204D9D8D0086D5F7 /* Habitica_Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE45204D9D8D0086D5F7 /* Habitica_Models.framework */; };
-		292DEE49204DA0F10086D5F7 /* BaseAPICall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE48204DA0F10086D5F7 /* BaseAPICall.swift */; };
 		292DEE4B204DA1220086D5F7 /* NetworkAuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE4A204DA1220086D5F7 /* NetworkAuthenticationManager.swift */; };
-		292DEE4F204DA3870086D5F7 /* RetrieveTasksAPICall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE4E204DA3870086D5F7 /* RetrieveTasksAPICall.swift */; };
+		292DEE4F204DA3870086D5F7 /* RetrieveTasksCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE4E204DA3870086D5F7 /* RetrieveTasksCall.swift */; };
 		292DEE51204DA3A30086D5F7 /* APITask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE50204DA3A30086D5F7 /* APITask.swift */; };
-		292DEE5C204DAF880086D5F7 /* HabiticaResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE5B204DAF880086D5F7 /* HabiticaResponse.swift */; };
 		292DEE7E204E37670086D5F7 /* APITag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE7D204E37670086D5F7 /* APITag.swift */; };
 		292DEE82204E411C0086D5F7 /* APIChecklistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE81204E411C0086D5F7 /* APIChecklistItem.swift */; };
 		292DEE88204E490A0086D5F7 /* APIReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE87204E490A0086D5F7 /* APIReminder.swift */; };
+		292DEE8F204F49D50086D5F7 /* AuthenticatedCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE8E204F49D50086D5F7 /* AuthenticatedCall.swift */; };
+		292DEE91204F4A0F0086D5F7 /* HabiticaServerConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE90204F4A0F0086D5F7 /* HabiticaServerConfig.swift */; };
+		292DEE93204F4A430086D5F7 /* ResponseArrayCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE92204F4A430086D5F7 /* ResponseArrayCall.swift */; };
+		292DEE95204F4A510086D5F7 /* ResponseObjectCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE94204F4A510086D5F7 /* ResponseObjectCall.swift */; };
+		292DEE97204F4A7B0086D5F7 /* ResponseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE96204F4A7B0086D5F7 /* ResponseObject.swift */; };
+		292DEE99204F4A870086D5F7 /* ResponseArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE98204F4A870086D5F7 /* ResponseArray.swift */; };
+		292DEE9D204F4B5F0086D5F7 /* tasks.json in Resources */ = {isa = PBXBuildFile; fileRef = 292DEE9C204F4B5F0086D5F7 /* tasks.json */; };
+		292DEE9F204F4B8F0086D5F7 /* RetrieveTasksCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE9E204F4B8F0086D5F7 /* RetrieveTasksCall.swift */; };
+		292DEEA1204F625B0086D5F7 /* DateDecodingStrategy-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEEA0204F625B0086D5F7 /* DateDecodingStrategy-Extension.swift */; };
+		292DEEA9204F71290086D5F7 /* ScoreTaskCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEEA8204F71290086D5F7 /* ScoreTaskCall.swift */; };
+		292DEEAB204F76A10086D5F7 /* TaskResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEEAA204F76A10086D5F7 /* TaskResponse.swift */; };
 		29B586FC204D92CF00301955 /* Habitica_API_Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29B586F2204D92CF00301955 /* Habitica_API_Client.framework */; };
 		29B58701204D92CF00301955 /* Habitica_API_ClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B58700204D92CF00301955 /* Habitica_API_ClientTests.swift */; };
 		29B58703204D92CF00301955 /* Habitica_API_Client.h in Headers */ = {isa = PBXBuildFile; fileRef = 29B586F5204D92CF00301955 /* Habitica_API_Client.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9A268BF127E13DFBBE1D6DAF /* Pods_Habitica_API_ClientTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B265032E3FD15918939BFD0F /* Pods_Habitica_API_ClientTests.framework */; };
 		AE4ADE8B2AF941F3FCBB5DD9 /* Pods_Habitica_API_Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D41C03127A377E7796EFB1E8 /* Pods_Habitica_API_Client.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,20 +45,32 @@
 /* Begin PBXFileReference section */
 		191CE8102BC4FC651F95BBBA /* Pods-Habitica API Client.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica API Client.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Habitica API Client/Pods-Habitica API Client.release.xcconfig"; sourceTree = "<group>"; };
 		292DEE45204D9D8D0086D5F7 /* Habitica_Models.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_Models.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		292DEE48204DA0F10086D5F7 /* BaseAPICall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAPICall.swift; sourceTree = "<group>"; };
 		292DEE4A204DA1220086D5F7 /* NetworkAuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAuthenticationManager.swift; sourceTree = "<group>"; };
-		292DEE4E204DA3870086D5F7 /* RetrieveTasksAPICall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveTasksAPICall.swift; sourceTree = "<group>"; };
+		292DEE4E204DA3870086D5F7 /* RetrieveTasksCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveTasksCall.swift; sourceTree = "<group>"; };
 		292DEE50204DA3A30086D5F7 /* APITask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITask.swift; sourceTree = "<group>"; };
-		292DEE5B204DAF880086D5F7 /* HabiticaResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabiticaResponse.swift; sourceTree = "<group>"; };
 		292DEE7D204E37670086D5F7 /* APITag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITag.swift; sourceTree = "<group>"; };
 		292DEE81204E411C0086D5F7 /* APIChecklistItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIChecklistItem.swift; sourceTree = "<group>"; };
 		292DEE87204E490A0086D5F7 /* APIReminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIReminder.swift; sourceTree = "<group>"; };
+		292DEE8E204F49D50086D5F7 /* AuthenticatedCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatedCall.swift; sourceTree = "<group>"; };
+		292DEE90204F4A0F0086D5F7 /* HabiticaServerConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabiticaServerConfig.swift; sourceTree = "<group>"; };
+		292DEE92204F4A430086D5F7 /* ResponseArrayCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseArrayCall.swift; sourceTree = "<group>"; };
+		292DEE94204F4A510086D5F7 /* ResponseObjectCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseObjectCall.swift; sourceTree = "<group>"; };
+		292DEE96204F4A7B0086D5F7 /* ResponseObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseObject.swift; sourceTree = "<group>"; };
+		292DEE98204F4A870086D5F7 /* ResponseArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseArray.swift; sourceTree = "<group>"; };
+		292DEE9C204F4B5F0086D5F7 /* tasks.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = tasks.json; sourceTree = "<group>"; };
+		292DEE9E204F4B8F0086D5F7 /* RetrieveTasksCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveTasksCall.swift; sourceTree = "<group>"; };
+		292DEEA0204F625B0086D5F7 /* DateDecodingStrategy-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateDecodingStrategy-Extension.swift"; sourceTree = "<group>"; };
+		292DEEA8204F71290086D5F7 /* ScoreTaskCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreTaskCall.swift; sourceTree = "<group>"; };
+		292DEEAA204F76A10086D5F7 /* TaskResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskResponse.swift; sourceTree = "<group>"; };
 		29B586F2204D92CF00301955 /* Habitica_API_Client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Habitica_API_Client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		29B586F5204D92CF00301955 /* Habitica_API_Client.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Habitica_API_Client.h; sourceTree = "<group>"; };
 		29B586F6204D92CF00301955 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		29B586FB204D92CF00301955 /* Habitica API ClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Habitica API ClientTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		29B58700204D92CF00301955 /* Habitica_API_ClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habitica_API_ClientTests.swift; sourceTree = "<group>"; };
 		29B58702204D92CF00301955 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		589C92345817498D7AFD83FC /* Pods-Habitica API ClientTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica API ClientTests.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Habitica API ClientTests/Pods-Habitica API ClientTests.debug.xcconfig"; sourceTree = "<group>"; };
+		9202171462D0CA0F8120FBAE /* Pods-Habitica API ClientTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica API ClientTests.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Habitica API ClientTests/Pods-Habitica API ClientTests.release.xcconfig"; sourceTree = "<group>"; };
+		B265032E3FD15918939BFD0F /* Pods_Habitica_API_ClientTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica_API_ClientTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D41C03127A377E7796EFB1E8 /* Pods_Habitica_API_Client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica_API_Client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7EF6D46CDBA4E678D7467CD /* Pods-Habitica API Client.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica API Client.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Habitica API Client/Pods-Habitica API Client.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -68,6 +90,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				29B586FC204D92CF00301955 /* Habitica_API_Client.framework in Frameworks */,
+				9A268BF127E13DFBBE1D6DAF /* Pods_Habitica_API_ClientTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +102,7 @@
 			children = (
 				292DEE45204D9D8D0086D5F7 /* Habitica_Models.framework */,
 				D41C03127A377E7796EFB1E8 /* Pods_Habitica_API_Client.framework */,
+				B265032E3FD15918939BFD0F /* Pods_Habitica_API_ClientTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -86,8 +110,11 @@
 		292DEE46204D9D9E0086D5F7 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				292DEE48204DA0F10086D5F7 /* BaseAPICall.swift */,
-				292DEE5B204DAF880086D5F7 /* HabiticaResponse.swift */,
+				292DEE8E204F49D50086D5F7 /* AuthenticatedCall.swift */,
+				292DEE92204F4A430086D5F7 /* ResponseArrayCall.swift */,
+				292DEE94204F4A510086D5F7 /* ResponseObjectCall.swift */,
+				292DEE96204F4A7B0086D5F7 /* ResponseObject.swift */,
+				292DEE98204F4A870086D5F7 /* ResponseArray.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -95,13 +122,31 @@
 		292DEE47204D9DA20086D5F7 /* Tasks */ = {
 			isa = PBXGroup;
 			children = (
-				292DEE4E204DA3870086D5F7 /* RetrieveTasksAPICall.swift */,
+				292DEE4E204DA3870086D5F7 /* RetrieveTasksCall.swift */,
 				292DEE50204DA3A30086D5F7 /* APITask.swift */,
 				292DEE81204E411C0086D5F7 /* APIChecklistItem.swift */,
 				292DEE7D204E37670086D5F7 /* APITag.swift */,
 				292DEE87204E490A0086D5F7 /* APIReminder.swift */,
+				292DEEA8204F71290086D5F7 /* ScoreTaskCall.swift */,
+				292DEEAA204F76A10086D5F7 /* TaskResponse.swift */,
 			);
 			path = Tasks;
+			sourceTree = "<group>";
+		};
+		292DEE9A204F4B3D0086D5F7 /* Fixtures */ = {
+			isa = PBXGroup;
+			children = (
+				292DEE9C204F4B5F0086D5F7 /* tasks.json */,
+			);
+			path = Fixtures;
+			sourceTree = "<group>";
+		};
+		292DEE9B204F4B480086D5F7 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				292DEE9E204F4B8F0086D5F7 /* RetrieveTasksCall.swift */,
+			);
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		29B586E8204D92CF00301955 = {
@@ -132,6 +177,8 @@
 				29B586F5204D92CF00301955 /* Habitica_API_Client.h */,
 				29B586F6204D92CF00301955 /* Info.plist */,
 				292DEE4A204DA1220086D5F7 /* NetworkAuthenticationManager.swift */,
+				292DEE90204F4A0F0086D5F7 /* HabiticaServerConfig.swift */,
+				292DEEA0204F625B0086D5F7 /* DateDecodingStrategy-Extension.swift */,
 			);
 			path = "Habitica API Client";
 			sourceTree = "<group>";
@@ -139,6 +186,8 @@
 		29B586FF204D92CF00301955 /* Habitica API ClientTests */ = {
 			isa = PBXGroup;
 			children = (
+				292DEE9B204F4B480086D5F7 /* Tests */,
+				292DEE9A204F4B3D0086D5F7 /* Fixtures */,
 				29B58700204D92CF00301955 /* Habitica_API_ClientTests.swift */,
 				29B58702204D92CF00301955 /* Info.plist */,
 			);
@@ -150,6 +199,8 @@
 			children = (
 				E7EF6D46CDBA4E678D7467CD /* Pods-Habitica API Client.debug.xcconfig */,
 				191CE8102BC4FC651F95BBBA /* Pods-Habitica API Client.release.xcconfig */,
+				589C92345817498D7AFD83FC /* Pods-Habitica API ClientTests.debug.xcconfig */,
+				9202171462D0CA0F8120FBAE /* Pods-Habitica API ClientTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -192,9 +243,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 29B58709204D92CF00301955 /* Build configuration list for PBXNativeTarget "Habitica API ClientTests" */;
 			buildPhases = (
+				C1BDEF6207AFD20B4975AB7F /* [CP] Check Pods Manifest.lock */,
 				29B586F7204D92CF00301955 /* Sources */,
 				29B586F8204D92CF00301955 /* Frameworks */,
 				29B586F9204D92CF00301955 /* Resources */,
+				BF68D5080F76F3771F799003 /* [CP] Embed Pods Frameworks */,
+				26B568B849A1143504F8A03C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -257,6 +311,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				292DEE9D204F4B5F0086D5F7 /* tasks.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,6 +333,21 @@
 			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-Habitica API Client/Pods-Habitica API Client-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		26B568B849A1143504F8A03C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-Habitica API ClientTests/Pods-Habitica API ClientTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		7D4E99082F65C04C50E7999E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -296,6 +366,63 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		BF68D5080F76F3771F799003 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/../Pods/Target Support Files/Pods-Habitica API ClientTests/Pods-Habitica API ClientTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/OHHTTPStubs.default-Core-JSON-NSURLSession-OHPathHelpers/OHHTTPStubs.framework",
+				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
+				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
+				"${BUILT_PRODUCTS_DIR}/iOSSnapshotTestCase/FBSnapshotTestCase.framework",
+				"${BUILT_PRODUCTS_DIR}/FunkyNetwork/FunkyNetwork.framework",
+				"${BUILT_PRODUCTS_DIR}/Keys/Keys.framework",
+				"${BUILT_PRODUCTS_DIR}/OHHTTPStubs-b1c8d455/OHHTTPStubs.framework",
+				"${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/ReactiveObjC/ReactiveObjC.framework",
+				"${BUILT_PRODUCTS_DIR}/ReactiveObjCBridge/ReactiveObjCBridge.framework",
+				"${BUILT_PRODUCTS_DIR}/ReactiveSwift/ReactiveSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OHHTTPStubs.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSnapshotTestCase.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FunkyNetwork.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Keys.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveObjC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveObjCBridge.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-Habitica API ClientTests/Pods-Habitica API ClientTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C1BDEF6207AFD20B4975AB7F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Habitica API ClientTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -303,13 +430,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				292DEE49204DA0F10086D5F7 /* BaseAPICall.swift in Sources */,
 				292DEE51204DA3A30086D5F7 /* APITask.swift in Sources */,
+				292DEEA1204F625B0086D5F7 /* DateDecodingStrategy-Extension.swift in Sources */,
+				292DEE97204F4A7B0086D5F7 /* ResponseObject.swift in Sources */,
+				292DEE8F204F49D50086D5F7 /* AuthenticatedCall.swift in Sources */,
+				292DEE93204F4A430086D5F7 /* ResponseArrayCall.swift in Sources */,
+				292DEE99204F4A870086D5F7 /* ResponseArray.swift in Sources */,
+				292DEEAB204F76A10086D5F7 /* TaskResponse.swift in Sources */,
 				292DEE82204E411C0086D5F7 /* APIChecklistItem.swift in Sources */,
-				292DEE4F204DA3870086D5F7 /* RetrieveTasksAPICall.swift in Sources */,
+				292DEE91204F4A0F0086D5F7 /* HabiticaServerConfig.swift in Sources */,
+				292DEE4F204DA3870086D5F7 /* RetrieveTasksCall.swift in Sources */,
+				292DEEA9204F71290086D5F7 /* ScoreTaskCall.swift in Sources */,
+				292DEE95204F4A510086D5F7 /* ResponseObjectCall.swift in Sources */,
 				292DEE88204E490A0086D5F7 /* APIReminder.swift in Sources */,
 				292DEE4B204DA1220086D5F7 /* NetworkAuthenticationManager.swift in Sources */,
-				292DEE5C204DAF880086D5F7 /* HabiticaResponse.swift in Sources */,
 				292DEE7E204E37670086D5F7 /* APITag.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -318,6 +452,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				292DEE9F204F4B8F0086D5F7 /* RetrieveTasksCall.swift in Sources */,
 				29B58701204D92CF00301955 /* Habitica_API_ClientTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -497,6 +632,7 @@
 		};
 		29B5870A204D92CF00301955 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 589C92345817498D7AFD83FC /* Pods-Habitica API ClientTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -512,6 +648,7 @@
 		};
 		29B5870B204D92CF00301955 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9202171462D0CA0F8120FBAE /* Pods-Habitica API ClientTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

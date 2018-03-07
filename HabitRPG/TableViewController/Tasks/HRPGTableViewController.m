@@ -34,8 +34,6 @@
 @property Task *movedTask;
 
 @property NSMutableDictionary *heightAtIndexPath;
-
-@property TaskTableViewDataSource *dataSource;
 @end
 
 @implementation HRPGTableViewController
@@ -45,7 +43,6 @@ NSIndexPath  *sourceIndexPath = nil; ///< Initial index path, where gesture begi
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.dataSource = [[TaskTableViewDataSource alloc] initWithPredicate:[self getPredicate]];
     self.dataSource.viewController = self;
     
     UINib *nib = [UINib nibWithNibName:[self getCellNibName] bundle:nil];
@@ -253,12 +250,9 @@ NSIndexPath  *sourceIndexPath = nil; ///< Initial index path, where gesture begi
 
 - (void)refresh {
     __weak HRPGTableViewController *weakSelf = self;
-    [[HRPGManager sharedManager] fetchUser:^() {
-        [weakSelf.refreshControl endRefreshing];
-    } onError:^() {
+    [self.dataSource retrieveTasksWithCompleted:^{
         [weakSelf.refreshControl endRefreshing];
     }];
-    [[Repositories taskRepository] retrieveTasks];
 }
 
 - (NSPredicate *)getPredicate {

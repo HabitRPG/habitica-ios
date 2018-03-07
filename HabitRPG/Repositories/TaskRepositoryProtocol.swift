@@ -14,8 +14,6 @@ import Habitica_Database
 @objc
 protocol TaskRepositoryProtocol {
     
-    @objc
-    func retrieveTasks()
     
 }
 
