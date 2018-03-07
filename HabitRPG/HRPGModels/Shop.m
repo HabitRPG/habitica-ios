@@ -11,6 +11,7 @@
 @implementation Shop
 
 NSString *const MarketKey = @"market";
+NSString *const GearMarketKey = @"market-gear";
 NSString *const QuestsShopKey = @"questShop";
 NSString *const TimeTravelersShopKey = @"timeTravelersShop";
 NSString *const SeasonalShopKey = @"seasonalShop";

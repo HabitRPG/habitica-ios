@@ -773,6 +773,10 @@ NSIndexPath  *sourceIndexPath = nil; ///< Initial index path, where gesture begi
     return [[UITableViewDropProposal alloc] initWithDropOperation:UIDropOperationMove intent:UITableViewDropIntentInsertAtDestinationIndexPath];
 }
 
+- (void)tableView:(UITableView *)tableView performDropWithCoordinator:(id<UITableViewDropCoordinator>)coordinator NS_AVAILABLE_IOS(11.0) {
+    
+}
+
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
     [[HRPGManager sharedManager] moveTask:self.movedTask toPosition:[NSNumber numberWithInteger:destinationIndexPath.item] onSuccess:^() {
         self.userDrivenDataUpdate = NO;

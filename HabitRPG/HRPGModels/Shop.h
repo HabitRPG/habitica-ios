@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Shop : NSManagedObject
 
 extern NSString *const MarketKey;
+extern NSString *const GearMarketKey;
 extern NSString *const QuestsShopKey;
 extern NSString *const TimeTravelersShopKey;
 extern NSString *const SeasonalShopKey;

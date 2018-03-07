@@ -597,7 +597,7 @@ static dispatch_once_t onceToken;
         BOOL match = [pathMatcher matchesPath:[URL relativePath]
                          tokenizeQueryStrings:YES
                               parsedArguments:&argsDict];
-        if (match) {
+        if (match && ![argsDict[@"identifier"] isEqualToString:@"market-gear"]) {
             NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"ShopItem"];
             fetchRequest.predicate = [NSPredicate predicateWithFormat:@"category.shop.identifier == %@ && isSubscriberItem != YES", argsDict[@"identifier"]];
             return fetchRequest;
@@ -2239,8 +2239,36 @@ static dispatch_once_t onceToken;
     responseDescriptor = [RKResponseDescriptor
                           responseDescriptorWithMapping:shopMapping
                           method:RKRequestMethodGET
-                          pathPattern:@"shops/:shopUrl"
+                          pathPattern:@"shops/market"
                           keyPath:@"data"
+                          statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+    responseDescriptor = [RKResponseDescriptor
+                          responseDescriptorWithMapping:shopMapping
+                          method:RKRequestMethodGET
+                          pathPattern:@"shops/seasonal"
+                          keyPath:@"data"
+                          statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+    responseDescriptor = [RKResponseDescriptor
+                          responseDescriptorWithMapping:shopMapping
+                          method:RKRequestMethodGET
+                          pathPattern:@"shops/quests"
+                          keyPath:@"data"
+                          statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+    responseDescriptor = [RKResponseDescriptor
+                          responseDescriptorWithMapping:shopMapping
+                          method:RKRequestMethodGET
+                          pathPattern:@"shops/time-travelers"
+                          keyPath:@"data"
+                          statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+    responseDescriptor = [RKResponseDescriptor
+                          responseDescriptorWithMapping:shopCategoryMapping
+                          method:RKRequestMethodGET
+                          pathPattern:@"shops/market-gear"
+                          keyPath:@"data.categories"
                           statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
     
@@ -2911,10 +2939,16 @@ static dispatch_once_t onceToken;
         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
             NSError *executeError = nil;
             if ([groupType isEqualToString:@"party"]) {
-                Group *party = (Group *)[mappingResult dictionary][@"data"];
-                [self getUser].partyID = party.id;
+                Group *group = [mappingResult dictionary][@"data"];
+                if ([group isKindOfClass:[NSArray class]]) {
+                    NSArray *array = (NSArray *)group;
+                    if (array.count > 0) {
+                        group = array[0];
+                    }
+                }
+                [self getUser].partyID = group.id;
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"partyChanged"
-                                                                    object:party];
+                                                                    object:group];
             } else if ([groupType isEqualToString:@"guilds"]) {
                 NSArray *guilds = [mappingResult array];
                 for (NSObject *obj in guilds) {
@@ -5179,6 +5213,8 @@ static dispatch_once_t onceToken;
     NSString *url = @"shops/";
     if ([shopInventory isEqualToString:MarketKey]) {
         url = [url stringByAppendingString:@"market"];
+    } else if ([shopInventory isEqualToString:GearMarketKey]) {
+        url = [url stringByAppendingString:@"market-gear"];
     } else if ([shopInventory isEqualToString:QuestsShopKey]) {
         url = [url stringByAppendingString:@"quests"];
     } else if ([shopInventory isEqualToString:SeasonalShopKey]) {
