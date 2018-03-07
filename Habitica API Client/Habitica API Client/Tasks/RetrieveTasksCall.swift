@@ -12,7 +12,7 @@ import FunkyNetwork
 import ReactiveSwift
 
 public class RetrieveTasksCall: ResponseArrayCall<TaskProtocol, APITask> {
-    public init(configuration: ServerConfigurationProtocol = HRPGServerConfig.current, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "tasks.json")) {
-        super.init(configuration: configuration, httpMethod: "GET", endpoint: "tasks/user", postData: nil, stubHolder: stubHolder)
+    public init(stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "tasks.json")) {
+        super.init(httpMethod: "GET", endpoint: "tasks/user", postData: nil, stubHolder: stubHolder)
     }
 }

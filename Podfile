@@ -28,7 +28,6 @@ def reactive_pods
 end
 
 def test_pods
-  pod 'OHHTTPStubs'
   pod 'Quick', '~> 1.2.0'
   pod 'Nimble', '~> 7.0.0'
   pod 'iOSSnapshotTestCase'

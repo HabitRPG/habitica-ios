@@ -35,6 +35,8 @@
 		292DEE8D204F458B0086D5F7 /* HabitTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE8C204F458B0086D5F7 /* HabitTableViewDataSource.swift */; };
 		292DEEA5204F6F6C0086D5F7 /* DailyTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEEA4204F6F6C0086D5F7 /* DailyTableViewDataSource.swift */; };
 		292DEEA7204F6F8C0086D5F7 /* TodoTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEEA6204F6F8C0086D5F7 /* TodoTableViewDataSource.swift */; };
+		29323E1B2050532D00AC6D6F /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E1A2050532D00AC6D6F /* UserRepository.swift */; };
+		29323E1F2050563700AC6D6F /* NetworkErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E1E2050563700AC6D6F /* NetworkErrorHandler.swift */; };
 		293282141F389CC000D42961 /* SetupCustomizationItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293282131F389CC000D42961 /* SetupCustomizationItemView.swift */; };
 		293282161F389DBB00D42961 /* SetupCustomizationItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 293282151F389DBB00D42961 /* SetupCustomizationItemView.xib */; };
 		293282181F39E1A400D42961 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293282171F39E1A400D42961 /* WelcomeViewController.swift */; };
@@ -534,6 +536,8 @@
 		292DEE8C204F458B0086D5F7 /* HabitTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitTableViewDataSource.swift; sourceTree = "<group>"; };
 		292DEEA4204F6F6C0086D5F7 /* DailyTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTableViewDataSource.swift; sourceTree = "<group>"; };
 		292DEEA6204F6F8C0086D5F7 /* TodoTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewDataSource.swift; sourceTree = "<group>"; };
+		29323E1A2050532D00AC6D6F /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
+		29323E1E2050563700AC6D6F /* NetworkErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorHandler.swift; sourceTree = "<group>"; };
 		293282131F389CC000D42961 /* SetupCustomizationItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupCustomizationItemView.swift; sourceTree = "<group>"; };
 		293282151F389DBB00D42961 /* SetupCustomizationItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetupCustomizationItemView.xib; sourceTree = "<group>"; };
 		293282171F39E1A400D42961 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -1324,6 +1328,7 @@
 				298119AA1F50251300F9FB39 /* InventoryRepository.swift */,
 				29FC884B2010CC8A002B3D3F /* SocialRepository.swift */,
 				29028C382034ABAF00B7F704 /* TaskRepositoryImpl.swift */,
+				29323E1A2050532D00AC6D6F /* UserRepository.swift */,
 			);
 			path = Implementations;
 			sourceTree = "<group>";
@@ -1969,6 +1974,7 @@
 				D9CD2DD41BCAA6F700B1304B /* UIViewController+TutorialSteps.m */,
 				D96C85461DCCD8BC003E3616 /* UIWindow+VisibleController.h */,
 				D96C85471DCCD8BC003E3616 /* UIWindow+VisibleController.m */,
+				29323E1E2050563700AC6D6F /* NetworkErrorHandler.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -3037,7 +3043,7 @@
 				"${BUILT_PRODUCTS_DIR}/MRProgress/MRProgress.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/NSString+Emoji/NSString_Emoji.framework",
-				"${BUILT_PRODUCTS_DIR}/OHHTTPStubs-b1c8d455/OHHTTPStubs.framework",
+				"${BUILT_PRODUCTS_DIR}/OHHTTPStubs/OHHTTPStubs.framework",
 				"${BUILT_PRODUCTS_DIR}/PDKeychainBindingsController/PDKeychainBindingsController.framework",
 				"${BUILT_PRODUCTS_DIR}/PopupDialog/PopupDialog.framework",
 				"${BUILT_PRODUCTS_DIR}/RKValueTransformers/RKValueTransformers.framework",
@@ -3123,14 +3129,12 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Habitica Snapshots/Pods-Habitica Snapshots-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/OHHTTPStubs.default-Core-JSON-NSURLSession-OHPathHelpers/OHHTTPStubs.framework",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
 				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
 				"${BUILT_PRODUCTS_DIR}/iOSSnapshotTestCase/FBSnapshotTestCase.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OHHTTPStubs.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSnapshotTestCase.framework",
@@ -3180,14 +3184,12 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-HabiticaTests/Pods-HabiticaTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/OHHTTPStubs.default-Core-JSON-NSURLSession-OHPathHelpers/OHHTTPStubs.framework",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
 				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
 				"${BUILT_PRODUCTS_DIR}/iOSSnapshotTestCase/FBSnapshotTestCase.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OHHTTPStubs.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSnapshotTestCase.framework",
@@ -3351,6 +3353,7 @@
 				D9D17CD01E673CCC00AD9232 /* UIView-Extensions.swift in Sources */,
 				49A4646B1FCD18FD00E14A5D /* HRPGButtonViewModel.swift in Sources */,
 				29AAA15F1F2B596900029737 /* SpeechbubbleView.swift in Sources */,
+				29323E1B2050532D00AC6D6F /* UserRepository.swift in Sources */,
 				D979AD1A1AF3E70400D59FAE /* HRPGCustomizationsOverviewController.m in Sources */,
 				29FEB278202B491600EA245A /* Avatar.swift in Sources */,
 				D98F5AF21905DE86002F8223 /* HRPGPartyMembersViewController.m in Sources */,
@@ -3588,6 +3591,7 @@
 				298409DA203C8645003AD202 /* ChatMessageAvatar+CoreDataProperties.m in Sources */,
 				493ECBB71F47D7E10099B1FC /* HRPGGearSetItem.swift in Sources */,
 				49DCB7AC1F39239D0079FDD0 /* HRPGSimpleShopItemView.swift in Sources */,
+				29323E1F2050563700AC6D6F /* NetworkErrorHandler.swift in Sources */,
 				29A0FD79203DBDAD00590BDE /* ChatMessageLike+CoreDataClass.m in Sources */,
 				299BD6371F5457E100E22935 /* HabiticaIcons.swift in Sources */,
 				29B3FEAF1F9A33AB000B12CF /* APISettingsViewController.swift in Sources */,

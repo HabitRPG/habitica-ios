@@ -81,8 +81,6 @@ PODS:
     - MRProgress/Helper
   - Nimble (7.0.3)
   - NSString+Emoji (0.2.0)
-  - OHHTTPStubs (6.1.0):
-    - OHHTTPStubs/Default (= 6.1.0)
   - OHHTTPStubs/Core (6.1.0)
   - OHHTTPStubs/Default (6.1.0):
     - OHHTTPStubs/Core
@@ -172,7 +170,6 @@ DEPENDENCIES:
   - MRProgress
   - Nimble (~> 7.0.0)
   - NSString+Emoji
-  - OHHTTPStubs
   - PDKeychainBindingsController (~> 0.0.1)
   - pop
   - PopupDialog (from `https://github.com/Orderella/PopupDialog.git`, branch `development`)
@@ -259,6 +256,6 @@ SPEC CHECKSUMS:
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: f6d4c6ba6bb9a9604de97fa39fb36cddec153df0
+PODFILE CHECKSUM: 0bb22eff1db7e8e2cb61ec837af3522a3da986d8
 
 COCOAPODS: 1.4.0

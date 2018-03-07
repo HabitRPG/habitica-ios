@@ -12,6 +12,8 @@
 		292DEE7C204E372E0086D5F7 /* ChecklistItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE7B204E372E0086D5F7 /* ChecklistItemProtocol.swift */; };
 		292DEE86204E48A80086D5F7 /* ReminderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE85204E48A80086D5F7 /* ReminderProtocol.swift */; };
 		292DEEAD205038CB0086D5F7 /* TaskResponseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEEAC205038CB0086D5F7 /* TaskResponseProtocol.swift */; };
+		29323E1020504DA600AC6D6F /* UserProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E0F20504DA600AC6D6F /* UserProtocol.swift */; };
+		29323E1220504DCE00AC6D6F /* StatsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E1120504DCE00AC6D6F /* StatsProtocol.swift */; };
 		298FB9DA204D9404004DDACC /* Habitica_Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 298FB9D0204D9403004DDACC /* Habitica_Models.framework */; };
 		298FB9DF204D9404004DDACC /* Habitica_ModelsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298FB9DE204D9404004DDACC /* Habitica_ModelsTests.swift */; };
 		298FB9E1204D9404004DDACC /* Habitica_Models.h in Headers */ = {isa = PBXBuildFile; fileRef = 298FB9D3204D9403004DDACC /* Habitica_Models.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -34,6 +36,8 @@
 		292DEE7B204E372E0086D5F7 /* ChecklistItemProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistItemProtocol.swift; sourceTree = "<group>"; };
 		292DEE85204E48A80086D5F7 /* ReminderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderProtocol.swift; sourceTree = "<group>"; };
 		292DEEAC205038CB0086D5F7 /* TaskResponseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskResponseProtocol.swift; sourceTree = "<group>"; };
+		29323E0F20504DA600AC6D6F /* UserProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProtocol.swift; sourceTree = "<group>"; };
+		29323E1120504DCE00AC6D6F /* StatsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsProtocol.swift; sourceTree = "<group>"; };
 		298FB9D0204D9403004DDACC /* Habitica_Models.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Habitica_Models.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		298FB9D3204D9403004DDACC /* Habitica_Models.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Habitica_Models.h; sourceTree = "<group>"; };
 		298FB9D4204D9403004DDACC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -74,6 +78,15 @@
 			path = Tasks;
 			sourceTree = "<group>";
 		};
+		29323E0E20504D9900AC6D6F /* User */ = {
+			isa = PBXGroup;
+			children = (
+				29323E0F20504DA600AC6D6F /* UserProtocol.swift */,
+				29323E1120504DCE00AC6D6F /* StatsProtocol.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
 		298FB9C6204D9403004DDACC = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +108,7 @@
 		298FB9D2204D9403004DDACC /* Habitica Models */ = {
 			isa = PBXGroup;
 			children = (
+				29323E0E20504D9900AC6D6F /* User */,
 				298FB9D3204D9403004DDACC /* Habitica_Models.h */,
 				298FB9D4204D9403004DDACC /* Info.plist */,
 				292DEE33204D950E0086D5F7 /* Tasks */,
@@ -229,6 +243,8 @@
 				292DEEAD205038CB0086D5F7 /* TaskResponseProtocol.swift in Sources */,
 				292DEE5A204DAA000086D5F7 /* HabiticaModel.swift in Sources */,
 				298FB9EB204D940E004DDACC /* TaskProtocol.swift in Sources */,
+				29323E1020504DA600AC6D6F /* UserProtocol.swift in Sources */,
+				29323E1220504DCE00AC6D6F /* StatsProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

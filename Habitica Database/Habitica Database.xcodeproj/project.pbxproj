@@ -17,6 +17,7 @@
 		292DEE80204E3A000086D5F7 /* RealmTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE7F204E3A000086D5F7 /* RealmTag.swift */; };
 		292DEE84204E41AF0086D5F7 /* RealmChecklistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE83204E41AF0086D5F7 /* RealmChecklistItem.swift */; };
 		292DEE8A204E49600086D5F7 /* RealmReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE89204E49600086D5F7 /* RealmReminder.swift */; };
+		29323E1D2050537700AC6D6F /* UserLocalRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E1C2050537700AC6D6F /* UserLocalRepository.swift */; };
 		298FB9B6204D9338004DDACC /* Habitica_Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 298FB9AC204D9338004DDACC /* Habitica_Database.framework */; };
 		298FB9BB204D9338004DDACC /* Habitica_DatabaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298FB9BA204D9338004DDACC /* Habitica_DatabaseTests.swift */; };
 		298FB9BD204D9338004DDACC /* Habitica_Database.h in Headers */ = {isa = PBXBuildFile; fileRef = 298FB9AF204D9338004DDACC /* Habitica_Database.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -45,6 +46,7 @@
 		292DEE7F204E3A000086D5F7 /* RealmTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmTag.swift; sourceTree = "<group>"; };
 		292DEE83204E41AF0086D5F7 /* RealmChecklistItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmChecklistItem.swift; sourceTree = "<group>"; };
 		292DEE89204E49600086D5F7 /* RealmReminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmReminder.swift; sourceTree = "<group>"; };
+		29323E1C2050537700AC6D6F /* UserLocalRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocalRepository.swift; sourceTree = "<group>"; };
 		298FB9AC204D9338004DDACC /* Habitica_Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Habitica_Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		298FB9AF204D9338004DDACC /* Habitica_Database.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Habitica_Database.h; sourceTree = "<group>"; };
 		298FB9B0204D9338004DDACC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 			children = (
 				292DEE65204DCB010086D5F7 /* BaseLocalRepository.swift */,
 				292DEE67204DCCB40086D5F7 /* TaskLocalRepository.swift */,
+				29323E1C2050537700AC6D6F /* UserLocalRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -315,7 +318,6 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/../Pods/Target Support Files/Pods-Habitica DatabaseTests/Pods-Habitica DatabaseTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/OHHTTPStubs.default-Core-JSON-NSURLSession-OHPathHelpers/OHHTTPStubs.framework",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
 				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
 				"${BUILT_PRODUCTS_DIR}/iOSSnapshotTestCase/FBSnapshotTestCase.framework",
@@ -330,7 +332,6 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OHHTTPStubs.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSnapshotTestCase.framework",
@@ -394,6 +395,7 @@
 				292DEE84204E41AF0086D5F7 /* RealmChecklistItem.swift in Sources */,
 				292DEE6E204DD94E0086D5F7 /* ReactiveRealm.swift in Sources */,
 				292DEE6B204DCF2E0086D5F7 /* RealmTask.swift in Sources */,
+				29323E1D2050537700AC6D6F /* UserLocalRepository.swift in Sources */,
 				292DEE8A204E49600086D5F7 /* RealmReminder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
