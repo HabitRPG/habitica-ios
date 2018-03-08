@@ -15,7 +15,7 @@
 
 @property Shop *shop;
 
-- (NSFetchedResultsController *)fetchedShopItemResultsForIdentifier:(NSString *)identifier;
+- (NSFetchedResultsController *)fetchedShopItemResultsForIdentifier:(NSString *)identifier withGearCategory:(NSString *)gearCategory;
 - (void)fetchShopInformationForIdentifier:(NSString *)identifier;
 - (BOOL)shouldPromptToSubscribe;
 

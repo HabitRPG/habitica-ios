@@ -28,22 +28,26 @@
     }
 }
 
-- (NSFetchedResultsController *)fetchedShopItemResultsForIdentifier:(NSString *)identifier {
+- (NSFetchedResultsController *)fetchedShopItemResultsForIdentifier:(NSString *)identifier withGearCategory:(NSString *)gearCategory {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"ShopItem"
                                               inManagedObjectContext:[[HRPGManager sharedManager] getManagedObjectContext]];
     [fetchRequest setEntity:entity];
     [fetchRequest setFetchBatchSize:20];
     
-    NSString *predicateString = @"category.shop.identifier == %@";
+    NSString *predicateString = [NSString stringWithFormat:@"category.shop.identifier == '%@'", identifier];
+    if ([identifier isEqualToString:MarketKey]) {
+        predicateString = [NSString stringWithFormat:@"(category.shop.identifier == 'market' || (pinType == 'marketGear' && owned != true && category.identifier == '%@'))", gearCategory];
+    }
     if (![[HRPGManager sharedManager] getUser].subscriptionPlan.isActive) {
         predicateString = [predicateString stringByAppendingString:@" && (isSubscriberItem == nil || isSubscriberItem != YES)"];
     }
-    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:predicateString, identifier]];
+    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:predicateString]];
     
     NSSortDescriptor *indexDescriptor = [[NSSortDescriptor alloc] initWithKey:@"index" ascending:YES];
     NSSortDescriptor *categoryIndexDescriptor = [[NSSortDescriptor alloc] initWithKey:@"category.text" ascending:YES];
-    NSArray *sortDescriptors = @[ categoryIndexDescriptor, indexDescriptor ];
+    NSSortDescriptor *shopIdentifierDescriptor = [[NSSortDescriptor alloc] initWithKey:@"category.shop.identifier" ascending:YES];
+    NSArray *sortDescriptors = @[ shopIdentifierDescriptor, categoryIndexDescriptor, indexDescriptor ];
     
     [fetchRequest setSortDescriptors:sortDescriptors];
     

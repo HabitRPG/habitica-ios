@@ -526,6 +526,7 @@
 		29255E4C1F3E25910094A3E3 /* CGRect-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect-Extensions.swift"; sourceTree = "<group>"; };
 		292DEE3B204D9D290086D5F7 /* Habitica_Models.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_Models.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		292DEE3D204D9D360086D5F7 /* Habitica_Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		29323E2E2051C9A500AC6D6F /* Habitica 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Habitica 5.xcdatamodel"; sourceTree = "<group>"; };
 		292DEE4D204DA1830086D5F7 /* Habitica_API_Client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_API_Client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		292DEE52204DA5B40086D5F7 /* Repositories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repositories.swift; sourceTree = "<group>"; };
 		292DEE57204DA6E00086D5F7 /* TaskRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRepositoryProtocol.swift; sourceTree = "<group>"; };
@@ -2083,6 +2084,8 @@
 		D9BB45DB1E7AE23E0002AE2E /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				D9BB45DC1E7AE5240002AE2E /* ConfigRepository.swift */,
+				29ED1AFA1F338E5D005A3895 /* SetupCustomizationRepository.swift */,
 				292DEE54204DA5D40086D5F7 /* Implementations */,
 				292DEE52204DA5B40086D5F7 /* Repositories.swift */,
 				292DEE57204DA6E00086D5F7 /* TaskRepositoryProtocol.swift */,
@@ -4289,12 +4292,13 @@
 		29E163072008E7B600685640 /* Habitica.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				29323E2E2051C9A500AC6D6F /* Habitica 5.xcdatamodel */,
 				298409CE203C8617003AD202 /* Habitica 4.xcdatamodel */,
 				49B87D8F201BA88C00CA1A75 /* Habitica 3.xcdatamodel */,
 				29FC885020121771002B3D3F /* Habitica 2.xcdatamodel */,
 				29E163082008E7B600685640 /* Habitica.xcdatamodel */,
 			);
-			currentVersion = 298409CE203C8617003AD202 /* Habitica 4.xcdatamodel */;
+			currentVersion = 29323E2E2051C9A500AC6D6F /* Habitica 5.xcdatamodel */;
 			path = Habitica.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

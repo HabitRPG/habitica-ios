@@ -11,6 +11,7 @@ import UIKit
 @objc protocol HRPGShopCollectionViewDataSourceDelegate {
     func didSelectItem(_ item: ShopItem?)
     func scrollViewDidScroll(_ scrollView: UIScrollView)
+    func showGearSelection()
 }
 
 class HRPGShopCollectionViewDataSource: HRPGFetchedResultsCollectionViewDataSource {
@@ -19,14 +20,40 @@ class HRPGShopCollectionViewDataSource: HRPGFetchedResultsCollectionViewDataSour
     @objc var ownedItems = [String: Item]()
     @objc var pinnedItems = [String: InAppReward]()
     
+    @objc var selectedGearCategory: String?
+    
     // MARK: Collection view data source and delegate methods
     
     func titleFor(section: Int) -> String? {
         return fetchedResultsController?.sections?[section].name
     }
     
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        if hasGearSection() {
+            return super.numberOfSections(in: collectionView)
+        } else {
+            return super.numberOfSections(in: collectionView) + 1
+        }
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if hasGearSection() {
+            return super.collectionView(collectionView, numberOfItemsInSection: section)
+        } else {
+            if section == 0 {
+                return 0
+            } else {
+                return super.collectionView(collectionView, numberOfItemsInSection: section-1)
+            }
+        }
+    }
+    
     func itemAt(indexPath: IndexPath) -> ShopItem? {
-        return fetchedResultsController?.sections?[indexPath.section].objects?[indexPath.item] as? ShopItem
+        if hasGearSection() {
+            return fetchedResultsController?.sections?[indexPath.section].objects?[indexPath.item] as? ShopItem
+        } else {
+            return fetchedResultsController?.sections?[indexPath.section-1].objects?[indexPath.item] as? ShopItem
+        }
     }
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let view = collectionView.dequeueReusableSupplementaryView(
@@ -35,7 +62,20 @@ class HRPGShopCollectionViewDataSource: HRPGFetchedResultsCollectionViewDataSour
             ) as? HRPGShopSectionHeaderCollectionReusableView
         
         if let headerView = view {
-            headerView.titleLabel.text = titleFor(section: indexPath.section)
+            headerView.gearCategoryLabel.isHidden = true
+            if indexPath.section == 0 {
+                headerView.titleLabel.text = NSLocalizedString("Class Equipment", comment: "")
+                headerView.gearCategoryLabel.text = selectedGearCategory?.capitalized
+                headerView.gearCategoryLabel.isHidden = false
+                headerView.onGearCategoryLabelTapped = {[weak self] in
+                    self?.delegate?.showGearSelection()
+                }
+            } else if hasGearSection() {
+                headerView.titleLabel.text = titleFor(section: indexPath.section)
+            } else {
+                headerView.titleLabel.text = titleFor(section: indexPath.section-1)
+            }
+            
             return headerView
         }
         return UICollectionReusableView()
@@ -63,5 +103,14 @@ class HRPGShopCollectionViewDataSource: HRPGFetchedResultsCollectionViewDataSour
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         delegate?.scrollViewDidScroll(scrollView)
+    }
+    
+    private func hasGearSection() -> Bool {
+        if let firstSection = fetchedResultsController?.sections?.first {
+            if let firstObject = firstSection.objects?.first as? ShopItem {
+                return firstObject.pinType == "marketGear"
+            }
+        }
+        return false
     }
 }

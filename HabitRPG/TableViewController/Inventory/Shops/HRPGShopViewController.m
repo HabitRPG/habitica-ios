@@ -27,6 +27,8 @@
 @property NSIndexPath *selectedIndex;
 @property BOOL insetWasSetup;
 
+@property NSString *selectedGearCategory;
+
 @end
 
 @implementation HRPGShopViewController
@@ -43,8 +45,13 @@
     
     [self setupCollectionView];
     
+    self.user = [[HRPGManager sharedManager] getUser];
+    
+    self.selectedGearCategory = self.user.hclass;
+    
+    self.dataSource.selectedGearCategory = self.selectedGearCategory;
     self.dataSource.fetchedResultsDelegate = self;
-    self.dataSource.fetchedResultsController = [self.viewModel fetchedShopItemResultsForIdentifier:self.shopIdentifier];
+    self.dataSource.fetchedResultsController = [self.viewModel fetchedShopItemResultsForIdentifier:self.shopIdentifier withGearCategory:self.selectedGearCategory];
     
     [self refresh];
 }
@@ -53,8 +60,6 @@
     [super viewDidAppear:animated];
     
     [self scrollToTop];
-    
-    self.user = [[HRPGManager sharedManager] getUser];
     
     [self.user addObserver:self forKeyPath:@"gold" options:0 context:NULL];
     [self.user addObserver:self forKeyPath:@"balance" options:0 context:NULL];
@@ -71,6 +76,9 @@
 - (void)refresh {
     [self setupShop];
     [[HRPGManager sharedManager] fetchShopInventory:self.shopIdentifier onSuccess:^() {
+        if ([self.shopIdentifier isEqualToString:MarketKey]) {
+            [[HRPGManager sharedManager] fetchShopInventory:GearMarketKey onSuccess:nil onError:nil];
+        }
         [self setupShop];
     } onError:nil];
 }
@@ -83,7 +91,7 @@
         
         if ([self.viewModel shouldPromptToSubscribe]) [self configureEmpty];
     }
-    self.dataSource.fetchedResultsController = [self.viewModel fetchedShopItemResultsForIdentifier:self.shopIdentifier];
+    self.dataSource.fetchedResultsController = [self.viewModel fetchedShopItemResultsForIdentifier:self.shopIdentifier withGearCategory:self.selectedGearCategory];
     [self.collectionView reloadData];
 }
 
@@ -257,6 +265,28 @@
 - (HRPGShopBannerView *)shopBannerView {
     if (!_shopBannerView) _shopBannerView = [[HRPGShopBannerView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 165)];
     return _shopBannerView;
+}
+
+- (void)showGearSelection {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    for (NSString *title in @[@"warrior", @"mage", @"healer", @"rogue", @"none"]) {
+        UIAlertAction *action = [UIAlertAction actionWithTitle:[title capitalizedString] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self changeSelectedGearCategory:title];
+        }];
+        [alertController addAction:action];
+    }
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", "") style:UIAlertActionStyleCancel handler:nil];
+    [alertController addAction:cancelAction];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
+- (void)changeSelectedGearCategory:(NSString *)newGearCategory {
+    self.selectedGearCategory = newGearCategory;
+    self.dataSource.selectedGearCategory = newGearCategory;
+    self.dataSource.fetchedResultsController = [self.viewModel fetchedShopItemResultsForIdentifier:self.shopIdentifier withGearCategory:self.selectedGearCategory];
+    [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
 }
 
 @end
