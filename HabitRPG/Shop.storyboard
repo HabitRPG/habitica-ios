@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="SK0-Yv-8jC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="SK0-Yv-8jC">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -30,13 +30,13 @@
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JB4-vT-m2S">
-                                    <rect key="frame" x="0.0" y="15" width="42" height="21"/>
+                                    <rect key="frame" x="8" y="15" width="313.5" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AzB-B7-6g7">
-                                    <rect key="frame" x="-8" y="-8" width="391" height="1"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.12206375838926174" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="0.5" id="TaC-P2-5gF"/>
@@ -45,16 +45,41 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <label opaque="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="88E-6b-fM7" customClass="PaddedLabel" customModule="Habitica" customModuleProvider="target">
+                                    <rect key="frame" x="329.5" y="9.5" width="37.5" height="32"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" priority="500" constant="50" id="Mgw-hB-buF"/>
+                                        <constraint firstAttribute="height" constant="32" id="ooN-tF-bxF"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <color key="textColor" red="0.6058621407" green="0.38462612029999999" blue="0.99835687880000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="2"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                            <color key="value" red="0.6058621407" green="0.38462612029999999" blue="0.99835687880000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                            <real key="value" value="1"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </label>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="leadingMargin" secondItem="JB4-vT-m2S" secondAttribute="leading" id="Cm8-Wa-rp7"/>
                                 <constraint firstItem="JB4-vT-m2S" firstAttribute="centerY" secondItem="70u-KL-mp3" secondAttribute="centerY" id="IJl-Sm-txf"/>
                                 <constraint firstItem="AzB-B7-6g7" firstAttribute="leading" secondItem="70u-KL-mp3" secondAttribute="leadingMargin" constant="-8" id="Mu0-c0-150"/>
+                                <constraint firstItem="88E-6b-fM7" firstAttribute="leading" secondItem="JB4-vT-m2S" secondAttribute="trailing" constant="8" id="PZm-be-HNy"/>
+                                <constraint firstItem="88E-6b-fM7" firstAttribute="centerY" secondItem="70u-KL-mp3" secondAttribute="centerY" id="it3-LJ-XGQ"/>
                                 <constraint firstAttribute="trailingMargin" secondItem="AzB-B7-6g7" secondAttribute="trailing" constant="-8" id="jop-Yy-JnH"/>
                                 <constraint firstItem="AzB-B7-6g7" firstAttribute="top" secondItem="70u-KL-mp3" secondAttribute="topMargin" constant="-8" id="kg7-3O-3UJ"/>
+                                <constraint firstItem="88E-6b-fM7" firstAttribute="trailing" secondItem="70u-KL-mp3" secondAttribute="trailingMargin" id="scW-uX-qA8"/>
                             </constraints>
                             <connections>
+                                <outlet property="gearCategoryLabel" destination="88E-6b-fM7" id="b7b-Z2-cVa"/>
                                 <outlet property="titleLabel" destination="JB4-vT-m2S" id="HIC-jy-x7H"/>
                             </connections>
                         </collectionReusableView>

@@ -2226,7 +2226,7 @@ static dispatch_once_t onceToken;
                                                                     toKeyPath:@"categories"
                                                                   withMapping:shopCategoryMapping]];
     RKEntityMapping *shopItemMapping = [RKEntityMapping mappingForEntityForName:@"ShopItem" inManagedObjectStore:managedObjectStore];
-    [shopItemMapping addAttributeMappingsFromArray:@[@"text", @"key", @"notes", @"type", @"value", @"currency", @"locked", @"purchaseType", @"path", @"pinType"]];
+    [shopItemMapping addAttributeMappingsFromArray:@[@"text", @"key", @"notes", @"type", @"value", @"currency", @"locked", @"purchaseType", @"path", @"pinType", @"owned", @"pinned"]];
     [shopItemMapping addAttributeMappingsFromDictionary:@{@"@metadata.mapping.collectionIndex": @"index",
                                                           @"class": @"imageName",
                                                           @"unlockCondition.condition": @"unlockCondition",

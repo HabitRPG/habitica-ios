@@ -10,5 +10,20 @@ import UIKit
 
 class HRPGShopSectionHeaderCollectionReusableView: UICollectionReusableView {
     @IBOutlet weak var titleLabel: UILabel!
-        
+    @IBOutlet weak var gearCategoryLabel: PaddedLabel!
+    
+    var onGearCategoryLabelTapped: (() -> Void)?
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        gearCategoryLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(gearCategoryLabelTapped)))
+        gearCategoryLabel.horizontalPadding = 8
+    }
+    
+    @objc
+    private func gearCategoryLabelTapped() {
+        if let action = onGearCategoryLabelTapped {
+            action()
+        }
+    }
 }

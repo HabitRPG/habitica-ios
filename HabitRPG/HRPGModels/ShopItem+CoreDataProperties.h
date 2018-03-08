@@ -32,6 +32,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSString *type;
 @property (nullable, nonatomic, copy) NSString *unlockCondition;
 @property (nullable, nonatomic, copy) NSNumber *value;
+@property (nullable, nonatomic, copy) NSNumber *owned;
+@property (nullable, nonatomic, copy) NSNumber *pinned;
 @property (nullable, nonatomic, copy) NSDate *lastPurchased;
 @property (nullable, nonatomic, retain) ShopCategory *category;
 
