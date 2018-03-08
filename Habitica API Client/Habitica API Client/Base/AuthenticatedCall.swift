@@ -11,6 +11,7 @@ import FunkyNetwork
 import ReactiveSwift
 
 public class AuthenticatedCall: JsonNetworkCall {
+    public static var errorHandler: NetworkErrorHandler?
     let disposable = ScopedDisposable(CompositeDisposable())
     fileprivate static let apiKeyHeader = "x-api-key"
     fileprivate static let apiUserIdHeader = "x-api-user"
@@ -18,12 +19,14 @@ public class AuthenticatedCall: JsonNetworkCall {
     public override init(configuration: ServerConfigurationProtocol = HabiticaServerConfig.current, httpMethod: String, httpHeaders: Dictionary<String, String>? = AuthenticatedCall.jsonHeaders(), endpoint: String, postData: Data?, stubHolder: StubHolderProtocol?) {
         super.init(configuration: configuration, httpMethod: httpMethod, httpHeaders: httpHeaders, endpoint: endpoint, postData: postData, stubHolder: stubHolder)
         
+        setupErrorHandler()
+        
         #if DEBUG
             disposable.inner.add(serverErrorSignal.observeValues( { error in
-                print(error.localizedDescription)
+                print(Date().debugDescription, "ERROR: ", error.localizedDescription)
             }))
             disposable.inner.add(httpResponseSignal.observeValues({[weak self] (response) in
-                print("Response:", httpMethod, self?.urlString(endpoint) ?? "", response.statusCode)
+                print(Date().debugDescription, "Response:", httpMethod, self?.urlString(endpoint) ?? "", response.statusCode)
             }))
         #endif
     }
@@ -39,9 +42,13 @@ public class AuthenticatedCall: JsonNetworkCall {
     
     public override func fire() {
         #if DEBUG
-            print("Network Call:", httpMethod, urlString(endpoint))
+            print(Date().debugDescription, "Network Call:", httpMethod, urlString(endpoint))
         #endif
         super.fire()
+    }
+    
+    func setupErrorHandler() {
+        AuthenticatedCall.errorHandler?.observe(signal: serverErrorSignal)
     }
     
 }

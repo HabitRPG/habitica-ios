@@ -9,16 +9,7 @@
 import Foundation
 import ReactiveSwift
 import Result
-
-public protocol ErrorMessage {
-    var message: String { get }
-    var forCode: Int { get }
-}
-
-public protocol NetworkErrorHandler {
-    static var errorMessages: [ErrorMessage]? { get }
-    static func handle(error: NSError)
-}
+import Habitica_API_Client
 
 public struct DefaultServerUnavailableErrorMessage: ErrorMessage {
     public let message: String = "The server is unavailable! Try again in a bit. If this keeps happening, please let us know!"
@@ -37,20 +28,13 @@ public struct DefaultOfflineErrorMessage: ErrorMessage {
 
 class HabiticaNetworkErrorHandler: NetworkErrorHandler {
     public static let errorMessages: [ErrorMessage]? = [DefaultServerUnavailableErrorMessage(), DefaultServerIssueErrorMessage(), DefaultOfflineErrorMessage()]
-
-    static let shared = HabiticaNetworkErrorHandler()
-    
     let disposable = ScopedDisposable(CompositeDisposable())
-
-    func observe(errorSignal: Signal<NSError, NoError>) {
-        disposable.inner.add(errorSignal.observeValues({ error in
-            HabiticaNetworkErrorHandler.handle(error: error)
-        }))
-    }
     
-    public static func handle(error: NSError) {
+    public static func handle(error: NSError, message: String?) {
         if let errorMessage = errorMessageForCode(code: error.code) {
             self.notify(message: errorMessage.message)
+        } else if let message = message {
+            self.notify(message: message)
         } else {
             self.notify(message: error.localizedDescription)
         }

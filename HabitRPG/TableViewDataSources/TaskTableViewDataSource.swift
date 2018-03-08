@@ -11,14 +11,8 @@ import Habitica_Models
 
 @objc
 class TaskTableViewDataSource: BaseReactiveDataSource, UITableViewDataSource {
-
-    @objc weak var viewController: HRPGTableViewController? {
-        didSet {
-            tableView = viewController?.tableView
-        }
-    }
     
-    weak var tableView: UITableView? {
+    @objc weak var tableView: UITableView? {
         didSet {
             tableView?.dataSource = self
             tableView?.reloadData()

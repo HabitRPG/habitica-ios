@@ -17,7 +17,6 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     
     func retrieveUser() -> Signal<UserProtocol?, NoError> {
         let call = RetrieveUserCall()
-        HabiticaNetworkErrorHandler.shared.observe(errorSignal: call.serverErrorSignal)
         call.fire()
         return call.objectSignal
     }

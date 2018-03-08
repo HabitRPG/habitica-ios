@@ -16,7 +16,6 @@
 #import <POP/POP.h>
 #import "UIColor+Habitica.h"
 #import "Habitica-Swift.h"
-#import "HabiticaObjcModelBridge.h"
 
 @interface HRPGTableViewController ()<UISearchBarDelegate, UITableViewDragDelegate, UITableViewDropDelegate>
 @property NSString *readableName;
@@ -44,7 +43,7 @@ NSIndexPath  *sourceIndexPath = nil; ///< Initial index path, where gesture begi
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.dataSource.viewController = self;
+    self.dataSource.tableView = self.tableView;
     
     UINib *nib = [UINib nibWithNibName:[self getCellNibName] bundle:nil];
     [[self tableView] registerNib:nib forCellReuseIdentifier:@"Cell"];

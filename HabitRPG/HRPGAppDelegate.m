@@ -43,7 +43,7 @@
     [self.swiftAppDelegate setupAnalytics];
     [self.swiftAppDelegate setupPopups];
     [self.swiftAppDelegate setupPurchaseHandling];
-    [self.swiftAppDelegate setupNetworkAuthentication];
+    [self.swiftAppDelegate setupNetworkClient];
     [self.swiftAppDelegate setupDatabase];
     
     [[UIView appearanceWhenContainedInInstancesOfClasses:@[[UIAlertController class]]] setTintColor:[UIColor purple400]];

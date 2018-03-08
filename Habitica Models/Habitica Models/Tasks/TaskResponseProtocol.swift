@@ -9,7 +9,6 @@
 import Foundation
 
 public protocol TaskResponseProtocol {
-    
     var delta: Float? { get set }
     var level: Int? { get set }
     var gold: Float? { get set }

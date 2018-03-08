@@ -17,7 +17,6 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
     
     func retrieveTasks() -> Signal<[TaskProtocol]?, NoError> {
         let call = RetrieveTasksCall()
-        HabiticaNetworkErrorHandler.shared.observe(errorSignal: call.serverErrorSignal)
         call.fire()
         return call.arraySignal.on(value: {[weak self] tasks in
             if let tasks = tasks {
@@ -32,7 +31,6 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
     
     func score(task: TaskProtocol, direction: TaskScoringDirection) -> Signal<TaskResponseProtocol?, NoError> {
         let call = ScoreTaskCall(task: task, direction: direction)
-        HabiticaNetworkErrorHandler.shared.observe(errorSignal: call.serverErrorSignal)
         call.fire()
         return call.objectSignal.on(value: {[weak self] taskResponse in
             if task.type != "reward", let taskId = task.id, let response = taskResponse {

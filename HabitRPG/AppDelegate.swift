@@ -54,9 +54,10 @@ class HabiticaAppDelegate: NSObject {
     }
     
     @objc
-    func setupNetworkAuthentication() {
+    func setupNetworkClient() {
         NetworkAuthenticationManager.shared.currentUserId = AuthenticationManager.shared.currentUserId
         NetworkAuthenticationManager.shared.currentUserKey = AuthenticationManager.shared.currentUserKey
+        AuthenticatedCall.errorHandler = HabiticaNetworkErrorHandler()
     }
     
     @objc
