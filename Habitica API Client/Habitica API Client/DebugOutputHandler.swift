@@ -33,7 +33,7 @@ class DebugOutputHandler {
                 print(Date().debugDescription, "ERROR: ", error.localizedDescription)
             }))
             disposable.inner.add(call.httpResponseSignal.observeValues({[weak self] (response) in
-                print(Date().debugDescription, "API Client <<<<", self?.httpMethod ?? "", self?.url ?? "", response.statusCode, response.expectedContentLength, "bytes")
+                print(Date().debugDescription, "API Client <<<<", self?.httpMethod ?? "", self?.url ?? "", response.statusCode, "\(response.expectedContentLength)bytes")
             }))
         #endif
     }
