@@ -36,17 +36,31 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
     func score(task: TaskProtocol, direction: TaskScoringDirection) -> Signal<TaskResponseProtocol?, NoError> {
         let call = ScoreTaskCall(task: task, direction: direction)
         call.fire()
-        return call.objectSignal.on(value: {[weak self] taskResponse in
-            if task.type != "reward", let taskId = task.id, let response = taskResponse {
-                self?.localRepository.updateScoredTask(id: taskId, direction: direction, response: response)
+        return call.objectSignal.withLatest(from: localRepository.getUserStats(id: AuthenticationManager.shared.currentUserId ?? "")
+            .flatMapError({ (_) in
+            return SignalProducer.empty
+        })).on(value: {[weak self] (taskResponse, stats) in
+            guard let response = taskResponse else {
+                return
             }
-            let toastView = ToastView(healthDiff: taskResponse?.health ?? 0,
-                                      magicDiff: taskResponse?.magic ?? 0,
-                                      expDiff: taskResponse?.experience ?? 0,
-                                      goldDiff: taskResponse?.gold ?? 0,
+            if task.type != "reward", let taskId = task.id {
+                self?.localRepository.update(taskId: taskId, stats: stats, direction: direction, response: response)
+            }
+            
+            let healthDiff = (response.health ?? 0) - stats.health
+            let magicDiff = (response.magic ?? 0) - stats.mana
+            let expDiff = (response.experience ?? 0) - stats.experience
+            let goldDiff = (response.gold ?? 0) - stats.gold
+            
+            let toastView = ToastView(healthDiff: healthDiff,
+                                      magicDiff: magicDiff,
+                                      expDiff: expDiff,
+                                      goldDiff: goldDiff,
                                       questDamage: 0,
-                                      background: .green)
+                                      background: healthDiff >= 0 ? .green : .red)
             ToastManager.show(toast: toastView)
+        }).map({ (response, _) in
+            return response
         })
     }
 }

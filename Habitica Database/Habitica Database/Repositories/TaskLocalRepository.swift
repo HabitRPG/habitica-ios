@@ -45,8 +45,14 @@ public class TaskLocalRepository: BaseLocalRepository {
         })
     }
     
-    public func updateScoredTask(id: String, direction: TaskScoringDirection, response: TaskResponseProtocol) {
-        getTask(id: id).take(first: 1).skipNil().on(value: { realmTask in
+    public func getUserStats(id: String) -> SignalProducer<StatsProtocol, ReactiveSwiftRealmError> {
+        return RealmUser.findBy(query: "id == '\(id)'").reactive().map({ (users, changes) -> StatsProtocol? in
+            return users.first?.stats
+        }).skipNil()
+    }
+    
+    public func update(taskId: String, stats: StatsProtocol, direction: TaskScoringDirection, response: TaskResponseProtocol) {
+        getTask(id: taskId).take(first: 1).skipNil().on(value: { realmTask in
             try? self.realm?.write {
                 if let delta = response.delta {
                     realmTask.value = realmTask.value + delta
@@ -64,7 +70,11 @@ public class TaskLocalRepository: BaseLocalRepository {
                         realmTask.counterDown += 1
                     }
                 }
-
+                
+                stats.health = response.health ?? 0
+                stats.experience = response.experience ?? 0
+                stats.mana = response.magic ?? 0
+                stats.gold = response.gold ?? 0
             }
         }).start()
     }
