@@ -11,7 +11,7 @@ import Habitica_Models
 
 class APIStats: StatsProtocol, Codable {
     var health: Float = 0
-    var maxHealth: Float = 0
+    var maxHealth: Float = 50
     var mana: Float = 0
     var maxMana: Float = 0
     var experience: Float = 0
@@ -23,4 +23,22 @@ class APIStats: StatsProtocol, Codable {
     var perception: Int = 0
     var points: Int = 0
     var habitClass: String?
+    var gold: Float = 0
+    
+    enum CodingKeys: String, CodingKey {
+        case health = "hp"
+        case maxHealth = "maxHealth"
+        case mana = "mp"
+        case maxMana = "maxMP"
+        case experience = "exp"
+        case toNextLevel
+        case level = "lvl"
+        case strength = "str"
+        case intelligence = "int"
+        case constitution = "con"
+        case perception = "per"
+        case points
+        case habitClass = "class"
+        case gold = "gp"
+    }
 }

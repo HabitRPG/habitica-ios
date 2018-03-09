@@ -37,6 +37,8 @@
 		292DEEA7204F6F8C0086D5F7 /* TodoTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEEA6204F6F8C0086D5F7 /* TodoTableViewDataSource.swift */; };
 		29323E1B2050532D00AC6D6F /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E1A2050532D00AC6D6F /* UserRepository.swift */; };
 		29323E1F2050563700AC6D6F /* NetworkErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E1E2050563700AC6D6F /* NetworkErrorHandler.swift */; };
+		29323E352052008800AC6D6F /* UserTopHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E342052008800AC6D6F /* UserTopHeader.swift */; };
+		29323E4920521FD500AC6D6F /* ContributorProtocol-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E4820521FD500AC6D6F /* ContributorProtocol-Extensions.swift */; };
 		293282141F389CC000D42961 /* SetupCustomizationItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293282131F389CC000D42961 /* SetupCustomizationItemView.swift */; };
 		293282161F389DBB00D42961 /* SetupCustomizationItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 293282151F389DBB00D42961 /* SetupCustomizationItemView.xib */; };
 		293282181F39E1A400D42961 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293282171F39E1A400D42961 /* WelcomeViewController.swift */; };
@@ -526,7 +528,6 @@
 		29255E4C1F3E25910094A3E3 /* CGRect-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect-Extensions.swift"; sourceTree = "<group>"; };
 		292DEE3B204D9D290086D5F7 /* Habitica_Models.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_Models.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		292DEE3D204D9D360086D5F7 /* Habitica_Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		29323E2E2051C9A500AC6D6F /* Habitica 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Habitica 5.xcdatamodel"; sourceTree = "<group>"; };
 		292DEE4D204DA1830086D5F7 /* Habitica_API_Client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_API_Client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		292DEE52204DA5B40086D5F7 /* Repositories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repositories.swift; sourceTree = "<group>"; };
 		292DEE57204DA6E00086D5F7 /* TaskRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRepositoryProtocol.swift; sourceTree = "<group>"; };
@@ -539,6 +540,9 @@
 		292DEEA6204F6F8C0086D5F7 /* TodoTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewDataSource.swift; sourceTree = "<group>"; };
 		29323E1A2050532D00AC6D6F /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		29323E1E2050563700AC6D6F /* NetworkErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorHandler.swift; sourceTree = "<group>"; };
+		29323E2E2051C9A500AC6D6F /* Habitica 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Habitica 5.xcdatamodel"; sourceTree = "<group>"; };
+		29323E342052008800AC6D6F /* UserTopHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTopHeader.swift; sourceTree = "<group>"; };
+		29323E4820521FD500AC6D6F /* ContributorProtocol-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContributorProtocol-Extensions.swift"; sourceTree = "<group>"; };
 		293282131F389CC000D42961 /* SetupCustomizationItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupCustomizationItemView.swift; sourceTree = "<group>"; };
 		293282151F389DBB00D42961 /* SetupCustomizationItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetupCustomizationItemView.xib; sourceTree = "<group>"; };
 		293282171F39E1A400D42961 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -1323,8 +1327,6 @@
 		292DEE54204DA5D40086D5F7 /* Implementations */ = {
 			isa = PBXGroup;
 			children = (
-				D9BB45DC1E7AE5240002AE2E /* ConfigRepository.swift */,
-				29ED1AFA1F338E5D005A3895 /* SetupCustomizationRepository.swift */,
 				29FC884D2010CCC2002B3D3F /* BaseRepository.swift */,
 				298119AA1F50251300F9FB39 /* InventoryRepository.swift */,
 				29FC884B2010CC8A002B3D3F /* SocialRepository.swift */,
@@ -1792,6 +1794,7 @@
 				D9D17CCF1E673CCC00AD9232 /* UIView-Extensions.swift */,
 				491C6E5A2020FE64005030A2 /* Challenge-Extensions.swift */,
 				29FD8AA6203DA42A0094322E /* NSLayoutConstraint-Extensions.swift */,
+				29323E4820521FD500AC6D6F /* ContributorProtocol-Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -2135,6 +2138,7 @@
 				D9FC1A7D1BC28F4700B97D23 /* HRPGTypingLabel.m */,
 				D9660D761AB248030084CE37 /* HRPGUserTopHeader.h */,
 				D9660D771AB248030084CE37 /* HRPGUserTopHeader.m */,
+				29323E342052008800AC6D6F /* UserTopHeader.swift */,
 				D91CCACF1BCF11CC001C6A0C /* HRPGUserTopHeader.xib */,
 				29701FE31F56C2200097BBCC /* IconLabel.swift */,
 				D9BB45D91E79A02C0002AE2E /* LabeledCheckboxView.swift */,
@@ -3543,6 +3547,7 @@
 				D9709A541E8051DC0005F35B /* TaskRepeatablesSummaryInteractor.swift in Sources */,
 				D98F5DC91C6A45800035CBEC /* ChatMessageLike+CoreDataProperties.m in Sources */,
 				D98F5AEF1905C090002F8223 /* HRPGQuestParticipantsViewController.m in Sources */,
+				29323E352052008800AC6D6F /* UserTopHeader.swift in Sources */,
 				D98F5AEC190566CA002F8223 /* User.m in Sources */,
 				293BB4A51FD078EC003B6F4F /* StatsSliderView.swift in Sources */,
 				49EE3FD8201908AB00CD7608 /* ChallengeButtonStyleProvider.swift in Sources */,
@@ -3628,6 +3633,7 @@
 				D98AD5511943904F00AF6174 /* HatchingPotion.m in Sources */,
 				D97C71F018F32FEF0089FDC6 /* MetaReward.m in Sources */,
 				49DCB79B1F3422440079FDD0 /* HRPGBuyItemModalViewController.swift in Sources */,
+				29323E4920521FD500AC6D6F /* ContributorProtocol-Extensions.swift in Sources */,
 				D9D96F00194B87FF00796FE7 /* HRPGPetMasterViewController.m in Sources */,
 				D97C71DE18EC98A40089FDC6 /* QuestCollect.m in Sources */,
 				29ED1AFF1F339ACF005A3895 /* UIColor-Extensions.swift in Sources */,

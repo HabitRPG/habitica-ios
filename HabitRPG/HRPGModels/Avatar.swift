@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Habitica_Models
 
 @objc
 protocol Avatar {
@@ -274,3 +275,4 @@ extension ChatMessageAvatar: Avatar {
         return false
     }
 }
+

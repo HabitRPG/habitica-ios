@@ -27,6 +27,7 @@ class TaskTableViewDataSource: BaseReactiveDataSource, UITableViewDataSource {
     
     @objc var predicate: NSPredicate
     
+    internal let userRepository = UserRepository()
     internal let repository = TaskRepository()
     
     @objc var tasks = [TaskProtocol]()
@@ -56,7 +57,7 @@ class TaskTableViewDataSource: BaseReactiveDataSource, UITableViewDataSource {
     
     @objc
     func retrieveTasks(completed: (() -> Void)?) {
-        disposable.inner.add(repository.retrieveTasks().observeCompleted {
+        disposable.inner.add(userRepository.retrieveUser().observeCompleted {
             if let action = completed {
                 action()
             }

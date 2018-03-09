@@ -8,6 +8,7 @@
 
 import Foundation
 
+@objc
 public protocol StatsProtocol {
     var health: Float { get set }
     var maxHealth: Float { get set }
@@ -22,4 +23,5 @@ public protocol StatsProtocol {
     var perception: Int { get set }
     var points: Int { get set }
     var habitClass: String? { get set }
+    var gold: Float { get set }
 }

@@ -86,7 +86,7 @@ class RealmTask: Object, TaskProtocol {
     }
     
     override static func ignoredProperties() -> [String] {
-        return ["tags"]
+        return ["tags", "checklist", "reminders"]
     }
     
     convenience init(_ taskProtocol: TaskProtocol) {

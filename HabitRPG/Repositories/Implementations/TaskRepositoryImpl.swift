@@ -29,6 +29,10 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
         return localRepository.getTasks(predicate: predicate)
     }
     
+    func save(_ tasks: [TaskProtocol], order: [String: [String]]) {
+        localRepository.save(tasks, order: order)
+    }
+    
     func score(task: TaskProtocol, direction: TaskScoringDirection) -> Signal<TaskResponseProtocol?, NoError> {
         let call = ScoreTaskCall(task: task, direction: direction)
         call.fire()

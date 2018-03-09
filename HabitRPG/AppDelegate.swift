@@ -138,4 +138,11 @@ class HabiticaAppDelegate: NSObject {
             }
         }
     }
+    
+    @objc
+    func retrieveUser() {
+        UserRepository().retrieveUser().observeCompleted {
+            
+        }
+    }
 }

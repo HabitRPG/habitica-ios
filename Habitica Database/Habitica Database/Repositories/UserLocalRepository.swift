@@ -11,5 +11,17 @@ import Habitica_Models
 import ReactiveSwift
 
 public class UserLocalRepository: BaseLocalRepository {
+    public func save(_ user: UserProtocol) {
+        if let realmUser = user as? RealmUser {
+            save(object: realmUser)
+            return
+        }
+        save(object: RealmUser(user))
+    }
     
+    public func getUser(_ id: String) -> SignalProducer<UserProtocol, ReactiveSwiftRealmError> {
+        return RealmUser.findBy(query: "id == '\(id)'").reactive().map({ (users, changeset) -> UserProtocol? in
+            return users.first
+        }).skipNil()
+    }
 }

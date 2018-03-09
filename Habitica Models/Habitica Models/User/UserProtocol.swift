@@ -8,9 +8,23 @@
 
 import Foundation
 
+@objc
 public protocol UserProtocol {
     
     var id: String? { get set }
-    var stats: String? { get set }
+    var stats: StatsProtocol? { get set }
+    var flags: FlagsProtocol? { get set }
+    var preferences: PreferencesProtocol? { get set }
+    var profile: ProfileProtocol? { get set }
+    var contributor: ContributorProtocol? { get set }
+    var balance: Float { get set }
+    var tasksOrder: [String: [String]] { get set }
+}
+
+public extension UserProtocol {
+    
+    var gemCount: Int {
+        return Int(balance * 4.0)
+    }
     
 }

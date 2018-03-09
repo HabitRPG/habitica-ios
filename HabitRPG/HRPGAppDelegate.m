@@ -91,11 +91,7 @@
         if (user) {
             NSDate *lastUserFetch = [[NSUserDefaults standardUserDefaults] objectForKey:@"lastTaskFetch"];
             if ([lastUserFetch timeIntervalSinceNow] < -300) {
-                [[HRPGManager sharedManager] fetchUser:^() {
-                    [self loadContent];
-                } onError:^() {
-                    [self loadContent];
-                }];
+                [self.swiftAppDelegate retrieveUser];
             }
         }
     }

@@ -26,8 +26,15 @@ public class TaskLocalRepository: BaseLocalRepository {
         }
     }
     
+    public func save(_ tasks: [TaskProtocol], order: [String: [String]]) {
+        tasks.forEach { (task) in
+            task.order = order[(task.type ?? "")+"s"]?.index(of: task.id ?? "") ?? 0
+            save(task)
+        }
+    }
+    
     public func getTasks(predicate: NSPredicate) -> SignalProducer<ReactiveResults<[TaskProtocol]>, ReactiveSwiftRealmError> {
-        return RealmTask.findBy(predicate: predicate).reactive().map({ (value, changeset) -> ReactiveResults<[TaskProtocol]> in
+        return RealmTask.findBy(predicate: predicate).sorted(key: "order").reactive().map({ (value, changeset) -> ReactiveResults<[TaskProtocol]> in
             return (value.map({ (task) -> TaskProtocol in return task }), changeset)
         })
     }
