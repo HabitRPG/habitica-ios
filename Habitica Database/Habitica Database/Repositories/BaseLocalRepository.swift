@@ -17,15 +17,19 @@ public class BaseLocalRepository {
         
     }
     
-    func save(object realmObject: Object) {
-        try? realm?.write {
-            realm?.add(realmObject, update: true)
+    func save(object realmObject: Object?) {
+        if let object = realmObject {
+            try? realm?.write {
+                realm?.add(object, update: true)
+            }
         }
     }
     
-    func save(objects realmObjects: [Object]) {
-        try? realm?.write {
-            realm?.add(realmObjects, update: true)
+    func save(objects realmObjects: [Object]?) {
+        if let objects = realmObjects {
+            try? realm?.write {
+                realm?.add(objects, update: true)
+            }
         }
     }
     

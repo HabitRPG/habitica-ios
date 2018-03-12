@@ -13,12 +13,18 @@ import Result
 import ReactiveSwift
 @testable import Habitica_API_Client
 
-class GetTasksCallSpec: QuickSpec {
+class RetrieveTasksCallSpec: QuickSpec {
+    var stubHolder: StubHolderProtocol?
+    
     override func spec() {
-        describe("Get tasks test") {
-            context("success") {
-                it("should get tasks") {
-                    let call = RetrieveTasksCall(configuration: HRPGServerConfig.stub)
+        HabiticaServerConfig.current = HabiticaServerConfig.stub
+        describe("Retrieve tasks test") {
+            beforeEach {
+                self.stubHolder = StubHolder(stubData: self.dataFor(fileName: "tasks", fileExtension: "json"))
+            }
+            context("Success") {
+                it("Should get tasks") {
+                    let call = RetrieveTasksCall(stubHolder: self.stubHolder)
                     
                     waitUntil(timeout: 0.5) { done in
                         call.arraySignal.observeValues({ (tasks) in

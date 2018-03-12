@@ -28,7 +28,7 @@ class HabiticaResponseCall<T: Any, C: Codable>: AuthenticatedCall {
         do {
             return try decoder.decode(HabiticaResponse<C>.self, from: data)
         } catch {
-            print(error)
+            
         }
         
         return nil

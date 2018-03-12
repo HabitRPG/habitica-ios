@@ -1,0 +1,73 @@
+//
+//  RetrieveContentCall.swift
+//  Habitica API ClientTests
+//
+//  Created by Phillip Thelen on 12.03.18.
+//  Copyright © 2018 HabitRPG Inc. All rights reserved.
+//
+
+import Foundation
+import Quick
+import Nimble
+import FunkyNetwork
+import Result
+import ReactiveSwift
+@testable import Habitica_API_Client
+
+class RetrieveContentCallSpec: QuickSpec {
+    var stubHolder: StubHolderProtocol?
+    
+    override func spec() {
+        HabiticaServerConfig.current = HabiticaServerConfig.stub
+        describe("Retrieve content tests") {
+            beforeEach {
+                self.stubHolder = StubHolder(stubData: self.dataFor(fileName: "content", fileExtension: "json"))
+            }
+            context("Success") {
+                it("should get content") {
+                    let call = RetrieveContentCall(stubHolder: self.stubHolder)
+                    
+                    waitUntil(timeout: 0.5) { done in
+                        call.objectSignal.observeValues({ (content) in
+                            expect(content).toNot(beNil())
+                            expect(content?.food?.count) == 31
+                            content?.food?.forEach({ food in
+                                expect(food.key).toNot(beNil())
+                                expect(food.text).toNot(beNil())
+                            })
+                            expect(content?.eggs?.count) == 54
+                            content?.eggs?.forEach({ egg in
+                                expect(egg.key).toNot(beNil())
+                                expect(egg.text).toNot(beNil())
+                            })
+                            expect(content?.hatchingPotions?.count) == 23
+                            content?.hatchingPotions?.forEach({ hatchingPotion in
+                                expect(hatchingPotion.key).toNot(beNil())
+                                expect(hatchingPotion.text).toNot(beNil())
+                            })
+                            expect(content?.gear?.count) == 728
+                            content?.gear?.forEach({ gear in
+                                expect(gear.key).toNot(beNil())
+                                expect(gear.text).toNot(beNil())
+                            })
+                            expect(content?.spells?.count) == 32
+                            content?.spells?.forEach({ spell in
+                                expect(spell.key).toNot(beNil())
+                                expect(spell.text).toNot(beNil())
+                                expect(spell.habitClass).toNot(beEmpty())
+                            })
+                            expect(content?.quests?.count) == 86
+                            content?.quests?.forEach({ quest in
+                                expect(quest.key).toNot(beNil())
+                                expect(quest.text).toNot(beNil())
+                                expect(quest.boss == nil).toNot(equal(quest.collect == nil))
+                            })
+                            done()
+                        })
+                        call.fire()
+                    }
+                }
+            }
+        }
+    }
+}

@@ -52,6 +52,7 @@
 		293BB4A51FD078EC003B6F4F /* StatsSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293BB4A41FD078EC003B6F4F /* StatsSliderView.swift */; };
 		293BB4A91FD0806C003B6F4F /* BulkStatsAllocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293BB4A81FD0806C003B6F4F /* BulkStatsAllocationViewController.swift */; };
 		294EB59D1FA0A7E4006083BD /* FixCharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294EB59C1FA0A7E4006083BD /* FixCharacterViewController.swift */; };
+		295611162056ED8000D9711A /* ContentRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295611152056ED7F00D9711A /* ContentRepository.swift */; };
 		2957B8A81F4B071700E836EF /* InAppReward+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 2957B8A51F4B071700E836EF /* InAppReward+CoreDataClass.m */; };
 		2957B8A91F4B071700E836EF /* InAppReward+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 2957B8A71F4B071700E836EF /* InAppReward+CoreDataProperties.m */; };
 		2957B8B31F4B2D5A00E836EF /* RewardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2957B8B21F4B2D5A00E836EF /* RewardViewController.swift */; };
@@ -555,6 +556,7 @@
 		293BB4A41FD078EC003B6F4F /* StatsSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsSliderView.swift; sourceTree = "<group>"; };
 		293BB4A81FD0806C003B6F4F /* BulkStatsAllocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulkStatsAllocationViewController.swift; sourceTree = "<group>"; };
 		294EB59C1FA0A7E4006083BD /* FixCharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixCharacterViewController.swift; sourceTree = "<group>"; };
+		295611152056ED7F00D9711A /* ContentRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentRepository.swift; sourceTree = "<group>"; };
 		2957B8A41F4B071700E836EF /* InAppReward+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "InAppReward+CoreDataClass.h"; sourceTree = "<group>"; };
 		2957B8A51F4B071700E836EF /* InAppReward+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "InAppReward+CoreDataClass.m"; sourceTree = "<group>"; };
 		2957B8A61F4B071700E836EF /* InAppReward+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "InAppReward+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -1329,6 +1331,7 @@
 				29FC884B2010CC8A002B3D3F /* SocialRepository.swift */,
 				29028C382034ABAF00B7F704 /* TaskRepositoryImpl.swift */,
 				29323E1A2050532D00AC6D6F /* UserRepository.swift */,
+				295611152056ED7F00D9711A /* ContentRepository.swift */,
 			);
 			path = Implementations;
 			sourceTree = "<group>";
@@ -3336,6 +3339,7 @@
 				29FD8AA0203D753F0094322E /* SplitSocialViewController.swift in Sources */,
 				299BD63A1F557FE700E22935 /* AuthenticationManager.swift in Sources */,
 				D9FC1A871BC2D8A300B97D23 /* TutorialSteps.m in Sources */,
+				295611162056ED8000D9711A /* ContentRepository.swift in Sources */,
 				D98AD5541943986100AF6174 /* HRPGMountViewController.m in Sources */,
 				D980373919956E46004C8871 /* HRPGEquipmentDetailViewController.m in Sources */,
 				29ED1AFB1F338E5D005A3895 /* SetupCustomizationRepository.swift in Sources */,

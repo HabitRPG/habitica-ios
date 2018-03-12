@@ -77,7 +77,13 @@ public class APITask: TaskProtocol, Codable {
             return APITag(key)
         }
         checklist = (try? values.decode([APIChecklistItem].self, forKey: .checklist)) ?? []
-        reminders = (try! values.decode([APIReminder].self, forKey: .reminders)) ?? []
+        reminders = (try? values.decode([APIReminder].self, forKey: .reminders)) ?? []
+    }
+    
+    public init() {
+        tags = []
+        checklist = []
+        reminders = []
     }
     
     public func encode(to encoder: Encoder) throws {
