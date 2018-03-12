@@ -7,7 +7,6 @@
 //
 
 #import "HRPGTopHeaderNavigationController.h"
-#import "HRPGUserTopHeader.h"
 #import "UIColor+Habitica.h"
 #import "Habitica-Swift.h"
 
@@ -39,7 +38,7 @@
     self.navigationBar.backgroundColor = [UIColor clearColor];
 
     NSArray *nibViews =
-        [[NSBundle mainBundle] loadNibNamed:@"HRPGUserTopHeader" owner:self options:nil];
+        [[NSBundle mainBundle] loadNibNamed:@"UserTopHeader" owner:self options:nil];
     self.headerView = nibViews[0];
     self.state = HRPGTopHeaderStateVisible;
     self.backgroundView = [[UIView alloc] init];

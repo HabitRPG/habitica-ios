@@ -19,6 +19,8 @@ import RealmSwift
 //Reason for adding this class now is mostly, to configure PopupDialogs dim color.
 class HabiticaAppDelegate: NSObject {
     
+    private let userRepository = UserRepository()
+    
     @objc
     func setupPopups() {
         let appearance = PopupDialogOverlayView.appearance()
@@ -141,7 +143,7 @@ class HabiticaAppDelegate: NSObject {
     
     @objc
     func retrieveUser() {
-        UserRepository().retrieveUser().observeCompleted {
+        userRepository.retrieveUser().observeCompleted {
             
         }
     }

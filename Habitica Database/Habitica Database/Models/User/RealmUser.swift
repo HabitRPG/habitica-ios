@@ -91,13 +91,27 @@ class RealmUser: Object, UserProtocol {
         }
     }
     @objc dynamic var realmContributor: RealmContributor?
+    var items: UserItemsProtocol? {
+        get {
+            return realmItems
+        }
+        set {
+            if let newItems = newValue as? RealmUserItems {
+                realmItems = newItems
+            }
+            if let newItems = newValue {
+                realmItems = RealmUserItems(newItems)
+            }
+        }
+    }
+    @objc dynamic var realmItems: RealmUserItems?
     
     override static func primaryKey() -> String {
         return "id"
     }
     
     override static func ignoredProperties() -> [String] {
-        return ["flags", "preferences", "stats", "profile", "contributor", "tasksOrder"]
+        return ["flags", "preferences", "stats", "profile", "contributor", "tasksOrder", "items"]
     }
     
     convenience init(_ user: UserProtocol) {
@@ -109,5 +123,6 @@ class RealmUser: Object, UserProtocol {
         profile = user.profile
         contributor = user.contributor
         balance = user.balance
+        items = user.items
     }
 }

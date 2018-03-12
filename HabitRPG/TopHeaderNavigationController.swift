@@ -158,7 +158,7 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
         self.view.backgroundColor = .clear
         self.navigationBar.backgroundColor = .clear
         
-        let nibViews = Bundle.main.loadNibNamed("HRPGUserTopHeader", owner: self, options: nil)
+        let nibViews = Bundle.main.loadNibNamed("UserTopHeader", owner: self, options: nil)
         self.headerView = nibViews?[0] as? UIView
         self.backgroundView.backgroundColor = .gray700()
         self.bottomBorderView.backgroundColor = .gray600()

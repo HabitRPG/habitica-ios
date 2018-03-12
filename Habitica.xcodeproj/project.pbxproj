@@ -237,7 +237,7 @@
 		D914398A1BAF14C40006999E /* UIImage+withColor.m in Sources */ = {isa = PBXBuildFile; fileRef = D91439891BAF14C40006999E /* UIImage+withColor.m */; };
 		D914890D1CD23A900015B42D /* HRPGMaintenanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D914890B1CD23A900015B42D /* HRPGMaintenanceViewController.m */; };
 		D91CCACD1BCD9068001C6A0C /* HRPGHoledView.m in Sources */ = {isa = PBXBuildFile; fileRef = D91CCACC1BCD9068001C6A0C /* HRPGHoledView.m */; };
-		D91CCAD01BCF11CC001C6A0C /* HRPGUserTopHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = D91CCACF1BCF11CC001C6A0C /* HRPGUserTopHeader.xib */; };
+		D91CCAD01BCF11CC001C6A0C /* UserTopHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = D91CCACF1BCF11CC001C6A0C /* UserTopHeader.xib */; };
 		D922F0A8191C1F6B00B197EA /* HRPGUserBuyResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D922F0A7191C1F6B00B197EA /* HRPGUserBuyResponse.m */; };
 		D922F0AE19217C2300B197EA /* HRPGEmptySerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = D922F0AD19217C2300B197EA /* HRPGEmptySerializer.m */; };
 		D922F0B11925314500B197EA /* HRPGNetworkIndicatorController.m in Sources */ = {isa = PBXBuildFile; fileRef = D922F0B01925314500B197EA /* HRPGNetworkIndicatorController.m */; };
@@ -303,7 +303,6 @@
 		D96038371930F90E0025EAEC /* HRPGMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D96038361930F90E0025EAEC /* HRPGMessageViewController.m */; };
 		D96447B41CE9FF0D009D7950 /* HRPGResponseMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = D96447B31CE9FF0D009D7950 /* HRPGResponseMessage.m */; };
 		D9660D751AB23F150084CE37 /* HRPGTopHeaderNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9660D741AB23F150084CE37 /* HRPGTopHeaderNavigationController.m */; };
-		D9660D781AB248030084CE37 /* HRPGUserTopHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = D9660D771AB248030084CE37 /* HRPGUserTopHeader.m */; };
 		D966557418FB129F0014C09D /* HRPGSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D966557318FB129F0014C09D /* HRPGSettingsViewController.m */; };
 		D96760C81B2EF9B600DB07DF /* HRPGAbbrevNumberLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D96760C71B2EF9B600DB07DF /* HRPGAbbrevNumberLabel.m */; };
 		D96BFC4C1E181B4A00266EEF /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96BFC4B1E181B4A00266EEF /* IntroViewController.swift */; };
@@ -797,7 +796,7 @@
 		D915F8641915BF0D0037D04D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		D91CCACB1BCD9068001C6A0C /* HRPGHoledView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGHoledView.h; sourceTree = "<group>"; };
 		D91CCACC1BCD9068001C6A0C /* HRPGHoledView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGHoledView.m; sourceTree = "<group>"; };
-		D91CCACF1BCF11CC001C6A0C /* HRPGUserTopHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPGUserTopHeader.xib; sourceTree = "<group>"; };
+		D91CCACF1BCF11CC001C6A0C /* UserTopHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserTopHeader.xib; sourceTree = "<group>"; };
 		D922F0A6191C1F6B00B197EA /* HRPGUserBuyResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGUserBuyResponse.h; sourceTree = "<group>"; };
 		D922F0A7191C1F6B00B197EA /* HRPGUserBuyResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGUserBuyResponse.m; sourceTree = "<group>"; };
 		D922F0AC19217C2300B197EA /* HRPGEmptySerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGEmptySerializer.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -918,8 +917,6 @@
 		D96447B31CE9FF0D009D7950 /* HRPGResponseMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGResponseMessage.m; sourceTree = "<group>"; };
 		D9660D731AB23F150084CE37 /* HRPGTopHeaderNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGTopHeaderNavigationController.h; sourceTree = "<group>"; };
 		D9660D741AB23F150084CE37 /* HRPGTopHeaderNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGTopHeaderNavigationController.m; sourceTree = "<group>"; };
-		D9660D761AB248030084CE37 /* HRPGUserTopHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGUserTopHeader.h; sourceTree = "<group>"; };
-		D9660D771AB248030084CE37 /* HRPGUserTopHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGUserTopHeader.m; sourceTree = "<group>"; };
 		D966557218FB129F0014C09D /* HRPGSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGSettingsViewController.h; sourceTree = "<group>"; };
 		D966557318FB129F0014C09D /* HRPGSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGSettingsViewController.m; sourceTree = "<group>"; };
 		D96760C61B2EF9B600DB07DF /* HRPGAbbrevNumberLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGAbbrevNumberLabel.h; sourceTree = "<group>"; };
@@ -2136,10 +2133,8 @@
 				D9D9EF971D54E51C00FC89C1 /* HRPGQRCodeView.m */,
 				D9FC1A7C1BC28F4700B97D23 /* HRPGTypingLabel.h */,
 				D9FC1A7D1BC28F4700B97D23 /* HRPGTypingLabel.m */,
-				D9660D761AB248030084CE37 /* HRPGUserTopHeader.h */,
-				D9660D771AB248030084CE37 /* HRPGUserTopHeader.m */,
 				29323E342052008800AC6D6F /* UserTopHeader.swift */,
-				D91CCACF1BCF11CC001C6A0C /* HRPGUserTopHeader.xib */,
+				D91CCACF1BCF11CC001C6A0C /* UserTopHeader.xib */,
 				29701FE31F56C2200097BBCC /* IconLabel.swift */,
 				D9BB45D91E79A02C0002AE2E /* LabeledCheckboxView.swift */,
 				29B6AD4B1F2A0DBE00AC8878 /* LoginEntryView.swift */,
@@ -2851,7 +2846,7 @@
 				29E1630D200E23A500685640 /* MenuNavigationBarView.xib in Resources */,
 				D99DEC89190842CA00FFD2B9 /* Placeholder.png in Resources */,
 				49DCB7B01F3923F20079FDD0 /* HRPGSimpleShopItemView.xib in Resources */,
-				D91CCAD01BCF11CC001C6A0C /* HRPGUserTopHeader.xib in Resources */,
+				D91CCAD01BCF11CC001C6A0C /* UserTopHeader.xib in Resources */,
 				49DCB7BA1F3F6F620079FDD0 /* HRPGCloseableShopModalView.xib in Resources */,
 				49005B6E1F17DDF9004830D9 /* Shop.storyboard in Resources */,
 				D9EB4E9918CB4A9400BB2094 /* InfoPlist.strings in Resources */,
@@ -3482,7 +3477,6 @@
 				2957B8CA1F4ED7C800E836EF /* Currency.swift in Sources */,
 				D99DEC8F190914AD00FFD2B9 /* HRPGQuestDetailViewController.m in Sources */,
 				D976D2401B98FA940032BC41 /* UIColor.Habitica.m in Sources */,
-				D9660D781AB248030084CE37 /* HRPGUserTopHeader.m in Sources */,
 				D92A08481D33EC38000F8B66 /* HRPGShopOverviewViewController.m in Sources */,
 				D92CDADD18CB79E50006C242 /* HRPGTableViewController.m in Sources */,
 				D9E46AFD1DAB98D700E390D7 /* HRPGGemHeaderNavigationController.m in Sources */,

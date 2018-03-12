@@ -40,21 +40,6 @@
     return [super getDefinitonForTutorial:tutorialIdentifier];
 }
 
-- (void)configureCell:(HabitTableViewCell *)cell
-          atIndexPath:(NSIndexPath *)indexPath
-        withAnimation:(BOOL)animate {
-    Task *task = [self taskAtIndexPath:indexPath];
-
-    [cell configureWithTask:task];
-
-    cell.plusTouched = ^{
-        [[HRPGManager sharedManager] upDownTask:task direction:@"up" onSuccess:nil onError:nil];
-    };
-    cell.minusTouched = ^{
-        [[HRPGManager sharedManager] upDownTask:task direction:@"down" onSuccess:nil onError:nil];
-    };
-}
-
 - (NSString *)getCellNibName {
     return @"HabitTableViewCell";
 }

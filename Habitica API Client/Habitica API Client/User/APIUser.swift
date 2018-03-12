@@ -16,6 +16,7 @@ public class APIUser: UserProtocol, Codable {
     public var preferences: PreferencesProtocol?
     public var profile: ProfileProtocol?
     public var contributor: ContributorProtocol?
+    public var items: UserItemsProtocol?
     public var balance: Float = 0
     public var tasksOrder: [String: [String]]
     
@@ -26,6 +27,7 @@ public class APIUser: UserProtocol, Codable {
         case preferences
         case profile
         case contributor
+        case items
         case balance
         case tasksOrder
     }
@@ -38,6 +40,7 @@ public class APIUser: UserProtocol, Codable {
         preferences = (try! values.decode(APIPreferences.self, forKey: .preferences))
         profile = (try! values.decode(APIProfile.self, forKey: .profile))
         contributor = (try! values.decode(APIContributor.self, forKey: .contributor))
+        items = (try! values.decode(APIUserItems.self, forKey: .items))
         balance = (try! values.decode(Float.self, forKey: .balance))
         tasksOrder = (try? values.decode([String: [String]].self, forKey: .tasksOrder)) ?? [:]
     }

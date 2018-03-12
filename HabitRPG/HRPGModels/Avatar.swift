@@ -276,3 +276,116 @@ extension ChatMessageAvatar: Avatar {
     }
 }
 
+typealias AvatarUserProtocol = Avatar & UserProtocol
+
+class AvatarViewModel: Avatar {
+    weak var user: UserProtocol?
+    
+    init(user: UserProtocol) {
+        self.user = user
+    }
+    
+    private var displayedOutfit: OutfitProtocol? {
+        if user?.preferences?.useCostume == true {
+            return user?.items?.gear?.costume
+        } else {
+            return user?.items?.gear?.equipped
+        }
+    }
+    
+    var background: String? {
+        return user?.preferences?.background
+    }
+    var chair: String? {
+        return user?.preferences?.chair
+    }
+    
+    var back: String? {
+        return displayedOutfit?.back
+    }
+    
+    var skin: String? {
+        return user?.preferences?.skin
+    }
+    
+    var shirt: String? {
+        return user?.preferences?.shirt
+    }
+    
+    var armor: String? {
+        return displayedOutfit?.armor
+    }
+    
+    var body: String? {
+        return displayedOutfit?.body
+    }
+    
+    var hairColor: String? {
+        return ""
+    }
+    
+    var hairBase: String? {
+        return ""
+    }
+    
+    var hairBangs: String? {
+        return ""
+    }
+    
+    var hairMustache: String? {
+        return ""
+    }
+    
+    var hairBeard: String? {
+        return ""
+    }
+    
+    var eyewear: String? {
+        return displayedOutfit?.eyewear
+    }
+    
+    var head: String? {
+        return displayedOutfit?.head
+    }
+    
+    var headAccessory: String? {
+        return displayedOutfit?.headAccessory
+    }
+    
+    var hairFlower: String? {
+        return ""
+    }
+    
+    var shield: String? {
+        return displayedOutfit?.shield
+    }
+    
+    var weapon: String? {
+        return displayedOutfit?.weapon
+    }
+    
+    var visualBuff: String? {
+        return nil
+    }
+    
+    var mount: String? {
+        return user?.items?.currentMount
+    }
+    
+    var knockout: String? {
+        return nil
+    }
+    
+    var pet: String? {
+        return user?.items?.currentPet
+    }
+    
+    var isSleep: Bool {
+        return user?.preferences?.sleep ?? false
+    }
+    
+    var size: String? {
+        return user?.preferences?.size
+    }
+    
+}
