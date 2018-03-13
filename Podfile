@@ -74,6 +74,8 @@ target 'Habitica' do
   pod 'Eureka'
   pod 'FunkyNetwork'
 
+  pod 'SwiftGen'
+
   target 'HabiticaTests' do
     inherit! :search_paths
     test_pods

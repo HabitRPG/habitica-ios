@@ -15,4 +15,5 @@ public protocol ContentProtocol {
     var gear: [GearProtocol]? { get set }
     var spells: [SpellProtocol]? { get set }
     var quests: [QuestProtocol]? { get set }
+    var faq: [FAQEntryProtocol]? { get set }
 }

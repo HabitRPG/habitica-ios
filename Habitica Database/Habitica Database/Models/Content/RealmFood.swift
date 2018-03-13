@@ -11,8 +11,8 @@ import Habitica_Models
 import RealmSwift
 
 class RealmFood: RealmItem, FoodProtocol {
-    var target: String?
-    var canDrop: Bool = false
+    @objc dynamic var target: String?
+    @objc dynamic var canDrop: Bool = false
     
     convenience init(_ food: FoodProtocol) {
         self.init(item: food)

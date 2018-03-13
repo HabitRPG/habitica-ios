@@ -11,10 +11,10 @@ import Habitica_Models
 import RealmSwift
 
 class RealmQuestBoss: Object, QuestBossProtocol {
-    var name: String?
-    var health: Int = 0
-    var strength: Float = 0
-    var defense: Float = 0
+    @objc dynamic var name: String?
+    @objc dynamic var health: Int = 0
+    @objc dynamic var strength: Float = 0
+    @objc dynamic var defense: Float = 0
     
     convenience init(_ questBoss: QuestBossProtocol) {
         self.init()

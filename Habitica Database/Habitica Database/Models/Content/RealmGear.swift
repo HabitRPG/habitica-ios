@@ -11,18 +11,22 @@ import Habitica_Models
 import RealmSwift
 
 class RealmGear: Object, GearProtocol {
-    var key: String?
-    var text: String?
-    var notes: String?
-    var value: Float = 0
-    var type: String?
-    var set: String?
-    var habitClass: String?
-    var index: String?
-    var strength: Int = 0
-    var intelligence: Int = 0
-    var perception: Int = 0
-    var constitution: Int = 0
+    @objc dynamic var key: String?
+    @objc dynamic var text: String?
+    @objc dynamic var notes: String?
+    @objc dynamic var value: Float = 0
+    @objc dynamic var type: String?
+    @objc dynamic var set: String?
+    @objc dynamic var habitClass: String?
+    @objc dynamic var index: String?
+    @objc dynamic var strength: Int = 0
+    @objc dynamic var intelligence: Int = 0
+    @objc dynamic var perception: Int = 0
+    @objc dynamic var constitution: Int = 0
+    
+    override static func primaryKey() -> String {
+        return "key"
+    }
     
     convenience init(_ gear: GearProtocol) {
         self.init()

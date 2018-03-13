@@ -13,6 +13,10 @@ private class APIGearWrapper: Codable {
     var flat: [String: APIGear]?
 }
 
+private class APIFAQWrapper: Codable {
+    var questions: [APIFAQEntry]?
+}
+
 public class APIContent: ContentProtocol, Codable {
     public var food: [FoodProtocol]?
     public var eggs: [EggProtocol]?
@@ -20,6 +24,7 @@ public class APIContent: ContentProtocol, Codable {
     public var gear: [GearProtocol]?
     public var spells: [SpellProtocol]?
     public var quests: [QuestProtocol]?
+    public var faq: [FAQEntryProtocol]?
     
     enum CodingKeys: String, CodingKey {
         case food
@@ -28,26 +33,31 @@ public class APIContent: ContentProtocol, Codable {
         case gear
         case spells
         case quests
+        case faq
     }
     
     public required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        food = (try? values.decode([String: APIFood].self, forKey: .food).map({ (key, value) in
+        food = try? values.decode([String: APIFood].self, forKey: .food).map({ (key, value) in
             return value
-        })) ?? []
-        eggs = (try? values.decode([String: APIEgg].self, forKey: .eggs).map({ (key, value) in
+        })
+        eggs = try? values.decode([String: APIEgg].self, forKey: .eggs).map({ (key, value) in
             return value
-        })) ?? []
-        hatchingPotions = (try? values.decode([String: APIHatchingPotion].self, forKey: .hatchingPotions).map({ (key, value) in
+        })
+        hatchingPotions = try? values.decode([String: APIHatchingPotion].self, forKey: .hatchingPotions).map({ (key, value) in
             return value
-        })) ?? []
-        let gearWrapper = (try! values.decode(APIGearWrapper.self, forKey: .gear))
+        })
+        let gearWrapper = try! values.decode(APIGearWrapper.self, forKey: .gear)
         gear = gearWrapper.flat?.map({ (key, value) in
             return value
-        }) ?? []
-        quests = (try! values.decode([String: APIQuest].self, forKey: .quests).map({ (key, value) in
+        })
+        quests = try! values.decode([String: APIQuest].self, forKey: .quests).map({ (key, value) in
             return value
-        }))
+        })
+        faq = try! values.decode(APIFAQWrapper.self, forKey: .faq).questions?.enumerated().map({ (index, entry) in
+            entry.index = index
+            return entry
+        })
         let parsedSpells = (try? values.decode([String: [String: APISpell]].self, forKey: .spells)) ?? [:]
         spells = []
         for spellSection in parsedSpells {

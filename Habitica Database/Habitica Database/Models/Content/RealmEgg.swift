@@ -11,7 +11,7 @@ import Habitica_Models
 import RealmSwift
 
 class RealmEgg: RealmItem, EggProtocol {
-    var adjective: String?
+    @objc dynamic var adjective: String?
     
     convenience init(_ egg: EggProtocol) {
         self.init(item: egg)

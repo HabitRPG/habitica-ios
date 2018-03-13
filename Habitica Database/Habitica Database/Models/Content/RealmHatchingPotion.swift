@@ -11,8 +11,8 @@ import Habitica_Models
 import RealmSwift
 
 class RealmHatchingPotion: RealmItem, HatchingPotionProtocol {
-    var premium: Bool = false
-    var limited: Bool = false
+    @objc dynamic var premium: Bool = false
+    @objc dynamic var limited: Bool = false
     
     convenience init(_ hatchingPotion: HatchingPotionProtocol) {
         self.init(item: hatchingPotion)

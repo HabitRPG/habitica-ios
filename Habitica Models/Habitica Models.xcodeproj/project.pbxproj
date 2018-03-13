@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2902795C2057E7FB006DACB9 /* FAQEntryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2902795B2057E7FB006DACB9 /* FAQEntryProtocol.swift */; };
 		292DEE5A204DAA000086D5F7 /* HabiticaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE59204DAA000086D5F7 /* HabiticaModel.swift */; };
 		292DEE7A204E36F60086D5F7 /* TagProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE79204E36F60086D5F7 /* TagProtocol.swift */; };
 		292DEE7C204E372E0086D5F7 /* ChecklistItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE7B204E372E0086D5F7 /* ChecklistItemProtocol.swift */; };
@@ -49,6 +50,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2902795B2057E7FB006DACB9 /* FAQEntryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQEntryProtocol.swift; sourceTree = "<group>"; };
 		292DEE59204DAA000086D5F7 /* HabiticaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabiticaModel.swift; sourceTree = "<group>"; };
 		292DEE79204E36F60086D5F7 /* TagProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagProtocol.swift; sourceTree = "<group>"; };
 		292DEE7B204E372E0086D5F7 /* ChecklistItemProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistItemProtocol.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				295610E62056C5BF00D9711A /* ContentProtocol.swift */,
+				2902795B2057E7FB006DACB9 /* FAQEntryProtocol.swift */,
 				295611022056DBC900D9711A /* QuestProtocol.swift */,
 				2956110A2056E14300D9711A /* QuestCollectProtocol.swift */,
 				295611042056DC7100D9711A /* QuestBossProtocol.swift */,
@@ -309,6 +312,7 @@
 				29323E4B2052F4CF00AC6D6F /* UserItemsProtocol.swift in Sources */,
 				292DEEAD205038CB0086D5F7 /* TaskResponseProtocol.swift in Sources */,
 				295610F32056C9F500D9711A /* EggProtocol.swift in Sources */,
+				2902795C2057E7FB006DACB9 /* FAQEntryProtocol.swift in Sources */,
 				292DEE5A204DAA000086D5F7 /* HabiticaModel.swift in Sources */,
 				295610E92056C65A00D9711A /* ItemProtocol.swift in Sources */,
 				295610ED2056C72000D9711A /* FoodProtocol.swift in Sources */,

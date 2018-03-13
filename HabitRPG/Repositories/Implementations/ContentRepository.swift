@@ -25,4 +25,11 @@ class ContentRepository: BaseRepository<ContentLocalRepository> {
         })
     }
     
+    func getFAQEntries(search searchText: String? = nil) -> SignalProducer<ReactiveResults<[FAQEntryProtocol]>, ReactiveSwiftRealmError> {
+        return localRepository.getFAQEntries(search: searchText)
+    }
+    
+    func getFAQEntry(index: Int) -> SignalProducer<FAQEntryProtocol, ReactiveSwiftRealmError> {
+        return localRepository.getFAQEntry(index: index)
+    }
 }

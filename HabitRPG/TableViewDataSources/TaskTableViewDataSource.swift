@@ -39,18 +39,7 @@ class TaskTableViewDataSource: BaseReactiveDataSource, UITableViewDataSource {
         super.init()
         disposable.inner.add(repository.getTasks(predicate: predicate).on(value: { (tasks, changes) in
             self.tasks = tasks
-            if changes?.initial == true {
-                self.tableView?.reloadData()
-            } else {
-                guard let changes = changes else {
-                    return
-                }
-                self.tableView?.beginUpdates()
-                self.tableView?.insertRows(at: changes.inserted.map({ IndexPath(row: $0, section: 0) }), with: .automatic)
-                self.tableView?.deleteRows(at: changes.deleted.map({ IndexPath(row: $0, section: 0) }), with: .automatic)
-                self.tableView?.reloadRows(at: changes.updated.map({ IndexPath(row: $0, section: 0) }), with: .automatic)
-                self.tableView?.endUpdates()
-            }
+            self.notifyDataUpdate(tableView: self.tableView, changes: changes)
             
         }).start())
     }

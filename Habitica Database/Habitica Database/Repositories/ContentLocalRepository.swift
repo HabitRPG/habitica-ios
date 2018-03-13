@@ -9,6 +9,8 @@
 import Foundation
 import Habitica_Models
 import RealmSwift
+import ReactiveSwift
+import Result
 
 public class ContentLocalRepository: BaseLocalRepository {
     
@@ -25,6 +27,27 @@ public class ContentLocalRepository: BaseLocalRepository {
         save(objects: content.hatchingPotions?.map({ (hatchingPotion) in
             return RealmHatchingPotion(hatchingPotion)
         }))
+        save(objects: content.faq?.map({ (entries) in
+            return RealmFAQEntry(entries)
+        }))
+    }
+    
+    public func getFAQEntries(search searchText: String? = nil) -> SignalProducer<ReactiveResults<[FAQEntryProtocol]>, ReactiveSwiftRealmError> {
+        var producer: SignalProducer<Results<RealmFAQEntry>, ReactiveSwiftRealmError>?
+        if let text = searchText, !text.isEmpty {
+            producer = RealmFAQEntry.findBy(query: "question CONTAINS[cd] '\(text)'")
+        } else {
+            producer = RealmFAQEntry.findAll()
+        }
+        return producer!.reactive().map({ (value, changeset) -> ReactiveResults<[FAQEntryProtocol]> in
+            return (value.map({ (entry) -> FAQEntryProtocol in return entry }), changeset)
+        })
+    }
+    
+    public func getFAQEntry(index: Int) -> SignalProducer<FAQEntryProtocol, ReactiveSwiftRealmError> {
+        return RealmFAQEntry.findBy(key: index).skipNil().map({ (entry) -> FAQEntryProtocol in
+            return entry
+        })
     }
     
 }

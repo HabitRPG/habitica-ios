@@ -851,7 +851,7 @@
         <!--FAQ-->
         <scene sceneID="V5q-Dw-DeL">
             <objects>
-                <tableViewController storyboardIdentifier="FAQOverviewViewController" id="Kau-eC-iCv" customClass="HRPGFAQTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="FAQOverviewViewController" id="Kau-eC-iCv" customClass="FAQTableViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="5qA-rI-0zB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -892,7 +892,7 @@
         <!--Detail View Controller-->
         <scene sceneID="4IN-KI-Dqx">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="EKs-nQ-slC" customClass="HRPGFAQDetailViewController" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="EKs-nQ-slC" customClass="FAQDetailViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="PUx-1m-TEb"/>
                         <viewControllerLayoutGuide type="bottom" id="iqV-eg-bF0"/>
@@ -930,8 +930,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="answerTextView" destination="2iE-Xy-7j2" id="aLx-5f-Bek"/>
-                        <outlet property="questionLabel" destination="Z5f-pj-SLH" id="VD8-Js-jVj"/>
+                        <outlet property="answerTextView" destination="2iE-Xy-7j2" id="3DL-bH-nMP"/>
+                        <outlet property="questionLabel" destination="Z5f-pj-SLH" id="jtr-EL-7Fe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nfs-aV-KV4" userLabel="First Responder" sceneMemberID="firstResponder"/>

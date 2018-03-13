@@ -11,9 +11,9 @@ import Habitica_Models
 import RealmSwift
 
 class RealmQuestCollect: Object, QuestCollectProtocol {
-    var key: String?
-    var text: String?
-    var count: Int = 0
+    @objc dynamic var key: String?
+    @objc dynamic var text: String?
+    @objc dynamic var count: Int = 0
     
     convenience init(_ questCollect: QuestCollectProtocol) {
         self.init()

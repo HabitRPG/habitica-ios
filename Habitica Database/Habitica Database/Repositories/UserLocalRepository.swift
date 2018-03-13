@@ -20,8 +20,8 @@ public class UserLocalRepository: BaseLocalRepository {
     }
     
     public func getUser(_ id: String) -> SignalProducer<UserProtocol, ReactiveSwiftRealmError> {
-        return RealmUser.findBy(query: "id == '\(id)'").reactive().map({ (users, changeset) -> UserProtocol? in
-            return users.first
-        }).skipNil()
+        return RealmUser.findBy(key: id).skipNil().map({ (user) -> UserProtocol in
+            return user
+        })
     }
 }

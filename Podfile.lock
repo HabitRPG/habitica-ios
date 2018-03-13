@@ -136,6 +136,7 @@ PODS:
   - SlackTextViewController (1.9.6)
   - SnapKit (4.0.0)
   - SOCKit (1.1)
+  - SwiftGen (5.2.1)
   - SwiftLint (0.25.0)
   - SwiftyStoreKit (0.13.1)
   - TransitionKit (2.2.1)
@@ -181,6 +182,7 @@ DEPENDENCIES:
   - SeedsSDK
   - SlackTextViewController
   - SnapKit (~> 4.0.0)
+  - SwiftGen
   - SwiftLint
   - SwiftyStoreKit
   - VTAcknowledgementsViewController
@@ -247,6 +249,7 @@ SPEC CHECKSUMS:
   SlackTextViewController: b854e62c1c156336bc4fd409c6ca79b5773e8f9d
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   SOCKit: c7376ac262bea9115b8f749358f762522a47d392
+  SwiftGen: 444b4c467e512a4812b8a800d731643fd265139e
   SwiftLint: e14651157288e9e01d6e1a71db7014fb5744a8ea
   SwiftyStoreKit: c36bb7841dd51a485ce5c38abf9e96fba988741f
   TransitionKit: 9ceccda4cd0cdc0a05ef85eb235e5a3292c3c250
@@ -256,6 +259,6 @@ SPEC CHECKSUMS:
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: 0bb22eff1db7e8e2cb61ec837af3522a3da986d8
+PODFILE CHECKSUM: b74658f5eaac36e57412efa8973e1e41b02d50b0
 
 COCOAPODS: 1.4.0

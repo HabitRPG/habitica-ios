@@ -1,0 +1,14 @@
+strings:
+  paths: HabitRPG/Strings/Main.strings
+  templateName: structured-swift4
+  output: HabitRPG/Generated/Strings.swift
+xcassets:
+  paths: HabitRPG/Images.xcassets
+  templateName: swift4
+  output: HabitRPG/Generated/Assets-Images.swift
+storyboards:
+  paths:
+    - HabitRPG/Base.lproj/Main.storyboard
+    - HabitRPG/Base.lproj/Social.storyboard
+  templateName: swift4
+  output: HabitRPG/Generated/Storyboard.swift
