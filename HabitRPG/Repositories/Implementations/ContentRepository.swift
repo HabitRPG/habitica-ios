@@ -25,6 +25,16 @@ class ContentRepository: BaseRepository<ContentLocalRepository> {
         })
     }
     
+    func retrieveWorldState() -> Signal<WorldStateProtocol?, NoError> {
+        let call = RetrieveWorldStateCall()
+        call.fire()
+        return call.objectSignal.on(value: {[weak self] worldState in
+            if let worldState = worldState {
+                self?.localRepository.save(worldState)
+            }
+        })
+    }
+    
     func getFAQEntries(search searchText: String? = nil) -> SignalProducer<ReactiveResults<[FAQEntryProtocol]>, ReactiveSwiftRealmError> {
         return localRepository.getFAQEntries(search: searchText)
     }

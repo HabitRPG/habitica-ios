@@ -99,9 +99,7 @@
     [self.swiftAppDelegate handleMaintenanceScreen];
     [[[ConfigRepository alloc] init] fetchremoteConfig];
     
-    
-    
-    [[HRPGManager sharedManager] fetchWorldState: nil onError: nil];
+    [self.swiftAppDelegate retrieveWorldState];
 }
 
 - (BOOL)application:(UIApplication *)application shouldRestoreApplicationState:(NSCoder *)coder {

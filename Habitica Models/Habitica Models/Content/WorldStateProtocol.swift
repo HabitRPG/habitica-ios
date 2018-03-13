@@ -7,3 +7,7 @@
 //
 
 import Foundation
+
+public protocol WorldStateProtocol {
+    var worldBoss: QuestStateProtocol? { get set }
+}

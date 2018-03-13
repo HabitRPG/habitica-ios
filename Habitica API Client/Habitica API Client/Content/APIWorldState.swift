@@ -7,3 +7,21 @@
 //
 
 import Foundation
+import Habitica_Models
+
+public class APIWorldState: WorldStateProtocol, Codable {
+    public var worldBoss: QuestStateProtocol?
+    
+    enum CodingKeys: String, CodingKey {
+        case worldBoss
+    }
+    
+    public required init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        worldBoss = try? values.decode(APIQuestState.self, forKey: .worldBoss)
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        
+    }
+}

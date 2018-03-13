@@ -168,11 +168,16 @@ class HabiticaAppDelegate: NSObject {
     func retrieveTasks(_ completed: @escaping ((Bool) -> Void)) {
         taskRepository.retrieveTasks().observeResult { (result) in
             switch result {
-            case .success(let _):
+            case .success(_):
                 completed(true)
-            case .failure(let _):
+            case .failure(_):
                 completed(false)
             }
         }
+    }
+    
+    @objc
+    func retrieveWorldState() {
+        contentRepository.retrieveWorldState().observeCompleted {}
     }
 }

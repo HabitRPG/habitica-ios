@@ -7,3 +7,9 @@
 //
 
 import Foundation
+import Habitica_Models
+
+class APIQuestProgress: QuestProgressProtocol, Codable {
+    var health: Float = 0
+    var rage: Float = 0
+}

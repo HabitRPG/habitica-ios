@@ -11,6 +11,10 @@
 		2902797920580EFD006DACB9 /* APIBuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2902797820580EFD006DACB9 /* APIBuff.swift */; };
 		2902797F20581CF0006DACB9 /* AllocateAttributePointCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2902797E20581CF0006DACB9 /* AllocateAttributePointCall.swift */; };
 		2902798120581DE3006DACB9 /* BulkAllocateAttributePointsCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2902798020581DE3006DACB9 /* BulkAllocateAttributePointsCall.swift */; };
+		2902798F205835DF006DACB9 /* APIWorldState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2902798E205835DF006DACB9 /* APIWorldState.swift */; };
+		29027991205835F7006DACB9 /* APIQuestState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29027990205835F7006DACB9 /* APIQuestState.swift */; };
+		2902799320583612006DACB9 /* APIQuestProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2902799220583612006DACB9 /* APIQuestProgress.swift */; };
+		29027995205836A8006DACB9 /* RetrieveWorldStateCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29027994205836A8006DACB9 /* RetrieveWorldStateCall.swift */; };
 		292DEE44204D9D8D0086D5F7 /* Habitica_Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE45204D9D8D0086D5F7 /* Habitica_Models.framework */; };
 		292DEE4B204DA1220086D5F7 /* NetworkAuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE4A204DA1220086D5F7 /* NetworkAuthenticationManager.swift */; };
 		292DEE4F204DA3870086D5F7 /* RetrieveTasksCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE4E204DA3870086D5F7 /* RetrieveTasksCall.swift */; };
@@ -81,6 +85,10 @@
 		2902797820580EFD006DACB9 /* APIBuff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIBuff.swift; sourceTree = "<group>"; };
 		2902797E20581CF0006DACB9 /* AllocateAttributePointCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllocateAttributePointCall.swift; sourceTree = "<group>"; };
 		2902798020581DE3006DACB9 /* BulkAllocateAttributePointsCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulkAllocateAttributePointsCall.swift; sourceTree = "<group>"; };
+		2902798E205835DF006DACB9 /* APIWorldState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIWorldState.swift; sourceTree = "<group>"; };
+		29027990205835F7006DACB9 /* APIQuestState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIQuestState.swift; sourceTree = "<group>"; };
+		2902799220583612006DACB9 /* APIQuestProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIQuestProgress.swift; sourceTree = "<group>"; };
+		29027994205836A8006DACB9 /* RetrieveWorldStateCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveWorldStateCall.swift; sourceTree = "<group>"; };
 		292DEE45204D9D8D0086D5F7 /* Habitica_Models.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_Models.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		292DEE4A204DA1220086D5F7 /* NetworkAuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAuthenticationManager.swift; sourceTree = "<group>"; };
 		292DEE4E204DA3870086D5F7 /* RetrieveTasksCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveTasksCall.swift; sourceTree = "<group>"; };
@@ -280,6 +288,10 @@
 				295610F62056CA6900D9711A /* APIEgg.swift */,
 				295610EE2056C7F700D9711A /* APIFood.swift */,
 				295610F82056CAA800D9711A /* APIHatchingPotion.swift */,
+				29027994205836A8006DACB9 /* RetrieveWorldStateCall.swift */,
+				2902798E205835DF006DACB9 /* APIWorldState.swift */,
+				29027990205835F7006DACB9 /* APIQuestState.swift */,
+				2902799220583612006DACB9 /* APIQuestProgress.swift */,
 			);
 			path = Content;
 			sourceTree = "<group>";
@@ -577,9 +589,11 @@
 				295610F12056C9A400D9711A /* APIItem.swift in Sources */,
 				29323E3B205212FA00AC6D6F /* APIProfile.swift in Sources */,
 				29323E272051659C00AC6D6F /* ErrorHandler.swift in Sources */,
+				29027995205836A8006DACB9 /* RetrieveWorldStateCall.swift in Sources */,
 				29323E4720521B5000AC6D6F /* APIContributor.swift in Sources */,
 				295610E22056C3AC00D9711A /* RetrieveContentCall.swift in Sources */,
 				29323E1520504F2300AC6D6F /* APIUser.swift in Sources */,
+				2902798F205835DF006DACB9 /* APIWorldState.swift in Sources */,
 				292DEEA1204F625B0086D5F7 /* DateDecodingStrategy-Extension.swift in Sources */,
 				29323E552052F7C400AC6D6F /* APIOutfit.swift in Sources */,
 				29323E2D2051B43100AC6D6F /* DebugOutputHandler.swift in Sources */,
@@ -593,7 +607,9 @@
 				295610EB2056C6F600D9711A /* APIContent.swift in Sources */,
 				2956110D2056E18A00D9711A /* APIQuestCollect.swift in Sources */,
 				295611012056D20B00D9711A /* APISpell.swift in Sources */,
+				29027991205835F7006DACB9 /* APIQuestState.swift in Sources */,
 				292DEEB1205039CA0086D5F7 /* TaskResponse.swift in Sources */,
+				2902799320583612006DACB9 /* APIQuestProgress.swift in Sources */,
 				2902798120581DE3006DACB9 /* BulkAllocateAttributePointsCall.swift in Sources */,
 				295611072056DD2800D9711A /* APIQuest.swift in Sources */,
 				29323E37205212C400AC6D6F /* APIFlags.swift in Sources */,

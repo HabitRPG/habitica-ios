@@ -7,3 +7,9 @@
 //
 
 import Foundation
+
+@objc
+public protocol QuestProgressProtocol {
+    var health: Float { get set }
+    var rage: Float { get set }
+}

@@ -35,6 +35,10 @@ public class ContentLocalRepository: BaseLocalRepository {
         }))
     }
     
+    public func save(_ worldState: WorldStateProtocol) {
+        
+    }
+    
     public func getFAQEntries(search searchText: String? = nil) -> SignalProducer<ReactiveResults<[FAQEntryProtocol]>, ReactiveSwiftRealmError> {
         var producer: SignalProducer<Results<RealmFAQEntry>, ReactiveSwiftRealmError>?
         if let text = searchText, !text.isEmpty {

@@ -372,7 +372,7 @@
                   onSuccess:(void (^)())successBlock
                        onError:(void (^)())errorBlock;
 
-- (void)allocateAttributePoint:(NSString *)attribute
+/*- (void)allocateAttributePoint:(NSString *)attribute
                      onSuccess:(void (^)())successBlock
                        onError:(void (^)())errorBlock;
 
@@ -382,10 +382,10 @@
                         perception:(NSInteger)perceptionValue
                      onSuccess:(void (^)())successBlock
                        onError:(void (^)())errorBlock;
-
+*/
 - (void)reroll:(void (^)())successBlock onError:(void (^)())errorBlock;
 
-- (void)fetchWorldState:(void (^)())successBlock onError:(void (^)())errorBlock;
+//- (void)fetchWorldState:(void (^)())successBlock onError:(void (^)())errorBlock;
 
 - (NSManagedObjectContext *)getManagedObjectContext;
 

@@ -7,3 +7,16 @@
 //
 
 import Foundation
+import Habitica_Models
+import RealmSwift
+
+class RealmQuestProgress: Object, QuestProgressProtocol {
+    @objc dynamic var health: Float = 0
+    @objc dynamic var rage: Float = 0
+    
+    convenience init(_ progress: QuestProgressProtocol) {
+        self.init()
+        health = progress.health
+        rage = progress.health
+    }
+}

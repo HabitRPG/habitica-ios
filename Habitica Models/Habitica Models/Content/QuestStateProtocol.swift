@@ -7,3 +7,10 @@
 //
 
 import Foundation
+
+@objc
+public protocol QuestStateProtocol {
+    var active: Bool { get set }
+    var key: String? { get set }
+    var progress: QuestProgressProtocol? { get set }
+}
