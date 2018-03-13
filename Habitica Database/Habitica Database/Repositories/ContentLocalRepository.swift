@@ -27,6 +27,9 @@ public class ContentLocalRepository: BaseLocalRepository {
         save(objects: content.hatchingPotions?.map({ (hatchingPotion) in
             return RealmHatchingPotion(hatchingPotion)
         }))
+        save(objects: content.gear?.map({ (gear) in
+            return RealmGear(gear)
+        }))
         save(objects: content.faq?.map({ (entries) in
             return RealmFAQEntry(entries)
         }))

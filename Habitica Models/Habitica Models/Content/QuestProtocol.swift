@@ -8,6 +8,7 @@
 
 import Foundation
 
+@objc
 public protocol QuestProtocol: ItemProtocol {
     var completion: String? { get set }
     var category: String? { get set }

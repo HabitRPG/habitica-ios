@@ -8,6 +8,7 @@
 
 import Foundation
 
+@objc
 public protocol ContentProtocol {
     var food: [FoodProtocol]? { get set }
     var eggs: [EggProtocol]? { get set }

@@ -62,6 +62,11 @@ class RetrieveContentCallSpec: QuickSpec {
                                 expect(quest.text).toNot(beNil())
                                 expect(quest.boss == nil).toNot(equal(quest.collect == nil))
                             })
+                            expect(content?.faq?.count) == 13
+                            content?.faq?.forEach({ entry in
+                                expect(entry.index).toNot(beNil())
+                                expect(entry.question).toNot(beNil())
+                            })
                             done()
                         })
                         call.fire()

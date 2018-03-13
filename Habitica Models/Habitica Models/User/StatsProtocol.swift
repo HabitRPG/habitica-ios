@@ -9,7 +9,7 @@
 import Foundation
 
 @objc
-public protocol StatsProtocol {
+public protocol StatsProtocol: BaseStatsProtocol {
     var health: Float { get set }
     var maxHealth: Float { get set }
     var mana: Float { get set }
@@ -17,11 +17,8 @@ public protocol StatsProtocol {
     var experience: Float { get set }
     var toNextLevel: Float { get set }
     var level: Int { get set }
-    var strength: Int { get set }
-    var intelligence: Int { get set }
-    var constitution: Int { get set }
-    var perception: Int { get set }
     var points: Int { get set }
     var habitClass: String? { get set }
     var gold: Float { get set }
+    var buff: BuffProtocol? { get set }
 }

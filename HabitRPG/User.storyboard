@@ -153,7 +153,7 @@
         <!--Stats-->
         <scene sceneID="gTY-HZ-Xt1">
             <objects>
-                <viewController storyboardIdentifier="AttributePointsViewController" id="gDI-dh-U8F" customClass="AttributePointsVieController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AttributePointsViewController" id="gDI-dh-U8F" customClass="AttributePointsViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="C9F-eI-bC5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

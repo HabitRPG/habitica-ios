@@ -8,8 +8,10 @@
 
 import UIKit
 import PopupDialog
+import Habitica_Models
+import ReactiveSwift
 
-class AttributePointsVieController: HRPGUIViewController {
+class AttributePointsViewController: HRPGUIViewController {
     
     @IBOutlet weak var pointsToAllocateLabel: PaddedLabel!
     @IBOutlet weak var pointsToAllocateRightView: UIImageView!
@@ -54,13 +56,23 @@ class AttributePointsVieController: HRPGUIViewController {
         }
     }
     
-    let user = HRPGManager.shared().getUser()
-    private var observer: NSKeyValueObservation?
+    var user: UserProtocol?
+    private let userRepository = UserRepository()
+    private let inventoryRepository = InventoryRepository()
+    private let disposable = ScopedDisposable(CompositeDisposable())
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         topHeaderCoordinator?.hideHeader = true
         self.tutorialIdentifier = "stats"
+        
+        disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
+            self?.user = user
+            self?.updateUser()
+            self?.updateStats()
+            self?.updateAutoAllocatonViews()
+        }).start())
     }
     
     override func getDefinitonForTutorial(_ tutorialIdentifier: String) -> [AnyHashable: Any]? {
@@ -75,10 +87,6 @@ class AttributePointsVieController: HRPGUIViewController {
         
         pointsToAllocateLeftView.image = HabiticaIcons.imageOfAttributeSparklesLeft
         pointsToAllocateRightView.image = HabiticaIcons.imageOfAttributeSparklesRight
-        
-        updateUser()
-        updateStats()
-        updateAutoAllocatonViews()
         
         strengthStatsView.allocateAction = { [weak self] in self?.allocate("str") }
         intelligenceStatsView.allocateAction = { [weak self] in self?.allocate("int") }
@@ -104,38 +112,30 @@ class AttributePointsVieController: HRPGUIViewController {
         pointsToAllocateLabel.horizontalPadding = 12
         pointsToAllocateLabel.verticalPadding = 4
         pointsToAllocateLabel.layer.cornerRadius = pointsToAllocateLabel.frame.size.height/2
-        
-        observer = user?.observe(\.pointsToAllocate, changeHandler: {[weak self] (_, _) in
-            self?.updateUser()
-            self?.updateStats()
-            self?.updateAutoAllocatonViews()
-        })
     }
     
     private func allocate(_ attribute: String) {
-        HRPGManager.shared().allocateAttributePoint(attribute, onSuccess: {[weak self] in
-        }, onError: {[weak self] in
-        })
+        disposable.inner.add(userRepository.allocate(attributePoint: attribute).observeCompleted {})
     }
     
     private func updateUser() {
-        guard let user = user else {
+        guard let pointsToAllocate = user?.stats?.points else {
             return
         }
-        let canAllocatePoints = user.pointsToAllocate != 0
+        let canAllocatePoints = pointsToAllocate != 0
         pointsToAllocateLeftView.isHidden = !canAllocatePoints
         pointsToAllocateRightView.isHidden = !canAllocatePoints
         if !canAllocatePoints {
-            pointsToAllocateLabel.text = NSLocalizedString("0 Points to Allocate", comment: "")
+            pointsToAllocateLabel.text = L10n.Stats.noPointsToAllocate
             pointsToAllocateLabel.backgroundColor = UIColor.white
             pointsToAllocateLabel.textColor = UIColor.gray300()
         } else {
             pointsToAllocateLabel.backgroundColor = UIColor.gray100()
             pointsToAllocateLabel.textColor = UIColor.white
-            if user.pointsToAllocate == 1 {
-                pointsToAllocateLabel.text = NSLocalizedString("1 Point to Allocate", comment: "")
+            if pointsToAllocate == 1 {
+                pointsToAllocateLabel.text = L10n.Stats.onePointToAllocate
             } else {
-                pointsToAllocateLabel.text = String(format: NSLocalizedString("%@ Points to Allocate", comment: ""), user.pointsToAllocate)
+                pointsToAllocateLabel.text = L10n.Stats.pointsToAllocate(pointsToAllocate)
             }
         }
         strengthStatsView.canAllocatePoints = canAllocatePoints
@@ -145,10 +145,10 @@ class AttributePointsVieController: HRPGUIViewController {
     }
     
     private func updateStats() {
-        guard let user = user else {
+        guard let stats = user?.stats else {
             return
         }
-        let levelStat = user.level.intValue / 2
+        let levelStat = stats.level / 2
         
         totalStrength = levelStat
         totalIntelligence = levelStat
@@ -160,66 +160,65 @@ class AttributePointsVieController: HRPGUIViewController {
         constitutionStatsView.levelValue = levelStat
         perceptionStatsView.levelValue = levelStat
         
-        totalStrength += user.buff?.strength?.intValue ?? 0
-        totalIntelligence += user.buff?.intelligence?.intValue ?? 0
-        totalConstitution += user.buff?.constitution?.intValue ?? 0
-        totalPerception += user.buff?.perception?.intValue ?? 0
-        strengthStatsView.buffValue = user.buff?.strength?.intValue ?? 0
-        intelligenceStatsView.buffValue = user.buff?.intelligence?.intValue ?? 0
-        constitutionStatsView.buffValue = user.buff?.constitution?.intValue ?? 0
-        perceptionStatsView.buffValue = user.buff?.perception?.intValue ?? 0
+        if let buff = stats.buff {
+            totalStrength += buff.strength
+            totalIntelligence += buff.intelligence
+            totalConstitution += buff.constitution
+            totalPerception += buff.perception
+            strengthStatsView.buffValue = buff.strength
+            intelligenceStatsView.buffValue = buff.intelligence
+            constitutionStatsView.buffValue = buff.constitution
+            perceptionStatsView.buffValue = buff.perception
+        }
         
-        totalStrength += user.strength?.intValue ?? 0
-        totalIntelligence += user.intelligence?.intValue ?? 0
-        totalConstitution += user.constitution?.intValue ?? 0
-        totalPerception += user.perception?.intValue ?? 0
-        strengthStatsView.allocatedValue = user.strength?.intValue ?? 0
-        intelligenceStatsView.allocatedValue = user.intelligence?.intValue ?? 0
-        constitutionStatsView.allocatedValue = user.constitution?.intValue ?? 0
-        perceptionStatsView.allocatedValue = user.perception?.intValue ?? 0
+        totalStrength += stats.strength
+        totalIntelligence += stats.intelligence
+        totalConstitution += stats.constitution
+        totalPerception += stats.perception
+        strengthStatsView.allocatedValue = stats.strength
+        intelligenceStatsView.allocatedValue = stats.intelligence
+        constitutionStatsView.allocatedValue = stats.constitution
+        perceptionStatsView.allocatedValue = stats.perception
         
-        DispatchQueue.global(qos: .background).async {[weak self] in
-            self?.fetchGearStats(user: user)
+        if let outfit = user?.items?.gear?.equipped {
+            self.fetchGearStats(outfit: outfit)
         }
     }
     
-    private func fetchGearStats(user: User) {
-        let fetchRequest = NSFetchRequest<Gear>(entityName: "Gear")
+    private func fetchGearStats(outfit: OutfitProtocol) {
         var keys = [String]()
-        keys.append(user.equipped?.armor ?? "")
-        keys.append(user.equipped?.back ?? "")
-        keys.append(user.equipped?.body ?? "")
-        keys.append(user.equipped?.eyewear ?? "")
-        keys.append(user.equipped?.head ?? "")
-        keys.append(user.equipped?.headAccessory ?? "")
-        keys.append(user.equipped?.weapon ?? "")
-        keys.append(user.equipped?.shield ?? "")
-        fetchRequest.predicate = NSPredicate(format: "key in %@", keys)
-        let result = try? HRPGManager.shared().getManagedObjectContext().fetch(fetchRequest)
-        if let gear = result {
-            DispatchQueue.main.async {[weak self] in
+        keys.append(outfit.armor ?? "")
+        keys.append(outfit.back ?? "")
+        keys.append(outfit.body ?? "")
+        keys.append(outfit.eyewear ?? "")
+        keys.append(outfit.head ?? "")
+        keys.append(outfit.headAccessory ?? "")
+        keys.append(outfit.weapon ?? "")
+        keys.append(outfit.shield ?? "")
+        disposable.inner.add(inventoryRepository.getGear(predicate: NSPredicate(format: "key in %@", keys))
+            .take(first: 1)
+            .on(value: {[weak self] gear, _ in
                 self?.updateGearStats(gear)
-            }
-        }
+            }).start())
     }
     
-    private func updateGearStats(_ gear: [Gear]) {
+    private func updateGearStats(_ gear: [GearProtocol]) {
         var strength = 0.0
         var intelligence = 0.0
         var constitution = 0.0
         var perception = 0.0
         
         for row in gear {
-            strength += row.str.doubleValue
-            intelligence += row.intelligence.doubleValue
-            constitution += row.con.doubleValue
-            perception += row.per.doubleValue
+            strength += Double(row.strength)
+            intelligence += Double(row.intelligence)
+            constitution += Double(row.constitution)
+            perception += Double(row.perception)
             
-            var itemClass = row.klass
+            var itemClass = row.habitClass
             let itemSpecialClass = row.specialClass
             let classBonus = 0.5
-            let userClassMatchesGearClass = itemClass == user?.hclass
-            let userClassMatchesGearSpecialClass = itemSpecialClass == user?.hclass
+            let userClassMatchesGearClass = itemClass == user?.stats?.habitClass
+            let userClassMatchesGearSpecialClass = itemSpecialClass == user?.stats?.habitClass
             
             if !userClassMatchesGearClass && !userClassMatchesGearSpecialClass {
                 continue
@@ -231,17 +230,17 @@ class AttributePointsVieController: HRPGUIViewController {
             
             switch itemClass {
             case "rogue"?:
-                strength += row.str.doubleValue * classBonus
-                perception += row.per.doubleValue * classBonus
+                strength += Double(row.strength) * classBonus
+                perception += Double(row.perception) * classBonus
             case "healer"?:
-                constitution += row.con.doubleValue * classBonus
-                intelligence += row.intelligence.doubleValue * classBonus
+                constitution += Double(row.constitution) * classBonus
+                intelligence += Double(row.intelligence) * classBonus
             case "warrior"?:
-                strength += row.str.doubleValue * classBonus
-                constitution += row.con.doubleValue * classBonus
+                strength += Double(row.strength) * classBonus
+                constitution += Double(row.constitution) * classBonus
             case "wizard"?:
-                intelligence += row.intelligence.doubleValue * classBonus
-                perception += row.per.doubleValue * classBonus
+                intelligence += Double(row.intelligence) * classBonus
+                perception += Double(row.perception) * classBonus
             default:
                 break
             }
@@ -258,7 +257,7 @@ class AttributePointsVieController: HRPGUIViewController {
     }
     
     private func updateAutoAllocatonViews() {
-        let useAutoAllocation = user?.preferences?.automaticAllocation?.boolValue ?? false
+        let useAutoAllocation = user?.preferences?.automaticAllocation ?? false
         autoAllocationSwitch.isOn = useAutoAllocation
         distributionStackView.isHidden = !useAutoAllocation
         distributionBackground.isHidden = !useAutoAllocation
@@ -283,7 +282,7 @@ class AttributePointsVieController: HRPGUIViewController {
     }
     
     @IBAction func autoAllocationChanged(_ sender: UISwitch) {
-        user?.preferences?.automaticAllocation = NSNumber(value: sender.isOn)
+        user?.preferences?.automaticAllocation = sender.isOn
         updateAutoAllocatonViews()
         HRPGManager.shared().updateUser(["preferences.automaticAllocation": sender.isOn], onSuccess: {[weak self] in
             self?.updateAutoAllocatonViews()

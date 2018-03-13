@@ -13,6 +13,6 @@ import ReactiveSwift
 
 public class RetrieveTasksCall: ResponseArrayCall<TaskProtocol, APITask> {
     public init(stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "tasks.json")) {
-        super.init(httpMethod: "GET", endpoint: "tasks/user", postData: nil, stubHolder: stubHolder)
+        super.init(httpMethod: .GET, endpoint: "tasks/user", postData: nil, stubHolder: stubHolder)
     }
 }

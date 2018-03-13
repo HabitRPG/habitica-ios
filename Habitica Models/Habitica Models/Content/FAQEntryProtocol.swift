@@ -8,6 +8,7 @@
 
 import Foundation
 
+@objc
 public protocol FAQEntryProtocol {
     var index: Int { get set }
     var question: String? { get set }

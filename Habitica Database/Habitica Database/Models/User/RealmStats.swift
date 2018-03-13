@@ -26,6 +26,21 @@ class RealmStats: Object, StatsProtocol {
     @objc dynamic var points: Int = 0
     @objc dynamic var habitClass: String?
     @objc dynamic var gold: Float = 0
+    @objc dynamic var buff: BuffProtocol? {
+        get {
+            return realmBuff
+        }
+        set {
+            if let newBuff = newValue as? RealmBuff {
+                realmBuff = newBuff
+                return
+            }
+            if let newBuff = newValue {
+                realmBuff = RealmBuff(newBuff)
+            }
+        }
+    }
+    @objc dynamic var realmBuff: RealmBuff?
     
     convenience init(_ stats: StatsProtocol) {
         self.init()
@@ -43,5 +58,6 @@ class RealmStats: Object, StatsProtocol {
         points = stats.points
         habitClass = stats.habitClass
         gold = stats.gold
+        buff = stats.buff
     }
 }

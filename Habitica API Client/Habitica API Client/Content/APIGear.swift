@@ -17,6 +17,7 @@ class APIGear: GearProtocol, Codable {
     var type: String?
     var set: String?
     var habitClass: String?
+    var specialClass: String?
     var index: String?
     var strength: Int = 0
     var intelligence: Int = 0
@@ -31,6 +32,7 @@ class APIGear: GearProtocol, Codable {
         case type
         case set
         case habitClass = "klass"
+        case specialClass
         case index
         case strength = "str"
         case intelligence = "int"

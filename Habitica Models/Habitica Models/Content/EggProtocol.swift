@@ -8,6 +8,7 @@
 
 import Foundation
 
+@objc
 public protocol EggProtocol: ItemProtocol {
     var adjective: String? { get set }
 }

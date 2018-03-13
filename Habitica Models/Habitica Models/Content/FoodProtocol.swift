@@ -8,6 +8,7 @@
 
 import Foundation
 
+@objc
 public protocol FoodProtocol: ItemProtocol {
     var target: String? { get set }
     var canDrop: Bool { get set }

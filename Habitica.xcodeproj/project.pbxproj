@@ -1362,11 +1362,11 @@
 			isa = PBXGroup;
 			children = (
 				29FC884D2010CCC2002B3D3F /* BaseRepository.swift */,
+				295611152056ED7F00D9711A /* ContentRepository.swift */,
 				298119AA1F50251300F9FB39 /* InventoryRepository.swift */,
 				29FC884B2010CC8A002B3D3F /* SocialRepository.swift */,
 				29028C382034ABAF00B7F704 /* TaskRepositoryImpl.swift */,
 				29323E1A2050532D00AC6D6F /* UserRepository.swift */,
-				295611152056ED7F00D9711A /* ContentRepository.swift */,
 			);
 			path = Implementations;
 			sourceTree = "<group>";

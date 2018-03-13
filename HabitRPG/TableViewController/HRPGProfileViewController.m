@@ -59,7 +59,7 @@ NSString *currentUserID;
         [self refresh];
     }
     
-    UILabel *footerView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 170)];
+    UILabel *footerView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 70)];
     footerView.text = [NSString
                        stringWithFormat:NSLocalizedString(@"Hey! You are awesome!\nVersion %@ (%@)", nil),
                        [[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"],

@@ -8,6 +8,7 @@
 
 import Foundation
 
+@objc
 public protocol QuestCollectProtocol {
     var key: String? { get set }
     var text: String? { get set }

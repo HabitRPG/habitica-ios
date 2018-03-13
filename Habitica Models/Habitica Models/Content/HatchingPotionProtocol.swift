@@ -8,6 +8,7 @@
 
 import Foundation
 
+@objc
 public protocol HatchingPotionProtocol: ItemProtocol {
     var premium: Bool { get set }
     var limited: Bool { get set }

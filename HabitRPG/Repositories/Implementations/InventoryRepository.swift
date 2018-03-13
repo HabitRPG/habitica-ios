@@ -7,9 +7,12 @@
 //
 
 import Foundation
+import Habitica_Models
+import Habitica_Database
+import Habitica_API_Client
+import ReactiveSwift
 
-@objc
-class InventoryRepository: NSObject {
+class InventoryRepository: BaseRepository<InventoryLocalRepository> {
 
     lazy var managedObjectContext: NSManagedObjectContext = {
         return HRPGManager.shared().getManagedObjectContext()
@@ -38,4 +41,7 @@ class InventoryRepository: NSObject {
         return makeFetchRequest(entityName: "Quest", predicate: NSPredicate(format: "key == %@", key))
     }
     
+    func getGear(predicate: NSPredicate? = nil) -> SignalProducer<ReactiveResults<[GearProtocol]>, ReactiveSwiftRealmError> {
+        return localRepository.getGear(predicate: predicate)
+    }
 }

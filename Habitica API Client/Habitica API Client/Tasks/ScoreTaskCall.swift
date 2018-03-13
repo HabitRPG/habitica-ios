@@ -13,6 +13,6 @@ import FunkyNetwork
 
 public class ScoreTaskCall: ResponseObjectCall<TaskResponseProtocol, TaskResponse> {
     public init(task: TaskProtocol, direction: TaskScoringDirection, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "tasks.json")) {
-        super.init(httpMethod: "POST", endpoint: "tasks/\(task.id ?? "")/score/\(direction.rawValue)", postData: nil, stubHolder: stubHolder)
+        super.init(httpMethod: .POST, endpoint: "tasks/\(task.id ?? "")/score/\(direction.rawValue)", postData: nil, stubHolder: stubHolder)
     }
 }

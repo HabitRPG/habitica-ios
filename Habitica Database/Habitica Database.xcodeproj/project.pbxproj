@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		175E06DDF89F66BE894D1E3E /* Pods_Habitica_Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D821314C12B6448718FD4120 /* Pods_Habitica_Database.framework */; };
 		290279602057E957006DACB9 /* RealmFAQEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2902795F2057E957006DACB9 /* RealmFAQEntry.swift */; };
+		2902797B2058107E006DACB9 /* RealmBuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2902797A2058107E006DACB9 /* RealmBuff.swift */; };
+		2902797D2058134D006DACB9 /* InventoryLocalRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2902797C2058134D006DACB9 /* InventoryLocalRepository.swift */; };
 		292DEE3F204D9D810086D5F7 /* Habitica_API_Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE40204D9D810086D5F7 /* Habitica_API_Client.framework */; };
 		292DEE41204D9D860086D5F7 /* Habitica_Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE42204D9D860086D5F7 /* Habitica_Models.framework */; };
 		292DEE66204DCB010086D5F7 /* BaseLocalRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE65204DCB010086D5F7 /* BaseLocalRepository.swift */; };
@@ -58,6 +60,8 @@
 		1A9C077122E72759532BE95C /* Pods-Habitica Database.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica Database.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Habitica Database/Pods-Habitica Database.release.xcconfig"; sourceTree = "<group>"; };
 		1D84CF561C90D7C295416F02 /* Pods-Habitica DatabaseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica DatabaseTests.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Habitica DatabaseTests/Pods-Habitica DatabaseTests.release.xcconfig"; sourceTree = "<group>"; };
 		2902795F2057E957006DACB9 /* RealmFAQEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmFAQEntry.swift; sourceTree = "<group>"; };
+		2902797A2058107E006DACB9 /* RealmBuff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmBuff.swift; sourceTree = "<group>"; };
+		2902797C2058134D006DACB9 /* InventoryLocalRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryLocalRepository.swift; sourceTree = "<group>"; };
 		292DEE40204D9D810086D5F7 /* Habitica_API_Client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_API_Client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		292DEE42204D9D860086D5F7 /* Habitica_Models.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_Models.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		292DEE65204DCB010086D5F7 /* BaseLocalRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseLocalRepository.swift; sourceTree = "<group>"; };
@@ -150,6 +154,7 @@
 				292DEE67204DCCB40086D5F7 /* TaskLocalRepository.swift */,
 				29323E1C2050537700AC6D6F /* UserLocalRepository.swift */,
 				295611132056ECA400D9711A /* ContentLocalRepository.swift */,
+				2902797C2058134D006DACB9 /* InventoryLocalRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -177,6 +182,7 @@
 				29323E572052F8BC00AC6D6F /* RealmUserItems.swift */,
 				29323E5B2052F8E900AC6D6F /* RealmUserGear.swift */,
 				29323E592052F8C200AC6D6F /* RealmOutfit.swift */,
+				2902797A2058107E006DACB9 /* RealmBuff.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -477,6 +483,7 @@
 				295611242057D65500D9711A /* RealmQuestBoss.swift in Sources */,
 				2956111C2057C98300D9711A /* RealmEgg.swift in Sources */,
 				29323E5C2052F8E900AC6D6F /* RealmUserGear.swift in Sources */,
+				2902797B2058107E006DACB9 /* RealmBuff.swift in Sources */,
 				295611182057C8EB00D9711A /* RealmItem.swift in Sources */,
 				292DEE68204DCCB40086D5F7 /* TaskLocalRepository.swift in Sources */,
 				292DEE66204DCB010086D5F7 /* BaseLocalRepository.swift in Sources */,
@@ -486,6 +493,7 @@
 				29323E332051FA8700AC6D6F /* RealmStats.swift in Sources */,
 				29323E3F2052142600AC6D6F /* RealmPreferences.swift in Sources */,
 				295611202057D48A00D9711A /* RealmGear.swift in Sources */,
+				2902797D2058134D006DACB9 /* InventoryLocalRepository.swift in Sources */,
 				292DEE84204E41AF0086D5F7 /* RealmChecklistItem.swift in Sources */,
 				2956111A2057C93200D9711A /* RealmFood.swift in Sources */,
 				295611222057D60F00D9711A /* RealmQuest.swift in Sources */,

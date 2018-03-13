@@ -8,6 +8,7 @@
 
 import Foundation
 
+@objc
 public protocol QuestBossProtocol {
     var name: String? { get set }
     var health: Int { get set }

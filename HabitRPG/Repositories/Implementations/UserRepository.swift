@@ -49,4 +49,25 @@ class UserRepository: BaseRepository<UserLocalRepository> {
             }
         }
     }
+    
+    func allocate(attributePoint: String) -> Signal<StatsProtocol?, NoError> {
+        let call = AllocateAttributePointCall(attribute: attributePoint)
+        call.fire()
+        return call.objectSignal.on(value: {stats in
+            if let userId = AuthenticationManager.shared.currentUserId, let stats = stats {
+                self.localRepository.save(userId, stats: stats)
+            }
+        })
+    }
+    
+    func bulkAllocate(strength: Int, intelligence: Int, constitution: Int, perception: Int) -> Signal<StatsProtocol?, NoError> {
+        let call = BulkAllocateAttributePointsCall(strength: strength, intelligence: intelligence, constitution: constitution, perception: perception)
+        call.fire()
+        return call.objectSignal.on(value: {stats in
+            if let userId = AuthenticationManager.shared.currentUserId, let stats = stats {
+                self.localRepository.save(userId, stats: stats)
+            }
+        })
+        
+    }
 }

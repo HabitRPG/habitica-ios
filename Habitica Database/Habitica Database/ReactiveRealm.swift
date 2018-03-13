@@ -377,6 +377,41 @@ public extension SignalProducerProtocol where Value: NotificationEmitter, Error 
     }
 }
 
+public extension SignalProducerProtocol where Value: ObjectNotificationEmitter, Error == ReactiveSwiftRealmError {
+    
+    /**
+     Transform Results<T> into a reactive source
+     :returns: signal containing updated values and optional ReactiveChangeset when changed
+     */
+    
+    public typealias ReactiveObject = (value:Self.Value,changes:ReactiveChange?)
+    
+    public  func reactiveObject() -> SignalProducer<ReactiveObject, ReactiveSwiftRealmError> {
+        return producer.flatMap(.latest) {realmObject -> SignalProducer<ReactiveObject, ReactiveSwiftRealmError> in
+            return SignalProducer { observer, lifetime in
+                observer.send(value: (value: realmObject, changes: nil))
+                let notificationToken = realmObject.observe { change in
+                    switch change {
+                    case .change(let properties):
+                        observer.send(value: (value: realmObject, changes: ReactiveChange(deleted: false, properties: properties)))
+                    case .error(let error):
+                        fatalError("\(error)")
+                        break
+                    case .deleted:
+                        observer.send(value: (value: realmObject, changes: ReactiveChange(deleted: true, properties: [])))
+                        observer.sendCompleted()
+                        break
+                    }
+                }
+                lifetime.observeEnded {
+                    notificationToken.invalidate()
+                    observer.sendCompleted()
+                }
+            }
+        }
+    }
+}
+
 public  extension SignalProducerProtocol where Value:SortableRealmResults, Error == ReactiveSwiftRealmError{
     /**
      Sorts the signal producer of Results<T> using a key an the ascending value
@@ -421,6 +456,19 @@ public protocol NotificationEmitter {
 
 extension Results:NotificationEmitter{}
 
+public protocol ObjectNotificationEmitter {
+    
+    /**
+     Returns a `NotificationToken`, which while retained enables change notifications for the current collection.
+     
+     - returns: `NotificationToken` - retain this value to keep notifications being emitted for the current collection.
+     */
+    func observe(_ block: @escaping (RealmSwift.ObjectChange) -> Swift.Void) -> NotificationToken
+}
+
+
+extension Object:ObjectNotificationEmitter{}
+
 /**
  `ReactiveChangeset` is a struct that contains the data about a single realm change set.
  
@@ -444,6 +492,16 @@ public struct ReactiveChangeset {
         self.deleted = deleted
         self.inserted = inserted
         self.updated = updated
+    }
+}
+
+public struct ReactiveChange {
+    public let properties: [PropertyChange]
+    public let deleted: Bool
+    
+    public init(deleted: Bool, properties: [PropertyChange]) {
+        self.deleted = deleted
+        self.properties = properties
     }
 }
 

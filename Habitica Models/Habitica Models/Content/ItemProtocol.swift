@@ -8,6 +8,7 @@
 
 import Foundation
 
+@objc
 public protocol ItemProtocol {
     var key: String? { get set }
     var text: String? { get set }

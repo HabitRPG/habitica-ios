@@ -39,20 +39,20 @@ public class TaskLocalRepository: BaseLocalRepository {
         })
     }
     
-    public func getTask(id: String) -> SignalProducer<TaskProtocol?, ReactiveSwiftRealmError> {
-        return RealmTask.findBy(query: "id == '\(id)'").reactive().map({ (tasks, changes) -> TaskProtocol? in
-            return tasks.first
+    public func getTask(id: String) -> SignalProducer<TaskProtocol, ReactiveSwiftRealmError> {
+        return RealmTask.findBy(key: id).skipNil().map({ task -> TaskProtocol in
+            return task
         })
     }
     
     public func getUserStats(id: String) -> SignalProducer<StatsProtocol, ReactiveSwiftRealmError> {
-        return RealmUser.findBy(query: "id == '\(id)'").reactive().map({ (users, changes) -> StatsProtocol? in
-            return users.first?.stats
+        return RealmUser.findBy(key: id).map({ user -> StatsProtocol? in
+            return user?.stats
         }).skipNil()
     }
     
     public func update(taskId: String, stats: StatsProtocol, direction: TaskScoringDirection, response: TaskResponseProtocol) {
-        getTask(id: taskId).take(first: 1).skipNil().on(value: { realmTask in
+        RealmTask.findBy(key: taskId).take(first: 1).skipNil().on(value: { realmTask in
             try? self.realm?.write {
                 if let delta = response.delta {
                     realmTask.value = realmTask.value + delta

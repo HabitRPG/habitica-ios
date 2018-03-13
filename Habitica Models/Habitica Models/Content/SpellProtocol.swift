@@ -8,6 +8,7 @@
 
 import Foundation
 
+@objc
 public protocol SpellProtocol {
     var key: String? { get set }
     var text: String? { get set }

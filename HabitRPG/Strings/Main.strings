@@ -1,2 +1,5 @@
 "search" = "Search";
 "reset_tips" = "Reset Justins Tips";
+"stats.no_points_to_allocate" = "0 Points to Allocate";
+"stats.one_point_to_allocate" = "1 Point to Allocate";
+"stats.points_to_allocate" = "%d Point to Allocate";

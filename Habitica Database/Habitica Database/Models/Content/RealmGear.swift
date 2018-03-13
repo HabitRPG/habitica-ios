@@ -18,6 +18,7 @@ class RealmGear: Object, GearProtocol {
     @objc dynamic var type: String?
     @objc dynamic var set: String?
     @objc dynamic var habitClass: String?
+    @objc dynamic var specialClass: String?
     @objc dynamic var index: String?
     @objc dynamic var strength: Int = 0
     @objc dynamic var intelligence: Int = 0
@@ -37,6 +38,7 @@ class RealmGear: Object, GearProtocol {
         type = gear.type
         set = gear.set
         habitClass = gear.habitClass
+        specialClass = gear.specialClass
         index = gear.index
         strength = gear.strength
         intelligence = gear.intelligence

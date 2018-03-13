@@ -8,6 +8,7 @@
 
 import Foundation
 
+@objc
 public protocol GearProtocol {
     var key: String? { get set }
     var text: String? { get set }
@@ -16,6 +17,7 @@ public protocol GearProtocol {
     var type: String? { get set }
     var set: String? { get set }
     var habitClass: String? { get set }
+    var specialClass: String? { get set }
     var index: String? { get set }
     var strength: Int { get set }
     var intelligence: Int { get set }
