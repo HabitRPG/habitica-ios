@@ -11,7 +11,14 @@ import Habitica_Models
 
 class APIQuestBoss: QuestBossProtocol, Codable {
     var name: String?
-    var hp: Int = 0
-    var str: Float = 0
-    var def: Float = 0
+    var health: Int = 0
+    var strength: Float = 0
+    var defense: Float = 0
+    
+    enum CodingKeys: String, CodingKey {
+        case name
+        case health = "hp"
+        case strength = "str"
+        case defense = "def"
+    }
 }

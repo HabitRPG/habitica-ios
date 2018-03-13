@@ -80,6 +80,8 @@ protocol LoginViewModelType {
 }
 
 class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOutputs {
+    
+    private let userRepository = UserRepository()
 
     //swiftlint:disable function_body_length
     //swiftlint:disable cyclomatic_complexity
@@ -335,17 +337,9 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
 
     private let onSuccessfulLoginProperty = MutableProperty(())
     func onSuccessfulLogin() {
-        self.sharedManager?.setCredentials()
-        self.sharedManager?.fetchUser({[weak self] in
-            self?.sharedManager?.fetchWorldState({
-                self?.onSuccessfulLoginProperty.value = ()
-
-            }, onError: {
-                self?.onSuccessfulLoginProperty.value = ()
-            })
-        }, onError: {[weak self] in
+        userRepository.retrieveUser().observeCompleted {[weak self] in
             self?.onSuccessfulLoginProperty.value = ()
-        })
+        }
     }
 
     private let facebookLoginButtonPressedProperty = MutableProperty(())

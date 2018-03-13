@@ -20,6 +20,8 @@ import RealmSwift
 class HabiticaAppDelegate: NSObject {
     
     private let userRepository = UserRepository()
+    private let contentRepository = ContentRepository()
+    private let taskRepository = TaskRepository()
     
     @objc
     func setupPopups() {
@@ -144,7 +146,33 @@ class HabiticaAppDelegate: NSObject {
     @objc
     func retrieveUser() {
         userRepository.retrieveUser().observeCompleted {
-            
+            self.retrieveContent()
+        }
+    }
+    
+    @objc
+    func retrieveContent() {
+        let defaults = UserDefaults.standard
+        let lastContentFetch = defaults.object(forKey: "lastContentFetch") as? NSDate
+        let lastContentFetchVersion = defaults.object(forKey: "lastContentFetchVersion") as? String
+        let currentBuildNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String
+        if lastContentFetch == nil || (lastContentFetch?.timeIntervalSinceNow ?? 0) < 1 || lastContentFetchVersion != currentBuildNumber {
+            contentRepository.retrieveContent().observeCompleted {
+                defaults.setValue(Date(), forKey: "lastContentFetch")
+                defaults.setValue(currentBuildNumber, forKey: "lastContentFetchVersion")
+            }
+        }
+    }
+    
+    @objc
+    func retrieveTasks(_ completed: @escaping ((Bool) -> Void)) {
+        taskRepository.retrieveTasks().observeResult { (result) in
+            switch result {
+            case .success(let _):
+                completed(true)
+            case .failure(let _):
+                completed(false)
+            }
         }
     }
 }

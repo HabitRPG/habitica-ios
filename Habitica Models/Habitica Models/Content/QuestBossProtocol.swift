@@ -10,7 +10,7 @@ import Foundation
 
 public protocol QuestBossProtocol {
     var name: String? { get set }
-    var hp: Int { get set }
-    var str: Float { get set }
-    var def: Float { get set }
+    var health: Int { get set }
+    var strength: Float { get set }
+    var defense: Float { get set }
 }

@@ -22,6 +22,10 @@ class RealmSpell: Object, SpellProtocol {
     @objc dynamic var immediateUse: Bool = false
     @objc dynamic var silent: Bool = false
     
+    override static func primaryKey() -> String {
+        return "key"
+    }
+    
     convenience init(_ spell: SpellProtocol) {
         self.init()
         key = spell.key

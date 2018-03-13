@@ -9,6 +9,9 @@
 import Foundation
 import PDKeychainBindingsController
 import KeychainAccess
+import Crashlytics
+import Amplitude_iOS
+import Google
 import Habitica_API_Client
 
 class AuthenticationManager: NSObject {
@@ -42,6 +45,11 @@ class AuthenticationManager: NSObject {
             let defaults = UserDefaults.standard
             defaults.set(newUserId, forKey: "currentUserId")
             NetworkAuthenticationManager.shared.currentUserId = newUserId
+            
+            GAI.sharedInstance().defaultTracker.set("&uid", value: newUserId)
+            Crashlytics.sharedInstance().setUserIdentifier(newUserId)
+            Crashlytics.sharedInstance().setUserName(newUserId)
+            Amplitude.instance().setUserId(newUserId)
         }
     }
     

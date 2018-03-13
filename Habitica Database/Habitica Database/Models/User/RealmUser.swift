@@ -24,6 +24,7 @@ class RealmUser: Object, UserProtocol {
         set {
             if let newStats = newValue as? RealmStats {
                 realmStats = newStats
+                return
             }
             if let stats = newValue {
                 realmStats = RealmStats(stats)
@@ -39,6 +40,7 @@ class RealmUser: Object, UserProtocol {
         set {
             if let newFlags = newValue as? RealmFlags {
                 realmFlags = newFlags
+                return
             }
             if let newFlags = newValue {
                 realmFlags = RealmFlags(newFlags)
@@ -54,6 +56,7 @@ class RealmUser: Object, UserProtocol {
         set {
             if let newPreferences = newValue as? RealmPreferences {
                 realmPreferences = newPreferences
+                return
             }
             if let newPreferences = newValue {
                 realmPreferences = RealmPreferences(newPreferences)
@@ -69,6 +72,7 @@ class RealmUser: Object, UserProtocol {
         set {
             if let newProfile = newValue as? RealmProfile {
                 realmProfile = newProfile
+                return
             }
             if let profile = newValue {
                 realmProfile = RealmProfile(profile)
@@ -84,6 +88,7 @@ class RealmUser: Object, UserProtocol {
         set {
             if let newContributor = newValue as? RealmContributor {
                 realmContributor = newContributor
+                return
             }
             if let newContributor = newValue {
                 realmContributor = RealmContributor(newContributor)
@@ -98,6 +103,7 @@ class RealmUser: Object, UserProtocol {
         set {
             if let newItems = newValue as? RealmUserItems {
                 realmItems = newItems
+                return
             }
             if let newItems = newValue {
                 realmItems = RealmUserItems(newItems)

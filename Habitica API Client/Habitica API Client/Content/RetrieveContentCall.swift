@@ -12,7 +12,7 @@ import FunkyNetwork
 import ReactiveSwift
 
 public class RetrieveContentCall: ResponseObjectCall<ContentProtocol, APIContent> {
-    public init(stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "user.json")) {
-        super.init(httpMethod: "GET", endpoint: "user", postData: nil, stubHolder: stubHolder)
+    public init(stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "content.json")) {
+        super.init(httpMethod: "GET", endpoint: "content", postData: nil, stubHolder: stubHolder)
     }
 }

@@ -16,6 +16,15 @@ public class ContentLocalRepository: BaseLocalRepository {
         save(objects: content.spells?.map({ (spell) in
             return RealmSpell(spell)
         }))
+        save(objects: content.food?.map({ (food) in
+            return RealmFood(food)
+        }))
+        save(objects: content.eggs?.map({ (egg) in
+            return RealmEgg(egg)
+        }))
+        save(objects: content.hatchingPotions?.map({ (hatchingPotion) in
+            return RealmHatchingPotion(hatchingPotion)
+        }))
     }
     
 }
