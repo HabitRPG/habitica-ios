@@ -57,3 +57,5 @@
 #import "HRPGInboxTableViewController.h"
 #import "HRPGGuildsOverviewViewController.h"
 #import "HRPGAboutViewController.h"
+#import "HRPGShopOverviewViewController.h"
+#import "HRPGSpellViewController.h"

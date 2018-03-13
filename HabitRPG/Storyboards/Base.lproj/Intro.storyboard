@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="upQ-EI-E3w">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="upQ-EI-E3w">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -15,7 +15,7 @@
         <!--Loading View Controller-->
         <scene sceneID="sbR-Jk-St1">
             <objects>
-                <viewController id="upQ-EI-E3w" customClass="HRPGLoadingViewController" sceneMemberID="viewController">
+                <viewController id="upQ-EI-E3w" customClass="LoadingViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HOh-YP-nne"/>
                         <viewControllerLayoutGuide type="bottom" id="3Cb-DP-fCB"/>
@@ -51,8 +51,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="activityIndicator" destination="GeH-AC-vCO" id="H9P-cI-tOn"/>
-                        <outlet property="logoView" destination="56g-ur-5TX" id="yRi-ry-wZh"/>
+                        <outlet property="activityIndicator" destination="GeH-AC-vCO" id="sHf-iF-90Q"/>
+                        <outlet property="logoView" destination="56g-ur-5TX" id="9eB-RC-kUM"/>
                         <segue destination="0Ix-Uy-5zN" kind="showDetail" identifier="IntroSegue" animates="NO" id="8cI-OH-Ddw">
                             <nil key="action"/>
                         </segue>
@@ -1436,8 +1436,8 @@
         <image name="onepassword-toolbar" width="27" height="27"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="5Hb-dX-OsZ"/>
-        <segue reference="aKA-6e-Im9"/>
+        <segue reference="Zxx-A1-MXZ"/>
+        <segue reference="Z2J-RM-J8b"/>
         <segue reference="6ya-X1-F2T"/>
     </inferredMetricsTieBreakers>
 </document>

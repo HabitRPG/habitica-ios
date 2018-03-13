@@ -14,6 +14,14 @@
 		2902796E2057F2C5006DACB9 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2902796B2057F2C5006DACB9 /* Storyboard.swift */; };
 		290279702057F4A4006DACB9 /* FAQDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2902796F2057F4A4006DACB9 /* FAQDetailViewController.swift */; };
 		290279732057FB4E006DACB9 /* FAQTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290279722057FB4E006DACB9 /* FAQTableViewDataSource.swift */; };
+		2902799720583D82006DACB9 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2902799620583D82006DACB9 /* LoadingViewController.swift */; };
+		2902799A20583E83006DACB9 /* OnePasswordExtension.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2902799C20583E83006DACB9 /* OnePasswordExtension.strings */; };
+		2902799D20583ECA006DACB9 /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2902799F20583ECA006DACB9 /* User.storyboard */; };
+		290279A020583ECF006DACB9 /* Shops.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 290279A220583ECF006DACB9 /* Shops.storyboard */; };
+		290279A320583ED3006DACB9 /* Shop.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 290279A520583ED3006DACB9 /* Shop.storyboard */; };
+		290279A620583ED8006DACB9 /* BuyModal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 290279A820583ED8006DACB9 /* BuyModal.storyboard */; };
+		290279A920583EDE006DACB9 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 290279AB20583EDE006DACB9 /* Settings.storyboard */; };
+		290279AD20583EF9006DACB9 /* Intro.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 290279AF20583EF9006DACB9 /* Intro.storyboard */; };
 		29028BB120319E4000B7F704 /* RageStrikeActiveContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29028BB020319E4000B7F704 /* RageStrikeActiveContentView.xib */; };
 		29028C392034ABAF00B7F704 /* TaskRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29028C382034ABAF00B7F704 /* TaskRepositoryImpl.swift */; };
 		29028C3E203701B900B7F704 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29028C3D203701B900B7F704 /* ChatTableViewCell.swift */; };
@@ -50,7 +58,6 @@
 		293282161F389DBB00D42961 /* SetupCustomizationItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 293282151F389DBB00D42961 /* SetupCustomizationItemView.xib */; };
 		293282181F39E1A400D42961 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293282171F39E1A400D42961 /* WelcomeViewController.swift */; };
 		2932821A1F39E28000D42961 /* TypingTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293282191F39E28000D42961 /* TypingTextViewController.swift */; };
-		293BB4981FCD74CC003B6F4F /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 293BB4971FCD74CC003B6F4F /* User.storyboard */; };
 		293BB49A1FCD7DC0003B6F4F /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293BB4991FCD7DC0003B6F4F /* StatsView.swift */; };
 		293BB49C1FCD7DC8003B6F4F /* StatsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 293BB49B1FCD7DC8003B6F4F /* StatsView.xib */; };
 		293BB49F1FCDCD33003B6F4F /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293BB49E1FCDCD33003B6F4F /* Stats.swift */; };
@@ -77,7 +84,6 @@
 		29701FF61F5848A40097BBCC /* SnapshotHelperXcode8.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29701FF51F5848A40097BBCC /* SnapshotHelperXcode8.swift */; };
 		297517B41F30EBD100B5BCB9 /* AvatarSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297517B31F30EBD100B5BCB9 /* AvatarSetupViewController.swift */; };
 		297517B61F30EBFC00B5BCB9 /* TaskSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297517B51F30EBFC00B5BCB9 /* TaskSetupViewController.swift */; };
-		297AF8201F29EF0D003B7194 /* Intro.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 297AF81F1F29EF0D003B7194 /* Intro.storyboard */; };
 		2980E6071EEA1F55005B7100 /* YesterdailiesDialogView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2980E6061EEA1F55005B7100 /* YesterdailiesDialogView.xib */; };
 		2980E6091EEA25CE005B7100 /* YesterdailiesDialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2980E6081EEA25CD005B7100 /* YesterdailiesDialogView.swift */; };
 		2980E60B1EEA39B1005B7100 /* YesterdailyTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2980E60A1EEA39B1005B7100 /* YesterdailyTaskCell.swift */; };
@@ -112,7 +118,6 @@
 		29AAA1631F2B6D2000029737 /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AAA1621F2B6D2000029737 /* SetupViewController.swift */; };
 		29B388DF1EEF4FBD00A72950 /* MorningNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B388DE1EEF4FBD00A72950 /* MorningNotification.swift */; };
 		29B388E11EF2BB7600A72950 /* YesterdailyChecklistItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29B388E01EF2BB7600A72950 /* YesterdailyChecklistItem.xib */; };
-		29B3FEAA1F9A0D0F000B12CF /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29B3FEA91F9A0D0F000B12CF /* Settings.storyboard */; };
 		29B3FEAC1F9A3395000B12CF /* ProfileSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B3FEAB1F9A3395000B12CF /* ProfileSettingsViewController.swift */; };
 		29B3FEAF1F9A33AB000B12CF /* APISettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B3FEAE1F9A33AB000B12CF /* APISettingsViewController.swift */; };
 		29B3FEB11F9A37E3000B12CF /* BaseSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B3FEB01F9A37E3000B12CF /* BaseSettingsViewController.swift */; };
@@ -158,8 +163,6 @@
 		29FD8AA7203DA42A0094322E /* NSLayoutConstraint-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FD8AA6203DA42A0094322E /* NSLayoutConstraint-Extensions.swift */; };
 		29FEB278202B491600EA245A /* Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FEB277202B491600EA245A /* Avatar.swift */; };
 		29FEB27A202B4F0400EA245A /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FEB279202B4F0400EA245A /* AvatarView.swift */; };
-		49005B6E1F17DDF9004830D9 /* Shop.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49005B6D1F17DDF9004830D9 /* Shop.storyboard */; };
-		49005B701F17E7AC004830D9 /* Shops.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49005B6F1F17E7AC004830D9 /* Shops.storyboard */; };
 		49005B721F180589004830D9 /* HRPGCurrencyCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49005B711F180588004830D9 /* HRPGCurrencyCountView.swift */; };
 		49005B7C1F18371F004830D9 /* HRPGShopUserHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49005B7B1F18371E004830D9 /* HRPGShopUserHeaderView.swift */; };
 		49005B7E1F183775004830D9 /* HRPGShopUserHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49005B7D1F183775004830D9 /* HRPGShopUserHeaderView.xib */; };
@@ -201,7 +204,6 @@
 		49A84FB31F9FCA30003E2956 /* ChallengeDetailInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49A84FB11F9FCA30003E2956 /* ChallengeDetailInfoTableViewCell.xib */; };
 		49B87D93201BB37300CA1A75 /* Mapping2to3.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 49B87D92201BB37300CA1A75 /* Mapping2to3.xcmappingmodel */; };
 		49B87D96201BBF3800CA1A75 /* HabiticaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B87D95201BBF3800CA1A75 /* HabiticaTests.m */; };
-		49DCB7991F3407B30079FDD0 /* BuyModal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49DCB7981F3407B30079FDD0 /* BuyModal.storyboard */; };
 		49DCB79B1F3422440079FDD0 /* HRPGBuyItemModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DCB79A1F3422440079FDD0 /* HRPGBuyItemModalViewController.swift */; };
 		49DCB7AC1F39239D0079FDD0 /* HRPGSimpleShopItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DCB7AB1F39239D0079FDD0 /* HRPGSimpleShopItemView.swift */; };
 		49DCB7B01F3923F20079FDD0 /* HRPGSimpleShopItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49DCB7AF1F3923F20079FDD0 /* HRPGSimpleShopItemView.xib */; };
@@ -352,7 +354,6 @@
 		D984D58F1E4A2F41006E84F8 /* SubscriptionOptionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D984D58E1E4A2F41006E84F8 /* SubscriptionOptionView.xib */; };
 		D987393C19687F3E002A2426 /* NSNumber+abbreviation.m in Sources */ = {isa = PBXBuildFile; fileRef = D987393B19687F3E002A2426 /* NSNumber+abbreviation.m */; };
 		D98768F51AFFB85100336978 /* blade-equipResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = D98768F41AFFB85100336978 /* blade-equipResponse.json */; };
-		D98830D51BADD4220018594D /* HRPGLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D98830D41BADD4220018594D /* HRPGLoadingViewController.m */; };
 		D9884B4519168AF00078BC7C /* HRPGProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9884B4419168AF00078BC7C /* HRPGProgressView.m */; };
 		D98AD54B19437A3500AF6174 /* HRPGPetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D98AD54A19437A3500AF6174 /* HRPGPetViewController.m */; };
 		D98AD54E19437D9400AF6174 /* Pet.m in Sources */ = {isa = PBXBuildFile; fileRef = D98AD54D19437D9400AF6174 /* Pet.m */; };
@@ -521,6 +522,14 @@
 		2902796B2057F2C5006DACB9 /* Storyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		2902796F2057F4A4006DACB9 /* FAQDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQDetailViewController.swift; sourceTree = "<group>"; };
 		290279722057FB4E006DACB9 /* FAQTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQTableViewDataSource.swift; sourceTree = "<group>"; };
+		2902799620583D82006DACB9 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		2902799B20583E83006DACB9 /* bg */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bg; path = bg.lproj/OnePasswordExtension.strings; sourceTree = "<group>"; };
+		2902799E20583ECA006DACB9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/User.storyboard; sourceTree = "<group>"; };
+		290279A120583ECF006DACB9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Shops.storyboard; sourceTree = "<group>"; };
+		290279A420583ED3006DACB9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Shop.storyboard; sourceTree = "<group>"; };
+		290279A720583ED8006DACB9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/BuyModal.storyboard; sourceTree = "<group>"; };
+		290279AA20583EDE006DACB9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
+		290279AE20583EF9006DACB9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Intro.storyboard; sourceTree = "<group>"; };
 		29028BB020319E4000B7F704 /* RageStrikeActiveContentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RageStrikeActiveContentView.xib; sourceTree = "<group>"; };
 		29028C382034ABAF00B7F704 /* TaskRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRepositoryImpl.swift; sourceTree = "<group>"; };
 		29028C3D203701B900B7F704 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
@@ -559,7 +568,6 @@
 		293282151F389DBB00D42961 /* SetupCustomizationItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetupCustomizationItemView.xib; sourceTree = "<group>"; };
 		293282171F39E1A400D42961 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		293282191F39E28000D42961 /* TypingTextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypingTextViewController.swift; sourceTree = "<group>"; };
-		293BB4971FCD74CC003B6F4F /* User.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
 		293BB4991FCD7DC0003B6F4F /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
 		293BB49B1FCD7DC8003B6F4F /* StatsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatsView.xib; sourceTree = "<group>"; };
 		293BB49E1FCDCD33003B6F4F /* Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
@@ -590,7 +598,6 @@
 		29701FF51F5848A40097BBCC /* SnapshotHelperXcode8.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelperXcode8.swift; sourceTree = "<group>"; };
 		297517B31F30EBD100B5BCB9 /* AvatarSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarSetupViewController.swift; sourceTree = "<group>"; };
 		297517B51F30EBFC00B5BCB9 /* TaskSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskSetupViewController.swift; sourceTree = "<group>"; };
-		297AF81F1F29EF0D003B7194 /* Intro.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Intro.storyboard; sourceTree = "<group>"; };
 		2980E6061EEA1F55005B7100 /* YesterdailiesDialogView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YesterdailiesDialogView.xib; sourceTree = "<group>"; };
 		2980E6081EEA25CD005B7100 /* YesterdailiesDialogView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YesterdailiesDialogView.swift; sourceTree = "<group>"; };
 		2980E60A1EEA39B1005B7100 /* YesterdailyTaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YesterdailyTaskCell.swift; sourceTree = "<group>"; };
@@ -637,7 +644,6 @@
 		29AAA1621F2B6D2000029737 /* SetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
 		29B388DE1EEF4FBD00A72950 /* MorningNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MorningNotification.swift; sourceTree = "<group>"; };
 		29B388E01EF2BB7600A72950 /* YesterdailyChecklistItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YesterdailyChecklistItem.xib; sourceTree = "<group>"; };
-		29B3FEA91F9A0D0F000B12CF /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		29B3FEAB1F9A3395000B12CF /* ProfileSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsViewController.swift; sourceTree = "<group>"; };
 		29B3FEAE1F9A33AB000B12CF /* APISettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISettingsViewController.swift; sourceTree = "<group>"; };
 		29B3FEB01F9A37E3000B12CF /* BaseSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSettingsViewController.swift; sourceTree = "<group>"; };
@@ -689,8 +695,6 @@
 		2FD6A8DD61F63B61871C94A9 /* Pods-Habitica.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Habitica/Pods-Habitica.debug.xcconfig"; sourceTree = "<group>"; };
 		2FDBD03FA52D6A93D9B664CE /* Pods_Habitica.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BC569DB4F5A31ED940986A5 /* Pods-Habitica.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica.release.xcconfig"; path = "Pods/Target Support Files/Pods-Habitica/Pods-Habitica.release.xcconfig"; sourceTree = "<group>"; };
-		49005B6D1F17DDF9004830D9 /* Shop.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Shop.storyboard; sourceTree = "<group>"; };
-		49005B6F1F17E7AC004830D9 /* Shops.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Shops.storyboard; sourceTree = "<group>"; };
 		49005B711F180588004830D9 /* HRPGCurrencyCountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGCurrencyCountView.swift; sourceTree = "<group>"; };
 		49005B7B1F18371E004830D9 /* HRPGShopUserHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGShopUserHeaderView.swift; sourceTree = "<group>"; };
 		49005B7D1F183775004830D9 /* HRPGShopUserHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPGShopUserHeaderView.xib; sourceTree = "<group>"; };
@@ -741,7 +745,6 @@
 		49B87D92201BB37300CA1A75 /* Mapping2to3.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = Mapping2to3.xcmappingmodel; sourceTree = "<group>"; };
 		49B87D94201BBF3800CA1A75 /* HabiticaTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HabiticaTests.h; sourceTree = "<group>"; };
 		49B87D95201BBF3800CA1A75 /* HabiticaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HabiticaTests.m; sourceTree = "<group>"; };
-		49DCB7981F3407B30079FDD0 /* BuyModal.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BuyModal.storyboard; sourceTree = "<group>"; };
 		49DCB79A1F3422440079FDD0 /* HRPGBuyItemModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGBuyItemModalViewController.swift; sourceTree = "<group>"; };
 		49DCB7AB1F39239D0079FDD0 /* HRPGSimpleShopItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGSimpleShopItemView.swift; sourceTree = "<group>"; };
 		49DCB7AF1F3923F20079FDD0 /* HRPGSimpleShopItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPGSimpleShopItemView.xib; sourceTree = "<group>"; };
@@ -1012,8 +1015,6 @@
 		D987393A19687F3E002A2426 /* NSNumber+abbreviation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSNumber+abbreviation.h"; path = "HabitRPG/Utilities/NSNumber+abbreviation.h"; sourceTree = SOURCE_ROOT; };
 		D987393B19687F3E002A2426 /* NSNumber+abbreviation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSNumber+abbreviation.m"; path = "HabitRPG/Utilities/NSNumber+abbreviation.m"; sourceTree = SOURCE_ROOT; };
 		D98768F41AFFB85100336978 /* blade-equipResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "blade-equipResponse.json"; path = "HabiticaTests/Fixtures/blade-equipResponse.json"; sourceTree = SOURCE_ROOT; };
-		D98830D31BADD4220018594D /* HRPGLoadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGLoadingViewController.h; sourceTree = "<group>"; };
-		D98830D41BADD4220018594D /* HRPGLoadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGLoadingViewController.m; sourceTree = "<group>"; };
 		D9884B4319168AF00078BC7C /* HRPGProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGProgressView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D9884B4419168AF00078BC7C /* HRPGProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGProgressView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D98AD54919437A3500AF6174 /* HRPGPetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGPetViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -1356,6 +1357,21 @@
 				2902796A2057F2C5006DACB9 /* Strings.swift */,
 			);
 			path = Generated;
+			sourceTree = "<group>";
+		};
+		290279AC20583EE8006DACB9 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				D9C31DB11C6501090096F4EC /* Main.storyboard */,
+				2902799F20583ECA006DACB9 /* User.storyboard */,
+				290279A220583ECF006DACB9 /* Shops.storyboard */,
+				290279A520583ED3006DACB9 /* Shop.storyboard */,
+				290279A820583ED8006DACB9 /* BuyModal.storyboard */,
+				D942B53A1CAAE6B1009AB756 /* Social.storyboard */,
+				290279AB20583EDE006DACB9 /* Settings.storyboard */,
+				290279AF20583EF9006DACB9 /* Intro.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 		292DEE54204DA5D40086D5F7 /* Implementations */ = {
@@ -2611,18 +2627,10 @@
 				D9AEEA711ACEDD470076951B /* HRPGWebViewController.h */,
 				D9AEEA721ACEDD470076951B /* HRPGWebViewController.m */,
 				29FC5A6A20406932008E88C8 /* GuidelinesViewController.swift */,
-				D98830D31BADD4220018594D /* HRPGLoadingViewController.h */,
-				D98830D41BADD4220018594D /* HRPGLoadingViewController.m */,
+				2902799620583D82006DACB9 /* LoadingViewController.swift */,
 				299BD6391F557FE700E22935 /* AuthenticationManager.swift */,
-				D9C31DB11C6501090096F4EC /* Main.storyboard */,
-				293BB4971FCD74CC003B6F4F /* User.storyboard */,
-				49005B6F1F17E7AC004830D9 /* Shops.storyboard */,
-				49005B6D1F17DDF9004830D9 /* Shop.storyboard */,
-				49DCB7981F3407B30079FDD0 /* BuyModal.storyboard */,
-				D942B53A1CAAE6B1009AB756 /* Social.storyboard */,
-				29B3FEA91F9A0D0F000B12CF /* Settings.storyboard */,
+				290279AC20583EE8006DACB9 /* Storyboards */,
 				D9EB4EAC18CB4A9400BB2094 /* Images.xcassets */,
-				297AF81F1F29EF0D003B7194 /* Intro.storyboard */,
 				2957B8AA1F4B297300E836EF /* Core Data */,
 				D9A63A321E10328A0083ADC4 /* Habitica-Bridging-Header.h */,
 				290279672057F0B7006DACB9 /* Generated */,
@@ -2636,6 +2644,7 @@
 		D9EB4E9518CB4A9400BB2094 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2902799C20583E83006DACB9 /* OnePasswordExtension.strings */,
 				D905768C1BD83241009BB7BC /* Localizable.strings */,
 				D99DEC88190842CA00FFD2B9 /* Placeholder.png */,
 				D9EB4E9618CB4A9400BB2094 /* Habitica-Info.plist */,
@@ -2822,8 +2831,8 @@
 			files = (
 				29E16317200E632200685640 /* QuestProgressBarView.xib in Resources */,
 				D90EA03E19D60B53001EABE4 /* RewardIntro.png in Resources */,
-				293BB4981FCD74CC003B6F4F /* User.storyboard in Resources */,
-				49DCB7991F3407B30079FDD0 /* BuyModal.storyboard in Resources */,
+				2902799D20583ECA006DACB9 /* User.storyboard in Resources */,
+				290279A620583ED8006DACB9 /* BuyModal.storyboard in Resources */,
 				D9EB4EAD18CB4A9400BB2094 /* Images.xcassets in Resources */,
 				D942B5381CAAE6B1009AB756 /* Social.storyboard in Resources */,
 				29B3FEBE1F9E3DC3000B12CF /* HabiticaAlertController.xib in Resources */,
@@ -2841,6 +2850,7 @@
 				293BB4A31FD07603003B6F4F /* StatsSliderView.xib in Resources */,
 				D9D17CD41E68995000AD9232 /* (null) in Resources */,
 				29E16311200E5FEA00685640 /* QuestProgressView.xib in Resources */,
+				2902799A20583E83006DACB9 /* OnePasswordExtension.strings in Resources */,
 				D9D17CD41E68995000AD9232 /* (null) in Resources */,
 				D9BB45CA1E76DF260002AE2E /* DailyTableViewCell.xib in Resources */,
 				D9D17CD81E6899F100AD9232 /* HRPGRewardTableViewCell.xib in Resources */,
@@ -2858,7 +2868,7 @@
 				D98F5DC31C6A34540035CBEC /* ChatMessageCell.xib in Resources */,
 				493ECBB91F47D82A0099B1FC /* HRPGGearSetItem.xib in Resources */,
 				29FC8864201B78D6002B3D3F /* WorldBossMenuHeader.xib in Resources */,
-				49005B701F17E7AC004830D9 /* Shops.storyboard in Resources */,
+				290279A020583ECF006DACB9 /* Shops.storyboard in Resources */,
 				493ECBB51F47A58F0099B1FC /* HRPGItemStatsView.xib in Resources */,
 				29028BB120319E4000B7F704 /* RageStrikeActiveContentView.xib in Resources */,
 				D90EA03D19D60B53001EABE4 /* TodoIntro.png in Resources */,
@@ -2879,10 +2889,10 @@
 				49DCB7B01F3923F20079FDD0 /* HRPGSimpleShopItemView.xib in Resources */,
 				D91CCAD01BCF11CC001C6A0C /* UserTopHeader.xib in Resources */,
 				49DCB7BA1F3F6F620079FDD0 /* HRPGCloseableShopModalView.xib in Resources */,
-				49005B6E1F17DDF9004830D9 /* Shop.storyboard in Resources */,
+				290279A320583ED3006DACB9 /* Shop.storyboard in Resources */,
 				D9EB4E9918CB4A9400BB2094 /* InfoPlist.strings in Resources */,
 				293BB49C1FCD7DC8003B6F4F /* StatsView.xib in Resources */,
-				29B3FEAA1F9A0D0F000B12CF /* Settings.storyboard in Resources */,
+				290279A920583EDE006DACB9 /* Settings.storyboard in Resources */,
 				29701FE21F5617900097BBCC /* ToastView.xib in Resources */,
 				D9D17CD21E6898E400AD9232 /* HabitTableViewCell.xib in Resources */,
 				49005B7E1F183775004830D9 /* HRPGShopUserHeaderView.xib in Resources */,
@@ -2891,7 +2901,7 @@
 				293282161F389DBB00D42961 /* SetupCustomizationItemView.xib in Resources */,
 				D9E9E0C81CCE64A3006D94A2 /* HRPGImageOverlayView.xib in Resources */,
 				D984D58F1E4A2F41006E84F8 /* SubscriptionOptionView.xib in Resources */,
-				297AF8201F29EF0D003B7194 /* Intro.storyboard in Resources */,
+				290279AD20583EF9006DACB9 /* Intro.storyboard in Resources */,
 				D984D5841E48E57C006E84F8 /* TaskDetailLineView.xib in Resources */,
 				D9A50E9A1A868DE400FC8B1A /* Launch Screen.xib in Resources */,
 				D905768A1BD83241009BB7BC /* Localizable.strings in Resources */,
@@ -3458,6 +3468,7 @@
 				D9D593581D004CC900D6C388 /* HRPGInboxTableViewController.m in Sources */,
 				D96BFC4C1E181B4A00266EEF /* IntroViewController.swift in Sources */,
 				29E163092008E7B600685640 /* Habitica.xcdatamodeld in Sources */,
+				2902799720583D82006DACB9 /* LoadingViewController.swift in Sources */,
 				29255E4B1F3E236C0094A3E3 /* ToastManager.swift in Sources */,
 				494E54041F2D20C70003683C /* HRPGShopOverviewTableViewDataSource.m in Sources */,
 				D9CD2DD51BCAA6F700B1304B /* UIViewController+TutorialSteps.m in Sources */,
@@ -3658,7 +3669,6 @@
 				D9AEA8A11C733BFA00FE6158 /* HRPGGroupAboutTableViewController.m in Sources */,
 				491C6E5B2020FE64005030A2 /* Challenge-Extensions.swift in Sources */,
 				2957B8C81F4DCF7800E836EF /* RewardFormController.swift in Sources */,
-				D98830D51BADD4220018594D /* HRPGLoadingViewController.m in Sources */,
 				D96C85451DCBAC90003E3616 /* HRPGStreakAchievementNotification.m in Sources */,
 				490864301F45318600BD9896 /* HRPGInsufficientHourglassesViewController.swift in Sources */,
 				293BB49F1FCDCD33003B6F4F /* Stats.swift in Sources */,
@@ -3712,6 +3722,62 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		2902799C20583E83006DACB9 /* OnePasswordExtension.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2902799B20583E83006DACB9 /* bg */,
+			);
+			name = OnePasswordExtension.strings;
+			sourceTree = "<group>";
+		};
+		2902799F20583ECA006DACB9 /* User.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2902799E20583ECA006DACB9 /* Base */,
+			);
+			name = User.storyboard;
+			sourceTree = "<group>";
+		};
+		290279A220583ECF006DACB9 /* Shops.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				290279A120583ECF006DACB9 /* Base */,
+			);
+			name = Shops.storyboard;
+			sourceTree = "<group>";
+		};
+		290279A520583ED3006DACB9 /* Shop.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				290279A420583ED3006DACB9 /* Base */,
+			);
+			name = Shop.storyboard;
+			sourceTree = "<group>";
+		};
+		290279A820583ED8006DACB9 /* BuyModal.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				290279A720583ED8006DACB9 /* Base */,
+			);
+			name = BuyModal.storyboard;
+			sourceTree = "<group>";
+		};
+		290279AB20583EDE006DACB9 /* Settings.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				290279AA20583EDE006DACB9 /* Base */,
+			);
+			name = Settings.storyboard;
+			sourceTree = "<group>";
+		};
+		290279AF20583EF9006DACB9 /* Intro.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				290279AE20583EF9006DACB9 /* Base */,
+			);
+			name = Intro.storyboard;
+			sourceTree = "<group>";
+		};
 		D90576871BD83240009BB7BC /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

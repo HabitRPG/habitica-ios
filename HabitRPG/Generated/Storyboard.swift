@@ -53,6 +53,28 @@ extension UIViewController {
 
 // swiftlint:disable explicit_type_interface identifier_name line_length type_body_length type_name
 enum StoryboardScene {
+  enum BuyModal: StoryboardType {
+    static let storyboardName = "BuyModal"
+
+    static let initialScene = InitialSceneType<Habitica.HRPGBuyItemModalViewController>(storyboard: BuyModal.self)
+
+    static let gemCapReachedViewController = SceneType<Habitica.HRPGGemCapReachedViewController>(storyboard: BuyModal.self, identifier: "GemCapReachedViewController")
+
+    static let hrpgBuyItemModalViewController = SceneType<Habitica.HRPGBuyItemModalViewController>(storyboard: BuyModal.self, identifier: "HRPGBuyItemModalViewController")
+
+    static let insufficientGemsViewController = SceneType<Habitica.HRPGInsufficientGemsViewController>(storyboard: BuyModal.self, identifier: "InsufficientGemsViewController")
+
+    static let insufficientGoldViewController = SceneType<Habitica.HRPGInsufficientGoldViewController>(storyboard: BuyModal.self, identifier: "InsufficientGoldViewController")
+
+    static let insufficientHourglassesViewController = SceneType<Habitica.HRPGInsufficientHourglassesViewController>(storyboard: BuyModal.self, identifier: "InsufficientHourglassesViewController")
+  }
+  enum Intro: StoryboardType {
+    static let storyboardName = "Intro"
+
+    static let initialScene = InitialSceneType<Habitica.LoadingViewController>(storyboard: Intro.self)
+
+    static let loginTableViewController = SceneType<Habitica.LoginTableViewController>(storyboard: Intro.self, identifier: "LoginTableViewController")
+  }
   enum Main: StoryboardType {
     static let storyboardName = "Main"
 
@@ -79,6 +101,21 @@ enum StoryboardScene {
     static let spellTaskNavigationController = SceneType<UINavigationController>(storyboard: Main.self, identifier: "spellTaskNavigationController")
 
     static let tagNavigationController = SceneType<HRPGNavigationController>(storyboard: Main.self, identifier: "tagNavigationController")
+  }
+  enum Settings: StoryboardType {
+    static let storyboardName = "Settings"
+
+    static let initialScene = InitialSceneType<UINavigationController>(storyboard: Settings.self)
+  }
+  enum Shop: StoryboardType {
+    static let storyboardName = "Shop"
+
+    static let initialScene = InitialSceneType<HRPGShopViewController>(storyboard: Shop.self)
+  }
+  enum Shops: StoryboardType {
+    static let storyboardName = "Shops"
+
+    static let initialScene = InitialSceneType<HRPGShopOverviewViewController>(storyboard: Shops.self)
   }
   enum Social: StoryboardType {
     static let storyboardName = "Social"
@@ -119,9 +156,33 @@ enum StoryboardScene {
 
     static let questInvitationNavigationController = SceneType<HRPGNavigationController>(storyboard: Social.self, identifier: "questInvitationNavigationController")
   }
+  enum User: StoryboardType {
+    static let storyboardName = "User"
+
+    static let attributePointsViewController = SceneType<Habitica.AttributePointsViewController>(storyboard: User.self, identifier: "AttributePointsViewController")
+
+    static let spellsViewController = SceneType<HRPGSpellViewController>(storyboard: User.self, identifier: "SpellsViewController")
+  }
 }
 
 enum StoryboardSegue {
+  enum BuyModal: String, SegueType {
+    case gemCapReached
+    case insufficientGems
+    case insufficientGold
+    case insufficientHourglasses
+  }
+  enum Intro: String, SegueType {
+    case avatarSegue = "AvatarSegue"
+    case initialSegue = "InitialSegue"
+    case introSegue = "IntroSegue"
+    case loginSegue = "LoginSegue"
+    case mainSegue = "MainSegue"
+    case oauthWebViewSegue = "OauthWebViewSegue"
+    case setupSegue = "SetupSegue"
+    case taskSegue = "TaskSegue"
+    case welcomeSegue = "WelcomeSegue"
+  }
   enum Main: String, SegueType {
     case aboutSegue = "AboutSegue"
     case castUserSpellSegue = "CastUserSpellSegue"
@@ -148,6 +209,18 @@ enum StoryboardSegue {
     case unwindTagSegue = "UnwindTagSegue"
     case unwindSaveSegue
     case unwindSegue
+  }
+  enum Settings: String, SegueType {
+    case apiSegue = "APISegue"
+    case authenticationSegue = "AuthenticationSegue"
+    case fixValuesSegue = "FixValuesSegue"
+    case profileSegue = "ProfileSegue"
+  }
+  enum Shop: String, SegueType {
+    case buyModal
+  }
+  enum Shops: String, SegueType {
+    case shopSegue = "ShopSegue"
   }
   enum Social: String, SegueType {
     case aboutSegue = "AboutSegue"

@@ -68,6 +68,13 @@ class UserRepository: BaseRepository<UserLocalRepository> {
                 self.localRepository.save(userId, stats: stats)
             }
         })
-        
+    }
+    
+    func hasUserData() -> Bool {
+        if let userId = AuthenticationManager.shared.currentUserId {
+            return localRepository.hasUserData(id: userId)
+        } else {
+            return false
+        }
     }
 }

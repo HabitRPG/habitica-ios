@@ -13,7 +13,6 @@
 #import <Fabric/Fabric.h>
 #import <Google/Analytics.h>
 #import "Amplitude.h"
-#import "HRPGLoadingViewController.h"
 #import "HRPGMaintenanceViewController.h"
 #import "HRPGTabBarController.h"
 #import "HRPGTableViewController.h"
@@ -86,20 +85,10 @@
         [self rescheduleTaskReminders];
     }
 
-    if (application.applicationState == UIApplicationStateActive || application.applicationState == UIApplicationStateInactive) {
-        User *user = [[HRPGManager sharedManager] getUser];
-        if (user) {
-            NSDate *lastUserFetch = [[NSUserDefaults standardUserDefaults] objectForKey:@"lastTaskFetch"];
-            if ([lastUserFetch timeIntervalSinceNow] < -300) {
-                [self.swiftAppDelegate retrieveUser];
-            }
-        }
-    }
+    [self.swiftAppDelegate retrieveContent];
 
     [self.swiftAppDelegate handleMaintenanceScreen];
     [[[ConfigRepository alloc] init] fetchremoteConfig];
-    
-    [self.swiftAppDelegate retrieveWorldState];
 }
 
 - (BOOL)application:(UIApplication *)application shouldRestoreApplicationState:(NSCoder *)coder {
@@ -260,9 +249,9 @@
             HRPGQuestDetailViewController *questDetailViewController = (HRPGQuestDetailViewController *)[self loadViewController:@"QuestDetailViewController" fromStoryboard:@"Social"];
             [displayedNavigationController pushViewController:questDetailViewController animated:YES];
         }
-    } else if ([self.window.rootViewController isKindOfClass:[HRPGLoadingViewController class]]) {
-        HRPGLoadingViewController *loadingViewController =
-        (HRPGLoadingViewController *)self.window.rootViewController;
+    } else if ([self.window.rootViewController isKindOfClass:[LoadingViewController class]]) {
+        LoadingViewController *loadingViewController =
+        (LoadingViewController *)self.window.rootViewController;
         __weak HRPGAppDelegate *weakSelf = self;
         loadingViewController.loadingFinishedAction = ^() {
             [weakSelf handlePushNotification:userInfo];
@@ -416,9 +405,9 @@
                 respondsToSelector:@selector(setScrollToTaskAfterLoading:)]) {
             displayedTableViewController.scrollToTaskAfterLoading = taskID;
         }
-    } else if ([self.window.rootViewController isKindOfClass:[HRPGLoadingViewController class]]) {
-        HRPGLoadingViewController *loadingViewController =
-            (HRPGLoadingViewController *)self.window.rootViewController;
+    } else if ([self.window.rootViewController isKindOfClass:[LoadingViewController class]]) {
+        LoadingViewController *loadingViewController =
+            (LoadingViewController *)self.window.rootViewController;
         __weak HRPGAppDelegate *weakSelf = self;
         loadingViewController.loadingFinishedAction = ^() {
             [weakSelf displayTaskWithId:taskID fromType:taskType];

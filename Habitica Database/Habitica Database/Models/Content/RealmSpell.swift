@@ -21,6 +21,7 @@ class RealmSpell: Object, SpellProtocol {
     @objc dynamic var value: Float = 0
     @objc dynamic var immediateUse: Bool = false
     @objc dynamic var silent: Bool = false
+    @objc dynamic var test: Bool = false
     
     override static func primaryKey() -> String {
         return "key"

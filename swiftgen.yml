@@ -8,7 +8,6 @@ xcassets:
   output: HabitRPG/Generated/Assets-Images.swift
 storyboards:
   paths:
-    - HabitRPG/Base.lproj/Main.storyboard
-    - HabitRPG/Base.lproj/Social.storyboard
+    - HabitRPG/Storyboards/Base.lproj/
   templateName: swift4
   output: HabitRPG/Generated/Storyboard.swift

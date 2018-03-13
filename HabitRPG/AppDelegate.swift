@@ -14,7 +14,11 @@ import Keys
 import Amplitude_iOS
 import Alamofire
 import Habitica_API_Client
+import Habitica_Models
 import RealmSwift
+import ReactiveSwift
+import Result
+
 //This will eventually replace the old ObjC AppDelegate once that code is ported to swift.
 //Reason for adding this class now is mostly, to configure PopupDialogs dim color.
 class HabiticaAppDelegate: NSObject {
@@ -144,20 +148,17 @@ class HabiticaAppDelegate: NSObject {
     }
     
     @objc
-    func retrieveUser() {
-        userRepository.retrieveUser().observeCompleted {
-            self.retrieveContent()
-        }
-    }
-    
-    @objc
     func retrieveContent() {
         let defaults = UserDefaults.standard
         let lastContentFetch = defaults.object(forKey: "lastContentFetch") as? NSDate
         let lastContentFetchVersion = defaults.object(forKey: "lastContentFetchVersion") as? String
         let currentBuildNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String
         if lastContentFetch == nil || (lastContentFetch?.timeIntervalSinceNow ?? 0) < 1 || lastContentFetchVersion != currentBuildNumber {
-            contentRepository.retrieveContent().observeCompleted {
+            contentRepository.retrieveContent()
+                .flatMap(FlattenStrategy.latest, { (content) -> Signal<WorldStateProtocol?, NoError> in
+                    return self.contentRepository.retrieveWorldState()
+                })
+                .observeCompleted {
                 defaults.setValue(Date(), forKey: "lastContentFetch")
                 defaults.setValue(currentBuildNumber, forKey: "lastContentFetchVersion")
             }
@@ -174,10 +175,5 @@ class HabiticaAppDelegate: NSObject {
                 completed(false)
             }
         }
-    }
-    
-    @objc
-    func retrieveWorldState() {
-        contentRepository.retrieveWorldState().observeCompleted {}
     }
 }

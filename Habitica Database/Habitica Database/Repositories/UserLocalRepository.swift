@@ -32,8 +32,12 @@ public class UserLocalRepository: BaseLocalRepository {
     }
     
     public func getUser(_ id: String) -> SignalProducer<UserProtocol, ReactiveSwiftRealmError> {
-        return RealmUser.findBy(key: id).skipNil().reactiveObject().map({ (user, changes) in
-            return user
-        })
+        return RealmUser.findBy(query: "id == '\(id)'").reactive().map({ (users, changes) -> UserProtocol? in
+            return users.first
+        }).skipNil()
+    }
+    
+    public func hasUserData(id: String) -> Bool {
+        return realm?.object(ofType: RealmUser.self, forPrimaryKey: id) != nil
     }
 }

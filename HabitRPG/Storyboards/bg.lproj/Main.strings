@@ -10,9 +10,6 @@
 /* Class = "UINavigationItem"; title = "Pets"; ObjectID = "4dW-yC-5Ar"; */
 "4dW-yC-5Ar.title" = "Любимци";
 
-/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "5AI-vM-jzp"; */
-"5AI-vM-jzp.normalTitle" = "Назад";
-
 /* Class = "UILabel"; text = "Size"; ObjectID = "5KS-In-70X"; */
 "5KS-In-70X.text" = "Размер";
 
@@ -25,11 +22,8 @@
 /* Class = "UINavigationItem"; title = "Mounts"; ObjectID = "8QD-xr-Tcj"; */
 "8QD-xr-Tcj.title" = "Превози";
 
-/* Class = "UILabel"; text = "Label"; ObjectID = "9b7-Yf-yJs"; */
-"9b7-Yf-yJs.text" = "Етикет";
-
-/* Class = "UIButton"; normalTitle = "Finish"; ObjectID = "63H-Fj-Vls"; */
-"63H-Fj-Vls.normalTitle" = "Завършване";
+/* Class = "UILabel"; text = "Buying gems supports the developers \nand helps keep Habitica running"; ObjectID = "421-JA-vci"; */
+"421-JA-vci.text" = "Купуването на диаманти подкрепя разработчиците \nи помага на Хабитика да продължи да съществува";
 
 /* Class = "UINavigationItem"; title = "About"; ObjectID = "970-3u-C37"; */
 "970-3u-C37.title" = "Относно";
@@ -43,44 +37,26 @@
 /* Class = "UITabBarItem"; title = "Habits"; ObjectID = "CTh-zS-7ZY"; */
 "CTh-zS-7ZY.title" = "Навици";
 
-/* Class = "UITextField"; placeholder = "Repeat Password"; ObjectID = "DQC-ay-MKP"; */
-"DQC-ay-MKP.placeholder" = "Повторете паролата";
+/* Class = "UINavigationItem"; title = "Choose User"; ObjectID = "Dal-zI-Dal"; */
+"Dal-zI-Dal.title" = "Изберете потребител";
 
-/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "FYR-h9-UfW"; */
-"FYR-h9-UfW.normalTitle" = "Назад";
+/* Class = "UINavigationItem"; title = "Rewards"; ObjectID = "HHL-mH-FJc"; */
+"HHL-mH-FJc.title" = "Награди";
 
 /* Class = "UINavigationItem"; title = "Scan Code"; ObjectID = "HJa-qf-ea2"; */
 "HJa-qf-ea2.title" = "Сканиране на код";
 
-/* Class = "UIButton"; normalTitle = "Next"; ObjectID = "IRA-55-1g8"; */
-"IRA-55-1g8.normalTitle" = "Напред";
-
 /* Class = "UINavigationItem"; title = "News"; ObjectID = "Jni-km-FCZ"; */
 "Jni-km-FCZ.title" = "Новини";
-
-/* Class = "UINavigationItem"; title = "Spells"; ObjectID = "K1m-Oj-jYN"; */
-"K1m-Oj-jYN.title" = "Заклинания";
 
 /* Class = "UINavigationItem"; title = "Customize Avatar"; ObjectID = "K4K-zl-tiU"; */
 "K4K-zl-tiU.title" = "Персонализиране на героя";
 
-/* Class = "UILabel"; text = "Title"; ObjectID = "KkO-6T-Qmx"; */
-"KkO-6T-Qmx.text" = "Заглавие";
-
-/* Class = "UILabel"; text = "Login with Google"; ObjectID = "M1V-nF-Eg7"; */
-"M1V-nF-Eg7.text" = "Вход чрез Гугъл";
-
-/* Class = "UILabel"; text = "Login"; ObjectID = "MlA-iN-6gR"; */
-"MlA-iN-6gR.text" = "Вход";
-
-/* Class = "UINavigationItem"; title = "Rewards"; ObjectID = "Mlq-VF-kA3"; */
-"Mlq-VF-kA3.title" = "Награди";
-
 /* Class = "UITabBarItem"; title = "To-Dos"; ObjectID = "Np7-ws-fF6"; */
 "Np7-ws-fF6.title" = "Задачи";
 
-/* Class = "UINavigationItem"; title = "Shops"; ObjectID = "QIL-Wo-vmp"; */
-"QIL-Wo-vmp.title" = "Магазини";
+/* Class = "UIButton"; normalTitle = "Restore Purchase"; ObjectID = "P89-QO-UcF"; */
+"P89-QO-UcF.normalTitle" = "Възстановяване на покупка";
 
 /* Class = "UINavigationItem"; title = "Filter by tags"; ObjectID = "RJ8-HL-bIH"; */
 "RJ8-HL-bIH.title" = "Филтриране по етикети";
@@ -97,8 +73,8 @@
 /* Class = "UINavigationItem"; title = "Habits"; ObjectID = "Ueo-OS-iQj"; */
 "Ueo-OS-iQj.title" = "Навици";
 
-/* Class = "UIBarButtonItem"; title = "Register"; ObjectID = "XUX-eN-jCp"; */
-"XUX-eN-jCp.title" = "Регистрация";
+/* Class = "UILabel"; text = "Subscribing supports the developers \nand helps keep Habitica running"; ObjectID = "V5k-go-mwg"; */
+"V5k-go-mwg.text" = "Абонаментът подкрепя разработчиците \nи помага на Хабитика да продължи да съществува";
 
 /* Class = "UIBarButtonItem"; title = "Group By"; ObjectID = "Y9b-tv-h4L"; */
 "Y9b-tv-h4L.title" = "Групиране по";
@@ -106,17 +82,8 @@
 /* Class = "UINavigationItem"; title = "Choose Task"; ObjectID = "Yuh-D9-NY5"; */
 "Yuh-D9-NY5.title" = "Избор на задача";
 
-/* Class = "UITextField"; placeholder = "Email"; ObjectID = "c6L-Nt-YPn"; */
-"c6L-Nt-YPn.placeholder" = "Е-поща";
-
-/* Class = "UILabel"; text = "Subtitle"; ObjectID = "ciB-Fl-be7"; */
-"ciB-Fl-be7.text" = "Подзаглавие";
-
 /* Class = "UIBarButtonItem"; title = "Clear"; ObjectID = "hIC-Qf-w8a"; */
 "hIC-Qf-w8a.title" = "Изчистване";
-
-/* Class = "UILabel"; text = "Label"; ObjectID = "hd1-sx-QKa"; */
-"hd1-sx-QKa.text" = "Етикет";
 
 /* Class = "UINavigationItem"; title = "Profile"; ObjectID = "hnF-ml-Qfo"; */
 "hnF-ml-Qfo.title" = "Профил";
@@ -124,11 +91,11 @@
 /* Class = "UITabBarItem"; title = "Menu"; ObjectID = "hyj-Mf-lvH"; */
 "hyj-Mf-lvH.title" = "Меню";
 
-/* Class = "UILabel"; text = "Label"; ObjectID = "imx-7O-EEy"; */
-"imx-7O-EEy.text" = "Етикет";
-
 /* Class = "UIBarButtonItem"; title = "Filter"; ObjectID = "lJN-5G-qrz"; */
 "lJN-5G-qrz.title" = "Филтриране";
+
+/* Class = "UILabel"; text = "Become a subscriber and you’ll get these useful benefits:"; ObjectID = "lb7-8k-2uz"; */
+"lb7-8k-2uz.text" = "Станете абонат и ще получите следните предимства:";
 
 /* Class = "UIBarButtonItem"; title = "Group By"; ObjectID = "mdo-xN-SW4"; */
 "mdo-xN-SW4.title" = "Групиране по";
@@ -141,9 +108,6 @@
 
 /* Class = "UIBarButtonItem"; title = "Filter"; ObjectID = "r2M-pt-ZEv"; */
 "r2M-pt-ZEv.title" = "Филтриране";
-
-/* Class = "UITextField"; placeholder = "Email / Username"; ObjectID = "r6h-y4-Yj6"; */
-"r6h-y4-Yj6.placeholder" = "Е-поща / потребителско име";
 
 /* Class = "UILabel"; text = "No completed To-Dos"; ObjectID = "rRE-Ue-tyN"; */
 "rRE-Ue-tyN.text" = "Няма изпълнени задачи";
@@ -160,14 +124,14 @@
 /* Class = "UINavigationItem"; title = "FAQ"; ObjectID = "sni-tf-k5c"; */
 "sni-tf-k5c.title" = "ЧЗВ";
 
-/* Class = "UINavigationItem"; title = "Settings"; ObjectID = "uSK-A3-t5d"; */
-"uSK-A3-t5d.title" = "Настройки";
-
-/* Class = "UITextField"; placeholder = "Password"; ObjectID = "wUf-yh-Qus"; */
-"wUf-yh-Qus.placeholder" = "Парола";
+/* Class = "UIButton"; normalTitle = "Checkout"; ObjectID = "ubx-Z1-yyq"; */
+"ubx-Z1-yyq.normalTitle" = "Поръчване";
 
 /* Class = "UINavigationItem"; title = "Feed Pet"; ObjectID = "xZ9-Ng-9se"; */
-"xZ9-Ng-9se.title" = "Хранене на любимеца";
+"xZ9-Ng-9se.title" = "Хранене на любимец";
+
+/* Class = "UILabel"; text = "Gems allow you to buy fun extras for \nyour account, including:"; ObjectID = "xhA-8b-NmG"; */
+"xhA-8b-NmG.text" = "Диамантите Ви позволяват да купувате \nзабавни неща за профила си, като:";
 
 /* Class = "UITabBarItem"; title = "Rewards"; ObjectID = "zFI-xr-RjT"; */
 "zFI-xr-RjT.title" = "Награди";
