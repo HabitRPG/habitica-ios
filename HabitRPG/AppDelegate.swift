@@ -71,6 +71,7 @@ class HabiticaAppDelegate: NSObject {
     @objc
     func setupDatabase() {
         Realm.Configuration.defaultConfiguration.deleteRealmIfMigrationNeeded = true
+        print("Realm stored at:", Realm.Configuration.defaultConfiguration.fileURL ?? "")
     }
     
     @objc
