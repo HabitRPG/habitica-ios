@@ -39,7 +39,7 @@
 @implementation HRPGTableViewController
 Task *editedTask;
 BOOL editable;
-NSIndexPath  *sourceIndexPath = nil; ///< Initial index path, where gesture begins.
+NSIndexPath  *sourceIndexPath = nil;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -265,7 +265,7 @@ NSIndexPath  *sourceIndexPath = nil; ///< Initial index path, where gesture begi
     if ([tabBarController.selectedTags count] > 0) {
         [predicateArray
             addObject:[NSPredicate
-                          predicateWithFormat:@"SUBQUERY(tags, $tag, $tag IN %@).@count = %d",
+                          predicateWithFormat:@"SUBQUERY(realmTags, $tag, $tag.id IN %@).@count = %d",
                                               tabBarController.selectedTags,
                                               [tabBarController.selectedTags count]]];
     }
@@ -279,24 +279,6 @@ NSIndexPath  *sourceIndexPath = nil; ///< Initial index path, where gesture begi
     }
 
     return [NSCompoundPredicate andPredicateWithSubpredicates:predicateArray];
-}
-
-- (NSArray *)getSortDescriptors {
-    NSSortDescriptor *orderDescriptor =
-        [[NSSortDescriptor alloc] initWithKey:@"order" ascending:YES];
-    NSSortDescriptor *dateDescriptor =
-        [[NSSortDescriptor alloc] initWithKey:@"dateCreated" ascending:NO];
-    if ([_typeName isEqual:@"todo"]) {
-        if (self.filterType == TaskToDoFilterTypeDated) {
-            NSSortDescriptor *dueDescriptor =
-                [[NSSortDescriptor alloc] initWithKey:@"duedate" ascending:YES];
-            return @[ dueDescriptor, orderDescriptor, dateDescriptor ];
-        } else {
-            return @[ orderDescriptor, dateDescriptor ];
-        }
-    } else {
-        return @[ orderDescriptor, dateDescriptor ];
-    }
 }
 
 - (void)didChangeFilter:(NSNotification *)notification {
@@ -476,7 +458,7 @@ NSIndexPath  *sourceIndexPath = nil; ///< Initial index path, where gesture begi
         [HRPGSearchDataManager sharedManager].searchString = nil;
     }
 
-    [self.tableView reloadData];
+    self.dataSource.predicate = [self getPredicate];
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {

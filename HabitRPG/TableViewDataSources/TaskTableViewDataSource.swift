@@ -8,6 +8,7 @@
 
 import UIKit
 import Habitica_Models
+import ReactiveSwift
 
 @objc
 class TaskTableViewDataSource: BaseReactiveDataSource, UITableViewDataSource {
@@ -25,23 +26,23 @@ class TaskTableViewDataSource: BaseReactiveDataSource, UITableViewDataSource {
         }
     }
     
-    @objc var predicate: NSPredicate
+    @objc var predicate: NSPredicate {
+        didSet {
+            fetchTasks()
+        }
+    }
     
     internal let userRepository = UserRepository()
     internal let repository = TaskRepository()
     
     @objc var tasks = [TaskProtocol]()
     private var expandedIndexPath: IndexPath?
+    private var fetchTasksDisposable: Disposable?
     
     @objc
     init(predicate: NSPredicate) {
         self.predicate = predicate
         super.init()
-        disposable.inner.add(repository.getTasks(predicate: predicate).on(value: { (tasks, changes) in
-            self.tasks = tasks
-            self.notifyDataUpdate(tableView: self.tableView, changes: changes)
-            
-        }).start())
     }
     
     @objc
@@ -51,6 +52,16 @@ class TaskTableViewDataSource: BaseReactiveDataSource, UITableViewDataSource {
                 action()
             }
         })
+    }
+    
+    private func fetchTasks() {
+        if let disposable = fetchTasksDisposable, !disposable.isDisposed {
+            disposable.dispose()
+        }
+        fetchTasksDisposable = repository.getTasks(predicate: predicate).on(value: { (tasks, changes) in
+            self.tasks = tasks
+            self.notifyDataUpdate(tableView: self.tableView, changes: changes)
+        }).start()
     }
     
     @objc

@@ -36,8 +36,8 @@
 
     for (Tag *tag in self.fetchedResultsController.fetchedObjects) {
         [self.areTagsSelected addObject:@NO];
-        for (Tag *selectedTag in self.selectedTags) {
-            if ([tag.id isEqualToString:selectedTag.id]) {
+        for (NSString *selectedTag in self.selectedTags) {
+            if ([tag.id isEqualToString:selectedTag]) {
                 self.areTagsSelected[self.areTagsSelected.count - 1] = @YES;
                 break;
             }
@@ -293,8 +293,8 @@
         [self.selectedTags removeAllObjects];
         for (Tag *tag in [self.fetchedResultsController fetchedObjects]) {
             if ([self.areTagsSelected[counter] boolValue]) {
-                if (![self.selectedTags containsObject:tag]) {
-                    [self.selectedTags addObject:tag];
+                if (![self.selectedTags containsObject:tag.id]) {
+                    [self.selectedTags addObject:tag.id];
                 }
             }
             counter++;

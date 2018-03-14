@@ -88,15 +88,7 @@
     [fetchRequest setEntity:entity];
     [fetchRequest setFetchBatchSize:20];
 
-    NSPredicate *predicate;
-    HRPGTabBarController *tabBarController = (HRPGTabBarController *)self.tabBarController;
-    if (tabBarController.selectedTags == nil || [tabBarController.selectedTags count] == 0) {
-        predicate = [NSPredicate predicateWithFormat:@"type!='habit' && completed==NO"];
-    } else {
-        predicate = [NSPredicate
-            predicateWithFormat:@"type!='habit' && completed==NO && ANY tags IN[cd] %@",
-                                self.selectedTags];
-    }
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"type!='habit' && completed==NO"];
     [fetchRequest setPredicate:predicate];
 
     NSSortDescriptor *orderDescriptor =
