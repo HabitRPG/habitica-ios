@@ -22,8 +22,14 @@ class RealmBuff: Object, BuffProtocol {
     @objc dynamic var stealth: Int = 0
     @objc dynamic var spookySparkles: Bool = false
     
-    convenience init(_ buff: BuffProtocol) {
+    @objc dynamic var id: String?
+    override static func primaryKey() -> String {
+        return "id"
+    }
+    
+    convenience init(id: String?, buff: BuffProtocol) {
         self.init()
+        self.id = id
         strength = buff.strength
         intelligence = buff.intelligence
         constitution = buff.constitution

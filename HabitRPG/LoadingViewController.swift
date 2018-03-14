@@ -20,6 +20,8 @@ class LoadingViewController: UIViewController {
     private var userRepository: UserRepository?
     private let disposable = CompositeDisposable()
     
+    private var wasDismissed = false
+    
     override func viewDidAppear(_ animated: Bool) {
         if AuthenticationManager.shared.hasAuthentication() {
             userRepository = UserRepository()
@@ -46,6 +48,10 @@ class LoadingViewController: UIViewController {
             disposable.dispose()
         }
         userRepository = nil
+        if !wasDismissed {
+            wasDismissed = true
+            dismiss(animated: false, completion: nil)
+        }
         super.viewDidDisappear(animated)
     }
     

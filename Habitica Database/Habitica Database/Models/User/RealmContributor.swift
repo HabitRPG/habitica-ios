@@ -18,8 +18,14 @@ class RealmContributor: Object, ContributorProtocol {
     @objc dynamic var text: String?
     @objc dynamic var contributions: String?
     
-    convenience init(_ contributor: ContributorProtocol) {
+    @objc dynamic var id: String?
+    override static func primaryKey() -> String {
+        return "id"
+    }
+    
+    convenience init(id: String?, contributor: ContributorProtocol) {
         self.init()
+        self.id = id
         level = contributor.level
         admin = contributor.admin
         text = contributor.text

@@ -11,6 +11,7 @@ import Habitica_Models
 import RealmSwift
 
 class RealmWorldState: Object, WorldStateProtocol {
+    @objc dynamic var id: String?
     @objc dynamic var worldBoss: QuestStateProtocol? {
         get {
             return realmWorldBoss
@@ -19,15 +20,19 @@ class RealmWorldState: Object, WorldStateProtocol {
             if let newWorldBoss = newValue as? RealmQuestState {
                 realmWorldBoss = newWorldBoss
             } else if let newWorldBoss = newValue {
-                realmWorldBoss = RealmQuestState(newWorldBoss)
+                realmWorldBoss = RealmQuestState(id: id, state: newWorldBoss)
             }
         }
     }
     @objc dynamic var realmWorldBoss: RealmQuestState?
     
+    override static func primaryKey() -> String {
+        return "id"
+    }
     
-    convenience init(_ state: WorldStateProtocol) {
+    convenience init(id: String?, state: WorldStateProtocol) {
         self.init()
+        self.id = id
         worldBoss = state.worldBoss
     }
     

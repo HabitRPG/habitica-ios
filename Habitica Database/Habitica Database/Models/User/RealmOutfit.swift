@@ -20,8 +20,14 @@ class RealmOutfit: Object, OutfitProtocol {
     @objc dynamic var weapon: String?
     @objc dynamic var shield: String?
     
-    convenience init(_ outfit: OutfitProtocol) {
+    @objc dynamic var id: String?
+    override static func primaryKey() -> String {
+        return "id"
+    }
+    
+    convenience init(id: String?, outfit: OutfitProtocol) {
         self.init()
+        self.id = id
         back = outfit.back
         body = outfit.body
         armor = outfit.armor

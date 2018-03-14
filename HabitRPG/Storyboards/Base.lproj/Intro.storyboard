@@ -53,11 +53,9 @@
                     <connections>
                         <outlet property="activityIndicator" destination="GeH-AC-vCO" id="sHf-iF-90Q"/>
                         <outlet property="logoView" destination="56g-ur-5TX" id="9eB-RC-kUM"/>
-                        <segue destination="0Ix-Uy-5zN" kind="showDetail" identifier="IntroSegue" animates="NO" id="8cI-OH-Ddw">
-                            <nil key="action"/>
-                        </segue>
-                        <segue destination="qul-kf-4Gi" kind="showDetail" identifier="InitialSegue" animates="NO" id="Z2J-RM-J8b"/>
-                        <segue destination="v9W-i7-og5" kind="presentation" identifier="SetupSegue" id="Zxx-A1-MXZ"/>
+                        <segue destination="0Ix-Uy-5zN" kind="modal" identifier="IntroSegue" animates="NO" modalTransitionStyle="crossDissolve" id="8cI-OH-Ddw"/>
+                        <segue destination="qul-kf-4Gi" kind="presentation" identifier="InitialSegue" animates="NO" modalTransitionStyle="crossDissolve" id="Z2J-RM-J8b"/>
+                        <segue destination="v9W-i7-og5" kind="presentation" identifier="SetupSegue" modalTransitionStyle="crossDissolve" id="Zxx-A1-MXZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="us7-8q-KcQ" userLabel="First Responder" sceneMemberID="firstResponder"/>

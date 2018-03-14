@@ -11,11 +11,17 @@ import Habitica_Models
 import RealmSwift
 
 class RealmQuestProgress: Object, QuestProgressProtocol {
+    @objc dynamic var id: String?
     @objc dynamic var health: Float = 0
     @objc dynamic var rage: Float = 0
     
-    convenience init(_ progress: QuestProgressProtocol) {
+    override static func primaryKey() -> String {
+        return "id"
+    }
+    
+    convenience init(id: String?, progress: QuestProgressProtocol) {
         self.init()
+        self.id = id
         health = progress.health
         rage = progress.health
     }

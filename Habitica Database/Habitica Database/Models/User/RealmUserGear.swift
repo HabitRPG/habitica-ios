@@ -20,7 +20,7 @@ class RealmUserGear: Object, UserGearProtocol {
                 realmEquipped = item
             }
             if let item = newValue {
-                realmEquipped = RealmOutfit(item)
+                realmEquipped = RealmOutfit(id: id, outfit: item)
             }
         }
     }
@@ -34,18 +34,24 @@ class RealmUserGear: Object, UserGearProtocol {
                 realmCostume = item
             }
             if let item = newValue {
-                realmCostume = RealmOutfit(item)
+                realmCostume = RealmOutfit(id: id, outfit: item)
             }
         }
     }
     @objc dynamic var realmCostume: RealmOutfit?
     
+    @objc dynamic var id: String?
+    override static func primaryKey() -> String {
+        return "id"
+    }
+    
     override static func ignoredProperties() -> [String] {
         return ["equipped", "costume"]
     }
     
-    convenience init(_ userGear: UserGearProtocol) {
+    convenience init(id: String?, userGear: UserGearProtocol) {
         self.init()
+        self.id = id
         equipped = userGear.equipped
         costume = userGear.costume
     }

@@ -15,6 +15,10 @@ class RealmReminder: Object, ReminderProtocol {
     var startDate: Date?
     var time: Date?
     
+    override static func primaryKey() -> String {
+        return "id"
+    }
+    
     convenience init(_ reminderProtocol: ReminderProtocol) {
         self.init()
         id = reminderProtocol.id

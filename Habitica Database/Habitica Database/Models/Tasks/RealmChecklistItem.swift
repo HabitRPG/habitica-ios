@@ -16,6 +16,10 @@ class RealmChecklistItem: Object, ChecklistItemProtocol {
     @objc dynamic var text: String?
     @objc dynamic var completed: Bool = false
     
+    override static func primaryKey() -> String {
+        return "id"
+    }
+    
     convenience init(_ checklistItemProtocol: ChecklistItemProtocol) {
         self.init()
         id = checklistItemProtocol.id

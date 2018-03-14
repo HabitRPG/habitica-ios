@@ -27,7 +27,7 @@ class RealmUser: Object, UserProtocol {
                 return
             }
             if let stats = newValue {
-                realmStats = RealmStats(stats)
+                realmStats = RealmStats(id: id, stats: stats)
             }
         }
     }
@@ -43,7 +43,7 @@ class RealmUser: Object, UserProtocol {
                 return
             }
             if let newFlags = newValue {
-                realmFlags = RealmFlags(newFlags)
+                realmFlags = RealmFlags(id: id, flags: newFlags)
             }
         }
     }
@@ -59,7 +59,7 @@ class RealmUser: Object, UserProtocol {
                 return
             }
             if let newPreferences = newValue {
-                realmPreferences = RealmPreferences(newPreferences)
+                realmPreferences = RealmPreferences(id: id, preferences: newPreferences)
             }
         }
     }
@@ -75,7 +75,7 @@ class RealmUser: Object, UserProtocol {
                 return
             }
             if let profile = newValue {
-                realmProfile = RealmProfile(profile)
+                realmProfile = RealmProfile(id: id, profile: profile)
             }
         }
     }
@@ -91,7 +91,7 @@ class RealmUser: Object, UserProtocol {
                 return
             }
             if let newContributor = newValue {
-                realmContributor = RealmContributor(newContributor)
+                realmContributor = RealmContributor(id: id, contributor: newContributor)
             }
         }
     }
@@ -106,7 +106,7 @@ class RealmUser: Object, UserProtocol {
                 return
             }
             if let newItems = newValue {
-                realmItems = RealmUserItems(newItems)
+                realmItems = RealmUserItems(id: id, userItems: newItems)
             }
         }
     }

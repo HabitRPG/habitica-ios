@@ -11,9 +11,10 @@ import Habitica_Models
 import RealmSwift
 
 class RealmQuestState: Object, QuestStateProtocol {
-    var active: Bool = false
-    var key: String?
-    var progress: QuestProgressProtocol? {
+    @objc dynamic var id: String?
+    @objc dynamic var active: Bool = false
+    @objc dynamic var key: String?
+    @objc dynamic var progress: QuestProgressProtocol? {
         get {
             return realmProgress
         }
@@ -21,15 +22,19 @@ class RealmQuestState: Object, QuestStateProtocol {
             if let newProgress = newValue as? RealmQuestProgress {
                 self.realmProgress = newProgress
             } else if let newProgress = newValue {
-                realmProgress = RealmQuestProgress(newProgress)
+                realmProgress = RealmQuestProgress(id: id, progress: newProgress)
             }
         }
     }
-    var realmProgress: RealmQuestProgress?
+    @objc dynamic var realmProgress: RealmQuestProgress?
     
+    override static func primaryKey() -> String {
+        return "id"
+    }
     
-    convenience init(_ state: QuestStateProtocol) {
+    convenience init(id: String?, state: QuestStateProtocol) {
         self.init()
+        self.id = id
         active = state.active
         key = state.key
         progress = state.progress

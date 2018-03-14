@@ -36,14 +36,20 @@ class RealmStats: Object, StatsProtocol {
                 return
             }
             if let newBuff = newValue {
-                realmBuff = RealmBuff(newBuff)
+                realmBuff = RealmBuff(id: id, buff: newBuff)
             }
         }
     }
     @objc dynamic var realmBuff: RealmBuff?
     
-    convenience init(_ stats: StatsProtocol) {
+    @objc dynamic var id: String?
+    override static func primaryKey() -> String {
+        return "id"
+    }
+    
+    convenience init(id: String?, stats: StatsProtocol) {
         self.init()
+        self.id = id
         health = stats.health
         maxHealth = stats.maxHealth
         mana = stats.mana

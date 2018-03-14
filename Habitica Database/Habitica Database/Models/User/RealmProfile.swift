@@ -15,8 +15,14 @@ class RealmProfile: Object, ProfileProtocol {
     @objc dynamic var name: String?
     @objc dynamic var blurb: String?
     
-    convenience init(_ profile: ProfileProtocol) {
+    @objc dynamic var id: String?
+    override static func primaryKey() -> String {
+        return "id"
+    }
+    
+    convenience init(id: String?, profile: ProfileProtocol) {
         self.init()
+        self.id = id
         name = profile.name
         blurb = profile.blurb
     }

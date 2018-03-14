@@ -36,7 +36,11 @@ public class ContentLocalRepository: BaseLocalRepository {
     }
     
     public func save(_ worldState: WorldStateProtocol) {
-        
+        if let realmWorldState = worldState as? RealmWorldState {
+            save(object: realmWorldState)
+            return
+        }
+        save(object: RealmWorldState(id: "habitica", state: worldState))
     }
     
     public func getFAQEntries(search searchText: String? = nil) -> SignalProducer<ReactiveResults<[FAQEntryProtocol]>, ReactiveSwiftRealmError> {

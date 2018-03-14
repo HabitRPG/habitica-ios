@@ -14,6 +14,10 @@ class RealmTag: Object, TagProtocol {
     @objc dynamic var id: String?
     @objc dynamic var text: String?
     
+    override static func primaryKey() -> String {
+        return "id"
+    }
+    
     convenience init(_ tagProtocol: TagProtocol) {
         self.init()
         id = tagProtocol.id

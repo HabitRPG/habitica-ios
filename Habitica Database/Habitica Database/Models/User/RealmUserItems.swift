@@ -20,7 +20,7 @@ class RealmUserItems: Object, UserItemsProtocol {
                 realmGear = item
             }
             if let item = newValue {
-                realmGear = RealmUserGear(item)
+                realmGear = RealmUserGear(id: id, userGear: item)
             }
         }
     }
@@ -28,12 +28,18 @@ class RealmUserItems: Object, UserItemsProtocol {
     @objc dynamic var currentMount: String?
     @objc dynamic var currentPet: String?
     
+    @objc dynamic var id: String?
+    override static func primaryKey() -> String {
+        return "id"
+    }
+    
     override static func ignoredProperties() -> [String] {
         return ["gear"]
     }
     
-    convenience init(_ userItems: UserItemsProtocol) {
+    convenience init(id: String?, userItems: UserItemsProtocol) {
         self.init()
+        self.id = id
         gear = userItems.gear
         currentMount = userItems.currentMount
         currentPet = userItems.currentPet

@@ -21,8 +21,14 @@ class RealmFlags: Object, FlagsProtocol {
     @objc dynamic var chatRevoked: Bool = false
     @objc dynamic var classSelected: Bool = false
     
-    convenience init(_ flags: FlagsProtocol) {
+    @objc dynamic var id: String?
+    override static func primaryKey() -> String {
+        return "id"
+    }
+    
+    convenience init(id: String?, flags: FlagsProtocol) {
         self.init()
+        self.id = id
         armoireEmpty = flags.armoireEmpty
         cronCount = flags.cronCount
         rebirthEnabled = flags.rebirthEnabled

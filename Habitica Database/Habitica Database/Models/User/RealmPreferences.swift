@@ -28,8 +28,14 @@ class RealmPreferences: Object, PreferencesProtocol {
     @objc dynamic var timezoneOffset: Int = 0
     @objc dynamic var sound: String?
     
-    convenience init(_ preferences: PreferencesProtocol) {
+    @objc dynamic var id: String?
+    override static func primaryKey() -> String {
+        return "id"
+    }
+    
+    convenience init(id: String?, preferences: PreferencesProtocol) {
         self.init()
+        self.id = id
         skin = preferences.skin
         language = preferences.language
         automaticAllocation = preferences.automaticAllocation
