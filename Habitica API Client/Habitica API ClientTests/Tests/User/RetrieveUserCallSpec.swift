@@ -37,6 +37,7 @@ class RetrieveUserCallSpec: QuickSpec {
                             expect(user?.items?.gear).toNot(beNil())
                             expect(user?.contributor).toNot(beNil())
                             expect(user?.stats).toNot(beNil())
+                            expect(user?.stats?.buffs).toNot(beNil())
                             done()
                         })
                         call.fire()

@@ -9,7 +9,11 @@
 import Foundation
 import Habitica_Models
 
-class APIHatchingPotion: APIItem, HatchingPotionProtocol {
+class APIHatchingPotion: HatchingPotionProtocol, Codable {
+    var key: String?
+    var text: String?
+    var notes: String?
+    var value: Float = 0
     var premium: Bool = false
     var limited: Bool = false
 }

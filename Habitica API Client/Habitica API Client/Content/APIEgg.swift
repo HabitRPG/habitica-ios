@@ -9,6 +9,10 @@
 import Foundation
 import Habitica_Models
 
-class APIEgg: APIItem, EggProtocol {
+class APIEgg: EggProtocol, Codable {
+    var key: String?
+    var text: String?
+    var notes: String?
+    var value: Float = 0
     var adjective: String?
 }

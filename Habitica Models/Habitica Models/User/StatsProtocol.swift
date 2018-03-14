@@ -20,5 +20,5 @@ public protocol StatsProtocol: BaseStatsProtocol {
     var points: Int { get set }
     var habitClass: String? { get set }
     var gold: Float { get set }
-    var buff: BuffProtocol? { get set }
+    var buffs: BuffProtocol? { get set }
 }

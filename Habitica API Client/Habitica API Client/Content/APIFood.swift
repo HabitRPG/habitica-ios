@@ -9,7 +9,11 @@
 import Foundation
 import Habitica_Models
 
-class APIFood: APIItem, FoodProtocol {
+class APIFood: FoodProtocol, Codable {
+    var key: String?
+    var text: String?
+    var notes: String?
+    var value: Float = 0
     var target: String?
     var canDrop: Bool = false
 }

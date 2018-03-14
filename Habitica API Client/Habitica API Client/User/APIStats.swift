@@ -24,7 +24,7 @@ public class APIStats: StatsProtocol, Codable {
     public var points: Int = 0
     public var habitClass: String?
     public var gold: Float = 0
-    public var buff: BuffProtocol?
+    public var buffs: BuffProtocol?
     
     enum CodingKeys: String, CodingKey {
         case health = "hp"
@@ -41,7 +41,7 @@ public class APIStats: StatsProtocol, Codable {
         case points
         case habitClass = "class"
         case gold = "gp"
-        case buff
+        case buffs
     }
     
     public required init(from decoder: Decoder) throws {
@@ -60,7 +60,7 @@ public class APIStats: StatsProtocol, Codable {
         points = (try? values.decode(Int.self, forKey: .points)) ?? 0
         habitClass = try? values.decode(String.self, forKey: .habitClass)
         gold = (try? values.decode(Float.self, forKey: .gold)) ?? 0
-        buff = try? values.decode(APIBuff.self, forKey: .buff)
+        buffs = try? values.decode(APIBuff.self, forKey: .buffs)
     }
     
     public func encode(to encoder: Encoder) throws {

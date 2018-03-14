@@ -20,4 +20,16 @@ class APIBuff: BuffProtocol, Codable {
     var intelligence: Int = 0
     var constitution: Int = 0
     var perception: Int = 0
+    
+    enum CodingKeys: String, CodingKey {
+        case strength = "str"
+        case intelligence = "int"
+        case constitution = "con"
+        case perception = "per"
+        case shinySeed
+        case snowball
+        case seafoam
+        case streaks
+        case stealth
+    }
 }

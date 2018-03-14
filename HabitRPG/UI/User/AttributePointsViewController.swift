@@ -160,7 +160,7 @@ class AttributePointsViewController: HRPGUIViewController {
         constitutionStatsView.levelValue = levelStat
         perceptionStatsView.levelValue = levelStat
         
-        if let buff = stats.buff {
+        if let buff = stats.buffs {
             totalStrength += buff.strength
             totalIntelligence += buff.intelligence
             totalConstitution += buff.constitution

@@ -26,21 +26,21 @@ class RealmStats: Object, StatsProtocol {
     @objc dynamic var points: Int = 0
     @objc dynamic var habitClass: String?
     @objc dynamic var gold: Float = 0
-    @objc dynamic var buff: BuffProtocol? {
+    @objc dynamic var buffs: BuffProtocol? {
         get {
-            return realmBuff
+            return realmBuffs
         }
         set {
             if let newBuff = newValue as? RealmBuff {
-                realmBuff = newBuff
+                realmBuffs = newBuff
                 return
             }
             if let newBuff = newValue {
-                realmBuff = RealmBuff(id: id, buff: newBuff)
+                realmBuffs = RealmBuff(id: id, buff: newBuff)
             }
         }
     }
-    @objc dynamic var realmBuff: RealmBuff?
+    @objc dynamic var realmBuffs: RealmBuff?
     
     @objc dynamic var id: String?
     override static func primaryKey() -> String {
@@ -64,6 +64,6 @@ class RealmStats: Object, StatsProtocol {
         points = stats.points
         habitClass = stats.habitClass
         gold = stats.gold
-        buff = stats.buff
+        buffs = stats.buffs
     }
 }

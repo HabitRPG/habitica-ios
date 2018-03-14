@@ -23,7 +23,7 @@ class RealmQuest: RealmItem, QuestProtocol {
                 return
             }
             if let newBoss = newValue {
-                realmBoss = RealmQuestBoss(newBoss)
+                realmBoss = RealmQuestBoss(key: key, questBoss: newBoss)
             }
         }
     }
