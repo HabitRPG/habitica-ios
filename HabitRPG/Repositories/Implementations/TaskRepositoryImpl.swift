@@ -43,14 +43,15 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
             guard let response = taskResponse else {
                 return
             }
-            if task.type != "reward", let taskId = task.id {
-                self?.localRepository.update(taskId: taskId, stats: stats, direction: direction, response: response)
-            }
             
             let healthDiff = (response.health ?? 0) - stats.health
             let magicDiff = (response.magic ?? 0) - stats.mana
             let expDiff = (response.experience ?? 0) - stats.experience
             let goldDiff = (response.gold ?? 0) - stats.gold
+            
+            if task.type != "reward", let taskId = task.id {
+                self?.localRepository.update(taskId: taskId, stats: stats, direction: direction, response: response)
+            }
             
             let toastView = ToastView(healthDiff: healthDiff,
                                       magicDiff: magicDiff,
