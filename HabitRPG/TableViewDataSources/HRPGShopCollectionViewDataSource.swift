@@ -63,11 +63,11 @@ class HRPGShopCollectionViewDataSource: HRPGFetchedResultsCollectionViewDataSour
             ) as? HRPGShopSectionHeaderCollectionReusableView
         
         if let headerView = view {
-            headerView.gearCategoryLabel.isHidden = true
+            headerView.gearCategoryButton.isHidden = true
             if indexPath.section == 0 && needsGearSection {
                 headerView.titleLabel.text = NSLocalizedString("Class Equipment", comment: "")
                 headerView.gearCategoryLabel.text = selectedGearCategory?.capitalized
-                headerView.gearCategoryLabel.isHidden = false
+                headerView.gearCategoryButton.isHidden = false
                 headerView.onGearCategoryLabelTapped = {[weak self] in
                     self?.delegate?.showGearSelection()
                 }

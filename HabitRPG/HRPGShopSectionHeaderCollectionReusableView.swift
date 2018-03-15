@@ -10,14 +10,16 @@ import UIKit
 
 class HRPGShopSectionHeaderCollectionReusableView: UICollectionReusableView {
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var gearCategoryLabel: PaddedLabel!
+    @IBOutlet weak var gearCategoryButton: UIView!
+    @IBOutlet weak var gearCategoryLabel: UILabel!
+    @IBOutlet weak var dropdownIconView: UIImageView!
     
     var onGearCategoryLabelTapped: (() -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        gearCategoryLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(gearCategoryLabelTapped)))
-        gearCategoryLabel.horizontalPadding = 8
+        gearCategoryButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(gearCategoryLabelTapped)))
+        dropdownIconView.image = #imageLiteral(resourceName: "carret_down").withRenderingMode(.alwaysTemplate)
     }
     
     @objc
