@@ -10,7 +10,7 @@ import UIKit
 
 class HRPGSingleOptionModalViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var actionButton: UIButton!
+    @IBOutlet weak var actionButton: UIButton?
     @IBOutlet weak var imageTextView: HRPGSimpleShopItemView!
 
     override func viewDidLoad() {
@@ -24,12 +24,14 @@ class HRPGSingleOptionModalViewController: UIViewController {
     
     func styleViews() {
         titleLabel.superview?.bringSubview(toFront: titleLabel)
-        actionButton.superview?.bringSubview(toFront: actionButton)
+        if let button = actionButton {
+            button.superview?.bringSubview(toFront: button)
+        }
         titleLabel.superview?.bringSubview(toFront: imageTextView)
         
-        actionButton.layer.borderWidth = 0.5
-        actionButton.layer.borderColor = UIColor.gray400().cgColor
-        actionButton.setTitleColor(UIColor.purple400(), for: UIControlState.normal)
+        actionButton?.layer.borderWidth = 0.5
+        actionButton?.layer.borderColor = UIColor.gray400().cgColor
+        actionButton?.setTitleColor(UIColor.purple400(), for: UIControlState.normal)
         
         imageTextView.shopItemTitleLabel.font = UIFont.systemFont(ofSize: 15)
         imageTextView.shopItemTitleLabel.textColor = UIColor.gray200()

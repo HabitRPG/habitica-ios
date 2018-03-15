@@ -25,4 +25,3 @@ class HRPGGemCapReachedViewController: HRPGSingleOptionModalViewController {
     }
     
 }
-
