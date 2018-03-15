@@ -156,6 +156,11 @@ enum StoryboardScene {
 
     static let questInvitationNavigationController = SceneType<HRPGNavigationController>(storyboard: Social.self, identifier: "questInvitationNavigationController")
   }
+  enum Tasks: StoryboardType {
+    static let storyboardName = "Tasks"
+
+    static let taskFormViewController = SceneType<Habitica.VisualEffectModalViewController>(storyboard: Tasks.self, identifier: "TaskFormViewController")
+  }
   enum User: StoryboardType {
     static let storyboardName = "User"
 

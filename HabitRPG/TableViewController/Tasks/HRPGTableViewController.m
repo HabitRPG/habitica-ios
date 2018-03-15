@@ -503,7 +503,7 @@ NSIndexPath  *sourceIndexPath = nil;
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"FormSegue"]) {
-        HRPGNavigationController *destViewController = segue.destinationViewController;
+        /*HRPGNavigationController *destViewController = segue.destinationViewController;
         destViewController.sourceViewController = self;
 
         HRPGFormViewController *formController =
@@ -516,7 +516,7 @@ NSIndexPath  *sourceIndexPath = nil;
             formController.task = editedTask;
             formController.editTask = YES;
             editedTask = nil;
-        }
+        }*/
     } else if ([segue.identifier isEqualToString:@"FilterSegue"]) {
         HRPGTabBarController *tabBarController = (HRPGTabBarController *)self.tabBarController;
         HRPGNavigationController *navigationController = segue.destinationViewController;

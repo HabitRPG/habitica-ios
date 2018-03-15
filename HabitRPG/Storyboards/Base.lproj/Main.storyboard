@@ -165,7 +165,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="eoD-0q-22r">
                             <connections>
-                                <segue destination="TLp-c7-ouI" kind="presentation" identifier="FormSegue" id="E5i-VS-PGN"/>
+                                <segue destination="s5d-Hq-9de" kind="presentation" identifier="FormSegue" animates="NO" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="PHp-cT-md6"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -177,6 +177,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q2l-gB-FPb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2804" y="-815.44227886056979"/>
+        </scene>
+        <!--TaskFormViewController-->
+        <scene sceneID="UBD-Mc-h7T">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Tasks" referencedIdentifier="TaskFormViewController" id="s5d-Hq-9de" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9HM-Ct-KcG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3617" y="-816"/>
         </scene>
         <!--Dailies-->
         <scene sceneID="wsG-G7-Bvd">
@@ -346,11 +354,7 @@
                                 <segue destination="6vN-Em-JCA" kind="presentation" identifier="FilterSegue" id="04Z-5H-zfF"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="QMS-gq-G3V">
-                            <connections>
-                                <segue destination="TLp-c7-ouI" kind="presentation" identifier="FormSegue" id="jeD-LQ-1O1"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="QMS-gq-G3V"/>
                     </navigationItem>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="ijN-nO-dRE">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -536,11 +540,7 @@
                                 <segue destination="6vN-Em-JCA" kind="presentation" identifier="FilterSegue" id="iSa-66-Wjc"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="txM-DJ-1EC">
-                            <connections>
-                                <segue destination="TLp-c7-ouI" kind="presentation" identifier="FormSegue" id="HFM-OL-cM8"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="txM-DJ-1EC"/>
                     </navigationItem>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="1Tw-4Z-2aB">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -550,53 +550,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rWH-bq-KZZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1993" y="885"/>
-        </scene>
-        <!--Form View Controller-->
-        <scene sceneID="nNw-r8-3vS">
-            <objects>
-                <viewController id="5Mb-b4-jEY" customClass="HRPGFormViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="C88-Gi-7qf"/>
-                        <viewControllerLayoutGuide type="bottom" id="rBl-70-dAi"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="zuN-1D-G0o">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="GOc-QP-HkZ">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="eKF-lb-8J3">
-                            <connections>
-                                <segue destination="c4v-YL-G9e" kind="unwind" unwindAction="unwindToList:" id="MXA-de-BZb"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="SLb-r7-7qb">
-                            <connections>
-                                <segue destination="c4v-YL-G9e" kind="unwind" identifier="unwindSaveSegue" unwindAction="unwindToListSave:" id="JTj-MH-Db2"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tcx-tt-A11" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="c4v-YL-G9e" userLabel="Exit" sceneMemberID="exit"/>
-            </objects>
-            <point key="canvasLocation" x="4358" y="-815"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Qll-T6-t9b">
-            <objects>
-                <navigationController definesPresentationContext="YES" id="TLp-c7-ouI" customClass="HRPGNavigationController" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wpi-h3-bV7">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="5Mb-b4-jEY" kind="relationship" relationship="rootViewController" id="SZM-Su-hf3"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="AfN-TP-8DY" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3654" y="-815"/>
         </scene>
         <!--Profile-->
         <scene sceneID="STv-3f-rgk">
@@ -3177,13 +3130,12 @@ and helps keep Habitica running</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="2EY-Q7-iuN"/>
-        <segue reference="iSa-66-Wjc"/>
+        <segue reference="njg-A8-lDq"/>
         <segue reference="ETz-qE-xC2"/>
         <segue reference="DAI-nh-Ljl"/>
         <segue reference="sPD-XR-ORt"/>
         <segue reference="aWZ-FG-z5O"/>
         <segue reference="nYO-SY-Og4"/>
-        <segue reference="HFM-OL-cM8"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.44783598184585571" green="0.10848048329353333" blue="0.9984632134437561" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
