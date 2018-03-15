@@ -34,13 +34,9 @@
 @implementation HRPGShopViewController
 
 - (void)viewDidLoad {
-    self.topHeaderNavigationController.shouldHideTopHeader = NO;
-    [self.topHeaderNavigationController setAlternativeHeaderView:self.shopBannerView];
-
     [super viewDidLoad];
-    
     self.topHeaderCoordinator.alternativeHeader = self.shopBannerView;
-
+    
     [self setupNavBar];
     
     [self setupCollectionView];
@@ -239,6 +235,7 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    [super scrollViewDidScroll:scrollView];
     if ([self.viewModel shouldPromptToSubscribe]) {
         CGFloat alpha = scrollView.contentOffset.y + 350 + self.topHeaderNavigationController.contentInset - 80;
         alpha /= -80;
