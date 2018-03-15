@@ -139,7 +139,7 @@ class GroupChatViewController: SLKTextViewController {
             self.tableView?.beginUpdates()
             cell?.isExpanded = true
             oldCell?.isExpanded = false
-            self.tableView?.reloadRows(at: [indexPath, expandedPath], with: .automatic)
+            self.tableView?.reloadRows(at: [indexPath, expandedPath], with: .none)
             self.tableView?.endUpdates()
         } else {
             let cell = self.tableView?.cellForRow(at: indexPath) as? ChatTableViewCell
@@ -148,7 +148,7 @@ class GroupChatViewController: SLKTextViewController {
                 self.expandedChatPath = nil
             }
             self.tableView?.beginUpdates()
-            self.tableView?.reloadRows(at: [indexPath], with: .automatic)
+            self.tableView?.reloadRows(at: [indexPath], with: .none)
             self.tableView?.endUpdates()
         }
     }

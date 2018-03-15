@@ -91,11 +91,14 @@ class ChatTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(expandCell))
-        tapGestureRecognizer.delegate = self
-        tapGestureRecognizer.cancelsTouchesInView = false
-        contentView.addGestureRecognizer(tapGestureRecognizer)
-        messageTextView.addGestureRecognizer(tapGestureRecognizer)
+        let wrapperTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(expandCell))
+        wrapperTapRecognizer.delegate = self
+        wrapperTapRecognizer.cancelsTouchesInView = false
+        messageWrapper.addGestureRecognizer(wrapperTapRecognizer)
+        let messageTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(expandCell))
+        messageTapRecognizer.delegate = self
+        messageTapRecognizer.cancelsTouchesInView = false
+        messageTextView.addGestureRecognizer(messageTapRecognizer)
         
         usernameLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(displayProfile)))
         
@@ -243,6 +246,9 @@ class ChatTableViewCell: UITableViewCell {
             return false
         }
         if messageTextView.frame.contains(location) {
+            if messageTextView == gestureRecognizer.view {
+                return false
+            }
             let layoutManager = messageTextView.layoutManager
             var messageViewLocation = touch.location(in: messageTextView)
             messageViewLocation.x -= messageTextView.textContainerInset.left
