@@ -207,6 +207,8 @@ class GroupChatViewController: SLKTextViewController {
         cell.copyAction = {
             let pasteboard = UIPasteboard.general
             pasteboard.string = item.text
+            let toastView = ToastView(title: NSLocalizedString("Copied Message", comment: ""), background: .green)
+            ToastManager.show(toast: toastView)
         }
         cell.deleteAction = {
             HRPGManager.shared().delete(item, withGroup: self.groupID, onSuccess: nil, onError: nil)
