@@ -37,7 +37,7 @@
     
     NSString *predicateString = [NSString stringWithFormat:@"category.shop.identifier == '%@'", identifier];
     if ([identifier isEqualToString:MarketKey]) {
-        predicateString = [NSString stringWithFormat:@"(category.shop.identifier == 'market' || (pinType == 'marketGear' && owned != true && category.identifier == '%@'))", gearCategory];
+        predicateString = [NSString stringWithFormat:@"(category.shop.identifier == 'market' || (pinType == 'marketGear' && (owned == false || owned == nil) && category.identifier == '%@'))", gearCategory];
     }
     if (![[HRPGManager sharedManager] getUser].subscriptionPlan.isActive) {
         predicateString = [predicateString stringByAppendingString:@" && (isSubscriberItem == nil || isSubscriberItem != YES)"];

@@ -52,6 +52,9 @@
     self.dataSource.selectedGearCategory = self.selectedGearCategory;
     self.dataSource.fetchedResultsDelegate = self;
     self.dataSource.fetchedResultsController = [self.viewModel fetchedShopItemResultsForIdentifier:self.shopIdentifier withGearCategory:self.selectedGearCategory];
+    if ([self.shopIdentifier isEqualToString:@"market"]) {
+        self.dataSource.needsGearSection = YES;
+    }
     
     [self refresh];
 }
