@@ -67,17 +67,17 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="cMa-Mu-pHb">
-                    <rect key="frame" x="30" y="32" width="315" height="364"/>
+                    <rect key="frame" x="30" y="32" width="315" height="324"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="textColor" red="0.3333333432674408" green="0.3333333432674408" blue="0.3333333432674408" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WyJ-ot-CTH">
-                    <rect key="frame" x="20" y="408" width="335" height="200"/>
+                    <rect key="frame" x="20" y="368" width="335" height="240"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" priority="500" constant="200" id="w1I-ic-E02"/>
+                        <constraint firstAttribute="height" priority="500" constant="240" id="w1I-ic-E02"/>
                     </constraints>
                     <attributedString key="attributedText">
                         <fragment>
