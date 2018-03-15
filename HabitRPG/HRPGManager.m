@@ -1473,7 +1473,7 @@ static dispatch_once_t onceToken;
                                                        inManagedObjectStore:managedObjectStore];
     likeMapping.forceCollectionMapping = YES;
     [likeMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"userID"];
-    likeMapping.identificationAttributes = @[ @"userID" ];
+    [likeMapping addAttributeMappingsFromDictionary:@{@"(userID)": @"wasLiked"}];
     [chatMapping
         addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"likes"
                                                                        toKeyPath:@"likes"

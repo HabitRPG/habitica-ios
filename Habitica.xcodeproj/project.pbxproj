@@ -599,6 +599,7 @@
 		29B3FEBD1F9E3DC3000B12CF /* HabiticaAlertController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HabiticaAlertController.xib; sourceTree = "<group>"; };
 		29B6AD491F2A0C9700AC8878 /* LoginEntryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginEntryView.xib; sourceTree = "<group>"; };
 		29B6AD4B1F2A0DBE00AC8878 /* LoginEntryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginEntryView.swift; sourceTree = "<group>"; };
+		29C23E47205A8F22006980F0 /* Habitica 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Habitica 6.xcdatamodel"; sourceTree = "<group>"; };
 		29E162DF1FFBBDDC00685640 /* UsernameLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameLabel.swift; sourceTree = "<group>"; };
 		29E162E11FFC21E100685640 /* CustomFontMetrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFontMetrics.swift; sourceTree = "<group>"; };
 		29E162E3200227AA00685640 /* HRPGUIViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HRPGUIViewController.h; sourceTree = "<group>"; };
@@ -2041,10 +2042,11 @@
 				29FEB279202B4F0400EA245A /* AvatarView.swift */,
 				293BB4A01FD06E7E003B6F4F /* BulkStatsAllocationView.xib */,
 				299BD6311F5420A300E22935 /* Challenges */,
-				29FC88552017B840002B3D3F /* CollapsibleTitle.swift */,
 				29FC88592017C039002B3D3F /* CollapsibleStackView.swift */,
+				29FC88552017B840002B3D3F /* CollapsibleTitle.swift */,
 				4904C73F1F1ED87400F80723 /* GradientImageView.swift */,
 				29AAA15C1F2A3AA600029737 /* GradientView.swift */,
+				29A0FD80203DF49900590BDE /* GuidelinesPromptView.xib */,
 				29B3FEBB1F9E3B17000B12CF /* HabiticaAlertController.swift */,
 				29B3FEBD1F9E3DC3000B12CF /* HabiticaAlertController.xib */,
 				D96760C61B2EF9B600DB07DF /* HRPGAbbrevNumberLabel.h */,
@@ -2105,7 +2107,6 @@
 				29E162DF1FFBBDDC00685640 /* UsernameLabel.swift */,
 				2980E6081EEA25CD005B7100 /* YesterdailiesDialogView.swift */,
 				2980E6061EEA1F55005B7100 /* YesterdailiesDialogView.xib */,
-				29A0FD80203DF49900590BDE /* GuidelinesPromptView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -4208,13 +4209,14 @@
 		29E163072008E7B600685640 /* Habitica.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				29C23E47205A8F22006980F0 /* Habitica 6.xcdatamodel */,
 				29323E2E2051C9A500AC6D6F /* Habitica 5.xcdatamodel */,
 				298409CE203C8617003AD202 /* Habitica 4.xcdatamodel */,
 				49B87D8F201BA88C00CA1A75 /* Habitica 3.xcdatamodel */,
 				29FC885020121771002B3D3F /* Habitica 2.xcdatamodel */,
 				29E163082008E7B600685640 /* Habitica.xcdatamodel */,
 			);
-			currentVersion = 29323E2E2051C9A500AC6D6F /* Habitica 5.xcdatamodel */;
+			currentVersion = 29C23E47205A8F22006980F0 /* Habitica 6.xcdatamodel */;
 			path = Habitica.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

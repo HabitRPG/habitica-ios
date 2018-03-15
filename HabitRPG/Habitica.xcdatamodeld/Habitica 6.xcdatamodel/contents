@@ -102,6 +102,7 @@
     </entity>
     <entity name="ChatMessageLike" representedClassName="ChatMessageLike" syncable="YES">
         <attribute name="userID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="wasLiked" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="messages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ChatMessage" inverseName="likes" inverseEntity="ChatMessage" syncable="YES"/>
     </entity>
     <entity name="ChecklistItem" representedClassName="ChecklistItem" syncable="YES">
@@ -596,7 +597,7 @@
         <element name="ChatMessage" positionX="0" positionY="0" width="128" height="270"/>
         <element name="ChatMessageAvatar" positionX="9" positionY="153" width="128" height="315"/>
         <element name="ChatMessageFlag" positionX="9" positionY="153" width="128" height="75"/>
-        <element name="ChatMessageLike" positionX="0" positionY="0" width="128" height="75"/>
+        <element name="ChatMessageLike" positionX="0" positionY="0" width="128" height="90"/>
         <element name="ChecklistItem" positionX="0" positionY="0" width="128" height="105"/>
         <element name="Customization" positionX="0" positionY="0" width="128" height="180"/>
         <element name="Egg" positionX="0" positionY="0" width="128" height="90"/>

@@ -217,9 +217,12 @@ class ChatTableViewCell: UITableViewCell {
         plusOneButton.tintColor = UIColor.gray300()
         var wasLiked = false
         if let likes = likes {
-            if likes.count > 0 {
-                plusOneButton.setTitle(" +\(likes.count)", for: .normal)
-                for like in likes where like.userID == userID {
+            let likedMessageCount = likes.filter({ (like) -> Bool in
+                return like.wasLiked?.boolValue == true
+            }).count
+            if likedMessageCount > 0 {
+                plusOneButton.setTitle(" +\(likedMessageCount)", for: .normal)
+                for like in likes where like.userID == userID && like.wasLiked?.boolValue == true {
                     plusOneButton.setTitleColor(UIColor.purple400(), for: .normal)
                     plusOneButton.tintColor = UIColor.purple400()
                     wasLiked = true
