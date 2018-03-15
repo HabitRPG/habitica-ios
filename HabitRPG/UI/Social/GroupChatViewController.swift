@@ -193,7 +193,9 @@ class GroupChatViewController: SLKTextViewController {
             popup?.show()
         }
         cell.replyAction = {
-            self.textView.text = "@\(item.user ?? "")"
+            self.textView.text = "@\(item.user ?? "") "
+            self.textView.becomeFirstResponder()
+            self.textView.selectedRange = NSRange(location: self.textView.text.count, length: 0)
         }
         cell.plusOneAction = {
             HRPGManager.shared().like(item, withGroup: self.groupID, onSuccess: {
