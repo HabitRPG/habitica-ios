@@ -14,7 +14,6 @@ import KLCPopup
 class GroupChatViewController: SLKTextViewController {
     
     @objc public var groupID: String?
-    private var sizeTextView = UITextView()
     private var expandedChatPath: IndexPath?
     private var dataSource: HRPGCoreDataDataSource?
     private let user = HRPGManager.shared().getUser()
@@ -22,9 +21,6 @@ class GroupChatViewController: SLKTextViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         hidesBottomBarWhenPushed = true
-        self.sizeTextView.textContainerInset = .zero
-        self.sizeTextView.contentInset = .zero
-        self.sizeTextView.font = CustomFontMetrics.scaledSystemFont(ofSize: 15)
         
         let nib = UINib(nibName: "ChatMessageCell", bundle: nil)
         self.tableView?.register(nib, forCellReuseIdentifier: "ChatMessageCell")
@@ -77,6 +73,7 @@ class GroupChatViewController: SLKTextViewController {
         self.textView.registerMarkdownFormattingSymbol("**", withTitle: "Bold")
         self.textView.registerMarkdownFormattingSymbol("*", withTitle: "Italics")
         self.textView.registerMarkdownFormattingSymbol("~~", withTitle: "Strike")
+        self.textView.placeholder = NSLocalizedString("Write a message", comment: "")
     }
     
     override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
