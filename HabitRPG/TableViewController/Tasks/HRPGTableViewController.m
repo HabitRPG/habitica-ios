@@ -37,7 +37,6 @@
 @end
 
 @implementation HRPGTableViewController
-Task *editedTask;
 BOOL editable;
 NSIndexPath  *sourceIndexPath = nil;
 
@@ -396,7 +395,7 @@ NSIndexPath  *sourceIndexPath = nil;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    editedTask = [self taskAtIndexPath:indexPath];
+    [self.dataSource selectRowAtIndexPath:indexPath];
     [self performSegueWithIdentifier:@"FormSegue" sender:self];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
@@ -503,20 +502,16 @@ NSIndexPath  *sourceIndexPath = nil;
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"FormSegue"]) {
-        /*HRPGNavigationController *destViewController = segue.destinationViewController;
-        destViewController.sourceViewController = self;
-
-        HRPGFormViewController *formController =
-            (HRPGFormViewController *)destViewController.topViewController;
-        formController.readableTaskType = self.readableName;
-        HRPGTabBarController *tabBarController = (HRPGTabBarController *)self.tabBarController;
-        formController.activeTags = tabBarController.selectedTags;
-        formController.taskType = self.typeName;
-        if (editedTask) {
-            formController.task = editedTask;
-            formController.editTask = YES;
-            editedTask = nil;
-        }*/
+        TaskFormVisualEffectsModalViewController *destViewController = segue.destinationViewController;
+        [destViewController setTaskTypeStringWithType:self.typeName];
+        if (self.dataSource.taskToEdit) {
+            id task = self.dataSource.taskToEdit;
+            destViewController.taskId = [task valueForKey:@"id"];
+            destViewController.isCreating = NO;
+            self.dataSource.taskToEdit = nil;
+        } else {
+            destViewController.isCreating = YES;
+        }
     } else if ([segue.identifier isEqualToString:@"FilterSegue"]) {
         HRPGTabBarController *tabBarController = (HRPGTabBarController *)self.tabBarController;
         HRPGNavigationController *navigationController = segue.destinationViewController;

@@ -36,6 +36,7 @@ class TaskTableViewDataSource: BaseReactiveDataSource, UITableViewDataSource {
     internal let repository = TaskRepository()
     
     @objc var tasks = [TaskProtocol]()
+    @objc var taskToEdit: TaskProtocol?
     private var expandedIndexPath: IndexPath?
     private var fetchTasksDisposable: Disposable?
     
@@ -67,6 +68,11 @@ class TaskTableViewDataSource: BaseReactiveDataSource, UITableViewDataSource {
     @objc
     func object(at indexPath: IndexPath) -> TaskProtocol? {
         return tasks[indexPath.item]
+    }
+    
+    @objc
+    func idForObject(at indexPath: IndexPath) -> String? {
+        return tasks[indexPath.item].id
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -112,5 +118,10 @@ class TaskTableViewDataSource: BaseReactiveDataSource, UITableViewDataSource {
                 tableView?.endUpdates()
             }
         }
+    }
+    
+    @objc
+    func selectRowAt(indexPath: IndexPath) {
+        taskToEdit = object(at: indexPath)
     }
 }

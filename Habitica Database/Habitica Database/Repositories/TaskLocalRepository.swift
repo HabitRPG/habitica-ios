@@ -78,4 +78,15 @@ public class TaskLocalRepository: BaseLocalRepository {
             }
         }).start()
     }
+
+    public func getNewTask() -> TaskProtocol {
+        return RealmTask()
+    }
+    
+    public func getEditableTask(id: String) -> TaskProtocol? {
+        if let task = realm?.object(ofType: RealmTask.self, forPrimaryKey: id) {
+            return RealmTask(task)
+        }
+        return nil
+    }
 }

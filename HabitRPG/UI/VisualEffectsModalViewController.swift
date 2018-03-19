@@ -8,6 +8,7 @@
 
 import UIKit
 
+@objc
 class VisualEffectModalViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var titleLabel: UILabel!
@@ -19,8 +20,21 @@ class VisualEffectModalViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var topHeaderOffset: NSLayoutConstraint!
     @IBOutlet weak var scrollViewTopOffset: NSLayoutConstraint!
     
+    @objc var containedViewController: UIViewController? {
+        return childViewControllers.first
+    }
+    
     private var topHeaderSize: CGFloat = 40
     private var topHeaderSpacing: CGFloat = 140
+    
+    override var title: String? {
+        get {
+            return titleLabel.text
+        }
+        set {
+            titleLabel.text = newValue
+        }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -88,7 +102,7 @@ class VisualEffectModalViewController: UIViewController, UIScrollViewDelegate {
     }
     
     private func hideView(_ completion: (() -> Void)? = nil) {
-        UIView.animate(withDuration: 0.5, animations: {
+        UIView.animate(withDuration: 0.4, animations: {
             self.screenDimView.alpha = 0
             self.scrollViewTopOffset.constant = self.view.bounds.size.height
             self.view.layoutIfNeeded()

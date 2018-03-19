@@ -64,4 +64,12 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
             return response
         })
     }
+    
+    func getNewTask() -> TaskProtocol {
+        return localRepository.getNewTask()
+    }
+    
+    func getEditableTask(id: String) -> TaskProtocol? {
+        return localRepository.getEditableTask(id: id)
+    }
 }

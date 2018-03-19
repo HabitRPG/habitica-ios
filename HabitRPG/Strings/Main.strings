@@ -3,3 +3,15 @@
 "stats.no_points_to_allocate" = "0 Points to Allocate";
 "stats.one_point_to_allocate" = "1 Point to Allocate";
 "stats.points_to_allocate" = "%d Point to Allocate";
+"controls" = "Controls";
+"difficulty" = "Difficulty";
+"resetStreak" = "Reset Streak";
+"tags" = "Tags";
+"title" = "Title";
+"notes" = "Notes";
+"tasks.habit" = "Habit";
+"tasks.daily" = "Daily";
+"tasks.todo" = "To-Do";
+"tasks.reward" = "Reward";
+"tasks.create" = "Create %@";
+"tasks.edit" = "Edit %@";

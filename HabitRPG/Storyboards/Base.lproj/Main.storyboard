@@ -354,7 +354,11 @@
                                 <segue destination="6vN-Em-JCA" kind="presentation" identifier="FilterSegue" id="04Z-5H-zfF"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="QMS-gq-G3V"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="QMS-gq-G3V">
+                            <connections>
+                                <segue destination="s5d-Hq-9de" kind="presentation" identifier="FormSegue" animates="NO" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="WX7-CS-CSr"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="ijN-nO-dRE">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -540,7 +544,11 @@
                                 <segue destination="6vN-Em-JCA" kind="presentation" identifier="FilterSegue" id="iSa-66-Wjc"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="txM-DJ-1EC"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="txM-DJ-1EC">
+                            <connections>
+                                <segue destination="s5d-Hq-9de" kind="presentation" identifier="FormSegue" animates="NO" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="6tw-63-M3K"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="1Tw-4Z-2aB">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -3060,7 +3068,7 @@ and helps keep Habitica running</string>
                     <navigationItem key="navigationItem" title="Rewards" id="HHL-mH-FJc">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="NiR-ou-IuB">
                             <connections>
-                                <segue destination="IOk-9k-SGo" kind="presentation" id="XuH-Pr-tfj"/>
+                                <segue destination="s5d-Hq-9de" kind="presentation" identifier="FormSegue" animates="NO" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="tO1-JH-hWy"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -3129,13 +3137,13 @@ and helps keep Habitica running</string>
         <image name="tabbar_todos" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2EY-Q7-iuN"/>
-        <segue reference="njg-A8-lDq"/>
+        <segue reference="iSa-66-Wjc"/>
         <segue reference="ETz-qE-xC2"/>
         <segue reference="DAI-nh-Ljl"/>
         <segue reference="sPD-XR-ORt"/>
         <segue reference="aWZ-FG-z5O"/>
         <segue reference="nYO-SY-Og4"/>
+        <segue reference="tO1-JH-hWy"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.44783598184585571" green="0.10848048329353333" blue="0.9984632134437561" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

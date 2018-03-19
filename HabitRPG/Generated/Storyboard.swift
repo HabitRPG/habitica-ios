@@ -159,7 +159,7 @@ enum StoryboardScene {
   enum Tasks: StoryboardType {
     static let storyboardName = "Tasks"
 
-    static let taskFormViewController = SceneType<Habitica.VisualEffectModalViewController>(storyboard: Tasks.self, identifier: "TaskFormViewController")
+    static let taskFormViewController = SceneType<Habitica.TaskFormVisualEffectsModalViewController>(storyboard: Tasks.self, identifier: "TaskFormViewController")
   }
   enum User: StoryboardType {
     static let storyboardName = "User"
@@ -244,6 +244,9 @@ enum StoryboardSegue {
     case writeMessageSegue = "WriteMessageSegue"
     case challengeDetailsSegue
     case unwindSaveSegue
+  }
+  enum Tasks: String, SegueType {
+    case embedSegue = "EmbedSegue"
   }
 }
 // swiftlint:enable explicit_type_interface identifier_name line_length type_body_length type_name
