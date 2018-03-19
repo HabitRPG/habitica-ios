@@ -35,4 +35,10 @@ class UsernameLabel: UILabel {
         size.width += 18
         return size
     }
+    
+    override func sizeThatFits(_ size: CGSize) -> CGSize {
+        var size = super.sizeThatFits(size)
+        size.width += 18
+        return size
+    }
 }

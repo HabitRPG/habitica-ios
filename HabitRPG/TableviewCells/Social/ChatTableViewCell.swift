@@ -8,6 +8,7 @@
 
 import UIKit
 import DateTools
+import PinLayout
 
 class ChatTableViewCell: UITableViewCell {
     
@@ -19,14 +20,10 @@ class ChatTableViewCell: UITableViewCell {
     @IBOutlet weak private var timeLabel: UILabel!
     @IBOutlet weak private var messageTextView: UITextView!
     @IBOutlet weak private var plusOneButton: UIButton!
-    @IBOutlet weak private var extraButtonsStackView: UIStackView!
+    @IBOutlet weak private var replyButton: UIButton!
+    @IBOutlet weak private var copyButton: UIButton!
     @IBOutlet weak private var reportButton: UIButton!
     @IBOutlet weak private var deleteButton: UIButton!
-    @IBOutlet weak private var leftMarginConstraint: NSLayoutConstraint!
-    @IBOutlet weak private var topMarginConstraint: NSLayoutConstraint!
-    @IBOutlet weak private var bottomMarginConstraint: NSLayoutConstraint!
-    @IBOutlet weak private var extraButtonsHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var avatarWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var reportView: UIButton!
     
     @objc public var profileAction: (() -> Void)?
@@ -42,20 +39,27 @@ class ChatTableViewCell: UITableViewCell {
         }
     }
     
+    private var topSpacing: CGFloat = 4
+    private var bottomSpacing: CGFloat = 4
+    private var leftSpacing: CGFloat = 12
+    
+    private var hideDeleteButton = false
+    private var hideReportButton = false
+    
     private var isOwnMessage = false {
         didSet {
             updateLeftMargin()
             avatarView.isHidden = isOwnMessage
-            reportButton.isHidden = isOwnMessage
+            hideReportButton = isOwnMessage
             if !isModerator {
-                deleteButton.isHidden = !isOwnMessage
+                hideDeleteButton = !isOwnMessage
             }
         }
     }
     private var isPrivateMessage = false
     private var isModerator = false {
         didSet {
-            deleteButton.isHidden = false
+            hideDeleteButton = false
         }
     }
     private var isAvatarHidden = false {
@@ -116,11 +120,12 @@ class ChatTableViewCell: UITableViewCell {
         }
         
         reportView.setImage(#imageLiteral(resourceName: "ChatReport").withRenderingMode(.alwaysTemplate), for: .normal)
+        
+        messageTextView.font = CustomFontMetrics.scaledSystemFont(ofSize: 15, ofWeight: .regular)
     }
     
     @objc
     func configure(chatMessage: ChatMessage, previousMessage: ChatMessage?, nextMessage: ChatMessage?, userID: String, username: String, isModerator: Bool, isExpanded: Bool) {
-        self.isExpanded = isExpanded
         isPrivateMessage = false
         self.isModerator = isModerator
         isOwnMessage = chatMessage.uuid == userID
@@ -141,10 +146,10 @@ class ChatTableViewCell: UITableViewCell {
         }
         
         if previousMessage?.uuid == chatMessage.uuid {
-            topMarginConstraint.constant = 2
+            topSpacing = 2
             avatarView.isHidden = true
         } else {
-            topMarginConstraint.constant = 4
+            topSpacing = 4
             avatarView.isHidden = isOwnMessage
 
             if !isOwnMessage && !isAvatarHidden {
@@ -153,9 +158,9 @@ class ChatTableViewCell: UITableViewCell {
         }
         
         if nextMessage?.uuid == chatMessage.uuid {
-            bottomMarginConstraint.constant = 2
+            bottomSpacing = 2
         } else {
-            bottomMarginConstraint.constant = 4
+            bottomSpacing = 4
         }
         
         if let flags = chatMessage.flags, isModerator && flags.count > 0 {
@@ -165,12 +170,13 @@ class ChatTableViewCell: UITableViewCell {
             reportView.isHidden = true
         }
         
+        self.isExpanded = isExpanded
         applyAccessibility()
+        setNeedsLayout()
     }
     
     @objc
     func configure(inboxMessage: InboxMessage, previousMessage: InboxMessage?, nextMessage: InboxMessage?, user: User, isExpanded: Bool) {
-        self.isExpanded = isExpanded
         isPrivateMessage = true
         plusOneButton.isHidden = true
         isOwnMessage = inboxMessage.sent?.boolValue ?? false
@@ -194,20 +200,22 @@ class ChatTableViewCell: UITableViewCell {
         }
         
         if previousMessage?.sent?.boolValue == inboxMessage.sent?.boolValue {
-            topMarginConstraint.constant = 2
+            topSpacing = 2
             avatarView.isHidden = true
         } else {
-            topMarginConstraint.constant = 4
+            topSpacing = 4
             avatarView.isHidden = isOwnMessage
         }
         
         if nextMessage?.sent?.boolValue == inboxMessage.sent?.boolValue {
-            bottomMarginConstraint.constant = 2
+            bottomSpacing = 2
         } else {
-            bottomMarginConstraint.constant = 4
+            bottomSpacing = 4
         }
         
+        self.isExpanded = isExpanded
         applyAccessibility()
+        setNeedsLayout()
     }
     
     private func setTimeStamp(date: Date?) {
@@ -264,7 +272,16 @@ class ChatTableViewCell: UITableViewCell {
         if usernameLabel.frame.contains(location) {
             return false
         }
-        if extraButtonsStackView.frame.contains(location) {
+        if replyButton.frame.contains(location) {
+            return false
+        }
+        if copyButton.frame.contains(location) {
+            return false
+        }
+        if reportButton.frame.contains(location) {
+            return false
+        }
+        if deleteButton.frame.contains(location) {
             return false
         }
         return true
@@ -315,23 +332,25 @@ class ChatTableViewCell: UITableViewCell {
     }
     
     private func showHideExtraButtons(_ shouldShow: Bool) {
-        extraButtonsStackView.isHidden = !shouldShow
+        replyButton.isHidden = !shouldShow
+        copyButton.isHidden = !shouldShow
         if shouldShow {
-            extraButtonsHeightConstraint.constant = 36
+            reportButton.isHidden = hideReportButton
+            deleteButton.isHidden = hideDeleteButton
         } else {
-            extraButtonsHeightConstraint.constant = 0
+            reportButton.isHidden = true
+            deleteButton.isHidden = true
         }
     }
     
     private func updateLeftMargin() {
-        var margin: CGFloat = 12
+        leftSpacing = 8
         if isAvatarHidden {
-            margin = 8
+            leftSpacing = 12
         }
         if isOwnMessage {
-            margin += 64
+            leftSpacing += 64
         }
-        leftMarginConstraint.constant = margin
     }
     
     private func applyAccessibility() {
@@ -349,5 +368,41 @@ class ChatTableViewCell: UITableViewCell {
             accessibilityCustomActions?.append(UIAccessibilityCustomAction(name: NSLocalizedString("Like Message", comment: ""), target: self, selector: #selector(plusOneButtonTapped(_:))))
             accessibilityCustomActions?.append(UIAccessibilityCustomAction(name: NSLocalizedString("Report Message", comment: ""), target: self, selector: #selector(reportButtonTapped(_:))))
         }
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        layout()
+    }
+    
+    fileprivate func layout() {
+        avatarWrapper.pin.start(12).top(4).size(36)
+        if isAvatarHidden {
+            messageWrapper.pin.top(topSpacing).start(leftSpacing).right(12)
+        } else {
+            messageWrapper.pin.top(topSpacing).after(of: avatarView).marginStart(leftSpacing).end(12)
+        }
+        usernameLabel.pin.start(12).top(8).sizeToFit(.heightFlexible)
+        positionLabel.pin.right(of: usernameLabel).marginStart(8).top(8).sizeToFit(.heightFlexible)
+        timeLabel.pin.left(12).below(of: usernameLabel).marginTop(2).sizeToFit(.widthFlexible)
+        messageTextView.pin.horizontally(8).below(of: timeLabel).sizeToFit(.width)
+        plusOneButton.pin.top(8).right(12).minWidth(20).sizeToFit(.height)
+        reportView.pin.top(12).left(of: plusOneButton).marginRight(8)
+        
+        var height = messageTextView.frame.origin.y + messageTextView.frame.size.height + 4
+        if isExpanded {
+            height += 36
+            replyButton.pin.start(12).below(of: messageTextView).marginTop(4).sizeToFit(.width)
+            copyButton.pin.after(of: replyButton, aligned: .top).marginStart(8).sizeToFit(.width)
+            reportButton.pin.after(of: copyButton, aligned: .top).marginStart(8).sizeToFit(.width)
+            deleteButton.pin.after(of: visible([copyButton, reportButton]), aligned: .top).marginStart(8).sizeToFit(.width)
+        }
+        messageWrapper.pin.top(topSpacing).right(of: avatarView).marginStart(leftSpacing).right(12).height(height)
+    }
+    
+    override func sizeThatFits(_ size: CGSize) -> CGSize {
+        contentView.pin.width(size.width)
+        layout()
+        return CGSize(width: contentView.frame.width, height: messageWrapper.frame.height + topSpacing + bottomSpacing)
     }
 }

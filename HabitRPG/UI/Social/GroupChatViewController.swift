@@ -21,7 +21,7 @@ class GroupChatViewController: SLKTextViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         hidesBottomBarWhenPushed = true
-        
+               
         let nib = UINib(nibName: "ChatMessageCell", bundle: nil)
         self.tableView?.register(nib, forCellReuseIdentifier: "ChatMessageCell")
         let systemNib = UINib(nibName: "SystemMessageTableViewCell", bundle: nil)
@@ -134,21 +134,24 @@ class GroupChatViewController: SLKTextViewController {
         }
         self.expandedChatPath = indexPath
         if let expandedPath = oldExpandedPath, indexPath.item != expandedPath.item {
+            print(indexPath.description)
+            print(expandedPath.description)
+            print("")
             let oldCell = self.tableView?.cellForRow(at: expandedPath) as? ChatTableViewCell
             let cell = self.tableView?.cellForRow(at: indexPath) as? ChatTableViewCell
             self.tableView?.beginUpdates()
             cell?.isExpanded = true
             oldCell?.isExpanded = false
-            self.tableView?.reloadRows(at: [indexPath, expandedPath], with: .none)
             self.tableView?.endUpdates()
         } else {
+            print(indexPath.description)
+            print("")
             let cell = self.tableView?.cellForRow(at: indexPath) as? ChatTableViewCell
             cell?.isExpanded = !(cell?.isExpanded ?? false)
             if !(cell?.isExpanded ?? false) {
                 self.expandedChatPath = nil
             }
             self.tableView?.beginUpdates()
-            self.tableView?.reloadRows(at: [indexPath], with: .none)
             self.tableView?.endUpdates()
         }
     }

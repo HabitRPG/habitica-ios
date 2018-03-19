@@ -92,6 +92,7 @@ PODS:
     - OHHTTPStubs/Core
   - OHHTTPStubs/OHPathHelpers (6.1.0)
   - PDKeychainBindingsController (0.0.1)
+  - PinLayout (1.5.9)
   - pop (1.0.10)
   - PopupDialog (0.7.0):
     - DynamicBlurView (~> 2.0)
@@ -159,6 +160,7 @@ DEPENDENCIES:
   - NSString+Emoji
   - OHHTTPStubs
   - PDKeychainBindingsController (~> 0.0.1)
+  - PinLayout
   - pop
   - PopupDialog (from `https://github.com/Orderella/PopupDialog.git`, branch `development`)
   - Quick (~> 1.2.0)
@@ -216,6 +218,7 @@ SPEC CHECKSUMS:
   NSString+Emoji: 127da93993ac7c01eadb2edbb039cda89a1369f4
   OHHTTPStubs: 1e21c7d2c084b8153fc53d48400d8919d2d432d0
   PDKeychainBindingsController: fa8cb3cf99f2ea9240d61066ed0549f34e2cec3c
+  PinLayout: b2ebf8622b28e82b6e1216ab4e4a0a8d082214fe
   pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
   PopupDialog: 2f2fdb00c83b563c3f0ef7ba5a21cbb10497c890
   Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
@@ -237,6 +240,6 @@ SPEC CHECKSUMS:
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: dbb528c99211a45e8aea84b24d5f039e21c96bf1
+PODFILE CHECKSUM: 9be234e3ace80a9c1bc3b5bb6d32c4f4796dde30
 
 COCOAPODS: 1.4.0
