@@ -163,8 +163,8 @@ class HRPGSimpleShopItemView: UIView {
             if gearClass == "special" {
                 gearClass = gear?.specialClass
             }
-            if gearClass != user.hclass {
-                topBannerLabel.text = NSLocalizedString("Only available for \(gear?.klass ?? "")", comment: "")
+            if gearClass != user.hclass && gearClass != "special" {
+                topBannerLabel.text = NSLocalizedString("Only available for \(gear?.klass ?? "")s. You can change your class from Settings", comment: "")
                 topBannerLabel.backgroundColor = UIColor.orange10()
                 topBannerLabel.verticalPadding = 6
             }
