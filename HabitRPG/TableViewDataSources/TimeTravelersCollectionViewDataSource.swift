@@ -57,7 +57,7 @@ class TimeTravelersCollectionViewDataSource: HRPGShopCollectionViewDataSource {
             let categoryEntity = NSEntityDescription.entity(forEntityName: "ShopCategory", in: HRPGManager.shared().getManagedObjectContext()) ,
             let itemEntity = NSEntityDescription.entity(forEntityName: "ShopItem", in: HRPGManager.shared().getManagedObjectContext()) {
             for item in items {
-                if item.type == "pets" || item.type == "mounts" {
+                if item.purchaseType == "pets" || item.purchaseType == "mounts" {
                     if let lastCategory = categories.last, lastCategory.identifier == item.category?.identifier {
                         lastCategory.addItemsObject(item)
                     } else {
@@ -70,18 +70,20 @@ class TimeTravelersCollectionViewDataSource: HRPGShopCollectionViewDataSource {
                         }
                     }
                 } else {
-                    if categories.count == 0 || categories.last?.identifier != "mystery_sets" {
+                    if categories.count == 0 || !categories.contains(where: { (category) -> Bool in category.identifier == "mystery_sets" }) {
                         if let category = NSManagedObject(entity: categoryEntity, insertInto: nil) as? ShopCategory {
+                            category.identifier = "mystery_sets"
                             categories.append(category)
                         }
                     }
-                    if let lastCategory = categories.last {
-                        if lastCategory.identifier == nil {
-                            lastCategory.text = NSLocalizedString("Mystery Sets", comment: "")
-                            lastCategory.identifier = "mystery_sets"
-                            lastCategory.items = NSOrderedSet()
+                    if let setCategory = categories.first(where: { (category) -> Bool in
+                        category.identifier == "mystery_sets"
+                    }) {
+                        if setCategory.text == nil {
+                            setCategory.text = NSLocalizedString("Mystery Sets", comment: "")
+                            setCategory.items = NSOrderedSet()
                         }
-                        if lastCategory.items?.count == 0 || (lastCategory.items?.lastObject as? ShopItem)?.key != item.category?.identifier {
+                        if setCategory.items?.count == 0 || (setCategory.items?.lastObject as? ShopItem)?.key != item.category?.identifier {
                             if let newItem = NSManagedObject(entity: itemEntity, insertInto: nil) as? ShopItem {
                                 let key = item.category?.identifier ?? ""
                                 newItem.text = item.category?.text
@@ -92,13 +94,15 @@ class TimeTravelersCollectionViewDataSource: HRPGShopCollectionViewDataSource {
                                 newItem.value = item.value
                                 newItem.currency = item.currency
                                 newItem.imageName = "shop_set_mystery_"+key
-                                lastCategory.addItemsObject(newItem)
+                                setCategory.addItemsObject(newItem)
                             }
                         }
                     }
                 }
             }
         }
+        //Flip the order to have pets and mounts first
+        categories.reverse()
         self.collectionView?.reloadData()
     }
 }
