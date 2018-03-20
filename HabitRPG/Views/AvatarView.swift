@@ -8,7 +8,7 @@
 
 import UIKit
 import YYWebImage
-import SnapKit
+import PinLayout
 
 @objc
 enum AvatarViewSize: Int {
@@ -38,6 +38,7 @@ class AvatarView: UIView {
     public var onRenderingFinished: (() -> Void)?
     
     private var nameDictionary: [String: String?] = [:]
+    private var viewDictionary: [String: Bool] = [:]
     
     private let formatDictionary = [
         "head_special_0": "gif",
@@ -113,74 +114,52 @@ class AvatarView: UIView {
         "head_special_1": headSpecialConstraints
     ]
     
-    let keepRatioConstraints: ((AvatarView, YYAnimatedImageView, UIImage?, CGSize) -> Void) = { superview, view, image, size in
-        view.snp.makeConstraints { (make) -> Void in
-            make.height.equalTo(view.snp.width).multipliedBy((image?.size.height ?? 1) / (image?.size.width ?? 1))
-            make.width.equalTo(superview.snp.width).multipliedBy((image?.size.width ?? 1) / size.width)
+    func resize(view: YYAnimatedImageView, image: UIImage) {
+        let ratio = image.size.width / image.size.height
+        view.pin.aspectRatio(ratio).width(image.size.width * (self.bounds.size.width / 140))
+    }
+    
+    let backgroundConstraints: ((AvatarView, YYAnimatedImageView, AvatarViewSize, CGFloat) -> Void) = { superview, view, size, offset in
+        view.pin.all()
+    }
+    
+    let characterConstraints: ((AvatarView, YYAnimatedImageView, AvatarViewSize, CGFloat) -> Void) = { superview, view, size, offset in
+        if size == .regular {
+            view.pin.start(17%).top(offset)
+        } else {
+            view.pin.start().top(offset)
         }
     }
     
-    let backgroundConstraints: ((AvatarView, YYAnimatedImageView, CGSize, CGFloat) -> Void) = { superview, view, size, offset in
-        view.snp.makeConstraints { (make) -> Void in
-            make.edges.equalTo(superview)
+    let mountConstraints: ((AvatarView, YYAnimatedImageView, AvatarViewSize, CGFloat) -> Void) = { superview, view, size, offset in
+        view.pin.start(17.5%).bottom(16%)
+    }
+    
+    let petConstraints: ((AvatarView, YYAnimatedImageView, AvatarViewSize, CGFloat) -> Void) = { superview, view, size, offset in
+        view.pin.start().bottom()
+    }
+    
+    let weaponSpecialConstraints: ((AvatarView, YYAnimatedImageView, AvatarViewSize, CGFloat) -> Void) = { superview, view, size, offset in
+        if size == .regular {
+            view.pin.start(10%).top(offset)
+        } else {
+            view.pin.start().top(offset)
         }
     }
     
-    let characterConstraints: ((AvatarView, YYAnimatedImageView, CGSize, CGFloat) -> Void) = { superview, view, size, offset in
-        view.snp.makeConstraints { (make) -> Void in
-            if size.width <= 90 {
-                make.leading.equalTo(superview)
-            } else {
-                make.leading.equalTo(superview.snp.trailing).multipliedBy(24 / size.width)
-            }
-            make.top.equalTo(superview).offset(offset)
+    let weaponSpecial1Constraints: ((AvatarView, YYAnimatedImageView, AvatarViewSize, CGFloat) -> Void) = { superview, view, size, offset in
+        if size == .regular {
+            view.pin.start(10%).top(offset)
+        } else {
+            view.pin.start().top(offset)
         }
     }
     
-    let mountConstraints: ((AvatarView, YYAnimatedImageView, CGSize, CGFloat) -> Void) = { superview, view, size, offset in
-        view.snp.makeConstraints { (make) -> Void in
-            make.leading.equalTo(superview.snp.trailing).multipliedBy(24/size.width)
-            make.top.equalTo(superview.snp.bottom).multipliedBy(17/size.width)
-        }
-    }
-    
-    let petConstraints: ((AvatarView, YYAnimatedImageView, CGSize, CGFloat) -> Void) = { superview, view, size, offset in
-        view.snp.makeConstraints { (make) -> Void in
-            make.leading.equalTo(superview)
-            make.bottom.equalTo(superview)
-        }
-    }
-    
-    let weaponSpecialConstraints: ((AvatarView, YYAnimatedImageView, CGSize, CGFloat) -> Void) = { superview, view, size, offset in
-        view.snp.makeConstraints { (make) -> Void in
-            if size.width <= 90 {
-                make.leading.equalTo(superview.snp.trailing).multipliedBy(-12 / size.width)
-            } else {
-                make.leading.equalTo(superview.snp.trailing).multipliedBy(13.0 / size.width)
-            }
-            make.top.equalTo(superview).offset(offset)
-        }
-    }
-    
-    let weaponSpecial1Constraints: ((AvatarView, YYAnimatedImageView, CGSize, CGFloat) -> Void) = { superview, view, size, offset in
-        view.snp.makeConstraints { (make) -> Void in
-            if size.width <= 90 {
-                make.leading.equalTo(superview.snp.trailing).multipliedBy(-12 / size.width)
-            } else {
-                make.leading.equalTo(superview.snp.trailing).multipliedBy(12.0 / size.width)
-            }
-            make.top.equalTo(superview).offset(offset)
-        }
-    }
-    
-    let headSpecialConstraints: ((AvatarView, YYAnimatedImageView, CGSize, CGFloat) -> Void) = { superview, view, size, offset in
-        view.snp.makeConstraints { (make) -> Void in
-            if size.width <= 90 {
-                make.leading.equalTo(superview)
-            } else {
-                make.leading.equalTo(superview.snp.trailing).multipliedBy(24 / size.width)
-            }
-            make.top.equalTo(superview).offset(offset+3)
+    let headSpecialConstraints: ((AvatarView, YYAnimatedImageView, AvatarViewSize, CGFloat) -> Void) = { superview, view, size, offset in
+        if size == .regular {
+            view.pin.start(17%).top(offset+3)
+        } else {
+            view.pin.start().top(offset+3)
         }
     }
     
@@ -208,24 +187,19 @@ class AvatarView: UIView {
         guard let avatar = self.avatar else {
             return
         }
-        let viewDictionary = avatar.getViewDictionary(showsBackground: showBackground, showsMount: showMount, showsPet: showPet, isFainted: isFainted)
-
-        let boxSize = size == .regular ? CGSize(width: 140, height: 147) : CGSize(width: 90, height: 90)
+        viewDictionary = avatar.getViewDictionary(showsBackground: showBackground, showsMount: showMount, showsPet: showPet, isFainted: isFainted)
 
         viewOrder.enumerated().forEach({ (index, type) in
             if viewDictionary[type] ?? false {
                 let imageView = imageViews[index]
                 imageView.isHidden = false
-                setConstraints(imageView, type: type, size: boxSize, viewDictionary: viewDictionary)
-                setImage(imageView, type: type, size: boxSize)
+                setImage(imageView, type: type)
             } else {
                 let imageView = imageViews[index]
                 imageView.image = nil
                 imageView.isHidden = true
             }
         })
-
-        setNeedsLayout()
 
         if let action = self.onRenderingFinished {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
@@ -234,27 +208,49 @@ class AvatarView: UIView {
         }
     }
     
-    private func setImage(_ imageView: YYAnimatedImageView, type: String, size: CGSize) {
+    private func setImage(_ imageView: YYAnimatedImageView, type: String) {
         imageView.yy_setImage(with: getImageUrl(type: type), placeholder: nil, options: .showNetworkActivity, manager: nil, progress: nil, transform: { (image, _) in
             if let data = image.yy_imageDataRepresentation() {
                 return YYImage(data: data, scale: 1.0)
             }
             return image
         }, completion: { (image, _, _, _, error) in
-            if type != "background" {
-                self.keepRatioConstraints(self, imageView, image, size)
+            if let image = image, type != "background" {
+                self.resize(view: imageView, image: image)
+                self.setLayout(imageView, type: type)
             }
-            
             if error != nil {
                 print(error?.localizedDescription ?? "")
             }
         })
     }
     
-    private func setConstraints(_ imageView: YYAnimatedImageView, type: String, size: CGSize, viewDictionary: [String: Bool]) {
-        imageView.snp.removeConstraints()
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        layout()
+    }
+    
+    private func layout() {
+        viewOrder.enumerated().forEach({ (index, type) in
+            if viewDictionary[type] ?? false {
+                let imageView = imageViews[index]
+                imageView.isHidden = false
+                if let image = imageView.image, type != "background" {
+                    self.resize(view: imageView, image: image)
+                    setLayout(imageView, type: type)
+                }
+                setLayout(imageView, type: type)
+            } else {
+                let imageView = imageViews[index]
+                imageView.image = nil
+                imageView.isHidden = true
+            }
+        })
+    }
+    
+    private func setLayout(_ imageView: YYAnimatedImageView, type: String) {
         var offset: CGFloat = 0
-        if !(viewDictionary["mount-head"] ?? false) && size.height > 90 {
+        if !(viewDictionary["mount-head"] ?? false) && size == .regular {
             offset = 28
             if viewDictionary["pet"] ?? false {
                 offset -= 3

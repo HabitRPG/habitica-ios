@@ -123,7 +123,6 @@ PODS:
   - RKValueTransformers (1.1.3)
   - SeedsSDK (0.5.0)
   - SlackTextViewController (1.9.6)
-  - SnapKit (4.0.0)
   - SOCKit (1.1)
   - SwiftLint (0.24.2)
   - SwiftyStoreKit (0.13.0)
@@ -168,7 +167,6 @@ DEPENDENCIES:
   - RestKit
   - SeedsSDK
   - SlackTextViewController
-  - SnapKit (~> 4.0.0)
   - SwiftLint
   - SwiftyStoreKit
   - VTAcknowledgementsViewController
@@ -229,7 +227,6 @@ SPEC CHECKSUMS:
   RKValueTransformers: e5ed67e3811229b616fe01bddeeafe3bb337b1b9
   SeedsSDK: 8de27e088c15ff3eba33a6d2941ec507e4a5bb95
   SlackTextViewController: b854e62c1c156336bc4fd409c6ca79b5773e8f9d
-  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   SOCKit: c7376ac262bea9115b8f749358f762522a47d392
   SwiftLint: 2aa21b96c8d13396a051bc1cb659d2ce1e0075b0
   SwiftyStoreKit: df6a58aba530128e1c5d5ae4fe7d191e5ac50d5d
@@ -240,6 +237,6 @@ SPEC CHECKSUMS:
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: 9be234e3ace80a9c1bc3b5bb6d32c4f4796dde30
+PODFILE CHECKSUM: ba9197665f94f1a2e96a1b7076654c685fcf08b6
 
 COCOAPODS: 1.4.0

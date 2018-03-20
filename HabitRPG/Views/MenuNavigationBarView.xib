@@ -46,12 +46,29 @@
                         <action selector="messageButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="hlS-cV-h5O"/>
                     </connections>
                 </button>
-                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SGs-wn-z8E" customClass="AvatarView" customModule="Habitica" customModuleProvider="target">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HYV-1F-94x">
                     <rect key="frame" x="16" y="16.5" width="40" height="40"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <subviews>
+                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SGs-wn-z8E" customClass="AvatarView" customModule="Habitica" customModuleProvider="target">
+                            <rect key="frame" x="-9.5" y="-2.5" width="75" height="75"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="75" id="7XY-LT-FGN"/>
+                                <constraint firstAttribute="width" constant="75" id="lux-B7-FrD"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="20"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="40" id="4Ww-Y5-mSb"/>
-                        <constraint firstAttribute="width" constant="40" id="U1p-aj-AE1"/>
+                        <constraint firstItem="SGs-wn-z8E" firstAttribute="centerY" secondItem="HYV-1F-94x" secondAttribute="centerY" constant="15" id="PCx-1U-bLa"/>
+                        <constraint firstAttribute="height" constant="40" id="dok-KQ-dde"/>
+                        <constraint firstAttribute="width" constant="40" id="kvK-dT-c0W"/>
+                        <constraint firstItem="SGs-wn-z8E" firstAttribute="centerX" secondItem="HYV-1F-94x" secondAttribute="centerX" constant="8" id="zH2-l0-Aec"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -78,18 +95,18 @@
             </subviews>
             <color key="backgroundColor" red="0.37997829910000003" green="0.1982949376" blue="0.70615965130000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="SGs-wn-z8E" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="6or-RY-KZc"/>
                 <constraint firstItem="u7w-qy-bea" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="8uF-O0-DcI"/>
-                <constraint firstItem="SGs-wn-z8E" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="L0F-Ll-xKS"/>
                 <constraint firstItem="rdf-Mj-RXC" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="NsH-r7-0ri"/>
                 <constraint firstAttribute="bottom" secondItem="EZj-6g-7yy" secondAttribute="bottom" id="P6J-2g-5Jn"/>
+                <constraint firstItem="rdf-Mj-RXC" firstAttribute="leading" secondItem="HYV-1F-94x" secondAttribute="trailing" constant="16" id="ROb-gm-jCY"/>
                 <constraint firstAttribute="bottom" secondItem="u7w-qy-bea" secondAttribute="bottom" id="Rur-BT-TwQ"/>
+                <constraint firstItem="HYV-1F-94x" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="Sat-r6-bMh"/>
                 <constraint firstItem="u7w-qy-bea" firstAttribute="leading" secondItem="EZj-6g-7yy" secondAttribute="trailing" constant="32" id="XxV-y5-Qsc"/>
                 <constraint firstItem="tYH-A3-umq" firstAttribute="top" secondItem="EZj-6g-7yy" secondAttribute="top" constant="17" id="ZRh-4L-Vp4"/>
                 <constraint firstItem="tYH-A3-umq" firstAttribute="centerX" secondItem="EZj-6g-7yy" secondAttribute="centerX" constant="10" id="a7k-go-Ohf"/>
+                <constraint firstItem="HYV-1F-94x" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="ciL-Dy-t7F"/>
                 <constraint firstItem="EZj-6g-7yy" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="gKZ-PC-rEf"/>
                 <constraint firstAttribute="bottom" secondItem="rdf-Mj-RXC" secondAttribute="bottom" id="hbe-L8-e8Q"/>
-                <constraint firstItem="rdf-Mj-RXC" firstAttribute="leading" secondItem="SGs-wn-z8E" secondAttribute="trailing" constant="16" id="jwp-rh-arg"/>
                 <constraint firstAttribute="trailing" secondItem="u7w-qy-bea" secondAttribute="trailing" constant="16" id="kkk-LD-gnd"/>
                 <constraint firstItem="EZj-6g-7yy" firstAttribute="leading" secondItem="rdf-Mj-RXC" secondAttribute="trailing" constant="8" id="rhZ-KB-I1I"/>
             </constraints>
