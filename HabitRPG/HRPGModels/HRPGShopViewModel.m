@@ -35,8 +35,8 @@
     [fetchRequest setEntity:entity];
     [fetchRequest setFetchBatchSize:20];
     
-    if ([identifier isEqualToString:@"mage"]) {
-        identifier = @"wizard";
+    if ([gearCategory isEqualToString:@"mage"]) {
+        gearCategory = @"wizard";
     }
     
     NSString *predicateString = [NSString stringWithFormat:@"category.shop.identifier == '%@'", identifier];

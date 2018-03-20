@@ -64,6 +64,7 @@ class HRPGShopCollectionViewDataSource: HRPGFetchedResultsCollectionViewDataSour
         
         if let headerView = view {
             headerView.gearCategoryButton.isHidden = true
+            headerView.otherClassDisclaimer.isHidden = true
             if indexPath.section == 0 && needsGearSection {
                 headerView.titleLabel.text = NSLocalizedString("Class Equipment", comment: "")
                 headerView.gearCategoryLabel.text = selectedGearCategory?.capitalized
@@ -71,6 +72,8 @@ class HRPGShopCollectionViewDataSource: HRPGFetchedResultsCollectionViewDataSour
                 headerView.onGearCategoryLabelTapped = {[weak self] in
                     self?.delegate?.showGearSelection()
                 }
+                let userClass = HRPGManager.shared().getUser().hclass
+                headerView.otherClassDisclaimer.isHidden = userClass == selectedGearCategory
             } else if needsGearSection && !hasGearSection() {
                 headerView.titleLabel.text = titleFor(section: indexPath.section-1)
             } else {
@@ -80,6 +83,16 @@ class HRPGShopCollectionViewDataSource: HRPGFetchedResultsCollectionViewDataSour
             return headerView
         }
         return UICollectionReusableView()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        if section == 0 && needsGearSection {
+            let userClass = HRPGManager.shared().getUser().hclass
+            if userClass != selectedGearCategory {
+                return CGSize(width: collectionView.bounds.width, height: 75)
+            }
+        }
+        return CGSize(width: collectionView.bounds.width, height: 50)
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
