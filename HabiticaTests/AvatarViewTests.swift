@@ -223,6 +223,71 @@ class AvatarViewTests: HabiticaTests {
             self.avatarView.avatar = avatar
         }
     }
+    
+    func testRenderingFullyEquippedScaled() {
+        avatarView = AvatarView(frame: CGRect(x: 0, y: 0, width: 110, height: 115))
+        avatarView.showMount = true
+        avatarView.showPet = true
+        avatarView.showBackground = true
+        
+        let avatar = TestAvatar(background: "yellow",
+                                back: "back_special_snowdriftVeil",
+                                skin: "915533",
+                                shirt: "pink",
+                                armor: "armor_special_fallRogue",
+                                body: "body_special_summer2015Warrior",
+                                hairColor: "brown",
+                                hairBase: "1",
+                                hairBangs: "3",
+                                eyewear: "eyewear_special_blueTopFrame",
+                                head: "head_special_fall2016Rogue",
+                                headAccessory: "headAccessory_special_spring2015Warrior",
+                                shield: "shield_special_fall2017Warrior",
+                                weapon: "weapon_armoire_basicCrossbow",
+                                pet: "FlyingPig-Skeleton",
+                                isSleep: true,
+                                size: "broad"
+        )
+        
+        waitUntil(timeout: 5) { (done) in
+            self.avatarView.onRenderingFinished = {
+                self.FBSnapshotVerifyView(self.avatarView, tolerance: 0.1)
+                done()
+            }
+            self.avatarView.avatar = avatar
+        }
+    }
+    
+    func testRenderingScaled() {
+        avatarView = AvatarView(frame: CGRect(x: 0, y: 0, width: 110, height: 115))
+        avatarView.showMount = true
+        avatarView.showPet = true
+        avatarView.showBackground = true
+        
+        let avatar = TestAvatar(background: "yellow",
+                                mount: "BearCub-Base",
+                                skin: "915533",
+                                shirt: "pink",
+                                armor: "armor_healer_2",
+                                body: "body_special_summer2015Warrior",
+                                hairColor: "brown",
+                                hairBase: "1",
+                                hairBangs: "3",
+                                head: "head_armoire_blackCat",
+                                headAccessory: "headAccessory_special_spring2015Warrior",
+                                pet: "BearCub-CottonCandyBlue",
+                                isSleep: true,
+                                size: "broad"
+        )
+        
+        waitUntil(timeout: 5) { (done) in
+            self.avatarView.onRenderingFinished = {
+                self.FBSnapshotVerifyView(self.avatarView, tolerance: 0.1)
+                done()
+            }
+            self.avatarView.avatar = avatar
+        }
+    }
 }
 
 class TestAvatar: Avatar {
