@@ -87,6 +87,11 @@ class GroupChatViewController: SLKTextViewController {
         self.refresh()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        HRPGManager.shared().chatSeen(groupID)
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
