@@ -19,12 +19,53 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Aa7-h9-y3T">
-                            <size key="itemSize" width="50" height="50"/>
+                            <size key="itemSize" width="375" height="50"/>
                             <size key="headerReferenceSize" width="50" height="75"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
-                        <cells/>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EmptyGearCell" id="3Q1-Hv-6Ha">
+                                <rect key="frame" x="0.0" y="75" width="375" height="90"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EdC-Za-0BK">
+                                            <rect key="frame" x="16" y="4" width="343" height="82"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You already have all your class equipment! More will be released during the Grand Galas, near the solstices and equinoxes." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vZT-3v-vhS">
+                                                    <rect key="frame" x="24" y="8" width="295" height="66"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" red="0.64723795650000004" green="0.63275462390000003" blue="0.67308568950000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.97592383620000001" green="0.97666221860000002" blue="0.97603815790000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="vZT-3v-vhS" firstAttribute="top" secondItem="EdC-Za-0BK" secondAttribute="topMargin" id="7mH-Qn-mBu"/>
+                                                <constraint firstItem="vZT-3v-vhS" firstAttribute="leading" secondItem="EdC-Za-0BK" secondAttribute="leading" constant="24" id="96E-BA-Yb7"/>
+                                                <constraint firstAttribute="trailing" secondItem="vZT-3v-vhS" secondAttribute="trailing" constant="24" id="bFN-3i-LXZ"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="vZT-3v-vhS" secondAttribute="bottom" id="yX9-f3-VOy"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="4"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="EdC-Za-0BK" secondAttribute="trailing" constant="16" id="6B3-Ud-FMD"/>
+                                    <constraint firstItem="EdC-Za-0BK" firstAttribute="leading" secondItem="3Q1-Hv-6Ha" secondAttribute="leading" constant="16" id="QC3-q7-6ri"/>
+                                    <constraint firstAttribute="bottom" secondItem="EdC-Za-0BK" secondAttribute="bottom" constant="4" id="pNN-Aq-FDn"/>
+                                    <constraint firstItem="EdC-Za-0BK" firstAttribute="top" secondItem="3Q1-Hv-6Ha" secondAttribute="top" constant="4" id="sUU-Ig-Fs0"/>
+                                </constraints>
+                                <size key="customSize" width="375" height="90"/>
+                            </collectionViewCell>
+                        </cells>
                         <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="sectionHeader" reuseIdentifier="sectionHeader" id="70u-KL-mp3" customClass="HRPGShopSectionHeaderCollectionReusableView" customModule="Habitica" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
                             <autoresizingMask key="autoresizingMask"/>

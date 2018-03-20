@@ -40,7 +40,7 @@ class HRPGShopCollectionViewDataSource: HRPGFetchedResultsCollectionViewDataSour
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if needsGearSection && !hasGearSection() {
             if section == 0 {
-                return 0
+                return 1
             } else {
                 return super.collectionView(collectionView, numberOfItemsInSection: section-1)
             }
@@ -84,7 +84,7 @@ class HRPGShopCollectionViewDataSource: HRPGFetchedResultsCollectionViewDataSour
         }
         return UICollectionReusableView()
     }
-    
+   
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         if section == 0 && needsGearSection {
             let userClass = HRPGManager.shared().getUser().hclass
@@ -95,7 +95,21 @@ class HRPGShopCollectionViewDataSource: HRPGFetchedResultsCollectionViewDataSour
         return CGSize(width: collectionView.bounds.width, height: 50)
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if indexPath.section == 0 && needsGearSection {
+            if !hasGearSection() {
+                return CGSize(width: collectionView.bounds.width, height: 80)
+            }
+        }
+        return CGSize(width: 90, height: 120)
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if indexPath.section == 0 && needsGearSection {
+            if !hasGearSection() {
+                return collectionView.dequeueReusableCell(withReuseIdentifier: "EmptyGearCell", for: indexPath)
+            }
+        }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath)
         if let item = itemAt(indexPath: indexPath) {
             if let itemCell = cell as? InAppRewardCell {
