@@ -779,6 +779,7 @@ NSIndexPath  *sourceIndexPath = nil; ///< Initial index path, where gesture begi
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
     [[HRPGManager sharedManager] moveTask:self.movedTask toPosition:[NSNumber numberWithInteger:destinationIndexPath.item] onSuccess:^() {
+        [self.tableView reloadRowsAtIndexPaths:@[destinationIndexPath] withRowAnimation:UITableViewRowAnimationNone];
         self.userDrivenDataUpdate = NO;
     } onError:^() {
         self.userDrivenDataUpdate = NO;
