@@ -225,7 +225,7 @@ class HRPGBuyItemModalViewController: UIViewController {
     }
     
     func canBuy() -> Bool {
-        return canAfford() && itemIsLocked()
+        return canAfford() && !itemIsLocked()
     }
     
     func getPurchaseType() -> String {
@@ -299,7 +299,11 @@ class HRPGBuyItemModalViewController: UIViewController {
                 currency = thisCurrency
             }
             successBlock = {
-                HRPGManager.shared().fetchShopInventory(self.shopIdentifier, onSuccess: nil, onError: nil)
+                if purchaseType == "gear" {
+                    HRPGManager.shared().fetchShopInventory(GearMarketKey, onSuccess: nil, onError: nil)
+                } else {
+                    HRPGManager.shared().fetchShopInventory(self.shopIdentifier, onSuccess: nil, onError: nil)
+                }
             }
         } else if let inAppReward = reward as? InAppReward {
             key = inAppReward.key ?? ""
