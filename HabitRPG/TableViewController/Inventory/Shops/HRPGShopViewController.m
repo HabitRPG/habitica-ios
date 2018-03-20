@@ -57,9 +57,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
-    [self scrollToTop];
-    
+        
     [self.user addObserver:self forKeyPath:@"gold" options:0 context:NULL];
     [self.user addObserver:self forKeyPath:@"balance" options:0 context:NULL];
 }

@@ -5021,7 +5021,9 @@ static dispatch_once_t onceToken;
             return;
         }
         failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            [self handleNetworkError:operation withError:error];
+            if (operation.HTTPRequestOperation.response.statusCode != 401) {
+                [self handleNetworkError:operation withError:error];
+            }
             if (errorBlock) {
                 errorBlock();
             }
