@@ -38,6 +38,7 @@ class ChatTableViewCell: UITableViewCell {
             showHideExtraButtons(isExpanded)
         }
     }
+    @objc public var isFirstMessage = false
     
     private var topSpacing: CGFloat = 4
     private var bottomSpacing: CGFloat = 4
@@ -159,6 +160,8 @@ class ChatTableViewCell: UITableViewCell {
         
         if nextMessage?.uuid == chatMessage.uuid {
             bottomSpacing = 2
+        } else if isFirstMessage {
+            bottomSpacing = 34
         } else {
             bottomSpacing = 4
         }
@@ -209,6 +212,8 @@ class ChatTableViewCell: UITableViewCell {
         
         if nextMessage?.sent?.boolValue == inboxMessage.sent?.boolValue {
             bottomSpacing = 2
+        } else if isFirstMessage {
+            bottomSpacing = 34
         } else {
             bottomSpacing = 4
         }

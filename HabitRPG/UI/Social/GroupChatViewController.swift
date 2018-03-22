@@ -17,6 +17,7 @@ class GroupChatViewController: SLKTextViewController {
     private var expandedChatPath: IndexPath?
     private var dataSource: HRPGCoreDataDataSource?
     private let user = HRPGManager.shared().getUser()
+    private var isScrolling = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,6 +79,12 @@ class GroupChatViewController: SLKTextViewController {
     
     override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         dismissKeyboard(true)
+        isScrolling = true
+    }
+    
+    override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        super.scrollViewDidEndDecelerating(scrollView)
+        isScrolling = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -133,6 +140,9 @@ class GroupChatViewController: SLKTextViewController {
     }
     
     private func expandSelectedCell(_ indexPath: IndexPath) {
+        if isScrolling {
+            return
+        }
         var oldExpandedPath: IndexPath? = self.expandedChatPath
         if self.tableView?.numberOfRows(inSection: 0) ?? 0 < oldExpandedPath?.item ?? 0 {
             oldExpandedPath = nil
@@ -166,6 +176,8 @@ class GroupChatViewController: SLKTextViewController {
         if let expandedChatPath = self.expandedChatPath, let indexPath = indexPath {
             isExpanded = expandedChatPath == indexPath
         }
+        
+        cell.isFirstMessage = indexPath?.item == 0
         cell.configure(chatMessage: item,
                        previousMessage: dataSource?.item(at: IndexPath(item: (indexPath?.item ?? 0)+1, section: indexPath?.section ?? 0)) as? ChatMessage,
                        nextMessage: dataSource?.item(at: IndexPath(item: (indexPath?.item ?? 0)-1, section: indexPath?.section ?? 0)) as? ChatMessage,
