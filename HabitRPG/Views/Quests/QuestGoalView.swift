@@ -52,7 +52,7 @@ class QuestGoalView: UIView {
             healthIcon.isHidden = false
             typeLabel.text = NSLocalizedString("Health", comment: "")
             goalDetailLabel.text = "\(bossHealth)"
-            rageMeterView.isHidden = (quest.bossRage?.intValue ?? 0) != 0
+            rageMeterView.isHidden = (quest.bossRage?.intValue ?? 0) == 0
             typeBackgroundView.backgroundColor = .red100()
             difficultyImageView.image = HabiticaIcons.imageOfDifficultyStars(difficulty: CGFloat(quest.bossStr?.floatValue ?? 0))
         } else {
