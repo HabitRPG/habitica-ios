@@ -349,7 +349,7 @@ class ChatTableViewCell: UITableViewCell {
             leftSpacing = 12
         }
         if isOwnMessage {
-            leftSpacing += 64
+            leftSpacing = 64
         }
     }
     
@@ -380,9 +380,9 @@ class ChatTableViewCell: UITableViewCell {
         if isAvatarHidden {
             messageWrapper.pin.top(topSpacing).start(leftSpacing).right(12)
         } else {
-            messageWrapper.pin.top(topSpacing).after(of: avatarView).marginStart(leftSpacing).end(12)
+            messageWrapper.pin.top(topSpacing).after(of: avatarWrapper).marginStart(leftSpacing).end(12)
         }
-        usernameLabel.pin.start(12).top(8).sizeToFit(.heightFlexible)
+        usernameLabel.pin.start(12).top(8).maxWidth(65%).sizeToFit(.widthFlexible)
         positionLabel.pin.right(of: usernameLabel).marginStart(8).top(8).sizeToFit(.heightFlexible)
         timeLabel.pin.left(12).below(of: usernameLabel).marginTop(2).sizeToFit(.widthFlexible)
         messageTextView.pin.horizontally(8).below(of: timeLabel).sizeToFit(.width)
@@ -397,7 +397,7 @@ class ChatTableViewCell: UITableViewCell {
             reportButton.pin.after(of: copyButton, aligned: .top).marginStart(8).sizeToFit(.width)
             deleteButton.pin.after(of: visible([copyButton, reportButton]), aligned: .top).marginStart(8).sizeToFit(.width)
         }
-        messageWrapper.pin.top(topSpacing).right(of: avatarView).marginStart(leftSpacing).right(12).height(height)
+        messageWrapper.pin.height(height)
     }
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
