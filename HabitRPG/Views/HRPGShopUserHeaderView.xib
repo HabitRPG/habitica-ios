@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -36,13 +36,13 @@
                         <constraint firstAttribute="width" priority="500" constant="40" id="faD-uq-KzE"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k6f-TC-JYx">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k6f-TC-JYx">
                     <rect key="frame" x="47" y="18" width="42" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_rogue" translatesAutoresizingMaskIntoConstraints="NO" id="E6b-EB-7tM">
+                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="icon_rogue" translatesAutoresizingMaskIntoConstraints="NO" id="E6b-EB-7tM">
                     <rect key="frame" x="7" y="9" width="32" height="39"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="39" id="I3W-fp-HN6"/>
@@ -51,6 +51,7 @@
             </subviews>
             <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="wiN-DQ-gB6" firstAttribute="leading" secondItem="k6f-TC-JYx" secondAttribute="trailing" constant="8" id="304-CM-Cye"/>
                 <constraint firstItem="wiN-DQ-gB6" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="12" id="7LL-Wa-5qB"/>
                 <constraint firstAttribute="trailing" secondItem="zBq-Gv-Sn1" secondAttribute="trailing" constant="11" id="E46-m9-imA"/>
                 <constraint firstItem="zLa-Px-FNQ" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="F4r-cZ-1pR"/>
