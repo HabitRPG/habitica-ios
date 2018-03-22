@@ -384,9 +384,13 @@ class ChatTableViewCell: UITableViewCell {
         }
         usernameLabel.pin.start(12).top(8).maxWidth(65%).sizeToFit(.widthFlexible)
         positionLabel.pin.right(of: usernameLabel).marginStart(8).top(8).sizeToFit(.heightFlexible)
+        if usernameLabel.bounds.size.height < positionLabel.bounds.size.height {
+            usernameLabel.pin.height(positionLabel.bounds.size.height)
+        }
+        positionLabel.pin.vCenter(to: usernameLabel.edge.vCenter)
         timeLabel.pin.left(12).below(of: usernameLabel).marginTop(2).sizeToFit(.widthFlexible)
         messageTextView.pin.horizontally(8).below(of: timeLabel).sizeToFit(.width)
-        plusOneButton.pin.top(8).right(12).minWidth(20).sizeToFit(.height)
+        plusOneButton.pin.top(8).right(8).minWidth(20).sizeToFit(.height)
         reportView.pin.top(12).left(of: plusOneButton).marginRight(8)
         
         var height = messageTextView.frame.origin.y + messageTextView.frame.size.height + 4
