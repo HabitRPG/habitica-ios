@@ -140,6 +140,8 @@ class TaskDetailLineViewTests: HabiticaTests {
 }
 
 class TestTask: TaskProtocol {
+    var frequency: String?
+    var everyX: Int = 1
     var tags: [TagProtocol] = []
     var checklist: [ChecklistItemProtocol] = []
     var reminders: [ReminderProtocol] = []

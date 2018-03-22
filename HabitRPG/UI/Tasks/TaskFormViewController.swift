@@ -15,12 +15,16 @@ enum TaskFormTags {
     static let title = "title"
     static let notes = "notes"
     static let habitControls = "habitControls"
+    static let checklistSection = "checklistSection"
     static let difficulty = "difficulty"
     static let habitResetStreak = "habitResetStreak"
     static let startDate = "startDate"
     static let dueDate = "dueDate"
     static let dailyRepeat = "dailyRepeat"
     static let dailyEvery = "dailyEvery"
+    static let repeatMonthlySegment = "repeatMonthlySegment"
+    static let repeatWeekdays = "repeatWeekdays"
+    static let reminderSection = "reminderSection"
     static let tags = "tags"
 }
 
@@ -46,6 +50,8 @@ class TaskFormViewController: FormViewController {
             }
         }
     }
+    var lightTaskTintColor: UIColor = UIColor.purple400()
+    
     var taskId: String? {
         get {
             return task.id
@@ -62,8 +68,10 @@ class TaskFormViewController: FormViewController {
                 taskType = newTaskType
             }
             if isCreating {
+                lightTaskTintColor = UIColor.purple400()
                 taskTintColor = UIColor.purple300()
             } else {
+                lightTaskTintColor = UIColor.forTaskValueLight(Int(task.value))
                 taskTintColor = UIColor.forTaskValue(Int(task.value))
             }
         }
@@ -74,9 +82,6 @@ class TaskFormViewController: FormViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        task.up = true
-        task.priority = 1
         
         setupBasicTaskInput()
         if taskType == .habit {
@@ -100,20 +105,22 @@ class TaskFormViewController: FormViewController {
         setupTags()
         
         if !isCreating {
-            fillCommonTaskValues()
-            if taskType == .habit {
-                fillHabitValues()
-            } else if taskType == .daily {
-                fillDailyValues()
-            } else if taskType == .todo {
-                fillToDoValues()
-            } else if taskType == .reward {
-                fillRewardValues()
-            }
+            fillForm()
+            modalContainerViewController?.rightButton.setTitle(L10n.save, for: .normal)
+        } else {
+            modalContainerViewController?.rightButton.setTitle(L10n.create, for: .normal)
         }
         
         tableView.backgroundColor = .clear
         tableView.isScrollEnabled = false
+        
+        modalContainerViewController?.onRightButtonTapped = {
+            let errors = self.form.validate()
+            if errors.count == 0 {
+                self.save()
+                self.modalContainerViewController?.dismiss()
+            }
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -155,7 +162,25 @@ class TaskFormViewController: FormViewController {
     }
     
     private func setupChecklist() {
-        form +++ Section(L10n.Tasks.Form.checklist)
+        form +++ MultivaluedSection(multivaluedOptions: [.Reorder, .Insert, .Delete],
+                                    header: L10n.Tasks.Form.checklist) { section in
+                                        section.tag = TaskFormTags.checklistSection
+                                        section.addButtonProvider = { section in
+                                            return ButtonRow { row in
+                                                row.title = L10n.Tasks.Form.newChecklistItem
+                                                row.cellSetup({ (cell, _) in
+                                                    cell.tintColor = self.lightTaskTintColor
+                                                })
+                                            }
+                                        }
+                                        section.multivaluedRowToInsertAt = { index in
+                                            return NameRow { row in
+                                                row.cellSetup({ (cell, _) in
+                                                    cell.tintColor = self.lightTaskTintColor
+                                                })
+                                            }
+                                        }
+        }
     }
     
     private func setupTaskDifficulty() {
@@ -172,7 +197,7 @@ class TaskFormViewController: FormViewController {
                 row.options = [L10n.daily, L10n.weekly, L10n.monthly]
                 row.value = L10n.daily
                 row.cellSetup({ (cell, _) in
-                    cell.segmentedControl.tintColor = self.taskTintColor
+                    cell.tintColor = self.taskTintColor
                 })
             }
     }
@@ -183,16 +208,42 @@ class TaskFormViewController: FormViewController {
                 row.title = L10n.Tasks.Form.startDate
                 row.value = Date()
                 row.cellSetup({ (cell, _) in
-                    cell.textLabel?.textColor = self.taskTintColor
+                    cell.tintColor = self.lightTaskTintColor
+                    cell.detailTextLabel?.textColor = self.lightTaskTintColor
                 })
         }
-            <<< PushRow<String>(TaskFormTags.dailyRepeat) { row in
+            <<< ActionSheetRow<String>(TaskFormTags.dailyRepeat) { row in
                 row.title = L10n.Tasks.Form.repeats
                 row.options = [L10n.daily, L10n.weekly, L10n.monthly, L10n.yearly]
                 row.value = L10n.daily
                 row.selectorTitle = "Pick a repeat option"
                 row.cellSetup({ (cell, _) in
-                    cell.textLabel?.textColor = self.taskTintColor
+                    cell.tintColor = self.lightTaskTintColor
+                    cell.detailTextLabel?.textColor = self.lightTaskTintColor
+                })
+        }
+            <<< PickerInputRow<Int>(TaskFormTags.dailyEvery) { row in
+                row.title = L10n.Tasks.Form.every
+                row.options = Array(0...30)
+                row.value = 1
+                row.cellSetup({ (cell, _) in
+                    cell.tintColor = self.lightTaskTintColor
+                    cell.detailTextLabel?.textColor = self.lightTaskTintColor
+                })
+        }
+            <<< SegmentedRow<String>(TaskFormTags.repeatMonthlySegment) { row in
+                row.options = [L10n.Tasks.Form.dayOfMonth, L10n.Tasks.Form.dayOfWeek]
+                row.value = L10n.Tasks.Form.dayOfMonth
+                row.hidden = Condition.predicate(NSPredicate.init(format: "$\(TaskFormTags.dailyRepeat) != '\(L10n.monthly)'"))
+                row.cellSetup({ (cell, _) in
+                    cell.tintColor = self.taskTintColor
+                })
+        }
+            <<< WeekdayRow(TaskFormTags.repeatWeekdays) { row in
+                row.tintColor = self.taskTintColor
+                row.hidden = Condition.function([TaskFormTags.dailyRepeat, TaskFormTags.repeatMonthlySegment], { (form) -> Bool in
+                    let monthlyRepeatRow = (form.rowBy(tag: TaskFormTags.repeatMonthlySegment) as? SegmentedRow<String>)
+                    return (form.rowBy(tag: TaskFormTags.dailyRepeat) as? ActionSheetRow<String>)?.value != L10n.weekly && (monthlyRepeatRow?.value != L10n.Tasks.Form.dayOfWeek || monthlyRepeatRow?.isHidden == true)
                 })
         }
     }
@@ -202,25 +253,54 @@ class TaskFormViewController: FormViewController {
             <<< DateRow(TaskFormTags.dueDate) { row in
                 row.title = L10n.Tasks.Form.dueDate
                 row.cellSetup({ (cell, _) in
-                    cell.textLabel?.textColor = self.taskTintColor
+                    cell.tintColor = self.lightTaskTintColor
+                    cell.detailTextLabel?.textColor = self.lightTaskTintColor
                 })
             }
     }
     
     private func setupReminders() {
-        form +++ Section(L10n.Tasks.Form.reminders)
+        form +++ MultivaluedSection(multivaluedOptions: [.Reorder, .Insert, .Delete],
+                                    header: L10n.Tasks.Form.reminders) { section in
+                                        section.tag = TaskFormTags.reminderSection
+                                        section.addButtonProvider = { section in
+                                            return ButtonRow { row in
+                                                row.title = L10n.Tasks.Form.newReminder
+                                                row.cellSetup({ (cell, _) in
+                                                    cell.tintColor = self.lightTaskTintColor
+                                                })
+                                            }
+                                        }
+                                        section.multivaluedRowToInsertAt = { index in
+                                            return TimeRow { row in
+                                                row.title = L10n.Tasks.Form.remindMe
+                                                row.cellSetup({ (cell, _) in
+                                                    cell.tintColor = self.lightTaskTintColor
+                                                })
+                                            }
+                                        }
+        }
     }
     
     private func setupTags() {
         form +++ Section(L10n.Tasks.Form.tags)
     }
     
-    private func fillCommonTaskValues() {
+    private func fillForm() {
         form.setValues([
             TaskFormTags.title: task.text,
             TaskFormTags.notes: task.notes,
             TaskFormTags.difficulty: task.priority
             ])
+        if taskType == .habit {
+            fillHabitValues()
+        } else if taskType == .daily {
+            fillDailyValues()
+        } else if taskType == .todo {
+            fillToDoValues()
+        } else if taskType == .reward {
+            fillRewardValues()
+        }
     }
     
     private func fillHabitValues() {
@@ -231,16 +311,73 @@ class TaskFormViewController: FormViewController {
     }
     
     private func fillDailyValues() {
+        form.setValues([
+            TaskFormTags.dueDate: task.duedate,
+            TaskFormTags.dailyRepeat: task.frequency,
+            TaskFormTags.dailyEvery: task.everyX
+            ])
+        fillChecklistValues()
     }
     
     private func fillToDoValues() {
         form.setValues([
             TaskFormTags.dueDate: task.duedate
             ])
+        fillChecklistValues()
     }
     
     private func fillRewardValues() {
         
+    }
+    
+    private func fillChecklistValues() {
+        var checklistSection = self.form.sectionBy(tag: TaskFormTags.checklistSection)
+        task.checklist.forEach { (item) in
+            let row = NameRow(item.id) { row in
+                row.value = item.text
+            }
+            let lastIndex = (checklistSection?.count ?? 1) - 1
+            checklistSection?.insert(row, at: lastIndex)
+        }
+    }
+    
+    private func save() {
+        let values = form.values()
+        saveCommon(values: values)
+        if taskType == .habit {
+            saveHabit(values: values)
+        } else if taskType == .daily {
+            saveDaily(values: values)
+        } else if taskType == .todo {
+            saveToDo(values: values)
+        } else if taskType == .reward {
+            saveReward(values: values)
+        }
+        
+        taskRepository.save(task: task)
+    }
+    
+    private func saveCommon(values: [String: Any?]) {
+        task.text = values[TaskFormTags.title] as? String
+        task.notes = values[TaskFormTags.notes] as? String
+        task.priority = values[TaskFormTags.difficulty] as? Float ?? 1
+    }
+    
+    private func saveHabit(values: [String: Any?]) {
+        let controls = values[TaskFormTags.habitControls] as? HabitControlsValue
+        task.up = controls?.positive ?? true
+        task.down = controls?.negative ?? true
+    }
+    
+    private func saveDaily(values: [String: Any?]) {
+        task.everyX = values[TaskFormTags.dailyEvery] as? Int ?? 1
+    }
+    
+    private func saveToDo(values: [String: Any?]) {
+        task.duedate = values[TaskFormTags.dueDate] as? Date
+    }
+    
+    private func saveReward(values: [String: Any?]) {
     }
     
     private func updateTitle() {

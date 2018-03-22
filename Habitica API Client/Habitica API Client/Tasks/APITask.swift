@@ -26,6 +26,8 @@ public class APITask: TaskProtocol, Codable {
     public var duedate: Date?
     public var isDue: Bool = false
     public var streak: Int = 0
+    public var frequency: String?
+    public var everyX: Int = 0
     public var challengeID: String?
     public var tags: [TagProtocol]
     public var checklist: [ChecklistItemProtocol]
@@ -48,6 +50,8 @@ public class APITask: TaskProtocol, Codable {
         case duedate
         case isDue
         case streak
+        case frequency
+        case everyX
         case challengeID
         case tags
         case checklist
@@ -71,6 +75,8 @@ public class APITask: TaskProtocol, Codable {
         duedate = try? values.decode(Date.self, forKey: .duedate)
         isDue = (try? values.decode(Bool.self, forKey: .isDue)) ?? false
         streak = (try? values.decode(Int.self, forKey: .streak)) ?? 0
+        frequency = try? values.decode(String.self, forKey: .frequency)
+        everyX = (try? values.decode(Int.self, forKey: .everyX)) ?? 0
         challengeID = try? values.decode(String.self, forKey: .challengeID)
         let tagList = try! values.decode([String].self, forKey: .tags)
         tags = tagList.map { (key) -> APITag in

@@ -9,6 +9,8 @@ import Foundation
 enum L10n {
   /// Controls
   static let controls = L10n.tr("Main", "controls")
+  /// Create
+  static let create = L10n.tr("Main", "create")
   /// Daily
   static let daily = L10n.tr("Main", "daily")
   /// Difficulty
@@ -21,6 +23,8 @@ enum L10n {
   static let resetTips = L10n.tr("Main", "reset_tips")
   /// Reset Streak
   static let resetStreak = L10n.tr("Main", "resetStreak")
+  /// Save
+  static let save = L10n.tr("Main", "save")
   /// Search
   static let search = L10n.tr("Main", "search")
   /// Tags
@@ -64,6 +68,10 @@ enum L10n {
       }
       /// What do you want to do regularly?
       static let dailiesTitlePlaceholder = L10n.tr("Main", "tasks.form.dailies_title_placeholder")
+      /// Day of the month
+      static let dayOfMonth = L10n.tr("Main", "tasks.form.day_of_month")
+      /// Day of the week
+      static let dayOfWeek = L10n.tr("Main", "tasks.form.day_of_week")
       /// Difficulty
       static let difficulty = L10n.tr("Main", "tasks.form.difficulty")
       /// Due date
@@ -78,8 +86,12 @@ enum L10n {
       static let habitTitlePlaceholder = L10n.tr("Main", "tasks.form.habit_title_placeholder")
       /// New checklist item
       static let newChecklistItem = L10n.tr("Main", "tasks.form.new_checklist_item")
+      /// New reminder
+      static let newReminder = L10n.tr("Main", "tasks.form.new_reminder")
       /// Include any notes to help you out
       static let notesPlaceholder = L10n.tr("Main", "tasks.form.notes_placeholder")
+      /// Remind me
+      static let remindMe = L10n.tr("Main", "tasks.form.remind_me")
       /// Reminders
       static let reminders = L10n.tr("Main", "tasks.form.reminders")
       /// Repeats

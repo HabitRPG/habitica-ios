@@ -9,6 +9,8 @@
 "tags" = "Tags";
 "title" = "Title";
 "notes" = "Notes";
+"create" = "Create";
+"save" = "Save";
 "tasks.habit" = "Habit";
 "tasks.daily" = "Daily";
 "tasks.todo" = "To-Do";
@@ -27,10 +29,14 @@
 "tasks.form.reminders" = "Reminders";
 "tasks.form.checklist" = "Checklist";
 "tasks.form.new_checklist_item" = "New checklist item";
+"tasks.form.new_reminder" = "New reminder";
+"tasks.form.remind_me" = "Remind me";
 "tasks.form.start_date" = "Start date";
 "tasks.form.due_date" = "Due date";
 "tasks.form.repeats" = "Repeats";
 "tasks.form.every" = "Every";
+"tasks.form.day_of_month" = "Day of the month";
+"tasks.form.day_of_week" = "Day of the week";
 "daily" = "Daily";
 "weekly" = "Weekly";
 "monthly" = "Monthly";

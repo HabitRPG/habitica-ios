@@ -28,6 +28,8 @@ class RealmTask: Object, TaskProtocol {
     @objc dynamic var duedate: Date?
     @objc dynamic var isDue: Bool = false
     @objc dynamic var streak: Int = 0
+    @objc dynamic var frequency: String?
+    @objc dynamic var everyX: Int = 1
     @objc dynamic var challengeID: String?
     var tags: [TagProtocol] {
         get {
@@ -40,8 +42,9 @@ class RealmTask: Object, TaskProtocol {
             newValue.forEach { (tag) in
                 if let realmTag = tag as? RealmTag {
                     realmTags.append(realmTag)
+                } else {
+                    realmTags.append(RealmTag(tag))
                 }
-                realmTags.append(RealmTag(tag))
             }
         }
     }
@@ -57,8 +60,9 @@ class RealmTask: Object, TaskProtocol {
             newValue.forEach { (checklistItem) in
                 if let realmChecklistItem = checklistItem as? RealmChecklistItem {
                     realmChecklist.append(realmChecklistItem)
+                } else {
+                    realmChecklist.append(RealmChecklistItem(checklistItem))
                 }
-                realmChecklist.append(RealmChecklistItem(checklistItem))
             }
         }
     }
@@ -74,8 +78,9 @@ class RealmTask: Object, TaskProtocol {
             newValue.forEach { (reminder) in
                 if let realmReminder = reminder as? RealmReminder {
                     realmReminders.append(realmReminder)
+                } else {
+                    realmReminders.append(RealmReminder(reminder))
                 }
-                realmReminders.append(RealmReminder(reminder))
             }
         }
     }
@@ -106,6 +111,9 @@ class RealmTask: Object, TaskProtocol {
         counterDown = taskProtocol.counterDown
         duedate = taskProtocol.duedate
         isDue = taskProtocol.isDue
+        streak = taskProtocol.streak
+        frequency = taskProtocol.frequency
+        everyX = taskProtocol.everyX
         tags = taskProtocol.tags
         checklist = taskProtocol.checklist
         reminders = taskProtocol.reminders

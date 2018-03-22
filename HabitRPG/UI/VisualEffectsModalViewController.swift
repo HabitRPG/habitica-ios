@@ -37,6 +37,13 @@ class VisualEffectModalViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     
+    var onLeftButtonTapped : (() -> Void)?
+    var onRightButtonTapped : (() -> Void)?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -61,17 +68,25 @@ class VisualEffectModalViewController: UIViewController, UIScrollViewDelegate {
     }
     
     @IBAction func leftButtonTapped(_ sender: Any) {
-        hideView {
-            self.dismiss(animated: false, completion: nil)
+        if let action = onLeftButtonTapped {
+            action()
+        } else {
+            dismiss()
         }
     }
     @IBAction func rightButtonTapped(_ sender: Any) {
-        hideView {
-            self.dismiss(animated: false, completion: nil)
+        if let action = onRightButtonTapped {
+            action()
+        } else {
+            dismiss()
         }
     }
     
     @IBAction func backgroundTapped(_ sender: Any) {
+        dismiss()
+    }
+    
+    func dismiss() {
         hideView {
             self.dismiss(animated: false, completion: nil)
         }

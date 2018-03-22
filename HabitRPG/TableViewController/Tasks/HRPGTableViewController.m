@@ -506,9 +506,9 @@ NSIndexPath  *sourceIndexPath = nil;
         [destViewController setTaskTypeStringWithType:self.typeName];
         if (self.dataSource.taskToEdit) {
             id task = self.dataSource.taskToEdit;
+            self.dataSource.taskToEdit = nil;
             destViewController.taskId = [task valueForKey:@"id"];
             destViewController.isCreating = NO;
-            self.dataSource.taskToEdit = nil;
         } else {
             destViewController.isCreating = YES;
         }

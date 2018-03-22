@@ -38,6 +38,8 @@ public protocol TaskProtocol {
     var duedate: Date? { get set }
     var isDue: Bool { get set }
     var streak: Int { get set }
+    var frequency: String? { get set }
+    var everyX: Int { get set }
     var challengeID: String? { get set }
     var tags: [TagProtocol] { get set }
     var checklist: [ChecklistItemProtocol] { get set }
