@@ -106,6 +106,7 @@ class ChatTableViewCell: UITableViewCell {
         messageTextView.addGestureRecognizer(messageTapRecognizer)
         
         usernameLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(displayProfile)))
+        avatarWrapper.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(displayProfile)))
         
         selectionStyle = .none
         backgroundColor = .white
