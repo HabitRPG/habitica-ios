@@ -13,7 +13,7 @@
 "tasks.daily" = "Daily";
 "tasks.todo" = "To-Do";
 "tasks.reward" = "Reward";
-"tasks.form.create" = "Create %@";
+"tasks.form.create" = "New %@";
 "tasks.form.edit" = "Edit %@";
 "tasks.form.habit_title_placeholder" = "What habits do you want to foster or break?";
 "tasks.form.dailies_title_placeholder" = "What do you want to do regularly?";
@@ -28,6 +28,7 @@
 "tasks.form.checklist" = "Checklist";
 "tasks.form.new_checklist_item" = "New checklist item";
 "tasks.form.start_date" = "Start date";
+"tasks.form.due_date" = "Due date";
 "tasks.form.repeats" = "Repeats";
 "tasks.form.every" = "Every";
 "daily" = "Daily";

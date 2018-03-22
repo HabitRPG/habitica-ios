@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/phillip/Code/habitica-ios/HabitRPG/UI/Tasks/TaskFormRows/HabitDifficultyCell.xib">
+   </FileRef>
+   <FileRef
       location = "group:Habitica Models/Habitica Models.xcodeproj">
    </FileRef>
    <FileRef

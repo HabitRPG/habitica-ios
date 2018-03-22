@@ -25,7 +25,7 @@ class VisualEffectModalViewController: UIViewController, UIScrollViewDelegate {
         return childViewControllers.first
     }
     
-    private var topHeaderSize: CGFloat = 40
+    private var topHeaderSize: CGFloat = 38
     private var topHeaderSpacing: CGFloat = 140
     
     override var title: String? {

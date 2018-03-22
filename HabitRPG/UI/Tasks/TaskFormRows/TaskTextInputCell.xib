@@ -35,7 +35,7 @@
                         <rect key="frame" x="16" y="25.5" width="343" height="40"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="HWI-E6-AyA">
-                                <rect key="frame" x="10" y="0.0" width="323" height="40"/>
+                                <rect key="frame" x="10" y="4" width="323" height="36"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="500" constant="21" id="AFa-zd-okf"/>
@@ -48,12 +48,13 @@
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="HWI-E6-AyA" firstAttribute="leading" secondItem="6zi-ia-rAP" secondAttribute="leading" constant="10" id="6Nw-27-2ZT"/>
-                            <constraint firstItem="HWI-E6-AyA" firstAttribute="top" secondItem="6zi-ia-rAP" secondAttribute="top" id="Rzz-rg-86X"/>
+                            <constraint firstItem="HWI-E6-AyA" firstAttribute="top" relation="lessThanOrEqual" secondItem="6zi-ia-rAP" secondAttribute="top" constant="4" id="Rzz-rg-86X"/>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="Sx0-YF-rRG"/>
                             <constraint firstAttribute="height" relation="lessThanOrEqual" constant="120" id="atY-M0-MYq"/>
                             <constraint firstAttribute="trailing" secondItem="HWI-E6-AyA" secondAttribute="trailing" constant="10" id="dKN-eu-ibs"/>
                             <constraint firstAttribute="bottom" secondItem="HWI-E6-AyA" secondAttribute="bottom" id="fTb-cB-v2s"/>
                             <constraint firstAttribute="height" priority="500" constant="40" id="pG1-HU-Mh8"/>
+                            <constraint firstItem="HWI-E6-AyA" firstAttribute="top" relation="greaterThanOrEqual" secondItem="6zi-ia-rAP" secondAttribute="top" id="ySn-wc-uUG"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">

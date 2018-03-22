@@ -58,7 +58,7 @@ enum L10n {
       static let checklist = L10n.tr("Main", "tasks.form.checklist")
       /// Controls
       static let controls = L10n.tr("Main", "tasks.form.controls")
-      /// Create %@
+      /// New %@
       static func create(_ p1: String) -> String {
         return L10n.tr("Main", "tasks.form.create", p1)
       }
@@ -66,6 +66,8 @@ enum L10n {
       static let dailiesTitlePlaceholder = L10n.tr("Main", "tasks.form.dailies_title_placeholder")
       /// Difficulty
       static let difficulty = L10n.tr("Main", "tasks.form.difficulty")
+      /// Due date
+      static let dueDate = L10n.tr("Main", "tasks.form.due_date")
       /// Edit %@
       static func edit(_ p1: String) -> String {
         return L10n.tr("Main", "tasks.form.edit", p1)

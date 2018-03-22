@@ -69,6 +69,8 @@
 		293BB4A51FD078EC003B6F4F /* StatsSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293BB4A41FD078EC003B6F4F /* StatsSliderView.swift */; };
 		293BB4A91FD0806C003B6F4F /* BulkStatsAllocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293BB4A81FD0806C003B6F4F /* BulkStatsAllocationViewController.swift */; };
 		294EB59D1FA0A7E4006083BD /* FixCharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294EB59C1FA0A7E4006083BD /* FixCharacterViewController.swift */; };
+		294FD5692064135500EABCC9 /* HabitControlsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294FD5682064135500EABCC9 /* HabitControlsRow.swift */; };
+		294FD56B20641B2F00EABCC9 /* HabitControlsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 294FD56A20641B2F00EABCC9 /* HabitControlsCell.xib */; };
 		295611162056ED8000D9711A /* ContentRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295611152056ED7F00D9711A /* ContentRepository.swift */; };
 		2957B8A81F4B071700E836EF /* InAppReward+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 2957B8A51F4B071700E836EF /* InAppReward+CoreDataClass.m */; };
 		2957B8A91F4B071700E836EF /* InAppReward+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 2957B8A71F4B071700E836EF /* InAppReward+CoreDataProperties.m */; };
@@ -122,6 +124,8 @@
 		29A0FD7F203DBDEA00590BDE /* ChatMessageFlag+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 29A0FD7D203DBDEA00590BDE /* ChatMessageFlag+CoreDataProperties.m */; };
 		29A0FD81203DF49900590BDE /* GuidelinesPromptView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29A0FD80203DF49900590BDE /* GuidelinesPromptView.xib */; };
 		29A1B9B91F6ACC2F0055CF57 /* UIAlertAction-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A1B9B81F6ACC2F0055CF57 /* UIAlertAction-Extensions.swift */; };
+		29A6B85D20641C9B0086B2A6 /* TaskDifficultyRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A6B85C20641C9B0086B2A6 /* TaskDifficultyRow.swift */; };
+		29A6B86220641FEA0086B2A6 /* TaskDifficultyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29A6B86120641FEA0086B2A6 /* TaskDifficultyCell.xib */; };
 		29AAA15D1F2A3AA600029737 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AAA15C1F2A3AA600029737 /* GradientView.swift */; };
 		29AAA15F1F2B596900029737 /* SpeechbubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AAA15E1F2B596900029737 /* SpeechbubbleView.swift */; };
 		29AAA1611F2B597400029737 /* SpeechbubbleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29AAA1601F2B597400029737 /* SpeechbubbleView.xib */; };
@@ -588,6 +592,8 @@
 		293BB4A41FD078EC003B6F4F /* StatsSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsSliderView.swift; sourceTree = "<group>"; };
 		293BB4A81FD0806C003B6F4F /* BulkStatsAllocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulkStatsAllocationViewController.swift; sourceTree = "<group>"; };
 		294EB59C1FA0A7E4006083BD /* FixCharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixCharacterViewController.swift; sourceTree = "<group>"; };
+		294FD5682064135500EABCC9 /* HabitControlsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitControlsRow.swift; sourceTree = "<group>"; };
+		294FD56A20641B2F00EABCC9 /* HabitControlsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HabitControlsCell.xib; sourceTree = "<group>"; };
 		295611152056ED7F00D9711A /* ContentRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentRepository.swift; sourceTree = "<group>"; };
 		2957B8A41F4B071700E836EF /* InAppReward+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "InAppReward+CoreDataClass.h"; sourceTree = "<group>"; };
 		2957B8A51F4B071700E836EF /* InAppReward+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "InAppReward+CoreDataClass.m"; sourceTree = "<group>"; };
@@ -657,6 +663,8 @@
 		29A0FD7D203DBDEA00590BDE /* ChatMessageFlag+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ChatMessageFlag+CoreDataProperties.m"; sourceTree = "<group>"; };
 		29A0FD80203DF49900590BDE /* GuidelinesPromptView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GuidelinesPromptView.xib; sourceTree = "<group>"; };
 		29A1B9B81F6ACC2F0055CF57 /* UIAlertAction-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertAction-Extensions.swift"; sourceTree = "<group>"; };
+		29A6B85C20641C9B0086B2A6 /* TaskDifficultyRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDifficultyRow.swift; sourceTree = "<group>"; };
+		29A6B86120641FEA0086B2A6 /* TaskDifficultyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskDifficultyCell.xib; sourceTree = "<group>"; };
 		29AAA15C1F2A3AA600029737 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		29AAA15E1F2B596900029737 /* SpeechbubbleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechbubbleView.swift; sourceTree = "<group>"; };
 		29AAA1601F2B597400029737 /* SpeechbubbleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpeechbubbleView.xib; sourceTree = "<group>"; };
@@ -1399,6 +1407,10 @@
 				29205E342062DF710024E355 /* TextInputFormRow.swift */,
 				29205E362062E0030024E355 /* TaskTextInputCell.xib */,
 				29205E382062E2430024E355 /* TaskRow.swift */,
+				294FD5682064135500EABCC9 /* HabitControlsRow.swift */,
+				294FD56A20641B2F00EABCC9 /* HabitControlsCell.xib */,
+				29A6B85C20641C9B0086B2A6 /* TaskDifficultyRow.swift */,
+				29A6B86120641FEA0086B2A6 /* TaskDifficultyCell.xib */,
 			);
 			path = TaskFormRows;
 			sourceTree = "<group>";
@@ -2910,9 +2922,11 @@
 				493ECBB91F47D82A0099B1FC /* HRPGGearSetItem.xib in Resources */,
 				29FC8864201B78D6002B3D3F /* WorldBossMenuHeader.xib in Resources */,
 				290279A020583ECF006DACB9 /* Shops.storyboard in Resources */,
+				294FD56B20641B2F00EABCC9 /* HabitControlsCell.xib in Resources */,
 				493ECBB51F47A58F0099B1FC /* HRPGItemStatsView.xib in Resources */,
 				29028BB120319E4000B7F704 /* RageStrikeActiveContentView.xib in Resources */,
 				29C1B6AE205952E40001D3EF /* Tasks.storyboard in Resources */,
+				29A6B86220641FEA0086B2A6 /* TaskDifficultyCell.xib in Resources */,
 				D9BBF32E1DBD128700C4114C /* ShopAdFooter.xib in Resources */,
 				D9D17CD61E6899A800AD9232 /* ToDoTableViewCell.xib in Resources */,
 				49A84FB31F9FCA30003E2956 /* ChallengeDetailInfoTableViewCell.xib in Resources */,
@@ -3561,6 +3575,7 @@
 				D922F0AE19217C2300B197EA /* HRPGEmptySerializer.m in Sources */,
 				D9C0E51F1C6516C50062C89A /* HRPGPublicGuildTableViewCell.m in Sources */,
 				49F1459E2016667D00AAC434 /* ChallengeCategory+CoreDataClass.m in Sources */,
+				294FD5692064135500EABCC9 /* HabitControlsRow.swift in Sources */,
 				D95D039C1C74E3E900D6BFB3 /* ImprovementCategory.m in Sources */,
 				D9B11C8C18D63D4E00AB4D23 /* HRPGTabBarController.m in Sources */,
 				D9D0451C1C2B1AEC00630244 /* Reminder.m in Sources */,
@@ -3711,6 +3726,7 @@
 				29B3FEAF1F9A33AB000B12CF /* APISettingsViewController.swift in Sources */,
 				498E4CFB1FA17B9E006933FF /* ChallengeCreatorTableViewCell.swift in Sources */,
 				D984D58D1E4A2F2D006E84F8 /* SubscriptionOptionView.swift in Sources */,
+				29A6B85D20641C9B0086B2A6 /* TaskDifficultyRow.swift in Sources */,
 				D96760C81B2EF9B600DB07DF /* HRPGAbbrevNumberLabel.m in Sources */,
 				D9E02EC61E5E0458002CFCE2 /* ChallengeTableViewController.swift in Sources */,
 				D96BFC4F1E191D7200266EEF /* UIAlertController-Extensions.swift in Sources */,

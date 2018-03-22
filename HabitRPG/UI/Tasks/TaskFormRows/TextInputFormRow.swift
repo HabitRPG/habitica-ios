@@ -9,7 +9,7 @@
 import Foundation
 import Eureka
 
-public class TaskTextInputCell: Cell<String>, CellType {
+public class TaskTextInputCell: Cell<String>, CellType, UITextViewDelegate {
     
     @IBOutlet weak var cellBackgroundView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -19,10 +19,14 @@ public class TaskTextInputCell: Cell<String>, CellType {
     
     public override func setup() {
         super.setup()
+        textField.delegate = self
+        selectionStyle = .none
+
     }
 
     public override func update() {
         titleLabel.text = row.title
+        textField.text = row.value
         
         if let taskRow = row as? TaskTextInputRow {
             cellBackgroundView.backgroundColor = taskRow.tintColor
@@ -32,10 +36,10 @@ public class TaskTextInputCell: Cell<String>, CellType {
             bottomSpacingConstraint.constant = taskRow.bottomSpacing
         }
     }
-
-    override public func awakeFromNib() {
-        super.awakeFromNib()
-        selectionStyle = .none
+    
+    public func textViewDidChange(_ textView: UITextView) {
+        row.value = textView.text
+        row.updateCell()
     }
     
     override public func layoutSubviews() {
