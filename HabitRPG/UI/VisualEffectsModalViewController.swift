@@ -19,6 +19,7 @@ class VisualEffectModalViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var topHeaderOffset: NSLayoutConstraint!
     @IBOutlet weak var scrollViewTopOffset: NSLayoutConstraint!
+    @IBOutlet weak var contentHeightConstraint: NSLayoutConstraint!
     
     @objc var containedViewController: UIViewController? {
         return childViewControllers.first
@@ -77,7 +78,6 @@ class VisualEffectModalViewController: UIViewController, UIScrollViewDelegate {
     }
     
     private func setHeader(offset: CGFloat) {
-        print("Offset: \(offset)")
         if offset > 0 {
             topHeaderOffset.constant = offset - topHeaderSize
         } else {

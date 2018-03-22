@@ -9,32 +9,11 @@
 import UIKit
 import Habitica_Models
 import Habitica_Database
+import Eureka
 
-struct TaskFormRow {
-    let cellIdentifier: String
-    
-    init(cellIdentifier: String) {
-        self.cellIdentifier = cellIdentifier
-    }
-}
-
-struct TaskFormSection {
-    let identifier: String
-    let title: String?
-    let rows: [TaskFormRow]
-    
-    init(identifier: String, title: String?, rows: [TaskFormRow]) {
-        self.identifier = identifier
-        self.title = title
-        self.rows = rows
-    }
-}
-
-class TaskFormViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TaskFormViewController: FormViewController {
 
     weak var modalContainerViewController: VisualEffectModalViewController?
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
     
     @objc var isCreating = true {
         didSet {
@@ -77,70 +56,71 @@ class TaskFormViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
-    private var sections: [TaskFormSection] = []
     private var viewModel = TaskFormViewModel()
     private var taskRepository = TaskRepository()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        sections = viewModel.sectionsFor(taskType: taskType)
         
         task.up = true
         task.priority = 1
+        
+        setupBasicTaskInput()
+        
+        tableView.backgroundColor = .clear
+        tableView.isScrollEnabled = false
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        tableViewHeightConstraint.constant = tableView.contentSize.height
+        if let visualEffectViewController = modalContainerViewController {
+            visualEffectViewController.contentHeightConstraint.constant = tableView.contentSize.height
+        }
+        tableView.frame = view.frame
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return sections.count
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sections[section].rows.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let row = rowAt(indexPath: indexPath)
-        let cell = tableView.dequeueReusableCell(withIdentifier: row.cellIdentifier, for: indexPath)
-        if let taskFormCell = cell as? TaskFormCell {
-            if let textInputCell = taskFormCell as? TextInputTaskFormCell {
-                if indexPath.item == 0 {
-                    textInputCell.inputType = .title
-                } else {
-                    textInputCell.inputType = .notes
-                }
+    func setupBasicTaskInput() {
+        form +++ Section { section in
+            var header = HeaderFooterView<UIView>(.class)
+            header.height = { 0 }
+            section.header = header
             }
-            taskFormCell.setTaskTintColor(color: taskTintColor)
-            taskFormCell.configureFor(task: task)
-        }
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sections[section].title
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 0 {
-            return 1
-        } else {
-            return 28
+            <<< TaskTextInputRow { row in
+                row.title = "Title"
+                row.tintColor = taskTintColor
+                row.topSpacing = 12
+            }
+            <<< TaskTextInputRow { row in
+                row.title = "Notes"
+                row.placeholder = "Include any notes to help you out"
+                row.tintColor = taskTintColor
+                row.topSpacing = 8
+                row.bottomSpacing = 12
         }
     }
     
-    private func rowAt(indexPath: IndexPath) -> TaskFormRow {
-        return sections[indexPath.section].rows[indexPath.item]
+    func setupHabitControls() {
+        form +++ Section()
+    }
+    
+    func setupTaskDifficulty() {
+        
+    }
+    
+    func setupHabitResetStreak() {
+        
+    }
+    
+    func setupTags() {
+        
     }
     
     private func updateTitle() {
         if let visualEffectViewController = modalContainerViewController {
             if isCreating {
-                visualEffectViewController.title = L10n.Tasks.create(taskType.prettName())
+                visualEffectViewController.title = L10n.Tasks.Form.create(taskType.prettName())
             } else {
-                visualEffectViewController.title = L10n.Tasks.edit(taskType.prettName())
+                visualEffectViewController.title = L10n.Tasks.Form.edit(taskType.prettName())
             }
         }
     }

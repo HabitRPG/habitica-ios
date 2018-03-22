@@ -9,8 +9,12 @@ import Foundation
 enum L10n {
   /// Controls
   static let controls = L10n.tr("Main", "controls")
+  /// Daily
+  static let daily = L10n.tr("Main", "daily")
   /// Difficulty
   static let difficulty = L10n.tr("Main", "difficulty")
+  /// Monthly
+  static let monthly = L10n.tr("Main", "monthly")
   /// Notes
   static let notes = L10n.tr("Main", "notes")
   /// Reset Justins Tips
@@ -23,6 +27,10 @@ enum L10n {
   static let tags = L10n.tr("Main", "tags")
   /// Title
   static let title = L10n.tr("Main", "title")
+  /// Weekly
+  static let weekly = L10n.tr("Main", "weekly")
+  /// Yearly
+  static let yearly = L10n.tr("Main", "yearly")
 
   enum Stats {
     /// 0 Points to Allocate
@@ -36,22 +44,57 @@ enum L10n {
   }
 
   enum Tasks {
-    /// Create %@
-    static func create(_ p1: String) -> String {
-      return L10n.tr("Main", "tasks.create", p1)
-    }
     /// Daily
     static let daily = L10n.tr("Main", "tasks.daily")
-    /// Edit %@
-    static func edit(_ p1: String) -> String {
-      return L10n.tr("Main", "tasks.edit", p1)
-    }
     /// Habit
     static let habit = L10n.tr("Main", "tasks.habit")
     /// Reward
     static let reward = L10n.tr("Main", "tasks.reward")
     /// To-Do
     static let todo = L10n.tr("Main", "tasks.todo")
+
+    enum Form {
+      /// Checklist
+      static let checklist = L10n.tr("Main", "tasks.form.checklist")
+      /// Controls
+      static let controls = L10n.tr("Main", "tasks.form.controls")
+      /// Create %@
+      static func create(_ p1: String) -> String {
+        return L10n.tr("Main", "tasks.form.create", p1)
+      }
+      /// What do you want to do regularly?
+      static let dailiesTitlePlaceholder = L10n.tr("Main", "tasks.form.dailies_title_placeholder")
+      /// Difficulty
+      static let difficulty = L10n.tr("Main", "tasks.form.difficulty")
+      /// Edit %@
+      static func edit(_ p1: String) -> String {
+        return L10n.tr("Main", "tasks.form.edit", p1)
+      }
+      /// Every
+      static let every = L10n.tr("Main", "tasks.form.every")
+      /// What habits do you want to foster or break?
+      static let habitTitlePlaceholder = L10n.tr("Main", "tasks.form.habit_title_placeholder")
+      /// New checklist item
+      static let newChecklistItem = L10n.tr("Main", "tasks.form.new_checklist_item")
+      /// Include any notes to help you out
+      static let notesPlaceholder = L10n.tr("Main", "tasks.form.notes_placeholder")
+      /// Reminders
+      static let reminders = L10n.tr("Main", "tasks.form.reminders")
+      /// Repeats
+      static let repeats = L10n.tr("Main", "tasks.form.repeats")
+      /// Reset Streak
+      static let resetStreak = L10n.tr("Main", "tasks.form.reset_streak")
+      /// How do you want to reward yourself?
+      static let rewardsTitlePlaceholder = L10n.tr("Main", "tasks.form.rewards_title_placeholder")
+      /// Scheduling
+      static let scheduling = L10n.tr("Main", "tasks.form.scheduling")
+      /// Start date
+      static let startDate = L10n.tr("Main", "tasks.form.start_date")
+      /// Tags
+      static let tags = L10n.tr("Main", "tasks.form.tags")
+      /// What do you want to complete once?
+      static let todosTitlePlaceholder = L10n.tr("Main", "tasks.form.todos_title_placeholder")
+    }
   }
 }
 // swiftlint:enable explicit_type_interface identifier_name line_length nesting type_body_length type_name
