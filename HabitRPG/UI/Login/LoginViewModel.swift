@@ -275,15 +275,16 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
                    password: password,
                    passwordRepeat: passwordRepeat) {
             self.loadingIndicatorVisibilityObserver.send(value: true)
+            let authValues = self.authValuesProperty.value
             if self.authTypeProperty.value == .login {
-                self.sharedManager?.loginUser(self.usernameChangedProperty.value, withPassword: self.passwordChangedProperty.value, onSuccess: {
+                self.sharedManager?.loginUser(authValues?.username, withPassword: authValues?.password, onSuccess: {
                     self.onSuccessfulLogin()
                 }, onError: {
                     self.loadingIndicatorVisibilityObserver.send(value: false)
                     self.showErrorObserver.send(value: "Invalid username or password".localized)
                 })
             } else {
-                self.sharedManager?.registerUser(self.usernameChangedProperty.value, withPassword: self.passwordChangedProperty.value, withEmail: self.emailChangedProperty.value, onSuccess: {
+                self.sharedManager?.registerUser(authValues?.username, withPassword: authValues?.password, withEmail: authValues?.password, onSuccess: {
                     self.onSuccessfulLogin()
                 }, onError: { errorMessage in
                     self.loadingIndicatorVisibilityObserver.send(value: false)
