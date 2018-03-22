@@ -70,6 +70,10 @@ class HRPGSimpleShopItemView: UIView {
         super.init(frame: contentView.bounds)
         setupView()
         
+        if let availableUntil = item.availableUntil {
+            setAvailableUntil(date: availableUntil)
+        }
+        
         self.shopItemTitleLabel.text = item.text
         
         if let imageName = item.imageName {
@@ -172,6 +176,15 @@ class HRPGSimpleShopItemView: UIView {
                 topBannerLabel.verticalPadding = 6
             }
         }
+    }
+    
+    private func setAvailableUntil(date: Date) {
+        let formatter = DateFormatter()
+        formatter.timeStyle = .none
+        formatter.dateStyle = .medium
+        let dateString = formatter.string(from: date)
+        topBannerLabel.text = NSLocalizedString("Available Until \(dateString)", comment: "")
+        topBannerLabel.backgroundColor = UIColor.purple200()
     }
     
     // MARK: - Private Helper Methods
