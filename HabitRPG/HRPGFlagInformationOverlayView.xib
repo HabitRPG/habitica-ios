@@ -67,7 +67,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="cMa-Mu-pHb">
-                    <rect key="frame" x="30" y="32" width="315" height="324"/>
+                    <rect key="frame" x="30" y="32" width="315" height="332"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="textColor" red="0.3333333432674408" green="0.3333333432674408" blue="0.3333333432674408" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -182,7 +182,7 @@
                 <constraint firstItem="Dww-RO-8A9" firstAttribute="top" secondItem="56w-Tg-2KB" secondAttribute="bottom" id="jhq-ae-RFS"/>
                 <constraint firstItem="jBs-Sk-VLO" firstAttribute="width" secondItem="Hom-8w-fcY" secondAttribute="width" id="lc0-jF-ofo"/>
                 <constraint firstAttribute="trailing" secondItem="DOA-az-E9d" secondAttribute="trailing" constant="20" id="wou-Xt-ca8"/>
-                <constraint firstItem="WyJ-ot-CTH" firstAttribute="top" secondItem="cMa-Mu-pHb" secondAttribute="bottom" constant="12" id="xQI-if-a6I"/>
+                <constraint firstItem="WyJ-ot-CTH" firstAttribute="top" secondItem="cMa-Mu-pHb" secondAttribute="bottom" constant="4" id="xQI-if-a6I"/>
                 <constraint firstAttribute="trailing" secondItem="WyJ-ot-CTH" secondAttribute="trailing" constant="20" id="xba-li-8tO"/>
                 <constraint firstAttribute="trailing" secondItem="jBs-Sk-VLO" secondAttribute="trailing" id="yf1-3M-fyo"/>
                 <constraint firstItem="DOA-az-E9d" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="yi9-VK-5UP"/>
