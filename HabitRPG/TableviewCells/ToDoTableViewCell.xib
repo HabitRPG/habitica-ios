@@ -75,7 +75,7 @@
                                 <rect key="frame" x="60" y="12" width="275" height="116.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="999" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="08f-NY-m4k" userLabel="Title">
-                                        <rect key="frame" x="0.0" y="0.0" width="275" height="90.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="275" height="58.5"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" priority="500" constant="15" id="RI3-Im-vAQ"/>
@@ -85,7 +85,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="999" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gRR-R7-10E" userLabel="Subtitle">
-                                        <rect key="frame" x="0.0" y="94.5" width="275" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="62.5" width="275" height="0.0"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" priority="500" constant="21" id="bmf-6b-hfN"/>
@@ -95,7 +95,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="O8c-rS-Lp5" customClass="TaskDetailLineView" customModule="Habitica" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="98.5" width="275" height="18"/>
+                                        <rect key="frame" x="0.0" y="66.5" width="275" height="50"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" priority="501" constant="18" id="X4u-5p-rWn"/>

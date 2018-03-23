@@ -2892,7 +2892,9 @@ static dispatch_once_t onceToken;
             
             NSError *error;
             for (ChatMessage *message in group.chatmessages) {
-                message.attributedText = [HabiticaMarkdownHelper toHabiticaAttributedString:[message.text stringByReplacingEmojiCheatCodesWithUnicode] error:&error];
+                NSMutableAttributedString *attributedText = [HabiticaMarkdownHelper toHabiticaAttributedString:[message.text stringByReplacingEmojiCheatCodesWithUnicode] error:&error];
+                [attributedText addAttribute:NSForegroundColorAttributeName value:[UIColor gray10] range:NSMakeRange(0, attributedText.length)];
+                message.attributedText = attributedText;
             }
             
             [self handleNotifications:[mappingResult dictionary][@"notifications"]];

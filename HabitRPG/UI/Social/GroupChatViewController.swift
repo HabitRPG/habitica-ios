@@ -58,7 +58,7 @@ class GroupChatViewController: SLKTextViewController {
         
         self.dataSource?.cellIdentifierBlock = { (item, indexPath) in
             if let message = item as? ChatMessage {
-                if message.user == nil {
+                if message.uuid == nil || message.uuid == "system" {
                     return "SystemMessageCell"
                 }
             }
