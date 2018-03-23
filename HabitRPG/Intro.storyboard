@@ -1150,11 +1150,11 @@
                                 <state key="normal" title="Randomize" backgroundImage="DiamondButton"/>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qr2-DT-Qaf" customClass="AvatarView" customModule="Habitica" customModuleProvider="target">
-                                <rect key="frame" x="117.5" y="110" width="120" height="90"/>
+                                <rect key="frame" x="108.5" y="82" width="140" height="147"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="90" id="BVv-b4-xAV"/>
-                                    <constraint firstAttribute="width" constant="120" id="gg4-Z9-9gb"/>
+                                    <constraint firstAttribute="height" constant="147" id="BVv-b4-xAV"/>
+                                    <constraint firstAttribute="width" constant="140" id="gg4-Z9-9gb"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1174,9 +1174,9 @@
                             <constraint firstItem="FdJ-aY-gbH" firstAttribute="top" secondItem="7xQ-tj-Lvs" secondAttribute="bottom" priority="501" constant="12" id="YES-z4-XEK"/>
                             <constraint firstItem="yg5-dQ-Nyt" firstAttribute="top" relation="greaterThanOrEqual" secondItem="K2H-zJ-vTs" secondAttribute="bottom" constant="4" id="YFk-Tx-SmP"/>
                             <constraint firstItem="FdJ-aY-gbH" firstAttribute="top" relation="greaterThanOrEqual" secondItem="7xQ-tj-Lvs" secondAttribute="bottom" constant="4" id="ZeA-yh-2Nf"/>
-                            <constraint firstItem="qr2-DT-Qaf" firstAttribute="top" secondItem="yg5-dQ-Nyt" secondAttribute="top" id="eI1-Zz-vSy"/>
+                            <constraint firstItem="qr2-DT-Qaf" firstAttribute="top" secondItem="yg5-dQ-Nyt" secondAttribute="top" constant="-28" id="eI1-Zz-vSy"/>
                             <constraint firstAttribute="trailing" secondItem="JDw-Ev-dce" secondAttribute="trailing" constant="16" id="iML-LD-hkS"/>
-                            <constraint firstItem="qr2-DT-Qaf" firstAttribute="centerX" secondItem="Mx4-o3-Q9Q" secondAttribute="centerX" constant="-10" id="inF-SA-RAg"/>
+                            <constraint firstItem="qr2-DT-Qaf" firstAttribute="centerX" secondItem="Mx4-o3-Q9Q" secondAttribute="centerX" constant="-9" id="inF-SA-RAg"/>
                             <constraint firstItem="7xQ-tj-Lvs" firstAttribute="leading" secondItem="Mx4-o3-Q9Q" secondAttribute="leadingMargin" id="mAk-Uz-Jpq"/>
                             <constraint firstItem="992-ys-Zq4" firstAttribute="bottom" secondItem="JDw-Ev-dce" secondAttribute="bottom" id="sa3-2a-JWJ"/>
                             <constraint firstItem="FdJ-aY-gbH" firstAttribute="leading" secondItem="Mx4-o3-Q9Q" secondAttribute="leading" id="uNU-Pm-hDD"/>
@@ -1342,11 +1342,11 @@
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ucL-Th-No2" customClass="AvatarView" customModule="Habitica" customModuleProvider="target">
-                                <rect key="frame" x="117.5" y="110" width="120" height="90"/>
+                                <rect key="frame" x="108.5" y="82" width="140" height="147"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="90" id="0Zr-o6-Oyd"/>
-                                    <constraint firstAttribute="width" constant="120" id="mBg-LX-gDZ"/>
+                                    <constraint firstAttribute="height" constant="147" id="0Zr-o6-Oyd"/>
+                                    <constraint firstAttribute="width" constant="140" id="mBg-LX-gDZ"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="hU8-o6-KJ5" customClass="SpeechbubbleView" customModule="Habitica" customModuleProvider="target">
@@ -1381,9 +1381,9 @@
                             <constraint firstItem="Nbh-0B-Rqy" firstAttribute="bottom" secondItem="lFU-n3-BVG" secondAttribute="bottom" priority="501" constant="-12" id="dQL-bj-FLE"/>
                             <constraint firstItem="Nbh-0B-Rqy" firstAttribute="top" secondItem="lFU-n3-BVG" secondAttribute="top" priority="501" constant="12" id="dUS-YX-SR7"/>
                             <constraint firstAttribute="trailing" secondItem="lFU-n3-BVG" secondAttribute="trailing" id="g7u-ma-qHn"/>
-                            <constraint firstItem="ucL-Th-No2" firstAttribute="centerX" secondItem="yXS-GH-6cu" secondAttribute="centerX" constant="-10" id="hL0-Cx-uqb"/>
+                            <constraint firstItem="ucL-Th-No2" firstAttribute="centerX" secondItem="yXS-GH-6cu" secondAttribute="centerX" constant="-9" id="hL0-Cx-uqb"/>
                             <constraint firstItem="lFU-n3-BVG" firstAttribute="top" relation="greaterThanOrEqual" secondItem="hU8-o6-KJ5" secondAttribute="bottom" constant="4" id="kig-07-3Uw"/>
-                            <constraint firstItem="ucL-Th-No2" firstAttribute="top" secondItem="SPy-W3-rEl" secondAttribute="top" id="oko-rC-hgS"/>
+                            <constraint firstItem="ucL-Th-No2" firstAttribute="top" secondItem="SPy-W3-rEl" secondAttribute="top" constant="-28" id="oko-rC-hgS"/>
                         </constraints>
                     </view>
                     <connections>

@@ -160,7 +160,7 @@ class TaskSetupViewController: UIViewController, TypingTextViewController {
         avatarView.showBackground = false
         avatarView.showMount = false
         avatarView.showPet = false
-        avatarView.size = .compact
+        avatarView.size = .regular
         
         user = HRPGManager.shared().getUser()
         avatarView.avatar = user

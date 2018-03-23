@@ -56,7 +56,7 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController {
     @IBOutlet weak var selectionCaretOffset: NSLayoutConstraint!
     @IBOutlet weak var speechbubbleView: SpeechbubbleView!
     
-    @IBOutlet weak var avatarView: UIView!
+    @IBOutlet weak var avatarView: AvatarView!
     @IBOutlet weak var randomizeButton: UIButton!
     @IBOutlet weak var subCategoryContainer: UIStackView!
     @IBOutlet weak var contentContainer: UIStackView!
@@ -88,8 +88,13 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        avatarView.showBackground = false
+        avatarView.showMount = false
+        avatarView.showPet = false
+        avatarView.size = .regular
+        
         user = HRPGManager.shared().getUser()
-        user?.setAvatarSubview(avatarView, showsBackground: false, showsMount: false, showsPet: false)
+        avatarView.avatar = user
         
         let bodyGesture = UITapGestureRecognizer(target: self, action: #selector(setBodyCategory))
         bodyButton.addGestureRecognizer(bodyGesture)
@@ -344,7 +349,7 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController {
         }
         
         if let user = self.user {
-            user.setAvatarSubview(avatarView, showsBackground: false, showsMount: false, showsPet: false)
+            avatarView.avatar = user
         }
     }
     
