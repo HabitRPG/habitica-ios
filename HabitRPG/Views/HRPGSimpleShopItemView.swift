@@ -110,8 +110,12 @@ class HRPGSimpleShopItemView: UIView {
         
         self.shopItemTitleLabel.text = reward.text
 
+        
         var purchaseType = ""
         if let inAppReward = reward as? InAppReward {
+            if let availableUntil = inAppReward.availableUntil {
+                setAvailableUntil(date: availableUntil)
+            }
             if inAppReward.imageName?.contains(" ") ?? false {
                 HRPGManager.shared().setImage(inAppReward.imageName?.components(separatedBy: " ")[1], withFormat: "png", on: self.shopItemImageView)
             } else {
@@ -170,7 +174,7 @@ class HRPGSimpleShopItemView: UIView {
             if gearClass == "wizard" {
                 gearClass = "mage"
             }
-            if gearClass != user.hclass && gearClass != "special" {
+            if gearClass != user.hclass && gearClass != nil && gearClass != "special" && gearClass != "armoire" {
                 topBannerLabel.text = NSLocalizedString("Only available for \(gearClass?.capitalized ?? "")s. You can change your class from Settings", comment: "")
                 topBannerLabel.backgroundColor = UIColor.gray100()
                 topBannerLabel.verticalPadding = 6
@@ -182,6 +186,7 @@ class HRPGSimpleShopItemView: UIView {
         let formatter = DateFormatter()
         formatter.timeStyle = .none
         formatter.dateStyle = .medium
+        formatter.timeZone = TimeZone(identifier: "UTC")
         let dateString = formatter.string(from: date)
         topBannerLabel.text = NSLocalizedString("Available Until \(dateString)", comment: "")
         topBannerLabel.backgroundColor = UIColor.purple200()
@@ -198,6 +203,8 @@ class HRPGSimpleShopItemView: UIView {
             
             addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["view": view]))
             addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["view": view]))
+            
+            topBannerLabel.horizontalPadding = 16
             
             setNeedsUpdateConstraints()
             updateConstraints()
