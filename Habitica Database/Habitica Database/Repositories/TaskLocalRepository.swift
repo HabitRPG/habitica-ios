@@ -35,10 +35,13 @@ public class TaskLocalRepository: BaseLocalRepository {
     
     public func save(_ tasks: [TaskProtocol], order: [String: [String]]) {
         let tags = realm?.objects(RealmTag.self)
-        tasks.forEach { (task) in
+        save(objects:tasks.map { (task) in
             task.order = order[(task.type ?? "")+"s"]?.index(of: task.id ?? "") ?? 0
-            save(task, tags: tags)
-        }
+            if let realmTask = task as? RealmTask {
+                return realmTask
+            }
+            return RealmTask(task, tags: tags)
+        })
     }
     
     public func getTasks(predicate: NSPredicate) -> SignalProducer<ReactiveResults<[TaskProtocol]>, ReactiveSwiftRealmError> {
@@ -97,9 +100,19 @@ public class TaskLocalRepository: BaseLocalRepository {
         return RealmTask()
     }
     
+    public func getNewChecklistItem() -> ChecklistItemProtocol {
+        return RealmChecklistItem()
+    }
+    
+    public func getNewReminder() -> ReminderProtocol {
+        return RealmReminder()
+    }
+    
     public func getEditableTask(id: String) -> TaskProtocol? {
         if let task = realm?.object(ofType: RealmTask.self, forPrimaryKey: id) {
-            return RealmTask(task, tags: nil)
+            let editableTask = RealmTask(value: task)
+            editableTask.weekRepeat = RealmWeekRepeat(value: task.weekRepeat)
+            return editableTask
         }
         return nil
     }

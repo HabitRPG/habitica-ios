@@ -32,6 +32,11 @@ public class APITask: TaskProtocol, Codable {
     public var tags: [TagProtocol]
     public var checklist: [ChecklistItemProtocol]
     public var reminders: [ReminderProtocol]
+    public var createdAt: Date?
+    public var updatedAt: Date?
+    public var startDate: Date?
+    public var yesterDaily: Bool = true
+    public var weekRepeat: WeekRepeatProtocol?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -53,9 +58,14 @@ public class APITask: TaskProtocol, Codable {
         case frequency
         case everyX
         case challengeID
+        case createdAt
+        case updatedAt
+        case startDate
+        case yesterDaily
         case tags
         case checklist
         case reminders
+        case weekRepeat = "repeat"
     }
     
     public required init(from decoder: Decoder) throws {
@@ -78,12 +88,17 @@ public class APITask: TaskProtocol, Codable {
         frequency = try? values.decode(String.self, forKey: .frequency)
         everyX = (try? values.decode(Int.self, forKey: .everyX)) ?? 0
         challengeID = try? values.decode(String.self, forKey: .challengeID)
+        createdAt = try? values.decode(Date.self, forKey: .createdAt)
+        updatedAt = try? values.decode(Date.self, forKey: .updatedAt)
+        startDate = try? values.decode(Date.self, forKey: .startDate)
+        yesterDaily = (try? values.decode(Bool.self, forKey: .yesterDaily)) ?? true
         let tagList = try! values.decode([String].self, forKey: .tags)
         tags = tagList.map { (key) -> APITag in
             return APITag(key)
         }
         checklist = (try? values.decode([APIChecklistItem].self, forKey: .checklist)) ?? []
         reminders = (try? values.decode([APIReminder].self, forKey: .reminders)) ?? []
+        weekRepeat = try? values.decode(APIWeekRepeat.self, forKey: .weekRepeat)
     }
     
     public init() {

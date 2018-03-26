@@ -62,6 +62,8 @@ internal enum L10n {
       internal static let checklist = L10n.tr("Main", "tasks.form.checklist")
       /// Controls
       internal static let controls = L10n.tr("Main", "tasks.form.controls")
+      /// Cost
+      internal static let cost = L10n.tr("Main", "tasks.form.cost")
       /// New %@
       internal static func create(_ p1: String) -> String {
         return L10n.tr("Main", "tasks.form.create", p1)

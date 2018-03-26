@@ -15,10 +15,20 @@ extension JSONDecoder {
             let container = try dateDecoder.singleValueContainer()
             let dateStr = try container.decode(String.self)
             
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssXXX"
             
-            return dateFormatter.date(from: dateStr) ?? Date()
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+            let date = dateFormatter.date(from: dateStr)
+            
+            if let date = date {
+                return date
+            }
+            
+            if #available(iOS 10.0, *) {
+                let dateFormatter = ISO8601DateFormatter()
+                return dateFormatter.date(from: dateStr) ?? Date()
+            }
+            return Date()
         })
     }
     

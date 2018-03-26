@@ -41,9 +41,15 @@ public protocol TaskProtocol {
     var frequency: String? { get set }
     var everyX: Int { get set }
     var challengeID: String? { get set }
+    var createdAt: Date? { get set }
+    var updatedAt: Date? { get set }
+    var startDate: Date? { get set }
+    var yesterDaily: Bool { get set }
     var tags: [TagProtocol] { get set }
     var checklist: [ChecklistItemProtocol] { get set }
     var reminders: [ReminderProtocol] { get set }
+    var weekRepeat: WeekRepeatProtocol? { get set }
+    
 }
 
 extension TaskProtocol {

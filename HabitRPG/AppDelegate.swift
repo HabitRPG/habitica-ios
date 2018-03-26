@@ -71,7 +71,8 @@ class HabiticaAppDelegate: NSObject {
     @objc
     func setupDatabase() {
         var config = Realm.Configuration.defaultConfiguration
-        config.deleteRealmIfMigrationNeeded = true
+        config.schemaVersion = 1
+        config.migrationBlock = { migration, oldSchemaVersion in }
         let fileUrl = try? FileManager.default
             .url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
         .appendingPathComponent("habitica.realm")
@@ -164,7 +165,7 @@ class HabiticaAppDelegate: NSObject {
         let currentBuildNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String
         if lastContentFetch == nil || (lastContentFetch?.timeIntervalSinceNow ?? 0) < 1 || lastContentFetchVersion != currentBuildNumber {
             contentRepository.retrieveContent()
-                .flatMap(FlattenStrategy.latest, { (content) -> Signal<WorldStateProtocol?, NoError> in
+                .flatMap(FlattenStrategy.latest, { (_) -> Signal<WorldStateProtocol?, NoError> in
                     return self.contentRepository.retrieveWorldState()
                 })
                 .observeCompleted {
@@ -178,9 +179,9 @@ class HabiticaAppDelegate: NSObject {
     func retrieveTasks(_ completed: @escaping ((Bool) -> Void)) {
         taskRepository.retrieveTasks().observeResult { (result) in
             switch result {
-            case .success(_):
+            case .success:
                 completed(true)
-            case .failure(_):
+            case .failure:
                 completed(false)
             }
         }

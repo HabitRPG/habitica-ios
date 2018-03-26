@@ -9,6 +9,19 @@
 import Foundation
 import Eureka
 
+struct SegmentedFormValue<V: Equatable>: Equatable, CustomStringConvertible {
+    static func ==(lhs: SegmentedFormValue<V>, rhs: SegmentedFormValue<V>) -> Bool {
+        return lhs.value == rhs.value
+    }
+    
+    var value: V
+    var label: String
+    
+    var description: String {
+        return label
+    }
+}
+
 typealias CombinedCell = BaseCell & CellType
 
 class TaskRow<C: CombinedCell>: Row<C> {

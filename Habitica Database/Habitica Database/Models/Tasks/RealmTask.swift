@@ -11,7 +11,6 @@ import RealmSwift
 import Habitica_Models
 
 class RealmTask: Object, TaskProtocol {
-    
     @objc dynamic var id: String?
     @objc dynamic var text: String?
     @objc dynamic var notes: String?
@@ -31,6 +30,10 @@ class RealmTask: Object, TaskProtocol {
     @objc dynamic var frequency: String?
     @objc dynamic var everyX: Int = 1
     @objc dynamic var challengeID: String?
+    @objc dynamic var createdAt: Date?
+    @objc dynamic var updatedAt: Date?
+    @objc dynamic var startDate: Date?
+    @objc dynamic var yesterDaily: Bool = true
     var tags: [TagProtocol] {
         get {
             return realmTags.map({ (tag) -> TagProtocol in
@@ -85,6 +88,21 @@ class RealmTask: Object, TaskProtocol {
         }
     }
     var realmReminders = List<RealmReminder>()
+    var weekRepeat: WeekRepeatProtocol? {
+        get {
+            return realmWeekRepeat
+        }
+        set {
+            if let newRepeat = newValue as? RealmWeekRepeat {
+                realmWeekRepeat = newRepeat
+                return
+            }
+            if let newRepeat = newValue, let id = self.id {
+                realmWeekRepeat = RealmWeekRepeat(id: id, weekRepeat: newRepeat)
+            }
+        }
+    }
+    @objc dynamic var realmWeekRepeat: RealmWeekRepeat? = RealmWeekRepeat()
     
     override static func primaryKey() -> String {
         return "id"
@@ -114,21 +132,27 @@ class RealmTask: Object, TaskProtocol {
         streak = taskProtocol.streak
         frequency = taskProtocol.frequency
         everyX = taskProtocol.everyX
+        challengeID = taskProtocol.challengeID
+        startDate = taskProtocol.startDate
+        createdAt = taskProtocol.createdAt
+        updatedAt = taskProtocol.updatedAt
+        yesterDaily = taskProtocol.yesterDaily
         
         if tags != nil {
-        realmTags.removeAll()
-        for tag in taskProtocol.tags {
-            let foundTag = tags?.first(where: { (realmTag) -> Bool in
-                return realmTag.id == tag.id
-            })
-            if let foundTag = foundTag {
-                self.tags.append(foundTag)
+            realmTags.removeAll()
+            for tag in taskProtocol.tags {
+                let foundTag = tags?.first(where: { (realmTag) -> Bool in
+                    return realmTag.id == tag.id
+                })
+                if let foundTag = foundTag {
+                    self.realmTags.append(foundTag)
+                }
             }
-        }
         } else {
             self.tags = taskProtocol.tags
         }
         checklist = taskProtocol.checklist
         reminders = taskProtocol.reminders
+        weekRepeat = taskProtocol.weekRepeat
     }
 }

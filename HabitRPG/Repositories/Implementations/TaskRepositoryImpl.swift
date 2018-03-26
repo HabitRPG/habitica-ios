@@ -77,6 +77,14 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
         return localRepository.getNewTask()
     }
     
+    func getNewChecklistItem() -> ChecklistItemProtocol {
+        return localRepository.getNewChecklistItem()
+    }
+    
+    func getNewReminder() -> ReminderProtocol {
+        return localRepository.getNewReminder()
+    }
+    
     func getEditableTask(id: String) -> TaskProtocol? {
         return localRepository.getEditableTask(id: id)
     }

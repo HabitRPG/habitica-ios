@@ -1408,9 +1408,9 @@
 		29205E332062DF620024E355 /* TaskFormRows */ = {
 			isa = PBXGroup;
 			children = (
+				29205E382062E2430024E355 /* TaskRow.swift */,
 				29205E342062DF710024E355 /* TextInputFormRow.swift */,
 				29205E362062E0030024E355 /* TaskTextInputCell.xib */,
-				29205E382062E2430024E355 /* TaskRow.swift */,
 				294FD5682064135500EABCC9 /* HabitControlsRow.swift */,
 				294FD56A20641B2F00EABCC9 /* HabitControlsCell.xib */,
 				29A6B85C20641C9B0086B2A6 /* TaskDifficultyRow.swift */,

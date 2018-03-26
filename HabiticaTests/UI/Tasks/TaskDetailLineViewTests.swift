@@ -140,6 +140,11 @@ class TaskDetailLineViewTests: HabiticaTests {
 }
 
 class TestTask: TaskProtocol {
+    var createdAt: Date?
+    var updatedAt: Date?
+    var startDate: Date?
+    var yesterDaily: Bool = true
+    var weekRepeat: WeekRepeatProtocol?
     var frequency: String?
     var everyX: Int = 1
     var tags: [TagProtocol] = []

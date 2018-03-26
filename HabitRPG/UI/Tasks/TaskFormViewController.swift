@@ -10,6 +10,7 @@ import UIKit
 import Habitica_Models
 import Habitica_Database
 import Eureka
+import ReactiveSwift
 
 enum TaskFormTags {
     static let title = "title"
@@ -24,7 +25,9 @@ enum TaskFormTags {
     static let dailyEvery = "dailyEvery"
     static let repeatMonthlySegment = "repeatMonthlySegment"
     static let repeatWeekdays = "repeatWeekdays"
+    static let rewardCost = "rewardCost"
     static let reminderSection = "reminderSection"
+    static let tagSection = "tagSection"
     static let tags = "tags"
 }
 
@@ -79,6 +82,40 @@ class TaskFormViewController: FormViewController {
     
     private var viewModel = TaskFormViewModel()
     private var taskRepository = TaskRepository()
+    private var disposable = ScopedDisposable(CompositeDisposable())
+    
+    private static let habitResetStreakOptions = [
+        SegmentedFormValue<String>(value: "daily", label: L10n.daily),
+        SegmentedFormValue<String>(value: "weekly", label: L10n.weekly),
+        SegmentedFormValue<String>(value: "monthly", label: L10n.monthly)
+    ]
+    private static let dailyRepeatOptions = [
+        SegmentedFormValue<String>(value: "daily", label: L10n.daily),
+        SegmentedFormValue<String>(value: "weekly", label: L10n.weekly),
+        SegmentedFormValue<String>(value: "monthly", label: L10n.monthly),
+        SegmentedFormValue<String>(value: "yearly", label: L10n.yearly)
+    ]
+    
+    private var tags = [TagProtocol]() {
+        didSet {
+            guard let section = self.form.sectionBy(tag: TaskFormTags.tagSection) else {
+                return
+            }
+            section.removeAll()
+            tags.forEach({ (tag) in
+                let row = CheckRow(tag.id) { row in
+                    row.title = tag.text
+                    row.value = self.task.tags.contains(where: { (taskTag) -> Bool in
+                        return taskTag.id == tag.id
+                    })
+                    row.cellSetup({ (cell, _) in
+                        cell.tintColor = self.taskTintColor
+                    })
+                }
+                section.append(row)
+            })
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -123,8 +160,9 @@ class TaskFormViewController: FormViewController {
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
         if let visualEffectViewController = modalContainerViewController {
             visualEffectViewController.contentHeightConstraint.constant = tableView.contentSize.height
         }
@@ -193,9 +231,9 @@ class TaskFormViewController: FormViewController {
     
     private func setupHabitResetStreak() {
         form +++ Section(L10n.Tasks.Form.resetStreak)
-            <<< SegmentedRow<String>(TaskFormTags.habitResetStreak) { row in
-                row.options = [L10n.daily, L10n.weekly, L10n.monthly]
-                row.value = L10n.daily
+            <<< SegmentedRow<SegmentedFormValue<String>>(TaskFormTags.habitResetStreak) { row in
+                row.options = TaskFormViewController.habitResetStreakOptions
+                row.value = TaskFormViewController.habitResetStreakOptions[0]
                 row.cellSetup({ (cell, _) in
                     cell.tintColor = self.taskTintColor
                 })
@@ -212,10 +250,10 @@ class TaskFormViewController: FormViewController {
                     cell.detailTextLabel?.textColor = self.lightTaskTintColor
                 })
         }
-            <<< ActionSheetRow<String>(TaskFormTags.dailyRepeat) { row in
+            <<< ActionSheetRow<SegmentedFormValue<String>>(TaskFormTags.dailyRepeat) { row in
                 row.title = L10n.Tasks.Form.repeats
-                row.options = [L10n.daily, L10n.weekly, L10n.monthly, L10n.yearly]
-                row.value = L10n.daily
+                row.options = TaskFormViewController.dailyRepeatOptions
+                row.value = TaskFormViewController.dailyRepeatOptions[0]
                 row.selectorTitle = "Pick a repeat option"
                 row.cellSetup({ (cell, _) in
                     cell.tintColor = self.lightTaskTintColor
@@ -234,7 +272,9 @@ class TaskFormViewController: FormViewController {
             <<< SegmentedRow<String>(TaskFormTags.repeatMonthlySegment) { row in
                 row.options = [L10n.Tasks.Form.dayOfMonth, L10n.Tasks.Form.dayOfWeek]
                 row.value = L10n.Tasks.Form.dayOfMonth
-                row.hidden = Condition.predicate(NSPredicate.init(format: "$\(TaskFormTags.dailyRepeat) != '\(L10n.monthly)'"))
+                row.hidden = Condition.function([TaskFormTags.dailyRepeat], { (form) -> Bool in
+                    return (form.rowBy(tag: TaskFormTags.dailyRepeat) as? ActionSheetRow<SegmentedFormValue<String>>)?.value?.value != "monthly"
+                })
                 row.cellSetup({ (cell, _) in
                     cell.tintColor = self.taskTintColor
                 })
@@ -242,7 +282,7 @@ class TaskFormViewController: FormViewController {
             <<< WeekdayRow(TaskFormTags.repeatWeekdays) { row in
                 row.tintColor = self.taskTintColor
                 row.hidden = Condition.function([TaskFormTags.dailyRepeat, TaskFormTags.repeatMonthlySegment], { (form) -> Bool in
-                    return (form.rowBy(tag: TaskFormTags.dailyRepeat) as? ActionSheetRow<String>)?.value != L10n.weekly
+                    return (form.rowBy(tag: TaskFormTags.dailyRepeat) as? ActionSheetRow<SegmentedFormValue<String>>)?.value?.value != "weekly"
                 })
         }
     }
@@ -256,6 +296,15 @@ class TaskFormViewController: FormViewController {
                     cell.detailTextLabel?.textColor = self.lightTaskTintColor
                 })
             }
+    }
+    
+    private func setupReminderCost() {
+        form +++ Section(L10n.Tasks.Form.cost)
+            <<< StepperRow(TaskFormTags.rewardCost) { row in
+                row.cellSetup({ (cell, _) in
+                    cell.tintColor = self.taskTintColor
+                })
+        }
     }
     
     private func setupReminders() {
@@ -273,6 +322,7 @@ class TaskFormViewController: FormViewController {
                                         section.multivaluedRowToInsertAt = { index in
                                             return TimeRow { row in
                                                 row.title = L10n.Tasks.Form.remindMe
+                                                row.value = Date()
                                                 row.cellSetup({ (cell, _) in
                                                     cell.tintColor = self.lightTaskTintColor
                                                 })
@@ -282,7 +332,13 @@ class TaskFormViewController: FormViewController {
     }
     
     private func setupTags() {
-        form +++ Section(L10n.Tasks.Form.tags)
+        form +++ Section(L10n.Tasks.Form.tags) { section in
+            section.tag = TaskFormTags.tagSection
+        }
+    
+        disposable.inner.add(taskRepository.getTags().on(value: { (tags, _) in
+            self.tags = tags
+        }).start())
     }
     
     private func fillForm() {
@@ -305,17 +361,31 @@ class TaskFormViewController: FormViewController {
     private func fillHabitValues() {
         let controls = HabitControlsValue(positive: task.up, negative: task.down)
         form.setValues([
-            TaskFormTags.habitControls: controls
+            TaskFormTags.habitControls: controls,
+            TaskFormTags.habitResetStreak: TaskFormViewController.habitResetStreakOptions.first(where: { (option) -> Bool in
+                return option.value == task.frequency
+            })
             ])
     }
     
     private func fillDailyValues() {
+        let weekRepeat = WeekdaysValue(monday: task.weekRepeat?.monday ?? true,
+                                   tuesday: task.weekRepeat?.tuesday ?? true,
+                                   wednesday: task.weekRepeat?.wednesday ?? true,
+                                   thursday: task.weekRepeat?.thursday ?? true,
+                                   friday: task.weekRepeat?.friday ?? true,
+                                   saturday: task.weekRepeat?.saturday ?? true,
+                                   sunday: task.weekRepeat?.sunday ?? true)
         form.setValues([
-            TaskFormTags.dueDate: task.duedate,
-            TaskFormTags.dailyRepeat: task.frequency,
-            TaskFormTags.dailyEvery: task.everyX
+            TaskFormTags.startDate: task.startDate,
+            TaskFormTags.dailyRepeat: TaskFormViewController.dailyRepeatOptions.first(where: { (option) -> Bool in
+                return option.value == task.frequency
+            }),
+            TaskFormTags.dailyEvery: task.everyX,
+            TaskFormTags.repeatWeekdays: weekRepeat
             ])
         fillChecklistValues()
+        fillReminderValues()
     }
     
     private func fillToDoValues() {
@@ -323,6 +393,7 @@ class TaskFormViewController: FormViewController {
             TaskFormTags.dueDate: task.duedate
             ])
         fillChecklistValues()
+        fillReminderValues()
     }
     
     private func fillRewardValues() {
@@ -340,19 +411,31 @@ class TaskFormViewController: FormViewController {
         }
     }
     
-    private func fillTags() {
-        taskRepository.getTags()
+    private func fillReminderValues() {
+        var reminderSection = self.form.sectionBy(tag: TaskFormTags.reminderSection)
+        task.reminders.forEach { (reminder) in
+            let row = TimeRow(reminder.id) { row in
+                row.value = reminder.time
+            }
+            let lastIndex = (reminderSection?.count ?? 1) - 1
+            reminderSection?.insert(row, at: lastIndex)
+        }
     }
     
     private func save() {
         let values = form.values()
         saveCommon(values: values)
+        saveTags()
         if taskType == .habit {
             saveHabit(values: values)
         } else if taskType == .daily {
             saveDaily(values: values)
+            saveChecklist()
+            saveReminders()
         } else if taskType == .todo {
             saveToDo(values: values)
+            saveChecklist()
+            saveReminders()
         } else if taskType == .reward {
             saveReward(values: values)
         }
@@ -370,10 +453,21 @@ class TaskFormViewController: FormViewController {
         let controls = values[TaskFormTags.habitControls] as? HabitControlsValue
         task.up = controls?.positive ?? true
         task.down = controls?.negative ?? true
+        task.frequency = (values[TaskFormTags.habitResetStreak] as? SegmentedFormValue<String>)?.value
     }
     
     private func saveDaily(values: [String: Any?]) {
+        task.startDate = values[TaskFormTags.startDate] as? Date
         task.everyX = values[TaskFormTags.dailyEvery] as? Int ?? 1
+        task.frequency = (values[TaskFormTags.dailyRepeat] as? SegmentedFormValue<String>)?.value
+        let weekdays = values[TaskFormTags.repeatWeekdays] as? WeekdaysValue
+        task.weekRepeat?.monday = weekdays?.monday ?? true
+        task.weekRepeat?.tuesday = weekdays?.tuesday ?? true
+        task.weekRepeat?.wednesday = weekdays?.wednesday ?? true
+        task.weekRepeat?.thursday = weekdays?.thursday ?? true
+        task.weekRepeat?.friday = weekdays?.friday ?? true
+        task.weekRepeat?.saturday = weekdays?.saturday ?? true
+        task.weekRepeat?.sunday = weekdays?.sunday ?? true
     }
     
     private func saveToDo(values: [String: Any?]) {
@@ -381,6 +475,53 @@ class TaskFormViewController: FormViewController {
     }
     
     private func saveReward(values: [String: Any?]) {
+    }
+    
+    private func saveChecklist() {
+        guard let section = form.sectionBy(tag: TaskFormTags.checklistSection) else {
+            return
+        }
+        let oldChecklist = task.checklist
+        task.checklist.removeAll()
+        for row in section {
+            if let checklistRow = row as? NameRow {
+                let item = taskRepository.getNewChecklistItem()
+                item.id = checklistRow.tag
+                item.text = checklistRow.value
+                item.completed = oldChecklist.first(where: { (oldItem) -> Bool in
+                    return oldItem.id == item.id
+                })?.completed ?? false
+                task.checklist.append(item)
+            }
+        }
+    }
+    
+    private func saveReminders() {
+        guard let section = form.sectionBy(tag: TaskFormTags.reminderSection) else {
+            return
+        }
+        task.reminders.removeAll()
+        for row in section {
+            if let reminderRow = row as? TimeRow {
+                let reminder = taskRepository.getNewReminder()
+                reminder.id = reminderRow.tag
+                reminder.time = reminderRow.value
+                task.reminders.append(reminder)
+            }
+        }
+    }
+    
+    private func saveTags() {
+        task.tags.removeAll()
+        tags.forEach { (tag) in
+            guard let tagId = tag.id else {
+                return
+            }
+            let row = form.rowBy(tag: tagId) as? CheckRow
+            if row?.value == true {
+                task.tags.append(tag)
+            }
+        }
     }
     
     private func updateTitle() {
