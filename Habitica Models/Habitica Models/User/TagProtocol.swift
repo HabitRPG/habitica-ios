@@ -12,5 +12,6 @@ import Foundation
 public protocol TagProtocol {
     var id: String? { get set }
     var text: String? { get set }
+    var order: Int { get set }
     
 }

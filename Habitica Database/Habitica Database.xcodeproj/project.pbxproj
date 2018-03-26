@@ -169,7 +169,6 @@
 			isa = PBXGroup;
 			children = (
 				292DEE6A204DCF2E0086D5F7 /* RealmTask.swift */,
-				292DEE7F204E3A000086D5F7 /* RealmTag.swift */,
 				292DEE83204E41AF0086D5F7 /* RealmChecklistItem.swift */,
 				292DEE89204E49600086D5F7 /* RealmReminder.swift */,
 			);
@@ -189,6 +188,7 @@
 				29323E5B2052F8E900AC6D6F /* RealmUserGear.swift */,
 				29323E592052F8C200AC6D6F /* RealmOutfit.swift */,
 				2902797A2058107E006DACB9 /* RealmBuff.swift */,
+				292DEE7F204E3A000086D5F7 /* RealmTag.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";

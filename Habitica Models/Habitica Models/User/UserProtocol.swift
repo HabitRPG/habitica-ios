@@ -20,6 +20,7 @@ public protocol UserProtocol {
     var items: UserItemsProtocol? { get set }
     var balance: Float { get set }
     var tasksOrder: [String: [String]] { get set }
+    var tags: [TagProtocol] { get set }
 }
 
 public extension UserProtocol {

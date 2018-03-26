@@ -329,7 +329,7 @@ public extension ReactiveRealmQueryable where Self:Object{
             observer.send(value: realm.objects(Self.self).filter(predicate))
         }
     }
-    
+
     
     public static func findAll(realm:Realm = try! Realm()) -> SignalProducer<Results<Self>,ReactiveSwiftRealmError>{
         return SignalProducer{ observer,_ in

@@ -13,6 +13,7 @@ import RealmSwift
 class RealmTag: Object, TagProtocol {
     @objc dynamic var id: String?
     @objc dynamic var text: String?
+    @objc dynamic var order: Int = 0
     
     override static func primaryKey() -> String {
         return "id"
@@ -22,5 +23,6 @@ class RealmTag: Object, TagProtocol {
         self.init()
         id = tagProtocol.id
         text = tagProtocol.text
+        order = tagProtocol.order
     }
 }

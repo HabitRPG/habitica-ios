@@ -224,7 +224,7 @@ class TaskFormViewController: FormViewController {
         }
             <<< PickerInputRow<Int>(TaskFormTags.dailyEvery) { row in
                 row.title = L10n.Tasks.Form.every
-                row.options = Array(0...30)
+                row.options = Array(0...366)
                 row.value = 1
                 row.cellSetup({ (cell, _) in
                     cell.tintColor = self.lightTaskTintColor
@@ -242,8 +242,7 @@ class TaskFormViewController: FormViewController {
             <<< WeekdayRow(TaskFormTags.repeatWeekdays) { row in
                 row.tintColor = self.taskTintColor
                 row.hidden = Condition.function([TaskFormTags.dailyRepeat, TaskFormTags.repeatMonthlySegment], { (form) -> Bool in
-                    let monthlyRepeatRow = (form.rowBy(tag: TaskFormTags.repeatMonthlySegment) as? SegmentedRow<String>)
-                    return (form.rowBy(tag: TaskFormTags.dailyRepeat) as? ActionSheetRow<String>)?.value != L10n.weekly && (monthlyRepeatRow?.value != L10n.Tasks.Form.dayOfWeek || monthlyRepeatRow?.isHidden == true)
+                    return (form.rowBy(tag: TaskFormTags.dailyRepeat) as? ActionSheetRow<String>)?.value != L10n.weekly
                 })
         }
     }
@@ -339,6 +338,10 @@ class TaskFormViewController: FormViewController {
             let lastIndex = (checklistSection?.count ?? 1) - 1
             checklistSection?.insert(row, at: lastIndex)
         }
+    }
+    
+    private func fillTags() {
+        taskRepository.getTags()
     }
     
     private func save() {

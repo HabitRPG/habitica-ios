@@ -38,6 +38,8 @@ class RetrieveUserCallSpec: QuickSpec {
                             expect(user?.contributor).toNot(beNil())
                             expect(user?.stats).toNot(beNil())
                             expect(user?.stats?.buffs).toNot(beNil())
+                            expect(user?.tasksOrder.count).toNot(0)
+                            expect(user?.tags.count).toNot(0)
                             done()
                         })
                         call.fire()

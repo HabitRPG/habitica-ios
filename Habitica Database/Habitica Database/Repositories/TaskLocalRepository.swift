@@ -9,27 +9,35 @@
 import Foundation
 import Habitica_Models
 import ReactiveSwift
+import RealmSwift
 
 public class TaskLocalRepository: BaseLocalRepository {
     
-    public func save(_ task: TaskProtocol) {
+    func save(_ task: TaskProtocol, tags: Results<RealmTag>?) {
         if let realmTask = task as? RealmTask {
             save(object: realmTask)
             return
         }
-        save(object: RealmTask(task))
+        save(object: RealmTask(task, tags: tags))
+    }
+    
+    public func save(_ task: TaskProtocol) {
+        let tags = realm?.objects(RealmTag.self)
+        save(task, tags: tags)
     }
     
     public func save(_ tasks: [TaskProtocol]) {
+        let tags = realm?.objects(RealmTag.self)
         tasks.forEach { (task) in
-            save(task)
+            save(task, tags: tags)
         }
     }
     
     public func save(_ tasks: [TaskProtocol], order: [String: [String]]) {
+        let tags = realm?.objects(RealmTag.self)
         tasks.forEach { (task) in
             task.order = order[(task.type ?? "")+"s"]?.index(of: task.id ?? "") ?? 0
-            save(task)
+            save(task, tags: tags)
         }
     }
     
@@ -42,6 +50,12 @@ public class TaskLocalRepository: BaseLocalRepository {
     public func getTask(id: String) -> SignalProducer<TaskProtocol, ReactiveSwiftRealmError> {
         return RealmTask.findBy(key: id).skipNil().map({ task -> TaskProtocol in
             return task
+        })
+    }
+    
+    public func getTags() -> SignalProducer<ReactiveResults<[TagProtocol]>, ReactiveSwiftRealmError> {
+        return RealmTag.findAll().sorted(key: "order").reactive().map({ (value, changeset) -> ReactiveResults<[TagProtocol]> in
+            return (value.map({ (tag) -> TagProtocol in return tag }), changeset)
         })
     }
     
@@ -85,7 +99,7 @@ public class TaskLocalRepository: BaseLocalRepository {
     
     public func getEditableTask(id: String) -> TaskProtocol? {
         if let task = realm?.object(ofType: RealmTask.self, forPrimaryKey: id) {
-            return RealmTask(task)
+            return RealmTask(task, tags: nil)
         }
         return nil
     }

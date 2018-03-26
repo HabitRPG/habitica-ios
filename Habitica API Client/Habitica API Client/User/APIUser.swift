@@ -19,6 +19,7 @@ public class APIUser: UserProtocol, Codable {
     public var items: UserItemsProtocol?
     public var balance: Float = 0
     public var tasksOrder: [String: [String]]
+    public var tags: [TagProtocol]
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -30,6 +31,7 @@ public class APIUser: UserProtocol, Codable {
         case items
         case balance
         case tasksOrder
+        case tags
     }
     
     public required init(from decoder: Decoder) throws {
@@ -43,6 +45,10 @@ public class APIUser: UserProtocol, Codable {
         items = (try! values.decode(APIUserItems.self, forKey: .items))
         balance = (try! values.decode(Float.self, forKey: .balance))
         tasksOrder = (try? values.decode([String: [String]].self, forKey: .tasksOrder)) ?? [:]
+        tags = (try? values.decode([APITag].self, forKey: .tags)) ?? []
+        tags.enumerated().forEach { (arg) in
+            arg.element.order = arg.offset
+        }
     }
     
     public func encode(to encoder: Encoder) throws {

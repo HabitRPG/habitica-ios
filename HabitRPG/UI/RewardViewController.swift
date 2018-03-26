@@ -10,6 +10,8 @@ import UIKit
 
 class RewardViewController: HRPGBaseCollectionViewController, NSFetchedResultsControllerDelegate, UICollectionViewDelegateFlowLayout {
     
+    let userRepository = UserRepository()
+    
     lazy var fetchRequest: NSFetchRequest<MetaReward> = {
         return NSFetchRequest<MetaReward>(entityName: "MetaReward")
     }()
@@ -65,11 +67,9 @@ class RewardViewController: HRPGBaseCollectionViewController, NSFetchedResultsCo
     
     @objc
     func refresh() {
-        HRPGManager.shared().fetchUser(true, onSuccess: {[weak self] in
+        userRepository.retrieveUser(withTasks: false).observeCompleted {[weak self] in
             self?.refreshControl.endRefreshing()
-            }, onError: {[weak self] in
-            self?.refreshControl.endRefreshing()
-        })
+        }
         HRPGManager.shared().fetchBuyableRewards({[weak self] in
             self?.refreshControl.endRefreshing()
         }, onError: {[weak self] in

@@ -46,7 +46,6 @@ class AuthenticationManager: NSObject {
             defaults.set(newUserId, forKey: "currentUserId")
             NetworkAuthenticationManager.shared.currentUserId = newUserId
             if newUserId != nil {
-                GAI.sharedInstance().defaultTracker.set("&uid", value: newUserId)
                 Crashlytics.sharedInstance().setUserIdentifier(newUserId)
                 Crashlytics.sharedInstance().setUserName(newUserId)
                 Amplitude.instance().setUserId(newUserId)

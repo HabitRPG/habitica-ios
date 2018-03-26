@@ -118,7 +118,6 @@
 			isa = PBXGroup;
 			children = (
 				298FB9EA204D940E004DDACC /* TaskProtocol.swift */,
-				292DEE79204E36F60086D5F7 /* TagProtocol.swift */,
 				292DEE7B204E372E0086D5F7 /* ChecklistItemProtocol.swift */,
 				292DEE85204E48A80086D5F7 /* ReminderProtocol.swift */,
 				292DEEAC205038CB0086D5F7 /* TaskResponseProtocol.swift */,
@@ -140,6 +139,7 @@
 				29323E4A2052F4CF00AC6D6F /* UserItemsProtocol.swift */,
 				29323E4E2052F68A00AC6D6F /* UserGearProtocol.swift */,
 				29323E4C2052F4E400AC6D6F /* OutfitProtocol.swift */,
+				292DEE79204E36F60086D5F7 /* TagProtocol.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";

@@ -26,6 +26,8 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var previousButtonTextView: UILabel!
     @IBOutlet weak var previousButtonImageView: UIImageView!
     
+    var userRepository = UserRepository()
+    
     var views: [UIView] = []
     var viewControllers: [TypingTextViewController] = []
     var taskSetupViewController: TaskSetupViewController?
@@ -155,11 +157,10 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
         }
         createTag {[weak self] in
             self?.createTasks {
-                HRPGManager.shared().fetchUser({
+                self?.userRepository.retrieveUser().observeCompleted {
                     self?.showMainView()
-                }, onError: {
-                    self?.showMainView()
-                })
+
+                }
             }
         }
     }

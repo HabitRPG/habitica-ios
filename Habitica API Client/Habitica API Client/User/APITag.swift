@@ -12,6 +12,12 @@ import Habitica_Models
 class APITag: TagProtocol, Codable {
     var id: String?
     var text: String?
+    var order: Int = 0
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case text = "name"
+    }
     
     init(_ id: String) {
         self.id = id

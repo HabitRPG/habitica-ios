@@ -111,13 +111,31 @@ class RealmUser: Object, UserProtocol {
         }
     }
     @objc dynamic var realmItems: RealmUserItems?
+    var tags: [TagProtocol] {
+        get {
+            return realmTags.map({ (tag) -> TagProtocol in
+                return tag
+            })
+        }
+        set {
+            realmTags.removeAll()
+            newValue.forEach { (tag) in
+                if let realmTag = tag as? RealmTag {
+                    realmTags.append(realmTag)
+                } else {
+                    realmTags.append(RealmTag(tag))
+                }
+            }
+        }
+    }
+    var realmTags = List<RealmTag>()
     
     override static func primaryKey() -> String {
         return "id"
     }
     
     override static func ignoredProperties() -> [String] {
-        return ["flags", "preferences", "stats", "profile", "contributor", "tasksOrder", "items"]
+        return ["flags", "preferences", "stats", "profile", "contributor", "tasksOrder", "items", "tags"]
     }
     
     convenience init(_ user: UserProtocol) {
@@ -130,5 +148,6 @@ class RealmUser: Object, UserProtocol {
         contributor = user.contributor
         balance = user.balance
         items = user.items
+        tags = user.tags
     }
 }

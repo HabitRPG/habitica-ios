@@ -197,7 +197,6 @@
 				292DEE4E204DA3870086D5F7 /* RetrieveTasksCall.swift */,
 				292DEE50204DA3A30086D5F7 /* APITask.swift */,
 				292DEE81204E411C0086D5F7 /* APIChecklistItem.swift */,
-				292DEE7D204E37670086D5F7 /* APITag.swift */,
 				292DEE87204E490A0086D5F7 /* APIReminder.swift */,
 				292DEEA8204F71290086D5F7 /* ScoreTaskCall.swift */,
 				292DEEB0205039CA0086D5F7 /* TaskResponse.swift */,
@@ -242,6 +241,7 @@
 				29323E182050528C00AC6D6F /* RetrieveUserCall.swift */,
 				2902797E20581CF0006DACB9 /* AllocateAttributePointCall.swift */,
 				2902798020581DE3006DACB9 /* BulkAllocateAttributePointsCall.swift */,
+				292DEE7D204E37670086D5F7 /* APITag.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";

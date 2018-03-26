@@ -29,6 +29,10 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
         return localRepository.getTasks(predicate: predicate)
     }
     
+    func getTags() -> SignalProducer<ReactiveResults<[TagProtocol]>, ReactiveSwiftRealmError> {
+        return localRepository.getTags()
+    }
+    
     func save(_ tasks: [TaskProtocol], order: [String: [String]]) {
         localRepository.save(tasks, order: order)
     }

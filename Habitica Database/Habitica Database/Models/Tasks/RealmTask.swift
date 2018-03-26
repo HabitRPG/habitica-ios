@@ -94,7 +94,7 @@ class RealmTask: Object, TaskProtocol {
         return ["tags", "checklist", "reminders"]
     }
     
-    convenience init(_ taskProtocol: TaskProtocol) {
+    convenience init(_ taskProtocol: TaskProtocol, tags: Results<RealmTag>?) {
         self.init()
         id = taskProtocol.id
         text = taskProtocol.text
@@ -114,7 +114,20 @@ class RealmTask: Object, TaskProtocol {
         streak = taskProtocol.streak
         frequency = taskProtocol.frequency
         everyX = taskProtocol.everyX
-        tags = taskProtocol.tags
+        
+        if tags != nil {
+        realmTags.removeAll()
+        for tag in taskProtocol.tags {
+            let foundTag = tags?.first(where: { (realmTag) -> Bool in
+                return realmTag.id == tag.id
+            })
+            if let foundTag = foundTag {
+                self.tags.append(foundTag)
+            }
+        }
+        } else {
+            self.tags = taskProtocol.tags
+        }
         checklist = taskProtocol.checklist
         reminders = taskProtocol.reminders
     }
