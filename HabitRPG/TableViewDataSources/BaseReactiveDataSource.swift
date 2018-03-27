@@ -14,6 +14,8 @@ class BaseReactiveDataSource: NSObject {
     
     let disposable = ScopedDisposable(CompositeDisposable())
     
+    @objc
+    var userDrivenDataUpdate = false
 }
 
 
@@ -21,6 +23,9 @@ extension UITableViewDataSource where Self: BaseReactiveDataSource {
     
     func notifyDataUpdate(tableView: UITableView?, changes: ReactiveChangeset?) {
         guard let changes = changes else {
+            return
+        }
+        if userDrivenDataUpdate {
             return
         }
         if changes.initial == true {

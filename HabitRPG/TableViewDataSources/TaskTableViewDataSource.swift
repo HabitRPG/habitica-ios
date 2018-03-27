@@ -148,4 +148,16 @@ class TaskTableViewDataSource: BaseReactiveDataSource, UITableViewDataSource {
     func selectRowAt(indexPath: IndexPath) {
         taskToEdit = object(at: indexPath)
     }
+    
+    @objc
+    func fixTaskOrder(movedTask: TaskProtocol, toPosition: Int) {
+        repository.fixTaskOrder(movedTask: movedTask, toPosition: toPosition)
+    }
+    
+    @objc
+    func moveTask(task: TaskProtocol, toPosition: Int, completion: @escaping () -> Void) {
+        repository.moveTask(task, toPosition: toPosition).observeCompleted {
+            completion()
+        }
+    }
 }

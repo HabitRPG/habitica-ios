@@ -135,4 +135,14 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
         }
         return call.objectSignal
     }
+    
+    func moveTask(_ task: TaskProtocol, toPosition: Int) -> Signal<[String: [String]]?, NoError> {
+        let call = MoveTaskCall(task: task, toPosition: toPosition)
+        call.fire()
+        return call.objectSignal
+    }
+    
+    func fixTaskOrder(movedTask: TaskProtocol, toPosition: Int) {
+        localRepository.fixTaskOrder(movedTask: movedTask, toPosition: toPosition)
+    }
 }

@@ -17,6 +17,7 @@
 		29027995205836A8006DACB9 /* RetrieveWorldStateCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29027994205836A8006DACB9 /* RetrieveWorldStateCall.swift */; };
 		290C300F206A779E0066AF5B /* DeleteTaskCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C300E206A779E0066AF5B /* DeleteTaskCall.swift */; };
 		290C3013206A78700066AF5B /* APIEmptyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C3012206A78700066AF5B /* APIEmptyResponse.swift */; };
+		290C3015206A80AE0066AF5B /* MoveTaskCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C3014206A80AE0066AF5B /* MoveTaskCall.swift */; };
 		292DEE44204D9D8D0086D5F7 /* Habitica_Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE45204D9D8D0086D5F7 /* Habitica_Models.framework */; };
 		292DEE4B204DA1220086D5F7 /* NetworkAuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE4A204DA1220086D5F7 /* NetworkAuthenticationManager.swift */; };
 		292DEE4F204DA3870086D5F7 /* RetrieveTasksCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE4E204DA3870086D5F7 /* RetrieveTasksCall.swift */; };
@@ -95,6 +96,7 @@
 		29027994205836A8006DACB9 /* RetrieveWorldStateCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveWorldStateCall.swift; sourceTree = "<group>"; };
 		290C300E206A779E0066AF5B /* DeleteTaskCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTaskCall.swift; sourceTree = "<group>"; };
 		290C3012206A78700066AF5B /* APIEmptyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEmptyResponse.swift; sourceTree = "<group>"; };
+		290C3014206A80AE0066AF5B /* MoveTaskCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveTaskCall.swift; sourceTree = "<group>"; };
 		292DEE45204D9D8D0086D5F7 /* Habitica_Models.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_Models.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		292DEE4A204DA1220086D5F7 /* NetworkAuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAuthenticationManager.swift; sourceTree = "<group>"; };
 		292DEE4E204DA3870086D5F7 /* RetrieveTasksCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveTasksCall.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				292DEEA8204F71290086D5F7 /* ScoreTaskCall.swift */,
 				29A6B86F206940F80086B2A6 /* CreateTaskCall.swift */,
 				29A6B871206941210086B2A6 /* UpdateTask.swift */,
+				290C3014206A80AE0066AF5B /* MoveTaskCall.swift */,
 				290C300E206A779E0066AF5B /* DeleteTaskCall.swift */,
 				292DEEB0205039CA0086D5F7 /* TaskResponse.swift */,
 			);
@@ -598,6 +601,7 @@
 				292DEE51204DA3A30086D5F7 /* APITask.swift in Sources */,
 				290C3013206A78700066AF5B /* APIEmptyResponse.swift in Sources */,
 				29A6B872206941210086B2A6 /* UpdateTask.swift in Sources */,
+				290C3015206A80AE0066AF5B /* MoveTaskCall.swift in Sources */,
 				295610F92056CAA800D9711A /* APIHatchingPotion.swift in Sources */,
 				29323E1720504F5600AC6D6F /* APIStats.swift in Sources */,
 				29323E3B205212FA00AC6D6F /* APIProfile.swift in Sources */,

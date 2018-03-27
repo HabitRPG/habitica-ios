@@ -27,10 +27,9 @@
           atIndexPath:(NSIndexPath *)indexPath
         withAnimation:(BOOL)animate;
 
-@property BOOL userDrivenDataUpdate;
 @property NSTimer *scrollTimer;
 @property CGFloat autoScrollSpeed;
-@property Task *movedTask;
+@property id movedTask;
 
 @property NSMutableDictionary *heightAtIndexPath;
 @end
@@ -165,19 +164,19 @@ NSIndexPath  *sourceIndexPath = nil;
             snapshot.center = center;
             
             if (indexPath && ![indexPath isEqual:sourceIndexPath]) {
-                self.userDrivenDataUpdate = YES;
-                Task *sourceTask = [self taskAtIndexPath:sourceIndexPath];
-                Task *task = [self taskAtIndexPath:indexPath];
-                NSNumber *sourceOrder = sourceTask.order;
-                sourceTask.order = task.order;
-                task.order = sourceOrder;
-                
+                self.dataSource.userDrivenDataUpdate = YES;
+                id sourceTask = [self.dataSource objectAt:sourceIndexPath];
+                id task = [self.dataSource objectAt:indexPath];
+                NSInteger sourceOrder = [sourceTask integerForKey:@"order"];
+                [sourceTask setInteger:[task integerForKey:@"order"] forKey:@"order"];
+                [task setInteger:sourceOrder forKey:@"order"];
+
                 NSError *error;
                 [self.managedObjectContext save:&error];
                 
                 [self.tableView moveRowAtIndexPath:sourceIndexPath toIndexPath:indexPath];
                 sourceIndexPath = indexPath;
-                self.userDrivenDataUpdate = NO;
+                self.dataSource.userDrivenDataUpdate = NO;
             }
             
             CGFloat positionInTableView = [self.view convertPoint:center fromView:snapshot.superview].y - self.tableView.contentOffset.y;
@@ -202,8 +201,10 @@ NSIndexPath  *sourceIndexPath = nil;
         }
             
         default: {
-            Task *task = [self taskAtIndexPath:sourceIndexPath];
-            [[HRPGManager sharedManager] moveTask:task toPosition:task.order onSuccess:nil onError:nil];
+            id task = [self.dataSource objectAt:sourceIndexPath];
+            [self.dataSource moveTaskWithTask:task toPosition:[task valueForKey:@"order"] completion:^{
+                
+            }];
             
             UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:sourceIndexPath];
             cell.alpha = 0.0;
@@ -413,10 +414,6 @@ NSIndexPath  *sourceIndexPath = nil;
     return imageView;
 }
 
-- (Task *)taskAtIndexPath:(NSIndexPath *)indexPath {
-    return nil;
-}
-
 #pragma mark - Search
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
     [searchBar setShowsCancelButton:YES animated:YES];
@@ -535,7 +532,7 @@ NSIndexPath  *sourceIndexPath = nil;
 
 - (NSArray<UIDragItem *> *)tableView:(UITableView *)tableView itemsForBeginningDragSession:(id<UIDragSession>)session atIndexPath:(NSIndexPath *)indexPath NS_AVAILABLE_IOS(11.0) {
     self.movedTask = [self.dataSource objectAt:indexPath];
-    NSString *taskName = self.movedTask.text;
+    NSString *taskName = [self.movedTask valueForKey:@"text"];
     sourceIndexPath = indexPath;
     
     NSData *data = [taskName dataUsingEncoding:NSUTF16StringEncoding];
@@ -545,7 +542,7 @@ NSIndexPath  *sourceIndexPath = nil;
         completionHandler(data, nil);
         return nil;
     }];
-    self.userDrivenDataUpdate = YES;
+    self.dataSource.userDrivenDataUpdate = YES;
     return @[[[UIDragItem alloc] initWithItemProvider: itemProvider]];
 }
 
@@ -554,27 +551,24 @@ NSIndexPath  *sourceIndexPath = nil;
 }
 
 - (UITableViewDropProposal *)tableView:(UITableView *)tableView dropSessionDidUpdate:(id<UIDropSession>)session withDestinationIndexPath:(NSIndexPath *)destinationIndexPath NS_AVAILABLE_IOS(11.0) {
-    int taskOrder = 0;
-    self.movedTask.order = [NSNumber numberWithInteger:destinationIndexPath.item];
-    for (Task *task in self.dataSource.tasks) {
-        if ([task.id isEqualToString:self.movedTask.id]) {
-            break;
-        }
-        task.order = [NSNumber numberWithInteger:taskOrder];
-        taskOrder++;
-    }
+    //[self.dataSource fixTaskOrderWithMovedTask:self.movedTask toPosition:destinationIndexPath.item];
     return [[UITableViewDropProposal alloc] initWithDropOperation:UIDropOperationMove intent:UITableViewDropIntentInsertAtDestinationIndexPath];
 }
 
 - (void)tableView:(UITableView *)tableView performDropWithCoordinator:(id<UITableViewDropCoordinator>)coordinator NS_AVAILABLE_IOS(11.0) {
-    
+    id order = [self.movedTask valueForKey:@"order"];
+    NSIndexPath *sourceIndexPath = [NSIndexPath indexPathForRow:[order integerValue] inSection:0];
+    [self.dataSource fixTaskOrderWithMovedTask:self.movedTask toPosition:coordinator.destinationIndexPath.item];
+    [self.tableView moveRowAtIndexPath:sourceIndexPath toIndexPath:coordinator.destinationIndexPath];
+    [self.dataSource moveTaskWithTask:self.movedTask toPosition:coordinator.destinationIndexPath.item completion:^{
+        self.dataSource.userDrivenDataUpdate = NO;
+    }];
 }
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
-    [[HRPGManager sharedManager] moveTask:self.movedTask toPosition:[NSNumber numberWithInteger:destinationIndexPath.item] onSuccess:^() {
-        self.userDrivenDataUpdate = NO;
-    } onError:^() {
-        self.userDrivenDataUpdate = NO;
+    
+    [self.dataSource moveTaskWithTask:self.movedTask toPosition:destinationIndexPath.item completion:^{
+        self.dataSource.userDrivenDataUpdate = NO;
     }];
 }
 

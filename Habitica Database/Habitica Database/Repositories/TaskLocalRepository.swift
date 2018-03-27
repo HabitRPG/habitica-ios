@@ -161,6 +161,28 @@ public class TaskLocalRepository: BaseLocalRepository {
                 realm?.delete(realmTask)
             }
         }
-        
+    }
+    
+    public func moveTask(_ task: TaskProtocol, toPosition: Int) {
+        try? realm?.write {
+            task.order = toPosition
+        }
+    }
+    
+    public func fixTaskOrder(movedTask: TaskProtocol, toPosition: Int) {
+        var taskOrder = 0
+        guard let tasks = realm?.objects(RealmTask.self).filter("type == %@", movedTask.type ?? "").sorted(byKeyPath: "order") else {
+            return
+        }
+        try? realm?.write {
+            for task in tasks {
+                if task.id == movedTask.id {
+                    task.order = toPosition
+                    break
+                }
+                task.order = taskOrder
+                taskOrder += 1
+            }
+        }
     }
 }
