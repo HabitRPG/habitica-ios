@@ -18,8 +18,21 @@ class TaskTableViewCell: UITableViewCell {
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var taskDetailLine: TaskDetailLineView!
     @IBOutlet weak var mainTaskWrapper: UIView!
+    @IBOutlet weak var syncingIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var syncErrorIndicator: UIImageView!
+    @IBOutlet weak var syncIndicatorsWidth: NSLayoutConstraint!
+    @IBOutlet weak var syncIndicatorsSpacing: NSLayoutConstraint!
     //swiftlint:disable private_outlet
 
+    @objc var syncErrorTouched: (() -> Void)?
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        syncErrorIndicator.image = HabiticaIcons.imageOfInfoIcon(infoIconColor: UIColor.red50())
+        
+        syncErrorIndicator.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(syncErrorTapped)))
+    }
+    
     @objc
     func configure(task: TaskProtocol) {
         if let text = task.text {
@@ -40,6 +53,20 @@ class TaskTableViewCell: UITableViewCell {
 
         self.taskDetailLine.configure(task: task)
         self.taskDetailLine.isHidden = !self.taskDetailLine.hasContent
+        
+        self.syncingIndicator.isHidden = !task.isSyncing
+        if !self.syncingIndicator.isHidden {
+            self.syncingIndicator.startAnimating()
+        }
+        self.syncErrorIndicator.isHidden = task.isSyncing || task.isSynced
+        
+        if self.syncingIndicator.isHidden && self.syncErrorIndicator.isHidden {
+            syncIndicatorsWidth.constant = 0
+            syncIndicatorsSpacing.constant = 0
+        } else {
+            syncIndicatorsWidth.constant = 20
+            syncIndicatorsSpacing.constant = 8
+        }
 
         self.setNeedsLayout()
         
@@ -55,6 +82,13 @@ class TaskTableViewCell: UITableViewCell {
         self.mainTaskWrapper.accessibilityLabel = "\(self.mainTaskWrapper.accessibilityLabel ?? ""), Value: \(String.forTaskQuality(task: task))"
         if let notes = task.notes, !notes.isEmpty {
             self.mainTaskWrapper.accessibilityLabel = "\(self.mainTaskWrapper.accessibilityLabel ?? ""), \(notes)"
+        }
+    }
+    
+    @objc
+    private func syncErrorTapped() {
+        if let action = syncErrorTouched {
+            action()
         }
     }
 }

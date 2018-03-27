@@ -9,7 +9,7 @@
 import UIKit
 import FunkyNetwork
 import ReactiveSwift
-
+import Result
 enum HTTPMethod: String {
     case GET
     case POST
@@ -51,7 +51,7 @@ public class AuthenticatedCall: JsonNetworkCall {
     }
     
     func setupErrorHandler() {
-        AuthenticatedCall.errorHandler?.observe(signal: serverErrorSignal)
+        AuthenticatedCall.errorHandler?.observe(signal: Signal<NSError, NoError>.merge([serverErrorSignal, errorSignal]))
     }
     
 }

@@ -41,6 +41,12 @@
 		29255E491F3E1B0F0094A3E3 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29255E481F3E1B0F0094A3E3 /* ToastView.swift */; };
 		29255E4B1F3E236C0094A3E3 /* ToastManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29255E4A1F3E236C0094A3E3 /* ToastManager.swift */; };
 		29255E4D1F3E25910094A3E3 /* CGRect-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29255E4C1F3E25910094A3E3 /* CGRect-Extensions.swift */; };
+		29265890206A4E84006C8B54 /* Habitica_Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE3B204D9D290086D5F7 /* Habitica_Models.framework */; };
+		29265891206A4E84006C8B54 /* Habitica_Models.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE3B204D9D290086D5F7 /* Habitica_Models.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		29265892206A4E84006C8B54 /* Habitica_Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE3D204D9D360086D5F7 /* Habitica_Database.framework */; };
+		29265893206A4E84006C8B54 /* Habitica_Database.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE3D204D9D360086D5F7 /* Habitica_Database.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		29265894206A4E84006C8B54 /* Habitica_API_Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE4D204DA1830086D5F7 /* Habitica_API_Client.framework */; };
+		29265895206A4E84006C8B54 /* Habitica_API_Client.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE4D204DA1830086D5F7 /* Habitica_API_Client.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		292DEE3A204D9D290086D5F7 /* Habitica_Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE3B204D9D290086D5F7 /* Habitica_Models.framework */; };
 		292DEE3C204D9D360086D5F7 /* Habitica_Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE3D204D9D360086D5F7 /* Habitica_Database.framework */; };
 		292DEE4C204DA1830086D5F7 /* Habitica_API_Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE4D204DA1830086D5F7 /* Habitica_API_Client.framework */; };
@@ -523,6 +529,22 @@
 			remoteInfo = Habitica;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		29265896206A4E84006C8B54 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				29265893206A4E84006C8B54 /* Habitica_Database.framework in Embed Frameworks */,
+				29265891206A4E84006C8B54 /* Habitica_Models.framework in Embed Frameworks */,
+				29265895206A4E84006C8B54 /* Habitica_API_Client.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		281AC256BB298E2B402BE5DF /* Pods-HabiticaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HabiticaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HabiticaTests/Pods-HabiticaTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1338,6 +1360,7 @@
 				D92D26161D58EF00001FD977 /* AVFoundation.framework in Frameworks */,
 				D9CD2DBE1BC7FBB500B1304B /* CoreSpotlight.framework in Frameworks */,
 				D958E2B11915D41D00186A08 /* SystemConfiguration.framework in Frameworks */,
+				29265890206A4E84006C8B54 /* Habitica_Models.framework in Frameworks */,
 				D958E2B01915D41400186A08 /* Security.framework in Frameworks */,
 				D958E2AE1915D40F00186A08 /* QuartzCore.framework in Frameworks */,
 				D958E2AD1915D40600186A08 /* CoreText.framework in Frameworks */,
@@ -1345,9 +1368,11 @@
 				D940A7E31B0CF80100370F2E /* Fabric.framework in Frameworks */,
 				D940A7E41B0CF80100370F2E /* Crashlytics.framework in Frameworks */,
 				D9EB4E9318CB4A9400BB2094 /* UIKit.framework in Frameworks */,
+				29265892206A4E84006C8B54 /* Habitica_Database.framework in Frameworks */,
 				D9EB4E8F18CB4A9400BB2094 /* Foundation.framework in Frameworks */,
 				D9C89CF91B1F0E6C00A599B0 /* StoreKit.framework in Frameworks */,
 				F9E64EEA9B65CE54DBB87415 /* Pods_Habitica.framework in Frameworks */,
+				29265894206A4E84006C8B54 /* Habitica_API_Client.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2770,6 +2795,7 @@
 				33CD4301B52F7B90A552FAC3 /* 📦 Embed Pods Frameworks */,
 				4A2213241AEC5E5EE392C74C /* 📦 Copy Pods Resources */,
 				D97AEBC81E7D7622007FD4A2 /* Lint */,
+				29265896206A4E84006C8B54 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

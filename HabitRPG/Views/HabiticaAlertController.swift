@@ -295,8 +295,9 @@ class HabiticaAlertController: UIViewController {
     
     @objc
     func buttonTapped(_ button: UIButton) {
-        self.dismiss(animated: true, completion: nil)
-        buttonHandlers[button.tag]?(button)
+        self.dismiss(animated: true, completion: {
+            self.buttonHandlers[button.tag]?(button)
+        })
     }
     
     @IBAction func closeTapped(_ sender: Any) {

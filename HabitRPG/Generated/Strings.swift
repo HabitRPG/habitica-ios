@@ -23,10 +23,20 @@ internal enum L10n {
   internal static let resetTips = L10n.tr("Main", "reset_tips")
   /// Reset Streak
   internal static let resetStreak = L10n.tr("Main", "resetStreak")
+  /// Resync
+  internal static let resync = L10n.tr("Main", "resync")
+  /// Resync all
+  internal static let resyncAll = L10n.tr("Main", "resync_all")
+  /// Resync this task
+  internal static let resyncTask = L10n.tr("Main", "resync_task")
   /// Save
   internal static let save = L10n.tr("Main", "save")
   /// Search
   internal static let search = L10n.tr("Main", "search")
+  /// Sync Error
+  internal static let syncError = L10n.tr("Main", "sync_error")
+  /// There was an error syncing some changes.
+  internal static let syncErrorMessage = L10n.tr("Main", "sync_error_message")
   /// Tags
   internal static let tags = L10n.tr("Main", "tags")
   /// Title

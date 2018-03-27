@@ -9,6 +9,7 @@
 import Foundation
 import FunkyNetwork
 import ReactiveSwift
+import Result
 
 class DebugOutputHandler {
     let disposable = ScopedDisposable(CompositeDisposable())
@@ -29,7 +30,7 @@ class DebugOutputHandler {
     
     func observe(call: NetworkCall) {
         #if DEBUG
-            disposable.inner.add(call.serverErrorSignal.observeValues( { error in
+            disposable.inner.add(Signal<NSError, NoError>.merge([call.errorSignal, call.serverErrorSignal]).observeValues( { error in
                 print(Date().debugDescription, "ERROR: ", error.localizedDescription)
             }))
             disposable.inner.add(call.httpResponseSignal.observeValues({[weak self] (response) in

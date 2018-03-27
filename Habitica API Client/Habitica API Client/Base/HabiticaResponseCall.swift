@@ -32,7 +32,8 @@ class HabiticaResponseCall<T: Any, C: Codable>: AuthenticatedCall {
     }
     
     override func setupErrorHandler() {
-        AuthenticatedCall.errorHandler?.observe(signal: serverErrorSignal.sample(with: jsonSignal)
+        AuthenticatedCall.errorHandler?.observe(signal: errorSignal)
+        AuthenticatedCall.errorHandler?.observe(signal: serverErrorSignal.combineLatest(with: jsonSignal)
             .map({ (error, jsonAny) -> (NSError, [String]) in
                 let json = jsonAny as? Dictionary<String, Any>
                 var errors = [String]()

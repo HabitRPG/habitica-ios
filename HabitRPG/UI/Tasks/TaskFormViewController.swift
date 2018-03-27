@@ -440,8 +440,11 @@ class TaskFormViewController: FormViewController {
         } else if taskType == .reward {
             saveReward(values: values)
         }
+        task.isSyncing = true
+        task.isSynced = false
         if isCreating {
-        taskRepository.createTask(task).observeCompleted {}
+            task.id = UUID().uuidString
+            taskRepository.createTask(task).observeCompleted {}
         } else {
             taskRepository.updateTask(task).observeCompleted {}
         }

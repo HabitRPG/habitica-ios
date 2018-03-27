@@ -71,8 +71,7 @@ class HabiticaAppDelegate: NSObject {
     @objc
     func setupDatabase() {
         var config = Realm.Configuration.defaultConfiguration
-        config.schemaVersion = 1
-        config.migrationBlock = { migration, oldSchemaVersion in }
+        config.deleteRealmIfMigrationNeeded = true
         let fileUrl = try? FileManager.default
             .url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
         .appendingPathComponent("habitica.realm")

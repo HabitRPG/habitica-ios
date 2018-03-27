@@ -45,3 +45,8 @@
 "tasks.form.notes_placeholder" = "Include any notes to help you out";
 "title" = "Title";
 "notes" = "Notes";
+"sync_error" = "Sync Error";
+"sync_error_message" = "There was an error syncing some changes.";
+"resync" = "Resync";
+"resync_all" = "Resync all";
+"resync_task" = "Resync this task";

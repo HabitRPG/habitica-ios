@@ -37,6 +37,9 @@ public class APITask: TaskProtocol, Codable {
     public var startDate: Date?
     public var yesterDaily: Bool = true
     public var weekRepeat: WeekRepeatProtocol?
+    public var isSynced: Bool = true
+    public var isSyncing: Bool = false
+    public var isNewTask: Bool = false
     
     enum CodingKeys: String, CodingKey {
         case id

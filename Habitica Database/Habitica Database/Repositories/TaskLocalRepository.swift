@@ -10,6 +10,7 @@ import Foundation
 import Habitica_Models
 import ReactiveSwift
 import RealmSwift
+import Result
 
 public class TaskLocalRepository: BaseLocalRepository {
     
@@ -22,7 +23,9 @@ public class TaskLocalRepository: BaseLocalRepository {
     }
     
     public func save(_ task: TaskProtocol) {
-        let tags = realm?.objects(RealmTag.self)
+        let tags = realm?.objects(RealmTag.self).filter("id IN %@", task.tags.map({ (tag) -> String? in
+            return tag.id
+        }))
         save(task, tags: tags)
     }
     
@@ -133,5 +136,22 @@ public class TaskLocalRepository: BaseLocalRepository {
             return editableTask
         }
         return nil
+    }
+    
+    public func setTaskSyncing(_ task: TaskProtocol, isSyncing: Bool) {
+        if let realmTask = task as? RealmTask {
+            try? realm?.write {
+                realmTask.isSyncing = isSyncing
+            }
+        } else {
+            task.isSyncing = isSyncing
+            save(task)
+        }
+    }
+    
+    public func getUnsyncedTasks() -> SignalProducer<[TaskProtocol], ReactiveSwiftRealmError> {
+        return RealmTask.findBy(query: "isSyncing == false && isSynced == false").map({ (value) -> [TaskProtocol] in
+            return value.map({ (task) -> TaskProtocol in return task })
+        })
     }
 }

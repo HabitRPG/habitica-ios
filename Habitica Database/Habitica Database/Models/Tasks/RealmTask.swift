@@ -34,6 +34,11 @@ class RealmTask: Object, TaskProtocol {
     @objc dynamic var updatedAt: Date?
     @objc dynamic var startDate: Date?
     @objc dynamic var yesterDaily: Bool = true
+    
+    @objc dynamic var isSynced: Bool = true
+    @objc dynamic var isSyncing: Bool = false
+    @objc dynamic var isNewTask: Bool = false
+    
     var tags: [TagProtocol] {
         get {
             return realmTags.map({ (tag) -> TagProtocol in
@@ -154,5 +159,9 @@ class RealmTask: Object, TaskProtocol {
         checklist = taskProtocol.checklist
         reminders = taskProtocol.reminders
         weekRepeat = taskProtocol.weekRepeat
+        
+        isSyncing = taskProtocol.isSyncing
+        isSynced = taskProtocol.isSynced
+        isNewTask = taskProtocol.isNewTask
     }
 }

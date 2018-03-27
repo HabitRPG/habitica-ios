@@ -50,6 +50,9 @@ public protocol TaskProtocol {
     var reminders: [ReminderProtocol] { get set }
     var weekRepeat: WeekRepeatProtocol? { get set }
     
+    var isSynced: Bool { get set }
+    var isSyncing: Bool { get set }
+    var isNewTask: Bool { get set }
 }
 
 extension TaskProtocol {

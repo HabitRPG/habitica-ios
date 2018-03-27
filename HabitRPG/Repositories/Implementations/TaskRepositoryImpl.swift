@@ -91,6 +91,7 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
     
     func createTask(_ task: TaskProtocol) -> Signal<TaskProtocol?, NoError> {
         localRepository.save(task)
+        localRepository.setTaskSyncing(task, isSyncing: true)
         let call = CreateTaskCall(task: task)
         call.fire()
         return call.objectSignal.on(value: { returnedTask in
@@ -102,13 +103,25 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
     
     func updateTask(_ task: TaskProtocol) -> Signal<TaskProtocol?, NoError> {
         localRepository.save(task)
+        localRepository.setTaskSyncing(task, isSyncing: true)
         let call = UpdateTaskCall(task: task)
         call.fire()
+        call.errorSignal.observeValues({ _ in
+            self.localRepository.setTaskSyncing(task, isSyncing: false)
+        })
         return call.objectSignal.on(value: { returnedTask in
             if let returnedTask = returnedTask {
                 returnedTask.order = task.order
                 self.localRepository.save(returnedTask)
             }
         })
+    }
+    
+    func syncTask(_ task: TaskProtocol) -> Signal<TaskProtocol?, NoError> {
+        if task.isNewTask {
+            return self.createTask(task)
+        } else {
+            return self.updateTask(task)
+        }
     }
 }

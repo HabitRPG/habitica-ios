@@ -96,6 +96,14 @@ class TaskTableViewDataSource: BaseReactiveDataSource, UITableViewDataSource {
             checkedCell.isExpanded = self.expandedIndexPath?.item == indexPath.item
         }
         cell.configure(task: task)
+        cell.syncErrorTouched = {
+            let alertController = HabiticaAlertController(title: L10n.syncError, message: L10n.syncErrorMessage)
+            alertController.addAction(title: L10n.resyncTask, style: .default, isMainAction: false, handler: { (_) in
+                self.repository.syncTask(task).observeCompleted {}
+            })
+            alertController.addCancelAction()
+            alertController.show()
+        }
     }
     
     internal func expandSelectedCell(indexPath: IndexPath) {
