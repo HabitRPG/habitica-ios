@@ -32,6 +32,7 @@
 		2907267E1F74279C00545550 /* TimeTravelersCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2907267D1F74279C00545550 /* TimeTravelersCollectionViewDataSource.swift */; };
 		290726811F750FC400545550 /* ShopCategory+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 290726801F750FC400545550 /* ShopCategory+CoreDataClass.m */; };
 		2907F99E1F694C4000328AEE /* GemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2907F99D1F694C4000328AEE /* GemViewController.swift */; };
+		290C3017206A963D0066AF5B /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C3016206A963D0066AF5B /* MainMenuViewController.swift */; };
 		29205E352062DF710024E355 /* TextInputFormRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29205E342062DF710024E355 /* TextInputFormRow.swift */; };
 		29205E372062E0030024E355 /* TaskTextInputCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29205E362062E0030024E355 /* TaskTextInputCell.xib */; };
 		29205E392062E2430024E355 /* TaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29205E382062E2430024E355 /* TaskRow.swift */; };
@@ -418,7 +419,6 @@
 		D9AEF8E41CE4CCA5006914CB /* HRPGURLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D9AEF8E31CE4CCA5006914CB /* HRPGURLParser.m */; };
 		D9B11C8C18D63D4E00AB4D23 /* HRPGTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B11C8B18D63D4E00AB4D23 /* HRPGTabBarController.m */; };
 		D9B5C0AE18CCC87A00C8D1B7 /* HRPGManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5C0AD18CCC87A00C8D1B7 /* HRPGManager.m */; };
-		D9B5C0B718D5C07100C8D1B7 /* HRPGProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5C0B618D5C07100C8D1B7 /* HRPGProfileViewController.m */; };
 		D9B5C0C018D5EFF400C8D1B7 /* ChecklistItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5C0BF18D5EFF400C8D1B7 /* ChecklistItem.m */; };
 		D9B5C0CF18D5F4D400C8D1B7 /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5C0CE18D5F4D400C8D1B7 /* Tag.m */; };
 		D9B5C0E118D602FC00C8D1B7 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5C0E018D602FC00C8D1B7 /* Group.m */; };
@@ -572,6 +572,7 @@
 		2907267F1F750FC400545550 /* ShopCategory+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ShopCategory+CoreDataClass.h"; sourceTree = "<group>"; };
 		290726801F750FC400545550 /* ShopCategory+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ShopCategory+CoreDataClass.m"; sourceTree = "<group>"; };
 		2907F99D1F694C4000328AEE /* GemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GemViewController.swift; sourceTree = "<group>"; };
+		290C3016206A963D0066AF5B /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		29205E342062DF710024E355 /* TextInputFormRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputFormRow.swift; sourceTree = "<group>"; };
 		29205E362062E0030024E355 /* TaskTextInputCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskTextInputCell.xib; sourceTree = "<group>"; };
 		29205E382062E2430024E355 /* TaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRow.swift; sourceTree = "<group>"; };
@@ -1176,8 +1177,6 @@
 		D9B2F2AE1D996834001810BD /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D9B5C0AC18CCC87A00C8D1B7 /* HRPGManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGManager.h; sourceTree = "<group>"; };
 		D9B5C0AD18CCC87A00C8D1B7 /* HRPGManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGManager.m; sourceTree = "<group>"; };
-		D9B5C0B518D5C07100C8D1B7 /* HRPGProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGProfileViewController.h; sourceTree = "<group>"; };
-		D9B5C0B618D5C07100C8D1B7 /* HRPGProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGProfileViewController.m; sourceTree = "<group>"; };
 		D9B5C0BE18D5EFF400C8D1B7 /* ChecklistItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ChecklistItem.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D9B5C0BF18D5EFF400C8D1B7 /* ChecklistItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ChecklistItem.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D9B5C0CD18D5F4D400C8D1B7 /* Tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tag.h; sourceTree = "<group>"; };
@@ -1785,8 +1784,6 @@
 				D99F15BE191027D90081836E /* HRPGBaseViewController.h */,
 				D99F15BF191027D90081836E /* HRPGBaseViewController.m */,
 				49DCECE71F9A843E00982E99 /* MultiModelTableViewController.swift */,
-				D9B5C0B518D5C07100C8D1B7 /* HRPGProfileViewController.h */,
-				D9B5C0B618D5C07100C8D1B7 /* HRPGProfileViewController.m */,
 				D966557218FB129F0014C09D /* HRPGSettingsViewController.h */,
 				D966557318FB129F0014C09D /* HRPGSettingsViewController.m */,
 				D94796081972C248002CB34C /* HRPGUserProfileViewController.h */,
@@ -2107,6 +2104,7 @@
 				29E16318200E849000685640 /* Social */,
 				29C1B6A920594F3D0001D3EF /* Tasks */,
 				2986EB091FCC63CC00B316F6 /* User */,
+				290C3016206A963D0066AF5B /* MainMenuViewController.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -3508,6 +3506,7 @@
 				D979AD131AF3CF6C00D59FAE /* Customization.m in Sources */,
 				D9FC1A861BC2D8A300B97D23 /* TutorialSteps+CoreDataProperties.m in Sources */,
 				29255E491F3E1B0F0094A3E3 /* ToastView.swift in Sources */,
+				290C3017206A963D0066AF5B /* MainMenuViewController.swift in Sources */,
 				D94AADB4192A30F900546C8E /* Spell.m in Sources */,
 				49B87D93201BB37300CA1A75 /* Mapping2to3.xcmappingmodel in Sources */,
 				D9722B1A19B7AEA1009D8AD3 /* HRPGNewsViewController.m in Sources */,
@@ -3701,7 +3700,6 @@
 				D92A084B1D33FA08000F8B66 /* HRPGShopViewController.m in Sources */,
 				D92A085B1D3520D8000F8B66 /* ShopCategory+CoreDataProperties.m in Sources */,
 				D92503BE1D5C9219006C9388 /* NSString+UUID.m in Sources */,
-				D9B5C0B718D5C07100C8D1B7 /* HRPGProfileViewController.m in Sources */,
 				D9CE90471E4CDF3F00702578 /* Designable-Extensions.swift in Sources */,
 				D96038371930F90E0025EAEC /* HRPGMessageViewController.m in Sources */,
 				D96447B41CE9FF0D009D7950 /* HRPGResponseMessage.m in Sources */,

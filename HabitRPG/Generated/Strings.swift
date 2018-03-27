@@ -46,6 +46,49 @@ internal enum L10n {
   /// Yearly
   internal static let yearly = L10n.tr("Main", "yearly")
 
+  internal enum Menu {
+    /// About
+    internal static let about = L10n.tr("Main", "menu.about")
+    /// Cast Spells
+    internal static let castSpells = L10n.tr("Main", "menu.cast_spells")
+    /// Challenges
+    internal static let challenges = L10n.tr("Main", "menu.challenges")
+    /// Customize Avatar
+    internal static let customizeAvatar = L10n.tr("Main", "menu.customize_avatar")
+    /// Equipment
+    internal static let equipment = L10n.tr("Main", "menu.equipment")
+    /// Gems & Subscriptions
+    internal static let gemsSubscriptions = L10n.tr("Main", "menu.gems_subscriptions")
+    /// Guilds
+    internal static let guilds = L10n.tr("Main", "menu.guilds")
+    /// Help & FAQ
+    internal static let helpFaq = L10n.tr("Main", "menu.help_faq")
+    /// Inventory
+    internal static let inventory = L10n.tr("Main", "menu.inventory")
+    /// Items
+    internal static let items = L10n.tr("Main", "menu.items")
+    /// Mounts
+    internal static let mounts = L10n.tr("Main", "menu.mounts")
+    /// News
+    internal static let news = L10n.tr("Main", "menu.news")
+    /// Party
+    internal static let party = L10n.tr("Main", "menu.party")
+    /// Pets
+    internal static let pets = L10n.tr("Main", "menu.pets")
+    /// Select Class
+    internal static let selectClass = L10n.tr("Main", "menu.select_class")
+    /// Shops
+    internal static let shops = L10n.tr("Main", "menu.shops")
+    /// Social
+    internal static let social = L10n.tr("Main", "menu.social")
+    /// Stats
+    internal static let stats = L10n.tr("Main", "menu.stats")
+    /// Tavern
+    internal static let tavern = L10n.tr("Main", "menu.tavern")
+    /// Use Skills
+    internal static let useSkills = L10n.tr("Main", "menu.use_skills")
+  }
+
   internal enum Stats {
     /// 0 Points to Allocate
     internal static let noPointsToAllocate = L10n.tr("Main", "stats.no_points_to_allocate")

@@ -9,7 +9,6 @@
 #import "HRPGGroupAboutTableViewController.h"
 #import "HRPGGroupFormViewController.h"
 #import "HRPGGroupTableViewController.h"
-#import "HRPGProfileViewController.h"
 #import "UIColor+Habitica.h"
 #import "UIViewController+Markdown.h"
 #import "NSString+Emoji.h"
@@ -165,7 +164,7 @@
              onSuccess:^() {
                  for (UIViewController *aViewController in
                       [NSMutableArray arrayWithArray:[weakSelf.navigationController viewControllers]]) {
-                     if ([aViewController isKindOfClass:[HRPGProfileViewController class]]) {
+                     if ([aViewController isKindOfClass:[MainMenuViewController class]]) {
                          [self.navigationController popToViewController:aViewController
                                                                animated:NO];
                      }

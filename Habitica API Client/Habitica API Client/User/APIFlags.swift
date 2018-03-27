@@ -18,6 +18,7 @@ class APIFlags: FlagsProtocol, Codable {
     var armoireOpened: Bool = false
     var chatRevoked: Bool = false
     var classSelected: Bool = false
+    var itemsEnabled: Bool = false
     
     enum CodingKeys: String, CodingKey {
         case armoireEmpty
@@ -28,6 +29,7 @@ class APIFlags: FlagsProtocol, Codable {
         case armoireOpened
         case chatRevoked
         case classSelected
+        case itemsEnabled
     }
     
     public required init(from decoder: Decoder) throws {
@@ -40,5 +42,6 @@ class APIFlags: FlagsProtocol, Codable {
         armoireOpened = (try? values.decode(Bool.self, forKey: .armoireOpened)) ?? false
         chatRevoked = (try? values.decode(Bool.self, forKey: .chatRevoked)) ?? false
         classSelected = (try? values.decode(Bool.self, forKey: .classSelected)) ?? false
+        itemsEnabled = (try? values.decode(Bool.self, forKey: .itemsEnabled)) ?? false
     }
 }

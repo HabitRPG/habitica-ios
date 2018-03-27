@@ -20,6 +20,7 @@ class RealmFlags: Object, FlagsProtocol {
     @objc dynamic var armoireOpened: Bool = false
     @objc dynamic var chatRevoked: Bool = false
     @objc dynamic var classSelected: Bool = false
+    @objc dynamic var itemsEnabled: Bool = false
     
     @objc dynamic var id: String?
     override static func primaryKey() -> String {
@@ -37,5 +38,6 @@ class RealmFlags: Object, FlagsProtocol {
         armoireOpened = flags.armoireOpened
         chatRevoked = flags.chatRevoked
         classSelected = flags.classSelected
+        itemsEnabled = flags.itemsEnabled
     }
 }

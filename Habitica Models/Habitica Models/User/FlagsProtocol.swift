@@ -15,4 +15,5 @@ public protocol FlagsProtocol {
     var armoireOpened: Bool { get set }
     var chatRevoked: Bool { get set }
     var classSelected: Bool { get set }
+    var itemsEnabled: Bool { get set }
 }
