@@ -145,6 +145,7 @@ class TaskFormViewController: FormViewController {
             fillForm()
             modalContainerViewController?.rightButton.setTitle(L10n.save, for: .normal)
         } else {
+            task.type = taskType.rawValue
             modalContainerViewController?.rightButton.setTitle(L10n.create, for: .normal)
         }
         
@@ -439,8 +440,11 @@ class TaskFormViewController: FormViewController {
         } else if taskType == .reward {
             saveReward(values: values)
         }
-        
-        taskRepository.save(task: task)
+        if isCreating {
+        taskRepository.createTask(task).observeCompleted {}
+        } else {
+            taskRepository.updateTask(task).observeCompleted {}
+        }
     }
     
     private func saveCommon(values: [String: Any?]) {

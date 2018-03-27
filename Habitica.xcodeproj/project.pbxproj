@@ -82,12 +82,8 @@
 		2957B8C81F4DCF7800E836EF /* RewardFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2957B8C71F4DCF7800E836EF /* RewardFormController.swift */; };
 		2957B8CA1F4ED7C800E836EF /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2957B8C91F4ED7C800E836EF /* Currency.swift */; };
 		29646DD6205BE4C10050886C /* TaskFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29646DD5205BE4C10050886C /* TaskFormViewModel.swift */; };
-		29646DD9205C00060050886C /* TaskFormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29646DD8205C00060050886C /* TaskFormCell.swift */; };
-		29646DDD205C01B30050886C /* HabitControlsTaskFormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29646DDC205C01B30050886C /* HabitControlsTaskFormCell.swift */; };
-		29646DDF205C09DC0050886C /* DifficultyTaskFormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29646DDE205C09DC0050886C /* DifficultyTaskFormCell.swift */; };
 		29646DE1205C18FA0050886C /* TaskType-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29646DE0205C18FA0050886C /* TaskType-Extensions.swift */; };
 		29646DE3205C1F390050886C /* TaskFormVisualEffectsModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29646DE2205C1F390050886C /* TaskFormVisualEffectsModalViewController.swift */; };
-		29646DE5205C275F0050886C /* ResetStreakTaskFormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29646DE4205C275F0050886C /* ResetStreakTaskFormCell.swift */; };
 		29701FE01F560D310097BBCC /* UIApplication-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29701FDF1F560D310097BBCC /* UIApplication-Extensions.swift */; };
 		29701FE21F5617900097BBCC /* ToastView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29701FE11F5617900097BBCC /* ToastView.xib */; };
 		29701FE41F56C2200097BBCC /* IconLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29701FE31F56C2200097BBCC /* IconLabel.swift */; };
@@ -609,12 +605,8 @@
 		2957B8C71F4DCF7800E836EF /* RewardFormController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardFormController.swift; sourceTree = "<group>"; };
 		2957B8C91F4ED7C800E836EF /* Currency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		29646DD5205BE4C10050886C /* TaskFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFormViewModel.swift; sourceTree = "<group>"; };
-		29646DD8205C00060050886C /* TaskFormCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFormCell.swift; sourceTree = "<group>"; };
-		29646DDC205C01B30050886C /* HabitControlsTaskFormCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitControlsTaskFormCell.swift; sourceTree = "<group>"; };
-		29646DDE205C09DC0050886C /* DifficultyTaskFormCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyTaskFormCell.swift; sourceTree = "<group>"; };
 		29646DE0205C18FA0050886C /* TaskType-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskType-Extensions.swift"; sourceTree = "<group>"; };
 		29646DE2205C1F390050886C /* TaskFormVisualEffectsModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFormVisualEffectsModalViewController.swift; sourceTree = "<group>"; };
-		29646DE4205C275F0050886C /* ResetStreakTaskFormCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetStreakTaskFormCell.swift; sourceTree = "<group>"; };
 		29701FDF1F560D310097BBCC /* UIApplication-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication-Extensions.swift"; sourceTree = "<group>"; };
 		29701FE11F5617900097BBCC /* ToastView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToastView.xib; sourceTree = "<group>"; };
 		29701FE31F56C2200097BBCC /* IconLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconLabel.swift; sourceTree = "<group>"; };
@@ -1463,17 +1455,6 @@
 			name = Rewards;
 			sourceTree = "<group>";
 		};
-		29646DD7205BFFFC0050886C /* Task Form */ = {
-			isa = PBXGroup;
-			children = (
-				29646DD8205C00060050886C /* TaskFormCell.swift */,
-				29646DDC205C01B30050886C /* HabitControlsTaskFormCell.swift */,
-				29646DDE205C09DC0050886C /* DifficultyTaskFormCell.swift */,
-				29646DE4205C275F0050886C /* ResetStreakTaskFormCell.swift */,
-			);
-			path = "Task Form";
-			sourceTree = "<group>";
-		};
 		29701FEC1F5848880097BBCC /* Habitica Snapshots */ = {
 			isa = PBXGroup;
 			children = (
@@ -2307,7 +2288,6 @@
 		D9C2570D1B9B4BFB00839F48 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				29646DD7205BFFFC0050886C /* Task Form */,
 				49A84FB41F9FCA54003E2956 /* Challenges */,
 				D9BB455C1E71C8C70002AE2E /* CheckedTableViewcell.swift */,
 				2957B8C31F4D922C00E836EF /* CustomRewardCell.swift */,
@@ -3599,7 +3579,6 @@
 				D98F5DC11C6A1DA60035CBEC /* HRPGGroupTableViewController.m in Sources */,
 				29E162E21FFC21E100685640 /* CustomFontMetrics.swift in Sources */,
 				D984D5861E48E5CF006E84F8 /* TaskDetailLineView.swift in Sources */,
-				29646DDF205C09DC0050886C /* DifficultyTaskFormCell.swift in Sources */,
 				292DEE53204DA5B40086D5F7 /* Repositories.swift in Sources */,
 				2980E60B1EEA39B1005B7100 /* YesterdailyTaskCell.swift in Sources */,
 				4904C7401F1ED87400F80723 /* GradientImageView.swift in Sources */,
@@ -3699,10 +3678,8 @@
 				D92CDAE418CB83EF0006C242 /* HRPGDailyTableViewController.m in Sources */,
 				D9BB455D1E71C8C70002AE2E /* CheckedTableViewcell.swift in Sources */,
 				292DEEA5204F6F6C0086D5F7 /* DailyTableViewDataSource.swift in Sources */,
-				29646DDD205C01B30050886C /* HabitControlsTaskFormCell.swift in Sources */,
 				292DEE8D204F458B0086D5F7 /* HabitTableViewDataSource.swift in Sources */,
 				494E54151F2F07290003683C /* HRPGFetchedResultsCollectionViewDataSource.swift in Sources */,
-				29646DE5205C275F0050886C /* ResetStreakTaskFormCell.swift in Sources */,
 				D9FC1A7E1BC28F4700B97D23 /* HRPGTypingLabel.m in Sources */,
 				D94AADB7192A56E800546C8E /* HRPGSpellTaskController.m in Sources */,
 				D92A084B1D33FA08000F8B66 /* HRPGShopViewController.m in Sources */,
@@ -3745,7 +3722,6 @@
 				2957B8C81F4DCF7800E836EF /* RewardFormController.swift in Sources */,
 				D96C85451DCBAC90003E3616 /* HRPGStreakAchievementNotification.m in Sources */,
 				490864301F45318600BD9896 /* HRPGInsufficientHourglassesViewController.swift in Sources */,
-				29646DD9205C00060050886C /* TaskFormCell.swift in Sources */,
 				293BB49F1FCDCD33003B6F4F /* Stats.swift in Sources */,
 				29E1630B200D050E00685640 /* TopHeaderNavigationController.swift in Sources */,
 				D905766F1BD7F581009BB7BC /* HRPGHintView.m in Sources */,

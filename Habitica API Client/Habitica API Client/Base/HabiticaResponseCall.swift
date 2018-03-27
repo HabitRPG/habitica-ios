@@ -27,17 +27,23 @@ class HabiticaResponseCall<T: Any, C: Codable>: AuthenticatedCall {
         decoder.setHabiticaDateDecodingStrategy()
         do {
             return try decoder.decode(HabiticaResponse<C>.self, from: data)
-        } catch {
-            
-        }
-        
+        } catch {}
         return nil
     }
     
     override func setupErrorHandler() {
-        AuthenticatedCall.errorHandler?.observe(signal: serverErrorSignal.withLatest(from: habiticaResponseSignal)
-            .map({ (error, response) -> (NSError, String?) in
-                return (error, response?.message)
+        AuthenticatedCall.errorHandler?.observe(signal: serverErrorSignal.sample(with: jsonSignal)
+            .map({ (error, jsonAny) -> (NSError, [String]) in
+                let json = jsonAny as? Dictionary<String, Any>
+                var errors = [String]()
+                if let jsonErrors = json?["errors"] as? [[String: Any]] {
+                    for jsonError in jsonErrors {
+                        if let errorMessage = jsonError["message"] as? String {
+                            errors.append(errorMessage)
+                        }
+                    }
+                }
+                return (error, errors)
             }))
     }
 }

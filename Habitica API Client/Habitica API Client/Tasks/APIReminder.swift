@@ -13,4 +13,10 @@ class APIReminder: ReminderProtocol, Codable {
     var id: String?
     var startDate: Date?
     var time: Date?
+    
+    init(_ reminderProtocol: ReminderProtocol) {
+        id = reminderProtocol.id
+        startDate = reminderProtocol.startDate
+        time = reminderProtocol.time
+    }
 }

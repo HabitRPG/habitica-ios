@@ -27,4 +27,14 @@ class APIWeekRepeat: WeekRepeatProtocol, Codable {
         case saturday = "s"
         case sunday = "su"
     }
+    
+    init(_ weekRepeat: WeekRepeatProtocol) {
+        monday = weekRepeat.monday
+        tuesday = weekRepeat.tuesday
+        wednesday = weekRepeat.wednesday
+        thursday = weekRepeat.thursday
+        friday = weekRepeat.friday
+        saturday = weekRepeat.saturday
+        sunday = weekRepeat.sunday
+    }
 }

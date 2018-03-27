@@ -107,7 +107,63 @@ public class APITask: TaskProtocol, Codable {
         reminders = []
     }
     
+    public init(_ taskProtocol: TaskProtocol) {
+        id = taskProtocol.id
+        text = taskProtocol.text
+        notes = taskProtocol.notes
+        type = taskProtocol.type
+        value = taskProtocol.value
+        attribute = taskProtocol.attribute
+        completed = taskProtocol.completed
+        down = taskProtocol.down
+        up = taskProtocol.up
+        order = taskProtocol.order
+        priority = taskProtocol.priority
+        counterUp = taskProtocol.counterUp
+        counterDown = taskProtocol.counterDown
+        duedate = taskProtocol.duedate
+        isDue = taskProtocol.isDue
+        streak = taskProtocol.streak
+        frequency = taskProtocol.frequency
+        everyX = taskProtocol.everyX
+        challengeID = taskProtocol.challengeID
+        startDate = taskProtocol.startDate
+        createdAt = taskProtocol.createdAt
+        updatedAt = taskProtocol.updatedAt
+        yesterDaily = taskProtocol.yesterDaily
+        checklist = taskProtocol.checklist.map({ (item) -> APIChecklistItem in return APIChecklistItem(item) })
+        reminders = taskProtocol.reminders.map({ (reminder) -> APIReminder in return APIReminder(reminder) })
+        tags = taskProtocol.tags.map({ (tag) -> APITag in return APITag(tag) })
+        weekRepeat = APIWeekRepeat(taskProtocol.weekRepeat!)
+    }
+    
     public func encode(to encoder: Encoder) throws {
-        
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try? container.encode(id, forKey: .id)
+        try? container.encode(text, forKey: .text)
+        try? container.encode(notes, forKey: .notes)
+        try? container.encode(type, forKey: .type)
+        try? container.encode(attribute, forKey: .attribute)
+        try? container.encode(completed, forKey: .completed)
+        try? container.encode(up, forKey: .up)
+        try? container.encode(down, forKey: .down)
+        try? container.encode(order, forKey: .order)
+        try? container.encode(priority, forKey: .priority)
+        try? container.encode(counterUp, forKey: .counterUp)
+        try? container.encode(counterDown, forKey: .counterDown)
+        try? container.encode(duedate, forKey: .duedate)
+        try? container.encode(isDue, forKey: .isDue)
+        try? container.encode(streak, forKey: .streak)
+        try? container.encode(frequency, forKey: .frequency)
+        try? container.encode(everyX, forKey: .everyX)
+        try? container.encode(challengeID, forKey: .challengeID)
+        try? container.encode(startDate, forKey: .startDate)
+        try? container.encode(createdAt, forKey: .createdAt)
+        try? container.encode(updatedAt, forKey: .updatedAt)
+        try? container.encode(yesterDaily, forKey: .yesterDaily)
+        try? container.encode(checklist as? [APIChecklistItem], forKey: .checklist)
+        try? container.encode(reminders as? [APIReminder], forKey: .reminders)
+        try? container.encode(tags.map({ (tag) -> String? in return tag.id }), forKey: .tags)
+        try? container.encode(weekRepeat as? APIWeekRepeat, forKey: .weekRepeat)
     }
 }

@@ -13,4 +13,10 @@ class APIChecklistItem: ChecklistItemProtocol, Codable {
     var id: String?
     var text: String?
     var completed: Bool = false
+    
+    init(_ itemProtocol: ChecklistItemProtocol) {
+        id = itemProtocol.id
+        text = itemProtocol.text
+        completed = itemProtocol.completed
+    }
 }

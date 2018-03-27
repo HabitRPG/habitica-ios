@@ -16,7 +16,7 @@ class RealmTask: Object, TaskProtocol {
     @objc dynamic var notes: String?
     @objc dynamic var type: String?
     @objc dynamic var value: Float = 0
-    @objc dynamic var attribute: String?
+    @objc dynamic var attribute: String? = "str"
     @objc dynamic var completed: Bool = false
     @objc dynamic var down: Bool = false
     @objc dynamic var up: Bool = false

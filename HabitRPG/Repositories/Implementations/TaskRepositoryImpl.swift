@@ -88,4 +88,27 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
     func getEditableTask(id: String) -> TaskProtocol? {
         return localRepository.getEditableTask(id: id)
     }
+    
+    func createTask(_ task: TaskProtocol) -> Signal<TaskProtocol?, NoError> {
+        localRepository.save(task)
+        let call = CreateTaskCall(task: task)
+        call.fire()
+        return call.objectSignal.on(value: { returnedTask in
+            if let returnedTask = returnedTask {
+                self.localRepository.save(returnedTask)
+            }
+        })
+    }
+    
+    func updateTask(_ task: TaskProtocol) -> Signal<TaskProtocol?, NoError> {
+        localRepository.save(task)
+        let call = UpdateTaskCall(task: task)
+        call.fire()
+        return call.objectSignal.on(value: { returnedTask in
+            if let returnedTask = returnedTask {
+                returnedTask.order = task.order
+                self.localRepository.save(returnedTask)
+            }
+        })
+    }
 }

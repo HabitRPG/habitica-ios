@@ -48,13 +48,13 @@ public class TaskDifficultyCell: Cell<Float>, CellType {
     
     @objc
     private func mediumTapped() {
-        row.value = 2
+        row.value = 1.5
         row.updateCell()
     }
     
     @objc
     private func hardTapped() {
-        row.value = 3
+        row.value = 2
         row.updateCell()
     }
 
@@ -74,18 +74,18 @@ public class TaskDifficultyCell: Cell<Float>, CellType {
                 easyControlIconView.image = HabiticaIcons.imageOfTaskDifficultyStars(taskTintColor: taskRow.tintColor, difficulty: 1, isActive: false)
                 easyControlLabel.textColor = UIColor.gray200()
             }
-            if taskRow.value == 2 {
-                mediumControlIconView.image = HabiticaIcons.imageOfTaskDifficultyStars(taskTintColor: taskRow.tintColor, difficulty: 2, isActive: true)
+            if taskRow.value == 1.5 {
+                mediumControlIconView.image = HabiticaIcons.imageOfTaskDifficultyStars(taskTintColor: taskRow.tintColor, difficulty: 1.5, isActive: true)
                 mediumControlLabel.textColor = taskRow.tintColor
             } else {
-                mediumControlIconView.image = HabiticaIcons.imageOfTaskDifficultyStars(taskTintColor: taskRow.tintColor, difficulty: 2, isActive: false)
+                mediumControlIconView.image = HabiticaIcons.imageOfTaskDifficultyStars(taskTintColor: taskRow.tintColor, difficulty: 1.5, isActive: false)
                 mediumControlLabel.textColor = UIColor.gray200()
             }
-            if taskRow.value == 3 {
-                hardControlIconView.image = HabiticaIcons.imageOfTaskDifficultyStars(taskTintColor: taskRow.tintColor, difficulty: 3, isActive: true)
+            if taskRow.value == 2 {
+                hardControlIconView.image = HabiticaIcons.imageOfTaskDifficultyStars(taskTintColor: taskRow.tintColor, difficulty: 2, isActive: true)
                 hardControlLabel.textColor = taskRow.tintColor
             } else {
-                hardControlIconView.image = HabiticaIcons.imageOfTaskDifficultyStars(taskTintColor: taskRow.tintColor, difficulty: 3, isActive: false)
+                hardControlIconView.image = HabiticaIcons.imageOfTaskDifficultyStars(taskTintColor: taskRow.tintColor, difficulty: 2, isActive: false)
                 hardControlLabel.textColor = UIColor.gray200()
             }
         }

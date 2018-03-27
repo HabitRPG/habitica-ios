@@ -22,4 +22,9 @@ class APITag: TagProtocol, Codable {
     init(_ id: String) {
         self.id = id
     }
+    
+    init(_ tagProtocol: TagProtocol) {
+        id = tagProtocol.id
+        text = tagProtocol.text
+    }
 }

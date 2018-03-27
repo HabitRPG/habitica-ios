@@ -30,11 +30,11 @@ class HabiticaNetworkErrorHandler: NetworkErrorHandler {
     public static let errorMessages: [ErrorMessage]? = [DefaultServerUnavailableErrorMessage(), DefaultServerIssueErrorMessage(), DefaultOfflineErrorMessage()]
     let disposable = ScopedDisposable(CompositeDisposable())
     
-    public static func handle(error: NSError, message: String?) {
+    public static func handle(error: NSError, messages: [String]) {
         if let errorMessage = errorMessageForCode(code: error.code) {
             self.notify(message: errorMessage.message)
-        } else if let message = message {
-            self.notify(message: message)
+        } else if !messages.isEmpty {
+            self.notify(message: messages[0])
         } else {
             self.notify(message: error.localizedDescription)
         }
