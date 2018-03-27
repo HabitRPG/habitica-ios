@@ -124,4 +124,15 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
             return self.updateTask(task)
         }
     }
+    
+    func deleteTask(_ task: TaskProtocol) -> Signal<EmptyResponseProtocol?, NoError> {
+        let call = DeleteTaskCall(task: task)
+        call.fire()
+        call.httpResponseSignal.observeValues { (response) in
+            if response.statusCode == 200 {
+                self.localRepository.deleteTask(task)
+            }
+        }
+        return call.objectSignal
+    }
 }

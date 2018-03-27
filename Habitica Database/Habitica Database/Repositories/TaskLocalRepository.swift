@@ -154,4 +154,13 @@ public class TaskLocalRepository: BaseLocalRepository {
             return value.map({ (task) -> TaskProtocol in return task })
         })
     }
+    
+    public func deleteTask(_ task: TaskProtocol) {
+        if let realmTask = realm?.object(ofType: RealmTask.self, forPrimaryKey: task.id) {
+            try? realm?.write {
+                realm?.delete(realmTask)
+            }
+        }
+        
+    }
 }

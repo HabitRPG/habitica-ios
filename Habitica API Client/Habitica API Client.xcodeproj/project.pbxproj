@@ -15,6 +15,8 @@
 		29027991205835F7006DACB9 /* APIQuestState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29027990205835F7006DACB9 /* APIQuestState.swift */; };
 		2902799320583612006DACB9 /* APIQuestProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2902799220583612006DACB9 /* APIQuestProgress.swift */; };
 		29027995205836A8006DACB9 /* RetrieveWorldStateCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29027994205836A8006DACB9 /* RetrieveWorldStateCall.swift */; };
+		290C300F206A779E0066AF5B /* DeleteTaskCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C300E206A779E0066AF5B /* DeleteTaskCall.swift */; };
+		290C3013206A78700066AF5B /* APIEmptyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C3012206A78700066AF5B /* APIEmptyResponse.swift */; };
 		292DEE44204D9D8D0086D5F7 /* Habitica_Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE45204D9D8D0086D5F7 /* Habitica_Models.framework */; };
 		292DEE4B204DA1220086D5F7 /* NetworkAuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE4A204DA1220086D5F7 /* NetworkAuthenticationManager.swift */; };
 		292DEE4F204DA3870086D5F7 /* RetrieveTasksCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE4E204DA3870086D5F7 /* RetrieveTasksCall.swift */; };
@@ -91,6 +93,8 @@
 		29027990205835F7006DACB9 /* APIQuestState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIQuestState.swift; sourceTree = "<group>"; };
 		2902799220583612006DACB9 /* APIQuestProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIQuestProgress.swift; sourceTree = "<group>"; };
 		29027994205836A8006DACB9 /* RetrieveWorldStateCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveWorldStateCall.swift; sourceTree = "<group>"; };
+		290C300E206A779E0066AF5B /* DeleteTaskCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTaskCall.swift; sourceTree = "<group>"; };
+		290C3012206A78700066AF5B /* APIEmptyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEmptyResponse.swift; sourceTree = "<group>"; };
 		292DEE45204D9D8D0086D5F7 /* Habitica_Models.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_Models.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		292DEE4A204DA1220086D5F7 /* NetworkAuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAuthenticationManager.swift; sourceTree = "<group>"; };
 		292DEE4E204DA3870086D5F7 /* RetrieveTasksCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveTasksCall.swift; sourceTree = "<group>"; };
@@ -208,6 +212,7 @@
 				292DEEA8204F71290086D5F7 /* ScoreTaskCall.swift */,
 				29A6B86F206940F80086B2A6 /* CreateTaskCall.swift */,
 				29A6B871206941210086B2A6 /* UpdateTask.swift */,
+				290C300E206A779E0066AF5B /* DeleteTaskCall.swift */,
 				292DEEB0205039CA0086D5F7 /* TaskResponse.swift */,
 			);
 			path = Tasks;
@@ -336,6 +341,7 @@
 				292DEEA0204F625B0086D5F7 /* DateDecodingStrategy-Extension.swift */,
 				29323E262051659C00AC6D6F /* ErrorHandler.swift */,
 				29323E2C2051B43100AC6D6F /* DebugOutputHandler.swift */,
+				290C3012206A78700066AF5B /* APIEmptyResponse.swift */,
 			);
 			path = "Habitica API Client";
 			sourceTree = "<group>";
@@ -590,6 +596,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				292DEE51204DA3A30086D5F7 /* APITask.swift in Sources */,
+				290C3013206A78700066AF5B /* APIEmptyResponse.swift in Sources */,
 				29A6B872206941210086B2A6 /* UpdateTask.swift in Sources */,
 				295610F92056CAA800D9711A /* APIHatchingPotion.swift in Sources */,
 				29323E1720504F5600AC6D6F /* APIStats.swift in Sources */,
@@ -597,6 +604,7 @@
 				29323E272051659C00AC6D6F /* ErrorHandler.swift in Sources */,
 				29027995205836A8006DACB9 /* RetrieveWorldStateCall.swift in Sources */,
 				29323E4720521B5000AC6D6F /* APIContributor.swift in Sources */,
+				290C300F206A779E0066AF5B /* DeleteTaskCall.swift in Sources */,
 				295610E22056C3AC00D9711A /* RetrieveContentCall.swift in Sources */,
 				29323E1520504F2300AC6D6F /* APIUser.swift in Sources */,
 				29A6B86E20690F0C0086B2A6 /* APIWeekRepeat.swift in Sources */,

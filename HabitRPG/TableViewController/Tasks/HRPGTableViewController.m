@@ -8,7 +8,6 @@
 
 #import "HRPGTableViewController.h"
 #import "HRPGFilterViewController.h"
-#import "HRPGFormViewController.h"
 #import "HRPGNavigationController.h"
 #import "HRPGSearchDataManager.h"
 #import "HRPGTabBarController.h"
@@ -376,24 +375,6 @@ NSIndexPath  *sourceIndexPath = nil;
 
 #pragma mark - Table view data source
 
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    return true;
-}
-
-- (void)tableView:(UITableView *)tableView
-    commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
-     forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        Task *task = [self taskAtIndexPath:indexPath];
-        [[HRPGManager sharedManager] deleteTask:task
-            onSuccess:nil onError:nil];
-    }
-}
-
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    return true;
-}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.dataSource selectRowAtIndexPath:indexPath];
     [self performSegueWithIdentifier:@"FormSegue" sender:self];
@@ -406,15 +387,6 @@ NSIndexPath  *sourceIndexPath = nil;
         HRPGTabBarController *tabBarController = (HRPGTabBarController *)self.tabBarController;
         tabBarController.selectedTags = tagViewController.selectedTags;
         [[NSNotificationCenter defaultCenter] postNotificationName:@"taskFilterChanged" object:nil];
-    }
-}
-
-- (IBAction)unwindToListSave:(UIStoryboardSegue *)segue {
-    HRPGFormViewController *formViewController = segue.sourceViewController;
-    if (formViewController.editTask) {
-        [[HRPGManager sharedManager] updateTask:formViewController.task onSuccess:nil onError:nil];
-    } else {
-        [[HRPGManager sharedManager] createTask:formViewController.task onSuccess:nil onError:nil];
     }
 }
 
