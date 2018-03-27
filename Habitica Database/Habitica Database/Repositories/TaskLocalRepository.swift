@@ -42,6 +42,24 @@ public class TaskLocalRepository: BaseLocalRepository {
             }
             return RealmTask(task, tags: tags)
         })
+        removeOldTasks(newTasks: tasks)
+    }
+    
+    private func removeOldTasks(newTasks: [TaskProtocol]) {
+        let oldTasks = realm?.objects(RealmTask.self)
+        var tasksToRemove = [RealmTask]()
+        oldTasks?.forEach({ (task) in
+            if !newTasks.contains(where: { (newTask) -> Bool in
+                return newTask.id == task.id
+            }) {
+                tasksToRemove.append(task)
+            }
+        })
+        if tasksToRemove.count > 0 {
+            try? realm?.write {
+                realm?.delete(tasksToRemove)
+            }
+        }
     }
     
     public func getTasks(predicate: NSPredicate) -> SignalProducer<ReactiveResults<[TaskProtocol]>, ReactiveSwiftRealmError> {
