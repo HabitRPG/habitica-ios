@@ -239,7 +239,7 @@
     } else if (level == 9) {
         return [UIColor purple300];
     }
-    return [UIColor gray10];
+    return [UIColor blackColor];
 }
 
 

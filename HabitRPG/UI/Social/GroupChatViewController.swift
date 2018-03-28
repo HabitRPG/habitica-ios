@@ -14,18 +14,15 @@ import KLCPopup
 class GroupChatViewController: SLKTextViewController {
     
     @objc public var groupID: String?
-    private var sizeTextView = UITextView()
     private var expandedChatPath: IndexPath?
     private var dataSource: HRPGCoreDataDataSource?
     private let user = HRPGManager.shared().getUser()
+    private var isScrolling = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         hidesBottomBarWhenPushed = true
-        self.sizeTextView.textContainerInset = .zero
-        self.sizeTextView.contentInset = .zero
-        self.sizeTextView.font = CustomFontMetrics.scaledSystemFont(ofSize: 15)
-        
+               
         let nib = UINib(nibName: "ChatMessageCell", bundle: nil)
         self.tableView?.register(nib, forCellReuseIdentifier: "ChatMessageCell")
         let systemNib = UINib(nibName: "SystemMessageTableViewCell", bundle: nil)
@@ -61,7 +58,7 @@ class GroupChatViewController: SLKTextViewController {
         
         self.dataSource?.cellIdentifierBlock = { (item, indexPath) in
             if let message = item as? ChatMessage {
-                if message.user == nil {
+                if message.uuid == nil || message.uuid == "system" {
                     return "SystemMessageCell"
                 }
             }
@@ -77,10 +74,17 @@ class GroupChatViewController: SLKTextViewController {
         self.textView.registerMarkdownFormattingSymbol("**", withTitle: "Bold")
         self.textView.registerMarkdownFormattingSymbol("*", withTitle: "Italics")
         self.textView.registerMarkdownFormattingSymbol("~~", withTitle: "Strike")
+        self.textView.placeholder = NSLocalizedString("Write a message", comment: "")
     }
     
     override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         dismissKeyboard(true)
+        isScrolling = true
+    }
+    
+    override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        super.scrollViewDidEndDecelerating(scrollView)
+        isScrolling = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -88,6 +92,11 @@ class GroupChatViewController: SLKTextViewController {
         checkGuidelinesAccepted()
         
         self.refresh()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        HRPGManager.shared().chatSeen(groupID)
     }
     
     override func viewDidLayoutSubviews() {
@@ -131,27 +140,33 @@ class GroupChatViewController: SLKTextViewController {
     }
     
     private func expandSelectedCell(_ indexPath: IndexPath) {
+        if isScrolling {
+            return
+        }
         var oldExpandedPath: IndexPath? = self.expandedChatPath
         if self.tableView?.numberOfRows(inSection: 0) ?? 0 < oldExpandedPath?.item ?? 0 {
             oldExpandedPath = nil
         }
         self.expandedChatPath = indexPath
         if let expandedPath = oldExpandedPath, indexPath.item != expandedPath.item {
+            print(indexPath.description)
+            print(expandedPath.description)
+            print("")
             let oldCell = self.tableView?.cellForRow(at: expandedPath) as? ChatTableViewCell
             let cell = self.tableView?.cellForRow(at: indexPath) as? ChatTableViewCell
             self.tableView?.beginUpdates()
             cell?.isExpanded = true
             oldCell?.isExpanded = false
-            self.tableView?.reloadRows(at: [indexPath, expandedPath], with: .automatic)
             self.tableView?.endUpdates()
         } else {
+            print(indexPath.description)
+            print("")
             let cell = self.tableView?.cellForRow(at: indexPath) as? ChatTableViewCell
             cell?.isExpanded = !(cell?.isExpanded ?? false)
             if !(cell?.isExpanded ?? false) {
                 self.expandedChatPath = nil
             }
             self.tableView?.beginUpdates()
-            self.tableView?.reloadRows(at: [indexPath], with: .automatic)
             self.tableView?.endUpdates()
         }
     }
@@ -161,6 +176,8 @@ class GroupChatViewController: SLKTextViewController {
         if let expandedChatPath = self.expandedChatPath, let indexPath = indexPath {
             isExpanded = expandedChatPath == indexPath
         }
+        
+        cell.isFirstMessage = indexPath?.item == 0
         cell.configure(chatMessage: item,
                        previousMessage: dataSource?.item(at: IndexPath(item: (indexPath?.item ?? 0)+1, section: indexPath?.section ?? 0)) as? ChatMessage,
                        nextMessage: dataSource?.item(at: IndexPath(item: (indexPath?.item ?? 0)-1, section: indexPath?.section ?? 0)) as? ChatMessage,
@@ -196,7 +213,9 @@ class GroupChatViewController: SLKTextViewController {
             popup?.show()
         }
         cell.replyAction = {
-            self.textView.text = "@\(item.user ?? "")"
+            self.textView.text = "@\(item.user ?? "") "
+            self.textView.becomeFirstResponder()
+            self.textView.selectedRange = NSRange(location: self.textView.text.count, length: 0)
         }
         cell.plusOneAction = {
             HRPGManager.shared().like(item, withGroup: self.groupID, onSuccess: {
@@ -208,6 +227,8 @@ class GroupChatViewController: SLKTextViewController {
         cell.copyAction = {
             let pasteboard = UIPasteboard.general
             pasteboard.string = item.text
+            let toastView = ToastView(title: NSLocalizedString("Copied Message", comment: ""), background: .green)
+            ToastManager.show(toast: toastView)
         }
         cell.deleteAction = {
             HRPGManager.shared().delete(item, withGroup: self.groupID, onSuccess: nil, onError: nil)

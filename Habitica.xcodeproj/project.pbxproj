@@ -696,6 +696,7 @@
 		29B3FEBD1F9E3DC3000B12CF /* HabiticaAlertController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HabiticaAlertController.xib; sourceTree = "<group>"; };
 		29B6AD491F2A0C9700AC8878 /* LoginEntryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginEntryView.xib; sourceTree = "<group>"; };
 		29B6AD4B1F2A0DBE00AC8878 /* LoginEntryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginEntryView.swift; sourceTree = "<group>"; };
+		29C23E47205A8F22006980F0 /* Habitica 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Habitica 6.xcdatamodel"; sourceTree = "<group>"; };
 		29C1B6AA20594F500001D3EF /* VisualEffectsModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectsModalViewController.swift; sourceTree = "<group>"; };
 		29C1B6AF205952E40001D3EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Tasks.storyboard; sourceTree = "<group>"; };
 		29C1B6B320599E6D0001D3EF /* TaskFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFormViewController.swift; sourceTree = "<group>"; };
@@ -2068,8 +2069,8 @@
 				29FC885120134A8F002B3D3F /* PurchaseHandler.swift */,
 				290458CF2021D6C60032BC5E /* TopHeaderCoordinator.swift */,
 				D9CD2DD61BCAC00300B1304B /* TutorialStepsProtocol.h */,
-				D976D23F1B98FA940032BC41 /* UIColor.Habitica.m */,
 				D976D23E1B98FA940032BC41 /* UIColor+Habitica.h */,
+				D976D23F1B98FA940032BC41 /* UIColor.Habitica.m */,
 				D93422B71AB792B5003AFCDE /* UIColor+LighterDarker.h */,
 				D93422B81AB792B5003AFCDE /* UIColor+LighterDarker.m */,
 				D91439881BAF14C40006999E /* UIImage+withColor.h */,
@@ -2212,10 +2213,11 @@
 				29FEB279202B4F0400EA245A /* AvatarView.swift */,
 				293BB4A01FD06E7E003B6F4F /* BulkStatsAllocationView.xib */,
 				299BD6311F5420A300E22935 /* Challenges */,
-				29FC88552017B840002B3D3F /* CollapsibleTitle.swift */,
 				29FC88592017C039002B3D3F /* CollapsibleStackView.swift */,
+				29FC88552017B840002B3D3F /* CollapsibleTitle.swift */,
 				4904C73F1F1ED87400F80723 /* GradientImageView.swift */,
 				29AAA15C1F2A3AA600029737 /* GradientView.swift */,
+				29A0FD80203DF49900590BDE /* GuidelinesPromptView.xib */,
 				29B3FEBB1F9E3B17000B12CF /* HabiticaAlertController.swift */,
 				29B3FEBD1F9E3DC3000B12CF /* HabiticaAlertController.xib */,
 				D96760C61B2EF9B600DB07DF /* HRPGAbbrevNumberLabel.h */,
@@ -2276,7 +2278,6 @@
 				29E162DF1FFBBDDC00685640 /* UsernameLabel.swift */,
 				2980E6081EEA25CD005B7100 /* YesterdailiesDialogView.swift */,
 				2980E6061EEA1F55005B7100 /* YesterdailiesDialogView.xib */,
-				29A0FD80203DF49900590BDE /* GuidelinesPromptView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -3161,6 +3162,7 @@
 				"${BUILT_PRODUCTS_DIR}/NSString+Emoji/NSString_Emoji.framework",
 				"${BUILT_PRODUCTS_DIR}/OHHTTPStubs/OHHTTPStubs.framework",
 				"${BUILT_PRODUCTS_DIR}/PDKeychainBindingsController/PDKeychainBindingsController.framework",
+				"${BUILT_PRODUCTS_DIR}/PinLayout/PinLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/PopupDialog/PopupDialog.framework",
 				"${BUILT_PRODUCTS_DIR}/RKValueTransformers/RKValueTransformers.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework",
@@ -3174,7 +3176,6 @@
 				"${BUILT_PRODUCTS_DIR}/SOCKit/SOCKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SeedsSDK/SeedsSDK.framework",
 				"${BUILT_PRODUCTS_DIR}/SlackTextViewController/SlackTextViewController.framework",
-				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyStoreKit/SwiftyStoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/TransitionKit/TransitionKit.framework",
 				"${BUILT_PRODUCTS_DIR}/VTAcknowledgementsViewController/VTAcknowledgementsViewController.framework",
@@ -3210,6 +3211,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NSString_Emoji.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OHHTTPStubs.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PDKeychainBindingsController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PinLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PopupDialog.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RKValueTransformers.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveCocoa.framework",
@@ -3223,7 +3225,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SOCKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SeedsSDK.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SlackTextViewController.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyStoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TransitionKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/VTAcknowledgementsViewController.framework",
@@ -4483,13 +4484,14 @@
 		29E163072008E7B600685640 /* Habitica.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				29C23E47205A8F22006980F0 /* Habitica 6.xcdatamodel */,
 				29323E2E2051C9A500AC6D6F /* Habitica 5.xcdatamodel */,
 				298409CE203C8617003AD202 /* Habitica 4.xcdatamodel */,
 				49B87D8F201BA88C00CA1A75 /* Habitica 3.xcdatamodel */,
 				29FC885020121771002B3D3F /* Habitica 2.xcdatamodel */,
 				29E163082008E7B600685640 /* Habitica.xcdatamodel */,
 			);
-			currentVersion = 29323E2E2051C9A500AC6D6F /* Habitica 5.xcdatamodel */;
+			currentVersion = 29C23E47205A8F22006980F0 /* Habitica 6.xcdatamodel */;
 			path = Habitica.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

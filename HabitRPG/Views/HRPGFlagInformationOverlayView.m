@@ -118,7 +118,7 @@ static inline UIImage *MTDContextCreateRoundedMask(CGRect rect, CGFloat radius_t
     [self setFrame:CGRectMake(0, 0, width, 300)];
     // top margin, title-message margin, message-explanation margin, explanation-buttons margin,
     // button height
-    CGFloat height = 20 + 12 + 12 + 8 + 50 + 40;
+    CGFloat height = 20 + 12 + 12 + 8 + 30 + 40;
     height = height +
              [self.titleLabel.text boundingRectWithSize:CGSizeMake(width - 70, MAXFLOAT)
                                                 options:NSStringDrawingUsesLineFragmentOrigin |
@@ -145,7 +145,7 @@ static inline UIImage *MTDContextCreateRoundedMask(CGRect rect, CGFloat radius_t
                                                 options:NSStringDrawingUsesLineFragmentOrigin |
                                                         NSStringDrawingUsesFontLeading
                                              attributes:@{
-                                                 NSFontAttributeName : [UIFont systemFontOfSize:17]
+                                                 NSFontAttributeName : [UIFont systemFontOfSize:14]
                                              }
                                                 context:nil]
             .size.height;

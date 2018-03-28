@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSFetchRequest<ChatMessageLike *> *)fetchRequest;
 
 @property (nullable, nonatomic, copy) NSString *userID;
+@property (nullable, nonatomic, copy) NSNumber *wasLiked;
 @property (nullable, nonatomic, retain) NSSet<ChatMessage *> *messages;
 
 @end

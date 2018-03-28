@@ -90,6 +90,7 @@ class SplitSocialViewController: HRPGUIViewController, UIScrollViewDelegate, NSF
         super.willTransition(to: newCollection, with: coordinator)
         coordinator.animate(alongsideTransition: { (_) in
             self.setupSplitView(newCollection)
+            self.scrollTo(page: self.segmentedControl.selectedSegmentIndex)
         }, completion: nil)
     }
     

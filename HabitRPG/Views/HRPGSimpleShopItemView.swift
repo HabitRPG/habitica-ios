@@ -10,7 +10,8 @@ import UIKit
 
 @IBDesignable
 class HRPGSimpleShopItemView: UIView {
-    @IBOutlet weak var topBannerLabel: PaddedLabel!
+    @IBOutlet weak var topBannerLabel: UILabel!
+    @IBOutlet weak var topBannerWrapper: UIView!
     @IBOutlet weak var shopItemImageView: UIImageView!
     @IBOutlet weak var shopItemTitleLabel: UILabel!
     @IBOutlet weak var shopItemDescriptionLabel: UILabel!
@@ -70,6 +71,10 @@ class HRPGSimpleShopItemView: UIView {
         super.init(frame: contentView.bounds)
         setupView()
         
+        if let availableUntil = item.availableUntil {
+            setAvailableUntil(date: availableUntil)
+        }
+        
         self.shopItemTitleLabel.text = item.text
         
         if let imageName = item.imageName {
@@ -106,8 +111,12 @@ class HRPGSimpleShopItemView: UIView {
         
         self.shopItemTitleLabel.text = reward.text
 
+        
         var purchaseType = ""
         if let inAppReward = reward as? InAppReward {
+            if let availableUntil = inAppReward.availableUntil {
+                setAvailableUntil(date: availableUntil)
+            }
             if inAppReward.imageName?.contains(" ") ?? false {
                 HRPGManager.shared().setImage(inAppReward.imageName?.components(separatedBy: " ")[1], withFormat: "png", on: self.shopItemImageView)
             } else {
@@ -147,13 +156,13 @@ class HRPGSimpleShopItemView: UIView {
         let totalCount = HRPGManager.shared().getUser().subscriptionPlan.totalGemCap
         topBannerLabel.text = NSLocalizedString("Monthly Gems: \(gemsLeft)/\(totalCount) Remaining", comment: "")
         if gemsLeft == 0 {
-            topBannerLabel.backgroundColor = UIColor.orange10()
+            topBannerWrapper.backgroundColor = UIColor.orange10()
             additionalInfoLabel.text = NSLocalizedString("No more Gems available this month. More become available within the first 3 days of each month.", comment: "")
             additionalInfoLabel.textColor = UIColor.orange10()
         } else {
-            topBannerLabel.backgroundColor = UIColor.green10()
+            topBannerWrapper.backgroundColor = UIColor.green10()
         }
-        topBannerLabel.verticalPadding = 6
+        topBannerWrapper.isHidden = false
     }
     
     private func configureFor(key: String, purchaseType: String) {
@@ -163,12 +172,26 @@ class HRPGSimpleShopItemView: UIView {
             if gearClass == "special" {
                 gearClass = gear?.specialClass
             }
-            if gearClass != user.hclass {
-                topBannerLabel.text = NSLocalizedString("Only available for \(gear?.klass ?? "")", comment: "")
-                topBannerLabel.backgroundColor = UIColor.orange10()
-                topBannerLabel.verticalPadding = 6
+            if gearClass == "wizard" {
+                gearClass = "mage"
+            }
+            if gearClass != user.hclass && gearClass != nil && gearClass != "special" && gearClass != "armoire" {
+                topBannerLabel.text = NSLocalizedString("Only available for \(gearClass?.capitalized ?? "")s. You can change your class from Settings", comment: "")
+                topBannerWrapper.backgroundColor = UIColor.gray100()
+                topBannerWrapper.isHidden = false
             }
         }
+    }
+    
+    private func setAvailableUntil(date: Date) {
+        let formatter = DateFormatter()
+        formatter.timeStyle = .none
+        formatter.dateStyle = .medium
+        formatter.timeZone = TimeZone(identifier: "UTC")
+        let dateString = formatter.string(from: date)
+        topBannerLabel.text = NSLocalizedString("Available Until \(dateString)", comment: "")
+        topBannerWrapper.backgroundColor = UIColor.purple200()
+        topBannerWrapper.isHidden = false
     }
     
     // MARK: - Private Helper Methods

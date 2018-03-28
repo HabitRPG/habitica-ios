@@ -34,13 +34,9 @@
 @implementation HRPGShopViewController
 
 - (void)viewDidLoad {
-    self.topHeaderNavigationController.shouldHideTopHeader = NO;
-    [self.topHeaderNavigationController setAlternativeHeaderView:self.shopBannerView];
-
     [super viewDidLoad];
-    
     self.topHeaderCoordinator.alternativeHeader = self.shopBannerView;
-
+    
     [self setupNavBar];
     
     [self setupCollectionView];
@@ -52,15 +48,16 @@
     self.dataSource.selectedGearCategory = self.selectedGearCategory;
     self.dataSource.fetchedResultsDelegate = self;
     self.dataSource.fetchedResultsController = [self.viewModel fetchedShopItemResultsForIdentifier:self.shopIdentifier withGearCategory:self.selectedGearCategory];
+    if ([self.shopIdentifier isEqualToString:@"market"]) {
+        self.dataSource.needsGearSection = YES;
+    }
     
     [self refresh];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
-    [self scrollToTop];
-    
+        
     [self.user addObserver:self forKeyPath:@"gold" options:0 context:NULL];
     [self.user addObserver:self forKeyPath:@"balance" options:0 context:NULL];
 }
@@ -236,6 +233,7 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    [super scrollViewDidScroll:scrollView];
     if ([self.viewModel shouldPromptToSubscribe]) {
         CGFloat alpha = scrollView.contentOffset.y + 350 + self.topHeaderNavigationController.contentInset - 80;
         alpha /= -80;

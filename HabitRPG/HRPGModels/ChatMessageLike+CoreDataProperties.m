@@ -16,6 +16,7 @@
 }
 
 @dynamic userID;
+@dynamic wasLiked;
 @dynamic messages;
 
 @end

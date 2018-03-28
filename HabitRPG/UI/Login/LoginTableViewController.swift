@@ -71,11 +71,12 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
         self.viewModel.inputs.onePassword(
             isAvailable: OnePasswordExtension.shared().isAppExtensionAvailable()
         )
+        
+        initialUISetup()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        initialUISetup()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShowNotification(notification:)), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHideNotification(notification:)), name: .UIKeyboardWillHide, object: nil)
     }

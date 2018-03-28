@@ -20,6 +20,7 @@ class HRPGShopCollectionViewDataSource: HRPGFetchedResultsCollectionViewDataSour
     @objc var ownedItems = [String: Item]()
     @objc var pinnedItems = [String: InAppReward]()
     
+    @objc var needsGearSection: Bool = false
     @objc var selectedGearCategory: String?
     
     // MARK: Collection view data source and delegate methods
@@ -29,7 +30,9 @@ class HRPGShopCollectionViewDataSource: HRPGFetchedResultsCollectionViewDataSour
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        if hasGearSection() {
+        if needsGearSection && !hasGearSection() {
+            return super.numberOfSections(in: collectionView) + 1
+        } else {
             return super.numberOfSections(in: collectionView)
         } else {
             return super.numberOfSections(in: collectionView) + 1
@@ -37,19 +40,23 @@ class HRPGShopCollectionViewDataSource: HRPGFetchedResultsCollectionViewDataSour
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if hasGearSection() {
+        if needsGearSection && !hasGearSection() {
             return super.collectionView(collectionView, numberOfItemsInSection: section)
         } else {
             if section == 0 {
-                return 0
+                return 1
             } else {
                 return super.collectionView(collectionView, numberOfItemsInSection: section-1)
             }
+        } else {
+            return super.collectionView(collectionView, numberOfItemsInSection: section)
         }
     }
     
     func itemAt(indexPath: IndexPath) -> ShopItem? {
-        if hasGearSection() {
+        if needsGearSection && !hasGearSection() {
+            return fetchedResultsController?.sections?[indexPath.section-1].objects?[indexPath.item] as? ShopItem
+        } else {
             return fetchedResultsController?.sections?[indexPath.section].objects?[indexPath.item] as? ShopItem
         } else {
             return fetchedResultsController?.sections?[indexPath.section-1].objects?[indexPath.item] as? ShopItem
@@ -62,15 +69,20 @@ class HRPGShopCollectionViewDataSource: HRPGFetchedResultsCollectionViewDataSour
             ) as? HRPGShopSectionHeaderCollectionReusableView
         
         if let headerView = view {
-            headerView.gearCategoryLabel.isHidden = true
-            if indexPath.section == 0 {
+            headerView.gearCategoryButton.isHidden = true
+            headerView.otherClassDisclaimer.isHidden = true
+            if indexPath.section == 0 && needsGearSection {
                 headerView.titleLabel.text = NSLocalizedString("Class Equipment", comment: "")
                 headerView.gearCategoryLabel.text = selectedGearCategory?.capitalized
-                headerView.gearCategoryLabel.isHidden = false
+                headerView.gearCategoryButton.isHidden = false
                 headerView.onGearCategoryLabelTapped = {[weak self] in
                     self?.delegate?.showGearSelection()
                 }
-            } else if hasGearSection() {
+                let userClass = HRPGManager.shared().getUser().hclass
+                headerView.otherClassDisclaimer.isHidden = userClass == selectedGearCategory
+            } else if needsGearSection && !hasGearSection() {
+                headerView.titleLabel.text = titleFor(section: indexPath.section-1)
+            } else {
                 headerView.titleLabel.text = titleFor(section: indexPath.section)
             } else {
                 headerView.titleLabel.text = titleFor(section: indexPath.section-1)
@@ -80,8 +92,32 @@ class HRPGShopCollectionViewDataSource: HRPGFetchedResultsCollectionViewDataSour
         }
         return UICollectionReusableView()
     }
+   
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        if section == 0 && needsGearSection {
+            let userClass = HRPGManager.shared().getUser().hclass
+            if userClass != selectedGearCategory {
+                return CGSize(width: collectionView.bounds.width, height: 75)
+            }
+        }
+        return CGSize(width: collectionView.bounds.width, height: 50)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if indexPath.section == 0 && needsGearSection {
+            if !hasGearSection() {
+                return CGSize(width: collectionView.bounds.width, height: 80)
+            }
+        }
+        return CGSize(width: 90, height: 120)
+    }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if indexPath.section == 0 && needsGearSection {
+            if !hasGearSection() {
+                return collectionView.dequeueReusableCell(withReuseIdentifier: "EmptyGearCell", for: indexPath)
+            }
+        }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath)
         if let item = itemAt(indexPath: indexPath) {
             if let itemCell = cell as? InAppRewardCell {

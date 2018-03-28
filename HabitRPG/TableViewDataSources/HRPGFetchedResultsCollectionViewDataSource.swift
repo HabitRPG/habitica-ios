@@ -12,7 +12,7 @@ import UIKit
     func onEmptyFetchedResults()
 }
 
-class HRPGFetchedResultsCollectionViewDataSource: NSObject, UICollectionViewDataSource, UICollectionViewDelegate, NSFetchedResultsControllerDelegate {
+class HRPGFetchedResultsCollectionViewDataSource: NSObject, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, NSFetchedResultsControllerDelegate {
     @objc var collectionView: UICollectionView?
     var contentChangeWasUpdate = false
     @objc weak var fetchedResultsDelegate: HRPGFetchedResultsCollectionViewDataSourceDelegate?

@@ -1473,7 +1473,7 @@ static dispatch_once_t onceToken;
                                                        inManagedObjectStore:managedObjectStore];
     likeMapping.forceCollectionMapping = YES;
     [likeMapping addAttributeMappingFromKeyOfRepresentationToAttribute:@"userID"];
-    likeMapping.identificationAttributes = @[ @"userID" ];
+    [likeMapping addAttributeMappingsFromDictionary:@{@"(userID)": @"wasLiked"}];
     [chatMapping
         addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"likes"
                                                                        toKeyPath:@"likes"
@@ -2892,7 +2892,9 @@ static dispatch_once_t onceToken;
             
             NSError *error;
             for (ChatMessage *message in group.chatmessages) {
-                message.attributedText = [HabiticaMarkdownHelper toHabiticaAttributedString:[message.text stringByReplacingEmojiCheatCodesWithUnicode] error:&error];
+                NSMutableAttributedString *attributedText = [HabiticaMarkdownHelper toHabiticaAttributedString:[message.text stringByReplacingEmojiCheatCodesWithUnicode] error:&error];
+                [attributedText addAttribute:NSForegroundColorAttributeName value:[UIColor gray10] range:NSMakeRange(0, attributedText.length)];
+                message.attributedText = attributedText;
             }
             
             [self handleNotifications:[mappingResult dictionary][@"notifications"]];
@@ -5021,7 +5023,9 @@ static dispatch_once_t onceToken;
             return;
         }
         failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            [self handleNetworkError:operation withError:error];
+            if (operation.HTTPRequestOperation.response.statusCode != 401) {
+                [self handleNetworkError:operation withError:error];
+            }
             if (errorBlock) {
                 errorBlock();
             }

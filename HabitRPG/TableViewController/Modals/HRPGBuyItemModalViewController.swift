@@ -225,7 +225,7 @@ class HRPGBuyItemModalViewController: UIViewController {
     }
     
     func canBuy() -> Bool {
-        return canAfford() && itemIsLocked()
+        return canAfford() && !itemIsLocked()
     }
     
     func getPurchaseType() -> String {
@@ -299,7 +299,11 @@ class HRPGBuyItemModalViewController: UIViewController {
                 currency = thisCurrency
             }
             successBlock = {
-                HRPGManager.shared().fetchShopInventory(self.shopIdentifier, onSuccess: nil, onError: nil)
+                if purchaseType == "gear" {
+                    HRPGManager.shared().fetchShopInventory(GearMarketKey, onSuccess: nil, onError: nil)
+                } else {
+                    HRPGManager.shared().fetchShopInventory(self.shopIdentifier, onSuccess: nil, onError: nil)
+                }
             }
         } else if let inAppReward = reward as? InAppReward {
             key = inAppReward.key ?? ""
@@ -320,16 +324,18 @@ class HRPGBuyItemModalViewController: UIViewController {
             self.dismiss(animated: true, completion: nil)
             
             let topViewController = self.presentingViewController
-            if !canAfford() {
+            if !canBuy() {
                 var viewControllerName: String? = nil
-                if currency == .hourglass {
-                    viewControllerName = "InsufficientHourglassesViewController"
-                } else if currency == .gem {
-                    viewControllerName = "InsufficientGemsViewController"
+                if !canAfford() {
+                    if currency == .hourglass {
+                        viewControllerName = "InsufficientHourglassesViewController"
+                    } else if currency == .gem {
+                        viewControllerName = "InsufficientGemsViewController"
+                    } else {
+                        viewControllerName = "InsufficientGoldViewController"
+                    }
                 } else if key == "gem" {
                     viewControllerName = "GemCapReachedViewController"
-                } else {
-                    viewControllerName = "InsufficientGoldViewController"
                 }
                 
                 if let name = viewControllerName {
@@ -380,7 +386,7 @@ class HRPGBuyItemModalViewController: UIViewController {
         let storyboard = UIStoryboard(name: "BuyModal", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: name)
         viewController.modalTransitionStyle = .crossDissolve
-        viewController.modalPresentationStyle = .currentContext
+        viewController.modalPresentationStyle = .overFullScreen
         parent?.present(viewController, animated: true, completion: nil)
     }
     
