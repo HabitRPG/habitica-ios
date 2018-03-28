@@ -17,6 +17,7 @@ struct MenuItem {
     var segue: String
     var cellName = "Cell"
     var showIndicator = false
+    var isHidden = false
     
     init(title: String, accessibilityLabel: String? = nil, segue: String, cellName: String = "Cell", showIndicator: Bool = false) {
         self.title = title
@@ -30,7 +31,11 @@ struct MenuItem {
 struct MenuSection {
     let title: String?
     let iconAsset: ImageAsset?
-    let items: [MenuItem]
+    var items: [MenuItem]
+    
+    var visibleItems: [MenuItem] {
+        return items.filter({ (item) -> Bool in return !item.isHidden })
+    }
 }
 
 class MainMenuViewController: HRPGBaseViewController {
@@ -56,6 +61,14 @@ class MainMenuViewController: HRPGBaseViewController {
             if let user = self.user {
                 navbarView?.configure(user: user)
             }
+            if user?.stats?.habitClass == "wizard" || user?.stats?.habitClass == "healer" {
+                menuSections[0].items[0].title = L10n.Menu.castSpells
+            } else {
+                menuSections[0].items[0].title = L10n.Menu.useSkills
+            }
+            menuSections[0].items[0].isHidden = user?.canUseSkills == false
+            menuSections[0].items[1].isHidden = user?.needsToChooseClass == false
+            menuSections[3].items[0].showIndicator = user?.flags?.hasNewStuff == true
             tableView.reloadData()
         }
     }
@@ -92,6 +105,7 @@ class MainMenuViewController: HRPGBaseViewController {
         menuSections = [
             MenuSection(title: nil, iconAsset: nil, items: [
                 MenuItem(title: L10n.Menu.castSpells, segue: StoryboardSegue.Main.spellsSegue.rawValue),
+                MenuItem(title: L10n.Menu.selectClass, segue: StoryboardSegue.Main.selectClassSegue.rawValue),
                 MenuItem(title: L10n.Menu.stats, segue: StoryboardSegue.Main.statsSegue.rawValue)
                 ]),
             MenuSection(title: L10n.Menu.social, iconAsset: Asset.iconSocial, items: [
@@ -129,11 +143,11 @@ class MainMenuViewController: HRPGBaseViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return menuSections[section].items.count
+        return sectionAt(index: section)?.visibleItems.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return menuSections[section].title
+        return sectionAt(index: section)?.title
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -165,22 +179,40 @@ class MainMenuViewController: HRPGBaseViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let item = menuSections[indexPath.section].items[indexPath.item]
-        let cell = tableView .dequeueReusableCell(withIdentifier: item.cellName, for: indexPath)
+        let item = visibleItemAt(indexPath: indexPath)
+        let cell = tableView .dequeueReusableCell(withIdentifier: item?.cellName ?? "", for: indexPath)
         
-        if item.accessibilityLabel?.isEmpty != true {
+        if item?.accessibilityLabel?.isEmpty != true {
             cell.accessibilityLabel = accessibilityLabel
         } else {
             cell.accessibilityLabel = title
         }
         
         let label = cell.viewWithTag(1) as? UILabel
-        label?.text = item.title
+        label?.text = item?.title
         label?.font = CustomFontMetrics.scaledSystemFont(ofSize: 17)
         
         let indicatorView = cell.viewWithTag(2)
-        indicatorView?.isHidden = !item.showIndicator
+        indicatorView?.isHidden = item?.showIndicator == false
         indicatorView?.layer.cornerRadius = (indicatorView?.frame.size.height ?? 0) / 2
         return cell
+    }
+    
+    private func sectionAt(index: Int) -> MenuSection? {
+        if menuSections.count <= index {
+            return nil
+        }
+        return menuSections[index]
+    }
+    
+    private func visibleItemAt(indexPath: IndexPath) -> MenuItem? {
+        guard let section = sectionAt(index: indexPath.section) else {
+            return nil
+        }
+        let items = section.visibleItems
+        if items.count <= indexPath.item {
+            return nil
+        }
+        return items[indexPath.item]
     }
 }

@@ -29,4 +29,20 @@ public extension UserProtocol {
         return Int(balance * 4.0)
     }
     
+    var canUseSkills: Bool {
+        if preferences?.disableClasses == true {
+            return false
+        }
+        if stats?.level ?? 0 < 10 || flags?.classSelected == false {
+            return false
+        }
+        return true
+    }
+    
+    var needsToChooseClass: Bool {
+        if preferences?.disableClasses == true {
+            return false
+        }
+        return stats?.level ?? 0 >= 10 && flags?.classSelected == false
+    }
 }

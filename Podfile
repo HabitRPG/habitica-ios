@@ -69,9 +69,10 @@ target 'Habitica' do
 
   pod 'PopupDialog', :git => 'https://github.com/Orderella/PopupDialog.git', :branch => 'development'
   pod 'Alamofire', '~> 4.5'
-  pod 'RealmSwift'
   pod 'SwiftLint'
   pod 'Eureka'
+
+  pod 'RealmSwift'
   pod 'FunkyNetwork'
 
   pod 'SwiftGen'
@@ -88,6 +89,10 @@ target 'Habitica' do
 
 end
 
+target "Habitica ModelsTests" do
+  project 'Habitica Models/Habitica Models.xcodeproj'
+  test_pods
+end
 
 target "Habitica API Client" do
   project 'Habitica API Client/Habitica API Client.xcodeproj'
