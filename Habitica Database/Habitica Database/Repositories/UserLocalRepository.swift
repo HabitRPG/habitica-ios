@@ -20,8 +20,8 @@ public class UserLocalRepository: BaseLocalRepository {
     }
     
     public func save(_ userId: String, stats: StatsProtocol) {
-        RealmUser.findBy(key: userId).take(first: 1).on(value: {[weak self] user in
-            try? self?.realm?.write {
+        RealmUser.findBy(key: userId).take(first: 1).on(value: {user in
+            try? self.getRealm()?.write {
                 user?.stats = stats
             }
         }).start()
@@ -34,6 +34,6 @@ public class UserLocalRepository: BaseLocalRepository {
     }
     
     public func hasUserData(id: String) -> Bool {
-        return realm?.object(ofType: RealmUser.self, forPrimaryKey: id) != nil
+        return getRealm()?.object(ofType: RealmUser.self, forPrimaryKey: id) != nil
     }
 }

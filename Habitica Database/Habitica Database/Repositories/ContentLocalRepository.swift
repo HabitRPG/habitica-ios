@@ -15,27 +15,29 @@ import Result
 public class ContentLocalRepository: BaseLocalRepository {
     
     public func save(_ content: ContentProtocol) {
-        save(objects: content.spells?.map({ (spell) in
-            return RealmSpell(spell)
-        }))
-        save(objects: content.food?.map({ (food) in
-            return RealmFood(food)
-        }))
-        save(objects: content.eggs?.map({ (egg) in
-            return RealmEgg(egg)
-        }))
-        save(objects: content.hatchingPotions?.map({ (hatchingPotion) in
-            return RealmHatchingPotion(hatchingPotion)
-        }))
-        save(objects: content.quests?.map({ (quest) in
-            return RealmQuest(quest)
-        }))
-        save(objects: content.gear?.map({ (gear) in
-            return RealmGear(gear)
-        }))
-        save(objects: content.faq?.map({ (entries) in
-            return RealmFAQEntry(entries)
-        }))
+        var newObjects = [Object]()
+        content.spells?.forEach({ (spell) in
+            newObjects.append(RealmSpell(spell))
+        })
+        content.food?.forEach({ (food) in
+            newObjects.append(RealmFood(food))
+        })
+        content.eggs?.forEach({ (egg) in
+            newObjects.append(RealmEgg(egg))
+        })
+        content.hatchingPotions?.forEach({ (hatchingPotion) in
+            newObjects.append(RealmHatchingPotion(hatchingPotion))
+        })
+        content.quests?.forEach({ (quest) in
+            newObjects.append(RealmQuest(quest))
+        })
+        content.gear?.forEach({ (gear) in
+            newObjects.append(RealmGear(gear))
+        })
+        content.faq?.forEach({ (entries) in
+            newObjects.append(RealmFAQEntry(entries))
+        })
+        save(objects: newObjects)
     }
     
     public func save(_ worldState: WorldStateProtocol) {
@@ -64,4 +66,9 @@ public class ContentLocalRepository: BaseLocalRepository {
         })
     }
     
+    public func getSpells() -> SignalProducer<ReactiveResults<[SpellProtocol]>, ReactiveSwiftRealmError> {
+        return RealmSpell.findAll().reactive().map({ (value, changeset) -> ReactiveResults<[SpellProtocol]> in
+            return (value.map({ (spell) -> SpellProtocol in return spell }), changeset)
+        })
+    }
 }

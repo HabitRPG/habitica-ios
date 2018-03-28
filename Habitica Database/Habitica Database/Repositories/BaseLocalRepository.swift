@@ -11,15 +11,18 @@ import RealmSwift
 
 public class BaseLocalRepository {
     
-    let realm = try? Realm()
-    
     required public init() {
         
     }
     
+    func getRealm() -> Realm? {
+        return try? Realm()
+    }
+    
     func save(object realmObject: Object?) {
         if let object = realmObject {
-            try? realm?.write {
+            let realm = getRealm()
+            try! realm?.write {
                 realm?.add(object, update: true)
             }
         }
@@ -27,7 +30,8 @@ public class BaseLocalRepository {
     
     func save(objects realmObjects: [Object]?) {
         if let objects = realmObjects {
-            try? realm?.write {
+            let realm = getRealm()
+            try! realm?.write {
                 realm?.add(objects, update: true)
             }
         }

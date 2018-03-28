@@ -23,21 +23,21 @@ public class TaskLocalRepository: BaseLocalRepository {
     }
     
     public func save(_ task: TaskProtocol) {
-        let tags = realm?.objects(RealmTag.self).filter("id IN %@", task.tags.map({ (tag) -> String? in
+        let tags = getRealm()?.objects(RealmTag.self).filter("id IN %@", task.tags.map({ (tag) -> String? in
             return tag.id
         }))
         save(task, tags: tags)
     }
     
     public func save(_ tasks: [TaskProtocol]) {
-        let tags = realm?.objects(RealmTag.self)
+        let tags = getRealm()?.objects(RealmTag.self)
         tasks.forEach { (task) in
             save(task, tags: tags)
         }
     }
     
     public func save(_ tasks: [TaskProtocol], order: [String: [String]]) {
-        let tags = realm?.objects(RealmTag.self)
+        let tags = getRealm()?.objects(RealmTag.self)
         save(objects:tasks.map { (task) in
             task.order = order[(task.type ?? "")+"s"]?.index(of: task.id ?? "") ?? 0
             if let realmTask = task as? RealmTask {
@@ -49,7 +49,7 @@ public class TaskLocalRepository: BaseLocalRepository {
     }
     
     private func removeOldTasks(newTasks: [TaskProtocol]) {
-        let oldTasks = realm?.objects(RealmTask.self)
+        let oldTasks = getRealm()?.objects(RealmTask.self)
         var tasksToRemove = [RealmTask]()
         oldTasks?.forEach({ (task) in
             if !newTasks.contains(where: { (newTask) -> Bool in
@@ -59,6 +59,7 @@ public class TaskLocalRepository: BaseLocalRepository {
             }
         })
         if tasksToRemove.count > 0 {
+            let realm = getRealm()
             try? realm?.write {
                 realm?.delete(tasksToRemove)
             }
@@ -91,7 +92,7 @@ public class TaskLocalRepository: BaseLocalRepository {
     
     public func update(taskId: String, stats: StatsProtocol, direction: TaskScoringDirection, response: TaskResponseProtocol) {
         RealmTask.findBy(key: taskId).take(first: 1).skipNil().on(value: { realmTask in
-            try? self.realm?.write {
+            try? self.getRealm()?.write {
                 if let delta = response.delta {
                     realmTask.value = realmTask.value + delta
                 }
@@ -130,7 +131,7 @@ public class TaskLocalRepository: BaseLocalRepository {
     }
     
     public func getEditableTask(id: String) -> TaskProtocol? {
-        if let task = realm?.object(ofType: RealmTask.self, forPrimaryKey: id) {
+        if let task = getRealm()?.object(ofType: RealmTask.self, forPrimaryKey: id) {
             let editableTask = RealmTask(value: task)
             editableTask.weekRepeat = RealmWeekRepeat(value: task.weekRepeat)
             return editableTask
@@ -140,7 +141,7 @@ public class TaskLocalRepository: BaseLocalRepository {
     
     public func setTaskSyncing(_ task: TaskProtocol, isSyncing: Bool) {
         if let realmTask = task as? RealmTask {
-            try? realm?.write {
+            try? getRealm()?.write {
                 realmTask.isSyncing = isSyncing
             }
         } else {
@@ -156,6 +157,7 @@ public class TaskLocalRepository: BaseLocalRepository {
     }
     
     public func deleteTask(_ task: TaskProtocol) {
+        let realm = getRealm()
         if let realmTask = realm?.object(ofType: RealmTask.self, forPrimaryKey: task.id) {
             try? realm?.write {
                 realm?.delete(realmTask)
@@ -164,13 +166,14 @@ public class TaskLocalRepository: BaseLocalRepository {
     }
     
     public func moveTask(_ task: TaskProtocol, toPosition: Int) {
-        try? realm?.write {
+        try? getRealm()?.write {
             task.order = toPosition
         }
     }
     
     public func fixTaskOrder(movedTask: TaskProtocol, toPosition: Int) {
         var taskOrder = 0
+        let realm = getRealm()
         guard let tasks = realm?.objects(RealmTask.self).filter("type == %@", movedTask.type ?? "").sorted(byKeyPath: "order") else {
             return
         }
