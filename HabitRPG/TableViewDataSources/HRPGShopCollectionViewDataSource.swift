@@ -34,8 +34,6 @@ class HRPGShopCollectionViewDataSource: HRPGFetchedResultsCollectionViewDataSour
             return super.numberOfSections(in: collectionView) + 1
         } else {
             return super.numberOfSections(in: collectionView)
-        } else {
-            return super.numberOfSections(in: collectionView) + 1
         }
     }
     
@@ -48,8 +46,6 @@ class HRPGShopCollectionViewDataSource: HRPGFetchedResultsCollectionViewDataSour
             } else {
                 return super.collectionView(collectionView, numberOfItemsInSection: section-1)
             }
-        } else {
-            return super.collectionView(collectionView, numberOfItemsInSection: section)
         }
     }
     
@@ -58,8 +54,6 @@ class HRPGShopCollectionViewDataSource: HRPGFetchedResultsCollectionViewDataSour
             return fetchedResultsController?.sections?[indexPath.section-1].objects?[indexPath.item] as? ShopItem
         } else {
             return fetchedResultsController?.sections?[indexPath.section].objects?[indexPath.item] as? ShopItem
-        } else {
-            return fetchedResultsController?.sections?[indexPath.section-1].objects?[indexPath.item] as? ShopItem
         }
     }
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -84,8 +78,6 @@ class HRPGShopCollectionViewDataSource: HRPGFetchedResultsCollectionViewDataSour
                 headerView.titleLabel.text = titleFor(section: indexPath.section-1)
             } else {
                 headerView.titleLabel.text = titleFor(section: indexPath.section)
-            } else {
-                headerView.titleLabel.text = titleFor(section: indexPath.section-1)
             }
             
             return headerView

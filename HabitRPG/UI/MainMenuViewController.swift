@@ -125,7 +125,7 @@ class MainMenuViewController: HRPGBaseViewController {
                 ]),
             MenuSection(title: L10n.Menu.about, iconAsset: Asset.iconHelp, items: [
                 MenuItem(title: L10n.Menu.news, segue: StoryboardSegue.Main.newsSegue.rawValue),
-                MenuItem(title: L10n.Menu.helpFaq, segue: StoryboardSegue.Main.helpSegue.rawValue),
+                MenuItem(title: L10n.Menu.helpFaq, segue: StoryboardSegue.Main.faqSegue.rawValue),
                 MenuItem(title: L10n.Menu.about, segue: StoryboardSegue.Main.aboutSegue.rawValue)
                 ])
         ]

@@ -13,4 +13,9 @@ public protocol UserItemsProtocol {
     var gear: UserGearProtocol? { get set }
     var currentMount: String? { get set }
     var currentPet: String? { get set }
+    
+    var ownedQuests: [OwnedItemProtocol] { get set }
+    var ownedFood: [OwnedItemProtocol] { get set }
+    var ownedHatchingPotions: [OwnedItemProtocol] { get set }
+    var ownedEggs: [OwnedItemProtocol] { get set }
 }

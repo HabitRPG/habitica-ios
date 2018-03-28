@@ -674,7 +674,7 @@
                         <segue destination="Kau-eC-iCv" kind="show" identifier="FAQSegue" id="Ndm-2R-Hd2"/>
                         <segue destination="Bwt-cz-wxO" kind="show" identifier="ShopsSegue" id="fqC-VU-hsx"/>
                         <segue destination="6X4-ER-0VC" kind="presentation" identifier="SettingsSegue" modalPresentationStyle="formSheet" id="iEJ-Rx-jir"/>
-                        <segue destination="9I8-N9-2zE" kind="show" identifier="InboxSegue" id="aQi-0b-fOp"/>
+                        <segue destination="9I8-N9-2zE" kind="presentation" identifier="InboxSegue" modalPresentationStyle="formSheet" id="aQi-0b-fOp"/>
                         <segue destination="xpj-mf-wcH" kind="show" identifier="SpellsSegue" id="vLi-wq-h9L"/>
                         <segue destination="utX-nh-KXf" kind="show" identifier="StatsSegue" id="sHV-Iv-bE3"/>
                         <segue destination="d6K-oQ-bcc" kind="show" identifier="TavernSegue" id="ciX-UD-p4n"/>
