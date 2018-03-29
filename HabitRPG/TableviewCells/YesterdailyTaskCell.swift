@@ -7,16 +7,17 @@
 //
 
 import UIKit
+import Habitica_Models
 
 class YesterdailyTaskCell: UITableViewCell {
 
     @IBOutlet weak var wrapperView: UIView!
-    @IBOutlet weak var checkbox: HRPGCheckBoxView!
+    @IBOutlet weak var checkbox: CheckboxView!
     @IBOutlet weak var titleTextView: UILabel!
     @IBOutlet weak var checklistStackview: UIStackView!
     
-    var onChecklistItemChecked: ((ChecklistItem) -> Void)?
-    var checklistItems: [ChecklistItem]?
+    var onChecklistItemChecked: ((ChecklistItemProtocol) -> Void)?
+    var checklistItems: [ChecklistItemProtocol]?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,24 +26,21 @@ class YesterdailyTaskCell: UITableViewCell {
         self.wrapperView.layer.borderColor = UIColor.lightGray.cgColor
     }
 
-    func configure(task: Task) {
-        checkbox.configure(forTask: task)
+    func configure(task: TaskProtocol) {
+        checkbox.configure(task: task)
         titleTextView.text = task.text?.unicodeEmoji
 
         checklistStackview.subviews.forEach { view in
             view.removeFromSuperview()
         }
-        
-        guard let checklist = task.checklist else {
-            return
-        }
-        checklistItems = checklist.array as? [ChecklistItem]
-        for item in checklist {
-            if let view = UIView.fromNib(nibName: "YesterdailyChecklistItem"), let checklistItem = item as? ChecklistItem {
+
+        checklistItems = task.checklist
+        for checklistItem in task.checklist {
+            if let view = UIView.fromNib(nibName: "YesterdailyChecklistItem") {
                 let label = view.viewWithTag(2) as? UILabel
-                label?.text = checklistItem.text.unicodeEmoji
-                let checkbox = view.viewWithTag(1) as? HRPGCheckBoxView
-                checkbox?.configure(for: checklistItem, withTitle: false)
+                label?.text = checklistItem.text?.unicodeEmoji
+                let checkbox = view.viewWithTag(1) as? CheckboxView
+                checkbox?.configure(checklistItem: checklistItem, withTitle: false)
                 checkbox?.backgroundColor = UIColor.gray700()
                 checklistStackview.addArrangedSubview(view)
                 let recognizer = UITapGestureRecognizer(target: self, action: #selector(YesterdailyTaskCell.handleChecklistTap(recognizer:)))

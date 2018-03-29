@@ -329,9 +329,7 @@
                  onSuccess:(void (^)())successBlock
                    onError:(void (^)())errorBlock;
 
-- (void)runCron:(NSArray<Task *> *)completedTasks
-      onSuccess:(void (^)())successBlock
-        onError:(void (^)())errorBlock;
+//- (void)runCron:(NSArray<Task *> *)completedTasks onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
 - (void)resetAccount:(void (^)())successBlock
              onError:(void (^)())errorBlock;

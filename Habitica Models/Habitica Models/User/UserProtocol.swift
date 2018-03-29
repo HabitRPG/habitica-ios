@@ -21,6 +21,8 @@ public protocol UserProtocol {
     var balance: Float { get set }
     var tasksOrder: [String: [String]] { get set }
     var tags: [TagProtocol] { get set }
+    var needsCron: Bool { get set }
+    var lastCron: Date? { get set }
 }
 
 public extension UserProtocol {

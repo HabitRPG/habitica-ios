@@ -20,6 +20,8 @@ public class APIUser: UserProtocol, Codable {
     public var balance: Float = 0
     public var tasksOrder: [String: [String]]
     public var tags: [TagProtocol]
+    public var needsCron: Bool = false
+    public var lastCron: Date?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -32,6 +34,8 @@ public class APIUser: UserProtocol, Codable {
         case balance
         case tasksOrder
         case tags
+        case needsCron
+        case lastCron
     }
     
     public required init(from decoder: Decoder) throws {
@@ -49,6 +53,8 @@ public class APIUser: UserProtocol, Codable {
         tags.enumerated().forEach { (arg) in
             arg.element.order = arg.offset
         }
+        needsCron = try! values.decode(Bool.self, forKey: .needsCron)
+        lastCron = try! values.decode(Date.self, forKey: .lastCron)
     }
     
     public func encode(to encoder: Encoder) throws {

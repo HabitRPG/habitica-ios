@@ -2742,13 +2742,13 @@ static dispatch_once_t onceToken;
             }
             if (includeTasks) {
                 [self fetchTasks:^() {
-                    [YesterdailiesDialogView showDialogWithSharedManager:self user:fetchedUser];
+                    [YesterdailiesDialogView showDialog];
                     if (successBlock) {
                         successBlock();
                     }
                 }onError:errorBlock];
             } else {
-                [YesterdailiesDialogView showDialogWithSharedManager:self user:fetchedUser];
+                [YesterdailiesDialogView showDialog];
                 [[self getManagedObjectContext] saveToPersistentStore:&executeError];
                 if (successBlock) {
                     successBlock();

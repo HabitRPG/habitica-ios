@@ -129,6 +129,8 @@ class RealmUser: Object, UserProtocol {
         }
     }
     var realmTags = List<RealmTag>()
+    var needsCron: Bool = false
+    var lastCron: Date?
     
     override static func primaryKey() -> String {
         return "id"
@@ -149,5 +151,7 @@ class RealmUser: Object, UserProtocol {
         balance = user.balance
         items = user.items
         tags = user.tags
+        needsCron = user.needsCron
+        lastCron = user.lastCron
     }
 }

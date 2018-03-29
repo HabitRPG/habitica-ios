@@ -93,4 +93,24 @@ class UserRepository: BaseRepository<UserLocalRepository> {
                 ToastManager.show(toast: toastView)
             })
     }
+    
+    func runCron(tasks: [TaskProtocol]) -> Signal<EmptyResponseProtocol?, NoError> {
+        if tasks.count > 0 {
+            var signal = taskRepository.score(task: tasks[0], direction: .up)
+            for task in tasks {
+                signal = signal.flatMap(.concat, { (_) in
+                    return self.taskRepository.score(task: task, direction: .up)
+                })
+            }
+            return signal.flatMap(.concat, { (_) -> Signal<EmptyResponseProtocol?, NoError> in
+                let call = RunCronCall()
+                call.fire()
+                return call.objectSignal
+            })
+        } else {
+            let call = RunCronCall()
+            call.fire()
+            return call.objectSignal
+        }
+    }
 }

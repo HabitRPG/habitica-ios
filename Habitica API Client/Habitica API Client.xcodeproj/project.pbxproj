@@ -21,6 +21,7 @@
 		290C3028206B98A50066AF5B /* APIOwnedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C3027206B98A50066AF5B /* APIOwnedItem.swift */; };
 		290C302E206BD2020066AF5B /* UseSkillCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C302D206BD2020066AF5B /* UseSkillCall.swift */; };
 		290C3032206CF0190066AF5B /* APISkillResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C3031206CF0190066AF5B /* APISkillResponse.swift */; };
+		290C3034206D24A40066AF5B /* RunCronCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C3033206D24A40066AF5B /* RunCronCall.swift */; };
 		292DEE44204D9D8D0086D5F7 /* Habitica_Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE45204D9D8D0086D5F7 /* Habitica_Models.framework */; };
 		292DEE4B204DA1220086D5F7 /* NetworkAuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE4A204DA1220086D5F7 /* NetworkAuthenticationManager.swift */; };
 		292DEE4F204DA3870086D5F7 /* RetrieveTasksCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE4E204DA3870086D5F7 /* RetrieveTasksCall.swift */; };
@@ -103,6 +104,7 @@
 		290C3027206B98A50066AF5B /* APIOwnedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIOwnedItem.swift; sourceTree = "<group>"; };
 		290C302D206BD2020066AF5B /* UseSkillCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseSkillCall.swift; sourceTree = "<group>"; };
 		290C3031206CF0190066AF5B /* APISkillResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISkillResponse.swift; sourceTree = "<group>"; };
+		290C3033206D24A40066AF5B /* RunCronCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunCronCall.swift; sourceTree = "<group>"; };
 		292DEE45204D9D8D0086D5F7 /* Habitica_Models.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_Models.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		292DEE4A204DA1220086D5F7 /* NetworkAuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAuthenticationManager.swift; sourceTree = "<group>"; };
 		292DEE4E204DA3870086D5F7 /* RetrieveTasksCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveTasksCall.swift; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 				292DEE7D204E37670086D5F7 /* APITag.swift */,
 				290C302D206BD2020066AF5B /* UseSkillCall.swift */,
 				290C3031206CF0190066AF5B /* APISkillResponse.swift */,
+				290C3033206D24A40066AF5B /* RunCronCall.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -641,6 +644,7 @@
 				295611012056D20B00D9711A /* APISkill.swift in Sources */,
 				29027991205835F7006DACB9 /* APIQuestState.swift in Sources */,
 				292DEEB1205039CA0086D5F7 /* TaskResponse.swift in Sources */,
+				290C3034206D24A40066AF5B /* RunCronCall.swift in Sources */,
 				2902799320583612006DACB9 /* APIQuestProgress.swift in Sources */,
 				2902798120581DE3006DACB9 /* BulkAllocateAttributePointsCall.swift in Sources */,
 				295611072056DD2800D9711A /* APIQuest.swift in Sources */,
