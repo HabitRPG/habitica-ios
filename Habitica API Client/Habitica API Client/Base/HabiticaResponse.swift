@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class HabiticaResponse<T: Codable>: Codable {
+public class HabiticaResponse<T: Decodable>: Decodable {
     var success: Bool = false
     var data: T?
     

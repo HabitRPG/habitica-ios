@@ -89,6 +89,17 @@ internal enum L10n {
     internal static let useSkills = L10n.tr("Main", "menu.use_skills")
   }
 
+  internal enum Skills {
+    /// Unlocks at level %d
+    internal static func unlocksAt(_ p1: Int) -> String {
+      return L10n.tr("Main", "skills.unlocks_at", p1)
+    }
+    /// You use %@
+    internal static func useSkill(_ p1: String) -> String {
+      return L10n.tr("Main", "skills.use_skill", p1)
+    }
+  }
+
   internal enum Stats {
     /// 0 Points to Allocate
     internal static let noPointsToAllocate = L10n.tr("Main", "stats.no_points_to_allocate")

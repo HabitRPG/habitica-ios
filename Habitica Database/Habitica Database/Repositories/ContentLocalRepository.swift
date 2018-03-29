@@ -16,8 +16,8 @@ public class ContentLocalRepository: BaseLocalRepository {
     
     public func save(_ content: ContentProtocol) {
         var newObjects = [Object]()
-        content.spells?.forEach({ (spell) in
-            newObjects.append(RealmSpell(spell))
+        content.skills?.forEach({ (skill) in
+            newObjects.append(RealmSkill(skill))
         })
         content.food?.forEach({ (food) in
             newObjects.append(RealmFood(food))
@@ -66,9 +66,9 @@ public class ContentLocalRepository: BaseLocalRepository {
         })
     }
     
-    public func getSpells() -> SignalProducer<ReactiveResults<[SpellProtocol]>, ReactiveSwiftRealmError> {
-        return RealmSpell.findAll().reactive().map({ (value, changeset) -> ReactiveResults<[SpellProtocol]> in
-            return (value.map({ (spell) -> SpellProtocol in return spell }), changeset)
+    public func getSkills(habitClass: String) -> SignalProducer<ReactiveResults<[SkillProtocol]>, ReactiveSwiftRealmError> {
+        return RealmSkill.findBy(query: "habitClass == '\(habitClass)'").sorted(key: "level").reactive().map({ (value, changeset) -> ReactiveResults<[SkillProtocol]> in
+            return (value.map({ (skill) -> SkillProtocol in return skill }), changeset)
         })
     }
 }

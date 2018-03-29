@@ -11,7 +11,7 @@ import FunkyNetwork
 import ReactiveSwift
 import Result
 
-class HabiticaResponseCall<T: Any, C: Codable>: AuthenticatedCall {
+class HabiticaResponseCall<T: Any, C: Decodable>: AuthenticatedCall {
     public lazy var habiticaResponseSignal: Signal<HabiticaResponse<C>?, NoError> = jsonSignal.map({ json in
         return json as? Dictionary<String, Any>
     })

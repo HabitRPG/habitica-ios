@@ -190,6 +190,7 @@ internal enum StoryboardSegue {
   }
   internal enum Main: String, SegueType {
     case aboutSegue = "AboutSegue"
+    case castTaskSpellSegue = "CastTaskSpellSegue"
     case castUserSpellSegue = "CastUserSpellSegue"
     case challengesSegue = "ChallengesSegue"
     case customizationSegue = "CustomizationSegue"

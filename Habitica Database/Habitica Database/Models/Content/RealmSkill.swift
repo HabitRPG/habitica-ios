@@ -1,5 +1,5 @@
 //
-//  RealmSpell.swift
+//  RealmSkill.swift
 //  Habitica Database
 //
 //  Created by Phillip Thelen on 12.03.18.
@@ -10,7 +10,7 @@ import Foundation
 import Habitica_Models
 import RealmSwift
 
-class RealmSpell: Object, SpellProtocol {
+class RealmSkill: Object, SkillProtocol {
     @objc dynamic var key: String?
     @objc dynamic var text: String?
     @objc dynamic var notes: String?
@@ -27,17 +27,17 @@ class RealmSpell: Object, SpellProtocol {
         return "key"
     }
     
-    convenience init(_ spell: SpellProtocol) {
+    convenience init(_ skill: SkillProtocol) {
         self.init()
-        key = spell.key
-        text = spell.text
-        notes = spell.notes
-        mana = spell.mana
-        level = spell.level
-        target = spell.target
-        habitClass = spell.habitClass
-        value = spell.value
-        immediateUse = spell.immediateUse
-        silent = spell.silent
+        key = skill.key
+        text = skill.text
+        notes = skill.notes
+        mana = skill.mana
+        level = skill.level
+        target = skill.target
+        habitClass = skill.habitClass
+        value = skill.value
+        immediateUse = skill.immediateUse
+        silent = skill.silent
     }
 }

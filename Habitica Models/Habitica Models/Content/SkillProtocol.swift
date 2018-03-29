@@ -1,5 +1,5 @@
 //
-//  SpellProtocol.swift
+//  SkillProtocol.swift
 //  Habitica Models
 //
 //  Created by Phillip Thelen on 12.03.18.
@@ -9,7 +9,7 @@
 import Foundation
 
 @objc
-public protocol SpellProtocol {
+public protocol SkillProtocol {
     var key: String? { get set }
     var text: String? { get set }
     var notes: String? { get set }

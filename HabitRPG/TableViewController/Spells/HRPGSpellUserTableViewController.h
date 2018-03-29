@@ -12,7 +12,7 @@
 
 @interface HRPGSpellUserTableViewController : HRPGBaseViewController
 
-@property Spell *spell;
+@property id skill;
 @property NSString *userID;
 
 @end

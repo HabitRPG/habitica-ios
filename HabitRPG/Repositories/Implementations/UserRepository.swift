@@ -77,4 +77,20 @@ class UserRepository: BaseRepository<UserLocalRepository> {
             return false
         }
     }
+    
+    func useSkill(skill: SkillProtocol, targetId: String? = nil) -> Signal<SkillResponseProtocol?, NoError> {
+        let call = UseSkillCall(skill: skill, target: targetId)
+        call.fire()
+        return call.objectSignal.on(value: { skillResponse in
+                if let response = skillResponse {
+                    self.localRepository.save(response)
+                }
+            let toastView = ToastView(title: L10n.Skills.useSkill(skill.text ?? ""),
+                                      rightIcon: HabiticaIcons.imageOfMagic,
+                                      rightText: "-\(skill.mana)",
+                rightTextColor: UIColor.blue10(),
+                background: .blue)
+                ToastManager.show(toast: toastView)
+            })
+    }
 }

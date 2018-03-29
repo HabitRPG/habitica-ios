@@ -71,3 +71,5 @@
 "menu.news" = "News";
 "menu.help_faq" = "Help & FAQ";
 "menu.about" = "About";
+"skills.unlocks_at" = "Unlocks at level %d";
+"skills.use_skill" = "You use %@";

@@ -33,7 +33,7 @@
 		290726811F750FC400545550 /* ShopCategory+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 290726801F750FC400545550 /* ShopCategory+CoreDataClass.m */; };
 		2907F99E1F694C4000328AEE /* GemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2907F99D1F694C4000328AEE /* GemViewController.swift */; };
 		290C3017206A963D0066AF5B /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C3016206A963D0066AF5B /* MainMenuViewController.swift */; };
-		290C302A206BA0B50066AF5B /* SpellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C3029206BA0B50066AF5B /* SpellTableViewCell.swift */; };
+		290C302A206BA0B50066AF5B /* SkillTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C3029206BA0B50066AF5B /* SkillTableViewCell.swift */; };
 		290C302C206BACBB0066AF5B /* SpellsTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C302B206BACBB0066AF5B /* SpellsTableViewDataSource.swift */; };
 		29205E352062DF710024E355 /* TextInputFormRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29205E342062DF710024E355 /* TextInputFormRow.swift */; };
 		29205E372062E0030024E355 /* TaskTextInputCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29205E362062E0030024E355 /* TaskTextInputCell.xib */; };
@@ -574,7 +574,7 @@
 		290726801F750FC400545550 /* ShopCategory+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ShopCategory+CoreDataClass.m"; sourceTree = "<group>"; };
 		2907F99D1F694C4000328AEE /* GemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GemViewController.swift; sourceTree = "<group>"; };
 		290C3016206A963D0066AF5B /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
-		290C3029206BA0B50066AF5B /* SpellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellTableViewCell.swift; sourceTree = "<group>"; };
+		290C3029206BA0B50066AF5B /* SkillTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillTableViewCell.swift; sourceTree = "<group>"; };
 		290C302B206BACBB0066AF5B /* SpellsTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellsTableViewDataSource.swift; sourceTree = "<group>"; };
 		29205E342062DF710024E355 /* TextInputFormRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputFormRow.swift; sourceTree = "<group>"; };
 		29205E362062E0030024E355 /* TaskTextInputCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskTextInputCell.xib; sourceTree = "<group>"; };
@@ -2325,7 +2325,7 @@
 				D9A1A27D1BA593D900903567 /* HRPGRewardTableViewCell.m */,
 				D9D17CD71E6899F100AD9232 /* HRPGRewardTableViewCell.xib */,
 				494E53FA1F2C14980003683C /* HRPGShopsTableViewCell.swift */,
-				290C3029206BA0B50066AF5B /* SpellTableViewCell.swift */,
+				290C3029206BA0B50066AF5B /* SkillTableViewCell.swift */,
 				2957B8BB1F4B4DDE00E836EF /* InAppRewardCell.swift */,
 				2957B8B91F4B4B3300E836EF /* InAppRewardCell.xib */,
 				D9C0E51B1C6515AD0062C89A /* Social */,
@@ -3526,7 +3526,7 @@
 				29205E352062DF710024E355 /* TextInputFormRow.swift in Sources */,
 				49E6F57D1FF9A2AE0062C8B2 /* DoubleButtonTableViewCell.swift in Sources */,
 				D9BB45631E71CE910002AE2E /* HabitTableViewCell.swift in Sources */,
-				290C302A206BA0B50066AF5B /* SpellTableViewCell.swift in Sources */,
+				290C302A206BA0B50066AF5B /* SkillTableViewCell.swift in Sources */,
 				290458D02021D6C60032BC5E /* TopHeaderCoordinator.swift in Sources */,
 				D98F5DCD1C6CB1330035CBEC /* HRPGFlagInformationOverlayView.m in Sources */,
 				D9D593581D004CC900D6C388 /* HRPGInboxTableViewController.m in Sources */,

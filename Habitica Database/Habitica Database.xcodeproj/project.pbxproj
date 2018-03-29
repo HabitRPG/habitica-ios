@@ -34,7 +34,7 @@
 		29323E582052F8BC00AC6D6F /* RealmUserItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E572052F8BC00AC6D6F /* RealmUserItems.swift */; };
 		29323E5A2052F8C200AC6D6F /* RealmOutfit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E592052F8C200AC6D6F /* RealmOutfit.swift */; };
 		29323E5C2052F8E900AC6D6F /* RealmUserGear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E5B2052F8E900AC6D6F /* RealmUserGear.swift */; };
-		295611122056EC5C00D9711A /* RealmSpell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295611112056EC5C00D9711A /* RealmSpell.swift */; };
+		295611122056EC5C00D9711A /* RealmSkill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295611112056EC5C00D9711A /* RealmSkill.swift */; };
 		295611142056ECA400D9711A /* ContentLocalRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295611132056ECA400D9711A /* ContentLocalRepository.swift */; };
 		295611182057C8EB00D9711A /* RealmItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295611172057C8EB00D9711A /* RealmItem.swift */; };
 		2956111A2057C93200D9711A /* RealmFood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295611192057C93200D9711A /* RealmFood.swift */; };
@@ -90,7 +90,7 @@
 		29323E572052F8BC00AC6D6F /* RealmUserItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmUserItems.swift; sourceTree = "<group>"; };
 		29323E592052F8C200AC6D6F /* RealmOutfit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmOutfit.swift; sourceTree = "<group>"; };
 		29323E5B2052F8E900AC6D6F /* RealmUserGear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmUserGear.swift; sourceTree = "<group>"; };
-		295611112056EC5C00D9711A /* RealmSpell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmSpell.swift; sourceTree = "<group>"; };
+		295611112056EC5C00D9711A /* RealmSkill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmSkill.swift; sourceTree = "<group>"; };
 		295611132056ECA400D9711A /* ContentLocalRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentLocalRepository.swift; sourceTree = "<group>"; };
 		295611172057C8EB00D9711A /* RealmItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmItem.swift; sourceTree = "<group>"; };
 		295611192057C93200D9711A /* RealmFood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmFood.swift; sourceTree = "<group>"; };
@@ -202,7 +202,7 @@
 		2956110E2056EC0E00D9711A /* Content */ = {
 			isa = PBXGroup;
 			children = (
-				295611112056EC5C00D9711A /* RealmSpell.swift */,
+				295611112056EC5C00D9711A /* RealmSkill.swift */,
 				295611172057C8EB00D9711A /* RealmItem.swift */,
 				295611192057C93200D9711A /* RealmFood.swift */,
 				2956111B2057C98300D9711A /* RealmEgg.swift */,
@@ -494,7 +494,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				295611122056EC5C00D9711A /* RealmSpell.swift in Sources */,
+				295611122056EC5C00D9711A /* RealmSkill.swift in Sources */,
 				295611242057D65500D9711A /* RealmQuestBoss.swift in Sources */,
 				2956111C2057C98300D9711A /* RealmEgg.swift in Sources */,
 				29323E5C2052F8E900AC6D6F /* RealmUserGear.swift in Sources */,

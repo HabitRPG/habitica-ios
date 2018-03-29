@@ -22,7 +22,7 @@ public class APIContent: ContentProtocol, Codable {
     public var eggs: [EggProtocol]?
     public var hatchingPotions: [HatchingPotionProtocol]?
     public var gear: [GearProtocol]?
-    public var spells: [SpellProtocol]?
+    public var skills: [SkillProtocol]?
     public var quests: [QuestProtocol]?
     public var faq: [FAQEntryProtocol]?
     
@@ -31,7 +31,7 @@ public class APIContent: ContentProtocol, Codable {
         case eggs
         case hatchingPotions
         case gear
-        case spells
+        case skills = "spells"
         case quests
         case faq
     }
@@ -58,12 +58,12 @@ public class APIContent: ContentProtocol, Codable {
             entry.index = index
             return entry
         })
-        let parsedSpells = (try? values.decode([String: [String: APISpell]].self, forKey: .spells)) ?? [:]
-        spells = []
-        for spellSection in parsedSpells {
-            for spell in spellSection.value {
-                spell.value.habitClass = spellSection.key
-                spells?.append(spell.value)
+        let parsedSkills = (try? values.decode([String: [String: APISkill]].self, forKey: .skills)) ?? [:]
+        skills = []
+        for skillSection in parsedSkills {
+            for skill in skillSection.value {
+                skill.value.habitClass = skillSection.key
+                skills?.append(skill.value)
             }
         }
     }

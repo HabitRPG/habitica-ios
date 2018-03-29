@@ -36,4 +36,26 @@ public class UserLocalRepository: BaseLocalRepository {
     public func hasUserData(id: String) -> Bool {
         return getRealm()?.object(ofType: RealmUser.self, forPrimaryKey: id) != nil
     }
+    
+    public func save(_ skillResponse: SkillResponseProtocol) {
+        let tags = getRealm()?.objects(RealmTag.self)
+        if let task = skillResponse.task {
+            save(object: RealmTask(task, tags: tags))
+        }
+        if let newUser = skillResponse.user {
+            save(newUser)
+        }
+    }
+    
+    private func mergeUsers(oldUser: UserProtocol, newUser: UserProtocol) {
+        if let newItems = newUser.items {
+            oldUser.items = newItems
+        }
+        if let newStats = newUser.stats {
+            oldUser.stats = newStats
+        }
+        if let newProfile = newUser.profile {
+            oldUser.profile = newProfile
+        }
+    }
 }

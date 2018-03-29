@@ -19,6 +19,8 @@
 		290C3013206A78700066AF5B /* APIEmptyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C3012206A78700066AF5B /* APIEmptyResponse.swift */; };
 		290C3015206A80AE0066AF5B /* MoveTaskCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C3014206A80AE0066AF5B /* MoveTaskCall.swift */; };
 		290C3028206B98A50066AF5B /* APIOwnedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C3027206B98A50066AF5B /* APIOwnedItem.swift */; };
+		290C302E206BD2020066AF5B /* UseSkillCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C302D206BD2020066AF5B /* UseSkillCall.swift */; };
+		290C3032206CF0190066AF5B /* APISkillResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C3031206CF0190066AF5B /* APISkillResponse.swift */; };
 		292DEE44204D9D8D0086D5F7 /* Habitica_Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE45204D9D8D0086D5F7 /* Habitica_Models.framework */; };
 		292DEE4B204DA1220086D5F7 /* NetworkAuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE4A204DA1220086D5F7 /* NetworkAuthenticationManager.swift */; };
 		292DEE4F204DA3870086D5F7 /* RetrieveTasksCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE4E204DA3870086D5F7 /* RetrieveTasksCall.swift */; };
@@ -62,7 +64,7 @@
 		295610F72056CA6900D9711A /* APIEgg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295610F62056CA6900D9711A /* APIEgg.swift */; };
 		295610F92056CAA800D9711A /* APIHatchingPotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295610F82056CAA800D9711A /* APIHatchingPotion.swift */; };
 		295610FD2056CC5D00D9711A /* APIGear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295610FC2056CC5D00D9711A /* APIGear.swift */; };
-		295611012056D20B00D9711A /* APISpell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295611002056D20B00D9711A /* APISpell.swift */; };
+		295611012056D20B00D9711A /* APISkill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295611002056D20B00D9711A /* APISkill.swift */; };
 		295611072056DD2800D9711A /* APIQuest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295611062056DD2800D9711A /* APIQuest.swift */; };
 		295611092056DE9F00D9711A /* APIQuestBoss.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295611082056DE9F00D9711A /* APIQuestBoss.swift */; };
 		2956110D2056E18A00D9711A /* APIQuestCollect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2956110C2056E18A00D9711A /* APIQuestCollect.swift */; };
@@ -99,6 +101,8 @@
 		290C3012206A78700066AF5B /* APIEmptyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEmptyResponse.swift; sourceTree = "<group>"; };
 		290C3014206A80AE0066AF5B /* MoveTaskCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveTaskCall.swift; sourceTree = "<group>"; };
 		290C3027206B98A50066AF5B /* APIOwnedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIOwnedItem.swift; sourceTree = "<group>"; };
+		290C302D206BD2020066AF5B /* UseSkillCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseSkillCall.swift; sourceTree = "<group>"; };
+		290C3031206CF0190066AF5B /* APISkillResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISkillResponse.swift; sourceTree = "<group>"; };
 		292DEE45204D9D8D0086D5F7 /* Habitica_Models.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_Models.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		292DEE4A204DA1220086D5F7 /* NetworkAuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAuthenticationManager.swift; sourceTree = "<group>"; };
 		292DEE4E204DA3870086D5F7 /* RetrieveTasksCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveTasksCall.swift; sourceTree = "<group>"; };
@@ -142,7 +146,7 @@
 		295610F62056CA6900D9711A /* APIEgg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEgg.swift; sourceTree = "<group>"; };
 		295610F82056CAA800D9711A /* APIHatchingPotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHatchingPotion.swift; sourceTree = "<group>"; };
 		295610FC2056CC5D00D9711A /* APIGear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIGear.swift; sourceTree = "<group>"; };
-		295611002056D20B00D9711A /* APISpell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISpell.swift; sourceTree = "<group>"; };
+		295611002056D20B00D9711A /* APISkill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISkill.swift; sourceTree = "<group>"; };
 		295611062056DD2800D9711A /* APIQuest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIQuest.swift; sourceTree = "<group>"; };
 		295611082056DE9F00D9711A /* APIQuestBoss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIQuestBoss.swift; sourceTree = "<group>"; };
 		2956110C2056E18A00D9711A /* APIQuestCollect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIQuestCollect.swift; sourceTree = "<group>"; };
@@ -262,6 +266,8 @@
 				2902797E20581CF0006DACB9 /* AllocateAttributePointCall.swift */,
 				2902798020581DE3006DACB9 /* BulkAllocateAttributePointsCall.swift */,
 				292DEE7D204E37670086D5F7 /* APITag.swift */,
+				290C302D206BD2020066AF5B /* UseSkillCall.swift */,
+				290C3031206CF0190066AF5B /* APISkillResponse.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -300,7 +306,7 @@
 				295611062056DD2800D9711A /* APIQuest.swift */,
 				295611082056DE9F00D9711A /* APIQuestBoss.swift */,
 				2956110C2056E18A00D9711A /* APIQuestCollect.swift */,
-				295611002056D20B00D9711A /* APISpell.swift */,
+				295611002056D20B00D9711A /* APISkill.swift */,
 				295610FC2056CC5D00D9711A /* APIGear.swift */,
 				295610F62056CA6900D9711A /* APIEgg.swift */,
 				295610EE2056C7F700D9711A /* APIFood.swift */,
@@ -608,11 +614,13 @@
 				295610F92056CAA800D9711A /* APIHatchingPotion.swift in Sources */,
 				29323E1720504F5600AC6D6F /* APIStats.swift in Sources */,
 				29323E3B205212FA00AC6D6F /* APIProfile.swift in Sources */,
+				290C302E206BD2020066AF5B /* UseSkillCall.swift in Sources */,
 				29323E272051659C00AC6D6F /* ErrorHandler.swift in Sources */,
 				29027995205836A8006DACB9 /* RetrieveWorldStateCall.swift in Sources */,
 				29323E4720521B5000AC6D6F /* APIContributor.swift in Sources */,
 				290C300F206A779E0066AF5B /* DeleteTaskCall.swift in Sources */,
 				290C3028206B98A50066AF5B /* APIOwnedItem.swift in Sources */,
+				290C3032206CF0190066AF5B /* APISkillResponse.swift in Sources */,
 				295610E22056C3AC00D9711A /* RetrieveContentCall.swift in Sources */,
 				29323E1520504F2300AC6D6F /* APIUser.swift in Sources */,
 				29A6B86E20690F0C0086B2A6 /* APIWeekRepeat.swift in Sources */,
@@ -630,7 +638,7 @@
 				29323E532052F7A600AC6D6F /* APIUserGear.swift in Sources */,
 				295610EB2056C6F600D9711A /* APIContent.swift in Sources */,
 				2956110D2056E18A00D9711A /* APIQuestCollect.swift in Sources */,
-				295611012056D20B00D9711A /* APISpell.swift in Sources */,
+				295611012056D20B00D9711A /* APISkill.swift in Sources */,
 				29027991205835F7006DACB9 /* APIQuestState.swift in Sources */,
 				292DEEB1205039CA0086D5F7 /* TaskResponse.swift in Sources */,
 				2902799320583612006DACB9 /* APIQuestProgress.swift in Sources */,

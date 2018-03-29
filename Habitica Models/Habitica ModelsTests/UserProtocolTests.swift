@@ -32,7 +32,7 @@ class UserProtocolSpec: QuickSpec {
                     expect(user.gemCount).to(be(1))
                 }
             }
-            context("canUseSpells") {
+            context("canUseSkills") {
                 it("should return false for disabled classes") {
                     let user = TestUser()
                     user.preferences = TestPreferences()

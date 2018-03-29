@@ -2561,9 +2561,11 @@ and helps keep Habitica running</string>
                         <segue destination="Sir-tg-Qda" kind="relationship" relationship="viewControllers" id="mE0-bp-ORT"/>
                         <segue destination="7lu-pK-DCS" kind="relationship" relationship="viewControllers" id="0BW-Su-0XJ"/>
                         <segue destination="DhB-2l-6nh" kind="relationship" relationship="viewControllers" id="RR4-fi-o75"/>
+                        <segue destination="gID-Ki-rDo" kind="unwind" identifier="CastTaskSpellSegue" unwindAction="unwindToListSave:" id="m1U-d8-85O"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S97-Um-aBL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="gID-Ki-rDo" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2709.375" y="4980"/>
         </scene>

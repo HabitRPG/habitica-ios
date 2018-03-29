@@ -10,7 +10,7 @@ import FunkyNetwork
 import ReactiveSwift
 import Result
 
-public class ResponseArrayCall<T: Any, C: Codable>: HabiticaResponseCall<[T], [C]> {
+public class ResponseArrayCall<T: Any, C: Decodable>: HabiticaResponseCall<[T], [C]> {
     public lazy var arraySignal: Signal<[T]?, NoError> = habiticaResponseSignal.skipNil().map { (habiticaResponse) in
         return habiticaResponse.data as? [T]
     }

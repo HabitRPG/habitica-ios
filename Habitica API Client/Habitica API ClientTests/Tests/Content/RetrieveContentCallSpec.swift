@@ -50,11 +50,11 @@ class RetrieveContentCallSpec: QuickSpec {
                                 expect(gear.key).toNot(beNil())
                                 expect(gear.text).toNot(beNil())
                             })
-                            expect(content?.spells?.count) == 32
-                            content?.spells?.forEach({ spell in
-                                expect(spell.key).toNot(beNil())
-                                expect(spell.text).toNot(beNil())
-                                expect(spell.habitClass).toNot(beEmpty())
+                            expect(content?.skills?.count) == 32
+                            content?.skills?.forEach({ skill in
+                                expect(skill.key).toNot(beNil())
+                                expect(skill.text).toNot(beNil())
+                                expect(skill.habitClass).toNot(beEmpty())
                             })
                             expect(content?.quests?.count) == 86
                             content?.quests?.forEach({ quest in

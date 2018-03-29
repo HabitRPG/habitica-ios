@@ -1,5 +1,5 @@
 //
-//  APISpell.swift
+//  APISkill.swift
 //  Habitica API Client
 //
 //  Created by Phillip Thelen on 12.03.18.
@@ -9,7 +9,7 @@
 import Foundation
 import Habitica_Models
 
-class APISpell: SpellProtocol, Codable {
+class APISkill: SkillProtocol, Codable {
     var key: String?
     var text: String?
     var notes: String?

@@ -61,14 +61,7 @@
 }
 
 - (void)castSpell {
-    [[HRPGManager sharedManager] castSpell:self.spell
-        withTargetType:self.spell.target
-        onTarget:self.taskID
-        onSuccess:^() {
-            [self.sourceTableView reloadData];
-        } onError:nil];
-    [self dismissViewControllerAnimated:YES
-                             completion:nil];
+    [self performSegueWithIdentifier:@"CastTaskSpellSegue" sender:self];
 }
 
 - (IBAction)cancelAction:(id)sender {

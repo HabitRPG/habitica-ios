@@ -42,4 +42,8 @@ class ContentRepository: BaseRepository<ContentLocalRepository> {
     func getFAQEntry(index: Int) -> SignalProducer<FAQEntryProtocol, ReactiveSwiftRealmError> {
         return localRepository.getFAQEntry(index: index)
     }
+    
+    func getSkills(habitClass: String) -> SignalProducer<ReactiveResults<[SkillProtocol]>, ReactiveSwiftRealmError> {
+        return localRepository.getSkills(habitClass: habitClass)
+    }
 }

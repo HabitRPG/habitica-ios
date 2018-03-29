@@ -14,7 +14,7 @@ public protocol ContentProtocol {
     var eggs: [EggProtocol]? { get set }
     var hatchingPotions: [HatchingPotionProtocol]? { get set }
     var gear: [GearProtocol]? { get set }
-    var spells: [SpellProtocol]? { get set }
+    var skills: [SkillProtocol]? { get set }
     var quests: [QuestProtocol]? { get set }
     var faq: [FAQEntryProtocol]? { get set }
 }
