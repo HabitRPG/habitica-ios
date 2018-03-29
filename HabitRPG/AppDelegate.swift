@@ -185,4 +185,15 @@ class HabiticaAppDelegate: NSObject {
             }
         }
     }
+    
+    @objc
+    func scoreTask(_ taskId: String, direction: String, completed: @escaping (() -> Void)) {
+        if let task = taskRepository.getEditableTask(id: taskId), let scoringDirection = TaskScoringDirection(rawValue: direction) {
+            taskRepository.score(task: task, direction: scoringDirection).observeCompleted {
+                completed()
+            }
+        } else {
+            completed()
+        }
+    }
 }

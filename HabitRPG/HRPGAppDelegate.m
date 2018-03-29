@@ -357,36 +357,11 @@
 }
 
 - (void)completeTaskWithId:(NSString *)taskID completionHandler:(void (^)())completionHandler {
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity =
-        [NSEntityDescription entityForName:@"Task"
-                    inManagedObjectContext:[[HRPGManager sharedManager] getManagedObjectContext]];
-    [fetchRequest setEntity:entity];
-    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"id = %@", taskID]];
-    [fetchRequest
-        setSortDescriptors:@[ [[NSSortDescriptor alloc] initWithKey:@"order" ascending:YES] ]];
-
-    NSError *error;
-    NSArray *fetchedObjects =
-        [[[HRPGManager sharedManager] getManagedObjectContext] executeFetchRequest:fetchRequest
-                                                                    error:&error];
-    if (fetchedObjects != nil && fetchedObjects.count == 1) {
-        Task *task = fetchedObjects[0];
-        if (![task.completed boolValue]) {
-            [[HRPGManager sharedManager] upDownTask:task
-                direction:@"up"
-                onSuccess:^() {
-                    if (completionHandler) {
-                        completionHandler();
-                    };
-                }
-                onError:^() {
-                    if (completionHandler) {
-                        completionHandler();
-                    };
-                }];
-        }
-    }
+    [self.swiftAppDelegate scoreTask:taskID direction:@"up" completed: ^() {
+        if (completionHandler) {
+            completionHandler();
+        };
+    }];
 }
 
 - (void)displayTaskWithId:(NSString *)taskID fromType:(nullable NSString *)taskType {

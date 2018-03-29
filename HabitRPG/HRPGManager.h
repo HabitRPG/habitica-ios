@@ -94,15 +94,9 @@
              onSuccess:(void (^)())successBlock
                onError:(void (^)())errorBlock;
 
-- (void)upDownTask:(Task *)task
-         direction:(NSString *)withDirection
-         onSuccess:(void (^)())successBlock
-           onError:(void (^)())errorBlock;
+//- (void)upDownTask:(Task *)task direction:(NSString *)withDirection onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
-- (void)scoreChecklistItem:(Task *)task
-             checklistItem:(ChecklistItem *)item
-                 onSuccess:(void (^)())successBlock
-                   onError:(void (^)())errorBlock;
+//- (void)scoreChecklistItem:(Task *)task checklistItem:(ChecklistItem *)item onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
 - (void)getReward:(NSString *)rewardID
          withText:(NSString *)text
@@ -171,11 +165,7 @@
        onSuccess:(void (^)(NSString *message))successBlock
          onError:(void (^)())errorBlock;
 
-- (void)castSpell:(Spell *)spell
-    withTargetType:(NSString *)targetType
-          onTarget:(NSString *)target
-         onSuccess:(void (^)())successBlock
-           onError:(void (^)())errorBlock;
+//- (void)castSpell:(Spell *)spell withTargetType:(NSString *)targetType onTarget:(NSString *)target onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
 - (void)changeDayStartTime:(NSNumber *)dayStart
                  onSuccess:(void (^)())successBlock
