@@ -21,6 +21,8 @@
 		290C3021206B8C0C0066AF5B /* TestFlags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C3020206B8C0C0066AF5B /* TestFlags.swift */; };
 		290C3024206B94D10066AF5B /* OwnedQuestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C3023206B94D10066AF5B /* OwnedQuestProtocol.swift */; };
 		290C3030206CEED20066AF5B /* SkillResponseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C302F206CEED20066AF5B /* SkillResponseProtocol.swift */; };
+		290C3037206D36740066AF5B /* GroupProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C3036206D36740066AF5B /* GroupProtocol.swift */; };
+		290C3039206D3BAD0066AF5B /* ChatMessageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C3038206D3BAD0066AF5B /* ChatMessageProtocol.swift */; };
 		292DEE5A204DAA000086D5F7 /* HabiticaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE59204DAA000086D5F7 /* HabiticaModel.swift */; };
 		292DEE7A204E36F60086D5F7 /* TagProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE79204E36F60086D5F7 /* TagProtocol.swift */; };
 		292DEE7C204E372E0086D5F7 /* ChecklistItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE7B204E372E0086D5F7 /* ChecklistItemProtocol.swift */; };
@@ -78,6 +80,8 @@
 		290C3020206B8C0C0066AF5B /* TestFlags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFlags.swift; sourceTree = "<group>"; };
 		290C3023206B94D10066AF5B /* OwnedQuestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnedQuestProtocol.swift; sourceTree = "<group>"; };
 		290C302F206CEED20066AF5B /* SkillResponseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillResponseProtocol.swift; sourceTree = "<group>"; };
+		290C3036206D36740066AF5B /* GroupProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupProtocol.swift; sourceTree = "<group>"; };
+		290C3038206D3BAD0066AF5B /* ChatMessageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageProtocol.swift; sourceTree = "<group>"; };
 		292DEE59204DAA000086D5F7 /* HabiticaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabiticaModel.swift; sourceTree = "<group>"; };
 		292DEE79204E36F60086D5F7 /* TagProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagProtocol.swift; sourceTree = "<group>"; };
 		292DEE7B204E372E0086D5F7 /* ChecklistItemProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistItemProtocol.swift; sourceTree = "<group>"; };
@@ -144,6 +148,15 @@
 				290C3020206B8C0C0066AF5B /* TestFlags.swift */,
 			);
 			path = "Test Models";
+			sourceTree = "<group>";
+		};
+		290C3035206D366A0066AF5B /* Group */ = {
+			isa = PBXGroup;
+			children = (
+				290C3036206D36740066AF5B /* GroupProtocol.swift */,
+				290C3038206D3BAD0066AF5B /* ChatMessageProtocol.swift */,
+			);
+			path = Group;
 			sourceTree = "<group>";
 		};
 		292DEE33204D950E0086D5F7 /* Tasks */ = {
@@ -223,6 +236,7 @@
 		298FB9D2204D9403004DDACC /* Habitica Models */ = {
 			isa = PBXGroup;
 			children = (
+				290C3035206D366A0066AF5B /* Group */,
 				295610E52056C5B500D9711A /* Content */,
 				29323E0E20504D9900AC6D6F /* User */,
 				292DEE33204D950E0086D5F7 /* Tasks */,
@@ -450,11 +464,13 @@
 				292DEEAD205038CB0086D5F7 /* TaskResponseProtocol.swift in Sources */,
 				295610F32056C9F500D9711A /* EggProtocol.swift in Sources */,
 				2902795C2057E7FB006DACB9 /* FAQEntryProtocol.swift in Sources */,
+				290C3037206D36740066AF5B /* GroupProtocol.swift in Sources */,
 				2902798320583383006DACB9 /* WorldStateProtocol.swift in Sources */,
 				292DEE5A204DAA000086D5F7 /* HabiticaModel.swift in Sources */,
 				295610E92056C65A00D9711A /* ItemProtocol.swift in Sources */,
 				295610ED2056C72000D9711A /* FoodProtocol.swift in Sources */,
 				298FB9EB204D940E004DDACC /* TaskProtocol.swift in Sources */,
+				290C3039206D3BAD0066AF5B /* ChatMessageProtocol.swift in Sources */,
 				29027985205833EA006DACB9 /* QuestStateProtocol.swift in Sources */,
 				29A6B86A20690D470086B2A6 /* WeekRepeatProtocol.swift in Sources */,
 				295611052056DC7100D9711A /* QuestBossProtocol.swift in Sources */,

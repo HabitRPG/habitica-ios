@@ -62,6 +62,7 @@
 		292DEE8D204F458B0086D5F7 /* HabitTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE8C204F458B0086D5F7 /* HabitTableViewDataSource.swift */; };
 		292DEEA5204F6F6C0086D5F7 /* DailyTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEEA4204F6F6C0086D5F7 /* DailyTableViewDataSource.swift */; };
 		292DEEA7204F6F8C0086D5F7 /* TodoTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEEA6204F6F8C0086D5F7 /* TodoTableViewDataSource.swift */; };
+		292F9662206E363000804151 /* GroupChatViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292F9661206E363000804151 /* GroupChatViewDataSource.swift */; };
 		29323E1B2050532D00AC6D6F /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E1A2050532D00AC6D6F /* UserRepository.swift */; };
 		29323E1F2050563700AC6D6F /* NetworkErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E1E2050563700AC6D6F /* NetworkErrorHandler.swift */; };
 		29323E352052008800AC6D6F /* UserTopHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E342052008800AC6D6F /* UserTopHeader.swift */; };
@@ -597,6 +598,7 @@
 		292DEE8C204F458B0086D5F7 /* HabitTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitTableViewDataSource.swift; sourceTree = "<group>"; };
 		292DEEA4204F6F6C0086D5F7 /* DailyTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTableViewDataSource.swift; sourceTree = "<group>"; };
 		292DEEA6204F6F8C0086D5F7 /* TodoTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewDataSource.swift; sourceTree = "<group>"; };
+		292F9661206E363000804151 /* GroupChatViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupChatViewDataSource.swift; sourceTree = "<group>"; };
 		29323E1A2050532D00AC6D6F /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		29323E1E2050563700AC6D6F /* NetworkErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorHandler.swift; sourceTree = "<group>"; };
 		29323E2E2051C9A500AC6D6F /* Habitica 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Habitica 5.xcdatamodel"; sourceTree = "<group>"; };
@@ -1655,6 +1657,7 @@
 				292DEE8B204F455E0086D5F7 /* Tasks */,
 				290279722057FB4E006DACB9 /* FAQTableViewDataSource.swift */,
 				290C302B206BACBB0066AF5B /* SpellsTableViewDataSource.swift */,
+				292F9661206E363000804151 /* GroupChatViewDataSource.swift */,
 			);
 			name = TVDataSources;
 			sourceTree = "<group>";
@@ -3443,6 +3446,7 @@
 				D97B8F5D1AE6CD3C00C6447D /* HRPGRewardFormViewController.m in Sources */,
 				D9ADD34B1943BB16006202C1 /* HRPGFeedViewController.m in Sources */,
 				2907F99E1F694C4000328AEE /* GemViewController.swift in Sources */,
+				292F9662206E363000804151 /* GroupChatViewDataSource.swift in Sources */,
 				D984D58B1E4A1F59006E84F8 /* SubscriptionViewController.swift in Sources */,
 				298119B11F50453100F9FB39 /* QuestGoalView.swift in Sources */,
 				D9D17CCC1E6736A600AD9232 /* ChallengeDetailHeaderView.swift in Sources */,

@@ -226,7 +226,7 @@
          onSuccess:(void (^)())successBlock
            onError:(void (^)())errorBlock;
 
-- (void)chatSeen:(NSString *)group;
+//- (void)chatSeen:(NSString *)group;
 - (void)markInboxSeen:(void (^)())successBlock
               onError:(void (^)())errorBlock;
 
@@ -250,34 +250,22 @@
 
 - (void)reviveUser:(void (^)())successBlock onError:(void (^)())errorBlock;
 
-- (void)chatMessage:(NSString *)message
-          withGroup:(NSString *)groupID
-          onSuccess:(void (^)())successBlock
-            onError:(void (^)())errorBlock;
+//- (void)chatMessage:(NSString *)message withGroup:(NSString *)groupID onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
 - (void)privateMessage:(InboxMessage *)message
           toUserWithID:(NSString *)userID
           onSuccess:(void (^)())successBlock
             onError:(void (^)())errorBlock;
 
-- (void)deleteMessage:(ChatMessage *)message
-            withGroup:(NSString *)groupID
-            onSuccess:(void (^)())successBlock
-              onError:(void (^)())errorBlock;
+//- (void)deleteMessage:(ChatMessage *)message withGroup:(NSString *)groupID onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
 - (void)deletePrivateMessage:(InboxMessage *)message
             onSuccess:(void (^)())successBlock
               onError:(void (^)())errorBlock;
 
-- (void)likeMessage:(ChatMessage *)message
-          withGroup:(NSString *)groupID
-          onSuccess:(void (^)())successBlock
-            onError:(void (^)())errorBlock;
+//- (void)likeMessage:(ChatMessage *)message withGroup:(NSString *)groupID onSuccess:(void (^)())successBlock  onError:(void (^)())errorBlock;
 
-- (void)flagMessage:(ChatMessage *)message
-          withGroup:(NSString *)groupID
-          onSuccess:(void (^)())successBlock
-            onError:(void (^)())errorBlock;
+//- (void)flagMessage:(ChatMessage *)message withGroup:(NSString *)groupID onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
 - (void)feedPet:(Pet *)pet
        withFood:(Food *)food

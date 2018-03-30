@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Habitica_Models
+import ReactiveSwift
 
 class TavernDetailViewController: UIViewController {
     
@@ -20,10 +22,14 @@ class TavernDetailViewController: UIViewController {
     @IBOutlet weak var questProgressView: QuestProgressView!
     @IBOutlet weak var worldBossTitleView: CollapsibleTitle!
     
-    var group: Group? {
+    private let userRepository = UserRepository()
+    private let socialRepository = SocialRepository()
+    private let disposable = ScopedDisposable(CompositeDisposable())
+    
+    var group: GroupProtocol? {
         didSet {
             if let group = self.group {
-                questProgressView.configure(group: group)
+                //questProgressView.configure(group: group)
             }
         }
     }
@@ -76,7 +82,15 @@ class TavernDetailViewController: UIViewController {
         
         configureInnButton()
         
-        questProgressView.configure(user: HRPGManager.shared().getUser())
+        //questProgressView.configure(user: HRPGManager.shared().getUser())
+        
+        disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
+            if user.preferences?.sleep == true {
+                self?.innButton.setTitle(NSLocalizedString("Resume Damage", comment: ""), for: .normal)
+            } else {
+                self?.innButton.setTitle(NSLocalizedString("Pause Damage", comment: ""), for: .normal)
+            }
+        }).start())
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -113,10 +127,5 @@ class TavernDetailViewController: UIViewController {
     
     func configureInnButton(disabled: Bool = false) {
         innButton.isEnabled = !disabled
-        if HRPGManager.shared().getUser().preferences?.sleep?.boolValue ?? false {
-            innButton.setTitle(NSLocalizedString("Resume Damage", comment: ""), for: .normal)
-        } else {
-            innButton.setTitle(NSLocalizedString("Pause Damage", comment: ""), for: .normal)
-        }
     }
 }

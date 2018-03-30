@@ -53,8 +53,8 @@ public class APIUser: UserProtocol, Codable {
         tags.enumerated().forEach { (arg) in
             arg.element.order = arg.offset
         }
-        needsCron = try! values.decode(Bool.self, forKey: .needsCron)
-        lastCron = try! values.decode(Date.self, forKey: .lastCron)
+        needsCron = (try? values.decode(Bool.self, forKey: .needsCron)) ?? false
+        lastCron = try? values.decode(Date.self, forKey: .lastCron)
     }
     
     public func encode(to encoder: Encoder) throws {

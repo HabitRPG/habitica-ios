@@ -9,6 +9,7 @@
 import UIKit
 import DateTools
 import PinLayout
+import Habitica_Models
 
 class ChatTableViewCell: UITableViewCell {
     
@@ -126,18 +127,17 @@ class ChatTableViewCell: UITableViewCell {
         messageTextView.font = CustomFontMetrics.scaledSystemFont(ofSize: 15, ofWeight: .regular)
     }
     
-    @objc
-    func configure(chatMessage: ChatMessage, previousMessage: ChatMessage?, nextMessage: ChatMessage?, userID: String, username: String, isModerator: Bool, isExpanded: Bool) {
+    func configure(chatMessage: ChatMessageProtocol, previousMessage: ChatMessageProtocol?, nextMessage: ChatMessageProtocol?, userID: String, username: String, isModerator: Bool, isExpanded: Bool) {
         isPrivateMessage = false
         self.isModerator = isModerator
-        isOwnMessage = chatMessage.uuid == userID
+        isOwnMessage = chatMessage.userID == userID
         wasMentioned = chatMessage.text?.range(of: username) != nil
 
-        usernameLabel.text = chatMessage.user?.unicodeEmoji
-        contributorLevel = chatMessage.contributorLevel?.intValue ?? 0
+        usernameLabel.text = chatMessage.username?.unicodeEmoji
+        contributorLevel = chatMessage.contributor?.level ?? 0
         messageTextView.textColor = UIColor.gray10()
         
-        stylePlusOneButton(likes: chatMessage.likes, userID: userID)
+        //stylePlusOneButton(likes: chatMessage.likes, userID: userID)
         
         setTimeStamp(date: chatMessage.timestamp)
         
@@ -147,7 +147,7 @@ class ChatTableViewCell: UITableViewCell {
             messageTextView.text = chatMessage.text?.unicodeEmoji
         }
         
-        if previousMessage?.uuid == chatMessage.uuid {
+        if previousMessage?.userID == chatMessage.userID {
             topSpacing = 2
             avatarView.isHidden = true
         } else {
@@ -155,11 +155,11 @@ class ChatTableViewCell: UITableViewCell {
             avatarView.isHidden = isOwnMessage
 
             if !isOwnMessage && !isAvatarHidden {
-                avatarView.avatar = chatMessage.avatar
+                //avatarView.avatar = chatMessage.avatar
             }
         }
         
-        if nextMessage?.uuid == chatMessage.uuid {
+        if nextMessage?.userID == chatMessage.userID {
             bottomSpacing = 2
         } else if isFirstMessage {
             bottomSpacing = 34
@@ -167,12 +167,12 @@ class ChatTableViewCell: UITableViewCell {
             bottomSpacing = 4
         }
         
-        if let flags = chatMessage.flags, isModerator && flags.count > 0 {
+        /*if let flags = chatMessage.flags, isModerator && flags.count > 0 {
             reportView.isHidden = false
             reportView.setTitle("\(flags.count)", for: .normal)
         } else {
             reportView.isHidden = true
-        }
+        }*/
         
         self.isExpanded = isExpanded
         applyAccessibility()

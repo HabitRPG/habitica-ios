@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Habitica_Models
+import ReactiveSwift
 
 class SplitSocialViewController: HRPGUIViewController, UIScrollViewDelegate, NSFetchedResultsControllerDelegate {
     
@@ -25,7 +27,9 @@ class SplitSocialViewController: HRPGUIViewController, UIScrollViewDelegate, NSF
     private let segmentedControl = UISegmentedControl(items: [NSLocalizedString("", comment: ""), NSLocalizedString("Chat", comment: "")])
     private var isInitialSetup = true
     private var showAsSplitView = false
-    internal var fetchedResultsController: NSFetchedResultsController<Group>?
+    
+    private let socialRepository = SocialRepository()
+    private let disposable = ScopedDisposable(CompositeDisposable())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,7 +58,11 @@ class SplitSocialViewController: HRPGUIViewController, UIScrollViewDelegate, NSF
         detailViewController?.groupID = groupID
         chatViewController?.groupID = groupID
         
-        fetchGroup()
+        if let groupID = self.groupID {
+            disposable.inner.add(socialRepository.getGroup(groupID: groupID).on(value: { group in
+                self.set(group: group)
+            }).start())
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -109,33 +117,15 @@ class SplitSocialViewController: HRPGUIViewController, UIScrollViewDelegate, NSF
         self.view.setNeedsLayout()
     }
     
-    private func fetchGroup() {
-        let fetchRequest: NSFetchRequest<Group> = SocialRepository().getFetchRequest(entityName: "Group", predicate: NSPredicate(format: "id == %@", groupID ?? "")
-        )
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: false)]
-        fetchedResultsController = NSFetchedResultsController<Group>(fetchRequest: fetchRequest, managedObjectContext: HRPGManager.shared().getManagedObjectContext(), sectionNameKeyPath: nil, cacheName: nil)
-        fetchedResultsController?.delegate = self
-        
-        try? fetchedResultsController?.performFetch()
-        
-        setGroup()
-    }
-    
-    internal func setGroup() {
-        if let items = fetchedResultsController?.fetchedObjects, items.count > 0 {
-            let group = items[0]
-            detailViewController?.group = group
-        }
+    internal func set(group: GroupProtocol) {
+        //detailViewController?.group = group
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let currentPage = getCurrentPage()
         self.segmentedControl.selectedSegmentIndex = currentPage
     }
-    
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        setGroup()
-    }
+
     
     @objc
     func switchView(_ segmentedControl: UISegmentedControl) {

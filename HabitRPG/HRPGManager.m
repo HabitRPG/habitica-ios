@@ -2931,7 +2931,8 @@ static dispatch_once_t onceToken;
     [self.networkIndicatorController beginNetworking];
 
     NSDictionary *params = @{ @"type" : groupType };
-    Group *oldTavern = [[[SocialRepository alloc] init] getGroup:@"00000000-0000-4000-A000-000000000000"];
+    //Group *oldTavern = [[[SocialRepository alloc] init] getGroup:@"00000000-0000-4000-A000-000000000000"];
+    Group *oldTavern = nil;
     NSString *questKey = oldTavern.questKey;
     NSNumber *questActive = oldTavern.questActive;
     NSNumber *questHP = oldTavern.questHP;
@@ -5561,7 +5562,8 @@ static dispatch_once_t onceToken;
     [self.networkIndicatorController beginNetworking];
     [[RKObjectManager sharedManager] getObject:nil path:@"world-state" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         HabiticaWorldState *state = [mappingResult dictionary][@"data"];
-        Group *tavern = [[[SocialRepository alloc] init] getGroup:@"00000000-0000-4000-A000-000000000000"];
+        //Group *tavern = [[[SocialRepository alloc] init] getGroup:@"00000000-0000-4000-A000-000000000000"];
+        Group *tavern = nil;
         if (tavern == nil) {
             tavern = [NSEntityDescription insertNewObjectForEntityForName:@"Group" inManagedObjectContext:[self getManagedObjectContext]];
             tavern.id = @"00000000-0000-4000-A000-000000000000";

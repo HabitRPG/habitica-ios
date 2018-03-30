@@ -50,23 +50,23 @@ class ChallengeDetailInfoTableViewCell: UITableViewCell, ChallengeConfigurable {
             tags.append(nameTag(shortName))
         }
         
-        for (i, tag) in tags.enumerated() {
+        for (index, tag) in tags.enumerated() {
             tagHolderView.addSubview(tag)
             
             tag.translatesAutoresizingMaskIntoConstraints = false
             tag.addHeightConstraint(height: 22)
             tag.updateLayout()
             
-            if i == 0 {
+            if index == 0 {
                 tagHolderView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[tag]", options: .init(rawValue: 0), metrics: nil, views: ["tag": tag]))
             } else {
-                let previousTag = tags[i-1]
+                let previousTag = tags[index-1]
                 tagHolderView.addConstraint(NSLayoutConstraint(item: tag, attribute: NSLayoutAttribute.leading, relatedBy: .equal, toItem: previousTag, attribute: .trailing, multiplier: 1.0, constant: 8))
             }
             
             tagHolderView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[tag]-0-|", options: .init(rawValue: 0), metrics: nil, views: ["tag": tag]))
             
-            if i == tags.count - 1 {
+            if index == tags.count - 1 {
                 tagHolderView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:[tag]-0-|", options: .init(rawValue: 0), metrics: nil, views: ["tag": tag]))
             }
         }

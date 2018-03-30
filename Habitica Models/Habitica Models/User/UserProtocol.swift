@@ -47,4 +47,8 @@ public extension UserProtocol {
         }
         return stats?.level ?? 0 >= 10 && flags?.classSelected == false
     }
+    
+    var isModerator: Bool {
+        return (contributor?.level ?? 0) >= 8
+    }
 }

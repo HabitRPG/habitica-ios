@@ -113,4 +113,14 @@ class UserRepository: BaseRepository<UserLocalRepository> {
             return call.objectSignal
         }
     }
+    
+    func updateUser(_ updateDict: [String: Any]) -> Signal<UserProtocol?, NoError> {
+        let call = UpdateUserCall(updateDict)
+        call.fire()
+        return call.objectSignal
+    }
+    
+    func updateUser(key: String, value: Any) -> Signal<UserProtocol?, NoError> {
+        return updateUser([key: value])
+    }
 }

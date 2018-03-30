@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Habitica_Models
 
 class TavernViewController: SplitSocialViewController {
 
@@ -27,17 +28,16 @@ class TavernViewController: SplitSocialViewController {
         chatViewController?.groupID = groupID
     }
     
-    override internal func setGroup() {
-        if let detailViewController = self.tavernDetailViewController, let items = fetchedResultsController?.fetchedObjects, items.count > 0 {
-            let group = items[0]
+    override internal func set(group: GroupProtocol) {
+        if let detailViewController = self.tavernDetailViewController {
             detailViewController.group = group
             
-            if let questKey = group.questKey {
+            /*if let questKey = group.questKey {
                 let quest = InventoryRepository().getQuest(questKey)
                 detailViewController.quest = quest
             } else {
                 detailViewController.quest = nil
-            }
+            }*/
         }
     }
 }
