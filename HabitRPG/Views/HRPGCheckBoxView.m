@@ -240,6 +240,14 @@
         CGRect checkFrame = CGRectMake(self.padding, self.frame.size.height / 2 - self.size / 2, self.size, self.size);
         [HabiticaIcons drawCheckmarkWithFrame:checkFrame resizing:HabiticaIconsResizingBehaviorCenter checkmarkColor:self.checkColor percentage:[(HRPGCheckmarkLayer *)layer drawPercentage]];
     }
+    if (self.isLocked) {
+        CGFloat baseSize = self.size * 0.5;
+        CGFloat lockHeight = baseSize;
+        CGFloat lockWidth = baseSize * 15/17;
+        CGFloat x = self.frame.size.width / 2 - lockWidth / 2 - 1;
+        CGFloat y = self.frame.size.height / 2 - lockHeight / 2;
+        [HabiticaIcons drawLockedWithFrame:CGRectMake(x, y, lockHeight, lockWidth) resizing:HabiticaIconsResizingBehaviorAspectFit];
+    }
     UIGraphicsPopContext();
 }
 
@@ -252,6 +260,10 @@
 
 - (CGSize)intrinsicContentSize {
     return CGSizeMake(self.size+self.padding*2, self.size+self.padding*2);
+}
+
+- (void)setIsLocked:(BOOL)isLocked {
+    _isLocked = isLocked;
 }
 
 @end

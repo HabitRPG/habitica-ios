@@ -18,6 +18,8 @@ class TaskTableViewCell: UITableViewCell {
     @IBOutlet weak var taskDetailLine: TaskDetailLineView!
     @IBOutlet weak var mainTaskWrapper: UIView!
     //swiftlint:disable private_outlet
+    
+    @objc public var isLocked: Bool = false
 
     @objc
     func configure(task: HRPGTaskProtocol) {

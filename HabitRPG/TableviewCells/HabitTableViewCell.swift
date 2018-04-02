@@ -21,6 +21,9 @@ class HabitTableViewCell: TaskTableViewCell {
     override func configure(task: HRPGTaskProtocol) {
         super.configure(task: task)
         if let taskObject = task as? NSObjectProtocol & HRPGTaskProtocol {
+            self.plusButton.isLocked = self.isLocked
+            self.minusButton.isLocked = self.isLocked
+            
             self.plusButton.configure(forTask: taskObject, isNegative: false)
             self.minusButton.configure(forTask: taskObject, isNegative: true)
         }

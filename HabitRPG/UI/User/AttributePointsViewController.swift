@@ -85,9 +85,9 @@ class AttributePointsVieController: HRPGUIViewController {
         constitutionStatsView.allocateAction = { [weak self] in self?.allocate("con") }
         perceptionStatsView.allocateAction = { [weak self] in self?.allocate("per") }
         
-        distributeEvenlyHelpView.image = HabiticaIcons.imageOfInfoIcon
-        distributeClassHelpView.image = HabiticaIcons.imageOfInfoIcon
-        distributeTaskHelpView.image = HabiticaIcons.imageOfInfoIcon
+        distributeEvenlyHelpView.image = HabiticaIcons.imageOfInfoIcon()
+        distributeClassHelpView.image = HabiticaIcons.imageOfInfoIcon()
+        distributeTaskHelpView.image = HabiticaIcons.imageOfInfoIcon()
         distributeEvenlyCheckmark.image = HabiticaIcons.imageOfCheckmark(checkmarkColor: UIColor.purple400(), percentage: 1.0)
         distributeClassCheckmark.image = HabiticaIcons.imageOfCheckmark(checkmarkColor: UIColor.purple400(), percentage: 1.0)
         distributeTaskCheckmark.image = HabiticaIcons.imageOfCheckmark(checkmarkColor: UIColor.purple400(), percentage: 1.0)
