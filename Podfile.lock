@@ -49,6 +49,7 @@ PODS:
     - RKValueTransformers (~> 1.1.0)
   - KeychainAccess (3.1.0)
   - Keys (1.0.0)
+  - Kingfisher (4.6.4)
   - KLCPopup (1.0)
   - Masonry (1.1.0)
   - MRProgress (0.8.3):
@@ -166,6 +167,7 @@ DEPENDENCIES:
   - iOSSnapshotTestCase
   - KeychainAccess
   - Keys (from `Pods/CocoaPodsKeys`)
+  - Kingfisher
   - KLCPopup
   - Masonry
   - MRProgress
@@ -226,6 +228,7 @@ SPEC CHECKSUMS:
   ISO8601DateFormatterValueTransformer: 52da467d6ec899d6aedda8e48280ac92e8ee97e6
   KeychainAccess: 94c5540b32eabf7bc32bfb976a268e8ea05fd6da
   Keys: af65e23feef2a047b3277b1ef0399f1209ef9d46
+  Kingfisher: 68498a706e46c2a050b0c9572f100e5db407f6e0
   KLCPopup: 76c5a19227977f1e53d85236f9ef42257c168d98
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MRProgress: 16de7cc9f347e8846797a770db102a323fe7ef09
@@ -259,6 +262,6 @@ SPEC CHECKSUMS:
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: 0107b422620b50b8335ae9c69bd1899958a1cfa3
+PODFILE CHECKSUM: 1738e71318b6c55601b2947aa4ec22d9099f8a1c
 
 COCOAPODS: 1.4.0

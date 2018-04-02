@@ -75,6 +75,8 @@ target 'Habitica' do
   pod 'RealmSwift'
   pod 'FunkyNetwork'
 
+  pod 'Kingfisher'
+
   pod 'SwiftGen'
 
   target 'HabiticaTests' do

@@ -63,6 +63,8 @@
 		292DEEA5204F6F6C0086D5F7 /* DailyTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEEA4204F6F6C0086D5F7 /* DailyTableViewDataSource.swift */; };
 		292DEEA7204F6F8C0086D5F7 /* TodoTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEEA6204F6F8C0086D5F7 /* TodoTableViewDataSource.swift */; };
 		292F9662206E363000804151 /* GroupChatViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292F9661206E363000804151 /* GroupChatViewDataSource.swift */; };
+		292F967E207239A700804151 /* ImageView-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292F967D207239A700804151 /* ImageView-Extensions.swift */; };
+		292F968020723A4D00804151 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292F967F20723A4D00804151 /* ImageManager.swift */; };
 		29323E1B2050532D00AC6D6F /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E1A2050532D00AC6D6F /* UserRepository.swift */; };
 		29323E1F2050563700AC6D6F /* NetworkErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E1E2050563700AC6D6F /* NetworkErrorHandler.swift */; };
 		29323E352052008800AC6D6F /* UserTopHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E342052008800AC6D6F /* UserTopHeader.swift */; };
@@ -599,6 +601,8 @@
 		292DEEA4204F6F6C0086D5F7 /* DailyTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTableViewDataSource.swift; sourceTree = "<group>"; };
 		292DEEA6204F6F8C0086D5F7 /* TodoTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewDataSource.swift; sourceTree = "<group>"; };
 		292F9661206E363000804151 /* GroupChatViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupChatViewDataSource.swift; sourceTree = "<group>"; };
+		292F967D207239A700804151 /* ImageView-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageView-Extensions.swift"; sourceTree = "<group>"; };
+		292F967F20723A4D00804151 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		29323E1A2050532D00AC6D6F /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		29323E1E2050563700AC6D6F /* NetworkErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorHandler.swift; sourceTree = "<group>"; };
 		29323E2E2051C9A500AC6D6F /* Habitica 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Habitica 5.xcdatamodel"; sourceTree = "<group>"; };
@@ -1908,6 +1912,7 @@
 				29FD8AA6203DA42A0094322E /* NSLayoutConstraint-Extensions.swift */,
 				29323E4820521FD500AC6D6F /* ContributorProtocol-Extensions.swift */,
 				29646DE0205C18FA0050886C /* TaskType-Extensions.swift */,
+				292F967D207239A700804151 /* ImageView-Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -2091,6 +2096,7 @@
 				D96C85461DCCD8BC003E3616 /* UIWindow+VisibleController.h */,
 				D96C85471DCCD8BC003E3616 /* UIWindow+VisibleController.m */,
 				29323E1E2050563700AC6D6F /* NetworkErrorHandler.swift */,
+				292F967F20723A4D00804151 /* ImageManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -2328,9 +2334,9 @@
 				D9A1A27D1BA593D900903567 /* HRPGRewardTableViewCell.m */,
 				D9D17CD71E6899F100AD9232 /* HRPGRewardTableViewCell.xib */,
 				494E53FA1F2C14980003683C /* HRPGShopsTableViewCell.swift */,
-				290C3029206BA0B50066AF5B /* SkillTableViewCell.swift */,
 				2957B8BB1F4B4DDE00E836EF /* InAppRewardCell.swift */,
 				2957B8B91F4B4B3300E836EF /* InAppRewardCell.xib */,
+				290C3029206BA0B50066AF5B /* SkillTableViewCell.swift */,
 				D9C0E51B1C6515AD0062C89A /* Social */,
 				D9CE90481E4DCF7D00702578 /* SubscriptionDetailView.swift */,
 				D9CE90421E4CDC9100702578 /* SubscriptionDetailView.xib */,
@@ -3161,6 +3167,7 @@
 				"${BUILT_PRODUCTS_DIR}/KLCPopup/KLCPopup.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
 				"${BUILT_PRODUCTS_DIR}/Keys/Keys.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/MRProgress/MRProgress.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/NSString+Emoji/NSString_Emoji.framework",
@@ -3210,6 +3217,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KLCPopup.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Keys.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MRProgress.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NSString_Emoji.framework",
@@ -3413,6 +3421,7 @@
 				498E4CFF1FA17C1A006933FF /* ChallengeCategoriesTableViewCell.swift in Sources */,
 				298409D8203C8645003AD202 /* ChatMessage+CoreDataProperties.m in Sources */,
 				297517B61F30EBFC00B5BCB9 /* TaskSetupViewController.swift in Sources */,
+				292F967E207239A700804151 /* ImageView-Extensions.swift in Sources */,
 				D99DEC87190836D400FFD2B9 /* Item.m in Sources */,
 				299BD62D1F541EFC00E22935 /* Quest+CoreDataClass.m in Sources */,
 				D93432571D5A2B9500025412 /* HRPGChoosePMRecipientViewController.m in Sources */,
@@ -3566,6 +3575,7 @@
 				D9525F991E5F405400C529B8 /* Challenge+CoreDataProperties.m in Sources */,
 				299BD6301F541EFC00E22935 /* QuestReward+CoreDataProperties.m in Sources */,
 				29205E392062E2430024E355 /* TaskRow.swift in Sources */,
+				292F968020723A4D00804151 /* ImageManager.swift in Sources */,
 				D9B5C0AE18CCC87A00C8D1B7 /* HRPGManager.m in Sources */,
 				293BB4A91FD0806C003B6F4F /* BulkStatsAllocationViewController.swift in Sources */,
 				292DEE78204E1FFD0086D5F7 /* CheckboxView.swift in Sources */,

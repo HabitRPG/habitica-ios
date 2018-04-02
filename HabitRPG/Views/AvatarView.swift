@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import YYWebImage
 import PinLayout
 
 @objc
@@ -114,16 +113,16 @@ class AvatarView: UIView {
         "head_special_1": headSpecialConstraints
     ]
     
-    func resize(view: YYAnimatedImageView, image: UIImage) {
+    func resize(view: UIImageView, image: UIImage) {
         let ratio = image.size.width / image.size.height
         view.pin.aspectRatio(ratio).width(image.size.width * (self.bounds.size.width / 140))
     }
     
-    let backgroundConstraints: ((AvatarView, YYAnimatedImageView, AvatarViewSize, CGFloat) -> Void) = { superview, view, size, offset in
+    let backgroundConstraints: ((AvatarView, UIImageView, AvatarViewSize, CGFloat) -> Void) = { superview, view, size, offset in
         view.pin.all()
     }
     
-    let characterConstraints: ((AvatarView, YYAnimatedImageView, AvatarViewSize, CGFloat) -> Void) = { superview, view, size, offset in
+    let characterConstraints: ((AvatarView, UIImageView, AvatarViewSize, CGFloat) -> Void) = { superview, view, size, offset in
         if size == .regular {
             view.pin.start(17%).top(offset)
         } else {
@@ -131,15 +130,15 @@ class AvatarView: UIView {
         }
     }
     
-    let mountConstraints: ((AvatarView, YYAnimatedImageView, AvatarViewSize, CGFloat) -> Void) = { superview, view, size, offset in
+    let mountConstraints: ((AvatarView, UIImageView, AvatarViewSize, CGFloat) -> Void) = { superview, view, size, offset in
         view.pin.start(17.5%).bottom(16%)
     }
     
-    let petConstraints: ((AvatarView, YYAnimatedImageView, AvatarViewSize, CGFloat) -> Void) = { superview, view, size, offset in
+    let petConstraints: ((AvatarView, UIImageView, AvatarViewSize, CGFloat) -> Void) = { superview, view, size, offset in
         view.pin.start().bottom()
     }
     
-    let weaponSpecialConstraints: ((AvatarView, YYAnimatedImageView, AvatarViewSize, CGFloat) -> Void) = { superview, view, size, offset in
+    let weaponSpecialConstraints: ((AvatarView, UIImageView, AvatarViewSize, CGFloat) -> Void) = { superview, view, size, offset in
         if size == .regular {
             view.pin.start(10%).top(offset)
         } else {
@@ -147,7 +146,7 @@ class AvatarView: UIView {
         }
     }
     
-    let weaponSpecial1Constraints: ((AvatarView, YYAnimatedImageView, AvatarViewSize, CGFloat) -> Void) = { superview, view, size, offset in
+    let weaponSpecial1Constraints: ((AvatarView, UIImageView, AvatarViewSize, CGFloat) -> Void) = { superview, view, size, offset in
         if size == .regular {
             view.pin.start(10%).top(offset)
         } else {
@@ -155,7 +154,7 @@ class AvatarView: UIView {
         }
     }
     
-    let headSpecialConstraints: ((AvatarView, YYAnimatedImageView, AvatarViewSize, CGFloat) -> Void) = { superview, view, size, offset in
+    let headSpecialConstraints: ((AvatarView, UIImageView, AvatarViewSize, CGFloat) -> Void) = { superview, view, size, offset in
         if size == .regular {
             view.pin.start(17%).top(offset+3)
         } else {
@@ -163,7 +162,7 @@ class AvatarView: UIView {
         }
     }
     
-    var imageViews = [YYAnimatedImageView]()
+    var imageViews = [UIImageView]()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -177,7 +176,7 @@ class AvatarView: UIView {
     
     private func setupSubviews() {
         viewOrder.forEach({ (_) in
-            let imageView = YYAnimatedImageView()
+            let imageView = UIImageView()
             addSubview(imageView)
             imageViews.append(imageView)
         })
@@ -208,13 +207,11 @@ class AvatarView: UIView {
         }
     }
     
-    private func setImage(_ imageView: YYAnimatedImageView, type: String) {
-        imageView.yy_setImage(with: getImageUrl(type: type), placeholder: nil, options: .showNetworkActivity, manager: nil, progress: nil, transform: { (image, _) in
-            if let data = image.yy_imageDataRepresentation() {
-                return YYImage(data: data, scale: 1.0)
-            }
-            return image
-        }, completion: { (image, _, _, _, error) in
+    private func setImage(_ imageView: UIImageView, type: String) {
+        guard let name = nameDictionary[type] else {
+            return
+        }
+        imageView.setImagewith(name: name, extension: getFormat(name: name ?? ""), completion: { image, error in
             if let image = image, type != "background" {
                 self.resize(view: imageView, image: image)
                 self.setLayout(imageView, type: type)
@@ -248,7 +245,7 @@ class AvatarView: UIView {
         })
     }
     
-    private func setLayout(_ imageView: YYAnimatedImageView, type: String) {
+    private func setLayout(_ imageView: UIImageView, type: String) {
         var offset: CGFloat = 0
         if !(viewDictionary["mount-head"] ?? false) && size == .regular {
             offset = 28
@@ -266,12 +263,5 @@ class AvatarView: UIView {
     
     private func getFormat(name: String) -> String {
         return formatDictionary[name] ?? "png"
-    }
-    
-    private func getImageUrl(type: String) -> URL? {
-        guard let name = nameDictionary[type] else {
-            return nil
-        }
-        return URL(string: "https://habitica-assets.s3.amazonaws.com/mobileApp/images/\(name ?? "").\(getFormat(name: name ?? ""))")
     }
 }

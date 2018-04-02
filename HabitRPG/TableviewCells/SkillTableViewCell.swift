@@ -27,11 +27,14 @@ class SkillTableViewCell: UITableViewCell {
         titleLabel.text = skill.text
         notesLabel.text = skill.notes
         costLabel.text = String(describing: skill.mana)
+        skillImageView.setShopImagewith(name: skill.key)
     }
     
     func configureLocked(skill: SkillProtocol) {
         titleLabel.text = L10n.Skills.unlocksAt(skill.level)
         magicIconView.image = HabiticaIcons.imageOfLocked
         magicIconView.contentMode = .center
+        skillImageView.setShopImagewith(name: skill.key)
+        skillImageView.alpha = 0.3
     }
 }
