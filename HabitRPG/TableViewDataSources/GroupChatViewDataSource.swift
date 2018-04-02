@@ -14,6 +14,8 @@ import KLCPopup
 
 class GroupChatViewDataSource: BaseReactiveDataSource, UITableViewDataSource {
 
+    @objc weak var viewController: GroupChatViewController?
+    
     @objc weak var tableView: UITableView? {
         didSet {
             tableView?.dataSource = self
@@ -31,14 +33,14 @@ class GroupChatViewDataSource: BaseReactiveDataSource, UITableViewDataSource {
     init(groupID: String) {
         self.groupID = groupID
         super.init()
-        disposable.inner.add(socialRepository.getChatMessages(groupID: groupID).on(value: {[weak self] (chatMessages, changes) in
-            self?.chatMessages = chatMessages
-            self?.notifyDataUpdate(tableView: self?.tableView, changes: changes)
-        }).start())
         
         disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
             self?.user = user
             self?.tableView?.reloadData()
+        }).start())
+        disposable.inner.add(socialRepository.getChatMessages(groupID: groupID).on(value: {[weak self] (chatMessages, changes) in
+            self?.chatMessages = chatMessages
+            self?.notifyDataUpdate(tableView: self?.tableView, changes: changes)
         }).start())
     }
     
@@ -81,12 +83,12 @@ class GroupChatViewDataSource: BaseReactiveDataSource, UITableViewDataSource {
                        isExpanded: isExpanded)
         
         cell.profileAction = {
-            /*guard let profileViewController = self.storyboard?.instantiateViewController(withIdentifier: "UserProfileViewController") as? HRPGUserProfileViewController else {
+            guard let profileViewController = self.viewController?.storyboard?.instantiateViewController(withIdentifier: "UserProfileViewController") as? HRPGUserProfileViewController else {
                 return
             }
-            profileViewController.userID = item.uuid
-            profileViewController.username = item.user
-            self.navigationController?.pushViewController(profileViewController, animated: true)*/
+            profileViewController.userID = item.userID
+            profileViewController.username = item.username
+            self.viewController?.navigationController?.pushViewController(profileViewController, animated: true)
         }
         cell.reportAction = {[weak self] in
             guard let view = Bundle.main.loadNibNamed("HRPGFlagInformationOverlayView", owner: self, options: nil)?.first as? HRPGFlagInformationOverlayView else {
@@ -109,9 +111,7 @@ class GroupChatViewDataSource: BaseReactiveDataSource, UITableViewDataSource {
             popup?.show()
         }
         cell.replyAction = {
-            //self.textView.text = "@\(item.user ?? "") "
-            //self.textView.becomeFirstResponder()
-            //self.textView.selectedRange = NSRange(location: self.textView.text.count, length: 0)
+            self.viewController?.configureReplyTo(item.username)
         }
         cell.plusOneAction = {
             self.socialRepository.like(groupID: self.groupID, chatMessage: item).observeCompleted {}
@@ -137,9 +137,9 @@ class GroupChatViewDataSource: BaseReactiveDataSource, UITableViewDataSource {
     }
     
     private func expandSelectedCell(_ indexPath: IndexPath) {
-        /*if isScrolling {
+        if self.viewController?.isScrolling == true {
             return
-        }*/
+        }
         var oldExpandedPath: IndexPath? = self.expandedChatPath
         if self.tableView?.numberOfRows(inSection: 0) ?? 0 < oldExpandedPath?.item ?? 0 {
             oldExpandedPath = nil
@@ -175,7 +175,7 @@ class GroupChatViewDataSource: BaseReactiveDataSource, UITableViewDataSource {
     @objc
     func itemAt(indexPath: IndexPath) -> ChatMessageProtocol? {
         if indexPath.section == 0 {
-            if indexPath.item > 0 && indexPath.item < chatMessages.count {
+            if indexPath.item >= 0 && indexPath.item < chatMessages.count {
                 return chatMessages[indexPath.item]
             }
         }

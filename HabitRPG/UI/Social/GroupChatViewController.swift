@@ -17,7 +17,7 @@ class GroupChatViewController: SLKTextViewController {
     
     @objc public var groupID: String?
     private var dataSource: GroupChatViewDataSource?
-    private var isScrolling = false
+    var isScrolling = false
     
     private let socialRepository = SocialRepository()
     private let userRepository = UserRepository()
@@ -69,6 +69,7 @@ class GroupChatViewController: SLKTextViewController {
         if let groupID = self.groupID {
             dataSource = GroupChatViewDataSource(groupID: groupID)
             dataSource?.tableView = tableView
+            dataSource?.viewController = self
         }
         
         self.refresh()
@@ -157,6 +158,12 @@ class GroupChatViewController: SLKTextViewController {
     @objc
     private func acceptGuidelines() {
         userRepository.updateUser(key: "flags.communityGuidelinesAccepted", value: true).observeCompleted {}
+    }
+    
+    func configureReplyTo(_ username: String?) {
+        self.textView.text = "@\(username ?? "") "
+        self.textView.becomeFirstResponder()
+        self.textView.selectedRange = NSRange(location: self.textView.text.count, length: 0)
     }
 
 }

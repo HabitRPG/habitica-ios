@@ -18,5 +18,8 @@ public protocol ChatMessageProtocol {
     var username: String? { get set }
     var flagCount: Int { get set }
     var contributor: ContributorProtocol? { get set }
+    var likes: [ChatMessageReactionProtocol] { get set }
+    var flags: [ChatMessageReactionProtocol] { get set }
+    var userStyles: UserStyleProtocol? { get set }
     
 }

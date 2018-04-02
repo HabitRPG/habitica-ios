@@ -18,6 +18,9 @@ public class APIChatMessage: ChatMessageProtocol, Codable {
     public var username: String?
     public var flagCount: Int
     public var contributor: ContributorProtocol?
+    public var userStyles: UserStyleProtocol?
+    public var likes: [ChatMessageReactionProtocol]
+    public var flags: [ChatMessageReactionProtocol]
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -27,6 +30,9 @@ public class APIChatMessage: ChatMessageProtocol, Codable {
         case username = "user"
         case flagCount
         case contributor
+        case userStyles
+        case likes
+        case flags
     }
     
     public required init(from decoder: Decoder) throws {
@@ -40,6 +46,9 @@ public class APIChatMessage: ChatMessageProtocol, Codable {
         username = try? values.decode(String.self, forKey: .username)
         flagCount = (try? values.decode(Int.self, forKey: .flagCount)) ?? 0
         contributor = (try? values.decode(APIContributor.self, forKey: .contributor))
+        userStyles = try? values.decode(APIUserStyle.self, forKey: .userStyles)
+        likes = APIChatMessageReaction.fromList(try? values.decode([String: Bool].self, forKey: .likes))
+        flags = APIChatMessageReaction.fromList(try? values.decode([String: Bool].self, forKey: .flags))
     }
     
     public func encode(to encoder: Encoder) throws {

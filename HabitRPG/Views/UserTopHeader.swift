@@ -73,7 +73,7 @@ class UserTopHeader: UIView {
     }
     
     private func set(user: UserProtocol) {
-        avatarView.avatar = AvatarViewModel(user: user)
+        avatarView.avatar = AvatarViewModel(avatar: user)
         if let stats = user.stats {
             healthLabel.value = NSNumber(value: stats.health)
             if stats.maxHealth > 0 {

@@ -34,7 +34,7 @@ class MenuNavigationBarView: UIView {
     @objc
     public func configure(user: UserProtocol) {
         usernameLabel.text = user.profile?.name
-        avatarView.avatar = AvatarViewModel(user: user)
+        avatarView.avatar = AvatarViewModel(avatar: user)
         /*if user.inboxNewMessages.intValue > 0 {
             messagesBadge.text = user.inboxNewMessages.stringValue
             messagesBadge.isHidden = false

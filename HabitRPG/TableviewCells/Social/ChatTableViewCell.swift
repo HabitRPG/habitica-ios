@@ -70,6 +70,11 @@ class ChatTableViewCell: UITableViewCell {
             updateLeftMargin()
         }
     }
+    private var avatarViewModel = AvatarViewModel() {
+        didSet {
+            avatarView.avatar = avatarViewModel
+        }
+    }
     
     private var contributorLevel = 0 {
         didSet {
@@ -137,7 +142,7 @@ class ChatTableViewCell: UITableViewCell {
         contributorLevel = chatMessage.contributor?.level ?? 0
         messageTextView.textColor = UIColor.gray10()
         
-        //stylePlusOneButton(likes: chatMessage.likes, userID: userID)
+        stylePlusOneButton(likes: chatMessage.likes, userID: userID)
         
         setTimeStamp(date: chatMessage.timestamp)
         
@@ -155,7 +160,8 @@ class ChatTableViewCell: UITableViewCell {
             avatarView.isHidden = isOwnMessage
 
             if !isOwnMessage && !isAvatarHidden {
-                //avatarView.avatar = chatMessage.avatar
+                avatarViewModel.avatar = chatMessage.userStyles
+                avatarView.avatar = avatarViewModel
             }
         }
         
@@ -167,12 +173,12 @@ class ChatTableViewCell: UITableViewCell {
             bottomSpacing = 4
         }
         
-        /*if let flags = chatMessage.flags, isModerator && flags.count > 0 {
+        if isModerator && chatMessage.flags.count > 0 {
             reportView.isHidden = false
-            reportView.setTitle("\(flags.count)", for: .normal)
+            reportView.setTitle("\(chatMessage.flags.count)", for: .normal)
         } else {
             reportView.isHidden = true
-        }*/
+        }
         
         self.isExpanded = isExpanded
         applyAccessibility()
@@ -228,23 +234,21 @@ class ChatTableViewCell: UITableViewCell {
         timeLabel.text = (date as NSDate?)?.timeAgoSinceNow()
     }
     
-    private func stylePlusOneButton(likes: Set<ChatMessageLike>?, userID: String) {
+    private func stylePlusOneButton(likes: [ChatMessageReactionProtocol], userID: String) {
         plusOneButton.setTitle(nil, for: .normal)
         plusOneButton.setTitleColor(UIColor.gray300(), for: .normal)
         plusOneButton.tintColor = UIColor.gray300()
         var wasLiked = false
-        if let likes = likes {
-            let likedMessageCount = likes.filter({ (like) -> Bool in
-                return like.wasLiked?.boolValue == true
-            }).count
-            if likedMessageCount > 0 {
-                plusOneButton.setTitle(" +\(likedMessageCount)", for: .normal)
-                for like in likes where like.userID == userID && like.wasLiked?.boolValue == true {
-                    plusOneButton.setTitleColor(UIColor.purple400(), for: .normal)
-                    plusOneButton.tintColor = UIColor.purple400()
-                    wasLiked = true
-                    break
-                }
+        let likedMessageCount = likes.filter({ (like) -> Bool in
+            return like.hasReacted == true
+        }).count
+        if likedMessageCount > 0 {
+            plusOneButton.setTitle(" +\(likedMessageCount)", for: .normal)
+            for like in likes where like.userID == userID && like.hasReacted == true {
+                plusOneButton.setTitleColor(UIColor.purple400(), for: .normal)
+                plusOneButton.tintColor = UIColor.purple400()
+                wasLiked = true
+                break
             }
         }
         plusOneButton.setImage(HabiticaIcons.imageOfChatLikeIcon(wasLiked: wasLiked), for: .normal)

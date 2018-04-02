@@ -9,15 +9,12 @@
 import Foundation
 
 @objc
-public protocol UserProtocol {
+public protocol UserProtocol: AvatarProtocol {
     
     var id: String? { get set }
-    var stats: StatsProtocol? { get set }
     var flags: FlagsProtocol? { get set }
-    var preferences: PreferencesProtocol? { get set }
     var profile: ProfileProtocol? { get set }
     var contributor: ContributorProtocol? { get set }
-    var items: UserItemsProtocol? { get set }
     var balance: Float { get set }
     var tasksOrder: [String: [String]] { get set }
     var tags: [TagProtocol] { get set }

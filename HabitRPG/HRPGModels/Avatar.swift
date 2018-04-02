@@ -279,25 +279,27 @@ extension ChatMessageAvatar: Avatar {
 typealias AvatarUserProtocol = Avatar & UserProtocol
 
 class AvatarViewModel: Avatar {
-    weak var user: UserProtocol?
+    weak var avatar: AvatarProtocol?
     
-    init(user: UserProtocol) {
-        self.user = user
+    init() {}
+    
+    init(avatar: AvatarProtocol) {
+        self.avatar = avatar
     }
     
     private var displayedOutfit: OutfitProtocol? {
-        if user?.preferences?.useCostume == true {
-            return user?.items?.gear?.costume
+        if avatar?.preferences?.useCostume == true {
+            return avatar?.items?.gear?.costume
         } else {
-            return user?.items?.gear?.equipped
+            return avatar?.items?.gear?.equipped
         }
     }
     
     var background: String? {
-        return user?.preferences?.background
+        return avatar?.preferences?.background
     }
     var chair: String? {
-        return user?.preferences?.chair
+        return avatar?.preferences?.chair
     }
     
     var back: String? {
@@ -305,11 +307,11 @@ class AvatarViewModel: Avatar {
     }
     
     var skin: String? {
-        return user?.preferences?.skin
+        return avatar?.preferences?.skin
     }
     
     var shirt: String? {
-        return user?.preferences?.shirt
+        return avatar?.preferences?.shirt
     }
     
     var armor: String? {
@@ -369,7 +371,7 @@ class AvatarViewModel: Avatar {
     }
     
     var mount: String? {
-        return user?.items?.currentMount
+        return avatar?.items?.currentMount
     }
     
     var knockout: String? {
@@ -377,15 +379,15 @@ class AvatarViewModel: Avatar {
     }
     
     var pet: String? {
-        return user?.items?.currentPet
+        return avatar?.items?.currentPet
     }
     
     var isSleep: Bool {
-        return user?.preferences?.sleep ?? false
+        return avatar?.preferences?.sleep ?? false
     }
     
     var size: String? {
-        return user?.preferences?.size
+        return avatar?.preferences?.size
     }
     
 }
