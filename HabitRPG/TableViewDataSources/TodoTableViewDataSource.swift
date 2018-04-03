@@ -9,6 +9,14 @@
 import Foundation
 import Habitica_Models
 
+@objc
+class TodoTableViewDataSourceInstantiator: NSObject {
+    @objc
+    static func instantiate(predicate: NSPredicate) -> TaskTableViewDataSourceProtocol {
+        return TodoTableViewDataSource(predicate: predicate)
+    }
+}
+
 class TodoTableViewDataSource: TaskTableViewDataSource {
     
     override func configure(cell: TaskTableViewCell, indexPath: IndexPath, task: TaskProtocol) {

@@ -12,52 +12,38 @@ import ReactiveSwift
 import Result
 import KLCPopup
 
-class GroupChatViewDataSource: BaseReactiveDataSource, UITableViewDataSource {
+class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtocol> {
 
     @objc weak var viewController: GroupChatViewController?
-    
-    @objc weak var tableView: UITableView? {
-        didSet {
-            tableView?.dataSource = self
-            tableView?.reloadData()
-        }
-    }
+
     private var expandedChatPath: IndexPath?
 
     private let socialRepository = SocialRepository()
     private let userRepository = UserRepository()
-    private var chatMessages = [ChatMessageProtocol]()
     private var user: UserProtocol?
     private let groupID: String
     
     init(groupID: String) {
         self.groupID = groupID
         super.init()
+        sections.append(ItemSection<ChatMessageProtocol>())
         
         disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
             self?.user = user
             self?.tableView?.reloadData()
         }).start())
         disposable.inner.add(socialRepository.getChatMessages(groupID: groupID).on(value: {[weak self] (chatMessages, changes) in
-            self?.chatMessages = chatMessages
+            self?.sections[0].items = chatMessages
             self?.notifyDataUpdate(tableView: self?.tableView, changes: changes)
         }).start())
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return chatMessages.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let chatMessage = itemAt(indexPath: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let chatMessage = item(at: indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier(for: chatMessage), for: indexPath)
         if let chatMessage = chatMessage {
             if let chatCell = cell as? ChatTableViewCell {
-                self.configure(cell: chatCell, item: chatMessage, indexPath: indexPath)
+                self.configure(cell: chatCell, chatMessage: chatMessage, indexPath: indexPath)
             }
             if let systemCell = cell as? SystemMessageTableViewCell {
                 systemCell.configure(chatMessage: chatMessage)
@@ -67,16 +53,16 @@ class GroupChatViewDataSource: BaseReactiveDataSource, UITableViewDataSource {
         return cell
     }
     
-    private func configure(cell: ChatTableViewCell, item: ChatMessageProtocol, indexPath: IndexPath?) {
+    private func configure(cell: ChatTableViewCell, chatMessage: ChatMessageProtocol, indexPath: IndexPath?) {
         var isExpanded = false
         if let expandedChatPath = self.expandedChatPath, let indexPath = indexPath {
             isExpanded = expandedChatPath == indexPath
         }
         
         cell.isFirstMessage = indexPath?.item == 0
-        cell.configure(chatMessage: item,
-                       previousMessage: itemAt(indexPath: IndexPath(item: (indexPath?.item ?? 0)+1, section: indexPath?.section ?? 0)),
-                       nextMessage: itemAt(indexPath: IndexPath(item: (indexPath?.item ?? 0)-1, section: indexPath?.section ?? 0)),
+        cell.configure(chatMessage: chatMessage,
+                       previousMessage: item(at: IndexPath(item: (indexPath?.item ?? 0)+1, section: indexPath?.section ?? 0)),
+                       nextMessage: item(at: IndexPath(item: (indexPath?.item ?? 0)-1, section: indexPath?.section ?? 0)),
                        userID: self.user?.id ?? "",
                        username: self.user?.profile?.name ?? "",
                        isModerator: self.user?.isModerator == true,
@@ -86,19 +72,19 @@ class GroupChatViewDataSource: BaseReactiveDataSource, UITableViewDataSource {
             guard let profileViewController = self.viewController?.storyboard?.instantiateViewController(withIdentifier: "UserProfileViewController") as? HRPGUserProfileViewController else {
                 return
             }
-            profileViewController.userID = item.userID
-            profileViewController.username = item.username
+            profileViewController.userID = chatMessage.userID
+            profileViewController.username = chatMessage.username
             self.viewController?.navigationController?.pushViewController(profileViewController, animated: true)
         }
         cell.reportAction = {[weak self] in
             guard let view = Bundle.main.loadNibNamed("HRPGFlagInformationOverlayView", owner: self, options: nil)?.first as? HRPGFlagInformationOverlayView else {
                 return
             }
-            view.username = item.username
-            view.message = item.text
+            view.username = chatMessage.username
+            view.message = chatMessage.text
             view.flagAction = {
                 if let strongSelf = self {
-                    strongSelf.socialRepository.flag(groupID: strongSelf.groupID, chatMessage: item).observeCompleted {}
+                    strongSelf.socialRepository.flag(groupID: strongSelf.groupID, chatMessage: chatMessage).observeCompleted {}
                 }
             }
             view.sizeToFit()
@@ -111,19 +97,19 @@ class GroupChatViewDataSource: BaseReactiveDataSource, UITableViewDataSource {
             popup?.show()
         }
         cell.replyAction = {
-            self.viewController?.configureReplyTo(item.username)
+            self.viewController?.configureReplyTo(chatMessage.username)
         }
         cell.plusOneAction = {
-            self.socialRepository.like(groupID: self.groupID, chatMessage: item).observeCompleted {}
+            self.socialRepository.like(groupID: self.groupID, chatMessage: chatMessage).observeCompleted {}
         }
         cell.copyAction = {
             let pasteboard = UIPasteboard.general
-            pasteboard.string = item.text
+            pasteboard.string = chatMessage.text
             let toastView = ToastView(title: NSLocalizedString("Copied Message", comment: ""), background: .green)
             ToastManager.show(toast: toastView)
         }
         cell.deleteAction = {
-            self.socialRepository.delete(groupID: self.groupID, chatMessage: item).observeCompleted {}
+            self.socialRepository.delete(groupID: self.groupID, chatMessage: chatMessage).observeCompleted {}
         }
         cell.expandAction = {
             if let path = indexPath {
@@ -170,15 +156,5 @@ class GroupChatViewDataSource: BaseReactiveDataSource, UITableViewDataSource {
             }
         }
         return "ChatMessageCell"
-    }
-    
-    @objc
-    func itemAt(indexPath: IndexPath) -> ChatMessageProtocol? {
-        if indexPath.section == 0 {
-            if indexPath.item >= 0 && indexPath.item < chatMessages.count {
-                return chatMessages[indexPath.item]
-            }
-        }
-        return nil
     }
 }

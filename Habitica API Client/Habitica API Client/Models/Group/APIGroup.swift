@@ -22,7 +22,7 @@ public class APIGroup: GroupProtocol, Decodable {
     public var chat: [ChatMessageProtocol]
     
     enum CodingKeys: String, CodingKey {
-        case id
+        case id = "_id"
         case name
         case groupDescription = "description"
         case summary

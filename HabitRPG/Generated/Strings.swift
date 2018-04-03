@@ -15,8 +15,16 @@ internal enum L10n {
   internal static let daily = L10n.tr("Main", "daily")
   /// Difficulty
   internal static let difficulty = L10n.tr("Main", "difficulty")
+  /// Discover
+  internal static let discover = L10n.tr("Main", "discover")
+  /// Last Activity %@
+  internal static func lastActivity(_ p1: String) -> String {
+    return L10n.tr("Main", "last_activity", p1)
+  }
   /// Monthly
   internal static let monthly = L10n.tr("Main", "monthly")
+  /// My Guilds
+  internal static let myGuilds = L10n.tr("Main", "my_guilds")
   /// Notes
   internal static let notes = L10n.tr("Main", "notes")
   /// Reset Justins Tips
@@ -87,6 +95,51 @@ internal enum L10n {
     internal static let tavern = L10n.tr("Main", "menu.tavern")
     /// Use Skills
     internal static let useSkills = L10n.tr("Main", "menu.use_skills")
+  }
+
+  internal enum Settings {
+    /// API
+    internal static let api = L10n.tr("Main", "settings.api")
+    /// Authentication
+    internal static let authentication = L10n.tr("Main", "settings.authentication")
+    /// Change Class
+    internal static let changeClass = L10n.tr("Main", "settings.change_class")
+    /// Clear Cache
+    internal static let clearCache = L10n.tr("Main", "settings.clear_cache")
+    /// Custom Day Start
+    internal static let customDayStart = L10n.tr("Main", "settings.custom_day_start")
+    /// Daily Reminder
+    internal static let dailyReminder = L10n.tr("Main", "settings.daily_reminder")
+    /// Day Start
+    internal static let dayStart = L10n.tr("Main", "settings.day_start")
+    /// Disable all Push Notifications
+    internal static let disableAllNotifications = L10n.tr("Main", "settings.disable_all_notifications")
+    /// Disable Private Messages
+    internal static let disablePm = L10n.tr("Main", "settings.disable_pm")
+    /// Display NOtification Badge
+    internal static let displayNotificationBadge = L10n.tr("Main", "settings.display_notification_badge")
+    /// Every day at
+    internal static let everyDay = L10n.tr("Main", "settings.every_day")
+    /// Fix Character Values
+    internal static let fixCharacterValues = L10n.tr("Main", "settings.fix_characterValues")
+    /// Log Out
+    internal static let logOut = L10n.tr("Main", "settings.log_out")
+    /// Maintenance
+    internal static let maintenance = L10n.tr("Main", "settings.maintenance")
+    /// Notification Badge
+    internal static let notificationBadge = L10n.tr("Main", "settings.notification_badge")
+    /// Profile
+    internal static let profile = L10n.tr("Main", "settings.profile")
+    /// Push Notifications
+    internal static let pushNotifications = L10n.tr("Main", "settings.push_notifications")
+    /// Reload Content
+    internal static let reloadContent = L10n.tr("Main", "settings.reload_content")
+    /// Reminder
+    internal static let reminder = L10n.tr("Main", "settings.reminder")
+    /// Social
+    internal static let social = L10n.tr("Main", "settings.social")
+    /// User
+    internal static let user = L10n.tr("Main", "settings.user")
   }
 
   internal enum Skills {

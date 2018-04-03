@@ -34,8 +34,30 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
         return nil
     }
     
-    func getGroup(_ id: String) -> Group? {
-        return makeFetchRequest(entityName: "Group", predicate: NSPredicate(format: "id == %@", id))
+    func getGroup(_ groupID: String) -> Group? {
+        return makeFetchRequest(entityName: "Group", predicate: NSPredicate(format: "id == %@", groupID))
+    }
+    
+    func getGroups(predicate: NSPredicate) -> SignalProducer<ReactiveResults<[GroupProtocol]>, ReactiveSwiftRealmError> {
+        return localRepository.getGroups(predicate: predicate)
+    }
+    
+    func retrieveGroups(_ groupType: String) -> Signal<[GroupProtocol]?, NoError> {
+        let call = RetrieveGroupsCall(groupType)
+        call.fire()
+        return call.arraySignal.on(value: { groups in
+            guard let groups = groups else {
+                return
+            }
+            self.localRepository.save(groups)
+            if groupType == "guilds" {
+                if let userID = AuthenticationManager.shared.currentUserId {
+                    self.localRepository.save(userID: userID, groupIDs: groups.map({ (group) -> String? in
+                        return group.id
+                    }))
+                }
+            }
+        })
     }
     
     func retrieveGroup(groupID: String) -> Signal<GroupProtocol?, NoError> {
@@ -94,5 +116,15 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
     
     public func getChatMessages(groupID: String) -> SignalProducer<ReactiveResults<[ChatMessageProtocol]>, ReactiveSwiftRealmError> {
         return localRepository.getChatMessages(groupID: groupID)
+    }
+
+    public func getGroupMemberships() -> SignalProducer<ReactiveResults<[GroupMembershipProtocol]>, ReactiveSwiftRealmError> {
+        if let userId = AuthenticationManager.shared.currentUserId {
+            return localRepository.getGroupMemberships(userID: userId)
+        } else {
+            return SignalProducer {(sink, _) in
+                sink.sendCompleted()
+            }
+        }
     }
 }

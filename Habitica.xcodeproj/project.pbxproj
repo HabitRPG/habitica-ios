@@ -32,6 +32,10 @@
 		2907267E1F74279C00545550 /* TimeTravelersCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2907267D1F74279C00545550 /* TimeTravelersCollectionViewDataSource.swift */; };
 		290726811F750FC400545550 /* ShopCategory+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 290726801F750FC400545550 /* ShopCategory+CoreDataClass.m */; };
 		2907F99E1F694C4000328AEE /* GemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2907F99D1F694C4000328AEE /* GemViewController.swift */; };
+		290B623F20727113007287C4 /* MyGuildCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B623E20727113007287C4 /* MyGuildCell.swift */; };
+		290B62412072711A007287C4 /* PublicGuildCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B62402072711A007287C4 /* PublicGuildCell.swift */; };
+		290B624320728E74007287C4 /* GuildOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B624220728E74007287C4 /* GuildOverviewViewController.swift */; };
+		290B624A2073C37A007287C4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B62492073C37A007287C4 /* SettingsViewController.swift */; };
 		290C3017206A963D0066AF5B /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C3016206A963D0066AF5B /* MainMenuViewController.swift */; };
 		290C302A206BA0B50066AF5B /* SkillTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C3029206BA0B50066AF5B /* SkillTableViewCell.swift */; };
 		290C302C206BACBB0066AF5B /* SpellsTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C302B206BACBB0066AF5B /* SpellsTableViewDataSource.swift */; };
@@ -65,6 +69,7 @@
 		292F9662206E363000804151 /* GroupChatViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292F9661206E363000804151 /* GroupChatViewDataSource.swift */; };
 		292F967E207239A700804151 /* ImageView-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292F967D207239A700804151 /* ImageView-Extensions.swift */; };
 		292F968020723A4D00804151 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292F967F20723A4D00804151 /* ImageManager.swift */; };
+		292F968320724B1100804151 /* GuildsOverviewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292F968220724B1100804151 /* GuildsOverviewDataSource.swift */; };
 		29323E1B2050532D00AC6D6F /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E1A2050532D00AC6D6F /* UserRepository.swift */; };
 		29323E1F2050563700AC6D6F /* NetworkErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E1E2050563700AC6D6F /* NetworkErrorHandler.swift */; };
 		29323E352052008800AC6D6F /* UserTopHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E342052008800AC6D6F /* UserTopHeader.swift */; };
@@ -298,7 +303,6 @@
 		D940A7E41B0CF80100370F2E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D940A7E21B0CF80100370F2E /* Crashlytics.framework */; };
 		D942B5381CAAE6B1009AB756 /* Social.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D942B53A1CAAE6B1009AB756 /* Social.storyboard */; };
 		D9436AC11C63A4BB008D1171 /* UIViewController+Markdown.m in Sources */ = {isa = PBXBuildFile; fileRef = D9436AC01C63A4BB008D1171 /* UIViewController+Markdown.m */; };
-		D9436AC91C64F880008D1171 /* HRPGGuildsOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9436AC81C64F880008D1171 /* HRPGGuildsOverviewViewController.m */; };
 		D94461911AB355940015215E /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = D94461901AB355940015215E /* user.json */; };
 		D946E5C21B30A89500806BE6 /* NSDate+NSDateMock.m in Sources */ = {isa = PBXBuildFile; fileRef = D946E5C11B30A89500806BE6 /* NSDate+NSDateMock.m */; };
 		D946E5C41B30A9D700806BE6 /* HRPGTaskTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D946E5C31B30A9D700806BE6 /* HRPGTaskTests.m */; };
@@ -334,7 +338,6 @@
 		D95D039C1C74E3E900D6BFB3 /* ImprovementCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = D95D039A1C74E3E900D6BFB3 /* ImprovementCategory.m */; };
 		D96038371930F90E0025EAEC /* HRPGMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D96038361930F90E0025EAEC /* HRPGMessageViewController.m */; };
 		D96447B41CE9FF0D009D7950 /* HRPGResponseMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = D96447B31CE9FF0D009D7950 /* HRPGResponseMessage.m */; };
-		D9660D751AB23F150084CE37 /* HRPGTopHeaderNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9660D741AB23F150084CE37 /* HRPGTopHeaderNavigationController.m */; };
 		D966557418FB129F0014C09D /* HRPGSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D966557318FB129F0014C09D /* HRPGSettingsViewController.m */; };
 		D96760C81B2EF9B600DB07DF /* HRPGAbbrevNumberLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D96760C71B2EF9B600DB07DF /* HRPGAbbrevNumberLabel.m */; };
 		D96BFC4C1E181B4A00266EEF /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96BFC4B1E181B4A00266EEF /* IntroViewController.swift */; };
@@ -576,6 +579,10 @@
 		2907267F1F750FC400545550 /* ShopCategory+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ShopCategory+CoreDataClass.h"; sourceTree = "<group>"; };
 		290726801F750FC400545550 /* ShopCategory+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ShopCategory+CoreDataClass.m"; sourceTree = "<group>"; };
 		2907F99D1F694C4000328AEE /* GemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GemViewController.swift; sourceTree = "<group>"; };
+		290B623E20727113007287C4 /* MyGuildCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGuildCell.swift; sourceTree = "<group>"; };
+		290B62402072711A007287C4 /* PublicGuildCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicGuildCell.swift; sourceTree = "<group>"; };
+		290B624220728E74007287C4 /* GuildOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuildOverviewViewController.swift; sourceTree = "<group>"; };
+		290B62492073C37A007287C4 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		290C3016206A963D0066AF5B /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		290C3029206BA0B50066AF5B /* SkillTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillTableViewCell.swift; sourceTree = "<group>"; };
 		290C302B206BACBB0066AF5B /* SpellsTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellsTableViewDataSource.swift; sourceTree = "<group>"; };
@@ -603,6 +610,7 @@
 		292F9661206E363000804151 /* GroupChatViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupChatViewDataSource.swift; sourceTree = "<group>"; };
 		292F967D207239A700804151 /* ImageView-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageView-Extensions.swift"; sourceTree = "<group>"; };
 		292F967F20723A4D00804151 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
+		292F968220724B1100804151 /* GuildsOverviewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuildsOverviewDataSource.swift; sourceTree = "<group>"; };
 		29323E1A2050532D00AC6D6F /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		29323E1E2050563700AC6D6F /* NetworkErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorHandler.swift; sourceTree = "<group>"; };
 		29323E2E2051C9A500AC6D6F /* Habitica 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Habitica 5.xcdatamodel"; sourceTree = "<group>"; };
@@ -926,8 +934,6 @@
 		D942B5461CAAE6CE009AB756 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Social.strings; sourceTree = "<group>"; };
 		D9436ABF1C63A4BB008D1171 /* UIViewController+Markdown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Markdown.h"; sourceTree = "<group>"; };
 		D9436AC01C63A4BB008D1171 /* UIViewController+Markdown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Markdown.m"; sourceTree = "<group>"; };
-		D9436AC71C64F880008D1171 /* HRPGGuildsOverviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGGuildsOverviewViewController.h; sourceTree = "<group>"; };
-		D9436AC81C64F880008D1171 /* HRPGGuildsOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGGuildsOverviewViewController.m; sourceTree = "<group>"; };
 		D94461831AB34F5C0015215E /* HabiticaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HabiticaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D94461861AB34F5C0015215E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D94461901AB355940015215E /* user.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = user.json; path = HabiticaTests/Fixtures/user.json; sourceTree = SOURCE_ROOT; };
@@ -983,8 +989,6 @@
 		D96038361930F90E0025EAEC /* HRPGMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGMessageViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D96447B21CE9FF0D009D7950 /* HRPGResponseMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGResponseMessage.h; sourceTree = "<group>"; };
 		D96447B31CE9FF0D009D7950 /* HRPGResponseMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGResponseMessage.m; sourceTree = "<group>"; };
-		D9660D731AB23F150084CE37 /* HRPGTopHeaderNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGTopHeaderNavigationController.h; sourceTree = "<group>"; };
-		D9660D741AB23F150084CE37 /* HRPGTopHeaderNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGTopHeaderNavigationController.m; sourceTree = "<group>"; };
 		D966557218FB129F0014C09D /* HRPGSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGSettingsViewController.h; sourceTree = "<group>"; };
 		D966557318FB129F0014C09D /* HRPGSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGSettingsViewController.m; sourceTree = "<group>"; };
 		D96760C61B2EF9B600DB07DF /* HRPGAbbrevNumberLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGAbbrevNumberLabel.h; sourceTree = "<group>"; };
@@ -1464,6 +1468,14 @@
 			name = Tasks;
 			sourceTree = "<group>";
 		};
+		292F96812072491C00804151 /* Guilds */ = {
+			isa = PBXGroup;
+			children = (
+				290B624220728E74007287C4 /* GuildOverviewViewController.swift */,
+			);
+			path = Guilds;
+			sourceTree = "<group>";
+		};
 		2957B8AA1F4B297300E836EF /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -1562,6 +1574,7 @@
 				294EB59C1FA0A7E4006083BD /* FixCharacterViewController.swift */,
 				29B3FEAE1F9A33AB000B12CF /* APISettingsViewController.swift */,
 				29B3FEB91F9A6FAD000B12CF /* AuthenticationSettingsViewController.swift */,
+				290B62492073C37A007287C4 /* SettingsViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -1579,6 +1592,7 @@
 		29E16318200E849000685640 /* Social */ = {
 			isa = PBXGroup;
 			children = (
+				292F96812072491C00804151 /* Guilds */,
 				29FD8AA1203D7CF60094322E /* Party */,
 				29FD8A9F203D753F0094322E /* SplitSocialViewController.swift */,
 				29E1631E200F62CB00685640 /* GroupChatViewController.swift */,
@@ -1662,6 +1676,7 @@
 				290279722057FB4E006DACB9 /* FAQTableViewDataSource.swift */,
 				290C302B206BACBB0066AF5B /* SpellsTableViewDataSource.swift */,
 				292F9661206E363000804151 /* GroupChatViewDataSource.swift */,
+				292F968220724B1100804151 /* GuildsOverviewDataSource.swift */,
 			);
 			name = TVDataSources;
 			sourceTree = "<group>";
@@ -1846,8 +1861,6 @@
 		D9436AC31C64F6E5008D1171 /* Guilds */ = {
 			isa = PBXGroup;
 			children = (
-				D9436AC71C64F880008D1171 /* HRPGGuildsOverviewViewController.h */,
-				D9436AC81C64F880008D1171 /* HRPGGuildsOverviewViewController.m */,
 				D9C0E5181C6510B40062C89A /* HRPGPublicGuildsViewController.h */,
 				D9C0E5191C6510B40062C89A /* HRPGPublicGuildsViewController.m */,
 			);
@@ -2310,6 +2323,8 @@
 			children = (
 				D9C0E51D1C6516C50062C89A /* HRPGPublicGuildTableViewCell.h */,
 				D9C0E51E1C6516C50062C89A /* HRPGPublicGuildTableViewCell.m */,
+				290B623E20727113007287C4 /* MyGuildCell.swift */,
+				290B62402072711A007287C4 /* PublicGuildCell.swift */,
 			);
 			path = Guilds;
 			sourceTree = "<group>";
@@ -2687,8 +2702,6 @@
 				D9722B7E19BD041E009D8AD3 /* HRPGNavigationController.h */,
 				D9722B7F19BD041E009D8AD3 /* HRPGNavigationController.m */,
 				29E1630A200D050E00685640 /* TopHeaderNavigationController.swift */,
-				D9660D731AB23F150084CE37 /* HRPGTopHeaderNavigationController.h */,
-				D9660D741AB23F150084CE37 /* HRPGTopHeaderNavigationController.m */,
 				D9E46AFB1DAB98D700E390D7 /* HRPGGemHeaderNavigationController.h */,
 				D9E46AFC1DAB98D700E390D7 /* HRPGGemHeaderNavigationController.m */,
 				D9AEEA711ACEDD470076951B /* HRPGWebViewController.h */,
@@ -3429,6 +3442,7 @@
 				98A4DBF01B643BC100A9E2A8 /* HRPGSearchDataManager.m in Sources */,
 				29FC5A6B20406932008E88C8 /* GuidelinesViewController.swift in Sources */,
 				D9D0451B1C2B1AEC00630244 /* Reminder+CoreDataProperties.m in Sources */,
+				290B623F20727113007287C4 /* MyGuildCell.swift in Sources */,
 				D9C7C1F018E26BBB0083F4E4 /* Egg.m in Sources */,
 				D9A1A2811BA7029D00903567 /* NSDate+DaysSince.m in Sources */,
 				D9E9E0C41CCE55DA006D94A2 /* HRPGSharingManager.m in Sources */,
@@ -3490,7 +3504,6 @@
 				29FEB278202B491600EA245A /* Avatar.swift in Sources */,
 				D98F5AF21905DE86002F8223 /* HRPGPartyMembersViewController.m in Sources */,
 				D96BFC511E1930A500266EEF /* Signal-Extensions.swift in Sources */,
-				D9436AC91C64F880008D1171 /* HRPGGuildsOverviewViewController.m in Sources */,
 				29E1631D200F62C100685640 /* TavernDetailViewController.swift in Sources */,
 				D9F1E3EC1E55E1DB0034D0F4 /* SubscriptionInformation.swift in Sources */,
 				2904FC7D2028BE8000CFB741 /* HabiticaWorldState.swift in Sources */,
@@ -3576,10 +3589,11 @@
 				299BD6301F541EFC00E22935 /* QuestReward+CoreDataProperties.m in Sources */,
 				29205E392062E2430024E355 /* TaskRow.swift in Sources */,
 				292F968020723A4D00804151 /* ImageManager.swift in Sources */,
+				290B62412072711A007287C4 /* PublicGuildCell.swift in Sources */,
 				D9B5C0AE18CCC87A00C8D1B7 /* HRPGManager.m in Sources */,
 				293BB4A91FD0806C003B6F4F /* BulkStatsAllocationViewController.swift in Sources */,
 				292DEE78204E1FFD0086D5F7 /* CheckboxView.swift in Sources */,
-				D9660D751AB23F150084CE37 /* HRPGTopHeaderNavigationController.m in Sources */,
+				290B624A2073C37A007287C4 /* SettingsViewController.swift in Sources */,
 				293BB49A1FCD7DC0003B6F4F /* StatsView.swift in Sources */,
 				49005B7C1F18371F004830D9 /* HRPGShopUserHeaderView.swift in Sources */,
 				D9CE90401E4CAE6700702578 /* SubscriptionPlan+CoreDataClass.m in Sources */,
@@ -3650,6 +3664,7 @@
 				D9BB455B1E71C52F0002AE2E /* TaskTableViewCell.swift in Sources */,
 				29E16315200E629800685640 /* QuestProgressBarView.swift in Sources */,
 				49E378512009540500E0DA3D /* ChallengeTableViewHeaderView.swift in Sources */,
+				292F968320724B1100804151 /* GuildsOverviewDataSource.swift in Sources */,
 				D9EB4E9F18CB4A9400BB2094 /* HRPGAppDelegate.m in Sources */,
 				493ECBCB1F4DD81B0099B1FC /* HRPGShopsOverviewViewModel.swift in Sources */,
 				2957B8BC1F4B4DDE00E836EF /* InAppRewardCell.swift in Sources */,
@@ -3774,6 +3789,7 @@
 				29323E4920521FD500AC6D6F /* ContributorProtocol-Extensions.swift in Sources */,
 				D9D96F00194B87FF00796FE7 /* HRPGPetMasterViewController.m in Sources */,
 				D97C71DE18EC98A40089FDC6 /* QuestCollect.m in Sources */,
+				290B624320728E74007287C4 /* GuildOverviewViewController.swift in Sources */,
 				29ED1AFF1F339ACF005A3895 /* UIColor-Extensions.swift in Sources */,
 				D92D26141D58EEBA001FD977 /* HRPGQRCodeScannerViewController.m in Sources */,
 				D9ADD3511943BC0E006202C1 /* BuyableItem.m in Sources */,

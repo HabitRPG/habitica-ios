@@ -151,7 +151,7 @@
                                                      0)];
                 viewController.tableView.scrollIndicatorInsets =
                     UIEdgeInsetsMake(self.topHeaderNavigationController.contentInset, 0, 0, 0);
-                if (self.topHeaderNavigationController.state == HRPGTopHeaderStateHidden) {
+                if (self.topHeaderNavigationController.state == TopHeaderStateHidden) {
                     [viewController.tableView
                         setContentOffset:CGPointMake(0,
                                                      self.tableView.contentInset.top - self.topHeaderNavigationController.contentOffset)];

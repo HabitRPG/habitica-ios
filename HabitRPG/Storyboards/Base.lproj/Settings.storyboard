@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Mxq-5y-Lb4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Mxq-5y-Lb4">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -31,7 +31,7 @@
         <!--Settings-->
         <scene sceneID="UN9-Vb-65b">
             <objects>
-                <viewController id="R9E-Gz-gXb" customClass="HRPGSettingsViewController" sceneMemberID="viewController">
+                <viewController id="R9E-Gz-gXb" customClass="SettingsViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HbP-jT-zLI"/>
                         <viewControllerLayoutGuide type="bottom" id="Beo-47-ksD"/>
@@ -50,9 +50,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="BCm-To-foE" kind="show" identifier="AuthenticationSegue" id="hUS-j2-7FX">
-                            <nil key="action"/>
-                        </segue>
+                        <segue destination="BCm-To-foE" kind="show" identifier="AuthenticationSegue" id="hUS-j2-7FX"/>
                         <segue destination="wOo-je-HNh" kind="show" identifier="APISegue" id="uwh-yp-x28"/>
                         <segue destination="6ke-ha-crS" kind="show" identifier="ProfileSegue" id="N6B-gf-5w1"/>
                         <segue destination="dIG-in-z1e" kind="presentation" identifier="FixValuesSegue" id="n1e-Js-XUZ"/>

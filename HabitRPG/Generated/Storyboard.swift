@@ -128,7 +128,7 @@ internal enum StoryboardScene {
 
     internal static let groupTableViewController = SceneType<Habitica.SplitSocialViewController>(storyboard: Social.self, identifier: "GroupTableViewController")
 
-    internal static let guildsOverviewViewController = SceneType<HRPGGuildsOverviewViewController>(storyboard: Social.self, identifier: "GuildsOverviewViewController")
+    internal static let guildsOverviewViewController = SceneType<Habitica.GuildOverviewViewController>(storyboard: Social.self, identifier: "GuildsOverviewViewController")
 
     internal static let inboxChatViewController = SceneType<HRPGInboxChatViewController>(storyboard: Social.self, identifier: "InboxChatViewController")
 

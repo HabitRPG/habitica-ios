@@ -11,26 +11,20 @@ import Habitica_Models
 import ReactiveSwift
 import Result
 
-class FAQTableViewDataSource: BaseReactiveDataSource, UITableViewDataSource, UISearchBarDelegate {
+class FAQTableViewDataSource: BaseReactiveTableViewDataSource<FAQEntryProtocol>, UISearchBarDelegate {
     
     var searchQuery = "" {
         didSet {
             fetchEntries()
         }
     }
-    @objc weak var tableView: UITableView? {
-        didSet {
-            tableView?.dataSource = self
-            tableView?.reloadData()
-        }
-    }
     
     private let contentRepository = ContentRepository()
-    private var entries = [FAQEntryProtocol]()
     private var fetchDisposable: Disposable?
     
     override init() {
         super.init()
+        sections.append(ItemSection<FAQEntryProtocol>())
         fetchEntries()
     }
     
@@ -45,23 +39,15 @@ class FAQTableViewDataSource: BaseReactiveDataSource, UITableViewDataSource, UIS
             disposable.dispose()
         }
         fetchDisposable = contentRepository.getFAQEntries(search: searchQuery).on(value: { (entries, changes) in
-            self.entries = entries
+            self.sections[0].items = entries
             self.notifyDataUpdate(tableView: self.tableView, changes: changes)
         }).start()
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return entries.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        let entry = self.entries[indexPath.item]
-        cell.textLabel?.text = entry.question
+        let entry = item(at: indexPath)
+        cell.textLabel?.text = entry?.question
         return cell
     }
     

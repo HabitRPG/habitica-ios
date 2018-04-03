@@ -22,7 +22,7 @@
 - (void)viewDidLoad {
     self.readableName = NSLocalizedString(@"Habit", nil);
     self.typeName = @"habit";
-    self.dataSource = [[HabitTableViewDataSource alloc] initWithPredicate:[self getPredicate]];
+    self.dataSource = [HabitTableViewDataSourceInstantiator instantiateWithPredicate:[self getPredicate]];
     [super viewDidLoad];
 
     self.tutorialIdentifier = @"habits";

@@ -13,6 +13,6 @@ import ReactiveSwift
 
 public class RetrieveGroupCall: ResponseObjectCall<GroupProtocol, APIGroup> {
     public init(groupID: String, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "group.json")) {
-        super.init(httpMethod: .GET, endpoint: "groups/\(groupID)", postData: nil, stubHolder: stubHolder)
+        super.init(httpMethod: .GET, endpoint: "groups/\(groupID)", stubHolder: stubHolder)
     }
 }

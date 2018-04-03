@@ -7,13 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "HRPGTopHeaderNavigationController.h"
 
 @interface HRPGGemHeaderNavigationController : UINavigationController
 
 - (CGFloat)getContentInset;
 - (CGFloat)getContentOffset;
-@property(nonatomic) HRPGTopHeaderState state;
 
 - (void)startFollowingScrollView:(UIScrollView *)scrollView;
 - (void)stopFollowingScrollView;

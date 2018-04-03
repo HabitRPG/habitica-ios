@@ -9,17 +9,44 @@
 import Foundation
 import ReactiveSwift
 import Habitica_Database
+import Habitica_Models
 
-class BaseReactiveDataSource: NSObject {
+class ItemSection<MODEL> {
+    var items = [MODEL]()
+}
+
+class BaseReactiveDataSource<MODEL>: NSObject {
     
     let disposable = ScopedDisposable(CompositeDisposable())
     
+    var sections = [ItemSection<MODEL>]()
+    
+    @objc var userDrivenDataUpdate = false
+    
+    func item(at indexPath: IndexPath) -> MODEL? {
+        if indexPath.item < 0 || indexPath.section < 0 {
+            return nil
+        }
+        if indexPath.section < sections.count {
+            if indexPath.item < sections[indexPath.section].items.count {
+                return sections[indexPath.section].items[indexPath.item]
+            }
+        }
+        return nil
+    }
+    
     @objc
-    var userDrivenDataUpdate = false
+    func retrieveData(completed: (() -> Void)?) {}
 }
 
-
-extension UITableViewDataSource where Self: BaseReactiveDataSource {
+class BaseReactiveTableViewDataSource<MODEL>: BaseReactiveDataSource<MODEL>, UITableViewDataSource {
+    
+    @objc weak var tableView: UITableView? {
+        didSet {
+            tableView?.dataSource = self
+            tableView?.reloadData()
+        }
+    }
     
     func notifyDataUpdate(tableView: UITableView?, changes: ReactiveChangeset?) {
         guard let changes = changes else {
@@ -39,4 +66,24 @@ extension UITableViewDataSource where Self: BaseReactiveDataSource {
         }
     }
     
+    @objc
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return sections.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return sections[section].items.count
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return false
+    }
+    
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return false
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
 }

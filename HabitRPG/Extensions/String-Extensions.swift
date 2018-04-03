@@ -18,7 +18,7 @@ extension String {
         return boundingBox.width
     }
     
-    func stringWithAbbreviatedNumber() -> String {
+    func stringWithAbbreviatedNumber(roundingIncrement: Double = 0.01) -> String {
         guard var value = Double(self) else {
             return ""
         }
@@ -29,7 +29,7 @@ extension String {
         }
         
         let formatter = NumberFormatter()
-        formatter.roundingIncrement = 0.01
+        formatter.roundingIncrement = roundingIncrement as NSNumber
         formatter.numberStyle = .decimal
         return "\(formatter.string(from: NSNumber(value: value)) ?? "")\(abbreviationFor(counter: counter))"
     }

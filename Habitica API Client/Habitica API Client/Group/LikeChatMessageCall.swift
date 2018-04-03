@@ -13,6 +13,6 @@ import ReactiveSwift
 
 public class LikeChatMessageCall: ResponseObjectCall<ChatMessageProtocol, APIChatMessage> {
     public init(groupID: String, chatMessage: ChatMessageProtocol, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "group.json")) {
-        super.init(httpMethod: .POST, endpoint: "groups/\(groupID)/chat/\(chatMessage.id ?? "")/like", postData: nil, stubHolder: stubHolder)
+        super.init(httpMethod: .POST, endpoint: "groups/\(groupID)/chat/\(chatMessage.id ?? "")/like", stubHolder: stubHolder)
     }
 }

@@ -13,6 +13,6 @@ import ReactiveSwift
 
 public class AllocateAttributePointCall: ResponseObjectCall<StatsProtocol, APIStats> {
     public init(attribute: String, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "user.json")) {
-        super.init(httpMethod: .POST, endpoint: "user/allocate?stat=\(attribute)", postData: nil, stubHolder: stubHolder)
+        super.init(httpMethod: .POST, endpoint: "user/allocate?stat=\(attribute)", stubHolder: stubHolder)
     }
 }

@@ -9,8 +9,15 @@
 import UIKit
 
 @objc
+enum TopHeaderState: Int {
+    case visible = 0
+    case hidden = 1
+    case scrolling = 2
+}
+
+@objc
 protocol TopHeaderNavigationControllerProtocol: class {
-    @objc var state: HRPGTopHeaderState { get set }
+    @objc var state: TopHeaderState { get set }
     @objc var defaultNavbarHiddenColor: UIColor { get }
     @objc var defaultNavbarVisibleColor: UIColor { get }
     @objc var navbarHiddenColor: UIColor { get set }
@@ -41,7 +48,7 @@ protocol TopHeaderNavigationControllerProtocol: class {
 }
 
 class TopHeaderViewController: UINavigationController, TopHeaderNavigationControllerProtocol {
-    @objc public var state: HRPGTopHeaderState = HRPGTopHeaderStateVisible
+    @objc public var state: TopHeaderState = .visible
     @objc public let defaultNavbarHiddenColor = UIColor.purple300()
     @objc public let defaultNavbarVisibleColor = UIColor.white
     private var headerView: UIView?
@@ -101,7 +108,7 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
     
     var topHeaderHeight: CGFloat {
         if let header = self.alternativeHeaderView {
-            return header.intrinsicContentSize.height
+            return alternativeHeaderHeight
         } else {
             return defaultHeaderHeight
         }
@@ -149,6 +156,18 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
         return -((self.backgroundView.frame.origin.y - self.bgViewOffset) / self.backgroundView.frame.size.height)
     }
     
+    private var alternativeHeaderHeight: CGFloat {
+        guard let header = alternativeHeaderView else {
+            return 0
+        }
+        let intrinsicHeight = header.intrinsicContentSize.height
+        if intrinsicHeight <= 0 {
+            return header.frame.size.height
+        } else {
+            return intrinsicHeight
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -183,7 +202,12 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
         self.bottomBorderView.frame = CGRect(x: 0, y: self.backgroundView.frame.size.height - 2, width: parentFrame.size.width, height: 2)
         self.headerView?.frame = CGRect(x: 0, y: 0, width: parentFrame.size.width, height: self.defaultHeaderHeight)
         if let header = self.alternativeHeaderView {
-            header.frame = CGRect(x: 0, y: 0, width: parentFrame.size.width, height: header.intrinsicContentSize.height)
+            let intrinsicHeight = header.intrinsicContentSize.height
+            if intrinsicHeight <= 0 {
+                header.frame = CGRect(x: 0, y: 0, width: parentFrame.size.width, height: header.frame.size.height)
+            } else {
+                header.frame = CGRect(x: 0, y: 0, width: parentFrame.size.width, height: intrinsicHeight)
+            }
         }
     }
     
@@ -203,7 +227,7 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
     
     @objc
     public func showHeader(animated: Bool = true) {
-        self.state = HRPGTopHeaderStateVisible
+        self.state = .visible
         var frame = self.backgroundView.frame
         frame.origin.y = self.bgViewOffset
         self.headerYPosition = frame.origin.y
@@ -214,7 +238,7 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
     
     @objc
     public func hideHeader(animated: Bool = true) {
-        self.state = HRPGTopHeaderStateHidden
+        self.state = .hidden
         var frame = self.backgroundView.frame
         frame.origin.y = -topHeaderHeight
         self.headerYPosition = frame.origin.y
@@ -256,12 +280,12 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
             newYPos = self.bgViewOffset
         }
         if (newYPos + frame.size.height) > bgViewOffset {
-            self.state = HRPGTopHeaderStateVisible
+            self.state = .visible
         } else {
-            if self.state == HRPGTopHeaderStateHidden {
+            if self.state == .hidden {
                 return
             }
-            self.state = HRPGTopHeaderStateHidden
+            self.state = .hidden
         }
         frame.origin.y = newYPos
         self.headerYPosition = frame.origin.y
@@ -296,13 +320,9 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
         self.alternativeHeaderView = alternativeHeaderView
         self.headerView?.removeFromSuperview()
         if let header = self.alternativeHeaderView {
-            header.autoresizingMask = [
-                UIViewAutoresizing.flexibleWidth,
-                UIViewAutoresizing.flexibleHeight
-            ]
             self.backgroundView.addSubview(header)
             self.bottomBorderView.isHidden = true
-            header.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: header.intrinsicContentSize.height)
+            header.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: alternativeHeaderHeight)
             header.alpha = 1
             header.layoutSubviews()
         }

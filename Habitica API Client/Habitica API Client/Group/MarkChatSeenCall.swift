@@ -13,6 +13,6 @@ import ReactiveSwift
 
 public class MarkChatSeenCall: ResponseObjectCall<EmptyResponseProtocol, APIEmptyResponse> {
     public init(groupID: String, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "group.json")) {
-        super.init(httpMethod: .POST, endpoint: "groups/\(groupID)/chat/seen", postData: nil, stubHolder: stubHolder)
+        super.init(httpMethod: .POST, endpoint: "groups/\(groupID)/chat/seen", stubHolder: stubHolder)
     }
 }

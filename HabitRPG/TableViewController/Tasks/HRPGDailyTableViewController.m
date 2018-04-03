@@ -15,6 +15,7 @@
 @property NSString *readableName;
 @property NSString *typeName;
 @property NSIndexPath *expandedIndexPath;
+
 @end
 
 @implementation HRPGDailyTableViewController
@@ -25,7 +26,7 @@
 - (void)viewDidLoad {
     self.readableName = NSLocalizedString(@"Daily", nil);
     self.typeName = @"daily";
-    self.dataSource = [[DailyTableViewDataSoure alloc] initWithPredicate:[self getPredicate]];
+    self.dataSource = [DailyTableViewDataSourceInstantiator instantiateWithPredicate:[self getPredicate]];
     [super viewDidLoad];
 
     self.tutorialIdentifier = @"dailies";

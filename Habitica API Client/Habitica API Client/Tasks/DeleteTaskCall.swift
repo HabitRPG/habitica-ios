@@ -12,6 +12,6 @@ import FunkyNetwork
 
 public class DeleteTaskCall: ResponseObjectCall<EmptyResponseProtocol, APIEmptyResponse> {
     public init(task: TaskProtocol, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "task.json")) {
-        super.init(httpMethod: .DELETE, endpoint: "tasks/\(task.id ?? "")", postData: nil, stubHolder: stubHolder)
+        super.init(httpMethod: .DELETE, endpoint: "tasks/\(task.id ?? "")", stubHolder: stubHolder)
     }
 }

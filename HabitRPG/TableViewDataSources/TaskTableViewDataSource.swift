@@ -11,22 +11,43 @@ import Habitica_Models
 import ReactiveSwift
 
 @objc
-class TaskTableViewDataSource: BaseReactiveDataSource, UITableViewDataSource {
+public protocol TaskTableViewDataSourceProtocol {
+    @objc var userDrivenDataUpdate: Bool { get set }
+    @objc weak var tableView: UITableView? { get set }
+    @objc var predicate: NSPredicate { get set }
+    
+    @objc var tasks: [TaskProtocol] { get set}
+    @objc var taskToEdit: TaskProtocol? { get set }
+    
+    @objc
+    func task(at indexPath: IndexPath) -> TaskProtocol?
+    @objc
+    func idForObject(at indexPath: IndexPath) -> String?
+    @objc
+    func retrieveData(completed: (() -> Void)?)
+    @objc
+    func selectRowAt(indexPath: IndexPath)
+    @objc
+    func fixTaskOrder(movedTask: TaskProtocol, toPosition: Int)
+    @objc
+    func moveTask(task: TaskProtocol, toPosition: Int, completion: @escaping () -> Void)
+}
 
-    @objc weak var viewController: HRPGTableViewController? {
-        didSet {
-            tableView = viewController?.tableView
+class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, TaskTableViewDataSourceProtocol {
+    var tasks: [TaskProtocol] {
+        get {
+            return sections[0].items
+        }
+        set {
+            sections[0].items = tasks
         }
     }
     
-    @objc weak var tableView: UITableView? {
-        didSet {
-            tableView?.dataSource = self
-            tableView?.reloadData()
-        }
+    func task(at indexPath: IndexPath) -> TaskProtocol? {
+        return item(at: indexPath)
     }
     
-    @objc var predicate: NSPredicate {
+    var predicate: NSPredicate {
         didSet {
             fetchTasks()
         }
@@ -35,19 +56,17 @@ class TaskTableViewDataSource: BaseReactiveDataSource, UITableViewDataSource {
     internal let userRepository = UserRepository()
     internal let repository = TaskRepository()
     
-    @objc var tasks = [TaskProtocol]()
     @objc var taskToEdit: TaskProtocol?
     private var expandedIndexPath: IndexPath?
     private var fetchTasksDisposable: Disposable?
     
-    @objc
     init(predicate: NSPredicate) {
         self.predicate = predicate
         super.init()
+        sections.append(ItemSection<TaskProtocol>())
     }
     
-    @objc
-    func retrieveTasks(completed: (() -> Void)?) {
+    override func retrieveData(completed: (() -> Void)?) {
         disposable.inner.add(userRepository.retrieveUser().observeCompleted {
             if let action = completed {
                 action()
@@ -60,48 +79,35 @@ class TaskTableViewDataSource: BaseReactiveDataSource, UITableViewDataSource {
             disposable.dispose()
         }
         fetchTasksDisposable = repository.getTasks(predicate: predicate).on(value: { (tasks, changes) in
-            self.tasks = tasks
+            self.sections[0].items = tasks
             self.notifyDataUpdate(tableView: self.tableView, changes: changes)
         }).start()
     }
-    
-    @objc
-    func object(at indexPath: IndexPath) -> TaskProtocol? {
-        return tasks[indexPath.item]
-    }
-    
+
     @objc
     func idForObject(at indexPath: IndexPath) -> String? {
-        return tasks[indexPath.item].id
+        return item(at: indexPath)?.id
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tasks.count
-    }
-    
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
-    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            if let task = self.object(at: indexPath) {
+            if let task = self.item(at: indexPath) {
                 repository.deleteTask(task).observeCompleted {}
             }
         }
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        if let taskCell = cell as? TaskTableViewCell, let task = object(at: indexPath) {
+        if let taskCell = cell as? TaskTableViewCell, let task = item(at: indexPath) {
             configure(cell: taskCell, indexPath: indexPath, task: task)
         }
         return cell
@@ -146,7 +152,7 @@ class TaskTableViewDataSource: BaseReactiveDataSource, UITableViewDataSource {
     
     @objc
     func selectRowAt(indexPath: IndexPath) {
-        taskToEdit = object(at: indexPath)
+        taskToEdit = item(at: indexPath)
     }
     
     @objc

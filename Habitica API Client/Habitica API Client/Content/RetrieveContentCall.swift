@@ -13,6 +13,6 @@ import ReactiveSwift
 
 public class RetrieveContentCall: ResponseObjectCall<ContentProtocol, APIContent> {
     public init(stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "content.json")) {
-        super.init(httpMethod: .GET, endpoint: "content", postData: nil, stubHolder: stubHolder)
+        super.init(httpMethod: .GET, endpoint: "content", stubHolder: stubHolder)
     }
 }

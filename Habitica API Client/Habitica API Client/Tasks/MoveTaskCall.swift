@@ -13,6 +13,6 @@ import FunkyNetwork
 
 public class MoveTaskCall: ResponseObjectCall<[String: [String]], [String: [String]]> {
     public init(task: TaskProtocol, toPosition: Int, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "tasks.json")) {
-        super.init(httpMethod: .POST, endpoint: "tasks/\(task.id ?? "")/move/to/\(toPosition)", postData: nil, stubHolder: stubHolder)
+        super.init(httpMethod: .POST, endpoint: "tasks/\(task.id ?? "")/move/to/\(toPosition)", stubHolder: stubHolder)
     }
 }

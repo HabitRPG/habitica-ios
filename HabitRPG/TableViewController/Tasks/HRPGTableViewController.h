@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "HRPGBaseViewController.h"
 
-@class TaskTableViewDataSource;
+@protocol TaskTableViewDataSourceProtocol;
 
 @interface HRPGTableViewController : HRPGBaseViewController
-@property TaskTableViewDataSource *dataSource;
+@property id<TaskTableViewDataSourceProtocol> dataSource;
 
 - (void)refresh;
 

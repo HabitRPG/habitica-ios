@@ -13,6 +13,6 @@ import ReactiveSwift
 
 public class DeleteChatMessageCall: ResponseObjectCall<EmptyResponseProtocol, APIEmptyResponse> {
     public init(groupID: String, chatMessage: ChatMessageProtocol, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "group.json")) {
-        super.init(httpMethod: .DELETE, endpoint: "groups/\(groupID)/chat/\(chatMessage.id ?? "")", postData: nil, stubHolder: stubHolder)
+        super.init(httpMethod: .DELETE, endpoint: "groups/\(groupID)/chat/\(chatMessage.id ?? "")", stubHolder: stubHolder)
     }
 }

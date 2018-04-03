@@ -32,6 +32,7 @@
 @property id movedTask;
 
 @property NSMutableDictionary *heightAtIndexPath;
+
 @end
 
 @implementation HRPGTableViewController
@@ -41,6 +42,7 @@ NSIndexPath  *sourceIndexPath = nil;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.dataSource.tableView = self.tableView;
+    
     
     UINib *nib = [UINib nibWithNibName:[self getCellNibName] bundle:nil];
     [[self tableView] registerNib:nib forCellReuseIdentifier:@"Cell"];
@@ -165,8 +167,8 @@ NSIndexPath  *sourceIndexPath = nil;
             
             if (indexPath && ![indexPath isEqual:sourceIndexPath]) {
                 self.dataSource.userDrivenDataUpdate = YES;
-                id sourceTask = [self.dataSource objectAt:sourceIndexPath];
-                id task = [self.dataSource objectAt:indexPath];
+                id sourceTask = [self.dataSource taskAt:sourceIndexPath];
+                id task = [self.dataSource taskAt:indexPath];
                 NSInteger sourceOrder = [sourceTask integerForKey:@"order"];
                 [sourceTask setInteger:[task integerForKey:@"order"] forKey:@"order"];
                 [task setInteger:sourceOrder forKey:@"order"];
@@ -201,7 +203,7 @@ NSIndexPath  *sourceIndexPath = nil;
         }
             
         default: {
-            id task = [self.dataSource objectAt:sourceIndexPath];
+            id task = [self.dataSource taskAt:sourceIndexPath];
             [self.dataSource moveTaskWithTask:task toPosition:[task valueForKey:@"order"] completion:^{
                 
             }];
@@ -249,7 +251,7 @@ NSIndexPath  *sourceIndexPath = nil;
 
 - (void)refresh {
     __weak HRPGTableViewController *weakSelf = self;
-    [self.dataSource retrieveTasksWithCompleted:^{
+    [self.dataSource retrieveDataWithCompleted:^{
         [weakSelf.refreshControl endRefreshing];
     }];
 }
@@ -531,7 +533,7 @@ NSIndexPath  *sourceIndexPath = nil;
 }
 
 - (NSArray<UIDragItem *> *)tableView:(UITableView *)tableView itemsForBeginningDragSession:(id<UIDragSession>)session atIndexPath:(NSIndexPath *)indexPath NS_AVAILABLE_IOS(11.0) {
-    self.movedTask = [self.dataSource objectAt:indexPath];
+    self.movedTask = [self.dataSource taskAt:indexPath];
     NSString *taskName = [self.movedTask valueForKey:@"text"];
     sourceIndexPath = indexPath;
     

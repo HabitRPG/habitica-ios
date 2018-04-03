@@ -13,6 +13,6 @@ import ReactiveSwift
 
 public class RetrieveUserCall: ResponseObjectCall<UserProtocol, APIUser> {
     public init(stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "user.json")) {
-        super.init(httpMethod: .GET, endpoint: "user", postData: nil, stubHolder: stubHolder)
+        super.init(httpMethod: .GET, endpoint: "user", stubHolder: stubHolder)
     }
 }

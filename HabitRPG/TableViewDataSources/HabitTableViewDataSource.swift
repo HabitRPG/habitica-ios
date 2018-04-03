@@ -9,6 +9,14 @@
 import UIKit
 import Habitica_Models
 
+@objc
+class HabitTableViewDataSourceInstantiator: NSObject {
+    @objc
+    static func instantiate(predicate: NSPredicate) -> TaskTableViewDataSourceProtocol {
+        return HabitTableViewDataSource(predicate: predicate)
+    }
+}
+
 class HabitTableViewDataSource: TaskTableViewDataSource {
     
     override func configure(cell: TaskTableViewCell, indexPath: IndexPath, task: TaskProtocol) {

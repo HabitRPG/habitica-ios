@@ -15,7 +15,7 @@
 
 @interface HRPGSpellViewController ()
 @property User *user;
-@property SpellsTableViewDataSource *dataSource;
+@property id<SpellsTableViewDataSourceProtocol> dataSource;
 @end
 
 @implementation HRPGSpellViewController
@@ -35,7 +35,7 @@
 }
 
 - (void) setupTableView {
-    self.dataSource = [[SpellsTableViewDataSource alloc] init];
+    self.dataSource = [SpellsTableViewDataSourceInstantiator instantiate];
     self.dataSource.tableView = self.tableView;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 95;
@@ -57,7 +57,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    id skill = [self.dataSource itemAtIndexPath:indexPath];
+    id skill = [self.dataSource skillAtIndexPath:indexPath];
     NSString *target = [skill valueForKey:@"target"];
     __weak HRPGSpellViewController *weakSelf = self;
     if ([self.dataSource canUseWithSkill:skill] && [self.dataSource hasManaForSkill:skill]) {

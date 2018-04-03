@@ -17,6 +17,6 @@ public class UseSkillCall: ResponseObjectCall<SkillResponseProtocol, APISkillRes
         if let targetId = target {
             url += "&targetId=\(targetId)"
         }
-        super.init(httpMethod: .POST, endpoint: url, postData: nil, stubHolder: stubHolder)
+        super.init(httpMethod: .POST, endpoint: url, stubHolder: stubHolder)
     }
 }

@@ -26,7 +26,7 @@
 - (void)viewDidLoad {
     self.readableName = NSLocalizedString(@"To-Do", nil);
     self.typeName = @"todo";
-    self.dataSource = [[TaskTableViewDataSource alloc] initWithPredicate:[self getPredicate]];
+    self.dataSource = [TodoTableViewDataSourceInstantiator instantiateWithPredicate:[self getPredicate]];
     [super viewDidLoad];
 
     self.dateFormatter = [[NSDateFormatter alloc] init];

@@ -21,6 +21,15 @@ public class SocialLocalRepository: BaseLocalRepository {
         removeOldChatMessages(groupID: group.id, newChatMessages: group.chat)
     }
     
+    public func save(_ groups: [GroupProtocol]) {
+        save(objects: groups.map { (group) in
+            if let realmGroup = group as? RealmGroup {
+                return realmGroup
+            }
+            return RealmGroup(group)
+        })
+    }
+    
     public func save(groupID: String?, chatMessages: [ChatMessageProtocol]) {
         save(objects:chatMessages.map { (chatMessage) in
             if let realmChatMessage = chatMessage as? RealmTask {
@@ -29,6 +38,14 @@ public class SocialLocalRepository: BaseLocalRepository {
             return RealmChatMessage(groupID: groupID, chatMessage: chatMessage)
         })
         removeOldChatMessages(groupID: groupID, newChatMessages: chatMessages)
+    }
+    
+    public func save(userID: String?, groupIDs: [String?]) {
+        save(objects:groupIDs.filter({ (id) -> Bool in
+            return id != nil
+        }).map({ (groupID) -> RealmGroupMembership in
+            return RealmGroupMembership(userID: userID, groupID: groupID)
+        }))
     }
     
     private func removeOldChatMessages(groupID: String?, newChatMessages: [ChatMessageProtocol]) {
@@ -58,6 +75,18 @@ public class SocialLocalRepository: BaseLocalRepository {
     public func getChatMessages(groupID: String) -> SignalProducer<ReactiveResults<[ChatMessageProtocol]>, ReactiveSwiftRealmError> {
         return RealmChatMessage.findBy(query: "groupID == '\(groupID)'").sorted(key: "timestamp", ascending: false).reactive().map({ (value, changeset) -> ReactiveResults<[ChatMessageProtocol]> in
             return (value.map({ (message) -> ChatMessageProtocol in return message }), changeset)
+        })
+    }
+    
+    public func getGroups(predicate: NSPredicate) -> SignalProducer<ReactiveResults<[GroupProtocol]>, ReactiveSwiftRealmError> {
+        return RealmGroup.findBy(predicate: predicate).sorted(key: "memberCount", ascending: false).reactive().map({ (value, changeset) -> ReactiveResults<[GroupProtocol]> in
+            return (value.map({ (group) -> GroupProtocol in return group }), changeset)
+        })
+    }
+    
+    public func getGroupMemberships(userID: String) -> SignalProducer<ReactiveResults<[GroupMembershipProtocol]>, ReactiveSwiftRealmError> {
+        return RealmGroupMembership.findBy(query: "userID == '\(userID)'").reactive().map({ (value, changeset) -> ReactiveResults<[GroupMembershipProtocol]> in
+            return (value.map({ (membership) -> GroupMembershipProtocol in return membership }), changeset)
         })
     }
 }

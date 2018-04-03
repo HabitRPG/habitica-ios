@@ -13,6 +13,6 @@ import ReactiveSwift
 
 public class RunCronCall: ResponseObjectCall<EmptyResponseProtocol, APIEmptyResponse> {
     public init(stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "user.json")) {
-        super.init(httpMethod: .POST, endpoint: "cron", postData: nil, stubHolder: stubHolder)
+        super.init(httpMethod: .POST, endpoint: "cron", stubHolder: stubHolder)
     }
 }

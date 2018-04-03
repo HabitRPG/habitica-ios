@@ -13,6 +13,6 @@ import ReactiveSwift
 
 public class RetrieveWorldStateCall: ResponseObjectCall<WorldStateProtocol, APIWorldState> {
     public init(stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "content.json")) {
-        super.init(httpMethod: .GET, endpoint: "world-state", postData: nil, stubHolder: stubHolder)
+        super.init(httpMethod: .GET, endpoint: "world-state", stubHolder: stubHolder)
     }
 }

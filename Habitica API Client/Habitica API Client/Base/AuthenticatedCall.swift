@@ -27,7 +27,7 @@ public class AuthenticatedCall: JsonNetworkCall {
         super.init(configuration: configuration, httpMethod: httpMethod, httpHeaders: httpHeaders, endpoint: endpoint, postData: postData, stubHolder: stubHolder)
     }
     
-    init(configuration: ServerConfigurationProtocol = HabiticaServerConfig.current, httpMethod: HTTPMethod, httpHeaders: Dictionary<String, String>? = AuthenticatedCall.jsonHeaders(), endpoint: String, postData: Data?, stubHolder: StubHolderProtocol?) {
+    init(configuration: ServerConfigurationProtocol = HabiticaServerConfig.current, httpMethod: HTTPMethod, httpHeaders: Dictionary<String, String>? = AuthenticatedCall.jsonHeaders(), endpoint: String, postData: Data? = nil, stubHolder: StubHolderProtocol? = nil) {
         super.init(configuration: configuration, httpMethod: httpMethod.rawValue, httpHeaders: httpHeaders, endpoint: endpoint, postData: postData, stubHolder: stubHolder)
         debugHandler = DebugOutputHandler(httpMethod: httpMethod, url: urlString(endpoint))
         
