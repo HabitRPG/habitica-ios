@@ -34,12 +34,10 @@
 
 - (void)loadObjectManager:(RKManagedObjectStore *)existingManagedObjectStore;
 
-- (void)fetchContent:(void (^)())successBlock onError:(void (^)())errorBlock;
+//- (void)fetchContent:(void (^)())successBlock onError:(void (^)())errorBlock;
 
-- (void)fetchTasks:(void (^)())successBlock onError:(void (^)())errorBlock;
-- (void)fetchTasksForDay:(NSDate *)dueDate
-               onSuccess:(void (^)())successBlock
-                 onError:(void (^)())errorBlock;
+//- (void)fetchTasks:(void (^)())successBlock onError:(void (^)())errorBlock;
+//- (void)fetchTasksForDay:(NSDate *)dueDate onSuccess:(void (^)())successBlock  onError:(void (^)())errorBlock;
 - (void)fetchCompletedTasks:(void (^)())successBlock onError:(void (^)())errorBlock;
 
 - (void)fetchUser:(void (^)())successBlock onError:(void (^)())errorBlock;
@@ -66,9 +64,7 @@
          onSuccess:(void (^)())successBlock
            onError:(void (^)())errorBlock;
 
-- (void)fetchGroups:(NSString *)groupType
-          onSuccess:(void (^)())successBlock
-            onError:(void (^)())errorBlock;
+//- (void)fetchGroups:(NSString *)groupType onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
 - (void)fetchMember:(NSString *)memberId
           onSuccess:(void (^)())successBlock
@@ -167,9 +163,7 @@
 
 //- (void)castSpell:(Spell *)spell withTargetType:(NSString *)targetType onTarget:(NSString *)target onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
-- (void)changeDayStartTime:(NSNumber *)dayStart
-                 onSuccess:(void (^)())successBlock
-                   onError:(void (^)())errorBlock;
+//- (void)changeDayStartTime:(NSNumber *)dayStart onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
 - (void)acceptQuest:(NSString *)group
           onSuccess:(void (^)())successBlock
@@ -244,7 +238,7 @@
            withEmail:(NSString *)email
            onSuccess:(void (^)())successBlock
              onError:(void (^)(NSString *errorMessage))errorBlock;
-- (void)clearLoginCredentials;
+//- (void)clearLoginCredentials;
 
 - (void)sleepInn:(void (^)())successBlock onError:(void (^)())errorBlock;
 

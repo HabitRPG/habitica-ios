@@ -260,15 +260,6 @@
     [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"key == %@", self.group.questKey]];
     NSError *error;
     NSArray *result = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
-    if ([result count] > 0) {
-        _quest = result[0];
-        if (!_quest.text) {
-            [[HRPGManager sharedManager] fetchContent:^() {
-                self.quest = nil;
-                [self.tableView reloadData];
-            } onError:nil];
-        }
-    }
     return _quest;
 }
 
