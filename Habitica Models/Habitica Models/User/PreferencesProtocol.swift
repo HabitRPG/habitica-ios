@@ -22,4 +22,5 @@ public protocol PreferencesProtocol {
     var sleep: Bool { get set }
     var timezoneOffset: Int { get set }
     var sound: String? { get set }
+    var pushNotifications: PushNotificationsProtocol? { get set }
 }

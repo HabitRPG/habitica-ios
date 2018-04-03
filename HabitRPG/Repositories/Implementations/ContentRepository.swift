@@ -46,4 +46,8 @@ class ContentRepository: BaseRepository<ContentLocalRepository> {
     func getSkills(habitClass: String) -> SignalProducer<ReactiveResults<[SkillProtocol]>, ReactiveSwiftRealmError> {
         return localRepository.getSkills(habitClass: habitClass)
     }
+    
+    func clearDatabase() {
+        localRepository.clearDatabase()
+    }
 }

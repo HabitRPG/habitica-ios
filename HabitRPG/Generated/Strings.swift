@@ -116,7 +116,7 @@ internal enum L10n {
     internal static let disableAllNotifications = L10n.tr("Main", "settings.disable_all_notifications")
     /// Disable Private Messages
     internal static let disablePm = L10n.tr("Main", "settings.disable_pm")
-    /// Display NOtification Badge
+    /// Display Notification Badge
     internal static let displayNotificationBadge = L10n.tr("Main", "settings.display_notification_badge")
     /// Every day at
     internal static let everyDay = L10n.tr("Main", "settings.every_day")

@@ -25,6 +25,7 @@ class APIPreferences: PreferencesProtocol, Codable {
     var sleep: Bool = false
     var timezoneOffset: Int = 0
     var sound: String?
+    var pushNotifications: PushNotificationsProtocol?
     
     enum CodingKeys: String, CodingKey {
         case skin
@@ -42,6 +43,7 @@ class APIPreferences: PreferencesProtocol, Codable {
         case sleep
         case timezoneOffset
         case sound
+        case pushNotifications
     }
     
     public required init(from decoder: Decoder) throws {
@@ -61,6 +63,7 @@ class APIPreferences: PreferencesProtocol, Codable {
         sleep = (try? values.decode(Bool.self, forKey: .sleep)) ?? false
         timezoneOffset = (try? values.decode(Int.self, forKey: .timezoneOffset)) ?? 0
         sound = try? values.decode(String.self, forKey: .sound)
+        pushNotifications = try? values.decode(APIPushNotifications.self, forKey: .pushNotifications)
     }
     
     func encode(to encoder: Encoder) throws {

@@ -20,6 +20,7 @@ public protocol UserProtocol: AvatarProtocol {
     var tags: [TagProtocol] { get set }
     var needsCron: Bool { get set }
     var lastCron: Date? { get set }
+    var inbox: InboxProtocol? { get set }
 }
 
 public extension UserProtocol {

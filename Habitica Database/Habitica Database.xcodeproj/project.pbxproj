@@ -15,6 +15,8 @@
 		2902798B20583479006DACB9 /* RealmQuestState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2902798A20583479006DACB9 /* RealmQuestState.swift */; };
 		2902798D205834A3006DACB9 /* RealmQuestProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2902798C205834A3006DACB9 /* RealmQuestProgress.swift */; };
 		290B6247207397E1007287C4 /* RealmGroupMembership.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B6246207397E1007287C4 /* RealmGroupMembership.swift */; };
+		290B62562073D99E007287C4 /* RealmInbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B62552073D99E007287C4 /* RealmInbox.swift */; };
+		290B62582073DA41007287C4 /* RealmPushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B62572073DA41007287C4 /* RealmPushNotifications.swift */; };
 		290C3026206B96320066AF5B /* RealmOwnedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C3025206B96320066AF5B /* RealmOwnedItem.swift */; };
 		290C3048206D47A30066AF5B /* SocialLocalRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C3047206D47A30066AF5B /* SocialLocalRepository.swift */; };
 		292DEE3F204D9D810086D5F7 /* Habitica_API_Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE40204D9D810086D5F7 /* Habitica_API_Client.framework */; };
@@ -77,6 +79,8 @@
 		2902798A20583479006DACB9 /* RealmQuestState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmQuestState.swift; sourceTree = "<group>"; };
 		2902798C205834A3006DACB9 /* RealmQuestProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmQuestProgress.swift; sourceTree = "<group>"; };
 		290B6246207397E1007287C4 /* RealmGroupMembership.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmGroupMembership.swift; sourceTree = "<group>"; };
+		290B62552073D99E007287C4 /* RealmInbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmInbox.swift; sourceTree = "<group>"; };
+		290B62572073DA41007287C4 /* RealmPushNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmPushNotifications.swift; sourceTree = "<group>"; };
 		290C3025206B96320066AF5B /* RealmOwnedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmOwnedItem.swift; sourceTree = "<group>"; };
 		290C3047206D47A30066AF5B /* SocialLocalRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLocalRepository.swift; sourceTree = "<group>"; };
 		292DEE40204D9D810086D5F7 /* Habitica_API_Client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_API_Client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -210,9 +214,11 @@
 			isa = PBXGroup;
 			children = (
 				29323E302051FA8000AC6D6F /* RealmUser.swift */,
+				290B62552073D99E007287C4 /* RealmInbox.swift */,
 				29323E322051FA8700AC6D6F /* RealmStats.swift */,
 				29323E3C205213EF00AC6D6F /* RealmFlags.swift */,
 				29323E3E2052142600AC6D6F /* RealmPreferences.swift */,
+				290B62572073DA41007287C4 /* RealmPushNotifications.swift */,
 				29323E402052145900AC6D6F /* RealmProfile.swift */,
 				29323E4420521ABC00AC6D6F /* RealmContributor.swift */,
 				29323E572052F8BC00AC6D6F /* RealmUserItems.swift */,
@@ -542,8 +548,10 @@
 				2956111A2057C93200D9711A /* RealmFood.swift in Sources */,
 				295611222057D60F00D9711A /* RealmQuest.swift in Sources */,
 				2956111E2057C9B100D9711A /* RealmHatchingPotion.swift in Sources */,
+				290B62562073D99E007287C4 /* RealmInbox.swift in Sources */,
 				290C3048206D47A30066AF5B /* SocialLocalRepository.swift in Sources */,
 				2902798B20583479006DACB9 /* RealmQuestState.swift in Sources */,
+				290B62582073DA41007287C4 /* RealmPushNotifications.swift in Sources */,
 				290B6247207397E1007287C4 /* RealmGroupMembership.swift in Sources */,
 				292DEE6E204DD94E0086D5F7 /* ReactiveRealm.swift in Sources */,
 				2902798D205834A3006DACB9 /* RealmQuestProgress.swift in Sources */,

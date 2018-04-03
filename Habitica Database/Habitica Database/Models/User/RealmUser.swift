@@ -128,6 +128,21 @@ class RealmUser: Object, UserProtocol {
             }
         }
     }
+    var inbox: InboxProtocol? {
+        get {
+            return realmInbox
+        }
+        set {
+            if let newItems = newValue as? RealmInbox {
+                realmInbox = newItems
+                return
+            }
+            if let newItems = newValue {
+                realmInbox = RealmInbox(id: id, inboxProtocol: newItems)
+            }
+        }
+    }
+    @objc dynamic var realmInbox: RealmInbox?
     var realmTags = List<RealmTag>()
     var needsCron: Bool = false
     var lastCron: Date?
@@ -137,7 +152,7 @@ class RealmUser: Object, UserProtocol {
     }
     
     override static func ignoredProperties() -> [String] {
-        return ["flags", "preferences", "stats", "profile", "contributor", "tasksOrder", "items", "tags"]
+        return ["flags", "preferences", "stats", "profile", "contributor", "tasksOrder", "items", "tags", "inbox"]
     }
     
     convenience init(_ user: UserProtocol) {
@@ -153,5 +168,6 @@ class RealmUser: Object, UserProtocol {
         tags = user.tags
         needsCron = user.needsCron
         lastCron = user.lastCron
+        inbox = user.inbox
     }
 }

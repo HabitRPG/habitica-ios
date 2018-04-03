@@ -12,6 +12,7 @@ import Habitica_Models
 
 @objc
 class RealmPreferences: Object, PreferencesProtocol {
+    @objc dynamic var id: String?
     @objc dynamic var skin: String?
     @objc dynamic var language: String?
     @objc dynamic var automaticAllocation: Bool = false
@@ -27,10 +28,28 @@ class RealmPreferences: Object, PreferencesProtocol {
     @objc dynamic var sleep: Bool = false
     @objc dynamic var timezoneOffset: Int = 0
     @objc dynamic var sound: String?
+    var pushNotifications: PushNotificationsProtocol? {
+        get {
+            return realmPushNotifications
+        }
+        set {
+            if let newItems = newValue as? RealmPushNotifications {
+                realmPushNotifications = newItems
+                return
+            }
+            if let newItems = newValue {
+                realmPushNotifications = RealmPushNotifications(id: id, pnProtocol: newItems)
+            }
+        }
+    }
+    @objc dynamic var realmPushNotifications: RealmPushNotifications?
     
-    @objc dynamic var id: String?
     override static func primaryKey() -> String {
         return "id"
+    }
+    
+    override static func ignoredProperties() -> [String] {
+        return ["pushNotifications"]
     }
     
     convenience init(id: String?, preferences: PreferencesProtocol) {
@@ -51,5 +70,6 @@ class RealmPreferences: Object, PreferencesProtocol {
         sleep = preferences.sleep
         timezoneOffset = preferences.timezoneOffset
         sound = preferences.sound
+        pushNotifications = preferences.pushNotifications
     }
 }
