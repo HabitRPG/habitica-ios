@@ -17,10 +17,13 @@ extension Down {
 
     func toHabiticaAttributedString(baseFont: UIFont) throws -> NSMutableAttributedString {
         if self.markdownString.range(of: "[*_#\\[]", options: .regularExpression, range: nil, locale: nil) == nil {
-            return NSMutableAttributedString(string: self.markdownString, attributes: [.font: CustomFontMetrics.scaledSystemFont(ofSize: 15)])
+            return unformattedAttributedString()
         }
-        guard let string = try self.toAttributedString().mutableCopy() as? NSMutableAttributedString else {
-            return NSMutableAttributedString()
+        guard let formattedString = try? self.toAttributedString().mutableCopy() else {
+            return unformattedAttributedString()
+        }
+        guard let string = formattedString as? NSMutableAttributedString else {
+            return unformattedAttributedString()
         }
         let baseSize = baseFont.pointSize
         string.enumerateAttribute(NSAttributedStringKey.font,
@@ -45,6 +48,10 @@ extension Down {
         }
         string.deleteCharacters(in: NSRange(location: string.length-1, length: 1))
         return string
+    }
+    
+    private func unformattedAttributedString() -> NSMutableAttributedString {
+        return NSMutableAttributedString(string: self.markdownString, attributes: [.font: CustomFontMetrics.scaledSystemFont(ofSize: 15)])
     }
 }
 
