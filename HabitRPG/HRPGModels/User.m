@@ -803,7 +803,7 @@
         return @"seafoam_star";
     }
     if ([self.buff.shinySeed boolValue]) {
-        return [@"avatar_floral_" stringByAppendingString:self.hclass];
+        return [@"avatar_floral_" stringByAppendingString:self.dirtyClass];
     }
     if ([self.buff.spookySparkles boolValue]) {
         return @"ghost";

@@ -87,8 +87,11 @@
         withAnimation:(BOOL)animate {
     UILabel *textLabel = [cell viewWithTag:1];
     textLabel.text = user.username;
-    UIView *avatarView = (UIView *)[cell viewWithTag:2];
-    [user setAvatarSubview:avatarView showsBackground:NO showsMount:NO showsPet:NO];
+    AvatarView *avatarView = (AvatarView *)[cell viewWithTag:2];
+    avatarView.showPet = false;
+    avatarView.showMount = false;
+    avatarView.showBackground = false;
+    avatarView.avatar = user;
 
     HRPGLabeledProgressBar *healthLabel = [cell viewWithTag:3];
     healthLabel.color = [UIColor red100];

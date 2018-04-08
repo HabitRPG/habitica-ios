@@ -224,12 +224,12 @@ class SubscriptionViewController: HRPGBaseViewController {
             cell.titleLabel.text = product?.localizedTitle
             returnedCell = cell
         } else if self.isDetailSection(indexPath.section) {
-            guard let c = tableView.dequeueReusableCell(withIdentifier: "DetailCell", for: indexPath) as? SubscriptionDetailView else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "DetailCell", for: indexPath) as? SubscriptionDetailView else {
                 fatalError()
             }
             if let user = self.user {
-                c.setPlan(user.subscriptionPlan)
-                c.cancelSubscriptionAction = {
+                cell.setPlan(user.subscriptionPlan)
+                cell.cancelSubscriptionAction = {
                     var url: URL?
                     if user.subscriptionPlan.paymentMethod == "Apple" {
                         url = URL(string: "https://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions")
@@ -241,7 +241,7 @@ class SubscriptionViewController: HRPGBaseViewController {
                     }
                 }
             }
-            returnedCell = c
+            returnedCell = cell
         } else if indexPath.section == tableView.numberOfSections-1 {
             returnedCell = tableView.dequeueReusableCell(withIdentifier: "SubscribeButtonCell", for: indexPath)
         }

@@ -8,7 +8,7 @@
 //
 
 #import "ChatMessageAvatar+CoreDataClass.h"
-
+#import "Buff+CoreDataClass.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -31,6 +31,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSString *skin;
 @property (nullable, nonatomic, copy) NSNumber *sleep;
 @property (nullable, nonatomic, copy) NSNumber *useCostume;
+@property (nullable, nonatomic, copy) NSString *dirtyClass;
+@property (nullable, nonatomic, copy) NSNumber *seafoam;
+@property (nullable, nonatomic, copy) NSNumber *shinySeed;
+@property (nullable, nonatomic, copy) NSNumber *snowball;
+@property (nullable, nonatomic, copy) NSNumber *spookySparkles;
+
 @property (nullable, nonatomic, retain) Outfit *costume;
 @property (nullable, nonatomic, retain) Outfit *equipped;
 @property (nullable, nonatomic, retain) ChatMessage *message;

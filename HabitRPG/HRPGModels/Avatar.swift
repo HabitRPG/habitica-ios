@@ -49,32 +49,44 @@ extension Avatar {
     }
     
     func getViewDictionary(showsBackground: Bool, showsMount: Bool, showsPet: Bool, isFainted: Bool) -> [String: Bool] {
-        return [
-            "background": showsBackground && isValid(background),
-            "mount-body": showsMount && isValid(mount),
-            "chair": isValid(chair) && chair != "none",
-            "back": isValid(back) && isAvailableGear(back),
-            "skin": isValid(skin),
-            "shirt": isValid(shirt),
-            "armor": isValid(armor) && isAvailableGear(armor),
-            "body": isValid(body) && isAvailableGear(body),
-            "head_0": true,
-            "hair-base": isValid(hairBase) && hairBase != "0",
-            "hair-bangs": isValid(hairBangs) && hairBangs != "0" ,
-            "hair-mustache": isValid(hairMustache) && hairMustache != "0",
-            "hair-beard": isValid(hairBeard) && hairBeard != "0",
-            "eyewear": isValid(eyewear) && isAvailableGear(eyewear),
-            "head": isValid(head) && isAvailableGear(head),
-            "head-accessory": isValid(headAccessory) && isAvailableGear(headAccessory),
-            "hair-flower": isValid(hairFlower) && hairFlower != "0",
-            "shield": isValid(shield) && isAvailableGear(shield),
-            "weapon": isValid(weapon) && isAvailableGear(weapon),
-            "visual-buff": isValid(visualBuff),
-            "mount-head": showsMount && isValid(mount),
-            "zzz": isSleep,
-            "knockout": isFainted,
-            "pet": showsPet && isValid(pet)
-        ]
+        let hasVisualBuff = isValid(visualBuff)
+        if hasVisualBuff {
+            return [
+                "background": showsBackground && isValid(background),
+                "mount-body": showsMount && isValid(mount),
+                "visual-buff": true,
+                "mount-head": showsMount && isValid(mount),
+                "zzz": isSleep,
+                "knockout": isFainted,
+                "pet": showsPet && isValid(pet)
+            ]
+        } else {
+            return [
+                "background": showsBackground && isValid(background),
+                "mount-body": showsMount && isValid(mount),
+                "chair": isValid(chair) && chair != "none",
+                "back": isValid(back) && isAvailableGear(back),
+                "skin": isValid(skin),
+                "shirt": isValid(shirt),
+                "armor": isValid(armor) && isAvailableGear(armor),
+                "body": isValid(body) && isAvailableGear(body),
+                "head_0": true,
+                "hair-base": isValid(hairBase) && hairBase != "0",
+                "hair-bangs": isValid(hairBangs) && hairBangs != "0" ,
+                "hair-mustache": isValid(hairMustache) && hairMustache != "0",
+                "hair-beard": isValid(hairBeard) && hairBeard != "0",
+                "eyewear": isValid(eyewear) && isAvailableGear(eyewear),
+                "head": isValid(head) && isAvailableGear(head),
+                "head-accessory": isValid(headAccessory) && isAvailableGear(headAccessory),
+                "hair-flower": isValid(hairFlower) && hairFlower != "0",
+                "shield": isValid(shield) && isAvailableGear(shield),
+                "weapon": isValid(weapon) && isAvailableGear(weapon),
+                "mount-head": showsMount && isValid(mount),
+                "zzz": isSleep,
+                "knockout": isFainted,
+                "pet": showsPet && isValid(pet)
+            ]
+        }
     }
     
     func getFilenameDictionary() -> [String: String?] {
@@ -188,6 +200,18 @@ extension User: Avatar {
     }
     
     var visualBuff: String? {
+        if buff?.seafoam?.boolValue == true {
+            return "seafoam_star"
+        }
+        if buff?.shinySeed?.boolValue == true {
+            return "avatar_floral_\(dirtyClass)"
+        }
+        if buff?.spookySparkles?.boolValue == true {
+            return "ghost"
+        }
+        if buff?.snowball?.boolValue == true {
+            return "snowman"
+        }
         return nil
     }
     
@@ -255,6 +279,18 @@ extension ChatMessageAvatar: Avatar {
     }
     
     var visualBuff: String? {
+        if seafoam?.boolValue == true {
+            return "seafoam_star"
+        }
+        if shinySeed?.boolValue == true {
+            return "avatar_floral_\(dirtyClass ?? "")"
+        }
+        if spookySparkles?.boolValue == true {
+            return "ghost"
+        }
+        if snowball?.boolValue == true {
+            return "snowman"
+        }
         return nil
     }
     

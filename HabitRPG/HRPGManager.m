@@ -1503,16 +1503,19 @@ static dispatch_once_t onceToken;
                                                      @"preferences.hair.flower": @"hairFlower",
                                                      @"preferences.costume": @"useCostume",
                                                      @"items.currentPet": @"currentPet",
-                                                     @"items.currentMount": @"currentMount"
+                                                     @"items.currentMount": @"currentMount",
+                                                     @"stats.class": @"dirtyClass",
+                                                     @"stats.buffs.spookySparkles": @"spookySparkles",
+                                                     @"stats.buffs.seafoam" : @"seafoam",
+                                                     @"stats.buffs.snowball" : @"snowball",
+                                                     @"stats.buffs.shinySeed" : @"shinySeed"
                                                      }];
     [chatAvatarMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"items.gear.equipped" toKeyPath:@"equipped" withMapping:userOutfitMapping]];
     [chatAvatarMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"items.gear.costume" toKeyPath:@"costume" withMapping:userOutfitMapping]];
-    [chatMapping
-     addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"userStyles"
+    [chatMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"userStyles"
                                                                     toKeyPath:@"avatar"
                                                                   withMapping:chatAvatarMapping]];
-    [entityMapping
-        addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"chat"
+    [entityMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"chat"
                                                                        toKeyPath:@"chatmessages"
                                                                      withMapping:chatMapping]];
     chatMapping.identificationAttributes = @[ @"id" ];

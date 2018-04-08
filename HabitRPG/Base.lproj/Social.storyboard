@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -616,7 +616,7 @@
                                 <rect key="frame" x="0.0" y="612.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HNT-KM-bR0" id="mPy-Oj-EL0">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="349" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="myz-7S-qTU">
@@ -715,15 +715,9 @@ Invite friends now to earn a Quest Scroll!</string>
                     </tableView>
                     <navigationItem key="navigationItem" title="Party" id="Fyc-Xu-ygm"/>
                     <connections>
-                        <segue destination="RCj-mI-Py0" kind="show" identifier="ParticipantsSegue" id="6GT-f4-ear">
-                            <nil key="action"/>
-                        </segue>
-                        <segue destination="j8W-CM-pTw" kind="show" identifier="MembersSegue" id="r2n-Ig-iP9">
-                            <nil key="action"/>
-                        </segue>
-                        <segue destination="MTH-Re-wqo" kind="show" identifier="UserProfileSegue" id="636-nl-5aS">
-                            <nil key="action"/>
-                        </segue>
+                        <segue destination="RCj-mI-Py0" kind="show" identifier="ParticipantsSegue" id="6GT-f4-ear"/>
+                        <segue destination="j8W-CM-pTw" kind="show" identifier="MembersSegue" id="r2n-Ig-iP9"/>
+                        <segue destination="MTH-Re-wqo" kind="show" identifier="UserProfileSegue" id="636-nl-5aS"/>
                         <segue destination="qim-an-Lm9" kind="show" identifier="GuidelinesSegue" id="CUP-gn-Xug"/>
                         <segue destination="dI6-k2-5eY" kind="show" identifier="MessageSegue" id="jBF-PN-2IP"/>
                     </connections>
@@ -1154,9 +1148,7 @@ Invite friends now to earn a Quest Scroll!</string>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="MTH-Re-wqo" kind="show" identifier="UserProfileSegue" id="THm-jt-yJG">
-                                        <nil key="action"/>
-                                    </segue>
+                                    <segue destination="MTH-Re-wqo" kind="show" identifier="UserProfileSegue" id="THm-jt-yJG"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1262,7 +1254,7 @@ Invite friends now to earn a Quest Scroll!</string>
             <objects>
                 <tableViewController storyboardIdentifier="UserProfileViewController" id="MTH-Re-wqo" customClass="HRPGUserProfileViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="WTt-7r-yfN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
@@ -2639,7 +2631,7 @@ Invite friends now to earn a Quest Scroll!</string>
         <segue reference="UUp-aA-Ao9"/>
         <segue reference="kns-o3-fej"/>
         <segue reference="2KU-R3-vSq"/>
-        <segue reference="Hfa-0k-B92"/>
+        <segue reference="THm-jt-yJG"/>
         <segue reference="EV0-ra-m7s"/>
         <segue reference="wif-V9-Mcy"/>
     </inferredMetricsTieBreakers>

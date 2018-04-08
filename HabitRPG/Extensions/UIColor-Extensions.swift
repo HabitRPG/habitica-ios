@@ -174,16 +174,16 @@ extension UIColor {
      - parameter includeAlpha: Whether the alpha should be included.
      */
     public func hexString(_ includeAlpha: Bool = true) -> String {
-        var r: CGFloat = 0
-        var g: CGFloat = 0
-        var b: CGFloat = 0
-        var a: CGFloat = 0
-        self.getRed(&r, green: &g, blue: &b, alpha: &a)
+        var red: CGFloat = 0
+        var green: CGFloat = 0
+        var blue: CGFloat = 0
+        var alpha: CGFloat = 0
+        self.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
         
         if includeAlpha {
-            return String(format: "#%02X%02X%02X%02X", Int(r * 255), Int(g * 255), Int(b * 255), Int(a * 255))
+            return String(format: "#%02X%02X%02X%02X", Int(red * 255), Int(green * 255), Int(blue * 255), Int(alpha * 255))
         } else {
-            return String(format: "#%02X%02X%02X", Int(r * 255), Int(g * 255), Int(b * 255))
+            return String(format: "#%02X%02X%02X", Int(red * 255), Int(green * 255), Int(blue * 255))
         }
     }
     
@@ -196,12 +196,12 @@ extension UIColor {
     }
     
     func adjust(by percentage: CGFloat=30.0) -> UIColor? {
-        var r: CGFloat=0, g: CGFloat=0, b: CGFloat=0, a: CGFloat=0
-        if self.getRed(&r, green: &g, blue: &b, alpha: &a) {
-            return UIColor(red: min(r + percentage/100, 1.0),
-                           green: min(g + percentage/100, 1.0),
-                           blue: min(b + percentage/100, 1.0),
-                           alpha: a)
+        var red: CGFloat=0, green: CGFloat=0, blue: CGFloat=0, alpha: CGFloat=0
+        if self.getRed(&red, green: &green, blue: &blue, alpha: &alpha) {
+            return UIColor(red: min(red + percentage/100, 1.0),
+                           green: min(green + percentage/100, 1.0),
+                           blue: min(blue + percentage/100, 1.0),
+                           alpha: alpha)
         } else {
             return nil
         }

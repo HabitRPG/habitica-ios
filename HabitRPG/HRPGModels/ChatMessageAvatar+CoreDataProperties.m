@@ -30,8 +30,13 @@
 @dynamic skin;
 @dynamic sleep;
 @dynamic useCostume;
+@dynamic dirtyClass;
 @dynamic costume;
 @dynamic equipped;
 @dynamic message;
+@dynamic seafoam;
+@dynamic shinySeed;
+@dynamic snowball;
+@dynamic spookySparkles;
 
 @end
