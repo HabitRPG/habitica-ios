@@ -9,4 +9,5 @@ import Foundation
 public protocol ProfileProtocol {
     var name: String? { get set }
     var blurb: String? { get set }
+    var photoUrl: String? { get set }
 }

@@ -16,6 +16,9 @@ import Result
 class UserRepository: BaseRepository<UserLocalRepository> {
     
     var taskRepository = TaskRepository()
+    var currentUserId: String? {
+        return AuthenticationManager.shared.currentUserId
+    }
     
     func retrieveUser(withTasks: Bool = true) -> Signal<UserProtocol?, NoError> {
         let call = RetrieveUserCall()
@@ -41,7 +44,7 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     }
     
     func getUser() -> SignalProducer<UserProtocol, ReactiveSwiftRealmError> {
-        if let userId = AuthenticationManager.shared.currentUserId {
+        if let userId = currentUserId {
             return localRepository.getUser(userId)
         } else {
             return SignalProducer {(sink, _) in
@@ -54,7 +57,7 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         let call = AllocateAttributePointCall(attribute: attributePoint)
         call.fire()
         return call.objectSignal.on(value: {stats in
-            if let userId = AuthenticationManager.shared.currentUserId, let stats = stats {
+            if let userId = self.currentUserId, let stats = stats {
                 self.localRepository.save(userId, stats: stats)
             }
         })
@@ -64,14 +67,14 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         let call = BulkAllocateAttributePointsCall(strength: strength, intelligence: intelligence, constitution: constitution, perception: perception)
         call.fire()
         return call.objectSignal.on(value: {stats in
-            if let userId = AuthenticationManager.shared.currentUserId, let stats = stats {
+            if let userId = self.currentUserId, let stats = stats {
                 self.localRepository.save(userId, stats: stats)
             }
         })
     }
     
     func hasUserData() -> Bool {
-        if let userId = AuthenticationManager.shared.currentUserId {
+        if let userId = self.currentUserId {
             return localRepository.hasUserData(id: userId)
         } else {
             return false
@@ -122,5 +125,109 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     
     func updateUser(key: String, value: Any) -> Signal<UserProtocol?, NoError> {
         return updateUser([key: value])
+    }
+    
+    func sleep() -> Signal<EmptyResponseProtocol?, NoError> {
+        let call = SleepCall()
+        call.fire()
+        return call.objectSignal.on(value: { _ in
+            if let userID = self.currentUserId {
+                self.localRepository.toggleSleep(userID)
+            }
+        })
+    }
+    
+    func login(username: String, password: String) -> Signal<LoginResponseProtocol?, NoError> {
+        let call = LocalLoginCall(username: username, password: password)
+        call.fire()
+        return call.objectSignal.on(value: { loginResponse in
+            if let response = loginResponse {
+                AuthenticationManager.shared.currentUserId = response.id
+                AuthenticationManager.shared.currentUserKey = response.apiToken
+            }
+        })
+    }
+    
+    func register(username: String, password: String, confirmPassword: String, email: String) -> Signal<LoginResponseProtocol?, NoError> {
+        let call = LocalRegisterCall(username: username, password: password, confirmPassword: confirmPassword, email: email)
+        call.fire()
+        return call.objectSignal.on(value: { loginResponse in
+            if let response = loginResponse {
+                AuthenticationManager.shared.currentUserId = response.id
+                AuthenticationManager.shared.currentUserKey = response.apiToken
+            }
+        })
+    }
+    
+    func login(userID: String, network: String, accessToken: String) -> Signal<LoginResponseProtocol?, NoError> {
+        let call = SocialLoginCall(userID: userID, network: network, accessToken: accessToken)
+        call.fire()
+        return call.objectSignal.on(value: { loginResponse in
+            if let response = loginResponse {
+                AuthenticationManager.shared.currentUserId = response.id
+                AuthenticationManager.shared.currentUserKey = response.apiToken
+            }
+        })
+    }
+    
+    func resetAccount() -> Signal<UserProtocol?, NoError> {
+        let call = ResetAccountCall()
+        call.fire()
+        return call.objectSignal.flatMap(.concat, { (_) in
+            return self.retrieveUser()
+        })
+    }
+    
+    func deleteAccount(password: String) -> Signal<EmptyResponseProtocol?, NoError> {
+        let call = DeleteAccountCall(password: password)
+        call.fire()
+        return call.objectSignal.on(value: { _ in
+            self.logoutAccount()
+        })
+    }
+    
+    func logoutAccount() {
+        localRepository.clearDatabase()
+        if let userID = currentUserId {
+            AuthenticationManager.shared.clearAuthentication(userId: userID)
+        }
+        let defaults = UserDefaults()
+        defaults.set("", forKey: "habitFilter")
+        defaults.set("", forKey: "dailyFilter")
+        defaults.set("", forKey: "todoFilter")
+    }
+    
+    func updateEmail(newEmail: String, password: String) -> Signal<UserProtocol, ReactiveSwiftRealmError> {
+        let call = UpdateEmailCall(newEmail: newEmail, password: password)
+        call.fire()
+        return call.objectSignal.flatMap(.concat, { (_) in
+            return self.getUser().take(first: 1)
+        }).on(value: { user in
+            self.localRepository.updateCall({
+                if let local = user.authentication?.local {
+                    local.email = newEmail
+                }
+            })
+        })
+    }
+    
+    func updateUsername(newUsername: String, password: String) -> Signal<UserProtocol, ReactiveSwiftRealmError> {
+        let call = UpdateUsernameCall(username: newUsername, password: password)
+        call.fire()
+        return call.objectSignal.flatMap(.concat, { (_) in
+            return self.getUser().take(first: 1)
+        }).on(value: { user in
+            self.localRepository.updateCall({
+                if let local = user.authentication?.local {
+                    local.username = newUsername
+                }
+            })
+        })
+    }
+    
+    func updatePassword(newPassword: String, password: String, confirmPassword: String) -> Signal<EmptyResponseProtocol?, NoError> {
+        let call = UpdatePasswordCall(newPassword: newPassword, oldPassword: password, confirmPassword: confirmPassword)
+        call.fire()
+        return call.objectSignal
     }
 }

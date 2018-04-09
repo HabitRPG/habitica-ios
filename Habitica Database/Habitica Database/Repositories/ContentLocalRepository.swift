@@ -71,11 +71,4 @@ public class ContentLocalRepository: BaseLocalRepository {
             return (value.map({ (skill) -> SkillProtocol in return skill }), changeset)
         })
     }
-    
-    public func clearDatabase() {
-        let realm = getRealm()
-        try? realm?.write {
-            realm?.deleteAll()
-        }
-    }
 }

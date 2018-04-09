@@ -13,7 +13,6 @@ import RealmSwift
 @objc
 class RealmUser: Object, UserProtocol {
 
-    
     @objc dynamic var id: String?
     @objc dynamic var balance: Float = 0
     var tasksOrder: [String: [String]] = [:]
@@ -143,6 +142,23 @@ class RealmUser: Object, UserProtocol {
         }
     }
     @objc dynamic var realmInbox: RealmInbox?
+    var authentication: AuthenticationProtocol? {
+        get {
+            return realmAuthentication
+        }
+        set {
+            if let value = newValue as? RealmAuthentication {
+                realmAuthentication = value
+                return
+            }
+            if let value = newValue {
+                realmAuthentication = RealmAuthentication(userID: id, protocolObject: value)
+            }
+        }
+    }
+    @objc dynamic var realmAuthentication: RealmAuthentication?
+    
+    
     var realmTags = List<RealmTag>()
     var needsCron: Bool = false
     var lastCron: Date?
@@ -152,7 +168,7 @@ class RealmUser: Object, UserProtocol {
     }
     
     override static func ignoredProperties() -> [String] {
-        return ["flags", "preferences", "stats", "profile", "contributor", "tasksOrder", "items", "tags", "inbox"]
+        return ["flags", "preferences", "stats", "profile", "contributor", "tasksOrder", "items", "tags", "inbox", "authentication"]
     }
     
     convenience init(_ user: UserProtocol) {
@@ -169,5 +185,6 @@ class RealmUser: Object, UserProtocol {
         needsCron = user.needsCron
         lastCron = user.lastCron
         inbox = user.inbox
+        authentication = user.authentication
     }
 }

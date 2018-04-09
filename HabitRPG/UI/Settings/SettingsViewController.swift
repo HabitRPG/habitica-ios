@@ -121,7 +121,9 @@ class SettingsViewController: FormViewController {
                 row.cellSetup({ (cell, _) in
                     cell.tintColor = UIColor.red50()
                 }).onCellSelection({ (_, _) in
-                    self.contentRepository.clearDatabase()
+                    self.userRepository.logoutAccount()
+                    let loginViewController = StoryboardScene.Intro.loginTableViewController.instantiate()
+                    self.present(loginViewController, animated: true, completion: nil)
                 })
         }
     }
@@ -161,7 +163,7 @@ class SettingsViewController: FormViewController {
                 row.title = L10n.Settings.customDayStart
                 }.onChange({ (row) in
                     if let date = row.value {
-                        var calendar = Calendar.current
+                        let calendar = Calendar.current
                         let hour = calendar.component(.hour, from: date)
                         if hour == self.user?.preferences?.dayStart {
                             return

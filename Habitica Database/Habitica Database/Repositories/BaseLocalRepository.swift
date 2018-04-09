@@ -37,4 +37,16 @@ public class BaseLocalRepository {
         }
     }
     
+    public func updateCall(_ transaction: (() -> Void)) {
+        try? getRealm()?.write {
+            transaction()
+        }
+    }
+    
+    public func clearDatabase() {
+        let realm = getRealm()
+        try? realm?.write {
+            realm?.deleteAll()
+        }
+    }
 }

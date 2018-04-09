@@ -47,6 +47,14 @@ public class UserLocalRepository: BaseLocalRepository {
         }
     }
     
+    public func toggleSleep(_ userID: String) {
+        if let user = getRealm()?.object(ofType: RealmUser.self, forPrimaryKey: userID) {
+            try? getRealm()?.write {
+                user.preferences?.sleep = !(user.preferences?.sleep ?? false)
+            }
+        }
+    }
+    
     private func mergeUsers(oldUser: UserProtocol, newUser: UserProtocol) {
         if let newItems = newUser.items {
             oldUser.items = newItems

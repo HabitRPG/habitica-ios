@@ -23,6 +23,7 @@ public class APIUser: UserProtocol, Codable {
     public var needsCron: Bool = false
     public var lastCron: Date?
     public var inbox: InboxProtocol?
+    public var authentication: AuthenticationProtocol?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -38,6 +39,7 @@ public class APIUser: UserProtocol, Codable {
         case needsCron
         case lastCron
         case inbox
+        case authentication = "auth"
     }
     
     public required init(from decoder: Decoder) throws {
@@ -58,6 +60,7 @@ public class APIUser: UserProtocol, Codable {
         needsCron = (try? values.decode(Bool.self, forKey: .needsCron)) ?? false
         lastCron = try? values.decode(Date.self, forKey: .lastCron)
         inbox = try? values.decode(APIInbox.self, forKey: .inbox)
+        authentication = try? values.decode(APIAuthentication.self, forKey: .authentication)
     }
     
     public func encode(to encoder: Encoder) throws {

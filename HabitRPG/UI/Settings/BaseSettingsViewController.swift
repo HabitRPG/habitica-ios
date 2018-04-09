@@ -7,15 +7,25 @@
 //
 
 import UIKit
+import Habitica_Models
+import ReactiveSwift
 
 class BaseSettingsViewController: HRPGBaseViewController {
+
+    let disposable = ScopedDisposable(CompositeDisposable())
     
-    let user = HRPGManager.shared().getUser()
+    let userRepository = UserRepository()
+    var user: UserProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 45
+        
+        disposable.inner.add(userRepository.getUser().on(value: {user in
+            self.user = user
+            self.tableView.reloadData()
+        }).start())
     }
     
 }

@@ -8,9 +8,10 @@
 
 import Foundation
 import Habitica_Database
+import ReactiveSwift
 
 class BaseRepository<T: BaseLocalRepository>: NSObject {
     
     let localRepository = T.init()
-
+    let disposable = ScopedDisposable(CompositeDisposable())
 }

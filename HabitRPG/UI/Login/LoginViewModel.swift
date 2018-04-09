@@ -37,7 +37,6 @@ protocol  LoginViewModelInputs {
 
     func onSuccessfulLogin()
 
-    func setSharedManager(sharedManager: HRPGManager?)
     func setViewController(viewController: LoginTableViewController)
 }
 
@@ -279,21 +278,24 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
             self.loadingIndicatorVisibilityObserver.send(value: true)
             let authValues = self.authValuesProperty.value
             if self.authTypeProperty.value == .login {
-                self.sharedManager?.loginUser(authValues?.username, withPassword: authValues?.password, onSuccess: {
-                    self.onSuccessfulLogin()
-                }, onError: {
-                    self.loadingIndicatorVisibilityObserver.send(value: false)
-                    self.showErrorObserver.send(value: "Invalid username or password".localized)
-                })
-            } else {
-                self.sharedManager?.registerUser(authValues?.username, withPassword: authValues?.password, withEmail: authValues?.password, onSuccess: {
-                    self.onSuccessfulLogin()
-                }, onError: { errorMessage in
-                    self.loadingIndicatorVisibilityObserver.send(value: false)
-                    if let message = errorMessage {
-                        self.showErrorObserver.send(value: message)
+                userRepository.login(username: authValues?.username ?? "", password: authValues?.password ?? "").observeResult { (result) in
+                    switch result {
+                    case .success:
+                        self.onSuccessfulLogin()
+                    case .failure:
+                        self.loadingIndicatorVisibilityObserver.send(value: false)
+                        self.showErrorObserver.send(value: "Invalid username or password".localized)
                     }
-                })
+                }
+            } else {
+                userRepository.register(username: authValues?.username ?? "", password: authValues?.password ?? "", confirmPassword: authValues?.passwordRepeat ?? "", email: authValues?.email ?? "").observeResult { (result) in
+                    switch result {
+                    case .success:
+                        self.onSuccessfulLogin()
+                    case .failure:
+                        self.loadingIndicatorVisibilityObserver.send(value: false)
+                    }
+                }
             }
         }
     }
@@ -326,11 +328,14 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
             }
             appDelegate.currentAuthorizationFlow = OIDAuthState.authState(byPresenting: request, presenting: viewController, callback: {[weak self] (authState, _) in
                 if authState != nil {
-                    self?.sharedManager?.loginUserSocial("", withNetwork: "google", withAccessToken: authState?.lastTokenResponse?.accessToken, onSuccess: {
-                        self?.onSuccessfulLogin()
-                    }, onError: { _ in
-                        self?.showErrorObserver.send(value: "There was an error with the authentication. Try again later")
-                    })
+                    self?.userRepository.login(userID: "", network: "google", accessToken: authState?.lastTokenResponse?.accessToken ?? "").observeResult { (result) in
+                        switch result {
+                        case .success:
+                            self?.onSuccessfulLogin()
+                        case .failure:
+                            self?.showErrorObserver.send(value: "There was an error with the authentication. Try again later")
+                        }
+                    }
                 }
             })
         }
@@ -351,18 +356,16 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
                 // If there is an error or the user cancelled login
 
             } else if let userId = result?.token.userID, let token = result?.token.tokenString {
-                self?.sharedManager?.loginUserSocial(userId, withNetwork: "facebook", withAccessToken: token, onSuccess: {
-                    self?.onSuccessfulLogin()
-                }, onError: { _ in
-                    self?.showErrorObserver.send(value: "There was an error with the authentication. Try again later")
-                })
+                self?.userRepository.login(userID: userId, network: "facebook", accessToken: token).observeResult { (result) in
+                    switch result {
+                    case .success:
+                        self?.onSuccessfulLogin()
+                    case .failure:
+                        self?.showErrorObserver.send(value: "There was an error with the authentication. Try again later")
+                    }
+                }
             }
         }
-    }
-
-    private var sharedManager: HRPGManager?
-    func setSharedManager(sharedManager: HRPGManager?) {
-        self.sharedManager = sharedManager
     }
 
     private weak var viewController: LoginTableViewController?

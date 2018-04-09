@@ -22,28 +22,28 @@ class ProfileSettingsViewController: BaseSettingsViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         if indexPath.item == 0 {
             cell.textLabel?.text = NSLocalizedString("Display Name", comment: "")
-            cell.detailTextLabel?.text = user?.username
+            cell.detailTextLabel?.text = user?.profile?.name
         } else if indexPath.item == 1 {
             cell.textLabel?.text = NSLocalizedString("Photo URL", comment: "")
-            cell.detailTextLabel?.text = user?.photoUrl
+            cell.detailTextLabel?.text = user?.profile?.photoUrl
         } else if indexPath.item == 2 {
             cell.textLabel?.text = NSLocalizedString("About", comment: "")
-            cell.detailTextLabel?.text = user?.blurb
+            cell.detailTextLabel?.text = user?.profile?.blurb
         }
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.item == 0 {
-            showEditAlert(title: NSLocalizedString("Change Display Name", comment: ""), message: NSLocalizedString("", comment: ""), value: user?.username, action: {[weak self] (newValue) in
+            showEditAlert(title: NSLocalizedString("Change Display Name", comment: ""), message: NSLocalizedString("", comment: ""), value: user?.profile?.name, action: {[weak self] (newValue) in
                 self?.updateValue(path: "profile.name", newValue: newValue, indexPath: indexPath)
             })
         } else if indexPath.item == 1 {
-            showEditAlert(title: NSLocalizedString("Change Photo URL", comment: ""), message: NSLocalizedString("", comment: ""), value: user?.photoUrl, action: {[weak self] (newValue) in
+            showEditAlert(title: NSLocalizedString("Change Photo URL", comment: ""), message: NSLocalizedString("", comment: ""), value: user?.profile?.photoUrl, action: {[weak self] (newValue) in
                 self?.updateValue(path: "profile.url", newValue: newValue, indexPath: indexPath)
             })
         } else if indexPath.item == 2 {
-            showEditAlert(title: NSLocalizedString("Change About message", comment: ""), message: NSLocalizedString("", comment: ""), value: user?.blurb, action: {[weak self] (newValue) in
+            showEditAlert(title: NSLocalizedString("Change About message", comment: ""), message: NSLocalizedString("", comment: ""), value: user?.profile?.blurb, action: {[weak self] (newValue) in
                 self?.updateValue(path: "profile.blurb", newValue: newValue, indexPath: indexPath)
             })
         }
@@ -69,8 +69,6 @@ class ProfileSettingsViewController: BaseSettingsViewController {
         guard let value = newValue else {
             return
         }
-        HRPGManager.shared().updateUser([path: value], onSuccess: {[weak self] in
-            self?.tableView.reloadData()
-        }, onError: nil)
+        userRepository.updateUser(key: path, value: value).observeCompleted {}
     }
 }

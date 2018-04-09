@@ -32,11 +32,11 @@ class HabiticaNetworkErrorHandler: NetworkErrorHandler {
     
     public static func handle(error: NSError, messages: [String]) {
         if let errorMessage = errorMessageForCode(code: error.code) {
-            self.notify(message: errorMessage.message)
+            self.notify(message: errorMessage.message, code: error.code)
         } else if !messages.isEmpty {
-            self.notify(message: messages[0])
+            self.notify(message: messages[0], code: error.code)
         } else {
-            self.notify(message: error.localizedDescription)
+            self.notify(message: error.localizedDescription, code: 0)
         }
     }
     
@@ -49,8 +49,14 @@ class HabiticaNetworkErrorHandler: NetworkErrorHandler {
         return nil
     }
     
-    public static func notify(message: String) {
-        let toastView = ToastView(title: message, background: .red)
-        ToastManager.show(toast: toastView)
+    public static func notify(message: String, code: Int) {
+        if code == 400 {
+            let alertController = HabiticaAlertController(title: message)
+            alertController.addCloseAction()
+            alertController.show()
+        } else {
+            let toastView = ToastView(title: message, background: .red)
+            ToastManager.show(toast: toastView)
+        }
     }
 }

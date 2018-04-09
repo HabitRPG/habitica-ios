@@ -7,15 +7,21 @@
 //
 
 import UIKit
+import Habitica_Models
+import ReactiveSwift
 
 class FixCharacterViewController: HRPGBaseViewController {
     
-    var stats = [
+    let disposable = ScopedDisposable(CompositeDisposable())
+    
+    let userRepository = UserRepository()
+    
+    var stats: [String: Float] = [
         "stats.hp": 0.0,
         "stats.exp": 0.0,
         "stats.mp": 0.0,
         "stats.gp": 0.0,
-        "stats.lvl": 0.0
+        "stats.lvl": 0
     ]
     
     var habitClass = ""
@@ -35,14 +41,16 @@ class FixCharacterViewController: HRPGBaseViewController {
         view.addSubview(label)
         tableView.tableHeaderView = view
         
-        let user = HRPGManager.shared().getUser()
-        stats["stats.hp"] = user?.health.doubleValue
-        stats["stats.exp"] = user?.experience.doubleValue
-        stats["stats.mp"] = user?.magic.doubleValue
-        stats["stats.gp"] = user?.gold.doubleValue
-        stats["stats.lvl"] = user?.level.doubleValue
-        habitClass = user?.dirtyClass ?? ""
-        //stats["achievements.streak"] = user?.health
+        disposable.inner.add(userRepository.getUser().on(value: { user in
+            self.stats["stats.hp"] = user.stats?.health
+            self.stats["stats.exp"] = user.stats?.experience
+            self.stats["stats.mp"] = user.stats?.mana
+            self.stats["stats.gp"] = user.stats?.gold
+            self.stats["stats.lvl"] = Float(user.stats?.level ?? 0)
+            //self.stats["achievements.streak"] = user?.health
+            self.habitClass = user.stats?.habitClass ?? ""
+            self.tableView.reloadData()
+        }).start())
     }
     
     private func identifierFor(index: Int) -> String {
@@ -132,16 +140,14 @@ class FixCharacterViewController: HRPGBaseViewController {
     }
     
     @IBAction func savePressed(_ sender: Any) {
-        HRPGManager.shared().updateUser(stats, onSuccess: {
-                self.dismiss(animated: true, completion: nil)
-        }, onError: {
+        userRepository.updateUser(stats).observeCompleted {
             self.dismiss(animated: true, completion: nil)
-        })
+        }
     }
     
     @IBAction func textFieldChanged(_ sender: UITextField) {
         if let cell = sender.superview?.superview?.superview as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
-            stats[identifierFor(index: indexPath.item)] = Double(sender.text ?? "")
+            stats[identifierFor(index: indexPath.item)] = Float(sender.text ?? "")
         }
     }
     

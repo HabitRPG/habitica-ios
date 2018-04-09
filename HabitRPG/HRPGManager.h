@@ -224,23 +224,12 @@
 - (void)markInboxSeen:(void (^)())successBlock
               onError:(void (^)())errorBlock;
 
-- (void)loginUser:(NSString *)username
-     withPassword:(NSString *)password
-        onSuccess:(void (^)())successBlock
-          onError:(void (^)())errorBlock;
-- (void)loginUserSocial:(NSString *)userID
-            withNetwork:(NSString *)network
-        withAccessToken:(NSString *)accessToken
-              onSuccess:(void (^)())successBlock
-                onError:(void (^)(NSString *errorMessage))errorBlock;
-- (void)registerUser:(NSString *)username
-        withPassword:(NSString *)password
-           withEmail:(NSString *)email
-           onSuccess:(void (^)())successBlock
-             onError:(void (^)(NSString *errorMessage))errorBlock;
+//- (void)loginUser:(NSString *)username withPassword:(NSString *)password onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
+//- (void)loginUserSocial:(NSString *)userID withNetwork:(NSString *)network withAccessToken:(NSString *)accessToken onSuccess:(void (^)())successBlock onError:(void (^)(NSString *errorMessage))errorBlock;
+//- (void)registerUser:(NSString *)username withPassword:(NSString *)password withEmail:(NSString *)email onSuccess:(void (^)())successBlock onError:(void (^)(NSString *errorMessage))errorBlock;
 //- (void)clearLoginCredentials;
 
-- (void)sleepInn:(void (^)())successBlock onError:(void (^)())errorBlock;
+//- (void)sleepInn:(void (^)())successBlock onError:(void (^)())errorBlock;
 
 - (void)reviveUser:(void (^)())successBlock onError:(void (^)())errorBlock;
 
@@ -313,30 +302,17 @@
 
 //- (void)runCron:(NSArray<Task *> *)completedTasks onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
-- (void)resetAccount:(void (^)())successBlock
-             onError:(void (^)())errorBlock;
+//- (void)resetAccount:(void (^)())successBlock onError:(void (^)())errorBlock;
 
-- (void)deleteAccount:(NSString *)password
-         successBlock:(void (^)())successBlock
-             onError:(void (^)())errorBlock;
+//- (void)deleteAccount:(NSString *)password successBlock:(void (^)())successBlock onError:(void (^)())errorBlock;
 
-- (void)logoutUser:(void (^)())completionBlock;
+//- (void)logoutUser:(void (^)())completionBlock;
 
-- (void)changeEmail:(NSString *)newEmail
-       withPassword:(NSString *)password
-       successBlock:(void (^)())successBlock
-            onError:(void (^)())errorBlock;
+//- (void)changeEmail:(NSString *)newEmail withPassword:(NSString *)password successBlock:(void (^)())successBlock onError:(void (^)())errorBlock;
 
-- (void)changeLoginName:(NSString *)newLoginName
-       withPassword:(NSString *)password
-       successBlock:(void (^)())successBlock
-            onError:(void (^)())errorBlock;
+//- (void)changeLoginName:(NSString *)newLoginName withPassword:(NSString *)password successBlock:(void (^)())successBlock onError:(void (^)())errorBlock;
 
-- (void)changePassword:(NSString *)newPassword
-       oldPassword:(NSString *)oldPassword
-           confirmPassword:(NSString *)confirmedPassword
-       successBlock:(void (^)())successBlock
-            onError:(void (^)())errorBlock;
+//- (void)changePassword:(NSString *)newPassword oldPassword:(NSString *)oldPassword confirmPassword:(NSString *)confirmedPassword successBlock:(void (^)())successBlock onError:(void (^)())errorBlock;
 
 - (void)sendPasswordResetEmail:(NSString *)email
                   onSuccess:(void (^)())successBlock

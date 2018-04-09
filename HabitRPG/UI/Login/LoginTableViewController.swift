@@ -38,13 +38,10 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak private var loginActivityIndicator: UIActivityIndicatorView!
 
     private let viewModel = LoginViewModel()
-    private var sharedManager: HRPGManager?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.sharedManager = HRPGManager.shared()
-        self.viewModel.inputs.setSharedManager(sharedManager: self.sharedManager)
         self.viewModel.inputs.setViewController(viewController: self)
 
         loginBeginButton.addTarget(self, action: #selector(loginBeginButtonPressed), for: .touchUpInside)

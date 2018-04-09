@@ -36,25 +36,25 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
             cell.textLabel?.textColor = UIColor.black
             if indexPath.item == 0 {
                 cell.textLabel?.text = NSLocalizedString("Login Name", comment: "")
-                cell.detailTextLabel?.text = user?.loginname
+                cell.detailTextLabel?.text = user?.authentication?.local?.username
             } else if indexPath.item == 1 {
                 cell.textLabel?.text = NSLocalizedString("E-Mail", comment: "")
-                cell.detailTextLabel?.text = user?.email
+                cell.detailTextLabel?.text = user?.authentication?.local?.email
             } else if indexPath.item == 2 {
                 cell.textLabel?.text = NSLocalizedString("Change Password", comment: "")
                 cell.detailTextLabel?.text = nil
             } else if indexPath.item == 3 {
                 cell.textLabel?.text = NSLocalizedString("Login Methods", comment: "")
                 var loginMethods = [String]()
-                if user?.email != nil {
+                if user?.authentication?.local?.email != nil {
                     loginMethods.append(NSLocalizedString("Local", comment: ""))
                 }
-                if user?.facebookID != nil {
+                /*if user?.facebookID != nil {
                     loginMethods.append("Facebook")
                 }
                 if user?.googleID != nil {
                     loginMethods.append("Google")
-                }
+                }*/
                 cell.detailTextLabel?.text = loginMethods.joined(separator: ", ")
             }
         } else {
@@ -113,13 +113,11 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         
         alertController.addCancelAction()
         alertController.addAction(title: NSLocalizedString("Delete Account", comment: ""), style: .destructive, isMainAction: true) {[weak self] _ in
-            HRPGManager.shared().deleteAccount(textField.text ?? "", successBlock: {
-                HRPGManager.shared().logoutUser({
-                    let storyboard = UIStoryboard(name: "Intro", bundle: nil)
-                    let navigationController = storyboard.instantiateViewController(withIdentifier: "LoginTableViewController")
-                    self?.present(navigationController, animated: true, completion: nil)
-                })
-            }, onError: nil)
+            self?.userRepository.deleteAccount(password: textField.text ?? "").observeCompleted {
+                let storyboard = UIStoryboard(name: "Intro", bundle: nil)
+                let navigationController = storyboard.instantiateViewController(withIdentifier: "LoginTableViewController")
+                self?.present(navigationController, animated: true, completion: nil)
+            }
         }
         alertController.show()
     }
@@ -137,8 +135,8 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         alertController.contentView = textView
         
         alertController.addCancelAction()
-        alertController.addAction(title: NSLocalizedString("Reset Account", comment: ""), style: .destructive, isMainAction: true) { _ in
-            HRPGManager.shared().resetAccount(nil, onError: nil)
+        alertController.addAction(title: NSLocalizedString("Reset Account", comment: ""), style: .destructive, isMainAction: true) {[weak self] _ in
+            self?.userRepository.resetAccount().observeCompleted {}
         }
         alertController.show()
     }
@@ -155,7 +153,7 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         emailTextField.keyboardType = .emailAddress
         emailTextField.autocapitalizationType = .none
         emailTextField.spellCheckingType = .no
-        emailTextField.text = user?.email
+        emailTextField.text = user?.authentication?.local?.email
         stackView.addArrangedSubview(emailTextField)
         let passwordTextField = UITextField()
         passwordTextField.placeholder = NSLocalizedString("Password", comment: "")
@@ -166,9 +164,9 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         
         alertController.addCancelAction()
         alertController.addAction(title: NSLocalizedString("Change", comment: ""), isMainAction: true) {[weak self] _ in
-            HRPGManager.shared().changeEmail(emailTextField.text, withPassword: passwordTextField.text, successBlock: {
-                self?.tableView.reloadData()
-            }, onError: nil)
+            if let email = emailTextField.text, let password = passwordTextField.text {
+                self?.userRepository.updateEmail(newEmail: email, password: password).observeCompleted {}
+            }
         }
         alertController.show()
     }
@@ -184,7 +182,7 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         loginNameTextField.borderStyle = .roundedRect
         loginNameTextField.autocapitalizationType = .none
         loginNameTextField.spellCheckingType = .no
-        loginNameTextField.text = user?.loginname
+        loginNameTextField.text = user?.authentication?.local?.username
         stackView.addArrangedSubview(loginNameTextField)
         let passwordTextField = UITextField()
         passwordTextField.placeholder = NSLocalizedString("Password", comment: "")
@@ -195,9 +193,9 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         
         alertController.addCancelAction()
         alertController.addAction(title: NSLocalizedString("Change", comment: ""), isMainAction: true) {[weak self] _ in
-            HRPGManager.shared().changeLoginName(loginNameTextField.text, withPassword: passwordTextField.text, successBlock: {
-                self?.tableView.reloadData()
-            }, onError: nil)
+            if let username = loginNameTextField.text, let password = passwordTextField.text {
+                self?.userRepository.updateUsername(newUsername: username, password: password).observeCompleted {}
+            }
         }
         alertController.show()
     }
@@ -226,8 +224,10 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         alertController.contentView = stackView
         
         alertController.addCancelAction()
-        alertController.addAction(title: NSLocalizedString("Change", comment: ""), isMainAction: true) { _ in
-            HRPGManager.shared().changePassword(newPasswordTextField.text, oldPassword: oldPasswordTextField.text, confirmPassword: confirmTextField.text, successBlock: nil, onError: nil)
+        alertController.addAction(title: NSLocalizedString("Change", comment: ""), isMainAction: true) {[weak self] _ in
+            if let newPassword = newPasswordTextField.text, let password = oldPasswordTextField.text, let confirmPassword = confirmTextField.text {
+                self?.userRepository.updatePassword(newPassword: newPassword, password: password, confirmPassword: confirmPassword).observeCompleted {}
+            }
         }
         alertController.show()
     }

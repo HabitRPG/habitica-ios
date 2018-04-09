@@ -14,6 +14,7 @@ import Habitica_Models
 class RealmProfile: Object, ProfileProtocol {
     @objc dynamic var name: String?
     @objc dynamic var blurb: String?
+    @objc dynamic var photoUrl: String?
     
     @objc dynamic var id: String?
     override static func primaryKey() -> String {
@@ -25,5 +26,6 @@ class RealmProfile: Object, ProfileProtocol {
         self.id = id
         name = profile.name
         blurb = profile.blurb
+        photoUrl = profile.photoUrl
     }
 }

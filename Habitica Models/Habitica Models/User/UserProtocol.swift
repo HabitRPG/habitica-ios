@@ -21,6 +21,7 @@ public protocol UserProtocol: AvatarProtocol {
     var needsCron: Bool { get set }
     var lastCron: Date? { get set }
     var inbox: InboxProtocol? { get set }
+    var authentication: AuthenticationProtocol? { get set }
 }
 
 public extension UserProtocol {

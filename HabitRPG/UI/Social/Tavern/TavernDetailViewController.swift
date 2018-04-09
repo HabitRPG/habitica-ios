@@ -102,11 +102,9 @@ class TavernDetailViewController: UIViewController {
     
     @IBAction func innButtonTapped(_ sender: Any) {
         self.configureInnButton(disabled: true)
-        HRPGManager.shared().sleepInn({[weak self] in
-            self?.configureInnButton()
-        }, onError: {[weak self] in
-            self?.configureInnButton()
-        })
+        userRepository.sleep().observeCompleted {
+            self.configureInnButton()
+        }
     }
     
     @IBAction func guidelinesButtonTapped(_ sender: Any) {
