@@ -20,3 +20,9 @@ public protocol GroupProtocol {
     var quest: QuestStateProtocol? { get set }
     var chat: [ChatMessageProtocol] { get set }
 }
+
+public extension GroupProtocol {
+    var gemCount: Int {
+        return Int(balance * 4.0)
+    }
+}

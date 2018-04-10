@@ -20,11 +20,11 @@ class SplitSocialViewController: HRPGUIViewController, UIScrollViewDelegate, NSF
     
     @objc var groupID: String?
     
-    var detailViewController: HRPGGroupTableViewController?
+    var detailViewController: GroupDetailViewController?
     var chatViewController: GroupChatViewController?
     
     private let segmentedWrapper = PaddedView()
-    private let segmentedControl = UISegmentedControl(items: [NSLocalizedString("", comment: ""), NSLocalizedString("Chat", comment: "")])
+    private let segmentedControl = UISegmentedControl(items: [L10n.details, L10n.chat])
     private var isInitialSetup = true
     private var showAsSplitView = false
     
@@ -38,7 +38,6 @@ class SplitSocialViewController: HRPGUIViewController, UIScrollViewDelegate, NSF
         self.segmentedControl.selectedSegmentIndex = 0
         self.segmentedControl.tintColor = UIColor.purple300()
         self.segmentedControl.addTarget(self, action: #selector(SplitSocialViewController.switchView(_:)), for: .valueChanged)
-        self.segmentedControl.setTitle(navigationItem.title, forSegmentAt: 0)
         segmentedControl.isHidden = false
         segmentedWrapper.containedView = segmentedControl
         topHeaderCoordinator.alternativeHeader = segmentedWrapper
@@ -47,7 +46,7 @@ class SplitSocialViewController: HRPGUIViewController, UIScrollViewDelegate, NSF
         scrollView.delegate = self
         
         for childViewController in self.childViewControllers {
-            if let viewController = childViewController as? HRPGGroupTableViewController {
+            if let viewController = childViewController as? GroupDetailViewController {
                 detailViewController = viewController
             }
             if let viewController = childViewController as? GroupChatViewController {
@@ -126,7 +125,6 @@ class SplitSocialViewController: HRPGUIViewController, UIScrollViewDelegate, NSF
         self.segmentedControl.selectedSegmentIndex = currentPage
     }
 
-    
     @objc
     func switchView(_ segmentedControl: UISegmentedControl) {
         scrollTo(page: segmentedControl.selectedSegmentIndex)

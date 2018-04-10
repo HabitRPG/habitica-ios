@@ -124,8 +124,6 @@ internal enum StoryboardScene {
 
     internal static let challengeTableViewController = SceneType<Habitica.ChallengeTableViewController>(storyboard: Social.self, identifier: "ChallengeTableViewController")
 
-    internal static let groupDetailTableViewController = SceneType<HRPGGroupTableViewController>(storyboard: Social.self, identifier: "GroupDetailTableViewController")
-
     internal static let groupTableViewController = SceneType<Habitica.SplitSocialViewController>(storyboard: Social.self, identifier: "GroupTableViewController")
 
     internal static let guildsOverviewViewController = SceneType<Habitica.GuildOverviewViewController>(storyboard: Social.self, identifier: "GuildsOverviewViewController")

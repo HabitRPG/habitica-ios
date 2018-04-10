@@ -15,7 +15,7 @@ class GuildOverviewViewController: HRPGBaseViewController {
     let segmentedWrapper = UIView()
     let headerImageView = UIImageView()
     let headerSeparator = UIView()
-    let segmentedFilterControl = UISegmentedControl(items: [NSLocalizedString("My Challenges", comment: ""), NSLocalizedString("Discover", comment: "")])
+    let segmentedFilterControl = UISegmentedControl(items: [L10n.myGuilds, L10n.discover])
     
     var dataSource: GuildsOverviewDataSource?
     
@@ -81,6 +81,14 @@ class GuildOverviewViewController: HRPGBaseViewController {
             tableView.separatorStyle = .none
         } else {
             tableView.separatorStyle = .singleLine
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == StoryboardSegue.Social.showGuildSegue.rawValue, let cell = sender as? UITableViewCell {
+            let destViewController = segue.destination as? SplitSocialViewController
+            let indexPath = tableView.indexPath(for: cell)
+            destViewController?.groupID = dataSource?.item(at: indexPath)?.id
         }
     }
 }

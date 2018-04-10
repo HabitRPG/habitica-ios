@@ -23,7 +23,10 @@ class BaseReactiveDataSource<MODEL>: NSObject {
     
     @objc var userDrivenDataUpdate = false
     
-    func item(at indexPath: IndexPath) -> MODEL? {
+    func item(at indexPath: IndexPath?) -> MODEL? {
+        guard let indexPath = indexPath else {
+            return nil
+        }
         if indexPath.item < 0 || indexPath.section < 0 {
             return nil
         }

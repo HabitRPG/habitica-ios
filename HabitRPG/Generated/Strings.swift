@@ -7,12 +7,16 @@ import Foundation
 
 // swiftlint:disable explicit_type_interface identifier_name line_length nesting type_body_length type_name
 internal enum L10n {
+  /// Chat
+  internal static let chat = L10n.tr("Main", "chat")
   /// Controls
   internal static let controls = L10n.tr("Main", "controls")
   /// Create
   internal static let create = L10n.tr("Main", "create")
   /// Daily
   internal static let daily = L10n.tr("Main", "daily")
+  /// Details
+  internal static let details = L10n.tr("Main", "details")
   /// Difficulty
   internal static let difficulty = L10n.tr("Main", "difficulty")
   /// Discover

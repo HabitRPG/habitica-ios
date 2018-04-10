@@ -9,7 +9,7 @@
 import UIKit
 
 @IBDesignable
-class CollapsibleStackView: UIStackView {
+class CollapsibleStackView: StackView {
     
     private var titleView: CollapsibleTitle?
     

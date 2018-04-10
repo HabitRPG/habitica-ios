@@ -97,3 +97,5 @@
 "settings.maintenance" = "Maintenance";
 "settings.clear_cache" = "Clear Cache";
 "settings.reload_content" = "Reload Content";
+"details" = "Details";
+"chat" = "Chat";
