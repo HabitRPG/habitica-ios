@@ -36,6 +36,7 @@ class CheckedTableViewCell: TaskTableViewCell {
         super.configure(task: task)
         if let taskObject = task as? NSObjectProtocol & HRPGTaskProtocol {
             self.checkBox.configure(forTask: taskObject)
+            self.checkBox.isLocked = isLocked
         }
         if task is Task {
             self.checkBox.wasTouched = {[weak self] in

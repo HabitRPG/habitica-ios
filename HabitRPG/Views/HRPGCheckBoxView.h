@@ -13,6 +13,7 @@
 @interface HRPGCheckBoxView : UIView
 
 @property(nonatomic) bool checked;
+@property(nonatomic) BOOL isLocked;
 @property(nonatomic) CGFloat size;
 @property(nonatomic) CGFloat cornerRadius;
 @property(nonatomic) UIColor *boxBorderColor;

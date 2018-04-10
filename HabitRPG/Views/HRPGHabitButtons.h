@@ -10,6 +10,7 @@
 #import "HRPGTaskProtocol.h"
 
 @interface HRPGHabitButtons : UIView
+@property (nonatomic) BOOL isLocked;
 
 - (void)configureForTask:(NSObject<HRPGTaskProtocol> *)task isNegative:(BOOL)isNegative;
 

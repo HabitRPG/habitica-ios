@@ -133,21 +133,21 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
             let habitsSection = MultiModelDataSourceSection()
             habitsSection.title = "Habits"
             habitsSection.items = challenge.habits?.map({ (task) -> MultiModelDataSourceItem in
-                return ChallengeTaskMultiModelDataSourceItem<HabitTableViewCell>(task, identifier: "habit")
+                return ChallengeTaskMultiModelDataSourceItem<HabitTableViewCell>(task, Challenge.isJoinable(challenge: challenge), identifier: "habit")
             })
             self.habitsSectionProperty.value = habitsSection
             
             let dailiesSection = MultiModelDataSourceSection()
             dailiesSection.title = "Dailies"
             dailiesSection.items = challenge.dailies?.map({ (task) -> MultiModelDataSourceItem in
-                return ChallengeTaskMultiModelDataSourceItem<DailyTableViewCell>(task, identifier: "daily")
+                return ChallengeTaskMultiModelDataSourceItem<DailyTableViewCell>(task, Challenge.isJoinable(challenge: challenge), identifier: "daily")
             })
             self.dailiesSectionProperty.value = dailiesSection
             
             let todosSection = MultiModelDataSourceSection()
             todosSection.title = "Todos"
             todosSection.items = challenge.todos?.map({ (task) -> MultiModelDataSourceItem in
-                return ChallengeTaskMultiModelDataSourceItem<ToDoTableViewCell>(task, identifier: "todo")
+                return ChallengeTaskMultiModelDataSourceItem<ToDoTableViewCell>(task, Challenge.isJoinable(challenge: challenge), identifier: "todo")
             })
             self.todosSectionProperty.value = todosSection
             
@@ -346,14 +346,17 @@ class ChallengeResizableMultiModelDataSourceItem<T>: ChallengeMultiModelDataSour
 
 class ChallengeTaskMultiModelDataSourceItem<T>: ConcreteMultiModelDataSourceItem<T> where T: TaskTableViewCell {
     private let challengeTask: ChallengeTask
+    private let isLocked: Bool
     
-    public init(_ challengeTask: ChallengeTask, identifier: String) {
+    public init(_ challengeTask: ChallengeTask, _ isLocked: Bool, identifier: String) {
         self.challengeTask = challengeTask
+        self.isLocked = isLocked
         super.init(identifier: identifier)
     }
     
     override func configureCell(_ cell: UITableViewCell) {
         if let clazzCell: T = cell as? T {
+            clazzCell.isLocked = isLocked
             clazzCell.configure(task: challengeTask)
         }
     }

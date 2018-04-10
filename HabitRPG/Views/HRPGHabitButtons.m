@@ -37,11 +37,9 @@
     [self insertSubview:self.roundedView belowSubview:self.label];
 
     if (isActive) {
-        if (isNegative) {
-            self.label.image = [UIImage imageNamed:@"minus"];
-        } else {
-            self.label.image = [UIImage imageNamed:@"plus"];
-        }
+        UIImage *image = [UIImage imageNamed:isNegative ? @"minus" : @"plus"];
+        if (self.isLocked) image = [UIImage imageNamed:@"task_lock_light"];
+        self.label.image = image;
         self.label.contentMode = UIViewContentModeCenter;
 
         UITapGestureRecognizer *tapRecognizer =
@@ -61,16 +59,23 @@
             self.roundedView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.1];
         }
     } else {
-        if (isNegative) {
-             UIImage *image = [UIImage imageNamed:@"minus_gray"];
-            self.label.image = image;
-        } else {
-            self.label.image = [UIImage imageNamed:@"plus_gray"];
-        }
+        UIImage *image = [UIImage imageNamed:isNegative ? @"minus_gray" : @"plus_gray"];
+        if (self.isLocked) image = [UIImage imageNamed:@"task_lock_disabled"];
+        self.label.image = image;
+        
         self.label.contentMode = UIViewContentModeCenter;
         self.backgroundColor = [UIColor gray700];
         self.roundedView.layer.borderWidth = 1;
         self.roundedView.layer.borderColor = [UIColor gray600].CGColor;
+    }
+    
+    if (self.isLocked) {
+        if (isActive) {
+            
+        } else {
+            
+        }
+        self.label.image = [UIImage imageNamed:@"task_lock_light"];
     }
 }
 
