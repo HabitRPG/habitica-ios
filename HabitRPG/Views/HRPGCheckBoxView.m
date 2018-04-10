@@ -102,6 +102,8 @@
     self.centerCheckbox = true;
     self.borderedBox = false;
     
+    self.layer.contentsScale = [UIScreen mainScreen].scale;
+    
     UITapGestureRecognizer *tapRecognizer =
     [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
     tapRecognizer.numberOfTapsRequired = 1;
