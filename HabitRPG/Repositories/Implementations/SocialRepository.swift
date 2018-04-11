@@ -141,7 +141,11 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
     public func retrieveMember(userID: String) -> Signal<MemberProtocol?, NoError> {
         let call = RetrieveMemberCall(userID: userID)
         call.fire()
-        return call.objectSignal
+        return call.objectSignal.on(value: {[weak self] member in
+            if let member = member {
+                self?.localRepository.save(member)
+            }
+        })
     }
     
     public func getMember(userID: String, retrieveIfNotFound: Bool = false) -> SignalProducer<MemberProtocol?, NoError> {
@@ -150,7 +154,7 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
                 return SignalProducer.empty
             })
             .flatMap(.concat, { (member) -> SignalProducer<MemberProtocol?, NoError> in
-                if retrieveIfNotFound {
+                if retrieveIfNotFound && member == nil {
                     return SignalProducer(self.retrieveMember(userID: userID))
                 } else {
                     return SignalProducer(value: member)

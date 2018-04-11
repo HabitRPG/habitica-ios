@@ -30,6 +30,14 @@ public class SocialLocalRepository: BaseLocalRepository {
         })
     }
     
+    public func save(_ member: MemberProtocol) {
+        if let realmMember = member as? RealmMember {
+            save(object: realmMember)
+            return
+        }
+        save(object: RealmMember(member))
+    }
+    
     public func save(groupID: String?, chatMessages: [ChatMessageProtocol]) {
         save(objects:chatMessages.map { (chatMessage) in
             if let realmChatMessage = chatMessage as? RealmTask {

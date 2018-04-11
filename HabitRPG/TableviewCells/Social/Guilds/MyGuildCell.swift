@@ -19,7 +19,7 @@ class MyGuildCell: UITableViewCell {
     
     func configure(group: GroupProtocol) {
         titleLabel.text = group.name
-        if let lastActivity = (group.chat.last?.timestamp as NSDate?)?.timeAgoSinceNow() {
+        if let lastActivity = (group.chat.first?.timestamp as NSDate?)?.timeAgoSinceNow() {
             lastActivityLabel.text = L10n.lastActivity(lastActivity)
             labelSpacing.constant = 4
         } else {
