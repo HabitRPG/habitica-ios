@@ -12,6 +12,7 @@ public protocol GroupProtocol {
     var id: String? { get set }
     var name: String? { get set }
     var groupDescription: String? { get set }
+    var leaderID: String? { get set }
     var summary: String? { get set }
     var type: String? { get set }
     var memberCount: Int { get set }

@@ -1,4 +1,5 @@
 "search" = "Search";
+"cancel" = "Cancel";
 "reset_tips" = "Reset Justins Tips";
 "stats.no_points_to_allocate" = "0 Points to Allocate";
 "stats.one_point_to_allocate" = "1 Point to Allocate";
@@ -99,3 +100,8 @@
 "settings.reload_content" = "Reload Content";
 "details" = "Details";
 "chat" = "Chat";
+"guilds.leave_guild_title" = "LeaveGuild?";
+"guilds.leave_guild_description" = "Do you want to leave the guild and keep or delete the challenges?";
+"guilds.keep_challenges" = "Keep challenges";
+"guilds.leave_challenges" = "Leave Challenges";
+

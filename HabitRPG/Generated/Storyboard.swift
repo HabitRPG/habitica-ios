@@ -237,10 +237,12 @@ internal enum StoryboardSegue {
   internal enum Social: String, SegueType {
     case aboutSegue = "AboutSegue"
     case challengeSegue = "ChallengeSegue"
+    case challengesSegue = "ChallengesSegue"
     case chatSegue = "ChatSegue"
     case groupFormSegue = "GroupFormSegue"
     case guidelinesSegue = "GuidelinesSegue"
     case invitationSegue = "InvitationSegue"
+    case inviteUsersSegue = "InviteUsersSegue"
     case membersSegue = "MembersSegue"
     case messageSegue = "MessageSegue"
     case participantsSegue = "ParticipantsSegue"

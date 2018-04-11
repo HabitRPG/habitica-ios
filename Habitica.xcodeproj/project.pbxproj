@@ -39,6 +39,7 @@
 		290B6285207BD531007287C4 /* GuildDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B6284207BD531007287C4 /* GuildDetailViewController.swift */; };
 		290B6287207CD6B5007287C4 /* GroupDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B6286207CD6B5007287C4 /* GroupDetailViewController.swift */; };
 		290B6289207CF248007287C4 /* StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B6288207CF248007287C4 /* StackView.swift */; };
+		290B6298207E3F37007287C4 /* LeaveGroupInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B6297207E3F37007287C4 /* LeaveGroupInteractor.swift */; };
 		290C3017206A963D0066AF5B /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C3016206A963D0066AF5B /* MainMenuViewController.swift */; };
 		290C302A206BA0B50066AF5B /* SkillTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C3029206BA0B50066AF5B /* SkillTableViewCell.swift */; };
 		290C302C206BACBB0066AF5B /* SpellsTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C302B206BACBB0066AF5B /* SpellsTableViewDataSource.swift */; };
@@ -587,6 +588,7 @@
 		290B6284207BD531007287C4 /* GuildDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuildDetailViewController.swift; sourceTree = "<group>"; };
 		290B6286207CD6B5007287C4 /* GroupDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailViewController.swift; sourceTree = "<group>"; };
 		290B6288207CF248007287C4 /* StackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackView.swift; sourceTree = "<group>"; };
+		290B6297207E3F37007287C4 /* LeaveGroupInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveGroupInteractor.swift; sourceTree = "<group>"; };
 		290C3016206A963D0066AF5B /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		290C3029206BA0B50066AF5B /* SkillTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillTableViewCell.swift; sourceTree = "<group>"; };
 		290C302B206BACBB0066AF5B /* SpellsTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellsTableViewDataSource.swift; sourceTree = "<group>"; };
@@ -1428,6 +1430,14 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
+		290B6296207E3F1F007287C4 /* Groups */ = {
+			isa = PBXGroup;
+			children = (
+				290B6297207E3F37007287C4 /* LeaveGroupInteractor.swift */,
+			);
+			path = Groups;
+			sourceTree = "<group>";
+		};
 		29205E332062DF620024E355 /* TaskFormRows */ = {
 			isa = PBXGroup;
 			children = (
@@ -2030,6 +2040,7 @@
 			children = (
 				D97ED0AF1E6DBC87006C2A26 /* Interactor.swift */,
 				D9709A521E8051BD0005F35B /* Tasks */,
+				290B6296207E3F1F007287C4 /* Groups */,
 				D97ED0AC1E6DBB6E006C2A26 /* Challenges */,
 			);
 			path = Interactors;
@@ -3463,6 +3474,7 @@
 				292F9662206E363000804151 /* GroupChatViewDataSource.swift in Sources */,
 				D984D58B1E4A1F59006E84F8 /* SubscriptionViewController.swift in Sources */,
 				290B6287207CD6B5007287C4 /* GroupDetailViewController.swift in Sources */,
+				290B6298207E3F37007287C4 /* LeaveGroupInteractor.swift in Sources */,
 				298119B11F50453100F9FB39 /* QuestGoalView.swift in Sources */,
 				D9D17CCC1E6736A600AD9232 /* ChallengeDetailHeaderView.swift in Sources */,
 				D9BB45D61E79968B0002AE2E /* ChallengeFilterAlert.swift in Sources */,

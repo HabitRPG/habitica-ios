@@ -976,7 +976,7 @@ Invite friends now to earn a Quest Scroll!</string>
             <objects>
                 <tableViewController id="LJL-4h-PRX" customClass="ChallengeDetailsTableViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="mSs-Sh-idc">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -1168,7 +1168,7 @@ Invite friends now to earn a Quest Scroll!</string>
             <objects>
                 <tableViewController storyboardIdentifier="UserProfileViewController" id="MTH-Re-wqo" customClass="HRPGUserProfileViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="WTt-7r-yfN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
@@ -1803,7 +1803,7 @@ Invite friends now to earn a Quest Scroll!</string>
             <objects>
                 <tableViewController storyboardIdentifier="ChallengeTableViewController" id="BE2-xn-Wwl" customClass="ChallengeTableViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="86" sectionHeaderHeight="28" sectionFooterHeight="28" id="SWx-Y1-cyG">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -2471,13 +2471,13 @@ Invite friends now to earn a Quest Scroll!</string>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6y4-NW-sAd">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
-                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pCL-YP-wy9">
+                                    <containerView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pCL-YP-wy9">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                         <connections>
                                             <segue destination="ZmK-Mz-PPG" kind="embed" id="Wxl-eq-vET"/>
                                         </connections>
                                     </containerView>
-                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QWd-nR-RgQ">
+                                    <containerView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QWd-nR-RgQ">
                                         <rect key="frame" x="375" y="0.0" width="375" height="603"/>
                                         <connections>
                                             <segue destination="GpJ-zx-fw9" kind="embed" id="xLb-S3-ALp"/>
@@ -2546,11 +2546,15 @@ Invite friends now to earn a Quest Scroll!</string>
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="hLy-t6-F84">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="297"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="450.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QIN-9Y-EHh">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
                                                 <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eAc-h8-QYV">
+                                                        <rect key="frame" x="0.0" y="95" width="375" height="125"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ewt-mt-ZJq">
                                                         <rect key="frame" x="20" y="16" width="335" height="0.0"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2562,13 +2566,13 @@ Invite friends now to earn a Quest Scroll!</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="OiB-ku-RLx">
-                                                        <rect key="frame" x="20" y="34" width="335" height="50"/>
+                                                        <rect key="frame" x="27" y="34" width="321" height="50"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="QNN-Jl-P8Y">
-                                                                <rect key="frame" x="0.0" y="0.0" width="159.5" height="50"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="152.5" height="50"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="adh-9g-hYG">
-                                                                        <rect key="frame" x="65.5" y="8" width="30" height="13.5"/>
+                                                                        <rect key="frame" x="62" y="8" width="30" height="13.5"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZfZ-Mp-g8x">
                                                                                 <rect key="frame" x="30" y="2" width="0.0" height="9.5"/>
@@ -2601,7 +2605,7 @@ Invite friends now to earn a Quest Scroll!</string>
                                                                         </constraints>
                                                                     </view>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Guild members" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mmD-db-dYd">
-                                                                        <rect key="frame" x="0.0" y="27.5" width="159.5" height="14.5"/>
+                                                                        <rect key="frame" x="0.0" y="27.5" width="152.5" height="14.5"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" priority="500" constant="21" id="gLm-yL-qUR"/>
                                                                         </constraints>
@@ -2627,10 +2631,10 @@ Invite friends now to earn a Quest Scroll!</string>
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                             <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="MGJ-7C-DGx">
-                                                                <rect key="frame" x="175.5" y="0.0" width="159.5" height="50"/>
+                                                                <rect key="frame" x="168.5" y="0.0" width="152.5" height="50"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="P0x-tY-Ndj">
-                                                                        <rect key="frame" x="65" y="8" width="30" height="13.5"/>
+                                                                        <rect key="frame" x="61.5" y="8" width="30" height="13.5"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e3Y-Jr-xC4">
                                                                                 <rect key="frame" x="30" y="2" width="0.0" height="9.5"/>
@@ -2663,7 +2667,7 @@ Invite friends now to earn a Quest Scroll!</string>
                                                                         </constraints>
                                                                     </view>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Guild Bank" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UrW-r2-Djq">
-                                                                        <rect key="frame" x="0.0" y="27.5" width="159.5" height="14.5"/>
+                                                                        <rect key="frame" x="0.0" y="27.5" width="152.5" height="14.5"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" priority="500" constant="21" id="jnV-d2-pao"/>
                                                                         </constraints>
@@ -2693,20 +2697,131 @@ Invite friends now to earn a Quest Scroll!</string>
                                                             <constraint firstAttribute="height" priority="500" constant="60" id="20y-Kz-gWw"/>
                                                         </constraints>
                                                     </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Z9z-KY-HQR">
+                                                        <rect key="frame" x="16" y="107" width="343" height="36"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ftv-T1-K44">
+                                                                <rect key="frame" x="0.0" y="0.0" width="164" height="36"/>
+                                                                <color key="backgroundColor" red="0.37997829910000003" green="0.1982949376" blue="0.70615965130000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <state key="normal" title="Invite to Guild">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="6"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <segue destination="Jki-T5-YYo" kind="presentation" identifier="InviteUsersSegue" id="yXa-uT-GhF"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oXc-S6-Df9">
+                                                                <rect key="frame" x="179" y="0.0" width="164" height="36"/>
+                                                                <color key="backgroundColor" red="0.26895910501480103" green="0.79955726861953735" blue="0.56116724014282227" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <state key="normal" title="Join Guild">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="6"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <action selector="joinButtonTapped:" destination="ZmK-Mz-PPG" eventType="touchUpInside" id="Cul-iq-fiL"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="36" id="Dby-Sa-cMP"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fwD-XM-c7N">
+                                                        <rect key="frame" x="0.0" y="155" width="375" height="65"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xaF-jb-gQA">
+                                                                <rect key="frame" x="335" y="20" width="24" height="24"/>
+                                                                <state key="normal" image="messages"/>
+                                                                <connections>
+                                                                    <action selector="guildLeaderMessageButtonTapped:" destination="ZmK-Mz-PPG" eventType="touchUpInside" id="YbY-fd-uFU"/>
+                                                                </connections>
+                                                            </button>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dqf-HT-q0B">
+                                                                <rect key="frame" x="68" y="12" width="0.0" height="18"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="18" id="lbd-5Q-Gwh"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                <color key="textColor" red="0.086274509799999996" green="0.4941176471" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JuB-qY-9Ry" customClass="AvatarView" customModule="Habitica" customModuleProvider="target">
+                                                                <rect key="frame" x="16" y="12" width="40" height="40"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="40" id="Gp6-AH-udB"/>
+                                                                    <constraint firstAttribute="height" constant="40" id="v1E-9Q-Y5H"/>
+                                                                </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="20"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </view>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Guild leader" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sqv-0g-s6n">
+                                                                <rect key="frame" x="68" y="34" width="68" height="14.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                <color key="textColor" red="0.40784313729999999" green="0.38431372549999998" blue="0.4549019608" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstItem="dqf-HT-q0B" firstAttribute="leading" secondItem="JuB-qY-9Ry" secondAttribute="trailing" constant="12" id="E4a-jp-Dxj"/>
+                                                            <constraint firstItem="dqf-HT-q0B" firstAttribute="top" secondItem="fwD-XM-c7N" secondAttribute="top" constant="12" id="IXC-l6-pGt"/>
+                                                            <constraint firstItem="JuB-qY-9Ry" firstAttribute="leading" secondItem="fwD-XM-c7N" secondAttribute="leading" constant="16" id="SEw-f6-3E5"/>
+                                                            <constraint firstItem="Sqv-0g-s6n" firstAttribute="leading" secondItem="JuB-qY-9Ry" secondAttribute="trailing" constant="12" id="Zrr-Bq-0qc"/>
+                                                            <constraint firstAttribute="trailing" secondItem="xaF-jb-gQA" secondAttribute="trailing" constant="16" id="ddr-Em-jm8"/>
+                                                            <constraint firstItem="xaF-jb-gQA" firstAttribute="centerY" secondItem="fwD-XM-c7N" secondAttribute="centerY" id="htP-tY-O5L"/>
+                                                            <constraint firstAttribute="height" constant="65" id="idk-2n-iCz"/>
+                                                            <constraint firstItem="JuB-qY-9Ry" firstAttribute="centerY" secondItem="fwD-XM-c7N" secondAttribute="centerY" id="jgP-JS-HbH"/>
+                                                            <constraint firstItem="Sqv-0g-s6n" firstAttribute="top" secondItem="dqf-HT-q0B" secondAttribute="bottom" constant="4" id="z2Q-LN-26i"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vzL-Rr-0FL">
+                                                        <rect key="frame" x="0.0" y="154" width="375" height="1"/>
+                                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="1" id="P4f-Iw-h45"/>
+                                                        </constraints>
+                                                    </view>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="ewt-mt-ZJq" firstAttribute="top" secondItem="QIN-9Y-EHh" secondAttribute="top" constant="16" id="2tu-jF-hRg"/>
-                                                    <constraint firstItem="OiB-ku-RLx" firstAttribute="leading" secondItem="QIN-9Y-EHh" secondAttribute="leading" constant="20" id="MzQ-y5-9aa"/>
-                                                    <constraint firstAttribute="bottom" secondItem="OiB-ku-RLx" secondAttribute="bottom" constant="16" id="Ts1-lC-g44"/>
+                                                    <constraint firstItem="vzL-Rr-0FL" firstAttribute="leading" secondItem="QIN-9Y-EHh" secondAttribute="leading" id="6VH-QQ-VUh"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Z9z-KY-HQR" secondAttribute="trailing" constant="16" id="COL-xC-tXG"/>
+                                                    <constraint firstItem="Z9z-KY-HQR" firstAttribute="top" secondItem="eAc-h8-QYV" secondAttribute="top" constant="12" id="HzE-KW-Zbm"/>
+                                                    <constraint firstAttribute="trailing" secondItem="vzL-Rr-0FL" secondAttribute="trailing" id="Ixz-sH-jID"/>
+                                                    <constraint firstItem="fwD-XM-c7N" firstAttribute="top" secondItem="Z9z-KY-HQR" secondAttribute="bottom" constant="12" id="MKS-6K-rM7"/>
+                                                    <constraint firstItem="OiB-ku-RLx" firstAttribute="leading" secondItem="QIN-9Y-EHh" secondAttribute="leading" constant="27" id="MzQ-y5-9aa"/>
+                                                    <constraint firstItem="eAc-h8-QYV" firstAttribute="leading" secondItem="QIN-9Y-EHh" secondAttribute="leading" id="QET-L7-VZ0"/>
+                                                    <constraint firstItem="fwD-XM-c7N" firstAttribute="leading" secondItem="QIN-9Y-EHh" secondAttribute="leading" id="T6x-iy-EuD"/>
+                                                    <constraint firstAttribute="trailing" secondItem="eAc-h8-QYV" secondAttribute="trailing" id="VOe-0s-trD"/>
+                                                    <constraint firstAttribute="bottom" secondItem="fwD-XM-c7N" secondAttribute="bottom" id="X2E-22-ST2"/>
+                                                    <constraint firstItem="vzL-Rr-0FL" firstAttribute="bottom" secondItem="Z9z-KY-HQR" secondAttribute="bottom" constant="12" id="YYC-DO-ZUN"/>
+                                                    <constraint firstAttribute="trailing" secondItem="fwD-XM-c7N" secondAttribute="trailing" id="hrR-RX-kF4"/>
                                                     <constraint firstItem="OiB-ku-RLx" firstAttribute="top" secondItem="ewt-mt-ZJq" secondAttribute="bottom" constant="18" id="mFl-70-GwC"/>
+                                                    <constraint firstItem="eAc-h8-QYV" firstAttribute="bottom" secondItem="fwD-XM-c7N" secondAttribute="bottom" id="nE5-vI-sJt"/>
                                                     <constraint firstAttribute="trailing" secondItem="ewt-mt-ZJq" secondAttribute="trailing" constant="20" id="qBU-nW-Gp4"/>
                                                     <constraint firstItem="ewt-mt-ZJq" firstAttribute="leading" secondItem="QIN-9Y-EHh" secondAttribute="leading" constant="20" id="r9g-ag-xU0"/>
-                                                    <constraint firstAttribute="trailing" secondItem="OiB-ku-RLx" secondAttribute="trailing" constant="20" id="wbV-2O-X2w"/>
+                                                    <constraint firstItem="Z9z-KY-HQR" firstAttribute="top" secondItem="OiB-ku-RLx" secondAttribute="bottom" constant="23" id="taA-vB-hV2"/>
+                                                    <constraint firstAttribute="trailing" secondItem="OiB-ku-RLx" secondAttribute="trailing" constant="27" id="wbV-2O-X2w"/>
+                                                    <constraint firstItem="Z9z-KY-HQR" firstAttribute="leading" secondItem="QIN-9Y-EHh" secondAttribute="leading" constant="16" id="zcn-Cc-VzC"/>
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="G0x-IZ-Qmk" customClass="CollapsibleStackView" customModule="Habitica" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="130" width="375" height="68.5"/>
+                                                <rect key="frame" x="0.0" y="250" width="375" height="68.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Guild Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xfz-Bf-Aw7" customClass="CollapsibleTitle" customModule="Habitica" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="19.5"/>
@@ -2729,30 +2844,45 @@ Invite friends now to earn a Quest Scroll!</string>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="peL-ob-6EK" customClass="CollapsibleStackView" customModule="Habitica" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="228.5" width="375" height="68.5"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I4F-83-zKJ">
+                                                <rect key="frame" x="0.0" y="348.5" width="375" height="36"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="36" id="BPH-Oe-f9G"/>
+                                                </constraints>
+                                                <state key="normal" title="Guild Challenges"/>
+                                                <connections>
+                                                    <segue destination="BE2-xn-Wwl" kind="show" identifier="ChallengesSegue" id="BKi-xg-gxr"/>
+                                                </connections>
+                                            </button>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rRY-5Q-Ze3">
+                                                <rect key="frame" x="0.0" y="414.5" width="375" height="36"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Guild Information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hli-Tv-NdI" customClass="CollapsibleTitle" customModule="Habitica" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="19.5"/>
-                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="i6f-Vu-gSg">
-                                                        <rect key="frame" x="0.0" y="35.5" width="375" height="33"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <color key="textColor" red="0.40768876669999998" green="0.3832124174" blue="0.4558907747" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                    </textView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g8o-zg-Ucv">
+                                                        <rect key="frame" x="16" y="0.0" width="343" height="36"/>
+                                                        <color key="backgroundColor" red="0.95870476959999995" green="0.36744427680000002" blue="0.37960040569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <state key="normal" title="Leave Guild">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="6"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="leaveButtonTapped:" destination="ZmK-Mz-PPG" eventType="touchUpInside" id="gfc-YJ-4zs"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="identifier" value="groupDescription"/>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
-                                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </stackView>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="36" id="AMA-Ib-Qpe"/>
+                                                    <constraint firstItem="g8o-zg-Ucv" firstAttribute="leading" secondItem="rRY-5Q-Ze3" secondAttribute="leading" constant="16" id="RCL-of-GzO"/>
+                                                    <constraint firstAttribute="bottom" secondItem="g8o-zg-Ucv" secondAttribute="bottom" id="d0a-2w-YoH"/>
+                                                    <constraint firstItem="g8o-zg-Ucv" firstAttribute="top" secondItem="rRY-5Q-Ze3" secondAttribute="top" id="hFa-ls-9ti"/>
+                                                    <constraint firstAttribute="trailing" secondItem="g8o-zg-Ucv" secondAttribute="trailing" constant="16" id="vNe-25-8mL"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="height" priority="500" constant="200" id="uqu-9X-8qm"/>
@@ -2762,7 +2892,7 @@ Invite friends now to earn a Quest Scroll!</string>
                                 <color key="backgroundColor" red="0.97592383620000001" green="0.97666221860000002" blue="0.97603815790000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="hLy-t6-F84" firstAttribute="leading" secondItem="clS-8V-xVt" secondAttribute="leading" id="1Vr-0W-mSg"/>
-                                    <constraint firstAttribute="bottom" secondItem="hLy-t6-F84" secondAttribute="bottom" id="Imm-Mt-3OP"/>
+                                    <constraint firstAttribute="bottom" secondItem="hLy-t6-F84" secondAttribute="bottom" constant="16" id="Imm-Mt-3OP"/>
                                     <constraint firstAttribute="trailing" secondItem="hLy-t6-F84" secondAttribute="trailing" id="Pke-yu-6jF"/>
                                     <constraint firstItem="hLy-t6-F84" firstAttribute="width" secondItem="clS-8V-xVt" secondAttribute="width" id="csx-UX-67f"/>
                                     <constraint firstItem="hLy-t6-F84" firstAttribute="top" secondItem="clS-8V-xVt" secondAttribute="top" id="jtq-qy-9px"/>
@@ -2781,11 +2911,17 @@ Invite friends now to earn a Quest Scroll!</string>
                         <outlet property="gemIconView" destination="keB-dO-rLl" id="lwJ-IL-XMf"/>
                         <outlet property="groupDescriptionStackView" destination="G0x-IZ-Qmk" id="cFc-h0-W8N"/>
                         <outlet property="groupDescriptionTextView" destination="WAF-D1-XAL" id="3OA-Hp-TL7"/>
-                        <outlet property="groupInformationStackView" destination="peL-ob-6EK" id="ctp-cq-TZ4"/>
                         <outlet property="groupNameLabel" destination="ewt-mt-ZJq" id="hj6-oo-79N"/>
                         <outlet property="guildGemCountLabel" destination="e3Y-Jr-xC4" id="fcp-mI-aN7"/>
+                        <outlet property="guildLeaderAvatarView" destination="JuB-qY-9Ry" id="mHj-Xc-2N0"/>
+                        <outlet property="guildLeaderNameLabel" destination="dqf-HT-q0B" id="ftO-Vf-WKO"/>
                         <outlet property="guildMembersCrestIcon" destination="UNq-RH-gKz" id="omh-2y-q2y"/>
                         <outlet property="guildMembersLabel" destination="ZfZ-Mp-g8x" id="ALk-PO-RpS"/>
+                        <outlet property="inviteButton" destination="ftv-T1-K44" id="QJ4-da-56C"/>
+                        <outlet property="joinButton" destination="oXc-S6-Df9" id="E0K-ZV-Dkh"/>
+                        <outlet property="leaveButton" destination="g8o-zg-Ucv" id="qdw-oD-hRD"/>
+                        <outlet property="leaveButtonWrapper" destination="rRY-5Q-Ze3" id="fps-iS-ZKL"/>
+                        <segue destination="MTH-Re-wqo" kind="show" identifier="UserProfileSegue" id="RWA-7r-R8g"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RgQ-0L-zfY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2797,16 +2933,18 @@ Invite friends now to earn a Quest Scroll!</string>
         <image name="ChallengeGemIcon" width="38" height="45"/>
         <image name="MemberCountIcon" width="22" height="12"/>
         <image name="checkmark" width="10" height="8"/>
+        <image name="messages" width="24" height="24"/>
         <image name="pillGryphon" width="14" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="71z-UW-WBb"/>
-        <segue reference="Cwl-t5-j4W"/>
-        <segue reference="wNf-J0-D2P"/>
+        <segue reference="xLb-S3-ALp"/>
+        <segue reference="BKi-xg-gxr"/>
         <segue reference="9hs-wq-6bn"/>
         <segue reference="kns-o3-fej"/>
         <segue reference="2KU-R3-vSq"/>
-        <segue reference="Hfa-0k-B92"/>
+        <segue reference="RWA-7r-R8g"/>
+        <segue reference="yXa-uT-GhF"/>
         <segue reference="wif-V9-Mcy"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.6058621407" green="0.38462612029999999" blue="0.99835687880000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

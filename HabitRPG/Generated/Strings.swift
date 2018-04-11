@@ -7,6 +7,8 @@ import Foundation
 
 // swiftlint:disable explicit_type_interface identifier_name line_length nesting type_body_length type_name
 internal enum L10n {
+  /// Cancel
+  internal static let cancel = L10n.tr("Main", "cancel")
   /// Chat
   internal static let chat = L10n.tr("Main", "chat")
   /// Controls
@@ -57,6 +59,17 @@ internal enum L10n {
   internal static let weekly = L10n.tr("Main", "weekly")
   /// Yearly
   internal static let yearly = L10n.tr("Main", "yearly")
+
+  internal enum Guilds {
+    /// Keep challenges
+    internal static let keepChallenges = L10n.tr("Main", "guilds.keep_challenges")
+    /// Leave Challenges
+    internal static let leaveChallenges = L10n.tr("Main", "guilds.leave_challenges")
+    /// Do you want to leave the guild and keep or delete the challenges?
+    internal static let leaveGuildDescription = L10n.tr("Main", "guilds.leave_guild_description")
+    /// LeaveGuild?
+    internal static let leaveGuildTitle = L10n.tr("Main", "guilds.leave_guild_title")
+  }
 
   internal enum Menu {
     /// About

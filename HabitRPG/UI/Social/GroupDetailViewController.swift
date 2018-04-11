@@ -21,7 +21,6 @@ class GroupDetailViewController: HRPGUIViewController {
     @IBOutlet weak var groupNameLabel: UILabel!
     @IBOutlet weak var groupDescriptionStackView: CollapsibleStackView!
     @IBOutlet weak var groupDescriptionTextView: UITextView!
-    @IBOutlet weak var groupInformationStackView: CollapsibleStackView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,16 +28,10 @@ class GroupDetailViewController: HRPGUIViewController {
         let margins = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
         groupDescriptionStackView.layoutMargins = margins
         groupDescriptionStackView.isLayoutMarginsRelativeArrangement = true
-        groupInformationStackView.layoutMargins = margins
-        groupInformationStackView.isLayoutMarginsRelativeArrangement = true
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         
         if let groupID = self.groupID {
-            disposable.inner.add(socialRepository.getGroup(groupID: groupID).on(value: { group in
-                self.updateData(group: group)
+            disposable.inner.add(socialRepository.getGroup(groupID: groupID).skipNil().on(value: {[weak self] group in
+                self?.updateData(group: group)
             }).start())
         }
     }

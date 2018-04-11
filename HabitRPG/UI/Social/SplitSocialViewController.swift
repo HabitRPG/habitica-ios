@@ -20,8 +20,8 @@ class SplitSocialViewController: HRPGUIViewController, UIScrollViewDelegate, NSF
     
     @objc var groupID: String?
     
-    var detailViewController: GroupDetailViewController?
-    var chatViewController: GroupChatViewController?
+    weak var detailViewController: GroupDetailViewController?
+    weak var chatViewController: GroupChatViewController?
     
     private let segmentedWrapper = PaddedView()
     private let segmentedControl = UISegmentedControl(items: [L10n.details, L10n.chat])
@@ -35,9 +35,9 @@ class SplitSocialViewController: HRPGUIViewController, UIScrollViewDelegate, NSF
         super.viewDidLoad()
         showAsSplitView = traitCollection.horizontalSizeClass == .regular && traitCollection.verticalSizeClass == .regular
         
-        self.segmentedControl.selectedSegmentIndex = 0
-        self.segmentedControl.tintColor = UIColor.purple300()
-        self.segmentedControl.addTarget(self, action: #selector(SplitSocialViewController.switchView(_:)), for: .valueChanged)
+        segmentedControl.selectedSegmentIndex = 0
+        segmentedControl.tintColor = UIColor.purple300()
+        segmentedControl.addTarget(self, action: #selector(SplitSocialViewController.switchView(_:)), for: .valueChanged)
         segmentedControl.isHidden = false
         segmentedWrapper.containedView = segmentedControl
         topHeaderCoordinator.alternativeHeader = segmentedWrapper
@@ -45,7 +45,7 @@ class SplitSocialViewController: HRPGUIViewController, UIScrollViewDelegate, NSF
         
         scrollView.delegate = self
         
-        for childViewController in self.childViewControllers {
+        for childViewController in childViewControllers {
             if let viewController = childViewController as? GroupDetailViewController {
                 detailViewController = viewController
             }
@@ -54,12 +54,9 @@ class SplitSocialViewController: HRPGUIViewController, UIScrollViewDelegate, NSF
             }
         }
         
-        detailViewController?.groupID = groupID
-        chatViewController?.groupID = groupID
-        
         if let groupID = self.groupID {
-            disposable.inner.add(socialRepository.getGroup(groupID: groupID).on(value: { group in
-                self.set(group: group)
+            disposable.inner.add(socialRepository.getGroup(groupID: groupID).skipNil().on(value: {[weak self] group in
+                self?.set(group: group)
             }).start())
         }
     }
@@ -95,9 +92,9 @@ class SplitSocialViewController: HRPGUIViewController, UIScrollViewDelegate, NSF
     
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
         super.willTransition(to: newCollection, with: coordinator)
-        coordinator.animate(alongsideTransition: { (_) in
-            self.setupSplitView(newCollection)
-            self.scrollTo(page: self.segmentedControl.selectedSegmentIndex)
+        coordinator.animate(alongsideTransition: {[weak self] (_) in
+            self?.setupSplitView(newCollection)
+            self?.scrollTo(page: self?.segmentedControl.selectedSegmentIndex ?? 0)
         }, completion: nil)
     }
     
@@ -113,7 +110,7 @@ class SplitSocialViewController: HRPGUIViewController, UIScrollViewDelegate, NSF
             detailViewWidthConstraint = detailViewWidthConstraint.setMultiplier(multiplier: 1)
             chatViewWidthConstraint = chatViewWidthConstraint.setMultiplier(multiplier: 1)
         }
-        self.view.setNeedsLayout()
+        view.setNeedsLayout()
     }
     
     internal func set(group: GroupProtocol) {
@@ -122,7 +119,7 @@ class SplitSocialViewController: HRPGUIViewController, UIScrollViewDelegate, NSF
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let currentPage = getCurrentPage()
-        self.segmentedControl.selectedSegmentIndex = currentPage
+        segmentedControl.selectedSegmentIndex = currentPage
     }
 
     @objc
@@ -137,5 +134,13 @@ class SplitSocialViewController: HRPGUIViewController, UIScrollViewDelegate, NSF
     func scrollTo(page: Int, animated: Bool = true) {
         let point = CGPoint(x: scrollView.frame.size.width * CGFloat(page), y: 0)
         scrollView.setContentOffset(point, animated: animated)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let detailViewController = segue.destination as? GroupDetailViewController {
+            detailViewController.groupID = groupID
+        } else if let chatViewController  = segue.destination as? GroupChatViewController {
+            chatViewController.groupID = groupID
+        }
     }
 }

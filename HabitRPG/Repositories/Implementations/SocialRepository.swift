@@ -110,8 +110,18 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
         })
     }
     
-    public func getGroup(groupID: String) -> SignalProducer<GroupProtocol, ReactiveSwiftRealmError> {
+    public func getGroup(groupID: String, retrieveIfNotFound: Bool = false) -> SignalProducer<GroupProtocol?, NoError> {
         return localRepository.getGroup(groupID: groupID)
+            .flatMapError({ (_) -> SignalProducer<GroupProtocol?, NoError> in
+                return SignalProducer.empty
+            })
+            .flatMap(.concat, { (group) -> SignalProducer<GroupProtocol?, NoError> in
+                if retrieveIfNotFound {
+                    return SignalProducer(self.retrieveGroup(groupID: groupID))
+                } else {
+                    return SignalProducer(value: group)
+                }
+            })
     }
     
     public func getChatMessages(groupID: String) -> SignalProducer<ReactiveResults<[ChatMessageProtocol]>, ReactiveSwiftRealmError> {
@@ -126,5 +136,51 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
                 sink.sendCompleted()
             }
         }
+    }
+    
+    public func retrieveMember(userID: String) -> Signal<MemberProtocol?, NoError> {
+        let call = RetrieveMemberCall(userID: userID)
+        call.fire()
+        return call.objectSignal
+    }
+    
+    public func getMember(userID: String, retrieveIfNotFound: Bool = false) -> SignalProducer<MemberProtocol?, NoError> {
+        return localRepository.getMember(userID: userID)
+            .flatMapError({ (_) -> SignalProducer<MemberProtocol?, NoError> in
+                return SignalProducer.empty
+            })
+            .flatMap(.concat, { (member) -> SignalProducer<MemberProtocol?, NoError> in
+                if retrieveIfNotFound {
+                    return SignalProducer(self.retrieveMember(userID: userID))
+                } else {
+                    return SignalProducer(value: member)
+                }
+            })
+    }
+    
+    public func isUserGuildMember(groupID: String) -> SignalProducer<Bool, ReactiveSwiftRealmError> {
+        return localRepository.getGroupMembership(userID: AuthenticationManager.shared.currentUserId ?? "", groupID: groupID).map({ (membership) in
+            return membership != nil
+        })
+    }
+    
+    public func joinGroup(groupID: String) -> Signal<GroupProtocol?, NoError> {
+        let call = JoinGroupCall(groupID: groupID)
+        call.fire()
+        return call.objectSignal.on(value: { group in
+            if let userID = AuthenticationManager.shared.currentUserId {
+                self.localRepository.joinGroup(userID: userID, groupID: groupID, group: group)
+            }
+        })
+    }
+    
+    public func leaveGroup(groupID: String, leaveChallenges: Bool) -> Signal<GroupProtocol?, NoError> {
+        let call = LeaveGroupCall(groupID: groupID, leaveChallenges: leaveChallenges)
+        call.fire()
+        return call.objectSignal.on(value: { group in
+            if let userID = AuthenticationManager.shared.currentUserId {
+                self.localRepository.leaveGroup(userID: userID, groupID: groupID, group: group)
+            }
+        })
     }
 }

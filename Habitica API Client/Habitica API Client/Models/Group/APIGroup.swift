@@ -9,6 +9,10 @@
 import Foundation
 import Habitica_Models
 
+private struct LeaderObject: Decodable {
+    var id: String?
+}
+
 public class APIGroup: GroupProtocol, Decodable {
     public var id: String?
     public var name: String?
@@ -18,6 +22,7 @@ public class APIGroup: GroupProtocol, Decodable {
     public var memberCount: Int
     public var privacy: String?
     public var balance: Float
+    public var leaderID: String?
     public var quest: QuestStateProtocol?
     public var chat: [ChatMessageProtocol]
     
@@ -30,6 +35,7 @@ public class APIGroup: GroupProtocol, Decodable {
         case memberCount
         case privacy
         case balance
+        case leader
         case quest
         case chat
     }
@@ -44,6 +50,11 @@ public class APIGroup: GroupProtocol, Decodable {
         memberCount = (try? values.decode(Int.self, forKey: .memberCount)) ?? 0
         privacy = try? values.decode(String.self, forKey: .privacy)
         balance = (try? values.decode(Float.self, forKey: .balance)) ?? 0
+        leaderID = try? values.decode(String.self, forKey: .leader)
+        if leaderID == nil {
+            let leader = try? values.decode(LeaderObject.self, forKey: .leader)
+            leaderID = leader?.id
+        }
         quest = try? values.decode(APIQuestState.self, forKey: .quest)
         chat = (try? values.decode([APIChatMessage].self, forKey: .chat)) ?? []
     }
