@@ -9,7 +9,6 @@
 #import "HRPGCollectionViewController.h"
 #import "UIViewController+HRPGTopHeaderNavigationController.h"
 #import "Amplitude+HRPGHelpers.h"
-#import "Google/Analytics.h"
 #import "HRPGManager.h"
 #import "HRPGDeathView.h"
 #import "Habitica-Swift.h"
@@ -22,10 +21,6 @@
 - (void)viewDidLoad {
     self.topHeaderCoordinator = [[TopHeaderCoordinator alloc] initWithTopHeaderNavigationController:self.topHeaderNavigationController scrollView:self.collectionView];
     [super viewDidLoad];
-    
-    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker set:kGAIScreenName value:NSStringFromClass([self class])];
-    [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
     
     [[Amplitude instance] logNavigateEventForClass:NSStringFromClass([self class])];
     

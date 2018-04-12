@@ -7,7 +7,6 @@
 //
 
 #import "HRPGPetViewController.h"
-#import <pop/POP.h>
 #import "Egg.h"
 #import "HRPGFeedViewController.h"
 #import "HatchingPotion.h"
@@ -317,21 +316,6 @@
         if (pet.trained && [pet.trained integerValue] != -1 && !pet.asMount) {
             progressView.hidden = NO;
             if (animated) {
-                POPBasicAnimation *scaleAnim = [POPBasicAnimation easeInEaseOutAnimation];
-                scaleAnim.property = [POPAnimatableProperty propertyWithName:kPOPViewScaleXY];
-                scaleAnim.toValue = [NSValue valueWithCGSize:CGSizeMake(1.1, 1.3)];
-                scaleAnim.duration = 0.2;
-                scaleAnim.completionBlock = ^(POPAnimation *anim, BOOL completed) {
-                    POPSpringAnimation *unScaleAnim =
-                        [POPSpringAnimation animationWithPropertyNamed:kPOPViewScaleXY];
-                    unScaleAnim.toValue = [NSValue valueWithCGSize:CGSizeMake(1.0, 1.0)];
-                    unScaleAnim.springBounciness = 13;
-                    unScaleAnim.springSpeed = 3;
-                    [progressView pop_addAnimation:unScaleAnim forKey:@"scaleAnimation"];
-                };
-
-                [progressView pop_addAnimation:scaleAnim forKey:@"scaleAnimation"];
-
                 [UIView animateWithDuration:0.3
                                  animations:^() {
                                      progressView.progress = [pet.trained floatValue] / 50;

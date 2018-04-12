@@ -7,28 +7,14 @@
 //
 
 import Foundation
-import PDKeychainBindingsController
 import KeychainAccess
 import Crashlytics
 import Amplitude_iOS
-import Google
 import Habitica_API_Client
 
 class AuthenticationManager: NSObject {
     
     @objc static let shared = AuthenticationManager()
-
-    @objc
-    func migrateAuthentication() {
-        let defaults = UserDefaults.standard
-        guard let oldKeychain = PDKeychainBindingsController.shared() else {
-            return
-        }
-        if defaults.string(forKey: "currentUserId") == nil, let userId = oldKeychain.string(forKey: "id") {
-            defaults.set(userId, forKey: "currentUserId")
-            keychain[userId] = oldKeychain.string(forKey: "key") ?? ""
-        }
-    }
     
     private var keychain: Keychain {
         return Keychain(server: "https://habitica.com", protocolType: .https)
@@ -91,12 +77,6 @@ class AuthenticationManager: NSObject {
     func clearAuthenticationForAllUsers() {
         currentUserId = nil
         currentUserKey = nil
-        
-        guard let oldKeychain = PDKeychainBindingsController.shared() else {
-            return
-        }
-        oldKeychain.store(nil, forKey: "id")
-        oldKeychain.store(nil, forKey: "key")
     }
     
     @objc

@@ -23,7 +23,6 @@
 #import "HRPGTypingLabel.h"
 #import "HRPGHoledView.h"
 #import "HRPGHintView.h"
-#import <Google/Analytics.h>
 #import "UIViewController+HRPGTopHeaderNavigationController.h"
 #import "HRPGDeathView.h"
 #import "Amplitude+HRPGHelpers.h"

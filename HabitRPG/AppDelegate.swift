@@ -44,13 +44,7 @@ class HabiticaAppDelegate: NSObject {
     }
     
     @objc
-    func setupAnalytics() {
-        guard let gai = GAI.sharedInstance() else {
-            assert(false, "Google Analytics not configured correctly")
-            return
-        }
-        gai.trackUncaughtExceptions = true
-        
+    func setupAnalytics() {        
         let keys = HabiticaKeys()
         
         Amplitude.instance().initializeApiKey(keys.amplitudeApiKey)

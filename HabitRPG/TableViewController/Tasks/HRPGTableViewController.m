@@ -12,7 +12,6 @@
 #import "HRPGSearchDataManager.h"
 #import "HRPGTabBarController.h"
 #import "NSString+Emoji.h"
-#import <POP/POP.h>
 #import "UIColor+Habitica.h"
 #import "Habitica-Swift.h"
 
@@ -210,31 +209,6 @@ NSIndexPath  *sourceIndexPath = nil;
             
             UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:sourceIndexPath];
             cell.alpha = 0.0;
-            
-            [snapshot pop_removeAllAnimations];
-            POPSpringAnimation *centerAnim = [POPSpringAnimation animationWithPropertyNamed:kPOPViewCenter];
-            centerAnim.toValue = [NSValue valueWithCGPoint:cell.center];
-            centerAnim.springSpeed = 10;
-            centerAnim.springBounciness = 6;
-            POPSpringAnimation *scaleAnim = [POPSpringAnimation animationWithPropertyNamed:kPOPViewScaleXY];
-            scaleAnim.toValue = [NSValue valueWithCGSize:CGSizeMake(1.0, 1.0)];
-            scaleAnim.springBounciness = 6;
-            scaleAnim.springSpeed = 10;
-            POPSpringAnimation *shadowAnim = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerShadowOpacity];
-            shadowAnim.toValue = @(0.0);
-            
-            centerAnim.completionBlock = ^(POPAnimation *anim, BOOL finished) {
-                cell.alpha = 1.0;
-                cell.hidden = NO;
-                sourceIndexPath = nil;
-                [snapshot removeFromSuperview];
-                snapshot = nil;
-                self.autoScrollSpeed = 0;
-            };
-            
-            [snapshot pop_addAnimation:centerAnim forKey:kPOPViewCenter];
-            [snapshot pop_addAnimation:scaleAnim forKey:kPOPViewScaleXY];
-            [snapshot.layer pop_addAnimation:shadowAnim forKey:kPOPLayerShadowOpacity];
             
             [UIView animateWithDuration:2.0 delay:0.0 usingSpringWithDamping:0.5 initialSpringVelocity:1.0 options:0 animations:^{
                 

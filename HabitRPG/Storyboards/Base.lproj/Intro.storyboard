@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="upQ-EI-E3w">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="upQ-EI-E3w">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -337,9 +337,7 @@
                         <outlet property="passwordRepeatField" destination="U2x-qx-w87" id="1Vy-ry-F6M"/>
                         <outlet property="registerBeginButton" destination="Ohf-iu-Phe" id="POZ-1N-6gG"/>
                         <outlet property="usernameField" destination="u44-DM-dLI" id="qp1-8m-KY5"/>
-                        <segue destination="seU-hw-U1M" kind="show" identifier="OauthWebViewSegue" id="X3R-vL-F90">
-                            <nil key="action"/>
-                        </segue>
+                        <segue destination="seU-hw-U1M" kind="show" identifier="OauthWebViewSegue" id="X3R-vL-F90"/>
                         <segue destination="qul-kf-4Gi" kind="presentation" identifier="MainSegue" id="aKA-6e-Im9"/>
                         <segue destination="v9W-i7-og5" kind="presentation" identifier="SetupSegue" id="5Hb-dX-OsZ"/>
                     </connections>

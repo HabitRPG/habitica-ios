@@ -7,7 +7,6 @@
 //
 
 #import "HRPGBaseViewController.h"
-#import <Google/Analytics.h>
 #import "Amplitude+HRPGHelpers.h"
 #import "HRPGDeathView.h"
 #import "HRPGNavigationController.h"
@@ -24,10 +23,6 @@
 - (void)viewDidLoad {
     self.topHeaderCoordinator = [[TopHeaderCoordinator alloc] initWithTopHeaderNavigationController:self.topHeaderNavigationController scrollView:self.tableView];
     [super viewDidLoad];
-
-    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker set:kGAIScreenName value:[self getScreenName]];
-    [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
 
     [[Amplitude instance] logNavigateEventForClass:NSStringFromClass([self class])];
 

@@ -10,7 +10,6 @@
 #import <Crashlytics/Crashlytics.h>
 #import "HRPGTaskResponse.h"
 #import "HRPGLoginData.h"
-#import <Google/Analytics.h>
 #import "Gear.h"
 #import "YYWebImage.h"
 #import "Amplitude.h"
@@ -2482,8 +2481,6 @@ static dispatch_once_t onceToken;
     HabiticaKeys *keys = [[HabiticaKeys alloc] init];
     [[RKObjectManager sharedManager].HTTPClient setDefaultHeader:@"Authorization"
                                                            value:[@"Basic " stringByAppendingString:[keys stagingKey]]];
-    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker set:@"&uid" value:self.user.id];
     [[Amplitude instance] setUserId:currentUser];
     [[Crashlytics sharedInstance] setUserIdentifier:currentUser];
     [[Crashlytics sharedInstance] setUserName:currentUser];
@@ -3166,12 +3163,6 @@ static dispatch_once_t onceToken;
 
     [self.networkIndicatorController beginNetworking];
 
-    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"behaviour"
-                                                          action:@"score task"
-                                                           label:nil
-                                                           value:nil] build]];
-
     [[RKObjectManager sharedManager] postObject:nil
         path:[NSString stringWithFormat:@"tasks/%@/score/%@", task.id, withDirection]
         parameters:nil
@@ -3240,12 +3231,6 @@ static dispatch_once_t onceToken;
             }
 
             if (taskResponse.dropKey) {
-                id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-                [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"behaviour"
-                                                                      action:@"acquire item"
-                                                                       label:nil
-                                                                       value:nil] build]];
-
                 NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
                 // Edit the entity name as appropriate.
                 NSEntityDescription *entity =
@@ -4898,12 +4883,6 @@ static dispatch_once_t onceToken;
              onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
 
-    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"behaviour"
-                                                          action:@"purchase gems"
-                                                           label:nil
-                                                           value:nil] build]];
-
     [[RKObjectManager sharedManager] postObject:nil
         path:@"iap/ios/verify"
         parameters:receipt
@@ -4944,12 +4923,6 @@ static dispatch_once_t onceToken;
 
 -(void)subscribe:(NSString *)sku withReceipt:(NSString *)receipt onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock {
     [self.networkIndicatorController beginNetworking];
-    
-    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"behaviour"
-                                                          action:@"subscribe"
-                                                           label:nil
-                                                           value:nil] build]];
     
     [[RKObjectManager sharedManager] postObject:nil
                                            path:@"iap/ios/subscribe"

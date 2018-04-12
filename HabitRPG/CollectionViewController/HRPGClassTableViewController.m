@@ -7,7 +7,6 @@
 //
 
 #import "HRPGClassTableViewController.h"
-#import <Google/Analytics.h>
 #import "Amplitude.h"
 #import "HRPGAppDelegate.h"
 #import "HRPGWebViewController.h"
@@ -30,10 +29,6 @@
     [super viewDidLoad];
     self.tutorialIdentifier = @"classes";
     self.classWasUnset = NO;
-
-    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker set:kGAIScreenName value:NSStringFromClass([self class])];
-    [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
 
     NSMutableDictionary *eventProperties = [NSMutableDictionary dictionary];
     [eventProperties setValue:@"navigate" forKey:@"eventAction"];

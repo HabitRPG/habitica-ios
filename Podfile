@@ -24,7 +24,6 @@ plugin 'cocoapods-keys', {
 
 def reactive_pods
   pod 'ReactiveCocoa', '~> 7'
-  pod 'ReactiveObjCBridge'
 end
 
 def test_pods
@@ -35,21 +34,16 @@ end
 
 target 'Habitica' do
   project 'Habitica.xcodeproj'
-  # RestKit 0.27, this commit fixes some iOS10 issues
-  pod 'RestKit'
-  pod 'PDKeychainBindingsController', '~> 0.0.1'
   pod 'KeychainAccess'
   pod 'VTAcknowledgementsViewController'
+  pod 'RestKit'
   pod 'YYWebImage', '~> 1.0.5'
   pod 'DateTools'
   pod 'NSString+Emoji'
   pod 'XLForm'
   pod 'FLEX', '~> 2.0', :configurations => ['Debug']
-  pod 'pop'
   pod 'MRProgress'
-  pod 'Google/Analytics'
   pod 'KLCPopup'
-  pod 'EAIntroView'
   pod 'Amplitude-iOS', '~> 4.0.4'
   pod 'Masonry'
   pod "SlackTextViewController"

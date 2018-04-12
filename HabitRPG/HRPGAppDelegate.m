@@ -11,7 +11,6 @@
 #import <Crashlytics/Crashlytics.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <Fabric/Fabric.h>
-#import <Google/Analytics.h>
 #import "Amplitude.h"
 #import "HRPGMaintenanceViewController.h"
 #import "HRPGTabBarController.h"
@@ -37,7 +36,6 @@
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.swiftAppDelegate = [[HabiticaAppDelegate alloc] init];
     
-    [[AuthenticationManager shared] migrateAuthentication];
     [self.swiftAppDelegate setupLogging];
     [self.swiftAppDelegate setupAnalytics];
     [self.swiftAppDelegate setupPopups];
