@@ -12,11 +12,10 @@
 
 + (void)shareItems:(NSArray *)items
 withPresentingViewController:(UIViewController *)presentingViewController
-    withSourceView:(UIView *)sourceView{
+    withSourceView:(UIView * _Nullable )sourceView{
     UIActivityViewController *activityViewController =
     [[UIActivityViewController alloc] initWithActivityItems:items applicationActivities:nil];
-    if ( [activityViewController respondsToSelector:@selector(popoverPresentationController)] ) {
-        // iOS8
+    if ([activityViewController respondsToSelector:@selector(popoverPresentationController)]) {
         if (sourceView) {
             activityViewController.popoverPresentationController.sourceView = sourceView;
         } else {

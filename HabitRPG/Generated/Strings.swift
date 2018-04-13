@@ -11,6 +11,8 @@ internal enum L10n {
   internal static let cancel = L10n.tr("Main", "cancel")
   /// Chat
   internal static let chat = L10n.tr("Main", "chat")
+  /// Close
+  internal static let close = L10n.tr("Main", "close")
   /// Controls
   internal static let controls = L10n.tr("Main", "controls")
   /// Create
@@ -45,6 +47,8 @@ internal enum L10n {
   internal static let myGuilds = L10n.tr("Main", "my_guilds")
   /// Notes
   internal static let notes = L10n.tr("Main", "notes")
+  /// OK
+  internal static let ok = L10n.tr("Main", "ok")
   /// Quests
   internal static let quests = L10n.tr("Main", "quests")
   /// Reset Justins Tips
@@ -65,6 +69,8 @@ internal enum L10n {
   internal static func sell(_ p1: Int) -> String {
     return L10n.tr("Main", "sell", p1)
   }
+  /// Share
+  internal static let share = L10n.tr("Main", "share")
   /// Sync Error
   internal static let syncError = L10n.tr("Main", "sync_error")
   /// There was an error syncing some changes.
@@ -87,6 +93,15 @@ internal enum L10n {
     internal static let leaveGuildDescription = L10n.tr("Main", "guilds.leave_guild_description")
     /// LeaveGuild?
     internal static let leaveGuildTitle = L10n.tr("Main", "guilds.leave_guild_title")
+  }
+
+  internal enum Inventory {
+    /// You hatched a new pet!
+    internal static let hatched = L10n.tr("Main", "inventory.hatched")
+    /// I just hatched a %@ %@ pet in Habitica by completing my real-life tasks!
+    internal static func hatchedSharing(_ p1: String, _ p2: String) -> String {
+      return L10n.tr("Main", "inventory.hatchedSharing", p1, p2)
+    }
   }
 
   internal enum Menu {

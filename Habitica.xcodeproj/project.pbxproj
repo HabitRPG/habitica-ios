@@ -91,6 +91,7 @@
 		293BB4A31FD07603003B6F4F /* StatsSliderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 293BB4A21FD07603003B6F4F /* StatsSliderView.xib */; };
 		293BB4A51FD078EC003B6F4F /* StatsSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293BB4A41FD078EC003B6F4F /* StatsSliderView.swift */; };
 		293BB4A91FD0806C003B6F4F /* BulkStatsAllocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293BB4A81FD0806C003B6F4F /* BulkStatsAllocationViewController.swift */; };
+		294973D2208118C100F02AC3 /* ImageOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294973D1208118C100F02AC3 /* ImageOverlayView.swift */; };
 		294EB59D1FA0A7E4006083BD /* FixCharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294EB59C1FA0A7E4006083BD /* FixCharacterViewController.swift */; };
 		294FD5692064135500EABCC9 /* HabitControlsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294FD5682064135500EABCC9 /* HabitControlsRow.swift */; };
 		294FD56B20641B2F00EABCC9 /* HabitControlsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 294FD56A20641B2F00EABCC9 /* HabitControlsCell.xib */; };
@@ -637,6 +638,7 @@
 		293BB4A21FD07603003B6F4F /* StatsSliderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatsSliderView.xib; sourceTree = "<group>"; };
 		293BB4A41FD078EC003B6F4F /* StatsSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsSliderView.swift; sourceTree = "<group>"; };
 		293BB4A81FD0806C003B6F4F /* BulkStatsAllocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulkStatsAllocationViewController.swift; sourceTree = "<group>"; };
+		294973D1208118C100F02AC3 /* ImageOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageOverlayView.swift; sourceTree = "<group>"; };
 		294EB59C1FA0A7E4006083BD /* FixCharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixCharacterViewController.swift; sourceTree = "<group>"; };
 		294FD5682064135500EABCC9 /* HabitControlsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitControlsRow.swift; sourceTree = "<group>"; };
 		294FD56A20641B2F00EABCC9 /* HabitControlsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HabitControlsCell.xib; sourceTree = "<group>"; };
@@ -2284,6 +2286,7 @@
 				D98F5DD01C6CB4BE0035CBEC /* HRPGFlagInformationOverlayView.xib */,
 				D9479605196DF4B6002CB34C /* HRPGImageOverlayView.h */,
 				D9479606196DF4B6002CB34C /* HRPGImageOverlayView.m */,
+				294973D1208118C100F02AC3 /* ImageOverlayView.swift */,
 				D9E9E0C71CCE64A3006D94A2 /* HRPGImageOverlayView.xib */,
 				D9BA33D21AB5E5820028AFEC /* HRPGLabeledProgressBar.h */,
 				D9BA33D31AB5E5820028AFEC /* HRPGLabeledProgressBar.m */,
@@ -3606,6 +3609,7 @@
 				293BB4A91FD0806C003B6F4F /* BulkStatsAllocationViewController.swift in Sources */,
 				292DEE78204E1FFD0086D5F7 /* CheckboxView.swift in Sources */,
 				290B624A2073C37A007287C4 /* SettingsViewController.swift in Sources */,
+				294973D2208118C100F02AC3 /* ImageOverlayView.swift in Sources */,
 				293BB49A1FCD7DC0003B6F4F /* StatsView.swift in Sources */,
 				49005B7C1F18371F004830D9 /* HRPGShopUserHeaderView.swift in Sources */,
 				D9CE90401E4CAE6700702578 /* SubscriptionPlan+CoreDataClass.m in Sources */,

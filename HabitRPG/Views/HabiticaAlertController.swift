@@ -115,8 +115,8 @@ class HabiticaAlertController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureTitleView()
-        configureMessageView()
         configureContentView()
+        configureMessageView()
         configureCloseButton()
         configureButtons()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
@@ -235,7 +235,7 @@ class HabiticaAlertController: UIViewController {
         }
         label.numberOfLines = 0
         label.textAlignment = .center
-        contentView = label
+        containerView.addArrangedSubview(label)
     }
     
     private func configureContentView() {
@@ -342,16 +342,16 @@ extension HabiticaAlertController {
     
     @objc
     func addCancelAction(handler: ((UIButton) -> Void)? = nil) {
-        self.addAction(title: NSLocalizedString("Cancel", comment: ""), handler: handler)
+        self.addAction(title: L10n.cancel, handler: handler)
     }
     
     @objc
     func addCloseAction(handler: ((UIButton) -> Void)? = nil) {
-        self.addAction(title: NSLocalizedString("Close", comment: ""), handler: handler)
+        self.addAction(title: L10n.close, handler: handler)
     }
     
     @objc
     func addOkAction(handler: ((UIButton) -> Void)? = nil) {
-        self.addAction(title: NSLocalizedString("OK", comment: ""), handler: handler)
+        self.addAction(title: L10n.ok, handler: handler)
     }
 }

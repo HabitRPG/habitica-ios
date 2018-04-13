@@ -92,6 +92,12 @@
 		29323E6A2056BC2A00AC6D6F /* RetrieveUserCallSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E692056BC2A00AC6D6F /* RetrieveUserCallSpec.swift */; };
 		29323E6C2056BCB400AC6D6F /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = 29323E6B2056BCB400AC6D6F /* user.json */; };
 		29323E6E2056C0E900AC6D6F /* content.json in Resources */ = {isa = PBXBuildFile; fileRef = 29323E6D2056C0E900AC6D6F /* content.json */; };
+		294973C62080F92400F02AC3 /* SellItemCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294973C52080F92400F02AC3 /* SellItemCall.swift */; };
+		294973C82080F98600F02AC3 /* HatchPetCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294973C72080F98600F02AC3 /* HatchPetCall.swift */; };
+		294973CA2080F9F600F02AC3 /* EquipGearCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294973C92080F9F600F02AC3 /* EquipGearCall.swift */; };
+		294973CC2080FA9400F02AC3 /* ReviveCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294973CB2080FA9400F02AC3 /* ReviveCall.swift */; };
+		294973CE2080FAD500F02AC3 /* OpenMysteryItemCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294973CD2080FAD500F02AC3 /* OpenMysteryItemCall.swift */; };
+		294973D02081039300F02AC3 /* InviteToQuestCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294973CF2081039300F02AC3 /* InviteToQuestCall.swift */; };
 		295610E22056C3AC00D9711A /* RetrieveContentCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295610E12056C3AC00D9711A /* RetrieveContentCall.swift */; };
 		295610E42056C3CA00D9711A /* RetrieveContentCallSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295610E32056C3CA00D9711A /* RetrieveContentCallSpec.swift */; };
 		295610EB2056C6F600D9711A /* APIContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295610EA2056C6F600D9711A /* APIContent.swift */; };
@@ -209,6 +215,12 @@
 		29323E692056BC2A00AC6D6F /* RetrieveUserCallSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveUserCallSpec.swift; sourceTree = "<group>"; };
 		29323E6B2056BCB400AC6D6F /* user.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = user.json; sourceTree = "<group>"; };
 		29323E6D2056C0E900AC6D6F /* content.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = content.json; sourceTree = "<group>"; };
+		294973C52080F92400F02AC3 /* SellItemCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellItemCall.swift; sourceTree = "<group>"; };
+		294973C72080F98600F02AC3 /* HatchPetCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HatchPetCall.swift; sourceTree = "<group>"; };
+		294973C92080F9F600F02AC3 /* EquipGearCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipGearCall.swift; sourceTree = "<group>"; };
+		294973CB2080FA9400F02AC3 /* ReviveCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviveCall.swift; sourceTree = "<group>"; };
+		294973CD2080FAD500F02AC3 /* OpenMysteryItemCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenMysteryItemCall.swift; sourceTree = "<group>"; };
+		294973CF2081039300F02AC3 /* InviteToQuestCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteToQuestCall.swift; sourceTree = "<group>"; };
 		295610E12056C3AC00D9711A /* RetrieveContentCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveContentCall.swift; sourceTree = "<group>"; };
 		295610E32056C3CA00D9711A /* RetrieveContentCallSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveContentCallSpec.swift; sourceTree = "<group>"; };
 		295610EA2056C6F600D9711A /* APIContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIContent.swift; sourceTree = "<group>"; };
@@ -353,6 +365,7 @@
 				292F965A206E2AE300804151 /* RetrieveChatCall.swift */,
 				290B6292207E3E24007287C4 /* JoinGroupCall.swift */,
 				290B6294207E3E6C007287C4 /* LeaveGroupCall.swift */,
+				294973CF2081039300F02AC3 /* InviteToQuestCall.swift */,
 			);
 			path = Group;
 			sourceTree = "<group>";
@@ -432,6 +445,7 @@
 				290B627A207BA9A1007287C4 /* LocalRegisterCall.swift */,
 				290B627C207BA9D4007287C4 /* SocialLoginCall.swift */,
 				290B627E207BAA23007287C4 /* SleepCall.swift */,
+				294973CB2080FA9400F02AC3 /* ReviveCall.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -451,6 +465,17 @@
 				29323E692056BC2A00AC6D6F /* RetrieveUserCallSpec.swift */,
 			);
 			path = User;
+			sourceTree = "<group>";
+		};
+		294973C42080F91300F02AC3 /* Inventory */ = {
+			isa = PBXGroup;
+			children = (
+				294973C52080F92400F02AC3 /* SellItemCall.swift */,
+				294973C92080F9F600F02AC3 /* EquipGearCall.swift */,
+				294973C72080F98600F02AC3 /* HatchPetCall.swift */,
+				294973CD2080FAD500F02AC3 /* OpenMysteryItemCall.swift */,
+			);
+			path = Inventory;
 			sourceTree = "<group>";
 		};
 		295610DF2056C39A00D9711A /* Content */ = {
@@ -497,6 +522,7 @@
 				290C3043206D44580066AF5B /* Group */,
 				295610E02056C3A000D9711A /* Content */,
 				29323E1320504F1A00AC6D6F /* User */,
+				294973C42080F91300F02AC3 /* Inventory */,
 				292DEE46204D9D9E0086D5F7 /* Base */,
 				292DEE47204D9DA20086D5F7 /* Tasks */,
 				29B586F5204D92CF00301955 /* Habitica_API_Client.h */,
@@ -802,6 +828,7 @@
 				295611092056DE9F00D9711A /* APIQuestBoss.swift in Sources */,
 				292F9664206E4F5500804151 /* LikeChatMessageCall.swift in Sources */,
 				295610EF2056C7F700D9711A /* APIFood.swift in Sources */,
+				294973CE2080FAD500F02AC3 /* OpenMysteryItemCall.swift in Sources */,
 				29323E532052F7A600AC6D6F /* APIUserGear.swift in Sources */,
 				290B62542073D957007287C4 /* APIPushNotifications.swift in Sources */,
 				295610EB2056C6F600D9711A /* APIContent.swift in Sources */,
@@ -817,10 +844,12 @@
 				29323E37205212C400AC6D6F /* APIFlags.swift in Sources */,
 				295610F72056CA6900D9711A /* APIEgg.swift in Sources */,
 				290B6273207BA7D9007287C4 /* UpdateUsernameCall.swift in Sources */,
+				294973CA2080F9F600F02AC3 /* EquipGearCall.swift in Sources */,
 				2902797F20581CF0006DACB9 /* AllocateAttributePointCall.swift in Sources */,
 				292F9668206E4FBD00804151 /* DeleteChatMessageCall.swift in Sources */,
 				292DEE82204E411C0086D5F7 /* APIChecklistItem.swift in Sources */,
 				295610FD2056CC5D00D9711A /* APIGear.swift in Sources */,
+				294973C82080F98600F02AC3 /* HatchPetCall.swift in Sources */,
 				29323E39205212E400AC6D6F /* APIPreferences.swift in Sources */,
 				290B627F207BAA23007287C4 /* SleepCall.swift in Sources */,
 				290B6265207B978F007287C4 /* APIAuthentication.swift in Sources */,
@@ -832,6 +861,7 @@
 				292DEE4F204DA3870086D5F7 /* RetrieveTasksCall.swift in Sources */,
 				290B6271207BA765007287C4 /* UpdateEmailCall.swift in Sources */,
 				290B6261207B959E007287C4 /* APIAuthenticationTimestamps.swift in Sources */,
+				294973C62080F92400F02AC3 /* SellItemCall.swift in Sources */,
 				292F9666206E4F9F00804151 /* FlagChatMessageCall.swift in Sources */,
 				292DEEA9204F71290086D5F7 /* ScoreTaskCall.swift in Sources */,
 				292DEE95204F4A510086D5F7 /* ResponseObjectCall.swift in Sources */,
@@ -841,10 +871,12 @@
 				2902795E2057E858006DACB9 /* APIFAQEntry.swift in Sources */,
 				292DEE4B204DA1220086D5F7 /* NetworkAuthenticationManager.swift in Sources */,
 				290B62522073D91C007287C4 /* APIInbox.swift in Sources */,
+				294973CC2080FA9400F02AC3 /* ReviveCall.swift in Sources */,
 				29323E23205099FF00AC6D6F /* HabiticaResponseCall.swift in Sources */,
 				292DEE7E204E37670086D5F7 /* APITag.swift in Sources */,
 				290B6293207E3E24007287C4 /* JoinGroupCall.swift in Sources */,
 				290B6279207BA8C3007287C4 /* LocalLoginCall.swift in Sources */,
+				294973D02081039300F02AC3 /* InviteToQuestCall.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

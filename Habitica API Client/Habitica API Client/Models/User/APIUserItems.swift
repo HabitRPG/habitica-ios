@@ -35,7 +35,7 @@ class APIUserItems: UserItemsProtocol, Decodable {
         currentMount = try? values.decode(String.self, forKey: .currentMount)
         let questsDict = try?values.decode([String: Int].self, forKey: .ownedQuests)
         ownedQuests = (questsDict?.map({ (key, numberOwned) -> OwnedItemProtocol in
-            return APIOwnedItem(key: key, numberOwned: numberOwned, itemType: ItemType.quest.rawValue)
+            return APIOwnedItem(key: key, numberOwned: numberOwned, itemType: ItemType.quests.rawValue)
         })) ?? []
         let foodDict = try?values.decode([String: Int].self, forKey: .ownedFood)
         ownedFood = (foodDict?.map({ (key, numberOwned) -> OwnedItemProtocol in
@@ -43,11 +43,11 @@ class APIUserItems: UserItemsProtocol, Decodable {
         })) ?? []
         let hatchingPotionsDict = try?values.decode([String: Int].self, forKey: .ownedHatchingPotions)
         ownedHatchingPotions = (hatchingPotionsDict?.map({ (key, numberOwned) -> OwnedItemProtocol in
-            return APIOwnedItem(key: key, numberOwned: numberOwned, itemType: ItemType.hatchingPotion.rawValue)
+            return APIOwnedItem(key: key, numberOwned: numberOwned, itemType: ItemType.hatchingPotions.rawValue)
         })) ?? []
         let eggsDict = try?values.decode([String: Int].self, forKey: .ownedEggs)
         ownedEggs = (eggsDict?.map({ (key, numberOwned) -> OwnedItemProtocol in
-            return APIOwnedItem(key: key, numberOwned: numberOwned, itemType: ItemType.egg.rawValue)
+            return APIOwnedItem(key: key, numberOwned: numberOwned, itemType: ItemType.eggs.rawValue)
         })) ?? []
     }
 }

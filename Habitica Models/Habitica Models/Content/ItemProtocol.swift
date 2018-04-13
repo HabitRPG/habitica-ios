@@ -9,10 +9,10 @@
 import Foundation
 
 public enum ItemType: String {
-    case egg
+    case eggs
     case food
-    case hatchingPotion
-    case quest
+    case hatchingPotions
+    case quests
 }
 
 @objc
@@ -26,13 +26,13 @@ public protocol ItemProtocol {
 
 public extension ItemProtocol {
     var imageName: String {
-        if itemType == ItemType.egg.rawValue {
+        if itemType == ItemType.eggs.rawValue {
             return "Pet_Egg_\(key ?? "")"
         } else if itemType == ItemType.food.rawValue {
             return "Pet_Food_\(key ?? "")"
-        } else if itemType == ItemType.hatchingPotion.rawValue {
+        } else if itemType == ItemType.hatchingPotions.rawValue {
             return "Pet_HatchingPotion_\(key ?? "")"
-        } else if itemType == ItemType.quest.rawValue {
+        } else if itemType == ItemType.quests.rawValue {
             return "inventory_quest_scroll_\(key ?? "")"
         }
         return ""

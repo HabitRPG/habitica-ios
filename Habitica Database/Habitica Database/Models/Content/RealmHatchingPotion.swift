@@ -18,7 +18,7 @@ class RealmHatchingPotion: RealmItem, HatchingPotionProtocol {
         self.init(item: hatchingPotion)
         premium = hatchingPotion.premium
         limited = hatchingPotion.limited
-        itemType = ItemType.hatchingPotion.rawValue
+        itemType = ItemType.hatchingPotions.rawValue
     }
     
 }

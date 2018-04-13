@@ -17,6 +17,29 @@ class ItemsViewDataSource: BaseReactiveTableViewDataSource<ItemProtocol> {
     
     private var ownedItems = [String: Int]()
     
+    var hatchingItem: ItemProtocol?
+    var isHatching = false {
+        didSet {
+            if isHatching {
+                if hatchingItem?.itemType == ItemType.eggs.rawValue {
+                    sections[0].isHidden = true
+                    sections[2].isHidden = false
+                } else if hatchingItem?.itemType == ItemType.hatchingPotions.rawValue {
+                    sections[0].isHidden = false
+                    sections[2].isHidden = true
+                }
+                sections[1].isHidden = true
+                sections[3].isHidden = true
+            } else {
+                sections[0].isHidden = false
+                sections[1].isHidden = false
+                sections[2].isHidden = false
+                sections[3].isHidden = false
+            }
+            self.tableView?.reloadData()
+        }
+    }
+    
     override init() {
         super.init()
         sections.append(ItemSection<ItemProtocol>(title: L10n.eggs))
@@ -51,7 +74,8 @@ class ItemsViewDataSource: BaseReactiveTableViewDataSource<ItemProtocol> {
                 self.sections[3].items = quests.value
                 self.notify(changes: quests.changes, section: 3)
             })
-            .start())
+            .start()
+        )
     }
     
     deinit {

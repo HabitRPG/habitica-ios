@@ -57,3 +57,4 @@
 #import "HRPGAboutViewController.h"
 #import "HRPGShopOverviewViewController.h"
 #import "HRPGSpellViewController.h"
+#import "HRPGSharingManager.h"

@@ -45,13 +45,13 @@ public class APIUser: UserProtocol, Decodable {
     public required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         id = try? values.decode(String.self, forKey: .id)
-        stats = (try! values.decode(APIStats.self, forKey: .stats))
-        flags = (try! values.decode(APIFlags.self, forKey: .flags))
-        preferences = (try! values.decode(APIPreferences.self, forKey: .preferences))
-        profile = (try! values.decode(APIProfile.self, forKey: .profile))
-        contributor = (try! values.decode(APIContributor.self, forKey: .contributor))
-        items = (try! values.decode(APIUserItems.self, forKey: .items))
-        balance = (try! values.decode(Float.self, forKey: .balance))
+        stats = (try? values.decode(APIStats.self, forKey: .stats))
+        flags = (try? values.decode(APIFlags.self, forKey: .flags))
+        preferences = (try? values.decode(APIPreferences.self, forKey: .preferences))
+        profile = (try? values.decode(APIProfile.self, forKey: .profile))
+        contributor = (try? values.decode(APIContributor.self, forKey: .contributor))
+        items = (try? values.decode(APIUserItems.self, forKey: .items))
+        balance = (try? values.decode(Float.self, forKey: .balance)) ?? 0
         tasksOrder = (try? values.decode([String: [String]].self, forKey: .tasksOrder)) ?? [:]
         tags = (try? values.decode([APITag].self, forKey: .tags)) ?? []
         tags.enumerated().forEach { (arg) in

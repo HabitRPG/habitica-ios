@@ -13,8 +13,12 @@ import Habitica_Models
 
 class ItemSection<MODEL> {
     var title: String?
-    var isVisible = true
+    var isHidden = false
     var items = [MODEL]()
+    
+    var isVisible: Bool {
+        return !isHidden && items.count > 0
+    }
     
     init(title: String? = nil) {
         self.title = title

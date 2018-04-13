@@ -112,3 +112,9 @@
 "hatch_egg" = "Hatch egg";
 "hatch_potion" = "Hatch with potion";
 "invite_party" = "Invite Party";
+"share" = "Share";
+"close" = "Close";
+"cancel" = "Cancel";
+"ok" = "OK";
+"inventory.hatched" = "You hatched a new pet!";
+"inventory.hatchedSharing" = "I just hatched a %@ %@ pet in Habitica by completing my real-life tasks!";
