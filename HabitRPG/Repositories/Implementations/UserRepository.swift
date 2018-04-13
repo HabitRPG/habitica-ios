@@ -16,9 +16,6 @@ import Result
 class UserRepository: BaseRepository<UserLocalRepository> {
     
     var taskRepository = TaskRepository()
-    var currentUserId: String? {
-        return AuthenticationManager.shared.currentUserId
-    }
     
     func retrieveUser(withTasks: Bool = true) -> Signal<UserProtocol?, NoError> {
         let call = RetrieveUserCall()

@@ -12,3 +12,9 @@ import Foundation
 public protocol EggProtocol: ItemProtocol {
     var adjective: String? { get set }
 }
+
+public extension EggProtocol {
+    public var imageName: String {
+        return "Pet_Egg_\(key ?? "")"
+    }
+}

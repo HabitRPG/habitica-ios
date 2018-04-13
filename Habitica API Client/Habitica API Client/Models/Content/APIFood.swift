@@ -16,4 +16,5 @@ class APIFood: FoodProtocol, Codable {
     var value: Float = 0
     var target: String?
     var canDrop: Bool = false
+    var itemType: String?
 }

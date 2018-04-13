@@ -97,10 +97,6 @@
     User *user = [self fetchLocalUserWithId:userId];
     if (user) {
         completion(user);
-    } else {
-        [[HRPGManager sharedManager] fetchMember:userId onSuccess:^{
-            completion([self fetchLocalUserWithId:userId]);
-        } onError:nil];
     }
 }
 

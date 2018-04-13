@@ -13,9 +13,11 @@ class APIOwnedItem: OwnedItemProtocol, Codable {
     
     var key: String?
     var numberOwned: Int = 0
+    var itemType: String?
     
-    init(key: String, numberOwned: Int) {
+    init(key: String, numberOwned: Int, itemType: String) {
         self.key = key
         self.numberOwned = numberOwned
+        self.itemType = itemType
     }
 }

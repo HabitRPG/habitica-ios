@@ -10,7 +10,7 @@ import Foundation
 
 @objc
 public protocol OwnedItemProtocol {
-    
     var key: String? { get set }
     var numberOwned: Int { get set }
+    var itemType: String? { get set }
 }

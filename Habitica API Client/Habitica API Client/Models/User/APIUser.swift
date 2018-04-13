@@ -9,7 +9,7 @@
 import Foundation
 import Habitica_Models
 
-public class APIUser: UserProtocol, Codable {
+public class APIUser: UserProtocol, Decodable {
     public var id: String?
     public var stats: StatsProtocol?
     public var flags: FlagsProtocol?
@@ -61,9 +61,5 @@ public class APIUser: UserProtocol, Codable {
         lastCron = try? values.decode(Date.self, forKey: .lastCron)
         inbox = try? values.decode(APIInbox.self, forKey: .inbox)
         authentication = try? values.decode(APIAuthentication.self, forKey: .authentication)
-    }
-    
-    public func encode(to encoder: Encoder) throws {
-        
     }
 }

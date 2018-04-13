@@ -12,7 +12,13 @@ import Habitica_Database
 import Habitica_Models
 
 class ItemSection<MODEL> {
+    var title: String?
+    var isVisible = true
     var items = [MODEL]()
+    
+    init(title: String? = nil) {
+        self.title = title
+    }
 }
 
 class BaseReactiveDataSource<MODEL>: NSObject {
@@ -20,6 +26,11 @@ class BaseReactiveDataSource<MODEL>: NSObject {
     let disposable = ScopedDisposable(CompositeDisposable())
     
     var sections = [ItemSection<MODEL>]()
+    var visibleSections: [ItemSection<MODEL>] {
+        return sections.filter({ (section) -> Bool in
+            return section.isVisible
+        })
+    }
     
     @objc var userDrivenDataUpdate = false
     
@@ -30,6 +41,7 @@ class BaseReactiveDataSource<MODEL>: NSObject {
         if indexPath.item < 0 || indexPath.section < 0 {
             return nil
         }
+        let sections = visibleSections
         if indexPath.section < sections.count {
             if indexPath.item < sections[indexPath.section].items.count {
                 return sections[indexPath.section].items[indexPath.item]
@@ -40,6 +52,8 @@ class BaseReactiveDataSource<MODEL>: NSObject {
     
     @objc
     func retrieveData(completed: (() -> Void)?) {}
+    
+    func notify(changes: ReactiveChangeset?, section: Int = 0) {}
 }
 
 class BaseReactiveTableViewDataSource<MODEL>: BaseReactiveDataSource<MODEL>, UITableViewDataSource {
@@ -51,7 +65,7 @@ class BaseReactiveTableViewDataSource<MODEL>: BaseReactiveDataSource<MODEL>, UIT
         }
     }
     
-    func notifyDataUpdate(tableView: UITableView?, changes: ReactiveChangeset?) {
+    override func notify(changes: ReactiveChangeset?, section: Int = 0) {
         guard let changes = changes else {
             return
         }
@@ -62,20 +76,24 @@ class BaseReactiveTableViewDataSource<MODEL>: BaseReactiveDataSource<MODEL>, UIT
             tableView?.reloadData()
         } else {
             tableView?.beginUpdates()
-            tableView?.insertRows(at: changes.inserted.map({ IndexPath(row: $0, section: 0) }), with: .automatic)
-            tableView?.deleteRows(at: changes.deleted.map({ IndexPath(row: $0, section: 0) }), with: .automatic)
-            tableView?.reloadRows(at: changes.updated.map({ IndexPath(row: $0, section: 0) }), with: .automatic)
+            tableView?.insertRows(at: changes.inserted.map({ IndexPath(row: $0, section: section) }), with: .automatic)
+            tableView?.deleteRows(at: changes.deleted.map({ IndexPath(row: $0, section: section) }), with: .automatic)
+            tableView?.reloadRows(at: changes.updated.map({ IndexPath(row: $0, section: section) }), with: .automatic)
             tableView?.endUpdates()
         }
     }
     
     @objc
     func numberOfSections(in tableView: UITableView) -> Int {
-        return sections.count
+        return visibleSections.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sections[section].items.count
+        return visibleSections[section].items.count
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return visibleSections[section].title
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -88,5 +106,33 @@ class BaseReactiveTableViewDataSource<MODEL>: BaseReactiveDataSource<MODEL>, UIT
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return UITableViewCell()
+    }
+}
+
+class BaseReactiveCollectionViewDataSource<MODEL>: BaseReactiveDataSource<MODEL>, UICollectionViewDataSource {
+    @objc weak var collectionView: UICollectionView? {
+        didSet {
+            collectionView?.dataSource = self
+            collectionView?.reloadData()
+        }
+    }
+    
+    override func notify(changes: ReactiveChangeset?, section: Int = 0) {
+        if userDrivenDataUpdate {
+            return
+        }
+        collectionView?.reloadData()
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return visibleSections.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return visibleSections[section].items.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        return UICollectionViewCell()
     }
 }

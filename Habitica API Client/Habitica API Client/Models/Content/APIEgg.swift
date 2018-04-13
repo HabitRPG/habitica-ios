@@ -15,4 +15,5 @@ class APIEgg: EggProtocol, Codable {
     var notes: String?
     var value: Float = 0
     var adjective: String?
+    var itemType: String?
 }

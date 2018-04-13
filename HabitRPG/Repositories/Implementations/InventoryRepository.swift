@@ -44,4 +44,15 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
     func getGear(predicate: NSPredicate? = nil) -> SignalProducer<ReactiveResults<[GearProtocol]>, ReactiveSwiftRealmError> {
         return localRepository.getGear(predicate: predicate)
     }
+    
+    func getOwnedItems(userID: String? = nil) -> SignalProducer<ReactiveResults<[OwnedItemProtocol]>, ReactiveSwiftRealmError> {
+        return localRepository.getOwnedItems(userID: userID ?? currentUserId ?? "")
+    }
+    
+    func getItems(keys: [String]) -> SignalProducer<(ReactiveResults<[EggProtocol]>,
+        ReactiveResults<[FoodProtocol]>,
+        ReactiveResults<[HatchingPotionProtocol]>,
+        ReactiveResults<[QuestProtocol]>), ReactiveSwiftRealmError> {
+        return localRepository.getItems(keys: keys)
+    }
 }

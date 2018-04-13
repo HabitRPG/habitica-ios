@@ -56,5 +56,6 @@ class RealmQuest: RealmItem, QuestProtocol {
         category = quest.category
         boss = quest.boss
         collect = quest.collect
+        itemType = ItemType.quest.rawValue
     }
 }

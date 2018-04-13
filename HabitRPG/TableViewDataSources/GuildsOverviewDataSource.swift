@@ -53,7 +53,7 @@ class GuildsOverviewDataSource: BaseReactiveTableViewDataSource<GroupProtocol> {
         if let predicate = self.predicate {
             fetchGuildsDisposable = socialRepository.getGroups(predicate: predicate).on(value: { (guilds, changes) in
                 self.sections[0].items = guilds
-                self.notifyDataUpdate(tableView: self.tableView, changes: changes)
+                self.notify(changes: changes)
             }).start()
         }
     }

@@ -9,7 +9,7 @@
 import Foundation
 import Habitica_Models
 
-class APIPreferences: PreferencesProtocol, Codable {
+class APIPreferences: PreferencesProtocol, Decodable {
     var skin: String?
     var language: String?
     var automaticAllocation: Bool = false
@@ -64,9 +64,5 @@ class APIPreferences: PreferencesProtocol, Codable {
         timezoneOffset = (try? values.decode(Int.self, forKey: .timezoneOffset)) ?? 0
         sound = try? values.decode(String.self, forKey: .sound)
         pushNotifications = try? values.decode(APIPushNotifications.self, forKey: .pushNotifications)
-    }
-    
-    func encode(to encoder: Encoder) throws {
-        
     }
 }

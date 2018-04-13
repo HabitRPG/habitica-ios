@@ -13,3 +13,9 @@ public protocol FoodProtocol: ItemProtocol {
     var target: String? { get set }
     var canDrop: Bool { get set }
 }
+
+public extension FoodProtocol {
+    public var imageName: String {
+        return "Pet_Food_\(key ?? "")"
+    }
+}

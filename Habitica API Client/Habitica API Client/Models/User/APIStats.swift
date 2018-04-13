@@ -9,7 +9,7 @@
 import Foundation
 import Habitica_Models
 
-public class APIStats: StatsProtocol, Codable {
+public class APIStats: StatsProtocol, Decodable {
     public var health: Float = 0
     public var maxHealth: Float = 50
     public var mana: Float = 0
@@ -61,9 +61,5 @@ public class APIStats: StatsProtocol, Codable {
         habitClass = try? values.decode(String.self, forKey: .habitClass)
         gold = (try? values.decode(Float.self, forKey: .gold)) ?? 0
         buffs = try? values.decode(APIBuff.self, forKey: .buffs)
-    }
-    
-    public func encode(to encoder: Encoder) throws {
-        
     }
 }

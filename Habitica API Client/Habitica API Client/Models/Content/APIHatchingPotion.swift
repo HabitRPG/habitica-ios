@@ -16,4 +16,5 @@ class APIHatchingPotion: HatchingPotionProtocol, Codable {
     var value: Float = 0
     var premium: Bool = false
     var limited: Bool = false
+    var itemType: String?
 }

@@ -13,3 +13,9 @@ public protocol HatchingPotionProtocol: ItemProtocol {
     var premium: Bool { get set }
     var limited: Bool { get set }
 }
+
+public extension HatchingPotionProtocol {
+    public var imageName: String {
+        return "Pet_HatchingPotion_\(key ?? "")"
+    }
+}

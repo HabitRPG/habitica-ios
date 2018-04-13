@@ -23,6 +23,18 @@ internal enum L10n {
   internal static let difficulty = L10n.tr("Main", "difficulty")
   /// Discover
   internal static let discover = L10n.tr("Main", "discover")
+  /// Eggs
+  internal static let eggs = L10n.tr("Main", "eggs")
+  /// Food
+  internal static let food = L10n.tr("Main", "food")
+  /// Hatch egg
+  internal static let hatchEgg = L10n.tr("Main", "hatch_egg")
+  /// Hatch with potion
+  internal static let hatchPotion = L10n.tr("Main", "hatch_potion")
+  /// Hatching Potions
+  internal static let hatchingPotions = L10n.tr("Main", "hatching_potions")
+  /// Invite Party
+  internal static let inviteParty = L10n.tr("Main", "invite_party")
   /// Last Activity %@
   internal static func lastActivity(_ p1: String) -> String {
     return L10n.tr("Main", "last_activity", p1)
@@ -33,6 +45,8 @@ internal enum L10n {
   internal static let myGuilds = L10n.tr("Main", "my_guilds")
   /// Notes
   internal static let notes = L10n.tr("Main", "notes")
+  /// Quests
+  internal static let quests = L10n.tr("Main", "quests")
   /// Reset Justins Tips
   internal static let resetTips = L10n.tr("Main", "reset_tips")
   /// Reset Streak
@@ -47,6 +61,10 @@ internal enum L10n {
   internal static let save = L10n.tr("Main", "save")
   /// Search
   internal static let search = L10n.tr("Main", "search")
+  /// Sell for %d gold
+  internal static func sell(_ p1: Int) -> String {
+    return L10n.tr("Main", "sell", p1)
+  }
   /// Sync Error
   internal static let syncError = L10n.tr("Main", "sync_error")
   /// There was an error syncing some changes.

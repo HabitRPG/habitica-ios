@@ -16,6 +16,7 @@ class RealmEgg: RealmItem, EggProtocol {
     convenience init(_ egg: EggProtocol) {
         self.init(item: egg)
         adjective = egg.adjective
+        itemType = ItemType.egg.rawValue
     }
     
 }

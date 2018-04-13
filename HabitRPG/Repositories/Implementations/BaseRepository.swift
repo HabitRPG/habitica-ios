@@ -14,4 +14,7 @@ class BaseRepository<T: BaseLocalRepository>: NSObject {
     
     let localRepository = T.init()
     let disposable = ScopedDisposable(CompositeDisposable())
+    var currentUserId: String? {
+        return AuthenticationManager.shared.currentUserId
+    }
 }

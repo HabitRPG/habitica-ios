@@ -56,7 +56,7 @@ class SpellsTableViewDataSource: BaseReactiveTableViewDataSource<SkillProtocol>,
     private func getSkills(habitClass: String) {
         disposable.inner.add(contentRepository.getSkills(habitClass: habitClass).on(value: { result in
             self.sections[0].items = result.value
-            self.notifyDataUpdate(tableView: self.tableView, changes: result.changes)
+            self.notify(changes: result.changes)
         }).start())
     }
     

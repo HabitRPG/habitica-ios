@@ -15,3 +15,9 @@ public protocol QuestProtocol: ItemProtocol {
     var boss: QuestBossProtocol? { get set }
     var collect: [QuestCollectProtocol]? { get set }
 }
+
+public extension QuestProtocol {
+    public var imageName: String {
+        return "inventory_quest_scroll_\(key ?? "")"
+    }
+}

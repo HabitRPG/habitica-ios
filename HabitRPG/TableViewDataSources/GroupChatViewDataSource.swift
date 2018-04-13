@@ -34,7 +34,7 @@ class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtoc
         }).start())
         disposable.inner.add(socialRepository.getChatMessages(groupID: groupID).on(value: {[weak self] (chatMessages, changes) in
             self?.sections[0].items = chatMessages
-            self?.notifyDataUpdate(tableView: self?.tableView, changes: changes)
+            self?.notify(changes: changes)
         }).start())
     }
     

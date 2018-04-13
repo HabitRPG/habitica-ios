@@ -80,7 +80,7 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
         }
         fetchTasksDisposable = repository.getTasks(predicate: predicate).on(value: { (tasks, changes) in
             self.sections[0].items = tasks
-            self.notifyDataUpdate(tableView: self.tableView, changes: changes)
+            self.notify(changes: changes)
         }).start()
     }
 

@@ -15,17 +15,21 @@ class RealmOwnedItem: Object, OwnedItemProtocol {
 
     @objc dynamic var combinedKey: String?
     
-    var key: String?
-    var numberOwned: Int = 0
+    @objc dynamic var key: String?
+    @objc dynamic var userID: String?
+    @objc dynamic var numberOwned: Int = 0
+    @objc dynamic var itemType: String?
     
     override static func primaryKey() -> String {
         return "combinedKey"
     }
     
-    convenience init( userId: String?, itemProtocol: OwnedItemProtocol) {
+    convenience init( userID: String?, itemProtocol: OwnedItemProtocol) {
         self.init()
-        combinedKey = (userId ?? "") + (itemProtocol.key ?? "")
+        combinedKey = (userID ?? "") + (itemProtocol.key ?? "") + (itemProtocol.itemType ?? "")
+        self.userID = userID
         key = itemProtocol.key
         numberOwned = itemProtocol.numberOwned
+        itemType = itemProtocol.itemType
     }
 }

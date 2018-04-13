@@ -10,7 +10,7 @@ import Foundation
 import Habitica_Models
 import RealmSwift
 
-class RealmUserGear: Object, UserGearProtocol {
+class RealmUserGear: Object, UserGearProtocol {    
     @objc dynamic var equipped: OutfitProtocol? {
         get {
             return realmEquipped
@@ -39,6 +39,25 @@ class RealmUserGear: Object, UserGearProtocol {
         }
     }
     @objc dynamic var realmCostume: RealmOutfit?
+    
+    var owned: [OwnedGearProtocol] {
+        get {
+            return realmOwned.map({ (quest) -> OwnedGearProtocol in
+                return quest
+            })
+        }
+        set {
+            realmOwned.removeAll()
+            newValue.forEach { (ownedGear) in
+                if let realmOwnedGear = ownedGear as? RealmOwnedGear {
+                    realmOwned.append(realmOwnedGear)
+                } else {
+                    realmOwned.append(RealmOwnedGear(userID: id, gearProtocol: ownedGear))
+                }
+            }
+        }
+    }
+    var realmOwned = List<RealmOwnedGear>()
     
     @objc dynamic var id: String?
     override static func primaryKey() -> String {

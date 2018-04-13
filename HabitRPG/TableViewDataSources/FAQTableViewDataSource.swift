@@ -40,7 +40,7 @@ class FAQTableViewDataSource: BaseReactiveTableViewDataSource<FAQEntryProtocol>,
         }
         fetchDisposable = contentRepository.getFAQEntries(search: searchQuery).on(value: { (entries, changes) in
             self.sections[0].items = entries
-            self.notifyDataUpdate(tableView: self.tableView, changes: changes)
+            self.notify(changes: changes)
         }).start()
     }
     

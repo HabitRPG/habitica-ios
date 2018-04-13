@@ -9,22 +9,24 @@
 import Foundation
 import Habitica_Models
 
-class APIUserGear: UserGearProtocol, Codable {
+class APIUserGear: UserGearProtocol, Decodable {
     var equipped: OutfitProtocol?
     var costume: OutfitProtocol?
+    var owned: [OwnedGearProtocol]
     
     enum CodingKeys: String, CodingKey {
         case equipped
         case costume
+        case owned
     }
     
     public required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         equipped = try? values.decode(APIOutfit.self, forKey: .equipped)
         costume = try? values.decode(APIOutfit.self, forKey: .costume)
-    }
-    
-    public func encode(to encoder: Encoder) throws {
-        
+        let gearDict = try?values.decode([String: Bool].self, forKey: .owned)
+        owned = (gearDict?.map({ (key, isOwned) -> OwnedGearProtocol in
+            return APIOwnedGear(key: key, isOwned: isOwned)
+        })) ?? []
     }
 }

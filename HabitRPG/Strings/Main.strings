@@ -104,4 +104,11 @@
 "guilds.leave_guild_description" = "Do you want to leave the guild and keep or delete the challenges?";
 "guilds.keep_challenges" = "Keep challenges";
 "guilds.leave_challenges" = "Leave Challenges";
-
+"food" = "Food";
+"eggs" = "Eggs";
+"hatching_potions" = "Hatching Potions";
+"quests" = "Quests";
+"sell" = "Sell for %d gold";
+"hatch_egg" = "Hatch egg";
+"hatch_potion" = "Hatch with potion";
+"invite_party" = "Invite Party";

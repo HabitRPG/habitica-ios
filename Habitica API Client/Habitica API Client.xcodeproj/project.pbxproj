@@ -36,6 +36,7 @@
 		290B6291207E1E76007287C4 /* RetrieveMemberCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B6290207E1E76007287C4 /* RetrieveMemberCall.swift */; };
 		290B6293207E3E24007287C4 /* JoinGroupCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B6292207E3E24007287C4 /* JoinGroupCall.swift */; };
 		290B6295207E3E6C007287C4 /* LeaveGroupCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B6294207E3E6C007287C4 /* LeaveGroupCall.swift */; };
+		290B629C207F7E84007287C4 /* APIOwnedGear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B629B207F7E84007287C4 /* APIOwnedGear.swift */; };
 		290C300F206A779E0066AF5B /* DeleteTaskCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C300E206A779E0066AF5B /* DeleteTaskCall.swift */; };
 		290C3013206A78700066AF5B /* APIEmptyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C3012206A78700066AF5B /* APIEmptyResponse.swift */; };
 		290C3015206A80AE0066AF5B /* MoveTaskCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C3014206A80AE0066AF5B /* MoveTaskCall.swift */; };
@@ -152,6 +153,7 @@
 		290B6290207E1E76007287C4 /* RetrieveMemberCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveMemberCall.swift; sourceTree = "<group>"; };
 		290B6292207E3E24007287C4 /* JoinGroupCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGroupCall.swift; sourceTree = "<group>"; };
 		290B6294207E3E6C007287C4 /* LeaveGroupCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveGroupCall.swift; sourceTree = "<group>"; };
+		290B629B207F7E84007287C4 /* APIOwnedGear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIOwnedGear.swift; sourceTree = "<group>"; };
 		290C300E206A779E0066AF5B /* DeleteTaskCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTaskCall.swift; sourceTree = "<group>"; };
 		290C3012206A78700066AF5B /* APIEmptyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEmptyResponse.swift; sourceTree = "<group>"; };
 		290C3014206A80AE0066AF5B /* MoveTaskCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveTaskCall.swift; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 				290B6262207B9707007287C4 /* APILocalAuthentication.swift */,
 				29323E542052F7C400AC6D6F /* APIOutfit.swift */,
 				290C3027206B98A50066AF5B /* APIOwnedItem.swift */,
+				290B629B207F7E84007287C4 /* APIOwnedGear.swift */,
 				29323E38205212E400AC6D6F /* APIPreferences.swift */,
 				29323E3A205212F900AC6D6F /* APIProfile.swift */,
 				290B62532073D957007287C4 /* APIPushNotifications.swift */,
@@ -823,6 +826,7 @@
 				290B6265207B978F007287C4 /* APIAuthentication.swift in Sources */,
 				290B623D207267AA007287C4 /* RetrieveGroupsCall.swift in Sources */,
 				2902797920580EFD006DACB9 /* APIBuff.swift in Sources */,
+				290B629C207F7E84007287C4 /* APIOwnedGear.swift in Sources */,
 				292DEE91204F4A0F0086D5F7 /* HabiticaServerConfig.swift in Sources */,
 				29323E512052F77F00AC6D6F /* APIUserItems.swift in Sources */,
 				292DEE4F204DA3870086D5F7 /* RetrieveTasksCall.swift in Sources */,

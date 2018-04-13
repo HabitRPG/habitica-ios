@@ -2915,6 +2915,7 @@ Invite friends now to earn a Quest Scroll!</string>
                         <outlet property="guildGemCountLabel" destination="e3Y-Jr-xC4" id="fcp-mI-aN7"/>
                         <outlet property="guildLeaderAvatarView" destination="JuB-qY-9Ry" id="mHj-Xc-2N0"/>
                         <outlet property="guildLeaderNameLabel" destination="dqf-HT-q0B" id="ftO-Vf-WKO"/>
+                        <outlet property="guildLeaderWrapper" destination="fwD-XM-c7N" id="oaB-XK-9Vp"/>
                         <outlet property="guildMembersCrestIcon" destination="UNq-RH-gKz" id="omh-2y-q2y"/>
                         <outlet property="guildMembersLabel" destination="ZfZ-Mp-g8x" id="ALk-PO-RpS"/>
                         <outlet property="inviteButton" destination="ftv-T1-K44" id="QJ4-da-56C"/>

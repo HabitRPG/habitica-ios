@@ -15,6 +15,7 @@ class RealmItem: Object, ItemProtocol {
     @objc dynamic var text: String?
     @objc dynamic var notes: String?
     @objc dynamic var value: Float = 0
+    @objc dynamic var itemType: String?
     
     override static func primaryKey() -> String {
         return "key"

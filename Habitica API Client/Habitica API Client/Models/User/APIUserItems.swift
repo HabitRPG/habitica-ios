@@ -9,7 +9,7 @@
 import Foundation
 import Habitica_Models
 
-class APIUserItems: UserItemsProtocol, Codable {
+class APIUserItems: UserItemsProtocol, Decodable {
     var gear: UserGearProtocol?
     var currentMount: String?
     var currentPet: String?
@@ -35,23 +35,19 @@ class APIUserItems: UserItemsProtocol, Codable {
         currentMount = try? values.decode(String.self, forKey: .currentMount)
         let questsDict = try?values.decode([String: Int].self, forKey: .ownedQuests)
         ownedQuests = (questsDict?.map({ (key, numberOwned) -> OwnedItemProtocol in
-            return APIOwnedItem(key: key, numberOwned: numberOwned)
+            return APIOwnedItem(key: key, numberOwned: numberOwned, itemType: ItemType.quest.rawValue)
         })) ?? []
         let foodDict = try?values.decode([String: Int].self, forKey: .ownedFood)
         ownedFood = (foodDict?.map({ (key, numberOwned) -> OwnedItemProtocol in
-            return APIOwnedItem(key: key, numberOwned: numberOwned)
+            return APIOwnedItem(key: key, numberOwned: numberOwned, itemType: ItemType.food.rawValue)
         })) ?? []
-        let hatchingPotionsDict = try?values.decode([String: Int].self, forKey: .ownedQuests)
+        let hatchingPotionsDict = try?values.decode([String: Int].self, forKey: .ownedHatchingPotions)
         ownedHatchingPotions = (hatchingPotionsDict?.map({ (key, numberOwned) -> OwnedItemProtocol in
-            return APIOwnedItem(key: key, numberOwned: numberOwned)
+            return APIOwnedItem(key: key, numberOwned: numberOwned, itemType: ItemType.hatchingPotion.rawValue)
         })) ?? []
-        let eggsDict = try?values.decode([String: Int].self, forKey: .ownedQuests)
+        let eggsDict = try?values.decode([String: Int].self, forKey: .ownedEggs)
         ownedEggs = (eggsDict?.map({ (key, numberOwned) -> OwnedItemProtocol in
-            return APIOwnedItem(key: key, numberOwned: numberOwned)
+            return APIOwnedItem(key: key, numberOwned: numberOwned, itemType: ItemType.egg.rawValue)
         })) ?? []
-    }
-    
-    public func encode(to encoder: Encoder) throws {
-        
     }
 }

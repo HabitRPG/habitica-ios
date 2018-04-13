@@ -20,6 +20,7 @@ class GuildDetailViewController: GroupDetailViewController {
     @IBOutlet weak var joinButton: UIButton!
     @IBOutlet weak var leaveButton: UIButton!
     @IBOutlet weak var leaveButtonWrapper: UIView!
+    @IBOutlet weak var guildLeaderWrapper: UIView!
     @IBOutlet weak var guildLeaderNameLabel: UILabel!
     @IBOutlet weak var guildLeaderAvatarView: AvatarView!
     
@@ -47,6 +48,8 @@ class GuildDetailViewController: GroupDetailViewController {
         }
         
         self.leaveInteractor = LeaveGroupInteractor(presentingViewController: self)
+        
+        guildLeaderWrapper.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openGuildLeaderProfile)))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -106,5 +109,10 @@ class GuildDetailViewController: GroupDetailViewController {
         if let groupID = self.groupID {
             leaveInteractor?.run(with: groupID)
         }
+    }
+    
+    @objc
+    private func openGuildLeaderProfile() {
+        perform(segue: StoryboardSegue.Social.userProfileSegue)
     }
 }

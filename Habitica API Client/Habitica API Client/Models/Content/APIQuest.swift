@@ -18,6 +18,7 @@ class APIQuest: QuestProtocol, Codable {
     var text: String?
     var notes: String?
     var value: Float = 0
+    var itemType: String?
     
     enum CodingKeys: String, CodingKey {
         case key

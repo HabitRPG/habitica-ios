@@ -40,6 +40,8 @@
 		290B6287207CD6B5007287C4 /* GroupDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B6286207CD6B5007287C4 /* GroupDetailViewController.swift */; };
 		290B6289207CF248007287C4 /* StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B6288207CF248007287C4 /* StackView.swift */; };
 		290B6298207E3F37007287C4 /* LeaveGroupInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B6297207E3F37007287C4 /* LeaveGroupInteractor.swift */; };
+		290B62A2207F816B007287C4 /* ItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B62A1207F816B007287C4 /* ItemsViewController.swift */; };
+		290B62A4207F818E007287C4 /* ItemsViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B62A3207F818E007287C4 /* ItemsViewDataSource.swift */; };
 		290C3017206A963D0066AF5B /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C3016206A963D0066AF5B /* MainMenuViewController.swift */; };
 		290C302A206BA0B50066AF5B /* SkillTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C3029206BA0B50066AF5B /* SkillTableViewCell.swift */; };
 		290C302C206BACBB0066AF5B /* SpellsTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C302B206BACBB0066AF5B /* SpellsTableViewDataSource.swift */; };
@@ -476,7 +478,7 @@
 		D9D17CCE1E6736B500AD9232 /* ChallengeDetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CCD1E6736B500AD9232 /* ChallengeDetailHeaderView.xib */; };
 		D9D17CD01E673CCC00AD9232 /* UIView-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D17CCF1E673CCC00AD9232 /* UIView-Extensions.swift */; };
 		D9D17CD21E6898E400AD9232 /* HabitTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CD11E6898E400AD9232 /* HabitTableViewCell.xib */; };
-		D9D17CD41E68995000AD9232 /* BuildFile in Resources */ = {isa = PBXBuildFile; };
+		D9D17CD41E68995000AD9232 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		D9D17CD61E6899A800AD9232 /* ToDoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CD51E6899A800AD9232 /* ToDoTableViewCell.xib */; };
 		D9D17CD81E6899F100AD9232 /* HRPGRewardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CD71E6899F100AD9232 /* HRPGRewardTableViewCell.xib */; };
 		D9D17CDA1E69C68000AD9232 /* ChallengeDetailAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CD91E69C68000AD9232 /* ChallengeDetailAlert.xib */; };
@@ -589,6 +591,8 @@
 		290B6286207CD6B5007287C4 /* GroupDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailViewController.swift; sourceTree = "<group>"; };
 		290B6288207CF248007287C4 /* StackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackView.swift; sourceTree = "<group>"; };
 		290B6297207E3F37007287C4 /* LeaveGroupInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveGroupInteractor.swift; sourceTree = "<group>"; };
+		290B62A1207F816B007287C4 /* ItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsViewController.swift; sourceTree = "<group>"; };
+		290B62A3207F818E007287C4 /* ItemsViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsViewDataSource.swift; sourceTree = "<group>"; };
 		290C3016206A963D0066AF5B /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		290C3029206BA0B50066AF5B /* SkillTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillTableViewCell.swift; sourceTree = "<group>"; };
 		290C302B206BACBB0066AF5B /* SpellsTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellsTableViewDataSource.swift; sourceTree = "<group>"; };
@@ -1438,6 +1442,23 @@
 			path = Groups;
 			sourceTree = "<group>";
 		};
+		290B629F207F8140007287C4 /* Inventory */ = {
+			isa = PBXGroup;
+			children = (
+				290B62A1207F816B007287C4 /* ItemsViewController.swift */,
+			);
+			path = Inventory;
+			sourceTree = "<group>";
+		};
+		290B62A0207F814D007287C4 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				290C3016206A963D0066AF5B /* MainMenuViewController.swift */,
+				29C1B6AA20594F500001D3EF /* VisualEffectsModalViewController.swift */,
+			);
+			path = General;
+			sourceTree = "<group>";
+		};
 		29205E332062DF620024E355 /* TaskFormRows */ = {
 			isa = PBXGroup;
 			children = (
@@ -1689,6 +1710,7 @@
 				290C302B206BACBB0066AF5B /* SpellsTableViewDataSource.swift */,
 				292F9661206E363000804151 /* GroupChatViewDataSource.swift */,
 				292F968220724B1100804151 /* GuildsOverviewDataSource.swift */,
+				290B62A3207F818E007287C4 /* ItemsViewDataSource.swift */,
 			);
 			name = TVDataSources;
 			sourceTree = "<group>";
@@ -2118,10 +2140,11 @@
 		D9A63A311E1031FD0083ADC4 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				29C1B6AA20594F500001D3EF /* VisualEffectsModalViewController.swift */,
+				290B62A0207F814D007287C4 /* General */,
 				D9E02EC41E5E02E7002CFCE2 /* Challenges */,
 				290279612057EBE9006DACB9 /* FAQ */,
 				D96BFC4D1E181B5500266EEF /* Intro */,
+				290B629F207F8140007287C4 /* Inventory */,
 				D9A63A371E104F6C0083ADC4 /* Login */,
 				D984D5871E49F9D9006E84F8 /* Purchases */,
 				2957B8B41F4B2DF900E836EF /* Rewards */,
@@ -2130,7 +2153,6 @@
 				29E16318200E849000685640 /* Social */,
 				29C1B6A920594F3D0001D3EF /* Tasks */,
 				2986EB091FCC63CC00B316F6 /* User */,
-				290C3016206A963D0066AF5B /* MainMenuViewController.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -2924,15 +2946,15 @@
 				293BB4A11FD06E7E003B6F4F /* BulkStatsAllocationView.xib in Resources */,
 				49E378532009542C00E0DA3D /* ChallengeTableViewHeaderView.xib in Resources */,
 				498E4D001FA17C1A006933FF /* ChallengeCategoriesTableViewCell.xib in Resources */,
-				D9D17CD41E68995000AD9232 /* BuildFile in Resources */,
+				D9D17CD41E68995000AD9232 /* (null) in Resources */,
 				29028C442037132A00B7F704 /* SystemMessageTableViewCell.xib in Resources */,
 				29AAA1611F2B597400029737 /* SpeechbubbleView.xib in Resources */,
 				29FC885E2018D858002B3D3F /* WorldBossDescription.xib in Resources */,
 				293BB4A31FD07603003B6F4F /* StatsSliderView.xib in Resources */,
-				D9D17CD41E68995000AD9232 /* BuildFile in Resources */,
+				D9D17CD41E68995000AD9232 /* (null) in Resources */,
 				29E16311200E5FEA00685640 /* QuestProgressView.xib in Resources */,
 				2902799A20583E83006DACB9 /* OnePasswordExtension.strings in Resources */,
-				D9D17CD41E68995000AD9232 /* BuildFile in Resources */,
+				D9D17CD41E68995000AD9232 /* (null) in Resources */,
 				D9BB45CA1E76DF260002AE2E /* DailyTableViewCell.xib in Resources */,
 				D9D17CD81E6899F100AD9232 /* HRPGRewardTableViewCell.xib in Resources */,
 				29B6AD4A1F2A0C9800AC8878 /* LoginEntryView.xib in Resources */,
@@ -3635,6 +3657,7 @@
 				290C302C206BACBB0066AF5B /* SpellsTableViewDataSource.swift in Sources */,
 				D9CE90411E4CAE6700702578 /* SubscriptionPlan+CoreDataProperties.m in Sources */,
 				29FC88562017B840002B3D3F /* CollapsibleTitle.swift in Sources */,
+				290B62A2207F816B007287C4 /* ItemsViewController.swift in Sources */,
 				298119AB1F50251300F9FB39 /* InventoryRepository.swift in Sources */,
 				29E162E5200227AA00685640 /* HRPGUIViewController.m in Sources */,
 				D9A28F721B08DF58002907E0 /* HRPGPurchaseButton.m in Sources */,
@@ -3661,6 +3684,7 @@
 				D9BB45CC1E76E0FC0002AE2E /* ToDoTableViewCell.swift in Sources */,
 				29701FE61F56DABC0097BBCC /* RoundedView.swift in Sources */,
 				29B3FEB11F9A37E3000B12CF /* BaseSettingsViewController.swift in Sources */,
+				290B62A4207F818E007287C4 /* ItemsViewDataSource.swift in Sources */,
 				D9CE90451E4CDD6200702578 /* PillView.swift in Sources */,
 				29ED1AFD1F338ECC005A3895 /* SetupCustomization.swift in Sources */,
 				D99CDDDD1E5368E400ABD85F /* ShopItem+CoreDataClass.m in Sources */,

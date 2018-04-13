@@ -18,6 +18,7 @@ class RealmFood: RealmItem, FoodProtocol {
         self.init(item: food)
         target = food.target
         canDrop = food.canDrop
+        itemType = ItemType.food.rawValue
     }
     
 }

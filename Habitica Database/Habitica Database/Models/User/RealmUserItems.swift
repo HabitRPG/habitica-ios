@@ -40,7 +40,7 @@ class RealmUserItems: Object, UserItemsProtocol {
                 if let realmOwnedQuest = ownedItem as? RealmOwnedItem {
                     realmOwnedQuests.append(realmOwnedQuest)
                 } else {
-                    realmOwnedQuests.append(RealmOwnedItem(userId: id, itemProtocol: ownedItem))
+                    realmOwnedQuests.append(RealmOwnedItem(userID: id, itemProtocol: ownedItem))
                 }
             }
         }
@@ -59,7 +59,7 @@ class RealmUserItems: Object, UserItemsProtocol {
                 if let realmOwnedItem = ownedItem as? RealmOwnedItem {
                     realmOwnedFood.append(realmOwnedItem)
                 } else {
-                    realmOwnedFood.append(RealmOwnedItem(userId: id, itemProtocol: ownedItem))
+                    realmOwnedFood.append(RealmOwnedItem(userID: id, itemProtocol: ownedItem))
                 }
             }
         }
@@ -78,7 +78,7 @@ class RealmUserItems: Object, UserItemsProtocol {
                 if let realmOwnedItem = ownedItem as? RealmOwnedItem {
                     realmOwnedHatchingPotions.append(realmOwnedItem)
                 } else {
-                    realmOwnedHatchingPotions.append(RealmOwnedItem(userId: id, itemProtocol: ownedItem))
+                    realmOwnedHatchingPotions.append(RealmOwnedItem(userID: id, itemProtocol: ownedItem))
                 }
             }
         }
@@ -97,7 +97,7 @@ class RealmUserItems: Object, UserItemsProtocol {
                 if let realmOwnedItem = ownedItem as? RealmOwnedItem {
                     realmOwnedEggs.append(realmOwnedItem)
                 } else {
-                    realmOwnedEggs.append(RealmOwnedItem(userId: id, itemProtocol: ownedItem))
+                    realmOwnedEggs.append(RealmOwnedItem(userID: id, itemProtocol: ownedItem))
                 }
             }
         }

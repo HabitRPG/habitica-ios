@@ -26,6 +26,9 @@ class ImageManager {
             return
         }
         KingfisherManager.shared.retrieveImage(with: url, options: nil, progressBlock: nil) { (image, error, _, _) in
+            if let error = error {
+                print("Image loading error:", name, error.localizedDescription)
+            }
             completion(image, error)
         }
     }

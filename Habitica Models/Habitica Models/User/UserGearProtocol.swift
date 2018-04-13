@@ -12,4 +12,5 @@ import Foundation
 public protocol UserGearProtocol {
     var equipped: OutfitProtocol? { get set }
     var costume: OutfitProtocol? { get set }
+    var owned: [OwnedGearProtocol] { get set }
 }

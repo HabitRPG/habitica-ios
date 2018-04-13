@@ -26,4 +26,29 @@ public class InventoryLocalRepository: ContentLocalRepository {
         })
     }
     
+    public func getOwnedItems(userID: String) -> SignalProducer<ReactiveResults<[OwnedItemProtocol]>, ReactiveSwiftRealmError> {
+        return RealmOwnedItem.findBy(query: "userID == '\(userID)' && numberOwned > 0").reactive().map({ (value, changeset) -> ReactiveResults<[OwnedItemProtocol]> in
+            return (value.map({ (item) -> OwnedItemProtocol in return item }), changeset)
+        })
+    }
+    
+    public func getItems(keys: [String]) -> SignalProducer<(ReactiveResults<[EggProtocol]>,
+        ReactiveResults<[FoodProtocol]>,
+        ReactiveResults<[HatchingPotionProtocol]>,
+        ReactiveResults<[QuestProtocol]>), ReactiveSwiftRealmError> {
+        let producer = SignalProducer.combineLatest(
+            RealmEgg.findBy(predicate: NSPredicate(format: "key IN %@", keys)).reactive().map({ (value, changeset) -> ReactiveResults<[EggProtocol]> in
+                return (value.map({ (item) -> EggProtocol in return item }), changeset)
+            }),
+            RealmFood.findBy(predicate: NSPredicate(format: "key IN %@", keys)).reactive().map({ (value, changeset) -> ReactiveResults<[FoodProtocol]> in
+                return (value.map({ (item) -> FoodProtocol in return item }), changeset)
+            }),
+            RealmHatchingPotion.findBy(predicate: NSPredicate(format: "key IN %@", keys)).reactive().map({ (value, changeset) -> ReactiveResults<[HatchingPotionProtocol]> in
+                return (value.map({ (item) -> HatchingPotionProtocol in return item }), changeset)
+            }),
+            RealmQuest.findBy(predicate: NSPredicate(format: "key IN %@", keys)).reactive().map({ (value, changeset) -> ReactiveResults<[QuestProtocol]> in
+                return (value.map({ (item) -> QuestProtocol in return item }), changeset)
+            }))
+        return producer
+    }
 }
