@@ -37,6 +37,12 @@ public class ContentLocalRepository: BaseLocalRepository {
         content.faq?.forEach({ (entries) in
             newObjects.append(RealmFAQEntry(entries))
         })
+        content.pets?.forEach({ (pet) in
+            newObjects.append(RealmPet(pet))
+        })
+        content.mounts?.forEach({ (mount) in
+            newObjects.append(RealmMount(mount))
+        })
         save(objects: newObjects)
     }
     

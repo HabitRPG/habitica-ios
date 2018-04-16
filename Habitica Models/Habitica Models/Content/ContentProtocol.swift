@@ -17,4 +17,6 @@ public protocol ContentProtocol {
     var skills: [SkillProtocol]? { get set }
     var quests: [QuestProtocol]? { get set }
     var faq: [FAQEntryProtocol]? { get set }
+    var pets: [PetProtocol]? { get set }
+    var mounts: [MountProtocol]? { get set }
 }

@@ -12,7 +12,7 @@ import Habitica_Models
 class APIOwnedGear: OwnedGearProtocol, Codable {
     
     var key: String?
-    var isOwned: Bool = false
+    var isOwned: Bool
     
     init(key: String, isOwned: Bool) {
         self.key = key

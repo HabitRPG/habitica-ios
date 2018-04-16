@@ -104,13 +104,51 @@ class RealmUserItems: Object, UserItemsProtocol {
     }
     var realmOwnedEggs = List<RealmOwnedItem>()
     
+    var ownedPets: [OwnedPetProtocol] {
+        get {
+            return realmOwnedPets.map({ (pet) -> OwnedPetProtocol in
+                return pet
+            })
+        }
+        set {
+            realmOwnedPets.removeAll()
+            newValue.forEach { (ownedPet) in
+                if let realmOwnedPet = ownedPet as? RealmOwnedPet {
+                    realmOwnedPets.append(realmOwnedPet)
+                } else {
+                    realmOwnedPets.append(RealmOwnedPet(userID: id, petProtocol: ownedPet))
+                }
+            }
+        }
+    }
+    var realmOwnedPets = List<RealmOwnedPet>()
+    
+    var ownedMounts: [OwnedMountProtocol] {
+        get {
+            return realmOwnedMounts.map({ (quest) -> OwnedMountProtocol in
+                return quest
+            })
+        }
+        set {
+            realmOwnedMounts.removeAll()
+            newValue.forEach { (ownedMount) in
+                if let realmOwnedMount = ownedMount as? RealmOwnedMount {
+                    realmOwnedMounts.append(realmOwnedMount)
+                } else {
+                    realmOwnedMounts.append(RealmOwnedMount(userID: id, mountProtocol: ownedMount))
+                }
+            }
+        }
+    }
+    var realmOwnedMounts = List<RealmOwnedMount>()
+    
     @objc dynamic var id: String?
     override static func primaryKey() -> String {
         return "id"
     }
     
     override static func ignoredProperties() -> [String] {
-        return ["gear", "ownedQuests", "ownedFood", "ownedHatchingPotions", "ownedEggs"]
+        return ["gear", "ownedQuests", "ownedFood", "ownedHatchingPotions", "ownedEggs", "ownedPets", "ownedMounts"]
     }
     
     convenience init(id: String?, userItems: UserItemsProtocol) {
@@ -123,5 +161,7 @@ class RealmUserItems: Object, UserItemsProtocol {
         ownedFood = userItems.ownedFood
         ownedHatchingPotions = userItems.ownedHatchingPotions
         ownedEggs = userItems.ownedEggs
+        ownedPets = userItems.ownedPets
+        ownedMounts = userItems.ownedMounts
     }
 }

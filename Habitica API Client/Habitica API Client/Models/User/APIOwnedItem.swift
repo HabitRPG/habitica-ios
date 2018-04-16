@@ -12,7 +12,7 @@ import Habitica_Models
 class APIOwnedItem: OwnedItemProtocol, Codable {
     
     var key: String?
-    var numberOwned: Int = 0
+    var numberOwned: Int
     var itemType: String?
     
     init(key: String, numberOwned: Int, itemType: String) {

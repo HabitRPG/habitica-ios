@@ -9,15 +9,15 @@
 import Foundation
 import Habitica_Models
 
-private class APIGearWrapper: Codable {
+private class APIGearWrapper: Decodable {
     var flat: [String: APIGear]?
 }
 
-private class APIFAQWrapper: Codable {
+private class APIFAQWrapper: Decodable {
     var questions: [APIFAQEntry]?
 }
 
-public class APIContent: ContentProtocol, Codable {
+public class APIContent: ContentProtocol, Decodable {
     public var food: [FoodProtocol]?
     public var eggs: [EggProtocol]?
     public var hatchingPotions: [HatchingPotionProtocol]?
@@ -25,6 +25,8 @@ public class APIContent: ContentProtocol, Codable {
     public var skills: [SkillProtocol]?
     public var quests: [QuestProtocol]?
     public var faq: [FAQEntryProtocol]?
+    public var pets: [PetProtocol]?
+    public var mounts: [MountProtocol]?
     
     enum CodingKeys: String, CodingKey {
         case food
@@ -34,6 +36,8 @@ public class APIContent: ContentProtocol, Codable {
         case skills = "spells"
         case quests
         case faq
+        case pets = "petInfo"
+        case mounts = "mountInfo"
     }
     
     public required init(from decoder: Decoder) throws {
@@ -66,9 +70,11 @@ public class APIContent: ContentProtocol, Codable {
                 skills?.append(skill.value)
             }
         }
-    }
-    
-    public func encode(to encoder: Encoder) throws {
-        
+        self.pets = try? values.decode([String: APIPet].self, forKey: .pets).map({ (key, value) in
+            return value
+        })
+        self.mounts = try? values.decode([String: APIMount].self, forKey: .mounts).map({ (key, value) in
+            return value
+        })
     }
 }

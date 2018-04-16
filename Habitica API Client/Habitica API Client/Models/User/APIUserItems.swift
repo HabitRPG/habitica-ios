@@ -18,6 +18,9 @@ class APIUserItems: UserItemsProtocol, Decodable {
     var ownedHatchingPotions: [OwnedItemProtocol]
     var ownedEggs: [OwnedItemProtocol]
     
+    var ownedPets: [OwnedPetProtocol]
+    var ownedMounts: [OwnedMountProtocol]
+    
     enum CodingKeys: String, CodingKey {
         case gear
         case currentMount
@@ -26,6 +29,8 @@ class APIUserItems: UserItemsProtocol, Decodable {
         case ownedFood = "food"
         case ownedHatchingPotions = "hatchingPotions"
         case ownedEggs = "eggs"
+        case ownedPets = "pets"
+        case ownedMounts = "mounts"
     }
     
     public required init(from decoder: Decoder) throws {
@@ -48,6 +53,15 @@ class APIUserItems: UserItemsProtocol, Decodable {
         let eggsDict = try?values.decode([String: Int].self, forKey: .ownedEggs)
         ownedEggs = (eggsDict?.map({ (key, numberOwned) -> OwnedItemProtocol in
             return APIOwnedItem(key: key, numberOwned: numberOwned, itemType: ItemType.eggs.rawValue)
+        })) ?? []
+        
+        let petsDict = try?values.decode([String: Int].self, forKey: .ownedPets)
+        ownedPets = (petsDict?.map({ (key, trained) -> OwnedPetProtocol in
+            return APIOwnedPet(key: key, trained: trained)
+        })) ?? []
+        let mountsDict = try?values.decode([String: Bool].self, forKey: .ownedMounts)
+        ownedMounts = (mountsDict?.map({ (key, owned) -> APIOwnedMount in
+            return APIOwnedMount(key: key, owned: owned)
         })) ?? []
     }
 }
