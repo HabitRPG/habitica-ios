@@ -27,6 +27,8 @@ internal enum L10n {
   internal static let discover = L10n.tr("Main", "discover")
   /// Eggs
   internal static let eggs = L10n.tr("Main", "eggs")
+  /// Equip
+  internal static let equip = L10n.tr("Main", "equip")
   /// Food
   internal static let food = L10n.tr("Main", "food")
   /// Hatch egg
@@ -43,12 +45,16 @@ internal enum L10n {
   }
   /// Monthly
   internal static let monthly = L10n.tr("Main", "monthly")
+  /// Mounts
+  internal static let mounts = L10n.tr("Main", "mounts")
   /// My Guilds
   internal static let myGuilds = L10n.tr("Main", "my_guilds")
   /// Notes
   internal static let notes = L10n.tr("Main", "notes")
   /// OK
   internal static let ok = L10n.tr("Main", "ok")
+  /// Pets
+  internal static let pets = L10n.tr("Main", "pets")
   /// Quests
   internal static let quests = L10n.tr("Main", "quests")
   /// Reset Justins Tips
@@ -79,6 +85,8 @@ internal enum L10n {
   internal static let tags = L10n.tr("Main", "tags")
   /// Title
   internal static let title = L10n.tr("Main", "title")
+  /// Unequip
+  internal static let unequip = L10n.tr("Main", "unequip")
   /// Weekly
   internal static let weekly = L10n.tr("Main", "weekly")
   /// Yearly
@@ -125,20 +133,18 @@ internal enum L10n {
     internal static let inventory = L10n.tr("Main", "menu.inventory")
     /// Items
     internal static let items = L10n.tr("Main", "menu.items")
-    /// Mounts
-    internal static let mounts = L10n.tr("Main", "menu.mounts")
     /// News
     internal static let news = L10n.tr("Main", "menu.news")
     /// Party
     internal static let party = L10n.tr("Main", "menu.party")
-    /// Pets
-    internal static let pets = L10n.tr("Main", "menu.pets")
     /// Select Class
     internal static let selectClass = L10n.tr("Main", "menu.select_class")
     /// Shops
     internal static let shops = L10n.tr("Main", "menu.shops")
     /// Social
     internal static let social = L10n.tr("Main", "menu.social")
+    /// Stable
+    internal static let stable = L10n.tr("Main", "menu.stable")
     /// Stats
     internal static let stats = L10n.tr("Main", "menu.stats")
     /// Tavern
@@ -201,6 +207,27 @@ internal enum L10n {
     internal static func useSkill(_ p1: String) -> String {
       return L10n.tr("Main", "skills.use_skill", p1)
     }
+  }
+
+  internal enum Stable {
+    /// Feed
+    internal static let feed = L10n.tr("Main", "stable.feed")
+    /// Magic Potion
+    internal static let premium = L10n.tr("Main", "stable.premium")
+    /// Quest Mounts
+    internal static let questMounts = L10n.tr("Main", "stable.quest_mounts")
+    /// Quest Pets
+    internal static let questPets = L10n.tr("Main", "stable.quest_pets")
+    /// Special Mounts
+    internal static let specialMounts = L10n.tr("Main", "stable.special_mounts")
+    /// Special Pets
+    internal static let specialPets = L10n.tr("Main", "stable.special_pets")
+    /// Standard
+    internal static let standard = L10n.tr("Main", "stable.standard")
+    /// Standard Mounts
+    internal static let standardMounts = L10n.tr("Main", "stable.standard_mounts")
+    /// Standard Pets
+    internal static let standardPets = L10n.tr("Main", "stable.standard_pets")
   }
 
   internal enum Stats {

@@ -119,8 +119,7 @@ class MainMenuViewController: HRPGBaseViewController {
                 MenuItem(title: L10n.Menu.customizeAvatar, segue: StoryboardSegue.Main.customizationSegue.rawValue),
                 MenuItem(title: L10n.Menu.equipment, segue: StoryboardSegue.Main.equipmentSegue.rawValue),
                 MenuItem(title: L10n.Menu.items, segue: StoryboardSegue.Main.itemSegue.rawValue),
-                MenuItem(title: L10n.Menu.pets, segue: StoryboardSegue.Main.petSegue.rawValue),
-                MenuItem(title: L10n.Menu.mounts, segue: StoryboardSegue.Main.mountSegue.rawValue),
+                MenuItem(title: L10n.Menu.stable, segue: StoryboardSegue.Main.stableSegue.rawValue),
                 MenuItem(title: L10n.Menu.gemsSubscriptions, segue: StoryboardSegue.Main.gemSubscriptionSegue.rawValue)
                 ]),
             MenuSection(title: L10n.Menu.about, iconAsset: Asset.iconHelp, items: [

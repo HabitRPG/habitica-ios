@@ -1,5 +1,5 @@
 //
-//  HRPGShopBannerView.swift
+//  NPCBannerView.swift
 //  Habitica
 //
 //  Created by Elliot Schrock on 8/13/17.
@@ -8,12 +8,12 @@
 
 import UIKit
 
-class HRPGShopBannerView: UIView {
-    @IBOutlet weak var shopBgImageView: UIImageView!
-    @IBOutlet weak var shopForegroundImageView: UIImageView!
+class NPCBannerView: UIView {
+    @IBOutlet weak var bgImageView: UIImageView!
+    @IBOutlet weak var foregroundImageView: UIImageView!
     @IBOutlet weak var notesLabel: UILabel!
-    @IBOutlet weak var shopNameLabel: UILabel!
-    @IBOutlet weak var shopPlaqueImageView: UIImageView!
+    @IBOutlet weak var npcNameLabel: UILabel!
+    @IBOutlet weak var plaqueImageView: UIImageView!
     @IBOutlet weak var gradientView: GradientView!
     private var _shop: Shop?
     @objc var shop: Shop? {
@@ -49,7 +49,7 @@ class HRPGShopBannerView: UIView {
             
             addSubview(view)
             
-            shopPlaqueImageView.image = UIImage(named: "Nameplate")?.resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: 21, bottom: 0, right: 21))
+            plaqueImageView.image = UIImage(named: "Nameplate")?.resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: 21, bottom: 0, right: 21))
             
             gradientView.startColor = UIColor.white.withAlphaComponent(0.8)
             gradientView.endColor = UIColor.white
@@ -70,15 +70,15 @@ class HRPGShopBannerView: UIView {
             setSprites(identifier: identifier)
             switch unwrappedShop.identifier {
             case .some("market"):
-                self.shopNameLabel.text = "Alex"
+                self.npcNameLabel.text = "Alex"
             case .some("questShop"):
-                self.shopNameLabel.text = "Ian"
+                self.npcNameLabel.text = "Ian"
             case .some("seasonalShop"):
-                self.shopNameLabel.text = "Leslie"
+                self.npcNameLabel.text = "Leslie"
             case .some("timeTravelersShop"):
-                self.shopNameLabel.text = "Tyler & Vicky"
+                self.npcNameLabel.text = "Tyler & Vicky"
             default:
-                self.shopNameLabel.text = unwrappedShop.text
+                self.npcNameLabel.text = unwrappedShop.text
             }
             
             if let notes = unwrappedShop.notes?.strippingHTML() {
@@ -89,11 +89,11 @@ class HRPGShopBannerView: UIView {
     }
 
     func setSprites(identifier: String) {
-        let shopSpriteSuffix = ConfigRepository().string(variable: .shopSpriteSuffix, defaultValue: "")
-        HRPGManager.shared().getImage(identifier + "_background"+shopSpriteSuffix, withFormat: "png", onSuccess: { (image) in
-            self.shopBgImageView.image = image?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: UIImageResizingMode.tile)
-        }, onError: {})
-        HRPGManager.shared().setImage(identifier + "_scene"+shopSpriteSuffix, withFormat: "png", on: self.shopForegroundImageView)
+        let spriteSuffix = ConfigRepository().string(variable: .shopSpriteSuffix, defaultValue: "")
+        ImageManager.getImage(name: identifier + "_background"+spriteSuffix) { (image, _) in
+            self.bgImageView.image = image?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: UIImageResizingMode.tile)
+        }
+        foregroundImageView.setImagewith(name: identifier + "_scene"+spriteSuffix)
     }
     
     func setNotes(_ notes: String) {

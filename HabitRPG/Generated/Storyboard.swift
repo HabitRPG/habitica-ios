@@ -84,6 +84,8 @@ internal enum StoryboardScene {
 
     internal static let gemPurchaseViewController = SceneType<Habitica.GemViewController>(storyboard: Main.self, identifier: "GemPurchaseViewController")
 
+    internal static let groupTableViewController = SceneType<Habitica.StableSplitViewController>(storyboard: Main.self, identifier: "GroupTableViewController")
+
     internal static let itemNavigationController = SceneType<UINavigationController>(storyboard: Main.self, identifier: "ItemNavigationController")
 
     internal static let mainTabBarController = SceneType<HRPGTabBarController>(storyboard: Main.self, identifier: "MainTabBarController")
@@ -206,16 +208,17 @@ internal enum StoryboardSegue {
     case helpSegue = "HelpSegue"
     case inboxSegue = "InboxSegue"
     case itemSegue = "ItemSegue"
-    case mountSegue = "MountSegue"
+    case mountDetailSegue = "MountDetailSegue"
     case newsSegue = "NewsSegue"
     case partySegue = "PartySegue"
-    case petSegue = "PetSegue"
+    case petDetailSegue = "PetDetailSegue"
     case scannedCodeSegue = "ScannedCodeSegue"
     case selectClassSegue = "SelectClassSegue"
     case settingsSegue = "SettingsSegue"
     case shopsSegue = "ShopsSegue"
     case showShopSegue = "ShowShopSegue"
     case spellsSegue = "SpellsSegue"
+    case stableSegue = "StableSegue"
     case statsSegue = "StatsSegue"
     case tavernSegue = "TavernSegue"
     case unwindTagSegue = "UnwindTagSegue"

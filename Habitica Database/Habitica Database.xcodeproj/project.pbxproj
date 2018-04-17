@@ -64,6 +64,7 @@
 		299FB2842084975100422522 /* RealmMount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB2832084975100422522 /* RealmMount.swift */; };
 		299FB29020849E7300422522 /* RealmOwnedPet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB28F20849E7300422522 /* RealmOwnedPet.swift */; };
 		299FB29220849E9E00422522 /* RealmOwnedMount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB29120849E9E00422522 /* RealmOwnedMount.swift */; };
+		299FB2982084A17A00422522 /* StableLocalRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB2972084A17A00422522 /* StableLocalRepository.swift */; };
 		29A6B86C20690DF00086B2A6 /* RealmWeekRepeat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A6B86B20690DF00086B2A6 /* RealmWeekRepeat.swift */; };
 		EFA96FFA3536BF094D7B36B3 /* Pods_Habitica_DatabaseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 930CE9895A927708C0C96A90 /* Pods_Habitica_DatabaseTests.framework */; };
 /* End PBXBuildFile section */
@@ -140,6 +141,7 @@
 		299FB2832084975100422522 /* RealmMount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmMount.swift; sourceTree = "<group>"; };
 		299FB28F20849E7300422522 /* RealmOwnedPet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmOwnedPet.swift; sourceTree = "<group>"; };
 		299FB29120849E9E00422522 /* RealmOwnedMount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmOwnedMount.swift; sourceTree = "<group>"; };
+		299FB2972084A17A00422522 /* StableLocalRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StableLocalRepository.swift; sourceTree = "<group>"; };
 		29A6B86B20690DF00086B2A6 /* RealmWeekRepeat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmWeekRepeat.swift; sourceTree = "<group>"; };
 		46F1FDA07144B10D37712F09 /* Pods-Habitica DatabaseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica DatabaseTests.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Habitica DatabaseTests/Pods-Habitica DatabaseTests.debug.xcconfig"; sourceTree = "<group>"; };
 		930CE9895A927708C0C96A90 /* Pods_Habitica_DatabaseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica_DatabaseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -198,6 +200,7 @@
 				292DEE65204DCB010086D5F7 /* BaseLocalRepository.swift */,
 				295611132056ECA400D9711A /* ContentLocalRepository.swift */,
 				2902797C2058134D006DACB9 /* InventoryLocalRepository.swift */,
+				299FB2972084A17A00422522 /* StableLocalRepository.swift */,
 				290C3047206D47A30066AF5B /* SocialLocalRepository.swift */,
 				292DEE67204DCCB40086D5F7 /* TaskLocalRepository.swift */,
 				29323E1C2050537700AC6D6F /* UserLocalRepository.swift */,
@@ -558,6 +561,7 @@
 				295611182057C8EB00D9711A /* RealmItem.swift in Sources */,
 				292DEE68204DCCB40086D5F7 /* TaskLocalRepository.swift in Sources */,
 				292F967820722BB300804151 /* RealmChatMessageReaction.swift in Sources */,
+				299FB2982084A17A00422522 /* StableLocalRepository.swift in Sources */,
 				292DEE66204DCB010086D5F7 /* BaseLocalRepository.swift in Sources */,
 				292DEE80204E3A000086D5F7 /* RealmTag.swift in Sources */,
 				29323E582052F8BC00AC6D6F /* RealmUserItems.swift in Sources */,

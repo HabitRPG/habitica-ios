@@ -9,17 +9,17 @@
 import Foundation
 import Habitica_Models
 
-class APIUserItems: UserItemsProtocol, Decodable {
-    var gear: UserGearProtocol?
-    var currentMount: String?
-    var currentPet: String?
-    var ownedQuests: [OwnedItemProtocol]
-    var ownedFood: [OwnedItemProtocol]
-    var ownedHatchingPotions: [OwnedItemProtocol]
-    var ownedEggs: [OwnedItemProtocol]
+public class APIUserItems: UserItemsProtocol, Decodable {
+    public var gear: UserGearProtocol?
+    public var currentMount: String?
+    public var currentPet: String?
+    public var ownedQuests: [OwnedItemProtocol]
+    public var ownedFood: [OwnedItemProtocol]
+    public var ownedHatchingPotions: [OwnedItemProtocol]
+    public var ownedEggs: [OwnedItemProtocol]
     
-    var ownedPets: [OwnedPetProtocol]
-    var ownedMounts: [OwnedMountProtocol]
+    public var ownedPets: [OwnedPetProtocol]
+    public var ownedMounts: [OwnedMountProtocol]
     
     enum CodingKeys: String, CodingKey {
         case gear

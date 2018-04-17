@@ -66,8 +66,7 @@
 "menu.customize_avatar" = "Customize Avatar";
 "menu.equipment" = "Equipment";
 "menu.items" = "Items";
-"menu.pets" = "Pets";
-"menu.mounts" = "Mounts";
+"menu.stable" = "Stable";
 "menu.gems_subscriptions" = "Gems & Subscriptions";
 "menu.news" = "News";
 "menu.help_faq" = "Help & FAQ";
@@ -118,3 +117,16 @@
 "ok" = "OK";
 "inventory.hatched" = "You hatched a new pet!";
 "inventory.hatchedSharing" = "I just hatched a %@ %@ pet in Habitica by completing my real-life tasks!";
+"pets" = "Pets";
+"mounts" = "Mounts";
+"stable.standard_pets" = "Standard Pets";
+"stable.quest_pets" = "Quest Pets";
+"stable.special_pets" = "Special Pets";
+"stable.standard_mounts" = "Standard Mounts";
+"stable.quest_mounts" = "Quest Mounts";
+"stable.special_mounts" = "Special Mounts";
+"stable.standard" = "Standard";
+"stable.premium" = "Magic Potion";
+"stable.feed" = "Feed";
+"equip" = "Equip";
+"unequip" = "Unequip";

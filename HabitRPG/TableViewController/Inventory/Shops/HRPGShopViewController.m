@@ -17,7 +17,7 @@
 
 @interface HRPGShopViewController () <HRPGShopCollectionViewDataSourceDelegate, HRPGFetchedResultsCollectionViewDataSourceDelegate>
 
-@property (nonatomic) HRPGShopBannerView *shopBannerView;
+@property (nonatomic) NPCBannerView *shopBannerView;
 
 @property (nonatomic) HRPGShopCollectionViewDataSource *dataSource;
 @property (nonatomic) HRPGShopViewModel *viewModel;
@@ -260,8 +260,8 @@
     return _viewModel;
 }
 
-- (HRPGShopBannerView *)shopBannerView {
-    if (!_shopBannerView) _shopBannerView = [[HRPGShopBannerView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 165)];
+- (NPCBannerView *)shopBannerView {
+    if (!_shopBannerView) _shopBannerView = [[NPCBannerView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 165)];
     return _shopBannerView;
 }
 

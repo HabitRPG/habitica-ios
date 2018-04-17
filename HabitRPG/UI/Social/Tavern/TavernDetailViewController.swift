@@ -12,7 +12,7 @@ import ReactiveSwift
 
 class TavernDetailViewController: UIViewController {
     
-    @IBOutlet weak var tavernHeaderView: HRPGShopBannerView!
+    @IBOutlet weak var tavernHeaderView: NPCBannerView!
     
     @IBOutlet weak var innButton: UIButton!
     @IBOutlet weak var worldBossStackView: CollapsibleStackView!
@@ -62,7 +62,7 @@ class TavernDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tavernHeaderView.shopNameLabel.text = "Daniel"
+        tavernHeaderView.npcNameLabel.text = "Daniel"
         tavernHeaderView.setSprites(identifier: "tavern")
         tavernHeaderView.setNotes(NSLocalizedString("Welcome to the Inn! Pull up a chair to chat, or take a break from your tasks.", comment: ""))
         

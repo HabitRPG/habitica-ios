@@ -280,8 +280,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Tavern" id="Iy2-WC-FJM"/>
                     <connections>
-                        <outlet property="chatViewWidthConstraint" destination="3eZ-K5-9nd" id="ZxG-ig-qii"/>
-                        <outlet property="detailViewWidthConstraint" destination="0wA-Yp-BWG" id="4Yk-Do-5h5"/>
+                        <outlet property="leftViewWidthConstraint" destination="0wA-Yp-BWG" id="Frh-9A-6i7"/>
+                        <outlet property="rightViewWidthConstraint" destination="3eZ-K5-9nd" id="CpM-7R-bAb"/>
                         <outlet property="scrollView" destination="c7j-hO-FPY" id="YGy-jK-cwf"/>
                         <outlet property="scrollViewTopConstraint" destination="McH-WV-DmV" id="u8N-De-twR"/>
                         <outlet property="separatorView" destination="rjJ-h8-ULm" id="NaA-Sx-noI"/>
@@ -2127,7 +2127,7 @@ Invite friends now to earn a Quest Scroll!</string>
                                     <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="LGu-ud-dCr">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="957.5"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rbl-0s-XZ1" customClass="HRPGShopBannerView" customModule="Habitica" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rbl-0s-XZ1" customClass="NPCBannerView" customModule="Habitica" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
@@ -2519,8 +2519,8 @@ Invite friends now to earn a Quest Scroll!</string>
                     </view>
                     <navigationItem key="navigationItem" title="Guild" id="29I-jK-mZ4"/>
                     <connections>
-                        <outlet property="chatViewWidthConstraint" destination="OoU-0w-G2F" id="E1i-3X-aO5"/>
-                        <outlet property="detailViewWidthConstraint" destination="87b-Z8-ETr" id="hRX-uz-aNm"/>
+                        <outlet property="leftViewWidthConstraint" destination="87b-Z8-ETr" id="ibs-d8-EvZ"/>
+                        <outlet property="rightViewWidthConstraint" destination="OoU-0w-G2F" id="uPT-K3-Tup"/>
                         <outlet property="scrollView" destination="6y4-NW-sAd" id="3Rc-dj-NQA"/>
                         <outlet property="scrollViewTopConstraint" destination="8bz-dd-X5s" id="JeZ-Hq-L3S"/>
                         <outlet property="separatorView" destination="Q2D-H7-UcO" id="kei-u2-EdF"/>

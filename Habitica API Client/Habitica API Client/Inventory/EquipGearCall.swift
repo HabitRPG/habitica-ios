@@ -11,8 +11,8 @@ import Habitica_Models
 import FunkyNetwork
 import ReactiveSwift
 
-public class EquipGearCall: ResponseObjectCall<UserItemsProtocol, APIUserItems> {
-    public init(type: String, gear: GearProtocol, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "user.json")) {
-        super.init(httpMethod: .POST, endpoint: "user/equip/\(type)/\(gear.key ?? "")", postData: nil, stubHolder: stubHolder)
+public class EquipCall: ResponseObjectCall<UserItemsProtocol, APIUserItems> {
+    public init(type: String, itemKey: String, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "user.json")) {
+        super.init(httpMethod: .POST, endpoint: "user/equip/\(type)/\(itemKey)", postData: nil, stubHolder: stubHolder)
     }
 }

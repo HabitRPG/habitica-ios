@@ -84,4 +84,14 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
         call.fire()
         return call.objectSignal
     }
+    
+    func equip(type: String, key: String) -> Signal<UserItemsProtocol?, NoError> {
+        let call = EquipCall(type: type, itemKey: key)
+        call.fire()
+        return call.objectSignal.on(value: { userItems in
+            if let userItems = userItems, let userID = self.currentUserId {
+                self.localUserRepository.updateUser(id: userID, userItems: userItems)
+            }
+        })
+    }
 }

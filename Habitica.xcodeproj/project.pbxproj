@@ -45,6 +45,17 @@
 		290C3017206A963D0066AF5B /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C3016206A963D0066AF5B /* MainMenuViewController.swift */; };
 		290C302A206BA0B50066AF5B /* SkillTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C3029206BA0B50066AF5B /* SkillTableViewCell.swift */; };
 		290C302C206BACBB0066AF5B /* SpellsTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C302B206BACBB0066AF5B /* SpellsTableViewDataSource.swift */; };
+		2914485B2084E61400F3A6B5 /* MountOverviewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2914485A2084E61400F3A6B5 /* MountOverviewDataSource.swift */; };
+		2914485D2084E6ED00F3A6B5 /* MountOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2914485C2084E6ED00F3A6B5 /* MountOverviewViewController.swift */; };
+		291448602084EA0100F3A6B5 /* PetDetailDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2914485F2084EA0100F3A6B5 /* PetDetailDataSource.swift */; };
+		291448622084ED6F00F3A6B5 /* StableDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291448612084ED6F00F3A6B5 /* StableDetailViewController.swift */; };
+		291448642084EE6D00F3A6B5 /* PetDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291448632084EE6D00F3A6B5 /* PetDetailViewController.swift */; };
+		291448662084FBAC00F3A6B5 /* PetDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291448652084FBAB00F3A6B5 /* PetDetailCell.swift */; };
+		291448682084FBCF00F3A6B5 /* MountDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291448672084FBCF00F3A6B5 /* MountDetailCell.swift */; };
+		2914486A2085126700F3A6B5 /* StableSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291448692085126700F3A6B5 /* StableSectionHeader.swift */; };
+		2914486C208512ED00F3A6B5 /* StableSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2914486B208512ED00F3A6B5 /* StableSectionHeader.xib */; };
+		2914486E2085EAD300F3A6B5 /* MountDetailDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2914486D2085EAD300F3A6B5 /* MountDetailDataSource.swift */; };
+		291448702085EC0F00F3A6B5 /* MountDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2914486F2085EC0F00F3A6B5 /* MountDetailViewController.swift */; };
 		29205E352062DF710024E355 /* TextInputFormRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29205E342062DF710024E355 /* TextInputFormRow.swift */; };
 		29205E372062E0030024E355 /* TaskTextInputCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29205E362062E0030024E355 /* TaskTextInputCell.xib */; };
 		29205E392062E2430024E355 /* TaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29205E382062E2430024E355 /* TaskRow.swift */; };
@@ -139,6 +150,14 @@
 		299BD6351F54346F00E22935 /* QuestDetailRewardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 299BD6341F54346F00E22935 /* QuestDetailRewardView.xib */; };
 		299BD6371F5457E100E22935 /* HabiticaIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299BD6361F5457E100E22935 /* HabiticaIcons.swift */; };
 		299BD63A1F557FE700E22935 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299BD6391F557FE700E22935 /* AuthenticationManager.swift */; };
+		299FB29A2084A30400422522 /* StableRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB2992084A30400422522 /* StableRepository.swift */; };
+		299FB29D2084A67D00422522 /* StableOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB29C2084A67D00422522 /* StableOverviewViewController.swift */; };
+		299FB29F2084A8FD00422522 /* StableSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB29E2084A8FD00422522 /* StableSplitViewController.swift */; };
+		299FB2A12084A93100422522 /* HabiticaSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB2A02084A93100422522 /* HabiticaSplitViewController.swift */; };
+		299FB2A32084B3DF00422522 /* PetOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB2A22084B3DF00422522 /* PetOverviewViewController.swift */; };
+		299FB2A52084B40700422522 /* StableOverviewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB2A42084B40700422522 /* StableOverviewDataSource.swift */; };
+		299FB2A72084B44000422522 /* PetOverviewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB2A62084B44000422522 /* PetOverviewDataSource.swift */; };
+		299FB2AA2084BA6200422522 /* StableOverviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB2A92084BA6200422522 /* StableOverviewCell.swift */; };
 		29A0FD79203DBDAD00590BDE /* ChatMessageLike+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 29A0FD78203DBDAD00590BDE /* ChatMessageLike+CoreDataClass.m */; };
 		29A0FD7E203DBDEA00590BDE /* ChatMessageFlag+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 29A0FD7C203DBDEA00590BDE /* ChatMessageFlag+CoreDataClass.m */; };
 		29A0FD7F203DBDEA00590BDE /* ChatMessageFlag+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 29A0FD7D203DBDEA00590BDE /* ChatMessageFlag+CoreDataProperties.m */; };
@@ -251,8 +270,8 @@
 		49DCB7B81F3F64D40079FDD0 /* HRPGShopModalBgView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49DCB7B71F3F64D40079FDD0 /* HRPGShopModalBgView.xib */; };
 		49DCB7BA1F3F6F620079FDD0 /* HRPGCloseableShopModalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49DCB7B91F3F6F620079FDD0 /* HRPGCloseableShopModalView.xib */; };
 		49DCB7BC1F3F6F830079FDD0 /* HRPGCloseableShopModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DCB7BB1F3F6F830079FDD0 /* HRPGCloseableShopModalView.swift */; };
-		49DCB7C21F40D7F10079FDD0 /* HRPGShopBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DCB7C11F40D7F00079FDD0 /* HRPGShopBannerView.swift */; };
-		49DCB7C41F40D80B0079FDD0 /* HRPGShopBannerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49DCB7C31F40D80B0079FDD0 /* HRPGShopBannerView.xib */; };
+		49DCB7C21F40D7F10079FDD0 /* NPCBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DCB7C11F40D7F00079FDD0 /* NPCBannerView.swift */; };
+		49DCB7C41F40D80B0079FDD0 /* NPCBannerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49DCB7C31F40D80B0079FDD0 /* NPCBannerView.xib */; };
 		49DCECA71F96ECEF00982E99 /* MultiModelDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DCECA61F96ECEF00982E99 /* MultiModelDataSource.swift */; };
 		49DCECA91F96F8DE00982E99 /* ChallengeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DCECA81F96F8DE00982E99 /* ChallengeDetailViewModel.swift */; };
 		49DCECE81F9A843E00982E99 /* MultiModelTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DCECE71F9A843E00982E99 /* MultiModelTableViewController.swift */; };
@@ -597,6 +616,17 @@
 		290C3016206A963D0066AF5B /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		290C3029206BA0B50066AF5B /* SkillTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillTableViewCell.swift; sourceTree = "<group>"; };
 		290C302B206BACBB0066AF5B /* SpellsTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellsTableViewDataSource.swift; sourceTree = "<group>"; };
+		2914485A2084E61400F3A6B5 /* MountOverviewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountOverviewDataSource.swift; sourceTree = "<group>"; };
+		2914485C2084E6ED00F3A6B5 /* MountOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountOverviewViewController.swift; sourceTree = "<group>"; };
+		2914485F2084EA0100F3A6B5 /* PetDetailDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetDetailDataSource.swift; sourceTree = "<group>"; };
+		291448612084ED6F00F3A6B5 /* StableDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StableDetailViewController.swift; sourceTree = "<group>"; };
+		291448632084EE6D00F3A6B5 /* PetDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetDetailViewController.swift; sourceTree = "<group>"; };
+		291448652084FBAB00F3A6B5 /* PetDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetDetailCell.swift; sourceTree = "<group>"; };
+		291448672084FBCF00F3A6B5 /* MountDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountDetailCell.swift; sourceTree = "<group>"; };
+		291448692085126700F3A6B5 /* StableSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StableSectionHeader.swift; sourceTree = "<group>"; };
+		2914486B208512ED00F3A6B5 /* StableSectionHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StableSectionHeader.xib; sourceTree = "<group>"; };
+		2914486D2085EAD300F3A6B5 /* MountDetailDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountDetailDataSource.swift; sourceTree = "<group>"; };
+		2914486F2085EC0F00F3A6B5 /* MountDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountDetailViewController.swift; sourceTree = "<group>"; };
 		29205E342062DF710024E355 /* TextInputFormRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputFormRow.swift; sourceTree = "<group>"; };
 		29205E362062E0030024E355 /* TaskTextInputCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskTextInputCell.xib; sourceTree = "<group>"; };
 		29205E382062E2430024E355 /* TaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRow.swift; sourceTree = "<group>"; };
@@ -699,6 +729,14 @@
 		299BD6341F54346F00E22935 /* QuestDetailRewardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestDetailRewardView.xib; sourceTree = "<group>"; };
 		299BD6361F5457E100E22935 /* HabiticaIcons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabiticaIcons.swift; sourceTree = "<group>"; };
 		299BD6391F557FE700E22935 /* AuthenticationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
+		299FB2992084A30400422522 /* StableRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StableRepository.swift; sourceTree = "<group>"; };
+		299FB29C2084A67D00422522 /* StableOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StableOverviewViewController.swift; sourceTree = "<group>"; };
+		299FB29E2084A8FD00422522 /* StableSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StableSplitViewController.swift; sourceTree = "<group>"; };
+		299FB2A02084A93100422522 /* HabiticaSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabiticaSplitViewController.swift; sourceTree = "<group>"; };
+		299FB2A22084B3DF00422522 /* PetOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetOverviewViewController.swift; sourceTree = "<group>"; };
+		299FB2A42084B40700422522 /* StableOverviewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StableOverviewDataSource.swift; sourceTree = "<group>"; };
+		299FB2A62084B44000422522 /* PetOverviewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetOverviewDataSource.swift; sourceTree = "<group>"; };
+		299FB2A92084BA6200422522 /* StableOverviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StableOverviewCell.swift; sourceTree = "<group>"; };
 		29A0FD77203DBDAD00590BDE /* ChatMessageLike+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ChatMessageLike+CoreDataClass.h"; sourceTree = "<group>"; };
 		29A0FD78203DBDAD00590BDE /* ChatMessageLike+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ChatMessageLike+CoreDataClass.m"; sourceTree = "<group>"; };
 		29A0FD7A203DBDEA00590BDE /* ChatMessageFlag+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ChatMessageFlag+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -830,8 +868,8 @@
 		49DCB7B71F3F64D40079FDD0 /* HRPGShopModalBgView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPGShopModalBgView.xib; sourceTree = "<group>"; };
 		49DCB7B91F3F6F620079FDD0 /* HRPGCloseableShopModalView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPGCloseableShopModalView.xib; sourceTree = "<group>"; };
 		49DCB7BB1F3F6F830079FDD0 /* HRPGCloseableShopModalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGCloseableShopModalView.swift; sourceTree = "<group>"; };
-		49DCB7C11F40D7F00079FDD0 /* HRPGShopBannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGShopBannerView.swift; sourceTree = "<group>"; };
-		49DCB7C31F40D80B0079FDD0 /* HRPGShopBannerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPGShopBannerView.xib; sourceTree = "<group>"; };
+		49DCB7C11F40D7F00079FDD0 /* NPCBannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NPCBannerView.swift; sourceTree = "<group>"; };
+		49DCB7C31F40D80B0079FDD0 /* NPCBannerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NPCBannerView.xib; sourceTree = "<group>"; };
 		49DCECA61F96ECEF00982E99 /* MultiModelDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiModelDataSource.swift; sourceTree = "<group>"; };
 		49DCECA81F96F8DE00982E99 /* ChallengeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeDetailViewModel.swift; sourceTree = "<group>"; };
 		49DCECE71F9A843E00982E99 /* MultiModelTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MultiModelTableViewController.swift; path = HabitRPG/TableViewController/MultiModelTableViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -1447,6 +1485,7 @@
 		290B629F207F8140007287C4 /* Inventory */ = {
 			isa = PBXGroup;
 			children = (
+				299FB29B2084A67100422522 /* Stable */,
 				290B62A1207F816B007287C4 /* ItemsViewController.swift */,
 			);
 			path = Inventory;
@@ -1457,8 +1496,21 @@
 			children = (
 				290C3016206A963D0066AF5B /* MainMenuViewController.swift */,
 				29C1B6AA20594F500001D3EF /* VisualEffectsModalViewController.swift */,
+				299FB2A02084A93100422522 /* HabiticaSplitViewController.swift */,
 			);
 			path = General;
+			sourceTree = "<group>";
+		};
+		2914485E2084E9F300F3A6B5 /* Stable */ = {
+			isa = PBXGroup;
+			children = (
+				299FB2A42084B40700422522 /* StableOverviewDataSource.swift */,
+				299FB2A62084B44000422522 /* PetOverviewDataSource.swift */,
+				2914485A2084E61400F3A6B5 /* MountOverviewDataSource.swift */,
+				2914485F2084EA0100F3A6B5 /* PetDetailDataSource.swift */,
+				2914486D2085EAD300F3A6B5 /* MountDetailDataSource.swift */,
+			);
+			name = Stable;
 			sourceTree = "<group>";
 		};
 		29205E332062DF620024E355 /* TaskFormRows */ = {
@@ -1486,6 +1538,7 @@
 				29FC884B2010CC8A002B3D3F /* SocialRepository.swift */,
 				29028C382034ABAF00B7F704 /* TaskRepositoryImpl.swift */,
 				29323E1A2050532D00AC6D6F /* UserRepository.swift */,
+				299FB2992084A30400422522 /* StableRepository.swift */,
 			);
 			path = Implementations;
 			sourceTree = "<group>";
@@ -1586,6 +1639,32 @@
 				D95CBD471BBC0EDA002F4498 /* UIView+Pulse.m */,
 			);
 			name = Tutorials;
+			sourceTree = "<group>";
+		};
+		299FB29B2084A67100422522 /* Stable */ = {
+			isa = PBXGroup;
+			children = (
+				299FB29C2084A67D00422522 /* StableOverviewViewController.swift */,
+				299FB29E2084A8FD00422522 /* StableSplitViewController.swift */,
+				299FB2A22084B3DF00422522 /* PetOverviewViewController.swift */,
+				2914485C2084E6ED00F3A6B5 /* MountOverviewViewController.swift */,
+				291448612084ED6F00F3A6B5 /* StableDetailViewController.swift */,
+				291448632084EE6D00F3A6B5 /* PetDetailViewController.swift */,
+				2914486F2085EC0F00F3A6B5 /* MountDetailViewController.swift */,
+			);
+			path = Stable;
+			sourceTree = "<group>";
+		};
+		299FB2A82084BA5A00422522 /* Inventory */ = {
+			isa = PBXGroup;
+			children = (
+				299FB2A92084BA6200422522 /* StableOverviewCell.swift */,
+				291448652084FBAB00F3A6B5 /* PetDetailCell.swift */,
+				291448672084FBCF00F3A6B5 /* MountDetailCell.swift */,
+				291448692085126700F3A6B5 /* StableSectionHeader.swift */,
+				2914486B208512ED00F3A6B5 /* StableSectionHeader.xib */,
+			);
+			path = Inventory;
 			sourceTree = "<group>";
 		};
 		29AAA1641F2B6D2400029737 /* Setup */ = {
@@ -1723,6 +1802,7 @@
 				494E540A1F2D894D0003683C /* HRPGShopCollectionViewDataSource.swift */,
 				2907267D1F74279C00545550 /* TimeTravelersCollectionViewDataSource.swift */,
 				494E54141F2F07290003683C /* HRPGFetchedResultsCollectionViewDataSource.swift */,
+				2914485E2084E9F300F3A6B5 /* Stable */,
 			);
 			name = CVDataSources;
 			sourceTree = "<group>";
@@ -1786,8 +1866,6 @@
 				D9C89CF51B1DEB6800A599B0 /* HRPGPurchaseLoadingButton.m */,
 				D9BBF32A1DBD127A00C4114C /* HRPGShopAdFooter.h */,
 				D9BBF32B1DBD127A00C4114C /* HRPGShopAdFooter.m */,
-				49DCB7C11F40D7F00079FDD0 /* HRPGShopBannerView.swift */,
-				49DCB7C31F40D80B0079FDD0 /* HRPGShopBannerView.xib */,
 				49DCB7B51F3F64B40079FDD0 /* HRPGShopModalBgView.swift */,
 				49DCB7B71F3F64D40079FDD0 /* HRPGShopModalBgView.xib */,
 				49005B7B1F18371E004830D9 /* HRPGShopUserHeaderView.swift */,
@@ -2316,6 +2394,8 @@
 				29701FE51F56DABC0097BBCC /* RoundedView.swift */,
 				293282131F389CC000D42961 /* SetupCustomizationItemView.swift */,
 				293282151F389DBB00D42961 /* SetupCustomizationItemView.xib */,
+				49DCB7C11F40D7F00079FDD0 /* NPCBannerView.swift */,
+				49DCB7C31F40D80B0079FDD0 /* NPCBannerView.xib */,
 				49DCB7B31F3F5E820079FDD0 /* Shop */,
 				293BB4A41FD078EC003B6F4F /* StatsSliderView.swift */,
 				293BB4A21FD07603003B6F4F /* StatsSliderView.xib */,
@@ -2359,6 +2439,7 @@
 		D9C2570D1B9B4BFB00839F48 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				299FB2A82084BA5A00422522 /* Inventory */,
 				49A84FB41F9FCA54003E2956 /* Challenges */,
 				D9BB455C1E71C8C70002AE2E /* CheckedTableViewcell.swift */,
 				2957B8C31F4D922C00E836EF /* CustomRewardCell.swift */,
@@ -2961,12 +3042,13 @@
 				D9BB45CA1E76DF260002AE2E /* DailyTableViewCell.xib in Resources */,
 				D9D17CD81E6899F100AD9232 /* HRPGRewardTableViewCell.xib in Resources */,
 				29B6AD4A1F2A0C9800AC8878 /* LoginEntryView.xib in Resources */,
+				2914486C208512ED00F3A6B5 /* StableSectionHeader.xib in Resources */,
 				4924314F202CD19A00288278 /* ChallengeRewardTableViewCell.xib in Resources */,
 				D99BC43319D4C34A006DC132 /* 1Password.xcassets in Resources */,
 				29A6B86420644BFE0086B2A6 /* WeekdayFormCell.xib in Resources */,
 				49E6F57E1FF9A2AE0062C8B2 /* DoubleButtonTableViewCell.xib in Resources */,
 				29A0FD81203DF49900590BDE /* GuidelinesPromptView.xib in Resources */,
-				49DCB7C41F40D80B0079FDD0 /* HRPGShopBannerView.xib in Resources */,
+				49DCB7C41F40D80B0079FDD0 /* NPCBannerView.xib in Resources */,
 				D905D08C1DE241D200CABF55 /* HRPGLoginIncentiveOverlayView.xib in Resources */,
 				498E4CF81FA17B7F006933FF /* ChallengeButtonTableViewCell.xib in Resources */,
 				299BD6351F54346F00E22935 /* QuestDetailRewardView.xib in Resources */,
@@ -3450,6 +3532,7 @@
 				292F967E207239A700804151 /* ImageView-Extensions.swift in Sources */,
 				D99DEC87190836D400FFD2B9 /* Item.m in Sources */,
 				299BD62D1F541EFC00E22935 /* Quest+CoreDataClass.m in Sources */,
+				2914485B2084E61400F3A6B5 /* MountOverviewDataSource.swift in Sources */,
 				D93432571D5A2B9500025412 /* HRPGChoosePMRecipientViewController.m in Sources */,
 				D9F1E3F11E576E430034D0F4 /* Task+CoreDataClass.m in Sources */,
 				98A4DBF01B643BC100A9E2A8 /* HRPGSearchDataManager.m in Sources */,
@@ -3484,6 +3567,7 @@
 				2907F99E1F694C4000328AEE /* GemViewController.swift in Sources */,
 				292F9662206E363000804151 /* GroupChatViewDataSource.swift in Sources */,
 				D984D58B1E4A1F59006E84F8 /* SubscriptionViewController.swift in Sources */,
+				299FB29D2084A67D00422522 /* StableOverviewViewController.swift in Sources */,
 				290B6287207CD6B5007287C4 /* GroupDetailViewController.swift in Sources */,
 				290B6298207E3F37007287C4 /* LeaveGroupInteractor.swift in Sources */,
 				298119B11F50453100F9FB39 /* QuestGoalView.swift in Sources */,
@@ -3493,6 +3577,7 @@
 				D97C71F318F364950089FDC6 /* HRPGEquipmentViewController.m in Sources */,
 				29FD8AA0203D753F0094322E /* SplitSocialViewController.swift in Sources */,
 				299BD63A1F557FE700E22935 /* AuthenticationManager.swift in Sources */,
+				291448622084ED6F00F3A6B5 /* StableDetailViewController.swift in Sources */,
 				D9FC1A871BC2D8A300B97D23 /* TutorialSteps.m in Sources */,
 				295611162056ED8000D9711A /* ContentRepository.swift in Sources */,
 				D98AD5541943986100AF6174 /* HRPGMountViewController.m in Sources */,
@@ -3503,6 +3588,7 @@
 				290726811F750FC400545550 /* ShopCategory+CoreDataClass.m in Sources */,
 				2957B8A81F4B071700E836EF /* InAppReward+CoreDataClass.m in Sources */,
 				29E1631F200F62CB00685640 /* GroupChatViewController.swift in Sources */,
+				299FB2A12084A93100422522 /* HabiticaSplitViewController.swift in Sources */,
 				299BD62F1F541EFC00E22935 /* QuestReward+CoreDataClass.m in Sources */,
 				29A0FD7E203DBDEA00590BDE /* ChatMessageFlag+CoreDataClass.m in Sources */,
 				D9BB45591E71AFAF0002AE2E /* Down-Extensions.swift in Sources */,
@@ -3512,6 +3598,7 @@
 				D92A085A1D3520D8000F8B66 /* Shop.m in Sources */,
 				D98AD54B19437A3500AF6174 /* HRPGPetViewController.m in Sources */,
 				D9D17CD01E673CCC00AD9232 /* UIView-Extensions.swift in Sources */,
+				299FB2A32084B3DF00422522 /* PetOverviewViewController.swift in Sources */,
 				49A4646B1FCD18FD00E14A5D /* HRPGButtonViewModel.swift in Sources */,
 				29AAA15F1F2B596900029737 /* SpeechbubbleView.swift in Sources */,
 				29323E1B2050532D00AC6D6F /* UserRepository.swift in Sources */,
@@ -3575,6 +3662,7 @@
 				D96BFC4C1E181B4A00266EEF /* IntroViewController.swift in Sources */,
 				29E163092008E7B600685640 /* Habitica.xcdatamodeld in Sources */,
 				2902799720583D82006DACB9 /* LoadingViewController.swift in Sources */,
+				291448642084EE6D00F3A6B5 /* PetDetailViewController.swift in Sources */,
 				29255E4B1F3E236C0094A3E3 /* ToastManager.swift in Sources */,
 				494E54041F2D20C70003683C /* HRPGShopOverviewTableViewDataSource.m in Sources */,
 				D9CD2DD51BCAA6F700B1304B /* UIViewController+TutorialSteps.m in Sources */,
@@ -3589,6 +3677,7 @@
 				D9E46B031DABCD9100E390D7 /* Buff+CoreDataClass.m in Sources */,
 				4908641D1F43DE2B00BD9896 /* HRPGInsufficientGemsViewController.swift in Sources */,
 				29FD8AA7203DA42A0094322E /* NSLayoutConstraint-Extensions.swift in Sources */,
+				291448702085EC0F00F3A6B5 /* MountDetailViewController.swift in Sources */,
 				D95D03951C74AA5500D6BFB3 /* Outfit+CoreDataProperties.m in Sources */,
 				D914398A1BAF14C40006999E /* UIImage+withColor.m in Sources */,
 				D97ED0B01E6DBC87006C2A26 /* Interactor.swift in Sources */,
@@ -3598,6 +3687,7 @@
 				494E53FB1F2C14980003683C /* HRPGShopsTableViewCell.swift in Sources */,
 				49005B721F180589004830D9 /* HRPGCurrencyCountView.swift in Sources */,
 				D994B1491AD9177D008AE188 /* UIView+Screenshot.m in Sources */,
+				299FB29F2084A8FD00422522 /* StableSplitViewController.swift in Sources */,
 				D97C71ED18F32FEF0089FDC6 /* Gear.m in Sources */,
 				D95704391E106C11004F6804 /* LocalizedString.swift in Sources */,
 				D9525F991E5F405400C529B8 /* Challenge+CoreDataProperties.m in Sources */,
@@ -3634,6 +3724,7 @@
 				D97ED0B21E6DE3BF006C2A26 /* LeaveChallengeInteractor.swift in Sources */,
 				29FC88602018DB64002B3D3F /* WorldBossDescriptionView.swift in Sources */,
 				29028C3E203701B900B7F704 /* ChatTableViewCell.swift in Sources */,
+				2914486A2085126700F3A6B5 /* StableSectionHeader.swift in Sources */,
 				D95CBD481BBC0EDA002F4498 /* UIView+Pulse.m in Sources */,
 				D96C85481DCCD8BC003E3616 /* UIWindow+VisibleController.m in Sources */,
 				29FC885220134A8F002B3D3F /* PurchaseHandler.swift in Sources */,
@@ -3692,9 +3783,11 @@
 				D9CE90451E4CDD6200702578 /* PillView.swift in Sources */,
 				29ED1AFD1F338ECC005A3895 /* SetupCustomization.swift in Sources */,
 				D99CDDDD1E5368E400ABD85F /* ShopItem+CoreDataClass.m in Sources */,
+				2914486E2085EAD300F3A6B5 /* MountDetailDataSource.swift in Sources */,
 				D9D17CDE1E6AFFD900AD9232 /* ChallengeDetailAlert.swift in Sources */,
+				2914485D2084E6ED00F3A6B5 /* MountOverviewViewController.swift in Sources */,
 				D903B78C1DCA4C25001F2893 /* HRPGNotificationManager.m in Sources */,
-				49DCB7C21F40D7F10079FDD0 /* HRPGShopBannerView.swift in Sources */,
+				49DCB7C21F40D7F10079FDD0 /* NPCBannerView.swift in Sources */,
 				494E540B1F2D894D0003683C /* HRPGShopCollectionViewDataSource.swift in Sources */,
 				29FC8862201A300B002B3D3F /* ProgressBar.swift in Sources */,
 				29646DE3205C1F390050886C /* TaskFormVisualEffectsModalViewController.swift in Sources */,
@@ -3709,6 +3802,7 @@
 				D9B5C0C018D5EFF400C8D1B7 /* ChecklistItem.m in Sources */,
 				29646DD6205BE4C10050886C /* TaskFormViewModel.swift in Sources */,
 				2957B8B31F4B2D5A00E836EF /* RewardViewController.swift in Sources */,
+				291448682084FBCF00F3A6B5 /* MountDetailCell.swift in Sources */,
 				D92A085D1D3520D8000F8B66 /* ShopItem+CoreDataProperties.m in Sources */,
 				29AAA1631F2B6D2000029737 /* SetupViewController.swift in Sources */,
 				29B3FEBC1F9E3B17000B12CF /* HabiticaAlertController.swift in Sources */,
@@ -3755,10 +3849,13 @@
 				29F89F1A1F47882A004E5B84 /* String-Extensions.swift in Sources */,
 				298119AF1F5040DA00F9FB39 /* QuestDetailView.swift in Sources */,
 				D9E46B0A1DABE97200E390D7 /* SpecialItems+CoreDataProperties.m in Sources */,
+				299FB2AA2084BA6200422522 /* StableOverviewCell.swift in Sources */,
 				D9B5C0EA18D6320D00C8D1B7 /* HRPGLoginData.m in Sources */,
 				D902AD8A1B540AE30098A1BD /* HRPGBaseCollectionViewController.m in Sources */,
+				299FB2A52084B40700422522 /* StableOverviewDataSource.swift in Sources */,
 				D9ADD34E1943BBB6006202C1 /* Food.m in Sources */,
 				D99BC43419D4C34A006DC132 /* OnePasswordExtension.m in Sources */,
+				299FB29A2084A30400422522 /* StableRepository.swift in Sources */,
 				D97C71EA18F32FEE0089FDC6 /* Reward.m in Sources */,
 				29028C422037131C00B7F704 /* SystemMessageTableViewCell.swift in Sources */,
 				29A0FD7F203DBDEA00590BDE /* ChatMessageFlag+CoreDataProperties.m in Sources */,
@@ -3774,6 +3871,7 @@
 				29B3FEAF1F9A33AB000B12CF /* APISettingsViewController.swift in Sources */,
 				498E4CFB1FA17B9E006933FF /* ChallengeCreatorTableViewCell.swift in Sources */,
 				D984D58D1E4A2F2D006E84F8 /* SubscriptionOptionView.swift in Sources */,
+				299FB2A72084B44000422522 /* PetOverviewDataSource.swift in Sources */,
 				29A6B85D20641C9B0086B2A6 /* TaskDifficultyRow.swift in Sources */,
 				D96760C81B2EF9B600DB07DF /* HRPGAbbrevNumberLabel.m in Sources */,
 				D9E02EC61E5E0458002CFCE2 /* ChallengeTableViewController.swift in Sources */,
@@ -3788,6 +3886,7 @@
 				293BB49F1FCDCD33003B6F4F /* Stats.swift in Sources */,
 				29E1630B200D050E00685640 /* TopHeaderNavigationController.swift in Sources */,
 				D905766F1BD7F581009BB7BC /* HRPGHintView.m in Sources */,
+				291448602084EA0100F3A6B5 /* PetDetailDataSource.swift in Sources */,
 				29B6AD4C1F2A0DBE00AC8878 /* LoginEntryView.swift in Sources */,
 				D987393C19687F3E002A2426 /* NSNumber+abbreviation.m in Sources */,
 				2980E6091EEA25CE005B7100 /* YesterdailiesDialogView.swift in Sources */,
@@ -3810,6 +3909,7 @@
 				290B624320728E74007287C4 /* GuildOverviewViewController.swift in Sources */,
 				29ED1AFF1F339ACF005A3895 /* UIColor-Extensions.swift in Sources */,
 				D92D26141D58EEBA001FD977 /* HRPGQRCodeScannerViewController.m in Sources */,
+				291448662084FBAC00F3A6B5 /* PetDetailCell.swift in Sources */,
 				D9ADD3511943BC0E006202C1 /* BuyableItem.m in Sources */,
 				293282141F389CC000D42961 /* SetupCustomizationItemView.swift in Sources */,
 				494E54131F2EF7100003683C /* HRPGCollectionViewController.m in Sources */,
