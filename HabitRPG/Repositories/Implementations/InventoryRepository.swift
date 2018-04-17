@@ -59,6 +59,10 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
         return localRepository.getItems(keys: keys)
     }
     
+    func getFood(keys: [String]) ->SignalProducer<ReactiveResults<[FoodProtocol]>, ReactiveSwiftRealmError> {
+            return localRepository.getFood(keys: keys)
+    }
+    
     func sell(item: ItemProtocol) -> Signal<UserProtocol?, NoError> {
         let call = SellItemCall(item: item)
         call.fire()
@@ -91,6 +95,22 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
         return call.objectSignal.on(value: { userItems in
             if let userItems = userItems, let userID = self.currentUserId {
                 self.localUserRepository.updateUser(id: userID, userItems: userItems)
+            }
+        })
+    }
+    
+    func feed(pet: PetProtocol, food: FoodProtocol) -> Signal<Int?, NoError> {
+        let call = FeedPetCall(pet: pet, food: food)
+        call.fire()
+        call.habiticaResponseSignal.observeValues { response in
+            if let message = response?.message {
+                let toastView = ToastView(title: message, background: .green)
+                ToastManager.show(toast: toastView)
+            }
+        }
+        return call.objectSignal.on(value: { petValue in
+            if let userID = self.currentUserId, let key = pet.key, let trained = petValue, let foodKey = food.key {
+                self.localRepository.updatePetTrained(userID: userID, key: key, trained: trained, consumedFood: foodKey)
             }
         })
     }

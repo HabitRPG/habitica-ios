@@ -8,10 +8,10 @@
 
 #import "HRPGPartyTableViewController.h"
 #import "HRPGGroupFormViewController.h"
-#import "HRPGItemViewController.h"
 #import "HRPGQRCodeView.h"
 #import "HRPGSharingManager.h"
 #import "UIView+Screenshot.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGPartyTableViewController ()
 @property NSUserDefaults *defaults;
@@ -232,9 +232,9 @@
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UINavigationController *itemNavigationController =
     [storyBoard instantiateViewControllerWithIdentifier:@"ItemNavigationController"];
-    HRPGItemViewController *itemViewController = (HRPGItemViewController *)itemNavigationController.topViewController;
-    itemViewController.itemType = @"quests";
-    itemViewController.shouldDismissAfterAction = YES;
+    ItemsViewController *itemViewController = (ItemsViewController *)itemNavigationController.topViewController;
+    //itemViewController.itemType = @"quests";
+    //itemViewController.shouldDismissAfterAction = YES;
     itemViewController.modalPresentationStyle = UIModalPresentationFormSheet;
     [self.navigationController presentViewController:itemNavigationController animated:YES completion:nil];
 }

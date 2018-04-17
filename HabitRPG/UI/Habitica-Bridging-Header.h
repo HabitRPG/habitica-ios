@@ -58,3 +58,4 @@
 #import "HRPGShopOverviewViewController.h"
 #import "HRPGSpellViewController.h"
 #import "HRPGSharingManager.h"
+#import "HRPGFeedViewController.h"

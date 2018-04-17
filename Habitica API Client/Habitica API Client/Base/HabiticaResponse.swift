@@ -9,10 +9,10 @@
 import Foundation
 
 public class HabiticaResponse<T: Decodable>: Decodable {
-    var success: Bool = false
-    var data: T?
+    public var success: Bool = false
+    public var data: T?
     
-    var error: String?
-    var message: String?
-    var userV: Int?
+    public var error: String?
+    public var message: String?
+    public var userV: Int?
 }

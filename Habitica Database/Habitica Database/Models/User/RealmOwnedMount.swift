@@ -30,4 +30,12 @@ class RealmOwnedMount: Object, OwnedMountProtocol {
         key = mountProtocol.key
         owned = mountProtocol.owned
     }
+    
+    convenience init(userID: String?, key: String, owned: Bool) {
+        self.init()
+        combinedKey = (userID ?? "") + (key ?? "")
+        self.userID = userID
+        self.key = key
+        self.owned = owned
+    }
 }

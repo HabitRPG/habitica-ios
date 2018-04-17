@@ -56,6 +56,7 @@
 		2914486C208512ED00F3A6B5 /* StableSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2914486B208512ED00F3A6B5 /* StableSectionHeader.xib */; };
 		2914486E2085EAD300F3A6B5 /* MountDetailDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2914486D2085EAD300F3A6B5 /* MountDetailDataSource.swift */; };
 		291448702085EC0F00F3A6B5 /* MountDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2914486F2085EC0F00F3A6B5 /* MountDetailViewController.swift */; };
+		29144872208628A300F3A6B5 /* FeedViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29144871208628A300F3A6B5 /* FeedViewDataSource.swift */; };
 		29205E352062DF710024E355 /* TextInputFormRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29205E342062DF710024E355 /* TextInputFormRow.swift */; };
 		29205E372062E0030024E355 /* TaskTextInputCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29205E362062E0030024E355 /* TaskTextInputCell.xib */; };
 		29205E392062E2430024E355 /* TaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29205E382062E2430024E355 /* TaskRow.swift */; };
@@ -405,10 +406,8 @@
 		D987393C19687F3E002A2426 /* NSNumber+abbreviation.m in Sources */ = {isa = PBXBuildFile; fileRef = D987393B19687F3E002A2426 /* NSNumber+abbreviation.m */; };
 		D98768F51AFFB85100336978 /* blade-equipResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = D98768F41AFFB85100336978 /* blade-equipResponse.json */; };
 		D9884B4519168AF00078BC7C /* HRPGProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9884B4419168AF00078BC7C /* HRPGProgressView.m */; };
-		D98AD54B19437A3500AF6174 /* HRPGPetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D98AD54A19437A3500AF6174 /* HRPGPetViewController.m */; };
 		D98AD54E19437D9400AF6174 /* Pet.m in Sources */ = {isa = PBXBuildFile; fileRef = D98AD54D19437D9400AF6174 /* Pet.m */; };
 		D98AD5511943904F00AF6174 /* HatchingPotion.m in Sources */ = {isa = PBXBuildFile; fileRef = D98AD5501943904F00AF6174 /* HatchingPotion.m */; };
-		D98AD5541943986100AF6174 /* HRPGMountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D98AD5531943986100AF6174 /* HRPGMountViewController.m */; };
 		D98C62BC1DACF933005661CC /* HRPGSpellUserTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D98C62BB1DACF933005661CC /* HRPGSpellUserTableViewController.m */; };
 		D98F5AEC190566CA002F8223 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = D98F5AEB190566CA002F8223 /* User.m */; };
 		D98F5AEF1905C090002F8223 /* HRPGQuestParticipantsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D98F5AEE1905C090002F8223 /* HRPGQuestParticipantsViewController.m */; };
@@ -428,7 +427,6 @@
 		D99BC43319D4C34A006DC132 /* 1Password.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D99BC43019D4C34A006DC132 /* 1Password.xcassets */; };
 		D99BC43419D4C34A006DC132 /* OnePasswordExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = D99BC43219D4C34A006DC132 /* OnePasswordExtension.m */; };
 		D99CDDDD1E5368E400ABD85F /* ShopItem+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = D99CDDDC1E5368E400ABD85F /* ShopItem+CoreDataClass.m */; };
-		D99DEC841908313D00FFD2B9 /* HRPGItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D99DEC831908313D00FFD2B9 /* HRPGItemViewController.m */; };
 		D99DEC87190836D400FFD2B9 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = D99DEC86190836D400FFD2B9 /* Item.m */; };
 		D99DEC89190842CA00FFD2B9 /* Placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = D99DEC88190842CA00FFD2B9 /* Placeholder.png */; };
 		D99DEC8F190914AD00FFD2B9 /* HRPGQuestDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D99DEC8E190914AD00FFD2B9 /* HRPGQuestDetailViewController.m */; };
@@ -510,8 +508,6 @@
 		D9D593611D0058AE00D6C388 /* HRPGInboxChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D593601D0058AE00D6C388 /* HRPGInboxChatViewController.m */; };
 		D9D593661D008C7500D6C388 /* PushDevice+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D593631D008C7500D6C388 /* PushDevice+CoreDataProperties.m */; };
 		D9D593671D008C7500D6C388 /* PushDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D593651D008C7500D6C388 /* PushDevice.m */; };
-		D9D96F00194B87FF00796FE7 /* HRPGPetMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D96EFF194B87FF00796FE7 /* HRPGPetMasterViewController.m */; };
-		D9D96F03194B96FD00796FE7 /* HRPGMountMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D96F02194B96FD00796FE7 /* HRPGMountMasterViewController.m */; };
 		D9D9EF981D54E51C00FC89C1 /* HRPGQRCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D9EF971D54E51C00FC89C1 /* HRPGQRCodeView.m */; };
 		D9E02EC61E5E0458002CFCE2 /* ChallengeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E02EC51E5E0458002CFCE2 /* ChallengeTableViewController.swift */; };
 		D9E46AFD1DAB98D700E390D7 /* HRPGGemHeaderNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E46AFC1DAB98D700E390D7 /* HRPGGemHeaderNavigationController.m */; };
@@ -627,6 +623,7 @@
 		2914486B208512ED00F3A6B5 /* StableSectionHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StableSectionHeader.xib; sourceTree = "<group>"; };
 		2914486D2085EAD300F3A6B5 /* MountDetailDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountDetailDataSource.swift; sourceTree = "<group>"; };
 		2914486F2085EC0F00F3A6B5 /* MountDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountDetailViewController.swift; sourceTree = "<group>"; };
+		29144871208628A300F3A6B5 /* FeedViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewDataSource.swift; sourceTree = "<group>"; };
 		29205E342062DF710024E355 /* TextInputFormRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputFormRow.swift; sourceTree = "<group>"; };
 		29205E362062E0030024E355 /* TaskTextInputCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskTextInputCell.xib; sourceTree = "<group>"; };
 		29205E382062E2430024E355 /* TaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRow.swift; sourceTree = "<group>"; };
@@ -1120,14 +1117,10 @@
 		D98768F41AFFB85100336978 /* blade-equipResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "blade-equipResponse.json"; path = "HabiticaTests/Fixtures/blade-equipResponse.json"; sourceTree = SOURCE_ROOT; };
 		D9884B4319168AF00078BC7C /* HRPGProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGProgressView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D9884B4419168AF00078BC7C /* HRPGProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGProgressView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		D98AD54919437A3500AF6174 /* HRPGPetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGPetViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		D98AD54A19437A3500AF6174 /* HRPGPetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = HRPGPetViewController.m; path = ../HRPGPetViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D98AD54C19437D9400AF6174 /* Pet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pet.h; sourceTree = "<group>"; };
 		D98AD54D19437D9400AF6174 /* Pet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pet.m; sourceTree = "<group>"; };
 		D98AD54F1943904F00AF6174 /* HatchingPotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HatchingPotion.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D98AD5501943904F00AF6174 /* HatchingPotion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HatchingPotion.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		D98AD5521943986100AF6174 /* HRPGMountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = HRPGMountViewController.h; path = ../HRPGMountViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		D98AD5531943986100AF6174 /* HRPGMountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = HRPGMountViewController.m; path = ../HRPGMountViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D98C62BA1DACF933005661CC /* HRPGSpellUserTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGSpellUserTableViewController.h; sourceTree = "<group>"; };
 		D98C62BB1DACF933005661CC /* HRPGSpellUserTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGSpellUserTableViewController.m; sourceTree = "<group>"; };
 		D98F5AEA190566CA002F8223 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
@@ -1166,8 +1159,6 @@
 		D99BC43219D4C34A006DC132 /* OnePasswordExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnePasswordExtension.m; sourceTree = "<group>"; };
 		D99CDDDB1E5368E400ABD85F /* ShopItem+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ShopItem+CoreDataClass.h"; sourceTree = "<group>"; };
 		D99CDDDC1E5368E400ABD85F /* ShopItem+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ShopItem+CoreDataClass.m"; sourceTree = "<group>"; };
-		D99DEC821908313D00FFD2B9 /* HRPGItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGItemViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		D99DEC831908313D00FFD2B9 /* HRPGItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGItemViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D99DEC85190836D400FFD2B9 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
 		D99DEC86190836D400FFD2B9 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
 		D99DEC88190842CA00FFD2B9 /* Placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Placeholder.png; sourceTree = "<group>"; };
@@ -1331,10 +1322,6 @@
 		D9D795F71CAAE64E00112D38 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D9D795F81CAAE64E00112D38 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D9D795F91CAAE64F00112D38 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
-		D9D96EFE194B87FF00796FE7 /* HRPGPetMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGPetMasterViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		D9D96EFF194B87FF00796FE7 /* HRPGPetMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGPetMasterViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		D9D96F01194B96FD00796FE7 /* HRPGMountMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGMountMasterViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		D9D96F02194B96FD00796FE7 /* HRPGMountMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGMountMasterViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D9D9EF961D54E51C00FC89C1 /* HRPGQRCodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGQRCodeView.h; sourceTree = "<group>"; };
 		D9D9EF971D54E51C00FC89C1 /* HRPGQRCodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGQRCodeView.m; sourceTree = "<group>"; };
 		D9E02EC51E5E0458002CFCE2 /* ChallengeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeTableViewController.swift; sourceTree = "<group>"; };
@@ -1792,6 +1779,7 @@
 				292F9661206E363000804151 /* GroupChatViewDataSource.swift */,
 				292F968220724B1100804151 /* GuildsOverviewDataSource.swift */,
 				290B62A3207F818E007287C4 /* ItemsViewDataSource.swift */,
+				29144871208628A300F3A6B5 /* FeedViewDataSource.swift */,
 			);
 			name = TVDataSources;
 			sourceTree = "<group>";
@@ -2264,14 +2252,6 @@
 				494E54121F2EF7100003683C /* HRPGCollectionViewController.m */,
 				D902AD881B540AE30098A1BD /* HRPGBaseCollectionViewController.h */,
 				D902AD891B540AE30098A1BD /* HRPGBaseCollectionViewController.m */,
-				D98AD54919437A3500AF6174 /* HRPGPetViewController.h */,
-				D98AD54A19437A3500AF6174 /* HRPGPetViewController.m */,
-				D9D96EFE194B87FF00796FE7 /* HRPGPetMasterViewController.h */,
-				D9D96EFF194B87FF00796FE7 /* HRPGPetMasterViewController.m */,
-				D98AD5521943986100AF6174 /* HRPGMountViewController.h */,
-				D98AD5531943986100AF6174 /* HRPGMountViewController.m */,
-				D9D96F01194B96FD00796FE7 /* HRPGMountMasterViewController.h */,
-				D9D96F02194B96FD00796FE7 /* HRPGMountMasterViewController.m */,
 				D9B8C11E1AFE70F900634B5A /* HRPGCustomizationCollectionViewController.h */,
 				D9B8C11F1AFE70F900634B5A /* HRPGCustomizationCollectionViewController.m */,
 			);
@@ -2486,8 +2466,6 @@
 				D97C71F218F364950089FDC6 /* HRPGEquipmentViewController.m */,
 				D980373719956E46004C8871 /* HRPGEquipmentDetailViewController.h */,
 				D980373819956E46004C8871 /* HRPGEquipmentDetailViewController.m */,
-				D99DEC821908313D00FFD2B9 /* HRPGItemViewController.h */,
-				D99DEC831908313D00FFD2B9 /* HRPGItemViewController.m */,
 				D9ADD3491943BB16006202C1 /* HRPGFeedViewController.h */,
 				D9ADD34A1943BB16006202C1 /* HRPGFeedViewController.m */,
 			);
@@ -3580,7 +3558,6 @@
 				291448622084ED6F00F3A6B5 /* StableDetailViewController.swift in Sources */,
 				D9FC1A871BC2D8A300B97D23 /* TutorialSteps.m in Sources */,
 				295611162056ED8000D9711A /* ContentRepository.swift in Sources */,
-				D98AD5541943986100AF6174 /* HRPGMountViewController.m in Sources */,
 				D980373919956E46004C8871 /* HRPGEquipmentDetailViewController.m in Sources */,
 				29ED1AFB1F338E5D005A3895 /* SetupCustomizationRepository.swift in Sources */,
 				D96C85421DCB6501003E3616 /* HRPGDropsEnabledNotification.m in Sources */,
@@ -3596,7 +3573,6 @@
 				D9D593611D0058AE00D6C388 /* HRPGInboxChatViewController.m in Sources */,
 				292DEE70204DEB120086D5F7 /* TaskTableViewDataSource.swift in Sources */,
 				D92A085A1D3520D8000F8B66 /* Shop.m in Sources */,
-				D98AD54B19437A3500AF6174 /* HRPGPetViewController.m in Sources */,
 				D9D17CD01E673CCC00AD9232 /* UIView-Extensions.swift in Sources */,
 				299FB2A32084B3DF00422522 /* PetOverviewViewController.swift in Sources */,
 				49A4646B1FCD18FD00E14A5D /* HRPGButtonViewModel.swift in Sources */,
@@ -3626,7 +3602,6 @@
 				D9F1E3E81E55DCEC0034D0F4 /* SubscriptionInformationCell.swift in Sources */,
 				290279732057FB4E006DACB9 /* FAQTableViewDataSource.swift in Sources */,
 				29FC884E2010CCC2002B3D3F /* BaseRepository.swift in Sources */,
-				D9D96F03194B96FD00796FE7 /* HRPGMountMasterViewController.m in Sources */,
 				D9479607196DF4B6002CB34C /* HRPGImageOverlayView.m in Sources */,
 				D9E46B041DABCD9100E390D7 /* Buff+CoreDataProperties.m in Sources */,
 				297517B41F30EBD100B5BCB9 /* AvatarSetupViewController.swift in Sources */,
@@ -3822,7 +3797,6 @@
 				494E54101F2EEF810003683C /* Amplitude+HRPGHelpers.m in Sources */,
 				D95D03961C74AA5500D6BFB3 /* Outfit.m in Sources */,
 				29255E4D1F3E25910094A3E3 /* CGRect-Extensions.swift in Sources */,
-				D99DEC841908313D00FFD2B9 /* HRPGItemViewController.m in Sources */,
 				D98C62BC1DACF933005661CC /* HRPGSpellUserTableViewController.m in Sources */,
 				D995D59A1D1D511700D5251C /* HRPGPushNotificationSettingValueTransformer.m in Sources */,
 				D9B5C0CF18D5F4D400C8D1B7 /* Tag.m in Sources */,
@@ -3885,6 +3859,7 @@
 				490864301F45318600BD9896 /* HRPGInsufficientHourglassesViewController.swift in Sources */,
 				293BB49F1FCDCD33003B6F4F /* Stats.swift in Sources */,
 				29E1630B200D050E00685640 /* TopHeaderNavigationController.swift in Sources */,
+				29144872208628A300F3A6B5 /* FeedViewDataSource.swift in Sources */,
 				D905766F1BD7F581009BB7BC /* HRPGHintView.m in Sources */,
 				291448602084EA0100F3A6B5 /* PetDetailDataSource.swift in Sources */,
 				29B6AD4C1F2A0DBE00AC8878 /* LoginEntryView.swift in Sources */,
@@ -3904,7 +3879,6 @@
 				49DCB79B1F3422440079FDD0 /* HRPGBuyItemModalViewController.swift in Sources */,
 				290B6289207CF248007287C4 /* StackView.swift in Sources */,
 				29323E4920521FD500AC6D6F /* ContributorProtocol-Extensions.swift in Sources */,
-				D9D96F00194B87FF00796FE7 /* HRPGPetMasterViewController.m in Sources */,
 				D97C71DE18EC98A40089FDC6 /* QuestCollect.m in Sources */,
 				290B624320728E74007287C4 /* GuildOverviewViewController.swift in Sources */,
 				29ED1AFF1F339ACF005A3895 /* UIColor-Extensions.swift in Sources */,

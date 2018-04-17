@@ -9,8 +9,10 @@
 #import "Food.h"
 #import "HRPGBaseViewController.h"
 
+@protocol FoodProtocol;
+
 @interface HRPGFeedViewController : HRPGBaseViewController
 
-@property(nonatomic) Food *selectedFood;
+@property(nonatomic) id<FoodProtocol> selectedFood;
 
 @end

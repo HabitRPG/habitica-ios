@@ -47,6 +47,7 @@
 		290C3040206D3DE80066AF5B /* APIGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C303F206D3DE80066AF5B /* APIGroup.swift */; };
 		290C3042206D3EC30066AF5B /* APIChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C3041206D3EC30066AF5B /* APIChatMessage.swift */; };
 		290C3046206D44670066AF5B /* RetrieveGroupCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C3045206D44670066AF5B /* RetrieveGroupCall.swift */; };
+		291448742086352800F3A6B5 /* FeedPetCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291448732086352800F3A6B5 /* FeedPetCall.swift */; };
 		292DEE44204D9D8D0086D5F7 /* Habitica_Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE45204D9D8D0086D5F7 /* Habitica_Models.framework */; };
 		292DEE4B204DA1220086D5F7 /* NetworkAuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE4A204DA1220086D5F7 /* NetworkAuthenticationManager.swift */; };
 		292DEE4F204DA3870086D5F7 /* RetrieveTasksCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE4E204DA3870086D5F7 /* RetrieveTasksCall.swift */; };
@@ -174,6 +175,7 @@
 		290C303F206D3DE80066AF5B /* APIGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIGroup.swift; sourceTree = "<group>"; };
 		290C3041206D3EC30066AF5B /* APIChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIChatMessage.swift; sourceTree = "<group>"; };
 		290C3045206D44670066AF5B /* RetrieveGroupCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveGroupCall.swift; sourceTree = "<group>"; };
+		291448732086352800F3A6B5 /* FeedPetCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPetCall.swift; sourceTree = "<group>"; };
 		292DEE45204D9D8D0086D5F7 /* Habitica_Models.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_Models.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		292DEE4A204DA1220086D5F7 /* NetworkAuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAuthenticationManager.swift; sourceTree = "<group>"; };
 		292DEE4E204DA3870086D5F7 /* RetrieveTasksCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveTasksCall.swift; sourceTree = "<group>"; };
@@ -485,6 +487,7 @@
 				294973C52080F92400F02AC3 /* SellItemCall.swift */,
 				294973C92080F9F600F02AC3 /* EquipGearCall.swift */,
 				294973C72080F98600F02AC3 /* HatchPetCall.swift */,
+				291448732086352800F3A6B5 /* FeedPetCall.swift */,
 				294973CD2080FAD500F02AC3 /* OpenMysteryItemCall.swift */,
 			);
 			path = Inventory;
@@ -863,6 +866,7 @@
 				294973CA2080F9F600F02AC3 /* EquipGearCall.swift in Sources */,
 				2902797F20581CF0006DACB9 /* AllocateAttributePointCall.swift in Sources */,
 				292F9668206E4FBD00804151 /* DeleteChatMessageCall.swift in Sources */,
+				291448742086352800F3A6B5 /* FeedPetCall.swift in Sources */,
 				292DEE82204E411C0086D5F7 /* APIChecklistItem.swift in Sources */,
 				295610FD2056CC5D00D9711A /* APIGear.swift in Sources */,
 				294973C82080F98600F02AC3 /* HatchPetCall.swift in Sources */,

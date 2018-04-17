@@ -36,7 +36,7 @@ public class InventoryLocalRepository: ContentLocalRepository {
         ReactiveResults<[FoodProtocol]>,
         ReactiveResults<[HatchingPotionProtocol]>,
         ReactiveResults<[QuestProtocol]>), ReactiveSwiftRealmError> {
-        let producer = SignalProducer.combineLatest(
+        return SignalProducer.combineLatest(
             RealmEgg.findBy(predicate: NSPredicate(format: "key IN %@", keys)).reactive().map({ (value, changeset) -> ReactiveResults<[EggProtocol]> in
                 return (value.map({ (item) -> EggProtocol in return item }), changeset)
             }),
@@ -49,6 +49,24 @@ public class InventoryLocalRepository: ContentLocalRepository {
             RealmQuest.findBy(predicate: NSPredicate(format: "key IN %@", keys)).reactive().map({ (value, changeset) -> ReactiveResults<[QuestProtocol]> in
                 return (value.map({ (item) -> QuestProtocol in return item }), changeset)
             }))
-        return producer
+    }
+    
+    public func getFood(keys: [String]) -> SignalProducer<ReactiveResults<[FoodProtocol]>, ReactiveSwiftRealmError> {
+        return RealmFood.findBy(predicate: NSPredicate(format: "key IN %@", keys)).reactive().map({ (value, changeset) -> ReactiveResults<[FoodProtocol]> in
+            return (value.map({ (item) -> FoodProtocol in return item }), changeset)
+        })
+    }
+    
+    public func updatePetTrained(userID: String, key: String, trained: Int, consumedFood: String) {
+        let realm = getRealm()
+        let ownedPet = realm?.object(ofType: RealmOwnedPet.self, forPrimaryKey: userID+key)
+        let ownedFood = realm?.object(ofType: RealmOwnedItem.self, forPrimaryKey: userID + consumedFood + "food")
+        try? realm?.write {
+            ownedPet?.trained = trained
+            ownedFood?.numberOwned -= 1
+            if trained == -1 {
+                realm?.add(RealmOwnedMount(userID: userID, key: key, owned: true))
+            }
+        }
     }
 }

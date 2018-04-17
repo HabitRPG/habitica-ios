@@ -18,6 +18,8 @@ class PetDetailViewController: StableDetailViewController<PetDetailDataSource> {
     
     private var user: UserProtocol?
     
+    private var selectedPet: PetProtocol?
+    
     override func viewDidLoad() {
         datasource = PetDetailDataSource(eggType: eggType)
         datasource?.collectionView = self.collectionView
@@ -38,6 +40,7 @@ class PetDetailViewController: StableDetailViewController<PetDetailDataSource> {
         let actionSheet = UIAlertController(title: stableItem.pet?.text, message: nil, preferredStyle: .actionSheet)
         if stableItem.trained > 0 && stableItem.pet?.type != "special" && !stableItem.mountOwned {
             actionSheet.addAction(UIAlertAction(title: L10n.Stable.feed, style: .default, handler: { (_) in
+                self.selectedPet = stableItem.pet
                 self.perform(segue: StoryboardSegue.Main.feedSegue)
             }))
         }
@@ -52,5 +55,15 @@ class PetDetailViewController: StableDetailViewController<PetDetailDataSource> {
         }
         actionSheet.addAction(UIAlertAction.cancelAction())
         actionSheet.show()
+    }
+    
+    @IBAction func unwindToList(_ segue: UIStoryboardSegue) {
+    }
+    
+    @IBAction func unwindToFeed(_ segue: UIStoryboardSegue) {
+        let feedViewController = segue.source as? HRPGFeedViewController
+        if let pet = selectedPet, let food = feedViewController?.selectedFood {
+            inventoryRepository.feed(pet: pet, food: food).observeCompleted {}
+        }
     }
 }
