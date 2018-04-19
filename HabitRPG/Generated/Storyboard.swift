@@ -195,7 +195,6 @@ internal enum StoryboardSegue {
     case challengesSegue = "ChallengesSegue"
     case customizationSegue = "CustomizationSegue"
     case detailSegue = "DetailSegue"
-    case equipmentDetailSegue = "EquipmentDetailSegue"
     case equipmentSegue = "EquipmentSegue"
     case faqDetailSegue = "FAQDetailSegue"
     case faqSegue = "FAQSegue"
@@ -222,6 +221,7 @@ internal enum StoryboardSegue {
     case statsSegue = "StatsSegue"
     case tavernSegue = "TavernSegue"
     case unwindTagSegue = "UnwindTagSegue"
+    case equipmentDetailSegue
     case unwindSaveSegue
     case unwindSegue
   }

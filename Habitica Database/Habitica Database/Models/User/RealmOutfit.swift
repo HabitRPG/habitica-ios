@@ -25,9 +25,9 @@ class RealmOutfit: Object, OutfitProtocol {
         return "id"
     }
     
-    convenience init(id: String?, outfit: OutfitProtocol) {
+    convenience init(id: String?, type: String, outfit: OutfitProtocol) {
         self.init()
-        self.id = id
+        self.id = (id ?? "")+type
         back = outfit.back
         body = outfit.body
         armor = outfit.armor

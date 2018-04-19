@@ -152,7 +152,7 @@
 }
 
 + (UIColor *)gray10 {
-    return [UIColor colorWithRed:78.0f / 255.0f green:74.0f / 255.0f blue:87.0f / 255.0f alpha:1.0f];
+    return [UIColor colorWithRed:52.0f / 255.0f green:49.0f / 255.0f blue:58.0f / 255.0f alpha:1.0f];
 }
 
 + (UIColor *)gray50 {

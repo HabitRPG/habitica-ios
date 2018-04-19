@@ -20,7 +20,7 @@ class RealmUserGear: Object, UserGearProtocol {
                 realmEquipped = item
             }
             if let item = newValue {
-                realmEquipped = RealmOutfit(id: id, outfit: item)
+                realmEquipped = RealmOutfit(id: id, type: "equipped", outfit: item)
             }
         }
     }
@@ -34,7 +34,7 @@ class RealmUserGear: Object, UserGearProtocol {
                 realmCostume = item
             }
             if let item = newValue {
-                realmCostume = RealmOutfit(id: id, outfit: item)
+                realmCostume = RealmOutfit(id: id, type: "costume", outfit: item)
             }
         }
     }

@@ -92,6 +92,33 @@ internal enum L10n {
   /// Yearly
   internal static let yearly = L10n.tr("Main", "yearly")
 
+  internal enum Equipment {
+    /// Armor
+    internal static let armor = L10n.tr("Main", "equipment.armor")
+    /// Auto-Equip new
+    internal static let autoEquip = L10n.tr("Main", "equipment.autoEquip")
+    /// Back Accessory
+    internal static let back = L10n.tr("Main", "equipment.back")
+    /// Battle Gear
+    internal static let battleGear = L10n.tr("Main", "equipment.battle_gear")
+    /// Body Accessory
+    internal static let body = L10n.tr("Main", "equipment.body")
+    /// Costume
+    internal static let costume = L10n.tr("Main", "equipment.costume")
+    /// Eyewear
+    internal static let eyewear = L10n.tr("Main", "equipment.eyewear")
+    /// Head Gear
+    internal static let head = L10n.tr("Main", "equipment.head")
+    /// Head Accessory
+    internal static let headAccessory = L10n.tr("Main", "equipment.head_accessory")
+    /// Off-Hand
+    internal static let offHand = L10n.tr("Main", "equipment.off_hand")
+    /// Use Costume
+    internal static let useCostume = L10n.tr("Main", "equipment.useCostume")
+    /// Weapon
+    internal static let weapon = L10n.tr("Main", "equipment.weapon")
+  }
+
   internal enum Guilds {
     /// Keep challenges
     internal static let keepChallenges = L10n.tr("Main", "guilds.keep_challenges")

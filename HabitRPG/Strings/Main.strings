@@ -130,3 +130,15 @@
 "stable.feed" = "Feed";
 "equip" = "Equip";
 "unequip" = "Unequip";
+"equipment.weapon" = "Weapon";
+"equipment.off_hand" = "Off-Hand";
+"equipment.head" = "Head Gear";
+"equipment.armor" = "Armor";
+"equipment.head_accessory" = "Head Accessory";
+"equipment.body" = "Body Accessory";
+"equipment.back" = "Back Accessory";
+"equipment.eyewear" = "Eyewear";
+"equipment.battle_gear" = "Battle Gear";
+"equipment.autoEquip" = "Auto-Equip new";
+"equipment.costume" = "Costume";
+"equipment.useCostume" = "Use Costume";

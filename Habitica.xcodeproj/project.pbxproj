@@ -57,6 +57,12 @@
 		2914486E2085EAD300F3A6B5 /* MountDetailDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2914486D2085EAD300F3A6B5 /* MountDetailDataSource.swift */; };
 		291448702085EC0F00F3A6B5 /* MountDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2914486F2085EC0F00F3A6B5 /* MountDetailViewController.swift */; };
 		29144872208628A300F3A6B5 /* FeedViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29144871208628A300F3A6B5 /* FeedViewDataSource.swift */; };
+		29144876208648D500F3A6B5 /* EquipmentOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29144875208648D500F3A6B5 /* EquipmentOverviewViewController.swift */; };
+		2914487820864A2900F3A6B5 /* EquipmentOverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2914487720864A2900F3A6B5 /* EquipmentOverviewView.swift */; };
+		2914487A20864A3300F3A6B5 /* EquipmentOverviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2914487920864A3300F3A6B5 /* EquipmentOverviewView.xib */; };
+		2914487C20864EB800F3A6B5 /* EquipmentOverviewItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2914487B20864EB800F3A6B5 /* EquipmentOverviewItemView.xib */; };
+		291448802086508A00F3A6B5 /* EquipmentOverviewItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2914487F2086508A00F3A6B5 /* EquipmentOverviewItemView.swift */; };
+		291448822087A13100F3A6B5 /* EquipmentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291448812087A13100F3A6B5 /* EquipmentDetailViewController.swift */; };
 		29205E352062DF710024E355 /* TextInputFormRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29205E342062DF710024E355 /* TextInputFormRow.swift */; };
 		29205E372062E0030024E355 /* TaskTextInputCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29205E362062E0030024E355 /* TaskTextInputCell.xib */; };
 		29205E392062E2430024E355 /* TaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29205E382062E2430024E355 /* TaskRow.swift */; };
@@ -624,6 +630,12 @@
 		2914486D2085EAD300F3A6B5 /* MountDetailDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountDetailDataSource.swift; sourceTree = "<group>"; };
 		2914486F2085EC0F00F3A6B5 /* MountDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountDetailViewController.swift; sourceTree = "<group>"; };
 		29144871208628A300F3A6B5 /* FeedViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewDataSource.swift; sourceTree = "<group>"; };
+		29144875208648D500F3A6B5 /* EquipmentOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentOverviewViewController.swift; sourceTree = "<group>"; };
+		2914487720864A2900F3A6B5 /* EquipmentOverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentOverviewView.swift; sourceTree = "<group>"; };
+		2914487920864A3300F3A6B5 /* EquipmentOverviewView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EquipmentOverviewView.xib; sourceTree = "<group>"; };
+		2914487B20864EB800F3A6B5 /* EquipmentOverviewItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EquipmentOverviewItemView.xib; sourceTree = "<group>"; };
+		2914487F2086508A00F3A6B5 /* EquipmentOverviewItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentOverviewItemView.swift; sourceTree = "<group>"; };
+		291448812087A13100F3A6B5 /* EquipmentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentDetailViewController.swift; sourceTree = "<group>"; };
 		29205E342062DF710024E355 /* TextInputFormRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputFormRow.swift; sourceTree = "<group>"; };
 		29205E362062E0030024E355 /* TaskTextInputCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskTextInputCell.xib; sourceTree = "<group>"; };
 		29205E382062E2430024E355 /* TaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRow.swift; sourceTree = "<group>"; };
@@ -1474,6 +1486,8 @@
 			children = (
 				299FB29B2084A67100422522 /* Stable */,
 				290B62A1207F816B007287C4 /* ItemsViewController.swift */,
+				29144875208648D500F3A6B5 /* EquipmentOverviewViewController.swift */,
+				291448812087A13100F3A6B5 /* EquipmentDetailViewController.swift */,
 			);
 			path = Inventory;
 			sourceTree = "<group>";
@@ -2389,6 +2403,10 @@
 				29E162DF1FFBBDDC00685640 /* UsernameLabel.swift */,
 				2980E6081EEA25CD005B7100 /* YesterdailiesDialogView.swift */,
 				2980E6061EEA1F55005B7100 /* YesterdailiesDialogView.xib */,
+				2914487720864A2900F3A6B5 /* EquipmentOverviewView.swift */,
+				2914487920864A3300F3A6B5 /* EquipmentOverviewView.xib */,
+				2914487B20864EB800F3A6B5 /* EquipmentOverviewItemView.xib */,
+				2914487F2086508A00F3A6B5 /* EquipmentOverviewItemView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -3008,6 +3026,7 @@
 				293BB4A11FD06E7E003B6F4F /* BulkStatsAllocationView.xib in Resources */,
 				49E378532009542C00E0DA3D /* ChallengeTableViewHeaderView.xib in Resources */,
 				498E4D001FA17C1A006933FF /* ChallengeCategoriesTableViewCell.xib in Resources */,
+				2914487A20864A3300F3A6B5 /* EquipmentOverviewView.xib in Resources */,
 				D9D17CD41E68995000AD9232 /* (null) in Resources */,
 				29028C442037132A00B7F704 /* SystemMessageTableViewCell.xib in Resources */,
 				29AAA1611F2B597400029737 /* SpeechbubbleView.xib in Resources */,
@@ -3043,6 +3062,7 @@
 				29A6B86220641FEA0086B2A6 /* TaskDifficultyCell.xib in Resources */,
 				D9BBF32E1DBD128700C4114C /* ShopAdFooter.xib in Resources */,
 				D9D17CD61E6899A800AD9232 /* ToDoTableViewCell.xib in Resources */,
+				2914487C20864EB800F3A6B5 /* EquipmentOverviewItemView.xib in Resources */,
 				49A84FB31F9FCA30003E2956 /* ChallengeDetailInfoTableViewCell.xib in Resources */,
 				D9D17CDA1E69C68000AD9232 /* ChallengeDetailAlert.xib in Resources */,
 				2957B8BA1F4B4B3300E836EF /* InAppRewardCell.xib in Resources */,
@@ -3593,6 +3613,7 @@
 				49DCB7B61F3F64B40079FDD0 /* HRPGShopModalBgView.swift in Sources */,
 				29E1631B200E84AC00685640 /* TavernViewController.swift in Sources */,
 				D9BB45D11E7713E80002AE2E /* ChallengeTask+CoreDataClass.m in Sources */,
+				291448822087A13100F3A6B5 /* EquipmentDetailViewController.swift in Sources */,
 				29FC885C2018D47D002B3D3F /* Quest-Extensions.swift in Sources */,
 				D9525F981E5F405400C529B8 /* Challenge+CoreDataClass.m in Sources */,
 				D98F5DDA1C6E17280035CBEC /* HRPGQuestGroupTableViewController.m in Sources */,
@@ -3704,6 +3725,7 @@
 				D96C85481DCCD8BC003E3616 /* UIWindow+VisibleController.m in Sources */,
 				29FC885220134A8F002B3D3F /* PurchaseHandler.swift in Sources */,
 				292DEE74204DECF60086D5F7 /* BaseReactiveDataSource.swift in Sources */,
+				291448802086508A00F3A6B5 /* EquipmentOverviewItemView.swift in Sources */,
 				D98F5DC11C6A1DA60035CBEC /* HRPGGroupTableViewController.m in Sources */,
 				29E162E21FFC21E100685640 /* CustomFontMetrics.swift in Sources */,
 				D984D5861E48E5CF006E84F8 /* TaskDetailLineView.swift in Sources */,
@@ -3853,10 +3875,12 @@
 				49DCECE81F9A843E00982E99 /* MultiModelTableViewController.swift in Sources */,
 				293282181F39E1A400D42961 /* WelcomeViewController.swift in Sources */,
 				D9AEA8A11C733BFA00FE6158 /* HRPGGroupAboutTableViewController.m in Sources */,
+				29144876208648D500F3A6B5 /* EquipmentOverviewViewController.swift in Sources */,
 				491C6E5B2020FE64005030A2 /* Challenge-Extensions.swift in Sources */,
 				2957B8C81F4DCF7800E836EF /* RewardFormController.swift in Sources */,
 				D96C85451DCBAC90003E3616 /* HRPGStreakAchievementNotification.m in Sources */,
 				490864301F45318600BD9896 /* HRPGInsufficientHourglassesViewController.swift in Sources */,
+				2914487820864A2900F3A6B5 /* EquipmentOverviewView.swift in Sources */,
 				293BB49F1FCDCD33003B6F4F /* Stats.swift in Sources */,
 				29E1630B200D050E00685640 /* TopHeaderNavigationController.swift in Sources */,
 				29144872208628A300F3A6B5 /* FeedViewDataSource.swift in Sources */,
