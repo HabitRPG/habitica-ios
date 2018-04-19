@@ -25,6 +25,7 @@ class APIPreferences: PreferencesProtocol, Decodable {
     var sleep: Bool = false
     var timezoneOffset: Int = 0
     var sound: String?
+    var autoEquip: Bool = false
     var pushNotifications: PushNotificationsProtocol?
     
     enum CodingKeys: String, CodingKey {
@@ -43,6 +44,7 @@ class APIPreferences: PreferencesProtocol, Decodable {
         case sleep
         case timezoneOffset
         case sound
+        case autoEquip
         case pushNotifications
     }
     
@@ -63,6 +65,7 @@ class APIPreferences: PreferencesProtocol, Decodable {
         sleep = (try? values.decode(Bool.self, forKey: .sleep)) ?? false
         timezoneOffset = (try? values.decode(Int.self, forKey: .timezoneOffset)) ?? 0
         sound = try? values.decode(String.self, forKey: .sound)
+        autoEquip = (try? values.decode(Bool.self, forKey: .autoEquip)) ?? false
         pushNotifications = try? values.decode(APIPushNotifications.self, forKey: .pushNotifications)
     }
 }

@@ -19,3 +19,30 @@ public protocol OutfitProtocol {
     var weapon: String? { get set }
     var shield: String? { get set }
 }
+
+public extension OutfitProtocol {
+    
+    func keyFor(type: String) -> String? {
+        switch type {
+        case "back":
+            return back
+        case "body":
+            return body
+        case "armor":
+            return armor
+        case "eyewear":
+            return eyewear
+        case "headAccessory":
+            return headAccessory
+        case "head":
+            return head
+        case "weapon":
+            return weapon
+        case "shield":
+            return shield
+        default:
+            return nil
+        }
+    }
+    
+}

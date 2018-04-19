@@ -32,6 +32,12 @@ public class InventoryLocalRepository: ContentLocalRepository {
         })
     }
     
+    public func getOwnedGear(userID: String) -> SignalProducer<ReactiveResults<[OwnedGearProtocol]>, ReactiveSwiftRealmError> {
+        return RealmOwnedGear.findBy(query: "userID == '\(userID)' && isOwned == true").reactive().map({ (value, changeset) -> ReactiveResults<[OwnedGearProtocol]> in
+            return (value.map({ (item) -> OwnedGearProtocol in return item }), changeset)
+        })
+    }
+    
     public func getItems(keys: [String]) -> SignalProducer<(ReactiveResults<[EggProtocol]>,
         ReactiveResults<[FoodProtocol]>,
         ReactiveResults<[HatchingPotionProtocol]>,

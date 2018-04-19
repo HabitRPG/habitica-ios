@@ -8,11 +8,14 @@
 
 import Foundation
 import Habitica_Models
+import PinLayout
 
 class EquipmentOverviewView: UIView {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var switchLabelView: UILabel!
+    @IBOutlet weak var switchView: UISwitch!
+    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var weaponItemView: EquipmentOverviewItemView!
     @IBOutlet weak var offHandItemView: EquipmentOverviewItemView!
     @IBOutlet weak var headItemView: EquipmentOverviewItemView!
@@ -40,10 +43,20 @@ class EquipmentOverviewView: UIView {
         }
     }
     
+    var switchValue: Bool {
+        get {
+            return switchView.isOn
+        }
+        set {
+            switchView.isOn = newValue
+        }
+    }
+    
     var itemTapped: ((String) -> Void)?
+    var switchToggled: ((Bool) -> Void)?
     
     override init(frame: CGRect) {
-        super.init(frame: CGRect(x: 0, y: 0, width: 154, height: 36))
+        super.init(frame: CGRect(x: 0, y: 0, width: 375, height: 250))
         setupView()
     }
     
@@ -52,17 +65,47 @@ class EquipmentOverviewView: UIView {
         setupView()
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        layout()
+    }
+    
+    override func sizeThatFits(_ size: CGSize) -> CGSize {
+        layout()
+        return CGSize(width: size.width, height: containerView.frame.origin.y+containerView.frame.size.height+25)
+    }
+    
+    override var intrinsicContentSize: CGSize {
+        layout()
+        return CGSize(width: bounds.size.width, height: containerView.frame.origin.y+containerView.frame.size.height+25)
+    }
+    
+    private func layout() {
+        let itemWidth = (bounds.size.width - (7*8)) / 4
+        let itemHeight = itemWidth+36
+        containerView.pin.top(54).left(8).right(8).height(itemHeight*2+(3*8))
+        titleLabel.pin.top(0).left(8).above(of: containerView).sizeToFit(.height)
+        switchView.pin.right(8).top(11)
+        switchLabelView.pin.top(0).above(of: containerView).left(of: switchView).marginRight(8).sizeToFit(.height)
+        
+        weaponItemView.pin.top(8).left(8).width(itemWidth).height(itemHeight)
+        offHandItemView.pin.top(8).right(of: weaponItemView).marginLeft(8).width(itemWidth).height(itemHeight)
+        headItemView.pin.top(8).right(of: offHandItemView).marginLeft(8).width(itemWidth).height(itemHeight)
+        armorItemView.pin.top(8).right(of: headItemView).marginLeft(8).width(itemWidth).height(itemHeight)
+        
+        headAccessoryItemView.pin.bottom(8).left(8).width(itemWidth).width(itemWidth).height(itemHeight)
+        bodyAccessoryItemView.pin.bottom(8).right(of: headAccessoryItemView).marginLeft(8).width(itemWidth).height(itemHeight)
+        backItemView.pin.bottom(8).right(of: bodyAccessoryItemView).marginLeft(8).width(itemWidth).height(itemHeight)
+        eyewearItemView.pin.bottom(8).right(of: backItemView).marginLeft(8).width(itemWidth).height(itemHeight)
+    }
+    
     // MARK: - Private Helper Methods
     
     private func setupView() {
         if let view = viewFromNibForClass() {
-            translatesAutoresizingMaskIntoConstraints = false
             
             view.frame = bounds
             addSubview(view)
-            
-            addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["view": view]))
-            addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["view": view]))
 
             setupLabels()
             
@@ -114,6 +157,11 @@ class EquipmentOverviewView: UIView {
     private func onItemTapped(_ typeKey: String) {
         if let action = itemTapped {
             action(typeKey)
+        }
+    }
+    @IBAction func switchValueChanged(_ sender: Any) {
+        if let action = switchToggled {
+            action(switchView.isOn)
         }
     }
 }

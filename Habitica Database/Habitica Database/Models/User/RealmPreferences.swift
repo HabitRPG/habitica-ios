@@ -28,6 +28,7 @@ class RealmPreferences: Object, PreferencesProtocol {
     @objc dynamic var sleep: Bool = false
     @objc dynamic var timezoneOffset: Int = 0
     @objc dynamic var sound: String?
+    @objc dynamic var autoEquip: Bool = false
     var pushNotifications: PushNotificationsProtocol? {
         get {
             return realmPushNotifications
@@ -70,6 +71,7 @@ class RealmPreferences: Object, PreferencesProtocol {
         sleep = preferences.sleep
         timezoneOffset = preferences.timezoneOffset
         sound = preferences.sound
+        autoEquip = preferences.autoEquip
         pushNotifications = preferences.pushNotifications
     }
 }

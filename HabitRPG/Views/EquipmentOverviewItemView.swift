@@ -10,8 +10,10 @@ import Foundation
 
 class EquipmentOverviewItemView: UIView {
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var noEquipmentLabel: UILabel!
+    
+    let noEquipmentBorder = CAShapeLayer()
     
     var itemTapped: (() -> Void)?
     
@@ -29,21 +31,34 @@ class EquipmentOverviewItemView: UIView {
     
     private func setupView() {
         if let view = viewFromNibForClass() {
-            translatesAutoresizingMaskIntoConstraints = false
             
             view.frame = bounds
             addSubview(view)
-            
-            addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["view": view]))
-            addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["view": view]))
       
             self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewTapped)))
+
+            noEquipmentBorder.strokeColor = UIColor.gray50().cgColor
+            noEquipmentBorder.lineWidth = 2
+            noEquipmentBorder.lineDashPattern = [4, 4]
+            noEquipmentBorder.frame = CGRect(x: 10, y: 10, width: frame.size.width-20, height: 60)
+            noEquipmentBorder.fillColor = nil
+            noEquipmentBorder.path = UIBezierPath(rect: CGRect(x: 10, y: 10, width: frame.size.width-20, height: 60)).cgPath
+            noEquipmentLabel.layer.addSublayer(noEquipmentBorder)
             
             setNeedsUpdateConstraints()
             updateConstraints()
             setNeedsLayout()
             layoutIfNeeded()
         }
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        imageView.pin.top().left().right().aspectRatio(1.0)
+        noEquipmentLabel.pin.top().left().right().aspectRatio(1.0)
+        label.pin.below(of: imageView).left().right().bottom()
+        noEquipmentLabel.layer.sublayers?.first?.frame = noEquipmentLabel.bounds
+        noEquipmentBorder.path = UIBezierPath(rect: CGRect(x: 10, y: 10, width: noEquipmentLabel.bounds.size.width-20, height: noEquipmentLabel.bounds.size.height-20)).cgPath
     }
     
     func setup(title: String, itemTapped: @escaping (() -> Void)) {
@@ -54,10 +69,11 @@ class EquipmentOverviewItemView: UIView {
     func configure(_ gearKey: String?, isTwoHanded: Bool = false) {
         if let key = gearKey, !key.contains("base_0") {
             imageView.setImagewith(name: "shop_\(key)")
-            containerView.backgroundColor = .white
+            imageView.isHidden = false
+            noEquipmentLabel.isHidden = true
         } else {
-            imageView.image = nil
-            containerView.backgroundColor = UIColor.gray10()
+            imageView.isHidden = true
+            noEquipmentLabel.isHidden = false
         }
     }
     

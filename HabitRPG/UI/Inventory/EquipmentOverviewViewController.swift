@@ -10,7 +10,7 @@ import Foundation
 import Habitica_Models
 import ReactiveSwift
 
-class EquipmentOverviewViewController: HRPGUIViewController {
+class EquipmentOverviewViewController: HRPGUIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var gearView: EquipmentOverviewView!
@@ -26,6 +26,7 @@ class EquipmentOverviewViewController: HRPGUIViewController {
         super.viewDidLoad()
         topHeaderCoordinator = TopHeaderCoordinator(topHeaderNavigationController: hrpgTopHeaderNavigationController(), scrollView: scrollView)
         topHeaderCoordinator.viewDidLoad()
+        scrollView.delegate = self
         
         gearView.title = L10n.Equipment.battleGear
         gearView.switchLabel = L10n.Equipment.autoEquip
@@ -33,6 +34,9 @@ class EquipmentOverviewViewController: HRPGUIViewController {
             self.selectedCostume = false
             self.selectedType = typeKey
             self.perform(segue: StoryboardSegue.Main.equipmentDetailSegue)
+        }
+        gearView.switchToggled = { value in
+            self.userRepository.updateUser(key: "preferences.autoEquip", value: value).observeCompleted {}
         }
         
         costumeView.title = L10n.Equipment.costume
@@ -42,15 +46,24 @@ class EquipmentOverviewViewController: HRPGUIViewController {
             self.selectedType = typeKey
             self.perform(segue: StoryboardSegue.Main.equipmentDetailSegue)
         }
+        costumeView.switchToggled = { value in
+            self.userRepository.updateUser(key: "preferences.costume", value: value).observeCompleted {}
+        }
         
         disposable.inner.add(userRepository.getUser().on(value: { user in
             if let equipped = user.items?.gear?.equipped {
                 self.gearView.configure(outfit: equipped)
             }
+            self.gearView.switchValue = user.preferences?.autoEquip ?? false
             if let costume = user.items?.gear?.costume {
                 self.costumeView.configure(outfit: costume)
             }
+            self.costumeView.switchValue = user.preferences?.useCostume ?? false
         }).start())
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        topHeaderCoordinator.scrollViewDidScroll()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

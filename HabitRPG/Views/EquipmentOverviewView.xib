@@ -15,11 +15,13 @@
                 <outlet property="armorItemView" destination="evF-ot-R9X" id="6YB-rh-itz"/>
                 <outlet property="backItemView" destination="7FP-o3-0wb" id="pvC-Eg-wDu"/>
                 <outlet property="bodyAccessoryItemView" destination="MV8-hJ-ZEv" id="YFe-LU-AsO"/>
+                <outlet property="containerView" destination="qvv-tk-cPM" id="PqV-0o-BZ0"/>
                 <outlet property="eyewearItemView" destination="2Q8-Ws-m45" id="77z-Yu-64N"/>
                 <outlet property="headAccessoryItemView" destination="bvJ-5A-6l7" id="4mS-Yt-cCl"/>
                 <outlet property="headItemView" destination="SHv-kG-dK0" id="LuH-t0-gIV"/>
                 <outlet property="offHandItemView" destination="VTx-2g-ZYJ" id="u9t-7R-TWD"/>
                 <outlet property="switchLabelView" destination="93d-BJ-i9z" id="bd3-Eh-12T"/>
+                <outlet property="switchView" destination="rAs-iU-g9S" id="Cvd-tg-BFy"/>
                 <outlet property="titleLabel" destination="WmN-k2-DL3" id="NZT-gP-a2k"/>
                 <outlet property="weaponItemView" destination="Jjd-Jy-za9" id="S4K-YO-jet"/>
             </connections>
@@ -29,104 +31,82 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="317"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qvv-tk-cPM">
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qvv-tk-cPM">
                     <rect key="frame" x="8" y="52" width="359" height="250"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Ohb-ho-ugx">
-                            <rect key="frame" x="8" y="8" width="343" height="234"/>
-                            <subviews>
-                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="SQ9-2H-tvS">
-                                    <rect key="frame" x="0.0" y="0.0" width="343" height="113"/>
-                                    <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jjd-Jy-za9" customClass="EquipmentOverviewItemView" customModule="Habitica" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="80" height="113"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VTx-2g-ZYJ" customClass="EquipmentOverviewItemView" customModule="Habitica" customModuleProvider="target">
-                                            <rect key="frame" x="88" y="0.0" width="79.5" height="113"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SHv-kG-dK0" customClass="EquipmentOverviewItemView" customModule="Habitica" customModuleProvider="target">
-                                            <rect key="frame" x="175.5" y="0.0" width="80" height="113"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="evF-ot-R9X" customClass="EquipmentOverviewItemView" customModule="Habitica" customModuleProvider="target">
-                                            <rect key="frame" x="263.5" y="0.0" width="79.5" height="113"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </view>
-                                    </subviews>
-                                </stackView>
-                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="AYh-Wv-HI1">
-                                    <rect key="frame" x="0.0" y="121" width="343" height="113"/>
-                                    <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bvJ-5A-6l7" customClass="EquipmentOverviewItemView" customModule="Habitica" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="80" height="113"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MV8-hJ-ZEv" customClass="EquipmentOverviewItemView" customModule="Habitica" customModuleProvider="target">
-                                            <rect key="frame" x="88" y="0.0" width="79.5" height="113"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7FP-o3-0wb" customClass="EquipmentOverviewItemView" customModule="Habitica" customModuleProvider="target">
-                                            <rect key="frame" x="175.5" y="0.0" width="80" height="113"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Q8-Ws-m45" customClass="EquipmentOverviewItemView" customModule="Habitica" customModuleProvider="target">
-                                            <rect key="frame" x="263.5" y="0.0" width="79.5" height="113"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </view>
-                                    </subviews>
-                                </stackView>
-                            </subviews>
-                        </stackView>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jjd-Jy-za9" customClass="EquipmentOverviewItemView" customModule="Habitica" customModuleProvider="target">
+                            <rect key="frame" x="139" y="68" width="80" height="113"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VTx-2g-ZYJ" customClass="EquipmentOverviewItemView" customModule="Habitica" customModuleProvider="target">
+                            <rect key="frame" x="139" y="68" width="79.5" height="113"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SHv-kG-dK0" customClass="EquipmentOverviewItemView" customModule="Habitica" customModuleProvider="target">
+                            <rect key="frame" x="139" y="68" width="80" height="113"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="evF-ot-R9X" customClass="EquipmentOverviewItemView" customModule="Habitica" customModuleProvider="target">
+                            <rect key="frame" x="139" y="68" width="79.5" height="113"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bvJ-5A-6l7" customClass="EquipmentOverviewItemView" customModule="Habitica" customModuleProvider="target">
+                            <rect key="frame" x="139" y="68" width="80" height="113"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MV8-hJ-ZEv" customClass="EquipmentOverviewItemView" customModule="Habitica" customModuleProvider="target">
+                            <rect key="frame" x="139" y="68" width="79.5" height="113"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7FP-o3-0wb" customClass="EquipmentOverviewItemView" customModule="Habitica" customModuleProvider="target">
+                            <rect key="frame" x="139" y="68" width="80" height="113"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Q8-Ws-m45" customClass="EquipmentOverviewItemView" customModule="Habitica" customModuleProvider="target">
+                            <rect key="frame" x="139" y="68" width="79.5" height="113"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" red="0.3075395823" green="0.2903449535" blue="0.34151983260000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstItem="Ohb-ho-ugx" firstAttribute="leading" secondItem="qvv-tk-cPM" secondAttribute="leading" constant="8" id="5M0-fe-01m"/>
-                        <constraint firstAttribute="bottom" secondItem="Ohb-ho-ugx" secondAttribute="bottom" constant="8" id="Xkz-FP-0f4"/>
-                        <constraint firstAttribute="height" constant="250" id="jfj-BT-vOu"/>
-                        <constraint firstItem="Ohb-ho-ugx" firstAttribute="top" secondItem="qvv-tk-cPM" secondAttribute="top" constant="8" id="vD8-zh-DSm"/>
-                        <constraint firstAttribute="trailing" secondItem="Ohb-ho-ugx" secondAttribute="trailing" constant="8" id="wf3-zD-8E2"/>
-                    </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                             <real key="value" value="6"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WmN-k2-DL3">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WmN-k2-DL3">
                     <rect key="frame" x="8" y="2" width="0.0" height="48"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <color key="textColor" red="0.3075395823" green="0.2903449535" blue="0.34151983260000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="93d-BJ-i9z">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="93d-BJ-i9z">
                     <rect key="frame" x="304" y="2" width="0.0" height="48"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <color key="textColor" red="0.53023332359999997" green="0.50720638039999999" blue="0.56472396849999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rAs-iU-g9S">
+                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rAs-iU-g9S">
                     <rect key="frame" x="316" y="11" width="51" height="31"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="onTintColor" red="0.60365134480000004" green="0.38511508700000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <connections>
+                        <action selector="switchValueChanged:" destination="-1" eventType="valueChanged" id="sVo-6N-06U"/>
+                    </connections>
                 </switch>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="qvv-tk-cPM" secondAttribute="trailing" constant="8" id="36I-Vd-dBP"/>
-                <constraint firstItem="WmN-k2-DL3" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="2" id="4XA-Y8-K4K"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="qvv-tk-cPM" secondAttribute="bottom" constant="15" id="FqB-gR-S3T"/>
-                <constraint firstItem="qvv-tk-cPM" firstAttribute="top" secondItem="WmN-k2-DL3" secondAttribute="bottom" constant="2" id="G7H-cm-X50"/>
-                <constraint firstItem="qvv-tk-cPM" firstAttribute="top" secondItem="rAs-iU-g9S" secondAttribute="bottom" constant="10" id="Lgw-rq-EQG"/>
-                <constraint firstItem="93d-BJ-i9z" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="WmN-k2-DL3" secondAttribute="trailing" constant="8" id="MRb-Xz-nZf"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="rAs-iU-g9S" secondAttribute="trailing" constant="10" id="YT2-jq-amD"/>
-                <constraint firstItem="rAs-iU-g9S" firstAttribute="leading" secondItem="93d-BJ-i9z" secondAttribute="trailing" constant="12" id="aIu-lO-DVO"/>
-                <constraint firstItem="93d-BJ-i9z" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="2" id="d5y-3M-bZy"/>
-                <constraint firstItem="rAs-iU-g9S" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="11" id="nCQ-h5-m4b"/>
-                <constraint firstItem="qvv-tk-cPM" firstAttribute="top" secondItem="93d-BJ-i9z" secondAttribute="bottom" constant="2" id="x9g-xJ-Qcj"/>
-                <constraint firstItem="qvv-tk-cPM" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="xqm-dT-lLT"/>
-                <constraint firstItem="WmN-k2-DL3" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="za7-Rc-A7n"/>
-            </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
         </view>

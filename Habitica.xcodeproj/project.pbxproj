@@ -63,6 +63,9 @@
 		2914487C20864EB800F3A6B5 /* EquipmentOverviewItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2914487B20864EB800F3A6B5 /* EquipmentOverviewItemView.xib */; };
 		291448802086508A00F3A6B5 /* EquipmentOverviewItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2914487F2086508A00F3A6B5 /* EquipmentOverviewItemView.swift */; };
 		291448822087A13100F3A6B5 /* EquipmentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291448812087A13100F3A6B5 /* EquipmentDetailViewController.swift */; };
+		291448842088E2E000F3A6B5 /* EquipmentViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291448832088E2E000F3A6B5 /* EquipmentViewDataSource.swift */; };
+		291448862088E87F00F3A6B5 /* EquipmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291448852088E87F00F3A6B5 /* EquipmentCell.swift */; };
+		291448882088F3F700F3A6B5 /* NSAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291448872088F3F700F3A6B5 /* NSAttributedString.swift */; };
 		29205E352062DF710024E355 /* TextInputFormRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29205E342062DF710024E355 /* TextInputFormRow.swift */; };
 		29205E372062E0030024E355 /* TaskTextInputCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29205E362062E0030024E355 /* TaskTextInputCell.xib */; };
 		29205E392062E2430024E355 /* TaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29205E382062E2430024E355 /* TaskRow.swift */; };
@@ -398,7 +401,6 @@
 		D97C71EA18F32FEE0089FDC6 /* Reward.m in Sources */ = {isa = PBXBuildFile; fileRef = D97C71E918F32FEE0089FDC6 /* Reward.m */; };
 		D97C71ED18F32FEF0089FDC6 /* Gear.m in Sources */ = {isa = PBXBuildFile; fileRef = D97C71EC18F32FEF0089FDC6 /* Gear.m */; };
 		D97C71F018F32FEF0089FDC6 /* MetaReward.m in Sources */ = {isa = PBXBuildFile; fileRef = D97C71EF18F32FEF0089FDC6 /* MetaReward.m */; };
-		D97C71F318F364950089FDC6 /* HRPGEquipmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D97C71F218F364950089FDC6 /* HRPGEquipmentViewController.m */; };
 		D97CCDBC19A7AFFA00DA128A /* HRPGArrayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D97CCDBB19A7AFFA00DA128A /* HRPGArrayViewController.m */; };
 		D97ED0AE1E6DBB97006C2A26 /* JoinChallengeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97ED0AD1E6DBB97006C2A26 /* JoinChallengeInteractor.swift */; };
 		D97ED0B01E6DBC87006C2A26 /* Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97ED0AF1E6DBC87006C2A26 /* Interactor.swift */; };
@@ -636,6 +638,9 @@
 		2914487B20864EB800F3A6B5 /* EquipmentOverviewItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EquipmentOverviewItemView.xib; sourceTree = "<group>"; };
 		2914487F2086508A00F3A6B5 /* EquipmentOverviewItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentOverviewItemView.swift; sourceTree = "<group>"; };
 		291448812087A13100F3A6B5 /* EquipmentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentDetailViewController.swift; sourceTree = "<group>"; };
+		291448832088E2E000F3A6B5 /* EquipmentViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentViewDataSource.swift; sourceTree = "<group>"; };
+		291448852088E87F00F3A6B5 /* EquipmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentCell.swift; sourceTree = "<group>"; };
+		291448872088F3F700F3A6B5 /* NSAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSAttributedString.swift; sourceTree = "<group>"; };
 		29205E342062DF710024E355 /* TextInputFormRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputFormRow.swift; sourceTree = "<group>"; };
 		29205E362062E0030024E355 /* TaskTextInputCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskTextInputCell.xib; sourceTree = "<group>"; };
 		29205E382062E2430024E355 /* TaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRow.swift; sourceTree = "<group>"; };
@@ -1104,8 +1109,6 @@
 		D97C71EC18F32FEF0089FDC6 /* Gear.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = Gear.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D97C71EE18F32FEF0089FDC6 /* MetaReward.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetaReward.h; sourceTree = "<group>"; };
 		D97C71EF18F32FEF0089FDC6 /* MetaReward.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetaReward.m; sourceTree = "<group>"; };
-		D97C71F118F364950089FDC6 /* HRPGEquipmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGEquipmentViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		D97C71F218F364950089FDC6 /* HRPGEquipmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGEquipmentViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D97CCDBA19A7AFFA00DA128A /* HRPGArrayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGArrayViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D97CCDBB19A7AFFA00DA128A /* HRPGArrayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGArrayViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D97D39E61CB83ED500514F44 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -1794,6 +1797,7 @@
 				292F968220724B1100804151 /* GuildsOverviewDataSource.swift */,
 				290B62A3207F818E007287C4 /* ItemsViewDataSource.swift */,
 				29144871208628A300F3A6B5 /* FeedViewDataSource.swift */,
+				291448832088E2E000F3A6B5 /* EquipmentViewDataSource.swift */,
 			);
 			name = TVDataSources;
 			sourceTree = "<group>";
@@ -2030,6 +2034,7 @@
 				29701FDF1F560D310097BBCC /* UIApplication-Extensions.swift */,
 				29ED1AFE1F339ACF005A3895 /* UIColor-Extensions.swift */,
 				D9D17CCF1E673CCC00AD9232 /* UIView-Extensions.swift */,
+				291448872088F3F700F3A6B5 /* NSAttributedString.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -2334,9 +2339,13 @@
 				29FEB279202B4F0400EA245A /* AvatarView.swift */,
 				293BB4A01FD06E7E003B6F4F /* BulkStatsAllocationView.xib */,
 				299BD6311F5420A300E22935 /* Challenges */,
+				292DEE77204E1FFD0086D5F7 /* CheckboxView.swift */,
 				29FC88592017C039002B3D3F /* CollapsibleStackView.swift */,
-				290B6288207CF248007287C4 /* StackView.swift */,
 				29FC88552017B840002B3D3F /* CollapsibleTitle.swift */,
+				2914487F2086508A00F3A6B5 /* EquipmentOverviewItemView.swift */,
+				2914487B20864EB800F3A6B5 /* EquipmentOverviewItemView.xib */,
+				2914487720864A2900F3A6B5 /* EquipmentOverviewView.swift */,
+				2914487920864A3300F3A6B5 /* EquipmentOverviewView.xib */,
 				4904C73F1F1ED87400F80723 /* GradientImageView.swift */,
 				29AAA15C1F2A3AA600029737 /* GradientView.swift */,
 				29A0FD80203DF49900590BDE /* GuidelinesPromptView.xib */,
@@ -2346,7 +2355,6 @@
 				D96760C71B2EF9B600DB07DF /* HRPGAbbrevNumberLabel.m */,
 				D9E918551AA3A70D005E378B /* HRPGCheckBoxView.h */,
 				D9E918561AA3A70D005E378B /* HRPGCheckBoxView.m */,
-				292DEE77204E1FFD0086D5F7 /* CheckboxView.swift */,
 				D96C86C91BB0546400E4C134 /* HRPGCopyLabel.h */,
 				D96C86CA1BB0546400E4C134 /* HRPGCopyLabel.m */,
 				49005B711F180588004830D9 /* HRPGCurrencyCountView.swift */,
@@ -2358,7 +2366,6 @@
 				D98F5DD01C6CB4BE0035CBEC /* HRPGFlagInformationOverlayView.xib */,
 				D9479605196DF4B6002CB34C /* HRPGImageOverlayView.h */,
 				D9479606196DF4B6002CB34C /* HRPGImageOverlayView.m */,
-				294973D1208118C100F02AC3 /* ImageOverlayView.swift */,
 				D9E9E0C71CCE64A3006D94A2 /* HRPGImageOverlayView.xib */,
 				D9BA33D21AB5E5820028AFEC /* HRPGLabeledProgressBar.h */,
 				D9BA33D31AB5E5820028AFEC /* HRPGLabeledProgressBar.m */,
@@ -2371,15 +2378,16 @@
 				D9D9EF971D54E51C00FC89C1 /* HRPGQRCodeView.m */,
 				D9FC1A7C1BC28F4700B97D23 /* HRPGTypingLabel.h */,
 				D9FC1A7D1BC28F4700B97D23 /* HRPGTypingLabel.m */,
-				29323E342052008800AC6D6F /* UserTopHeader.swift */,
-				D91CCACF1BCF11CC001C6A0C /* UserTopHeader.xib */,
 				29701FE31F56C2200097BBCC /* IconLabel.swift */,
+				294973D1208118C100F02AC3 /* ImageOverlayView.swift */,
 				D9BB45D91E79A02C0002AE2E /* LabeledCheckboxView.swift */,
 				29B6AD4B1F2A0DBE00AC8878 /* LoginEntryView.swift */,
 				29B6AD491F2A0C9700AC8878 /* LoginEntryView.xib */,
 				29E1630E200E279900685640 /* MenuNavigationBarView.swift */,
 				29E1630C200E23A500685640 /* MenuNavigationBarView.xib */,
 				D96C853C1DCB61EE003E3616 /* Notifications */,
+				49DCB7C11F40D7F00079FDD0 /* NPCBannerView.swift */,
+				49DCB7C31F40D80B0079FDD0 /* NPCBannerView.xib */,
 				299BD6211F505DFA00E22935 /* PaddedLabel.swift */,
 				D9525F9C1E64739900C529B8 /* PaddedView.swift */,
 				D9CE90441E4CDD6200702578 /* PillView.swift */,
@@ -2388,9 +2396,8 @@
 				29701FE51F56DABC0097BBCC /* RoundedView.swift */,
 				293282131F389CC000D42961 /* SetupCustomizationItemView.swift */,
 				293282151F389DBB00D42961 /* SetupCustomizationItemView.xib */,
-				49DCB7C11F40D7F00079FDD0 /* NPCBannerView.swift */,
-				49DCB7C31F40D80B0079FDD0 /* NPCBannerView.xib */,
 				49DCB7B31F3F5E820079FDD0 /* Shop */,
+				290B6288207CF248007287C4 /* StackView.swift */,
 				293BB4A41FD078EC003B6F4F /* StatsSliderView.swift */,
 				293BB4A21FD07603003B6F4F /* StatsSliderView.xib */,
 				293BB4991FCD7DC0003B6F4F /* StatsView.swift */,
@@ -2401,12 +2408,10 @@
 				29701FE11F5617900097BBCC /* ToastView.xib */,
 				299BD6331F5420F000E22935 /* Tutorials */,
 				29E162DF1FFBBDDC00685640 /* UsernameLabel.swift */,
+				29323E342052008800AC6D6F /* UserTopHeader.swift */,
+				D91CCACF1BCF11CC001C6A0C /* UserTopHeader.xib */,
 				2980E6081EEA25CD005B7100 /* YesterdailiesDialogView.swift */,
 				2980E6061EEA1F55005B7100 /* YesterdailiesDialogView.xib */,
-				2914487720864A2900F3A6B5 /* EquipmentOverviewView.swift */,
-				2914487920864A3300F3A6B5 /* EquipmentOverviewView.xib */,
-				2914487B20864EB800F3A6B5 /* EquipmentOverviewItemView.xib */,
-				2914487F2086508A00F3A6B5 /* EquipmentOverviewItemView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2471,6 +2476,7 @@
 				29B388E01EF2BB7600A72950 /* YesterdailyChecklistItem.xib */,
 				2980E60A1EEA39B1005B7100 /* YesterdailyTaskCell.swift */,
 				2980E60C1EEA39DF005B7100 /* YesterdailyTaskCell.xib */,
+				291448852088E87F00F3A6B5 /* EquipmentCell.swift */,
 			);
 			name = Cells;
 			path = TableviewCells;
@@ -2480,8 +2486,6 @@
 			isa = PBXGroup;
 			children = (
 				D92A08451D33EB94000F8B66 /* Shops */,
-				D97C71F118F364950089FDC6 /* HRPGEquipmentViewController.h */,
-				D97C71F218F364950089FDC6 /* HRPGEquipmentViewController.m */,
 				D980373719956E46004C8871 /* HRPGEquipmentDetailViewController.h */,
 				D980373819956E46004C8871 /* HRPGEquipmentDetailViewController.m */,
 				D9ADD3491943BB16006202C1 /* HRPGFeedViewController.h */,
@@ -3572,8 +3576,8 @@
 				D9D17CCC1E6736A600AD9232 /* ChallengeDetailHeaderView.swift in Sources */,
 				D9BB45D61E79968B0002AE2E /* ChallengeFilterAlert.swift in Sources */,
 				D9D593671D008C7500D6C388 /* PushDevice.m in Sources */,
-				D97C71F318F364950089FDC6 /* HRPGEquipmentViewController.m in Sources */,
 				29FD8AA0203D753F0094322E /* SplitSocialViewController.swift in Sources */,
+				291448862088E87F00F3A6B5 /* EquipmentCell.swift in Sources */,
 				299BD63A1F557FE700E22935 /* AuthenticationManager.swift in Sources */,
 				291448622084ED6F00F3A6B5 /* StableDetailViewController.swift in Sources */,
 				D9FC1A871BC2D8A300B97D23 /* TutorialSteps.m in Sources */,
@@ -3640,6 +3644,7 @@
 				D9ADD3631944FDBE006202C1 /* HRPGFilterViewController.m in Sources */,
 				D9BB45611E71CD850002AE2E /* DailyTableViewCell.swift in Sources */,
 				D93D79721D2BC7AD00AFE014 /* HRPGCoreDataDataSource.m in Sources */,
+				291448882088F3F700F3A6B5 /* NSAttributedString.swift in Sources */,
 				29AAA15D1F2A3AA600029737 /* GradientView.swift in Sources */,
 				D94FEDEE1BB6DA8E0046A52E /* HRPGInviteMembersViewController.m in Sources */,
 				294EB59D1FA0A7E4006083BD /* FixCharacterViewController.swift in Sources */,
@@ -3904,6 +3909,7 @@
 				290B6289207CF248007287C4 /* StackView.swift in Sources */,
 				29323E4920521FD500AC6D6F /* ContributorProtocol-Extensions.swift in Sources */,
 				D97C71DE18EC98A40089FDC6 /* QuestCollect.m in Sources */,
+				291448842088E2E000F3A6B5 /* EquipmentViewDataSource.swift in Sources */,
 				290B624320728E74007287C4 /* GuildOverviewViewController.swift in Sources */,
 				29ED1AFF1F339ACF005A3895 /* UIColor-Extensions.swift in Sources */,
 				D92D26141D58EEBA001FD977 /* HRPGQRCodeScannerViewController.m in Sources */,

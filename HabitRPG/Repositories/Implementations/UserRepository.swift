@@ -117,7 +117,11 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     func updateUser(_ updateDict: [String: Any]) -> Signal<UserProtocol?, NoError> {
         let call = UpdateUserCall(updateDict)
         call.fire()
-        return call.objectSignal
+        return call.objectSignal.on(value: { updatedUser in
+            if let userID = self.currentUserId, let updatedUser = updatedUser {
+                self.localRepository.updateUser(id: userID, updateUser: updatedUser)
+            }
+        })
     }
     
     func updateUser(key: String, value: Any) -> Signal<UserProtocol?, NoError> {

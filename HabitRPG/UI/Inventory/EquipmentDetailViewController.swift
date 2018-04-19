@@ -14,4 +14,24 @@ class EquipmentDetailViewController: HRPGBaseViewController {
     var selectedType: String?
     var selectedCostume = false
     
+    var datasource: EquipmentViewDataSource?
+    private let inventoryRepository = InventoryRepository()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        if let gearType = selectedType {
+            datasource = EquipmentViewDataSource(useCostume: selectedCostume, gearType: gearType)
+            datasource?.tableView = self.tableView
+        }
+        
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 100
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        if let gear = datasource?.item(at: indexPath) {
+            inventoryRepository.equip(type: selectedCostume ? "costume" : "equipped", key: gear.key ?? "").observeCompleted {}
+        }
+    }
 }

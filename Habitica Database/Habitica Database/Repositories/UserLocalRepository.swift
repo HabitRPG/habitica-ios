@@ -95,10 +95,13 @@ public class UserLocalRepository: BaseLocalRepository {
                 realm.add(RealmContributor(id: oldUser.id, contributor: newContributor), update: true)
             }
             if let newFlags = newUser.flags {
-                realm.add(RealmFlags(id: oldUser.id, flags: newFlags))
+                realm.add(RealmFlags(id: oldUser.id, flags: newFlags), update: true)
             }
             if let newInbox = newUser.inbox {
-                realm.add(RealmInbox(id: oldUser.id, inboxProtocol: newInbox))
+                realm.add(RealmInbox(id: oldUser.id, inboxProtocol: newInbox), update: true)
+            }
+            if let newPreferences = newUser.preferences {
+                realm.add(RealmPreferences(id: oldUser.id, preferences: newPreferences), update: true)
             }
         }
     }

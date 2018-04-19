@@ -19,6 +19,7 @@ public protocol GearProtocol {
     var habitClass: String? { get set }
     var specialClass: String? { get set }
     var index: String? { get set }
+    var twoHanded: Bool { get set }
     var strength: Int { get set }
     var intelligence: Int { get set }
     var perception: Int { get set }

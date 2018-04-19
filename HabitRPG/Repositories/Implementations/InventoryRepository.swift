@@ -44,8 +44,16 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
         return makeFetchRequest(entityName: "Quest", predicate: NSPredicate(format: "key == %@", key))
     }
     
+    func getOwnedGear(userID: String? = nil) -> SignalProducer<ReactiveResults<[OwnedGearProtocol]>, ReactiveSwiftRealmError> {
+        return localRepository.getOwnedGear(userID: userID ?? currentUserId ?? "")
+    }
+    
     func getGear(predicate: NSPredicate? = nil) -> SignalProducer<ReactiveResults<[GearProtocol]>, ReactiveSwiftRealmError> {
         return localRepository.getGear(predicate: predicate)
+    }
+    
+    func getGear(keys: [String]) -> SignalProducer<ReactiveResults<[GearProtocol]>, ReactiveSwiftRealmError> {
+        return localRepository.getGear(predicate: NSPredicate(format: "key IN %@", keys))
     }
     
     func getOwnedItems(userID: String? = nil) -> SignalProducer<ReactiveResults<[OwnedItemProtocol]>, ReactiveSwiftRealmError> {

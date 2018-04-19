@@ -73,5 +73,6 @@ class RealmUserGear: Object, UserGearProtocol {
         self.id = id
         equipped = userGear.equipped
         costume = userGear.costume
+        owned = userGear.owned
     }
 }

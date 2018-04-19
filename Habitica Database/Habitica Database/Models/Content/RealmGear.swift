@@ -20,6 +20,7 @@ class RealmGear: Object, GearProtocol {
     @objc dynamic var habitClass: String?
     @objc dynamic var specialClass: String?
     @objc dynamic var index: String?
+    @objc dynamic var twoHanded: Bool = false
     @objc dynamic var strength: Int = 0
     @objc dynamic var intelligence: Int = 0
     @objc dynamic var perception: Int = 0
@@ -40,6 +41,7 @@ class RealmGear: Object, GearProtocol {
         habitClass = gear.habitClass
         specialClass = gear.specialClass
         index = gear.index
+        twoHanded = gear.twoHanded
         strength = gear.strength
         intelligence = gear.intelligence
         perception = gear.perception
