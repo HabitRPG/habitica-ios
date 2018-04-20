@@ -92,6 +92,33 @@ internal enum L10n {
   /// Yearly
   internal static let yearly = L10n.tr("Main", "yearly")
 
+  internal enum Avatar {
+    /// Animal Ears
+    internal static let animalEars = L10n.tr("Main", "avatar.animal_ears")
+    /// Background
+    internal static let background = L10n.tr("Main", "avatar.background")
+    /// Bangs
+    internal static let bangs = L10n.tr("Main", "avatar.bangs")
+    /// Beard
+    internal static let beard = L10n.tr("Main", "avatar.beard")
+    /// Flower
+    internal static let flower = L10n.tr("Main", "avatar.flower")
+    /// Glasses
+    internal static let glasses = L10n.tr("Main", "avatar.glasses")
+    /// Hair Style
+    internal static let hairStyle = L10n.tr("Main", "avatar.hair_style")
+    /// Hair Color
+    internal static let hairColor = L10n.tr("Main", "avatar.hairColor")
+    /// Mustache
+    internal static let mustache = L10n.tr("Main", "avatar.mustache")
+    /// Shirt
+    internal static let shirt = L10n.tr("Main", "avatar.shirt")
+    /// Skin Color
+    internal static let skin = L10n.tr("Main", "avatar.skin")
+    /// Wheelchair
+    internal static let wheelchair = L10n.tr("Main", "avatar.wheelchair")
+  }
+
   internal enum Equipment {
     /// Armor
     internal static let armor = L10n.tr("Main", "equipment.armor")

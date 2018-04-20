@@ -44,6 +44,21 @@ class RealmPreferences: Object, PreferencesProtocol {
         }
     }
     @objc dynamic var realmPushNotifications: RealmPushNotifications?
+    var hair: HairProtocol? {
+        get {
+            return realmHair
+        }
+        set {
+            if let newHair = newValue as? RealmHair {
+                realmHair = newHair
+                return
+            }
+            if let newHair = newValue {
+                realmHair = RealmHair(userID: id, protocolObject: newHair)
+            }
+        }
+    }
+    @objc dynamic var realmHair: RealmHair?
     
     override static func primaryKey() -> String {
         return "id"
@@ -73,5 +88,6 @@ class RealmPreferences: Object, PreferencesProtocol {
         sound = preferences.sound
         autoEquip = preferences.autoEquip
         pushNotifications = preferences.pushNotifications
+        hair = preferences.hair
     }
 }

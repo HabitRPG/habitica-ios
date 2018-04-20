@@ -19,4 +19,5 @@ public protocol ContentProtocol {
     var faq: [FAQEntryProtocol]? { get set }
     var pets: [PetProtocol]? { get set }
     var mounts: [MountProtocol]? { get set }
+    var customizations: [CustomizationProtocol] { get set }
 }

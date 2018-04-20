@@ -9,12 +9,85 @@
 import Foundation
 import Habitica_Models
 
-private class APIGearWrapper: Decodable {
+private struct APIGearWrapper: Decodable {
     var flat: [String: APIGear]?
 }
 
-private class APIFAQWrapper: Decodable {
+private struct APIFAQWrapper: Decodable {
     var questions: [APIFAQEntry]?
+}
+
+private struct APIHairCustomizationWrapper: Decodable {
+    var beard: [String: APICustomization]
+    var bangs: [String: APICustomization]
+    var mustache: [String: APICustomization]
+    var base: [String: APICustomization]
+    var color: [String: APICustomization]
+    var flower: [String: APICustomization]
+    
+    func asList() -> [CustomizationProtocol] {
+        var customizations = [CustomizationProtocol]()
+        beard.forEach { (key, value) in
+            value.type = "hair"
+            value.group = "beard"
+            customizations.append(value)
+        }
+        bangs.forEach { (key, value) in
+            value.type = "hair"
+            value.group = "bangs"
+            customizations.append(value)
+        }
+        mustache.forEach { (key, value) in
+            value.type = "hair"
+            value.group = "mustache"
+            customizations.append(value)
+        }
+        base.forEach { (key, value) in
+            value.type = "hair"
+            value.group = "base"
+            customizations.append(value)
+        }
+        color.forEach { (key, value) in
+            value.type = "hair"
+            value.group = "color"
+            customizations.append(value)
+        }
+        flower.forEach { (key, value) in
+            value.type = "hair"
+            value.group = "flower"
+            customizations.append(value)
+        }
+        return customizations
+    }
+}
+
+private struct APICustomizationsWrapper: Decodable {
+    var hair: APIHairCustomizationWrapper?
+    var shirt: [String: APICustomization]
+    var chair: [String: APICustomization]
+    var background: [String: APICustomization]
+    var skin: [String: APICustomization]
+    
+    func asList() -> [CustomizationProtocol] {
+        var customizations = hair?.asList() ?? []
+        shirt.forEach { (key, value) in
+            value.type = "shirt"
+            customizations.append(value)
+        }
+        chair.forEach { (key, value) in
+            value.type = "chair"
+            customizations.append(value)
+        }
+        background.forEach { (key, value) in
+            value.type = "background"
+            customizations.append(value)
+        }
+        skin.forEach { (key, value) in
+            value.type = "skin"
+            customizations.append(value)
+        }
+        return customizations
+    }
 }
 
 public class APIContent: ContentProtocol, Decodable {
@@ -27,6 +100,7 @@ public class APIContent: ContentProtocol, Decodable {
     public var faq: [FAQEntryProtocol]?
     public var pets: [PetProtocol]?
     public var mounts: [MountProtocol]?
+    public var customizations: [CustomizationProtocol]
     
     enum CodingKeys: String, CodingKey {
         case food
@@ -38,6 +112,7 @@ public class APIContent: ContentProtocol, Decodable {
         case faq
         case pets = "petInfo"
         case mounts = "mountInfo"
+        case customizations = "appearances"
     }
     
     public required init(from decoder: Decoder) throws {
@@ -76,5 +151,7 @@ public class APIContent: ContentProtocol, Decodable {
         self.mounts = try? values.decode([String: APIMount].self, forKey: .mounts).map({ (key, value) in
             return value
         })
+        let customizationsWrapper = try? values.decode(APICustomizationsWrapper.self, forKey: .customizations)
+        customizations = customizationsWrapper?.asList() ?? []
     }
 }

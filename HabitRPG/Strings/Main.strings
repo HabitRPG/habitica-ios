@@ -142,3 +142,15 @@
 "equipment.autoEquip" = "Auto-Equip new";
 "equipment.costume" = "Costume";
 "equipment.useCostume" = "Use Costume";
+"avatar.shirt" = "Shirt";
+"avatar.skin" = "Skin Color";
+"avatar.hairColor" = "Hair Color";
+"avatar.bangs" = "Bangs";
+"avatar.hair_style" = "Hair Style";
+"avatar.mustache" = "Mustache";
+"avatar.beard" = "Beard";
+"avatar.flower" = "Flower";
+"avatar.glasses" = "Glasses";
+"avatar.wheelchair" = "Wheelchair";
+"avatar.animal_ears" = "Animal Ears";
+"avatar.background" = "Background";

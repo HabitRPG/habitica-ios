@@ -33,6 +33,9 @@
 		290C3030206CEED20066AF5B /* SkillResponseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C302F206CEED20066AF5B /* SkillResponseProtocol.swift */; };
 		290C3037206D36740066AF5B /* GroupProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C3036206D36740066AF5B /* GroupProtocol.swift */; };
 		290C3039206D3BAD0066AF5B /* ChatMessageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C3038206D3BAD0066AF5B /* ChatMessageProtocol.swift */; };
+		29144890208A1B1500F3A6B5 /* HairProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2914488F208A1B1500F3A6B5 /* HairProtocol.swift */; };
+		2914489A208A32B400F3A6B5 /* CustomizationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29144899208A32B400F3A6B5 /* CustomizationProtocol.swift */; };
+		2914489C208A335C00F3A6B5 /* CustomizationSetProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2914489B208A335C00F3A6B5 /* CustomizationSetProtocol.swift */; };
 		292DEE5A204DAA000086D5F7 /* HabiticaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE59204DAA000086D5F7 /* HabiticaModel.swift */; };
 		292DEE7A204E36F60086D5F7 /* TagProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE79204E36F60086D5F7 /* TagProtocol.swift */; };
 		292DEE7C204E372E0086D5F7 /* ChecklistItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE7B204E372E0086D5F7 /* ChecklistItemProtocol.swift */; };
@@ -110,6 +113,9 @@
 		290C302F206CEED20066AF5B /* SkillResponseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillResponseProtocol.swift; sourceTree = "<group>"; };
 		290C3036206D36740066AF5B /* GroupProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupProtocol.swift; sourceTree = "<group>"; };
 		290C3038206D3BAD0066AF5B /* ChatMessageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageProtocol.swift; sourceTree = "<group>"; };
+		2914488F208A1B1500F3A6B5 /* HairProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HairProtocol.swift; sourceTree = "<group>"; };
+		29144899208A32B400F3A6B5 /* CustomizationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationProtocol.swift; sourceTree = "<group>"; };
+		2914489B208A335C00F3A6B5 /* CustomizationSetProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationSetProtocol.swift; sourceTree = "<group>"; };
 		292DEE59204DAA000086D5F7 /* HabiticaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabiticaModel.swift; sourceTree = "<group>"; };
 		292DEE79204E36F60086D5F7 /* TagProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagProtocol.swift; sourceTree = "<group>"; };
 		292DEE7B204E372E0086D5F7 /* ChecklistItemProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistItemProtocol.swift; sourceTree = "<group>"; };
@@ -230,6 +236,7 @@
 				299FB28B20849DF300422522 /* OwnedPetProtocol.swift */,
 				299FB28D20849E0B00422522 /* OwnedMountProtocol.swift */,
 				DC2C4C19F7CA64826BF23A5A /* PreferencesProtocol.swift */,
+				2914488F208A1B1500F3A6B5 /* HairProtocol.swift */,
 				DC2C4B6483B722EF73FA7153 /* ProfileProtocol.swift */,
 				290B624B2073D73A007287C4 /* PushNotificationsProtocol.swift */,
 				290C302F206CEED20066AF5B /* SkillResponseProtocol.swift */,
@@ -262,6 +269,8 @@
 				299FB2792084946700422522 /* AnimalProtocol.swift */,
 				299FB27B208494CA00422522 /* PetProtocol.swift */,
 				299FB27D208494E200422522 /* MountProtocol.swift */,
+				29144899208A32B400F3A6B5 /* CustomizationProtocol.swift */,
+				2914489B208A335C00F3A6B5 /* CustomizationSetProtocol.swift */,
 			);
 			path = Content;
 			sourceTree = "<group>";
@@ -511,6 +520,7 @@
 				290B624E2073D74B007287C4 /* InboxProtocol.swift in Sources */,
 				299FB28E20849E0B00422522 /* OwnedMountProtocol.swift in Sources */,
 				2902797720580E87006DACB9 /* BaseStatsProtocol.swift in Sources */,
+				2914489C208A335C00F3A6B5 /* CustomizationSetProtocol.swift in Sources */,
 				29323E4320521A7900AC6D6F /* ContributorProtocol.swift in Sources */,
 				290279872058341F006DACB9 /* QuestProgressProtocol.swift in Sources */,
 				292DEE86204E48A80086D5F7 /* ReminderProtocol.swift in Sources */,
@@ -540,6 +550,7 @@
 				290B624C2073D73A007287C4 /* PushNotificationsProtocol.swift in Sources */,
 				299FB27E208494E200422522 /* MountProtocol.swift in Sources */,
 				29027985205833EA006DACB9 /* QuestStateProtocol.swift in Sources */,
+				29144890208A1B1500F3A6B5 /* HairProtocol.swift in Sources */,
 				29A6B86A20690D470086B2A6 /* WeekRepeatProtocol.swift in Sources */,
 				295611052056DC7100D9711A /* QuestBossProtocol.swift in Sources */,
 				29323E1020504DA600AC6D6F /* UserProtocol.swift in Sources */,
@@ -559,6 +570,7 @@
 				2902797520580E3E006DACB9 /* BuffProtocol.swift in Sources */,
 				29323E4D2052F4E500AC6D6F /* OutfitProtocol.swift in Sources */,
 				DC2C4767C68C2D9F295C7804 /* ProfileProtocol.swift in Sources */,
+				2914489A208A32B400F3A6B5 /* CustomizationProtocol.swift in Sources */,
 				2956110B2056E14300D9711A /* QuestCollectProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

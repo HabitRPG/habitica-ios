@@ -66,6 +66,11 @@
 		291448842088E2E000F3A6B5 /* EquipmentViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291448832088E2E000F3A6B5 /* EquipmentViewDataSource.swift */; };
 		291448862088E87F00F3A6B5 /* EquipmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291448852088E87F00F3A6B5 /* EquipmentCell.swift */; };
 		291448882088F3F700F3A6B5 /* NSAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291448872088F3F700F3A6B5 /* NSAttributedString.swift */; };
+		2914488C2089E2D300F3A6B5 /* AvatarOverviewItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2914488B2089E2D300F3A6B5 /* AvatarOverviewItemView.swift */; };
+		2914488E2089EC5C00F3A6B5 /* AvatarOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2914488D2089EC5C00F3A6B5 /* AvatarOverviewViewController.swift */; };
+		29144896208A270800F3A6B5 /* AvatarDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29144895208A270800F3A6B5 /* AvatarDetailViewController.swift */; };
+		29144898208A271C00F3A6B5 /* AvatarDetailViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29144897208A271C00F3A6B5 /* AvatarDetailViewDataSource.swift */; };
+		291448A8208A3DD200F3A6B5 /* CustomizationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291448A7208A3DD200F3A6B5 /* CustomizationRepository.swift */; };
 		29205E352062DF710024E355 /* TextInputFormRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29205E342062DF710024E355 /* TextInputFormRow.swift */; };
 		29205E372062E0030024E355 /* TaskTextInputCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29205E362062E0030024E355 /* TaskTextInputCell.xib */; };
 		29205E392062E2430024E355 /* TaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29205E382062E2430024E355 /* TaskRow.swift */; };
@@ -641,6 +646,11 @@
 		291448832088E2E000F3A6B5 /* EquipmentViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentViewDataSource.swift; sourceTree = "<group>"; };
 		291448852088E87F00F3A6B5 /* EquipmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentCell.swift; sourceTree = "<group>"; };
 		291448872088F3F700F3A6B5 /* NSAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSAttributedString.swift; sourceTree = "<group>"; };
+		2914488B2089E2D300F3A6B5 /* AvatarOverviewItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarOverviewItemView.swift; sourceTree = "<group>"; };
+		2914488D2089EC5C00F3A6B5 /* AvatarOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarOverviewViewController.swift; sourceTree = "<group>"; };
+		29144895208A270800F3A6B5 /* AvatarDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarDetailViewController.swift; sourceTree = "<group>"; };
+		29144897208A271C00F3A6B5 /* AvatarDetailViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarDetailViewDataSource.swift; sourceTree = "<group>"; };
+		291448A7208A3DD200F3A6B5 /* CustomizationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationRepository.swift; sourceTree = "<group>"; };
 		29205E342062DF710024E355 /* TextInputFormRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputFormRow.swift; sourceTree = "<group>"; };
 		29205E362062E0030024E355 /* TaskTextInputCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskTextInputCell.xib; sourceTree = "<group>"; };
 		29205E382062E2430024E355 /* TaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRow.swift; sourceTree = "<group>"; };
@@ -1491,6 +1501,8 @@
 				290B62A1207F816B007287C4 /* ItemsViewController.swift */,
 				29144875208648D500F3A6B5 /* EquipmentOverviewViewController.swift */,
 				291448812087A13100F3A6B5 /* EquipmentDetailViewController.swift */,
+				2914488D2089EC5C00F3A6B5 /* AvatarOverviewViewController.swift */,
+				29144895208A270800F3A6B5 /* AvatarDetailViewController.swift */,
 			);
 			path = Inventory;
 			sourceTree = "<group>";
@@ -1543,6 +1555,7 @@
 				29028C382034ABAF00B7F704 /* TaskRepositoryImpl.swift */,
 				29323E1A2050532D00AC6D6F /* UserRepository.swift */,
 				299FB2992084A30400422522 /* StableRepository.swift */,
+				291448A7208A3DD200F3A6B5 /* CustomizationRepository.swift */,
 			);
 			path = Implementations;
 			sourceTree = "<group>";
@@ -1808,6 +1821,7 @@
 				494E540A1F2D894D0003683C /* HRPGShopCollectionViewDataSource.swift */,
 				2907267D1F74279C00545550 /* TimeTravelersCollectionViewDataSource.swift */,
 				494E54141F2F07290003683C /* HRPGFetchedResultsCollectionViewDataSource.swift */,
+				29144897208A271C00F3A6B5 /* AvatarDetailViewDataSource.swift */,
 				2914485E2084E9F300F3A6B5 /* Stable */,
 			);
 			name = CVDataSources;
@@ -2412,6 +2426,7 @@
 				D91CCACF1BCF11CC001C6A0C /* UserTopHeader.xib */,
 				2980E6081EEA25CD005B7100 /* YesterdailiesDialogView.swift */,
 				2980E6061EEA1F55005B7100 /* YesterdailiesDialogView.xib */,
+				2914488B2089E2D300F3A6B5 /* AvatarOverviewItemView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -3574,6 +3589,7 @@
 				290B6298207E3F37007287C4 /* LeaveGroupInteractor.swift in Sources */,
 				298119B11F50453100F9FB39 /* QuestGoalView.swift in Sources */,
 				D9D17CCC1E6736A600AD9232 /* ChallengeDetailHeaderView.swift in Sources */,
+				291448A8208A3DD200F3A6B5 /* CustomizationRepository.swift in Sources */,
 				D9BB45D61E79968B0002AE2E /* ChallengeFilterAlert.swift in Sources */,
 				D9D593671D008C7500D6C388 /* PushDevice.m in Sources */,
 				29FD8AA0203D753F0094322E /* SplitSocialViewController.swift in Sources */,
@@ -3655,6 +3671,7 @@
 				29205E352062DF710024E355 /* TextInputFormRow.swift in Sources */,
 				49E6F57D1FF9A2AE0062C8B2 /* DoubleButtonTableViewCell.swift in Sources */,
 				D9BB45631E71CE910002AE2E /* HabitTableViewCell.swift in Sources */,
+				2914488E2089EC5C00F3A6B5 /* AvatarOverviewViewController.swift in Sources */,
 				290C302A206BA0B50066AF5B /* SkillTableViewCell.swift in Sources */,
 				290458D02021D6C60032BC5E /* TopHeaderCoordinator.swift in Sources */,
 				D98F5DCD1C6CB1330035CBEC /* HRPGFlagInformationOverlayView.m in Sources */,
@@ -3750,6 +3767,7 @@
 				D95D03931C74AA5500D6BFB3 /* Preferences+CoreDataProperties.m in Sources */,
 				D9B5C0E118D602FC00C8D1B7 /* Group.m in Sources */,
 				2957B8A91F4B071700E836EF /* InAppReward+CoreDataProperties.m in Sources */,
+				2914488C2089E2D300F3A6B5 /* AvatarOverviewItemView.swift in Sources */,
 				D9884B4519168AF00078BC7C /* HRPGProgressView.m in Sources */,
 				290C302C206BACBB0066AF5B /* SpellsTableViewDataSource.swift in Sources */,
 				D9CE90411E4CAE6700702578 /* SubscriptionPlan+CoreDataProperties.m in Sources */,
@@ -3798,6 +3816,7 @@
 				D92A08591D3520D8000F8B66 /* Shop+CoreDataProperties.m in Sources */,
 				D92761611CCFBEAD0049ECAC /* Flags+CoreDataProperties.m in Sources */,
 				D9D593661D008C7500D6C388 /* PushDevice+CoreDataProperties.m in Sources */,
+				29144898208A271C00F3A6B5 /* AvatarDetailViewDataSource.swift in Sources */,
 				49A84FB21F9FCA30003E2956 /* ChallengeDetailInfoTableViewCell.swift in Sources */,
 				49DCECA71F96ECEF00982E99 /* MultiModelDataSource.swift in Sources */,
 				D905D08A1DE22CBF00CABF55 /* HRPGLoginIncentiveNotification.m in Sources */,
@@ -3877,6 +3896,7 @@
 				D96760C81B2EF9B600DB07DF /* HRPGAbbrevNumberLabel.m in Sources */,
 				D9E02EC61E5E0458002CFCE2 /* ChallengeTableViewController.swift in Sources */,
 				D96BFC4F1E191D7200266EEF /* UIAlertController-Extensions.swift in Sources */,
+				29144896208A270800F3A6B5 /* AvatarDetailViewController.swift in Sources */,
 				49DCECE81F9A843E00982E99 /* MultiModelTableViewController.swift in Sources */,
 				293282181F39E1A400D42961 /* WelcomeViewController.swift in Sources */,
 				D9AEA8A11C733BFA00FE6158 /* HRPGGroupAboutTableViewController.m in Sources */,

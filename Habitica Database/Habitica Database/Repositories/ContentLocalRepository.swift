@@ -43,6 +43,9 @@ public class ContentLocalRepository: BaseLocalRepository {
         content.mounts?.forEach({ (mount) in
             newObjects.append(RealmMount(mount))
         })
+        content.customizations.forEach({ (customization) in
+            newObjects.append(RealmCustomization(customization))
+        })
         save(objects: newObjects)
     }
     
