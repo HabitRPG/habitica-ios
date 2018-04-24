@@ -13,6 +13,7 @@ class AvatarOverviewItemView: UIView {
         let imageView = UIImageView()
         imageView.backgroundColor = .white
         imageView.layer.cornerRadius = 4
+        imageView.contentMode = .center
         return imageView
     }()
     var label: UILabel = {

@@ -22,6 +22,7 @@ public protocol UserProtocol: AvatarProtocol {
     var lastCron: Date? { get set }
     var inbox: InboxProtocol? { get set }
     var authentication: AuthenticationProtocol? { get set }
+    var purchased: PurchasedProtocol? { get set }
 }
 
 public extension UserProtocol {
@@ -49,5 +50,14 @@ public extension UserProtocol {
     
     var isModerator: Bool {
         return (contributor?.level ?? 0) >= 8
+    }
+    
+    var isSubscribed: Bool {
+        if let dateTerminated = purchased?.subscriptionPlan?.dateTerminated {
+            if dateTerminated < Date() {
+                return false
+            }
+        }
+        return purchased?.subscriptionPlan?.planId != nil
     }
 }

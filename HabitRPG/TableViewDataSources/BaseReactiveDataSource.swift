@@ -12,6 +12,7 @@ import Habitica_Database
 import Habitica_Models
 
 class ItemSection<MODEL> {
+    var key: String?
     var title: String?
     var isHidden = false
     var items = [MODEL]()
@@ -20,7 +21,8 @@ class ItemSection<MODEL> {
         return !isHidden && items.count > 0
     }
     
-    init(title: String? = nil) {
+    init(key: String? = nil, title: String? = nil) {
+        self.key = key
         self.title = title
     }
 }

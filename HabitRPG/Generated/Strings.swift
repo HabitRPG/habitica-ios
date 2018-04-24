@@ -55,6 +55,10 @@ internal enum L10n {
   internal static let ok = L10n.tr("Main", "ok")
   /// Pets
   internal static let pets = L10n.tr("Main", "pets")
+  /// Purchase for %d Gems
+  internal static func purchaseForGems(_ p1: Int) -> String {
+    return L10n.tr("Main", "purchase_for_gems", p1)
+  }
   /// Quests
   internal static let quests = L10n.tr("Main", "quests")
   /// Reset Justins Tips

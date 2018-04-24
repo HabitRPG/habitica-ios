@@ -24,6 +24,7 @@ public class APIUser: UserProtocol, Decodable {
     public var lastCron: Date?
     public var inbox: InboxProtocol?
     public var authentication: AuthenticationProtocol?
+    public var purchased: PurchasedProtocol?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -40,6 +41,7 @@ public class APIUser: UserProtocol, Decodable {
         case lastCron
         case inbox
         case authentication = "auth"
+        case purchased
     }
     
     public required init(from decoder: Decoder) throws {
@@ -61,5 +63,6 @@ public class APIUser: UserProtocol, Decodable {
         lastCron = try? values.decode(Date.self, forKey: .lastCron)
         inbox = try? values.decode(APIInbox.self, forKey: .inbox)
         authentication = try? values.decode(APIAuthentication.self, forKey: .authentication)
+        purchased = try? values.decode(APIPurchased.self, forKey: .purchased)
     }
 }

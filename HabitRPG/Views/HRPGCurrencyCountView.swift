@@ -52,7 +52,7 @@ class HRPGCurrencyCountView: UIView {
     
     public var orientation: CurrencyCountViewOrientation = .horizontal {
         didSet {
-            updateOrientation()
+            setNeedsLayout()
         }
     }
     
@@ -68,9 +68,6 @@ class HRPGCurrencyCountView: UIView {
     
     private let countLabel: HRPGAbbrevNumberLabel = HRPGAbbrevNumberLabel()
     private let currencyImageView: UIImageView = UIImageView(image: HabiticaIcons.imageOfGold)
-    
-    private var widthConstraint: NSLayoutConstraint?
-    private var heightConstraint: NSLayoutConstraint?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -100,23 +97,6 @@ class HRPGCurrencyCountView: UIView {
         addSubview(countLabel)
         addSubview(currencyImageView)
         
-        addConstraints(longwaysConstraints())
-        addConstraints(shortwaysConstraints())
-        
-        widthConstraint = NSLayoutConstraint.init(item: currencyImageView,
-                                                  attribute: NSLayoutAttribute.width,
-                                                  relatedBy: NSLayoutRelation.equal,
-                                                  toItem: nil,
-                                                  attribute: NSLayoutAttribute.notAnAttribute,
-                                                  multiplier: 1,
-                                                  constant: viewSize == .normal ? 18 : 24)
-        if let width = widthConstraint {
-            currencyImageView.addConstraint(width)
-        }
-        if let height = heightConstraint {
-            currencyImageView.addConstraint(height)
-        }
-        
         setNeedsUpdateConstraints()
         updateConstraints()
         setNeedsLayout()
@@ -124,26 +104,14 @@ class HRPGCurrencyCountView: UIView {
     }
     
     private func updateSize() {
-        widthConstraint?.constant = (viewSize == .normal ? 18 : 24)
-        heightConstraint?.constant = (viewSize == .normal ? 16 : 20)
-        
         countLabel.font = viewSize == .normal ? UIFont.preferredFont(forTextStyle: .footnote) : countLabel.font.withSize(17)
         
         if currency == .gem {
             currencyImageView.image = (viewSize == .normal ? HabiticaIcons.imageOfGem : HabiticaIcons.imageOfGem_36)
         }
-        
-        setNeedsUpdateConstraints()
-        updateConstraints()
+
         setNeedsLayout()
         layoutIfNeeded()
-    }
-    
-    private func updateOrientation() {
-        self.removeConstraints(self.constraints)
-        
-        addConstraints(longwaysConstraints())
-        addConstraints(shortwaysConstraints())
     }
     
     private func updateStateValues() {
@@ -160,43 +128,37 @@ class HRPGCurrencyCountView: UIView {
         }
     }
     
-    private func longwaysConstraints() -> [NSLayoutConstraint] {
-        let viewDictionary = ["image": self.currencyImageView, "label": self.countLabel]
-        let orientationChar = orientation == .horizontal ? "H" : "V"
-        var constraints = NSLayoutConstraint.constraints(withVisualFormat: "\(orientationChar):|-0-[image]-4-[label]-0-|",
-                                                        options: NSLayoutFormatOptions(rawValue: 0),
-                                                        metrics: nil,
-                                                        views: viewDictionary)
-        
-        if orientation == .vertical {
-            constraints.append(NSLayoutConstraint.init(item: countLabel,
-                                                       attribute: NSLayoutAttribute.centerX,
-                                                       relatedBy: NSLayoutRelation.equal,
-                                                       toItem: self,
-                                                       attribute: NSLayoutAttribute.centerX,
-                                                       multiplier: 1,
-                                                       constant: 0))
-        }
-        return constraints
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        layout()
     }
     
-    private func shortwaysConstraints() -> [NSLayoutConstraint] {
-        let viewDictionary = ["image": self.currencyImageView, "label": self.countLabel]
-        let orientationChar = orientation == .horizontal ? "V" : "H"
-        var constraints = NSLayoutConstraint.constraints(withVisualFormat: "\(orientationChar):|-0-[image]-0-|",
-                                                         options: NSLayoutFormatOptions(rawValue: 0),
-                                                         metrics: nil,
-                                                         views: viewDictionary)
-        if orientation == .horizontal {
-            constraints.append(NSLayoutConstraint.init(item: countLabel,
-                                                       attribute: NSLayoutAttribute.centerY,
-                                                       relatedBy: NSLayoutRelation.equal,
-                                                       toItem: self,
-                                                       attribute: NSLayoutAttribute.centerY,
-                                                       multiplier: 1,
-                                                       constant: 0))
-        }
-        return constraints
+    private var iconWidth: CGFloat {
+        return (viewSize == .normal ? CGFloat(18) : CGFloat(24))
+    }
+    
+    private var requiredWidth: CGFloat {
+        return iconWidth + 4 + countLabel.bounds.size.width
+    }
+    
+    private func layout() {
+        countLabel.pin.vertically().sizeToFit(.height)
+        let halfSize = requiredWidth / 2
+        let offset = ((bounds.size.width / 2) - halfSize) + 4 + iconWidth
+        countLabel.pin.left(offset)
+        currencyImageView.pin.vertically().left(of: countLabel).marginRight(4)
+    }
+    
+    override var intrinsicContentSize: CGSize {
+        layout()
+        return CGSize(width: requiredWidth, height: 28)
+    }
+    
+    override func sizeToFit() {
+        super.sizeToFit()
+        countLabel.pin.vertically().sizeToFit(.height)
+        pin.width(requiredWidth).height(28)
+        layout()
     }
     
     //Helper methods since objc can't access swift enums

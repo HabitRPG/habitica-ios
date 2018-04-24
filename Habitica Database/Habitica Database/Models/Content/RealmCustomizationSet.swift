@@ -11,14 +11,25 @@ import Habitica_Models
 import RealmSwift
 
 class RealmCustomizationSet: Object, CustomizationSetProtocol {
-    var key: String?
-    var text: String?
-    var availableFrom: Date?
-    var availableUntil: Date?
-    var setPrice: Float = 0
+    @objc dynamic var key: String?
+    @objc dynamic var text: String?
+    @objc dynamic var availableFrom: Date?
+    @objc dynamic var availableUntil: Date?
+    @objc dynamic var setPrice: Float = 0
+    var setItems: [CustomizationProtocol]? {
+        return realmSetItems.map({ (customization) -> CustomizationProtocol in
+            return customization
+        })
+    }
+    
+    var realmSetItems = LinkingObjects(fromType: RealmCustomization.self, property: "realmSet")
     
     override static func primaryKey() -> String {
         return "key"
+    }
+    
+    override static func ignoredProperties() -> [String] {
+        return ["setItems"]
     }
     
     convenience init(_ setProtocol: CustomizationSetProtocol) {

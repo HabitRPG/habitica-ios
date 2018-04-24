@@ -15,4 +15,24 @@ public protocol CustomizationSetProtocol {
     var availableFrom: Date? { get set }
     var availableUntil: Date? { get set }
     var setPrice: Float { get set }
+    var setItems: [CustomizationProtocol]? { get }
+}
+
+public extension CustomizationSetProtocol {
+    
+    var isPurchasable: Bool {
+        let now = Date()
+        if let availableFrom = availableFrom {
+            if availableFrom > now {
+                return false
+            }
+        }
+        if let availableUntil = availableUntil {
+            if availableUntil < now {
+                return false
+            }
+        }
+        return true
+    }
+    
 }

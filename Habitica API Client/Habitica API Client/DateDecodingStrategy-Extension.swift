@@ -18,9 +18,12 @@ extension JSONDecoder {
             
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
-            let date = dateFormatter.date(from: dateStr)
+            if let date = dateFormatter.date(from: dateStr) {
+                return date
+            }
             
-            if let date = date {
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            if let date = dateFormatter.date(from: dateStr) {
                 return date
             }
             
@@ -28,6 +31,7 @@ extension JSONDecoder {
                 let dateFormatter = ISO8601DateFormatter()
                 return dateFormatter.date(from: dateStr) ?? Date()
             }
+            
             return Date()
         })
     }

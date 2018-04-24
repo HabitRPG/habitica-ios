@@ -10,6 +10,10 @@ import Foundation
 import Habitica_Models
 
 class APICustomizationSet: CustomizationSetProtocol, Decodable {
+    var setItems: [CustomizationProtocol]? {
+        return nil
+    }
+    
     var key: String?
     var text: String?
     var availableFrom: Date?

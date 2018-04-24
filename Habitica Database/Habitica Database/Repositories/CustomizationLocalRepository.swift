@@ -24,4 +24,14 @@ public class CustomizationLocalRepository: ContentLocalRepository {
         })
     }
     
+    public func getOwnedCustomizations(type: String, group: String?) -> SignalProducer<ReactiveResults<[OwnedCustomizationProtocol]>, ReactiveSwiftRealmError> {
+        var query = "isOwned == true && type == '\(type)'"
+        if let group = group {
+            query += " && group == '\(group)'"
+        }
+        return RealmOwnedCustomization.findBy(query: query).sorted(key: "key").reactive().map({ (customizations, changes) -> ReactiveResults<[OwnedCustomizationProtocol]> in
+            return (customizations.map({ (customization) -> OwnedCustomizationProtocol in return customization }), changes)
+        })
+    }
+    
 }

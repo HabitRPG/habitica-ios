@@ -91,46 +91,46 @@ class AvatarOverviewViewController: HRPGUIViewController {
         bodySizeControl.selectedSegmentIndex = user.preferences?.size == "slim" ? 0 : 1
         
         if let shirt = user.preferences?.shirt {
-            shirtView.configure("\(user.preferences?.size ?? "slim")_shirt_\(shirt)")
+            shirtView.configure("Icon_\(user.preferences?.size ?? "slim")_shirt_\(shirt)")
         }
         if let skin = user.preferences?.skin {
-            skinView.configure("skin_\(skin)")
+            skinView.configure("Icon_skin_\(skin)")
         }
         if let hairColor = user.preferences?.hair?.color {
-            hairColorView.configure("hair_bangs_1_\(hairColor)")
+            hairColorView.configure("Icon_hair_bangs_1_\(hairColor)")
             if let bangs = user.preferences?.hair?.bangs, bangs != 0 {
-                hairBangsView.configure("hair_bangs_\(bangs)_\(hairColor)")
+                hairBangsView.configure("Icon_hair_bangs_\(bangs)_\(hairColor)")
             } else {
                 hairBangsView.configure(nil)
             }
             
             if let base = user.preferences?.hair?.base, base != 0 {
-                hairBaseView.configure("hair_base_\(base)_\(hairColor)")
+                hairBaseView.configure("Icon_hair_base_\(base)_\(hairColor)")
             } else {
                 hairBaseView.configure(nil)
             }
             
             if let beard = user.preferences?.hair?.beard, beard != 0 {
-                hairBeardView.configure("hair_beard_\(beard)_\(hairColor)")
+                hairBeardView.configure("Icon_hair_beard_\(beard)_\(hairColor)")
             } else {
                 hairBeardView.configure(nil)
             }
             
             if let mustache = user.preferences?.hair?.mustache, mustache != 0 {
-                hairBeardView.configure("hair_mustache_\(mustache)_\(hairColor)")
+                hairBeardView.configure("Icon_hair_mustache_\(mustache)_\(hairColor)")
             } else {
                 hairBeardView.configure(nil)
             }
         }
         
         if let flower = user.preferences?.hair?.flower, flower != 0 {
-            hairBeardView.configure("hair_flower_\(flower)")
+            hairBeardView.configure("Icon_hair_flower_\(flower)")
         } else {
             hairBeardView.configure(nil)
         }
         
         if let chair = user.preferences?.chair, chair != "none" {
-            wheelchairView.configure("chair_\(chair)")
+            wheelchairView.configure("Icon_chair_\(chair)")
         } else {
             wheelchairView.configure(nil)
         }

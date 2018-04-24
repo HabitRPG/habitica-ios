@@ -113,6 +113,11 @@
 		295611072056DD2800D9711A /* APIQuest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295611062056DD2800D9711A /* APIQuest.swift */; };
 		295611092056DE9F00D9711A /* APIQuestBoss.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295611082056DE9F00D9711A /* APIQuestBoss.swift */; };
 		2956110D2056E18A00D9711A /* APIQuestCollect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2956110C2056E18A00D9711A /* APIQuestCollect.swift */; };
+		2974BD9B208E103B00EC1A25 /* APIPurchased.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BD9A208E103B00EC1A25 /* APIPurchased.swift */; };
+		2974BD9D208E120200EC1A25 /* APIOwnedCustomization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BD9C208E120200EC1A25 /* APIOwnedCustomization.swift */; };
+		2974BD9F208E15FD00EC1A25 /* APISubscriptionPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BD9E208E15FD00EC1A25 /* APISubscriptionPlan.swift */; };
+		2974BDA1208E16E100EC1A25 /* APISubscriptionConsecutive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BDA0208E16E100EC1A25 /* APISubscriptionConsecutive.swift */; };
+		2974BDAB208F4D6B00EC1A25 /* UnlockCustomizationsCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BDAA208F4D6B00EC1A25 /* UnlockCustomizationsCall.swift */; };
 		299FB2882084987000422522 /* APIPet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB2872084987000422522 /* APIPet.swift */; };
 		299FB28A2084988500422522 /* APIMount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB2892084988500422522 /* APIMount.swift */; };
 		299FB29420849EDD00422522 /* APIOwnedPet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB29320849EDD00422522 /* APIOwnedPet.swift */; };
@@ -244,6 +249,11 @@
 		295611062056DD2800D9711A /* APIQuest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIQuest.swift; sourceTree = "<group>"; };
 		295611082056DE9F00D9711A /* APIQuestBoss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIQuestBoss.swift; sourceTree = "<group>"; };
 		2956110C2056E18A00D9711A /* APIQuestCollect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIQuestCollect.swift; sourceTree = "<group>"; };
+		2974BD9A208E103B00EC1A25 /* APIPurchased.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIPurchased.swift; sourceTree = "<group>"; };
+		2974BD9C208E120200EC1A25 /* APIOwnedCustomization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIOwnedCustomization.swift; sourceTree = "<group>"; };
+		2974BD9E208E15FD00EC1A25 /* APISubscriptionPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISubscriptionPlan.swift; sourceTree = "<group>"; };
+		2974BDA0208E16E100EC1A25 /* APISubscriptionConsecutive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISubscriptionConsecutive.swift; sourceTree = "<group>"; };
+		2974BDAA208F4D6B00EC1A25 /* UnlockCustomizationsCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockCustomizationsCall.swift; sourceTree = "<group>"; };
 		299FB2872084987000422522 /* APIPet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIPet.swift; sourceTree = "<group>"; };
 		299FB2892084988500422522 /* APIMount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIMount.swift; sourceTree = "<group>"; };
 		299FB29320849EDD00422522 /* APIOwnedPet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIOwnedPet.swift; sourceTree = "<group>"; };
@@ -328,16 +338,19 @@
 				2902797820580EFD006DACB9 /* APIBuff.swift */,
 				29323E4620521B5000AC6D6F /* APIContributor.swift */,
 				29323E36205212C400AC6D6F /* APIFlags.swift */,
+				29144893208A1C9400F3A6B5 /* APIHair.swift */,
 				290B62512073D91C007287C4 /* APIInbox.swift */,
 				290B6262207B9707007287C4 /* APILocalAuthentication.swift */,
+				290B6282207BAAA2007287C4 /* APILoginResponse.swift */,
 				29323E542052F7C400AC6D6F /* APIOutfit.swift */,
-				290C3027206B98A50066AF5B /* APIOwnedItem.swift */,
+				2974BD9C208E120200EC1A25 /* APIOwnedCustomization.swift */,
 				290B629B207F7E84007287C4 /* APIOwnedGear.swift */,
-				299FB29320849EDD00422522 /* APIOwnedPet.swift */,
+				290C3027206B98A50066AF5B /* APIOwnedItem.swift */,
 				299FB29520849F1500422522 /* APIOwnedMount.swift */,
+				299FB29320849EDD00422522 /* APIOwnedPet.swift */,
 				29323E38205212E400AC6D6F /* APIPreferences.swift */,
-				29144893208A1C9400F3A6B5 /* APIHair.swift */,
 				29323E3A205212F900AC6D6F /* APIProfile.swift */,
+				2974BD9A208E103B00EC1A25 /* APIPurchased.swift */,
 				290B62532073D957007287C4 /* APIPushNotifications.swift */,
 				290C3031206CF0190066AF5B /* APISkillResponse.swift */,
 				29323E1620504F5600AC6D6F /* APIStats.swift */,
@@ -345,7 +358,6 @@
 				29323E1420504F2300AC6D6F /* APIUser.swift */,
 				29323E522052F7A600AC6D6F /* APIUserGear.swift */,
 				29323E502052F77F00AC6D6F /* APIUserItems.swift */,
-				290B6282207BAAA2007287C4 /* APILoginResponse.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -498,6 +510,7 @@
 				294973C72080F98600F02AC3 /* HatchPetCall.swift */,
 				291448732086352800F3A6B5 /* FeedPetCall.swift */,
 				294973CD2080FAD500F02AC3 /* OpenMysteryItemCall.swift */,
+				2974BDAA208F4D6B00EC1A25 /* UnlockCustomizationsCall.swift */,
 			);
 			path = Inventory;
 			sourceTree = "<group>";
@@ -522,6 +535,8 @@
 		29B586E8204D92CF00301955 = {
 			isa = PBXGroup;
 			children = (
+				2974BD9E208E15FD00EC1A25 /* APISubscriptionPlan.swift */,
+				2974BDA0208E16E100EC1A25 /* APISubscriptionConsecutive.swift */,
 				29B586F4204D92CF00301955 /* Habitica API Client */,
 				292DEE43204D9D8D0086D5F7 /* Frameworks */,
 				29B586FF204D92CF00301955 /* Habitica API ClientTests */,
@@ -806,8 +821,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2974BD9F208E15FD00EC1A25 /* APISubscriptionPlan.swift in Sources */,
 				292DEE51204DA3A30086D5F7 /* APITask.swift in Sources */,
 				290C3013206A78700066AF5B /* APIEmptyResponse.swift in Sources */,
+				2974BDA1208E16E100EC1A25 /* APISubscriptionConsecutive.swift in Sources */,
 				290B627B207BA9A1007287C4 /* LocalRegisterCall.swift in Sources */,
 				290C3042206D3EC30066AF5B /* APIChatMessage.swift in Sources */,
 				29A6B872206941210086B2A6 /* UpdateTaskCall.swift in Sources */,
@@ -841,9 +858,11 @@
 				29A6B86E20690F0C0086B2A6 /* APIWeekRepeat.swift in Sources */,
 				2902798F205835DF006DACB9 /* APIWorldState.swift in Sources */,
 				292DEEA1204F625B0086D5F7 /* DateDecodingStrategy-Extension.swift in Sources */,
+				2974BD9D208E120200EC1A25 /* APIOwnedCustomization.swift in Sources */,
 				29A6B870206940F80086B2A6 /* CreateTaskCall.swift in Sources */,
 				29323E552052F7C400AC6D6F /* APIOutfit.swift in Sources */,
 				292F96742072277D00804151 /* APIChatMessageReaction.swift in Sources */,
+				2974BD9B208E103B00EC1A25 /* APIPurchased.swift in Sources */,
 				29323E2D2051B43100AC6D6F /* DebugOutputHandler.swift in Sources */,
 				292DEE8F204F49D50086D5F7 /* AuthenticatedCall.swift in Sources */,
 				299FB28A2084988500422522 /* APIMount.swift in Sources */,
@@ -882,6 +901,7 @@
 				292DEE82204E411C0086D5F7 /* APIChecklistItem.swift in Sources */,
 				295610FD2056CC5D00D9711A /* APIGear.swift in Sources */,
 				294973C82080F98600F02AC3 /* HatchPetCall.swift in Sources */,
+				2974BDAB208F4D6B00EC1A25 /* UnlockCustomizationsCall.swift in Sources */,
 				29323E39205212E400AC6D6F /* APIPreferences.swift in Sources */,
 				290B627F207BAA23007287C4 /* SleepCall.swift in Sources */,
 				290B6265207B978F007287C4 /* APIAuthentication.swift in Sources */,

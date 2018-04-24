@@ -28,9 +28,79 @@ public extension CustomizationProtocol {
             return "\(preferences?.size ?? "")_shirt_\(key)"
         case "skin":
             return "skin_\(key)"
+        case "background":
+            return key
+        case "hair":
+            let hairColor = preferences?.hair?.color ?? ""
+            switch group {
+            case "bangs":
+                return "hair_bangs_\(key)_\(hairColor)"
+            case "base":
+                return "hair_base_\(key)_\(hairColor)"
+            case "mustache":
+                return "hair_mustache_\(key)_\(hairColor)"
+            case "beard":
+                return "hair_beard_\(key)_\(hairColor)"
+            case "color":
+                return "hair_bangs_1_\(key)"
+            case "flower":
+                return "hair_flower_\(key)"
+            default:
+                return nil
+            }
         default:
             return nil
         }
     }
     
+    func iconName(forUserPreferences preferences: PreferencesProtocol?) -> String? {
+        let imagename = imageName(forUserPreferences: preferences)
+        if let name = imagename {
+            return "Icon_\(name)"
+        } else {
+            return nil
+        }
+    }
+    
+    var isPurchasable: Bool {
+        return price > 0 && (set?.isPurchasable ?? true)
+    }
+    
+    var path: String {
+        if let group = group {
+            return "\(type ?? "").\(group).\(key ?? "")"
+        } else {
+            return "\(type ?? "").\(key ?? "")"
+        }
+    }
+    
+    var userPath: String {
+        switch type {
+        case "shirt":
+            return "preferences.shirt"
+        case "skin":
+            return "preferences.skin"
+        case "background":
+            return "preferences.background"
+        case "hair":
+            switch group {
+            case "bangs":
+                return "preferences.hair.bangs"
+            case "base":
+                return "preferences.hair.base"
+            case "mustache":
+                return "preferences.hair.mustache"
+            case "beard":
+                return "preferences.hair.beard"
+            case "color":
+                return "preferences.hair.color"
+            case "flower":
+                return "preferences.hair.flower"
+            default:
+                return ""
+            }
+        default:
+            return ""
+        }
+    }
 }

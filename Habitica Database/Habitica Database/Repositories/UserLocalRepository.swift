@@ -103,6 +103,9 @@ public class UserLocalRepository: BaseLocalRepository {
             if let newPreferences = newUser.preferences {
                 realm.add(RealmPreferences(id: oldUser.id, preferences: newPreferences), update: true)
             }
+            if let newPurchaseed = newUser.purchased {
+                realm.add(RealmPurchased(userID: oldUser.id, protocolObject: newPurchaseed), update: true)
+            }
         }
     }
 }

@@ -143,23 +143,18 @@
         onSuccess:(void (^)())successBlock
           onError:(void (^)())errorBlock;
 
-- (void)unlockPath:(NSString *)path
-         onSuccess:(void (^)())successBlock
-           onError:(void (^)())errorBlock;
+//- (void)unlockPath:(NSString *)path onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
-- (void)sellItem:(Item *)item onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
+//- (void)sellItem:(Item *)item onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
-- (void)openMysteryItem:(void (^)())successBlock onError:(void (^)())errorBlock;
+//- (void)openMysteryItem:(void (^)())successBlock onError:(void (^)())errorBlock;
 
 - (void)equipObject:(NSString *)key
            withType:(NSString *)type
           onSuccess:(void (^)())successBlock
             onError:(void (^)())errorBlock;
 
-- (void)hatchEgg:(NSString *)egg
-      withPotion:(NSString *)hPotion
-       onSuccess:(void (^)(NSString *message))successBlock
-         onError:(void (^)())errorBlock;
+//- (void)hatchEgg:(NSString *)egg withPotion:(NSString *)hPotion onSuccess:(void (^)(NSString *message))successBlock onError:(void (^)())errorBlock;
 
 //- (void)castSpell:(Spell *)spell withTargetType:(NSString *)targetType onTarget:(NSString *)target onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 

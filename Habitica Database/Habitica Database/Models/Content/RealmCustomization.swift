@@ -11,10 +11,11 @@ import Habitica_Models
 import RealmSwift
 
 class RealmCustomization: Object, CustomizationProtocol {
-    var key: String?
-    var type: String?
-    var group: String?
-    var price: Float = 0
+    @objc dynamic var combinedKey: String?
+    @objc dynamic var key: String?
+    @objc dynamic var type: String?
+    @objc dynamic var group: String?
+    @objc dynamic var price: Float = 0
     var set: CustomizationSetProtocol? {
         get {
             return realmSet
@@ -27,10 +28,10 @@ class RealmCustomization: Object, CustomizationProtocol {
             }
         }
     }
-    var realmSet: RealmCustomizationSet?
+    @objc dynamic var realmSet: RealmCustomizationSet?
     
     override static func primaryKey() -> String {
-        return "key"
+        return "combinedKey"
     }
     
     convenience init(_ customizationProtocol: CustomizationProtocol) {
@@ -38,6 +39,7 @@ class RealmCustomization: Object, CustomizationProtocol {
         key = customizationProtocol.key
         type = customizationProtocol.type
         group = customizationProtocol.group
+        combinedKey = (key ?? "") + (type ?? "") + (group ?? "")
         price = customizationProtocol.price
         set = customizationProtocol.set
     }
