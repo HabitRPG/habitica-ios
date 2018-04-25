@@ -29,7 +29,7 @@ public extension CustomizationProtocol {
         case "skin":
             return "skin_\(key)"
         case "background":
-            return key
+            return "background_\(key)"
         case "hair":
             let hairColor = preferences?.hair?.color ?? ""
             switch group {

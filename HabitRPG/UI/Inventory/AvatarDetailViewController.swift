@@ -35,7 +35,7 @@ class AvatarDetailViewController: HRPGCollectionViewController, UICollectionView
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let customization = datasource?.item(at: indexPath) {
-            if datasource?.owns(customization: customization) == true {
+            if !customization.isPurchasable || datasource?.owns(customization: customization) == true {
                 userRepository.updateUser(key: customization.userPath, value: customization.key ?? "").observeCompleted {}
             } else {
                 showPurchaseDialog(customization: customization)

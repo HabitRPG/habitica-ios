@@ -115,11 +115,22 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        if let customization = item(at: indexPath), customization.isPurchasable == true && !owns(customization: customization) {
-            return CGSize(width: 80, height: 108)
-        } else {
-            return CGSize(width: 80, height: 80)
+        if let customization = item(at: indexPath) {
+            if customization.isPurchasable == true && !owns(customization: customization) {
+                if customization.type == "background" {
+                    return CGSize(width: 106, height: 138)
+                } else {
+                    return CGSize(width: 80, height: 108)
+                }
+            } else {
+                if customization.type == "background" {
+                    return CGSize(width: 106, height: 106)
+                } else {
+                    return CGSize(width: 80, height: 108)
+                }
+            }
         }
+        return CGSize.zero
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {

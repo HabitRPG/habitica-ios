@@ -77,7 +77,7 @@ class AvatarOverviewViewController: HRPGUIViewController {
             self.openDetailView(type: "eyewear")
         }
         wheelchairView.setup(title: L10n.Avatar.wheelchair) {
-            self.openDetailView(type: "wheelchair")
+            self.openDetailView(type: "chair")
         }
         animalEarsView.setup(title: L10n.Avatar.animalEars) {
             self.openDetailView(type: "shirt")
@@ -124,9 +124,9 @@ class AvatarOverviewViewController: HRPGUIViewController {
         }
         
         if let flower = user.preferences?.hair?.flower, flower != 0 {
-            hairBeardView.configure("Icon_hair_flower_\(flower)")
+            hairFlowerView.configure("Icon_hair_flower_\(flower)")
         } else {
-            hairBeardView.configure(nil)
+            hairFlowerView.configure(nil)
         }
         
         if let chair = user.preferences?.chair, chair != "none" {

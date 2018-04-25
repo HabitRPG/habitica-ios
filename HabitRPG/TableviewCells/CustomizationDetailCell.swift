@@ -32,10 +32,11 @@ class CustomizationDetailCell: UICollectionViewCell {
     func configure(customization: CustomizationProtocol, preferences: PreferencesProtocol?) {
         if customization.key == "0" {
             imageView.image = HabiticaIcons.imageOfBlankAvatarIcon
+        } else if customization.type == "background" {
+            imageView.setImagewith(name: customization.imageName(forUserPreferences: preferences))
         } else {
             imageView.setImagewith(name: customization.iconName(forUserPreferences: preferences))
         }
         currencyView.amount = Int(customization.price)
     }
-    
 }
