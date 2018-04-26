@@ -18,7 +18,6 @@
 #import "Gear.h"
 #import "HRPGAppDelegate.h"
 #import "HRPGContentResponse.h"
-#import "HRPGDeathView.h"
 #import "HRPGEmptySerializer.h"
 #import "HRPGImageOverlayView.h"
 #import "HRPGLoginData.h"
@@ -3223,11 +3222,6 @@ static dispatch_once_t onceToken;
                 } else {
                     task.counterDown = @([task.counterDown integerValue] + 1);
                 }
-            }
-
-            if (self.user && self.user.health && [self.user.health floatValue] <= 0) {
-                HRPGDeathView *deathView = [[HRPGDeathView alloc] init];
-                [deathView show];
             }
 
             if (taskResponse.dropKey) {

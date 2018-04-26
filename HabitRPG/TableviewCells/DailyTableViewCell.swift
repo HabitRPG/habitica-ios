@@ -14,7 +14,7 @@ class DailyTableViewCell: CheckedTableViewCell {
     func configure(task: TaskProtocol, offset: Int) {
         super.configure(task: task)
         if !(task.completed) {
-            if !task.dueToday(withOffset: offset) {
+            if !task.dueToday() {
                 self.checklistIndicator.backgroundColor = .gray600()
                 self.checklistDoneLabel.textColor = .gray100()
                 self.checklistAllLabel.textColor = .gray100()

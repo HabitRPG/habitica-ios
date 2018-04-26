@@ -72,7 +72,7 @@ extension Avatar {
             "weapon": isValid(weapon) && isAvailableGear(weapon),
             "visual-buff": isValid(visualBuff),
             "mount-head": showsMount && isValid(mount),
-            "zzz": isSleep,
+            "zzz": isSleep && !isFainted,
             "knockout": isFainted,
             "pet": showsPet && isValid(pet)
         ]
@@ -102,6 +102,7 @@ extension Avatar {
             "visual-buff": visualBuff,
             "mount-head": "Mount_Head_\(mount ?? "")",
             "zzz": "zzz",
+            "knockout": "knockout",
             "pet": "Pet-\(pet ?? "")"
         ]
     }

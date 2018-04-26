@@ -56,7 +56,7 @@ public protocol TaskProtocol {
 }
 
 extension TaskProtocol {
-    public func dueToday(withOffset: Int) -> Bool {
+    public func dueToday() -> Bool {
         return isDue
     }
 }

@@ -15,11 +15,11 @@ import Result
 
 class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtocol {
     
-    func retrieveTasks() -> Signal<[TaskProtocol]?, NoError> {
-        let call = RetrieveTasksCall()
+    func retrieveTasks(dueOnDay: Date? = nil) -> Signal<[TaskProtocol]?, NoError> {
+        let call = RetrieveTasksCall(dueOnDay: dueOnDay)
         call.fire()
         return call.arraySignal.on(value: {[weak self] tasks in
-            if let tasks = tasks {
+            if let tasks = tasks, dueOnDay == nil {
                 self?.localRepository.save(tasks)
             }
         })

@@ -29,17 +29,22 @@ public class TaskLocalRepository: BaseLocalRepository {
         save(task, tags: tags)
     }
     
-    public func save(_ tasks: [TaskProtocol]) {
+    public func save(_ tasks: [TaskProtocol], order: [String: [String]]? = nil) {
         let tags = getRealm()?.objects(RealmTag.self)
-        tasks.forEach { (task) in
-            save(task, tags: tags)
+        var taskOrder = ["habits": [String](),
+                         "dailies": [String](),
+                         "todos": [String](),
+                         "rewards": [String](),
+                         ]
+        if let order = order {
+            taskOrder = order
+        } else {
+            getRealm()?.objects(RealmTask.self).sorted(byKeyPath: "order").forEach({ (task) in
+                taskOrder[(task.type ?? "")+"s"]?.append(task.id ?? "")
+            })
         }
-    }
-    
-    public func save(_ tasks: [TaskProtocol], order: [String: [String]]) {
-        let tags = getRealm()?.objects(RealmTag.self)
         save(objects:tasks.map { (task) in
-            task.order = order[(task.type ?? "")+"s"]?.index(of: task.id ?? "") ?? 0
+            task.order = taskOrder[(task.type ?? "")+"s"]?.index(of: task.id ?? "") ?? 0
             if let realmTask = task as? RealmTask {
                 return realmTask
             }

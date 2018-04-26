@@ -29,15 +29,17 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
     var tasks: [TaskProtocol]?
 
     @objc
-    static func showDialog() {
+    static func showDialog() -> YesterdailiesDialogView {
         let viewController = YesterdailiesDialogView(nibName: "YesterdailiesDialogView", bundle: Bundle.main)
 
         let today = Date()
         let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: today)
         viewController.userRepository.getUser().filter { (user) -> Bool in
-            return !user.needsCron
-        }.withLatest(from: viewController.taskRepository.retrieveTasks())
-            .on(value: { (user, tasks) in
+            return user.needsCron
+        }.withLatest(from: viewController.taskRepository.retrieveTasks(dueOnDay: yesterday))
+            .on(completed: {
+                UserManager.shared.yesterdailiesDialog = nil
+            }, value: { (user, tasks) in
                 let userTasks = tasks ?? []
                 var hasUncompletedDailies = false
                 for task in userTasks {
@@ -54,6 +56,7 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
                     viewController.userRepository.runCron(tasks: []).observeCompleted {}
                     return
                 }
+                viewController.tasks = tasks
                 let popup = PopupDialog(viewController: viewController)
                 if var topController = UIApplication.shared.keyWindow?.rootViewController {
                     while let presentedViewController = topController.presentedViewController {
@@ -64,7 +67,8 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
                         }
                     }
                 }
-        }).start()
+            }).start()
+        return viewController
     }
 
     override func viewDidLoad() {

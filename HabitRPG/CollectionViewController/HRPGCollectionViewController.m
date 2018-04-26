@@ -10,7 +10,6 @@
 #import "UIViewController+HRPGTopHeaderNavigationController.h"
 #import "Amplitude+HRPGHelpers.h"
 #import "HRPGManager.h"
-#import "HRPGDeathView.h"
 #import "Habitica-Swift.h"
 
 @interface HRPGCollectionViewController ()
@@ -36,11 +35,6 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self.topHeaderCoordinator viewDidAppear];
-
-    User *user = [[HRPGManager sharedManager] getUser];
-    if (user && user.health && user.health.floatValue <= 0) {
-        [[HRPGDeathView new] show];
-    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

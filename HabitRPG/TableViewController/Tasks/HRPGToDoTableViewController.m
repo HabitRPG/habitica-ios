@@ -8,7 +8,6 @@
 
 #import "HRPGToDoTableViewController.h"
 #import "ChecklistItem.h"
-#import "HRPGCheckBoxView.h"
 #import "Habitica-Swift.h"
 
 @interface HRPGToDoTableViewController ()

@@ -155,3 +155,6 @@
 "avatar.animal_ears" = "Animal Ears";
 "avatar.background" = "Background";
 "purchase_for_gems" = "Purchase for %d Gems";
+"health" = "Health";
+"mana" = "Mana";
+"experience" = "Experience";

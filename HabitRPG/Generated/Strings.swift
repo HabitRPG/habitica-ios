@@ -29,6 +29,8 @@ internal enum L10n {
   internal static let eggs = L10n.tr("Main", "eggs")
   /// Equip
   internal static let equip = L10n.tr("Main", "equip")
+  /// Experience
+  internal static let experience = L10n.tr("Main", "experience")
   /// Food
   internal static let food = L10n.tr("Main", "food")
   /// Hatch egg
@@ -37,12 +39,16 @@ internal enum L10n {
   internal static let hatchPotion = L10n.tr("Main", "hatch_potion")
   /// Hatching Potions
   internal static let hatchingPotions = L10n.tr("Main", "hatching_potions")
+  /// Health
+  internal static let health = L10n.tr("Main", "health")
   /// Invite Party
   internal static let inviteParty = L10n.tr("Main", "invite_party")
   /// Last Activity %@
   internal static func lastActivity(_ p1: String) -> String {
     return L10n.tr("Main", "last_activity", p1)
   }
+  /// Mana
+  internal static let mana = L10n.tr("Main", "mana")
   /// Monthly
   internal static let monthly = L10n.tr("Main", "monthly")
   /// Mounts

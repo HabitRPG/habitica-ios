@@ -45,7 +45,7 @@ class HabiticaAppDelegate: NSObject {
     }
     
     @objc
-    func setupAnalytics() {        
+    func setupAnalytics() {
         let keys = HabiticaKeys()
         
         Amplitude.instance().initializeApiKey(keys.amplitudeApiKey)
@@ -75,6 +75,11 @@ class HabiticaAppDelegate: NSObject {
         }
         print("Realm stored at:", config.fileURL ?? "")
         Realm.Configuration.defaultConfiguration = config
+    }
+    
+    @objc
+    func setupUserManager() {
+        UserManager.shared.beginListening()
     }
     
     @objc

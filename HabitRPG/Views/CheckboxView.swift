@@ -49,10 +49,6 @@ class CheckboxView: UIView {
     }
     
     func configure(task: TaskProtocol) {
-        configure(task: task, offset: 0)
-    }
-    
-    func configure(task: TaskProtocol, offset: Int) {
         boxFillColor = UIColor(white: 1.0, alpha: 0.7)
         checked = task.completed
         if let layer = self.layer as? HRPGCheckmarkLayer {
@@ -67,7 +63,7 @@ class CheckboxView: UIView {
             } else {
                 backgroundColor = UIColor.gray600()
                 checkColor = UIColor.gray200()
-                if task.dueToday(withOffset: offset) {
+                if task.dueToday() {
                     backgroundColor = UIColor.forTaskValueLight(Int(task.value))
                     checkColor = UIColor.forTaskValue(Int(task.value))
                 }
@@ -169,7 +165,7 @@ class CheckboxView: UIView {
         boxFillColor.setFill()
         borderPath.fill()
         if let layer = self.layer as? HRPGCheckmarkLayer, layer.drawPercentage > 0 {
-            let checkFrame = CGRect(x: padding, y: frame.size.height / 2 - size / 2, width: size, height: size)
+            let checkFrame = CGRect(x: horizontalCenter - size / 2, y: frame.size.height / 2 - size / 2, width: size, height: size)
             HabiticaIcons.drawCheckmark(frame: checkFrame, resizing: .center, checkmarkColor: checkColor, percentage: layer.drawPercentage)
         }
         UIGraphicsPopContext()

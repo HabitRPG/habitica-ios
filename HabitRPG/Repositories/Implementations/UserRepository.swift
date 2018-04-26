@@ -94,7 +94,12 @@ class UserRepository: BaseRepository<UserLocalRepository> {
             })
     }
     
-    func runCron(tasks: [TaskProtocol]) -> Signal<EmptyResponseProtocol?, NoError> {
+    func runCron(tasks: [TaskProtocol]) -> Signal<UserProtocol?, NoError> {
+        getUser().take(first: 1).on(value: { user in
+            self.localRepository.updateCall {
+                user.needsCron = false
+            }
+        }).start()
         if tasks.count > 0 {
             var signal = taskRepository.score(task: tasks[0], direction: .up)
             for task in tasks {
@@ -102,26 +107,26 @@ class UserRepository: BaseRepository<UserLocalRepository> {
                     return self.taskRepository.score(task: task, direction: .up)
                 })
             }
-            return signal.flatMap(.concat, { (_) -> Signal<EmptyResponseProtocol?, NoError> in
+            return signal.flatMap(.concat, { (_) -> Signal<UserProtocol?, NoError> in
                 let call = RunCronCall()
                 call.fire()
-                return call.objectSignal
+                return call.objectSignal.flatMap(.latest, { (_) in
+                    return self.retrieveUser()
+                })
             })
         } else {
             let call = RunCronCall()
             call.fire()
-            return call.objectSignal
+            return call.objectSignal.flatMap(.latest, { (_) in
+                return self.retrieveUser()
+            })
         }
     }
     
     func updateUser(_ updateDict: [String: Any]) -> Signal<UserProtocol?, NoError> {
         let call = UpdateUserCall(updateDict)
         call.fire()
-        return call.objectSignal.on(value: { updatedUser in
-            if let userID = self.currentUserId, let updatedUser = updatedUser {
-                self.localRepository.updateUser(id: userID, updateUser: updatedUser)
-            }
-        })
+        return call.objectSignal.on(value: handleUserUpdate())
     }
     
     func updateUser(key: String, value: Any) -> Signal<UserProtocol?, NoError> {
@@ -230,5 +235,21 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         let call = UpdatePasswordCall(newPassword: newPassword, oldPassword: password, confirmPassword: confirmPassword)
         call.fire()
         return call.objectSignal
+    }
+    
+    func revive() -> Signal<UserProtocol?, NoError> {
+        let call = ReviveUserCall()
+        call.fire()
+        return call.objectSignal.flatMap(.latest, { (_) in
+            return self.retrieveUser()
+        })
+    }
+    
+    func handleUserUpdate() -> ((UserProtocol?) -> Void) {
+        return { updatedUser in
+            if let userID = self.currentUserId, let updatedUser = updatedUser {
+                self.localRepository.updateUser(id: userID, updateUser: updatedUser)
+            }
+        }
     }
 }

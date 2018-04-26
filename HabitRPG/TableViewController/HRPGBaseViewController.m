@@ -8,7 +8,6 @@
 
 #import "HRPGBaseViewController.h"
 #import "Amplitude+HRPGHelpers.h"
-#import "HRPGDeathView.h"
 #import "HRPGNavigationController.h"
 #import "UIViewController+TutorialSteps.h"
 #import "UIViewController+HRPGTopHeaderNavigationController.h"
@@ -74,13 +73,6 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
-    User *user = [[HRPGManager sharedManager] getUser];
-    if (user && user.health && [user.health floatValue] <= 0) {
-        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"HRPGDeathView" owner:self options:nil];
-        HRPGDeathView *deathView = (HRPGDeathView *)[nib objectAtIndex:0];
-        [deathView show];
-    }
 
     [self displayTutorialStep:[HRPGManager sharedManager]];
     [self.topHeaderCoordinator viewDidAppear];

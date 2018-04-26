@@ -72,6 +72,8 @@
 		29144898208A271C00F3A6B5 /* AvatarDetailViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29144897208A271C00F3A6B5 /* AvatarDetailViewDataSource.swift */; };
 		291448A8208A3DD200F3A6B5 /* CustomizationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291448A7208A3DD200F3A6B5 /* CustomizationRepository.swift */; };
 		2919FDD52090CF900096A53B /* InboxMessagesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2919FDD42090CF900096A53B /* InboxMessagesDataSource.swift */; };
+		2919FDDD2091D5370096A53B /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2919FDDC2091D5370096A53B /* UserManager.swift */; };
+		2919FDDF2091D87A0096A53B /* FaintViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2919FDDE2091D87A0096A53B /* FaintViewController.swift */; };
 		29205E352062DF710024E355 /* TextInputFormRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29205E342062DF710024E355 /* TextInputFormRow.swift */; };
 		29205E372062E0030024E355 /* TaskTextInputCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29205E362062E0030024E355 /* TaskTextInputCell.xib */; };
 		29205E392062E2430024E355 /* TaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29205E382062E2430024E355 /* TaskRow.swift */; };
@@ -445,7 +447,7 @@
 		D99DEC87190836D400FFD2B9 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = D99DEC86190836D400FFD2B9 /* Item.m */; };
 		D99DEC89190842CA00FFD2B9 /* Placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = D99DEC88190842CA00FFD2B9 /* Placeholder.png */; };
 		D99DEC8F190914AD00FFD2B9 /* HRPGQuestDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D99DEC8E190914AD00FFD2B9 /* HRPGQuestDetailViewController.m */; };
-		D99E42681D6B1FD500811B6D /* HRPGDeathView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D99E42671D6B1FD500811B6D /* HRPGDeathView.xib */; };
+		D99E42681D6B1FD500811B6D /* FaintViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D99E42671D6B1FD500811B6D /* FaintViewController.xib */; };
 		D99EA7421B8667C90048BF6A /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D99EA7411B8667C90048BF6A /* libOCMock.a */; };
 		D99F15C0191027D90081836E /* HRPGBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D99F15BF191027D90081836E /* HRPGBaseViewController.m */; };
 		D9A1A27E1BA593D900903567 /* HRPGRewardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D9A1A27D1BA593D900903567 /* HRPGRewardTableViewCell.m */; };
@@ -515,7 +517,6 @@
 		D9D17CD81E6899F100AD9232 /* HRPGRewardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CD71E6899F100AD9232 /* HRPGRewardTableViewCell.xib */; };
 		D9D17CDA1E69C68000AD9232 /* ChallengeDetailAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CD91E69C68000AD9232 /* ChallengeDetailAlert.xib */; };
 		D9D17CDE1E6AFFD900AD9232 /* ChallengeDetailAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D17CDD1E6AFFD900AD9232 /* ChallengeDetailAlert.swift */; };
-		D9D21731198D509100023367 /* HRPGDeathView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D21730198D509000023367 /* HRPGDeathView.m */; };
 		D9D593581D004CC900D6C388 /* HRPGInboxTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D593571D004CC900D6C388 /* HRPGInboxTableViewController.m */; };
 		D9D5935D1D00523800D6C388 /* InboxMessage+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D5935A1D00523800D6C388 /* InboxMessage+CoreDataProperties.m */; };
 		D9D5935E1D00523800D6C388 /* InboxMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D5935C1D00523800D6C388 /* InboxMessage.m */; };
@@ -653,6 +654,8 @@
 		29144897208A271C00F3A6B5 /* AvatarDetailViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarDetailViewDataSource.swift; sourceTree = "<group>"; };
 		291448A7208A3DD200F3A6B5 /* CustomizationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationRepository.swift; sourceTree = "<group>"; };
 		2919FDD42090CF900096A53B /* InboxMessagesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxMessagesDataSource.swift; sourceTree = "<group>"; };
+		2919FDDC2091D5370096A53B /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		2919FDDE2091D87A0096A53B /* FaintViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaintViewController.swift; sourceTree = "<group>"; };
 		29205E342062DF710024E355 /* TextInputFormRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputFormRow.swift; sourceTree = "<group>"; };
 		29205E362062E0030024E355 /* TaskTextInputCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskTextInputCell.xib; sourceTree = "<group>"; };
 		29205E382062E2430024E355 /* TaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRow.swift; sourceTree = "<group>"; };
@@ -1190,7 +1193,7 @@
 		D99DEC88190842CA00FFD2B9 /* Placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Placeholder.png; sourceTree = "<group>"; };
 		D99DEC8D190914AD00FFD2B9 /* HRPGQuestDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HRPGQuestDetailViewController.h; path = ../Modals/HRPGQuestDetailViewController.h; sourceTree = "<group>"; };
 		D99DEC8E190914AD00FFD2B9 /* HRPGQuestDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HRPGQuestDetailViewController.m; path = ../Modals/HRPGQuestDetailViewController.m; sourceTree = "<group>"; };
-		D99E42671D6B1FD500811B6D /* HRPGDeathView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPGDeathView.xib; sourceTree = "<group>"; };
+		D99E42671D6B1FD500811B6D /* FaintViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FaintViewController.xib; sourceTree = "<group>"; };
 		D99EA7411B8667C90048BF6A /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = OCMock/libOCMock.a; sourceTree = "<group>"; };
 		D99F15BE191027D90081836E /* HRPGBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGBaseViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D99F15BF191027D90081836E /* HRPGBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGBaseViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -1329,8 +1332,6 @@
 		D9D17CD71E6899F100AD9232 /* HRPGRewardTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPGRewardTableViewCell.xib; sourceTree = "<group>"; };
 		D9D17CD91E69C68000AD9232 /* ChallengeDetailAlert.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChallengeDetailAlert.xib; sourceTree = "<group>"; };
 		D9D17CDD1E6AFFD900AD9232 /* ChallengeDetailAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeDetailAlert.swift; sourceTree = "<group>"; };
-		D9D2172F198D509000023367 /* HRPGDeathView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGDeathView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		D9D21730198D509000023367 /* HRPGDeathView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGDeathView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D9D593561D004CC900D6C388 /* HRPGInboxTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGInboxTableViewController.h; sourceTree = "<group>"; };
 		D9D593571D004CC900D6C388 /* HRPGInboxTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGInboxTableViewController.m; sourceTree = "<group>"; };
 		D9D593591D00523800D6C388 /* InboxMessage+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "InboxMessage+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -2231,6 +2232,7 @@
 				D96C85471DCCD8BC003E3616 /* UIWindow+VisibleController.m */,
 				29323E1E2050563700AC6D6F /* NetworkErrorHandler.swift */,
 				292F967F20723A4D00804151 /* ImageManager.swift */,
+				2919FDDC2091D5370096A53B /* UserManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -2347,6 +2349,7 @@
 		D9C000311928F85E003D4E4C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2914488B2089E2D300F3A6B5 /* AvatarOverviewItemView.swift */,
 				29FEB279202B4F0400EA245A /* AvatarView.swift */,
 				293BB4A01FD06E7E003B6F4F /* BulkStatsAllocationView.xib */,
 				299BD6311F5420A300E22935 /* Challenges */,
@@ -2357,6 +2360,8 @@
 				2914487B20864EB800F3A6B5 /* EquipmentOverviewItemView.xib */,
 				2914487720864A2900F3A6B5 /* EquipmentOverviewView.swift */,
 				2914487920864A3300F3A6B5 /* EquipmentOverviewView.xib */,
+				2919FDDE2091D87A0096A53B /* FaintViewController.swift */,
+				D99E42671D6B1FD500811B6D /* FaintViewController.xib */,
 				4904C73F1F1ED87400F80723 /* GradientImageView.swift */,
 				29AAA15C1F2A3AA600029737 /* GradientView.swift */,
 				29A0FD80203DF49900590BDE /* GuidelinesPromptView.xib */,
@@ -2369,9 +2374,6 @@
 				D96C86C91BB0546400E4C134 /* HRPGCopyLabel.h */,
 				D96C86CA1BB0546400E4C134 /* HRPGCopyLabel.m */,
 				49005B711F180588004830D9 /* HRPGCurrencyCountView.swift */,
-				D9D2172F198D509000023367 /* HRPGDeathView.h */,
-				D9D21730198D509000023367 /* HRPGDeathView.m */,
-				D99E42671D6B1FD500811B6D /* HRPGDeathView.xib */,
 				D98F5DCB1C6CB1330035CBEC /* HRPGFlagInformationOverlayView.h */,
 				D98F5DCC1C6CB1330035CBEC /* HRPGFlagInformationOverlayView.m */,
 				D98F5DD01C6CB4BE0035CBEC /* HRPGFlagInformationOverlayView.xib */,
@@ -2423,7 +2425,6 @@
 				D91CCACF1BCF11CC001C6A0C /* UserTopHeader.xib */,
 				2980E6081EEA25CD005B7100 /* YesterdailiesDialogView.swift */,
 				2980E6061EEA1F55005B7100 /* YesterdailiesDialogView.xib */,
-				2914488B2089E2D300F3A6B5 /* AvatarOverviewItemView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -3112,7 +3113,7 @@
 				D905768A1BD83241009BB7BC /* Localizable.strings in Resources */,
 				2957B8B81F4B2F6A00E836EF /* CustomRewardCell.xib in Resources */,
 				D9C31DB31C6501090096F4EC /* Main.storyboard in Resources */,
-				D99E42681D6B1FD500811B6D /* HRPGDeathView.xib in Resources */,
+				D99E42681D6B1FD500811B6D /* FaintViewController.xib in Resources */,
 				D98F5DD11C6CB4BE0035CBEC /* HRPGFlagInformationOverlayView.xib in Resources */,
 				D902AD871B53E1B60098A1BD /* GoogleService-Info.plist in Resources */,
 				290279662057F053006DACB9 /* Main.strings in Resources */,
@@ -3559,6 +3560,7 @@
 				29701FE01F560D310097BBCC /* UIApplication-Extensions.swift in Sources */,
 				D9E46B091DABE97200E390D7 /* SpecialItems+CoreDataClass.m in Sources */,
 				298409D9203C8645003AD202 /* ChatMessageAvatar+CoreDataClass.m in Sources */,
+				2919FDDF2091D87A0096A53B /* FaintViewController.swift in Sources */,
 				29701FE41F56C2200097BBCC /* IconLabel.swift in Sources */,
 				D903B7891DCA2BE6001F2893 /* HRPGNotification.m in Sources */,
 				49E3784F200912BA00E0DA3D /* ResizableTableViewCell.swift in Sources */,
@@ -3622,7 +3624,6 @@
 				D9E918571AA3A70D005E378B /* HRPGCheckBoxView.m in Sources */,
 				29C1B6B420599E6D0001D3EF /* TaskFormViewController.swift in Sources */,
 				290B6285207BD531007287C4 /* GuildDetailViewController.swift in Sources */,
-				D9D21731198D509100023367 /* HRPGDeathView.m in Sources */,
 				D9525F9F1E65A18300C529B8 /* EmojifiedString.swift in Sources */,
 				49DCB7B61F3F64B40079FDD0 /* HRPGShopModalBgView.swift in Sources */,
 				29E1631B200E84AC00685640 /* TavernViewController.swift in Sources */,
@@ -3926,6 +3927,7 @@
 				29323E4920521FD500AC6D6F /* ContributorProtocol-Extensions.swift in Sources */,
 				D97C71DE18EC98A40089FDC6 /* QuestCollect.m in Sources */,
 				291448842088E2E000F3A6B5 /* EquipmentViewDataSource.swift in Sources */,
+				2919FDDD2091D5370096A53B /* UserManager.swift in Sources */,
 				290B624320728E74007287C4 /* GuildOverviewViewController.swift in Sources */,
 				29ED1AFF1F339ACF005A3895 /* UIColor-Extensions.swift in Sources */,
 				D92D26141D58EEBA001FD977 /* HRPGQRCodeScannerViewController.m in Sources */,

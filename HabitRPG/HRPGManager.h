@@ -210,9 +210,7 @@
 //- (void)registerUser:(NSString *)username withPassword:(NSString *)password withEmail:(NSString *)email onSuccess:(void (^)())successBlock onError:(void (^)(NSString *errorMessage))errorBlock;
 //- (void)clearLoginCredentials;
 //- (void)sleepInn:(void (^)())successBlock onError:(void (^)())errorBlock;
-
-- (void)reviveUser:(void (^)())successBlock onError:(void (^)())errorBlock;
-
+//- (void)reviveUser:(void (^)())successBlock onError:(void (^)())errorBlock;
 //- (void)chatMessage:(NSString *)message withGroup:(NSString *)groupID onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 //- (void)privateMessage:(InboxMessage *)message toUserWithID:(NSString *)userID onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 //- (void)deleteMessage:(ChatMessage *)message withGroup:(NSString *)groupID onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;

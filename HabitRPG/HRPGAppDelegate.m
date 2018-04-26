@@ -69,6 +69,7 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     [self cleanAndRefresh:application];
+    [self.swiftAppDelegate setupUserManager];
 }
 
 - (void)cleanAndRefresh:(UIApplication *)application {

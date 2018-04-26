@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (4.7.1)
+  - Alamofire (4.7.2)
   - Amplitude-iOS (4.0.4)
   - AppAuth (0.92.0)
   - Bolts (1.9.0):
@@ -12,9 +12,9 @@ PODS:
   - Down (0.5.1)
   - DynamicBlurView (2.0.2)
   - Eureka (4.1.1)
-  - FBSDKCoreKit (4.31.1):
+  - FBSDKCoreKit (4.32.0):
     - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.31.1):
+  - FBSDKLoginKit (4.32.0):
     - FBSDKCoreKit
   - FLEX (2.4.0)
   - FunkyNetwork (0.1.4):
@@ -75,7 +75,7 @@ PODS:
   - OHHTTPStubs/OHPathHelpers (6.1.0)
   - OHHTTPStubs/Swift (6.1.0):
     - OHHTTPStubs/Default
-  - PinLayout (1.6.0)
+  - PinLayout (1.7.3)
   - PopupDialog (0.7.1):
     - DynamicBlurView (~> 2.0)
   - Quick (1.2.0)
@@ -83,11 +83,11 @@ PODS:
     - ReactiveSwift (~> 3.1)
   - ReactiveSwift (3.1.0):
     - Result (~> 3.2)
-  - Realm (3.3.2):
-    - Realm/Headers (= 3.3.2)
-  - Realm/Headers (3.3.2)
-  - RealmSwift (3.3.2):
-    - Realm (= 3.3.2)
+  - Realm (3.5.0):
+    - Realm/Headers (= 3.5.0)
+  - Realm/Headers (3.5.0)
+  - RealmSwift (3.5.0):
+    - Realm (= 3.5.0)
   - RestKit (0.27.2):
     - RestKit/Core (= 0.27.2)
   - RestKit/Core (0.27.2):
@@ -169,11 +169,11 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   PopupDialog:
-    :commit: 9bae9c8ae779a2d8923834308ff2e85ac9206829
+    :commit: 180a14e3ccb7c7f851369acdab235353c0b774f3
     :git: https://github.com/Orderella/PopupDialog.git
 
 SPEC CHECKSUMS:
-  Alamofire: 68d7d521118d49c615a8d2214d87cdf525599d30
+  Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
   Amplitude-iOS: 2ad4d7270c99186236c1272a3a9425463b1ae1a7
   AppAuth: 3f4f1d6d85ad631d0bbf15ffcdc10c447face97a
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
@@ -181,8 +181,8 @@ SPEC CHECKSUMS:
   Down: 6ace44ecec0c408826342ed420002f39a18e38c3
   DynamicBlurView: aa6db4defc6e537eb86fc5e58dd3991666178399
   Eureka: b88fb930e42c79f8c03c373d0fcdc28c1d6c50ed
-  FBSDKCoreKit: e08ccfcefa7bc1347a07c276dac9bf6c7fe57024
-  FBSDKLoginKit: 99797ac39252fef6f72600b886f6ee60b4b29cab
+  FBSDKCoreKit: 55d7f2ac45d9c4b9b6119f4e43900fe84b9b7b1b
+  FBSDKLoginKit: 32ac05c2a59952c363c2e85aafa8f73ba93bcbad
   FLEX: bd1a39e55b56bb413b6f1b34b3c10a0dc44ef079
   FunkyNetwork: e550cee2c80af79399bf66c2cb55ac5c4ce103f8
   iOSSnapshotTestCase: 23984ffe05289728d646cbb6a7a10b4fb1c93440
@@ -196,13 +196,13 @@ SPEC CHECKSUMS:
   Nimble: 7f5a9c447a33002645a071bddafbfb24ea70e0ac
   NSString+Emoji: 127da93993ac7c01eadb2edbb039cda89a1369f4
   OHHTTPStubs: 1e21c7d2c084b8153fc53d48400d8919d2d432d0
-  PinLayout: a2bbe9057d49a1e326b13dc4fe8c14751f8c8844
+  PinLayout: 0c2e68dba036a291ca9278aa8b799f58506f2a6d
   PopupDialog: 39598b7d41719f5c025b4b70e62728bae7734fef
   Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
   ReactiveCocoa: 476dae7ca790f40d30d186a1bd7ebae4290395d5
   ReactiveSwift: 5b26d2e988fe0eed2daf48c4054d1de74db50184
-  Realm: d927fbf66df5532cfafc08afb5f7e53ded37b894
-  RealmSwift: 4e903a494e05d866581d69ad6f7e7b879d446baf
+  Realm: 0378021c424e4e2bd6a0e63b27881e929d9b9ad1
+  RealmSwift: 3322562622fda2ad596985ead4d8d8be30cf838c
   RestKit: 556c913b0640c5bc5a9cb972361504e3ed628a1d
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
   RKValueTransformers: e5ed67e3811229b616fe01bddeeafe3bb337b1b9
