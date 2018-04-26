@@ -6,14 +6,15 @@
 //  Copyright © 2017 HabitRPG Inc. All rights reserved.
 //
 import Foundation
+import Habitica_Models
 
 class SetupCustomizationRepository {
     
-    static func getCustomizations(category: AvatarCustomizationCategory, user: User) -> [SetupCustomization] {
+    static func getCustomizations(category: AvatarCustomizationCategory, user: UserProtocol) -> [SetupCustomization] {
         return getCustomizations(category: category, subcategory: nil, user: user)
     }
     
-    static func getCustomizations(category: AvatarCustomizationCategory, subcategory: AvatarCustomizationSubcategory?, user: User) -> [SetupCustomization] {
+    static func getCustomizations(category: AvatarCustomizationCategory, subcategory: AvatarCustomizationSubcategory?, user: UserProtocol) -> [SetupCustomization] {
         switch category {
         case .body:
             return getBodyCustomizations(subcategory: subcategory, user: user)
@@ -26,7 +27,7 @@ class SetupCustomizationRepository {
         }
     }
     
-    static private func getBodyCustomizations(subcategory: AvatarCustomizationSubcategory?, user: User) -> [SetupCustomization] {
+    static private func getBodyCustomizations(subcategory: AvatarCustomizationSubcategory?, user: UserProtocol) -> [SetupCustomization] {
         switch subcategory {
         case .some(.shirt):
             return getShirts(size: user.preferences?.size)
@@ -37,12 +38,12 @@ class SetupCustomizationRepository {
         }
     }
 
-    static private func getHairCustomizations(subcategory: AvatarCustomizationSubcategory?, user: User) -> [SetupCustomization] {
+    static private func getHairCustomizations(subcategory: AvatarCustomizationSubcategory?, user: UserProtocol) -> [SetupCustomization] {
         switch subcategory {
         case .some(.bangs):
-            return getBangs(color: user.preferences?.hairColor)
+            return getBangs(color: user.preferences?.hair?.color)
         case .some(.ponytail):
-            return getPonytails(color: user.preferences?.hairColor)
+            return getPonytails(color: user.preferences?.hair?.color)
         case .some(.color):
             return getHairColors()
         default:
@@ -50,7 +51,7 @@ class SetupCustomizationRepository {
         }
     }
     
-    static private func getExtrasCustomizations(subcategory: AvatarCustomizationSubcategory?, user: User) -> [SetupCustomization] {
+    static private func getExtrasCustomizations(subcategory: AvatarCustomizationSubcategory?, user: UserProtocol) -> [SetupCustomization] {
         switch subcategory {
         case .some(.wheelchair):
             return getWheelchairs()

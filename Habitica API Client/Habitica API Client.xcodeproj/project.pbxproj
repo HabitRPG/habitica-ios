@@ -51,6 +51,8 @@
 		29144894208A1C9400F3A6B5 /* APIHair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29144893208A1C9400F3A6B5 /* APIHair.swift */; };
 		2914489E208A346700F3A6B5 /* APICustomization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2914489D208A346700F3A6B5 /* APICustomization.swift */; };
 		291448A0208A34D100F3A6B5 /* APICustomizationSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2914489F208A34D100F3A6B5 /* APICustomizationSet.swift */; };
+		2919FDD72090D2510096A53B /* DeleteInboxMessageCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2919FDD62090D2510096A53B /* DeleteInboxMessageCall.swift */; };
+		2919FDD92090DF1B0096A53B /* PostInboxMessageCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2919FDD82090DF1B0096A53B /* PostInboxMessageCall.swift */; };
 		292DEE44204D9D8D0086D5F7 /* Habitica_Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE45204D9D8D0086D5F7 /* Habitica_Models.framework */; };
 		292DEE4B204DA1220086D5F7 /* NetworkAuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE4A204DA1220086D5F7 /* NetworkAuthenticationManager.swift */; };
 		292DEE4F204DA3870086D5F7 /* RetrieveTasksCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE4E204DA3870086D5F7 /* RetrieveTasksCall.swift */; };
@@ -118,6 +120,7 @@
 		2974BD9F208E15FD00EC1A25 /* APISubscriptionPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BD9E208E15FD00EC1A25 /* APISubscriptionPlan.swift */; };
 		2974BDA1208E16E100EC1A25 /* APISubscriptionConsecutive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BDA0208E16E100EC1A25 /* APISubscriptionConsecutive.swift */; };
 		2974BDAB208F4D6B00EC1A25 /* UnlockCustomizationsCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BDAA208F4D6B00EC1A25 /* UnlockCustomizationsCall.swift */; };
+		2974BDB220908E4600EC1A25 /* APIInboxMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BDB120908E4600EC1A25 /* APIInboxMessages.swift */; };
 		299FB2882084987000422522 /* APIPet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB2872084987000422522 /* APIPet.swift */; };
 		299FB28A2084988500422522 /* APIMount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB2892084988500422522 /* APIMount.swift */; };
 		299FB29420849EDD00422522 /* APIOwnedPet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB29320849EDD00422522 /* APIOwnedPet.swift */; };
@@ -187,6 +190,8 @@
 		29144893208A1C9400F3A6B5 /* APIHair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHair.swift; sourceTree = "<group>"; };
 		2914489D208A346700F3A6B5 /* APICustomization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICustomization.swift; sourceTree = "<group>"; };
 		2914489F208A34D100F3A6B5 /* APICustomizationSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICustomizationSet.swift; sourceTree = "<group>"; };
+		2919FDD62090D2510096A53B /* DeleteInboxMessageCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteInboxMessageCall.swift; sourceTree = "<group>"; };
+		2919FDD82090DF1B0096A53B /* PostInboxMessageCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostInboxMessageCall.swift; sourceTree = "<group>"; };
 		292DEE45204D9D8D0086D5F7 /* Habitica_Models.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_Models.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		292DEE4A204DA1220086D5F7 /* NetworkAuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAuthenticationManager.swift; sourceTree = "<group>"; };
 		292DEE4E204DA3870086D5F7 /* RetrieveTasksCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveTasksCall.swift; sourceTree = "<group>"; };
@@ -254,6 +259,7 @@
 		2974BD9E208E15FD00EC1A25 /* APISubscriptionPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISubscriptionPlan.swift; sourceTree = "<group>"; };
 		2974BDA0208E16E100EC1A25 /* APISubscriptionConsecutive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISubscriptionConsecutive.swift; sourceTree = "<group>"; };
 		2974BDAA208F4D6B00EC1A25 /* UnlockCustomizationsCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockCustomizationsCall.swift; sourceTree = "<group>"; };
+		2974BDB120908E4600EC1A25 /* APIInboxMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIInboxMessages.swift; sourceTree = "<group>"; };
 		299FB2872084987000422522 /* APIPet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIPet.swift; sourceTree = "<group>"; };
 		299FB2892084988500422522 /* APIMount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIMount.swift; sourceTree = "<group>"; };
 		299FB29320849EDD00422522 /* APIOwnedPet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIOwnedPet.swift; sourceTree = "<group>"; };
@@ -340,6 +346,7 @@
 				29323E36205212C400AC6D6F /* APIFlags.swift */,
 				29144893208A1C9400F3A6B5 /* APIHair.swift */,
 				290B62512073D91C007287C4 /* APIInbox.swift */,
+				2974BDB120908E4600EC1A25 /* APIInboxMessages.swift */,
 				290B6262207B9707007287C4 /* APILocalAuthentication.swift */,
 				290B6282207BAAA2007287C4 /* APILoginResponse.swift */,
 				29323E542052F7C400AC6D6F /* APIOutfit.swift */,
@@ -481,6 +488,8 @@
 				290B627C207BA9D4007287C4 /* SocialLoginCall.swift */,
 				290B627E207BAA23007287C4 /* SleepCall.swift */,
 				294973CB2080FA9400F02AC3 /* ReviveCall.swift */,
+				2919FDD62090D2510096A53B /* DeleteInboxMessageCall.swift */,
+				2919FDD82090DF1B0096A53B /* PostInboxMessageCall.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -824,10 +833,12 @@
 				2974BD9F208E15FD00EC1A25 /* APISubscriptionPlan.swift in Sources */,
 				292DEE51204DA3A30086D5F7 /* APITask.swift in Sources */,
 				290C3013206A78700066AF5B /* APIEmptyResponse.swift in Sources */,
+				2919FDD92090DF1B0096A53B /* PostInboxMessageCall.swift in Sources */,
 				2974BDA1208E16E100EC1A25 /* APISubscriptionConsecutive.swift in Sources */,
 				290B627B207BA9A1007287C4 /* LocalRegisterCall.swift in Sources */,
 				290C3042206D3EC30066AF5B /* APIChatMessage.swift in Sources */,
 				29A6B872206941210086B2A6 /* UpdateTaskCall.swift in Sources */,
+				2919FDD72090D2510096A53B /* DeleteInboxMessageCall.swift in Sources */,
 				290B6291207E1E76007287C4 /* RetrieveMemberCall.swift in Sources */,
 				2914489E208A346700F3A6B5 /* APICustomization.swift in Sources */,
 				290B6263207B9707007287C4 /* APILocalAuthentication.swift in Sources */,
@@ -854,6 +865,7 @@
 				290C3032206CF0190066AF5B /* APISkillResponse.swift in Sources */,
 				295610E22056C3AC00D9711A /* RetrieveContentCall.swift in Sources */,
 				299FB29420849EDD00422522 /* APIOwnedPet.swift in Sources */,
+				2974BDB220908E4600EC1A25 /* APIInboxMessages.swift in Sources */,
 				29323E1520504F2300AC6D6F /* APIUser.swift in Sources */,
 				29A6B86E20690F0C0086B2A6 /* APIWeekRepeat.swift in Sources */,
 				2902798F205835DF006DACB9 /* APIWorldState.swift in Sources */,

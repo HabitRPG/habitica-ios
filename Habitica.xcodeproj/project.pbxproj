@@ -71,6 +71,7 @@
 		29144896208A270800F3A6B5 /* AvatarDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29144895208A270800F3A6B5 /* AvatarDetailViewController.swift */; };
 		29144898208A271C00F3A6B5 /* AvatarDetailViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29144897208A271C00F3A6B5 /* AvatarDetailViewDataSource.swift */; };
 		291448A8208A3DD200F3A6B5 /* CustomizationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291448A7208A3DD200F3A6B5 /* CustomizationRepository.swift */; };
+		2919FDD52090CF900096A53B /* InboxMessagesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2919FDD42090CF900096A53B /* InboxMessagesDataSource.swift */; };
 		29205E352062DF710024E355 /* TextInputFormRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29205E342062DF710024E355 /* TextInputFormRow.swift */; };
 		29205E372062E0030024E355 /* TaskTextInputCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29205E362062E0030024E355 /* TaskTextInputCell.xib */; };
 		29205E392062E2430024E355 /* TaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29205E382062E2430024E355 /* TaskRow.swift */; };
@@ -142,6 +143,8 @@
 		29701FF61F5848A40097BBCC /* SnapshotHelperXcode8.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29701FF51F5848A40097BBCC /* SnapshotHelperXcode8.swift */; };
 		2974BD91208DEFEA00EC1A25 /* CustomizationDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BD90208DEFEA00EC1A25 /* CustomizationDetailCell.swift */; };
 		2974BDAD208F68A800EC1A25 /* CustomizationHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BDAC208F68A800EC1A25 /* CustomizationHeaderView.swift */; };
+		2974BDB42090926B00EC1A25 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BDB32090926B00EC1A25 /* MainTabBarController.swift */; };
+		2974BDB62090C03E00EC1A25 /* InboxOverviewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BDB52090C03E00EC1A25 /* InboxOverviewDataSource.swift */; };
 		297517B41F30EBD100B5BCB9 /* AvatarSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297517B31F30EBD100B5BCB9 /* AvatarSetupViewController.swift */; };
 		297517B61F30EBFC00B5BCB9 /* TaskSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297517B51F30EBFC00B5BCB9 /* TaskSetupViewController.swift */; };
 		2980E6071EEA1F55005B7100 /* YesterdailiesDialogView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2980E6061EEA1F55005B7100 /* YesterdailiesDialogView.xib */; };
@@ -649,6 +652,7 @@
 		29144895208A270800F3A6B5 /* AvatarDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarDetailViewController.swift; sourceTree = "<group>"; };
 		29144897208A271C00F3A6B5 /* AvatarDetailViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarDetailViewDataSource.swift; sourceTree = "<group>"; };
 		291448A7208A3DD200F3A6B5 /* CustomizationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationRepository.swift; sourceTree = "<group>"; };
+		2919FDD42090CF900096A53B /* InboxMessagesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxMessagesDataSource.swift; sourceTree = "<group>"; };
 		29205E342062DF710024E355 /* TextInputFormRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputFormRow.swift; sourceTree = "<group>"; };
 		29205E362062E0030024E355 /* TaskTextInputCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskTextInputCell.xib; sourceTree = "<group>"; };
 		29205E382062E2430024E355 /* TaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRow.swift; sourceTree = "<group>"; };
@@ -719,6 +723,8 @@
 		29701FF51F5848A40097BBCC /* SnapshotHelperXcode8.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelperXcode8.swift; sourceTree = "<group>"; };
 		2974BD90208DEFEA00EC1A25 /* CustomizationDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationDetailCell.swift; sourceTree = "<group>"; };
 		2974BDAC208F68A800EC1A25 /* CustomizationHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationHeaderView.swift; sourceTree = "<group>"; };
+		2974BDB32090926B00EC1A25 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		2974BDB52090C03E00EC1A25 /* InboxOverviewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxOverviewDataSource.swift; sourceTree = "<group>"; };
 		297517B31F30EBD100B5BCB9 /* AvatarSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarSetupViewController.swift; sourceTree = "<group>"; };
 		297517B51F30EBFC00B5BCB9 /* TaskSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskSetupViewController.swift; sourceTree = "<group>"; };
 		2980E6061EEA1F55005B7100 /* YesterdailiesDialogView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YesterdailiesDialogView.xib; sourceTree = "<group>"; };
@@ -1543,12 +1549,12 @@
 			children = (
 				29FC884D2010CCC2002B3D3F /* BaseRepository.swift */,
 				295611152056ED7F00D9711A /* ContentRepository.swift */,
+				291448A7208A3DD200F3A6B5 /* CustomizationRepository.swift */,
 				298119AA1F50251300F9FB39 /* InventoryRepository.swift */,
 				29FC884B2010CC8A002B3D3F /* SocialRepository.swift */,
+				299FB2992084A30400422522 /* StableRepository.swift */,
 				29028C382034ABAF00B7F704 /* TaskRepositoryImpl.swift */,
 				29323E1A2050532D00AC6D6F /* UserRepository.swift */,
-				299FB2992084A30400422522 /* StableRepository.swift */,
-				291448A7208A3DD200F3A6B5 /* CustomizationRepository.swift */,
 			);
 			path = Implementations;
 			sourceTree = "<group>";
@@ -1599,6 +1605,13 @@
 				29701FEF1F5848890097BBCC /* Info.plist */,
 			);
 			path = "Habitica Snapshots";
+			sourceTree = "<group>";
+		};
+		2974BDAE2090896600EC1A25 /* Inbox */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Inbox;
 			sourceTree = "<group>";
 		};
 		2986EB091FCC63CC00B316F6 /* User */ = {
@@ -1804,6 +1817,8 @@
 				290B62A3207F818E007287C4 /* ItemsViewDataSource.swift */,
 				29144871208628A300F3A6B5 /* FeedViewDataSource.swift */,
 				291448832088E2E000F3A6B5 /* EquipmentViewDataSource.swift */,
+				2974BDB52090C03E00EC1A25 /* InboxOverviewDataSource.swift */,
+				2919FDD42090CF900096A53B /* InboxMessagesDataSource.swift */,
 			);
 			name = TVDataSources;
 			sourceTree = "<group>";
@@ -2223,6 +2238,7 @@
 		D9A63A311E1031FD0083ADC4 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				2974BDAE2090896600EC1A25 /* Inbox */,
 				D9E02EC41E5E02E7002CFCE2 /* Challenges */,
 				290279612057EBE9006DACB9 /* FAQ */,
 				290B62A0207F814D007287C4 /* General */,
@@ -2256,6 +2272,7 @@
 				D94AADB9192A5CE700546C8E /* HRPGSpellTabBarController.m */,
 				D9ADD3541943BE95006202C1 /* HRPGTabBarController.h */,
 				D9B11C8B18D63D4E00AB4D23 /* HRPGTabBarController.m */,
+				2974BDB32090926B00EC1A25 /* MainTabBarController.swift */,
 			);
 			path = TabBarController;
 			sourceTree = "<group>";
@@ -3552,6 +3569,7 @@
 				2986EB0B1FCC63F900B316F6 /* AttributePointsViewController.swift in Sources */,
 				D922F0A8191C1F6B00B197EA /* HRPGUserBuyResponse.m in Sources */,
 				49DCECA91F96F8DE00982E99 /* ChallengeDetailViewModel.swift in Sources */,
+				2919FDD52090CF900096A53B /* InboxMessagesDataSource.swift in Sources */,
 				494E54251F3124890003683C /* HRPGShopViewModel.m in Sources */,
 				29A6B86620644CA40086B2A6 /* WeekdayFormCell.swift in Sources */,
 				29E16313200E619400685640 /* QuestProgressView.swift in Sources */,
@@ -3736,6 +3754,7 @@
 				D976D2401B98FA940032BC41 /* UIColor.Habitica.m in Sources */,
 				D92A08481D33EC38000F8B66 /* HRPGShopOverviewViewController.m in Sources */,
 				D92CDADD18CB79E50006C242 /* HRPGTableViewController.m in Sources */,
+				2974BDB62090C03E00EC1A25 /* InboxOverviewDataSource.swift in Sources */,
 				D9E46AFD1DAB98D700E390D7 /* HRPGGemHeaderNavigationController.m in Sources */,
 				2902796E2057F2C5006DACB9 /* Storyboard.swift in Sources */,
 				D914890D1CD23A900015B42D /* HRPGMaintenanceViewController.m in Sources */,
@@ -3807,6 +3826,7 @@
 				D9709A541E8051DC0005F35B /* TaskRepeatablesSummaryInteractor.swift in Sources */,
 				D98F5DC91C6A45800035CBEC /* ChatMessageLike+CoreDataProperties.m in Sources */,
 				D98F5AEF1905C090002F8223 /* HRPGQuestParticipantsViewController.m in Sources */,
+				2974BDB42090926B00EC1A25 /* MainTabBarController.swift in Sources */,
 				29323E352052008800AC6D6F /* UserTopHeader.swift in Sources */,
 				D98F5AEC190566CA002F8223 /* User.m in Sources */,
 				293BB4A51FD078EC003B6F4F /* StatsSliderView.swift in Sources */,

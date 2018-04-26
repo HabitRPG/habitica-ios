@@ -11,4 +11,6 @@ import Foundation
 @objc
 public protocol InboxProtocol {
     var optOut: Bool { get set }
+    var numberNewMessages: Int { get set }
+    var messages: [InboxMessageProtocol] { get set }
 }

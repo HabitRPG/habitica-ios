@@ -186,17 +186,17 @@ class ChatTableViewCell: UITableViewCell {
     }
     
     @objc
-    func configure(inboxMessage: InboxMessage, previousMessage: InboxMessage?, nextMessage: InboxMessage?, user: User, isExpanded: Bool) {
+    func configure(inboxMessage: InboxMessageProtocol, previousMessage: InboxMessageProtocol?, nextMessage: InboxMessageProtocol?, user: UserProtocol?, isExpanded: Bool) {
         isPrivateMessage = true
         plusOneButton.isHidden = true
-        isOwnMessage = inboxMessage.sent?.boolValue ?? false
+        isOwnMessage = inboxMessage.sent
         isAvatarHidden = true
-        if inboxMessage.sent?.boolValue ?? false {
-            usernameLabel.text = user.username.unicodeEmoji
-            contributorLevel = user.contributorLevel.intValue
+        if inboxMessage.sent {
+            usernameLabel.text = user?.profile?.name?.unicodeEmoji
+            contributorLevel = user?.contributor?.level ?? 0
         } else {
             usernameLabel.text = inboxMessage.username?.unicodeEmoji
-            contributorLevel = inboxMessage.contributorLevel?.intValue ?? 0
+            contributorLevel = inboxMessage.contributor?.level ?? 0
         }
         usernameLabel.contributorLevel = contributorLevel
         messageTextView.textColor = .black
@@ -209,7 +209,7 @@ class ChatTableViewCell: UITableViewCell {
             messageTextView.text = inboxMessage.text?.unicodeEmoji
         }
         
-        if previousMessage?.sent?.boolValue == inboxMessage.sent?.boolValue {
+        if previousMessage?.sent == inboxMessage.sent {
             topSpacing = 2
             avatarView.isHidden = true
         } else {
@@ -217,7 +217,7 @@ class ChatTableViewCell: UITableViewCell {
             avatarView.isHidden = isOwnMessage
         }
         
-        if nextMessage?.sent?.boolValue == inboxMessage.sent?.boolValue {
+        if nextMessage?.sent == inboxMessage.sent {
             bottomSpacing = 2
         } else if isFirstMessage {
             bottomSpacing = 34

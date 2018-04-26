@@ -40,12 +40,28 @@ public class SocialLocalRepository: BaseLocalRepository {
     
     public func save(groupID: String?, chatMessages: [ChatMessageProtocol]) {
         save(objects:chatMessages.map { (chatMessage) in
-            if let realmChatMessage = chatMessage as? RealmTask {
+            if let realmChatMessage = chatMessage as? RealmChatMessage {
                 return realmChatMessage
             }
             return RealmChatMessage(groupID: groupID, chatMessage: chatMessage)
         })
         removeOldChatMessages(groupID: groupID, newChatMessages: chatMessages)
+    }
+    
+    public func save(groupID: String?, chatMessage: ChatMessageProtocol) {
+        if let realmChatMessage = chatMessage as? RealmChatMessage {
+            save(object: realmChatMessage)
+        } else {
+            save(object: RealmChatMessage(groupID: groupID, chatMessage: chatMessage))
+        }
+    }
+    
+    public func save(userID: String?, message: InboxMessageProtocol) {
+        if let realmMessage = message as? RealmInboxMessage {
+            save(object: realmMessage)
+        } else {
+            save(object: RealmInboxMessage(userID: userID, inboxMessage: message))
+        }
     }
     
     public func save(userID: String?, groupIDs: [String?]) {
@@ -127,5 +143,22 @@ public class SocialLocalRepository: BaseLocalRepository {
         return RealmMember.findBy(query: "id == '\(userID)'").reactive().map({ (members, changes) -> MemberProtocol? in
             return members.first
         })
+    }
+    
+    public func getMessagesThreads(userID: String) -> SignalProducer<ReactiveResults<[InboxMessageProtocol]>, ReactiveSwiftRealmError> {
+        return RealmInboxMessage.findBy(query: "ownUserID == '\(userID)'")
+            .sorted(key: "timestamp", ascending: false)
+            .distinct(by: ["userID"])
+            .reactive().map({ (value, changeset) -> ReactiveResults<[InboxMessageProtocol]> in
+            return (value.map({ (message) -> InboxMessageProtocol in return message }), changeset)
+        })
+    }
+    
+    public func getMessages(userID: String, withUserID: String) -> SignalProducer<ReactiveResults<[InboxMessageProtocol]>, ReactiveSwiftRealmError> {
+        return RealmInboxMessage.findBy(query: "ownUserID == '\(userID)' && userID = '\(withUserID)'")
+            .sorted(key: "timestamp", ascending: false)
+            .reactive().map({ (value, changeset) -> ReactiveResults<[InboxMessageProtocol]> in
+                return (value.map({ (message) -> InboxMessageProtocol in return message }), changeset)
+            })
     }
 }

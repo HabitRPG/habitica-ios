@@ -94,10 +94,30 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
         return call.objectSignal
     }
     
+    func delete(message: InboxMessageProtocol) -> Signal<EmptyResponseProtocol?, NoError> {
+        let call = DeleteInboxMessageCall(message: message)
+        call.fire()
+        return call.objectSignal
+    }
+    
     func post(chatMessage: String, toGroup groupID: String) -> Signal<ChatMessageProtocol?, NoError> {
         let call = PostChatMessageCall(groupID: groupID, chatMessage: chatMessage)
         call.fire()
-        return call.objectSignal
+        return call.objectSignal.on(value: { chatMessage in
+            if let chatMessage = chatMessage {
+                self.localRepository.save(groupID: groupID, chatMessage: chatMessage)
+            }
+        })
+    }
+    
+    func post(inboxMessage: String, toUserID userID: String) -> Signal<InboxMessageProtocol?, NoError> {
+        let call = PostInboxMessageCall(userID: userID, inboxMessage: inboxMessage)
+        call.fire()
+        return call.objectSignal.on(value: { message in
+            if let message = message {
+                self.localRepository.save(userID: self.currentUserId, message: message)
+            }
+        })
     }
     
     func retrieveChat(groupID: String) -> Signal<[ChatMessageProtocol]?, NoError> {
@@ -186,5 +206,13 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
                 self.localRepository.leaveGroup(userID: userID, groupID: groupID, group: group)
             }
         })
+    }
+    
+    public func getMessagesThreads() -> SignalProducer<ReactiveResults<[InboxMessageProtocol]>, ReactiveSwiftRealmError> {
+        return localRepository.getMessagesThreads(userID: currentUserId ?? "")
+    }
+    
+    public func getMessages(withUserID: String) -> SignalProducer<ReactiveResults<[InboxMessageProtocol]>, ReactiveSwiftRealmError> {
+        return localRepository.getMessages(userID: currentUserId ?? "", withUserID: withUserID)
     }
 }

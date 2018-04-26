@@ -65,6 +65,7 @@
 		2974BDA5208E180100EC1A25 /* RealmOwnedCustomization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BDA4208E180100EC1A25 /* RealmOwnedCustomization.swift */; };
 		2974BDA7208E1A5100EC1A25 /* RealmSubscriptionPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BDA6208E1A5100EC1A25 /* RealmSubscriptionPlan.swift */; };
 		2974BDA9208E1AFB00EC1A25 /* RealmSubscriptionConsecutive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BDA8208E1AFB00EC1A25 /* RealmSubscriptionConsecutive.swift */; };
+		2974BDB020908BE500EC1A25 /* RealmInboxMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BDAF20908BE500EC1A25 /* RealmInboxMessage.swift */; };
 		298FB9B6204D9338004DDACC /* Habitica_Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 298FB9AC204D9338004DDACC /* Habitica_Database.framework */; };
 		298FB9BB204D9338004DDACC /* Habitica_DatabaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298FB9BA204D9338004DDACC /* Habitica_DatabaseTests.swift */; };
 		298FB9BD204D9338004DDACC /* Habitica_Database.h in Headers */ = {isa = PBXBuildFile; fileRef = 298FB9AF204D9338004DDACC /* Habitica_Database.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -147,6 +148,7 @@
 		2974BDA4208E180100EC1A25 /* RealmOwnedCustomization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmOwnedCustomization.swift; sourceTree = "<group>"; };
 		2974BDA6208E1A5100EC1A25 /* RealmSubscriptionPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmSubscriptionPlan.swift; sourceTree = "<group>"; };
 		2974BDA8208E1AFB00EC1A25 /* RealmSubscriptionConsecutive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmSubscriptionConsecutive.swift; sourceTree = "<group>"; };
+		2974BDAF20908BE500EC1A25 /* RealmInboxMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmInboxMessage.swift; sourceTree = "<group>"; };
 		298FB9AC204D9338004DDACC /* Habitica_Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Habitica_Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		298FB9AF204D9338004DDACC /* Habitica_Database.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Habitica_Database.h; sourceTree = "<group>"; };
 		298FB9B0204D9338004DDACC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 				29323E3C205213EF00AC6D6F /* RealmFlags.swift */,
 				29144891208A1BD000F3A6B5 /* RealmHair.swift */,
 				290B62552073D99E007287C4 /* RealmInbox.swift */,
+				2974BDAF20908BE500EC1A25 /* RealmInboxMessage.swift */,
 				290B6268207B9987007287C4 /* RealmLocalAuthentication.swift */,
 				29323E592052F8C200AC6D6F /* RealmOutfit.swift */,
 				290B629D207F7F34007287C4 /* RealmOwnedGear.swift */,
@@ -604,6 +607,7 @@
 				299FB29220849E9E00422522 /* RealmOwnedMount.swift in Sources */,
 				2956111A2057C93200D9711A /* RealmFood.swift in Sources */,
 				290B628D207E174C007287C4 /* RealmMember.swift in Sources */,
+				2974BDB020908BE500EC1A25 /* RealmInboxMessage.swift in Sources */,
 				290B6269207B9987007287C4 /* RealmLocalAuthentication.swift in Sources */,
 				2974BDA9208E1AFB00EC1A25 /* RealmSubscriptionConsecutive.swift in Sources */,
 				295611222057D60F00D9711A /* RealmQuest.swift in Sources */,
