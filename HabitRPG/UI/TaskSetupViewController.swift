@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Habitica_Models
+import ReactiveSwift
 
 enum SetupTaskCategory {
     case work, exercise, health, school, selfcare, chores, creativity
@@ -149,8 +151,16 @@ class TaskSetupViewController: UIViewController, TypingTextViewController {
     
     let buttonBackground = #imageLiteral(resourceName: "DiamondButton").resizableImage(withCapInsets: UIEdgeInsets(top: 18, left: 15, bottom: 18, right: 15)).withRenderingMode(.alwaysTemplate)
     
-    var sharedManager: HRPGManager?
-    var user: User?
+    private let userRepository = UserRepository()
+    private let disposable = ScopedDisposable(CompositeDisposable())
+
+    var user: UserProtocol? {
+        didSet {
+            if let user = self.user {
+                avatarView.avatar = AvatarViewModel(avatar: user)
+            }
+        }
+    }
     
     public var selectedCategories: [SetupTaskCategory] = []
     
@@ -162,8 +172,9 @@ class TaskSetupViewController: UIViewController, TypingTextViewController {
         avatarView.showPet = false
         avatarView.size = .regular
         
-        user = HRPGManager.shared().getUser()
-        avatarView.avatar = user
+        disposable.inner.add(userRepository.getUser().on(value: { user in
+            self.user = user
+        }).start())
         
         initButtons()
     
@@ -276,7 +287,7 @@ class TaskSetupViewController: UIViewController, TypingTextViewController {
     func startTyping() {
         speechBubbleView.animateTextView()
         if let user = self.user {
-            avatarView.avatar = user
+            avatarView.avatar = AvatarViewModel(avatar: user)
         }
     }
 }

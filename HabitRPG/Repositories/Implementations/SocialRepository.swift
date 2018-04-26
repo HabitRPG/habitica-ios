@@ -215,4 +215,10 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
     public func getMessages(withUserID: String) -> SignalProducer<ReactiveResults<[InboxMessageProtocol]>, ReactiveSwiftRealmError> {
         return localRepository.getMessages(userID: currentUserId ?? "", withUserID: withUserID)
     }
+    
+    public func markInboxAsSeen() -> Signal<EmptyResponseProtocol?, NoError> {
+        let call = MarkInboxAsSeenCall()
+        call.fire()
+        return call.objectSignal
+    }
 }

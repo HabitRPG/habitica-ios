@@ -15,6 +15,9 @@ import DateTools
 
     @objc
     func messageAt(indexPath: IndexPath) -> InboxMessageProtocol?
+    
+    @objc
+    func markInboxSeen()
 }
 
 @objc
@@ -58,5 +61,9 @@ class InboxOverviewDataSource: BaseReactiveTableViewDataSource<InboxMessageProto
         }
         
         return cell
+    }
+    
+    func markInboxSeen() {
+        socialRepository.markInboxAsSeen().observeCompleted {}
     }
 }

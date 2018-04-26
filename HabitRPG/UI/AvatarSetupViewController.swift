@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Habitica_Models
+import ReactiveSwift
 
 public enum AvatarCustomizationCategory {
     case body, skin, hair, extras
@@ -67,7 +69,17 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController {
     @IBOutlet weak var subcategoryIndicatorPosition: NSLayoutConstraint!
     @IBOutlet weak var subcategoryIndicatorWidth: NSLayoutConstraint!
     
-    var user: User?
+    var user: UserProtocol? {
+        didSet {
+            if let user = self.user {
+                avatarView.avatar = AvatarViewModel(avatar: user)
+            }
+            self.updateActiveCustomizations()
+        }
+    }
+    private let userRepository = UserRepository()
+    private let inventoryRepository = InventoryRepository()
+    private let disposable = ScopedDisposable(CompositeDisposable())
     
     var currentCategory: AvatarCustomizationCategory = .body {
         didSet {
@@ -93,8 +105,9 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController {
         avatarView.showPet = false
         avatarView.size = .regular
         
-        user = HRPGManager.shared().getUser()
-        avatarView.avatar = user
+        disposable.inner.add(userRepository.getUser().on(value: { user in
+            self.user = user
+        }).start())
         
         let bodyGesture = UITapGestureRecognizer(target: self, action: #selector(setBodyCategory))
         bodyButton.addGestureRecognizer(bodyGesture)
@@ -157,9 +170,7 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController {
         updateData["preferences.hair.flower"] = chooseRandomKey(SetupCustomizationRepository.getCustomizations(category: .extras, subcategory: .flower, user: user), weighFirstOption: true)
         updateData["preferences.chair"] = chooseRandomKey(SetupCustomizationRepository.getCustomizations(category: .extras, subcategory: .wheelchair, user: user), weighFirstOption: true)
         
-        HRPGManager.shared().updateUser(updateData, refetchUser: false, onSuccess: {[weak self] in
-            self?.updateActiveCustomizations()
-            }, onError: nil)
+        userRepository.updateUser(updateData).observeCompleted {}
     }
     
     func chooseRandomKey(_ items: [SetupCustomization], weighFirstOption: Bool) -> String {
@@ -318,17 +329,13 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController {
         if newCustomization.path == "glasses" {
             var key: String?
             if newCustomization.key.count == 0 {
-                key = user?.equipped?.eyewear
+                key = user?.items?.gear?.equipped?.eyewear
             } else {
                 key = newCustomization.key
             }
-            HRPGManager.shared().equipObject(key, withType: "equipped", onSuccess: {[weak self] in
-                self?.updateActiveCustomizations()
-                }, onError: nil)
+            inventoryRepository.equip(type: "equipped", key: key ?? "").observeCompleted {}
         } else {
-            HRPGManager.shared().updateUser(["preferences."+newCustomization.path: newCustomization.key], refetchUser: false, onSuccess: {[weak self] in
-                self?.updateActiveCustomizations()
-                }, onError: nil)
+            userRepository.updateUser(key: "preferences."+newCustomization.path, value: newCustomization.key).observeCompleted {}
         }
     }
     
@@ -349,7 +356,7 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController {
         }
         
         if let user = self.user {
-            avatarView.avatar = user
+            avatarView.avatar = AvatarViewModel(avatar: user)
         }
     }
     
@@ -390,16 +397,16 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController {
                 if customization.category == .skin {
                     return customization.key == user.preferences?.skin ?? ""
                 } else {
-                    return customization.key == user.preferences?.hairColor ?? ""
+                    return customization.key == user.preferences?.hair?.color ?? ""
                 }
             case .ponytail:
-                return customization.key == user.preferences?.hairBase ?? ""
+                return customization.key == String(user.preferences?.hair?.base ?? 0)
             case .bangs:
-                return customization.key == user.preferences?.hairBangs ?? ""
+                return customization.key == String(user.preferences?.hair?.bangs ?? 0)
             case .flower:
-                return customization.key == user.preferences?.hairFlower ?? ""
+                return customization.key == String(user.preferences?.hair?.flower ?? 0)
             case .glasses:
-                return customization.key == user.equipped?.eyewear ?? ""
+                return customization.key == user.items?.gear?.equipped?.eyewear ?? ""
             case .wheelchair:
                 return "chair_"+customization.key == user.preferences?.chair ?? "" || customization.key == user.preferences?.chair ?? "" || (customization.key == "none" && user.preferences?.chair == nil)
             default:

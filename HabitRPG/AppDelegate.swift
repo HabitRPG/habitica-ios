@@ -26,6 +26,7 @@ class HabiticaAppDelegate: NSObject {
     private let userRepository = UserRepository()
     private let contentRepository = ContentRepository()
     private let taskRepository = TaskRepository()
+    private let socialRepository = SocialRepository()
     
     @objc
     func setupPopups() {
@@ -189,5 +190,17 @@ class HabiticaAppDelegate: NSObject {
         } else {
             completed()
         }
+    }
+    
+    @objc
+    func sendPrivateMessage(toUserID: String, message: String, completed: @escaping ((Bool) -> Void)) {
+        socialRepository.post(inboxMessage: message, toUserID: toUserID).observeResult({ (result) in
+            switch result {
+            case .success:
+                completed(true)
+            case .failure:
+                completed(false)
+            }
+        })
     }
 }

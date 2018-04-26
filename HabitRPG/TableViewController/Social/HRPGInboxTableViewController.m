@@ -40,7 +40,7 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    [[HRPGManager sharedManager] markInboxSeen:nil onError:nil];
+    [self.datasource markInboxSeen];
     [super viewDidAppear:animated];
 }
 

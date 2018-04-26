@@ -180,12 +180,14 @@
             completionHandler();
         }];
     } else if ([identifier isEqualToString:@"replyAction"]) {
-        [[HRPGManager sharedManager] privateMessage:responseInfo[UIUserNotificationActionResponseTypedTextKey] toUserWithID:userInfo[@"replyTo"] onSuccess:^() {
-            completionHandler();
-        } onError:^() {
-            [self displayLocalNotificationWithMessage:NSLocalizedString(@"Your message could not be sent.", nil) withApplication:application];
-            completionHandler();
-        }];
+        [self.swiftAppDelegate sendPrivateMessageToUserID:userInfo[@"replyTo"]
+                                                  message:responseInfo[UIUserNotificationActionResponseTypedTextKey]
+                                                completed:^(BOOL success) {
+                                                    if (!success) {
+                                                        [self displayLocalNotificationWithMessage:NSLocalizedString(@"Your message could not be sent.", nil) withApplication:application];
+                                                    }
+                                                    completionHandler();
+                                                }];
     }
 }
 
