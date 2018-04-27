@@ -245,7 +245,23 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         })
     }
     
-    func handleUserUpdate() -> ((UserProtocol?) -> Void) {
+    func getUserStyleWithOutfitFor(class habiticaClass: HabiticaClass, userID: String? = nil) -> SignalProducer<UserStyleProtocol, ReactiveSwiftRealmError> {
+        return localRepository.getUserStyleWithOutfitFor(class: habiticaClass, userID: userID ?? currentUserId ?? "")
+    }
+    
+    func disableClassSystem() -> Signal<UserProtocol?, NoError> {
+        let call = DisableClassesCall()
+        call.fire()
+        return call.objectSignal.on(value: handleUserUpdate())
+    }
+    
+    func selectClass(_ habiticaClass: HabiticaClass) -> Signal<UserProtocol?, NoError> {
+        let call = SelectClassCall(class: habiticaClass)
+        call.fire()
+        return call.objectSignal.on(value: handleUserUpdate())
+    }
+    
+    private func handleUserUpdate() -> ((UserProtocol?) -> Void) {
         return { updatedUser in
             if let userID = self.currentUserId, let updatedUser = updatedUser {
                 self.localRepository.updateUser(id: userID, updateUser: updatedUser)

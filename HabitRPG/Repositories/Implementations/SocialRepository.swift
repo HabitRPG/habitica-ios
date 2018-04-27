@@ -15,29 +15,6 @@ import Result
 
 class SocialRepository: BaseRepository<SocialLocalRepository> {
     
-    lazy var managedObjectContext: NSManagedObjectContext = {
-        return HRPGManager.shared().getManagedObjectContext()
-    }()
-    
-    func getFetchRequest<T: NSManagedObject>(entityName: String, predicate: NSPredicate) -> NSFetchRequest<T> {
-        let fetchRequest = NSFetchRequest<T>(entityName: entityName)
-        fetchRequest.predicate = predicate
-        return fetchRequest
-    }
-    
-    internal func makeFetchRequest<T: NSManagedObject>(entityName: String, predicate: NSPredicate) -> T? {
-        let fetchRequest: NSFetchRequest<T> = getFetchRequest(entityName: entityName, predicate: predicate)
-        let result = try? managedObjectContext.fetch(fetchRequest)
-        if result?.count ?? 0 > 0, let item = result?[0] {
-            return item
-        }
-        return nil
-    }
-    
-    func getGroup(_ groupID: String) -> Group? {
-        return makeFetchRequest(entityName: "Group", predicate: NSPredicate(format: "id == %@", groupID))
-    }
-    
     func getGroups(predicate: NSPredicate) -> SignalProducer<ReactiveResults<[GroupProtocol]>, ReactiveSwiftRealmError> {
         return localRepository.getGroups(predicate: predicate)
     }

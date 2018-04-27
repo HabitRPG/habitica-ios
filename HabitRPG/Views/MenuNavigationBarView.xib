@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -50,11 +50,11 @@
                     <rect key="frame" x="16" y="16.5" width="40" height="40"/>
                     <subviews>
                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SGs-wn-z8E" customClass="AvatarView" customModule="Habitica" customModuleProvider="target">
-                            <rect key="frame" x="-9.5" y="-2.5" width="75" height="75"/>
+                            <rect key="frame" x="-9" y="0.0" width="50" height="50"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="75" id="7XY-LT-FGN"/>
-                                <constraint firstAttribute="width" constant="75" id="lux-B7-FrD"/>
+                                <constraint firstAttribute="height" constant="50" id="7XY-LT-FGN"/>
+                                <constraint firstAttribute="width" constant="50" id="lux-B7-FrD"/>
                             </constraints>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -65,10 +65,10 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="SGs-wn-z8E" firstAttribute="centerY" secondItem="HYV-1F-94x" secondAttribute="centerY" constant="15" id="PCx-1U-bLa"/>
+                        <constraint firstItem="SGs-wn-z8E" firstAttribute="centerY" secondItem="HYV-1F-94x" secondAttribute="centerY" constant="5" id="PCx-1U-bLa"/>
                         <constraint firstAttribute="height" constant="40" id="dok-KQ-dde"/>
                         <constraint firstAttribute="width" constant="40" id="kvK-dT-c0W"/>
-                        <constraint firstItem="SGs-wn-z8E" firstAttribute="centerX" secondItem="HYV-1F-94x" secondAttribute="centerX" constant="8" id="zH2-l0-Aec"/>
+                        <constraint firstItem="SGs-wn-z8E" firstAttribute="centerX" secondItem="HYV-1F-94x" secondAttribute="centerX" constant="-4" id="zH2-l0-Aec"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">

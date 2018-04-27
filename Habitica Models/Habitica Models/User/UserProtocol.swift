@@ -8,6 +8,15 @@
 
 import Foundation
 
+
+public enum HabiticaClass: String {
+    case warrior
+    case mage = "wizard"
+    case healer
+    case rogue
+    
+}
+
 @objc
 public protocol UserProtocol: AvatarProtocol {
     

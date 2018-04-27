@@ -122,9 +122,9 @@ class HRPGBuyItemModalViewController: UIViewController {
     
     private func setupQuests(_ contentView: UIView, itemView: UIView, key: String) {
         let questView = QuestDetailView(frame: CGRect.zero)
-        if let quest = inventoryRepository.getQuest(key) {
-            questView.configure(quest: quest)
-        }
+        //if let quest = inventoryRepository.getQuest(key) {
+        //    questView.configure(quest: quest)
+        //}
         addItemAndDetails(itemView, questView, to: contentView)
     }
     
@@ -133,12 +133,12 @@ class HRPGBuyItemModalViewController: UIViewController {
             addItemSet(itemView: itemView, to: contentView)
         } else {
             let statsView = HRPGItemStatsView(frame: CGRect.zero)
-            if let gear = inventoryRepository.getGear(key) {
+            /*if let gear = inventoryRepository.getGear(key) {
                 statsView.configure(gear: gear)
                 if let user = HRPGManager.shared().getUser(), user.hclass != gear.klass {
                     
                 }
-            }
+            }*/
             addItemAndDetails(itemView, statsView, to: contentView)
         }
     }

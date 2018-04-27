@@ -113,9 +113,13 @@ class AvatarView: UIView {
         "head_special_1": headSpecialConstraints
     ]
     
-    func resize(view: UIImageView, image: UIImage) {
+    func resize(view: UIImageView, image: UIImage, size: AvatarViewSize) {
         let ratio = image.size.width / image.size.height
-        view.pin.aspectRatio(ratio).width(image.size.width * (self.bounds.size.width / 140))
+        if size == .regular {
+            view.pin.aspectRatio(ratio).height(image.size.height * (self.bounds.size.height / 147))
+        } else {
+            view.pin.aspectRatio(ratio).height(image.size.height * (self.bounds.size.height / 90))
+        }
     }
     
     let backgroundConstraints: ((AvatarView, UIImageView, AvatarViewSize, CGFloat) -> Void) = { superview, view, size, offset in
@@ -213,7 +217,7 @@ class AvatarView: UIView {
         }
         imageView.setImagewith(name: name, extension: getFormat(name: name ?? ""), completion: { image, error in
             if let image = image, type != "background" {
-                self.resize(view: imageView, image: image)
+                self.resize(view: imageView, image: image, size: self.size)
                 self.setLayout(imageView, type: type)
             }
             if error != nil {
@@ -233,7 +237,7 @@ class AvatarView: UIView {
                 let imageView = imageViews[index]
                 imageView.isHidden = false
                 if let image = imageView.image, type != "background" {
-                    self.resize(view: imageView, image: image)
+                    self.resize(view: imageView, image: image, size: self.size)
                     setLayout(imageView, type: type)
                 }
                 setLayout(imageView, type: type)

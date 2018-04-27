@@ -138,7 +138,9 @@ public class TaskLocalRepository: BaseLocalRepository {
     public func getEditableTask(id: String) -> TaskProtocol? {
         if let task = getRealm()?.object(ofType: RealmTask.self, forPrimaryKey: id) {
             let editableTask = RealmTask(value: task)
-            editableTask.weekRepeat = RealmWeekRepeat(value: task.weekRepeat)
+            if let weekRepeat = task.weekRepeat {
+                editableTask.weekRepeat = RealmWeekRepeat(value: weekRepeat)
+            }
             return editableTask
         }
         return nil

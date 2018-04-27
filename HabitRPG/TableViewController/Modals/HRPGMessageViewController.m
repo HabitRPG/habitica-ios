@@ -9,7 +9,6 @@
 #import "HRPGMessageViewController.h"
 #import "Amplitude.h"
 #import "HRPGAppDelegate.h"
-#import "HRPGManager.h"
 
 @interface HRPGMessageViewController ()
 @property(weak, nonatomic) IBOutlet NSLayoutConstraint *bottomOffsetConstraint;
@@ -20,8 +19,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    self.managedObjectContext = [HRPGManager sharedManager].getManagedObjectContext;
 
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardChanged:)

@@ -20,6 +20,7 @@ class UserManager {
     private let disposable = ScopedDisposable(CompositeDisposable())
     
     private weak var faintViewController: FaintViewController?
+    private weak var classSelectionViewController: ClassSelectionViewController?
     var yesterdailiesDialog: YesterdailiesDialogView?
     
     func beginListening() {
@@ -36,6 +37,8 @@ class UserManager {
         if faintViewController == nil {
             checkYesterdailies(user: user)
         }
+        
+        checkClassSelection(user: user)
     }
     
     private func checkFainting(user: UserProtocol) -> FaintViewController? {
@@ -50,6 +53,25 @@ class UserManager {
     private func checkYesterdailies(user: UserProtocol) {
         if user.needsCron && yesterdailiesDialog == nil {
             yesterdailiesDialog = YesterdailiesDialogView.showDialog()
+        }
+    }
+    
+    private func checkClassSelection(user: UserProtocol) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            if user.flags?.classSelected == false && user.preferences?.disableClasses == false && (user.stats?.level ?? 0) >= 10 {
+                if self.classSelectionViewController == nil {
+                    let classSelectionController = StoryboardScene.Settings.classSelectionNavigationController.instantiate()
+                    if var topController = UIApplication.shared.keyWindow?.rootViewController {
+                        while let presentedViewController = topController.presentedViewController {
+                            topController = presentedViewController
+                        }
+                        classSelectionController.modalTransitionStyle = .crossDissolve
+                        classSelectionController.modalPresentationStyle = .overCurrentContext
+                        topController.present(classSelectionController, animated: true) {
+                        }
+                    }
+                }
+            }
         }
     }
 }

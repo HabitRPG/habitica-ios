@@ -94,8 +94,6 @@ internal enum StoryboardScene {
 
     internal static let scanQRCodeNavController = SceneType<UINavigationController>(storyboard: Main.self, identifier: "ScanQRCodeNavController")
 
-    internal static let selectClassNavigationController = SceneType<UINavigationController>(storyboard: Main.self, identifier: "SelectClassNavigationController")
-
     internal static let spellUserNavigationController = SceneType<UINavigationController>(storyboard: Main.self, identifier: "SpellUserNavigationController")
 
     internal static let subscriptionViewController = SceneType<Habitica.SubscriptionViewController>(storyboard: Main.self, identifier: "SubscriptionViewController")
@@ -108,6 +106,8 @@ internal enum StoryboardScene {
     internal static let storyboardName = "Settings"
 
     internal static let initialScene = InitialSceneType<UINavigationController>(storyboard: Settings.self)
+
+    internal static let classSelectionNavigationController = SceneType<UINavigationController>(storyboard: Settings.self, identifier: "ClassSelectionNavigationController")
   }
   internal enum Shop: StoryboardType {
     internal static let storyboardName = "Shop"
@@ -204,7 +204,6 @@ internal enum StoryboardSegue {
     case gemSubscriptionSegue = "GemSubscriptionSegue"
     case groupBySegue = "GroupBySegue"
     case guildsSegue = "GuildsSegue"
-    case helpSegue = "HelpSegue"
     case inboxSegue = "InboxSegue"
     case itemSegue = "ItemSegue"
     case mountDetailSegue = "MountDetailSegue"
@@ -212,7 +211,6 @@ internal enum StoryboardSegue {
     case partySegue = "PartySegue"
     case petDetailSegue = "PetDetailSegue"
     case scannedCodeSegue = "ScannedCodeSegue"
-    case selectClassSegue = "SelectClassSegue"
     case settingsSegue = "SettingsSegue"
     case shopsSegue = "ShopsSegue"
     case showShopSegue = "ShowShopSegue"

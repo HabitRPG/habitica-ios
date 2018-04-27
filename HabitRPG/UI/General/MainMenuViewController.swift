@@ -105,7 +105,7 @@ class MainMenuViewController: HRPGBaseViewController {
         menuSections = [
             MenuSection(title: nil, iconAsset: nil, items: [
                 MenuItem(title: L10n.Menu.castSpells, segue: StoryboardSegue.Main.spellsSegue.rawValue),
-                MenuItem(title: L10n.Menu.selectClass, segue: StoryboardSegue.Main.selectClassSegue.rawValue),
+                //MenuItem(title: L10n.Menu.selectClass, segue: StoryboardSegue.Main.selectClassSegue.rawValue),
                 MenuItem(title: L10n.Menu.stats, segue: StoryboardSegue.Main.statsSegue.rawValue)
                 ]),
             MenuSection(title: L10n.Menu.social, iconAsset: Asset.iconSocial, items: [
@@ -174,7 +174,7 @@ class MainMenuViewController: HRPGBaseViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: menuSections[indexPath.section].items[indexPath.item].segue, sender: self)
+        performSegue(withIdentifier: menuSections[indexPath.section].visibleItems[indexPath.item].segue, sender: self)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

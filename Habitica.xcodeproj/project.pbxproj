@@ -134,6 +134,8 @@
 		2957B8C41F4D922C00E836EF /* CustomRewardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2957B8C31F4D922C00E836EF /* CustomRewardCell.swift */; };
 		2957B8C81F4DCF7800E836EF /* RewardFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2957B8C71F4DCF7800E836EF /* RewardFormController.swift */; };
 		2957B8CA1F4ED7C800E836EF /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2957B8C91F4ED7C800E836EF /* Currency.swift */; };
+		295D42F620921F4200948E7E /* ClassSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295D42F520921F4200948E7E /* ClassSelectionViewController.swift */; };
+		295D42F820922BA700948E7E /* ClassSelectionOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295D42F720922BA700948E7E /* ClassSelectionOptionView.swift */; };
 		29646DD6205BE4C10050886C /* TaskFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29646DD5205BE4C10050886C /* TaskFormViewModel.swift */; };
 		29646DE1205C18FA0050886C /* TaskType-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29646DE0205C18FA0050886C /* TaskType-Extensions.swift */; };
 		29646DE3205C1F390050886C /* TaskFormVisualEffectsModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29646DE2205C1F390050886C /* TaskFormVisualEffectsModalViewController.swift */; };
@@ -462,7 +464,6 @@
 		D9ADD3541CF3169B001D005B /* NSString+StripHTML.m in Sources */ = {isa = PBXBuildFile; fileRef = D9ADD3531CF3169B001D005B /* NSString+StripHTML.m */; };
 		D9ADD3631944FDBE006202C1 /* HRPGFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9ADD3621944FDBE006202C1 /* HRPGFilterViewController.m */; };
 		D9AEA8A11C733BFA00FE6158 /* HRPGGroupAboutTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9AEA8A01C733BFA00FE6158 /* HRPGGroupAboutTableViewController.m */; };
-		D9AEEA701ACECDBC0076951B /* HRPGClassTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9AEEA6F1ACECDBC0076951B /* HRPGClassTableViewController.m */; };
 		D9AEEA731ACEDD470076951B /* HRPGWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9AEEA721ACEDD470076951B /* HRPGWebViewController.m */; };
 		D9AEF8E41CE4CCA5006914CB /* HRPGURLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D9AEF8E31CE4CCA5006914CB /* HRPGURLParser.m */; };
 		D9B11C8C18D63D4E00AB4D23 /* HRPGTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B11C8B18D63D4E00AB4D23 /* HRPGTabBarController.m */; };
@@ -713,6 +714,8 @@
 		2957B8C31F4D922C00E836EF /* CustomRewardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomRewardCell.swift; sourceTree = "<group>"; };
 		2957B8C71F4DCF7800E836EF /* RewardFormController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardFormController.swift; sourceTree = "<group>"; };
 		2957B8C91F4ED7C800E836EF /* Currency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		295D42F520921F4200948E7E /* ClassSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassSelectionViewController.swift; sourceTree = "<group>"; };
+		295D42F720922BA700948E7E /* ClassSelectionOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassSelectionOptionView.swift; sourceTree = "<group>"; };
 		29646DD5205BE4C10050886C /* TaskFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFormViewModel.swift; sourceTree = "<group>"; };
 		29646DE0205C18FA0050886C /* TaskType-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskType-Extensions.swift"; sourceTree = "<group>"; };
 		29646DE2205C1F390050886C /* TaskFormVisualEffectsModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFormVisualEffectsModalViewController.swift; sourceTree = "<group>"; };
@@ -1220,8 +1223,6 @@
 		D9ADD3621944FDBE006202C1 /* HRPGFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGFilterViewController.m; sourceTree = "<group>"; };
 		D9AEA89F1C733BFA00FE6158 /* HRPGGroupAboutTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGGroupAboutTableViewController.h; sourceTree = "<group>"; };
 		D9AEA8A01C733BFA00FE6158 /* HRPGGroupAboutTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGGroupAboutTableViewController.m; sourceTree = "<group>"; };
-		D9AEEA6E1ACECDBC0076951B /* HRPGClassTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HRPGClassTableViewController.h; path = ../CollectionViewController/HRPGClassTableViewController.h; sourceTree = "<group>"; };
-		D9AEEA6F1ACECDBC0076951B /* HRPGClassTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HRPGClassTableViewController.m; path = ../CollectionViewController/HRPGClassTableViewController.m; sourceTree = "<group>"; };
 		D9AEEA711ACEDD470076951B /* HRPGWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGWebViewController.h; sourceTree = "<group>"; };
 		D9AEEA721ACEDD470076951B /* HRPGWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGWebViewController.m; sourceTree = "<group>"; };
 		D9AEF8E21CE4CCA5006914CB /* HRPGURLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HRPGURLParser.h; path = HabitRPG/Utilities/HRPGURLParser.h; sourceTree = SOURCE_ROOT; };
@@ -1712,6 +1713,7 @@
 				29B3FEAE1F9A33AB000B12CF /* APISettingsViewController.swift */,
 				29B3FEB91F9A6FAD000B12CF /* AuthenticationSettingsViewController.swift */,
 				290B62492073C37A007287C4 /* SettingsViewController.swift */,
+				295D42F520921F4200948E7E /* ClassSelectionViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -1958,8 +1960,6 @@
 				D97CCDBB19A7AFFA00DA128A /* HRPGArrayViewController.m */,
 				D998FD931ADAC1FF00E9A26F /* HRPGAboutViewController.h */,
 				D998FD941ADAC1FF00E9A26F /* HRPGAboutViewController.m */,
-				D9AEEA6E1ACECDBC0076951B /* HRPGClassTableViewController.h */,
-				D9AEEA6F1ACECDBC0076951B /* HRPGClassTableViewController.m */,
 				D9436AC21C64F6DC008D1171 /* Social */,
 				D9C3D01C19509E3800D22A4A /* Inventory */,
 				D9E3654F1930D45500C056F1 /* Modals */,
@@ -2425,6 +2425,7 @@
 				D91CCACF1BCF11CC001C6A0C /* UserTopHeader.xib */,
 				2980E6081EEA25CD005B7100 /* YesterdailiesDialogView.swift */,
 				2980E6061EEA1F55005B7100 /* YesterdailiesDialogView.xib */,
+				295D42F720922BA700948E7E /* ClassSelectionOptionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -3685,7 +3686,6 @@
 				49DCB7B21F3E6D400079FDD0 /* HRPGSingleOptionModalViewController.swift in Sources */,
 				D91CCACD1BCD9068001C6A0C /* HRPGHoledView.m in Sources */,
 				29FC885420175C70002B3D3F /* RageStrikeView.swift in Sources */,
-				D9AEEA701ACECDBC0076951B /* HRPGClassTableViewController.m in Sources */,
 				D9D9EF981D54E51C00FC89C1 /* HRPGQRCodeView.m in Sources */,
 				D9E46B031DABCD9100E390D7 /* Buff+CoreDataClass.m in Sources */,
 				4908641D1F43DE2B00BD9896 /* HRPGInsufficientGemsViewController.swift in Sources */,
@@ -3698,9 +3698,11 @@
 				D9AEEA731ACEDD470076951B /* HRPGWebViewController.m in Sources */,
 				D9D5935D1D00523800D6C388 /* InboxMessage+CoreDataProperties.m in Sources */,
 				494E53FB1F2C14980003683C /* HRPGShopsTableViewCell.swift in Sources */,
+				295D42F820922BA700948E7E /* ClassSelectionOptionView.swift in Sources */,
 				49005B721F180589004830D9 /* HRPGCurrencyCountView.swift in Sources */,
 				D994B1491AD9177D008AE188 /* UIView+Screenshot.m in Sources */,
 				299FB29F2084A8FD00422522 /* StableSplitViewController.swift in Sources */,
+				295D42F620921F4200948E7E /* ClassSelectionViewController.swift in Sources */,
 				D97C71ED18F32FEF0089FDC6 /* Gear.m in Sources */,
 				D95704391E106C11004F6804 /* LocalizedString.swift in Sources */,
 				D9525F991E5F405400C529B8 /* Challenge+CoreDataProperties.m in Sources */,

@@ -238,6 +238,121 @@
             <point key="canvasLocation" x="2674" y="399"/>
         </scene>
         <!--Navigation Controller-->
+        <scene sceneID="jIx-6m-1vh">
+            <objects>
+                <navigationController storyboardIdentifier="ClassSelectionNavigationController" id="J06-Jv-RSc" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Gf6-Yw-Lx5">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="UhS-h9-0Xt" kind="relationship" relationship="rootViewController" id="Qi8-rs-p5V"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FcP-hn-E6G" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2150" y="1472"/>
+        </scene>
+        <!--Select Class-->
+        <scene sceneID="6Am-P4-F55">
+            <objects>
+                <viewController id="UhS-h9-0Xt" customClass="ClassSelectionViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IPq-v4-dpA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="otw-ot-3DL">
+                                <rect key="frame" x="0.0" y="382.5" width="375" height="284.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ADo-II-8tI">
+                                        <rect key="frame" x="0.0" y="25" width="375" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YbC-Z7-Muf">
+                                        <rect key="frame" x="16" y="65.5" width="343" height="43"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="selectClass:" destination="UhS-h9-0Xt" eventType="touchUpInside" id="WRw-L2-Bqz"/>
+                                        </connections>
+                                    </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZkG-8h-cIA">
+                                        <rect key="frame" x="16" y="50" width="343" height="149.5"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.97596985101699829" green="0.74622458219528198" blue="0.36513745784759521" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QvX-D4-L2i" customClass="ClassSelectionOptionView" customModule="Habitica" customModuleProvider="target">
+                                <rect key="frame" x="105" y="267" width="163.5" height="131.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Jy-gM-f7u" customClass="ClassSelectionOptionView" customModule="Habitica" customModuleProvider="target">
+                                <rect key="frame" x="105" y="267" width="163.5" height="131.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FIp-ZW-w2M" customClass="ClassSelectionOptionView" customModule="Habitica" customModuleProvider="target">
+                                <rect key="frame" x="105" y="267" width="163.5" height="131.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z3u-A0-Agc" customClass="ClassSelectionOptionView" customModule="Habitica" customModuleProvider="target">
+                                <rect key="frame" x="105" y="267" width="163.5" height="131.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <activityIndicatorView opaque="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="cyI-8h-mbI">
+                                <rect key="frame" x="177" y="174" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="bYe-9J-YkB"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Select Class" id="Qov-6d-R8S">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="fN7-3R-K4L">
+                            <connections>
+                                <action selector="cancelButtonTapped:" destination="UhS-h9-0Xt" id="t3n-vP-nGi"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="bottomView" destination="otw-ot-3DL" id="Lgz-LD-4NJ"/>
+                        <outlet property="descriptionView" destination="ZkG-8h-cIA" id="qWI-nb-AJC"/>
+                        <outlet property="healerOptionView" destination="QvX-D4-L2i" id="HVQ-my-018"/>
+                        <outlet property="loadingIndicator" destination="cyI-8h-mbI" id="AQX-Bi-cxB"/>
+                        <outlet property="mageOptionView" destination="FIp-ZW-w2M" id="oIG-PL-chM"/>
+                        <outlet property="rogueOptionView" destination="4Jy-gM-f7u" id="1Qs-OE-MtJ"/>
+                        <outlet property="selectionButton" destination="YbC-Z7-Muf" id="hQg-1S-DUN"/>
+                        <outlet property="titleView" destination="ADo-II-8tI" id="HkS-oc-ahH"/>
+                        <outlet property="warriorOptionView" destination="z3u-A0-Agc" id="oYA-3g-5j4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZxN-oy-KlE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2938" y="1471"/>
+        </scene>
+        <!--Navigation Controller-->
         <scene sceneID="puI-MO-bbp">
             <objects>
                 <navigationController id="dIG-in-z1e" sceneMemberID="viewController">

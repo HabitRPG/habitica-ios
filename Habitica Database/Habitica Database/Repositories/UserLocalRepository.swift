@@ -68,6 +68,46 @@ public class UserLocalRepository: BaseLocalRepository {
         }
     }
     
+    public func getUserStyleWithOutfitFor(class habiticaClass: HabiticaClass, userID: String) -> SignalProducer<UserStyleProtocol, ReactiveSwiftRealmError> {
+        return RealmUser.findBy(key: userID).map({ (user) -> UserStyleProtocol in
+            let userStyle = RealmUserStyle()
+            userStyle.items = RealmUserItems()
+            userStyle.items?.gear = RealmUserGear()
+            let outfit = self.outfitFor(class: habiticaClass)
+            userStyle.items?.gear?.equipped = outfit
+            userStyle.items?.gear?.costume = outfit
+            userStyle.preferences = user?.preferences
+            userStyle.stats = user?.stats
+            return userStyle
+        })
+    }
+    
+    private func outfitFor(class habiticaClass: HabiticaClass) -> OutfitProtocol {
+        let outfit = RealmOutfit()
+        switch habiticaClass {
+        case .warrior:
+            outfit.armor = "armor_warrior_5"
+            outfit.head = "head_warrior_5"
+            outfit.shield = "shield_warrior_5"
+            outfit.weapon = "weapon_warrior_6"
+        case .mage:
+            outfit.armor = "armor_wizard_5"
+            outfit.head = "head_wizard_5"
+            outfit.weapon = "weapon_wizard_6"
+        case .healer:
+            outfit.armor = "armor_healer_5"
+            outfit.head = "head_healer_5"
+            outfit.shield = "shield_healer_6"
+            outfit.weapon = "weapon_healer_6"
+        case .rogue:
+            outfit.armor = "armor_rogue_5"
+            outfit.head = "head_rogue_5"
+            outfit.shield = "shield_rogue_6"
+            outfit.weapon = "weapon_rogue_6"
+        }
+        return outfit
+    }
+    
     private func mergeUsers(oldUser: UserProtocol, newUser: UserProtocol) {
         guard let realm = getRealm() else {
             return

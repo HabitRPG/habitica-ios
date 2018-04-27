@@ -167,7 +167,7 @@ class HRPGSimpleShopItemView: UIView {
     
     private func configureFor(key: String, purchaseType: String) {
         if purchaseType == "gear", let user = HRPGManager.shared().getUser() {
-            let gear = InventoryRepository().getGear(key)
+            /*let gear = InventoryRepository().getGear(key)
             var gearClass = gear?.klass
             if gearClass == "special" {
                 gearClass = gear?.specialClass
@@ -179,7 +179,7 @@ class HRPGSimpleShopItemView: UIView {
                 topBannerLabel.text = NSLocalizedString("Only available for \(gearClass?.capitalized ?? "")s. You can change your class from Settings", comment: "")
                 topBannerWrapper.backgroundColor = UIColor.gray100()
                 topBannerWrapper.isHidden = false
-            }
+            }*/
         }
     }
     

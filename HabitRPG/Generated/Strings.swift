@@ -129,6 +129,33 @@ internal enum L10n {
     internal static let wheelchair = L10n.tr("Main", "avatar.wheelchair")
   }
 
+  internal enum Classes {
+    /// Become a %@
+    internal static func becomeAClass(_ p1: String) -> String {
+      return L10n.tr("Main", "classes.become_a_class", p1)
+    }
+    /// %@ Class
+    internal static func classHeader(_ p1: String) -> String {
+      return L10n.tr("Main", "classes.class_header", p1)
+    }
+    /// Healer
+    internal static let healer = L10n.tr("Main", "classes.healer")
+    /// Healers stand impervious against harm, and extend that protection to others. Missed Dailies and bad Habits don't faze them much, and they have ways to recover Health from failure. Play a Healer if you enjoy assisting others in your Party, or if the idea of cheating Death through hard work inspires you!
+    internal static let healerDescription = L10n.tr("Main", "classes.healer_description")
+    /// Mage
+    internal static let mage = L10n.tr("Main", "classes.mage")
+    /// Mages learn swiftly, gaining Experience and Levels faster than other classes. They also get a great deal of Mana for using special abilities. Play a Mage if you enjoy the tactical game aspects of Habitica, or if you are strongly motivated by leveling up and unlocking advanced features! 
+    internal static let mageDescription = L10n.tr("Main", "classes.mage_description")
+    /// Rogue
+    internal static let rogue = L10n.tr("Main", "classes.rogue")
+    /// Rogues love to accumulate wealth, gaining more Gold than anyone else, and are adept at finding random items. Their iconic Stealth ability lets them duck the consequences of missed Dailies. Play a Rogue if you find strong motivation from Rewards and Achievements, striving for loot and badges!
+    internal static let rogueDescription = L10n.tr("Main", "classes.rogue_description")
+    /// Warrior
+    internal static let warrior = L10n.tr("Main", "classes.warrior")
+    /// Warriors score more and better "critical hits", which randomly give bonus Gold, Experience, and drop chance for scoring a task. They also deal heavy damage to boss monsters. Play a Warrior if you find motivation from unpredictable jackpot-style rewards, or want to dish out the hurt in boss Quests!
+    internal static let warriorDescription = L10n.tr("Main", "classes.warrior_description")
+  }
+
   internal enum Equipment {
     /// Armor
     internal static let armor = L10n.tr("Main", "equipment.armor")

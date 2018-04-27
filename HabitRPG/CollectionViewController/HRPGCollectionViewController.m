@@ -9,7 +9,6 @@
 #import "HRPGCollectionViewController.h"
 #import "UIViewController+HRPGTopHeaderNavigationController.h"
 #import "Amplitude+HRPGHelpers.h"
-#import "HRPGManager.h"
 #import "Habitica-Swift.h"
 
 @interface HRPGCollectionViewController ()
