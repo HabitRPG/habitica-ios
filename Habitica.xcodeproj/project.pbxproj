@@ -466,7 +466,6 @@
 		D9AEA8A11C733BFA00FE6158 /* HRPGGroupAboutTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9AEA8A01C733BFA00FE6158 /* HRPGGroupAboutTableViewController.m */; };
 		D9AEEA731ACEDD470076951B /* HRPGWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9AEEA721ACEDD470076951B /* HRPGWebViewController.m */; };
 		D9AEF8E41CE4CCA5006914CB /* HRPGURLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D9AEF8E31CE4CCA5006914CB /* HRPGURLParser.m */; };
-		D9B11C8C18D63D4E00AB4D23 /* HRPGTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B11C8B18D63D4E00AB4D23 /* HRPGTabBarController.m */; };
 		D9B5C0AE18CCC87A00C8D1B7 /* HRPGManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5C0AD18CCC87A00C8D1B7 /* HRPGManager.m */; };
 		D9B5C0C018D5EFF400C8D1B7 /* ChecklistItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5C0BF18D5EFF400C8D1B7 /* ChecklistItem.m */; };
 		D9B5C0CF18D5F4D400C8D1B7 /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5C0CE18D5F4D400C8D1B7 /* Tag.m */; };
@@ -1218,7 +1217,6 @@
 		D9ADD3501943BC0E006202C1 /* BuyableItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BuyableItem.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D9ADD3521CF3169B001D005B /* NSString+StripHTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+StripHTML.h"; sourceTree = "<group>"; };
 		D9ADD3531CF3169B001D005B /* NSString+StripHTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+StripHTML.m"; sourceTree = "<group>"; };
-		D9ADD3541943BE95006202C1 /* HRPGTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HRPGTabBarController.h; sourceTree = "<group>"; };
 		D9ADD3611944FDBE006202C1 /* HRPGFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGFilterViewController.h; sourceTree = "<group>"; };
 		D9ADD3621944FDBE006202C1 /* HRPGFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGFilterViewController.m; sourceTree = "<group>"; };
 		D9AEA89F1C733BFA00FE6158 /* HRPGGroupAboutTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGGroupAboutTableViewController.h; sourceTree = "<group>"; };
@@ -1227,7 +1225,6 @@
 		D9AEEA721ACEDD470076951B /* HRPGWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGWebViewController.m; sourceTree = "<group>"; };
 		D9AEF8E21CE4CCA5006914CB /* HRPGURLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HRPGURLParser.h; path = HabitRPG/Utilities/HRPGURLParser.h; sourceTree = SOURCE_ROOT; };
 		D9AEF8E31CE4CCA5006914CB /* HRPGURLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HRPGURLParser.m; path = HabitRPG/Utilities/HRPGURLParser.m; sourceTree = SOURCE_ROOT; };
-		D9B11C8B18D63D4E00AB4D23 /* HRPGTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGTabBarController.m; sourceTree = "<group>"; };
 		D9B2F2901D99669C001810BD /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D9B2F2921D9966B1001810BD /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D9B2F2931D9966CA001810BD /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -2272,8 +2269,6 @@
 			children = (
 				D94AADB8192A5CE700546C8E /* HRPGSpellTabBarController.h */,
 				D94AADB9192A5CE700546C8E /* HRPGSpellTabBarController.m */,
-				D9ADD3541943BE95006202C1 /* HRPGTabBarController.h */,
-				D9B11C8B18D63D4E00AB4D23 /* HRPGTabBarController.m */,
 				2974BDB32090926B00EC1A25 /* MainTabBarController.swift */,
 			);
 			path = TabBarController;
@@ -3732,7 +3727,6 @@
 				49F1459E2016667D00AAC434 /* ChallengeCategory+CoreDataClass.m in Sources */,
 				294FD5692064135500EABCC9 /* HabitControlsRow.swift in Sources */,
 				D95D039C1C74E3E900D6BFB3 /* ImprovementCategory.m in Sources */,
-				D9B11C8C18D63D4E00AB4D23 /* HRPGTabBarController.m in Sources */,
 				D9D0451C1C2B1AEC00630244 /* Reminder.m in Sources */,
 				29FEB27A202B4F0400EA245A /* AvatarView.swift in Sources */,
 				D94FEDEB1BB314B10046A52E /* HRPGGroupFormViewController.m in Sources */,

@@ -19,9 +19,18 @@ class TodoTableViewDataSourceInstantiator: NSObject {
 
 class TodoTableViewDataSource: TaskTableViewDataSource {
     
+    let dateFormatter = DateFormatter()
+    
+    override init(predicate: NSPredicate) {
+        super.init(predicate: predicate)
+        
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .none
+    }
+    
     override func configure(cell: TaskTableViewCell, indexPath: IndexPath, task: TaskProtocol) {
-        super.configure(cell: cell, indexPath: indexPath, task: task)
         if let todocell = cell as? ToDoTableViewCell {
+            todocell.taskDetailLine.dateFormatter = dateFormatter
             todocell.checkboxTouched = {[weak self] in
                 self?.disposable.inner.add(self?.repository.score(task: task, direction: task.completed ? .down : .up).observeCompleted {})
             }
@@ -32,6 +41,7 @@ class TodoTableViewDataSource: TaskTableViewDataSource {
                 self?.expandSelectedCell(indexPath: indexPath)
             }
         }
+        super.configure(cell: cell, indexPath: indexPath, task: task)
     }
     
 }

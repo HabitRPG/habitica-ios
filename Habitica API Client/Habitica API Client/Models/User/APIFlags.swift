@@ -9,7 +9,7 @@
 import Foundation
 import Habitica_Models
 
-class APIFlags: FlagsProtocol, Codable {
+class APIFlags: FlagsProtocol, Decodable {
     var armoireEmpty: Bool = false
     var cronCount: Int = 0
     var rebirthEnabled: Bool = false
@@ -19,6 +19,7 @@ class APIFlags: FlagsProtocol, Codable {
     var chatRevoked: Bool = false
     var classSelected: Bool = false
     var itemsEnabled: Bool = false
+    var tutorials: [TutorialStepProtocol]
     
     enum CodingKeys: String, CodingKey {
         case armoireEmpty
@@ -30,6 +31,7 @@ class APIFlags: FlagsProtocol, Codable {
         case chatRevoked
         case classSelected
         case itemsEnabled
+        case tutorials = "tutorial"
     }
     
     public required init(from decoder: Decoder) throws {
@@ -43,5 +45,11 @@ class APIFlags: FlagsProtocol, Codable {
         chatRevoked = (try? values.decode(Bool.self, forKey: .chatRevoked)) ?? false
         classSelected = (try? values.decode(Bool.self, forKey: .classSelected)) ?? false
         itemsEnabled = (try? values.decode(Bool.self, forKey: .itemsEnabled)) ?? false
+        tutorials = []
+        try? values.decode([String: [String: Bool]].self, forKey: .tutorials).forEach({ tutorialTypes in
+                tutorialTypes.value.forEach({ (key, wasSeen) in
+                tutorials.append(APITutorialStep(type: tutorialTypes.key, key: key, wasSeen: wasSeen))
+            })
+        })
     }
 }

@@ -16,4 +16,5 @@ public protocol FlagsProtocol {
     var chatRevoked: Bool { get set }
     var classSelected: Bool { get set }
     var itemsEnabled: Bool { get set }
+    var tutorials: [TutorialStepProtocol] { get set }
 }

@@ -19,7 +19,6 @@
 #import "Tag.h"
 #import "Shop.h"
 #import "HRPGBaseNotificationView.h"
-#import "HRPGTabBarController.h"
 #import "HRPGTypingLabel.h"
 #import "HRPGHoledView.h"
 #import "HRPGHintView.h"

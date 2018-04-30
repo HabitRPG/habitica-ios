@@ -88,7 +88,7 @@ internal enum StoryboardScene {
 
     internal static let itemNavigationController = SceneType<UINavigationController>(storyboard: Main.self, identifier: "ItemNavigationController")
 
-    internal static let mainTabBarController = SceneType<HRPGTabBarController>(storyboard: Main.self, identifier: "MainTabBarController")
+    internal static let mainTabBarController = SceneType<Habitica.MainTabBarController>(storyboard: Main.self, identifier: "MainTabBarController")
 
     internal static let purchaseGemNavController = SceneType<HRPGGemHeaderNavigationController>(storyboard: Main.self, identifier: "PurchaseGemNavController")
 

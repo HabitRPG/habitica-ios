@@ -55,7 +55,7 @@ public class APITask: TaskProtocol, Codable {
         case priority
         case counterUp
         case counterDown
-        case duedate
+        case duedate = "date"
         case isDue
         case streak
         case frequency
@@ -85,7 +85,9 @@ public class APITask: TaskProtocol, Codable {
         priority = (try? values.decode(Float.self, forKey: .priority)) ?? 0
         counterUp = (try? values.decode(Int.self, forKey: .counterUp)) ?? 0
         counterDown = (try? values.decode(Int.self, forKey: .counterDown)) ?? 0
-        duedate = try? values.decode(Date.self, forKey: .duedate)
+        if let dateString = try? values.decode(String.self, forKey: .duedate), dateString.count > 0 {
+            duedate = try? values.decode(Date.self, forKey: .duedate)
+        }
         isDue = (try? values.decode(Bool.self, forKey: .isDue)) ?? false
         streak = (try? values.decode(Int.self, forKey: .streak)) ?? 0
         frequency = try? values.decode(String.self, forKey: .frequency)

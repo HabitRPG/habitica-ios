@@ -21,6 +21,24 @@ class RealmFlags: Object, FlagsProtocol {
     @objc dynamic var chatRevoked: Bool = false
     @objc dynamic var classSelected: Bool = false
     @objc dynamic var itemsEnabled: Bool = false
+    var tutorials: [TutorialStepProtocol] {
+        get {
+            return realmTutorials.map({ (quest) -> TutorialStepProtocol in
+                return quest
+            })
+        }
+        set {
+            realmTutorials.removeAll()
+            newValue.forEach { (tutorial) in
+                if let realmTutorial = tutorial as? RealmTutorialStep {
+                    realmTutorials.append(realmTutorial)
+                } else {
+                    realmTutorials.append(RealmTutorialStep(userID: id, protocolObject: tutorial))
+                }
+            }
+        }
+    }
+    var realmTutorials = List<RealmTutorialStep>()
     
     @objc dynamic var id: String?
     override static func primaryKey() -> String {
@@ -39,5 +57,6 @@ class RealmFlags: Object, FlagsProtocol {
         chatRevoked = flags.chatRevoked
         classSelected = flags.classSelected
         itemsEnabled = flags.itemsEnabled
+        tutorials = flags.tutorials
     }
 }

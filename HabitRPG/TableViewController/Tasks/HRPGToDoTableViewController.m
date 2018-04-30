@@ -13,7 +13,6 @@
 @interface HRPGToDoTableViewController ()
 @property NSString *readableName;
 @property NSString *typeName;
-@property NSDateFormatter *dateFormatter;
 @property NSIndexPath *expandedIndexPath;
 @end
 
@@ -27,10 +26,6 @@
     self.typeName = @"todo";
     self.dataSource = [TodoTableViewDataSourceInstantiator instantiateWithPredicate:[self getPredicate]];
     [super viewDidLoad];
-
-    self.dateFormatter = [[NSDateFormatter alloc] init];
-    self.dateFormatter.dateStyle = NSDateFormatterMediumStyle;
-    self.dateFormatter.timeStyle = NSDateFormatterNoStyle;
 
     self.tutorialIdentifier = @"todos";
 }

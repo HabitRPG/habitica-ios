@@ -8,6 +8,7 @@
 
 import UIKit
 import Habitica_Models
+import ReactiveSwift
 
 class FAQTableViewController: HRPGBaseViewController {
     
@@ -16,6 +17,9 @@ class FAQTableViewController: HRPGBaseViewController {
     
     private let dataSource = FAQTableViewDataSource()
     private var selectedIndexPath: IndexPath?
+    
+    private let userRepository = UserRepository()
+    private let disposable = ScopedDisposable(CompositeDisposable())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +63,20 @@ class FAQTableViewController: HRPGBaseViewController {
     
     @objc
     func resetTutorials() {
-        
+        disposable.inner.add(userRepository.getUser().take(first: 1)
+            .map({ (user) -> [TutorialStepProtocol]? in
+                return user.flags?.tutorials
+            })
+            .skipNil()
+            .map({ (steps) -> [String: Bool] in
+                var stepDict = [String: Bool]()
+                steps.forEach({ (step) in
+                    stepDict["flags.tutorial.\(step.type ?? "").\(step.key ?? "")"] = false
+                })
+                return stepDict
+            })
+            .flatMap(.latest, { (updateDict) in
+                return self.userRepository.updateUser(updateDict)
+            }).start())
     }
 }

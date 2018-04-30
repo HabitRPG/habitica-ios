@@ -61,6 +61,7 @@
 		295611032056DBC900D9711A /* QuestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295611022056DBC900D9711A /* QuestProtocol.swift */; };
 		295611052056DC7100D9711A /* QuestBossProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295611042056DC7100D9711A /* QuestBossProtocol.swift */; };
 		2956110B2056E14300D9711A /* QuestCollectProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2956110A2056E14300D9711A /* QuestCollectProtocol.swift */; };
+		295D43002097380700948E7E /* TutorialStepProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295D42FF2097380700948E7E /* TutorialStepProtocol.swift */; };
 		2974BD93208E0C7B00EC1A25 /* OwnedCustomizationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BD92208E0C7B00EC1A25 /* OwnedCustomizationProtocol.swift */; };
 		2974BD95208E0DB700EC1A25 /* PurchasedProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BD94208E0DB700EC1A25 /* PurchasedProtocol.swift */; };
 		2974BD97208E0E0D00EC1A25 /* SubscriptionPlanProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BD96208E0E0D00EC1A25 /* SubscriptionPlanProtocol.swift */; };
@@ -145,6 +146,7 @@
 		295611022056DBC900D9711A /* QuestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestProtocol.swift; sourceTree = "<group>"; };
 		295611042056DC7100D9711A /* QuestBossProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestBossProtocol.swift; sourceTree = "<group>"; };
 		2956110A2056E14300D9711A /* QuestCollectProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestCollectProtocol.swift; sourceTree = "<group>"; };
+		295D42FF2097380700948E7E /* TutorialStepProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialStepProtocol.swift; sourceTree = "<group>"; };
 		2974BD92208E0C7B00EC1A25 /* OwnedCustomizationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnedCustomizationProtocol.swift; sourceTree = "<group>"; };
 		2974BD94208E0DB700EC1A25 /* PurchasedProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasedProtocol.swift; sourceTree = "<group>"; };
 		2974BD96208E0E0D00EC1A25 /* SubscriptionPlanProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionPlanProtocol.swift; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 				2974BD98208E0E6800EC1A25 /* SubscriptionConsecutiveProtocol.swift */,
 				2974BD96208E0E0D00EC1A25 /* SubscriptionPlanProtocol.swift */,
 				292DEE79204E36F60086D5F7 /* TagProtocol.swift */,
+				295D42FF2097380700948E7E /* TutorialStepProtocol.swift */,
 				29323E4E2052F68A00AC6D6F /* UserGearProtocol.swift */,
 				29323E4A2052F4CF00AC6D6F /* UserItemsProtocol.swift */,
 				29323E0F20504DA600AC6D6F /* UserProtocol.swift */,
@@ -264,25 +267,25 @@
 		295610E52056C5B500D9711A /* Content */ = {
 			isa = PBXGroup;
 			children = (
-				295610E62056C5BF00D9711A /* ContentProtocol.swift */,
-				2902795B2057E7FB006DACB9 /* FAQEntryProtocol.swift */,
-				295611022056DBC900D9711A /* QuestProtocol.swift */,
-				2956110A2056E14300D9711A /* QuestCollectProtocol.swift */,
-				295611042056DC7100D9711A /* QuestBossProtocol.swift */,
-				295610FE2056D17D00D9711A /* SkillProtocol.swift */,
-				295610FA2056CBF700D9711A /* GearProtocol.swift */,
-				295610E82056C65A00D9711A /* ItemProtocol.swift */,
-				295610EC2056C72000D9711A /* FoodProtocol.swift */,
-				295610F22056C9F500D9711A /* EggProtocol.swift */,
-				295610F42056CA2900D9711A /* HatchingPotionProtocol.swift */,
-				2902798220583383006DACB9 /* WorldStateProtocol.swift */,
-				29027984205833EA006DACB9 /* QuestStateProtocol.swift */,
-				290279862058341F006DACB9 /* QuestProgressProtocol.swift */,
 				299FB2792084946700422522 /* AnimalProtocol.swift */,
-				299FB27B208494CA00422522 /* PetProtocol.swift */,
-				299FB27D208494E200422522 /* MountProtocol.swift */,
+				295610E62056C5BF00D9711A /* ContentProtocol.swift */,
 				29144899208A32B400F3A6B5 /* CustomizationProtocol.swift */,
 				2914489B208A335C00F3A6B5 /* CustomizationSetProtocol.swift */,
+				295610F22056C9F500D9711A /* EggProtocol.swift */,
+				2902795B2057E7FB006DACB9 /* FAQEntryProtocol.swift */,
+				295610EC2056C72000D9711A /* FoodProtocol.swift */,
+				295610FA2056CBF700D9711A /* GearProtocol.swift */,
+				295610F42056CA2900D9711A /* HatchingPotionProtocol.swift */,
+				295610E82056C65A00D9711A /* ItemProtocol.swift */,
+				299FB27D208494E200422522 /* MountProtocol.swift */,
+				299FB27B208494CA00422522 /* PetProtocol.swift */,
+				295611042056DC7100D9711A /* QuestBossProtocol.swift */,
+				2956110A2056E14300D9711A /* QuestCollectProtocol.swift */,
+				290279862058341F006DACB9 /* QuestProgressProtocol.swift */,
+				295611022056DBC900D9711A /* QuestProtocol.swift */,
+				29027984205833EA006DACB9 /* QuestStateProtocol.swift */,
+				295610FE2056D17D00D9711A /* SkillProtocol.swift */,
+				2902798220583383006DACB9 /* WorldStateProtocol.swift */,
 			);
 			path = Content;
 			sourceTree = "<group>";
@@ -555,6 +558,7 @@
 				290C3037206D36740066AF5B /* GroupProtocol.swift in Sources */,
 				2902798320583383006DACB9 /* WorldStateProtocol.swift in Sources */,
 				292DEE5A204DAA000086D5F7 /* HabiticaModel.swift in Sources */,
+				295D43002097380700948E7E /* TutorialStepProtocol.swift in Sources */,
 				292F966E207220A800804151 /* ChatMessageReactionProtocol.swift in Sources */,
 				295610E92056C65A00D9711A /* ItemProtocol.swift in Sources */,
 				2974BD99208E0E6800EC1A25 /* SubscriptionConsecutiveProtocol.swift in Sources */,

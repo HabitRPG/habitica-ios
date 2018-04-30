@@ -10,7 +10,6 @@
 #import "HRPGFilterViewController.h"
 #import "HRPGNavigationController.h"
 #import "HRPGSearchDataManager.h"
-#import "HRPGTabBarController.h"
 #import "NSString+Emoji.h"
 #import "UIColor+Habitica.h"
 #import "Habitica-Swift.h"
@@ -232,7 +231,7 @@ NSIndexPath  *sourceIndexPath = nil;
 
 - (NSPredicate *)getPredicate {
     NSMutableArray *predicateArray = [[NSMutableArray alloc] initWithCapacity:3];
-    HRPGTabBarController *tabBarController = (HRPGTabBarController *)self.tabBarController;
+    MainTabBarController *tabBarController = (MainTabBarController *)self.tabBarController;
 
     [predicateArray addObjectsFromArray:[Task predicatesForTaskType:self.typeName
                                                      withFilterType:self.filterType withOffset:self.dayStart]];
@@ -268,7 +267,7 @@ NSIndexPath  *sourceIndexPath = nil;
     if (self.filterType != 0) {
         filterCount++;
     }
-    HRPGTabBarController *tabBarController = (HRPGTabBarController *)self.tabBarController;
+    MainTabBarController *tabBarController = (MainTabBarController *)self.tabBarController;
     filterCount += tabBarController.selectedTags.count;
 
     if (filterCount == 0) {
@@ -361,7 +360,7 @@ NSIndexPath  *sourceIndexPath = nil;
 - (IBAction)unwindToList:(UIStoryboardSegue *)segue {
     if ([segue.identifier isEqualToString:@"UnwindTagSegue"]) {
         HRPGFilterViewController *tagViewController = segue.sourceViewController;
-        HRPGTabBarController *tabBarController = (HRPGTabBarController *)self.tabBarController;
+        MainTabBarController *tabBarController = (MainTabBarController *)self.tabBarController;
         tabBarController.selectedTags = tagViewController.selectedTags;
         [[NSNotificationCenter defaultCenter] postNotificationName:@"taskFilterChanged" object:nil];
     }
@@ -458,7 +457,7 @@ NSIndexPath  *sourceIndexPath = nil;
             destViewController.isCreating = YES;
         }
     } else if ([segue.identifier isEqualToString:@"FilterSegue"]) {
-        HRPGTabBarController *tabBarController = (HRPGTabBarController *)self.tabBarController;
+        MainTabBarController *tabBarController = (MainTabBarController *)self.tabBarController;
         HRPGNavigationController *navigationController = segue.destinationViewController;
         navigationController.sourceViewController = self;
         HRPGFilterViewController *filterController =

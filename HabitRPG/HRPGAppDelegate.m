@@ -13,7 +13,6 @@
 #import <Fabric/Fabric.h>
 #import "Amplitude.h"
 #import "HRPGMaintenanceViewController.h"
-#import "HRPGTabBarController.h"
 #import "HRPGTableViewController.h"
 #import "Reminder.h"
 #import "HRPGInboxChatViewController.h"
@@ -118,8 +117,8 @@
     performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem
                completionHandler:(void (^)(BOOL))completionHandler {
     id presentedController = self.window.rootViewController.presentedViewController;
-    if ([presentedController isKindOfClass:[HRPGTabBarController class]]) {
-        HRPGTabBarController *tabBarController = (HRPGTabBarController *)presentedController;
+    if ([presentedController isKindOfClass:[MainTabBarController class]]) {
+        MainTabBarController *tabBarController = (MainTabBarController *)presentedController;
         if ([shortcutItem.type isEqualToString:@"com.habitrpg.habitica.ios.newhabit"]) {
             [tabBarController setSelectedIndex:0];
         } else if ([shortcutItem.type isEqualToString:@"com.habitrpg.habitica.ios.newdaily"]) {
@@ -393,8 +392,8 @@
 
 - (UINavigationController *)displayTabAtIndex:(int)index {
     id presentedController = self.window.rootViewController.presentedViewController;
-    if ([presentedController isKindOfClass:[HRPGTabBarController class]]) {
-        HRPGTabBarController *tabBarController = (HRPGTabBarController *)presentedController;
+    if ([presentedController isKindOfClass:[MainTabBarController class]]) {
+        MainTabBarController *tabBarController = (MainTabBarController *)presentedController;
         [tabBarController setSelectedIndex:index];
         return tabBarController.selectedViewController;
     } else {
