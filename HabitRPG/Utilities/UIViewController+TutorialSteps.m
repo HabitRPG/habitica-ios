@@ -18,7 +18,7 @@
 @dynamic coachMarks;
 @dynamic activeTutorialView;
 
-- (void)displayTutorialStep:(HRPGManager *)sharedManager {
+- (void)displayTutorialStep {
     if (self.activeTutorialView) {
         if (self.activeTutorialView.hintView) {
             [self.activeTutorialView.hintView continueAnimating];
@@ -26,7 +26,7 @@
         return;
     }
     if (self.tutorialIdentifier && !self.displayedTutorialStep) {
-        if (![[sharedManager user] hasSeenTutorialStepWithIdentifier:self.tutorialIdentifier]) {
+        if ([UserManager.shared shouldDisplayTutorialStepWithKey:self.tutorialIdentifier]) {
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
             NSString *defaultsKey =
                 [NSString stringWithFormat:@"tutorial%@", self.tutorialIdentifier];
@@ -44,7 +44,7 @@
 
     if (self.coachMarks && !self.displayedTutorialStep) {
         for (NSString *coachMark in self.coachMarks) {
-            if (![[sharedManager user] hasSeenTutorialStepWithIdentifier:coachMark]) {
+            if ([UserManager.shared shouldDisplayTutorialStepWithKey:self.tutorialIdentifier]) {
                 NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
                 NSString *defaultsKey = [NSString stringWithFormat:@"tutorial%@", coachMark];
                 NSDate *nextAppearance = [defaults valueForKey:defaultsKey];
@@ -73,21 +73,6 @@
                  withDefaults:(NSUserDefaults *)defaults
                 inDefaultsKey:(NSString *)defaultsKey
              withTutorialType:(NSString *)type {
-    TutorialSteps *step = [TutorialSteps markStep:identifier
-                                         withType:type
-                                      withContext:[HRPGManager sharedManager].getManagedObjectContext];
-    NSString *className = NSStringFromClass([self class]);
-    if ([step.wasShown boolValue]) {
-        return;
-    }
-    if (step.shownInView && ![step.shownInView isEqualToString:className]) {
-        return;
-    }
-
-    step.shownInView = className;
-    step.wasShown = @YES;
-    NSError *error;
-    [[HRPGManager sharedManager].getManagedObjectContext saveToPersistentStore:&error];
 
     NSDictionary *tutorialDefinition = [self getDefinitonForTutorial:identifier];
     TutorialStepView *tutorialStepView = [[TutorialStepView alloc] init];
@@ -103,19 +88,14 @@
     } else {
         [tutorialStepView displayOnView:self.parentViewController.parentViewController.view animated:YES];
     }
-    if ([type isEqualToString:@"common"]) {
-        [[[HRPGManager sharedManager] user].flags addCommonTutorialStepsObject:step];
-    } else {
-        [[[HRPGManager sharedManager] user].flags addIOSTutorialStepsObject:step];
-    }
 
     NSMutableDictionary *eventProperties = [NSMutableDictionary dictionary];
     [eventProperties setValue:@"tutorial" forKey:@"eventAction"];
     [eventProperties setValue:@"behaviour" forKey:@"eventCategory"];
     [eventProperties setValue:@"event" forKey:@"event"];
-    [eventProperties setValue:[step.identifier stringByAppendingString:@"-iOS"]
+    [eventProperties setValue:[identifier stringByAppendingString:@"-iOS"]
                        forKey:@"eventLabel"];
-    [eventProperties setValue:step.identifier forKey:@"eventValue"];
+    [eventProperties setValue:identifier forKey:@"eventValue"];
     [eventProperties setValue:@NO forKey:@"complete"];
     [[Amplitude instance] logEvent:@"tutorial" withEventProperties:eventProperties];
 
@@ -126,18 +106,12 @@
         [eventProperties setValue:@"tutorial" forKey:@"eventAction"];
         [eventProperties setValue:@"behaviour" forKey:@"eventCategory"];
         [eventProperties setValue:@"event" forKey:@"event"];
-        [eventProperties setValue:[step.identifier stringByAppendingString:@"-iOS"]
+        [eventProperties setValue:[identifier stringByAppendingString:@"-iOS"]
                            forKey:@"eventLabel"];
-        [eventProperties setValue:step.identifier forKey:@"eventValue"];
+        [eventProperties setValue:identifier forKey:@"eventValue"];
         [eventProperties setValue:@YES forKey:@"complete"];
         [[Amplitude instance] logEvent:@"tutorial" withEventProperties:eventProperties];
-        NSError *error;
-        [[HRPGManager sharedManager].getManagedObjectContext saveToPersistentStore:&error];
-        [[HRPGManager sharedManager] updateUser:@{
-            [NSString stringWithFormat:@"flags.tutorial.%@.%@", type, step.identifier] : @YES
-        }
-                             onSuccess:nil
-                               onError:nil];
+        [UserManager.shared markTutorialAsSeenWithType:type key:identifier];
     };
 }
 

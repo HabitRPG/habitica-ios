@@ -27,7 +27,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [super displayTutorialStep:[HRPGManager sharedManager]];
+    [super displayTutorialStep];
     
     [self.topHeaderCoordinator viewDidAppear];
 }

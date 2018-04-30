@@ -12,7 +12,7 @@
 
 @interface UIViewController (TutorialSteps)<TutorialStepsProtocol>
 
-- (void)displayTutorialStep:(HRPGManager *)sharedManager;
+- (void)displayTutorialStep;
 
 - (void)removeActiveView;
 

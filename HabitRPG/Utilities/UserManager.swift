@@ -11,9 +11,10 @@ import Habitica_Models
 import ReactiveSwift
 import Result
 
-class UserManager {
+@objc
+class UserManager: NSObject {
     
-    public static let shared = UserManager()
+    @objc public static let shared = UserManager()
     
     private let userRepository = UserRepository()
     private let taskRepository = TaskRepository()
@@ -22,6 +23,8 @@ class UserManager {
     private weak var faintViewController: FaintViewController?
     private weak var classSelectionViewController: ClassSelectionViewController?
     var yesterdailiesDialog: YesterdailiesDialogView?
+    
+    private var tutorialSteps = [String: Bool]()
     
     func beginListening() {
         disposable.inner.add(userRepository.getUser()
@@ -32,6 +35,13 @@ class UserManager {
     }
     
     private func onUserUpdated(user: UserProtocol) {
+        tutorialSteps = [:]
+        user.flags?.tutorials.forEach({ (tutorial) in
+            if let key = tutorial.key {
+                tutorialSteps[key] = tutorial.wasSeen
+            }
+        })
+        
         faintViewController = checkFainting(user: user)
         
         if faintViewController == nil {
@@ -73,5 +83,15 @@ class UserManager {
                 }
             }
         }
+    }
+    
+    @objc
+    func shouldDisplayTutorialStep(key: String) -> Bool {
+        return !(tutorialSteps[key] ?? true)
+    }
+    
+    @objc
+    func markTutorialAsSeen(type: String, key: String) {
+        disposable.inner.add(userRepository.updateUser(key: "flags.tutorial.\(type).\(key)", value: true).observeCompleted {})
     }
 }
