@@ -284,11 +284,7 @@ class AttributePointsViewController: HRPGUIViewController {
     @IBAction func autoAllocationChanged(_ sender: UISwitch) {
         user?.preferences?.automaticAllocation = sender.isOn
         updateAutoAllocatonViews()
-        HRPGManager.shared().updateUser(["preferences.automaticAllocation": sender.isOn], onSuccess: {[weak self] in
-            self?.updateAutoAllocatonViews()
-        }, onError: {[weak self] in
-            self?.updateAutoAllocatonViews()
-        })
+        disposable.inner.add(userRepository.updateUser(key: "preferences.automaticAllocation", value: sender.isOn).observeCompleted {})
     }
     
     @objc
@@ -330,11 +326,7 @@ class AttributePointsViewController: HRPGUIViewController {
     private func setAllocationMode(_ mode: String) {
         user?.preferences?.allocationMode = mode
         updateAutoAllocatonViews()
-        HRPGManager.shared().updateUser(["preferences.allocationMode": mode], onSuccess: {[weak self] in
-            self?.updateAutoAllocatonViews()
-            }, onError: {[weak self] in
-                self?.updateAutoAllocatonViews()
-        })
+        disposable.inner.add(userRepository.updateUser(key: "preferences.allocationMode", value: mode).observeCompleted {})
     }
     
     @objc

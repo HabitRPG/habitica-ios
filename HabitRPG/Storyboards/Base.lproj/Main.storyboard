@@ -2229,7 +2229,7 @@ and helps keep Habitica running</string>
         <!--News-->
         <scene sceneID="jdB-Bz-v0P">
             <objects>
-                <viewController id="rxD-1b-YpQ" customClass="HRPGNewsViewController" sceneMemberID="viewController">
+                <viewController id="rxD-1b-YpQ" customClass="NewsViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IbB-TZ-RPt"/>
                         <viewControllerLayoutGuide type="bottom" id="3V8-DZ-gWL"/>

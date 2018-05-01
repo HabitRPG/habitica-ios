@@ -74,6 +74,7 @@
 		2919FDD52090CF900096A53B /* InboxMessagesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2919FDD42090CF900096A53B /* InboxMessagesDataSource.swift */; };
 		2919FDDD2091D5370096A53B /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2919FDDC2091D5370096A53B /* UserManager.swift */; };
 		2919FDDF2091D87A0096A53B /* FaintViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2919FDDE2091D87A0096A53B /* FaintViewController.swift */; };
+		291E95AF20988025006EE585 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291E95AE20988025006EE585 /* NewsViewController.swift */; };
 		29205E352062DF710024E355 /* TextInputFormRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29205E342062DF710024E355 /* TextInputFormRow.swift */; };
 		29205E372062E0030024E355 /* TaskTextInputCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29205E362062E0030024E355 /* TaskTextInputCell.xib */; };
 		29205E392062E2430024E355 /* TaskRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29205E382062E2430024E355 /* TaskRow.swift */; };
@@ -402,7 +403,6 @@
 		D9709A541E8051DC0005F35B /* TaskRepeatablesSummaryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9709A531E8051DC0005F35B /* TaskRepeatablesSummaryInteractor.swift */; };
 		D9709A581E8053A00005F35B /* TaskRepeatablesSummaryInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9709A571E8053A00005F35B /* TaskRepeatablesSummaryInteractorTests.swift */; };
 		D9709A5A1E82E4470005F35B /* ChallengeFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9709A591E82E4470005F35B /* ChallengeFormViewController.swift */; };
-		D9722B1A19B7AEA1009D8AD3 /* HRPGNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9722B1919B7AEA1009D8AD3 /* HRPGNewsViewController.m */; };
 		D9722B8019BD041E009D8AD3 /* HRPGNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9722B7F19BD041E009D8AD3 /* HRPGNavigationController.m */; };
 		D976D2401B98FA940032BC41 /* UIColor.Habitica.m in Sources */ = {isa = PBXBuildFile; fileRef = D976D23F1B98FA940032BC41 /* UIColor.Habitica.m */; };
 		D979AD131AF3CF6C00D59FAE /* Customization.m in Sources */ = {isa = PBXBuildFile; fileRef = D979AD121AF3CF6C00D59FAE /* Customization.m */; };
@@ -656,6 +656,7 @@
 		2919FDD42090CF900096A53B /* InboxMessagesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxMessagesDataSource.swift; sourceTree = "<group>"; };
 		2919FDDC2091D5370096A53B /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		2919FDDE2091D87A0096A53B /* FaintViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaintViewController.swift; sourceTree = "<group>"; };
+		291E95AE20988025006EE585 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		29205E342062DF710024E355 /* TextInputFormRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputFormRow.swift; sourceTree = "<group>"; };
 		29205E362062E0030024E355 /* TaskTextInputCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskTextInputCell.xib; sourceTree = "<group>"; };
 		29205E382062E2430024E355 /* TaskRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRow.swift; sourceTree = "<group>"; };
@@ -1094,8 +1095,6 @@
 		D9709A531E8051DC0005F35B /* TaskRepeatablesSummaryInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskRepeatablesSummaryInteractor.swift; sourceTree = "<group>"; };
 		D9709A571E8053A00005F35B /* TaskRepeatablesSummaryInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskRepeatablesSummaryInteractorTests.swift; sourceTree = "<group>"; };
 		D9709A591E82E4470005F35B /* ChallengeFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChallengeFormViewController.swift; path = ../../Interactors/Challenges/ChallengeFormViewController.swift; sourceTree = "<group>"; };
-		D9722B1819B7AEA1009D8AD3 /* HRPGNewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGNewsViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		D9722B1919B7AEA1009D8AD3 /* HRPGNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGNewsViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D9722B7E19BD041E009D8AD3 /* HRPGNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGNavigationController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D9722B7F19BD041E009D8AD3 /* HRPGNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGNavigationController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D976D23E1B98FA940032BC41 /* UIColor+Habitica.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+Habitica.h"; path = "../UIColor+Habitica.h"; sourceTree = "<group>"; };
@@ -1618,6 +1617,7 @@
 			children = (
 				2986EB0A1FCC63F900B316F6 /* AttributePointsViewController.swift */,
 				293BB4A81FD0806C003B6F4F /* BulkStatsAllocationViewController.swift */,
+				291E95AE20988025006EE585 /* NewsViewController.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -1930,8 +1930,6 @@
 				D92A084A1D33FA08000F8B66 /* HRPGShopViewController.m */,
 				29E162E3200227AA00685640 /* HRPGUIViewController.h */,
 				29E162E4200227AA00685640 /* HRPGUIViewController.m */,
-				D9722B1819B7AEA1009D8AD3 /* HRPGNewsViewController.h */,
-				D9722B1919B7AEA1009D8AD3 /* HRPGNewsViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -3544,6 +3542,7 @@
 				299BD62D1F541EFC00E22935 /* Quest+CoreDataClass.m in Sources */,
 				2914485B2084E61400F3A6B5 /* MountOverviewDataSource.swift in Sources */,
 				D93432571D5A2B9500025412 /* HRPGChoosePMRecipientViewController.m in Sources */,
+				291E95AF20988025006EE585 /* NewsViewController.swift in Sources */,
 				D9F1E3F11E576E430034D0F4 /* Task+CoreDataClass.m in Sources */,
 				98A4DBF01B643BC100A9E2A8 /* HRPGSearchDataManager.m in Sources */,
 				29FC5A6B20406932008E88C8 /* GuidelinesViewController.swift in Sources */,
@@ -3647,7 +3646,6 @@
 				290C3017206A963D0066AF5B /* MainMenuViewController.swift in Sources */,
 				D94AADB4192A30F900546C8E /* Spell.m in Sources */,
 				49B87D93201BB37300CA1A75 /* Mapping2to3.xcmappingmodel in Sources */,
-				D9722B1A19B7AEA1009D8AD3 /* HRPGNewsViewController.m in Sources */,
 				D9ADD3631944FDBE006202C1 /* HRPGFilterViewController.m in Sources */,
 				D9BB45611E71CD850002AE2E /* DailyTableViewCell.swift in Sources */,
 				D93D79721D2BC7AD00AFE014 /* HRPGCoreDataDataSource.m in Sources */,
