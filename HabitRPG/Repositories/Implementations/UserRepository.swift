@@ -83,7 +83,7 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         call.fire()
         return call.objectSignal.on(value: { skillResponse in
                 if let response = skillResponse {
-                    self.localRepository.save(response)
+                    self.localRepository.save(userID: self.currentUserId, skillResponse: response)
                 }
             let toastView = ToastView(title: L10n.Skills.useSkill(skill.text ?? ""),
                                       rightIcon: HabiticaIcons.imageOfMagic,

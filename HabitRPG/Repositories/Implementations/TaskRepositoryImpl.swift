@@ -20,7 +20,7 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
         call.fire()
         return call.arraySignal.on(value: {[weak self] tasks in
             if let tasks = tasks, dueOnDay == nil {
-                self?.localRepository.save(tasks)
+                self?.localRepository.save(userID: self?.currentUserId, tasks: tasks)
             }
         })
     }
@@ -38,11 +38,11 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
     }
     
     func save(_ tasks: [TaskProtocol], order: [String: [String]]) {
-        localRepository.save(tasks, order: order)
+        localRepository.save(userID: self.currentUserId, tasks: tasks, order: order)
     }
     
     func save(task: TaskProtocol) {
-        localRepository.save(task)
+        localRepository.save(userID: self.currentUserId, task: task)
     }
     
     func score(task: TaskProtocol, direction: TaskScoringDirection) -> Signal<TaskResponseProtocol?, NoError> {
@@ -94,29 +94,29 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
     }
     
     func createTask(_ task: TaskProtocol) -> Signal<TaskProtocol?, NoError> {
-        localRepository.save(task)
-        localRepository.setTaskSyncing(task, isSyncing: true)
+        localRepository.save(userID: currentUserId, task: task)
+        localRepository.setTaskSyncing(userID: currentUserId, task: task, isSyncing: true)
         let call = CreateTaskCall(task: task)
         call.fire()
         return call.objectSignal.on(value: { returnedTask in
             if let returnedTask = returnedTask {
-                self.localRepository.save(returnedTask)
+                self.localRepository.save(userID: self.currentUserId, task: returnedTask)
             }
         })
     }
     
     func updateTask(_ task: TaskProtocol) -> Signal<TaskProtocol?, NoError> {
-        localRepository.save(task)
-        localRepository.setTaskSyncing(task, isSyncing: true)
+        localRepository.save(userID: currentUserId, task: task)
+        localRepository.setTaskSyncing(userID: currentUserId, task: task, isSyncing: true)
         let call = UpdateTaskCall(task: task)
         call.fire()
         call.errorSignal.observeValues({ _ in
-            self.localRepository.setTaskSyncing(task, isSyncing: false)
+            self.localRepository.setTaskSyncing(userID: self.currentUserId, task: task, isSyncing: false)
         })
         return call.objectSignal.on(value: { returnedTask in
             if let returnedTask = returnedTask {
                 returnedTask.order = task.order
-                self.localRepository.save(returnedTask)
+                self.localRepository.save(userID: self.currentUserId, task: returnedTask)
             }
         })
     }
@@ -148,5 +148,9 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
     
     func fixTaskOrder(movedTask: TaskProtocol, toPosition: Int) {
         localRepository.fixTaskOrder(movedTask: movedTask, toPosition: toPosition)
+    }
+    
+    func getReminders() -> SignalProducer<ReactiveResults<[ReminderProtocol]>, ReactiveSwiftRealmError>  {
+        return localRepository.getReminders(userID: currentUserId ?? "")
     }
 }

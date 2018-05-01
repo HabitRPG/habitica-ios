@@ -13,6 +13,9 @@ class APIReminder: ReminderProtocol, Codable {
     var id: String?
     var startDate: Date?
     var time: Date?
+    var task: TaskProtocol? {
+        return nil
+    }
     
     init(_ reminderProtocol: ReminderProtocol) {
         id = reminderProtocol.id

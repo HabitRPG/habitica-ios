@@ -250,29 +250,6 @@
               context:NULL];
 }
 
-- (void)observeValueForKeyPath:(NSString *)keyPath
-                      ofObject:(id)object
-                        change:(NSDictionary *)change
-                       context:(void *)context {
-    if ([keyPath isEqualToString:@"completed"]) {
-        NSNumber *oldValue = change[NSKeyValueChangeOldKey];
-        NSNumber *newValue = change[NSKeyValueChangeNewKey];
-        if ([newValue boolValue] != [oldValue boolValue]) {
-            for (Reminder *reminder in self.reminders) {
-                if ([newValue boolValue]) {
-                    if ([self.type isEqualToString:@"daily"]) {
-                        [reminder removeTodaysNotifications];
-                    } else {
-                        [reminder removeAllNotifications];
-                    }
-                } else {
-                    [reminder removeAllNotifications];
-                    [reminder scheduleReminders];
-                }
-            }
-        }
-    }
-}
 
 - (void)willTurnIntoFault {
     if (self.observesCompleted) {

@@ -14,22 +14,22 @@ import Result
 
 public class TaskLocalRepository: BaseLocalRepository {
     
-    func save(_ task: TaskProtocol, tags: Results<RealmTag>?) {
+    func save(userID: String?, task: TaskProtocol, tags: Results<RealmTag>?) {
         if let realmTask = task as? RealmTask {
             save(object: realmTask)
             return
         }
-        save(object: RealmTask(task, tags: tags))
+        save(object: RealmTask(userID: userID, taskProtocol: task, tags: tags))
     }
     
-    public func save(_ task: TaskProtocol) {
+    public func save(userID: String?, task: TaskProtocol) {
         let tags = getRealm()?.objects(RealmTag.self).filter("id IN %@", task.tags.map({ (tag) -> String? in
             return tag.id
         }))
-        save(task, tags: tags)
+        save(userID: userID, task: task, tags: tags)
     }
     
-    public func save(_ tasks: [TaskProtocol], order: [String: [String]]? = nil) {
+    public func save(userID: String?, tasks: [TaskProtocol], order: [String: [String]]? = nil) {
         let tags = getRealm()?.objects(RealmTag.self)
         var taskOrder = ["habits": [String](),
                          "dailies": [String](),
@@ -48,7 +48,7 @@ public class TaskLocalRepository: BaseLocalRepository {
             if let realmTask = task as? RealmTask {
                 return realmTask
             }
-            return RealmTask(task, tags: tags)
+            return RealmTask(userID: userID, taskProtocol: task, tags: tags)
         })
         removeOldTasks(newTasks: tasks)
     }
@@ -146,14 +146,14 @@ public class TaskLocalRepository: BaseLocalRepository {
         return nil
     }
     
-    public func setTaskSyncing(_ task: TaskProtocol, isSyncing: Bool) {
+    public func setTaskSyncing(userID: String?, task: TaskProtocol, isSyncing: Bool) {
         if let realmTask = task as? RealmTask {
             try? getRealm()?.write {
                 realmTask.isSyncing = isSyncing
             }
         } else {
             task.isSyncing = isSyncing
-            save(task)
+            save(userID: userID, task: task)
         }
     }
     
@@ -194,5 +194,11 @@ public class TaskLocalRepository: BaseLocalRepository {
                 taskOrder += 1
             }
         }
+    }
+    
+    public func getReminders(userID: String) -> SignalProducer<ReactiveResults<[ReminderProtocol]>, ReactiveSwiftRealmError> {
+        return RealmReminder.findBy(query: "userID == '\(userID)'").reactive().map({ (value, changeset) -> ReactiveResults<[ReminderProtocol]> in
+            return (value.map({ (reminder) -> ReminderProtocol in return reminder }), changeset)
+        })
     }
 }

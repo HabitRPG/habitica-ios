@@ -15,6 +15,11 @@ extension JSONDecoder {
             let container = try dateDecoder.singleValueContainer()
             let dateStr = try container.decode(String.self)
             
+            if #available(iOS 10.0, *) {
+                if let date = ISO8601DateFormatter().date(from: dateStr) {
+                    return date
+                }
+            }
             
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
@@ -27,9 +32,14 @@ extension JSONDecoder {
                 return date
             }
             
-            if #available(iOS 10.0, *) {
-                let dateFormatter = ISO8601DateFormatter()
-                return dateFormatter.date(from: dateStr) ?? Date()
+            //This is sometimes used for the `nextDue` dates
+            var splitString = dateStr.split(separator: " ")
+            if splitString.count == 6 {
+                splitString[5] = splitString[5].trimmingCharacters(in: CharacterSet(charactersIn: "01234567890+").inverted).split(separator: " ")[0]
+                dateFormatter.dateFormat = "E MMM dd yyyy HH:mm:ss Z"
+                if let date = dateFormatter.date(from: splitString.joined(separator: " ")) {
+                    return date
+                }
             }
             
             return Date()

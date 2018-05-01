@@ -49,6 +49,7 @@ public protocol TaskProtocol {
     var checklist: [ChecklistItemProtocol] { get set }
     var reminders: [ReminderProtocol] { get set }
     var weekRepeat: WeekRepeatProtocol? { get set }
+    var nextDue: [Date] { get set }
     
     var isSynced: Bool { get set }
     var isSyncing: Bool { get set }
@@ -58,5 +59,15 @@ public protocol TaskProtocol {
 extension TaskProtocol {
     public func dueToday() -> Bool {
         return isDue
+    }
+    
+    public func dueOn(date: Date) -> Bool {
+        let calendar = Calendar.current
+        for dueDate in nextDue {
+            if calendar.isDate(dueDate, inSameDayAs: date) {
+                return true
+            }
+        }
+        return false
     }
 }

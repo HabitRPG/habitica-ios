@@ -13,7 +13,9 @@ import FunkyNetwork
 
 public class UpdateTaskCall: ResponseObjectCall<TaskProtocol, APITask> {
     public init(task: TaskProtocol, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "tasks.json")) {
-        let json = try? JSONEncoder().encode(APITask(task))
+        let encoder = JSONEncoder()
+        encoder.setHabiticaDateEncodingStrategy()
+        let json = try? encoder.encode(APITask(task))
         super.init(httpMethod: .PUT, endpoint: "tasks/\(task.id ?? "")", postData: json, stubHolder: stubHolder)
     }
 }

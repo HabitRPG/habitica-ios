@@ -140,6 +140,8 @@ class TaskDetailLineViewTests: HabiticaTests {
 }
 
 class TestTask: TaskProtocol {
+    var nextDue: [Date] = []
+    
     var isNewTask: Bool = false
     var isSynced: Bool = true
     var isSyncing: Bool = false

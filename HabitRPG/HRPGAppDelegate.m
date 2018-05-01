@@ -76,13 +76,6 @@
         [NSArray arrayWithArray:application.scheduledLocalNotifications];
     application.scheduledLocalNotifications = scheduledNotifications;
 
-    NSDate *lastReminderSchedule =
-        [[NSUserDefaults standardUserDefaults] objectForKey:@"lastReminderSchedule"];
-    if (lastReminderSchedule == nil || [lastReminderSchedule timeIntervalSinceNow] < -259200) {
-        // Reschedule every 3 days
-        [self rescheduleTaskReminders];
-    }
-
     [self.swiftAppDelegate retrieveContent];
 
     [self.swiftAppDelegate handleMaintenanceScreen];
@@ -257,36 +250,6 @@
             [weakSelf handlePushNotification:userInfo];
         };
     }
-}
-
-
-- (void)rescheduleTaskReminders {
-    UIApplication *sharedApplication = [UIApplication sharedApplication];
-    for (UILocalNotification *reminder in [sharedApplication scheduledLocalNotifications]) {
-        if (reminder.userInfo[@"ID"] != nil) {
-            [sharedApplication cancelLocalNotification:reminder];
-        }
-    }
-
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity =
-        [NSEntityDescription entityForName:@"Task"
-                    inManagedObjectContext:[[HRPGManager sharedManager] getManagedObjectContext]];
-    [fetchRequest setEntity:entity];
-    [fetchRequest setFetchBatchSize:20];
-    [fetchRequest
-        setPredicate:[NSPredicate predicateWithFormat:@"reminders.@count != 0 && (type == 'daily' "
-                                                      @"|| (type == 'todo' && completed == NO))"]];
-    NSError *error;
-    NSArray *tasks = [[[HRPGManager sharedManager] getManagedObjectContext] executeFetchRequest:fetchRequest
-                                                                                 error:&error];
-
-    for (Task *task in tasks) {
-        for (Reminder *reminder in task.reminders) {
-            [reminder scheduleReminders];
-        }
-    }
-    [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"lastReminderSchedule"];
 }
 
 - (void)configureNotifications:(UIApplication *)application {

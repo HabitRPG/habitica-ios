@@ -11,17 +11,23 @@ import RealmSwift
 import Habitica_Models
 
 class RealmReminder: Object, ReminderProtocol {
-    var id: String?
-    var startDate: Date?
-    var time: Date?
+    @objc dynamic var id: String?
+     @objc dynamic var userID: String?
+     @objc dynamic var startDate: Date?
+     @objc dynamic var time: Date?
+    var task: TaskProtocol? {
+        return realmTask.first
+    }
+    var realmTask = LinkingObjects(fromType: RealmTask.self, property: "realmReminders")
     
     override static func primaryKey() -> String {
         return "id"
     }
     
-    convenience init(_ reminderProtocol: ReminderProtocol) {
+    convenience init(userID: String?, reminderProtocol: ReminderProtocol) {
         self.init()
         id = reminderProtocol.id
+        self.userID = userID
         startDate = reminderProtocol.startDate
         time = reminderProtocol.time
     }

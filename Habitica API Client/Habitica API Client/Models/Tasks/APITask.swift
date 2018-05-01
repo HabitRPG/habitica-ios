@@ -40,6 +40,7 @@ public class APITask: TaskProtocol, Codable {
     public var isSynced: Bool = true
     public var isSyncing: Bool = false
     public var isNewTask: Bool = false
+    public var nextDue: [Date]
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -69,6 +70,7 @@ public class APITask: TaskProtocol, Codable {
         case checklist
         case reminders
         case weekRepeat = "repeat"
+        case nextDue
     }
     
     public required init(from decoder: Decoder) throws {
@@ -104,12 +106,14 @@ public class APITask: TaskProtocol, Codable {
         checklist = (try? values.decode([APIChecklistItem].self, forKey: .checklist)) ?? []
         reminders = (try? values.decode([APIReminder].self, forKey: .reminders)) ?? []
         weekRepeat = try? values.decode(APIWeekRepeat.self, forKey: .weekRepeat)
+        nextDue = (try? values.decode([Date].self, forKey: .nextDue)) ?? []
     }
     
     public init() {
         tags = []
         checklist = []
         reminders = []
+        nextDue = []
     }
     
     public init(_ taskProtocol: TaskProtocol) {
@@ -140,6 +144,7 @@ public class APITask: TaskProtocol, Codable {
         reminders = taskProtocol.reminders.map({ (reminder) -> APIReminder in return APIReminder(reminder) })
         tags = taskProtocol.tags.map({ (tag) -> APITag in return APITag(tag) })
         weekRepeat = APIWeekRepeat(taskProtocol.weekRepeat!)
+        nextDue = taskProtocol.nextDue
     }
     
     public func encode(to encoder: Encoder) throws {

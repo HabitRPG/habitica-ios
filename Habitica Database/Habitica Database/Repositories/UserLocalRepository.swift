@@ -37,10 +37,10 @@ public class UserLocalRepository: BaseLocalRepository {
         return getRealm()?.object(ofType: RealmUser.self, forPrimaryKey: id) != nil
     }
     
-    public func save(_ skillResponse: SkillResponseProtocol) {
+    public func save(userID: String?, skillResponse: SkillResponseProtocol) {
         let tags = getRealm()?.objects(RealmTag.self)
         if let task = skillResponse.task {
-            save(object: RealmTask(task, tags: tags))
+            save(object: RealmTask(userID: userID, taskProtocol: task, tags: tags))
         }
         if let newUser = skillResponse.user {
             save(newUser)

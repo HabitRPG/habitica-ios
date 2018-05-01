@@ -10,6 +10,7 @@ import Foundation
 import Habitica_Models
 import ReactiveSwift
 import Result
+import Habitica_Database
 
 @objc
 class UserManager: NSObject {
@@ -32,6 +33,11 @@ class UserManager: NSObject {
             .on(value: { user in
                 self.onUserUpdated(user: user)
             }).start())
+        disposable.inner.add(taskRepository.getReminders().on(value: { (reminders, changes) in
+            if let changes = changes {
+                self.updateReminderNotifications(reminders: reminders, changes: changes)
+            }
+        }).start())
     }
     
     private func onUserUpdated(user: UserProtocol) {
@@ -93,5 +99,96 @@ class UserManager: NSObject {
     @objc
     func markTutorialAsSeen(type: String, key: String) {
         disposable.inner.add(userRepository.updateUser(key: "flags.tutorial.\(type).\(key)", value: true).observeCompleted {})
+    }
+    
+    private func updateReminderNotifications(reminders: [ReminderProtocol], changes: ReactiveChangeset) {
+        if changes.deleted.count == 0 && changes.inserted.count == 0 {
+            removeReminderNotifications(ids: changes.updated.map({ (index) -> String in
+                return reminders[index].id ?? ""
+            }))
+            for index in changes.updated {
+                scheduleNotifications(reminder: reminders[index])
+            }
+        } else {
+            removeAllReminderNotifications()
+            for reminder in reminders {
+                scheduleNotifications(reminder: reminder)
+            }
+        }
+    }
+    
+    private func removeAllReminderNotifications() {
+        let sharedApplication = UIApplication.shared
+        for notification in (sharedApplication.scheduledLocalNotifications ?? []) where notification.userInfo?["ID"] != nil {
+            sharedApplication.cancelLocalNotification(notification)
+        }
+    }
+    
+    private func removeReminderNotifications(ids: [String]) {
+        let sharedApplication = UIApplication.shared
+        for notification in (sharedApplication.scheduledLocalNotifications ?? []) {
+            if let reminderID = notification.userInfo?["ID"] as? String, reminderID.count > 0 {
+                if ids.contains(reminderID) {
+                    sharedApplication.cancelLocalNotification(notification)
+                }
+            }
+        }
+    }
+    
+    private func scheduleNotifications(reminder: ReminderProtocol) {
+        guard let task = reminder.task else {
+            return
+        }
+        if task.completed || reminder.id == nil || reminder.id == "" {
+            return
+        }
+        if task.type == TaskType.daily.rawValue {
+            for day in 0...6 {
+                let checkedDate = Date(timeIntervalSinceNow: TimeInterval(day * 86400))
+                if task.dueOn(date: checkedDate) {
+                    scheduleForDay(reminder: reminder, date: checkedDate, atTime: reminder.time)
+                }
+            }
+        } else if task.type == TaskType.todo.rawValue, let time = reminder.time {
+            if time > Date() {
+                scheduleForDay(reminder: reminder, date: time)
+            }
+        }
+    }
+    
+    private func scheduleForDay(reminder: ReminderProtocol, date: Date, atTime: Date? = nil) {
+        var fireDate = date
+        if let atTime = atTime {
+            let calendar = Calendar.current
+            var components = calendar.dateComponents([.year, .month, .day], from: date)
+            let timeComponents = calendar.dateComponents([.hour, .minute], from: atTime)
+            components.hour = timeComponents.hour
+            components.minute = timeComponents.minute
+            components.timeZone = TimeZone.current
+            if let newDate = calendar.date(from: components) {
+                fireDate = newDate
+            }
+        }
+        
+        if fireDate < Date() {
+            return
+        }
+        let localNotification = UILocalNotification()
+        localNotification.fireDate = fireDate
+        localNotification.alertBody = reminder.task?.text
+        localNotification.timeZone = TimeZone.current
+        if let taskID = reminder.task?.id, let taskType = reminder.task?.type {
+            localNotification.userInfo = [
+                "ID": reminder.id ?? "",
+                "taskID": taskID,
+                "taskType": taskType
+            ]
+        } else {
+            localNotification.userInfo = [ "ID": reminder.id ?? "" ]
+        }
+        localNotification.soundName = UILocalNotificationDefaultSoundName
+        localNotification.category = "completeCategory"
+        UIApplication.shared.scheduleLocalNotification(localNotification)
+        print("Scheduled Notification for task", reminder.task?.text ?? "", " at time ", fireDate)
     }
 }

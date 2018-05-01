@@ -12,6 +12,7 @@ import Habitica_Models
 
 class RealmTask: Object, TaskProtocol {
     @objc dynamic var id: String?
+    @objc dynamic var userID: String?
     @objc dynamic var text: String?
     @objc dynamic var notes: String?
     @objc dynamic var type: String?
@@ -87,7 +88,7 @@ class RealmTask: Object, TaskProtocol {
                 if let realmReminder = reminder as? RealmReminder {
                     realmReminders.append(realmReminder)
                 } else {
-                    realmReminders.append(RealmReminder(reminder))
+                    realmReminders.append(RealmReminder(userID: userID, reminderProtocol: reminder))
                 }
             }
         }
@@ -108,6 +109,18 @@ class RealmTask: Object, TaskProtocol {
         }
     }
     @objc dynamic var realmWeekRepeat: RealmWeekRepeat? = RealmWeekRepeat()
+    @objc dynamic var nextDue: [Date] {
+        get {
+            return realmNextDue.map({ (date) in
+                return date
+            })
+        }
+        set {
+            realmNextDue.removeAll()
+            realmNextDue.append(objectsIn: newValue)
+        }
+    }
+    var realmNextDue = List<Date>()
     
     override static func primaryKey() -> String {
         return "id"
@@ -117,9 +130,10 @@ class RealmTask: Object, TaskProtocol {
         return ["tags", "checklist", "reminders"]
     }
     
-    convenience init(_ taskProtocol: TaskProtocol, tags: Results<RealmTag>?) {
+    convenience init(userID: String?, taskProtocol: TaskProtocol, tags: Results<RealmTag>?) {
         self.init()
         id = taskProtocol.id
+        self.userID = userID
         text = taskProtocol.text
         notes = taskProtocol.notes
         type = taskProtocol.type
@@ -159,6 +173,7 @@ class RealmTask: Object, TaskProtocol {
         checklist = taskProtocol.checklist
         reminders = taskProtocol.reminders
         weekRepeat = taskProtocol.weekRepeat
+        nextDue = taskProtocol.nextDue
         
         isSyncing = taskProtocol.isSyncing
         isSynced = taskProtocol.isSynced
