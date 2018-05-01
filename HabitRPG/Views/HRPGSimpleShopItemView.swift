@@ -56,6 +56,16 @@ class HRPGSimpleShopItemView: UIView {
             shopItemTitleLabel.text = newTitle
         }
     }
+    
+    var imageName = "" {
+        didSet {
+            if imageName.contains(" ") {
+                shopItemImageView.setImagewith(name: imageName.components(separatedBy: " ")[1])
+            } else {
+                shopItemImageView.setImagewith(name: imageName)
+            }
+        }
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -78,11 +88,7 @@ class HRPGSimpleShopItemView: UIView {
         self.shopItemTitleLabel.text = item.text
         
         if let imageName = item.imageName {
-            if imageName.contains(" ") {
-                HRPGManager.shared().setImage(imageName.components(separatedBy: " ")[1], withFormat: "png", on: self.shopItemImageView)
-            } else {
-                HRPGManager.shared().setImage(imageName, withFormat: "png", on: self.shopItemImageView)
-            }
+            self.imageName = imageName
         }
         
         if let notes = item.notes {
@@ -117,11 +123,7 @@ class HRPGSimpleShopItemView: UIView {
             if let availableUntil = inAppReward.availableUntil {
                 setAvailableUntil(date: availableUntil)
             }
-            if inAppReward.imageName?.contains(" ") ?? false {
-                HRPGManager.shared().setImage(inAppReward.imageName?.components(separatedBy: " ")[1], withFormat: "png", on: self.shopItemImageView)
-            } else {
-                HRPGManager.shared().setImage(inAppReward.imageName, withFormat: "png", on: self.shopItemImageView)
-            }
+            self.imageName = inAppReward.imageName ?? ""
             if let inAppPurchaseType = inAppReward.purchaseType {
                 purchaseType = inAppPurchaseType
             }
@@ -131,9 +133,9 @@ class HRPGSimpleShopItemView: UIView {
             }
         } else {
             if reward.key == "potion" {
-                HRPGManager.shared().setImage("shop_potion", withFormat: "png", on: shopItemImageView)
+                imageName = "shop_potion"
             } else if reward.key == "armoire" {
-                HRPGManager.shared().setImage("shop_armoire", withFormat: "png", on: shopItemImageView)
+                imageName = "shop_armoire"
             }
         }
         if !purchaseType.isEmpty {

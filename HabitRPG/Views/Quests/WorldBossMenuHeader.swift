@@ -55,7 +55,7 @@ class WorldBossMenuHeader: UIView {
     func configure(quest: Quest) {
         self.quest = quest
         if !isCollapsed {
-            HRPGManager.shared().setImage("quest_\(quest.key ?? "")", withFormat: "png", on: bossImageView)
+            bossImageView.setImagewith(name: "quest_\(quest.key ?? "")")
         }
         bossImageView.backgroundColor = quest.uicolorMedium
         bossNameLabel.text = quest.bossName
@@ -101,7 +101,7 @@ class WorldBossMenuHeader: UIView {
     func showBossArt() {
         topStackView.axis = .vertical
         topStackView.alignment = .trailing
-        HRPGManager.shared().setImage("quest_\(quest?.key ?? "")", withFormat: "png", on: bossImageView)
+        bossImageView.setImagewith(name: "quest_\(quest?.key ?? "")")
         collapseButton.isHidden = false
         bossNameLabel.textAlignment = .right
         typeLabel.textColor = .white

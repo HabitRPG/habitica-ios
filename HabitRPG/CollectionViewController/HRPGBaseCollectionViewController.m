@@ -10,6 +10,7 @@
 #import "HRPGNavigationController.h"
 #import "UIViewcontroller+TutorialSteps.h"
 #import "UIViewController+HRPGTopHeaderNavigationController.h"
+#import "HRPGManager.h"
 
 @interface HRPGBaseCollectionViewController ()
 

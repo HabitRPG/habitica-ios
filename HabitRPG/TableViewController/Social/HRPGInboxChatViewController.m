@@ -93,13 +93,6 @@
     [super prepareForSegue:segue sender:sender];
 }
 
-- (NSManagedObjectContext *)managedObjectContext {
-    if (_managedObjectContext == nil) {
-        _managedObjectContext = [HRPGManager sharedManager].getManagedObjectContext;
-    }
-    return _managedObjectContext;
-}
-
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     self.isScrolling = true;
 }

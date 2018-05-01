@@ -79,7 +79,7 @@ class QuestDetailView: UIView {
     func makeRewardView(title: String?, imageName: String) -> UIView {
         if let view = UIView.fromNib(nibName: "QuestDetailRewardView") {
             if let imageView = view.viewWithTag(1) as? UIImageView {
-                HRPGManager.shared().setImage(imageName, withFormat: "png", on: imageView)
+                imageView.setImagewith(name: imageName)
             }
             if let label = view.viewWithTag(2) as? UILabel {
                 label.text = title

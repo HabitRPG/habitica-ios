@@ -116,7 +116,7 @@ class QuestProgressView: UIView {
         } else {
             rageProgressView.isHidden = true
         }
-        HRPGManager.shared().setImage("quest_" + quest.key, withFormat: "gif", on: questImageView)
+        questImageView.setImagewith(name: "quest_\(quest.key ?? "")", extension: "gif")
         
         let colorDark = quest.uicolorDark
         let colorMedium = quest.uicolorMedium

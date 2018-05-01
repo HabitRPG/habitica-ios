@@ -65,9 +65,9 @@ class InAppRewardCell: UICollectionViewCell {
                 return
             }
             if imageName.contains(" ") {
-                HRPGManager.shared().setImage(imageName.components(separatedBy: " ")[1], withFormat: "png", on: imageView)
+                imageView.setImagewith(name: imageName.components(separatedBy: " ")[1])
             } else {
-                HRPGManager.shared().setImage(imageName, withFormat: "png", on: imageView)
+                imageView.setImagewith(name: imageName)
             }
         }
     }
