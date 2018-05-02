@@ -47,7 +47,7 @@ protocol TopHeaderNavigationControllerProtocol: class {
     func setNavigationBarColors(_ alpha: CGFloat)
 }
 
-class TopHeaderViewController: UINavigationController, TopHeaderNavigationControllerProtocol {
+class TopHeaderViewController: UINavigationController, TopHeaderNavigationControllerProtocol, Themeable {
     @objc public var state: TopHeaderState = .visible
     @objc public let defaultNavbarHiddenColor = UIColor.purple300()
     @objc public let defaultNavbarVisibleColor = UIColor.white
@@ -69,7 +69,7 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
     @objc public var navbarHiddenColor: UIColor = UIColor.purple300() {
         didSet {
             let isHiddenLightColor = navbarHiddenColor.isLight()
-            hiddenTintColor = isHiddenLightColor ? UIColor.purple400() : UIColor.white
+            hiddenTintColor = isHiddenLightColor ? ThemeService.shared.theme.tintColor : UIColor.white
             hiddenTextColor = isHiddenLightColor ? UIColor.black : UIColor.white
             setNavigationBarColors(navbarColorBlendingAlpha)
         }
@@ -77,7 +77,7 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
     @objc public var navbarVisibleColor: UIColor = UIColor.white {
         didSet {
             let isVisibleLightColor = navbarVisibleColor.isLight()
-            visibleTintColor = isVisibleLightColor ? UIColor.purple400() : UIColor.white
+            visibleTintColor = isVisibleLightColor ? ThemeService.shared.theme.tintColor : UIColor.white
             visibleTextColor = isVisibleLightColor ? UIColor.black : UIColor.white
             setNavigationBarColors(navbarColorBlendingAlpha)
         }
@@ -191,8 +191,18 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
         self.view.insertSubview(self.backgroundView, belowSubview: self.upperBackgroundView)
         
         self.headerYPosition = self.bgViewOffset
+        
+        ThemeService.shared.addThemeable(themable: self, applyImmediately: true)
     }
 
+    func applyTheme(theme: Theme) {
+        defaultNavbarHiddenColor = theme.backgroundTintColor
+        defaultNavbarVisibleColor = theme.contentBackgroundColor
+        visibleTintColor = theme.tintColor
+        setNavigationBarColors(navbarColorBlendingAlpha)
+        bottomBorderView.backgroundColor = theme.separatorColor
+    }
+    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         let parentFrame = self.view.frame

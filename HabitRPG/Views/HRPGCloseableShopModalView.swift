@@ -29,7 +29,7 @@ class HRPGCloseableShopModalView: UIView {
     
     func styleViews() {
         closeButton.layer.cornerRadius = 12
-        closeButton.setTitleColor(UIColor.purple400(), for: UIControlState.normal)
+        closeButton.setTitleColor(ThemeService.shared.theme.tintColor, for: UIControlState.normal)
     }
     
     // MARK: - Private Helper Methods

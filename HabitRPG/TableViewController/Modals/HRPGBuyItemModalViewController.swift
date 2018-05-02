@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HRPGBuyItemModalViewController: UIViewController {
+class HRPGBuyItemModalViewController: UIViewController, Themeable {
     @objc var item: ShopItem?
     @objc var reward: MetaReward?
     @objc var shopIdentifier: String?
@@ -51,6 +51,8 @@ class HRPGBuyItemModalViewController: UIViewController {
         buyButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(buyPressed)))
         let inAppReward = ( reward as? InAppReward)
         pinButton.isHidden = !showPinning ||  inAppReward?.pinType == "armoire" || inAppReward?.pinType == "potion"
+        
+        ThemeService.shared.addThemeable(themable: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -58,10 +60,17 @@ class HRPGBuyItemModalViewController: UIViewController {
         refreshBalances()
     }
     
+    func applyTheme(theme: Theme) {
+        pinButton.setTitleColor(theme.tintColor, for: .normal)
+        closableShopModal.closeButton.setTitleColor(theme.tintColor, for: .normal)
+        if !itemIsLocked() {
+            buyLabel.textColor = theme.tintColor
+        }
+    }
+    
     func styleViews() {
         pinButton.layer.borderWidth = 0.5
         pinButton.layer.borderColor = UIColor.gray400().cgColor
-        pinButton.setTitleColor(UIColor.purple400(), for: UIControlState.normal)
         
         buyButton.layer.borderWidth = 0.5
         buyButton.layer.borderColor = UIColor.gray400().cgColor

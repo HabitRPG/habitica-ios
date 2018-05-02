@@ -39,8 +39,6 @@ class TaskTableViewCell: UITableViewCell {
             self.titleLabel.attributedText = try? Down(markdownString: text.unicodeEmoji).toHabiticaAttributedString()
         }
         self.titleLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 16)
-        self.titleLabel.textColor = .gray10()
-        self.subtitleLabel.textColor = .gray200()
 
         if let trimmedNotes = task.notes?.trimmingCharacters(in: .whitespacesAndNewlines), trimmedNotes.count > 0 {
             self.subtitleLabel.text = trimmedNotes.unicodeEmoji
@@ -83,6 +81,10 @@ class TaskTableViewCell: UITableViewCell {
         if let notes = task.notes, !notes.isEmpty {
             self.mainTaskWrapper.accessibilityLabel = "\(self.mainTaskWrapper.accessibilityLabel ?? ""), \(notes)"
         }
+        
+        contentView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
+        titleLabel.textColor = ThemeService.shared.theme.primaryTextColor
+        subtitleLabel.textColor = ThemeService.shared.theme.secondaryTextColor
     }
     
     @objc

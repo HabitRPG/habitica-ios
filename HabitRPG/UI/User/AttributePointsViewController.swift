@@ -11,7 +11,7 @@ import PopupDialog
 import Habitica_Models
 import ReactiveSwift
 
-class AttributePointsViewController: HRPGUIViewController {
+class AttributePointsVieController: HRPGUIViewController, Themeable {
     
     @IBOutlet weak var pointsToAllocateLabel: PaddedLabel!
     @IBOutlet weak var pointsToAllocateRightView: UIImageView!
@@ -61,7 +61,6 @@ class AttributePointsViewController: HRPGUIViewController {
     private let inventoryRepository = InventoryRepository()
     private let disposable = ScopedDisposable(CompositeDisposable())
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         topHeaderCoordinator?.hideHeader = true
@@ -96,9 +95,6 @@ class AttributePointsViewController: HRPGUIViewController {
         distributeEvenlyHelpView.image = HabiticaIcons.imageOfInfoIcon()
         distributeClassHelpView.image = HabiticaIcons.imageOfInfoIcon()
         distributeTaskHelpView.image = HabiticaIcons.imageOfInfoIcon()
-        distributeEvenlyCheckmark.image = HabiticaIcons.imageOfCheckmark(checkmarkColor: UIColor.purple400(), percentage: 1.0)
-        distributeClassCheckmark.image = HabiticaIcons.imageOfCheckmark(checkmarkColor: UIColor.purple400(), percentage: 1.0)
-        distributeTaskCheckmark.image = HabiticaIcons.imageOfCheckmark(checkmarkColor: UIColor.purple400(), percentage: 1.0)
         
         distributeEvenlyView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(distributeEvenlyTapped)))
         distributeClassView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(distributeClassTapped)))
@@ -112,6 +108,13 @@ class AttributePointsViewController: HRPGUIViewController {
         pointsToAllocateLabel.horizontalPadding = 12
         pointsToAllocateLabel.verticalPadding = 4
         pointsToAllocateLabel.layer.cornerRadius = pointsToAllocateLabel.frame.size.height/2
+    }
+    
+    func applyTheme(theme: Theme) {
+        
+        distributeEvenlyCheckmark.image = HabiticaIcons.imageOfCheckmark(checkmarkColor: theme.tintColor, percentage: 1.0)
+        distributeClassCheckmark.image = HabiticaIcons.imageOfCheckmark(checkmarkColor: theme.tintColor, percentage: 1.0)
+        distributeTaskCheckmark.image = HabiticaIcons.imageOfCheckmark(checkmarkColor: theme.tintColor, percentage: 1.0)
     }
     
     private func allocate(_ attribute: String) {

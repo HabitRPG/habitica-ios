@@ -177,7 +177,7 @@ class HabiticaAlertController: UIViewController {
         if style == .destructive {
             button.setTitleColor(UIColor.red100(), for: .normal)
         } else {
-            button.setTitleColor(UIColor.purple400(), for: .normal)
+            button.setTitleColor(ThemeService.shared.theme.tintColor, for: .normal)
         }
         
         if isMainAction {

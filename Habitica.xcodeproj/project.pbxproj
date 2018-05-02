@@ -230,6 +230,9 @@
 		29ED1AFD1F338ECC005A3895 /* SetupCustomization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ED1AFC1F338ECC005A3895 /* SetupCustomization.swift */; };
 		29ED1AFF1F339ACF005A3895 /* UIColor-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ED1AFE1F339ACF005A3895 /* UIColor-Extensions.swift */; };
 		29F89F1A1F47882A004E5B84 /* String-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F89F191F47882A004E5B84 /* String-Extensions.swift */; };
+		29FC5A6520402EF6008E88C8 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC5A6420402EF6008E88C8 /* Theme.swift */; };
+		29FC5A6720402FA3008E88C8 /* Themes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC5A6620402FA3008E88C8 /* Themes.swift */; };
+		29FC5A6920403011008E88C8 /* ThemeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC5A6820403011008E88C8 /* ThemeService.swift */; };
 		29FC5A6B20406932008E88C8 /* GuidelinesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC5A6A20406932008E88C8 /* GuidelinesViewController.swift */; };
 		29FC884C2010CC8A002B3D3F /* SocialRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC884B2010CC8A002B3D3F /* SocialRepository.swift */; };
 		29FC884E2010CCC2002B3D3F /* BaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC884D2010CCC2002B3D3F /* BaseRepository.swift */; };
@@ -827,6 +830,9 @@
 		29ED1AFC1F338ECC005A3895 /* SetupCustomization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupCustomization.swift; sourceTree = "<group>"; };
 		29ED1AFE1F339ACF005A3895 /* UIColor-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor-Extensions.swift"; sourceTree = "<group>"; };
 		29F89F191F47882A004E5B84 /* String-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String-Extensions.swift"; sourceTree = "<group>"; };
+		29FC5A6420402EF6008E88C8 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		29FC5A6620402FA3008E88C8 /* Themes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Themes.swift; sourceTree = "<group>"; };
+		29FC5A6820403011008E88C8 /* ThemeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeService.swift; sourceTree = "<group>"; };
 		29FC5A6A20406932008E88C8 /* GuidelinesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidelinesViewController.swift; sourceTree = "<group>"; };
 		29FC884B2010CC8A002B3D3F /* SocialRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialRepository.swift; sourceTree = "<group>"; };
 		29FC884D2010CCC2002B3D3F /* BaseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRepository.swift; sourceTree = "<group>"; };
@@ -1751,6 +1757,16 @@
 			path = Tavern;
 			sourceTree = "<group>";
 		};
+		29FC5A6320402EE2008E88C8 /* Theme Engine */ = {
+			isa = PBXGroup;
+			children = (
+				29FC5A6420402EF6008E88C8 /* Theme.swift */,
+				29FC5A6620402FA3008E88C8 /* Themes.swift */,
+				29FC5A6820403011008E88C8 /* ThemeService.swift */,
+			);
+			path = "Theme Engine";
+			sourceTree = "<group>";
+		};
 		29FC8867201B7B61002B3D3F /* Quests */ = {
 			isa = PBXGroup;
 			children = (
@@ -2188,6 +2204,7 @@
 		D987393919687E46002A2426 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				29FC5A6320402EE2008E88C8 /* Theme Engine */,
 				D99BC43019D4C34A006DC132 /* 1Password.xcassets */,
 				494E540E1F2EEF810003683C /* Amplitude+HRPGHelpers.h */,
 				494E540F1F2EEF810003683C /* Amplitude+HRPGHelpers.m */,
@@ -2798,7 +2815,6 @@
 				D97ED0AB1E6DBB5F006C2A26 /* Interactors */,
 				D95704371E106BF3004F6804 /* Extensions */,
 				D9A63A311E1031FD0083ADC4 /* UI */,
-				D986FBBD1DAFA27200C297DB /* Habitica.entitlements */,
 				D91489091CD23A600015B42D /* ViewController */,
 				D9B5C0EB18D6321400C8D1B7 /* Models */,
 				D93D796C1D2BC73200AFE014 /* DataSources */,
@@ -3623,6 +3639,7 @@
 				291DE9762099D85D0073182A /* MemberLlistView.swift in Sources */,
 				D9F1E3EC1E55E1DB0034D0F4 /* SubscriptionInformation.swift in Sources */,
 				2904FC7D2028BE8000CFB741 /* HabiticaWorldState.swift in Sources */,
+				29FC5A6520402EF6008E88C8 /* Theme.swift in Sources */,
 				D9E918571AA3A70D005E378B /* HRPGCheckBoxView.m in Sources */,
 				29C1B6B420599E6D0001D3EF /* TaskFormViewController.swift in Sources */,
 				290B6285207BD531007287C4 /* GuildDetailViewController.swift in Sources */,
@@ -3647,6 +3664,7 @@
 				D95D03941C74AA5500D6BFB3 /* Preferences.m in Sources */,
 				D9BB45DD1E7AE5240002AE2E /* ConfigRepository.swift in Sources */,
 				29255E471F3E14920094A3E3 /* AppDelegate.swift in Sources */,
+				29FC5A6920403011008E88C8 /* ThemeService.swift in Sources */,
 				D979AD131AF3CF6C00D59FAE /* Customization.m in Sources */,
 				D9FC1A861BC2D8A300B97D23 /* TutorialSteps+CoreDataProperties.m in Sources */,
 				29255E491F3E1B0F0094A3E3 /* ToastView.swift in Sources */,
@@ -3768,6 +3786,7 @@
 				D9884B4519168AF00078BC7C /* HRPGProgressView.m in Sources */,
 				290C302C206BACBB0066AF5B /* SpellsTableViewDataSource.swift in Sources */,
 				D9CE90411E4CAE6700702578 /* SubscriptionPlan+CoreDataProperties.m in Sources */,
+				29FC5A6720402FA3008E88C8 /* Themes.swift in Sources */,
 				29FC88562017B840002B3D3F /* CollapsibleTitle.swift in Sources */,
 				290B62A2207F816B007287C4 /* ItemsViewController.swift in Sources */,
 				298119AB1F50251300F9FB39 /* InventoryRepository.swift in Sources */,

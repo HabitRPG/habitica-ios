@@ -252,12 +252,12 @@
     checkboxView.cornerRadius = checkboxView.size / 2;
     if ([self.areTagsSelected[indexPath.item] boolValue]) {
         checkboxView.checkColor = [UIColor colorWithWhite:1.0 alpha:0.7];
-        checkboxView.boxBorderColor = [UIColor purple300];
-        checkboxView.boxFillColor = [UIColor purple300];
+        checkboxView.boxBorderColor = ObjcThemeWrapper.backgroundTintColor;
+        checkboxView.boxFillColor = ObjcThemeWrapper.backgroundTintColor;
     } else {
         checkboxView.boxFillColor = [UIColor clearColor];
-        checkboxView.boxBorderColor = [UIColor purple300];
-        checkboxView.checkColor = [UIColor purple300];
+        checkboxView.boxBorderColor = ObjcThemeWrapper.backgroundTintColor;
+        checkboxView.checkColor = [UIColor clearColor];
     }
     checkboxView.checked = [self.areTagsSelected[indexPath.item] boolValue];
     [checkboxView.layer setNeedsDisplay];

@@ -42,7 +42,6 @@ class RewardViewController: HRPGBaseCollectionViewController, NSFetchedResultsCo
         collectionView?.register(inAppRewardNib, forCellWithReuseIdentifier: "InAppRewardCell")
         
         collectionView?.alwaysBounceVertical = true
-        refreshControl.tintColor = UIColor.purple400()
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         collectionView?.addSubview(refreshControl)
         

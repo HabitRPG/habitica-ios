@@ -39,7 +39,6 @@ class GroupChatViewController: SLKTextViewController {
 
         if #available(iOS 10.0, *) {
             self.tableView?.refreshControl = UIRefreshControl()
-            self.tableView?.refreshControl?.tintColor = UIColor.purple400()
             self.tableView?.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         }
         

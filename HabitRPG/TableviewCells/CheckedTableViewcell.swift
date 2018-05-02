@@ -53,8 +53,8 @@ class CheckedTableViewCell: TaskTableViewCell {
             self.titleLabel.textColor = .gray300()
             self.backgroundColor = .gray600()
         } else {
-            self.backgroundColor = .white
-            self.titleLabel.textColor = .gray10()
+            self.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
+            self.titleLabel.textColor = ThemeService.shared.theme.primaryTextColor
         }
 
         self.titleLabel.backgroundColor = self.backgroundColor

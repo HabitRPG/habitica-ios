@@ -8,12 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@class ProgressBar;
+
 IB_DESIGNABLE
 @interface HRPGLabeledProgressBar : UIView
 
 @property UIImageView *iconView;
 @property UILabel *labelView;
 @property UILabel *typeView;
+@property ProgressBar *progressBar;
 
 @property BOOL isActive;
 
@@ -23,5 +26,6 @@ IB_DESIGNABLE
 @property(nonatomic) NSString *type;
 @property(nonatomic) UIImage *icon;
 @property(nonatomic) NSInteger fontSize;
+@property(nonatomic) UIColor *textColor;
 
 @end

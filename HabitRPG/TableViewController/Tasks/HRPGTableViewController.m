@@ -48,7 +48,6 @@ NSIndexPath  *sourceIndexPath = nil;
     self.coachMarks = @[ @"addTask", @"editTask", @"filterTask", @"reorderTask" ];
 
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
-    refresh.tintColor = [UIColor purple400];
     [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refresh;
 
@@ -56,7 +55,6 @@ NSIndexPath  *sourceIndexPath = nil;
     self.searchBar.placeholder = NSLocalizedString(@"Search", nil);
     self.searchBar.delegate = self;
     self.searchBar.backgroundImage = [[UIImage alloc] init];
-    self.searchBar.backgroundColor = [UIColor gray500];
     self.tableView.tableHeaderView = self.searchBar;
 
     [[NSNotificationCenter defaultCenter] addObserver:self

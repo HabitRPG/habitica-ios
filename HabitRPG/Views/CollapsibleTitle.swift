@@ -30,7 +30,7 @@ class CollapsibleTitle: UILabel, UIGestureRecognizerDelegate {
         didSet {
             if hasInfoIcon {
                 let iconView = UIImageView(image: #imageLiteral(resourceName: "icon_help").withRenderingMode(.alwaysTemplate))
-                iconView.tintColor = UIColor.purple400()
+                iconView.tintColor = ThemeService.shared.theme.tintColor
                 iconView.isUserInteractionEnabled = true
                 iconView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(infoIconTapped)))
                 iconView.contentMode = .center

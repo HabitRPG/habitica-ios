@@ -2785,13 +2785,11 @@ and helps keep Habitica running</string>
                     </tableView>
                     <toolbarItems>
                         <barButtonItem systemItem="edit" id="JJm-wH-dvH">
-                            <color key="tintColor" red="0.44783601159999997" green="0.1084804982" blue="0.99846321339999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="editButtonTapped:" destination="CZc-T4-a1C" id="weX-8k-PPG"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem systemItem="done" id="U15-tA-p5V">
-                            <color key="tintColor" red="0.44783601159999997" green="0.1084804982" blue="0.99846321339999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="doneButtonTapped:" destination="CZc-T4-a1C" id="fvu-U4-hDD"/>
                             </connections>
