@@ -36,13 +36,23 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
             }
         })
     }
-    
+
     func retrieveGroup(groupID: String) -> Signal<GroupProtocol?, NoError> {
         let call = RetrieveGroupCall(groupID: groupID)
         call.fire()
         return call.objectSignal.on(value: { group in
             if let group = group {
                 self.localRepository.save(group)
+            }
+        })
+    }
+
+    func retrieveGroupMembers(groupID: String) -> Signal<[MemberProtocol]?, NoError> {
+        let call = RetrieveGroupMembersCall(groupID: groupID)
+        call.fire()
+        return call.arraySignal.on(value: { members in
+            if let members = members {
+                self.localRepository.save(members)
             }
         })
     }
@@ -119,6 +129,11 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
                     return SignalProducer(value: group)
                 }
             })
+    }
+
+
+    func getGroupMembers(groupID: String) -> SignalProducer<ReactiveResults<[MemberProtocol]>, ReactiveSwiftRealmError> {
+        return localRepository.getGroupMembers(groupID: groupID)
     }
     
     public func getChatMessages(groupID: String) -> SignalProducer<ReactiveResults<[ChatMessageProtocol]>, ReactiveSwiftRealmError> {

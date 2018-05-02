@@ -56,6 +56,7 @@
 		2919FDDB2091D3D70096A53B /* MarkInboxAsSeenCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2919FDDA2091D3D70096A53B /* MarkInboxAsSeenCall.swift */; };
 		2919FDE12091DFFE0096A53B /* ReviveUserCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2919FDE02091DFFE0096A53B /* ReviveUserCall.swift */; };
 		291E95AD20986CDE006EE585 /* DateEncodingStrategy-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291E95AC20986CDE006EE585 /* DateEncodingStrategy-Extension.swift */; };
+		291E95B5209888E1006EE585 /* APIUserParty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291E95B4209888E1006EE585 /* APIUserParty.swift */; };
 		292DEE44204D9D8D0086D5F7 /* Habitica_Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE45204D9D8D0086D5F7 /* Habitica_Models.framework */; };
 		292DEE4B204DA1220086D5F7 /* NetworkAuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE4A204DA1220086D5F7 /* NetworkAuthenticationManager.swift */; };
 		292DEE4F204DA3870086D5F7 /* RetrieveTasksCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE4E204DA3870086D5F7 /* RetrieveTasksCall.swift */; };
@@ -138,6 +139,7 @@
 		29B58703204D92CF00301955 /* Habitica_API_Client.h in Headers */ = {isa = PBXBuildFile; fileRef = 29B586F5204D92CF00301955 /* Habitica_API_Client.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9A268BF127E13DFBBE1D6DAF /* Pods_Habitica_API_ClientTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B265032E3FD15918939BFD0F /* Pods_Habitica_API_ClientTests.framework */; };
 		AE4ADE8B2AF941F3FCBB5DD9 /* Pods_Habitica_API_Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D41C03127A377E7796EFB1E8 /* Pods_Habitica_API_Client.framework */; };
+		DC2C4A0476068E29973DB0CD /* RetrieveGroupMembersCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2C420658EE5D517E37D97D /* RetrieveGroupMembersCall.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -201,6 +203,7 @@
 		2919FDDA2091D3D70096A53B /* MarkInboxAsSeenCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkInboxAsSeenCall.swift; sourceTree = "<group>"; };
 		2919FDE02091DFFE0096A53B /* ReviveUserCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviveUserCall.swift; sourceTree = "<group>"; };
 		291E95AC20986CDE006EE585 /* DateEncodingStrategy-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateEncodingStrategy-Extension.swift"; sourceTree = "<group>"; };
+		291E95B4209888E1006EE585 /* APIUserParty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIUserParty.swift; sourceTree = "<group>"; };
 		292DEE45204D9D8D0086D5F7 /* Habitica_Models.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_Models.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		292DEE4A204DA1220086D5F7 /* NetworkAuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAuthenticationManager.swift; sourceTree = "<group>"; };
 		292DEE4E204DA3870086D5F7 /* RetrieveTasksCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveTasksCall.swift; sourceTree = "<group>"; };
@@ -288,6 +291,7 @@
 		9202171462D0CA0F8120FBAE /* Pods-Habitica API ClientTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica API ClientTests.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Habitica API ClientTests/Pods-Habitica API ClientTests.release.xcconfig"; sourceTree = "<group>"; };
 		B265032E3FD15918939BFD0F /* Pods_Habitica_API_ClientTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica_API_ClientTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D41C03127A377E7796EFB1E8 /* Pods_Habitica_API_Client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica_API_Client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC2C420658EE5D517E37D97D /* RetrieveGroupMembersCall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RetrieveGroupMembersCall.swift; sourceTree = "<group>"; };
 		E7EF6D46CDBA4E678D7467CD /* Pods-Habitica API Client.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica API Client.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Habitica API Client/Pods-Habitica API Client.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -378,6 +382,7 @@
 				29323E1420504F2300AC6D6F /* APIUser.swift */,
 				29323E522052F7A600AC6D6F /* APIUserGear.swift */,
 				29323E502052F77F00AC6D6F /* APIUserItems.swift */,
+				291E95B4209888E1006EE585 /* APIUserParty.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -421,6 +426,7 @@
 				290B6292207E3E24007287C4 /* JoinGroupCall.swift */,
 				290B6294207E3E6C007287C4 /* LeaveGroupCall.swift */,
 				294973CF2081039300F02AC3 /* InviteToQuestCall.swift */,
+				DC2C420658EE5D517E37D97D /* RetrieveGroupMembersCall.swift */,
 			);
 			path = Group;
 			sourceTree = "<group>";
@@ -862,6 +868,7 @@
 				2914489E208A346700F3A6B5 /* APICustomization.swift in Sources */,
 				290B6263207B9707007287C4 /* APILocalAuthentication.swift in Sources */,
 				290B626D207BA6AB007287C4 /* ResetAccountCall.swift in Sources */,
+				291E95B5209888E1006EE585 /* APIUserParty.swift in Sources */,
 				290C3015206A80AE0066AF5B /* MoveTaskCall.swift in Sources */,
 				292F966C206E6D8A00804151 /* UpdateUserCall.swift in Sources */,
 				295610F92056CAA800D9711A /* APIHatchingPotion.swift in Sources */,
@@ -965,6 +972,7 @@
 				290B6293207E3E24007287C4 /* JoinGroupCall.swift in Sources */,
 				290B6279207BA8C3007287C4 /* LocalLoginCall.swift in Sources */,
 				294973D02081039300F02AC3 /* InviteToQuestCall.swift in Sources */,
+				DC2C4A0476068E29973DB0CD /* RetrieveGroupMembersCall.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

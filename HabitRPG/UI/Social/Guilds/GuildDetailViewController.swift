@@ -18,14 +18,9 @@ class GuildDetailViewController: GroupDetailViewController {
     @IBOutlet weak var gemIconView: UIImageView!
     @IBOutlet weak var inviteButton: UIButton!
     @IBOutlet weak var joinButton: UIButton!
-    @IBOutlet weak var leaveButton: UIButton!
-    @IBOutlet weak var leaveButtonWrapper: UIView!
     @IBOutlet weak var guildLeaderWrapper: UIView!
     @IBOutlet weak var guildLeaderNameLabel: UILabel!
     @IBOutlet weak var guildLeaderAvatarView: AvatarView!
-    
-    var leaveInteractor: LeaveGroupInteractor?
-    private let (lifetime, token) = Lifetime.make()
     
     let numberFormatter = NumberFormatter()
     
@@ -39,22 +34,15 @@ class GuildDetailViewController: GroupDetailViewController {
         gemIconView.image = HabiticaIcons.imageOfGem_36
         
         numberFormatter.usesGroupingSeparator = true
-        
-        if let groupID = self.groupID {
+
+        if let groupID = self.group?.id {
             disposable.inner.add(socialRepository.isUserGuildMember(groupID: groupID).on(value: {[weak self] isMember in
                 self?.joinButton.isHidden = isMember
-                self?.leaveButtonWrapper.isHidden = !isMember
+                self?.leaveButtonWrapper?.isHidden = !isMember
             }).start())
         }
         
-        self.leaveInteractor = LeaveGroupInteractor(presentingViewController: self)
-        
         guildLeaderWrapper.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openGuildLeaderProfile)))
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        disposable.inner.add(self.leaveInteractor?.reactive.take(during: self.lifetime).observeCompleted {})
     }
     
     override func updateData(group: GroupProtocol) {
@@ -79,7 +67,7 @@ class GuildDetailViewController: GroupDetailViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == StoryboardSegue.Social.challengesSegue.rawValue, let groupID = self.groupID {
+        if segue.identifier == StoryboardSegue.Social.challengesSegue.rawValue, let groupID = self.group?.id {
             let challengesViewController = segue.destination as? ChallengeTableViewController
             challengesViewController?.shownGuilds = [groupID]
             challengesViewController?.showOnlyUserChallenges = false
@@ -100,14 +88,8 @@ class GuildDetailViewController: GroupDetailViewController {
     }
     
     @IBAction func joinButtonTapped(_ sender: Any) {
-        if let groupID = self.groupID {
+        if let groupID = self.group?.id {
             socialRepository.joinGroup(groupID: groupID).observeCompleted {}
-        }
-    }
-    
-    @IBAction func leaveButtonTapped(_ sender: Any) {
-        if let groupID = self.groupID {
-            leaveInteractor?.run(with: groupID)
         }
     }
     

@@ -41,7 +41,7 @@ class MainTabBarController: UITabBarController {
         swipe.direction = .up
         swipe.delaysTouchesBegan = true
         swipe.numberOfTouchesRequired = 1
-        view.addGestureRecognizer(swipe)
+        tabBar.addGestureRecognizer(swipe)
         #endif
     }
     

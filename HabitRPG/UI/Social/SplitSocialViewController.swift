@@ -21,14 +21,21 @@ class SplitSocialViewController: HabiticaSplitViewController {
         }
     }
     
-    @objc var groupID: String?
+    @objc var groupID: String? {
+        didSet {
+            chatViewController?.groupID = groupID
+            retrieveGroup()
+            fetchGroup()
+        }
+    }
     
     weak var detailViewController: GroupDetailViewController?
     weak var chatViewController: GroupChatViewController?
     
     private let socialRepository = SocialRepository()
-    private let disposable = ScopedDisposable(CompositeDisposable())
-    
+    let disposable = ScopedDisposable(CompositeDisposable())
+    var fetchGroupDisposable: Disposable?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         segmentedControl.setTitle(L10n.details, forSegmentAt: 0)
@@ -46,22 +53,42 @@ class SplitSocialViewController: HabiticaSplitViewController {
                 chatViewController = viewController
             }
         }
-        
-        if let groupID = self.groupID {
-            disposable.inner.add(socialRepository.getGroup(groupID: groupID).skipNil().on(value: {[weak self] group in
-                self?.set(group: group)
-            }).start())
+    }
+    
+    deinit {
+        if let disposable = fetchGroupDisposable {
+            disposable.dispose()
         }
     }
     
+    func retrieveGroup() {
+        if let groupID = self.groupID {
+            disposable.inner.add(socialRepository.retrieveGroup(groupID: groupID)
+                    .flatMap(.latest) { group in
+                        return self.socialRepository.retrieveGroupMembers(groupID: groupID)
+                     }
+                    .observeCompleted {})
+        }
+    }
+    
+    func fetchGroup() {
+        guard let groupID = self.groupID else {
+            return
+        }
+        if let disposable = self.fetchGroupDisposable {
+            disposable.dispose()
+        }
+        fetchGroupDisposable = socialRepository.getGroup(groupID: groupID).skipNil().on(value: {[weak self] group in
+            self?.set(group: group)
+        }).start()
+    }
+    
     internal func set(group: GroupProtocol) {
-        //detailViewController?.group = group
+        detailViewController?.group = group
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let detailViewController = segue.destination as? GroupDetailViewController {
-            detailViewController.groupID = groupID
-        } else if let chatViewController  = segue.destination as? GroupChatViewController {
+        if let chatViewController  = segue.destination as? GroupChatViewController {
             chatViewController.groupID = groupID
         }
     }

@@ -27,6 +27,7 @@ class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtoc
         self.groupID = groupID
         super.init()
         sections.append(ItemSection<ChatMessageProtocol>())
+        tableView?.reloadData()
         
         disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
             self?.user = user

@@ -36,6 +36,7 @@
 		29144890208A1B1500F3A6B5 /* HairProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2914488F208A1B1500F3A6B5 /* HairProtocol.swift */; };
 		2914489A208A32B400F3A6B5 /* CustomizationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29144899208A32B400F3A6B5 /* CustomizationProtocol.swift */; };
 		2914489C208A335C00F3A6B5 /* CustomizationSetProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2914489B208A335C00F3A6B5 /* CustomizationSetProtocol.swift */; };
+		291E95B120988706006EE585 /* UserPartyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291E95B020988706006EE585 /* UserPartyProtocol.swift */; };
 		292DEE5A204DAA000086D5F7 /* HabiticaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE59204DAA000086D5F7 /* HabiticaModel.swift */; };
 		292DEE7A204E36F60086D5F7 /* TagProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE79204E36F60086D5F7 /* TagProtocol.swift */; };
 		292DEE7C204E372E0086D5F7 /* ChecklistItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE7B204E372E0086D5F7 /* ChecklistItemProtocol.swift */; };
@@ -121,6 +122,7 @@
 		2914488F208A1B1500F3A6B5 /* HairProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HairProtocol.swift; sourceTree = "<group>"; };
 		29144899208A32B400F3A6B5 /* CustomizationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationProtocol.swift; sourceTree = "<group>"; };
 		2914489B208A335C00F3A6B5 /* CustomizationSetProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationSetProtocol.swift; sourceTree = "<group>"; };
+		291E95B020988706006EE585 /* UserPartyProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPartyProtocol.swift; sourceTree = "<group>"; };
 		292DEE59204DAA000086D5F7 /* HabiticaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabiticaModel.swift; sourceTree = "<group>"; };
 		292DEE79204E36F60086D5F7 /* TagProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagProtocol.swift; sourceTree = "<group>"; };
 		292DEE7B204E372E0086D5F7 /* ChecklistItemProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistItemProtocol.swift; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 				29323E4E2052F68A00AC6D6F /* UserGearProtocol.swift */,
 				29323E4A2052F4CF00AC6D6F /* UserItemsProtocol.swift */,
 				29323E0F20504DA600AC6D6F /* UserProtocol.swift */,
+				291E95B020988706006EE585 /* UserPartyProtocol.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -580,6 +583,7 @@
 				295610FB2056CBF700D9711A /* GearProtocol.swift in Sources */,
 				295610FF2056D17D00D9711A /* SkillProtocol.swift in Sources */,
 				290B629A207F7DCC007287C4 /* OwnedGearProtocol.swift in Sources */,
+				291E95B120988706006EE585 /* UserPartyProtocol.swift in Sources */,
 				DC2C4D71684BDBCF39F84273 /* FlagsProtocol.swift in Sources */,
 				DC2C49AA09AF07160BDB05BF /* PreferencesProtocol.swift in Sources */,
 				290C3011206A785A0066AF5B /* EmptyResponseProtocol.swift in Sources */,

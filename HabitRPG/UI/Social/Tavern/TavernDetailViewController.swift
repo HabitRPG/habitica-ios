@@ -10,7 +10,7 @@ import UIKit
 import Habitica_Models
 import ReactiveSwift
 
-class TavernDetailViewController: UIViewController {
+class TavernDetailViewController: GroupDetailViewController {
     
     @IBOutlet weak var tavernHeaderView: NPCBannerView!
     
@@ -22,14 +22,11 @@ class TavernDetailViewController: UIViewController {
     @IBOutlet weak var questProgressView: QuestProgressView!
     @IBOutlet weak var worldBossTitleView: CollapsibleTitle!
     
-    private let userRepository = UserRepository()
-    private let socialRepository = SocialRepository()
-    private let disposable = ScopedDisposable(CompositeDisposable())
     
-    var group: GroupProtocol? {
+    override var group: GroupProtocol? {
         didSet {
             if let group = self.group {
-                //questProgressView.configure(group: group)
+                questProgressView.configure(group: group)
             }
         }
     }
@@ -82,14 +79,13 @@ class TavernDetailViewController: UIViewController {
         
         configureInnButton()
         
-        //questProgressView.configure(user: HRPGManager.shared().getUser())
-        
         disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
             if user.preferences?.sleep == true {
                 self?.innButton.setTitle(NSLocalizedString("Resume Damage", comment: ""), for: .normal)
             } else {
                 self?.innButton.setTitle(NSLocalizedString("Pause Damage", comment: ""), for: .normal)
             }
+            self?.questProgressView.configure(user: user)
         }).start())
     }
     

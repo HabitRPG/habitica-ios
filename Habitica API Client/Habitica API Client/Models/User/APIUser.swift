@@ -10,6 +10,8 @@ import Foundation
 import Habitica_Models
 
 public class APIUser: UserProtocol, Decodable {
+    public var party: UserPartyProtocol?
+    
     public var id: String?
     public var stats: StatsProtocol?
     public var flags: FlagsProtocol?
@@ -42,6 +44,7 @@ public class APIUser: UserProtocol, Decodable {
         case inbox
         case authentication = "auth"
         case purchased
+        case party
     }
     
     public required init(from decoder: Decoder) throws {
@@ -64,5 +67,6 @@ public class APIUser: UserProtocol, Decodable {
         inbox = try? values.decode(APIInbox.self, forKey: .inbox)
         authentication = try? values.decode(APIAuthentication.self, forKey: .authentication)
         purchased = try? values.decode(APIPurchased.self, forKey: .purchased)
+        party = try? values.decode(APIUserParty.self, forKey: .party)
     }
 }

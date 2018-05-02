@@ -8,11 +8,11 @@
 
 import UIKit
 import Down
-import YYImage
+import Habitica_Models
 
 class QuestProgressView: UIView {
     
-    @IBOutlet weak var questImageView: YYAnimatedImageView!
+    @IBOutlet weak var questImageView: UIImageView!
     @IBOutlet weak var healthProgressView: QuestProgressBarView!
     @IBOutlet weak var rageProgressView: QuestProgressBarView!
     @IBOutlet weak var backgroundView: UIImageView!
@@ -150,11 +150,11 @@ class QuestProgressView: UIView {
     }
     
     @objc
-    func configure(group: Group) {
-        healthProgressView.currentValue = group.questHP?.floatValue ?? 0
-        rageProgressView.currentValue = group.questRage?.floatValue ?? 0
+    func configure(group: GroupProtocol) {
+        healthProgressView.currentValue = group.quest?.progress?.health ?? 0
+        rageProgressView.currentValue = group.quest?.progress?.rage ?? 0
         
-        rageStrikeCountLabel.text = "Rage Strikes: \(group.rageStrikeCount)/\(group.totalRageStrikes)"
+        /*rageStrikeCountLabel.text = "Rage Strikes: \(group.rageStrikeCount)/\(group.totalRageStrikes)"
         
         rageStrikeContainer.arrangedSubviews.forEach { (view) in
             view.removeFromSuperview()
@@ -166,12 +166,12 @@ class QuestProgressView: UIView {
                 rageStrikeView.isActive = rageStrike.value.boolValue
                 rageStrikeContainer.addArrangedSubview(rageStrikeView)
             }
-        }
+        }*/
     }
     
     @objc
-    func configure(user: User) {
-        healthProgressView.pendingValue = user.pendingDamage.floatValue
+    func configure(user: UserProtocol) {
+        healthProgressView.pendingValue = user.party?.quest?.progress?.up ?? 0
     }
     
     @objc

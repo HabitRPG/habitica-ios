@@ -37,6 +37,15 @@ public class SocialLocalRepository: BaseLocalRepository {
         }
         save(object: RealmMember(member))
     }
+
+    public func save(_ members: [MemberProtocol]) {
+        save(objects: members.map { (member) in
+            if let realmMember = member as? RealmMember {
+                return realmMember
+            }
+            return RealmMember(member)
+        })
+    }
     
     public func save(groupID: String?, chatMessages: [ChatMessageProtocol]) {
         save(objects:chatMessages.map { (chatMessage) in
@@ -126,7 +135,13 @@ public class SocialLocalRepository: BaseLocalRepository {
             return (value.map({ (group) -> GroupProtocol in return group }), changeset)
         })
     }
-    
+
+    public func getGroupMembers(groupID: String) -> SignalProducer<ReactiveResults<[MemberProtocol]>, ReactiveSwiftRealmError> {
+        return RealmMember.findBy(query: "realmParty.id == '\(groupID)'").reactive().map({ (value, changeset) -> ReactiveResults<[MemberProtocol]> in
+            return (value.map({ (member) -> MemberProtocol in return member }), changeset)
+        })
+    }
+
     public func getGroupMemberships(userID: String) -> SignalProducer<ReactiveResults<[GroupMembershipProtocol]>, ReactiveSwiftRealmError> {
         return RealmGroupMembership.findBy(query: "userID == '\(userID)'").reactive().map({ (value, changeset) -> ReactiveResults<[GroupMembershipProtocol]> in
             return (value.map({ (membership) -> GroupMembershipProtocol in return membership }), changeset)

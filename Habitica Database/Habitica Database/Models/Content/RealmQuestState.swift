@@ -11,6 +11,8 @@ import Habitica_Models
 import RealmSwift
 
 class RealmQuestState: Object, QuestStateProtocol {
+    @objc dynamic var rsvpNeeded: Bool = false
+    @objc dynamic var completed: String?
     @objc dynamic var id: String?
     @objc dynamic var active: Bool = false
     @objc dynamic var key: String?
@@ -38,5 +40,7 @@ class RealmQuestState: Object, QuestStateProtocol {
         active = state.active
         key = state.key
         progress = state.progress
+        rsvpNeeded = state.rsvpNeeded
+        completed = state.completed
     }
 }

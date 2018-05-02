@@ -14,7 +14,6 @@ public enum HabiticaClass: String {
     case mage = "wizard"
     case healer
     case rogue
-    
 }
 
 @objc
@@ -32,6 +31,7 @@ public protocol UserProtocol: AvatarProtocol {
     var inbox: InboxProtocol? { get set }
     var authentication: AuthenticationProtocol? { get set }
     var purchased: PurchasedProtocol? { get set }
+    var party: UserPartyProtocol? { get set }
 }
 
 public extension UserProtocol {

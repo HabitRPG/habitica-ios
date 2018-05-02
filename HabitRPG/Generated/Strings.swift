@@ -47,6 +47,8 @@ internal enum L10n {
   internal static func lastActivity(_ p1: String) -> String {
     return L10n.tr("Main", "last_activity", p1)
   }
+  /// Leader
+  internal static let leader = L10n.tr("Main", "leader")
   /// Mana
   internal static let mana = L10n.tr("Main", "mana")
   /// Monthly

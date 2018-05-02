@@ -10,9 +10,18 @@ import UIKit
 
 class PartyViewController: SplitSocialViewController {
     
+    private let userRepository = UserRepository()
+    
     override func viewDidLoad() {
-        groupID = HRPGManager.shared().getUser().partyID
         super.viewDidLoad()
+        disposable.inner.add(userRepository.getUser().map({ (user) -> String? in
+            return user.party?.id
+        }).skipNil()
+            .take(first: 1)
+            .on(value: { partyID in
+                self.groupID = partyID
+            })
+            .start())
     }
     
 }

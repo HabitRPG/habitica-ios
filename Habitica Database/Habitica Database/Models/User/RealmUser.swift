@@ -172,6 +172,21 @@ class RealmUser: Object, UserProtocol {
         }
     }
     @objc dynamic var realmPurchased: RealmPurchased?
+    var party: UserPartyProtocol? {
+        get {
+            return realmParty
+        }
+        set {
+            if let value = newValue as? RealmUserParty {
+                realmParty = value
+                return
+            }
+            if let value = newValue {
+                realmParty = RealmUserParty(userID: id, protocolObject: value)
+            }
+        }
+    }
+    @objc dynamic var realmParty: RealmUserParty?
     
     var realmTags = List<RealmTag>()
     var needsCron: Bool = false
@@ -182,7 +197,7 @@ class RealmUser: Object, UserProtocol {
     }
     
     override static func ignoredProperties() -> [String] {
-        return ["flags", "preferences", "stats", "profile", "contributor", "tasksOrder", "items", "tags", "inbox", "authentication", "purchased"]
+        return ["flags", "preferences", "stats", "profile", "contributor", "tasksOrder", "items", "tags", "inbox", "authentication", "purchased", "party"]
     }
     
     convenience init(_ user: UserProtocol) {
@@ -201,5 +216,6 @@ class RealmUser: Object, UserProtocol {
         inbox = user.inbox
         authentication = user.authentication
         purchased = user.purchased
+        party = user.party
     }
 }

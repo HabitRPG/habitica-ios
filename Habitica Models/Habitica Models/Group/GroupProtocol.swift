@@ -8,6 +8,7 @@
 
 import Foundation
 
+@objc
 public protocol GroupProtocol {
     var id: String? { get set }
     var name: String? { get set }

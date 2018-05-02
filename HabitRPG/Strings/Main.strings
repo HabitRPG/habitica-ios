@@ -168,3 +168,4 @@
 "classes.rogue_description" = "Rogues love to accumulate wealth, gaining more Gold than anyone else, and are adept at finding random items. Their iconic Stealth ability lets them duck the consequences of missed Dailies. Play a Rogue if you find strong motivation from Rewards and Achievements, striving for loot and badges!";
 "classes.class_header" = "%@ Class";
 "classes.become_a_class" = "Become a %@";
+"leader" = "Leader";

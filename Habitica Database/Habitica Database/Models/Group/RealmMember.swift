@@ -92,13 +92,43 @@ class RealmMember: Object, MemberProtocol {
         }
     }
     @objc dynamic var realmItems: RealmUserItems?
-    
+    var party: UserPartyProtocol? {
+        get {
+            return realmParty
+        }
+        set {
+            if let value = newValue as? RealmUserParty {
+                realmParty = value
+                return
+            }
+            if let value = newValue {
+                realmParty = RealmUserParty(userID: id, protocolObject: value)
+            }
+        }
+    }
+    @objc dynamic var realmParty: RealmUserParty?
+    var flags: FlagsProtocol? {
+        get {
+            return realmFlags
+        }
+        set {
+            if let newFlags = newValue as? RealmFlags {
+                realmFlags = newFlags
+                return
+            }
+            if let newFlags = newValue {
+                realmFlags = RealmFlags(id: id, flags: newFlags)
+            }
+        }
+    }
+    @objc dynamic var realmFlags: RealmFlags?
+
     override static func primaryKey() -> String {
         return "id"
     }
     
     override static func ignoredProperties() -> [String] {
-        return ["flags", "preferences", "stats", "profile", "contributor", "items"]
+        return ["flags", "preferences", "stats", "profile", "contributor", "items", "party", "flags"]
     }
     
     convenience init(_ member: MemberProtocol) {
@@ -109,5 +139,7 @@ class RealmMember: Object, MemberProtocol {
         profile = member.profile
         contributor = member.contributor
         items = member.items
+        party = member.party
+        flags = member.flags
     }
 }
