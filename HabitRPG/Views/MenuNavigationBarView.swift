@@ -9,7 +9,7 @@
 import UIKit
 import Habitica_Models
 
-class MenuNavigationBarView: UIView {
+class MenuNavigationBarView: UIView, Themeable {
     
     @objc public var messagesAction: (() -> Void)?
     @objc public var settingsAction: (() -> Void)?
@@ -29,6 +29,12 @@ class MenuNavigationBarView: UIView {
         avatarView.showMount = false
         avatarView.size = .compact
         messagesBadge.horizontalPadding = 4
+        
+        ThemeService.shared.addThemeable(themable: self, applyImmediately: true)
+    }
+    
+    func applyTheme(theme: Theme) {
+        backgroundColor = theme.backgroundTintColor
     }
     
     @objc

@@ -27,11 +27,6 @@ class MainTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if #available(iOS 10.0, *) {
-            UITabBarItem.appearance().badgeColor = UIColor.purple400()
-        }
-        tabBar.tintColor = UIColor.purple400()
-        
         setupDailyIcon()
         
         fetchData()

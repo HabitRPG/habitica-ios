@@ -23,6 +23,31 @@ public struct BlueTheme: Theme {
     public var tintColor: UIColor { return UIColor.blue100() }
 }
 
+public struct RedTheme: Theme {
+    public var backgroundTintColor: UIColor { return UIColor.red10() }
+    public var tintColor: UIColor { return UIColor.red100() }
+}
+
+public struct TealTheme: Theme {
+    public var backgroundTintColor: UIColor { return UIColor.teal10() }
+    public var tintColor: UIColor { return UIColor.teal100() }
+}
+
+public struct MaroonTheme: Theme {
+    public var backgroundTintColor: UIColor { return UIColor.darkRed10() }
+    public var tintColor: UIColor { return UIColor.darkRed100() }
+}
+
+public struct OrangeTheme: Theme {
+    public var backgroundTintColor: UIColor { return UIColor.orange10() }
+    public var tintColor: UIColor { return UIColor.orange50() }
+}
+
+public struct YellowTheme: Theme {
+    public var backgroundTintColor: UIColor { return UIColor.yellow5() }
+    public var tintColor: UIColor { return UIColor.yellow10() }
+}
+
 public struct DysheatenerTheme: Theme {
     public var backgroundTintColor: UIColor { return UIColor("#410F2A") }
     public var tintColor: UIColor { return UIColor("#931F4D") }

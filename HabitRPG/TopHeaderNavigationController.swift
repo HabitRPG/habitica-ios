@@ -49,8 +49,8 @@ protocol TopHeaderNavigationControllerProtocol: class {
 
 class TopHeaderViewController: UINavigationController, TopHeaderNavigationControllerProtocol, Themeable {
     @objc public var state: TopHeaderState = .visible
-    @objc public let defaultNavbarHiddenColor = UIColor.purple300()
-    @objc public let defaultNavbarVisibleColor = UIColor.white
+    @objc public var defaultNavbarHiddenColor = UIColor.purple300()
+    @objc public var defaultNavbarVisibleColor = UIColor.white
     private var headerView: UIView?
     private var alternativeHeaderView: UIView?
     private let backgroundView = UIView()
@@ -307,8 +307,14 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
     public func setNavigationBarColors(_ alpha: CGFloat) {
         self.upperBackgroundView.backgroundColor = navbarVisibleColor.blend(with: navbarHiddenColor, alpha: alpha)
         self.backgroundView.backgroundColor = navbarVisibleColor.blend(with: navbarHiddenColor, alpha: alpha)
-        self.navigationBar.tintColor = visibleTintColor.blend(with: hiddenTintColor, alpha: alpha)
-        self.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: visibleTextColor.blend(with: hiddenTextColor, alpha: alpha)]
+        let tintColor = visibleTintColor.blend(with: hiddenTintColor, alpha: alpha)
+        self.navigationItem.leftBarButtonItems?.forEach({ (button) in
+            button.tintColor = tintColor
+        })
+        self.navigationItem.rightBarButtonItems?.forEach({ (button) in
+            button.tintColor = tintColor
+        })
+        self.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: (visibleTextColor.blend(with: hiddenTextColor, alpha: alpha) ?? .white)]
         updateStatusbarColor()
     }
     

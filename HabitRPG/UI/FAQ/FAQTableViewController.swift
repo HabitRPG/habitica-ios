@@ -34,7 +34,6 @@ class FAQTableViewController: HRPGBaseViewController {
         tableView.tableHeaderView = searchBar
         
         resetTutorialButton.setTitle(L10n.resetTips, for: .normal)
-        resetTutorialButton.setTitleColor(UIColor.purple400(), for: .normal)
         resetTutorialButton.addTarget(self, action: #selector(resetTutorials), for: .touchUpInside)
         resetTutorialButton.frame = CGRect(x: 0, y: 0, width: self.tableView.bounds.size.width, height: 70)
         tableView.tableFooterView = resetTutorialButton

@@ -11,7 +11,7 @@ import PopupDialog
 import Habitica_Models
 import ReactiveSwift
 
-class AttributePointsVieController: HRPGUIViewController, Themeable {
+class AttributePointsViewController: HRPGUIViewController, Themeable {
     
     @IBOutlet weak var pointsToAllocateLabel: PaddedLabel!
     @IBOutlet weak var pointsToAllocateRightView: UIImageView!
@@ -72,6 +72,8 @@ class AttributePointsVieController: HRPGUIViewController, Themeable {
             self?.updateStats()
             self?.updateAutoAllocatonViews()
         }).start())
+        
+        ThemeService.shared.addThemeable(themable: self, applyImmediately: true)
     }
     
     override func getDefinitonForTutorial(_ tutorialIdentifier: String) -> [AnyHashable: Any]? {
@@ -111,7 +113,6 @@ class AttributePointsVieController: HRPGUIViewController, Themeable {
     }
     
     func applyTheme(theme: Theme) {
-        
         distributeEvenlyCheckmark.image = HabiticaIcons.imageOfCheckmark(checkmarkColor: theme.tintColor, percentage: 1.0)
         distributeClassCheckmark.image = HabiticaIcons.imageOfCheckmark(checkmarkColor: theme.tintColor, percentage: 1.0)
         distributeTaskCheckmark.image = HabiticaIcons.imageOfCheckmark(checkmarkColor: theme.tintColor, percentage: 1.0)

@@ -59,7 +59,7 @@ public class ThemeService: NSObject {
         
         // Update each listener. The type cast is needed because allObjects returns [AnyObject]
         listeners.allObjects
-            .flatMap { $0 as? Themeable }
+            .compactMap { $0 as? Themeable }
             .forEach { $0.applyTheme(theme: theme) }
     }
     

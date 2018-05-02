@@ -27,7 +27,6 @@ class HabiticaSplitViewController: HRPGUIViewController, UIScrollViewDelegate {
         showAsSplitView = traitCollection.horizontalSizeClass == .regular && traitCollection.verticalSizeClass == .regular
         
         segmentedControl.selectedSegmentIndex = 0
-        segmentedControl.tintColor = UIColor.purple300()
         segmentedControl.addTarget(self, action: #selector(HabiticaSplitViewController.switchView(_:)), for: .valueChanged)
         segmentedControl.isHidden = false
         segmentedWrapper.containedView = segmentedControl

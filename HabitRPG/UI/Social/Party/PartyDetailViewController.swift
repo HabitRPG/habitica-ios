@@ -23,11 +23,8 @@ class PartyDetailViewController: GroupDetailViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
         let margins = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
         membersStackview.arrangedSubviews[0].layoutMargins = margins
-        membersStackview.arrangedSubviews[0].isLayoutMarginsRelativeArrangement = true
     }
 
     func fetchMembers() {
@@ -37,7 +34,7 @@ class PartyDetailViewController: GroupDetailViewController {
         if let disposable = self.fetchMembersDisposable {
             disposable.dispose()
         }
-        fetchMembersDisposable = socialRepository.getGroupMembers(groupID: groupID).on(value: {[weak self] (members, changes) in
+        fetchMembersDisposable = socialRepository.getGroupMembers(groupID: groupID).on(value: {[weak self] (members, _) in
             self?.set(members: members)
         }).start()
     }

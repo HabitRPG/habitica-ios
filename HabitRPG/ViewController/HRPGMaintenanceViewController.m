@@ -11,6 +11,7 @@
 #import "YYWebImage.h"
 #import "UIColor+Habitica.h"
 #import "UIViewController+Markdown.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGMaintenanceViewController ()
 
@@ -61,7 +62,7 @@
         [self.appstoreButton addTarget:self
                                 action:@selector(appstoreButtonPressed)
                       forControlEvents:UIControlEventTouchUpInside];
-        [self.appstoreButton setTitleColor:[UIColor purple400] forState:UIControlStateNormal];
+        [self.appstoreButton setTitleColor:ObjcThemeWrapper.tintColor forState:UIControlStateNormal];
         [self.contentView addSubview:self.appstoreButton];
     }
 

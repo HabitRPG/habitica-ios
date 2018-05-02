@@ -45,7 +45,6 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate,
         }, onError: nil)
         
         self.segmentedFilterControl.selectedSegmentIndex = 0
-        self.segmentedFilterControl.tintColor = UIColor.purple300()
         self.segmentedFilterControl.addTarget(self, action: #selector(ChallengeTableViewController.switchFilter(_:)), for: .valueChanged)
         segmentedWrapper.containedView = self.segmentedFilterControl
         topHeaderCoordinator?.alternativeHeader = segmentedWrapper

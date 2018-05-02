@@ -19,9 +19,55 @@ enum SettingsTags {
     static let customDayStart = "customDayStart"
     static let disableAllNotifications = "disableAllNotifications"
     static let disablePrivateMessages = "disablePrivateMessages"
+    static let themeColor = "themeColor"
 }
 
-class SettingsViewController: FormViewController {
+enum ThemeName: String {
+    case defaultTheme = "Default"
+    case blue = "Blue"
+    case teal = "Teal"
+    case green = "Green"
+    case yellow = "Yellow"
+    case orange = "Orange"
+    case red = "Red"
+    case maroon = "Maroon"
+    
+    var themeClass: Theme {
+        switch self {
+        case .defaultTheme:
+            return DefaultTheme()
+        case .blue:
+            return BlueTheme()
+        case .teal:
+            return TealTheme()
+        case .green:
+            return GreenTheme()
+        case .yellow:
+            return YellowTheme()
+        case .orange:
+            return OrangeTheme()
+        case .red:
+            return RedTheme()
+        case .maroon:
+            return MaroonTheme()
+        }
+    }
+    
+    static var allNames: [ThemeName] {
+        return [
+            .defaultTheme,
+            .blue,
+            .teal,
+            .green,
+            .yellow,
+            .orange,
+            .red,
+            .maroon
+        ]
+    }
+}
+
+class SettingsViewController: FormViewController, Themeable {
     
     private let userRepository = UserRepository()
     private let contentRepository = ContentRepository()
@@ -38,6 +84,12 @@ class SettingsViewController: FormViewController {
             self.user = user
             self.setUser(user)
         }).start())
+        
+        ThemeService.shared.addThemeable(themable: self, applyImmediately: true)
+    }
+    
+    func applyTheme(theme: Theme) {
+        tableView.reloadData()
     }
     
     private func setupForm() {
@@ -47,7 +99,7 @@ class SettingsViewController: FormViewController {
             <<< ButtonRow { row in
                 row.title = L10n.Settings.clearCache
                 row.cellSetup({ (cell, _) in
-                    cell.tintColor = UIColor.purple400()
+                    cell.tintColor = ThemeService.shared.theme.tintColor
                 })
                 }.onCellSelection({ (_, _) in
                     let progressView = MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
@@ -60,7 +112,7 @@ class SettingsViewController: FormViewController {
             <<< ButtonRow { row in
                 row.title = L10n.Settings.reloadContent
                 row.cellSetup({ (cell, _) in
-                    cell.tintColor = UIColor.purple400()
+                    cell.tintColor = ThemeService.shared.theme.tintColor
                 })
                 }.onCellSelection({ (_, _) in
                     let progressView = MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
@@ -132,9 +184,6 @@ class SettingsViewController: FormViewController {
         form +++ Section(L10n.Settings.reminder)
             <<< SwitchRow(SettingsTags.dailyReminder) { row in
                 row.title = L10n.Settings.dailyReminder
-                row.cellSetup({ (cell, _) in
-                    cell.switchControl.onTintColor = UIColor.purple400()
-                })
                 }.onChange({ (row) in
                     let defaults = UserDefaults()
                     defaults.set(row.value ?? false, forKey: "dailyReminderActive")
@@ -151,9 +200,6 @@ class SettingsViewController: FormViewController {
             +++ Section(L10n.Settings.notificationBadge)
             <<< SwitchRow(SettingsTags.displayNotificationsBadge) { row in
                 row.title = L10n.Settings.displayNotificationBadge
-                row.cellSetup({ (cell, _) in
-                    cell.switchControl.onTintColor = UIColor.purple400()
-                })
                 }.onChange({ (row) in
                     let defaults = UserDefaults()
                     defaults.set(row.value ?? false, forKey: "appBadgeActive")
@@ -174,9 +220,7 @@ class SettingsViewController: FormViewController {
             +++ Section(L10n.Settings.social)
             <<< SwitchRow(SettingsTags.disableAllNotifications) { row in
                 row.title = L10n.Settings.disableAllNotifications
-                row.cellSetup({ (cell, _) in
-                    cell.switchControl.onTintColor = UIColor.purple400()
-                }).onChange({ (row) in
+                row.onChange({ (row) in
                     if row.value == self.user?.preferences?.pushNotifications?.unsubscribeFromAll {
                         return
                     }
@@ -187,15 +231,29 @@ class SettingsViewController: FormViewController {
             }
             <<< SwitchRow(SettingsTags.disablePrivateMessages) { row in
                 row.title = L10n.Settings.disablePm
-                row.cellSetup({ (cell, _) in
-                    cell.switchControl.onTintColor = UIColor.purple400()
-                }).onChange({ (row) in
+                row.onChange({ (row) in
                     if row.value == self.user?.inbox?.optOut {
                         return
                     }
                     if let value = row.value {
                         self.userRepository.updateUser(key: "inbox.optOut", value: value).observeCompleted {}
                     }
+                })
+        }
+        +++ Section(L10n.Settings.preferences)
+            <<< PushRow<String>(SettingsTags.themeColor) { row in
+                row.title = L10n.Settings.themeColor
+                row.options = ThemeName.allNames.map({ (name) -> String in
+                    return name.rawValue
+                })
+                let defaults = UserDefaults.standard
+                row.value = defaults.string(forKey: "theme") ?? ThemeName.defaultTheme.rawValue
+                row.onChange({ (row) in
+                    if let newTheme = ThemeName(rawValue: row.value ?? "")?.themeClass {
+                        ThemeService.shared.theme = newTheme
+                    }
+                    let defaults = UserDefaults.standard
+                    defaults.set(row.value, forKey: "theme")
                 })
         }
     }

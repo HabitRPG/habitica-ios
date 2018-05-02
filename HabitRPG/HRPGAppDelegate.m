@@ -41,9 +41,8 @@
     [self.swiftAppDelegate setupPurchaseHandling];
     [self.swiftAppDelegate setupNetworkClient];
     [self.swiftAppDelegate setupDatabase];
+    [self.swiftAppDelegate setupTheme];
     
-    [[UIView appearanceWhenContainedInInstancesOfClasses:@[[UIAlertController class]]] setTintColor:[UIColor purple400]];
-
     [self configureNotifications:application];
 
     [self.swiftAppDelegate handleInitialLaunch];

@@ -97,6 +97,16 @@
 "settings.maintenance" = "Maintenance";
 "settings.clear_cache" = "Clear Cache";
 "settings.reload_content" = "Reload Content";
+"settings.preferences" = "Preferences";
+"settings.themeColor" = "Theme Color";
+"theme.default_theme" = "Default";
+"theme.blue" = "Blue";
+"theme.teal" = "Teal";
+"theme.green" = "Green";
+"theme.yellow" = "Yellow";
+"theme.orange" = "Orange";
+"theme.red" = "Red";
+"theme.maroon" = "Maroon";
 "details" = "Details";
 "chat" = "Chat";
 "guilds.leave_guild_title" = "LeaveGuild?";

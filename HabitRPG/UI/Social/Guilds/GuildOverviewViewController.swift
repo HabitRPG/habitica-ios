@@ -27,7 +27,6 @@ class GuildOverviewViewController: HRPGBaseViewController {
         super.viewDidLoad()
         
         self.segmentedFilterControl.selectedSegmentIndex = 0
-        self.segmentedFilterControl.tintColor = UIColor.purple300()
         self.segmentedFilterControl.addTarget(self, action: #selector(switchFilter), for: .valueChanged)
         segmentedWrapper.addSubview(self.segmentedFilterControl)
         headerImageView.image = HabiticaIcons.imageOfGuildHeaderCrest
@@ -41,7 +40,6 @@ class GuildOverviewViewController: HRPGBaseViewController {
         topHeaderCoordinator.followScrollView = false
         
         refreshControl = UIRefreshControl()
-        refreshControl?.tintColor = UIColor.purple300()
         refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         
         tableView.rowHeight = UITableViewAutomaticDimension

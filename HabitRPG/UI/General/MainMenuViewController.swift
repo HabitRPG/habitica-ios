@@ -38,7 +38,7 @@ struct MenuSection {
     }
 }
 
-class MainMenuViewController: HRPGBaseViewController {
+class MainMenuViewController: HRPGBaseViewController, Themeable {
     
     private var navbarColor = UIColor.purple300() {
         didSet {
@@ -75,6 +75,7 @@ class MainMenuViewController: HRPGBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        ThemeService.shared.addThemeable(themable: self, applyImmediately: true)
         topHeaderCoordinator?.hideNavBar = true
         topHeaderCoordinator?.alternativeHeader = navbarView
         topHeaderCoordinator?.navbarVisibleColor = navbarColor
@@ -90,7 +91,6 @@ class MainMenuViewController: HRPGBaseViewController {
         
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh), for: UIControlEvents.valueChanged)
-        refreshControl.tintColor = UIColor.purple300()
         self.refreshControl = refreshControl
         
         setupMenu()
@@ -98,7 +98,10 @@ class MainMenuViewController: HRPGBaseViewController {
         disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
             self?.user = user
         }).start())
-        
+    }
+    
+    func applyTheme(theme: Theme) {
+        navbarColor = theme.backgroundTintColor
     }
     
     private func setupMenu() {
@@ -194,6 +197,7 @@ class MainMenuViewController: HRPGBaseViewController {
         let indicatorView = cell.viewWithTag(2)
         indicatorView?.isHidden = item?.showIndicator == false
         indicatorView?.layer.cornerRadius = (indicatorView?.frame.size.height ?? 0) / 2
+        indicatorView?.backgroundColor = ThemeService.shared.theme.backgroundTintColor
         return cell
     }
     

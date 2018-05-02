@@ -11,7 +11,6 @@
 
 @interface HRPGLabeledProgressBar ()
 
-@property ProgressBar *progressBar;
 @property NSNumberFormatter *numberFormatter;
 
 @end

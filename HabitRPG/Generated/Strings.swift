@@ -277,6 +277,8 @@ internal enum L10n {
     internal static let maintenance = L10n.tr("Main", "settings.maintenance")
     /// Notification Badge
     internal static let notificationBadge = L10n.tr("Main", "settings.notification_badge")
+    /// Preferences
+    internal static let preferences = L10n.tr("Main", "settings.preferences")
     /// Profile
     internal static let profile = L10n.tr("Main", "settings.profile")
     /// Push Notifications
@@ -287,6 +289,8 @@ internal enum L10n {
     internal static let reminder = L10n.tr("Main", "settings.reminder")
     /// Social
     internal static let social = L10n.tr("Main", "settings.social")
+    /// Theme Color
+    internal static let themeColor = L10n.tr("Main", "settings.themeColor")
     /// User
     internal static let user = L10n.tr("Main", "settings.user")
   }
@@ -398,6 +402,25 @@ internal enum L10n {
       /// What do you want to complete once?
       internal static let todosTitlePlaceholder = L10n.tr("Main", "tasks.form.todos_title_placeholder")
     }
+  }
+
+  internal enum Theme {
+    /// Blue
+    internal static let blue = L10n.tr("Main", "theme.blue")
+    /// Default
+    internal static let defaultTheme = L10n.tr("Main", "theme.default_theme")
+    /// Green
+    internal static let green = L10n.tr("Main", "theme.green")
+    /// Maroon
+    internal static let maroon = L10n.tr("Main", "theme.maroon")
+    /// Orange
+    internal static let orange = L10n.tr("Main", "theme.orange")
+    /// Red
+    internal static let red = L10n.tr("Main", "theme.red")
+    /// Teal
+    internal static let teal = L10n.tr("Main", "theme.teal")
+    /// Yellow
+    internal static let yellow = L10n.tr("Main", "theme.yellow")
   }
 }
 // swiftlint:enable explicit_type_interface identifier_name line_length nesting type_body_length type_name
