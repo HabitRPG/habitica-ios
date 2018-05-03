@@ -590,7 +590,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="UserProfileViewController" id="MTH-Re-wqo" customClass="HRPGUserProfileViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="WTt-7r-yfN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
@@ -2367,7 +2367,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Q2f-jL-AaR">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="345"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="358"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uHV-tR-tWn">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="0.0"/>
@@ -2404,7 +2404,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e0g-qd-d5g">
-                                                <rect key="frame" x="0.0" y="128.5" width="375" height="36"/>
+                                                <rect key="frame" x="0.0" y="128.5" width="375" height="49"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="49" id="Utl-AG-aHg"/>
@@ -2412,7 +2412,7 @@
                                                 <state key="normal" title="Party Challenges"/>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="jxu-is-rhK" customClass="CollapsibleStackView" customModule="Habitica" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="194.5" width="375" height="84.5"/>
+                                                <rect key="frame" x="0.0" y="207.5" width="375" height="84.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Members" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DLs-JF-QqC" customClass="CollapsibleTitle" customModule="Habitica" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="19.5"/>
@@ -2440,7 +2440,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FTm-Ew-1fN">
-                                                <rect key="frame" x="0.0" y="309" width="375" height="36"/>
+                                                <rect key="frame" x="0.0" y="322" width="375" height="36"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qRK-ar-9GJ">
                                                         <rect key="frame" x="16" y="0.0" width="343" height="36"/>
@@ -2499,6 +2499,7 @@
                         <outlet property="leaveButtonWrapper" destination="FTm-Ew-1fN" id="UQf-cf-xgl"/>
                         <outlet property="membersStackview" destination="jxu-is-rhK" id="iFR-Px-g2u"/>
                         <segue destination="1Ye-yE-okG" kind="presentation" identifier="PartyFormSegue" id="TdH-lr-gOE"/>
+                        <segue destination="MTH-Re-wqo" kind="show" identifier="UserProfileSegue" id="ypV-Mu-tgU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Bq-ms-DAs" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2518,7 +2519,7 @@
         <segue reference="gAH-Zh-PJ3"/>
         <segue reference="BKi-xg-gxr"/>
         <segue reference="9hs-wq-6bn"/>
-        <segue reference="RWA-7r-R8g"/>
+        <segue reference="ypV-Mu-tgU"/>
         <segue reference="Nsp-ag-Sds"/>
         <segue reference="wif-V9-Mcy"/>
     </inferredMetricsTieBreakers>

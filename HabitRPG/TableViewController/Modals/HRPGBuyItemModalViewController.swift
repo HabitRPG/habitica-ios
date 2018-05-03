@@ -62,10 +62,13 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     
     func applyTheme(theme: Theme) {
         pinButton.setTitleColor(theme.tintColor, for: .normal)
+        pinButton.backgroundColor = theme.backgroundTintColor.withAlphaComponent(0.05)
+        buyButton.backgroundColor = theme.backgroundTintColor.withAlphaComponent(0.05)
         closableShopModal.closeButton.setTitleColor(theme.tintColor, for: .normal)
         if !itemIsLocked() {
             buyLabel.textColor = theme.tintColor
         }
+        view.backgroundColor = theme.backgroundTintColor.darker(by: 50)?.withAlphaComponent(0.6)
     }
     
     func styleViews() {

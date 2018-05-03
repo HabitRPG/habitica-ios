@@ -14,6 +14,7 @@
             <connections>
                 <outlet property="alertStackView" destination="TfL-K4-Ks4" id="dzH-0N-t5J"/>
                 <outlet property="bottomOffsetConstraint" destination="8EC-pR-IK1" id="Kpa-30-jU0"/>
+                <outlet property="buttonBackgroundView" destination="Iee-IM-xUZ" id="uCp-Mo-9lD"/>
                 <outlet property="buttonStackView" destination="q8R-qq-vxV" id="E0D-eA-zXr"/>
                 <outlet property="centerConstraint" destination="Ja4-aA-Xor" id="xJm-tB-avg"/>
                 <outlet property="closeButton" destination="TbI-aA-bqR" id="fdb-2o-5FY"/>

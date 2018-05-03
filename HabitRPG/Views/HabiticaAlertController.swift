@@ -10,7 +10,7 @@ import UIKit
 import PopupDialog
 
 @objc
-class HabiticaAlertController: UIViewController {
+class HabiticaAlertController: UIViewController, Themeable {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var titleLabelTopMargin: NSLayoutConstraint!
@@ -23,6 +23,7 @@ class HabiticaAlertController: UIViewController {
     @IBOutlet weak var bottomOffsetConstraint: NSLayoutConstraint!
     @IBOutlet var centerConstraint: NSLayoutConstraint!
     @IBOutlet weak var scrollviewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var buttonBackgroundView: UIView!
     
     private var buttonHandlers = [Int: ((UIButton) -> Swift.Void)]()
     private var buttons = [UIButton]()
@@ -110,6 +111,17 @@ class HabiticaAlertController: UIViewController {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        ThemeService.shared.addThemeable(themable: self, applyImmediately: true)
+    }
+    
+    func applyTheme(theme: Theme) {
+        view.backgroundColor = theme.backgroundTintColor.darker(by: 50)?.withAlphaComponent(0.6)
+        buttonBackgroundView.backgroundColor = theme.tintColor.withAlphaComponent(0.05)
     }
     
     override func viewWillAppear(_ animated: Bool) {
