@@ -179,3 +179,7 @@
 "classes.class_header" = "%@ Class";
 "classes.become_a_class" = "Become a %@";
 "leader" = "Leader";
+"party.invited_to_quest" = "%@ invited you to participate in a quest";
+"party.quest_number_responded" = "%d/%d Members responded";
+"party.quest_participant_count" = "%d Participants";
+"pending_damage" = "Pending damage";

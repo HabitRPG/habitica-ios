@@ -37,7 +37,7 @@ class GroupDetailViewController: HRPGUIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let margins = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+        let margins = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         groupDescriptionStackView?.layoutMargins = margins
         groupDescriptionStackView?.isLayoutMarginsRelativeArrangement = true
         

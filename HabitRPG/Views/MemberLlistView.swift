@@ -139,7 +139,7 @@ class MemberListView: UIView {
     }
 
     func layout() {
-        avatarView.pin.start(14).width(97).height(99).vCenter()
+        avatarView.pin.start().width(97).height(99).vCenter()
         usernameLabel.pin.top(14).after(of: avatarView).marginStart(16).height(21).sizeToFit(.height)
         leaderView.pin.top(14).after(of: usernameLabel).marginStart(6).height(20).sizeToFit(.height)
         leaderView.pin.width(leaderView.bounds.size.width + 16)
@@ -151,9 +151,9 @@ class MemberListView: UIView {
 
         let labelWidth = max(healthLabel.bounds.size.width, experienceLabel.bounds.size.width, manaLabel.bounds.size.width)
 
-        healthLabel.pin.end(16).width(labelWidth)
-        experienceLabel.pin.end(16).width(labelWidth)
-        manaLabel.pin.end(16).width(labelWidth)
+        healthLabel.pin.end().width(labelWidth)
+        experienceLabel.pin.end().width(labelWidth)
+        manaLabel.pin.end().width(labelWidth)
 
         healthBar.pin.after(of: avatarView).marginStart(16).below(of: levelLabel).marginTop(5).height(8).before(of: healthLabel).marginEnd(12)
         experienceBar.pin.after(of: avatarView).marginStart(16).below(of: healthBar).marginTop(11).height(8).before(of: healthLabel).marginEnd(12)

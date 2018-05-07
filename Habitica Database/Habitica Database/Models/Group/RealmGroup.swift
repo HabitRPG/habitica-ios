@@ -28,7 +28,7 @@ class RealmGroup: Object, GroupProtocol {
             if let newQuest = newValue as? RealmQuestState {
                 realmQuest = newQuest
             } else if let newQuest = newValue {
-                realmQuest = RealmQuestState(id: id, state: newQuest)
+                realmQuest = RealmQuestState(objectID: id, id: id, state: newQuest)
             }
         }
     }

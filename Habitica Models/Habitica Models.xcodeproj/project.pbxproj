@@ -36,6 +36,7 @@
 		29144890208A1B1500F3A6B5 /* HairProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2914488F208A1B1500F3A6B5 /* HairProtocol.swift */; };
 		2914489A208A32B400F3A6B5 /* CustomizationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29144899208A32B400F3A6B5 /* CustomizationProtocol.swift */; };
 		2914489C208A335C00F3A6B5 /* CustomizationSetProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2914489B208A335C00F3A6B5 /* CustomizationSetProtocol.swift */; };
+		291DE978209B43920073182A /* QuestParticipantProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291DE977209B43920073182A /* QuestParticipantProtocol.swift */; };
 		291E95B120988706006EE585 /* UserPartyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291E95B020988706006EE585 /* UserPartyProtocol.swift */; };
 		292DEE5A204DAA000086D5F7 /* HabiticaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE59204DAA000086D5F7 /* HabiticaModel.swift */; };
 		292DEE7A204E36F60086D5F7 /* TagProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE79204E36F60086D5F7 /* TagProtocol.swift */; };
@@ -122,6 +123,7 @@
 		2914488F208A1B1500F3A6B5 /* HairProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HairProtocol.swift; sourceTree = "<group>"; };
 		29144899208A32B400F3A6B5 /* CustomizationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationProtocol.swift; sourceTree = "<group>"; };
 		2914489B208A335C00F3A6B5 /* CustomizationSetProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationSetProtocol.swift; sourceTree = "<group>"; };
+		291DE977209B43920073182A /* QuestParticipantProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestParticipantProtocol.swift; sourceTree = "<group>"; };
 		291E95B020988706006EE585 /* UserPartyProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPartyProtocol.swift; sourceTree = "<group>"; };
 		292DEE59204DAA000086D5F7 /* HabiticaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabiticaModel.swift; sourceTree = "<group>"; };
 		292DEE79204E36F60086D5F7 /* TagProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagProtocol.swift; sourceTree = "<group>"; };
@@ -287,6 +289,7 @@
 				290279862058341F006DACB9 /* QuestProgressProtocol.swift */,
 				295611022056DBC900D9711A /* QuestProtocol.swift */,
 				29027984205833EA006DACB9 /* QuestStateProtocol.swift */,
+				291DE977209B43920073182A /* QuestParticipantProtocol.swift */,
 				295610FE2056D17D00D9711A /* SkillProtocol.swift */,
 				2902798220583383006DACB9 /* WorldStateProtocol.swift */,
 			);
@@ -550,6 +553,7 @@
 				2974BD95208E0DB700EC1A25 /* PurchasedProtocol.swift in Sources */,
 				290B62452073976B007287C4 /* GroupMembershipProtocol.swift in Sources */,
 				29323E4B2052F4CF00AC6D6F /* UserItemsProtocol.swift in Sources */,
+				291DE978209B43920073182A /* QuestParticipantProtocol.swift in Sources */,
 				290B628B207E1660007287C4 /* MemberProtocol.swift in Sources */,
 				292DEEAD205038CB0086D5F7 /* TaskResponseProtocol.swift in Sources */,
 				295610F32056C9F500D9711A /* EggProtocol.swift in Sources */,

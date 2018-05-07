@@ -8,7 +8,6 @@
 
 #import "HRPGGroupAboutTableViewController.h"
 #import "HRPGGroupFormViewController.h"
-#import "HRPGGroupTableViewController.h"
 #import "UIColor+Habitica.h"
 #import "UIViewController+Markdown.h"
 #import "NSString+Emoji.h"
@@ -142,17 +141,7 @@
 - (IBAction)unwindToListSave:(UIStoryboardSegue *)segue {
     HRPGGroupFormViewController *formViewController = segue.sourceViewController;
     __weak HRPGGroupAboutTableViewController *weakSelf = self;
-    [[HRPGManager sharedManager]
-        updateGroup:formViewController.group
-          onSuccess:^() {
-              if ([weakSelf.presentingViewController
-                          .class isSubclassOfClass:HRPGGroupTableViewController.class]) {
-                  HRPGGroupTableViewController *vc =
-                      (HRPGGroupTableViewController *)weakSelf.presentingViewController;
-                  self.group = vc.group;
-                  [self.tableView reloadData];
-              }
-          } onError:nil];
+
 }
 
 - (void)alertClickedButtonAtIndex:(NSInteger)buttonIndex {

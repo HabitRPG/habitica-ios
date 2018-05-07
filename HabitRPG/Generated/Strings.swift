@@ -61,6 +61,8 @@ internal enum L10n {
   internal static let notes = L10n.tr("Main", "notes")
   /// OK
   internal static let ok = L10n.tr("Main", "ok")
+  /// Pending damage
+  internal static let pendingDamage = L10n.tr("Main", "pending_damage")
   /// Pets
   internal static let pets = L10n.tr("Main", "pets")
   /// Purchase for %d Gems
@@ -244,6 +246,21 @@ internal enum L10n {
     internal static let tavern = L10n.tr("Main", "menu.tavern")
     /// Use Skills
     internal static let useSkills = L10n.tr("Main", "menu.use_skills")
+  }
+
+  internal enum Party {
+    /// %@ invited you to participate in a quest
+    internal static func invitedToQuest(_ p1: String) -> String {
+      return L10n.tr("Main", "party.invited_to_quest", p1)
+    }
+    /// %d/%d Members responded
+    internal static func questNumberResponded(_ p1: Int, _ p2: Int) -> String {
+      return L10n.tr("Main", "party.quest_number_responded", p1, p2)
+    }
+    /// %d Participants
+    internal static func questParticipantCount(_ p1: Int) -> String {
+      return L10n.tr("Main", "party.quest_participant_count", p1)
+    }
   }
 
   internal enum Settings {

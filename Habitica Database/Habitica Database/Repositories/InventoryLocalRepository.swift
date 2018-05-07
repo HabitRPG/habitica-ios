@@ -63,6 +63,12 @@ public class InventoryLocalRepository: ContentLocalRepository {
         })
     }
     
+    public func getQuest(key: String) -> SignalProducer<QuestProtocol?, ReactiveSwiftRealmError> {
+        return RealmQuest.findBy(key: key).map({ quest -> QuestProtocol? in
+            return quest
+        })
+    }
+    
     public func updatePetTrained(userID: String, key: String, trained: Int, consumedFood: String) {
         let realm = getRealm()
         let ownedPet = realm?.object(ofType: RealmOwnedPet.self, forPrimaryKey: userID+key)

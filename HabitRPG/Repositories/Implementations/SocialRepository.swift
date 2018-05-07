@@ -131,7 +131,6 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
             })
     }
 
-
     func getGroupMembers(groupID: String) -> SignalProducer<ReactiveResults<[MemberProtocol]>, ReactiveSwiftRealmError> {
         return localRepository.getGroupMembers(groupID: groupID)
     }
@@ -212,5 +211,45 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
         let call = MarkInboxAsSeenCall()
         call.fire()
         return call.objectSignal
+    }
+    
+    public func rejectQuestInvitation(groupID: String) -> Signal<QuestStateProtocol?, NoError> {
+        localRepository.changeQuestRSVP(userID: currentUserId ?? "", rsvpNeeded: false)
+        let call = RejectQuestInvitationCall(groupID: groupID)
+        call.fire()
+        return call.objectSignal.on(value: saveQuestState(objectID: groupID, groupID: groupID))
+    }
+    
+    public func acceptQuestInvitation(groupID: String) -> Signal<QuestStateProtocol?, NoError> {
+        localRepository.changeQuestRSVP(userID: currentUserId ?? "", rsvpNeeded: false)
+        let call = AcceptQuestInvitationCall(groupID: groupID)
+        call.fire()
+        return call.objectSignal.on(value: saveQuestState(objectID: groupID, groupID: groupID))
+    }
+    
+    public func cancelQuestInvitation(groupID: String) -> Signal<QuestStateProtocol?, NoError> {
+        let call = CancelQuestInvitationCall(groupID: groupID)
+        call.fire()
+        return call.objectSignal.on(value: saveQuestState(objectID: groupID, groupID: groupID))
+    }
+    
+    public func abortQuest(groupID: String) -> Signal<QuestStateProtocol?, NoError> {
+        let call = AbortQuestCall(groupID: groupID)
+        call.fire()
+        return call.objectSignal.on(value: saveQuestState(objectID: groupID, groupID: groupID))
+    }
+    
+    public func forceStartQuest(groupID: String) -> Signal<QuestStateProtocol?, NoError> {
+        let call = ForceStartQuestCall(groupID: groupID)
+        call.fire()
+        return call.objectSignal.on(value: saveQuestState(objectID: groupID, groupID: groupID))
+    }
+    
+    private func saveQuestState(objectID: String, groupID: String) -> ((QuestStateProtocol?) -> Void) {
+        return { questState in
+            if let questState = questState {
+                self.localRepository.save(objectID: objectID, groupID: groupID, questState: questState)
+            }
+        }
     }
 }

@@ -27,24 +27,24 @@ class RealmQuest: RealmItem, QuestProtocol {
             }
         }
     }
-    var realmBoss: RealmQuestBoss?
+    @objc dynamic var realmBoss: RealmQuestBoss?
     var collect: [QuestCollectProtocol]? {
         get {
-            return realmCollect?.map({ (collectItem) -> QuestCollectProtocol in
+            return realmCollect.map({ (collectItem) -> QuestCollectProtocol in
                 return collectItem
             })
         }
         set {
-            realmCollect?.removeAll()
+            realmCollect.removeAll()
             newValue?.forEach { (collectItem) in
                 if let realmCollectItem = collectItem as? RealmQuestCollect {
-                    realmCollect?.append(realmCollectItem)
+                    realmCollect.append(realmCollectItem)
                 }
-                realmCollect?.append(RealmQuestCollect(collectItem))
+                realmCollect.append(RealmQuestCollect(collectItem))
             }
         }
     }
-    var realmCollect: List<RealmQuestCollect>?
+    var realmCollect = List<RealmQuestCollect>()
     
     override static func ignoredProperties() -> [String] {
         return ["boss", "collect"]

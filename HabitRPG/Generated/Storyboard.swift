@@ -240,6 +240,7 @@ internal enum StoryboardSegue {
     case invitationSegue = "InvitationSegue"
     case inviteUsersSegue = "InviteUsersSegue"
     case partyFormSegue = "PartyFormSegue"
+    case questDetailSegue = "QuestDetailSegue"
     case selectedRecipientSegue = "SelectedRecipientSegue"
     case showGuildSegue = "ShowGuildSegue"
     case userProfileSegue = "UserProfileSegue"

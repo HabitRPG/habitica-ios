@@ -55,6 +55,12 @@
 		2919FDD92090DF1B0096A53B /* PostInboxMessageCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2919FDD82090DF1B0096A53B /* PostInboxMessageCall.swift */; };
 		2919FDDB2091D3D70096A53B /* MarkInboxAsSeenCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2919FDDA2091D3D70096A53B /* MarkInboxAsSeenCall.swift */; };
 		2919FDE12091DFFE0096A53B /* ReviveUserCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2919FDE02091DFFE0096A53B /* ReviveUserCall.swift */; };
+		291DE97A209B443D0073182A /* APIQuestParticipant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291DE979209B443D0073182A /* APIQuestParticipant.swift */; };
+		291E1A20209B6FAB00BA1FFB /* RejectQuestInvitationCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291E1A1F209B6FAB00BA1FFB /* RejectQuestInvitationCall.swift */; };
+		291E1A22209B701D00BA1FFB /* AcceptQuestInvitationCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291E1A21209B701D00BA1FFB /* AcceptQuestInvitationCall.swift */; };
+		291E1A24209B702B00BA1FFB /* AbortQuestCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291E1A23209B702B00BA1FFB /* AbortQuestCall.swift */; };
+		291E1A26209B703C00BA1FFB /* ForceStartQuestCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291E1A25209B703C00BA1FFB /* ForceStartQuestCall.swift */; };
+		291E1A28209B704A00BA1FFB /* CancelQuestInvitationCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291E1A27209B704A00BA1FFB /* CancelQuestInvitationCall.swift */; };
 		291E95AD20986CDE006EE585 /* DateEncodingStrategy-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291E95AC20986CDE006EE585 /* DateEncodingStrategy-Extension.swift */; };
 		291E95B5209888E1006EE585 /* APIUserParty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291E95B4209888E1006EE585 /* APIUserParty.swift */; };
 		292DEE44204D9D8D0086D5F7 /* Habitica_Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE45204D9D8D0086D5F7 /* Habitica_Models.framework */; };
@@ -202,6 +208,12 @@
 		2919FDD82090DF1B0096A53B /* PostInboxMessageCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostInboxMessageCall.swift; sourceTree = "<group>"; };
 		2919FDDA2091D3D70096A53B /* MarkInboxAsSeenCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkInboxAsSeenCall.swift; sourceTree = "<group>"; };
 		2919FDE02091DFFE0096A53B /* ReviveUserCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviveUserCall.swift; sourceTree = "<group>"; };
+		291DE979209B443D0073182A /* APIQuestParticipant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIQuestParticipant.swift; sourceTree = "<group>"; };
+		291E1A1F209B6FAB00BA1FFB /* RejectQuestInvitationCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RejectQuestInvitationCall.swift; sourceTree = "<group>"; };
+		291E1A21209B701D00BA1FFB /* AcceptQuestInvitationCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptQuestInvitationCall.swift; sourceTree = "<group>"; };
+		291E1A23209B702B00BA1FFB /* AbortQuestCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbortQuestCall.swift; sourceTree = "<group>"; };
+		291E1A25209B703C00BA1FFB /* ForceStartQuestCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForceStartQuestCall.swift; sourceTree = "<group>"; };
+		291E1A27209B704A00BA1FFB /* CancelQuestInvitationCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelQuestInvitationCall.swift; sourceTree = "<group>"; };
 		291E95AC20986CDE006EE585 /* DateEncodingStrategy-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateEncodingStrategy-Extension.swift"; sourceTree = "<group>"; };
 		291E95B4209888E1006EE585 /* APIUserParty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIUserParty.swift; sourceTree = "<group>"; };
 		292DEE45204D9D8D0086D5F7 /* Habitica_Models.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_Models.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -343,6 +355,7 @@
 				295610F82056CAA800D9711A /* APIHatchingPotion.swift */,
 				2902798E205835DF006DACB9 /* APIWorldState.swift */,
 				29027990205835F7006DACB9 /* APIQuestState.swift */,
+				291DE979209B443D0073182A /* APIQuestParticipant.swift */,
 				2902799220583612006DACB9 /* APIQuestProgress.swift */,
 				299FB2872084987000422522 /* APIPet.swift */,
 				299FB2892084988500422522 /* APIMount.swift */,
@@ -427,6 +440,11 @@
 				290B6294207E3E6C007287C4 /* LeaveGroupCall.swift */,
 				294973CF2081039300F02AC3 /* InviteToQuestCall.swift */,
 				DC2C420658EE5D517E37D97D /* RetrieveGroupMembersCall.swift */,
+				291E1A1F209B6FAB00BA1FFB /* RejectQuestInvitationCall.swift */,
+				291E1A21209B701D00BA1FFB /* AcceptQuestInvitationCall.swift */,
+				291E1A23209B702B00BA1FFB /* AbortQuestCall.swift */,
+				291E1A25209B703C00BA1FFB /* ForceStartQuestCall.swift */,
+				291E1A27209B704A00BA1FFB /* CancelQuestInvitationCall.swift */,
 			);
 			path = Group;
 			sourceTree = "<group>";
@@ -883,8 +901,10 @@
 				292F965B206E2AE300804151 /* RetrieveChatCall.swift in Sources */,
 				29323E4720521B5000AC6D6F /* APIContributor.swift in Sources */,
 				290C300F206A779E0066AF5B /* DeleteTaskCall.swift in Sources */,
+				291E1A22209B701D00BA1FFB /* AcceptQuestInvitationCall.swift in Sources */,
 				290B6295207E3E6C007287C4 /* LeaveGroupCall.swift in Sources */,
 				290B626F207BA6FB007287C4 /* DeleteAccountCall.swift in Sources */,
+				291DE97A209B443D0073182A /* APIQuestParticipant.swift in Sources */,
 				290C3046206D44670066AF5B /* RetrieveGroupCall.swift in Sources */,
 				290B6277207BA86F007287C4 /* SendPasswordResetEmailCall.swift in Sources */,
 				290C3028206B98A50066AF5B /* APIOwnedItem.swift in Sources */,
@@ -927,6 +947,7 @@
 				290B628F207E17C1007287C4 /* APIMember.swift in Sources */,
 				290C3034206D24A40066AF5B /* RunCronCall.swift in Sources */,
 				2902799320583612006DACB9 /* APIQuestProgress.swift in Sources */,
+				291E1A26209B703C00BA1FFB /* ForceStartQuestCall.swift in Sources */,
 				2902798120581DE3006DACB9 /* BulkAllocateAttributePointsCall.swift in Sources */,
 				299FB29620849F1500422522 /* APIOwnedMount.swift in Sources */,
 				295611072056DD2800D9711A /* APIQuest.swift in Sources */,
@@ -964,14 +985,17 @@
 				292DEE88204E490A0086D5F7 /* APIReminder.swift in Sources */,
 				292F9659206E2AAB00804151 /* MarkChatSeenCall.swift in Sources */,
 				2902795E2057E858006DACB9 /* APIFAQEntry.swift in Sources */,
+				291E1A28209B704A00BA1FFB /* CancelQuestInvitationCall.swift in Sources */,
 				292DEE4B204DA1220086D5F7 /* NetworkAuthenticationManager.swift in Sources */,
 				290B62522073D91C007287C4 /* APIInbox.swift in Sources */,
 				294973CC2080FA9400F02AC3 /* ReviveCall.swift in Sources */,
 				29323E23205099FF00AC6D6F /* HabiticaResponseCall.swift in Sources */,
+				291E1A20209B6FAB00BA1FFB /* RejectQuestInvitationCall.swift in Sources */,
 				292DEE7E204E37670086D5F7 /* APITag.swift in Sources */,
 				290B6293207E3E24007287C4 /* JoinGroupCall.swift in Sources */,
 				290B6279207BA8C3007287C4 /* LocalLoginCall.swift in Sources */,
 				294973D02081039300F02AC3 /* InviteToQuestCall.swift in Sources */,
+				291E1A24209B702B00BA1FFB /* AbortQuestCall.swift in Sources */,
 				DC2C4A0476068E29973DB0CD /* RetrieveGroupMembersCall.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

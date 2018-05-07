@@ -16,7 +16,6 @@
 #import "HRPGTableViewController.h"
 #import "Reminder.h"
 #import "HRPGInboxChatViewController.h"
-#import "HRPGPartyTableViewController.h"
 #import "HRPGQuestDetailViewController.h"
 #import "UIColor+Habitica.h"
 #import <Keys/HabiticaKeys.h>
@@ -231,10 +230,10 @@
             inboxChatViewController.userID = userInfo[@"replyTo"];
             [displayedNavigationController pushViewController:inboxChatViewController animated:YES];
         } else if ([userInfo[@"identifier"] isEqualToString:@"invitedParty"] || [userInfo[@"identifier"] isEqualToString:@"questStarted"]) {
-            HRPGPartyTableViewController *partyViewController = (HRPGPartyTableViewController *)[self loadViewController:@"PartyViewController" fromStoryboard:@"Social"];
+            PartyViewController *partyViewController = (PartyViewController *)[self loadViewController:@"PartyViewController" fromStoryboard:@"Social"];
             [displayedNavigationController pushViewController:partyViewController animated:YES];
         } else if ([userInfo[@"identifier"] isEqualToString:@"invitedGuild"]) {
-            HRPGGroupTableViewController *guildViewController = (HRPGGroupTableViewController *)[self loadViewController:@"GroupTableViewController" fromStoryboard:@"Social"];
+            SplitSocialViewController *guildViewController = (SplitSocialViewController *)[self loadViewController:@"GroupTableViewController" fromStoryboard:@"Social"];
             guildViewController.groupID = userInfo[@"groupID"];
             [displayedNavigationController pushViewController:guildViewController animated:YES];
         } else if ([userInfo[@"identifier"] isEqualToString:@"questInvitation"]) {

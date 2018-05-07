@@ -23,7 +23,7 @@ class RealmUserParty: Object, UserPartyProtocol {
                 return
             }
             if let value = newValue {
-                realmQuest = RealmQuestState(id: id, state: value)
+                realmQuest = RealmQuestState(objectID: userID, id: id, state: value)
             }
         }
     }

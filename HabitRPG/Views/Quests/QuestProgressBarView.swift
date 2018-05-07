@@ -10,15 +10,44 @@ import UIKit
 
 class QuestProgressBarView: UIView {
     
-    private var formatter = NumberFormatter()
+    private let formatter = NumberFormatter()
     
-    @IBOutlet private weak var titleLabel: UILabel!
-    @IBOutlet private weak var progressView: ProgressBar!
-    @IBOutlet private weak var valueLabel: UILabel!
-    @IBOutlet private weak var iconView: UIImageView!
-    @IBOutlet private weak var pendingLabel: UILabel!
-    @IBOutlet private weak var pendingIconView: UIImageView!
-    @IBOutlet weak var pendingView: UIView!
+    private let titleLabel: UILabel = {
+        let view = UILabel()
+        view.font = CustomFontMetrics.scaledSystemFont(ofSize: 14, ofWeight: .semibold)
+        return view
+    }()
+    private let progressView: ProgressBar = {
+        let view = ProgressBar()
+        view.barBackgroundColor = UIColor.init(white: 1.0, alpha: 0.16)
+        return view
+    }()
+    private let valueLabel: UILabel = {
+        let view = UILabel()
+        view.font = CustomFontMetrics.scaledSystemFont(ofSize: 12)
+        return view
+    }()
+    private let iconView: UIImageView = {
+        let view = UIImageView()
+        view.contentMode = .center
+        return view
+    }()
+    private let bigIconView: UIImageView = {
+        let view = UIImageView()
+        view.contentMode = .center
+        return view
+    }()
+    private let pendingLabel: UILabel = {
+        let view = UILabel()
+        view.font = CustomFontMetrics.scaledSystemFont(ofSize: 12)
+        return view
+    }()
+    private let pendingIconView: UIImageView = {
+        let view = UIImageView()
+        view.image = HabiticaIcons.imageOfDamage
+        view.contentMode = .center
+        return view
+    }()
     
     public var title: String? {
         get {
@@ -44,6 +73,12 @@ class QuestProgressBarView: UIView {
         }
     }
     
+    public var barBackgroundColor = UIColor.init(white: 1.0, alpha: 0.16) {
+        didSet {
+            progressView.barBackgroundColor = barBackgroundColor
+        }
+    }
+    
     public var pendingBarColor: UIColor {
         get {
             return progressView.stackedBarColor
@@ -53,21 +88,22 @@ class QuestProgressBarView: UIView {
         }
     }
     
-    public var pendingIcon: UIImage? {
-        get {
-            return pendingIconView.image
-        }
-        set {
-            pendingIconView.image = newValue
-        }
-    }
-    
     public var icon: UIImage? {
         get {
             return iconView.image
         }
         set {
             iconView.image = newValue
+        }
+    }
+    
+    public var bigIcon: UIImage? {
+        get {
+            return bigIconView.image
+        }
+        set {
+            bigIconView.image = newValue
+            setNeedsLayout()
         }
     }
 
@@ -91,13 +127,34 @@ class QuestProgressBarView: UIView {
         }
     }
     
+    public var titleTextColor = UIColor.white {
+        didSet {
+            titleLabel.textColor = titleTextColor
+        }
+    }
+    
+    public var valueTextColor = UIColor.white {
+        didSet {
+            valueLabel.textColor = valueTextColor
+            pendingLabel.textColor = valueTextColor
+        }
+    }
+    
     private func updateValueLabel() {
         self.valueLabel.text = "\(formatter.string(from: NSNumber(value: currentValue)) ?? "") / \(formatter.string(from: NSNumber(value: maxValue)) ?? "")"
+        setNeedsLayout()
     }
     
     private func updatePendingLabel() {
-        pendingView.isHidden = pendingTitle.count == 0
+        pendingLabel.isHidden = pendingTitle.count == 0
+        pendingIconView.isHidden = pendingTitle.count == 0
         pendingLabel.text = "\(formatter.string(from: NSNumber(value: pendingValue)) ?? "") \(pendingTitle)"
+        setNeedsLayout()
+    }
+    
+    init() {
+        super.init(frame: CGRect.zero)
+        setupView()
     }
     
     override init(frame: CGRect) {
@@ -113,36 +170,50 @@ class QuestProgressBarView: UIView {
     // MARK: - Private Helper Methods
     
     private func setupView() {
-        if let view = viewFromNibForClass() {
-            translatesAutoresizingMaskIntoConstraints = true
-            
-            view.frame = bounds
-            view.autoresizingMask = [
-                UIViewAutoresizing.flexibleWidth,
-                UIViewAutoresizing.flexibleHeight
-            ]
-            addSubview(view)
-            pendingView.isHidden = true
-            
-            progressView.barBackgroundColor = UIColor.init(white: 1.0, alpha: 0.16)
-            titleLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 14, ofWeight: .semibold)
-            pendingLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 12)
-            valueLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 12)
-            
-            formatter.usesGroupingSeparator = true
-            formatter.numberStyle = .decimal
-            formatter.locale = NSLocale.current
-            formatter.maximumFractionDigits = 1
-            
-            setNeedsUpdateConstraints()
-            updateConstraints()
-            setNeedsLayout()
-            layoutIfNeeded()
+        addSubview(titleLabel)
+        addSubview(progressView)
+        addSubview(valueLabel)
+        addSubview(iconView)
+        addSubview(pendingIconView)
+        addSubview(pendingLabel)
+        addSubview(bigIconView)
+        pendingIconView.isHidden = true
+        pendingLabel.isHidden = true
+        
+        formatter.usesGroupingSeparator = true
+        formatter.numberStyle = .decimal
+        formatter.locale = NSLocale.current
+        formatter.maximumFractionDigits = 1
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        layout()
+    }
+    
+    func layout() {
+        var offset = CGFloat(0)
+        if let bigIcon = self.bigIcon {
+            bigIconView.pin.start().top().bottom().width(bigIcon.size.width)
+            offset = bigIcon.size.width + 6
         }
+        titleLabel.pin.top().start(offset).end().sizeToFit(.width)
+        progressView.pin.below(of: titleLabel).marginTop(4).start(offset).end().height(8)
+        let lowerHeight = max(20, valueLabel.intrinsicContentSize.height)
+        if icon != nil {
+            iconView.pin.start(offset).below(of: progressView).width(20).height(lowerHeight).marginTop(4)
+            valueLabel.pin.right(of: iconView).marginLeft(4)
+        } else {
+            valueLabel.pin.start(offset)
+        }
+        valueLabel.pin.below(of: progressView).height(lowerHeight).sizeToFit(.height).marginTop(4)
+        pendingLabel.pin.below(of: progressView).end().height(lowerHeight).sizeToFit(.height).marginTop(4)
+        pendingIconView.pin.left(of: pendingLabel).marginRight(4).below(of: progressView).width(20).height(lowerHeight).marginTop(4)
     }
     
     override var intrinsicContentSize: CGSize {
-        return CGSize(width: self.frame.size.width, height: 66)
+        layout()
+        return CGSize(width: self.frame.size.width, height: valueLabel.frame.origin.y + valueLabel.frame.size.height)
     }
     
 }

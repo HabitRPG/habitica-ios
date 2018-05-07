@@ -63,7 +63,7 @@ class TavernDetailViewController: GroupDetailViewController {
         tavernHeaderView.setSprites(identifier: "tavern")
         tavernHeaderView.setNotes(NSLocalizedString("Welcome to the Inn! Pull up a chair to chat, or take a break from your tasks.", comment: ""))
         
-        let margins = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+        let margins = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         worldBossStackView.layoutMargins = margins
         worldBossStackView.isLayoutMarginsRelativeArrangement = true
         innStackView.layoutMargins = margins

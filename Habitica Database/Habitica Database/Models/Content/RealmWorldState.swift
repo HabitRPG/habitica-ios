@@ -20,7 +20,7 @@ class RealmWorldState: Object, WorldStateProtocol {
             if let newWorldBoss = newValue as? RealmQuestState {
                 realmWorldBoss = newWorldBoss
             } else if let newWorldBoss = newValue {
-                realmWorldBoss = RealmQuestState(id: id, state: newWorldBoss)
+                realmWorldBoss = RealmQuestState(objectID: id, id: id, state: newWorldBoss)
             }
         }
     }

@@ -68,8 +68,7 @@ class QuestProgressView: UIView {
             healthProgressView.barColor = UIColor.red50()
             healthProgressView.icon = HabiticaIcons.imageOfHeartLightBg
             healthProgressView.pendingBarColor = UIColor.red10().withAlphaComponent(0.3)
-            healthProgressView.pendingIcon = HabiticaIcons.imageOfDamage
-            healthProgressView.pendingTitle = "dmg pending"
+            healthProgressView.pendingTitle = L10n.pendingDamage
             rageProgressView.barColor = UIColor.orange100()
             rageProgressView.icon = #imageLiteral(resourceName: "icon_rage")
             rageStrikeCountLabelHeight.constant = 30

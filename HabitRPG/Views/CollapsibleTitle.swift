@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PinLayout
 
 @IBDesignable
 class CollapsibleTitle: UILabel, UIGestureRecognizerDelegate {
@@ -69,8 +70,9 @@ class CollapsibleTitle: UILabel, UIGestureRecognizerDelegate {
     }
     
     override func layoutSubviews() {
-        carretIconView.frame = CGRect(x: bounds.size.width-40, y: bounds.size.height/2-12, width: 24, height: 24)
+        carretIconView.pin.end(16).size(24).vCenter()
         if let iconView = infoIconView {
+            iconView.pin.start(super.intrinsicContentSize.width + 8).width(18).vertically()
             iconView.frame = CGRect(x: intrinsicContentSize.width+8, y: 0, width: 18, height: bounds.size.height)
         }
     }
@@ -94,5 +96,9 @@ class CollapsibleTitle: UILabel, UIGestureRecognizerDelegate {
             return false
         }
         return true
+    }
+
+    override var intrinsicContentSize: CGSize {
+        return CGSize(width: super.intrinsicContentSize.width, height: 48)
     }
 }

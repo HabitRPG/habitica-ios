@@ -9,12 +9,14 @@
 import Foundation
 import Habitica_Models
 
-class APIQuestState: QuestStateProtocol, Codable {
-    var rsvpNeeded: Bool
-    var completed: String?
-    var active: Bool = false
-    var key: String?
-    var progress: QuestProgressProtocol?
+public class APIQuestState: QuestStateProtocol, Codable {
+    public var rsvpNeeded: Bool
+    public var completed: String?
+    public var active: Bool = false
+    public var key: String?
+    public var progress: QuestProgressProtocol?
+    public var leaderID: String?
+    public var members: [QuestParticipantProtocol]
     
     enum CodingKeys: String, CodingKey {
         case active
@@ -22,6 +24,8 @@ class APIQuestState: QuestStateProtocol, Codable {
         case progress
         case rsvpNeeded = "RSVPNeeded"
         case completed
+        case leaderID = "leader"
+        case members
     }
     
     public required init(from decoder: Decoder) throws {
@@ -31,6 +35,10 @@ class APIQuestState: QuestStateProtocol, Codable {
         progress = try? values.decode(APIQuestProgress.self, forKey: .progress)
         rsvpNeeded = (try? values.decode(Bool.self, forKey: .rsvpNeeded)) ?? false
         completed = try? values.decode(String.self, forKey: .completed)
+        leaderID = try? values.decode(String.self, forKey: .leaderID)
+        members = (try? values.decode([String: Bool?].self, forKey: .members).map({ value -> QuestParticipantProtocol in
+            return APIQuestParticipant(userID: value.key, response: value.value)
+        })) ?? []
     }
     
     public func encode(to encoder: Encoder) throws {

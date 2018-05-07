@@ -21,6 +21,14 @@ public class SocialLocalRepository: BaseLocalRepository {
         removeOldChatMessages(groupID: group.id, newChatMessages: group.chat)
     }
     
+    public func save(objectID: String, groupID: String, questState: QuestStateProtocol) {
+        if let realmQuestState = questState as? RealmQuestState {
+            save(object: realmQuestState)
+        } else {
+            save(object: RealmQuestState(objectID: objectID, id: groupID, state: questState))
+        }
+    }
+    
     public func save(_ groups: [GroupProtocol]) {
         save(objects: groups.map { (group) in
             if let realmGroup = group as? RealmGroup {
@@ -175,5 +183,13 @@ public class SocialLocalRepository: BaseLocalRepository {
             .reactive().map({ (value, changeset) -> ReactiveResults<[InboxMessageProtocol]> in
                 return (value.map({ (message) -> InboxMessageProtocol in return message }), changeset)
             })
+    }
+    
+    public func changeQuestRSVP(userID: String, rsvpNeeded: Bool) {
+        if let realm = getRealm(), let questState = realm.objects(RealmQuestState.self).filter("combinedKey BEGINSWITH %@", userID).first {
+            try? realm.write {
+                questState.rsvpNeeded = rsvpNeeded
+            }
+        }
     }
 }
