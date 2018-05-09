@@ -173,6 +173,10 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
             })
     }
     
+    public func getMembers(userIDs: [String]) -> SignalProducer<ReactiveResults<[MemberProtocol]>, ReactiveSwiftRealmError> {
+        return localRepository.getMembers(userIDs: userIDs)
+    }
+    
     public func isUserGuildMember(groupID: String) -> SignalProducer<Bool, ReactiveSwiftRealmError> {
         return localRepository.getGroupMembership(userID: AuthenticationManager.shared.currentUserId ?? "", groupID: groupID).map({ (membership) in
             return membership != nil

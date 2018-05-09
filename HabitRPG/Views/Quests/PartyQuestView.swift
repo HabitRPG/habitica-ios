@@ -98,7 +98,7 @@ class PartyQuestView: UIView {
     }
     
     func layout() {
-        questImageView.pin.top().hCenter().height(questImageView.image?.size.height ?? 0)
+        questImageView.pin.top(12).hCenter().height(questImageView.image?.size.height ?? 0)
         backgroundView.pin.top(to: questImageView.edge.bottom).marginTop(12)
         var edge = backgroundView.edge.top
         for progressView in progressBarViews {

@@ -22,7 +22,6 @@ class TavernDetailViewController: GroupDetailViewController {
     @IBOutlet weak var questProgressView: QuestProgressView!
     @IBOutlet weak var worldBossTitleView: CollapsibleTitle!
     
-    
     override var group: GroupProtocol? {
         didSet {
             if let group = self.group {

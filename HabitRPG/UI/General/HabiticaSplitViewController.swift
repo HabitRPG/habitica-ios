@@ -29,7 +29,11 @@ class HabiticaSplitViewController: HRPGUIViewController, UIScrollViewDelegate {
         segmentedControl.selectedSegmentIndex = 0
         segmentedControl.addTarget(self, action: #selector(HabiticaSplitViewController.switchView(_:)), for: .valueChanged)
         segmentedControl.isHidden = false
+        segmentedWrapper.insets = UIEdgeInsets(top: 4, left: 8, bottom: 10, right: 8)
         segmentedWrapper.containedView = segmentedControl
+        let borderView = UIView(frame: CGRect(x: 0, y: segmentedWrapper.intrinsicContentSize.height+1, width: self.view.bounds.size.width, height: 1))
+        borderView.backgroundColor = UIColor.gray500()
+        segmentedWrapper.addSubview(borderView)
         topHeaderCoordinator.alternativeHeader = segmentedWrapper
         topHeaderCoordinator.hideHeader = showAsSplitView
         

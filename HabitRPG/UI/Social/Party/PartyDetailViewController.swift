@@ -16,7 +16,10 @@ class PartyDetailViewController: GroupDetailViewController {
     
     @IBOutlet weak var membersStackview: CollapsibleStackView!
     
+    @IBOutlet weak var mainStackView: UIStackView!
     @IBOutlet weak var questStackView: CollapsibleStackView!
+    @IBOutlet weak var questStackViewTitle: CollapsibleTitle!
+    @IBOutlet weak var questContentStackView: SeparatedStackView!
     @IBOutlet weak var startQuestButton: UIButton!
     @IBOutlet weak var questInvitationButtons: UIView!
     @IBOutlet weak var questInvitationRejectButton: UIButton!
@@ -25,9 +28,7 @@ class PartyDetailViewController: GroupDetailViewController {
     @IBOutlet weak var questInvitationUserAvatarView: AvatarView!
     @IBOutlet weak var questInvitationuserLabel: UILabel!
     @IBOutlet weak var questTitleView: UIView!
-    @IBOutlet weak var questScrollView: UIImageView!
-    @IBOutlet weak var questTitleTextView: UILabel!
-    @IBOutlet weak var questTitleDetailView: UILabel!
+    @IBOutlet weak var questTitleContentView: QuestTitleView!
     @IBOutlet weak var questTitleDisclosureView: UIImageView!
     @IBOutlet weak var partyQuestView: PartyQuestView!
     
@@ -42,11 +43,20 @@ class PartyDetailViewController: GroupDetailViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if #available(iOS 11.0, *), let groupNameLabel = self.groupNameLabel {
+            mainStackView.setCustomSpacing(16, after: groupNameLabel)
+        }
+        
         let margins = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         membersStackview.layoutMargins = margins
         membersStackview.isLayoutMarginsRelativeArrangement = true
-        questStackView.layoutMargins = margins
-        questStackView.isLayoutMarginsRelativeArrangement = true
+        membersStackview.separatorBetweenItems = true
+        questContentStackView.layoutMargins = margins
+        questContentStackView.isLayoutMarginsRelativeArrangement = true
+        questContentStackView.separatorBetweenItems = true
+        questContentStackView.separatorInsets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0)
+        questStackViewTitle.insets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         
         questInvitationUserAvatarView.showPet = false
         questInvitationUserAvatarView.showMount = false
@@ -101,28 +111,30 @@ class PartyDetailViewController: GroupDetailViewController {
             startQuestButton.isHidden = true
             questTitleView.isHidden = false
             questStateDisposable?.add(inventoryRepository.getQuest(key: key).on(value: { quest in
-                self.questTitleTextView.text = quest?.text
+                self.questTitleContentView.titleLabel.text = quest?.text
                 if let quest = quest, questState.active {
                     self.partyQuestView.configure(state: questState, quest: quest)
                     self.partyQuestView.isHidden = false
+                    self.questContentStackView.setBorders()
                 }
             }).start())
-            questScrollView.setImagewith(name: "inventory_quest_scroll_\(questState.key ?? "")")
+            questTitleContentView.imageView.setImagewith(name: "inventory_quest_scroll_\(questState.key ?? "")")
             
             if questState.active {
                 questInvitationUserView.isHidden = true
-                questTitleDetailView.text = L10n.Party.questParticipantCount(questState.members.filter({ (participant) -> Bool in
+                questTitleContentView.detailLabel.text = L10n.Party.questParticipantCount(questState.members.filter({ (participant) -> Bool in
                     return participant.accepted
                 }).count)
             } else {
                 let numberResponded = questState.members.filter { (participant) -> Bool in
                     return participant.responded
                 }.count
-                questTitleDetailView.text = L10n.Party.questNumberResponded(numberResponded, questState.members.count)
+                questTitleContentView.detailLabel.text = L10n.Party.questNumberResponded(numberResponded, questState.members.count)
                 
                 if let leaderID = questState.leaderID, leaderID != (userRepository.currentUserId ?? "") {
                     questStateDisposable?.add(socialRepository.getMember(userID: leaderID, retrieveIfNotFound: true).skipNil().on(value: { (questLeader) in
                         self.questInvitationUserView.isHidden = false
+                        self.questContentStackView.setBorders()
                         self.questInvitationuserLabel.text = L10n.Party.invitedToQuest(questLeader.profile?.name ?? "")
                         self.questInvitationUserAvatarView.avatar = AvatarViewModel(avatar: questLeader)
                     }).start())
@@ -136,6 +148,7 @@ class PartyDetailViewController: GroupDetailViewController {
             partyQuestView.isHidden = true
             questInvitationUserView.isHidden = true
         }
+        questContentStackView.setBorders()
     }
     
     private func update(user: UserProtocol) {
@@ -163,5 +176,18 @@ class PartyDetailViewController: GroupDetailViewController {
     @objc
     private func openQuestDetailView() {
         self.perform(segue: StoryboardSegue.Social.questDetailSegue)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == StoryboardSegue.Social.questDetailSegue.rawValue {
+            if let destination = segue.destination as? QuestDetailViewController {
+                destination.groupID = group?.id
+                destination.questKey = group?.quest?.key
+            }
+        } else if segue.identifier == StoryboardSegue.Social.userProfileSegue.rawValue {
+            if let destination = segue.destination as? HRPGUserProfileViewController {
+                destination.userID = ""
+            }
+        }
     }
 }

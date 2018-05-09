@@ -11,13 +11,12 @@ import Down
 
 extension Down {
 
-    func toHabiticaAttributedString() throws -> NSMutableAttributedString {
-        return try self.toHabiticaAttributedString(baseFont: CustomFontMetrics.scaledSystemFont(ofSize: 15))
-    }
-
-    func toHabiticaAttributedString(baseFont: UIFont) throws -> NSMutableAttributedString {
-        if self.markdownString.range(of: "[*_#\\[]", options: .regularExpression, range: nil, locale: nil) == nil {
-            return NSMutableAttributedString(string: self.markdownString, attributes: [.font: CustomFontMetrics.scaledSystemFont(ofSize: 15)])
+    func toHabiticaAttributedString(baseFont: UIFont = CustomFontMetrics.scaledSystemFont(ofSize: 15),
+                                    textColor: UIColor = UIColor.gray100()) throws -> NSMutableAttributedString {
+        if self.markdownString.range(of: "[*_#\\[<]", options: .regularExpression, range: nil, locale: nil) == nil {
+            return NSMutableAttributedString(string: self.markdownString,
+                                             attributes: [.font: CustomFontMetrics.scaledSystemFont(ofSize: 15),
+                                                          .foregroundColor: textColor])
         }
         guard let string = try self.toAttributedString().mutableCopy() as? NSMutableAttributedString else {
             return NSMutableAttributedString()
@@ -38,6 +37,7 @@ extension Down {
                     font = UIFont.systemFont(ofSize: baseSize+fontSizeOffset)
                 }
                 string.addAttribute(NSAttributedStringKey.font, value: font, range: range)
+                string.addAttribute(NSAttributedStringKey.foregroundColor, value: textColor, range: range)
             }
         })
         if string.length == 0 {

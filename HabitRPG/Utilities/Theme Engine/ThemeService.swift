@@ -47,6 +47,8 @@ public class ThemeService: NSObject {
         UIButton.appearance().tintColor = theme.tintColor
         UISearchBar.appearance().backgroundColor = theme.windowBackgroundColor
         UISearchBar.appearance().tintColor = theme.tintColor
+        let view = UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self])
+        view.tintColor = theme.tintColor
         // Update styles via UIAppearance
         if #available(iOS 10.0, *) {
             UITabBarItem.appearance().badgeColor = theme.tintColor

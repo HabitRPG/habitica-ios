@@ -10,19 +10,51 @@ import UIKit
 import PinLayout
 
 @IBDesignable
-class CollapsibleTitle: UILabel, UIGestureRecognizerDelegate {
+class CollapsibleTitle: UIView, UIGestureRecognizerDelegate {
     
-    private var carretIconView = UIImageView(image: #imageLiteral(resourceName: "carret_up"))
+    private var label = UILabel()
+    private var carretIconView = UIImageView(image: #imageLiteral(resourceName: "carret_up").withRenderingMode(.alwaysTemplate))
     private var infoIconView: UIImageView?
     
     var tapAction: (() -> Void)?
     
+    @IBInspectable var text: String? {
+        get {
+            return label.text
+        }
+        set {
+            label.text = newValue
+            setNeedsLayout()
+        }
+    }
+    
+    @IBInspectable var textColor: UIColor {
+        get {
+            return label.textColor
+        }
+        set {
+            label.textColor = newValue
+        }
+    }
+    
+    var font: UIFont {
+        get {
+            return label.font
+        }
+        set {
+            label.font = newValue
+            setNeedsLayout()
+        }
+    }
+
+    var insets = UIEdgeInsets.zero
+    
     var isCollapsed = false {
         didSet {
             if isCollapsed {
-                carretIconView.image = #imageLiteral(resourceName: "carret_down")
+                carretIconView.image = #imageLiteral(resourceName: "carret_down").withRenderingMode(.alwaysTemplate)
             } else {
-                carretIconView.image = #imageLiteral(resourceName: "carret_up")
+                carretIconView.image = #imageLiteral(resourceName: "carret_up").withRenderingMode(.alwaysTemplate)
             }
         }
     }
@@ -60,7 +92,9 @@ class CollapsibleTitle: UILabel, UIGestureRecognizerDelegate {
     
     private func setupView() {
         addSubview(carretIconView)
+        addSubview(label)
         carretIconView.contentMode = .center
+        carretIconView.tintColor = UIColor.gray500()
                 
         isUserInteractionEnabled = true
         
@@ -70,10 +104,10 @@ class CollapsibleTitle: UILabel, UIGestureRecognizerDelegate {
     }
     
     override func layoutSubviews() {
+        label.pin.start(insets.left).vertically().sizeToFit(.height)
         carretIconView.pin.end(16).size(24).vCenter()
         if let iconView = infoIconView {
-            iconView.pin.start(super.intrinsicContentSize.width + 8).width(18).vertically()
-            iconView.frame = CGRect(x: intrinsicContentSize.width+8, y: 0, width: 18, height: bounds.size.height)
+            iconView.pin.start(label.frame.size.width + 8).width(18).vertically()
         }
     }
     

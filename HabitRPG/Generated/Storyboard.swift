@@ -142,8 +142,6 @@ internal enum StoryboardScene {
 
     internal static let partyViewController = SceneType<Habitica.PartyViewController>(storyboard: Social.self, identifier: "PartyViewController")
 
-    internal static let questDetailViewController = SceneType<HRPGQuestDetailViewController>(storyboard: Social.self, identifier: "QuestDetailViewController")
-
     internal static let tavernChatViewController = SceneType<Habitica.GroupChatViewController>(storyboard: Social.self, identifier: "TavernChatViewController")
 
     internal static let tavernNavigationViewController = SceneType<UINavigationController>(storyboard: Social.self, identifier: "TavernNavigationViewController")
@@ -151,8 +149,6 @@ internal enum StoryboardScene {
     internal static let tavernViewController = SceneType<Habitica.TavernViewController>(storyboard: Social.self, identifier: "TavernViewController")
 
     internal static let userProfileViewController = SceneType<HRPGUserProfileViewController>(storyboard: Social.self, identifier: "UserProfileViewController")
-
-    internal static let questInvitationNavigationController = SceneType<HRPGNavigationController>(storyboard: Social.self, identifier: "questInvitationNavigationController")
   }
   internal enum Tasks: StoryboardType {
     internal static let storyboardName = "Tasks"
@@ -236,10 +232,10 @@ internal enum StoryboardSegue {
   internal enum Social: String, SegueType {
     case challengesSegue = "ChallengesSegue"
     case chatSegue = "ChatSegue"
+    case formSegue = "FormSegue"
     case guidelinesSegue = "GuidelinesSegue"
     case invitationSegue = "InvitationSegue"
     case inviteUsersSegue = "InviteUsersSegue"
-    case partyFormSegue = "PartyFormSegue"
     case questDetailSegue = "QuestDetailSegue"
     case selectedRecipientSegue = "SelectedRecipientSegue"
     case showGuildSegue = "ShowGuildSegue"

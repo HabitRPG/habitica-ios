@@ -51,7 +51,7 @@ class GroupDetailViewController: HRPGUIViewController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        groupDescriptionTextView?.textContainerInset = UIEdgeInsets.zero
+        groupDescriptionTextView?.textContainerInset = UIEdgeInsets(top: 0, left: 0, bottom: 16, right: 0)
         groupDescriptionTextView?.textContainer.lineFragmentPadding = 0
     }
     

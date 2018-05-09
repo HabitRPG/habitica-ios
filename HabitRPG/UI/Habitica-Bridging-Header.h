@@ -48,7 +48,6 @@
 #import "HRPGLabeledProgressBar.h"
 #import "HRPGTableViewController.h"
 #import "HRPGNavigationController.h"
-#import "HRPGQuestDetailViewController.h"
 #import "HRPGInboxTableViewController.h"
 #import "HRPGAboutViewController.h"
 #import "HRPGShopOverviewViewController.h"

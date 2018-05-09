@@ -1,5 +1,6 @@
 "search" = "Search";
 "cancel" = "Cancel";
+"edit" = "Edit";
 "reset_tips" = "Reset Justins Tips";
 "stats.no_points_to_allocate" = "0 Points to Allocate";
 "stats.one_point_to_allocate" = "1 Point to Allocate";
@@ -113,6 +114,7 @@
 "guilds.leave_guild_description" = "Do you want to leave the guild and keep or delete the challenges?";
 "guilds.keep_challenges" = "Keep challenges";
 "guilds.leave_challenges" = "Leave Challenges";
+"leave" = "Leave";
 "food" = "Food";
 "eggs" = "Eggs";
 "hatching_potions" = "Hatching Potions";
@@ -183,3 +185,11 @@
 "party.quest_number_responded" = "%d/%d Members responded";
 "party.quest_participant_count" = "%d Participants";
 "pending_damage" = "Pending damage";
+"quests.boss_battle" = "Boss battle";
+"quests.collection_quest" = "Collection quest";
+"quests.invitations_header" = "Invitations";
+"quests.participants_header" = "Participants";
+"quests.accepted" = "Accepted";
+"quests.rejected" = "Rejected";
+"quests.pending" = "Pending";
+"quests.started_by" = "Started by %@";

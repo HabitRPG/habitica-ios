@@ -20,4 +20,12 @@ public extension QuestProtocol {
     public var imageName: String {
         return "inventory_quest_scroll_\(key ?? "")"
     }
+    
+    public var isBossQuest: Bool {
+        return (boss?.health ?? 0) > 0
+    }
+    
+    public var isCollectionQuest: Bool {
+        return (collect?.count ?? 0) > 0
+    }
 }

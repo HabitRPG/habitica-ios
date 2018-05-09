@@ -37,6 +37,7 @@ extension UIView {
         return view
     }
     
+    @discardableResult
     func addTopBorderWithColor(color: UIColor, width: CGFloat) -> CALayer {
         let border = CALayer()
         border.backgroundColor = color.cgColor
@@ -45,24 +46,30 @@ extension UIView {
         return border
     }
     
-    func addRightBorderWithColor(color: UIColor, width: CGFloat) {
+    @discardableResult
+    func addRightBorderWithColor(color: UIColor, width: CGFloat) -> CALayer {
         let border = CALayer()
         border.backgroundColor = color.cgColor
         border.frame = CGRect(x: self.frame.size.width - width, y: 0, width: width, height: self.frame.size.height)
         self.layer.addSublayer(border)
+        return border
     }
     
-    func addBottomBorderWithColor(color: UIColor, width: CGFloat) {
+    @discardableResult
+    func addBottomBorderWithColor(color: UIColor, width: CGFloat) -> CALayer {
         let border = CALayer()
         border.backgroundColor = color.cgColor
         border.frame = CGRect(x: 0, y: self.frame.size.height - width, width: self.frame.size.width, height: width)
         self.layer.addSublayer(border)
+        return border
     }
     
-    func addLeftBorderWithColor(color: UIColor, width: CGFloat) {
+    @discardableResult
+    func addLeftBorderWithColor(color: UIColor, width: CGFloat) -> CALayer {
         let border = CALayer()
         border.backgroundColor = color.cgColor
         border.frame = CGRect(x: 0, y: 0, width: width, height: self.frame.size.height)
         self.layer.addSublayer(border)
+        return border
     }
 }

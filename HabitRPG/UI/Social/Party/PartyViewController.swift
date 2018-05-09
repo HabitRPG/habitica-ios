@@ -19,9 +19,10 @@ class PartyViewController: SplitSocialViewController {
         }).skipNil()
             .take(first: 1)
             .on(value: { partyID in
+                self.isGroupMember = true
                 self.groupID = partyID
             })
             .start())
     }
-    
+
 }

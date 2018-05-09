@@ -29,8 +29,29 @@ class SplitSocialViewController: HabiticaSplitViewController {
         }
     }
     
+    var isGroupOwner = false {
+        didSet {
+            if isGroupOwner || isGroupMember {
+                navigationItem.rightBarButtonItem = moreInteractionsButton
+            } else {
+                navigationItem.rightBarButtonItem = nil
+            }
+        }
+    }
+    var isGroupMember = false {
+        didSet {
+            if isGroupOwner || isGroupMember {
+                navigationItem.rightBarButtonItem = moreInteractionsButton
+            } else {
+                navigationItem.rightBarButtonItem = nil
+            }
+        }
+    }
+    
     weak var detailViewController: GroupDetailViewController?
     weak var chatViewController: GroupChatViewController?
+    
+    @IBOutlet var moreInteractionsButton: UIBarButtonItem?
     
     private let socialRepository = SocialRepository()
     let disposable = ScopedDisposable(CompositeDisposable())
@@ -53,6 +74,8 @@ class SplitSocialViewController: HabiticaSplitViewController {
                 chatViewController = viewController
             }
         }
+        
+        navigationItem.rightBarButtonItem = nil
     }
     
     deinit {
@@ -64,7 +87,7 @@ class SplitSocialViewController: HabiticaSplitViewController {
     func retrieveGroup() {
         if let groupID = self.groupID {
             disposable.inner.add(socialRepository.retrieveGroup(groupID: groupID)
-                    .flatMap(.latest) { group in
+                    .flatMap(.latest) { _ in
                         return self.socialRepository.retrieveGroupMembers(groupID: groupID)
                      }
                     .observeCompleted {})
@@ -80,6 +103,7 @@ class SplitSocialViewController: HabiticaSplitViewController {
         }
         fetchGroupDisposable = socialRepository.getGroup(groupID: groupID).skipNil().on(value: {[weak self] group in
             self?.set(group: group)
+            self?.isGroupOwner = group.leaderID == self?.socialRepository.currentUserId
         }).start()
     }
     
@@ -91,5 +115,23 @@ class SplitSocialViewController: HabiticaSplitViewController {
         if let chatViewController  = segue.destination as? GroupChatViewController {
             chatViewController.groupID = groupID
         }
+    }
+    
+    @IBAction func moreInteractionsButtonTapped(_ sender: Any) {
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        if isGroupOwner {
+            actionSheet.addAction(UIAlertAction(title: L10n.edit, style: .default, handler: { (_) in
+                self.perform(segue: StoryboardSegue.Social.formSegue)
+            }))
+        }
+        if isGroupMember {
+            actionSheet.addAction(UIAlertAction(title: L10n.leave, style: .default, handler: { (_) in
+                if let groupID = self.groupID {
+                    self.disposable.inner.add(self.socialRepository.leaveGroup(groupID: groupID, leaveChallenges: true).observeCompleted {})
+                }
+            }))
+        }
+        actionSheet.addAction(UIAlertAction.cancelAction())
+        actionSheet.show()
     }
 }

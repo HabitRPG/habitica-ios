@@ -16,7 +16,6 @@
 #import "HRPGTableViewController.h"
 #import "Reminder.h"
 #import "HRPGInboxChatViewController.h"
-#import "HRPGQuestDetailViewController.h"
 #import "UIColor+Habitica.h"
 #import <Keys/HabiticaKeys.h>
 #import "AppAuth.h"
@@ -237,7 +236,7 @@
             guildViewController.groupID = userInfo[@"groupID"];
             [displayedNavigationController pushViewController:guildViewController animated:YES];
         } else if ([userInfo[@"identifier"] isEqualToString:@"questInvitation"]) {
-            HRPGQuestDetailViewController *questDetailViewController = (HRPGQuestDetailViewController *)[self loadViewController:@"QuestDetailViewController" fromStoryboard:@"Social"];
+            QuestDetailViewController *questDetailViewController = (QuestDetailViewController *)[self loadViewController:@"QuestDetailViewController" fromStoryboard:@"Social"];
             [displayedNavigationController pushViewController:questDetailViewController animated:YES];
         }
     } else if ([self.window.rootViewController isKindOfClass:[LoadingViewController class]]) {

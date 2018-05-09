@@ -10,8 +10,27 @@ import UIKit
 
 class PaddedView: UIView {
 
-    var horizontalPadding: CGFloat = 8.0
-    var verticalPadding: CGFloat = 4.0
+    var horizontalPadding: CGFloat {
+        get {
+            return insets.left
+        }
+        set {
+            insets.left = newValue
+            insets.right = newValue
+        }
+    }
+    var verticalPadding: CGFloat {
+        get {
+            return insets.top
+        }
+        set {
+            insets.top = newValue
+            insets.bottom = newValue
+        }
+    }
+    
+    var insets = UIEdgeInsets(top: 4, left: 8, bottom: 4, right: 8)
+    
     var containedView: UIView? {
         willSet(newView) {
             if let containedView = containedView {
@@ -25,13 +44,13 @@ class PaddedView: UIView {
 
     override func layoutSubviews() {
         if let containedView = containedView {
-        containedView.frame = CGRect(x: horizontalPadding, y: verticalPadding, width: self.frame.size.width-self.horizontalPadding*2, height: self.frame.size.height-self.verticalPadding*2)
+        containedView.frame = CGRect(x: insets.left, y: insets.top, width: self.frame.size.width-insets.left-insets.right, height: self.frame.size.height-insets.top-insets.bottom)
         }
     }
 
     override var intrinsicContentSize: CGSize {
         if let containedSize = containedView?.intrinsicContentSize {
-            return CGSize(width: containedSize.width+horizontalPadding*2, height: containedSize.height+verticalPadding*2)
+            return CGSize(width: containedSize.width+insets.left+insets.right, height: containedSize.height+insets.top+insets.bottom)
         }
         return CGSize()
     }

@@ -168,6 +168,12 @@ public class SocialLocalRepository: BaseLocalRepository {
         })
     }
     
+    public func getMembers(userIDs: [String]) -> SignalProducer<ReactiveResults<[MemberProtocol]>, ReactiveSwiftRealmError> {
+        return RealmMember.findBy(predicate: NSPredicate(format: "id IN %@", userIDs)).reactive().map({ (value, changeset) -> ReactiveResults<[MemberProtocol]> in
+            return (value.map({ (member) -> MemberProtocol in return member }), changeset)
+        })
+    }
+    
     public func getMessagesThreads(userID: String) -> SignalProducer<ReactiveResults<[InboxMessageProtocol]>, ReactiveSwiftRealmError> {
         return RealmInboxMessage.findBy(query: "ownUserID == '\(userID)'")
             .sorted(key: "timestamp", ascending: false)

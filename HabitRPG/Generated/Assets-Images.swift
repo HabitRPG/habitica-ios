@@ -71,6 +71,7 @@ internal enum Asset {
   internal static let memberCountIcon = ImageAsset(name: "MemberCountIcon")
   internal static let menuMessages = ImageAsset(name: "MenuMessages")
   internal static let menuSettings = ImageAsset(name: "MenuSettings")
+  internal static let moreInteractionsIcon = ImageAsset(name: "MoreInteractionsIcon")
   internal static let nameplate = ImageAsset(name: "Nameplate")
   internal static let welcomeDiamond = ImageAsset(name: "WelcomeDiamond")
   internal static let bigGem = ImageAsset(name: "big_gem")
@@ -236,6 +237,7 @@ internal enum Asset {
     memberCountIcon,
     menuMessages,
     menuSettings,
+    moreInteractionsIcon,
     nameplate,
     welcomeDiamond,
     bigGem,

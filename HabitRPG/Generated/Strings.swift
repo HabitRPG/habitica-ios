@@ -25,6 +25,8 @@ internal enum L10n {
   internal static let difficulty = L10n.tr("Main", "difficulty")
   /// Discover
   internal static let discover = L10n.tr("Main", "discover")
+  /// Edit
+  internal static let edit = L10n.tr("Main", "edit")
   /// Eggs
   internal static let eggs = L10n.tr("Main", "eggs")
   /// Equip
@@ -49,6 +51,8 @@ internal enum L10n {
   }
   /// Leader
   internal static let leader = L10n.tr("Main", "leader")
+  /// Leave
+  internal static let leave = L10n.tr("Main", "leave")
   /// Mana
   internal static let mana = L10n.tr("Main", "mana")
   /// Monthly
@@ -260,6 +264,27 @@ internal enum L10n {
     /// %d Participants
     internal static func questParticipantCount(_ p1: Int) -> String {
       return L10n.tr("Main", "party.quest_participant_count", p1)
+    }
+  }
+
+  internal enum Quests {
+    /// Accepted
+    internal static let accepted = L10n.tr("Main", "quests.accepted")
+    /// Boss battle
+    internal static let bossBattle = L10n.tr("Main", "quests.boss_battle")
+    /// Collection quest
+    internal static let collectionQuest = L10n.tr("Main", "quests.collection_quest")
+    /// Invitations
+    internal static let invitationsHeader = L10n.tr("Main", "quests.invitations_header")
+    /// Participants
+    internal static let participantsHeader = L10n.tr("Main", "quests.participants_header")
+    /// Pending
+    internal static let pending = L10n.tr("Main", "quests.pending")
+    /// Rejected
+    internal static let rejected = L10n.tr("Main", "quests.rejected")
+    /// Started by %@
+    internal static func startedBy(_ p1: String) -> String {
+      return L10n.tr("Main", "quests.started_by", p1)
     }
   }
 
