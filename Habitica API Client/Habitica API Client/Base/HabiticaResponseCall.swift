@@ -44,6 +44,9 @@ class HabiticaResponseCall<T: Any, C: Decodable>: AuthenticatedCall {
                         }
                     }
                 }
+                if let message = json?["message"] as? String {
+                    errors.append(message)
+                }
                 return (error, errors)
             }))
     }

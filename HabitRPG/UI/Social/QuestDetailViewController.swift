@@ -188,13 +188,17 @@ class QuestDetailViewController: HRPGUIViewController {
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
         if let groupID = groupID {
-            disposable.inner.add(socialRepository.cancelQuestInvitation(groupID: groupID).observeCompleted {})
+            disposable.inner.add(socialRepository.cancelQuestInvitation(groupID: groupID).observeCompleted {
+                self.dismiss(animated: true, completion: nil)
+            })
         }
     }
     
     @IBAction func abortButtonTapped(_ sender: Any) {
         if let groupID = groupID {
-            disposable.inner.add(socialRepository.abortQuest(groupID: groupID).observeCompleted {})
+            disposable.inner.add(socialRepository.abortQuest(groupID: groupID).observeCompleted {
+                self.dismiss(animated: true, completion: nil)
+            })
         }
     }
     

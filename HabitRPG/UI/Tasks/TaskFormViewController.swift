@@ -85,15 +85,15 @@ class TaskFormViewController: FormViewController {
     private var disposable = ScopedDisposable(CompositeDisposable())
     
     private static let habitResetStreakOptions = [
-        SegmentedFormValue<String>(value: "daily", label: L10n.daily),
-        SegmentedFormValue<String>(value: "weekly", label: L10n.weekly),
-        SegmentedFormValue<String>(value: "monthly", label: L10n.monthly)
+        LabeledFormValue<String>(value: "daily", label: L10n.daily),
+        LabeledFormValue<String>(value: "weekly", label: L10n.weekly),
+        LabeledFormValue<String>(value: "monthly", label: L10n.monthly)
     ]
     private static let dailyRepeatOptions = [
-        SegmentedFormValue<String>(value: "daily", label: L10n.daily),
-        SegmentedFormValue<String>(value: "weekly", label: L10n.weekly),
-        SegmentedFormValue<String>(value: "monthly", label: L10n.monthly),
-        SegmentedFormValue<String>(value: "yearly", label: L10n.yearly)
+        LabeledFormValue<String>(value: "daily", label: L10n.daily),
+        LabeledFormValue<String>(value: "weekly", label: L10n.weekly),
+        LabeledFormValue<String>(value: "monthly", label: L10n.monthly),
+        LabeledFormValue<String>(value: "yearly", label: L10n.yearly)
     ]
     
     private var tags = [TagProtocol]() {
@@ -232,7 +232,7 @@ class TaskFormViewController: FormViewController {
     
     private func setupHabitResetStreak() {
         form +++ Section(L10n.Tasks.Form.resetStreak)
-            <<< SegmentedRow<SegmentedFormValue<String>>(TaskFormTags.habitResetStreak) { row in
+            <<< SegmentedRow<LabeledFormValue<String>>(TaskFormTags.habitResetStreak) { row in
                 row.options = TaskFormViewController.habitResetStreakOptions
                 row.value = TaskFormViewController.habitResetStreakOptions[0]
                 row.cellSetup({ (cell, _) in
@@ -251,7 +251,7 @@ class TaskFormViewController: FormViewController {
                     cell.detailTextLabel?.textColor = self.lightTaskTintColor
                 })
         }
-            <<< ActionSheetRow<SegmentedFormValue<String>>(TaskFormTags.dailyRepeat) { row in
+            <<< ActionSheetRow<LabeledFormValue<String>>(TaskFormTags.dailyRepeat) { row in
                 row.title = L10n.Tasks.Form.repeats
                 row.options = TaskFormViewController.dailyRepeatOptions
                 row.value = TaskFormViewController.dailyRepeatOptions[0]
@@ -274,7 +274,7 @@ class TaskFormViewController: FormViewController {
                 row.options = [L10n.Tasks.Form.dayOfMonth, L10n.Tasks.Form.dayOfWeek]
                 row.value = L10n.Tasks.Form.dayOfMonth
                 row.hidden = Condition.function([TaskFormTags.dailyRepeat], { (form) -> Bool in
-                    return (form.rowBy(tag: TaskFormTags.dailyRepeat) as? ActionSheetRow<SegmentedFormValue<String>>)?.value?.value != "monthly"
+                    return (form.rowBy(tag: TaskFormTags.dailyRepeat) as? ActionSheetRow<LabeledFormValue<String>>)?.value?.value != "monthly"
                 })
                 row.cellSetup({ (cell, _) in
                     cell.tintColor = self.taskTintColor
@@ -283,7 +283,7 @@ class TaskFormViewController: FormViewController {
             <<< WeekdayRow(TaskFormTags.repeatWeekdays) { row in
                 row.tintColor = self.taskTintColor
                 row.hidden = Condition.function([TaskFormTags.dailyRepeat, TaskFormTags.repeatMonthlySegment], { (form) -> Bool in
-                    return (form.rowBy(tag: TaskFormTags.dailyRepeat) as? ActionSheetRow<SegmentedFormValue<String>>)?.value?.value != "weekly"
+                    return (form.rowBy(tag: TaskFormTags.dailyRepeat) as? ActionSheetRow<LabeledFormValue<String>>)?.value?.value != "weekly"
                 })
         }
     }
@@ -460,13 +460,13 @@ class TaskFormViewController: FormViewController {
         let controls = values[TaskFormTags.habitControls] as? HabitControlsValue
         task.up = controls?.positive ?? true
         task.down = controls?.negative ?? true
-        task.frequency = (values[TaskFormTags.habitResetStreak] as? SegmentedFormValue<String>)?.value
+        task.frequency = (values[TaskFormTags.habitResetStreak] as? LabeledFormValue<String>)?.value
     }
     
     private func saveDaily(values: [String: Any?]) {
         task.startDate = values[TaskFormTags.startDate] as? Date
         task.everyX = values[TaskFormTags.dailyEvery] as? Int ?? 1
-        task.frequency = (values[TaskFormTags.dailyRepeat] as? SegmentedFormValue<String>)?.value
+        task.frequency = (values[TaskFormTags.dailyRepeat] as? LabeledFormValue<String>)?.value
         let weekdays = values[TaskFormTags.repeatWeekdays] as? WeekdaysValue
         task.weekRepeat?.monday = weekdays?.monday ?? true
         task.weekRepeat?.tuesday = weekdays?.tuesday ?? true

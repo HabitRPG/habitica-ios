@@ -9,8 +9,8 @@
 import Foundation
 import Eureka
 
-struct SegmentedFormValue<V: Equatable>: Equatable, CustomStringConvertible {
-    static func ==(lhs: SegmentedFormValue<V>, rhs: SegmentedFormValue<V>) -> Bool {
+struct LabeledFormValue<V: Equatable>: Equatable, CustomStringConvertible {
+    static func ==(lhs: LabeledFormValue<V>, rhs: LabeledFormValue<V>) -> Bool {
         return lhs.value == rhs.value
     }
     

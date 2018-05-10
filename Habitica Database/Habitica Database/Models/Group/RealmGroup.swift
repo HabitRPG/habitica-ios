@@ -20,6 +20,7 @@ class RealmGroup: Object, GroupProtocol {
     @objc dynamic var privacy: String?
     @objc dynamic var balance: Float = 0
     @objc dynamic var leaderID: String?
+    @objc dynamic var leaderOnlyChallenges: Bool = false
     @objc dynamic var quest: QuestStateProtocol? {
         get {
             return realmQuest
@@ -71,6 +72,7 @@ class RealmGroup: Object, GroupProtocol {
         privacy = groupProtocol.privacy
         balance = groupProtocol.balance
         leaderID = groupProtocol.leaderID
+        leaderOnlyChallenges = groupProtocol.leaderOnlyChallenges
         quest = groupProtocol.quest
         chat = groupProtocol.chat
     }

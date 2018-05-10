@@ -13,18 +13,19 @@ private struct LeaderObject: Decodable {
     var id: String?
 }
 
-public class APIGroup: GroupProtocol, Decodable {
+public class APIGroup: GroupProtocol, Codable {
     public var id: String?
     public var name: String?
     public var groupDescription: String?
     public var summary: String?
     public var type: String?
-    public var memberCount: Int
+    public var memberCount: Int = 0
     public var privacy: String?
-    public var balance: Float
+    public var balance: Float = 0
     public var leaderID: String?
+    public var leaderOnlyChallenges: Bool = false
     public var quest: QuestStateProtocol?
-    public var chat: [ChatMessageProtocol]
+    public var chat: [ChatMessageProtocol] = []
     
     enum CodingKeys: String, CodingKey {
         case id = "_id"
@@ -36,6 +37,7 @@ public class APIGroup: GroupProtocol, Decodable {
         case privacy
         case balance
         case leader
+        case leaderOnlyChallenges = "leaderOnly"
         case quest
         case chat
     }
@@ -55,7 +57,33 @@ public class APIGroup: GroupProtocol, Decodable {
             let leader = try? values.decode(LeaderObject.self, forKey: .leader)
             leaderID = leader?.id
         }
+        leaderOnlyChallenges = (try? values.decode([String: Bool].self, forKey: .leaderOnlyChallenges).first(where: { (key, value) -> Bool in
+            return key == "challenges"
+        })?.value == true) ?? false
         quest = try? values.decode(APIQuestState.self, forKey: .quest)
         chat = (try? values.decode([APIChatMessage].self, forKey: .chat)) ?? []
+    }
+    
+    public init(_ group: GroupProtocol) {
+        id = group.id
+        name = group.name
+        groupDescription = group.groupDescription
+        summary = group.summary
+        privacy = group.privacy
+        leaderID = group.leaderID
+        leaderOnlyChallenges = group.leaderOnlyChallenges
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try? container.encode(id, forKey: .id)
+        try? container.encode(name, forKey: .name)
+        try? container.encode(groupDescription, forKey: .groupDescription)
+        try? container.encode(summary, forKey: .summary)
+        try? container.encode(privacy, forKey: .privacy)
+        if let leaderID = self.leaderID {
+            try? container.encode(leaderID, forKey: .leader)
+        }
+        try? container.encode(["challenges": leaderOnlyChallenges], forKey: .leaderOnlyChallenges)
     }
 }

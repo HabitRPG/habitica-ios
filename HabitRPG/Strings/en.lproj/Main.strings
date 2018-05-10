@@ -1,6 +1,9 @@
 "search" = "Search";
 "cancel" = "Cancel";
 "edit" = "Edit";
+"name" = "Name";
+"description" = "Description";
+"summary" = "Summary";
 "reset_tips" = "Reset Justins Tips";
 "stats.no_points_to_allocate" = "0 Points to Allocate";
 "stats.one_point_to_allocate" = "1 Point to Allocate";
@@ -193,3 +196,5 @@
 "quests.rejected" = "Rejected";
 "quests.pending" = "Pending";
 "quests.started_by" = "Started by %@";
+"groups.leader_challenges" = "Only leader can create Challenges";
+"groups.assign_new_leader" = "Assign new Leader";

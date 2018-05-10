@@ -19,6 +19,7 @@ public protocol GroupProtocol {
     var memberCount: Int { get set }
     var privacy: String? { get set }
     var balance: Float { get set }
+    var leaderOnlyChallenges: Bool { get set }
     var quest: QuestStateProtocol? { get set }
     var chat: [ChatMessageProtocol] { get set }
 }

@@ -256,4 +256,34 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
             }
         }
     }
+    
+    func getNewGroup() -> GroupProtocol {
+        return localRepository.getNewGroup()
+    }
+
+    func getEditableGroup(id: String) -> GroupProtocol? {
+        return localRepository.getEditableGroup(id: id)
+    }
+    
+    func createGroup(_ group: GroupProtocol) -> Signal<GroupProtocol?, NoError> {
+        localRepository.save(group)
+        let call = CreateGroupCall(group: group)
+        call.fire()
+        return call.objectSignal.on(value: { returnedGroup in
+            if let returnedGroup = returnedGroup {
+                self.localRepository.save(returnedGroup)
+            }
+        })
+    }
+    
+    func updateGroup(_ group: GroupProtocol) -> Signal<GroupProtocol?, NoError> {
+        localRepository.save(group)
+        let call = UpdateGroupCall(group: group)
+        call.fire()
+        return call.objectSignal.on(value: { returnedGroup in
+            if let returnedGroup = returnedGroup {
+                self.localRepository.save(returnedGroup)
+            }
+        })
+    }
 }

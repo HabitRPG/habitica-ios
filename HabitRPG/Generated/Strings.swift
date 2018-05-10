@@ -19,6 +19,8 @@ internal enum L10n {
   internal static let create = L10n.tr("Main", "create")
   /// Daily
   internal static let daily = L10n.tr("Main", "daily")
+  /// Description
+  internal static let description = L10n.tr("Main", "description")
   /// Details
   internal static let details = L10n.tr("Main", "details")
   /// Difficulty
@@ -61,6 +63,8 @@ internal enum L10n {
   internal static let mounts = L10n.tr("Main", "mounts")
   /// My Guilds
   internal static let myGuilds = L10n.tr("Main", "my_guilds")
+  /// Name
+  internal static let name = L10n.tr("Main", "name")
   /// Notes
   internal static let notes = L10n.tr("Main", "notes")
   /// OK
@@ -95,6 +99,8 @@ internal enum L10n {
   }
   /// Share
   internal static let share = L10n.tr("Main", "share")
+  /// Summary
+  internal static let summary = L10n.tr("Main", "summary")
   /// Sync Error
   internal static let syncError = L10n.tr("Main", "sync_error")
   /// There was an error syncing some changes.
@@ -189,6 +195,13 @@ internal enum L10n {
     internal static let useCostume = L10n.tr("Main", "equipment.useCostume")
     /// Weapon
     internal static let weapon = L10n.tr("Main", "equipment.weapon")
+  }
+
+  internal enum Groups {
+    /// Assign new Leader
+    internal static let assignNewLeader = L10n.tr("Main", "groups.assign_new_leader")
+    /// Only leader can create Challenges
+    internal static let leaderChallenges = L10n.tr("Main", "groups.leader_challenges")
   }
 
   internal enum Guilds {

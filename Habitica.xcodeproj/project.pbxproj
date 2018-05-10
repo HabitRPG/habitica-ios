@@ -217,6 +217,7 @@
 		29DC5AC720A1E52400993400 /* QuestDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DC5AC620A1E52400993400 /* QuestDetailViewController.swift */; };
 		29DC5AC920A1F6C100993400 /* QuestParticipantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DC5AC820A1F6C100993400 /* QuestParticipantView.swift */; };
 		29DC5ACB20A20A6C00993400 /* QuestTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DC5ACA20A20A6C00993400 /* QuestTitleView.swift */; };
+		29DC5ACD20A321C900993400 /* GroupFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DC5ACC20A321C900993400 /* GroupFormViewController.swift */; };
 		29E162E01FFBBDDC00685640 /* UsernameLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E162DF1FFBBDDC00685640 /* UsernameLabel.swift */; };
 		29E162E21FFC21E100685640 /* CustomFontMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E162E11FFC21E100685640 /* CustomFontMetrics.swift */; };
 		29E162E5200227AA00685640 /* HRPGUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29E162E4200227AA00685640 /* HRPGUIViewController.m */; };
@@ -373,7 +374,6 @@
 		D94AADB7192A56E800546C8E /* HRPGSpellTaskController.m in Sources */ = {isa = PBXBuildFile; fileRef = D94AADB6192A56E800546C8E /* HRPGSpellTaskController.m */; };
 		D94AADBA192A5CE700546C8E /* HRPGSpellTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = D94AADB9192A5CE700546C8E /* HRPGSpellTabBarController.m */; };
 		D94B96A01B8B2CEE00C977C2 /* content-24.8.15.json in Resources */ = {isa = PBXBuildFile; fileRef = D94B969F1B8B2CEE00C977C2 /* content-24.8.15.json */; };
-		D94FEDEB1BB314B10046A52E /* HRPGGroupFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D94FEDEA1BB314B10046A52E /* HRPGGroupFormViewController.m */; };
 		D94FEDEE1BB6DA8E0046A52E /* HRPGInviteMembersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D94FEDED1BB6DA8E0046A52E /* HRPGInviteMembersViewController.m */; };
 		D9525F981E5F405400C529B8 /* Challenge+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = D9525F951E5F405400C529B8 /* Challenge+CoreDataClass.m */; };
 		D9525F991E5F405400C529B8 /* Challenge+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D9525F971E5F405400C529B8 /* Challenge+CoreDataProperties.m */; };
@@ -814,6 +814,7 @@
 		29DC5AC620A1E52400993400 /* QuestDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestDetailViewController.swift; sourceTree = "<group>"; };
 		29DC5AC820A1F6C100993400 /* QuestParticipantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestParticipantView.swift; sourceTree = "<group>"; };
 		29DC5ACA20A20A6C00993400 /* QuestTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestTitleView.swift; sourceTree = "<group>"; };
+		29DC5ACC20A321C900993400 /* GroupFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupFormViewController.swift; sourceTree = "<group>"; };
 		29E162DF1FFBBDDC00685640 /* UsernameLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameLabel.swift; sourceTree = "<group>"; };
 		29E162E11FFC21E100685640 /* CustomFontMetrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFontMetrics.swift; sourceTree = "<group>"; };
 		29E162E3200227AA00685640 /* HRPGUIViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HRPGUIViewController.h; sourceTree = "<group>"; };
@@ -1050,8 +1051,6 @@
 		D94AADB8192A5CE700546C8E /* HRPGSpellTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGSpellTabBarController.h; sourceTree = "<group>"; };
 		D94AADB9192A5CE700546C8E /* HRPGSpellTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGSpellTabBarController.m; sourceTree = "<group>"; };
 		D94B969F1B8B2CEE00C977C2 /* content-24.8.15.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "content-24.8.15.json"; path = "HabiticaTests/Fixtures/content-24.8.15.json"; sourceTree = SOURCE_ROOT; };
-		D94FEDE91BB314B10046A52E /* HRPGGroupFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGGroupFormViewController.h; sourceTree = "<group>"; };
-		D94FEDEA1BB314B10046A52E /* HRPGGroupFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGGroupFormViewController.m; sourceTree = "<group>"; };
 		D94FEDEC1BB6DA8E0046A52E /* HRPGInviteMembersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HRPGInviteMembersViewController.h; path = HabitRPG/TableViewController/Modals/HRPGInviteMembersViewController.h; sourceTree = SOURCE_ROOT; };
 		D94FEDED1BB6DA8E0046A52E /* HRPGInviteMembersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HRPGInviteMembersViewController.m; path = HabitRPG/TableViewController/Modals/HRPGInviteMembersViewController.m; sourceTree = SOURCE_ROOT; };
 		D9525F941E5F405400C529B8 /* Challenge+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Challenge+CoreDataClass.h"; sourceTree = "<group>"; };
@@ -1733,6 +1732,7 @@
 				29E16319200E849400685640 /* Tavern */,
 				290B6286207CD6B5007287C4 /* GroupDetailViewController.swift */,
 				29DC5AC620A1E52400993400 /* QuestDetailViewController.swift */,
+				29DC5ACC20A321C900993400 /* GroupFormViewController.swift */,
 			);
 			path = Social;
 			sourceTree = "<group>";
@@ -2699,8 +2699,6 @@
 				D96038361930F90E0025EAEC /* HRPGMessageViewController.m */,
 				D97B8F5B1AE6CD3C00C6447D /* HRPGRewardFormViewController.h */,
 				D97B8F5C1AE6CD3C00C6447D /* HRPGRewardFormViewController.m */,
-				D94FEDE91BB314B10046A52E /* HRPGGroupFormViewController.h */,
-				D94FEDEA1BB314B10046A52E /* HRPGGroupFormViewController.m */,
 				D94FEDEC1BB6DA8E0046A52E /* HRPGInviteMembersViewController.h */,
 				D94FEDED1BB6DA8E0046A52E /* HRPGInviteMembersViewController.m */,
 				D92D26121D58EEBA001FD977 /* HRPGQRCodeScannerViewController.h */,
@@ -3721,7 +3719,6 @@
 				D95D039C1C74E3E900D6BFB3 /* ImprovementCategory.m in Sources */,
 				D9D0451C1C2B1AEC00630244 /* Reminder.m in Sources */,
 				29FEB27A202B4F0400EA245A /* AvatarView.swift in Sources */,
-				D94FEDEB1BB314B10046A52E /* HRPGGroupFormViewController.m in Sources */,
 				D97ED0B21E6DE3BF006C2A26 /* LeaveChallengeInteractor.swift in Sources */,
 				29FC88602018DB64002B3D3F /* WorldBossDescriptionView.swift in Sources */,
 				29028C3E203701B900B7F704 /* ChatTableViewCell.swift in Sources */,
@@ -3786,6 +3783,7 @@
 				29B3FEB11F9A37E3000B12CF /* BaseSettingsViewController.swift in Sources */,
 				290B62A4207F818E007287C4 /* ItemsViewDataSource.swift in Sources */,
 				D9CE90451E4CDD6200702578 /* PillView.swift in Sources */,
+				29DC5ACD20A321C900993400 /* GroupFormViewController.swift in Sources */,
 				29ED1AFD1F338ECC005A3895 /* SetupCustomization.swift in Sources */,
 				D99CDDDD1E5368E400ABD85F /* ShopItem+CoreDataClass.m in Sources */,
 				2914486E2085EAD300F3A6B5 /* MountDetailDataSource.swift in Sources */,

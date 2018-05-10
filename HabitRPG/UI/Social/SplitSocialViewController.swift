@@ -31,17 +31,8 @@ class SplitSocialViewController: HabiticaSplitViewController {
     
     var isGroupOwner = false {
         didSet {
-            if isGroupOwner || isGroupMember {
-                navigationItem.rightBarButtonItem = moreInteractionsButton
-            } else {
-                navigationItem.rightBarButtonItem = nil
-            }
-        }
-    }
-    var isGroupMember = false {
-        didSet {
-            if isGroupOwner || isGroupMember {
-                navigationItem.rightBarButtonItem = moreInteractionsButton
+            if isGroupOwner {
+                navigationItem.rightBarButtonItem = editGroupButton
             } else {
                 navigationItem.rightBarButtonItem = nil
             }
@@ -51,7 +42,7 @@ class SplitSocialViewController: HabiticaSplitViewController {
     weak var detailViewController: GroupDetailViewController?
     weak var chatViewController: GroupChatViewController?
     
-    @IBOutlet var moreInteractionsButton: UIBarButtonItem?
+    @IBOutlet var editGroupButton: UIBarButtonItem?
     
     private let socialRepository = SocialRepository()
     let disposable = ScopedDisposable(CompositeDisposable())
@@ -114,24 +105,11 @@ class SplitSocialViewController: HabiticaSplitViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let chatViewController  = segue.destination as? GroupChatViewController {
             chatViewController.groupID = groupID
+        } else if segue.identifier == StoryboardSegue.Social.formSegue.rawValue {
+            let destination = segue.destination as? UINavigationController
+            if let formViewController = destination?.topViewController as? GroupFormViewController {
+                formViewController.groupID = groupID
+            }
         }
-    }
-    
-    @IBAction func moreInteractionsButtonTapped(_ sender: Any) {
-        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        if isGroupOwner {
-            actionSheet.addAction(UIAlertAction(title: L10n.edit, style: .default, handler: { (_) in
-                self.perform(segue: StoryboardSegue.Social.formSegue)
-            }))
-        }
-        if isGroupMember {
-            actionSheet.addAction(UIAlertAction(title: L10n.leave, style: .default, handler: { (_) in
-                if let groupID = self.groupID {
-                    self.disposable.inner.add(self.socialRepository.leaveGroup(groupID: groupID, leaveChallenges: true).observeCompleted {})
-                }
-            }))
-        }
-        actionSheet.addAction(UIAlertAction.cancelAction())
-        actionSheet.show()
     }
 }

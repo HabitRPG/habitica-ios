@@ -169,7 +169,7 @@
                         <viewControllerLayoutGuide type="bottom" id="ucE-b4-Own"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="43x-Iu-HK8">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.97636467218399048" green="0.97653168439865112" blue="0.97635418176651001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -828,7 +828,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="UserProfileViewController" id="MTH-Re-wqo" customClass="HRPGUserProfileViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="WTt-7r-yfN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
@@ -1202,7 +1202,7 @@
         <!--Group Form View Controller-->
         <scene sceneID="xU2-vl-6p2">
             <objects>
-                <viewController id="aAd-ab-J0L" customClass="HRPGGroupFormViewController" sceneMemberID="viewController">
+                <viewController id="aAd-ab-J0L" customClass="GroupFormViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cEK-dX-h5V"/>
                         <viewControllerLayoutGuide type="bottom" id="OBD-14-Ohx"/>
@@ -1216,19 +1216,18 @@
                     <navigationItem key="navigationItem" id="NyA-xu-3YJ">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="MUt-m9-ApC">
                             <connections>
-                                <segue destination="QRa-gH-d0t" kind="unwind" unwindAction="unwindToList:" id="QDB-fX-Iag"/>
+                                <action selector="cancelButtonTapped:" destination="aAd-ab-J0L" id="vEi-fG-6fd"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="1hp-j0-3jW">
                             <connections>
-                                <segue destination="QRa-gH-d0t" kind="unwind" identifier="unwindSaveSegue" unwindAction="unwindToListSave:" id="owN-oi-ROR"/>
+                                <action selector="saveButtonTapped:" destination="aAd-ab-J0L" id="TnQ-g9-vXy"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="djb-42-9In" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="QRa-gH-d0t" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4328" y="2121"/>
         </scene>
@@ -1879,7 +1878,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Sur-1o-ymQ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="OFX-9b-U2U">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -1953,20 +1952,19 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Party" id="ohm-N0-URb">
-                        <barButtonItem key="rightBarButtonItem" title="Actions" image="MoreInteractionsIcon" id="bou-Ng-0JG">
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="bou-Ng-0JG">
                             <connections>
-                                <action selector="moreInteractionsButtonTapped:" destination="Ux3-MZ-30T" id="TuW-F9-C4D"/>
+                                <segue destination="1Ye-yE-okG" kind="presentation" identifier="FormSegue" id="jXp-j5-lvy"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="editGroupButton" destination="bou-Ng-0JG" id="Ga1-eF-PML"/>
                         <outlet property="leftViewWidthConstraint" destination="nVI-R5-aFv" id="iTW-Sn-jDi"/>
-                        <outlet property="moreInteractionsButton" destination="bou-Ng-0JG" id="8Fn-id-TCt"/>
                         <outlet property="rightViewWidthConstraint" destination="stf-nJ-K0j" id="YWw-9P-YVA"/>
                         <outlet property="scrollView" destination="mMp-6b-m4W" id="CgO-ZW-lwh"/>
                         <outlet property="scrollViewTopConstraint" destination="zAV-rE-QSF" id="DBM-Xk-JqQ"/>
                         <outlet property="separatorView" destination="76c-yj-biB" id="7l6-HB-She"/>
-                        <segue destination="1Ye-yE-okG" kind="show" identifier="FormSegue" id="Wm4-qh-CPv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qEj-gI-Fme" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2035,20 +2033,19 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Guild" id="H93-hs-7Lc">
-                        <barButtonItem key="rightBarButtonItem" title="Actions" image="MoreInteractionsIcon" id="uFa-zO-Ua8">
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="uFa-zO-Ua8">
                             <connections>
-                                <action selector="moreInteractionsButtonTapped:" destination="Ux3-MZ-30T" id="to9-Hl-dLb"/>
+                                <segue destination="1Ye-yE-okG" kind="presentation" identifier="FormSegue" id="MnH-ar-sz7"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="editGroupButton" destination="uFa-zO-Ua8" id="mDd-QA-2X0"/>
                         <outlet property="leftViewWidthConstraint" destination="87b-Z8-ETr" id="ibs-d8-EvZ"/>
-                        <outlet property="moreInteractionsButton" destination="uFa-zO-Ua8" id="e9A-ck-H9P"/>
                         <outlet property="rightViewWidthConstraint" destination="OoU-0w-G2F" id="uPT-K3-Tup"/>
                         <outlet property="scrollView" destination="6y4-NW-sAd" id="3Rc-dj-NQA"/>
                         <outlet property="scrollViewTopConstraint" destination="8bz-dd-X5s" id="JeZ-Hq-L3S"/>
                         <outlet property="separatorView" destination="Q2D-H7-UcO" id="kei-u2-EdF"/>
-                        <segue destination="1Ye-yE-okG" kind="presentation" identifier="FormSegue" id="R14-dR-935"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A1j-SG-STe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2456,7 +2453,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RgQ-0L-zfY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4653.6000000000004" y="3622.9385307346329"/>
+            <point key="canvasLocation" x="4570" y="3594"/>
         </scene>
         <!--Party Detail View Controller-->
         <scene sceneID="xxa-gv-2b6">
@@ -2545,7 +2542,7 @@
                                                                 </constraints>
                                                             </view>
                                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jIr-tb-DyF">
-                                                                <rect key="frame" x="0.0" y="-172" width="375" height="77"/>
+                                                                <rect key="frame" x="0.0" y="-174" width="375" height="77"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9iM-dP-lgo" customClass="QuestTitleView" customModule="Habitica" customModuleProvider="target">
                                                                         <rect key="frame" x="67" y="-26" width="240" height="128"/>
@@ -2826,19 +2823,18 @@
     <resources>
         <image name="ChallengeGemIcon" width="38" height="45"/>
         <image name="MemberCountIcon" width="22" height="12"/>
-        <image name="MoreInteractionsIcon" width="20" height="4"/>
         <image name="checkmark" width="10" height="8"/>
         <image name="messages" width="24" height="24"/>
         <image name="pillGryphon" width="14" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="71z-UW-WBb"/>
-        <segue reference="gAH-Zh-PJ3"/>
+        <segue reference="xLb-S3-ALp"/>
         <segue reference="BKi-xg-gxr"/>
         <segue reference="9hs-wq-6bn"/>
-        <segue reference="Wm4-qh-CPv"/>
-        <segue reference="ypV-Mu-tgU"/>
-        <segue reference="Nsp-ag-Sds"/>
+        <segue reference="MnH-ar-sz7"/>
+        <segue reference="RWA-7r-R8g"/>
+        <segue reference="yXa-uT-GhF"/>
         <segue reference="C12-ty-sO4"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.6058621407" green="0.38462612029999999" blue="0.99835687880000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -198,4 +198,15 @@ public class SocialLocalRepository: BaseLocalRepository {
             }
         }
     }
+    
+    public func getNewGroup() -> GroupProtocol {
+        return RealmGroup()
+    }
+    
+    public func getEditableGroup(id: String) -> GroupProtocol? {
+        if let group = getRealm()?.object(ofType: RealmGroup.self, forPrimaryKey: id) {
+            return RealmGroup(value: group)
+        }
+        return nil
+    }
 }
