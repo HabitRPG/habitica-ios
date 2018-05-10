@@ -112,6 +112,7 @@ class PartyDetailViewController: GroupDetailViewController {
             questTitleView.isHidden = false
             questStateDisposable?.add(inventoryRepository.getQuest(key: key).on(value: { quest in
                 self.questTitleContentView.titleLabel.text = quest?.text
+                self.questTitleContentView.setNeedsLayout()
                 if let quest = quest, questState.active {
                     self.partyQuestView.configure(state: questState, quest: quest)
                     self.partyQuestView.isHidden = false
@@ -142,6 +143,7 @@ class PartyDetailViewController: GroupDetailViewController {
                     questInvitationUserView.isHidden = true
                 }
             }
+            self.questTitleContentView.setNeedsLayout()
         } else {
             startQuestButton.isHidden = false
             questTitleView.isHidden = true
@@ -189,5 +191,12 @@ class PartyDetailViewController: GroupDetailViewController {
                 destination.userID = ""
             }
         }
+    }
+    
+    @IBAction func startQuestButtonTapped(_ sender: Any) {
+        let itemNavigationController = StoryboardScene.Main.itemNavigationController.instantiate()
+        let itemViewController = itemNavigationController.topViewController as? ItemsViewController
+        itemViewController?.itemType = "quests"
+        self.present(itemNavigationController, animated: true, completion: nil)
     }
 }

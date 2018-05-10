@@ -13,6 +13,8 @@ internal enum L10n {
   internal static let chat = L10n.tr("Main", "chat")
   /// Close
   internal static let close = L10n.tr("Main", "close")
+  /// Confirm
+  internal static let confirm = L10n.tr("Main", "confirm")
   /// Controls
   internal static let controls = L10n.tr("Main", "controls")
   /// Create
@@ -287,6 +289,12 @@ internal enum L10n {
     internal static let bossBattle = L10n.tr("Main", "quests.boss_battle")
     /// Collection quest
     internal static let collectionQuest = L10n.tr("Main", "quests.collection_quest")
+    /// Are you sure you want to abort this mission? It will abort it for everyone in your party and all progress will be lost. The quest scroll will be returned to the quest owner.
+    internal static let confirmAbort = L10n.tr("Main", "quests.confirm_abort")
+    /// Are you sure you want to cancel this quest? All invitation acceptances will be lost. The quest owner will retain possession of the quest scroll.
+    internal static let confirmCancelInvitation = L10n.tr("Main", "quests.confirm_cancel_invitation")
+    /// Are you sure? Not all party members have joined this quest! Quests start automatically when all players have joined or rejected the invitation.
+    internal static let confirmForceStart = L10n.tr("Main", "quests.confirm_force_start")
     /// Invitations
     internal static let invitationsHeader = L10n.tr("Main", "quests.invitations_header")
     /// Participants

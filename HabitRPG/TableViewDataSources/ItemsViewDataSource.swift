@@ -12,6 +12,21 @@ import ReactiveSwift
 
 class ItemsViewDataSource: BaseReactiveTableViewDataSource<ItemProtocol> {
 
+    var itemType: String? {
+        didSet {
+            if itemType != nil {
+            sections.forEach { section in
+                section.isHidden = section.key != itemType
+            }
+            } else {
+                sections.forEach { section in
+                    section.isHidden = false
+                }
+            }
+            tableView?.reloadData()
+        }
+    }
+    
     private let inventoryRepository = InventoryRepository()
     private var fetchDisposable: Disposable?
     
@@ -42,12 +57,19 @@ class ItemsViewDataSource: BaseReactiveTableViewDataSource<ItemProtocol> {
     
     override init() {
         super.init()
-        sections.append(ItemSection<ItemProtocol>(title: L10n.eggs))
-        sections.append(ItemSection<ItemProtocol>(title: L10n.food))
-        sections.append(ItemSection<ItemProtocol>(title: L10n.hatchingPotions))
-        sections.append(ItemSection<ItemProtocol>(title: L10n.quests))
+        sections.append(ItemSection<ItemProtocol>(key: "eggs", title: L10n.eggs))
+        sections.append(ItemSection<ItemProtocol>(key: "food", title: L10n.food))
+        sections.append(ItemSection<ItemProtocol>(key: "hatchingPotions", title: L10n.hatchingPotions))
+        sections.append(ItemSection<ItemProtocol>(key: "quests", title: L10n.quests))
         
-        disposable.inner.add(inventoryRepository.getOwnedItems()
+        fetchItems()
+    }
+    
+    private func fetchItems() {
+        if let disposable = fetchDisposable, !disposable.isDisposed {
+            disposable.dispose()
+        }
+        fetchDisposable = inventoryRepository.getOwnedItems()
             .on(value: { ownedItems in
                 self.ownedItems.removeAll()
                 ownedItems.value.forEach({ (item) in
@@ -75,7 +97,6 @@ class ItemsViewDataSource: BaseReactiveTableViewDataSource<ItemProtocol> {
                 self.notify(changes: quests.changes, section: 3)
             })
             .start()
-        )
     }
     
     deinit {

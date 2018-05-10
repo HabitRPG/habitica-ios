@@ -2359,7 +2359,7 @@ and helps keep Habitica running</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e3B-Pt-L9e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4471" y="2521"/>
+            <point key="canvasLocation" x="4426" y="2188"/>
         </scene>
         <!--Items-->
         <scene sceneID="hkB-oV-wsF">
@@ -2422,6 +2422,7 @@ and helps keep Habitica running</string>
                     <navigationItem key="navigationItem" title="Items" id="7Sa-Zz-2NE">
                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="DLa-xG-L7z">
                             <connections>
+                                <action selector="cancelButtonTapped:" destination="sS8-cF-myv" id="UCu-rW-pV6"/>
                                 <segue destination="rCI-5x-i71" kind="unwind" unwindAction="unwindToList:" id="VBL-yy-Rwq"/>
                             </connections>
                         </barButtonItem>
@@ -3127,8 +3128,8 @@ and helps keep Habitica running</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="njg-A8-lDq"/>
-        <segue reference="ETz-qE-xC2"/>
-        <segue reference="nYO-SY-Og4"/>
+        <segue reference="vFt-wX-7j8"/>
+        <segue reference="V6b-ej-qnx"/>
         <segue reference="PHp-cT-md6"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.44783598184585571" green="0.10848048329353333" blue="0.9984632134437561" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

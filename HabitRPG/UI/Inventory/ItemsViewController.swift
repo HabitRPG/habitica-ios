@@ -20,13 +20,23 @@ class ItemsViewController: HRPGBaseViewController {
             dataSource.isHatching = isHatching
         }
     }
+    var itemType: String?
     
-    private var inventoryRepository = InventoryRepository()
+    private let inventoryRepository = InventoryRepository()
+    private var isPresentedModally = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         dataSource.tableView = tableView
+        dataSource.itemType = itemType
+        
+        if let _ = navigationController as? TopHeaderViewController {
+            navigationItem.rightBarButtonItem = nil
+            isPresentedModally = false
+        } else {
+            isPresentedModally = true
+        }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -62,17 +72,27 @@ class ItemsViewController: HRPGBaseViewController {
         } else if item.itemType == ItemType.quests.rawValue {
             alertController.addAction(UIAlertAction(title: L10n.inviteParty, style: .default, handler: { (_) in
                 if let quest = item as? QuestProtocol {
-                    self.inventoryRepository.inviteToQuest(quest: quest).observeCompleted {}
+                    self.inventoryRepository.inviteToQuest(quest: quest).observeCompleted {
+                        self.dismissIfNeeded()
+                    }
                 }
             }))
         }
         if item.key != "Saddle" && item.itemType != ItemType.quests.rawValue {
             alertController.addAction(UIAlertAction(title: L10n.sell(Int(item.value)), style: .destructive, handler: { (_) in
-                self.inventoryRepository.sell(item: item).observeCompleted {}
+                self.inventoryRepository.sell(item: item).observeCompleted {
+                    self.dismissIfNeeded()
+                }
             }))
         }
         alertController.addAction(UIAlertAction.cancelAction())
         alertController.show()
+    }
+    
+    private func dismissIfNeeded() {
+        if isPresentedModally {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     private func showHatchedDialog(egg: EggProtocol, potion: HatchingPotionProtocol) {
@@ -87,5 +107,9 @@ class ItemsViewController: HRPGBaseViewController {
         imageAlert.titleLabel.textColor = .white
         imageAlert.titleBackgroundColor = UIColor.purple300()
         imageAlert.show()
+    }
+    
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
 }

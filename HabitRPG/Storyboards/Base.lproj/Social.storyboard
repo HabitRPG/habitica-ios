@@ -169,7 +169,7 @@
                         <viewControllerLayoutGuide type="bottom" id="ucE-b4-Own"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="43x-Iu-HK8">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.97636467218399048" green="0.97653168439865112" blue="0.97635418176651001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -771,7 +771,7 @@
             <objects>
                 <tableViewController id="LJL-4h-PRX" customClass="ChallengeDetailsTableViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="mSs-Sh-idc">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -828,7 +828,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="UserProfileViewController" id="MTH-Re-wqo" customClass="HRPGUserProfileViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="WTt-7r-yfN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
@@ -1295,7 +1295,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="ChallengeTableViewController" id="BE2-xn-Wwl" customClass="ChallengeTableViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="86" sectionHeaderHeight="28" sectionFooterHeight="28" id="SWx-Y1-cyG">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -2506,6 +2506,9 @@
                                                                     <constraint firstAttribute="height" constant="49" id="8fM-IR-4sT"/>
                                                                 </constraints>
                                                                 <state key="normal" title="Start a Quest"/>
+                                                                <connections>
+                                                                    <action selector="startQuestButtonTapped:" destination="J2Y-h9-GJa" eventType="touchUpInside" id="Dwg-3w-7O4"/>
+                                                                </connections>
                                                             </button>
                                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IU2-e4-Giw">
                                                                 <rect key="frame" x="0.0" y="-174" width="375" height="61"/>
@@ -2674,6 +2677,9 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" title="Party Challenges"/>
+                                                        <connections>
+                                                            <segue destination="BE2-xn-Wwl" kind="show" id="lgk-R4-zXr"/>
+                                                        </connections>
                                                     </button>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rHG-s0-3tJ">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
@@ -2830,11 +2836,11 @@
     <inferredMetricsTieBreakers>
         <segue reference="71z-UW-WBb"/>
         <segue reference="xLb-S3-ALp"/>
-        <segue reference="BKi-xg-gxr"/>
+        <segue reference="lgk-R4-zXr"/>
         <segue reference="9hs-wq-6bn"/>
         <segue reference="MnH-ar-sz7"/>
-        <segue reference="RWA-7r-R8g"/>
-        <segue reference="yXa-uT-GhF"/>
+        <segue reference="ypV-Mu-tgU"/>
+        <segue reference="Nsp-ag-Sds"/>
         <segue reference="C12-ty-sO4"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.6058621407" green="0.38462612029999999" blue="0.99835687880000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
