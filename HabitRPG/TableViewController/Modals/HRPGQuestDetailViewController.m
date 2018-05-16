@@ -227,13 +227,20 @@
                                     @"quest scroll will be put back into your inventory.",
                                     nil);
     } else {
-        message = NSLocalizedString(
-            @"Once a quest is started, no other party members can join the quest.", nil);
+        int acceptedCount = 0;
+        for (User *participant in self.group.questParticipants) {
+            if (participant.participateInQuest != nil) {
+                acceptedCount++;
+            }
+        }
+        message = [NSString stringWithFormat:NSLocalizedString(@"Only %d of your %d party members have joined this quest! "
+                                                               @"Quests start automatically when all players have joined or rejected the invitation.",
+                                                               nil), acceptedCount, [self.group.questParticipants count]];
     }
     
-    HabiticaAlertController *alertController = [HabiticaAlertController alertWithTitle:NSLocalizedString(@"Are you sure?", nil) message:nil];
-    [alertController addActionWithTitle:NSLocalizedString(@"No", nil) style:UIAlertActionStyleCancel isMainAction:NO handler:nil];
-    [alertController addActionWithTitle:NSLocalizedString(@"Yes", nil) style:UIAlertActionStyleDefault isMainAction:YES handler:^(UIButton * _Nonnull button) {
+    HabiticaAlertController *alertController = [HabiticaAlertController alertWithTitle:NSLocalizedString(@"Are you sure?", nil) message:message];
+    [alertController addActionWithTitle:NSLocalizedString(@"Not Yet", nil) style:UIAlertActionStyleCancel isMainAction:NO handler:nil];
+    [alertController addActionWithTitle:NSLocalizedString(@"Start Now", nil) style:UIAlertActionStyleDefault isMainAction:YES handler:^(UIButton * _Nonnull button) {
         self.navigationItem.rightBarButtonItem.enabled = NO;
         __weak HRPGQuestDetailViewController *weakSelf = self;
         if ([self.group.questActive boolValue]) {
