@@ -2423,7 +2423,6 @@ and helps keep Habitica running</string>
                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="DLa-xG-L7z">
                             <connections>
                                 <action selector="cancelButtonTapped:" destination="sS8-cF-myv" id="UCu-rW-pV6"/>
-                                <segue destination="rCI-5x-i71" kind="unwind" unwindAction="unwindToList:" id="VBL-yy-Rwq"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -2433,7 +2432,6 @@ and helps keep Habitica running</string>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tgy-p9-JH9" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="rCI-5x-i71" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="5196" y="2070.3148425787108"/>
         </scene>
