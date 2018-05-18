@@ -218,11 +218,25 @@ internal enum L10n {
   }
 
   internal enum Inventory {
+    /// Available Until %@
+    internal static func availableUntil(_ p1: String) -> String {
+      return L10n.tr("Main", "inventory.available_until", p1)
+    }
     /// You hatched a new pet!
     internal static let hatched = L10n.tr("Main", "inventory.hatched")
     /// I just hatched a %@ %@ pet in Habitica by completing my real-life tasks!
     internal static func hatchedSharing(_ p1: String, _ p2: String) -> String {
       return L10n.tr("Main", "inventory.hatchedSharing", p1, p2)
+    }
+    /// No more Gems available this month. More become available within the first 3 days of each month.
+    internal static let noGemsLeft = L10n.tr("Main", "inventory.no_gems_left")
+    /// Monthly Gems: %d/%d Remaining
+    internal static func numberGemsLeft(_ p1: Int, _ p2: Int) -> String {
+      return L10n.tr("Main", "inventory.number_gems_left", p1, p2)
+    }
+    /// Only available for %@s. You can change your class from Settings
+    internal static func wrongClass(_ p1: String) -> String {
+      return L10n.tr("Main", "inventory.wrong_class", p1)
     }
   }
 

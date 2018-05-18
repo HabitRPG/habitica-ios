@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import Habitica_Models
 
 class HRPGBuyItemModalViewController: UIViewController, Themeable {
     @objc var item: ShopItem?
-    @objc var reward: MetaReward?
+    var reward: InAppRewardProtocol?
     @objc var shopIdentifier: String?
     let inventoryRepository = InventoryRepository()
+    private let userRepository = UserRepository()
     let showPinning = ConfigRepository().bool(variable: .enableNewShops)
     
     @IBOutlet weak var topContentView: UIView!
@@ -134,8 +136,11 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     
     private func setupQuests(_ contentView: UIView, itemView: UIView, key: String) {
         let questView = QuestDetailView(frame: CGRect.zero)
+        inventoryRepository.getQuest(key: key).take(first: 1).skipNil().on(value: { quest in
+            questView.configure(quest: quest)
+        }).start()
         //if let quest = inventoryRepository.getQuest(key) {
-        //    questView.configure(quest: quest)
+        //
         //}
         addItemAndDetails(itemView, questView, to: contentView)
     }
@@ -145,12 +150,15 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
             addItemSet(itemView: itemView, to: contentView)
         } else {
             let statsView = HRPGItemStatsView(frame: CGRect.zero)
-            /*if let gear = inventoryRepository.getGear(key) {
-                statsView.configure(gear: gear)
-                if let user = HRPGManager.shared().getUser(), user.hclass != gear.klass {
-                    
+            inventoryRepository.getGear(keys: [key])
+                .take(first: 1)
+                .map { (gear, _) -> GearProtocol? in
+                    return gear.first
                 }
-            }*/
+                .skipNil()
+                .on(value: { gear in
+                    statsView.configure(gear: gear)
+                }).start()
             addItemAndDetails(itemView, statsView, to: contentView)
         }
     }
@@ -175,7 +183,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
             } else {
                 currencyCountView.currency = .gold
             }
-            currencyCountView.amount = reward.value.intValue
+            currencyCountView.amount = Int(reward.value)
         }
         if canAfford() && !isLocked {
             currencyCountView.state = .normal
@@ -298,7 +306,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         var imageName = ""
         var currency = Currency.gold
         var setIdentifier = ""
-        var value: NSNumber = 0
+        var value = 0
         var successBlock = {}
         if let shopItem = item {
             key = shopItem.key ?? ""
@@ -306,7 +314,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
             text = shopItem.text ?? ""
             imageName = shopItem.imageName ?? ""
             setIdentifier = shopItem.category?.identifier ?? shopItem.key ?? ""
-            value = shopItem.value ?? 0
+            value = shopItem.value?.intValue ?? 0
             if let currencyString = shopItem.currency, let thisCurrency = Currency(rawValue: currencyString) {
                 currency = thisCurrency
             }
@@ -317,18 +325,18 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                     HRPGManager.shared().fetchShopInventory(self.shopIdentifier, onSuccess: nil, onError: nil)
                 }
             }
-        } else if let inAppReward = reward as? InAppReward {
+        } else if let inAppReward = reward {
             key = inAppReward.key ?? ""
             purchaseType = inAppReward.purchaseType ?? ""
             text = inAppReward.text ?? ""
             imageName = inAppReward.imageName ?? ""
             setIdentifier = inAppReward.key ?? ""
-            value = inAppReward.value ?? 0
+            value = Int(inAppReward.value)
             if let currencyString = inAppReward.currency, let thisCurrency = Currency(rawValue: currencyString) {
                 currency = thisCurrency
             }
             successBlock = {
-                HRPGManager.shared().fetchBuyableRewards(nil, onError: nil)
+                self.userRepository.retrieveInAppRewards().observeCompleted {}
             }
         }
         
@@ -386,9 +394,9 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                         HRPGBuyItemModalViewController.displayViewController(name: "InsufficientGoldViewController", parent: topViewController)
                     })
                 } else {
-                    HRPGManager.shared().buyObject(key, withValue: value, withText: text, onSuccess: successBlock, onError: {
+                    /*HRPGManager.shared().buyObject(key, withValue: value, withText: text, onSuccess: successBlock, onError: {
                         HRPGBuyItemModalViewController.displayViewController(name: "InsufficientGoldViewController", parent: topViewController)
-                    })
+                    })*/
                 }
             }
         }

@@ -60,10 +60,7 @@
 - (void)disableClasses:(void (^)())successBlock
                onError:(void (^)())errorBlock;
 
-- (void)fetchGroup:(NSString *)groupID
-         onSuccess:(void (^)())successBlock
-           onError:(void (^)())errorBlock;
-
+//- (void)fetchGroup:(NSString *)groupID onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 //- (void)fetchGroups:(NSString *)groupType onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
 - (void)fetchMember:(NSString *)memberId
@@ -92,12 +89,7 @@
 
 //- (void)upDownTask:(Task *)task direction:(NSString *)withDirection onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 //- (void)scoreChecklistItem:(Task *)task checklistItem:(ChecklistItem *)item onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
-
-- (void)getReward:(NSString *)rewardID
-         withText:(NSString *)text
-        onSuccess:(void (^)())successBlock
-          onError:(void (^)())errorBlock;
-
+//- (void)getReward:(NSString *)rewardID withText:(NSString *)text onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 //- (void)createTask:(Task *)task onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
 - (void)createTasks:(NSArray *)tasks onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;

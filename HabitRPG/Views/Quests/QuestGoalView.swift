@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Habitica_Models
 
 class QuestGoalView: UIView {
     
@@ -47,14 +48,14 @@ class QuestGoalView: UIView {
         }
     }
     
-    func configure(quest: Quest) {
-        if let bossHealth = quest.bossHp?.intValue, bossHealth > 0 {
+    func configure(quest: QuestProtocol) {
+        if let bossHealth = quest.boss?.health, bossHealth > 0 {
             healthIcon.isHidden = false
             typeLabel.text = NSLocalizedString("Health", comment: "")
             goalDetailLabel.text = "\(bossHealth)"
-            rageMeterView.isHidden = (quest.bossRage?.intValue ?? 0) == 0
+            //rageMeterView.isHidden = (quest.boss?.rage ?? 0) == 0
             typeBackgroundView.backgroundColor = .red100()
-            difficultyImageView.image = HabiticaIcons.imageOfDifficultyStars(difficulty: CGFloat(quest.bossStr?.floatValue ?? 0))
+            difficultyImageView.image = HabiticaIcons.imageOfDifficultyStars(difficulty: CGFloat(quest.boss?.strength ?? 0))
         } else {
             healthIcon.isHidden = true
             typeLabel.text = NSLocalizedString("Collect", comment: "")

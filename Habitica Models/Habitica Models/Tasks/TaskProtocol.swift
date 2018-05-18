@@ -21,7 +21,7 @@ public enum TaskScoringDirection: String {
 }
 
 @objc
-public protocol TaskProtocol {
+public protocol TaskProtocol: BaseRewardProtocol {
     var id: String? { get set }
     var text: String? { get set }
     var notes: String? { get set }

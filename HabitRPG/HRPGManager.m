@@ -4978,7 +4978,6 @@ static dispatch_once_t onceToken;
                     item.lastPurchased = [NSDate date];
                 }
                 
-                
                 [[self getManagedObjectContext] saveToPersistentStore:&executeError];
                 [self displayPurchaseNotification:[NSString stringWithFormat:NSLocalizedString(@"You purchased %@", nil), text] withImage:imageName];
                 if (successBlock) {

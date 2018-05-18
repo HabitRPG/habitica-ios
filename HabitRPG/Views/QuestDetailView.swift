@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Habitica_Models
 
 class QuestDetailView: UIView {
     @IBOutlet weak var questTypeLabel: UILabel!
@@ -44,15 +45,15 @@ class QuestDetailView: UIView {
         }
     }
     
-    func configure(quest: Quest) {
-        if quest.bossHp?.intValue ?? 0 > 0 {
+    func configure(quest: QuestProtocol) {
+        if quest.boss?.health ?? 0 > 0 {
             questTypeLabel.text = NSLocalizedString("Boss Quest", comment: "")
         } else {
             questTypeLabel.text = NSLocalizedString("Collection Quest", comment: "")
         }
         questGoalView.configure(quest: quest)
         
-        if let experience = quest.dropExp?.intValue, experience > 0 {
+        /*if let experience = quest.dropExp?.intValue, experience > 0 {
             rewardsStackView.addArrangedSubview(makeRewardView(title: NSLocalizedString("\(experience) Experience Points", comment: ""), image: HabiticaIcons.imageOfExperienceReward))
         }
         if let gold = quest.dropGp?.intValue, gold > 0 {
@@ -73,7 +74,7 @@ class QuestDetailView: UIView {
         }
         if !hasOwnerRewards {
             ownerRewardsLabel.isHidden = true
-        }
+        }*/
     }
     
     func makeRewardView(title: String?, imageName: String) -> UIView {

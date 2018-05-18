@@ -249,6 +249,24 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         return localRepository.getUserStyleWithOutfitFor(class: habiticaClass, userID: userID ?? currentUserId ?? "")
     }
     
+    func getInAppRewards() -> SignalProducer<ReactiveResults<[InAppRewardProtocol]>, ReactiveSwiftRealmError> {
+        return localRepository.getInAppRewards(userID: currentUserId ?? "")
+    }
+    
+    func retrieveInAppRewards() -> Signal<[InAppRewardProtocol]?, NoError> {
+        let call = RetrieveInAppRewardsCall()
+        call.fire()
+        return call.arraySignal.on(value: { inAppRewards in
+            if let userID = self.currentUserId, let inAppRewards = inAppRewards {
+                self.localRepository.save(userID: userID, inAppRewards: inAppRewards)
+            }
+        })
+    }
+    
+    func buyCustomReward(reward: TaskProtocol) -> Signal<TaskResponseProtocol?, NoError> {
+        return taskRepository.score(task: reward, direction: .down)
+    }
+    
     func disableClassSystem() -> Signal<UserProtocol?, NoError> {
         let call = DisableClassesCall()
         call.fire()

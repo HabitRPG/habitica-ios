@@ -27,7 +27,11 @@ class HabiticaResponseCall<T: Any, C: Decodable>: AuthenticatedCall {
         decoder.setHabiticaDateDecodingStrategy()
         do {
             return try decoder.decode(HabiticaResponse<C>.self, from: data)
-        } catch {}
+        } catch {
+            if let errorHandler = self.errorHandler {
+                type(of: errorHandler).handle(error: error as NSError, messages: [])
+            }
+        }
         return nil
     }
     

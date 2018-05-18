@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Habitica_Models
 
 class InAppRewardCell: UICollectionViewCell {
     
@@ -81,17 +82,17 @@ class InAppRewardCell: UICollectionViewCell {
         }
     }
     
-    func configure(reward: InAppReward) {
+    func configure(reward: InAppRewardProtocol) {
         var currency: Currency?
-        let price = reward.value?.floatValue ?? 0
-        currencyView.amount = reward.value?.intValue ?? 0
+        let price = reward.value
+        currencyView.amount = Int(reward.value)
         imageName = reward.imageName ?? ""
         itemName = reward.text ?? ""
         if let currencyString = reward.currency, let thisCurrency = Currency(rawValue: currencyString) {
             currencyView.currency = thisCurrency
             currency = thisCurrency
         }
-        isLocked = reward.locked?.boolValue ?? false
+        isLocked = reward.locked
         
         if let currency = currency {
             setCanAfford(price, currency: currency)

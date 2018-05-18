@@ -8,13 +8,14 @@
 
 import UIKit
 import XLForm
+import Habitica_Models
 
 class RewardFormController: XLFormViewController {
     
     let managedObjectContext = HRPGManager.shared().getManagedObjectContext()
     
     var editReward = false
-    var reward: Reward?
+    var reward: TaskProtocol?
     
     lazy var tags: [Tag] = {
         let fetchRequest = NSFetchRequest<Tag>()
@@ -62,11 +63,11 @@ class RewardFormController: XLFormViewController {
     
     private func fillEditForm() {
         self.navigationItem.title = NSLocalizedString("Edit Reward", comment: "")
-        self.form.formRow(withTag: "text")?.value = self.reward?.text.unicodeEmoji
-        self.form.formRow(withTag: "notes")?.value = self.reward?.notes.unicodeEmoji
+        self.form.formRow(withTag: "text")?.value = self.reward?.text?.unicodeEmoji
+        self.form.formRow(withTag: "notes")?.value = self.reward?.notes?.unicodeEmoji
         self.form.formRow(withTag: "value")?.value = self.reward?.value
         
-        if let rewardTags = self.reward?.tags as? Set<Tag> {
+        if let rewardTags = self.reward?.tags {
             for tag in rewardTags {
                 self.form.formRow(withTag: "tag.\(tag.id)")?.value = true
             }
@@ -93,24 +94,10 @@ class RewardFormController: XLFormViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "unwindSaveSegue" {
-            if !editReward, let reward = NSEntityDescription.insertNewObject(forEntityName: "Reward", into: HRPGManager.shared().getManagedObjectContext()) as? Reward {
-                self.reward = reward
-                reward.type = "reward"
-            }
             let formValues = self.form.formValues()
             reward?.text = formValues["text"] as? String ?? ""
             reward?.notes = formValues["notes"] as? String ?? ""
-            reward?.value = NSNumber.init(value: formValues["value"] as? Int ?? 0)
-            
-            var tags = [String]()
-            if let values = formValues as? [String: Any] {
-                for (key, value) in values {
-                    if key.contains("tag."), let bool = value as? NSNumber, bool.boolValue {
-                        tags.append(key.substring(from: key.index(key.startIndex, offsetBy: 4)))
-                    }
-                }
-            }
-            reward?.tagArray = tags
+            reward?.value = formValues["value"] as? Float ?? 0
         }
     }
 }

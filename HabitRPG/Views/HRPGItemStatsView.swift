@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Habitica_Models
 
 class HRPGItemStatsView: UIView {
     @IBOutlet weak var strLabel: UILabel!
@@ -47,11 +48,11 @@ class HRPGItemStatsView: UIView {
         }
     }
 
-    public func configure(gear: Gear) {
-        configureFields(descriptionLabel: strLabel, valueLabel: strStatLabel, value: gear.str.intValue)
-        configureFields(descriptionLabel: conLabel, valueLabel: conStatLabel, value: gear.con.intValue)
-        configureFields(descriptionLabel: perLabel, valueLabel: perStatLabel, value: gear.per.intValue)
-        configureFields(descriptionLabel: intLabel, valueLabel: intStatLabel, value: gear.intelligence.intValue)
+    public func configure(gear: GearProtocol) {
+        configureFields(descriptionLabel: strLabel, valueLabel: strStatLabel, value: gear.strength)
+        configureFields(descriptionLabel: conLabel, valueLabel: conStatLabel, value: gear.constitution)
+        configureFields(descriptionLabel: perLabel, valueLabel: perStatLabel, value: gear.perception)
+        configureFields(descriptionLabel: intLabel, valueLabel: intStatLabel, value: gear.intelligence)
     }
 
     private func configureFields(descriptionLabel: UILabel, valueLabel: UILabel, value: Int) {

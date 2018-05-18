@@ -27,6 +27,15 @@ public class UserLocalRepository: BaseLocalRepository {
         }).start()
     }
     
+    public func save(userID: String?, inAppRewards: [InAppRewardProtocol]) {
+        save(objects:inAppRewards.map { (inAppReward) in
+            if let realmInAppReward = inAppReward as? RealmInAppReward {
+                return realmInAppReward
+            }
+            return RealmInAppReward(userID: userID, protocolObject: inAppReward)
+        })
+    }
+    
     public func getUser(_ id: String) -> SignalProducer<UserProtocol, ReactiveSwiftRealmError> {
         return RealmUser.findBy(query: "id == '\(id)'").reactive().map({ (users, changes) -> UserProtocol? in
             return users.first
@@ -79,6 +88,12 @@ public class UserLocalRepository: BaseLocalRepository {
             userStyle.preferences = user?.preferences
             userStyle.stats = user?.stats
             return userStyle
+        })
+    }
+    
+    public func getInAppRewards(userID: String) -> SignalProducer<ReactiveResults<[InAppRewardProtocol]>, ReactiveSwiftRealmError> {
+        return RealmInAppReward.findBy(query: "userID == '\(userID)'").reactive().map({ (value, changeset) -> ReactiveResults<[InAppRewardProtocol]> in
+            return (value.map({ (reward) -> InAppRewardProtocol in return reward }), changeset)
         })
     }
     

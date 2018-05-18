@@ -202,3 +202,7 @@
 "groups.leader_challenges" = "Only leader can create Challenges";
 "groups.assign_new_leader" = "Assign new Leader";
 "confirm" = "Confirm";
+"inventory.no_gems_left" = "No more Gems available this month. More become available within the first 3 days of each month.";
+"inventory.number_gems_left" = "Monthly Gems: %d/%d Remaining";
+"inventory.wrong_class" = "Only available for %@s. You can change your class from Settings";
+"inventory.available_until" = "Available Until %@";

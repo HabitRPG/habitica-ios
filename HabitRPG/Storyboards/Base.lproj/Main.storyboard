@@ -2986,9 +2986,6 @@ and helps keep Habitica running</string>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <segue destination="IOk-9k-SGo" kind="presentation" identifier="FormSegue" id="2EY-Q7-iuN"/>
-                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1yZ-pb-YRt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -3125,10 +3122,10 @@ and helps keep Habitica running</string>
         <image name="tabbar_todos" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="njg-A8-lDq"/>
+        <segue reference="04Z-5H-zfF"/>
         <segue reference="vFt-wX-7j8"/>
         <segue reference="V6b-ej-qnx"/>
-        <segue reference="PHp-cT-md6"/>
+        <segue reference="tO1-JH-hWy"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.44783598184585571" green="0.10848048329353333" blue="0.9984632134437561" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
