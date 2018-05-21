@@ -22,6 +22,8 @@ class HRPGSimpleShopItemView: UIView {
     @IBOutlet weak var additionalInfoLabel: UILabel!
     @IBOutlet weak var imageViewHeight: NSLayoutConstraint!
     
+    private var user: UserProtocol?
+    
     @IBInspectable var shouldHideNotes: Bool {
         get {
             return shopItemDescriptionLabel.isHidden
@@ -77,9 +79,10 @@ class HRPGSimpleShopItemView: UIView {
         setupView()
     }
     
-    init(withItem item: ShopItem, for contentView: UIView) {
+    init(withItem item: ShopItem, withUser user: UserProtocol?, for contentView: UIView) {
         super.init(frame: contentView.bounds)
         setupView()
+        self.user = user
         
         if let availableUntil = item.availableUntil {
             setAvailableUntil(date: availableUntil)
@@ -112,9 +115,10 @@ class HRPGSimpleShopItemView: UIView {
         }
     }
     
-    init(withReward reward: InAppRewardProtocol, for contentView: UIView) {
+    init(withReward reward: InAppRewardProtocol, withUser user: UserProtocol?, for contentView: UIView) {
         super.init(frame: contentView.bounds)
         setupView()
+        self.user = user
         
         self.shopItemTitleLabel.text = reward.text
 
@@ -166,7 +170,7 @@ class HRPGSimpleShopItemView: UIView {
     }
     
     private func setGemsLeft(_ gemsLeft: Int) {
-        let totalCount = HRPGManager.shared().getUser().subscriptionPlan.totalGemCap
+        let totalCount = self.user?.purchased?.subscriptionPlan?.consecutive?.gemCapTotal ?? 0
         topBannerLabel.text = L10n.Inventory.numberGemsLeft(gemsLeft, totalCount)
         if gemsLeft == 0 {
             topBannerWrapper.backgroundColor = UIColor.orange10()
@@ -179,7 +183,7 @@ class HRPGSimpleShopItemView: UIView {
     }
     
     private func configureFor(key: String, purchaseType: String) {
-        if purchaseType == "gear", let user = HRPGManager.shared().getUser() {
+        if purchaseType == "gear", let user = self.user {
             inventoryRepository.getGear(keys: [key])
                 .take(first: 1)
                 .map({ (gear, _) -> GearProtocol? in
@@ -194,7 +198,7 @@ class HRPGSimpleShopItemView: UIView {
                     if gearClass == "wizard" {
                         gearClass = "mage"
                     }
-                    if gearClass != user.hclass && gearClass != nil && gearClass != "special" && gearClass != "armoire" {
+                    if gearClass != user.stats?.habitClass && gearClass != nil && gearClass != "special" && gearClass != "armoire" {
                         self?.topBannerLabel.text = L10n.Inventory.wrongClass(gearClass?.capitalized ?? "")
                         self?.topBannerWrapper.backgroundColor = UIColor.gray100()
                         self?.topBannerWrapper.isHidden = false

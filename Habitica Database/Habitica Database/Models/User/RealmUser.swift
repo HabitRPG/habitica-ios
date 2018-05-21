@@ -122,7 +122,7 @@ class RealmUser: Object, UserProtocol {
                 if let realmTag = tag as? RealmTag {
                     realmTags.append(realmTag)
                 } else {
-                    realmTags.append(RealmTag(tag))
+                    realmTags.append(RealmTag(userID: id, tagProtocol: tag))
                 }
             }
         }

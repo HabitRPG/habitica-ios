@@ -45,7 +45,7 @@ typedef NS_ENUM(NSInteger, TaskToDoFilterType) {
 
 - (BOOL)allWeekdaysInactive;
 
-+ (NSArray *)predicatesForTaskType:(NSString *)taskType withFilterType:(NSInteger)filterType withOffset:(NSInteger)offset;
++ (NSArray *)predicatesForTaskType:(NSString *)taskType withFilterType:(NSInteger)filterType;
 
 @end
 

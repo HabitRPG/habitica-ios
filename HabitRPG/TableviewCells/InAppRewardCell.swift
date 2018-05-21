@@ -82,7 +82,7 @@ class InAppRewardCell: UICollectionViewCell {
         }
     }
     
-    func configure(reward: InAppRewardProtocol) {
+    func configure(reward: InAppRewardProtocol, user: UserProtocol?) {
         var currency: Currency?
         let price = reward.value
         currencyView.amount = Int(reward.value)
@@ -95,7 +95,7 @@ class InAppRewardCell: UICollectionViewCell {
         isLocked = reward.locked
         
         if let currency = currency {
-            setCanAfford(price, currency: currency)
+            setCanAfford(price, currency: currency, user: user)
         }
         isPinned = false
         
@@ -106,14 +106,14 @@ class InAppRewardCell: UICollectionViewCell {
         applyAccessibility()
     }
     
-    func configure(item: ShopItem) {
+    func configure(item: ShopItem, user: UserProtocol?) {
         currencyView.amount = item.value?.intValue ?? 0
         imageName = item.imageName ?? ""
         itemName = item.text ?? ""
         isLocked = item.locked?.boolValue ?? false
         if let currencyString = item.currency, let currency = Currency(rawValue: currencyString) {
             currencyView.currency = currency
-            setCanAfford( item.value?.floatValue ?? 0, currency: currency)
+            setCanAfford( item.value?.floatValue ?? 0, currency: currency, user: user)
         }
         
         if let lastPurchased = item.lastPurchased, wasRecentlyPurchased(lastPurchased) {
@@ -139,17 +139,17 @@ class InAppRewardCell: UICollectionViewCell {
         })
     }
     
-    func setCanAfford(_ price: Float, currency: Currency) {
+    func setCanAfford(_ price: Float, currency: Currency, user: UserProtocol?) {
         var canAfford = false
 
-        if let user = HRPGManager.shared().getUser() {
+        if let user = user {
             switch currency {
             case .gold:
-                canAfford = price < user.gold.floatValue
+                canAfford = price < user.stats?.gold ?? 0
             case .gem:
-                canAfford = price < user.balance.floatValue*4
+                canAfford = price < Float(user.gemCount)
             case .hourglass:
-                canAfford = price < user.subscriptionPlan.consecutiveTrinkets?.floatValue ?? 0
+                canAfford = price < Float(user.purchased?.subscriptionPlan?.consecutive?.hourglasses ?? 0)
             }
         }
     

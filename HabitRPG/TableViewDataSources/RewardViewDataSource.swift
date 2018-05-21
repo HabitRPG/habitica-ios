@@ -14,6 +14,8 @@ class RewardViewDataSource: BaseReactiveCollectionViewDataSource<BaseRewardProto
     private let userRepository = UserRepository()
     private let taskRepository = TaskRepository()
     
+    private var user: UserProtocol?
+    
     override init() {
         super.init()
         sections.append(ItemSection<BaseRewardProtocol>())
@@ -26,6 +28,9 @@ class RewardViewDataSource: BaseReactiveCollectionViewDataSource<BaseRewardProto
         disposable.inner.add(userRepository.getInAppRewards().on(value: { (inAppRewards, changes) in
             self.sections[1].items = inAppRewards
             self.notify(changes: changes)
+        }).start())
+        disposable.inner.add(userRepository.getUser().on(value: { user in
+            self.user = user
         }).start())
     }
     
@@ -59,7 +64,7 @@ class RewardViewDataSource: BaseReactiveCollectionViewDataSource<BaseRewardProto
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomRewardCell", for: indexPath)
             if let rewardCell = cell as? CustomRewardCell {
                 rewardCell.configure(reward: reward)
-                rewardCell.canAfford = reward.value < HRPGManager.shared().getUser().gold.floatValue
+                rewardCell.canAfford = reward.value < self.user?.stats?.gold ?? 0
                 rewardCell.onBuyButtonTapped = {
                     self.userRepository.buyCustomReward(reward: reward).observeCompleted {}
                 }
@@ -68,7 +73,7 @@ class RewardViewDataSource: BaseReactiveCollectionViewDataSource<BaseRewardProto
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "InAppRewardCell", for: indexPath)
             if let rewardCell = cell as? InAppRewardCell, let reward = item(at: indexPath) as? InAppRewardProtocol {
-                rewardCell.configure(reward: reward)
+                rewardCell.configure(reward: reward, user: user)
             }
             return cell
         }

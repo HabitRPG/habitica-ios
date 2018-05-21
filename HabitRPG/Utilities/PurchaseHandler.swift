@@ -24,6 +24,7 @@ class PurchaseHandler: NSObject {
     
     private let itunesSharedSecret = HabiticaKeys().itunesSharedSecret
     private let appleValidator: AppleReceiptValidator
+    private let userRepository = UserRepository()
 
     private var hasCompletionHandler = false
     override private init() {
@@ -62,24 +63,26 @@ class PurchaseHandler: NSObject {
                                         }
                                     }
                                 } else if self.isSubscription(product.productId) {
-                                    if !HRPGManager.shared().getUser().isSubscribed() {
-                                        SwiftyStoreKit.verifyReceipt(using: self.appleValidator, completion: { (verificationResult) in
-                                            switch verificationResult {
-                                            case .success(let receipt):
-                                                if self.isValidSubscription(product.productId, receipt: receipt) {
-                                                    self.activateSubscription(product.productId, receipt: receipt) { status in
-                                                        if status {
-                                                            SwiftyStoreKit.finishTransaction(product.transaction)
+                                    self.userRepository.getUser().take(first: 1).on(value: { user in
+                                        if !user.isSubscribed {
+                                            SwiftyStoreKit.verifyReceipt(using: self.appleValidator, completion: { (verificationResult) in
+                                                switch verificationResult {
+                                                case .success(let receipt):
+                                                    if self.isValidSubscription(product.productId, receipt: receipt) {
+                                                        self.activateSubscription(product.productId, receipt: receipt) { status in
+                                                            if status {
+                                                                SwiftyStoreKit.finishTransaction(product.transaction)
+                                                            }
                                                         }
+                                                    } else {
+                                                        SwiftyStoreKit.finishTransaction(product.transaction)
                                                     }
-                                                } else {
-                                                    SwiftyStoreKit.finishTransaction(product.transaction)
+                                                case .error(let error):
+                                                    Crashlytics.sharedInstance().recordError(error)
                                                 }
-                                            case .error(let error):
-                                                Crashlytics.sharedInstance().recordError(error)
-                                            }
-                                        })
-                                    }
+                                            })
+                                        }
+                                    }).start()
                                 }
                             }
                         }
@@ -124,11 +127,14 @@ class PurchaseHandler: NSObject {
     }
     
     func activatePurchase(_ identifier: String, receipt: Data, completion: @escaping (Bool) -> Void) {
-        HRPGManager.shared().purchaseGems(["transaction": ["receipt": receipt.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))]], onSuccess: {
-            completion(true)
-        }, onError: {
-            completion(false)
-        })
+        userRepository.purchaseGems(receipt: ["transaction": ["receipt": receipt.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))]]).observeResult { (result) in
+            switch result {
+            case .success:
+                completion(true)
+            case .failure:
+                completion(false)
+            }
+        }
     }
     
     func isInAppPurchase(_ identifier: String) -> Bool {
@@ -150,11 +156,14 @@ class PurchaseHandler: NSObject {
     
     func activateSubscription(_ identifier: String, receipt: ReceiptInfo, completion: @escaping (Bool) -> Void) {
         if let lastReceipt = receipt["latest_receipt"] as? String {
-            HRPGManager.shared().subscribe(identifier, withReceipt: lastReceipt, onSuccess: {
-                completion(true)
-            }, onError: {
-                completion(false)
-            })
+            userRepository.subscribe(sku: identifier, receipt: lastReceipt).observeResult { (result) in
+                switch result {
+                case .success(_):
+                    completion(true)
+                case .failure(_):
+                    completion(false)
+                }
+            }
         }
     }
     

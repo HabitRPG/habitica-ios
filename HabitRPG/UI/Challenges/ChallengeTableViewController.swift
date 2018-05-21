@@ -41,7 +41,7 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate,
 
         self.configureTableView()
         HRPGManager.shared().fetchChallenges({
-            HRPGManager.shared().fetchUser(nil, onError: nil)
+            //HRPGManager.shared().fetchUser(nil, onError: nil)
         }, onError: nil)
         
         self.segmentedFilterControl.selectedSegmentIndex = 0

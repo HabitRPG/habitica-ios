@@ -17,5 +17,17 @@ public protocol SubscriptionPlanProtocol {
     var dateCreated: Date? { get set }
     var planId: String? { get set }
     var customerId: String? { get set }
+    var paymentMethod: String? { get set }
     var consecutive: SubscriptionConsecutiveProtocol? { get set }
+}
+
+public extension SubscriptionPlanProtocol {
+    var isActive: Bool {
+        if let dateTerminated = dateTerminated {
+            if dateTerminated < Date() {
+                return false
+            }
+        }
+        return planId != nil
+    }
 }

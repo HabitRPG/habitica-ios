@@ -14,124 +14,111 @@ enum SetupTaskCategory {
     case work, exercise, health, school, selfcare, chores, creativity
 
     //siwftlint:disable:next identifier_name
-    func createSampleHabit(_ text: String, tagId: String?, positive: Bool, negative: Bool) -> [String: Any] {
-        var task = [
-            "text": text,
-            "up": positive,
-            "down": negative,
-            "type": "habit"
-        ] as [String: Any]
+    func createSampleHabit(_ text: String, tagId: String?, positive: Bool, negative: Bool, taskRepository: TaskRepository) -> TaskProtocol {
+        let task = taskRepository.getNewTask()
+        task.text = text
+        task.up = positive
+        task.down = negative
+        task.type = "habit"
         if let id = tagId {
-            task["tags"] = [id]
+            task.tags = [taskRepository.getNewTag(id: id)]
         }
         return task
     }
     
-    func createSampleDaily(_ text: String, tagId: String?, notes: String) -> [String: Any] {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        var task = [
-            "text": text,
-            "notes": notes,
-            "startDate": dateFormatter.string(from: Date()),
-            "monday": true,
-            "tuesday": true,
-            "wednesday": true,
-            "thursday": true,
-            "friday": true,
-            "saturday": true,
-            "sunday": true,
-            "type": "daily"
-        ] as [String: Any]
+    func createSampleDaily(_ text: String, tagId: String?, notes: String, taskRepository: TaskRepository) -> TaskProtocol {
+        let task = taskRepository.getNewTask()
+
+        task.text = text
+        task.notes = notes
+        task.startDate = Date()
+        task.type = "daily"
         if let id = tagId {
-            task["tags"] = [id]
+            task.tags = [taskRepository.getNewTag(id: id)]
         }
         return task
     }
     
-    func createSampleToDo(_ text: String, tagId: String?, notes: String) -> [String: Any] {
-        var task = [
-            "text": text,
-            "type": "todo",
-            "notes": notes
-        ] as [String: Any]
+    func createSampleToDo(_ text: String, tagId: String?, notes: String, taskRepository: TaskRepository) -> TaskProtocol {
+        let task = taskRepository.getNewTask()
+        task.text = text
+        task.type = "todo"
+        task.notes = notes
         if let id = tagId {
-            task["tags"] = [id]
+            task.tags = [taskRepository.getNewTag(id: id)]
         }
         return task
     }
     
-    func getTasks(tagId: String?) -> [[String: Any]] {
+    func getTasks(tagId: String?, taskRepository: TaskRepository) -> [TaskProtocol] {
         switch self {
         case .work:
             return [
-                createSampleHabit(NSLocalizedString("Process email", comment: ""), tagId: tagId, positive: true, negative: false),
+                createSampleHabit(NSLocalizedString("Process email", comment: ""), tagId: tagId, positive: true, negative: false, taskRepository: taskRepository),
                 createSampleDaily(NSLocalizedString("Worked on today’s most important task", comment: ""),
-                                  tagId: tagId, notes: NSLocalizedString("Tap to specify your most important task", comment: "")),
+                                  tagId: tagId, notes: NSLocalizedString("Tap to specify your most important task", comment: ""), taskRepository: taskRepository),
                 createSampleToDo(NSLocalizedString("Complete work project", comment: ""), tagId: tagId,
-                                 notes: NSLocalizedString("Tap to specify the name of your current project + set a due date!", comment: ""))
+                                 notes: NSLocalizedString("Tap to specify the name of your current project + set a due date!", comment: ""), taskRepository: taskRepository)
             ]
         case .exercise:
             return [
-                createSampleHabit(NSLocalizedString("10 minutes cardio", comment: ""), tagId: tagId, positive: true, negative: false),
-                createSampleDaily(NSLocalizedString("Daily workout routine", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to choose your schedule and specify exercises!", comment: "")),
-                createSampleToDo(NSLocalizedString("Set up workout schedule", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to add a checklist!", comment: ""))
+                createSampleHabit(NSLocalizedString("10 minutes cardio", comment: ""), tagId: tagId, positive: true, negative: false, taskRepository: taskRepository),
+                createSampleDaily(NSLocalizedString("Daily workout routine", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to choose your schedule and specify exercises!", comment: ""), taskRepository: taskRepository),
+                createSampleToDo(NSLocalizedString("Set up workout schedule", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to add a checklist!", comment: ""), taskRepository: taskRepository)
             ]
         case .health:
             return [
-                createSampleHabit(NSLocalizedString("Eat health/junk food", comment: ""), tagId: tagId, positive: true, negative: true),
-                createSampleDaily(NSLocalizedString("Floss", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to make any changes!", comment: "")),
-                createSampleToDo(NSLocalizedString("Brainstorm a healthy change", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to add checklists!", comment: ""))
+                createSampleHabit(NSLocalizedString("Eat health/junk food", comment: ""), tagId: tagId, positive: true, negative: true, taskRepository: taskRepository),
+                createSampleDaily(NSLocalizedString("Floss", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to make any changes!", comment: ""), taskRepository: taskRepository),
+                createSampleToDo(NSLocalizedString("Brainstorm a healthy change", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to add checklists!", comment: ""), taskRepository: taskRepository)
             ]
         case .school:
             return [
-                createSampleHabit(NSLocalizedString("Study/Procrastinate", comment: ""), tagId: tagId, positive: true, negative: true),
-                createSampleDaily(NSLocalizedString("Do homework", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to specify your most important task", comment: "")),
-                createSampleToDo(NSLocalizedString("Finish assignment for class", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to specify your most important task", comment: ""))
+                createSampleHabit(NSLocalizedString("Study/Procrastinate", comment: ""), tagId: tagId, positive: true, negative: true, taskRepository: taskRepository),
+                createSampleDaily(NSLocalizedString("Do homework", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to specify your most important task", comment: ""), taskRepository: taskRepository),
+                createSampleToDo(NSLocalizedString("Finish assignment for class", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to specify your most important task", comment: ""), taskRepository: taskRepository)
             ]
         case .selfcare:
             return [
-                createSampleHabit(NSLocalizedString("Take a short break", comment: ""), tagId: tagId, positive: true, negative: false),
-                createSampleDaily(NSLocalizedString("5 minutes of quiet breathing", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to choose your schedule!", comment: "")),
-                createSampleToDo(NSLocalizedString("Engage in a fun activity", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to specify what you plan to do!", comment: ""))
+                createSampleHabit(NSLocalizedString("Take a short break", comment: ""), tagId: tagId, positive: true, negative: false, taskRepository: taskRepository),
+                createSampleDaily(NSLocalizedString("5 minutes of quiet breathing", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to choose your schedule!", comment: ""), taskRepository: taskRepository),
+                createSampleToDo(NSLocalizedString("Engage in a fun activity", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to specify what you plan to do!", comment: ""), taskRepository: taskRepository)
             ]
         case .chores:
             return [
-                createSampleHabit(NSLocalizedString("10 minutes cleaning", comment: ""), tagId: tagId, positive: true, negative: false),
-                createSampleDaily(NSLocalizedString("Wash dishes", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to choose your schedule!", comment: "")),
-                createSampleToDo(NSLocalizedString("Organize clutter", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to specify the cluttered area!", comment: ""))
+                createSampleHabit(NSLocalizedString("10 minutes cleaning", comment: ""), tagId: tagId, positive: true, negative: false, taskRepository: taskRepository),
+                createSampleDaily(NSLocalizedString("Wash dishes", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to choose your schedule!", comment: ""), taskRepository: taskRepository),
+                createSampleToDo(NSLocalizedString("Organize clutter", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to specify the cluttered area!", comment: ""), taskRepository: taskRepository)
             ]
         case .creativity:
             return [
-                createSampleHabit(NSLocalizedString("Practiced a new creative technique", comment: ""), tagId: tagId, positive: true, negative: false),
+                createSampleHabit(NSLocalizedString("Practiced a new creative technique", comment: ""), tagId: tagId, positive: true, negative: false, taskRepository: taskRepository),
                 createSampleDaily(NSLocalizedString("Work on creative project", comment: ""), tagId: tagId,
-                                  notes: NSLocalizedString("Tap to specify the name of your current project + set the schedule!", comment: "")),
-                createSampleToDo(NSLocalizedString("Finish creative project", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to specify the name of your project", comment: ""))
+                                  notes: NSLocalizedString("Tap to specify the name of your current project + set the schedule!", comment: ""), taskRepository: taskRepository),
+                createSampleToDo(NSLocalizedString("Finish creative project", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to specify the name of your project", comment: ""), taskRepository: taskRepository)
             ]
         }
     }
     
-    func getTag(managedObjectContext: NSManagedObjectContext) -> Tag {
-        if let tag = NSEntityDescription.insertNewObject(forEntityName: "Tag", into: managedObjectContext) as? Tag {
-            switch self {
-            case .work:
-                tag.name = NSLocalizedString("Work", comment: "")
-            case .exercise:
-                tag.name = NSLocalizedString("Exercise", comment: "")
-            case .health:
-                tag.name = NSLocalizedString("Health", comment: "")
-            case .school:
-                tag.name = NSLocalizedString("School", comment: "")
-            case .selfcare:
-                tag.name = NSLocalizedString("Self-Care", comment: "")
-            case .chores:
-                tag.name = NSLocalizedString("Chores", comment: "")
-            case .creativity:
-                tag.name = NSLocalizedString("Creativity", comment: "")
-            }
-            return tag
+    func getTag(taskRepository: TaskRepository) -> TagProtocol {
+        let tag = taskRepository.getNewTag()
+        switch self {
+        case .work:
+            tag.text = NSLocalizedString("Work", comment: "")
+        case .exercise:
+            tag.text = NSLocalizedString("Exercise", comment: "")
+        case .health:
+            tag.text = NSLocalizedString("Health", comment: "")
+        case .school:
+            tag.text = NSLocalizedString("School", comment: "")
+        case .selfcare:
+            tag.text = NSLocalizedString("Self-Care", comment: "")
+        case .chores:
+            tag.text = NSLocalizedString("Chores", comment: "")
+        case .creativity:
+            tag.text = NSLocalizedString("Creativity", comment: "")
         }
-        return Tag()
+        return tag
     }
 }
 

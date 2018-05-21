@@ -113,7 +113,7 @@ class HRPGShopCollectionViewDataSource: HRPGFetchedResultsCollectionViewDataSour
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath)
         if let item = itemAt(indexPath: indexPath) {
             if let itemCell = cell as? InAppRewardCell {
-                itemCell.configure(item: item)
+                itemCell.configure(item: item, user: nil)
                 if let ownedItem = ownedItems[item.key ?? ""] {
                     itemCell.itemsLeft = ownedItem.owned.intValue
                 }

@@ -32,7 +32,6 @@
 
 - (void)refresh {
     [super refresh];
-    [[HRPGManager sharedManager] fetchCompletedTasks:nil onError:nil];
 }
 - (NSDictionary *)getDefinitonForTutorial:(NSString *)tutorialIdentifier {
     if ([tutorialIdentifier isEqualToString:@"todos"]) {
@@ -50,17 +49,13 @@
 }
 
 - (void)clearCompletedTasks:(UITapGestureRecognizer *)tapRecognizer {
-    [[HRPGManager sharedManager] clearCompletedTasks:^() {
-        [[HRPGManager sharedManager] fetchUser:nil onError:nil];
-    } onError:nil];
+    [self.dataSource clearCompletedTodos];
 }
 
 - (void)didChangeFilter:(NSNotification *)notification {
     [super didChangeFilter:notification];
     if (self.filterType == TaskToDoFilterTypeDone) {
-        /*if ([self.fetchedResultsController fetchedObjects].count == 0) {
-            [[HRPGManager sharedManager] fetchCompletedTasks:nil onError:nil];
-        }*/
+        [self.dataSource fetchCompletedTodos];
     }
 }
 

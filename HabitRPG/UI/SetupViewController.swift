@@ -8,6 +8,7 @@
 
 import UIKit
 import MRProgress
+import Habitica_Models
 
 class SetupViewController: UIViewController, UIScrollViewDelegate {
 
@@ -27,14 +28,15 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var previousButtonImageView: UIImageView!
     
     var userRepository = UserRepository()
+    private var taskRepository = TaskRepository()
     
     var views: [UIView] = []
     var viewControllers: [TypingTextViewController] = []
     var taskSetupViewController: TaskSetupViewController?
     var currentpage = 0
     
-    var createdTags = [SetupTaskCategory: Tag]()
-    var tagsToCreate = [SetupTaskCategory: Tag]()
+    var createdTags = [SetupTaskCategory: TagProtocol]()
+    var tagsToCreate = [SetupTaskCategory: TagProtocol]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -148,18 +150,17 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
         UserDefaults.standard.set(false, forKey: "isInSetup")
         UserDefaults.standard.set(0, forKey: "currentSetupStep")
         let overlayView = MRProgressOverlayView.showOverlayAdded(to: self.view, title: NSLocalizedString("Teleporting to Habitica", comment: ""), mode: .indeterminate, animated: true)
-        overlayView?.setTintColor(UIColor.purple400())
-        overlayView?.backgroundColor = UIColor.purple50().withAlphaComponent(0.6)
+        overlayView?.setTintColor(ThemeService.shared.theme.tintColor)
+        overlayView?.backgroundColor = ThemeService.shared.theme.backgroundTintColor.withAlphaComponent(0.6)
         if let viewController = taskSetupViewController {
             for taskCategory in viewController.selectedCategories {
-                tagsToCreate[taskCategory] = taskCategory.getTag(managedObjectContext: HRPGManager.shared().getManagedObjectContext())
+                tagsToCreate[taskCategory] = taskCategory.getTag(taskRepository: taskRepository)
             }
         }
         createTag {[weak self] in
             self?.createTasks {
                 self?.userRepository.retrieveUser().observeCompleted {
                     self?.showMainView()
-
                 }
             }
         }
@@ -171,48 +172,45 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
             return
         }
         if let tag = tagsToCreate.removeValue(forKey: taskCategory) {
-            HRPGManager.shared().createTag(tag, onSuccess: {[weak self] tag in
-                self?.createdTags[taskCategory] = tag
-                self?.createTag(completeFunc)
-                }, onError: {[weak self] in
-                    self?.createTag(completeFunc)
-            })
+            taskRepository.createTag(tag).on(value: { tag in
+                self.createdTags[taskCategory] = tag
+            }).observeCompleted {
+                self.createTag(completeFunc)
+            }
         }
     }
     
     private func createTasks(_ completeFunc: @escaping () -> Void) {
         if let viewController = taskSetupViewController {
-            var tasks = [[String: Any]]()
+            var tasks = [TaskProtocol]()
             for taskCategory in viewController.selectedCategories {
-                tasks.append(contentsOf: taskCategory.getTasks(tagId: createdTags[taskCategory]?.id))
+                tasks.append(contentsOf: taskCategory.getTasks(tagId: createdTags[taskCategory]?.id, taskRepository: taskRepository))
             }
-            tasks.append([
-                "text": NSLocalizedString("Reward yourself", comment: ""),
-                "notes": NSLocalizedString("Watch TV, play a game, eat a treat, it’s up to you!", comment: ""),
-                "value": 20,
-                "type": "reward"
-                ])
-            tasks.append([
-                "text": NSLocalizedString("Join Habitica (Check me off!)", comment: ""),
-                "notes": NSLocalizedString("You can either complete this To-Do, edit it, or remove it.", comment: ""),
-                "type": "todo"
-                ])
-            tasks.append([
-                "text": NSLocalizedString("Tap here to edit this into a bad habit you'd like to quit", comment: ""),
-                "notes": NSLocalizedString("Or delete it by swiping left", comment: ""),
-                "up": false,
-                "down": true,
-                "type": "habit"
-                ])
+            var task = taskRepository.getNewTask()
+            task.text = NSLocalizedString("Reward yourself", comment: "")
+            task.notes = NSLocalizedString("Watch TV, play a game, eat a treat, it’s up to you!", comment: "")
+            task.value = 20
+            task.type = "reward"
+            tasks.append(task)
+            task = taskRepository.getNewTask()
+            task.text = NSLocalizedString("Join Habitica (Check me off!)", comment: "")
+            task.notes = NSLocalizedString("You can either complete this To-Do, edit it, or remove it.", comment: "")
+            task.type = "todo"
+            tasks.append(task)
+            task = taskRepository.getNewTask()
+            task.text = NSLocalizedString("Tap here to edit this into a bad habit you'd like to quit", comment: "")
+            task.notes = NSLocalizedString("Or delete it by swiping left", comment: "")
+            task.up = false
+            task.down = true
+            task.type = "habit"
+            tasks.append(task)
             if tasks.count == 0 {
                 completeFunc()
                 return
             }
-            HRPGManager.shared().createTasks(tasks, onSuccess: {
+            taskRepository.createTasks(tasks).observeCompleted {
                 completeFunc()
-            }, onError: {
-                completeFunc()
-            })
+            }
         } else {
             completeFunc()
         }

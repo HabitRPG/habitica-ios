@@ -29,7 +29,6 @@
 - (void)scrollToTaskWithId:(NSString *)taskID;
 
 @property NSInteger filterType;
-@property NSInteger dayStart;
 
 @property NSString *scrollToTaskAfterLoading;
 

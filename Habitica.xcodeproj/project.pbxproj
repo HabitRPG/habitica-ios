@@ -134,7 +134,6 @@
 		2957B8BA1F4B4B3300E836EF /* InAppRewardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2957B8B91F4B4B3300E836EF /* InAppRewardCell.xib */; };
 		2957B8BC1F4B4DDE00E836EF /* InAppRewardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2957B8BB1F4B4DDE00E836EF /* InAppRewardCell.swift */; };
 		2957B8C41F4D922C00E836EF /* CustomRewardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2957B8C31F4D922C00E836EF /* CustomRewardCell.swift */; };
-		2957B8C81F4DCF7800E836EF /* RewardFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2957B8C71F4DCF7800E836EF /* RewardFormController.swift */; };
 		2957B8CA1F4ED7C800E836EF /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2957B8C91F4ED7C800E836EF /* Currency.swift */; };
 		295D42F620921F4200948E7E /* ClassSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295D42F520921F4200948E7E /* ClassSelectionViewController.swift */; };
 		295D42F820922BA700948E7E /* ClassSelectionOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295D42F720922BA700948E7E /* ClassSelectionOptionView.swift */; };
@@ -417,7 +416,6 @@
 		D9722B8019BD041E009D8AD3 /* HRPGNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9722B7F19BD041E009D8AD3 /* HRPGNavigationController.m */; };
 		D976D2401B98FA940032BC41 /* UIColor.Habitica.m in Sources */ = {isa = PBXBuildFile; fileRef = D976D23F1B98FA940032BC41 /* UIColor.Habitica.m */; };
 		D979AD131AF3CF6C00D59FAE /* Customization.m in Sources */ = {isa = PBXBuildFile; fileRef = D979AD121AF3CF6C00D59FAE /* Customization.m */; };
-		D97B8F5D1AE6CD3C00C6447D /* HRPGRewardFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D97B8F5C1AE6CD3C00C6447D /* HRPGRewardFormViewController.m */; };
 		D97C71DE18EC98A40089FDC6 /* QuestCollect.m in Sources */ = {isa = PBXBuildFile; fileRef = D97C71DD18EC98A40089FDC6 /* QuestCollect.m */; };
 		D97C71E418ECE09A0089FDC6 /* HRPGSpellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D97C71E318ECE09A0089FDC6 /* HRPGSpellViewController.m */; };
 		D97C71E718F32FED0089FDC6 /* Potion.m in Sources */ = {isa = PBXBuildFile; fileRef = D97C71E618F32FED0089FDC6 /* Potion.m */; };
@@ -717,7 +715,6 @@
 		2957B8B91F4B4B3300E836EF /* InAppRewardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InAppRewardCell.xib; sourceTree = "<group>"; };
 		2957B8BB1F4B4DDE00E836EF /* InAppRewardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InAppRewardCell.swift; sourceTree = "<group>"; };
 		2957B8C31F4D922C00E836EF /* CustomRewardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomRewardCell.swift; sourceTree = "<group>"; };
-		2957B8C71F4DCF7800E836EF /* RewardFormController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardFormController.swift; sourceTree = "<group>"; };
 		2957B8C91F4ED7C800E836EF /* Currency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		295D42F520921F4200948E7E /* ClassSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassSelectionViewController.swift; sourceTree = "<group>"; };
 		295D42F720922BA700948E7E /* ClassSelectionOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassSelectionOptionView.swift; sourceTree = "<group>"; };
@@ -1126,8 +1123,6 @@
 		D976DEC81CB65C06002BB69F /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Main.strings"; sourceTree = "<group>"; };
 		D979AD111AF3CF6C00D59FAE /* Customization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Customization.h; sourceTree = "<group>"; };
 		D979AD121AF3CF6C00D59FAE /* Customization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Customization.m; sourceTree = "<group>"; };
-		D97B8F5B1AE6CD3C00C6447D /* HRPGRewardFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGRewardFormViewController.h; sourceTree = "<group>"; };
-		D97B8F5C1AE6CD3C00C6447D /* HRPGRewardFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGRewardFormViewController.m; sourceTree = "<group>"; };
 		D97C71DC18EC98A40089FDC6 /* QuestCollect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestCollect.h; sourceTree = "<group>"; };
 		D97C71DD18EC98A40089FDC6 /* QuestCollect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestCollect.m; sourceTree = "<group>"; };
 		D97C71E218ECE09A0089FDC6 /* HRPGSpellViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGSpellViewController.h; sourceTree = "<group>"; };
@@ -1589,7 +1584,6 @@
 			isa = PBXGroup;
 			children = (
 				2957B8B21F4B2D5A00E836EF /* RewardViewController.swift */,
-				2957B8C71F4DCF7800E836EF /* RewardFormController.swift */,
 			);
 			name = Rewards;
 			sourceTree = "<group>";
@@ -2700,8 +2694,6 @@
 				D9ADD3621944FDBE006202C1 /* HRPGFilterViewController.m */,
 				D96038351930F90E0025EAEC /* HRPGMessageViewController.h */,
 				D96038361930F90E0025EAEC /* HRPGMessageViewController.m */,
-				D97B8F5B1AE6CD3C00C6447D /* HRPGRewardFormViewController.h */,
-				D97B8F5C1AE6CD3C00C6447D /* HRPGRewardFormViewController.m */,
 				D94FEDEC1BB6DA8E0046A52E /* HRPGInviteMembersViewController.h */,
 				D94FEDED1BB6DA8E0046A52E /* HRPGInviteMembersViewController.m */,
 				D92D26121D58EEBA001FD977 /* HRPGQRCodeScannerViewController.h */,
@@ -3565,7 +3557,6 @@
 				29E16313200E619400685640 /* QuestProgressView.swift in Sources */,
 				29E162E01FFBBDDC00685640 /* UsernameLabel.swift in Sources */,
 				2907267E1F74279C00545550 /* TimeTravelersCollectionViewDataSource.swift in Sources */,
-				D97B8F5D1AE6CD3C00C6447D /* HRPGRewardFormViewController.m in Sources */,
 				D9ADD34B1943BB16006202C1 /* HRPGFeedViewController.m in Sources */,
 				2907F99E1F694C4000328AEE /* GemViewController.swift in Sources */,
 				292F9662206E363000804151 /* GroupChatViewDataSource.swift in Sources */,
@@ -3891,7 +3882,6 @@
 				293282181F39E1A400D42961 /* WelcomeViewController.swift in Sources */,
 				29144876208648D500F3A6B5 /* EquipmentOverviewViewController.swift in Sources */,
 				491C6E5B2020FE64005030A2 /* Challenge-Extensions.swift in Sources */,
-				2957B8C81F4DCF7800E836EF /* RewardFormController.swift in Sources */,
 				D96C85451DCBAC90003E3616 /* HRPGStreakAchievementNotification.m in Sources */,
 				490864301F45318600BD9896 /* HRPGInsufficientHourglassesViewController.swift in Sources */,
 				2914487820864A2900F3A6B5 /* EquipmentOverviewView.swift in Sources */,

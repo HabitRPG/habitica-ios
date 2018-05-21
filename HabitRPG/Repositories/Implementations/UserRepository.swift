@@ -285,6 +285,24 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         return call.objectSignal.on(value: handleUserUpdate())
     }
     
+    func sendPasswordResetEmail(email: String) -> Signal<EmptyResponseProtocol?, NoError> {
+        let call = SendPasswordResetEmailCall(email: email)
+        call.fire()
+        return call.objectSignal
+    }
+    
+    func purchaseGems(receipt: [String: Any]) -> Signal<EmptyResponseProtocol?, NoError> {
+        let call = PurchaseGemsCall(receipt: receipt)
+        call.fire()
+        return call.objectSignal
+    }
+    
+    func subscribe(sku: String, receipt: String) -> Signal<EmptyResponseProtocol?, NoError> {
+        let call = SubscribeCall(sku: sku, receipt: receipt)
+        call.fire()
+        return call.objectSignal
+    }
+    
     private func handleUserUpdate() -> ((UserProtocol?) -> Void) {
         return { updatedUser in
             if let userID = self.currentUserId, let updatedUser = updatedUser {

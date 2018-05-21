@@ -37,26 +37,13 @@
 //- (void)fetchContent:(void (^)())successBlock onError:(void (^)())errorBlock;
 //- (void)fetchTasks:(void (^)())successBlock onError:(void (^)())errorBlock;
 //- (void)fetchTasksForDay:(NSDate *)dueDate onSuccess:(void (^)())successBlock  onError:(void (^)())errorBlock;
-
-- (void)fetchCompletedTasks:(void (^)())successBlock onError:(void (^)())errorBlock;
-
-- (void)fetchUser:(void (^)())successBlock onError:(void (^)())errorBlock;
-- (void)fetchUser:(BOOL)includeTasks
-        onSuccess:(void (^)())successBlock
-          onError:(void (^)())errorBlock;
-
-- (void)updateUser:(NSDictionary *)newValues
-         onSuccess:(void (^)())successBlock
-           onError:(void (^)())errorBlock;
-- (void)updateUser:(NSDictionary *)newValues
-       refetchUser:(BOOL)refetchUser
-         onSuccess:(void (^)())successBlock
-           onError:(void (^)())errorBlock;
-
+//- (void)fetchCompletedTasks:(void (^)())successBlock onError:(void (^)())errorBlock;
+//- (void)fetchUser:(void (^)())successBlock onError:(void (^)())errorBlock;
+//- (void)fetchUser:(BOOL)includeTasks onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
+//- (void)updateUser:(NSDictionary *)newValues onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
+//- (void)updateUser:(NSDictionary *)newValues refetchUser:(BOOL)refetchUser onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 //- (void)changeClass:(NSString *)newClass onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
-
 //- (void)disableClasses:(void (^)())successBlock onError:(void (^)())errorBlock;
-
 //- (void)fetchGroup:(NSString *)groupID onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 //- (void)fetchGroups:(NSString *)groupType onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
@@ -88,9 +75,7 @@
 //- (void)scoreChecklistItem:(Task *)task checklistItem:(ChecklistItem *)item onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 //- (void)getReward:(NSString *)rewardID withText:(NSString *)text onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 //- (void)createTask:(Task *)task onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
-
-- (void)createTasks:(NSArray *)tasks onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
-
+//- (void)createTasks:(NSArray *)tasks onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 //- (void)updateTask:(Task *)task onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 //- (void)deleteTask:(Task *)task onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 //- (void)moveTask:(Task *)task toPosition:(NSNumber *)position onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
@@ -111,9 +96,7 @@
              onError:(void (^)())errorBlock;
 
 //- (void)fetchBuyableRewards:(void (^)())successBlock onError:(void (^)())errorBlock;
-
-- (void)clearCompletedTasks:(void (^)())successBlock onError:(void (^)())errorBlock;
-
+//- (void)clearCompletedTasks:(void (^)())successBlock onError:(void (^)())errorBlock;
 //- (void)buyObject:(NSString *)key withValue:(NSNumber *)value withText:(NSString *)text onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 //- (void)unlockPath:(NSString *)path onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 //- (void)sellItem:(Item *)item onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
@@ -122,32 +105,12 @@
 //- (void)hatchEgg:(NSString *)egg withPotion:(NSString *)hPotion onSuccess:(void (^)(NSString *message))successBlock onError:(void (^)())errorBlock;
 //- (void)castSpell:(Spell *)spell withTargetType:(NSString *)targetType onTarget:(NSString *)target onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 //- (void)changeDayStartTime:(NSNumber *)dayStart onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
-
-- (void)acceptQuest:(NSString *)group
-          onSuccess:(void (^)())successBlock
-            onError:(void (^)(NSString *errorMessage))errorBlock;
-
-- (void)rejectQuest:(NSString *)group
-          onSuccess:(void (^)())successBlock
-            onError:(void (^)(NSString *errorMessage))errorBlock;
-
-- (void)abortQuest:(NSString *)group
-         onSuccess:(void (^)())successBlock
-           onError:(void (^)(NSString *errorMessage))errorBlock;
-
-- (void)cancelQuest:(NSString *)group
-          onSuccess:(void (^)())successBlock
-            onError:(void (^)(NSString *errorMessage))errorBlock;
-
-- (void)forceStartQuest:(NSString *)group
-              onSuccess:(void (^)())successBlock
-                onError:(void (^)(NSString *errorMessage))errorBlock;
-
-- (void)inviteToQuest:(NSString *)group
-            withQuest:(Quest *)quest
-            onSuccess:(void (^)())successBlock
-              onError:(void (^)())errorBlock;
-
+//- (void)acceptQuest:(NSString *)group onSuccess:(void (^)())successBlock onError:(void (^)(NSString *errorMessage))errorBlock;
+//- (void)rejectQuest:(NSString *)group onSuccess:(void (^)())successBlock onError:(void (^)(NSString *errorMessage))errorBlock;
+//- (void)abortQuest:(NSString *)group onSuccess:(void (^)())successBlock onError:(void (^)(NSString *errorMessage))errorBlock;
+//- (void)cancelQuest:(NSString *)group onSuccess:(void (^)())successBlock onError:(void (^)(NSString *errorMessage))errorBlock;
+//- (void)forceStartQuest:(NSString *)group onSuccess:(void (^)())successBlock onError:(void (^)(NSString *errorMessage))errorBlock;
+//- (void)inviteToQuest:(NSString *)group withQuest:(Quest *)quest onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 //- (void)createGroup:(Group *)group onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 //- (void)updateGroup:(Group *)group onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 //- (void)fetchGroupMembers:(NSString *)groupID withPublicFields:(BOOL)withPublicFields fetchAll:(BOOL)fetchAll onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
@@ -175,33 +138,19 @@
 //- (void)likeMessage:(ChatMessage *)message withGroup:(NSString *)groupID onSuccess:(void (^)())successBlock  onError:(void (^)())errorBlock;
 //- (void)flagMessage:(ChatMessage *)message withGroup:(NSString *)groupID onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 //- (void)feedPet:(Pet *)pet withFood:(Food *)food onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
-
-- (void)purchaseGems:(NSDictionary *)receipt
-           onSuccess:(void (^)())successBlock
-             onError:(void (^)())errorBlock;
-
-- (void)subscribe:(NSString *)sku
-      withReceipt:(NSString *)receipt
-        onSuccess:(void (^)())successBlock
-          onError:(void (^)())errorBlock;
-
-
+//- (void)purchaseGems:(NSDictionary *)receipt onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
+//- (void)subscribe:(NSString *)sku withReceipt:(NSString *)receipt onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 //- (void)purchaseItem:(NSString *)key withPurchaseType:(NSString *)purchaseType withText:(NSString *)text withImageName:(NSString *)imageName onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 //- (void)purchaseHourglassItem:(NSString *)key withPurchaseType:(NSString *)purchaseType withText:(NSString *)text withImageName:(NSString *)imageName onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 //- (void)purchaseMysterySet:(NSString *)key onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 //- (void)purchaseQuest:(NSString *)key withText:(NSString *)text withImageName:(NSString *)imageName onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
-
-- (void)removePushDevice:(void (^)())successBlock
-                 onError:(void (^)())errorBlock;
+//- (void)removePushDevice:(void (^)())successBlock onError:(void (^)())errorBlock;
 
 - (void)fetchShopInventory:(NSString *)shopInventory
                  onSuccess:(void (^)())successBlock
                    onError:(void (^)())errorBlock;
 
-- (void)markNotificationRead:(HRPGNotification *)notification
-                 onSuccess:(void (^)())successBlock
-                   onError:(void (^)())errorBlock;
-
+- (void)markNotificationRead:(HRPGNotification *)notification onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 //- (void)runCron:(NSArray<Task *> *)completedTasks onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 //- (void)resetAccount:(void (^)())successBlock onError:(void (^)())errorBlock;
 //- (void)deleteAccount:(NSString *)password successBlock:(void (^)())successBlock onError:(void (^)())errorBlock;
@@ -209,16 +158,10 @@
 //- (void)changeEmail:(NSString *)newEmail withPassword:(NSString *)password successBlock:(void (^)())successBlock onError:(void (^)())errorBlock;
 //- (void)changeLoginName:(NSString *)newLoginName withPassword:(NSString *)password successBlock:(void (^)())successBlock onError:(void (^)())errorBlock;
 //- (void)changePassword:(NSString *)newPassword oldPassword:(NSString *)oldPassword confirmPassword:(NSString *)confirmedPassword successBlock:(void (^)())successBlock onError:(void (^)())errorBlock;
-
-- (void)sendPasswordResetEmail:(NSString *)email
-                  onSuccess:(void (^)())successBlock
-                       onError:(void (^)())errorBlock;
-
+//- (void)sendPasswordResetEmail:(NSString *)email onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 //- (void)allocateAttributePoint:(NSString *)attribute onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 //- (void)bulkAllocateAttributePoint:(NSInteger)strengthValue intelligence:(NSInteger)intelligenceValue constitution:(NSInteger)constitutionValue perception:(NSInteger)perceptionValue onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
-
 //- (void)reroll:(void (^)())successBlock onError:(void (^)())errorBlock;
-
 //- (void)fetchWorldState:(void (^)())successBlock onError:(void (^)())errorBlock;
 
 - (NSManagedObjectContext *)getManagedObjectContext;
@@ -248,8 +191,5 @@
 
 - (void)changeUseAppBadge:(BOOL)useAppBadge;
 
-- (void)togglePinnedItem:(NSString *)pinType
-                withPath:(NSString *)path
-               onSuccess:(void (^)())successBlock
-                 onError:(void (^)())errorBlock;
+//- (void)togglePinnedItem:(NSString *)pinType withPath:(NSString *)path onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 @end

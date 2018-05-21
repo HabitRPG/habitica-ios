@@ -17,7 +17,12 @@ public protocol SubscriptionConsecutiveProtocol {
 }
 
 public extension SubscriptionConsecutiveProtocol {
+    
+    var gemCapTotal: Int {
+        return 25 + gemCapExtra
+    }
+    
     var gemsRemaining: Int {
-        return (25 + gemCapExtra) - gemsPurchased
+        return gemCapTotal - gemsPurchased
     }
 }

@@ -25,6 +25,18 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
         })
     }
     
+    func retrieveCompletedTodos() -> Signal<[TaskProtocol]?, NoError> {
+        let call = RetrieveTasksCall(type: "completedTodos")
+        call.fire()
+        return call.arraySignal
+    }
+    
+    func clearCompletedTodos() -> Signal<[TaskProtocol]?, NoError> {
+        let call = ClearCompletedTodosCall()
+        call.fire()
+        return call.arraySignal
+    }
+    
     func getTasks(predicate: NSPredicate) -> SignalProducer<ReactiveResults<[TaskProtocol]>, ReactiveSwiftRealmError> {
         return localRepository.getTasks(predicate: predicate)
     }
@@ -81,6 +93,10 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
         return localRepository.getNewTask()
     }
     
+    func getNewTag(id: String? = nil) -> TagProtocol {
+        return localRepository.getNewTag(id: id)
+    }
+    
     func getNewChecklistItem() -> ChecklistItemProtocol {
         return localRepository.getNewChecklistItem()
     }
@@ -103,6 +119,12 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
                 self.localRepository.save(userID: self.currentUserId, task: returnedTask)
             }
         })
+    }
+    
+    func createTasks(_ tasks: [TaskProtocol]) -> Signal<[TaskProtocol]?, NoError> {
+        let call = CreateTasksCall(tasks: tasks)
+        call.fire()
+        return call.arraySignal
     }
     
     func updateTask(_ task: TaskProtocol) -> Signal<TaskProtocol?, NoError> {
@@ -135,6 +157,38 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
         call.httpResponseSignal.observeValues { (response) in
             if response.statusCode == 200 {
                 self.localRepository.deleteTask(task)
+            }
+        }
+        return call.objectSignal
+    }
+    
+    func createTag(_ tag: TagProtocol) -> Signal<TagProtocol?, NoError> {
+        let call = CreateTagCall(tag: tag)
+        call.fire()
+        return call.objectSignal.on(value: { returnedTag in
+            if let returnedTag = returnedTag {
+                self.localRepository.save(userID: self.currentUserId, tag: returnedTag)
+            }
+        })
+    }
+    
+    func updateTag(_ tag: TagProtocol) -> Signal<TagProtocol?, NoError> {
+        let call = UpdateTagCall(tag: tag)
+        call.fire()
+        return call.objectSignal.on(value: { returnedTag in
+            if let returnedTag = returnedTag {
+                returnedTag.order = tag.order
+                self.localRepository.save(userID: self.currentUserId, tag: returnedTag)
+            }
+        })
+    }
+    
+    func deleteTag(_ tag: TagProtocol) -> Signal<EmptyResponseProtocol?, NoError> {
+        let call = DeleteTagCall(tag: tag)
+        call.fire()
+        call.httpResponseSignal.observeValues { (response) in
+            if response.statusCode == 200 {
+                self.localRepository.deleteTag(tag)
             }
         }
         return call.objectSignal

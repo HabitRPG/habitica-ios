@@ -17,6 +17,7 @@ class APISubscriptionPlan: SubscriptionPlanProtocol, Decodable {
     var dateCreated: Date?
     var planId: String?
     var customerId: String?
+    var paymentMethod: String?
     var consecutive: SubscriptionConsecutiveProtocol?
     
     enum CodingKeys: String, CodingKey {
@@ -27,6 +28,7 @@ class APISubscriptionPlan: SubscriptionPlanProtocol, Decodable {
         case gemsBought
         case planId
         case customerId
+        case paymentMethod
         case consecutive
     }
     
@@ -39,6 +41,7 @@ class APISubscriptionPlan: SubscriptionPlanProtocol, Decodable {
         dateCreated = try? values.decode(Date.self, forKey: .dateCreated)
         planId = try? values.decode(String.self, forKey: .planId)
         customerId = try? values.decode(String.self, forKey: .customerId)
+        paymentMethod = try? values.decode(String.self, forKey: .paymentMethod)
         consecutive = try? values.decode(APISubscriptionConsecutive.self, forKey: .consecutive)
     }
 }

@@ -53,6 +53,15 @@ public class TaskLocalRepository: BaseLocalRepository {
         removeOldTasks(newTasks: tasks)
     }
     
+    public func save(userID: String?, tag: TagProtocol) {
+        if let realmTag = tag as? RealmTag {
+            save(object: realmTag)
+            return
+        }
+        save(object: RealmTag(userID: userID, tagProtocol: tag))
+        
+    }
+    
     private func removeOldTasks(newTasks: [TaskProtocol]) {
         let oldTasks = getRealm()?.objects(RealmTask.self)
         var tasksToRemove = [RealmTask]()
@@ -127,6 +136,14 @@ public class TaskLocalRepository: BaseLocalRepository {
         return RealmTask()
     }
     
+    public func getNewTag(id: String? = nil) -> TagProtocol {
+        let tag = RealmTag()
+        if let id = id {
+            tag.id = id
+        }
+        return tag
+    }
+    
     public func getNewChecklistItem() -> ChecklistItemProtocol {
         return RealmChecklistItem()
     }
@@ -175,6 +192,15 @@ public class TaskLocalRepository: BaseLocalRepository {
     public func moveTask(_ task: TaskProtocol, toPosition: Int) {
         try? getRealm()?.write {
             task.order = toPosition
+        }
+    }
+    
+    public func deleteTag(_ tag: TagProtocol) {
+        let realm = getRealm()
+        if let realmTag = realm?.object(ofType: RealmTag.self, forPrimaryKey: tag.id) {
+            try? realm?.write {
+                realm?.delete(realmTag)
+            }
         }
     }
     

@@ -52,7 +52,7 @@ class RealmTask: Object, TaskProtocol {
                 if let realmTag = tag as? RealmTag {
                     realmTags.append(realmTag)
                 } else {
-                    realmTags.append(RealmTag(tag))
+                    realmTags.append(RealmTag(userID: userID, tagProtocol: tag))
                 }
             }
         }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Habitica_Models
 
 class SubscriptionDetailView: UITableViewCell {
 
@@ -21,8 +22,8 @@ class SubscriptionDetailView: UITableViewCell {
 
     var cancelSubscriptionAction: (() -> Void)?
 
-    public func setPlan(_ plan: SubscriptionPlan) {
-        if plan.isActive() {
+    public func setPlan(_ plan: SubscriptionPlanProtocol) {
+        if plan.isActive {
             statusPill.text = "Active".localized
             statusPill.pillColor = .green50()
         } else {
@@ -32,14 +33,14 @@ class SubscriptionDetailView: UITableViewCell {
         typeLabel.text = plan.planId
         paymentMethodLabel.text = plan.paymentMethod
 
-        if plan.count == 0 {
+        if plan.quantity == 0 {
             monthsSubscribedPill.text = "1 Month".localized
         } else {
-            monthsSubscribedPill.text = "\(plan.count ?? 0) Months".localized
+            monthsSubscribedPill.text = "\(plan.quantity) Months".localized
         }
 
-        gemCapPill.text = String(plan.totalGemCap)
-        hourGlassCountPill.text = plan.consecutiveTrinkets?.stringValue
+        gemCapPill.text = String(plan.consecutive?.gemCapTotal ?? 0)
+        hourGlassCountPill.text = String(plan.consecutive?.hourglasses ?? 0)
 
         if plan.paymentMethod == "Apple" {
             cancelDescriptionLabel.text = "No longer want to subscribe? You can manage your subscription from iTunes.".localized

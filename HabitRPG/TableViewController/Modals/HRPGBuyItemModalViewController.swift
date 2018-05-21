@@ -112,9 +112,9 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         if let contentView = closableShopModal.shopModalBgView.contentView {
             var itemView: HRPGSimpleShopItemView?
             if let item = self.item {
-                itemView = HRPGSimpleShopItemView(withItem: item, for: contentView)
+                itemView = HRPGSimpleShopItemView(withItem: item, withUser: user, for: contentView)
             } else if let reward = self.reward {
-                itemView = HRPGSimpleShopItemView(withReward: reward, for: contentView)
+                itemView = HRPGSimpleShopItemView(withReward: reward, withUser: user, for: contentView)
                 isPinned = true
             }
             updateBuyButton()

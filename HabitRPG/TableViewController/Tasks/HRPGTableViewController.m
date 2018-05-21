@@ -67,8 +67,6 @@ NSIndexPath  *sourceIndexPath = nil;
         // due to the way ipads are used we want to have a bit of extra spacing
         self.extraCellSpacing = 8;
     }
-    self.dayStart = [[[HRPGManager sharedManager] getUser].preferences.dayStart integerValue];
-
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 44;
     
@@ -232,7 +230,7 @@ NSIndexPath  *sourceIndexPath = nil;
     MainTabBarController *tabBarController = (MainTabBarController *)self.tabBarController;
 
     [predicateArray addObjectsFromArray:[Task predicatesForTaskType:self.typeName
-                                                     withFilterType:self.filterType withOffset:self.dayStart]];
+                                                     withFilterType:self.filterType]];
 
     if ([tabBarController.selectedTags count] > 0) {
         [predicateArray

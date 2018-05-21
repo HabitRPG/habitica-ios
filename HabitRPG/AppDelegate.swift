@@ -205,6 +205,38 @@ class HabiticaAppDelegate: NSObject {
     }
     
     @objc
+    func acceptQuestInvitation(_ completed: @escaping ((Bool) -> Void)) {
+        userRepository.getUser().take(first: 1)
+            .map({ (user) -> String? in
+                return user.party?.id
+            })
+            .skipNil()
+            .flatMap(.latest) { (partyID) in
+                return self.socialRepository.acceptQuestInvitation(groupID: partyID)
+            }.on(failed: { _ in
+                completed(false)
+            }, value: { _ in
+                completed(true)
+            }).start()
+    }
+    
+    @objc
+    func rejectQuestInvitation(_ completed: @escaping ((Bool) -> Void)) {
+        userRepository.getUser().take(first: 1)
+            .map({ (user) -> String? in
+                return user.party?.id
+            })
+            .skipNil()
+            .flatMap(.latest) { (partyID) in
+                return self.socialRepository.rejectQuestInvitation(groupID: partyID)
+            }.on(failed: { _ in
+                completed(false)
+            }, value: { _ in
+                completed(true)
+            }).start()
+    }
+    
+    @objc
     func sendPrivateMessage(toUserID: String, message: String, completed: @escaping ((Bool) -> Void)) {
         socialRepository.post(inboxMessage: message, toUserID: toUserID).observeResult({ (result) in
             switch result {

@@ -156,17 +156,17 @@
 
 - (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo withResponseInfo:(NSDictionary *)responseInfo completionHandler:(void (^)())completionHandler {
     if ([identifier isEqualToString:@"acceptAction"]) {
-        [[HRPGManager sharedManager] acceptQuest:[[HRPGManager sharedManager] getUser].partyID onSuccess:^() {
-            completionHandler();
-        } onError:^(NSString *errorMessage) {
-            [self displayLocalNotificationWithMessage:errorMessage withApplication:application];
+        [self.swiftAppDelegate acceptQuestInvitation:^(BOOL success) {
+            if (!success) {
+                [self displayLocalNotificationWithMessage:NSLocalizedString(@"There was an error accepting the quest invitation", nil) withApplication:application];
+            }
             completionHandler();
         }];
     } else if ([identifier isEqualToString:@"rejectAction"]) {
-        [[HRPGManager sharedManager] rejectQuest:[[HRPGManager sharedManager] getUser].partyID onSuccess:^() {
-            completionHandler();
-        } onError:^(NSString *errorMessage) {
-            [self displayLocalNotificationWithMessage:errorMessage withApplication:application];
+        [self.swiftAppDelegate rejectQuestInvitation:^(BOOL success) {
+            if (!success) {
+                [self displayLocalNotificationWithMessage:NSLocalizedString(@"There was an error rejecting the quest invitation", nil) withApplication:application];
+            }
             completionHandler();
         }];
     } else if ([identifier isEqualToString:@"replyAction"]) {

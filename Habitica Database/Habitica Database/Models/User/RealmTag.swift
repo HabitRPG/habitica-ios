@@ -12,6 +12,7 @@ import RealmSwift
 
 class RealmTag: Object, TagProtocol {
     @objc dynamic var id: String?
+    @objc dynamic var userID: String?
     @objc dynamic var text: String?
     @objc dynamic var order: Int = 0
     
@@ -19,7 +20,7 @@ class RealmTag: Object, TagProtocol {
         return "id"
     }
     
-    convenience init(_ tagProtocol: TagProtocol) {
+    convenience init(userID: String?, tagProtocol: TagProtocol) {
         self.init()
         id = tagProtocol.id
         text = tagProtocol.text

@@ -154,7 +154,7 @@
     }
 }
 
-+ (NSArray *)predicatesForTaskType:(NSString *)taskType withFilterType:(NSInteger)filterType withOffset:(NSInteger)offset {
++ (NSArray *)predicatesForTaskType:(NSString *)taskType withFilterType:(NSInteger)filterType {
     if ([taskType isEqual:@"habit"]) {
         switch (filterType) {
             case TaskHabitFilterTypeAll: {

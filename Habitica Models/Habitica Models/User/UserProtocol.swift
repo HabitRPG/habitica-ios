@@ -62,11 +62,6 @@ public extension UserProtocol {
     }
     
     var isSubscribed: Bool {
-        if let dateTerminated = purchased?.subscriptionPlan?.dateTerminated {
-            if dateTerminated < Date() {
-                return false
-            }
-        }
-        return purchased?.subscriptionPlan?.planId != nil
+        return purchased?.subscriptionPlan?.isActive == true
     }
 }

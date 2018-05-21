@@ -12,7 +12,7 @@ import FunkyNetwork
 import ReactiveSwift
 
 public class RetrieveTasksCall: ResponseArrayCall<TaskProtocol, APITask> {
-    public init(dueOnDay: Date? = nil, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "tasks.json")) {
+    public init(dueOnDay: Date? = nil, type: String? = nil, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "tasks.json")) {
         var url = "tasks/user"
         if let date = dueOnDay {
             let formatter = DateFormatter()
@@ -22,6 +22,9 @@ public class RetrieveTasksCall: ResponseArrayCall<TaskProtocol, APITask> {
             dateString = regex?.stringByReplacingMatches(in: dateString, options: [], range: NSMakeRange(0, dateString.count), withTemplate: "T0$1:") ?? ""
             url = "\(url)?type=dailys&dueDate=\(dateString)"
             url = url.replacingOccurrences(of: "+", with: "%2B")
+        }
+        if let type = type {
+            url = "\(url)?type=\(type)"
         }
         super.init(httpMethod: .GET, endpoint: url, stubHolder: stubHolder)
     }

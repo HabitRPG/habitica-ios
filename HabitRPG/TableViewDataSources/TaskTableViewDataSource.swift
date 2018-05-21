@@ -31,6 +31,10 @@ public protocol TaskTableViewDataSourceProtocol {
     func fixTaskOrder(movedTask: TaskProtocol, toPosition: Int)
     @objc
     func moveTask(task: TaskProtocol, toPosition: Int, completion: @escaping () -> Void)
+    @objc
+    func clearCompletedTodos()
+    @objc
+    func fetchCompletedTodos()
 }
 
 class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, TaskTableViewDataSourceProtocol {
@@ -87,6 +91,16 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
     @objc
     func idForObject(at indexPath: IndexPath) -> String? {
         return item(at: indexPath)?.id
+    }
+    
+    @objc
+    func clearCompletedTodos() {
+        repository.clearCompletedTodos().observeCompleted {}
+    }
+    
+    @objc
+    func fetchCompletedTodos() {
+        repository.retrieveCompletedTodos().observeCompleted {}
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

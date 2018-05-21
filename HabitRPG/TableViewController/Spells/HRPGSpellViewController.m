@@ -14,7 +14,6 @@
 #import "Habitica-Swift.h"
 
 @interface HRPGSpellViewController ()
-@property User *user;
 @property id<SpellsTableViewDataSourceProtocol> dataSource;
 @end
 
@@ -22,16 +21,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.user = [[HRPGManager sharedManager] getUser];
     [self setupTableView];
     self.tutorialIdentifier = @"skills";
-
-    if ([self.user.hclass isEqualToString:@"wizard"] ||
-        [self.user.hclass isEqualToString:@"healer"]) {
-        self.navigationItem.title = NSLocalizedString(@"Cast Spells", nil);
-    } else {
-        self.navigationItem.title = NSLocalizedString(@"Use Skills", nil);
-    }
 }
 
 - (void) setupTableView {

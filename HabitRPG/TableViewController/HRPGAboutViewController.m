@@ -199,7 +199,7 @@
                                                 [[NSBundle mainBundle] infoDictionary]
                                                     [@"CFBundleShortVersionString"]]];
     [informationString appendString:[NSString stringWithFormat:@"User UUID: %@\n",
-                                                               [[HRPGManager sharedManager] getUser].id]];
+                                                               [[AuthenticationManager shared] currentUserId]]];
 
     return informationString;
 }
