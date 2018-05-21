@@ -14,6 +14,7 @@ public protocol QuestProtocol: ItemProtocol {
     var category: String? { get set }
     var boss: QuestBossProtocol? { get set }
     var collect: [QuestCollectProtocol]? { get set }
+    var drop: QuestDropProtocol? { get set }
 }
 
 public extension QuestProtocol {

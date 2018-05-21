@@ -21,7 +21,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupTableView];
-    [[HRPGManager sharedManager] fetchGroupMembers:[[HRPGManager sharedManager] getUser].partyID withPublicFields:YES fetchAll:YES onSuccess:nil onError:nil];
 }
 
 - (void)setupTableView {

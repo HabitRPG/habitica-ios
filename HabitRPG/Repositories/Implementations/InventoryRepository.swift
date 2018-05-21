@@ -84,6 +84,48 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
         })
     }
     
+    func buyObject(key: String) -> Signal<UserProtocol?, NoError> {
+        let call = BuyObjectCall(key: key)
+        call.fire()
+        return call.objectSignal
+    }
+    
+    func purchaseItem(purchaseType: String, key: String) -> Signal<UserProtocol?, NoError> {
+        let call = PurchaseItemCall(purchaseType: purchaseType, key: key)
+        call.fire()
+        return call.objectSignal
+    }
+    
+    func purchaseHourglassItem(purchaseType: String, key: String) -> Signal<UserProtocol?, NoError> {
+        let call = PurchaseHourglassItemCall(purchaseType: purchaseType, key: key)
+        call.fire()
+        return call.objectSignal
+    }
+    
+    func purchaseMysterySet(identifier: String) -> Signal<UserProtocol?, NoError> {
+        let call = PurchaseMysterySetCall(identifier: identifier)
+        call.fire()
+        return call.objectSignal
+    }
+    
+    func purchaseQuest(key: String) -> Signal<UserProtocol?, NoError> {
+        let call = PurchaseQuestCall(key: key)
+        call.fire()
+        return call.objectSignal
+    }
+    
+    func togglePinnedItem(pinType: String, path: String) -> Signal<EmptyResponseProtocol?, NoError> {
+        let call = TogglePinnedItemCall(pinType: pinType, path: path)
+        call.fire()
+        return call.objectSignal
+    }
+    
+    func retrieveShopInventory(identifier: String) -> Signal<EmptyResponseProtocol?, NoError> {
+        let call = RetrieveShopInventoryCall(identifier: identifier)
+        call.fire()
+        return call.objectSignal
+    }
+    
     func feed(pet: PetProtocol, food: FoodProtocol) -> Signal<Int?, NoError> {
         let call = FeedPetCall(pet: pet, food: food)
         call.fire()

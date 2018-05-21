@@ -15,3 +15,9 @@ public protocol SubscriptionConsecutiveProtocol {
     var gemsPurchased: Int { get set }
     var offset: Int { get set }
 }
+
+public extension SubscriptionConsecutiveProtocol {
+    var gemsRemaining: Int {
+        return (25 + gemCapExtra) - gemsPurchased
+    }
+}

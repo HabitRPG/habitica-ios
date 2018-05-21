@@ -53,18 +53,18 @@ class QuestDetailView: UIView {
         }
         questGoalView.configure(quest: quest)
         
-        /*if let experience = quest.dropExp?.intValue, experience > 0 {
+        if let experience = quest.drop?.experience, experience > 0 {
             rewardsStackView.addArrangedSubview(makeRewardView(title: NSLocalizedString("\(experience) Experience Points", comment: ""), image: HabiticaIcons.imageOfExperienceReward))
         }
-        if let gold = quest.dropGp?.intValue, gold > 0 {
+        if let gold = quest.drop?.gold, gold > 0 {
             rewardsStackView.addArrangedSubview(makeRewardView(title: NSLocalizedString("\(gold) Gold", comment: ""), image: HabiticaIcons.imageOfGoldReward))
         }
         
         var hasOwnerRewards = false
-        if let items = quest.itemDrops {
+        if let items = quest.drop?.items {
             for reward in items {
-                let view = makeRewardView(title: reward.text, imageName: reward.getImageName())
-                if reward.onlyOwner?.boolValue ?? false {
+                let view = makeRewardView(title: reward.text, imageName: reward.imageName)
+                if reward.onlyOwner {
                     ownerRewardsStackView.addArrangedSubview(view)
                     hasOwnerRewards = true
                 } else {
@@ -74,7 +74,7 @@ class QuestDetailView: UIView {
         }
         if !hasOwnerRewards {
             ownerRewardsLabel.isHidden = true
-        }*/
+        }
     }
     
     func makeRewardView(title: String?, imageName: String) -> UIView {

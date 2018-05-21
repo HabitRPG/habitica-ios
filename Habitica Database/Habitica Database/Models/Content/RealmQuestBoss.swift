@@ -16,6 +16,26 @@ class RealmQuestBoss: Object, QuestBossProtocol {
     @objc dynamic var health: Int = 0
     @objc dynamic var strength: Float = 0
     @objc dynamic var defense: Float = 0
+    var rage: QuestBossRageProtocol? {
+        get {
+            return realmRage
+        }
+        set {
+            if let newRage = newValue as? RealmQuestBossRage {
+                realmRage = newRage
+                return
+            }
+            if let newRage = newValue {
+                realmRage = RealmQuestBossRage(key: key, protocolObject: newRage)
+            }
+        }
+    }
+    @objc dynamic var realmRage: RealmQuestBossRage?
+    
+    
+    override static func primaryKey() -> String {
+        return "key"
+    }
     
     convenience init(key: String?, questBoss: QuestBossProtocol) {
         self.init()
@@ -24,6 +44,7 @@ class RealmQuestBoss: Object, QuestBossProtocol {
         health = questBoss.health
         strength = questBoss.strength
         defense = questBoss.defense
+        rage = questBoss.rage
     }
     
 }

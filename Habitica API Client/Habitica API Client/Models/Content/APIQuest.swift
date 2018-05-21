@@ -9,7 +9,7 @@
 import Foundation
 import Habitica_Models
 
-class APIQuest: QuestProtocol, Codable {
+class APIQuest: QuestProtocol, Decodable {
     var completion: String?
     var category: String?
     var boss: QuestBossProtocol?
@@ -19,6 +19,7 @@ class APIQuest: QuestProtocol, Codable {
     var notes: String?
     var value: Float = 0
     var itemType: String?
+    var drop: QuestDropProtocol?
     
     enum CodingKeys: String, CodingKey {
         case key
@@ -29,6 +30,7 @@ class APIQuest: QuestProtocol, Codable {
         case value
         case completion
         case category
+        case drop
     }
     
     public required init(from decoder: Decoder) throws {
@@ -44,9 +46,6 @@ class APIQuest: QuestProtocol, Codable {
         })
         completion = try? values.decode(String.self, forKey: .completion)
         category = try? values.decode(String.self, forKey: .category)
-    }
-    
-    func encode(to encoder: Encoder) throws {
-        
+        drop = try? values.decode(APIQuestDrop.self, forKey: .drop)
     }
 }

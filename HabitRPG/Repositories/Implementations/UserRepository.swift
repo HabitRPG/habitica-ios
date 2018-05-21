@@ -279,6 +279,12 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         return call.objectSignal.on(value: handleUserUpdate())
     }
     
+    func reroll() -> Signal<UserProtocol?, NoError> {
+        let call = RerollCall()
+        call.fire()
+        return call.objectSignal.on(value: handleUserUpdate())
+    }
+    
     private func handleUserUpdate() -> ((UserProtocol?) -> Void) {
         return { updatedUser in
             if let userID = self.currentUserId, let updatedUser = updatedUser {

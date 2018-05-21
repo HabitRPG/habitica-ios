@@ -128,6 +128,17 @@
 		295D42FA20936CE400948E7E /* DisableClassesCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295D42F920936CE400948E7E /* DisableClassesCall.swift */; };
 		295D42FC20936D4300948E7E /* SelectClassCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295D42FB20936D4300948E7E /* SelectClassCall.swift */; };
 		295D43022097395800948E7E /* APITutorialStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295D43012097395800948E7E /* APITutorialStep.swift */; };
+		295E9DB920B2C6E200D58D45 /* APIQuestBossRage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295E9DB820B2C6E200D58D45 /* APIQuestBossRage.swift */; };
+		295E9DBB20B2C72600D58D45 /* APIQuestDrop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295E9DBA20B2C72600D58D45 /* APIQuestDrop.swift */; };
+		295E9DBD20B2C83400D58D45 /* APIQuestDropItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295E9DBC20B2C83400D58D45 /* APIQuestDropItem.swift */; };
+		295E9DC220B2DE7200D58D45 /* BuyItemCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295E9DC120B2DE7200D58D45 /* BuyItemCall.swift */; };
+		295E9DC820B2DF9600D58D45 /* PurchaseItemCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295E9DC720B2DF9600D58D45 /* PurchaseItemCall.swift */; };
+		295E9DCA20B2DFB700D58D45 /* PurchaseHourglassItemCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295E9DC920B2DFB700D58D45 /* PurchaseHourglassItemCall.swift */; };
+		295E9DCC20B2DFEB00D58D45 /* PurchaseQuestCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295E9DCB20B2DFEB00D58D45 /* PurchaseQuestCall.swift */; };
+		295E9DCE20B2E00300D58D45 /* PurchaseMysterySetCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295E9DCD20B2E00300D58D45 /* PurchaseMysterySetCall.swift */; };
+		295E9DD220B2E9EF00D58D45 /* RerollCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295E9DD120B2E9EF00D58D45 /* RerollCall.swift */; };
+		295E9DD420B2EA4100D58D45 /* TogglePinnedItemCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295E9DD320B2EA4100D58D45 /* TogglePinnedItemCall.swift */; };
+		295E9DD620B2ECB900D58D45 /* RetrieveShopInventoryCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295E9DD520B2ECB900D58D45 /* RetrieveShopInventoryCall.swift */; };
 		295FE2C220A4501500C97BA4 /* CreateGroupCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295FE2C120A4501500C97BA4 /* CreateGroupCall.swift */; };
 		295FE2C420A4505B00C97BA4 /* UpdateGroupCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295FE2C320A4505B00C97BA4 /* UpdateGroupCall.swift */; };
 		296AC81A20ADD99900885682 /* RetrieveInAppRewardsCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296AC81920ADD99900885682 /* RetrieveInAppRewardsCall.swift */; };
@@ -285,6 +296,17 @@
 		295D42F920936CE400948E7E /* DisableClassesCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisableClassesCall.swift; sourceTree = "<group>"; };
 		295D42FB20936D4300948E7E /* SelectClassCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectClassCall.swift; sourceTree = "<group>"; };
 		295D43012097395800948E7E /* APITutorialStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITutorialStep.swift; sourceTree = "<group>"; };
+		295E9DB820B2C6E200D58D45 /* APIQuestBossRage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIQuestBossRage.swift; sourceTree = "<group>"; };
+		295E9DBA20B2C72600D58D45 /* APIQuestDrop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIQuestDrop.swift; sourceTree = "<group>"; };
+		295E9DBC20B2C83400D58D45 /* APIQuestDropItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIQuestDropItem.swift; sourceTree = "<group>"; };
+		295E9DC120B2DE7200D58D45 /* BuyItemCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyItemCall.swift; sourceTree = "<group>"; };
+		295E9DC720B2DF9600D58D45 /* PurchaseItemCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseItemCall.swift; sourceTree = "<group>"; };
+		295E9DC920B2DFB700D58D45 /* PurchaseHourglassItemCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseHourglassItemCall.swift; sourceTree = "<group>"; };
+		295E9DCB20B2DFEB00D58D45 /* PurchaseQuestCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseQuestCall.swift; sourceTree = "<group>"; };
+		295E9DCD20B2E00300D58D45 /* PurchaseMysterySetCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseMysterySetCall.swift; sourceTree = "<group>"; };
+		295E9DD120B2E9EF00D58D45 /* RerollCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RerollCall.swift; sourceTree = "<group>"; };
+		295E9DD320B2EA4100D58D45 /* TogglePinnedItemCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TogglePinnedItemCall.swift; sourceTree = "<group>"; };
+		295E9DD520B2ECB900D58D45 /* RetrieveShopInventoryCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveShopInventoryCall.swift; sourceTree = "<group>"; };
 		295FE2C120A4501500C97BA4 /* CreateGroupCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupCall.swift; sourceTree = "<group>"; };
 		295FE2C320A4505B00C97BA4 /* UpdateGroupCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateGroupCall.swift; sourceTree = "<group>"; };
 		296AC81920ADD99900885682 /* RetrieveInAppRewardsCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveInAppRewardsCall.swift; sourceTree = "<group>"; };
@@ -355,6 +377,9 @@
 				2902795D2057E858006DACB9 /* APIFAQEntry.swift */,
 				295611062056DD2800D9711A /* APIQuest.swift */,
 				295611082056DE9F00D9711A /* APIQuestBoss.swift */,
+				295E9DB820B2C6E200D58D45 /* APIQuestBossRage.swift */,
+				295E9DBA20B2C72600D58D45 /* APIQuestDrop.swift */,
+				295E9DBC20B2C83400D58D45 /* APIQuestDropItem.swift */,
 				2956110C2056E18A00D9711A /* APIQuestCollect.swift */,
 				295611002056D20B00D9711A /* APISkill.swift */,
 				295610FC2056CC5D00D9711A /* APIGear.swift */,
@@ -594,6 +619,21 @@
 			path = Content;
 			sourceTree = "<group>";
 		};
+		295E9DC020B2DE6600D58D45 /* Shops */ = {
+			isa = PBXGroup;
+			children = (
+				295E9DC120B2DE7200D58D45 /* BuyItemCall.swift */,
+				295E9DC720B2DF9600D58D45 /* PurchaseItemCall.swift */,
+				295E9DC920B2DFB700D58D45 /* PurchaseHourglassItemCall.swift */,
+				295E9DCB20B2DFEB00D58D45 /* PurchaseQuestCall.swift */,
+				295E9DCD20B2E00300D58D45 /* PurchaseMysterySetCall.swift */,
+				295E9DD120B2E9EF00D58D45 /* RerollCall.swift */,
+				295E9DD320B2EA4100D58D45 /* TogglePinnedItemCall.swift */,
+				295E9DD520B2ECB900D58D45 /* RetrieveShopInventoryCall.swift */,
+			);
+			path = Shops;
+			sourceTree = "<group>";
+		};
 		29B586E8204D92CF00301955 = {
 			isa = PBXGroup;
 			children = (
@@ -624,6 +664,7 @@
 				295610E02056C3A000D9711A /* Content */,
 				29323E1320504F1A00AC6D6F /* User */,
 				294973C42080F91300F02AC3 /* Inventory */,
+				295E9DC020B2DE6600D58D45 /* Shops */,
 				292DEE46204D9D9E0086D5F7 /* Base */,
 				292DEE47204D9DA20086D5F7 /* Tasks */,
 				29B586F5204D92CF00301955 /* Habitica_API_Client.h */,
@@ -894,6 +935,7 @@
 				290C3042206D3EC30066AF5B /* APIChatMessage.swift in Sources */,
 				29A6B872206941210086B2A6 /* UpdateTaskCall.swift in Sources */,
 				2919FDD72090D2510096A53B /* DeleteInboxMessageCall.swift in Sources */,
+				295E9DC820B2DF9600D58D45 /* PurchaseItemCall.swift in Sources */,
 				290B6291207E1E76007287C4 /* RetrieveMemberCall.swift in Sources */,
 				2914489E208A346700F3A6B5 /* APICustomization.swift in Sources */,
 				290B6263207B9707007287C4 /* APILocalAuthentication.swift in Sources */,
@@ -905,6 +947,7 @@
 				295610F92056CAA800D9711A /* APIHatchingPotion.swift in Sources */,
 				290B627D207BA9D4007287C4 /* SocialLoginCall.swift in Sources */,
 				29323E1720504F5600AC6D6F /* APIStats.swift in Sources */,
+				295E9DCE20B2E00300D58D45 /* PurchaseMysterySetCall.swift in Sources */,
 				29323E3B205212FA00AC6D6F /* APIProfile.swift in Sources */,
 				290C302E206BD2020066AF5B /* UseSkillCall.swift in Sources */,
 				29323E272051659C00AC6D6F /* ErrorHandler.swift in Sources */,
@@ -915,8 +958,10 @@
 				29323E4720521B5000AC6D6F /* APIContributor.swift in Sources */,
 				290C300F206A779E0066AF5B /* DeleteTaskCall.swift in Sources */,
 				291E1A22209B701D00BA1FFB /* AcceptQuestInvitationCall.swift in Sources */,
+				295E9DCA20B2DFB700D58D45 /* PurchaseHourglassItemCall.swift in Sources */,
 				290B6295207E3E6C007287C4 /* LeaveGroupCall.swift in Sources */,
 				290B626F207BA6FB007287C4 /* DeleteAccountCall.swift in Sources */,
+				295E9DD620B2ECB900D58D45 /* RetrieveShopInventoryCall.swift in Sources */,
 				291DE97A209B443D0073182A /* APIQuestParticipant.swift in Sources */,
 				290C3046206D44670066AF5B /* RetrieveGroupCall.swift in Sources */,
 				290B6277207BA86F007287C4 /* SendPasswordResetEmailCall.swift in Sources */,
@@ -941,6 +986,7 @@
 				292DEE93204F4A430086D5F7 /* ResponseArrayCall.swift in Sources */,
 				292F966A206E4FD100804151 /* PostChatMessageCall.swift in Sources */,
 				290B6283207BAAA2007287C4 /* APILoginResponse.swift in Sources */,
+				295E9DCC20B2DFEB00D58D45 /* PurchaseQuestCall.swift in Sources */,
 				290C3040206D3DE80066AF5B /* APIGroup.swift in Sources */,
 				29323E192050528C00AC6D6F /* RetrieveUserCall.swift in Sources */,
 				29323E2520509B9000AC6D6F /* HabiticaResponse.swift in Sources */,
@@ -955,6 +1001,7 @@
 				290B62542073D957007287C4 /* APIPushNotifications.swift in Sources */,
 				295610EB2056C6F600D9711A /* APIContent.swift in Sources */,
 				2956110D2056E18A00D9711A /* APIQuestCollect.swift in Sources */,
+				295E9DD420B2EA4100D58D45 /* TogglePinnedItemCall.swift in Sources */,
 				295611012056D20B00D9711A /* APISkill.swift in Sources */,
 				29027991205835F7006DACB9 /* APIQuestState.swift in Sources */,
 				292DEEB1205039CA0086D5F7 /* TaskResponse.swift in Sources */,
@@ -975,6 +1022,7 @@
 				292F9668206E4FBD00804151 /* DeleteChatMessageCall.swift in Sources */,
 				291448742086352800F3A6B5 /* FeedPetCall.swift in Sources */,
 				292DEE82204E411C0086D5F7 /* APIChecklistItem.swift in Sources */,
+				295E9DC220B2DE7200D58D45 /* BuyItemCall.swift in Sources */,
 				295610FD2056CC5D00D9711A /* APIGear.swift in Sources */,
 				294973C82080F98600F02AC3 /* HatchPetCall.swift in Sources */,
 				2919FDE12091DFFE0096A53B /* ReviveUserCall.swift in Sources */,
@@ -982,9 +1030,11 @@
 				29323E39205212E400AC6D6F /* APIPreferences.swift in Sources */,
 				290B627F207BAA23007287C4 /* SleepCall.swift in Sources */,
 				290B6265207B978F007287C4 /* APIAuthentication.swift in Sources */,
+				295E9DD220B2E9EF00D58D45 /* RerollCall.swift in Sources */,
 				290B623D207267AA007287C4 /* RetrieveGroupsCall.swift in Sources */,
 				2902797920580EFD006DACB9 /* APIBuff.swift in Sources */,
 				290B629C207F7E84007287C4 /* APIOwnedGear.swift in Sources */,
+				295E9DB920B2C6E200D58D45 /* APIQuestBossRage.swift in Sources */,
 				292DEE91204F4A0F0086D5F7 /* HabiticaServerConfig.swift in Sources */,
 				29323E512052F77F00AC6D6F /* APIUserItems.swift in Sources */,
 				292DEE4F204DA3870086D5F7 /* RetrieveTasksCall.swift in Sources */,
@@ -997,8 +1047,10 @@
 				295D43022097395800948E7E /* APITutorialStep.swift in Sources */,
 				292DEE95204F4A510086D5F7 /* ResponseObjectCall.swift in Sources */,
 				295FE2C220A4501500C97BA4 /* CreateGroupCall.swift in Sources */,
+				295E9DBB20B2C72600D58D45 /* APIQuestDrop.swift in Sources */,
 				292F9676207227AB00804151 /* APIUserStyle.swift in Sources */,
 				292DEE88204E490A0086D5F7 /* APIReminder.swift in Sources */,
+				295E9DBD20B2C83400D58D45 /* APIQuestDropItem.swift in Sources */,
 				292F9659206E2AAB00804151 /* MarkChatSeenCall.swift in Sources */,
 				2902795E2057E858006DACB9 /* APIFAQEntry.swift in Sources */,
 				291E1A28209B704A00BA1FFB /* CancelQuestInvitationCall.swift in Sources */,

@@ -39,12 +39,28 @@ class RealmQuest: RealmItem, QuestProtocol {
             newValue?.forEach { (collectItem) in
                 if let realmCollectItem = collectItem as? RealmQuestCollect {
                     realmCollect.append(realmCollectItem)
+                } else {
+                    realmCollect.append(RealmQuestCollect(collectItem))
                 }
-                realmCollect.append(RealmQuestCollect(collectItem))
             }
         }
     }
     var realmCollect = List<RealmQuestCollect>()
+    var drop: QuestDropProtocol? {
+        get {
+            return realmDrop
+        }
+        set {
+            if let newDrop = newValue as? RealmQuestDrop {
+                realmDrop = newDrop
+                return
+            }
+            if let newDrop = newValue {
+                realmDrop = RealmQuestDrop(key: key, protocolObject: newDrop)
+            }
+        }
+    }
+    @objc dynamic var realmDrop: RealmQuestDrop?
     
     override static func ignoredProperties() -> [String] {
         return ["boss", "collect"]
@@ -56,6 +72,7 @@ class RealmQuest: RealmItem, QuestProtocol {
         category = quest.category
         boss = quest.boss
         collect = quest.collect
+        drop = quest.drop
         itemType = ItemType.quests.rawValue
     }
 }

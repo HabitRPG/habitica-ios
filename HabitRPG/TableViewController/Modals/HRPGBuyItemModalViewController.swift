@@ -8,13 +8,17 @@
 
 import UIKit
 import Habitica_Models
+import ReactiveSwift
+import Result
 
 class HRPGBuyItemModalViewController: UIViewController, Themeable {
     @objc var item: ShopItem?
     var reward: InAppRewardProtocol?
     @objc var shopIdentifier: String?
-    let inventoryRepository = InventoryRepository()
+    private let inventoryRepository = InventoryRepository()
     private let userRepository = UserRepository()
+    private let disposable = ScopedDisposable(CompositeDisposable())
+    
     let showPinning = ConfigRepository().bool(variable: .enableNewShops)
     
     @IBOutlet weak var topContentView: UIView!
@@ -30,6 +34,12 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     @IBOutlet weak var closableShopModal: HRPGCloseableShopModalView!
     
     @objc public weak var shopViewController: HRPGShopViewController?
+    
+    private var user: UserProtocol? {
+        didSet {
+            refreshBalances()
+        }
+    }
 
     private var isPinned: Bool = false {
         didSet {
@@ -51,7 +61,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         
         closableShopModal.closeButton.addTarget(self, action: #selector(closePressed), for: UIControlEvents.touchUpInside)
         buyButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(buyPressed)))
-        let inAppReward = ( reward as? InAppReward)
+        let inAppReward = reward
         pinButton.isHidden = !showPinning ||  inAppReward?.pinType == "armoire" || inAppReward?.pinType == "potion"
         
         ThemeService.shared.addThemeable(themable: self)
@@ -59,7 +69,9 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        refreshBalances()
+        disposable.inner.add(userRepository.getUser().on(value: { user in
+            self.user = user
+        }).start())
     }
     
     func applyTheme(theme: Theme) {
@@ -87,11 +99,11 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     }
     
     func refreshBalances() {
-        if let user = HRPGManager.shared().getUser() {
-            gemCountView.amount = Int(user.balance.floatValue * 4.0)
-            goldCountView.amount = user.gold.intValue
-            if let hourglasses = user.subscriptionPlan.consecutiveTrinkets {
-                hourglassCountView.amount = hourglasses.intValue
+        if let user = self.user {
+            gemCountView.amount = user.gemCount
+            goldCountView.amount = Int(user.stats?.gold ?? 0)
+            if let hourglasses = user.purchased?.subscriptionPlan?.consecutive?.hourglasses {
+                hourglassCountView.amount = hourglasses
             }
         }
     }
@@ -101,15 +113,6 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
             var itemView: HRPGSimpleShopItemView?
             if let item = self.item {
                 itemView = HRPGSimpleShopItemView(withItem: item, for: contentView)
-                let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "InAppReward")
-                fetchRequest.predicate = NSPredicate(format: "key == %@", item.key ?? "")
-                
-                do {
-                    let fetchedRewards = try HRPGManager.shared().getManagedObjectContext().fetch(fetchRequest)
-                    isPinned = fetchedRewards.count > 0
-                } catch {
-                    fatalError("Failed to fetch employees: \(error)")
-                }
             } else if let reward = self.reward {
                 itemView = HRPGSimpleShopItemView(withReward: reward, for: contentView)
                 isPinned = true
@@ -139,9 +142,6 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         inventoryRepository.getQuest(key: key).take(first: 1).skipNil().on(value: { quest in
             questView.configure(quest: quest)
         }).start()
-        //if let quest = inventoryRepository.getQuest(key) {
-        //
-        //}
         addItemAndDetails(itemView, questView, to: contentView)
     }
     
@@ -171,13 +171,13 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
             }
             currencyCountView.amount = item.value?.intValue ?? 0
             
-            if item.key == "gem" && item.itemsLeft?.intValue == 0 {
+            if item.key == "gem" && user?.purchased?.subscriptionPlan?.consecutive?.gemsRemaining == 0 {
                 isLocked = true
             }
         } else if let reward = self.reward {
-            if let inAppReward = reward as? InAppReward, let currencyString = inAppReward.currency, let currency = Currency(rawValue: currencyString) {
+            if let currencyString = reward.currency, let currency = Currency(rawValue: currencyString) {
                 currencyCountView.currency = currency
-                if inAppReward.key == "gem" && inAppReward.itemsLeft?.intValue == 0 {
+                if reward.key == "gem" && user?.purchased?.subscriptionPlan?.consecutive?.gemsRemaining == 0 {
                     isLocked = true
                 }
             } else {
@@ -212,23 +212,23 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         if let item = self.item, let currencyString = item.currency {
             currency = Currency(rawValue: currencyString)
             price = item.value?.floatValue ?? 0
-        } else if let inAppReward = reward as? InAppReward {
+        } else if let inAppReward = reward {
             if let currencyString = inAppReward.currency {
                 currency = Currency(rawValue: currencyString)
             } else {
                 currency = Currency.gold
             }
-            price = inAppReward.value?.floatValue ?? 0
+            price = inAppReward.value
         }
         
-        if let user = HRPGManager.shared().getUser(), let selectedCurrency = currency {
+        if let user = self.user, let selectedCurrency = currency {
             switch selectedCurrency {
             case .gold:
-                return price <= user.gold.floatValue
+                return price <= user.stats?.gold ?? 0
             case .gem:
-                return price <= user.balance.floatValue*4
+                return price <= Float(user.gemCount)
             case .hourglass:
-                return price <= user.subscriptionPlan.consecutiveTrinkets?.floatValue ?? 0
+                return price <= Float(user.purchased?.subscriptionPlan?.consecutive?.hourglasses ?? 0)
             }
         }
         return false
@@ -238,8 +238,8 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         var isLocked = false
         if let item = self.item {
             isLocked = item.locked?.boolValue ?? false
-        } else if let inAppReward = reward as? InAppReward {
-            isLocked = inAppReward.locked?.boolValue ?? false
+        } else if let inAppReward = reward {
+            isLocked = inAppReward.locked
         }
         return isLocked
     }
@@ -251,7 +251,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     func getPurchaseType() -> String {
         if let shopItem = self.item {
             return shopItem.purchaseType ?? ""
-        } else if let reward = self.reward as? InAppReward {
+        } else if let reward = self.reward {
             return reward.purchaseType ?? ""
         } else {
             return ""
@@ -281,16 +281,16 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         if let shopItem = item {
             path = shopItem.path ?? ""
             pinType = shopItem.pinType ?? ""
-        } else if let inAppReward = reward as? InAppReward {
+        } else if let inAppReward = reward {
             path = inAppReward.path ?? ""
             pinType = inAppReward.pinType ?? ""
         }
-        HRPGManager.shared().togglePinnedItem(pinType, withPath: path, onSuccess: {[weak self] in
+        inventoryRepository.togglePinnedItem(pinType: pinType, path: path).observeValues {[weak self] (_) in
             self?.isPinned = !(self?.isPinned ?? false)
             if let shopViewController = self?.shopViewController {
                 shopViewController.loadPinnedItems()
             }
-        }, onError: nil)
+        }
     }
     
     //swiftlint:disable function_body_length
@@ -320,9 +320,9 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
             }
             successBlock = {
                 if purchaseType == "gear" {
-                    HRPGManager.shared().fetchShopInventory(GearMarketKey, onSuccess: nil, onError: nil)
-                } else {
-                    HRPGManager.shared().fetchShopInventory(self.shopIdentifier, onSuccess: nil, onError: nil)
+                    self.inventoryRepository.retrieveShopInventory(identifier: GearMarketKey).observeCompleted {}
+                } else if let identifier = self.shopIdentifier {
+                    self.inventoryRepository.retrieveShopInventory(identifier: identifier).observeCompleted {}
                 }
             }
         } else if let inAppReward = reward {
@@ -367,36 +367,47 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
             
             if currency == .hourglass {
                 if purchaseType == "gear" || purchaseType == "mystery_set" {
-                    HRPGManager.shared().purchaseMysterySet(setIdentifier, onSuccess: successBlock, onError: {
-                        HRPGBuyItemModalViewController.displayViewController(name: "InsufficientHourglassesViewController", parent: topViewController)
+                    inventoryRepository.purchaseMysterySet(identifier: setIdentifier).observeResult({ (result) in
+                        if result.error != nil {
+                            HRPGBuyItemModalViewController.displayViewController(name: "InsufficientHourglassesViewController", parent: topViewController)
+                        }
                     })
                 } else {
-                    HRPGManager.shared().purchaseHourglassItem(key, withPurchaseType: purchaseType, withText: text, withImageName: imageName, onSuccess: successBlock, onError: {
-                        HRPGBuyItemModalViewController.displayViewController(name: "InsufficientHourglassesViewController", parent: topViewController)
+                    inventoryRepository.purchaseHourglassItem(purchaseType: purchaseType, key: key).observeResult({ (result) in
+                        if result.error != nil {
+                            HRPGBuyItemModalViewController.displayViewController(name: "InsufficientHourglassesViewController", parent: topViewController)
+                        }
                     })
                 }
-
             } else if currency == .gem || purchaseType == "gems" {
-                HRPGManager.shared().purchaseItem(key, withPurchaseType: purchaseType, withText: text, withImageName: imageName, onSuccess: successBlock, onError: {
-                    if key == "gem" {
-                        HRPGBuyItemModalViewController.displayViewController(name: "GemCapReachedViewController", parent: topViewController)
-                    } else {
-                        HRPGBuyItemModalViewController.displayViewController(name: "InsufficientGemsViewController", parent: topViewController)
+                inventoryRepository.purchaseItem(purchaseType: purchaseType, key: key).observeResult({ (result) in
+                    if result.error != nil {
+                        if key == "gem" {
+                            HRPGBuyItemModalViewController.displayViewController(name: "GemCapReachedViewController", parent: topViewController)
+                        } else {
+                            HRPGBuyItemModalViewController.displayViewController(name: "InsufficientGemsViewController", parent: topViewController)
+                        }
                     }
                 })
             } else if purchaseType == "fortify" {
-                HRPGManager.shared().reroll(successBlock, onError: {
-                    HRPGBuyItemModalViewController.displayViewController(name: "InsufficientGoldViewController", parent: topViewController)
+                userRepository.reroll().observeResult({ (result) in
+                    if result.error != nil {
+                        HRPGBuyItemModalViewController.displayViewController(name: "InsufficientGoldViewController", parent: topViewController)
+                    }
                 })
             } else {
                 if currency == .gold && purchaseType == "quests" {
-                    HRPGManager.shared().purchaseQuest(key, withText: text, withImageName: imageName, onSuccess: successBlock, onError: {
-                        HRPGBuyItemModalViewController.displayViewController(name: "InsufficientGoldViewController", parent: topViewController)
+                    inventoryRepository.purchaseQuest(key: key).observeResult({ (result) in
+                        if result.error != nil {
+                            HRPGBuyItemModalViewController.displayViewController(name: "InsufficientGoldViewController", parent: topViewController)
+                        }
                     })
                 } else {
-                    /*HRPGManager.shared().buyObject(key, withValue: value, withText: text, onSuccess: successBlock, onError: {
-                        HRPGBuyItemModalViewController.displayViewController(name: "InsufficientGoldViewController", parent: topViewController)
-                    })*/
+                    inventoryRepository.buyObject(key: key).observeResult({ (result) in
+                        if result.error != nil {
+                            HRPGBuyItemModalViewController.displayViewController(name: "InsufficientGoldViewController", parent: topViewController)
+                        }
+                    })
                 }
             }
         }

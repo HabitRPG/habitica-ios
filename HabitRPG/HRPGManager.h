@@ -53,12 +53,9 @@
          onSuccess:(void (^)())successBlock
            onError:(void (^)())errorBlock;
 
-- (void)changeClass:(NSString *)newClass
-          onSuccess:(void (^)())successBlock
-            onError:(void (^)())errorBlock;
+//- (void)changeClass:(NSString *)newClass onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
-- (void)disableClasses:(void (^)())successBlock
-               onError:(void (^)())errorBlock;
+//- (void)disableClasses:(void (^)())successBlock onError:(void (^)())errorBlock;
 
 //- (void)fetchGroup:(NSString *)groupID onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 //- (void)fetchGroups:(NSString *)groupType onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
@@ -97,18 +94,9 @@
 //- (void)updateTask:(Task *)task onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 //- (void)deleteTask:(Task *)task onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 //- (void)moveTask:(Task *)task toPosition:(NSNumber *)position onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
-
-- (void)createReward:(Reward *)reward
-           onSuccess:(void (^)())successBlock
-             onError:(void (^)())errorBlock;
-
-- (void)updateReward:(Reward *)reward
-           onSuccess:(void (^)())successBlock
-             onError:(void (^)())errorBlock;
-
-- (void)deleteReward:(Reward *)reward
-           onSuccess:(void (^)())successBlock
-             onError:(void (^)())errorBlock;
+//- (void)createReward:(Reward *)reward onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
+//- (void)updateReward:(Reward *)reward onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
+//- (void)deleteReward:(Reward *)reward onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
 - (void)createTag:(Tag *)tag
            onSuccess:(void (^)(Tag *tag))successBlock
@@ -122,16 +110,11 @@
            onSuccess:(void (^)())successBlock
              onError:(void (^)())errorBlock;
 
-- (void)fetchBuyableRewards:(void (^)())successBlock onError:(void (^)())errorBlock;
+//- (void)fetchBuyableRewards:(void (^)())successBlock onError:(void (^)())errorBlock;
 
 - (void)clearCompletedTasks:(void (^)())successBlock onError:(void (^)())errorBlock;
 
-- (void)buyObject:(NSString *)key
-        withValue:(NSNumber *)value
-         withText:(NSString *)text
-        onSuccess:(void (^)())successBlock
-          onError:(void (^)())errorBlock;
-
+//- (void)buyObject:(NSString *)key withValue:(NSNumber *)value withText:(NSString *)text onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 //- (void)unlockPath:(NSString *)path onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 //- (void)sellItem:(Item *)item onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 //- (void)openMysteryItem:(void (^)())successBlock onError:(void (^)())errorBlock;
@@ -165,19 +148,9 @@
             onSuccess:(void (^)())successBlock
               onError:(void (^)())errorBlock;
 
-- (void)createGroup:(Group *)group
-          onSuccess:(void (^)())successBlock
-            onError:(void (^)())errorBlock;
-
-- (void)updateGroup:(Group *)group
-          onSuccess:(void (^)())successBlock
-            onError:(void (^)())errorBlock;
-
-- (void)fetchGroupMembers:(NSString *)groupID
-         withPublicFields:(BOOL)withPublicFields
-                 fetchAll:(BOOL)fetchAll
-                onSuccess:(void (^)())successBlock
-                  onError:(void (^)())errorBlock;
+//- (void)createGroup:(Group *)group onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
+//- (void)updateGroup:(Group *)group onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
+//- (void)fetchGroupMembers:(NSString *)groupID withPublicFields:(BOOL)withPublicFields fetchAll:(BOOL)fetchAll onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
 - (void)inviteMembers:(NSArray *)members
     withInvitationType:(NSString *)invitationType
@@ -185,16 +158,8 @@
              onSuccess:(void (^)())successBlock
                onError:(void (^)())errorBlock;
 
-- (void)joinGroup:(NSString *)group
-         withType:(NSString *)type
-        onSuccess:(void (^)())successBlock
-          onError:(void (^)())errorBlock;
-
-- (void)leaveGroup:(Group *)group
-          withType:(NSString *)type
-         onSuccess:(void (^)())successBlock
-           onError:(void (^)())errorBlock;
-
+//- (void)joinGroup:(NSString *)group withType:(NSString *)type onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
+//- (void)leaveGroup:(Group *)group withType:(NSString *)type onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 //- (void)chatSeen:(NSString *)group;
 //- (void)markInboxSeen:(void (^)())successBlock onError:(void (^)())errorBlock;
 //- (void)loginUser:(NSString *)username withPassword:(NSString *)password onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
@@ -221,29 +186,10 @@
           onError:(void (^)())errorBlock;
 
 
-- (void)purchaseItem:(NSString *)key
-    withPurchaseType:(NSString *)purchaseType
-            withText:(NSString *)text
-       withImageName:(NSString *)imageName
-           onSuccess:(void (^)())successBlock
-             onError:(void (^)())errorBlock;
-
-- (void)purchaseHourglassItem:(NSString *)key
-             withPurchaseType:(NSString *)purchaseType
-                     withText:(NSString *)text
-                withImageName:(NSString *)imageName
-           onSuccess:(void (^)())successBlock
-             onError:(void (^)())errorBlock;
-
-- (void)purchaseMysterySet:(NSString *)key
-                 onSuccess:(void (^)())successBlock
-                   onError:(void (^)())errorBlock;
-
-- (void)purchaseQuest:(NSString *)key
-             withText:(NSString *)text
-        withImageName:(NSString *)imageName
-            onSuccess:(void (^)())successBlock
-              onError:(void (^)())errorBlock;
+//- (void)purchaseItem:(NSString *)key withPurchaseType:(NSString *)purchaseType withText:(NSString *)text withImageName:(NSString *)imageName onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
+//- (void)purchaseHourglassItem:(NSString *)key withPurchaseType:(NSString *)purchaseType withText:(NSString *)text withImageName:(NSString *)imageName onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
+//- (void)purchaseMysterySet:(NSString *)key onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
+//- (void)purchaseQuest:(NSString *)key withText:(NSString *)text withImageName:(NSString *)imageName onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
 - (void)removePushDevice:(void (^)())successBlock
                  onError:(void (^)())errorBlock;
@@ -271,7 +217,7 @@
 //- (void)allocateAttributePoint:(NSString *)attribute onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 //- (void)bulkAllocateAttributePoint:(NSInteger)strengthValue intelligence:(NSInteger)intelligenceValue constitution:(NSInteger)constitutionValue perception:(NSInteger)perceptionValue onSuccess:(void (^)())successBlock onError:(void (^)())errorBlock;
 
-- (void)reroll:(void (^)())successBlock onError:(void (^)())errorBlock;
+//- (void)reroll:(void (^)())successBlock onError:(void (^)())errorBlock;
 
 //- (void)fetchWorldState:(void (^)())successBlock onError:(void (^)())errorBlock;
 

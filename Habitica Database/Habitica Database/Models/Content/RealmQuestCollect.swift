@@ -15,6 +15,10 @@ class RealmQuestCollect: Object, QuestCollectProtocol {
     @objc dynamic var text: String?
     @objc dynamic var count: Int = 0
     
+    override static func primaryKey() -> String {
+        return "key"
+    }
+    
     convenience init(_ questCollect: QuestCollectProtocol) {
         self.init()
         key = questCollect.key

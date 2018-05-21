@@ -20,6 +20,7 @@ class HRPGSimpleShopItemView: UIView {
     @IBOutlet weak var shopItemDescriptionLabel: UILabel!
     @IBOutlet weak var notesMargin: NSLayoutConstraint!
     @IBOutlet weak var additionalInfoLabel: UILabel!
+    @IBOutlet weak var imageViewHeight: NSLayoutConstraint!
     
     @IBInspectable var shouldHideNotes: Bool {
         get {
@@ -62,11 +63,7 @@ class HRPGSimpleShopItemView: UIView {
     
     var imageName = "" {
         didSet {
-            if imageName.contains(" ") {
-                shopItemImageView.setImagewith(name: imageName.components(separatedBy: " ")[1])
-            } else {
-                shopItemImageView.setImagewith(name: imageName)
-            }
+            setImage(name: imageName)
         }
     }
 
@@ -92,6 +89,7 @@ class HRPGSimpleShopItemView: UIView {
         
         if let imageName = item.imageName {
             self.imageName = imageName
+            self.setImage(name: imageName)
         }
         
         if let notes = item.notes {
@@ -125,6 +123,7 @@ class HRPGSimpleShopItemView: UIView {
             setAvailableUntil(date: availableUntil)
         }
         self.imageName = reward.imageName ?? ""
+        self.setImage(name: imageName)
         
         if reward.key == "potion" {
             imageName = "shop_potion"
@@ -151,6 +150,18 @@ class HRPGSimpleShopItemView: UIView {
                                                     toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 0)
                 self.shopItemDescriptionLabel.addConstraint(constraint)
             }
+        }
+    }
+    
+    private func setImage(name: String) {
+        var name = imageName
+        if imageName.contains(" ") {
+            name = imageName.components(separatedBy: " ")[1]
+        }
+        ImageManager.getImage(name: name) { (image, _) in
+            self.shopItemImageView.image = image
+            self.imageViewHeight.constant = image?.size.height ?? 0
+            self.setNeedsLayout()
         }
     }
     

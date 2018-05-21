@@ -94,7 +94,7 @@ class RewardViewController: HRPGBaseCollectionViewController, UICollectionViewDe
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "FormSegue", let reward = self.editedReward {
+        if segue.identifier == "FormSegue" {
             guard let destinationController = segue.destination as? TaskFormVisualEffectsModalViewController else {
                 return
             }
