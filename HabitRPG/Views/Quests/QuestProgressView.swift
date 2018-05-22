@@ -106,12 +106,12 @@ class QuestProgressView: UIView {
     }
 
     @objc
-    func configure(quest: Quest) {
-        healthProgressView.title = quest.bossName ?? ""
-        healthProgressView.maxValue = quest.bossHp?.floatValue ?? 0
-        if let bossRage = quest.bossRage?.floatValue, bossRage > 0 {
-            rageProgressView.maxValue = quest.bossRage?.floatValue ?? 0
-            rageProgressView.title = NSLocalizedString("Rage attack: \(quest.rageTitle ?? "")", comment: "")
+    func configure(quest: QuestProtocol) {
+        healthProgressView.title = quest.boss?.name ?? ""
+        healthProgressView.maxValue = Float(quest.boss?.health ?? 0)
+        if let bossRage = quest.boss?.rage?.value, bossRage > 0 {
+            rageProgressView.maxValue = Float(quest.boss?.rage?.value ?? 0)
+            rageProgressView.title = NSLocalizedString("Rage attack: \(quest.boss?.rage?.title ?? "")", comment: "")
         } else {
             rageProgressView.isHidden = true
         }
@@ -130,7 +130,7 @@ class QuestProgressView: UIView {
         gradientView.endColor = colorLight
         descriptionSeparator.backgroundColor = colorLight
         questArtSeparator.backgroundColor = colorLight
-        let description = try? Down(markdownString: quest.notes.replacingOccurrences(of: "<br>", with: "\n")).toHabiticaAttributedString()
+        let description = try? Down(markdownString: quest.notes?.replacingOccurrences(of: "<br>", with: "\n") ?? "").toHabiticaAttributedString()
         description?.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: description?.length ?? 0))
         description?.append(NSAttributedString(string: "\n"))
         descriptionTextView.attributedText = description
@@ -140,7 +140,7 @@ class QuestProgressView: UIView {
         
         for view in rageStrikeContainer.arrangedSubviews {
             if let rageStrikeView = view as? RageStrikeView {
-                rageStrikeView.bossName = quest.bossName ?? ""
+                rageStrikeView.bossName = quest.boss?.name ?? ""
                 rageStrikeView.questIdentifier = quest.key ?? ""
             }
         }

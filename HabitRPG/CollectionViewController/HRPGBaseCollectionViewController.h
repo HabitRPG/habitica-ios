@@ -12,7 +12,6 @@
 
 @interface HRPGBaseCollectionViewController : HRPGCollectionViewController<TutorialStepsProtocol>
 
-@property(nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property CGFloat screenWidth;
 @property BOOL hidesTopBar;
 

@@ -9,7 +9,6 @@
 #import "HRPGSpellViewController.h"
 #import "HRPGSpellTabBarController.h"
 #import "Spell.h"
-#import "HRPGCoreDataDataSource.h"
 #import "HRPGSpellUserTableViewController.h"
 #import "Habitica-Swift.h"
 

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Habitica_Models
 
 class WorldBossMenuHeader: UIView {
     
@@ -23,7 +24,7 @@ class WorldBossMenuHeader: UIView {
     
     var formatter = NumberFormatter()
     
-    private var quest: Quest?
+    private var quest: QuestProtocol?
     
     var isCollapsed: Bool = false {
         didSet {
@@ -52,14 +53,14 @@ class WorldBossMenuHeader: UIView {
     }
     
     @objc
-    func configure(quest: Quest) {
+    func configure(quest: QuestProtocol) {
         self.quest = quest
         if !isCollapsed {
             bossImageView.setImagewith(name: "quest_\(quest.key ?? "")")
         }
         bossImageView.backgroundColor = quest.uicolorMedium
-        bossNameLabel.text = quest.bossName
-        healthProgressBar.maxValue = CGFloat(quest.bossHp?.floatValue ?? 0)
+        bossNameLabel.text = quest.boss?.name
+        healthProgressBar.maxValue = CGFloat(quest.boss?.health ?? 0)
         typeLabel.text = "World Boss"
         statBarView.backgroundColor = quest.uicolorDark
         configureAccessibility()
@@ -76,9 +77,9 @@ class WorldBossMenuHeader: UIView {
     }
     
     @objc
-    func configure(user: User) {
-        if user.pendingDamage != nil {
-            pendingDamageLabel.text = "+\(formatter.string(from: user.pendingDamage) ?? "0")"
+    func configure(user: UserProtocol) {
+        if (user.party?.quest?.progress?.up ?? 0) > 0 {
+            pendingDamageLabel.text = "+\(formatter.string(from: NSNumber(value: user.party?.quest?.progress?.up ?? 0)) ?? "0")"
         } else {
             pendingDamageLabel.text = "+0"
         }
@@ -90,7 +91,7 @@ class WorldBossMenuHeader: UIView {
         shouldGroupAccessibilityChildren = true
         collapseButton.isAccessibilityElement = false
         accessibilityHint = NSLocalizedString("Double tap to hide boss art", comment: "")
-        accessibilityLabel = "\(quest?.bossName ?? ""), World Boss, pending damage: \(pendingDamageLabel.text ?? "")"
+        accessibilityLabel = "\(quest?.boss?.name ?? ""), World Boss, pending damage: \(pendingDamageLabel.text ?? "")"
     }
 
     @IBAction func collapseButtonTapped(_ sender: Any) {
@@ -138,7 +139,7 @@ class WorldBossMenuHeader: UIView {
         }
         let alertController = HabiticaAlertController.alert(title: NSLocalizedString("What’s a World Boss?", comment: ""))
         let view = Bundle.main.loadNibNamed("WorldBossDescription", owner: nil, options: nil)?.last as? WorldBossDescriptionView
-        view?.bossName = quest.bossName
+        view?.bossName = quest.boss?.name
         view?.questColorLight = quest.uicolorLight
         view?.questColorExtraLight = quest.uicolorExtraLight
         alertController.contentView = view

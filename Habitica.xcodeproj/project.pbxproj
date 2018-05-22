@@ -282,7 +282,6 @@
 		494E54131F2EF7100003683C /* HRPGCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 494E54121F2EF7100003683C /* HRPGCollectionViewController.m */; };
 		494E54151F2F07290003683C /* HRPGFetchedResultsCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494E54141F2F07290003683C /* HRPGFetchedResultsCollectionViewDataSource.swift */; };
 		494E54221F310BA00003683C /* HRPGShopSectionHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494E54211F310BA00003683C /* HRPGShopSectionHeaderCollectionReusableView.swift */; };
-		494E54251F3124890003683C /* HRPGShopViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 494E54241F3124890003683C /* HRPGShopViewModel.m */; };
 		496C1C871FA54E0F0058771A /* ChallengeDetailsSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496C1C861FA54E0F0058771A /* ChallengeDetailsSpecs.swift */; };
 		498E4CF71FA17B7F006933FF /* ChallengeButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 498E4CF51FA17B7F006933FF /* ChallengeButtonTableViewCell.swift */; };
 		498E4CF81FA17B7F006933FF /* ChallengeButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 498E4CF61FA17B7F006933FF /* ChallengeButtonTableViewCell.xib */; };
@@ -890,8 +889,6 @@
 		494E54121F2EF7100003683C /* HRPGCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGCollectionViewController.m; sourceTree = "<group>"; };
 		494E54141F2F07290003683C /* HRPGFetchedResultsCollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGFetchedResultsCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		494E54211F310BA00003683C /* HRPGShopSectionHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGShopSectionHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
-		494E54231F3124890003683C /* HRPGShopViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGShopViewModel.h; sourceTree = "<group>"; };
-		494E54241F3124890003683C /* HRPGShopViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGShopViewModel.m; sourceTree = "<group>"; };
 		496C1C861FA54E0F0058771A /* ChallengeDetailsSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeDetailsSpecs.swift; sourceTree = "<group>"; };
 		498E4CF51FA17B7F006933FF /* ChallengeButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeButtonTableViewCell.swift; sourceTree = "<group>"; };
 		498E4CF61FA17B7F006933FF /* ChallengeButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeButtonTableViewCell.xib; sourceTree = "<group>"; };
@@ -1800,8 +1797,6 @@
 		493ECBC91F4DD7DD0099B1FC /* View Models */ = {
 			isa = PBXGroup;
 			children = (
-				494E54231F3124890003683C /* HRPGShopViewModel.h */,
-				494E54241F3124890003683C /* HRPGShopViewModel.m */,
 				493ECBCA1F4DD81B0099B1FC /* HRPGShopsOverviewViewModel.swift */,
 				49A4646A1FCD18FD00E14A5D /* HRPGButtonViewModel.swift */,
 				49EE3FD7201908AB00CD7608 /* ChallengeButtonStyleProvider.swift */,
@@ -3555,7 +3550,6 @@
 				D922F0A8191C1F6B00B197EA /* HRPGUserBuyResponse.m in Sources */,
 				49DCECA91F96F8DE00982E99 /* ChallengeDetailViewModel.swift in Sources */,
 				2919FDD52090CF900096A53B /* InboxMessagesDataSource.swift in Sources */,
-				494E54251F3124890003683C /* HRPGShopViewModel.m in Sources */,
 				29A6B86620644CA40086B2A6 /* WeekdayFormCell.swift in Sources */,
 				29E16313200E619400685640 /* QuestProgressView.swift in Sources */,
 				29E162E01FFBBDDC00685640 /* UsernameLabel.swift in Sources */,

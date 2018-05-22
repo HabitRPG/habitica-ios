@@ -20,6 +20,7 @@ class APIQuest: QuestProtocol, Decodable {
     var value: Float = 0
     var itemType: String?
     var drop: QuestDropProtocol?
+    var colors: QuestColorsProtocol?
     
     enum CodingKeys: String, CodingKey {
         case key
@@ -31,6 +32,7 @@ class APIQuest: QuestProtocol, Decodable {
         case completion
         case category
         case drop
+        case colors
     }
     
     public required init(from decoder: Decoder) throws {
@@ -47,5 +49,6 @@ class APIQuest: QuestProtocol, Decodable {
         completion = try? values.decode(String.self, forKey: .completion)
         category = try? values.decode(String.self, forKey: .category)
         drop = try? values.decode(APIQuestDrop.self, forKey: .drop)
+        colors = try? values.decode(APIQuestColors.self, forKey: .colors)
     }
 }

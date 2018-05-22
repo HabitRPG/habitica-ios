@@ -29,7 +29,7 @@ class TavernDetailViewController: GroupDetailViewController {
             }
         }
     }
-    var quest: Quest? {
+    var quest: QuestProtocol? {
         didSet {
             if let quest = self.quest {
                 worldBossStackView.isHidden = false
@@ -40,7 +40,7 @@ class TavernDetailViewController: GroupDetailViewController {
                 worldBossTitleView.infoIconAction = {
                     let alertController = HabiticaAlertController.alert(title: NSLocalizedString("What’s a World Boss?", comment: ""))
                     let view = Bundle.main.loadNibNamed("WorldBossDescription", owner: nil, options: nil)?.last as? WorldBossDescriptionView
-                    view?.bossName = quest.bossName
+                    view?.bossName = quest.boss?.name
                     view?.questColorLight = quest.uicolorLight
                     view?.questColorExtraLight = quest.uicolorExtraLight
                     alertController.contentView = view

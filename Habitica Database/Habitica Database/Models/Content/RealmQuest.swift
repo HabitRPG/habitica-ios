@@ -61,6 +61,21 @@ class RealmQuest: RealmItem, QuestProtocol {
         }
     }
     @objc dynamic var realmDrop: RealmQuestDrop?
+    var colors: QuestColorsProtocol? {
+        get {
+            return realmColors
+        }
+        set {
+            if let newColor = newValue as? RealmQuestColors {
+                realmColors = newColor
+                return
+            }
+            if let newColor = newValue {
+                realmColors = RealmQuestColors(key: key, protocolObject: newColor)
+            }
+        }
+    }
+    @objc dynamic var realmColors: RealmQuestColors?
     
     override static func ignoredProperties() -> [String] {
         return ["boss", "collect"]
@@ -74,5 +89,6 @@ class RealmQuest: RealmItem, QuestProtocol {
         collect = quest.collect
         drop = quest.drop
         itemType = ItemType.quests.rawValue
+        colors = quest.colors
     }
 }

@@ -22,7 +22,7 @@ class ChallengeCreatorTableViewCell: UITableViewCell, ChallengeConfigurable {
     private var user: User? {
         didSet {
             if let member = user {
-                avatarView.avatar = member
+                //avatarView.avatar = member
             }
         }
     }

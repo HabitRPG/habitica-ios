@@ -7,7 +7,6 @@
 //
 
 #import "HRPGFeedViewController.h"
-#import "HRPGCoreDataDataSource.h"
 #import "UIColor+Habitica.h"
 #import "HRPGShopViewController.h"
 #import "Shop.h"

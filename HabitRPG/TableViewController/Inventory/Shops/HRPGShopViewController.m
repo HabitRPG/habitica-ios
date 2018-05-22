@@ -13,7 +13,6 @@
 #import "KLCPopup.h"
 #import "NSString+StripHTML.h"
 #import "Habitica-Swift.h"
-#import "HRPGShopViewModel.h"
 
 @interface HRPGShopViewController () <ShopCollectionViewDataSourceDelegate>
 

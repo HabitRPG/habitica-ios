@@ -15,6 +15,7 @@ public protocol QuestProtocol: ItemProtocol {
     var boss: QuestBossProtocol? { get set }
     var collect: [QuestCollectProtocol]? { get set }
     var drop: QuestDropProtocol? { get set }
+    var colors: QuestColorsProtocol? { get set }
 }
 
 public extension QuestProtocol {

@@ -49,10 +49,6 @@ class TaskDetailLineViewTests: HabiticaTests {
     }
     
     func testTagsVisible() {
-        guard let tag = NSEntityDescription.insertNewObject(forEntityName: "Tag", into: HRPGManager.shared().getManagedObjectContext()) as? Tag else {
-            return;
-        }
-        tag.id = "id"
         //task.tags = Set(arrayLiteral: tag)
         taskDetailLine.configure(task: task)
         expect(self.taskDetailLine.challengeIconView.isHidden) == true
@@ -71,9 +67,6 @@ class TaskDetailLineViewTests: HabiticaTests {
     }
     
     func testReminderVisible() {
-        guard let reminder = NSEntityDescription.insertNewObject(forEntityName: "Reminder", into: HRPGManager.shared().getManagedObjectContext()) as? Reminder else {
-            return;
-        }
         //task.reminders = NSOrderedSet(array: [reminder])
         taskDetailLine.configure(task: task)
         expect(self.taskDetailLine.challengeIconView.isHidden) == true

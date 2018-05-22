@@ -10,7 +10,6 @@
 #import "HRPGNavigationController.h"
 #import "UIViewcontroller+TutorialSteps.h"
 #import "UIViewController+HRPGTopHeaderNavigationController.h"
-#import "HRPGManager.h"
 
 @interface HRPGBaseCollectionViewController ()
 
@@ -53,13 +52,6 @@
             (HRPGNavigationController *)destViewController;
         destNavigationController.sourceViewController = self;
     }
-}
-
-- (NSManagedObjectContext *)managedObjectContext {
-    if (_managedObjectContext == nil) {
-        _managedObjectContext = [HRPGManager sharedManager].getManagedObjectContext;
-    }
-    return _managedObjectContext;
 }
 
 @end

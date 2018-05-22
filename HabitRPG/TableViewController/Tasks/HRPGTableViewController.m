@@ -166,9 +166,6 @@ NSIndexPath  *sourceIndexPath = nil;
                 NSInteger sourceOrder = [sourceTask integerForKey:@"order"];
                 [sourceTask setInteger:[task integerForKey:@"order"] forKey:@"order"];
                 [task setInteger:sourceOrder forKey:@"order"];
-
-                NSError *error;
-                [self.managedObjectContext save:&error];
                 
                 [self.tableView moveRowAtIndexPath:sourceIndexPath toIndexPath:indexPath];
                 sourceIndexPath = indexPath;
