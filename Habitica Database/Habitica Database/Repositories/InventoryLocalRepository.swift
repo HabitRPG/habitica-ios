@@ -69,6 +69,26 @@ public class InventoryLocalRepository: ContentLocalRepository {
         })
     }
     
+    public func getShop(identifier: String) -> SignalProducer<ShopProtocol?, ReactiveSwiftRealmError> {
+        return RealmShop.findBy(query: "identifier == '\(identifier)'").reactive().map({ shops -> ShopProtocol? in
+            return shops.value.first
+        })
+    }
+    
+    public func getShops() -> SignalProducer<ReactiveResults<[ShopProtocol]>, ReactiveSwiftRealmError> {
+        return RealmShop.findAll().reactive().map({ (value, changeset) -> ReactiveResults<[ShopProtocol]> in
+            return (value.map({ (item) -> ShopProtocol in return item }), changeset)
+        })
+    }
+    
+    public func save(shop: ShopProtocol) {
+        if let realmShop = shop as? RealmShop {
+            save(object: realmShop)
+            return
+        }
+        save(object: RealmShop(shop))
+    }
+    
     public func updatePetTrained(userID: String, key: String, trained: Int, consumedFood: String) {
         let realm = getRealm()
         let ownedPet = realm?.object(ofType: RealmOwnedPet.self, forPrimaryKey: userID+key)

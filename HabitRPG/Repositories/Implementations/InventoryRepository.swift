@@ -120,10 +120,23 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
         return call.objectSignal
     }
     
-    func retrieveShopInventory(identifier: String) -> Signal<EmptyResponseProtocol?, NoError> {
+    func retrieveShopInventory(identifier: String) -> Signal<ShopProtocol?, NoError> {
         let call = RetrieveShopInventoryCall(identifier: identifier)
         call.fire()
-        return call.objectSignal
+        return call.objectSignal.on(value: { shop in
+            if let shop = shop {
+                shop.identifier = identifier
+                self.localRepository.save(shop: shop)
+            }
+        })
+    }
+    
+    func getShop(identifier: String) -> SignalProducer<ShopProtocol?, ReactiveSwiftRealmError> {
+        return localRepository.getShop(identifier: identifier)
+    }
+    
+    func getShops() -> SignalProducer<ReactiveResults<[ShopProtocol]>, ReactiveSwiftRealmError> {
+        return localRepository.getShops()
     }
     
     func feed(pet: PetProtocol, food: FoodProtocol) -> Signal<Int?, NoError> {

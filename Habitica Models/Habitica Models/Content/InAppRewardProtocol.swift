@@ -8,6 +8,7 @@
 
 import Foundation
 
+@objc
 public protocol InAppRewardProtocol: BaseRewardProtocol {
     var key: String? { get set }
     var availableUntil: Date? { get set }

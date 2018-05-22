@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import ReactiveSwift
 @objc protocol HRPGShopsOverviewViewModelDelegate: class {
     func didFetchShops()
 }
@@ -16,60 +16,36 @@ class HRPGShopsOverviewViewModel: NSObject, HRPGShopOverviewTableViewDataSourceD
     lazy var shopDictionary: [AnyHashable: Any]? = [AnyHashable: Any]()
     @objc weak var delegate: HRPGShopsOverviewViewModelDelegate?
     
+    private var inventoryRepository = InventoryRepository()
+    
+    private let disposable = ScopedDisposable(CompositeDisposable())
+    
     @objc
     func fetchShops() {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>()
-        if let context = HRPGManager.shared().getManagedObjectContext() {
-            let entity = NSEntityDescription.entity(forEntityName: "Shop", in: context)
-            fetchRequest.entity = entity
-        }
-        
-        do {
-            if let shops: [Shop] = try HRPGManager.shared().getManagedObjectContext().fetch(fetchRequest) as? [Shop], shops.count != 0 {
-                for shop in shops {
-                    if let identifier = shop.identifier {
-                        shopDictionary?[identifier] = shop
-                    }
+        disposable.inner.add(inventoryRepository.getShops().on(value: { (shops, _) in
+            for shop in shops {
+                if let identifier = shop.identifier {
+                    self.shopDictionary?[identifier] = shop
                 }
-                
-                delegate?.didFetchShops()
-            } else {
-                refreshShops()
             }
-        } catch let error as NSError {
-            print(error.debugDescription)
-        }
+            
+            self.delegate?.didFetchShops()
+        }).start())
     }
     
     @objc
     func refreshShops() {
-        var semaphore = 4
-        let success: (() -> Void) = {
-            semaphore -= 1
-            self.checkFetchedSemaphore(semaphore: semaphore)
-        }
-        
-        refreshShop(withIdentifier: MarketKey, onSuccess: success, onError: nil)
-        refreshShop(withIdentifier: QuestsShopKey, onSuccess: success, onError: nil)
-        refreshShop(withIdentifier: SeasonalShopKey, onSuccess: success, onError: nil)
-        refreshShop(withIdentifier: TimeTravelersShopKey, onSuccess: success, onError: nil)
-    }
-    
-    private func checkFetchedSemaphore(semaphore: Int) {
-        if semaphore == 0 {
-            fetchShops()
-        }
+        refreshShop(withIdentifier: MarketKey)
+        refreshShop(withIdentifier: QuestsShopKey)
+        refreshShop(withIdentifier: SeasonalShopKey)
+        refreshShop(withIdentifier: TimeTravelersShopKey)
     }
 
     // MARK: - datasource delegate
     
     @objc
-    func refreshShop(withIdentifier identifier: String?, onSuccess successBlock: (() -> Void)?, onError errorBlock: (() -> Void)?) {
-        HRPGManager.shared().fetchShopInventory(identifier, onSuccess: {
-            if let success = successBlock {
-                success()
-            }
-        }, onError: errorBlock)
+    func refreshShop(withIdentifier identifier: String) {
+        inventoryRepository.retrieveShopInventory(identifier: identifier).observeCompleted {}
     }
     
     func identifier(at index: Int) -> String? {

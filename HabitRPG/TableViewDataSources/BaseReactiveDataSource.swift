@@ -15,10 +15,11 @@ class ItemSection<MODEL> {
     var key: String?
     var title: String?
     var isHidden = false
+    var showIfEmpty = false
     var items = [MODEL]()
     
     var isVisible: Bool {
-        return !isHidden && items.count > 0
+        return !isHidden && (items.count > 0 || showIfEmpty)
     }
     
     init(key: String? = nil, title: String? = nil) {
@@ -123,7 +124,7 @@ class BaseReactiveTableViewDataSource<MODEL>: BaseReactiveDataSource<MODEL>, UIT
     }
 }
 
-class BaseReactiveCollectionViewDataSource<MODEL>: BaseReactiveDataSource<MODEL>, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class BaseReactiveCollectionViewDataSource<MODEL>: BaseReactiveDataSource<MODEL>, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     @objc weak var collectionView: UICollectionView? {
         didSet {
             collectionView?.dataSource = self
@@ -155,5 +156,21 @@ class BaseReactiveCollectionViewDataSource<MODEL>: BaseReactiveDataSource<MODEL>
         let label = headerView.viewWithTag(1) as? UILabel
         label?.text = visibleSections[indexPath.section].title
         return headerView
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        let flowlayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
+        return flowlayout?.headerReferenceSize ?? CGSize.zero
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let flowlayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
+        return flowlayout?.itemSize ?? CGSize.zero
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
     }
 }

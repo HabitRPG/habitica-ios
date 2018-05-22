@@ -9,9 +9,11 @@
 import Foundation
 import Kingfisher
 
-class ImageManager {
+@objc
+class ImageManager: NSObject {
     static let baseURL = "https://habitica-assets.s3.amazonaws.com/mobileApp/images/"
     
+    @objc
     static func setImage(on imageView: ImageView, name: String, extension fileExtension: String = "png", completion: ((UIImage?, NSError?) -> Void)? = nil) {
         getImage(name: name, extension: fileExtension) { (image, error) in
             
@@ -22,6 +24,7 @@ class ImageManager {
         }
     }
     
+    @objc
     static func getImage(name: String, extension fileExtension: String = "png", completion: @escaping (UIImage?, NSError?) -> Void) {
         guard let url = URL(string: "\(baseURL)\(name).\(fileExtension)") else {
             return

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Habitica_Models
 
 class NPCBannerView: UIView {
     @IBOutlet weak var bgImageView: UIImageView!
@@ -15,14 +16,9 @@ class NPCBannerView: UIView {
     @IBOutlet weak var npcNameLabel: UILabel!
     @IBOutlet weak var plaqueImageView: UIImageView!
     @IBOutlet weak var gradientView: GradientView!
-    private var _shop: Shop?
-    @objc var shop: Shop? {
-        set(newShop) {
-            _shop = newShop
+    @objc var shop: ShopProtocol? {
+        didSet {
             setupShop()
-        }
-        get {
-            return _shop
         }
     }
     

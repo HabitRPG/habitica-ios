@@ -11,8 +11,19 @@ import Habitica_Models
 import FunkyNetwork
 import ReactiveSwift
 
-public class RetrieveShopInventoryCall: ResponseObjectCall<EmptyResponseProtocol, APIEmptyResponse> {
+public class RetrieveShopInventoryCall: ResponseObjectCall<ShopProtocol, APIShop> {
     public init(identifier: String, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "user.json")) {
-        super.init(httpMethod: .POST, endpoint: "shops/\(identifier)", postData: nil, stubHolder: stubHolder)
+        var shopIdentifier = identifier
+        switch identifier {
+        case "questShop":
+            shopIdentifier = "quests"
+        case "seasonalShop":
+            shopIdentifier = "seasonal"
+        case "timeTravelersShop":
+            shopIdentifier = "time-travelers"
+        default:
+            shopIdentifier = identifier
+        }
+        super.init(httpMethod: .GET, endpoint: "shops/\(shopIdentifier)", postData: nil, stubHolder: stubHolder)
     }
 }

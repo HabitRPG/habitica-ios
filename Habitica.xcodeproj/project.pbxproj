@@ -276,7 +276,7 @@
 		494E53FE1F2D0A330003683C /* UIViewController+HRPGTopHeaderNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 494E53FD1F2D0A330003683C /* UIViewController+HRPGTopHeaderNavigationController.m */; };
 		494E54011F2D1ED90003683C /* CAGradientLayer+HRPGShopGradient.m in Sources */ = {isa = PBXBuildFile; fileRef = 494E54001F2D1ED90003683C /* CAGradientLayer+HRPGShopGradient.m */; };
 		494E54041F2D20C70003683C /* HRPGShopOverviewTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 494E54031F2D20C70003683C /* HRPGShopOverviewTableViewDataSource.m */; };
-		494E540B1F2D894D0003683C /* HRPGShopCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494E540A1F2D894D0003683C /* HRPGShopCollectionViewDataSource.swift */; };
+		494E540B1F2D894D0003683C /* ShopCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494E540A1F2D894D0003683C /* ShopCollectionViewDataSource.swift */; };
 		494E54101F2EEF810003683C /* Amplitude+HRPGHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 494E540F1F2EEF810003683C /* Amplitude+HRPGHelpers.m */; };
 		494E54131F2EF7100003683C /* HRPGCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 494E54121F2EF7100003683C /* HRPGCollectionViewController.m */; };
 		494E54151F2F07290003683C /* HRPGFetchedResultsCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494E54141F2F07290003683C /* HRPGFetchedResultsCollectionViewDataSource.swift */; };
@@ -881,7 +881,7 @@
 		494E54001F2D1ED90003683C /* CAGradientLayer+HRPGShopGradient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAGradientLayer+HRPGShopGradient.m"; sourceTree = "<group>"; };
 		494E54021F2D20C70003683C /* HRPGShopOverviewTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGShopOverviewTableViewDataSource.h; sourceTree = "<group>"; };
 		494E54031F2D20C70003683C /* HRPGShopOverviewTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGShopOverviewTableViewDataSource.m; sourceTree = "<group>"; };
-		494E540A1F2D894D0003683C /* HRPGShopCollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGShopCollectionViewDataSource.swift; sourceTree = "<group>"; };
+		494E540A1F2D894D0003683C /* ShopCollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		494E540E1F2EEF810003683C /* Amplitude+HRPGHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Amplitude+HRPGHelpers.h"; sourceTree = "<group>"; };
 		494E540F1F2EEF810003683C /* Amplitude+HRPGHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Amplitude+HRPGHelpers.m"; sourceTree = "<group>"; };
 		494E54111F2EF7100003683C /* HRPGCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGCollectionViewController.h; sourceTree = "<group>"; };
@@ -1834,7 +1834,7 @@
 		494E54061F2D7FAB0003683C /* CVDataSources */ = {
 			isa = PBXGroup;
 			children = (
-				494E540A1F2D894D0003683C /* HRPGShopCollectionViewDataSource.swift */,
+				494E540A1F2D894D0003683C /* ShopCollectionViewDataSource.swift */,
 				2907267D1F74279C00545550 /* TimeTravelersCollectionViewDataSource.swift */,
 				494E54141F2F07290003683C /* HRPGFetchedResultsCollectionViewDataSource.swift */,
 				29144897208A271C00F3A6B5 /* AvatarDetailViewDataSource.swift */,
@@ -3786,7 +3786,7 @@
 				2914485D2084E6ED00F3A6B5 /* MountOverviewViewController.swift in Sources */,
 				D903B78C1DCA4C25001F2893 /* HRPGNotificationManager.m in Sources */,
 				49DCB7C21F40D7F10079FDD0 /* NPCBannerView.swift in Sources */,
-				494E540B1F2D894D0003683C /* HRPGShopCollectionViewDataSource.swift in Sources */,
+				494E540B1F2D894D0003683C /* ShopCollectionViewDataSource.swift in Sources */,
 				29FC8862201A300B002B3D3F /* ProgressBar.swift in Sources */,
 				29646DE3205C1F390050886C /* TaskFormVisualEffectsModalViewController.swift in Sources */,
 				D93422B91AB792B5003AFCDE /* UIColor+LighterDarker.m in Sources */,

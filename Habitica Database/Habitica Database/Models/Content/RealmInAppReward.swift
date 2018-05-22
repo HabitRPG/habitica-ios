@@ -11,6 +11,7 @@ import Habitica_Models
 import RealmSwift
 
 class RealmInAppReward: Object, InAppRewardProtocol {
+    @objc dynamic var combinedKey: String?
     @objc dynamic var userID: String?
     @objc dynamic var key: String?
     @objc dynamic var availableUntil: Date?
@@ -28,11 +29,12 @@ class RealmInAppReward: Object, InAppRewardProtocol {
     @objc dynamic var value: Float = 0
     
     override static func primaryKey() -> String {
-        return "key"
+        return "combinedKey"
     }
     
     convenience init(userID: String?, protocolObject: InAppRewardProtocol) {
         self.init()
+        self.combinedKey = (userID ?? "") + (protocolObject.key ?? "")
         self.userID = userID
         key = protocolObject.key
         availableUntil = protocolObject.availableUntil

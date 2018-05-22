@@ -113,7 +113,7 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         if let customization = item(at: indexPath) {
             if customization.isPurchasable == true && !owns(customization: customization) {

@@ -34,7 +34,7 @@ class RewardViewDataSource: BaseReactiveCollectionViewDataSource<BaseRewardProto
         }).start())
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if isCustomRewardsSection(indexPath.section) {
             return CGSize(width: self.collectionView?.frame.size.width ?? 0, height: 70)
         } else {

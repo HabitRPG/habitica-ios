@@ -64,6 +64,8 @@
 		295611052056DC7100D9711A /* QuestBossProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295611042056DC7100D9711A /* QuestBossProtocol.swift */; };
 		2956110B2056E14300D9711A /* QuestCollectProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2956110A2056E14300D9711A /* QuestCollectProtocol.swift */; };
 		295D43002097380700948E7E /* TutorialStepProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295D42FF2097380700948E7E /* TutorialStepProtocol.swift */; };
+		295E9DE620B3257700D58D45 /* ShopProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295E9DE520B3257700D58D45 /* ShopProtocol.swift */; };
+		295E9DE820B3263E00D58D45 /* ShopCategoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295E9DE720B3263E00D58D45 /* ShopCategoryProtocol.swift */; };
 		296AC81620AC86B900885682 /* BaseRewardProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296AC81520AC86B900885682 /* BaseRewardProtocol.swift */; };
 		296AC81820AC898D00885682 /* InAppRewardProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296AC81720AC898D00885682 /* InAppRewardProtocol.swift */; };
 		2974BD93208E0C7B00EC1A25 /* OwnedCustomizationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BD92208E0C7B00EC1A25 /* OwnedCustomizationProtocol.swift */; };
@@ -156,6 +158,8 @@
 		295611042056DC7100D9711A /* QuestBossProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestBossProtocol.swift; sourceTree = "<group>"; };
 		2956110A2056E14300D9711A /* QuestCollectProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestCollectProtocol.swift; sourceTree = "<group>"; };
 		295D42FF2097380700948E7E /* TutorialStepProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialStepProtocol.swift; sourceTree = "<group>"; };
+		295E9DE520B3257700D58D45 /* ShopProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopProtocol.swift; sourceTree = "<group>"; };
+		295E9DE720B3263E00D58D45 /* ShopCategoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCategoryProtocol.swift; sourceTree = "<group>"; };
 		296AC81520AC86B900885682 /* BaseRewardProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRewardProtocol.swift; sourceTree = "<group>"; };
 		296AC81720AC898D00885682 /* InAppRewardProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppRewardProtocol.swift; sourceTree = "<group>"; };
 		2974BD92208E0C7B00EC1A25 /* OwnedCustomizationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnedCustomizationProtocol.swift; sourceTree = "<group>"; };
@@ -306,6 +310,8 @@
 				295610FE2056D17D00D9711A /* SkillProtocol.swift */,
 				2902798220583383006DACB9 /* WorldStateProtocol.swift */,
 				296AC81720AC898D00885682 /* InAppRewardProtocol.swift */,
+				295E9DE520B3257700D58D45 /* ShopProtocol.swift */,
+				295E9DE720B3263E00D58D45 /* ShopCategoryProtocol.swift */,
 			);
 			path = Content;
 			sourceTree = "<group>";
@@ -613,6 +619,7 @@
 				295610E72056C5BF00D9711A /* ContentProtocol.swift in Sources */,
 				295611032056DBC900D9711A /* QuestProtocol.swift in Sources */,
 				290C3030206CEED20066AF5B /* SkillResponseProtocol.swift in Sources */,
+				295E9DE620B3257700D58D45 /* ShopProtocol.swift in Sources */,
 				290B625F207B947A007287C4 /* LocalAuthenticationProtocol.swift in Sources */,
 				2902797520580E3E006DACB9 /* BuffProtocol.swift in Sources */,
 				29323E4D2052F4E500AC6D6F /* OutfitProtocol.swift in Sources */,
@@ -620,6 +627,7 @@
 				DC2C4767C68C2D9F295C7804 /* ProfileProtocol.swift in Sources */,
 				2914489A208A32B400F3A6B5 /* CustomizationProtocol.swift in Sources */,
 				2956110B2056E14300D9711A /* QuestCollectProtocol.swift in Sources */,
+				295E9DE820B3263E00D58D45 /* ShopCategoryProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

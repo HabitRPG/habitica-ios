@@ -8,30 +8,9 @@
 
 import Foundation
 
-class TimeTravelersCollectionViewDataSource: HRPGShopCollectionViewDataSource {
+class TimeTravelersCollectionViewDataSource: ShopCollectionViewDataSource {
 
     var categories = [ShopCategory]()
-    
-    override var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>? {
-        didSet {
-            if let results = fetchedResultsController, let sections = results.sections, sections.count == 0 {
-                fetchedResultsDelegate?.onEmptyFetchedResults()
-            }
-            fetchedResultsController?.delegate = self
-            loadCategories()
-        }
-    }
-
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return categories.count
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if section < categories.count {
-            return categories[section].items?.count ?? 0
-        }
-        return 0
-    }
     
     override func titleFor(section: Int) -> String? {
         if section < categories.count {
@@ -40,20 +19,9 @@ class TimeTravelersCollectionViewDataSource: HRPGShopCollectionViewDataSource {
         return ""
     }
     
-    override func itemAt(indexPath: IndexPath) -> ShopItem? {
-        if indexPath.section < categories.count {
-            return categories[indexPath.section].items?[indexPath.item] as? ShopItem
-        }
-        return nil
-    }
-    
-    override func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        loadCategories()
-    }
-    
     private func loadCategories() {
         categories = [ShopCategory]()
-        if let items = self.fetchedResultsController?.fetchedObjects as? [ShopItem],
+        /*if let items = self.fetchedResultsController?.fetchedObjects as? [ShopItem],
             let categoryEntity = NSEntityDescription.entity(forEntityName: "ShopCategory", in: HRPGManager.shared().getManagedObjectContext()) ,
             let itemEntity = NSEntityDescription.entity(forEntityName: "ShopItem", in: HRPGManager.shared().getManagedObjectContext()) {
             for item in items {
@@ -100,7 +68,7 @@ class TimeTravelersCollectionViewDataSource: HRPGShopCollectionViewDataSource {
                     }
                 }
             }
-        }
+        }*/
         //Flip the order to have pets and mounts first
         categories.reverse()
         self.collectionView?.reloadData()

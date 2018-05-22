@@ -12,8 +12,7 @@ import ReactiveSwift
 import Result
 
 class HRPGBuyItemModalViewController: UIViewController, Themeable {
-    @objc var item: ShopItem?
-    var reward: InAppRewardProtocol?
+    @objc var reward: InAppRewardProtocol?
     @objc var shopIdentifier: String?
     private let inventoryRepository = InventoryRepository()
     private let userRepository = UserRepository()
@@ -111,14 +110,14 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     func setupItem() {
         if let contentView = closableShopModal.shopModalBgView.contentView {
             var itemView: HRPGSimpleShopItemView?
-            if let item = self.item {
-                itemView = HRPGSimpleShopItemView(withItem: item, withUser: user, for: contentView)
-            } else if let reward = self.reward {
+            if let reward = self.reward {
                 itemView = HRPGSimpleShopItemView(withReward: reward, withUser: user, for: contentView)
+            }
+            if shopIdentifier == nil {
                 isPinned = true
             }
             updateBuyButton()
-            let key = item?.key ?? reward?.key ?? ""
+            let key = reward?.key ?? ""
             if let itemView = itemView {
                 switch getPurchaseType() {
                 case "quests":
@@ -134,6 +133,15 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
             contentView.translatesAutoresizingMaskIntoConstraints = false
             
             contentView.triggerLayout()
+            
+            userRepository.getInAppRewards().take(first: 1)
+                .map({ (rewards, _) in
+                    return rewards.map({ (reward) in
+                        return reward.key
+                    })
+                }).on(value: { rewards in
+                    self.isPinned = rewards.contains(self.reward?.key)
+                }).start()
         }
     }
     
@@ -165,16 +173,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     
     func updateBuyButton() {
         var isLocked = itemIsLocked()
-        if let item = self.item {
-            if let currencyString = item.currency, let currency = Currency(rawValue: currencyString) {
-                currencyCountView.currency = currency
-            }
-            currencyCountView.amount = item.value?.intValue ?? 0
-            
-            if item.key == "gem" && user?.purchased?.subscriptionPlan?.consecutive?.gemsRemaining == 0 {
-                isLocked = true
-            }
-        } else if let reward = self.reward {
+        if let reward = self.reward {
             if let currencyString = reward.currency, let currency = Currency(rawValue: currencyString) {
                 currencyCountView.currency = currency
                 if reward.key == "gem" && user?.purchased?.subscriptionPlan?.consecutive?.gemsRemaining == 0 {
@@ -209,10 +208,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         var currency: Currency?
         var price: Float = 0.0
         
-        if let item = self.item, let currencyString = item.currency {
-            currency = Currency(rawValue: currencyString)
-            price = item.value?.floatValue ?? 0
-        } else if let inAppReward = reward {
+        if let inAppReward = reward {
             if let currencyString = inAppReward.currency {
                 currency = Currency(rawValue: currencyString)
             } else {
@@ -236,9 +232,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     
     func itemIsLocked() -> Bool {
         var isLocked = false
-        if let item = self.item {
-            isLocked = item.locked?.boolValue ?? false
-        } else if let inAppReward = reward {
+        if let inAppReward = reward {
             isLocked = inAppReward.locked
         }
         return isLocked
@@ -249,9 +243,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     }
     
     func getPurchaseType() -> String {
-        if let shopItem = self.item {
-            return shopItem.purchaseType ?? ""
-        } else if let reward = self.reward {
+        if let reward = self.reward {
             return reward.purchaseType ?? ""
         } else {
             return ""
@@ -278,10 +270,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     @IBAction func pinPressed() {
         var path = ""
         var pinType = ""
-        if let shopItem = item {
-            path = shopItem.path ?? ""
-            pinType = shopItem.pinType ?? ""
-        } else if let inAppReward = reward {
+        if let inAppReward = reward {
             path = inAppReward.path ?? ""
             pinType = inAppReward.pinType ?? ""
         }
@@ -300,6 +289,9 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         if itemIsLocked() {
             return
         }
+        guard let inAppReward = reward else {
+            return
+        }
         var key = ""
         var purchaseType = ""
         var text = ""
@@ -308,7 +300,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         var setIdentifier = ""
         var value = 0
         var successBlock = {}
-        if let shopItem = item {
+        /*if let shopItem = item {
             key = shopItem.key ?? ""
             purchaseType = shopItem.purchaseType ?? ""
             text = shopItem.text ?? ""
@@ -325,7 +317,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                     self.inventoryRepository.retrieveShopInventory(identifier: identifier).observeCompleted {}
                 }
             }
-        } else if let inAppReward = reward {
+        } else*/ if let inAppReward = reward {
             key = inAppReward.key ?? ""
             purchaseType = inAppReward.purchaseType ?? ""
             text = inAppReward.text ?? ""
