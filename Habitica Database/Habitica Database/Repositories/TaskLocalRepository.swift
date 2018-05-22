@@ -163,6 +163,14 @@ public class TaskLocalRepository: BaseLocalRepository {
         return nil
     }
     
+    public func getEditableTag(id: String) -> TagProtocol? {
+        if let tag = getRealm()?.object(ofType: RealmTag.self, forPrimaryKey: id) {
+            let editableTag = RealmTag(userID: tag.userID, tagProtocol: tag)
+            return editableTag
+        }
+        return nil
+    }
+    
     public func setTaskSyncing(userID: String?, task: TaskProtocol, isSyncing: Bool) {
         if let realmTask = task as? RealmTask {
             try? getRealm()?.write {

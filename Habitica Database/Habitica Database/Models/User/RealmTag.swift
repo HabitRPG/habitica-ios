@@ -23,6 +23,7 @@ class RealmTag: Object, TagProtocol {
     convenience init(userID: String?, tagProtocol: TagProtocol) {
         self.init()
         id = tagProtocol.id
+        self.userID = userID
         text = tagProtocol.text
         order = tagProtocol.order
     }

@@ -97,6 +97,12 @@ public class UserLocalRepository: BaseLocalRepository {
         })
     }
     
+    public func getTags(userID: String) -> SignalProducer<ReactiveResults<[TagProtocol]>, ReactiveSwiftRealmError> {
+        return RealmTag.findBy(query: "userID == '\(userID)'").sorted(key: "order").reactive().map({ (value, changeset) -> ReactiveResults<[TagProtocol]> in
+            return (value.map({ (tag) -> TagProtocol in return tag }), changeset)
+        })
+    }
+    
     private func outfitFor(class habiticaClass: HabiticaClass) -> OutfitProtocol {
         let outfit = RealmOutfit()
         switch habiticaClass {

@@ -10,7 +10,7 @@
 
 @interface HRPGFilterViewController : HRPGBaseViewController<NSFetchedResultsControllerDelegate>
 
-@property(nonatomic) NSMutableArray<NSString *> *selectedTags;
+@property(nonatomic) NSArray<NSString *> *selectedTags;
 @property(nonatomic) NSString *taskType;
 
 @end

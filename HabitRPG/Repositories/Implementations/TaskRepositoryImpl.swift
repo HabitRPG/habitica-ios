@@ -109,6 +109,10 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
         return localRepository.getEditableTask(id: id)
     }
     
+    func getEditableTag(id: String) -> TagProtocol? {
+        return localRepository.getEditableTag(id: id)
+    }
+    
     func createTask(_ task: TaskProtocol) -> Signal<TaskProtocol?, NoError> {
         localRepository.save(userID: currentUserId, task: task)
         localRepository.setTaskSyncing(userID: currentUserId, task: task, isSyncing: true)

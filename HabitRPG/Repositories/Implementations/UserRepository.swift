@@ -303,6 +303,10 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         return call.objectSignal
     }
     
+    func getTags() -> SignalProducer<ReactiveResults<[TagProtocol]>, ReactiveSwiftRealmError> {
+        return localRepository.getTags(userID: self.currentUserId ?? "")
+    }
+    
     private func handleUserUpdate() -> ((UserProtocol?) -> Void) {
         return { updatedUser in
             if let userID = self.currentUserId, let updatedUser = updatedUser {

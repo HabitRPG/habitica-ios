@@ -10,8 +10,7 @@ import Foundation
 
 @objc
 public protocol TagProtocol {
-    var id: String? { get set }
-    var text: String? { get set }
-    var order: Int { get set }
-    
+    @objc var id: String? { get set }
+    @objc var text: String? { get set }
+    @objc var order: Int { get set }
 }
