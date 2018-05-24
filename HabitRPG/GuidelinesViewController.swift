@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Alamofire
 import Down
 
 class GuidelinesViewController: UIViewController {
@@ -16,11 +15,12 @@ class GuidelinesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Alamofire.request("https://s3.amazonaws.com/habitica-assets/mobileApp/endpoint/community-guidelines.md").responseString {[weak self] response in
-            
-            if let text = response.result.value {
-                self?.textView.attributedText = try? Down(markdownString: text).toHabiticaAttributedString()
-            }
+        let urlString = "https://s3.amazonaws.com/habitica-assets/mobileApp/endpoint/community-guidelines.md"
+        guard let url = URL(string: urlString) else {
+            return
+        }
+        if let text = try? String(contentsOf: url) {
+            textView.attributedText = try? Down(markdownString: text).toHabiticaAttributedString()
         }
     }
     

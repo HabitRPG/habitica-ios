@@ -62,7 +62,6 @@ target 'Habitica' do
   pod 'PinLayout'
 
   pod 'PopupDialog', :git => 'https://github.com/Orderella/PopupDialog.git', :branch => 'development'
-  pod 'Alamofire', '~> 4.5'
   pod 'SwiftLint'
   pod 'Eureka'
 

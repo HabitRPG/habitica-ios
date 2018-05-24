@@ -12,7 +12,6 @@ import Fabric
 import Crashlytics
 import Keys
 import Amplitude_iOS
-import Alamofire
 import Habitica_API_Client
 import Habitica_Models
 import RealmSwift
@@ -136,37 +135,49 @@ class HabiticaAppDelegate: NSObject {
 
     @objc
     func handleMaintenanceScreen() {
-        Alamofire.request("https://habitica-assets.s3.amazonaws.com/mobileApp/endpoint/maintenance-ios.json")
-            .validate()
-            .responseJSON {[weak self] response in
-                if let json = response.result.value as? NSDictionary {
-                    if let activeMaintenance = json["activeMaintenance"] as? NSNumber, activeMaintenance.boolValue {
-                        self?.displayMaintenanceScreen(data: json, isDeprecated: false)
-                    } else {
-                        self?.hideMaintenanceScreen()
-                    }
-                    guard let buildNumber = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? NSString else {
-                        return
-                    }
-                    if let minVersion = json["minVersion"] as? NSNumber, minVersion.intValue > buildNumber.integerValue {
-                        Alamofire.request("https://habitica-assets.s3.amazonaws.com/mobileApp/endpoint/deprecation-ios.json").validate().responseJSON {[weak self] response in
-                            if let json = response.result.value as? NSDictionary {
-                                self?.displayMaintenanceScreen(data: json, isDeprecated: true)
-                            }
-                        }
-                    }
+        let call = RetrieveMaintenanceInfoCall()
+        call.fire()
+        call.jsonSignal.map({ json -> [String: Any]? in
+            let jsonDict = json as? [String: Any]
+            return jsonDict
+        })
+            .skipNil()
+            .on(value: { json in
+                if let activeMaintenance = json["activeMaintenance"] as? Bool, activeMaintenance {
+                    self.displayMaintenanceScreen(data: json, isDeprecated: false)
+                } else {
+                    self.hideMaintenanceScreen()
                 }
+            })
+            .filter { (json) -> Bool in
+                guard let buildNumber = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? NSString else {
+                    return false
+                }
+                if let minVersion = json["minVersion"] as? Int, minVersion > buildNumber.integerValue {
+                    return true
+                }
+                return false
+            }
+            .flatMap(.latest) { (_) -> Signal<Any, NoError> in
+                let call = RetrieveDeprecationInfoCall()
+                call.fire()
+                return call.jsonSignal
+            }
+            .map({ (jsonObject) in
+                return jsonObject as? [AnyHashable: Any]
+            })
+            .skipNil()
+            .observeValues { (json) in
+                self.displayMaintenanceScreen(data: json, isDeprecated: true)
         }
     }
     
     @objc
-    func displayMaintenanceScreen(data: NSDictionary, isDeprecated: Bool) {
+    func displayMaintenanceScreen(data: [AnyHashable: Any], isDeprecated: Bool) {
         if let presentedController = UIApplication.shared.keyWindow?.rootViewController?.presentedViewController?.presentedViewController {
         if !(presentedController is HRPGMaintenanceViewController) {
             let maintenanceController = HRPGMaintenanceViewController()
-            if let maintenanceData = data as? [AnyHashable: Any] {
-                maintenanceController.setMaintenanceData(maintenanceData)
-            }
+            maintenanceController.setMaintenanceData(data)
             maintenanceController.isDeprecatedApp = isDeprecated
             presentedController.present(maintenanceController, animated: true, completion: nil)
         }

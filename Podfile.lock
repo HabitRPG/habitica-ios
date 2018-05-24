@@ -1,5 +1,4 @@
 PODS:
-  - Alamofire (4.7.2)
   - Amplitude-iOS (4.0.4)
   - AppAuth (0.92.0)
   - Bolts (1.9.0):
@@ -134,7 +133,6 @@ PODS:
     - YYImage
 
 DEPENDENCIES:
-  - Alamofire (~> 4.5)
   - Amplitude-iOS (~> 4.0.4)
   - AppAuth
   - DateTools
@@ -182,7 +180,6 @@ CHECKOUT OPTIONS:
     :git: https://github.com/Orderella/PopupDialog.git
 
 SPEC CHECKSUMS:
-  Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
   Amplitude-iOS: 2ad4d7270c99186236c1272a3a9425463b1ae1a7
   AppAuth: 3f4f1d6d85ad631d0bbf15ffcdc10c447face97a
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
@@ -230,6 +227,6 @@ SPEC CHECKSUMS:
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: 6eca3495cfde23a736bcb53fc3921ed203d4b642
+PODFILE CHECKSUM: 9ba63d9ee618a1e98497291de7a0d4d9c589dff1
 
 COCOAPODS: 1.4.0
