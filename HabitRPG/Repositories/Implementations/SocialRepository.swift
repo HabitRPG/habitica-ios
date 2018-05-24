@@ -19,6 +19,10 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
         return localRepository.getGroups(predicate: predicate)
     }
     
+    func getChallenges(predicate: NSPredicate?) -> SignalProducer<ReactiveResults<[ChallengeProtocol]>, ReactiveSwiftRealmError> {
+        return localRepository.getChallenges(predicate: predicate)
+    }
+    
     func retrieveGroups(_ groupType: String) -> Signal<[GroupProtocol]?, NoError> {
         let call = RetrieveGroupsCall(groupType)
         call.fire()
@@ -43,6 +47,27 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
         return call.objectSignal.on(value: { group in
             if let group = group {
                 self.localRepository.save(group)
+            }
+        })
+    }
+    
+    func retrieveChallenges() -> Signal<[ChallengeProtocol]?, NoError> {
+        let call = RetrieveChallengesCall()
+        call.fire()
+        return call.arraySignal.on(value: { challenges in
+            guard let challenges = challenges else {
+                return
+            }
+            self.localRepository.save(challenges)
+        })
+    }
+    
+    func retrieveChallenge(challengeID: String) -> Signal<ChallengeProtocol?, NoError> {
+        let call = RetrieveChallengeCall(challengeID: challengeID)
+        call.fire()
+        return call.objectSignal.on(value: { challenge in
+            if let challenge = challenge {
+                self.localRepository.save(challenge)
             }
         })
     }
@@ -130,6 +155,20 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
                 }
             })
     }
+    
+    public func getChallenge(challengeID: String, retrieveIfNotFound: Bool = false) -> SignalProducer<ChallengeProtocol?, NoError> {
+        return localRepository.getChallenge(challengeID: challengeID)
+            .flatMapError({ (_) -> SignalProducer<ChallengeProtocol?, NoError> in
+                return SignalProducer.empty
+            })
+            .flatMap(.concat, { (challenge) -> SignalProducer<ChallengeProtocol?, NoError> in
+                if retrieveIfNotFound {
+                    return SignalProducer(self.retrieveChallenge(challengeID: challengeID))
+                } else {
+                    return SignalProducer(value: challenge)
+                }
+            })
+    }
 
     func getGroupMembers(groupID: String) -> SignalProducer<ReactiveResults<[MemberProtocol]>, ReactiveSwiftRealmError> {
         return localRepository.getGroupMembers(groupID: groupID)
@@ -142,6 +181,16 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
     public func getGroupMemberships() -> SignalProducer<ReactiveResults<[GroupMembershipProtocol]>, ReactiveSwiftRealmError> {
         if let userId = AuthenticationManager.shared.currentUserId {
             return localRepository.getGroupMemberships(userID: userId)
+        } else {
+            return SignalProducer {(sink, _) in
+                sink.sendCompleted()
+            }
+        }
+    }
+    
+    public func getChallengeMemberships() -> SignalProducer<ReactiveResults<[ChallengeMembershipProtocol]>, ReactiveSwiftRealmError> {
+        if let userId = AuthenticationManager.shared.currentUserId {
+            return localRepository.getChallengeMemberships(userID: userId)
         } else {
             return SignalProducer {(sink, _) in
                 sink.sendCompleted()
@@ -199,6 +248,26 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
         return call.objectSignal.on(value: { group in
             if let userID = AuthenticationManager.shared.currentUserId {
                 self.localRepository.leaveGroup(userID: userID, groupID: groupID, group: group)
+            }
+        })
+    }
+    
+    public func joinChallenge(challengeID: String) -> Signal<ChallengeProtocol?, NoError> {
+        let call = JoinChallengeCall(challengeID: challengeID)
+        call.fire()
+        return call.objectSignal.on(value: { challenge in
+            if let userID = AuthenticationManager.shared.currentUserId {
+                self.localRepository.joinChallenge(userID: userID, challengeID: challengeID, challenge: challenge)
+            }
+        })
+    }
+    
+    public func leaveChallenge(challengeID: String, keepTasks: Bool) -> Signal<ChallengeProtocol?, NoError> {
+        let call = LeaveChallengeCall(challengeID: challengeID, keepTasks: keepTasks)
+        call.fire()
+        return call.objectSignal.on(value: { challenge in
+            if let userID = AuthenticationManager.shared.currentUserId {
+                self.localRepository.leaveChallenge(userID: userID, challengeID: challengeID, challenge: challenge)
             }
         })
     }

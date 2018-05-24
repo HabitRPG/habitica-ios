@@ -38,6 +38,9 @@
 		2914489C208A335C00F3A6B5 /* CustomizationSetProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2914489B208A335C00F3A6B5 /* CustomizationSetProtocol.swift */; };
 		291DE978209B43920073182A /* QuestParticipantProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291DE977209B43920073182A /* QuestParticipantProtocol.swift */; };
 		291E95B120988706006EE585 /* UserPartyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291E95B020988706006EE585 /* UserPartyProtocol.swift */; };
+		2927269A20B6FB61009DD08A /* ChallengeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2927269920B6FB61009DD08A /* ChallengeProtocol.swift */; };
+		2927269C20B6FD34009DD08A /* ChallengeCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2927269B20B6FD34009DD08A /* ChallengeCategory.swift */; };
+		292726B020B70429009DD08A /* ChallengeMembershipProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292726AF20B70429009DD08A /* ChallengeMembershipProtocol.swift */; };
 		292DEE5A204DAA000086D5F7 /* HabiticaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE59204DAA000086D5F7 /* HabiticaModel.swift */; };
 		292DEE7A204E36F60086D5F7 /* TagProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE79204E36F60086D5F7 /* TagProtocol.swift */; };
 		292DEE7C204E372E0086D5F7 /* ChecklistItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE7B204E372E0086D5F7 /* ChecklistItemProtocol.swift */; };
@@ -133,6 +136,9 @@
 		2914489B208A335C00F3A6B5 /* CustomizationSetProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationSetProtocol.swift; sourceTree = "<group>"; };
 		291DE977209B43920073182A /* QuestParticipantProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestParticipantProtocol.swift; sourceTree = "<group>"; };
 		291E95B020988706006EE585 /* UserPartyProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPartyProtocol.swift; sourceTree = "<group>"; };
+		2927269920B6FB61009DD08A /* ChallengeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeProtocol.swift; sourceTree = "<group>"; };
+		2927269B20B6FD34009DD08A /* ChallengeCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCategory.swift; sourceTree = "<group>"; };
+		292726AF20B70429009DD08A /* ChallengeMembershipProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeMembershipProtocol.swift; sourceTree = "<group>"; };
 		292DEE59204DAA000086D5F7 /* HabiticaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabiticaModel.swift; sourceTree = "<group>"; };
 		292DEE79204E36F60086D5F7 /* TagProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagProtocol.swift; sourceTree = "<group>"; };
 		292DEE7B204E372E0086D5F7 /* ChecklistItemProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistItemProtocol.swift; sourceTree = "<group>"; };
@@ -230,7 +236,10 @@
 				292F966D207220A800804151 /* ChatMessageReactionProtocol.swift */,
 				292F9671207220BF00804151 /* UserStyleProtocol.swift */,
 				290B62442073976B007287C4 /* GroupMembershipProtocol.swift */,
+				292726AF20B70429009DD08A /* ChallengeMembershipProtocol.swift */,
 				290B628A207E1660007287C4 /* MemberProtocol.swift */,
+				2927269920B6FB61009DD08A /* ChallengeProtocol.swift */,
+				2927269B20B6FD34009DD08A /* ChallengeCategory.swift */,
 			);
 			path = Group;
 			sourceTree = "<group>";
@@ -576,6 +585,7 @@
 				292F967C20722E5800804151 /* AvatarProtocol.swift in Sources */,
 				290C3024206B94D10066AF5B /* OwnedItemProtocol.swift in Sources */,
 				2974BD95208E0DB700EC1A25 /* PurchasedProtocol.swift in Sources */,
+				2927269A20B6FB61009DD08A /* ChallengeProtocol.swift in Sources */,
 				295E9DF620B4792500D58D45 /* QuestColorsProtocol.swift in Sources */,
 				296AC81820AC898D00885682 /* InAppRewardProtocol.swift in Sources */,
 				290B62452073976B007287C4 /* GroupMembershipProtocol.swift in Sources */,
@@ -585,6 +595,7 @@
 				292DEEAD205038CB0086D5F7 /* TaskResponseProtocol.swift in Sources */,
 				295610F32056C9F500D9711A /* EggProtocol.swift in Sources */,
 				2974BD93208E0C7B00EC1A25 /* OwnedCustomizationProtocol.swift in Sources */,
+				292726B020B70429009DD08A /* ChallengeMembershipProtocol.swift in Sources */,
 				290B6281207BAA5A007287C4 /* LoginResponseProtocol.swift in Sources */,
 				2902795C2057E7FB006DACB9 /* FAQEntryProtocol.swift in Sources */,
 				290B625B207B8A09007287C4 /* AuthenticationProtocol.swift in Sources */,
@@ -624,6 +635,7 @@
 				295611032056DBC900D9711A /* QuestProtocol.swift in Sources */,
 				290C3030206CEED20066AF5B /* SkillResponseProtocol.swift in Sources */,
 				295E9DE620B3257700D58D45 /* ShopProtocol.swift in Sources */,
+				2927269C20B6FD34009DD08A /* ChallengeCategory.swift in Sources */,
 				290B625F207B947A007287C4 /* LocalAuthenticationProtocol.swift in Sources */,
 				2902797520580E3E006DACB9 /* BuffProtocol.swift in Sources */,
 				29323E4D2052F4E500AC6D6F /* OutfitProtocol.swift in Sources */,

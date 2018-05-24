@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <SlackTextViewController/SLKTextViewController.h>
 
-@interface HRPGInboxChatViewController : SLKTextViewController<NSFetchedResultsControllerDelegate>
+@interface HRPGInboxChatViewController : SLKTextViewController
 
 @property NSString *userID;
 @property NSString *username;

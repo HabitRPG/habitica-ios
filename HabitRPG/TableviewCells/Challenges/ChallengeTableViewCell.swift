@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Habitica_Models
 
 class ChallengeTableViewCell: UITableViewCell {
 
@@ -21,18 +22,18 @@ class ChallengeTableViewCell: UITableViewCell {
     @IBOutlet weak private var badgesOffset: NSLayoutConstraint!
     @IBOutlet weak private var badgesHeight: NSLayoutConstraint!
 
-    func setChallenge(_ challenge: Challenge) {
-        self.prizeLabel.text = challenge.prize?.stringValue
+    func setChallenge(_ challenge: ChallengeProtocol, isParticipating: Bool) {
+        self.prizeLabel.text = String(challenge.prize)
         self.nameLabel.text = challenge.name?.unicodeEmoji
 
-        self.groupLabel.text = challenge.group?.name?.unicodeEmoji
+        //self.groupLabel.text = challenge.group?.name?.unicodeEmoji
 
         if let leaderName = challenge.leaderName {
             self.leaderLabel.text = NSLocalizedString("By \(leaderName.unicodeEmoji)", comment: "")
         }
-        self.memberCountLabel.text = challenge.memberCount?.stringValue
+        self.memberCountLabel.text = String(challenge.memberCount)
 
-        let official = challenge.official?.boolValue ?? false
+        let official = challenge.official
         self.officialBadge.isHidden = !official
         if official {
             officialParticipatingSpacing.constant = 8
@@ -40,7 +41,7 @@ class ChallengeTableViewCell: UITableViewCell {
             officialParticipatingSpacing.constant = 0
         }
 
-        self.participatingBadge.isHidden = challenge.user == nil
+        self.participatingBadge.isHidden = isParticipating
 
         if self.officialBadge.isHidden && self.participatingBadge.isHidden {
             self.badgesHeight.constant = 0

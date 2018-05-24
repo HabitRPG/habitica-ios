@@ -10,13 +10,13 @@ import UIKit
 import PopupDialog
 import ReactiveSwift
 import ReactiveCocoa
+import Habitica_Models
 
 class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate, ChallengeFilterChangedDelegate {
     
-    var selectedChallenge: Challenge?
-    var searchText: String?
+    var selectedChallenge: ChallengeProtocol?
 
-    var dataSource: HRPGCoreDataDataSource?
+    var dataSource = ChallengeTableViewDataSource()
     var joinInteractor: JoinChallengeInteractor?
     var leaveInteractor: LeaveChallengeInteractor?
     private let (lifetime, token) = Lifetime.make()
@@ -25,11 +25,6 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate,
     @objc var showOnlyUserChallenges = true
 
     var displayedAlert: ChallengeDetailAlert?
-
-    var isFiltering = false
-    var showOwned = true
-    var showNotOwned = true
-    @objc var shownGuilds: [String]?
     
     let segmentedWrapper = PaddedView()
     let segmentedFilterControl = UISegmentedControl(items: [NSLocalizedString("My Challenges", comment: ""), NSLocalizedString("Discover", comment: "")])
@@ -38,17 +33,16 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate,
         super.viewDidLoad()
         self.joinInteractor = JoinChallengeInteractor()
         self.leaveInteractor = LeaveChallengeInteractor(presentingViewController: self)
-
-        self.configureTableView()
-        HRPGManager.shared().fetchChallenges({
-            //HRPGManager.shared().fetchUser(nil, onError: nil)
-        }, onError: nil)
+        dataSource.tableView = self.tableView
         
         self.segmentedFilterControl.selectedSegmentIndex = 0
         self.segmentedFilterControl.addTarget(self, action: #selector(ChallengeTableViewController.switchFilter(_:)), for: .valueChanged)
         segmentedWrapper.containedView = self.segmentedFilterControl
         topHeaderCoordinator?.alternativeHeader = segmentedWrapper
         topHeaderCoordinator.hideHeader = false
+        
+        dataSource.retrieveData {
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -83,52 +77,14 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate,
         super.viewWillDisappear(animated)
     }
 
-    func configureTableView() {
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 90
-        let configureCell = {[weak self]  (tableViewCell, object, indexPath) in
-            guard let cell = tableViewCell as? ChallengeTableViewCell else {
-                return
-            }
-            guard let challenge = object as? Challenge else {
-                return
-            }
-            guard let weakSelf = self else {
-                return
-            }
-            weakSelf.configureCell(cell, challenge: challenge)
-            } as TableViewCellConfigureBlock
-        let configureFetchRequest = {[weak self] fetchRequest in
-            guard let weakSelf = self else {
-                return
-            }
-            if let fetchRequest = fetchRequest as? NSFetchRequest<Challenge> {
-                fetchRequest.sortDescriptors = [NSSortDescriptor(key: "memberCount", ascending: false)]
-                let predicateString = weakSelf.assemblePredicateString()
-                if let predicateString = predicateString {
-                    fetchRequest.predicate = NSPredicate(format: predicateString)
-                } else {
-                    fetchRequest.predicate = nil
-                }
-            }
-            } as FetchRequestConfigureBlock
-        self.dataSource = HRPGCoreDataDataSource(managedObjectContext: self.managedObjectContext,
-                                                 entityName: "Challenge",
-                                                 cellIdentifier: "Cell",
-                                                 configureCellBlock: configureCell,
-                                                 fetchRequest: configureFetchRequest,
-                                                 asDelegateFor: self.tableView)
-    }
-
     @objc
     func switchFilter(_ segmentedControl: UISegmentedControl) {
         self.showOnlyUserChallenges = self.segmentedFilterControl.selectedSegmentIndex == 0
-        self.dataSource?.reconfigureFetchRequest()
-        self.tableView.reloadData()
+        self.dataSource.isShowingJoinedChallenges = showOnlyUserChallenges
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let selectedChallenge = self.dataSource?.item(at: indexPath) as? Challenge else {
+        guard let selectedChallenge = self.dataSource.item(at: indexPath) else {
             return
         }
         self.selectedChallenge = selectedChallenge
@@ -152,20 +108,19 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate,
     }
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        self.searchText = searchText
-        self.dataSource?.reconfigureFetchRequest()
-        self.tableView.reloadData()
+        self.dataSource.searchText = searchText
+        dataSource.updatePredicate()
     }
 
     @objc
     func filterTapped(_ sender: UIButton!) {
         let viewController = ChallengeFilterAlert()
-        viewController.showOwned = showOwned
-        viewController.showNotOwned = showNotOwned
-        if shownGuilds == nil {
+        viewController.showOwned = dataSource.showOwned
+        viewController.showNotOwned = dataSource.showNotOwned
+        if dataSource.shownGuilds == nil {
             viewController.initShownGuilds = true
         } else {
-            viewController.shownGuilds = shownGuilds ?? [String]()
+            viewController.shownGuilds = dataSource.shownGuilds ?? [String]()
         }
         viewController.delegate = self
         viewController.managedObjectContext = self.managedObjectContext
@@ -174,59 +129,9 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate,
     }
 
     func challengeFilterChanged(showOwned: Bool, showNotOwned: Bool, shownGuilds: [String]) {
-        self.showOwned = showOwned
-        self.showNotOwned = showNotOwned
-        self.shownGuilds = shownGuilds
-        self.dataSource?.reconfigureFetchRequest()
-        self.tableView.reloadData()
-    }
-
-    func assemblePredicateString() -> String? {
-        var searchComponents = [String]()
-
-        if self.showOwned != self.showNotOwned {
-            let userId = HRPGManager.shared().getUser()?.id ?? ""
-            if self.showOwned {
-                searchComponents.append("leaderId == \'\(userId)\'")
-            } else {
-                searchComponents.append("leaderId != \'\(userId)\'")
-            }
-        }
-        if let shownGuilds = self.shownGuilds {
-            var component = "group.id IN {"
-            if shownGuilds.count > 0 {
-                component.append("\'\(shownGuilds[0])\'")
-            }
-            for id in shownGuilds.dropFirst() {
-                component.append(", \'\(id)\'")
-            }
-            component.append("}")
-            searchComponents.append(component)
-        }
-        if let searchText = self.searchText {
-            if searchText.count > 0 {
-                searchComponents.append("((name CONTAINS[cd] \'\(searchText)\') OR (notes CONTAINS[cd] \'\(searchText)\'))")
-            }
-        }
-        if self.showOnlyUserChallenges {
-            let userId = HRPGManager.shared().getUser()?.id ?? ""
-            searchComponents.append("user.id == \'\(userId)\'")
-        }
-
-        if searchComponents.count > 0 {
-            return searchComponents.joined(separator: " && ")
-        } else {
-            return nil
-        }
-    }
-
-    func configureCell(_ cell: ChallengeTableViewCell, challenge: Challenge) {
-        cell.setChallenge(challenge)
-
-        if self.showOnlyUserChallenges {
-            cell.accessoryType = .disclosureIndicator
-        } else {
-            cell.accessoryType = .none
-        }
+        self.dataSource.showOwned = showOwned
+        self.dataSource.showNotOwned = showNotOwned
+        self.dataSource.shownGuilds = shownGuilds
+        self.dataSource.updatePredicate()
     }
 }

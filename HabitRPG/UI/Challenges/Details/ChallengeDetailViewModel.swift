@@ -9,6 +9,7 @@
 import UIKit
 import ReactiveSwift
 import Result
+import Habitica_Models
 
 enum ChallengeButtonState {
     case uninitialized, join, leave, publishDisabled, publishEnabled, viewParticipants, endChallenge
@@ -16,7 +17,7 @@ enum ChallengeButtonState {
 
 protocol ChallengeDetailViewModelInputs {
     func viewDidLoad()
-    func setChallenge(_ challenge: Challenge)
+    func setChallenge(_ challenge: ChallengeProtocol)
 }
 
 protocol ChallengeDetailViewModelOutputs {
@@ -40,7 +41,7 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
     let animateUpdatesSignal: Signal<(), NoError>
     let nextViewControllerSignal: Signal<UIViewController, NoError>
     
-    let challengeProperty: MutableProperty<Challenge>
+    let challengeProperty: MutableProperty<ChallengeProtocol>
     let viewDidLoadProperty = MutableProperty(())
     let reloadTableProperty = MutableProperty(())
     let animateUpdatesProperty = MutableProperty(())
@@ -63,8 +64,11 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
     let participantsStyleProvider: ParticipantsButtonAttributeProvider
     let endChallengeStyleProvider: EndChallengeButtonAttributeProvider
     
-    init(challenge: Challenge) {
-        challengeProperty = MutableProperty<Challenge>(challenge)
+    private let socialRepository = SocialRepository()
+    private let disposable = ScopedDisposable(CompositeDisposable())
+    
+    init(challenge: ChallengeProtocol) {
+        challengeProperty = MutableProperty<ChallengeProtocol>(challenge)
         reloadTableSignal = reloadTableProperty.signal
         animateUpdatesSignal = animateUpdatesProperty.signal
         nextViewControllerSignal = nextViewControllerProperty.signal.skipNil()
@@ -109,6 +113,12 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
         joinLeaveStyleProvider.challengeUpdatedProperty.signal.observeValues { _ in
             self.reloadChallenge(challenge: self.challengeProperty.value)
         }
+        
+        disposable.inner.add(socialRepository.getChallenge(challengeID: challenge.id ?? "")
+            .skipNil()
+            .on(value: { challenge in
+            self.setChallenge(challenge)
+        }).start())
     }
     
     func setupInfo() {
@@ -132,28 +142,28 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
         challengeProperty.signal.observeValues { (challenge) in
             let habitsSection = MultiModelDataSourceSection()
             habitsSection.title = "Habits"
-            habitsSection.items = challenge.habits?.map({ (task) -> MultiModelDataSourceItem in
+            habitsSection.items = challenge.habits.map({ (task) -> MultiModelDataSourceItem in
                 return ChallengeTaskMultiModelDataSourceItem<HabitTableViewCell>(task, identifier: "habit")
             })
             self.habitsSectionProperty.value = habitsSection
             
             let dailiesSection = MultiModelDataSourceSection()
             dailiesSection.title = "Dailies"
-            dailiesSection.items = challenge.dailies?.map({ (task) -> MultiModelDataSourceItem in
+            dailiesSection.items = challenge.dailies.map({ (task) -> MultiModelDataSourceItem in
                 return ChallengeTaskMultiModelDataSourceItem<DailyTableViewCell>(task, identifier: "daily")
             })
             self.dailiesSectionProperty.value = dailiesSection
             
             let todosSection = MultiModelDataSourceSection()
             todosSection.title = "Todos"
-            todosSection.items = challenge.todos?.map({ (task) -> MultiModelDataSourceItem in
+            todosSection.items = challenge.todos.map({ (task) -> MultiModelDataSourceItem in
                 return ChallengeTaskMultiModelDataSourceItem<ToDoTableViewCell>(task, identifier: "todo")
             })
             self.todosSectionProperty.value = todosSection
             
             let rewardsSection = MultiModelDataSourceSection()
             rewardsSection.title = "Rewards"
-            rewardsSection.items = challenge.rewards?.map({ (task) -> MultiModelDataSourceItem in
+            rewardsSection.items = challenge.rewards.map({ (task) -> MultiModelDataSourceItem in
                 return RewardMultiModelDataSourceItem<ChallengeRewardTableViewCell>(task, identifier: "reward")
             })
             self.rewardsSectionProperty.value = rewardsSection
@@ -161,8 +171,12 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
     }
     
     func setupButtons() {
-        let ownedChallengeSignal = challengeProperty.signal.filter(Challenge.isOwner(of:))
-        let unownedChallengeSignal = challengeProperty.signal.filter({ !Challenge.isOwner(of: $0) })
+        let ownedChallengeSignal = challengeProperty.signal.filter { (challenge) -> Bool in
+            return challenge.isOwner()
+        }
+        let unownedChallengeSignal = challengeProperty.signal.filter { (challenge) -> Bool in
+            return !challenge.isOwner()
+        }
         
         endButtonItemProperty.signal.skipNil().observeValues { (item) in
             let endSection = MultiModelDataSourceSection()
@@ -187,57 +201,48 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
             self.doubleEndButtonItemProperty.value = DoubleButtonMultiModelDataSourceItem(identifier: "endButton", leftAttributeProvider: self.joinLeaveStyleProvider, leftInputs: self.joinLeaveStyleProvider,
                                                                                          rightAttributeProvider: self.endChallengeStyleProvider, rightInputs: self.endChallengeStyleProvider)
         }
-        ownedChallengeSignal.filter(Challenge.isPublished(_:)).observeValues { _ in
+        ownedChallengeSignal
+            .filter({ (challenge) -> Bool in
+                return challenge.isPublished()
+            }).observeValues { _ in
             self.mainButtonItemProperty.value = ButtonCellMultiModelDataSourceItem(attributeProvider: self.participantsStyleProvider, inputs: self.participantsStyleProvider, identifier: "mainButton")
         }
-        ownedChallengeSignal.filter({ !Challenge.isPublished($0) }).observeValues { _ in
+        ownedChallengeSignal
+            .filter({ (challenge) -> Bool in
+                return !challenge.isPublished()
+            }).observeValues { _ in
             self.mainButtonItemProperty.value = ButtonCellMultiModelDataSourceItem(attributeProvider: self.publishStyleProvider, inputs: self.publishStyleProvider, identifier: "mainButton")
         }
         
         unownedChallengeSignal.observeValues { _ in
             self.doubleEndButtonItemProperty.value = nil
         }
-        unownedChallengeSignal.filter(Challenge.isJoinable(challenge:)).observeValues { _ in
+        unownedChallengeSignal
+            .filter({ (challenge) -> Bool in
+                return challenge.isJoinable()
+            }).observeValues { _ in
             self.mainButtonItemProperty.value = ButtonCellMultiModelDataSourceItem(attributeProvider: self.joinLeaveStyleProvider, inputs: self.joinLeaveStyleProvider, identifier: "mainButton")
             self.endButtonItemProperty.value = nil
             self.doubleEndButtonItemProperty.value = nil
         }
-        unownedChallengeSignal.filter({ !Challenge.isJoinable(challenge: $0) }).observeValues { _ in
+        unownedChallengeSignal
+            .filter({ (challenge) -> Bool in
+                return !challenge.isJoinable()
+            }).observeValues { _ in
             self.endButtonItemProperty.value = ButtonCellMultiModelDataSourceItem(attributeProvider: self.joinLeaveStyleProvider, inputs: self.joinLeaveStyleProvider, identifier: "mainButton")
         }
     }
     
-    func reloadChallenge(challenge: Challenge) {
-        loadFromStorage(challenge)
-        HRPGManager.shared().fetch(challenge, onSuccess: {
-            self.loadFromStorage(challenge)
+    func reloadChallenge(challenge: ChallengeProtocol) {
+        socialRepository.retrieveChallenge(challengeID: challenge.id ?? "").observeCompleted {
             self.reloadChallengeTasks(challenge: challenge)
-        }, onError: {})
-    }
-    
-    func reloadChallengeTasks(challenge: Challenge) {
-        HRPGManager.shared().fetchChallengeTasks(challenge, onSuccess: {[weak self] () in
-            self?.setChallenge(challenge)
-            }, onError: nil)
-    }
-    
-    func loadFromStorage(_ challenge: Challenge) {
-        if let challengeId = challenge.id {
-            let entity = NSEntityDescription.entity(forEntityName: "Challenge", in: HRPGManager.shared().getManagedObjectContext())
-            let fetchRequest = NSFetchRequest<NSFetchRequestResult>()
-            fetchRequest.entity = entity
-            fetchRequest.predicate = NSPredicate(format: "id == %@", challengeId)
-            do {
-                guard let challenges = try HRPGManager.shared().getManagedObjectContext().fetch(fetchRequest) as? [Challenge] else {
-                    return
-                }
-                if challenges.count > 0 {
-                    let loadedChallenge = challenges[0]
-                    self.setChallenge(loadedChallenge)
-                }
-            } catch {
-            }
         }
+    }
+    
+    func reloadChallengeTasks(challenge: ChallengeProtocol) {
+        /*HRPGManager.shared().fetchChallengeTasks(challenge, onSuccess: {[weak self] () in
+            self?.setChallenge(challenge)
+            }, onError: nil)*/
     }
     
     // MARK: Resizing delegate
@@ -248,20 +253,20 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
     
     // MARK: Creator delegate
     
-    func userPressed(_ user: User) {
+    func userPressed(_ user: UserProtocol) {
         let secondStoryBoard = UIStoryboard(name: "Social", bundle: nil)
         if let userViewController: HRPGUserProfileViewController = secondStoryBoard.instantiateViewController(withIdentifier: "UserProfileViewController") as? HRPGUserProfileViewController {
             userViewController.userID = user.id
-            userViewController.username = user.username
+            userViewController.username = user.profile?.name
             nextViewControllerProperty.value = userViewController
         }
     }
     
-    func messagePressed(user: User) {
+    func messagePressed(user: UserProtocol) {
         let secondStoryBoard = UIStoryboard(name: "Social", bundle: nil)
         if let chatViewController: HRPGInboxChatViewController = secondStoryBoard.instantiateViewController(withIdentifier: "InboxChatViewController") as? HRPGInboxChatViewController {
             chatViewController.userID = user.id
-            chatViewController.username = user.username
+            chatViewController.username = user.profile?.name
             chatViewController.isPresentedModally = true
             nextViewControllerProperty.value = chatViewController
         }
@@ -273,7 +278,7 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
         viewDidLoadProperty.value = ()
     }
     
-    func setChallenge(_ challenge: Challenge) {
+    func setChallenge(_ challenge: ChallengeProtocol) {
         challengeProperty.value = challenge
     }
 }
@@ -281,15 +286,15 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
 // MARK: -
 
 protocol ChallengeConfigurable {
-    func configure(with challenge: Challenge)
+    func configure(with challenge: ChallengeProtocol)
 }
 
 // MARK: -
 
 class ChallengeMultiModelDataSourceItem<T>: ConcreteMultiModelDataSourceItem<T> where T: UITableViewCell, T: ChallengeConfigurable {
-    private let challenge: Challenge
+    private let challenge: ChallengeProtocol
     
-    init(_ challenge: Challenge, identifier: String) {
+    init(_ challenge: ChallengeProtocol, identifier: String) {
         self.challenge = challenge
         super.init(identifier: identifier)
     }
@@ -304,10 +309,10 @@ class ChallengeMultiModelDataSourceItem<T>: ConcreteMultiModelDataSourceItem<T> 
 // MARK: -
 
 class ChallengeCreatorMultiModelDataSourceItem: ChallengeMultiModelDataSourceItem<ChallengeCreatorTableViewCell> {
-    private let challenge: Challenge
+    private let challenge: ChallengeProtocol
     private weak var cellDelegate: ChallengeCreatorCellDelegate?
     
-    init(_ challenge: Challenge, cellDelegate: ChallengeCreatorCellDelegate, identifier: String) {
+    init(_ challenge: ChallengeProtocol, cellDelegate: ChallengeCreatorCellDelegate, identifier: String) {
         self.challenge = challenge
         self.cellDelegate = cellDelegate
         super.init(challenge, identifier: identifier)
@@ -327,7 +332,7 @@ class ChallengeCreatorMultiModelDataSourceItem: ChallengeMultiModelDataSourceIte
 class ChallengeResizableMultiModelDataSourceItem<T>: ChallengeMultiModelDataSourceItem<T> where T: ChallengeConfigurable, T: ResizableTableViewCell {
     weak var resizingDelegate: ResizableTableViewCellDelegate?
     
-    init(_ challenge: Challenge, resizingDelegate: ResizableTableViewCellDelegate?, identifier: String) {
+    init(_ challenge: ChallengeProtocol, resizingDelegate: ResizableTableViewCellDelegate?, identifier: String) {
         super.init(challenge, identifier: identifier)
         
         self.resizingDelegate = resizingDelegate
@@ -345,16 +350,16 @@ class ChallengeResizableMultiModelDataSourceItem<T>: ChallengeMultiModelDataSour
 // MARK: -
 
 class ChallengeTaskMultiModelDataSourceItem<T>: ConcreteMultiModelDataSourceItem<T> where T: TaskTableViewCell {
-    private let challengeTask: ChallengeTask
+    private let challengeTask: TaskProtocol
     
-    public init(_ challengeTask: ChallengeTask, identifier: String) {
+    public init(_ challengeTask: TaskProtocol, identifier: String) {
         self.challengeTask = challengeTask
         super.init(identifier: identifier)
     }
     
     override func configureCell(_ cell: UITableViewCell) {
         if let clazzCell: T = cell as? T {
-            //clazzCell.configure(task: challengeTask)
+            clazzCell.configure(task: challengeTask)
         }
     }
 }
@@ -362,9 +367,9 @@ class ChallengeTaskMultiModelDataSourceItem<T>: ConcreteMultiModelDataSourceItem
 // MARK: -
 
 class RewardMultiModelDataSourceItem<T>: ConcreteMultiModelDataSourceItem<T> where T: ChallengeRewardTableViewCell {
-    private let challengeTask: ChallengeTask
+    private let challengeTask: TaskProtocol
     
-    public init(_ challengeTask: ChallengeTask, identifier: String) {
+    public init(_ challengeTask: TaskProtocol, identifier: String) {
         self.challengeTask = challengeTask
         super.init(identifier: identifier)
     }

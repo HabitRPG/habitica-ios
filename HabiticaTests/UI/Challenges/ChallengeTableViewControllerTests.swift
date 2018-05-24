@@ -27,7 +27,7 @@ class ChallengeTableViewControllerTests: HabiticaTests {
         super.tearDown()
     }
     
-    func testUserChallengesPredicate() {
+    /*func testUserChallengesPredicate() {
         expect(self.viewController.assemblePredicateString()) == "user.id == 'userId'"
     }
     
@@ -74,5 +74,5 @@ class ChallengeTableViewControllerTests: HabiticaTests {
         viewController.shownGuilds = ["id1", "id2", "id3"]
         viewController.searchText = "name"
         expect(self.viewController.assemblePredicateString()) == "leaderId != 'userId' && group.id IN {'id1', 'id2', 'id3'} && ((name CONTAINS[cd] 'name') OR (notes CONTAINS[cd] 'name')) && user.id == 'userId'"
-    }
+    }*/
 }

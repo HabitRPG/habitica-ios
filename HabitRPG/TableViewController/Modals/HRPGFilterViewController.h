@@ -8,7 +8,7 @@
 
 #import "HRPGBaseViewController.h"
 
-@interface HRPGFilterViewController : HRPGBaseViewController<NSFetchedResultsControllerDelegate>
+@interface HRPGFilterViewController : HRPGBaseViewController
 
 @property(nonatomic) NSArray<NSString *> *selectedTags;
 @property(nonatomic) NSString *taskType;

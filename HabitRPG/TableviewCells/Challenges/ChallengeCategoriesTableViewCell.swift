@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Habitica_Models
 
 class ChallengeCategoriesTableViewCell: ResizableTableViewCell, ChallengeConfigurable {
     @IBOutlet weak var titleLabel: UILabel!
@@ -21,8 +22,8 @@ class ChallengeCategoriesTableViewCell: ResizableTableViewCell, ChallengeConfigu
         super.awakeFromNib()
     }
     
-    func configure(with challenge: Challenge) {
-        categories = challenge.categories?.map { $0.name ?? "" }
+    func configure(with challenge: ChallengeProtocol) {
+        categories = challenge.categories.map { $0.name ?? "" }
         if isExpanded {
             self.contentView.removeConstraint(bottomConstraint)
             removeOldCategoryViews()

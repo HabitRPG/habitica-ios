@@ -10,7 +10,7 @@ import UIKit
 import Habitica_Models
 import ReactiveSwift
 
-class HRPGShopUserHeaderView: UIView, NSFetchedResultsControllerDelegate {
+class HRPGShopUserHeaderView: UIView {
     @IBOutlet weak var userClassImageView: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var hourglassCountView: HRPGCurrencyCountView!

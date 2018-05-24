@@ -9,6 +9,7 @@
 import UIKit
 import ReactiveSwift
 import Result
+import Habitica_Models
 
 protocol ChallengeButtonStyleProvider: HRPGButtonAttributeProvider, HRPGButtonModelInputs {
     var challengeUpdatedSignal: Signal<Bool, NoError> { get }
@@ -16,7 +17,9 @@ protocol ChallengeButtonStyleProvider: HRPGButtonAttributeProvider, HRPGButtonMo
 
 class JoinLeaveButtonAttributeProvider: ChallengeButtonStyleProvider {
     
-    let challengeProperty: MutableProperty<Challenge?> = MutableProperty<Challenge?>(nil)
+    private let socialRepository = SocialRepository()
+    
+    let challengeProperty: MutableProperty<ChallengeProtocol?> = MutableProperty<ChallengeProtocol?>(nil)
     
     let buttonStateSignal: Signal<ChallengeButtonState, NoError>
     let buttonPressedProperty = MutableProperty(())
@@ -30,11 +33,17 @@ class JoinLeaveButtonAttributeProvider: ChallengeButtonStyleProvider {
     let titleSignal: Signal<String, NoError>
     let enabledSignal: Signal<Bool, NoError>
     
-    init(_ challenge: Challenge?) {
+    init(_ challenge: ChallengeProtocol?) {
         challengeUpdatedSignal = challengeUpdatedProperty.signal.map { _ in true }
         
-        let joinableChallengeSignal = challengeProperty.signal.filter(Challenge.isJoinable).map { _ in ChallengeButtonState.join }
-        let leaveableChallengeSignal = challengeProperty.signal.filter({ !Challenge.isJoinable(challenge: $0) }).map { _ in ChallengeButtonState.leave }
+        let joinableChallengeSignal = challengeProperty.signal
+            .filter({ (challenge) -> Bool in
+                return challenge?.isJoinable() == true
+            }).map { _ in ChallengeButtonState.join }
+        let leaveableChallengeSignal = challengeProperty.signal
+            .filter({ (challenge) -> Bool in
+                return challenge?.isJoinable() == false
+            }).map { _ in ChallengeButtonState.leave }
         
         buttonStateSignal = Signal.merge(joinableChallengeSignal, leaveableChallengeSignal).sample(on: triggerStyleProperty.signal)
         
@@ -53,9 +62,9 @@ class JoinLeaveButtonAttributeProvider: ChallengeButtonStyleProvider {
         
         buttonStateSignal.sample(on: buttonPressedProperty.signal).observeValues { [weak self] (state) in
             if state == .join {
-                HRPGManager.shared().join(self?.challengeProperty.value, onSuccess: {
+                self?.socialRepository.joinChallenge(challengeID: self?.challengeProperty.value?.id ?? "").observeCompleted {
                     self?.challengeUpdatedProperty.value = ()
-                }, onError: nil)
+                }
             } else {
                 self?.promptProperty.value = self?.leavePrompt()
             }
@@ -68,14 +77,14 @@ class JoinLeaveButtonAttributeProvider: ChallengeButtonStyleProvider {
         let alert = HabiticaAlertController(title: NSLocalizedString("Leave Challenge?", comment: ""),
                                             message: NSLocalizedString("Do you want to leave the challenge and keep or delete the tasks?", comment: ""))
         alert.addAction(title: NSLocalizedString("Keep tasks", comment: ""), style: .default, handler: { (_) in
-            HRPGManager.shared().leave(self.challengeProperty.value, keepTasks: true, onSuccess: {
+            self.socialRepository.leaveChallenge(challengeID: self.challengeProperty.value?.id ?? "", keepTasks: true).observeCompleted {
                 self.challengeUpdatedProperty.value = ()
-            }, onError: nil)
+            }
         })
         alert.addAction(title: NSLocalizedString("Delete tasks", comment: ""), style: .default, handler: { (_) in
-            HRPGManager.shared().leave(self.challengeProperty.value, keepTasks: false, onSuccess: {
+            self.socialRepository.leaveChallenge(challengeID: self.challengeProperty.value?.id ?? "", keepTasks: false).observeCompleted {
                 self.challengeUpdatedProperty.value = ()
-            }, onError: nil)
+            }
         })
         alert.addAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { (_) in })
         
@@ -97,7 +106,7 @@ class JoinLeaveButtonAttributeProvider: ChallengeButtonStyleProvider {
 }
 
 class PublishButtonAttributeProvider: HRPGButtonAttributeProvider, HRPGButtonModelInputs {
-    let challengeProperty: MutableProperty<Challenge?> = MutableProperty<Challenge?>(nil)
+    let challengeProperty: MutableProperty<ChallengeProtocol?> = MutableProperty<ChallengeProtocol?>(nil)
     
     let buttonStateSignal: Signal<ChallengeButtonState, NoError>
     let buttonPressedProperty = MutableProperty(())
@@ -106,9 +115,15 @@ class PublishButtonAttributeProvider: HRPGButtonAttributeProvider, HRPGButtonMod
     let titleSignal: Signal<String, NoError>
     let enabledSignal: Signal<Bool, NoError>
     
-    init(_ challenge: Challenge?) {
-        let publishableChallengeSignal = challengeProperty.signal.filter(Challenge.shouldBePublishable(challenge:)).map { _ in ChallengeButtonState.publishEnabled }
-        let unpublishableChallengeSignal = challengeProperty.signal.filter(Challenge.shouldBeUnpublishable(challenge:)).map { _ in ChallengeButtonState.publishDisabled }
+    init(_ challenge: ChallengeProtocol?) {
+        let publishableChallengeSignal = challengeProperty.signal
+            .filter({ (challenge) -> Bool in
+                return challenge?.shouldBeUnpublishable() == true
+            }).map { _ in ChallengeButtonState.publishEnabled }
+        let unpublishableChallengeSignal = challengeProperty.signal
+            .filter({ (challenge) -> Bool in
+                return challenge?.shouldBeUnpublishable() == true
+            }).map { _ in ChallengeButtonState.publishDisabled }
         
         buttonStateSignal = Signal.merge(publishableChallengeSignal, unpublishableChallengeSignal).sample(on: triggerStyleProperty.signal)
         
@@ -142,7 +157,7 @@ class PublishButtonAttributeProvider: HRPGButtonAttributeProvider, HRPGButtonMod
 }
 
 class ParticipantsButtonAttributeProvider: HRPGButtonAttributeProvider, HRPGButtonModelInputs {
-    let challengeProperty: MutableProperty<Challenge?> = MutableProperty<Challenge?>(nil)
+    let challengeProperty: MutableProperty<ChallengeProtocol?> = MutableProperty<ChallengeProtocol?>(nil)
     
     let buttonStateSignal: Signal<ChallengeButtonState, NoError>
     let buttonPressedProperty = MutableProperty(())
@@ -151,8 +166,15 @@ class ParticipantsButtonAttributeProvider: HRPGButtonAttributeProvider, HRPGButt
     let titleSignal: Signal<String, NoError>
     let enabledSignal: Signal<Bool, NoError>
     
-    init(_ challenge: Challenge) {
-        let participantsViewableSignal = challengeProperty.signal.filter(Challenge.isOwner(of:)).filter(Challenge.isPublished(_:)).filter({ !Challenge.isJoinable(challenge: $0) }).map { _ in ChallengeButtonState.viewParticipants }
+    init(_ challenge: ChallengeProtocol) {
+        let participantsViewableSignal = challengeProperty.signal
+            .filter({ (challenge) -> Bool in
+                return challenge?.isOwner() == true && challenge?.isPublished() == true
+            })
+            .filter({ (challenge) -> Bool in
+                return challenge?.isJoinable() == true
+            })
+            .map { _ in ChallengeButtonState.viewParticipants }
         
         buttonStateSignal = participantsViewableSignal.sample(on: triggerStyleProperty.signal)
         
@@ -178,7 +200,7 @@ class ParticipantsButtonAttributeProvider: HRPGButtonAttributeProvider, HRPGButt
 }
 
 class EndChallengeButtonAttributeProvider: HRPGButtonAttributeProvider, HRPGButtonModelInputs {
-    let challengeProperty: MutableProperty<Challenge?> = MutableProperty<Challenge?>(nil)
+    let challengeProperty: MutableProperty<ChallengeProtocol?> = MutableProperty<ChallengeProtocol?>(nil)
     
     let buttonStateSignal: Signal<ChallengeButtonState, NoError>
     let buttonPressedProperty = MutableProperty(())
@@ -187,8 +209,12 @@ class EndChallengeButtonAttributeProvider: HRPGButtonAttributeProvider, HRPGButt
     let titleSignal: Signal<String, NoError>
     let enabledSignal: Signal<Bool, NoError>
     
-    init(_ challenge: Challenge) {
-        let endableSignal = challengeProperty.signal.filter(Challenge.isOwner(of:)).map { _ in ChallengeButtonState.endChallenge }
+    init(_ challenge: ChallengeProtocol) {
+        let endableSignal = challengeProperty.signal
+            .filter({ (challenge) -> Bool in
+                return challenge?.isOwner() == true
+            })
+            .map { _ in ChallengeButtonState.endChallenge }
         
         buttonStateSignal = endableSignal.sample(on: triggerStyleProperty.signal)
         

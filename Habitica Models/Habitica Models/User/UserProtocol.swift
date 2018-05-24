@@ -32,6 +32,7 @@ public protocol UserProtocol: AvatarProtocol {
     var authentication: AuthenticationProtocol? { get set }
     var purchased: PurchasedProtocol? { get set }
     var party: UserPartyProtocol? { get set }
+    var challenges: [ChallengeMembershipProtocol] { get set }
 }
 
 public extension UserProtocol {

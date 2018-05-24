@@ -27,6 +27,7 @@ public class APIUser: UserProtocol, Decodable {
     public var inbox: InboxProtocol?
     public var authentication: AuthenticationProtocol?
     public var purchased: PurchasedProtocol?
+    public var challenges: [ChallengeMembershipProtocol]
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -45,6 +46,7 @@ public class APIUser: UserProtocol, Decodable {
         case authentication = "auth"
         case purchased
         case party
+        case challenges
     }
     
     public required init(from decoder: Decoder) throws {
@@ -68,5 +70,9 @@ public class APIUser: UserProtocol, Decodable {
         authentication = try? values.decode(APIAuthentication.self, forKey: .authentication)
         purchased = try? values.decode(APIPurchased.self, forKey: .purchased)
         party = try? values.decode(APIUserParty.self, forKey: .party)
+        let challengeList = (try? values.decode([String].self, forKey: .challenges)) ?? []
+        challenges = challengeList.map { challengeID in
+            return APIChallengeMembership(challengeID: challengeID)
+        }
     }
 }

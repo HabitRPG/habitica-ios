@@ -39,7 +39,6 @@
 #import "Shop.h"
 #import "UIView+ScreenShot.h"
 #import "HRPGNotification.h"
-#import "HRPGNotificationManager.h"
 #import "ShopItem+CoreDataClass.h"
 #import "Habitica-Swift.h"
 #import <Keys/HabiticaKeys.h>
@@ -47,7 +46,6 @@
 
 @interface HRPGManager ()
 @property HRPGNetworkIndicatorController *networkIndicatorController;
-@property HRPGNotificationManager *notificationManager;
 @property ConfigRepository *configRepository;
 @property NSString *lastDeletedTaskID;
 @end
@@ -98,7 +96,6 @@ static dispatch_once_t onceToken;
 }
 
 - (void)loadObjectManager:(RKManagedObjectStore *)existingManagedObjectStore {
-    self.notificationManager = [[HRPGNotificationManager alloc] initWithSharedManager:self];
     self.configRepository = [[ConfigRepository alloc] init];
     NSError *error = nil;
     NSURL *modelURL =
@@ -5857,7 +5854,6 @@ static dispatch_once_t onceToken;
 }
 
 - (void)handleNotifications:(NSArray *)notifications {
-    [self.notificationManager enqueueNotifications:notifications];
 }
 
 - (void)handleNetworkError:(RKObjectRequestOperation *)operation withError:(NSError *)error {

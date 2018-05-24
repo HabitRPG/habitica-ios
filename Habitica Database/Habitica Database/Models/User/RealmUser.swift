@@ -189,6 +189,25 @@ class RealmUser: Object, UserProtocol {
     @objc dynamic var realmParty: RealmUserParty?
     
     var realmTags = List<RealmTag>()
+    
+    var challenges: [ChallengeMembershipProtocol] {
+        get {
+            return realmChallenges.map({ (tag) -> ChallengeMembershipProtocol in
+                return tag
+            })
+        }
+        set {
+            realmChallenges.removeAll()
+            newValue.forEach { (challenge) in
+                if let realmChallenge = challenge as? RealmChallengeMembership {
+                    realmChallenges.append(realmChallenge)
+                } else {
+                    realmChallenges.append(RealmChallengeMembership(userID: id, protocolObject: challenge))
+                }
+            }
+        }
+    }
+    var realmChallenges = List<RealmChallengeMembership>()
     var needsCron: Bool = false
     var lastCron: Date?
     

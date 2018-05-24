@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Habitica_Models
 
 class ChallengeDetailInfoTableViewCell: UITableViewCell, ChallengeConfigurable {
     @IBOutlet weak var challengeTitleLabel: UILabel!
@@ -21,31 +22,31 @@ class ChallengeDetailInfoTableViewCell: UITableViewCell, ChallengeConfigurable {
         rewardCurrencyCountView.viewSize = .large
     }
     
-    func configure(with challenge: Challenge) {
+    func configure(with challenge: ChallengeProtocol) {
         challengeTitleLabel.text = challenge.name?.unicodeEmoji
-        rewardCurrencyCountView.amount = challenge.prize?.intValue ?? 0
-        participantsLabel.text = "\(challenge.memberCount?.intValue ?? 0)"
+        rewardCurrencyCountView.amount = challenge.prize
+        participantsLabel.text = "\(challenge.memberCount)"
         
         tagHolderView.translatesAutoresizingMaskIntoConstraints = false
         addTags(for: challenge)
     }
     
-    func addTags(for challenge: Challenge) {
+    func addTags(for challenge: ChallengeProtocol) {
         for view in tagHolderView.subviews {
             view.removeFromSuperview()
         }
         
         var tags: [UILabel] = []
         
-        if Challenge.isOwner(of: challenge) {
+        if challenge.isOwner() {
             tags.append(ownerTag())
         }
-        if let isOfficial = challenge.official?.boolValue, isOfficial {
+        if challenge.official {
             tags.append(officialTag())
         }
-        if challenge.user != nil {
+        /*if challenge.user != nil {
             tags.append(joinedTag())
-        }
+        }*/
         if let shortName = challenge.shortName {
             tags.append(nameTag(shortName))
         }

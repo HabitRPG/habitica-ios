@@ -30,6 +30,9 @@
 		291448A6208A3C7100F3A6B5 /* CustomizationLocalRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291448A5208A3C7000F3A6B5 /* CustomizationLocalRepository.swift */; };
 		291DE97C209B44BB0073182A /* RealmQuestParticipant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291DE97B209B44BB0073182A /* RealmQuestParticipant.swift */; };
 		291E95B3209887BF006EE585 /* RealmUserParty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291E95B2209887BF006EE585 /* RealmUserParty.swift */; };
+		2927269E20B6FE31009DD08A /* RealmChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2927269D20B6FE31009DD08A /* RealmChallenge.swift */; };
+		292726A020B6FE50009DD08A /* RealmChallengeCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2927269F20B6FE50009DD08A /* RealmChallengeCategory.swift */; };
+		292726B220B7043C009DD08A /* RealmChallengeMembership.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292726B120B7043C009DD08A /* RealmChallengeMembership.swift */; };
 		292DEE3F204D9D810086D5F7 /* Habitica_API_Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE40204D9D810086D5F7 /* Habitica_API_Client.framework */; };
 		292DEE41204D9D860086D5F7 /* Habitica_Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE42204D9D860086D5F7 /* Habitica_Models.framework */; };
 		292DEE66204DCB010086D5F7 /* BaseLocalRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE65204DCB010086D5F7 /* BaseLocalRepository.swift */; };
@@ -123,6 +126,9 @@
 		291448A5208A3C7000F3A6B5 /* CustomizationLocalRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationLocalRepository.swift; sourceTree = "<group>"; };
 		291DE97B209B44BB0073182A /* RealmQuestParticipant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmQuestParticipant.swift; sourceTree = "<group>"; };
 		291E95B2209887BF006EE585 /* RealmUserParty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmUserParty.swift; sourceTree = "<group>"; };
+		2927269D20B6FE31009DD08A /* RealmChallenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmChallenge.swift; sourceTree = "<group>"; };
+		2927269F20B6FE50009DD08A /* RealmChallengeCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmChallengeCategory.swift; sourceTree = "<group>"; };
+		292726B120B7043C009DD08A /* RealmChallengeMembership.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmChallengeMembership.swift; sourceTree = "<group>"; };
 		292DEE40204D9D810086D5F7 /* Habitica_API_Client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_API_Client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		292DEE42204D9D860086D5F7 /* Habitica_Models.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_Models.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		292DEE65204DCB010086D5F7 /* BaseLocalRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseLocalRepository.swift; sourceTree = "<group>"; };
@@ -255,7 +261,10 @@
 				292F967720722BB300804151 /* RealmChatMessageReaction.swift */,
 				292F967920722C4B00804151 /* RealmUserStyle.swift */,
 				290B6246207397E1007287C4 /* RealmGroupMembership.swift */,
+				292726B120B7043C009DD08A /* RealmChallengeMembership.swift */,
 				290B628C207E174C007287C4 /* RealmMember.swift */,
+				2927269D20B6FE31009DD08A /* RealmChallenge.swift */,
+				2927269F20B6FE50009DD08A /* RealmChallengeCategory.swift */,
 			);
 			path = Group;
 			sourceTree = "<group>";
@@ -618,6 +627,7 @@
 				295E9DF820B479A700D58D45 /* RealmQuestColors.swift in Sources */,
 				291448A2208A3ACD00F3A6B5 /* RealmCustomization.swift in Sources */,
 				2902797B2058107E006DACB9 /* RealmBuff.swift in Sources */,
+				292726A020B6FE50009DD08A /* RealmChallengeCategory.swift in Sources */,
 				2974BDA7208E1A5100EC1A25 /* RealmSubscriptionPlan.swift in Sources */,
 				295611182057C8EB00D9711A /* RealmItem.swift in Sources */,
 				298CB21520AF0B3A006DA349 /* RealmQuestDropItem.swift in Sources */,
@@ -651,6 +661,7 @@
 				295611222057D60F00D9711A /* RealmQuest.swift in Sources */,
 				2956111E2057C9B100D9711A /* RealmHatchingPotion.swift in Sources */,
 				290B62562073D99E007287C4 /* RealmInbox.swift in Sources */,
+				292726B220B7043C009DD08A /* RealmChallengeMembership.swift in Sources */,
 				290C3048206D47A30066AF5B /* SocialLocalRepository.swift in Sources */,
 				291448A6208A3C7100F3A6B5 /* CustomizationLocalRepository.swift in Sources */,
 				2902798B20583479006DACB9 /* RealmQuestState.swift in Sources */,
@@ -674,6 +685,7 @@
 				292F967A20722C4B00804151 /* RealmUserStyle.swift in Sources */,
 				29323E1D2050537700AC6D6F /* UserLocalRepository.swift in Sources */,
 				295611142056ECA400D9711A /* ContentLocalRepository.swift in Sources */,
+				2927269E20B6FE31009DD08A /* RealmChallenge.swift in Sources */,
 				292DEE8A204E49600086D5F7 /* RealmReminder.swift in Sources */,
 				29323E412052145900AC6D6F /* RealmProfile.swift in Sources */,
 				29A6B86C20690DF00086B2A6 /* RealmWeekRepeat.swift in Sources */,

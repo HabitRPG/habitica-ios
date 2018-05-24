@@ -69,7 +69,7 @@ class GuildDetailViewController: GroupDetailViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == StoryboardSegue.Social.challengesSegue.rawValue, let groupID = self.group?.id {
             let challengesViewController = segue.destination as? ChallengeTableViewController
-            challengesViewController?.shownGuilds = [groupID]
+            challengesViewController?.dataSource.shownGuilds = [groupID]
             challengesViewController?.showOnlyUserChallenges = false
         } else if segue.identifier == StoryboardSegue.Social.userProfileSegue.rawValue, let leaderID = self.guildLeaderID {
             let profileViewController = segue.destination as? HRPGUserProfileViewController
