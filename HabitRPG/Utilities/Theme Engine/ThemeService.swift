@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Instabug
 
 @objc
 public class ThemeService: NSObject {
@@ -53,6 +54,8 @@ public class ThemeService: NSObject {
         if #available(iOS 10.0, *) {
             UITabBarItem.appearance().badgeColor = theme.tintColor
         }
+        
+        Instabug.setPrimaryColor(theme.tintColor)
         
         // The tintColor will trickle down to each view
         if let window = UIApplication.shared.keyWindow {

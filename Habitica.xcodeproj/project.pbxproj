@@ -514,7 +514,7 @@
 		D9D17CCE1E6736B500AD9232 /* ChallengeDetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CCD1E6736B500AD9232 /* ChallengeDetailHeaderView.xib */; };
 		D9D17CD01E673CCC00AD9232 /* UIView-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D17CCF1E673CCC00AD9232 /* UIView-Extensions.swift */; };
 		D9D17CD21E6898E400AD9232 /* HabitTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CD11E6898E400AD9232 /* HabitTableViewCell.xib */; };
-		D9D17CD41E68995000AD9232 /* (null) in Resources */ = {isa = PBXBuildFile; };
+		D9D17CD41E68995000AD9232 /* BuildFile in Resources */ = {isa = PBXBuildFile; };
 		D9D17CD61E6899A800AD9232 /* ToDoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CD51E6899A800AD9232 /* ToDoTableViewCell.xib */; };
 		D9D17CD81E6899F100AD9232 /* HRPGRewardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CD71E6899F100AD9232 /* HRPGRewardTableViewCell.xib */; };
 		D9D17CDA1E69C68000AD9232 /* ChallengeDetailAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CD91E69C68000AD9232 /* ChallengeDetailAlert.xib */; };
@@ -3020,15 +3020,15 @@
 				49E378532009542C00E0DA3D /* ChallengeTableViewHeaderView.xib in Resources */,
 				498E4D001FA17C1A006933FF /* ChallengeCategoriesTableViewCell.xib in Resources */,
 				2914487A20864A3300F3A6B5 /* EquipmentOverviewView.xib in Resources */,
-				D9D17CD41E68995000AD9232 /* (null) in Resources */,
+				D9D17CD41E68995000AD9232 /* BuildFile in Resources */,
 				29028C442037132A00B7F704 /* SystemMessageTableViewCell.xib in Resources */,
 				29AAA1611F2B597400029737 /* SpeechbubbleView.xib in Resources */,
 				29FC885E2018D858002B3D3F /* WorldBossDescription.xib in Resources */,
 				293BB4A31FD07603003B6F4F /* StatsSliderView.xib in Resources */,
-				D9D17CD41E68995000AD9232 /* (null) in Resources */,
+				D9D17CD41E68995000AD9232 /* BuildFile in Resources */,
 				29E16311200E5FEA00685640 /* QuestProgressView.xib in Resources */,
 				2902799A20583E83006DACB9 /* OnePasswordExtension.strings in Resources */,
-				D9D17CD41E68995000AD9232 /* (null) in Resources */,
+				D9D17CD41E68995000AD9232 /* BuildFile in Resources */,
 				D9BB45CA1E76DF260002AE2E /* DailyTableViewCell.xib in Resources */,
 				D9D17CD81E6899F100AD9232 /* HRPGRewardTableViewCell.xib in Resources */,
 				29B6AD4A1F2A0C9800AC8878 /* LoginEntryView.xib in Resources */,
@@ -3273,6 +3273,10 @@
 				"${BUILT_PRODUCTS_DIR}/FLEX/FLEX.framework",
 				"${BUILT_PRODUCTS_DIR}/FunkyNetwork/FunkyNetwork.framework",
 				"${BUILT_PRODUCTS_DIR}/ISO8601DateFormatterValueTransformer/ISO8601DateFormatterValueTransformer.framework",
+				"${PODS_ROOT}/Instabug/Instabug.framework",
+				"${PODS_ROOT}/Instabug/Instabug.framework.dSYM",
+				"${PODS_ROOT}/Instabug/InstabugCore.framework",
+				"${PODS_ROOT}/Instabug/InstabugCore.framework.dSYM",
 				"${BUILT_PRODUCTS_DIR}/KLCPopup/KLCPopup.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
 				"${BUILT_PRODUCTS_DIR}/Keys/Keys.framework",
@@ -3283,6 +3287,7 @@
 				"${BUILT_PRODUCTS_DIR}/OHHTTPStubs/OHHTTPStubs.framework",
 				"${BUILT_PRODUCTS_DIR}/PinLayout/PinLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/PopupDialog/PopupDialog.framework",
+				"${BUILT_PRODUCTS_DIR}/Prelude/Prelude.framework",
 				"${BUILT_PRODUCTS_DIR}/RKValueTransformers/RKValueTransformers.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveSwift/ReactiveSwift.framework",
@@ -3316,6 +3321,10 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLEX.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FunkyNetwork.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ISO8601DateFormatterValueTransformer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Instabug.framework",
+				"${DWARF_DSYM_FOLDER_PATH}/Instabug.framework.dSYM",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/InstabugCore.framework",
+				"${DWARF_DSYM_FOLDER_PATH}/InstabugCore.framework.dSYM",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KLCPopup.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Keys.framework",
@@ -3326,6 +3335,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OHHTTPStubs.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PinLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PopupDialog.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Prelude.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RKValueTransformers.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveSwift.framework",

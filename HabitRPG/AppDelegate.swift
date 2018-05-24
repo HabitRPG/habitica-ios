@@ -18,6 +18,7 @@ import Habitica_Models
 import RealmSwift
 import ReactiveSwift
 import Result
+import Instabug
 
 //This will eventually replace the old ObjC AppDelegate once that code is ported to swift.
 //Reason for adding this class now is mostly, to configure PopupDialogs dim color.
@@ -42,6 +43,20 @@ class HabiticaAppDelegate: NSObject {
     @objc
     func setupLogging() {
         Fabric.with([Crashlytics.self])
+        let keys = HabiticaKeys()
+        let instabugKey = HabiticaAppDelegate.isRunningLive() ? keys.instabugLive : keys.instabugBeta
+        Instabug.start(withToken: instabugKey, invocationEvent: .shake)
+        Instabug.setIntroMessageEnabled(false)
+        Instabug.setPromptOptionsEnabledWithBug(true, feedback: true, chat: false)
+        Instabug.setNetworkLogRequestObfuscationHandler { (request) -> URLRequest in
+            if var headers = request.allHTTPHeaderFields {
+                headers["x-api-user"] = "USERID"
+                headers["x-api-key"] = "API KEY"
+            }
+            return request
+        }
+        Instabug.setReproStepsMode(.enabledWithNoScreenshots)
+        Instabug.setCommentFieldRequired(true)
     }
     
     @objc
@@ -246,5 +261,20 @@ class HabiticaAppDelegate: NSObject {
                 completed(false)
             }
         })
+    }
+    
+    @objc
+    static func isRunningLive() -> Bool {
+        #if targetEnvironment(simulator)
+        return false
+        #else
+        let isRunningTestFlightBeta  = Bundle.main.appStoreReceiptURL?.lastPathComponent == "sandboxReceipt"
+        let hasEmbeddedMobileProvision = Bundle.main.path(forResource: "embedded", ofType: "mobileprovision") != nil
+        if isRunningTestFlightBeta || hasEmbeddedMobileProvision {
+            return false
+        } else {
+            return true
+        }
+        #endif
     }
 }

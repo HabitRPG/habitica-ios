@@ -10,6 +10,7 @@ import Foundation
 import KeychainAccess
 import Crashlytics
 import Amplitude_iOS
+import Instabug
 import Habitica_API_Client
 
 class AuthenticationManager: NSObject {
@@ -35,6 +36,7 @@ class AuthenticationManager: NSObject {
                 Crashlytics.sharedInstance().setUserIdentifier(newUserId)
                 Crashlytics.sharedInstance().setUserName(newUserId)
                 Amplitude.instance().setUserId(newUserId)
+                Instabug.setUserAttribute(newUserId ?? "", withKey: "userID")
             }
         }
     }

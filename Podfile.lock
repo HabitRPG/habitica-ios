@@ -9,17 +9,24 @@ PODS:
     - Bolts/Tasks
   - Bolts/Tasks (1.9.0)
   - DateTools (2.0.0)
-  - Down (0.5.1)
+  - Down (0.5.2)
   - DynamicBlurView (2.0.2)
   - Eureka (4.1.1)
-  - FBSDKCoreKit (4.32.0):
+  - FBSDKCoreKit (4.33.0):
     - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.32.0):
+  - FBSDKLoginKit (4.33.0):
     - FBSDKCoreKit
   - FLEX (2.4.0)
-  - FunkyNetwork (0.1.4):
+  - FunkyNetwork (0.1.5):
     - OHHTTPStubs/Swift
+    - Prelude (~> 3.0)
     - ReactiveSwift
+  - Instabug (7.13):
+    - Instabug/Instabug (= 7.13)
+    - Instabug/InstabugCore (= 7.13)
+  - Instabug/Instabug (7.13):
+    - Instabug/InstabugCore
+  - Instabug/InstabugCore (7.13)
   - iOSSnapshotTestCase (3.0.0):
     - iOSSnapshotTestCase/SwiftSupport (= 3.0.0)
   - iOSSnapshotTestCase/Core (3.0.0)
@@ -29,7 +36,7 @@ PODS:
     - RKValueTransformers (~> 1.1.0)
   - KeychainAccess (3.1.1)
   - Keys (1.0.0)
-  - Kingfisher (4.7.0)
+  - Kingfisher (4.8.0)
   - KLCPopup (1.0)
   - Masonry (1.1.0)
   - MRProgress (0.8.3):
@@ -78,6 +85,7 @@ PODS:
   - PinLayout (1.7.3)
   - PopupDialog (0.7.1):
     - DynamicBlurView (~> 2.0)
+  - Prelude (3.0.0)
   - Quick (1.2.0)
   - ReactiveCocoa (7.2.0):
     - ReactiveSwift (~> 3.1)
@@ -113,7 +121,7 @@ PODS:
   - SOCKit (1.1)
   - SwiftGen (5.3.0)
   - SwiftLint (0.25.1)
-  - SwiftyStoreKit (0.13.1)
+  - SwiftyStoreKit (0.13.2)
   - TransitionKit (2.2.1)
   - VTAcknowledgementsViewController (1.4)
   - XLForm (4.0.0)
@@ -136,6 +144,7 @@ DEPENDENCIES:
   - FBSDKLoginKit (~> 4)
   - FLEX (~> 2.0)
   - FunkyNetwork
+  - Instabug
   - iOSSnapshotTestCase
   - KeychainAccess
   - Keys (from `Pods/CocoaPodsKeys`)
@@ -178,18 +187,19 @@ SPEC CHECKSUMS:
   AppAuth: 3f4f1d6d85ad631d0bbf15ffcdc10c447face97a
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   DateTools: 933ac9c490f21f92127cf690ccd8c397e0126caf
-  Down: 6ace44ecec0c408826342ed420002f39a18e38c3
+  Down: 587371ad58002b06023d9c602519216862c3acbc
   DynamicBlurView: aa6db4defc6e537eb86fc5e58dd3991666178399
   Eureka: b88fb930e42c79f8c03c373d0fcdc28c1d6c50ed
-  FBSDKCoreKit: 55d7f2ac45d9c4b9b6119f4e43900fe84b9b7b1b
-  FBSDKLoginKit: 32ac05c2a59952c363c2e85aafa8f73ba93bcbad
+  FBSDKCoreKit: 572b047a7e029bc44542bcf8a59414e7ff2b543e
+  FBSDKLoginKit: 88cb456349cfb3b554427ce4f8b43729d85dfb40
   FLEX: bd1a39e55b56bb413b6f1b34b3c10a0dc44ef079
-  FunkyNetwork: e550cee2c80af79399bf66c2cb55ac5c4ce103f8
+  FunkyNetwork: 64a440e313433d1d5e1fd0b248d0ca3b022decf3
+  Instabug: 81ccd646e7fd2e3a243c5e61ae6af69c72328373
   iOSSnapshotTestCase: 23984ffe05289728d646cbb6a7a10b4fb1c93440
   ISO8601DateFormatterValueTransformer: 52da467d6ec899d6aedda8e48280ac92e8ee97e6
   KeychainAccess: 7bd430028059754a3debab3cfc0bd1fc7fb85df3
   Keys: af65e23feef2a047b3277b1ef0399f1209ef9d46
-  Kingfisher: da6b005aa96d37698e3e4f1ccfe96a5b9bbf27d6
+  Kingfisher: 976d828df2b24834c6a3f2fc4d82cdbd26552be1
   KLCPopup: 76c5a19227977f1e53d85236f9ef42257c168d98
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MRProgress: 16de7cc9f347e8846797a770db102a323fe7ef09
@@ -198,6 +208,7 @@ SPEC CHECKSUMS:
   OHHTTPStubs: 1e21c7d2c084b8153fc53d48400d8919d2d432d0
   PinLayout: 0c2e68dba036a291ca9278aa8b799f58506f2a6d
   PopupDialog: 39598b7d41719f5c025b4b70e62728bae7734fef
+  Prelude: fe4cc0fd961d34edf48fe6b04d05c863449efb0a
   Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
   ReactiveCocoa: 476dae7ca790f40d30d186a1bd7ebae4290395d5
   ReactiveSwift: 5b26d2e988fe0eed2daf48c4054d1de74db50184
@@ -211,7 +222,7 @@ SPEC CHECKSUMS:
   SOCKit: c7376ac262bea9115b8f749358f762522a47d392
   SwiftGen: 4379bd3640b0a212a0f6ea3c494adba385513d10
   SwiftLint: ce933681be10c3266e82576dad676fa815a602e9
-  SwiftyStoreKit: c36bb7841dd51a485ce5c38abf9e96fba988741f
+  SwiftyStoreKit: b7563505440a68c9d9fa70bc43d8a97015519409
   TransitionKit: 9ceccda4cd0cdc0a05ef85eb235e5a3292c3c250
   VTAcknowledgementsViewController: d62bb400ca68e240680906bcfa2a2b380d39b30f
   XLForm: 04110197c12187dd28a6c7295d3d8b95f4fdb4de
@@ -219,6 +230,6 @@ SPEC CHECKSUMS:
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: c6295b4b184c57d25fc264ededc4fc8f35ea8223
+PODFILE CHECKSUM: 6eca3495cfde23a736bcb53fc3921ed203d4b642
 
 COCOAPODS: 1.4.0

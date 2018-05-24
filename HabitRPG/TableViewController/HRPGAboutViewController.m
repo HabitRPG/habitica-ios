@@ -10,6 +10,7 @@
 #import "VTAcknowledgementsViewController.h"
 #import <sys/utsname.h>
 #import "Habitica-Swift.h"
+#import <Instabug/Instabug.h>
 
 @interface HRPGAboutViewController ()
 
@@ -98,30 +99,39 @@
             break;
         }
         case 1: {
-            if ([MFMailComposeViewController canSendMail]) {
-                MFMailComposeViewController *composeViewController =
+            if ([HabiticaAppDelegate isRunningLive]) {
+                if ([MFMailComposeViewController canSendMail]) {
+                    MFMailComposeViewController *composeViewController =
                     [[MFMailComposeViewController alloc] initWithNibName:nil bundle:nil];
-                [composeViewController setMailComposeDelegate:self];
-                [composeViewController setToRecipients:@[ self.supportEmail ] ];
-                [composeViewController setSubject:@"[iOS] Feedback"];
-                [self presentViewController:composeViewController animated:YES completion:nil];
+                    [composeViewController setMailComposeDelegate:self];
+                    [composeViewController setToRecipients:@[ self.supportEmail ] ];
+                    [composeViewController setSubject:@"[iOS] Feedback"];
+                    [self presentViewController:composeViewController animated:YES completion:nil];
+                } else {
+                    [self showNoEmailAlert];
+                }
             } else {
-                [self showNoEmailAlert];
+                [Instabug invokeWithInvocationMode:IBGInvocationModeNewBug];
             }
+            
             break;
         }
         case 2: {
-            if ([MFMailComposeViewController canSendMail]) {
-                MFMailComposeViewController *composeViewController =
+            if ([HabiticaAppDelegate isRunningLive]) {
+                if ([MFMailComposeViewController canSendMail]) {
+                    MFMailComposeViewController *composeViewController =
                     [[MFMailComposeViewController alloc] initWithNibName:nil bundle:nil];
-                [composeViewController setMailComposeDelegate:self];
-                [composeViewController setToRecipients:@[ self.supportEmail ]];
-                [composeViewController setSubject:@"[iOS] Bugreport"];
-                [composeViewController setMessageBody:[self createDeviceInformationString]
-                                               isHTML:NO];
-                [self presentViewController:composeViewController animated:YES completion:nil];
+                    [composeViewController setMailComposeDelegate:self];
+                    [composeViewController setToRecipients:@[ self.supportEmail ]];
+                    [composeViewController setSubject:@"[iOS] Bugreport"];
+                    [composeViewController setMessageBody:[self createDeviceInformationString]
+                                                   isHTML:NO];
+                    [self presentViewController:composeViewController animated:YES completion:nil];
+                } else {
+                    [self showNoEmailAlert];
+                }
             } else {
-                [self showNoEmailAlert];
+                [Instabug invokeWithInvocationMode:IBGInvocationModeNewFeedback];
             }
             break;
         }

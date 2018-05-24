@@ -73,6 +73,8 @@ target 'Habitica' do
 
   pod 'SwiftGen'
 
+  pod 'Instabug'
+
   target 'HabiticaTests' do
     inherit! :search_paths
     test_pods
