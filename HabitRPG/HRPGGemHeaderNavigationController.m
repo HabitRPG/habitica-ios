@@ -65,6 +65,8 @@
     [self.view insertSubview:self.backgroundView belowSubview:self.upperBackgroundView];
     
     self.headerYPosition = [self bgViewOffset];
+    
+    [[PurchaseHandler shared] completionHandler];
 }
 
 - (void)viewWillLayoutSubviews {

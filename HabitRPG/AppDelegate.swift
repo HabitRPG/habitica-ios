@@ -68,7 +68,9 @@ class HabiticaAppDelegate: NSObject {
     
     @objc
     func setupPurchaseHandling() {
-        PurchaseHandler.shared.completionHandler()
+        if HabiticaAppDelegate.isRunningLive() {
+            PurchaseHandler.shared.completionHandler()
+        }
     }
     
     @objc
