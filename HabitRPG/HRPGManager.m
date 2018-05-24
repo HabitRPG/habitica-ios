@@ -2711,10 +2711,6 @@ static dispatch_once_t onceToken;
                 }
             }
             [self setTimezoneOffset];
-            if (![[defaults stringForKey:@"contentLanguage"]
-                    isEqualToString:self.user.preferences.language]) {
-                [self fetchContent:nil onError:nil];
-            }
             if ([defaults stringForKey:@"PushNotificationDeviceToken"]) {
                 NSString *token = [defaults stringForKey:@"PushNotificationDeviceToken"];
                 bool addDevice = YES;
@@ -2735,20 +2731,6 @@ static dispatch_once_t onceToken;
             
             if (fetchedUser.subscriptionPlan.isActive) {
                 [self updateMysteryItemCount];
-            }
-            if (includeTasks) {
-                [self fetchTasks:^() {
-                    [YesterdailiesDialogView showDialog];
-                    if (successBlock) {
-                        successBlock();
-                    }
-                }onError:errorBlock];
-            } else {
-                [YesterdailiesDialogView showDialog];
-                [[self getManagedObjectContext] saveToPersistentStore:&executeError];
-                if (successBlock) {
-                    successBlock();
-                }
             }
             self.user = fetchedUser;
             

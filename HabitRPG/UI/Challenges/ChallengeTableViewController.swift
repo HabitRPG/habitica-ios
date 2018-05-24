@@ -185,7 +185,7 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate,
         var searchComponents = [String]()
 
         if self.showOwned != self.showNotOwned {
-            let userId = HRPGManager.shared().getUser().id ?? ""
+            let userId = HRPGManager.shared().getUser()?.id ?? ""
             if self.showOwned {
                 searchComponents.append("leaderId == \'\(userId)\'")
             } else {
@@ -209,7 +209,7 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate,
             }
         }
         if self.showOnlyUserChallenges {
-            let userId = HRPGManager.shared().getUser().id ?? ""
+            let userId = HRPGManager.shared().getUser()?.id ?? ""
             searchComponents.append("user.id == \'\(userId)\'")
         }
 

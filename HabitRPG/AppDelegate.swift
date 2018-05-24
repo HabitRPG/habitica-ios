@@ -103,7 +103,9 @@ class HabiticaAppDelegate: NSObject {
     
     @objc
     func setupUserManager() {
-        UserManager.shared.beginListening()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            UserManager.shared.beginListening()
+        }
     }
     
     @objc

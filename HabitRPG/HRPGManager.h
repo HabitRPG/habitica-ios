@@ -170,7 +170,7 @@
 
 - (void)setCredentials;
 
-- (User *)getUser;
+- (User * _Nullable)getUser;
 
 - (void)getImage:(NSString *)imageName
       withFormat:(NSString *)format

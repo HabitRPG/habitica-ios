@@ -103,11 +103,13 @@ class UserManager: NSObject {
     
     private func updateReminderNotifications(reminders: [ReminderProtocol], changes: ReactiveChangeset) {
         if changes.deleted.count == 0 && changes.inserted.count == 0 {
-            removeReminderNotifications(ids: changes.updated.map({ (index) -> String in
-                return reminders[index].id ?? ""
-            }))
+            let sharedApplication = UIApplication.shared
+            let existingNotifications = sharedApplication.scheduledLocalNotifications ?? []
             for index in changes.updated {
-                scheduleNotifications(reminder: reminders[index])
+                let notificationsForReminder = existingNotifications.filter { (notification) -> Bool in
+                    return (notification.userInfo?["ID"] as? String ?? "") == reminders[index].id
+                }
+                scheduleNotifications(reminder: reminders[index], existingNotifications: notificationsForReminder)
             }
         } else {
             removeAllReminderNotifications()
@@ -135,28 +137,36 @@ class UserManager: NSObject {
         }
     }
     
-    private func scheduleNotifications(reminder: ReminderProtocol) {
+    private func scheduleNotifications(reminder: ReminderProtocol, existingNotifications: [UILocalNotification] = []) {
         guard let task = reminder.task else {
             return
         }
         if task.completed || reminder.id == nil || reminder.id == "" {
             return
         }
+        var newNotifications = [UILocalNotification?]()
         if task.type == TaskType.daily.rawValue {
             for day in 0...6 {
                 let checkedDate = Date(timeIntervalSinceNow: TimeInterval(day * 86400))
                 if task.dueOn(date: checkedDate) {
-                    scheduleForDay(reminder: reminder, date: checkedDate, atTime: reminder.time)
+                    newNotifications.append(scheduleForDay(reminder: reminder, date: checkedDate, atTime: reminder.time, existingNotifications: existingNotifications))
                 }
             }
         } else if task.type == TaskType.todo.rawValue, let time = reminder.time {
             if time > Date() {
-                scheduleForDay(reminder: reminder, date: time)
+                newNotifications.append(scheduleForDay(reminder: reminder, date: time))
+            }
+        }
+        let sharedApplication = UIApplication.shared
+        existingNotifications.forEach { (oldNotification) in
+            if !newNotifications.contains(oldNotification) {
+                print("Cancelled Notification for task", reminder.task?.text ?? "", " at time ", oldNotification.fireDate)
+                sharedApplication.cancelLocalNotification(oldNotification)
             }
         }
     }
     
-    private func scheduleForDay(reminder: ReminderProtocol, date: Date, atTime: Date? = nil) {
+    private func scheduleForDay(reminder: ReminderProtocol, date: Date, atTime: Date? = nil, existingNotifications: [UILocalNotification] = []) -> UILocalNotification? {
         var fireDate = date
         if let atTime = atTime {
             let calendar = Calendar.current
@@ -171,8 +181,15 @@ class UserManager: NSObject {
         }
         
         if fireDate < Date() {
-            return
+            return nil
         }
+        
+        if let notification = existingNotifications.first(where: { (notification) -> Bool in
+            return notification.fireDate == fireDate && notification.alertBody == reminder.task?.text
+        }) {
+            return notification
+        }
+        
         let localNotification = UILocalNotification()
         localNotification.fireDate = fireDate
         localNotification.alertBody = reminder.task?.text
@@ -190,5 +207,6 @@ class UserManager: NSObject {
         localNotification.category = "completeCategory"
         UIApplication.shared.scheduleLocalNotification(localNotification)
         print("Scheduled Notification for task", reminder.task?.text ?? "", " at time ", fireDate)
+        return localNotification
     }
 }
