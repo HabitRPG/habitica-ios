@@ -160,7 +160,6 @@ class UserManager: NSObject {
         let sharedApplication = UIApplication.shared
         existingNotifications.forEach { (oldNotification) in
             if !newNotifications.contains(oldNotification) {
-                print("Cancelled Notification for task", reminder.task?.text ?? "", " at time ", oldNotification.fireDate)
                 sharedApplication.cancelLocalNotification(oldNotification)
             }
         }

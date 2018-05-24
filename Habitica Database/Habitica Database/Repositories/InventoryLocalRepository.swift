@@ -76,7 +76,7 @@ public class InventoryLocalRepository: ContentLocalRepository {
     }
     
     public func getShops() -> SignalProducer<ReactiveResults<[ShopProtocol]>, ReactiveSwiftRealmError> {
-        return RealmShop.findAll().reactive().map({ (value, changeset) -> ReactiveResults<[ShopProtocol]> in
+        return RealmShop.findBy(query: "identifier != 'market-gear'").reactive().map({ (value, changeset) -> ReactiveResults<[ShopProtocol]> in
             return (value.map({ (item) -> ShopProtocol in return item }), changeset)
         })
     }

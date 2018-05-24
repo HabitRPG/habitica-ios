@@ -26,6 +26,8 @@ class HRPGCurrencyCountView: UIView {
         didSet {
             countLabel.text = String(describing: amount)
             applyAccesibility()
+            invalidateIntrinsicContentSize()
+            setNeedsLayout()
         }
     }
     
@@ -52,7 +54,7 @@ class HRPGCurrencyCountView: UIView {
     
     public var orientation: CurrencyCountViewOrientation = .horizontal {
         didSet {
-            setNeedsLayout()
+            superview?.setNeedsLayout()
         }
     }
     
@@ -63,6 +65,7 @@ class HRPGCurrencyCountView: UIView {
         
         set(newFont) {
             countLabel.font = newFont
+            setNeedsLayout()
         }
     }
     
