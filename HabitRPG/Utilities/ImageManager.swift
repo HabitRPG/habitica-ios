@@ -36,4 +36,17 @@ class ImageManager: NSObject {
             completion(image, error)
         }
     }
+    
+    @objc
+    static func getImage(url urlString: String, completion: @escaping (UIImage?, NSError?) -> Void) {
+        guard let url = URL(string: urlString) else {
+            return
+        }
+        KingfisherManager.shared.retrieveImage(with: url, options: nil, progressBlock: nil) { (image, error, _, _) in
+            if let error = error {
+                print("Image loading error:", url, error.localizedDescription)
+            }
+            completion(image, error)
+        }
+    }
 }

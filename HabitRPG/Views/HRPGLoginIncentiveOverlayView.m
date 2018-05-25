@@ -7,7 +7,6 @@
 //
 
 #import "HRPGLoginIncentiveOverlayView.h"
-#import "YYWebImage.h"
 #import "KLCPopup.h"
 #import "Habitica-Swift.h"
 
@@ -135,26 +134,13 @@ static inline UIImage *MTDContextCreateRoundedMask(CGRect rect, CGFloat radius_t
         imageName = [@"slim_" stringByAppendingString:imageName];
     }
     
-    YYWebImageManager *manager = [YYWebImageManager sharedManager];
-    [manager
-     requestImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://"
-                                               @"habitica-assets.s3."
-                                               @"amazonaws.com/"
-                                               @"mobileApp/images/%@",
-                                               imageName]]
-     options:0
-     progress:nil
-     transform:^UIImage *_Nullable(UIImage *_Nonnull image, NSURL *_Nonnull url) {
-         return [YYImage imageWithData:[image yy_imageDataRepresentation] scale:1.0];
-     }
-     completion:^(UIImage *_Nullable image, NSURL *_Nonnull url, YYWebImageFromType from,
-                  YYWebImageStage stage, NSError *_Nullable error) {
-         if (image) {
-             dispatch_async(dispatch_get_main_queue(), ^{
-                 self.imageView.image = image;
-             });
-         }
-     }];
+    [ImageManager getImageWithName:imageName extension:@"png" completion:^(UIImage * _Nullable image, NSError * _Nullable error) {
+        if (image) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.imageView.image = image;
+            });
+        }
+    }];
 }
 
 - (void)displayImage:(UIImage *)image {
