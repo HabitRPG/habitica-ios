@@ -35,6 +35,8 @@ class PartyDetailViewController: GroupDetailViewController {
     var fetchMembersDisposable: Disposable?
     var questStateDisposable: CompositeDisposable?
     
+    private var selectedMember: MemberProtocol?
+    
     override var group: GroupProtocol? {
         didSet {
             fetchMembers()
@@ -91,6 +93,10 @@ class PartyDetailViewController: GroupDetailViewController {
         for member in members {
             let view = MemberListView()
             view.configure(member: member, isLeader: member.id == group?.leaderID)
+            view.viewTapped = {
+                self.selectedMember = member
+                self.perform(segue: StoryboardSegue.Social.userProfileSegue)
+            }
             membersStackview.addArrangedSubview(view)
         }
     }
@@ -187,8 +193,9 @@ class PartyDetailViewController: GroupDetailViewController {
                 destination.questKey = group?.quest?.key
             }
         } else if segue.identifier == StoryboardSegue.Social.userProfileSegue.rawValue {
-            if let destination = segue.destination as? HRPGUserProfileViewController {
-                destination.userID = ""
+            if let destination = segue.destination as? UserProfileViewController {
+                destination.userID = selectedMember?.id
+                destination.username = selectedMember?.profile?.name
             }
         }
     }

@@ -57,6 +57,10 @@ internal enum L10n {
   internal static let leader = L10n.tr("Main", "leader")
   /// Leave
   internal static let leave = L10n.tr("Main", "leave")
+  /// Level %d
+  internal static func levelNumber(_ p1: Int) -> String {
+    return L10n.tr("Main", "level_number", p1)
+  }
   /// Mana
   internal static let mana = L10n.tr("Main", "mana")
   /// Monthly
@@ -176,7 +180,7 @@ internal enum L10n {
     /// Armor
     internal static let armor = L10n.tr("Main", "equipment.armor")
     /// Auto-Equip new
-    internal static let autoEquip = L10n.tr("Main", "equipment.autoEquip")
+    internal static let autoEquip = L10n.tr("Main", "equipment.auto_equip")
     /// Back Accessory
     internal static let back = L10n.tr("Main", "equipment.back")
     /// Battle Gear
@@ -191,10 +195,12 @@ internal enum L10n {
     internal static let head = L10n.tr("Main", "equipment.head")
     /// Head Accessory
     internal static let headAccessory = L10n.tr("Main", "equipment.head_accessory")
+    /// Nothing Equipped
+    internal static let nothingEquipped = L10n.tr("Main", "equipment.nothing_equipped")
     /// Off-Hand
     internal static let offHand = L10n.tr("Main", "equipment.off_hand")
     /// Use Costume
-    internal static let useCostume = L10n.tr("Main", "equipment.useCostume")
+    internal static let useCostume = L10n.tr("Main", "equipment.use_costume")
     /// Weapon
     internal static let weapon = L10n.tr("Main", "equipment.weapon")
   }
@@ -238,6 +244,13 @@ internal enum L10n {
     internal static func wrongClass(_ p1: String) -> String {
       return L10n.tr("Main", "inventory.wrong_class", p1)
     }
+  }
+
+  internal enum Member {
+    /// Last logged in
+    internal static let lastLoggedIn = L10n.tr("Main", "member.last_logged_in")
+    /// Member Since
+    internal static let memberSince = L10n.tr("Main", "member.member_since")
   }
 
   internal enum Menu {
@@ -405,6 +418,16 @@ internal enum L10n {
   }
 
   internal enum Stats {
+    /// Allocated
+    internal static let allocated = L10n.tr("Main", "stats.allocated")
+    /// Battle Gear
+    internal static let battleGear = L10n.tr("Main", "stats.battle_gear")
+    /// Buffs
+    internal static let buffs = L10n.tr("Main", "stats.buffs")
+    /// Class-Bonus
+    internal static let classBonus = L10n.tr("Main", "stats.class_bonus")
+    /// Level
+    internal static let level = L10n.tr("Main", "stats.level")
     /// 0 Points to Allocate
     internal static let noPointsToAllocate = L10n.tr("Main", "stats.no_points_to_allocate")
     /// 1 Point to Allocate

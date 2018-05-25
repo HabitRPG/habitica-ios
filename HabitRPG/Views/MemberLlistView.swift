@@ -12,6 +12,8 @@ import PinLayout
 
 class MemberListView: UIView {
 
+    var viewTapped: (() -> Void)?
+    
     let avatarView: AvatarView = {
         let view = AvatarView()
         return view
@@ -131,6 +133,8 @@ class MemberListView: UIView {
         addSubview(manaBar)
         addSubview(manaLabel)
         addSubview(classIconView)
+        
+        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapView)))
     }
 
     override func layoutSubviews() {
@@ -164,5 +168,12 @@ class MemberListView: UIView {
 
     override var intrinsicContentSize: CGSize {
         return CGSize(width: bounds.size.width, height: 127)
+    }
+    
+    @objc
+    private func tapView() {
+        if let action = viewTapped {
+            action()
+        }
     }
 }

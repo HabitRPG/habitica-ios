@@ -148,7 +148,7 @@ internal enum StoryboardScene {
 
     internal static let tavernViewController = SceneType<Habitica.TavernViewController>(storyboard: Social.self, identifier: "TavernViewController")
 
-    internal static let userProfileViewController = SceneType<HRPGUserProfileViewController>(storyboard: Social.self, identifier: "UserProfileViewController")
+    internal static let userProfileViewController = SceneType<Habitica.UserProfileViewController>(storyboard: Social.self, identifier: "UserProfileViewController")
   }
   internal enum Tasks: StoryboardType {
     internal static let storyboardName = "Tasks"

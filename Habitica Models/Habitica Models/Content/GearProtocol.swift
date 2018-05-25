@@ -25,3 +25,22 @@ public protocol GearProtocol {
     var perception: Int { get set }
     var constitution: Int { get set }
 }
+
+public extension GearProtocol {
+    var statsText: String {
+        var components = [String]()
+        if intelligence > 0 {
+            components.append("INT \(intelligence)")
+        }
+        if constitution > 0 {
+            components.append("CON \(constitution)")
+        }
+        if strength > 0 {
+            components.append("STR \(strength)")
+        }
+        if perception > 0 {
+            components.append("PER \(perception)")
+        }
+        return components.joined(separator: ", ")
+    }
+}

@@ -8,6 +8,11 @@
 "stats.no_points_to_allocate" = "0 Points to Allocate";
 "stats.one_point_to_allocate" = "1 Point to Allocate";
 "stats.points_to_allocate" = "%d Point to Allocate";
+"stats.level" = "Level";
+"stats.battle_gear" = "Battle Gear";
+"stats.class_bonus" = "Class-Bonus";
+"stats.allocated" = "Allocated";
+"stats.buffs" = "Buffs";
 "controls" = "Controls";
 "difficulty" = "Difficulty";
 "resetStreak" = "Reset Streak";
@@ -77,6 +82,7 @@
 "menu.about" = "About";
 "skills.unlocks_at" = "Unlocks at level %d";
 "skills.use_skill" = "You use %@";
+"level_number" = "Level %d";
 "my_guilds" = "My Guilds";
 "discover" = "Discover";
 "last_activity" = "Last Activity %@";
@@ -154,9 +160,10 @@
 "equipment.back" = "Back Accessory";
 "equipment.eyewear" = "Eyewear";
 "equipment.battle_gear" = "Battle Gear";
-"equipment.autoEquip" = "Auto-Equip new";
+"equipment.auto_equip" = "Auto-Equip new";
 "equipment.costume" = "Costume";
-"equipment.useCostume" = "Use Costume";
+"equipment.use_costume" = "Use Costume";
+"equipment.nothing_equipped" = "Nothing Equipped";
 "avatar.shirt" = "Shirt";
 "avatar.skin" = "Skin Color";
 "avatar.hairColor" = "Hair Color";
@@ -206,3 +213,5 @@
 "inventory.number_gems_left" = "Monthly Gems: %d/%d Remaining";
 "inventory.wrong_class" = "Only available for %@s. You can change your class from Settings";
 "inventory.available_until" = "Available Until %@";
+"member.member_since" = "Member Since";
+"member.last_logged_in" = "Last logged in";
