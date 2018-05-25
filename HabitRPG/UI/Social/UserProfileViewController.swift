@@ -31,8 +31,8 @@ class UserProfileViewController: HRPGBaseViewController {
     private let inventoryRepository = InventoryRepository()
     private let disposable = ScopedDisposable(CompositeDisposable())
     
-    var userID: String?
-    var username: String?
+    @objc var userID: String?
+    @objc var username: String?
     
     private var member: MemberProtocol? {
         didSet {

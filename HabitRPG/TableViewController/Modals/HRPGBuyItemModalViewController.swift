@@ -154,7 +154,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     }
     
     private func setupGear(_ contentView: UIView, itemView: UIView, key: String, shopIdentifier: String?) {
-        if let identifier = shopIdentifier, identifier == TimeTravelersShopKey {
+        if let identifier = shopIdentifier, identifier == Shops.TimeTravelersShopKey {
             addItemSet(itemView: itemView, to: contentView)
         } else {
             let statsView = HRPGItemStatsView(frame: CGRect.zero)
@@ -277,7 +277,6 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         inventoryRepository.togglePinnedItem(pinType: pinType, path: path).observeValues {[weak self] (_) in
             self?.isPinned = !(self?.isPinned ?? false)
             if let shopViewController = self?.shopViewController {
-                shopViewController.loadPinnedItems()
             }
         }
     }

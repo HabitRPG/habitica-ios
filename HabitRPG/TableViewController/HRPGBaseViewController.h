@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "HRPGManager.h"
 #import "TutorialStepsProtocol.h"
 @class TopHeaderCoordinator;
 @protocol TopHeaderNavigationControllerProtocol;

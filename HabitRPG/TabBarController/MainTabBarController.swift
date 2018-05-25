@@ -9,7 +9,9 @@
 import Foundation
 import Habitica_Models
 import ReactiveSwift
+#if DEBUG
 import FLEX
+#endif
 
 class MainTabBarController: UITabBarController {
     

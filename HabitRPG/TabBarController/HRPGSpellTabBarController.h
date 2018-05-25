@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Spell.h"
 
 @interface HRPGSpellTabBarController : UITabBarController
 

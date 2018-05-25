@@ -8,6 +8,7 @@
 
 import UIKit
 import Down
+import Habitica_Models
 
 class ChallengeDetailAlert: UIViewController {
 
@@ -26,7 +27,7 @@ class ChallengeDetailAlert: UIViewController {
 
     var joinLeaveAction: ((Bool) -> Void)?
 
-    var challenge: Challenge? {
+    var challenge: ChallengeProtocol? {
         didSet {
             if let challenge = self.challenge {
                 configure(challenge)
@@ -66,7 +67,7 @@ class ChallengeDetailAlert: UIViewController {
         }
     }
 
-    private func configure(_ challenge: Challenge, showTasks: Bool = true) {
+    private func configure(_ challenge: ChallengeProtocol, showTasks: Bool = true) {
         if !viewIsLoaded {
             return
         }
@@ -76,21 +77,21 @@ class ChallengeDetailAlert: UIViewController {
             notesLabel.attributedText = markdownString
         }
         ownerLabel.text = challenge.leaderName?.unicodeEmoji
-        gemLabel.text = challenge.prize?.stringValue
-        memberCountLabel.text = challenge.memberCount?.stringValue
-        isMember = challenge.user != nil
+        gemLabel.text = String(challenge.prize)
+        memberCountLabel.text = String(challenge.memberCount)
+        //isMember = challenge.user != nil
 
-        habitsList.configure(tasks: challenge.habits?.sorted(by: { (first, second) -> Bool in
-            (first.order?.intValue ?? 0) < (second.order?.intValue ?? 0)
+        habitsList.configure(tasks: challenge.habits.sorted(by: { (first, second) -> Bool in
+            first.order < second.order
         }))
-        dailiesList.configure(tasks: challenge.dailies?.sorted(by: { (first, second) -> Bool in
-            (first.order?.intValue ?? 0) < (second.order?.intValue ?? 0)
+        dailiesList.configure(tasks: challenge.dailies.sorted(by: { (first, second) -> Bool in
+            first.order < second.order
         }))
-        todosList.configure(tasks: challenge.todos?.sorted(by: { (first, second) -> Bool in
-            (first.order?.intValue ?? 0) < (second.order?.intValue ?? 0)
+        todosList.configure(tasks: challenge.todos.sorted(by: { (first, second) -> Bool in
+            first.order < second.order
         }))
-        rewardsList.configure(tasks: challenge.rewards?.sorted(by: { (first, second) -> Bool in
-            (first.order?.intValue ?? 0) < (second.order?.intValue ?? 0)
+        rewardsList.configure(tasks: challenge.rewards.sorted(by: { (first, second) -> Bool in
+            first.order < second.order
         }))
     }
 

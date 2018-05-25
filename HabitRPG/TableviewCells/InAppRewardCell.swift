@@ -106,23 +106,6 @@ class InAppRewardCell: UICollectionViewCell {
         applyAccessibility()
     }
     
-    func configure(item: ShopItem, user: UserProtocol?) {
-        currencyView.amount = item.value?.intValue ?? 0
-        imageName = item.imageName ?? ""
-        itemName = item.text ?? ""
-        isLocked = item.locked?.boolValue ?? false
-        if let currencyString = item.currency, let currency = Currency(rawValue: currencyString) {
-            currencyView.currency = currency
-            setCanAfford( item.value?.floatValue ?? 0, currency: currency, user: user)
-        }
-        
-        if let lastPurchased = item.lastPurchased, wasRecentlyPurchased(lastPurchased) {
-            showPurchaseConfirmation()
-        }
-        availableUntil = item.availableUntil
-        applyAccessibility()
-    }
-    
     func wasRecentlyPurchased(_ lastPurchase: Date) -> Bool {
         let now = Date().addingTimeInterval(-30)
         return now < lastPurchase

@@ -8,6 +8,8 @@
 
 import UIKit
 import ReactiveSwift
+import Habitica_Models
+
 @objc protocol HRPGShopsOverviewViewModelDelegate: class {
     func didFetchShops()
 }
@@ -35,10 +37,10 @@ class HRPGShopsOverviewViewModel: NSObject, HRPGShopOverviewTableViewDataSourceD
     
     @objc
     func refreshShops() {
-        refreshShop(withIdentifier: MarketKey)
-        refreshShop(withIdentifier: QuestsShopKey)
-        refreshShop(withIdentifier: SeasonalShopKey)
-        refreshShop(withIdentifier: TimeTravelersShopKey)
+        refreshShop(withIdentifier: Shops.MarketKey)
+        refreshShop(withIdentifier: Shops.QuestShopKey)
+        refreshShop(withIdentifier: Shops.SeasonalShopKey)
+        refreshShop(withIdentifier: Shops.TimeTravelersShopKey)
     }
 
     // MARK: - datasource delegate
@@ -51,13 +53,13 @@ class HRPGShopsOverviewViewModel: NSObject, HRPGShopOverviewTableViewDataSourceD
     func identifier(at index: Int) -> String? {
         switch index {
         case 0:
-            return MarketKey
+            return Shops.MarketKey
         case 1:
-            return QuestsShopKey
+            return Shops.QuestShopKey
         case 2:
-            return SeasonalShopKey
+            return Shops.SeasonalShopKey
         case 3:
-            return TimeTravelersShopKey
+            return Shops.TimeTravelersShopKey
         default:
             return nil
         }

@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "HRPGBaseViewController.h"
-#import "Spell.h"
 
 @interface HRPGSpellUserTableViewController : HRPGBaseViewController
 

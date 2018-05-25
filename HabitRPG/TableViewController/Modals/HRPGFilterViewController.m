@@ -7,8 +7,6 @@
 //
 
 #import "HRPGFilterViewController.h"
-#import "HRPGCheckBoxView.h"
-#import "Tag.h"
 #import "UIColor+Habitica.h"
 #import "Habitica-Swift.h"
 

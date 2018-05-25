@@ -127,13 +127,6 @@
     return NO;
 }
 
-- (NSManagedObjectContext *)managedObjectContext {
-    if (_managedObjectContext == nil) {
-        _managedObjectContext = [HRPGManager sharedManager].getManagedObjectContext;
-    }
-    return _managedObjectContext;
-}
-
 - (UINavigationController<TopHeaderNavigationControllerProtocol> *)topHeaderNavigationController {
     return [self hrpgTopHeaderNavigationController];
 }

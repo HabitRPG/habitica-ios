@@ -8,6 +8,7 @@
 
 import UIKit
 import Down
+import Habitica_Models
 
 class ChallengeDetailHeaderView: UIView {
 
@@ -23,7 +24,7 @@ class ChallengeDetailHeaderView: UIView {
         }
     }
 
-    func set(challenge: Challenge) {
+    func set(challenge: ChallengeProtocol) {
         notesLabel.textContainer.maximumNumberOfLines = 5
         notesLabel.textContainer.lineBreakMode = .byTruncatingTail
 
@@ -31,8 +32,8 @@ class ChallengeDetailHeaderView: UIView {
         if let notes = challenge.notes {
             notesLabel.attributedText = try? Down(markdownString: notes.unicodeEmoji).toHabiticaAttributedString()
         }
-        memberCountLabel.text = challenge.memberCount?.stringValue
-        gemCountLabel.text = challenge.prize?.stringValue
+        memberCountLabel.text = String(challenge.memberCount)
+        gemCountLabel.text = String(challenge.prize)
     }
 
     override var intrinsicContentSize: CGSize {

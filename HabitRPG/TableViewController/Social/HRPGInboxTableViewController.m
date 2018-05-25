@@ -7,14 +7,12 @@
 //
 
 #import "HRPGInboxTableViewController.h"
-#import "InboxMessage.h"
 #import "HRPGInboxChatViewController.h"
 #import "HRPGChoosePMRecipientViewController.h"
 #import "Habitica-Swift.h"
 
 @interface HRPGInboxTableViewController ()
 
-@property NSArray<InboxMessage *> *inboxMessages;
 @property NSString *recipientUserID;
 @property id<InboxOverviewDataSourceProtocol> datasource;
 

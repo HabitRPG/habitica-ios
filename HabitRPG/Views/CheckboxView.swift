@@ -9,6 +9,26 @@
 import UIKit
 import Habitica_Models
 
+class CheckmarkLayer: CALayer {
+    var drawPercentage: CGFloat = 0
+    
+    override class func needsDisplay(forKey key: String) -> Bool {
+        if key == "drawPercentage" {
+            return true
+        }
+        return super.needsDisplay(forKey: key)
+    }
+    
+    override func action(forKey event: String) -> CAAction? {
+        if event == "drawPercentage" {
+            let animation = CABasicAnimation(keyPath: event)
+            animation.fromValue = presentation()?.value(forKey: event)
+            return animation
+        }
+        return super.action(forKey: event)
+    }
+}
+
 class CheckboxView: UIView {
     
     var checked = false
@@ -30,7 +50,7 @@ class CheckboxView: UIView {
     private let label = UILabel()
     
     override class var layerClass: AnyClass {
-        return HRPGCheckmarkLayer.self
+        return CheckmarkLayer.self
     }
     
     override init(frame: CGRect) {
@@ -51,7 +71,7 @@ class CheckboxView: UIView {
     func configure(task: TaskProtocol) {
         boxFillColor = UIColor(white: 1.0, alpha: 0.7)
         checked = task.completed
-        if let layer = self.layer as? HRPGCheckmarkLayer {
+        if let layer = self.layer as? CheckmarkLayer {
             layer.drawPercentage = checked ? 1 : 0
         }
         if task.type == "daily" {
@@ -85,7 +105,7 @@ class CheckboxView: UIView {
     
     func configure(checklistItem: ChecklistItemProtocol, withTitle: Bool) {
         checked = checklistItem.completed
-        if let layer = self.layer as? HRPGCheckmarkLayer {
+        if let layer = self.layer as? CheckmarkLayer {
             layer.drawPercentage = checked ? 1 : 0
         }
         if withTitle {
@@ -124,7 +144,7 @@ class CheckboxView: UIView {
     }
     
     private func animateTo(value: CGFloat) {
-        let layer = self.layer as? HRPGCheckmarkLayer
+        let layer = self.layer as? CheckmarkLayer
         let timing = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         
         let animation = CABasicAnimation(keyPath: "drawPercentage")
@@ -164,7 +184,7 @@ class CheckboxView: UIView {
         }
         boxFillColor.setFill()
         borderPath.fill()
-        if let layer = self.layer as? HRPGCheckmarkLayer, layer.drawPercentage > 0 {
+        if let layer = self.layer as? CheckmarkLayer, layer.drawPercentage > 0 {
             let checkFrame = CGRect(x: horizontalCenter - size / 2, y: frame.size.height / 2 - size / 2, width: size, height: size)
             HabiticaIcons.drawCheckmark(frame: checkFrame, resizing: .center, checkmarkColor: checkColor, percentage: layer.drawPercentage)
         }

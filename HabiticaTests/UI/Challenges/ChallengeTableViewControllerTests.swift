@@ -18,9 +18,8 @@ class ChallengeTableViewControllerTests: HabiticaTests {
     override func setUp() {
         super.setUp()
         self.initializeCoreDataStorage()
-        let user = NSEntityDescription.insertNewObject(forEntityName: "User", into: HRPGManager.shared().getManagedObjectContext()) as! User
-        user.id = "userId"
-        HRPGManager.shared().user = user
+        //let user = NSEntityDescription.insertNewObject(forEntityName: "User", into: HRPGManager.shared().getManagedObjectContext()) as! User
+        //user.id = "userId"
     }
     
     override func tearDown() {

@@ -36,7 +36,6 @@ target 'Habitica' do
   project 'Habitica.xcodeproj'
   pod 'KeychainAccess'
   pod 'VTAcknowledgementsViewController'
-  pod 'RestKit'
   pod 'YYWebImage', '~> 1.0.5'
   pod 'DateTools'
   pod 'NSString+Emoji'

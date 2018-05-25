@@ -15,11 +15,11 @@ public class RetrieveShopInventoryCall: ResponseObjectCall<ShopProtocol, APIShop
     public init(identifier: String, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "user.json")) {
         var shopIdentifier = identifier
         switch identifier {
-        case "questShop":
+        case Shops.QuestShopKey:
             shopIdentifier = "quests"
-        case "seasonalShop":
+        case Shops.SeasonalShopKey:
             shopIdentifier = "seasonal"
-        case "timeTravelersShop":
+        case Shops.TimeTravelersShopKey:
             shopIdentifier = "time-travelers"
         default:
             shopIdentifier = identifier

@@ -8,7 +8,6 @@
 
 #import "HRPGShopOverviewViewController.h"
 #import "HRPGShopViewController.h"
-#import "Shop.h"
 #import "NSString+StripHTML.h"
 #import "UIColor+Habitica.h"
 #import "CAGradientLayer+HRPGShopGradient.h"

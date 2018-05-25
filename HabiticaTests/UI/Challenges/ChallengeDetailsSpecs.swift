@@ -14,16 +14,15 @@ import Habitica_Models
 
 class ChallengeDetailsViewModelSpec: QuickSpec {
 
-    var challenge = Challenge()
+    var challenge: ChallengeProtocol?
 
     override func spec() {
-        HRPGManager.setupTestManager()
         describe("challenge details view model") {
-            beforeEach {
+            /*beforeEach {
                 self.challenge = NSEntityDescription.insertNewObject(forEntityName: "Challenge", into: HRPGManager.shared().getManagedObjectContext()) as! Challenge
             }
             context("button cell") {
-                /*it("allows joining") {
+                it("allows joining") {
                     let vm = ChallengeDetailViewModel(challenge: self.challenge)
                     
                     waitUntil(action: { (done) in
@@ -81,8 +80,8 @@ class ChallengeDetailsViewModelSpec: QuickSpec {
                         })
                     }
                 }
-                */
-            }
+ 
+            }*/
             
             context("creator cell") {
                 

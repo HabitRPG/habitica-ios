@@ -62,7 +62,7 @@ class FilterTableViewDataSource: BaseReactiveTableViewDataSource<TagProtocol>, F
             let label = cell.viewWithTag(1) as? UILabel
             label?.text = tag.text
             
-            let checkboxView = cell.viewWithTag(2) as? HRPGCheckBoxView
+            let checkboxView = cell.viewWithTag(2) as? CheckboxView
             checkboxView?.cornerRadius = (checkboxView?.size ?? 0) / 2
             if selectedTagIds.contains(tag.id ?? "") {
                 checkboxView?.checkColor = UIColor(white: 1, alpha: 0.7)

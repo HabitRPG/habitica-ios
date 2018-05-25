@@ -7,13 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "User.h"
 
 @interface HRPGQRCodeView : UIView
 
 @property (nonatomic) NSString *userID;
 
-- (void)setAvatarViewWithUser:(User *)user;
+- (void)setAvatarViewWithUser:(NSObject *)user;
 
 @property (nonatomic) void (^shareAction)();
 

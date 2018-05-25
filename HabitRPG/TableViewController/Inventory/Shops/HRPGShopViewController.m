@@ -7,14 +7,11 @@
 //
 
 #import "HRPGShopViewController.h"
-#import "Shop.h"
-#import "ShopItem+CoreDataClass.h"
-#import "User.h"
 #import "KLCPopup.h"
 #import "NSString+StripHTML.h"
 #import "Habitica-Swift.h"
 
-@interface HRPGShopViewController () <ShopCollectionViewDataSourceDelegate>
+@interface HRPGShopViewController ()
 
 @property (nonatomic) NPCBannerView *shopBannerView;
 
@@ -120,14 +117,14 @@
     NSString *notes;
     NSDictionary *views;
     NSString *visualFormat;
-    if ([self.shopIdentifier isEqualToString:SeasonalShopKey]) {
+    if ([self.shopIdentifier isEqualToString:@"seasonalShop"]) {
         imageName = @"shop_empty_seasonal";
         title = @"Come back soon!";
         notes = @"The Grand Galas happen close to the solstices and equinoxes, so check back then to find a fun assortment of special seasonal items!";
         
         visualFormat = @"V:|-280-[closedView]";
         views = @{@"closedView": closedShopInfoView};
-    } else if ([self.shopIdentifier isEqualToString:TimeTravelersShopKey]) {
+    } else if ([self.shopIdentifier isEqualToString:@"timeTravelersShop"]) {
         imageName = @"shop_empty_hourglass";
         title = @"Subscribe for Hourglasses";
         notes = @"Earn one Mystic Hourglass for every three months of consecutive subscription, then use them to unlock limited edition items, pets, and mounts from the past... and future!";

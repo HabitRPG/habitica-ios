@@ -20,10 +20,11 @@
     HRPGImageOverlayView *overlayView = [nibViews objectAtIndex:0];
     overlayView.imageWidth = 140;
     overlayView.imageHeight = 147;
-    [self.user setAvatarSubview:overlayView.imageView
+    //TODO: FIX
+    /*[self.user setAvatarSubview:overlayView.imageView
                 showsBackground:YES
                      showsMount:YES
-                       showsPet:YES];
+                       showsPet:YES];*/
     overlayView.titleText = NSLocalizedString(@"You earned a streak achievement!", nil);
     overlayView.descriptionText = NSLocalizedString(
                                                      @"You've completed your Daily for 21 days in a row! Amazing job. Don't break the streak!", nil);

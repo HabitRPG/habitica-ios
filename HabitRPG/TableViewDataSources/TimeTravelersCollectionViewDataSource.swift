@@ -10,17 +10,17 @@ import Foundation
 
 class TimeTravelersCollectionViewDataSource: ShopCollectionViewDataSource {
 
-    var categories = [ShopCategory]()
+    //var categories = [ShopCategory]()
     
     override func titleFor(section: Int) -> String? {
-        if section < categories.count {
+        /*if section < categories.count {
             return categories[section].text
-        }
+        }*/
         return ""
     }
     
     private func loadCategories() {
-        categories = [ShopCategory]()
+        //categories = [ShopCategory]()
         /*if let items = self.fetchedResultsController?.fetchedObjects as? [ShopItem],
             let categoryEntity = NSEntityDescription.entity(forEntityName: "ShopCategory", in: HRPGManager.shared().getManagedObjectContext()) ,
             let itemEntity = NSEntityDescription.entity(forEntityName: "ShopItem", in: HRPGManager.shared().getManagedObjectContext()) {
@@ -70,7 +70,7 @@ class TimeTravelersCollectionViewDataSource: ShopCollectionViewDataSource {
             }
         }*/
         //Flip the order to have pets and mounts first
-        categories.reverse()
+        //categories.reverse()
         self.collectionView?.reloadData()
     }
 }

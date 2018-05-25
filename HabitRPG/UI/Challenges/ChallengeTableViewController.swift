@@ -123,7 +123,6 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate,
             viewController.shownGuilds = dataSource.shownGuilds ?? [String]()
         }
         viewController.delegate = self
-        viewController.managedObjectContext = self.managedObjectContext
         let popup = PopupDialog(viewController: viewController)
         self.present(popup, animated: true, completion: nil)
     }

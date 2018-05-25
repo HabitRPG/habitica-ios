@@ -7,10 +7,9 @@
 //
 
 #import "HRPGBaseNotificationView.h"
-#import "User.h"
 
 @interface HRPGDropsEnabledNotification : HRPGBaseNotificationView
 
-@property User *user;
+@property NSObject *user;
 
 @end

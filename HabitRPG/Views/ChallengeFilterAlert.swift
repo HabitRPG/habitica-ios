@@ -8,6 +8,7 @@
 
 import Foundation
 import PopupDialog
+import Habitica_Models
 
 protocol ChallengeFilterChangedDelegate: class {
     func challengeFilterChanged(showOwned: Bool, showNotOwned: Bool, shownGuilds: [String])
@@ -26,15 +27,13 @@ class ChallengeFilterAlert: UIViewController {
 
     weak var delegate: ChallengeFilterChangedDelegate?
 
-    var managedObjectContext: NSManagedObjectContext?
-
     var showOwned = true
     var showNotOwned = true
     var shownGuilds = [String]()
 
     var initShownGuilds = false
 
-    var groups = [Group]()
+    var groups = [GroupProtocol]()
 
     init() {
         super.init(nibName: "ChallengeFilterAlert", bundle: nil)
@@ -76,7 +75,7 @@ class ChallengeFilterAlert: UIViewController {
     @IBAction func allGroupsTapped(_ sender: Any) {
         shownGuilds.removeAll()
         for group in groups {
-            shownGuilds.append(group.id)
+            shownGuilds.append(group.id ?? "")
         }
         if let subviews = groupListView.arrangedSubviews as? [LabeledCheckboxView] {
             for view in subviews {
@@ -101,45 +100,6 @@ class ChallengeFilterAlert: UIViewController {
     }
 
     func fetchGroups() {
-        if let managedObjectContext = self.managedObjectContext {
-            let entity = NSEntityDescription.entity(forEntityName: "Group", in: managedObjectContext)
-            let fetchRequest = NSFetchRequest<NSFetchRequestResult>()
-            fetchRequest.entity = entity
-            fetchRequest.predicate = NSPredicate(format: "challenges.@count > 0")
-            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
-            do {
-                guard let groups = try managedObjectContext.fetch(fetchRequest) as? [Group] else {
-                    return
-                }
-                self.groups = groups
-                if groups.count > 0 {
-                    for group in groups {
-                        if group.id == nil {
-                            return
-                        }
-                        let groupView = LabeledCheckboxView(frame: CGRect.zero)
-                        groupView.text = group.name
-                        if initShownGuilds {
-                            shownGuilds.append(group.id)
-                        }
-                        groupView.isChecked = shownGuilds.contains(group.id)
-                        groupView.numberOfLines = 0
-                        groupView.textColor = UIColor(white: 0, alpha: 0.5)
-                        groupView.checkedAction = { [weak self] isChecked in
-                            if isChecked {
-                                self?.shownGuilds.append(group.id)
-                            } else {
-                                if let index = self?.shownGuilds.index(of: group.id) {
-                                    self?.shownGuilds.remove(at: index)
-                                }
-                            }
-                            self?.updateDelegate()
-                        }
-                        groupListView.addArrangedSubview(groupView)
-                    }
-                }
-            } catch {
-            }
-        }
+        
     }
 }

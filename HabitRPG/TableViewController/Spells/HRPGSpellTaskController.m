@@ -25,7 +25,7 @@
         self.tableView.contentInset = UIEdgeInsetsMake(60, 0, 50, 0);
     }
 }
-
+/*
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return [[self.fetchedResultsController sections] count];
 }
@@ -81,47 +81,6 @@
     tabBarController.taskID = task.id;
     [tabBarController castSpell];
 }
-
-- (NSFetchedResultsController *)fetchedResultsController {
-    if (_fetchedResultsController != nil) {
-        return _fetchedResultsController;
-    }
-
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Task"
-                                              inManagedObjectContext:self.managedObjectContext];
-    [fetchRequest setEntity:entity];
-
-    [fetchRequest setFetchBatchSize:20];
-    NSPredicate *predicate;
-    if ([self.taskType isEqual:@"todo"]) {
-        predicate = [NSPredicate predicateWithFormat:@"type=='todo' && completed==NO"];
-    } else {
-        predicate = [NSPredicate predicateWithFormat:@"type==%@", self.taskType];
-    }
-    [fetchRequest setPredicate:predicate];
-
-    NSSortDescriptor *sortDescriptor =
-        [[NSSortDescriptor alloc] initWithKey:@"order" ascending:YES];
-    NSArray *sortDescriptors = @[ sortDescriptor ];
-
-    [fetchRequest setSortDescriptors:sortDescriptors];
-
-    NSFetchedResultsController *aFetchedResultsController =
-        [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
-                                            managedObjectContext:self.managedObjectContext
-                                              sectionNameKeyPath:nil
-                                                       cacheName:nil];
-    aFetchedResultsController.delegate = self;
-    self.fetchedResultsController = aFetchedResultsController;
-
-    NSError *error = nil;
-    if (![self.fetchedResultsController performFetch:&error]) {
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
-    }
-
-    return _fetchedResultsController;
-}
+*/
 
 @end

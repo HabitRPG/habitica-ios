@@ -22,8 +22,6 @@
 
 - (UIView *)viewWithIcon:(UIImage *)image;
 
-- (Task *)taskAtIndexPath:(NSIndexPath *)indexPath;
-
 - (NSPredicate *)getPredicate;
 
 - (void)scrollToTaskWithId:(NSString *)taskID;

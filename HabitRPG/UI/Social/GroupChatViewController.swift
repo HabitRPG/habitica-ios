@@ -88,7 +88,7 @@ class GroupChatViewController: SLKTextViewController {
         acceptView?.frame = CGRect(x: 0, y: view.frame.size.height-90, width: view.frame.size.width, height: 90)
     }
     
-    private func render(message: ChatMessage) {
+    private func render(message: ChatMessageProtocol) {
         message.attributedText = try? Down(markdownString: message.text?.unicodeEmoji ?? "").toHabiticaAttributedString()
     }
     

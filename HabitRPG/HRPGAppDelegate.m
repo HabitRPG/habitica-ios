@@ -14,7 +14,6 @@
 #import "Amplitude.h"
 #import "HRPGMaintenanceViewController.h"
 #import "HRPGTableViewController.h"
-#import "Reminder.h"
 #import "HRPGInboxChatViewController.h"
 #import "UIColor+Habitica.h"
 #import <Keys/HabiticaKeys.h>
@@ -44,7 +43,6 @@
     [self configureNotifications:application];
 
     [self.swiftAppDelegate handleInitialLaunch];
-    [[HRPGManager sharedManager] changeUseAppBadge:[[NSUserDefaults standardUserDefaults] boolForKey:@"appBadgeActive"]];
 
     UILocalNotification *notification =
         launchOptions[UIApplicationLaunchOptionsLocalNotificationKey];

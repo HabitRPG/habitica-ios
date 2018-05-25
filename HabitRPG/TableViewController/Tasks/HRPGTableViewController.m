@@ -226,8 +226,7 @@ NSIndexPath  *sourceIndexPath = nil;
     NSMutableArray *predicateArray = [[NSMutableArray alloc] initWithCapacity:3];
     MainTabBarController *tabBarController = (MainTabBarController *)self.tabBarController;
 
-    [predicateArray addObjectsFromArray:[Task predicatesForTaskType:self.typeName
-                                                     withFilterType:self.filterType]];
+    [predicateArray addObjectsFromArray:[self.dataSource predicatesWithTaskType:self.typeName filterType:self.filterType]];
 
     if ([tabBarController.selectedTags count] > 0) {
         [predicateArray
@@ -421,8 +420,8 @@ NSIndexPath  *sourceIndexPath = nil;
 - (void)scrollToTaskWithId:(NSString *)taskID {
     NSInteger index = 0;
     NSIndexPath *indexPath;
-    for (Task *task in self.dataSource.tasks) {
-        if ([task.id isEqualToString:taskID]) {
+    for (NSObject<TaskProtocol> *task in self.dataSource.tasks) {
+        if ([[task valueForKey:@"id"] isEqualToString:taskID]) {
             indexPath = [NSIndexPath indexPathForItem:index inSection:0];
             break;
         }

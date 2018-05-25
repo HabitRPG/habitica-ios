@@ -17,3 +17,12 @@ public protocol ShopProtocol {
     var categories: [ShopCategoryProtocol] { get set }
     var hasNew: Bool { get set }
 }
+
+@objc
+public class Shops: NSObject {
+    @objc public static let MarketKey = "market"
+    @objc public static let GearMarketKey = "market-gear"
+    @objc public static let QuestShopKey = "questShop"
+    @objc public static let TimeTravelersShopKey = "timeTravelersShop"
+    @objc public static let SeasonalShopKey = "seasonalShop"
+}

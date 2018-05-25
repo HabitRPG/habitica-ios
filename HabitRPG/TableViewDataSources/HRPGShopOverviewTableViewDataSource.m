@@ -9,7 +9,6 @@
 #import "HRPGShopOverviewTableViewDataSource.h"
 #import "CAGradientLayer+HRPGShopGradient.h"
 #import "Habitica-Swift.h"
-#import "Shop.h"
 
 @interface HRPGShopOverviewTableViewDataSource ()
 
@@ -50,23 +49,12 @@
 - (NSString *)titleForIdentifier:(NSString *)identifier {
     NSString *title = @"";
     
-    Shop *shop = self.delegate.shopDictionary[identifier];
+    NSObject<ShopProtocol> *shop = self.delegate.shopDictionary[identifier];
     if (shop) {
-        title = shop.text;
-    } else {
-        title = NSLocalizedString([HRPGShopOverviewTableViewDataSource shopNames][identifier], nil);
+        title = [shop valueForKey:@"text"];
     }
     
     return title;
-}
-
-+ (NSDictionary *)shopNames {
-    return @{
-             MarketKey: @"Market",
-             QuestsShopKey: @"Quests",
-             SeasonalShopKey: @"Seasonal Shop",
-             TimeTravelersShopKey: @"Time Travelers",
-             };
 }
 
 #pragma mark - UITableViewDataSource and Delegate methods

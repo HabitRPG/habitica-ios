@@ -50,7 +50,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
     private var inventoryRepository = InventoryRepository()
     private var fetchGearDisposable: Disposable?
     
-    private var ownedItems = [String: Item]()
+    private var ownedItems = [String: OwnedItemProtocol]()
     private var pinnedItems = [String?]()
     private var userClass: String?
     
@@ -124,7 +124,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
         if let disposable = fetchGearDisposable {
             disposable.dispose()
         }
-        fetchGearDisposable = inventoryRepository.getShop(identifier: GearMarketKey)
+        fetchGearDisposable = inventoryRepository.getShop(identifier: Shops.GearMarketKey)
             .map({ (shop) -> [InAppRewardProtocol] in
                 return shop?.categories.filter({ (category) -> Bool in
                     category.identifier == self.selectedGearCategory
@@ -151,8 +151,8 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
     func retrieveShopInventory(_ completed: (() -> Void)?) {
         inventoryRepository.retrieveShopInventory(identifier: shopIdentifier)
             .flatMap(.latest, { (shop) -> Signal<ShopProtocol?, NoError> in
-                if shop?.identifier == MarketKey {
-                    return self.inventoryRepository.retrieveShopInventory(identifier: GearMarketKey)
+                if shop?.identifier == Shops.MarketKey {
+                    return self.inventoryRepository.retrieveShopInventory(identifier: Shops.GearMarketKey)
                 } else {
                     let signal = Signal<ShopProtocol?, NoError>.pipe()
                     signal.input.send(value: shop)
@@ -231,7 +231,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
             if let itemCell = cell as? InAppRewardCell {
                 itemCell.configure(reward: item, user: nil)
                 if let ownedItem = ownedItems[item.key ?? ""] {
-                    itemCell.itemsLeft = ownedItem.owned.intValue
+                    itemCell.itemsLeft = ownedItem.numberOwned
                 }
                 itemCell.isPinned = pinnedItems.contains(item.key)
             }

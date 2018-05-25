@@ -48,7 +48,7 @@
     [self setQrCode];
 }
 
-- (void)setAvatarViewWithUser:(User *)user {
+- (void)setAvatarViewWithUser:(NSObject *)user {
     if (self.avatarView) {
         [self.avatarView removeFromSuperview];
     }
@@ -58,7 +58,8 @@
     self.outerWrapperView = [[UIView alloc] init];
     self.outerWrapperView.clipsToBounds = YES;
     self.outerWrapperView.backgroundColor = [UIColor whiteColor];
-    [user setAvatarSubview:self.wrapperView showsBackground:NO showsMount:NO showsPet:NO];
+    //TODO: FIX
+    //[user setAvatarSubview:self.wrapperView showsBackground:NO showsMount:NO showsPet:NO];
     [self.outerWrapperView addSubview:self.wrapperView];
     [self.avatarView addSubview:self.outerWrapperView];
     [self addSubview:self.avatarView];

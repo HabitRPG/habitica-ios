@@ -9,6 +9,7 @@
 #import "HRPGLoginIncentiveOverlayView.h"
 #import "YYWebImage.h"
 #import "KLCPopup.h"
+#import "Habitica-Swift.h"
 
 static inline UIImage *MTDContextCreateRoundedMask(CGRect rect, CGFloat radius_tl,
                                                    CGFloat radius_tr, CGFloat radius_bl,

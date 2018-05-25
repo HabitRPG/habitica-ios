@@ -7,12 +7,13 @@
 //
 
 import Foundation
+import Habitica_Models
 
 @IBDesignable
 class ChallengeTaskListView: UIView {
 
     static let verticalSpacing = CGFloat(integerLiteral: 12)
-    static let borderColor = UIColor.gray400() ?? .gray
+    static let borderColor = UIColor.gray400()
 
     let titleLabel = UILabel()
     let borderView = UIView()
@@ -34,7 +35,7 @@ class ChallengeTaskListView: UIView {
         borderView.layer.borderWidth = 1
     }
 
-    func configure(tasks: [ChallengeTask]?) {
+    func configure(tasks: [TaskProtocol]?) {
         removeAllTaskViews()
         guard let tasks = tasks else {
             return
@@ -95,7 +96,7 @@ class ChallengeTaskListView: UIView {
         taskViews.removeAll()
     }
 
-    private func createTaskView(task: ChallengeTask, isFirst: Bool) -> UIView {
+    private func createTaskView(task: TaskProtocol, isFirst: Bool) -> UIView {
         let taskView = UIView()
         let titleView = UILabel()
         if !isFirst {
@@ -114,14 +115,14 @@ class ChallengeTaskListView: UIView {
             plusImageView.tag = 2
             plusImageView.contentMode = .center
             taskView.addSubview(plusImageView)
-            if task.up?.boolValue ?? false {
+            if task.up ?? false {
                 plusImageView.alpha = 0.3
             }
             let minusImageView = UIImageView(image: #imageLiteral(resourceName: "minus_gray"))
             minusImageView.tag = 3
             minusImageView.contentMode = .center
             taskView.addSubview(minusImageView)
-            if task.down?.boolValue ?? false {
+            if task.down ?? false {
                 minusImageView.alpha = 0.3
             }
         }

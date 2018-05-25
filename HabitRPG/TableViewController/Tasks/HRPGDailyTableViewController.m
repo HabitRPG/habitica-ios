@@ -7,7 +7,6 @@
 //
 
 #import "HRPGDailyTableViewController.h"
-#import "ChecklistItem.h"
 #import "Habitica-Swift.h"
 
 @interface HRPGDailyTableViewController ()

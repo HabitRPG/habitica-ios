@@ -9,7 +9,6 @@
 #import "HRPGFeedViewController.h"
 #import "UIColor+Habitica.h"
 #import "HRPGShopViewController.h"
-#import "Shop.h"
 #import "Habitica-Swift.h"
 
 @interface HRPGFeedViewController ()
@@ -57,7 +56,7 @@
 }
 
 - (void)openMarket:(UIButton *)button {
-    self.shopIdentifier = MarketKey;
+    self.shopIdentifier = @"market";
     [self performSegueWithIdentifier:@"ShowShopSegue" sender:self];
 }
 

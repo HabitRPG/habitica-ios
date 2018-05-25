@@ -79,42 +79,6 @@ class HRPGSimpleShopItemView: UIView {
         setupView()
     }
     
-    init(withItem item: ShopItem, withUser user: UserProtocol?, for contentView: UIView) {
-        super.init(frame: contentView.bounds)
-        setupView()
-        self.user = user
-        
-        if let availableUntil = item.availableUntil {
-            setAvailableUntil(date: availableUntil)
-        }
-        
-        self.shopItemTitleLabel.text = item.text
-        
-        if let imageName = item.imageName {
-            self.imageName = imageName
-            self.setImage(name: imageName)
-        }
-        
-        if let notes = item.notes {
-            self.shopItemDescriptionLabel.text = notes
-        } else {
-            self.shopItemDescriptionLabel.text = ""
-            if let label = self.shopItemDescriptionLabel {
-                let constraint = NSLayoutConstraint(item: label, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal,
-                                                    toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 0)
-                self.shopItemDescriptionLabel.addConstraint(constraint)
-            }
-        }
-        
-        if let key = item.key, let purchaseType = item.purchaseType {
-            configureFor(key: key, purchaseType: purchaseType)
-        }
-        
-        if item.key == "gem" {
-            setGemsLeft(item.itemsLeft?.intValue ?? 0)
-        }
-    }
-    
     init(withReward reward: InAppRewardProtocol, withUser user: UserProtocol?, for contentView: UIView) {
         super.init(frame: contentView.bounds)
         setupView()

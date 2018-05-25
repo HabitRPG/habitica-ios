@@ -35,9 +35,13 @@ public protocol TaskTableViewDataSourceProtocol {
     func clearCompletedTodos()
     @objc
     func fetchCompletedTodos()
+    
+    @objc
+    func predicates(taskType: String, filterType: Int) -> [NSPredicate]
 }
 
 class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, TaskTableViewDataSourceProtocol {
+    
     var tasks: [TaskProtocol] {
         get {
             return sections[0].items
@@ -179,5 +183,20 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
         repository.moveTask(task, toPosition: toPosition).observeCompleted {
             completion()
         }
+    }
+    
+    func predicates(taskType: String, filterType: Int) -> [NSPredicate] {
+        //TODO: FIX
+        var predicates = [NSPredicate]()
+        switch taskType {
+        case TaskType.habit.rawValue:
+            switch filterType {
+            default:
+                break
+            }
+        default:
+            break
+        }
+        return predicates
     }
 }

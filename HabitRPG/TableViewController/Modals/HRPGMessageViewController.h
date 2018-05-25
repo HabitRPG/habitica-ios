@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Group.h"
 
 @interface HRPGMessageViewController : UIViewController<UITextViewDelegate>
 

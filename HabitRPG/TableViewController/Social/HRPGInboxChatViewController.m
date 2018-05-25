@@ -7,9 +7,7 @@
 //
 
 #import "HRPGInboxChatViewController.h"
-#import "InboxMessage.h"
 #import "UIViewController+Markdown.h"
-#import "HRPGUserProfileViewController.h"
 #import "HRPGFlagInformationOverlayView.h"
 #import "KLCPopup.h"
 #import "UIViewController+HRPGTopHeaderNavigationController.h"
@@ -41,12 +39,13 @@
     [[self tableView] registerNib:nib forCellReuseIdentifier:@"ChatMessageCell"];
     
     [self setNavigationTitle];
-    if (self.username == nil || [self.username length] == 0) {
+    //TODO: FIX
+    /*if (self.username == nil || [self.username length] == 0) {
         [User fetchUserWithId:self.userID completionBlock:^(User *member) {
             self.username = member.username;
             [self setNavigationTitle];
         }];
-    }
+    }*/
     
     if (self.isPresentedModally) {
         [self.navigationItem setRightBarButtonItems:@[self.doneBarButton] animated:NO];
@@ -86,7 +85,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"UserProfileSegue"]) {
-        HRPGUserProfileViewController *userProfileViewController = segue.destinationViewController;
+        UserProfileViewController *userProfileViewController = segue.destinationViewController;
         userProfileViewController.userID = self.userID;
         userProfileViewController.username = self.username;
     }

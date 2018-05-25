@@ -8,7 +8,6 @@
 
 #import "UIViewController+TutorialSteps.h"
 #import "Amplitude.h"
-#import "TutorialSteps.h"
 #import "Habitica-Swift.h"
 
 @implementation UIViewController (TutorialSteps)

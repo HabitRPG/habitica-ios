@@ -7,12 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "HRPGNotification.h"
 #import "UIWindow+VisibleController.h"
 
 @interface HRPGBaseNotificationView : NSObject
 
-@property HRPGNotification *notification;
+//@property HRPGNotification *notification;
 
 - (void)displayNotification:(void (^)())completionBlock;
 

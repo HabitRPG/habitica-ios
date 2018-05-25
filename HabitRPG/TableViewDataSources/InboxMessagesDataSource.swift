@@ -72,7 +72,7 @@ class InboxMessagesDataSource: BaseReactiveTableViewDataSource<InboxMessageProto
                        user: self.user, isExpanded: isExpanded)
         
         cell.profileAction = {
-            guard let profileViewController = self.viewController?.storyboard?.instantiateViewController(withIdentifier: "UserProfileViewController") as? HRPGUserProfileViewController else {
+            guard let profileViewController = self.viewController?.storyboard?.instantiateViewController(withIdentifier: "UserProfileViewController") as? UserProfileViewController else {
                 return
             }
             profileViewController.userID = message.userID

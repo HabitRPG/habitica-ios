@@ -41,7 +41,7 @@ class CheckedTableViewCell: TaskTableViewCell {
         }
         
         handleChecklist(task)
-        if task is ChallengeTask {
+        if task is TaskProtocol {
             self.checklistDoneLabel.isHidden = true
             self.checklistAllLabel.isHidden = true
             self.checklistSeparator.isHidden = true

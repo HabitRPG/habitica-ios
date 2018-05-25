@@ -7,12 +7,8 @@
 //
 
 #import "HRPGSpellUserTableViewController.h"
-#import "HRPGCoreDataDataSource.h"
-#import "User.h"
 
 @interface HRPGSpellUserTableViewController ()
-
-@property HRPGCoreDataDataSource *dataSource;
 
 @end
 
@@ -24,7 +20,8 @@
 }
 
 - (void)setupTableView {
-        TableViewCellConfigureBlock configureCell = ^(UITableViewCell *cell, User *user, NSIndexPath *indexPath) {
+    //TODO: FIX
+        /*TableViewCellConfigureBlock configureCell = ^(UITableViewCell *cell, User *user, NSIndexPath *indexPath) {
             UITextView *nameTextView = [cell viewWithTag:1];
             UIView *avatarView = [cell viewWithTag:2];
             nameTextView.text = user.username;
@@ -43,15 +40,15 @@
                                                                        cellIdentifier:@"Cell"
                                                                    configureCellBlock:configureCell
                                                                     fetchRequestBlock:configureFetchRequest
-                                                                        asDelegateFor:self.tableView];
+                                                                        asDelegateFor:self.tableView];*/
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    User *user = [self.dataSource itemAtIndexPath:indexPath];
+    /*User *user = [self.dataSource itemAtIndexPath:indexPath];
     
     if (user) {
         self.userID = user.id;
-    }
+    }*/
     [self performSegueWithIdentifier:@"CastUserSpellSegue" sender:self];
 }
 

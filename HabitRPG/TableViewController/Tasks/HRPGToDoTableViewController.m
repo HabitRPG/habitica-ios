@@ -7,7 +7,6 @@
 //
 
 #import "HRPGToDoTableViewController.h"
-#import "ChecklistItem.h"
 #import "Habitica-Swift.h"
 
 @interface HRPGToDoTableViewController ()
@@ -54,9 +53,10 @@
 
 - (void)didChangeFilter:(NSNotification *)notification {
     [super didChangeFilter:notification];
-    if (self.filterType == TaskToDoFilterTypeDone) {
+    //TODO: FIX
+    /*if (self.filterType == TaskToDoFilterTypeDone) {
         [self.dataSource fetchCompletedTodos];
-    }
+    }*/
 }
 
 @end

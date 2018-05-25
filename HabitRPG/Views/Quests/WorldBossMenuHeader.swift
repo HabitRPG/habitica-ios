@@ -67,8 +67,8 @@ class WorldBossMenuHeader: UIView {
     }
     
     @objc
-    func configure(group: Group) {
-        healthProgressBar.value = CGFloat(group.questHP.floatValue)
+    func configure(group: GroupProtocol) {
+        healthProgressBar.value = CGFloat(group.quest?.progress?.health ?? 0)
 
         let userDefaults = UserDefaults()
         isCollapsed = userDefaults.bool(forKey: "worldBossArtCollapsed")

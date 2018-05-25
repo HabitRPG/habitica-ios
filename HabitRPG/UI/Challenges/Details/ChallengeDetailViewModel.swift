@@ -240,9 +240,6 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
     }
     
     func reloadChallengeTasks(challenge: ChallengeProtocol) {
-        /*HRPGManager.shared().fetchChallengeTasks(challenge, onSuccess: {[weak self] () in
-            self?.setChallenge(challenge)
-            }, onError: nil)*/
     }
     
     // MARK: Resizing delegate
@@ -255,7 +252,7 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
     
     func userPressed(_ user: UserProtocol) {
         let secondStoryBoard = UIStoryboard(name: "Social", bundle: nil)
-        if let userViewController: HRPGUserProfileViewController = secondStoryBoard.instantiateViewController(withIdentifier: "UserProfileViewController") as? HRPGUserProfileViewController {
+        if let userViewController: UserProfileViewController = secondStoryBoard.instantiateViewController(withIdentifier: "UserProfileViewController") as? UserProfileViewController {
             userViewController.userID = user.id
             userViewController.username = user.profile?.name
             nextViewControllerProperty.value = userViewController

@@ -72,7 +72,7 @@ class GuildDetailViewController: GroupDetailViewController {
             challengesViewController?.dataSource.shownGuilds = [groupID]
             challengesViewController?.showOnlyUserChallenges = false
         } else if segue.identifier == StoryboardSegue.Social.userProfileSegue.rawValue, let leaderID = self.guildLeaderID {
-            let profileViewController = segue.destination as? HRPGUserProfileViewController
+            let profileViewController = segue.destination as? UserProfileViewController
             profileViewController?.userID = leaderID
         }
     }
