@@ -236,5 +236,6 @@ class RealmUser: Object, UserProtocol {
         authentication = user.authentication
         purchased = user.purchased
         party = user.party
+        challenges = user.challenges
     }
 }

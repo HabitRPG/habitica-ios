@@ -13,7 +13,7 @@ import Habitica_Models
 class HabitTableViewDataSourceInstantiator: NSObject {
     @objc
     static func instantiate(predicate: NSPredicate) -> TaskTableViewDataSourceProtocol {
-        return HabitTableViewDataSource(predicate: predicate)
+        return HabitTableViewDataSource(predicate: predicate, taskType: TaskType.habit)
     }
 }
 
@@ -31,4 +31,16 @@ class HabitTableViewDataSource: TaskTableViewDataSource {
         }
     }
     
+    override func predicates(filterType: Int) -> [NSPredicate] {
+        var predicates = super.predicates(filterType: filterType)
+        switch filterType {
+        case 1:
+            predicates.append(NSPredicate(format: "value <= 0"))
+        case 2:
+            predicates.append(NSPredicate(format: "value > 0"))
+        default:
+            break
+        }
+        return predicates
+    }
 }

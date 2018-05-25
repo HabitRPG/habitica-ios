@@ -61,7 +61,7 @@ class LabeledCheckboxView: UILabel {
 
     func updateCheckbox() {
         if isChecked {
-            checkboxView.image = #imageLiteral(resourceName: "checkbox_checked")
+            checkboxView.image = #imageLiteral(resourceName: "checkbox_checked").withRenderingMode(.alwaysTemplate)
         } else {
             checkboxView.image = #imageLiteral(resourceName: "checkbox_unchecked")
         }

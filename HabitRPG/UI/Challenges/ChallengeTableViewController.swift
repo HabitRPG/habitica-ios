@@ -65,7 +65,7 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate,
         let filterView = UIButton(frame: CGRect(x: 0, y: 40, width: self.view.frame.size.width, height: 40))
         filterView.setTitle(NSLocalizedString("Filter", comment: ""), for: .normal)
         filterView.backgroundColor = .gray500()
-        filterView.setTitleColor(.purple300(), for: .normal)
+        filterView.setTitleColor(ThemeService.shared.theme.tintColor, for: .normal)
         filterView.addTarget(self, action: #selector(self.filterTapped), for: .touchUpInside)
         headerView.addSubview(filterView)
 

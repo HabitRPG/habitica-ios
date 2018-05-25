@@ -24,7 +24,7 @@ class RealmMember: Object, MemberProtocol {
                 return
             }
             if let stats = newValue {
-                realmStats = RealmStats(id: id, stats: stats)
+                realmStats = RealmStats(id: "m\(id ?? "")", stats: stats)
             }
         }
     }
@@ -40,7 +40,7 @@ class RealmMember: Object, MemberProtocol {
                 return
             }
             if let newPreferences = newValue {
-                realmPreferences = RealmPreferences(id: id, preferences: newPreferences)
+                realmPreferences = RealmPreferences(id: "m\(id ?? "")", preferences: newPreferences)
             }
         }
     }
@@ -56,7 +56,7 @@ class RealmMember: Object, MemberProtocol {
                 return
             }
             if let profile = newValue {
-                realmProfile = RealmProfile(id: id, profile: profile)
+                realmProfile = RealmProfile(id: "m\(id ?? "")", profile: profile)
             }
         }
     }
@@ -72,7 +72,7 @@ class RealmMember: Object, MemberProtocol {
                 return
             }
             if let newContributor = newValue {
-                realmContributor = RealmContributor(id: id, contributor: newContributor)
+                realmContributor = RealmContributor(id: "m\(id ?? "")", contributor: newContributor)
             }
         }
     }
@@ -87,7 +87,7 @@ class RealmMember: Object, MemberProtocol {
                 return
             }
             if let newItems = newValue {
-                realmItems = RealmUserItems(id: id, userItems: newItems)
+                realmItems = RealmUserItems(id: "m\(id ?? "")", userItems: newItems)
             }
         }
     }
@@ -102,7 +102,7 @@ class RealmMember: Object, MemberProtocol {
                 return
             }
             if let value = newValue {
-                realmParty = RealmUserParty(userID: id, protocolObject: value)
+                realmParty = RealmUserParty(userID: "m\(id ?? "")", protocolObject: value)
             }
         }
     }
@@ -117,7 +117,7 @@ class RealmMember: Object, MemberProtocol {
                 return
             }
             if let newFlags = newValue {
-                realmFlags = RealmFlags(id: id, flags: newFlags)
+                realmFlags = RealmFlags(id: "m\(id ?? "")", flags: newFlags)
             }
         }
     }

@@ -7,7 +7,6 @@
 //
 
 #import "HRPGShopViewController.h"
-#import "KLCPopup.h"
 #import "NSString+StripHTML.h"
 #import "Habitica-Swift.h"
 

@@ -8,7 +8,6 @@
 
 import Foundation
 import Habitica_Models
-import KLCPopup
 
 @objc public protocol InboxMessagesDataSourceProtocol {
     @objc weak var tableView: UITableView? { get set }

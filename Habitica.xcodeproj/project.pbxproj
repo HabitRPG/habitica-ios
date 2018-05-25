@@ -375,7 +375,6 @@
 		D9722B8019BD041E009D8AD3 /* HRPGNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9722B7F19BD041E009D8AD3 /* HRPGNavigationController.m */; };
 		D976D2401B98FA940032BC41 /* UIColor.Habitica.m in Sources */ = {isa = PBXBuildFile; fileRef = D976D23F1B98FA940032BC41 /* UIColor.Habitica.m */; };
 		D97C71E418ECE09A0089FDC6 /* HRPGSpellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D97C71E318ECE09A0089FDC6 /* HRPGSpellViewController.m */; };
-		D97CCDBC19A7AFFA00DA128A /* HRPGArrayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D97CCDBB19A7AFFA00DA128A /* HRPGArrayViewController.m */; };
 		D97ED0AE1E6DBB97006C2A26 /* JoinChallengeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97ED0AD1E6DBB97006C2A26 /* JoinChallengeInteractor.swift */; };
 		D97ED0B01E6DBC87006C2A26 /* Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97ED0AF1E6DBC87006C2A26 /* Interactor.swift */; };
 		D97ED0B21E6DE3BF006C2A26 /* LeaveChallengeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97ED0B11E6DE3BF006C2A26 /* LeaveChallengeInteractor.swift */; };
@@ -951,8 +950,6 @@
 		D976DEC81CB65C06002BB69F /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Main.strings"; sourceTree = "<group>"; };
 		D97C71E218ECE09A0089FDC6 /* HRPGSpellViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGSpellViewController.h; sourceTree = "<group>"; };
 		D97C71E318ECE09A0089FDC6 /* HRPGSpellViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGSpellViewController.m; sourceTree = "<group>"; };
-		D97CCDBA19A7AFFA00DA128A /* HRPGArrayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGArrayViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		D97CCDBB19A7AFFA00DA128A /* HRPGArrayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGArrayViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		D97D39E61CB83ED500514F44 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D97D39E71CB83ED600514F44 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D97D39E81CB83ED600514F44 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/Social.strings; sourceTree = "<group>"; };
@@ -1686,8 +1683,6 @@
 				D99F15BE191027D90081836E /* HRPGBaseViewController.h */,
 				D99F15BF191027D90081836E /* HRPGBaseViewController.m */,
 				49DCECE71F9A843E00982E99 /* MultiModelTableViewController.swift */,
-				D97CCDBA19A7AFFA00DA128A /* HRPGArrayViewController.h */,
-				D97CCDBB19A7AFFA00DA128A /* HRPGArrayViewController.m */,
 				D998FD931ADAC1FF00E9A26F /* HRPGAboutViewController.h */,
 				D998FD941ADAC1FF00E9A26F /* HRPGAboutViewController.m */,
 				D9436AC21C64F6DC008D1171 /* Social */,
@@ -3064,7 +3059,6 @@
 				2919FDDF2091D87A0096A53B /* FaintViewController.swift in Sources */,
 				29701FE41F56C2200097BBCC /* IconLabel.swift in Sources */,
 				49E3784F200912BA00E0DA3D /* ResizableTableViewCell.swift in Sources */,
-				D97CCDBC19A7AFFA00DA128A /* HRPGArrayViewController.m in Sources */,
 				29E779F8203F30A40079F269 /* HRPGGemCapReachedViewController.swift in Sources */,
 				29FC8866201B7B5B002B3D3F /* WorldBossMenuHeader.swift in Sources */,
 				D97C71E418ECE09A0089FDC6 /* HRPGSpellViewController.m in Sources */,

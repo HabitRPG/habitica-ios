@@ -92,9 +92,9 @@ class ChallengeTableViewDataSource: BaseReactiveTableViewDataSource<ChallengePro
         if self.showOwned != self.showNotOwned {
             let userId = socialRepository.currentUserId ?? ""
             if self.showOwned {
-                searchComponents.append("leaderId == \'\(userId)\'")
+                searchComponents.append("leaderID == \'\(userId)\'")
             } else {
-                searchComponents.append("leaderId != \'\(userId)\'")
+                searchComponents.append("leaderID != \'\(userId)\'")
             }
         }
         /*if let shownGuilds = self.shownGuilds {

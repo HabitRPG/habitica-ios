@@ -14,7 +14,7 @@ protocol ChallengeFilterChangedDelegate: class {
     func challengeFilterChanged(showOwned: Bool, showNotOwned: Bool, shownGuilds: [String])
 }
 
-class ChallengeFilterAlert: UIViewController {
+class ChallengeFilterAlert: UIViewController, Themeable {
 
     @IBOutlet weak private var doneButton: UIButton!
     @IBOutlet weak private var allGroupsButton: UIButton!
@@ -38,6 +38,14 @@ class ChallengeFilterAlert: UIViewController {
     init() {
         super.init(nibName: "ChallengeFilterAlert", bundle: nil)
     }
+    
+    func applyTheme(theme: Theme) {
+        doneButton.setTitleColor(theme.tintColor, for: .normal)
+        allGroupsButton.setTitleColor(theme.tintColor, for: .normal)
+        noGroupsButton.setTitleColor(theme.tintColor, for: .normal)
+        ownedButton.tintColor = theme.tintColor
+        notOwnedButton.tintColor = theme.tintColor
+    }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -60,6 +68,8 @@ class ChallengeFilterAlert: UIViewController {
         }
 
         fetchGroups()
+        
+        ThemeService.shared.addThemeable(themable: self)
     }
 
     override func viewWillLayoutSubviews() {

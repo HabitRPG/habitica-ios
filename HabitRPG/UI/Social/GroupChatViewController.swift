@@ -9,7 +9,6 @@
 import UIKit
 import SlackTextViewController
 import Down
-import KLCPopup
 import Habitica_Models
 import ReactiveSwift
 

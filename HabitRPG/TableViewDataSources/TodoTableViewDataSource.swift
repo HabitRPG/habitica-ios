@@ -13,7 +13,7 @@ import Habitica_Models
 class TodoTableViewDataSourceInstantiator: NSObject {
     @objc
     static func instantiate(predicate: NSPredicate) -> TaskTableViewDataSourceProtocol {
-        return TodoTableViewDataSource(predicate: predicate)
+        return TodoTableViewDataSource(predicate: predicate, taskType: TaskType.todo)
     }
 }
 
@@ -21,8 +21,8 @@ class TodoTableViewDataSource: TaskTableViewDataSource {
     
     let dateFormatter = DateFormatter()
     
-    override init(predicate: NSPredicate) {
-        super.init(predicate: predicate)
+    override init(predicate: NSPredicate, taskType: TaskType) {
+        super.init(predicate: predicate, taskType: taskType)
         
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .none
@@ -44,4 +44,18 @@ class TodoTableViewDataSource: TaskTableViewDataSource {
         super.configure(cell: cell, indexPath: indexPath, task: task)
     }
     
+    override func predicates(filterType: Int) -> [NSPredicate] {
+        var predicates = super.predicates(filterType: filterType)
+        switch filterType {
+        case 0:
+            predicates.append(NSPredicate(format: "completed == false"))
+        case 1:
+            predicates.append(NSPredicate(format: "completed == false && duedate != nil"))
+        case 2:
+            predicates.append(NSPredicate(format: "completed == true"))
+        default:
+            break
+        }
+        return predicates
+    }
 }

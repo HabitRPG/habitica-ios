@@ -9,7 +9,6 @@
 #import "HRPGInboxChatViewController.h"
 #import "UIViewController+Markdown.h"
 #import "HRPGFlagInformationOverlayView.h"
-#import "KLCPopup.h"
 #import "UIViewController+HRPGTopHeaderNavigationController.h"
 #import "Habitica-Swift.h"
 #import "NSString+Emoji.h"

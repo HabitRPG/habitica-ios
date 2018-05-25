@@ -226,7 +226,7 @@ NSIndexPath  *sourceIndexPath = nil;
     NSMutableArray *predicateArray = [[NSMutableArray alloc] initWithCapacity:3];
     MainTabBarController *tabBarController = (MainTabBarController *)self.tabBarController;
 
-    [predicateArray addObjectsFromArray:[self.dataSource predicatesWithTaskType:self.typeName filterType:self.filterType]];
+    [predicateArray addObjectsFromArray:[self.dataSource predicatesWithFilterType:self.filterType]];
 
     if ([tabBarController.selectedTags count] > 0) {
         [predicateArray

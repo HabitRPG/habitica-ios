@@ -13,7 +13,7 @@ import Habitica_Models
 class DailyTableViewDataSourceInstantiator: NSObject {
     @objc
     static func instantiate(predicate: NSPredicate) -> TaskTableViewDataSourceProtocol {
-        return DailyTableViewDataSource(predicate: predicate)
+        return DailyTableViewDataSource(predicate: predicate, taskType: TaskType.daily)
     }
 }
 
@@ -34,4 +34,16 @@ class DailyTableViewDataSource: TaskTableViewDataSource {
         }
     }
     
+    override func predicates(filterType: Int) -> [NSPredicate] {
+        var predicates = super.predicates(filterType: filterType)
+        switch filterType {
+        case 1:
+            predicates.append(NSPredicate(format: "completed == false && isDue == true"))
+        case 2:
+            predicates.append(NSPredicate(format: "completed == true || isDue == false"))
+        default:
+            break
+        }
+        return predicates
+    }
 }

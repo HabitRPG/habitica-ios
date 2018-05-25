@@ -37,11 +37,12 @@ public protocol TaskTableViewDataSourceProtocol {
     func fetchCompletedTodos()
     
     @objc
-    func predicates(taskType: String, filterType: Int) -> [NSPredicate]
+    func predicates(filterType: Int) -> [NSPredicate]
 }
 
 class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, TaskTableViewDataSourceProtocol {
     
+    var taskType: TaskType
     var tasks: [TaskProtocol] {
         get {
             return sections[0].items
@@ -68,8 +69,9 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
     private var expandedIndexPath: IndexPath?
     private var fetchTasksDisposable: Disposable?
     
-    init(predicate: NSPredicate) {
+    init(predicate: NSPredicate, taskType: TaskType) {
         self.predicate = predicate
+        self.taskType = taskType
         super.init()
         sections.append(ItemSection<TaskProtocol>())
     }
@@ -185,18 +187,9 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
         }
     }
     
-    func predicates(taskType: String, filterType: Int) -> [NSPredicate] {
-        //TODO: FIX
+    func predicates(filterType: Int) -> [NSPredicate] {
         var predicates = [NSPredicate]()
-        switch taskType {
-        case TaskType.habit.rawValue:
-            switch filterType {
-            default:
-                break
-            }
-        default:
-            break
-        }
+        predicates.append(NSPredicate(format: "type == %@", taskType.rawValue))
         return predicates
     }
 }

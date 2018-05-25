@@ -9,6 +9,7 @@
 #import "HRPGDropsEnabledNotification.h"
 #import "HRPGImageOverlayView.h"
 #import "HRPGAppDelegate.h"
+#import "KLCPopup.h"
 
 @implementation HRPGDropsEnabledNotification
 
