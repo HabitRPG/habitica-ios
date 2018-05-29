@@ -13,3 +13,9 @@ public protocol OwnedPetProtocol {
     var key: String? { get set }
     var trained: Int { get set }
 }
+
+public extension OwnedPetProtocol {
+    var isOwned: Bool {
+        return trained > 0
+    }
+}

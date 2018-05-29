@@ -343,7 +343,6 @@
 		D94461911AB355940015215E /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = D94461901AB355940015215E /* user.json */; };
 		D946E5C21B30A89500806BE6 /* NSDate+NSDateMock.m in Sources */ = {isa = PBXBuildFile; fileRef = D946E5C11B30A89500806BE6 /* NSDate+NSDateMock.m */; };
 		D9479607196DF4B6002CB34C /* HRPGImageOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9479606196DF4B6002CB34C /* HRPGImageOverlayView.m */; };
-		D94AADB7192A56E800546C8E /* HRPGSpellTaskController.m in Sources */ = {isa = PBXBuildFile; fileRef = D94AADB6192A56E800546C8E /* HRPGSpellTaskController.m */; };
 		D94AADBA192A5CE700546C8E /* HRPGSpellTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = D94AADB9192A5CE700546C8E /* HRPGSpellTabBarController.m */; };
 		D94B96A01B8B2CEE00C977C2 /* content-24.8.15.json in Resources */ = {isa = PBXBuildFile; fileRef = D94B969F1B8B2CEE00C977C2 /* content-24.8.15.json */; };
 		D94FEDEE1BB6DA8E0046A52E /* HRPGInviteMembersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D94FEDED1BB6DA8E0046A52E /* HRPGInviteMembersViewController.m */; };
@@ -897,8 +896,6 @@
 		D946E5C11B30A89500806BE6 /* NSDate+NSDateMock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+NSDateMock.m"; sourceTree = "<group>"; };
 		D9479605196DF4B6002CB34C /* HRPGImageOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGImageOverlayView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D9479606196DF4B6002CB34C /* HRPGImageOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGImageOverlayView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		D94AADB5192A56E800546C8E /* HRPGSpellTaskController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGSpellTaskController.h; sourceTree = "<group>"; };
-		D94AADB6192A56E800546C8E /* HRPGSpellTaskController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGSpellTaskController.m; sourceTree = "<group>"; };
 		D94AADB8192A5CE700546C8E /* HRPGSpellTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGSpellTabBarController.h; sourceTree = "<group>"; };
 		D94AADB9192A5CE700546C8E /* HRPGSpellTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGSpellTabBarController.m; sourceTree = "<group>"; };
 		D94B969F1B8B2CEE00C977C2 /* content-24.8.15.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "content-24.8.15.json"; path = "HabiticaTests/Fixtures/content-24.8.15.json"; sourceTree = SOURCE_ROOT; };
@@ -2240,8 +2237,6 @@
 			children = (
 				D97C71E218ECE09A0089FDC6 /* HRPGSpellViewController.h */,
 				D97C71E318ECE09A0089FDC6 /* HRPGSpellViewController.m */,
-				D94AADB5192A56E800546C8E /* HRPGSpellTaskController.h */,
-				D94AADB6192A56E800546C8E /* HRPGSpellTaskController.m */,
 			);
 			path = Spells;
 			sourceTree = "<group>";
@@ -3313,7 +3308,6 @@
 				292DEEA5204F6F6C0086D5F7 /* DailyTableViewDataSource.swift in Sources */,
 				292DEE8D204F458B0086D5F7 /* HabitTableViewDataSource.swift in Sources */,
 				D9FC1A7E1BC28F4700B97D23 /* HRPGTypingLabel.m in Sources */,
-				D94AADB7192A56E800546C8E /* HRPGSpellTaskController.m in Sources */,
 				D92A084B1D33FA08000F8B66 /* HRPGShopViewController.m in Sources */,
 				D92503BE1D5C9219006C9388 /* NSString+UUID.m in Sources */,
 				D9CE90471E4CDF3F00702578 /* Designable-Extensions.swift in Sources */,

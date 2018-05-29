@@ -11,7 +11,10 @@ import Habitica_Models
 
 @objc public protocol InboxMessagesDataSourceProtocol {
     @objc weak var tableView: UITableView? { get set }
-    @objc func sendMessage(messageText: String)
+    @objc weak var viewController: HRPGInboxChatViewController? { get set }
+    
+    @objc
+    func sendMessage(messageText: String)
 }
 
 @objc
@@ -40,6 +43,9 @@ class InboxMessagesDataSource: BaseReactiveTableViewDataSource<InboxMessageProto
         disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
             self?.user = user
             self?.tableView?.reloadData()
+        }).start())
+        disposable.inner.add(socialRepository.getMember(userID: otherUserID, retrieveIfNotFound: true).on(value: { member in
+            self.viewController?.setTitleWithUsername(member?.profile?.name)
         }).start())
         disposable.inner.add(socialRepository.getMessages(withUserID: otherUserID).on(value: {[weak self] (messages, changes) in
             self?.sections[0].items = messages

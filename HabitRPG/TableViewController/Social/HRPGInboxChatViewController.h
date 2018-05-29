@@ -15,4 +15,7 @@
 @property NSString *username;
 @property BOOL isPresentedModally;
 @property BOOL isScrolling;
+
+- (void)setTitleWithUsername:(NSString * _Nullable)username;
+
 @end

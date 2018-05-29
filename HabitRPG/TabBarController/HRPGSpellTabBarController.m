@@ -7,7 +7,6 @@
 //
 
 #import "HRPGSpellTabBarController.h"
-#import "HRPGSpellTaskController.h"
 #import "UIColor+Habitica.h"
 #import "Habitica-Swift.h"
 

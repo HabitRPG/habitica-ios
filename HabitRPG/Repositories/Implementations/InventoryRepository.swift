@@ -87,31 +87,51 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
     func buyObject(key: String) -> Signal<UserProtocol?, NoError> {
         let call = BuyObjectCall(key: key)
         call.fire()
-        return call.objectSignal
+        return call.objectSignal.on(value: { updatedUser in
+            if let updatedUser = updatedUser, let userID = self.currentUserId {
+                self.localUserRepository.updateUser(id: userID, updateUser: updatedUser)
+            }
+        })
     }
     
     func purchaseItem(purchaseType: String, key: String) -> Signal<UserProtocol?, NoError> {
         let call = PurchaseItemCall(purchaseType: purchaseType, key: key)
         call.fire()
-        return call.objectSignal
+        return call.objectSignal.on(value: { updatedUser in
+            if let updatedUser = updatedUser, let userID = self.currentUserId {
+                self.localUserRepository.updateUser(id: userID, updateUser: updatedUser)
+            }
+        })
     }
     
     func purchaseHourglassItem(purchaseType: String, key: String) -> Signal<UserProtocol?, NoError> {
         let call = PurchaseHourglassItemCall(purchaseType: purchaseType, key: key)
         call.fire()
-        return call.objectSignal
+        return call.objectSignal.on(value: { updatedUser in
+            if let updatedUser = updatedUser, let userID = self.currentUserId {
+                self.localUserRepository.updateUser(id: userID, updateUser: updatedUser)
+            }
+        })
     }
     
     func purchaseMysterySet(identifier: String) -> Signal<UserProtocol?, NoError> {
         let call = PurchaseMysterySetCall(identifier: identifier)
         call.fire()
-        return call.objectSignal
+        return call.objectSignal.on(value: { updatedUser in
+            if let updatedUser = updatedUser, let userID = self.currentUserId {
+                self.localUserRepository.updateUser(id: userID, updateUser: updatedUser)
+            }
+        })
     }
     
     func purchaseQuest(key: String) -> Signal<UserProtocol?, NoError> {
         let call = PurchaseQuestCall(key: key)
         call.fire()
-        return call.objectSignal
+        return call.objectSignal.on(value: { updatedUser in
+            if let updatedUser = updatedUser, let userID = self.currentUserId {
+                self.localUserRepository.updateUser(id: userID, updateUser: updatedUser)
+            }
+        })
     }
     
     func togglePinnedItem(pinType: String, path: String) -> Signal<EmptyResponseProtocol?, NoError> {

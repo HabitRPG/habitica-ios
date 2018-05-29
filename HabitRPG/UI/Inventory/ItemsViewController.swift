@@ -102,10 +102,11 @@ class ItemsViewController: HRPGBaseViewController {
                     L10n.Inventory.hatchedSharing(egg.text ?? "", potion.text ?? "")
                 ], withPresenting: self, withSourceView: nil)
         }
+        imageAlert.containerViewSpacing = 12
         imageAlert.addCloseAction()
         imageAlert.imageHeight = 99
         imageAlert.titleLabel.textColor = .white
-        imageAlert.titleBackgroundColor = UIColor.purple300()
+        imageAlert.titleBackgroundColor = ThemeService.shared.theme.backgroundTintColor
         imageAlert.show()
     }
     

@@ -12,7 +12,9 @@ import Habitica_Models
 @objc
 public protocol FeedViewDataSourceProtocol {
     @objc weak var tableView: UITableView? { get set }
-    @objc func food(at indexPath: IndexPath?) -> FoodProtocol?
+    
+    @objc
+    func food(at indexPath: IndexPath?) -> FoodProtocol?
 }
 
 @objc

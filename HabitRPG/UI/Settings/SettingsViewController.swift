@@ -103,6 +103,7 @@ class SettingsViewController: FormViewController, Themeable {
                 })
                 }.onCellSelection({ (_, _) in
                     let progressView = MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
+                    progressView?.setTintColor(ThemeService.shared.theme.tintColor)
                     self.contentRepository.clearDatabase()
                     self.contentRepository.retrieveContent().withLatest(from: self.userRepository.retrieveUser())
                         .observeCompleted {
@@ -116,6 +117,7 @@ class SettingsViewController: FormViewController, Themeable {
                 })
                 }.onCellSelection({ (_, _) in
                     let progressView = MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
+                    progressView?.tintColor = ThemeService.shared.theme.tintColor
                     self.contentRepository.retrieveContent().observeCompleted {
                         progressView?.dismiss(true)
                     }

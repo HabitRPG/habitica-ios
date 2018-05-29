@@ -31,19 +31,12 @@
     [super viewDidLoad];
     self.datasource = [InboxMessagesDataSourceInstantiator instantiateWithOtherUserID: self.userID];
     self.datasource.tableView = self.tableView;
+    self.datasource.viewController = self;
     
     self.viewWidth = self.view.frame.size.width;
     
     UINib *nib = [UINib nibWithNibName:@"ChatMessageCell" bundle:nil];
     [[self tableView] registerNib:nib forCellReuseIdentifier:@"ChatMessageCell"];
-    
-    //TODO: FIX
-    /*if (self.username == nil || [self.username length] == 0) {
-        [User fetchUserWithId:self.userID completionBlock:^(User *member) {
-            self.username = member.username;
-            [self setNavigationTitle];
-        }];
-    }*/
     
     if (self.isPresentedModally) {
         [self.navigationItem setRightBarButtonItems:@[self.doneBarButton] animated:NO];
@@ -57,7 +50,7 @@
     self.tableView.backgroundColor = [UIColor gray700];
 }
 
-- (void)setNavigationTitle:(NSString *)username {
+- (void)setTitleWithUsername:(NSString * _Nullable)username {
     if (username) {
         self.navigationItem.title = [NSString stringWithFormat:NSLocalizedString(@"Write to %@", nil), self.username];
     } else {

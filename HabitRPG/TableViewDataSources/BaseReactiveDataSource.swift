@@ -83,7 +83,7 @@ class BaseReactiveTableViewDataSource<MODEL>: BaseReactiveDataSource<MODEL>, UIT
             tableView?.reloadData()
         } else {
             tableView?.beginUpdates()
-            if changes.inserted.count == sections[section].items.count {
+            if changes.inserted.count == sections[section].items.count && changes.inserted.count != 0 {
                 //If the count is the same, the section is new, since it was previously empty
                 tableView?.insertSections([section], with: .automatic)
             }

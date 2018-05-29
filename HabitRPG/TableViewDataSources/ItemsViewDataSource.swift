@@ -28,9 +28,11 @@ class ItemsViewDataSource: BaseReactiveTableViewDataSource<ItemProtocol> {
     }
     
     private let inventoryRepository = InventoryRepository()
+    private let stableRepository = StableRepository()
     private var fetchDisposable: Disposable?
     
     private var ownedItems = [String: Int]()
+    private var ownedPets = [String]()
     
     var hatchingItem: ItemProtocol?
     var isHatching = false {
@@ -63,6 +65,19 @@ class ItemsViewDataSource: BaseReactiveTableViewDataSource<ItemProtocol> {
         sections.append(ItemSection<ItemProtocol>(key: "quests", title: L10n.quests))
         
         fetchItems()
+        
+        disposable.inner.add(stableRepository.getOwnedPets()
+            .map({ pets -> [String] in
+                return pets.value.filter({ ownedPet -> Bool in
+                    return ownedPet.isOwned
+                }).map({ (ownedPet) in
+                    return ownedPet.key ?? ""
+                })
+            })
+            .on(value: { ownedPets in
+                self.ownedPets = ownedPets
+        }).start())
+        
     }
     
     private func fetchItems() {
@@ -114,7 +129,25 @@ class ItemsViewDataSource: BaseReactiveTableViewDataSource<ItemProtocol> {
             detailLabel?.text = "\(ownedItems[(ownedItem.key ?? "") + (ownedItem.itemType ?? "")] ?? 0)"
             let imageView = cell.viewWithTag(3) as? UIImageView
             imageView?.setImagewith(name: ownedItem.imageName)
+            
+            imageView?.alpha = 1.0
+            label?.alpha = 1.0
+            if isHatching, let hatchingItem = self.hatchingItem {
+                if ownsPet(ownedItem, otherItem: hatchingItem) {
+                    imageView?.alpha = 0.3
+                    label?.alpha = 0.3
+                }
+            }
         }
         return cell
+    }
+    
+    func ownsPet(_ firstItem: ItemProtocol, otherItem: ItemProtocol) -> Bool {
+        if let egg = firstItem as? EggProtocol, let potion = otherItem as? HatchingPotionProtocol {
+            return ownedPets.contains("\(egg.key ?? "")-\(potion.key ?? "")")
+        } else if let egg = otherItem as? EggProtocol, let potion = firstItem as? HatchingPotionProtocol {
+            return ownedPets.contains("\(egg.key ?? "")-\(potion.key ?? "")")
+        }
+        return false
     }
 }
