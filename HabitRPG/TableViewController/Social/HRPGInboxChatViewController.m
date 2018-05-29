@@ -37,7 +37,6 @@
     UINib *nib = [UINib nibWithNibName:@"ChatMessageCell" bundle:nil];
     [[self tableView] registerNib:nib forCellReuseIdentifier:@"ChatMessageCell"];
     
-    [self setNavigationTitle];
     //TODO: FIX
     /*if (self.username == nil || [self.username length] == 0) {
         [User fetchUserWithId:self.userID completionBlock:^(User *member) {
@@ -58,8 +57,8 @@
     self.tableView.backgroundColor = [UIColor gray700];
 }
 
-- (void)setNavigationTitle {
-    if (self.username) {
+- (void)setNavigationTitle:(NSString *)username {
+    if (username) {
         self.navigationItem.title = [NSString stringWithFormat:NSLocalizedString(@"Write to %@", nil), self.username];
     } else {
         self.navigationItem.title = NSLocalizedString(@"Write Message", nil);

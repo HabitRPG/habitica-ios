@@ -194,6 +194,10 @@
 		29B3FEBA1F9A6FAD000B12CF /* AuthenticationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B3FEB91F9A6FAD000B12CF /* AuthenticationSettingsViewController.swift */; };
 		29B3FEBC1F9E3B17000B12CF /* HabiticaAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B3FEBB1F9E3B17000B12CF /* HabiticaAlertController.swift */; };
 		29B3FEBE1F9E3DC3000B12CF /* HabiticaAlertController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29B3FEBD1F9E3DC3000B12CF /* HabiticaAlertController.xib */; };
+		29B4788420BD6DED00B6123F /* SkillsUserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4788320BD6DED00B6123F /* SkillsUserTableViewController.swift */; };
+		29B4788620BD6E2E00B6123F /* SkillsUserTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4788520BD6E2E00B6123F /* SkillsUserTableViewDataSource.swift */; };
+		29B4788820BD732A00B6123F /* SkillsTaskTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4788720BD732A00B6123F /* SkillsTaskTableViewDataSource.swift */; };
+		29B4788A20BD752C00B6123F /* SkillsTaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4788920BD752C00B6123F /* SkillsTaskTableViewController.swift */; };
 		29B6AD4A1F2A0C9800AC8878 /* LoginEntryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29B6AD491F2A0C9700AC8878 /* LoginEntryView.xib */; };
 		29B6AD4C1F2A0DBE00AC8878 /* LoginEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B6AD4B1F2A0DBE00AC8878 /* LoginEntryView.swift */; };
 		29C1B6AB20594F500001D3EF /* VisualEffectsModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C1B6AA20594F500001D3EF /* VisualEffectsModalViewController.swift */; };
@@ -385,7 +389,6 @@
 		D984D58F1E4A2F41006E84F8 /* SubscriptionOptionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D984D58E1E4A2F41006E84F8 /* SubscriptionOptionView.xib */; };
 		D98768F51AFFB85100336978 /* blade-equipResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = D98768F41AFFB85100336978 /* blade-equipResponse.json */; };
 		D9884B4519168AF00078BC7C /* HRPGProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9884B4419168AF00078BC7C /* HRPGProgressView.m */; };
-		D98C62BC1DACF933005661CC /* HRPGSpellUserTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D98C62BB1DACF933005661CC /* HRPGSpellUserTableViewController.m */; };
 		D98F5DC31C6A34540035CBEC /* ChatMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D98F5DC21C6A34540035CBEC /* ChatMessageCell.xib */; };
 		D98F5DCD1C6CB1330035CBEC /* HRPGFlagInformationOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = D98F5DCC1C6CB1330035CBEC /* HRPGFlagInformationOverlayView.m */; };
 		D98F5DD11C6CB4BE0035CBEC /* HRPGFlagInformationOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D98F5DD01C6CB4BE0035CBEC /* HRPGFlagInformationOverlayView.xib */; };
@@ -685,6 +688,10 @@
 		29B3FEB91F9A6FAD000B12CF /* AuthenticationSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationSettingsViewController.swift; sourceTree = "<group>"; };
 		29B3FEBB1F9E3B17000B12CF /* HabiticaAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabiticaAlertController.swift; sourceTree = "<group>"; };
 		29B3FEBD1F9E3DC3000B12CF /* HabiticaAlertController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HabiticaAlertController.xib; sourceTree = "<group>"; };
+		29B4788320BD6DED00B6123F /* SkillsUserTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsUserTableViewController.swift; sourceTree = "<group>"; };
+		29B4788520BD6E2E00B6123F /* SkillsUserTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsUserTableViewDataSource.swift; sourceTree = "<group>"; };
+		29B4788720BD732A00B6123F /* SkillsTaskTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsTaskTableViewDataSource.swift; sourceTree = "<group>"; };
+		29B4788920BD752C00B6123F /* SkillsTaskTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsTaskTableViewController.swift; sourceTree = "<group>"; };
 		29B6AD491F2A0C9700AC8878 /* LoginEntryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginEntryView.xib; sourceTree = "<group>"; };
 		29B6AD4B1F2A0DBE00AC8878 /* LoginEntryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginEntryView.swift; sourceTree = "<group>"; };
 		29C1B6AA20594F500001D3EF /* VisualEffectsModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectsModalViewController.swift; sourceTree = "<group>"; };
@@ -966,8 +973,6 @@
 		D98768F41AFFB85100336978 /* blade-equipResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "blade-equipResponse.json"; path = "HabiticaTests/Fixtures/blade-equipResponse.json"; sourceTree = SOURCE_ROOT; };
 		D9884B4319168AF00078BC7C /* HRPGProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = HRPGProgressView.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		D9884B4419168AF00078BC7C /* HRPGProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = HRPGProgressView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		D98C62BA1DACF933005661CC /* HRPGSpellUserTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGSpellUserTableViewController.h; sourceTree = "<group>"; };
-		D98C62BB1DACF933005661CC /* HRPGSpellUserTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGSpellUserTableViewController.m; sourceTree = "<group>"; };
 		D98F5DC21C6A34540035CBEC /* ChatMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatMessageCell.xib; sourceTree = "<group>"; };
 		D98F5DCB1C6CB1330035CBEC /* HRPGFlagInformationOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGFlagInformationOverlayView.h; sourceTree = "<group>"; };
 		D98F5DCC1C6CB1330035CBEC /* HRPGFlagInformationOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGFlagInformationOverlayView.m; sourceTree = "<group>"; };
@@ -1436,6 +1441,15 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
+		29B4788220BD6DDF00B6123F /* Skills */ = {
+			isa = PBXGroup;
+			children = (
+				29B4788320BD6DED00B6123F /* SkillsUserTableViewController.swift */,
+				29B4788920BD752C00B6123F /* SkillsTaskTableViewController.swift */,
+			);
+			path = Skills;
+			sourceTree = "<group>";
+		};
 		29C1B6A920594F3D0001D3EF /* Tasks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1553,6 +1567,8 @@
 				2974BDB52090C03E00EC1A25 /* InboxOverviewDataSource.swift */,
 				2919FDD42090CF900096A53B /* InboxMessagesDataSource.swift */,
 				295E9DF320B456F100D58D45 /* FilterTableviewDataSource.swift */,
+				29B4788520BD6E2E00B6123F /* SkillsUserTableViewDataSource.swift */,
+				29B4788720BD732A00B6123F /* SkillsTaskTableViewDataSource.swift */,
 			);
 			name = TVDataSources;
 			sourceTree = "<group>";
@@ -1952,6 +1968,7 @@
 		D9A63A311E1031FD0083ADC4 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				29B4788220BD6DDF00B6123F /* Skills */,
 				2974BDAE2090896600EC1A25 /* Inbox */,
 				D9E02EC41E5E02E7002CFCE2 /* Challenges */,
 				290279612057EBE9006DACB9 /* FAQ */,
@@ -2225,8 +2242,6 @@
 				D97C71E318ECE09A0089FDC6 /* HRPGSpellViewController.m */,
 				D94AADB5192A56E800546C8E /* HRPGSpellTaskController.h */,
 				D94AADB6192A56E800546C8E /* HRPGSpellTaskController.m */,
-				D98C62BA1DACF933005661CC /* HRPGSpellUserTableViewController.h */,
-				D98C62BB1DACF933005661CC /* HRPGSpellUserTableViewController.m */,
 			);
 			path = Spells;
 			sourceTree = "<group>";
@@ -3058,6 +3073,7 @@
 				29701FE01F560D310097BBCC /* UIApplication-Extensions.swift in Sources */,
 				2919FDDF2091D87A0096A53B /* FaintViewController.swift in Sources */,
 				29701FE41F56C2200097BBCC /* IconLabel.swift in Sources */,
+				29B4788420BD6DED00B6123F /* SkillsUserTableViewController.swift in Sources */,
 				49E3784F200912BA00E0DA3D /* ResizableTableViewCell.swift in Sources */,
 				29E779F8203F30A40079F269 /* HRPGGemCapReachedViewController.swift in Sources */,
 				29FC8866201B7B5B002B3D3F /* WorldBossMenuHeader.swift in Sources */,
@@ -3131,6 +3147,7 @@
 				D9BB45611E71CD850002AE2E /* DailyTableViewCell.swift in Sources */,
 				291448882088F3F700F3A6B5 /* NSAttributedString.swift in Sources */,
 				29AAA15D1F2A3AA600029737 /* GradientView.swift in Sources */,
+				29B4788A20BD752C00B6123F /* SkillsTaskTableViewController.swift in Sources */,
 				D94FEDEE1BB6DA8E0046A52E /* HRPGInviteMembersViewController.m in Sources */,
 				294EB59D1FA0A7E4006083BD /* FixCharacterViewController.swift in Sources */,
 				D96C86CB1BB0546400E4C134 /* HRPGCopyLabel.m in Sources */,
@@ -3283,7 +3300,6 @@
 				D9722B8019BD041E009D8AD3 /* HRPGNavigationController.m in Sources */,
 				494E54101F2EEF810003683C /* Amplitude+HRPGHelpers.m in Sources */,
 				29255E4D1F3E25910094A3E3 /* CGRect-Extensions.swift in Sources */,
-				D98C62BC1DACF933005661CC /* HRPGSpellUserTableViewController.m in Sources */,
 				D995D59A1D1D511700D5251C /* HRPGPushNotificationSettingValueTransformer.m in Sources */,
 				297D15FA20B803D30048101F /* UserProfileViewController.swift in Sources */,
 				D9AEF8E41CE4CCA5006914CB /* HRPGURLParser.m in Sources */,
@@ -3313,6 +3329,7 @@
 				29028C422037131C00B7F704 /* SystemMessageTableViewCell.swift in Sources */,
 				29B3FEBA1F9A6FAD000B12CF /* AuthenticationSettingsViewController.swift in Sources */,
 				290279632057EC03006DACB9 /* FAQTableViewController.swift in Sources */,
+				29B4788620BD6E2E00B6123F /* SkillsUserTableViewDataSource.swift in Sources */,
 				493ECBB71F47D7E10099B1FC /* HRPGGearSetItem.swift in Sources */,
 				49DCB7AC1F39239D0079FDD0 /* HRPGSimpleShopItemView.swift in Sources */,
 				29DC5AC920A1F6C100993400 /* QuestParticipantView.swift in Sources */,
@@ -3343,6 +3360,7 @@
 				29B6AD4C1F2A0DBE00AC8878 /* LoginEntryView.swift in Sources */,
 				2980E6091EEA25CE005B7100 /* YesterdailiesDialogView.swift in Sources */,
 				29646DE1205C18FA0050886C /* TaskType-Extensions.swift in Sources */,
+				29B4788820BD732A00B6123F /* SkillsTaskTableViewDataSource.swift in Sources */,
 				494E54221F310BA00003683C /* HRPGShopSectionHeaderCollectionReusableView.swift in Sources */,
 				498E4D071FA17DB9006933FF /* ChallengeActionsTableViewCell.swift in Sources */,
 				29B388DF1EEF4FBD00A72950 /* MorningNotification.swift in Sources */,

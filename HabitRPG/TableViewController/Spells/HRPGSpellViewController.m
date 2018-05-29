@@ -8,7 +8,6 @@
 
 #import "HRPGSpellViewController.h"
 #import "HRPGSpellTabBarController.h"
-#import "HRPGSpellUserTableViewController.h"
 #import "Habitica-Swift.h"
 
 @interface HRPGSpellViewController ()
@@ -71,10 +70,10 @@
             [self presentViewController:navigationController
                                animated:YES
                              completion:^() {
-                                 HRPGSpellUserTableViewController *tabBarController =
-                                 (HRPGSpellUserTableViewController *)
+                                 SkillsUserTableViewController *viewController =
+                                 (SkillsUserTableViewController *)
                                  navigationController.topViewController;
-                                 tabBarController.skill = skill;
+                                 viewController.skill = skill;
                              }];
 
         } else {
@@ -92,8 +91,8 @@
 
 - (IBAction)unwindToListSave:(UIStoryboardSegue *)segue {
     if ([segue.identifier isEqualToString:@"CastUserSpellSegue"]) {
-        HRPGSpellUserTableViewController *userViewController = (HRPGSpellUserTableViewController *) segue.sourceViewController;
-        [self.dataSource useSkillWithSkill:userViewController.skill targetId:userViewController.userID];
+        SkillsUserTableViewController *userViewController = (SkillsUserTableViewController *) segue.sourceViewController;
+        [self.dataSource useSkillWithSkill:userViewController.skill targetId:userViewController.selectedUserID];
     } else if ([segue.identifier isEqualToString:@"CastTaskSpellSegue"]) {
         HRPGSpellTabBarController *tabbarController = (HRPGSpellTabBarController *) segue.sourceViewController;
         [self.dataSource useSkillWithSkill:tabbarController.skill targetId:tabbarController.taskID];

@@ -41,6 +41,14 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
         return localRepository.getTasks(predicate: predicate)
     }
     
+    func getTasks(type: TaskType) -> SignalProducer<ReactiveResults<[TaskProtocol]>, ReactiveSwiftRealmError> {
+        var predicate = NSPredicate(format: "type == %@", type.rawValue)
+        if type == .todo {
+            predicate = NSPredicate(format: "type == 'todo' && completed == false")
+        }
+        return getTasks(predicate: predicate)
+    }
+    
     func getDueTasks() -> SignalProducer<ReactiveResults<[TaskProtocol]>, ReactiveSwiftRealmError> {
         return localRepository.getTasks(predicate: NSPredicate(format: "(type == 'daily' && isDue == true) || (type == 'todo' && completed == false)"))
     }

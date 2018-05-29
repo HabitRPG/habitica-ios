@@ -2399,7 +2399,7 @@ and helps keep Habitica running</string>
         <!--Choose User-->
         <scene sceneID="0hc-ne-2lf">
             <objects>
-                <tableViewController id="57X-FG-jGF" customClass="HRPGSpellUserTableViewController" sceneMemberID="viewController">
+                <tableViewController id="57X-FG-jGF" customClass="SkillsUserTableViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" id="HS2-QW-ige">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2418,7 +2418,7 @@ and helps keep Habitica running</string>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pOk-IY-fz3">
+                                        <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pOk-IY-fz3" customClass="AvatarView" customModule="Habitica" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="-0.5" width="90" height="90"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
@@ -2478,7 +2478,7 @@ and helps keep Habitica running</string>
         <!--To-Dos-->
         <scene sceneID="WgF-4W-TMv">
             <objects>
-                <tableViewController id="DhB-2l-6nh" customClass="HRPGSpellTaskController" sceneMemberID="viewController">
+                <tableViewController id="DhB-2l-6nh" customClass="SkillsTaskTableViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="M57-sX-1Qv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2523,7 +2523,7 @@ and helps keep Habitica running</string>
         <!--Dailies-->
         <scene sceneID="ZtU-ke-UJe">
             <objects>
-                <tableViewController id="7lu-pK-DCS" customClass="HRPGSpellTaskController" sceneMemberID="viewController">
+                <tableViewController id="7lu-pK-DCS" customClass="SkillsTaskTableViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="WsU-DS-w0W">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2568,7 +2568,7 @@ and helps keep Habitica running</string>
         <!--Habits-->
         <scene sceneID="pyJ-pU-Dzp">
             <objects>
-                <tableViewController id="Sir-tg-Qda" customClass="HRPGSpellTaskController" sceneMemberID="viewController">
+                <tableViewController id="Sir-tg-Qda" customClass="SkillsTaskTableViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="9Od-N1-1ne">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

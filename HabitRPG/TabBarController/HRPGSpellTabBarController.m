@@ -9,6 +9,7 @@
 #import "HRPGSpellTabBarController.h"
 #import "HRPGSpellTaskController.h"
 #import "UIColor+Habitica.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGSpellTabBarController ()
 @end
@@ -17,8 +18,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    [self.tabBar setTintColor:[UIColor purple400]];
 
     UIImage *calendarImage = [UIImage imageNamed:@"tabbar_dailies"];
     
@@ -44,16 +43,16 @@
     dailyItem.image = resultImage;
     
     int tabIndex = 0;
-    for (HRPGSpellTaskController *taskController in self.viewControllers) {
+    for (SkillsTaskTableViewController *taskController in self.viewControllers) {
         switch (tabIndex) {
             case 0:
-                taskController.taskType = @"habit";
+                taskController.taskTypeString = @"habit";
                 break;
             case 1:
-                taskController.taskType = @"daily";
+                taskController.taskTypeString = @"daily";
                 break;
             case 2:
-                taskController.taskType = @"todo";
+                taskController.taskTypeString = @"todo";
                 break;
         }
         tabIndex++;

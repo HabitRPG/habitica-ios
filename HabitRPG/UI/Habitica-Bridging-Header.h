@@ -34,3 +34,4 @@
 #import "HRPGSpellViewController.h"
 #import "HRPGSharingManager.h"
 #import "HRPGFeedViewController.h"
+#import "HRPGSpellTabBarController.h"

@@ -51,12 +51,4 @@
     [self.dataSource clearCompletedTodos];
 }
 
-- (void)didChangeFilter:(NSNotification *)notification {
-    [super didChangeFilter:notification];
-    //TODO: FIX
-    /*if (self.filterType == TaskToDoFilterTypeDone) {
-        [self.dataSource fetchCompletedTodos];
-    }*/
-}
-
 @end

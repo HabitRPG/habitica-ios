@@ -386,6 +386,8 @@ internal enum L10n {
   }
 
   internal enum Skills {
+    /// Can't cast a spell on a challenge task
+    internal static let cantCastOnChallengeTasks = L10n.tr("Main", "skills.cant_cast_on_challenge_tasks")
     /// Unlocks at level %d
     internal static func unlocksAt(_ p1: Int) -> String {
       return L10n.tr("Main", "skills.unlocks_at", p1)
