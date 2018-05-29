@@ -135,7 +135,7 @@ class AvatarView: UIView {
     }
     
     let mountConstraints: ((AvatarView, UIImageView, AvatarViewSize, CGFloat) -> Void) = { superview, view, size, offset in
-        view.pin.start(17.5%).bottom(16%)
+        view.pin.start(17.5%).top(12%)
     }
     
     let petConstraints: ((AvatarView, UIImageView, AvatarViewSize, CGFloat) -> Void) = { superview, view, size, offset in
