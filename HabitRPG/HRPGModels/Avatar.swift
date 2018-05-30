@@ -155,24 +155,38 @@ class AvatarViewModel: Avatar {
     }
     
     var hairColor: String? {
-        return ""
+        return avatar?.preferences?.hair?.color
     }
     
     var hairBase: String? {
-        return ""
+        if let base = avatar?.preferences?.hair?.base {
+            return String(base)
+        }
+        return nil
+        
     }
     
     var hairBangs: String? {
-        return ""
+        if let bangs = avatar?.preferences?.hair?.bangs {
+            return String(bangs)
+        }
+        return nil
+        
     }
     
     var hairMustache: String? {
-        return ""
+        if let mustache = avatar?.preferences?.hair?.mustache {
+            return String(mustache)
+        }
+        return nil
+        
     }
     
     var hairBeard: String? {
-        return ""
-    }
+        if let beard = avatar?.preferences?.hair?.beard {
+            return String(beard)
+        }
+        return nil    }
     
     var eyewear: String? {
         return displayedOutfit?.eyewear
@@ -187,7 +201,10 @@ class AvatarViewModel: Avatar {
     }
     
     var hairFlower: String? {
-        return ""
+        if let flower = avatar?.preferences?.hair?.flower {
+            return String(flower)
+        }
+        return nil
     }
     
     var shield: String? {
