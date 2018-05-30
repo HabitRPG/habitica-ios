@@ -189,6 +189,8 @@ internal enum L10n {
     internal static let body = L10n.tr("Main", "equipment.body")
     /// Costume
     internal static let costume = L10n.tr("Main", "equipment.costume")
+    /// Select "Use Costume" to equip items to your avatar without affecting the Stats from your Battle Gear! This means that you can dress up your avatar in whatever outfit you like while still having your best Battle Gear equipped.
+    internal static let costumeExplanation = L10n.tr("Main", "equipment.costume_explanation")
     /// Eyewear
     internal static let eyewear = L10n.tr("Main", "equipment.eyewear")
     /// Head Gear

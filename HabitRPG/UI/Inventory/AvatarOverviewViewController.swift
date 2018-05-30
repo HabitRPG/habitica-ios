@@ -10,7 +10,7 @@ import Foundation
 import Habitica_Models
 import ReactiveSwift
 
-class AvatarOverviewViewController: HRPGUIViewController {
+class AvatarOverviewViewController: HRPGUIViewController, UIScrollViewDelegate {
     
     private let userRepository = UserRepository()
     private let disposable = ScopedDisposable(CompositeDisposable())
@@ -46,6 +46,10 @@ class AvatarOverviewViewController: HRPGUIViewController {
         disposable.inner.add(userRepository.getUser().on(value: { user in
             self.configure(user: user)
         }).start())
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        topHeaderCoordinator.scrollViewDidScroll()
     }
     
     private func setupItemViews() {
@@ -162,10 +166,10 @@ class AvatarOverviewViewController: HRPGUIViewController {
     }
     
     private func layout() {
-        let itemWidth = (view.bounds.size.width - (7*8)) / 4
-        let itemHeight = itemWidth+36
-        containerview.pin.top(54).left(8).width(view.bounds.size.width-16).height(itemHeight*3+(3*8))
-        scrollView.contentSize = CGSize(width: view.bounds.size.width, height: containerview.bounds.origin.y + containerview.bounds.size.height)
+        let itemWidth = (view.bounds.size.width - (7 * 8)) / 4
+        let itemHeight = itemWidth + 38
+        containerview.pin.top(50).left(8).width(view.bounds.size.width-16).height(itemHeight * 3 + (3 * 8))
+        scrollView.contentSize = CGSize(width: view.bounds.size.width, height: containerview.bounds.origin.y + containerview.bounds.size.height + 64)
         bodySizeLabel.pin.top(0).left(8).above(of: containerview).sizeToFit(.height)
         bodySizeControl.pin.right(8).top(11)
         

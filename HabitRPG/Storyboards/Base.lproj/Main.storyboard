@@ -2244,15 +2244,28 @@ and helps keep Habitica running</string>
                                             <constraint firstAttribute="height" priority="500" constant="317" id="xo7-Md-yDd"/>
                                         </constraints>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d53-K0-Ybv">
+                                        <rect key="frame" x="16" y="642" width="343" height="62.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" priority="500" constant="21" id="gMU-Ms-hdu"/>
+                                        </constraints>
+                                        <string key="text">Select "Use Costume" to equip items to your avatar without affecting the Stats from your Battle Gear! This means that you can dress up your avatar in whatever outfit you like while still having your best Battle Gear equipped.</string>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                        <color key="textColor" red="0.64723795650000004" green="0.63275462390000003" blue="0.67308568950000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="3uQ-7Q-HJM" firstAttribute="leading" secondItem="byv-HU-Kh3" secondAttribute="leading" id="6gL-ls-r4D"/>
                                     <constraint firstItem="HkH-1H-IQH" firstAttribute="top" secondItem="byv-HU-Kh3" secondAttribute="top" id="a6q-6Q-Oag"/>
+                                    <constraint firstItem="d53-K0-Ybv" firstAttribute="top" secondItem="3uQ-7Q-HJM" secondAttribute="bottom" constant="8" id="cPf-dF-UIP"/>
                                     <constraint firstAttribute="trailing" secondItem="3uQ-7Q-HJM" secondAttribute="trailing" id="ejJ-hZ-q0J"/>
                                     <constraint firstItem="3uQ-7Q-HJM" firstAttribute="top" secondItem="HkH-1H-IQH" secondAttribute="bottom" id="jBI-2G-wGk"/>
-                                    <constraint firstAttribute="bottom" secondItem="3uQ-7Q-HJM" secondAttribute="bottom" id="p1r-kY-P2s"/>
+                                    <constraint firstItem="d53-K0-Ybv" firstAttribute="leading" secondItem="byv-HU-Kh3" secondAttribute="leading" constant="16" id="pa6-0P-2ca"/>
                                     <constraint firstItem="HkH-1H-IQH" firstAttribute="leading" secondItem="byv-HU-Kh3" secondAttribute="leading" id="spM-FG-Tsi"/>
                                     <constraint firstAttribute="trailing" secondItem="HkH-1H-IQH" secondAttribute="trailing" id="vPf-SU-VQO"/>
+                                    <constraint firstAttribute="trailing" secondItem="d53-K0-Ybv" secondAttribute="trailing" constant="16" id="yex-Y8-7yV"/>
+                                    <constraint firstAttribute="bottom" secondItem="d53-K0-Ybv" secondAttribute="bottom" constant="12" id="zga-lz-zZi"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
