@@ -25,7 +25,14 @@ class SubscriptionViewController: HRPGBaseViewController {
     
     var products: [SKProduct]?
     var selectedSubscriptionPlan: SKProduct?
-    var user: UserProtocol?
+    var user: UserProtocol? {
+        didSet {
+            if user?.purchased?.subscriptionPlan?.isActive == true {
+                isSubscribed = true
+                restorePurchaseButton.isHidden = true
+            }
+        }
+    }
     let appleValidator: AppleReceiptValidator
     let itunesSharedSecret = HabiticaKeys().itunesSharedSecret
     var expandedList = [Bool](repeating: false, count: 4)
@@ -79,13 +86,6 @@ class SubscriptionViewController: HRPGBaseViewController {
         disposable.inner.add(userRepository.getUser().on(value: { user in
             self.user = user
         }).start())
-
-        if let user = self.user {
-            if user.purchased?.subscriptionPlan?.isActive == true {
-                isSubscribed = true
-                restorePurchaseButton.isHidden = true
-            }
-        }
     }
 
     func retrieveProductList() {
