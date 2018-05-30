@@ -97,6 +97,16 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
         })
     }
     
+    func score(checklistItem: ChecklistItemProtocol, task: TaskProtocol) -> Signal<TaskProtocol?, NoError> {
+        let call = ScoreChecklistItem(item: checklistItem, task: task)
+        call.fire()
+        return call.objectSignal.on(value: {[weak self] task in
+                if let task = task {
+                    self?.localRepository.save(userID: self?.currentUserId, task: task)
+                }
+            })
+    }
+    
     func getNewTask() -> TaskProtocol {
         return localRepository.getNewTask()
     }

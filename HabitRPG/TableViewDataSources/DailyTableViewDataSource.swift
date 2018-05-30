@@ -26,7 +26,7 @@ class DailyTableViewDataSource: TaskTableViewDataSource {
                 self?.disposable.inner.add(self?.repository.score(task: task, direction: task.completed ? .down : .up).observeCompleted {})
             }
             dailycell.checklistItemTouched = {[weak self] checklistItem in
-                
+                self?.disposable.inner.add(self?.repository.score(checklistItem: checklistItem, task: task).observeCompleted {})
             }
             dailycell.checklistIndicatorTouched = {[weak self] in
                 self?.expandSelectedCell(indexPath: indexPath)

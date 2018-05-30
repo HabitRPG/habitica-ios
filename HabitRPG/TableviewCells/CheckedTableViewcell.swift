@@ -41,13 +41,16 @@ class CheckedTableViewCell: TaskTableViewCell {
         }
         
         handleChecklist(task)
-        if task is TaskProtocol {
-            self.checklistDoneLabel.isHidden = true
-            self.checklistAllLabel.isHidden = true
-            self.checklistSeparator.isHidden = true
-            self.checklistIndicatorWidth.constant = 0
-        }
 
+        if !task.isDue {
+            self.checklistIndicator.backgroundColor = .gray500()
+            self.checklistDoneLabel.textColor = .gray300()
+            self.checklistAllLabel.textColor = .gray300()
+            self.checklistSeparator.backgroundColor = .gray300()
+            self.checklistLeftBorderView.backgroundColor = .gray400()
+            self.checklistRightBorderView.backgroundColor = .gray400()
+        }
+        
         if task.completed {
             self.checklistIndicator.backgroundColor = .gray500()
             self.titleLabel.textColor = .gray300()
@@ -57,6 +60,7 @@ class CheckedTableViewCell: TaskTableViewCell {
             self.titleLabel.textColor = ThemeService.shared.theme.primaryTextColor
         }
 
+        
         self.titleLabel.backgroundColor = self.backgroundColor
         self.subtitleLabel.backgroundColor = self.backgroundColor
 
@@ -92,7 +96,11 @@ class CheckedTableViewCell: TaskTableViewCell {
             self.checklistDoneLabel.isHidden = false
             self.checklistAllLabel.isHidden = false
             self.checklistSeparator.isHidden = false
-            self.checklistIndicatorWidth.constant = 32.0
+            if UI_USER_INTERFACE_IDIOM() == .pad {
+                self.checklistIndicatorWidth.constant = 48.0
+            } else {
+                self.checklistIndicatorWidth.constant = 36.0
+            }
         } else {
             self.checklistDoneLabel.isHidden = true
             self.checklistAllLabel.isHidden = true
