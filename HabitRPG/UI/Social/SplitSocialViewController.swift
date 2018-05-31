@@ -93,7 +93,9 @@ class SplitSocialViewController: HabiticaSplitViewController {
             disposable.dispose()
         }
         fetchGroupDisposable = socialRepository.getGroup(groupID: groupID).skipNil().on(value: {[weak self] group in
-            self?.set(group: group)
+            DispatchQueue.main.async {
+                self?.set(group: group)
+            }
             self?.isGroupOwner = group.leaderID == self?.socialRepository.currentUserId
         }).start()
     }
