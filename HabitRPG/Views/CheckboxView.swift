@@ -12,6 +12,21 @@ import Habitica_Models
 class CheckmarkLayer: CALayer {
     var drawPercentage: CGFloat = 0
     
+    override init(layer: Any) {
+        super.init(layer: layer)
+        if let checklayer = layer as? CheckmarkLayer {
+            drawPercentage = checklayer.drawPercentage
+        }
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    override init() {
+        super.init()
+    }
+    
     override class func needsDisplay(forKey key: String) -> Bool {
         if key == "drawPercentage" {
             return true
@@ -31,7 +46,14 @@ class CheckmarkLayer: CALayer {
 
 class CheckboxView: UIView {
     
-    var checked = false
+    var checked = false {
+        didSet {
+            if let layer = self.layer as? CheckmarkLayer {
+                layer.drawPercentage = checked ? 1 : 0
+                layer.setNeedsDisplay()
+            }
+        }
+    }
     var size: CGFloat = 26
     var boxBorderColor: UIColor?
     var boxFillColor: UIColor = UIColor.white
@@ -127,7 +149,7 @@ class CheckboxView: UIView {
         boxFillColor = checked ? UIColor.gray400() : UIColor.clear
         boxBorderColor = checked ? nil : UIColor.gray400()
         checkColor = UIColor.gray200()
-        cornerRadius = 3
+        boxCornerRadius = 3
         centerCheckbox = false
         size = 22
         borderedBox = true
@@ -152,7 +174,8 @@ class CheckboxView: UIView {
         animation.duration = 0.2
         animation.fillMode = kCAFillModeBoth
         animation.timingFunction = timing
-        animation.fromValue = NSNumber(value: Float(layer?.drawPercentage ?? 0 - value))
+        animation.fromValue = NSNumber(value: 0)
+        animation.toValue = NSNumber(value: 1)
         
         layer?.add(animation, forKey: nil)
         CATransaction.begin()
@@ -172,12 +195,12 @@ class CheckboxView: UIView {
     override func draw(_ layer: CALayer, in ctx: CGContext) {
         UIGraphicsPushContext(ctx)
         
-        ctx.clear(frame)
+        ctx.clear(bounds)
         backgroundColor?.setFill()
-        ctx.fill(frame)
+        ctx.fill(bounds)
 
-        let horizontalCenter = centerCheckbox ? frame.size.width / 2 : padding + size / 2
-        let borderPath = UIBezierPath(roundedRect: CGRect(x: horizontalCenter - size / 2, y: frame.size.height / 2 - size / 2, width: size, height: size), cornerRadius: boxCornerRadius)
+        let horizontalCenter = centerCheckbox ? bounds.size.width / 2 : padding + size / 2
+        let borderPath = UIBezierPath(roundedRect: CGRect(x: horizontalCenter - size / 2, y: bounds.size.height / 2 - size / 2, width: size, height: size), cornerRadius: boxCornerRadius)
         if boxBorderColor != nil {
             boxBorderColor?.setStroke()
             borderPath.stroke()
@@ -185,7 +208,7 @@ class CheckboxView: UIView {
         boxFillColor.setFill()
         borderPath.fill()
         if let layer = self.layer as? CheckmarkLayer, layer.drawPercentage > 0 {
-            let checkFrame = CGRect(x: horizontalCenter - size / 2, y: frame.size.height / 2 - size / 2, width: size, height: size)
+            let checkFrame = CGRect(x: horizontalCenter - size / 2, y: bounds.size.height / 2 - size / 2, width: size, height: size)
             HabiticaIcons.drawCheckmark(frame: checkFrame, resizing: .center, checkmarkColor: checkColor, percentage: layer.drawPercentage)
         }
         UIGraphicsPopContext()
