@@ -198,6 +198,8 @@
 		29B4788620BD6E2E00B6123F /* SkillsUserTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4788520BD6E2E00B6123F /* SkillsUserTableViewDataSource.swift */; };
 		29B4788820BD732A00B6123F /* SkillsTaskTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4788720BD732A00B6123F /* SkillsTaskTableViewDataSource.swift */; };
 		29B4788A20BD752C00B6123F /* SkillsTaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4788920BD752C00B6123F /* SkillsTaskTableViewController.swift */; };
+		29B478AB20BFE53500B6123F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 29B478A920BFE53500B6123F /* InfoPlist.strings */; };
+		29B478AE20BFE53500B6123F /* Main.strings in Resources */ = {isa = PBXBuildFile; fileRef = 29B478AC20BFE53500B6123F /* Main.strings */; };
 		29B6AD4A1F2A0C9800AC8878 /* LoginEntryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29B6AD491F2A0C9700AC8878 /* LoginEntryView.xib */; };
 		29B6AD4C1F2A0DBE00AC8878 /* LoginEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B6AD4B1F2A0DBE00AC8878 /* LoginEntryView.swift */; };
 		29C1B6AB20594F500001D3EF /* VisualEffectsModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C1B6AA20594F500001D3EF /* VisualEffectsModalViewController.swift */; };
@@ -691,6 +693,17 @@
 		29B4788520BD6E2E00B6123F /* SkillsUserTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsUserTableViewDataSource.swift; sourceTree = "<group>"; };
 		29B4788720BD732A00B6123F /* SkillsTaskTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsTaskTableViewDataSource.swift; sourceTree = "<group>"; };
 		29B4788920BD752C00B6123F /* SkillsTaskTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsTaskTableViewController.swift; sourceTree = "<group>"; };
+		29B478A820BFE53500B6123F /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/OnePasswordExtension.strings; sourceTree = "<group>"; };
+		29B478AA20BFE53500B6123F /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		29B478AD20BFE53500B6123F /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
+		29B478AF20BFE53500B6123F /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Intro.strings; sourceTree = "<group>"; };
+		29B478B020BFE53500B6123F /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Tasks.strings; sourceTree = "<group>"; };
+		29B478B120BFE53500B6123F /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Shop.strings; sourceTree = "<group>"; };
+		29B478B220BFE53500B6123F /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/BuyModal.strings; sourceTree = "<group>"; };
+		29B478B320BFE53500B6123F /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Settings.strings; sourceTree = "<group>"; };
+		29B478B420BFE53500B6123F /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/User.strings; sourceTree = "<group>"; };
+		29B478B520BFE53500B6123F /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Shops.strings; sourceTree = "<group>"; };
+		29B478B620BFE53A00B6123F /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		29B6AD491F2A0C9700AC8878 /* LoginEntryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginEntryView.xib; sourceTree = "<group>"; };
 		29B6AD4B1F2A0DBE00AC8878 /* LoginEntryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginEntryView.swift; sourceTree = "<group>"; };
 		29C1B6AA20594F500001D3EF /* VisualEffectsModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectsModalViewController.swift; sourceTree = "<group>"; };
@@ -1324,6 +1337,7 @@
 				29701FED1F5848880097BBCC /* Habitica_Snapshots.swift */,
 				29701FF51F5848A40097BBCC /* SnapshotHelperXcode8.swift */,
 				29701FEF1F5848890097BBCC /* Info.plist */,
+				29B478A920BFE53500B6123F /* InfoPlist.strings */,
 			);
 			path = "Habitica Snapshots";
 			sourceTree = "<group>";
@@ -2377,6 +2391,7 @@
 				D905768C1BD83241009BB7BC /* Localizable.strings */,
 				D99DEC88190842CA00FFD2B9 /* Placeholder.png */,
 				D9EB4E9618CB4A9400BB2094 /* Habitica-Info.plist */,
+				29B478AC20BFE53500B6123F /* Main.strings */,
 				D902AD861B53E1B60098A1BD /* GoogleService-Info.plist */,
 				D9EB4E9718CB4A9400BB2094 /* InfoPlist.strings */,
 				D9EB4E9A18CB4A9400BB2094 /* main.m */,
@@ -2540,6 +2555,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29B478AB20BFE53500B6123F /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2559,6 +2575,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29B478AE20BFE53500B6123F /* Main.strings in Resources */,
 				2902799D20583ECA006DACB9 /* User.storyboard in Resources */,
 				290279A620583ED8006DACB9 /* BuyModal.storyboard in Resources */,
 				D9EB4EAD18CB4A9400BB2094 /* Images.xcassets in Resources */,
@@ -3400,6 +3417,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				2902799B20583E83006DACB9 /* bg */,
+				29B478A820BFE53500B6123F /* de */,
 			);
 			name = OnePasswordExtension.strings;
 			sourceTree = "<group>";
@@ -3408,6 +3426,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				2902799E20583ECA006DACB9 /* Base */,
+				29B478B420BFE53500B6123F /* de */,
 			);
 			name = User.storyboard;
 			sourceTree = "<group>";
@@ -3416,6 +3435,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				290279A120583ECF006DACB9 /* Base */,
+				29B478B520BFE53500B6123F /* de */,
 			);
 			name = Shops.storyboard;
 			sourceTree = "<group>";
@@ -3424,6 +3444,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				290279A420583ED3006DACB9 /* Base */,
+				29B478B120BFE53500B6123F /* de */,
 			);
 			name = Shop.storyboard;
 			sourceTree = "<group>";
@@ -3432,6 +3453,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				290279A720583ED8006DACB9 /* Base */,
+				29B478B220BFE53500B6123F /* de */,
 			);
 			name = BuyModal.storyboard;
 			sourceTree = "<group>";
@@ -3440,6 +3462,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				290279AA20583EDE006DACB9 /* Base */,
+				29B478B320BFE53500B6123F /* de */,
 			);
 			name = Settings.storyboard;
 			sourceTree = "<group>";
@@ -3448,14 +3471,33 @@
 			isa = PBXVariantGroup;
 			children = (
 				290279AE20583EF9006DACB9 /* Base */,
+				29B478AF20BFE53500B6123F /* de */,
 			);
 			name = Intro.storyboard;
+			sourceTree = "<group>";
+		};
+		29B478A920BFE53500B6123F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				29B478AA20BFE53500B6123F /* de */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		29B478AC20BFE53500B6123F /* Main.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				29B478AD20BFE53500B6123F /* de */,
+			);
+			name = Main.strings;
+			path = Strings;
 			sourceTree = "<group>";
 		};
 		29C1B6B0205952E40001D3EF /* Tasks.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				29C1B6AF205952E40001D3EF /* Base */,
+				29B478B020BFE53500B6123F /* de */,
 			);
 			name = Tasks.storyboard;
 			sourceTree = "<group>";
@@ -3464,6 +3506,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				29DC5AC420A1D85300993400 /* en */,
+				29B478B620BFE53A00B6123F /* de */,
 			);
 			name = Main.strings;
 			sourceTree = "<group>";

@@ -36,7 +36,12 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
         let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: today)
         viewController.userRepository.getUser().filter { (user) -> Bool in
             return user.needsCron
-        }.withLatest(from: viewController.taskRepository.retrieveTasks(dueOnDay: yesterday))
+        }.withLatest(from: viewController.taskRepository.retrieveTasks(dueOnDay: yesterday).skipNil())
+            .map({ (user, tasks) in
+                return (user, tasks.filter({ task in
+                    return task.isDue && !task.completed
+                }))
+            })
             .on(completed: {
                 UserManager.shared.yesterdailiesDialog = nil
             }, value: { (user, tasks) in

@@ -60,10 +60,10 @@ class CheckedTableViewCell: TaskTableViewCell {
             self.titleLabel.textColor = ThemeService.shared.theme.primaryTextColor
         }
 
-        
         self.titleLabel.backgroundColor = self.backgroundColor
         self.subtitleLabel.backgroundColor = self.backgroundColor
-
+        self.contentView.backgroundColor = self.backgroundColor
+        
         self.checklistIndicator.layoutIfNeeded()
     }
     

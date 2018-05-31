@@ -84,7 +84,7 @@ class MainTabBarController: UITabBarController {
             self.dueToDosCount = 0
             let calendar = Calendar.current
             let today = Date()
-            for task in tasks.value {
+            for task in tasks.value where !task.completed {
                 if task.type == TaskType.daily.rawValue {
                     self.dueDailiesCount += 1
                 } else if task.type == TaskType.todo.rawValue, let duedate = task.duedate {

@@ -19,16 +19,17 @@ enum HTTPMethod: String {
 
 public class AuthenticatedCall: JsonNetworkCall {
     public static var errorHandler: NetworkErrorHandler?
+    public static var defaultConfiguration = HabiticaServerConfig.current
     private var debugHandler: DebugOutputHandler?
     fileprivate static let apiKeyHeader = "x-api-key"
     fileprivate static let apiUserIdHeader = "x-api-user"
     
-    private override init(configuration: ServerConfigurationProtocol, httpMethod: String, httpHeaders: Dictionary<String, String>?, endpoint: String, postData: Data?, stubHolder: StubHolderProtocol?) {
-        super.init(configuration: configuration, httpMethod: httpMethod, httpHeaders: httpHeaders, endpoint: endpoint, postData: postData, stubHolder: stubHolder)
+    private override init(configuration: ServerConfigurationProtocol? = nil, httpMethod: String, httpHeaders: Dictionary<String, String>?, endpoint: String, postData: Data?, stubHolder: StubHolderProtocol?) {
+        super.init(configuration: configuration ?? AuthenticatedCall.defaultConfiguration, httpMethod: httpMethod, httpHeaders: httpHeaders, endpoint: endpoint, postData: postData, stubHolder: stubHolder)
     }
     
-    init(configuration: ServerConfigurationProtocol = HabiticaServerConfig.current, httpMethod: HTTPMethod, httpHeaders: Dictionary<String, String>? = AuthenticatedCall.jsonHeaders(), endpoint: String, postData: Data? = nil, stubHolder: StubHolderProtocol? = nil) {
-        super.init(configuration: configuration, httpMethod: httpMethod.rawValue, httpHeaders: httpHeaders, endpoint: endpoint, postData: postData, stubHolder: stubHolder)
+    init(configuration: ServerConfigurationProtocol? = nil, httpMethod: HTTPMethod, httpHeaders: Dictionary<String, String>? = AuthenticatedCall.jsonHeaders(), endpoint: String, postData: Data? = nil, stubHolder: StubHolderProtocol? = nil) {
+        super.init(configuration: configuration ?? AuthenticatedCall.defaultConfiguration, httpMethod: httpMethod.rawValue, httpHeaders: httpHeaders, endpoint: endpoint, postData: postData, stubHolder: stubHolder)
         debugHandler = DebugOutputHandler(httpMethod: httpMethod, url: urlString(endpoint))
         
         debugHandler?.observe(call: self)

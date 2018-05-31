@@ -48,11 +48,15 @@ class HabiticaAppDelegate: NSObject {
         Instabug.setIntroMessageEnabled(false)
         Instabug.setPromptOptionsEnabledWithBug(true, feedback: true, chat: false)
         Instabug.setNetworkLogRequestObfuscationHandler { (request) -> URLRequest in
-            if var headers = request.allHTTPHeaderFields {
-                headers["x-api-user"] = "USERID"
-                headers["x-api-key"] = "API KEY"
+            guard let mutableRequest = (request as NSURLRequest).mutableCopy() as? NSMutableURLRequest else {
+                return request
             }
-            return request
+            mutableRequest.addValue("USERID", forHTTPHeaderField: "x-api-user")
+            mutableRequest.addValue("KEY", forHTTPHeaderField: "x-api-key")
+            return mutableRequest as URLRequest
+        }
+        Instabug.setNetworkLogResponseObfuscationHandler { (data, response, completion) in
+            completion(Data(), response)
         }
         Instabug.setReproStepsMode(.enabledWithNoScreenshots)
         Instabug.setCommentFieldRequired(true)
@@ -84,6 +88,9 @@ class HabiticaAppDelegate: NSObject {
         NetworkAuthenticationManager.shared.currentUserId = AuthenticationManager.shared.currentUserId
         NetworkAuthenticationManager.shared.currentUserKey = AuthenticationManager.shared.currentUserKey
         AuthenticatedCall.errorHandler = HabiticaNetworkErrorHandler()
+        let configuration = URLSessionConfiguration.default
+        Instabug.enableLogging(for: configuration)
+        AuthenticatedCall.defaultConfiguration.urlConfiguration = configuration
     }
     
     @objc
