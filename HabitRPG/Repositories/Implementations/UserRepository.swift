@@ -123,14 +123,20 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         }
     }
     
-    func updateUser(_ updateDict: [String: Any]) -> Signal<UserProtocol?, NoError> {
+    func updateUser(_ updateDict: [String: Encodable]) -> Signal<UserProtocol?, NoError> {
         let call = UpdateUserCall(updateDict)
         call.fire()
         return call.objectSignal.on(value: handleUserUpdate())
     }
     
-    func updateUser(key: String, value: Any) -> Signal<UserProtocol?, NoError> {
+    func updateUser(key: String, value: Encodable) -> Signal<UserProtocol?, NoError> {
         return updateUser([key: value])
+    }
+    
+    func updateDayStartTime(_ time: Int) -> Signal<UserProtocol?, NoError> {
+        let call = UpdateDayStartTimeCall(time)
+        call.fire()
+        return call.objectSignal.on(value: handleUserUpdate())
     }
     
     func sleep() -> Signal<EmptyResponseProtocol?, NoError> {

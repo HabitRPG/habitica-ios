@@ -216,7 +216,7 @@ class SettingsViewController: FormViewController, Themeable {
                         if hour == self.user?.preferences?.dayStart {
                             return
                         }
-                        self.userRepository.updateUser(key: "preferences.dayStart", value: date).observeCompleted {}
+                        self.userRepository.updateDayStartTime(hour).observeCompleted {}
                     }
                 })
             +++ Section(L10n.Settings.social)
