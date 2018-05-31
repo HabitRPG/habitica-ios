@@ -19,6 +19,9 @@ public class TaskLocalRepository: BaseLocalRepository {
             save(object: realmTask)
             return
         }
+        if let oldTask = getRealm()?.object(ofType: RealmTask.self, forPrimaryKey: task.id) {
+            task.order = oldTask.order
+        }
         save(object: RealmTask(userID: userID, taskProtocol: task, tags: tags))
     }
     
