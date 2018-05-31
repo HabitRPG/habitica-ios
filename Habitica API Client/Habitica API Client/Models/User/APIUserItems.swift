@@ -55,13 +55,13 @@ public class APIUserItems: UserItemsProtocol, Decodable {
             return APIOwnedItem(key: key, numberOwned: numberOwned, itemType: ItemType.eggs.rawValue)
         })) ?? []
         
-        let petsDict = try?values.decode([String: Int].self, forKey: .ownedPets)
+        let petsDict = try?values.decode([String: Int?].self, forKey: .ownedPets)
         ownedPets = (petsDict?.map({ (key, trained) -> OwnedPetProtocol in
-            return APIOwnedPet(key: key, trained: trained)
+            return APIOwnedPet(key: key, trained: trained ?? 0)
         })) ?? []
-        let mountsDict = try?values.decode([String: Bool].self, forKey: .ownedMounts)
+        let mountsDict = try?values.decode([String: Bool?].self, forKey: .ownedMounts)
         ownedMounts = (mountsDict?.map({ (key, owned) -> APIOwnedMount in
-            return APIOwnedMount(key: key, owned: owned)
+            return APIOwnedMount(key: key, owned: owned ?? false)
         })) ?? []
     }
 }
