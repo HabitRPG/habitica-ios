@@ -1,5 +1,5 @@
 strings:
-  paths: HabitRPG/Strings/en.lproj/Main.strings
+  paths: HabitRPG/Strings/en.lproj/Mainstrings.strings
   templateName: structured-swift4
   output: HabitRPG/Generated/Strings.swift
 xcassets:

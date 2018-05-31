@@ -199,7 +199,6 @@
 		29B4788820BD732A00B6123F /* SkillsTaskTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4788720BD732A00B6123F /* SkillsTaskTableViewDataSource.swift */; };
 		29B4788A20BD752C00B6123F /* SkillsTaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4788920BD752C00B6123F /* SkillsTaskTableViewController.swift */; };
 		29B478AB20BFE53500B6123F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 29B478A920BFE53500B6123F /* InfoPlist.strings */; };
-		29B478AE20BFE53500B6123F /* Main.strings in Resources */ = {isa = PBXBuildFile; fileRef = 29B478AC20BFE53500B6123F /* Main.strings */; };
 		29B6AD4A1F2A0C9800AC8878 /* LoginEntryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29B6AD491F2A0C9700AC8878 /* LoginEntryView.xib */; };
 		29B6AD4C1F2A0DBE00AC8878 /* LoginEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B6AD4B1F2A0DBE00AC8878 /* LoginEntryView.swift */; };
 		29C1B6AB20594F500001D3EF /* VisualEffectsModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C1B6AA20594F500001D3EF /* VisualEffectsModalViewController.swift */; };
@@ -207,7 +206,7 @@
 		29C1B6B420599E6D0001D3EF /* TaskFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C1B6B320599E6D0001D3EF /* TaskFormViewController.swift */; };
 		29DC5AC020A1B81C00993400 /* CALayer-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DC5ABF20A1B81C00993400 /* CALayer-Extensions.swift */; };
 		29DC5AC220A1C63000993400 /* SeparatedStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DC5AC120A1C63000993400 /* SeparatedStackView.swift */; };
-		29DC5AC320A1D85300993400 /* Main.strings in Resources */ = {isa = PBXBuildFile; fileRef = 29DC5AC520A1D85300993400 /* Main.strings */; };
+		29DC5AC320A1D85300993400 /* Mainstrings.strings in Resources */ = {isa = PBXBuildFile; fileRef = 29DC5AC520A1D85300993400 /* Mainstrings.strings */; };
 		29DC5AC720A1E52400993400 /* QuestDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DC5AC620A1E52400993400 /* QuestDetailViewController.swift */; };
 		29DC5AC920A1F6C100993400 /* QuestParticipantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DC5AC820A1F6C100993400 /* QuestParticipantView.swift */; };
 		29DC5ACB20A20A6C00993400 /* QuestTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DC5ACA20A20A6C00993400 /* QuestTitleView.swift */; };
@@ -703,7 +702,7 @@
 		29B478B320BFE53500B6123F /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Settings.strings; sourceTree = "<group>"; };
 		29B478B420BFE53500B6123F /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/User.strings; sourceTree = "<group>"; };
 		29B478B520BFE53500B6123F /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Shops.strings; sourceTree = "<group>"; };
-		29B478B620BFE53A00B6123F /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
+		29B478B620BFE53A00B6123F /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Mainstrings.strings; sourceTree = "<group>"; };
 		29B6AD491F2A0C9700AC8878 /* LoginEntryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginEntryView.xib; sourceTree = "<group>"; };
 		29B6AD4B1F2A0DBE00AC8878 /* LoginEntryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginEntryView.swift; sourceTree = "<group>"; };
 		29C1B6AA20594F500001D3EF /* VisualEffectsModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectsModalViewController.swift; sourceTree = "<group>"; };
@@ -712,7 +711,7 @@
 		29C23E47205A8F22006980F0 /* Habitica 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Habitica 6.xcdatamodel"; sourceTree = "<group>"; };
 		29DC5ABF20A1B81C00993400 /* CALayer-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer-Extensions.swift"; sourceTree = "<group>"; };
 		29DC5AC120A1C63000993400 /* SeparatedStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatedStackView.swift; sourceTree = "<group>"; };
-		29DC5AC420A1D85300993400 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		29DC5AC420A1D85300993400 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Mainstrings.strings; sourceTree = "<group>"; };
 		29DC5AC620A1E52400993400 /* QuestDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestDetailViewController.swift; sourceTree = "<group>"; };
 		29DC5AC820A1F6C100993400 /* QuestParticipantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestParticipantView.swift; sourceTree = "<group>"; };
 		29DC5ACA20A20A6C00993400 /* QuestTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestTitleView.swift; sourceTree = "<group>"; };
@@ -1189,7 +1188,7 @@
 		290279642057F005006DACB9 /* Strings */ = {
 			isa = PBXGroup;
 			children = (
-				29DC5AC520A1D85300993400 /* Main.strings */,
+				29DC5AC520A1D85300993400 /* Mainstrings.strings */,
 			);
 			path = Strings;
 			sourceTree = "<group>";
@@ -2575,7 +2574,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				29B478AE20BFE53500B6123F /* Main.strings in Resources */,
 				2902799D20583ECA006DACB9 /* User.storyboard in Resources */,
 				290279A620583ED8006DACB9 /* BuyModal.storyboard in Resources */,
 				D9EB4EAD18CB4A9400BB2094 /* Images.xcassets in Resources */,
@@ -2659,7 +2657,7 @@
 				D99E42681D6B1FD500811B6D /* FaintViewController.xib in Resources */,
 				D98F5DD11C6CB4BE0035CBEC /* HRPGFlagInformationOverlayView.xib in Resources */,
 				D902AD871B53E1B60098A1BD /* GoogleService-Info.plist in Resources */,
-				29DC5AC320A1D85300993400 /* Main.strings in Resources */,
+				29DC5AC320A1D85300993400 /* Mainstrings.strings in Resources */,
 				2980E60D1EEA39DF005B7100 /* YesterdailyTaskCell.xib in Resources */,
 				298119AD1F5040B900F9FB39 /* QuestDetailView.xib in Resources */,
 			);
@@ -3502,13 +3500,13 @@
 			name = Tasks.storyboard;
 			sourceTree = "<group>";
 		};
-		29DC5AC520A1D85300993400 /* Main.strings */ = {
+		29DC5AC520A1D85300993400 /* Mainstrings.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				29DC5AC420A1D85300993400 /* en */,
 				29B478B620BFE53A00B6123F /* de */,
 			);
-			name = Main.strings;
+			name = Mainstrings.strings;
 			sourceTree = "<group>";
 		};
 		D90576871BD83240009BB7BC /* InfoPlist.strings */ = {
