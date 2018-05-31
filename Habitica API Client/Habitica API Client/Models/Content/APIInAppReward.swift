@@ -57,5 +57,6 @@ class APIInAppReward: InAppRewardProtocol, Decodable {
         notes = try? values.decode(String.self, forKey: .notes)
         type = try? values.decode(String.self, forKey: .type)
         value = (try? values.decode(Float.self, forKey: .value)) ?? 0
+        currency = try? values.decode(String.self, forKey: .currency)
     }
 }

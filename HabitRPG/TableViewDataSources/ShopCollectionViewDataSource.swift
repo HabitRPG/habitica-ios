@@ -52,7 +52,10 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
     
     private var ownedItems = [String: OwnedItemProtocol]()
     private var pinnedItems = [String?]()
-    private var userClass: String?
+    private var user: UserProtocol?
+    private var userClass: String? {
+        return user?.stats?.habitClass
+    }
     
     @objc var needsGearSection: Bool = false {
         didSet {
@@ -106,7 +109,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
             }).start())
         
         disposable.inner.add(userRepository.getUser().on(value: { user in
-            self.userClass = user.stats?.habitClass
+            self.user = user
             if self.selectedGearCategory == nil {
                 self.selectedGearCategory = self.userClass
             }
@@ -229,7 +232,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
         if let item = item(at: indexPath) {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath)
             if let itemCell = cell as? InAppRewardCell {
-                itemCell.configure(reward: item, user: nil)
+                itemCell.configure(reward: item, user: user)
                 if let ownedItem = ownedItems[item.key ?? ""] {
                     itemCell.itemsLeft = ownedItem.numberOwned
                 }
