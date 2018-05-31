@@ -62,6 +62,9 @@ class UserProfileViewController: HRPGBaseViewController {
                 self.gearDictionary[gearItem.key ?? ""] = gearItem
             })
         }).start())
+        
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 44
     }
     
     private func refresh() {
@@ -106,6 +109,7 @@ class UserProfileViewController: HRPGBaseViewController {
         }
     }
     
+    //swiftlint:disable:next cyclomatic_complexity
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cellname = "Cell"
         switch indexPath.section {
@@ -141,6 +145,16 @@ class UserProfileViewController: HRPGBaseViewController {
             case 1:
                 let textView = cell.viewWithTag(1) as? UITextView
                 textView?.attributedText = try? Down(markdownString: member?.profile?.blurb ?? "").toHabiticaAttributedString()
+            case 2:
+                cell.textLabel?.text = L10n.Member.memberSince
+                if let date = member?.authentication?.timestamps?.createdAt {
+                    cell.detailTextLabel?.text = DateFormatter.localizedString(from: date, dateStyle: .medium, timeStyle: .none)
+                }
+            case 3:
+                cell.textLabel?.text = L10n.Member.lastLoggedIn
+                if let date = member?.authentication?.timestamps?.loggedIn {
+                    cell.detailTextLabel?.text = DateFormatter.localizedString(from: date, dateStyle: .medium, timeStyle: .none)
+                }
             default:
                 break
             }
@@ -172,18 +186,6 @@ class UserProfileViewController: HRPGBaseViewController {
             } else {
                 tableView.deleteRows(at: rows, with: .top)
             }
-        }
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 && indexPath.item == 0 {
-            return 147
-        } else if indexPath.section == 0 && indexPath.item == 1 {
-            return 100
-        } else if indexPath.section == 1 || indexPath.section == 2 {
-            return 60
-        } else {
-            return 44
         }
     }
     

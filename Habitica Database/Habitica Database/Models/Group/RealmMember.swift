@@ -122,13 +122,28 @@ class RealmMember: Object, MemberProtocol {
         }
     }
     @objc dynamic var realmFlags: RealmFlags?
-
+    var authentication: AuthenticationProtocol? {
+        get {
+            return realmAuthentication
+        }
+        set {
+            if let value = newValue as? RealmAuthentication {
+                realmAuthentication = value
+                return
+            }
+            if let value = newValue {
+                realmAuthentication = RealmAuthentication(userID: "m\(id ?? "")", protocolObject: value)
+            }
+        }
+    }
+    @objc dynamic var realmAuthentication: RealmAuthentication?
+    
     override static func primaryKey() -> String {
         return "id"
     }
     
     override static func ignoredProperties() -> [String] {
-        return ["flags", "preferences", "stats", "profile", "contributor", "items", "party", "flags"]
+        return ["flags", "preferences", "stats", "profile", "contributor", "items", "party", "flags", "authentication"]
     }
     
     convenience init(_ member: MemberProtocol) {
@@ -141,5 +156,6 @@ class RealmMember: Object, MemberProtocol {
         items = member.items
         party = member.party
         flags = member.flags
+        authentication = member.authentication
     }
 }

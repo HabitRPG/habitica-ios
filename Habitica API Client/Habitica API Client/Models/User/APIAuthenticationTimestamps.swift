@@ -15,6 +15,6 @@ class APIAuthenticationTimestamps: AuthenticationTimestampsProtocol, Decodable {
     
     enum CodingKeys: String, CodingKey {
         case createdAt = "created"
-        case loggedIn
+        case loggedIn = "loggedin"
     }
 }

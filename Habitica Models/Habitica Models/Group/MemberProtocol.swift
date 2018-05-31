@@ -15,6 +15,7 @@ public protocol MemberProtocol: AvatarProtocol {
     var contributor: ContributorProtocol? { get set }
     var party: UserPartyProtocol? { get set }
     var flags: FlagsProtocol? { get set }
+    var authentication: AuthenticationProtocol? { get set }
 }
 
 public extension MemberProtocol {

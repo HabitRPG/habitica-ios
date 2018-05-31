@@ -18,6 +18,7 @@ public class APIMember: MemberProtocol, Decodable {
     public var items: UserItemsProtocol?
     public var party: UserPartyProtocol?
     public var flags: FlagsProtocol?
+    public var authentication: AuthenticationProtocol?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -28,6 +29,7 @@ public class APIMember: MemberProtocol, Decodable {
         case contributor
         case items
         case party
+        case authentication = "auth"
     }
     
     public required init(from decoder: Decoder) throws {
@@ -40,5 +42,6 @@ public class APIMember: MemberProtocol, Decodable {
         items = (try? values.decode(APIUserItems.self, forKey: .items))
         party = try? values.decode(APIUserParty.self, forKey: .party)
         flags = try? values.decode(APIFlags.self, forKey: .flags)
+        authentication = try? values.decode(APIAuthentication.self, forKey: .authentication)
     }
 }

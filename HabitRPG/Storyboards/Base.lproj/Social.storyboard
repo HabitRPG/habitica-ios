@@ -884,7 +884,8 @@
                                         <constraint firstItem="oUK-8C-Vza" firstAttribute="top" secondItem="XL1-QU-JXW" secondAttribute="bottom" constant="8" id="92M-aw-F2V"/>
                                         <constraint firstItem="XL1-QU-JXW" firstAttribute="trailing" secondItem="ga8-ls-is3" secondAttribute="trailingMargin" id="9oc-tz-jth"/>
                                         <constraint firstItem="eri-z8-zzt" firstAttribute="top" secondItem="ga8-ls-is3" secondAttribute="topMargin" constant="2" id="DcP-6B-WIk"/>
-                                        <constraint firstAttribute="trailing" secondItem="6h4-ob-jik" secondAttribute="trailing" constant="8" id="M62-He-fv3"/>
+                                        <constraint firstAttribute="bottom" secondItem="WBQ-iv-nmE" secondAttribute="bottom" id="DjI-rC-bRK"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="6h4-ob-jik" secondAttribute="trailing" id="M62-He-fv3"/>
                                         <constraint firstItem="oUK-8C-Vza" firstAttribute="leading" secondItem="WBQ-iv-nmE" secondAttribute="trailing" constant="8" id="Pah-VJ-Wfi"/>
                                         <constraint firstItem="XL1-QU-JXW" firstAttribute="leading" secondItem="WBQ-iv-nmE" secondAttribute="trailing" constant="8" id="QbW-mt-daP"/>
                                         <constraint firstItem="eri-z8-zzt" firstAttribute="trailing" secondItem="ga8-ls-is3" secondAttribute="trailingMargin" id="RP6-7F-UNt"/>
