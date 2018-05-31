@@ -134,7 +134,7 @@ class HRPGSimpleShopItemView: UIView {
     }
     
     private func setGemsLeft(_ gemsLeft: Int) {
-        let totalCount = self.user?.purchased?.subscriptionPlan?.consecutive?.gemCapTotal ?? 0
+        let totalCount = self.user?.purchased?.subscriptionPlan?.gemCapTotal ?? 0
         topBannerLabel.text = L10n.Inventory.numberGemsLeft(gemsLeft, totalCount)
         if gemsLeft == 0 {
             topBannerWrapper.backgroundColor = UIColor.orange10()

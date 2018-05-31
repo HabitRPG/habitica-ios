@@ -33,16 +33,23 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate,
         super.viewDidLoad()
         self.joinInteractor = JoinChallengeInteractor()
         self.leaveInteractor = LeaveChallengeInteractor(presentingViewController: self)
-        dataSource.tableView = self.tableView
         
         self.segmentedFilterControl.selectedSegmentIndex = 0
         self.segmentedFilterControl.addTarget(self, action: #selector(ChallengeTableViewController.switchFilter(_:)), for: .valueChanged)
         segmentedWrapper.containedView = self.segmentedFilterControl
         topHeaderCoordinator?.alternativeHeader = segmentedWrapper
         topHeaderCoordinator.hideHeader = false
+        topHeaderCoordinator.followScrollView = false
         
-        dataSource.retrieveData {
-        }
+        refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: #selector(refresh), for: UIControlEvents.valueChanged)
+
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 100
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        
+        refresh()
+        dataSource.tableView = self.tableView
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -75,6 +82,14 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate,
     override func viewWillDisappear(_ animated: Bool) {
         disposable.dispose()
         super.viewWillDisappear(animated)
+    }
+    
+    @objc
+    private func refresh() {
+        refreshControl?.beginRefreshing()
+        dataSource.retrieveData {
+            self.refreshControl?.endRefreshing()
+        }
     }
 
     @objc

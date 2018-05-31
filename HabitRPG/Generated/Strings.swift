@@ -7,6 +7,8 @@ import Foundation
 
 // swiftlint:disable explicit_type_interface identifier_name line_length nesting type_body_length type_name
 internal enum L10n {
+  /// Active
+  internal static let active = L10n.tr("Mainstrings", "active")
   /// Cancel
   internal static let cancel = L10n.tr("Mainstrings", "cancel")
   /// Chat
@@ -47,6 +49,8 @@ internal enum L10n {
   internal static let hatchingPotions = L10n.tr("Mainstrings", "hatching_potions")
   /// Health
   internal static let health = L10n.tr("Mainstrings", "health")
+  /// Inactive
+  internal static let inactive = L10n.tr("Mainstrings", "inactive")
   /// Invite Party
   internal static let inviteParty = L10n.tr("Mainstrings", "invite_party")
   /// Last Activity %@
@@ -75,6 +79,12 @@ internal enum L10n {
   internal static let notes = L10n.tr("Mainstrings", "notes")
   /// OK
   internal static let ok = L10n.tr("Mainstrings", "ok")
+  /// 1 Month
+  internal static let oneMonth = L10n.tr("Mainstrings", "one_month")
+  /// Open iTunes
+  internal static let openItunes = L10n.tr("Mainstrings", "open_itunes")
+  /// Open Habitica Website
+  internal static let openWebsite = L10n.tr("Mainstrings", "open_website")
   /// Pending damage
   internal static let pendingDamage = L10n.tr("Mainstrings", "pending_damage")
   /// Pets
@@ -117,8 +127,16 @@ internal enum L10n {
   internal static let title = L10n.tr("Mainstrings", "title")
   /// Unequip
   internal static let unequip = L10n.tr("Mainstrings", "unequip")
+  /// No longer want to subscribe? You can manage your subscription from iTunes.
+  internal static let unsubscribeItunes = L10n.tr("Mainstrings", "unsubscribe_itunes")
+  /// No longer want to subscribe? Due to your payment method, you can only unsubscribe through the website.
+  internal static let unsubscribeWebsite = L10n.tr("Mainstrings", "unsubscribe_website")
   /// Weekly
   internal static let weekly = L10n.tr("Mainstrings", "weekly")
+  /// %d Months
+  internal static func xMonths(_ p1: Int) -> String {
+    return L10n.tr("Mainstrings", "x_months", p1)
+  }
   /// Yearly
   internal static let yearly = L10n.tr("Mainstrings", "yearly")
 

@@ -559,7 +559,7 @@
             </objects>
             <point key="canvasLocation" x="1993" y="885"/>
         </scene>
-        <!--Profile-->
+        <!--Menu-->
         <scene sceneID="STv-3f-rgk">
             <objects>
                 <tableViewController id="SXb-nw-RKG" customClass="MainMenuViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
@@ -661,7 +661,7 @@
                         </prototypes>
                         <sections/>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Profile" id="hnF-ml-Qfo"/>
+                    <navigationItem key="navigationItem" title="Menu" id="hnF-ml-Qfo"/>
                     <connections>
                         <segue destination="sS8-cF-myv" kind="show" identifier="ItemSegue" id="ETz-qE-xC2"/>
                         <segue destination="rxD-1b-YpQ" kind="show" identifier="NewsSegue" id="A1v-Vl-4j8"/>
@@ -3068,7 +3068,7 @@ and helps keep Habitica running</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="04Z-5H-zfF"/>
-        <segue reference="vFt-wX-7j8"/>
+        <segue reference="ETz-qE-xC2"/>
         <segue reference="V6b-ej-qnx"/>
         <segue reference="tO1-JH-hWy"/>
     </inferredMetricsTieBreakers>

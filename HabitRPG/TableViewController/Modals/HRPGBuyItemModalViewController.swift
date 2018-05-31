@@ -176,7 +176,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         if let reward = self.reward {
             if let currencyString = reward.currency, let currency = Currency(rawValue: currencyString) {
                 currencyCountView.currency = currency
-                if reward.key == "gem" && user?.purchased?.subscriptionPlan?.consecutive?.gemsRemaining == 0 {
+                if reward.key == "gem" && user?.purchased?.subscriptionPlan?.gemsRemaining == 0 {
                     isLocked = true
                 }
             } else {

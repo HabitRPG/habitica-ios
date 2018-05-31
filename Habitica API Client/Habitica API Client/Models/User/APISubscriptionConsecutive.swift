@@ -12,13 +12,13 @@ import Habitica_Models
 class APISubscriptionConsecutive: SubscriptionConsecutiveProtocol, Decodable {
     var hourglasses: Int = 0
     var gemCapExtra: Int = 0
-    var gemsPurchased: Int = 0
+    var count: Int = 0
     var offset: Int = 0
     
     enum CodingKeys: String, CodingKey {
         case hourglasses = "trinkets"
         case gemCapExtra
-        case gemsPurchased = "count"
+        case count
         case offset
     }
 }

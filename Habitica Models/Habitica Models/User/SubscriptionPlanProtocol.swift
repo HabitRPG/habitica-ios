@@ -30,4 +30,12 @@ public extension SubscriptionPlanProtocol {
         }
         return planId != nil
     }
+    
+    var gemCapTotal: Int {
+        return 25 + (consecutive?.gemCapExtra ?? 0)
+    }
+    
+    var gemsRemaining: Int {
+        return gemCapTotal - gemsBought
+    }
 }

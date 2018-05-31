@@ -38,6 +38,7 @@ class EquipmentOverviewViewController: HRPGUIViewController, UIScrollViewDelegat
         gearView.switchToggled = { value in
             self.userRepository.updateUser(key: "preferences.autoEquip", value: value).observeCompleted {}
         }
+        gearView.setNeedsLayout()
         
         costumeView.title = L10n.Equipment.costume
         costumeView.switchLabel = L10n.Equipment.useCostume
@@ -49,6 +50,7 @@ class EquipmentOverviewViewController: HRPGUIViewController, UIScrollViewDelegat
         costumeView.switchToggled = { value in
             self.userRepository.updateUser(key: "preferences.costume", value: value).observeCompleted {}
         }
+        costumeView.setNeedsLayout()
         
         disposable.inner.add(userRepository.getUser().on(value: { user in
             if let equipped = user.items?.gear?.equipped {

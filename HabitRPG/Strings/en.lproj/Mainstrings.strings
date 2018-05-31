@@ -217,3 +217,11 @@
 "inventory.available_until" = "Available Until %@";
 "member.member_since" = "Member Since";
 "member.last_logged_in" = "Last logged in";
+"active" = "Active";
+"inactive" = "Inactive";
+"one_month" = "1 Month";
+"x_months" = "%d Months";
+"unsubscribe_itunes" = "No longer want to subscribe? You can manage your subscription from iTunes.";
+"open_itunes" = "Open iTunes";
+"unsubscribe_website" = "No longer want to subscribe? Due to your payment method, you can only unsubscribe through the website.";
+"open_website" = "Open Habitica Website";

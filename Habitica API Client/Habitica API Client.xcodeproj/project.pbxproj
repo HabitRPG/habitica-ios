@@ -454,7 +454,6 @@
 				2902797820580EFD006DACB9 /* APIBuff.swift */,
 				29323E4620521B5000AC6D6F /* APIContributor.swift */,
 				29323E36205212C400AC6D6F /* APIFlags.swift */,
-				295D43012097395800948E7E /* APITutorialStep.swift */,
 				29144893208A1C9400F3A6B5 /* APIHair.swift */,
 				290B62512073D91C007287C4 /* APIInbox.swift */,
 				2974BDB120908E4600EC1A25 /* APIInboxMessages.swift */,
@@ -472,7 +471,10 @@
 				290B62532073D957007287C4 /* APIPushNotifications.swift */,
 				290C3031206CF0190066AF5B /* APISkillResponse.swift */,
 				29323E1620504F5600AC6D6F /* APIStats.swift */,
+				2974BD9E208E15FD00EC1A25 /* APISubscriptionPlan.swift */,
+				2974BDA0208E16E100EC1A25 /* APISubscriptionConsecutive.swift */,
 				292DEE7D204E37670086D5F7 /* APITag.swift */,
+				295D43012097395800948E7E /* APITutorialStep.swift */,
 				29323E1420504F2300AC6D6F /* APIUser.swift */,
 				29323E522052F7A600AC6D6F /* APIUserGear.swift */,
 				29323E502052F77F00AC6D6F /* APIUserItems.swift */,
@@ -700,8 +702,6 @@
 		29B586E8204D92CF00301955 = {
 			isa = PBXGroup;
 			children = (
-				2974BD9E208E15FD00EC1A25 /* APISubscriptionPlan.swift */,
-				2974BDA0208E16E100EC1A25 /* APISubscriptionConsecutive.swift */,
 				29B586F4204D92CF00301955 /* Habitica API Client */,
 				292DEE43204D9D8D0086D5F7 /* Frameworks */,
 				29B586FF204D92CF00301955 /* Habitica API ClientTests */,

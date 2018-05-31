@@ -2116,6 +2116,7 @@
 				D9BB45D91E79A02C0002AE2E /* LabeledCheckboxView.swift */,
 				29B6AD4B1F2A0DBE00AC8878 /* LoginEntryView.swift */,
 				29B6AD491F2A0C9700AC8878 /* LoginEntryView.xib */,
+				291DE9752099D85D0073182A /* MemberLlistView.swift */,
 				29E1630E200E279900685640 /* MenuNavigationBarView.swift */,
 				29E1630C200E23A500685640 /* MenuNavigationBarView.xib */,
 				D96C853C1DCB61EE003E3616 /* Notifications */,
@@ -2127,6 +2128,7 @@
 				29FC8861201A300B002B3D3F /* ProgressBar.swift */,
 				29FC8867201B7B61002B3D3F /* Quests */,
 				29701FE51F56DABC0097BBCC /* RoundedView.swift */,
+				29DC5AC120A1C63000993400 /* SeparatedStackView.swift */,
 				293282131F389CC000D42961 /* SetupCustomizationItemView.swift */,
 				293282151F389DBB00D42961 /* SetupCustomizationItemView.xib */,
 				49DCB7B31F3F5E820079FDD0 /* Shop */,
@@ -2145,8 +2147,6 @@
 				D91CCACF1BCF11CC001C6A0C /* UserTopHeader.xib */,
 				2980E6081EEA25CD005B7100 /* YesterdailiesDialogView.swift */,
 				2980E6061EEA1F55005B7100 /* YesterdailiesDialogView.xib */,
-				291DE9752099D85D0073182A /* MemberLlistView.swift */,
-				29DC5AC120A1C63000993400 /* SeparatedStackView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

@@ -13,7 +13,7 @@ import RealmSwift
 class RealmSubscriptionConsecutive: Object, SubscriptionConsecutiveProtocol {
     @objc dynamic var hourglasses: Int = 0
     @objc dynamic var gemCapExtra: Int = 0
-    @objc dynamic var gemsPurchased: Int = 0
+    @objc dynamic var count: Int = 0
     @objc dynamic var offset: Int = 0
     
     @objc dynamic var id: String?
@@ -26,7 +26,7 @@ class RealmSubscriptionConsecutive: Object, SubscriptionConsecutiveProtocol {
         self.id = userID
         hourglasses = protocolObject.hourglasses
         gemCapExtra = protocolObject.gemCapExtra
-        gemsPurchased = protocolObject.gemsPurchased
+        count = protocolObject.count
         offset = protocolObject.offset
     }
     

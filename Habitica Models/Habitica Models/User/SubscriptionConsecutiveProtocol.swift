@@ -12,17 +12,7 @@ import Foundation
 public protocol SubscriptionConsecutiveProtocol {
     var hourglasses: Int { get set }
     var gemCapExtra: Int { get set }
-    var gemsPurchased: Int { get set }
+    var count: Int { get set }
     var offset: Int { get set }
 }
 
-public extension SubscriptionConsecutiveProtocol {
-    
-    var gemCapTotal: Int {
-        return 25 + gemCapExtra
-    }
-    
-    var gemsRemaining: Int {
-        return gemCapTotal - gemsPurchased
-    }
-}
