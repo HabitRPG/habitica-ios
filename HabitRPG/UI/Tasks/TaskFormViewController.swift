@@ -48,6 +48,7 @@ class TaskFormViewController: FormViewController {
     var taskTintColor: UIColor = UIColor.purple300() {
         didSet {
             updateTitleBarColor()
+            self.view.tintColor = taskTintColor
             if tableView != nil {
                 tableView.reloadData()
             }
@@ -494,6 +495,9 @@ class TaskFormViewController: FormViewController {
             if let checklistRow = row as? NameRow {
                 let item = taskRepository.getNewChecklistItem()
                 item.id = checklistRow.tag
+                if item.id == nil {
+                    item.id = UUID().uuidString
+                }
                 item.text = checklistRow.value
                 item.completed = oldChecklist.first(where: { (oldItem) -> Bool in
                     return oldItem.id == item.id
@@ -512,6 +516,9 @@ class TaskFormViewController: FormViewController {
             if let reminderRow = row as? TimeRow {
                 let reminder = taskRepository.getNewReminder()
                 reminder.id = reminderRow.tag
+                if reminder.id == nil {
+                    reminder.id = UUID().uuidString
+                }
                 reminder.time = reminderRow.value
                 task.reminders.append(reminder)
             }
