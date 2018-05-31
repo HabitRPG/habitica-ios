@@ -42,7 +42,7 @@ class CheckedTableViewCell: TaskTableViewCell {
         
         handleChecklist(task)
 
-        if !task.isDue {
+        if task.completed || (!task.isDue && task.type == TaskType.daily.rawValue) {
             self.checklistIndicator.backgroundColor = .gray500()
             self.checklistDoneLabel.textColor = .gray300()
             self.checklistAllLabel.textColor = .gray300()
