@@ -1423,6 +1423,7 @@
 				291448672084FBCF00F3A6B5 /* MountDetailCell.swift */,
 				291448692085126700F3A6B5 /* StableSectionHeader.swift */,
 				2914486B208512ED00F3A6B5 /* StableSectionHeader.xib */,
+				291448852088E87F00F3A6B5 /* EquipmentCell.swift */,
 			);
 			path = Inventory;
 			sourceTree = "<group>";
@@ -2209,7 +2210,6 @@
 				29B388E01EF2BB7600A72950 /* YesterdailyChecklistItem.xib */,
 				2980E60A1EEA39B1005B7100 /* YesterdailyTaskCell.swift */,
 				2980E60C1EEA39DF005B7100 /* YesterdailyTaskCell.xib */,
-				291448852088E87F00F3A6B5 /* EquipmentCell.swift */,
 				2974BD90208DEFEA00EC1A25 /* CustomizationDetailCell.swift */,
 				2974BDAC208F68A800EC1A25 /* CustomizationHeaderView.swift */,
 			);

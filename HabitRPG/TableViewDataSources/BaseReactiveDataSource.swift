@@ -87,12 +87,14 @@ class BaseReactiveTableViewDataSource<MODEL>: BaseReactiveDataSource<MODEL>, UIT
                 //If the count is the same, the section is new, since it was previously empty
                 tableView?.insertSections([section], with: .automatic)
             }
-            tableView?.insertRows(at: changes.inserted.map({ IndexPath(row: $0, section: section) }), with: .top)
-            tableView?.deleteRows(at: changes.deleted.map({ IndexPath(row: $0, section: section) }), with: .automatic)
-            tableView?.reloadRows(at: changes.updated.map({ IndexPath(row: $0, section: section) }), with: .automatic)
-            if sections[section].items.count == 0 {
-                //Remove section since it empty sections are hidden
-                tableView?.deleteSections([section], with: .automatic)
+            if tableView?.numberOfSections ?? 0 > 0 {
+                tableView?.insertRows(at: changes.inserted.map({ IndexPath(row: $0, section: section) }), with: .top)
+                tableView?.deleteRows(at: changes.deleted.map({ IndexPath(row: $0, section: section) }), with: .automatic)
+                tableView?.reloadRows(at: changes.updated.map({ IndexPath(row: $0, section: section) }), with: .automatic)
+                if sections[section].items.count == 0 {
+                    //Remove section since it empty sections are hidden
+                    tableView?.deleteSections([section], with: .automatic)
+                }
             }
             tableView?.endUpdates()
         }

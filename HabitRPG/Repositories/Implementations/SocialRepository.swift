@@ -91,7 +91,11 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
     func like(groupID: String, chatMessage: ChatMessageProtocol) -> Signal<ChatMessageProtocol?, NoError> {
         let call = LikeChatMessageCall(groupID: groupID, chatMessage: chatMessage)
         call.fire()
-        return call.objectSignal
+        return call.objectSignal.on(value: { message in
+            if let message = message {
+                self.localRepository.save(groupID: groupID, chatMessage: message)
+            }
+        })
     }
     
     func flag(groupID: String, chatMessage: ChatMessageProtocol) -> Signal<EmptyResponseProtocol?, NoError> {
@@ -103,13 +107,17 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
     func delete(groupID: String, chatMessage: ChatMessageProtocol) -> Signal<EmptyResponseProtocol?, NoError> {
         let call = DeleteChatMessageCall(groupID: groupID, chatMessage: chatMessage)
         call.fire()
-        return call.objectSignal
+        return call.objectSignal.on(value: { _ in
+            self.localRepository.delete(chatMessage)
+        })
     }
     
     func delete(message: InboxMessageProtocol) -> Signal<EmptyResponseProtocol?, NoError> {
         let call = DeleteInboxMessageCall(message: message)
         call.fire()
-        return call.objectSignal
+        return call.objectSignal.on(value: { _ in
+            self.localRepository.delete(message)
+        })
     }
     
     func post(chatMessage: String, toGroup groupID: String) -> Signal<ChatMessageProtocol?, NoError> {

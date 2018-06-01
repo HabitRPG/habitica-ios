@@ -88,9 +88,9 @@ class HabiticaAppDelegate: NSObject {
         NetworkAuthenticationManager.shared.currentUserId = AuthenticationManager.shared.currentUserId
         NetworkAuthenticationManager.shared.currentUserKey = AuthenticationManager.shared.currentUserKey
         AuthenticatedCall.errorHandler = HabiticaNetworkErrorHandler()
-        let configuration = URLSessionConfiguration.default
-        Instabug.enableLogging(for: configuration)
-        AuthenticatedCall.defaultConfiguration.urlConfiguration = configuration
+        //let configuration = URLSessionConfiguration.default
+        //Instabug.enableLogging(for: configuration)
+        //AuthenticatedCall.defaultConfiguration.urlConfiguration = configuration
     }
     
     @objc

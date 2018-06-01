@@ -259,7 +259,7 @@ class ChatTableViewCell: UITableViewCell {
     }
     
     override func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        let location = touch.location(in: contentView)
+        let location = touch.location(in: messageWrapper)
         if plusOneButton.frame.contains(location) {
             return false
         }

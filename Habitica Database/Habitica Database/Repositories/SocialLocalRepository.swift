@@ -87,7 +87,11 @@ public class SocialLocalRepository: BaseLocalRepository {
         if let realmChatMessage = chatMessage as? RealmChatMessage {
             save(object: realmChatMessage)
         } else {
-            save(object: RealmChatMessage(groupID: groupID, chatMessage: chatMessage))
+            let message = RealmChatMessage(groupID: groupID, chatMessage: chatMessage)
+            if message.timestamp == nil, let existingMessage = getRealm()?.object(ofType: RealmChatMessage.self, forPrimaryKey: message.id) {
+                message.timestamp = existingMessage.timestamp
+            }
+            save(object: message)
         }
     }
     
@@ -105,6 +109,22 @@ public class SocialLocalRepository: BaseLocalRepository {
         }).map({ (groupID) -> RealmGroupMembership in
             return RealmGroupMembership(userID: userID, groupID: groupID)
         }))
+    }
+    
+    public func delete(_ chatMessage: ChatMessageProtocol) {
+        if let realm = getRealm(), let message = realm.object(ofType: RealmChatMessage.self, forPrimaryKey: chatMessage.id) {
+            try? realm.write {
+                realm.delete(message)
+            }
+        }
+    }
+    
+    public func delete(_ message: InboxMessageProtocol) {
+        if let realm = getRealm(), let message = realm.object(ofType: RealmInboxMessage.self, forPrimaryKey: message.id) {
+            try? realm.write {
+                realm.delete(message)
+            }
+        }
     }
     
     public func joinGroup(userID: String, groupID: String, group: GroupProtocol?) {
