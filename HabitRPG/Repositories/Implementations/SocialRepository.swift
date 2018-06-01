@@ -23,6 +23,10 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
         return localRepository.getChallenges(predicate: predicate)
     }
     
+    func getChallengesDistinctGroups() -> SignalProducer<ReactiveResults<[ChallengeProtocol]>, ReactiveSwiftRealmError> {
+        return localRepository.getChallengesDistinctGroups()
+    }
+    
     func retrieveGroups(_ groupType: String) -> Signal<[GroupProtocol]?, NoError> {
         let call = RetrieveGroupsCall(groupType)
         call.fire()

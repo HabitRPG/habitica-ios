@@ -219,6 +219,12 @@ public class SocialLocalRepository: BaseLocalRepository {
             return (value.map({ (challenge) -> ChallengeProtocol in return challenge }), changeset)
         })
     }
+    
+    public func getChallengesDistinctGroups() -> SignalProducer<ReactiveResults<[ChallengeProtocol]>, ReactiveSwiftRealmError> {
+        return RealmChallenge.findAll().distinct(by: ["groupID"]).sorted(key: "memberCount", ascending: false).reactive().map({ (value, changeset) -> ReactiveResults<[ChallengeProtocol]> in
+            return (value.map({ (challenge) -> ChallengeProtocol in return challenge }), changeset)
+        })
+    }
 
     public func getGroupMembers(groupID: String) -> SignalProducer<ReactiveResults<[MemberProtocol]>, ReactiveSwiftRealmError> {
         return RealmMember.findBy(query: "realmParty.id == '\(groupID)'").reactive().map({ (value, changeset) -> ReactiveResults<[MemberProtocol]> in
