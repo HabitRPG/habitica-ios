@@ -198,6 +198,16 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
         }
     }
     
+    public func getChallengeMembership(challengeID: String) -> SignalProducer<ChallengeMembershipProtocol?, ReactiveSwiftRealmError> {
+        if let userId = AuthenticationManager.shared.currentUserId {
+            return localRepository.getChallengeMembership(userID: userId, challengeID: challengeID)
+        } else {
+            return SignalProducer {(sink, _) in
+                sink.sendCompleted()
+            }
+        }
+    }
+    
     public func retrieveMember(userID: String) -> Signal<MemberProtocol?, NoError> {
         let call = RetrieveMemberCall(userID: userID)
         call.fire()

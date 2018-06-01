@@ -71,7 +71,7 @@ class ChallengeTableViewDataSource: BaseReactiveTableViewDataSource<ChallengePro
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         if let challenge = item(at: indexPath), let challengeCell = cell as? ChallengeTableViewCell {
-            challengeCell.setChallenge(challenge, isParticipating: membershipIDs.contains(challenge.id ?? ""))
+            challengeCell.setChallenge(challenge, isParticipating: membershipIDs.contains(challenge.id ?? ""), isOwner: challenge.leaderID == socialRepository.currentUserId)
             
             if self.isShowingJoinedChallenges {
                 challengeCell.accessoryType = .disclosureIndicator
@@ -97,8 +97,8 @@ class ChallengeTableViewDataSource: BaseReactiveTableViewDataSource<ChallengePro
                 searchComponents.append("leaderID != \'\(userId)\'")
             }
         }
-        /*if let shownGuilds = self.shownGuilds {
-            var component = "group.id IN {"
+        if let shownGuilds = self.shownGuilds {
+            var component = "groupID IN {"
             if shownGuilds.count > 0 {
                 component.append("\'\(shownGuilds[0])\'")
             }
@@ -107,7 +107,7 @@ class ChallengeTableViewDataSource: BaseReactiveTableViewDataSource<ChallengePro
             }
             component.append("}")
             searchComponents.append(component)
-        }*/
+        }
         if let searchText = self.searchText {
             if searchText.count > 0 {
                 searchComponents.append("((name CONTAINS[cd] \'\(searchText)\') OR (notes CONTAINS[cd] \'\(searchText)\'))")

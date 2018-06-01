@@ -49,7 +49,6 @@ internal enum Asset {
   internal static let _4Gems = ImageAsset(name: "4_gems")
   internal static let _84Gems = ImageAsset(name: "84_gems")
   internal static let bossContainer = ImageAsset(name: "BossContainer")
-  internal static let challengeGemIcon = ImageAsset(name: "ChallengeGemIcon")
   internal static let chatCopy = ImageAsset(name: "ChatCopy")
   internal static let chatDelete = ImageAsset(name: "ChatDelete")
   internal static let chatReply = ImageAsset(name: "ChatReply")
@@ -215,7 +214,6 @@ internal enum Asset {
     _4Gems,
     _84Gems,
     bossContainer,
-    challengeGemIcon,
     chatCopy,
     chatDelete,
     chatReply,

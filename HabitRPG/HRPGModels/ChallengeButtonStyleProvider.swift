@@ -19,7 +19,8 @@ class JoinLeaveButtonAttributeProvider: ChallengeButtonStyleProvider {
     
     private let socialRepository = SocialRepository()
     
-    let challengeProperty: MutableProperty<ChallengeProtocol?> = MutableProperty<ChallengeProtocol?>(nil)
+    let challengeProperty = MutableProperty<ChallengeProtocol?>(nil)
+    let challengeMembershipProperty = MutableProperty<ChallengeMembershipProtocol?>(nil)
     
     let buttonStateSignal: Signal<ChallengeButtonState, NoError>
     let buttonPressedProperty = MutableProperty(())
@@ -36,13 +37,13 @@ class JoinLeaveButtonAttributeProvider: ChallengeButtonStyleProvider {
     init(_ challenge: ChallengeProtocol?) {
         challengeUpdatedSignal = challengeUpdatedProperty.signal.map { _ in true }
         
-        let joinableChallengeSignal = challengeProperty.signal
-            .filter({ (challenge) -> Bool in
-                return challenge?.isJoinable() == true
+        let joinableChallengeSignal = challengeMembershipProperty.signal
+            .filter({ (membership) -> Bool in
+                return membership == nil
             }).map { _ in ChallengeButtonState.join }
-        let leaveableChallengeSignal = challengeProperty.signal
-            .filter({ (challenge) -> Bool in
-                return challenge?.isJoinable() == false
+        let leaveableChallengeSignal = challengeMembershipProperty.signal
+            .filter({ (membership) -> Bool in
+                return membership != nil
             }).map { _ in ChallengeButtonState.leave }
         
         buttonStateSignal = Signal.merge(joinableChallengeSignal, leaveableChallengeSignal).sample(on: triggerStyleProperty.signal)
@@ -170,9 +171,6 @@ class ParticipantsButtonAttributeProvider: HRPGButtonAttributeProvider, HRPGButt
         let participantsViewableSignal = challengeProperty.signal
             .filter({ (challenge) -> Bool in
                 return challenge?.isOwner() == true && challenge?.isPublished() == true
-            })
-            .filter({ (challenge) -> Bool in
-                return challenge?.isJoinable() == true
             })
             .map { _ in ChallengeButtonState.viewParticipants }
         

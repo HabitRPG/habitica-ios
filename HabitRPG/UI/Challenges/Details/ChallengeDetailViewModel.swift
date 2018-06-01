@@ -42,6 +42,7 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
     let nextViewControllerSignal: Signal<UIViewController, NoError>
     
     let challengeProperty: MutableProperty<ChallengeProtocol>
+    let challengeMembershipProperty = MutableProperty<ChallengeMembershipProtocol?>(nil)
     let viewDidLoadProperty = MutableProperty(())
     let reloadTableProperty = MutableProperty(())
     let animateUpdatesProperty = MutableProperty(())
@@ -95,9 +96,10 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
                 self.cellModelsProperty.value = sections.filter { $0.items?.count ?? 0 > 0 }
         }
         
+        setupButtons()
+        
         setupInfo()
         
-        setupButtons()
         
         setupTasks()
         
@@ -110,6 +112,10 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
             self.endChallengeStyleProvider.challengeProperty.value = newChallenge
         }
         
+        challengeMembershipProperty.signal.observeValues { (membership) in
+            self.joinLeaveStyleProvider.challengeMembershipProperty.value = membership
+        }
+        
         joinLeaveStyleProvider.challengeUpdatedProperty.signal.observeValues { _ in
             self.reloadChallenge(challenge: self.challengeProperty.value)
         }
@@ -119,10 +125,17 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
             .on(value: { challenge in
             self.setChallenge(challenge)
         }).start())
+        
+        if let challengeID = challenge.id {
+            disposable.inner.add(socialRepository.getChallengeMembership(challengeID: challengeID).on(value: { membership in
+                self.setChallengeMembership(membership)
+            }).start())
+        }
     }
     
     func setupInfo() {
-        challengeProperty.signal.observeValues { (challenge) in
+        challengeProperty.signal
+            .observeValues { challenge in
             let infoItem = ChallengeMultiModelDataSourceItem<ChallengeDetailInfoTableViewCell>(challenge, identifier: "info")
             let creatorItem = ChallengeCreatorMultiModelDataSourceItem(challenge, cellDelegate: self, identifier: "creator")
             let categoryItem = ChallengeResizableMultiModelDataSourceItem<ChallengeCategoriesTableViewCell>(challenge, resizingDelegate: self, identifier: "categories")
@@ -217,19 +230,19 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
         unownedChallengeSignal.observeValues { _ in
             self.doubleEndButtonItemProperty.value = nil
         }
-        unownedChallengeSignal
-            .filter({ (challenge) -> Bool in
-                return challenge.isJoinable()
+        unownedChallengeSignal.withLatest(from: challengeMembershipProperty.signal)
+            .filter({ (challenge, membership) -> Bool in
+                return membership == nil
             }).observeValues { _ in
-            self.mainButtonItemProperty.value = ButtonCellMultiModelDataSourceItem(attributeProvider: self.joinLeaveStyleProvider, inputs: self.joinLeaveStyleProvider, identifier: "mainButton")
-            self.endButtonItemProperty.value = nil
-            self.doubleEndButtonItemProperty.value = nil
+                self.mainButtonItemProperty.value = ButtonCellMultiModelDataSourceItem(attributeProvider: self.joinLeaveStyleProvider, inputs: self.joinLeaveStyleProvider, identifier: "mainButton")
+                self.endButtonItemProperty.value = nil
+                self.doubleEndButtonItemProperty.value = nil
         }
-        unownedChallengeSignal
-            .filter({ (challenge) -> Bool in
-                return !challenge.isJoinable()
+        unownedChallengeSignal.withLatest(from: challengeMembershipProperty.signal)
+            .filter({ (_, membership) -> Bool in
+                return membership != nil
             }).observeValues { _ in
-            self.endButtonItemProperty.value = ButtonCellMultiModelDataSourceItem(attributeProvider: self.joinLeaveStyleProvider, inputs: self.joinLeaveStyleProvider, identifier: "mainButton")
+                self.endButtonItemProperty.value = ButtonCellMultiModelDataSourceItem(attributeProvider: self.joinLeaveStyleProvider, inputs: self.joinLeaveStyleProvider, identifier: "mainButton")
         }
     }
     
@@ -277,6 +290,10 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
     
     func setChallenge(_ challenge: ChallengeProtocol) {
         challengeProperty.value = challenge
+    }
+    
+    func setChallengeMembership(_ membership: ChallengeMembershipProtocol?) {
+        challengeMembershipProperty.value = membership
     }
 }
 

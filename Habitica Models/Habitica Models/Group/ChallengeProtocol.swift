@@ -20,6 +20,9 @@ public protocol ChallengeProtocol {
     var updatedAt: Date? { get set }
     var leaderID: String? { get set }
     var leaderName: String? { get set }
+    var groupID: String? { get set }
+    var groupName: String? { get set }
+    var groupPrivacy: String? { get set }
     var memberCount: Int { get set }
     var createdAt: Date? { get set }
     var categories: [ChallengeCategoryProtocol] { get set }

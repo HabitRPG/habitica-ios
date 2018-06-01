@@ -47,11 +47,6 @@ extension ChallengeProtocol {
         return isOwner() && isPublished()
     }
     
-    func isJoinable() -> Bool {
-        return false
-        //return challenge?.user == nil
-    }
-    
     func hasTasks() -> Bool {
         let hasDailies = self.dailies.count > 0
         let hasHabits = self.habits.count > 0

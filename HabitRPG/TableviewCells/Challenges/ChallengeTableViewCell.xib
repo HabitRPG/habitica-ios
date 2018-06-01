@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="86" id="K9c-QL-fNJ" customClass="ChallengeTableViewCell" customModule="Habitica" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="898" height="86"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="K9c-QL-fNJ" id="cKH-IP-9MQ">
+                <rect key="frame" x="0.0" y="0.0" width="898" height="85.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="big_gem" translatesAutoresizingMaskIntoConstraints="NO" id="awt-ik-dXW">
+                        <rect key="frame" x="4" y="21" width="58" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="24" id="kYb-sn-d4y"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dwk-Uu-v8M">
+                        <rect key="frame" x="4" y="46" width="58" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="58" id="auV-oQ-byq"/>
+                            <constraint firstAttribute="height" constant="21" id="pOC-Qy-Bhc"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                        <color key="textColor" red="0.28077936170000001" green="0.83495014909999998" blue="0.63233321909999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZOg-jY-5Vr">
+                        <rect key="frame" x="66" y="19" width="719" height="48"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" ambiguous="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Pf-Wi-0Gq">
+                                <rect key="frame" x="0.0" y="0.0" width="719" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" priority="500" constant="21" id="Gt2-Lb-tf9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <color key="textColor" red="0.20000000300000001" green="0.086274512110000007" blue="0.37647059560000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" ambiguous="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F3S-xl-CMk">
+                                <rect key="frame" x="0.0" y="56" width="719" height="0.0"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" priority="500" constant="21" id="jIl-VG-yDl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                <color key="textColor" red="0.50190365309999996" green="0.50199371579999996" blue="0.50189799069999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" distribution="fillProportionally" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="obq-qJ-T3a">
+                                <rect key="frame" x="0.0" y="26" width="719" height="22"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MemberCountIcon" translatesAutoresizingMaskIntoConstraints="NO" id="hLe-qv-Uja">
+                                        <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="22" id="IbR-Wk-kbX"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="331-AO-u2D">
+                                        <rect key="frame" x="26" y="0.0" width="494" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" priority="500" constant="40" id="Dty-n6-uh4"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                        <color key="textColor" red="0.50190365309999996" green="0.50199371579999996" blue="0.50189799069999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="xJw-Ph-RcP" customClass="PillView" customModule="Habitica" customModuleProvider="target">
+                                        <rect key="frame" x="524" y="0.0" width="54" height="22"/>
+                                        <color key="backgroundColor" red="0.98028594260000002" green="0.9804533124" blue="0.98027533290000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" priority="500" constant="60" id="UFs-hO-Dsc"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="Official"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="hasBorder" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isCircular" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="hasRoundedCorners" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.89009910820000004" green="0.89025193449999995" blue="0.89008945230000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="automaticTextColor" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="pillColor">
+                                                <color key="value" red="0.37997829910000003" green="0.1982949376" blue="0.70615965130000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="2j8-z6-3p0" customClass="PillView" customModule="Habitica" customModuleProvider="target">
+                                        <rect key="frame" x="582" y="0.0" width="83" height="22"/>
+                                        <color key="backgroundColor" red="0.98028594260000002" green="0.9804533124" blue="0.98027533290000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" priority="500" constant="60" id="qln-Cd-URC"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="Joined"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="hasBorder" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isCircular" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="hasRoundedCorners" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="automaticTextColor" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.89009910820000004" green="0.89025193449999995" blue="0.89008945230000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="pillColor">
+                                                <color key="value" red="0.2394311428" green="0.71686321500000005" blue="0.49862980839999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="VLb-Ql-Fij" customClass="PillView" customModule="Habitica" customModuleProvider="target">
+                                        <rect key="frame" x="669" y="0.0" width="50" height="22"/>
+                                        <color key="backgroundColor" red="0.98028594260000002" green="0.9804533124" blue="0.98027533290000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" priority="500" constant="60" id="Oss-jn-szl"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="text" value="Owner"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="hasBorder" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isCircular" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="hasRoundedCorners" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="automaticTextColor" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.89009910820000004" green="0.89025193449999995" blue="0.89008945230000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="pillColor">
+                                                <color key="value" red="0.27342212200164795" green="0.65357798337936401" blue="0.85150736570358276" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" priority="500" constant="300" id="b1b-n6-yqX"/>
+                                    <constraint firstAttribute="height" constant="22" id="daX-Wa-QLB"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="obq-qJ-T3a" secondAttribute="trailing" id="2VK-1S-qhO"/>
+                            <constraint firstAttribute="trailing" secondItem="F3S-xl-CMk" secondAttribute="trailing" id="2sb-tq-cAx"/>
+                            <constraint firstItem="F3S-xl-CMk" firstAttribute="leading" secondItem="ZOg-jY-5Vr" secondAttribute="leading" id="8dd-2d-817"/>
+                            <constraint firstItem="3Pf-Wi-0Gq" firstAttribute="top" secondItem="ZOg-jY-5Vr" secondAttribute="top" id="KBp-UI-Zar"/>
+                            <constraint firstAttribute="bottom" secondItem="obq-qJ-T3a" secondAttribute="bottom" id="Ou5-ig-QIR"/>
+                            <constraint firstAttribute="height" priority="500" constant="70" id="PAP-uk-ye6"/>
+                            <constraint firstItem="obq-qJ-T3a" firstAttribute="top" secondItem="F3S-xl-CMk" secondAttribute="bottom" constant="4" id="R55-v2-WzK"/>
+                            <constraint firstItem="3Pf-Wi-0Gq" firstAttribute="leading" secondItem="ZOg-jY-5Vr" secondAttribute="leading" id="Xiy-7s-Cm8"/>
+                            <constraint firstItem="F3S-xl-CMk" firstAttribute="top" secondItem="3Pf-Wi-0Gq" secondAttribute="bottom" constant="4" id="bJP-6o-Mhu"/>
+                            <constraint firstItem="obq-qJ-T3a" firstAttribute="leading" secondItem="ZOg-jY-5Vr" secondAttribute="leading" id="pa0-C2-vKc"/>
+                            <constraint firstAttribute="trailing" secondItem="3Pf-Wi-0Gq" secondAttribute="trailing" id="uLE-Th-dt9"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="dwk-Uu-v8M" firstAttribute="leading" secondItem="cKH-IP-9MQ" secondAttribute="leading" constant="4" id="8OA-cm-rCx"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="ZOg-jY-5Vr" secondAttribute="bottom" constant="8" id="CCD-rn-cDI"/>
+                    <constraint firstItem="dwk-Uu-v8M" firstAttribute="centerY" secondItem="cKH-IP-9MQ" secondAttribute="centerY" constant="14" id="LkU-qc-Fce"/>
+                    <constraint firstItem="ZOg-jY-5Vr" firstAttribute="top" secondItem="cKH-IP-9MQ" secondAttribute="topMargin" constant="8" id="Oir-QC-jRO"/>
+                    <constraint firstItem="awt-ik-dXW" firstAttribute="centerY" secondItem="cKH-IP-9MQ" secondAttribute="centerY" constant="-10" id="QOj-ET-pfc"/>
+                    <constraint firstItem="awt-ik-dXW" firstAttribute="leading" secondItem="dwk-Uu-v8M" secondAttribute="leading" id="h9K-vW-Zmd"/>
+                    <constraint firstItem="ZOg-jY-5Vr" firstAttribute="leading" secondItem="dwk-Uu-v8M" secondAttribute="trailing" constant="4" id="hKp-Yk-pws"/>
+                    <constraint firstItem="awt-ik-dXW" firstAttribute="trailing" secondItem="dwk-Uu-v8M" secondAttribute="trailing" id="iXA-V4-uFf"/>
+                    <constraint firstItem="ZOg-jY-5Vr" firstAttribute="trailing" secondItem="cKH-IP-9MQ" secondAttribute="trailingMargin" id="mxG-CB-j3N"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="memberCountLabel" destination="331-AO-u2D" id="GKP-KG-8i6"/>
+                <outlet property="nameLabel" destination="3Pf-Wi-0Gq" id="FVP-p7-YaG"/>
+                <outlet property="officialBadge" destination="xJw-Ph-RcP" id="vQy-uT-CI6"/>
+                <outlet property="ownerBadge" destination="VLb-Ql-Fij" id="s20-ZR-n6x"/>
+                <outlet property="participatingBadge" destination="2j8-z6-3p0" id="NyB-SF-Yaa"/>
+                <outlet property="prizeLabel" destination="dwk-Uu-v8M" id="4zu-1h-6w1"/>
+                <outlet property="summaryLabel" destination="F3S-xl-CMk" id="vtw-pA-vM8"/>
+            </connections>
+            <point key="canvasLocation" x="714" y="94"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="MemberCountIcon" width="22" height="12"/>
+        <image name="big_gem" width="24" height="24"/>
+    </resources>
+</document>

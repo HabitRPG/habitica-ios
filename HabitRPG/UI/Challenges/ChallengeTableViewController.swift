@@ -21,28 +21,44 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate,
     var leaveInteractor: LeaveChallengeInteractor?
     private let (lifetime, token) = Lifetime.make()
     private var disposable: CompositeDisposable = CompositeDisposable()
-
+    private var filterButton = UIButton()
+    
     @objc var showOnlyUserChallenges = true
 
     var displayedAlert: ChallengeDetailAlert?
     
-    let segmentedWrapper = PaddedView()
-    let segmentedFilterControl = UISegmentedControl(items: [NSLocalizedString("My Challenges", comment: ""), NSLocalizedString("Discover", comment: "")])
+    let segmentedWrapper = UIView()
+    let segmentedFilterControl = UISegmentedControl(items: [L10n.myChallenges, L10n.discover])
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.joinInteractor = JoinChallengeInteractor()
         self.leaveInteractor = LeaveChallengeInteractor(presentingViewController: self)
         
+        tableView.register(UINib(nibName: "ChallengeTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
+        
+        let searchbar = UISearchBar(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 44))
+        searchbar.placeholder = L10n.search
+        searchbar.delegate = self
+        
+        self.tableView.tableHeaderView = searchbar
+        
+        filterButton.setImage(HabiticaIcons.imageOfFilterIcon(), for: .normal)
+        filterButton.addTarget(self, action: #selector(filterTapped(_:)), for: .touchUpInside)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: filterButton)
+        
         self.segmentedFilterControl.selectedSegmentIndex = 0
         self.segmentedFilterControl.addTarget(self, action: #selector(ChallengeTableViewController.switchFilter(_:)), for: .valueChanged)
-        segmentedWrapper.containedView = self.segmentedFilterControl
+        segmentedWrapper.addSubview(self.segmentedFilterControl)
         topHeaderCoordinator?.alternativeHeader = segmentedWrapper
         topHeaderCoordinator.hideHeader = false
         topHeaderCoordinator.followScrollView = false
+        layoutHeader()
         
-        refreshControl = UIRefreshControl()
-        refreshControl?.addTarget(self, action: #selector(refresh), for: UIControlEvents.valueChanged)
+        if #available(iOS 10.0, *) {
+            self.tableView?.refreshControl = UIRefreshControl()
+            self.tableView?.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        }
 
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100
@@ -61,22 +77,6 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate,
         disposable = CompositeDisposable()
         disposable.add(self.joinInteractor?.reactive.take(during: self.lifetime).observe(subscriber))
         disposable.add(self.leaveInteractor?.reactive.take(during: self.lifetime).observe(subscriber))
-        
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 80))
-        
-        let searchbar = UISearchBar(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 40))
-        searchbar.placeholder = NSLocalizedString("Search", comment: "")
-        searchbar.delegate = self
-        headerView.addSubview(searchbar)
-        
-        let filterView = UIButton(frame: CGRect(x: 0, y: 40, width: self.view.frame.size.width, height: 40))
-        filterView.setTitle(NSLocalizedString("Filter", comment: ""), for: .normal)
-        filterView.backgroundColor = .gray500()
-        filterView.setTitleColor(ThemeService.shared.theme.tintColor, for: .normal)
-        filterView.addTarget(self, action: #selector(self.filterTapped), for: .touchUpInside)
-        headerView.addSubview(filterView)
-
-        self.tableView.tableHeaderView = headerView
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -84,9 +84,19 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate,
         super.viewWillDisappear(animated)
     }
     
+    override func viewWillLayoutSubviews() {
+        layoutHeader()
+        super.viewWillLayoutSubviews()
+    }
+    
+    private func layoutHeader() {
+        let size = segmentedFilterControl.intrinsicContentSize
+        segmentedFilterControl.frame = CGRect(x: 8, y: 4, width: viewWidth-16, height: size.height)
+        segmentedWrapper.frame = CGRect(x: 0, y: 0, width: viewWidth, height: 8+size.height)
+    }
+    
     @objc
     private func refresh() {
-        refreshControl?.beginRefreshing()
         dataSource.retrieveData {
             self.refreshControl?.endRefreshing()
         }

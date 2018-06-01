@@ -71,6 +71,8 @@ internal enum L10n {
   internal static let monthly = L10n.tr("Mainstrings", "monthly")
   /// Mounts
   internal static let mounts = L10n.tr("Mainstrings", "mounts")
+  /// My Challenges
+  internal static let myChallenges = L10n.tr("Mainstrings", "my_challenges")
   /// My Guilds
   internal static let myGuilds = L10n.tr("Mainstrings", "my_guilds")
   /// Name

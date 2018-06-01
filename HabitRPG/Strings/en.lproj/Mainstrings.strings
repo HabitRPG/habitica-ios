@@ -85,6 +85,7 @@
 "skills.cant_cast_on_challenge_tasks" = "Can't cast a spell on a challenge task";
 "level_number" = "Level %d";
 "my_guilds" = "My Guilds";
+"my_challenges" = "My Challenges";
 "discover" = "Discover";
 "last_activity" = "Last Activity %@";
 "settings.user" = "User";

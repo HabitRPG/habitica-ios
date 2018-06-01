@@ -21,6 +21,9 @@ class RealmChallenge: Object, ChallengeProtocol {
     var updatedAt: Date?
     var leaderID: String?
     var leaderName: String?
+    var groupID: String?
+    var groupName: String?
+    var groupPrivacy: String?
     var memberCount: Int = 0
     var createdAt: Date?
     var categories: [ChallengeCategoryProtocol] = []
@@ -48,6 +51,9 @@ class RealmChallenge: Object, ChallengeProtocol {
         shortName = protocolObject.shortName
         updatedAt = protocolObject.updatedAt
         leaderID = protocolObject.leaderID
+        groupID = protocolObject.groupID
+        groupName = protocolObject.groupName
+        groupPrivacy = protocolObject.groupPrivacy
         memberCount = protocolObject.memberCount
         createdAt = protocolObject.createdAt
         categories = protocolObject.categories

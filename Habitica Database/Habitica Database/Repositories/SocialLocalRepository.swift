@@ -224,6 +224,12 @@ public class SocialLocalRepository: BaseLocalRepository {
         })
     }
     
+    public func getChallengeMembership(userID: String, challengeID: String) -> SignalProducer<ChallengeMembershipProtocol?, ReactiveSwiftRealmError> {
+        return RealmChallengeMembership.findBy(query: "userID == '\(userID)' && challengeID == '\(challengeID)'").reactive().map({ (memberships, changes) -> ChallengeMembershipProtocol? in
+            return memberships.first
+        })
+    }
+    
     public func getMember(userID: String) -> SignalProducer<MemberProtocol?, ReactiveSwiftRealmError> {
         return RealmMember.findBy(query: "id == '\(userID)'").reactive().map({ (members, changes) -> MemberProtocol? in
             return members.first

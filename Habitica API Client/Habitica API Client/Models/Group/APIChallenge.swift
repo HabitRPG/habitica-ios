@@ -14,6 +14,12 @@ private struct LeaderHelper: Decodable {
     let id: String
 }
 
+private struct GroupHelper: Decodable {
+    let name: String
+    let id: String
+    let privacy: String
+}
+
 public class APIChallenge: ChallengeProtocol, Decodable {
     public var id: String?
     public var name: String?
@@ -25,6 +31,9 @@ public class APIChallenge: ChallengeProtocol, Decodable {
     public var updatedAt: Date?
     public var leaderID: String?
     public var leaderName: String?
+    public var groupID: String?
+    public var groupName: String?
+    public var groupPrivacy: String?
     public var memberCount: Int = 0
     public var createdAt: Date?
     public var categories: [ChallengeCategoryProtocol]
@@ -44,6 +53,7 @@ public class APIChallenge: ChallengeProtocol, Decodable {
         case updatedAt
         case createdAt
         case leader
+        case group
         case memberCount
         case categories
     }
@@ -61,6 +71,11 @@ public class APIChallenge: ChallengeProtocol, Decodable {
         if let leader = try? values.decode(LeaderHelper.self, forKey: .leader) {
             leaderID = leader.id
             leaderName = leader.profile["name"]
+        }
+        if let group = try? values.decode(GroupHelper.self, forKey: .group) {
+            groupID = group.id
+            groupName = group.name
+            groupPrivacy = group.privacy
         }
         createdAt = try? values.decode(Date.self, forKey: .createdAt)
         memberCount = (try? values.decode(Int.self, forKey: .memberCount)) ?? 0
