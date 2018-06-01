@@ -61,7 +61,11 @@ public class APIGroup: GroupProtocol, Codable {
             return key == "challenges"
         })?.value == true) ?? false
         quest = try? values.decode(APIQuestState.self, forKey: .quest)
-        chat = (try? values.decode([APIChatMessage].self, forKey: .chat)) ?? []
+        if values.contains(.chat) {
+            chat = try values.decode([APIChatMessage].self, forKey: .chat)
+        } else {
+            chat = []
+        }
     }
     
     public init(_ group: GroupProtocol) {

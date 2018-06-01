@@ -46,7 +46,9 @@ public class APIChatMessage: ChatMessageProtocol, Codable {
         username = try? values.decode(String.self, forKey: .username)
         flagCount = (try? values.decode(Int.self, forKey: .flagCount)) ?? 0
         contributor = (try? values.decode(APIContributor.self, forKey: .contributor))
-        userStyles = try values.decode(APIUserStyle.self, forKey: .userStyles)
+        if values.contains(.userStyles) {
+            userStyles = try! values.decode(APIUserStyle.self, forKey: .userStyles)
+        }
         likes = APIChatMessageReaction.fromList(try values.decode([String: Bool].self, forKey: .likes))
         flags = APIChatMessageReaction.fromList(try values.decode([String: Bool].self, forKey: .flags))
     }

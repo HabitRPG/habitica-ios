@@ -14,7 +14,13 @@ import ReactiveSwift
 
 class GroupChatViewController: SLKTextViewController {
     
-    @objc public var groupID: String?
+    @objc public var groupID: String? {
+        didSet {
+            if dataSource == nil, let groupID = self.groupID {
+                setupDataSource(groupID: groupID)
+            }
+        }
+    }
     private var dataSource: GroupChatViewDataSource?
     var isScrolling = false
     
@@ -65,12 +71,16 @@ class GroupChatViewController: SLKTextViewController {
         super.viewWillAppear(animated)
         
         if let groupID = self.groupID {
-            dataSource = GroupChatViewDataSource(groupID: groupID)
-            dataSource?.tableView = tableView
-            dataSource?.viewController = self
+            setupDataSource(groupID: groupID)
         }
         
         self.refresh()
+    }
+    
+    private func setupDataSource(groupID: String) {
+        dataSource = GroupChatViewDataSource(groupID: groupID)
+        dataSource?.tableView = tableView
+        dataSource?.viewController = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
