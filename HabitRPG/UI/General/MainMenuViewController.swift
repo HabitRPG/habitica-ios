@@ -67,7 +67,7 @@ class MainMenuViewController: HRPGBaseViewController, Themeable {
                 menuSections[0].items[0].title = L10n.Menu.useSkills
             }
             menuSections[0].items[0].isHidden = user?.canUseSkills == false
-            menuSections[0].items[1].isHidden = user?.needsToChooseClass == false
+            menuSections[0].items[1].isHidden = user?.needsToChooseClass == true
             menuSections[3].items[0].showIndicator = user?.flags?.hasNewStuff == true
             tableView.reloadData()
         }
