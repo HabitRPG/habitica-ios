@@ -9,6 +9,7 @@
 import UIKit
 import Habitica_Models
 import ReactiveSwift
+import Result
 
 @objc
 public protocol TaskTableViewDataSourceProtocol {
@@ -16,6 +17,8 @@ public protocol TaskTableViewDataSourceProtocol {
     @objc weak var tableView: UITableView? { get set }
     @objc var predicate: NSPredicate { get set }
     @objc var sortKey: String { get set }
+    @objc var emptyDelegate: DataSourceEmptyDelegate? { get set }
+    @objc var isEmpty: Bool { get set }
     
     @objc var tasks: [TaskProtocol] { get set}
     @objc var taskToEdit: TaskProtocol? { get set }

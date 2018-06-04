@@ -26,7 +26,6 @@
 #import <SlackTextViewController/SLKTextViewController.h>
 #import "HRPGFlagInformationOverlayView.h"
 #import "HRPGLabeledProgressBar.h"
-#import "HRPGTableViewController.h"
 #import "HRPGNavigationController.h"
 #import "HRPGInboxTableViewController.h"
 #import "HRPGAboutViewController.h"
@@ -36,3 +35,6 @@
 #import "HRPGFeedViewController.h"
 #import "HRPGSpellTabBarController.h"
 #import "HRPGQRCodeView.h"
+#import "HRPGSearchDataManager.h"
+#import "HRPGCoachmarkFrameProvider.h"
+#import "HRPGFilterViewController.h"

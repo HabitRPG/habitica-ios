@@ -13,7 +13,6 @@
 #import <Fabric/Fabric.h>
 #import "Amplitude.h"
 #import "HRPGMaintenanceViewController.h"
-#import "HRPGTableViewController.h"
 #import "HRPGInboxChatViewController.h"
 #import "UIColor+Habitica.h"
 #import <Keys/HabiticaKeys.h>
@@ -332,8 +331,8 @@
         displayedNavigationController = [self displayTabAtIndex:2];
     }
     if (displayedNavigationController) {
-        HRPGTableViewController *displayedTableViewController =
-            (HRPGTableViewController *)displayedNavigationController.topViewController;
+        TaskTableViewController *displayedTableViewController =
+            (TaskTableViewController *)displayedNavigationController.topViewController;
         if ([displayedNavigationController
                 respondsToSelector:@selector(setScrollToTaskAfterLoading:)]) {
             displayedTableViewController.scrollToTaskAfterLoading = taskID;

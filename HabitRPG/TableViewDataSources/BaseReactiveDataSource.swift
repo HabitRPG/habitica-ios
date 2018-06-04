@@ -10,6 +10,12 @@ import Foundation
 import ReactiveSwift
 import Habitica_Database
 import Habitica_Models
+import Result
+
+@objc public protocol DataSourceEmptyDelegate: class {
+    func dataSourceHasItems()
+    func dataSourceIsEmpty()
+}
 
 class ItemSection<MODEL> {
     var key: String?
@@ -64,6 +70,8 @@ class BaseReactiveDataSource<MODEL>: NSObject {
 }
 
 class BaseReactiveTableViewDataSource<MODEL>: BaseReactiveDataSource<MODEL>, UITableViewDataSource {
+    @objc weak var emptyDelegate: DataSourceEmptyDelegate?
+    @objc var isEmpty: Bool = true
     
     @objc weak var tableView: UITableView? {
         didSet {
@@ -79,11 +87,17 @@ class BaseReactiveTableViewDataSource<MODEL>: BaseReactiveDataSource<MODEL>, UIT
         if userDrivenDataUpdate {
             return
         }
+<<<<<<< 2ecb3e8d66020bbea6924f5aa8d9044ea8468f73
         tableView?.reloadData()
 
         //reload the whole tableview for now, since using the animations can cause issues
         //see https://github.com/realm/realm-cocoa/issues/4425
         /*if changes.initial == true {
+=======
+        if changes.initial == true {
+            checkForEmpty()
+            tableView?.reloadData()
+>>>>>>> add empty data source, add hook for detection
         } else {
             tableView?.beginUpdates()
             if changes.inserted.count == sections[section].items.count && changes.inserted.count != 0 {
@@ -100,7 +114,22 @@ class BaseReactiveTableViewDataSource<MODEL>: BaseReactiveDataSource<MODEL>, UIT
                 }
             }
             tableView?.endUpdates()
+<<<<<<< 2ecb3e8d66020bbea6924f5aa8d9044ea8468f73
         }*/
+=======
+            checkForEmpty()
+        }
+    }
+    
+    func checkForEmpty() {
+        if sections.filter({ $0.items.count > 0 }).count == 0 {
+            isEmpty = true
+            emptyDelegate?.dataSourceIsEmpty()
+        } else {
+            isEmpty = false
+            emptyDelegate?.dataSourceHasItems()
+        }
+>>>>>>> add empty data source, add hook for detection
     }
     
     @objc
