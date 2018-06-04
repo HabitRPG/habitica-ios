@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -1421,9 +1421,8 @@
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3yC-lS-h9M">
                                                 <rect key="frame" x="0.0" y="200" width="375" height="1"/>
-                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="1" id="clH-m2-1R1"/>
+                                                    <constraint firstAttribute="height" constant="12" id="clH-m2-1R1"/>
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="ZjB-q3-Y3D" customClass="CollapsibleStackView" customModule="Habitica" customModuleProvider="target">
@@ -1448,13 +1447,6 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="identifier" value="tavernWorldBoss"/>
                                                 </userDefinedRuntimeAttributes>
                                             </stackView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aa7-uA-5q2">
-                                                <rect key="frame" x="0.0" y="473" width="375" height="1"/>
-                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="1" id="hK0-4E-8US"/>
-                                                </constraints>
-                                            </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="hLu-EM-YaS" customClass="CollapsibleStackView" customModule="Habitica" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="474" width="375" height="381.5"/>
                                                 <subviews>
@@ -1506,13 +1498,6 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="identifier" value="tavernInn"/>
                                                 </userDefinedRuntimeAttributes>
                                             </stackView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IVW-Uk-a0X">
-                                                <rect key="frame" x="0.0" y="855.5" width="375" height="1"/>
-                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="1" id="dOH-ne-zFw"/>
-                                                </constraints>
-                                            </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="cJ1-Nq-YSk" customClass="CollapsibleStackView" customModule="Habitica" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="856.5" width="375" height="298"/>
                                                 <subviews>
@@ -1564,13 +1549,6 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="identifier" value="tavernGuidelines"/>
                                                 </userDefinedRuntimeAttributes>
                                             </stackView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kaR-7z-JvH">
-                                                <rect key="frame" x="0.0" y="1154.5" width="375" height="1"/>
-                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="1" id="Rnv-xP-hvc"/>
-                                                </constraints>
-                                            </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Qwk-6P-BZe" customClass="CollapsibleStackView" customModule="Habitica" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="1155.5" width="375" height="236"/>
                                                 <subviews>
@@ -2307,7 +2285,7 @@
                                                                 </connections>
                                                             </button>
                                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IU2-e4-Giw">
-                                                                <rect key="frame" x="0.0" y="-174" width="375" height="61"/>
+                                                                <rect key="frame" x="0.0" y="-184.5" width="375" height="61"/>
                                                                 <subviews>
                                                                     <view clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EHI-LL-yeb" customClass="AvatarView" customModule="Habitica" customModuleProvider="target">
                                                                         <rect key="frame" x="16" y="10.5" width="40" height="40"/>
@@ -2341,7 +2319,7 @@
                                                                 </constraints>
                                                             </view>
                                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jIr-tb-DyF">
-                                                                <rect key="frame" x="0.0" y="-206" width="375" height="77"/>
+                                                                <rect key="frame" x="0.0" y="-172" width="375" height="77"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9iM-dP-lgo" customClass="QuestTitleView" customModule="Habitica" customModuleProvider="target">
                                                                         <rect key="frame" x="67" y="-26" width="240" height="128"/>
@@ -2369,7 +2347,7 @@
                                                                 </constraints>
                                                             </view>
                                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x2u-nW-8ZD">
-                                                                <rect key="frame" x="0.0" y="-187" width="375" height="61"/>
+                                                                <rect key="frame" x="0.0" y="-174" width="375" height="61"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DVS-qZ-ZmV">
                                                                         <rect key="frame" x="0.0" y="13" width="179.5" height="36"/>
