@@ -42,6 +42,11 @@ class YesterdailyTaskCell: UITableViewCell {
                 let checkbox = view.viewWithTag(1) as? CheckboxView
                 checkbox?.configure(checklistItem: checklistItem, withTitle: false)
                 checkbox?.backgroundColor = UIColor.gray700()
+                checkbox?.wasTouched = {
+                    if let checked = self.onChecklistItemChecked {
+                        checked(checklistItem)
+                    }
+                }
                 checklistStackview.addArrangedSubview(view)
                 let recognizer = UITapGestureRecognizer(target: self, action: #selector(YesterdailyTaskCell.handleChecklistTap(recognizer:)))
                 view.addGestureRecognizer(recognizer)
