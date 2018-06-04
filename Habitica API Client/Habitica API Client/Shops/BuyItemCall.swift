@@ -11,7 +11,7 @@ import Habitica_Models
 import FunkyNetwork
 import ReactiveSwift
 
-public class BuyObjectCall: ResponseObjectCall<UserProtocol, APIUser> {
+public class BuyObjectCall: ResponseObjectCall<BuyResponseProtocol, APIBuyResponse> {
     public init(key: String, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "user.json")) {
         super.init(httpMethod: .POST, endpoint: "user/buy/\(key)", postData: nil, stubHolder: stubHolder)
     }

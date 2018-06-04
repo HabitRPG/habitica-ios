@@ -84,12 +84,12 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
         })
     }
     
-    func buyObject(key: String) -> Signal<UserProtocol?, NoError> {
+    func buyObject(key: String) -> Signal<BuyResponseProtocol?, NoError> {
         let call = BuyObjectCall(key: key)
         call.fire()
-        return call.objectSignal.on(value: { updatedUser in
-            if let updatedUser = updatedUser, let userID = self.currentUserId {
-                self.localUserRepository.updateUser(id: userID, updateUser: updatedUser)
+        return call.objectSignal.on(value: { buyResponse in
+            if let buyResponse = buyResponse, let userID = self.currentUserId {
+                self.localUserRepository.updateUser(id: userID, buyResponse: buyResponse)
             }
         })
     }

@@ -53,7 +53,7 @@ public class TaskLocalRepository: BaseLocalRepository {
             }
             return RealmTask(userID: userID, taskProtocol: task, tags: tags)
         })
-        removeOldTasks(newTasks: tasks)
+        removeOldTasks(userID: userID, newTasks: tasks)
     }
     
     public func save(userID: String?, tag: TagProtocol) {
@@ -65,8 +65,8 @@ public class TaskLocalRepository: BaseLocalRepository {
         
     }
     
-    private func removeOldTasks(newTasks: [TaskProtocol]) {
-        let oldTasks = getRealm()?.objects(RealmTask.self)
+    private func removeOldTasks(userID: String?, newTasks: [TaskProtocol]) {
+        let oldTasks = getRealm()?.objects(RealmTask.self).filter("userID == '\(userID ?? "")'")
         var tasksToRemove = [RealmTask]()
         oldTasks?.forEach({ (task) in
             if !newTasks.contains(where: { (newTask) -> Bool in

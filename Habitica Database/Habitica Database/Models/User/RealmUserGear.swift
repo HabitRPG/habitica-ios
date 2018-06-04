@@ -18,9 +18,10 @@ class RealmUserGear: Object, UserGearProtocol {
         set {
             if let item = newValue as? RealmOutfit {
                 realmEquipped = item
-            }
-            if let item = newValue {
+            } else if let item = newValue {
                 realmEquipped = RealmOutfit(id: id, type: "equipped", outfit: item)
+            } else {
+                realmEquipped = nil
             }
         }
     }
@@ -32,9 +33,10 @@ class RealmUserGear: Object, UserGearProtocol {
         set {
             if let item = newValue as? RealmOutfit {
                 realmCostume = item
-            }
-            if let item = newValue {
+            } else if let item = newValue {
                 realmCostume = RealmOutfit(id: id, type: "costume", outfit: item)
+            } else {
+                realmCostume = nil
             }
         }
     }

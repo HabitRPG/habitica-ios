@@ -37,6 +37,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     private var user: UserProtocol? {
         didSet {
             refreshBalances()
+            updateBuyButton()
         }
     }
 
@@ -361,12 +362,16 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                     inventoryRepository.purchaseMysterySet(identifier: setIdentifier).observeResult({ (result) in
                         if result.error != nil {
                             HRPGBuyItemModalViewController.displayViewController(name: "InsufficientHourglassesViewController", parent: topViewController)
+                        } else {
+                            successBlock()
                         }
                     })
                 } else {
                     inventoryRepository.purchaseHourglassItem(purchaseType: purchaseType, key: key).observeResult({ (result) in
                         if result.error != nil {
                             HRPGBuyItemModalViewController.displayViewController(name: "InsufficientHourglassesViewController", parent: topViewController)
+                        } else {
+                            successBlock()
                         }
                     })
                 }
@@ -378,12 +383,16 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                         } else {
                             HRPGBuyItemModalViewController.displayViewController(name: "InsufficientGemsViewController", parent: topViewController)
                         }
+                    } else {
+                        successBlock()
                     }
                 })
             } else if purchaseType == "fortify" {
                 userRepository.reroll().observeResult({ (result) in
                     if result.error != nil {
                         HRPGBuyItemModalViewController.displayViewController(name: "InsufficientGoldViewController", parent: topViewController)
+                    } else {
+                        successBlock()
                     }
                 })
             } else {
@@ -391,12 +400,16 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                     inventoryRepository.purchaseQuest(key: key).observeResult({ (result) in
                         if result.error != nil {
                             HRPGBuyItemModalViewController.displayViewController(name: "InsufficientGoldViewController", parent: topViewController)
+                        } else {
+                            successBlock()
                         }
                     })
                 } else {
                     inventoryRepository.buyObject(key: key).observeResult({ (result) in
                         if result.error != nil {
                             HRPGBuyItemModalViewController.displayViewController(name: "InsufficientGoldViewController", parent: topViewController)
+                        } else {
+                            successBlock()
                         }
                     })
                 }

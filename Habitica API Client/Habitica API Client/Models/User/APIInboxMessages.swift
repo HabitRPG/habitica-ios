@@ -14,8 +14,8 @@ class APIInboxMessage: InboxMessageProtocol, Decodable {
     var userID: String?
     var contributor: ContributorProtocol?
     var timestamp: Date?
-    var likes: [ChatMessageReactionProtocol]
-    var flags: [ChatMessageReactionProtocol]
+    var likes: [ChatMessageReactionProtocol] = []
+    var flags: [ChatMessageReactionProtocol] = []
     var text: String?
     var attributedText: NSAttributedString?
     var sent: Bool
@@ -48,8 +48,12 @@ class APIInboxMessage: InboxMessageProtocol, Decodable {
         username = try? values.decode(String.self, forKey: .username)
         flagCount = (try? values.decode(Int.self, forKey: .flagCount)) ?? 0
         contributor = (try? values.decode(APIContributor.self, forKey: .contributor))
-        likes = APIChatMessageReaction.fromList(try? values.decode([String: Bool].self, forKey: .likes))
-        flags = APIChatMessageReaction.fromList(try? values.decode([String: Bool].self, forKey: .flags))
+        if values.contains(.likes) {
+            likes = APIChatMessageReaction.fromList(try? values.decode([String: Bool].self, forKey: .likes))
+        }
+        if values.contains(.flags) {
+            flags = APIChatMessageReaction.fromList(try? values.decode([String: Bool].self, forKey: .flags))
+        }
         sent = (try? values.decode(Bool.self, forKey: .sent)) ?? false
         sort = (try? values.decode(Int.self, forKey: .sort)) ?? 0
     }

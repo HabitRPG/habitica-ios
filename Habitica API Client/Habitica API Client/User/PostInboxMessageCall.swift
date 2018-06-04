@@ -11,7 +11,7 @@ import Habitica_Models
 import FunkyNetwork
 import ReactiveSwift
 
-public class PostInboxMessageCall: ResponseObjectCall<InboxMessageProtocol, APIChatMessage> {
+public class PostInboxMessageCall: ResponseObjectCall<EmptyResponseProtocol, APIEmptyResponse> {
     public init(userID: String, inboxMessage: String, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "group.json")) {
         let updateDict = [
             "message": inboxMessage,

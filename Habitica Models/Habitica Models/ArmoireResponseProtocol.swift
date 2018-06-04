@@ -7,3 +7,11 @@
 //
 
 import Foundation
+
+public protocol ArmoireResponseProtocol {
+    var type: String? { get set }
+    var dropKey: String? { get set }
+    var dropArticle: String? { get set }
+    var dropText: String? { get set }
+    var value: Float? { get set }
+}

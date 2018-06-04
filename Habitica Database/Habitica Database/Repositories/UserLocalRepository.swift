@@ -34,6 +34,25 @@ public class UserLocalRepository: BaseLocalRepository {
             }
             return RealmInAppReward(userID: userID, protocolObject: inAppReward)
         })
+        removeOldInAppRewards(userID: userID, newInAppRewards: inAppRewards)
+    }
+    
+    private func removeOldInAppRewards(userID: String?, newInAppRewards: [InAppRewardProtocol]) {
+        let oldRewards = getRealm()?.objects(RealmInAppReward.self).filter("userID == '\(userID ?? "")'")
+        var rewardsToRemove = [RealmInAppReward]()
+        oldRewards?.forEach({ (reward) in
+            if !newInAppRewards.contains(where: { (newReward) -> Bool in
+                return newReward.key == reward.key
+            }) {
+                rewardsToRemove.append(reward)
+            }
+        })
+        if rewardsToRemove.count > 0 {
+            let realm = getRealm()
+            try? realm?.write {
+                realm?.delete(rewardsToRemove)
+            }
+        }
     }
     
     public func getUser(_ id: String) -> SignalProducer<UserProtocol, ReactiveSwiftRealmError> {
@@ -74,6 +93,35 @@ public class UserLocalRepository: BaseLocalRepository {
         let realm = getRealm()
         try? realm?.write {
             realm?.add(RealmUserItems(id: id, userItems: userItems), update: true)
+        }
+    }
+    
+    public func updateUser(id: String, buyResponse: BuyResponseProtocol) {
+        let realm = getRealm()
+        if let existingUser = realm?.object(ofType: RealmUser.self, forPrimaryKey: id) {
+            try? realm?.write {
+                if let stats = existingUser.stats {
+                    stats.health = buyResponse.health ?? stats.health
+                    stats.experience = buyResponse.experience ?? stats.experience
+                    stats.mana = buyResponse.mana ?? stats.mana
+                    stats.level = buyResponse.level ?? stats.level
+                    stats.gold = buyResponse.gold ?? stats.gold
+                    stats.points = buyResponse.attributePoints ?? stats.points
+                    stats.strength = buyResponse.strength ?? stats.strength
+                    stats.intelligence = buyResponse.intelligence ?? stats.intelligence
+                    stats.constitution = buyResponse.constitution ?? stats.constitution
+                    stats.perception = buyResponse.perception ?? stats.perception
+                    if let newBuffs = buyResponse.buffs {
+                        stats.buffs = newBuffs
+                    }
+                }
+                if let outfit = buyResponse.items?.gear?.equipped {
+                    let realmOutfit = RealmOutfit(id: id, type: "equipped", outfit: outfit)
+                    realm?.add(realmOutfit, update: true)
+                    existingUser.items?.gear?.equipped = realmOutfit
+                }
+                
+            }
         }
     }
     

@@ -178,6 +178,8 @@
 		29A6B872206941210086B2A6 /* UpdateTaskCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A6B871206941210086B2A6 /* UpdateTaskCall.swift */; };
 		29B4788C20BEFBDC00B6123F /* ScoreChecklistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4788B20BEFBDC00B6123F /* ScoreChecklistItem.swift */; };
 		29B478BB20C0360E00B6123F /* UpdateDayStartTimeCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B478BA20C0360E00B6123F /* UpdateDayStartTimeCall.swift */; };
+		29B478C320C5330600B6123F /* APIBuyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B478C220C5330600B6123F /* APIBuyResponse.swift */; };
+		29B478C520C54E6200B6123F /* APIArmoireResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B478C420C54E6200B6123F /* APIArmoireResponse.swift */; };
 		29B586FC204D92CF00301955 /* Habitica_API_Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29B586F2204D92CF00301955 /* Habitica_API_Client.framework */; };
 		29B58703204D92CF00301955 /* Habitica_API_Client.h in Headers */ = {isa = PBXBuildFile; fileRef = 29B586F5204D92CF00301955 /* Habitica_API_Client.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9A268BF127E13DFBBE1D6DAF /* Pods_Habitica_API_ClientTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B265032E3FD15918939BFD0F /* Pods_Habitica_API_ClientTests.framework */; };
@@ -368,6 +370,8 @@
 		29A6B871206941210086B2A6 /* UpdateTaskCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateTaskCall.swift; sourceTree = "<group>"; };
 		29B4788B20BEFBDC00B6123F /* ScoreChecklistItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreChecklistItem.swift; sourceTree = "<group>"; };
 		29B478BA20C0360E00B6123F /* UpdateDayStartTimeCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateDayStartTimeCall.swift; sourceTree = "<group>"; };
+		29B478C220C5330600B6123F /* APIBuyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIBuyResponse.swift; sourceTree = "<group>"; };
+		29B478C420C54E6200B6123F /* APIArmoireResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIArmoireResponse.swift; sourceTree = "<group>"; };
 		29B586F2204D92CF00301955 /* Habitica_API_Client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Habitica_API_Client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		29B586F5204D92CF00301955 /* Habitica_API_Client.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Habitica_API_Client.h; sourceTree = "<group>"; };
 		29B586F6204D92CF00301955 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -410,6 +414,8 @@
 				290C303D206D3DC70066AF5B /* Tasks */,
 				290C303C206D3D9F0066AF5B /* User */,
 				290C303B206D3D6C0066AF5B /* Content */,
+				29B478C220C5330600B6123F /* APIBuyResponse.swift */,
+				29B478C420C54E6200B6123F /* APIArmoireResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -471,8 +477,8 @@
 				290B62532073D957007287C4 /* APIPushNotifications.swift */,
 				290C3031206CF0190066AF5B /* APISkillResponse.swift */,
 				29323E1620504F5600AC6D6F /* APIStats.swift */,
-				2974BD9E208E15FD00EC1A25 /* APISubscriptionPlan.swift */,
 				2974BDA0208E16E100EC1A25 /* APISubscriptionConsecutive.swift */,
+				2974BD9E208E15FD00EC1A25 /* APISubscriptionPlan.swift */,
 				292DEE7D204E37670086D5F7 /* APITag.swift */,
 				295D43012097395800948E7E /* APITutorialStep.swift */,
 				29323E1420504F2300AC6D6F /* APIUser.swift */,
@@ -1120,6 +1126,7 @@
 				2902797920580EFD006DACB9 /* APIBuff.swift in Sources */,
 				290B629C207F7E84007287C4 /* APIOwnedGear.swift in Sources */,
 				295E9DB920B2C6E200D58D45 /* APIQuestBossRage.swift in Sources */,
+				29B478C520C54E6200B6123F /* APIArmoireResponse.swift in Sources */,
 				292DEE91204F4A0F0086D5F7 /* HabiticaServerConfig.swift in Sources */,
 				29323E512052F77F00AC6D6F /* APIUserItems.swift in Sources */,
 				292DEE4F204DA3870086D5F7 /* RetrieveTasksCall.swift in Sources */,
@@ -1152,6 +1159,7 @@
 				292DEE7E204E37670086D5F7 /* APITag.swift in Sources */,
 				290B6293207E3E24007287C4 /* JoinGroupCall.swift in Sources */,
 				290B6279207BA8C3007287C4 /* LocalLoginCall.swift in Sources */,
+				29B478C320C5330600B6123F /* APIBuyResponse.swift in Sources */,
 				294973D02081039300F02AC3 /* InviteToQuestCall.swift in Sources */,
 				291E1A24209B702B00BA1FFB /* AbortQuestCall.swift in Sources */,
 				DC2C4A0476068E29973DB0CD /* RetrieveGroupMembersCall.swift in Sources */,

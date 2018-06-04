@@ -134,14 +134,10 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
         })
     }
     
-    func post(inboxMessage: String, toUserID userID: String) -> Signal<InboxMessageProtocol?, NoError> {
+    func post(inboxMessage: String, toUserID userID: String) -> Signal<EmptyResponseProtocol?, NoError> {
         let call = PostInboxMessageCall(userID: userID, inboxMessage: inboxMessage)
         call.fire()
-        return call.objectSignal.on(value: { message in
-            if let message = message {
-                self.localRepository.save(userID: self.currentUserId, message: message)
-            }
-        })
+        return call.objectSignal
     }
     
     func retrieveChat(groupID: String) -> Signal<[ChatMessageProtocol]?, NoError> {

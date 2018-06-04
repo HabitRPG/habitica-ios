@@ -19,8 +19,8 @@ public class APIChatMessage: ChatMessageProtocol, Codable {
     public var flagCount: Int
     public var contributor: ContributorProtocol?
     public var userStyles: UserStyleProtocol?
-    public var likes: [ChatMessageReactionProtocol]
-    public var flags: [ChatMessageReactionProtocol]
+    public var likes: [ChatMessageReactionProtocol] = []
+    public var flags: [ChatMessageReactionProtocol] = []
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -49,8 +49,12 @@ public class APIChatMessage: ChatMessageProtocol, Codable {
         if values.contains(.userStyles) {
             userStyles = try! values.decode(APIUserStyle.self, forKey: .userStyles)
         }
-        likes = APIChatMessageReaction.fromList(try values.decode([String: Bool].self, forKey: .likes))
-        flags = APIChatMessageReaction.fromList(try values.decode([String: Bool].self, forKey: .flags))
+        if values.contains(.likes) {
+            likes = APIChatMessageReaction.fromList(try values.decode([String: Bool].self, forKey: .likes))
+        }
+        if values.contains(.flags) {
+            flags = APIChatMessageReaction.fromList(try values.decode([String: Bool].self, forKey: .flags))
+        }
     }
     
     public func encode(to encoder: Encoder) throws {
