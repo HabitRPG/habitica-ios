@@ -74,8 +74,8 @@ class ItemsViewDataSource: BaseReactiveTableViewDataSource<ItemProtocol> {
                     return ownedPet.key ?? ""
                 })
             })
-            .on(value: { ownedPets in
-                self.ownedPets = ownedPets
+            .on(value: {[weak self]ownedPets in
+                self?.ownedPets = ownedPets
         }).start())
         
     }
@@ -85,10 +85,10 @@ class ItemsViewDataSource: BaseReactiveTableViewDataSource<ItemProtocol> {
             disposable.dispose()
         }
         fetchDisposable = inventoryRepository.getOwnedItems()
-            .on(value: { ownedItems in
-                self.ownedItems.removeAll()
+            .on(value: {[weak self]ownedItems in
+                self?.ownedItems.removeAll()
                 ownedItems.value.forEach({ (item) in
-                    self.ownedItems[(item.key ?? "") + (item.itemType ?? "")] = item.numberOwned
+                    self?.ownedItems[(item.key ?? "") + (item.itemType ?? "")] = item.numberOwned
                 })
             })
             .map({ (data) -> [String] in
@@ -98,18 +98,18 @@ class ItemsViewDataSource: BaseReactiveTableViewDataSource<ItemProtocol> {
                     return !key.isEmpty
                 })
             })
-            .flatMap(.latest, { (keys) in
-                return self.inventoryRepository.getItems(keys: keys)
+            .flatMap(.latest, {[weak self] (keys) in
+                return self?.inventoryRepository.getItems(keys: keys) ?? SignalProducer.empty
             })
-            .on(value: { (eggs, food, hatchingPotions, quests) in
-                self.sections[0].items = eggs.value
-                self.notify(changes: eggs.changes)
-                self.sections[1].items = food.value
-                self.notify(changes: food.changes, section: 1)
-                self.sections[2].items = hatchingPotions.value
-                self.notify(changes: hatchingPotions.changes, section: 2)
-                self.sections[3].items = quests.value
-                self.notify(changes: quests.changes, section: 3)
+            .on(value: {[weak self](eggs, food, hatchingPotions, quests) in
+                self?.sections[0].items = eggs.value
+                self?.notify(changes: eggs.changes)
+                self?.sections[1].items = food.value
+                self?.notify(changes: food.changes, section: 1)
+                self?.sections[2].items = hatchingPotions.value
+                self?.notify(changes: hatchingPotions.changes, section: 2)
+                self?.sections[3].items = quests.value
+                self?.notify(changes: quests.changes, section: 3)
             })
             .start()
     }

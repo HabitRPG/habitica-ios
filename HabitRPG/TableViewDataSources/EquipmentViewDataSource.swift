@@ -8,6 +8,7 @@
 
 import Foundation
 import Habitica_Models
+import ReactiveSwift
 
 class EquipmentViewDataSource: BaseReactiveTableViewDataSource<GearProtocol> {
     
@@ -28,20 +29,20 @@ class EquipmentViewDataSource: BaseReactiveTableViewDataSource<GearProtocol> {
                     return !key.isEmpty
                 })
             })
-            .flatMap(.latest, { (keys) in
-                return self.inventoryRepository.getGear(predicate: NSPredicate(format: "key IN %@ && type == %@", keys, gearType))
+            .flatMap(.latest, {[weak self] (keys) in
+                return self?.inventoryRepository.getGear(predicate: NSPredicate(format: "key IN %@ && type == %@", keys, gearType)) ?? SignalProducer.empty
             })
-            .on(value: { (gear, changes) in
-                self.sections[0].items = gear
-                self.notify(changes: changes)
+            .on(value: {[weak self](gear, changes) in
+                self?.sections[0].items = gear
+                self?.notify(changes: changes)
             })
             .start())
         
-        disposable.inner.add(userRepository.getUser().on(value: { user in
+        disposable.inner.add(userRepository.getUser().on(value: {[weak self]user in
             if useCostume {
-                self.equippedKey = user.items?.gear?.costume?.keyFor(type: gearType)
+                self?.equippedKey = user.items?.gear?.costume?.keyFor(type: gearType)
             } else {
-                self.equippedKey = user.items?.gear?.equipped?.keyFor(type: gearType)
+                self?.equippedKey = user.items?.gear?.equipped?.keyFor(type: gearType)
             }
         }).start())
     }

@@ -172,10 +172,10 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
             return
         }
         if let tag = tagsToCreate.removeValue(forKey: taskCategory) {
-            taskRepository.createTag(tag).on(value: { tag in
-                self.createdTags[taskCategory] = tag
-            }).observeCompleted {
-                self.createTag(completeFunc)
+            taskRepository.createTag(tag).on(value: {[weak self]tag in
+                self?.createdTags[taskCategory] = tag
+            }).observeCompleted {[weak self] in
+                self?.createTag(completeFunc)
             }
         }
     }

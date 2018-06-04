@@ -108,8 +108,8 @@ public class TaskLocalRepository: BaseLocalRepository {
     }
     
     public func update(taskId: String, stats: StatsProtocol, direction: TaskScoringDirection, response: TaskResponseProtocol) {
-        RealmTask.findBy(key: taskId).take(first: 1).skipNil().on(value: { realmTask in
-            try? self.getRealm()?.write {
+        RealmTask.findBy(key: taskId).take(first: 1).skipNil().on(value: {[weak self]realmTask in
+            try? self?.getRealm()?.write {
                 if let delta = response.delta {
                     realmTask.value = realmTask.value + delta
                 }

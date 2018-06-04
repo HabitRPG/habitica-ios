@@ -67,9 +67,18 @@ class PartyDetailViewController: GroupDetailViewController {
         questTitleDisclosureView.image = HabiticaIcons.imageOfDisclosureArrow
         questTitleView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openQuestDetailView)))
         
-        disposable.inner.add(userRepository.getUser().on(value: { user in
-            self.update(user: user)
+        disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
+            self?.update(user: user)
         }).start())
+    }
+    
+    deinit {
+        if let disposable = fetchMembersDisposable, !disposable.isDisposed {
+            disposable.dispose()
+        }
+        if let disposable = questStateDisposable, !disposable.isDisposed {
+            disposable.dispose()
+        }
     }
 
     func fetchMembers() {
@@ -93,9 +102,9 @@ class PartyDetailViewController: GroupDetailViewController {
         for member in members {
             let view = MemberListView()
             view.configure(member: member, isLeader: member.id == group?.leaderID)
-            view.viewTapped = {
-                self.selectedMember = member
-                self.perform(segue: StoryboardSegue.Social.userProfileSegue)
+            view.viewTapped = {[weak self] in
+                self?.selectedMember = member
+                self?.perform(segue: StoryboardSegue.Social.userProfileSegue)
             }
             membersStackview.addArrangedSubview(view)
         }
@@ -116,15 +125,15 @@ class PartyDetailViewController: GroupDetailViewController {
             questStateDisposable = CompositeDisposable()
             startQuestButton.isHidden = true
             questTitleView.isHidden = false
-            questStateDisposable?.add(inventoryRepository.getQuest(key: key).on(value: { quest in
-                self.questTitleContentView.titleLabel.text = quest?.text
-                self.questTitleContentView.setNeedsLayout()
+            questStateDisposable?.add(inventoryRepository.getQuest(key: key).on(value: {[weak self] quest in
+                self?.questTitleContentView.titleLabel.text = quest?.text
+                self?.questTitleContentView.setNeedsLayout()
                 if let quest = quest, questState.active {
-                    self.partyQuestView.configure(state: questState, quest: quest)
-                    self.partyQuestView.isHidden = false
-                    self.questContentStackView.setBorders()
+                    self?.partyQuestView.configure(state: questState, quest: quest)
+                    self?.partyQuestView.isHidden = false
+                    self?.questContentStackView.setBorders()
                 } else {
-                    self.partyQuestView.isHidden = true
+                    self?.partyQuestView.isHidden = true
                 }
             }).start())
             questTitleContentView.imageView.setImagewith(name: "inventory_quest_scroll_\(questState.key ?? "")")
@@ -141,11 +150,11 @@ class PartyDetailViewController: GroupDetailViewController {
                 questTitleContentView.detailLabel.text = L10n.Party.questNumberResponded(numberResponded, questState.members.count)
                 
                 if let leaderID = questState.leaderID, leaderID != (userRepository.currentUserId ?? "") {
-                    questStateDisposable?.add(socialRepository.getMember(userID: leaderID, retrieveIfNotFound: true).skipNil().on(value: { (questLeader) in
-                        self.questInvitationUserView.isHidden = false
-                        self.questContentStackView.setBorders()
-                        self.questInvitationuserLabel.text = L10n.Party.invitedToQuest(questLeader.profile?.name ?? "")
-                        self.questInvitationUserAvatarView.avatar = AvatarViewModel(avatar: questLeader)
+                    questStateDisposable?.add(socialRepository.getMember(userID: leaderID, retrieveIfNotFound: true).skipNil().on(value: {[weak self] (questLeader) in
+                        self?.questInvitationUserView.isHidden = false
+                        self?.questContentStackView.setBorders()
+                        self?.questInvitationuserLabel.text = L10n.Party.invitedToQuest(questLeader.profile?.name ?? "")
+                        self?.questInvitationUserAvatarView.avatar = AvatarViewModel(avatar: questLeader)
                     }).start())
                 } else {
                     questInvitationUserView.isHidden = true

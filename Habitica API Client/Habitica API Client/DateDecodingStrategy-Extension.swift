@@ -11,7 +11,7 @@ import Foundation
 extension JSONDecoder {
     
     func setHabiticaDateDecodingStrategy() {
-        self.dateDecodingStrategy = .custom({ dateDecoder -> Date in
+        dateDecodingStrategy = .custom({ dateDecoder -> Date in
             let container = try dateDecoder.singleValueContainer()
             let dateStr = try container.decode(String.self)
             

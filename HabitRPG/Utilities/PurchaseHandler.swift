@@ -63,13 +63,16 @@ class PurchaseHandler: NSObject {
                                         }
                                     }
                                 } else if self.isSubscription(product.productId) {
-                                    self.userRepository.getUser().take(first: 1).on(value: { user in
+                                    self.userRepository.getUser().take(first: 1).on(value: {[weak self]user in
                                         if !user.isSubscribed {
-                                            SwiftyStoreKit.verifyReceipt(using: self.appleValidator, completion: { (verificationResult) in
+                                            guard let weakSelf = self else {
+                                                return
+                                            }
+                                            SwiftyStoreKit.verifyReceipt(using: weakSelf.appleValidator, completion: { (verificationResult) in
                                                 switch verificationResult {
                                                 case .success(let receipt):
-                                                    if self.isValidSubscription(product.productId, receipt: receipt) {
-                                                        self.activateSubscription(product.productId, receipt: receipt) { status in
+                                                    if weakSelf.isValidSubscription(product.productId, receipt: receipt) {
+                                                        weakSelf.activateSubscription(product.productId, receipt: receipt) { status in
                                                             if status {
                                                                 SwiftyStoreKit.finishTransaction(product.transaction)
                                                             }

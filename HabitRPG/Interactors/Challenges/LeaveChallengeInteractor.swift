@@ -26,23 +26,23 @@ class LeaveChallengeInteractor: Interactor<ChallengeProtocol, Bool> {
             return signal
             }.filter { (shouldLeave, _, _) in
                 return shouldLeave
-            }.flatMap(.concat) { (_, keepTasks, challenge) -> Signal<Bool, NSError> in
+            }.flatMap(.concat) {[weak self] (_, keepTasks, challenge) -> Signal<Bool, NSError> in
                 let challengeID = challenge.id ?? ""
-                return self.socialRepository.leaveChallenge(challengeID: challengeID, keepTasks: keepTasks)
+                return self?.socialRepository.leaveChallenge(challengeID: challengeID, keepTasks: keepTasks)
                     .map({ (_) in
                         return false
                     })
-                    .promoteError()
+                    .promoteError() ?? Signal.empty
         }
     }
 
     private func createConfirmationAlert(challenge: ChallengeProtocol, observer: Signal<(Bool, Bool, ChallengeProtocol), NSError>.Observer) {
         let alert = HabiticaAlertController(title: NSLocalizedString("Leave Challenge?", comment: ""),
                                       message: NSLocalizedString("Do you want to leave the challenge and keep or delete the tasks?", comment: ""))
-        alert.addAction(title: NSLocalizedString("Keep tasks", comment: ""), handler: { (_) in
+        alert.addAction(title: NSLocalizedString("Keep tasks", comment: ""), handler: {[weak self] (_) in
             observer.send(value: (true, true, challenge))
         })
-        alert.addAction(title: NSLocalizedString("Delete tasks", comment: ""), style: .destructive, handler: { (_) in
+        alert.addAction(title: NSLocalizedString("Delete tasks", comment: ""), style: .destructive, handler: {[weak self] (_) in
             observer.send(value: (true, false, challenge))
         })
         alert.setCloseAction(title: NSLocalizedString("Cancel", comment: ""), handler: {

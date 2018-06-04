@@ -40,18 +40,18 @@ class PetDetailDataSource: BaseReactiveCollectionViewDataSource<PetStableItem> {
                     return ownedMounts
                 }), stableRepsository.getPets(query: "egg == '\(eggType)'"))
 
-            .on(value: { (ownedPets, ownedMounts, pets) in
-                self.sections[0].items.removeAll()
-                self.sections[1].items.removeAll()
+            .on(value: {[weak self](ownedPets, ownedMounts, pets) in
+                self?.sections[0].items.removeAll()
+                self?.sections[1].items.removeAll()
                 pets.value.forEach({ (pet) in
                     let item = PetStableItem(pet: pet, trained: ownedPets[pet.key ?? ""] ?? 0, mountOwned: ownedMounts[pet.key ?? ""] ?? false)
                     if pet.type == "premium" {
-                        self.sections[1].items.append(item)
+                        self?.sections[1].items.append(item)
                     } else {
-                        self.sections[0].items.append(item)
+                        self?.sections[0].items.append(item)
                     }
                 })
-                self.collectionView?.reloadData()
+                self?.collectionView?.reloadData()
             }).start())
     }
     

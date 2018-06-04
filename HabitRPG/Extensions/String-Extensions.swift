@@ -67,4 +67,8 @@ extension String {
             return NSLocalizedString("Best", comment: "")
         }
     }
+    
+    func stripHTML() -> String {
+        return replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
+    }
 }

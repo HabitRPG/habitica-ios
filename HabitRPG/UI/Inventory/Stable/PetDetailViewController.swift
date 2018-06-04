@@ -25,8 +25,8 @@ class PetDetailViewController: StableDetailViewController<PetDetailDataSource> {
         datasource?.collectionView = self.collectionView
         super.viewDidLoad()
         
-        disposable.inner.add(userRepository.getUser().on(value: { user in
-            self.user = user
+        disposable.inner.add(userRepository.getUser().on(value: {[weak self]user in
+            self?.user = user
         }).start())
     }
     
@@ -39,9 +39,9 @@ class PetDetailViewController: StableDetailViewController<PetDetailDataSource> {
     private func showActionSheet(forStableItem stableItem: PetStableItem) {
         let actionSheet = UIAlertController(title: stableItem.pet?.text, message: nil, preferredStyle: .actionSheet)
         if stableItem.trained > 0 && stableItem.pet?.type != "special" && !stableItem.mountOwned {
-            actionSheet.addAction(UIAlertAction(title: L10n.Stable.feed, style: .default, handler: { (_) in
-                self.selectedPet = stableItem.pet
-                self.perform(segue: StoryboardSegue.Main.feedSegue)
+            actionSheet.addAction(UIAlertAction(title: L10n.Stable.feed, style: .default, handler: {[weak self] (_) in
+                self?.selectedPet = stableItem.pet
+                self?.perform(segue: StoryboardSegue.Main.feedSegue)
             }))
         }
         if stableItem.trained > 0 {
@@ -49,8 +49,8 @@ class PetDetailViewController: StableDetailViewController<PetDetailDataSource> {
             if user?.items?.currentPet == stableItem.pet?.key {
                 equipString = L10n.unequip
             }
-            actionSheet.addAction(UIAlertAction(title: equipString, style: .default, handler: { (_) in
-                self.inventoryRepository.equip(type: "pet", key: stableItem.pet?.key ?? "").observeCompleted {}
+            actionSheet.addAction(UIAlertAction(title: equipString, style: .default, handler: {[weak self] (_) in
+                self?.inventoryRepository.equip(type: "pet", key: stableItem.pet?.key ?? "").observeCompleted {}
             }))
         }
         actionSheet.addAction(UIAlertAction.cancelAction())

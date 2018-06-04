@@ -48,10 +48,10 @@ extension ChallengeProtocol {
     }
     
     func hasTasks() -> Bool {
-        let hasDailies = self.dailies.count > 0
-        let hasHabits = self.habits.count > 0
-        let hasTodos = self.todos.count > 0
-        let hasRewards = self.rewards.count > 0
+        let hasDailies = dailies.count > 0
+        let hasHabits = habits.count > 0
+        let hasTodos = todos.count > 0
+        let hasRewards = rewards.count > 0
         
         return hasDailies || hasHabits || hasTodos || hasRewards
     }

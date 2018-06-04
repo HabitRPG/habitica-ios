@@ -50,9 +50,9 @@ class FilterTableViewDataSource: BaseReactiveTableViewDataSource<TagProtocol>, F
     override init() {
         super.init()
         self.sections.append(ItemSection<TagProtocol>())
-        disposable.inner.add(userRepository.getTags().on(value: { (tags, changes) in
-            self.sections[0].items = tags
-            self.notify(changes: changes)
+        disposable.inner.add(userRepository.getTags().on(value: {[weak self](tags, changes) in
+            self?.sections[0].items = tags
+            self?.notify(changes: changes)
         }).start())
     }
     

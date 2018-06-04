@@ -77,17 +77,17 @@ class JoinLeaveButtonAttributeProvider: ChallengeButtonStyleProvider {
     func leavePrompt() -> UIViewController {
         let alert = HabiticaAlertController(title: NSLocalizedString("Leave Challenge?", comment: ""),
                                             message: NSLocalizedString("Do you want to leave the challenge and keep or delete the tasks?", comment: ""))
-        alert.addAction(title: NSLocalizedString("Keep tasks", comment: ""), style: .default, handler: { (_) in
-            self.socialRepository.leaveChallenge(challengeID: self.challengeProperty.value?.id ?? "", keepTasks: true).observeCompleted {
-                self.challengeUpdatedProperty.value = ()
+        alert.addAction(title: NSLocalizedString("Keep tasks", comment: ""), style: .default, handler: {[weak self] (_) in
+            self?.socialRepository.leaveChallenge(challengeID: self?.challengeProperty.value?.id ?? "", keepTasks: true).observeCompleted {
+                self?.challengeUpdatedProperty.value = ()
             }
         })
-        alert.addAction(title: NSLocalizedString("Delete tasks", comment: ""), style: .default, handler: { (_) in
-            self.socialRepository.leaveChallenge(challengeID: self.challengeProperty.value?.id ?? "", keepTasks: false).observeCompleted {
-                self.challengeUpdatedProperty.value = ()
+        alert.addAction(title: NSLocalizedString("Delete tasks", comment: ""), style: .default, handler: {[weak self] (_) in
+            self?.socialRepository.leaveChallenge(challengeID: self?.challengeProperty.value?.id ?? "", keepTasks: false).observeCompleted {
+                self?.challengeUpdatedProperty.value = ()
             }
         })
-        alert.addAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { (_) in })
+        alert.addAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: {[weak self] (_) in })
         
         return alert
     }

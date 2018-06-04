@@ -8,6 +8,7 @@
 
 import Foundation
 import Habitica_Models
+import ReactiveSwift
 
 class SkillsUserTableViewDataSource: BaseReactiveTableViewDataSource<MemberProtocol> {
     
@@ -20,12 +21,12 @@ class SkillsUserTableViewDataSource: BaseReactiveTableViewDataSource<MemberProto
         disposable.inner.add(userRepository.getUser().map({ (user) -> String? in
             return user.party?.id
         }).skipNil()
-            .flatMap(.latest, { (partyID) in
-                return self.socialRepository.getGroupMembers(groupID: partyID)
+            .flatMap(.latest, {[weak self] (partyID) in
+                return self?.socialRepository.getGroupMembers(groupID: partyID) ?? SignalProducer.empty
             })
-            .on(value: { (members, changes) in
-                self.sections[0].items = members
-                self.notify(changes: changes)
+            .on(value: {[weak self](members, changes) in
+                self?.sections[0].items = members
+                self?.notify(changes: changes)
             }).start()
         )
     }

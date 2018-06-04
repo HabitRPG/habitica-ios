@@ -159,8 +159,8 @@ class TaskSetupViewController: UIViewController, TypingTextViewController {
         avatarView.showPet = false
         avatarView.size = .regular
         
-        disposable.inner.add(userRepository.getUser().on(value: { user in
-            self.user = user
+        disposable.inner.add(userRepository.getUser().on(value: {[weak self]user in
+            self?.user = user
         }).start())
         
         initButtons()

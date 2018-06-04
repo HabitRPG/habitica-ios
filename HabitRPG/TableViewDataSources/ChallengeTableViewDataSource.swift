@@ -39,14 +39,14 @@ class ChallengeTableViewDataSource: BaseReactiveTableViewDataSource<ChallengePro
         sections.append(ItemSection<ChallengeProtocol>())
         fetchChallenges()
         
-        disposable.inner.add(socialRepository.getChallengeMemberships().on(value: { memberships, _ in
-            self.membershipIDs.removeAll()
+        disposable.inner.add(socialRepository.getChallengeMemberships().on(value: {[weak self]memberships, _ in
+            self?.membershipIDs.removeAll()
             memberships.forEach({ (membership) in
                 if let challengeID = membership.challengeID {
-                    self.membershipIDs.append(challengeID)
+                    self?.membershipIDs.append(challengeID)
                 }
             })
-            self.updatePredicate()
+            self?.updatePredicate()
         }).start())
     }
     
@@ -54,9 +54,9 @@ class ChallengeTableViewDataSource: BaseReactiveTableViewDataSource<ChallengePro
         if let disposable = fetchChallengesDisposable, !disposable.isDisposed {
             disposable.dispose()
         }
-        fetchChallengesDisposable = socialRepository.getChallenges(predicate: predicate).on(value: { (challenges, changes) in
-            self.sections[0].items = challenges
-            self.notify(changes: changes)
+        fetchChallengesDisposable = socialRepository.getChallenges(predicate: predicate).on(value: {[weak self](challenges, changes) in
+            self?.sections[0].items = challenges
+            self?.notify(changes: changes)
         }).start()
     }
     

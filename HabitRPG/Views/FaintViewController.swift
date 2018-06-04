@@ -50,8 +50,8 @@ class FaintViewController: UIViewController {
         avatarView.showPet = false
         avatarView.isFainted = true
         
-        disposable.inner.add(userRepository.getUser().on(value: { user in
-            self.avatarView.avatar = AvatarViewModel(avatar: user)
+        disposable.inner.add(userRepository.getUser().on(value: {[weak self]user in
+            self?.avatarView.avatar = AvatarViewModel(avatar: user)
         }).start())
     }
     

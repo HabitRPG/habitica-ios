@@ -24,14 +24,14 @@ class HRPGShopsOverviewViewModel: NSObject, HRPGShopOverviewTableViewDataSourceD
     
     @objc
     func fetchShops() {
-        disposable.inner.add(inventoryRepository.getShops().on(value: { (shops, _) in
+        disposable.inner.add(inventoryRepository.getShops().on(value: {[weak self](shops, _) in
             for shop in shops {
                 if let identifier = shop.identifier {
-                    self.shopDictionary?[identifier] = shop
+                    self?.shopDictionary?[identifier] = shop
                 }
             }
             
-            self.delegate?.didFetchShops()
+            self?.delegate?.didFetchShops()
         }).start())
     }
     

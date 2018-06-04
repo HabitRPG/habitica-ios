@@ -75,8 +75,8 @@ class ChallengeFilterAlert: UIViewController, Themeable {
             self?.updateDelegate()
         }
 
-        disposable.inner.add(socialRepository.getChallengesDistinctGroups().on(value: { challenges in
-            self.set(challenges: challenges.value)
+        disposable.inner.add(socialRepository.getChallengesDistinctGroups().on(value: {[weak self]challenges in
+            self?.set(challenges: challenges.value)
         }).start())
         
         ThemeService.shared.addThemeable(themable: self)

@@ -30,37 +30,37 @@ class EquipmentOverviewViewController: HRPGUIViewController, UIScrollViewDelegat
         
         gearView.title = L10n.Equipment.battleGear
         gearView.switchLabel = L10n.Equipment.autoEquip
-        gearView.itemTapped = { typeKey in
-            self.selectedCostume = false
-            self.selectedType = typeKey
-            self.perform(segue: StoryboardSegue.Main.equipmentDetailSegue)
+        gearView.itemTapped = {[weak self] typeKey in
+            self?.selectedCostume = false
+            self?.selectedType = typeKey
+            self?.perform(segue: StoryboardSegue.Main.equipmentDetailSegue)
         }
-        gearView.switchToggled = { value in
-            self.userRepository.updateUser(key: "preferences.autoEquip", value: value).observeCompleted {}
+        gearView.switchToggled = {[weak self] value in
+            self?.userRepository.updateUser(key: "preferences.autoEquip", value: value).observeCompleted {}
         }
         gearView.setNeedsLayout()
         
         costumeView.title = L10n.Equipment.costume
         costumeView.switchLabel = L10n.Equipment.useCostume
-        costumeView.itemTapped = { typeKey in
-            self.selectedCostume = true
-            self.selectedType = typeKey
-            self.perform(segue: StoryboardSegue.Main.equipmentDetailSegue)
+        costumeView.itemTapped = {[weak self] typeKey in
+            self?.selectedCostume = true
+            self?.selectedType = typeKey
+            self?.perform(segue: StoryboardSegue.Main.equipmentDetailSegue)
         }
-        costumeView.switchToggled = { value in
-            self.userRepository.updateUser(key: "preferences.costume", value: value).observeCompleted {}
+        costumeView.switchToggled = {[weak self] value in
+            self?.userRepository.updateUser(key: "preferences.costume", value: value).observeCompleted {}
         }
         costumeView.setNeedsLayout()
         
-        disposable.inner.add(userRepository.getUser().on(value: { user in
+        disposable.inner.add(userRepository.getUser().on(value: {[weak self]user in
             if let equipped = user.items?.gear?.equipped {
-                self.gearView.configure(outfit: equipped)
+                self?.gearView.configure(outfit: equipped)
             }
-            self.gearView.switchValue = user.preferences?.autoEquip ?? false
+            self?.gearView.switchValue = user.preferences?.autoEquip ?? false
             if let costume = user.items?.gear?.costume {
-                self.costumeView.configure(outfit: costume)
+                self?.costumeView.configure(outfit: costume)
             }
-            self.costumeView.switchValue = user.preferences?.useCostume ?? false
+            self?.costumeView.switchValue = user.preferences?.useCostume ?? false
         }).start())
     }
     

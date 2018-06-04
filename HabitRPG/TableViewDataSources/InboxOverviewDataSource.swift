@@ -36,9 +36,9 @@ class InboxOverviewDataSource: BaseReactiveTableViewDataSource<InboxMessageProto
         super.init()
         sections.append(ItemSection<InboxMessageProtocol>())
         
-        disposable.inner.add(socialRepository.getMessagesThreads().on(value: { (messages, changes) in
-            self.sections[0].items = messages
-            self.notify(changes: changes)
+        disposable.inner.add(socialRepository.getMessagesThreads().on(value: {[weak self](messages, changes) in
+            self?.sections[0].items = messages
+            self?.notify(changes: changes)
         }).start())
     }
     

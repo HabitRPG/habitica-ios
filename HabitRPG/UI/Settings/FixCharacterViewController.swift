@@ -41,15 +41,15 @@ class FixCharacterViewController: HRPGBaseViewController {
         view.addSubview(label)
         tableView.tableHeaderView = view
         
-        disposable.inner.add(userRepository.getUser().on(value: { user in
-            self.stats["stats.hp"] = user.stats?.health
-            self.stats["stats.exp"] = user.stats?.experience
-            self.stats["stats.mp"] = user.stats?.mana
-            self.stats["stats.gp"] = user.stats?.gold
-            self.stats["stats.lvl"] = Float(user.stats?.level ?? 0)
+        disposable.inner.add(userRepository.getUser().on(value: {[weak self]user in
+            self?.stats["stats.hp"] = user.stats?.health
+            self?.stats["stats.exp"] = user.stats?.experience
+            self?.stats["stats.mp"] = user.stats?.mana
+            self?.stats["stats.gp"] = user.stats?.gold
+            self?.stats["stats.lvl"] = Float(user.stats?.level ?? 0)
             //self.stats["achievements.streak"] = user?.health
-            self.habitClass = user.stats?.habitClass ?? ""
-            self.tableView.reloadData()
+            self?.habitClass = user.stats?.habitClass ?? ""
+            self?.tableView.reloadData()
         }).start())
     }
     

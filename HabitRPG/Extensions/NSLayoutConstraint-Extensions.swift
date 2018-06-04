@@ -30,8 +30,8 @@ extension NSLayoutConstraint {
             constant: constant)
         
         newConstraint.priority = priority
-        newConstraint.shouldBeArchived = self.shouldBeArchived
-        newConstraint.identifier = self.identifier
+        newConstraint.shouldBeArchived = shouldBeArchived
+        newConstraint.identifier = identifier
         
         NSLayoutConstraint.activate([newConstraint])
         return newConstraint

@@ -338,8 +338,8 @@ class TaskFormViewController: FormViewController {
             section.tag = TaskFormTags.tagSection
         }
     
-        disposable.inner.add(taskRepository.getTags().on(value: { (tags, _) in
-            self.tags = tags
+        disposable.inner.add(taskRepository.getTags().on(value: {[weak self](tags, _) in
+            self?.tags = tags
         }).start())
     }
     

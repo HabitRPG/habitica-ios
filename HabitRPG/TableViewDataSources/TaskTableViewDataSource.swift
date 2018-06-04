@@ -88,9 +88,9 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
         if let disposable = fetchTasksDisposable, !disposable.isDisposed {
             disposable.dispose()
         }
-        fetchTasksDisposable = repository.getTasks(predicate: predicate).on(value: { (tasks, changes) in
-            self.sections[0].items = tasks
-            self.notify(changes: changes)
+        fetchTasksDisposable = repository.getTasks(predicate: predicate).on(value: {[weak self] (tasks, changes) in
+            self?.sections[0].items = tasks
+            self?.notify(changes: changes)
         }).start()
     }
 
@@ -138,10 +138,10 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
             checkedCell.isExpanded = self.expandedIndexPath?.item == indexPath.item
         }
         cell.configure(task: task)
-        cell.syncErrorTouched = {
+        cell.syncErrorTouched = {[weak self] in
             let alertController = HabiticaAlertController(title: L10n.syncError, message: L10n.syncErrorMessage)
-            alertController.addAction(title: L10n.resyncTask, style: .default, isMainAction: false, handler: { (_) in
-                self.repository.syncTask(task).observeCompleted {}
+            alertController.addAction(title: L10n.resyncTask, style: .default, isMainAction: false, handler: {[weak self] (_) in
+                self?.repository.syncTask(task).observeCompleted {}
             })
             alertController.addCancelAction()
             alertController.show()

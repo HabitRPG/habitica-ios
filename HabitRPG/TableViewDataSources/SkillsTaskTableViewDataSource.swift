@@ -20,9 +20,9 @@ class SkillsTaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtoco
         super.init()
         sections.append(ItemSection<TaskProtocol>())
         
-        disposable.inner.add(taskRepository.getTasks(type: taskType).on(value: { (tasks, changes) in
-            self.sections[0].items = tasks
-            self.notify(changes: changes)
+        disposable.inner.add(taskRepository.getTasks(type: taskType).on(value: {[weak self](tasks, changes) in
+            self?.sections[0].items = tasks
+            self?.notify(changes: changes)
         }).start())
     }
     

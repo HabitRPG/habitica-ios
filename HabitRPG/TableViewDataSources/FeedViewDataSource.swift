@@ -8,6 +8,7 @@
 
 import Foundation
 import Habitica_Models
+import ReactiveSwift
 
 @objc
 public protocol FeedViewDataSourceProtocol {
@@ -35,25 +36,25 @@ class FeedViewDataSource: BaseReactiveTableViewDataSource<FoodProtocol>, FeedVie
         sections.append(ItemSection<FoodProtocol>())
         
         disposable.inner.add(inventoryRepository.getOwnedItems()
-            .on(value: { ownedItems in
-                self.ownedItems.removeAll()
+            .on(value: {[weak self]ownedItems in
+                self?.ownedItems.removeAll()
                 ownedItems.value.forEach({ (item) in
-                    self.ownedItems[(item.key ?? "") + (item.itemType ?? "")] = item.numberOwned
+                    self?.ownedItems[(item.key ?? "") + (item.itemType ?? "")] = item.numberOwned
                 })
             })
             .map({ (data) -> [String] in
-                return data.value.map({ (ownedItem) -> String in
+                return data.value.map({ ownedItem -> String in
                     return ownedItem.key ?? ""
                 }).filter({ (key) -> Bool in
                     return !key.isEmpty
                 })
             })
-            .flatMap(.latest, { (keys) in
-                return self.inventoryRepository.getFood(keys: keys)
+            .flatMap(.latest, {[weak self] (keys) in
+                return self?.inventoryRepository.getFood(keys: keys) ?? SignalProducer.empty
             })
-            .on(value: { (food) in
-                self.sections[0].items = food.value
-                self.notify(changes: food.changes)
+            .on(value: {[weak self](food) in
+                self?.sections[0].items = food.value
+                self?.notify(changes: food.changes)
             })
             .start()
         )

@@ -27,9 +27,9 @@ class FAQDetailViewController: HRPGUIViewController {
         
         answerTextView.textContainerInset = UIEdgeInsets(top: 0, left: 16, bottom: 16, right: 16)
         
-        disposable.inner.add(contentRepository.getFAQEntry(index: index).on(value: { entry in
-            self.questionLabel.text = entry.question
-            self.answerTextView.attributedText = try? Down(markdownString: entry.answer).toHabiticaAttributedString()
+        disposable.inner.add(contentRepository.getFAQEntry(index: index).on(value: {[weak self]entry in
+            self?.questionLabel.text = entry.question
+            self?.answerTextView.attributedText = try? Down(markdownString: entry.answer).toHabiticaAttributedString()
             
         }).start())
     }

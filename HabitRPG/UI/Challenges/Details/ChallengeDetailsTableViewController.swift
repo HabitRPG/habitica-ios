@@ -22,29 +22,29 @@ class ChallengeDetailsTableViewController: MultiModelTableViewController {
         title = "Details"
 
         if let viewModel = viewModel {
-            disposable.inner.add(viewModel.cellModelsSignal.observeValues({ (sections) in
-                self.dataSource.sections = sections
-                self.tableView.reloadData()
+            disposable.inner.add(viewModel.cellModelsSignal.observeValues({[weak self] (sections) in
+                self?.dataSource.sections = sections
+                self?.tableView.reloadData()
             }))
             
-            disposable.inner.add(viewModel.reloadTableSignal.observeValues { _ in
-                self.tableView.reloadData()
+            disposable.inner.add(viewModel.reloadTableSignal.observeValues {[weak self] _ in
+                self?.tableView.reloadData()
             })
             
-            disposable.inner.add(viewModel.animateUpdatesSignal.observeValues({  _ in
-                self.tableView.beginUpdates()
-                self.tableView.endUpdates()
+            disposable.inner.add(viewModel.animateUpdatesSignal.observeValues({[weak self]  _ in
+                self?.tableView.beginUpdates()
+                self?.tableView.endUpdates()
             }))
             
-            disposable.inner.add(viewModel.nextViewControllerSignal.observeValues({ viewController in
-                self.navigationController?.pushViewController(viewController, animated: true)
+            disposable.inner.add(viewModel.nextViewControllerSignal.observeValues({[weak self] viewController in
+                self?.navigationController?.pushViewController(viewController, animated: true)
             }))
             
-            disposable.inner.add(viewModel.joinLeaveStyleProvider.promptProperty.signal.observeValues({ prompt in
+            disposable.inner.add(viewModel.joinLeaveStyleProvider.promptProperty.signal.observeValues({[weak self] prompt in
                 if let alertController = prompt {
                     alertController.modalTransitionStyle = .crossDissolve
                     alertController.modalPresentationStyle = .overCurrentContext
-                    self.parent?.present(alertController, animated: true, completion: nil)
+                    self?.parent?.present(alertController, animated: true, completion: nil)
                 }
             }))
         }

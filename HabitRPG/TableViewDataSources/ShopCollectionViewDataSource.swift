@@ -85,18 +85,18 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
         self.sections.append(ItemSection<InAppRewardProtocol>())
         sections[0].showIfEmpty = true
         
-        disposable.inner.add(inventoryRepository.getShop(identifier: identifier).on(value: { shop in
-            let sectionCount = self.sections.count
+        disposable.inner.add(inventoryRepository.getShop(identifier: identifier).on(value: {[weak self]shop in
+            let sectionCount = self?.sections.count ?? 0
             if sectionCount >= 2 {
-                self.sections.removeLast(sectionCount - 1)
+                self?.sections.removeLast(sectionCount - 1)
             }
             for category in shop?.categories ?? [] {
                 let newSection = ItemSection<InAppRewardProtocol>(title: category.text)
                 newSection.items = category.items
-                self.sections.append(newSection)
+                self?.sections.append(newSection)
             }
-            self.collectionView?.reloadData()
-            self.delegate?.updateShopHeader(shop: shop)
+            self?.collectionView?.reloadData()
+            self?.delegate?.updateShopHeader(shop: shop)
         }).start())
         
         disposable.inner.add(userRepository.getInAppRewards()
@@ -104,16 +104,16 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
                 return rewards.map({ (reward) in
                     return reward.key
                 })
-            }).on(value: { rewards in
-                self.pinnedItems = rewards
+            }).on(value: {[weak self]rewards in
+                self?.pinnedItems = rewards
             }).start())
         
-        disposable.inner.add(userRepository.getUser().on(value: { user in
-            self.user = user
-            if self.selectedGearCategory == nil {
-                self.selectedGearCategory = self.userClass
+        disposable.inner.add(userRepository.getUser().on(value: {[weak self]user in
+            self?.user = user
+            if self?.selectedGearCategory == nil {
+                self?.selectedGearCategory = self?.userClass
             }
-            self.delegate?.updateNavBar(gold: Int(user.stats?.gold ?? 0), gems: user.gemCount)
+            self?.delegate?.updateNavBar(gold: Int(user.stats?.gold ?? 0), gems: user.gemCount)
         }).start())
     }
     
@@ -145,17 +145,17 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
                     return !ownedGear.contains(item.key)
                 })
             })
-            .on(value: { items in
-            self.sections[0].items = items
-            self.collectionView?.reloadData()
+            .on(value: {[weak self]items in
+            self?.sections[0].items = items
+            self?.collectionView?.reloadData()
         }).start()
     }
     
     func retrieveShopInventory(_ completed: (() -> Void)?) {
         inventoryRepository.retrieveShopInventory(identifier: shopIdentifier)
-            .flatMap(.latest, { (shop) -> Signal<ShopProtocol?, NoError> in
+            .flatMap(.latest, {[weak self] (shop) -> Signal<ShopProtocol?, NoError> in
                 if shop?.identifier == Shops.MarketKey {
-                    return self.inventoryRepository.retrieveShopInventory(identifier: Shops.GearMarketKey)
+                    return self?.inventoryRepository.retrieveShopInventory(identifier: Shops.GearMarketKey) ?? Signal.empty
                 } else {
                     let signal = Signal<ShopProtocol?, NoError>.pipe()
                     signal.input.send(value: shop)

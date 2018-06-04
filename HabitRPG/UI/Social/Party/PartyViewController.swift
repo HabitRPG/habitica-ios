@@ -18,8 +18,8 @@ class PartyViewController: SplitSocialViewController {
             return user.party?.id
         }).skipNil()
             .take(first: 1)
-            .on(value: { partyID in
-                self.groupID = partyID
+            .on(value: {[weak self]partyID in
+                self?.groupID = partyID
             })
             .start())
     }

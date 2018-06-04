@@ -46,17 +46,17 @@ class SpellsTableViewDataSource: BaseReactiveTableViewDataSource<SkillProtocol>,
     override init() {
         super.init()
         sections.append(ItemSection<SkillProtocol>())
-        disposable.inner.add(userRepository.getUser().on(value: { user in
+        disposable.inner.add(userRepository.getUser().on(value: {[weak self]user in
             if let stats = user.stats {
-                self.stats = stats
+                self?.stats = stats
             }
         }).start())
     }
     
     private func getSkills(habitClass: String) {
-        disposable.inner.add(contentRepository.getSkills(habitClass: habitClass).on(value: { result in
-            self.sections[0].items = result.value
-            self.notify(changes: result.changes)
+        disposable.inner.add(contentRepository.getSkills(habitClass: habitClass).on(value: {[weak self]result in
+            self?.sections[0].items = result.value
+            self?.notify(changes: result.changes)
         }).start())
     }
     

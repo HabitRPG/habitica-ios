@@ -26,19 +26,19 @@ class LeaveGroupInteractor: Interactor<String, GroupProtocol?> {
             return signal
             }.filter { (shouldLeave, _, _) in
                 return shouldLeave
-            }.flatMap(.concat) { (_, keepChallenges, groupID) -> Signal<GroupProtocol?, NSError> in
-                return self.socialRepository.leaveGroup(groupID: groupID, leaveChallenges: !keepChallenges)
-                    .promoteError()
+            }.flatMap(.concat) {[weak self] (_, keepChallenges, groupID) -> Signal<GroupProtocol?, NSError> in
+                return self?.socialRepository.leaveGroup(groupID: groupID, leaveChallenges: !keepChallenges)
+                    .promoteError() ?? Signal.empty
         }
     }
     
     private func createConfirmationAlert(groupID: String, observer: Signal<(Bool, Bool, String), NSError>.Observer) {
         let alert = HabiticaAlertController(title: L10n.Guilds.leaveGuildTitle,
                                             message: L10n.Guilds.leaveGuildDescription)
-        alert.addAction(title: L10n.Guilds.keepChallenges, handler: { (_) in
+        alert.addAction(title: L10n.Guilds.keepChallenges, handler: {[weak self] (_) in
             observer.send(value: (true, true, groupID))
         })
-        alert.addAction(title: L10n.Guilds.leaveChallenges, style: .destructive, handler: { (_) in
+        alert.addAction(title: L10n.Guilds.leaveChallenges, style: .destructive, handler: {[weak self] (_) in
             observer.send(value: (true, false, groupID))
         })
         alert.setCloseAction(title: L10n.cancel, handler: {

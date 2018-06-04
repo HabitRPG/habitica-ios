@@ -33,33 +33,33 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
         
         disposable.inner.add(customizationRepository.getCustomizations(type: customizationType, group: customizationGroup)
             .combineLatest(with: customizationRepository.getOwnedCustomizations(type: customizationType, group: customizationGroup))
-            .on(value: { (customizations, ownedCustomizations) in
-                self.ownedCustomizations = ownedCustomizations.value
-                self.configureSections(customizations.value)
-                self.notify(changes: customizations.changes)
+            .on(value: {[weak self](customizations, ownedCustomizations) in
+                self?.ownedCustomizations = ownedCustomizations.value
+                self?.configureSections(customizations.value)
+                self?.notify(changes: customizations.changes)
         }).start())
-        disposable.inner.add(userRepository.getUser().on(value: { user in
-            self.preferences = user.preferences
+        disposable.inner.add(userRepository.getUser().on(value: {[weak self]user in
+            self?.preferences = user.preferences
             
-            switch self.customizationType {
+            switch self?.customizationType {
             case "shirt":
-                self.equippedKey = user.preferences?.shirt
+                self?.equippedKey = user.preferences?.shirt
             case "skin":
-                self.equippedKey = user.preferences?.skin
+                self?.equippedKey = user.preferences?.skin
             case "hair":
-                switch self.customizationGroup {
+                switch self?.customizationGroup {
                 case "bangs":
-                    self.equippedKey = String(user.preferences?.hair?.bangs ?? 0)
+                    self?.equippedKey = String(user.preferences?.hair?.bangs ?? 0)
                 case "base":
-                    self.equippedKey = String(user.preferences?.hair?.base ?? 0)
+                    self?.equippedKey = String(user.preferences?.hair?.base ?? 0)
                 case "mustache":
-                    self.equippedKey = String(user.preferences?.hair?.mustache ?? 0)
+                    self?.equippedKey = String(user.preferences?.hair?.mustache ?? 0)
                 case "beard":
-                    self.equippedKey = String(user.preferences?.hair?.beard ?? 0)
+                    self?.equippedKey = String(user.preferences?.hair?.beard ?? 0)
                 case "color":
-                    self.equippedKey = String(user.preferences?.hair?.color ?? "")
+                    self?.equippedKey = String(user.preferences?.hair?.color ?? "")
                 case "flower":
-                    self.equippedKey = String(user.preferences?.hair?.flower ?? 0)
+                    self?.equippedKey = String(user.preferences?.hair?.flower ?? 0)
                 default:
                     return
                 }

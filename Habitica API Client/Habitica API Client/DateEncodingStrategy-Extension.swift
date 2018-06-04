@@ -13,7 +13,7 @@ extension JSONEncoder {
     func setHabiticaDateEncodingStrategy() {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
-        self.dateEncodingStrategy = .formatted(dateFormatter)
+        dateEncodingStrategy = .formatted(dateFormatter)
     }
     
 }

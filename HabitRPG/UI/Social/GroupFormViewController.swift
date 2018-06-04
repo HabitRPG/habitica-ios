@@ -97,11 +97,11 @@ class GroupFormViewController: FormViewController {
                         return LabeledFormValue<String>(value: member.id ?? "", label: member.profile?.name ?? "")
                     })
                 })
-                .on(value: { formValues in
-                    if let row = self.form.rowBy(tag: GroupFormTags.newLeader) as? PushRow<LabeledFormValue<String>> {
+                .on(value: {[weak self]formValues in
+                    if let row = self?.form.rowBy(tag: GroupFormTags.newLeader) as? PushRow<LabeledFormValue<String>> {
                         row.options = formValues
                         row.value = formValues.first(where: { (formValue) -> Bool in
-                            return formValue.value == self.leaderID
+                            return formValue.value == self?.leaderID
                         })
                         row.reload()
                     }

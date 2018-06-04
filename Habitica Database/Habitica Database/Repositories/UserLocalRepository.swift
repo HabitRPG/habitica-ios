@@ -120,7 +120,6 @@ public class UserLocalRepository: BaseLocalRepository {
                     realm?.add(realmOutfit, update: true)
                     existingUser.items?.gear?.equipped = realmOutfit
                 }
-                
             }
         }
     }

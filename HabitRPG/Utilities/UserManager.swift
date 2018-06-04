@@ -30,12 +30,12 @@ class UserManager: NSObject {
     func beginListening() {
         disposable.inner.add(userRepository.getUser()
             .throttle(1, on: QueueScheduler.main)
-            .on(value: { user in
-                self.onUserUpdated(user: user)
+            .on(value: {[weak self]user in
+                self?.onUserUpdated(user: user)
             }).start())
-        disposable.inner.add(taskRepository.getReminders().on(value: { (reminders, changes) in
+        disposable.inner.add(taskRepository.getReminders().on(value: {[weak self](reminders, changes) in
             if let changes = changes {
-                self.updateReminderNotifications(reminders: reminders, changes: changes)
+                self?.updateReminderNotifications(reminders: reminders, changes: changes)
             }
         }).start())
     }

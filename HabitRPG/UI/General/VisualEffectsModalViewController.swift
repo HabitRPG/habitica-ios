@@ -106,9 +106,9 @@ class VisualEffectModalViewController: UIViewController, UIScrollViewDelegate {
         UIView.animate(withDuration: 0.3) {
             self.screenDimView.alpha = 1.0
         }
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.75, initialSpringVelocity: 4, options: .curveEaseInOut, animations: {
-            self.scrollView.contentInset = insets
-            self.view.layoutIfNeeded()
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.75, initialSpringVelocity: 4, options: .curveEaseInOut, animations: {[weak self] in
+            self?.scrollView.contentInset = insets
+            self?.view.layoutIfNeeded()
         }, completion: { _ in
             if let action = completion {
                 action()
@@ -117,10 +117,10 @@ class VisualEffectModalViewController: UIViewController, UIScrollViewDelegate {
     }
     
     private func hideView(_ completion: (() -> Void)? = nil) {
-        UIView.animate(withDuration: 0.4, animations: {
-            self.screenDimView.alpha = 0
-            self.scrollViewTopOffset.constant = self.view.bounds.size.height
-            self.view.layoutIfNeeded()
+        UIView.animate(withDuration: 0.4, animations: {[weak self] in
+            self?.screenDimView.alpha = 0
+            self?.scrollViewTopOffset.constant = self?.view.bounds.size.height ?? 0
+            self?.view.layoutIfNeeded()
         }, completion: { (_) in
             if let action = completion {
                 action()

@@ -92,43 +92,42 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
             .map { sectionTuple -> [MultiModelDataSourceSection] in
                 return [sectionTuple.0, sectionTuple.1, sectionTuple.2, sectionTuple.3, sectionTuple.4, sectionTuple.5]
             }
-            .observeValues { sections in
-                self.cellModelsProperty.value = sections.filter { $0.items?.count ?? 0 > 0 }
+            .observeValues {[weak self] sections in
+                self?.cellModelsProperty.value = sections.filter { $0.items?.count ?? 0 > 0 }
         }
         
         setupButtons()
         
         setupInfo()
         
-        
         setupTasks()
         
         reloadChallenge(challenge: challenge)
         
-        challengeProperty.signal.observeValues { newChallenge in
-            self.joinLeaveStyleProvider.challengeProperty.value = newChallenge
-            self.publishStyleProvider.challengeProperty.value = newChallenge
-            self.participantsStyleProvider.challengeProperty.value = newChallenge
-            self.endChallengeStyleProvider.challengeProperty.value = newChallenge
+        challengeProperty.signal.observeValues {[weak self] newChallenge in
+            self?.joinLeaveStyleProvider.challengeProperty.value = newChallenge
+            self?.publishStyleProvider.challengeProperty.value = newChallenge
+            self?.participantsStyleProvider.challengeProperty.value = newChallenge
+            self?.endChallengeStyleProvider.challengeProperty.value = newChallenge
         }
         
-        challengeMembershipProperty.signal.observeValues { (membership) in
-            self.joinLeaveStyleProvider.challengeMembershipProperty.value = membership
+        challengeMembershipProperty.signal.observeValues {[weak self] (membership) in
+            self?.joinLeaveStyleProvider.challengeMembershipProperty.value = membership
         }
         
-        joinLeaveStyleProvider.challengeUpdatedProperty.signal.observeValues { _ in
-            self.reloadChallenge(challenge: self.challengeProperty.value)
+        joinLeaveStyleProvider.challengeUpdatedProperty.signal.observeValues {[weak self] _ in
+            self?.reloadChallenge(challenge: self?.challengeProperty.value)
         }
         
         disposable.inner.add(socialRepository.getChallenge(challengeID: challenge.id ?? "")
             .skipNil()
-            .on(value: { challenge in
-            self.setChallenge(challenge)
+            .on(value: {[weak self] challenge in
+            self?.setChallenge(challenge)
         }).start())
         
         if let challengeID = challenge.id {
-            disposable.inner.add(socialRepository.getChallengeMembership(challengeID: challengeID).on(value: { membership in
-                self.setChallengeMembership(membership)
+            disposable.inner.add(socialRepository.getChallengeMembership(challengeID: challengeID).on(value: {[weak self]membership in
+                self?.setChallengeMembership(membership)
             }).start())
         }
     }
@@ -210,21 +209,21 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
             self.endSectionProperty.value = endSection
         })
         
-        ownedChallengeSignal.observeValues { _ in
-            self.doubleEndButtonItemProperty.value = DoubleButtonMultiModelDataSourceItem(identifier: "endButton", leftAttributeProvider: self.joinLeaveStyleProvider, leftInputs: self.joinLeaveStyleProvider,
-                                                                                         rightAttributeProvider: self.endChallengeStyleProvider, rightInputs: self.endChallengeStyleProvider)
+        ownedChallengeSignal.observeValues {[weak self] _ in
+            self?.doubleEndButtonItemProperty.value = DoubleButtonMultiModelDataSourceItem(identifier: "endButton", leftAttributeProvider: self?.joinLeaveStyleProvider, leftInputs: self?.joinLeaveStyleProvider,
+                                                                                         rightAttributeProvider: self?.endChallengeStyleProvider, rightInputs: self?.endChallengeStyleProvider)
         }
         ownedChallengeSignal
             .filter({ (challenge) -> Bool in
                 return challenge.isPublished()
-            }).observeValues { _ in
-            self.mainButtonItemProperty.value = ButtonCellMultiModelDataSourceItem(attributeProvider: self.participantsStyleProvider, inputs: self.participantsStyleProvider, identifier: "mainButton")
+            }).observeValues {[weak self] _ in
+            self?.mainButtonItemProperty.value = ButtonCellMultiModelDataSourceItem(attributeProvider: self?.participantsStyleProvider, inputs: self?.participantsStyleProvider, identifier: "mainButton")
         }
         ownedChallengeSignal
             .filter({ (challenge) -> Bool in
                 return !challenge.isPublished()
-            }).observeValues { _ in
-            self.mainButtonItemProperty.value = ButtonCellMultiModelDataSourceItem(attributeProvider: self.publishStyleProvider, inputs: self.publishStyleProvider, identifier: "mainButton")
+            }).observeValues {[weak self] _ in
+            self?.mainButtonItemProperty.value = ButtonCellMultiModelDataSourceItem(attributeProvider: self?.publishStyleProvider, inputs: self?.publishStyleProvider, identifier: "mainButton")
         }
         
         unownedChallengeSignal.observeValues { _ in
@@ -233,26 +232,26 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
         unownedChallengeSignal.withLatest(from: challengeMembershipProperty.signal)
             .filter({ (challenge, membership) -> Bool in
                 return membership == nil
-            }).observeValues { _ in
-                self.mainButtonItemProperty.value = ButtonCellMultiModelDataSourceItem(attributeProvider: self.joinLeaveStyleProvider, inputs: self.joinLeaveStyleProvider, identifier: "mainButton")
-                self.endButtonItemProperty.value = nil
-                self.doubleEndButtonItemProperty.value = nil
+            }).observeValues {[weak self] _ in
+                self?.mainButtonItemProperty.value = ButtonCellMultiModelDataSourceItem(attributeProvider: self?.joinLeaveStyleProvider, inputs: self?.joinLeaveStyleProvider, identifier: "mainButton")
+                self?.endButtonItemProperty.value = nil
+                self?.doubleEndButtonItemProperty.value = nil
         }
         unownedChallengeSignal.withLatest(from: challengeMembershipProperty.signal)
             .filter({ (_, membership) -> Bool in
                 return membership != nil
-            }).observeValues { _ in
-                self.endButtonItemProperty.value = ButtonCellMultiModelDataSourceItem(attributeProvider: self.joinLeaveStyleProvider, inputs: self.joinLeaveStyleProvider, identifier: "mainButton")
+            }).observeValues {[weak self] _ in
+                self?.endButtonItemProperty.value = ButtonCellMultiModelDataSourceItem(attributeProvider: self?.joinLeaveStyleProvider, inputs: self?.joinLeaveStyleProvider, identifier: "mainButton")
         }
     }
     
-    func reloadChallenge(challenge: ChallengeProtocol) {
-        socialRepository.retrieveChallenge(challengeID: challenge.id ?? "").observeCompleted {
-            self.reloadChallengeTasks(challenge: challenge)
+    func reloadChallenge(challenge: ChallengeProtocol?) {
+        socialRepository.retrieveChallenge(challengeID: challenge?.id ?? "").observeCompleted {[weak self] in
+            self?.reloadChallengeTasks(challenge: challenge)
         }
     }
     
-    func reloadChallengeTasks(challenge: ChallengeProtocol) {
+    func reloadChallengeTasks(challenge: ChallengeProtocol?) {
     }
     
     // MARK: Resizing delegate

@@ -13,12 +13,12 @@ extension Down {
 
     func toHabiticaAttributedString(baseFont: UIFont = CustomFontMetrics.scaledSystemFont(ofSize: 15),
                                     textColor: UIColor = UIColor.gray100()) throws -> NSMutableAttributedString {
-        if self.markdownString.range(of: "[*_#\\[<]", options: .regularExpression, range: nil, locale: nil) == nil {
-            return NSMutableAttributedString(string: self.markdownString,
+        if markdownString.range(of: "[*_#\\[<]", options: .regularExpression, range: nil, locale: nil) == nil {
+            return NSMutableAttributedString(string: markdownString,
                                              attributes: [.font: CustomFontMetrics.scaledSystemFont(ofSize: 15),
                                                           .foregroundColor: textColor])
         }
-        guard let string = try self.toAttributedString().mutableCopy() as? NSMutableAttributedString else {
+        guard let string = try toAttributedString().mutableCopy() as? NSMutableAttributedString else {
             return NSMutableAttributedString()
         }
         let baseSize = baseFont.pointSize

@@ -8,6 +8,7 @@
 
 import UIKit
 import Habitica_Models
+import ReactiveSwift
 
 class RewardViewController: HRPGBaseCollectionViewController, UICollectionViewDelegateFlowLayout {
     
@@ -49,8 +50,8 @@ class RewardViewController: HRPGBaseCollectionViewController, UICollectionViewDe
     @objc
     func refresh() {
         userRepository.retrieveUser(withTasks: false)
-            .flatMap(.latest, { _ in
-                return self.userRepository.retrieveInAppRewards()
+            .flatMap(.latest, {[weak self] _ in
+                return self?.userRepository.retrieveInAppRewards() ?? Signal.empty
             })
             .observeCompleted {[weak self] in
             self?.refreshControl.endRefreshing()

@@ -41,10 +41,10 @@ class BulkStatsAllocationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        disposable.inner.add(userRepository.getUser().take(first: 1).on(value: { user in
-            self.user = user
-            self.pointsToAllocate = user.stats?.points ?? 0
-            self.updateUI()
+        disposable.inner.add(userRepository.getUser().take(first: 1).on(value: {[weak self]user in
+            self?.user = user
+            self?.pointsToAllocate = user.stats?.points ?? 0
+            self?.updateUI()
         }).start())
     }
     

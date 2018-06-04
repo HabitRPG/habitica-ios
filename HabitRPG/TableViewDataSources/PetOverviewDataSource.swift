@@ -26,17 +26,17 @@ class PetOverviewDataSource: StableOverviewDataSource<PetProtocol> {
                 })
             })
             .combineLatest(with: self.stableRepository.getPets())
-            .map({ (ownedPets, pets) in
-                return self.mapData(owned: ownedPets, animals: pets.value)
+            .map({[weak self] (ownedPets, pets) in
+                return self?.mapData(owned: ownedPets, animals: pets.value) ?? [:]
             })
-            .on(value: { overviewItems in
-                self.sections[0].items.removeAll()
-                self.sections[0].items.append(contentsOf: overviewItems["drop"] ?? [])
-                self.sections[1].items.removeAll()
-                self.sections[1].items.append(contentsOf: overviewItems["quest"] ?? [])
-                self.sections[2].items.removeAll()
-                self.sections[2].items.append(contentsOf: overviewItems["special"] ?? [])
-                self.collectionView?.reloadData()
+            .on(value: {[weak self]overviewItems in
+                self?.sections[0].items.removeAll()
+                self?.sections[0].items.append(contentsOf: overviewItems["drop"] ?? [])
+                self?.sections[1].items.removeAll()
+                self?.sections[1].items.append(contentsOf: overviewItems["quest"] ?? [])
+                self?.sections[2].items.removeAll()
+                self?.sections[2].items.append(contentsOf: overviewItems["special"] ?? [])
+                self?.collectionView?.reloadData()
             }).start())
     }
 }

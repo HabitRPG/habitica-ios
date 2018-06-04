@@ -149,11 +149,11 @@ class HabiticaAppDelegate: NSObject {
             return jsonDict
         })
             .skipNil()
-            .on(value: { json in
+            .on(value: {[weak self]json in
                 if let activeMaintenance = json["activeMaintenance"] as? Bool, activeMaintenance {
-                    self.displayMaintenanceScreen(data: json, isDeprecated: false)
+                    self?.displayMaintenanceScreen(data: json, isDeprecated: false)
                 } else {
-                    self.hideMaintenanceScreen()
+                    self?.hideMaintenanceScreen()
                 }
             })
             .filter { (json) -> Bool in
@@ -208,8 +208,8 @@ class HabiticaAppDelegate: NSObject {
         let currentBuildNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String
         if lastContentFetch == nil || (lastContentFetch?.timeIntervalSinceNow ?? 0) < 1 || lastContentFetchVersion != currentBuildNumber {
             contentRepository.retrieveContent()
-                .flatMap(FlattenStrategy.latest, { (_) -> Signal<WorldStateProtocol?, NoError> in
-                    return self.contentRepository.retrieveWorldState()
+                .flatMap(.latest, {[weak self] (_) -> Signal<WorldStateProtocol?, NoError> in
+                    return self?.contentRepository.retrieveWorldState() ?? Signal.empty
                 })
                 .observeCompleted {
                 defaults.setValue(Date(), forKey: "lastContentFetch")
@@ -248,11 +248,11 @@ class HabiticaAppDelegate: NSObject {
                 return user.party?.id
             })
             .skipNil()
-            .flatMap(.latest) { (partyID) in
-                return self.socialRepository.acceptQuestInvitation(groupID: partyID)
+            .flatMap(.latest) {[weak self] (partyID) in
+                return self?.socialRepository.acceptQuestInvitation(groupID: partyID) ?? Signal.empty
             }.on(failed: { _ in
                 completed(false)
-            }, value: { _ in
+            }, value: {[weak self]_ in
                 completed(true)
             }).start()
     }
@@ -264,11 +264,11 @@ class HabiticaAppDelegate: NSObject {
                 return user.party?.id
             })
             .skipNil()
-            .flatMap(.latest) { (partyID) in
-                return self.socialRepository.rejectQuestInvitation(groupID: partyID)
+            .flatMap(.latest) {[weak self] (partyID) in
+                return self?.socialRepository.rejectQuestInvitation(groupID: partyID) ?? Signal.empty
             }.on(failed: { _ in
                 completed(false)
-            }, value: { _ in
+            }, value: {[weak self]_ in
                 completed(true)
             }).start()
     }

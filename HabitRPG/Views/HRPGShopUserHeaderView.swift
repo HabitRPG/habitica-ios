@@ -22,8 +22,8 @@ class HRPGShopUserHeaderView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        disposable.inner.add(userRepository.getUser().on(value: { user in
-            self.set(user: user)
+        disposable.inner.add(userRepository.getUser().on(value: {[weak self]user in
+            self?.set(user: user)
         }).start())
     }
     

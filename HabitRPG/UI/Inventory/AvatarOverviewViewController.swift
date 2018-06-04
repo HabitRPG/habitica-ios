@@ -43,8 +43,8 @@ class AvatarOverviewViewController: HRPGUIViewController, UIScrollViewDelegate {
         
         setupItemViews()
         
-        disposable.inner.add(userRepository.getUser().on(value: { user in
-            self.configure(user: user)
+        disposable.inner.add(userRepository.getUser().on(value: {[weak self]user in
+            self?.configure(user: user)
         }).start())
         
         view.setNeedsLayout()
@@ -55,41 +55,41 @@ class AvatarOverviewViewController: HRPGUIViewController, UIScrollViewDelegate {
     }
     
     private func setupItemViews() {
-        shirtView.setup(title: L10n.Avatar.shirt) {
-            self.openDetailView(type: "shirt")
+        shirtView.setup(title: L10n.Avatar.shirt) {[weak self] in
+            self?.openDetailView(type: "shirt")
         }
-        skinView.setup(title: L10n.Avatar.skin) {
-            self.openDetailView(type: "skin")
+        skinView.setup(title: L10n.Avatar.skin) {[weak self] in
+            self?.openDetailView(type: "skin")
         }
-        hairColorView.setup(title: L10n.Avatar.hairColor) {
-            self.openDetailView(type: "hair", group: "color")
+        hairColorView.setup(title: L10n.Avatar.hairColor) {[weak self] in
+            self?.openDetailView(type: "hair", group: "color")
         }
-        hairBangsView.setup(title: L10n.Avatar.bangs) {
-            self.openDetailView(type: "hair", group: "bangs")
+        hairBangsView.setup(title: L10n.Avatar.bangs) {[weak self] in
+            self?.openDetailView(type: "hair", group: "bangs")
         }
-        hairBaseView.setup(title: L10n.Avatar.hairStyle) {
-            self.openDetailView(type: "hair", group: "base")
+        hairBaseView.setup(title: L10n.Avatar.hairStyle) {[weak self] in
+            self?.openDetailView(type: "hair", group: "base")
         }
-        hairMustacheView.setup(title: L10n.Avatar.mustache) {
-            self.openDetailView(type: "hair", group: "mustache")
+        hairMustacheView.setup(title: L10n.Avatar.mustache) {[weak self] in
+            self?.openDetailView(type: "hair", group: "mustache")
         }
-        hairBeardView.setup(title: L10n.Avatar.beard) {
-            self.openDetailView(type: "hair", group: "beard")
+        hairBeardView.setup(title: L10n.Avatar.beard) {[weak self] in
+            self?.openDetailView(type: "hair", group: "beard")
         }
-        hairFlowerView.setup(title: L10n.Avatar.flower) {
-            self.openDetailView(type: "hair", group: "flower")
+        hairFlowerView.setup(title: L10n.Avatar.flower) {[weak self] in
+            self?.openDetailView(type: "hair", group: "flower")
         }
-        eyewearView.setup(title: L10n.Avatar.glasses) {
-            self.openDetailView(type: "eyewear")
+        eyewearView.setup(title: L10n.Avatar.glasses) {[weak self] in
+            self?.openDetailView(type: "eyewear")
         }
-        wheelchairView.setup(title: L10n.Avatar.wheelchair) {
-            self.openDetailView(type: "chair")
+        wheelchairView.setup(title: L10n.Avatar.wheelchair) {[weak self] in
+            self?.openDetailView(type: "chair")
         }
-        animalEarsView.setup(title: L10n.Avatar.animalEars) {
-            self.openDetailView(type: "shirt")
+        animalEarsView.setup(title: L10n.Avatar.animalEars) {[weak self] in
+            self?.openDetailView(type: "shirt")
         }
-        backgroundView.setup(title: L10n.Avatar.background) {
-            self.openDetailView(type: "background")
+        backgroundView.setup(title: L10n.Avatar.background) {[weak self] in
+            self?.openDetailView(type: "background")
         }
     }
     

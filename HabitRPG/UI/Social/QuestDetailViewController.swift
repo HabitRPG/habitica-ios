@@ -58,26 +58,26 @@ class QuestDetailViewController: HRPGUIViewController {
         headerView.addSubview(borderView)
         topHeaderCoordinator.alternativeHeader = headerView
         
-        disposable.inner.add(userRepository.getUser().on(value: { user in
-            self.set(user: user)
+        disposable.inner.add(userRepository.getUser().on(value: {[weak self]user in
+            self?.set(user: user)
         }).start())
         if let questKey = questKey {
-            disposable.inner.add(inventoryRepository.getQuest(key: questKey).skipNil().on(value: { quest in
-                self.set(quest: quest)
+            disposable.inner.add(inventoryRepository.getQuest(key: questKey).skipNil().on(value: {[weak self]quest in
+                self?.set(quest: quest)
             }).start())
         }
         if let groupID = groupID {
             disposable.inner.add(socialRepository.getGroup(groupID: groupID).skipNil()
-                .on(value: { group in
-                self.set(group: group)
+                .on(value: {[weak self]group in
+                self?.set(group: group)
             })
-                .flatMap(.latest, { (group) in
-                    return self.socialRepository.getMembers(userIDs: group.quest?.members.map({ user in
+                .flatMap(.latest, {[weak self] (group) in
+                    return self?.socialRepository.getMembers(userIDs: group.quest?.members.map({ user in
                         return user.userID ?? ""
-                    }) ?? [])
+                    }) ?? []) ?? SignalProducer.empty
                 })
-                .on(value: { (members, _) in
-                    self.set(members: members)
+                .on(value: {[weak self](members, _) in
+                    self?.set(members: members)
                 })
                 .start())
         }
@@ -131,9 +131,9 @@ class QuestDetailViewController: HRPGUIViewController {
         }
         
         if let leaderID = group.quest?.leaderID {
-            disposable.inner.add(socialRepository.getMember(userID: leaderID, retrieveIfNotFound: true).skipNil().take(first: 1) .on(value: { (questLeader) in
-                self.headerView.detailLabel.text = L10n.Quests.startedBy(questLeader.profile?.name ?? "")
-                self.headerView.setNeedsLayout()
+            disposable.inner.add(socialRepository.getMember(userID: leaderID, retrieveIfNotFound: true).skipNil().take(first: 1) .on(value: {[weak self](questLeader) in
+                self?.headerView.detailLabel.text = L10n.Quests.startedBy(questLeader.profile?.name ?? "")
+                self?.headerView.setNeedsLayout()
             }).start())
         }
         
@@ -189,10 +189,10 @@ class QuestDetailViewController: HRPGUIViewController {
     @IBAction func cancelButtonTapped(_ sender: Any) {
         let alertController = HabiticaAlertController(title: nil, message: L10n.Quests.confirmCancelInvitation)
         alertController.addCancelAction()
-        alertController.addAction(title: L10n.confirm, style: .destructive, isMainAction: true, handler: { (_) in
-            if let groupID = self.groupID {
-                self.disposable.inner.add(self.socialRepository.cancelQuestInvitation(groupID: groupID).observeCompleted {
-                    self.navigationController?.popViewController(animated: true)
+        alertController.addAction(title: L10n.confirm, style: .destructive, isMainAction: true, handler: {[weak self] (_) in
+            if let groupID = self?.groupID {
+                self?.disposable.inner.add(self?.socialRepository.cancelQuestInvitation(groupID: groupID).observeCompleted {
+                    self?.navigationController?.popViewController(animated: true)
                 })
             }
         })
@@ -202,10 +202,10 @@ class QuestDetailViewController: HRPGUIViewController {
     @IBAction func abortButtonTapped(_ sender: Any) {
         let alertController = HabiticaAlertController(title: nil, message: L10n.Quests.confirmAbort)
         alertController.addCancelAction()
-        alertController.addAction(title: L10n.confirm, style: .destructive, isMainAction: true, handler: { (_) in
-            if let groupID = self.groupID {
-                self.disposable.inner.add(self.socialRepository.abortQuest(groupID: groupID).observeCompleted {
-                    self.navigationController?.popViewController(animated: true)
+        alertController.addAction(title: L10n.confirm, style: .destructive, isMainAction: true, handler: {[weak self] (_) in
+            if let groupID = self?.groupID {
+                self?.disposable.inner.add(self?.socialRepository.abortQuest(groupID: groupID).observeCompleted {
+                    self?.navigationController?.popViewController(animated: true)
                 })
             }
         })
@@ -215,9 +215,9 @@ class QuestDetailViewController: HRPGUIViewController {
     @IBAction func forceStartButtonTapped(_ sender: Any) {
         let alertController = HabiticaAlertController(title: nil, message: L10n.Quests.confirmForceStart)
         alertController.addCancelAction()
-        alertController.addAction(title: L10n.confirm, style: .default, isMainAction: true, handler: { (_) in
-            if let groupID = self.groupID {
-                self.disposable.inner.add(self.socialRepository.forceStartQuest(groupID: groupID).observeCompleted {})
+        alertController.addAction(title: L10n.confirm, style: .default, isMainAction: true, handler: {[weak self] (_) in
+            if let groupID = self?.groupID {
+                self?.disposable.inner.add(self?.socialRepository.forceStartQuest(groupID: groupID).observeCompleted {})
             }
         })
         alertController.show()

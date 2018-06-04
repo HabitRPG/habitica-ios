@@ -82,11 +82,11 @@ class MainMenuViewController: HRPGBaseViewController, Themeable {
         topHeaderCoordinator?.followScrollView = false
         navbarView?.backgroundColor = navbarColor
         
-        navbarView?.messagesAction = {
-            self.perform(segue: StoryboardSegue.Main.inboxSegue)
+        navbarView?.messagesAction = {[weak self] in
+            self?.perform(segue: StoryboardSegue.Main.inboxSegue)
         }
-        navbarView?.settingsAction = {
-            self.perform(segue: StoryboardSegue.Main.settingsSegue)
+        navbarView?.settingsAction = {[weak self] in
+            self?.perform(segue: StoryboardSegue.Main.settingsSegue)
         }
         
         let refreshControl = UIRefreshControl()

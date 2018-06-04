@@ -51,9 +51,9 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
     func sell(item: ItemProtocol) -> Signal<UserProtocol?, NoError> {
         let call = SellItemCall(item: item)
         call.fire()
-        return call.objectSignal.on(value: { user in
-            if let user = user, let userID = self.currentUserId {
-                self.localUserRepository.updateUser(id: userID, updateUser: user)
+        return call.objectSignal.on(value: {[weak self]user in
+            if let user = user, let userID = self?.currentUserId {
+                self?.localUserRepository.updateUser(id: userID, updateUser: user)
             }
         })
     }
@@ -61,9 +61,9 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
     func hatchPet(egg: EggProtocol, potion: HatchingPotionProtocol) -> Signal<UserItemsProtocol?, NoError> {
         let call = HatchPetCall(egg: egg, potion: potion)
         call.fire()
-        return call.objectSignal.on(value: { userItems in
-            if let userItems = userItems, let userID = self.currentUserId {
-                self.localUserRepository.updateUser(id: userID, userItems: userItems)
+        return call.objectSignal.on(value: {[weak self]userItems in
+            if let userItems = userItems, let userID = self?.currentUserId {
+                self?.localUserRepository.updateUser(id: userID, userItems: userItems)
             }
         })
     }
@@ -77,9 +77,9 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
     func equip(type: String, key: String) -> Signal<UserItemsProtocol?, NoError> {
         let call = EquipCall(type: type, itemKey: key)
         call.fire()
-        return call.objectSignal.on(value: { userItems in
-            if let userItems = userItems, let userID = self.currentUserId {
-                self.localUserRepository.updateUser(id: userID, userItems: userItems)
+        return call.objectSignal.on(value: {[weak self]userItems in
+            if let userItems = userItems, let userID = self?.currentUserId {
+                self?.localUserRepository.updateUser(id: userID, userItems: userItems)
             }
         })
     }
@@ -87,19 +87,48 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
     func buyObject(key: String) -> Signal<BuyResponseProtocol?, NoError> {
         let call = BuyObjectCall(key: key)
         call.fire()
-        return call.objectSignal.on(value: { buyResponse in
-            if let buyResponse = buyResponse, let userID = self.currentUserId {
-                self.localUserRepository.updateUser(id: userID, buyResponse: buyResponse)
+        return call.habiticaResponseSignal.on(value: {[weak self]habiticaResponse in
+            if let buyResponse = habiticaResponse?.data, let userID = self?.currentUserId {
+                self?.localUserRepository.updateUser(id: userID, buyResponse: buyResponse)
+                
+                if let armoire = buyResponse.armoire {
+                    guard let text = habiticaResponse?.message?.stripHTML().trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) else {
+                        return
+                    }
+                    if armoire.type == "experience" {
+                        ToastManager.show(text: text, color: .yellow)
+                    } else if armoire.type == "food" {
+                        ToastManager.show(text: text, color: .gray)
+                        //TODO: Show images in armoire toasts
+                        /*ImageManager.getImage(name: "Pet_Food_\(armoire.dropText ?? "")", completion: { (image, _) in
+                            if let image = image {
+                                let toastView = ToastView(title: text, icon: image, background: .gray)
+                                ToastManager.show(toast: toastView)
+                            }
+                        })*/
+                    } else if armoire.type == "gear" {
+                        ToastManager.show(text: text, color: .gray)
+                        //TODO: Show images in armoire toasts
+                        /*ImageManager.getImage(name: "shop_\(armoire.dropText ?? "")", completion: { (image, _) in
+                            if let image = image {
+                                let toastView = ToastView(title: text, icon: image, background: .gray)
+                                ToastManager.show(toast: toastView)
+                            }
+                        })*/
+                    }
+                }
             }
+        }).map({ habiticaResponse in
+            return habiticaResponse?.data
         })
     }
     
     func purchaseItem(purchaseType: String, key: String) -> Signal<UserProtocol?, NoError> {
         let call = PurchaseItemCall(purchaseType: purchaseType, key: key)
         call.fire()
-        return call.objectSignal.on(value: { updatedUser in
-            if let updatedUser = updatedUser, let userID = self.currentUserId {
-                self.localUserRepository.updateUser(id: userID, updateUser: updatedUser)
+        return call.objectSignal.on(value: {[weak self]updatedUser in
+            if let updatedUser = updatedUser, let userID = self?.currentUserId {
+                self?.localUserRepository.updateUser(id: userID, updateUser: updatedUser)
             }
         })
     }
@@ -107,9 +136,9 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
     func purchaseHourglassItem(purchaseType: String, key: String) -> Signal<UserProtocol?, NoError> {
         let call = PurchaseHourglassItemCall(purchaseType: purchaseType, key: key)
         call.fire()
-        return call.objectSignal.on(value: { updatedUser in
-            if let updatedUser = updatedUser, let userID = self.currentUserId {
-                self.localUserRepository.updateUser(id: userID, updateUser: updatedUser)
+        return call.objectSignal.on(value: {[weak self]updatedUser in
+            if let updatedUser = updatedUser, let userID = self?.currentUserId {
+                self?.localUserRepository.updateUser(id: userID, updateUser: updatedUser)
             }
         })
     }
@@ -117,9 +146,9 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
     func purchaseMysterySet(identifier: String) -> Signal<UserProtocol?, NoError> {
         let call = PurchaseMysterySetCall(identifier: identifier)
         call.fire()
-        return call.objectSignal.on(value: { updatedUser in
-            if let updatedUser = updatedUser, let userID = self.currentUserId {
-                self.localUserRepository.updateUser(id: userID, updateUser: updatedUser)
+        return call.objectSignal.on(value: {[weak self]updatedUser in
+            if let updatedUser = updatedUser, let userID = self?.currentUserId {
+                self?.localUserRepository.updateUser(id: userID, updateUser: updatedUser)
             }
         })
     }
@@ -127,9 +156,9 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
     func purchaseQuest(key: String) -> Signal<UserProtocol?, NoError> {
         let call = PurchaseQuestCall(key: key)
         call.fire()
-        return call.objectSignal.on(value: { updatedUser in
-            if let updatedUser = updatedUser, let userID = self.currentUserId {
-                self.localUserRepository.updateUser(id: userID, updateUser: updatedUser)
+        return call.objectSignal.on(value: {[weak self]updatedUser in
+            if let updatedUser = updatedUser, let userID = self?.currentUserId {
+                self?.localUserRepository.updateUser(id: userID, updateUser: updatedUser)
             }
         })
     }
@@ -143,10 +172,10 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
     func retrieveShopInventory(identifier: String) -> Signal<ShopProtocol?, NoError> {
         let call = RetrieveShopInventoryCall(identifier: identifier)
         call.fire()
-        return call.objectSignal.on(value: { shop in
+        return call.objectSignal.on(value: {[weak self]shop in
             if let shop = shop {
                 shop.identifier = identifier
-                self.localRepository.save(shop: shop)
+                self?.localRepository.save(shop: shop)
             }
         })
     }
@@ -168,9 +197,9 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
                 ToastManager.show(toast: toastView)
             }
         }
-        return call.objectSignal.on(value: { petValue in
-            if let userID = self.currentUserId, let key = pet.key, let trained = petValue, let foodKey = food.key {
-                self.localRepository.updatePetTrained(userID: userID, key: key, trained: trained, consumedFood: foodKey)
+        return call.objectSignal.on(value: {[weak self]petValue in
+            if let userID = self?.currentUserId, let key = pet.key, let trained = petValue, let foodKey = food.key {
+                self?.localRepository.updatePetTrained(userID: userID, key: key, trained: trained, consumedFood: foodKey)
             }
         })
     }

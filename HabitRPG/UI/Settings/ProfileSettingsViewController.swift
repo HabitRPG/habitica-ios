@@ -52,7 +52,7 @@ class ProfileSettingsViewController: BaseSettingsViewController {
     private func showEditAlert(title: String, message: String, value: String?, action: @escaping (String?) -> Void) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction.cancelAction())
-        alertController.addAction(UIAlertAction(title: NSLocalizedString("Save", comment: ""), style: .default, handler: { (_) in
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("Save", comment: ""), style: .default, handler: {[weak self] (_) in
             if let textFields = alertController.textFields, textFields.count > 0 {
                 let textField = textFields[0]
                 action(textField.text)

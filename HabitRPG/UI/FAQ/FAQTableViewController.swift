@@ -9,6 +9,7 @@
 import UIKit
 import Habitica_Models
 import ReactiveSwift
+import Result
 
 class FAQTableViewController: HRPGBaseViewController {
     
@@ -74,8 +75,8 @@ class FAQTableViewController: HRPGBaseViewController {
                 })
                 return stepDict
             })
-            .flatMap(.latest, { (updateDict) in
-                return self.userRepository.updateUser(updateDict)
+            .flatMap(.latest, {[weak self] (updateDict) in
+                return self?.userRepository.updateUser(updateDict) ?? Signal.empty
             }).start())
     }
 }

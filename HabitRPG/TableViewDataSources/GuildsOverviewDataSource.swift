@@ -35,14 +35,14 @@ class GuildsOverviewDataSource: BaseReactiveTableViewDataSource<GroupProtocol> {
         
         self.predicate = getPredicate()
 
-        disposable.inner.add(socialRepository.getGroupMemberships().on(value: { memberships, _ in
-            self.membershipIDs.removeAll()
+        disposable.inner.add(socialRepository.getGroupMemberships().on(value: {[weak self]memberships, _ in
+            self?.membershipIDs.removeAll()
             memberships.forEach({ (membership) in
                 if let groupID = membership.groupID {
-                    self.membershipIDs.append(groupID)
+                    self?.membershipIDs.append(groupID)
                 }
             })
-            self.updatePredicate()
+            self?.updatePredicate()
         }).start())
     }
     
@@ -51,9 +51,9 @@ class GuildsOverviewDataSource: BaseReactiveTableViewDataSource<GroupProtocol> {
             disposable.dispose()
         }
         if let predicate = self.predicate {
-            fetchGuildsDisposable = socialRepository.getGroups(predicate: predicate).on(value: { (guilds, changes) in
-                self.sections[0].items = guilds
-                self.notify(changes: changes)
+            fetchGuildsDisposable = socialRepository.getGroups(predicate: predicate).on(value: {[weak self](guilds, changes) in
+                self?.sections[0].items = guilds
+                self?.notify(changes: changes)
             }).start()
         }
     }

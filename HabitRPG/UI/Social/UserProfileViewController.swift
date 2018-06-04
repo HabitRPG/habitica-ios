@@ -50,16 +50,16 @@ class UserProfileViewController: HRPGBaseViewController {
         navigationItem.title = username
         
         if let userID = userID {
-            disposable.inner.add(socialRepository.getMember(userID: userID).on(value: { member in
-                self.member = member
-                self.navigationItem.title = member?.profile?.name
+            disposable.inner.add(socialRepository.getMember(userID: userID).on(value: {[weak self]member in
+                self?.member = member
+                self?.navigationItem.title = member?.profile?.name
             }).start())
         }
         
-        disposable.inner.add(inventoryRepository.getGear().on(value: { gear in
-            self.gearDictionary.removeAll()
+        disposable.inner.add(inventoryRepository.getGear().on(value: {[weak self]gear in
+            self?.gearDictionary.removeAll()
             gear.value.forEach({ (gearItem) in
-                self.gearDictionary[gearItem.key ?? ""] = gearItem
+                self?.gearDictionary[gearItem.key ?? ""] = gearItem
             })
         }).start())
         

@@ -80,9 +80,9 @@ class SettingsViewController: FormViewController, Themeable {
         setupForm()
         loadSettingsFromUserDefaults()
         
-        disposable.inner.add(userRepository.getUser().on(value: { user in
-            self.user = user
-            self.setUser(user)
+        disposable.inner.add(userRepository.getUser().on(value: {[weak self]user in
+            self?.user = user
+            self?.setUser(user)
         }).start())
         
         ThemeService.shared.addThemeable(themable: self, applyImmediately: true)

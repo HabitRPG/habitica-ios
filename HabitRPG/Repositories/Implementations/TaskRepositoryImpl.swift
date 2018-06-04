@@ -136,9 +136,9 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
         localRepository.setTaskSyncing(userID: currentUserId, task: task, isSyncing: true)
         let call = CreateTaskCall(task: task)
         call.fire()
-        return call.objectSignal.on(value: { returnedTask in
+        return call.objectSignal.on(value: {[weak self]returnedTask in
             if let returnedTask = returnedTask {
-                self.localRepository.save(userID: self.currentUserId, task: returnedTask)
+                self?.localRepository.save(userID: self?.currentUserId, task: returnedTask)
             }
         })
     }
@@ -157,10 +157,10 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
         call.errorSignal.observeValues({ _ in
             self.localRepository.setTaskSyncing(userID: self.currentUserId, task: task, isSyncing: false)
         })
-        return call.objectSignal.on(value: { returnedTask in
+        return call.objectSignal.on(value: {[weak self]returnedTask in
             if let returnedTask = returnedTask {
                 returnedTask.order = task.order
-                self.localRepository.save(userID: self.currentUserId, task: returnedTask)
+                self?.localRepository.save(userID: self?.currentUserId, task: returnedTask)
             }
         })
     }
@@ -187,9 +187,9 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
     func createTag(_ tag: TagProtocol) -> Signal<TagProtocol?, NoError> {
         let call = CreateTagCall(tag: tag)
         call.fire()
-        return call.objectSignal.on(value: { returnedTag in
+        return call.objectSignal.on(value: {[weak self]returnedTag in
             if let returnedTag = returnedTag {
-                self.localRepository.save(userID: self.currentUserId, tag: returnedTag)
+                self?.localRepository.save(userID: self?.currentUserId, tag: returnedTag)
             }
         })
     }
@@ -197,10 +197,10 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
     func updateTag(_ tag: TagProtocol) -> Signal<TagProtocol?, NoError> {
         let call = UpdateTagCall(tag: tag)
         call.fire()
-        return call.objectSignal.on(value: { returnedTag in
+        return call.objectSignal.on(value: {[weak self]returnedTag in
             if let returnedTag = returnedTag {
                 returnedTag.order = tag.order
-                self.localRepository.save(userID: self.currentUserId, tag: returnedTag)
+                self?.localRepository.save(userID: self?.currentUserId, tag: returnedTag)
             }
         })
     }
@@ -208,9 +208,9 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
     func deleteTag(_ tag: TagProtocol) -> Signal<EmptyResponseProtocol?, NoError> {
         let call = DeleteTagCall(tag: tag)
         call.fire()
-        call.httpResponseSignal.observeValues { (response) in
+        call.httpResponseSignal.observeValues {[weak self] (response) in
             if response.statusCode == 200 {
-                self.localRepository.deleteTag(tag)
+                self?.localRepository.deleteTag(tag)
             }
         }
         return call.objectSignal

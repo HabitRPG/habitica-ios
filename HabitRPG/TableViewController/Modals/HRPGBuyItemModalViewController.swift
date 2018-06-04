@@ -69,8 +69,8 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        disposable.inner.add(userRepository.getUser().on(value: { user in
-            self.user = user
+        disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
+            self?.user = user
         }).start())
     }
     
@@ -140,15 +140,15 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                     return rewards.map({ (reward) in
                         return reward.key
                     })
-                }).on(value: { rewards in
-                    self.isPinned = rewards.contains(self.reward?.key)
+                }).on(value: {[weak self]rewards in
+                    self?.isPinned = rewards.contains(self?.reward?.key)
                 }).start()
         }
     }
     
     private func setupQuests(_ contentView: UIView, itemView: UIView, key: String) {
         let questView = QuestDetailView(frame: CGRect.zero)
-        inventoryRepository.getQuest(key: key).take(first: 1).skipNil().on(value: { quest in
+        inventoryRepository.getQuest(key: key).take(first: 1).skipNil().on(value: {[weak self]quest in
             questView.configure(quest: quest)
         }).start()
         addItemAndDetails(itemView, questView, to: contentView)
@@ -165,7 +165,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                     return gear.first
                 }
                 .skipNil()
-                .on(value: { gear in
+                .on(value: {[weak self]gear in
                     statsView.configure(gear: gear)
                 }).start()
             addItemAndDetails(itemView, statsView, to: contentView)

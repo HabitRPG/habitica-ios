@@ -15,13 +15,13 @@ class JoinChallengeInteractor: Interactor<ChallengeProtocol, Bool> {
     private let socialRepository = SocialRepository()
     
     override func configure(signal: Signal<ChallengeProtocol, NSError>) -> Signal<Bool, NSError> {
-        return signal.flatMap(.concat) {(challenge) -> Signal<Bool, NSError> in
+        return signal.flatMap(.concat) {[weak self] (challenge) -> Signal<Bool, NSError> in
             let challengeID = challenge.id ?? ""
-            return self.socialRepository.joinChallenge(challengeID: challengeID)
+            return self?.socialRepository.joinChallenge(challengeID: challengeID)
                 .map({ (_) in
                     return true
                 })
-                .promoteError()
+                .promoteError() ?? Signal.empty
         }
     }
 }

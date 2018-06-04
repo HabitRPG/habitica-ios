@@ -32,18 +32,18 @@ class MountDetailDataSource: BaseReactiveCollectionViewDataSource<MountStableIte
                 return ownedMounts
             })
             .combineLatest(with: stableRepsository.getMounts(query: "egg == '\(eggType)'"))
-            .on(value: { (ownedMounts, mounts) in
-                self.sections[0].items.removeAll()
-                self.sections[1].items.removeAll()
+            .on(value: {[weak self](ownedMounts, mounts) in
+                self?.sections[0].items.removeAll()
+                self?.sections[1].items.removeAll()
                 mounts.value.forEach({ (mount) in
                     let item = MountStableItem(mount: mount, owned: ownedMounts[mount.key ?? ""] ?? false)
                     if mount.type == "premium" {
-                        self.sections[1].items.append(item)
+                        self?.sections[1].items.append(item)
                     } else {
-                        self.sections[0].items.append(item)
+                        self?.sections[0].items.append(item)
                     }
                 })
-                self.collectionView?.reloadData()
+                self?.collectionView?.reloadData()
             }).start())
     }
     

@@ -44,8 +44,8 @@ class InboxMessagesDataSource: BaseReactiveTableViewDataSource<InboxMessageProto
             self?.user = user
             self?.tableView?.reloadData()
         }).start())
-        disposable.inner.add(socialRepository.getMember(userID: otherUserID, retrieveIfNotFound: true).on(value: { member in
-            self.viewController?.setTitleWithUsername(member?.profile?.name)
+        disposable.inner.add(socialRepository.getMember(userID: otherUserID, retrieveIfNotFound: true).on(value: {[weak self]member in
+            self?.viewController?.setTitleWithUsername(member?.profile?.name)
         }).start())
         disposable.inner.add(socialRepository.getMessages(withUserID: otherUserID).on(value: {[weak self] (messages, changes) in
             self?.sections[0].items = messages

@@ -65,7 +65,7 @@ class MainTabBarController: UITabBarController {
     }
     
     private func fetchData() {
-        disposable.inner.add(userRepository.getUser().on(value: { user in
+        disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
             var badgeCount = 0
             if let count = user.inbox?.numberNewMessages, count > 0 {
                 badgeCount += count
@@ -73,29 +73,29 @@ class MainTabBarController: UITabBarController {
             if user.flags?.hasNewStuff == true {
                 badgeCount += 1
             }
-            self.setBadgeCount(index: 4, count: badgeCount)
+            self?.setBadgeCount(index: 4, count: badgeCount)
             
             if let tutorials = user.flags?.tutorials {
-                self.updateTutorialSteps(tutorials)
+                self?.updateTutorialSteps(tutorials)
             }
         }).start())
-        disposable.inner.add(taskRepository.getDueTasks().on(value: { tasks in
-            self.dueDailiesCount = 0
-            self.dueToDosCount = 0
+        disposable.inner.add(taskRepository.getDueTasks().on(value: {[weak self] tasks in
+            self?.dueDailiesCount = 0
+            self?.dueToDosCount = 0
             let calendar = Calendar.current
             let today = Date()
             for task in tasks.value where !task.completed {
                 if task.type == TaskType.daily.rawValue {
-                    self.dueDailiesCount += 1
+                    self?.dueDailiesCount += 1
                 } else if task.type == TaskType.todo.rawValue, let duedate = task.duedate {
                     let diff = calendar.dateComponents([.day], from: today, to: duedate)
                     if (diff.day ?? 1) <= 0 {
-                        self.dueToDosCount += 1
+                        self?.dueToDosCount += 1
                     }
                 }
             }
-            self.updateDailyBadge()
-            self.updateToDoBadge()
+            self?.updateDailyBadge()
+            self?.updateToDoBadge()
         }).start())
     }
     
