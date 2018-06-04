@@ -123,6 +123,8 @@ class PartyDetailViewController: GroupDetailViewController {
                     self.partyQuestView.configure(state: questState, quest: quest)
                     self.partyQuestView.isHidden = false
                     self.questContentStackView.setBorders()
+                } else {
+                    self.partyQuestView.isHidden = true
                 }
             }).start())
             questTitleContentView.imageView.setImagewith(name: "inventory_quest_scroll_\(questState.key ?? "")")
