@@ -475,6 +475,8 @@ internal enum L10n {
     internal enum Form {
       /// Checklist
       internal static let checklist = L10n.tr("Mainstrings", "tasks.form.checklist")
+      /// Clear
+      internal static let clear = L10n.tr("Mainstrings", "tasks.form.clear")
       /// Controls
       internal static let controls = L10n.tr("Mainstrings", "tasks.form.controls")
       /// Cost

@@ -21,6 +21,7 @@ enum TaskFormTags {
     static let habitResetStreak = "habitResetStreak"
     static let startDate = "startDate"
     static let dueDate = "dueDate"
+    static let dueDateClear = "dueDateClear"
     static let dailyRepeat = "dailyRepeat"
     static let dailyEvery = "dailyEvery"
     static let repeatMonthlySegment = "repeatMonthlySegment"
@@ -298,6 +299,20 @@ class TaskFormViewController: FormViewController {
                     cell.detailTextLabel?.textColor = self.lightTaskTintColor
                 })
             }
+            <<< ButtonRow(TaskFormTags.dueDateClear) { row in
+                row.title = L10n.Tasks.Form.clear
+                row.hidden = Condition.function([TaskFormTags.dueDate], { (form) -> Bool in
+                    return (form.rowBy(tag: TaskFormTags.dueDate) as? DateRow)?.value == nil
+                })
+                row.cellSetup({ (cell, _) in
+                    cell.tintColor = self.lightTaskTintColor
+                    cell.detailTextLabel?.textColor = self.lightTaskTintColor
+                })
+                row.onCellSelection({ (_, _) in
+                    (self.form.rowBy(tag: TaskFormTags.dueDate) as? DateRow)?.value = nil
+                    self.form.rowBy(tag: TaskFormTags.dueDate)?.reload()
+                })
+        }
     }
     
     private func setupReminderCost() {
@@ -399,7 +414,7 @@ class TaskFormViewController: FormViewController {
     }
     
     private func fillRewardValues() {
-        
+        form.setValues([TaskFormTags.rewardCost: task.value])
     }
     
     private func fillChecklistValues() {
@@ -483,6 +498,7 @@ class TaskFormViewController: FormViewController {
     }
     
     private func saveReward(values: [String: Any?]) {
+        task.value = values[TaskFormTags.rewardCost] as? Float ?? 0
     }
     
     private func saveChecklist() {

@@ -48,6 +48,7 @@
 "tasks.form.day_of_month" = "Day of the month";
 "tasks.form.day_of_week" = "Day of the week";
 "tasks.form.cost" = "Cost";
+"tasks.form.clear" = "Clear";
 "daily" = "Daily";
 "weekly" = "Weekly";
 "monthly" = "Monthly";
