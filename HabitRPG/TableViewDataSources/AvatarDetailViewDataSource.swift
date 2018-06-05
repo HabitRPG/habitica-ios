@@ -107,7 +107,7 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
         if let customization = item(at: indexPath), let customizationCell = cell as? CustomizationDetailCell {
             customizationCell.configure(customization: customization, preferences: preferences)
             customizationCell.isCustomizationSelected = customization.key == equippedKey
-            customizationCell.currencyView.isHidden = customization.isPurchasable == false && !owns(customization: customization)
+            customizationCell.currencyView.isHidden = customization.isPurchasable == false || owns(customization: customization)
         }
         
         return cell
