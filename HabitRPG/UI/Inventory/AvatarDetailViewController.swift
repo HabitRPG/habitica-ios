@@ -47,7 +47,7 @@ class AvatarDetailViewController: HRPGCollectionViewController, UICollectionView
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         alertController.addAction(UIAlertAction.cancelAction())
         alertController.addAction(UIAlertAction(title: L10n.purchaseForGems(Int(customization.price)), style: .default, handler: {[weak self] (_) in
-            self?.customizationRepository.unlock(customization: customization).observeCompleted {}
+            self?.customizationRepository.unlock(customization: customization, value: customization.price).observeCompleted {}
         }))
         alertController.show()
     }
@@ -56,7 +56,7 @@ class AvatarDetailViewController: HRPGCollectionViewController, UICollectionView
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         alertController.addAction(UIAlertAction.cancelAction())
         alertController.addAction(UIAlertAction(title: L10n.purchaseForGems(Int(customizationSet.setPrice)), style: .default, handler: {[weak self] (_) in
-            self?.customizationRepository.unlock(customizationSet: customizationSet).observeCompleted {}
+            self?.customizationRepository.unlock(customizationSet: customizationSet, value: customizationSet.setPrice).observeCompleted {}
         }))
         alertController.show()
     }

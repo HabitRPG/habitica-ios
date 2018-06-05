@@ -58,7 +58,7 @@ public class APIUser: UserProtocol, Decodable {
         profile = (try? values.decode(APIProfile.self, forKey: .profile))
         contributor = (try? values.decode(APIContributor.self, forKey: .contributor))
         items = (try? values.decode(APIUserItems.self, forKey: .items))
-        balance = (try? values.decode(Float.self, forKey: .balance)) ?? 0
+        balance = (try? values.decode(Float.self, forKey: .balance)) ?? -1
         tasksOrder = (try? values.decode([String: [String]].self, forKey: .tasksOrder)) ?? [:]
         tags = (try? values.decode([APITag].self, forKey: .tags)) ?? []
         tags.enumerated().forEach { (arg) in

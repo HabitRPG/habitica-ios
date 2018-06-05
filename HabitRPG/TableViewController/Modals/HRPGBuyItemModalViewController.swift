@@ -376,7 +376,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                     })
                 }
             } else if currency == .gem || purchaseType == "gems" {
-                inventoryRepository.purchaseItem(purchaseType: purchaseType, key: key).observeResult({ (result) in
+                inventoryRepository.purchaseItem(purchaseType: purchaseType, key: key, value: value).observeResult({ (result) in
                     if result.error != nil {
                         if key == "gem" {
                             HRPGBuyItemModalViewController.displayViewController(name: "GemCapReachedViewController", parent: topViewController)

@@ -123,11 +123,12 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
         })
     }
     
-    func purchaseItem(purchaseType: String, key: String) -> Signal<UserProtocol?, NoError> {
+    func purchaseItem(purchaseType: String, key: String, value: Int) -> Signal<UserProtocol?, NoError> {
         let call = PurchaseItemCall(purchaseType: purchaseType, key: key)
         call.fire()
         return call.objectSignal.on(value: {[weak self]updatedUser in
             if let updatedUser = updatedUser, let userID = self?.currentUserId {
+                self?.localUserRepository.updateUser(id: userID, balanceDiff: -(Float(value) / 4.0))
                 self?.localUserRepository.updateUser(id: userID, updateUser: updatedUser)
             }
         })

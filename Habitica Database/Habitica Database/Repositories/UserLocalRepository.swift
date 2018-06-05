@@ -83,6 +83,14 @@ public class UserLocalRepository: BaseLocalRepository {
         }
     }
     
+    public func updateUser(id: String, balanceDiff: Float) {
+        if let user = getRealm()?.object(ofType: RealmUser.self, forPrimaryKey: id) {
+            try? getRealm()?.write {
+                user.balance = user.balance + balanceDiff
+            }
+        }
+    }
+    
     public func updateUser(id: String, updateUser: UserProtocol) {
         if let user = getRealm()?.object(ofType: RealmUser.self, forPrimaryKey: id) {
             mergeUsers(oldUser: user, newUser: updateUser)
@@ -181,6 +189,9 @@ public class UserLocalRepository: BaseLocalRepository {
             return
         }
         try? realm.write {
+            if newUser.balance >= 0 {
+                oldUser.balance = newUser.balance
+            }
             if let newItems = newUser.items {
                 realm.add(RealmUserItems(id: oldUser.id, userItems: newItems), update: true)
             }

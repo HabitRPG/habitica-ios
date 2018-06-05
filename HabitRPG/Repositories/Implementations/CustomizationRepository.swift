@@ -25,21 +25,23 @@ class CustomizationRepository: BaseRepository<CustomizationLocalRepository> {
         return localRepository.getOwnedCustomizations(type: type, group: group)
     }
     
-    public func unlock(customization: CustomizationProtocol) -> Signal<UserProtocol?, NoError> {
+    public func unlock(customization: CustomizationProtocol, value: Float) -> Signal<UserProtocol?, NoError> {
         let call = UnlockCustomizationsCall(customizations: [customization])
         call.fire()
         return call.objectSignal.on(value: {[weak self] newUser in
             if let userID = self?.currentUserId, let user = newUser {
+                self?.userLocalRepository.updateUser(id: userID, balanceDiff: -(value / 4.0))
                 self?.userLocalRepository.updateUser(id: userID, updateUser: user)
             }
         })
     }
     
-    public func unlock(customizationSet: CustomizationSetProtocol) -> Signal<UserProtocol?, NoError> {
+    public func unlock(customizationSet: CustomizationSetProtocol, value: Float) -> Signal<UserProtocol?, NoError> {
         let call = UnlockCustomizationsCall(customizations: customizationSet.setItems ?? [])
         call.fire()
         return call.objectSignal.on(value: {[weak self]newUser in
             if let userID = self?.currentUserId, let user = newUser {
+                self?.userLocalRepository.updateUser(id: userID, balanceDiff: -(value / 4.0))
                 self?.userLocalRepository.updateUser(id: userID, updateUser: user)
             }
         })
