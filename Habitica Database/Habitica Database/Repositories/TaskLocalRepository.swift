@@ -16,6 +16,7 @@ public class TaskLocalRepository: BaseLocalRepository {
     
     func save(userID: String?, task: TaskProtocol, tags: Results<RealmTag>?) {
         if let realmTask = task as? RealmTask {
+            realmTask.userID = userID
             save(object: realmTask)
             return
         }
@@ -83,8 +84,8 @@ public class TaskLocalRepository: BaseLocalRepository {
         }
     }
     
-    public func getTasks(predicate: NSPredicate) -> SignalProducer<ReactiveResults<[TaskProtocol]>, ReactiveSwiftRealmError> {
-        return RealmTask.findBy(predicate: predicate).sorted(key: "order").reactive().map({ (value, changeset) -> ReactiveResults<[TaskProtocol]> in
+    public func getTasks(userID: String, predicate: NSPredicate) -> SignalProducer<ReactiveResults<[TaskProtocol]>, ReactiveSwiftRealmError> {
+        return RealmTask.findBy(predicate: NSCompoundPredicate(andPredicateWithSubpredicates: [NSPredicate(format: "userID == %@", userID), predicate])).sorted(key: "order").reactive().map({ (value, changeset) -> ReactiveResults<[TaskProtocol]> in
             return (value.map({ (task) -> TaskProtocol in return task }), changeset)
         })
     }

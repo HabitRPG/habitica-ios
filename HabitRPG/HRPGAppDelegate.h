@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @protocol OIDAuthorizationFlowSession;
+@class HabiticaAppDelegate;
 
 @interface HRPGAppDelegate : UIResponder<UIApplicationDelegate, UIAlertViewDelegate>
 

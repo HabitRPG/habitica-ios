@@ -1,6 +1,7 @@
 "search" = "Search";
 "cancel" = "Cancel";
 "edit" = "Edit";
+"delete" = "Delete";
 "name" = "Name";
 "description" = "Description";
 "summary" = "Summary";
@@ -49,6 +50,7 @@
 "tasks.form.day_of_week" = "Day of the week";
 "tasks.form.cost" = "Cost";
 "tasks.form.clear" = "Clear";
+"tasks.form.confirm_delete" = "Are you sure you want to delete this task?";
 "daily" = "Daily";
 "weekly" = "Weekly";
 "monthly" = "Monthly";

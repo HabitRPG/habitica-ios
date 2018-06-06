@@ -30,6 +30,7 @@ enum TaskFormTags {
     static let reminderSection = "reminderSection"
     static let tagSection = "tagSection"
     static let tags = "tags"
+    static let delete = "delete"
 }
 
 class TaskFormViewController: FormViewController {
@@ -144,6 +145,14 @@ class TaskFormViewController: FormViewController {
         setupTags()
         
         if !isCreating {
+            form +++ Section()
+                <<< ButtonRow(TaskFormTags.delete) { row in
+                    row.title = L10n.delete
+                    row.cell.tintColor = UIColor.red50()
+                    row.onCellSelection({ (_, _) in
+                        self.deleteButtonTapped()
+                    })
+            }
             fillForm()
             modalContainerViewController?.rightButton.setTitle(L10n.save, for: .normal)
         } else {
@@ -238,7 +247,7 @@ class TaskFormViewController: FormViewController {
                 row.options = TaskFormViewController.habitResetStreakOptions
                 row.value = TaskFormViewController.habitResetStreakOptions[0]
                 row.cellSetup({ (cell, _) in
-                    cell.tintColor = self.taskTintColor
+                    cell.segmentedControl.tintColor = self.taskTintColor
                 })
             }
     }
@@ -279,7 +288,7 @@ class TaskFormViewController: FormViewController {
                     return (form.rowBy(tag: TaskFormTags.dailyRepeat) as? ActionSheetRow<LabeledFormValue<String>>)?.value?.value != "monthly"
                 })
                 row.cellSetup({ (cell, _) in
-                    cell.tintColor = self.taskTintColor
+                    cell.segmentedControl.tintColor = self.taskTintColor
                 })
         }
             <<< WeekdayRow(TaskFormTags.repeatWeekdays) { row in
@@ -568,5 +577,15 @@ class TaskFormViewController: FormViewController {
         if let visualEffectViewController = modalContainerViewController {
             visualEffectViewController.titleBar.backgroundColor = taskTintColor.darker(by: 16)
         }
+    }
+    
+    private func deleteButtonTapped() {
+        let alertController = HabiticaAlertController(title: L10n.Tasks.Form.confirmDelete)
+        alertController.addCancelAction()
+        alertController.addAction(title: L10n.delete, style: .default, isMainAction: true) { (nil) in
+            self.taskRepository.deleteTask(self.task).observeCompleted {}
+            self.dismiss(animated: true, completion: nil)
+        }
+        alertController.show()
     }
 }

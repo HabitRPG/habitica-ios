@@ -138,7 +138,6 @@ class HabiticaAppDelegate: NSObject {
     func rescheduleDailyReminder() {
         let defaults = UserDefaults.standard
         
-        
         let sharedApplication = UIApplication.shared
         for localNotification in sharedApplication.scheduledLocalNotifications ?? [] {
             if (localNotification.userInfo?["id"] as? String ?? "").isEmpty || (localNotification.userInfo?["isDailyNotification"] as? Bool) == true {

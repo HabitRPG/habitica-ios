@@ -190,7 +190,7 @@ class SettingsViewController: FormViewController, Themeable {
                     let defaults = UserDefaults()
                     defaults.set(row.value ?? false, forKey: "dailyReminderActive")
                     if let appDelegate = UIApplication.shared.delegate as? HRPGAppDelegate {
-                        appDelegate.swiftAppDelegate.reschedulteDailyReminder()
+                        appDelegate.swiftAppDelegate.rescheduleDailyReminder()
                     }
                 })
             <<< TimeRow(SettingsTags.dailyReminderTime) { row in
@@ -202,7 +202,7 @@ class SettingsViewController: FormViewController, Themeable {
                     let defaults = UserDefaults()
                     defaults.set(row.value, forKey: "dailyReminderTime")
                     if let appDelegate = UIApplication.shared.delegate as? HRPGAppDelegate {
-                        appDelegate.swiftAppDelegate.reschedulteDailyReminder()
+                        appDelegate.swiftAppDelegate.rescheduleDailyReminder()
                     }
                 })
             +++ Section(L10n.Settings.notificationBadge)

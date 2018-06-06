@@ -23,6 +23,8 @@ internal enum L10n {
   internal static let create = L10n.tr("Mainstrings", "create")
   /// Daily
   internal static let daily = L10n.tr("Mainstrings", "daily")
+  /// Delete
+  internal static let delete = L10n.tr("Mainstrings", "delete")
   /// Description
   internal static let description = L10n.tr("Mainstrings", "description")
   /// Details
@@ -477,6 +479,8 @@ internal enum L10n {
       internal static let checklist = L10n.tr("Mainstrings", "tasks.form.checklist")
       /// Clear
       internal static let clear = L10n.tr("Mainstrings", "tasks.form.clear")
+      /// Are you sure you want to delete this task?
+      internal static let confirmDelete = L10n.tr("Mainstrings", "tasks.form.confirm_delete")
       /// Controls
       internal static let controls = L10n.tr("Mainstrings", "tasks.form.controls")
       /// Cost

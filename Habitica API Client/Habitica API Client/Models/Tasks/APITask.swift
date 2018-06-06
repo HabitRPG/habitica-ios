@@ -43,7 +43,7 @@ public class APITask: TaskProtocol, Codable {
     public var nextDue: [Date]
     
     enum CodingKeys: String, CodingKey {
-        case id
+        case id = "_id"
         case text
         case notes
         case type
