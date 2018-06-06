@@ -301,7 +301,9 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
     public func markInboxAsSeen() -> Signal<EmptyResponseProtocol?, NoError> {
         let call = MarkInboxAsSeenCall()
         call.fire()
-        return call.objectSignal
+        return call.objectSignal.on(value: {[weak self] _ in
+            self?.localRepository.markInboxAsSeen(userID: self?.currentUserId ?? "")
+        })
     }
     
     public func rejectQuestInvitation(groupID: String) -> Signal<QuestStateProtocol?, NoError> {
@@ -356,7 +358,7 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
         localRepository.save(group)
         let call = CreateGroupCall(group: group)
         call.fire()
-        return call.objectSignal.on(value: {[weak self]returnedGroup in
+        return call.objectSignal.on(value: {[weak self] returnedGroup in
             if let returnedGroup = returnedGroup {
                 self?.localRepository.save(returnedGroup)
             }
@@ -367,7 +369,7 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
         localRepository.save(group)
         let call = UpdateGroupCall(group: group)
         call.fire()
-        return call.objectSignal.on(value: {[weak self]returnedGroup in
+        return call.objectSignal.on(value: {[weak self] returnedGroup in
             if let returnedGroup = returnedGroup {
                 self?.localRepository.save(returnedGroup)
             }

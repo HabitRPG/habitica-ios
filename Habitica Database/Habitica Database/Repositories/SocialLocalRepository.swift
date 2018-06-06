@@ -303,4 +303,12 @@ public class SocialLocalRepository: BaseLocalRepository {
         }
         return nil
     }
+    
+    public func markInboxAsSeen(userID: String) {
+        if let realm = getRealm(), let user = realm.object(ofType: RealmUser.self, forPrimaryKey: userID) {
+            try? realm.write {
+                user.inbox?.numberNewMessages = 0
+            }
+        }
+    }
 }
