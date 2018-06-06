@@ -20,7 +20,7 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
     var purchaseSet: ((CustomizationSetProtocol) -> Void)?
     
     private var ownedCustomizations: [OwnedCustomizationProtocol] = []
-    private var customizationSets: [CustomizationSetProtocol] = []
+    private var customizationSets: [String: CustomizationSetProtocol] = [:]
     
     private var equippedKey: String?
     
@@ -36,7 +36,6 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
             .on(value: {[weak self](customizations, ownedCustomizations) in
                 self?.ownedCustomizations = ownedCustomizations.value
                 self?.configureSections(customizations.value)
-                self?.notify(changes: customizations.changes)
         }).start())
         disposable.inner.add(userRepository.getUser().on(value: {[weak self]user in
             self?.preferences = user.preferences
@@ -78,7 +77,6 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
     private func configureSections(_ customizations: [CustomizationProtocol]) {
         customizationSets.removeAll()
         sections.removeAll()
-        sections.append(ItemSection<CustomizationProtocol>())
         for customization in customizations {
             if customization.price > 0 && !customization.isPurchasable {
                 if !owns(customization: customization) {
@@ -91,7 +89,7 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
                 }) {
                     sections[index].items.append(customization)
                 } else {
-                    customizationSets.append(set)
+                    customizationSets[set.key ?? ""] = set
                     sections.append(ItemSection<CustomizationProtocol>(key: set.key, title: set.text))
                     sections.last?.items.append(customization)
                 }
@@ -99,6 +97,34 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
                 sections[0].items.append(customization)
             }
         }
+        
+        if customizationType == "background" {
+            sections = sections.sorted { (firstSection, secondSection) -> Bool in
+                if firstSection.key?.contains("incentive") == true {
+                    return true
+                } else if secondSection.key?.contains("incentive") == true {
+                    return false
+                }
+                
+                if let firstKey = firstSection.key?.replacingOccurrences(of: "backgrounds", with: ""), let secondKey = secondSection.key?.replacingOccurrences(of: "backgrounds", with: "") {
+                    let firstIndex = firstKey.index(firstKey.startIndex, offsetBy: 2)
+                    let firstMonth = Int(firstKey[..<firstIndex]) ?? 0
+                    let firstYear = Int(firstKey[firstIndex...]) ?? 0
+                    
+                    let secondIndex = secondKey.index(secondKey.startIndex, offsetBy: 2)
+                    let secondMonth = Int(secondKey[..<secondIndex]) ?? 0
+                    let secondYear = Int(secondKey[secondIndex...]) ?? 0
+                    
+                    if firstYear == secondYear {
+                        return firstMonth >= secondMonth
+                    } else {
+                        return firstYear >= secondYear
+                    }
+                }
+                return firstSection.key ?? "" < secondSection.key ?? ""
+            }
+        }
+        self.collectionView?.reloadData()
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -138,10 +164,8 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
         let section = sections[indexPath.section]
         
         if let headerView = view as? CustomizationHeaderView {
-            if let set = customizationSets.first(where: { (set) -> Bool in
-                return set.key == section.key
-            }) {
-                headerView.configure(customizationSet: set)
+            if let set = customizationSets[section.key ?? ""] {
+                headerView.configure(customizationSet: set, isBackground: customizationType == "background")
                 if set.setItems?.contains(where: { (customization) -> Bool in
                     return !self.owns(customization: customization)
                 }) == true && set.setPrice != 0 {

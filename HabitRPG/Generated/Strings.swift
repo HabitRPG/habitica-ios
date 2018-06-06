@@ -93,6 +93,8 @@ internal enum L10n {
   internal static let pendingDamage = L10n.tr("Mainstrings", "pending_damage")
   /// Pets
   internal static let pets = L10n.tr("Mainstrings", "pets")
+  /// Plain Backgrounds
+  internal static let plainBackgrounds = L10n.tr("Mainstrings", "plain_backgrounds")
   /// Purchase for %d Gems
   internal static func purchaseForGems(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "purchase_for_gems", p1)

@@ -24,8 +24,21 @@ class CustomizationHeaderView: UICollectionReusableView {
         purchaseButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(buttonTapped)))
     }
     
-    func configure(customizationSet: CustomizationSetProtocol) {
-        label.text = customizationSet.text
+    func configure(customizationSet: CustomizationSetProtocol, isBackground: Bool) {
+        if isBackground {
+            if customizationSet.key?.contains("incentive") == true {
+                label.text = L10n.plainBackgrounds
+            } else if let key = customizationSet.key?.replacingOccurrences(of: "backgrounds", with: "") {
+                let index = key.index(key.startIndex, offsetBy: 2)
+                let month = Int(key[..<index]) ?? 0
+                let year = Int(key[index...]) ?? 0
+                let dateFormatter = DateFormatter()
+                let monthName = dateFormatter.monthSymbols[month-1]
+                label.text = "\(monthName) \(year)"
+            }
+        } else {
+            label.text = customizationSet.text
+        }
         currencyView.amount = Int(customizationSet.setPrice)
     }
     
