@@ -77,6 +77,7 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
     private func configureSections(_ customizations: [CustomizationProtocol]) {
         customizationSets.removeAll()
         sections.removeAll()
+        sections.append(ItemSection<CustomizationProtocol>())
         for customization in customizations {
             if customization.price > 0 && !customization.isPurchasable {
                 if !owns(customization: customization) {
