@@ -22,7 +22,6 @@
 
 @interface HRPGAppDelegate ()
 
-@property HabiticaAppDelegate *swiftAppDelegate;
 
 @end
 

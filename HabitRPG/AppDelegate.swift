@@ -130,8 +130,25 @@ class HabiticaAppDelegate: NSObject {
             defaults.set(true, forKey: "appBadgeActive")
             UIApplication.shared.cancelAllLocalNotifications()
             
+            rescheduleDailyReminder()
+        }
+    }
+    
+    @objc
+    func rescheduleDailyReminder() {
+        let defaults = UserDefaults.standard
+        
+        
+        let sharedApplication = UIApplication.shared
+        for localNotification in sharedApplication.scheduledLocalNotifications ?? [] {
+            if (localNotification.userInfo?["id"] as? String ?? "").isEmpty || (localNotification.userInfo?["isDailyNotification"] as? Bool) == true {
+                sharedApplication.cancelLocalNotification(localNotification)
+            }
+        }
+        
+        if defaults.bool(forKey: "dailyReminderActive"), let date = defaults.value(forKey: "dailyReminderTime") as? Date {
             let localNotification = UILocalNotification()
-            localNotification.fireDate = newDate
+            localNotification.fireDate = date
             localNotification.repeatInterval = .day
             localNotification.alertBody = NSLocalizedString("Remember to check off your Dailies!", comment: "")
             localNotification.soundName = UILocalNotificationDefaultSoundName
