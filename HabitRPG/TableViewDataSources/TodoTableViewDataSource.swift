@@ -34,8 +34,8 @@ class TodoTableViewDataSource: TaskTableViewDataSource {
             todocell.checkboxTouched = {[weak self] in
                 self?.disposable.inner.add(self?.repository.score(task: task, direction: task.completed ? .down : .up).observeCompleted {})
             }
-            todocell.checklistItemTouched = { checklistItem in
-                
+            todocell.checklistItemTouched = {[weak self] checklistItem in
+                self?.disposable.inner.add(self?.repository.score(checklistItem: checklistItem, task: task).observeCompleted {})
             }
             todocell.checklistIndicatorTouched = {[weak self] in
                 self?.expandSelectedCell(indexPath: indexPath)
