@@ -20,9 +20,11 @@ public class UserLocalRepository: BaseLocalRepository {
     }
     
     public func save(_ userId: String, stats: StatsProtocol) {
-        RealmUser.findBy(key: userId).take(first: 1).on(value: {user in
-            try? self.getRealm()?.write {
-                user?.stats = stats
+        RealmUser.findBy(key: userId).take(first: 1).on(value: {[weak self] user in
+            try? self?.getRealm()?.write {
+                let realmStats = RealmStats(id: userId, stats: stats)
+                self?.getRealm()?.add(realmStats, update: true)
+                user?.stats = realmStats
             }
         }).start()
     }

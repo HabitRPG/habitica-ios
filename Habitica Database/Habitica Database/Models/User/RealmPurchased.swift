@@ -23,7 +23,7 @@ class RealmPurchased: Object, PurchasedProtocol {
                 if let realmCustomization = ownedCustomization as? RealmOwnedCustomization {
                     realmHair.append(realmCustomization)
                 } else {
-                    realmHair.append(RealmOwnedCustomization(ownedCustomization))
+                    realmHair.append(RealmOwnedCustomization(userID: id, protocolObject: ownedCustomization))
                 }
             }
         }
@@ -41,7 +41,7 @@ class RealmPurchased: Object, PurchasedProtocol {
                 if let realmCustomization = ownedCustomization as? RealmOwnedCustomization {
                     realmSkin.append(realmCustomization)
                 } else {
-                    realmSkin.append(RealmOwnedCustomization(ownedCustomization))
+                    realmSkin.append(RealmOwnedCustomization(userID: id, protocolObject: ownedCustomization))
                 }
             }
         }
@@ -59,7 +59,7 @@ class RealmPurchased: Object, PurchasedProtocol {
                 if let realmCustomization = ownedCustomization as? RealmOwnedCustomization {
                     realmShirt.append(realmCustomization)
                 } else {
-                    realmShirt.append(RealmOwnedCustomization(ownedCustomization))
+                    realmShirt.append(RealmOwnedCustomization(userID: id, protocolObject: ownedCustomization))
                 }
             }
         }
@@ -77,7 +77,7 @@ class RealmPurchased: Object, PurchasedProtocol {
                 if let realmCustomization = ownedCustomization as? RealmOwnedCustomization {
                     realmBackground.append(realmCustomization)
                 } else {
-                    realmBackground.append(RealmOwnedCustomization(ownedCustomization))
+                    realmBackground.append(RealmOwnedCustomization(userID: id, protocolObject: ownedCustomization))
                 }
             }
         }

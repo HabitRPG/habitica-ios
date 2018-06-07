@@ -148,7 +148,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     
     private func setupQuests(_ contentView: UIView, itemView: UIView, key: String) {
         let questView = QuestDetailView(frame: CGRect.zero)
-        inventoryRepository.getQuest(key: key).take(first: 1).skipNil().on(value: {[weak self]quest in
+        inventoryRepository.getQuest(key: key).take(first: 1).skipNil().on(value: { quest in
             questView.configure(quest: quest)
         }).start()
         addItemAndDetails(itemView, questView, to: contentView)
@@ -165,7 +165,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                     return gear.first
                 }
                 .skipNil()
-                .on(value: {[weak self]gear in
+                .on(value: { gear in
                     statsView.configure(gear: gear)
                 }).start()
             addItemAndDetails(itemView, statsView, to: contentView)
@@ -289,13 +289,8 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         if itemIsLocked() {
             return
         }
-        guard let inAppReward = reward else {
-            return
-        }
         var key = ""
         var purchaseType = ""
-        var text = ""
-        var imageName = ""
         var currency = Currency.gold
         var setIdentifier = ""
         var value = 0
@@ -320,8 +315,6 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         } else*/ if let inAppReward = reward {
             key = inAppReward.key ?? ""
             purchaseType = inAppReward.purchaseType ?? ""
-            text = inAppReward.text ?? ""
-            imageName = inAppReward.imageName ?? ""
             setIdentifier = inAppReward.key ?? ""
             value = Int(inAppReward.value)
             if let currencyString = inAppReward.currency, let thisCurrency = Currency(rawValue: currencyString) {

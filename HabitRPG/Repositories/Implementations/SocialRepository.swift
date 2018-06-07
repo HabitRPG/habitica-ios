@@ -15,6 +15,8 @@ import Result
 
 class SocialRepository: BaseRepository<SocialLocalRepository> {
     
+    private let userRepository = UserRepository()
+    
     func getGroups(predicate: NSPredicate) -> SignalProducer<ReactiveResults<[GroupProtocol]>, ReactiveSwiftRealmError> {
         return localRepository.getGroups(predicate: predicate)
     }
@@ -134,10 +136,12 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
         })
     }
     
-    func post(inboxMessage: String, toUserID userID: String) -> Signal<EmptyResponseProtocol?, NoError> {
+    func post(inboxMessage: String, toUserID userID: String) -> Signal<UserProtocol?, NoError> {
         let call = PostInboxMessageCall(userID: userID, inboxMessage: inboxMessage)
         call.fire()
-        return call.objectSignal
+        return call.objectSignal.flatMap(.latest, {[weak self] (_) in
+            return self?.userRepository.retrieveUser() ?? Signal.empty
+        })
     }
     
     func retrieveChat(groupID: String) -> Signal<[ChatMessageProtocol]?, NoError> {

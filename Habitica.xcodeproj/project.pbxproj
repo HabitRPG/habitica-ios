@@ -215,7 +215,6 @@
 		29E162E01FFBBDDC00685640 /* UsernameLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E162DF1FFBBDDC00685640 /* UsernameLabel.swift */; };
 		29E162E21FFC21E100685640 /* CustomFontMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E162E11FFC21E100685640 /* CustomFontMetrics.swift */; };
 		29E162E5200227AA00685640 /* HRPGUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29E162E4200227AA00685640 /* HRPGUIViewController.m */; };
-		29E163092008E7B600685640 /* Habitica.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 29E163072008E7B600685640 /* Habitica.xcdatamodeld */; };
 		29E1630B200D050E00685640 /* TopHeaderNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E1630A200D050E00685640 /* TopHeaderNavigationController.swift */; };
 		29E1630D200E23A500685640 /* MenuNavigationBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29E1630C200E23A500685640 /* MenuNavigationBarView.xib */; };
 		29E1630F200E279900685640 /* MenuNavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E1630E200E279900685640 /* MenuNavigationBarView.swift */; };
@@ -288,7 +287,6 @@
 		49A4646B1FCD18FD00E14A5D /* HRPGButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A4646A1FCD18FD00E14A5D /* HRPGButtonViewModel.swift */; };
 		49A84FB21F9FCA30003E2956 /* ChallengeDetailInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A84FB01F9FCA30003E2956 /* ChallengeDetailInfoTableViewCell.swift */; };
 		49A84FB31F9FCA30003E2956 /* ChallengeDetailInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49A84FB11F9FCA30003E2956 /* ChallengeDetailInfoTableViewCell.xib */; };
-		49B87D93201BB37300CA1A75 /* Mapping2to3.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 49B87D92201BB37300CA1A75 /* Mapping2to3.xcmappingmodel */; };
 		49B87D96201BBF3800CA1A75 /* HabiticaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B87D95201BBF3800CA1A75 /* HabiticaTests.m */; };
 		49DCB79B1F3422440079FDD0 /* HRPGBuyItemModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DCB79A1F3422440079FDD0 /* HRPGBuyItemModalViewController.swift */; };
 		49DCB7AC1F39239D0079FDD0 /* HRPGSimpleShopItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DCB7AB1F39239D0079FDD0 /* HRPGSimpleShopItemView.swift */; };
@@ -598,7 +596,6 @@
 		292F968220724B1100804151 /* GuildsOverviewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuildsOverviewDataSource.swift; sourceTree = "<group>"; };
 		29323E1A2050532D00AC6D6F /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		29323E1E2050563700AC6D6F /* NetworkErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorHandler.swift; sourceTree = "<group>"; };
-		29323E2E2051C9A500AC6D6F /* Habitica 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Habitica 5.xcdatamodel"; sourceTree = "<group>"; };
 		29323E342052008800AC6D6F /* UserTopHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTopHeader.swift; sourceTree = "<group>"; };
 		29323E4820521FD500AC6D6F /* ContributorProtocol-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContributorProtocol-Extensions.swift"; sourceTree = "<group>"; };
 		293282131F389CC000D42961 /* SetupCustomizationItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupCustomizationItemView.swift; sourceTree = "<group>"; };
@@ -657,7 +654,6 @@
 		298119B01F50453100F9FB39 /* QuestGoalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestGoalView.swift; sourceTree = "<group>"; };
 		298119B41F5048C000F9FB39 /* QuestGoalView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestGoalView.xib; sourceTree = "<group>"; };
 		298409CA203C2B4A003AD202 /* AvatarViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarViewTests.swift; sourceTree = "<group>"; };
-		298409CE203C8617003AD202 /* Habitica 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Habitica 4.xcdatamodel"; sourceTree = "<group>"; };
 		2986EB0A1FCC63F900B316F6 /* AttributePointsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributePointsViewController.swift; sourceTree = "<group>"; };
 		299BD6211F505DFA00E22935 /* PaddedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddedLabel.swift; sourceTree = "<group>"; };
 		299BD6341F54346F00E22935 /* QuestDetailRewardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestDetailRewardView.xib; sourceTree = "<group>"; };
@@ -710,7 +706,6 @@
 		29C1B6AA20594F500001D3EF /* VisualEffectsModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectsModalViewController.swift; sourceTree = "<group>"; };
 		29C1B6AF205952E40001D3EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Tasks.storyboard; sourceTree = "<group>"; };
 		29C1B6B320599E6D0001D3EF /* TaskFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFormViewController.swift; sourceTree = "<group>"; };
-		29C23E47205A8F22006980F0 /* Habitica 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Habitica 6.xcdatamodel"; sourceTree = "<group>"; };
 		29DC5ABF20A1B81C00993400 /* CALayer-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer-Extensions.swift"; sourceTree = "<group>"; };
 		29DC5AC120A1C63000993400 /* SeparatedStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatedStackView.swift; sourceTree = "<group>"; };
 		29DC5AC420A1D85300993400 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Mainstrings.strings; sourceTree = "<group>"; };
@@ -722,7 +717,6 @@
 		29E162E11FFC21E100685640 /* CustomFontMetrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFontMetrics.swift; sourceTree = "<group>"; };
 		29E162E3200227AA00685640 /* HRPGUIViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HRPGUIViewController.h; sourceTree = "<group>"; };
 		29E162E4200227AA00685640 /* HRPGUIViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HRPGUIViewController.m; sourceTree = "<group>"; };
-		29E163082008E7B600685640 /* Habitica.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Habitica.xcdatamodel; sourceTree = "<group>"; };
 		29E1630A200D050E00685640 /* TopHeaderNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopHeaderNavigationController.swift; sourceTree = "<group>"; };
 		29E1630C200E23A500685640 /* MenuNavigationBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuNavigationBarView.xib; sourceTree = "<group>"; };
 		29E1630E200E279900685640 /* MenuNavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuNavigationBarView.swift; sourceTree = "<group>"; };
@@ -743,7 +737,6 @@
 		29FC5A6A20406932008E88C8 /* GuidelinesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidelinesViewController.swift; sourceTree = "<group>"; };
 		29FC884B2010CC8A002B3D3F /* SocialRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialRepository.swift; sourceTree = "<group>"; };
 		29FC884D2010CCC2002B3D3F /* BaseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRepository.swift; sourceTree = "<group>"; };
-		29FC885020121771002B3D3F /* Habitica 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Habitica 2.xcdatamodel"; sourceTree = "<group>"; };
 		29FC885120134A8F002B3D3F /* PurchaseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseHandler.swift; sourceTree = "<group>"; };
 		29FC885320175C70002B3D3F /* RageStrikeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RageStrikeView.swift; sourceTree = "<group>"; };
 		29FC88552017B840002B3D3F /* CollapsibleTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsibleTitle.swift; sourceTree = "<group>"; };
@@ -805,8 +798,6 @@
 		49A4646A1FCD18FD00E14A5D /* HRPGButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRPGButtonViewModel.swift; sourceTree = "<group>"; };
 		49A84FB01F9FCA30003E2956 /* ChallengeDetailInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeDetailInfoTableViewCell.swift; sourceTree = "<group>"; };
 		49A84FB11F9FCA30003E2956 /* ChallengeDetailInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeDetailInfoTableViewCell.xib; sourceTree = "<group>"; };
-		49B87D8F201BA88C00CA1A75 /* Habitica 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Habitica 3.xcdatamodel"; sourceTree = "<group>"; };
-		49B87D92201BB37300CA1A75 /* Mapping2to3.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = Mapping2to3.xcmappingmodel; sourceTree = "<group>"; };
 		49B87D94201BBF3800CA1A75 /* HabiticaTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HabiticaTests.h; sourceTree = "<group>"; };
 		49B87D95201BBF3800CA1A75 /* HabiticaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HabiticaTests.m; sourceTree = "<group>"; };
 		49DCB79A1F3422440079FDD0 /* HRPGBuyItemModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGBuyItemModalViewController.swift; sourceTree = "<group>"; };
@@ -1313,15 +1304,6 @@
 				290B6284207BD531007287C4 /* GuildDetailViewController.swift */,
 			);
 			path = Guilds;
-			sourceTree = "<group>";
-		};
-		2957B8AA1F4B297300E836EF /* Core Data */ = {
-			isa = PBXGroup;
-			children = (
-				49B87D92201BB37300CA1A75 /* Mapping2to3.xcmappingmodel */,
-				29E163072008E7B600685640 /* Habitica.xcdatamodeld */,
-			);
-			name = "Core Data";
 			sourceTree = "<group>";
 		};
 		2957B8B41F4B2DF900E836EF /* Rewards */ = {
@@ -2376,7 +2358,6 @@
 				299BD6391F557FE700E22935 /* AuthenticationManager.swift */,
 				290279AC20583EE8006DACB9 /* Storyboards */,
 				D9EB4EAC18CB4A9400BB2094 /* Images.xcassets */,
-				2957B8AA1F4B297300E836EF /* Core Data */,
 				D9A63A321E10328A0083ADC4 /* Habitica-Bridging-Header.h */,
 				290279672057F0B7006DACB9 /* Generated */,
 				290279642057F005006DACB9 /* Strings */,
@@ -3156,7 +3137,6 @@
 				29255E491F3E1B0F0094A3E3 /* ToastView.swift in Sources */,
 				290C3017206A963D0066AF5B /* MainMenuViewController.swift in Sources */,
 				29DC5AC020A1B81C00993400 /* CALayer-Extensions.swift in Sources */,
-				49B87D93201BB37300CA1A75 /* Mapping2to3.xcmappingmodel in Sources */,
 				D9ADD3631944FDBE006202C1 /* HRPGFilterViewController.m in Sources */,
 				D9BB45611E71CD850002AE2E /* DailyTableViewCell.swift in Sources */,
 				291448882088F3F700F3A6B5 /* NSAttributedString.swift in Sources */,
@@ -3177,7 +3157,6 @@
 				D9D593581D004CC900D6C388 /* HRPGInboxTableViewController.m in Sources */,
 				29C1B6AB20594F500001D3EF /* VisualEffectsModalViewController.swift in Sources */,
 				D96BFC4C1E181B4A00266EEF /* IntroViewController.swift in Sources */,
-				29E163092008E7B600685640 /* Habitica.xcdatamodeld in Sources */,
 				2902799720583D82006DACB9 /* LoadingViewController.swift in Sources */,
 				291448642084EE6D00F3A6B5 /* PetDetailViewController.swift in Sources */,
 				29255E4B1F3E236C0094A3E3 /* ToastManager.swift in Sources */,
@@ -4139,24 +4118,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		29E163072008E7B600685640 /* Habitica.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				29C23E47205A8F22006980F0 /* Habitica 6.xcdatamodel */,
-				29323E2E2051C9A500AC6D6F /* Habitica 5.xcdatamodel */,
-				298409CE203C8617003AD202 /* Habitica 4.xcdatamodel */,
-				49B87D8F201BA88C00CA1A75 /* Habitica 3.xcdatamodel */,
-				29FC885020121771002B3D3F /* Habitica 2.xcdatamodel */,
-				29E163082008E7B600685640 /* Habitica.xcdatamodel */,
-			);
-			currentVersion = 29C23E47205A8F22006980F0 /* Habitica 6.xcdatamodel */;
-			path = Habitica.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = D9EB4E8318CB4A9400BB2094 /* Project object */;
 }

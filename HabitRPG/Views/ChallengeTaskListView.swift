@@ -115,14 +115,14 @@ class ChallengeTaskListView: UIView {
             plusImageView.tag = 2
             plusImageView.contentMode = .center
             taskView.addSubview(plusImageView)
-            if task.up ?? false {
+            if task.up {
                 plusImageView.alpha = 0.3
             }
             let minusImageView = UIImageView(image: #imageLiteral(resourceName: "minus_gray"))
             minusImageView.tag = 3
             minusImageView.contentMode = .center
             taskView.addSubview(minusImageView)
-            if task.down ?? false {
+            if task.down {
                 minusImageView.alpha = 0.3
             }
         }

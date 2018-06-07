@@ -105,7 +105,7 @@ class ClassSelectionViewController: UIViewController {
         view.configure(habiticaClass: habiticaClass) {
             self.set(class: habiticaClass)
         }
-        disposable.inner.add(userRepository.getUserStyleWithOutfitFor(class: habiticaClass).on(value: {[weak self]userStyle in
+        disposable.inner.add(userRepository.getUserStyleWithOutfitFor(class: habiticaClass).on(value: { userStyle in
             view.userStyle = userStyle
         }).start())
     }

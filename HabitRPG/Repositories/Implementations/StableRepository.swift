@@ -9,7 +9,6 @@
 import Foundation
 import Habitica_Models
 import ReactiveSwift
-import Result
 import Habitica_Database
 
 class StableRepository: BaseRepository<StableLocalRepository> {
@@ -41,7 +40,7 @@ class StableRepository: BaseRepository<StableLocalRepository> {
     
     func getOwnedMount(key: String, userID: String? = nil)-> SignalProducer<OwnedMountProtocol?, ReactiveSwiftRealmError> {
         return currentUserIDProducer.skipNil().flatMap(.latest, {[weak self] (currentUserID) in
-            return self?.localRepository.getOwnedMount(key: key, userID: userID ?? currentUserID) ?? Signal.empty
+            return self?.localRepository.getOwnedMount(key: key, userID: userID ?? currentUserID) ?? SignalProducer.empty
         })
     }
     

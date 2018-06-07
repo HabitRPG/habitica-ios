@@ -268,7 +268,7 @@ class HabiticaAppDelegate: NSObject {
                 return self?.socialRepository.acceptQuestInvitation(groupID: partyID) ?? Signal.empty
             }.on(failed: { _ in
                 completed(false)
-            }, value: {[weak self]_ in
+            }, value: { _ in
                 completed(true)
             }).start()
     }
@@ -284,7 +284,7 @@ class HabiticaAppDelegate: NSObject {
                 return self?.socialRepository.rejectQuestInvitation(groupID: partyID) ?? Signal.empty
             }.on(failed: { _ in
                 completed(false)
-            }, value: {[weak self]_ in
+            }, value: { _ in
                 completed(true)
             }).start()
     }

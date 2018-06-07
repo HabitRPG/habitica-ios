@@ -35,10 +35,10 @@ class LeaveGroupInteractor: Interactor<String, GroupProtocol?> {
     private func createConfirmationAlert(groupID: String, observer: Signal<(Bool, Bool, String), NSError>.Observer) {
         let alert = HabiticaAlertController(title: L10n.Guilds.leaveGuildTitle,
                                             message: L10n.Guilds.leaveGuildDescription)
-        alert.addAction(title: L10n.Guilds.keepChallenges, handler: {[weak self] (_) in
+        alert.addAction(title: L10n.Guilds.keepChallenges, handler: { (_) in
             observer.send(value: (true, true, groupID))
         })
-        alert.addAction(title: L10n.Guilds.leaveChallenges, style: .destructive, handler: {[weak self] (_) in
+        alert.addAction(title: L10n.Guilds.leaveChallenges, style: .destructive, handler: { (_) in
             observer.send(value: (true, false, groupID))
         })
         alert.setCloseAction(title: L10n.cancel, handler: {

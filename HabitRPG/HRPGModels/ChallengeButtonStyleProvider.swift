@@ -87,7 +87,7 @@ class JoinLeaveButtonAttributeProvider: ChallengeButtonStyleProvider {
                 self?.challengeUpdatedProperty.value = ()
             }
         })
-        alert.addAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: {[weak self] (_) in })
+        alert.addAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { (_) in })
         
         return alert
     }

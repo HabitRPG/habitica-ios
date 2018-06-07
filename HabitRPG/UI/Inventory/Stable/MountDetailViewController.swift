@@ -29,8 +29,7 @@ class MountDetailViewController: StableDetailViewController<MountDetailDataSourc
     
     private func showActionSheet(forStableItem stableItem: MountStableItem) {
         let actionSheet = UIAlertController(title: stableItem.mount?.text, message: nil, preferredStyle: .actionSheet)
-        var equipString = L10n.equip
-        actionSheet.addAction(UIAlertAction(title: equipString, style: .default, handler: {[weak self] (_) in
+        actionSheet.addAction(UIAlertAction(title: L10n.equip, style: .default, handler: {[weak self] (_) in
             self?.inventoryRepository.equip(type: "mount", key: stableItem.mount?.key ?? "").observeCompleted {}
         }))
         actionSheet.addAction(UIAlertAction.cancelAction())

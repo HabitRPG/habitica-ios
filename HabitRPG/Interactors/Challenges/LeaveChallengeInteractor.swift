@@ -39,10 +39,10 @@ class LeaveChallengeInteractor: Interactor<ChallengeProtocol, Bool> {
     private func createConfirmationAlert(challenge: ChallengeProtocol, observer: Signal<(Bool, Bool, ChallengeProtocol), NSError>.Observer) {
         let alert = HabiticaAlertController(title: NSLocalizedString("Leave Challenge?", comment: ""),
                                       message: NSLocalizedString("Do you want to leave the challenge and keep or delete the tasks?", comment: ""))
-        alert.addAction(title: NSLocalizedString("Keep tasks", comment: ""), handler: {[weak self] (_) in
+        alert.addAction(title: NSLocalizedString("Keep tasks", comment: ""), handler: { (_) in
             observer.send(value: (true, true, challenge))
         })
-        alert.addAction(title: NSLocalizedString("Delete tasks", comment: ""), style: .destructive, handler: {[weak self] (_) in
+        alert.addAction(title: NSLocalizedString("Delete tasks", comment: ""), style: .destructive, handler: { (_) in
             observer.send(value: (true, false, challenge))
         })
         alert.setCloseAction(title: NSLocalizedString("Cancel", comment: ""), handler: {

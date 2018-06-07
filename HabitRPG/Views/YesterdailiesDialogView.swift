@@ -45,9 +45,8 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
             .on(completed: {
                 UserManager.shared.yesterdailiesDialog = nil
             }, value: {(user, tasks) in
-                let userTasks = tasks ?? []
                 var hasUncompletedDailies = false
-                for task in userTasks {
+                for task in tasks {
                     if task.type == "daily" && !task.completed {
                         hasUncompletedDailies = true
                         break

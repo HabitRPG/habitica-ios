@@ -22,7 +22,7 @@ class CustomizationRepository: BaseRepository<CustomizationLocalRepository> {
     }
     
     public func getOwnedCustomizations(type: String, group: String?) -> SignalProducer<ReactiveResults<[OwnedCustomizationProtocol]>, ReactiveSwiftRealmError> {
-        return currentUserIDProducer.skipNil().flatMap(.latest, {[weak self] (userID) -> SignalProducerConvertible in
+        return currentUserIDProducer.skipNil().flatMap(.latest, {[weak self] (userID) in
             return self?.localRepository.getOwnedCustomizations(userID: userID, type: type, group: group) ?? SignalProducer.empty
         })
     }

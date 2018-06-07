@@ -42,7 +42,6 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     UIView *view = [[[NSBundle mainBundle] loadNibNamed:@"ShopAdFooter" owner:self options:nil] lastObject];
-    UIImageView *imageView = [view viewWithTag:1];
     UILabel *label = [view viewWithTag:2];
     UIButton *openShopButton = [view viewWithTag:3];
     

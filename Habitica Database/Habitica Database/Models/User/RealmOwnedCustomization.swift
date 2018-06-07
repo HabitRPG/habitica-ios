@@ -12,6 +12,7 @@ import RealmSwift
 
 class RealmOwnedCustomization: Object, OwnedCustomizationProtocol {
     @objc dynamic var combinedKey: String?
+    @objc dynamic var userID: String?
     @objc dynamic var key: String?
     @objc dynamic var type: String?
     @objc dynamic var group: String?
@@ -21,12 +22,13 @@ class RealmOwnedCustomization: Object, OwnedCustomizationProtocol {
         return "combinedKey"
     }
     
-    convenience init(_ protocolObject: OwnedCustomizationProtocol) {
+    convenience init(userID: String?, protocolObject: OwnedCustomizationProtocol) {
         self.init()
+        self.userID = userID
         key = protocolObject.key
         type = protocolObject.type
         group = protocolObject.group
-        combinedKey = (key ?? "") + (type ?? "") + (group ?? "")
+        combinedKey = "\(userID ?? "")\(key ?? "") + \(type ?? "") + \(group ?? "")"
         isOwned = protocolObject.isOwned
     }
 }

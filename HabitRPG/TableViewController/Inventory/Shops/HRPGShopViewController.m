@@ -10,7 +10,7 @@
 #import "NSString+StripHTML.h"
 #import "Habitica-Swift.h"
 
-@interface HRPGShopViewController ()
+@interface HRPGShopViewController () 
 
 @property (nonatomic) NPCBannerView *shopBannerView;
 

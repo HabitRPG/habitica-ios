@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="upQ-EI-E3w">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="upQ-EI-E3w">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -53,7 +53,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="GeH-AC-vCO" id="sHf-iF-90Q"/>
                         <outlet property="logoView" destination="56g-ur-5TX" id="9eB-RC-kUM"/>
-                        <segue destination="0Ix-Uy-5zN" kind="modal" identifier="IntroSegue" animates="NO" modalTransitionStyle="crossDissolve" id="8cI-OH-Ddw"/>
+                        <segue destination="0Ix-Uy-5zN" kind="presentation" identifier="IntroSegue" animates="NO" id="8cI-OH-Ddw"/>
                         <segue destination="qul-kf-4Gi" kind="presentation" identifier="InitialSegue" animates="NO" modalTransitionStyle="crossDissolve" id="Z2J-RM-J8b"/>
                         <segue destination="v9W-i7-og5" kind="presentation" identifier="SetupSegue" modalTransitionStyle="crossDissolve" id="Zxx-A1-MXZ"/>
                     </connections>
@@ -1432,7 +1432,7 @@
         <image name="onepassword-toolbar" width="27" height="27"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Zxx-A1-MXZ"/>
+        <segue reference="5Hb-dX-OsZ"/>
         <segue reference="Z2J-RM-J8b"/>
         <segue reference="6ya-X1-F2T"/>
     </inferredMetricsTieBreakers>

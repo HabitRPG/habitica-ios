@@ -14,7 +14,7 @@
 @interface HRPGAppDelegate : UIResponder<UIApplicationDelegate, UIAlertViewDelegate>
 
 @property(strong, nonatomic, nullable) UIWindow *window;
-@property HabiticaAppDelegate *swiftAppDelegate;
+@property(strong, nonatomic, nonnull) HabiticaAppDelegate *swiftAppDelegate;
 
 @property(nonatomic, strong, nullable)id<OIDAuthorizationFlowSession> currentAuthorizationFlow;
 @end

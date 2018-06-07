@@ -47,7 +47,6 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     id skill = [self.dataSource skillAtIndexPath:indexPath];
     NSString *target = [skill valueForKey:@"target"];
-    __weak HRPGSpellViewController *weakSelf = self;
     if ([self.dataSource canUseWithSkill:skill] && [self.dataSource hasManaForSkill:skill]) {
         if ([target isEqualToString:@"task"]) {
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];

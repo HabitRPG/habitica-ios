@@ -132,6 +132,6 @@ class InboxMessagesDataSource: BaseReactiveTableViewDataSource<InboxMessageProto
     }
     
     func sendMessage(messageText: String) {
-        socialRepository.post(inboxMessage: messageText, toUserID: otherUserID)
+        socialRepository.post(inboxMessage: messageText, toUserID: otherUserID).observeCompleted {}
     }
 }
