@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import ReactiveSwift
+import Result
 import KeychainAccess
 import Crashlytics
 import Amplitude_iOS
@@ -32,6 +34,7 @@ class AuthenticationManager: NSObject {
             let defaults = UserDefaults.standard
             defaults.set(newUserId, forKey: "currentUserId")
             NetworkAuthenticationManager.shared.currentUserId = newUserId
+            currentUserIDProperty.value = newUserId
             if newUserId != nil {
                 Crashlytics.sharedInstance().setUserIdentifier(newUserId)
                 Crashlytics.sharedInstance().setUserName(newUserId)
@@ -40,6 +43,8 @@ class AuthenticationManager: NSObject {
             }
         }
     }
+    
+    var currentUserIDProperty = MutableProperty<String?>(nil)
     
     @objc var currentUserKey: String? {
         get {
@@ -55,6 +60,11 @@ class AuthenticationManager: NSObject {
             }
             NetworkAuthenticationManager.shared.currentUserKey = newKey
         }
+    }
+    
+    override init() {
+        super.init()
+        currentUserIDProperty.value = currentUserId
     }
     
     @objc

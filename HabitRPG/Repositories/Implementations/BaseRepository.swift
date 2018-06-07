@@ -9,6 +9,7 @@
 import Foundation
 import Habitica_Database
 import ReactiveSwift
+import Result
 
 class BaseRepository<T: BaseLocalRepository>: NSObject {
     
@@ -16,5 +17,8 @@ class BaseRepository<T: BaseLocalRepository>: NSObject {
     let disposable = ScopedDisposable(CompositeDisposable())
     var currentUserId: String? {
         return AuthenticationManager.shared.currentUserId
+    }
+    var currentUserIDProducer: SignalProducer<String?, NoError> {
+        return AuthenticationManager.shared.currentUserIDProperty.producer
     }
 }

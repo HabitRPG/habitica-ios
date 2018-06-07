@@ -38,7 +38,9 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
     }
     
     func getTasks(predicate: NSPredicate) -> SignalProducer<ReactiveResults<[TaskProtocol]>, ReactiveSwiftRealmError> {
-        return localRepository.getTasks(userID: currentUserId ?? "", predicate: predicate)
+        return currentUserIDProducer.skipNil().flatMap(.latest, {[weak self] (userID) in
+            return self?.localRepository.getTasks(userID: userID, predicate: predicate) ?? SignalProducer.empty
+        })
     }
     
     func getTasks(type: TaskType) -> SignalProducer<ReactiveResults<[TaskProtocol]>, ReactiveSwiftRealmError> {
@@ -50,7 +52,9 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
     }
     
     func getDueTasks() -> SignalProducer<ReactiveResults<[TaskProtocol]>, ReactiveSwiftRealmError> {
-        return localRepository.getTasks(userID: currentUserId ?? "", predicate: NSPredicate(format: "(type == 'daily' && isDue == true) || (type == 'todo' && completed == false)"))
+        return currentUserIDProducer.skipNil().flatMap(.latest, {[weak self] (userID) in
+            return self?.localRepository.getTasks(userID: userID, predicate: NSPredicate(format: "(type == 'daily' && isDue == true) || (type == 'todo' && completed == false)")) ?? SignalProducer.empty
+        })
     }
     
     func getTags() -> SignalProducer<ReactiveResults<[TagProtocol]>, ReactiveSwiftRealmError> {
@@ -227,6 +231,8 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
     }
     
     func getReminders() -> SignalProducer<ReactiveResults<[ReminderProtocol]>, ReactiveSwiftRealmError>  {
-        return localRepository.getReminders(userID: currentUserId ?? "")
+        return currentUserIDProducer.skipNil().flatMap(.latest, {[weak self] (userID) in
+            return self?.localRepository.getReminders(userID: userID) ?? SignalProducer.empty
+        })
     }
 }

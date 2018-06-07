@@ -187,33 +187,21 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
     }
 
     public func getGroupMemberships() -> SignalProducer<ReactiveResults<[GroupMembershipProtocol]>, ReactiveSwiftRealmError> {
-        if let userId = AuthenticationManager.shared.currentUserId {
-            return localRepository.getGroupMemberships(userID: userId)
-        } else {
-            return SignalProducer {(sink, _) in
-                sink.sendCompleted()
-            }
-        }
+        return currentUserIDProducer.skipNil().flatMap(.latest, {[weak self] (userID) in
+            return self?.localRepository.getGroupMemberships(userID: userID) ?? SignalProducer.empty
+        })
     }
     
     public func getChallengeMemberships() -> SignalProducer<ReactiveResults<[ChallengeMembershipProtocol]>, ReactiveSwiftRealmError> {
-        if let userId = AuthenticationManager.shared.currentUserId {
-            return localRepository.getChallengeMemberships(userID: userId)
-        } else {
-            return SignalProducer {(sink, _) in
-                sink.sendCompleted()
-            }
-        }
+        return currentUserIDProducer.skipNil().flatMap(.latest, {[weak self] (userID) in
+            return self?.localRepository.getChallengeMemberships(userID: userID) ?? SignalProducer.empty
+        })
     }
     
     public func getChallengeMembership(challengeID: String) -> SignalProducer<ChallengeMembershipProtocol?, ReactiveSwiftRealmError> {
-        if let userId = AuthenticationManager.shared.currentUserId {
-            return localRepository.getChallengeMembership(userID: userId, challengeID: challengeID)
-        } else {
-            return SignalProducer {(sink, _) in
-                sink.sendCompleted()
-            }
-        }
+        return currentUserIDProducer.skipNil().flatMap(.latest, {[weak self] (userID) in
+            return self?.localRepository.getChallengeMembership(userID: userID, challengeID: challengeID) ?? SignalProducer.empty
+        })
     }
     
     public func retrieveMember(userID: String) -> Signal<MemberProtocol?, NoError> {
@@ -245,8 +233,10 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
     }
     
     public func isUserGuildMember(groupID: String) -> SignalProducer<Bool, ReactiveSwiftRealmError> {
-        return localRepository.getGroupMembership(userID: AuthenticationManager.shared.currentUserId ?? "", groupID: groupID).map({ (membership) in
-            return membership != nil
+        return currentUserIDProducer.skipNil().flatMap(.latest, {[weak self] (userID) in
+            return self?.localRepository.getGroupMembership(userID: AuthenticationManager.shared.currentUserId ?? "", groupID: groupID).map({ (membership) in
+                return membership != nil
+            }) ?? SignalProducer.empty
         })
     }
     
@@ -291,11 +281,15 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
     }
     
     public func getMessagesThreads() -> SignalProducer<ReactiveResults<[InboxMessageProtocol]>, ReactiveSwiftRealmError> {
-        return localRepository.getMessagesThreads(userID: currentUserId ?? "")
+        return currentUserIDProducer.skipNil().flatMap(.latest, {[weak self] (userID) in
+            return self?.localRepository.getMessagesThreads(userID: userID) ?? SignalProducer.empty
+        })
     }
     
     public func getMessages(withUserID: String) -> SignalProducer<ReactiveResults<[InboxMessageProtocol]>, ReactiveSwiftRealmError> {
-        return localRepository.getMessages(userID: currentUserId ?? "", withUserID: withUserID)
+        return currentUserIDProducer.skipNil().flatMap(.latest, {[weak self] (userID) in
+            return self?.localRepository.getMessages(userID: userID, withUserID: withUserID) ?? SignalProducer.empty
+        })
     }
     
     public func markInboxAsSeen() -> Signal<EmptyResponseProtocol?, NoError> {

@@ -24,8 +24,8 @@ public class CustomizationLocalRepository: ContentLocalRepository {
         })
     }
     
-    public func getOwnedCustomizations(type: String, group: String?) -> SignalProducer<ReactiveResults<[OwnedCustomizationProtocol]>, ReactiveSwiftRealmError> {
-        var query = "isOwned == true && type == '\(type)'"
+    public func getOwnedCustomizations(userID: String, type: String, group: String?) -> SignalProducer<ReactiveResults<[OwnedCustomizationProtocol]>, ReactiveSwiftRealmError> {
+        var query = "userID = '\(userID)' && isOwned == true && type == '\(type)'"
         if let group = group {
             query += " && group == '\(group)'"
         }

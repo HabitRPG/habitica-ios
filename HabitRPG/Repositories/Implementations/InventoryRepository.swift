@@ -18,7 +18,9 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
     let localUserRepository = UserLocalRepository()
     
     func getOwnedGear(userID: String? = nil) -> SignalProducer<ReactiveResults<[OwnedGearProtocol]>, ReactiveSwiftRealmError> {
-        return localRepository.getOwnedGear(userID: userID ?? currentUserId ?? "")
+        return currentUserIDProducer.skipNil().flatMap(.latest, {[weak self] (currentUserID) in
+            return self?.localRepository.getOwnedGear(userID: userID ?? currentUserID) ?? SignalProducer.empty
+        })
     }
     
     func getGear(predicate: NSPredicate? = nil) -> SignalProducer<ReactiveResults<[GearProtocol]>, ReactiveSwiftRealmError> {
@@ -30,7 +32,9 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
     }
     
     func getOwnedItems(userID: String? = nil) -> SignalProducer<ReactiveResults<[OwnedItemProtocol]>, ReactiveSwiftRealmError> {
-        return localRepository.getOwnedItems(userID: userID ?? currentUserId ?? "")
+        return currentUserIDProducer.skipNil().flatMap(.latest, {[weak self] (currentUserID) in
+            return self?.localRepository.getOwnedItems(userID: userID ?? currentUserID) ?? SignalProducer.empty
+        })
     }
     
     func getItems(keys: [String]) -> SignalProducer<(ReactiveResults<[EggProtocol]>,

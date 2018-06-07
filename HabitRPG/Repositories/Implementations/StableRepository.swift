@@ -14,11 +14,15 @@ import Habitica_Database
 
 class StableRepository: BaseRepository<StableLocalRepository> {
     func getOwnedPets(userID: String? = nil) -> SignalProducer<ReactiveResults<[OwnedPetProtocol]>, ReactiveSwiftRealmError> {
-        return localRepository.getOwnedPets(userID: userID ?? currentUserId ?? "")
+        return currentUserIDProducer.skipNil().flatMap(.latest, {[weak self] (currentUserID) in
+            return self?.localRepository.getOwnedPets(userID: userID ?? currentUserID) ?? SignalProducer.empty
+        })
     }
     
     func getOwnedPets(query: String, userID: String? = nil) -> SignalProducer<ReactiveResults<[OwnedPetProtocol]>, ReactiveSwiftRealmError> {
-        return localRepository.getOwnedPets(query: query, userID: userID ?? currentUserId ?? "")
+        return currentUserIDProducer.skipNil().flatMap(.latest, {[weak self] (currentUserID) in
+            return self?.localRepository.getOwnedPets(query: query, userID: userID ?? currentUserID) ?? SignalProducer.empty
+        })
     }
     
     func getPets(keys: [String]? = nil) -> SignalProducer<ReactiveResults<[PetProtocol]>, ReactiveSwiftRealmError> {
@@ -30,15 +34,21 @@ class StableRepository: BaseRepository<StableLocalRepository> {
     }
     
     func getOwnedMounts(userID: String? = nil) -> SignalProducer<ReactiveResults<[OwnedMountProtocol]>, ReactiveSwiftRealmError> {
-        return localRepository.getOwnedMounts(userID: userID ?? currentUserId ?? "")
+        return currentUserIDProducer.skipNil().flatMap(.latest, {[weak self] (currentUserID) in
+            return self?.localRepository.getOwnedMounts(userID: userID ?? currentUserID) ?? SignalProducer.empty
+        })
     }
     
     func getOwnedMount(key: String, userID: String? = nil)-> SignalProducer<OwnedMountProtocol?, ReactiveSwiftRealmError> {
-        return localRepository.getOwnedMount(key: key, userID: userID ?? currentUserId ?? "")
+        return currentUserIDProducer.skipNil().flatMap(.latest, {[weak self] (currentUserID) in
+            return self?.localRepository.getOwnedMount(key: key, userID: userID ?? currentUserID) ?? Signal.empty
+        })
     }
     
     func getOwnedMounts(query: String, userID: String? = nil) -> SignalProducer<ReactiveResults<[OwnedMountProtocol]>, ReactiveSwiftRealmError> {
-        return localRepository.getOwnedMounts(query: query, userID: userID ?? currentUserId ?? "")
+        return currentUserIDProducer.skipNil().flatMap(.latest, {[weak self] (currentUserID) in
+            return self?.localRepository.getOwnedMounts(query: query, userID: userID ?? currentUserID) ?? SignalProducer.empty
+        })
     }
     
     func getMounts(keys: [String]? = nil) -> SignalProducer<ReactiveResults<[MountProtocol]>, ReactiveSwiftRealmError> {

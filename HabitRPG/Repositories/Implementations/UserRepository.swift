@@ -41,12 +41,8 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     }
     
     func getUser() -> SignalProducer<UserProtocol, ReactiveSwiftRealmError> {
-        if let userId = currentUserId {
-            return localRepository.getUser(userId)
-        } else {
-            return SignalProducer {(sink, _) in
-                sink.sendCompleted()
-            }
+        return currentUserIDProducer.skipNil().flatMap(.latest) {[weak self] (userID) in
+            return self?.localRepository.getUser(userID) ?? SignalProducer.empty
         }
     }
     
@@ -152,7 +148,7 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     func login(username: String, password: String) -> Signal<LoginResponseProtocol?, NoError> {
         let call = LocalLoginCall(username: username, password: password)
         call.fire()
-        return call.objectSignal.on(value: {[weak self] loginResponse in
+        return call.objectSignal.on(value: { loginResponse in
             if let response = loginResponse {
                 AuthenticationManager.shared.currentUserId = response.id
                 AuthenticationManager.shared.currentUserKey = response.apiToken
@@ -163,7 +159,7 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     func register(username: String, password: String, confirmPassword: String, email: String) -> Signal<LoginResponseProtocol?, NoError> {
         let call = LocalRegisterCall(username: username, password: password, confirmPassword: confirmPassword, email: email)
         call.fire()
-        return call.objectSignal.on(value: {[weak self]loginResponse in
+        return call.objectSignal.on(value: { loginResponse in
             if let response = loginResponse {
                 AuthenticationManager.shared.currentUserId = response.id
                 AuthenticationManager.shared.currentUserKey = response.apiToken
@@ -174,7 +170,7 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     func login(userID: String, network: String, accessToken: String) -> Signal<LoginResponseProtocol?, NoError> {
         let call = SocialLoginCall(userID: userID, network: network, accessToken: accessToken)
         call.fire()
-        return call.objectSignal.on(value: {[weak self]loginResponse in
+        return call.objectSignal.on(value: { loginResponse in
             if let response = loginResponse {
                 AuthenticationManager.shared.currentUserId = response.id
                 AuthenticationManager.shared.currentUserKey = response.apiToken
@@ -310,7 +306,9 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     }
     
     func getTags() -> SignalProducer<ReactiveResults<[TagProtocol]>, ReactiveSwiftRealmError> {
-        return localRepository.getTags(userID: self.currentUserId ?? "")
+        return currentUserIDProducer.skipNil().flatMap(.latest, {[weak self] (userID) in
+            return self?.localRepository.getTags(userID: userID) ?? SignalProducer.empty
+        })
     }
     
     private func handleUserUpdate() -> ((UserProtocol?) -> Void) {
