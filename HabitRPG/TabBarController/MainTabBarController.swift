@@ -96,6 +96,7 @@ class MainTabBarController: UITabBarController {
             }
             self?.updateDailyBadge()
             self?.updateToDoBadge()
+            self?.updateAppBadge()
         }).start())
     }
     
@@ -132,6 +133,15 @@ class MainTabBarController: UITabBarController {
             item?.badgeValue = "\(count)"
         } else {
             item?.badgeValue = nil
+        }
+    }
+    
+    private func updateAppBadge() {
+        let defaults = UserDefaults.standard
+        if defaults.bool(forKey: "appBadgeActive") == true {
+            UIApplication.shared.applicationIconBadgeNumber = dueDailiesCount + dueToDosCount
+        } else {
+            UIApplication.shared.applicationIconBadgeNumber = 0
         }
     }
     
