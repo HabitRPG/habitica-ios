@@ -13,6 +13,7 @@ public protocol ContentProtocol {
     var food: [FoodProtocol]? { get set }
     var eggs: [EggProtocol]? { get set }
     var hatchingPotions: [HatchingPotionProtocol]? { get set }
+    var special: [SpecialItemProtocol]? { get set }
     var gear: [GearProtocol]? { get set }
     var skills: [SkillProtocol]? { get set }
     var quests: [QuestProtocol]? { get set }

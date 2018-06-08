@@ -28,6 +28,9 @@ public class ContentLocalRepository: BaseLocalRepository {
         content.hatchingPotions?.forEach({ (hatchingPotion) in
             newObjects.append(RealmHatchingPotion(hatchingPotion))
         })
+        content.special?.forEach({ (specialItem) in
+            newObjects.append(RealmSpecialItem(specialItem))
+        })
         content.quests?.forEach({ (quest) in
             newObjects.append(RealmQuest(quest))
         })

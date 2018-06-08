@@ -13,6 +13,7 @@ public enum ItemType: String {
     case food
     case hatchingPotions
     case quests
+    case special
 }
 
 @objc

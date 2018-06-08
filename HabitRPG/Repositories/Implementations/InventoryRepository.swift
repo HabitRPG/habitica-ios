@@ -31,9 +31,9 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
         return localRepository.getGear(predicate: NSPredicate(format: "key IN %@", keys))
     }
     
-    func getOwnedItems(userID: String? = nil) -> SignalProducer<ReactiveResults<[OwnedItemProtocol]>, ReactiveSwiftRealmError> {
+    func getOwnedItems(userID: String? = nil, itemType: String? = nil) -> SignalProducer<ReactiveResults<[OwnedItemProtocol]>, ReactiveSwiftRealmError> {
         return currentUserIDProducer.skipNil().flatMap(.latest, {[weak self] (currentUserID) in
-            return self?.localRepository.getOwnedItems(userID: userID ?? currentUserID) ?? SignalProducer.empty
+            return self?.localRepository.getOwnedItems(userID: userID ?? currentUserID, itemType: itemType) ?? SignalProducer.empty
         })
     }
     

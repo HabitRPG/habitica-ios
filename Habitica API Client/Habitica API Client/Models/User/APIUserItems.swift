@@ -17,6 +17,7 @@ public class APIUserItems: UserItemsProtocol, Decodable {
     public var ownedFood: [OwnedItemProtocol]
     public var ownedHatchingPotions: [OwnedItemProtocol]
     public var ownedEggs: [OwnedItemProtocol]
+    public var ownedSpecialItems: [OwnedItemProtocol]
     
     public var ownedPets: [OwnedPetProtocol]
     public var ownedMounts: [OwnedMountProtocol]
@@ -29,6 +30,7 @@ public class APIUserItems: UserItemsProtocol, Decodable {
         case ownedFood = "food"
         case ownedHatchingPotions = "hatchingPotions"
         case ownedEggs = "eggs"
+        case ownedSpecialItems = "special"
         case ownedPets = "pets"
         case ownedMounts = "mounts"
     }
@@ -54,6 +56,8 @@ public class APIUserItems: UserItemsProtocol, Decodable {
         ownedEggs = (eggsDict?.map({ (key, numberOwned) -> OwnedItemProtocol in
             return APIOwnedItem(key: key, numberOwned: numberOwned, itemType: ItemType.eggs.rawValue)
         })) ?? []
+        //let specialDict = try? values.decode([String: Any].self, forKey: .ownedSpecialItems)
+        ownedSpecialItems = []
         
         let petsDict = try?values.decode([String: Int?].self, forKey: .ownedPets)
         ownedPets = (petsDict?.map({ (key, trained) -> OwnedPetProtocol in

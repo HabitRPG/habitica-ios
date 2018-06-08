@@ -86,6 +86,7 @@
 "skills.unlocks_at" = "Unlocks at level %d";
 "skills.use_skill" = "You use %@";
 "skills.cant_cast_on_challenge_tasks" = "Can't cast a spell on a challenge task";
+"skills.transformation_items" = "Transformation Items";
 "level_number" = "Level %d";
 "my_guilds" = "My Guilds";
 "my_challenges" = "My Challenges";

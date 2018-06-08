@@ -18,6 +18,7 @@ public protocol UserItemsProtocol {
     var ownedFood: [OwnedItemProtocol] { get set }
     var ownedHatchingPotions: [OwnedItemProtocol] { get set }
     var ownedEggs: [OwnedItemProtocol] { get set }
+    var ownedSpecialItems: [OwnedItemProtocol] { get set }
     
     var ownedPets: [OwnedPetProtocol] { get set }
     var ownedMounts: [OwnedMountProtocol] { get set }

@@ -88,6 +88,7 @@
 		299FB29220849E9E00422522 /* RealmOwnedMount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB29120849E9E00422522 /* RealmOwnedMount.swift */; };
 		299FB2982084A17A00422522 /* StableLocalRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB2972084A17A00422522 /* StableLocalRepository.swift */; };
 		29A6B86C20690DF00086B2A6 /* RealmWeekRepeat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A6B86B20690DF00086B2A6 /* RealmWeekRepeat.swift */; };
+		29DBFEFB20CADB4100DF9CF2 /* RealmSpecialItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFEFA20CADB4100DF9CF2 /* RealmSpecialItem.swift */; };
 		EFA96FFA3536BF094D7B36B3 /* Pods_Habitica_DatabaseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 930CE9895A927708C0C96A90 /* Pods_Habitica_DatabaseTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -187,6 +188,7 @@
 		299FB29120849E9E00422522 /* RealmOwnedMount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmOwnedMount.swift; sourceTree = "<group>"; };
 		299FB2972084A17A00422522 /* StableLocalRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StableLocalRepository.swift; sourceTree = "<group>"; };
 		29A6B86B20690DF00086B2A6 /* RealmWeekRepeat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmWeekRepeat.swift; sourceTree = "<group>"; };
+		29DBFEFA20CADB4100DF9CF2 /* RealmSpecialItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmSpecialItem.swift; sourceTree = "<group>"; };
 		46F1FDA07144B10D37712F09 /* Pods-Habitica DatabaseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica DatabaseTests.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Habitica DatabaseTests/Pods-Habitica DatabaseTests.debug.xcconfig"; sourceTree = "<group>"; };
 		930CE9895A927708C0C96A90 /* Pods_Habitica_DatabaseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica_DatabaseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D821314C12B6448718FD4120 /* Pods_Habitica_Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica_Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -318,31 +320,32 @@
 		2956110E2056EC0E00D9711A /* Content */ = {
 			isa = PBXGroup;
 			children = (
-				295611112056EC5C00D9711A /* RealmSkill.swift */,
-				295611172057C8EB00D9711A /* RealmItem.swift */,
-				295611192057C93200D9711A /* RealmFood.swift */,
+				291448A1208A3ACD00F3A6B5 /* RealmCustomization.swift */,
+				291448A3208A3B4A00F3A6B5 /* RealmCustomizationSet.swift */,
 				2956111B2057C98300D9711A /* RealmEgg.swift */,
-				2956111D2057C9B100D9711A /* RealmHatchingPotion.swift */,
+				2902795F2057E957006DACB9 /* RealmFAQEntry.swift */,
+				295611192057C93200D9711A /* RealmFood.swift */,
 				2956111F2057D48A00D9711A /* RealmGear.swift */,
+				2956111D2057C9B100D9711A /* RealmHatchingPotion.swift */,
+				296AC81D20ADDC5900885682 /* RealmInAppReward.swift */,
+				295611172057C8EB00D9711A /* RealmItem.swift */,
+				299FB2832084975100422522 /* RealmMount.swift */,
+				299FB281208496A500422522 /* RealmPet.swift */,
 				295611212057D60F00D9711A /* RealmQuest.swift */,
-				295E9DF720B479A700D58D45 /* RealmQuestColors.swift */,
-				298CB21220AF0B22006DA349 /* RealmQuestDrop.swift */,
-				298CB21420AF0B3A006DA349 /* RealmQuestDropItem.swift */,
 				295611232057D65500D9711A /* RealmQuestBoss.swift */,
 				295E9DBE20B2C8CF00D58D45 /* RealmQuestBossRage.swift */,
 				295611252057D77600D9711A /* RealmQuestCollect.swift */,
-				2902795F2057E957006DACB9 /* RealmFAQEntry.swift */,
-				290279882058344B006DACB9 /* RealmWorldState.swift */,
-				2902798A20583479006DACB9 /* RealmQuestState.swift */,
+				295E9DF720B479A700D58D45 /* RealmQuestColors.swift */,
+				298CB21220AF0B22006DA349 /* RealmQuestDrop.swift */,
+				298CB21420AF0B3A006DA349 /* RealmQuestDropItem.swift */,
 				291DE97B209B44BB0073182A /* RealmQuestParticipant.swift */,
 				2902798C205834A3006DACB9 /* RealmQuestProgress.swift */,
-				299FB281208496A500422522 /* RealmPet.swift */,
-				299FB2832084975100422522 /* RealmMount.swift */,
-				291448A1208A3ACD00F3A6B5 /* RealmCustomization.swift */,
-				291448A3208A3B4A00F3A6B5 /* RealmCustomizationSet.swift */,
-				296AC81D20ADDC5900885682 /* RealmInAppReward.swift */,
+				2902798A20583479006DACB9 /* RealmQuestState.swift */,
 				295E9DEB20B3326700D58D45 /* RealmShop.swift */,
 				295E9DED20B3331500D58D45 /* RealmShopCategory.swift */,
+				295611112056EC5C00D9711A /* RealmSkill.swift */,
+				29DBFEFA20CADB4100DF9CF2 /* RealmSpecialItem.swift */,
+				290279882058344B006DACB9 /* RealmWorldState.swift */,
 			);
 			path = Content;
 			sourceTree = "<group>";
@@ -640,6 +643,7 @@
 				295E9DBF20B2C8CF00D58D45 /* RealmQuestBossRage.swift in Sources */,
 				291E95B3209887BF006EE585 /* RealmUserParty.swift in Sources */,
 				29323E582052F8BC00AC6D6F /* RealmUserItems.swift in Sources */,
+				29DBFEFB20CADB4100DF9CF2 /* RealmSpecialItem.swift in Sources */,
 				290B629E207F7F34007287C4 /* RealmOwnedGear.swift in Sources */,
 				295611262057D77600D9711A /* RealmQuestCollect.swift in Sources */,
 				298CB21320AF0B22006DA349 /* RealmQuestDrop.swift in Sources */,

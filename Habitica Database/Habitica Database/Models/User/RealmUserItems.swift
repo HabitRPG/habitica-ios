@@ -104,6 +104,25 @@ class RealmUserItems: Object, UserItemsProtocol {
     }
     var realmOwnedEggs = List<RealmOwnedItem>()
     
+    var ownedSpecialItems: [OwnedItemProtocol] {
+        get {
+            return realmOwnedSpecialItems.map({ (item) -> OwnedItemProtocol in
+                return item
+            })
+        }
+        set {
+            realmOwnedSpecialItems.removeAll()
+            newValue.forEach { (ownedItem) in
+                if let realmOwnedItem = ownedItem as? RealmOwnedItem {
+                    realmOwnedSpecialItems.append(realmOwnedItem)
+                } else {
+                    realmOwnedSpecialItems.append(RealmOwnedItem(userID: id, itemProtocol: ownedItem))
+                }
+            }
+        }
+    }
+    var realmOwnedSpecialItems = List<RealmOwnedItem>()
+    
     var ownedPets: [OwnedPetProtocol] {
         get {
             return realmOwnedPets.map({ (pet) -> OwnedPetProtocol in
@@ -161,6 +180,7 @@ class RealmUserItems: Object, UserItemsProtocol {
         ownedFood = userItems.ownedFood
         ownedHatchingPotions = userItems.ownedHatchingPotions
         ownedEggs = userItems.ownedEggs
+        ownedSpecialItems = userItems.ownedSpecialItems
         ownedPets = userItems.ownedPets
         ownedMounts = userItems.ownedMounts
     }

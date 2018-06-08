@@ -93,6 +93,7 @@ private struct APICustomizationsWrapper: Decodable {
 public class APIContent: ContentProtocol, Decodable {
     public var food: [FoodProtocol]?
     public var eggs: [EggProtocol]?
+    public var special: [SpecialItemProtocol]?
     public var hatchingPotions: [HatchingPotionProtocol]?
     public var gear: [GearProtocol]?
     public var skills: [SkillProtocol]?
@@ -106,6 +107,7 @@ public class APIContent: ContentProtocol, Decodable {
         case food
         case eggs
         case hatchingPotions
+        case special
         case gear
         case skills = "spells"
         case quests
@@ -124,6 +126,9 @@ public class APIContent: ContentProtocol, Decodable {
             return value
         })
         hatchingPotions = try? values.decode([String: APIHatchingPotion].self, forKey: .hatchingPotions).map({ (key, value) in
+            return value
+        })
+        special = try? values.decode([String: APISpecialItem].self, forKey: .special).map({ (key, value) in
             return value
         })
         let gearWrapper = try! values.decode(APIGearWrapper.self, forKey: .gear)

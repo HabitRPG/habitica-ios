@@ -34,6 +34,7 @@ class SpellsTableViewDataSourceInstantiator: NSObject {
 class SpellsTableViewDataSource: BaseReactiveTableViewDataSource<SkillProtocol>, SpellsTableViewDataSourceProtocol {
     
     private var userRepository = UserRepository()
+    private var inventoryRepository = InventoryRepository()
     private var contentRepository = ContentRepository()
     private var stats: StatsProtocol? {
         didSet {
@@ -46,10 +47,15 @@ class SpellsTableViewDataSource: BaseReactiveTableViewDataSource<SkillProtocol>,
     override init() {
         super.init()
         sections.append(ItemSection<SkillProtocol>())
+        sections.append(ItemSection<SkillProtocol>(title: L10n.Skills.transformationItems))
         disposable.inner.add(userRepository.getUser().on(value: {[weak self]user in
             if let stats = user.stats {
                 self?.stats = stats
             }
+        }).start())
+        
+        disposable.inner.add(inventoryRepository.getOwnedItems(itemType: ItemType.special.rawValue).on(value: { items in
+            
         }).start())
     }
     
