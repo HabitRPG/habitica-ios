@@ -108,6 +108,7 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
     }
 
     func handleDismiss() {
+        UserManager.shared.yesterdailiesDialog = nil
         var completedTasks = [TaskProtocol]()
         if let tasks = self.tasks {
             for task in tasks where task.completed {

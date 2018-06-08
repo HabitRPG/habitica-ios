@@ -70,6 +70,7 @@ class UserManager: NSObject {
                     if let controller = topController as? MainTabBarController {
                         controller.present(popup, animated: true) {
                         }
+                        self?.yesterdailiesDialog = viewController
                     }
                 }
             }).start())
