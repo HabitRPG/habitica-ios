@@ -37,9 +37,9 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
         return call.arraySignal
     }
     
-    func getTasks(predicate: NSPredicate) -> SignalProducer<ReactiveResults<[TaskProtocol]>, ReactiveSwiftRealmError> {
+    func getTasks(predicate: NSPredicate, sortKey: String = "order") -> SignalProducer<ReactiveResults<[TaskProtocol]>, ReactiveSwiftRealmError> {
         return currentUserIDProducer.skipNil().flatMap(.latest, {[weak self] (userID) in
-            return self?.localRepository.getTasks(userID: userID, predicate: predicate) ?? SignalProducer.empty
+            return self?.localRepository.getTasks(userID: userID, predicate: predicate, sortKey: sortKey) ?? SignalProducer.empty
         })
     }
     
@@ -53,7 +53,7 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
     
     func getDueTasks() -> SignalProducer<ReactiveResults<[TaskProtocol]>, ReactiveSwiftRealmError> {
         return currentUserIDProducer.skipNil().flatMap(.latest, {[weak self] (userID) in
-            return self?.localRepository.getTasks(userID: userID, predicate: NSPredicate(format: "(type == 'daily' && isDue == true) || (type == 'todo' && completed == false)")) ?? SignalProducer.empty
+            return self?.localRepository.getTasks(userID: userID, predicate: NSPredicate(format: "(type == 'daily' && isDue == true) || (type == 'todo' && completed == false)"), sortKey: "order") ?? SignalProducer.empty
         })
     }
     

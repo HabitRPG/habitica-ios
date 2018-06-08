@@ -15,6 +15,7 @@ public protocol TaskTableViewDataSourceProtocol {
     @objc var userDrivenDataUpdate: Bool { get set }
     @objc weak var tableView: UITableView? { get set }
     @objc var predicate: NSPredicate { get set }
+    @objc var sortKey: String { get set }
     
     @objc var tasks: [TaskProtocol] { get set}
     @objc var taskToEdit: TaskProtocol? { get set }
@@ -61,6 +62,11 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
             fetchTasks()
         }
     }
+    var sortKey: String = "order" {
+        didSet {
+            fetchTasks()
+        }
+    }
     
     internal let userRepository = UserRepository()
     internal let repository = TaskRepository()
@@ -88,7 +94,7 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
         if let disposable = fetchTasksDisposable, !disposable.isDisposed {
             disposable.dispose()
         }
-        fetchTasksDisposable = repository.getTasks(predicate: predicate).on(value: {[weak self] (tasks, changes) in
+        fetchTasksDisposable = repository.getTasks(predicate: predicate, sortKey: sortKey).on(value: {[weak self] (tasks, changes) in
             self?.sections[0].items = tasks
             self?.notify(changes: changes)
         }).start()

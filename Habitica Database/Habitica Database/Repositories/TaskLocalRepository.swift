@@ -84,8 +84,9 @@ public class TaskLocalRepository: BaseLocalRepository {
         }
     }
     
-    public func getTasks(userID: String, predicate: NSPredicate) -> SignalProducer<ReactiveResults<[TaskProtocol]>, ReactiveSwiftRealmError> {
-        return RealmTask.findBy(predicate: NSCompoundPredicate(andPredicateWithSubpredicates: [NSPredicate(format: "userID == %@", userID), predicate])).sorted(key: "order").reactive().map({ (value, changeset) -> ReactiveResults<[TaskProtocol]> in
+    public func getTasks(userID: String, predicate: NSPredicate, sortKey: String) -> SignalProducer<ReactiveResults<[TaskProtocol]>, ReactiveSwiftRealmError> {
+        var query = RealmTask.findBy(predicate: NSCompoundPredicate(andPredicateWithSubpredicates: [NSPredicate(format: "userID == %@", userID), predicate])).sorted(key: sortKey)
+        return query.reactive().map({ (value, changeset) -> ReactiveResults<[TaskProtocol]> in
             return (value.map({ (task) -> TaskProtocol in return task }), changeset)
         })
     }

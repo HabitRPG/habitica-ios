@@ -253,6 +253,11 @@ NSIndexPath  *sourceIndexPath = nil;
         [defaults integerForKey:[NSString stringWithFormat:@"%@Filter", self.typeName]];
 
     self.dataSource.predicate = [self getPredicate];
+    if (self.filterType == 1 && [self.typeName isEqualToString:@"todo"]) {
+        self.dataSource.sortKey = @"duedate";
+    } else {
+        self.dataSource.sortKey = @"order";
+    }
     [self.tableView reloadData];
 
     NSInteger filterCount = 0;
