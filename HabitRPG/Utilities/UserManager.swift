@@ -11,6 +11,7 @@ import Habitica_Models
 import ReactiveSwift
 import Result
 import Habitica_Database
+import PopupDialog
 
 @objc
 class UserManager: NSObject {
@@ -28,10 +29,49 @@ class UserManager: NSObject {
     private var tutorialSteps = [String: Bool]()
     
     func beginListening() {
+        let today = Date()
+        let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: today)
         disposable.inner.add(userRepository.getUser()
             .throttle(1, on: QueueScheduler.main)
             .on(value: {[weak self]user in
                 self?.onUserUpdated(user: user)
+            }).filter({[weak self] (user) -> Bool in
+                return user.needsCron && self?.yesterdailiesDialog == nil
+            }).flatMap(.latest, {[weak self] user in
+                return self?.taskRepository.retrieveTasks(dueOnDay: yesterday).skipNil()
+                    .map({ tasks in
+                        return tasks.filter({ task in
+                            return task.isDue && !task.completed
+                        })
+                    }).withLatest(from: SignalProducer<UserProtocol, NoError>(value: user)) ?? Signal<([TaskProtocol], UserProtocol), NoError>.empty
+            }).on(value: {[weak self] (tasks, user) in
+                var hasUncompletedDailies = false
+                for task in tasks {
+                    if task.type == "daily" && !task.completed {
+                        hasUncompletedDailies = true
+                        break
+                    }
+                }
+                
+                if !user.needsCron {
+                    return
+                }
+                let viewController = YesterdailiesDialogView()
+                if !hasUncompletedDailies {
+                    self?.userRepository.runCron(tasks: []).observeCompleted {}
+                    return
+                }
+                viewController.tasks = tasks
+                let popup = PopupDialog(viewController: viewController)
+                if var topController = UIApplication.shared.keyWindow?.rootViewController {
+                    while let presentedViewController = topController.presentedViewController {
+                        topController = presentedViewController
+                    }
+                    if let controller = topController as? MainTabBarController {
+                        controller.present(popup, animated: true) {
+                        }
+                    }
+                }
             }).start())
         disposable.inner.add(taskRepository.getReminders().on(value: {[weak self](reminders, changes) in
             if let changes = changes {
@@ -50,10 +90,6 @@ class UserManager: NSObject {
         
         faintViewController = checkFainting(user: user)
         
-        if faintViewController == nil {
-            checkYesterdailies(user: user)
-        }
-        
         checkClassSelection(user: user)
     }
     
@@ -64,12 +100,6 @@ class UserManager: NSObject {
             return faintView
         }
         return faintViewController
-    }
-    
-    private func checkYesterdailies(user: UserProtocol) {
-        if user.needsCron && yesterdailiesDialog == nil {
-            yesterdailiesDialog = YesterdailiesDialogView.showDialog()
-        }
     }
     
     private func checkClassSelection(user: UserProtocol) {

@@ -15,8 +15,6 @@ class MorningNotificationwait: HRPGBaseNotificationView {
             while let presentedViewController = topController.presentedViewController {
                 topController = presentedViewController
             }
-
-            YesterdailiesDialogView.showDialog()
         }
     }
 }
