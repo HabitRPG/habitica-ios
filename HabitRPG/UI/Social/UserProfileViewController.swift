@@ -10,25 +10,14 @@ import Foundation
 import Habitica_Models
 import ReactiveSwift
 import Down
-
-private struct StatsContainer {
-    var strength: Double = 0
-    var intelligence: Double = 0
-    var constitution: Double = 0
-    var perception: Double = 0
-    
-    static func + (left: StatsContainer, right: StatsContainer) -> StatsContainer {
-        return StatsContainer(strength: left.strength + right.strength,
-                              intelligence: left.intelligence + right.intelligence,
-                              constitution: left.constitution + right.constitution,
-                              perception: left.perception + right.perception)
-    }
-}
+import Result
 
 class UserProfileViewController: HRPGBaseViewController {
     
     private let socialRepository = SocialRepository()
     private let inventoryRepository = InventoryRepository()
+    var interactor = CalculateUserStatsInteractor()
+    private let (lifetime, token) = Lifetime.make()
     private let disposable = ScopedDisposable(CompositeDisposable())
     
     @objc var userID: String?
@@ -39,8 +28,13 @@ class UserProfileViewController: HRPGBaseViewController {
             tableView.reloadData()
         }
     }
+    private var calculatedStats = CalculatedUserStats() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     private var gearDictionary: [String: GearProtocol] = [:]
-    private var isAttributesExpanded = false
+    private var isAttributesExpanded = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,12 +43,11 @@ class UserProfileViewController: HRPGBaseViewController {
         
         navigationItem.title = username
         
-        if let userID = userID {
-            disposable.inner.add(socialRepository.getMember(userID: userID).on(value: {[weak self]member in
-                self?.member = member
-                self?.navigationItem.title = member?.profile?.name
-            }).start())
-        }
+        let subscriber = Signal<CalculatedUserStats, NSError>.Observer(value: {[weak self] stats in
+            self?.calculatedStats = stats
+        })
+        
+        disposable.inner.add(interactor.reactive.take(during: lifetime).observe(subscriber))
         
         disposable.inner.add(inventoryRepository.getGear().on(value: {[weak self]gear in
             self?.gearDictionary.removeAll()
@@ -62,6 +55,18 @@ class UserProfileViewController: HRPGBaseViewController {
                 self?.gearDictionary[gearItem.key ?? ""] = gearItem
             })
         }).start())
+        
+        if let userID = userID {
+            disposable.inner.add(socialRepository.getMember(userID: userID).skipNil().flatMap(.latest, { (member) in
+                return self.fetchGearStats(member: member)
+            }).on(value: {[weak self] (member, gear) in
+                self?.member = member
+                self?.navigationItem.title = member.profile?.name
+                if let stats = member.stats {
+                    self?.interactor.run(with: (stats, gear))
+                }
+            }).start())
+        }
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 44
@@ -287,118 +292,80 @@ class UserProfileViewController: HRPGBaseViewController {
         let constitutionLabel = cell.viewWithTag(4) as? UILabel
         let perceptionLabel = cell.viewWithTag(5) as? UILabel
         
-        var values = StatsContainer()
+        var strength = 0
+        var intelligence = 0
+        var constitution = 0
+        var perception = 0
         if (index == 1 && !isAttributesExpanded) || index == 6 {
-            let levelValues = levelAttributes()
-            let gearValues = gearAttributes()
-            let classBonusValues = classBonusAttributes()
-            let allocatedValues = allocatedAttributes()
-            let buffedValues = buffedAttributes()
-            
-            values.strength = (levelValues + gearValues + classBonusValues + allocatedValues + buffedValues).strength
-            values.intelligence = (levelValues + gearValues + classBonusValues + allocatedValues + buffedValues).intelligence
-            values.constitution = (levelValues + gearValues + classBonusValues + allocatedValues + buffedValues).constitution
-            values.perception = (levelValues + gearValues + classBonusValues + allocatedValues + buffedValues).perception
+            strength = calculatedStats.totalStrength
+            intelligence = calculatedStats.totalIntelligence
+            constitution = calculatedStats.totalConstitution
+            perception = calculatedStats.totalPerception
         } else if index == 1 {
             descriptionLabel?.text = L10n.Stats.level
-            values = levelAttributes()
+            strength = calculatedStats.levelStat
+            intelligence = calculatedStats.levelStat
+            constitution = calculatedStats.levelStat
+            perception = calculatedStats.levelStat
         } else if index == 2 {
             descriptionLabel?.text = L10n.Stats.battleGear
-            values = gearAttributes()
+            strength = calculatedStats.gearStrength
+            intelligence = calculatedStats.gearIntelligence
+            constitution = calculatedStats.gearConstitution
+            perception = calculatedStats.gearPerception
         } else if index == 3 {
             descriptionLabel?.text = L10n.Stats.classBonus
-            values = classBonusAttributes()
-        } else if index == 4{
+            strength = calculatedStats.gearBonusStrength
+            intelligence = calculatedStats.gearBonusIntelligence
+            constitution = calculatedStats.gearBonusConstitution
+            perception = calculatedStats.gearBonusPerception
+        } else if index == 4 {
             descriptionLabel?.text = L10n.Stats.allocated
-            values = allocatedAttributes()
+            strength = calculatedStats.allocatedStrength
+            intelligence = calculatedStats.allocatedIntelligence
+            constitution = calculatedStats.allocatedConstitution
+            perception = calculatedStats.allocatedPerception
         } else if index == 5 {
             descriptionLabel?.text = L10n.Stats.buffs
-            values = buffedAttributes()
+            strength = calculatedStats.buffStrength
+            intelligence = calculatedStats.buffIntelligence
+            constitution = calculatedStats.buffConstitution
+            perception = calculatedStats.buffPerception
         }
         
-        strengthLabel?.text = String(Int(values.strength))
-        intelligenceLabel?.text = String(Int(values.intelligence))
-        constitutionLabel?.text = String(Int(values.constitution))
-        perceptionLabel?.text = String(Int(values.perception))
+        strengthLabel?.text = String(strength)
+        intelligenceLabel?.text = String(intelligence)
+        constitutionLabel?.text = String(constitution)
+        perceptionLabel?.text = String(perception)
     }
     
-    private func levelAttributes() -> StatsContainer {
-        return StatsContainer(strength: Double(member?.stats?.level ?? 0) * 0.5,
-                              intelligence: Double(member?.stats?.level ?? 0) * 0.5,
-                              constitution: Double(member?.stats?.level ?? 0) * 0.5,
-                              perception: Double(member?.stats?.level ?? 0) * 0.5)
-    }
-    
-    private func allocatedAttributes() -> StatsContainer {
-        return StatsContainer(strength: Double(member?.stats?.strength ?? 0),
-                              intelligence: Double(member?.stats?.intelligence ?? 0),
-                              constitution: Double(member?.stats?.constitution ?? 0),
-                              perception: Double(member?.stats?.perception ?? 0))
-    }
-    
-    private func buffedAttributes() -> StatsContainer {
-        return StatsContainer(strength: Double(member?.stats?.buffs?.strength ?? 0),
-                              intelligence: Double(member?.stats?.buffs?.intelligence ?? 0),
-                              constitution: Double(member?.stats?.buffs?.constitution ?? 0),
-                              perception: Double(member?.stats?.buffs?.perception ?? 0))
-    }
-    
-    private func gearAttributes() -> StatsContainer {
-        var strengthValue: Double = 0
-        var intelligenceValue: Double = 0
-        var constitutionValue: Double = 0
-        var perceptionValue: Double = 0
+    private func fetchGearStats(member: MemberProtocol) -> SignalProducer<(MemberProtocol, [GearProtocol]), NoError> {
+        var keys = [String]()
+        if let outfit = member.items?.gear?.equipped {
+            keys.append(outfit.armor ?? "")
+            keys.append(outfit.back ?? "")
+            keys.append(outfit.body ?? "")
+            keys.append(outfit.eyewear ?? "")
+            keys.append(outfit.head ?? "")
+            keys.append(outfit.headAccessory ?? "")
+            keys.append(outfit.weapon ?? "")
+            keys.append(outfit.shield ?? "")
+        }
         
-        for gear in battleGearList() {
-            strengthValue += Double(gear?.strength ?? 0)
-            intelligenceValue += Double(gear?.intelligence ?? 0)
-            constitutionValue += Double(gear?.constitution ?? 0)
-            perceptionValue += Double(gear?.perception ?? 0)
-        }
-        return StatsContainer(strength: strengthValue, intelligence: intelligenceValue, constitution: constitutionValue, perception: perceptionValue)
-    }
-    
-    private func classBonusAttributes() -> StatsContainer {
-        var strengthValue: Double = 0
-        var intelligenceValue: Double = 0
-        var constitutionValue: Double = 0
-        var perceptionValue: Double = 0
+        let gearProducer = inventoryRepository.getGear(predicate: NSPredicate(format: "key in %@", keys)).map({ gear in
+            return gear.value
+        }).flatMapError({ (_) -> SignalProducer<[GearProtocol], NoError> in
+            return SignalProducer.empty
+        })
         
-        for gear in battleGearList() where gear?.habitClass == member?.stats?.habitClass {
-            strengthValue += Double(gear?.strength ?? 0)
-            intelligenceValue += Double(gear?.intelligence ?? 0)
-            constitutionValue += Double(gear?.constitution ?? 0)
-            perceptionValue += Double(gear?.perception ?? 0)
-        }
-        return StatsContainer(strength: strengthValue, intelligence: intelligenceValue, constitution: constitutionValue, perception: perceptionValue)
+        return gearProducer.withLatest(from: SignalProducer<MemberProtocol, NoError>(value: member)).map({ (gear, user) in
+            return (user, gear)
+        })
     }
     
-    private func battleGearList() -> [GearProtocol?] {
-        var gearList = [GearProtocol?]()
-        guard let outfit = member?.items?.gear?.equipped else {
-            return gearList
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == StoryboardSegue.Social.writeMessageSegue.rawValue {
+            
         }
-        if let key = outfit.head {
-            gearList.append(gearDictionary[key])
-        }
-        if let key = outfit.headAccessory {
-            gearList.append(gearDictionary[key])
-        }
-        if let key = outfit.eyewear {
-            gearList.append(gearDictionary[key])
-        }
-        if let key = outfit.armor {
-            gearList.append(gearDictionary[key])
-        }
-        if let key = outfit.body {
-            gearList.append(gearDictionary[key])
-        }
-        if let key = outfit.shield {
-            gearList.append(gearDictionary[key])
-        }
-        if let key = outfit.weapon {
-            gearList.append(gearDictionary[key])
-        }
-        return gearList
     }
 }

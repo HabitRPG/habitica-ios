@@ -205,6 +205,7 @@
 		29C1B6AB20594F500001D3EF /* VisualEffectsModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C1B6AA20594F500001D3EF /* VisualEffectsModalViewController.swift */; };
 		29C1B6AE205952E40001D3EF /* Tasks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29C1B6B0205952E40001D3EF /* Tasks.storyboard */; };
 		29C1B6B420599E6D0001D3EF /* TaskFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C1B6B320599E6D0001D3EF /* TaskFormViewController.swift */; };
+		29DBFEF720C997D100DF9CF2 /* CalculateUserStatsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFEF620C997D100DF9CF2 /* CalculateUserStatsInteractor.swift */; };
 		29DC5AC020A1B81C00993400 /* CALayer-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DC5ABF20A1B81C00993400 /* CALayer-Extensions.swift */; };
 		29DC5AC220A1C63000993400 /* SeparatedStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DC5AC120A1C63000993400 /* SeparatedStackView.swift */; };
 		29DC5AC320A1D85300993400 /* Mainstrings.strings in Resources */ = {isa = PBXBuildFile; fileRef = 29DC5AC520A1D85300993400 /* Mainstrings.strings */; };
@@ -706,6 +707,7 @@
 		29C1B6AA20594F500001D3EF /* VisualEffectsModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectsModalViewController.swift; sourceTree = "<group>"; };
 		29C1B6AF205952E40001D3EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Tasks.storyboard; sourceTree = "<group>"; };
 		29C1B6B320599E6D0001D3EF /* TaskFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFormViewController.swift; sourceTree = "<group>"; };
+		29DBFEF620C997D100DF9CF2 /* CalculateUserStatsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateUserStatsInteractor.swift; sourceTree = "<group>"; };
 		29DC5ABF20A1B81C00993400 /* CALayer-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer-Extensions.swift"; sourceTree = "<group>"; };
 		29DC5AC120A1C63000993400 /* SeparatedStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatedStackView.swift; sourceTree = "<group>"; };
 		29DC5AC420A1D85300993400 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Mainstrings.strings; sourceTree = "<group>"; };
@@ -1890,6 +1892,7 @@
 				D9709A521E8051BD0005F35B /* Tasks */,
 				290B6296207E3F1F007287C4 /* Groups */,
 				D97ED0AC1E6DBB6E006C2A26 /* Challenges */,
+				29DBFEF620C997D100DF9CF2 /* CalculateUserStatsInteractor.swift */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -3292,6 +3295,7 @@
 				498E4CF71FA17B7F006933FF /* ChallengeButtonTableViewCell.swift in Sources */,
 				D9722B8019BD041E009D8AD3 /* HRPGNavigationController.m in Sources */,
 				494E54101F2EEF810003683C /* Amplitude+HRPGHelpers.m in Sources */,
+				29DBFEF720C997D100DF9CF2 /* CalculateUserStatsInteractor.swift in Sources */,
 				29255E4D1F3E25910094A3E3 /* CGRect-Extensions.swift in Sources */,
 				D995D59A1D1D511700D5251C /* HRPGPushNotificationSettingValueTransformer.m in Sources */,
 				297D15FA20B803D30048101F /* UserProfileViewController.swift in Sources */,

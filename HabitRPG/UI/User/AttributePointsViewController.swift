@@ -10,6 +10,7 @@ import UIKit
 import PopupDialog
 import Habitica_Models
 import ReactiveSwift
+import Result
 
 class AttributePointsViewController: HRPGUIViewController, Themeable {
     
@@ -59,6 +60,8 @@ class AttributePointsViewController: HRPGUIViewController, Themeable {
     var user: UserProtocol?
     private let userRepository = UserRepository()
     private let inventoryRepository = InventoryRepository()
+    var interactor = CalculateUserStatsInteractor()
+    private let (lifetime, token) = Lifetime.make()
     private let disposable = ScopedDisposable(CompositeDisposable())
     
     override func viewDidLoad() {
@@ -66,11 +69,21 @@ class AttributePointsViewController: HRPGUIViewController, Themeable {
         topHeaderCoordinator?.hideHeader = true
         self.tutorialIdentifier = "stats"
         
-        disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
+        let subscriber = Signal<CalculatedUserStats, NSError>.Observer(value: {[weak self] stats in
+            self?.updateStats(stats)
+        })
+        
+        disposable.inner.add(interactor.reactive.take(during: lifetime).observe(subscriber))
+        
+        disposable.inner.add(userRepository.getUser().flatMap(.latest, { (user) in
+            return self.fetchGearStats(user: user)
+        }).on(value: {[weak self] (user, gear) in
             self?.user = user
             self?.updateUser()
-            self?.updateStats()
             self?.updateAutoAllocatonViews()
+            if let stats = user.stats {
+                self?.interactor.run(with: (stats, gear))
+            }
         }).start())
         
         ThemeService.shared.addThemeable(themable: self, applyImmediately: true)
@@ -148,116 +161,55 @@ class AttributePointsViewController: HRPGUIViewController, Themeable {
         perceptionStatsView.canAllocatePoints = canAllocatePoints
     }
     
-    private func updateStats() {
-        guard let stats = user?.stats else {
-            return
-        }
-        let levelStat = stats.level / 2
+    private func updateStats(_ stats: CalculatedUserStats) {
+        totalStrength = stats.totalStrength
+        totalIntelligence = stats.totalIntelligence
+        totalConstitution = stats.totalConstitution
+        totalPerception = stats.totalPerception
         
-        totalStrength = levelStat
-        totalIntelligence = levelStat
-        totalConstitution = levelStat
-        totalPerception = levelStat
+        strengthStatsView.levelValue = stats.levelStat
+        intelligenceStatsView.levelValue = stats.levelStat
+        constitutionStatsView.levelValue = stats.levelStat
+        perceptionStatsView.levelValue = stats.levelStat
         
-        strengthStatsView.levelValue = levelStat
-        intelligenceStatsView.levelValue = levelStat
-        constitutionStatsView.levelValue = levelStat
-        perceptionStatsView.levelValue = levelStat
+        strengthStatsView.buffValue = stats.buffStrength
+        intelligenceStatsView.buffValue = stats.buffIntelligence
+        constitutionStatsView.buffValue = stats.buffConstitution
+        perceptionStatsView.buffValue = stats.buffPerception
         
-        if let buff = stats.buffs {
-            totalStrength += buff.strength
-            totalIntelligence += buff.intelligence
-            totalConstitution += buff.constitution
-            totalPerception += buff.perception
-            strengthStatsView.buffValue = buff.strength
-            intelligenceStatsView.buffValue = buff.intelligence
-            constitutionStatsView.buffValue = buff.constitution
-            perceptionStatsView.buffValue = buff.perception
-        }
+        strengthStatsView.allocatedValue = stats.allocatedStrength
+        intelligenceStatsView.allocatedValue = stats.allocatedIntelligence
+        constitutionStatsView.allocatedValue = stats.allocatedConstitution
+        perceptionStatsView.allocatedValue = stats.allocatedPerception
         
-        totalStrength += stats.strength
-        totalIntelligence += stats.intelligence
-        totalConstitution += stats.constitution
-        totalPerception += stats.perception
-        strengthStatsView.allocatedValue = stats.strength
-        intelligenceStatsView.allocatedValue = stats.intelligence
-        constitutionStatsView.allocatedValue = stats.constitution
-        perceptionStatsView.allocatedValue = stats.perception
-        
-        if let outfit = user?.items?.gear?.equipped {
-            self.fetchGearStats(outfit: outfit)
-        }
+        strengthStatsView.equipmentValue = stats.gearWithBonusStrength
+        intelligenceStatsView.equipmentValue = stats.gearWithBonusIntelligence
+        constitutionStatsView.equipmentValue = stats.gearWithBonusConstitution
+        perceptionStatsView.equipmentValue = stats.gearWithBonusPerception
     }
     
-    private func fetchGearStats(outfit: OutfitProtocol) {
+    private func fetchGearStats(user: UserProtocol) -> SignalProducer<(UserProtocol, [GearProtocol]), NoError> {
         var keys = [String]()
-        keys.append(outfit.armor ?? "")
-        keys.append(outfit.back ?? "")
-        keys.append(outfit.body ?? "")
-        keys.append(outfit.eyewear ?? "")
-        keys.append(outfit.head ?? "")
-        keys.append(outfit.headAccessory ?? "")
-        keys.append(outfit.weapon ?? "")
-        keys.append(outfit.shield ?? "")
-        disposable.inner.add(inventoryRepository.getGear(predicate: NSPredicate(format: "key in %@", keys))
-            .take(first: 1)
-            .on(value: {[weak self] gear, _ in
-                self?.updateGearStats(gear)
-            }).start())
-    }
-    
-    private func updateGearStats(_ gear: [GearProtocol]) {
-        var strength = 0.0
-        var intelligence = 0.0
-        var constitution = 0.0
-        var perception = 0.0
-        
-        for row in gear {
-            strength += Double(row.strength)
-            intelligence += Double(row.intelligence)
-            constitution += Double(row.constitution)
-            perception += Double(row.perception)
-            
-            var itemClass = row.habitClass
-            let itemSpecialClass = row.specialClass
-            let classBonus = 0.5
-            let userClassMatchesGearClass = itemClass == user?.stats?.habitClass
-            let userClassMatchesGearSpecialClass = itemSpecialClass == user?.stats?.habitClass
-            
-            if !userClassMatchesGearClass && !userClassMatchesGearSpecialClass {
-                continue
-            }
-            
-            if itemClass?.isEmpty ?? false || itemClass == "special" {
-                itemClass = itemSpecialClass
-            }
-            
-            switch itemClass {
-            case "rogue"?:
-                strength += Double(row.strength) * classBonus
-                perception += Double(row.perception) * classBonus
-            case "healer"?:
-                constitution += Double(row.constitution) * classBonus
-                intelligence += Double(row.intelligence) * classBonus
-            case "warrior"?:
-                strength += Double(row.strength) * classBonus
-                constitution += Double(row.constitution) * classBonus
-            case "wizard"?:
-                intelligence += Double(row.intelligence) * classBonus
-                perception += Double(row.perception) * classBonus
-            default:
-                break
-            }
+        if let outfit = user.items?.gear?.equipped {
+            keys.append(outfit.armor ?? "")
+            keys.append(outfit.back ?? "")
+            keys.append(outfit.body ?? "")
+            keys.append(outfit.eyewear ?? "")
+            keys.append(outfit.head ?? "")
+            keys.append(outfit.headAccessory ?? "")
+            keys.append(outfit.weapon ?? "")
+            keys.append(outfit.shield ?? "")
         }
         
-        totalStrength += Int(strength)
-        totalIntelligence += Int(intelligence)
-        totalConstitution += Int(constitution)
-        totalPerception += Int(perception)
-        strengthStatsView.equipmentValue = Int(strength)
-        intelligenceStatsView.equipmentValue = Int(intelligence)
-        constitutionStatsView.equipmentValue = Int(constitution)
-        perceptionStatsView.equipmentValue = Int(perception)
+        let gearProducer = inventoryRepository.getGear(predicate: NSPredicate(format: "key in %@", keys)).map({ gear in
+            return gear.value
+        }).flatMapError({ (_) -> SignalProducer<[GearProtocol], NoError> in
+            return SignalProducer.empty
+        })
+        
+        return gearProducer.withLatest(from: SignalProducer<UserProtocol, NoError>(value: user)).map({ (gear, user) in
+            return (user, gear)
+        })
     }
     
     private func updateAutoAllocatonViews() {
