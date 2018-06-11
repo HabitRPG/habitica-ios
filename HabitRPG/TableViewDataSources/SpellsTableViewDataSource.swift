@@ -16,11 +16,17 @@ import ReactiveSwift
     @objc
     func useSkill(skill: SkillProtocol, targetId: String?)
     @objc
-    func canUse(skill: SkillProtocol) -> Bool
+    func canUse(skill: SkillProtocol?) -> Bool
     @objc
-    func hasManaFor(skill: SkillProtocol) -> Bool
+    func hasManaFor(skill: SkillProtocol?) -> Bool
     @objc
     func skillAt(indexPath: IndexPath) -> SkillProtocol?
+    @objc
+    func itemAt(indexPath: IndexPath) -> SpecialItemProtocol?
+    @objc
+    func canUse(item: SpecialItemProtocol?) -> Bool
+    @objc
+    func useItem(item: SpecialItemProtocol, targetId: String?)
 }
 
 @objc
@@ -31,32 +37,62 @@ class SpellsTableViewDataSourceInstantiator: NSObject {
     }
 }
 
-class SpellsTableViewDataSource: BaseReactiveTableViewDataSource<SkillProtocol>, SpellsTableViewDataSourceProtocol {
+class SpellsTableViewDataSource: BaseReactiveTableViewDataSource<Any>, SpellsTableViewDataSourceProtocol {
     
     private var userRepository = UserRepository()
     private var inventoryRepository = InventoryRepository()
     private var contentRepository = ContentRepository()
     private var stats: StatsProtocol? {
         didSet {
-            if let habitClass = stats?.habitClass {
-                getSkills(habitClass: habitClass)
+            habitClass = stats?.habitClass
+        }
+    }
+    private var habitClass: String? {
+        didSet {
+            if habitClass == oldValue {
+                return
+            }
+            if let habitClass = habitClass {
+                DispatchQueue.main.async {[weak self] in
+                    self?.getSkills(habitClass: habitClass)
+                }
             }
         }
     }
-    
+    private var ownedItems = [String: Int]()
+
     override init() {
         super.init()
-        sections.append(ItemSection<SkillProtocol>())
-        sections.append(ItemSection<SkillProtocol>(title: L10n.Skills.transformationItems))
+        sections.append(ItemSection<Any>())
+        sections.append(ItemSection<Any>(title: L10n.Skills.transformationItems))
         disposable.inner.add(userRepository.getUser().on(value: {[weak self]user in
             if let stats = user.stats {
                 self?.stats = stats
             }
         }).start())
         
-        disposable.inner.add(inventoryRepository.getOwnedItems(itemType: ItemType.special.rawValue).on(value: { items in
-            
-        }).start())
+        disposable.inner.add(inventoryRepository.getOwnedItems(itemType: ItemType.special.rawValue)
+            .on(value: {[weak self]ownedItems in
+                self?.ownedItems.removeAll()
+                ownedItems.value.forEach({ (item) in
+                    self?.ownedItems[(item.key ?? "")] = item.numberOwned
+                })
+            })
+            .map({ (data) -> [String] in
+                return data.value.map({ ownedItem -> String in
+                    return ownedItem.key ?? ""
+                }).filter({ (key) -> Bool in
+                    return !key.isEmpty
+                })
+            })
+            .delay(0.1, on: QueueScheduler.main)
+            .flatMap(.latest, {[weak self] (keys) in
+                return self?.inventoryRepository.getSpecialItems(keys: keys) ?? SignalProducer.empty
+            })
+            .on(value: {[weak self](items) in
+                self?.sections[1].items = items.value
+                self?.notify(changes: items.changes)
+            }).start())
     }
     
     private func getSkills(habitClass: String) {
@@ -67,15 +103,24 @@ class SpellsTableViewDataSource: BaseReactiveTableViewDataSource<SkillProtocol>,
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let skill = item(at: indexPath)
+        let skill = item(at: indexPath) as? SkillProtocol
         let canUse = (stats?.level ?? 0) >= (skill?.level ?? 1)
-        let cell = tableView.dequeueReusableCell(withIdentifier: canUse ? "SkillCell": "SkillLockedCell", for: indexPath)
+        var cellname = "SkillCell"
+        if !canUse {
+            cellname = "SkillLockedCell"
+        } else if skill == nil {
+            cellname = "TransformationItemCell"
+        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellname, for: indexPath)
         if let skill = skill, let skillCell = cell as? SkillTableViewCell {
             if canUse {
                 skillCell.configureUnlocked(skill: skill)
             } else {
                 skillCell.configureLocked(skill: skill)
             }
+        }
+        if let item = item(at: indexPath) as? SpecialItemProtocol, let skillCell = cell as? SkillTableViewCell {
+            skillCell.configure(transformationItem: item, numberOwned: ownedItems[item.key ?? ""] ?? 0)
         }
         return cell
     }
@@ -86,17 +131,35 @@ class SpellsTableViewDataSource: BaseReactiveTableViewDataSource<SkillProtocol>,
     }
     
     @objc
-    func canUse(skill: SkillProtocol) -> Bool {
-        return (stats?.level ?? 0) >= skill.level
+    func canUse(skill: SkillProtocol?) -> Bool {
+        return (stats?.level ?? 0) >= (skill?.level ?? 0)
+        
     }
     
     @objc
-    func hasManaFor(skill: SkillProtocol) -> Bool {
-        return (stats?.mana ?? 0) >= Float(skill.mana)
+    func hasManaFor(skill: SkillProtocol?) -> Bool {
+        return (stats?.mana ?? 0) >= Float(skill?.mana ?? 0)
     }
     
     @objc
     func skillAt(indexPath: IndexPath) -> SkillProtocol? {
-        return item(at: indexPath)
+        return item(at: indexPath) as? SkillProtocol
+    }
+    
+    @objc
+    func itemAt(indexPath: IndexPath) -> SpecialItemProtocol? {
+        return item(at: indexPath) as? SpecialItemProtocol
+    }
+    
+    @objc
+    func canUse(item: SpecialItemProtocol?) -> Bool {
+        return (ownedItems[item?.key ?? ""] ?? 0) > 0
+    }
+    
+    @objc
+    func useItem(item: SpecialItemProtocol, targetId: String?) {
+        if let targetId = targetId {
+            userRepository.useTransformationItem(item: item, targetId: targetId).observeCompleted {}
+        }
     }
 }

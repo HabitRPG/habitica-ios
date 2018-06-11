@@ -48,6 +48,10 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
             return localRepository.getFood(keys: keys)
     }
     
+    func getSpecialItems(keys: [String]) ->SignalProducer<ReactiveResults<[SpecialItemProtocol]>, ReactiveSwiftRealmError> {
+        return localRepository.getSpecialItems(keys: keys)
+    }
+    
     func getQuest(key: String) ->SignalProducer<QuestProtocol?, ReactiveSwiftRealmError> {
         return localRepository.getQuest(key: key)
     }

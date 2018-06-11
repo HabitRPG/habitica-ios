@@ -46,38 +46,42 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     id skill = [self.dataSource skillAtIndexPath:indexPath];
-    NSString *target = [skill valueForKey:@"target"];
-    if ([self.dataSource canUseWithSkill:skill] && [self.dataSource hasManaForSkill:skill]) {
-        if ([target isEqualToString:@"task"]) {
-            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            UINavigationController *navigationController = [storyboard
-                instantiateViewControllerWithIdentifier:@"spellTaskNavigationController"];
-
-            [self presentViewController:navigationController
-                               animated:YES
-                             completion:^() {
-                                 HRPGSpellTabBarController *tabBarController =
+    if (skill != nil) {
+        if ([self.dataSource canUseWithSkill:skill] && [self.dataSource hasManaForSkill:skill]) {
+            NSString *target = [skill valueForKey:@"target"];
+            if ([target isEqualToString:@"task"]) {
+                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                UINavigationController *navigationController = [storyboard
+                                                                instantiateViewControllerWithIdentifier:@"spellTaskNavigationController"];
+                
+                [self presentViewController:navigationController
+                                   animated:YES
+                                 completion:^() {
+                                     HRPGSpellTabBarController *tabBarController =
                                      (HRPGSpellTabBarController *)
-                                         navigationController.topViewController;
-                                 tabBarController.skill = skill;
-                                 tabBarController.sourceTableView = self.tableView;
-                             }];
-        } else if ([target isEqualToString:@"user"]) {
-            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            UINavigationController *navigationController = [storyboard
-                                                            instantiateViewControllerWithIdentifier:@"SpellUserNavigationController"];
-            [self presentViewController:navigationController
-                               animated:YES
-                             completion:^() {
-                                 SkillsUserTableViewController *viewController =
-                                 (SkillsUserTableViewController *)
-                                 navigationController.topViewController;
-                                 viewController.skill = skill;
-                             }];
-
-        } else {
-            [self.dataSource useSkillWithSkill:skill targetId:nil];
+                                     navigationController.topViewController;
+                                     tabBarController.skill = skill;
+                                     tabBarController.sourceTableView = self.tableView;
+                                 }];
+            } else {
+                [self.dataSource useSkillWithSkill:skill targetId:nil];
+            }
         }
+        return;
+    }
+    id item = [self.dataSource itemAtIndexPath:indexPath];
+    if (item != nil) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        UINavigationController *navigationController = [storyboard
+                                                        instantiateViewControllerWithIdentifier:@"SpellUserNavigationController"];
+        [self presentViewController:navigationController
+                           animated:YES
+                         completion:^() {
+                             SkillsUserTableViewController *viewController =
+                             (SkillsUserTableViewController *)
+                             navigationController.topViewController;
+                             viewController.skill = item;
+                         }];
     }
 }
 
@@ -91,7 +95,7 @@
 - (IBAction)unwindToListSave:(UIStoryboardSegue *)segue {
     if ([segue.identifier isEqualToString:@"CastUserSpellSegue"]) {
         SkillsUserTableViewController *userViewController = (SkillsUserTableViewController *) segue.sourceViewController;
-        [self.dataSource useSkillWithSkill:userViewController.skill targetId:userViewController.selectedUserID];
+        [self.dataSource useItemWithItem:userViewController.skill targetId:userViewController.selectedUserID];
     } else if ([segue.identifier isEqualToString:@"CastTaskSpellSegue"]) {
         HRPGSpellTabBarController *tabbarController = (HRPGSpellTabBarController *) segue.sourceViewController;
         [self.dataSource useSkillWithSkill:tabbarController.skill targetId:tabbarController.taskID];

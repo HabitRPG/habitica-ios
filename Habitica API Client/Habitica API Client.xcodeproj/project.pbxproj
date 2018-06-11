@@ -184,6 +184,7 @@
 		29B58703204D92CF00301955 /* Habitica_API_Client.h in Headers */ = {isa = PBXBuildFile; fileRef = 29B586F5204D92CF00301955 /* Habitica_API_Client.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		29DBFEFD20CADBC900DF9CF2 /* APISpecialItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFEFC20CADBC900DF9CF2 /* APISpecialItem.swift */; };
 		29DBFEFF20CE6D7F00DF9CF2 /* Decoding-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFEFE20CE6D7F00DF9CF2 /* Decoding-Extensions.swift */; };
+		29DBFF0320CE91A500DF9CF2 /* UseTransformationItemCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFF0220CE91A500DF9CF2 /* UseTransformationItemCall.swift */; };
 		9A268BF127E13DFBBE1D6DAF /* Pods_Habitica_API_ClientTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B265032E3FD15918939BFD0F /* Pods_Habitica_API_ClientTests.framework */; };
 		AE4ADE8B2AF941F3FCBB5DD9 /* Pods_Habitica_API_Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D41C03127A377E7796EFB1E8 /* Pods_Habitica_API_Client.framework */; };
 		DC2C4A0476068E29973DB0CD /* RetrieveGroupMembersCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2C420658EE5D517E37D97D /* RetrieveGroupMembersCall.swift */; };
@@ -381,6 +382,7 @@
 		29B58702204D92CF00301955 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		29DBFEFC20CADBC900DF9CF2 /* APISpecialItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISpecialItem.swift; sourceTree = "<group>"; };
 		29DBFEFE20CE6D7F00DF9CF2 /* Decoding-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decoding-Extensions.swift"; sourceTree = "<group>"; };
+		29DBFF0220CE91A500DF9CF2 /* UseTransformationItemCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseTransformationItemCall.swift; sourceTree = "<group>"; };
 		589C92345817498D7AFD83FC /* Pods-Habitica API ClientTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica API ClientTests.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Habitica API ClientTests/Pods-Habitica API ClientTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9202171462D0CA0F8120FBAE /* Pods-Habitica API ClientTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica API ClientTests.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Habitica API ClientTests/Pods-Habitica API ClientTests.release.xcconfig"; sourceTree = "<group>"; };
 		B265032E3FD15918939BFD0F /* Pods_Habitica_API_ClientTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica_API_ClientTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -617,33 +619,34 @@
 		29323E1320504F1A00AC6D6F /* User */ = {
 			isa = PBXGroup;
 			children = (
-				29323E182050528C00AC6D6F /* RetrieveUserCall.swift */,
 				2902797E20581CF0006DACB9 /* AllocateAttributePointCall.swift */,
 				2902798020581DE3006DACB9 /* BulkAllocateAttributePointsCall.swift */,
-				290C302D206BD2020066AF5B /* UseSkillCall.swift */,
-				290C3033206D24A40066AF5B /* RunCronCall.swift */,
-				292F966B206E6D8A00804151 /* UpdateUserCall.swift */,
-				29B478BA20C0360E00B6123F /* UpdateDayStartTimeCall.swift */,
-				290B626C207BA6AB007287C4 /* ResetAccountCall.swift */,
 				290B626E207BA6FB007287C4 /* DeleteAccountCall.swift */,
-				290B6270207BA765007287C4 /* UpdateEmailCall.swift */,
-				290B6272207BA7D9007287C4 /* UpdateUsernameCall.swift */,
-				290B6274207BA805007287C4 /* UpdatePasswordCall.swift */,
-				290B6276207BA86F007287C4 /* SendPasswordResetEmailCall.swift */,
+				2919FDD62090D2510096A53B /* DeleteInboxMessageCall.swift */,
+				295D42F920936CE400948E7E /* DisableClassesCall.swift */,
 				290B6278207BA8C3007287C4 /* LocalLoginCall.swift */,
 				290B627A207BA9A1007287C4 /* LocalRegisterCall.swift */,
-				290B627C207BA9D4007287C4 /* SocialLoginCall.swift */,
-				290B627E207BAA23007287C4 /* SleepCall.swift */,
-				294973CB2080FA9400F02AC3 /* ReviveCall.swift */,
-				2919FDD62090D2510096A53B /* DeleteInboxMessageCall.swift */,
-				2919FDD82090DF1B0096A53B /* PostInboxMessageCall.swift */,
 				2919FDDA2091D3D70096A53B /* MarkInboxAsSeenCall.swift */,
-				2919FDE02091DFFE0096A53B /* ReviveUserCall.swift */,
-				295D42F920936CE400948E7E /* DisableClassesCall.swift */,
-				295D42FB20936D4300948E7E /* SelectClassCall.swift */,
-				296AC81920ADD99900885682 /* RetrieveInAppRewardsCall.swift */,
-				295E9DDD20B3065100D58D45 /* SubscribeCall.swift */,
+				2919FDD82090DF1B0096A53B /* PostInboxMessageCall.swift */,
 				295E9DDB20B3060200D58D45 /* PurchaseGemsCall.swift */,
+				290B626C207BA6AB007287C4 /* ResetAccountCall.swift */,
+				296AC81920ADD99900885682 /* RetrieveInAppRewardsCall.swift */,
+				29323E182050528C00AC6D6F /* RetrieveUserCall.swift */,
+				294973CB2080FA9400F02AC3 /* ReviveCall.swift */,
+				2919FDE02091DFFE0096A53B /* ReviveUserCall.swift */,
+				290C3033206D24A40066AF5B /* RunCronCall.swift */,
+				295D42FB20936D4300948E7E /* SelectClassCall.swift */,
+				290B6276207BA86F007287C4 /* SendPasswordResetEmailCall.swift */,
+				290B627E207BAA23007287C4 /* SleepCall.swift */,
+				290B627C207BA9D4007287C4 /* SocialLoginCall.swift */,
+				295E9DDD20B3065100D58D45 /* SubscribeCall.swift */,
+				29B478BA20C0360E00B6123F /* UpdateDayStartTimeCall.swift */,
+				290B6270207BA765007287C4 /* UpdateEmailCall.swift */,
+				290B6274207BA805007287C4 /* UpdatePasswordCall.swift */,
+				292F966B206E6D8A00804151 /* UpdateUserCall.swift */,
+				290B6272207BA7D9007287C4 /* UpdateUsernameCall.swift */,
+				290C302D206BD2020066AF5B /* UseSkillCall.swift */,
+				29DBFF0220CE91A500DF9CF2 /* UseTransformationItemCall.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -1044,6 +1047,7 @@
 				290B6295207E3E6C007287C4 /* LeaveGroupCall.swift in Sources */,
 				290B626F207BA6FB007287C4 /* DeleteAccountCall.swift in Sources */,
 				295E9DE020B31B8600D58D45 /* CreateTagCall.swift in Sources */,
+				29DBFF0320CE91A500DF9CF2 /* UseTransformationItemCall.swift in Sources */,
 				295E9DD620B2ECB900D58D45 /* RetrieveShopInventoryCall.swift in Sources */,
 				291DE97A209B443D0073182A /* APIQuestParticipant.swift in Sources */,
 				290C3046206D44670066AF5B /* RetrieveGroupCall.swift in Sources */,

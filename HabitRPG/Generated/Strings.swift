@@ -426,6 +426,10 @@ internal enum L10n {
     internal static func useSkill(_ p1: String) -> String {
       return L10n.tr("Mainstrings", "skills.use_skill", p1)
     }
+    /// You used %@
+    internal static func usedTransformationItem(_ p1: String) -> String {
+      return L10n.tr("Mainstrings", "skills.used_transformation_item", p1)
+    }
   }
 
   internal enum Stable {

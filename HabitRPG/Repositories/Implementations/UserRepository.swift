@@ -90,6 +90,16 @@ class UserRepository: BaseRepository<UserLocalRepository> {
             })
     }
     
+    func useTransformationItem(item: SpecialItemProtocol, targetId: String) -> Signal<EmptyResponseProtocol?, NoError> {
+        let call = UseTransformationItemCall(item: item, target: targetId)
+        call.fire()
+        return call.objectSignal.on(value: {[weak self] _ in
+            self?.localRepository.usedTransformationItem(userID: self?.currentUserId ?? "", key: item.key ?? "")
+            let toastView = ToastView(title: L10n.Skills.usedTransformationItem(item.text ?? ""), background: .gray)
+            ToastManager.show(toast: toastView)
+        })
+    }
+    
     func runCron(tasks: [TaskProtocol]) -> Signal<UserProtocol?, NoError> {
         getUser().take(first: 1).on(value: {[weak self]user in
             self?.localRepository.updateCall {

@@ -160,6 +160,16 @@ public class UserLocalRepository: BaseLocalRepository {
         })
     }
     
+    public func usedTransformationItem(userID: String, key: String) {
+        guard let realm = getRealm() else {
+            return
+        }
+        let ownedItem = realm.object(ofType: RealmOwnedItem.self, forPrimaryKey: "\(userID)\(key)special")
+        try? realm.write {
+            ownedItem?.numberOwned -= 1
+        }
+    }
+    
     private func outfitFor(class habiticaClass: HabiticaClass) -> OutfitProtocol {
         let outfit = RealmOutfit()
         switch habiticaClass {
