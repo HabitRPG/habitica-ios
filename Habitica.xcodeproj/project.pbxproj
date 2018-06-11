@@ -207,6 +207,7 @@
 		29C1B6B420599E6D0001D3EF /* TaskFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C1B6B320599E6D0001D3EF /* TaskFormViewController.swift */; };
 		29DBFEF720C997D100DF9CF2 /* CalculateUserStatsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFEF620C997D100DF9CF2 /* CalculateUserStatsInteractor.swift */; };
 		29DBFF0120CE6FFF00DF9CF2 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFF0020CE6FFF00DF9CF2 /* SoundManager.swift */; };
+		29DBFF0520CEB42F00DF9CF2 /* AvatarGearDetailViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFF0420CEB42F00DF9CF2 /* AvatarGearDetailViewDataSource.swift */; };
 		29DC5AC020A1B81C00993400 /* CALayer-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DC5ABF20A1B81C00993400 /* CALayer-Extensions.swift */; };
 		29DC5AC220A1C63000993400 /* SeparatedStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DC5AC120A1C63000993400 /* SeparatedStackView.swift */; };
 		29DC5AC320A1D85300993400 /* Mainstrings.strings in Resources */ = {isa = PBXBuildFile; fileRef = 29DC5AC520A1D85300993400 /* Mainstrings.strings */; };
@@ -707,6 +708,7 @@
 		29C1B6B320599E6D0001D3EF /* TaskFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFormViewController.swift; sourceTree = "<group>"; };
 		29DBFEF620C997D100DF9CF2 /* CalculateUserStatsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateUserStatsInteractor.swift; sourceTree = "<group>"; };
 		29DBFF0020CE6FFF00DF9CF2 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
+		29DBFF0420CEB42F00DF9CF2 /* AvatarGearDetailViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarGearDetailViewDataSource.swift; sourceTree = "<group>"; };
 		29DC5ABF20A1B81C00993400 /* CALayer-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer-Extensions.swift"; sourceTree = "<group>"; };
 		29DC5AC120A1C63000993400 /* SeparatedStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatedStackView.swift; sourceTree = "<group>"; };
 		29DC5AC420A1D85300993400 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Mainstrings.strings; sourceTree = "<group>"; };
@@ -1569,6 +1571,7 @@
 				494E540A1F2D894D0003683C /* ShopCollectionViewDataSource.swift */,
 				2907267D1F74279C00545550 /* TimeTravelersCollectionViewDataSource.swift */,
 				29144897208A271C00F3A6B5 /* AvatarDetailViewDataSource.swift */,
+				29DBFF0420CEB42F00DF9CF2 /* AvatarGearDetailViewDataSource.swift */,
 				2914485E2084E9F300F3A6B5 /* Stable */,
 				296AC81320AC85C200885682 /* RewardViewDataSource.swift */,
 			);
@@ -3272,6 +3275,7 @@
 				29B3FEBC1F9E3B17000B12CF /* HabiticaAlertController.swift in Sources */,
 				4924314E202CD19A00288278 /* ChallengeRewardTableViewCell.swift in Sources */,
 				D9709A541E8051DC0005F35B /* TaskRepeatablesSummaryInteractor.swift in Sources */,
+				29DBFF0520CEB42F00DF9CF2 /* AvatarGearDetailViewDataSource.swift in Sources */,
 				2974BDB42090926B00EC1A25 /* MainTabBarController.swift in Sources */,
 				29323E352052008800AC6D6F /* UserTopHeader.swift in Sources */,
 				293BB4A51FD078EC003B6F4F /* StatsSliderView.swift in Sources */,

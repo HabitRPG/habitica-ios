@@ -16,6 +16,7 @@ class APIGear: GearProtocol, Codable {
     var value: Float = 0
     var type: String?
     var set: String?
+    var gearSet: String?
     var habitClass: String?
     var specialClass: String?
     var index: String?
@@ -32,6 +33,7 @@ class APIGear: GearProtocol, Codable {
         case value
         case type
         case set
+        case gearSet
         case habitClass = "klass"
         case specialClass
         case index
@@ -50,6 +52,7 @@ class APIGear: GearProtocol, Codable {
         value = (try? values.decode(Float.self, forKey: .value)) ?? 0
         type = try? values.decode(String.self, forKey: .type)
         set = try? values.decode(String.self, forKey: .set)
+        gearSet = try? values.decode(String.self, forKey: .gearSet)
         habitClass = try? values.decode(String.self, forKey: .habitClass)
         specialClass = try? values.decode(String.self, forKey: .specialClass)
         index = try? values.decode(String.self, forKey: .index)

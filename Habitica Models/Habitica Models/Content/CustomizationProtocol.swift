@@ -30,6 +30,8 @@ public extension CustomizationProtocol {
             return "skin_\(key)"
         case "background":
             return "background_\(key)"
+        case "chair":
+            return "chair_\(key)"
         case "hair":
             let hairColor = preferences?.hair?.color ?? ""
             switch group {

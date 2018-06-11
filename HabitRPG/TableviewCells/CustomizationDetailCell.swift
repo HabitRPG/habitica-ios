@@ -39,4 +39,8 @@ class CustomizationDetailCell: UICollectionViewCell {
         }
         currencyView.amount = Int(customization.price)
     }
+    
+    func configure(gear: GearProtocol) {
+        imageView.setImagewith(name: "shop_\(gear.key ?? "")")
+    }
 }

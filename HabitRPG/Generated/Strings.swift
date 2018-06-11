@@ -9,6 +9,8 @@ import Foundation
 internal enum L10n {
   /// Active
   internal static let active = L10n.tr("Mainstrings", "active")
+  /// Animal Ears
+  internal static let animalEars = L10n.tr("Mainstrings", "animal_ears")
   /// Cancel
   internal static let cancel = L10n.tr("Mainstrings", "cancel")
   /// Chat
@@ -43,12 +45,16 @@ internal enum L10n {
   internal static let experience = L10n.tr("Mainstrings", "experience")
   /// Food
   internal static let food = L10n.tr("Mainstrings", "food")
+  /// Glasses
+  internal static let glasses = L10n.tr("Mainstrings", "glasses")
   /// Hatch egg
   internal static let hatchEgg = L10n.tr("Mainstrings", "hatch_egg")
   /// Hatch with potion
   internal static let hatchPotion = L10n.tr("Mainstrings", "hatch_potion")
   /// Hatching Potions
   internal static let hatchingPotions = L10n.tr("Mainstrings", "hatching_potions")
+  /// Headband
+  internal static let headband = L10n.tr("Mainstrings", "headband")
   /// Health
   internal static let health = L10n.tr("Mainstrings", "health")
   /// Inactive

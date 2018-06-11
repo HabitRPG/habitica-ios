@@ -17,6 +17,7 @@ class RealmGear: Object, GearProtocol {
     @objc dynamic var value: Float = 0
     @objc dynamic var type: String?
     @objc dynamic var set: String?
+    @objc dynamic var gearSet: String?
     @objc dynamic var habitClass: String?
     @objc dynamic var specialClass: String?
     @objc dynamic var index: String?
@@ -38,6 +39,7 @@ class RealmGear: Object, GearProtocol {
         value = gear.value
         type = gear.type
         set = gear.set
+        gearSet = gear.gearSet
         habitClass = gear.habitClass
         specialClass = gear.specialClass
         index = gear.index

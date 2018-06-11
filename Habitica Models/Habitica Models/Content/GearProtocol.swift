@@ -16,6 +16,7 @@ public protocol GearProtocol {
     var value: Float { get set }
     var type: String? { get set }
     var set: String? { get set }
+    var gearSet: String? { get set }
     var habitClass: String? { get set }
     var specialClass: String? { get set }
     var index: String? { get set }
