@@ -1652,7 +1652,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Sur-1o-ymQ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="OFX-9b-U2U">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -2285,7 +2285,7 @@
                                                                 </connections>
                                                             </button>
                                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IU2-e4-Giw">
-                                                                <rect key="frame" x="0.0" y="-174" width="375" height="61"/>
+                                                                <rect key="frame" x="0.0" y="-184.5" width="375" height="61"/>
                                                                 <subviews>
                                                                     <view clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EHI-LL-yeb" customClass="AvatarView" customModule="Habitica" customModuleProvider="target">
                                                                         <rect key="frame" x="16" y="10.5" width="40" height="40"/>
@@ -2319,7 +2319,7 @@
                                                                 </constraints>
                                                             </view>
                                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jIr-tb-DyF">
-                                                                <rect key="frame" x="0.0" y="-174" width="375" height="77"/>
+                                                                <rect key="frame" x="0.0" y="-172" width="375" height="77"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9iM-dP-lgo" customClass="QuestTitleView" customModule="Habitica" customModuleProvider="target">
                                                                         <rect key="frame" x="67" y="-26" width="240" height="128"/>
@@ -2347,7 +2347,7 @@
                                                                 </constraints>
                                                             </view>
                                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x2u-nW-8ZD">
-                                                                <rect key="frame" x="0.0" y="-174" width="375" height="61"/>
+                                                                <rect key="frame" x="0.0" y="-187" width="375" height="61"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DVS-qZ-ZmV">
                                                                         <rect key="frame" x="0.0" y="13" width="179.5" height="36"/>
@@ -2452,7 +2452,7 @@
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" title="Party Challenges"/>
                                                         <connections>
-                                                            <segue destination="BE2-xn-Wwl" kind="show" id="lgk-R4-zXr"/>
+                                                            <segue destination="BE2-xn-Wwl" kind="show" identifier="ChallengesSegue" id="lgk-R4-zXr"/>
                                                         </connections>
                                                     </button>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rHG-s0-3tJ">
@@ -2605,10 +2605,10 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="71z-UW-WBb"/>
-        <segue reference="xLb-S3-ALp"/>
+        <segue reference="gAH-Zh-PJ3"/>
         <segue reference="lgk-R4-zXr"/>
         <segue reference="9hs-wq-6bn"/>
-        <segue reference="MnH-ar-sz7"/>
+        <segue reference="jXp-j5-lvy"/>
         <segue reference="ypV-Mu-tgU"/>
         <segue reference="Nsp-ag-Sds"/>
         <segue reference="C12-ty-sO4"/>

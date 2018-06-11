@@ -209,6 +209,7 @@ class PartyDetailViewController: GroupDetailViewController {
                 destination.username = selectedMember?.profile?.name
             }
         }
+        super.prepare(for: segue, sender: sender)
     }
     
     @IBAction func startQuestButtonTapped(_ sender: Any) {

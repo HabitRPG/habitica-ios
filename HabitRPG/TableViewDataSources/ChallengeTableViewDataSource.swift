@@ -13,13 +13,17 @@ import ReactiveSwift
 class ChallengeTableViewDataSource: BaseReactiveTableViewDataSource<ChallengeProtocol> {
     @objc var predicate: NSPredicate? {
         didSet {
-            fetchChallenges()
+            DispatchQueue.main.async {[weak self] in
+                self?.fetchChallenges()
+            }
         }
     }
     
     var isShowingJoinedChallenges: Bool = true {
         didSet {
-            updatePredicate()
+            DispatchQueue.main.async {[weak self] in
+                self?.updatePredicate()
+            }
         }
     }
     

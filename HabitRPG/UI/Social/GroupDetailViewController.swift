@@ -65,4 +65,15 @@ class GroupDetailViewController: HRPGUIViewController {
             leaveInteractor?.run(with: groupID)
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == StoryboardSegue.Social.challengesSegue.rawValue {
+            let destination = segue.destination as? ChallengeTableViewController
+            if let groupID = group?.id {
+                destination?.dataSource.shownGuilds = [groupID]
+                destination?.dataSource.isShowingJoinedChallenges = false
+                destination?.segmentedFilterControl.selectedSegmentIndex = 1
+            }
+        }
+    }
 }

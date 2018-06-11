@@ -47,7 +47,6 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate,
         filterButton.addTarget(self, action: #selector(filterTapped(_:)), for: .touchUpInside)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: filterButton)
         
-        self.segmentedFilterControl.selectedSegmentIndex = 0
         self.segmentedFilterControl.addTarget(self, action: #selector(ChallengeTableViewController.switchFilter(_:)), for: .valueChanged)
         segmentedWrapper.addSubview(self.segmentedFilterControl)
         topHeaderCoordinator?.alternativeHeader = segmentedWrapper
@@ -104,8 +103,7 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate,
 
     @objc
     func switchFilter(_ segmentedControl: UISegmentedControl) {
-        self.showOnlyUserChallenges = self.segmentedFilterControl.selectedSegmentIndex == 0
-        self.dataSource.isShowingJoinedChallenges = showOnlyUserChallenges
+        self.dataSource.isShowingJoinedChallenges = segmentedControl.selectedSegmentIndex == 0
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

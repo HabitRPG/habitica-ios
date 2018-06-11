@@ -75,6 +75,7 @@ class GuildDetailViewController: GroupDetailViewController {
             let profileViewController = segue.destination as? UserProfileViewController
             profileViewController?.userID = leaderID
         }
+        super.prepare(for: segue, sender: sender)
     }
     
     private func getGuildLeader(leaderID: String) {
