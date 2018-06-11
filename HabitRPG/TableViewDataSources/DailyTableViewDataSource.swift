@@ -23,7 +23,9 @@ class DailyTableViewDataSource: TaskTableViewDataSource {
         super.configure(cell: cell, indexPath: indexPath, task: task)
         if let dailycell = cell as? DailyTableViewCell {
             dailycell.checkboxTouched = {[weak self] in
-                self?.disposable.inner.add(self?.repository.score(task: task, direction: task.completed ? .down : .up).observeCompleted {})
+                self?.disposable.inner.add(self?.repository.score(task: task, direction: task.completed ? .down : .up).observeCompleted {
+                    SoundManager.shared.play(effect: .dailyCompleted)
+                    })
             }
             dailycell.checklistItemTouched = {[weak self] checklistItem in
                 self?.disposable.inner.add(self?.repository.score(checklistItem: checklistItem, task: task).observeCompleted {})

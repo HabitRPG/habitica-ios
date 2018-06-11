@@ -66,7 +66,9 @@ class RewardViewDataSource: BaseReactiveCollectionViewDataSource<BaseRewardProto
                 rewardCell.configure(reward: reward)
                 rewardCell.canAfford = reward.value < self.user?.stats?.gold ?? 0
                 rewardCell.onBuyButtonTapped = {
-                    self.userRepository.buyCustomReward(reward: reward).observeCompleted {}
+                    self.userRepository.buyCustomReward(reward: reward).observeCompleted {
+                        SoundManager.shared.play(effect: .rewardBought)
+                    }
                 }
             }
             return cell

@@ -114,7 +114,8 @@
 "settings.clear_cache" = "Clear Cache";
 "settings.reload_content" = "Reload Content";
 "settings.preferences" = "Preferences";
-"settings.themeColor" = "Theme Color";
+"settings.theme_color" = "Theme Color";
+"settings.sound_theme" = "Sound Theme";
 "theme.default_theme" = "Default";
 "theme.blue" = "Blue";
 "theme.teal" = "Teal";

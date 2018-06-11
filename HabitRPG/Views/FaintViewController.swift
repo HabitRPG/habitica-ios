@@ -55,6 +55,11 @@ class FaintViewController: UIViewController {
         }).start())
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        SoundManager.shared.play(effect: .death)
+    }
+    
     private func dismiss() {
         UIView.animate(withDuration: 0.8, animations: {
             self.view.alpha = 0

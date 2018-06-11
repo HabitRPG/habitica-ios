@@ -405,8 +405,10 @@ internal enum L10n {
     internal static let reminder = L10n.tr("Mainstrings", "settings.reminder")
     /// Social
     internal static let social = L10n.tr("Mainstrings", "settings.social")
+    /// Sound Theme
+    internal static let soundTheme = L10n.tr("Mainstrings", "settings.sound_theme")
     /// Theme Color
-    internal static let themeColor = L10n.tr("Mainstrings", "settings.themeColor")
+    internal static let themeColor = L10n.tr("Mainstrings", "settings.theme_color")
     /// User
     internal static let user = L10n.tr("Mainstrings", "settings.user")
   }

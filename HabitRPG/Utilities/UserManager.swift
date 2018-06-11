@@ -82,6 +82,8 @@ class UserManager: NSObject {
     }
     
     private func onUserUpdated(user: UserProtocol) {
+        SoundManager.shared.currentTheme = SoundTheme(rawValue: user.preferences?.sound ?? "") ?? SoundTheme.none
+        
         tutorialSteps = [:]
         user.flags?.tutorials.forEach({ (tutorial) in
             if let key = tutorial.key {

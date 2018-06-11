@@ -20,6 +20,7 @@ enum SettingsTags {
     static let disableAllNotifications = "disableAllNotifications"
     static let disablePrivateMessages = "disablePrivateMessages"
     static let themeColor = "themeColor"
+    static let soundTheme = "soundTheme"
 }
 
 enum ThemeName: String {
@@ -249,6 +250,21 @@ class SettingsViewController: FormViewController, Themeable {
                 })
         }
         +++ Section(L10n.Settings.preferences)
+            <<< PushRow<LabeledFormValue<String>>(SettingsTags.soundTheme) { row in
+                row.title = L10n.Settings.soundTheme
+                row.options = SoundTheme.allThemes.map({ (theme) -> LabeledFormValue<String> in
+                    return LabeledFormValue(value: theme.rawValue, label: theme.rawValue)
+                })
+                let defaults = UserDefaults.standard
+                row.onChange({ (row) in
+                    if let newTheme = SoundTheme(rawValue: row.value?.value ?? "") {
+                        SoundManager.shared.currentTheme = newTheme
+                    }
+                    if let value = row.value?.value {
+                        self.userRepository.updateUser(key: "preferences.sound", value: value).observeCompleted {}
+                    }
+                })
+            }
             <<< PushRow<String>(SettingsTags.themeColor) { row in
                 row.title = L10n.Settings.themeColor
                 row.options = ThemeName.allNames.map({ (name) -> String in
@@ -290,5 +306,11 @@ class SettingsViewController: FormViewController, Themeable {
         let disablePMRow = (form.rowBy(tag: SettingsTags.disablePrivateMessages) as? SwitchRow)
         disablePMRow?.value = user.inbox?.optOut
         disablePMRow?.updateCell()
+        
+        if let theme = SoundTheme.allThemes.first(where: { (theme) -> Bool in
+            return theme.rawValue == user.preferences?.sound ?? SoundTheme.none.rawValue
+        }) {
+            (form.rowBy(tag: SettingsTags.soundTheme) as? PushRow<LabeledFormValue<String>>)?.value = LabeledFormValue(value: theme.rawValue, label: theme.rawValue)
+        }
     }
 }

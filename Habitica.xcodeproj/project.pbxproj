@@ -206,6 +206,7 @@
 		29C1B6AE205952E40001D3EF /* Tasks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29C1B6B0205952E40001D3EF /* Tasks.storyboard */; };
 		29C1B6B420599E6D0001D3EF /* TaskFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C1B6B320599E6D0001D3EF /* TaskFormViewController.swift */; };
 		29DBFEF720C997D100DF9CF2 /* CalculateUserStatsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFEF620C997D100DF9CF2 /* CalculateUserStatsInteractor.swift */; };
+		29DBFF0120CE6FFF00DF9CF2 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFF0020CE6FFF00DF9CF2 /* SoundManager.swift */; };
 		29DC5AC020A1B81C00993400 /* CALayer-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DC5ABF20A1B81C00993400 /* CALayer-Extensions.swift */; };
 		29DC5AC220A1C63000993400 /* SeparatedStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DC5AC120A1C63000993400 /* SeparatedStackView.swift */; };
 		29DC5AC320A1D85300993400 /* Mainstrings.strings in Resources */ = {isa = PBXBuildFile; fileRef = 29DC5AC520A1D85300993400 /* Mainstrings.strings */; };
@@ -705,6 +706,7 @@
 		29C1B6AF205952E40001D3EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Tasks.storyboard; sourceTree = "<group>"; };
 		29C1B6B320599E6D0001D3EF /* TaskFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFormViewController.swift; sourceTree = "<group>"; };
 		29DBFEF620C997D100DF9CF2 /* CalculateUserStatsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateUserStatsInteractor.swift; sourceTree = "<group>"; };
+		29DBFF0020CE6FFF00DF9CF2 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		29DC5ABF20A1B81C00993400 /* CALayer-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer-Extensions.swift"; sourceTree = "<group>"; };
 		29DC5AC120A1C63000993400 /* SeparatedStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatedStackView.swift; sourceTree = "<group>"; };
 		29DC5AC420A1D85300993400 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Mainstrings.strings; sourceTree = "<group>"; };
@@ -1945,6 +1947,7 @@
 				29323E1E2050563700AC6D6F /* NetworkErrorHandler.swift */,
 				292F967F20723A4D00804151 /* ImageManager.swift */,
 				2919FDDC2091D5370096A53B /* UserManager.swift */,
+				29DBFF0020CE6FFF00DF9CF2 /* SoundManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -3208,6 +3211,7 @@
 				D92A08481D33EC38000F8B66 /* HRPGShopOverviewViewController.m in Sources */,
 				D92CDADD18CB79E50006C242 /* HRPGTableViewController.m in Sources */,
 				2974BDB62090C03E00EC1A25 /* InboxOverviewDataSource.swift in Sources */,
+				29DBFF0120CE6FFF00DF9CF2 /* SoundManager.swift in Sources */,
 				D9E46AFD1DAB98D700E390D7 /* HRPGGemHeaderNavigationController.m in Sources */,
 				2902796E2057F2C5006DACB9 /* Storyboard.swift in Sources */,
 				D914890D1CD23A900015B42D /* HRPGMaintenanceViewController.m in Sources */,
