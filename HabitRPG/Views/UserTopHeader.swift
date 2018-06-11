@@ -133,6 +133,13 @@ class UserTopHeader: UIView {
             levelLabel.textColor = UIColor.gray10()
         }
         gemView.amount = user.gemCount
+        
+        if let hourglasses = user.purchased?.subscriptionPlan?.consecutive?.hourglasses {
+            hourglassView.isHidden = !(hourglasses > 0 || user.isSubscribed)
+            hourglassView.amount = hourglasses
+        } else {
+            hourglassView.isHidden = true
+        }
     }
  
     @objc
