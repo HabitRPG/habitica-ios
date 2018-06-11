@@ -23,6 +23,12 @@ class GuildsOverviewDataSource: BaseReactiveTableViewDataSource<GroupProtocol> {
         }
     }
     
+    var searchText: String? {
+        didSet {
+            updatePredicate()
+        }
+    }
+    
     private var fetchGuildsDisposable: Disposable?
     private let socialRepository = SocialRepository()
     
@@ -87,10 +93,15 @@ class GuildsOverviewDataSource: BaseReactiveTableViewDataSource<GroupProtocol> {
     }
     
     private func getPredicate() -> NSPredicate {
+        var predicates = [NSPredicate]()
         if isShowingPrivateGuilds {
-            return NSPredicate(format: "type == 'guild' && id IN %@", membershipIDs)
+            predicates.append(NSPredicate(format: "type == 'guild' && id IN %@", membershipIDs))
         } else {
-            return NSPredicate(format: "type == 'guild'")
+            predicates.append(NSPredicate(format: "type == 'guild'"))
         }
+        if let searchText = searchText, searchText.count > 0 {
+            predicates.append(NSPredicate(format: "name CONTAINS[cd] %@ || summary CONTAINS[cd] %@", searchText, searchText))
+        }
+        return NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
     }
 }

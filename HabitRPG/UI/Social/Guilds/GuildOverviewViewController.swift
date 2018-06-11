@@ -10,7 +10,7 @@ import Foundation
 import ReactiveSwift
 import Habitica_Models
 
-class GuildOverviewViewController: HRPGBaseViewController {
+class GuildOverviewViewController: HRPGBaseViewController, UISearchBarDelegate {
     
     let segmentedWrapper = UIView()
     let headerImageView = UIImageView()
@@ -48,6 +48,11 @@ class GuildOverviewViewController: HRPGBaseViewController {
         
         dataSource = GuildsOverviewDataSource()
         dataSource?.tableView = self.tableView
+        
+        let searchbar = UISearchBar(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 44))
+        searchbar.placeholder = L10n.search
+        searchbar.delegate = self
+        self.tableView.tableHeaderView = searchbar
     }
     
     override func viewWillLayoutSubviews() {
@@ -80,6 +85,10 @@ class GuildOverviewViewController: HRPGBaseViewController {
         } else {
             tableView.separatorStyle = .singleLine
         }
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.dataSource?.searchText = searchText
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
