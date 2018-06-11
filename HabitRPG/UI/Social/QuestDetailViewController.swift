@@ -128,6 +128,7 @@ class QuestDetailViewController: HRPGUIViewController {
         } else {
             abortButton.isHidden = true
             cancelButton.isHidden = true
+            forceStartButton.isHidden = true
         }
         
         if let leaderID = group.quest?.leaderID {
