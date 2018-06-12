@@ -29,6 +29,14 @@ class SkillsUserTableViewDataSource: BaseReactiveTableViewDataSource<MemberProto
                 self?.notify(changes: changes)
             }).start()
         )
+        
+        disposable.inner.add(userRepository.getUser().map({ (user) -> String? in
+            return user.party?.id
+        }).skipNil()
+            .flatMap(.latest, {[weak self] (groupID) in
+                return SignalProducer(self?.socialRepository.retrieveGroupMembers(groupID: groupID) ?? Signal.empty)
+            }).start()
+        )
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
