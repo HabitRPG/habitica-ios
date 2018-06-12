@@ -122,7 +122,9 @@ public class UserLocalRepository: BaseLocalRepository {
                     stats.constitution = buyResponse.constitution ?? stats.constitution
                     stats.perception = buyResponse.perception ?? stats.perception
                     if let newBuffs = buyResponse.buffs {
-                        stats.buffs = newBuffs
+                        let realmBuffs = RealmBuff(id: id, buff: newBuffs)
+                        realm?.add(realmBuffs, update: true)
+                        stats.buffs = realmBuffs
                     }
                 }
                 if let outfit = buyResponse.items?.gear?.equipped {
