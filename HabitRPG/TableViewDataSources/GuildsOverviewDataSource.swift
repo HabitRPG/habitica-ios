@@ -57,10 +57,12 @@ class GuildsOverviewDataSource: BaseReactiveTableViewDataSource<GroupProtocol> {
             disposable.dispose()
         }
         if let predicate = self.predicate {
-            fetchGuildsDisposable = socialRepository.getGroups(predicate: predicate).on(value: {[weak self](guilds, changes) in
+            DispatchQueue.main.async {[weak self] in
+            self?.fetchGuildsDisposable = self?.socialRepository.getGroups(predicate: predicate).on(value: {[weak self](guilds, changes) in
                 self?.sections[0].items = guilds
                 self?.notify(changes: changes)
             }).start()
+            }
         }
     }
     

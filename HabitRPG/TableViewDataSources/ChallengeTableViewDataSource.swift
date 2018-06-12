@@ -13,17 +13,13 @@ import ReactiveSwift
 class ChallengeTableViewDataSource: BaseReactiveTableViewDataSource<ChallengeProtocol> {
     @objc var predicate: NSPredicate? {
         didSet {
-            DispatchQueue.main.async {[weak self] in
-                self?.fetchChallenges()
-            }
+            fetchChallenges()
         }
     }
     
     var isShowingJoinedChallenges: Bool = true {
         didSet {
-            DispatchQueue.main.async {[weak self] in
-                self?.updatePredicate()
-            }
+            updatePredicate()
         }
     }
     
@@ -58,10 +54,12 @@ class ChallengeTableViewDataSource: BaseReactiveTableViewDataSource<ChallengePro
         if let disposable = fetchChallengesDisposable, !disposable.isDisposed {
             disposable.dispose()
         }
-        fetchChallengesDisposable = socialRepository.getChallenges(predicate: predicate).on(value: {[weak self](challenges, changes) in
+        DispatchQueue.main.async {[weak self] in
+        self?.fetchChallengesDisposable = self?.socialRepository.getChallenges(predicate: self?.predicate).on(value: {[weak self](challenges, changes) in
             self?.sections[0].items = challenges
             self?.notify(changes: changes)
         }).start()
+        }
     }
     
     override func retrieveData(completed: (() -> Void)?) {

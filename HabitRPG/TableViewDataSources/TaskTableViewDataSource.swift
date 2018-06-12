@@ -94,10 +94,16 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
         if let disposable = fetchTasksDisposable, !disposable.isDisposed {
             disposable.dispose()
         }
-        fetchTasksDisposable = repository.getTasks(predicate: predicate, sortKey: sortKey).on(value: {[weak self] (tasks, changes) in
-            self?.sections[0].items = tasks
-            self?.notify(changes: changes)
-        }).start()
+        
+        DispatchQueue.main.async {[weak self] in
+            if let predicate = self?.predicate, let sortKey = self?.sortKey {
+                self?.fetchTasksDisposable = self?.repository.getTasks(predicate: predicate, sortKey: sortKey).on(value: {[weak self] (tasks, changes) in
+                    self?.sections[0].items = tasks
+                    self?.notify(changes: changes)
+                }).start()
+            }
+        }
+        
     }
 
     @objc

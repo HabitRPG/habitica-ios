@@ -84,7 +84,8 @@ class ItemsViewDataSource: BaseReactiveTableViewDataSource<ItemProtocol> {
         if let disposable = fetchDisposable, !disposable.isDisposed {
             disposable.dispose()
         }
-        fetchDisposable = inventoryRepository.getOwnedItems()
+        DispatchQueue.main.async {[weak self] in
+        self?.fetchDisposable = self?.inventoryRepository.getOwnedItems()
             .on(value: {[weak self]ownedItems in
                 self?.ownedItems.removeAll()
                 ownedItems.value.forEach({ (item) in
@@ -112,6 +113,7 @@ class ItemsViewDataSource: BaseReactiveTableViewDataSource<ItemProtocol> {
                 self?.notify(changes: quests.changes, section: 3)
             })
             .start()
+        }
     }
     
     deinit {

@@ -38,10 +38,12 @@ class FAQTableViewDataSource: BaseReactiveTableViewDataSource<FAQEntryProtocol>,
         if let disposable = fetchDisposable, !disposable.isDisposed {
             disposable.dispose()
         }
-        fetchDisposable = contentRepository.getFAQEntries(search: searchQuery).on(value: {[weak self] (entries, changes) in
+        DispatchQueue.main.async {[weak self] in
+        self?.fetchDisposable = self?.contentRepository.getFAQEntries(search: self?.searchQuery).on(value: {[weak self] (entries, changes) in
             self?.sections[0].items = entries
             self?.notify(changes: changes)
         }).start()
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
