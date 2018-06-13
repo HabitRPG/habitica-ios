@@ -49,4 +49,10 @@ class ImageManager: NSObject {
             completion(image, error)
         }
     }
+    
+    @objc
+    static func clearImageCache() {
+        ImageCache.default.clearDiskCache()
+        ImageCache.default.clearMemoryCache()
+    }
 }

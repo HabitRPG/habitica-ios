@@ -49,5 +49,6 @@ class ContentRepository: BaseRepository<ContentLocalRepository> {
     
     func clearDatabase() {
         localRepository.clearDatabase()
+        ImageManager.clearImageCache()
     }
 }
