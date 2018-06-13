@@ -144,6 +144,7 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
         call.fire()
         return call.objectSignal.on(value: {[weak self]chatMessage in
             if let chatMessage = chatMessage {
+                chatMessage.timestamp = Date()
                 self?.localRepository.save(groupID: groupID, chatMessage: chatMessage)
             }
         })

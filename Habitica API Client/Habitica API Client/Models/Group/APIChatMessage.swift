@@ -34,9 +34,14 @@ public class APIChatMessage: ChatMessageProtocol, Codable {
         case likes
         case flags
     }
+   
+    enum ContainerCodingKeys: String, CodingKey {
+        case message
+    }
     
     public required init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
+        let messageContainer = try decoder.container(keyedBy: ContainerCodingKeys.self)
+        let values = try messageContainer.contains(.message) ? messageContainer.nestedContainer(keyedBy: CodingKeys.self, forKey: .message) : decoder.container(keyedBy: CodingKeys.self)
         id = try? values.decode(String.self, forKey: .id)
         userID = try? values.decode(String.self, forKey: .userID)
         text = try? values.decode(String.self, forKey: .text)
