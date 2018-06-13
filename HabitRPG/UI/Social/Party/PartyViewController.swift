@@ -24,4 +24,8 @@ class PartyViewController: SplitSocialViewController {
             .start())
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        userRepository.retrieveUser(withTasks: false).observeCompleted {}
+    }
 }

@@ -69,6 +69,16 @@ class MainMenuViewController: HRPGBaseViewController, Themeable {
             menuSections[0].items[0].isHidden = user?.canUseSkills == false
             menuSections[0].items[1].isHidden = user?.needsToChooseClass == true
             menuSections[3].items[0].showIndicator = user?.flags?.hasNewStuff == true
+            
+            if let partyID = user?.party?.id {
+                let hasPartActivity = user?.hasNewMessages.first(where: { (newMessages) -> Bool in
+                    return newMessages.id == partyID
+                })
+                menuSections[1].items[1].showIndicator = hasPartActivity?.hasNewMessages ?? false
+            } else {
+                menuSections[1].items[1].showIndicator = false
+            }
+            
             tableView.reloadData()
         }
     }

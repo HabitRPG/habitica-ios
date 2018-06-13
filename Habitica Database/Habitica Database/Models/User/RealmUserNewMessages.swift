@@ -12,7 +12,7 @@ import RealmSwift
 
 class RealmUserNewMessages: Object, UserNewMessagesProtocol {
     @objc dynamic var combinedID: String?
-    var userID: String?
+    @objc dynamic var userID: String?
     var id: String?
     var name: String?
     var hasNewMessages: Bool = false

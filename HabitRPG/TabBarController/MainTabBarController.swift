@@ -73,6 +73,14 @@ class MainTabBarController: UITabBarController {
             if user.flags?.hasNewStuff == true {
                 badgeCount += 1
             }
+            if let partyID = user.party?.id {
+                if user.hasNewMessages.first(where: { (newMessages) -> Bool in
+                    return newMessages.id == partyID
+                })?.hasNewMessages == true {
+                    badgeCount += 1
+                }
+                
+            }
             self?.setBadgeCount(index: 4, count: badgeCount)
             
             if let tutorials = user.flags?.tutorials {
