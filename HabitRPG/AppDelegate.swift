@@ -45,14 +45,13 @@ class HabiticaAppDelegate: NSObject {
         let keys = HabiticaKeys()
         let instabugKey = HabiticaAppDelegate.isRunningLive() ? keys.instabugLive : keys.instabugBeta
         Instabug.start(withToken: instabugKey, invocationEvent: .shake)
-        Instabug.setIntroMessageEnabled(false)
         Instabug.setPromptOptionsEnabledWithBug(true, feedback: true, chat: false)
         Instabug.setNetworkLogRequestObfuscationHandler { (request) -> URLRequest in
             guard let mutableRequest = (request as NSURLRequest).mutableCopy() as? NSMutableURLRequest else {
-                return request
+                return URLRequest(url: request.url ?? URL(fileURLWithPath: ""))
             }
-            mutableRequest.addValue("USERID", forHTTPHeaderField: "x-api-user")
-            mutableRequest.addValue("KEY", forHTTPHeaderField: "x-api-key")
+            mutableRequest.setValue("USERID", forHTTPHeaderField: "x-api-user")
+            mutableRequest.setValue("KEY", forHTTPHeaderField: "x-api-key")
             return mutableRequest as URLRequest
         }
         Instabug.setNetworkLogResponseObfuscationHandler { (data, response, completion) in
@@ -60,6 +59,12 @@ class HabiticaAppDelegate: NSObject {
         }
         Instabug.setReproStepsMode(.enabledWithNoScreenshots)
         Instabug.setCommentFieldRequired(true)
+        
+        if HabiticaAppDelegate.isRunningLive() {
+            Instabug.setWelcomeMessageMode(.disabled)
+        } else {
+            Instabug.setWelcomeMessageMode(.beta)
+        }
     }
     
     @objc
@@ -88,9 +93,9 @@ class HabiticaAppDelegate: NSObject {
         NetworkAuthenticationManager.shared.currentUserId = AuthenticationManager.shared.currentUserId
         NetworkAuthenticationManager.shared.currentUserKey = AuthenticationManager.shared.currentUserKey
         AuthenticatedCall.errorHandler = HabiticaNetworkErrorHandler()
-        //let configuration = URLSessionConfiguration.default
-        //Instabug.enableLogging(for: configuration)
-        //AuthenticatedCall.defaultConfiguration.urlConfiguration = configuration
+        let configuration = URLSessionConfiguration.default
+        Instabug.enableLogging(for: configuration)
+        AuthenticatedCall.defaultConfiguration.urlConfiguration = configuration
     }
     
     @objc

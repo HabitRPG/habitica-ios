@@ -28,6 +28,7 @@ public class APIUser: UserProtocol, Decodable {
     public var authentication: AuthenticationProtocol?
     public var purchased: PurchasedProtocol?
     public var challenges: [ChallengeMembershipProtocol]
+    public var hasNewMessages: [UserNewMessagesProtocol]
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -47,6 +48,7 @@ public class APIUser: UserProtocol, Decodable {
         case purchased
         case party
         case challenges
+        case hasNewMessages = "newMessages"
     }
     
     public required init(from decoder: Decoder) throws {
@@ -74,5 +76,10 @@ public class APIUser: UserProtocol, Decodable {
         challenges = challengeList.map { challengeID in
             return APIChallengeMembership(challengeID: challengeID)
         }
+        
+        hasNewMessages = (try? values.decode([String: APIUserNewMessages].self, forKey: .hasNewMessages).map({ (key, value) in
+            value.id = key
+            return value
+        })) ?? []
     }
 }

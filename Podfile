@@ -64,7 +64,7 @@ target 'Habitica' do
   pod 'Eureka'
 
   pod 'RealmSwift'
-  pod 'FunkyNetwork'
+  pod 'FunkyNetwork', git: 'https://github.com/schrockblock/funky-network.git'
 
   pod 'Kingfisher'
 
@@ -91,7 +91,7 @@ end
 
 target "Habitica API Client" do
   project 'Habitica API Client/Habitica API Client.xcodeproj'
-  pod 'FunkyNetwork'
+  pod 'FunkyNetwork', git: 'https://github.com/schrockblock/funky-network.git'
   reactive_pods
 
   target 'Habitica API ClientTests' do

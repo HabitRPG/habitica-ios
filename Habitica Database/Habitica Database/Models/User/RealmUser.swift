@@ -208,6 +208,26 @@ class RealmUser: Object, UserProtocol {
         }
     }
     var realmChallenges = List<RealmChallengeMembership>()
+    
+    var hasNewMessages: [UserNewMessagesProtocol] {
+        get {
+            return realmNewMessages.map({ (tag) -> UserNewMessagesProtocol in
+                return tag
+            })
+        }
+        set {
+            realmNewMessages.removeAll()
+            newValue.forEach { (newMessages) in
+                if let realmNewMessage = newMessages as? RealmUserNewMessages {
+                    realmNewMessages.append(realmNewMessage)
+                } else {
+                    realmNewMessages.append(RealmUserNewMessages(userID: id, protocolObject: newMessages))
+                }
+            }
+        }
+    }
+    var realmNewMessages = List<RealmUserNewMessages>()
+    
     var needsCron: Bool = false
     var lastCron: Date?
     
@@ -237,5 +257,6 @@ class RealmUser: Object, UserProtocol {
         purchased = user.purchased
         party = user.party
         challenges = user.challenges
+        hasNewMessages = user.hasNewMessages
     }
 }

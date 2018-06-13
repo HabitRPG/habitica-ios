@@ -23,6 +23,7 @@ public class AuthenticatedCall: JsonNetworkCall {
     private var debugHandler: DebugOutputHandler?
     fileprivate static let apiKeyHeader = "x-api-key"
     fileprivate static let apiUserIdHeader = "x-api-user"
+    fileprivate static let clientHeader = "x-client"
     
     private override init(configuration: ServerConfigurationProtocol? = nil, httpMethod: String, httpHeaders: Dictionary<String, String>?, endpoint: String, postData: Data?, stubHolder: StubHolderProtocol?) {
         super.init(configuration: configuration ?? AuthenticatedCall.defaultConfiguration, httpMethod: httpMethod, httpHeaders: httpHeaders, endpoint: endpoint, postData: postData, stubHolder: stubHolder)
@@ -42,6 +43,7 @@ public class AuthenticatedCall: JsonNetworkCall {
         if let apiKey = NetworkAuthenticationManager.shared.currentUserKey, let userId = NetworkAuthenticationManager.shared.currentUserId {
             headers[AuthenticatedCall.apiKeyHeader] = apiKey
             headers[AuthenticatedCall.apiUserIdHeader] = userId
+            headers[AuthenticatedCall.clientHeader] = "habitica-ios"
         }
         return headers
     }

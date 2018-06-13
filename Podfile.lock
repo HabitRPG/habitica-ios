@@ -16,16 +16,16 @@ PODS:
   - FBSDKLoginKit (4.33.0):
     - FBSDKCoreKit
   - FLEX (2.4.0)
-  - FunkyNetwork (0.1.5):
+  - FunkyNetwork (0.1.4):
     - OHHTTPStubs/Swift
     - Prelude (~> 3.0)
     - ReactiveSwift
-  - Instabug (7.13):
-    - Instabug/Instabug (= 7.13)
-    - Instabug/InstabugCore (= 7.13)
-  - Instabug/Instabug (7.13):
+  - Instabug (7.14.3):
+    - Instabug/Instabug (= 7.14.3)
+    - Instabug/InstabugCore (= 7.14.3)
+  - Instabug/Instabug (7.14.3):
     - Instabug/InstabugCore
-  - Instabug/InstabugCore (7.13)
+  - Instabug/InstabugCore (7.14.3)
   - iOSSnapshotTestCase (3.0.0):
     - iOSSnapshotTestCase/SwiftSupport (= 3.0.0)
   - iOSSnapshotTestCase/Core (3.0.0)
@@ -79,7 +79,7 @@ PODS:
   - OHHTTPStubs/OHPathHelpers (6.1.0)
   - OHHTTPStubs/Swift (6.1.0):
     - OHHTTPStubs/Default
-  - PinLayout (1.7.3)
+  - PinLayout (1.7.6)
   - PopupDialog (0.7.1):
     - DynamicBlurView (~> 2.0)
   - Prelude (3.0.0)
@@ -88,11 +88,11 @@ PODS:
     - ReactiveSwift (~> 3.1)
   - ReactiveSwift (3.1.0):
     - Result (~> 3.2)
-  - Realm (3.5.0):
-    - Realm/Headers (= 3.5.0)
-  - Realm/Headers (3.5.0)
-  - RealmSwift (3.5.0):
-    - Realm (= 3.5.0)
+  - Realm (3.7.1):
+    - Realm/Headers (= 3.7.1)
+  - Realm/Headers (3.7.1)
+  - RealmSwift (3.7.1):
+    - Realm (= 3.7.1)
   - Result (3.2.4)
   - SeedsSDK (0.5.0)
   - SlackTextViewController (1.9.6)
@@ -111,7 +111,7 @@ DEPENDENCIES:
   - FBSDKCoreKit (~> 4)
   - FBSDKLoginKit (~> 4)
   - FLEX (~> 2.0)
-  - FunkyNetwork
+  - FunkyNetwork (from `https://github.com/schrockblock/funky-network.git`)
   - Instabug
   - iOSSnapshotTestCase
   - KeychainAccess
@@ -136,6 +136,8 @@ DEPENDENCIES:
   - XLForm
 
 EXTERNAL SOURCES:
+  FunkyNetwork:
+    :git: https://github.com/schrockblock/funky-network.git
   Keys:
     :path: Pods/CocoaPodsKeys
   PopupDialog:
@@ -143,6 +145,9 @@ EXTERNAL SOURCES:
     :git: https://github.com/Orderella/PopupDialog.git
 
 CHECKOUT OPTIONS:
+  FunkyNetwork:
+    :commit: 219aaf7dc77fd32e663fb416f2cd567c6950b88a
+    :git: https://github.com/schrockblock/funky-network.git
   PopupDialog:
     :commit: 180a14e3ccb7c7f851369acdab235353c0b774f3
     :git: https://github.com/Orderella/PopupDialog.git
@@ -158,8 +163,8 @@ SPEC CHECKSUMS:
   FBSDKCoreKit: 572b047a7e029bc44542bcf8a59414e7ff2b543e
   FBSDKLoginKit: 88cb456349cfb3b554427ce4f8b43729d85dfb40
   FLEX: bd1a39e55b56bb413b6f1b34b3c10a0dc44ef079
-  FunkyNetwork: 64a440e313433d1d5e1fd0b248d0ca3b022decf3
-  Instabug: 81ccd646e7fd2e3a243c5e61ae6af69c72328373
+  FunkyNetwork: 6eb382dcab7c5947ea7e8d3c72427ee91d87c35f
+  Instabug: d040fe989fe621da0cc021ac267dd9cec0489d3b
   iOSSnapshotTestCase: 23984ffe05289728d646cbb6a7a10b4fb1c93440
   KeychainAccess: 7bd430028059754a3debab3cfc0bd1fc7fb85df3
   Keys: af65e23feef2a047b3277b1ef0399f1209ef9d46
@@ -170,14 +175,14 @@ SPEC CHECKSUMS:
   Nimble: 7f5a9c447a33002645a071bddafbfb24ea70e0ac
   NSString+Emoji: 127da93993ac7c01eadb2edbb039cda89a1369f4
   OHHTTPStubs: 1e21c7d2c084b8153fc53d48400d8919d2d432d0
-  PinLayout: 0c2e68dba036a291ca9278aa8b799f58506f2a6d
+  PinLayout: 359b7ce1714450139463595ef0a9b0046be215c0
   PopupDialog: 39598b7d41719f5c025b4b70e62728bae7734fef
   Prelude: fe4cc0fd961d34edf48fe6b04d05c863449efb0a
   Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
   ReactiveCocoa: 476dae7ca790f40d30d186a1bd7ebae4290395d5
   ReactiveSwift: 5b26d2e988fe0eed2daf48c4054d1de74db50184
-  Realm: 0378021c424e4e2bd6a0e63b27881e929d9b9ad1
-  RealmSwift: 3322562622fda2ad596985ead4d8d8be30cf838c
+  Realm: 906be37d52f17f25484ac01643a7f26a9d3bfbd5
+  RealmSwift: 1c2b6bae3dc55bb87e080ffa96537d71442f6dce
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
   SeedsSDK: 8de27e088c15ff3eba33a6d2941ec507e4a5bb95
   SlackTextViewController: b854e62c1c156336bc4fd409c6ca79b5773e8f9d
@@ -187,6 +192,6 @@ SPEC CHECKSUMS:
   VTAcknowledgementsViewController: d62bb400ca68e240680906bcfa2a2b380d39b30f
   XLForm: 04110197c12187dd28a6c7295d3d8b95f4fdb4de
 
-PODFILE CHECKSUM: 50f9c5005b03654ecf3324cbfe67a8b3e2c31391
+PODFILE CHECKSUM: 045014516ef4a926e6805c2c1be3843507abe0a9
 
 COCOAPODS: 1.4.0
