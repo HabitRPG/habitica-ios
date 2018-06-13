@@ -24,6 +24,7 @@ class APIInAppReward: InAppRewardProtocol, Decodable {
     var notes: String?
     var type: String?
     var value: Float = 0
+    var isSubscriberItem: Bool = false
     
     enum CodingKeys: String, CodingKey {
         case key
@@ -58,5 +59,8 @@ class APIInAppReward: InAppRewardProtocol, Decodable {
         type = try? values.decode(String.self, forKey: .type)
         value = (try? values.decode(Float.self, forKey: .value)) ?? 0
         currency = try? values.decode(String.self, forKey: .currency)
+    }
+    
+    init() {
     }
 }

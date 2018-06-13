@@ -32,5 +32,28 @@ public class APIShop: ShopProtocol, Decodable {
         notes = try? values.decode(String.self, forKey: .notes)
         imageName = try? values.decode(String.self, forKey: .imageName)
         categories = (try? values.decode([APIShopCategory].self, forKey: .categories)) ?? []
+        
+        if identifier == Shops.MarketKey {
+            addGemPurchaseItem()
+        }
+    }
+    
+    private func addGemPurchaseItem() {
+        let category = APIShopCategory()
+        category.identifier = "special"
+        category.text = "Special"
+        let gemItem = APIInAppReward()
+        gemItem.key = "gem"
+        gemItem.text = "Gem"
+        gemItem.notes = "Because you subscribe to Habitica, you can purchase a number of Gems each month using Gold."
+        gemItem.imageName = "gem_shop"
+        gemItem.purchaseType = "gems"
+        gemItem.currency = "gold"
+        gemItem.value = 20
+        gemItem.isSubscriberItem = true
+        gemItem.pinType = "gem"
+        gemItem.path = "special.gems"
+        category.items = [gemItem]
+        categories.append(category)
     }
 }

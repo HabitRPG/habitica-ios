@@ -27,6 +27,7 @@ class RealmInAppReward: Object, InAppRewardProtocol {
     @objc dynamic var notes: String?
     @objc dynamic var type: String?
     @objc dynamic var value: Float = 0
+    @objc dynamic var isSubscriberItem: Bool = false
     
     override static func primaryKey() -> String {
         return "combinedKey"
@@ -50,5 +51,6 @@ class RealmInAppReward: Object, InAppRewardProtocol {
         notes = protocolObject.notes
         type = protocolObject.type
         value = protocolObject.value
+        isSubscriberItem = protocolObject.isSubscriberItem
     }
 }

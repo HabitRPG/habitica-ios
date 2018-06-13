@@ -13,7 +13,7 @@ class APIShopCategory: ShopCategoryProtocol, Decodable {
     var identifier: String?
     var text: String?
     var notes: String?
-    var items: [InAppRewardProtocol]
+    var items: [InAppRewardProtocol] = []
     
     
     enum CodingKeys: String, CodingKey {
@@ -29,5 +29,8 @@ class APIShopCategory: ShopCategoryProtocol, Decodable {
         text = try? values.decode(String.self, forKey: .text)
         notes = try? values.decode(String.self, forKey: .notes)
         items = (try? values.decode([APIInAppReward].self, forKey: .items)) ?? []
+    }
+    
+    init() {
     }
 }

@@ -85,18 +85,29 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
         self.sections.append(ItemSection<InAppRewardProtocol>())
         sections[0].showIfEmpty = true
         
-        disposable.inner.add(inventoryRepository.getShop(identifier: identifier).on(value: {[weak self]shop in
+        disposable.inner.add(inventoryRepository.getShop(identifier: identifier).combineLatest(with: userRepository.getUser()).on(value: {[weak self] (shop, user) in
             let sectionCount = self?.sections.count ?? 0
             if sectionCount >= 2 {
                 self?.sections.removeLast(sectionCount - 1)
             }
             for category in shop?.categories ?? [] {
                 let newSection = ItemSection<InAppRewardProtocol>(title: category.text)
-                newSection.items = category.items
+                newSection.items = category.items.filter({ (inAppReward) -> Bool in
+                    if inAppReward.isSubscriberItem {
+                        return user.isSubscribed
+                    }
+                    return true
+                })
                 self?.sections.append(newSection)
             }
             self?.collectionView?.reloadData()
             self?.delegate?.updateShopHeader(shop: shop)
+            
+            self?.user = user
+            if self?.selectedGearCategory == nil {
+                self?.selectedGearCategory = self?.userClass
+            }
+            self?.delegate?.updateNavBar(gold: Int(user.stats?.gold ?? 0), gems: user.gemCount)
         }).start())
         
         disposable.inner.add(userRepository.getInAppRewards()
@@ -107,14 +118,6 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
             }).on(value: {[weak self]rewards in
                 self?.pinnedItems = rewards
             }).start())
-        
-        disposable.inner.add(userRepository.getUser().on(value: {[weak self]user in
-            self?.user = user
-            if self?.selectedGearCategory == nil {
-                self?.selectedGearCategory = self?.userClass
-            }
-            self?.delegate?.updateNavBar(gold: Int(user.stats?.gold ?? 0), gems: user.gemCount)
-        }).start())
     }
     
     deinit {

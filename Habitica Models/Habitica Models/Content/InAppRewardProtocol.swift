@@ -20,4 +20,5 @@ public protocol InAppRewardProtocol: BaseRewardProtocol {
     var pinType: String? { get set }
     var purchaseType: String? { get set }
     var imageName: String? { get set }
+    var isSubscriberItem: Bool { get set }
 }
