@@ -68,14 +68,27 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
         })
     }
     
-    func retrieveChallenge(challengeID: String) -> Signal<ChallengeProtocol?, NoError> {
+    func retrieveChallenge(challengeID: String, withTasks: Bool = true) -> Signal<ChallengeProtocol?, NoError> {
         let call = RetrieveChallengeCall(challengeID: challengeID)
         call.fire()
-        return call.objectSignal.on(value: {[weak self]challenge in
+        let signal = call.objectSignal.on(value: {[weak self]challenge in
             if let challenge = challenge {
                 self?.localRepository.save(challenge)
             }
         })
+        if withTasks {
+            let taskCall = RetrieveChallengeTasksCall(challengeID: challengeID)
+            taskCall.fire()
+            return signal.combineLatest(with: taskCall.arraySignal).on(value: {[weak self] (challenge, tasks) in
+                if let tasks = tasks, let order = challenge?.tasksOrder {
+                    self?.localRepository.save(challengeID: challengeID, tasks: tasks, order: order)
+                }
+            }).map({ (user, _) in
+                return user
+            })
+        } else {
+            return signal
+        }
     }
 
     func retrieveGroupMembers(groupID: String) -> Signal<[MemberProtocol]?, NoError> {
@@ -180,6 +193,10 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
                     return SignalProducer(value: challenge)
                 }
             })
+    }
+    
+    public func getChallengeTasks(challengeID: String) -> SignalProducer<ReactiveResults<[TaskProtocol]>, ReactiveSwiftRealmError> {
+        return localRepository.getChallengeTasks(challengeID: challengeID)
     }
 
     func getGroupMembers(groupID: String) -> SignalProducer<ReactiveResults<[MemberProtocol]>, ReactiveSwiftRealmError> {

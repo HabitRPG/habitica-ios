@@ -100,8 +100,6 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
         
         setupInfo()
         
-        setupTasks()
-        
         reloadChallenge(challenge: challenge)
         
         challengeProperty.signal.observeValues {[weak self] newChallenge in
@@ -117,18 +115,6 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
         
         joinLeaveStyleProvider.challengeUpdatedProperty.signal.observeValues {[weak self] _ in
             self?.reloadChallenge(challenge: self?.challengeProperty.value)
-        }
-        
-        disposable.inner.add(socialRepository.getChallenge(challengeID: challenge.id ?? "")
-            .skipNil()
-            .on(value: {[weak self] challenge in
-            self?.setChallenge(challenge)
-        }).start())
-        
-        if let challengeID = challenge.id {
-            disposable.inner.add(socialRepository.getChallengeMembership(challengeID: challengeID).on(value: {[weak self]membership in
-                self?.setChallengeMembership(membership)
-            }).start())
         }
     }
     
@@ -151,35 +137,43 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
     }
     
     func setupTasks() {
-        challengeProperty.signal.observeValues { (challenge) in
+        disposable.inner.add(socialRepository.getChallengeTasks(challengeID: challengeProperty.value.id ?? "").on(value: {[weak self] (tasks, _) in
             let habitsSection = MultiModelDataSourceSection()
             habitsSection.title = "Habits"
-            habitsSection.items = challenge.habits.map({ (task) -> MultiModelDataSourceItem in
+            habitsSection.items = tasks.filter({ (task) -> Bool in
+                return task.type == TaskType.habit.rawValue
+            }).map({ (task) -> MultiModelDataSourceItem in
                 return ChallengeTaskMultiModelDataSourceItem<HabitTableViewCell>(task, identifier: "habit")
             })
-            self.habitsSectionProperty.value = habitsSection
+            self?.habitsSectionProperty.value = habitsSection
             
             let dailiesSection = MultiModelDataSourceSection()
             dailiesSection.title = "Dailies"
-            dailiesSection.items = challenge.dailies.map({ (task) -> MultiModelDataSourceItem in
+            dailiesSection.items = tasks.filter({ (task) -> Bool in
+                return task.type == TaskType.daily.rawValue
+            }).map({ (task) -> MultiModelDataSourceItem in
                 return ChallengeTaskMultiModelDataSourceItem<DailyTableViewCell>(task, identifier: "daily")
             })
-            self.dailiesSectionProperty.value = dailiesSection
+            self?.dailiesSectionProperty.value = dailiesSection
             
             let todosSection = MultiModelDataSourceSection()
             todosSection.title = "Todos"
-            todosSection.items = challenge.todos.map({ (task) -> MultiModelDataSourceItem in
+            todosSection.items = tasks.filter({ (task) -> Bool in
+                return task.type == TaskType.todo.rawValue
+            }).map({ (task) -> MultiModelDataSourceItem in
                 return ChallengeTaskMultiModelDataSourceItem<ToDoTableViewCell>(task, identifier: "todo")
             })
-            self.todosSectionProperty.value = todosSection
+            self?.todosSectionProperty.value = todosSection
             
             let rewardsSection = MultiModelDataSourceSection()
             rewardsSection.title = "Rewards"
-            rewardsSection.items = challenge.rewards.map({ (task) -> MultiModelDataSourceItem in
+            rewardsSection.items = tasks.filter({ (task) -> Bool in
+                return task.type == TaskType.reward.rawValue
+            }).map({ (task) -> MultiModelDataSourceItem in
                 return RewardMultiModelDataSourceItem<ChallengeRewardTableViewCell>(task, identifier: "reward")
             })
-            self.rewardsSectionProperty.value = rewardsSection
-        }
+            self?.rewardsSectionProperty.value = rewardsSection
+        }).start())
     }
     
     func setupButtons() {
@@ -247,11 +241,7 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
     
     func reloadChallenge(challenge: ChallengeProtocol?) {
         socialRepository.retrieveChallenge(challengeID: challenge?.id ?? "").observeCompleted {[weak self] in
-            self?.reloadChallengeTasks(challenge: challenge)
         }
-    }
-    
-    func reloadChallengeTasks(challenge: ChallengeProtocol?) {
     }
     
     // MARK: Resizing delegate
@@ -285,6 +275,20 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
     
     func viewDidLoad() {
         viewDidLoadProperty.value = ()
+        
+        disposable.inner.add(socialRepository.getChallenge(challengeID: challengeProperty.value.id ?? "")
+            .skipNil()
+            .on(value: {[weak self] challenge in
+                self?.setChallenge(challenge)
+            }).start())
+        
+        if let challengeID = challengeProperty.value.id {
+            disposable.inner.add(socialRepository.getChallengeMembership(challengeID: challengeID).on(value: {[weak self] membership in
+                self?.setChallengeMembership(membership)
+            }).start())
+        }
+        
+        setupTasks()
     }
     
     func setChallenge(_ challenge: ChallengeProtocol) {

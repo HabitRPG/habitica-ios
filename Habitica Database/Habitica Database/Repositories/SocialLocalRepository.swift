@@ -119,6 +119,17 @@ public class SocialLocalRepository: BaseLocalRepository {
         }
     }
     
+    public func save(challengeID: String?, tasks: [TaskProtocol], order: [String: [String]]) {
+        let tags = getRealm()?.objects(RealmTag.self)
+        save(objects:tasks.map { (task) in
+            task.order = order[(task.type ?? "")+"s"]?.index(of: task.id ?? "") ?? 0
+            if let realmTask = task as? RealmTask {
+                return realmTask
+            }
+            return RealmTask(userID: challengeID, taskProtocol: task, tags: tags)
+        })
+    }
+    
     public func delete(_ message: InboxMessageProtocol) {
         if let realm = getRealm(), let message = realm.object(ofType: RealmInboxMessage.self, forPrimaryKey: message.id) {
             try? realm.write {
@@ -193,6 +204,12 @@ public class SocialLocalRepository: BaseLocalRepository {
     public func getChallenge(challengeID: String) -> SignalProducer<ChallengeProtocol?, ReactiveSwiftRealmError> {
         return RealmChallenge.findBy(query: "id == '\(challengeID)'").reactive().map({ (groups, changes) -> ChallengeProtocol? in
             return groups.first
+        })
+    }
+    
+    public func getChallengeTasks(challengeID: String) -> SignalProducer<ReactiveResults<[TaskProtocol]>, ReactiveSwiftRealmError> {
+        return RealmTask.findBy(query: "userID == '\(challengeID)'").reactive().map({ (value, changeset) -> ReactiveResults<[TaskProtocol]> in
+            return (value.map({ (task) -> TaskProtocol in return task }), changeset)
         })
     }
     

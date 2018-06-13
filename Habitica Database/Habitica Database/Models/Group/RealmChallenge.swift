@@ -11,33 +11,51 @@ import Habitica_Models
 import RealmSwift
 
 class RealmChallenge: Object, ChallengeProtocol {
-    var id: String?
-    var name: String?
-    var notes: String?
-    var summary: String?
-    var official: Bool = false
-    var prize: Int = 0
-    var shortName: String?
-    var updatedAt: Date?
-    var leaderID: String?
-    var leaderName: String?
-    var groupID: String?
-    var groupName: String?
-    var groupPrivacy: String?
-    var memberCount: Int = 0
-    var createdAt: Date?
-    var categories: [ChallengeCategoryProtocol] = []
-    var habits: [TaskProtocol] = []
-    var dailies: [TaskProtocol] = []
-    var todos: [TaskProtocol] = []
-    var rewards: [TaskProtocol] = []
+    dynamic var id: String?
+    dynamic var name: String?
+    dynamic var notes: String?
+    dynamic var summary: String?
+    dynamic var official: Bool = false
+    dynamic var prize: Int = 0
+    dynamic var shortName: String?
+    dynamic var updatedAt: Date?
+    dynamic var leaderID: String?
+    dynamic var leaderName: String?
+    dynamic var groupID: String?
+    dynamic var groupName: String?
+    dynamic var groupPrivacy: String?
+    dynamic var memberCount: Int = 0
+    dynamic var createdAt: Date?
+    dynamic var categories: [ChallengeCategoryProtocol] = []
+    var tasksOrder: [String: [String]] = [:]
+    var habits: [TaskProtocol] {
+        let predicate = NSPredicate(format: "userID == %@ && type == 'habit'", id ?? "")
+        return (try? Realm().objects(RealmTask.self).filter(predicate).map({ (task) -> TaskProtocol in
+            return task
+        })) ?? []
+    }
+    var dailies: [TaskProtocol] {
+        return (try? Realm().objects(RealmTask.self).filter("userID == %@ && type == 'daily'", id ?? "").map({ (task) -> TaskProtocol in
+            return task
+        })) ?? []
+    }
+    var todos: [TaskProtocol] {
+        return (try? Realm().objects(RealmTask.self).filter("userID == %@ && type == 'todo'", id ?? "").map({ (task) -> TaskProtocol in
+            return task
+        })) ?? []
+    }
+    var rewards: [TaskProtocol] {
+        return (try? Realm().objects(RealmTask.self).filter("userID == %@ && type == 'reward'", id ?? "").map({ (task) -> TaskProtocol in
+            return task
+        })) ?? []
+    }
     
     override static func primaryKey() -> String {
         return "id"
     }
     
     override static func ignoredProperties() -> [String] {
-        return ["categories", "habits", "dailies", "todos", "rewards"]
+        return ["categories", "habits", "dailies", "todos", "rewards", "tasksOrder"]
     }
     
     convenience init(_ protocolObject: ChallengeProtocol) {
@@ -57,9 +75,5 @@ class RealmChallenge: Object, ChallengeProtocol {
         memberCount = protocolObject.memberCount
         createdAt = protocolObject.createdAt
         categories = protocolObject.categories
-        habits = protocolObject.habits
-        dailies = protocolObject.dailies
-        todos = protocolObject.todos
-        rewards = protocolObject.rewards
     }
 }

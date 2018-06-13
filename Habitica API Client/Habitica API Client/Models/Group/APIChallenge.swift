@@ -37,6 +37,7 @@ public class APIChallenge: ChallengeProtocol, Decodable {
     public var memberCount: Int = 0
     public var createdAt: Date?
     public var categories: [ChallengeCategoryProtocol]
+    public var tasksOrder: [String: [String]]
     public var habits: [TaskProtocol] = []
     public var dailies: [TaskProtocol] = []
     public var todos: [TaskProtocol] = []
@@ -56,6 +57,7 @@ public class APIChallenge: ChallengeProtocol, Decodable {
         case group
         case memberCount
         case categories
+        case tasksOrder
     }
     
     public required init(from decoder: Decoder) throws {
@@ -80,5 +82,6 @@ public class APIChallenge: ChallengeProtocol, Decodable {
         createdAt = try? values.decode(Date.self, forKey: .createdAt)
         memberCount = (try? values.decode(Int.self, forKey: .memberCount)) ?? 0
         categories = (try? values.decode([APIChallengeCategory].self, forKey: .categories)) ?? []
+        tasksOrder = (try? values.decode([String: [String]].self, forKey: .tasksOrder)) ?? [:]
     }
 }

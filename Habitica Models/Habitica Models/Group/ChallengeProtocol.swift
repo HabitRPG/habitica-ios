@@ -26,9 +26,10 @@ public protocol ChallengeProtocol {
     var memberCount: Int { get set }
     var createdAt: Date? { get set }
     var categories: [ChallengeCategoryProtocol] { get set }
-    var habits: [TaskProtocol] { get set }
-    var dailies: [TaskProtocol] { get set }
-    var todos: [TaskProtocol] { get set }
-    var rewards: [TaskProtocol] { get set }
+    var tasksOrder: [String: [String]] { get set }
+    var habits: [TaskProtocol] { get }
+    var dailies: [TaskProtocol] { get }
+    var todos: [TaskProtocol] { get }
+    var rewards: [TaskProtocol] { get }
 }
 
