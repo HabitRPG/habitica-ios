@@ -90,13 +90,19 @@ class UserTopHeader: UIView {
                     magicLabel.maxValue = NSNumber(value: stats.maxMana)
                 }
                 magicLabel.isActive = true
+                magicLabel.isHidden = false
             } else {
-                magicLabel.isActive = false
-                magicLabel.value = NSNumber(value: 0)
-                if stats.level >= 10 {
-                    magicLabel.labelView.text = NSLocalizedString("Unlocks after selecting a class", comment: "")
+                if user.preferences?.disableClasses == true && user.flags?.classSelected != false {
+                    magicLabel.isHidden = true
                 } else {
-                    magicLabel.labelView.text = NSLocalizedString("Unlocks at level 10", comment: "")
+                    magicLabel.isHidden = false
+                    magicLabel.isActive = false
+                    magicLabel.value = NSNumber(value: 0)
+                    if stats.level >= 10 {
+                        magicLabel.labelView.text = NSLocalizedString("Unlocks after selecting a class", comment: "")
+                    } else {
+                        magicLabel.labelView.text = NSLocalizedString("Unlocks at level 10", comment: "")
+                    }
                 }
             }
             
