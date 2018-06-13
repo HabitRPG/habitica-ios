@@ -8,19 +8,11 @@
 
 import Foundation
 
-public enum TaskType: String, Equatable {
+public enum TaskType: String, EquatableStringEnumProtocol {
     case habit
     case daily
     case todo
     case reward
-    
-    static func == (lhs: String, rhs: TaskType) -> Bool {
-        return lhs == rhs.rawValue
-    }
-    
-    static func == (lhs: String?, rhs: TaskType) -> Bool {
-        return lhs == rhs.rawValue
-    }
 }
 
 public enum TaskScoringDirection: String {

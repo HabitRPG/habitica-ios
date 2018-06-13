@@ -8,6 +8,7 @@
 
 import Foundation
 import AVFoundation
+import Habitica_Models
 
 enum SoundEffect: String {
     case achievementUnlocked = "Achievement_Unlocked"
@@ -37,7 +38,7 @@ enum SoundEffect: String {
     }
 }
 
-enum SoundTheme: String {
+enum SoundTheme: String, EquatableStringEnumProtocol {
     case none
     case airu = "airuTheme"
     case arashi = "arashiTheme"
@@ -110,7 +111,7 @@ class SoundManager {
     }
     
     func play(effect: SoundEffect) {
-        if currentTheme == .none {
+        if currentTheme == SoundTheme.none {
             return
         }
         guard let url = soundsDirectory?.appendingPathComponent("\(currentTheme.rawValue)/\(effect.rawValue).mp3") else {
@@ -142,7 +143,7 @@ class SoundManager {
     }
     
     private func loadAllFiles() {
-        if currentTheme == .none {
+        if currentTheme == SoundTheme.none {
             return
         }
         if let soundThemeDirectory = self.soundsDirectory?.appendingPathComponent("\(currentTheme.rawValue)") {

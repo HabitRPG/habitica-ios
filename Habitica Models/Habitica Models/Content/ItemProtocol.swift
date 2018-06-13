@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum ItemType: String {
+public enum ItemType: String, EquatableStringEnumProtocol {
     case eggs
     case food
     case hatchingPotions
@@ -27,13 +27,13 @@ public protocol ItemProtocol {
 
 public extension ItemProtocol {
     var imageName: String {
-        if itemType == ItemType.eggs.rawValue {
+        if itemType == ItemType.eggs {
             return "Pet_Egg_\(key ?? "")"
-        } else if itemType == ItemType.food.rawValue {
+        } else if itemType == ItemType.food {
             return "Pet_Food_\(key ?? "")"
-        } else if itemType == ItemType.hatchingPotions.rawValue {
+        } else if itemType == ItemType.hatchingPotions {
             return "Pet_HatchingPotion_\(key ?? "")"
-        } else if itemType == ItemType.quests.rawValue {
+        } else if itemType == ItemType.quests {
             return "inventory_quest_scroll_\(key ?? "")"
         }
         return ""

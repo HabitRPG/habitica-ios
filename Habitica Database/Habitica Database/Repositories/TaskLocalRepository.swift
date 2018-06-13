@@ -114,7 +114,7 @@ public class TaskLocalRepository: BaseLocalRepository {
                 if let delta = response.delta {
                     realmTask.value = realmTask.value + delta
                 }
-                if realmTask.type != TaskType.habit.rawValue {
+                if realmTask.type != TaskType.habit {
                     realmTask.completed = direction == .up
                     if direction == .up {
                         realmTask.streak += 1

@@ -308,7 +308,7 @@ class SettingsViewController: FormViewController, Themeable {
         disablePMRow?.updateCell()
         
         if let theme = SoundTheme.allThemes.first(where: { (theme) -> Bool in
-            return theme.rawValue == user.preferences?.sound ?? SoundTheme.none.rawValue
+            return theme == user.preferences?.sound ?? SoundTheme.none.rawValue
         }) {
             (form.rowBy(tag: SettingsTags.soundTheme) as? PushRow<LabeledFormValue<String>>)?.value = LabeledFormValue(value: theme.rawValue, label: theme.rawValue)
         }

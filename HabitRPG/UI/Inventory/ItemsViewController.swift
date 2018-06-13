@@ -59,17 +59,17 @@ class ItemsViewController: HRPGBaseViewController {
     
     private func showActionSheet(item: ItemProtocol) {
         let alertController = UIAlertController(title: item.text, message: nil, preferredStyle: .actionSheet)
-        if item.itemType == ItemType.eggs.rawValue {
+        if item.itemType == ItemType.eggs {
             alertController.addAction(UIAlertAction(title: L10n.hatchEgg, style: .default, handler: {[weak self] (_) in
                 self?.dataSource.hatchingItem = item
                 self?.isHatching = true
             }))
-        } else if item.itemType == ItemType.hatchingPotions.rawValue {
+        } else if item.itemType == ItemType.hatchingPotions {
             alertController.addAction(UIAlertAction(title: L10n.hatchPotion, style: .default, handler: {[weak self] (_) in
                 self?.dataSource.hatchingItem = item
                 self?.isHatching = true
             }))
-        } else if item.itemType == ItemType.quests.rawValue {
+        } else if item.itemType == ItemType.quests {
             alertController.addAction(UIAlertAction(title: L10n.inviteParty, style: .default, handler: {[weak self] (_) in
                 if let quest = item as? QuestProtocol {
                     self?.inventoryRepository.inviteToQuest(quest: quest).observeCompleted {
@@ -78,7 +78,7 @@ class ItemsViewController: HRPGBaseViewController {
                 }
             }))
         }
-        if item.key != "Saddle" && item.itemType != ItemType.quests.rawValue {
+        if item.key != "Saddle" && item.itemType != ItemType.quests {
             alertController.addAction(UIAlertAction(title: L10n.sell(Int(item.value)), style: .destructive, handler: {[weak self] (_) in
                 self?.inventoryRepository.sell(item: item).observeCompleted {
                     self?.dismissIfNeeded()

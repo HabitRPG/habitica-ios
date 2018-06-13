@@ -178,14 +178,14 @@ class UserManager: NSObject {
             return
         }
         var newNotifications = [UILocalNotification?]()
-        if task.type == TaskType.daily.rawValue {
+        if task.type == TaskType.daily {
             for day in 0...6 {
                 let checkedDate = Date(timeIntervalSinceNow: TimeInterval(day * 86400))
                 if task.dueOn(date: checkedDate) {
                     newNotifications.append(scheduleForDay(reminder: reminder, date: checkedDate, atTime: reminder.time, existingNotifications: existingNotifications))
                 }
             }
-        } else if task.type == TaskType.todo.rawValue, let time = reminder.time {
+        } else if task.type == TaskType.todo, let time = reminder.time {
             if time > Date() {
                 newNotifications.append(scheduleForDay(reminder: reminder, date: time))
             }

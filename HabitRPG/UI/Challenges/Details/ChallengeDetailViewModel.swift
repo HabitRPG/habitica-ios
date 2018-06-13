@@ -141,7 +141,7 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
             let habitsSection = MultiModelDataSourceSection()
             habitsSection.title = "Habits"
             habitsSection.items = tasks.filter({ (task) -> Bool in
-                return task.type == TaskType.habit.rawValue
+                return task.type == TaskType.habit
             }).map({ (task) -> MultiModelDataSourceItem in
                 return ChallengeTaskMultiModelDataSourceItem<HabitTableViewCell>(task, identifier: "habit")
             })
@@ -150,7 +150,7 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
             let dailiesSection = MultiModelDataSourceSection()
             dailiesSection.title = "Dailies"
             dailiesSection.items = tasks.filter({ (task) -> Bool in
-                return task.type == TaskType.daily.rawValue
+                return task.type == TaskType.daily
             }).map({ (task) -> MultiModelDataSourceItem in
                 return ChallengeTaskMultiModelDataSourceItem<DailyTableViewCell>(task, identifier: "daily")
             })
@@ -159,7 +159,7 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
             let todosSection = MultiModelDataSourceSection()
             todosSection.title = "Todos"
             todosSection.items = tasks.filter({ (task) -> Bool in
-                return task.type == TaskType.todo.rawValue
+                return task.type == TaskType.todo
             }).map({ (task) -> MultiModelDataSourceItem in
                 return ChallengeTaskMultiModelDataSourceItem<ToDoTableViewCell>(task, identifier: "todo")
             })
@@ -168,7 +168,7 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
             let rewardsSection = MultiModelDataSourceSection()
             rewardsSection.title = "Rewards"
             rewardsSection.items = tasks.filter({ (task) -> Bool in
-                return task.type == TaskType.reward.rawValue
+                return task.type == TaskType.reward
             }).map({ (task) -> MultiModelDataSourceItem in
                 return RewardMultiModelDataSourceItem<ChallengeRewardTableViewCell>(task, identifier: "reward")
             })
