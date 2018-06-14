@@ -62,8 +62,17 @@ class CollapsibleStackView: SeparatedStackView {
         }
     }
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupView()
+    }
+    
     required init(coder: NSCoder) {
         super.init(coder: coder)
+        setupView()
+    }
+    
+    private func setupView() {
         if arrangedSubviews.count > 0, let subView = arrangedSubviews[0] as? CollapsibleTitle {
             titleView = subView
         } else {
