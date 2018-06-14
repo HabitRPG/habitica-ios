@@ -23,9 +23,7 @@ class GuildDetailViewController: GroupDetailViewController {
     @IBOutlet weak var guildLeaderAvatarView: AvatarView!
     
     let numberFormatter = NumberFormatter()
-    
-    var getGuildLeaderDisposable: Disposable?
-    
+
     var guildLeaderID: String?
     
     override func viewDidLoad() {
@@ -34,13 +32,26 @@ class GuildDetailViewController: GroupDetailViewController {
         gemIconView.image = HabiticaIcons.imageOfGem_36
         
         numberFormatter.usesGroupingSeparator = true
-
-        if let groupID = self.group?.id {
-            disposable.inner.add(socialRepository.isUserGuildMember(groupID: groupID).on(value: {[weak self] isMember in
-                self?.joinButton.isHidden = isMember
-                self?.leaveButtonWrapper?.isHidden = !isMember
-            }).start())
-        }
+        
+        disposable.inner.add(groupProperty.producer.skipNil()
+            .map({ (group) -> String? in
+                return group.id
+            })
+            .skipNil()
+            .uniqueValues()
+            .flatMap(.latest, {[weak self] groupID in
+            return self?.socialRepository.isUserGuildMember(groupID: groupID) ?? SignalProducer.empty
+        }).on(value: {[weak self] isMember in
+            self?.joinButton.isHidden = isMember
+            self?.leaveButtonWrapper?.isHidden = !isMember
+        }).start())
+        
+        disposable.inner.add(groupProperty.producer.skipNil().flatMap(.latest, {[weak self] group in
+                return self?.socialRepository.getMember(userID: group.leaderID ?? "", retrieveIfNotFound: true).skipNil() ?? SignalProducer.empty
+        }).on(value: {[weak self] guildLeader in
+            self?.guildLeaderNameLabel.text = guildLeader.profile?.name
+            self?.guildLeaderAvatarView.avatar = AvatarViewModel(avatar: guildLeader)
+        }).start())
         
         guildLeaderWrapper.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openGuildLeaderProfile)))
     }
@@ -50,24 +61,13 @@ class GuildDetailViewController: GroupDetailViewController {
         guildMembersCrestIcon.image = HabiticaIcons.imageOfGuildCrestMedium(memberCount: CGFloat(group.memberCount))
         guildMembersLabel.text = numberFormatter.string(from: NSNumber(value: group.memberCount))
         guildGemCountLabel.text = numberFormatter.string(from: NSNumber(value: group.gemCount))
-        
-        if let leaderID = group.leaderID {
-            getGuildLeader(leaderID: leaderID)
-        }
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        if let disposable = getGuildLeaderDisposable, !disposable.isDisposed {
-            disposable.dispose()
-        }
-        super.viewWillDisappear(animated)
     }
     
     @IBAction func guildLeaderMessageButtonTapped(_ sender: Any) {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == StoryboardSegue.Social.challengesSegue.rawValue, let groupID = self.group?.id {
+        if segue.identifier == StoryboardSegue.Social.challengesSegue.rawValue, let groupID = self.groupProperty.value?.id {
             let challengesViewController = segue.destination as? ChallengeTableViewController
             challengesViewController?.dataSource.shownGuilds = [groupID]
             challengesViewController?.showOnlyUserChallenges = false
@@ -77,19 +77,9 @@ class GuildDetailViewController: GroupDetailViewController {
         }
         super.prepare(for: segue, sender: sender)
     }
-    
-    private func getGuildLeader(leaderID: String) {
-        if let disposable = getGuildLeaderDisposable, !disposable.isDisposed {
-            disposable.dispose()
-        }
-        getGuildLeaderDisposable = socialRepository.getMember(userID: leaderID, retrieveIfNotFound: true).skipNil().on(value: {[weak self] guildLeader in
-            self?.guildLeaderNameLabel.text = guildLeader.profile?.name
-            self?.guildLeaderAvatarView.avatar = AvatarViewModel(avatar: guildLeader)
-        }).start()
-    }
-    
+
     @IBAction func joinButtonTapped(_ sender: Any) {
-        if let groupID = self.group?.id {
+        if let groupID = self.groupProperty.value?.id {
             socialRepository.joinGroup(groupID: groupID).observeCompleted {}
         }
     }

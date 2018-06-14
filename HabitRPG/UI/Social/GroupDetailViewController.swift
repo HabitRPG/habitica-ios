@@ -13,13 +13,7 @@ import Down
 
 class GroupDetailViewController: HRPGUIViewController {
     
-    var group: GroupProtocol? {
-        didSet {
-            if let group = self.group {
-                updateData(group: group)
-            }
-        }
-    }
+    var groupProperty = MutableProperty<GroupProtocol?>(nil)
     
     let socialRepository = SocialRepository()
     let userRepository = UserRepository()
@@ -41,6 +35,10 @@ class GroupDetailViewController: HRPGUIViewController {
         groupDescriptionStackView?.layoutMargins = margins
         groupDescriptionStackView?.isLayoutMarginsRelativeArrangement = true
         
+        disposable.inner.add(groupProperty.signal.skipNil().observeValues({[weak self] group in
+                self?.updateData(group: group)
+        }))
+        
         self.leaveInteractor = LeaveGroupInteractor(presentingViewController: self)
     }
     
@@ -61,7 +59,7 @@ class GroupDetailViewController: HRPGUIViewController {
     }
     
     @IBAction func leaveButtonTapped(_ sender: Any) {
-        if let groupID = self.group?.id {
+        if let groupID = self.groupProperty.value?.id {
             leaveInteractor?.run(with: groupID)
         }
     }
@@ -69,7 +67,7 @@ class GroupDetailViewController: HRPGUIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == StoryboardSegue.Social.challengesSegue.rawValue {
             let destination = segue.destination as? ChallengeTableViewController
-            if let groupID = group?.id {
+            if let groupID = groupProperty.value?.id {
                 destination?.dataSource.shownGuilds = [groupID]
                 destination?.dataSource.isShowingJoinedChallenges = false
                 destination?.segmentedFilterControl.selectedSegmentIndex = 1

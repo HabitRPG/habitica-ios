@@ -36,12 +36,6 @@ class PartyDetailViewController: GroupDetailViewController {
     var questStateDisposable: CompositeDisposable?
     
     private var selectedMember: MemberProtocol?
-    
-    override var group: GroupProtocol? {
-        didSet {
-            fetchMembers()
-        }
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,6 +64,18 @@ class PartyDetailViewController: GroupDetailViewController {
         disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
             self?.update(user: user)
         }).start())
+        
+        disposable.inner.add(groupProperty.producer.skipNil()
+            .map({ (group) -> String? in
+                return group.id
+            })
+            .skipNil()
+            .uniqueValues()
+            .flatMap(.latest, {[weak self] groupID in
+            return self?.socialRepository.getGroupMembers(groupID: groupID) ?? SignalProducer.empty
+        }).on(value: {[weak self] (members, _) in
+            self?.set(members: members)
+        }).start())
     }
     
     deinit {
@@ -81,18 +87,6 @@ class PartyDetailViewController: GroupDetailViewController {
         }
     }
 
-    func fetchMembers() {
-        guard let groupID = self.group?.id else {
-            return
-        }
-        if let disposable = self.fetchMembersDisposable {
-            disposable.dispose()
-        }
-        fetchMembersDisposable = socialRepository.getGroupMembers(groupID: groupID).on(value: {[weak self] (members, _) in
-            self?.set(members: members)
-        }).start()
-    }
-
     private func set(members: [MemberProtocol]) {
         for view in membersStackview.arrangedSubviews {
             if let memberView = view as? MemberListView {
@@ -101,7 +95,7 @@ class PartyDetailViewController: GroupDetailViewController {
         }
         for member in members {
             let view = MemberListView()
-            view.configure(member: member, isLeader: member.id == group?.leaderID)
+            view.configure(member: member, isLeader: member.id == groupProperty.value?.leaderID)
             view.viewTapped = {[weak self] in
                 self?.selectedMember = member
                 self?.perform(segue: StoryboardSegue.Social.userProfileSegue)
@@ -181,13 +175,13 @@ class PartyDetailViewController: GroupDetailViewController {
     }
     
     @IBAction func rejectQuestInvitation(_ sender: Any) {
-        if let groupID = group?.id {
+        if let groupID = groupProperty.value?.id {
             disposable.inner.add(socialRepository.rejectQuestInvitation(groupID: groupID).observeCompleted {})
         }
     }
     
     @IBAction func acceptQuestInvitation(_ sender: Any) {
-        if let groupID = group?.id {
+        if let groupID = groupProperty.value?.id {
             disposable.inner.add(socialRepository.acceptQuestInvitation(groupID: groupID).observeCompleted {})
         }
     }
@@ -200,8 +194,8 @@ class PartyDetailViewController: GroupDetailViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == StoryboardSegue.Social.questDetailSegue.rawValue {
             if let destination = segue.destination as? QuestDetailViewController {
-                destination.groupID = group?.id
-                destination.questKey = group?.quest?.key
+                destination.groupID = groupProperty.value?.id
+                destination.questKey = groupProperty.value?.quest?.key
             }
         } else if segue.identifier == StoryboardSegue.Social.userProfileSegue.rawValue {
             if let destination = segue.destination as? UserProfileViewController {

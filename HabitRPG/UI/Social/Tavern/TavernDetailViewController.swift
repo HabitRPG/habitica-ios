@@ -21,14 +21,7 @@ class TavernDetailViewController: GroupDetailViewController {
     @IBOutlet weak var linksStackView: CollapsibleStackView!
     @IBOutlet weak var questProgressView: QuestProgressView!
     @IBOutlet weak var worldBossTitleView: CollapsibleTitle!
-    
-    override var group: GroupProtocol? {
-        didSet {
-            if let group = self.group {
-                questProgressView.configure(group: group)
-            }
-        }
-    }
+
     var quest: QuestProtocol? {
         didSet {
             if let quest = self.quest {
@@ -93,6 +86,11 @@ class TavernDetailViewController: GroupDetailViewController {
         
         //workaround to get the view to size correctly.
         worldBossStackView.isCollapsed = worldBossStackView.isCollapsed
+    }
+    
+    override func updateData(group: GroupProtocol) {
+        super.updateData(group: group)
+        questProgressView.configure(group: group)
     }
     
     @IBAction func innButtonTapped(_ sender: Any) {

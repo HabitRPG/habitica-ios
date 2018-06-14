@@ -101,7 +101,7 @@ class SplitSocialViewController: HabiticaSplitViewController {
     }
     
     internal func set(group: GroupProtocol) {
-        detailViewController?.group = group
+        detailViewController?.groupProperty.value = group
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
