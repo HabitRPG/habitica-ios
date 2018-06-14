@@ -43,7 +43,7 @@ class StableOverviewDataSource<ANIMAL: AnimalProtocol>: BaseReactiveCollectionVi
             }
             
             if item?.text == nil || item?.text != animal.egg {
-                item = StableOverviewItem(imageName: getImageName(animal), text: animal.egg ?? "", numberOwned: 0, totalNumber: 0, eggType: animal.egg ?? "")
+                item = StableOverviewItem(imageName: getImageName(animal), text: animal.egg ?? "", numberOwned: 0, totalNumber: 0, eggType: animal.egg ?? animal.key ?? "")
                 if let item = item {
                     data[type]?.append(item)
                 }

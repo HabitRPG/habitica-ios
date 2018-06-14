@@ -24,7 +24,11 @@ class PetDetailDataSource: BaseReactiveCollectionViewDataSource<PetStableItem> {
         super.init()
         sections.append(ItemSection<PetStableItem>(title: L10n.Stable.standard))
         sections.append(ItemSection<PetStableItem>(title: L10n.Stable.premium))
-                disposable.inner.add(SignalProducer.combineLatest(stableRepsository.getOwnedPets(query: "key CONTAINS '\(eggType)'")
+        var query = "egg == '\(eggType)'"
+        if eggType.contains("-") {
+            query = "key == '\(eggType)'"
+        }
+        disposable.inner.add(SignalProducer.combineLatest(stableRepsository.getOwnedPets(query: "key CONTAINS '\(eggType)'")
             .map({ data -> [String: Int] in
                 var ownedPets = [String: Int]()
                 data.value.forEach({ (ownedPet) in
@@ -38,7 +42,7 @@ class PetDetailDataSource: BaseReactiveCollectionViewDataSource<PetStableItem> {
                         ownedMounts[ownedMount.key ?? ""] = ownedMount.owned
                     })
                     return ownedMounts
-                }), stableRepsository.getPets(query: "egg == '\(eggType)'"))
+                }), stableRepsository.getPets(query: query))
 
             .on(value: {[weak self](ownedPets, ownedMounts, pets) in
                 self?.sections[0].items.removeAll()

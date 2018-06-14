@@ -38,7 +38,7 @@ class GuildDetailViewController: GroupDetailViewController {
                 return group.id
             })
             .skipNil()
-            .uniqueValues()
+            .skipRepeats()
             .flatMap(.latest, {[weak self] groupID in
             return self?.socialRepository.isUserGuildMember(groupID: groupID) ?? SignalProducer.empty
         }).on(value: {[weak self] isMember in

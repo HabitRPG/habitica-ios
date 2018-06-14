@@ -22,7 +22,10 @@ class MountDetailDataSource: BaseReactiveCollectionViewDataSource<MountStableIte
         super.init()
         sections.append(ItemSection<MountStableItem>(title: L10n.Stable.standard))
         sections.append(ItemSection<MountStableItem>(title: L10n.Stable.premium))
-        
+        var query = "egg == '\(eggType)'"
+        if eggType.contains("-") {
+            query = "key == '\(eggType)'"
+        }
         disposable.inner.add(stableRepsository.getOwnedMounts(query: "key CONTAINS '\(eggType)'")
             .map({ data -> [String: Bool] in
                 var ownedMounts = [String: Bool]()
@@ -31,7 +34,7 @@ class MountDetailDataSource: BaseReactiveCollectionViewDataSource<MountStableIte
                 })
                 return ownedMounts
             })
-            .combineLatest(with: stableRepsository.getMounts(query: "egg == '\(eggType)'"))
+            .combineLatest(with: stableRepsository.getMounts(query: query))
             .on(value: {[weak self](ownedMounts, mounts) in
                 self?.sections[0].items.removeAll()
                 self?.sections[1].items.removeAll()

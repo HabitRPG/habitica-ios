@@ -70,7 +70,7 @@ class PartyDetailViewController: GroupDetailViewController {
                 return group.id
             })
             .skipNil()
-            .uniqueValues()
+            .skipRepeats()
             .flatMap(.latest, {[weak self] groupID in
             return self?.socialRepository.getGroupMembers(groupID: groupID) ?? SignalProducer.empty
         }).on(value: {[weak self] (members, _) in
