@@ -54,12 +54,10 @@ class ChallengeTableViewDataSource: BaseReactiveTableViewDataSource<ChallengePro
         if let disposable = fetchChallengesDisposable, !disposable.isDisposed {
             disposable.dispose()
         }
-        DispatchQueue.main.async {[weak self] in
-        self?.fetchChallengesDisposable = self?.socialRepository.getChallenges(predicate: self?.predicate).on(value: {[weak self](challenges, changes) in
+        fetchChallengesDisposable = socialRepository.getChallenges(predicate: predicate).on(value: {[weak self](challenges, changes) in
             self?.sections[0].items = challenges
             self?.notify(changes: changes)
         }).start()
-        }
     }
     
     override func retrieveData(completed: (() -> Void)?) {

@@ -10,7 +10,7 @@ import Foundation
 import Habitica_Models
 import RealmSwift
 
-class RealmChallengeCategoryProtocol: Object, ChallengeCategoryProtocol {
+class RealmChallengeCategory: Object, ChallengeCategoryProtocol {
     var id: String?
     var slug: String?
     var name: String?

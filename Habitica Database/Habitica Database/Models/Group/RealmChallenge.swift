@@ -26,7 +26,24 @@ class RealmChallenge: Object, ChallengeProtocol {
     dynamic var groupPrivacy: String?
     dynamic var memberCount: Int = 0
     dynamic var createdAt: Date?
-    dynamic var categories: [ChallengeCategoryProtocol] = []
+    dynamic var categories: [ChallengeCategoryProtocol] {
+        get {
+            return realmCategories.map({ (ownedCustomization) -> ChallengeCategoryProtocol in
+                return ownedCustomization
+            })
+        }
+        set {
+            realmCategories.removeAll()
+            newValue.forEach { (category) in
+                if let realmCategory = category as? RealmChallengeCategory {
+                    realmCategories.append(realmCategory)
+                } else {
+                    realmCategories.append(RealmChallengeCategory(category))
+                }
+            }
+        }
+    }
+    var realmCategories = List<RealmChallengeCategory>()
     var tasksOrder: [String: [String]] = [:]
     var habits: [TaskProtocol] {
         let predicate = NSPredicate(format: "userID == %@ && type == 'habit'", id ?? "")
