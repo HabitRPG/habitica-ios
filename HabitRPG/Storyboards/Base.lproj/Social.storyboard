@@ -535,7 +535,6 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
-                                                            <action selector="abortButtonTapped:" destination="h0f-kS-d60" eventType="touchUpInside" id="fra-ew-9rN"/>
                                                             <action selector="forceStartButtonTapped:" destination="h0f-kS-d60" eventType="touchUpInside" id="oYb-VE-caz"/>
                                                         </connections>
                                                     </button>
