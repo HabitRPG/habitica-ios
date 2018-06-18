@@ -196,11 +196,13 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         })
     }
     
-    func deleteAccount(password: String) -> Signal<EmptyResponseProtocol?, NoError> {
+    func deleteAccount(password: String) -> Signal<HTTPURLResponse, NoError> {
         let call = DeleteAccountCall(password: password)
         call.fire()
-        return call.objectSignal.on(value: {[weak self]_ in
-            self?.logoutAccount()
+        return call.httpResponseSignal.on(value: {[weak self] response in
+            if response.statusCode == 200 {
+                self?.logoutAccount()
+            }
         })
     }
     

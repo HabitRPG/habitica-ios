@@ -417,6 +417,8 @@ internal enum L10n {
     internal static let themeColor = L10n.tr("Mainstrings", "settings.theme_color")
     /// User
     internal static let user = L10n.tr("Mainstrings", "settings.user")
+    /// Incorrect Password
+    internal static let wrongPassword = L10n.tr("Mainstrings", "settings.wrong_password")
   }
 
   internal enum Skills {

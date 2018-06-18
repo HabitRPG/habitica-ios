@@ -18,7 +18,7 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         if section == 0 {
             return 4
         } else {
-            return 1
+            return 2
         }
     }
     
@@ -113,11 +113,17 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         
         alertController.addCancelAction()
         alertController.addAction(title: NSLocalizedString("Delete Account", comment: ""), style: .destructive, isMainAction: true) {[weak self] _ in
-            self?.userRepository.deleteAccount(password: textField.text ?? "").observeCompleted {
-                let storyboard = UIStoryboard(name: "Intro", bundle: nil)
-                let navigationController = storyboard.instantiateViewController(withIdentifier: "LoginTableViewController")
-                self?.present(navigationController, animated: true, completion: nil)
-            }
+            self?.userRepository.deleteAccount(password: textField.text ?? "").observeValues({ response in
+                if response.statusCode == 200 {
+                    let storyboard = UIStoryboard(name: "Intro", bundle: nil)
+                    let navigationController = storyboard.instantiateViewController(withIdentifier: "LoginTableViewController")
+                    self?.present(navigationController, animated: true, completion: nil)
+                } else if response.statusCode == 401 {
+                    let alertView = HabiticaAlertController(title: L10n.Settings.wrongPassword)
+                    alertView.addCloseAction()
+                    alertView.show()
+                }
+            })
         }
         alertController.show()
     }

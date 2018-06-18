@@ -278,21 +278,19 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
             self.loadingIndicatorVisibilityObserver.send(value: true)
             let authValues = self.authValuesProperty.value
             if self.authTypeProperty.value == .login {
-                userRepository.login(username: authValues?.username ?? "", password: authValues?.password ?? "").observeResult { (result) in
-                    switch result {
-                    case .success:
+                userRepository.login(username: authValues?.username ?? "", password: authValues?.password ?? "").observeValues { loginResult in
+                    if loginResult != nil {
                         self.onSuccessfulLogin()
-                    case .failure:
+                    } else {
                         self.loadingIndicatorVisibilityObserver.send(value: false)
                         self.showErrorObserver.send(value: "Invalid username or password".localized)
                     }
                 }
             } else {
-                userRepository.register(username: authValues?.username ?? "", password: authValues?.password ?? "", confirmPassword: authValues?.passwordRepeat ?? "", email: authValues?.email ?? "").observeResult { (result) in
-                    switch result {
-                    case .success:
+                userRepository.register(username: authValues?.username ?? "", password: authValues?.password ?? "", confirmPassword: authValues?.passwordRepeat ?? "", email: authValues?.email ?? "").observeValues { loginResult in
+                    if loginResult != nil {
                         self.onSuccessfulLogin()
-                    case .failure:
+                    } else {
                         self.loadingIndicatorVisibilityObserver.send(value: false)
                     }
                 }

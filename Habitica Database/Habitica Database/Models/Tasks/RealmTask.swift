@@ -22,13 +22,13 @@ class RealmTask: Object, TaskProtocol {
     @objc dynamic var down: Bool = false
     @objc dynamic var up: Bool = false
     @objc dynamic var order: Int = 0
-    @objc dynamic var priority: Float = 0
+    @objc dynamic var priority: Float = 1
     @objc dynamic var counterUp: Int = 0
     @objc dynamic var counterDown: Int = 0
     @objc dynamic var duedate: Date?
     @objc dynamic var isDue: Bool = false
     @objc dynamic var streak: Int = 0
-    @objc dynamic var frequency: String?
+    @objc dynamic var frequency: String? = "daily"
     @objc dynamic var everyX: Int = 1
     @objc dynamic var challengeID: String?
     @objc dynamic var createdAt: Date?

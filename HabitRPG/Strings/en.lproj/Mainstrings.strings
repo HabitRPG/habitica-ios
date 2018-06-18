@@ -117,6 +117,7 @@
 "settings.preferences" = "Preferences";
 "settings.theme_color" = "Theme Color";
 "settings.sound_theme" = "Sound Theme";
+"settings.wrong_password" = "Incorrect Password";
 "theme.default_theme" = "Default";
 "theme.blue" = "Blue";
 "theme.teal" = "Teal";

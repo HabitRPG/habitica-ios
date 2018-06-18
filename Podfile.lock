@@ -20,12 +20,12 @@ PODS:
     - OHHTTPStubs/Swift
     - Prelude (~> 3.0)
     - ReactiveSwift
-  - Instabug (7.14.3):
-    - Instabug/Instabug (= 7.14.3)
-    - Instabug/InstabugCore (= 7.14.3)
-  - Instabug/Instabug (7.14.3):
+  - Instabug (7.14.5):
+    - Instabug/Instabug (= 7.14.5)
+    - Instabug/InstabugCore (= 7.14.5)
+  - Instabug/Instabug (7.14.5):
     - Instabug/InstabugCore
-  - Instabug/InstabugCore (7.14.3)
+  - Instabug/InstabugCore (7.14.5)
   - iOSSnapshotTestCase (3.0.0):
     - iOSSnapshotTestCase/SwiftSupport (= 3.0.0)
   - iOSSnapshotTestCase/Core (3.0.0)
@@ -88,11 +88,11 @@ PODS:
     - ReactiveSwift (~> 3.1)
   - ReactiveSwift (3.1.0):
     - Result (~> 3.2)
-  - Realm (3.7.1):
-    - Realm/Headers (= 3.7.1)
-  - Realm/Headers (3.7.1)
-  - RealmSwift (3.7.1):
-    - Realm (= 3.7.1)
+  - Realm (3.7.2):
+    - Realm/Headers (= 3.7.2)
+  - Realm/Headers (3.7.2)
+  - RealmSwift (3.7.2):
+    - Realm (= 3.7.2)
   - Result (3.2.4)
   - SeedsSDK (0.5.0)
   - SlackTextViewController (1.9.6)
@@ -164,7 +164,7 @@ SPEC CHECKSUMS:
   FBSDKLoginKit: 88cb456349cfb3b554427ce4f8b43729d85dfb40
   FLEX: bd1a39e55b56bb413b6f1b34b3c10a0dc44ef079
   FunkyNetwork: 6eb382dcab7c5947ea7e8d3c72427ee91d87c35f
-  Instabug: d040fe989fe621da0cc021ac267dd9cec0489d3b
+  Instabug: 7a7fea34bdc40735e8961750a2f9f34b7a8fae4a
   iOSSnapshotTestCase: 23984ffe05289728d646cbb6a7a10b4fb1c93440
   KeychainAccess: 7bd430028059754a3debab3cfc0bd1fc7fb85df3
   Keys: af65e23feef2a047b3277b1ef0399f1209ef9d46
@@ -181,8 +181,8 @@ SPEC CHECKSUMS:
   Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
   ReactiveCocoa: 476dae7ca790f40d30d186a1bd7ebae4290395d5
   ReactiveSwift: 5b26d2e988fe0eed2daf48c4054d1de74db50184
-  Realm: 906be37d52f17f25484ac01643a7f26a9d3bfbd5
-  RealmSwift: 1c2b6bae3dc55bb87e080ffa96537d71442f6dce
+  Realm: dd18c3014e8d90df300b83c6da740067436089c5
+  RealmSwift: 79917cae59a0c43ef8118b233a5978891dd50b4a
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
   SeedsSDK: 8de27e088c15ff3eba33a6d2941ec507e4a5bb95
   SlackTextViewController: b854e62c1c156336bc4fd409c6ca79b5773e8f9d
