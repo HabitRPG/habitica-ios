@@ -176,7 +176,6 @@ public class SocialLocalRepository: BaseLocalRepository {
         }
     }
     
-    
     private func removeOldChatMessages(groupID: String?, newChatMessages: [ChatMessageProtocol]) {
         let oldChatMessages = getRealm()?.objects(RealmChatMessage.self).filter("groupID == %@", groupID ?? "")
         var messagesToRemove = [RealmChatMessage]()
@@ -220,7 +219,7 @@ public class SocialLocalRepository: BaseLocalRepository {
     }
     
     public func getGroups(predicate: NSPredicate) -> SignalProducer<ReactiveResults<[GroupProtocol]>, ReactiveSwiftRealmError> {
-        return RealmGroup.findBy(predicate: predicate).sorted(key: "memberCount", ascending: false).reactive().map({ (value, changeset) -> ReactiveResults<[GroupProtocol]> in
+        return RealmGroup.findBy(predicate: NSCompoundPredicate.init(andPredicateWithSubpredicates: [NSPredicate(format: "id != 'habitrpg'"), predicate])).sorted(key: "memberCount", ascending: false).reactive().map({ (value, changeset) -> ReactiveResults<[GroupProtocol]> in
             return (value.map({ (group) -> GroupProtocol in return group }), changeset)
         })
     }
