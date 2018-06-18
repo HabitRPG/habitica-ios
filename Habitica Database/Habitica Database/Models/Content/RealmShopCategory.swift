@@ -28,7 +28,7 @@ class RealmShopCategory: Object, ShopCategoryProtocol {
                 if let realmCollectItem = item as? RealmInAppReward {
                     realmItems.append(realmCollectItem)
                 } else {
-                    realmItems.append(RealmInAppReward(userID: shopIdentifier, protocolObject: item))
+                    realmItems.append(RealmInAppReward(userID: combinedKey, protocolObject: item))
                 }
             }
         }
