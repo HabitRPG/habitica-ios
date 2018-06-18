@@ -49,6 +49,7 @@ class GuildDetailViewController: GroupDetailViewController {
         disposable.inner.add(groupProperty.producer.skipNil().flatMap(.latest, {[weak self] group in
                 return self?.socialRepository.getMember(userID: group.leaderID ?? "", retrieveIfNotFound: true).skipNil() ?? SignalProducer.empty
         }).on(value: {[weak self] guildLeader in
+            self?.guildLeaderID = guildLeader.id
             self?.guildLeaderNameLabel.text = guildLeader.profile?.name
             self?.guildLeaderAvatarView.avatar = AvatarViewModel(avatar: guildLeader)
         }).start())
@@ -64,6 +65,7 @@ class GuildDetailViewController: GroupDetailViewController {
     }
     
     @IBAction func guildLeaderMessageButtonTapped(_ sender: Any) {
+        perform(segue: StoryboardSegue.Social.sendMessageSegue)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -74,6 +76,11 @@ class GuildDetailViewController: GroupDetailViewController {
         } else if segue.identifier == StoryboardSegue.Social.userProfileSegue.rawValue, let leaderID = self.guildLeaderID {
             let profileViewController = segue.destination as? UserProfileViewController
             profileViewController?.userID = leaderID
+        } else if segue.identifier == StoryboardSegue.Social.sendMessageSegue.rawValue, let leaderID = self.guildLeaderID {
+            let navigationController = segue.destination as? UINavigationController
+            let messageViewController = navigationController?.topViewController as? HRPGInboxChatViewController
+            messageViewController?.isPresentedModally = true
+            messageViewController?.userID = leaderID
         }
         super.prepare(for: segue, sender: sender)
     }

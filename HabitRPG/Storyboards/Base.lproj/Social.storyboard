@@ -169,7 +169,7 @@
                         <viewControllerLayoutGuide type="bottom" id="ucE-b4-Own"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="43x-Iu-HK8">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.97636467218399048" green="0.97653168439865112" blue="0.97635418176651001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -177,7 +177,7 @@
                         <rightBarButtonItems>
                             <barButtonItem systemItem="done" id="5Pc-Ev-m7m">
                                 <connections>
-                                    <segue destination="Z4q-U6-KaZ" kind="unwind" unwindAction="unwindToList:" id="zfc-1F-u37"/>
+                                    <action selector="doneButtonTapped:" destination="mn5-kI-z18" id="rFV-Dz-1hM"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem title="Profile" id="61t-W4-ftz">
@@ -193,7 +193,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HGu-0a-Eqo" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="Z4q-U6-KaZ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2646" y="15"/>
         </scene>
@@ -770,7 +769,7 @@
             <objects>
                 <tableViewController id="LJL-4h-PRX" customClass="ChallengeDetailsTableViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="mSs-Sh-idc">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -827,7 +826,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="UserProfileViewController" id="MTH-Re-wqo" customClass="UserProfileViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="WTt-7r-yfN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
@@ -1172,7 +1171,7 @@
                     <navigationItem key="navigationItem" id="GzV-Hd-Xry">
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="4jT-np-7Wu">
                             <connections>
-                                <segue destination="jza-oe-b8O" kind="presentation" identifier="WriteMessageSegue" id="2EH-Sz-Osv"/>
+                                <segue destination="jza-oe-b8O" kind="presentation" identifier="WriteMessageSegue" modalPresentationStyle="pageSheet" id="2EH-Sz-Osv"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1295,7 +1294,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="ChallengeTableViewController" automaticallyAdjustsScrollViewInsets="NO" id="BE2-xn-Wwl" customClass="ChallengeTableViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="86" sectionHeaderHeight="28" sectionFooterHeight="28" id="SWx-Y1-cyG">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <connections>
@@ -1651,7 +1650,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Sur-1o-ymQ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="OFX-9b-U2U">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -2039,6 +2038,7 @@
                                                                 <state key="normal" image="messages"/>
                                                                 <connections>
                                                                     <action selector="guildLeaderMessageButtonTapped:" destination="ZmK-Mz-PPG" eventType="touchUpInside" id="YbY-fd-uFU"/>
+                                                                    <segue destination="jza-oe-b8O" kind="presentation" identifier="SendMessageSegue" modalPresentationStyle="pageSheet" id="rs9-Lf-2VQ"/>
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dqf-HT-q0B">
@@ -2318,7 +2318,7 @@
                                                                 </constraints>
                                                             </view>
                                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jIr-tb-DyF">
-                                                                <rect key="frame" x="0.0" y="-172" width="375" height="77"/>
+                                                                <rect key="frame" x="0.0" y="-206" width="375" height="77"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9iM-dP-lgo" customClass="QuestTitleView" customModule="Habitica" customModuleProvider="target">
                                                                         <rect key="frame" x="67" y="-26" width="240" height="128"/>
@@ -2604,13 +2604,14 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="71z-UW-WBb"/>
-        <segue reference="gAH-Zh-PJ3"/>
-        <segue reference="lgk-R4-zXr"/>
+        <segue reference="xLb-S3-ALp"/>
+        <segue reference="BKi-xg-gxr"/>
         <segue reference="9hs-wq-6bn"/>
-        <segue reference="jXp-j5-lvy"/>
-        <segue reference="ypV-Mu-tgU"/>
-        <segue reference="Nsp-ag-Sds"/>
+        <segue reference="MnH-ar-sz7"/>
+        <segue reference="Hfa-0k-B92"/>
+        <segue reference="yXa-uT-GhF"/>
         <segue reference="C12-ty-sO4"/>
+        <segue reference="2EH-Sz-Osv"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.6058621407" green="0.38462612029999999" blue="0.99835687880000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

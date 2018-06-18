@@ -92,4 +92,8 @@
     [super scrollViewDidEndDecelerating:scrollView];
 }
 
+- (IBAction)doneButtonTapped:(id)sender {
+    [self dismissViewControllerAnimated:true completion:nil];
+}
+
 @end
