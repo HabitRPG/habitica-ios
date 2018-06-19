@@ -45,6 +45,7 @@ class PartyQuestView: UIView {
     }
     
     func configure(state: QuestStateProtocol, quest: QuestProtocol) {
+        let existingPendingDamage = progressBarViews.first?.pendingValue
         progressBarViews.forEach { (view) in
             view.removeFromSuperview()
         }
@@ -63,6 +64,7 @@ class PartyQuestView: UIView {
             bossView.maxValue = Float(boss.health)
             bossView.barColor = UIColor.red100()
             bossView.currentValue = state.progress?.health ?? 0
+            bossView.pendingValue = existingPendingDamage ?? 0
             addSubview(bossView)
             progressBarViews.append(bossView)
         } else {
