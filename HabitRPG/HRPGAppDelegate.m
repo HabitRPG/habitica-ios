@@ -196,8 +196,8 @@
     }
 
     HabiticaAlertController *alertController = [HabiticaAlertController alertWithTitle:NSLocalizedString(@"Reminder", nil) message:notification.alertBody];
-    [alertController addActionWithTitle:NSLocalizedString(@"Close", nil) style:UIAlertActionStyleDefault isMainAction:NO handler:nil];
-    [alertController addActionWithTitle:NSLocalizedString(@"Complete", nil) style:UIAlertActionStyleDefault isMainAction:YES handler:^(UIButton * _Nonnull button) {
+    [alertController addActionWithTitle:NSLocalizedString(@"Close", nil) style:UIAlertActionStyleDefault isMainAction:NO closeOnTap:true handler:nil];
+    [alertController addActionWithTitle:NSLocalizedString(@"Complete", nil) style:UIAlertActionStyleDefault isMainAction:YES closeOnTap:true handler:^(UIButton * _Nonnull button) {
         [self completeTaskWithId:[notification.userInfo valueForKey:@"taskID"] completionHandler:nil];
     }];
     [alertController show];

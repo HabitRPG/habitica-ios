@@ -59,10 +59,3 @@ class ImageOverlayView: HabiticaAlertController {
         }
     }
 }
-
-extension ImageOverlayView {
-    @objc
-    func addShareAction(handler: ((UIButton) -> Void)? = nil) {
-        self.addAction(title: NSLocalizedString(L10n.share, comment: ""), handler: handler)
-    }
-}

@@ -237,3 +237,6 @@
 "glasses" = "Glasses";
 "animal_ears" = "Animal Ears";
 "headband" = "Headband";
+"levelup_title" = "You gained a level!";
+"levelup_description" = "By accomplishing your real-life goals, you've grown to Level %ld!";
+"levelup_share" = "I got to level %ld in Habitica by improving my real-life habits!";

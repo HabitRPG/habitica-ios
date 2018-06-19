@@ -227,6 +227,7 @@
 		29E1631B200E84AC00685640 /* TavernViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E1631A200E84AC00685640 /* TavernViewController.swift */; };
 		29E1631D200F62C100685640 /* TavernDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E1631C200F62C100685640 /* TavernDetailViewController.swift */; };
 		29E1631F200F62CB00685640 /* GroupChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E1631E200F62CB00685640 /* GroupChatViewController.swift */; };
+		29E30DE620D935AF00F74ECB /* LevelUpOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E30DE520D935AF00F74ECB /* LevelUpOverlayView.swift */; };
 		29E779F8203F30A40079F269 /* HRPGGemCapReachedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E779F7203F30A40079F269 /* HRPGGemCapReachedViewController.swift */; };
 		29ED1AFB1F338E5D005A3895 /* SetupCustomizationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ED1AFA1F338E5D005A3895 /* SetupCustomizationRepository.swift */; };
 		29ED1AFD1F338ECC005A3895 /* SetupCustomization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ED1AFC1F338ECC005A3895 /* SetupCustomization.swift */; };
@@ -729,6 +730,7 @@
 		29E1631A200E84AC00685640 /* TavernViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TavernViewController.swift; sourceTree = "<group>"; };
 		29E1631C200F62C100685640 /* TavernDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TavernDetailViewController.swift; sourceTree = "<group>"; };
 		29E1631E200F62CB00685640 /* GroupChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupChatViewController.swift; sourceTree = "<group>"; };
+		29E30DE520D935AF00F74ECB /* LevelUpOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelUpOverlayView.swift; sourceTree = "<group>"; };
 		29E779F7203F30A40079F269 /* HRPGGemCapReachedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRPGGemCapReachedViewController.swift; sourceTree = "<group>"; };
 		29ED1AFA1F338E5D005A3895 /* SetupCustomizationRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupCustomizationRepository.swift; sourceTree = "<group>"; };
 		29ED1AFC1F338ECC005A3895 /* SetupCustomization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupCustomization.swift; sourceTree = "<group>"; };
@@ -2094,6 +2096,7 @@
 				29701FE31F56C2200097BBCC /* IconLabel.swift */,
 				294973D1208118C100F02AC3 /* ImageOverlayView.swift */,
 				D9BB45D91E79A02C0002AE2E /* LabeledCheckboxView.swift */,
+				29E30DE520D935AF00F74ECB /* LevelUpOverlayView.swift */,
 				29B6AD4B1F2A0DBE00AC8878 /* LoginEntryView.swift */,
 				29B6AD491F2A0C9700AC8878 /* LoginEntryView.xib */,
 				291DE9752099D85D0073182A /* MemberLlistView.swift */,
@@ -3113,6 +3116,7 @@
 				29C1B6B420599E6D0001D3EF /* TaskFormViewController.swift in Sources */,
 				290B6285207BD531007287C4 /* GuildDetailViewController.swift in Sources */,
 				D9525F9F1E65A18300C529B8 /* EmojifiedString.swift in Sources */,
+				29E30DE620D935AF00F74ECB /* LevelUpOverlayView.swift in Sources */,
 				49DCB7B61F3F64B40079FDD0 /* HRPGShopModalBgView.swift in Sources */,
 				29E1631B200E84AC00685640 /* TavernViewController.swift in Sources */,
 				291448822087A13100F3A6B5 /* EquipmentDetailViewController.swift in Sources */,

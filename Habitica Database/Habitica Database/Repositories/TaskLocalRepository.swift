@@ -132,6 +132,7 @@ public class TaskLocalRepository: BaseLocalRepository {
                 stats.experience = response.experience ?? 0
                 stats.mana = response.magic ?? 0
                 stats.gold = response.gold ?? 0
+                stats.level = response.level ?? 0
             }
         }).start()
     }

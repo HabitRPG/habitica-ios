@@ -27,6 +27,7 @@ class HabiticaAlertController: UIViewController, Themeable {
     
     private var buttonHandlers = [Int: ((UIButton) -> Swift.Void)]()
     private var buttons = [UIButton]()
+    private var shouldCloseOnButtonTap = [Int: Bool]()
     
     var contentView: UIView? {
         didSet {
@@ -180,7 +181,7 @@ class HabiticaAlertController: UIViewController, Themeable {
     }
     
     @objc
-    func addAction(title: String, style: UIAlertActionStyle = .default, isMainAction: Bool = false, handler: ((UIButton) -> Swift.Void)? = nil) {
+    func addAction(title: String, style: UIAlertActionStyle = .default, isMainAction: Bool = false, closeOnTap: Bool = true, handler: ((UIButton) -> Swift.Void)? = nil) {
         let button = UIButton()
         button.titleLabel?.lineBreakMode = .byWordWrapping
         button.titleLabel?.textAlignment = .center
@@ -202,6 +203,7 @@ class HabiticaAlertController: UIViewController, Themeable {
         if let action = handler {
             buttonHandlers[button.tag] = action
         }
+        shouldCloseOnButtonTap[button.tag] = closeOnTap
         buttons.append(button)
         if buttonStackView != nil {
             buttonStackView.addArrangedSubview(button)
@@ -307,9 +309,13 @@ class HabiticaAlertController: UIViewController, Themeable {
     
     @objc
     func buttonTapped(_ button: UIButton) {
+        if shouldCloseOnButtonTap[button.tag] != false {
         self.dismiss(animated: true, completion: {
             self.buttonHandlers[button.tag]?(button)
         })
+        } else {
+            self.buttonHandlers[button.tag]?(button)
+        }
     }
     
     @IBAction func closeTapped(_ sender: Any) {
@@ -360,6 +366,11 @@ extension HabiticaAlertController {
     @objc
     func addCloseAction(handler: ((UIButton) -> Void)? = nil) {
         self.addAction(title: L10n.close, handler: handler)
+    }
+    
+    @objc
+    func addShareAction(handler: ((UIButton) -> Void)? = nil) {
+        self.addAction(title: L10n.share, isMainAction: true, closeOnTap: false, handler: handler)
     }
     
     @objc

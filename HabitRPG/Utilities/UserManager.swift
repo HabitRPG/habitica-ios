@@ -28,6 +28,8 @@ class UserManager: NSObject {
     
     private var tutorialSteps = [String: Bool]()
     
+    private var userLevel: Int?
+    
     func beginListening() {
         let today = Date()
         let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: today)
@@ -93,7 +95,15 @@ class UserManager: NSObject {
         
         faintViewController = checkFainting(user: user)
         
-        checkClassSelection(user: user)
+        let wasShown = checkClassSelection(user: user)
+        
+        if !wasShown, let userLevel = self.userLevel {
+            if userLevel < (user.stats?.level ?? 0) {
+                let levelUpView = LevelUpOverlayView(avatar: user)
+                levelUpView.show()
+            }
+        }
+        self.userLevel = user.stats?.level ?? 0
     }
     
     private func checkFainting(user: UserProtocol) -> FaintViewController? {
@@ -105,23 +115,23 @@ class UserManager: NSObject {
         return faintViewController
     }
     
-    private func checkClassSelection(user: UserProtocol) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            if user.flags?.classSelected == false && user.preferences?.disableClasses == false && (user.stats?.level ?? 0) >= 10 {
-                if self.classSelectionViewController == nil {
-                    let classSelectionController = StoryboardScene.Settings.classSelectionNavigationController.instantiate()
-                    if var topController = UIApplication.shared.keyWindow?.rootViewController {
-                        while let presentedViewController = topController.presentedViewController {
-                            topController = presentedViewController
-                        }
-                        classSelectionController.modalTransitionStyle = .crossDissolve
-                        classSelectionController.modalPresentationStyle = .overCurrentContext
-                        topController.present(classSelectionController, animated: true) {
-                        }
+    private func checkClassSelection(user: UserProtocol) -> Bool {
+        if user.flags?.classSelected == false && user.preferences?.disableClasses == false && (user.stats?.level ?? 0) >= 10 {
+            if self.classSelectionViewController == nil {
+                let classSelectionController = StoryboardScene.Settings.classSelectionNavigationController.instantiate()
+                if var topController = UIApplication.shared.keyWindow?.rootViewController {
+                    while let presentedViewController = topController.presentedViewController {
+                        topController = presentedViewController
                     }
+                    classSelectionController.modalTransitionStyle = .crossDissolve
+                    classSelectionController.modalPresentationStyle = .overCurrentContext
+                    topController.present(classSelectionController, animated: true) {
+                    }
+                    return true
                 }
             }
         }
+        return false
     }
     
     @objc

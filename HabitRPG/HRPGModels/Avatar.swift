@@ -108,8 +108,6 @@ extension Avatar {
     }
 }
 
-typealias AvatarUserProtocol = Avatar & UserProtocol
-
 class AvatarViewModel: Avatar {
     weak var avatar: AvatarProtocol?
     

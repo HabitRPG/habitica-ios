@@ -73,6 +73,16 @@ internal enum L10n {
   internal static func levelNumber(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "level_number", p1)
   }
+  /// By accomplishing your real-life goals, you've grown to Level %ld!
+  internal static func levelupDescription(_ p1: Int) -> String {
+    return L10n.tr("Mainstrings", "levelup_description", p1)
+  }
+  /// I got to level %ld in Habitica by improving my real-life habits!
+  internal static func levelupShare(_ p1: Int) -> String {
+    return L10n.tr("Mainstrings", "levelup_share", p1)
+  }
+  /// You gained a level!
+  internal static let levelupTitle = L10n.tr("Mainstrings", "levelup_title")
   /// Mana
   internal static let mana = L10n.tr("Mainstrings", "mana")
   /// Monthly
