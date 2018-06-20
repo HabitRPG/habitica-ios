@@ -57,11 +57,12 @@
     
     [application setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
     
+    [self cleanAndRefresh:application];
+    
     return YES;
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    [self cleanAndRefresh:application];
     [self.swiftAppDelegate setupUserManager];
 }
 

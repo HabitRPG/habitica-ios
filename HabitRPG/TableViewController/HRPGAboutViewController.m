@@ -11,6 +11,8 @@
 #import <sys/utsname.h>
 #import "Habitica-Swift.h"
 #import <Instabug/Instabug.h>
+#import "HRPGSharingManager.h"
+#import <Realm/Realm.h>
 
 @interface HRPGAboutViewController ()
 
@@ -47,7 +49,11 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 8;
+    if ([HabiticaAppDelegate isRunningLive]) {
+        return 8;
+    } else {
+        return 9;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -85,6 +91,9 @@
                                  objectForInfoDictionaryKey:(NSString *)kCFBundleVersionKey]];
         cell.detailTextLabel.text = appVersionString;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    } else if (indexPath.item == 8) {
+        cell.textLabel.text = NSLocalizedString(@"Export Database", nil);
+        cell.detailTextLabel.text = NSLocalizedString(@"This is only needed for debug purposes", nil);
     }
 
     return cell;
@@ -170,6 +179,11 @@
 
             [self.navigationController pushViewController:viewController animated:YES];
             break;
+        }
+        case 8: {
+            NSURL *url = RLMRealmConfiguration.defaultConfiguration.fileURL;
+            UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[url] applicationActivities:nil];
+            [self presentViewController:activityViewController animated:true completion:nil];
         }
         default:
             break;
