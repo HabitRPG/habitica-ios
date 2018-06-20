@@ -138,6 +138,8 @@ class TaskFormViewController: FormViewController {
             setupDailyScheduling()
         } else if taskType == .todo {
             setupToDoScheduling()
+        } else if taskType == .reward {
+            setupRewardCost()
         }
         if taskType != .habit && taskType != .reward {
             setupReminders()
@@ -324,9 +326,10 @@ class TaskFormViewController: FormViewController {
         }
     }
     
-    private func setupReminderCost() {
+    private func setupRewardCost() {
         form +++ Section(L10n.Tasks.Form.cost)
-            <<< StepperRow(TaskFormTags.rewardCost) { row in
+            <<< DecimalRow(TaskFormTags.rewardCost) { row in
+                row.title = L10n.Tasks.Form.cost
                 row.cellSetup({ (cell, _) in
                     cell.tintColor = self.taskTintColor
                 })
@@ -423,7 +426,7 @@ class TaskFormViewController: FormViewController {
     }
     
     private func fillRewardValues() {
-        form.setValues([TaskFormTags.rewardCost: task.value])
+        form.setValues([TaskFormTags.rewardCost: Double(task.value)])
     }
     
     private func fillChecklistValues() {
@@ -507,7 +510,7 @@ class TaskFormViewController: FormViewController {
     }
     
     private func saveReward(values: [String: Any?]) {
-        task.value = values[TaskFormTags.rewardCost] as? Float ?? 0
+        task.value = Float(values[TaskFormTags.rewardCost] as? Double ?? 0)
     }
     
     private func saveChecklist() {
@@ -566,9 +569,9 @@ class TaskFormViewController: FormViewController {
     private func updateTitle() {
         if let visualEffectViewController = modalContainerViewController {
             if isCreating {
-                visualEffectViewController.title = L10n.Tasks.Form.create(taskType.prettName())
+                visualEffectViewController.title = L10n.Tasks.Form.create(taskType.prettyName())
             } else {
-                visualEffectViewController.title = L10n.Tasks.Form.edit(taskType.prettName())
+                visualEffectViewController.title = L10n.Tasks.Form.edit(taskType.prettyName())
             }
         }
     }
@@ -582,7 +585,7 @@ class TaskFormViewController: FormViewController {
     private func deleteButtonTapped() {
         let alertController = HabiticaAlertController(title: L10n.Tasks.Form.confirmDelete)
         alertController.addCancelAction()
-        alertController.addAction(title: L10n.delete, style: .default, isMainAction: true) { (nil) in
+        alertController.addAction(title: L10n.delete, style: .default, isMainAction: true) { (_) in
             self.taskRepository.deleteTask(self.task).observeCompleted {}
             self.dismiss(animated: true, completion: nil)
         }

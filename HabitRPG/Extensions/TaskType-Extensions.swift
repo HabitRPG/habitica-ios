@@ -10,7 +10,7 @@ import Foundation
 import Habitica_Models
 
 extension TaskType {
-    func prettName() -> String{
+    func prettyName() -> String {
         switch self {
         case .habit:
             return L10n.Tasks.habit

@@ -99,6 +99,7 @@ class RewardViewController: HRPGBaseCollectionViewController, UICollectionViewDe
             guard let destinationController = segue.destination as? TaskFormVisualEffectsModalViewController else {
                 return
             }
+            destinationController.taskType = .reward
             if let editedReward = self.editedReward {
                 destinationController.taskId = editedReward.id
                 destinationController.isCreating = false
