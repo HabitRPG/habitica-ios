@@ -38,6 +38,7 @@ class YesterdailyTaskCell: UITableViewCell {
 
         for checklistItem in task.checklist {
             if let view = UIView.fromNib(nibName: "YesterdailyChecklistItem") {
+                view.isUserInteractionEnabled = true
                 let label = view.viewWithTag(2) as? UILabel
                 label?.text = checklistItem.text?.unicodeEmoji
                 let checkbox = view.viewWithTag(1) as? CheckboxView
@@ -51,6 +52,7 @@ class YesterdailyTaskCell: UITableViewCell {
                 wrapperView.addSubview(view)
                 checklistItems.append((view, checklistItem))
                 let recognizer = UITapGestureRecognizer(target: self, action: #selector(YesterdailyTaskCell.handleChecklistTap(recognizer:)))
+                recognizer.cancelsTouchesInView = true
                 view.addGestureRecognizer(recognizer)
             }
         }

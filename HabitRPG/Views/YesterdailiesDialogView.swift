@@ -74,7 +74,7 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
         }
         return cell ?? UITableViewCell()
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         checkedCell(indexPath)
     }

@@ -105,7 +105,7 @@ class SoundManager {
         return nil
     }
     
-    init() {
+    private init() {
         let defaults = UserDefaults.standard
         currentTheme = SoundTheme(rawValue: defaults.string(forKey: "soundTheme") ?? "") ?? SoundTheme.none
     }

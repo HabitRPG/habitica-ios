@@ -101,6 +101,7 @@ class UserManager: NSObject {
             if userLevel < (user.stats?.level ?? 0) {
                 let levelUpView = LevelUpOverlayView(avatar: user)
                 levelUpView.show()
+                SoundManager.shared.play(effect: .levelUp)
             }
         }
         self.userLevel = user.stats?.level ?? 0
