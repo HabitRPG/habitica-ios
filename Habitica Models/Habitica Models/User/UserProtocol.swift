@@ -59,6 +59,13 @@ public extension UserProtocol {
         return stats?.level ?? 0 >= 10 && flags?.classSelected == false
     }
     
+    var canChooseClassForFree: Bool {
+        if preferences?.disableClasses == true {
+            return true
+        }
+        return stats?.level ?? 0 >= 10 && flags?.classSelected == false
+    }
+    
     var isModerator: Bool {
         return (contributor?.level ?? 0) >= 8
     }

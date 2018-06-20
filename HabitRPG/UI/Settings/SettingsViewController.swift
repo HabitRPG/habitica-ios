@@ -21,6 +21,7 @@ enum SettingsTags {
     static let disablePrivateMessages = "disablePrivateMessages"
     static let themeColor = "themeColor"
     static let soundTheme = "soundTheme"
+    static let changeClass = "changeClass"
 }
 
 enum ThemeName: String {
@@ -163,12 +164,12 @@ class SettingsViewController: FormViewController, Themeable {
                     cell.accessoryType = .disclosureIndicator
                 })
             }
-            <<< ButtonRow { row in
+            <<< ButtonRow(SettingsTags.changeClass) { row in
                 row.title = L10n.Settings.changeClass
                 row.cellUpdate({ (cell, _) in
                     cell.textLabel?.textColor = UIColor.black
-                    cell.textLabel?.textAlignment = .natural
-                    cell.accessoryType = .disclosureIndicator
+                }).onCellSelection({[weak self] (_, _) in
+                    self?.classSelectionButtonTapped()
                 })
             }
             <<< ButtonRow { row in
@@ -255,7 +256,6 @@ class SettingsViewController: FormViewController, Themeable {
                 row.options = SoundTheme.allThemes.map({ (theme) -> LabeledFormValue<String> in
                     return LabeledFormValue(value: theme.rawValue, label: theme.niceName)
                 })
-                let defaults = UserDefaults.standard
                 row.onChange({ (row) in
                     if let newTheme = SoundTheme(rawValue: row.value?.value ?? "") {
                         SoundManager.shared.currentTheme = newTheme
@@ -312,5 +312,40 @@ class SettingsViewController: FormViewController, Themeable {
         }) {
             (form.rowBy(tag: SettingsTags.soundTheme) as? PushRow<LabeledFormValue<String>>)?.value = LabeledFormValue(value: theme.rawValue, label: theme.niceName)
         }
+        
+        if let classRow = form.rowBy(tag: SettingsTags.changeClass) as? ButtonRow {
+            if (user.stats?.level ?? 0) < 10 {
+                classRow.hidden = true
+                return
+            }
+            classRow.hidden = false
+            if !user.canChooseClassForFree {
+                classRow.title = L10n.Settings.changeClass
+            } else if user.needsToChooseClass {
+                classRow.title = L10n.Settings.selectClass
+            } else {
+                classRow.title = L10n.Settings.enableClassSystem
+            }
+            classRow.updateCell()
+        }
+    }
+    
+    private func classSelectionButtonTapped() {
+        if user?.canChooseClassForFree == true {
+            showClassSelectionViewController()
+        } else {
+            let alertController = HabiticaAlertController(title: L10n.Settings.areYouSure, message: L10n.Settings.changeClassDisclaimer)
+            alertController.addCancelAction()
+            alertController.addAction(title: L10n.Settings.changeClass) {[weak self] _ in
+                self?.showClassSelectionViewController()
+            }
+            alertController.show()
+        }
+    }
+    
+    private func showClassSelectionViewController() {
+        let viewController = StoryboardScene.Settings.classSelectionNavigationController.instantiate()
+        viewController.modalPresentationStyle = .fullScreen
+        present(viewController, animated: true, completion: nil)
     }
 }

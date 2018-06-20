@@ -1,5 +1,5 @@
 strings:
-  paths: HabitRPG/Strings/en.lproj/Mainstrings.strings
+  paths: HabitRPG/Strings/Base.lproj/Mainstrings.strings
   templatePath: swiftgen-templates/habiticastrings-swift4.stencil
   output: HabitRPG/Generated/Strings.swift
 xcassets:

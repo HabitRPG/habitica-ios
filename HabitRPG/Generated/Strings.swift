@@ -381,10 +381,14 @@ internal enum L10n {
   internal enum Settings {
     /// API
     internal static let api = L10n.tr("Mainstrings", "settings.api")
+    /// Are you sure?
+    internal static let areYouSure = L10n.tr("Mainstrings", "settings.are_you_sure")
     /// Authentication
     internal static let authentication = L10n.tr("Mainstrings", "settings.authentication")
     /// Change Class
     internal static let changeClass = L10n.tr("Mainstrings", "settings.change_class")
+    /// This will reset your character's class and allocated points (you'll get them all back to re-allocate), and costs 3 gems.
+    internal static let changeClassDisclaimer = L10n.tr("Mainstrings", "settings.change_class_disclaimer")
     /// Clear Cache
     internal static let clearCache = L10n.tr("Mainstrings", "settings.clear_cache")
     /// Custom Day Start
@@ -399,6 +403,8 @@ internal enum L10n {
     internal static let disablePm = L10n.tr("Mainstrings", "settings.disable_pm")
     /// Display Notification Badge
     internal static let displayNotificationBadge = L10n.tr("Mainstrings", "settings.display_notification_badge")
+    /// Enable Class System
+    internal static let enableClassSystem = L10n.tr("Mainstrings", "settings.enable_class_system")
     /// Every day at
     internal static let everyDay = L10n.tr("Mainstrings", "settings.every_day")
     /// Fix Character Values
@@ -419,6 +425,8 @@ internal enum L10n {
     internal static let reloadContent = L10n.tr("Mainstrings", "settings.reload_content")
     /// Reminder
     internal static let reminder = L10n.tr("Mainstrings", "settings.reminder")
+    /// Select Class
+    internal static let selectClass = L10n.tr("Mainstrings", "settings.select_class")
     /// Social
     internal static let social = L10n.tr("Mainstrings", "settings.social")
     /// Sound Theme
