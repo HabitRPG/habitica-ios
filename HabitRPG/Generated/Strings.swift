@@ -585,9 +585,23 @@ internal enum L10n {
 
 extension L10n {
   private static func tr(_ table: String, _ key: String, _ args: CVarArg...) -> String {
-    let format = NSLocalizedString(key, tableName: table, bundle: Bundle(for: BundleToken.self), comment: "")
-    return String(format: format, locale: Locale.current, arguments: args)
+    return localizeStringAndFallbackToEn(table, key, args)
   }
+}
+
+func localizeStringAndFallbackToEn(_ table: String, _ key: String, _ args: CVarArg...) -> String {
+    var format = NSLocalizedString(key, tableName: table, bundle: Bundle(for: BundleToken.self), comment: "")
+    let value = String(format: format, locale: Locale.current, arguments: args)
+    if value != key || NSLocale.preferredLanguages.first == "en" {
+        return String(format: format, locale: Locale.current, arguments: args)
+    }
+    // Fall back to en
+    guard
+        let path = Bundle.main.path(forResource: "Base", ofType: "lproj"),
+        let bundle = Bundle(path: path)
+        else { return value }
+    format = bundle.localizedString(forKey: key, value: nil, table: table)
+    return String(format: format, locale: Locale.current, arguments: args)
 }
 
 private final class BundleToken {}
