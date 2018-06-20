@@ -253,7 +253,7 @@ class SettingsViewController: FormViewController, Themeable {
             <<< PushRow<LabeledFormValue<String>>(SettingsTags.soundTheme) { row in
                 row.title = L10n.Settings.soundTheme
                 row.options = SoundTheme.allThemes.map({ (theme) -> LabeledFormValue<String> in
-                    return LabeledFormValue(value: theme.rawValue, label: theme.rawValue)
+                    return LabeledFormValue(value: theme.rawValue, label: theme.niceName)
                 })
                 let defaults = UserDefaults.standard
                 row.onChange({ (row) in
@@ -310,7 +310,7 @@ class SettingsViewController: FormViewController, Themeable {
         if let theme = SoundTheme.allThemes.first(where: { (theme) -> Bool in
             return theme == user.preferences?.sound ?? SoundTheme.none.rawValue
         }) {
-            (form.rowBy(tag: SettingsTags.soundTheme) as? PushRow<LabeledFormValue<String>>)?.value = LabeledFormValue(value: theme.rawValue, label: theme.rawValue)
+            (form.rowBy(tag: SettingsTags.soundTheme) as? PushRow<LabeledFormValue<String>>)?.value = LabeledFormValue(value: theme.rawValue, label: theme.niceName)
         }
     }
 }

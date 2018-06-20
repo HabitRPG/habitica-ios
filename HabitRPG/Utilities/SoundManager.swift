@@ -76,6 +76,45 @@ enum SoundTheme: String, EquatableStringEnumProtocol {
             SoundTheme.watts
         ]
     }
+    
+    var niceName: String {
+        switch self {
+        case .none:
+            return "Off"
+        case .airu:
+            return "Airu's Theme"
+        case .arashi:
+            return "Arashi's Theme"
+        case .beatScribeNes:
+            return "Beatscribe's NES Theme"
+        case .danielTheBard:
+            return "Daniel The Bard"
+        case .dewin:
+            return "Dewin's Theme"
+        case .farvoid:
+            return "Farvoid Theme"
+        case .gokul:
+            return "Gokul's Theme"
+        case .lunasol:
+            return "Lunasol Theme"
+        case .luneFox:
+            return "LuneFox's Theme"
+        case .mafl:
+            return "MAFL Theme"
+        case .pizilden:
+            return "Pizilden's Theme"
+        case .rosstavo:
+            return "Rosstavo's Theme"
+        case .spacePengiun:
+            return "SpacePenguin's Theme"
+        case .triumph:
+            return "Triumph's Theme"
+        case .watts:
+            return "Watts' Theme"
+        default:
+            return ""
+        }
+    }
 }
 
 class SoundManager {
