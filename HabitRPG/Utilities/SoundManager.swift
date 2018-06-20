@@ -39,7 +39,7 @@ enum SoundEffect: String {
 }
 
 enum SoundTheme: String, EquatableStringEnumProtocol {
-    case none
+    case none = "off"
     case airu = "airuTheme"
     case arashi = "arashiTheme"
     case beatScribeNes = "beatscribeNesTheme"
