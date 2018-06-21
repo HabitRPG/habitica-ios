@@ -77,7 +77,7 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     func useSkill(skill: SkillProtocol, targetId: String? = nil) -> Signal<SkillResponseProtocol?, NoError> {
         let call = UseSkillCall(skill: skill, target: targetId)
         call.fire()
-        return call.objectSignal.on(value: {[weak self]skillResponse in
+        return call.objectSignal.on(value: {[weak self] skillResponse in
                 if let response = skillResponse {
                     self?.localRepository.save(userID: self?.currentUserId, skillResponse: response)
                 }

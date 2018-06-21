@@ -45,6 +45,7 @@ class SpellsTableViewDataSource: BaseReactiveTableViewDataSource<Any>, SpellsTab
     private var stats: StatsProtocol? {
         didSet {
             habitClass = stats?.habitClass
+            tableView?.reloadData()
         }
     }
     private var habitClass: String? {
@@ -114,7 +115,7 @@ class SpellsTableViewDataSource: BaseReactiveTableViewDataSource<Any>, SpellsTab
         let cell = tableView.dequeueReusableCell(withIdentifier: cellname, for: indexPath)
         if let skill = skill, let skillCell = cell as? SkillTableViewCell {
             if canUse {
-                skillCell.configureUnlocked(skill: skill)
+                skillCell.configureUnlocked(skill: skill, manaLeft: stats?.mana ?? 0)
             } else {
                 skillCell.configureLocked(skill: skill)
             }

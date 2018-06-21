@@ -11,6 +11,7 @@ import Habitica_Models
 
 class SkillTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var containerView: UIView?
     @IBOutlet weak var skillImageView: UIImageView!
     @IBOutlet weak var buyButton: UIView!
     @IBOutlet weak var magicIconView: UIImageView?
@@ -24,10 +25,19 @@ class SkillTableViewCell: UITableViewCell {
         magicIconView?.image = HabiticaIcons.imageOfMagic
     }
     
-    func configureUnlocked(skill: SkillProtocol) {
+    func configureUnlocked(skill: SkillProtocol, manaLeft: Float) {
         titleLabel.text = skill.text
         notesLabel.text = skill.notes
         costLabel?.text = String(describing: skill.mana)
+        if manaLeft < Float(skill.mana) {
+            buyButton.backgroundColor = UIColor.gray600()
+            magicIconView?.alpha = 0.3
+            costLabel?.alpha = 0.3
+        } else {
+            buyButton.backgroundColor = UIColor.blue500().withAlphaComponent(0.24)
+            magicIconView?.alpha = 1.0
+            costLabel?.alpha = 1.0
+        }
         skillImageView.setShopImagewith(name: skill.key)
     }
     
@@ -44,5 +54,20 @@ class SkillTableViewCell: UITableViewCell {
         notesLabel.text = transformationItem.notes
         skillImageView.setShopImagewith(name: transformationItem.key)
         numberOwnedLabel?.text = String(numberOwned)
+    }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        
+        if selected {
+            UIView.animate(withDuration: animated ? 0.2 : 0) {[weak self] in
+                self?.containerView?.backgroundColor = UIColor.gray600()
+            }
+        } else {
+            UIView.animate(withDuration: animated ? 0.2 : 0) {[weak self] in
+                self?.containerView?.backgroundColor = UIColor.gray700()
+            }
+            
+        }
     }
 }
