@@ -55,7 +55,7 @@ extension Avatar {
             "background": showsBackground && isValid(background),
             "mount-body": showsMount && isValid(mount),
             "chair": hasNoVisualBuff && isValid(chair) && chair != "none",
-            "back":  hasNoVisualBuff && isValid(back) && isAvailableGear(back),
+            "back": hasNoVisualBuff && isValid(back) && isAvailableGear(back),
             "skin": hasNoVisualBuff && isValid(skin),
             "shirt": hasNoVisualBuff && isValid(shirt),
             "armor": hasNoVisualBuff && isValid(armor) && isAvailableGear(armor),
@@ -109,11 +109,13 @@ extension Avatar {
     }
 }
 
-class AvatarViewModel: Avatar {
+@objc
+class AvatarViewModel: NSObject, Avatar {
     weak var avatar: AvatarProtocol?
     
-    init() {}
+    override init() {}
     
+    @objc
     init(avatar: AvatarProtocol) {
         self.avatar = avatar
     }

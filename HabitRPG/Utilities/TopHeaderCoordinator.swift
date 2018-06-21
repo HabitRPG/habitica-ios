@@ -19,6 +19,8 @@ class TopHeaderCoordinator: NSObject {
     @objc var navbarHiddenColor: UIColor?
     @objc var navbarVisibleColor: UIColor?
     
+    private var didAppear = false
+    
     @objc
     init(topHeaderNavigationController: UINavigationController & TopHeaderNavigationControllerProtocol) {
         self.topHeaderNavigationController = topHeaderNavigationController
@@ -45,6 +47,7 @@ class TopHeaderCoordinator: NSObject {
     
     @objc
     func viewWillAppear() {
+        didAppear = false
         guard let navController = topHeaderNavigationController else {
             return
         }
@@ -104,6 +107,7 @@ class TopHeaderCoordinator: NSObject {
         if navController.state == .visible && scrollView.contentOffset.y > -navController.contentOffset {
             navController.scrollView(scrollView, scrolledToPosition: scrollView.contentOffset.y)
         }
+        didAppear = true
     }
     
     @objc
@@ -123,5 +127,17 @@ class TopHeaderCoordinator: NSObject {
             return
         }
         navController.scrollView(scrollView, scrolledToPosition: scrollView.contentOffset.y)
+    }
+    
+    @objc
+    func showHideHeader(show: Bool, animated: Bool = true) {
+        guard let navController = topHeaderNavigationController else {
+            return
+        }
+        if show {
+            navController.showHeader(animated: animated)
+        } else {
+            navController.hideHeader(animated: animated)
+        }
     }
 }

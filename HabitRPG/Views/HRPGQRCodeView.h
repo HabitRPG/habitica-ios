@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol AvatarProtocol;
+
 @interface HRPGQRCodeView : UIView
 
 @property (nonatomic) NSString *userID;
 
-- (void)setAvatarViewWithUser:(NSObject *)user;
+- (void)setAvatarViewWithUser:(id<AvatarProtocol>)user;
 
 @property (nonatomic) void (^shareAction)();
 

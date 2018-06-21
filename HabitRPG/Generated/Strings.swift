@@ -21,6 +21,8 @@ internal enum L10n {
   internal static let confirm = L10n.tr("Mainstrings", "confirm")
   /// Controls
   internal static let controls = L10n.tr("Mainstrings", "controls")
+  /// Copied to Clipboard
+  internal static let copiedToClipboard = L10n.tr("Mainstrings", "copied_to_clipboard")
   /// Create
   internal static let create = L10n.tr("Mainstrings", "create")
   /// Daily

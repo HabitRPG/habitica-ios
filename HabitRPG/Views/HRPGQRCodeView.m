@@ -8,12 +8,13 @@
 
 #import "HRPGQRCodeView.h"
 #import "UIColor+Habitica.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGQRCodeView ()
 
 @property UIImageView *qrCodeView;
 @property UIView *avatarView;
-@property UIView *wrapperView;
+@property AvatarView *wrapperView;
 @property UIView *outerWrapperView;
 @property int scaling;
 @end
@@ -39,7 +40,7 @@
     CGFloat avatarSize = 6 * 13;
     self.avatarView.frame = CGRectMake((self.qrCodeView.frame.size.width-avatarSize)/2, (self.qrCodeView.frame.size.height-avatarSize)/2, avatarSize, avatarSize);
     CGFloat innerSize = avatarSize-10;
-    self.wrapperView.frame = CGRectMake(-41, -16, avatarSize*1.5, avatarSize*1.5);
+    self.wrapperView.frame = CGRectMake(-23, -5, avatarSize* 1.2, avatarSize * 1.2);
     self.outerWrapperView.frame = CGRectMake(5, 5, innerSize, innerSize);
 }
 
@@ -48,18 +49,21 @@
     [self setQrCode];
 }
 
-- (void)setAvatarViewWithUser:(NSObject *)user {
+- (void)setAvatarViewWithUser:(id<AvatarProtocol>)user {
     if (self.avatarView) {
         [self.avatarView removeFromSuperview];
     }
     self.avatarView = [[UIView alloc] init];
     self.avatarView.backgroundColor = [UIColor purple100];
-    self.wrapperView = [[UIView alloc] init];
+    self.wrapperView = [[AvatarView alloc] init];
+    self.wrapperView.size = AvatarViewSizeCompact;
+    self.wrapperView.showPet = NO;
+    self.wrapperView.showMount = NO;
+    self.wrapperView.showBackground = NO;
     self.outerWrapperView = [[UIView alloc] init];
     self.outerWrapperView.clipsToBounds = YES;
     self.outerWrapperView.backgroundColor = [UIColor whiteColor];
-    //TODO: FIX
-    //[user setAvatarSubview:self.wrapperView showsBackground:NO showsMount:NO showsPet:NO];
+    self.wrapperView.avatar = [[AvatarViewModel alloc] initWithAvatar:user];
     [self.outerWrapperView addSubview:self.wrapperView];
     [self.avatarView addSubview:self.outerWrapperView];
     [self addSubview:self.avatarView];

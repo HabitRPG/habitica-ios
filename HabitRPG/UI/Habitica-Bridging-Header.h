@@ -35,3 +35,4 @@
 #import "HRPGSharingManager.h"
 #import "HRPGFeedViewController.h"
 #import "HRPGSpellTabBarController.h"
+#import "HRPGQRCodeView.h"
