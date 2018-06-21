@@ -50,26 +50,27 @@ extension Avatar {
     }
     
     func getViewDictionary(showsBackground: Bool, showsMount: Bool, showsPet: Bool, isFainted: Bool) -> [String: Bool] {
+        let hasNoVisualBuff = !isValid(visualBuff)
         return [
             "background": showsBackground && isValid(background),
             "mount-body": showsMount && isValid(mount),
-            "chair": isValid(chair) && chair != "none",
-            "back": isValid(back) && isAvailableGear(back),
-            "skin": isValid(skin),
-            "shirt": isValid(shirt),
-            "armor": isValid(armor) && isAvailableGear(armor),
-            "body": isValid(body) && isAvailableGear(body),
-            "head_0": true,
-            "hair-base": isValid(hairBase) && hairBase != "0",
-            "hair-bangs": isValid(hairBangs) && hairBangs != "0" ,
-            "hair-mustache": isValid(hairMustache) && hairMustache != "0",
-            "hair-beard": isValid(hairBeard) && hairBeard != "0",
-            "eyewear": isValid(eyewear) && isAvailableGear(eyewear),
-            "head": isValid(head) && isAvailableGear(head),
-            "head-accessory": isValid(headAccessory) && isAvailableGear(headAccessory),
-            "hair-flower": isValid(hairFlower) && hairFlower != "0",
-            "shield": isValid(shield) && isAvailableGear(shield),
-            "weapon": isValid(weapon) && isAvailableGear(weapon),
+            "chair": hasNoVisualBuff && isValid(chair) && chair != "none",
+            "back":  hasNoVisualBuff && isValid(back) && isAvailableGear(back),
+            "skin": hasNoVisualBuff && isValid(skin),
+            "shirt": hasNoVisualBuff && isValid(shirt),
+            "armor": hasNoVisualBuff && isValid(armor) && isAvailableGear(armor),
+            "body": hasNoVisualBuff && isValid(body) && isAvailableGear(body),
+            "head_0": hasNoVisualBuff,
+            "hair-base": hasNoVisualBuff && isValid(hairBase) && hairBase != "0",
+            "hair-bangs": hasNoVisualBuff && isValid(hairBangs) && hairBangs != "0" ,
+            "hair-mustache": hasNoVisualBuff && isValid(hairMustache) && hairMustache != "0",
+            "hair-beard": hasNoVisualBuff && isValid(hairBeard) && hairBeard != "0",
+            "eyewear": hasNoVisualBuff && isValid(eyewear) && isAvailableGear(eyewear),
+            "head": hasNoVisualBuff && isValid(head) && isAvailableGear(head),
+            "head-accessory": hasNoVisualBuff && isValid(headAccessory) && isAvailableGear(headAccessory),
+            "hair-flower": hasNoVisualBuff && isValid(hairFlower) && hairFlower != "0",
+            "shield": hasNoVisualBuff && isValid(shield) && isAvailableGear(shield),
+            "weapon": hasNoVisualBuff && isValid(weapon) && isAvailableGear(weapon),
             "visual-buff": isValid(visualBuff),
             "mount-head": showsMount && isValid(mount),
             "zzz": isSleep && !isFainted,
@@ -214,6 +215,20 @@ class AvatarViewModel: Avatar {
     }
     
     var visualBuff: String? {
+        if let buff = avatar?.stats?.buffs {
+            if buff.seafoam {
+                return "seafoam_star"
+            }
+            if buff.shinySeed {
+                return "avatar_floral_\(avatar?.stats?.habitClass ?? "warrior")"
+            }
+            if buff.snowball {
+                return "snowman"
+            }
+            if buff.spookySparkles {
+                return "ghost"
+            }
+        }
         return nil
     }
     

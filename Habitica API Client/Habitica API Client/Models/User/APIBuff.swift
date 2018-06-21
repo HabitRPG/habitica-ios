@@ -29,6 +29,7 @@ class APIBuff: BuffProtocol, Codable {
         case shinySeed
         case snowball
         case seafoam
+        case spookySparkles
         case streaks
         case stealth
     }

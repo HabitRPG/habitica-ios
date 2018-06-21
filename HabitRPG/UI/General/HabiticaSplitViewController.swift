@@ -38,6 +38,7 @@ class HabiticaSplitViewController: HRPGUIViewController, UIScrollViewDelegate {
         topHeaderCoordinator.hideHeader = showAsSplitView
         
         scrollView.delegate = self
+        scrollView.bounces = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
