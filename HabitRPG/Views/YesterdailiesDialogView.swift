@@ -50,7 +50,11 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
         if let window = self.view.window {
             self.heightConstraint.constant = window.frame.size.height - 200
         }
-        yesterdailiesHeightConstraint.constant = yesterdailiesTableView.contentSize.height
+        if #available(iOS 10.0, *) {
+            yesterdailiesHeightConstraint.constant = yesterdailiesTableView.contentSize.height
+        } else {
+            yesterdailiesHeightConstraint.constant = yesterdailiesTableView.contentSize.height + 100
+        }
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
