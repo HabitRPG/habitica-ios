@@ -72,7 +72,7 @@ class YesterdailyTaskCell: UITableViewCell {
     private func layout() {
         wrapperView.pin.horizontally()
         checkbox.pin.width(55).start().top()
-        titleTextView.pin.after(of: checkbox).marginStart(10).end(4).top().sizeToFit(.width)
+        titleTextView.pin.after(of: checkbox).marginStart(10).end(8).top().sizeToFit(.width)
         let textHeight = max(titleTextView.frame.size.height + 8, 48)
         checkbox.pin.height(textHeight)
         titleTextView.pin.height(textHeight)
@@ -87,7 +87,7 @@ class YesterdailyTaskCell: UITableViewCell {
             }
             view.pin.top(to: topEdge).horizontally()
             itemCheckbox.pin.width(55).start().top()
-            label.pin.after(of: itemCheckbox).marginStart(10).end(4).top().sizeToFit(.width)
+            label.pin.after(of: itemCheckbox).marginStart(10).end(8).top().sizeToFit(.width)
             let itemHeight = max(label.frame.size.height + 8, 40)
             label.pin.height(itemHeight)
             itemCheckbox.pin.height(itemHeight)

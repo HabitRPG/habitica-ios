@@ -108,7 +108,7 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         }).start()
         if tasks.count > 0 {
             var signal = taskRepository.score(task: tasks[0], direction: .up)
-            for task in tasks {
+            for task in tasks.dropFirst() {
                 signal = signal.flatMap(.concat, { (_) in
                     return self.taskRepository.score(task: task, direction: .up)
                 })
