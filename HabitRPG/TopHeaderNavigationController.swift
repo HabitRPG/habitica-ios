@@ -308,12 +308,7 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
         self.upperBackgroundView.backgroundColor = navbarVisibleColor.blend(with: navbarHiddenColor, alpha: alpha)
         self.backgroundView.backgroundColor = navbarVisibleColor.blend(with: navbarHiddenColor, alpha: alpha)
         let tintColor = visibleTintColor.blend(with: hiddenTintColor, alpha: alpha)
-        self.topViewController?.navigationItem.leftBarButtonItems?.forEach({ (button) in
-            button.tintColor = tintColor
-        })
-        self.topViewController?.navigationItem.rightBarButtonItems?.forEach({ (button) in
-            button.tintColor = tintColor
-        })
+        self.navigationBar.tintColor = tintColor
         self.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: (visibleTextColor.blend(with: hiddenTextColor, alpha: alpha) ?? .white)]
         updateStatusbarColor()
     }

@@ -238,8 +238,6 @@ class AttributePointsViewController: HRPGUIViewController, Themeable {
     }
     
     @IBAction func autoAllocationChanged(_ sender: UISwitch) {
-        user?.preferences?.automaticAllocation = sender.isOn
-        updateAutoAllocatonViews()
         disposable.inner.add(userRepository.updateUser(key: "preferences.automaticAllocation", value: sender.isOn).observeCompleted {})
     }
     
