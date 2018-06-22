@@ -65,4 +65,13 @@ class PartyViewController: SplitSocialViewController {
             HRPGSharingManager.shareItems([image], withPresenting: self, withSourceView: nil)
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == StoryboardSegue.Social.formSegue.rawValue {
+            let navigationController = segue.destination as? UINavigationController
+            let formViewController = navigationController?.topViewController as? GroupFormViewController
+            formViewController?.isParty = true
+        }
+        super.prepare(for: segue, sender: sender)
+    }
 }

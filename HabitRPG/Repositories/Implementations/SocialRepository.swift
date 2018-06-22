@@ -377,6 +377,7 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
         return call.objectSignal.on(value: {[weak self] returnedGroup in
             if let returnedGroup = returnedGroup {
                 self?.localRepository.save(returnedGroup)
+                self?.localRepository.joinGroup(userID: self?.currentUserId ?? "", groupID: returnedGroup.id ?? "", group: returnedGroup)
             }
         })
     }

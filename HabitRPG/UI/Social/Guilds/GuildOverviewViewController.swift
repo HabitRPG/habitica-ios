@@ -54,6 +54,8 @@ class GuildOverviewViewController: HRPGBaseViewController, UISearchBarDelegate {
         searchbar.placeholder = L10n.search
         searchbar.delegate = self
         self.tableView.tableHeaderView = searchbar
+        
+        dataSource?.retrieveData(completed: nil)
     }
     
     override func viewWillLayoutSubviews() {

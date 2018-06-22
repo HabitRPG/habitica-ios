@@ -74,6 +74,7 @@ public class APIGroup: GroupProtocol, Codable {
         groupDescription = group.groupDescription
         summary = group.summary
         privacy = group.privacy
+        type = group.type
         leaderID = group.leaderID
         leaderOnlyChallenges = group.leaderOnlyChallenges
     }
@@ -85,6 +86,7 @@ public class APIGroup: GroupProtocol, Codable {
         try? container.encode(groupDescription, forKey: .groupDescription)
         try? container.encode(summary, forKey: .summary)
         try? container.encode(privacy, forKey: .privacy)
+        try? container.encode(type, forKey: .type)
         if let leaderID = self.leaderID {
             try? container.encode(leaderID, forKey: .leader)
         }

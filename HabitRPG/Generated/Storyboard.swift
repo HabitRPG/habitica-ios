@@ -136,8 +136,6 @@ internal enum StoryboardScene {
 
     internal static let inboxViewController = SceneType<HRPGInboxTableViewController>(storyboard: Social.self, identifier: "InboxViewController")
 
-    internal static let messageViewController = SceneType<HRPGNavigationController>(storyboard: Social.self, identifier: "MessageViewController")
-
     internal static let partyNavigationViewController = SceneType<UINavigationController>(storyboard: Social.self, identifier: "PartyNavigationViewController")
 
     internal static let partyViewController = SceneType<Habitica.PartyViewController>(storyboard: Social.self, identifier: "PartyViewController")

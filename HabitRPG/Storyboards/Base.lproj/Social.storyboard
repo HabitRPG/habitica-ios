@@ -169,7 +169,7 @@
                         <viewControllerLayoutGuide type="bottom" id="ucE-b4-Own"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="43x-Iu-HK8">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.97636467218399048" green="0.97653168439865112" blue="0.97635418176651001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -1326,74 +1326,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vEH-Cl-wP7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="22" y="5030"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="aUa-L4-h0K">
-            <objects>
-                <navigationController storyboardIdentifier="MessageViewController" definesPresentationContext="YES" id="dI6-k2-5eY" customClass="HRPGNavigationController" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1JH-f4-g6g">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="WeM-Vg-53j" kind="relationship" relationship="rootViewController" id="IB4-Hq-Np4"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="giM-rA-WLY" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="18" y="3638"/>
-        </scene>
-        <!--New Message-->
-        <scene sceneID="uHM-ps-ZWu">
-            <objects>
-                <viewController id="WeM-Vg-53j" customClass="HRPGMessageViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="g2k-lk-5fc"/>
-                        <viewControllerLayoutGuide type="bottom" id="31y-mL-Hvj"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="mHk-1m-59t">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V0S-Uy-ZIr">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <connections>
-                                    <outlet property="delegate" destination="WeM-Vg-53j" id="gHe-Bl-9oP"/>
-                                </connections>
-                            </textView>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="V0S-Uy-ZIr" firstAttribute="top" secondItem="mHk-1m-59t" secondAttribute="topMargin" id="4G2-TF-TJV"/>
-                            <constraint firstItem="V0S-Uy-ZIr" firstAttribute="leading" secondItem="mHk-1m-59t" secondAttribute="leadingMargin" constant="-16" id="JnG-gh-fg4"/>
-                            <constraint firstItem="31y-mL-Hvj" firstAttribute="top" secondItem="V0S-Uy-ZIr" secondAttribute="bottom" id="pyj-Qo-S9j"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="V0S-Uy-ZIr" secondAttribute="trailing" constant="-16" id="x2U-Kb-1lK"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="New Message" id="Ib5-SB-HqM">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="EK1-lk-GhX">
-                            <connections>
-                                <segue destination="d5D-MG-JXW" kind="unwind" unwindAction="unwindToGroup:" id="emI-wB-Td2"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="done" id="wVT-fv-K7E">
-                            <connections>
-                                <segue destination="d5D-MG-JXW" kind="unwind" unwindAction="unwindToListSendMessage:" id="1jD-Pf-dCj"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="bottomOffsetConstraint" destination="pyj-Qo-S9j" id="m95-NO-a63"/>
-                        <outlet property="messageView" destination="V0S-Uy-ZIr" id="6QI-3U-9Fi"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vyS-zr-Q6Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="d5D-MG-JXW" userLabel="Exit" sceneMemberID="exit"/>
-            </objects>
-            <point key="canvasLocation" x="743" y="3638"/>
         </scene>
         <!--Tavern Detail View Controller-->
         <scene sceneID="OLz-hR-cCg">
@@ -2751,127 +2683,6 @@
             </objects>
             <point key="canvasLocation" x="1920.8" y="1889.5052473763119"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="IYH-fO-8va">
-            <objects>
-                <viewController id="HhK-kj-Hk8" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="6dI-7e-Zf6">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gxr-h3-2Qg">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="01Y-kq-dJB">
-                                        <rect key="frame" x="16" y="16" width="343" height="399"/>
-                                        <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ngF-gI-7PI">
-                                                <rect key="frame" x="0.0" y="0.0" width="343" height="150"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Play Habitica in a Party" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0kC-P9-gjw">
-                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="49"/>
-                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                                        <color key="textColor" red="0.53023332359999997" green="0.50720638039999999" blue="0.56472396849999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z5A-0B-x9p">
-                                                        <rect key="frame" x="0.0" y="57" width="343" height="47"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" priority="500" constant="47" id="VEp-93-G2I"/>
-                                                        </constraints>
-                                                        <string key="text">Take on quests with friends or on your own. Battle monsters, create Challenges, and help yourself stay accountable through Parties. </string>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                        <color key="textColor" red="0.64723795650000004" green="0.63275462390000003" blue="0.67308568950000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f7d-nm-fKE">
-                                                        <rect key="frame" x="0.0" y="112" width="343" height="38"/>
-                                                        <color key="backgroundColor" red="0.97592383620000001" green="0.97666221860000002" blue="0.97603815790000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="38" id="CCa-1N-3gq"/>
-                                                        </constraints>
-                                                        <state key="normal" title="Create a new Party"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                <real key="value" value="6"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </button>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" priority="500" constant="150" id="BGq-2e-yc3"/>
-                                                </constraints>
-                                            </stackView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ve0-1s-x7D">
-                                                <rect key="frame" x="0.0" y="174" width="343" height="1"/>
-                                                <color key="backgroundColor" red="0.88328301909999996" green="0.87696492670000004" blue="0.89030760529999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="1" id="M6H-2D-uy8"/>
-                                                </constraints>
-                                            </view>
-                                            <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="n0s-9C-Zhp">
-                                                <rect key="frame" x="0.0" y="199" width="343" height="200"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Want to join a party?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x0y-06-PRS">
-                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="130"/>
-                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                                        <color key="textColor" red="0.53023332359999997" green="0.50720638039999999" blue="0.56472396849999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Give them your User ID while inviting" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pVl-Or-yUu">
-                                                        <rect key="frame" x="0.0" y="138" width="343" height="16"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" priority="500" constant="16" id="H8a-SP-Xzn"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                        <color key="textColor" red="0.64723795650000004" green="0.63275462390000003" blue="0.67308568950000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gak-qo-Nvq">
-                                                        <rect key="frame" x="0.0" y="162" width="343" height="38"/>
-                                                        <color key="backgroundColor" red="0.97592383620000001" green="0.97666221860000002" blue="0.97603815790000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="38" id="Mch-p8-nPs"/>
-                                                        </constraints>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                <real key="value" value="6"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </button>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="200" id="vHT-uo-6oA"/>
-                                                </constraints>
-                                            </stackView>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="height" priority="500" constant="500" id="bf7-d0-4Na"/>
-                                        </constraints>
-                                    </stackView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="01Y-kq-dJB" firstAttribute="top" secondItem="gxr-h3-2Qg" secondAttribute="top" constant="16" id="9Um-Bf-XqH"/>
-                                    <constraint firstAttribute="bottom" secondItem="01Y-kq-dJB" secondAttribute="bottom" constant="16" id="Lcr-Md-zXA"/>
-                                    <constraint firstItem="01Y-kq-dJB" firstAttribute="leading" secondItem="gxr-h3-2Qg" secondAttribute="leading" constant="16" id="NLw-3g-LD9"/>
-                                    <constraint firstAttribute="trailing" secondItem="01Y-kq-dJB" secondAttribute="trailing" constant="16" id="Pnf-z2-rRP"/>
-                                </constraints>
-                            </scrollView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="gxr-h3-2Qg" firstAttribute="top" secondItem="6dI-7e-Zf6" secondAttribute="top" id="2fD-uV-Cyx"/>
-                            <constraint firstAttribute="bottom" secondItem="gxr-h3-2Qg" secondAttribute="bottom" id="IDi-gG-A5T"/>
-                            <constraint firstItem="gxr-h3-2Qg" firstAttribute="leading" secondItem="6dI-7e-Zf6" secondAttribute="leading" id="T6a-8g-d13"/>
-                            <constraint firstAttribute="trailing" secondItem="gxr-h3-2Qg" secondAttribute="trailing" id="oBy-RI-lNs"/>
-                            <constraint firstAttribute="width" secondItem="01Y-kq-dJB" secondAttribute="width" constant="32" id="oig-el-xSM"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lT5-z3-bcv" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1046" y="2566"/>
-        </scene>
     </scenes>
     <resources>
         <image name="messages" width="24" height="24"/>
@@ -2884,7 +2695,7 @@
         <segue reference="jXp-j5-lvy"/>
         <segue reference="ypV-Mu-tgU"/>
         <segue reference="Nsp-ag-Sds"/>
-        <segue reference="C12-ty-sO4"/>
+        <segue reference="wif-V9-Mcy"/>
         <segue reference="rs9-Lf-2VQ"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.6058621407" green="0.38462612029999999" blue="0.99835687880000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

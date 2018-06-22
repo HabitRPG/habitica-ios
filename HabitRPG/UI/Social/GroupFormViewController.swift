@@ -127,11 +127,14 @@ class GroupFormViewController: FormViewController {
         group.groupDescription = values[GroupFormTags.groupDescription] as? String
         group.leaderOnlyChallenges = (values[GroupFormTags.leaderChallenges] as? Bool) ?? false
         group.leaderID = (values[GroupFormTags.newLeader] as? LabeledFormValue<String>)?.value
+        if isParty {
+            group.type = "party"
+            group.privacy = "private"
+        }
         if isCreating {
             socialRepository.createGroup(group).observeCompleted {}
         } else {
             socialRepository.updateGroup(group).observeCompleted {}
-
         }
     }
 }

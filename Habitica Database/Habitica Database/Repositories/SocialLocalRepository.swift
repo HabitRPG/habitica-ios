@@ -143,6 +143,15 @@ public class SocialLocalRepository: BaseLocalRepository {
         try? realm?.write {
             realm?.add(RealmGroupMembership(userID: userID, groupID: groupID), update: true)
         }
+        if group?.type == "party", let user = realm?.object(ofType: RealmUser.self, forPrimaryKey: userID) {
+            let userParty = RealmUserParty()
+            userParty.id = groupID
+            userParty.userID = userID
+            try? realm?.write {
+                realm?.add(userParty, update: true)
+                user.party = userParty
+            }
+        }
     }
     
     public func leaveGroup(userID: String, groupID: String, group: GroupProtocol?) {
@@ -153,6 +162,11 @@ public class SocialLocalRepository: BaseLocalRepository {
                 if let group = group {
                     realm?.add(RealmGroup(group), update: true)
                 }
+            }
+        }
+        if group?.type == "party", let userParty = realm?.object(ofType: RealmUserParty.self, forPrimaryKey: userID) {
+            try? realm?.write {
+                userParty.id = nil
             }
         }
     }
