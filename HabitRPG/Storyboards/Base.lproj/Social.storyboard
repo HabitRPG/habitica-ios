@@ -2329,10 +2329,17 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Q2f-jL-AaR">
-                                        <rect key="frame" x="0.0" y="16" width="375" height="717"/>
+                                        <rect key="frame" x="0.0" y="16" width="375" height="797"/>
                                         <subviews>
+                                            <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="GE4-Cj-uin" customClass="GroupInvitationListView" customModule="Habitica" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" priority="500" id="zAq-Lo-1oO"/>
+                                                </constraints>
+                                            </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uHV-tR-tWn">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="0.0"/>
+                                                <rect key="frame" x="0.0" y="80" width="375" height="0.0"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" priority="500" constant="50" id="PRv-7p-sde"/>
@@ -2342,7 +2349,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="2HP-Lk-DqD" customClass="CollapsibleStackView" customModule="Habitica" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="30" width="375" height="128"/>
+                                                <rect key="frame" x="0.0" y="110" width="375" height="128"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u6i-pg-TGI" customClass="CollapsibleTitle" customModule="Habitica" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
@@ -2358,7 +2365,7 @@
                                                         <rect key="frame" x="0.0" y="128" width="375" height="0.0"/>
                                                         <subviews>
                                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aJd-M0-VrU">
-                                                                <rect key="frame" x="0.0" y="-174" width="375" height="49"/>
+                                                                <rect key="frame" x="0.0" y="-254" width="375" height="49"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="49" id="8fM-IR-4sT"/>
@@ -2369,7 +2376,7 @@
                                                                 </connections>
                                                             </button>
                                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IU2-e4-Giw">
-                                                                <rect key="frame" x="0.0" y="-184.5" width="375" height="61"/>
+                                                                <rect key="frame" x="0.0" y="-264.5" width="375" height="61"/>
                                                                 <subviews>
                                                                     <view clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EHI-LL-yeb" customClass="AvatarView" customModule="Habitica" customModuleProvider="target">
                                                                         <rect key="frame" x="16" y="10.5" width="40" height="40"/>
@@ -2403,7 +2410,7 @@
                                                                 </constraints>
                                                             </view>
                                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jIr-tb-DyF">
-                                                                <rect key="frame" x="0.0" y="-172" width="375" height="77"/>
+                                                                <rect key="frame" x="0.0" y="-254" width="375" height="77"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9iM-dP-lgo" customClass="QuestTitleView" customModule="Habitica" customModuleProvider="target">
                                                                         <rect key="frame" x="67" y="-26" width="240" height="128"/>
@@ -2431,7 +2438,7 @@
                                                                 </constraints>
                                                             </view>
                                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x2u-nW-8ZD">
-                                                                <rect key="frame" x="0.0" y="-187" width="375" height="61"/>
+                                                                <rect key="frame" x="0.0" y="-254" width="375" height="61"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DVS-qZ-ZmV">
                                                                         <rect key="frame" x="0.0" y="13" width="179.5" height="36"/>
@@ -2484,7 +2491,7 @@
                                                                 </constraints>
                                                             </view>
                                                             <view hidden="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="hzg-Uh-Mra" customClass="PartyQuestView" customModule="Habitica" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="-174" width="375" height="128"/>
+                                                                <rect key="frame" x="0.0" y="-254" width="375" height="128"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" priority="500" constant="100" id="ZhM-xG-Dzs"/>
@@ -2501,7 +2508,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="TZS-wu-zNt" customClass="CollapsibleStackView" customModule="Habitica" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="188" width="375" height="177"/>
+                                                <rect key="frame" x="0.0" y="268" width="375" height="177"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iy4-7v-VdV" customClass="CollapsibleTitle" customModule="Habitica" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
@@ -2529,7 +2536,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9bb-T5-YM7">
-                                                <rect key="frame" x="0.0" y="395" width="375" height="49"/>
+                                                <rect key="frame" x="0.0" y="475" width="375" height="49"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e0g-qd-d5g">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
@@ -2570,7 +2577,7 @@
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="jxu-is-rhK" customClass="CollapsibleStackView" customModule="Habitica" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="474" width="375" height="177"/>
+                                                <rect key="frame" x="0.0" y="554" width="375" height="177"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NXk-Bv-dAg" customClass="CollapsibleTitle" customModule="Habitica" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
@@ -2602,7 +2609,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FTm-Ew-1fN">
-                                                <rect key="frame" x="0.0" y="681" width="375" height="36"/>
+                                                <rect key="frame" x="0.0" y="761" width="375" height="36"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qRK-ar-9GJ">
                                                         <rect key="frame" x="16" y="0.0" width="343" height="36"/>
@@ -2657,9 +2664,11 @@
                         <outlet property="groupDescriptionStackView" destination="TZS-wu-zNt" id="rZx-HP-yOb"/>
                         <outlet property="groupDescriptionTextView" destination="ftM-by-7gw" id="HKf-y5-1p9"/>
                         <outlet property="groupNameLabel" destination="uHV-tR-tWn" id="UrN-tV-2s6"/>
+                        <outlet property="invitationsListView" destination="GE4-Cj-uin" id="xpY-Nl-ZcZ"/>
                         <outlet property="leaveButton" destination="qRK-ar-9GJ" id="MlR-a4-HTL"/>
                         <outlet property="leaveButtonWrapper" destination="FTm-Ew-1fN" id="UQf-cf-xgl"/>
                         <outlet property="mainStackView" destination="Q2f-jL-AaR" id="N43-lO-5wA"/>
+                        <outlet property="mainStackviewOffset" destination="rES-pE-BUm" id="rel-1f-phI"/>
                         <outlet property="membersStackview" destination="jxu-is-rhK" id="iFR-Px-g2u"/>
                         <outlet property="partyQuestView" destination="hzg-Uh-Mra" id="X7s-XH-wi4"/>
                         <outlet property="questContentStackView" destination="HGI-ZL-5oW" id="Err-OJ-5ne"/>

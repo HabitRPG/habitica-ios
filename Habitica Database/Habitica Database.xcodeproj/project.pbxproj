@@ -33,6 +33,7 @@
 		2927269E20B6FE31009DD08A /* RealmChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2927269D20B6FE31009DD08A /* RealmChallenge.swift */; };
 		292726A020B6FE50009DD08A /* RealmChallengeCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2927269F20B6FE50009DD08A /* RealmChallengeCategory.swift */; };
 		292726B220B7043C009DD08A /* RealmChallengeMembership.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292726B120B7043C009DD08A /* RealmChallengeMembership.swift */; };
+		292844E520DD16BE0011DC43 /* RealmGroupInvitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292844E420DD16BE0011DC43 /* RealmGroupInvitation.swift */; };
 		292DEE3F204D9D810086D5F7 /* Habitica_API_Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE40204D9D810086D5F7 /* Habitica_API_Client.framework */; };
 		292DEE41204D9D860086D5F7 /* Habitica_Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE42204D9D860086D5F7 /* Habitica_Models.framework */; };
 		292DEE66204DCB010086D5F7 /* BaseLocalRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE65204DCB010086D5F7 /* BaseLocalRepository.swift */; };
@@ -131,6 +132,7 @@
 		2927269D20B6FE31009DD08A /* RealmChallenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmChallenge.swift; sourceTree = "<group>"; };
 		2927269F20B6FE50009DD08A /* RealmChallengeCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmChallengeCategory.swift; sourceTree = "<group>"; };
 		292726B120B7043C009DD08A /* RealmChallengeMembership.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmChallengeMembership.swift; sourceTree = "<group>"; };
+		292844E420DD16BE0011DC43 /* RealmGroupInvitation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RealmGroupInvitation.swift; path = "../../../../Habitica Models/Habitica Models/Group/RealmGroupInvitation.swift"; sourceTree = "<group>"; };
 		292DEE40204D9D810086D5F7 /* Habitica_API_Client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_API_Client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		292DEE42204D9D860086D5F7 /* Habitica_Models.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_Models.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		292DEE65204DCB010086D5F7 /* BaseLocalRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseLocalRepository.swift; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 				290B628C207E174C007287C4 /* RealmMember.swift */,
 				2927269D20B6FE31009DD08A /* RealmChallenge.swift */,
 				2927269F20B6FE50009DD08A /* RealmChallengeCategory.swift */,
+				292844E420DD16BE0011DC43 /* RealmGroupInvitation.swift */,
 			);
 			path = Group;
 			sourceTree = "<group>";
@@ -428,6 +431,7 @@
 				298FB9A8204D9338004DDACC /* Frameworks */,
 				298FB9A9204D9338004DDACC /* Headers */,
 				298FB9AA204D9338004DDACC /* Resources */,
+				C2E9882573C1CB1EEBDB1C9D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -447,6 +451,7 @@
 				298FB9B2204D9338004DDACC /* Frameworks */,
 				298FB9B3204D9338004DDACC /* Resources */,
 				983C9FA03B70C3B601E33E84 /* [CP] Embed Pods Frameworks */,
+				B54997F9D3F898583987EDD2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -585,6 +590,36 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		B54997F9D3F898583987EDD2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-Habitica DatabaseTests/Pods-Habitica DatabaseTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C2E9882573C1CB1EEBDB1C9D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-Habitica Database/Pods-Habitica Database-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -664,6 +699,7 @@
 				2927269E20B6FE31009DD08A /* RealmChallenge.swift in Sources */,
 				292DEE8A204E49600086D5F7 /* RealmReminder.swift in Sources */,
 				29323E412052145900AC6D6F /* RealmProfile.swift in Sources */,
+				292844E520DD16BE0011DC43 /* RealmGroupInvitation.swift in Sources */,
 				29A6B86C20690DF00086B2A6 /* RealmWeekRepeat.swift in Sources */,
 				290C3026206B96320066AF5B /* RealmOwnedItem.swift in Sources */,
 				299FB2842084975100422522 /* RealmMount.swift in Sources */,

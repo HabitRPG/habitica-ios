@@ -268,6 +268,7 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
         return call.objectSignal.on(value: {[weak self]group in
             if let userID = AuthenticationManager.shared.currentUserId {
                 self?.localRepository.joinGroup(userID: userID, groupID: groupID, group: group)
+                self?.localRepository.deleteGroupInvitation(userID: userID, groupID: groupID)
             }
         })
     }
@@ -278,6 +279,16 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
         return call.objectSignal.on(value: {[weak self]group in
             if let userID = AuthenticationManager.shared.currentUserId {
                 self?.localRepository.leaveGroup(userID: userID, groupID: groupID, group: group)
+            }
+        })
+    }
+    
+    public func rejectGroupInvitation(groupID: String) -> Signal<EmptyResponseProtocol?, NoError> {
+        let call = RejectGroupInvitationCall(groupID: groupID)
+        call.fire()
+        return call.objectSignal.on(value: {[weak self] response in
+            if response != nil, let userID = AuthenticationManager.shared.currentUserId {
+                self?.localRepository.deleteGroupInvitation(userID: userID, groupID: groupID)
             }
         })
     }

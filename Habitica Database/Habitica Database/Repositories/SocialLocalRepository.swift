@@ -171,6 +171,15 @@ public class SocialLocalRepository: BaseLocalRepository {
         }
     }
     
+    public func deleteGroupInvitation(userID: String, groupID: String) {
+        let realm = getRealm()
+        if let invitation = realm?.object(ofType: RealmGroupInvitation.self, forPrimaryKey: userID+groupID) {
+            try? realm?.write {
+                realm?.delete(invitation)
+            }
+        }
+    }
+    
     public func joinChallenge(userID: String, challengeID: String, challenge: ChallengeProtocol?) {
         let realm = getRealm()
         try? realm?.write {

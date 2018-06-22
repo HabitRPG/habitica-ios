@@ -16,6 +16,7 @@ class PartyDetailViewController: GroupDetailViewController {
     
     @IBOutlet weak var membersStackview: CollapsibleStackView!
     
+    @IBOutlet weak var invitationsListView: GroupInvitationListView!
     @IBOutlet weak var mainStackView: UIStackView!
     @IBOutlet weak var questStackView: CollapsibleStackView!
     @IBOutlet weak var questStackViewTitle: CollapsibleTitle!
@@ -31,6 +32,7 @@ class PartyDetailViewController: GroupDetailViewController {
     @IBOutlet weak var questTitleContentView: QuestTitleView!
     @IBOutlet weak var questTitleDisclosureView: UIImageView!
     @IBOutlet weak var partyQuestView: PartyQuestView!
+    @IBOutlet weak var mainStackviewOffset: NSLayoutConstraint!
     
     var fetchMembersDisposable: Disposable?
     var questStateDisposable: CompositeDisposable?
@@ -172,6 +174,18 @@ class PartyDetailViewController: GroupDetailViewController {
         if questStateDisposable == nil {
             updateQuestStateInfo(questState: user.party?.quest)
         }
+        
+        let partyInvitations = user.invitations.filter { (invitation) -> Bool in
+            return invitation.isPartyInvitation
+        }
+        if partyInvitations.count == 0 {
+            invitationsListView.isHidden = true
+            mainStackviewOffset.constant = 16
+        } else {
+            invitationsListView.isHidden = false
+            mainStackviewOffset.constant = 0
+        }
+        invitationsListView.set(invitations: partyInvitations)
     }
     
     @IBAction func rejectQuestInvitation(_ sender: Any) {

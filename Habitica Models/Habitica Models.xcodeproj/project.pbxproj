@@ -41,6 +41,7 @@
 		2927269A20B6FB61009DD08A /* ChallengeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2927269920B6FB61009DD08A /* ChallengeProtocol.swift */; };
 		2927269C20B6FD34009DD08A /* ChallengeCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2927269B20B6FD34009DD08A /* ChallengeCategory.swift */; };
 		292726B020B70429009DD08A /* ChallengeMembershipProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292726AF20B70429009DD08A /* ChallengeMembershipProtocol.swift */; };
+		292844E920DD17DC0011DC43 /* GroupInvitationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292844E820DD17DC0011DC43 /* GroupInvitationProtocol.swift */; };
 		292DEE5A204DAA000086D5F7 /* HabiticaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE59204DAA000086D5F7 /* HabiticaModel.swift */; };
 		292DEE7A204E36F60086D5F7 /* TagProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE79204E36F60086D5F7 /* TagProtocol.swift */; };
 		292DEE7C204E372E0086D5F7 /* ChecklistItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE7B204E372E0086D5F7 /* ChecklistItemProtocol.swift */; };
@@ -144,6 +145,7 @@
 		2927269920B6FB61009DD08A /* ChallengeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeProtocol.swift; sourceTree = "<group>"; };
 		2927269B20B6FD34009DD08A /* ChallengeCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCategory.swift; sourceTree = "<group>"; };
 		292726AF20B70429009DD08A /* ChallengeMembershipProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeMembershipProtocol.swift; sourceTree = "<group>"; };
+		292844E820DD17DC0011DC43 /* GroupInvitationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInvitationProtocol.swift; sourceTree = "<group>"; };
 		292DEE59204DAA000086D5F7 /* HabiticaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabiticaModel.swift; sourceTree = "<group>"; };
 		292DEE79204E36F60086D5F7 /* TagProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagProtocol.swift; sourceTree = "<group>"; };
 		292DEE7B204E372E0086D5F7 /* ChecklistItemProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistItemProtocol.swift; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 				290B628A207E1660007287C4 /* MemberProtocol.swift */,
 				2927269920B6FB61009DD08A /* ChallengeProtocol.swift */,
 				2927269B20B6FD34009DD08A /* ChallengeCategory.swift */,
+				292844E820DD17DC0011DC43 /* GroupInvitationProtocol.swift */,
 			);
 			path = Group;
 			sourceTree = "<group>";
@@ -450,6 +453,7 @@
 				298FB9D6204D9404004DDACC /* Frameworks */,
 				298FB9D7204D9404004DDACC /* Resources */,
 				58CF6008774C87164772031B /* [CP] Embed Pods Frameworks */,
+				91AD153EB20B028CA7F1088B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -560,6 +564,21 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		91AD153EB20B028CA7F1088B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-Habitica ModelsTests/Pods-Habitica ModelsTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -583,6 +602,7 @@
 				299FB28C20849DF300422522 /* OwnedPetProtocol.swift in Sources */,
 				295610F52056CA2900D9711A /* HatchingPotionProtocol.swift in Sources */,
 				292F967C20722E5800804151 /* AvatarProtocol.swift in Sources */,
+				292844E920DD17DC0011DC43 /* GroupInvitationProtocol.swift in Sources */,
 				290C3024206B94D10066AF5B /* OwnedItemProtocol.swift in Sources */,
 				2974BD95208E0DB700EC1A25 /* PurchasedProtocol.swift in Sources */,
 				2927269A20B6FB61009DD08A /* ChallengeProtocol.swift in Sources */,

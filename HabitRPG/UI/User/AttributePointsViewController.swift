@@ -75,8 +75,8 @@ class AttributePointsViewController: HRPGUIViewController, Themeable {
         
         disposable.inner.add(interactor.reactive.take(during: lifetime).observe(subscriber))
         
-        disposable.inner.add(userRepository.getUser().flatMap(.latest, { (user) in
-            return self.fetchGearStats(user: user)
+        disposable.inner.add(userRepository.getUser().flatMap(.latest, {[weak self] (user) in
+            return self?.fetchGearStats(user: user) ?? SignalProducer.empty
         }).on(value: {[weak self] (user, gear) in
             self?.user = user
             self?.updateUser()

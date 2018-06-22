@@ -259,7 +259,7 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
     
     func setNewFrame(_ frame: CGRect) {
         self.backgroundView.frame = frame
-        self.setNavigationBarColors(self.shouldHideTopHeader ? 0 : 1)
+        self.setNavigationBarColors(self.shouldHideTopHeader ? 1 : 0)
     }
     
     @objc
@@ -314,7 +314,6 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
         })
         self.topViewController?.navigationItem.rightBarButtonItems?.forEach({ (button) in
             button.tintColor = tintColor
-            
         })
         self.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: (visibleTextColor.blend(with: hiddenTextColor, alpha: alpha) ?? .white)]
         updateStatusbarColor()

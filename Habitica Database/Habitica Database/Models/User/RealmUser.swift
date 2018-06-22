@@ -228,6 +228,25 @@ class RealmUser: Object, UserProtocol {
     }
     var realmNewMessages = List<RealmUserNewMessages>()
     
+    var invitations: [GroupInvitationProtocol] {
+        get {
+            return realmInvitations.map({ (invitation) -> GroupInvitationProtocol in
+                return invitation
+            })
+        }
+        set {
+            realmInvitations.removeAll()
+            newValue.forEach { (invitation) in
+                if let realmInvitation = invitation as? RealmGroupInvitation {
+                    realmInvitations.append(realmInvitation)
+                } else {
+                    realmInvitations.append(RealmGroupInvitation(userID: id, protocolObject: invitation))
+                }
+            }
+        }
+    }
+    var realmInvitations = List<RealmGroupInvitation>()
+    
     var needsCron: Bool = false
     var lastCron: Date?
     
@@ -236,7 +255,7 @@ class RealmUser: Object, UserProtocol {
     }
     
     override static func ignoredProperties() -> [String] {
-        return ["flags", "preferences", "stats", "profile", "contributor", "tasksOrder", "items", "tags", "inbox", "authentication", "purchased", "party"]
+        return ["flags", "preferences", "stats", "profile", "contributor", "tasksOrder", "items", "tags", "inbox", "authentication", "purchased", "party", "invitations"]
     }
     
     convenience init(_ user: UserProtocol) {
@@ -258,5 +277,6 @@ class RealmUser: Object, UserProtocol {
         party = user.party
         challenges = user.challenges
         hasNewMessages = user.hasNewMessages
+        invitations = user.invitations
     }
 }

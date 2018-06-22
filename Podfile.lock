@@ -32,7 +32,7 @@ PODS:
   - iOSSnapshotTestCase/SwiftSupport (3.0.0):
     - iOSSnapshotTestCase/Core
   - KeychainAccess (3.1.1)
-  - Keys (1.0.1)
+  - Keys (1.0.0)
   - Kingfisher (4.8.0)
   - KLCPopup (1.0)
   - Masonry (1.1.0)
@@ -65,7 +65,7 @@ PODS:
   - MRProgress/Stopable (0.8.3):
     - MRProgress/Helper
   - Nimble (7.0.3)
-  - "NSString+Emoji (0.2.0)"
+  - NSString+Emoji (0.2.0)
   - OHHTTPStubs/Core (6.1.0)
   - OHHTTPStubs/Default (6.1.0):
     - OHHTTPStubs/Core
@@ -79,7 +79,7 @@ PODS:
   - OHHTTPStubs/OHPathHelpers (6.1.0)
   - OHHTTPStubs/Swift (6.1.0):
     - OHHTTPStubs/Default
-  - PinLayout (1.7.6)
+  - PinLayout (1.7.7)
   - PopupDialog (0.7.1):
     - DynamicBlurView (~> 2.0)
   - Prelude (3.0.0)
@@ -88,11 +88,11 @@ PODS:
     - ReactiveSwift (~> 3.1)
   - ReactiveSwift (3.1.0):
     - Result (~> 3.2)
-  - Realm (3.7.3):
-    - Realm/Headers (= 3.7.3)
-  - Realm/Headers (3.7.3)
-  - RealmSwift (3.7.3):
-    - Realm (= 3.7.3)
+  - Realm (3.7.4):
+    - Realm/Headers (= 3.7.4)
+  - Realm/Headers (3.7.4)
+  - RealmSwift (3.7.4):
+    - Realm (= 3.7.4)
   - Result (3.2.4)
   - SeedsSDK (0.5.0)
   - SlackTextViewController (1.9.6)
@@ -121,7 +121,7 @@ DEPENDENCIES:
   - Masonry
   - MRProgress
   - Nimble (~> 7.0.0)
-  - "NSString+Emoji"
+  - NSString+Emoji
   - PinLayout
   - PopupDialog (from `https://github.com/Orderella/PopupDialog.git`, branch `development`)
   - Quick (~> 1.2.0)
@@ -134,44 +134,6 @@ DEPENDENCIES:
   - SwiftyStoreKit
   - VTAcknowledgementsViewController
   - XLForm
-
-SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
-    - Amplitude-iOS
-    - AppAuth
-    - Bolts
-    - DateTools
-    - Down
-    - DynamicBlurView
-    - Eureka
-    - FBSDKCoreKit
-    - FBSDKLoginKit
-    - FLEX
-    - Instabug
-    - iOSSnapshotTestCase
-    - KeychainAccess
-    - Kingfisher
-    - KLCPopup
-    - Masonry
-    - MRProgress
-    - Nimble
-    - "NSString+Emoji"
-    - OHHTTPStubs
-    - PinLayout
-    - Prelude
-    - Quick
-    - ReactiveCocoa
-    - ReactiveSwift
-    - Realm
-    - RealmSwift
-    - Result
-    - SeedsSDK
-    - SlackTextViewController
-    - SwiftGen
-    - SwiftLint
-    - SwiftyStoreKit
-    - VTAcknowledgementsViewController
-    - XLForm
 
 EXTERNAL SOURCES:
   FunkyNetwork:
@@ -205,22 +167,22 @@ SPEC CHECKSUMS:
   Instabug: 7a7fea34bdc40735e8961750a2f9f34b7a8fae4a
   iOSSnapshotTestCase: 23984ffe05289728d646cbb6a7a10b4fb1c93440
   KeychainAccess: 7bd430028059754a3debab3cfc0bd1fc7fb85df3
-  Keys: a576f4c9c1c641ca913a959a9c62ed3f215a8de9
+  Keys: af65e23feef2a047b3277b1ef0399f1209ef9d46
   Kingfisher: 976d828df2b24834c6a3f2fc4d82cdbd26552be1
   KLCPopup: 76c5a19227977f1e53d85236f9ef42257c168d98
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MRProgress: 16de7cc9f347e8846797a770db102a323fe7ef09
   Nimble: 7f5a9c447a33002645a071bddafbfb24ea70e0ac
-  "NSString+Emoji": 127da93993ac7c01eadb2edbb039cda89a1369f4
+  NSString+Emoji: 127da93993ac7c01eadb2edbb039cda89a1369f4
   OHHTTPStubs: 1e21c7d2c084b8153fc53d48400d8919d2d432d0
-  PinLayout: 359b7ce1714450139463595ef0a9b0046be215c0
+  PinLayout: 0777b5d8d73822aa203454d90118d4e98086e43a
   PopupDialog: 39598b7d41719f5c025b4b70e62728bae7734fef
   Prelude: fe4cc0fd961d34edf48fe6b04d05c863449efb0a
   Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
   ReactiveCocoa: 476dae7ca790f40d30d186a1bd7ebae4290395d5
   ReactiveSwift: 5b26d2e988fe0eed2daf48c4054d1de74db50184
-  Realm: f366e954e3330d4915a319e96cc04e2ee09a9ef2
-  RealmSwift: 56f111b1dd439973fbe1c066b067ac4702285441
+  Realm: a469bb59e33f9926102ccaea4349822c53b9117e
+  RealmSwift: a45861b21c180f5cf0f122144b9759fa8dde3e9e
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
   SeedsSDK: 8de27e088c15ff3eba33a6d2941ec507e4a5bb95
   SlackTextViewController: b854e62c1c156336bc4fd409c6ca79b5773e8f9d
@@ -232,4 +194,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 045014516ef4a926e6805c2c1be3843507abe0a9
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.4.0

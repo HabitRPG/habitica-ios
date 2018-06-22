@@ -252,6 +252,14 @@ internal enum L10n {
   internal enum Groups {
     /// Assign new Leader
     internal static let assignNewLeader = L10n.tr("Mainstrings", "groups.assign_new_leader")
+    /// %@ invited you to join Guild: %@
+    internal static func guildInvitationInvitername(_ p1: String, _ p2: String) -> String {
+      return L10n.tr("Mainstrings", "groups.guild_invitation_invitername", p1, p2)
+    }
+    /// Someone invited you to join Guild: %@
+    internal static func guildInvitationNoInvitername(_ p1: String) -> String {
+      return L10n.tr("Mainstrings", "groups.guild_invitation_no_invitername", p1)
+    }
     /// Only leader can create Challenges
     internal static let leaderChallenges = L10n.tr("Mainstrings", "groups.leader_challenges")
   }
@@ -339,6 +347,12 @@ internal enum L10n {
   }
 
   internal enum Party {
+    /// %@ invited you to join their party
+    internal static func invitationInvitername(_ p1: String) -> String {
+      return L10n.tr("Mainstrings", "party.invitation_invitername", p1)
+    }
+    /// Someone invited you to join their party
+    internal static let invitationNoInvitername = L10n.tr("Mainstrings", "party.invitation_no_invitername")
     /// %@ invited you to participate in a quest
     internal static func invitedToQuest(_ p1: String) -> String {
       return L10n.tr("Mainstrings", "party.invited_to_quest", p1)

@@ -14,7 +14,13 @@ class TopHeaderCoordinator: NSObject {
     private weak var topHeaderNavigationController: (UINavigationController & TopHeaderNavigationControllerProtocol)?
     @objc weak var alternativeHeader: UIView?
     @objc var hideNavBar = false
-    @objc var hideHeader = false
+    @objc var hideHeader = false {
+        didSet {
+            if didAppear {
+                topHeaderNavigationController?.shouldHideTopHeader = hideHeader
+            }
+        }
+    }
     @objc var followScrollView = true
     @objc var navbarHiddenColor: UIColor?
     @objc var navbarVisibleColor: UIColor?
@@ -91,6 +97,7 @@ class TopHeaderCoordinator: NSObject {
         if scrollView?.contentOffset.y ?? 0 < -navController.contentOffset {
             scrollView?.contentOffset = CGPoint(x: 0, y: 0)
         }
+        didAppear = true
     }
     
     @objc
@@ -107,7 +114,6 @@ class TopHeaderCoordinator: NSObject {
         if navController.state == .visible && scrollView.contentOffset.y > -navController.contentOffset {
             navController.scrollView(scrollView, scrolledToPosition: scrollView.contentOffset.y)
         }
-        didAppear = true
     }
     
     @objc
