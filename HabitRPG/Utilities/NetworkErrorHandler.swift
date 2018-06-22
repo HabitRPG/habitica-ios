@@ -40,7 +40,6 @@ class HabiticaNetworkErrorHandler: NetworkErrorHandler {
             self.notify(message: error.localizedDescription, code: 0)
         }
         
-        Instabug.reportError(error)
         Instabug.logError(error.localizedDescription)
         for message in messages {
             Instabug.logError("Network Error: \(message)")
