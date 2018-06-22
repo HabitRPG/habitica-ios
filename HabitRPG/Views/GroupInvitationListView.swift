@@ -9,13 +9,19 @@
 import Foundation
 import Habitica_Models
 import PinLayout
+import ReactiveSwift
 
 class GroupInvitationListView: UIView {
     
     private var invitationViews = [GroupInvitationView]()
     private let socialRepository = SocialRepository()
+    private var disposable = CompositeDisposable()
     
     func set(invitations: [GroupInvitationProtocol]?) {
+        if !disposable.isDisposed {
+            disposable.dispose()
+        }
+        disposable = CompositeDisposable()
         invitationViews.forEach { (view) in
             view.removeFromSuperview()
         }
@@ -32,11 +38,20 @@ class GroupInvitationListView: UIView {
                     self?.socialRepository.joinGroup(groupID: groupID).observeCompleted {}
                 } else {
                     self?.socialRepository.rejectGroupInvitation(groupID: groupID).observeCompleted {}
-
+                }
+            }
+            if let inviterID = invitation.inviterID {
+                DispatchQueue.main.async {[weak self] in
+                    self?.disposable.add(self?.socialRepository.getMember(userID: inviterID).skipNil().on(value: { member in
+                        view.set(inviter: member)
+                    }).start())
                 }
             }
             addSubview(view)
             invitationViews.append(view)
+        }
+        invitationViews.dropFirst().forEach { (view) in
+            view.showSeparator = true
         }
         
         setNeedsLayout()

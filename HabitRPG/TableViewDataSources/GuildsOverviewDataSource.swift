@@ -29,8 +29,11 @@ class GuildsOverviewDataSource: BaseReactiveTableViewDataSource<GroupProtocol> {
         }
     }
     
+    var invitationListView: GroupInvitationListView?
+    
     private var fetchGuildsDisposable: Disposable?
     private let socialRepository = SocialRepository()
+    private let userRepository = UserRepository()
     
     private var membershipIDs = [String]()
     
@@ -49,6 +52,13 @@ class GuildsOverviewDataSource: BaseReactiveTableViewDataSource<GroupProtocol> {
                 }
             })
             self?.updatePredicate()
+        }).start())
+        
+        disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
+            self?.invitationListView?.set(invitations: user.invitations.filter({ (invitation) -> Bool in
+                return !invitation.isPartyInvitation
+            }))
+            self?.tableView?.setNeedsLayout()
         }).start())
     }
     

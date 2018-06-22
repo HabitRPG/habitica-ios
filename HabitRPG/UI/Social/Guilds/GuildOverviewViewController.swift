@@ -9,6 +9,7 @@
 import Foundation
 import ReactiveSwift
 import Habitica_Models
+import PinLayout
 
 class GuildOverviewViewController: HRPGBaseViewController, UISearchBarDelegate {
     
@@ -17,7 +18,11 @@ class GuildOverviewViewController: HRPGBaseViewController, UISearchBarDelegate {
     let headerSeparator = UIView()
     let segmentedFilterControl = UISegmentedControl(items: [L10n.myGuilds, L10n.discover])
     
-    var dataSource: GuildsOverviewDataSource?
+    var dataSource = GuildsOverviewDataSource()
+    
+    let tableHeaderWrapper = UIView()
+    let invitationListView = GroupInvitationListView()
+    let searchbar = UISearchBar()
     
     var isShowingPrivateGuilds: Bool {
         return segmentedFilterControl.selectedSegmentIndex == 0
@@ -47,41 +52,45 @@ class GuildOverviewViewController: HRPGBaseViewController, UISearchBarDelegate {
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         tableView.keyboardDismissMode = .onDrag
         
-        dataSource = GuildsOverviewDataSource()
-        dataSource?.tableView = self.tableView
+        dataSource.tableView = self.tableView
+        dataSource.invitationListView = invitationListView
         
-        let searchbar = UISearchBar(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 44))
         searchbar.placeholder = L10n.search
         searchbar.delegate = self
-        self.tableView.tableHeaderView = searchbar
         
-        dataSource?.retrieveData(completed: nil)
+        tableHeaderWrapper.addSubview(searchbar)
+        tableHeaderWrapper.addSubview(invitationListView)
+        tableView.tableHeaderView = tableHeaderWrapper
+        
+        dataSource.retrieveData(completed: nil)
     }
     
     override func viewWillLayoutSubviews() {
         layoutHeader()
+        searchbar.pin.top().horizontally().height(44)
+        let height = invitationListView.intrinsicContentSize.height
+        invitationListView.pin.below(of: searchbar).horizontally().height(height)
+        tableHeaderWrapper.pin.top().horizontally().height(44 + height)
         super.viewWillLayoutSubviews()
     }
     
     private func layoutHeader() {
-        let viewWidth = view.frame.size.width
-        headerImageView.frame = CGRect(x: 0, y: 0, width: viewWidth, height: 58)
-        headerSeparator.frame = CGRect(x: 0, y: 70, width: viewWidth, height: 2)
-        let size = segmentedFilterControl.intrinsicContentSize
-        segmentedFilterControl.frame = CGRect(x: 8, y: 84, width: viewWidth-16, height: size.height)
-        segmentedWrapper.frame = CGRect(x: 0, y: 0, width: viewWidth, height: 88+size.height)
+        headerImageView.pin.horizontally().top().height(58)
+        headerSeparator.pin.below(of: headerImageView).marginTop(12).horizontally().height(2)
+        segmentedFilterControl.pin.below(of: headerSeparator).marginTop(8).horizontally(8).sizeToFit(.width)
+        segmentedWrapper.pin.horizontally().top().height(segmentedFilterControl.frame.origin.y + segmentedFilterControl.frame.size.height + 8)
     }
     
     @objc
     private func refresh() {
-        dataSource?.retrieveData(completed: {[weak self] in
+        dataSource.retrieveData(completed: {[weak self] in
             self?.refreshControl?.endRefreshing()
         })
     }
     
     @objc
     private func switchFilter() {
-        dataSource?.isShowingPrivateGuilds = isShowingPrivateGuilds
+        dataSource.isShowingPrivateGuilds = isShowingPrivateGuilds
         
         if isShowingPrivateGuilds {
             tableView.separatorStyle = .none
@@ -91,14 +100,14 @@ class GuildOverviewViewController: HRPGBaseViewController, UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        self.dataSource?.searchText = searchText
+        self.dataSource.searchText = searchText
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == StoryboardSegue.Social.showGuildSegue.rawValue, let cell = sender as? UITableViewCell {
             let destViewController = segue.destination as? SplitSocialViewController
             let indexPath = tableView.indexPath(for: cell)
-            destViewController?.groupID = dataSource?.item(at: indexPath)?.id
+            destViewController?.groupID = dataSource.item(at: indexPath)?.id
         }
     }
 }

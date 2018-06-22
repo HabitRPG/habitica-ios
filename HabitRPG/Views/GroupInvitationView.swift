@@ -12,9 +12,17 @@ import PinLayout
 
 class GroupInvitationView: UIView {
     
+    private let avatarWrapper: UIView = {
+        let view = UIView()
+        view.cornerRadius = 20
+        return view
+    }()
     private let avatarView: AvatarView = {
         let view = AvatarView()
-        view.cornerRadius = 20
+        view.frame = CGRect(x: -7, y: -3, width: 50, height: 50)
+        view.size = .compact
+        view.showMount = false
+        view.showPet = false
         return view
     }()
     private let label: UILabel = {
@@ -40,8 +48,22 @@ class GroupInvitationView: UIView {
         view.addTarget(self, action: #selector(acceptInvitation), for: .touchUpInside)
         return view
     }()
+    private let separatorView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.blue50()
+        view.isHidden = true
+        return view
+    }()
+    
+    var showSeparator: Bool = false {
+        didSet {
+            separatorView.isHidden = !showSeparator
+        }
+    }
     
     private var inviterName: String?
+    private var name: String?
+    private var isPartyInvitation = false
     
     var responseAction: ((Bool) -> Void)?
     
@@ -56,20 +78,30 @@ class GroupInvitationView: UIView {
     }
     
     private func setupView() {
-        addSubview(avatarView)
+        avatarWrapper.addSubview(avatarView)
+        addSubview(avatarWrapper)
         addSubview(label)
         addSubview(declineButton)
         addSubview(acceptButton)
+        addSubview(separatorView)
         
         backgroundColor = UIColor.blue100()
     }
     
     func set(invitation: GroupInvitationProtocol) {
-        setLabel(name: invitation.name, isParty: invitation.isPartyInvitation)
+        name = invitation.name
+        isPartyInvitation = invitation.isPartyInvitation
+        setLabel()
     }
     
-    private func setLabel(name: String?, isParty: Bool) {
-        if isParty {
+    func set(inviter: MemberProtocol) {
+        inviterName = inviter.profile?.name
+        setLabel()
+        avatarView.avatar = AvatarViewModel(avatar: inviter)
+    }
+    
+    private func setLabel() {
+        if isPartyInvitation {
             if let inviterName = self.inviterName {
                 label.text = L10n.Party.invitationInvitername(inviterName)
             } else {
@@ -92,8 +124,9 @@ class GroupInvitationView: UIView {
     private func layout() {
         acceptButton.pin.end(16).vCenter().size(32)
         declineButton.pin.before(of: acceptButton).marginEnd(20).size(32).vCenter()
-        avatarView.pin.start(16).vCenter().size(40)
+        avatarWrapper.pin.start(16).vCenter().size(40)
         label.pin.after(of: avatarView).before(of: declineButton).marginHorizontal(16).top().bottom()
+        separatorView.pin.top().horizontally().height(1)
     }
     
     @objc

@@ -386,7 +386,7 @@ class ChatTableViewCell: UITableViewCell {
     }
     
     fileprivate func layout() {
-        avatarWrapper.pin.start(12).top(4).size(36)
+        avatarWrapper.pin.start(12).top(4).size(40)
         if isAvatarHidden {
             messageWrapper.pin.top(topSpacing).start(leftSpacing).right(12)
         } else {

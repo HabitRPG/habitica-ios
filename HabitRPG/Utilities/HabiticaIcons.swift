@@ -7081,7 +7081,7 @@ public class HabiticaIcons : NSObject {
 
         //// Label Drawing
         context.saveGState()
-        context.translateBy(x: -146.62, y: 18)
+        context.translateBy(x: -140.62, y: 18)
 
         let labelRect = CGRect(x: -178, y: 3, width: 400.27, height: 25)
         let labelTextContent = "GUILDS"
@@ -7107,7 +7107,7 @@ public class HabiticaIcons : NSObject {
 
 
         //// Label 2 Drawing
-        let label2Rect = CGRect(x: 29.38, y: 24, width: 44.27, height: 19)
+        let label2Rect = CGRect(x: 35.38, y: 24, width: 44.27, height: 19)
         let label2TextContent = "GUILDS"
         let label2Style = NSMutableParagraphStyle()
         label2Style.alignment = .center
