@@ -10,8 +10,6 @@
 	</array>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
-	<key>UIRequiresFullScreen</key>
-	<false/>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
@@ -19,14 +17,16 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
+	<key>UIRequiresFullScreen</key>
+	<false/>
 	<key>CFBundleName</key>
 	<string>HabitRPG</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>In order to scan a QR Code, Habitica will need access to the devices camera.</string>
-	<key>UIMainStoryboardFile~ipad</key>
-	<string>Intro</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>UIMainStoryboardFile~ipad</key>
+	<string>Intro</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>In order to scan a QR Code, Habitica will need access to the devices camera.</string>
 	<key>UIStatusBarTintParameters</key>
 	<dict>
 		<key>UINavigationBar</key>
@@ -37,10 +37,10 @@
 			<false/>
 		</dict>
 	</dict>
-	<key>CFBundleDisplayName</key>
-	<string>Habitica</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>CFBundleDisplayName</key>
+	<string>Habitica</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>org-appextension-feature-password-management</string>
@@ -73,13 +73,15 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleVersion</key>
-	<string>281</string>
+	<string>319</string>
 	<key>UIStatusBarHidden</key>
 	<false/>
 	<key>FacebookAppID</key>
 	<string>128307497299777</string>
 	<key>UILaunchStoryboardName</key>
 	<string>Launch Screen</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Habitica needs access to the microphone to be able to attach voice notes</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -209,7 +211,5 @@
 			<string>Editor</string>
 		</dict>
 	</array>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>Habitica needs access to the microphone to be able to attach voice notes</string>
 </dict>
 </plist>

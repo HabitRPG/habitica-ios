@@ -1,0 +1,28 @@
+Thanks for everyone helping with testing!
+
+Get ready for version 2.0 of the Habitica iOS app!
+
+The apps internals have been completely reworked and rewritten, to allow for faster and easier development in the future and also fixing a lot of long standing issues.
+
+New in this version:
+- Sound effects!
+- redesigned task form
+- redesigned Equipment page
+- redesigned Avatar Customization page
+- redesigned guild and party page
+- redesigned skills page
+- redesigned stable
+- redesigned class selection screen
+- better display for when edits to tasks are still being synced
+- Themes! You can now choose between 8 different themes for the app (Note that this feature might not be included in the final 2.0, since we are still experimenting with this)
+
+Fixes:
+- The duplicate items bug is finally gone for good!
+
+
+Known issues in this build:
+- The page that displays that you are currently not in a party does not work correctly
+- "Session outdated" error notification can appear. In this case, please use pull-to-refresh on one of the task lists
+- changing classes from settings menu doesn't work correctly
+
+We're also trying out a new feedback/bug reporting tool called Instabug. If you want to report anything you can shake your device and then the Instabug popup will appear. For those bug reports, a screenshot is also automatically attached (you can edit/remove this if wanted).

@@ -441,7 +441,7 @@
 		D9D17CCE1E6736B500AD9232 /* ChallengeDetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CCD1E6736B500AD9232 /* ChallengeDetailHeaderView.xib */; };
 		D9D17CD01E673CCC00AD9232 /* UIView-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D17CCF1E673CCC00AD9232 /* UIView-Extensions.swift */; };
 		D9D17CD21E6898E400AD9232 /* HabitTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CD11E6898E400AD9232 /* HabitTableViewCell.xib */; };
-		D9D17CD41E68995000AD9232 /* (null) in Resources */ = {isa = PBXBuildFile; };
+		D9D17CD41E68995000AD9232 /* BuildFile in Resources */ = {isa = PBXBuildFile; };
 		D9D17CD61E6899A800AD9232 /* ToDoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CD51E6899A800AD9232 /* ToDoTableViewCell.xib */; };
 		D9D17CDA1E69C68000AD9232 /* ChallengeDetailAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CD91E69C68000AD9232 /* ChallengeDetailAlert.xib */; };
 		D9D17CDE1E6AFFD900AD9232 /* ChallengeDetailAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D17CDD1E6AFFD900AD9232 /* ChallengeDetailAlert.swift */; };
@@ -2401,7 +2401,6 @@
 				29701FE81F5848880097BBCC /* Frameworks */,
 				29701FE91F5848880097BBCC /* Resources */,
 				AEB059D10376C45FB9485AD4 /* [CP] Embed Pods Frameworks */,
-				5D2B18D3D7B0F2997CE533D5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2423,9 +2422,7 @@
 				D94461801AB34F5C0015215E /* Frameworks */,
 				D94461811AB34F5C0015215E /* Resources */,
 				CAC33FCF49D4A93D53AF498F /* [CP] Embed Pods Frameworks */,
-				349CB2090A4A050BDB3C347B /* [CP] Copy Pods Resources */,
 				B2FE1A291D097FDD8A4DD843 /* 📦 Embed Pods Frameworks */,
-				0276808904385FE3E3D3ACF4 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2449,9 +2446,7 @@
 				D9EB4E8918CB4A9400BB2094 /* Resources */,
 				D940A7E01B0CF7E900370F2E /* ShellScript */,
 				9134C996D72DCF63C6CF68A7 /* [CP] Embed Pods Frameworks */,
-				356A574454191CCC185C28C2 /* [CP] Copy Pods Resources */,
 				33CD4301B52F7B90A552FAC3 /* 📦 Embed Pods Frameworks */,
-				4A2213241AEC5E5EE392C74C /* 📦 Copy Pods Resources */,
 				D97AEBC81E7D7622007FD4A2 /* Lint */,
 				29265896206A4E84006C8B54 /* Embed Frameworks */,
 			);
@@ -2568,15 +2563,15 @@
 				49E378532009542C00E0DA3D /* ChallengeTableViewHeaderView.xib in Resources */,
 				498E4D001FA17C1A006933FF /* ChallengeCategoriesTableViewCell.xib in Resources */,
 				2914487A20864A3300F3A6B5 /* EquipmentOverviewView.xib in Resources */,
-				D9D17CD41E68995000AD9232 /* (null) in Resources */,
+				D9D17CD41E68995000AD9232 /* BuildFile in Resources */,
 				29028C442037132A00B7F704 /* SystemMessageTableViewCell.xib in Resources */,
 				29AAA1611F2B597400029737 /* SpeechbubbleView.xib in Resources */,
 				29FC885E2018D858002B3D3F /* WorldBossDescription.xib in Resources */,
 				293BB4A31FD07603003B6F4F /* StatsSliderView.xib in Resources */,
-				D9D17CD41E68995000AD9232 /* (null) in Resources */,
+				D9D17CD41E68995000AD9232 /* BuildFile in Resources */,
 				29E16311200E5FEA00685640 /* QuestProgressView.xib in Resources */,
 				2902799A20583E83006DACB9 /* OnePasswordExtension.strings in Resources */,
-				D9D17CD41E68995000AD9232 /* (null) in Resources */,
+				D9D17CD41E68995000AD9232 /* BuildFile in Resources */,
 				D9BB45CA1E76DF260002AE2E /* DailyTableViewCell.xib in Resources */,
 				29B6AD4A1F2A0C9800AC8878 /* LoginEntryView.xib in Resources */,
 				2914486C208512ED00F3A6B5 /* StableSectionHeader.xib in Resources */,
@@ -2663,21 +2658,6 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		0276808904385FE3E3D3ACF4 /* 📦 Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HabiticaTests/Pods-HabiticaTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		290279682057F179006DACB9 /* Run SwiftGen */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2705,66 +2685,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Habitica/Pods-Habitica-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		349CB2090A4A050BDB3C347B /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HabiticaTests/Pods-HabiticaTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		356A574454191CCC185C28C2 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Habitica/Pods-Habitica-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4A2213241AEC5E5EE392C74C /* 📦 Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Habitica/Pods-Habitica-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		5D2B18D3D7B0F2997CE533D5 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Habitica Snapshots/Pods-Habitica Snapshots-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		6992AA14F29A6357120A21A1 /* uD83DuDCE6 Check Pods Manifest.lock */ = {
@@ -3904,7 +3824,7 @@
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 280;
+				CURRENT_PROJECT_VERSION = 319;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_SOURCE_FILE_NAMES = "";
@@ -3996,7 +3916,7 @@
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 280;
+				CURRENT_PROJECT_VERSION = 319;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_SOURCE_FILE_NAMES = "FLEX*";

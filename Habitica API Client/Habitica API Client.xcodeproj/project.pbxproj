@@ -812,7 +812,6 @@
 				29B586EE204D92CF00301955 /* Frameworks */,
 				29B586EF204D92CF00301955 /* Headers */,
 				29B586F0204D92CF00301955 /* Resources */,
-				1D548EF390B45219D7E9CA2A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -832,7 +831,6 @@
 				29B586F8204D92CF00301955 /* Frameworks */,
 				29B586F9204D92CF00301955 /* Resources */,
 				BF68D5080F76F3771F799003 /* [CP] Embed Pods Frameworks */,
-				26B568B849A1143504F8A03C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -905,36 +903,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1D548EF390B45219D7E9CA2A /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-Habitica API Client/Pods-Habitica API Client-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		26B568B849A1143504F8A03C /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-Habitica API ClientTests/Pods-Habitica API ClientTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		7D4E99082F65C04C50E7999E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

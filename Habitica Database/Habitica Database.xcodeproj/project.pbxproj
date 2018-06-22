@@ -428,7 +428,6 @@
 				298FB9A8204D9338004DDACC /* Frameworks */,
 				298FB9A9204D9338004DDACC /* Headers */,
 				298FB9AA204D9338004DDACC /* Resources */,
-				E6F4372B3395FA5D41D41C42 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -448,7 +447,6 @@
 				298FB9B2204D9338004DDACC /* Frameworks */,
 				298FB9B3204D9338004DDACC /* Resources */,
 				983C9FA03B70C3B601E33E84 /* [CP] Embed Pods Frameworks */,
-				3B09EFDF631199874D8A181B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -517,21 +515,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3B09EFDF631199874D8A181B /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-Habitica DatabaseTests/Pods-Habitica DatabaseTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		779F748F3603084DA5F2CB78 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -600,21 +583,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E6F4372B3395FA5D41D41C42 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-Habitica Database/Pods-Habitica Database-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
