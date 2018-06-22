@@ -50,6 +50,8 @@ class VisualEffectModalViewController: UIViewController, UIScrollViewDelegate {
         scrollView.contentInset = UIEdgeInsets(top: self.view.bounds.size.height, left: 0, bottom: 0, right: 0)
         self.view.setNeedsLayout()
         screenDimView.alpha = 0
+        
+        scrollView.keyboardDismissMode = .onDrag
     }
     
     override func viewDidAppear(_ animated: Bool) {
