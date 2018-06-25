@@ -240,4 +240,18 @@ public class TaskLocalRepository: BaseLocalRepository {
             return (value.map({ (reminder) -> ReminderProtocol in return reminder }), changeset)
         })
     }
+    
+    public func updateTaskOrder(taskType: String, order: [String]) {
+        let realm = getRealm()
+        guard let tasks = realm?.objects(RealmTask.self).filter("type == %@", taskType ?? "") else {
+            return
+        }
+        try? realm?.write {
+            for task in tasks {
+                if let position = order.index(of: task.id ?? "") {
+                    task.order = position
+                }
+            }
+        }
+    }
 }

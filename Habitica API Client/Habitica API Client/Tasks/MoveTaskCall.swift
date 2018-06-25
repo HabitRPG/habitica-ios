@@ -11,7 +11,7 @@ import Habitica_Models
 import FunkyNetwork
 
 
-public class MoveTaskCall: ResponseObjectCall<[String: [String]], [String: [String]]> {
+public class MoveTaskCall: ResponseArrayCall<String, String> {
     public init(task: TaskProtocol, toPosition: Int, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "tasks.json")) {
         super.init(httpMethod: .POST, endpoint: "tasks/\(task.id ?? "")/move/to/\(toPosition)", stubHolder: stubHolder)
     }
