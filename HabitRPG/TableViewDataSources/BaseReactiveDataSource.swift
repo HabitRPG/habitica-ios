@@ -79,8 +79,11 @@ class BaseReactiveTableViewDataSource<MODEL>: BaseReactiveDataSource<MODEL>, UIT
         if userDrivenDataUpdate {
             return
         }
-        if changes.initial == true {
-            tableView?.reloadData()
+        tableView?.reloadData()
+
+        //reload the whole tableview for now, since using the animations can cause issues
+        //see https://github.com/realm/realm-cocoa/issues/4425
+        /*if changes.initial == true {
         } else {
             tableView?.beginUpdates()
             if changes.inserted.count == sections[section].items.count && changes.inserted.count != 0 {
@@ -97,7 +100,7 @@ class BaseReactiveTableViewDataSource<MODEL>: BaseReactiveDataSource<MODEL>, UIT
                 }
             }
             tableView?.endUpdates()
-        }
+        }*/
     }
     
     @objc

@@ -70,11 +70,6 @@ class ChatTableViewCell: UITableViewCell {
             updateLeftMargin()
         }
     }
-    private var avatarViewModel = AvatarViewModel() {
-        didSet {
-            avatarView.avatar = avatarViewModel
-        }
-    }
     
     private var contributorLevel = 0 {
         didSet {
@@ -159,9 +154,8 @@ class ChatTableViewCell: UITableViewCell {
             topSpacing = 4
             avatarView.isHidden = isOwnMessage
 
-            if !isOwnMessage && !isAvatarHidden {
-                avatarViewModel.avatar = chatMessage.userStyles
-                avatarView.avatar = avatarViewModel
+            if !isOwnMessage && !isAvatarHidden, let userStyles = chatMessage.userStyles {
+                avatarView.avatar = AvatarViewModel(avatar: userStyles)
             }
         }
         
