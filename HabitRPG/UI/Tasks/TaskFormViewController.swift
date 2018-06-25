@@ -226,7 +226,7 @@ class TaskFormViewController: FormViewController {
                                             }
                                         }
                                         section.multivaluedRowToInsertAt = { index in
-                                            return NameRow { row in
+                                            return TextRow { row in
                                                 row.cellSetup({ (cell, _) in
                                                     cell.tintColor = self.lightTaskTintColor
                                                 })
@@ -432,7 +432,7 @@ class TaskFormViewController: FormViewController {
     private func fillChecklistValues() {
         var checklistSection = self.form.sectionBy(tag: TaskFormTags.checklistSection)
         task.checklist.forEach { (item) in
-            let row = NameRow(item.id) { row in
+            let row = TextRow(item.id) { row in
                 row.value = item.text
             }
             let lastIndex = (checklistSection?.count ?? 1) - 1
@@ -520,7 +520,7 @@ class TaskFormViewController: FormViewController {
         let oldChecklist = task.checklist
         task.checklist.removeAll()
         for row in section {
-            if let checklistRow = row as? NameRow {
+            if let checklistRow = row as? TextRow {
                 let item = taskRepository.getNewChecklistItem()
                 item.id = checklistRow.tag
                 if item.id == nil {

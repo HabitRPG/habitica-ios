@@ -46,7 +46,7 @@ class UserManager: NSObject {
                             return task.isDue && !task.completed
                         })
                     }).withLatest(from: SignalProducer<UserProtocol, NoError>(value: user)) ?? Signal<([TaskProtocol], UserProtocol), NoError>.empty
-            }).on(value: {[weak self] (tasks, user) in
+            }).on(value: { (tasks, user) in
                 var hasUncompletedDailies = false
                 for task in tasks {
                     if task.type == "daily" && !task.completed {
@@ -60,7 +60,7 @@ class UserManager: NSObject {
                 }
                 let viewController = YesterdailiesDialogView()
                 if !hasUncompletedDailies {
-                    self?.userRepository.runCron(tasks: []).observeCompleted {}
+                    self.userRepository.runCron(tasks: []).observeCompleted {}
                     return
                 }
                 viewController.tasks = tasks
@@ -72,7 +72,7 @@ class UserManager: NSObject {
                     if let controller = topController as? MainTabBarController {
                         controller.present(popup, animated: true) {
                         }
-                        self?.yesterdailiesDialog = viewController
+                        self.yesterdailiesDialog = viewController
                     }
                 }
             }).start())
