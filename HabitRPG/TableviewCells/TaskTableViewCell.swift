@@ -41,7 +41,7 @@ class TaskTableViewCell: UITableViewCell {
         self.titleLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 16)
 
         if let trimmedNotes = task.notes?.trimmingCharacters(in: .whitespacesAndNewlines), trimmedNotes.count > 0 {
-            self.subtitleLabel.text = trimmedNotes.unicodeEmoji
+            self.subtitleLabel.attributedText = try? Down(markdownString: trimmedNotes.unicodeEmoji).toHabiticaAttributedString()
             self.subtitleLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 12)
             self.subtitleLabel.isHidden = false
         } else {
