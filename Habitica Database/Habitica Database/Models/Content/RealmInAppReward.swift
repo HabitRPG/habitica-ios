@@ -29,6 +29,14 @@ class RealmInAppReward: Object, InAppRewardProtocol {
     @objc dynamic var value: Float = 0
     @objc dynamic var isSubscriberItem: Bool = false
     
+    @objc dynamic var category: ShopCategoryProtocol? {
+        get {
+            return realmCategory.first
+        }
+    }
+    
+    var realmCategory = LinkingObjects(fromType: RealmShopCategory.self, property: "realmItems")
+    
     override static func primaryKey() -> String {
         return "combinedKey"
     }

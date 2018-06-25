@@ -212,4 +212,8 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
             }
         })
     }
+    
+    func getNewInAppReward() -> InAppRewardProtocol {
+        return localRepository.getNewInAppReward()
+    }
 }

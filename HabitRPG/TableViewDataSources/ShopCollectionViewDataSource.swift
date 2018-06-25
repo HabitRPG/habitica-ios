@@ -47,7 +47,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
     @objc weak var delegate: ShopCollectionViewDataSourceDelegate?
     
     private var userRepository = UserRepository()
-    private var inventoryRepository = InventoryRepository()
+    var inventoryRepository = InventoryRepository()
     private var fetchGearDisposable: Disposable?
     
     private var ownedItems = [String: OwnedItemProtocol]()
@@ -90,17 +90,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
             if sectionCount >= 2 {
                 self?.sections.removeLast(sectionCount - 1)
             }
-            for category in shop?.categories ?? [] {
-                let newSection = ItemSection<InAppRewardProtocol>(title: category.text)
-                newSection.items = category.items.filter({ (inAppReward) -> Bool in
-                    if inAppReward.isSubscriberItem {
-                        return user.isSubscribed
-                    }
-                    return true
-                })
-                self?.sections.append(newSection)
-            }
-            self?.collectionView?.reloadData()
+            self?.loadCategories(shop?.categories ?? [], isSubscribed: user.isSubscribed)
             self?.delegate?.updateShopHeader(shop: shop)
             
             self?.user = user
@@ -124,6 +114,20 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
         if let disposable = fetchGearDisposable {
             disposable.dispose()
         }
+    }
+    
+    func loadCategories(_ categories: [ShopCategoryProtocol], isSubscribed: Bool) {
+        for category in categories {
+            let newSection = ItemSection<InAppRewardProtocol>(title: category.text)
+            newSection.items = category.items.filter({ (inAppReward) -> Bool in
+                if inAppReward.isSubscriberItem {
+                    return isSubscribed
+                }
+                return true
+            })
+            sections.append(newSection)
+        }
+        collectionView?.reloadData()
     }
     
     private func fetchGear() {

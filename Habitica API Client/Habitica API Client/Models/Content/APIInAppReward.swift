@@ -10,6 +10,7 @@ import Foundation
 import Habitica_Models
 
 class APIInAppReward: InAppRewardProtocol, Decodable {
+    var category: ShopCategoryProtocol?
     var key: String?
     var availableUntil: Date?
     var currency: String?

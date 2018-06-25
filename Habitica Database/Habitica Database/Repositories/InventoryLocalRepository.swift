@@ -112,4 +112,8 @@ public class InventoryLocalRepository: ContentLocalRepository {
             }
         }
     }
+    
+    public func getNewInAppReward() -> InAppRewardProtocol {
+        return RealmInAppReward()
+    }
 }

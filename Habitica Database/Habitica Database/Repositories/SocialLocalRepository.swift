@@ -114,6 +114,9 @@ public class SocialLocalRepository: BaseLocalRepository {
     public func delete(_ chatMessage: ChatMessageProtocol) {
         if let realm = getRealm(), let message = realm.object(ofType: RealmChatMessage.self, forPrimaryKey: chatMessage.id) {
             try? realm.write {
+                if message.isInvalidated {
+                    return
+                }
                 realm.delete(message)
             }
         }
@@ -133,6 +136,9 @@ public class SocialLocalRepository: BaseLocalRepository {
     public func delete(_ message: InboxMessageProtocol) {
         if let realm = getRealm(), let message = realm.object(ofType: RealmInboxMessage.self, forPrimaryKey: message.id) {
             try? realm.write {
+                if message.isInvalidated {
+                    return
+                }
                 realm.delete(message)
             }
         }

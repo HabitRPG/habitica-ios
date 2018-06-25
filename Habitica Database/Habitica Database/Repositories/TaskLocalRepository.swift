@@ -197,6 +197,9 @@ public class TaskLocalRepository: BaseLocalRepository {
         let realm = getRealm()
         if let realmTask = realm?.object(ofType: RealmTask.self, forPrimaryKey: task.id) {
             try? realm?.write {
+                if realmTask.isInvalidated {
+                    return
+                }
                 realm?.delete(realmTask)
             }
         }
@@ -243,7 +246,7 @@ public class TaskLocalRepository: BaseLocalRepository {
     
     public func updateTaskOrder(taskType: String, order: [String]) {
         let realm = getRealm()
-        guard let tasks = realm?.objects(RealmTask.self).filter("type == %@", taskType ?? "") else {
+        guard let tasks = realm?.objects(RealmTask.self).filter("type == %@", taskType) else {
             return
         }
         try? realm?.write {

@@ -7,70 +7,54 @@
 //
 
 import Foundation
+import Habitica_Models
 
 class TimeTravelersCollectionViewDataSource: ShopCollectionViewDataSource {
-
-    //var categories = [ShopCategory]()
     
-    override func titleFor(section: Int) -> String? {
-        /*if section < categories.count {
-            return categories[section].text
-        }*/
-        return ""
-    }
-    
-    private func loadCategories() {
-        //categories = [ShopCategory]()
-        /*if let items = self.fetchedResultsController?.fetchedObjects as? [ShopItem],
-            let categoryEntity = NSEntityDescription.entity(forEntityName: "ShopCategory", in: HRPGManager.shared().getManagedObjectContext()) ,
-            let itemEntity = NSEntityDescription.entity(forEntityName: "ShopItem", in: HRPGManager.shared().getManagedObjectContext()) {
-            for item in items {
+    override func loadCategories(_ categories: [ShopCategoryProtocol], isSubscribed: Bool) {
+        sections.removeAll()
+        for category in categories {
+            for item in category.items {
                 if item.purchaseType == "pets" || item.purchaseType == "mounts" {
-                    if let lastCategory = categories.last, lastCategory.identifier == item.category?.identifier {
-                        lastCategory.addItemsObject(item)
+                    if let lastSection = sections.last, lastSection.key == item.key {
+                        lastSection.items.append(item)
                     } else {
-                        if let category = NSManagedObject(entity: categoryEntity, insertInto: nil) as? ShopCategory {
-                            category.text = item.category?.text
-                            category.identifier = item.category?.identifier
-                            category.items = NSOrderedSet()
-                            category.addItemsObject(item)
-                            categories.append(category)
-                        }
+                        let section = ItemSection<InAppRewardProtocol>()
+                        section.title = item.category?.text
+                        section.key = item.category?.identifier
+                        section.items = [item]
+                        sections.append(section)
                     }
                 } else {
-                    if categories.count == 0 || !categories.contains(where: { (category) -> Bool in category.identifier == "mystery_sets" }) {
-                        if let category = NSManagedObject(entity: categoryEntity, insertInto: nil) as? ShopCategory {
-                            category.identifier = "mystery_sets"
-                            categories.append(category)
-                        }
+                    if sections.count == 0 || !sections.contains(where: { (section) -> Bool in section.key == "mystery_sets" }) {
+                        let section = ItemSection<InAppRewardProtocol>()
+                        section.key = "mystery_sets"
+                        section.title = NSLocalizedString("Mystery Sets", comment: "")
+                        section.items = [InAppRewardProtocol]()
+                        sections.append(section)
                     }
-                    if let setCategory = categories.first(where: { (category) -> Bool in
-                        category.identifier == "mystery_sets"
+                    if let setSection = sections.first(where: { (section) -> Bool in
+                        section.key == "mystery_sets"
                     }) {
-                        if setCategory.text == nil {
-                            setCategory.text = NSLocalizedString("Mystery Sets", comment: "")
-                            setCategory.items = NSOrderedSet()
-                        }
-                        if setCategory.items?.count == 0 || (setCategory.items?.lastObject as? ShopItem)?.key != item.category?.identifier {
-                            if let newItem = NSManagedObject(entity: itemEntity, insertInto: nil) as? ShopItem {
-                                let key = item.category?.identifier ?? ""
-                                newItem.text = item.category?.text
-                                newItem.key = key
-                                newItem.pinType = item.category?.pinType ?? "mystery_set"
-                                newItem.purchaseType = newItem.pinType
-                                newItem.path = item.category?.path ?? "mystery."+key
-                                newItem.value = item.value
-                                newItem.currency = item.currency
-                                newItem.imageName = "shop_set_mystery_"+key
-                                setCategory.addItemsObject(newItem)
-                            }
+                        if setSection.items.count == 0 || setSection.items.last?.key != item.category?.identifier {
+                            let newItem = inventoryRepository.getNewInAppReward()
+                            let key = item.category?.identifier ?? ""
+                            newItem.text = item.category?.text
+                            newItem.key = key
+                            newItem.pinType = item.pinType ?? "mystery_set"
+                            newItem.purchaseType = newItem.pinType
+                            newItem.path = item.path ?? "mystery."+key
+                            newItem.value = item.value
+                            newItem.currency = item.currency
+                            newItem.imageName = "shop_set_mystery_"+key
+                            setSection.items.append(newItem)
                         }
                     }
                 }
             }
-        }*/
+        }
         //Flip the order to have pets and mounts first
-        //categories.reverse()
+        sections.reverse()
         self.collectionView?.reloadData()
     }
 }
