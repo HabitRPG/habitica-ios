@@ -23,6 +23,8 @@ class TaskTableViewCell: UITableViewCell {
     @IBOutlet weak var syncIndicatorsWidth: NSLayoutConstraint!
     @IBOutlet weak var syncIndicatorsSpacing: NSLayoutConstraint!
     //swiftlint:disable private_outlet
+    
+    @objc public var isLocked: Bool = false
 
     @objc var syncErrorTouched: (() -> Void)?
     
