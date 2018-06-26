@@ -7,10 +7,13 @@ PODS:
   - Bolts/AppLinks (1.9.0):
     - Bolts/Tasks
   - Bolts/Tasks (1.9.0)
+  - Crashlytics (3.10.2):
+    - Fabric (~> 1.7.7)
   - DateTools (2.0.0)
   - Down (0.5.2)
   - DynamicBlurView (2.0.2)
   - Eureka (4.1.1)
+  - Fabric (1.7.7)
   - FBSDKCoreKit (4.34.0):
     - Bolts (~> 1.7)
   - FBSDKLoginKit (4.34.0):
@@ -97,17 +100,19 @@ PODS:
   - SeedsSDK (0.5.0)
   - SlackTextViewController (1.9.6)
   - SwiftGen (5.3.0)
-  - SwiftLint (0.25.1)
+  - SwiftLint (0.26.0)
   - SwiftyStoreKit (0.13.2)
-  - VTAcknowledgementsViewController (1.4)
+  - VTAcknowledgementsViewController (1.4.1)
   - XLForm (4.0.0)
 
 DEPENDENCIES:
   - Amplitude-iOS (~> 4.0.4)
   - AppAuth
+  - Crashlytics
   - DateTools
   - Down
   - Eureka
+  - Fabric
   - FBSDKCoreKit (~> 4)
   - FBSDKLoginKit (~> 4)
   - FLEX (~> 2.0)
@@ -156,10 +161,12 @@ SPEC CHECKSUMS:
   Amplitude-iOS: 2ad4d7270c99186236c1272a3a9425463b1ae1a7
   AppAuth: 3f4f1d6d85ad631d0bbf15ffcdc10c447face97a
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
+  Crashlytics: 0360624eea1c978a743feddb2fb1ef8b37fb7a0d
   DateTools: 933ac9c490f21f92127cf690ccd8c397e0126caf
   Down: 587371ad58002b06023d9c602519216862c3acbc
   DynamicBlurView: aa6db4defc6e537eb86fc5e58dd3991666178399
   Eureka: b88fb930e42c79f8c03c373d0fcdc28c1d6c50ed
+  Fabric: bda89e242bce1b7b8ab264248cf3407774ce0095
   FBSDKCoreKit: 0ff57f093b85c8c9d5aba697d3edf68a8960ce78
   FBSDKLoginKit: 8c78f57a145afb756e4755e69195ebe08a42466e
   FLEX: bd1a39e55b56bb413b6f1b34b3c10a0dc44ef079
@@ -187,11 +194,11 @@ SPEC CHECKSUMS:
   SeedsSDK: 8de27e088c15ff3eba33a6d2941ec507e4a5bb95
   SlackTextViewController: b854e62c1c156336bc4fd409c6ca79b5773e8f9d
   SwiftGen: 4379bd3640b0a212a0f6ea3c494adba385513d10
-  SwiftLint: ce933681be10c3266e82576dad676fa815a602e9
+  SwiftLint: f6b83e8d95ee1e91e11932d843af4fdcbf3fc764
   SwiftyStoreKit: b7563505440a68c9d9fa70bc43d8a97015519409
-  VTAcknowledgementsViewController: d62bb400ca68e240680906bcfa2a2b380d39b30f
+  VTAcknowledgementsViewController: 9a7d0f040f17dfa6d02fc731bec8b188e4b4ee59
   XLForm: 04110197c12187dd28a6c7295d3d8b95f4fdb4de
 
-PODFILE CHECKSUM: 045014516ef4a926e6805c2c1be3843507abe0a9
+PODFILE CHECKSUM: 6fe6054172f4166cec80df42773fb641b728c039
 
 COCOAPODS: 1.4.0

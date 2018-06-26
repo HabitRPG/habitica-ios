@@ -51,6 +51,9 @@ target 'Habitica' do
   pod 'FBSDKCoreKit', '~> 4'
   pod 'FBSDKLoginKit', '~> 4'
 
+  pod 'Fabric'
+  pod 'Crashlytics'
+
   reactive_pods
 
   pod 'SwiftyStoreKit'
