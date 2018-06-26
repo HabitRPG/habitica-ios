@@ -1,0 +1,1447 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2902795E2057E858006DACB9 /* APIFAQEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2902795D2057E858006DACB9 /* APIFAQEntry.swift */; };
+		2902797920580EFD006DACB9 /* APIBuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2902797820580EFD006DACB9 /* APIBuff.swift */; };
+		2902797F20581CF0006DACB9 /* AllocateAttributePointCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2902797E20581CF0006DACB9 /* AllocateAttributePointCall.swift */; };
+		2902798120581DE3006DACB9 /* BulkAllocateAttributePointsCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2902798020581DE3006DACB9 /* BulkAllocateAttributePointsCall.swift */; };
+		2902798F205835DF006DACB9 /* APIWorldState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2902798E205835DF006DACB9 /* APIWorldState.swift */; };
+		29027991205835F7006DACB9 /* APIQuestState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29027990205835F7006DACB9 /* APIQuestState.swift */; };
+		2902799320583612006DACB9 /* APIQuestProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2902799220583612006DACB9 /* APIQuestProgress.swift */; };
+		29027995205836A8006DACB9 /* RetrieveWorldStateCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29027994205836A8006DACB9 /* RetrieveWorldStateCall.swift */; };
+		290B623D207267AA007287C4 /* RetrieveGroupsCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B623C207267AA007287C4 /* RetrieveGroupsCall.swift */; };
+		290B62522073D91C007287C4 /* APIInbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B62512073D91C007287C4 /* APIInbox.swift */; };
+		290B62542073D957007287C4 /* APIPushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B62532073D957007287C4 /* APIPushNotifications.swift */; };
+		290B6261207B959E007287C4 /* APIAuthenticationTimestamps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B6260207B959E007287C4 /* APIAuthenticationTimestamps.swift */; };
+		290B6263207B9707007287C4 /* APILocalAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B6262207B9707007287C4 /* APILocalAuthentication.swift */; };
+		290B6265207B978F007287C4 /* APIAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B6264207B978F007287C4 /* APIAuthentication.swift */; };
+		290B626D207BA6AB007287C4 /* ResetAccountCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B626C207BA6AB007287C4 /* ResetAccountCall.swift */; };
+		290B626F207BA6FB007287C4 /* DeleteAccountCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B626E207BA6FB007287C4 /* DeleteAccountCall.swift */; };
+		290B6271207BA765007287C4 /* UpdateEmailCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B6270207BA765007287C4 /* UpdateEmailCall.swift */; };
+		290B6273207BA7D9007287C4 /* UpdateUsernameCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B6272207BA7D9007287C4 /* UpdateUsernameCall.swift */; };
+		290B6275207BA805007287C4 /* UpdatePasswordCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B6274207BA805007287C4 /* UpdatePasswordCall.swift */; };
+		290B6277207BA86F007287C4 /* SendPasswordResetEmailCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B6276207BA86F007287C4 /* SendPasswordResetEmailCall.swift */; };
+		290B6279207BA8C3007287C4 /* LocalLoginCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B6278207BA8C3007287C4 /* LocalLoginCall.swift */; };
+		290B627B207BA9A1007287C4 /* LocalRegisterCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B627A207BA9A1007287C4 /* LocalRegisterCall.swift */; };
+		290B627D207BA9D4007287C4 /* SocialLoginCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B627C207BA9D4007287C4 /* SocialLoginCall.swift */; };
+		290B627F207BAA23007287C4 /* SleepCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B627E207BAA23007287C4 /* SleepCall.swift */; };
+		290B6283207BAAA2007287C4 /* APILoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B6282207BAAA2007287C4 /* APILoginResponse.swift */; };
+		290B628F207E17C1007287C4 /* APIMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B628E207E17C1007287C4 /* APIMember.swift */; };
+		290B6291207E1E76007287C4 /* RetrieveMemberCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B6290207E1E76007287C4 /* RetrieveMemberCall.swift */; };
+		290B6293207E3E24007287C4 /* JoinGroupCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B6292207E3E24007287C4 /* JoinGroupCall.swift */; };
+		290B6295207E3E6C007287C4 /* LeaveGroupCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B6294207E3E6C007287C4 /* LeaveGroupCall.swift */; };
+		290B629C207F7E84007287C4 /* APIOwnedGear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B629B207F7E84007287C4 /* APIOwnedGear.swift */; };
+		290C300F206A779E0066AF5B /* DeleteTaskCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C300E206A779E0066AF5B /* DeleteTaskCall.swift */; };
+		290C3013206A78700066AF5B /* APIEmptyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C3012206A78700066AF5B /* APIEmptyResponse.swift */; };
+		290C3015206A80AE0066AF5B /* MoveTaskCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C3014206A80AE0066AF5B /* MoveTaskCall.swift */; };
+		290C3028206B98A50066AF5B /* APIOwnedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C3027206B98A50066AF5B /* APIOwnedItem.swift */; };
+		290C302E206BD2020066AF5B /* UseSkillCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C302D206BD2020066AF5B /* UseSkillCall.swift */; };
+		290C3032206CF0190066AF5B /* APISkillResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C3031206CF0190066AF5B /* APISkillResponse.swift */; };
+		290C3034206D24A40066AF5B /* RunCronCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C3033206D24A40066AF5B /* RunCronCall.swift */; };
+		290C3040206D3DE80066AF5B /* APIGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C303F206D3DE80066AF5B /* APIGroup.swift */; };
+		290C3042206D3EC30066AF5B /* APIChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C3041206D3EC30066AF5B /* APIChatMessage.swift */; };
+		290C3046206D44670066AF5B /* RetrieveGroupCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C3045206D44670066AF5B /* RetrieveGroupCall.swift */; };
+		291448742086352800F3A6B5 /* FeedPetCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291448732086352800F3A6B5 /* FeedPetCall.swift */; };
+		29144894208A1C9400F3A6B5 /* APIHair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29144893208A1C9400F3A6B5 /* APIHair.swift */; };
+		2914489E208A346700F3A6B5 /* APICustomization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2914489D208A346700F3A6B5 /* APICustomization.swift */; };
+		291448A0208A34D100F3A6B5 /* APICustomizationSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2914489F208A34D100F3A6B5 /* APICustomizationSet.swift */; };
+		2919FDD72090D2510096A53B /* DeleteInboxMessageCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2919FDD62090D2510096A53B /* DeleteInboxMessageCall.swift */; };
+		2919FDD92090DF1B0096A53B /* PostInboxMessageCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2919FDD82090DF1B0096A53B /* PostInboxMessageCall.swift */; };
+		2919FDDB2091D3D70096A53B /* MarkInboxAsSeenCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2919FDDA2091D3D70096A53B /* MarkInboxAsSeenCall.swift */; };
+		2919FDE12091DFFE0096A53B /* ReviveUserCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2919FDE02091DFFE0096A53B /* ReviveUserCall.swift */; };
+		291DE97A209B443D0073182A /* APIQuestParticipant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291DE979209B443D0073182A /* APIQuestParticipant.swift */; };
+		291E1A20209B6FAB00BA1FFB /* RejectQuestInvitationCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291E1A1F209B6FAB00BA1FFB /* RejectQuestInvitationCall.swift */; };
+		291E1A22209B701D00BA1FFB /* AcceptQuestInvitationCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291E1A21209B701D00BA1FFB /* AcceptQuestInvitationCall.swift */; };
+		291E1A24209B702B00BA1FFB /* AbortQuestCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291E1A23209B702B00BA1FFB /* AbortQuestCall.swift */; };
+		291E1A26209B703C00BA1FFB /* ForceStartQuestCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291E1A25209B703C00BA1FFB /* ForceStartQuestCall.swift */; };
+		291E1A28209B704A00BA1FFB /* CancelQuestInvitationCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291E1A27209B704A00BA1FFB /* CancelQuestInvitationCall.swift */; };
+		291E95AD20986CDE006EE585 /* DateEncodingStrategy-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291E95AC20986CDE006EE585 /* DateEncodingStrategy-Extension.swift */; };
+		291E95B5209888E1006EE585 /* APIUserParty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291E95B4209888E1006EE585 /* APIUserParty.swift */; };
+		2927269420B6ECAB009DD08A /* RetrieveRemoteConfigCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2927269320B6ECAB009DD08A /* RetrieveRemoteConfigCall.swift */; };
+		2927269620B6F316009DD08A /* RetrieveMaintenanceInfoCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2927269520B6F316009DD08A /* RetrieveMaintenanceInfoCall.swift */; };
+		2927269820B6F332009DD08A /* RetrieveDeprecationInfoCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2927269720B6F332009DD08A /* RetrieveDeprecationInfoCall.swift */; };
+		292726A220B6FFE3009DD08A /* APIChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292726A120B6FFE3009DD08A /* APIChallenge.swift */; };
+		292726A420B6FFF5009DD08A /* APIChallengeCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292726A320B6FFF5009DD08A /* APIChallengeCategory.swift */; };
+		292726A620B70290009DD08A /* RetrieveChallengeCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292726A520B70290009DD08A /* RetrieveChallengeCall.swift */; };
+		292726A820B702C4009DD08A /* RetrieveChallengesCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292726A720B702C4009DD08A /* RetrieveChallengesCall.swift */; };
+		292726AA20B70303009DD08A /* JoinChallengeCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292726A920B70303009DD08A /* JoinChallengeCall.swift */; };
+		292726AC20B70329009DD08A /* LeaveChallengeCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292726AB20B70329009DD08A /* LeaveChallengeCall.swift */; };
+		292726B420B70747009DD08A /* APIChallengeMembership.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292726B320B70747009DD08A /* APIChallengeMembership.swift */; };
+		292844EB20DD18380011DC43 /* APIGroupInvitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292844EA20DD18380011DC43 /* APIGroupInvitation.swift */; };
+		292844F120DD37F40011DC43 /* RejectGroupInvitationCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292844F020DD37F40011DC43 /* RejectGroupInvitationCall.swift */; };
+		292DEE44204D9D8D0086D5F7 /* Habitica_Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE45204D9D8D0086D5F7 /* Habitica_Models.framework */; };
+		292DEE4B204DA1220086D5F7 /* NetworkAuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE4A204DA1220086D5F7 /* NetworkAuthenticationManager.swift */; };
+		292DEE4F204DA3870086D5F7 /* RetrieveTasksCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE4E204DA3870086D5F7 /* RetrieveTasksCall.swift */; };
+		292DEE51204DA3A30086D5F7 /* APITask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE50204DA3A30086D5F7 /* APITask.swift */; };
+		292DEE7E204E37670086D5F7 /* APITag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE7D204E37670086D5F7 /* APITag.swift */; };
+		292DEE82204E411C0086D5F7 /* APIChecklistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE81204E411C0086D5F7 /* APIChecklistItem.swift */; };
+		292DEE88204E490A0086D5F7 /* APIReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE87204E490A0086D5F7 /* APIReminder.swift */; };
+		292DEE8F204F49D50086D5F7 /* AuthenticatedCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE8E204F49D50086D5F7 /* AuthenticatedCall.swift */; };
+		292DEE91204F4A0F0086D5F7 /* HabiticaServerConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE90204F4A0F0086D5F7 /* HabiticaServerConfig.swift */; };
+		292DEE93204F4A430086D5F7 /* ResponseArrayCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE92204F4A430086D5F7 /* ResponseArrayCall.swift */; };
+		292DEE95204F4A510086D5F7 /* ResponseObjectCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE94204F4A510086D5F7 /* ResponseObjectCall.swift */; };
+		292DEE9D204F4B5F0086D5F7 /* tasks.json in Resources */ = {isa = PBXBuildFile; fileRef = 292DEE9C204F4B5F0086D5F7 /* tasks.json */; };
+		292DEE9F204F4B8F0086D5F7 /* RetrieveTasksCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE9E204F4B8F0086D5F7 /* RetrieveTasksCall.swift */; };
+		292DEEA1204F625B0086D5F7 /* DateDecodingStrategy-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEEA0204F625B0086D5F7 /* DateDecodingStrategy-Extension.swift */; };
+		292DEEA9204F71290086D5F7 /* ScoreTaskCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEEA8204F71290086D5F7 /* ScoreTaskCall.swift */; };
+		292DEEB1205039CA0086D5F7 /* TaskResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEEB0205039CA0086D5F7 /* TaskResponse.swift */; };
+		292F9659206E2AAB00804151 /* MarkChatSeenCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292F9658206E2AAB00804151 /* MarkChatSeenCall.swift */; };
+		292F965B206E2AE300804151 /* RetrieveChatCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292F965A206E2AE300804151 /* RetrieveChatCall.swift */; };
+		292F9664206E4F5500804151 /* LikeChatMessageCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292F9663206E4F5500804151 /* LikeChatMessageCall.swift */; };
+		292F9666206E4F9F00804151 /* FlagChatMessageCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292F9665206E4F9F00804151 /* FlagChatMessageCall.swift */; };
+		292F9668206E4FBD00804151 /* DeleteChatMessageCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292F9667206E4FBD00804151 /* DeleteChatMessageCall.swift */; };
+		292F966A206E4FD100804151 /* PostChatMessageCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292F9669206E4FD100804151 /* PostChatMessageCall.swift */; };
+		292F966C206E6D8A00804151 /* UpdateUserCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292F966B206E6D8A00804151 /* UpdateUserCall.swift */; };
+		292F96742072277D00804151 /* APIChatMessageReaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292F96732072277D00804151 /* APIChatMessageReaction.swift */; };
+		292F9676207227AB00804151 /* APIUserStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292F9675207227AB00804151 /* APIUserStyle.swift */; };
+		29323E1520504F2300AC6D6F /* APIUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E1420504F2300AC6D6F /* APIUser.swift */; };
+		29323E1720504F5600AC6D6F /* APIStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E1620504F5600AC6D6F /* APIStats.swift */; };
+		29323E192050528C00AC6D6F /* RetrieveUserCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E182050528C00AC6D6F /* RetrieveUserCall.swift */; };
+		29323E23205099FF00AC6D6F /* HabiticaResponseCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E22205099FF00AC6D6F /* HabiticaResponseCall.swift */; };
+		29323E2520509B9000AC6D6F /* HabiticaResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E2420509B9000AC6D6F /* HabiticaResponse.swift */; };
+		29323E272051659C00AC6D6F /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E262051659C00AC6D6F /* ErrorHandler.swift */; };
+		29323E2D2051B43100AC6D6F /* DebugOutputHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E2C2051B43100AC6D6F /* DebugOutputHandler.swift */; };
+		29323E37205212C400AC6D6F /* APIFlags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E36205212C400AC6D6F /* APIFlags.swift */; };
+		29323E39205212E400AC6D6F /* APIPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E38205212E400AC6D6F /* APIPreferences.swift */; };
+		29323E3B205212FA00AC6D6F /* APIProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E3A205212F900AC6D6F /* APIProfile.swift */; };
+		29323E4720521B5000AC6D6F /* APIContributor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E4620521B5000AC6D6F /* APIContributor.swift */; };
+		29323E512052F77F00AC6D6F /* APIUserItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E502052F77F00AC6D6F /* APIUserItems.swift */; };
+		29323E532052F7A600AC6D6F /* APIUserGear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E522052F7A600AC6D6F /* APIUserGear.swift */; };
+		29323E552052F7C400AC6D6F /* APIOutfit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E542052F7C400AC6D6F /* APIOutfit.swift */; };
+		29323E602056B9B000AC6D6F /* QuickSpec-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E5F2056B9B000AC6D6F /* QuickSpec-Extensions.swift */; };
+		29323E622056BA6000AC6D6F /* ScoreTaskCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E612056BA6000AC6D6F /* ScoreTaskCall.swift */; };
+		29323E662056BA9000AC6D6F /* taskResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 29323E652056BA9000AC6D6F /* taskResponse.json */; };
+		29323E6A2056BC2A00AC6D6F /* RetrieveUserCallSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E692056BC2A00AC6D6F /* RetrieveUserCallSpec.swift */; };
+		29323E6C2056BCB400AC6D6F /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = 29323E6B2056BCB400AC6D6F /* user.json */; };
+		29323E6E2056C0E900AC6D6F /* content.json in Resources */ = {isa = PBXBuildFile; fileRef = 29323E6D2056C0E900AC6D6F /* content.json */; };
+		294973C62080F92400F02AC3 /* SellItemCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294973C52080F92400F02AC3 /* SellItemCall.swift */; };
+		294973C82080F98600F02AC3 /* HatchPetCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294973C72080F98600F02AC3 /* HatchPetCall.swift */; };
+		294973CA2080F9F600F02AC3 /* EquipGearCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294973C92080F9F600F02AC3 /* EquipGearCall.swift */; };
+		294973CC2080FA9400F02AC3 /* ReviveCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294973CB2080FA9400F02AC3 /* ReviveCall.swift */; };
+		294973CE2080FAD500F02AC3 /* OpenMysteryItemCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294973CD2080FAD500F02AC3 /* OpenMysteryItemCall.swift */; };
+		294973D02081039300F02AC3 /* InviteToQuestCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294973CF2081039300F02AC3 /* InviteToQuestCall.swift */; };
+		295610E22056C3AC00D9711A /* RetrieveContentCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295610E12056C3AC00D9711A /* RetrieveContentCall.swift */; };
+		295610E42056C3CA00D9711A /* RetrieveContentCallSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295610E32056C3CA00D9711A /* RetrieveContentCallSpec.swift */; };
+		295610EB2056C6F600D9711A /* APIContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295610EA2056C6F600D9711A /* APIContent.swift */; };
+		295610EF2056C7F700D9711A /* APIFood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295610EE2056C7F700D9711A /* APIFood.swift */; };
+		295610F72056CA6900D9711A /* APIEgg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295610F62056CA6900D9711A /* APIEgg.swift */; };
+		295610F92056CAA800D9711A /* APIHatchingPotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295610F82056CAA800D9711A /* APIHatchingPotion.swift */; };
+		295610FD2056CC5D00D9711A /* APIGear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295610FC2056CC5D00D9711A /* APIGear.swift */; };
+		295611012056D20B00D9711A /* APISkill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295611002056D20B00D9711A /* APISkill.swift */; };
+		295611072056DD2800D9711A /* APIQuest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295611062056DD2800D9711A /* APIQuest.swift */; };
+		295611092056DE9F00D9711A /* APIQuestBoss.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295611082056DE9F00D9711A /* APIQuestBoss.swift */; };
+		2956110D2056E18A00D9711A /* APIQuestCollect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2956110C2056E18A00D9711A /* APIQuestCollect.swift */; };
+		295D42FA20936CE400948E7E /* DisableClassesCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295D42F920936CE400948E7E /* DisableClassesCall.swift */; };
+		295D42FC20936D4300948E7E /* SelectClassCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295D42FB20936D4300948E7E /* SelectClassCall.swift */; };
+		295D43022097395800948E7E /* APITutorialStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295D43012097395800948E7E /* APITutorialStep.swift */; };
+		295E9DB920B2C6E200D58D45 /* APIQuestBossRage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295E9DB820B2C6E200D58D45 /* APIQuestBossRage.swift */; };
+		295E9DBB20B2C72600D58D45 /* APIQuestDrop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295E9DBA20B2C72600D58D45 /* APIQuestDrop.swift */; };
+		295E9DBD20B2C83400D58D45 /* APIQuestDropItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295E9DBC20B2C83400D58D45 /* APIQuestDropItem.swift */; };
+		295E9DC220B2DE7200D58D45 /* BuyItemCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295E9DC120B2DE7200D58D45 /* BuyItemCall.swift */; };
+		295E9DC820B2DF9600D58D45 /* PurchaseItemCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295E9DC720B2DF9600D58D45 /* PurchaseItemCall.swift */; };
+		295E9DCA20B2DFB700D58D45 /* PurchaseHourglassItemCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295E9DC920B2DFB700D58D45 /* PurchaseHourglassItemCall.swift */; };
+		295E9DCC20B2DFEB00D58D45 /* PurchaseQuestCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295E9DCB20B2DFEB00D58D45 /* PurchaseQuestCall.swift */; };
+		295E9DCE20B2E00300D58D45 /* PurchaseMysterySetCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295E9DCD20B2E00300D58D45 /* PurchaseMysterySetCall.swift */; };
+		295E9DD220B2E9EF00D58D45 /* RerollCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295E9DD120B2E9EF00D58D45 /* RerollCall.swift */; };
+		295E9DD420B2EA4100D58D45 /* TogglePinnedItemCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295E9DD320B2EA4100D58D45 /* TogglePinnedItemCall.swift */; };
+		295E9DD620B2ECB900D58D45 /* RetrieveShopInventoryCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295E9DD520B2ECB900D58D45 /* RetrieveShopInventoryCall.swift */; };
+		295E9DD820B2F6DE00D58D45 /* ClearCompletedTodosCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295E9DD720B2F6DE00D58D45 /* ClearCompletedTodosCall.swift */; };
+		295E9DDA20B2FBC000D58D45 /* CreateTasksCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295E9DD920B2FBC000D58D45 /* CreateTasksCall.swift */; };
+		295E9DDC20B3060200D58D45 /* PurchaseGemsCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295E9DDB20B3060200D58D45 /* PurchaseGemsCall.swift */; };
+		295E9DDE20B3065100D58D45 /* SubscribeCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295E9DDD20B3065100D58D45 /* SubscribeCall.swift */; };
+		295E9DE020B31B8600D58D45 /* CreateTagCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295E9DDF20B31B8600D58D45 /* CreateTagCall.swift */; };
+		295E9DE220B31BE400D58D45 /* UpdateTagCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295E9DE120B31BE400D58D45 /* UpdateTagCall.swift */; };
+		295E9DE420B31C1300D58D45 /* DeleteTagCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295E9DE320B31C1300D58D45 /* DeleteTagCall.swift */; };
+		295E9DF020B3362A00D58D45 /* APIShop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295E9DEF20B3362A00D58D45 /* APIShop.swift */; };
+		295E9DF220B3369C00D58D45 /* APIShopCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295E9DF120B3369C00D58D45 /* APIShopCategories.swift */; };
+		295E9DFA20B47A5300D58D45 /* APIQuestColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295E9DF920B47A5300D58D45 /* APIQuestColors.swift */; };
+		295FE2C220A4501500C97BA4 /* CreateGroupCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295FE2C120A4501500C97BA4 /* CreateGroupCall.swift */; };
+		295FE2C420A4505B00C97BA4 /* UpdateGroupCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295FE2C320A4505B00C97BA4 /* UpdateGroupCall.swift */; };
+		296AC81A20ADD99900885682 /* RetrieveInAppRewardsCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296AC81920ADD99900885682 /* RetrieveInAppRewardsCall.swift */; };
+		296AC81C20ADD9D500885682 /* APIInAppReward.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296AC81B20ADD9D500885682 /* APIInAppReward.swift */; };
+		2974BD9B208E103B00EC1A25 /* APIPurchased.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BD9A208E103B00EC1A25 /* APIPurchased.swift */; };
+		2974BD9D208E120200EC1A25 /* APIOwnedCustomization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BD9C208E120200EC1A25 /* APIOwnedCustomization.swift */; };
+		2974BD9F208E15FD00EC1A25 /* APISubscriptionPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BD9E208E15FD00EC1A25 /* APISubscriptionPlan.swift */; };
+		2974BDA1208E16E100EC1A25 /* APISubscriptionConsecutive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BDA0208E16E100EC1A25 /* APISubscriptionConsecutive.swift */; };
+		2974BDAB208F4D6B00EC1A25 /* UnlockCustomizationsCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BDAA208F4D6B00EC1A25 /* UnlockCustomizationsCall.swift */; };
+		2974BDB220908E4600EC1A25 /* APIInboxMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BDB120908E4600EC1A25 /* APIInboxMessages.swift */; };
+		299FB2882084987000422522 /* APIPet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB2872084987000422522 /* APIPet.swift */; };
+		299FB28A2084988500422522 /* APIMount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB2892084988500422522 /* APIMount.swift */; };
+		299FB29420849EDD00422522 /* APIOwnedPet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB29320849EDD00422522 /* APIOwnedPet.swift */; };
+		299FB29620849F1500422522 /* APIOwnedMount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB29520849F1500422522 /* APIOwnedMount.swift */; };
+		29A6B86E20690F0C0086B2A6 /* APIWeekRepeat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A6B86D20690F0C0086B2A6 /* APIWeekRepeat.swift */; };
+		29A6B870206940F80086B2A6 /* CreateTaskCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A6B86F206940F80086B2A6 /* CreateTaskCall.swift */; };
+		29A6B872206941210086B2A6 /* UpdateTaskCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A6B871206941210086B2A6 /* UpdateTaskCall.swift */; };
+		29B4788C20BEFBDC00B6123F /* ScoreChecklistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4788B20BEFBDC00B6123F /* ScoreChecklistItem.swift */; };
+		29B478BB20C0360E00B6123F /* UpdateDayStartTimeCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B478BA20C0360E00B6123F /* UpdateDayStartTimeCall.swift */; };
+		29B478C320C5330600B6123F /* APIBuyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B478C220C5330600B6123F /* APIBuyResponse.swift */; };
+		29B478C520C54E6200B6123F /* APIArmoireResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B478C420C54E6200B6123F /* APIArmoireResponse.swift */; };
+		29B586FC204D92CF00301955 /* Habitica_API_Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29B586F2204D92CF00301955 /* Habitica_API_Client.framework */; };
+		29B58703204D92CF00301955 /* Habitica_API_Client.h in Headers */ = {isa = PBXBuildFile; fileRef = 29B586F5204D92CF00301955 /* Habitica_API_Client.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		29DBFEFD20CADBC900DF9CF2 /* APISpecialItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFEFC20CADBC900DF9CF2 /* APISpecialItem.swift */; };
+		29DBFEFF20CE6D7F00DF9CF2 /* Decoding-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFEFE20CE6D7F00DF9CF2 /* Decoding-Extensions.swift */; };
+		29DBFF0320CE91A500DF9CF2 /* UseTransformationItemCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFF0220CE91A500DF9CF2 /* UseTransformationItemCall.swift */; };
+		29DBFF0720D01EE000DF9CF2 /* RetrieveChallengeTasksCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFF0620D01EE000DF9CF2 /* RetrieveChallengeTasksCall.swift */; };
+		29DBFF0F20D15BEA00DF9CF2 /* APIUserNewMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFF0E20D15BEA00DF9CF2 /* APIUserNewMessages.swift */; };
+		9A268BF127E13DFBBE1D6DAF /* Pods_Habitica_API_ClientTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B265032E3FD15918939BFD0F /* Pods_Habitica_API_ClientTests.framework */; };
+		AE4ADE8B2AF941F3FCBB5DD9 /* Pods_Habitica_API_Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D41C03127A377E7796EFB1E8 /* Pods_Habitica_API_Client.framework */; };
+		DC2C4A0476068E29973DB0CD /* RetrieveGroupMembersCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2C420658EE5D517E37D97D /* RetrieveGroupMembersCall.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		29B586FD204D92CF00301955 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B586E9204D92CF00301955 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 29B586F1204D92CF00301955;
+			remoteInfo = "Habitica API Client";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		191CE8102BC4FC651F95BBBA /* Pods-Habitica API Client.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica API Client.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Habitica API Client/Pods-Habitica API Client.release.xcconfig"; sourceTree = "<group>"; };
+		2902795D2057E858006DACB9 /* APIFAQEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIFAQEntry.swift; sourceTree = "<group>"; };
+		2902797820580EFD006DACB9 /* APIBuff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIBuff.swift; sourceTree = "<group>"; };
+		2902797E20581CF0006DACB9 /* AllocateAttributePointCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllocateAttributePointCall.swift; sourceTree = "<group>"; };
+		2902798020581DE3006DACB9 /* BulkAllocateAttributePointsCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulkAllocateAttributePointsCall.swift; sourceTree = "<group>"; };
+		2902798E205835DF006DACB9 /* APIWorldState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIWorldState.swift; sourceTree = "<group>"; };
+		29027990205835F7006DACB9 /* APIQuestState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIQuestState.swift; sourceTree = "<group>"; };
+		2902799220583612006DACB9 /* APIQuestProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIQuestProgress.swift; sourceTree = "<group>"; };
+		29027994205836A8006DACB9 /* RetrieveWorldStateCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveWorldStateCall.swift; sourceTree = "<group>"; };
+		290B623C207267AA007287C4 /* RetrieveGroupsCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveGroupsCall.swift; sourceTree = "<group>"; };
+		290B62512073D91C007287C4 /* APIInbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIInbox.swift; sourceTree = "<group>"; };
+		290B62532073D957007287C4 /* APIPushNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIPushNotifications.swift; sourceTree = "<group>"; };
+		290B6260207B959E007287C4 /* APIAuthenticationTimestamps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIAuthenticationTimestamps.swift; sourceTree = "<group>"; };
+		290B6262207B9707007287C4 /* APILocalAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APILocalAuthentication.swift; sourceTree = "<group>"; };
+		290B6264207B978F007287C4 /* APIAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIAuthentication.swift; sourceTree = "<group>"; };
+		290B626C207BA6AB007287C4 /* ResetAccountCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetAccountCall.swift; sourceTree = "<group>"; };
+		290B626E207BA6FB007287C4 /* DeleteAccountCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountCall.swift; sourceTree = "<group>"; };
+		290B6270207BA765007287C4 /* UpdateEmailCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateEmailCall.swift; sourceTree = "<group>"; };
+		290B6272207BA7D9007287C4 /* UpdateUsernameCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUsernameCall.swift; sourceTree = "<group>"; };
+		290B6274207BA805007287C4 /* UpdatePasswordCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePasswordCall.swift; sourceTree = "<group>"; };
+		290B6276207BA86F007287C4 /* SendPasswordResetEmailCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendPasswordResetEmailCall.swift; sourceTree = "<group>"; };
+		290B6278207BA8C3007287C4 /* LocalLoginCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalLoginCall.swift; sourceTree = "<group>"; };
+		290B627A207BA9A1007287C4 /* LocalRegisterCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalRegisterCall.swift; sourceTree = "<group>"; };
+		290B627C207BA9D4007287C4 /* SocialLoginCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginCall.swift; sourceTree = "<group>"; };
+		290B627E207BAA23007287C4 /* SleepCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepCall.swift; sourceTree = "<group>"; };
+		290B6282207BAAA2007287C4 /* APILoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APILoginResponse.swift; sourceTree = "<group>"; };
+		290B628E207E17C1007287C4 /* APIMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIMember.swift; sourceTree = "<group>"; };
+		290B6290207E1E76007287C4 /* RetrieveMemberCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveMemberCall.swift; sourceTree = "<group>"; };
+		290B6292207E3E24007287C4 /* JoinGroupCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGroupCall.swift; sourceTree = "<group>"; };
+		290B6294207E3E6C007287C4 /* LeaveGroupCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveGroupCall.swift; sourceTree = "<group>"; };
+		290B629B207F7E84007287C4 /* APIOwnedGear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIOwnedGear.swift; sourceTree = "<group>"; };
+		290C300E206A779E0066AF5B /* DeleteTaskCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTaskCall.swift; sourceTree = "<group>"; };
+		290C3012206A78700066AF5B /* APIEmptyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEmptyResponse.swift; sourceTree = "<group>"; };
+		290C3014206A80AE0066AF5B /* MoveTaskCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveTaskCall.swift; sourceTree = "<group>"; };
+		290C3027206B98A50066AF5B /* APIOwnedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIOwnedItem.swift; sourceTree = "<group>"; };
+		290C302D206BD2020066AF5B /* UseSkillCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseSkillCall.swift; sourceTree = "<group>"; };
+		290C3031206CF0190066AF5B /* APISkillResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISkillResponse.swift; sourceTree = "<group>"; };
+		290C3033206D24A40066AF5B /* RunCronCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunCronCall.swift; sourceTree = "<group>"; };
+		290C303F206D3DE80066AF5B /* APIGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIGroup.swift; sourceTree = "<group>"; };
+		290C3041206D3EC30066AF5B /* APIChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIChatMessage.swift; sourceTree = "<group>"; };
+		290C3045206D44670066AF5B /* RetrieveGroupCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveGroupCall.swift; sourceTree = "<group>"; };
+		291448732086352800F3A6B5 /* FeedPetCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPetCall.swift; sourceTree = "<group>"; };
+		29144893208A1C9400F3A6B5 /* APIHair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHair.swift; sourceTree = "<group>"; };
+		2914489D208A346700F3A6B5 /* APICustomization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICustomization.swift; sourceTree = "<group>"; };
+		2914489F208A34D100F3A6B5 /* APICustomizationSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICustomizationSet.swift; sourceTree = "<group>"; };
+		2919FDD62090D2510096A53B /* DeleteInboxMessageCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteInboxMessageCall.swift; sourceTree = "<group>"; };
+		2919FDD82090DF1B0096A53B /* PostInboxMessageCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostInboxMessageCall.swift; sourceTree = "<group>"; };
+		2919FDDA2091D3D70096A53B /* MarkInboxAsSeenCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkInboxAsSeenCall.swift; sourceTree = "<group>"; };
+		2919FDE02091DFFE0096A53B /* ReviveUserCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviveUserCall.swift; sourceTree = "<group>"; };
+		291DE979209B443D0073182A /* APIQuestParticipant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIQuestParticipant.swift; sourceTree = "<group>"; };
+		291E1A1F209B6FAB00BA1FFB /* RejectQuestInvitationCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RejectQuestInvitationCall.swift; sourceTree = "<group>"; };
+		291E1A21209B701D00BA1FFB /* AcceptQuestInvitationCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptQuestInvitationCall.swift; sourceTree = "<group>"; };
+		291E1A23209B702B00BA1FFB /* AbortQuestCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbortQuestCall.swift; sourceTree = "<group>"; };
+		291E1A25209B703C00BA1FFB /* ForceStartQuestCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForceStartQuestCall.swift; sourceTree = "<group>"; };
+		291E1A27209B704A00BA1FFB /* CancelQuestInvitationCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelQuestInvitationCall.swift; sourceTree = "<group>"; };
+		291E95AC20986CDE006EE585 /* DateEncodingStrategy-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateEncodingStrategy-Extension.swift"; sourceTree = "<group>"; };
+		291E95B4209888E1006EE585 /* APIUserParty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIUserParty.swift; sourceTree = "<group>"; };
+		2927269320B6ECAB009DD08A /* RetrieveRemoteConfigCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveRemoteConfigCall.swift; sourceTree = "<group>"; };
+		2927269520B6F316009DD08A /* RetrieveMaintenanceInfoCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveMaintenanceInfoCall.swift; sourceTree = "<group>"; };
+		2927269720B6F332009DD08A /* RetrieveDeprecationInfoCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveDeprecationInfoCall.swift; sourceTree = "<group>"; };
+		292726A120B6FFE3009DD08A /* APIChallenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIChallenge.swift; sourceTree = "<group>"; };
+		292726A320B6FFF5009DD08A /* APIChallengeCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIChallengeCategory.swift; sourceTree = "<group>"; };
+		292726A520B70290009DD08A /* RetrieveChallengeCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveChallengeCall.swift; sourceTree = "<group>"; };
+		292726A720B702C4009DD08A /* RetrieveChallengesCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveChallengesCall.swift; sourceTree = "<group>"; };
+		292726A920B70303009DD08A /* JoinChallengeCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinChallengeCall.swift; sourceTree = "<group>"; };
+		292726AB20B70329009DD08A /* LeaveChallengeCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveChallengeCall.swift; sourceTree = "<group>"; };
+		292726B320B70747009DD08A /* APIChallengeMembership.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIChallengeMembership.swift; sourceTree = "<group>"; };
+		292844EA20DD18380011DC43 /* APIGroupInvitation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIGroupInvitation.swift; sourceTree = "<group>"; };
+		292844F020DD37F40011DC43 /* RejectGroupInvitationCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RejectGroupInvitationCall.swift; sourceTree = "<group>"; };
+		292DEE45204D9D8D0086D5F7 /* Habitica_Models.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_Models.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		292DEE4A204DA1220086D5F7 /* NetworkAuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAuthenticationManager.swift; sourceTree = "<group>"; };
+		292DEE4E204DA3870086D5F7 /* RetrieveTasksCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveTasksCall.swift; sourceTree = "<group>"; };
+		292DEE50204DA3A30086D5F7 /* APITask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITask.swift; sourceTree = "<group>"; };
+		292DEE7D204E37670086D5F7 /* APITag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITag.swift; sourceTree = "<group>"; };
+		292DEE81204E411C0086D5F7 /* APIChecklistItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIChecklistItem.swift; sourceTree = "<group>"; };
+		292DEE87204E490A0086D5F7 /* APIReminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIReminder.swift; sourceTree = "<group>"; };
+		292DEE8E204F49D50086D5F7 /* AuthenticatedCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatedCall.swift; sourceTree = "<group>"; };
+		292DEE90204F4A0F0086D5F7 /* HabiticaServerConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabiticaServerConfig.swift; sourceTree = "<group>"; };
+		292DEE92204F4A430086D5F7 /* ResponseArrayCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseArrayCall.swift; sourceTree = "<group>"; };
+		292DEE94204F4A510086D5F7 /* ResponseObjectCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseObjectCall.swift; sourceTree = "<group>"; };
+		292DEE9C204F4B5F0086D5F7 /* tasks.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = tasks.json; sourceTree = "<group>"; };
+		292DEE9E204F4B8F0086D5F7 /* RetrieveTasksCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveTasksCall.swift; sourceTree = "<group>"; };
+		292DEEA0204F625B0086D5F7 /* DateDecodingStrategy-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateDecodingStrategy-Extension.swift"; sourceTree = "<group>"; };
+		292DEEA8204F71290086D5F7 /* ScoreTaskCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreTaskCall.swift; sourceTree = "<group>"; };
+		292DEEB0205039CA0086D5F7 /* TaskResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskResponse.swift; sourceTree = "<group>"; };
+		292F9658206E2AAB00804151 /* MarkChatSeenCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkChatSeenCall.swift; sourceTree = "<group>"; };
+		292F965A206E2AE300804151 /* RetrieveChatCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveChatCall.swift; sourceTree = "<group>"; };
+		292F9663206E4F5500804151 /* LikeChatMessageCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeChatMessageCall.swift; sourceTree = "<group>"; };
+		292F9665206E4F9F00804151 /* FlagChatMessageCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagChatMessageCall.swift; sourceTree = "<group>"; };
+		292F9667206E4FBD00804151 /* DeleteChatMessageCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteChatMessageCall.swift; sourceTree = "<group>"; };
+		292F9669206E4FD100804151 /* PostChatMessageCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostChatMessageCall.swift; sourceTree = "<group>"; };
+		292F966B206E6D8A00804151 /* UpdateUserCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserCall.swift; sourceTree = "<group>"; };
+		292F96732072277D00804151 /* APIChatMessageReaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIChatMessageReaction.swift; sourceTree = "<group>"; };
+		292F9675207227AB00804151 /* APIUserStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIUserStyle.swift; sourceTree = "<group>"; };
+		29323E1420504F2300AC6D6F /* APIUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIUser.swift; sourceTree = "<group>"; };
+		29323E1620504F5600AC6D6F /* APIStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIStats.swift; sourceTree = "<group>"; };
+		29323E182050528C00AC6D6F /* RetrieveUserCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveUserCall.swift; sourceTree = "<group>"; };
+		29323E22205099FF00AC6D6F /* HabiticaResponseCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabiticaResponseCall.swift; sourceTree = "<group>"; };
+		29323E2420509B9000AC6D6F /* HabiticaResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabiticaResponse.swift; sourceTree = "<group>"; };
+		29323E262051659C00AC6D6F /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
+		29323E2C2051B43100AC6D6F /* DebugOutputHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugOutputHandler.swift; sourceTree = "<group>"; };
+		29323E36205212C400AC6D6F /* APIFlags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIFlags.swift; sourceTree = "<group>"; };
+		29323E38205212E400AC6D6F /* APIPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIPreferences.swift; sourceTree = "<group>"; };
+		29323E3A205212F900AC6D6F /* APIProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIProfile.swift; sourceTree = "<group>"; };
+		29323E4620521B5000AC6D6F /* APIContributor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIContributor.swift; sourceTree = "<group>"; };
+		29323E502052F77F00AC6D6F /* APIUserItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIUserItems.swift; sourceTree = "<group>"; };
+		29323E522052F7A600AC6D6F /* APIUserGear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIUserGear.swift; sourceTree = "<group>"; };
+		29323E542052F7C400AC6D6F /* APIOutfit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIOutfit.swift; sourceTree = "<group>"; };
+		29323E5F2056B9B000AC6D6F /* QuickSpec-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuickSpec-Extensions.swift"; sourceTree = "<group>"; };
+		29323E612056BA6000AC6D6F /* ScoreTaskCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreTaskCall.swift; sourceTree = "<group>"; };
+		29323E652056BA9000AC6D6F /* taskResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = taskResponse.json; sourceTree = "<group>"; };
+		29323E692056BC2A00AC6D6F /* RetrieveUserCallSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveUserCallSpec.swift; sourceTree = "<group>"; };
+		29323E6B2056BCB400AC6D6F /* user.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = user.json; sourceTree = "<group>"; };
+		29323E6D2056C0E900AC6D6F /* content.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = content.json; sourceTree = "<group>"; };
+		294973C52080F92400F02AC3 /* SellItemCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellItemCall.swift; sourceTree = "<group>"; };
+		294973C72080F98600F02AC3 /* HatchPetCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HatchPetCall.swift; sourceTree = "<group>"; };
+		294973C92080F9F600F02AC3 /* EquipGearCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipGearCall.swift; sourceTree = "<group>"; };
+		294973CB2080FA9400F02AC3 /* ReviveCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviveCall.swift; sourceTree = "<group>"; };
+		294973CD2080FAD500F02AC3 /* OpenMysteryItemCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenMysteryItemCall.swift; sourceTree = "<group>"; };
+		294973CF2081039300F02AC3 /* InviteToQuestCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteToQuestCall.swift; sourceTree = "<group>"; };
+		295610E12056C3AC00D9711A /* RetrieveContentCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveContentCall.swift; sourceTree = "<group>"; };
+		295610E32056C3CA00D9711A /* RetrieveContentCallSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveContentCallSpec.swift; sourceTree = "<group>"; };
+		295610EA2056C6F600D9711A /* APIContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIContent.swift; sourceTree = "<group>"; };
+		295610EE2056C7F700D9711A /* APIFood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIFood.swift; sourceTree = "<group>"; };
+		295610F62056CA6900D9711A /* APIEgg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEgg.swift; sourceTree = "<group>"; };
+		295610F82056CAA800D9711A /* APIHatchingPotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHatchingPotion.swift; sourceTree = "<group>"; };
+		295610FC2056CC5D00D9711A /* APIGear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIGear.swift; sourceTree = "<group>"; };
+		295611002056D20B00D9711A /* APISkill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISkill.swift; sourceTree = "<group>"; };
+		295611062056DD2800D9711A /* APIQuest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIQuest.swift; sourceTree = "<group>"; };
+		295611082056DE9F00D9711A /* APIQuestBoss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIQuestBoss.swift; sourceTree = "<group>"; };
+		2956110C2056E18A00D9711A /* APIQuestCollect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIQuestCollect.swift; sourceTree = "<group>"; };
+		295D42F920936CE400948E7E /* DisableClassesCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisableClassesCall.swift; sourceTree = "<group>"; };
+		295D42FB20936D4300948E7E /* SelectClassCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectClassCall.swift; sourceTree = "<group>"; };
+		295D43012097395800948E7E /* APITutorialStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITutorialStep.swift; sourceTree = "<group>"; };
+		295E9DB820B2C6E200D58D45 /* APIQuestBossRage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIQuestBossRage.swift; sourceTree = "<group>"; };
+		295E9DBA20B2C72600D58D45 /* APIQuestDrop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIQuestDrop.swift; sourceTree = "<group>"; };
+		295E9DBC20B2C83400D58D45 /* APIQuestDropItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIQuestDropItem.swift; sourceTree = "<group>"; };
+		295E9DC120B2DE7200D58D45 /* BuyItemCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyItemCall.swift; sourceTree = "<group>"; };
+		295E9DC720B2DF9600D58D45 /* PurchaseItemCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseItemCall.swift; sourceTree = "<group>"; };
+		295E9DC920B2DFB700D58D45 /* PurchaseHourglassItemCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseHourglassItemCall.swift; sourceTree = "<group>"; };
+		295E9DCB20B2DFEB00D58D45 /* PurchaseQuestCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseQuestCall.swift; sourceTree = "<group>"; };
+		295E9DCD20B2E00300D58D45 /* PurchaseMysterySetCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseMysterySetCall.swift; sourceTree = "<group>"; };
+		295E9DD120B2E9EF00D58D45 /* RerollCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RerollCall.swift; sourceTree = "<group>"; };
+		295E9DD320B2EA4100D58D45 /* TogglePinnedItemCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TogglePinnedItemCall.swift; sourceTree = "<group>"; };
+		295E9DD520B2ECB900D58D45 /* RetrieveShopInventoryCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveShopInventoryCall.swift; sourceTree = "<group>"; };
+		295E9DD720B2F6DE00D58D45 /* ClearCompletedTodosCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearCompletedTodosCall.swift; sourceTree = "<group>"; };
+		295E9DD920B2FBC000D58D45 /* CreateTasksCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTasksCall.swift; sourceTree = "<group>"; };
+		295E9DDB20B3060200D58D45 /* PurchaseGemsCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseGemsCall.swift; sourceTree = "<group>"; };
+		295E9DDD20B3065100D58D45 /* SubscribeCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeCall.swift; sourceTree = "<group>"; };
+		295E9DDF20B31B8600D58D45 /* CreateTagCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTagCall.swift; sourceTree = "<group>"; };
+		295E9DE120B31BE400D58D45 /* UpdateTagCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateTagCall.swift; sourceTree = "<group>"; };
+		295E9DE320B31C1300D58D45 /* DeleteTagCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTagCall.swift; sourceTree = "<group>"; };
+		295E9DEF20B3362A00D58D45 /* APIShop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIShop.swift; sourceTree = "<group>"; };
+		295E9DF120B3369C00D58D45 /* APIShopCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIShopCategories.swift; sourceTree = "<group>"; };
+		295E9DF920B47A5300D58D45 /* APIQuestColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIQuestColors.swift; sourceTree = "<group>"; };
+		295FE2C120A4501500C97BA4 /* CreateGroupCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupCall.swift; sourceTree = "<group>"; };
+		295FE2C320A4505B00C97BA4 /* UpdateGroupCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateGroupCall.swift; sourceTree = "<group>"; };
+		296AC81920ADD99900885682 /* RetrieveInAppRewardsCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveInAppRewardsCall.swift; sourceTree = "<group>"; };
+		296AC81B20ADD9D500885682 /* APIInAppReward.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIInAppReward.swift; sourceTree = "<group>"; };
+		2974BD9A208E103B00EC1A25 /* APIPurchased.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIPurchased.swift; sourceTree = "<group>"; };
+		2974BD9C208E120200EC1A25 /* APIOwnedCustomization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIOwnedCustomization.swift; sourceTree = "<group>"; };
+		2974BD9E208E15FD00EC1A25 /* APISubscriptionPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISubscriptionPlan.swift; sourceTree = "<group>"; };
+		2974BDA0208E16E100EC1A25 /* APISubscriptionConsecutive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISubscriptionConsecutive.swift; sourceTree = "<group>"; };
+		2974BDAA208F4D6B00EC1A25 /* UnlockCustomizationsCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockCustomizationsCall.swift; sourceTree = "<group>"; };
+		2974BDB120908E4600EC1A25 /* APIInboxMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIInboxMessages.swift; sourceTree = "<group>"; };
+		299FB2872084987000422522 /* APIPet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIPet.swift; sourceTree = "<group>"; };
+		299FB2892084988500422522 /* APIMount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIMount.swift; sourceTree = "<group>"; };
+		299FB29320849EDD00422522 /* APIOwnedPet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIOwnedPet.swift; sourceTree = "<group>"; };
+		299FB29520849F1500422522 /* APIOwnedMount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIOwnedMount.swift; sourceTree = "<group>"; };
+		29A6B86D20690F0C0086B2A6 /* APIWeekRepeat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIWeekRepeat.swift; sourceTree = "<group>"; };
+		29A6B86F206940F80086B2A6 /* CreateTaskCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskCall.swift; sourceTree = "<group>"; };
+		29A6B871206941210086B2A6 /* UpdateTaskCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateTaskCall.swift; sourceTree = "<group>"; };
+		29B4788B20BEFBDC00B6123F /* ScoreChecklistItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreChecklistItem.swift; sourceTree = "<group>"; };
+		29B478BA20C0360E00B6123F /* UpdateDayStartTimeCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateDayStartTimeCall.swift; sourceTree = "<group>"; };
+		29B478C220C5330600B6123F /* APIBuyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIBuyResponse.swift; sourceTree = "<group>"; };
+		29B478C420C54E6200B6123F /* APIArmoireResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIArmoireResponse.swift; sourceTree = "<group>"; };
+		29B586F2204D92CF00301955 /* Habitica_API_Client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Habitica_API_Client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		29B586F5204D92CF00301955 /* Habitica_API_Client.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Habitica_API_Client.h; sourceTree = "<group>"; };
+		29B586F6204D92CF00301955 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		29B586FB204D92CF00301955 /* Habitica API ClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Habitica API ClientTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		29B58702204D92CF00301955 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		29DBFEFC20CADBC900DF9CF2 /* APISpecialItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISpecialItem.swift; sourceTree = "<group>"; };
+		29DBFEFE20CE6D7F00DF9CF2 /* Decoding-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decoding-Extensions.swift"; sourceTree = "<group>"; };
+		29DBFF0220CE91A500DF9CF2 /* UseTransformationItemCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseTransformationItemCall.swift; sourceTree = "<group>"; };
+		29DBFF0620D01EE000DF9CF2 /* RetrieveChallengeTasksCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveChallengeTasksCall.swift; sourceTree = "<group>"; };
+		29DBFF0E20D15BEA00DF9CF2 /* APIUserNewMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIUserNewMessages.swift; sourceTree = "<group>"; };
+		589C92345817498D7AFD83FC /* Pods-Habitica API ClientTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica API ClientTests.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Habitica API ClientTests/Pods-Habitica API ClientTests.debug.xcconfig"; sourceTree = "<group>"; };
+		9202171462D0CA0F8120FBAE /* Pods-Habitica API ClientTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica API ClientTests.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Habitica API ClientTests/Pods-Habitica API ClientTests.release.xcconfig"; sourceTree = "<group>"; };
+		B265032E3FD15918939BFD0F /* Pods_Habitica_API_ClientTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica_API_ClientTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D41C03127A377E7796EFB1E8 /* Pods_Habitica_API_Client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica_API_Client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC2C420658EE5D517E37D97D /* RetrieveGroupMembersCall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RetrieveGroupMembersCall.swift; sourceTree = "<group>"; };
+		E7EF6D46CDBA4E678D7467CD /* Pods-Habitica API Client.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica API Client.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Habitica API Client/Pods-Habitica API Client.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		29B586EE204D92CF00301955 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				292DEE44204D9D8D0086D5F7 /* Habitica_Models.framework in Frameworks */,
+				AE4ADE8B2AF941F3FCBB5DD9 /* Pods_Habitica_API_Client.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		29B586F8204D92CF00301955 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				29B586FC204D92CF00301955 /* Habitica_API_Client.framework in Frameworks */,
+				9A268BF127E13DFBBE1D6DAF /* Pods_Habitica_API_ClientTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		290C303A206D3D610066AF5B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				290C303E206D3DDB0066AF5B /* Group */,
+				290C303D206D3DC70066AF5B /* Tasks */,
+				290C303C206D3D9F0066AF5B /* User */,
+				290C303B206D3D6C0066AF5B /* Content */,
+				29B478C220C5330600B6123F /* APIBuyResponse.swift */,
+				29B478C420C54E6200B6123F /* APIArmoireResponse.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		290C303B206D3D6C0066AF5B /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				295610EA2056C6F600D9711A /* APIContent.swift */,
+				2914489D208A346700F3A6B5 /* APICustomization.swift */,
+				2914489F208A34D100F3A6B5 /* APICustomizationSet.swift */,
+				295610F62056CA6900D9711A /* APIEgg.swift */,
+				2902795D2057E858006DACB9 /* APIFAQEntry.swift */,
+				295610EE2056C7F700D9711A /* APIFood.swift */,
+				29DBFEFC20CADBC900DF9CF2 /* APISpecialItem.swift */,
+				295610FC2056CC5D00D9711A /* APIGear.swift */,
+				295610F82056CAA800D9711A /* APIHatchingPotion.swift */,
+				296AC81B20ADD9D500885682 /* APIInAppReward.swift */,
+				299FB2892084988500422522 /* APIMount.swift */,
+				299FB2872084987000422522 /* APIPet.swift */,
+				295611062056DD2800D9711A /* APIQuest.swift */,
+				295611082056DE9F00D9711A /* APIQuestBoss.swift */,
+				295E9DB820B2C6E200D58D45 /* APIQuestBossRage.swift */,
+				2956110C2056E18A00D9711A /* APIQuestCollect.swift */,
+				295E9DF920B47A5300D58D45 /* APIQuestColors.swift */,
+				295E9DBA20B2C72600D58D45 /* APIQuestDrop.swift */,
+				295E9DBC20B2C83400D58D45 /* APIQuestDropItem.swift */,
+				291DE979209B443D0073182A /* APIQuestParticipant.swift */,
+				2902799220583612006DACB9 /* APIQuestProgress.swift */,
+				29027990205835F7006DACB9 /* APIQuestState.swift */,
+				295E9DEF20B3362A00D58D45 /* APIShop.swift */,
+				295E9DF120B3369C00D58D45 /* APIShopCategories.swift */,
+				295611002056D20B00D9711A /* APISkill.swift */,
+				2902798E205835DF006DACB9 /* APIWorldState.swift */,
+			);
+			path = Content;
+			sourceTree = "<group>";
+		};
+		290C303C206D3D9F0066AF5B /* User */ = {
+			isa = PBXGroup;
+			children = (
+				290B6264207B978F007287C4 /* APIAuthentication.swift */,
+				290B6260207B959E007287C4 /* APIAuthenticationTimestamps.swift */,
+				2902797820580EFD006DACB9 /* APIBuff.swift */,
+				29323E4620521B5000AC6D6F /* APIContributor.swift */,
+				29323E36205212C400AC6D6F /* APIFlags.swift */,
+				29144893208A1C9400F3A6B5 /* APIHair.swift */,
+				290B62512073D91C007287C4 /* APIInbox.swift */,
+				2974BDB120908E4600EC1A25 /* APIInboxMessages.swift */,
+				290B6262207B9707007287C4 /* APILocalAuthentication.swift */,
+				290B6282207BAAA2007287C4 /* APILoginResponse.swift */,
+				29323E542052F7C400AC6D6F /* APIOutfit.swift */,
+				2974BD9C208E120200EC1A25 /* APIOwnedCustomization.swift */,
+				290B629B207F7E84007287C4 /* APIOwnedGear.swift */,
+				290C3027206B98A50066AF5B /* APIOwnedItem.swift */,
+				299FB29520849F1500422522 /* APIOwnedMount.swift */,
+				299FB29320849EDD00422522 /* APIOwnedPet.swift */,
+				29323E38205212E400AC6D6F /* APIPreferences.swift */,
+				29323E3A205212F900AC6D6F /* APIProfile.swift */,
+				2974BD9A208E103B00EC1A25 /* APIPurchased.swift */,
+				290B62532073D957007287C4 /* APIPushNotifications.swift */,
+				290C3031206CF0190066AF5B /* APISkillResponse.swift */,
+				29323E1620504F5600AC6D6F /* APIStats.swift */,
+				2974BDA0208E16E100EC1A25 /* APISubscriptionConsecutive.swift */,
+				2974BD9E208E15FD00EC1A25 /* APISubscriptionPlan.swift */,
+				292DEE7D204E37670086D5F7 /* APITag.swift */,
+				295D43012097395800948E7E /* APITutorialStep.swift */,
+				29323E1420504F2300AC6D6F /* APIUser.swift */,
+				29323E522052F7A600AC6D6F /* APIUserGear.swift */,
+				29323E502052F77F00AC6D6F /* APIUserItems.swift */,
+				291E95B4209888E1006EE585 /* APIUserParty.swift */,
+				29DBFF0E20D15BEA00DF9CF2 /* APIUserNewMessages.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		290C303D206D3DC70066AF5B /* Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				292DEE50204DA3A30086D5F7 /* APITask.swift */,
+				29A6B86D20690F0C0086B2A6 /* APIWeekRepeat.swift */,
+				292DEE81204E411C0086D5F7 /* APIChecklistItem.swift */,
+				292DEE87204E490A0086D5F7 /* APIReminder.swift */,
+				292DEEB0205039CA0086D5F7 /* TaskResponse.swift */,
+			);
+			path = Tasks;
+			sourceTree = "<group>";
+		};
+		290C303E206D3DDB0066AF5B /* Group */ = {
+			isa = PBXGroup;
+			children = (
+				290C303F206D3DE80066AF5B /* APIGroup.swift */,
+				290C3041206D3EC30066AF5B /* APIChatMessage.swift */,
+				292F96732072277D00804151 /* APIChatMessageReaction.swift */,
+				292F9675207227AB00804151 /* APIUserStyle.swift */,
+				290B628E207E17C1007287C4 /* APIMember.swift */,
+				292726A120B6FFE3009DD08A /* APIChallenge.swift */,
+				292726A320B6FFF5009DD08A /* APIChallengeCategory.swift */,
+				292726B320B70747009DD08A /* APIChallengeMembership.swift */,
+				292844EA20DD18380011DC43 /* APIGroupInvitation.swift */,
+			);
+			path = Group;
+			sourceTree = "<group>";
+		};
+		290C3043206D44580066AF5B /* Group */ = {
+			isa = PBXGroup;
+			children = (
+				291E1A23209B702B00BA1FFB /* AbortQuestCall.swift */,
+				291E1A21209B701D00BA1FFB /* AcceptQuestInvitationCall.swift */,
+				291E1A27209B704A00BA1FFB /* CancelQuestInvitationCall.swift */,
+				295FE2C120A4501500C97BA4 /* CreateGroupCall.swift */,
+				292F9667206E4FBD00804151 /* DeleteChatMessageCall.swift */,
+				292F9665206E4F9F00804151 /* FlagChatMessageCall.swift */,
+				291E1A25209B703C00BA1FFB /* ForceStartQuestCall.swift */,
+				294973CF2081039300F02AC3 /* InviteToQuestCall.swift */,
+				290B6292207E3E24007287C4 /* JoinGroupCall.swift */,
+				292726A920B70303009DD08A /* JoinChallengeCall.swift */,
+				290B6294207E3E6C007287C4 /* LeaveGroupCall.swift */,
+				292726AB20B70329009DD08A /* LeaveChallengeCall.swift */,
+				292F9663206E4F5500804151 /* LikeChatMessageCall.swift */,
+				292F9658206E2AAB00804151 /* MarkChatSeenCall.swift */,
+				292F9669206E4FD100804151 /* PostChatMessageCall.swift */,
+				291E1A1F209B6FAB00BA1FFB /* RejectQuestInvitationCall.swift */,
+				292726A520B70290009DD08A /* RetrieveChallengeCall.swift */,
+				292F965A206E2AE300804151 /* RetrieveChatCall.swift */,
+				290C3045206D44670066AF5B /* RetrieveGroupCall.swift */,
+				DC2C420658EE5D517E37D97D /* RetrieveGroupMembersCall.swift */,
+				290B623C207267AA007287C4 /* RetrieveGroupsCall.swift */,
+				292726A720B702C4009DD08A /* RetrieveChallengesCall.swift */,
+				29DBFF0620D01EE000DF9CF2 /* RetrieveChallengeTasksCall.swift */,
+				290B6290207E1E76007287C4 /* RetrieveMemberCall.swift */,
+				295FE2C320A4505B00C97BA4 /* UpdateGroupCall.swift */,
+				292844F020DD37F40011DC43 /* RejectGroupInvitationCall.swift */,
+			);
+			path = Group;
+			sourceTree = "<group>";
+		};
+		292DEE43204D9D8D0086D5F7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				292DEE45204D9D8D0086D5F7 /* Habitica_Models.framework */,
+				D41C03127A377E7796EFB1E8 /* Pods_Habitica_API_Client.framework */,
+				B265032E3FD15918939BFD0F /* Pods_Habitica_API_ClientTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		292DEE46204D9D9E0086D5F7 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				292DEE8E204F49D50086D5F7 /* AuthenticatedCall.swift */,
+				29323E22205099FF00AC6D6F /* HabiticaResponseCall.swift */,
+				292DEE92204F4A430086D5F7 /* ResponseArrayCall.swift */,
+				292DEE94204F4A510086D5F7 /* ResponseObjectCall.swift */,
+				29323E2420509B9000AC6D6F /* HabiticaResponse.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		292DEE47204D9DA20086D5F7 /* Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				292DEE4E204DA3870086D5F7 /* RetrieveTasksCall.swift */,
+				295E9DD720B2F6DE00D58D45 /* ClearCompletedTodosCall.swift */,
+				292DEEA8204F71290086D5F7 /* ScoreTaskCall.swift */,
+				29B4788B20BEFBDC00B6123F /* ScoreChecklistItem.swift */,
+				29A6B86F206940F80086B2A6 /* CreateTaskCall.swift */,
+				295E9DDF20B31B8600D58D45 /* CreateTagCall.swift */,
+				295E9DD920B2FBC000D58D45 /* CreateTasksCall.swift */,
+				29A6B871206941210086B2A6 /* UpdateTaskCall.swift */,
+				295E9DE120B31BE400D58D45 /* UpdateTagCall.swift */,
+				290C3014206A80AE0066AF5B /* MoveTaskCall.swift */,
+				290C300E206A779E0066AF5B /* DeleteTaskCall.swift */,
+				295E9DE320B31C1300D58D45 /* DeleteTagCall.swift */,
+			);
+			path = Tasks;
+			sourceTree = "<group>";
+		};
+		292DEE9A204F4B3D0086D5F7 /* Fixtures */ = {
+			isa = PBXGroup;
+			children = (
+				292DEE9C204F4B5F0086D5F7 /* tasks.json */,
+				29323E652056BA9000AC6D6F /* taskResponse.json */,
+				29323E6B2056BCB400AC6D6F /* user.json */,
+				29323E6D2056C0E900AC6D6F /* content.json */,
+			);
+			path = Fixtures;
+			sourceTree = "<group>";
+		};
+		292DEE9B204F4B480086D5F7 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				295610DF2056C39A00D9711A /* Content */,
+				29323E682056BC1B00AC6D6F /* User */,
+				29323E672056BBF400AC6D6F /* Tasks */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		29323E1320504F1A00AC6D6F /* User */ = {
+			isa = PBXGroup;
+			children = (
+				2902797E20581CF0006DACB9 /* AllocateAttributePointCall.swift */,
+				2902798020581DE3006DACB9 /* BulkAllocateAttributePointsCall.swift */,
+				290B626E207BA6FB007287C4 /* DeleteAccountCall.swift */,
+				2919FDD62090D2510096A53B /* DeleteInboxMessageCall.swift */,
+				295D42F920936CE400948E7E /* DisableClassesCall.swift */,
+				290B6278207BA8C3007287C4 /* LocalLoginCall.swift */,
+				290B627A207BA9A1007287C4 /* LocalRegisterCall.swift */,
+				2919FDDA2091D3D70096A53B /* MarkInboxAsSeenCall.swift */,
+				2919FDD82090DF1B0096A53B /* PostInboxMessageCall.swift */,
+				295E9DDB20B3060200D58D45 /* PurchaseGemsCall.swift */,
+				290B626C207BA6AB007287C4 /* ResetAccountCall.swift */,
+				296AC81920ADD99900885682 /* RetrieveInAppRewardsCall.swift */,
+				29323E182050528C00AC6D6F /* RetrieveUserCall.swift */,
+				294973CB2080FA9400F02AC3 /* ReviveCall.swift */,
+				2919FDE02091DFFE0096A53B /* ReviveUserCall.swift */,
+				290C3033206D24A40066AF5B /* RunCronCall.swift */,
+				295D42FB20936D4300948E7E /* SelectClassCall.swift */,
+				290B6276207BA86F007287C4 /* SendPasswordResetEmailCall.swift */,
+				290B627E207BAA23007287C4 /* SleepCall.swift */,
+				290B627C207BA9D4007287C4 /* SocialLoginCall.swift */,
+				295E9DDD20B3065100D58D45 /* SubscribeCall.swift */,
+				29B478BA20C0360E00B6123F /* UpdateDayStartTimeCall.swift */,
+				290B6270207BA765007287C4 /* UpdateEmailCall.swift */,
+				290B6274207BA805007287C4 /* UpdatePasswordCall.swift */,
+				292F966B206E6D8A00804151 /* UpdateUserCall.swift */,
+				290B6272207BA7D9007287C4 /* UpdateUsernameCall.swift */,
+				290C302D206BD2020066AF5B /* UseSkillCall.swift */,
+				29DBFF0220CE91A500DF9CF2 /* UseTransformationItemCall.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		29323E672056BBF400AC6D6F /* Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				292DEE9E204F4B8F0086D5F7 /* RetrieveTasksCall.swift */,
+				29323E612056BA6000AC6D6F /* ScoreTaskCall.swift */,
+			);
+			path = Tasks;
+			sourceTree = "<group>";
+		};
+		29323E682056BC1B00AC6D6F /* User */ = {
+			isa = PBXGroup;
+			children = (
+				29323E692056BC2A00AC6D6F /* RetrieveUserCallSpec.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		294973C42080F91300F02AC3 /* Inventory */ = {
+			isa = PBXGroup;
+			children = (
+				294973C52080F92400F02AC3 /* SellItemCall.swift */,
+				294973C92080F9F600F02AC3 /* EquipGearCall.swift */,
+				294973C72080F98600F02AC3 /* HatchPetCall.swift */,
+				291448732086352800F3A6B5 /* FeedPetCall.swift */,
+				294973CD2080FAD500F02AC3 /* OpenMysteryItemCall.swift */,
+				2974BDAA208F4D6B00EC1A25 /* UnlockCustomizationsCall.swift */,
+			);
+			path = Inventory;
+			sourceTree = "<group>";
+		};
+		295610DF2056C39A00D9711A /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				295610E32056C3CA00D9711A /* RetrieveContentCallSpec.swift */,
+			);
+			path = Content;
+			sourceTree = "<group>";
+		};
+		295610E02056C3A000D9711A /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				295610E12056C3AC00D9711A /* RetrieveContentCall.swift */,
+				29027994205836A8006DACB9 /* RetrieveWorldStateCall.swift */,
+			);
+			path = Content;
+			sourceTree = "<group>";
+		};
+		295E9DC020B2DE6600D58D45 /* Shops */ = {
+			isa = PBXGroup;
+			children = (
+				295E9DC120B2DE7200D58D45 /* BuyItemCall.swift */,
+				295E9DC720B2DF9600D58D45 /* PurchaseItemCall.swift */,
+				295E9DC920B2DFB700D58D45 /* PurchaseHourglassItemCall.swift */,
+				295E9DCB20B2DFEB00D58D45 /* PurchaseQuestCall.swift */,
+				295E9DCD20B2E00300D58D45 /* PurchaseMysterySetCall.swift */,
+				295E9DD120B2E9EF00D58D45 /* RerollCall.swift */,
+				295E9DD320B2EA4100D58D45 /* TogglePinnedItemCall.swift */,
+				295E9DD520B2ECB900D58D45 /* RetrieveShopInventoryCall.swift */,
+			);
+			path = Shops;
+			sourceTree = "<group>";
+		};
+		29B586E8204D92CF00301955 = {
+			isa = PBXGroup;
+			children = (
+				29B586F4204D92CF00301955 /* Habitica API Client */,
+				292DEE43204D9D8D0086D5F7 /* Frameworks */,
+				29B586FF204D92CF00301955 /* Habitica API ClientTests */,
+				29B586F3204D92CF00301955 /* Products */,
+				71321DB618F6CFEC29FE5222 /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		29B586F3204D92CF00301955 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				29B586F2204D92CF00301955 /* Habitica_API_Client.framework */,
+				29B586FB204D92CF00301955 /* Habitica API ClientTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B586F4204D92CF00301955 /* Habitica API Client */ = {
+			isa = PBXGroup;
+			children = (
+				290C303A206D3D610066AF5B /* Models */,
+				290C3043206D44580066AF5B /* Group */,
+				295610E02056C3A000D9711A /* Content */,
+				29323E1320504F1A00AC6D6F /* User */,
+				294973C42080F91300F02AC3 /* Inventory */,
+				295E9DC020B2DE6600D58D45 /* Shops */,
+				292DEE46204D9D9E0086D5F7 /* Base */,
+				292DEE47204D9DA20086D5F7 /* Tasks */,
+				29B586F5204D92CF00301955 /* Habitica_API_Client.h */,
+				29B586F6204D92CF00301955 /* Info.plist */,
+				292DEE4A204DA1220086D5F7 /* NetworkAuthenticationManager.swift */,
+				292DEE90204F4A0F0086D5F7 /* HabiticaServerConfig.swift */,
+				292DEEA0204F625B0086D5F7 /* DateDecodingStrategy-Extension.swift */,
+				291E95AC20986CDE006EE585 /* DateEncodingStrategy-Extension.swift */,
+				29DBFEFE20CE6D7F00DF9CF2 /* Decoding-Extensions.swift */,
+				29323E262051659C00AC6D6F /* ErrorHandler.swift */,
+				29323E2C2051B43100AC6D6F /* DebugOutputHandler.swift */,
+				290C3012206A78700066AF5B /* APIEmptyResponse.swift */,
+				2927269320B6ECAB009DD08A /* RetrieveRemoteConfigCall.swift */,
+				2927269520B6F316009DD08A /* RetrieveMaintenanceInfoCall.swift */,
+				2927269720B6F332009DD08A /* RetrieveDeprecationInfoCall.swift */,
+			);
+			path = "Habitica API Client";
+			sourceTree = "<group>";
+		};
+		29B586FF204D92CF00301955 /* Habitica API ClientTests */ = {
+			isa = PBXGroup;
+			children = (
+				292DEE9B204F4B480086D5F7 /* Tests */,
+				292DEE9A204F4B3D0086D5F7 /* Fixtures */,
+				29B58702204D92CF00301955 /* Info.plist */,
+				29323E5F2056B9B000AC6D6F /* QuickSpec-Extensions.swift */,
+			);
+			path = "Habitica API ClientTests";
+			sourceTree = "<group>";
+		};
+		71321DB618F6CFEC29FE5222 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E7EF6D46CDBA4E678D7467CD /* Pods-Habitica API Client.debug.xcconfig */,
+				191CE8102BC4FC651F95BBBA /* Pods-Habitica API Client.release.xcconfig */,
+				589C92345817498D7AFD83FC /* Pods-Habitica API ClientTests.debug.xcconfig */,
+				9202171462D0CA0F8120FBAE /* Pods-Habitica API ClientTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		29B586EF204D92CF00301955 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				29B58703204D92CF00301955 /* Habitica_API_Client.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		29B586F1204D92CF00301955 /* Habitica API Client */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 29B58706204D92CF00301955 /* Build configuration list for PBXNativeTarget "Habitica API Client" */;
+			buildPhases = (
+				7D4E99082F65C04C50E7999E /* [CP] Check Pods Manifest.lock */,
+				29B586ED204D92CF00301955 /* Sources */,
+				29B586EE204D92CF00301955 /* Frameworks */,
+				29B586EF204D92CF00301955 /* Headers */,
+				29B586F0204D92CF00301955 /* Resources */,
+				D6F893229E8C031F12543E9B /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Habitica API Client";
+			productName = "Habitica API Client";
+			productReference = 29B586F2204D92CF00301955 /* Habitica_API_Client.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		29B586FA204D92CF00301955 /* Habitica API ClientTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 29B58709204D92CF00301955 /* Build configuration list for PBXNativeTarget "Habitica API ClientTests" */;
+			buildPhases = (
+				C1BDEF6207AFD20B4975AB7F /* [CP] Check Pods Manifest.lock */,
+				29B586F7204D92CF00301955 /* Sources */,
+				29B586F8204D92CF00301955 /* Frameworks */,
+				29B586F9204D92CF00301955 /* Resources */,
+				BF68D5080F76F3771F799003 /* [CP] Embed Pods Frameworks */,
+				9645B8FAD9A8D74E3E45270C /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				29B586FE204D92CF00301955 /* PBXTargetDependency */,
+			);
+			name = "Habitica API ClientTests";
+			productName = "Habitica API ClientTests";
+			productReference = 29B586FB204D92CF00301955 /* Habitica API ClientTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B586E9204D92CF00301955 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = "HabitRPG Inc.";
+				TargetAttributes = {
+					29B586F1204D92CF00301955 = {
+						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
+						ProvisioningStyle = Automatic;
+					};
+					29B586FA204D92CF00301955 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 29B586EC204D92CF00301955 /* Build configuration list for PBXProject "Habitica API Client" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 29B586E8204D92CF00301955;
+			productRefGroup = 29B586F3204D92CF00301955 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				29B586F1204D92CF00301955 /* Habitica API Client */,
+				29B586FA204D92CF00301955 /* Habitica API ClientTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		29B586F0204D92CF00301955 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		29B586F9204D92CF00301955 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				29323E6C2056BCB400AC6D6F /* user.json in Resources */,
+				292DEE9D204F4B5F0086D5F7 /* tasks.json in Resources */,
+				29323E662056BA9000AC6D6F /* taskResponse.json in Resources */,
+				29323E6E2056C0E900AC6D6F /* content.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7D4E99082F65C04C50E7999E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Habitica API Client-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9645B8FAD9A8D74E3E45270C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-Habitica API ClientTests/Pods-Habitica API ClientTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BF68D5080F76F3771F799003 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/../Pods/Target Support Files/Pods-Habitica API ClientTests/Pods-Habitica API ClientTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
+				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
+				"${BUILT_PRODUCTS_DIR}/iOSSnapshotTestCase/FBSnapshotTestCase.framework",
+				"${BUILT_PRODUCTS_DIR}/FunkyNetwork/FunkyNetwork.framework",
+				"${BUILT_PRODUCTS_DIR}/Keys/Keys.framework",
+				"${BUILT_PRODUCTS_DIR}/OHHTTPStubs/OHHTTPStubs.framework",
+				"${BUILT_PRODUCTS_DIR}/Prelude/Prelude.framework",
+				"${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/ReactiveSwift/ReactiveSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSnapshotTestCase.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FunkyNetwork.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Keys.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OHHTTPStubs.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Prelude.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-Habitica API ClientTests/Pods-Habitica API ClientTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C1BDEF6207AFD20B4975AB7F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Habitica API ClientTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D6F893229E8C031F12543E9B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-Habitica API Client/Pods-Habitica API Client-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		29B586ED204D92CF00301955 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2974BD9F208E15FD00EC1A25 /* APISubscriptionPlan.swift in Sources */,
+				292DEE51204DA3A30086D5F7 /* APITask.swift in Sources */,
+				290C3013206A78700066AF5B /* APIEmptyResponse.swift in Sources */,
+				2919FDD92090DF1B0096A53B /* PostInboxMessageCall.swift in Sources */,
+				295D42FA20936CE400948E7E /* DisableClassesCall.swift in Sources */,
+				2974BDA1208E16E100EC1A25 /* APISubscriptionConsecutive.swift in Sources */,
+				290B627B207BA9A1007287C4 /* LocalRegisterCall.swift in Sources */,
+				290C3042206D3EC30066AF5B /* APIChatMessage.swift in Sources */,
+				29A6B872206941210086B2A6 /* UpdateTaskCall.swift in Sources */,
+				29B4788C20BEFBDC00B6123F /* ScoreChecklistItem.swift in Sources */,
+				2919FDD72090D2510096A53B /* DeleteInboxMessageCall.swift in Sources */,
+				295E9DC820B2DF9600D58D45 /* PurchaseItemCall.swift in Sources */,
+				290B6291207E1E76007287C4 /* RetrieveMemberCall.swift in Sources */,
+				2914489E208A346700F3A6B5 /* APICustomization.swift in Sources */,
+				290B6263207B9707007287C4 /* APILocalAuthentication.swift in Sources */,
+				296AC81C20ADD9D500885682 /* APIInAppReward.swift in Sources */,
+				290B626D207BA6AB007287C4 /* ResetAccountCall.swift in Sources */,
+				291E95B5209888E1006EE585 /* APIUserParty.swift in Sources */,
+				290C3015206A80AE0066AF5B /* MoveTaskCall.swift in Sources */,
+				292F966C206E6D8A00804151 /* UpdateUserCall.swift in Sources */,
+				295610F92056CAA800D9711A /* APIHatchingPotion.swift in Sources */,
+				290B627D207BA9D4007287C4 /* SocialLoginCall.swift in Sources */,
+				29323E1720504F5600AC6D6F /* APIStats.swift in Sources */,
+				295E9DCE20B2E00300D58D45 /* PurchaseMysterySetCall.swift in Sources */,
+				295E9DE220B31BE400D58D45 /* UpdateTagCall.swift in Sources */,
+				29323E3B205212FA00AC6D6F /* APIProfile.swift in Sources */,
+				290C302E206BD2020066AF5B /* UseSkillCall.swift in Sources */,
+				29323E272051659C00AC6D6F /* ErrorHandler.swift in Sources */,
+				291448A0208A34D100F3A6B5 /* APICustomizationSet.swift in Sources */,
+				290B6275207BA805007287C4 /* UpdatePasswordCall.swift in Sources */,
+				29027995205836A8006DACB9 /* RetrieveWorldStateCall.swift in Sources */,
+				292F965B206E2AE300804151 /* RetrieveChatCall.swift in Sources */,
+				29323E4720521B5000AC6D6F /* APIContributor.swift in Sources */,
+				290C300F206A779E0066AF5B /* DeleteTaskCall.swift in Sources */,
+				291E1A22209B701D00BA1FFB /* AcceptQuestInvitationCall.swift in Sources */,
+				295E9DCA20B2DFB700D58D45 /* PurchaseHourglassItemCall.swift in Sources */,
+				290B6295207E3E6C007287C4 /* LeaveGroupCall.swift in Sources */,
+				290B626F207BA6FB007287C4 /* DeleteAccountCall.swift in Sources */,
+				295E9DE020B31B8600D58D45 /* CreateTagCall.swift in Sources */,
+				29DBFF0320CE91A500DF9CF2 /* UseTransformationItemCall.swift in Sources */,
+				295E9DD620B2ECB900D58D45 /* RetrieveShopInventoryCall.swift in Sources */,
+				291DE97A209B443D0073182A /* APIQuestParticipant.swift in Sources */,
+				290C3046206D44670066AF5B /* RetrieveGroupCall.swift in Sources */,
+				290B6277207BA86F007287C4 /* SendPasswordResetEmailCall.swift in Sources */,
+				290C3028206B98A50066AF5B /* APIOwnedItem.swift in Sources */,
+				290C3032206CF0190066AF5B /* APISkillResponse.swift in Sources */,
+				295610E22056C3AC00D9711A /* RetrieveContentCall.swift in Sources */,
+				299FB29420849EDD00422522 /* APIOwnedPet.swift in Sources */,
+				2974BDB220908E4600EC1A25 /* APIInboxMessages.swift in Sources */,
+				29323E1520504F2300AC6D6F /* APIUser.swift in Sources */,
+				29A6B86E20690F0C0086B2A6 /* APIWeekRepeat.swift in Sources */,
+				2902798F205835DF006DACB9 /* APIWorldState.swift in Sources */,
+				295FE2C420A4505B00C97BA4 /* UpdateGroupCall.swift in Sources */,
+				292DEEA1204F625B0086D5F7 /* DateDecodingStrategy-Extension.swift in Sources */,
+				2974BD9D208E120200EC1A25 /* APIOwnedCustomization.swift in Sources */,
+				29A6B870206940F80086B2A6 /* CreateTaskCall.swift in Sources */,
+				29323E552052F7C400AC6D6F /* APIOutfit.swift in Sources */,
+				292F96742072277D00804151 /* APIChatMessageReaction.swift in Sources */,
+				2974BD9B208E103B00EC1A25 /* APIPurchased.swift in Sources */,
+				29323E2D2051B43100AC6D6F /* DebugOutputHandler.swift in Sources */,
+				292DEE8F204F49D50086D5F7 /* AuthenticatedCall.swift in Sources */,
+				299FB28A2084988500422522 /* APIMount.swift in Sources */,
+				295E9DDC20B3060200D58D45 /* PurchaseGemsCall.swift in Sources */,
+				292DEE93204F4A430086D5F7 /* ResponseArrayCall.swift in Sources */,
+				292F966A206E4FD100804151 /* PostChatMessageCall.swift in Sources */,
+				292726A620B70290009DD08A /* RetrieveChallengeCall.swift in Sources */,
+				292726B420B70747009DD08A /* APIChallengeMembership.swift in Sources */,
+				290B6283207BAAA2007287C4 /* APILoginResponse.swift in Sources */,
+				295E9DCC20B2DFEB00D58D45 /* PurchaseQuestCall.swift in Sources */,
+				290C3040206D3DE80066AF5B /* APIGroup.swift in Sources */,
+				29323E192050528C00AC6D6F /* RetrieveUserCall.swift in Sources */,
+				2927269820B6F332009DD08A /* RetrieveDeprecationInfoCall.swift in Sources */,
+				29323E2520509B9000AC6D6F /* HabiticaResponse.swift in Sources */,
+				295611092056DE9F00D9711A /* APIQuestBoss.swift in Sources */,
+				29144894208A1C9400F3A6B5 /* APIHair.swift in Sources */,
+				2927269420B6ECAB009DD08A /* RetrieveRemoteConfigCall.swift in Sources */,
+				2927269620B6F316009DD08A /* RetrieveMaintenanceInfoCall.swift in Sources */,
+				292F9664206E4F5500804151 /* LikeChatMessageCall.swift in Sources */,
+				29B478BB20C0360E00B6123F /* UpdateDayStartTimeCall.swift in Sources */,
+				295E9DDA20B2FBC000D58D45 /* CreateTasksCall.swift in Sources */,
+				295D42FC20936D4300948E7E /* SelectClassCall.swift in Sources */,
+				295610EF2056C7F700D9711A /* APIFood.swift in Sources */,
+				294973CE2080FAD500F02AC3 /* OpenMysteryItemCall.swift in Sources */,
+				29323E532052F7A600AC6D6F /* APIUserGear.swift in Sources */,
+				291E95AD20986CDE006EE585 /* DateEncodingStrategy-Extension.swift in Sources */,
+				290B62542073D957007287C4 /* APIPushNotifications.swift in Sources */,
+				295610EB2056C6F600D9711A /* APIContent.swift in Sources */,
+				2956110D2056E18A00D9711A /* APIQuestCollect.swift in Sources */,
+				295E9DD420B2EA4100D58D45 /* TogglePinnedItemCall.swift in Sources */,
+				292844EB20DD18380011DC43 /* APIGroupInvitation.swift in Sources */,
+				295611012056D20B00D9711A /* APISkill.swift in Sources */,
+				29027991205835F7006DACB9 /* APIQuestState.swift in Sources */,
+				292DEEB1205039CA0086D5F7 /* TaskResponse.swift in Sources */,
+				290B628F207E17C1007287C4 /* APIMember.swift in Sources */,
+				295E9DFA20B47A5300D58D45 /* APIQuestColors.swift in Sources */,
+				290C3034206D24A40066AF5B /* RunCronCall.swift in Sources */,
+				292726A820B702C4009DD08A /* RetrieveChallengesCall.swift in Sources */,
+				2902799320583612006DACB9 /* APIQuestProgress.swift in Sources */,
+				291E1A26209B703C00BA1FFB /* ForceStartQuestCall.swift in Sources */,
+				2902798120581DE3006DACB9 /* BulkAllocateAttributePointsCall.swift in Sources */,
+				29DBFEFD20CADBC900DF9CF2 /* APISpecialItem.swift in Sources */,
+				299FB29620849F1500422522 /* APIOwnedMount.swift in Sources */,
+				295611072056DD2800D9711A /* APIQuest.swift in Sources */,
+				29323E37205212C400AC6D6F /* APIFlags.swift in Sources */,
+				295610F72056CA6900D9711A /* APIEgg.swift in Sources */,
+				2919FDDB2091D3D70096A53B /* MarkInboxAsSeenCall.swift in Sources */,
+				290B6273207BA7D9007287C4 /* UpdateUsernameCall.swift in Sources */,
+				295E9DE420B31C1300D58D45 /* DeleteTagCall.swift in Sources */,
+				299FB2882084987000422522 /* APIPet.swift in Sources */,
+				294973CA2080F9F600F02AC3 /* EquipGearCall.swift in Sources */,
+				2902797F20581CF0006DACB9 /* AllocateAttributePointCall.swift in Sources */,
+				292F9668206E4FBD00804151 /* DeleteChatMessageCall.swift in Sources */,
+				291448742086352800F3A6B5 /* FeedPetCall.swift in Sources */,
+				292DEE82204E411C0086D5F7 /* APIChecklistItem.swift in Sources */,
+				295E9DC220B2DE7200D58D45 /* BuyItemCall.swift in Sources */,
+				295610FD2056CC5D00D9711A /* APIGear.swift in Sources */,
+				295E9DF020B3362A00D58D45 /* APIShop.swift in Sources */,
+				294973C82080F98600F02AC3 /* HatchPetCall.swift in Sources */,
+				2919FDE12091DFFE0096A53B /* ReviveUserCall.swift in Sources */,
+				2974BDAB208F4D6B00EC1A25 /* UnlockCustomizationsCall.swift in Sources */,
+				29DBFEFF20CE6D7F00DF9CF2 /* Decoding-Extensions.swift in Sources */,
+				29323E39205212E400AC6D6F /* APIPreferences.swift in Sources */,
+				290B627F207BAA23007287C4 /* SleepCall.swift in Sources */,
+				290B6265207B978F007287C4 /* APIAuthentication.swift in Sources */,
+				295E9DD220B2E9EF00D58D45 /* RerollCall.swift in Sources */,
+				292726A220B6FFE3009DD08A /* APIChallenge.swift in Sources */,
+				290B623D207267AA007287C4 /* RetrieveGroupsCall.swift in Sources */,
+				292726A420B6FFF5009DD08A /* APIChallengeCategory.swift in Sources */,
+				2902797920580EFD006DACB9 /* APIBuff.swift in Sources */,
+				290B629C207F7E84007287C4 /* APIOwnedGear.swift in Sources */,
+				295E9DB920B2C6E200D58D45 /* APIQuestBossRage.swift in Sources */,
+				29B478C520C54E6200B6123F /* APIArmoireResponse.swift in Sources */,
+				292DEE91204F4A0F0086D5F7 /* HabiticaServerConfig.swift in Sources */,
+				29323E512052F77F00AC6D6F /* APIUserItems.swift in Sources */,
+				292DEE4F204DA3870086D5F7 /* RetrieveTasksCall.swift in Sources */,
+				295E9DF220B3369C00D58D45 /* APIShopCategories.swift in Sources */,
+				292844F120DD37F40011DC43 /* RejectGroupInvitationCall.swift in Sources */,
+				290B6271207BA765007287C4 /* UpdateEmailCall.swift in Sources */,
+				290B6261207B959E007287C4 /* APIAuthenticationTimestamps.swift in Sources */,
+				294973C62080F92400F02AC3 /* SellItemCall.swift in Sources */,
+				292F9666206E4F9F00804151 /* FlagChatMessageCall.swift in Sources */,
+				296AC81A20ADD99900885682 /* RetrieveInAppRewardsCall.swift in Sources */,
+				29DBFF0F20D15BEA00DF9CF2 /* APIUserNewMessages.swift in Sources */,
+				292DEEA9204F71290086D5F7 /* ScoreTaskCall.swift in Sources */,
+				295D43022097395800948E7E /* APITutorialStep.swift in Sources */,
+				292DEE95204F4A510086D5F7 /* ResponseObjectCall.swift in Sources */,
+				295FE2C220A4501500C97BA4 /* CreateGroupCall.swift in Sources */,
+				295E9DDE20B3065100D58D45 /* SubscribeCall.swift in Sources */,
+				295E9DBB20B2C72600D58D45 /* APIQuestDrop.swift in Sources */,
+				292F9676207227AB00804151 /* APIUserStyle.swift in Sources */,
+				292DEE88204E490A0086D5F7 /* APIReminder.swift in Sources */,
+				29DBFF0720D01EE000DF9CF2 /* RetrieveChallengeTasksCall.swift in Sources */,
+				295E9DBD20B2C83400D58D45 /* APIQuestDropItem.swift in Sources */,
+				292F9659206E2AAB00804151 /* MarkChatSeenCall.swift in Sources */,
+				2902795E2057E858006DACB9 /* APIFAQEntry.swift in Sources */,
+				291E1A28209B704A00BA1FFB /* CancelQuestInvitationCall.swift in Sources */,
+				292DEE4B204DA1220086D5F7 /* NetworkAuthenticationManager.swift in Sources */,
+				295E9DD820B2F6DE00D58D45 /* ClearCompletedTodosCall.swift in Sources */,
+				290B62522073D91C007287C4 /* APIInbox.swift in Sources */,
+				294973CC2080FA9400F02AC3 /* ReviveCall.swift in Sources */,
+				292726AA20B70303009DD08A /* JoinChallengeCall.swift in Sources */,
+				29323E23205099FF00AC6D6F /* HabiticaResponseCall.swift in Sources */,
+				291E1A20209B6FAB00BA1FFB /* RejectQuestInvitationCall.swift in Sources */,
+				292726AC20B70329009DD08A /* LeaveChallengeCall.swift in Sources */,
+				292DEE7E204E37670086D5F7 /* APITag.swift in Sources */,
+				290B6293207E3E24007287C4 /* JoinGroupCall.swift in Sources */,
+				290B6279207BA8C3007287C4 /* LocalLoginCall.swift in Sources */,
+				29B478C320C5330600B6123F /* APIBuyResponse.swift in Sources */,
+				294973D02081039300F02AC3 /* InviteToQuestCall.swift in Sources */,
+				291E1A24209B702B00BA1FFB /* AbortQuestCall.swift in Sources */,
+				DC2C4A0476068E29973DB0CD /* RetrieveGroupMembersCall.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		29B586F7204D92CF00301955 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				29323E602056B9B000AC6D6F /* QuickSpec-Extensions.swift in Sources */,
+				29323E6A2056BC2A00AC6D6F /* RetrieveUserCallSpec.swift in Sources */,
+				29323E622056BA6000AC6D6F /* ScoreTaskCall.swift in Sources */,
+				295610E42056C3CA00D9711A /* RetrieveContentCallSpec.swift in Sources */,
+				292DEE9F204F4B8F0086D5F7 /* RetrieveTasksCall.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		29B586FE204D92CF00301955 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 29B586F1204D92CF00301955 /* Habitica API Client */;
+			targetProxy = 29B586FD204D92CF00301955 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		29B58704204D92CF00301955 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		29B58705204D92CF00301955 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		29B58707204D92CF00301955 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E7EF6D46CDBA4E678D7467CD /* Pods-Habitica API Client.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Habitica API Client/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.habitica.Habitica-API-Client";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		29B58708204D92CF00301955 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 191CE8102BC4FC651F95BBBA /* Pods-Habitica API Client.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Habitica API Client/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.habitica.Habitica-API-Client";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		29B5870A204D92CF00301955 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 589C92345817498D7AFD83FC /* Pods-Habitica API ClientTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
+				INFOPLIST_FILE = "Habitica API ClientTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.habitica.Habitica-API-ClientTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		29B5870B204D92CF00301955 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9202171462D0CA0F8120FBAE /* Pods-Habitica API ClientTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
+				INFOPLIST_FILE = "Habitica API ClientTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.habitica.Habitica-API-ClientTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		29B586EC204D92CF00301955 /* Build configuration list for PBXProject "Habitica API Client" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				29B58704204D92CF00301955 /* Debug */,
+				29B58705204D92CF00301955 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		29B58706204D92CF00301955 /* Build configuration list for PBXNativeTarget "Habitica API Client" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				29B58707204D92CF00301955 /* Debug */,
+				29B58708204D92CF00301955 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		29B58709204D92CF00301955 /* Build configuration list for PBXNativeTarget "Habitica API ClientTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				29B5870A204D92CF00301955 /* Debug */,
+				29B5870B204D92CF00301955 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B586E9204D92CF00301955 /* Project object */;
+}

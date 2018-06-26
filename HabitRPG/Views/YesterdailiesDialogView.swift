@@ -8,6 +8,8 @@
 
 import UIKit
 import PopupDialog
+import Habitica_Models
+import ReactiveSwift
 
 class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -23,49 +25,10 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var checkinTitle: UILabel!
     @IBOutlet weak var checkinDescription: UILabel!
 
-    var sharedManager: HRPGManager?
-    var tasks: [Task]?
-    var user: User?
-
-    @objc
-    static func showDialog(sharedManager: HRPGManager, user: User) {
-        let viewController = YesterdailiesDialogView(nibName: "YesterdailiesDialogView", bundle: Bundle.main)
-        viewController.sharedManager = sharedManager
-        viewController.user = user
-
-        if user.didCronRunToday() {
-            return
-        }
-        let today = Date()
-        let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: today)
-        sharedManager.fetchTasks(forDay: yesterday, onSuccess: {
-            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Task")
-            fetchRequest.predicate = NSPredicate(format: "type == 'daily' && completed == false && isDue == true && yesterDaily == true")
-            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "order", ascending: true)]
-            do {
-                viewController.tasks = try sharedManager.getManagedObjectContext().fetch(fetchRequest) as? [Task]
-            } catch {
-                viewController.tasks = []
-            }
-            if viewController.tasks?.count == 0 {
-                sharedManager.runCron(nil, onSuccess: nil, onError: nil)
-                return
-            }
-            if user.didCronRunToday() {
-                return
-            }
-            let popup = PopupDialog(viewController: viewController)
-            if var topController = UIApplication.shared.keyWindow?.rootViewController {
-                while let presentedViewController = topController.presentedViewController {
-                    topController = presentedViewController
-                }
-                if let controller = topController as? HRPGTabBarController {
-                    controller.present(popup, animated: true) {
-                    }
-                }
-            }
-        }, onError: nil)
-    }
+    let taskRepository = TaskRepository()
+    private let userRepository = UserRepository()
+    private let disposable = ScopedDisposable(CompositeDisposable())
+    var tasks: [TaskProtocol]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,7 +50,11 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
         if let window = self.view.window {
             self.heightConstraint.constant = window.frame.size.height - 200
         }
-        yesterdailiesHeightConstraint.constant = yesterdailiesTableView.contentSize.height
+        if #available(iOS 10.0, *) {
+            yesterdailiesHeightConstraint.constant = yesterdailiesTableView.contentSize.height
+        } else {
+            yesterdailiesHeightConstraint.constant = yesterdailiesTableView.contentSize.height + 100
+        }
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -111,20 +78,20 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
         }
         return cell ?? UITableViewCell()
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         checkedCell(indexPath)
     }
 
     private func checkedCell(_ indexPath: IndexPath) {
         if let tasks = self.tasks {
-            tasks[indexPath.item].completed = NSNumber(value: !(tasks[indexPath.item].completed?.boolValue ?? true))
+            tasks[indexPath.item].completed = !tasks[indexPath.item].completed
             self.yesterdailiesTableView.reloadRows(at: [indexPath], with: .fade)
         }
     }
     
-    private func checkChecklistItem(_ indexPath: IndexPath, item: ChecklistItem) {
-        item.completed = NSNumber(value: !(item.completed?.boolValue ?? true))
+    private func checkChecklistItem(_ indexPath: IndexPath, item: ChecklistItemProtocol) {
+        item.completed = !item.completed
         self.yesterdailiesTableView.reloadRows(at: [indexPath], with: .fade)
     }
 
@@ -145,12 +112,13 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
     }
 
     func handleDismiss() {
-        var completedTasks = [Task]()
+        UserManager.shared.yesterdailiesDialog = nil
+        var completedTasks = [TaskProtocol]()
         if let tasks = self.tasks {
-            for task in tasks where task.completed?.boolValue ?? false {
+            for task in tasks where task.completed {
                 completedTasks.append(task)
             }
         }
-        sharedManager?.runCron(completedTasks, onSuccess: nil, onError: nil)
+        userRepository.runCron(tasks: completedTasks).observeCompleted {}
     }
 }

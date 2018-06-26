@@ -8,6 +8,7 @@
 
 import UIKit
 import Down
+import Habitica_Models
 
 @objc
 class TaskTableViewCell: UITableViewCell {
@@ -17,21 +18,32 @@ class TaskTableViewCell: UITableViewCell {
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var taskDetailLine: TaskDetailLineView!
     @IBOutlet weak var mainTaskWrapper: UIView!
+    @IBOutlet weak var syncingIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var syncErrorIndicator: UIImageView!
+    @IBOutlet weak var syncIndicatorsWidth: NSLayoutConstraint!
+    @IBOutlet weak var syncIndicatorsSpacing: NSLayoutConstraint!
     //swiftlint:disable private_outlet
     
     @objc public var isLocked: Bool = false
 
+    @objc var syncErrorTouched: (() -> Void)?
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        syncErrorIndicator.image = HabiticaIcons.imageOfInfoIcon(infoIconColor: UIColor.red50())
+        
+        syncErrorIndicator.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(syncErrorTapped)))
+    }
+    
     @objc
-    func configure(task: HRPGTaskProtocol) {
+    func configure(task: TaskProtocol) {
         if let text = task.text {
             self.titleLabel.attributedText = try? Down(markdownString: text.unicodeEmoji).toHabiticaAttributedString()
         }
         self.titleLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 16)
-        self.titleLabel.textColor = .gray10()
-        self.subtitleLabel.textColor = .gray200()
 
         if let trimmedNotes = task.notes?.trimmingCharacters(in: .whitespacesAndNewlines), trimmedNotes.count > 0 {
-            self.subtitleLabel.text = trimmedNotes.unicodeEmoji
+            self.subtitleLabel.attributedText = try? Down(markdownString: trimmedNotes.unicodeEmoji).toHabiticaAttributedString()
             self.subtitleLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 12)
             self.subtitleLabel.isHidden = false
         } else {
@@ -41,15 +53,27 @@ class TaskTableViewCell: UITableViewCell {
 
         self.taskDetailLine.configure(task: task)
         self.taskDetailLine.isHidden = !self.taskDetailLine.hasContent
+        
+        self.syncingIndicator.isHidden = !task.isSyncing
+        if !self.syncingIndicator.isHidden {
+            self.syncingIndicator.startAnimating()
+        }
+        self.syncErrorIndicator.isHidden = task.isSyncing || task.isSynced
+        
+        if self.syncingIndicator.isHidden && self.syncErrorIndicator.isHidden {
+            syncIndicatorsWidth.constant = 0
+            syncIndicatorsSpacing.constant = 0
+        } else {
+            syncIndicatorsWidth.constant = 20
+            syncIndicatorsSpacing.constant = 8
+        }
 
         self.setNeedsLayout()
         
-        if let task = task as? Task {
-            self.applyAccessibility(task)
-        }
+        self.applyAccessibility(task)
     }
     
-    func applyAccessibility(_ task: Task) {
+    func applyAccessibility(_ task: TaskProtocol) {
         self.mainTaskWrapper.accessibilityCustomActions = []
         self.mainTaskWrapper.shouldGroupAccessibilityChildren = true
         self.mainTaskWrapper.isAccessibilityElement = true
@@ -58,6 +82,17 @@ class TaskTableViewCell: UITableViewCell {
         self.mainTaskWrapper.accessibilityLabel = "\(self.mainTaskWrapper.accessibilityLabel ?? ""), Value: \(String.forTaskQuality(task: task))"
         if let notes = task.notes, !notes.isEmpty {
             self.mainTaskWrapper.accessibilityLabel = "\(self.mainTaskWrapper.accessibilityLabel ?? ""), \(notes)"
+        }
+        
+        contentView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
+        titleLabel.textColor = ThemeService.shared.theme.primaryTextColor
+        subtitleLabel.textColor = ThemeService.shared.theme.secondaryTextColor
+    }
+    
+    @objc
+    private func syncErrorTapped() {
+        if let action = syncErrorTouched {
+            action()
         }
     }
 }

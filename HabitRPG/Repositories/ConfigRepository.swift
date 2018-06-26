@@ -5,9 +5,8 @@
 //  Created by Phillip Thelen on 16/03/2017.
 //  Copyright © 2017 HabitRPG Inc. All rights reserved.
 //
-
 import Foundation
-import Alamofire
+import Habitica_API_Client
 
 @objc
 enum ConfigVariable: Int {
@@ -34,13 +33,15 @@ class ConfigRepository: NSObject {
 
     @objc
     func fetchremoteConfig() {
-        Alamofire.request(ConfigRepository.configUrl).responseJSON { response in
-            if let JSON = response.result.value as? [String: Any] {
+        let call = RetrieveRemoteConfigCall()
+        call.fire()
+        call.jsonSignal.observeValues { jsonObject in
+            if let jsonDict = jsonObject as? [String: Any] {
                 for variable in ConfigRepository.configVariables {
-                    if JSON.contains(where: { (key, _) -> Bool in
+                    if jsonDict.contains(where: { (key, _) -> Bool in
                         return key == variable.name()
                     }) {
-                        self.userConfig.set(JSON[variable.name()], forKey: variable.name())
+                        self.userConfig.set(jsonDict[variable.name()], forKey: variable.name())
                     }
                 }
             }

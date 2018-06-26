@@ -8,6 +8,7 @@
 
 import UIKit
 import DateTools
+import Habitica_Models
 
 @IBDesignable
 class TaskDetailLineView: UIView {
@@ -75,35 +76,22 @@ class TaskDetailLineView: UIView {
     }
 
     @objc
-    public func configure(task: HRPGTaskProtocol) {
+    public func configure(task: TaskProtocol) {
         hasContent = false
-        if let task = task as? Task {
-            setTag(enabled: task.tagArray.count > 0)
-            setReminder(enabled: (task.reminders?.count ?? 0) > 0)
-            setChallenge(enabled: task.challengeID != nil)
-            setStreak(count: task.streak?.intValue ?? 0)
-        } else if task is ChallengeTask {
-            setTag(enabled: false)
-            setReminder(enabled: false)
-            setChallenge(enabled: true)
-            setStreak(count: 0)
-        }
+        setTag(enabled: task.tags.count > 0)
+        setReminder(enabled: task.reminders.count > 0)
+        setChallenge(enabled: task.challengeID != nil)
+        setStreak(count: task.streak)
 
         if task.type == "habit" {
             setCalendarIcon(enabled: false)
             detailLabel.isHidden = true
-            if let task = task as? Task {
-                setLastCompleted(task: task)
-            }
+            setLastCompleted(task: task)
         } else if task.type == "daily" {
             setCalendarIcon(enabled: false)
             detailLabel.isHidden = true
         } else if task.type == "todo" {
-            if let task = task as? Task {
-                setDueDate(task: task)
-            } else {
-                setDueDate(task: nil)
-            }
+            setDueDate(task: task)
         }
 
         hasContent = !tagIconView.isHidden || !reminderIconView.isHidden || !challengeIconView.isHidden || !streakIconView.isHidden || !detailLabel.isHidden
@@ -131,7 +119,7 @@ class TaskDetailLineView: UIView {
         }
     }
 
-    private func setDueDate(task: Task?) {
+    private func setDueDate(task: TaskProtocol?) {
         if let duedate = task?.duedate {
             detailLabel.isHidden = false
             let calendar = Calendar.current
@@ -193,14 +181,14 @@ class TaskDetailLineView: UIView {
         }
     }
 
-    private func setLastCompleted(task: Task) {
+    private func setLastCompleted(task: TaskProtocol) {
         var counterString = ""
         
-        let upCounter = task.counterUp?.intValue ?? 0
-        let downCounter = task.counterDown?.intValue ?? 0
-        if task.up?.boolValue ?? false && task.down?.boolValue ?? false && upCounter+downCounter > 0 {
+        let upCounter = task.counterUp
+        let downCounter = task.counterDown
+        if task.up && task.down && upCounter+downCounter > 0 {
             counterString = "+\(upCounter) | -\(downCounter)"
-        } else if task.up?.boolValue ?? false && upCounter > 0 {
+        } else if task.up && upCounter > 0 {
             counterString = "\(upCounter)"
         } else if downCounter > 0 {
             counterString = "\(downCounter)"

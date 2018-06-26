@@ -169,6 +169,7 @@ class ToastView: UIView {
             titleLabel.sizeToFit()
             titleLabel.numberOfLines = -1
             titleLabel.font = UIFont.systemFont(ofSize: 13)
+            titleLabel.textAlignment = .center
         } else {
             titleLabel.isHidden = true
             titleLabel.text = nil
@@ -182,6 +183,7 @@ class ToastView: UIView {
             subtitleLabel.sizeToFit()
             subtitleLabel.numberOfLines = -1
             self.titleLabel.font = UIFont.systemFont(ofSize: 16)
+            titleLabel.textAlignment = .center
         } else {
             subtitleLabel.isHidden = true
             subtitleLabel.text = nil

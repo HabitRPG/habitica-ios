@@ -34,7 +34,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self displayTutorialStep:[HRPGManager sharedManager]];
+    [self displayTutorialStep];
 }
 
 - (void)dealloc {
@@ -52,13 +52,6 @@
             (HRPGNavigationController *)destViewController;
         destNavigationController.sourceViewController = self;
     }
-}
-
-- (NSManagedObjectContext *)managedObjectContext {
-    if (_managedObjectContext == nil) {
-        _managedObjectContext = [HRPGManager sharedManager].getManagedObjectContext;
-    }
-    return _managedObjectContext;
 }
 
 @end

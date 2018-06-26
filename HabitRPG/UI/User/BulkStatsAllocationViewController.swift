@@ -7,11 +7,16 @@
 //
 
 import UIKit
+import Habitica_Models
+import ReactiveSwift
+import Result
 
 class BulkStatsAllocationViewController: UIViewController {
-    
-    let user = HRPGManager.shared().getUser()
-    lazy var pointsToAllocate: Int = self.user?.pointsToAllocate.intValue ?? 0
+    private let disposable = ScopedDisposable(CompositeDisposable())
+    private let userRepository = UserRepository()
+
+    private var user: UserProtocol?
+    private var pointsToAllocate: Int = 0
     
     var pointsAllocated: Int {
         get {
@@ -36,14 +41,25 @@ class BulkStatsAllocationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        disposable.inner.add(userRepository.getUser().take(first: 1).on(value: {[weak self]user in
+            self?.user = user
+            self?.pointsToAllocate = user.stats?.points ?? 0
+            self?.updateUI()
+        }).start())
+    }
+    
+    private func updateUI() {
         strengthSliderView.maxValue = pointsToAllocate
         intelligenceSliderView.maxValue = pointsToAllocate
         constitutionSliderView.maxValue = pointsToAllocate
         perceptionSliderView.maxValue = pointsToAllocate
-        strengthSliderView.originalValue = user?.strength?.intValue ?? 0
-        intelligenceSliderView.originalValue = user?.intelligence?.intValue ?? 0
-        constitutionSliderView.originalValue = user?.constitution?.intValue ?? 0
-        perceptionSliderView.originalValue = user?.perception?.intValue ?? 0
+        
+        if let stats = user?.stats {
+            strengthSliderView.originalValue = stats.strength
+            intelligenceSliderView.originalValue = stats.intelligence
+            constitutionSliderView.originalValue = stats.constitution
+            perceptionSliderView.originalValue = stats.perception
+        }
         
         strengthSliderView.allocateAction = {[weak self] value in
             self?.checkRedistribution(excludedSlider: self?.strengthSliderView)
@@ -109,11 +125,9 @@ class BulkStatsAllocationViewController: UIViewController {
     
     @IBAction func saveButtonTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
-        HRPGManager.shared().bulkAllocateAttributePoint(strengthSliderView.value,
-                                                        intelligence: intelligenceSliderView.value,
-                                                        constitution: constitutionSliderView.value,
-                                                        perception: perceptionSliderView.value,
-                                                        onSuccess: {},
-                                                        onError: {})
+        userRepository.bulkAllocate(strength: strengthSliderView.value,
+                                    intelligence: intelligenceSliderView.value,
+                                    constitution: constitutionSliderView.value,
+                                    perception: perceptionSliderView.value).observeCompleted {}
     }
 }

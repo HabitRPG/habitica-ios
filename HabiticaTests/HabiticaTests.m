@@ -23,8 +23,6 @@
 
 - (void)initializeCoreDataStorage {
     [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:@"com.habitrpg.ios.Habitica"];
-    
-    [HRPGManager setupTestManager];
 }
 
 

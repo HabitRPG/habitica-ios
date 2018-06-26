@@ -21,7 +21,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kZt-Pf-hDf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="140.5"/>
                         <subviews>
-                            <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ifb-Uy-aJJ" customClass="HRPGCheckBoxView">
+                            <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ifb-Uy-aJJ" customClass="CheckboxView" customModule="Habitica" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="48" height="140.5"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -72,10 +72,10 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="xTj-AX-Njp">
-                                <rect key="frame" x="60" y="12" width="275" height="116.5"/>
+                                <rect key="frame" x="60" y="12" width="247" height="116.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="999" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="08f-NY-m4k" userLabel="Title">
-                                        <rect key="frame" x="0.0" y="0.0" width="275" height="58.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="247" height="58.5"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" priority="500" constant="15" id="RI3-Im-vAQ"/>
@@ -85,7 +85,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="999" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gRR-R7-10E" userLabel="Subtitle">
-                                        <rect key="frame" x="0.0" y="62.5" width="275" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="62.5" width="247" height="0.0"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" priority="500" constant="21" id="bmf-6b-hfN"/>
@@ -95,7 +95,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="O8c-rS-Lp5" customClass="TaskDetailLineView" customModule="Habitica" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="66.5" width="275" height="50"/>
+                                        <rect key="frame" x="0.0" y="66.5" width="247" height="50"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" priority="501" constant="18" id="X4u-5p-rWn"/>
@@ -106,16 +106,40 @@
                                     <constraint firstAttribute="height" priority="500" constant="49" id="HXo-jY-V5p"/>
                                 </constraints>
                             </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g9Y-gE-1z4">
+                                <rect key="frame" x="315" y="60" width="20" height="20"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="aUc-r5-hyI">
+                                        <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                    </activityIndicatorView>
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gcs-R1-Xfj">
+                                        <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="gcs-R1-Xfj" firstAttribute="leading" secondItem="g9Y-gE-1z4" secondAttribute="leading" id="5W2-UW-zim"/>
+                                    <constraint firstAttribute="height" constant="20" id="DyQ-th-hU5"/>
+                                    <constraint firstItem="aUc-r5-hyI" firstAttribute="centerX" secondItem="g9Y-gE-1z4" secondAttribute="centerX" id="GtH-Cv-S22"/>
+                                    <constraint firstItem="aUc-r5-hyI" firstAttribute="centerY" secondItem="g9Y-gE-1z4" secondAttribute="centerY" id="Pve-vh-cKB"/>
+                                    <constraint firstAttribute="bottom" secondItem="gcs-R1-Xfj" secondAttribute="bottom" id="X86-wU-oKU"/>
+                                    <constraint firstItem="gcs-R1-Xfj" firstAttribute="top" secondItem="g9Y-gE-1z4" secondAttribute="top" id="cCV-Jx-806"/>
+                                    <constraint firstAttribute="width" constant="20" id="gDd-RK-WQU"/>
+                                    <constraint firstAttribute="trailing" secondItem="gcs-R1-Xfj" secondAttribute="trailing" id="kYy-eg-OcD"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="xTj-AX-Njp" secondAttribute="bottom" constant="12" id="0bf-v7-vcz"/>
+                            <constraint firstItem="g9Y-gE-1z4" firstAttribute="centerY" secondItem="kZt-Pf-hDf" secondAttribute="centerY" id="4V2-aM-gMN"/>
                             <constraint firstItem="Ifb-Uy-aJJ" firstAttribute="leading" secondItem="kZt-Pf-hDf" secondAttribute="leading" id="602-Td-wXa"/>
                             <constraint firstItem="Ifb-Uy-aJJ" firstAttribute="top" secondItem="kZt-Pf-hDf" secondAttribute="top" id="KI3-ex-WSE"/>
-                            <constraint firstItem="vIn-t1-fNp" firstAttribute="leading" secondItem="xTj-AX-Njp" secondAttribute="trailing" constant="8" id="P1p-Z7-6DH"/>
                             <constraint firstItem="vIn-t1-fNp" firstAttribute="top" secondItem="kZt-Pf-hDf" secondAttribute="top" id="Rcf-PT-z8X"/>
                             <constraint firstAttribute="bottom" secondItem="vIn-t1-fNp" secondAttribute="bottom" id="U0y-Q1-ARJ"/>
                             <constraint firstAttribute="trailing" secondItem="vIn-t1-fNp" secondAttribute="trailing" id="ZQL-Ef-Ha5"/>
+                            <constraint firstItem="vIn-t1-fNp" firstAttribute="leading" secondItem="g9Y-gE-1z4" secondAttribute="trailing" constant="8" id="eFX-qA-uqT"/>
+                            <constraint firstItem="g9Y-gE-1z4" firstAttribute="leading" secondItem="xTj-AX-Njp" secondAttribute="trailing" constant="8" id="ie3-1J-v4f"/>
                             <constraint firstItem="xTj-AX-Njp" firstAttribute="leading" secondItem="Ifb-Uy-aJJ" secondAttribute="trailing" constant="12" id="kz8-GJ-ZyN"/>
                             <constraint firstAttribute="bottom" secondItem="Ifb-Uy-aJJ" secondAttribute="bottom" id="qPh-VW-hBD"/>
                             <constraint firstItem="xTj-AX-Njp" firstAttribute="top" secondItem="kZt-Pf-hDf" secondAttribute="top" constant="12" id="zib-hl-D4W"/>
@@ -180,6 +204,10 @@
                 <outlet property="checklistSeparator" destination="yxJ-at-XsQ" id="IIF-Q8-Bbm"/>
                 <outlet property="mainTaskWrapper" destination="kZt-Pf-hDf" id="Bfr-l2-sRa"/>
                 <outlet property="subtitleLabel" destination="gRR-R7-10E" id="elK-bz-2L9"/>
+                <outlet property="syncErrorIndicator" destination="gcs-R1-Xfj" id="i3P-Gj-EsB"/>
+                <outlet property="syncIndicatorsSpacing" destination="eFX-qA-uqT" id="p38-AD-N1t"/>
+                <outlet property="syncIndicatorsWidth" destination="gDd-RK-WQU" id="3FE-5O-pk9"/>
+                <outlet property="syncingIndicator" destination="aUc-r5-hyI" id="ccx-zN-pRp"/>
                 <outlet property="taskDetailLine" destination="O8c-rS-Lp5" id="744-mp-kCL"/>
                 <outlet property="titleLabel" destination="08f-NY-m4k" id="dXO-4g-Nbg"/>
             </connections>

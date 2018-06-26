@@ -11,7 +11,7 @@
 @protocol HRPGShopOverviewTableViewDataSourceDelegate <NSObject>
 @property (nonatomic) NSDictionary * _Nullable shopDictionary;
 - (NSString * _Nullable)identifierAtIndex:(long)index;
-- (void)refreshShopWithIdentifier:(NSString * _Nullable)identifier onSuccess:(nullable void(^)())successBlock onError:(nullable void(^)())errorBlock;
+- (void)refreshShopWithIdentifier:(NSString * _Nonnull)identifier;
 @end
 
 @interface HRPGShopOverviewTableViewDataSource : NSObject<UITableViewDataSource, UITableViewDelegate>

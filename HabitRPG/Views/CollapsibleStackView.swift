@@ -9,9 +9,13 @@
 import UIKit
 
 @IBDesignable
-class CollapsibleStackView: UIStackView {
+class CollapsibleStackView: SeparatedStackView {
     
     private var titleView: CollapsibleTitle?
+    
+    private var topBorder: CALayer?
+    private var bottomBorder: CALayer?
+    private var titleBottomBorder: CALayer?
     
     @IBInspectable var identifier: String?
     
@@ -40,7 +44,7 @@ class CollapsibleStackView: UIStackView {
             
         }
     }
-    
+
     private var collapsedPreference: Bool {
         get {
             guard let identifier = self.identifier else {
@@ -58,8 +62,17 @@ class CollapsibleStackView: UIStackView {
         }
     }
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupView()
+    }
+    
     required init(coder: NSCoder) {
         super.init(coder: coder)
+        setupView()
+    }
+    
+    private func setupView() {
         if arrangedSubviews.count > 0, let subView = arrangedSubviews[0] as? CollapsibleTitle {
             titleView = subView
         } else {
@@ -75,6 +88,14 @@ class CollapsibleStackView: UIStackView {
         }
     }
     
+    override func layoutSublayers(of layer: CALayer) {
+        super.layoutSublayers(of: layer)
+        
+        topBorder?.frame = CGRect(x: 0, y: 0, width: layer.frame.size.width, height: 1)
+        bottomBorder?.frame = CGRect(x: 0, y: layer.frame.size.height-1, width: layer.frame.size.width, height: 1)
+        titleBottomBorder?.frame = CGRect(x: 0, y: (titleView?.layer.frame.size.height ?? 0) - 1, width: layer.frame.size.width, height: 1)
+    }
+    
     override func awakeFromNib() {
         disableAnimations = true
         if self.identifier != nil {
@@ -83,6 +104,10 @@ class CollapsibleStackView: UIStackView {
             self.superview?.setNeedsLayout()
         }
         disableAnimations = false
+        
+        topBorder = addTopBorderWithColor(color: UIColor.gray600(), width: 1)
+        bottomBorder = addBottomBorderWithColor(color: UIColor.gray600(), width: 1)
+        titleBottomBorder = addBottomBorderWithColor(color: UIColor.gray600(), width: 1)
         
         super.awakeFromNib()
     }

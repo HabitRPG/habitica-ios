@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Habitica_Models
 
 class InAppRewardCell: UICollectionViewCell {
     
@@ -65,9 +66,9 @@ class InAppRewardCell: UICollectionViewCell {
                 return
             }
             if imageName.contains(" ") {
-                HRPGManager.shared().setImage(imageName.components(separatedBy: " ")[1], withFormat: "png", on: imageView)
+                imageView.setImagewith(name: imageName.components(separatedBy: " ")[1])
             } else {
-                HRPGManager.shared().setImage(imageName, withFormat: "png", on: imageView)
+                imageView.setImagewith(name: imageName)
             }
         }
     }
@@ -81,20 +82,20 @@ class InAppRewardCell: UICollectionViewCell {
         }
     }
     
-    func configure(reward: InAppReward) {
+    func configure(reward: InAppRewardProtocol, user: UserProtocol?) {
         var currency: Currency?
-        let price = reward.value?.floatValue ?? 0
-        currencyView.amount = reward.value?.intValue ?? 0
+        let price = reward.value
+        currencyView.amount = Int(reward.value)
         imageName = reward.imageName ?? ""
         itemName = reward.text ?? ""
         if let currencyString = reward.currency, let thisCurrency = Currency(rawValue: currencyString) {
             currencyView.currency = thisCurrency
             currency = thisCurrency
         }
-        isLocked = reward.locked?.boolValue ?? false
+        isLocked = reward.locked
         
         if let currency = currency {
-            setCanAfford(price, currency: currency)
+            setCanAfford(price, currency: currency, user: user)
         }
         isPinned = false
         
@@ -102,23 +103,6 @@ class InAppRewardCell: UICollectionViewCell {
             showPurchaseConfirmation()
         }
         availableUntil = reward.availableUntil
-        applyAccessibility()
-    }
-    
-    func configure(item: ShopItem) {
-        currencyView.amount = item.value?.intValue ?? 0
-        imageName = item.imageName ?? ""
-        itemName = item.text ?? ""
-        isLocked = item.locked?.boolValue ?? false
-        if let currencyString = item.currency, let currency = Currency(rawValue: currencyString) {
-            currencyView.currency = currency
-            setCanAfford( item.value?.floatValue ?? 0, currency: currency)
-        }
-        
-        if let lastPurchased = item.lastPurchased, wasRecentlyPurchased(lastPurchased) {
-            showPurchaseConfirmation()
-        }
-        availableUntil = item.availableUntil
         applyAccessibility()
     }
     
@@ -138,17 +122,17 @@ class InAppRewardCell: UICollectionViewCell {
         })
     }
     
-    func setCanAfford(_ price: Float, currency: Currency) {
+    func setCanAfford(_ price: Float, currency: Currency, user: UserProtocol?) {
         var canAfford = false
 
-        if let user = HRPGManager.shared().getUser() {
+        if let user = user {
             switch currency {
             case .gold:
-                canAfford = price < user.gold.floatValue
+                canAfford = price < user.stats?.gold ?? 0
             case .gem:
-                canAfford = price < user.balance.floatValue*4
+                canAfford = price < Float(user.gemCount)
             case .hourglass:
-                canAfford = price < user.subscriptionPlan.consecutiveTrinkets?.floatValue ?? 0
+                canAfford = price < Float(user.purchased?.subscriptionPlan?.consecutive?.hourglasses ?? 0)
             }
         }
     

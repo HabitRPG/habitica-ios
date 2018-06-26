@@ -19,7 +19,8 @@
     [[NSBundle mainBundle] loadNibNamed:@"HRPGLoginIncentiveOverlayView" owner:self options:nil];
     HRPGLoginIncentiveOverlayView *overlayView = [nibViews objectAtIndex:0];
 
-    NSInteger nextRewardIn = [self.notification.data[@"nextRewardAt"] integerValue] - [self.user.loginIncentives integerValue];
+    //TODO: FIX
+    /*NSInteger nextRewardIn = [self.notification.data[@"nextRewardAt"] integerValue] - [self.user.loginIncentives integerValue];
     
     if (self.notification.data[@"reward"]) {
         [overlayView setReward:self.notification.data[@"rewardKey"][0] withTitle:self.notification.data[@"message"] withMessage:[NSString stringWithFormat:NSLocalizedString(@"You have earned a %@ for being committed to improving your life.", nil), self.notification.data[@"rewardText"]] withDaysUntilNext:nextRewardIn];
@@ -47,7 +48,7 @@
             nextUnlock = [NSString stringWithFormat:NSLocalizedString(@"Your next prize unlocks in %d Check-Ins", nil), nextRewardIn];
         }
         [ToastManager showWithText:nextUnlock color:ToastColorBlue];
-    }
+    }*/
 }
 
 @end

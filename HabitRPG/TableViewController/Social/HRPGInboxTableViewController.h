@@ -9,8 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "HRPGBaseViewController.h"
 
-@interface HRPGInboxTableViewController : HRPGBaseViewController<NSFetchedResultsControllerDelegate, UIActionSheetDelegate>
-
-@property(strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+@interface HRPGInboxTableViewController : HRPGBaseViewController<UIActionSheetDelegate>
 
 @end

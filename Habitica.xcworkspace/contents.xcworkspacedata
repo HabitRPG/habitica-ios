@@ -2,6 +2,15 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Habitica Models/Habitica Models.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Habitica Database/Habitica Database.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Habitica API Client/Habitica API Client.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Habitica.xcodeproj">
    </FileRef>
    <FileRef

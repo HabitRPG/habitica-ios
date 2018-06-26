@@ -9,8 +9,6 @@
 #import "HRPGShopOverviewTableViewDataSource.h"
 #import "CAGradientLayer+HRPGShopGradient.h"
 #import "Habitica-Swift.h"
-#import "Shop.h"
-#import "HRPGManager.h"
 
 @interface HRPGShopOverviewTableViewDataSource ()
 
@@ -37,21 +35,12 @@
     cell.gradientImageView.gradient = [CAGradientLayer hrpgShopGradientLayer];
     cell.titleLabel.text = [self titleForIdentifier:identifier];
     
-    Shop *shop = self.delegate.shopDictionary[identifier];
+    id<ShopProtocol> shop = self.delegate.shopDictionary[identifier];
     if (shop) {
-        if (shop.isNew) {
-            cell.subtitleLabel.text = NSLocalizedString(@"New Stock!", nil);
-        } else {
-            cell.subtitleLabel.text = @"";
-        }
-        [[HRPGManager sharedManager] getImage:[NSString stringWithFormat:@"%@_background%@", identifier, self.shopSpriteSuffix] withFormat:@"png" onSuccess:^(UIImage *image) {
+        [ImageManager getImageWithName:[NSString stringWithFormat:@"%@_background%@", identifier, self.shopSpriteSuffix] extension:@"png" completion:^(UIImage * _Nullable image, NSError * _Nullable error) {
             cell.backgroundImageView.image = [image resizableImageWithCapInsets:UIEdgeInsetsZero resizingMode:UIImageResizingModeTile];
-        } onError:nil];
-        [[HRPGManager sharedManager] setImage:[NSString stringWithFormat:@"%@_scene%@", identifier, self.shopSpriteSuffix] withFormat:@"png" onView:cell.characterImageView];
-    } else {
-        [self.delegate refreshShopWithIdentifier:identifier onSuccess:^{
-            [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-        } onError:nil];
+        }];
+        [ImageManager setImageOn:cell.characterImageView name:[NSString stringWithFormat:@"%@_scene%@", identifier, self.shopSpriteSuffix] extension:@"png" completion:nil];
     }
     
     cell.backgroundImageView.contentMode = UIViewContentModeRedraw;
@@ -60,23 +49,12 @@
 - (NSString *)titleForIdentifier:(NSString *)identifier {
     NSString *title = @"";
     
-    Shop *shop = self.delegate.shopDictionary[identifier];
+    NSObject<ShopProtocol> *shop = self.delegate.shopDictionary[identifier];
     if (shop) {
-        title = shop.text;
-    } else {
-        title = NSLocalizedString([HRPGShopOverviewTableViewDataSource shopNames][identifier], nil);
+        title = [shop valueForKey:@"text"];
     }
     
     return title;
-}
-
-+ (NSDictionary *)shopNames {
-    return @{
-             MarketKey: @"Market",
-             QuestsShopKey: @"Quests",
-             SeasonalShopKey: @"Seasonal Shop",
-             TimeTravelersShopKey: @"Time Travelers",
-             };
 }
 
 #pragma mark - UITableViewDataSource and Delegate methods

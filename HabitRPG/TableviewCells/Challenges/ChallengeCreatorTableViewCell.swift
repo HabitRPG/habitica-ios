@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import Habitica_Models
 
 protocol ChallengeCreatorCellDelegate: class {
-    func userPressed(_ user: User)
-    func messagePressed(user: User)
+    func userPressed(_ user: UserProtocol)
+    func messagePressed(user: UserProtocol)
 }
 
 class ChallengeCreatorTableViewCell: UITableViewCell, ChallengeConfigurable {
@@ -19,10 +20,10 @@ class ChallengeCreatorTableViewCell: UITableViewCell, ChallengeConfigurable {
     
     weak var delegate: ChallengeCreatorCellDelegate?
     
-    private var user: User? {
+    private var user: UserProtocol? {
         didSet {
             if let member = user {
-                avatarView.avatar = member
+                avatarView.avatar = AvatarViewModel(avatar: member)
             }
         }
     }
@@ -32,15 +33,15 @@ class ChallengeCreatorTableViewCell: UITableViewCell, ChallengeConfigurable {
         // Initialization code
     }
     
-    func configure(with challenge: Challenge) {
+    func configure(with challenge: ChallengeProtocol) {
         userNameLabel.text = challenge.leaderName
         
-        User.fetch(withId: challenge.leaderId) { (user) in
+        /*User.fetch(withId: challenge.leaderID) { (user) in
             self.configure(user: user)
-        }
+        }*/
     }
     
-    func configure(user: User?) {
+    func configure(user: UserProtocol?) {
         self.user = user
     }
     

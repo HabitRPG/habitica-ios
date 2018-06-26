@@ -7,7 +7,6 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "HRPGManager.h"
 #import "FBSnapshotTestCase/FBSnapshotTestCase.h"
 
 

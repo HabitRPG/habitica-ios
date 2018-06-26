@@ -25,6 +25,6 @@ class ChallengeTableViewHeaderView: UITableViewHeaderFooterView {
         countLabel.textColor = UIColor.gray400()
         countLabel.clipsToBounds = true
 
-        contentView.backgroundColor = UIColor.gray700()
+        backgroundView?.backgroundColor = UIColor.gray700()
     }
 }

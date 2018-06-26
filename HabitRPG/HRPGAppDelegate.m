@@ -11,16 +11,10 @@
 #import <Crashlytics/Crashlytics.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <Fabric/Fabric.h>
-#import <Google/Analytics.h>
 #import "Amplitude.h"
-#import "HRPGLoadingViewController.h"
 #import "HRPGMaintenanceViewController.h"
-#import "HRPGTabBarController.h"
 #import "HRPGTableViewController.h"
-#import "Reminder.h"
 #import "HRPGInboxChatViewController.h"
-#import "HRPGPartyTableViewController.h"
-#import "HRPGQuestDetailViewController.h"
 #import "UIColor+Habitica.h"
 #import <Keys/HabiticaKeys.h>
 #import "AppAuth.h"
@@ -28,7 +22,6 @@
 
 @interface HRPGAppDelegate ()
 
-@property HabiticaAppDelegate *swiftAppDelegate;
 
 @end
 
@@ -38,18 +31,17 @@
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.swiftAppDelegate = [[HabiticaAppDelegate alloc] init];
     
-    [[AuthenticationManager shared] migrateAuthentication];
     [self.swiftAppDelegate setupLogging];
     [self.swiftAppDelegate setupAnalytics];
     [self.swiftAppDelegate setupPopups];
     [self.swiftAppDelegate setupPurchaseHandling];
+    [self.swiftAppDelegate setupNetworkClient];
+    [self.swiftAppDelegate setupDatabase];
+    [self.swiftAppDelegate setupTheme];
     
-    [[UIView appearanceWhenContainedInInstancesOfClasses:@[[UIAlertController class]]] setTintColor:[UIColor purple400]];
-
     [self configureNotifications:application];
 
     [self.swiftAppDelegate handleInitialLaunch];
-    [[HRPGManager sharedManager] changeUseAppBadge:[[NSUserDefaults standardUserDefaults] boolForKey:@"appBadgeActive"]];
 
     UILocalNotification *notification =
         launchOptions[UIApplicationLaunchOptionsLocalNotificationKey];
@@ -65,11 +57,13 @@
     
     [application setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
     
+    [self cleanAndRefresh:application];
+    
     return YES;
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    [self cleanAndRefresh:application];
+    [self.swiftAppDelegate setupUserManager];
 }
 
 - (void)cleanAndRefresh:(UIApplication *)application {
@@ -77,46 +71,10 @@
         [NSArray arrayWithArray:application.scheduledLocalNotifications];
     application.scheduledLocalNotifications = scheduledNotifications;
 
-    NSDate *lastReminderSchedule =
-        [[NSUserDefaults standardUserDefaults] objectForKey:@"lastReminderSchedule"];
-    if (lastReminderSchedule == nil || [lastReminderSchedule timeIntervalSinceNow] < -259200) {
-        // Reschedule every 3 days
-        [self rescheduleTaskReminders];
-    }
-
-    if (application.applicationState == UIApplicationStateActive || application.applicationState == UIApplicationStateInactive) {
-        User *user = [[HRPGManager sharedManager] getUser];
-        if (user) {
-            NSDate *lastUserFetch = [[NSUserDefaults standardUserDefaults] objectForKey:@"lastTaskFetch"];
-            if ([lastUserFetch timeIntervalSinceNow] < -300) {
-                [[HRPGManager sharedManager] fetchUser:^() {
-                    [self loadContent];
-                } onError:^() {
-                    [self loadContent];
-                }];
-            }
-        }
-    }
+    [self.swiftAppDelegate retrieveContent];
 
     [self.swiftAppDelegate handleMaintenanceScreen];
     [[[ConfigRepository alloc] init] fetchremoteConfig];
-    
-    
-    
-    [[HRPGManager sharedManager] fetchWorldState: nil onError: nil];
-}
-
-- (void)loadContent {
-    NSDate *lastContentFetch = [[NSUserDefaults standardUserDefaults] objectForKey:@"lastContentFetch"];
-    NSString *lastContentFetchVersion = [[NSUserDefaults standardUserDefaults] objectForKey:@"lastContentFetchVersion"];
-    NSString *currentBuildNumber = [[NSBundle mainBundle]
-                                    objectForInfoDictionaryKey:(NSString *)kCFBundleVersionKey];
-    if (lastContentFetch == nil || [lastContentFetch timeIntervalSinceNow] < -43200 || ![lastContentFetchVersion isEqualToString:currentBuildNumber]) {
-        [[NSUserDefaults standardUserDefaults] setObject:currentBuildNumber forKey:@"lastContentFetchVersion"];
-        [[HRPGManager sharedManager] fetchContent:^{
-            [[HRPGManager sharedManager] fetchWorldState: nil onError: nil];
-        } onError:nil];
-    }
 }
 
 - (BOOL)application:(UIApplication *)application shouldRestoreApplicationState:(NSCoder *)coder {
@@ -147,8 +105,8 @@
     performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem
                completionHandler:(void (^)(BOOL))completionHandler {
     id presentedController = self.window.rootViewController.presentedViewController;
-    if ([presentedController isKindOfClass:[HRPGTabBarController class]]) {
-        HRPGTabBarController *tabBarController = (HRPGTabBarController *)presentedController;
+    if ([presentedController isKindOfClass:[MainTabBarController class]]) {
+        MainTabBarController *tabBarController = (MainTabBarController *)presentedController;
         if ([shortcutItem.type isEqualToString:@"com.habitrpg.habitica.ios.newhabit"]) {
             [tabBarController setSelectedIndex:0];
         } else if ([shortcutItem.type isEqualToString:@"com.habitrpg.habitica.ios.newdaily"]) {
@@ -196,26 +154,28 @@
 
 - (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo withResponseInfo:(NSDictionary *)responseInfo completionHandler:(void (^)())completionHandler {
     if ([identifier isEqualToString:@"acceptAction"]) {
-        [[HRPGManager sharedManager] acceptQuest:[[HRPGManager sharedManager] getUser].partyID onSuccess:^() {
-            completionHandler();
-        } onError:^(NSString *errorMessage) {
-            [self displayLocalNotificationWithMessage:errorMessage withApplication:application];
+        [self.swiftAppDelegate acceptQuestInvitation:^(BOOL success) {
+            if (!success) {
+                [self displayLocalNotificationWithMessage:NSLocalizedString(@"There was an error accepting the quest invitation", nil) withApplication:application];
+            }
             completionHandler();
         }];
     } else if ([identifier isEqualToString:@"rejectAction"]) {
-        [[HRPGManager sharedManager] rejectQuest:[[HRPGManager sharedManager] getUser].partyID onSuccess:^() {
-            completionHandler();
-        } onError:^(NSString *errorMessage) {
-            [self displayLocalNotificationWithMessage:errorMessage withApplication:application];
+        [self.swiftAppDelegate rejectQuestInvitation:^(BOOL success) {
+            if (!success) {
+                [self displayLocalNotificationWithMessage:NSLocalizedString(@"There was an error rejecting the quest invitation", nil) withApplication:application];
+            }
             completionHandler();
         }];
     } else if ([identifier isEqualToString:@"replyAction"]) {
-        [[HRPGManager sharedManager] privateMessage:responseInfo[UIUserNotificationActionResponseTypedTextKey] toUserWithID:userInfo[@"replyTo"] onSuccess:^() {
-            completionHandler();
-        } onError:^() {
-            [self displayLocalNotificationWithMessage:NSLocalizedString(@"Your message could not be sent.", nil) withApplication:application];
-            completionHandler();
-        }];
+        [self.swiftAppDelegate sendPrivateMessageToUserID:userInfo[@"replyTo"]
+                                                  message:responseInfo[UIUserNotificationActionResponseTypedTextKey]
+                                                completed:^(BOOL success) {
+                                                    if (!success) {
+                                                        [self displayLocalNotificationWithMessage:NSLocalizedString(@"Your message could not be sent.", nil) withApplication:application];
+                                                    }
+                                                    completionHandler();
+                                                }];
     }
 }
 
@@ -237,8 +197,8 @@
     }
 
     HabiticaAlertController *alertController = [HabiticaAlertController alertWithTitle:NSLocalizedString(@"Reminder", nil) message:notification.alertBody];
-    [alertController addActionWithTitle:NSLocalizedString(@"Close", nil) style:UIAlertActionStyleDefault isMainAction:NO handler:nil];
-    [alertController addActionWithTitle:NSLocalizedString(@"Complete", nil) style:UIAlertActionStyleDefault isMainAction:YES handler:^(UIButton * _Nonnull button) {
+    [alertController addActionWithTitle:NSLocalizedString(@"Close", nil) style:UIAlertActionStyleDefault isMainAction:NO closeOnTap:true handler:nil];
+    [alertController addActionWithTitle:NSLocalizedString(@"Complete", nil) style:UIAlertActionStyleDefault isMainAction:YES closeOnTap:true handler:^(UIButton * _Nonnull button) {
         [self completeTaskWithId:[notification.userInfo valueForKey:@"taskID"] completionHandler:nil];
     }];
     [alertController show];
@@ -267,54 +227,24 @@
             inboxChatViewController.userID = userInfo[@"replyTo"];
             [displayedNavigationController pushViewController:inboxChatViewController animated:YES];
         } else if ([userInfo[@"identifier"] isEqualToString:@"invitedParty"] || [userInfo[@"identifier"] isEqualToString:@"questStarted"]) {
-            HRPGPartyTableViewController *partyViewController = (HRPGPartyTableViewController *)[self loadViewController:@"PartyViewController" fromStoryboard:@"Social"];
+            PartyViewController *partyViewController = (PartyViewController *)[self loadViewController:@"PartyViewController" fromStoryboard:@"Social"];
             [displayedNavigationController pushViewController:partyViewController animated:YES];
         } else if ([userInfo[@"identifier"] isEqualToString:@"invitedGuild"]) {
-            HRPGGroupTableViewController *guildViewController = (HRPGGroupTableViewController *)[self loadViewController:@"GroupTableViewController" fromStoryboard:@"Social"];
+            SplitSocialViewController *guildViewController = (SplitSocialViewController *)[self loadViewController:@"GroupTableViewController" fromStoryboard:@"Social"];
             guildViewController.groupID = userInfo[@"groupID"];
             [displayedNavigationController pushViewController:guildViewController animated:YES];
         } else if ([userInfo[@"identifier"] isEqualToString:@"questInvitation"]) {
-            HRPGQuestDetailViewController *questDetailViewController = (HRPGQuestDetailViewController *)[self loadViewController:@"QuestDetailViewController" fromStoryboard:@"Social"];
+            QuestDetailViewController *questDetailViewController = (QuestDetailViewController *)[self loadViewController:@"QuestDetailViewController" fromStoryboard:@"Social"];
             [displayedNavigationController pushViewController:questDetailViewController animated:YES];
         }
-    } else if ([self.window.rootViewController isKindOfClass:[HRPGLoadingViewController class]]) {
-        HRPGLoadingViewController *loadingViewController =
-        (HRPGLoadingViewController *)self.window.rootViewController;
+    } else if ([self.window.rootViewController isKindOfClass:[LoadingViewController class]]) {
+        LoadingViewController *loadingViewController =
+        (LoadingViewController *)self.window.rootViewController;
         __weak HRPGAppDelegate *weakSelf = self;
         loadingViewController.loadingFinishedAction = ^() {
             [weakSelf handlePushNotification:userInfo];
         };
     }
-}
-
-
-- (void)rescheduleTaskReminders {
-    UIApplication *sharedApplication = [UIApplication sharedApplication];
-    for (UILocalNotification *reminder in [sharedApplication scheduledLocalNotifications]) {
-        if (reminder.userInfo[@"ID"] != nil) {
-            [sharedApplication cancelLocalNotification:reminder];
-        }
-    }
-
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity =
-        [NSEntityDescription entityForName:@"Task"
-                    inManagedObjectContext:[[HRPGManager sharedManager] getManagedObjectContext]];
-    [fetchRequest setEntity:entity];
-    [fetchRequest setFetchBatchSize:20];
-    [fetchRequest
-        setPredicate:[NSPredicate predicateWithFormat:@"reminders.@count != 0 && (type == 'daily' "
-                                                      @"|| (type == 'todo' && completed == NO))"]];
-    NSError *error;
-    NSArray *tasks = [[[HRPGManager sharedManager] getManagedObjectContext] executeFetchRequest:fetchRequest
-                                                                                 error:&error];
-
-    for (Task *task in tasks) {
-        for (Reminder *reminder in task.reminders) {
-            [reminder scheduleReminders];
-        }
-    }
-    [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"lastReminderSchedule"];
 }
 
 - (void)configureNotifications:(UIApplication *)application {
@@ -385,36 +315,11 @@
 }
 
 - (void)completeTaskWithId:(NSString *)taskID completionHandler:(void (^)())completionHandler {
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity =
-        [NSEntityDescription entityForName:@"Task"
-                    inManagedObjectContext:[[HRPGManager sharedManager] getManagedObjectContext]];
-    [fetchRequest setEntity:entity];
-    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"id = %@", taskID]];
-    [fetchRequest
-        setSortDescriptors:@[ [[NSSortDescriptor alloc] initWithKey:@"order" ascending:YES] ]];
-
-    NSError *error;
-    NSArray *fetchedObjects =
-        [[[HRPGManager sharedManager] getManagedObjectContext] executeFetchRequest:fetchRequest
-                                                                    error:&error];
-    if (fetchedObjects != nil && fetchedObjects.count == 1) {
-        Task *task = fetchedObjects[0];
-        if (![task.completed boolValue]) {
-            [[HRPGManager sharedManager] upDownTask:task
-                direction:@"up"
-                onSuccess:^() {
-                    if (completionHandler) {
-                        completionHandler();
-                    };
-                }
-                onError:^() {
-                    if (completionHandler) {
-                        completionHandler();
-                    };
-                }];
-        }
-    }
+    [self.swiftAppDelegate scoreTask:taskID direction:@"up" completed: ^() {
+        if (completionHandler) {
+            completionHandler();
+        };
+    }];
 }
 
 - (void)displayTaskWithId:(NSString *)taskID fromType:(nullable NSString *)taskType {
@@ -433,9 +338,9 @@
                 respondsToSelector:@selector(setScrollToTaskAfterLoading:)]) {
             displayedTableViewController.scrollToTaskAfterLoading = taskID;
         }
-    } else if ([self.window.rootViewController isKindOfClass:[HRPGLoadingViewController class]]) {
-        HRPGLoadingViewController *loadingViewController =
-            (HRPGLoadingViewController *)self.window.rootViewController;
+    } else if ([self.window.rootViewController isKindOfClass:[LoadingViewController class]]) {
+        LoadingViewController *loadingViewController =
+            (LoadingViewController *)self.window.rootViewController;
         __weak HRPGAppDelegate *weakSelf = self;
         loadingViewController.loadingFinishedAction = ^() {
             [weakSelf displayTaskWithId:taskID fromType:taskType];
@@ -445,8 +350,8 @@
 
 - (UINavigationController *)displayTabAtIndex:(int)index {
     id presentedController = self.window.rootViewController.presentedViewController;
-    if ([presentedController isKindOfClass:[HRPGTabBarController class]]) {
-        HRPGTabBarController *tabBarController = (HRPGTabBarController *)presentedController;
+    if ([presentedController isKindOfClass:[MainTabBarController class]]) {
+        MainTabBarController *tabBarController = (MainTabBarController *)presentedController;
         [tabBarController setSelectedIndex:index];
         return tabBarController.selectedViewController;
     } else {
@@ -465,11 +370,13 @@
 }
 
 -(void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler{
-    if ([HRPGManager sharedManager].hasAuthentication) {
-        [[HRPGManager sharedManager] fetchTasks:^{
-            completionHandler(UIBackgroundFetchResultNewData);
-        } onError:^{
-            completionHandler(UIBackgroundFetchResultFailed);
+    if (AuthenticationManager.shared.hasAuthentication) {
+        [self.swiftAppDelegate retrieveTasks:^(BOOL completed) {
+            if (completed) {
+                completionHandler(UIBackgroundFetchResultNewData);
+            } else {
+                completionHandler(UIBackgroundFetchResultFailed);
+            }
         }];
     }
 }

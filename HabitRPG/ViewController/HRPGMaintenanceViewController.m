@@ -8,9 +8,9 @@
 
 #import "HRPGMaintenanceViewController.h"
 #import "Masonry.h"
-#import "YYWebImage.h"
 #import "UIColor+Habitica.h"
 #import "UIViewController+Markdown.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGMaintenanceViewController ()
 
@@ -61,7 +61,7 @@
         [self.appstoreButton addTarget:self
                                 action:@selector(appstoreButtonPressed)
                       forControlEvents:UIControlEventTouchUpInside];
-        [self.appstoreButton setTitleColor:[UIColor purple400] forState:UIControlStateNormal];
+        [self.appstoreButton setTitleColor:ObjcThemeWrapper.tintColor forState:UIControlStateNormal];
         [self.contentView addSubview:self.appstoreButton];
     }
 
@@ -131,22 +131,13 @@
                                      context:nil]
             .size.height;
 
-    YYWebImageManager *manager = [YYWebImageManager sharedManager];
-    [manager requestImageWithURL:[NSURL URLWithString:data[@"imageUrl"]]
-        options:0
-        progress:nil
-        transform:^UIImage *_Nullable(UIImage *_Nonnull image, NSURL *_Nonnull url) {
-            return [YYImage imageWithData:[image yy_imageDataRepresentation] scale:1.0];
+    [ImageManager getImageWithUrl:data[@"imageUrl"] completion:^(UIImage * _Nullable image, NSError * _Nullable error) {
+        if (image) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.imageView.image = image;
+            });
         }
-        completion:^(UIImage *_Nullable image, NSURL *_Nonnull url, YYWebImageFromType from,
-                     YYWebImageStage stage, NSError *_Nullable error) {
-            if (image) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    self.imageView.image = image;
-                });
-            }
-
-        }];
+    }];
 
     NSAttributedString *descriptionText = [self renderMarkdown:data[@"description"]];
 

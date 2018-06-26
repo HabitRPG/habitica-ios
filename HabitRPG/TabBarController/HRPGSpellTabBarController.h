@@ -7,11 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Spell.h"
 
 @interface HRPGSpellTabBarController : UITabBarController
 
-@property Spell *spell;
+@property id skill;
 @property NSString *taskID;
 @property UITableView *sourceTableView;
 

@@ -7,43 +7,58 @@
 //
 
 import UIKit
+import Habitica_Models
+import ReactiveSwift
 
-class SplitSocialViewController: HRPGUIViewController, UIScrollViewDelegate, NSFetchedResultsControllerDelegate {
+class SplitSocialViewController: HabiticaSplitViewController {
     
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var scrollViewTopConstraint: NSLayoutConstraint!
-    @IBOutlet var detailViewWidthConstraint: NSLayoutConstraint!
-    @IBOutlet var chatViewWidthConstraint: NSLayoutConstraint!
-    @IBOutlet weak var separatorView: UIView!
+    override var viewID: String? {
+        get {
+            return groupID
+        }
+        set {
+            groupID = newValue
+        }
+    }
     
-    @objc var groupID: String?
+    @objc var groupID: String? {
+        didSet {
+            chatViewController?.groupID = groupID
+            retrieveGroup()
+            fetchGroup()
+        }
+    }
     
-    var detailViewController: HRPGGroupTableViewController?
-    var chatViewController: GroupChatViewController?
+    var isGroupOwner = false {
+        didSet {
+            if isGroupOwner {
+                navigationItem.rightBarButtonItem = editGroupButton
+            } else {
+                navigationItem.rightBarButtonItem = nil
+            }
+        }
+    }
     
-    private let segmentedWrapper = PaddedView()
-    private let segmentedControl = UISegmentedControl(items: [NSLocalizedString("", comment: ""), NSLocalizedString("Chat", comment: "")])
-    private var isInitialSetup = true
-    private var showAsSplitView = false
-    internal var fetchedResultsController: NSFetchedResultsController<Group>?
+    weak var detailViewController: GroupDetailViewController?
+    weak var chatViewController: GroupChatViewController?
     
+    @IBOutlet var editGroupButton: UIBarButtonItem?
+    
+    private let socialRepository = SocialRepository()
+    let disposable = ScopedDisposable(CompositeDisposable())
+    var fetchGroupDisposable: Disposable?
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        showAsSplitView = traitCollection.horizontalSizeClass == .regular && traitCollection.verticalSizeClass == .regular
+        segmentedControl.setTitle(L10n.details, forSegmentAt: 0)
+        segmentedControl.setTitle(L10n.chat, forSegmentAt: 1)
         
-        self.segmentedControl.selectedSegmentIndex = 0
-        self.segmentedControl.tintColor = UIColor.purple300()
-        self.segmentedControl.addTarget(self, action: #selector(SplitSocialViewController.switchView(_:)), for: .valueChanged)
-        self.segmentedControl.setTitle(navigationItem.title, forSegmentAt: 0)
-        segmentedControl.isHidden = false
-        segmentedWrapper.containedView = segmentedControl
-        topHeaderCoordinator.alternativeHeader = segmentedWrapper
-        topHeaderCoordinator.hideHeader = showAsSplitView
+        showAsSplitView = traitCollection.horizontalSizeClass == .regular && traitCollection.verticalSizeClass == .regular
         
         scrollView.delegate = self
         
-        for childViewController in self.childViewControllers {
-            if let viewController = childViewController as? HRPGGroupTableViewController {
+        for childViewController in childViewControllers {
+            if let viewController = childViewController as? GroupDetailViewController {
                 detailViewController = viewController
             }
             if let viewController = childViewController as? GroupChatViewController {
@@ -51,103 +66,52 @@ class SplitSocialViewController: HRPGUIViewController, UIScrollViewDelegate, NSF
             }
         }
         
-        detailViewController?.groupID = groupID
-        chatViewController?.groupID = groupID
-        
-        fetchGroup()
+        navigationItem.rightBarButtonItem = nil
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        if let navController = self.hrpgTopHeaderNavigationController() {
-            scrollViewTopConstraint.constant = navController.contentInset
+    deinit {
+        if let disposable = fetchGroupDisposable {
+            disposable.dispose()
         }
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        if isInitialSetup {
-            isInitialSetup = false
-            setupSplitView(traitCollection)
-            if !showAsSplitView {
-                let userDefaults = UserDefaults()
-                let lastPage = userDefaults.integer(forKey: groupID ?? "" + "lastOpenedSegment")
-                segmentedControl.selectedSegmentIndex = lastPage
-                scrollTo(page: lastPage, animated: false)
+    func retrieveGroup() {
+        if let groupID = self.groupID {
+            disposable.inner.add(socialRepository.retrieveGroup(groupID: groupID)
+                    .flatMap(.latest) {[weak self] _ in
+                        return self?.socialRepository.retrieveGroupMembers(groupID: groupID) ?? Signal.empty
+                     }
+                    .observeCompleted {})
+        }
+    }
+    
+    func fetchGroup() {
+        guard let groupID = self.groupID else {
+            return
+        }
+        if let disposable = self.fetchGroupDisposable {
+            disposable.dispose()
+        }
+        fetchGroupDisposable = socialRepository.getGroup(groupID: groupID).skipNil().on(value: {[weak self] group in
+            DispatchQueue.main.async {
+                self?.set(group: group)
+            }
+            self?.isGroupOwner = group.leaderID == self?.socialRepository.currentUserId
+        }).start()
+    }
+    
+    internal func set(group: GroupProtocol) {
+        detailViewController?.groupProperty.value = group
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let chatViewController  = segue.destination as? GroupChatViewController {
+            chatViewController.groupID = groupID
+        } else if segue.identifier == StoryboardSegue.Social.formSegue.rawValue {
+            let destination = segue.destination as? UINavigationController
+            if let formViewController = destination?.topViewController as? GroupFormViewController {
+                formViewController.groupID = groupID
             }
         }
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        let userDefaults = UserDefaults()
-        userDefaults.set(segmentedControl.selectedSegmentIndex, forKey: groupID ?? "" + "lastOpenedSegment")
-        super.viewWillDisappear(animated)
-    }
-    
-    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.willTransition(to: newCollection, with: coordinator)
-        coordinator.animate(alongsideTransition: { (_) in
-            self.setupSplitView(newCollection)
-            self.scrollTo(page: self.segmentedControl.selectedSegmentIndex)
-        }, completion: nil)
-    }
-    
-    private func setupSplitView(_ collection: UITraitCollection) {
-        showAsSplitView = collection.horizontalSizeClass == .regular && collection.verticalSizeClass == .regular
-        separatorView.isHidden = !showAsSplitView
-        scrollView.isScrollEnabled = !showAsSplitView
-        topHeaderCoordinator?.hideHeader = showAsSplitView
-        if showAsSplitView {
-            detailViewWidthConstraint = detailViewWidthConstraint.setMultiplier(multiplier: 0.333)
-            chatViewWidthConstraint = chatViewWidthConstraint.setMultiplier(multiplier: 0.666)
-        } else {
-            detailViewWidthConstraint = detailViewWidthConstraint.setMultiplier(multiplier: 1)
-            chatViewWidthConstraint = chatViewWidthConstraint.setMultiplier(multiplier: 1)
-        }
-        self.view.setNeedsLayout()
-    }
-    
-    private func fetchGroup() {
-        let fetchRequest: NSFetchRequest<Group> = SocialRepository().getFetchRequest(entityName: "Group", predicate: NSPredicate(format: "id == %@", groupID ?? "")
-        )
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: false)]
-        fetchedResultsController = NSFetchedResultsController<Group>(fetchRequest: fetchRequest, managedObjectContext: HRPGManager.shared().getManagedObjectContext(), sectionNameKeyPath: nil, cacheName: nil)
-        fetchedResultsController?.delegate = self
-        
-        try? fetchedResultsController?.performFetch()
-        
-        setGroup()
-    }
-    
-    internal func setGroup() {
-        if let items = fetchedResultsController?.fetchedObjects, items.count > 0 {
-            let group = items[0]
-            detailViewController?.group = group
-        }
-    }
-    
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let currentPage = getCurrentPage()
-        self.segmentedControl.selectedSegmentIndex = currentPage
-    }
-    
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        setGroup()
-    }
-    
-    @objc
-    func switchView(_ segmentedControl: UISegmentedControl) {
-        scrollTo(page: segmentedControl.selectedSegmentIndex)
-    }
-    
-    func getCurrentPage() -> Int {
-        return Int(scrollView.contentOffset.x / scrollView.frame.size.width)
-    }
-    
-    func scrollTo(page: Int, animated: Bool = true) {
-        let point = CGPoint(x: scrollView.frame.size.width * CGFloat(page), y: 0)
-        scrollView.setContentOffset(point, animated: animated)
     }
 }

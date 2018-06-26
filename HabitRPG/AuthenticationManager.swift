@@ -7,23 +7,17 @@
 //
 
 import Foundation
-import PDKeychainBindingsController
+import ReactiveSwift
+import Result
 import KeychainAccess
+import Crashlytics
+import Amplitude_iOS
+import Instabug
+import Habitica_API_Client
+
 class AuthenticationManager: NSObject {
     
     @objc static let shared = AuthenticationManager()
-
-    @objc
-    func migrateAuthentication() {
-        let defaults = UserDefaults.standard
-        guard let oldKeychain = PDKeychainBindingsController.shared() else {
-            return
-        }
-        if defaults.string(forKey: "currentUserId") == nil, let userId = oldKeychain.string(forKey: "id") {
-            defaults.set(userId, forKey: "currentUserId")
-            keychain[userId] = oldKeychain.string(forKey: "key") ?? ""
-        }
-    }
     
     private var keychain: Keychain {
         return Keychain(server: "https://habitica.com", protocolType: .https)
@@ -39,8 +33,18 @@ class AuthenticationManager: NSObject {
         set(newUserId) {
             let defaults = UserDefaults.standard
             defaults.set(newUserId, forKey: "currentUserId")
+            NetworkAuthenticationManager.shared.currentUserId = newUserId
+            currentUserIDProperty.value = newUserId
+            if newUserId != nil {
+                Crashlytics.sharedInstance().setUserIdentifier(newUserId)
+                Crashlytics.sharedInstance().setUserName(newUserId)
+                Amplitude.instance().setUserId(newUserId)
+                Instabug.setUserAttribute(newUserId ?? "", withKey: "userID")
+            }
         }
     }
+    
+    var currentUserIDProperty = MutableProperty<String?>(nil)
     
     @objc var currentUserKey: String? {
         get {
@@ -54,7 +58,13 @@ class AuthenticationManager: NSObject {
             if let userId = self.currentUserId {
                 keychain[userId] = newKey
             }
+            NetworkAuthenticationManager.shared.currentUserKey = newKey
         }
+    }
+    
+    override init() {
+        super.init()
+        currentUserIDProperty.value = currentUserId
     }
     
     @objc
@@ -79,12 +89,6 @@ class AuthenticationManager: NSObject {
     func clearAuthenticationForAllUsers() {
         currentUserId = nil
         currentUserKey = nil
-        
-        guard let oldKeychain = PDKeychainBindingsController.shared() else {
-            return
-        }
-        oldKeychain.store(nil, forKey: "id")
-        oldKeychain.store(nil, forKey: "key")
     }
     
     @objc

@@ -14,10 +14,18 @@ class TopHeaderCoordinator: NSObject {
     private weak var topHeaderNavigationController: (UINavigationController & TopHeaderNavigationControllerProtocol)?
     @objc weak var alternativeHeader: UIView?
     @objc var hideNavBar = false
-    @objc var hideHeader = false
+    @objc var hideHeader = false {
+        didSet {
+            if didAppear {
+                topHeaderNavigationController?.shouldHideTopHeader = hideHeader
+            }
+        }
+    }
     @objc var followScrollView = true
     @objc var navbarHiddenColor: UIColor?
     @objc var navbarVisibleColor: UIColor?
+    
+    private var didAppear = false
     
     @objc
     init(topHeaderNavigationController: UINavigationController & TopHeaderNavigationControllerProtocol) {
@@ -35,16 +43,17 @@ class TopHeaderCoordinator: NSObject {
         guard let navController = topHeaderNavigationController else {
             return
         }
-        var insets = UIEdgeInsets(top: navController.contentInset, left: 0, bottom: 0, right: 0)
+        let insets = UIEdgeInsets(top: navController.contentInset, left: 0, bottom: 0, right: 0)
         scrollView?.contentInset = insets
         scrollView?.scrollIndicatorInsets = insets
-        if navController.state == HRPGTopHeaderStateHidden {
+        if navController.state == .hidden {
             scrollView?.contentOffset = CGPoint(x: 0, y: -navController.contentOffset)
         }
     }
     
     @objc
     func viewWillAppear() {
+        didAppear = false
         guard let navController = topHeaderNavigationController else {
             return
         }
@@ -82,12 +91,13 @@ class TopHeaderCoordinator: NSObject {
         }
         scrollView?.contentInset = insets
         scrollView?.scrollIndicatorInsets = insets
-        if navController.state == HRPGTopHeaderStateHidden {
+        if navController.state == .hidden {
             scrollView?.contentOffset = CGPoint(x: 0, y: -navController.contentOffset)
         }
         if scrollView?.contentOffset.y ?? 0 < -navController.contentOffset {
             scrollView?.contentOffset = CGPoint(x: 0, y: 0)
         }
+        didAppear = true
     }
     
     @objc
@@ -101,7 +111,7 @@ class TopHeaderCoordinator: NSObject {
         if followScrollView {
             navController.startFollowing(scrollView: scrollView)
         }
-        if navController.state == HRPGTopHeaderStateVisible && scrollView.contentOffset.y > -navController.contentOffset {
+        if navController.state == .visible && scrollView.contentOffset.y > -navController.contentOffset {
             navController.scrollView(scrollView, scrolledToPosition: scrollView.contentOffset.y)
         }
     }
@@ -123,5 +133,17 @@ class TopHeaderCoordinator: NSObject {
             return
         }
         navController.scrollView(scrollView, scrolledToPosition: scrollView.contentOffset.y)
+    }
+    
+    @objc
+    func showHideHeader(show: Bool, animated: Bool = true) {
+        guard let navController = topHeaderNavigationController else {
+            return
+        }
+        if show {
+            navController.showHeader(animated: animated)
+        } else {
+            navController.hideHeader(animated: animated)
+        }
     }
 }

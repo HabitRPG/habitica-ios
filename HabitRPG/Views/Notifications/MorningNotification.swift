@@ -10,16 +10,10 @@ import Foundation
 
 class MorningNotificationwait: HRPGBaseNotificationView {
 
-    var sharedManager: HRPGManager?
-
     override func displayNotification(_ completionBlock: (() -> Void)!) {
         if var topController = UIApplication.shared.keyWindow?.rootViewController {
             while let presentedViewController = topController.presentedViewController {
                 topController = presentedViewController
-            }
-
-            if let sharedManager = self.sharedManager {
-                YesterdailiesDialogView.showDialog(sharedManager: sharedManager, user: sharedManager.getUser())
             }
         }
     }

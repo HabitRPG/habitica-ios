@@ -8,6 +8,7 @@
 
 import UIKit
 import Down
+import Habitica_Models
 
 class ChallengeDescriptionTableViewCell: ResizableTableViewCell, ChallengeConfigurable {
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -23,7 +24,7 @@ class ChallengeDescriptionTableViewCell: ResizableTableViewCell, ChallengeConfig
         // Initialization code
     }
     
-    func configure(with challenge: Challenge) {
+    func configure(with challenge: ChallengeProtocol) {
         if let notes = challenge.notes {
             descriptionLabel.attributedText = try? Down(markdownString: notes.unicodeEmoji).toHabiticaAttributedString(baseFont: descriptionLabel.font)
             descriptionLabel.textColor = UIColor.gray10()

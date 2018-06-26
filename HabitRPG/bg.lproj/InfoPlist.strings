@@ -1,9 +1,12 @@
-/* (No Commment) */
+/* (No Comment) */
 "CFBundleDisplayName" = "Хабитика";
 
-/* (No Commment) */
+/* (No Comment) */
 "CFBundleName" = "Хабитика";
 
-/* (No Commment) */
-"CFBundleShortVersionString" = "1.5.3";
+/* (No Comment) */
+"NSCameraUsageDescription" = "Хабитика трябва да има достъп до камерата на устройството, за да може да сканира QR-код.";
+
+/* (No Comment) */
+"NSPhotoLibraryUsageDescription" = "Хабитика трябва да има достъп до камерата на устройството, за да може да сканира QR-код.";
 

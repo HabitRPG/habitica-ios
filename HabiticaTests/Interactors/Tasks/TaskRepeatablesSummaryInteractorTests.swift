@@ -8,6 +8,7 @@
 
 import Foundation
 @testable import Habitica
+import Habitica_Models
 import Result
 import Nimble
 
@@ -16,20 +17,20 @@ class TaskRepeatablesSummaryInteractorTests: HabiticaTests {
     let interactor = TaskRepeatablesSummaryInteractor()
     
     private let observer = TestObserver<String, NSError>()
-    private var task = Task()
+    private var task = TestTask()
     
     override func setUp() {
         super.setUp()
         
         self.initializeCoreDataStorage()
-        guard let task = NSEntityDescription.insertNewObject(forEntityName: "Task", into: HRPGManager.shared().getManagedObjectContext()) as? Task else {
+        /*guard let task = NSEntityDescription.insertNewObject(forEntityName: "Task", into: HRPGManager.shared().getManagedObjectContext()) as? Task else {
             return;
         }
         self.task = task
         task.text = "Task Title"
         task.notes = "Task notes"
         task.type = "daily"
-        task.startDate = Date(timeIntervalSince1970: 1485887999)
+        task.startDate = Date(timeIntervalSince1970: 1485887999)*/
     }
     
     func testDailyNeverRepeats() {
@@ -53,119 +54,119 @@ class TaskRepeatablesSummaryInteractorTests: HabiticaTests {
     func testWeeklyNeverRepeats() {
         task.everyX = 1
         task.frequency = "weekly"
-        task.monday = false
-        task.tuesday = false
-        task.wednesday = false
-        task.thursday = false
-        task.friday = false
-        task.saturday = false
-        task.sunday = false
+        task.weekRepeat?.monday = false
+        task.weekRepeat?.tuesday = false
+        task.weekRepeat?.wednesday = false
+        task.weekRepeat?.thursday = false
+        task.weekRepeat?.friday = false
+        task.weekRepeat?.saturday = false
+        task.weekRepeat?.sunday = false
         expect(self.interactor.repeatablesSummary(self.task)) == "Repeats never"
     }
     
     func testWeeklyEveryAllDays() {
         task.everyX = 1
         task.frequency = "weekly"
-        task.monday = true
-        task.tuesday = true
-        task.wednesday = true
-        task.thursday = true
-        task.friday = true
-        task.saturday = true
-        task.sunday = true
+        task.weekRepeat?.monday = true
+        task.weekRepeat?.tuesday = true
+        task.weekRepeat?.wednesday = true
+        task.weekRepeat?.thursday = true
+        task.weekRepeat?.friday = true
+        task.weekRepeat?.saturday = true
+        task.weekRepeat?.sunday = true
         expect(self.interactor.repeatablesSummary(self.task)) == "Repeats weekly on every day"
     }
     
     func testWeeklyEveryOneDay() {
         task.everyX = 1
         task.frequency = "weekly"
-        task.monday = false
-        task.tuesday = true
-        task.wednesday = false
-        task.thursday = false
-        task.friday = false
-        task.saturday = false
-        task.sunday = false
+        task.weekRepeat?.monday = false
+        task.weekRepeat?.tuesday = true
+        task.weekRepeat?.wednesday = false
+        task.weekRepeat?.thursday = false
+        task.weekRepeat?.friday = false
+        task.weekRepeat?.saturday = false
+        task.weekRepeat?.sunday = false
         expect(self.interactor.repeatablesSummary(self.task)) == "Repeats weekly on Tuesday"
     }
     
     func testWeeklyEveryThreeDay() {
         task.everyX = 1
         task.frequency = "weekly"
-        task.monday = false
-        task.tuesday = true
-        task.wednesday = false
-        task.thursday = true
-        task.friday = false
-        task.saturday = true
-        task.sunday = false
+        task.weekRepeat?.monday = false
+        task.weekRepeat?.tuesday = true
+        task.weekRepeat?.wednesday = false
+        task.weekRepeat?.thursday = true
+        task.weekRepeat?.friday = false
+        task.weekRepeat?.saturday = true
+        task.weekRepeat?.sunday = false
         expect(self.interactor.repeatablesSummary(self.task)) == "Repeats weekly on Tuesday, Thursday, Saturday"
     }
     
     func testWeeklyEveryWeekdays() {
         task.everyX = 1
         task.frequency = "weekly"
-        task.monday = true
-        task.tuesday = true
-        task.wednesday = true
-        task.thursday = true
-        task.friday = true
-        task.saturday = false
-        task.sunday = false
+        task.weekRepeat?.monday = true
+        task.weekRepeat?.tuesday = true
+        task.weekRepeat?.wednesday = true
+        task.weekRepeat?.thursday = true
+        task.weekRepeat?.friday = true
+        task.weekRepeat?.saturday = false
+        task.weekRepeat?.sunday = false
         expect(self.interactor.repeatablesSummary(self.task)) == "Repeats weekly on weekdays"
     }
     
     func testWeeklyEveryWeekend() {
         task.everyX = 1
         task.frequency = "weekly"
-        task.monday = false
-        task.tuesday = false
-        task.wednesday = false
-        task.thursday = false
-        task.friday = false
-        task.saturday = true
-        task.sunday = true
+        task.weekRepeat?.monday = false
+        task.weekRepeat?.tuesday = false
+        task.weekRepeat?.wednesday = false
+        task.weekRepeat?.thursday = false
+        task.weekRepeat?.friday = false
+        task.weekRepeat?.saturday = true
+        task.weekRepeat?.sunday = true
         expect(self.interactor.repeatablesSummary(self.task)) == "Repeats weekly on weekends"
     }
     
     func testWeeklyEveryThreeAllDays() {
         task.everyX = 3
         task.frequency = "weekly"
-        task.monday = true
-        task.tuesday = true
-        task.wednesday = true
-        task.thursday = true
-        task.friday = true
-        task.saturday = true
-        task.sunday = true
+        task.weekRepeat?.monday = true
+        task.weekRepeat?.tuesday = true
+        task.weekRepeat?.wednesday = true
+        task.weekRepeat?.thursday = true
+        task.weekRepeat?.friday = true
+        task.weekRepeat?.saturday = true
+        task.weekRepeat?.sunday = true
         expect(self.interactor.repeatablesSummary(self.task)) == "Repeats every 3 weeks on every day"
     }
     
     func testMonthyEveryDayOfMonth() {
         task.everyX = 1
         task.frequency = "monthly"
-        task.daysOfMonth = Set(arrayLiteral: 31)
+        //task.daysOfMonth = Set(arrayLiteral: 31)
         expect(self.interactor.repeatablesSummary(self.task)) == "Repeats monthly on the 31"
     }
     
     func testMonthyEveryThreeDayOfMonth() {
         task.everyX = 3
         task.frequency = "monthly"
-        task.daysOfMonth = Set(arrayLiteral: 31)
+        //task.daysOfMonth = Set(arrayLiteral: 31)
         expect(self.interactor.repeatablesSummary(self.task)) == "Repeats every 3 months on the 31"
     }
     
     func testMonthyEveryWeekOfMonth() {
         task.everyX = 1
         task.frequency = "monthly"
-        task.weeksOfMonth = Set(arrayLiteral: 5)
+        //task.weeksOfMonth = Set(arrayLiteral: 5)
         expect(self.interactor.repeatablesSummary(self.task)) == "Repeats monthly on the 5 Tuesday"
     }
     
     func testMonthyEveryThreeWeekOfMonth() {
         task.everyX = 3
         task.frequency = "monthly"
-        task.weeksOfMonth = Set(arrayLiteral: 5)
+        //task.weeksOfMonth = Set(arrayLiteral: 5)
         expect(self.interactor.repeatablesSummary(self.task)) == "Repeats every 3 months on the 5 Tuesday"
         
     }

@@ -7,32 +7,21 @@
 //
 
 import UIKit
+import Habitica_Models
+import ReactiveSwift
 
-class RewardViewController: HRPGBaseCollectionViewController, NSFetchedResultsControllerDelegate, UICollectionViewDelegateFlowLayout {
+class RewardViewController: HRPGBaseCollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    lazy var fetchRequest: NSFetchRequest<MetaReward> = {
-        return NSFetchRequest<MetaReward>(entityName: "MetaReward")
-    }()
+    let userRepository = UserRepository()
     
-    lazy var fetchedResultsController: NSFetchedResultsController<MetaReward> = {
-        self.fetchRequest.sortDescriptors = [NSSortDescriptor(key: "type", ascending: false),
-        NSSortDescriptor(key: "order", ascending: true)]
-        
-        let frc = NSFetchedResultsController(
-            fetchRequest: self.fetchRequest,
-            managedObjectContext: self.managedObjectContext,
-            sectionNameKeyPath: "type",
-            cacheName: nil)
-        
-        frc.delegate = self
-        
-        return frc
-    }()
-    
+    let dataSource = RewardViewDataSource()
+
     let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.dataSource.collectionView = self.collectionView
         
         let customRewardNib = UINib.init(nibName: "CustomRewardCell", bundle: .main)
         collectionView?.register(customRewardNib, forCellWithReuseIdentifier: "CustomRewardCell")
@@ -40,13 +29,8 @@ class RewardViewController: HRPGBaseCollectionViewController, NSFetchedResultsCo
         collectionView?.register(inAppRewardNib, forCellWithReuseIdentifier: "InAppRewardCell")
         
         collectionView?.alwaysBounceVertical = true
-        refreshControl.tintColor = UIColor.purple400()
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         collectionView?.addSubview(refreshControl)
-        
-        do {
-            try? self.fetchedResultsController.performFetch()
-        }
         
         tutorialIdentifier = "rewards"
         
@@ -65,57 +49,26 @@ class RewardViewController: HRPGBaseCollectionViewController, NSFetchedResultsCo
     
     @objc
     func refresh() {
-        HRPGManager.shared().fetchUser(true, onSuccess: {[weak self] in
+        userRepository.retrieveUser(withTasks: false)
+            .flatMap(.latest, {[weak self] _ in
+                return self?.userRepository.retrieveInAppRewards() ?? Signal.empty
+            })
+            .observeCompleted {[weak self] in
             self?.refreshControl.endRefreshing()
-            }, onError: {[weak self] in
-            self?.refreshControl.endRefreshing()
-        })
-        HRPGManager.shared().fetchBuyableRewards({[weak self] in
-            self?.refreshControl.endRefreshing()
-        }, onError: {[weak self] in
-            self?.refreshControl.endRefreshing()
-        })
-    }
-    
-    private var editedReward: Reward?
-    
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return self.fetchedResultsController.sections?.count ?? 0
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.fetchedResultsController.sections?[section].numberOfObjects ?? 0
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let reward = self.fetchedResultsController.object(at: indexPath) as? Reward {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomRewardCell", for: indexPath)
-            if let rewardCell = cell as? CustomRewardCell {
-                rewardCell.configure(reward: reward)
-                rewardCell.canAfford = reward.value.floatValue < HRPGManager.shared().getUser().gold.floatValue
-                rewardCell.onBuyButtonTapped = {
-                    HRPGManager.shared().getReward(reward.key, withText: reward.text, onSuccess: nil, onError: nil)
-                }
-            }
-            return cell
-        } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "InAppRewardCell", for: indexPath)
-            if let rewardCell = cell as? InAppRewardCell, let reward = self.fetchedResultsController.object(at: indexPath) as? InAppReward {
-                rewardCell.configure(reward: reward)
-            }
-            return cell
         }
     }
     
+    private var editedReward: TaskProtocol?
+    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let reward = self.fetchedResultsController.object(at: indexPath) as? Reward {
+        if let reward = dataSource.item(at: indexPath) as? TaskProtocol {
             editedReward = reward
             performSegue(withIdentifier: "FormSegue", sender: self)
         } else {
             let storyboard = UIStoryboard(name: "BuyModal", bundle: nil)
             if let viewController = storyboard.instantiateViewController(withIdentifier: "HRPGBuyItemModalViewController") as? HRPGBuyItemModalViewController {
                 viewController.modalTransitionStyle = .crossDissolve
-                viewController.reward = self.fetchedResultsController.object(at: indexPath)
+                viewController.reward = dataSource.item(at: indexPath) as? InAppRewardProtocol
                 if let tabbarController = self.tabBarController {
                     tabbarController.present(viewController, animated: true, completion: nil)
                 } else {
@@ -126,11 +79,11 @@ class RewardViewController: HRPGBaseCollectionViewController, NSFetchedResultsCo
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if isCustomRewardsSection(indexPath.section) {
-            return CGSize(width: self.view.frame.size.width, height: 70)
-        } else {
-            return CGSize(width: 90, height: 120)
-        }
+        return dataSource.collectionView(collectionView, layout: collectionViewLayout, sizeForItemAt: indexPath)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return dataSource.collectionView(collectionView, layout: collectionViewLayout, insetForSectionAt: section)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -141,51 +94,19 @@ class RewardViewController: HRPGBaseCollectionViewController, NSFetchedResultsCo
         return 0
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        if isCustomRewardsSection(section) {
-            return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        } else {
-            return UIEdgeInsets(top: 12, left: 6, bottom: 12, right: 6)
-        }
-    }
-    
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        collectionView?.reloadData()
-    }
-    
-    func isCustomRewardsSection(_ section: Int) -> Bool {
-        if let section = self.fetchedResultsController.sections?[section], section.numberOfObjects > 0 {
-            if section.objects?.first as? Reward != nil {
-                return true
-            }
-        }
-        return false
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "FormSegue", let reward = self.editedReward {
-            guard let destinationController = segue.destination as? UINavigationController else {
+        if segue.identifier == "FormSegue" {
+            guard let destinationController = segue.destination as? TaskFormVisualEffectsModalViewController else {
                 return
             }
-            guard let formController = destinationController.topViewController as? RewardFormController else {
-                return
-            }
-
-            formController.editReward = true
-            formController.reward = reward
-            self.editedReward = nil
-        }
-    }
-    
-    @IBAction func undindToList(segue: UIStoryboardSegue) {}
-    
-    @IBAction func unwindToSaveReward(segue: UIStoryboardSegue) {
-        if let sourceViewController = segue.source as? RewardFormController {
-            if sourceViewController.editReward {
-                HRPGManager.shared().update(sourceViewController.reward, onSuccess: nil, onError: nil)
+            destinationController.taskType = .reward
+            if let editedReward = self.editedReward {
+                destinationController.taskId = editedReward.id
+                destinationController.isCreating = false
             } else {
-                HRPGManager.shared().createReward(sourceViewController.reward, onSuccess: nil, onError: nil)
+                destinationController.isCreating = true
             }
+            self.editedReward = nil
         }
     }
 }

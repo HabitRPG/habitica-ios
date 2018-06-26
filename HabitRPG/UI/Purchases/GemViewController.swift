@@ -11,12 +11,17 @@ import SeedsSDK
 import SwiftyStoreKit
 import StoreKit
 import Keys
+import ReactiveSwift
+import Habitica_Models
 
 class GemViewController: UICollectionViewController {
     
     var products: [SKProduct]?
-    var user: User?
+    var user: UserProtocol?
     var expandedList = [Bool](repeating: false, count: 4)
+    
+    private let userRepository = UserRepository()
+    private let disposable = ScopedDisposable(CompositeDisposable())
     
     var isSubscribed = false
     
@@ -33,7 +38,9 @@ class GemViewController: UICollectionViewController {
         }
         retrieveProductList()
         
-        self.user = HRPGManager.shared().getUser()
+        disposable.inner.add(userRepository.getUser().on(value: {[weak self]user in
+            self?.user = user
+        }).start())
     }
     
     func retrieveProductList() {
@@ -143,7 +150,7 @@ class GemViewController: UICollectionViewController {
         guard let user = self.user else {
             return
         }
-        PurchaseHandler.shared.purchaseGems(identifier, applicationUsername: user.hashedValueForAccountName()) { _ in
+        PurchaseHandler.shared.purchaseGems(identifier, applicationUsername: String(user.id?.hashValue ?? 0)) { _ in
             self.collectionView?.reloadData()
         }
     }

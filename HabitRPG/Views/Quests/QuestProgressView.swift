@@ -8,11 +8,11 @@
 
 import UIKit
 import Down
-import YYImage
+import Habitica_Models
 
 class QuestProgressView: UIView {
     
-    @IBOutlet weak var questImageView: YYAnimatedImageView!
+    @IBOutlet weak var questImageView: UIImageView!
     @IBOutlet weak var healthProgressView: QuestProgressBarView!
     @IBOutlet weak var rageProgressView: QuestProgressBarView!
     @IBOutlet weak var backgroundView: UIImageView!
@@ -68,8 +68,7 @@ class QuestProgressView: UIView {
             healthProgressView.barColor = UIColor.red50()
             healthProgressView.icon = HabiticaIcons.imageOfHeartLightBg
             healthProgressView.pendingBarColor = UIColor.red10().withAlphaComponent(0.3)
-            healthProgressView.pendingIcon = HabiticaIcons.imageOfDamage
-            healthProgressView.pendingTitle = "dmg pending"
+            healthProgressView.pendingTitle = L10n.pendingDamage
             rageProgressView.barColor = UIColor.orange100()
             rageProgressView.icon = #imageLiteral(resourceName: "icon_rage")
             rageStrikeCountLabelHeight.constant = 30
@@ -107,16 +106,16 @@ class QuestProgressView: UIView {
     }
 
     @objc
-    func configure(quest: Quest) {
-        healthProgressView.title = quest.bossName ?? ""
-        healthProgressView.maxValue = quest.bossHp?.floatValue ?? 0
-        if let bossRage = quest.bossRage?.floatValue, bossRage > 0 {
-            rageProgressView.maxValue = quest.bossRage?.floatValue ?? 0
-            rageProgressView.title = NSLocalizedString("Rage attack: \(quest.rageTitle ?? "")", comment: "")
+    func configure(quest: QuestProtocol) {
+        healthProgressView.title = quest.boss?.name ?? ""
+        healthProgressView.maxValue = Float(quest.boss?.health ?? 0)
+        if let bossRage = quest.boss?.rage?.value, bossRage > 0 {
+            rageProgressView.maxValue = Float(quest.boss?.rage?.value ?? 0)
+            rageProgressView.title = NSLocalizedString("Rage attack: \(quest.boss?.rage?.title ?? "")", comment: "")
         } else {
             rageProgressView.isHidden = true
         }
-        HRPGManager.shared().setImage("quest_" + quest.key, withFormat: "gif", on: questImageView)
+        questImageView.setImagewith(name: "quest_\(quest.key ?? "")", extension: "gif")
         
         let colorDark = quest.uicolorDark
         let colorMedium = quest.uicolorMedium
@@ -131,7 +130,7 @@ class QuestProgressView: UIView {
         gradientView.endColor = colorLight
         descriptionSeparator.backgroundColor = colorLight
         questArtSeparator.backgroundColor = colorLight
-        let description = try? Down(markdownString: quest.notes.replacingOccurrences(of: "<br>", with: "\n")).toHabiticaAttributedString()
+        let description = try? Down(markdownString: quest.notes?.replacingOccurrences(of: "<br>", with: "\n") ?? "").toHabiticaAttributedString()
         description?.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: description?.length ?? 0))
         description?.append(NSAttributedString(string: "\n"))
         descriptionTextView.attributedText = description
@@ -141,7 +140,7 @@ class QuestProgressView: UIView {
         
         for view in rageStrikeContainer.arrangedSubviews {
             if let rageStrikeView = view as? RageStrikeView {
-                rageStrikeView.bossName = quest.bossName ?? ""
+                rageStrikeView.bossName = quest.boss?.name ?? ""
                 rageStrikeView.questIdentifier = quest.key ?? ""
             }
         }
@@ -150,11 +149,11 @@ class QuestProgressView: UIView {
     }
     
     @objc
-    func configure(group: Group) {
-        healthProgressView.currentValue = group.questHP?.floatValue ?? 0
-        rageProgressView.currentValue = group.questRage?.floatValue ?? 0
+    func configure(group: GroupProtocol) {
+        healthProgressView.currentValue = group.quest?.progress?.health ?? 0
+        rageProgressView.currentValue = group.quest?.progress?.rage ?? 0
         
-        rageStrikeCountLabel.text = "Rage Strikes: \(group.rageStrikeCount)/\(group.totalRageStrikes)"
+        /*rageStrikeCountLabel.text = "Rage Strikes: \(group.rageStrikeCount)/\(group.totalRageStrikes)"
         
         rageStrikeContainer.arrangedSubviews.forEach { (view) in
             view.removeFromSuperview()
@@ -166,12 +165,12 @@ class QuestProgressView: UIView {
                 rageStrikeView.isActive = rageStrike.value.boolValue
                 rageStrikeContainer.addArrangedSubview(rageStrikeView)
             }
-        }
+        }*/
     }
     
     @objc
-    func configure(user: User) {
-        healthProgressView.pendingValue = user.pendingDamage.floatValue
+    func configure(user: UserProtocol) {
+        healthProgressView.pendingValue = user.party?.quest?.progress?.up ?? 0
     }
     
     @objc

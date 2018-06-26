@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Habitica_Models
+import Down
 
 class CustomRewardCell: UICollectionViewCell {
     
@@ -39,15 +41,19 @@ class CustomRewardCell: UICollectionViewCell {
         buyButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(buyButtonTapped)))
     }
     
-    func configure(reward: Reward) {
-        titleLabel.text = reward.text
-        if reward.notes.count > 0 {
+    func configure(reward: TaskProtocol) {
+        if let text = reward.text {
+            titleLabel.attributedText = try? Down(markdownString: text.unicodeEmoji).toHabiticaAttributedString()
+        } else {
+            titleLabel.text = ""
+        }
+        if let trimmedNotes = reward.notes?.trimmingCharacters(in: .whitespacesAndNewlines), trimmedNotes.count > 0 {
+            notesLabel.attributedText = try? Down(markdownString: trimmedNotes.unicodeEmoji).toHabiticaAttributedString()
             notesLabel.isHidden = false
-            notesLabel.text = reward.notes
         } else {
             notesLabel.isHidden = true
         }
-        amountLabel.text = reward.value.stringValue
+        amountLabel.text = String(reward.value)
     }
     
     @objc

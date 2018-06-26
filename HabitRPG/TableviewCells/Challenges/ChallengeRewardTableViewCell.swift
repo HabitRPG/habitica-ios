@@ -8,6 +8,7 @@
 
 import UIKit
 import Down
+import Habitica_Models
 
 class ChallengeRewardTableViewCell: UITableViewCell {
     @IBOutlet weak var rewardLabel: UILabel!
@@ -20,10 +21,10 @@ class ChallengeRewardTableViewCell: UITableViewCell {
         currencyCount.orientation = .vertical
     }
     
-    public func configure(reward: ChallengeTask) {
+    public func configure(reward: TaskProtocol) {
         rewardLabel.attributedText = try? Down(markdownString: (reward.text ?? "").unicodeEmoji).toHabiticaAttributedString()
         rewardSubtitleLabel.text = reward.notes
-        currencyCount.amount = reward.value?.intValue ?? -1
+        currencyCount.amount = Int(reward.value)
     }
     
 }

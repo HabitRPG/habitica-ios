@@ -10,7 +10,7 @@ import UIKit
 import PopupDialog
 
 @objc
-class HabiticaAlertController: UIViewController {
+class HabiticaAlertController: UIViewController, Themeable {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var titleLabelTopMargin: NSLayoutConstraint!
@@ -23,9 +23,11 @@ class HabiticaAlertController: UIViewController {
     @IBOutlet weak var bottomOffsetConstraint: NSLayoutConstraint!
     @IBOutlet var centerConstraint: NSLayoutConstraint!
     @IBOutlet weak var scrollviewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var buttonBackgroundView: UIView!
     
     private var buttonHandlers = [Int: ((UIButton) -> Swift.Void)]()
     private var buttons = [UIButton]()
+    private var shouldCloseOnButtonTap = [Int: Bool]()
     
     var contentView: UIView? {
         didSet {
@@ -112,11 +114,22 @@ class HabiticaAlertController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        ThemeService.shared.addThemeable(themable: self, applyImmediately: true)
+    }
+    
+    func applyTheme(theme: Theme) {
+        view.backgroundColor = theme.backgroundTintColor.darker(by: 50)?.withAlphaComponent(0.6)
+        buttonBackgroundView.backgroundColor = theme.tintColor.withAlphaComponent(0.05)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureTitleView()
-        configureMessageView()
         configureContentView()
+        configureMessageView()
         configureCloseButton()
         configureButtons()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
@@ -168,7 +181,7 @@ class HabiticaAlertController: UIViewController {
     }
     
     @objc
-    func addAction(title: String, style: UIAlertActionStyle = .default, isMainAction: Bool = false, handler: ((UIButton) -> Swift.Void)? = nil) {
+    func addAction(title: String, style: UIAlertActionStyle = .default, isMainAction: Bool = false, closeOnTap: Bool = true, handler: ((UIButton) -> Swift.Void)? = nil) {
         let button = UIButton()
         button.titleLabel?.lineBreakMode = .byWordWrapping
         button.titleLabel?.textAlignment = .center
@@ -177,7 +190,7 @@ class HabiticaAlertController: UIViewController {
         if style == .destructive {
             button.setTitleColor(UIColor.red100(), for: .normal)
         } else {
-            button.setTitleColor(UIColor.purple400(), for: .normal)
+            button.setTitleColor(ThemeService.shared.theme.tintColor, for: .normal)
         }
         
         if isMainAction {
@@ -190,6 +203,7 @@ class HabiticaAlertController: UIViewController {
         if let action = handler {
             buttonHandlers[button.tag] = action
         }
+        shouldCloseOnButtonTap[button.tag] = closeOnTap
         buttons.append(button)
         if buttonStackView != nil {
             buttonStackView.addArrangedSubview(button)
@@ -235,7 +249,7 @@ class HabiticaAlertController: UIViewController {
         }
         label.numberOfLines = 0
         label.textAlignment = .center
-        contentView = label
+        containerView.addArrangedSubview(label)
     }
     
     private func configureContentView() {
@@ -295,8 +309,13 @@ class HabiticaAlertController: UIViewController {
     
     @objc
     func buttonTapped(_ button: UIButton) {
-        self.dismiss(animated: true, completion: nil)
-        buttonHandlers[button.tag]?(button)
+        if shouldCloseOnButtonTap[button.tag] != false {
+        self.dismiss(animated: true, completion: {
+            self.buttonHandlers[button.tag]?(button)
+        })
+        } else {
+            self.buttonHandlers[button.tag]?(button)
+        }
     }
     
     @IBAction func closeTapped(_ sender: Any) {
@@ -341,16 +360,21 @@ extension HabiticaAlertController {
     
     @objc
     func addCancelAction(handler: ((UIButton) -> Void)? = nil) {
-        self.addAction(title: NSLocalizedString("Cancel", comment: ""), handler: handler)
+        self.addAction(title: L10n.cancel, handler: handler)
     }
     
     @objc
     func addCloseAction(handler: ((UIButton) -> Void)? = nil) {
-        self.addAction(title: NSLocalizedString("Close", comment: ""), handler: handler)
+        self.addAction(title: L10n.close, handler: handler)
+    }
+    
+    @objc
+    func addShareAction(handler: ((UIButton) -> Void)? = nil) {
+        self.addAction(title: L10n.share, isMainAction: true, closeOnTap: false, handler: handler)
     }
     
     @objc
     func addOkAction(handler: ((UIButton) -> Void)? = nil) {
-        self.addAction(title: NSLocalizedString("OK", comment: ""), handler: handler)
+        self.addAction(title: L10n.ok, handler: handler)
     }
 }

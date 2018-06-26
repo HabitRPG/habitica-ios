@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "HRPGBaseViewController.h"
 
-@interface HRPGTableViewController : HRPGBaseViewController<NSFetchedResultsControllerDelegate>
+@protocol TaskTableViewDataSourceProtocol;
+
+@interface HRPGTableViewController : HRPGBaseViewController
+@property id<TaskTableViewDataSourceProtocol> dataSource;
 
 - (void)refresh;
 
@@ -19,15 +22,11 @@
 
 - (UIView *)viewWithIcon:(UIImage *)image;
 
-- (Task *)taskAtIndexPath:(NSIndexPath *)indexPath;
-
-@property(strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 - (NSPredicate *)getPredicate;
 
 - (void)scrollToTaskWithId:(NSString *)taskID;
 
 @property NSInteger filterType;
-@property NSInteger dayStart;
 
 @property NSString *scrollToTaskAfterLoading;
 

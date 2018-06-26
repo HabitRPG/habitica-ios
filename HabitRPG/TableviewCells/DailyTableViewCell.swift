@@ -7,13 +7,14 @@
 //
 
 import Foundation
+import Habitica_Models
 
 class DailyTableViewCell: CheckedTableViewCell {
     @objc
-    func configure(task: Task, offset: Int) {
+    func configure(task: TaskProtocol, offset: Int) {
         super.configure(task: task)
-        if !(task.completed?.boolValue ?? false) {
-            if !task.dueToday(withOffset: offset) {
+        if !(task.completed) {
+            if !task.dueToday() {
                 self.checklistIndicator.backgroundColor = .gray600()
                 self.checklistDoneLabel.textColor = .gray100()
                 self.checklistAllLabel.textColor = .gray100()

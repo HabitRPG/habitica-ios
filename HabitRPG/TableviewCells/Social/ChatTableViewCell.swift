@@ -9,6 +9,7 @@
 import UIKit
 import DateTools
 import PinLayout
+import Habitica_Models
 
 class ChatTableViewCell: UITableViewCell {
     
@@ -126,15 +127,14 @@ class ChatTableViewCell: UITableViewCell {
         messageTextView.font = CustomFontMetrics.scaledSystemFont(ofSize: 15, ofWeight: .regular)
     }
     
-    @objc
-    func configure(chatMessage: ChatMessage, previousMessage: ChatMessage?, nextMessage: ChatMessage?, userID: String, username: String, isModerator: Bool, isExpanded: Bool) {
+    func configure(chatMessage: ChatMessageProtocol, previousMessage: ChatMessageProtocol?, nextMessage: ChatMessageProtocol?, userID: String, username: String, isModerator: Bool, isExpanded: Bool) {
         isPrivateMessage = false
         self.isModerator = isModerator
-        isOwnMessage = chatMessage.uuid == userID
+        isOwnMessage = chatMessage.userID == userID
         wasMentioned = chatMessage.text?.range(of: username) != nil
 
-        usernameLabel.text = chatMessage.user?.unicodeEmoji
-        contributorLevel = chatMessage.contributorLevel?.intValue ?? 0
+        usernameLabel.text = chatMessage.username?.unicodeEmoji
+        contributorLevel = chatMessage.contributor?.level ?? 0
         messageTextView.textColor = UIColor.gray10()
         
         stylePlusOneButton(likes: chatMessage.likes, userID: userID)
@@ -147,19 +147,19 @@ class ChatTableViewCell: UITableViewCell {
             messageTextView.text = chatMessage.text?.unicodeEmoji
         }
         
-        if previousMessage?.uuid == chatMessage.uuid {
+        if previousMessage?.userID == chatMessage.userID {
             topSpacing = 2
             avatarView.isHidden = true
         } else {
             topSpacing = 4
             avatarView.isHidden = isOwnMessage
 
-            if !isOwnMessage && !isAvatarHidden {
-                avatarView.avatar = chatMessage.avatar
+            if !isOwnMessage && !isAvatarHidden, let userStyles = chatMessage.userStyles {
+                avatarView.avatar = AvatarViewModel(avatar: userStyles)
             }
         }
         
-        if nextMessage?.uuid == chatMessage.uuid {
+        if nextMessage?.userID == chatMessage.userID {
             bottomSpacing = 2
         } else if isFirstMessage {
             bottomSpacing = 34
@@ -167,9 +167,9 @@ class ChatTableViewCell: UITableViewCell {
             bottomSpacing = 4
         }
         
-        if let flags = chatMessage.flags, isModerator && flags.count > 0 {
+        if isModerator && chatMessage.flags.count > 0 {
             reportView.isHidden = false
-            reportView.setTitle("\(flags.count)", for: .normal)
+            reportView.setTitle("\(chatMessage.flags.count)", for: .normal)
         } else {
             reportView.isHidden = true
         }
@@ -180,17 +180,17 @@ class ChatTableViewCell: UITableViewCell {
     }
     
     @objc
-    func configure(inboxMessage: InboxMessage, previousMessage: InboxMessage?, nextMessage: InboxMessage?, user: User, isExpanded: Bool) {
+    func configure(inboxMessage: InboxMessageProtocol, previousMessage: InboxMessageProtocol?, nextMessage: InboxMessageProtocol?, user: UserProtocol?, isExpanded: Bool) {
         isPrivateMessage = true
         plusOneButton.isHidden = true
-        isOwnMessage = inboxMessage.sent?.boolValue ?? false
+        isOwnMessage = inboxMessage.sent
         isAvatarHidden = true
-        if inboxMessage.sent?.boolValue ?? false {
-            usernameLabel.text = user.username.unicodeEmoji
-            contributorLevel = user.contributorLevel.intValue
+        if inboxMessage.sent {
+            usernameLabel.text = user?.profile?.name?.unicodeEmoji
+            contributorLevel = user?.contributor?.level ?? 0
         } else {
             usernameLabel.text = inboxMessage.username?.unicodeEmoji
-            contributorLevel = inboxMessage.contributorLevel?.intValue ?? 0
+            contributorLevel = inboxMessage.contributor?.level ?? 0
         }
         usernameLabel.contributorLevel = contributorLevel
         messageTextView.textColor = .black
@@ -203,7 +203,7 @@ class ChatTableViewCell: UITableViewCell {
             messageTextView.text = inboxMessage.text?.unicodeEmoji
         }
         
-        if previousMessage?.sent?.boolValue == inboxMessage.sent?.boolValue {
+        if previousMessage?.sent == inboxMessage.sent {
             topSpacing = 2
             avatarView.isHidden = true
         } else {
@@ -211,7 +211,7 @@ class ChatTableViewCell: UITableViewCell {
             avatarView.isHidden = isOwnMessage
         }
         
-        if nextMessage?.sent?.boolValue == inboxMessage.sent?.boolValue {
+        if nextMessage?.sent == inboxMessage.sent {
             bottomSpacing = 2
         } else if isFirstMessage {
             bottomSpacing = 34
@@ -228,23 +228,21 @@ class ChatTableViewCell: UITableViewCell {
         timeLabel.text = (date as NSDate?)?.timeAgoSinceNow()
     }
     
-    private func stylePlusOneButton(likes: Set<ChatMessageLike>?, userID: String) {
+    private func stylePlusOneButton(likes: [ChatMessageReactionProtocol], userID: String) {
         plusOneButton.setTitle(nil, for: .normal)
         plusOneButton.setTitleColor(UIColor.gray300(), for: .normal)
         plusOneButton.tintColor = UIColor.gray300()
         var wasLiked = false
-        if let likes = likes {
-            let likedMessageCount = likes.filter({ (like) -> Bool in
-                return like.wasLiked?.boolValue == true
-            }).count
-            if likedMessageCount > 0 {
-                plusOneButton.setTitle(" +\(likedMessageCount)", for: .normal)
-                for like in likes where like.userID == userID && like.wasLiked?.boolValue == true {
-                    plusOneButton.setTitleColor(UIColor.purple400(), for: .normal)
-                    plusOneButton.tintColor = UIColor.purple400()
-                    wasLiked = true
-                    break
-                }
+        let likedMessageCount = likes.filter({ (like) -> Bool in
+            return like.hasReacted == true
+        }).count
+        if likedMessageCount > 0 {
+            plusOneButton.setTitle(" +\(likedMessageCount)", for: .normal)
+            for like in likes where like.userID == userID && like.hasReacted == true {
+                plusOneButton.setTitleColor(UIColor.purple400(), for: .normal)
+                plusOneButton.tintColor = UIColor.purple400()
+                wasLiked = true
+                break
             }
         }
         plusOneButton.setImage(HabiticaIcons.imageOfChatLikeIcon(wasLiked: wasLiked), for: .normal)
@@ -255,7 +253,7 @@ class ChatTableViewCell: UITableViewCell {
     }
     
     override func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        let location = touch.location(in: contentView)
+        let location = touch.location(in: messageWrapper)
         if plusOneButton.frame.contains(location) {
             return false
         }
@@ -382,7 +380,7 @@ class ChatTableViewCell: UITableViewCell {
     }
     
     fileprivate func layout() {
-        avatarWrapper.pin.start(12).top(4).size(36)
+        avatarWrapper.pin.start(12).top(4).size(40)
         if isAvatarHidden {
             messageWrapper.pin.top(topSpacing).start(leftSpacing).right(12)
         } else {

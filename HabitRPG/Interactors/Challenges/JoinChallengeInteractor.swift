@@ -8,18 +8,20 @@
 
 import UIKit
 import ReactiveSwift
+import Habitica_Models
 
-class JoinChallengeInteractor: Interactor<Challenge, Bool> {
+class JoinChallengeInteractor: Interactor<ChallengeProtocol, Bool> {
 
-    override func configure(signal: Signal<Challenge, NSError>) -> Signal<Bool, NSError> {
-        return signal.flatMap(.concat) {(challenge) -> Signal<Bool, NSError> in
-            let (signal, observer) = Signal<Bool, NSError>.pipe()
-            HRPGManager.shared().join(challenge, onSuccess: {
-                observer.send(value: true)
-            }, onError: {
-                observer.send(error: NSError())
-            })
-            return signal
+    private let socialRepository = SocialRepository()
+    
+    override func configure(signal: Signal<ChallengeProtocol, NSError>) -> Signal<Bool, NSError> {
+        return signal.flatMap(.concat) {[weak self] (challenge) -> Signal<Bool, NSError> in
+            let challengeID = challenge.id ?? ""
+            return self?.socialRepository.joinChallenge(challengeID: challengeID)
+                .map({ (_) in
+                    return true
+                })
+                .promoteError() ?? Signal.empty
         }
     }
 }

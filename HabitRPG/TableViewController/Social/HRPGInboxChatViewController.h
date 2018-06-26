@@ -8,14 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import <SlackTextViewController/SLKTextViewController.h>
-#import "HRPGManager.h"
 
-@interface HRPGInboxChatViewController : SLKTextViewController<NSFetchedResultsControllerDelegate>
+@interface HRPGInboxChatViewController : SLKTextViewController
 
 @property NSString *userID;
 @property NSString *username;
 @property BOOL isPresentedModally;
-@property(strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
-@property(nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+@property BOOL isScrolling;
+
+- (void)setTitleWithUsername:(NSString * _Nullable)username;
 
 @end

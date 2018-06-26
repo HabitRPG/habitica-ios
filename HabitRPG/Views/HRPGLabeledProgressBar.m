@@ -6,12 +6,11 @@
 //  Copyright © 2017 HabitRPG Inc. All rights reserved.
 //
 
-#import "HRPGLabeledProgressBar.h"
 #import "Habitica-Swift.h"
+#import "HRPGLabeledProgressBar.h"
 
 @interface HRPGLabeledProgressBar ()
 
-@property ProgressBar *progressBar;
 @property NSNumberFormatter *numberFormatter;
 
 @end
@@ -101,6 +100,12 @@
     self.typeView.text = self.type;
     [self updateViewFrames];
     [self applyAccessibility];
+}
+
+- (void)setTextColor:(UIColor *)textColor {
+    _textColor = textColor;
+    self.labelView.textColor = textColor;
+    self.typeView.textColor = textColor;
 }
 
 - (void)setLabelViewText {

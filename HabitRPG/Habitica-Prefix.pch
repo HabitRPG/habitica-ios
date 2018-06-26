@@ -27,6 +27,3 @@
     #import <SystemConfiguration/SystemConfiguration.h>
     #import <CoreServices/CoreServices.h>
 #endif
-
-// Make RestKit globally available
-#import <RestKit/RestKit.h>

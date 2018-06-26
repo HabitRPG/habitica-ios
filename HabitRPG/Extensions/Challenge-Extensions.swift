@@ -7,54 +7,51 @@
 //
 
 import Foundation
+import Habitica_Models
 
-extension Challenge {
+extension ChallengeProtocol {
     
-    static func shouldBePublishable(challenge: Challenge?) -> Bool {
-        if !isOwner(of: challenge) {
+    func shouldBePublishable() -> Bool {
+        if !isOwner() {
             return false
         } else {
-            return challenge?.hasTasks() ?? false
+            return hasTasks()
         }
     }
     
-    static func shouldBeUnpublishable(challenge: Challenge?) -> Bool {
-        if !isOwner(of: challenge) {
+    func shouldBeUnpublishable() -> Bool {
+        if !isOwner() {
             return false
         } else {
-            return !(challenge?.hasTasks() ?? false)
+            return !hasTasks()
         }
     }
     
-    static func shouldEnable(challenge: Challenge?) -> Bool {
-        if !isOwner(of: challenge) {
+    func shouldEnable() -> Bool {
+        if !isOwner() {
             return true
         } else {
-            return challenge?.hasTasks() ?? false
+            return hasTasks()
         }
     }
     
-    static func isOwner(of challenge: Challenge?) -> Bool {
-        return false //challenge?.leaderId == HRPGManager.shared().user.id
+    func isOwner() -> Bool {
+        return false
     }
     
-    static func isPublished(_ challenge: Challenge?) -> Bool {
+    func isPublished() -> Bool {
         return true
     }
     
-    static func isEndable(_ challenge: Challenge?) -> Bool {
-        return isOwner(of: challenge) && isPublished(challenge)
-    }
-    
-    static func isJoinable(challenge: Challenge?) -> Bool {
-        return challenge?.user == nil
+    func isEndable() -> Bool {
+        return isOwner() && isPublished()
     }
     
     func hasTasks() -> Bool {
-        let hasDailies = self.dailies?.count ?? 0 > 0
-        let hasHabits = self.habits?.count ?? 0 > 0
-        let hasTodos = self.todos?.count ?? 0 > 0
-        let hasRewards = self.rewards?.count ?? 0 > 0
+        let hasDailies = dailies.count > 0
+        let hasHabits = habits.count > 0
+        let hasTodos = todos.count > 0
+        let hasRewards = rewards.count > 0
         
         return hasDailies || hasHabits || hasTodos || hasRewards
     }

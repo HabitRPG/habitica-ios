@@ -7,21 +7,54 @@
 //
 
 import UIKit
+import PinLayout
 
 @IBDesignable
-class CollapsibleTitle: UILabel, UIGestureRecognizerDelegate {
+class CollapsibleTitle: UIView, UIGestureRecognizerDelegate {
     
-    private var carretIconView = UIImageView(image: #imageLiteral(resourceName: "carret_up"))
+    private var label = UILabel()
+    private var carretIconView = UIImageView(image: #imageLiteral(resourceName: "carret_up").withRenderingMode(.alwaysTemplate))
     private var infoIconView: UIImageView?
     
     var tapAction: (() -> Void)?
     
+    @IBInspectable var text: String? {
+        get {
+            return label.text
+        }
+        set {
+            label.text = newValue
+            setNeedsLayout()
+        }
+    }
+    
+    @IBInspectable var textColor: UIColor {
+        get {
+            return label.textColor
+        }
+        set {
+            label.textColor = newValue
+        }
+    }
+    
+    var font: UIFont {
+        get {
+            return label.font
+        }
+        set {
+            label.font = newValue
+            setNeedsLayout()
+        }
+    }
+
+    var insets = UIEdgeInsets.zero
+    
     var isCollapsed = false {
         didSet {
             if isCollapsed {
-                carretIconView.image = #imageLiteral(resourceName: "carret_down")
+                carretIconView.image = #imageLiteral(resourceName: "carret_down").withRenderingMode(.alwaysTemplate)
             } else {
-                carretIconView.image = #imageLiteral(resourceName: "carret_up")
+                carretIconView.image = #imageLiteral(resourceName: "carret_up").withRenderingMode(.alwaysTemplate)
             }
         }
     }
@@ -30,7 +63,7 @@ class CollapsibleTitle: UILabel, UIGestureRecognizerDelegate {
         didSet {
             if hasInfoIcon {
                 let iconView = UIImageView(image: #imageLiteral(resourceName: "icon_help").withRenderingMode(.alwaysTemplate))
-                iconView.tintColor = UIColor.purple400()
+                iconView.tintColor = ThemeService.shared.theme.tintColor
                 iconView.isUserInteractionEnabled = true
                 iconView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(infoIconTapped)))
                 iconView.contentMode = .center
@@ -59,7 +92,9 @@ class CollapsibleTitle: UILabel, UIGestureRecognizerDelegate {
     
     private func setupView() {
         addSubview(carretIconView)
+        addSubview(label)
         carretIconView.contentMode = .center
+        carretIconView.tintColor = UIColor.gray500()
                 
         isUserInteractionEnabled = true
         
@@ -69,9 +104,10 @@ class CollapsibleTitle: UILabel, UIGestureRecognizerDelegate {
     }
     
     override func layoutSubviews() {
-        carretIconView.frame = CGRect(x: bounds.size.width-40, y: bounds.size.height/2-12, width: 24, height: 24)
+        label.pin.start(insets.left).vertically().sizeToFit(.height)
+        carretIconView.pin.end(16).size(24).vCenter()
         if let iconView = infoIconView {
-            iconView.frame = CGRect(x: intrinsicContentSize.width+8, y: 0, width: 18, height: bounds.size.height)
+            iconView.pin.start(label.frame.size.width + 8).width(18).vertically()
         }
     }
     
@@ -94,5 +130,9 @@ class CollapsibleTitle: UILabel, UIGestureRecognizerDelegate {
             return false
         }
         return true
+    }
+
+    override var intrinsicContentSize: CGSize {
+        return CGSize(width: super.intrinsicContentSize.width, height: 48)
     }
 }

@@ -9,8 +9,15 @@
 import UIKit
 
 @objc
+enum TopHeaderState: Int {
+    case visible = 0
+    case hidden = 1
+    case scrolling = 2
+}
+
+@objc
 protocol TopHeaderNavigationControllerProtocol: class {
-    @objc var state: HRPGTopHeaderState { get set }
+    @objc var state: TopHeaderState { get set }
     @objc var defaultNavbarHiddenColor: UIColor { get }
     @objc var defaultNavbarVisibleColor: UIColor { get }
     @objc var navbarHiddenColor: UIColor { get set }
@@ -40,10 +47,10 @@ protocol TopHeaderNavigationControllerProtocol: class {
     func setNavigationBarColors(_ alpha: CGFloat)
 }
 
-class TopHeaderViewController: UINavigationController, TopHeaderNavigationControllerProtocol {
-    @objc public var state: HRPGTopHeaderState = HRPGTopHeaderStateVisible
-    @objc public let defaultNavbarHiddenColor = UIColor.purple300()
-    @objc public let defaultNavbarVisibleColor = UIColor.white
+class TopHeaderViewController: UINavigationController, TopHeaderNavigationControllerProtocol, Themeable {
+    @objc public var state: TopHeaderState = .visible
+    @objc public var defaultNavbarHiddenColor = UIColor.purple300()
+    @objc public var defaultNavbarVisibleColor = UIColor.white
     private var headerView: UIView?
     private var alternativeHeaderView: UIView?
     private let backgroundView = UIView()
@@ -62,7 +69,7 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
     @objc public var navbarHiddenColor: UIColor = UIColor.purple300() {
         didSet {
             let isHiddenLightColor = navbarHiddenColor.isLight()
-            hiddenTintColor = isHiddenLightColor ? UIColor.purple400() : UIColor.white
+            hiddenTintColor = isHiddenLightColor ? ThemeService.shared.theme.tintColor : UIColor.white
             hiddenTextColor = isHiddenLightColor ? UIColor.black : UIColor.white
             setNavigationBarColors(navbarColorBlendingAlpha)
         }
@@ -70,7 +77,7 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
     @objc public var navbarVisibleColor: UIColor = UIColor.white {
         didSet {
             let isVisibleLightColor = navbarVisibleColor.isLight()
-            visibleTintColor = isVisibleLightColor ? UIColor.purple400() : UIColor.white
+            visibleTintColor = isVisibleLightColor ? ThemeService.shared.theme.tintColor : UIColor.white
             visibleTextColor = isVisibleLightColor ? UIColor.black : UIColor.white
             setNavigationBarColors(navbarColorBlendingAlpha)
         }
@@ -101,7 +108,7 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
     
     var topHeaderHeight: CGFloat {
         if let header = self.alternativeHeaderView {
-            return header.intrinsicContentSize.height
+            return alternativeHeaderHeight
         } else {
             return defaultHeaderHeight
         }
@@ -149,6 +156,18 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
         return -((self.backgroundView.frame.origin.y - self.bgViewOffset) / self.backgroundView.frame.size.height)
     }
     
+    private var alternativeHeaderHeight: CGFloat {
+        guard let header = alternativeHeaderView else {
+            return 0
+        }
+        let intrinsicHeight = header.intrinsicContentSize.height
+        if intrinsicHeight <= 0 {
+            return header.frame.size.height
+        } else {
+            return intrinsicHeight
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -158,7 +177,7 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
         self.view.backgroundColor = .clear
         self.navigationBar.backgroundColor = .clear
         
-        let nibViews = Bundle.main.loadNibNamed("HRPGUserTopHeader", owner: self, options: nil)
+        let nibViews = Bundle.main.loadNibNamed("UserTopHeader", owner: self, options: nil)
         self.headerView = nibViews?[0] as? UIView
         self.backgroundView.backgroundColor = .gray700()
         self.bottomBorderView.backgroundColor = .gray600()
@@ -172,8 +191,18 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
         self.view.insertSubview(self.backgroundView, belowSubview: self.upperBackgroundView)
         
         self.headerYPosition = self.bgViewOffset
+        
+        ThemeService.shared.addThemeable(themable: self, applyImmediately: true)
     }
 
+    func applyTheme(theme: Theme) {
+        defaultNavbarHiddenColor = theme.backgroundTintColor
+        defaultNavbarVisibleColor = theme.contentBackgroundColor
+        visibleTintColor = theme.tintColor
+        setNavigationBarColors(navbarColorBlendingAlpha)
+        bottomBorderView.backgroundColor = theme.separatorColor
+    }
+    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         let parentFrame = self.view.frame
@@ -183,7 +212,12 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
         self.bottomBorderView.frame = CGRect(x: 0, y: self.backgroundView.frame.size.height - 2, width: parentFrame.size.width, height: 2)
         self.headerView?.frame = CGRect(x: 0, y: 0, width: parentFrame.size.width, height: self.defaultHeaderHeight)
         if let header = self.alternativeHeaderView {
-            header.frame = CGRect(x: 0, y: 0, width: parentFrame.size.width, height: header.intrinsicContentSize.height)
+            let intrinsicHeight = header.intrinsicContentSize.height
+            if intrinsicHeight <= 0 {
+                header.frame = CGRect(x: 0, y: 0, width: parentFrame.size.width, height: header.frame.size.height)
+            } else {
+                header.frame = CGRect(x: 0, y: 0, width: parentFrame.size.width, height: intrinsicHeight)
+            }
         }
     }
     
@@ -203,7 +237,7 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
     
     @objc
     public func showHeader(animated: Bool = true) {
-        self.state = HRPGTopHeaderStateVisible
+        self.state = .visible
         var frame = self.backgroundView.frame
         frame.origin.y = self.bgViewOffset
         self.headerYPosition = frame.origin.y
@@ -214,7 +248,7 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
     
     @objc
     public func hideHeader(animated: Bool = true) {
-        self.state = HRPGTopHeaderStateHidden
+        self.state = .hidden
         var frame = self.backgroundView.frame
         frame.origin.y = -topHeaderHeight
         self.headerYPosition = frame.origin.y
@@ -225,7 +259,7 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
     
     func setNewFrame(_ frame: CGRect) {
         self.backgroundView.frame = frame
-        self.setNavigationBarColors(self.shouldHideTopHeader ? 0 : 1)
+        self.setNavigationBarColors(self.shouldHideTopHeader ? 1 : 0)
     }
     
     @objc
@@ -256,12 +290,12 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
             newYPos = self.bgViewOffset
         }
         if (newYPos + frame.size.height) > bgViewOffset {
-            self.state = HRPGTopHeaderStateVisible
+            self.state = .visible
         } else {
-            if self.state == HRPGTopHeaderStateHidden {
+            if self.state == .hidden {
                 return
             }
-            self.state = HRPGTopHeaderStateHidden
+            self.state = .hidden
         }
         frame.origin.y = newYPos
         self.headerYPosition = frame.origin.y
@@ -273,8 +307,15 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
     public func setNavigationBarColors(_ alpha: CGFloat) {
         self.upperBackgroundView.backgroundColor = navbarVisibleColor.blend(with: navbarHiddenColor, alpha: alpha)
         self.backgroundView.backgroundColor = navbarVisibleColor.blend(with: navbarHiddenColor, alpha: alpha)
-        self.navigationBar.tintColor = visibleTintColor.blend(with: hiddenTintColor, alpha: alpha)
-        self.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: visibleTextColor.blend(with: hiddenTextColor, alpha: alpha)]
+        let tintColor = visibleTintColor.blend(with: hiddenTintColor, alpha: alpha)
+        self.navigationBar.tintColor = tintColor
+        self.topViewController?.navigationItem.leftBarButtonItems?.forEach({ (button) in
+            button.tintColor = tintColor
+        })
+        self.topViewController?.navigationItem.rightBarButtonItems?.forEach({ (button) in
+            button.tintColor = tintColor
+        })
+        self.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: (visibleTextColor.blend(with: hiddenTextColor, alpha: alpha) ?? .white)]
         updateStatusbarColor()
     }
     
@@ -296,13 +337,9 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
         self.alternativeHeaderView = alternativeHeaderView
         self.headerView?.removeFromSuperview()
         if let header = self.alternativeHeaderView {
-            header.autoresizingMask = [
-                UIViewAutoresizing.flexibleWidth,
-                UIViewAutoresizing.flexibleHeight
-            ]
             self.backgroundView.addSubview(header)
             self.bottomBorderView.isHidden = true
-            header.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: header.intrinsicContentSize.height)
+            header.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: alternativeHeaderHeight)
             header.alpha = 1
             header.layoutSubviews()
         }

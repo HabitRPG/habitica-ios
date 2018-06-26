@@ -7,12 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "HRPGManager.h"
 #import "TutorialStepsProtocol.h"
 
 @interface UIViewController (TutorialSteps)<TutorialStepsProtocol>
 
-- (void)displayTutorialStep:(HRPGManager *)sharedManager;
+- (void)displayTutorialStep;
 
 - (void)removeActiveView;
 

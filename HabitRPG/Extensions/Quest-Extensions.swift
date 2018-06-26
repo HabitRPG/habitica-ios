@@ -7,22 +7,23 @@
 //
 
 import Foundation
+import Habitica_Models
 
-extension Quest {
+extension QuestProtocol {
     
-    @objc var uicolorDark: UIColor {
-        return UIColor.init(colorDark ?? "", defaultColor: UIColor.clear)
+    var uicolorDark: UIColor {
+        return UIColor.init(colors?.dark ?? "", defaultColor: UIColor.clear)
     }
     
-    @objc var uicolorMedium: UIColor {
-        return UIColor.init(colorMedium ?? "", defaultColor: UIColor.clear)
+    var uicolorMedium: UIColor {
+        return UIColor.init(colors?.medium ?? "", defaultColor: UIColor.clear)
     }
     
-    @objc var uicolorLight: UIColor {
-        return UIColor.init(colorLight ?? "", defaultColor: UIColor.clear)
+    var uicolorLight: UIColor {
+        return UIColor.init(colors?.light ?? "", defaultColor: UIColor.clear)
     }
     
-    @objc var uicolorExtraLight: UIColor {
-        return UIColor.init(colorExtraLight ?? "", defaultColor: UIColor.clear)
+    var uicolorExtraLight: UIColor {
+        return UIColor.init(colors?.extralight ?? "", defaultColor: UIColor.clear)
     }
 }

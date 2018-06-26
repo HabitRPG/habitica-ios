@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import Habitica_Models
 
-class MenuNavigationBarView: UIView {
+class MenuNavigationBarView: UIView, Themeable {
     
     @objc public var messagesAction: (() -> Void)?
     @objc public var settingsAction: (() -> Void)?
@@ -28,14 +29,20 @@ class MenuNavigationBarView: UIView {
         avatarView.showMount = false
         avatarView.size = .compact
         messagesBadge.horizontalPadding = 4
+        
+        ThemeService.shared.addThemeable(themable: self, applyImmediately: true)
+    }
+    
+    func applyTheme(theme: Theme) {
+        backgroundColor = theme.backgroundTintColor
     }
     
     @objc
-    public func configure(user: User) {
-        usernameLabel.text = user.username
-        avatarView.avatar = user
-        if user.inboxNewMessages.intValue > 0 {
-            messagesBadge.text = user.inboxNewMessages.stringValue
+    public func configure(user: UserProtocol) {
+        usernameLabel.text = user.profile?.name
+        avatarView.avatar = AvatarViewModel(avatar: user)
+        if let numberNewMessages = user.inbox?.numberNewMessages, numberNewMessages > 0 {
+            messagesBadge.text = String(numberNewMessages)
             messagesBadge.isHidden = false
         } else {
             messagesBadge.isHidden = true

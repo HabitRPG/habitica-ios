@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Habitica_Models
 
 class QuestDetailView: UIView {
     @IBOutlet weak var questTypeLabel: UILabel!
@@ -44,26 +45,26 @@ class QuestDetailView: UIView {
         }
     }
     
-    func configure(quest: Quest) {
-        if quest.bossHp?.intValue ?? 0 > 0 {
+    func configure(quest: QuestProtocol) {
+        if quest.boss?.health ?? 0 > 0 {
             questTypeLabel.text = NSLocalizedString("Boss Quest", comment: "")
         } else {
             questTypeLabel.text = NSLocalizedString("Collection Quest", comment: "")
         }
         questGoalView.configure(quest: quest)
         
-        if let experience = quest.dropExp?.intValue, experience > 0 {
+        if let experience = quest.drop?.experience, experience > 0 {
             rewardsStackView.addArrangedSubview(makeRewardView(title: NSLocalizedString("\(experience) Experience Points", comment: ""), image: HabiticaIcons.imageOfExperienceReward))
         }
-        if let gold = quest.dropGp?.intValue, gold > 0 {
+        if let gold = quest.drop?.gold, gold > 0 {
             rewardsStackView.addArrangedSubview(makeRewardView(title: NSLocalizedString("\(gold) Gold", comment: ""), image: HabiticaIcons.imageOfGoldReward))
         }
         
         var hasOwnerRewards = false
-        if let items = quest.itemDrops {
+        if let items = quest.drop?.items {
             for reward in items {
-                let view = makeRewardView(title: reward.text, imageName: reward.getImageName())
-                if reward.onlyOwner?.boolValue ?? false {
+                let view = makeRewardView(title: reward.text, imageName: reward.imageName)
+                if reward.onlyOwner {
                     ownerRewardsStackView.addArrangedSubview(view)
                     hasOwnerRewards = true
                 } else {
@@ -79,7 +80,7 @@ class QuestDetailView: UIView {
     func makeRewardView(title: String?, imageName: String) -> UIView {
         if let view = UIView.fromNib(nibName: "QuestDetailRewardView") {
             if let imageView = view.viewWithTag(1) as? UIImageView {
-                HRPGManager.shared().setImage(imageName, withFormat: "png", on: imageView)
+                imageView.setImagewith(name: imageName)
             }
             if let label = view.viewWithTag(2) as? UILabel {
                 label.text = title

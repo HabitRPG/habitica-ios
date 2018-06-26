@@ -8,12 +8,14 @@
 
 import Foundation
 import PopupDialog
+import Habitica_Models
+import ReactiveSwift
 
 protocol ChallengeFilterChangedDelegate: class {
     func challengeFilterChanged(showOwned: Bool, showNotOwned: Bool, shownGuilds: [String])
 }
 
-class ChallengeFilterAlert: UIViewController {
+class ChallengeFilterAlert: UIViewController, Themeable {
 
     @IBOutlet weak private var doneButton: UIButton!
     @IBOutlet weak private var allGroupsButton: UIButton!
@@ -25,19 +27,32 @@ class ChallengeFilterAlert: UIViewController {
     @IBOutlet weak private var heightConstraint: NSLayoutConstraint!
 
     weak var delegate: ChallengeFilterChangedDelegate?
-
-    var managedObjectContext: NSManagedObjectContext?
-
+    
+    private let socialRepository = SocialRepository()
+    private let disposable = ScopedDisposable(CompositeDisposable())
     var showOwned = true
     var showNotOwned = true
     var shownGuilds = [String]()
 
     var initShownGuilds = false
 
-    var groups = [Group]()
+    var groups = [GroupProtocol]()
 
     init() {
         super.init(nibName: "ChallengeFilterAlert", bundle: nil)
+    }
+    
+    func applyTheme(theme: Theme) {
+        doneButton.setTitleColor(theme.tintColor, for: .normal)
+        allGroupsButton.setTitleColor(theme.tintColor, for: .normal)
+        noGroupsButton.setTitleColor(theme.tintColor, for: .normal)
+        ownedButton.tintColor = theme.tintColor
+        notOwnedButton.tintColor = theme.tintColor
+        groupListView.arrangedSubviews.forEach { (view) in
+            if let checkview = view as? LabeledCheckboxView {
+                checkview.tintColor = theme.tintColor
+            }
+        }
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -60,7 +75,11 @@ class ChallengeFilterAlert: UIViewController {
             self?.updateDelegate()
         }
 
-        fetchGroups()
+        disposable.inner.add(socialRepository.getChallengesDistinctGroups().on(value: {[weak self]challenges in
+            self?.set(challenges: challenges.value)
+        }).start())
+        
+        ThemeService.shared.addThemeable(themable: self)
     }
 
     override func viewWillLayoutSubviews() {
@@ -76,7 +95,7 @@ class ChallengeFilterAlert: UIViewController {
     @IBAction func allGroupsTapped(_ sender: Any) {
         shownGuilds.removeAll()
         for group in groups {
-            shownGuilds.append(group.id)
+            shownGuilds.append(group.id ?? "")
         }
         if let subviews = groupListView.arrangedSubviews as? [LabeledCheckboxView] {
             for view in subviews {
@@ -99,47 +118,32 @@ class ChallengeFilterAlert: UIViewController {
     private func updateDelegate() {
         delegate?.challengeFilterChanged(showOwned: self.ownedButton.isChecked, showNotOwned: self.notOwnedButton.isChecked, shownGuilds: shownGuilds)
     }
-
-    func fetchGroups() {
-        if let managedObjectContext = self.managedObjectContext {
-            let entity = NSEntityDescription.entity(forEntityName: "Group", in: managedObjectContext)
-            let fetchRequest = NSFetchRequest<NSFetchRequestResult>()
-            fetchRequest.entity = entity
-            fetchRequest.predicate = NSPredicate(format: "challenges.@count > 0")
-            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
-            do {
-                guard let groups = try managedObjectContext.fetch(fetchRequest) as? [Group] else {
-                    return
-                }
-                self.groups = groups
-                if groups.count > 0 {
-                    for group in groups {
-                        if group.id == nil {
-                            return
-                        }
-                        let groupView = LabeledCheckboxView(frame: CGRect.zero)
-                        groupView.text = group.name
-                        if initShownGuilds {
-                            shownGuilds.append(group.id)
-                        }
-                        groupView.isChecked = shownGuilds.contains(group.id)
-                        groupView.numberOfLines = 0
-                        groupView.textColor = UIColor(white: 0, alpha: 0.5)
-                        groupView.checkedAction = { [weak self] isChecked in
-                            if isChecked {
-                                self?.shownGuilds.append(group.id)
-                            } else {
-                                if let index = self?.shownGuilds.index(of: group.id) {
-                                    self?.shownGuilds.remove(at: index)
-                                }
-                            }
-                            self?.updateDelegate()
-                        }
-                        groupListView.addArrangedSubview(groupView)
+    
+    private func set(challenges: [ChallengeProtocol]) {
+        for challenge in challenges {
+            guard let groupID = challenge.groupID else {
+                return
+            }
+            let groupView = LabeledCheckboxView(frame: CGRect.zero)
+            groupView.text = challenge.groupName
+            if initShownGuilds {
+                shownGuilds.append(groupID)
+            }
+            groupView.isChecked = shownGuilds.contains(groupID)
+            groupView.numberOfLines = 0
+            groupView.textColor = UIColor(white: 0, alpha: 0.5)
+            groupView.tintColor = ThemeService.shared.theme.tintColor
+            groupView.checkedAction = { [weak self] isChecked in
+                if isChecked {
+                    self?.shownGuilds.append(groupID)
+                } else {
+                    if let index = self?.shownGuilds.index(of: groupID) {
+                        self?.shownGuilds.remove(at: index)
                     }
                 }
-            } catch {
+                self?.updateDelegate()
             }
+            groupListView.addArrangedSubview(groupView)
         }
     }
 }

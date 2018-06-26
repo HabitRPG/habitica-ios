@@ -6,7 +6,6 @@
 //  Copyright © 2017 HabitRPG Inc. All rights reserved.
 //
 
-#import <XLForm/XLForm.h>
 
 @interface NSString (UUID)
 

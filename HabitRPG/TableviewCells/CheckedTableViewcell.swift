@@ -8,10 +8,11 @@
 
 import UIKit
 import Down
+import Habitica_Models
 
 class CheckedTableViewCell: TaskTableViewCell {
 
-    @IBOutlet weak var checkBox: HRPGCheckBoxView!
+    @IBOutlet weak var checkBox: CheckboxView!
     @IBOutlet weak var checklistIndicator: UIView!
     @IBOutlet weak var checklistDoneLabel: UILabel!
     @IBOutlet weak var checklistAllLabel: UILabel!
@@ -21,69 +22,63 @@ class CheckedTableViewCell: TaskTableViewCell {
     @IBOutlet weak var checklistLeftBorderView: UIView!
     @IBOutlet weak var checklistRightBorderView: UIView!
     
-    weak var task: HRPGTaskProtocol?
+    weak var task: TaskProtocol?
     @objc var isExpanded = false
     @objc var checkboxTouched: (() -> Void)?
     @objc var checklistIndicatorTouched: (() -> Void)?
-    @objc var checklistItemTouched: ((_ item: ChecklistItem) -> Void)?
+    @objc var checklistItemTouched: ((_ item: ChecklistItemProtocol) -> Void)?
 
     override func awakeFromNib() {
         checklistIndicator.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(expandTask)))
     }
     
-    override func configure(task: HRPGTaskProtocol) {
+    override func configure(task: TaskProtocol) {
         self.task = task
         super.configure(task: task)
-        if let taskObject = task as? NSObjectProtocol & HRPGTaskProtocol {
-            self.checkBox.configure(forTask: taskObject)
-            self.checkBox.isLocked = isLocked
-        }
-        if task is Task {
-            self.checkBox.wasTouched = {[weak self] in
-                self?.checkTask()
-            }
+        self.checkBox.configure(task: task)
+        self.checkBox.wasTouched = {[weak self] in
+            self?.checkTask()
         }
         
-        if let task = self.task as? Task {
-            handleChecklist(task)
-        } else if task is ChallengeTask {
-            self.checklistDoneLabel.isHidden = true
-            self.checklistAllLabel.isHidden = true
-            self.checklistSeparator.isHidden = true
-            self.checklistIndicatorWidth.constant = 0
-        }
+        handleChecklist(task)
 
-        if task.completed?.boolValue ?? false {
+        if task.completed || (!task.isDue && task.type == TaskType.daily.rawValue) {
+            self.checklistIndicator.backgroundColor = .gray500()
+            self.checklistDoneLabel.textColor = .gray300()
+            self.checklistAllLabel.textColor = .gray300()
+            self.checklistSeparator.backgroundColor = .gray300()
+            self.checklistLeftBorderView.backgroundColor = .gray400()
+            self.checklistRightBorderView.backgroundColor = .gray400()
+        }
+        
+        if task.completed {
             self.checklistIndicator.backgroundColor = .gray500()
             self.titleLabel.textColor = .gray300()
             self.backgroundColor = .gray600()
         } else {
-            self.backgroundColor = .white
-            self.titleLabel.textColor = .gray10()
+            self.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
+            self.titleLabel.textColor = ThemeService.shared.theme.primaryTextColor
         }
 
         self.titleLabel.backgroundColor = self.backgroundColor
         self.subtitleLabel.backgroundColor = self.backgroundColor
-
+        self.contentView.backgroundColor = self.backgroundColor
+        
         self.checklistIndicator.layoutIfNeeded()
     }
     
-    func handleChecklist(_ task: Task) {
-        if let value = task.value {
-            self.checklistIndicator.backgroundColor = UIColor.forTaskValueLight(value)
-            self.checklistLeftBorderView.backgroundColor = UIColor.forTaskValue(value)
-            self.checklistRightBorderView.backgroundColor = UIColor.forTaskValue(value)
-        }
+    func handleChecklist(_ task: TaskProtocol) {
+        self.checklistIndicator.backgroundColor = UIColor.forTaskValueLight(Int(task.value))
+        self.checklistLeftBorderView.backgroundColor = UIColor.forTaskValue(Int(task.value))
+        self.checklistRightBorderView.backgroundColor = UIColor.forTaskValue(Int(task.value))
         self.checklistIndicator.isHidden = false
         self.checklistIndicator.translatesAutoresizingMaskIntoConstraints = false
-        let checklistCount = task.checklist?.count ?? 0
+        let checklistCount = task.checklist.count
         
         if checklistCount > 0 {
             var checkedCount = 0
-            if let checklist = task.checklist?.array as? [ChecklistItem] {
-                for item in checklist where item.completed.boolValue {
-                    checkedCount += 1
-                }
+            for item in task.checklist where item.completed {
+                checkedCount += 1
             }
             self.checklistDoneLabel.text = "\(checkedCount)"
             self.checklistAllLabel.text = "\(checklistCount)"
@@ -101,7 +96,11 @@ class CheckedTableViewCell: TaskTableViewCell {
             self.checklistDoneLabel.isHidden = false
             self.checklistAllLabel.isHidden = false
             self.checklistSeparator.isHidden = false
-            self.checklistIndicatorWidth.constant = 32.0
+            if UI_USER_INTERFACE_IDIOM() == .pad {
+                self.checklistIndicatorWidth.constant = 48.0
+            } else {
+                self.checklistIndicatorWidth.constant = 36.0
+            }
         } else {
             self.checklistDoneLabel.isHidden = true
             self.checklistAllLabel.isHidden = true
@@ -117,32 +116,30 @@ class CheckedTableViewCell: TaskTableViewCell {
         }
     }
     
-    private func addChecklistViews(task: Task) {
-        if let checklist = task.checklist?.array as? [ChecklistItem] {
-            for item in checklist {
-                let checkbox = HRPGCheckBoxView()
-                checkbox.configure(for: item, withTitle: true)
-                checklistContainer.addArrangedSubview(checkbox)
-                checkbox.wasTouched = {[weak self] in
-                    if let action = self?.checklistItemTouched {
-                        action(item)
-                    }
+    private func addChecklistViews(task: TaskProtocol) {
+        for item in task.checklist {
+            let checkbox = CheckboxView()
+            checkbox.configure(checklistItem: item, withTitle: true)
+            checklistContainer.addArrangedSubview(checkbox)
+            checkbox.wasTouched = {[weak self] in
+                if let action = self?.checklistItemTouched {
+                    action(item)
                 }
-                checkbox.accessibilityLabel = item.text
-                checkbox.shouldGroupAccessibilityChildren = true
-                checkbox.isAccessibilityElement = true
-                checkbox.accessibilityHint = NSLocalizedString("Double tap to complete", comment: "")
             }
+            checkbox.accessibilityLabel = item.text
+            checkbox.shouldGroupAccessibilityChildren = true
+            checkbox.isAccessibilityElement = true
+            checkbox.accessibilityHint = NSLocalizedString("Double tap to complete", comment: "")
         }
     }
     
-    override func applyAccessibility(_ task: Task) {
+    override func applyAccessibility(_ task: TaskProtocol) {
         super.applyAccessibility(task)
         self.mainTaskWrapper?.accessibilityCustomActions?.append(UIAccessibilityCustomAction(name: NSLocalizedString("Complete Task", comment: ""), target: self, selector: #selector(checkTask)))
 
         var stateText = ""
         if task.type == "daily" {
-            if task.isDue?.boolValue ?? false {
+            if task.isDue {
                 stateText = NSLocalizedString("Due", comment: "")
             } else {
                 stateText = NSLocalizedString("Not due", comment: "")
@@ -150,12 +147,13 @@ class CheckedTableViewCell: TaskTableViewCell {
         } else {
             stateText = NSLocalizedString("Not completed", comment: "")
         }
-        if task.completed?.boolValue ?? false {
+        if task.completed {
             stateText = NSLocalizedString("Completed", comment: "")
         }
         self.mainTaskWrapper?.accessibilityLabel = "\(stateText), \(mainTaskWrapper.accessibilityLabel ?? "")"
         
-        if let checklistCount = task.checklist?.count, checklistCount > 0 {
+        let checklistCount = task.checklist.count
+        if checklistCount > 0 {
             self.mainTaskWrapper?.accessibilityLabel = "\(mainTaskWrapper.accessibilityLabel ?? ""), \(checklistCount) checklist items"
             self.isAccessibilityElement = false
             if isExpanded {

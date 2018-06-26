@@ -8,7 +8,6 @@
 
 #import "HRPGInviteMembersViewController.h"
 #import "Amplitude.h"
-#import "HRPGManager.h"
 #import "XLForm.h"
 #import "HRPGQRCodeScannerViewController.h"
 #import "UIColor+Habitica.h"
@@ -24,7 +23,6 @@
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        self.managedObjectContext = [HRPGManager sharedManager].getManagedObjectContext;
         [self initializeForm];
     }
 

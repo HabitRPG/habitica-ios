@@ -11,19 +11,15 @@ import Down
 
 extension Down {
 
-    func toHabiticaAttributedString() throws -> NSMutableAttributedString {
-        return try self.toHabiticaAttributedString(baseFont: CustomFontMetrics.scaledSystemFont(ofSize: 15))
-    }
-
-    func toHabiticaAttributedString(baseFont: UIFont) throws -> NSMutableAttributedString {
-        if self.markdownString.range(of: "[*_#\\[]", options: .regularExpression, range: nil, locale: nil) == nil {
-            return unformattedAttributedString()
+    func toHabiticaAttributedString(baseFont: UIFont = CustomFontMetrics.scaledSystemFont(ofSize: 15),
+                                    textColor: UIColor = UIColor.gray100()) throws -> NSMutableAttributedString {
+        if markdownString.range(of: "[*_#\\[<]", options: .regularExpression, range: nil, locale: nil) == nil {
+            return NSMutableAttributedString(string: markdownString,
+                                             attributes: [.font: CustomFontMetrics.scaledSystemFont(ofSize: 15),
+                                                          .foregroundColor: textColor])
         }
-        guard let formattedString = try? self.toAttributedString().mutableCopy() else {
-            return unformattedAttributedString()
-        }
-        guard let string = formattedString as? NSMutableAttributedString else {
-            return unformattedAttributedString()
+        guard let string = try toAttributedString().mutableCopy() as? NSMutableAttributedString else {
+            return NSMutableAttributedString()
         }
         let baseSize = baseFont.pointSize
         string.enumerateAttribute(NSAttributedStringKey.font,
@@ -41,6 +37,7 @@ extension Down {
                     font = UIFont.systemFont(ofSize: baseSize+fontSizeOffset)
                 }
                 string.addAttribute(NSAttributedStringKey.font, value: font, range: range)
+                string.addAttribute(NSAttributedStringKey.foregroundColor, value: textColor, range: range)
             }
         })
         if string.length == 0 {
@@ -48,10 +45,6 @@ extension Down {
         }
         string.deleteCharacters(in: NSRange(location: string.length-1, length: 1))
         return string
-    }
-    
-    private func unformattedAttributedString() -> NSMutableAttributedString {
-        return NSMutableAttributedString(string: self.markdownString, attributes: [.font: CustomFontMetrics.scaledSystemFont(ofSize: 15)])
     }
 }
 

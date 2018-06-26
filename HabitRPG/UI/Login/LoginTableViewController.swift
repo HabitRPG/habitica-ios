@@ -38,13 +38,11 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak private var loginActivityIndicator: UIActivityIndicatorView!
 
     private let viewModel = LoginViewModel()
-    private var sharedManager: HRPGManager?
+    private let userRepository = UserRepository()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.sharedManager = HRPGManager.shared()
-        self.viewModel.inputs.setSharedManager(sharedManager: self.sharedManager)
         self.viewModel.inputs.setViewController(viewController: self)
 
         loginBeginButton.addTarget(self, action: #selector(loginBeginButtonPressed), for: .touchUpInside)
@@ -426,9 +424,9 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
         
         alertController.addCancelAction()
         alertController.addAction(title: NSLocalizedString("Send", comment: ""), isMainAction: true) { _ in
-            HRPGManager.shared().sendPasswordResetEmail(textField.text, onSuccess: {
+            self.userRepository.sendPasswordResetEmail(email: textField.text ?? "").observeCompleted {
                 ToastManager.show(text: NSLocalizedString("If we have your email on file, instructions for setting a new password have been sent to your email.", comment: ""), color: .green)
-            }, onError: nil)
+            }
         }
         alertController.show()
     }

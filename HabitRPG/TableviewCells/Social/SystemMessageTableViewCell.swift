@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Habitica_Models
 
 class SystemMessageTableViewCell: UITableViewCell {
     
@@ -20,7 +21,7 @@ class SystemMessageTableViewCell: UITableViewCell {
     }
     
     @objc
-    func configure(chatMessage: ChatMessage) {
+    func configure(chatMessage: ChatMessageProtocol) {
         messageTextView.text = chatMessage.text?.unicodeEmoji.replacingOccurrences(of: "`", with: "")
     }
 }

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Habitica_Models
 
 @objc
 protocol Avatar {
@@ -49,44 +50,33 @@ extension Avatar {
     }
     
     func getViewDictionary(showsBackground: Bool, showsMount: Bool, showsPet: Bool, isFainted: Bool) -> [String: Bool] {
-        let hasVisualBuff = isValid(visualBuff)
-        if hasVisualBuff {
-            return [
-                "background": showsBackground && isValid(background),
-                "mount-body": showsMount && isValid(mount),
-                "visual-buff": true,
-                "mount-head": showsMount && isValid(mount),
-                "zzz": isSleep,
-                "knockout": isFainted,
-                "pet": showsPet && isValid(pet)
-            ]
-        } else {
-            return [
-                "background": showsBackground && isValid(background),
-                "mount-body": showsMount && isValid(mount),
-                "chair": isValid(chair) && chair != "none",
-                "back": isValid(back) && isAvailableGear(back),
-                "skin": isValid(skin),
-                "shirt": isValid(shirt),
-                "armor": isValid(armor) && isAvailableGear(armor),
-                "body": isValid(body) && isAvailableGear(body),
-                "head_0": true,
-                "hair-base": isValid(hairBase) && hairBase != "0",
-                "hair-bangs": isValid(hairBangs) && hairBangs != "0" ,
-                "hair-mustache": isValid(hairMustache) && hairMustache != "0",
-                "hair-beard": isValid(hairBeard) && hairBeard != "0",
-                "eyewear": isValid(eyewear) && isAvailableGear(eyewear),
-                "head": isValid(head) && isAvailableGear(head),
-                "head-accessory": isValid(headAccessory) && isAvailableGear(headAccessory),
-                "hair-flower": isValid(hairFlower) && hairFlower != "0",
-                "shield": isValid(shield) && isAvailableGear(shield),
-                "weapon": isValid(weapon) && isAvailableGear(weapon),
-                "mount-head": showsMount && isValid(mount),
-                "zzz": isSleep,
-                "knockout": isFainted,
-                "pet": showsPet && isValid(pet)
-            ]
-        }
+        let hasNoVisualBuff = !isValid(visualBuff)
+        return [
+            "background": showsBackground && isValid(background),
+            "mount-body": showsMount && isValid(mount),
+            "chair": hasNoVisualBuff && isValid(chair) && chair != "none",
+            "back": hasNoVisualBuff && isValid(back) && isAvailableGear(back),
+            "skin": hasNoVisualBuff && isValid(skin),
+            "shirt": hasNoVisualBuff && isValid(shirt),
+            "armor": hasNoVisualBuff && isValid(armor) && isAvailableGear(armor),
+            "body": hasNoVisualBuff && isValid(body) && isAvailableGear(body),
+            "head_0": hasNoVisualBuff,
+            "hair-base": hasNoVisualBuff && isValid(hairBase) && hairBase != "0",
+            "hair-bangs": hasNoVisualBuff && isValid(hairBangs) && hairBangs != "0" ,
+            "hair-mustache": hasNoVisualBuff && isValid(hairMustache) && hairMustache != "0",
+            "hair-beard": hasNoVisualBuff && isValid(hairBeard) && hairBeard != "0",
+            "eyewear": hasNoVisualBuff && isValid(eyewear) && isAvailableGear(eyewear),
+            "head": hasNoVisualBuff && isValid(head) && isAvailableGear(head),
+            "head-accessory": hasNoVisualBuff && isValid(headAccessory) && isAvailableGear(headAccessory),
+            "hair-flower": hasNoVisualBuff && isValid(hairFlower) && hairFlower != "0",
+            "shield": hasNoVisualBuff && isValid(shield) && isAvailableGear(shield),
+            "weapon": hasNoVisualBuff && isValid(weapon) && isAvailableGear(weapon),
+            "visual-buff": isValid(visualBuff),
+            "mount-head": showsMount && isValid(mount),
+            "zzz": isSleep && !isFainted,
+            "knockout": isFainted,
+            "pet": showsPet && isValid(pet)
+        ]
     }
     
     func getFilenameDictionary() -> [String: String?] {
@@ -113,26 +103,36 @@ extension Avatar {
             "visual-buff": visualBuff,
             "mount-head": "Mount_Head_\(mount ?? "")",
             "zzz": "zzz",
+            "knockout": "knockout",
             "pet": "Pet-\(pet ?? "")"
         ]
     }
 }
 
-extension User: Avatar {
-
-    private var displayedOutfit: Outfit? {
-        if preferences?.useCostume?.boolValue == true {
-            return costume
+@objc
+class AvatarViewModel: NSObject, Avatar {
+    weak var avatar: AvatarProtocol?
+    
+    override init() {}
+    
+    @objc
+    init(avatar: AvatarProtocol) {
+        self.avatar = avatar
+    }
+    
+    private var displayedOutfit: OutfitProtocol? {
+        if avatar?.preferences?.useCostume == true {
+            return avatar?.items?.gear?.costume
         } else {
-            return equipped
+            return avatar?.items?.gear?.equipped
         }
     }
     
     var background: String? {
-        return preferences?.background
+        return avatar?.preferences?.background
     }
     var chair: String? {
-        return preferences?.chair
+        return avatar?.preferences?.chair
     }
     
     var back: String? {
@@ -140,11 +140,11 @@ extension User: Avatar {
     }
     
     var skin: String? {
-        return preferences?.skin
+        return avatar?.preferences?.skin
     }
     
     var shirt: String? {
-        return preferences?.shirt
+        return avatar?.preferences?.shirt
     }
     
     var armor: String? {
@@ -156,24 +156,38 @@ extension User: Avatar {
     }
     
     var hairColor: String? {
-        return preferences?.hairColor
+        return avatar?.preferences?.hair?.color
     }
     
     var hairBase: String? {
-        return preferences?.hairBase
+        if let base = avatar?.preferences?.hair?.base {
+            return String(base)
+        }
+        return nil
+        
     }
     
     var hairBangs: String? {
-        return preferences?.hairBangs
+        if let bangs = avatar?.preferences?.hair?.bangs {
+            return String(bangs)
+        }
+        return nil
+        
     }
     
     var hairMustache: String? {
-        return preferences?.hairMustache
+        if let mustache = avatar?.preferences?.hair?.mustache {
+            return String(mustache)
+        }
+        return nil
+        
     }
     
     var hairBeard: String? {
-        return preferences?.hairBeard
-    }
+        if let beard = avatar?.preferences?.hair?.beard {
+            return String(beard)
+        }
+        return nil    }
     
     var eyewear: String? {
         return displayedOutfit?.eyewear
@@ -188,7 +202,10 @@ extension User: Avatar {
     }
     
     var hairFlower: String? {
-        return preferences?.hairFlower
+        if let flower = avatar?.preferences?.hair?.flower {
+            return String(flower)
+        }
+        return nil
     }
     
     var shield: String? {
@@ -200,23 +217,25 @@ extension User: Avatar {
     }
     
     var visualBuff: String? {
-        if buff?.seafoam?.boolValue == true {
-            return "seafoam_star"
-        }
-        if buff?.shinySeed?.boolValue == true {
-            return "avatar_floral_\(dirtyClass)"
-        }
-        if buff?.spookySparkles?.boolValue == true {
-            return "ghost"
-        }
-        if buff?.snowball?.boolValue == true {
-            return "snowman"
+        if let buff = avatar?.stats?.buffs {
+            if buff.seafoam {
+                return "seafoam_star"
+            }
+            if buff.shinySeed {
+                return "avatar_floral_\(avatar?.stats?.habitClass ?? "warrior")"
+            }
+            if buff.snowball {
+                return "snowman"
+            }
+            if buff.spookySparkles {
+                return "ghost"
+            }
         }
         return nil
     }
     
     var mount: String? {
-        return currentMount
+        return avatar?.items?.currentMount
     }
     
     var knockout: String? {
@@ -224,89 +243,15 @@ extension User: Avatar {
     }
     
     var pet: String? {
-        return currentPet
+        return avatar?.items?.currentPet
     }
     
     var isSleep: Bool {
-        return preferences?.sleep?.boolValue ?? false
+        return avatar?.preferences?.sleep ?? false
     }
     
     var size: String? {
-        return preferences?.size
-    }
-}
-
-extension ChatMessageAvatar: Avatar {
-
-    private var displayedOutfit: Outfit? {
-        if useCostume?.boolValue == true {
-            return costume
-        } else {
-            return equipped
-        }
+        return avatar?.preferences?.size
     }
     
-    var back: String? {
-        return displayedOutfit?.back
-    }
-    
-    var armor: String? {
-        return displayedOutfit?.armor
-    }
-    
-    var body: String? {
-        return displayedOutfit?.body
-    }
-    
-    var eyewear: String? {
-        return displayedOutfit?.eyewear
-    }
-    
-    var head: String? {
-        return displayedOutfit?.head
-    }
-    
-    var headAccessory: String? {
-        return displayedOutfit?.headAccessory
-    }
-
-    var shield: String? {
-        return displayedOutfit?.shield
-    }
-    
-    var weapon: String? {
-        return displayedOutfit?.weapon
-    }
-    
-    var visualBuff: String? {
-        if seafoam?.boolValue == true {
-            return "seafoam_star"
-        }
-        if shinySeed?.boolValue == true {
-            return "avatar_floral_\(dirtyClass ?? "")"
-        }
-        if spookySparkles?.boolValue == true {
-            return "ghost"
-        }
-        if snowball?.boolValue == true {
-            return "snowman"
-        }
-        return nil
-    }
-    
-    var mount: String? {
-        return currentMount
-    }
-    
-    var knockout: String? {
-        return nil
-    }
-    
-    var pet: String? {
-        return currentPet
-    }
-    
-    var isSleep: Bool {
-        return false
-    }
 }

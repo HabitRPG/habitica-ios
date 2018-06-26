@@ -10,6 +10,8 @@ import UIKit
 import SwiftyStoreKit
 import StoreKit
 import Keys
+import ReactiveSwift
+import Habitica_Models
 
 class SubscriptionViewController: HRPGBaseViewController {
 
@@ -18,9 +20,19 @@ class SubscriptionViewController: HRPGBaseViewController {
                        "com.habitrpg.ios.habitica.subscription.6month", "com.habitrpg.ios.habitica.subscription.12month"
     ]
 
+    private let userRepository = UserRepository()
+    private let disposable = ScopedDisposable(CompositeDisposable())
+    
     var products: [SKProduct]?
     var selectedSubscriptionPlan: SKProduct?
-    var user: User?
+    var user: UserProtocol? {
+        didSet {
+            if user?.purchased?.subscriptionPlan?.isActive == true {
+                isSubscribed = true
+                restorePurchaseButton.isHidden = true
+            }
+        }
+    }
     let appleValidator: AppleReceiptValidator
     let itunesSharedSecret = HabiticaKeys().itunesSharedSecret
     var expandedList = [Bool](repeating: false, count: 4)
@@ -71,17 +83,9 @@ class SubscriptionViewController: HRPGBaseViewController {
         }
         retrieveProductList()
 
-        self.user = HRPGManager.shared().getUser()
-
-        if let user = self.user {
-            if user.subscriptionPlan == nil {
-                return
-            }
-            if user.subscriptionPlan.isActive() {
-                isSubscribed = true
-                restorePurchaseButton.isHidden = true
-            }
-        }
+        disposable.inner.add(userRepository.getUser().on(value: {[weak self]user in
+            self?.user = user
+        }).start())
     }
 
     func retrieveProductList() {
@@ -227,11 +231,11 @@ class SubscriptionViewController: HRPGBaseViewController {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "DetailCell", for: indexPath) as? SubscriptionDetailView else {
                 fatalError()
             }
-            if let user = self.user {
-                cell.setPlan(user.subscriptionPlan)
+            if let subscriptionPlan = self.user?.purchased?.subscriptionPlan {
+                cell.setPlan(subscriptionPlan)
                 cell.cancelSubscriptionAction = {
                     var url: URL?
-                    if user.subscriptionPlan.paymentMethod == "Apple" {
+                    if subscriptionPlan.paymentMethod == "Apple" {
                         url = URL(string: "https://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions")
                     } else {
                         url = URL(string: "https://habitica.com")
@@ -302,13 +306,16 @@ class SubscriptionViewController: HRPGBaseViewController {
 
     func activateSubscription(_ identifier: String, receipt: ReceiptInfo, completion: @escaping (Bool) -> Void) {
         if let lastReceipt = receipt["latest_receipt"] as? String {
-            HRPGManager.shared().subscribe(identifier, withReceipt: lastReceipt, onSuccess: {
-                completion(true)
-                self.isSubscribed = true
-                self.tableView.reloadData()
-            }, onError: {
-                completion(false)
-            })
+            userRepository.subscribe(sku: identifier, receipt: lastReceipt).observeResult { (result) in
+                switch result {
+                case .success(_):
+                    completion(true)
+                    self.isSubscribed = true
+                    self.tableView.reloadData()
+                case .failure(_):
+                    completion(false)
+                }
+            }
         }
     }
 

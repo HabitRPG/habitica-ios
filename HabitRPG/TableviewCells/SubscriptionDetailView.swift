@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Habitica_Models
 
 class SubscriptionDetailView: UITableViewCell {
 
@@ -21,32 +22,32 @@ class SubscriptionDetailView: UITableViewCell {
 
     var cancelSubscriptionAction: (() -> Void)?
 
-    public func setPlan(_ plan: SubscriptionPlan) {
-        if plan.isActive() {
-            statusPill.text = "Active".localized
+    public func setPlan(_ plan: SubscriptionPlanProtocol) {
+        if plan.isActive {
+            statusPill.text = L10n.active
             statusPill.pillColor = .green50()
         } else {
-            statusPill.text = "Inactive".localized
+            statusPill.text = L10n.inactive
             statusPill.pillColor = .red10()
         }
         typeLabel.text = plan.planId
         paymentMethodLabel.text = plan.paymentMethod
 
-        if plan.count == 0 {
-            monthsSubscribedPill.text = "1 Month".localized
+        if plan.consecutive?.count == 0 {
+            monthsSubscribedPill.text = L10n.oneMonth
         } else {
-            monthsSubscribedPill.text = "\(plan.count ?? 0) Months".localized
+            monthsSubscribedPill.text = L10n.xMonths(plan.consecutive?.count ?? 0)
         }
 
-        gemCapPill.text = String(plan.totalGemCap)
-        hourGlassCountPill.text = plan.consecutiveTrinkets?.stringValue
+        gemCapPill.text = String(plan.gemCapTotal)
+        hourGlassCountPill.text = String(plan.consecutive?.hourglasses ?? 0)
 
         if plan.paymentMethod == "Apple" {
-            cancelDescriptionLabel.text = "No longer want to subscribe? You can manage your subscription from iTunes.".localized
-            cancelDescriptionButton.setTitle("Open iTunes".localized, for: .normal)
+            cancelDescriptionLabel.text = L10n.unsubscribeItunes
+            cancelDescriptionButton.setTitle(L10n.openItunes, for: .normal)
         } else {
-            cancelDescriptionLabel.text = "No longer want to subscribe? Due to your payment method, you can only unsubscribe through the website.".localized
-            cancelDescriptionButton.setTitle("Open Habitica Website".localized, for: .normal)
+            cancelDescriptionLabel.text = L10n.unsubscribeWebsite
+            cancelDescriptionButton.setTitle(L10n.openWebsite, for: .normal)
         }
     }
     @IBAction func cancelButtonPressed(_ sender: Any) {

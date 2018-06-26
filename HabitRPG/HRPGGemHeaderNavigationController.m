@@ -8,6 +8,7 @@
 
 #import "HRPGGemHeaderNavigationController.h"
 #import "UIColor+Habitica.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGGemHeaderNavigationController ()
 @property(nonatomic, strong) UIView *headerView;
@@ -23,6 +24,8 @@
 @property UIScrollView *scrollableView;
 @property UIPanGestureRecognizer *gestureRecognizer;
 @property CGFloat headerYPosition;
+@property(nonatomic) TopHeaderState state;
+
 @end
 
 @implementation HRPGGemHeaderNavigationController
@@ -41,7 +44,7 @@
     headerImageView.image = [UIImage imageNamed:@"support_art"];
     headerImageView.contentMode = UIViewContentModeCenter;
     self.headerView = headerImageView;
-    self.state = HRPGTopHeaderStateVisible;
+    self.state = TopHeaderStateVisible;
     self.backgroundView = [[UIView alloc] init];
     self.backgroundView.backgroundColor = [UIColor whiteColor];
     
@@ -62,6 +65,8 @@
     [self.view insertSubview:self.backgroundView belowSubview:self.upperBackgroundView];
     
     self.headerYPosition = [self bgViewOffset];
+    
+    [[PurchaseHandler shared] completionHandler];
 }
 
 - (void)viewWillLayoutSubviews {
@@ -77,7 +82,7 @@
 }
 
 - (void)showHeader {
-    self.state = HRPGTopHeaderStateVisible;
+    self.state = TopHeaderStateVisible;
     CGRect frame = self.backgroundView.frame;
     frame.origin.y = [self bgViewOffset];
     self.headerYPosition = frame.origin.y;
@@ -92,7 +97,7 @@
 }
 
 - (void)hideHeader {
-    self.state = HRPGTopHeaderStateHidden;
+    self.state = TopHeaderStateHidden;
     CGRect frame = self.backgroundView.frame;
     frame.origin.y = self.bgHiddenPosition;
     self.headerYPosition = frame.origin.y;
@@ -132,12 +137,12 @@
         newYPos = self.bgHiddenPosition;
     }
     if ((newYPos + frame.size.height) > self.bgHiddenPosition) {
-        [self setState:HRPGTopHeaderStateVisible];
+        [self setState:TopHeaderStateVisible];
     } else {
-        if (self.state == HRPGTopHeaderStateHidden) {
+        if (self.state == TopHeaderStateHidden) {
             return;
         }
-        [self setState:HRPGTopHeaderStateHidden];
+        [self setState:TopHeaderStateHidden];
     }
     frame.origin = CGPointMake(frame.origin.x, newYPos);
     self.headerYPosition = frame.origin.y;
@@ -213,7 +218,7 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:
     return YES;
 }
 
-- (void)setState:(HRPGTopHeaderState)state {
+- (void)setState:(TopHeaderState)state {
     _state = state;
 }
 

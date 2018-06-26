@@ -17,7 +17,7 @@ class RageStrikeView: UIView {
         didSet {
             if isActive {
                 borderView.image = #imageLiteral(resourceName: "rage_strike_active")
-                HRPGManager.shared().setImage("rage_strike_\(locationIdentifier)", withFormat: "png", on: backgroundView)
+                backgroundView.setImagewith(name: "rage_strike_\(locationIdentifier)")
             } else {
                 borderView.image = #imageLiteral(resourceName: "rage_strike_pending")
             }
@@ -138,10 +138,11 @@ class RageStrikeView: UIView {
             let npcSceneView = contentView.viewWithTag(2) as? UIImageView
             let label = contentView.viewWithTag(3) as? UITextView
             
-            HRPGManager.shared().getImage("\(locationIdentifier)_background_\(questIdentifier)", withFormat: "png", onSuccess: { (image) in
+            ImageManager.getImage(name: "\(locationIdentifier)_background_\(questIdentifier)") { (image, error) in
                 npcBackgroundView?.image = image?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: UIImageResizingMode.tile)
-            }, onError: {})
-            HRPGManager.shared().setImage("\(locationIdentifier)_scene_\(questIdentifier)", withFormat: "png", on: npcSceneView)
+
+            }
+            npcSceneView?.setImagewith(name: "\(locationIdentifier)_scene_\(questIdentifier)")
             label?.attributedText = attributedString
             label?.textAlignment = .center
             alertController.contentView = contentView

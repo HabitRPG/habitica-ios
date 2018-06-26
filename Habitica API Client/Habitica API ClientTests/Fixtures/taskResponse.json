@@ -1,0 +1,43 @@
+{
+    "success": true,
+    "data": {
+        "delta": 1,
+        "_tmp": {
+            "quest": {
+                "progressDelta": 0.7025000000000006
+            }
+        },
+        "hp": 50,
+        "mp": 20.04986534118652,
+        "exp": 25,
+        "gp": 620.9380687578125,
+        "lvl": 80,
+        "class": "rogue",
+        "points": 9,
+        "str": 17,
+        "con": 18,
+        "int": 18,
+        "per": 18,
+        "buffs": {
+            "str": 0,
+            "int": 0,
+            "per": 0,
+            "con": 0,
+            "stealth": 0,
+            "streaks": false,
+            "snowball": false,
+            "spookySparkles": false,
+            "shinySeed": false,
+            "seafoam": false
+        },
+        "training": {
+            "int": 0,
+            "per": 0,
+            "str": 0,
+            "con": 0
+        }
+    },
+    "notifications": [],
+    "userV": 69106,
+    "appVersion": "4.25.0"
+}

@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import Habitica_Models
 
 @IBDesignable
 class HRPGSimpleShopItemView: UIView {
+    private let inventoryRepository = InventoryRepository()
+    
     @IBOutlet weak var topBannerLabel: UILabel!
     @IBOutlet weak var topBannerWrapper: UIView!
     @IBOutlet weak var shopItemImageView: UIImageView!
@@ -17,6 +20,9 @@ class HRPGSimpleShopItemView: UIView {
     @IBOutlet weak var shopItemDescriptionLabel: UILabel!
     @IBOutlet weak var notesMargin: NSLayoutConstraint!
     @IBOutlet weak var additionalInfoLabel: UILabel!
+    @IBOutlet weak var imageViewHeight: NSLayoutConstraint!
+    
+    private var user: UserProtocol?
     
     @IBInspectable var shouldHideNotes: Bool {
         get {
@@ -56,6 +62,12 @@ class HRPGSimpleShopItemView: UIView {
             shopItemTitleLabel.text = newTitle
         }
     }
+    
+    var imageName = "" {
+        didSet {
+            setImage(name: imageName)
+        }
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -67,77 +79,34 @@ class HRPGSimpleShopItemView: UIView {
         setupView()
     }
     
-    init(withItem item: ShopItem, for contentView: UIView) {
+    init(withReward reward: InAppRewardProtocol, withUser user: UserProtocol?, for contentView: UIView) {
         super.init(frame: contentView.bounds)
         setupView()
-        
-        if let availableUntil = item.availableUntil {
-            setAvailableUntil(date: availableUntil)
-        }
-        
-        self.shopItemTitleLabel.text = item.text
-        
-        if let imageName = item.imageName {
-            if imageName.contains(" ") {
-                HRPGManager.shared().setImage(imageName.components(separatedBy: " ")[1], withFormat: "png", on: self.shopItemImageView)
-            } else {
-                HRPGManager.shared().setImage(imageName, withFormat: "png", on: self.shopItemImageView)
-            }
-        }
-        
-        if let notes = item.notes {
-            self.shopItemDescriptionLabel.text = notes
-        } else {
-            self.shopItemDescriptionLabel.text = ""
-            if let label = self.shopItemDescriptionLabel {
-                let constraint = NSLayoutConstraint(item: label, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal,
-                                                    toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 0)
-                self.shopItemDescriptionLabel.addConstraint(constraint)
-            }
-        }
-        
-        if let key = item.key, let purchaseType = item.purchaseType {
-            configureFor(key: key, purchaseType: purchaseType)
-        }
-        
-        if item.key == "gem" {
-            setGemsLeft(item.itemsLeft?.intValue ?? 0)
-        }
-    }
-    
-    init(withReward reward: MetaReward, for contentView: UIView) {
-        super.init(frame: contentView.bounds)
-        setupView()
+        self.user = user
         
         self.shopItemTitleLabel.text = reward.text
 
-        
         var purchaseType = ""
-        if let inAppReward = reward as? InAppReward {
-            if let availableUntil = inAppReward.availableUntil {
-                setAvailableUntil(date: availableUntil)
-            }
-            if inAppReward.imageName?.contains(" ") ?? false {
-                HRPGManager.shared().setImage(inAppReward.imageName?.components(separatedBy: " ")[1], withFormat: "png", on: self.shopItemImageView)
-            } else {
-                HRPGManager.shared().setImage(inAppReward.imageName, withFormat: "png", on: self.shopItemImageView)
-            }
-            if let inAppPurchaseType = inAppReward.purchaseType {
-                purchaseType = inAppPurchaseType
-            }
-            
-            if inAppReward.key == "gem" {
-                setGemsLeft(inAppReward.itemsLeft?.intValue ?? 0)
-            }
-        } else {
-            if reward.key == "potion" {
-                HRPGManager.shared().setImage("shop_potion", withFormat: "png", on: shopItemImageView)
-            } else if reward.key == "armoire" {
-                HRPGManager.shared().setImage("shop_armoire", withFormat: "png", on: shopItemImageView)
-            }
+        if let availableUntil = reward.availableUntil {
+            setAvailableUntil(date: availableUntil)
+        }
+        self.imageName = reward.imageName ?? ""
+        self.setImage(name: imageName)
+        
+        if reward.key == "potion" {
+            imageName = "shop_potion"
+        } else if reward.key == "armoire" {
+            imageName = "shop_armoire"
+        }
+        if let inAppPurchaseType = reward.purchaseType {
+            purchaseType = inAppPurchaseType
+        }
+        
+        if reward.key == "gem" {
+            //setGemsLeft(inAppReward.itemsLeft?.intValue ?? 0)
         }
         if !purchaseType.isEmpty {
-            configureFor(key: reward.key, purchaseType: purchaseType)
+            configureFor(key: reward.key ?? "", purchaseType: purchaseType)
         }
         
         if let notes = reward.notes, purchaseType != "quests" {
@@ -152,12 +121,24 @@ class HRPGSimpleShopItemView: UIView {
         }
     }
     
+    private func setImage(name: String) {
+        var name = imageName
+        if imageName.contains(" ") {
+            name = imageName.components(separatedBy: " ")[1]
+        }
+        ImageManager.getImage(name: name) { (image, _) in
+            self.shopItemImageView.image = image
+            self.imageViewHeight.constant = image?.size.height ?? 0
+            self.setNeedsLayout()
+        }
+    }
+    
     private func setGemsLeft(_ gemsLeft: Int) {
-        let totalCount = HRPGManager.shared().getUser().subscriptionPlan.totalGemCap
-        topBannerLabel.text = NSLocalizedString("Monthly Gems: \(gemsLeft)/\(totalCount) Remaining", comment: "")
+        let totalCount = self.user?.purchased?.subscriptionPlan?.gemCapTotal ?? 0
+        topBannerLabel.text = L10n.Inventory.numberGemsLeft(gemsLeft, totalCount)
         if gemsLeft == 0 {
             topBannerWrapper.backgroundColor = UIColor.orange10()
-            additionalInfoLabel.text = NSLocalizedString("No more Gems available this month. More become available within the first 3 days of each month.", comment: "")
+            additionalInfoLabel.text = L10n.Inventory.noGemsLeft
             additionalInfoLabel.textColor = UIColor.orange10()
         } else {
             topBannerWrapper.backgroundColor = UIColor.green10()
@@ -166,20 +147,27 @@ class HRPGSimpleShopItemView: UIView {
     }
     
     private func configureFor(key: String, purchaseType: String) {
-        if purchaseType == "gear", let user = HRPGManager.shared().getUser() {
-            let gear = InventoryRepository().getGear(key)
-            var gearClass = gear?.klass
-            if gearClass == "special" {
-                gearClass = gear?.specialClass
-            }
-            if gearClass == "wizard" {
-                gearClass = "mage"
-            }
-            if gearClass != user.hclass && gearClass != nil && gearClass != "special" && gearClass != "armoire" {
-                topBannerLabel.text = NSLocalizedString("Only available for \(gearClass?.capitalized ?? "")s. You can change your class from Settings", comment: "")
-                topBannerWrapper.backgroundColor = UIColor.gray100()
-                topBannerWrapper.isHidden = false
-            }
+        if purchaseType == "gear", let user = self.user {
+            inventoryRepository.getGear(keys: [key])
+                .take(first: 1)
+                .map({ (gear, _) -> GearProtocol? in
+                    return gear.first
+                })
+                .skipNil()
+                .on(value: {[weak self] gear in
+                    var gearClass = gear.habitClass
+                    if gearClass == "special" {
+                        gearClass = gear.specialClass
+                    }
+                    if gearClass == "wizard" {
+                        gearClass = "mage"
+                    }
+                    if gearClass != user.stats?.habitClass && gearClass != nil && gearClass != "special" && gearClass != "armoire" {
+                        self?.topBannerLabel.text = L10n.Inventory.wrongClass(gearClass?.capitalized ?? "")
+                        self?.topBannerWrapper.backgroundColor = UIColor.gray100()
+                        self?.topBannerWrapper.isHidden = false
+                    }
+            }).start()
         }
     }
     
@@ -189,7 +177,7 @@ class HRPGSimpleShopItemView: UIView {
         formatter.dateStyle = .medium
         formatter.timeZone = TimeZone(identifier: "UTC")
         let dateString = formatter.string(from: date)
-        topBannerLabel.text = NSLocalizedString("Available Until \(dateString)", comment: "")
+        topBannerLabel.text = L10n.Inventory.availableUntil(dateString)
         topBannerWrapper.backgroundColor = UIColor.purple200()
         topBannerWrapper.isHidden = false
     }

@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import ReactiveSwift
 
 class ChallengeDetailsTableViewController: MultiModelTableViewController {
     var viewModel: ChallengeDetailViewModel?
-
+    private let disposable = ScopedDisposable(CompositeDisposable())
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.topHeaderCoordinator.hideHeader = true
@@ -19,32 +21,34 @@ class ChallengeDetailsTableViewController: MultiModelTableViewController {
         
         title = "Details"
 
-        viewModel?.cellModelsSignal.observeValues({ [weak self] (sections) in
-            self?.dataSource.sections = sections
-            self?.tableView.reloadData()
-        })
-        
-        viewModel?.reloadTableSignal.observeValues { [weak self] _ in
-            self?.tableView.reloadData()
+        if let viewModel = viewModel {
+            disposable.inner.add(viewModel.cellModelsSignal.observeValues({[weak self] (sections) in
+                self?.dataSource.sections = sections
+                self?.tableView.reloadData()
+            }))
+            
+            disposable.inner.add(viewModel.reloadTableSignal.observeValues {[weak self] _ in
+                self?.tableView.reloadData()
+            })
+            
+            disposable.inner.add(viewModel.animateUpdatesSignal.observeValues({[weak self]  _ in
+                self?.tableView.beginUpdates()
+                self?.tableView.endUpdates()
+            }))
+            
+            disposable.inner.add(viewModel.nextViewControllerSignal.observeValues({[weak self] viewController in
+                self?.navigationController?.pushViewController(viewController, animated: true)
+            }))
+            
+            disposable.inner.add(viewModel.joinLeaveStyleProvider.promptProperty.signal.observeValues({[weak self] prompt in
+                if let alertController = prompt {
+                    alertController.modalTransitionStyle = .crossDissolve
+                    alertController.modalPresentationStyle = .overCurrentContext
+                    self?.parent?.present(alertController, animated: true, completion: nil)
+                }
+            }))
         }
-        
-        viewModel?.animateUpdatesSignal.observeValues({ [weak self] _ in
-            self?.tableView.beginUpdates()
-            self?.tableView.endUpdates()
-        })
-        
-        viewModel?.nextViewControllerSignal.observeValues({ [weak self] viewController in
-            self?.navigationController?.pushViewController(viewController, animated: true)
-        })
-        
-        viewModel?.joinLeaveStyleProvider.promptProperty.signal.observeValues({ [weak self] prompt in
-            if let alertController = prompt {
-                alertController.modalTransitionStyle = .crossDissolve
-                alertController.modalPresentationStyle = .overCurrentContext
-                self?.parent?.present(alertController, animated: true, completion: nil)
-            }
-        })
-        
+
         tableView.delegate = self
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 200

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import EAIntroView
 
 class IntroViewController: UIViewController, UIScrollViewDelegate {
 
@@ -20,10 +19,6 @@ class IntroViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
 
         endButton.isHidden = true
-    }
-
-    func introDidFinish(_ introView: EAIntroView!, wasSkipped: Bool) {
-        self.performSegue(withIdentifier: "LoginSegue", sender: self)
     }
 
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {

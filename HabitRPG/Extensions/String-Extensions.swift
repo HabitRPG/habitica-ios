@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Habitica_Models
 
 extension String {
 
@@ -17,7 +18,7 @@ extension String {
         return boundingBox.width
     }
     
-    func stringWithAbbreviatedNumber() -> String {
+    func stringWithAbbreviatedNumber(roundingIncrement: Double = 0.01) -> String {
         guard var value = Double(self) else {
             return ""
         }
@@ -28,7 +29,7 @@ extension String {
         }
         
         let formatter = NumberFormatter()
-        formatter.roundingIncrement = 0.01
+        formatter.roundingIncrement = roundingIncrement as NSNumber
         formatter.numberStyle = .decimal
         return "\(formatter.string(from: NSNumber(value: value)) ?? "")\(abbreviationFor(counter: counter))"
     }
@@ -48,8 +49,8 @@ extension String {
         }
     }
     
-    public static func forTaskQuality(task: HRPGTaskProtocol) -> String {
-        let taskValue = task.value?.intValue ?? 0
+    public static func forTaskQuality(task: TaskProtocol) -> String {
+        let taskValue = task.value
         if taskValue < -20 {
             return NSLocalizedString("Worst", comment: "")
         } else if taskValue < -10 {
@@ -65,5 +66,9 @@ extension String {
         } else {
             return NSLocalizedString("Best", comment: "")
         }
+    }
+    
+    func stripHTML() -> String {
+        return replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
     }
 }

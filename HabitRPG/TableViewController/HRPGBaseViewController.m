@@ -7,9 +7,7 @@
 //
 
 #import "HRPGBaseViewController.h"
-#import <Google/Analytics.h>
 #import "Amplitude+HRPGHelpers.h"
-#import "HRPGDeathView.h"
 #import "HRPGNavigationController.h"
 #import "UIViewController+TutorialSteps.h"
 #import "UIViewController+HRPGTopHeaderNavigationController.h"
@@ -24,10 +22,6 @@
 - (void)viewDidLoad {
     self.topHeaderCoordinator = [[TopHeaderCoordinator alloc] initWithTopHeaderNavigationController:self.topHeaderNavigationController scrollView:self.tableView];
     [super viewDidLoad];
-
-    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker set:kGAIScreenName value:[self getScreenName]];
-    [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
 
     [[Amplitude instance] logNavigateEventForClass:NSStringFromClass([self class])];
 
@@ -79,15 +73,8 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
-    User *user = [[HRPGManager sharedManager] getUser];
-    if (user && user.health && [user.health floatValue] <= 0) {
-        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"HRPGDeathView" owner:self options:nil];
-        HRPGDeathView *deathView = (HRPGDeathView *)[nib objectAtIndex:0];
-        [deathView show];
-    }
 
-    [self displayTutorialStep:[HRPGManager sharedManager]];
+    [self displayTutorialStep];
     [self.topHeaderCoordinator viewDidAppear];
 }
 
@@ -138,13 +125,6 @@
         }
     }
     return NO;
-}
-
-- (NSManagedObjectContext *)managedObjectContext {
-    if (_managedObjectContext == nil) {
-        _managedObjectContext = [HRPGManager sharedManager].getManagedObjectContext;
-    }
-    return _managedObjectContext;
 }
 
 - (UINavigationController<TopHeaderNavigationControllerProtocol> *)topHeaderNavigationController {

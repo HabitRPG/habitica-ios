@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -62,12 +62,10 @@
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="6vU-hE-qe3" secondAttribute="bottom" constant="12" id="5o0-ef-0Qh"/>
                     <constraint firstAttribute="trailing" secondItem="0yS-nU-vi8" secondAttribute="trailing" constant="8" id="6JN-hi-s76"/>
                     <constraint firstAttribute="bottom" secondItem="CZZ-0V-K8G" secondAttribute="bottom" constant="6.5" id="6sW-Mk-eK8"/>
                     <constraint firstItem="wLF-Gq-BbA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="8QM-wG-HHl"/>
                     <constraint firstItem="CZZ-0V-K8G" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="FF3-YQ-mmk"/>
-                    <constraint firstItem="6vU-hE-qe3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="HHY-CB-4P4"/>
                     <constraint firstItem="7NI-3F-aM2" firstAttribute="leading" secondItem="wLF-Gq-BbA" secondAttribute="leading" id="Ncz-iW-sKh"/>
                     <constraint firstItem="0yS-nU-vi8" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Qlh-UH-DTe"/>
                     <constraint firstItem="CZZ-0V-K8G" firstAttribute="trailing" secondItem="wLF-Gq-BbA" secondAttribute="trailing" id="WIi-BA-cL8"/>
@@ -75,6 +73,7 @@
                     <constraint firstItem="CZZ-0V-K8G" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="eRw-Sh-nQp"/>
                     <constraint firstItem="7NI-3F-aM2" firstAttribute="top" secondItem="wLF-Gq-BbA" secondAttribute="bottom" constant="1" id="hT4-iF-A8Z"/>
                     <constraint firstItem="7NI-3F-aM2" firstAttribute="bottom" secondItem="6vU-hE-qe3" secondAttribute="bottom" id="kZ4-wF-dkd"/>
+                    <constraint firstItem="6vU-hE-qe3" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="uh2-kK-RbG"/>
                     <constraint firstItem="6vU-hE-qe3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="xux-2T-5kV"/>
                 </constraints>
             </tableViewCellContentView>

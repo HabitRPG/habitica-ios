@@ -9,6 +9,7 @@
 #import "HRPGDropsEnabledNotification.h"
 #import "HRPGImageOverlayView.h"
 #import "HRPGAppDelegate.h"
+#import "KLCPopup.h"
 
 @implementation HRPGDropsEnabledNotification
 
@@ -18,10 +19,11 @@
     HRPGImageOverlayView *overlayView = [nibViews objectAtIndex:0];
     overlayView.imageWidth = 140;
     overlayView.imageHeight = 147;
-    [self.user setAvatarSubview:overlayView.imageView
+    //TODO: FIX
+    /*[self.user setAvatarSubview:overlayView.imageView
                 showsBackground:YES
                      showsMount:YES
-                       showsPet:YES];
+                       showsPet:YES];*/
     overlayView.titleText = NSLocalizedString(@"You unlocked the drop system!", nil);
     overlayView.descriptionText = NSLocalizedString(
                                                     @"You've unlocked the Drop System! Now when you complete tasks, you have a small chance of finding an item, including eggs, potions, and food!", nil);

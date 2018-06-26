@@ -10,6 +10,9 @@
 #import "VTAcknowledgementsViewController.h"
 #import <sys/utsname.h>
 #import "Habitica-Swift.h"
+#import <Instabug/Instabug.h>
+#import "HRPGSharingManager.h"
+#import <Realm/Realm.h>
 
 @interface HRPGAboutViewController ()
 
@@ -46,7 +49,11 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 8;
+    if ([HabiticaAppDelegate isRunningLive]) {
+        return 8;
+    } else {
+        return 9;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -84,6 +91,9 @@
                                  objectForInfoDictionaryKey:(NSString *)kCFBundleVersionKey]];
         cell.detailTextLabel.text = appVersionString;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    } else if (indexPath.item == 8) {
+        cell.textLabel.text = NSLocalizedString(@"Export Database", nil);
+        cell.detailTextLabel.text = NSLocalizedString(@"This is only needed for debug purposes", nil);
     }
 
     return cell;
@@ -98,30 +108,39 @@
             break;
         }
         case 1: {
-            if ([MFMailComposeViewController canSendMail]) {
-                MFMailComposeViewController *composeViewController =
+            if ([HabiticaAppDelegate isRunningLive]) {
+                if ([MFMailComposeViewController canSendMail]) {
+                    MFMailComposeViewController *composeViewController =
                     [[MFMailComposeViewController alloc] initWithNibName:nil bundle:nil];
-                [composeViewController setMailComposeDelegate:self];
-                [composeViewController setToRecipients:@[ self.supportEmail ] ];
-                [composeViewController setSubject:@"[iOS] Feedback"];
-                [self presentViewController:composeViewController animated:YES completion:nil];
+                    [composeViewController setMailComposeDelegate:self];
+                    [composeViewController setToRecipients:@[ self.supportEmail ] ];
+                    [composeViewController setSubject:@"[iOS] Feedback"];
+                    [self presentViewController:composeViewController animated:YES completion:nil];
+                } else {
+                    [self showNoEmailAlert];
+                }
             } else {
-                [self showNoEmailAlert];
+                [Instabug invokeWithInvocationMode:IBGInvocationModeNewFeedback];
             }
+            
             break;
         }
         case 2: {
-            if ([MFMailComposeViewController canSendMail]) {
-                MFMailComposeViewController *composeViewController =
+            if ([HabiticaAppDelegate isRunningLive]) {
+                if ([MFMailComposeViewController canSendMail]) {
+                    MFMailComposeViewController *composeViewController =
                     [[MFMailComposeViewController alloc] initWithNibName:nil bundle:nil];
-                [composeViewController setMailComposeDelegate:self];
-                [composeViewController setToRecipients:@[ self.supportEmail ]];
-                [composeViewController setSubject:@"[iOS] Bugreport"];
-                [composeViewController setMessageBody:[self createDeviceInformationString]
-                                               isHTML:NO];
-                [self presentViewController:composeViewController animated:YES completion:nil];
+                    [composeViewController setMailComposeDelegate:self];
+                    [composeViewController setToRecipients:@[ self.supportEmail ]];
+                    [composeViewController setSubject:@"[iOS] Bugreport"];
+                    [composeViewController setMessageBody:[self createDeviceInformationString]
+                                                   isHTML:NO];
+                    [self presentViewController:composeViewController animated:YES completion:nil];
+                } else {
+                    [self showNoEmailAlert];
+                }
             } else {
-                [self showNoEmailAlert];
+                [Instabug invokeWithInvocationMode:IBGInvocationModeNewBug];
             }
             break;
         }
@@ -151,7 +170,7 @@
                                                      0)];
                 viewController.tableView.scrollIndicatorInsets =
                     UIEdgeInsetsMake(self.topHeaderNavigationController.contentInset, 0, 0, 0);
-                if (self.topHeaderNavigationController.state == HRPGTopHeaderStateHidden) {
+                if (self.topHeaderNavigationController.state == TopHeaderStateHidden) {
                     [viewController.tableView
                         setContentOffset:CGPointMake(0,
                                                      self.tableView.contentInset.top - self.topHeaderNavigationController.contentOffset)];
@@ -160,6 +179,11 @@
 
             [self.navigationController pushViewController:viewController animated:YES];
             break;
+        }
+        case 8: {
+            NSURL *url = RLMRealmConfiguration.defaultConfiguration.fileURL;
+            UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[url] applicationActivities:nil];
+            [self presentViewController:activityViewController animated:true completion:nil];
         }
         default:
             break;
@@ -199,7 +223,7 @@
                                                 [[NSBundle mainBundle] infoDictionary]
                                                     [@"CFBundleShortVersionString"]]];
     [informationString appendString:[NSString stringWithFormat:@"User UUID: %@\n",
-                                                               [[HRPGManager sharedManager] getUser].id]];
+                                                               [[AuthenticationManager shared] currentUserId]]];
 
     return informationString;
 }

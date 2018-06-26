@@ -7,27 +7,22 @@
 //
 
 #import "HRPGShopViewController.h"
-#import "Shop.h"
-#import "ShopItem+CoreDataClass.h"
-#import "User.h"
-#import "KLCPopup.h"
 #import "NSString+StripHTML.h"
 #import "Habitica-Swift.h"
-#import "HRPGShopViewModel.h"
 
-@interface HRPGShopViewController () <HRPGShopCollectionViewDataSourceDelegate, HRPGFetchedResultsCollectionViewDataSourceDelegate>
+@interface HRPGShopViewController () 
 
-@property (nonatomic) HRPGShopBannerView *shopBannerView;
+@property (nonatomic) NPCBannerView *shopBannerView;
 
-@property (nonatomic) HRPGShopCollectionViewDataSource *dataSource;
-@property (nonatomic) HRPGShopViewModel *viewModel;
-
-@property User *user;
+@property (nonatomic) id<ShopCollectionViewDataSourceProtocol> dataSource;
 
 @property NSIndexPath *selectedIndex;
 @property BOOL insetWasSetup;
 
 @property NSString *selectedGearCategory;
+
+@property HRPGCurrencyCountView *gemView;
+@property HRPGCurrencyCountView *goldView;
 
 @end
 
@@ -41,13 +36,7 @@
     
     [self setupCollectionView];
     
-    self.user = [[HRPGManager sharedManager] getUser];
-    
-    self.selectedGearCategory = self.user.hclass;
-    
     self.dataSource.selectedGearCategory = self.selectedGearCategory;
-    self.dataSource.fetchedResultsDelegate = self;
-    self.dataSource.fetchedResultsController = [self.viewModel fetchedShopItemResultsForIdentifier:self.shopIdentifier withGearCategory:self.selectedGearCategory];
     if ([self.shopIdentifier isEqualToString:@"market"]) {
         self.dataSource.needsGearSection = YES;
     }
@@ -55,63 +44,33 @@
     [self refresh];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-        
-    [self.user addObserver:self forKeyPath:@"gold" options:0 context:NULL];
-    [self.user addObserver:self forKeyPath:@"balance" options:0 context:NULL];
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [self.user removeObserver:self forKeyPath:@"gold"];
-    [self.user removeObserver:self forKeyPath:@"balance"];
-    
-    [super viewWillDisappear:animated];
-}
-
-
 - (void)refresh {
-    [self setupShop];
-    [[HRPGManager sharedManager] fetchShopInventory:self.shopIdentifier onSuccess:^() {
-        if ([self.shopIdentifier isEqualToString:MarketKey]) {
-            [[HRPGManager sharedManager] fetchShopInventory:GearMarketKey onSuccess:nil onError:nil];
-        }
-        [self setupShop];
-    } onError:nil];
-}
-
-- (void)setupShop {
-    [self.viewModel fetchShopInformationForIdentifier:self.shopIdentifier];
-    if (self.viewModel.shop) {
-        self.navigationItem.title = self.viewModel.shop.text;
-        self.shopBannerView.shop = self.viewModel.shop;
-        
-        if ([self.viewModel shouldPromptToSubscribe]) [self configureEmpty];
-    }
-    self.dataSource.fetchedResultsController = [self.viewModel fetchedShopItemResultsForIdentifier:self.shopIdentifier withGearCategory:self.selectedGearCategory];
-    [self.collectionView reloadData];
+    [self.dataSource retrieveShopInventory:nil];
 }
 
 - (void)setupNavBar {
-    HRPGCurrencyCountView *gems = [HRPGCurrencyCountView new];
-    [gems setAsGems];
-    gems.amount = [[NSNumber numberWithFloat:4.0f * [[[HRPGManager sharedManager] getUser].balance floatValue]] intValue];
+    self.gemView = [HRPGCurrencyCountView new];
+    [self.gemView setAsGems];
     
-    HRPGCurrencyCountView *gold = [HRPGCurrencyCountView new];
-    [gold setAsGold];
-    gold.amount = [[[HRPGManager sharedManager] getUser].gold intValue];
+    self.goldView = [HRPGCurrencyCountView new];
+    [self.goldView setAsGold];
     
     UIBarButtonItem *gemsBarItem;
     UIBarButtonItem *goldBarItem;
     if (@available(iOS 11, *)) {
-        gemsBarItem = [[UIBarButtonItem alloc] initWithCustomView:gems];
-        goldBarItem = [[UIBarButtonItem alloc] initWithCustomView:gold];
+        gemsBarItem = [[UIBarButtonItem alloc] initWithCustomView:self.gemView];
+        goldBarItem = [[UIBarButtonItem alloc] initWithCustomView:self.goldView];
     } else {
-        gemsBarItem = [[UIBarButtonItem alloc] initWithCustomView:[self viewContainingCenteredView:gems]];
-        goldBarItem = [[UIBarButtonItem alloc] initWithCustomView:[self viewContainingCenteredView:gold]];
+        gemsBarItem = [[UIBarButtonItem alloc] initWithCustomView:[self viewContainingCenteredView:self.gemView]];
+        goldBarItem = [[UIBarButtonItem alloc] initWithCustomView:[self viewContainingCenteredView:self.goldView]];
     }
     
     self.navigationItem.rightBarButtonItems = @[goldBarItem, gemsBarItem];
+}
+
+- (void)updateNavBarWithGold:(NSInteger)gold gems:(NSInteger)gems {
+    self.gemView.amount = gems;
+    self.goldView.amount = gold;
 }
 
 - (UIView *)viewContainingCenteredView:(UIView *)view {
@@ -128,30 +87,15 @@
     UICollectionViewFlowLayout *collectionViewLayout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
     collectionViewLayout.itemSize = CGSizeMake(90, 120);
     collectionViewLayout.sectionInset = UIEdgeInsetsMake(0, 6, 20, 6);
-    //self.collectionView.collectionViewLayout = collectionViewLayout;
+    self.collectionView.collectionViewLayout = collectionViewLayout;
     
     if ([self.shopIdentifier isEqualToString:@"timeTravelersShop"]) {
-        self.dataSource = [TimeTravelersCollectionViewDataSource new];
+        self.dataSource = [ShopCollectionViewDataSourceInstantiator instantiateTimeTravelersWithDelegate:self];
     } else {
-        self.dataSource = [HRPGShopCollectionViewDataSource new];
+        self.dataSource = [ShopCollectionViewDataSourceInstantiator instantiateWithIdentifier:self.shopIdentifier delegate: self];
     }
     self.dataSource.delegate = self;
     self.dataSource.collectionView = self.collectionView;
-    self.dataSource.ownedItems = [self.viewModel fetchOwnedItems];
-    self.dataSource.pinnedItems = [self.viewModel fetchPinnedItems];
-    
-    self.collectionView.dataSource = self.dataSource;
-    self.collectionView.delegate = self.dataSource;
-}
-
-- (void)loadOwnedItems {
-    self.dataSource.ownedItems = [self.viewModel fetchOwnedItems];
-    [self.collectionView reloadData];
-}
-
-- (void)loadPinnedItems {
-    self.dataSource.pinnedItems = [self.viewModel fetchPinnedItems];
-    [self.collectionView reloadData];
 }
 
 - (void)scrollToTop {
@@ -172,14 +116,14 @@
     NSString *notes;
     NSDictionary *views;
     NSString *visualFormat;
-    if ([self.shopIdentifier isEqualToString:SeasonalShopKey]) {
+    if ([self.shopIdentifier isEqualToString:@"seasonalShop"]) {
         imageName = @"shop_empty_seasonal";
         title = @"Come back soon!";
         notes = @"The Grand Galas happen close to the solstices and equinoxes, so check back then to find a fun assortment of special seasonal items!";
         
         visualFormat = @"V:|-280-[closedView]";
         views = @{@"closedView": closedShopInfoView};
-    } else if ([self.shopIdentifier isEqualToString:TimeTravelersShopKey]) {
+    } else if ([self.shopIdentifier isEqualToString:@"timeTravelersShop"]) {
         imageName = @"shop_empty_hourglass";
         title = @"Subscribe for Hourglasses";
         notes = @"Earn one Mystic Hourglass for every three months of consecutive subscription, then use them to unlock limited edition items, pets, and mounts from the past... and future!";
@@ -222,25 +166,14 @@
 
 #pragma mark - data source delegate
 
-- (void)didSelectItem:(ShopItem *)item {
+- (void)didSelectItem:(id<InAppRewardProtocol>)item {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"BuyModal" bundle:nil];
     HRPGBuyItemModalViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"HRPGBuyItemModalViewController"];
-    vc.item = item;
+    vc.reward = item;
     vc.shopIdentifier = self.shopIdentifier;
     vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     vc.shopViewController = self;
     [self.tabBarController presentViewController:vc animated:YES completion:nil];
-}
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    [super scrollViewDidScroll:scrollView];
-    if ([self.viewModel shouldPromptToSubscribe]) {
-        CGFloat alpha = scrollView.contentOffset.y + 350 + self.topHeaderNavigationController.contentInset - 80;
-        alpha /= -80;
-        if (alpha > 1) alpha = 1;
-        if (alpha < 0) alpha = 0;
-        self.collectionView.backgroundView.alpha = alpha;
-    }
 }
 
 - (void)onEmptyFetchedResults {
@@ -253,15 +186,14 @@
     }
 }
 
-#pragma mark - lazy loaders
-
-- (HRPGShopViewModel *)viewModel {
-    if (!_viewModel) _viewModel = [HRPGShopViewModel new];
-    return _viewModel;
+- (void)updateShopHeaderWithShop:(id<ShopProtocol>)shop {
+    self.shopBannerView.shop = shop;
 }
 
-- (HRPGShopBannerView *)shopBannerView {
-    if (!_shopBannerView) _shopBannerView = [[HRPGShopBannerView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 165)];
+#pragma mark - lazy loaders
+
+- (NPCBannerView *)shopBannerView {
+    if (!_shopBannerView) _shopBannerView = [[NPCBannerView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 165)];
     return _shopBannerView;
 }
 
@@ -283,8 +215,6 @@
 - (void)changeSelectedGearCategory:(NSString *)newGearCategory {
     self.selectedGearCategory = newGearCategory;
     self.dataSource.selectedGearCategory = newGearCategory;
-    self.dataSource.fetchedResultsController = [self.viewModel fetchedShopItemResultsForIdentifier:self.shopIdentifier withGearCategory:self.selectedGearCategory];
-    [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
 }
 
 @end
