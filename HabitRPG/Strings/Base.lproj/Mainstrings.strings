@@ -143,6 +143,7 @@
 "eggs" = "Eggs";
 "hatching_potions" = "Hatching Potions";
 "quests" = "Quests";
+"specialItems" = "Special Items";
 "sell" = "Sell for %d gold";
 "hatch_egg" = "Hatch egg";
 "hatch_potion" = "Hatch with potion";
@@ -251,3 +252,5 @@
 "levelup_description" = "By accomplishing your real-life goals, you've grown to Level %ld!";
 "levelup_share" = "I got to level %ld in Habitica by improving my real-life habits!";
 "copied_to_clipboard" = "Copied to Clipboard";
+"open" = "Open";
+"received_mystery_item" = "You open the box and receive %@";

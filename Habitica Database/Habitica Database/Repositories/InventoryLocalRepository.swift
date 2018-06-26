@@ -45,6 +45,7 @@ public class InventoryLocalRepository: ContentLocalRepository {
     public func getItems(keys: [String]) -> SignalProducer<(ReactiveResults<[EggProtocol]>,
         ReactiveResults<[FoodProtocol]>,
         ReactiveResults<[HatchingPotionProtocol]>,
+        ReactiveResults<[SpecialItemProtocol]>,
         ReactiveResults<[QuestProtocol]>), ReactiveSwiftRealmError> {
             let predicate = NSPredicate(format: "key IN %@", keys)
         return SignalProducer.combineLatest(
@@ -56,6 +57,9 @@ public class InventoryLocalRepository: ContentLocalRepository {
             }),
             RealmHatchingPotion.findBy(predicate: predicate).reactive().map({ (value, changeset) -> ReactiveResults<[HatchingPotionProtocol]> in
                 return (value.map({ (item) -> HatchingPotionProtocol in return item }), changeset)
+            }),
+            RealmSpecialItem.findBy(predicate: predicate).reactive().map({ (value, changeset) -> ReactiveResults<[SpecialItemProtocol]> in
+                return (value.map({ (item) -> SpecialItemProtocol in return item }), changeset)
             }),
             RealmQuest.findBy(predicate: predicate).reactive().map({ (value, changeset) -> ReactiveResults<[QuestProtocol]> in
                 return (value.map({ (item) -> QuestProtocol in return item }), changeset)
@@ -115,5 +119,21 @@ public class InventoryLocalRepository: ContentLocalRepository {
     
     public func getNewInAppReward() -> InAppRewardProtocol {
         return RealmInAppReward()
+    }
+    
+    public func receiveMysteryItem(userID: String, key: String) {
+        guard let realm = getRealm() else {
+            return
+        }
+        let ownedGear = RealmOwnedGear()
+        ownedGear.key = key
+        ownedGear.userID = userID
+        ownedGear.isOwned = true
+        let user = realm.object(ofType: RealmUser.self, forPrimaryKey: userID)
+        try? realm.write {
+            realm.add(ownedGear, update: true)
+            let index = user?.purchased?.subscriptionPlan?.mysteryItems.index(of: key)
+            user?.purchased?.subscriptionPlan?.mysteryItems.remove(at: index ?? 0)
+        }
     }
 }

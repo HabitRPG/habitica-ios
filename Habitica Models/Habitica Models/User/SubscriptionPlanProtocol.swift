@@ -19,6 +19,7 @@ public protocol SubscriptionPlanProtocol {
     var customerId: String? { get set }
     var paymentMethod: String? { get set }
     var consecutive: SubscriptionConsecutiveProtocol? { get set }
+    var mysteryItems: [String] { get set }
 }
 
 public extension SubscriptionPlanProtocol {

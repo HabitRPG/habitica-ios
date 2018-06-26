@@ -10,6 +10,7 @@ import Foundation
 import Habitica_Models
 
 class APIHatchingPotion: HatchingPotionProtocol, Codable {
+    var isSubscriberItem: Bool = false
     var key: String?
     var text: String?
     var notes: String?
@@ -17,4 +18,14 @@ class APIHatchingPotion: HatchingPotionProtocol, Codable {
     var premium: Bool = false
     var limited: Bool = false
     var itemType: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case key
+        case text
+        case notes
+        case value
+        case premium
+        case limited
+        case itemType
+    }
 }

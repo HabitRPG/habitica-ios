@@ -10,6 +10,7 @@ import Foundation
 import Habitica_Models
 
 class APIQuest: QuestProtocol, Decodable {
+    var isSubscriberItem: Bool = false
     var completion: String?
     var category: String?
     var boss: QuestBossProtocol?

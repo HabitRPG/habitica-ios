@@ -11,7 +11,7 @@ import Habitica_Models
 import FunkyNetwork
 import ReactiveSwift
 
-public class OpenMysteryItemCall: ResponseObjectCall<EmptyResponseProtocol, APIEmptyResponse> {
+public class OpenMysteryItemCall: ResponseObjectCall<GearProtocol, APIGear> {
     public init(stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "user.json")) {
         super.init(httpMethod: .POST, endpoint: "user/open-mystery-item", postData: nil, stubHolder: stubHolder)
     }

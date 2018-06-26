@@ -34,7 +34,7 @@ class GuildOverviewViewController: HRPGBaseViewController, UISearchBarDelegate {
         self.segmentedFilterControl.selectedSegmentIndex = 0
         self.segmentedFilterControl.addTarget(self, action: #selector(switchFilter), for: .valueChanged)
         segmentedWrapper.addSubview(self.segmentedFilterControl)
-        headerImageView.image = HabiticaIcons.imageOfGuildHeaderCrest
+        headerImageView.image = HabiticaIcons.imageOfGuildHeaderCrest()
         headerImageView.contentMode = .center
         segmentedWrapper.addSubview(self.headerImageView)
         headerSeparator.backgroundColor = UIColor.gray700()

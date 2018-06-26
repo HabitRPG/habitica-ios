@@ -22,3 +22,12 @@ public protocol StatsProtocol: BaseStatsProtocol {
     var gold: Float { get set }
     var buffs: BuffProtocol? { get set }
 }
+
+public extension StatsProtocol {
+    var habitClassNice: String? {
+        if habitClass == "wizard" {
+            return "mage"
+        }
+        return habitClass
+    }
+}

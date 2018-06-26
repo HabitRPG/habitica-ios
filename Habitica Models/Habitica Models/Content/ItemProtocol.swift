@@ -23,6 +23,7 @@ public protocol ItemProtocol {
     var notes: String? { get set }
     var value: Float { get set }
     var itemType: String? { get set }
+    var isSubscriberItem: Bool { get set }
 }
 
 public extension ItemProtocol {
@@ -35,6 +36,13 @@ public extension ItemProtocol {
             return "Pet_HatchingPotion_\(key ?? "")"
         } else if itemType == ItemType.quests {
             return "inventory_quest_scroll_\(key ?? "")"
+        } else if itemType == ItemType.special {
+            if key == "inventory_present" {
+                let month = Calendar.current.component(.month, from: Date())
+                return String(format: "inventory_present_%02d", month)
+            } else {
+                return "shop_\(key ?? "")"
+            }
         }
         return ""
     }

@@ -33,12 +33,27 @@ class RealmSubscriptionPlan: Object, SubscriptionPlanProtocol {
         }
     }
     @objc dynamic var realmSubscriptionConsecutive: RealmSubscriptionConsecutive?
-    
+    @objc dynamic var mysteryItems: [String] {
+        get {
+            return realmMysteryItems.map({ (key) in
+                return key
+            })
+        }
+        set {
+            realmMysteryItems.removeAll()
+            realmMysteryItems.append(objectsIn: newValue)
+        }
+    }
+    var realmMysteryItems = List<String>()
     
     
     @objc dynamic var id: String?
     override static func primaryKey() -> String {
         return "id"
+    }
+    
+    override static func ignoredProperties() -> [String] {
+        return ["mysteryItems"]
     }
     
     convenience init(userID: String?, protocolObject: SubscriptionPlanProtocol) {
@@ -53,5 +68,6 @@ class RealmSubscriptionPlan: Object, SubscriptionPlanProtocol {
         customerId = protocolObject.customerId
         consecutive = protocolObject.consecutive
         paymentMethod = protocolObject.paymentMethod
+        mysteryItems = protocolObject.mysteryItems
     }
 }

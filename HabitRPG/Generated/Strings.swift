@@ -103,6 +103,8 @@ internal enum L10n {
   internal static let ok = L10n.tr("Mainstrings", "ok")
   /// 1 Month
   internal static let oneMonth = L10n.tr("Mainstrings", "one_month")
+  /// Open
+  internal static let `open` = L10n.tr("Mainstrings", "open")
   /// Open iTunes
   internal static let openItunes = L10n.tr("Mainstrings", "open_itunes")
   /// Open Habitica Website
@@ -119,6 +121,10 @@ internal enum L10n {
   }
   /// Quests
   internal static let quests = L10n.tr("Mainstrings", "quests")
+  /// You open the box and receive %@
+  internal static func receivedMysteryItem(_ p1: String) -> String {
+    return L10n.tr("Mainstrings", "received_mystery_item", p1)
+  }
   /// Reset Justins Tips
   internal static let resetTips = L10n.tr("Mainstrings", "reset_tips")
   /// Reset Streak
@@ -139,6 +145,8 @@ internal enum L10n {
   }
   /// Share
   internal static let share = L10n.tr("Mainstrings", "share")
+  /// Special Items
+  internal static let specialItems = L10n.tr("Mainstrings", "specialItems")
   /// Summary
   internal static let summary = L10n.tr("Mainstrings", "summary")
   /// Sync Error

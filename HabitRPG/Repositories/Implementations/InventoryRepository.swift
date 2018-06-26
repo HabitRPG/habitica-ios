@@ -37,9 +37,11 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
         })
     }
     
+    // swiftlint:disable:next large_tuple
     func getItems(keys: [String]) -> SignalProducer<(ReactiveResults<[EggProtocol]>,
         ReactiveResults<[FoodProtocol]>,
         ReactiveResults<[HatchingPotionProtocol]>,
+        ReactiveResults<[SpecialItemProtocol]>,
         ReactiveResults<[QuestProtocol]>), ReactiveSwiftRealmError> {
         return localRepository.getItems(keys: keys)
     }
@@ -160,6 +162,27 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
                 self?.localUserRepository.updateUser(id: userID, updateUser: updatedUser)
             }
         })
+    }
+    
+    func openMysteryItem() -> Signal<GearProtocol?, NoError> {
+        let call = OpenMysteryItemCall()
+        call.fire()
+        return call.objectSignal
+            .skipNil()
+            .flatMap(.latest, {[weak self] (gear) -> SignalProducer<GearProtocol?, NoError> in
+                let key = gear.key ?? ""
+                return self?.localRepository.getGear(predicate: NSPredicate(format: "key == %@", key)).map({ (values, _) in
+                    return values.first
+                }).flatMapError({ _ in
+                    return SignalProducer.empty
+                }) ?? SignalProducer.empty
+            })
+            .on(value: {[weak self] gear in
+                if let key = gear?.key {
+                    self?.localRepository.receiveMysteryItem(userID: self?.currentUserId ?? "", key: key)
+                    ToastManager.show(text: L10n.receivedMysteryItem(gear?.text ?? ""), color: .green)
+                }
+            })
     }
     
     func purchaseQuest(key: String) -> Signal<UserProtocol?, NoError> {

@@ -10,6 +10,7 @@ import Foundation
 import Habitica_Models
 
 class APIFood: FoodProtocol, Codable {
+    var isSubscriberItem: Bool = false
     var key: String?
     var text: String?
     var notes: String?
@@ -17,4 +18,14 @@ class APIFood: FoodProtocol, Codable {
     var target: String?
     var canDrop: Bool = false
     var itemType: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case key
+        case text
+        case notes
+        case value
+        case target
+        case canDrop
+        case itemType
+    }
 }

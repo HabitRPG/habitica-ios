@@ -108,7 +108,7 @@ class UserTopHeader: UIView {
             
             let levelString = NSLocalizedString("Level", comment: "")
             if user.preferences?.disableClasses != true && stats.level >= 10 {
-                levelLabel.text = "\(levelString) \(stats.level) \(stats.habitClass?.capitalized ?? "")"
+                levelLabel.text = "\(levelString) \(stats.level) \(stats.habitClassNice?.capitalized ?? "")"
                 switch stats.habitClass ?? "" {
                 case "warrior":
                     classImageView.image = HabiticaIcons.imageOfWarriorLightBg

@@ -49,7 +49,22 @@ public class ContentLocalRepository: BaseLocalRepository {
         content.customizations.forEach({ (customization) in
             newObjects.append(RealmCustomization(customization))
         })
+        
+        saveMysteryItem()
+        
         save(objects: newObjects)
+    }
+    
+    public func saveMysteryItem() {
+        let mysteryItem = RealmSpecialItem()
+        mysteryItem.key = "inventory_present"
+        mysteryItem.text = "Mystery Item"
+        mysteryItem.notes = "Each month, subscribers will receive a mystery item. This is usually released about one week before the end of the month."
+        mysteryItem.isSubscriberItem = true
+        mysteryItem.itemType = "special"
+        try? getRealm()?.write {
+            getRealm()?.add(mysteryItem, update: true)
+        }
     }
     
     public func save(_ worldState: WorldStateProtocol) {

@@ -10,6 +10,7 @@ import Foundation
 import Habitica_Models
 
 class APISpecialItem: SpecialItemProtocol, Decodable {
+    var isSubscriberItem: Bool = false
     var key: String?
     var text: String?
     var notes: String?

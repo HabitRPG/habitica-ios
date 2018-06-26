@@ -29,6 +29,7 @@ class ItemsViewDataSource: BaseReactiveTableViewDataSource<ItemProtocol> {
     
     private let inventoryRepository = InventoryRepository()
     private let stableRepository = StableRepository()
+    private let userRepository = UserRepository()
     private var fetchDisposable: Disposable?
     
     private var ownedItems = [String: Int]()
@@ -62,6 +63,7 @@ class ItemsViewDataSource: BaseReactiveTableViewDataSource<ItemProtocol> {
         sections.append(ItemSection<ItemProtocol>(key: "eggs", title: L10n.eggs))
         sections.append(ItemSection<ItemProtocol>(key: "food", title: L10n.food))
         sections.append(ItemSection<ItemProtocol>(key: "hatchingPotions", title: L10n.hatchingPotions))
+        sections.append(ItemSection<ItemProtocol>(key: "special", title: L10n.specialItems))
         sections.append(ItemSection<ItemProtocol>(key: "quests", title: L10n.quests))
         
         fetchItems()
@@ -85,32 +87,43 @@ class ItemsViewDataSource: BaseReactiveTableViewDataSource<ItemProtocol> {
             disposable.dispose()
         }
         DispatchQueue.main.async {[weak self] in
-        self?.fetchDisposable = self?.inventoryRepository.getOwnedItems()
-            .on(value: {[weak self]ownedItems in
+            self?.fetchDisposable = self?.inventoryRepository.getOwnedItems().combineLatest(with: self?.userRepository.getUser().flatMapError({ _ in
+                return SignalProducer.empty
+            }) ?? SignalProducer.empty)
+            .on(value: {[weak self] (ownedItems, user) in
                 self?.ownedItems.removeAll()
                 ownedItems.value.forEach({ (item) in
                     self?.ownedItems[(item.key ?? "") + (item.itemType ?? "")] = item.numberOwned
                 })
+                if let mysteryItemCount = user.purchased?.subscriptionPlan?.mysteryItems.count, mysteryItemCount > 0 {
+                    self?.ownedItems["inventory_presentspecial"] = mysteryItemCount
+                }
             })
-            .map({ (data) -> [String] in
-                return data.value.map({ (ownedItem) -> String in
+            .map({ (data, user) -> [String] in
+                var keys = data.value.map({ (ownedItem) -> String in
                     return ownedItem.key ?? ""
                 }).filter({ (key) -> Bool in
                     return !key.isEmpty
                 })
+                if let mysteryItemCount = user.purchased?.subscriptionPlan?.mysteryItems.count, mysteryItemCount > 0 {
+                    keys.append("inventory_present")
+                }
+                return keys
             })
             .flatMap(.latest, {[weak self] (keys) in
                 return self?.inventoryRepository.getItems(keys: keys) ?? SignalProducer.empty
             })
-            .on(value: {[weak self](eggs, food, hatchingPotions, quests) in
+            .on(value: {[weak self](eggs, food, hatchingPotions, specialItems, quests) in
                 self?.sections[0].items = eggs.value
                 self?.notify(changes: eggs.changes)
                 self?.sections[1].items = food.value
                 self?.notify(changes: food.changes, section: 1)
                 self?.sections[2].items = hatchingPotions.value
                 self?.notify(changes: hatchingPotions.changes, section: 2)
-                self?.sections[3].items = quests.value
-                self?.notify(changes: quests.changes, section: 3)
+                self?.sections[3].items = specialItems.value
+                self?.notify(changes: specialItems.changes, section: 3)
+                self?.sections[4].items = quests.value
+                self?.notify(changes: quests.changes, section: 4)
             })
             .start()
         }

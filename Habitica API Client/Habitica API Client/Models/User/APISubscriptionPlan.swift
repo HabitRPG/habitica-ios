@@ -19,6 +19,7 @@ class APISubscriptionPlan: SubscriptionPlanProtocol, Decodable {
     var customerId: String?
     var paymentMethod: String?
     var consecutive: SubscriptionConsecutiveProtocol?
+    var mysteryItems: [String]
     
     enum CodingKeys: String, CodingKey {
         case quantity
@@ -30,6 +31,7 @@ class APISubscriptionPlan: SubscriptionPlanProtocol, Decodable {
         case customerId
         case paymentMethod
         case consecutive
+        case mysteryItems
     }
     
     required init(from decoder: Decoder) throws {
@@ -43,5 +45,6 @@ class APISubscriptionPlan: SubscriptionPlanProtocol, Decodable {
         customerId = try? values.decode(String.self, forKey: .customerId)
         paymentMethod = try? values.decode(String.self, forKey: .paymentMethod)
         consecutive = try? values.decode(APISubscriptionConsecutive.self, forKey: .consecutive)
+        mysteryItems = (try? values.decode([String].self, forKey: .mysteryItems)) ?? []
     }
 }

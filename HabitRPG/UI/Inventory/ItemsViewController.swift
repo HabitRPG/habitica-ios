@@ -78,9 +78,16 @@ class ItemsViewController: HRPGBaseViewController {
                 }
             }))
         }
-        if item.key != "Saddle" && item.itemType != ItemType.quests {
+        if item.key != "Saddle" && item.itemType != ItemType.quests && item.itemType != ItemType.special {
             alertController.addAction(UIAlertAction(title: L10n.sell(Int(item.value)), style: .destructive, handler: {[weak self] (_) in
                 self?.inventoryRepository.sell(item: item).observeCompleted {
+                    self?.dismissIfNeeded()
+                }
+            }))
+        }
+        if item.key == "inventory_present" {
+            alertController.addAction(UIAlertAction(title: L10n.open, style: .default, handler: {[weak self] (_) in
+                self?.inventoryRepository.openMysteryItem().observeCompleted {
                     self?.dismissIfNeeded()
                 }
             }))
