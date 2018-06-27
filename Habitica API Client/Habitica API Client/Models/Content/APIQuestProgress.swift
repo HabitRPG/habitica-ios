@@ -9,15 +9,17 @@
 import Foundation
 import Habitica_Models
 
-class APIQuestProgress: QuestProgressProtocol, Codable {
+class APIQuestProgress: QuestProgressProtocol, Decodable {
     var health: Float = 0
     var rage: Float = 0
     var up: Float = 0
+    var collect: [QuestProgressCollectProtocol]
     
     enum CodingKeys: String, CodingKey {
         case health = "hp"
         case rage
         case up
+        case collect
     }
     
     public required init(from decoder: Decoder) throws {
@@ -25,5 +27,8 @@ class APIQuestProgress: QuestProgressProtocol, Codable {
         health = (try? values.decode(Float.self, forKey: .health)) ?? 0
         rage = (try? values.decode(Float.self, forKey: .rage)) ?? 0
         up = (try? values.decode(Float.self, forKey: .up)) ?? 0
+        collect = (try? values.decode([String: Int].self, forKey: .collect).map({ (collect) in
+            return APIQuestProgressCollect(key: collect.key, count: collect.value)
+        })) ?? []
     }
 }

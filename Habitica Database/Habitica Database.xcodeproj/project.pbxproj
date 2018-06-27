@@ -83,6 +83,7 @@
 		298FB9B6204D9338004DDACC /* Habitica_Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 298FB9AC204D9338004DDACC /* Habitica_Database.framework */; };
 		298FB9BB204D9338004DDACC /* Habitica_DatabaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298FB9BA204D9338004DDACC /* Habitica_DatabaseTests.swift */; };
 		298FB9BD204D9338004DDACC /* Habitica_Database.h in Headers */ = {isa = PBXBuildFile; fileRef = 298FB9AF204D9338004DDACC /* Habitica_Database.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		29990DAE20E3E6DE001ADD8B /* RealmQuestProgressCollect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29990DAD20E3E6DE001ADD8B /* RealmQuestProgressCollect.swift */; };
 		299FB282208496A500422522 /* RealmPet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB281208496A500422522 /* RealmPet.swift */; };
 		299FB2842084975100422522 /* RealmMount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB2832084975100422522 /* RealmMount.swift */; };
 		299FB29020849E7300422522 /* RealmOwnedPet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB28F20849E7300422522 /* RealmOwnedPet.swift */; };
@@ -185,6 +186,7 @@
 		298FB9B5204D9338004DDACC /* Habitica DatabaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Habitica DatabaseTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		298FB9BA204D9338004DDACC /* Habitica_DatabaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habitica_DatabaseTests.swift; sourceTree = "<group>"; };
 		298FB9BC204D9338004DDACC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		29990DAD20E3E6DE001ADD8B /* RealmQuestProgressCollect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmQuestProgressCollect.swift; sourceTree = "<group>"; };
 		299FB281208496A500422522 /* RealmPet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmPet.swift; sourceTree = "<group>"; };
 		299FB2832084975100422522 /* RealmMount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmMount.swift; sourceTree = "<group>"; };
 		299FB28F20849E7300422522 /* RealmOwnedPet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmOwnedPet.swift; sourceTree = "<group>"; };
@@ -346,6 +348,7 @@
 				298CB21420AF0B3A006DA349 /* RealmQuestDropItem.swift */,
 				291DE97B209B44BB0073182A /* RealmQuestParticipant.swift */,
 				2902798C205834A3006DACB9 /* RealmQuestProgress.swift */,
+				29990DAD20E3E6DE001ADD8B /* RealmQuestProgressCollect.swift */,
 				2902798A20583479006DACB9 /* RealmQuestState.swift */,
 				295E9DEB20B3326700D58D45 /* RealmShop.swift */,
 				295E9DED20B3331500D58D45 /* RealmShopCategory.swift */,
@@ -651,6 +654,7 @@
 				291E95B3209887BF006EE585 /* RealmUserParty.swift in Sources */,
 				29323E582052F8BC00AC6D6F /* RealmUserItems.swift in Sources */,
 				29DBFEFB20CADB4100DF9CF2 /* RealmSpecialItem.swift in Sources */,
+				29990DAE20E3E6DE001ADD8B /* RealmQuestProgressCollect.swift in Sources */,
 				290B629E207F7F34007287C4 /* RealmOwnedGear.swift in Sources */,
 				295611262057D77600D9711A /* RealmQuestCollect.swift in Sources */,
 				298CB21320AF0B22006DA349 /* RealmQuestDrop.swift in Sources */,

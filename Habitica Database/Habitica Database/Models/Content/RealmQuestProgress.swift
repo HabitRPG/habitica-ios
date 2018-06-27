@@ -16,6 +16,24 @@ class RealmQuestProgress: Object, QuestProgressProtocol {
     @objc dynamic var health: Float = 0
     @objc dynamic var rage: Float = 0
     @objc dynamic var up: Float = 0
+    var collect: [QuestProgressCollectProtocol] {
+        get {
+            return realmCollect.map({ (collectItem) -> QuestProgressCollectProtocol in
+                return collectItem
+            })
+        }
+        set {
+            realmCollect.removeAll()
+            newValue.forEach { (collectItem) in
+                if let realmProgressCollect = collectItem as? RealmQuestProgressCollect {
+                    realmCollect.append(realmProgressCollect)
+                } else {
+                    realmCollect.append(RealmQuestProgressCollect(groupID: id, protocolObject: collectItem))
+                }
+            }
+        }
+    }
+    var realmCollect = List<RealmQuestProgressCollect>()
     
     override static func primaryKey() -> String {
         return "combinedKey"
@@ -28,5 +46,6 @@ class RealmQuestProgress: Object, QuestProgressProtocol {
         health = progress.health
         rage = progress.health
         up = progress.up
+        collect = progress.collect
     }
 }

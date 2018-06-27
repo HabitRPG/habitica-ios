@@ -171,6 +171,7 @@
 		2974BDA1208E16E100EC1A25 /* APISubscriptionConsecutive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BDA0208E16E100EC1A25 /* APISubscriptionConsecutive.swift */; };
 		2974BDAB208F4D6B00EC1A25 /* UnlockCustomizationsCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BDAA208F4D6B00EC1A25 /* UnlockCustomizationsCall.swift */; };
 		2974BDB220908E4600EC1A25 /* APIInboxMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BDB120908E4600EC1A25 /* APIInboxMessages.swift */; };
+		29990DB020E3E791001ADD8B /* APIQuestProgressCollect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29990DAF20E3E791001ADD8B /* APIQuestProgressCollect.swift */; };
 		299FB2882084987000422522 /* APIPet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB2872084987000422522 /* APIPet.swift */; };
 		299FB28A2084988500422522 /* APIMount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB2892084988500422522 /* APIMount.swift */; };
 		299FB29420849EDD00422522 /* APIOwnedPet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB29320849EDD00422522 /* APIOwnedPet.swift */; };
@@ -370,6 +371,7 @@
 		2974BDA0208E16E100EC1A25 /* APISubscriptionConsecutive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISubscriptionConsecutive.swift; sourceTree = "<group>"; };
 		2974BDAA208F4D6B00EC1A25 /* UnlockCustomizationsCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockCustomizationsCall.swift; sourceTree = "<group>"; };
 		2974BDB120908E4600EC1A25 /* APIInboxMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIInboxMessages.swift; sourceTree = "<group>"; };
+		29990DAF20E3E791001ADD8B /* APIQuestProgressCollect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIQuestProgressCollect.swift; sourceTree = "<group>"; };
 		299FB2872084987000422522 /* APIPet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIPet.swift; sourceTree = "<group>"; };
 		299FB2892084988500422522 /* APIMount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIMount.swift; sourceTree = "<group>"; };
 		299FB29320849EDD00422522 /* APIOwnedPet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIOwnedPet.swift; sourceTree = "<group>"; };
@@ -458,6 +460,7 @@
 				295E9DBC20B2C83400D58D45 /* APIQuestDropItem.swift */,
 				291DE979209B443D0073182A /* APIQuestParticipant.swift */,
 				2902799220583612006DACB9 /* APIQuestProgress.swift */,
+				29990DAF20E3E791001ADD8B /* APIQuestProgressCollect.swift */,
 				29027990205835F7006DACB9 /* APIQuestState.swift */,
 				295E9DEF20B3362A00D58D45 /* APIShop.swift */,
 				295E9DF120B3369C00D58D45 /* APIShopCategories.swift */,
@@ -1039,6 +1042,7 @@
 				290B626D207BA6AB007287C4 /* ResetAccountCall.swift in Sources */,
 				291E95B5209888E1006EE585 /* APIUserParty.swift in Sources */,
 				290C3015206A80AE0066AF5B /* MoveTaskCall.swift in Sources */,
+				29990DB020E3E791001ADD8B /* APIQuestProgressCollect.swift in Sources */,
 				292F966C206E6D8A00804151 /* UpdateUserCall.swift in Sources */,
 				295610F92056CAA800D9711A /* APIHatchingPotion.swift in Sources */,
 				290B627D207BA9D4007287C4 /* SocialLoginCall.swift in Sources */,

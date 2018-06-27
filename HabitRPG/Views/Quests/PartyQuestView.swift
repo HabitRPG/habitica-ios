@@ -28,6 +28,7 @@ class PartyQuestView: UIView {
         return view
     }()
     var progressBarViews = [QuestProgressBarView]()
+    var isBossQuest = true
     
     init() {
         super.init(frame: CGRect.zero)
@@ -56,6 +57,7 @@ class PartyQuestView: UIView {
             self.invalidateIntrinsicContentSize()
         }
         if let boss = quest.boss {
+            isBossQuest = true
             let bossView = QuestProgressBarView()
             bossView.titleTextColor = UIColor.black.withAlphaComponent(0.8)
             bossView.valueTextColor = UIColor.gray200()
@@ -68,6 +70,7 @@ class PartyQuestView: UIView {
             addSubview(bossView)
             progressBarViews.append(bossView)
         } else {
+            isBossQuest = false
             quest.collect?.forEach { (questCollect) in
                 let collectView = QuestProgressBarView()
                 collectView.titleTextColor = UIColor.black.withAlphaComponent(0.8)
@@ -75,6 +78,10 @@ class PartyQuestView: UIView {
                 collectView.barBackgroundColor = UIColor.gray500()
                 collectView.title = questCollect.text
                 collectView.maxValue = Float(questCollect.count)
+                let value = state.progress?.collect.first(where: { (collect) -> Bool in
+                    return collect.key == questCollect.key
+                })?.count
+                collectView.currentValue = Float(value ?? 0)
                 collectView.barColor = UIColor.green100()
                 ImageManager.getImage(name: "quest_\(quest.key ?? "")_\(questCollect.key ?? "")", completion: { (image, _) in
                     collectView.bigIcon = image
@@ -89,9 +96,11 @@ class PartyQuestView: UIView {
     }
     
     func setPendingDamage(_ pending: Float) {
-        progressBarViews.first?.pendingBarColor = UIColor.yellow50()
-        progressBarViews.first?.pendingTitle = L10n.pendingDamage
-        progressBarViews.first?.pendingValue = pending
+        if isBossQuest {
+            progressBarViews.first?.pendingBarColor = UIColor.yellow50()
+            progressBarViews.first?.pendingTitle = L10n.pendingDamage
+            progressBarViews.first?.pendingValue = pending
+        }
     }
     
     override func layoutSubviews() {
