@@ -195,6 +195,10 @@ class TaskFormViewController: FormViewController {
                 row.topSpacing = 12
                 row.add(rule: RuleRequired())
                 row.validationOptions = .validatesOnDemand
+                row.onChange({[weak self] _ in
+                    self?.tableView.beginUpdates()
+                    self?.tableView.endUpdates()
+                })
             }
             <<< TaskTextInputRow(TaskFormTags.notes) { row in
                 row.title = L10n.notes
@@ -202,6 +206,10 @@ class TaskFormViewController: FormViewController {
                 row.tintColor = taskTintColor
                 row.topSpacing = 8
                 row.bottomSpacing = 12
+                row.onChange({[weak self] _ in
+                    self?.tableView.beginUpdates()
+                    self?.tableView.endUpdates()
+                })
         }
     }
     
@@ -308,6 +316,11 @@ class TaskFormViewController: FormViewController {
                 row.cellSetup({ (cell, _) in
                     cell.tintColor = self.lightTaskTintColor
                     cell.detailTextLabel?.textColor = self.lightTaskTintColor
+                }).onCellSelection({ (_, row) in
+                    if row.value == nil {
+                        row.value = Date()
+                        row.updateCell()
+                    }
                 })
             }
             <<< ButtonRow(TaskFormTags.dueDateClear) { row in

@@ -8,14 +8,17 @@
 
 import Foundation
 import Eureka
+import PinLayout
 
 public class TaskTextInputCell: Cell<String>, CellType, UITextViewDelegate {
     
     @IBOutlet weak var cellBackgroundView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var textField: UITextView!
-    @IBOutlet weak var topSpacingConstraint: NSLayoutConstraint!
-    @IBOutlet weak var bottomSpacingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var textViewBackgroundView: UIView!
+    
+    private var topSpacing: CGFloat = 0
+    private var bottomSpacing: CGFloat = 0
     
     public override func setup() {
         super.setup()
@@ -32,8 +35,8 @@ public class TaskTextInputCell: Cell<String>, CellType, UITextViewDelegate {
             cellBackgroundView.backgroundColor = taskRow.tintColor
             textField.tintColor = taskRow.tintColor.lighter(by: 10)
             //textField.attributedPlaceholder = NSAttributedString(string: taskRow.placeholder ?? "", attributes: [NSAttributedStringKey.foregroundColor: UIColor(white: 1.0, alpha: 0.5)])
-            topSpacingConstraint.constant = taskRow.topSpacing
-            bottomSpacingConstraint.constant = taskRow.bottomSpacing
+            topSpacing = taskRow.topSpacing
+            bottomSpacing = taskRow.bottomSpacing
         }
     }
     
@@ -41,10 +44,27 @@ public class TaskTextInputCell: Cell<String>, CellType, UITextViewDelegate {
         row.value = textView.text
         row.updateCell()
     }
+   
+    private func layout() {
+        separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: bounds.size.width)
+        
+        titleLabel.pin.horizontally(26).top(topSpacing).sizeToFit(.width)
+        textViewBackgroundView.pin.below(of: titleLabel).marginTop(4).horizontally(16)
+        textField.pin.top(4).horizontally(10).sizeToFit(.width)
+        textViewBackgroundView.pin.height(textField.frame.size.height + 8)
+        cellBackgroundView.pin.top(-2).horizontally().height(textViewBackgroundView.frame.origin.y + textViewBackgroundView.frame.size.height + bottomSpacing + 4)
+        pin.height(cellBackgroundView.frame.size.height - 4)
+    }
     
     override public func layoutSubviews() {
         super.layoutSubviews()
-        separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: bounds.size.width)
+        layout()
+    }
+    
+    override public func sizeThatFits(_ size: CGSize) -> CGSize {
+        contentView.pin.width(size.width)
+        layout()
+        return CGSize(width: contentView.frame.width, height: textViewBackgroundView.frame.height + textViewBackgroundView.frame.origin.y + bottomSpacing)
     }
 }
 

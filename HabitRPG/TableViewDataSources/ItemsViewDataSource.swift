@@ -79,7 +79,6 @@ class ItemsViewDataSource: BaseReactiveTableViewDataSource<ItemProtocol> {
             .on(value: {[weak self]ownedPets in
                 self?.ownedPets = ownedPets
         }).start())
-        
     }
     
     private func fetchItems() {

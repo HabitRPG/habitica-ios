@@ -63,6 +63,33 @@ class HabitControlsCell: Cell<HabitControlsValue>, CellType {
             } else {
                 minusControlLabel.textColor = UIColor.gray200()
             }
+            applyAccessibility()
+        }
+    }
+    
+    private func applyAccessibility() {
+        if let taskRow = row as? HabitControlsRow {
+            shouldGroupAccessibilityChildren = true
+            isAccessibilityElement = true
+            if taskRow.value?.positive == true && taskRow.value?.negative == true {
+                accessibilityLabel = L10n.Tasks.Form.Accessibility.positiveAndNegativeEnabled
+            } else if taskRow.value?.positive == true {
+                accessibilityLabel = L10n.Tasks.Form.Accessibility.positiveEnabled
+            } else if taskRow.value?.negative == true {
+                accessibilityLabel = L10n.Tasks.Form.Accessibility.negativeEnabled
+            }
+            
+            accessibilityCustomActions = []
+            if taskRow.value?.positive == true {
+                accessibilityCustomActions?.append(UIAccessibilityCustomAction(name: L10n.Tasks.Form.Accessibility.disablePositive, target: self, selector: #selector(plusTapped)))
+            } else {
+                accessibilityCustomActions?.append(UIAccessibilityCustomAction(name: L10n.Tasks.Form.Accessibility.enablePositive, target: self, selector: #selector(plusTapped)))
+            }
+            if taskRow.value?.negative == true {
+                accessibilityCustomActions?.append(UIAccessibilityCustomAction(name: L10n.Tasks.Form.Accessibility.disableNegative, target: self, selector: #selector(minusTapped)))
+            } else {
+                accessibilityCustomActions?.append(UIAccessibilityCustomAction(name: L10n.Tasks.Form.Accessibility.enableNegative, target: self, selector: #selector(minusTapped)))
+            }
         }
     }
 }

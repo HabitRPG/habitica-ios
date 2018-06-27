@@ -559,6 +559,8 @@ internal enum L10n {
       internal static let difficulty = L10n.tr("Mainstrings", "tasks.form.difficulty")
       /// Due date
       internal static let dueDate = L10n.tr("Mainstrings", "tasks.form.due_date")
+      /// Easy
+      internal static let easy = L10n.tr("Mainstrings", "tasks.form.easy")
       /// Edit %@
       internal static func edit(_ p1: String) -> String {
         return L10n.tr("Mainstrings", "tasks.form.edit", p1)
@@ -567,6 +569,10 @@ internal enum L10n {
       internal static let every = L10n.tr("Mainstrings", "tasks.form.every")
       /// What habits do you want to foster or break?
       internal static let habitTitlePlaceholder = L10n.tr("Mainstrings", "tasks.form.habit_title_placeholder")
+      /// Hard
+      internal static let hard = L10n.tr("Mainstrings", "tasks.form.hard")
+      /// Medium
+      internal static let medium = L10n.tr("Mainstrings", "tasks.form.medium")
       /// New checklist item
       internal static let newChecklistItem = L10n.tr("Mainstrings", "tasks.form.new_checklist_item")
       /// New reminder
@@ -591,6 +597,33 @@ internal enum L10n {
       internal static let tags = L10n.tr("Mainstrings", "tasks.form.tags")
       /// What do you want to complete once?
       internal static let todosTitlePlaceholder = L10n.tr("Mainstrings", "tasks.form.todos_title_placeholder")
+      /// Trivial
+      internal static let trivial = L10n.tr("Mainstrings", "tasks.form.trivial")
+
+      internal enum Accessibility {
+        /// Disable negative action.
+        internal static let disableNegative = L10n.tr("Mainstrings", "tasks.form.accessibility.disable_negative")
+        /// Disable positive action.
+        internal static let disablePositive = L10n.tr("Mainstrings", "tasks.form.accessibility.disable_positive")
+        /// Enable negative action.
+        internal static let enableNegative = L10n.tr("Mainstrings", "tasks.form.accessibility.enable_negative")
+        /// Enable positive action.
+        internal static let enablePositive = L10n.tr("Mainstrings", "tasks.form.accessibility.enable_positive")
+        /// Negative habit action enabled.
+        internal static let negativeEnabled = L10n.tr("Mainstrings", "tasks.form.accessibility.negative_enabled")
+        /// Positive and negative habit actions enabled.
+        internal static let positiveAndNegativeEnabled = L10n.tr("Mainstrings", "tasks.form.accessibility.positive_and_negative_enabled")
+        /// Positive habit action enabled.
+        internal static let positiveEnabled = L10n.tr("Mainstrings", "tasks.form.accessibility.positive_enabled")
+        /// Change difficuly to %@
+        internal static func setTaskDifficulty(_ p1: String) -> String {
+          return L10n.tr("Mainstrings", "tasks.form.accessibility.set_task_difficulty", p1)
+        }
+        /// Difficuly is %@
+        internal static func taskDifficulty(_ p1: String) -> String {
+          return L10n.tr("Mainstrings", "tasks.form.accessibility.task_difficulty", p1)
+        }
+      }
     }
   }
 
