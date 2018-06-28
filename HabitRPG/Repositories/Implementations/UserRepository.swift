@@ -323,6 +323,16 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         })
     }
     
+    func retrieveInboxMessages() -> Signal<[InboxMessageProtocol]?, NoError> {
+        let call = RetrieveInboxMessagesCall()
+        call.fire()
+        return call.arraySignal.on(value: {[weak self] messages in
+            if let messages = messages, let userID = self?.currentUserId {
+                self?.localRepository.save(userID: userID, messages: messages)
+            }
+        })
+    }
+    
     private func handleUserUpdate() -> ((UserProtocol?) -> Void) {
         return { updatedUser in
             if let userID = self.currentUserId, let updatedUser = updatedUser {

@@ -37,10 +37,10 @@ class HRPGShopsOverviewViewModel: NSObject, HRPGShopOverviewTableViewDataSourceD
     
     @objc
     func refreshShops() {
-        refreshShop(withIdentifier: Shops.MarketKey)
-        refreshShop(withIdentifier: Shops.QuestShopKey)
-        refreshShop(withIdentifier: Shops.SeasonalShopKey)
-        refreshShop(withIdentifier: Shops.TimeTravelersShopKey)
+        refreshShop(withIdentifier: Constants.MarketKey)
+        refreshShop(withIdentifier: Constants.QuestShopKey)
+        refreshShop(withIdentifier: Constants.SeasonalShopKey)
+        refreshShop(withIdentifier: Constants.TimeTravelersShopKey)
     }
 
     // MARK: - datasource delegate
@@ -53,13 +53,13 @@ class HRPGShopsOverviewViewModel: NSObject, HRPGShopOverviewTableViewDataSourceD
     func identifier(at index: Int) -> String? {
         switch index {
         case 0:
-            return Shops.MarketKey
+            return Constants.MarketKey
         case 1:
-            return Shops.QuestShopKey
+            return Constants.QuestShopKey
         case 2:
-            return Shops.SeasonalShopKey
+            return Constants.SeasonalShopKey
         case 3:
-            return Shops.TimeTravelersShopKey
+            return Constants.TimeTravelersShopKey
         default:
             return nil
         }

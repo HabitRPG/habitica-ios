@@ -19,6 +19,9 @@ class GroupChatViewController: SLKTextViewController {
             if dataSource == nil, let groupID = self.groupID {
                 setupDataSource(groupID: groupID)
             }
+            if groupID != oldValue {
+                self.refresh()
+            }
         }
     }
     private var dataSource: GroupChatViewDataSource?
@@ -73,8 +76,6 @@ class GroupChatViewController: SLKTextViewController {
         if let groupID = self.groupID {
             setupDataSource(groupID: groupID)
         }
-        
-        self.refresh()
     }
     
     private func setupDataSource(groupID: String) {
@@ -85,7 +86,7 @@ class GroupChatViewController: SLKTextViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if let groupID = self.groupID {
+        if let groupID = self.groupID, groupID != Constants.TAVERN_ID {
             socialRepository.markChatAsSeen(groupID: groupID).observeCompleted {}
         }
     }
@@ -104,7 +105,7 @@ class GroupChatViewController: SLKTextViewController {
     @objc
     func refresh() {
         if let groupID = self.groupID {
-            socialRepository.retrieveGroup(groupID: groupID).observeCompleted {[weak self] in
+            socialRepository.retrieveChat(groupID: groupID).observeCompleted {[weak self] in
                 if #available(iOS 10.0, *) {
                     self?.tableView?.refreshControl?.endRefreshing()
                 }

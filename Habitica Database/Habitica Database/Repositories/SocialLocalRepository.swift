@@ -19,7 +19,6 @@ public class SocialLocalRepository: BaseLocalRepository {
             return
         }
         save(object: RealmGroup(group))
-        removeOldChatMessages(groupID: group.id, newChatMessages: group.chat)
     }
     
     public func save(objectID: String, groupID: String, questState: QuestStateProtocol) {

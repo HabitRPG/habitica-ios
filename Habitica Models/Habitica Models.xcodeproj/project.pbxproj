@@ -84,6 +84,7 @@
 		298FB9E1204D9404004DDACC /* Habitica_Models.h in Headers */ = {isa = PBXBuildFile; fileRef = 298FB9D3204D9403004DDACC /* Habitica_Models.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		298FB9EB204D940E004DDACC /* TaskProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298FB9EA204D940E004DDACC /* TaskProtocol.swift */; };
 		29990DAC20E3E5B2001ADD8B /* QuestProgressCollectProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29990DAB20E3E5B2001ADD8B /* QuestProgressCollectProtocol.swift */; };
+		29990DB220E3FA82001ADD8B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29990DB120E3FA82001ADD8B /* Constants.swift */; };
 		299FB27A2084946700422522 /* AnimalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB2792084946700422522 /* AnimalProtocol.swift */; };
 		299FB27C208494CA00422522 /* PetProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB27B208494CA00422522 /* PetProtocol.swift */; };
 		299FB27E208494E200422522 /* MountProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB27D208494E200422522 /* MountProtocol.swift */; };
@@ -192,6 +193,7 @@
 		298FB9E0204D9404004DDACC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		298FB9EA204D940E004DDACC /* TaskProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskProtocol.swift; sourceTree = "<group>"; };
 		29990DAB20E3E5B2001ADD8B /* QuestProgressCollectProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestProgressCollectProtocol.swift; sourceTree = "<group>"; };
+		29990DB120E3FA82001ADD8B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		299FB2792084946700422522 /* AnimalProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalProtocol.swift; sourceTree = "<group>"; };
 		299FB27B208494CA00422522 /* PetProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetProtocol.swift; sourceTree = "<group>"; };
 		299FB27D208494E200422522 /* MountProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountProtocol.swift; sourceTree = "<group>"; };
@@ -383,6 +385,7 @@
 				29B478BE20C5304F00B6123F /* BuyResponseProtocol.swift */,
 				29B478C020C531B000B6123F /* ArmoireResponseProtocol.swift */,
 				29DBFF0820D1336000DF9CF2 /* EquatableStringEnumProtocol.swift */,
+				29990DB120E3FA82001ADD8B /* Constants.swift */,
 			);
 			path = "Habitica Models";
 			sourceTree = "<group>";
@@ -600,6 +603,7 @@
 				2914489C208A335C00F3A6B5 /* CustomizationSetProtocol.swift in Sources */,
 				29323E4320521A7900AC6D6F /* ContributorProtocol.swift in Sources */,
 				290279872058341F006DACB9 /* QuestProgressProtocol.swift in Sources */,
+				29990DB220E3FA82001ADD8B /* Constants.swift in Sources */,
 				292DEE86204E48A80086D5F7 /* ReminderProtocol.swift in Sources */,
 				292DEE7C204E372E0086D5F7 /* ChecklistItemProtocol.swift in Sources */,
 				299FB28C20849DF300422522 /* OwnedPetProtocol.swift in Sources */,

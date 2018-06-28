@@ -39,6 +39,15 @@ public class UserLocalRepository: BaseLocalRepository {
         removeOldInAppRewards(userID: userID, newInAppRewards: inAppRewards)
     }
     
+    public func save(userID: String, messages: [InboxMessageProtocol]) {
+        save(objects:messages.map { (messsage) in
+            if let realmInboxMessage = messsage as? RealmInboxMessage {
+                return realmInboxMessage
+            }
+            return RealmInboxMessage(userID: userID, inboxMessage: messsage)
+        })
+    }
+    
     private func removeOldInAppRewards(userID: String?, newInAppRewards: [InAppRewardProtocol]) {
         let oldRewards = getRealm()?.objects(RealmInAppReward.self).filter("userID == '\(userID ?? "")'")
         var rewardsToRemove = [RealmInAppReward]()

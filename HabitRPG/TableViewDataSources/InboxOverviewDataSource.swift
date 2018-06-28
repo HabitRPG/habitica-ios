@@ -18,6 +18,8 @@ import DateTools
     
     @objc
     func markInboxSeen()
+    @objc
+    func refresh(completed: @escaping (() -> Void))
 }
 
 @objc
@@ -31,6 +33,7 @@ class InboxOverviewDataSourceInstantiator: NSObject {
 class InboxOverviewDataSource: BaseReactiveTableViewDataSource<InboxMessageProtocol>, InboxOverviewDataSourceProtocol {
     
     private let socialRepository = SocialRepository()
+    private let userRepository = UserRepository()
     
     override init() {
         super.init()
@@ -65,5 +68,11 @@ class InboxOverviewDataSource: BaseReactiveTableViewDataSource<InboxMessageProto
     
     func markInboxSeen() {
         socialRepository.markInboxAsSeen().observeCompleted {}
+    }
+    
+    func refresh(completed: @escaping (() -> Void)) {
+        userRepository.retrieveInboxMessages().observeCompleted {
+            completed()
+        }
     }
 }

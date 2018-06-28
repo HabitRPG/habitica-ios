@@ -13,7 +13,7 @@ import ReactiveSwift
 
 public class UseTransformationItemCall: ResponseObjectCall<EmptyResponseProtocol, APIEmptyResponse> {
     public init(item: SpecialItemProtocol, target: String, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "user.json")) {
-        var url = "user/class/cast/\(item.key ?? "")?targetType=user&targetId=\(target)"
+        let url = "user/class/cast/\(item.key ?? "")?targetType=user&targetId=\(target)"
         super.init(httpMethod: .POST, endpoint: url, stubHolder: stubHolder)
     }
 }

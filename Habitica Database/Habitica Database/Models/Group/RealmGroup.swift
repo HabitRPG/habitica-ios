@@ -34,31 +34,13 @@ class RealmGroup: Object, GroupProtocol {
         }
     }
     @objc dynamic var realmQuest: RealmQuestState?
-    var chat: [ChatMessageProtocol] {
-        get {
-            return realmChat.map({ (message) -> ChatMessageProtocol in
-                return message
-            })
-        }
-        set {
-            realmChat.removeAll()
-            newValue.forEach { (message) in
-                if let realmMessage = message as? RealmChatMessage {
-                    realmChat.append(realmMessage)
-                } else {
-                    realmChat.append(RealmChatMessage(groupID: id, chatMessage: message))
-                }
-            }
-        }
-    }
-    var realmChat = List<RealmChatMessage>()
     
     override static func primaryKey() -> String {
         return "id"
     }
     
     override static func ignoredProperties() -> [String] {
-        return ["chat", "quest"]
+        return ["quest"]
     }
     
     convenience init(_ groupProtocol: GroupProtocol) {
@@ -74,6 +56,5 @@ class RealmGroup: Object, GroupProtocol {
         leaderID = groupProtocol.leaderID
         leaderOnlyChallenges = groupProtocol.leaderOnlyChallenges
         quest = groupProtocol.quest
-        chat = groupProtocol.chat
     }
 }

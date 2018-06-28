@@ -30,6 +30,10 @@
     
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 60;
+    
+    UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
+    [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
+    self.refreshControl = refresh;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,6 +44,13 @@
 - (void)viewDidAppear:(BOOL)animated {
     [self.datasource markInboxSeen];
     [super viewDidAppear:animated];
+}
+
+- (void)refresh {
+    __weak HRPGInboxTableViewController *weakSelf = self;
+    [self.datasource refreshWithCompleted:^{
+        [weakSelf.refreshControl endRefreshing];
+    }];
 }
 
 -(NSDictionary *)getDefinitonForTutorial:(NSString *)tutorialIdentifier {

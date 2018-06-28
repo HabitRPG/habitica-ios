@@ -48,11 +48,13 @@ class ItemsViewDataSource: BaseReactiveTableViewDataSource<ItemProtocol> {
                 }
                 sections[1].isHidden = true
                 sections[3].isHidden = true
+                sections[4].isHidden = true
             } else {
                 sections[0].isHidden = false
                 sections[1].isHidden = false
                 sections[2].isHidden = false
                 sections[3].isHidden = false
+                sections[4].isHidden = false
             }
             self.tableView?.reloadData()
         }

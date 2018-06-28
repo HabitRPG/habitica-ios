@@ -9,6 +9,7 @@
 import UIKit
 import Habitica_Models
 import ReactiveSwift
+import Result
 
 class SplitSocialViewController: HabiticaSplitViewController {
     
@@ -78,8 +79,11 @@ class SplitSocialViewController: HabiticaSplitViewController {
     func retrieveGroup() {
         if let groupID = self.groupID {
             disposable.inner.add(socialRepository.retrieveGroup(groupID: groupID)
-                    .flatMap(.latest) {[weak self] _ in
-                        return self?.socialRepository.retrieveGroupMembers(groupID: groupID) ?? Signal.empty
+                    .flatMap(.latest) {[weak self] _ -> Signal<[MemberProtocol]?, NoError> in
+                        if  groupID != Constants.TAVERN_ID {
+                            return self?.socialRepository.retrieveGroupMembers(groupID: groupID) ?? Signal.empty
+                        }
+                        return Signal.empty
                      }
                     .observeCompleted {})
         }

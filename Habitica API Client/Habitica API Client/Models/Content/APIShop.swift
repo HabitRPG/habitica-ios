@@ -33,7 +33,7 @@ public class APIShop: ShopProtocol, Decodable {
         imageName = try? values.decode(String.self, forKey: .imageName)
         categories = (try? values.decode([APIShopCategory].self, forKey: .categories)) ?? []
         
-        if identifier == Shops.MarketKey {
+        if identifier == Constants.MarketKey {
             addGemPurchaseItem()
         }
     }

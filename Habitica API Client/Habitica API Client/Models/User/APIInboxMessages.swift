@@ -9,19 +9,19 @@
 import Foundation
 import Habitica_Models
 
-class APIInboxMessage: InboxMessageProtocol, Decodable {
-    var id: String?
-    var userID: String?
-    var contributor: ContributorProtocol?
-    var timestamp: Date?
-    var likes: [ChatMessageReactionProtocol] = []
-    var flags: [ChatMessageReactionProtocol] = []
-    var text: String?
-    var attributedText: NSAttributedString?
-    var sent: Bool
-    var sort: Int
-    var username: String?
-    var flagCount: Int
+public class APIInboxMessage: InboxMessageProtocol, Decodable {
+    public var id: String?
+    public var userID: String?
+    public var contributor: ContributorProtocol?
+    public var timestamp: Date?
+    public var likes: [ChatMessageReactionProtocol] = []
+    public var flags: [ChatMessageReactionProtocol] = []
+    public var text: String?
+    public var attributedText: NSAttributedString?
+    public var sent: Bool
+    public var sort: Int
+    public var username: String?
+    public var flagCount: Int
     
     enum CodingKeys: String, CodingKey {
         case id

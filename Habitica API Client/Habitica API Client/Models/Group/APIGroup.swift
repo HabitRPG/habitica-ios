@@ -25,7 +25,6 @@ public class APIGroup: GroupProtocol, Codable {
     public var leaderID: String?
     public var leaderOnlyChallenges: Bool = false
     public var quest: QuestStateProtocol?
-    public var chat: [ChatMessageProtocol] = []
     
     enum CodingKeys: String, CodingKey {
         case id = "_id"
@@ -39,7 +38,6 @@ public class APIGroup: GroupProtocol, Codable {
         case leader
         case leaderOnlyChallenges = "leaderOnly"
         case quest
-        case chat
     }
     
     public required init(from decoder: Decoder) throws {
@@ -61,11 +59,6 @@ public class APIGroup: GroupProtocol, Codable {
             return key == "challenges"
         })?.value == true) ?? false
         quest = try? values.decode(APIQuestState.self, forKey: .quest)
-        if values.contains(.chat) {
-            chat = try values.decode([APIChatMessage].self, forKey: .chat)
-        } else {
-            chat = []
-        }
     }
     
     public init(_ group: GroupProtocol) {

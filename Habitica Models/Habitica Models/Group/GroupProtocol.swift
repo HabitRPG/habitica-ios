@@ -21,10 +21,10 @@ public protocol GroupProtocol {
     var balance: Float { get set }
     var leaderOnlyChallenges: Bool { get set }
     var quest: QuestStateProtocol? { get set }
-    var chat: [ChatMessageProtocol] { get set }
 }
 
 public extension GroupProtocol {
+        
     var gemCount: Int {
         return Int(balance * 4.0)
     }

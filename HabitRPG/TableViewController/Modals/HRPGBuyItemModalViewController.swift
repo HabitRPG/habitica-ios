@@ -155,7 +155,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     }
     
     private func setupGear(_ contentView: UIView, itemView: UIView, key: String, shopIdentifier: String?) {
-        if let identifier = shopIdentifier, identifier == Shops.TimeTravelersShopKey {
+        if let identifier = shopIdentifier, identifier == Constants.TimeTravelersShopKey {
             addItemSet(itemView: itemView, to: contentView)
         } else {
             let statsView = HRPGItemStatsView(frame: CGRect.zero)

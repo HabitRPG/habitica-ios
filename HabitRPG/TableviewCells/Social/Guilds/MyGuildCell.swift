@@ -19,13 +19,13 @@ class MyGuildCell: UITableViewCell {
     
     func configure(group: GroupProtocol) {
         titleLabel.text = group.name
-        if let lastActivity = (group.chat.first?.timestamp as NSDate?)?.timeAgoSinceNow() {
+        /*if let lastActivity = (group.chat.first?.timestamp as NSDate?)?.timeAgoSinceNow() {
             lastActivityLabel.text = L10n.lastActivity(lastActivity)
             labelSpacing.constant = 4
-        } else {
+        } else {*/
             lastActivityLabel.text = nil
             labelSpacing.constant = 0
-        }
+        //}
         crestImageView.image = HabiticaIcons.imageOfGuildCrest(isOwner: false,
                                                                isPublic: group.privacy == "public",
                                                                memberCount: CGFloat(group.memberCount),

@@ -22,16 +22,29 @@ class LoadingViewController: UIViewController {
     
     private var wasDismissed = false
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewDidLoad() {
+        super.viewDidLoad()
         if AuthenticationManager.shared.hasAuthentication() {
             userRepository = UserRepository()
+            let hasUserData = userRepository?.hasUserData() ?? false
+            userRepository?.retrieveUser()
+                .flatMap(.latest, { (_) in
+                    return self.userRepository?.retrieveInboxMessages() ?? Signal.empty
+                })
+                .on(value: {[weak self] _ in
+                    self?.userRepository = nil
+                    if !hasUserData {
+                        self?.segueForLoggedInUser()
+                    }
+            }).observeCompleted {}
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if AuthenticationManager.shared.hasAuthentication() {
             if let repository = userRepository, repository.hasUserData() == false {
                 showLoadingIndicator()
-                repository.retrieveUser().observeCompleted {
-                    self.segueForLoggedInUser()
-                }
             } else {
-                userRepository?.retrieveUser().observeCompleted {}
                 segueForLoggedInUser()
             }
         } else {
@@ -47,7 +60,6 @@ class LoadingViewController: UIViewController {
         if !disposable.isDisposed {
             disposable.dispose()
         }
-        userRepository = nil
         if !wasDismissed {
             wasDismissed = true
             dismiss(animated: false, completion: nil)

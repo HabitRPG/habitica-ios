@@ -134,7 +134,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
         if let disposable = fetchGearDisposable {
             disposable.dispose()
         }
-        fetchGearDisposable = inventoryRepository.getShop(identifier: Shops.GearMarketKey)
+        fetchGearDisposable = inventoryRepository.getShop(identifier: Constants.GearMarketKey)
             .map({ (shop) -> [InAppRewardProtocol] in
                 return shop?.categories.filter({ (category) -> Bool in
                     category.identifier == self.selectedGearCategory
@@ -161,8 +161,8 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
     func retrieveShopInventory(_ completed: (() -> Void)?) {
         inventoryRepository.retrieveShopInventory(identifier: shopIdentifier)
             .flatMap(.latest, {[weak self] (shop) -> Signal<ShopProtocol?, NoError> in
-                if shop?.identifier == Shops.MarketKey {
-                    return self?.inventoryRepository.retrieveShopInventory(identifier: Shops.GearMarketKey) ?? Signal.empty
+                if shop?.identifier == Constants.MarketKey {
+                    return self?.inventoryRepository.retrieveShopInventory(identifier: Constants.GearMarketKey) ?? Signal.empty
                 } else {
                     let signal = Signal<ShopProtocol?, NoError>.pipe()
                     signal.input.send(value: shop)
