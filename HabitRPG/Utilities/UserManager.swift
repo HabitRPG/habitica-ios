@@ -105,6 +105,8 @@ class UserManager: NSObject {
             }
         }
         self.userLevel = user.stats?.level ?? 0
+        
+        userRepository.registerPushDevice(user: user)
     }
     
     private func checkFainting(user: UserProtocol) -> FaintViewController? {

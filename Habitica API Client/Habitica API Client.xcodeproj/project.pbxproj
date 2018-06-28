@@ -173,6 +173,9 @@
 		2974BDB220908E4600EC1A25 /* APIInboxMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BDB120908E4600EC1A25 /* APIInboxMessages.swift */; };
 		29990DB020E3E791001ADD8B /* APIQuestProgressCollect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29990DAF20E3E791001ADD8B /* APIQuestProgressCollect.swift */; };
 		29990DB420E4EB3F001ADD8B /* RetrieveInboxMessagesCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29990DB320E4EB3F001ADD8B /* RetrieveInboxMessagesCall.swift */; };
+		29990DBA20E51F54001ADD8B /* APIPushDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29990DB920E51F54001ADD8B /* APIPushDevice.swift */; };
+		29990DBC20E51FDD001ADD8B /* RegisterPushDeviceCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29990DBB20E51FDD001ADD8B /* RegisterPushDeviceCall.swift */; };
+		29990DBE20E5218C001ADD8B /* DeregisterPushDeviceCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29990DBD20E5218C001ADD8B /* DeregisterPushDeviceCall.swift */; };
 		299FB2882084987000422522 /* APIPet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB2872084987000422522 /* APIPet.swift */; };
 		299FB28A2084988500422522 /* APIMount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB2892084988500422522 /* APIMount.swift */; };
 		299FB29420849EDD00422522 /* APIOwnedPet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB29320849EDD00422522 /* APIOwnedPet.swift */; };
@@ -374,6 +377,9 @@
 		2974BDB120908E4600EC1A25 /* APIInboxMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIInboxMessages.swift; sourceTree = "<group>"; };
 		29990DAF20E3E791001ADD8B /* APIQuestProgressCollect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIQuestProgressCollect.swift; sourceTree = "<group>"; };
 		29990DB320E4EB3F001ADD8B /* RetrieveInboxMessagesCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveInboxMessagesCall.swift; sourceTree = "<group>"; };
+		29990DB920E51F54001ADD8B /* APIPushDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIPushDevice.swift; sourceTree = "<group>"; };
+		29990DBB20E51FDD001ADD8B /* RegisterPushDeviceCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPushDeviceCall.swift; sourceTree = "<group>"; };
+		29990DBD20E5218C001ADD8B /* DeregisterPushDeviceCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeregisterPushDeviceCall.swift; sourceTree = "<group>"; };
 		299FB2872084987000422522 /* APIPet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIPet.swift; sourceTree = "<group>"; };
 		299FB2892084988500422522 /* APIMount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIMount.swift; sourceTree = "<group>"; };
 		299FB29320849EDD00422522 /* APIOwnedPet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIOwnedPet.swift; sourceTree = "<group>"; };
@@ -502,6 +508,7 @@
 				292DEE7D204E37670086D5F7 /* APITag.swift */,
 				295D43012097395800948E7E /* APITutorialStep.swift */,
 				29323E1420504F2300AC6D6F /* APIUser.swift */,
+				29990DB920E51F54001ADD8B /* APIPushDevice.swift */,
 				29323E522052F7A600AC6D6F /* APIUserGear.swift */,
 				29323E502052F77F00AC6D6F /* APIUserItems.swift */,
 				291E95B4209888E1006EE585 /* APIUserParty.swift */,
@@ -665,6 +672,8 @@
 				290C302D206BD2020066AF5B /* UseSkillCall.swift */,
 				29DBFF0220CE91A500DF9CF2 /* UseTransformationItemCall.swift */,
 				29990DB320E4EB3F001ADD8B /* RetrieveInboxMessagesCall.swift */,
+				29990DBB20E51FDD001ADD8B /* RegisterPushDeviceCall.swift */,
+				29990DBD20E5218C001ADD8B /* DeregisterPushDeviceCall.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -1141,6 +1150,7 @@
 				292F9668206E4FBD00804151 /* DeleteChatMessageCall.swift in Sources */,
 				291448742086352800F3A6B5 /* FeedPetCall.swift in Sources */,
 				292DEE82204E411C0086D5F7 /* APIChecklistItem.swift in Sources */,
+				29990DBE20E5218C001ADD8B /* DeregisterPushDeviceCall.swift in Sources */,
 				295E9DC220B2DE7200D58D45 /* BuyItemCall.swift in Sources */,
 				295610FD2056CC5D00D9711A /* APIGear.swift in Sources */,
 				295E9DF020B3362A00D58D45 /* APIShop.swift in Sources */,
@@ -1148,6 +1158,7 @@
 				2919FDE12091DFFE0096A53B /* ReviveUserCall.swift in Sources */,
 				2974BDAB208F4D6B00EC1A25 /* UnlockCustomizationsCall.swift in Sources */,
 				29DBFEFF20CE6D7F00DF9CF2 /* Decoding-Extensions.swift in Sources */,
+				29990DBA20E51F54001ADD8B /* APIPushDevice.swift in Sources */,
 				29323E39205212E400AC6D6F /* APIPreferences.swift in Sources */,
 				29990DB420E4EB3F001ADD8B /* RetrieveInboxMessagesCall.swift in Sources */,
 				290B627F207BAA23007287C4 /* SleepCall.swift in Sources */,
@@ -1197,6 +1208,7 @@
 				290B6279207BA8C3007287C4 /* LocalLoginCall.swift in Sources */,
 				29B478C320C5330600B6123F /* APIBuyResponse.swift in Sources */,
 				294973D02081039300F02AC3 /* InviteToQuestCall.swift in Sources */,
+				29990DBC20E51FDD001ADD8B /* RegisterPushDeviceCall.swift in Sources */,
 				291E1A24209B702B00BA1FFB /* AbortQuestCall.swift in Sources */,
 				DC2C4A0476068E29973DB0CD /* RetrieveGroupMembersCall.swift in Sources */,
 			);

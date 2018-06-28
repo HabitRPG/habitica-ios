@@ -247,6 +247,25 @@ class RealmUser: Object, UserProtocol {
     }
     var realmInvitations = List<RealmGroupInvitation>()
     
+    var pushDevices: [PushDeviceProtocol] {
+        get {
+            return realmPushDevices.map({ (pushDevice) -> PushDeviceProtocol in
+                return pushDevice
+            })
+        }
+        set {
+            realmPushDevices.removeAll()
+            newValue.forEach { (pushDevice) in
+                if let realmPushDevice = pushDevice as? RealmPushDevice {
+                    realmPushDevices.append(realmPushDevice)
+                } else {
+                    realmPushDevices.append(RealmPushDevice(userID: id, protocolObject: pushDevice))
+                }
+            }
+        }
+    }
+    var realmPushDevices = List<RealmPushDevice>()
+    
     var needsCron: Bool = false
     var lastCron: Date?
     
@@ -255,7 +274,7 @@ class RealmUser: Object, UserProtocol {
     }
     
     override static func ignoredProperties() -> [String] {
-        return ["flags", "preferences", "stats", "profile", "contributor", "tasksOrder", "items", "tags", "inbox", "authentication", "purchased", "party", "invitations"]
+        return ["flags", "preferences", "stats", "profile", "contributor", "tasksOrder", "items", "tags", "inbox", "authentication", "purchased", "party", "invitations", "pushDevices"]
     }
     
     convenience init(_ user: UserProtocol) {
@@ -278,5 +297,6 @@ class RealmUser: Object, UserProtocol {
         challenges = user.challenges
         hasNewMessages = user.hasNewMessages
         invitations = user.invitations
+        pushDevices = user.pushDevices
     }
 }

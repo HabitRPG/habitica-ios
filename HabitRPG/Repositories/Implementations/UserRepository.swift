@@ -211,6 +211,7 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         if let userID = currentUserId {
             AuthenticationManager.shared.clearAuthentication(userId: userID)
         }
+        deregisterPushDevice().observeCompleted {}
         let defaults = UserDefaults()
         defaults.set("", forKey: "habitFilter")
         defaults.set("", forKey: "dailyFilter")
@@ -333,6 +334,28 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         })
     }
     
+    func registerPushDevice(user: UserProtocol) -> Signal<EmptyResponseProtocol?, NoError> {
+        if let deviceID = UserDefaults().string(forKey: "PushNotificationDeviceToken") {
+            if user.pushDevices.contains(where: { (pushDevice) -> Bool in
+                return pushDevice.regId == deviceID
+            }) != true {
+                let call = RegisterPushDeviceCall(regID: deviceID)
+                call.fire()
+                return call.objectSignal
+            }
+        }
+        return Signal.empty
+    }
+    
+    func deregisterPushDevice() -> Signal<EmptyResponseProtocol?, NoError> {
+        if let deviceID = UserDefaults().string(forKey: "PushNotificationDeviceToken") {
+            let call = DeregisterPushDeviceCall(regID: deviceID)
+            call.fire()
+            return call.objectSignal
+        }
+        return Signal.empty
+    }
+    
     private func handleUserUpdate() -> ((UserProtocol?) -> Void) {
         return { updatedUser in
             if let userID = self.currentUserId, let updatedUser = updatedUser {
@@ -340,4 +363,5 @@ class UserRepository: BaseRepository<UserLocalRepository> {
             }
         }
     }
+
 }

@@ -30,6 +30,7 @@ public class APIUser: UserProtocol, Decodable {
     public var challenges: [ChallengeMembershipProtocol]
     public var hasNewMessages: [UserNewMessagesProtocol]
     public var invitations: [GroupInvitationProtocol]
+    public var pushDevices: [PushDeviceProtocol]
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -51,6 +52,7 @@ public class APIUser: UserProtocol, Decodable {
         case challenges
         case hasNewMessages = "newMessages"
         case invitations
+        case pushDevices
     }
     
     public required init(from decoder: Decoder) throws {
@@ -89,5 +91,6 @@ public class APIUser: UserProtocol, Decodable {
             invitation.isPartyInvitation = true
         })
         invitations = (invitationsHelper?.guilds ?? []) + (invitationsHelper?.parties ?? [])
+        pushDevices = (try values.decode([APIPushDevice].self, forKey: .pushDevices))
     }
 }

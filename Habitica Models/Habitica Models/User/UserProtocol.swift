@@ -35,6 +35,7 @@ public protocol UserProtocol: AvatarProtocol {
     var challenges: [ChallengeMembershipProtocol] { get set }
     var hasNewMessages: [UserNewMessagesProtocol] { get set }
     var invitations: [GroupInvitationProtocol] { get set }
+    var pushDevices: [PushDeviceProtocol] { get set }
 }
 
 public extension UserProtocol {
