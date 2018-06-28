@@ -131,6 +131,9 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
     }
     
     private func fetchGear() {
+        if shopIdentifier != Constants.MarketKey {
+            return
+        }
         if let disposable = fetchGearDisposable {
             disposable.dispose()
         }
@@ -152,9 +155,11 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
                     return !ownedGear.contains(item.key)
                 })
             })
-            .on(value: {[weak self]items in
-            self?.sections[0].items = items
-            self?.collectionView?.reloadData()
+            .on(value: {[weak self] items in
+                if (self?.sections.count ?? 0) > 0 {
+                    self?.sections[0].items = items
+                    self?.collectionView?.reloadData()
+                }
         }).start()
     }
     
