@@ -176,6 +176,9 @@
 		29990DBA20E51F54001ADD8B /* APIPushDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29990DB920E51F54001ADD8B /* APIPushDevice.swift */; };
 		29990DBC20E51FDD001ADD8B /* RegisterPushDeviceCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29990DBB20E51FDD001ADD8B /* RegisterPushDeviceCall.swift */; };
 		29990DBE20E5218C001ADD8B /* DeregisterPushDeviceCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29990DBD20E5218C001ADD8B /* DeregisterPushDeviceCall.swift */; };
+		29990DC620E65CF1001ADD8B /* APITaskResponseQuest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29990DC520E65CF1001ADD8B /* APITaskResponseQuest.swift */; };
+		29990DC820E65D16001ADD8B /* APITaskResponseDrop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29990DC720E65D16001ADD8B /* APITaskResponseDrop.swift */; };
+		29990DCA20E65D38001ADD8B /* APITaskResponseTemp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29990DC920E65D38001ADD8B /* APITaskResponseTemp.swift */; };
 		299FB2882084987000422522 /* APIPet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB2872084987000422522 /* APIPet.swift */; };
 		299FB28A2084988500422522 /* APIMount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB2892084988500422522 /* APIMount.swift */; };
 		299FB29420849EDD00422522 /* APIOwnedPet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB29320849EDD00422522 /* APIOwnedPet.swift */; };
@@ -380,6 +383,9 @@
 		29990DB920E51F54001ADD8B /* APIPushDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIPushDevice.swift; sourceTree = "<group>"; };
 		29990DBB20E51FDD001ADD8B /* RegisterPushDeviceCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPushDeviceCall.swift; sourceTree = "<group>"; };
 		29990DBD20E5218C001ADD8B /* DeregisterPushDeviceCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeregisterPushDeviceCall.swift; sourceTree = "<group>"; };
+		29990DC520E65CF1001ADD8B /* APITaskResponseQuest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITaskResponseQuest.swift; sourceTree = "<group>"; };
+		29990DC720E65D16001ADD8B /* APITaskResponseDrop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITaskResponseDrop.swift; sourceTree = "<group>"; };
+		29990DC920E65D38001ADD8B /* APITaskResponseTemp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITaskResponseTemp.swift; sourceTree = "<group>"; };
 		299FB2872084987000422522 /* APIPet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIPet.swift; sourceTree = "<group>"; };
 		299FB2892084988500422522 /* APIMount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIMount.swift; sourceTree = "<group>"; };
 		299FB29320849EDD00422522 /* APIOwnedPet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIOwnedPet.swift; sourceTree = "<group>"; };
@@ -525,6 +531,9 @@
 				292DEE81204E411C0086D5F7 /* APIChecklistItem.swift */,
 				292DEE87204E490A0086D5F7 /* APIReminder.swift */,
 				292DEEB0205039CA0086D5F7 /* TaskResponse.swift */,
+				29990DC920E65D38001ADD8B /* APITaskResponseTemp.swift */,
+				29990DC720E65D16001ADD8B /* APITaskResponseDrop.swift */,
+				29990DC520E65CF1001ADD8B /* APITaskResponseQuest.swift */,
 			);
 			path = Tasks;
 			sourceTree = "<group>";
@@ -1116,6 +1125,7 @@
 				292F9664206E4F5500804151 /* LikeChatMessageCall.swift in Sources */,
 				29B478BB20C0360E00B6123F /* UpdateDayStartTimeCall.swift in Sources */,
 				295E9DDA20B2FBC000D58D45 /* CreateTasksCall.swift in Sources */,
+				29990DC820E65D16001ADD8B /* APITaskResponseDrop.swift in Sources */,
 				295D42FC20936D4300948E7E /* SelectClassCall.swift in Sources */,
 				295610EF2056C7F700D9711A /* APIFood.swift in Sources */,
 				294973CE2080FAD500F02AC3 /* OpenMysteryItemCall.swift in Sources */,
@@ -1166,6 +1176,7 @@
 				295E9DD220B2E9EF00D58D45 /* RerollCall.swift in Sources */,
 				292726A220B6FFE3009DD08A /* APIChallenge.swift in Sources */,
 				290B623D207267AA007287C4 /* RetrieveGroupsCall.swift in Sources */,
+				29990DCA20E65D38001ADD8B /* APITaskResponseTemp.swift in Sources */,
 				292726A420B6FFF5009DD08A /* APIChallengeCategory.swift in Sources */,
 				2902797920580EFD006DACB9 /* APIBuff.swift in Sources */,
 				290B629C207F7E84007287C4 /* APIOwnedGear.swift in Sources */,
@@ -1180,6 +1191,7 @@
 				290B6261207B959E007287C4 /* APIAuthenticationTimestamps.swift in Sources */,
 				294973C62080F92400F02AC3 /* SellItemCall.swift in Sources */,
 				292F9666206E4F9F00804151 /* FlagChatMessageCall.swift in Sources */,
+				29990DC620E65CF1001ADD8B /* APITaskResponseQuest.swift in Sources */,
 				296AC81A20ADD99900885682 /* RetrieveInAppRewardsCall.swift in Sources */,
 				29DBFF0F20D15BEA00DF9CF2 /* APIUserNewMessages.swift in Sources */,
 				292DEEA9204F71290086D5F7 /* ScoreTaskCall.swift in Sources */,

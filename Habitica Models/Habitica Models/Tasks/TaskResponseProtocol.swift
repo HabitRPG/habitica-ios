@@ -15,4 +15,5 @@ public protocol TaskResponseProtocol {
     var experience: Float? { get set }
     var health: Float? { get set }
     var magic: Float? { get set }
+    var temp: TaskResponseTempProtocol? { get set }
 }

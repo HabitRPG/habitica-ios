@@ -86,6 +86,9 @@
 		29990DAC20E3E5B2001ADD8B /* QuestProgressCollectProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29990DAB20E3E5B2001ADD8B /* QuestProgressCollectProtocol.swift */; };
 		29990DB220E3FA82001ADD8B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29990DB120E3FA82001ADD8B /* Constants.swift */; };
 		29990DB620E51C4B001ADD8B /* PushDeviceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29990DB520E51C4B001ADD8B /* PushDeviceProtocol.swift */; };
+		29990DC020E65C05001ADD8B /* TaskResponseQuestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29990DBF20E65C05001ADD8B /* TaskResponseQuestProtocol.swift */; };
+		29990DC220E65C33001ADD8B /* TaskResponseTempProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29990DC120E65C33001ADD8B /* TaskResponseTempProtocol.swift */; };
+		29990DC420E65CA4001ADD8B /* TaskResponseDropProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29990DC320E65CA4001ADD8B /* TaskResponseDropProtocol.swift */; };
 		299FB27A2084946700422522 /* AnimalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB2792084946700422522 /* AnimalProtocol.swift */; };
 		299FB27C208494CA00422522 /* PetProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB27B208494CA00422522 /* PetProtocol.swift */; };
 		299FB27E208494E200422522 /* MountProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB27D208494E200422522 /* MountProtocol.swift */; };
@@ -196,6 +199,9 @@
 		29990DAB20E3E5B2001ADD8B /* QuestProgressCollectProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestProgressCollectProtocol.swift; sourceTree = "<group>"; };
 		29990DB120E3FA82001ADD8B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		29990DB520E51C4B001ADD8B /* PushDeviceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushDeviceProtocol.swift; sourceTree = "<group>"; };
+		29990DBF20E65C05001ADD8B /* TaskResponseQuestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskResponseQuestProtocol.swift; sourceTree = "<group>"; };
+		29990DC120E65C33001ADD8B /* TaskResponseTempProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskResponseTempProtocol.swift; sourceTree = "<group>"; };
+		29990DC320E65CA4001ADD8B /* TaskResponseDropProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskResponseDropProtocol.swift; sourceTree = "<group>"; };
 		299FB2792084946700422522 /* AnimalProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalProtocol.swift; sourceTree = "<group>"; };
 		299FB27B208494CA00422522 /* PetProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetProtocol.swift; sourceTree = "<group>"; };
 		299FB27D208494E200422522 /* MountProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountProtocol.swift; sourceTree = "<group>"; };
@@ -271,6 +277,9 @@
 				292DEE7B204E372E0086D5F7 /* ChecklistItemProtocol.swift */,
 				292DEE85204E48A80086D5F7 /* ReminderProtocol.swift */,
 				292DEEAC205038CB0086D5F7 /* TaskResponseProtocol.swift */,
+				29990DC120E65C33001ADD8B /* TaskResponseTempProtocol.swift */,
+				29990DC320E65CA4001ADD8B /* TaskResponseDropProtocol.swift */,
+				29990DBF20E65C05001ADD8B /* TaskResponseQuestProtocol.swift */,
 			);
 			path = Tasks;
 			sourceTree = "<group>";
@@ -642,6 +651,7 @@
 				2974BD99208E0E6800EC1A25 /* SubscriptionConsecutiveProtocol.swift in Sources */,
 				295610ED2056C72000D9711A /* FoodProtocol.swift in Sources */,
 				2974BD97208E0E0D00EC1A25 /* SubscriptionPlanProtocol.swift in Sources */,
+				29990DC220E65C33001ADD8B /* TaskResponseTempProtocol.swift in Sources */,
 				292F9672207220BF00804151 /* UserStyleProtocol.swift in Sources */,
 				296AC81620AC86B900885682 /* BaseRewardProtocol.swift in Sources */,
 				298FB9EB204D940E004DDACC /* TaskProtocol.swift in Sources */,
@@ -652,6 +662,7 @@
 				29144890208A1B1500F3A6B5 /* HairProtocol.swift in Sources */,
 				29A6B86A20690D470086B2A6 /* WeekRepeatProtocol.swift in Sources */,
 				295611052056DC7100D9711A /* QuestBossProtocol.swift in Sources */,
+				29990DC420E65CA4001ADD8B /* TaskResponseDropProtocol.swift in Sources */,
 				29323E1020504DA600AC6D6F /* UserProtocol.swift in Sources */,
 				299FB27C208494CA00422522 /* PetProtocol.swift in Sources */,
 				299FB27A2084946700422522 /* AnimalProtocol.swift in Sources */,
@@ -669,6 +680,7 @@
 				290C3030206CEED20066AF5B /* SkillResponseProtocol.swift in Sources */,
 				295E9DE620B3257700D58D45 /* ShopProtocol.swift in Sources */,
 				29B478C120C531B000B6123F /* ArmoireResponseProtocol.swift in Sources */,
+				29990DC020E65C05001ADD8B /* TaskResponseQuestProtocol.swift in Sources */,
 				2927269C20B6FD34009DD08A /* ChallengeCategory.swift in Sources */,
 				290B625F207B947A007287C4 /* LocalAuthenticationProtocol.swift in Sources */,
 				2902797520580E3E006DACB9 /* BuffProtocol.swift in Sources */,

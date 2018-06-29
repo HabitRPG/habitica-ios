@@ -84,18 +84,32 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
             let magicDiff = (response.magic ?? 0) - stats.mana
             let expDiff = (response.experience ?? 0) - stats.experience
             let goldDiff = (response.gold ?? 0) - stats.gold
-            
+            let questDamage = (response.temp?.quest?.progressDelta ?? 0)
             if task.type != "reward", let taskId = task.id {
                 self?.localRepository.update(taskId: taskId, stats: stats, direction: direction, response: response)
+            }
+            
+            if healthDiff + magicDiff + goldDiff + questDamage == 0 {
+                return
             }
             
             let toastView = ToastView(healthDiff: healthDiff,
                                       magicDiff: magicDiff,
                                       expDiff: expDiff,
                                       goldDiff: goldDiff,
-                                      questDamage: 0,
+                                      questDamage: questDamage,
                                       background: healthDiff >= 0 ? .green : .red)
             ToastManager.show(toast: toastView)
+            
+            if let drop = response.temp?.drop {
+                var dialog = "You found a \(drop.key ?? "")"
+                if drop.type?.lowercased() == "food", let name = drop.dialog {
+                    dialog = "You found \(name)"
+                } else if let name = drop.dialog {
+                    dialog = "You found a \(name) \(drop.type ?? "")"
+                }
+                ToastManager.show(text: dialog, color: .gray)
+            }
         }).map({ (response, _) in
             return response
         })

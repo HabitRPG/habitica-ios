@@ -54,7 +54,7 @@ class CheckedTableViewCell: TaskTableViewCell {
         if task.completed {
             self.checklistIndicator.backgroundColor = .gray500()
             self.titleLabel.textColor = .gray300()
-            self.backgroundColor = .gray600()
+            self.backgroundColor = .gray700()
         } else {
             self.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
             self.titleLabel.textColor = ThemeService.shared.theme.primaryTextColor
@@ -63,6 +63,7 @@ class CheckedTableViewCell: TaskTableViewCell {
         self.titleLabel.backgroundColor = self.backgroundColor
         self.subtitleLabel.backgroundColor = self.backgroundColor
         self.contentView.backgroundColor = self.backgroundColor
+        self.mainTaskWrapper.backgroundColor = self.backgroundColor
         
         self.checklistIndicator.layoutIfNeeded()
     }
