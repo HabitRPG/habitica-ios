@@ -42,7 +42,7 @@ class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtoc
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let chatMessage = item(at: indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier(for: chatMessage), for: indexPath)
-        if let chatMessage = chatMessage {
+        if let chatMessage = chatMessage, chatMessage.isValid {
             if let chatCell = cell as? ChatTableViewCell {
                 self.configure(cell: chatCell, chatMessage: chatMessage, indexPath: indexPath)
             }
@@ -151,7 +151,7 @@ class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtoc
     }
 
     private func cellIdentifier(for chatMessage: ChatMessageProtocol?) -> String {
-        if let message = chatMessage {
+        if let message = chatMessage, message.isValid {
             if message.userID == nil || message.userID == "system" {
                 return "SystemMessageCell"
             }

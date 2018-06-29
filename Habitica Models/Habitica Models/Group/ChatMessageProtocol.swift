@@ -22,4 +22,5 @@ public protocol ChatMessageProtocol {
     var flags: [ChatMessageReactionProtocol] { get set }
     var userStyles: UserStyleProtocol? { get set }
     
+    var isValid: Bool { get }
 }

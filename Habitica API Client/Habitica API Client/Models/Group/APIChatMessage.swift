@@ -21,6 +21,9 @@ public class APIChatMessage: ChatMessageProtocol, Codable {
     public var userStyles: UserStyleProtocol?
     public var likes: [ChatMessageReactionProtocol] = []
     public var flags: [ChatMessageReactionProtocol] = []
+    public var isValid: Bool {
+        return true
+    }
     
     enum CodingKeys: String, CodingKey {
         case id

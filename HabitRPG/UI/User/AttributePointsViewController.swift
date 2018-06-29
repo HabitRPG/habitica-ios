@@ -278,7 +278,6 @@ class AttributePointsViewController: HRPGUIViewController, Themeable {
     }
     
     private func setAllocationMode(_ mode: String) {
-        user?.preferences?.allocationMode = mode
         updateAutoAllocatonViews()
         disposable.inner.add(userRepository.updateUser(key: "preferences.allocationMode", value: mode).observeCompleted {})
     }

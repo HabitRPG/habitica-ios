@@ -88,6 +88,10 @@ class RealmChatMessage: Object, ChatMessageProtocol {
     }
     @objc dynamic var realmUserStyles: RealmUserStyle?
     
+    var isValid: Bool {
+        return !isInvalidated
+    }
+    
     override static func primaryKey() -> String {
         return "id"
     }
