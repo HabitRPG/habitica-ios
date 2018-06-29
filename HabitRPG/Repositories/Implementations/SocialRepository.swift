@@ -300,6 +300,10 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
             if let userID = AuthenticationManager.shared.currentUserId {
                 self?.localRepository.joinChallenge(userID: userID, challengeID: challengeID, challenge: challenge)
             }
+        }).flatMap(.latest, {[weak self] challenge -> Signal<ChallengeProtocol?, NoError> in
+            return self?.userRepository.retrieveUser().map({ _ in
+                challenge
+            }) ?? Signal.empty
         })
     }
     

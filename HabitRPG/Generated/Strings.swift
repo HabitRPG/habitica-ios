@@ -173,8 +173,6 @@ internal enum L10n {
   internal static let yearly = L10n.tr("Mainstrings", "yearly")
 
   internal enum Avatar {
-    /// Animal Ears
-    internal static let animalEars = L10n.tr("Mainstrings", "avatar.animal_ears")
     /// Background
     internal static let background = L10n.tr("Mainstrings", "avatar.background")
     /// Bangs
@@ -189,6 +187,8 @@ internal enum L10n {
     internal static let hairStyle = L10n.tr("Mainstrings", "avatar.hair_style")
     /// Hair Color
     internal static let hairColor = L10n.tr("Mainstrings", "avatar.hairColor")
+    /// Head
+    internal static let head = L10n.tr("Mainstrings", "avatar.head")
     /// Mustache
     internal static let mustache = L10n.tr("Mainstrings", "avatar.mustache")
     /// Shirt

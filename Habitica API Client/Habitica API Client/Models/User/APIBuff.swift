@@ -9,7 +9,7 @@
 import Foundation
 import Habitica_Models
 
-class APIBuff: BuffProtocol, Codable {
+class APIBuff: BuffProtocol, Decodable {
     var shinySeed: Bool = false
     var snowball: Bool = false
     var seafoam: Bool = false
@@ -32,5 +32,19 @@ class APIBuff: BuffProtocol, Codable {
         case spookySparkles
         case streaks
         case stealth
+    }
+    
+    public required init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        strength = (try? values.decode(Int.self, forKey: .strength)) ?? 0
+        intelligence = (try? values.decode(Int.self, forKey: .intelligence)) ?? 0
+        constitution = (try? values.decode(Int.self, forKey: .constitution)) ?? 0
+        perception = (try? values.decode(Int.self, forKey: .perception)) ?? 0
+        stealth = (try? values.decode(Int.self, forKey: .stealth)) ?? 0
+        streaks = (try? values.decode(Bool.self, forKey: .streaks)) ?? false
+        shinySeed = (try? values.decode(Bool.self, forKey: .shinySeed)) ?? false
+        seafoam = (try? values.decode(Bool.self, forKey: .seafoam)) ?? false
+        snowball = (try? values.decode(Bool.self, forKey: .snowball)) ?? false
+        spookySparkles = (try? values.decode(Bool.self, forKey: .spookySparkles)) ?? false
     }
 }

@@ -85,7 +85,7 @@ class AvatarOverviewViewController: HRPGUIViewController, UIScrollViewDelegate {
         wheelchairView.setup(title: L10n.Avatar.wheelchair) {[weak self] in
             self?.openDetailView(type: "chair")
         }
-        animalEarsView.setup(title: L10n.Avatar.animalEars) {[weak self] in
+        animalEarsView.setup(title: L10n.Avatar.head) {[weak self] in
             self?.openDetailView(type: "headAccessory")
         }
         backgroundView.setup(title: L10n.Avatar.background) {[weak self] in

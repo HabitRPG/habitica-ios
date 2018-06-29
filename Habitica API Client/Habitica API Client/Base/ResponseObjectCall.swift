@@ -14,4 +14,8 @@ public class ResponseObjectCall<T: Any, C: Decodable>: HabiticaResponseCall<T, C
     public lazy var objectSignal: Signal<T?, NoError> = habiticaResponseSignal.skipNil().map { (habiticaResponse) in
         return habiticaResponse.data as? T
     }
+    
+    override func setupErrorHandler() {
+        //Don't show errors to user
+    }
 }

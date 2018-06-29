@@ -204,7 +204,7 @@
 "avatar.flower" = "Flower";
 "avatar.glasses" = "Glasses";
 "avatar.wheelchair" = "Wheelchair";
-"avatar.animal_ears" = "Animal Ears";
+"avatar.head" = "Head";
 "avatar.background" = "Background";
 "purchase_for_gems" = "Purchase for %d Gems";
 "health" = "Health";
