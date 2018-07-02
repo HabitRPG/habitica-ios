@@ -87,38 +87,31 @@ class BaseReactiveTableViewDataSource<MODEL>: BaseReactiveDataSource<MODEL>, UIT
         if userDrivenDataUpdate {
             return
         }
-<<<<<<< 2ecb3e8d66020bbea6924f5aa8d9044ea8468f73
         tableView?.reloadData()
-
+        
         //reload the whole tableview for now, since using the animations can cause issues
         //see https://github.com/realm/realm-cocoa/issues/4425
         /*if changes.initial == true {
-=======
-        if changes.initial == true {
-            checkForEmpty()
-            tableView?.reloadData()
->>>>>>> add empty data source, add hook for detection
-        } else {
-            tableView?.beginUpdates()
-            if changes.inserted.count == sections[section].items.count && changes.inserted.count != 0 {
-                //If the count is the same, the section is new, since it was previously empty
-                tableView?.insertSections([section], with: .automatic)
-            }
-            if tableView?.numberOfSections ?? 0 > 0 {
-                tableView?.insertRows(at: changes.inserted.map({ IndexPath(row: $0, section: section) }), with: .top)
-                tableView?.deleteRows(at: changes.deleted.map({ IndexPath(row: $0, section: section) }), with: .automatic)
-                tableView?.reloadRows(at: changes.updated.map({ IndexPath(row: $0, section: section) }), with: .automatic)
-                if sections[section].items.count == 0 {
-                    //Remove section since it empty sections are hidden
-                    tableView?.deleteSections([section], with: .automatic)
-                }
-            }
-            tableView?.endUpdates()
-<<<<<<< 2ecb3e8d66020bbea6924f5aa8d9044ea8468f73
-        }*/
-=======
-            checkForEmpty()
-        }
+         checkForEmpty()
+         tableView?.reloadData()
+         } else {
+         tableView?.beginUpdates()
+         if changes.inserted.count == sections[section].items.count && changes.inserted.count != 0 {
+         //If the count is the same, the section is new, since it was previously empty
+         tableView?.insertSections([section], with: .automatic)
+         }
+         if tableView?.numberOfSections ?? 0 > 0 {
+         tableView?.insertRows(at: changes.inserted.map({ IndexPath(row: $0, section: section) }), with: .top)
+         tableView?.deleteRows(at: changes.deleted.map({ IndexPath(row: $0, section: section) }), with: .automatic)
+         tableView?.reloadRows(at: changes.updated.map({ IndexPath(row: $0, section: section) }), with: .automatic)
+         if sections[section].items.count == 0 {
+         //Remove section since it empty sections are hidden
+         tableView?.deleteSections([section], with: .automatic)
+         }
+         }
+         tableView?.endUpdates()
+         }*/
+        checkForEmpty()
     }
     
     func checkForEmpty() {
@@ -129,7 +122,6 @@ class BaseReactiveTableViewDataSource<MODEL>: BaseReactiveDataSource<MODEL>, UIT
             isEmpty = false
             emptyDelegate?.dataSourceHasItems()
         }
->>>>>>> add empty data source, add hook for detection
     }
     
     @objc

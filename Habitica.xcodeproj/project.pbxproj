@@ -1402,11 +1402,11 @@
 			isa = PBXGroup;
 			children = (
 				299FB2A92084BA6200422522 /* StableOverviewCell.swift */,
+				291448852088E87F00F3A6B5 /* EquipmentCell.swift */,
 				291448652084FBAB00F3A6B5 /* PetDetailCell.swift */,
 				291448672084FBCF00F3A6B5 /* MountDetailCell.swift */,
 				291448692085126700F3A6B5 /* StableSectionHeader.swift */,
 				2914486B208512ED00F3A6B5 /* StableSectionHeader.xib */,
-				291448852088E87F00F3A6B5 /* EquipmentCell.swift */,
 			);
 			path = Inventory;
 			sourceTree = "<group>";
@@ -2167,8 +2167,6 @@
 			children = (
 				49A84FB41F9FCA54003E2956 /* Challenges */,
 				D9BB455C1E71C8C70002AE2E /* CheckedTableViewcell.swift */,
-				2974BD90208DEFEA00EC1A25 /* CustomizationDetailCell.swift */,
-				2974BDAC208F68A800EC1A25 /* CustomizationHeaderView.swift */,
 				2957B8C31F4D922C00E836EF /* CustomRewardCell.swift */,
 				2957B8B71F4B2F6A00E836EF /* CustomRewardCell.xib */,
 				D9BB45601E71CD850002AE2E /* DailyTableViewCell.swift */,
@@ -2198,7 +2196,6 @@
 				29B388E01EF2BB7600A72950 /* YesterdailyChecklistItem.xib */,
 				2980E60A1EEA39B1005B7100 /* YesterdailyTaskCell.swift */,
 				2980E60C1EEA39DF005B7100 /* YesterdailyTaskCell.xib */,
-				291448852088E87F00F3A6B5 /* EquipmentCell.swift */,
 				2974BD90208DEFEA00EC1A25 /* CustomizationDetailCell.swift */,
 				2974BDAC208F68A800EC1A25 /* CustomizationHeaderView.swift */,
 				49A37A8120C0FA49008C28F5 /* EmptyTableViewCell.swift */,
