@@ -91,7 +91,6 @@
     } else {
         [self.dataSource selectTagAt:indexPath];
     }
-
 }
 
 - (IBAction)clearTags:(id)sender {
@@ -99,9 +98,7 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"UnwindTagSegue"]) {
-        self.selectedTags = self.dataSource.selectedTagIds;
-    }
+    self.selectedTags = self.dataSource.selectedTagIds;
 }
 
 - (void)filterTypeChanged:(UISegmentedControl *)segment {

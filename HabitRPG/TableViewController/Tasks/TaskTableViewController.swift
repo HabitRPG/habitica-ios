@@ -24,7 +24,7 @@ class TaskTableViewController: HRPGBaseViewController, UISearchBarDelegate, UITa
     var editable: Bool = false
     var sourceIndexPath: IndexPath?
     var snapshot: UIView?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -254,7 +254,7 @@ class TaskTableViewController: HRPGBaseViewController, UISearchBarDelegate, UITa
         return provider.getFrameForCoachmark(coachMarkIdentifier)
     }
     
-    override func getDefinitonForTutorial(_ tutorialIdentifier: String!) -> [AnyHashable : Any]! {
+    override func getDefinitonForTutorial(_ tutorialIdentifier: String!) -> [AnyHashable: Any]! {
         return HRPGCoachmarkFrameProvider().getDefinitonForTutorial(tutorialIdentifier)
     }
     
@@ -263,7 +263,7 @@ class TaskTableViewController: HRPGBaseViewController, UISearchBarDelegate, UITa
         searchBar?.setShowsCancelButton(false, animated: true)
     }
     
-    @IBAction func unwindToList(segue: UIStoryboardSegue?) {
+    @IBAction func unwindFilterChanged(segue: UIStoryboardSegue?) {
         if let tagVC = segue?.source as? HRPGFilterViewController {
             if let tabVC = tabBarController as? MainTabBarController {
                 tabVC.selectedTags = tagVC.selectedTags
@@ -375,7 +375,7 @@ class TaskTableViewController: HRPGBaseViewController, UISearchBarDelegate, UITa
     func tableView(_ tableView: UITableView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UITableViewDropProposal {
         return UITableViewDropProposal(operation: .move, intent: .insertAtDestinationIndexPath)
     }
-
+    
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         if let movedTask = movedTask {
             dataSource?.moveTask(task: movedTask, toPosition: destinationIndexPath.item, completion: {
@@ -413,7 +413,7 @@ class TaskTableViewController: HRPGBaseViewController, UISearchBarDelegate, UITa
         
         tableView.reloadData()
     }
-
+    
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -433,7 +433,7 @@ class TaskTableViewController: HRPGBaseViewController, UISearchBarDelegate, UITa
         } else if segue.identifier == "FilterSegue" {
             if let tabVC = tabBarController as? MainTabBarController,
                 let navVC = segue.destination as? HRPGNavigationController,
-                let filterVC = navigationController?.topViewController as? HRPGFilterViewController {
+                let filterVC = navVC.topViewController as? HRPGFilterViewController {
                 navVC.sourceViewController = self
                 filterVC.selectedTags = tabVC.selectedTags
                 filterVC.taskType = typeName
@@ -447,7 +447,8 @@ class TaskTableViewController: HRPGBaseViewController, UISearchBarDelegate, UITa
         }
     }
     
-    @objc func autoscrollTimer() {
+    @objc
+    func autoscrollTimer() {
         if autoScrollSpeed == 0 {
             scrollTimer?.invalidate()
             scrollTimer = nil
