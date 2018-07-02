@@ -39,5 +39,8 @@ class DailyTableViewController: TaskTableViewController {
     override func dataSourceIsEmpty() {
         tableView.dataSource = emptyDataSource
         tableView.reloadData()
+        tableView.backgroundColor = UIColor.gray700()
+        tableView.separatorStyle = .none
+        tableView.allowsSelection = false
     }
 }

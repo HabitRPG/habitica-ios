@@ -307,6 +307,9 @@ class TaskTableViewController: HRPGBaseViewController, UISearchBarDelegate, UITa
     func dataSourceHasItems() {
         tableView.dataSource = dataSource as? UITableViewDataSource
         tableView.reloadData()
+        tableView.backgroundColor = .white
+        tableView.separatorStyle = .singleLine
+        tableView.allowsSelection = true
     }
     
     func dataSourceIsEmpty() {
