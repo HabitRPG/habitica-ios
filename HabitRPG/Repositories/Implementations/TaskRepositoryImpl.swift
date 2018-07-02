@@ -102,13 +102,11 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
             ToastManager.show(toast: toastView)
             
             if let drop = response.temp?.drop {
-                var dialog = "You found a \(drop.key ?? "")"
-                if drop.type?.lowercased() == "food", let name = drop.dialog {
-                    dialog = "You found \(name)"
-                } else if let name = drop.dialog {
-                    dialog = "You found a \(name) \(drop.type ?? "")"
+                var dialog = drop.dialog
+                if dialog == nil {
+                    dialog = "You found a \(drop.key ?? "")"
                 }
-                ToastManager.show(text: dialog, color: .gray)
+                ToastManager.show(text: dialog ?? "", color: .gray)
             }
         }).map({ (response, _) in
             return response
