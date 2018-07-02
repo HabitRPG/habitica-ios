@@ -91,6 +91,6 @@ public class APIUser: UserProtocol, Decodable {
             invitation.isPartyInvitation = true
         })
         invitations = (invitationsHelper?.guilds ?? []) + (invitationsHelper?.parties ?? [])
-        pushDevices = (try values.decode([APIPushDevice].self, forKey: .pushDevices))
+        pushDevices = (try? values.decode([APIPushDevice].self, forKey: .pushDevices)) ?? []
     }
 }
