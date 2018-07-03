@@ -129,7 +129,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="QC8-Jd-4Uw">
-                                        <rect key="frame" x="16" y="218" width="343" height="389.5"/>
+                                        <rect key="frame" x="16" y="218" width="343" height="421.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u44-DM-dLI" customClass="LoginEntryView" customModule="Habitica" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="40"/>
@@ -212,8 +212,15 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <state key="normal" title="Login with Google"/>
                                             </button>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W6d-TO-AE1">
+                                                <rect key="frame" x="0.0" y="360" width="343" height="20"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="BRw-cI-Hg3"/>
+                                                </constraints>
+                                            </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Ld-qT-Xe8">
-                                                <rect key="frame" x="0.0" y="360" width="343" height="29.5"/>
+                                                <rect key="frame" x="0.0" y="392" width="343" height="29.5"/>
                                                 <state key="normal">
                                                     <attributedString key="attributedTitle">
                                                         <fragment content="Forgot Password">
@@ -1433,7 +1440,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="5Hb-dX-OsZ"/>
-        <segue reference="Z2J-RM-J8b"/>
+        <segue reference="aKA-6e-Im9"/>
         <segue reference="6ya-X1-F2T"/>
     </inferredMetricsTieBreakers>
 </document>

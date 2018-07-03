@@ -10,6 +10,7 @@ import Foundation
 import Habitica_Models
 import ReactiveSwift
 import Habitica_Database
+import PinLayout
 
 class UserTopHeader: UIView {
     
@@ -21,10 +22,10 @@ class UserTopHeader: UIView {
     
     @IBOutlet weak var levelLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var buffIconView: UIImageView!
     
     @IBOutlet weak var classImageView: UIImageView!
     @IBOutlet weak var classImageViewWidthConstraint: NSLayoutConstraint!
-    
     
     @IBOutlet weak var gemView: HRPGCurrencyCountView!
     @IBOutlet weak var goldView: HRPGCurrencyCountView!
@@ -57,6 +58,8 @@ class UserTopHeader: UIView {
             experienceLabel.fontSize = 11
             magicLabel.fontSize = 11
         }
+        
+        buffIconView.image = HabiticaIcons.imageOfBuffIcon
         
         goldView.currency = .gold
         gemView.currency = .gem
@@ -129,6 +132,8 @@ class UserTopHeader: UIView {
             }
             
             goldView.amount = Int(stats.gold)
+            
+            buffIconView.isHidden = stats.buffs?.isBuffed != true
         }
         usernameLabel.text = user.profile?.name
         if let contributor = user.contributor, contributor.level > 0 {
@@ -146,6 +151,8 @@ class UserTopHeader: UIView {
         } else {
             hourglassView.isHidden = true
         }
+        
+        setNeedsLayout()
     }
  
     @objc
@@ -153,4 +160,10 @@ class UserTopHeader: UIView {
         
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        let levelLabelSize = levelLabel.sizeThatFits(levelLabel.bounds.size)
+        buffIconView.pin.size(15).start(levelLabelSize.width + 6).bottom((levelLabelSize.height - 15)/2)
+    }
 }

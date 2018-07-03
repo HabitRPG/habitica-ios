@@ -60,6 +60,11 @@ class ProgressBar: UIView {
         self.value = value
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        setNeedsDisplay()
+    }
+    
     override func draw(_ rect: CGRect) {
         let context = UIGraphicsGetCurrentContext()
         let trackPath = UIBezierPath(roundedRect: rect, cornerRadius: rect.height/2)
