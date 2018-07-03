@@ -54,6 +54,7 @@ class TaskFormViewController: FormViewController {
             if tableView != nil {
                 tableView.reloadData()
             }
+            modalContainerViewController?.screenDimView.backgroundColor = taskTintColor.darker(by: 50)?.withAlphaComponent(0.6)
         }
     }
     var lightTaskTintColor: UIColor = UIColor.purple400()
