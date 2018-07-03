@@ -17,7 +17,6 @@ class ImageManager: NSObject {
     @objc
     static func setImage(on imageView: ImageView, name: String, extension fileExtension: String = "png", completion: ((UIImage?, NSError?) -> Void)? = nil) {
         getImage(name: name, extension: fileExtension) { (image, error) in
-            
             imageView.image = image
             if let action = completion {
                 action(image, error)

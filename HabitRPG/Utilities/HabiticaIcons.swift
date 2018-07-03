@@ -7608,21 +7608,10 @@ public class HabiticaIcons : NSObject {
         let fillColor18 = UIColor(red: 0.604, green: 0.384, blue: 1.000, alpha: 1.000)
         let fillColor85 = UIColor(red: 0.929, green: 0.925, blue: 0.933, alpha: 1.000)
 
-        //// Bezier Drawing
-        let bezierPath = UIBezierPath()
-        bezierPath.move(to: CGPoint(x: 0, y: 1.49))
-        bezierPath.addCurve(to: CGPoint(x: 1.49, y: 0), controlPoint1: CGPoint(x: 0, y: 0.67), controlPoint2: CGPoint(x: 0.66, y: 0))
-        bezierPath.addLine(to: CGPoint(x: 13.51, y: 0))
-        bezierPath.addCurve(to: CGPoint(x: 15, y: 1.49), controlPoint1: CGPoint(x: 14.33, y: 0), controlPoint2: CGPoint(x: 15, y: 0.66))
-        bezierPath.addLine(to: CGPoint(x: 15, y: 13.51))
-        bezierPath.addCurve(to: CGPoint(x: 13.51, y: 15), controlPoint1: CGPoint(x: 15, y: 14.33), controlPoint2: CGPoint(x: 14.34, y: 15))
-        bezierPath.addLine(to: CGPoint(x: 1.49, y: 15))
-        bezierPath.addCurve(to: CGPoint(x: 0, y: 13.51), controlPoint1: CGPoint(x: 0.67, y: 15), controlPoint2: CGPoint(x: 0, y: 14.34))
-        bezierPath.addLine(to: CGPoint(x: 0, y: 1.49))
-        bezierPath.close()
-        bezierPath.usesEvenOddFillRule = true
+        //// Rectangle Drawing
+        let rectanglePath = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: 15, height: 15), cornerRadius: 2)
         fillColor85.setFill()
-        bezierPath.fill()
+        rectanglePath.fill()
 
 
         //// Bezier 2 Drawing

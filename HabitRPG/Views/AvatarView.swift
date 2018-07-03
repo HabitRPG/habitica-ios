@@ -8,6 +8,7 @@
 
 import UIKit
 import PinLayout
+import Kingfisher
 
 @objc
 enum AvatarViewSize: Int {
@@ -108,7 +109,8 @@ class AvatarView: UIView {
     
     lazy private var specialConstraintsDictionary = [
         "weapon_special_0": weaponSpecialConstraints,
-        "weapon_special_1": weaponSpecial1Constraints,
+        "weapon_special_1": weaponSpecialConstraints,
+        "weapon_special_critical": weaponSpecialCriticalConstraints,
         "head_special_0": headSpecialConstraints,
         "head_special_1": headSpecialConstraints
     ]
@@ -144,17 +146,17 @@ class AvatarView: UIView {
     
     let weaponSpecialConstraints: ((AvatarView, UIImageView, AvatarViewSize, CGFloat) -> Void) = { superview, view, size, offset in
         if size == .regular {
-            view.pin.start(10%).top(offset)
+            view.pin.start(8%).top(offset)
         } else {
             view.pin.start().top(offset)
         }
     }
     
-    let weaponSpecial1Constraints: ((AvatarView, UIImageView, AvatarViewSize, CGFloat) -> Void) = { superview, view, size, offset in
+    let weaponSpecialCriticalConstraints: ((AvatarView, UIImageView, AvatarViewSize, CGFloat) -> Void) = { superview, view, size, offset in
         if size == .regular {
-            view.pin.start(10%).top(offset)
+            view.pin.start(8%).top(offset+10)
         } else {
-            view.pin.start().top(offset)
+            view.pin.start(-10%).top(offset)
         }
     }
     
@@ -166,7 +168,7 @@ class AvatarView: UIView {
         }
     }
     
-    var imageViews = [UIImageView]()
+    var imageViews = [AnimatedImageView]()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -180,7 +182,7 @@ class AvatarView: UIView {
     
     private func setupSubviews() {
         viewOrder.forEach({ (_) in
-            let imageView = UIImageView()
+            let imageView = AnimatedImageView()
             addSubview(imageView)
             imageViews.append(imageView)
         })
