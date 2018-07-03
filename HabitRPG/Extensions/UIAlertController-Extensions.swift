@@ -30,4 +30,11 @@ public extension UIAlertController {
         return alertController
     }
 
+    public func setSourceInCenter(_ view: UIView) {
+        if let popoverController = popoverPresentationController {
+            popoverController.sourceView = self.view
+            popoverController.sourceRect = CGRect(x: view.bounds.midX, y: view.bounds.midY, width: 0, height: 0)
+            popoverController.permittedArrowDirections = []
+        }
+    }
 }

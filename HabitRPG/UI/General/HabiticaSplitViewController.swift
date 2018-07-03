@@ -19,6 +19,7 @@ class HabiticaSplitViewController: HRPGUIViewController, UIScrollViewDelegate {
     internal let segmentedControl = UISegmentedControl(items: ["", ""])
     private var isInitialSetup = true
     var showAsSplitView = false
+    var canShowAsSplitView = true
     
     internal var viewID: String?
     
@@ -35,7 +36,7 @@ class HabiticaSplitViewController: HRPGUIViewController, UIScrollViewDelegate {
         borderView.backgroundColor = UIColor.gray500()
         segmentedWrapper.addSubview(borderView)
         topHeaderCoordinator.alternativeHeader = segmentedWrapper
-        topHeaderCoordinator.hideHeader = showAsSplitView
+        topHeaderCoordinator.hideHeader = canShowAsSplitView && showAsSplitView
         
         scrollView.delegate = self
         scrollView.bounces = false
@@ -79,7 +80,7 @@ class HabiticaSplitViewController: HRPGUIViewController, UIScrollViewDelegate {
     }
     
     private func setupSplitView(_ collection: UITraitCollection) {
-        showAsSplitView = collection.horizontalSizeClass == .regular && collection.verticalSizeClass == .regular
+        showAsSplitView = canShowAsSplitView && (collection.horizontalSizeClass == .regular && collection.verticalSizeClass == .regular)
         separatorView.isHidden = !showAsSplitView
         scrollView.isScrollEnabled = !showAsSplitView
         topHeaderCoordinator?.hideHeader = showAsSplitView

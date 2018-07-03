@@ -32,11 +32,11 @@ class PetDetailViewController: StableDetailViewController<PetDetailDataSource> {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let item = datasource?.item(at: indexPath), item.trained > 0 {
-            showActionSheet(forStableItem: item)
+            showActionSheet(forStableItem: item, withSource: collectionView.cellForItem(at: indexPath))
         }
     }
     
-    private func showActionSheet(forStableItem stableItem: PetStableItem) {
+    private func showActionSheet(forStableItem stableItem: PetStableItem, withSource sourceView: UIView?) {
         let actionSheet = UIAlertController(title: stableItem.pet?.text, message: nil, preferredStyle: .actionSheet)
         if stableItem.trained > 0 && stableItem.pet?.type != "special" && !stableItem.mountOwned {
             actionSheet.addAction(UIAlertAction(title: L10n.Stable.feed, style: .default, handler: {[weak self] (_) in
@@ -54,6 +54,12 @@ class PetDetailViewController: StableDetailViewController<PetDetailDataSource> {
             }))
         }
         actionSheet.addAction(UIAlertAction.cancelAction())
+        if let sourceView = sourceView {
+            actionSheet.popoverPresentationController?.sourceView = sourceView
+            actionSheet.popoverPresentationController?.sourceRect = sourceView.bounds
+        } else {
+            actionSheet.setSourceInCenter(view)
+        }
         actionSheet.show()
     }
     

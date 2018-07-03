@@ -340,10 +340,14 @@ class TaskTableViewController: HRPGBaseViewController, UISearchBarDelegate, UITa
             let order = movedTask.order
             let sourceIndexPath = IndexPath(row: order, section: 0)
             dataSource?.fixTaskOrder(movedTask: movedTask, toPosition: destIndexPath.item)
-            tableView.moveRow(at: sourceIndexPath, to: destIndexPath)
             dataSource?.moveTask(task: movedTask, toPosition: destIndexPath.item, completion: {
                 self.dataSource?.userDrivenDataUpdate = false
             })
+            if tableView.numberOfRows(inSection: 0) <= order && tableView.numberOfRows(inSection: 0) <= destIndexPath.item {
+                tableView.moveRow(at: sourceIndexPath, to: destIndexPath)
+            } else {
+                tableView.reloadData()
+            }
         }
     }
     

@@ -147,7 +147,7 @@ class ChatTableViewCell: UITableViewCell {
             messageTextView.text = chatMessage.text?.unicodeEmoji
         }
         
-        if previousMessage?.userID == chatMessage.userID {
+        if previousMessage?.isValid == true, previousMessage?.userID == chatMessage.userID {
             topSpacing = 2
             avatarView.isHidden = true
         } else {
@@ -159,7 +159,7 @@ class ChatTableViewCell: UITableViewCell {
             }
         }
         
-        if nextMessage?.userID == chatMessage.userID {
+        if nextMessage?.isValid == true, nextMessage?.userID == chatMessage.userID {
             bottomSpacing = 2
         } else if isFirstMessage {
             bottomSpacing = 34
