@@ -36,24 +36,28 @@ class GroupChatViewController: SLKTextViewController {
         hidesBottomBarWhenPushed = true
                
         let nib = UINib(nibName: "ChatMessageCell", bundle: nil)
-        self.tableView?.register(nib, forCellReuseIdentifier: "ChatMessageCell")
+        tableView?.register(nib, forCellReuseIdentifier: "ChatMessageCell")
         let systemNib = UINib(nibName: "SystemMessageTableViewCell", bundle: nil)
-        self.tableView?.register(systemNib, forCellReuseIdentifier: "SystemMessageCell")
+        tableView?.register(systemNib, forCellReuseIdentifier: "SystemMessageCell")
         
-        self.tableView?.separatorStyle = .none
-        self.tableView?.rowHeight = UITableViewAutomaticDimension
-        self.tableView?.estimatedRowHeight = 90
-        self.tableView?.backgroundColor = UIColor.gray700()
+        tableView?.separatorStyle = .none
+        tableView?.rowHeight = UITableViewAutomaticDimension
+        tableView?.estimatedRowHeight = 90
+        tableView?.backgroundColor = UIColor.gray700()
 
         if #available(iOS 10.0, *) {
-            self.tableView?.refreshControl = UIRefreshControl()
-            self.tableView?.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
+            tableView?.refreshControl = UIRefreshControl()
+            tableView?.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         }
         
-        self.textView.registerMarkdownFormattingSymbol("**", withTitle: "Bold")
-        self.textView.registerMarkdownFormattingSymbol("*", withTitle: "Italics")
-        self.textView.registerMarkdownFormattingSymbol("~~", withTitle: "Strike")
-        self.textView.placeholder = NSLocalizedString("Write a message", comment: "")
+        textView.registerMarkdownFormattingSymbol("**", withTitle: "Bold")
+        textView.registerMarkdownFormattingSymbol("*", withTitle: "Italics")
+        textView.registerMarkdownFormattingSymbol("~~", withTitle: "Strike")
+        textView.placeholder = NSLocalizedString("Write a message", comment: "")
+        textInputbar.maxCharCount = UInt(ConfigRepository().integer(variable: .maxChatLength))
+        textInputbar.charCountLabelNormalColor = UIColor.gray400()
+        textInputbar.charCountLabelWarningColor = UIColor.red50()
+        textInputbar.charCountLabel.font = UIFont.systemFont(ofSize: 11, weight: .bold)
         
         disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
             self?.checkGuidelinesAccepted(user: user)
@@ -75,6 +79,16 @@ class GroupChatViewController: SLKTextViewController {
         
         if let groupID = self.groupID {
             setupDataSource(groupID: groupID)
+        }
+    }
+    
+    override func textViewDidChange(_ textView: UITextView) {
+        super.textViewDidChange(textView)
+        let textLength = textView.text.count
+        if textLength > Int(Double(textInputbar.maxCharCount) * 0.95) {
+            textInputbar.charCountLabelNormalColor = UIColor.yellow5()
+        } else {
+            textInputbar.charCountLabelNormalColor = UIColor.gray400()
         }
     }
     
