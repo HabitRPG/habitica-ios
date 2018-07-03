@@ -14,10 +14,10 @@ New in this version:
 - redesigned stable
 - redesigned class selection screen
 - better display for when edits to tasks are still being synced
+- Guild invitations are displayed in the guild list and users can respond
 - Display if user is buffed
 - Themes! You can now choose between 8 different themes for the app (Note that this feature might not be included in the final 2.0, since we are still experimenting with this)
 - Delete account from app
-
 
 Fixes:
 - The duplicate items bug is finally gone for good!
