@@ -97,18 +97,25 @@ class TaskTableViewController: HRPGBaseViewController, UISearchBarDelegate, UITa
         tableView.layoutMargins = UIEdgeInsets.zero
     }
     
-    @objc func refresh() {
+    @objc
+    func refresh() {
         weak var weakSelf = self
         dataSource?.retrieveData(completed: {
             weakSelf?.refreshControl?.endRefreshing()
         })
     }
     
-    @objc func didChangeFilter() {
+    @objc
+    func didChangeFilter() {
         let defaults = UserDefaults.standard
         filterType = defaults.integer(forKey: "\(typeName ?? "")Filter")
         
         dataSource?.predicate = getPredicate()
+        if typeName == "todo" && filterType == 1 {
+            dataSource?.sortKey = "duedate"
+        } else {
+            dataSource?.sortKey = "order"
+        }
         tableView.reloadData()
         
         var filterCount = 0
@@ -129,7 +136,9 @@ class TaskTableViewController: HRPGBaseViewController, UISearchBarDelegate, UITa
         }
     }
     
-    @objc @IBAction func longPressRecognized(sender: Any?) {
+    @objc
+    @IBAction
+    func longPressRecognized(sender: Any?) {
         if let longPress = sender as? UILongPressGestureRecognizer {
             let location = longPress.location(in: tableView)
             guard let indexPath = tableView.indexPathForRow(at: location) else {
@@ -161,8 +170,6 @@ class TaskTableViewController: HRPGBaseViewController, UISearchBarDelegate, UITa
                         }
                     }
                 }
-                
-                break
             case .changed:
                 if let sourcePath = sourceIndexPath, indexPath != sourcePath {
                     dataSource?.userDrivenDataUpdate = true
@@ -198,7 +205,6 @@ class TaskTableViewController: HRPGBaseViewController, UISearchBarDelegate, UITa
                         autoScrollSpeed = 0
                     }
                 }
-                break
             default:
                 if let sourceIndexPath = sourceIndexPath, let task = dataSource?.task(at: sourceIndexPath) {
                     dataSource?.moveTask(task: task, toPosition: task.order, completion: {})
@@ -208,7 +214,6 @@ class TaskTableViewController: HRPGBaseViewController, UISearchBarDelegate, UITa
                         self.snapshot?.transform = CGAffineTransform.identity
                     }, completion: nil)
                 }
-                break
             }
         }
     }
