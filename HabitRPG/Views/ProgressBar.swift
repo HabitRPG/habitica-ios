@@ -73,7 +73,10 @@ class ProgressBar: UIView {
         trackPath.addClip()
         var percent = self.value / self.maxValue
         if stackedValue > 0 {
-            let stackedPercent = self.stackedValue / self.maxValue
+            var stackedPercent = self.stackedValue / self.maxValue
+            if stackedPercent > 1 {
+                stackedPercent = 1
+            }
             if !(self.maxValue == 0 || stackedPercent < 0) {
                 let rect = CGRect.init(x: rect.origin.x,
                                        y: rect.origin.y,
