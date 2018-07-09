@@ -71,4 +71,8 @@ extension TaskProtocol {
         }
         return false
     }
+    
+    public var isChallengeTask: Bool {
+        return challengeID != nil
+    }
 }
