@@ -41,6 +41,9 @@ public class APITask: TaskProtocol, Codable {
     public var isSyncing: Bool = false
     public var isNewTask: Bool = false
     public var nextDue: [Date]
+    public var isValid: Bool {
+        return true
+    }
     
     enum CodingKeys: String, CodingKey {
         case id = "_id"

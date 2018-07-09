@@ -162,7 +162,7 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
         if tableView?.numberOfRows(inSection: 0) ?? 0 < (expandedPath?.item ?? 0) {
             expandedPath = nil
         }
-        if item(at: indexPath) == nil {
+        if item(at: indexPath) == nil || (expandedPath != nil && item(at: expandedPath) == nil) {
             return
         }
         self.expandedIndexPath = indexPath

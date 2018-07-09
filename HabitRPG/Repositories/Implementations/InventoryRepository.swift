@@ -38,7 +38,7 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
     }
     
     // swiftlint:disable:next large_tuple
-    func getItems(keys: [String]) -> SignalProducer<(ReactiveResults<[EggProtocol]>,
+    func getItems(keys: [ItemType: [String]]) -> SignalProducer<(ReactiveResults<[EggProtocol]>,
         ReactiveResults<[FoodProtocol]>,
         ReactiveResults<[HatchingPotionProtocol]>,
         ReactiveResults<[SpecialItemProtocol]>,

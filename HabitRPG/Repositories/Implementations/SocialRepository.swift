@@ -124,10 +124,15 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
     }
     
     func delete(groupID: String, chatMessage: ChatMessageProtocol) -> Signal<EmptyResponseProtocol?, NoError> {
+        if !chatMessage.isValid {
+            return Signal.empty
+        }
         let call = DeleteChatMessageCall(groupID: groupID, chatMessage: chatMessage)
         call.fire()
         return call.objectSignal.on(value: {[weak self]_ in
-            self?.localRepository.delete(chatMessage)
+            if chatMessage.isValid {
+                self?.localRepository.delete(chatMessage)
+            }
         })
     }
     

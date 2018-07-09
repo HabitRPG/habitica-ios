@@ -122,6 +122,10 @@ class RealmTask: Object, TaskProtocol {
     }
     var realmNextDue = List<Date>()
     
+    var isValid: Bool {
+        return !isInvalidated
+    }
+    
     override static func primaryKey() -> String {
         return "id"
     }
