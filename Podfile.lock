@@ -1,19 +1,19 @@
 PODS:
   - Amplitude-iOS (4.0.4)
-  - AppAuth (0.92.0)
+  - AppAuth (0.93.0)
   - Bolts (1.9.0):
     - Bolts/AppLinks (= 1.9.0)
     - Bolts/Tasks (= 1.9.0)
   - Bolts/AppLinks (1.9.0):
     - Bolts/Tasks
   - Bolts/Tasks (1.9.0)
-  - Crashlytics (3.10.2):
-    - Fabric (~> 1.7.7)
+  - Crashlytics (3.10.4):
+    - Fabric (~> 1.7.9)
   - DateTools (2.0.0)
   - Down (0.5.2)
   - DynamicBlurView (2.0.2)
-  - Eureka (4.1.1)
-  - Fabric (1.7.7)
+  - Eureka (4.2.0)
+  - Fabric (1.7.9)
   - FBSDKCoreKit (4.34.0):
     - Bolts (~> 1.7)
   - FBSDKLoginKit (4.34.0):
@@ -23,12 +23,7 @@ PODS:
     - OHHTTPStubs/Swift
     - Prelude (~> 3.0)
     - ReactiveSwift
-  - Instabug (7.14.5):
-    - Instabug/Instabug (= 7.14.5)
-    - Instabug/InstabugCore (= 7.14.5)
-  - Instabug/Instabug (7.14.5):
-    - Instabug/InstabugCore
-  - Instabug/InstabugCore (7.14.5)
+  - Instabug (8.0.3)
   - iOSSnapshotTestCase (3.0.0):
     - iOSSnapshotTestCase/SwiftSupport (= 3.0.0)
   - iOSSnapshotTestCase/Core (3.0.0)
@@ -82,8 +77,8 @@ PODS:
   - OHHTTPStubs/OHPathHelpers (6.1.0)
   - OHHTTPStubs/Swift (6.1.0):
     - OHHTTPStubs/Default
-  - PinLayout (1.7.7)
-  - PopupDialog (0.7.1):
+  - PinLayout (1.7.9)
+  - PopupDialog (0.8.0):
     - DynamicBlurView (~> 2.0)
   - Prelude (3.0.0)
   - Quick (1.2.0)
@@ -194,24 +189,24 @@ CHECKOUT OPTIONS:
     :commit: 219aaf7dc77fd32e663fb416f2cd567c6950b88a
     :git: https://github.com/schrockblock/funky-network.git
   PopupDialog:
-    :commit: 180a14e3ccb7c7f851369acdab235353c0b774f3
+    :commit: fc2e6b2498e7963bb79009cc8dab8e6ee68861de
     :git: https://github.com/Orderella/PopupDialog.git
 
 SPEC CHECKSUMS:
   Amplitude-iOS: 2ad4d7270c99186236c1272a3a9425463b1ae1a7
-  AppAuth: 3f4f1d6d85ad631d0bbf15ffcdc10c447face97a
+  AppAuth: 1096c2ad48507c4a2a8c85c8a6ff065741ab9931
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
-  Crashlytics: 0360624eea1c978a743feddb2fb1ef8b37fb7a0d
+  Crashlytics: 915a7787b84f635fb2a81f92a90e265c2c413f76
   DateTools: 933ac9c490f21f92127cf690ccd8c397e0126caf
   Down: 587371ad58002b06023d9c602519216862c3acbc
   DynamicBlurView: aa6db4defc6e537eb86fc5e58dd3991666178399
-  Eureka: b88fb930e42c79f8c03c373d0fcdc28c1d6c50ed
-  Fabric: bda89e242bce1b7b8ab264248cf3407774ce0095
+  Eureka: 0748c7bbb2560130e43c7bfa83e99c98854a1f42
+  Fabric: a2917d3895e4c1569b9c3170de7320ea1b1e6661
   FBSDKCoreKit: 0ff57f093b85c8c9d5aba697d3edf68a8960ce78
   FBSDKLoginKit: 8c78f57a145afb756e4755e69195ebe08a42466e
   FLEX: bd1a39e55b56bb413b6f1b34b3c10a0dc44ef079
   FunkyNetwork: 6eb382dcab7c5947ea7e8d3c72427ee91d87c35f
-  Instabug: 7a7fea34bdc40735e8961750a2f9f34b7a8fae4a
+  Instabug: 4ffb8e5641480c2b597fd48449ef327052937180
   iOSSnapshotTestCase: 23984ffe05289728d646cbb6a7a10b4fb1c93440
   KeychainAccess: 7bd430028059754a3debab3cfc0bd1fc7fb85df3
   Keys: a576f4c9c1c641ca913a959a9c62ed3f215a8de9
@@ -222,8 +217,8 @@ SPEC CHECKSUMS:
   Nimble: 7f5a9c447a33002645a071bddafbfb24ea70e0ac
   "NSString+Emoji": 127da93993ac7c01eadb2edbb039cda89a1369f4
   OHHTTPStubs: 1e21c7d2c084b8153fc53d48400d8919d2d432d0
-  PinLayout: 0777b5d8d73822aa203454d90118d4e98086e43a
-  PopupDialog: 39598b7d41719f5c025b4b70e62728bae7734fef
+  PinLayout: 21ce87a865407a7a3c8a38a326611c476095fedf
+  PopupDialog: 11347197b6ac3e0548ac445d40ce68d1d407e9a0
   Prelude: fe4cc0fd961d34edf48fe6b04d05c863449efb0a
   Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
   ReactiveCocoa: 476dae7ca790f40d30d186a1bd7ebae4290395d5

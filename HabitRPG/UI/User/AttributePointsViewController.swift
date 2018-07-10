@@ -285,7 +285,7 @@ class AttributePointsViewController: HRPGUIViewController, Themeable {
     @objc
     func openBulkAssignView() {
         let viewController = BulkStatsAllocationViewController(nibName: "BulkStatsAllocationView", bundle: Bundle.main)
-        let popup = PopupDialog(viewController: viewController, gestureDismissal: false) {
+        let popup = PopupDialog(viewController: viewController, tapGestureDismissal: false) {
         }
     
         self.present(popup, animated: true, completion: nil)
