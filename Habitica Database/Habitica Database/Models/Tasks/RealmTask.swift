@@ -122,6 +122,31 @@ class RealmTask: Object, TaskProtocol {
     }
     var realmNextDue = List<Date>()
     
+    @objc dynamic var daysOfMonth: [Int] {
+        get {
+            return realmDaysOfMonth.map({ (date) in
+                return date
+            })
+        }
+        set {
+            realmDaysOfMonth.removeAll()
+            realmDaysOfMonth.append(objectsIn: newValue)
+        }
+    }
+    var realmDaysOfMonth = List<Int>()
+    @objc dynamic var weeksOfMonth: [Int] {
+        get {
+            return realmWeeksOfMonth.map({ (date) in
+                return date
+            })
+        }
+        set {
+            realmWeeksOfMonth.removeAll()
+            realmWeeksOfMonth.append(objectsIn: newValue)
+        }
+    }
+    var realmWeeksOfMonth = List<Int>()
+    
     var isValid: Bool {
         return !isInvalidated
     }
@@ -181,6 +206,8 @@ class RealmTask: Object, TaskProtocol {
         
         isSyncing = taskProtocol.isSyncing
         isSynced = taskProtocol.isSynced
+        daysOfMonth = taskProtocol.daysOfMonth
+        weeksOfMonth = taskProtocol.weeksOfMonth
         isNewTask = taskProtocol.isNewTask
     }
 }

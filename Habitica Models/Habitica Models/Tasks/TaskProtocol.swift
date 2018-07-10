@@ -50,6 +50,8 @@ public protocol TaskProtocol: BaseRewardProtocol {
     var reminders: [ReminderProtocol] { get set }
     var weekRepeat: WeekRepeatProtocol? { get set }
     var nextDue: [Date] { get set }
+    var weeksOfMonth: [Int] { get set }
+    var daysOfMonth: [Int] { get set }
     var isValid: Bool { get }
     
     var isSynced: Bool { get set }

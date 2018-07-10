@@ -33,6 +33,7 @@ enum TaskFormTags {
     static let delete = "delete"
 }
 
+//swiftlint:disable:next type_body_length
 class TaskFormViewController: FormViewController {
 
     weak var modalContainerViewController: VisualEffectModalViewController?
@@ -84,9 +85,12 @@ class TaskFormViewController: FormViewController {
         }
     }
     
-    private var viewModel = TaskFormViewModel()
-    private var taskRepository = TaskRepository()
-    private var disposable = ScopedDisposable(CompositeDisposable())
+    private let viewModel = TaskFormViewModel()
+    private let taskRepository = TaskRepository()
+    private let disposable = ScopedDisposable(CompositeDisposable())
+    private let repeatablesSummaryInteractor = TaskRepeatablesSummaryInteractor()
+    
+    private var schedulingSection: Section?
     
     private static let habitResetStreakOptions = [
         LabeledFormValue<String>(value: "daily", label: L10n.daily),
@@ -184,6 +188,7 @@ class TaskFormViewController: FormViewController {
         tableView.frame = view.frame
     }
     
+    
     private func setupBasicTaskInput() {
         form +++ Section { section in
             var header = HeaderFooterView<UIView>(.class)
@@ -264,13 +269,16 @@ class TaskFormViewController: FormViewController {
     }
     
     private func setupDailyScheduling() {
-        form +++ Section(L10n.Tasks.Form.scheduling)
+        schedulingSection = Section(L10n.Tasks.Form.scheduling)
             <<< DateRow(TaskFormTags.startDate) { row in
                 row.title = L10n.Tasks.Form.startDate
                 row.value = Date()
                 row.cellSetup({ (cell, _) in
                     cell.tintColor = self.lightTaskTintColor
                     cell.detailTextLabel?.textColor = self.lightTaskTintColor
+                })
+                row.onChange({[weak self] _ in
+                    self?.updateDailySchedulingFooter()
                 })
         }
             <<< ActionSheetRow<LabeledFormValue<String>>(TaskFormTags.dailyRepeat) { row in
@@ -282,6 +290,9 @@ class TaskFormViewController: FormViewController {
                     cell.tintColor = self.lightTaskTintColor
                     cell.detailTextLabel?.textColor = self.lightTaskTintColor
                 })
+                row.onChange({[weak self] _ in
+                    self?.updateDailySchedulingFooter()
+                })
         }
             <<< PickerInputRow<Int>(TaskFormTags.dailyEvery) { row in
                 row.title = L10n.Tasks.Form.every
@@ -290,6 +301,9 @@ class TaskFormViewController: FormViewController {
                 row.cellSetup({ (cell, _) in
                     cell.tintColor = self.lightTaskTintColor
                     cell.detailTextLabel?.textColor = self.lightTaskTintColor
+                })
+                row.onChange({[weak self] _ in
+                    self?.updateDailySchedulingFooter()
                 })
         }
             <<< SegmentedRow<String>(TaskFormTags.repeatMonthlySegment) { row in
@@ -301,12 +315,21 @@ class TaskFormViewController: FormViewController {
                 row.cellSetup({ (cell, _) in
                     cell.segmentedControl.tintColor = self.taskTintColor
                 })
+                row.onChange({[weak self] _ in
+                    self?.updateDailySchedulingFooter()
+                })
         }
             <<< WeekdayRow(TaskFormTags.repeatWeekdays) { row in
                 row.tintColor = self.taskTintColor
                 row.hidden = Condition.function([TaskFormTags.dailyRepeat, TaskFormTags.repeatMonthlySegment], { (form) -> Bool in
                     return (form.rowBy(tag: TaskFormTags.dailyRepeat) as? ActionSheetRow<LabeledFormValue<String>>)?.value?.value != "weekly"
                 })
+                row.onChange({[weak self] _ in
+                    self?.updateDailySchedulingFooter()
+                })
+        }
+        if let section = schedulingSection {
+            form +++ section
         }
     }
     
@@ -384,6 +407,27 @@ class TaskFormViewController: FormViewController {
         }).start())
     }
     
+    private func updateDailySchedulingFooter() {
+        let values = form.values()
+        let weekdays = values[TaskFormTags.repeatWeekdays] as? WeekdaysValue
+        let summary = repeatablesSummaryInteractor.repeatablesSummary(frequency: values[TaskFormTags.dailyRepeat] as? String,
+                                                                      everyX: values[TaskFormTags.dailyEvery] as? Int,
+                                                                      monday: weekdays?.monday,
+                                                                      tuesday: weekdays?.tuesday,
+                                                                      wednesday: weekdays?.wednesday,
+                                                                      thursday: weekdays?.thursday,
+                                                                      friday: weekdays?.friday,
+                                                                      saturday: weekdays?.saturday,
+                                                                      sunday: weekdays?.sunday,
+                                                                      startDate: values[TaskFormTags.startDate] as? Date,
+                                                                      daysOfMonth: [],
+                                                                      weeksOfMonth: [])
+        /*schedulingSection?.footer = HeaderFooterView(title: summary)
+        tableView.beginUpdates()
+        tableView.reloadSections(IndexSet(integer: schedulingSection?.index ?? 2), with: .automatic)
+        tableView.endUpdates()*/
+    }
+    
     private func fillForm() {
         form.setValues([
             TaskFormTags.title: task.text,
@@ -427,6 +471,12 @@ class TaskFormViewController: FormViewController {
             TaskFormTags.dailyEvery: task.everyX,
             TaskFormTags.repeatWeekdays: weekRepeat
             ])
+        if task.daysOfMonth.count != 0 {
+            form.setValues([TaskFormTags.repeatMonthlySegment: L10n.Tasks.Form.dayOfMonth])
+        }
+        if task.weeksOfMonth.count != 0 {
+            form.setValues([TaskFormTags.repeatMonthlySegment: L10n.Tasks.Form.dayOfWeek])
+        }
         fillChecklistValues()
         fillReminderValues()
     }
@@ -509,6 +559,16 @@ class TaskFormViewController: FormViewController {
         task.startDate = values[TaskFormTags.startDate] as? Date
         task.everyX = values[TaskFormTags.dailyEvery] as? Int ?? 1
         task.frequency = (values[TaskFormTags.dailyRepeat] as? LabeledFormValue<String>)?.value
+        if task.frequency == "monthly", let startDate = task.startDate {
+            let selectedValue = (values[TaskFormTags.repeatMonthlySegment] as? SegmentedRow<String>)?.value
+            if selectedValue == L10n.Tasks.Form.dayOfMonth {
+                task.daysOfMonth = [Calendar.current.component(.day, from: startDate)]
+                task.weeksOfMonth = []
+            } else {
+                task.weeksOfMonth = [Calendar.current.component(.weekOfMonth, from: startDate)]
+                task.daysOfMonth = []
+            }
+        }
         let weekdays = values[TaskFormTags.repeatWeekdays] as? WeekdaysValue
         task.weekRepeat?.monday = weekdays?.monday ?? true
         task.weekRepeat?.tuesday = weekdays?.tuesday ?? true
