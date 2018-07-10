@@ -1,0 +1,12 @@
+/* Class = "UILabel"; text = "Label"; ObjectID = "88E-6b-fM7"; */
+"88E-6b-fM7.text" = "Метка";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "JB4-vT-m2S"; */
+"JB4-vT-m2S.text" = "Ярлык";
+
+/* Class = "UILabel"; text = "You can only purchase gear for your current class"; ObjectID = "jif-V8-AXN"; */
+"jif-V8-AXN.text" = "Ты можешь купить экипировку только для твоего текущего класса";
+
+/* Class = "UILabel"; text = "You already have all your class equipment! More will be released during the Grand Galas, near the solstices and equinoxes."; ObjectID = "vZT-3v-vhS"; */
+"vZT-3v-vhS.text" = "У вас уже есть всё снаряжение вашего класса! Дополнительное снаряжение будет появляться в течение сезонных Гранд-Гала, во время солнцестояний и равноденствий.";
+

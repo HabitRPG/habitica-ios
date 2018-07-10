@@ -1,0 +1,39 @@
+/* Class = "UIButton"; normalTitle = "Skip"; ObjectID = "0i8-DP-8iH"; */
+"0i8-DP-8iH.normalTitle" = "Spring over";
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "1De-XG-mrd"; */
+"1De-XG-mrd.normalTitle" = "Login";
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "8wd-GG-g6F"; */
+"8wd-GG-g6F.normalTitle" = "Login";
+
+/* Class = "UIButton"; normalTitle = "Work"; ObjectID = "9Sv-nF-boz"; */
+"9Sv-nF-boz.normalTitle" = "Arbejde";
+
+/* Class = "UILabel"; text = "Next"; ObjectID = "CPE-AH-dQ8"; */
+"CPE-AH-dQ8.text" = "Næste";
+
+/* Class = "UIButton"; normalTitle = "Login with Google"; ObjectID = "fYX-yC-fON"; */
+"fYX-yC-fON.normalTitle" = "Log ind med Google";
+
+/* Class = "UIButton"; normalTitle = "Chores"; ObjectID = "kJd-TG-HlB"; */
+"kJd-TG-HlB.normalTitle" = "Pligter";
+
+/* Class = "UIButton"; normalTitle = "Register"; ObjectID = "Ohf-iu-Phe"; */
+"Ohf-iu-Phe.normalTitle" = "Registrer";
+
+/* Class = "UIButton"; normalTitle = "School"; ObjectID = "qdP-gX-YYc"; */
+"qdP-gX-YYc.normalTitle" = "Skole";
+
+/* Class = "UIButton"; normalTitle = "Creativity"; ObjectID = "r9x-6o-A2F"; */
+"r9x-6o-A2F.normalTitle" = "Kreativitet";
+
+/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "uAN-kx-bnR"; */
+"uAN-kx-bnR.normalTitle" = "Tilbage";
+
+/* Class = "UIButton"; normalTitle = "Health"; ObjectID = "UOx-cX-pif"; */
+"UOx-cX-pif.normalTitle" = "Liv";
+
+/* Class = "UIButton"; normalTitle = "Exercise"; ObjectID = "YG9-k8-OkO"; */
+"YG9-k8-OkO.normalTitle" = "Motion";
+

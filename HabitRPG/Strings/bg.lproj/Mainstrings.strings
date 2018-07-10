@@ -1,0 +1,516 @@
+/* (No Comment) */
+"active" = "Незавършени";
+
+/* (No Comment) */
+"animal_ears" = "Животински уши";
+
+/* (No Comment) */
+"avatar.background" = "Фоново изображение";
+
+/* (No Comment) */
+"avatar.bangs" = "Бретон";
+
+/* (No Comment) */
+"avatar.beard" = "Брада";
+
+/* (No Comment) */
+"avatar.flower" = "Цвете";
+
+/* (No Comment) */
+"avatar.glasses" = "Очила";
+
+/* (No Comment) */
+"avatar.head" = "Глава";
+
+/* (No Comment) */
+"avatar.mustache" = "Мустак";
+
+/* (No Comment) */
+"avatar.shirt" = "Риза";
+
+/* (No Comment) */
+"avatar.wheelchair" = "Инвалидна количка";
+
+/* (No Comment) */
+"cancel" = "Отказ";
+
+/* (No Comment) */
+"chat" = "Чат";
+
+/* (No Comment) */
+"classes.become_a_class" = "Станете %@";
+
+/* (No Comment) */
+"classes.healer" = "Лечител";
+
+/* (No Comment) */
+"classes.healer_description" = "Лечителите трудно могат да бъдат наранени, и разпростират защитата си върху останалите. Пропуснатите ежедневни задачи и лошите навици не ги смущават толкова много; те винаги могат да възстановят здравето си след провал. Играйте като лечител, ако обичате да помагате на останалите в групата си или ако искате да изиграете смъртта чрез усърдна работа!";
+
+/* (No Comment) */
+"classes.mage" = "Магьосник";
+
+/* (No Comment) */
+"classes.rogue" = "Мошеник";
+
+/* (No Comment) */
+"classes.rogue_description" = "Мошениците обичат да трупат богатства, печелят повече злато от останалите и са майстори в намирането на случайни предмети. Отличителното им умение „Невидимост“ им позволява да избегнат последствията от пропуснати ежедневни задачи. Играйте като мошеник, ако Ви мотивират наградите и постиженията, и обичате плячката и значките!";
+
+/* (No Comment) */
+"classes.warrior" = "Воин";
+
+/* (No Comment) */
+"close" = "Затваряне";
+
+/* (No Comment) */
+"confirm" = "Потвърждаване";
+
+/* (No Comment) */
+"create" = "Създаване";
+
+/* (No Comment) */
+"daily" = "Ежедневна";
+
+/* (No Comment) */
+"delete" = "Изтриване";
+
+/* (No Comment) */
+"description" = "Описание";
+
+/* (No Comment) */
+"details" = "Подробности";
+
+/* (No Comment) */
+"difficulty" = "Ниво на трудност";
+
+/* (No Comment) */
+"discover" = "Разглеждане";
+
+/* (No Comment) */
+"edit" = "Редактиране";
+
+/* (No Comment) */
+"eggs" = "Яйца";
+
+/* (No Comment) */
+"equip" = "Екипиране";
+
+/* (No Comment) */
+"equipment.armor" = "Броня";
+
+/* (No Comment) */
+"equipment.back" = "Аксесоар за гръб";
+
+/* (No Comment) */
+"equipment.battle_gear" = "Бойно снаряжение";
+
+/* (No Comment) */
+"equipment.body" = "Аксесоар за тяло";
+
+/* (No Comment) */
+"equipment.costume" = "Костюм";
+
+/* (No Comment) */
+"equipment.eyewear" = "Предмет за очи";
+
+/* (No Comment) */
+"equipment.head" = "Екипировка за глава";
+
+/* (No Comment) */
+"equipment.head_accessory" = "Аксесоар за глава";
+
+/* (No Comment) */
+"equipment.nothing_equipped" = "Няма нищо екипирано";
+
+/* (No Comment) */
+"equipment.off_hand" = "Страничен";
+
+/* (No Comment) */
+"equipment.use_costume" = "Използване на костюм";
+
+/* (No Comment) */
+"equipment.weapon" = "Оръжие";
+
+/* (No Comment) */
+"experience" = "Опит";
+
+/* (No Comment) */
+"food" = "Храна";
+
+/* (No Comment) */
+"glasses" = "Очила";
+
+/* (No Comment) */
+"hatching_potions" = "Излюпващи отвари";
+
+/* (No Comment) */
+"headband" = "Лента за коса";
+
+/* (No Comment) */
+"health" = "Здраве";
+
+/* (No Comment) */
+"inventory.hatched" = "Излюпихте нов любимец!";
+
+/* (No Comment) */
+"inventory.no_gems_left" = "Не можете да купите повече диаманти този месец. Ограничението се премахва през първите три дни на всеки месец.";
+
+/* (No Comment) */
+"invite_party" = "Канене на групата";
+
+/* (No Comment) */
+"leader" = "Водач";
+
+/* (No Comment) */
+"leave" = "Напускане";
+
+/* (No Comment) */
+"levelup_description" = "Изпълнявайки целите си в истинския живот, Вие достигнахте ниво %ld!";
+
+/* (No Comment) */
+"levelup_share" = "Достигнах ниво %ld в Хабитика като подобрих навиците си в истинския живот!";
+
+/* (No Comment) */
+"levelup_title" = "Вдигнахте ниво!";
+
+/* (No Comment) */
+"mana" = "Мана";
+
+/* (No Comment) */
+"member.last_logged_in" = "Последно влизане на";
+
+/* (No Comment) */
+"member.member_since" = "Потребител от";
+
+/* (No Comment) */
+"menu.about" = "Относно";
+
+/* (No Comment) */
+"menu.cast_spells" = "Изпълняване на заклинания";
+
+/* (No Comment) */
+"menu.challenges" = "Предизвикателства";
+
+/* (No Comment) */
+"menu.customize_avatar" = "Персонализиране на героя";
+
+/* (No Comment) */
+"menu.equipment" = "Екипировка";
+
+/* (No Comment) */
+"menu.gems_subscriptions" = "Диаманти и абонаменти";
+
+/* (No Comment) */
+"menu.guilds" = "Гилдии";
+
+/* (No Comment) */
+"menu.help_faq" = "Помощ и ЧЗВ";
+
+/* (No Comment) */
+"menu.inventory" = "Инвентар";
+
+/* (No Comment) */
+"menu.items" = "Предмети";
+
+/* (No Comment) */
+"menu.news" = "Новини";
+
+/* (No Comment) */
+"menu.party" = "Група";
+
+/* (No Comment) */
+"menu.select_class" = "Изберете клас";
+
+/* (No Comment) */
+"menu.shops" = "Магазини";
+
+/* (No Comment) */
+"menu.social" = "Общност";
+
+/* (No Comment) */
+"menu.stable" = "Конюшня";
+
+/* (No Comment) */
+"menu.stats" = "Показатели";
+
+/* (No Comment) */
+"menu.tavern" = "Кръчма";
+
+/* (No Comment) */
+"menu.use_skills" = "Използване на умения";
+
+/* (No Comment) */
+"monthly" = "Месечно";
+
+/* (No Comment) */
+"mounts" = "Превози";
+
+/* (No Comment) */
+"my_challenges" = "Моите предизвикателства";
+
+/* (No Comment) */
+"my_guilds" = "Моите гилдии";
+
+/* (No Comment) */
+"name" = "Име";
+
+/* (No Comment) */
+"notes" = "Бележки";
+
+/* (No Comment) */
+"ok" = "Добре";
+
+/* (No Comment) */
+"open" = "Отваряне";
+
+/* (No Comment) */
+"party.quest_participant_count" = "%d участници";
+
+/* (No Comment) */
+"pets" = "Любимци";
+
+/* (No Comment) */
+"quests" = "Мисии";
+
+/* (No Comment) */
+"quests.accepted" = "Прието";
+
+/* (No Comment) */
+"quests.confirm_abort" = "Наистина ли искате да прекратите мисията? Тя ще бъде прекратена за всекиго в групата, а напредъкът по нея ще бъде загубен. Свитъкът с мисията ще бъде върнат на притежателя си.";
+
+/* (No Comment) */
+"quests.confirm_cancel_invitation" = "Наистина ли искате да прекратите мисията? Всички приети покани ще бъдат загубени. Притежателят на мисията ще си запази свитъка ѝ.";
+
+/* (No Comment) */
+"quests.invitations_header" = "Покани";
+
+/* (No Comment) */
+"quests.participants_header" = "Участници";
+
+/* (No Comment) */
+"quests.pending" = "В очакване";
+
+/* (No Comment) */
+"quests.rejected" = "Отказана";
+
+/* (No Comment) */
+"reset_tips" = "Нулиране на съветите на Джъстин";
+
+/* (No Comment) */
+"resetStreak" = "Нулиране на серията";
+
+/* (No Comment) */
+"save" = "Запазване";
+
+/* (No Comment) */
+"search" = "Търсене";
+
+/* (No Comment) */
+"settings.api" = "ППИ";
+
+/* (No Comment) */
+"settings.are_you_sure" = "Сигурен/на ли сте?";
+
+/* (No Comment) */
+"settings.authentication" = "Удостоверяване";
+
+/* (No Comment) */
+"settings.change_class" = "Промяна на класа";
+
+/* (No Comment) */
+"settings.change_class_disclaimer" = "Това ще нулира класа на героя Ви и разпределените точки (ще си ги получите обратно за повторно разпределение), както и ще струва 3 диаманта.";
+
+/* (No Comment) */
+"settings.clear_cache" = "Изчистване на кеша";
+
+/* (No Comment) */
+"settings.custom_day_start" = "Персонализирано начало на деня";
+
+/* (No Comment) */
+"settings.daily_reminder" = "Ежедневно напомняне";
+
+/* (No Comment) */
+"settings.day_start" = "Начало на деня";
+
+/* (No Comment) */
+"settings.disable_all_notifications" = "Забраняване на всички известия";
+
+/* (No Comment) */
+"settings.disable_pm" = "Забраняване на личните съобщения";
+
+/* (No Comment) */
+"settings.display_notification_badge" = "Показване на значката за известия";
+
+/* (No Comment) */
+"settings.enable_class_system" = "Включване на класовата система";
+
+/* (No Comment) */
+"settings.fix_characterValues" = "Промяна на стойностите на героя";
+
+/* (No Comment) */
+"settings.log_out" = "Изход";
+
+/* (No Comment) */
+"settings.maintenance" = "Профилактика";
+
+/* (No Comment) */
+"settings.notification_badge" = "Значка за известия";
+
+/* (No Comment) */
+"settings.profile" = "Профил";
+
+/* (No Comment) */
+"settings.push_notifications" = "Известия";
+
+/* (No Comment) */
+"settings.reload_content" = "Презареждане на съдържанието";
+
+/* (No Comment) */
+"settings.reminder" = "Напомняне";
+
+/* (No Comment) */
+"settings.select_class" = "Изберете клас";
+
+/* (No Comment) */
+"settings.social" = "Общност";
+
+/* (No Comment) */
+"settings.user" = "Потребител";
+
+/* (No Comment) */
+"share" = "Споделяне";
+
+/* (No Comment) */
+"skills.use_skill" = "Използвате %@";
+
+/* (No Comment) */
+"skills.used_transformation_item" = "Използвахте %@";
+
+/* (No Comment) */
+"stable.feed" = "Хранене";
+
+/* (No Comment) */
+"stable.premium" = "Магическа отвара";
+
+/* (No Comment) */
+"stable.quest_mounts" = "Превози от мисии";
+
+/* (No Comment) */
+"stable.quest_pets" = "Любимци от мисии";
+
+/* (No Comment) */
+"stable.special_mounts" = "Специални превози";
+
+/* (No Comment) */
+"stable.special_pets" = "Специални любимци";
+
+/* (No Comment) */
+"stable.standard" = "Стандартно";
+
+/* (No Comment) */
+"stats.allocated" = "Разпределени";
+
+/* (No Comment) */
+"stats.battle_gear" = "Бойно снаряжение";
+
+/* (No Comment) */
+"stats.buffs" = "Подсилки";
+
+/* (No Comment) */
+"stats.class_bonus" = "Класов бонус";
+
+/* (No Comment) */
+"stats.level" = "Ниво";
+
+/* (No Comment) */
+"stats.no_points_to_allocate" = "0 точки за разпределяне";
+
+/* (No Comment) */
+"stats.one_point_to_allocate" = "1 точка за разпределяне";
+
+/* (No Comment) */
+"summary" = "Резюме";
+
+/* (No Comment) */
+"tags" = "Етикети";
+
+/* (No Comment) */
+"tasks.daily" = "Ежедневна";
+
+/* (No Comment) */
+"tasks.form.checklist" = "Подзадачи";
+
+/* (No Comment) */
+"tasks.form.clear" = "Изчистване";
+
+/* (No Comment) */
+"tasks.form.confirm_delete" = "Наистина ли искате да изтриете тази задача?";
+
+/* (No Comment) */
+"tasks.form.cost" = "Цена";
+
+/* (No Comment) */
+"tasks.form.difficulty" = "Ниво на трудност";
+
+/* (No Comment) */
+"tasks.form.easy" = "Лесно";
+
+/* (No Comment) */
+"tasks.form.edit" = "Редактиране на %@";
+
+/* (No Comment) */
+"tasks.form.hard" = "Трудно";
+
+/* (No Comment) */
+"tasks.form.medium" = "Средно";
+
+/* (No Comment) */
+"tasks.form.new_checklist_item" = "Нова подзадача";
+
+/* (No Comment) */
+"tasks.form.reminders" = "Напямняния";
+
+/* (No Comment) */
+"tasks.form.repeats" = "Повтаря се";
+
+/* (No Comment) */
+"tasks.form.reset_streak" = "Нулиране на серията";
+
+/* (No Comment) */
+"tasks.form.tags" = "Етикети";
+
+/* (No Comment) */
+"tasks.form.trivial" = "Елементарно";
+
+/* (No Comment) */
+"tasks.habit" = "Навик";
+
+/* (No Comment) */
+"tasks.reward" = "Награда";
+
+/* (No Comment) */
+"tasks.todo" = "Задача";
+
+/* (No Comment) */
+"theme.blue" = "Синьо";
+
+/* (No Comment) */
+"theme.green" = "Зелено";
+
+/* (No Comment) */
+"theme.red" = "Червено";
+
+/* (No Comment) */
+"theme.yellow" = "Жълто";
+
+/* (No Comment) */
+"title" = "Заглавие";
+
+/* (No Comment) */
+"unequip" = "Разекипиране";
+
+/* (No Comment) */
+"weekly" = "Седмично";
+
+/* (No Comment) */
+"yearly" = "Годишно";
+

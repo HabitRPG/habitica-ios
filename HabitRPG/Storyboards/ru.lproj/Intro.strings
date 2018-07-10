@@ -1,0 +1,87 @@
+/* Class = "UIButton"; normalTitle = "Skip"; ObjectID = "0i8-DP-8iH"; */
+"0i8-DP-8iH.normalTitle" = "Пропустить";
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "1De-XG-mrd"; */
+"1De-XG-mrd.normalTitle" = "Вход";
+
+/* Class = "UILabel"; text = "Progress in the game"; ObjectID = "7wU-9E-BYw"; */
+"7wU-9E-BYw.text" = "Прогресс в игре";
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "8wd-GG-g6F"; */
+"8wd-GG-g6F.normalTitle" = "Вход";
+
+/* Class = "UIButton"; normalTitle = "Work"; ObjectID = "9Sv-nF-boz"; */
+"9Sv-nF-boz.normalTitle" = "Работа";
+
+/* Class = "UILabel"; text = "Progress in life"; ObjectID = "C1J-BA-Jk4"; */
+"C1J-BA-Jk4.text" = "Прогресс в жизни";
+
+/* Class = "UIButton"; normalTitle = "Let's start!"; ObjectID = "Cer-Zg-227"; */
+"Cer-Zg-227.normalTitle" = "Начнем!";
+
+/* Class = "UILabel"; text = "Next"; ObjectID = "CPE-AH-dQ8"; */
+"CPE-AH-dQ8.text" = "Далее";
+
+/* Class = "UIButton"; normalTitle = "Login with Google"; ObjectID = "fYX-yC-fON"; */
+"fYX-yC-fON.normalTitle" = "Авторизоваться через Google";
+
+/* Class = "UIButton"; normalTitle = "Self-Care"; ObjectID = "iYm-7u-1VI"; */
+"iYm-7u-1VI.normalTitle" = "Уход за собой";
+
+/* Class = "UILabel"; text = "HAIR"; ObjectID = "Jb5-CA-lT8"; */
+"Jb5-CA-lT8.text" = "ВОЛОСЫ";
+
+/* Class = "UIButton"; normalTitle = "Randomize"; ObjectID = "K2H-zJ-vTs"; */
+"K2H-zJ-vTs.normalTitle" = "Случайно";
+
+/* Class = "UIButton"; normalTitle = "Chores"; ObjectID = "kJd-TG-HlB"; */
+"kJd-TG-HlB.normalTitle" = "Домашние дела";
+
+/* Class = "UILabel"; text = "Keep your goals on track with help from your friends. Support each other in life and in battle as you improve together!"; ObjectID = "MLQ-Gm-uoj"; */
+"MLQ-Gm-uoj.text" = "Добивайтесь поставленнх целей с помощью друзей. Поддерживайте друг друга в реальной жизни и в сражении, делая свою жизнь лучше!";
+
+/* Class = "UILabel"; text = "Welcome to"; ObjectID = "n39-ny-0cS"; */
+"n39-ny-0cS.text" = "Добро пожаловать в";
+
+/* Class = "UILabel"; text = "It’s time to have fun while you get things done. Join over 2 million others improving their life one task at a time."; ObjectID = "neo-od-L7b"; */
+"neo-od-L7b.text" = "Время получать удовольствие от выполнения дел. Присоединитесь к 2 миллионам пользователей улучшающих свою жизнь, выполняя задачи.";
+
+/* Class = "UIButton"; normalTitle = "Register"; ObjectID = "Ohf-iu-Phe"; */
+"Ohf-iu-Phe.normalTitle" = "Регистрация";
+
+/* Class = "UIButton"; normalTitle = "School"; ObjectID = "qdP-gX-YYc"; */
+"qdP-gX-YYc.normalTitle" = "Учеба";
+
+/* Class = "UIButton"; normalTitle = "Creativity"; ObjectID = "r9x-6o-A2F"; */
+"r9x-6o-A2F.normalTitle" = "Творчество";
+
+/* Class = "UILabel"; text = "SKIN"; ObjectID = "teJ-1y-V0M"; */
+"teJ-1y-V0M.text" = "КОЖА";
+
+/* Class = "UILabel"; text = "BODY"; ObjectID = "u2M-vv-5Dd"; */
+"u2M-vv-5Dd.text" = "ТЕЛО";
+
+/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "uAN-kx-bnR"; */
+"uAN-kx-bnR.normalTitle" = "Назад";
+
+/* Class = "UIButton"; normalTitle = "Health"; ObjectID = "UOx-cX-pif"; */
+"UOx-cX-pif.normalTitle" = "Здоровье";
+
+/* Class = "UIButton"; normalTitle = "Login with Facebook"; ObjectID = "xka-dX-nD0"; */
+"xka-dX-nD0.normalTitle" = "Войти через Facebook";
+
+/* Class = "UILabel"; text = "Fight monsters"; ObjectID = "Y7i-gL-CVx"; */
+"Y7i-gL-CVx.text" = "Сражайтесь с монстрами";
+
+/* Class = "UIButton"; normalTitle = "Exercise"; ObjectID = "YG9-k8-OkO"; */
+"YG9-k8-OkO.normalTitle" = "Упражнение";
+
+/* Class = "UILabel"; text = "Unlock features in the game by checking off your real life tasks. Earn armor, pets, and more as rewards for meeting your goals. "; ObjectID = "zAw-Xd-Z07"; */
+"zAw-Xd-Z07.text" = "Разблокируйте новые функции, выолняя задания в реальной жизни. Зарабатывайте оружие, питомцев и многое другое, чтобы получить награду за выполнение заданий!";
+
+/* Class = "UILabel"; text = "EXTRAS"; ObjectID = "Zha-R5-vQB"; */
+"Zha-R5-vQB.text" = "ДОПОЛНЕНИЯ";
+
+/* Class = "UILabel"; text = "Get social"; ObjectID = "Zie-HC-D1t"; */
+"Zie-HC-D1t.text" = "Становиться социальнее";
+

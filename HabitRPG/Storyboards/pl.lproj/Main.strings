@@ -4,17 +4,14 @@
 /* Class = "UITabBarItem"; title = "Habits"; ObjectID = "3G8-SH-Shd"; */
 "3G8-SH-Shd.title" = "Nawyki";
 
-/* Class = "UINavigationItem"; title = "Equipment"; ObjectID = "3bv-D6-Dzj"; */
-"3bv-D6-Dzj.title" = "Ekwipunek";
+/* Class = "UISegmentedControl"; 3ow-rh-Fzj.segmentTitles[0] = "Slim"; ObjectID = "3ow-rh-Fzj"; */
+"3ow-rh-Fzj.segmentTitles[0]" = "Szczupły";
+
+/* Class = "UISegmentedControl"; 3ow-rh-Fzj.segmentTitles[1] = "Broad"; ObjectID = "3ow-rh-Fzj"; */
+"3ow-rh-Fzj.segmentTitles[1]" = "Krzepki/krzepka";
 
 /* Class = "UINavigationItem"; title = "Pets"; ObjectID = "4dW-yC-5Ar"; */
 "4dW-yC-5Ar.title" = "Chowańce";
-
-/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "5AI-vM-jzp"; */
-"5AI-vM-jzp.normalTitle" = "Powrót";
-
-/* Class = "UILabel"; text = "Size"; ObjectID = "5KS-In-70X"; */
-"5KS-In-70X.text" = "Rozmiar";
 
 /* Class = "UIBarButtonItem"; title = "Filter"; ObjectID = "7QR-Cq-K2a"; */
 "7QR-Cq-K2a.title" = "Filtruj";
@@ -25,116 +22,59 @@
 /* Class = "UINavigationItem"; title = "Mounts"; ObjectID = "8QD-xr-Tcj"; */
 "8QD-xr-Tcj.title" = "Wierzchowce";
 
-/* Class = "UILabel"; text = "Label"; ObjectID = "9b7-Yf-yJs"; */
-"9b7-Yf-yJs.text" = "Etykieta";
-
-/* Class = "UIButton"; normalTitle = "Finish"; ObjectID = "63H-Fj-Vls"; */
-"63H-Fj-Vls.normalTitle" = "Skończ";
+/* Class = "UILabel"; text = "Buying gems supports the developers \nand helps keep Habitica running"; ObjectID = "421-JA-vci"; */
+"421-JA-vci.text" = "Kupowanie klejnotów wspiera deweloperów i pomaga Habitice działać.";
 
 /* Class = "UINavigationItem"; title = "About"; ObjectID = "970-3u-C37"; */
 "970-3u-C37.title" = "O nas";
 
-/* Class = "UIButton"; normalTitle = " Unlock Set for 5 gems "; ObjectID = "AQN-pU-u81"; */
-"AQN-pU-u81.normalTitle" = "Odblokuj zestaw za 5 klejnotów";
-
 /* Class = "UITabBarItem"; title = "Dailies"; ObjectID = "Aco-n2-RnG"; */
 "Aco-n2-RnG.title" = "Codzienne";
+
+/* Class = "UINavigationItem"; title = "Equipment"; ObjectID = "aGP-pV-Lz5"; */
+"aGP-pV-Lz5.title" = "Wyposażenie";
 
 /* Class = "UITabBarItem"; title = "Habits"; ObjectID = "CTh-zS-7ZY"; */
 "CTh-zS-7ZY.title" = "Nawyki";
 
-/* Class = "UITextField"; placeholder = "Repeat Password"; ObjectID = "DQC-ay-MKP"; */
-"DQC-ay-MKP.placeholder" = "Powtórz Hasło";
+/* Class = "UILabel"; text = "Select \"Use Costume\" to equip items to your avatar without affecting the Stats from your Battle Gear! This means that you can dress up your avatar in whatever outfit you like while still having your best Battle Gear equipped."; ObjectID = "d53-K0-Ybv"; */
+"d53-K0-Ybv.text" = "Wybierz "Załóż kostium", by wyposażyć w przedmioty swojego awatara, bez oddziaływania na statystyki z wyposażenia bojowego! To znaczy, że możesz przebrać swojego awatara w cokolwiek zechcesz, jednocześnie zachowując Twoje najlepsze wyposażenie bojowe założone.";
 
-/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "FYR-h9-UfW"; */
-"FYR-h9-UfW.normalTitle" = "Powrót";
+/* Class = "UINavigationItem"; title = "Choose User"; ObjectID = "Dal-zI-Dal"; */
+"Dal-zI-Dal.title" = "Wybierz użytkownika";
 
-/* Class = "UINavigationItem"; title = "Scan Code"; ObjectID = "HJa-qf-ea2"; */
-"HJa-qf-ea2.title" = "Zeskanuj kod";
-
-/* Class = "UIButton"; normalTitle = "Next"; ObjectID = "IRA-55-1g8"; */
-"IRA-55-1g8.normalTitle" = "Następny";
-
-/* Class = "UINavigationItem"; title = "News"; ObjectID = "Jni-km-FCZ"; */
-"Jni-km-FCZ.title" = "Nowości";
-
-/* Class = "UINavigationItem"; title = "Spells"; ObjectID = "K1m-Oj-jYN"; */
-"K1m-Oj-jYN.title" = "Zaklęcia";
-
-/* Class = "UINavigationItem"; title = "Customize Avatar"; ObjectID = "K4K-zl-tiU"; */
-"K4K-zl-tiU.title" = "Spersonalizuj awatar";
-
-/* Class = "UILabel"; text = "Title"; ObjectID = "KkO-6T-Qmx"; */
-"KkO-6T-Qmx.text" = "Tytuł";
-
-/* Class = "UILabel"; text = "Login with Google"; ObjectID = "M1V-nF-Eg7"; */
-"M1V-nF-Eg7.text" = "Zaloguj się korzystając z konta Google";
-
-/* Class = "UILabel"; text = "Login"; ObjectID = "MlA-iN-6gR"; */
-"MlA-iN-6gR.text" = "Zaloguj się";
-
-/* Class = "UINavigationItem"; title = "Rewards"; ObjectID = "Mlq-VF-kA3"; */
-"Mlq-VF-kA3.title" = "Nagrody";
-
-/* Class = "UITabBarItem"; title = "To-Dos"; ObjectID = "Np7-ws-fF6"; */
-"Np7-ws-fF6.title" = "Do-Zrobienia";
-
-/* Class = "UINavigationItem"; title = "Shops"; ObjectID = "QIL-Wo-vmp"; */
-"QIL-Wo-vmp.title" = "Sklepy";
-
-/* Class = "UINavigationItem"; title = "Filter by tags"; ObjectID = "RJ8-HL-bIH"; */
-"RJ8-HL-bIH.title" = "Filtruj po tagach";
-
-/* Class = "UILabel"; text = "No data yet"; ObjectID = "Spy-XJ-HaY"; */
-"Spy-XJ-HaY.text" = "Brak danych";
-
-/* Class = "UITabBarItem"; title = "To-Dos"; ObjectID = "TXB-iK-KhP"; */
-"TXB-iK-KhP.title" = "Do-Zrobienia";
-
-/* Class = "UINavigationItem"; title = "To-Dos"; ObjectID = "Tis-dF-qId"; */
-"Tis-dF-qId.title" = "Do-Zrobienia";
-
-/* Class = "UINavigationItem"; title = "Habits"; ObjectID = "Ueo-OS-iQj"; */
-"Ueo-OS-iQj.title" = "Nawyki";
-
-/* Class = "UIBarButtonItem"; title = "Register"; ObjectID = "XUX-eN-jCp"; */
-"XUX-eN-jCp.title" = "Zarejestruj się";
-
-/* Class = "UIBarButtonItem"; title = "Group By"; ObjectID = "Y9b-tv-h4L"; */
-"Y9b-tv-h4L.title" = "Sortuj według";
-
-/* Class = "UINavigationItem"; title = "Choose Task"; ObjectID = "Yuh-D9-NY5"; */
-"Yuh-D9-NY5.title" = "Wybierz Zadanie";
-
-/* Class = "UITextField"; placeholder = "Email"; ObjectID = "c6L-Nt-YPn"; */
-"c6L-Nt-YPn.placeholder" = "E-mail";
-
-/* Class = "UILabel"; text = "Subtitle"; ObjectID = "ciB-Fl-be7"; */
-"ciB-Fl-be7.text" = "Podtytuł";
+/* Class = "UINavigationItem"; title = "Rewards"; ObjectID = "HHL-mH-FJc"; */
+"HHL-mH-FJc.title" = "Nagrody";
 
 /* Class = "UIBarButtonItem"; title = "Clear"; ObjectID = "hIC-Qf-w8a"; */
 "hIC-Qf-w8a.title" = "Wyczyść";
 
-/* Class = "UILabel"; text = "Label"; ObjectID = "hd1-sx-QKa"; */
-"hd1-sx-QKa.text" = "Etykieta";
+/* Class = "UINavigationItem"; title = "Scan Code"; ObjectID = "HJa-qf-ea2"; */
+"HJa-qf-ea2.title" = "Zeskanuj kod";
 
-/* Class = "UINavigationItem"; title = "Profile"; ObjectID = "hnF-ml-Qfo"; */
-"hnF-ml-Qfo.title" = "Profil";
+/* Class = "UINavigationItem"; title = "Menu"; ObjectID = "hnF-ml-Qfo"; */
+"hnF-ml-Qfo.title" = "Menu";
 
 /* Class = "UITabBarItem"; title = "Menu"; ObjectID = "hyj-Mf-lvH"; */
 "hyj-Mf-lvH.title" = "Menu";
 
-/* Class = "UILabel"; text = "Label"; ObjectID = "imx-7O-EEy"; */
-"imx-7O-EEy.text" = "Etykieta";
+/* Class = "UINavigationItem"; title = "News"; ObjectID = "Jni-km-FCZ"; */
+"Jni-km-FCZ.title" = "Aktualności";
+
+/* Class = "UILabel"; text = "Become a subscriber and you’ll get these useful benefits:"; ObjectID = "lb7-8k-2uz"; */
+"lb7-8k-2uz.text" = "Wspieraj Habitikę zostając subskrybentem, aby dostać te wspaniałe nagrody:";
 
 /* Class = "UIBarButtonItem"; title = "Filter"; ObjectID = "lJN-5G-qrz"; */
 "lJN-5G-qrz.title" = "Filtruj";
 
 /* Class = "UIBarButtonItem"; title = "Group By"; ObjectID = "mdo-xN-SW4"; */
-"mdo-xN-SW4.title" = "Sortuj według";
+"mdo-xN-SW4.title" = "Grupuj według";
 
-/* Class = "UIBarButtonItem"; title = "?"; ObjectID = "obl-zo-g8m"; */
-"obl-zo-g8m.title" = "?";
+/* Class = "UITabBarItem"; title = "To-Dos"; ObjectID = "Np7-ws-fF6"; */
+"Np7-ws-fF6.title" = "Do-Zrobienia";
+
+/* Class = "UIButton"; normalTitle = "Restore Purchase"; ObjectID = "P89-QO-UcF"; */
+"P89-QO-UcF.normalTitle" = "Przywróć zakup";
 
 /* Class = "UITabBarItem"; title = "Dailies"; ObjectID = "pdW-W9-wj6"; */
 "pdW-W9-wj6.title" = "Codzienne";
@@ -142,17 +82,8 @@
 /* Class = "UIBarButtonItem"; title = "Filter"; ObjectID = "r2M-pt-ZEv"; */
 "r2M-pt-ZEv.title" = "Filtruj";
 
-/* Class = "UITextField"; placeholder = "Email / Username"; ObjectID = "r6h-y4-Yj6"; */
-"r6h-y4-Yj6.placeholder" = "E-mail / Nazwa użytkownika";
-
-/* Class = "UILabel"; text = "No completed To-Dos"; ObjectID = "rRE-Ue-tyN"; */
-"rRE-Ue-tyN.text" = "Brak wykonanych Do-Zrobienia";
-
-/* Class = "UISegmentedControl"; sMQ-xU-ZOd.segmentTitles[0] = "Slim"; ObjectID = "sMQ-xU-ZOd"; */
-"sMQ-xU-ZOd.segmentTitles[0]" = "Szczupły/szczupła";
-
-/* Class = "UISegmentedControl"; sMQ-xU-ZOd.segmentTitles[1] = "Broad"; ObjectID = "sMQ-xU-ZOd"; */
-"sMQ-xU-ZOd.segmentTitles[1]" = "Krzepki/krzepka";
+/* Class = "UINavigationItem"; title = "Filter by tags"; ObjectID = "RJ8-HL-bIH"; */
+"RJ8-HL-bIH.title" = "Filtruj po tagach";
 
 /* Class = "UINavigationItem"; title = "Mounts"; ObjectID = "si7-7p-nZ9"; */
 "si7-7p-nZ9.title" = "Wierzchowce";
@@ -160,21 +91,42 @@
 /* Class = "UINavigationItem"; title = "FAQ"; ObjectID = "sni-tf-k5c"; */
 "sni-tf-k5c.title" = "FAQ (często zadawane pytania)";
 
-/* Class = "UINavigationItem"; title = "Settings"; ObjectID = "uSK-A3-t5d"; */
-"uSK-A3-t5d.title" = "Ustawienia";
+/* Class = "UINavigationItem"; title = "To-Dos"; ObjectID = "Tis-dF-qId"; */
+"Tis-dF-qId.title" = "Do-Zrobienia";
 
-/* Class = "UITextField"; placeholder = "Password"; ObjectID = "wUf-yh-Qus"; */
-"wUf-yh-Qus.placeholder" = "Hasło";
+/* Class = "UITabBarItem"; title = "To-Dos"; ObjectID = "TXB-iK-KhP"; */
+"TXB-iK-KhP.title" = "Do-Zrobienia";
+
+/* Class = "UIButton"; normalTitle = "Checkout"; ObjectID = "ubx-Z1-yyq"; */
+"ubx-Z1-yyq.normalTitle" = "Kasa";
+
+/* Class = "UINavigationItem"; title = "Habits"; ObjectID = "Ueo-OS-iQj"; */
+"Ueo-OS-iQj.title" = "Nawyki";
+
+/* Class = "UILabel"; text = "Subscribing supports the developers \nand helps keep Habitica running"; ObjectID = "V5k-go-mwg"; */
+"V5k-go-mwg.text" = "Subskrybowanie wspomaga deweloperów i pomaga Habitice działać";
+
+/* Class = "UILabel"; text = "Gems allow you to buy fun extras for \nyour account, including:"; ObjectID = "xhA-8b-NmG"; */
+"xhA-8b-NmG.text" = "Klejnoty pozwalają Ci kupować dodatkowe atrybuty takie jak:";
 
 /* Class = "UINavigationItem"; title = "Feed Pet"; ObjectID = "xZ9-Ng-9se"; */
 "xZ9-Ng-9se.title" = "Nakarm Chowańca";
 
-/* Class = "UITabBarItem"; title = "Rewards"; ObjectID = "zFI-xr-RjT"; */
-"zFI-xr-RjT.title" = "Nagrody";
+/* Class = "UIBarButtonItem"; title = "Group By"; ObjectID = "Y9b-tv-h4L"; */
+"Y9b-tv-h4L.title" = "Grupuj według";
+
+/* Class = "UINavigationItem"; title = "Stable"; ObjectID = "yA7-ap-uv0"; */
+"yA7-ap-uv0.title" = "Stajnia";
+
+/* Class = "UINavigationItem"; title = "Choose Task"; ObjectID = "Yuh-D9-NY5"; */
+"Yuh-D9-NY5.title" = "Wybierz Zadanie";
 
 /* Class = "UINavigationItem"; title = "Pets"; ObjectID = "zdm-Oo-gvg"; */
 "zdm-Oo-gvg.title" = "Chowańce";
 
 /* Class = "UINavigationItem"; title = "Dailies"; ObjectID = "zec-6L-pJk"; */
 "zec-6L-pJk.title" = "Codzienne";
+
+/* Class = "UITabBarItem"; title = "Rewards"; ObjectID = "zFI-xr-RjT"; */
+"zFI-xr-RjT.title" = "Nagrody";
 

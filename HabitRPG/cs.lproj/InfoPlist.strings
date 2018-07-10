@@ -1,3 +1,15 @@
-/* (No Commment) */
+/* Bundle display name */
+"CFBundleDisplayName" = "Habitica";
+
+/* Bundle name */
 "CFBundleName" = "HabitRPG";
+
+/* Privacy - Camera Usage Description */
+"NSCameraUsageDescription" = "Aby bylo možné naskenovat QR kód, je třeba aplikaci povolit přístup k fotoaparátu.";
+
+/* Privacy - Microphone Usage Description */
+"NSMicrophoneUsageDescription" = "Habitica potřebuje přístup k mikrofonu, aby bylo možné připojit hlasové poznámky";
+
+/* Privacy - Photo Library Usage Description */
+"NSPhotoLibraryUsageDescription" = "Aby bylo možné naskenovat QR kód, je třeba aplikaci povolit přístup k fotoaparátu.";
 

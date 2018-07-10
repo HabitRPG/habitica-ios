@@ -1,0 +1,51 @@
+/* Class = "UIButton"; normalTitle = "Skip"; ObjectID = "0i8-DP-8iH"; */
+"0i8-DP-8iH.normalTitle" = "Pomiń";
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "1De-XG-mrd"; */
+"1De-XG-mrd.normalTitle" = "Zaloguj się";
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "8wd-GG-g6F"; */
+"8wd-GG-g6F.normalTitle" = "Zaloguj się";
+
+/* Class = "UIButton"; normalTitle = "Work"; ObjectID = "9Sv-nF-boz"; */
+"9Sv-nF-boz.normalTitle" = "Praca";
+
+/* Class = "UILabel"; text = "Next"; ObjectID = "CPE-AH-dQ8"; */
+"CPE-AH-dQ8.text" = "Następny";
+
+/* Class = "UIButton"; normalTitle = "Login with Google"; ObjectID = "fYX-yC-fON"; */
+"fYX-yC-fON.normalTitle" = "Zaloguj się korzystając z konta Google";
+
+/* Class = "UIButton"; normalTitle = "Self-Care"; ObjectID = "iYm-7u-1VI"; */
+"iYm-7u-1VI.normalTitle" = "Dbanie o siebie";
+
+/* Class = "UIButton"; normalTitle = "Randomize"; ObjectID = "K2H-zJ-vTs"; */
+"K2H-zJ-vTs.normalTitle" = "Zrandomizuj";
+
+/* Class = "UIButton"; normalTitle = "Chores"; ObjectID = "kJd-TG-HlB"; */
+"kJd-TG-HlB.normalTitle" = "Prace domowe";
+
+/* Class = "UILabel"; text = "Keep your goals on track with help from your friends. Support each other in life and in battle as you improve together!"; ObjectID = "MLQ-Gm-uoj"; */
+"MLQ-Gm-uoj.text" = "Korzystając z pomocy przyjaciół, monitoruj swoje cele. Wspierajcie się wzajemnie w życiu i podczas walki, by wspólnie doskonalić się!";
+
+/* Class = "UILabel"; text = "Welcome to"; ObjectID = "n39-ny-0cS"; */
+"n39-ny-0cS.text" = "Witamy w";
+
+/* Class = "UIButton"; normalTitle = "Register"; ObjectID = "Ohf-iu-Phe"; */
+"Ohf-iu-Phe.normalTitle" = "Zarejestruj się";
+
+/* Class = "UIButton"; normalTitle = "School"; ObjectID = "qdP-gX-YYc"; */
+"qdP-gX-YYc.normalTitle" = "Szkoła";
+
+/* Class = "UIButton"; normalTitle = "Creativity"; ObjectID = "r9x-6o-A2F"; */
+"r9x-6o-A2F.normalTitle" = "Kreatywność";
+
+/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "uAN-kx-bnR"; */
+"uAN-kx-bnR.normalTitle" = "Powrót";
+
+/* Class = "UIButton"; normalTitle = "Health"; ObjectID = "UOx-cX-pif"; */
+"UOx-cX-pif.normalTitle" = "Zdrowie";
+
+/* Class = "UIButton"; normalTitle = "Exercise"; ObjectID = "YG9-k8-OkO"; */
+"YG9-k8-OkO.normalTitle" = "Ćwiczenia";
+

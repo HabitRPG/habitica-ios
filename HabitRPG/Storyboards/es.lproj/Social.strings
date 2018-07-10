@@ -1,11 +1,11 @@
-/* Class = "UINavigationItem"; title = "Tavern"; ObjectID = "4hr-0m-2xW"; */
-"4hr-0m-2xW.title" = "Taberna";
-
-/* Class = "UILabel"; text = "Challenges"; ObjectID = "5at-ri-wP8"; */
-"5at-ri-wP8.text" = "Desafíos";
+/* Class = "UIButton"; normalTitle = "View FAQ"; ObjectID = "1kC-MI-SIq"; */
+"1kC-MI-SIq.normalTitle" = "Ver Preguntas Frecuentes";
 
 /* Class = "UILabel"; text = "PER"; ObjectID = "6fx-6Z-TC6"; */
 "6fx-6Z-TC6.text" = "PER";
+
+/* Class = "UIButton"; normalTitle = "Accept"; ObjectID = "6iy-Mx-6lI"; */
+"6iy-Mx-6lI.normalTitle" = "Aceptar";
 
 /* Class = "UIBarButtonItem"; title = "Profile"; ObjectID = "61t-W4-ftz"; */
 "61t-W4-ftz.title" = "Perfil";
@@ -13,140 +13,126 @@
 /* Class = "UILabel"; text = "Attributes"; ObjectID = "325-ui-y7c"; */
 "325-ui-y7c.text" = "Atributos";
 
-/* Class = "UILabel"; text = "Accept"; ObjectID = "AIV-DO-l6o"; */
-"AIV-DO-l6o.text" = "Aceptar";
+/* Class = "UIButton"; normalTitle = "Report a Bug"; ObjectID = "a2o-0k-TlN"; */
+"a2o-0k-TlN.normalTitle" = "Avisar de un Error";
 
-/* Class = "UINavigationItem"; title = "Quest Invitation"; ObjectID = "ER1-WC-z8Y"; */
-"ER1-WC-z8Y.title" = "Invitación a misión";
+/* Class = "UIButton"; normalTitle = "Start a Quest"; ObjectID = "aJd-M0-VrU"; */
+"aJd-M0-VrU.normalTitle" = "Empezar una misión";
 
-/* Class = "UILabel"; text = "Write Message"; ObjectID = "FhD-If-CW1"; */
-"FhD-If-CW1.text" = "Escribir mensaje";
-
-/* Class = "UILabel"; text = "Title"; ObjectID = "Fjm-rk-34f"; */
-"Fjm-rk-34f.text" = "Título";
-
-/* Class = "UINavigationItem"; title = "Party"; ObjectID = "Fyc-Xu-ygm"; */
-"Fyc-Xu-ygm.title" = "Grupo";
-
-/* Class = "UILabel"; text = "Challenges"; ObjectID = "GBy-zO-kgB"; */
-"GBy-zO-kgB.text" = "Desafíos";
-
-/* Class = "UINavigationItem"; title = "New Message"; ObjectID = "Ib5-SB-HqM"; */
-"Ib5-SB-HqM.title" = "Nuevo mensaje";
-
-/* Class = "UINavigationItem"; title = "Guild"; ObjectID = "ImZ-fI-M48"; */
-"ImZ-fI-M48.title" = "Gremio";
-
-/* Class = "UILabel"; text = "Detail"; ObjectID = "KHy-wR-CXa"; */
-"KHy-wR-CXa.text" = "Detalle";
-
-/* Class = "UILabel"; text = "INT"; ObjectID = "LGe-8Z-aDa"; */
-"LGe-8Z-aDa.text" = "INT";
-
-/* Class = "UINavigationItem"; title = "Participants"; ObjectID = "N8D-SB-Ttc"; */
-"N8D-SB-Ttc.title" = "Participantes";
-
-/* Class = "UILabel"; text = "Public Guilds"; ObjectID = "NB2-59-SRo"; */
-"NB2-59-SRo.text" = "Gremios públicos";
-
-/* Class = "UILabel"; text = "Members"; ObjectID = "OG6-95-cJg"; */
-"OG6-95-cJg.text" = "Miembros";
-
-/* Class = "UIBarButtonItem"; title = "Accept Guidelines"; ObjectID = "Qsp-FO-gTG"; */
-"Qsp-FO-gTG.title" = "Aceptar las normas";
-
-/* Class = "UILabel"; text = "Label"; ObjectID = "UcA-1U-tF4"; */
-"UcA-1U-tF4.text" = "Etiqueta";
-
-/* Class = "UIButton"; normalTitle = "Join"; ObjectID = "Vel-gj-dLr"; */
-"Vel-gj-dLr.normalTitle" = "Unirte";
-
-/* Class = "UILabel"; text = "Write Message"; ObjectID = "WNb-BJ-2TY"; */
-"WNb-BJ-2TY.text" = "Escribir mensaje";
-
-/* Class = "UINavigationItem"; title = "Inbox"; ObjectID = "WTK-c7-15D"; */
-"WTK-c7-15D.title" = "Bandeja de entrada";
-
-/* Class = "UILabel"; text = "Want to join a party? Give them your User ID:"; ObjectID = "aFq-c1-alj"; */
-"aFq-c1-alj.text" = "¿Quieres unirte a un grupo? Indícales tu n.º de usuario:";
-
-/* Class = "UILabel"; text = "Play Habitica with friends to stay accountable!\nBattle monsters and create Challenges!\nInvite friends now to earn a Quest Scroll!"; ObjectID = "aoA-I4-cSP"; */
-"aoA-I4-cSP.text" = "¡Juega a Habitica con tus amigos y aprende a ser responsable!
-¡Lucha contra monstruos y crea desafíos!
-¡Invita ahora a tus amigos y consigue el pergamino de una misión!";
+/* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "bou-Ng-0JG"; */
+"bou-Ng-0JG.title" = "Editar";
 
 /* Class = "UINavigationItem"; title = "Guilds"; ObjectID = "c0I-zN-kPF"; */
 "c0I-zN-kPF.title" = "Gremios";
 
-/* Class = "UILabel"; text = "Label"; ObjectID = "cHf-h0-50k"; */
-"cHf-h0-50k.text" = "Etiqueta";
+/* Class = "UIButton"; normalTitle = "Reject"; ObjectID = "DVS-qZ-ZmV"; */
+"DVS-qZ-ZmV.normalTitle" = "Rechazar";
 
-/* Class = "UILabel"; text = "Challenges"; ObjectID = "cLY-z8-8pq"; */
-"cLY-z8-8pq.text" = "Desafíos";
+/* Class = "UIButton"; normalTitle = "Party Challenges"; ObjectID = "e0g-qd-d5g"; */
+"e0g-qd-d5g.normalTitle" = "Desafíos del equipo";
 
-/* Class = "UILabel"; text = "Write Message"; ObjectID = "cWu-wc-Lec"; */
-"cWu-wc-Lec.text" = "Escribir mensaje";
+/* Class = "UINavigationItem"; title = "Quest"; ObjectID = "f1L-hl-qqv"; */
+"f1L-hl-qqv.title" = "Misión";
 
-/* Class = "UILabel"; text = "Subtitle"; ObjectID = "d2x-6l-h3J"; */
-"d2x-6l-h3J.text" = "Subtítulo";
+/* Class = "UIButton"; normalTitle = "Invite to Guild"; ObjectID = "ftv-T1-K44"; */
+"ftv-T1-K44.normalTitle" = "Invita a la hermandad";
 
-/* Class = "UILabel"; text = "Title"; ObjectID = "d7x-Bc-T1q"; */
-"d7x-Bc-T1q.text" = "Título";
+/* Class = "UIButton"; normalTitle = "Leave Guild"; ObjectID = "g8o-zg-Ucv"; */
+"g8o-zg-Ucv.normalTitle" = "Abandonar Gremio";
 
-/* Class = "UINavigationItem"; title = "Public Guilds"; ObjectID = "etc-uL-HJd"; */
-"etc-uL-HJd.title" = "Gremios públicos";
+/* Class = "UINavigationItem"; title = "Guild"; ObjectID = "H93-hs-7Lc"; */
+"H93-hs-7Lc.title" = "Gremio";
 
-/* Class = "UILabel"; text = "Label"; ObjectID = "evc-UL-HyC"; */
-"evc-UL-HyC.text" = "Etiqueta";
+/* Class = "UILabel"; text = "Boss Battle"; ObjectID = "Hdi-g1-MiM"; */
+"Hdi-g1-MiM.text" = "Batalla contra Jefe";
 
-/* Class = "UILabel"; text = "Create new Party"; ObjectID = "grW-d9-FRm"; */
-"grW-d9-FRm.text" = "Crear nuevo grupo";
+/* Class = "UIButton"; normalTitle = "Guild Challenges"; ObjectID = "I4F-83-zKJ"; */
+"I4F-83-zKJ.normalTitle" = "Desafíos del gremio";
 
-/* Class = "UILabel"; text = "About"; ObjectID = "gsa-rZ-ddD"; */
-"gsa-rZ-ddD.text" = "Información";
+/* Class = "UINavigationItem"; title = "Tavern"; ObjectID = "Iy2-WC-FJM"; */
+"Iy2-WC-FJM.title" = "Taberna";
 
-/* Class = "UILabel"; text = "Ask Later"; ObjectID = "ifd-yJ-Hb9"; */
-"ifd-yJ-Hb9.text" = "Preguntar más tarde";
+/* Class = "UINavigationItem"; title = "Guidelines"; ObjectID = "KAs-8j-2dX"; */
+"KAs-8j-2dX.title" = "Normas";
+
+/* Class = "UIButton"; normalTitle = "Invite a member"; ObjectID = "kHV-xM-rcF"; */
+"kHV-xM-rcF.normalTitle" = "Invitar a un miembro";
 
 /* Class = "UILabel"; text = "CON"; ObjectID = "kjI-Lf-q1I"; */
 "kjI-Lf-q1I.text" = "CON";
 
+/* Class = "UILabel"; text = "INT"; ObjectID = "LGe-8Z-aDa"; */
+"LGe-8Z-aDa.text" = "INT";
+
+/* Class = "UINavigationItem"; title = "Choose Recipient"; ObjectID = "LNJ-85-sLW"; */
+"LNJ-85-sLW.title" = "Elegir al Recipiente";
+
 /* Class = "UILabel"; text = "STR"; ObjectID = "mbO-Mk-igC"; */
-"mbO-Mk-igC.text" = "FUE";
+"mbO-Mk-igC.text" = "STR";
 
-/* Class = "UILabel"; text = "About"; ObjectID = "nEX-pd-oIw"; */
-"nEX-pd-oIw.text" = "Información";
+/* Class = "UILabel"; text = "Guild members"; ObjectID = "mmD-db-dYd"; */
+"mmD-db-dYd.text" = "Miembros del gremio";
 
-/* Class = "UILabel"; text = "Reject"; ObjectID = "nd1-bk-1P7"; */
-"nd1-bk-1P7.text" = "Rechazar";
+/* Class = "UILabel"; text = "Label"; ObjectID = "mVE-dK-Vtq"; */
+"mVE-dK-Vtq.text" = "Etiqueta";
 
-/* Class = "UILabel"; text = "Label"; ObjectID = "oMJ-Hk-a6I"; */
-"oMJ-Hk-a6I.text" = "Etiqueta";
+/* Class = "UILabel"; text = "Label"; ObjectID = "o36-K8-WE9"; */
+"o36-K8-WE9.text" = "Etiqueta";
 
-/* Class = "UILabel"; text = "Loading"; ObjectID = "qHz-u8-sDB"; */
-"qHz-u8-sDB.text" = "Cargando";
+/* Class = "UILabel"; text = "Label"; ObjectID = "ODU-Gu-ON4"; */
+"ODU-Gu-ON4.text" = "Etiqueta";
 
-/* Class = "UILabel"; text = "Name"; ObjectID = "r1V-ai-lKk"; */
-"r1V-ai-lKk.text" = "Nombre";
+/* Class = "UINavigationItem"; title = "Party"; ObjectID = "ohm-N0-URb"; */
+"ohm-N0-URb.title" = "Equipo";
 
-/* Class = "UINavigationItem"; title = "About"; ObjectID = "rki-x7-727"; */
-"rki-x7-727.title" = "Información";
+/* Class = "UINavigationItem"; title = "Challenges"; ObjectID = "OHs-Q2-g2k"; */
+"OHs-Q2-g2k.title" = "Desafíos";
 
-/* Class = "UILabel"; text = "Loading"; ObjectID = "tZ0-aY-Y24"; */
-"tZ0-aY-Y24.text" = "Cargando";
+/* Class = "UIButton"; normalTitle = "Start Quest"; ObjectID = "Oo2-ht-HrC"; */
+"Oo2-ht-HrC.normalTitle" = "Emprender misión";
 
-/* Class = "UILabel"; text = "If you would like to post messages in the Tavern or any party or guild chat, please first read our  Community Guidelines and then click \"Accept Guidelines\" button below to indicate that you accept them."; ObjectID = "vLc-mV-bsJ"; */
-"vLc-mV-bsJ.text" = "Si quieres publicar mensajes en la Posada o en el chat de algún grupo o gremio, lee primero las Normas de la comunidad y, a continuación, haz clic en el botón «Aceptar las normas» para indicar que las aceptas.";
+/* Class = "UIButton"; normalTitle = "Join Guild"; ObjectID = "oXc-S6-Df9"; */
+"oXc-S6-Df9.normalTitle" = "Únete a la hermandad";
 
-/* Class = "UILabel"; text = "Loading"; ObjectID = "wjW-Cr-qhZ"; */
-"wjW-Cr-qhZ.text" = "Cargando";
+/* Class = "UIButton"; normalTitle = "Reject"; ObjectID = "pIy-vb-vm3"; */
+"pIy-vb-vm3.normalTitle" = "Rechazar";
 
-/* Class = "UINavigationItem"; title = "Members"; ObjectID = "wmm-mb-Ktw"; */
-"wmm-mb-Ktw.title" = "Miembros";
+/* Class = "UIButton"; normalTitle = "View Community Guidelines"; ObjectID = "PQZ-Md-abl"; */
+"PQZ-Md-abl.normalTitle" = "Ver Normas de la Comunidad";
 
-/* Class = "UIBarButtonItem"; title = "Begin"; ObjectID = "yuR-F7-zSD"; */
-"yuR-F7-zSD.title" = "Empezar";
+/* Class = "UILabel"; text = "Description"; ObjectID = "PvU-aP-uYa"; */
+"PvU-aP-uYa.text" = "Descripción";
 
-/* Class = "UILabel"; text = "Title"; ObjectID = "zBe-ca-SpX"; */
-"zBe-ca-SpX.text" = "Título";
+/* Class = "UIButton"; normalTitle = "Cancel Invitation"; ObjectID = "pXx-qO-qxd"; */
+"pXx-qO-qxd.normalTitle" = "Cancelar invitación";
+
+/* Class = "UILabel"; text = "Invitations"; ObjectID = "q4z-83-kc2"; */
+"q4z-83-kc2.text" = "Invitaciones";
+
+/* Class = "UIButton"; normalTitle = "Leave Party"; ObjectID = "qRK-ar-9GJ"; */
+"qRK-ar-9GJ.normalTitle" = "Abandonar Equipo";
+
+/* Class = "UILabel"; text = "Guild leader"; ObjectID = "Sqv-0g-s6n"; */
+"Sqv-0g-s6n.text" = "Líder del gremio";
+
+/* Class = "UIButton"; normalTitle = "Accept"; ObjectID = "TdI-5q-50U"; */
+"TdI-5q-50U.normalTitle" = "Aceptar";
+
+/* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "uFa-zO-Ua8"; */
+"uFa-zO-Ua8.title" = "Editar";
+
+/* Class = "UIButton"; normalTitle = "Abort"; ObjectID = "uJd-V9-acD"; */
+"uJd-V9-acD.normalTitle" = "Anular";
+
+/* Class = "UILabel"; text = "Guild Bank"; ObjectID = "UrW-r2-Djq"; */
+"UrW-r2-Djq.text" = "Banco de la hermandad";
+
+/* Class = "UINavigationItem"; title = "Messages"; ObjectID = "WTK-c7-15D"; */
+"WTK-c7-15D.title" = "Mensajes";
+
+/* Class = "UIButton"; normalTitle = "Pause Damage"; ObjectID = "x55-Jn-3In"; */
+"x55-Jn-3In.normalTitle" = "Pausar Daño";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "XV0-Wd-Y6V"; */
+"XV0-Wd-Y6V.text" = "Etiqueta";
 

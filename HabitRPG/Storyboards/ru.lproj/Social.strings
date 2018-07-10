@@ -1,11 +1,11 @@
-/* Class = "UINavigationItem"; title = "Tavern"; ObjectID = "4hr-0m-2xW"; */
-"4hr-0m-2xW.title" = "Таверна";
-
-/* Class = "UILabel"; text = "Challenges"; ObjectID = "5at-ri-wP8"; */
-"5at-ri-wP8.text" = "Испытания";
+/* Class = "UIButton"; normalTitle = "View FAQ"; ObjectID = "1kC-MI-SIq"; */
+"1kC-MI-SIq.normalTitle" = "Просмотр FAQ";
 
 /* Class = "UILabel"; text = "PER"; ObjectID = "6fx-6Z-TC6"; */
 "6fx-6Z-TC6.text" = "ВОС";
+
+/* Class = "UIButton"; normalTitle = "Accept"; ObjectID = "6iy-Mx-6lI"; */
+"6iy-Mx-6lI.normalTitle" = "Принять";
 
 /* Class = "UIBarButtonItem"; title = "Profile"; ObjectID = "61t-W4-ftz"; */
 "61t-W4-ftz.title" = "Профиль";
@@ -13,32 +13,56 @@
 /* Class = "UILabel"; text = "Attributes"; ObjectID = "325-ui-y7c"; */
 "325-ui-y7c.text" = "Характеристики";
 
-/* Class = "UILabel"; text = "Accept"; ObjectID = "AIV-DO-l6o"; */
-"AIV-DO-l6o.text" = "Принять";
+/* Class = "UIButton"; normalTitle = "Report a Bug"; ObjectID = "a2o-0k-TlN"; */
+"a2o-0k-TlN.normalTitle" = "Сообщить о проблеме";
 
-/* Class = "UINavigationItem"; title = "Quest Invitation"; ObjectID = "ER1-WC-z8Y"; */
-"ER1-WC-z8Y.title" = "Приглашение на квест";
+/* Class = "UIButton"; normalTitle = "Start a Quest"; ObjectID = "aJd-M0-VrU"; */
+"aJd-M0-VrU.normalTitle" = "Начать квест";
 
-/* Class = "UILabel"; text = "Write Message"; ObjectID = "FhD-If-CW1"; */
-"FhD-If-CW1.text" = "Написать сообщение";
+/* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "bou-Ng-0JG"; */
+"bou-Ng-0JG.title" = "Изменить";
 
-/* Class = "UILabel"; text = "Title"; ObjectID = "Fjm-rk-34f"; */
-"Fjm-rk-34f.text" = "Заголовок";
+/* Class = "UINavigationItem"; title = "Guilds"; ObjectID = "c0I-zN-kPF"; */
+"c0I-zN-kPF.title" = "Гильдии";
 
-/* Class = "UINavigationItem"; title = "Party"; ObjectID = "Fyc-Xu-ygm"; */
-"Fyc-Xu-ygm.title" = "Команда";
+/* Class = "UIButton"; normalTitle = "Create a new Party"; ObjectID = "cAS-hA-W5E"; */
+"cAS-hA-W5E.normalTitle" = "Создать новую команду";
 
-/* Class = "UILabel"; text = "Challenges"; ObjectID = "GBy-zO-kgB"; */
-"GBy-zO-kgB.text" = "Испытания";
+/* Class = "UIButton"; normalTitle = "Reject"; ObjectID = "DVS-qZ-ZmV"; */
+"DVS-qZ-ZmV.normalTitle" = "Отказать";
 
-/* Class = "UINavigationItem"; title = "New Message"; ObjectID = "Ib5-SB-HqM"; */
-"Ib5-SB-HqM.title" = "Новое сообщение";
+/* Class = "UIButton"; normalTitle = "Party Challenges"; ObjectID = "e0g-qd-d5g"; */
+"e0g-qd-d5g.normalTitle" = "Испытания команды";
 
-/* Class = "UINavigationItem"; title = "Guild"; ObjectID = "ImZ-fI-M48"; */
-"ImZ-fI-M48.title" = "Гильдия";
+/* Class = "UINavigationItem"; title = "Quest"; ObjectID = "f1L-hl-qqv"; */
+"f1L-hl-qqv.title" = "Квестовые";
 
-/* Class = "UILabel"; text = "Detail"; ObjectID = "KHy-wR-CXa"; */
-"KHy-wR-CXa.text" = "Детальное";
+/* Class = "UIButton"; normalTitle = "Invite to Guild"; ObjectID = "ftv-T1-K44"; */
+"ftv-T1-K44.normalTitle" = "Пригласить в гильдию";
+
+/* Class = "UIButton"; normalTitle = "Leave Guild"; ObjectID = "g8o-zg-Ucv"; */
+"g8o-zg-Ucv.normalTitle" = "Выйти из гильдии";
+
+/* Class = "UINavigationItem"; title = "Guild"; ObjectID = "H93-hs-7Lc"; */
+"H93-hs-7Lc.title" = "Гильдия";
+
+/* Class = "UILabel"; text = "Boss Battle"; ObjectID = "Hdi-g1-MiM"; */
+"Hdi-g1-MiM.text" = "Бой с Боссом";
+
+/* Class = "UIButton"; normalTitle = "Guild Challenges"; ObjectID = "I4F-83-zKJ"; */
+"I4F-83-zKJ.normalTitle" = "Испытания гильдии";
+
+/* Class = "UINavigationItem"; title = "Tavern"; ObjectID = "Iy2-WC-FJM"; */
+"Iy2-WC-FJM.title" = "Таверна";
+
+/* Class = "UINavigationItem"; title = "Guidelines"; ObjectID = "KAs-8j-2dX"; */
+"KAs-8j-2dX.title" = "Правила";
+
+/* Class = "UIButton"; normalTitle = "Invite a member"; ObjectID = "kHV-xM-rcF"; */
+"kHV-xM-rcF.normalTitle" = "Пригласить участника";
+
+/* Class = "UILabel"; text = "CON"; ObjectID = "kjI-Lf-q1I"; */
+"kjI-Lf-q1I.text" = "ТЕЛ";
 
 /* Class = "UILabel"; text = "INT"; ObjectID = "LGe-8Z-aDa"; */
 "LGe-8Z-aDa.text" = "ИНТ";
@@ -46,116 +70,81 @@
 /* Class = "UINavigationItem"; title = "Choose Recipient"; ObjectID = "LNJ-85-sLW"; */
 "LNJ-85-sLW.title" = "Выберите участника";
 
-/* Class = "UINavigationItem"; title = "Participants"; ObjectID = "N8D-SB-Ttc"; */
-"N8D-SB-Ttc.title" = "Участники";
-
-/* Class = "UILabel"; text = "Public Guilds"; ObjectID = "NB2-59-SRo"; */
-"NB2-59-SRo.text" = "Открытые гильдии";
-
-/* Class = "UILabel"; text = "Members"; ObjectID = "OG6-95-cJg"; */
-"OG6-95-cJg.text" = "Участники";
-
-/* Class = "UILabel"; text = "Invite Party to new quest"; ObjectID = "Q1q-8Q-sgW"; */
-"Q1q-8Q-sgW.text" = "Пригласить команду в новый квест";
-
-/* Class = "UIBarButtonItem"; title = "Accept Guidelines"; ObjectID = "Qsp-FO-gTG"; */
-"Qsp-FO-gTG.title" = "Принять правила";
-
-/* Class = "UILabel"; text = "Label"; ObjectID = "UcA-1U-tF4"; */
-"UcA-1U-tF4.text" = "Метка";
-
-/* Class = "UIButton"; normalTitle = "Join"; ObjectID = "Vel-gj-dLr"; */
-"Vel-gj-dLr.normalTitle" = "Присоединиться";
-
-/* Class = "UILabel"; text = "Write Message"; ObjectID = "WNb-BJ-2TY"; */
-"WNb-BJ-2TY.text" = "Написать сообщение";
-
-/* Class = "UINavigationItem"; title = "Inbox"; ObjectID = "WTK-c7-15D"; */
-"WTK-c7-15D.title" = "Почта";
-
-/* Class = "UILabel"; text = "Want to join a party? Give them your User ID:"; ObjectID = "aFq-c1-alj"; */
-"aFq-c1-alj.text" = "Хотите присоединиться к команде? Отправьте им свой ID пользователя:";
-
-/* Class = "UILabel"; text = "Play Habitica with friends to stay accountable!\nBattle monsters and create Challenges!\nInvite friends now to earn a Quest Scroll!"; ObjectID = "aoA-I4-cSP"; */
-"aoA-I4-cSP.text" = "Играйте с друзьями, чтобы быть ответственнее!
-Сражайтесь с монстрами и создавайте испытания!
-Пригласите друзей прямо сейчас, чтобы получить свиток квеста!";
-
-/* Class = "UINavigationItem"; title = "Guilds"; ObjectID = "c0I-zN-kPF"; */
-"c0I-zN-kPF.title" = "Гильдии";
-
-/* Class = "UILabel"; text = "Label"; ObjectID = "cHf-h0-50k"; */
-"cHf-h0-50k.text" = "Метка";
-
-/* Class = "UILabel"; text = "Challenges"; ObjectID = "cLY-z8-8pq"; */
-"cLY-z8-8pq.text" = "Испытания";
-
-/* Class = "UILabel"; text = "Write Message"; ObjectID = "cWu-wc-Lec"; */
-"cWu-wc-Lec.text" = "Написать сообщение";
-
-/* Class = "UILabel"; text = "Subtitle"; ObjectID = "d2x-6l-h3J"; */
-"d2x-6l-h3J.text" = "Подзаголовок";
-
-/* Class = "UILabel"; text = "Title"; ObjectID = "d7x-Bc-T1q"; */
-"d7x-Bc-T1q.text" = "Звание";
-
-/* Class = "UINavigationItem"; title = "Public Guilds"; ObjectID = "etc-uL-HJd"; */
-"etc-uL-HJd.title" = "Открытые гильдии";
-
-/* Class = "UILabel"; text = "Label"; ObjectID = "evc-UL-HyC"; */
-"evc-UL-HyC.text" = "Метка";
-
-/* Class = "UILabel"; text = "Create new Party"; ObjectID = "grW-d9-FRm"; */
-"grW-d9-FRm.text" = "Создать новую команду";
-
-/* Class = "UILabel"; text = "About"; ObjectID = "gsa-rZ-ddD"; */
-"gsa-rZ-ddD.text" = "О проекте";
-
-/* Class = "UILabel"; text = "Ask Later"; ObjectID = "ifd-yJ-Hb9"; */
-"ifd-yJ-Hb9.text" = "Спросить позже";
-
-/* Class = "UILabel"; text = "CON"; ObjectID = "kjI-Lf-q1I"; */
-"kjI-Lf-q1I.text" = "ТЕЛ";
-
 /* Class = "UILabel"; text = "STR"; ObjectID = "mbO-Mk-igC"; */
 "mbO-Mk-igC.text" = "СИЛ";
 
-/* Class = "UILabel"; text = "About"; ObjectID = "nEX-pd-oIw"; */
-"nEX-pd-oIw.text" = "О проекте";
+/* Class = "UILabel"; text = "Guild members"; ObjectID = "mmD-db-dYd"; */
+"mmD-db-dYd.text" = "Участники гильдии";
 
-/* Class = "UILabel"; text = "Reject"; ObjectID = "nd1-bk-1P7"; */
-"nd1-bk-1P7.text" = "Отклонить";
+/* Class = "UILabel"; text = "Label"; ObjectID = "mVE-dK-Vtq"; */
+"mVE-dK-Vtq.text" = "Метка";
 
-/* Class = "UILabel"; text = "Label"; ObjectID = "oMJ-Hk-a6I"; */
-"oMJ-Hk-a6I.text" = "Метка";
+/* Class = "UILabel"; text = "Label"; ObjectID = "o36-K8-WE9"; */
+"o36-K8-WE9.text" = "Метка";
 
-/* Class = "UILabel"; text = "Rest in the Inn to prevent your undone Dailies from hurting you overnight! (Note: does not prevent you from receiving Boss damage.)"; ObjectID = "pIs-iS-tkd"; */
-"pIs-iS-tkd.text" = "Отдых в таверне защищает от урона, наносимого невыполненными ежедневными заданиями! (Внимание: вы по прежнему будете получать урон от атак боссов.)";
+/* Class = "UILabel"; text = "Label"; ObjectID = "ODU-Gu-ON4"; */
+"ODU-Gu-ON4.text" = "Метка";
 
-/* Class = "UILabel"; text = "Loading"; ObjectID = "qHz-u8-sDB"; */
-"qHz-u8-sDB.text" = "Загрузка";
+/* Class = "UINavigationItem"; title = "Party"; ObjectID = "ohm-N0-URb"; */
+"ohm-N0-URb.title" = "Команда";
 
-/* Class = "UILabel"; text = "Name"; ObjectID = "r1V-ai-lKk"; */
-"r1V-ai-lKk.text" = "Имя";
+/* Class = "UINavigationItem"; title = "Challenges"; ObjectID = "OHs-Q2-g2k"; */
+"OHs-Q2-g2k.title" = "Испытания";
 
-/* Class = "UINavigationItem"; title = "About"; ObjectID = "rki-x7-727"; */
-"rki-x7-727.title" = "О проекте";
+/* Class = "UIButton"; normalTitle = "Start Quest"; ObjectID = "Oo2-ht-HrC"; */
+"Oo2-ht-HrC.normalTitle" = "Начать квест";
 
-/* Class = "UILabel"; text = "Loading"; ObjectID = "tZ0-aY-Y24"; */
-"tZ0-aY-Y24.text" = "Загрузка";
+/* Class = "UIButton"; normalTitle = "Join Guild"; ObjectID = "oXc-S6-Df9"; */
+"oXc-S6-Df9.normalTitle" = "Присоединиться к гильдии";
 
-/* Class = "UILabel"; text = "If you would like to post messages in the Tavern or any party or guild chat, please first read our  Community Guidelines and then click \"Accept Guidelines\" button below to indicate that you accept them."; ObjectID = "vLc-mV-bsJ"; */
-"vLc-mV-bsJ.text" = "Если вы хотите оставить сообщение в Таверне или в чате любой гильдии, сперва прочитайте Правила сообщества и нажмите кнопку \"Принять правила\" внизу. Это будет означать, что вы их принимаете и обязуетесь выполнять.";
+/* Class = "UIButton"; normalTitle = "Reject"; ObjectID = "pIy-vb-vm3"; */
+"pIy-vb-vm3.normalTitle" = "Отказать";
 
-/* Class = "UILabel"; text = "Loading"; ObjectID = "wjW-Cr-qhZ"; */
-"wjW-Cr-qhZ.text" = "Загрузка";
+/* Class = "UIButton"; normalTitle = "View Community Guidelines"; ObjectID = "PQZ-Md-abl"; */
+"PQZ-Md-abl.normalTitle" = "Открыть правила сообщества";
 
-/* Class = "UINavigationItem"; title = "Members"; ObjectID = "wmm-mb-Ktw"; */
-"wmm-mb-Ktw.title" = "Участники";
+/* Class = "UILabel"; text = "Description"; ObjectID = "PvU-aP-uYa"; */
+"PvU-aP-uYa.text" = "Описание группы";
 
-/* Class = "UIBarButtonItem"; title = "Begin"; ObjectID = "yuR-F7-zSD"; */
-"yuR-F7-zSD.title" = "Начать";
+/* Class = "UIButton"; normalTitle = "Cancel Invitation"; ObjectID = "pXx-qO-qxd"; */
+"pXx-qO-qxd.normalTitle" = "Отменить приглашение";
 
-/* Class = "UILabel"; text = "Title"; ObjectID = "zBe-ca-SpX"; */
-"zBe-ca-SpX.text" = "Заголовок";
+/* Class = "UILabel"; text = "Invitations"; ObjectID = "q4z-83-kc2"; */
+"q4z-83-kc2.text" = "Приглашения";
+
+/* Class = "UILabel"; text = "Want to join a party?"; ObjectID = "QiF-86-NSA"; */
+"QiF-86-NSA.text" = "Хотите присоединиться к команде?";
+
+/* Class = "UIButton"; normalTitle = "Leave Party"; ObjectID = "qRK-ar-9GJ"; */
+"qRK-ar-9GJ.normalTitle" = "Выйти из команды";
+
+/* Class = "UILabel"; text = "Guild leader"; ObjectID = "Sqv-0g-s6n"; */
+"Sqv-0g-s6n.text" = "Глава гильдии";
+
+/* Class = "UIButton"; normalTitle = "Accept"; ObjectID = "TdI-5q-50U"; */
+"TdI-5q-50U.normalTitle" = "Принять";
+
+/* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "uFa-zO-Ua8"; */
+"uFa-zO-Ua8.title" = "Изменить";
+
+/* Class = "UIButton"; normalTitle = "Abort"; ObjectID = "uJd-V9-acD"; */
+"uJd-V9-acD.normalTitle" = "Отменить";
+
+/* Class = "UILabel"; text = "Guild Bank"; ObjectID = "UrW-r2-Djq"; */
+"UrW-r2-Djq.text" = "Банк гильдии";
+
+/* Class = "UIButton"; normalTitle = "Share QR Code"; ObjectID = "V0n-Zw-feb"; */
+"V0n-Zw-feb.normalTitle" = "Поделиться QR-кодом";
+
+/* Class = "UINavigationItem"; title = "Messages"; ObjectID = "WTK-c7-15D"; */
+"WTK-c7-15D.title" = "Сообщения";
+
+/* Class = "UIButton"; normalTitle = "Pause Damage"; ObjectID = "x55-Jn-3In"; */
+"x55-Jn-3In.normalTitle" = "Остановить урон";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "XV0-Wd-Y6V"; */
+"XV0-Wd-Y6V.text" = "Метка";
+
+/* Class = "UILabel"; text = "Play Habitica in a Party"; ObjectID = "Yas-h0-Bvk"; */
+"Yas-h0-Bvk.text" = "Играйте в Habitica с командой";
 

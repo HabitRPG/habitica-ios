@@ -1,0 +1,87 @@
+/* Class = "UIButton"; normalTitle = "Skip"; ObjectID = "0i8-DP-8iH"; */
+"0i8-DP-8iH.normalTitle" = "Pular";
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "1De-XG-mrd"; */
+"1De-XG-mrd.normalTitle" = "Login";
+
+/* Class = "UILabel"; text = "Progress in the game"; ObjectID = "7wU-9E-BYw"; */
+"7wU-9E-BYw.text" = "Progrida no jogo";
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "8wd-GG-g6F"; */
+"8wd-GG-g6F.normalTitle" = "Login";
+
+/* Class = "UIButton"; normalTitle = "Work"; ObjectID = "9Sv-nF-boz"; */
+"9Sv-nF-boz.normalTitle" = "Trabalho";
+
+/* Class = "UILabel"; text = "Progress in life"; ObjectID = "C1J-BA-Jk4"; */
+"C1J-BA-Jk4.text" = "Progrida na vida";
+
+/* Class = "UIButton"; normalTitle = "Let's start!"; ObjectID = "Cer-Zg-227"; */
+"Cer-Zg-227.normalTitle" = "Bora começar!";
+
+/* Class = "UILabel"; text = "Next"; ObjectID = "CPE-AH-dQ8"; */
+"CPE-AH-dQ8.text" = "Próximo";
+
+/* Class = "UIButton"; normalTitle = "Login with Google"; ObjectID = "fYX-yC-fON"; */
+"fYX-yC-fON.normalTitle" = "Conectar com o Google";
+
+/* Class = "UIButton"; normalTitle = "Self-Care"; ObjectID = "iYm-7u-1VI"; */
+"iYm-7u-1VI.normalTitle" = "Autocuidado";
+
+/* Class = "UILabel"; text = "HAIR"; ObjectID = "Jb5-CA-lT8"; */
+"Jb5-CA-lT8.text" = "CABELO";
+
+/* Class = "UIButton"; normalTitle = "Randomize"; ObjectID = "K2H-zJ-vTs"; */
+"K2H-zJ-vTs.normalTitle" = "Aleatorizar";
+
+/* Class = "UIButton"; normalTitle = "Chores"; ObjectID = "kJd-TG-HlB"; */
+"kJd-TG-HlB.normalTitle" = "Afazeres";
+
+/* Class = "UILabel"; text = "Keep your goals on track with help from your friends. Support each other in life and in battle as you improve together!"; ObjectID = "MLQ-Gm-uoj"; */
+"MLQ-Gm-uoj.text" = "Mantenha seus objetivos e tarefas em dia com a ajuda de amigos. Apoiem um ao outra na vida e em batalha enquanto melhoram juntos!";
+
+/* Class = "UILabel"; text = "Welcome to"; ObjectID = "n39-ny-0cS"; */
+"n39-ny-0cS.text" = "Boas Vindas a";
+
+/* Class = "UILabel"; text = "It’s time to have fun while you get things done. Join over 2 million others improving their life one task at a time."; ObjectID = "neo-od-L7b"; */
+"neo-od-L7b.text" = "É hora de se divertir enquanto termina seus afazeres! Junte-se a mais de 2 milhões de pessoas e melhorando sua vida uma tarefa por vez.";
+
+/* Class = "UIButton"; normalTitle = "Register"; ObjectID = "Ohf-iu-Phe"; */
+"Ohf-iu-Phe.normalTitle" = "Cadastrar";
+
+/* Class = "UIButton"; normalTitle = "School"; ObjectID = "qdP-gX-YYc"; */
+"qdP-gX-YYc.normalTitle" = "Escola";
+
+/* Class = "UIButton"; normalTitle = "Creativity"; ObjectID = "r9x-6o-A2F"; */
+"r9x-6o-A2F.normalTitle" = "Criatividade";
+
+/* Class = "UILabel"; text = "SKIN"; ObjectID = "teJ-1y-V0M"; */
+"teJ-1y-V0M.text" = "PELE";
+
+/* Class = "UILabel"; text = "BODY"; ObjectID = "u2M-vv-5Dd"; */
+"u2M-vv-5Dd.text" = "CORPO";
+
+/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "uAN-kx-bnR"; */
+"uAN-kx-bnR.normalTitle" = "Voltar";
+
+/* Class = "UIButton"; normalTitle = "Health"; ObjectID = "UOx-cX-pif"; */
+"UOx-cX-pif.normalTitle" = "Vida";
+
+/* Class = "UIButton"; normalTitle = "Login with Facebook"; ObjectID = "xka-dX-nD0"; */
+"xka-dX-nD0.normalTitle" = "Conectar com Facebook";
+
+/* Class = "UILabel"; text = "Fight monsters"; ObjectID = "Y7i-gL-CVx"; */
+"Y7i-gL-CVx.text" = "Lute contra monstros";
+
+/* Class = "UIButton"; normalTitle = "Exercise"; ObjectID = "YG9-k8-OkO"; */
+"YG9-k8-OkO.normalTitle" = "Exercício";
+
+/* Class = "UILabel"; text = "Unlock features in the game by checking off your real life tasks. Earn armor, pets, and more as rewards for meeting your goals. "; ObjectID = "zAw-Xd-Z07"; */
+"zAw-Xd-Z07.text" = "Desbloqueie recursos no jogo marcando suas tarefas da vida real. Ganhe armaduras, mascotes e mais como recompensas por alcançar seus objetivos!";
+
+/* Class = "UILabel"; text = "EXTRAS"; ObjectID = "Zha-R5-vQB"; */
+"Zha-R5-vQB.text" = "EXTRAS";
+
+/* Class = "UILabel"; text = "Get social"; ObjectID = "Zie-HC-D1t"; */
+"Zie-HC-D1t.text" = "Socialize";
+

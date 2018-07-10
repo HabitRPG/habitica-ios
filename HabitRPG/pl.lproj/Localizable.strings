@@ -1,21 +1,3 @@
-/* No comment provided by engineer. */
-" Unlock Set for %@ Gems " = "Odblokuj zestaw za %@ Klejnotów";
-
-/* No comment provided by engineer. */
-"%.2f Gold" = "%.2f Złota";
-
-/* No comment provided by engineer. */
-"%@ Gems" = "%@ Klejnoty";
-
-/* No comment provided by engineer. */
-"%@ Members" = "%@ Członków";
-
-/* No comment provided by engineer. */
-"%@ Participants" = "%@ Uczestników";
-
-/* No comment provided by engineer. */
-"%d out of %d responded" = "%1$d z %2$d odpowiedziało";
-
 /* more than one filter */
 "%ld Filters" = "%ld Filtrów";
 
@@ -23,43 +5,25 @@
 "1 Filter" = "1 Filtr";
 
 /* No comment provided by engineer. */
-"1 Participant" = "1 Uczestnik";
-
-/* 1Password App Extension Error Message */
-"1Password Extension was cancelled by the user" = "Dodatek 1Password został wyłączony przez użytkownika";
+"5 minutes of quiet breathing" = "5 minut cichego oddychania";
 
 /* No comment provided by engineer. */
-"10 min cardio" = "10 min cardio";
+"10 minutes cardio" = "10 minut cardio";
 
 /* No comment provided by engineer. */
 "10 minutes cleaning" = "10 minut sprzątania";
 
 /* No comment provided by engineer. */
-"API" = "API";
-
-/* No comment provided by engineer. */
-"API Key" = "Klucz API";
-
-/* No comment provided by engineer. */
-"Abort" = "Przerwij";
+"21-Day Streaks" = "21-Dniowe Serie";
 
 /* No comment provided by engineer. */
 "About" = "O nas";
 
 /* No comment provided by engineer. */
-"Accept" = "Akceptuj";
-
-/* No comment provided by engineer. */
-"Accepted" = "Akceptuj";
-
-/* No comment provided by engineer. */
-"Account Details" = "Szczegóły konta";
+"Accept" = "Zaakceptuj";
 
 /* No comment provided by engineer. */
 "Acknowledgements" = "Uznania";
-
-/* No comment provided by engineer. */
-"Actions" = "Akcje";
 
 /* No comment provided by engineer. */
 "Active" = "Aktywny";
@@ -71,240 +35,190 @@
 "Add a User ID" = "Dodaj ID Użytkownika";
 
 /* No comment provided by engineer. */
-"Add a new checklist item" = "Dodaj nowy punkt do listy";
-
-/* No comment provided by engineer. */
-"Add a new reminder" = "Dodaj nowe przypomnienie";
-
-/* No comment provided by engineer. */
 "Add an Email" = "Dodaj e-mail";
+
+/* No comment provided by engineer. */
+"Alex the Merchant" = "Sprzedawca Alex";
 
 /* No comment provided by engineer. */
 "All" = "Wszystko";
 
 /* No comment provided by engineer. */
-"Allocated" = "Przydzielono";
+"API Key" = "Klucz API";
 
 /* No comment provided by engineer. */
-"Animal Ears" = "Zwierzęce uszy";
-
-/* 1Password App Extension Error Message */
-"App Extension API is not available in this version of iOS" = "Rozszerzenie API nie jest dostępne dla tej wersji iOS";
+"Are you sure? This will delete your account forever, and it can never be restored! You will need to register a new account to use Habitica again. Banked or spent Gems will not be refunded. If you're absolutely certain, type your password into the text box below." = "Jesteś pewny? Usuniesz swoje konto bez możliwości powrotu! By ponownie używać Habitica, będziesz musiał zarejestrować nowe konto. Posiadane oraz wydane diamenty nie zostaną zwrócone. Jeśli jesteś pewny, wpisz poniżej swoje hasło.";
 
 /* No comment provided by engineer. */
-"App Version: %@
-" = "Wersja aplikacji: %@
-";
+"Assigns more points to the attributes important to your Class." = "Przydziela więcej punktów atrybutom, które są ważne dla Twojej Klasy.";
 
 /* No comment provided by engineer. */
-"Are you sure?" = "Na pewno?";
+"Assigns points based on the Strength, Intelligence, Constitution, and Perception categories associated with the tasks you complete." = "Przydziela punkty w oparciu o kategorie Siły, Inteligencji, Kondycji oraz Percepcji przydzielone zadaniom, które wykonujesz.";
 
 /* No comment provided by engineer. */
-"Armor" = "Zbroja";
+"Assigns the same number of points to each attribute." = "Przydziela taką samą liczbę punktów do każdego atrybutu.";
 
 /* No comment provided by engineer. */
-"Attributes" = "Atrybuty";
-
-/* Noun */
 "Authentication" = "Uwierzytelnienie";
 
 /* No comment provided by engineer. */
-"Authentication Cancelled" = "Uwierzytelnienie zostało anulowane";
-
-/* No comment provided by engineer. */
-"Authentication Error" = "Błąd uwierzytelnienia";
-
-/* No comment provided by engineer. */
-"Back" = "Powrót";
-
-/* No comment provided by engineer. */
-"Background" = "Tło";
+"Bad" = "Zły";
 
 /* No comment provided by engineer. */
 "Bangs" = "Grzywka";
 
 /* No comment provided by engineer. */
-"Base" = "Zwyczajny";
+"Be careful — if you miss one, your avatar will take damage overnight. Checking them off consistently brings great rewards!" = "Uważaj - jeśli opuścisz jedno to Twój awatar otrzyma obrażenie przez noc. Konsekwentne ich odznaczanie przynosi wspaniałe nagrody!";
 
 /* No comment provided by engineer. */
-"Base Mounts" = "Zwyczajne Wierzchowce";
+"Best" = "Najlepszy";
 
 /* No comment provided by engineer. */
-"Base Pets" = "Zwyczajne Chowańce";
+"Better" = "Lepszy";
 
 /* No comment provided by engineer. */
-"Battle Gear" = "Wyposażenie bojowe";
+"Boss Quest" = "Boss Misji";
 
 /* No comment provided by engineer. */
-"Beard" = "Broda";
+"Brainstorm a healthy change" = "Burza mózgów na temat zdrowej zmiany";
 
 /* No comment provided by engineer. */
-"Become a %@" = "Zostań %@";
+"Broad" = "Krzepki/krzepka";
 
 /* No comment provided by engineer. */
-"Body" = "Ciało";
+"buy" = "kup";
 
 /* No comment provided by engineer. */
-"Buy" = "Kup";
+"Buy gear for your avatar with the gold you earn!" = "Kup wyposażenie dla Swojego awatara przy pomocy złota, które zarabiasz!";
 
 /* No comment provided by engineer. */
-"Buy %@ for %@ %@?" = "Kupić %1$@ za %2$@ %3$@?";
-
-/* No comment provided by engineer. */
-"By accomplishing your real-life goals, you've grown to Level %ld!" = "Realizując życiowe cele, osiągnąłeś %ld poziom!";
-
-/* No comment provided by engineer. */
-"By completing your tasks, you've earned a faithful steed!" = "Dzięki ukończeniu swoich zadań masz teraz wiernego wierzchowca!";
-
-/* No comment provided by engineer. */
-"CON %@" = "KON %@";
-
-/* No comment provided by engineer. */
-"Can't cast a spell on a challenge task." = "Nie można rzucać czaru na zadanie z wyzwania.";
+"Buy gems with gold" = "Kup klejnoty za złoto";
 
 /* No comment provided by engineer. */
 "Cancel" = "Anuluj";
 
 /* No comment provided by engineer. */
-"Cast Spells" = "Rzuć zaklęcie";
+"Change" = "Zmień";
 
 /* No comment provided by engineer. */
-"Change Class" = "Zmień Klasę";
+"Change About message" = "Zmień wiadomość O";
 
 /* No comment provided by engineer. */
-"Chat" = "Czat";
+"Change Display Name" = "Zmień wyświetlaną nazwe";
 
 /* No comment provided by engineer. */
-"Check in with team" = "Sprawdź, co z zespołem";
+"Change Email" = "Zmień E-mail";
 
 /* No comment provided by engineer. */
-"Choose a hair color!" = "Wybierz kolor włosów!";
+"Change Login Name" = "Zmień nazwę użytkownika";
 
 /* No comment provided by engineer. */
-"Choose a hairstyle!" = "Wybierz fryzurę!";
+"Change Password" = "Zmień hasło";
 
 /* No comment provided by engineer. */
-"Choose a skin color!" = "Wybierz kolor skóry!";
+"Change Photo URL" = "Zmień adres URL zdjęcia";
 
 /* No comment provided by engineer. */
-"Choose your outfit! (You'll unlock more outfits soon.)" = "Wybierz swój kostium! (Wkrótce odblokujesz ich więcej.)";
+"Character Level" = "Poziom Postaci";
 
 /* No comment provided by engineer. */
 "Chores" = "Prace domowe";
 
 /* No comment provided by engineer. */
-"Class-Bonus" = "Premia klasowa";
-
-/* No comment provided by engineer. */
-"Clear Cache" = "Wyczyść pamięć podręczną";
-
-/* No comment provided by engineer. */
 "Close" = "Zamknij";
+
+/* No comment provided by engineer. */
+"Collapse checklist" = "Zwiń listę";
+
+/* No comment provided by engineer. */
+"Collect" = "Zbierz";
+
+/* No comment provided by engineer. */
+"Collection Quest" = "Misje zbierackie";
 
 /* No comment provided by engineer. */
 "Color" = "Kolor";
 
 /* No comment provided by engineer. */
-"Complete" = "Ukończone";
+"Complete" = "Wykonane";
 
 /* No comment provided by engineer. */
-"Complete Team Project" = "Ukończ projekt zespołowy";
+"Complete Task" = "Wykonaj Zadanie";
 
 /* No comment provided by engineer. */
-"Connection Error" = "Błąd połączenia";
+"Complete work project" = "Ukończ projekt zawodowy";
 
 /* No comment provided by engineer. */
-"Costume" = "Kostium";
+"Completed" = "Zakończone";
 
 /* No comment provided by engineer. */
-"Couldn't connect to the server. Check your network connection" = "Nie można połączyć z serwerem. Sprawdź swoje połączenie internetowe";
+"Confirm New Password" = "Potwierdź nowe hasło";
 
 /* No comment provided by engineer. */
 "Create Tag" = "Stwórz tag";
 
 /* No comment provided by engineer. */
-"Creativity" = "Twórczość";
+"Creativity" = "Kreatywność";
 
 /* No comment provided by engineer. */
-"Current streak: %@" = "Aktualna seria: %@";
+"Dailies" = "Codzienne";
 
-/* No comment provided by engineer. */
-"Custom Day Start" = "Własny początek dnia";
-
-/* No comment provided by engineer. */
-"Customize Avatar" = "Spersonalizuj awatar";
+/* As in 'repeats daily' */
+"daily" = "Codzienne";
 
 /* No comment provided by engineer. */
 "Daily" = "Codzienne";
 
 /* No comment provided by engineer. */
-"Daily Reminder" = "Codzienne przypomnienie";
+"Daily drop-caps doubled" = "Dzienny limit zdobyczy podwojony";
+
+/* No comment provided by engineer. */
+"Daily workout routine" = "Codzienna rutyna ćwiczeń";
+
+/* No comment provided by engineer. */
+"Danger Zone" = "Strefa zagrożenia";
+
+/* No comment provided by engineer. */
+"Daniel the inn keeper" = "Oberżysta Daniel";
 
 /* No comment provided by engineer. */
 "Dated" = "Z datą";
 
 /* No comment provided by engineer. */
-"Day Start" = "Początek dnia";
+"days" = "dni";
 
 /* No comment provided by engineer. */
-"Declined" = "Odmówiono";
+"Delete Account" = "Usuń konto";
 
 /* No comment provided by engineer. */
-"Description" = "Opis";
+"Delete tasks" = "Usuń zadania";
 
 /* No comment provided by engineer. */
-"Difficulty" = "Trudność";
-
-/* No comment provided by engineer. */
-"Disable Private Messages" = "Wyłącz wiadomości prywatne";
+"Display Name" = "Nazwa gracza";
 
 /* No comment provided by engineer. */
 "Do homework" = "Zrób zadanie domowe";
 
 /* No comment provided by engineer. */
-"Done" = "Skończone";
+"Do you want to leave the challenge and keep or delete the tasks?" = "Czy chcesz porzucić wyzwanie i zachować lub usunąć zadania ?";
+
+/* No comment provided by engineer. */
+"Done" = "Gotowe";
+
+/* No comment provided by engineer. */
+"Double drop caps will let you receive more items from your completed tasks every day, helping you complete your stable faster!" = "Podwojone limity zdobyczy pozwolą ci zdobyć więcej przedmiotów z wykonanych zadań każdego dnia, pozwalając ci uzupełnić swoją stajnie szybciej!";
+
+/* No comment provided by engineer. */
+"Double tap to edit" = "Kliknij dwukrotnie by edytować";
 
 /* No comment provided by engineer. */
 "Due" = "Zaplanowane";
 
 /* No comment provided by engineer. */
-"Due %@" = "Planowane na %@";
+"E-Mail" = "E-mail";
 
 /* No comment provided by engineer. */
-"Due Date" = "Planowana data";
-
-/* No comment provided by engineer. */
-"Due in %d days" = "Planowane na %d dni";
-
-/* No comment provided by engineer. */
-"Due today" = "Planowane na dziś";
-
-/* No comment provided by engineer. */
-"Due tomorrow" = "Planowane na jutro";
-
-/* No comment provided by engineer. */
-"ERROR" = "BŁĄD";
-
-/* No comment provided by engineer. */
-"Each reminder notifies on the days the daily is active." = "Każde przypomnienie pojawia się w dniu, w którym aktywne jest Codzienne.";
-
-/* No comment provided by engineer. */
-"Earn items by completing tasks and leveling up. Tap on an item to use it!" = "Otrzymuj przedmioty kończąc zadania i zdobywając poziomy. Stuknij przedmiot, aby go użyć!";
-
-/* No comment provided by engineer. */
-"Easy" = "Łatwe";
-
-/* No comment provided by engineer. */
-"Eat healthy/junk food" = "Zjedz zdrowe/śmieciowe jedzenie";
-
-/* No comment provided by engineer. */
-"Edit %@" = "Edytuj %@";
-
-/* No comment provided by engineer. */
-"Edit Party" = "Edytuj Drużynę";
-
-/* No comment provided by engineer. */
-"Edit Reward" = "Edytuj Nagrody";
+"Eat health/junk food" = "Jedz zdrowe/ śmieciowe jedzenie";
 
 /* No comment provided by engineer. */
 "Edit Tag" = "Edytuj tag";
@@ -313,70 +227,55 @@
 "Email" = "E-mail";
 
 /* No comment provided by engineer. */
-"Email / Username" = "E-mail / Nazwa użytkownika";
-
-/* No comment provided by engineer. */
-"Email already taken." = "Adres e-mail już zajęty.";
+"Email a Password Reset Link" = "Wyślij link do zresetowania hasła mailem";
 
 /* No comment provided by engineer. */
 "Emails" = "E-maile";
 
 /* No comment provided by engineer. */
-"Enable Class System" = "Odblokuj system klas";
+"Engage in a fun activity" = "Zaangażuj się w radosną aktywność";
 
 /* No comment provided by engineer. */
-"Enter" = "Wejdź";
-
-/* No comment provided by engineer. */
-"Equip" = "Załuż";
-
-/* No comment provided by engineer. */
-"Equipment" = "Ekwipunek";
-
-/* No comment provided by engineer. */
-"Equipment pieces remaining: %d" = "Pozostało części ekwipunku: %d";
+"Enter the email address you used to register your Habitica account." = "Podaj adres email, którego użyłeś do założenia konta.";
 
 /* No comment provided by engineer. */
 "Error" = "Błąd";
 
 /* No comment provided by engineer. */
-"Every x days" = "Każde x dni";
+"ERROR" = "BŁĄD";
+
+/* No comment provided by engineer. */
+"every day" = "Każdego dnia";
+
+/* No comment provided by engineer. */
+"Every time you do a positive Habit, tap the + to get experience and gold!" = "Za każdym razem jak wykonujesz pozytywny Nawyk, naciśnij + by zdobyć doświadczenie i złoto!";
+
+/* No comment provided by engineer. */
+"Exclusive monthly items" = "Wyjątkowe comiesięczne przedmioty";
 
 /* No comment provided by engineer. */
 "Exercise" = "Ćwiczenia";
 
 /* No comment provided by engineer. */
+"Expand checklist" = "Rozwiń listę";
+
+/* No comment provided by engineer. */
 "Experience" = "Doświadczenie";
-
-/* No comment provided by engineer. */
-"Eyewear" = "Okulary";
-
-/* 1Password App Extension Error Message */
-"Failed to contacting the 1Password App Extension" = "Nie można połączyć się z rozszerzeniem 1Password";
-
-/* 1Password App Extension Error Message */
-"Failed to execute script that collects web page information" = "Nie można wywołać skryptu zbierającego informacje o stronie";
-
-/* 1Password App Extension Error Message */
-"Failed to fill web page because script could not be evaluated" = "Nie można wypełnić strony, ponieważ skrypt nie przeszedł weryfikacji";
-
-/* 1Password App Extension Error Message */
-"Failed to fill web page because script is missing" = "Nie można wypełnić strony, ponieważ brakuje skryptu";
-
-/* 1Password App Extension Error Message */
-"Failed to parse information returned by 1Password App Extension" = "Nie można sparsować informacji zwróconych przez rozszerzenie 1Password";
-
-/* No comment provided by engineer. */
-"Feed" = "Nakarm";
 
 /* No comment provided by engineer. */
 "Filter" = "Filtruj";
 
 /* No comment provided by engineer. */
-"Finish assignment for class " = "Skończyć projekt szkolny";
+"Finish" = "Zakończ";
+
+/* No comment provided by engineer. */
+"Finish assignment for class" = "Skończ projekt szkolny";
 
 /* No comment provided by engineer. */
 "Finish creative project" = "Ukończyć projekt artystyczny";
+
+/* No comment provided by engineer. */
+"First up is Habits. They can be positive Habits you want to improve or negative Habits you want to quit." = "Pierwsze są Nawyki. Mogą być pozytywne, które chcesz poprawić albo negatywne, które chcesz porzucić.";
 
 /* No comment provided by engineer. */
 "Floss" = "Używać nici dentystycznej";
@@ -385,397 +284,220 @@
 "Flower" = "Kwiatek";
 
 /* No comment provided by engineer. */
-"Frequency" = "Częstotliwość";
-
-/* No comment provided by engineer. */
 "Friday" = "Piątek";
 
 /* No comment provided by engineer. */
 "Gems" = "Klejnoty";
 
 /* No comment provided by engineer. */
-"Get Social and Fight Monsters" = "Dołącz do społeczności i walcz z potworami";
+"Give it a shot! You can explore the other task types through the bottom navigation." = "Spróbuj! Możesz odkrywać inne typy zadań przez nawigacje na spodzie.";
 
 /* No comment provided by engineer. */
-"Gifted Gems" = "Podarowane klejnoty";
+"Glasses" = "Okulary";
 
 /* No comment provided by engineer. */
-"Gifted Subscription" = "Podarowane abonamenty";
+"Gold" = "Złoto";
 
 /* No comment provided by engineer. */
-"Go Back" = "Wróć";
+"Good" = "Dobrze";
 
 /* No comment provided by engineer. */
-"Gold: +%.1f
-Mana: -%ld" = "Złoto: +%1$.1f
-Mana: -%2$ld";
-
-/* No comment provided by engineer. */
-"Got it" = "Wszystko jasne";
+"Great!" = "Świetnie!";
 
 /* No comment provided by engineer. */
 "Grey" = "Szare";
 
 /* No comment provided by engineer. */
-"Guilds" = "Gildie";
-
-/* No comment provided by engineer. */
 "Habit" = "Nawyk";
 
 /* No comment provided by engineer. */
-"Hair" = "Włosy";
-
-/* No comment provided by engineer. */
-"Hard" = "Trudne";
-
-/* No comment provided by engineer. */
-"Has a due date" = "Posiada planowaną datę";
-
-/* No comment provided by engineer. */
-"Hatch Egg" = "Wykluj jajo";
-
-/* No comment provided by engineer. */
-"Hatch with Potion" = "Wykluj za pomocą Eliksiru";
-
-/* No comment provided by engineer. */
-"Head" = "Głowa";
-
-/* No comment provided by engineer. */
-"Head Accessory" = "Akcesoria";
-
-/* No comment provided by engineer. */
-"Healer" = "Uzdrowiciel";
+"Habits" = "Nawyki";
 
 /* No comment provided by engineer. */
 "Health" = "Zdrowie";
 
 /* No comment provided by engineer. */
-"Health + Wellness" = "Zdrowie i samopoczucie";
-
-/* No comment provided by engineer. */
-"Health: +%.1f
-Mana: -%ld" = "Zdrowie: +%1$.1f
-Mana: -%2$ld";
-
-/* No comment provided by engineer. */
-"Help & FAQ" = "Pomoc i FAQ";
-
-/* No comment provided by engineer. */
-"Hey! You are awesome!
-Version %@ (%@)" = "Hej! Jesteś super!
-Wersja %1$@ (%2$@)";
-
-/* No comment provided by engineer. */
 "Hold down on a task to drag it around." = "Przytrzymaj zadanie, by je przesunąć.";
 
 /* No comment provided by engineer. */
-"Huzzah!" = "Taaak!";
+"I earned a new achievement in Habitica! " = "Zdobyto nowe osiągnięcie w Habitice!";
 
 /* No comment provided by engineer. */
-"I got to level %ld in Habitica by improving my real-life habits!" = "Mam nowy poziom w Habitice dzięki poprawie moich nawyków życiowych!";
+"Ian the Quest Guide" = "Przewodnik Misji Ian";
 
 /* No comment provided by engineer. */
-"I want to become a %@" = "Chcę zostać %@";
+"If we have your email on file, instructions for setting a new password have been sent to your email." = "Jeżeli posiadamy Twój adres e-mail, instrukcja jak ustawić nowe hasło, zostanie wysłana do Ciebie mailem.";
 
 /* No comment provided by engineer. */
-"I want to opt-out" = "Chcę zrezygnować";
+"If you slip up and do a negative Habit, tapping the - will reduce your avatar’s health to help you stay accountable." = "Jeśli się potkniesz i wykonasz negatywny Nawyk to naciśniecie - zredukuje życie Twojego awatara by pomóc Ci być odpowiedzialnym.";
 
 /* No comment provided by engineer. */
-"INT %@" = "INT %@";
+"If you’ve encountered a bug or made a mistake that unfairly changed your character, you can manually correct those values here." = "Jeśli napotkałeś błąd albo przez przypadek krzywdząco zmieniłeś Swoją postać to możesz ręcznie poprawić te wartości tutaj.";
 
 /* No comment provided by engineer. */
-"Inbox" = "Skrzynka odbiorcza";
-
-/* No comment provided by engineer. */
-"Invalid E-Mail Address." = "Nieprawidłowy adres e-mail";
+"If your To-Do has to be done by a certain time, set a due date. Looks like you can check one off — go ahead!" = "Jeśli Twoje Do-Zrobienia musi być wykonane do pewnego momentu to ustaw mu odpowiedni termin. Wygląda na to, że możesz jedno odhaczyć - dawaj!";
 
 /* No comment provided by engineer. */
 "Invalid Habitica User ID" = "Nieprawidłowy ID użytkownika Habitica";
 
 /* No comment provided by engineer. */
-"Invalid username or password" = "Błędna nazwa użytkownika lub hasło";
-
-/* No comment provided by engineer. */
-"Inventory" = "Inwentarz";
-
-/* No comment provided by engineer. */
-"Invitation Error" = "Błąd zaproszenia";
-
-/* No comment provided by engineer. */
-"Invitation Successful" = "Zaproszono pomyślnie";
-
-/* No comment provided by engineer. */
 "Invitation Type" = "Typ zaproszenia";
-
-/* No comment provided by engineer. */
-"Invite" = "Zaproś";
-
-/* No comment provided by engineer. */
-"Invite Friends" = "Zaproś znajomych";
 
 /* No comment provided by engineer. */
 "Invite Members" = "Zaproś Członków";
 
 /* No comment provided by engineer. */
-"Invite Party" = "Zaproś Drużynę";
-
-/* No comment provided by engineer. */
-"Invited To Guild" = "Zaproszono do Gildii";
-
-/* No comment provided by engineer. */
-"Invited To Party" = "Zaproszone do drużyny";
-
-/* No comment provided by engineer. */
-"Invited To Quest" = "Zaproszony do misji";
-
-/* No comment provided by engineer. */
-"Invited to %@" = "Zaproszono do %@";
-
-/* No comment provided by engineer. */
-"Items" = "Przedmioty";
-
-/* No comment provided by engineer. */
 "Join" = "Dołącz";
 
 /* No comment provided by engineer. */
-"Last logged in" = "Ostatnio zalogowany";
+"Join Habitica (Check me off!)" = "Dołącz do Habitici (Odhacz mnie!)";
 
 /* No comment provided by engineer. */
-"Leader" = "Przywódca";
+"Keep tasks" = "Zachowaj zadania";
 
 /* No comment provided by engineer. */
-"Leave" = "Opuść";
-
-/* No comment provided by engineer. */
-"Leave Group" = "Opuść grupę";
+"Leave" = "Wyjdź";
 
 /* No comment provided by engineer. */
 "Leave a Review" = "Napisz recenzję";
 
 /* No comment provided by engineer. */
+"Leave Challenge?" = "Opuścić Wyzwanie?";
+
+/* No comment provided by engineer. */
 "Level" = "Poziom";
-
-/* No comment provided by engineer. */
-"Level %@" = "Poziom %@";
-
-/* No comment provided by engineer. */
-"Level %@ %@" = "Poziom %1$@ %2$@";
 
 /* No comment provided by engineer. */
 "Local" = "Lokalne";
 
 /* No comment provided by engineer. */
-"Log Out" = "Wyloguj się";
-
-/* No comment provided by engineer. */
-"Log in" = "Zaloguj się";
-
-/* No comment provided by engineer. */
 "Login Methods" = "Sposoby logowania";
 
 /* No comment provided by engineer. */
-"Login name" = "Nazwa użytkownika";
+"Login Name" = "Nazwa użytkownika";
 
 /* No comment provided by engineer. */
-"Mage" = "Mag";
+"Make Dailies for time-sensitive tasks that need to be done on a regular schedule." = "Rób Codzienne z wrażliwych na czas zadań, które muszą być regularnie wykonywane.";
 
 /* No comment provided by engineer. */
-"Maintenance" = "Konserwacja";
+"Makes completed To-Dos and task history available for longer." = "Historia ukończonych Do-Zrobienia i zadań jest dostępna dłużej.";
 
 /* No comment provided by engineer. */
 "Mana" = "Mana";
 
 /* No comment provided by engineer. */
-"Mana: -%ld" = "Mana: -%ld";
+"Mana Points" = "Punkty Many";
 
 /* No comment provided by engineer. */
 "Market" = "Targ";
 
 /* No comment provided by engineer. */
-"Medium" = "Średnie";
+"Matt the beast master" = "Władca Bestii Matt";
 
 /* No comment provided by engineer. */
-"Member Since" = "Członek od";
-
-/* No comment provided by engineer. */
-"Mental" = "Mentalne";
-
-/* No comment provided by engineer. */
-"Menu" = "Menu";
+"Moderator" = "Moderator";
 
 /* No comment provided by engineer. */
 "Monday" = "Poniedziałek";
 
-/* No comment provided by engineer. */
-"Most important task" = "Najważniejsze zadania";
+/* As in 'repeats monthly' */
+"monthly" = "miesięczny";
 
 /* No comment provided by engineer. */
-"Mount" = "Wierzchowiec";
+"months" = "miesiące";
 
 /* No comment provided by engineer. */
-"Mount Type" = "Rodzaj wierzchowców";
+"Mystery Sets" = "Tajemnicze zestawy";
 
 /* No comment provided by engineer. */
-"Mounts" = "Wierzchowce";
+"Neutral" = "Neutralny";
 
 /* No comment provided by engineer. */
-"Mustache" = "Wąsy";
+"never" = "nigdy";
 
 /* No comment provided by engineer. */
-"My Guilds" = "Moje Gildie";
+"New Email" = "Nowy e-mail";
 
 /* No comment provided by engineer. */
-"Name" = "Nazwa";
+"New Login Name" = "Nowa nazwa użytkownika";
 
 /* No comment provided by engineer. */
-"Negative (-)" = "Negatywne (-)";
+"New Password" = "Nowe hasło";
 
 /* No comment provided by engineer. */
-"Network error" = "Błąd sieci";
+"Next" = "Następny";
 
 /* No comment provided by engineer. */
-"New Party" = "Nowa Drużyna";
+"No Camera available" = "Kamera jest niedostępna";
 
 /* No comment provided by engineer. */
-"New Reward" = "Nowa nagroda";
+"Not completed" = "Niewykonane";
 
 /* No comment provided by engineer. */
-"News" = "Nowości";
+"Not due" = "Nienależny";
 
 /* No comment provided by engineer. */
-"No" = "Nie";
+"Not getting the right drops? Check out the Market to buy just the things you need!" = "Nie otrzymujesz właściwych zdobyczy? Sprawdź Targ by kupić rzeczy, które potrzebujesz!";
 
 /* No comment provided by engineer. */
-"Notes" = "Notatki";
-
-/* No comment provided by engineer. */
-"Nothing Equipped" = "Brak wyposażenia";
-
-/* No comment provided by engineer. */
-"Nothing Set" = "Nic nie ustawiono";
-
-/* No comment provided by engineer. */
-"Nothing equipped" = "Brak wyposażenia";
+"Oh dear, pay no heed to the monster below -- this is still a safe haven to chat on your breaks." = "Kochaniutki, nie bacz na potwora poniżej. To wciąż jest bezpieczne schronienie by rozmawiać podczas swoich przerw.";
 
 /* No comment provided by engineer. */
 "OK" = "OK";
 
 /* No comment provided by engineer. */
-"On certain days of the week" = "W niektóre dni tygodnia";
+"Old Password" = "Stare hasło";
 
 /* No comment provided by engineer. */
-"Once a quest is started, no other party members can join the quest." = "Jeśli misja została rozpoczęta żaden nowy członek nie może do niej dołączyć.";
+"Open App Store page" = "Otwórz stronę App Store";
 
 /* No comment provided by engineer. */
-"Opt-Out" = "Zrezygnuj";
+"Or delete it by swiping left" = "Albo usuń je przez przesunięcie w lewo";
 
 /* No comment provided by engineer. */
-"Organize Closet" = "Zorganizować szafę";
+"Organize clutter" = "Zorganizuj rupiecie";
 
 /* No comment provided by engineer. */
-"Other" = "Inne";
+"Password" = "Hasło";
 
 /* No comment provided by engineer. */
-"PER %@" = "PER %@";
+"Pause Damage" = "Wstrzymaj obrażenia";
 
 /* No comment provided by engineer. */
-"Participants" = "Uczestnicy";
+"Pending Strike" = "Oczekujący cios";
 
 /* No comment provided by engineer. */
-"Party" = "Drużyna";
+"Photo URL" = "Link do zdjęcia";
 
 /* No comment provided by engineer. */
-"Passwords don't match." = "Hasło nie pasuje";
+"Pin to Rewards" = "Przypnij do Nagród";
 
 /* No comment provided by engineer. */
-"Pause your Dailies" = "Wstrzymaj swoje Codzienne";
+"Ponytail" = "Kucyk";
 
 /* No comment provided by engineer. */
-"Pending" = "Oczekujące";
-
-/* No comment provided by engineer. */
-"Pet Type" = "Rodzaje chowańców";
-
-/* No comment provided by engineer. */
-"Pets" = "Chowańce";
-
-/* No comment provided by engineer. */
-"Physical" = "Fizyczne";
-
-/* No comment provided by engineer. */
-"Positive (+)" = "Pozytywne (+)";
+"Practiced a new creative technique" = "Przećwicz nową kreatywną technikę";
 
 /* No comment provided by engineer. */
 "Process email" = "Sprawdź e-mail";
 
 /* No comment provided by engineer. */
-"Profile" = "Profil";
-
-/* No comment provided by engineer. */
-"Public Guilds" = "Publiczne Gildie";
-
-/* No comment provided by engineer. */
-"Purchase for %@ Gems" = "Kup za %@ Klejnotów";
-
-/* No comment provided by engineer. */
-"Purchase for 2 Gems" = "Kup za 2 Klejnoty";
-
-/* No comment provided by engineer. */
-"Quest" = "Misja";
-
-/* No comment provided by engineer. */
-"Quest Detail" = "Szczegóły misji";
-
-/* No comment provided by engineer. */
-"Quest Invitation" = "Zaproszenie do Misji";
-
-/* No comment provided by engineer. */
-"Quest Mounts" = "Wierzchowce z Misji";
-
-/* No comment provided by engineer. */
-"Quest Pets" = "Chowańce z Misji";
-
-/* No comment provided by engineer. */
-"Quests" = "Zadania";
-
-/* No comment provided by engineer. */
-"Reactivate your Dailies" = "Reaktywuj swoje Codzienne";
-
-/* No comment provided by engineer. */
-"Received Private Message" = "Otrzymana wiadomość prywatna";
+"Quest Shop" = "Sklep z Misjami";
 
 /* No comment provided by engineer. */
 "Recipient" = "Odbiorca";
 
 /* No comment provided by engineer. */
-"Register" = "Zarejestruj się";
-
-/* No comment provided by engineer. */
 "Reject" = "Odrzuć";
-
-/* No comment provided by engineer. */
-"Reload Content" = "Wczytaj zawartość ponownie";
 
 /* No comment provided by engineer. */
 "Remember to check off your Dailies!" = "Pamiętaj, żeby sprawdzić swoje Codzienne!";
 
 /* No comment provided by engineer. */
-"Remind me tomorrow" = "Przypomnij mi jutro";
-
-/* No comment provided by engineer. */
 "Reminder" = "Przypomnienie";
 
 /* No comment provided by engineer. */
-"Reminders" = "Przypomnienia";
-
-/* No comment provided by engineer. */
-"Repeat every X days" = "Powtórz co X dni";
-
-/* No comment provided by engineer. */
 "Reply" = "Odpowiedz";
-
-/* No comment provided by engineer. */
-"Report" = "Zgłoś";
 
 /* No comment provided by engineer. */
 "Report %@ for violation?" = "Zgłosić naruszenie zasad przez %@ ?";
@@ -784,13 +506,19 @@ Wersja %1$@ (%2$@)";
 "Report a bug" = "Zgłoś błąd";
 
 /* No comment provided by engineer. */
-"Reset Justins Tips" = "Zresetuj podpowiedzi Justina";
+"Reset Account" = "Zresetuj konto";
 
 /* No comment provided by engineer. */
-"Rogue" = "Łotrzyk";
+"Resume Damage" = "Wznów otrzymywanie obrażeń";
 
 /* No comment provided by engineer. */
-"STR %@" = "SIŁ %@";
+"Retain additional history entries" = "Zachowuj dodatkowe wpisy w historii konta";
+
+/* No comment provided by engineer. */
+"Reward yourself" = "Nagródź się";
+
+/* No comment provided by engineer. */
+"Rewards" = "Nagrody";
 
 /* No comment provided by engineer. */
 "Saturday" = "Sobota";
@@ -802,196 +530,160 @@ Wersja %1$@ (%2$@)";
 "Scan QR Code" = "Zeskanuj kod QR";
 
 /* No comment provided by engineer. */
-"Schedule check-up" = "Umówić wizytę u lekarza";
+"School" = "Szkoła";
 
 /* No comment provided by engineer. */
-"School" = "Szkoła";
+"Score habit down" = "Przesuń nawyk w dół";
+
+/* No comment provided by engineer. */
+"Score habit up" = "Przesuń nawyk w góre";
+
+/* No comment provided by engineer. */
+"Search" = "Szukaj";
 
 /* No comment provided by engineer. */
 "Seasonal Shop" = "Sklepik sezonowy";
 
 /* No comment provided by engineer. */
-"Select Attributes" = "Wybierz Atrybuty";
+"Seasonal Sorceress" = "Sezonowa Czarodziejka";
 
 /* No comment provided by engineer. */
-"Select Class" = "Wybierz Klasę";
+"Self-Care" = "Dbanie o siebie";
 
 /* No comment provided by engineer. */
-"Select Difficulty" = "Wybierz trudność";
-
-/* No comment provided by engineer. */
-"Select Frequency" = "Wybierz częstotliwość";
-
-/* No comment provided by engineer. */
-"Sell (%@ Gold)" = "Sprzedaj (%@ Złota)";
+"Send" = "Wyślij";
 
 /* No comment provided by engineer. */
 "Send feedback" = "Podziel się opinią";
 
 /* No comment provided by engineer. */
-"Server error" = "Błąd serwera";
-
-/* No comment provided by engineer. */
 "Set up workout schedule" = "Ustalić plan ćwiczeń";
-
-/* No comment provided by engineer. */
-"Settings" = "Ustawienia";
-
-/* No comment provided by engineer. */
-"Shield" = "Tarcza";
 
 /* No comment provided by engineer. */
 "Shirt" = "Koszula";
 
 /* No comment provided by engineer. */
-"Shops" = "Sklepy";
-
-/* No comment provided by engineer. */
 "Size" = "Budowa";
 
 /* No comment provided by engineer. */
-"Skin" = "Skóra";
+"Slim" = "Szczupły";
 
 /* No comment provided by engineer. */
-"Sleep tight!" = "Słodkich snów!";
+"Stable" = "Stajnia";
 
 /* No comment provided by engineer. */
-"Social" = "Społeczne";
-
-/* No comment provided by engineer. */
-"Special Mounts" = "Specjalne Wierzchowce";
-
-/* No comment provided by engineer. */
-"Special Pets" = "Specjalne Chowańce";
-
-/* No comment provided by engineer. */
-"Stretching" = "Rozciąganie";
+"Staff" = "Personel";
 
 /* No comment provided by engineer. */
 "Strong" = "Mocne";
 
 /* No comment provided by engineer. */
-"Study a master of the craft" = "Studiować mistrza rzemiosła";
-
-/* No comment provided by engineer. */
 "Study/Procrastinate" = "Uczyć się / odkładać naukę";
 
 /* No comment provided by engineer. */
-"Suggested Guilds" = "Sugerowane Gildie";
+"Subscription" = "Abonament";
+
+/* No comment provided by engineer. */
+"success" = "sukces";
 
 /* No comment provided by engineer. */
 "Sunday" = "Niedziela";
 
 /* No comment provided by engineer. */
-"Tags" = "Tagi";
+"Take a short break" = "Weź krótką przerwę";
 
 /* No comment provided by engineer. */
 "Tap a task to edit it and add reminders. Swipe left to delete it." = "Stuknij zadanie, żeby je edytować i dodać przypomnienia. Przeciągnij w lewo, żeby usunąć.";
 
 /* No comment provided by engineer. */
+"Tap here to edit this into a bad habit you'd like to quit" = "Kliknij tutaj aby zrobić z tego zły nawyk, z którym chcesz skończyć";
+
+/* No comment provided by engineer. */
+"Tap the gray button to allocate lots of your stats at once, or tap the arrows to add them one point at a time." = "Naciśnij na szary przycisk by rozdzielić dużo swoich statystyk naraz albo naciśnij na strzałki by przydzielać punkty pojedynczo.";
+
+/* No comment provided by engineer. */
+"Tap to add a checklist!" = "Kliknij by dodać listę!";
+
+/* No comment provided by engineer. */
 "Tap to add a new task." = "Stuknij, żeby dodać nowe zadanie.";
 
 /* No comment provided by engineer. */
-"Tap to change how your pets are grouped." = "Stuknij, żeby zmienić sposób grupowania chowańców.";
+"Tap to add checklists!" = "Kliknij by dodać listę!";
 
 /* No comment provided by engineer. */
-"Tap to edit task, change notification time, or delete." = "Stuknij, by edytować zadanie, zmienić czas powiadomienia lub usunąć.";
+"Tap to choose your schedule and specify exercises!" = "Naciśnij by wybrać swój harmonogram i by sprecyzować swoje ćwiczenia!";
+
+/* No comment provided by engineer. */
+"Tap to choose your schedule!" = "Naciśnij by wybrać Swój harmonogram!";
 
 /* No comment provided by engineer. */
 "Tap to filter tasks." = "Stuknij, żeby filtrować zadania.";
 
 /* No comment provided by engineer. */
-"Tap to invite friends and view party members." = "Stuknij by zaprosić przyjaciół i wyświetlić członków drużyny.";
+"Tap to make any changes!" = "Kliknij by dokonać jakichkolwiek zmian!";
 
 /* No comment provided by engineer. */
-"Tavern" = "Gospoda";
+"Tap to show" = "Naciśnij by pokazać";
 
 /* No comment provided by engineer. */
-"Teams" = "Zespoły";
+"Tap to specify the cluttered area!" = "Naciśnij by dookreślić zagracone obszary!";
 
 /* No comment provided by engineer. */
-"Text" = "Tekst";
+"Tap to specify the name of your current project + set a due date!" = "Naciśnij by sprecyzować nazwę swojego obecnego projektu + ustawić odpowiedni termin!";
 
 /* No comment provided by engineer. */
-"The authentication process was cancelled." = "Proces uwierzytelniania został przerwany.";
+"Tap to specify the name of your current project + set the schedule!" = "Naciśnij by sprecyzować nazwę swojego obecnego projektu + ustawić harmonogram!";
+
+/* No comment provided by engineer. */
+"Tap to specify the name of your project" = "Naciśnij by sprecyzować nazwę swojego projektu";
+
+/* No comment provided by engineer. */
+"Tap to specify what you plan to do!" = "Naciśnij by sprecyzować co zamierzasz zrobić!";
+
+/* No comment provided by engineer. */
+"Tap to specify your most important task" = "Naciśnij by sprecyzować Twoje najważniejsze zadanie";
+
+/* No comment provided by engineer. */
+"Tavern" = "Karczma";
+
+/* No comment provided by engineer. */
+"Teleporting to Habitica" = "Teleportuję do Habitiki";
 
 /* No comment provided by engineer. */
 "The scanned QR-Code did not contain a valid Habitica User ID." = "Zeskanowany kod QR nie zawiera poprawnego ID użytkownika Habitica";
 
 /* No comment provided by engineer. */
-"The users were invited to your party" = "Użytkownicy zostali zaproszenie do twojej drużyny";
-
-/* No comment provided by engineer. */
-"There seems to be a problem with the server. Try again later" = "Wygląda na to, że są problemy z serwerem. Spróbuj ponownie później.";
-
-/* No comment provided by engineer. */
-"There was an error verifying your purchase" = "Nastąpił błąd podczas weryfikacji twojego zakupu";
-
-/* No comment provided by engineer. */
-"There was an error with the authentication. Try again later" = "Nastąpił błąd podczas uwierzytelniania. Prosimy spróbować później";
-
-/* No comment provided by engineer. */
 "There was an error with your request: %@" = "Wystąpił błąd podczas przetwarzania żądania: %@";
 
 /* No comment provided by engineer. */
-"This item can be purchased for %@ Gems" = "Ten przedmiot można kupić za %@ Klejnotów";
-
-/* No comment provided by engineer. */
-"This item can be purchased for 2 Gems" = "Ten przedmiot można kupić za 2 Klejnoty";
-
-/* No comment provided by engineer. */
-"This set can be unlocked for %@ Gems" = "Ten zestaw można odblokować za %@ Klejnotów";
+"This is where you can read and reply to private messages! You can also message people from their profiles." = "Tutaj możesz przeczytać i odpowiedzieć na prywatne wiadomości! Możesz też pisać do ludzi z ich profilów.";
 
 /* No comment provided by engineer. */
 "Thursday" = "Czwartek";
 
 /* No comment provided by engineer. */
-"Time Travelers" = "Podróżnicy w Czasie";
-
-/* No comment provided by engineer. */
 "To-Do" = "Do-Zrobienia";
 
 /* No comment provided by engineer. */
-"Trivial" = "Banalne";
+"To-Dos" = "Do-Zrobienia";
 
 /* No comment provided by engineer. */
 "Tuesday" = "Wtorek";
 
 /* No comment provided by engineer. */
-"Unequip" = "Odłóż";
+"Unlocks after selecting a class" = "Odblokowuje się po wybraniu klasy";
 
 /* No comment provided by engineer. */
-"Unlock for %@ Gems" = "Odblokuj za %@ Klejnotów";
+"Unlocks at level 10" = "Odblokowuje się na 10 poziomie";
 
 /* No comment provided by engineer. */
-"Unmount" = "Zejdź z wierzchowca";
+"Unpin from Rewards" = "Odepnij z Nagród";
 
 /* No comment provided by engineer. */
-"Update team on status" = "Przekazać zepołowi najnowsze informacje";
-
-/* No comment provided by engineer. */
-"Use" = "Użyj";
-
-/* No comment provided by engineer. */
-"Use Skills" = "Użyj umiejętności";
-
-/* No comment provided by engineer. */
-"User" = "Użytkownik";
+"Use To-Dos to keep track of tasks you need to do just once." = "Używaj Do-Zrobienia by pilnować zadań które musisz wykonać tylko raz.";
 
 /* No comment provided by engineer. */
 "User ID" = "ID Użytkownika";
-
-/* No comment provided by engineer. */
-"Username" = "Nazwa użytkownika";
-
-/* No comment provided by engineer. */
-"Username already taken." = "Nazwa użytkownika już zajęta";
-
-/* No comment provided by engineer. */
-"Validation Error" = "Błąd weryfikacji";
-
-/* No comment provided by engineer. */
-"Value" = "Wartość";
 
 /* No comment provided by engineer. */
 "Version" = "Wersja";
@@ -1000,16 +692,10 @@ Wersja %1$@ (%2$@)";
 "View Source Code" = "Zobacz kod źródłowy";
 
 /* No comment provided by engineer. */
-"Visibility" = "Widoczność";
+"Wash dishes" = "Umyj naczynia";
 
 /* No comment provided by engineer. */
-"Wakey Wakey!" = "Pobudka!";
-
-/* No comment provided by engineer. */
-"Warrior" = "Wojownik";
-
-/* No comment provided by engineer. */
-"Wash Dishes" = "Umyć naczynia";
+"Watch TV, play a game, eat a treat, it’s up to you!" = "Oglądaj telewizję, graj w gry, zjedz smakołyk, Twój wybór!";
 
 /* No comment provided by engineer. */
 "We love open source software." = "Uwielbiamy oprogramowanie opensource'owe.";
@@ -1018,25 +704,40 @@ Wersja %1$@ (%2$@)";
 "Weak" = "Słabe";
 
 /* No comment provided by engineer. */
-"Weapon" = "Broń";
-
-/* No comment provided by engineer. */
-"Wear costume" = "Załóż kostium";
-
-/* No comment provided by engineer. */
 "Website" = "Strona internetowa";
 
 /* No comment provided by engineer. */
 "Wednesday" = "Środa";
 
 /* No comment provided by engineer. */
-"Weekly" = "Tygodniowe";
+"weekdays" = "dni powszednie";
 
 /* No comment provided by engineer. */
-"Welcome" = "Witamy";
+"weekends" = "weekendy";
+
+/* As in 'repeats weekly' */
+"weekly" = "tygodniowe";
 
 /* No comment provided by engineer. */
-"Welcome to Habitica" = "Witaj w Habitice";
+"weeks" = "tygodnie";
+
+/* No comment provided by engineer. */
+"Welcome Back!" = "Witamy ponownie!";
+
+/* No comment provided by engineer. */
+"Welcome to the Inn! Pull up a chair to chat, or take a break from your tasks." = "Witamy w Karczmie! Przysuń Sobie krzesło by pogadać albo odpocząć od Swoich zadań.";
+
+/* No comment provided by engineer. */
+"What's a Rage Strike?" = "Co to jest Napad Szału?";
+
+/* No comment provided by engineer. */
+"What’s a World Boss?" = "Co to jest Globalny Boss?";
+
+/* No comment provided by engineer. */
+"Wheelchair" = "Wózek inwalidzki";
+
+/* No comment provided by engineer. */
+"Whoops, looks like you haven't set up your email on this phone yet. Configure an account in the iOS mail app to use this quick-reporting option, or just email us directly at mobile@habitica.com" = "Ups, wygląda na to, że nie ustawiłeś jeszcze swojego maila na tym telefonie. Skonfiguruj konto w iOSowej aplikacji pocztowej by używać tą opcje szybkiego zgłaszania albo po prostu napisz do nas bezpośrednio na adres mobile@habitica.com";
 
 /* No comment provided by engineer. */
 "Work" = "Praca";
@@ -1045,7 +746,13 @@ Wersja %1$@ (%2$@)";
 "Work on creative project" = "Pracować nad projektem artystycznym";
 
 /* No comment provided by engineer. */
-"Work project" = "Projekt zawodowy";
+"Worked on today’s most important task" = "Pracuj nad najważniejszym zadaniem dzisiaj";
+
+/* No comment provided by engineer. */
+"Worse" = "Gorszy";
+
+/* No comment provided by engineer. */
+"Worst" = "Najgorszy";
 
 /* No comment provided by engineer. */
 "Write Message" = "Napisz wiadomość";
@@ -1053,63 +760,45 @@ Wersja %1$@ (%2$@)";
 /* No comment provided by engineer. */
 "Write to %@" = "Napisz do %@";
 
-/* No comment provided by engineer. */
-"Yes" = "Tak";
+/* As in 'repeats yearly' */
+"yearly" = "rocznie";
 
 /* No comment provided by engineer. */
-"You gained a level!" = "Zdobyłeś poziom!";
+"years" = "lata";
 
 /* No comment provided by engineer. */
-"You hatched a %@ %@!" = "Wyklułeś %1$@ %2$@!";
+"You can also make real-world Custom Rewards based on what motivates you." = "Możesz też ustawiać Własne Nagrody w prawdziwym świecie bazując na tym co Cię motywuje.";
 
 /* No comment provided by engineer. */
-"You have no food" = "Nie masz żadnego jedzenia";
+"You can either complete this To-Do, edit it, or remove it." = "Możesz albo wykonać to Do-Zrobienia, zedytować je albo usunąć.";
+
+/* No comment provided by engineer. */
+"You earned a streak achievement!" = "Zdobyłeś osiągnięcie serii!";
+
+/* No comment provided by engineer. */
+"You have earned a %@ for being committed to improving your life." = "Zdobyłeś %@ za poświęcanie się poprawie swojego życia.";
 
 /* No comment provided by engineer. */
 "You have to specify a valid Habitica User ID as recipient." = "Musisz wybrać jako odbiorcę prawidłowe ID użytkownika Habitica.";
 
 /* No comment provided by engineer. */
-"You purchased %@" = "Kupiłeś %@";
+"You unlocked the drop system!" = "Odblokowałeś system zdobyczy!";
 
 /* No comment provided by engineer. */
-"You purchased the set." = "Kupiłeś zestaw.";
+"You've completed your Daily for 21 days in a row! Amazing job. Don't break the streak!" = "Wykonałeś swój Codzienne przez 21 dni z rzędu! Wspaniała robota. Nie przerwij serii!";
 
 /* No comment provided by engineer. */
-"You raised a mount!" = "Zdobyłeś wierzchowca!";
+"You've unlocked the Drop System! Now when you complete tasks, you have a small chance of finding an item, including eggs, potions, and food!" = "Odblokowałeś System Zdobyczy! Od teraz po ukończeniu zadań, masz niewielką szansę znalezienia przedmiotu, włączając w to jaja, eliksiry i jedzenie!";
 
 /* No comment provided by engineer. */
-"You will become a %@." = "Zostałeś %@.";
-
-/* No comment provided by engineer. */
-"You won a Challenge!" = "Wygrałeś wyzwanie!";
-
-/* No comment provided by engineer. */
-"Your Quest has Begun" = "Twoje zadanie się rozpoczęło";
+"Your email isn't set up yet" = "Twój e-mail nie został jeszcze ustawiony";
 
 /* No comment provided by engineer. */
 "Your message could not be sent." = "Twoja wiadomość nie mogła zostać wysłana.";
 
 /* No comment provided by engineer. */
-"Your pet eats the %@ but doesn't seem to enjoy it." = "Twój chowaniec zjada %@, ale raczej mu nie smakuje.";
+"Your next prize unlocks in %d Check-Ins" = "Twoja następna nagroda zostanie odblokowana za %dwizyt";
 
 /* No comment provided by engineer. */
-"Your pet really likes the %@!" = "Twojemu chowańcowi naprawdę smakuje %@!";
-
-/* No comment provided by engineer. */
-"equipped" = "wyposażone";
-
-/* Singular */
-"gem" = "klejnot";
-
-/* Plural */
-"gems" = "klejnoty";
-
-/* Singular */
-"gold" = "złoto";
-
-/* Singular */
-"hourglass" = "klepsydra";
-
-/* Plural */
-"hourglasses" = "klepsydry";
+"Your next prize unlocks in 1 Check-In." = "Twoja następna nagroda zostanie odblokowana w następnej wizycie";
 

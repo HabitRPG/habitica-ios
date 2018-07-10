@@ -1,0 +1,324 @@
+/* more than one filter */
+"%ld Filters" = "%ld 條件篩尋";
+
+/* No comment provided by engineer. */
+"1 Filter" = "1 組條件篩選";
+
+/* No comment provided by engineer. */
+"10 minutes cleaning" = "打掃 10 分鐘";
+
+/* No comment provided by engineer. */
+"About" = "關於";
+
+/* No comment provided by engineer. */
+"Accept" = "接受";
+
+/* No comment provided by engineer. */
+"Acknowledgements" = "致謝";
+
+/* No comment provided by engineer. */
+"Active" = "進行中";
+
+/* No comment provided by engineer. */
+"Add %@" = "新增 %@";
+
+/* No comment provided by engineer. */
+"Add a User ID" = "新增使用者 ID";
+
+/* No comment provided by engineer. */
+"Add an Email" = "新增一個 Email";
+
+/* No comment provided by engineer. */
+"All" = "全部";
+
+/* No comment provided by engineer. */
+"API Key" = "API Key";
+
+/* No comment provided by engineer. */
+"Authentication" = "驗證";
+
+/* No comment provided by engineer. */
+"Bangs" = "瀏海";
+
+/* No comment provided by engineer. */
+"Broad" = "厚實";
+
+/* No comment provided by engineer. */
+"Cancel" = "取消";
+
+/* No comment provided by engineer. */
+"Chores" = "雜務";
+
+/* No comment provided by engineer. */
+"Close" = "關閉";
+
+/* No comment provided by engineer. */
+"Color" = "顏色";
+
+/* No comment provided by engineer. */
+"Complete" = "完成";
+
+/* No comment provided by engineer. */
+"Create Tag" = "創造tag";
+
+/* No comment provided by engineer. */
+"Creativity" = "創作";
+
+/* No comment provided by engineer. */
+"Dailies" = "每日任務";
+
+/* No comment provided by engineer. */
+"Daily" = "每日";
+
+/* No comment provided by engineer. */
+"Dated" = "有時限";
+
+/* No comment provided by engineer. */
+"Do homework" = "做作業";
+
+/* No comment provided by engineer. */
+"Done" = "已完成";
+
+/* No comment provided by engineer. */
+"Due" = "待辦";
+
+/* No comment provided by engineer. */
+"Edit Tag" = "編輯標籤";
+
+/* No comment provided by engineer. */
+"Email" = "Email";
+
+/* No comment provided by engineer. */
+"Emails" = "Emails";
+
+/* No comment provided by engineer. */
+"Error" = "錯誤";
+
+/* No comment provided by engineer. */
+"ERROR" = "錯誤";
+
+/* No comment provided by engineer. */
+"Exercise" = "運動";
+
+/* No comment provided by engineer. */
+"Experience" = "經驗值";
+
+/* No comment provided by engineer. */
+"Filter" = "條件篩選";
+
+/* No comment provided by engineer. */
+"Finish" = "結束";
+
+/* No comment provided by engineer. */
+"Finish creative project" = "完成創作計畫";
+
+/* No comment provided by engineer. */
+"Floss" = "使用牙線";
+
+/* No comment provided by engineer. */
+"Flower" = "花朵";
+
+/* No comment provided by engineer. */
+"Friday" = "週五";
+
+/* No comment provided by engineer. */
+"Gems" = "寶石";
+
+/* No comment provided by engineer. */
+"Grey" = "灰色";
+
+/* No comment provided by engineer. */
+"Habit" = "習慣";
+
+/* No comment provided by engineer. */
+"Habits" = "習慣";
+
+/* No comment provided by engineer. */
+"Health" = "生命值";
+
+/* No comment provided by engineer. */
+"Hold down on a task to drag it around." = "按住一個任務項目並拖曳移動它";
+
+/* No comment provided by engineer. */
+"Invalid Habitica User ID" = "無效的Habitica使用者ID";
+
+/* No comment provided by engineer. */
+"Invitation Type" = "邀請種類";
+
+/* No comment provided by engineer. */
+"Invite Members" = "邀請成員";
+
+/* No comment provided by engineer. */
+"Join" = "加入";
+
+/* No comment provided by engineer. */
+"Leave" = "離開";
+
+/* No comment provided by engineer. */
+"Leave a Review" = "留下評論";
+
+/* No comment provided by engineer. */
+"Level" = "等級";
+
+/* No comment provided by engineer. */
+"Local" = "本機";
+
+/* No comment provided by engineer. */
+"Login Methods" = "登入方式";
+
+/* No comment provided by engineer. */
+"Mana" = "魔力";
+
+/* No comment provided by engineer. */
+"Market" = "市場";
+
+/* No comment provided by engineer. */
+"Monday" = "週一";
+
+/* No comment provided by engineer. */
+"Next" = "下一步";
+
+/* No comment provided by engineer. */
+"OK" = "OK";
+
+/* No comment provided by engineer. */
+"Open App Store page" = "打開 App Store 頁面";
+
+/* No comment provided by engineer. */
+"Password" = "密碼";
+
+/* No comment provided by engineer. */
+"Process email" = "處理 email";
+
+/* No comment provided by engineer. */
+"Recipient" = "接受者";
+
+/* No comment provided by engineer. */
+"Reject" = "拒絕";
+
+/* No comment provided by engineer. */
+"Remember to check off your Dailies!" = "記得把完成的每日任務打勾！";
+
+/* No comment provided by engineer. */
+"Reminder" = "提醒";
+
+/* No comment provided by engineer. */
+"Reply" = "回覆";
+
+/* No comment provided by engineer. */
+"Report %@ for violation?" = "回報 %@ 違規?";
+
+/* No comment provided by engineer. */
+"Report a bug" = "回報 bug";
+
+/* No comment provided by engineer. */
+"Rewards" = "獎勵";
+
+/* No comment provided by engineer. */
+"Saturday" = "週六";
+
+/* No comment provided by engineer. */
+"Save" = "儲存";
+
+/* No comment provided by engineer. */
+"Scan QR Code" = "掃描 QR Code";
+
+/* No comment provided by engineer. */
+"School" = "學校";
+
+/* No comment provided by engineer. */
+"Seasonal Shop" = "季節性商店";
+
+/* No comment provided by engineer. */
+"Send feedback" = "發送意見";
+
+/* No comment provided by engineer. */
+"Set up workout schedule" = "設定健身計劃";
+
+/* No comment provided by engineer. */
+"Shirt" = "上衣";
+
+/* No comment provided by engineer. */
+"Size" = "大小";
+
+/* No comment provided by engineer. */
+"Slim" = "瘦小";
+
+/* No comment provided by engineer. */
+"Strong" = "高強度";
+
+/* No comment provided by engineer. */
+"Study/Procrastinate" = "念書 / 拖延";
+
+/* No comment provided by engineer. */
+"Sunday" = "週日";
+
+/* No comment provided by engineer. */
+"Tap a task to edit it and add reminders. Swipe left to delete it." = "輕點任務可編輯和添加提醒，向左滑過可刪除。";
+
+/* No comment provided by engineer. */
+"Tap to add a new task." = "點擊此處可新增任務。";
+
+/* No comment provided by engineer. */
+"Tap to filter tasks." = "點擊此處可篩選任務。";
+
+/* No comment provided by engineer. */
+"Tavern" = "酒館";
+
+/* No comment provided by engineer. */
+"The scanned QR-Code did not contain a valid Habitica User ID." = "掃描的 QR-Code 沒有包含一個有效的 Habitica 使用者 ID";
+
+/* No comment provided by engineer. */
+"There was an error with your request: %@" = "你的請求出現了錯誤: %@";
+
+/* No comment provided by engineer. */
+"Thursday" = "週四";
+
+/* No comment provided by engineer. */
+"To-Do" = "待辦事項";
+
+/* No comment provided by engineer. */
+"To-Dos" = "待辦事項";
+
+/* No comment provided by engineer. */
+"Tuesday" = "週二";
+
+/* No comment provided by engineer. */
+"User ID" = "使用者 ID";
+
+/* No comment provided by engineer. */
+"Version" = "版本";
+
+/* No comment provided by engineer. */
+"View Source Code" = "查看原始碼";
+
+/* No comment provided by engineer. */
+"We love open source software." = "我們都愛開源程式";
+
+/* No comment provided by engineer. */
+"Weak" = "低強度";
+
+/* No comment provided by engineer. */
+"Website" = "網站";
+
+/* No comment provided by engineer. */
+"Wednesday" = "週三";
+
+/* No comment provided by engineer. */
+"Work" = "工作";
+
+/* No comment provided by engineer. */
+"Work on creative project" = "進行創作計畫";
+
+/* No comment provided by engineer. */
+"Write Message" = "撰寫訊息";
+
+/* No comment provided by engineer. */
+"Write to %@" = "寫入 %@";
+
+/* No comment provided by engineer. */
+"You have to specify a valid Habitica User ID as recipient." = "你必須指定一個有效的 Habitica 使用者 ID 作為收件人。";
+
+/* No comment provided by engineer. */
+"Your message could not be sent." = "你的訊息無法寄出";
+

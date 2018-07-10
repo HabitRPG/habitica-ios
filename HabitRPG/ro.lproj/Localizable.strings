@@ -1,0 +1,885 @@
+/* No comment provided by engineer. */
+"\(experience) Experience Points" = "\(experience) Puncte de Experiență";
+
+/* No comment provided by engineer. */
+"\(gold) Gold" = "\(gold) Aur";
+
+/* No comment provided by engineer. */
+"\(npcName) is Heartbroken!\nOur beloved \(npcLongName) was devastated when \(bossName) shattered the \(locationName). Quickly, tackle your tasks to defeat the monster and help rebuild!" = "\(npcName) este devastat!\nDragul nostru \(npcLongName) a fost distrus când \(bossName) a zdrobit \(locationName). Îndeplinește-ți sarcinile rapid pentru a înfrânge monstrul și a ajuta la reconstrucție! ";
+
+/* more than one filter */
+"%ld Filters" = "%ld Filtre";
+
+/* No comment provided by engineer. */
+"1 Filter" = "1 Filtru";
+
+/* No comment provided by engineer. */
+"5 minutes of quiet breathing" = "5 minute de respirație în liniște";
+
+/* No comment provided by engineer. */
+"10 minutes cardio" = "10 minute de cardio";
+
+/* No comment provided by engineer. */
+"10 minutes cleaning" = "10 minute de curățenie";
+
+/* No comment provided by engineer. */
+"21-Day Streaks" = "Șiruri de 21 de zile";
+
+/* No comment provided by engineer. */
+"About" = "Despre noi";
+
+/* No comment provided by engineer. */
+"Accept" = "Acceptă";
+
+/* No comment provided by engineer. */
+"Acknowledgements" = "Recunoașteri";
+
+/* No comment provided by engineer. */
+"Active" = "Active";
+
+/* No comment provided by engineer. */
+"Add %@" = "Adaugă %@";
+
+/* No comment provided by engineer. */
+"Add a User ID" = "Adaugă un User ID";
+
+/* No comment provided by engineer. */
+"Add an Email" = "Adaugă o adresă de Email";
+
+/* No comment provided by engineer. */
+"Alex the Merchant" = "Alex Negustorul";
+
+/* No comment provided by engineer. */
+"All" = "Toate";
+
+/* No comment provided by engineer. */
+"API Key" = "API Key";
+
+/* No comment provided by engineer. */
+"Are you sure? This will delete your account forever, and it can never be restored! You will need to register a new account to use Habitica again. Banked or spent Gems will not be refunded. If you're absolutely certain, type your password into the text box below." = "Ești sigur(ă)? Această acțiune îți va șterge contul pentru totdeauna, cu imposibilitatea recuperării acestuia. Pentru a utiliza Habitica din nou, va fi necesar să te înregistrezi cu un cont nou. Nestematele deținute sau cheltuite nu vor fi restituite. Dacă ești absolut sigur(ă), introdu-ți parola în căsuța de mai jos. ";
+
+/* No comment provided by engineer. */
+"Assigns more points to the attributes important to your Class." = "Repartizează mai multe puncte atributelor importante pentru Clasa ta.";
+
+/* No comment provided by engineer. */
+"Assigns points based on the Strength, Intelligence, Constitution, and Perception categories associated with the tasks you complete." = "Repartizează puncte în funcție de categoriile Forță, Inteligență, Constituție, și Percepție, asociate cu sarcinile completate.";
+
+/* No comment provided by engineer. */
+"Assigns the same number of points to each attribute." = "Repartizează același număr de puncte fiecărui atribut.";
+
+/* No comment provided by engineer. */
+"Authentication" = "Autentificare";
+
+/* No comment provided by engineer. */
+"Bad" = "Rău";
+
+/* No comment provided by engineer. */
+"Bangs" = "Breton";
+
+/* No comment provided by engineer. */
+"Be careful — if you miss one, your avatar will take damage overnight. Checking them off consistently brings great rewards!" = "Ai grijă — dacă ratezi vreuna, avatarul tău va suferi daune peste noapte. Bifatul lor constant va duce la recompense grozave!";
+
+/* No comment provided by engineer. */
+"Be careful...\nThe World Boss will lash out and attack one of our friendly shopkeepers once its rage bar fills. Keep up with your Dailies to try and prevent it from happening!" = "Ai grijă... \nCăpcăunul Șef se va enerva și îl va ataca pe unul dintre negustorii noștri prietenoși atunci când bara sa de furie se umple. Ține pasul cu Activitățile tale Zilnice pentru a încerca să previi asta!";
+
+/* No comment provided by engineer. */
+"Best" = "Cel mai bun";
+
+/* No comment provided by engineer. */
+"Better" = "Mai bun";
+
+/* No comment provided by engineer. */
+"Boss Quest" = "Expediție împotriva Căpcăunului";
+
+/* No comment provided by engineer. */
+"Brainstorm a healthy change" = "Gândește-te la o schimbare sănătoasă";
+
+/* No comment provided by engineer. */
+"Broad" = "Trupeș(ă)";
+
+/* No comment provided by engineer. */
+"buy" = "cumpără";
+
+/* No comment provided by engineer. */
+"Buy for \(currencyText)" = "Cumpără pentru \(currencyText)";
+
+/* No comment provided by engineer. */
+"Buy gear for your avatar with the gold you earn!" = "Cumpără echipament pentru avatarul tău cu Aurul acumulat!";
+
+/* No comment provided by engineer. */
+"Buy gems with gold" = "Cumpără Nestemate cu Aur";
+
+/* No comment provided by engineer. */
+"Cancel" = "Anulează";
+
+/* No comment provided by engineer. */
+"Change" = "Schimbă";
+
+/* No comment provided by engineer. */
+"Change About message" = "Schimbă-ți Descrierea";
+
+/* No comment provided by engineer. */
+"Change Display Name" = "Schimbă-ți Numele afișat";
+
+/* No comment provided by engineer. */
+"Change Email" = "Schimbă-ți adresa de Email";
+
+/* No comment provided by engineer. */
+"Change Login Name" = "Change Login Name";
+
+/* No comment provided by engineer. */
+"Change Password" = "Schimbă parola";
+
+/* No comment provided by engineer. */
+"Change Photo URL" = "Schimbă URL-ul Fotografiei";
+
+/* No comment provided by engineer. */
+"Character Level" = "Nivelul Personajului";
+
+/* No comment provided by engineer. */
+"Chores" = "Treburi";
+
+/* No comment provided by engineer. */
+"Class Equipment" = "Echipamentul Clasei";
+
+/* No comment provided by engineer. */
+"Close" = "Închide";
+
+/* No comment provided by engineer. */
+"Collapse checklist" = "Pliază checklist-ul";
+
+/* No comment provided by engineer. */
+"Collect" = "Collect";
+
+/* No comment provided by engineer. */
+"Collection Quest" = "Expediție de Colecție";
+
+/* No comment provided by engineer. */
+"Color" = "Culoare";
+
+/* No comment provided by engineer. */
+"Complete" = "Îndeplinite";
+
+/* No comment provided by engineer. */
+"Complete Task" = "Completează Sarcina";
+
+/* No comment provided by engineer. */
+"Complete work project" = "Completează proiectul de lucru";
+
+/* No comment provided by engineer. */
+"Completed" = "Completat";
+
+/* No comment provided by engineer. */
+"Confirm New Password" = "Confirmă parola nouă";
+
+/* No comment provided by engineer. */
+"Copied Message" = "Mesaj Copiat";
+
+/* No comment provided by engineer. */
+"Copy Message" = "Copiază Mesajul";
+
+/* No comment provided by engineer. */
+"Create Tag" = "Crează o Etichetă";
+
+/* No comment provided by engineer. */
+"Creativity" = "Creativitate";
+
+/* No comment provided by engineer. */
+"Dailies" = "Cotidiene";
+
+/* As in 'repeats daily' */
+"daily" = "zilnic";
+
+/* No comment provided by engineer. */
+"Daily" = "Activitate Zilnică";
+
+/* No comment provided by engineer. */
+"Daily drop-caps doubled" = "Limita maximă de obiecte câștigate este dublată";
+
+/* No comment provided by engineer. */
+"Daily workout routine" = "Exerciții fizice zilnice";
+
+/* No comment provided by engineer. */
+"Danger Zone" = "Zona de pericol";
+
+/* No comment provided by engineer. */
+"Daniel the inn keeper" = "Daniel Îngrijitorul Hanului";
+
+/* No comment provided by engineer. */
+"Dated" = "Dated";
+
+/* No comment provided by engineer. */
+"days" = "zile";
+
+/* No comment provided by engineer. */
+"Delete Account" = "Șterge contul";
+
+/* No comment provided by engineer. */
+"Delete Message" = "Șterge Mesajul";
+
+/* No comment provided by engineer. */
+"Delete tasks" = "Șterge Sarcinile";
+
+/* No comment provided by engineer. */
+"Display Name" = "Numele afișat";
+
+/* No comment provided by engineer. */
+"Do homework" = "Fă-ți temele";
+
+/* No comment provided by engineer. */
+"Do you want to leave the challenge and keep or delete the tasks?" = "Dorești să părăsești această provocare și să păstrezi sau ștergi sarcinile?";
+
+/* No comment provided by engineer. */
+"Done" = "Gata";
+
+/* No comment provided by engineer. */
+"Double drop caps will let you receive more items from your completed tasks every day, helping you complete your stable faster!" = "Dublul obiectelor căzute îți va permite să primești mai mult pentru fiecare sarcină completată zilnic, astfel încât să-ți poți completa grajdul mai rapid.  ";
+
+/* No comment provided by engineer. */
+"Double tap to complete" = "Dublu-click pentru a completa";
+
+/* No comment provided by engineer. */
+"Double tap to edit" = "Dublu-click pentru a edita";
+
+/* No comment provided by engineer. */
+"Double tap to hide boss art" = "Dublu-click pentru a ascunde arta Căpcăunului";
+
+/* No comment provided by engineer. */
+"Due" = "Scadente";
+
+/* No comment provided by engineer. */
+"E-Mail" = "Email";
+
+/* No comment provided by engineer. */
+"Eat health/junk food" = "Mănâncă sănătos/fast food";
+
+/* No comment provided by engineer. */
+"Edit Tag" = "Editează Eticheta";
+
+/* No comment provided by engineer. */
+"Email" = "Email";
+
+/* No comment provided by engineer. */
+"Email a Password Reset Link" = "Trimite email cu link-ul de resetare a Parolei";
+
+/* No comment provided by engineer. */
+"Emails" = "Email-uri";
+
+/* No comment provided by engineer. */
+"Engage in a fun activity" = "Fă ceva distractiv";
+
+/* No comment provided by engineer. */
+"Enter the email address you used to register your Habitica account." = "Introdu adresa de email utilizată la înregistrarea contului Habitica";
+
+/* No comment provided by engineer. */
+"Error" = "Eroare";
+
+/* No comment provided by engineer. */
+"ERROR" = "EROARE";
+
+/* No comment provided by engineer. */
+"every \(everyX) \(self.repeatName())" = "în fiecare \(everyX) \(self.repeatName())";
+
+/* No comment provided by engineer. */
+"every day" = "în fiecare zi";
+
+/* No comment provided by engineer. */
+"Every time you do a positive Habit, tap the + to get experience and gold!" = "De fiecare dată când respecți un Obicei pozitiv, apasă pe + pentru a primi experiență și aur!";
+
+/* No comment provided by engineer. */
+"Exclusive monthly items" = "Obiecte unice disponibile lunar";
+
+/* No comment provided by engineer. */
+"Exercise" = "Exercițiu";
+
+/* No comment provided by engineer. */
+"Expand checklist" = "Extinde Lista ";
+
+/* No comment provided by engineer. */
+"Experience" = "Experiență";
+
+/* No comment provided by engineer. */
+"Export Database" = "Export bazei de date";
+
+/* No comment provided by engineer. */
+"Filter" = "Filtru";
+
+/* No comment provided by engineer. */
+"Finish" = "Finalizează";
+
+/* No comment provided by engineer. */
+"Finish assignment for class" = "Completează proiectul pentru școală/facultate";
+
+/* No comment provided by engineer. */
+"Finish creative project" = "Finalizează un proiect de creativitate";
+
+/* No comment provided by engineer. */
+"First up is Habits. They can be positive Habits you want to improve or negative Habits you want to quit." = "Mai întâi Obiceiurile. Ele pot fi Obiceiuri pozitive pe care vrei să le păstrezi sau Obiceiuri negative de care vrei să scapi.";
+
+/* No comment provided by engineer. */
+"Floss" = "Spală-te pe dinți";
+
+/* No comment provided by engineer. */
+"Flower" = "Floare";
+
+/* No comment provided by engineer. */
+"Friday" = "Vineri";
+
+/* No comment provided by engineer. */
+"Gems" = "Nestemate";
+
+/* No comment provided by engineer. */
+"Give it a shot! You can explore the other task types through the bottom navigation." = "Încearcă! Poți explora celelalte tipuri de sarcini cu ajutorul navigării din josul paginii.";
+
+/* No comment provided by engineer. */
+"Glasses" = "Ochelari";
+
+/* No comment provided by engineer. */
+"Gold" = "Aur";
+
+/* No comment provided by engineer. */
+"Good" = "Bun";
+
+/* No comment provided by engineer. */
+"Great!" = "Grozav!";
+
+/* No comment provided by engineer. */
+"Grey" = "Gri";
+
+/* No comment provided by engineer. */
+"Habit" = "Obicei";
+
+/* No comment provided by engineer. */
+"Habits" = "Obiceiuri";
+
+/* No comment provided by engineer. */
+"Health" = "Health";
+
+/* No comment provided by engineer. */
+"Hold down on a task to drag it around." = "Ține apăsat pe o sarcină pentru a o muta.";
+
+/* No comment provided by engineer. */
+"I earned a new achievement in Habitica! " = "Am obținut o realizare nouă în Habitica!";
+
+/* No comment provided by engineer. */
+"Ian the Quest Guide" = "Ian Ghidul Expedițiilor";
+
+/* No comment provided by engineer. */
+"If we have your email on file, instructions for setting a new password have been sent to your email." = "Dacă avem adresa ta de email la dosar, ți-am trimis instrucțiuni pentru a-ți seta o parolă nouă.";
+
+/* No comment provided by engineer. */
+"If you slip up and do a negative Habit, tapping the - will reduce your avatar’s health to help you stay accountable." = "Dacă te complaci într-un Obicei negativ, apăsând pe - va reduce din sănătatea avatarului tău pentru a te încuraja să rămâi responsabil.";
+
+/* No comment provided by engineer. */
+"If you’ve encountered a bug or made a mistake that unfairly changed your character, you can manually correct those values here." = "Dacă ai întâlnit o eroare sau ai făcut o greșeală care ți-a modificat pe nedrept personajul, poți corecta manual acest lucru aici. ";
+
+/* No comment provided by engineer. */
+"If your To-Do has to be done by a certain time, set a due date. Looks like you can check one off — go ahead!" = "Dacă lucrurile pe care le ai De-Făcut trebuie finalizate până la o anumită dată, setează una. Se pare că ai ceva de bifat — fă-o!";
+
+/* No comment provided by engineer. */
+"Invalid Habitica User ID" = "ID Utilizator Habitica invalid";
+
+/* No comment provided by engineer. */
+"Invitation Type" = "Tip de Invitație";
+
+/* No comment provided by engineer. */
+"Invite Members" = "Invită Membri";
+
+/* No comment provided by engineer. */
+"Join" = "Participă";
+
+/* No comment provided by engineer. */
+"Join Habitica (Check me off!)" = "Alătură-te la Habitica (Bifează-mă!)";
+
+/* No comment provided by engineer. */
+"Keep tasks" = "Păstrează sarcinile";
+
+/* No comment provided by engineer. */
+"Leave" = "Părăsește";
+
+/* No comment provided by engineer. */
+"Leave a Review" = "Lasă o Recenzie";
+
+/* No comment provided by engineer. */
+"Leave Challenge?" = "Părăsești Provocarea?";
+
+/* No comment provided by engineer. */
+"Level" = "Nivel";
+
+/* No comment provided by engineer. */
+"Like Message" = "Dă Like Mesajului";
+
+/* No comment provided by engineer. */
+"Local" = "Local";
+
+/* No comment provided by engineer. */
+"Login Methods" = "Metode de Logare";
+
+/* No comment provided by engineer. */
+"Login Name" = "Login Name";
+
+/* No comment provided by engineer. */
+"Make Dailies for time-sensitive tasks that need to be done on a regular schedule." = "Setează Sarcini Zilnice pentru activități care trebuie făcute după un program regulat.";
+
+/* No comment provided by engineer. */
+"Makes completed To-Dos and task history available for longer." = "Pune la dispoziție pentru mai mult timp lista completată a lucrurilor De-Făcut și istoricul sarcinilor.";
+
+/* No comment provided by engineer. */
+"Mana" = "Mana";
+
+/* No comment provided by engineer. */
+"Mana Points" = "Puncte Mana";
+
+/* No comment provided by engineer. */
+"Market" = "Piață";
+
+/* No comment provided by engineer. */
+"Matt the beast master" = "Matt Stăpânul Fiarelor";
+
+/* No comment provided by engineer. */
+"Moderator" = "Moderator";
+
+/* No comment provided by engineer. */
+"Monday" = "Luni";
+
+/* As in 'repeats monthly' */
+"monthly" = "lunar";
+
+/* No comment provided by engineer. */
+"months" = "luni";
+
+/* No comment provided by engineer. */
+"Mystery Sets" = "Seturi Misterioase";
+
+/* No comment provided by engineer. */
+"Neutral" = "Neutru";
+
+/* No comment provided by engineer. */
+"never" = "niciodată";
+
+/* No comment provided by engineer. */
+"New Email" = "Email nou";
+
+/* No comment provided by engineer. */
+"New Login Name" = "New Login Name";
+
+/* No comment provided by engineer. */
+"New Password" = "Parola nouă";
+
+/* No comment provided by engineer. */
+"Next" = "Următorul";
+
+/* No comment provided by engineer. */
+"No Camera available" = "Cameră foto indisponibilă";
+
+/* No comment provided by engineer. */
+"Not completed" = "Necompletat";
+
+/* No comment provided by engineer. */
+"Not due" = "Fără termen limită";
+
+/* No comment provided by engineer. */
+"Not getting the right drops? Check out the Market to buy just the things you need!" = "Nu primești lucrurile potrivite? Mergi la Târg pentru a cumpăra exact lucrurile de care ai nevoie!";
+
+/* No comment provided by engineer. */
+"Oh dear, pay no heed to the monster below -- this is still a safe haven to chat on your breaks." = "Oh dragă, nu îl băga în seamă pe monstrul de mai jos -- ăsta este în continuare un loc sigur pentru discuții în pauze. ";
+
+/* No comment provided by engineer. */
+"OK" = "OK";
+
+/* No comment provided by engineer. */
+"Old Password" = "Parola veche";
+
+/* No comment provided by engineer. */
+"Open App Store page" = "Deschide pagina din App Store";
+
+/* No comment provided by engineer. */
+"Or delete it by swiping left" = "Sau șterge prin a da swipe la stânga";
+
+/* No comment provided by engineer. */
+"Organize clutter" = "Organizează dezordinea";
+
+/* No comment provided by engineer. */
+"Password" = "Parolă";
+
+/* No comment provided by engineer. */
+"Pause Damage" = "Pune pauză Deteriorării";
+
+/* No comment provided by engineer. */
+"Pending Strike" = "Lovitură iminentă";
+
+/* No comment provided by engineer. */
+"Photo URL" = "URL-ul pozei";
+
+/* No comment provided by engineer. */
+"Pin to Rewards" = "Fixează la Recompense";
+
+/* No comment provided by engineer. */
+"Ponytail" = "Coadă de cal";
+
+/* No comment provided by engineer. */
+"Practiced a new creative technique" = "O nouă tehnică creativă exersată";
+
+/* No comment provided by engineer. */
+"Process email" = "Procesează email-ul";
+
+/* No comment provided by engineer. */
+"Quest Shop" = "Târgul de Expediții";
+
+/* No comment provided by engineer. */
+"Recipient" = "Destinatar";
+
+/* No comment provided by engineer. */
+"Reject" = "Refuză";
+
+/* No comment provided by engineer. */
+"Remember to check off your Dailies!" = "Nu uita să-ți bifezi Activitățile Zilnice!";
+
+/* No comment provided by engineer. */
+"Reminder" = "Memento";
+
+/* No comment provided by engineer. */
+"Repeats \(repeatType.string(everyX))" = "Repetă \(repeatType.string(everyX))";
+
+/* No comment provided by engineer. */
+"Repeats \(repeatType.string(everyX)) on \(repeatOnString)" = "Repetă \(repeatType.string(everyX)) când \(repeatOnString)";
+
+/* No comment provided by engineer. */
+"Reply" = "Răspunde";
+
+/* No comment provided by engineer. */
+"Reply to Message" = "Răspunde la Mesaj";
+
+/* No comment provided by engineer. */
+"Report %@ for violation?" = "Reclami pe %@ pentru încălcarea regulilor?";
+
+/* No comment provided by engineer. */
+"Report a bug" = "Raportează o eroare";
+
+/* No comment provided by engineer. */
+"Report Message" = "Raportează Mesajul";
+
+/* No comment provided by engineer. */
+"Reset Account" = "Resetează contul";
+
+/* No comment provided by engineer. */
+"Resume Damage" = "Reia Deteriorarea";
+
+/* No comment provided by engineer. */
+"Retain additional history entries" = "Reține mai mult din istoric";
+
+/* No comment provided by engineer. */
+"Reward yourself" = "Răsplătește-te!";
+
+/* No comment provided by engineer. */
+"Rewards" = "Recompense";
+
+/* No comment provided by engineer. */
+"Saturday" = "Sâmbătă";
+
+/* No comment provided by engineer. */
+"Save" = "Salvează";
+
+/* No comment provided by engineer. */
+"Scan QR Code" = "Scanează Codul QR";
+
+/* No comment provided by engineer. */
+"School" = "Școală";
+
+/* No comment provided by engineer. */
+"Score habit down" = "Acordă un scor mai mic obiceiului";
+
+/* No comment provided by engineer. */
+"Score habit up" = "Acordă un scor mai mare obiceiului";
+
+/* No comment provided by engineer. */
+"Search" = "Caută";
+
+/* No comment provided by engineer. */
+"Seasonal Shop" = "Piața sezonieră";
+
+/* No comment provided by engineer. */
+"Seasonal Sorceress" = "Vrăjitoarea de Sezon";
+
+/* No comment provided by engineer. */
+"Self-Care" = "Îngrijire de sine";
+
+/* No comment provided by engineer. */
+"Send" = "Send";
+
+/* No comment provided by engineer. */
+"Send feedback" = "Trimite feedback";
+
+/* No comment provided by engineer. */
+"Set up workout schedule" = "Setează-ți un program de exerciții fizice";
+
+/* No comment provided by engineer. */
+"Shirt" = "Tricou";
+
+/* No comment provided by engineer. */
+"Size" = "Dimensiune";
+
+/* No comment provided by engineer. */
+"Slim" = "Suplu(ă)";
+
+/* No comment provided by engineer. */
+"Stable" = "Grajd";
+
+/* No comment provided by engineer. */
+"Staff" = "Staff";
+
+/* No comment provided by engineer. */
+"Strong" = "Puternic";
+
+/* No comment provided by engineer. */
+"Study/Procrastinate" = "Învață/Pierde timpul";
+
+/* No comment provided by engineer. */
+"Subscription" = "Abonament";
+
+/* No comment provided by engineer. */
+"success" = "succes";
+
+/* No comment provided by engineer. */
+"Sunday" = "Duminică";
+
+/* No comment provided by engineer. */
+"Take a short break" = "Ia o pauză scurtă";
+
+/* No comment provided by engineer. */
+"Tap a task to edit it and add reminders. Swipe left to delete it." = "Apasă pe o sarcină pentru a o edita și a adăuga memnto. Dă swipe la stânga pentru a o șterge.";
+
+/* No comment provided by engineer. */
+"Tap here to edit this into a bad habit you'd like to quit" = "Apasă aici pentru a schimba asta într-un obicei negativ la care îți dorești să renunți.";
+
+/* No comment provided by engineer. */
+"Tap the gray button to allocate lots of your stats at once, or tap the arrows to add them one point at a time." = "Apasă pe butonul gri pentru a aloca mai multe statistici deodată, sau apasă pe săgeți pentru a adăuga câte un punct pe rând. ";
+
+/* No comment provided by engineer. */
+"Tap to add a checklist!" = "Apasă pentru a adăuga o Listă de Verificare!";
+
+/* No comment provided by engineer. */
+"Tap to add a new task." = "Apasă pentru a adăuga o nouă sarcină.";
+
+/* No comment provided by engineer. */
+"Tap to add checklists!" = "Apasă pentru a adăuga o Listă de Verificare!";
+
+/* No comment provided by engineer. */
+"Tap to choose your schedule and specify exercises!" = "Apasă pentru a-ți alege programul și pentru a specifica exercițiile!";
+
+/* No comment provided by engineer. */
+"Tap to choose your schedule!" = "Apasă pentru a alege un program!";
+
+/* No comment provided by engineer. */
+"Tap to filter tasks." = "Apasă pentru a adăuga un filtru sarcinilor.";
+
+/* No comment provided by engineer. */
+"Tap to make any changes!" = "Apasă pentru a face orice schimbare!";
+
+/* No comment provided by engineer. */
+"Tap to show" = "Apasă pentru a arăta";
+
+/* No comment provided by engineer. */
+"Tap to specify the cluttered area!" = "Apasă pentru a specifica aria dezorganizată!";
+
+/* No comment provided by engineer. */
+"Tap to specify the name of your current project + set a due date!" = "Apasă pentru a specifica numele actualului tău proiect + a seta o dată limită!";
+
+/* No comment provided by engineer. */
+"Tap to specify the name of your current project + set the schedule!" = "Apasă pentru a specifica numele actualului tău proiect + a seta un program!";
+
+/* No comment provided by engineer. */
+"Tap to specify the name of your project" = "Apasă pentru a specifica numele proiectului tău";
+
+/* No comment provided by engineer. */
+"Tap to specify what you plan to do!" = "Apasă pentru a specifica ce plănuiești să faci!";
+
+/* No comment provided by engineer. */
+"Tap to specify your most important task" = "Apasă pentru a specifica cea mai importantă sarcină de făcut";
+
+/* No comment provided by engineer. */
+"Tavern" = "Tavernă";
+
+/* No comment provided by engineer. */
+"Teleporting to Habitica" = "Te teleportăm la Habitica";
+
+/* No comment provided by engineer. */
+"the \(dateFormatter.string(from: startDate))" = "\(dateFormatter.string(from: startDate))";
+
+/* No comment provided by engineer. */
+"the \(days.joined(separator: " = "\(days.joined(separator: ";
+
+/* No comment provided by engineer. */
+"The \(locationName) was Attacked!" = "\(locationName) a fost Atacată!";
+
+/* No comment provided by engineer. */
+"The scanned QR-Code did not contain a valid Habitica User ID." = "Codul-QR scanat nu conține un ID de Utilizator Habitica valid.";
+
+/* No comment provided by engineer. */
+"There are 3 potential Rage Strikes\nThis gauge fills when Habiticans miss their Dailies. If it fills up, the DysHeartener will unleash its Shattering Heartbreak attack on one of Habitica's shopkeepers, so be sure to do your tasks!" = "Există 3 potențiale Lovituri Înfiorătoare\nMăsurătoarea se umple atunci când Habiticanii nu-și îndeplinesc Activitățile Zilnice. Dacă se umple complet, DysHearener-ul va dezlănțui atacul său cutremurător asupra unuia dintre negustori, așa că ar trebui să te asiguri că-ți îndeplinești sarcinile!";
+
+/* No comment provided by engineer. */
+"There was an error accepting the quest invitation" = "A apărut o eroare la acceptarea invitației în Expediție";
+
+/* No comment provided by engineer. */
+"There was an error rejecting the quest invitation" = "A apărut o eroare la refuzul invitației în expediție";
+
+/* No comment provided by engineer. */
+"There was an error with your request: %@" = "A apărut o eroare la solicitarea ta: %@";
+
+/* No comment provided by engineer. */
+"This is only needed for debug purposes" = "Necesar doar pentru depanarea erorilor";
+
+/* No comment provided by engineer. */
+"This is where you can read and reply to private messages! You can also message people from their profiles." = "Aici poți citi și răspunde la mesaje private! Poți de asemenea trimite mesaje oamenilor de pe profilurile lor. ";
+
+/* No comment provided by engineer. */
+"Thursday" = "Joi";
+
+/* No comment provided by engineer. */
+"To-Do" = "Sarcină";
+
+/* No comment provided by engineer. */
+"To-Dos" = "Sarcini";
+
+/* No comment provided by engineer. */
+"Tuesday" = "Marți";
+
+/* No comment provided by engineer. */
+"Unlocks after selecting a class" = "Se deblochează după selectarea clasei";
+
+/* No comment provided by engineer. */
+"Unlocks at level 10" = "Se deblochează la nivelul 10";
+
+/* No comment provided by engineer. */
+"Unpin from Rewards" = "Înlătură de la Recompense";
+
+/* No comment provided by engineer. */
+"Use To-Dos to keep track of tasks you need to do just once." = "Utilizează lista cu lucruri De-Făcut pentru a-ți organiza sarcinile pe care trebuie să le îndeplinești o singură dată. ";
+
+/* No comment provided by engineer. */
+"User ID" = "ID Utilizator";
+
+/* No comment provided by engineer. */
+"Version" = "Versiune";
+
+/* No comment provided by engineer. */
+"View Source Code" = "Vezi Codul Sursă";
+
+/* No comment provided by engineer. */
+"WARNING! This resets many parts of your account. This is highly discouraged, but some people find it useful in the beginning after playing with the site for a short time.\n\nYou will lose all your levels, gold, and experience points. All your tasks (except those from challenges) will be deleted permanently and you will lose all of their historical data. You will lose all your equipment but you will be able to buy it all back, including all limited edition equipment or subscriber Mystery items that you already own (you will need to be in the correct class to re-buy class-specific gear). You will keep your current class and your pets and mounts. You might prefer to use an Orb of Rebirth instead, which is a much safer option and which will preserve your tasks and equipment." = "ATENȚIE! Urmează să resetezi multiple părți din contul tău. Descurajăm viguros acest lucru, însă unele persoane îl consideră folositor la început, după utilizarea pentru scurt timp a site-ului. \n\nÎți vei pierde nivelul, aurul și punctele de experiență. Toate sarcinile tale (cu excepția celor din provocări) vor fi șterse permanent și vei pierde tot istoricul. Îți vei pierde tot echipamentul, dar vei putea să îl cumperi din nou, incluzând echipamentul în ediție limitată și obiectele Misterioase pentru abonați pe care le deții deja (va fi nevoie să fii în clasa corectă pentru a putea re-cumpăra echipamentul specific clasei). Îți vei păstra clasa actuală, împreună cu animalele de companie și animalele de încălecat. E posibil să preferi utilizarea Globului Renașterii, opțiune mult mai sigură, care îți va păstra sarcinile și echipamentul. ";
+
+/* No comment provided by engineer. */
+"Wash dishes" = "Spală vase";
+
+/* No comment provided by engineer. */
+"Watch TV, play a game, eat a treat, it’s up to you!" = "Uită-te la TV, joacă un joc, mănâncă ceva bun. Tu alegi!";
+
+/* No comment provided by engineer. */
+"We love open source software." = "Iubim software-ul open source.";
+
+/* No comment provided by engineer. */
+"Weak" = "Slab";
+
+/* No comment provided by engineer. */
+"Website" = "Website";
+
+/* No comment provided by engineer. */
+"Wednesday" = "Miercuri";
+
+/* No comment provided by engineer. */
+"weekdays" = "zile lucrătoare";
+
+/* No comment provided by engineer. */
+"weekends" = "weekend-uri";
+
+/* As in 'repeats weekly' */
+"weekly" = "săptămânal";
+
+/* No comment provided by engineer. */
+"weeks" = "săptămâni";
+
+/* No comment provided by engineer. */
+"Welcome Back!" = "Bine ai revenit!";
+
+/* No comment provided by engineer. */
+"Welcome to the Inn! Pull up a chair to chat, or take a break from your tasks." = "Bine ai venit la Han! Ia un scaun pentru a purta o discuție, sau ia o pauză de la sarcinile tale. ";
+
+/* No comment provided by engineer. */
+"What's a Rage Strike?" = "Ce este Lovitura Furioasă?";
+
+/* No comment provided by engineer. */
+"What’s a World Boss?" = "Ce este un Căpcăun Șef?";
+
+/* No comment provided by engineer. */
+"Wheelchair" = "Scaun cu rotile";
+
+/* No comment provided by engineer. */
+"Whoops, looks like you haven't set up your email on this phone yet. Configure an account in the iOS mail app to use this quick-reporting option, or just email us directly at mobile@habitica.com" = "Whoops, se pare că nu ți-ai setat încă adresa de email pentru acest telefon. Configurează un cont în aplicația de mail iOS pentru a utiliza opțiunea de raportare-rapidă, sau trimite-ne pur și simplu un email pe mobile@habitica.com";
+
+/* No comment provided by engineer. */
+"Work" = "Muncă";
+
+/* No comment provided by engineer. */
+"Work on creative project" = "Lucrează la un proiect de creativitate";
+
+/* No comment provided by engineer. */
+"Worked on today’s most important task" = "Ai lucrat la cele mai importante sarcini de astăzi";
+
+/* No comment provided by engineer. */
+"Worse" = "Mai rău";
+
+/* No comment provided by engineer. */
+"Worst" = "Cel mai rău";
+
+/* No comment provided by engineer. */
+"Write a message" = "Scrie un mesaj";
+
+/* No comment provided by engineer. */
+"Write Message" = "Scrie Mesaj";
+
+/* No comment provided by engineer. */
+"Write to %@" = "Scrie-i lui %@";
+
+/* As in 'repeats yearly' */
+"yearly" = "anual";
+
+/* No comment provided by engineer. */
+"years" = "ani";
+
+/* No comment provided by engineer. */
+"You can also make real-world Custom Rewards based on what motivates you." = "Poți de asemenea crea Recompense Personalizate bazate pe ce te motivează pe tine.";
+
+/* No comment provided by engineer. */
+"You can either complete this To-Do, edit it, or remove it." = "Poți îndeplini această Sarcină, o poți edita sau elimina.";
+
+/* No comment provided by engineer. */
+"You earned a streak achievement!" = "Ai obținut o realizare legată de șirul consecutiv!";
+
+/* No comment provided by engineer. */
+"You have earned a %@ for being committed to improving your life." = "Ai obținut un/o %@ pentru că ești hotărât să-ți îmbunătățești viața.";
+
+/* No comment provided by engineer. */
+"You have to specify a valid Habitica User ID as recipient." = "Trebuie să specifici un ID de Utilizator Habitica valid ca destinatar.";
+
+/* No comment provided by engineer. */
+"You unlocked the drop system!" = "Ai deblocat un sistem de drop!";
+
+/* No comment provided by engineer. */
+"You've completed your Daily for 21 days in a row! Amazing job. Don't break the streak!" = "Ți-ai completat Activitățile Zilnice timp de 21 de zile consecutive! Grozav! Nu întrerupe șirul!";
+
+/* No comment provided by engineer. */
+"You've unlocked the Drop System! Now when you complete tasks, you have a small chance of finding an item, including eggs, potions, and food!" = "Ai deblocat un Sistem de Drop! De acum, când îți vei completa sarcinile vei avea o mică șansă să găsești un obiect, incluzând ouă, poțiuni și hrană!";
+
+/* No comment provided by engineer. */
+"Your email isn't set up yet" = "Nu ți-ai setat încă o adresă de email.";
+
+/* No comment provided by engineer. */
+"Your message could not be sent." = "Mesajul tău nu a putut fi trimis.";
+
+/* No comment provided by engineer. */
+"Your next prize unlocks in %d Check-Ins" = "Următorul tău premiu se deblochează în %d Check-In-uri";
+
+/* No comment provided by engineer. */
+"Your next prize unlocks in 1 Check-In." = "Următorul tău premiu se deblochează în 1 Check-In.";
+

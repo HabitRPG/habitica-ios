@@ -1,9 +1,15 @@
-/* (No Commment) */
+/* Bundle display name */
 "CFBundleDisplayName" = "Habitica";
 
-/* (No Commment) */
+/* Bundle name */
 "CFBundleName" = "HabitRPG";
 
-/* (No Commment) */
-"CFBundleShortVersionString" = "1,5,3";
+/* Privacy - Camera Usage Description */
+"NSCameraUsageDescription" = "Para usar um QR Code, o Habitica requer acesso à câmera do dispositivo.";
+
+/* Privacy - Microphone Usage Description */
+"NSMicrophoneUsageDescription" = "Habitica precisa de acesso ao microfone para poder anexar notas de voz";
+
+/* Privacy - Photo Library Usage Description */
+"NSPhotoLibraryUsageDescription" = "Para usar um QR Code, o Habitica requer acesso à câmera do dispositivo.";
 

@@ -1,0 +1,30 @@
+/* Class = "UIButton"; normalTitle = "Subscribe for Hourglasses"; ObjectID = "4E3-xU-II9"; */
+"4E3-xU-II9.normalTitle" = "Абонирайте се за Пясъчни часовници";
+
+/* Class = "UILabel"; text = "Your balance:"; ObjectID = "b9i-sB-wsY"; */
+"b9i-sB-wsY.text" = "Вашата наличност:";
+
+/* Class = "UILabel"; text = "Not enough Gems"; ObjectID = "C3v-IP-fUG"; */
+"C3v-IP-fUG.text" = "Нямате достатъчно диаманти";
+
+/* Class = "UILabel"; text = "Buy"; ObjectID = "j5D-EL-LRQ"; */
+"j5D-EL-LRQ.text" = "Купуване";
+
+/* Class = "UILabel"; text = "Not enough Gold"; ObjectID = "MAF-Nb-1hY"; */
+"MAF-Nb-1hY.text" = "Нямате достатъчно злато";
+
+/* Class = "UILabel"; text = "Monthly Gem Cap Reached"; ObjectID = "osQ-wn-dQZ"; */
+"osQ-wn-dQZ.text" = "Достигнато е месечното ограничение на диамантите";
+
+/* Class = "UIButton"; normalTitle = "Pin to Rewards"; ObjectID = "TiK-yj-cOf"; */
+"TiK-yj-cOf.normalTitle" = "Закачане в наградите";
+
+/* Class = "UIButton"; normalTitle = "Purchase Gems"; ObjectID = "u6f-ro-Ehm"; */
+"u6f-ro-Ehm.normalTitle" = "Купуване на диаманти";
+
+/* Class = "UIButton"; normalTitle = "Take me back"; ObjectID = "Wl4-Aq-qfJ"; */
+"Wl4-Aq-qfJ.normalTitle" = "Върнете ме обратно";
+
+/* Class = "UILabel"; text = "Not enough Hourglasses"; ObjectID = "Z4L-Zx-0jp"; */
+"Z4L-Zx-0jp.text" = "Нямате достатъчно Пясъчни часовници";
+

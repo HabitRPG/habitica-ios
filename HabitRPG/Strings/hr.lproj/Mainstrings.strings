@@ -1,0 +1,789 @@
+/* (No Comment) */
+"active" = "Aktivni";
+
+/* (No Comment) */
+"animal_ears" = "Životinjske uši";
+
+/* (No Comment) */
+"avatar.background" = "Pozadina";
+
+/* (No Comment) */
+"avatar.bangs" = "Šiške";
+
+/* (No Comment) */
+"avatar.beard" = "Brada";
+
+/* (No Comment) */
+"avatar.flower" = "Cvijet";
+
+/* (No Comment) */
+"avatar.glasses" = "Naočale";
+
+/* (No Comment) */
+"avatar.hair_style" = "Frizura";
+
+/* (No Comment) */
+"avatar.hairColor" = "Boja kose";
+
+/* (No Comment) */
+"avatar.head" = "Glava";
+
+/* (No Comment) */
+"avatar.mustache" = "Brkovi";
+
+/* (No Comment) */
+"avatar.shirt" = "Majica";
+
+/* (No Comment) */
+"avatar.skin" = "Boja kože";
+
+/* (No Comment) */
+"avatar.wheelchair" = "Invalidska kolica";
+
+/* (No Comment) */
+"cancel" = "Otkaži";
+
+/* (No Comment) */
+"chat" = "Chat";
+
+/* (No Comment) */
+"classes.become_a_class" = "Postani %@";
+
+/* (No Comment) */
+"classes.class_header" = "%@ Klasa";
+
+/* (No Comment) */
+"classes.healer" = "Iscjelitelj";
+
+/* (No Comment) */
+"classes.healer_description" = "Iscjelitelji su otporni na štetu i pružaju zaštitu sebi i drugima. Propušteni Svakodnevni zadaci i loše Navike ih ne uznemiravaju u tolikoj mjeri jer znaju kako nadoknaditi izgubljeno Zdravlje. Igraj Iscjelitelja ako ako uživaš u pomaganju drugim članovima svoje Družine, ili ako te inspirira pomisao na varanje Smrti pomoću marljivog rada.";
+
+/* (No Comment) */
+"classes.mage" = "Čarobnjak";
+
+/* (No Comment) */
+"classes.mage_description" = "Čarobnjaci brzo uče te dobivajući na Iskustvu i Levelima brže od ostalih klasa. Također dobivaju jako puno Mane za korištenje svojih posebnih vještina. Igraj Čarobnjaka ako uživaš u taktičkim igračim aspektima Habitice ili ako ti podizanje levela i otključavanje naprednih mogućnosti daje jaku motivaciju!";
+
+/* (No Comment) */
+"classes.rogue" = "Lupež";
+
+/* (No Comment) */
+"classes.rogue_description" = "Lupeži vole akumulirati bogatstvo, dobivaju više Zlatnika od ostalih, također su bolji u nalaženju nasumičnih predmeta. Njihova poznata moć Tajnosti im daje sposobnost izbjegavanja posljedica neizvršenih Svakodnevnih zadataka. Igraj Lupeža ako te jako motiviraju Nagrade i Postignuća i ako stremiš ka sakupljanju plijena i znački!";
+
+/* (No Comment) */
+"classes.warrior" = "Ratnik";
+
+/* (No Comment) */
+"classes.warrior_description" = "Ratnici postižu više \"kritičnih udaraca\" koji nasumično donose dodatno Zlatnika, Iskustva i šansi za dobivanje poklona prilikom izvršavanja zadatka. Također nanose veliku štetu u borbi protiv Bosova. Igraj ulogu Ratnika ako te motiviraju nepredvidive nagrade u stilu jackpota ili ako želiš rasturiti u Pustolovinama potjere Bosa.";
+
+/* (No Comment) */
+"close" = "Zatvori";
+
+/* (No Comment) */
+"confirm" = "Potvrdi";
+
+/* (No Comment) */
+"controls" = "Kontrole";
+
+/* (No Comment) */
+"copied_to_clipboard" = "Kopirano u međuspremnik";
+
+/* (No Comment) */
+"create" = "Kreiraj";
+
+/* (No Comment) */
+"daily" = "Dnevno";
+
+/* (No Comment) */
+"delete" = "Obriši";
+
+/* (No Comment) */
+"description" = "Opis";
+
+/* (No Comment) */
+"details" = "Detalji";
+
+/* (No Comment) */
+"difficulty" = "Težina";
+
+/* (No Comment) */
+"discover" = "Otkrij";
+
+/* (No Comment) */
+"edit" = "Izmijeni";
+
+/* (No Comment) */
+"eggs" = "jaja";
+
+/* (No Comment) */
+"equip" = "Opremi";
+
+/* (No Comment) */
+"equipment.armor" = "Oklop";
+
+/* (No Comment) */
+"equipment.auto_equip" = "Automatski opremi novo";
+
+/* (No Comment) */
+"equipment.back" = "Dodatak za leđa";
+
+/* (No Comment) */
+"equipment.battle_gear" = "Ratna oprema";
+
+/* (No Comment) */
+"equipment.body" = "Dodatak za tijelo";
+
+/* (No Comment) */
+"equipment.costume" = "Kostim";
+
+/* (No Comment) */
+"equipment.costume_explanation" = "Odaberi \"Koristi kostim\" kako bi opremio/la artikle za svog avatara bez utjecanja na statistiku svoje ratne opreme! Ovo znači da svog avatara možeš obući kako god hoćeš, a da pritom i dalje imaš opremljenu najbolju ratnu opremu.";
+
+/* (No Comment) */
+"equipment.eyewear" = "Naočale";
+
+/* (No Comment) */
+"equipment.head" = "Pokrivala za glavu";
+
+/* (No Comment) */
+"equipment.head_accessory" = "Dodatak za glavu";
+
+/* (No Comment) */
+"equipment.nothing_equipped" = "Ništa nije opremljeno";
+
+/* (No Comment) */
+"equipment.off_hand" = "Pomoćni";
+
+/* (No Comment) */
+"equipment.use_costume" = "Koristi Kostim";
+
+/* (No Comment) */
+"equipment.weapon" = "Oružje";
+
+/* (No Comment) */
+"experience" = "Iskustvo";
+
+/* (No Comment) */
+"food" = "hrane";
+
+/* (No Comment) */
+"glasses" = "Naočale";
+
+/* (No Comment) */
+"groups.assign_new_leader" = "Odaberi novog vođu";
+
+/* (No Comment) */
+"groups.guild_invitation_invitername" = "%@ te pozvao/la da se priključiš Cehu: %@";
+
+/* (No Comment) */
+"groups.guild_invitation_no_invitername" = "Netko te pozvao da se priključiš Cehu: %@";
+
+/* (No Comment) */
+"groups.leader_challenges" = "Samo vođa može kreirati Izazove";
+
+/* (No Comment) */
+"guilds.keep_challenges" = "Zadrži izazove";
+
+/* (No Comment) */
+"guilds.leave_challenges" = "Napusti izazove";
+
+/* (No Comment) */
+"guilds.leave_guild_description" = "Želiš li napustiti ceh i zadržati ili izbrisati izazove?";
+
+/* (No Comment) */
+"guilds.leave_guild_title" = "Napusti ceh?";
+
+/* (No Comment) */
+"hatch_egg" = "Izlezi jaje";
+
+/* (No Comment) */
+"hatch_potion" = "Izlezi pomoću napitka";
+
+/* (No Comment) */
+"hatching_potions" = "Napici za izlijeganje";
+
+/* (No Comment) */
+"headband" = "Obruč za kosu";
+
+/* (No Comment) */
+"health" = "Zdravlje";
+
+/* (No Comment) */
+"inactive" = "Neaktivno";
+
+/* (No Comment) */
+"inventory.available_until" = "Dostupno do %@";
+
+/* (No Comment) */
+"inventory.hatched" = "Izlegao/la si novog ljubimca!";
+
+/* (No Comment) */
+"inventory.hatchedSharing" = "Upravo sam izvršavajući svoje zadatke u stvarnom životu izlegao/la ljubimca %@ %@ u Habitici!";
+
+/* (No Comment) */
+"inventory.no_gems_left" = "Ovaj mjesec nemaš više dostupnih Dragulja. Više ih postane dostupno unutar prva 3 dana svakog mjeseca.";
+
+/* (No Comment) */
+"inventory.number_gems_left" = "Preostalo mjesečnih Dragulja: %d/%d";
+
+/* (No Comment) */
+"inventory.wrong_class" = "Dostupno samo za klasu %@. Možeš promijeniti svoju klasu u postavkama.";
+
+/* (No Comment) */
+"invite_party" = "Pozovi Družinu";
+
+/* (No Comment) */
+"last_activity" = "Zadnja aktivnost %@";
+
+/* (No Comment) */
+"leader" = "Vođa";
+
+/* (No Comment) */
+"leave" = "Napusti";
+
+/* (No Comment) */
+"level_number" = "Level %d";
+
+/* (No Comment) */
+"levelup_description" = "Postizanjem svojih životnih ciljeva, dostigao/la si level %ld!";
+
+/* (No Comment) */
+"levelup_share" = "Došao/la sam do levela %ld u Habitici poboljšavajući svoje navike u stvarnom životu!";
+
+/* (No Comment) */
+"levelup_title" = "Dosegnuo/la si novi level!";
+
+/* (No Comment) */
+"mana" = "Mana";
+
+/* (No Comment) */
+"member.last_logged_in" = "Datum zadnje prijave";
+
+/* (No Comment) */
+"member.member_since" = "Član od";
+
+/* (No Comment) */
+"menu.about" = "Više o";
+
+/* (No Comment) */
+"menu.cast_spells" = "Bacaj Čarolije";
+
+/* (No Comment) */
+"menu.challenges" = "Izazovi";
+
+/* (No Comment) */
+"menu.customize_avatar" = "Uredi Avatara";
+
+/* (No Comment) */
+"menu.equipment" = "Oprema";
+
+/* (No Comment) */
+"menu.gems_subscriptions" = "Dragulji & Pretplate";
+
+/* (No Comment) */
+"menu.guilds" = "Cehovi";
+
+/* (No Comment) */
+"menu.help_faq" = "Pomoć & ČPP";
+
+/* (No Comment) */
+"menu.inventory" = "Inventar";
+
+/* (No Comment) */
+"menu.items" = "Artikli";
+
+/* (No Comment) */
+"menu.news" = "Vijesti";
+
+/* (No Comment) */
+"menu.party" = "Družina";
+
+/* (No Comment) */
+"menu.select_class" = "Odaberi Klasu";
+
+/* (No Comment) */
+"menu.shops" = "Dućani";
+
+/* (No Comment) */
+"menu.social" = "Društvene mreže";
+
+/* (No Comment) */
+"menu.stable" = "Staja";
+
+/* (No Comment) */
+"menu.stats" = "Statistike";
+
+/* (No Comment) */
+"menu.tavern" = "Krčma";
+
+/* (No Comment) */
+"menu.use_skills" = "Koristi Vještine";
+
+/* (No Comment) */
+"monthly" = "Mjesečno";
+
+/* (No Comment) */
+"mounts" = "Jahaće životinje";
+
+/* (No Comment) */
+"my_challenges" = "Moji Izazovi";
+
+/* (No Comment) */
+"my_guilds" = "Moji Cehovi";
+
+/* (No Comment) */
+"name" = "Ime";
+
+/* (No Comment) */
+"notes" = "Bilješke";
+
+/* (No Comment) */
+"ok" = "Ok";
+
+/* (No Comment) */
+"one_month" = "1 mjesec";
+
+/* (No Comment) */
+"open" = "Otvori";
+
+/* (No Comment) */
+"open_itunes" = "Otvori iTunes";
+
+/* (No Comment) */
+"open_website" = "Otvori web stranicu Habitice";
+
+/* (No Comment) */
+"party.invitation_invitername" = "%@ te pozvao/la da se priključiš njihovoj družini";
+
+/* (No Comment) */
+"party.invitation_no_invitername" = "Netko te pozvao da se priključiš njihovoj družini";
+
+/* (No Comment) */
+"party.invited_to_quest" = "%@ te pozvao/la da sudjeluješ u pustolovini";
+
+/* (No Comment) */
+"party.quest_number_responded" = "%d/%d članova je odgovorilo";
+
+/* (No Comment) */
+"party.quest_participant_count" = "%d sudionika";
+
+/* (No Comment) */
+"pending_damage" = "Šteta na čekanju";
+
+/* (No Comment) */
+"pets" = "Ljubimce";
+
+/* (No Comment) */
+"plain_backgrounds" = "Obične pozadine";
+
+/* (No Comment) */
+"purchase_for_gems" = "Kupi za %d Dragulja";
+
+/* (No Comment) */
+"quests" = "Pustolovine";
+
+/* (No Comment) */
+"quests.accepted" = "Prihvaćeno";
+
+/* (No Comment) */
+"quests.boss_battle" = "Borba protiv Bosa";
+
+/* (No Comment) */
+"quests.collection_quest" = "Pustolovina prikupljanja";
+
+/* (No Comment) */
+"quests.confirm_abort" = "Jesi li siguran/na da želiš otkazati ovu pustolovinu? Ovo će je otkazati za sve u tvojoj družini i sav napredak će biti izgubljen. Pustolovni svitak će biti vraćen vlasniku pustolovine.";
+
+/* (No Comment) */
+"quests.confirm_cancel_invitation" = "Jesi li siguran/na da želiš otkazati ovu pustolovinu? Svi prihvaćeni pozivi će biti izgubljeni. Vlasnik pustolovine će zadržati pustolovni svitak u svom posjedu.";
+
+/* (No Comment) */
+"quests.confirm_force_start" = "Jesi li siguran/na? Još se nisu svi članovi družine priključili pustolovini! Pustolovine počinju automatski kad se svi igrači pridruže ili pak odbiju poziv.";
+
+/* (No Comment) */
+"quests.invitations_header" = "Pozivnice";
+
+/* (No Comment) */
+"quests.participants_header" = "Sudionici";
+
+/* (No Comment) */
+"quests.pending" = "Na čekanju";
+
+/* (No Comment) */
+"quests.rejected" = "Odbijeno";
+
+/* (No Comment) */
+"quests.started_by" = "Započeo/la je %@";
+
+/* (No Comment) */
+"received_mystery_item" = "Otvaraš kutiju i dobivaš %@";
+
+/* (No Comment) */
+"reset_tips" = "Resetiraj Justinove savjete";
+
+/* (No Comment) */
+"resetStreak" = "Resetiraj broj ponavljanja";
+
+/* (No Comment) */
+"resync" = "Resinkroniziraj";
+
+/* (No Comment) */
+"resync_all" = "Resinkroniziraj sve";
+
+/* (No Comment) */
+"resync_task" = "Resinkroniziraj ovaj zadatak";
+
+/* (No Comment) */
+"save" = "Spremi";
+
+/* (No Comment) */
+"search" = "Traži";
+
+/* (No Comment) */
+"sell" = "Prodaj za %d zlatnika";
+
+/* (No Comment) */
+"settings.api" = "API";
+
+/* (No Comment) */
+"settings.are_you_sure" = "Jesi li siguran/na?";
+
+/* (No Comment) */
+"settings.authentication" = "Provjera autentičnosti";
+
+/* (No Comment) */
+"settings.change_class" = "Promijeni klasu";
+
+/* (No Comment) */
+"settings.change_class_disclaimer" = "Ovo će resetirati klasu tvog lika i raspodijeljene bodove (dobit ćeš ih sve natrag za ponovnu raspodjelu) i košta 3 dragulja.";
+
+/* (No Comment) */
+"settings.clear_cache" = "Očisti predmemoriju";
+
+/* (No Comment) */
+"settings.custom_day_start" = "Prilagođeni početak dana";
+
+/* (No Comment) */
+"settings.daily_reminder" = "Svakodnevni podsjetnik";
+
+/* (No Comment) */
+"settings.day_start" = "Početak dana";
+
+/* (No Comment) */
+"settings.disable_all_notifications" = "Onemogući sve push notifikacije";
+
+/* (No Comment) */
+"settings.disable_pm" = "Onemogući privatne poruke";
+
+/* (No Comment) */
+"settings.display_notification_badge" = "Prikaži obavještajne značke";
+
+/* (No Comment) */
+"settings.enable_class_system" = "Omogući Sustav Klasa";
+
+/* (No Comment) */
+"settings.every_day" = "Svaki dan u";
+
+/* (No Comment) */
+"settings.fix_characterValues" = "Popravi Vrijednosti Lika";
+
+/* (No Comment) */
+"settings.log_out" = "Odjava";
+
+/* (No Comment) */
+"settings.maintenance" = "Održavanje sustava";
+
+/* (No Comment) */
+"settings.notification_badge" = "Obavještajne značke";
+
+/* (No Comment) */
+"settings.preferences" = "Postavke";
+
+/* (No Comment) */
+"settings.profile" = "Profil";
+
+/* (No Comment) */
+"settings.push_notifications" = "Push notifikacije";
+
+/* (No Comment) */
+"settings.reload_content" = "Ponovno učitaj sadržaj";
+
+/* (No Comment) */
+"settings.reminder" = "Podsjetnik";
+
+/* (No Comment) */
+"settings.select_class" = "Odaberi Klasu";
+
+/* (No Comment) */
+"settings.social" = "Društvene mreže";
+
+/* (No Comment) */
+"settings.sound_theme" = "Tema zvuka";
+
+/* (No Comment) */
+"settings.theme_color" = "Tematska boja";
+
+/* (No Comment) */
+"settings.user" = "Korisnik";
+
+/* (No Comment) */
+"settings.wrong_password" = "Neispravna lozinka";
+
+/* (No Comment) */
+"share" = "Podijeli";
+
+/* (No Comment) */
+"skills.cant_cast_on_challenge_tasks" = "Nije moguće baciti čaroliju na zadatak iz izazova";
+
+/* (No Comment) */
+"skills.transformation_items" = "Transformacijski predmeti";
+
+/* (No Comment) */
+"skills.unlocks_at" = "Otključa se na levelu %d";
+
+/* (No Comment) */
+"skills.use_skill" = "Ti koristiš %@";
+
+/* (No Comment) */
+"skills.used_transformation_item" = "Iskoristio/la si %@";
+
+/* (No Comment) */
+"specialItems" = "Posebni artikli";
+
+/* (No Comment) */
+"stable.feed" = "Nahrani";
+
+/* (No Comment) */
+"stable.premium" = "Od čarobnih napitaka";
+
+/* (No Comment) */
+"stable.quest_mounts" = "Pustolovne Jahaće životinje";
+
+/* (No Comment) */
+"stable.quest_pets" = "Pustolovni Ljubimci";
+
+/* (No Comment) */
+"stable.special_mounts" = "Posebne Jahaće životinje";
+
+/* (No Comment) */
+"stable.special_pets" = "Posebni Ljubimci";
+
+/* (No Comment) */
+"stable.standard" = "Standardni";
+
+/* (No Comment) */
+"stable.standard_mounts" = "Standardne Jahaće životinje";
+
+/* (No Comment) */
+"stable.standard_pets" = "Standardni Ljubimci";
+
+/* (No Comment) */
+"stats.allocated" = "Raspodijeljeno";
+
+/* (No Comment) */
+"stats.battle_gear" = "Ratna oprema";
+
+/* (No Comment) */
+"stats.buffs" = "Ojačanja";
+
+/* (No Comment) */
+"stats.class_bonus" = "Bonus klase";
+
+/* (No Comment) */
+"stats.level" = "Level";
+
+/* (No Comment) */
+"stats.no_points_to_allocate" = "0 Bodova za raspodjelu";
+
+/* (No Comment) */
+"stats.one_point_to_allocate" = "1 Bod za raspodjelu";
+
+/* (No Comment) */
+"stats.points_to_allocate" = "%d bodova za raspodjelu";
+
+/* (No Comment) */
+"summary" = "Sažetak";
+
+/* (No Comment) */
+"sync_error" = "Greška u sinkroniziranju";
+
+/* (No Comment) */
+"sync_error_message" = "Došlo je do greške prilikom sinkroniziranja nekih promjena.";
+
+/* (No Comment) */
+"tags" = "Oznake";
+
+/* (No Comment) */
+"tasks.daily" = "Dnevno";
+
+/* (No Comment) */
+"tasks.form.accessibility.disable_negative" = "Onemogući lošu radnju.";
+
+/* (No Comment) */
+"tasks.form.accessibility.disable_positive" = "Onemogući dobru radnju.";
+
+/* (No Comment) */
+"tasks.form.accessibility.enable_negative" = "Omogući lošu radnju.";
+
+/* (No Comment) */
+"tasks.form.accessibility.enable_positive" = "Omogući dobru radnju.";
+
+/* (No Comment) */
+"tasks.form.accessibility.negative_enabled" = "Loša radnja iz navike je omogućena.";
+
+/* (No Comment) */
+"tasks.form.accessibility.positive_and_negative_enabled" = "Dobra i loša radnja iz navike su omogućene.";
+
+/* (No Comment) */
+"tasks.form.accessibility.positive_enabled" = "Dobra radnja iz navike je omogućena.";
+
+/* (No Comment) */
+"tasks.form.accessibility.set_task_difficulty" = "Promijeni težinu u %@";
+
+/* (No Comment) */
+"tasks.form.accessibility.task_difficulty" = "Težina je %@";
+
+/* (No Comment) */
+"tasks.form.checklist" = "Lista";
+
+/* (No Comment) */
+"tasks.form.clear" = "Očisti";
+
+/* (No Comment) */
+"tasks.form.confirm_delete" = "Jesi li siguran/na da želiš izbrisati ovaj zadatak?";
+
+/* (No Comment) */
+"tasks.form.controls" = "Kontrole";
+
+/* (No Comment) */
+"tasks.form.cost" = "Cijeni";
+
+/* (No Comment) */
+"tasks.form.create" = "Novi %@";
+
+/* (No Comment) */
+"tasks.form.dailies_title_placeholder" = "Što želiš redovito raditi?";
+
+/* (No Comment) */
+"tasks.form.day_of_month" = "Dan u mjesecu";
+
+/* (No Comment) */
+"tasks.form.day_of_week" = "Dan u tjednu";
+
+/* (No Comment) */
+"tasks.form.difficulty" = "Težina";
+
+/* (No Comment) */
+"tasks.form.due_date" = "Rok";
+
+/* (No Comment) */
+"tasks.form.easy" = "Lagano";
+
+/* (No Comment) */
+"tasks.form.edit" = "Uredi %@";
+
+/* (No Comment) */
+"tasks.form.every" = "Svaka";
+
+/* (No Comment) */
+"tasks.form.habit_title_placeholder" = "Koje navike želiš njegovati ili prekinuti?";
+
+/* (No Comment) */
+"tasks.form.hard" = "Teško";
+
+/* (No Comment) */
+"tasks.form.medium" = "Srednje teško";
+
+/* (No Comment) */
+"tasks.form.new_checklist_item" = "Nova stavka na listi";
+
+/* (No Comment) */
+"tasks.form.new_reminder" = "Novi podsjetnik";
+
+/* (No Comment) */
+"tasks.form.notes_placeholder" = "Uključi bilo kakve bilješke koje bi ti mogle pomoći";
+
+/* (No Comment) */
+"tasks.form.remind_me" = "Podsjeti me";
+
+/* (No Comment) */
+"tasks.form.reminders" = "Podsjetnici";
+
+/* (No Comment) */
+"tasks.form.repeats" = "Ponavlja se";
+
+/* (No Comment) */
+"tasks.form.reset_streak" = "Resetiraj broj ponavljanja";
+
+/* (No Comment) */
+"tasks.form.rewards_title_placeholder" = "Kako se želiš nagraditi?";
+
+/* (No Comment) */
+"tasks.form.scheduling" = "Planiranje";
+
+/* (No Comment) */
+"tasks.form.start_date" = "Datum početka";
+
+/* (No Comment) */
+"tasks.form.tags" = "Oznake";
+
+/* (No Comment) */
+"tasks.form.todos_title_placeholder" = "Što želiš jednom obaviti?";
+
+/* (No Comment) */
+"tasks.form.trivial" = "Jako lagano";
+
+/* (No Comment) */
+"tasks.habit" = "Navika";
+
+/* (No Comment) */
+"tasks.reward" = "Nagrada";
+
+/* (No Comment) */
+"tasks.todo" = "Zadatak";
+
+/* (No Comment) */
+"theme.blue" = "Plava ";
+
+/* (No Comment) */
+"theme.default_theme" = "Zadano";
+
+/* (No Comment) */
+"theme.green" = "Zelena ";
+
+/* (No Comment) */
+"theme.maroon" = "Kestenjasto";
+
+/* (No Comment) */
+"theme.orange" = "Narančasto";
+
+/* (No Comment) */
+"theme.red" = "Crvena";
+
+/* (No Comment) */
+"theme.teal" = "Plavo";
+
+/* (No Comment) */
+"theme.yellow" = "Žuta";
+
+/* (No Comment) */
+"title" = "Naslov";
+
+/* (No Comment) */
+"unequip" = "Ukloni";
+
+/* (No Comment) */
+"unsubscribe_itunes" = "Ne želiš više biti pretplatnik? Možeš upravljati svojom pretplatom kroz iTunes.";
+
+/* (No Comment) */
+"unsubscribe_website" = "Ne želiš više biti pretplatnik? Zbog tvog načina plaćanja, možeš otkazati pretplatu jedino putem web stranice.";
+
+/* (No Comment) */
+"weekly" = "Tjedno";
+
+/* (No Comment) */
+"x_months" = "%d mjeseci";
+
+/* (No Comment) */
+"yearly" = "Godišnje";
+

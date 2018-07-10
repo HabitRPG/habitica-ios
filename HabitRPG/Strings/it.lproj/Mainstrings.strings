@@ -1,0 +1,513 @@
+/* (No Comment) */
+"active" = "Attive";
+
+/* (No Comment) */
+"animal_ears" = "Orecchie da Animali";
+
+/* (No Comment) */
+"avatar.background" = "Sfondo";
+
+/* (No Comment) */
+"avatar.bangs" = "Frangia";
+
+/* (No Comment) */
+"avatar.beard" = "Barba";
+
+/* (No Comment) */
+"avatar.flower" = "Fiore";
+
+/* (No Comment) */
+"avatar.glasses" = "Occhiali";
+
+/* (No Comment) */
+"avatar.head" = "Testa";
+
+/* (No Comment) */
+"avatar.mustache" = "Baffi";
+
+/* (No Comment) */
+"avatar.shirt" = "Maglietta";
+
+/* (No Comment) */
+"avatar.wheelchair" = "Sedia a rotelle";
+
+/* (No Comment) */
+"cancel" = "Annulla";
+
+/* (No Comment) */
+"chat" = "Chat";
+
+/* (No Comment) */
+"classes.become_a_class" = "Diventa un %@";
+
+/* (No Comment) */
+"classes.healer" = "Guaritore";
+
+/* (No Comment) */
+"classes.healer_description" = "I Guaritori si stagliano impavidi contro i danni, ed estendono la propria protezione agli altri. Le Daily mancate e le cattive abitudini non li turbano molto, ed hanno diversi modi per recuperare la Salute persa a causa dei fallimenti. Diventa un Guaritore se ti piace assistere gli altri nella tua squadra, o se l'idea di giocare con la morte attraverso il duro lavoro ti ispira!";
+
+/* (No Comment) */
+"classes.mage" = "Mago";
+
+/* (No Comment) */
+"classes.rogue" = "Assassino";
+
+/* (No Comment) */
+"classes.rogue_description" = "Gli Assassini amano accumulare ricchezza: guadagnano più Oro di chiunque altro, e sono inclini al trovare oggetti casuali. La loro iconica abilità Furtività li rende in grado di prendersi gioco delle conseguenze delle Daily mancate. Diventa un Assassino se trovi una forte motivazione nelle Ricompense e nelle Medaglie, lottando per un bottino e dei riconoscimenti!";
+
+/* (No Comment) */
+"classes.warrior" = "Guerriero";
+
+/* (No Comment) */
+"close" = "Chiudi";
+
+/* (No Comment) */
+"confirm" = "Conferma";
+
+/* (No Comment) */
+"create" = "Crea";
+
+/* (No Comment) */
+"daily" = "Daily";
+
+/* (No Comment) */
+"delete" = "Elimina";
+
+/* (No Comment) */
+"description" = "Descrizione";
+
+/* (No Comment) */
+"details" = "Dettagli";
+
+/* (No Comment) */
+"difficulty" = "Difficoltà";
+
+/* (No Comment) */
+"discover" = "Esplora";
+
+/* (No Comment) */
+"edit" = "Modifica";
+
+/* (No Comment) */
+"eggs" = "Uova";
+
+/* (No Comment) */
+"equip" = "Equipaggia";
+
+/* (No Comment) */
+"equipment.armor" = "Armatura";
+
+/* (No Comment) */
+"equipment.back" = "Accessorio da schiena";
+
+/* (No Comment) */
+"equipment.battle_gear" = "Equipaggiamento da battaglia";
+
+/* (No Comment) */
+"equipment.body" = "Accessorio da Corpo";
+
+/* (No Comment) */
+"equipment.costume" = "Costume";
+
+/* (No Comment) */
+"equipment.eyewear" = "Accessorio occhi";
+
+/* (No Comment) */
+"equipment.head" = "Elmi";
+
+/* (No Comment) */
+"equipment.head_accessory" = "Accessorio da testa";
+
+/* (No Comment) */
+"equipment.nothing_equipped" = "Nessun oggetto equipaggiato";
+
+/* (No Comment) */
+"equipment.off_hand" = "Mano secondaria";
+
+/* (No Comment) */
+"equipment.use_costume" = "Usa costume";
+
+/* (No Comment) */
+"equipment.weapon" = "Arma";
+
+/* (No Comment) */
+"experience" = "Esperienza";
+
+/* (No Comment) */
+"food" = "Cibo";
+
+/* (No Comment) */
+"glasses" = "Occhiali";
+
+/* (No Comment) */
+"hatching_potions" = "Pozioni di schiusura";
+
+/* (No Comment) */
+"health" = "Salute";
+
+/* (No Comment) */
+"inventory.hatched" = "Hai fatto nascere un nuovo animale!";
+
+/* (No Comment) */
+"inventory.no_gems_left" = "Niente più gemme disponibili questo mese. Altre saranno disponibili entro i primi 3 giorni del mese prossimo.";
+
+/* (No Comment) */
+"invite_party" = "Invita squadra";
+
+/* (No Comment) */
+"leader" = "Leader";
+
+/* (No Comment) */
+"leave" = "Abbandona";
+
+/* (No Comment) */
+"levelup_description" = "Raggiungendo i tuoi obiettivi nella vita reale, ora sei al Livello %ld!";
+
+/* (No Comment) */
+"levelup_share" = "Sono salito di livello in Habitica migliorando le mie abitudini nella vita reale!";
+
+/* (No Comment) */
+"levelup_title" = "Nuovo livello!";
+
+/* (No Comment) */
+"mana" = "Mana";
+
+/* (No Comment) */
+"member.last_logged_in" = "Ultimo accesso";
+
+/* (No Comment) */
+"member.member_since" = "Membro dal";
+
+/* (No Comment) */
+"menu.about" = "Info";
+
+/* (No Comment) */
+"menu.cast_spells" = "Lancia incantesimi";
+
+/* (No Comment) */
+"menu.challenges" = "Sfide";
+
+/* (No Comment) */
+"menu.customize_avatar" = "Personalizza Avatar";
+
+/* (No Comment) */
+"menu.equipment" = "Equipaggiamento";
+
+/* (No Comment) */
+"menu.gems_subscriptions" = "Gemme & Abbonamenti";
+
+/* (No Comment) */
+"menu.guilds" = "Gilde";
+
+/* (No Comment) */
+"menu.help_faq" = "Aiuto & FAQ";
+
+/* (No Comment) */
+"menu.inventory" = "Inventario";
+
+/* (No Comment) */
+"menu.items" = "Oggetti";
+
+/* (No Comment) */
+"menu.news" = "Novità";
+
+/* (No Comment) */
+"menu.party" = "Squadra";
+
+/* (No Comment) */
+"menu.select_class" = "Seleziona Classe";
+
+/* (No Comment) */
+"menu.shops" = "Negozi";
+
+/* (No Comment) */
+"menu.social" = "Social";
+
+/* (No Comment) */
+"menu.stable" = "Scuderia";
+
+/* (No Comment) */
+"menu.stats" = "Statistiche";
+
+/* (No Comment) */
+"menu.tavern" = "Taverna";
+
+/* (No Comment) */
+"menu.use_skills" = "Usa abilità";
+
+/* (No Comment) */
+"monthly" = "Mensile";
+
+/* (No Comment) */
+"mounts" = "Cavalcature";
+
+/* (No Comment) */
+"my_challenges" = "Le mie Sfide";
+
+/* (No Comment) */
+"my_guilds" = "Le mie Gilde";
+
+/* (No Comment) */
+"name" = "Nome";
+
+/* (No Comment) */
+"notes" = "Note";
+
+/* (No Comment) */
+"ok" = "Ok";
+
+/* (No Comment) */
+"open" = "Apri";
+
+/* (No Comment) */
+"party.quest_participant_count" = "%d Partecipanti";
+
+/* (No Comment) */
+"pets" = "Animali";
+
+/* (No Comment) */
+"quests" = "Missioni";
+
+/* (No Comment) */
+"quests.accepted" = "Accettata";
+
+/* (No Comment) */
+"quests.confirm_abort" = "Vuoi davvero annullare questa missione? Questo causerà l'annullamento della missione anche per tutti i membri della tua squadra ed ogni progresso andrà perduto. La Pergamena verrà restituita al Capomissione.";
+
+/* (No Comment) */
+"quests.confirm_cancel_invitation" = "Vuoi davvero annullare questa missione? Tutti gli inviti accettati andranno perduti. Il Capomissione resterà in possesso della Pergamena.";
+
+/* (No Comment) */
+"quests.invitations_header" = "Inviti";
+
+/* (No Comment) */
+"quests.participants_header" = "Partecipanti";
+
+/* (No Comment) */
+"quests.pending" = "In attesa";
+
+/* (No Comment) */
+"quests.rejected" = "Rifiutata";
+
+/* (No Comment) */
+"reset_tips" = "Resetta i consigli di Justin";
+
+/* (No Comment) */
+"resetStreak" = "Reset serie";
+
+/* (No Comment) */
+"save" = "Salva";
+
+/* (No Comment) */
+"search" = "Cerca";
+
+/* (No Comment) */
+"settings.api" = "API";
+
+/* (No Comment) */
+"settings.are_you_sure" = "Sei sicuro/a?";
+
+/* (No Comment) */
+"settings.authentication" = "Autenticazione";
+
+/* (No Comment) */
+"settings.change_class" = "Cambia Classe";
+
+/* (No Comment) */
+"settings.change_class_disclaimer" = "In questo modo definire la classe del tuo personaggio e punti assegnati (avrete tutti di nuovo a ri-allocare), al costo di 3 gemme.";
+
+/* (No Comment) */
+"settings.clear_cache" = "Pulisci la Cache";
+
+/* (No Comment) */
+"settings.custom_day_start" = "Inizio giorno personalizzato";
+
+/* (No Comment) */
+"settings.daily_reminder" = "Promemoria giornaliero";
+
+/* (No Comment) */
+"settings.day_start" = "Inizio del giorno";
+
+/* (No Comment) */
+"settings.disable_all_notifications" = "Disabilita tutte le Notifiche Push";
+
+/* (No Comment) */
+"settings.disable_pm" = "Disabilita messaggi privati";
+
+/* (No Comment) */
+"settings.display_notification_badge" = "Mostra badge notifiche";
+
+/* (No Comment) */
+"settings.enable_class_system" = "Attiva il sistema delle classi";
+
+/* (No Comment) */
+"settings.fix_characterValues" = "Sistema i valori del tuo personaggio";
+
+/* (No Comment) */
+"settings.log_out" = "Esci";
+
+/* (No Comment) */
+"settings.maintenance" = "Manutenzione";
+
+/* (No Comment) */
+"settings.notification_badge" = "Badge notifica";
+
+/* (No Comment) */
+"settings.profile" = "Profilo";
+
+/* (No Comment) */
+"settings.push_notifications" = "Notifiche Push";
+
+/* (No Comment) */
+"settings.reload_content" = "Ricarica i contenuti";
+
+/* (No Comment) */
+"settings.reminder" = "Promemoria";
+
+/* (No Comment) */
+"settings.select_class" = "Seleziona Classe";
+
+/* (No Comment) */
+"settings.social" = "Social";
+
+/* (No Comment) */
+"settings.user" = "Utente";
+
+/* (No Comment) */
+"share" = "Condividi";
+
+/* (No Comment) */
+"skills.use_skill" = "Hai usato %@";
+
+/* (No Comment) */
+"skills.used_transformation_item" = "Hai usato %@";
+
+/* (No Comment) */
+"stable.feed" = "Nutri";
+
+/* (No Comment) */
+"stable.premium" = "Pozione Magica";
+
+/* (No Comment) */
+"stable.quest_mounts" = "Cavalcature delle missioni";
+
+/* (No Comment) */
+"stable.quest_pets" = "Animaletti delle missioni";
+
+/* (No Comment) */
+"stable.special_mounts" = "Cavalcature speciali";
+
+/* (No Comment) */
+"stable.special_pets" = "Animaletti speciali";
+
+/* (No Comment) */
+"stable.standard" = "Base";
+
+/* (No Comment) */
+"stats.allocated" = "Assegnati";
+
+/* (No Comment) */
+"stats.battle_gear" = "Equipaggiamento da battaglia";
+
+/* (No Comment) */
+"stats.buffs" = "Bonus";
+
+/* (No Comment) */
+"stats.class_bonus" = "Bonus classe";
+
+/* (No Comment) */
+"stats.level" = "Livello";
+
+/* (No Comment) */
+"stats.no_points_to_allocate" = "0 Punti da Assegnare";
+
+/* (No Comment) */
+"stats.one_point_to_allocate" = "1 Punto da Assegnare";
+
+/* (No Comment) */
+"summary" = "Riassunto";
+
+/* (No Comment) */
+"tags" = "Etichette";
+
+/* (No Comment) */
+"tasks.daily" = "Daily";
+
+/* (No Comment) */
+"tasks.form.checklist" = "Checklist";
+
+/* (No Comment) */
+"tasks.form.clear" = "Nascondi";
+
+/* (No Comment) */
+"tasks.form.confirm_delete" = "Vuoi davvero eliminare questa attività?";
+
+/* (No Comment) */
+"tasks.form.cost" = "Costo";
+
+/* (No Comment) */
+"tasks.form.difficulty" = "Difficoltà";
+
+/* (No Comment) */
+"tasks.form.easy" = "Facile";
+
+/* (No Comment) */
+"tasks.form.edit" = "Modifica %@";
+
+/* (No Comment) */
+"tasks.form.hard" = "Difficile";
+
+/* (No Comment) */
+"tasks.form.medium" = "Media";
+
+/* (No Comment) */
+"tasks.form.new_checklist_item" = "Nuovo elemento checklist";
+
+/* (No Comment) */
+"tasks.form.reminders" = "Promemoria";
+
+/* (No Comment) */
+"tasks.form.repeats" = "Ripetizione";
+
+/* (No Comment) */
+"tasks.form.reset_streak" = "Reset serie";
+
+/* (No Comment) */
+"tasks.form.tags" = "Etichette";
+
+/* (No Comment) */
+"tasks.form.trivial" = "Facilissima";
+
+/* (No Comment) */
+"tasks.habit" = "Abitudine";
+
+/* (No Comment) */
+"tasks.reward" = "Ricompensa";
+
+/* (No Comment) */
+"tasks.todo" = "Cose Da Fare";
+
+/* (No Comment) */
+"theme.blue" = "Blu";
+
+/* (No Comment) */
+"theme.green" = "Verde";
+
+/* (No Comment) */
+"theme.red" = "Rosso";
+
+/* (No Comment) */
+"theme.yellow" = "Giallo";
+
+/* (No Comment) */
+"title" = "Titolo";
+
+/* (No Comment) */
+"unequip" = "Rimuovi";
+
+/* (No Comment) */
+"weekly" = "Settimanale";
+
+/* (No Comment) */
+"yearly" = "Annuale";
+

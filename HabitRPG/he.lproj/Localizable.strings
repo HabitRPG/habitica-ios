@@ -1,18 +1,3 @@
-/* No comment provided by engineer. */
-" Unlock Set for %@ Gems " = "פתח קבוצה בשביל %@ אבני חן";
-
-/* No comment provided by engineer. */
-"%.2f Gold" = "%.2f זהב";
-
-/* No comment provided by engineer. */
-"%@ Gems" = "%@ אבני חן";
-
-/* No comment provided by engineer. */
-"%@ Members" = "%@ חברים";
-
-/* No comment provided by engineer. */
-"%d out of %d responded" = "%1$d מתוך %2$d השיבו";
-
 /* more than one filter */
 "%ld Filters" = "%ld סינונים";
 
@@ -20,43 +5,19 @@
 "1 Filter" = "1 סינון";
 
 /* No comment provided by engineer. */
-"1 Participant" = "1 משתתף";
-
-/* 1Password App Extension Error Message */
-"1Password Extension was cancelled by the user" = "תוסף 1Password בוטל על ידי המשתמש";
-
-/* No comment provided by engineer. */
-"10 min cardio" = "10 דקות אירובי";
-
-/* No comment provided by engineer. */
 "10 minutes cleaning" = "10 דקות ניקיונות";
 
 /* No comment provided by engineer. */
-"API" = "API";
-
-/* No comment provided by engineer. */
-"API Key" = "מפתח API";
-
-/* No comment provided by engineer. */
-"Abort" = "בטל";
+"21-Day Streaks" = "רצפי 21-יום";
 
 /* No comment provided by engineer. */
 "About" = "אודות";
 
 /* No comment provided by engineer. */
-"Accept" = "קבל";
-
-/* No comment provided by engineer. */
-"Accepted" = "התקבל";
-
-/* No comment provided by engineer. */
-"Account Details" = "פרטי חשבון";
+"Accept" = "לקבל";
 
 /* No comment provided by engineer. */
 "Acknowledgements" = "תודות";
-
-/* No comment provided by engineer. */
-"Actions" = "פעולות";
 
 /* No comment provided by engineer. */
 "Active" = "פעיל";
@@ -68,114 +29,52 @@
 "Add a User ID" = "הוסף מזהה משתמש";
 
 /* No comment provided by engineer. */
-"Add a new checklist item" = "הוסף רכיב חדש לתיוג";
-
-/* No comment provided by engineer. */
-"Add a new reminder" = "הוסף תזכורת חדשה";
-
-/* No comment provided by engineer. */
 "Add an Email" = "הוסף מייל";
 
 /* No comment provided by engineer. */
 "All" = "הכל";
 
 /* No comment provided by engineer. */
-"Animal Ears" = "אוזני חיה";
-
-/* 1Password App Extension Error Message */
-"App Extension API is not available in this version of iOS" = "הרחבת האפליקציה עם API לא זמינה בגרסה זו של iOS.";
+"API Key" = "מפתח API";
 
 /* No comment provided by engineer. */
-"App Version: %@
-" = "גרסת תוכנה: %@
-";
+"Are you sure? This will delete your account forever, and it can never be restored! You will need to register a new account to use Habitica again. Banked or spent Gems will not be refunded. If you're absolutely certain, type your password into the text box below." = "האם אתם בטוחים? פעולה זו תמחק את החשבון שלכם לצמיתות, ולא ניתן יהיה לשחזרו! עליכה יהיה ליצור חשבון חדש על מנת להשתמש בHabitica שוב. לא יתקבל החזר כספי עבור אבני-חן. אם אתם בטוחים לחלוטין, הקלידו את הסיסמה שלכם בתיבת הטקסט.";
 
 /* No comment provided by engineer. */
-"Are you sure?" = "אתם בטוחים?";
+"Assigns more points to the attributes important to your Class." = "מקצה יותר נקודות לתכונות שחשובות למקצוע שלך";
 
 /* No comment provided by engineer. */
-"Armor" = "שיריון";
+"Assigns points based on the Strength, Intelligence, Constitution, and Perception categories associated with the tasks you complete." = "הקצו נקודות בהתבסס על הקטגוריות של כוח, תבונה, חוסן, ותפיסה שקשורות למשימות שאתם משלימים.";
 
 /* No comment provided by engineer. */
-"Attributes" = "תכונות";
+"Assigns the same number of points to each attribute." = "מקצה את אותו מספר נקודות לכל תכונה";
 
-/* Noun */
+/* No comment provided by engineer. */
 "Authentication" = "אימות";
-
-/* No comment provided by engineer. */
-"Authentication Cancelled" = "אימות בוטל";
-
-/* No comment provided by engineer. */
-"Authentication Error" = "תקלת אימות";
-
-/* No comment provided by engineer. */
-"Back" = "חזור";
-
-/* No comment provided by engineer. */
-"Background" = "רקע";
 
 /* No comment provided by engineer. */
 "Bangs" = "טלטלים";
 
 /* No comment provided by engineer. */
-"Base" = "בסיס";
-
-/* No comment provided by engineer. */
-"Base Mounts" = "חיית רכיבה בסיסית";
-
-/* No comment provided by engineer. */
-"Base Pets" = "חיית מחמד בסיסית";
-
-/* No comment provided by engineer. */
-"Battle Gear" = "ציוד לחימה";
-
-/* No comment provided by engineer. */
-"Beard" = "זקן";
-
-/* No comment provided by engineer. */
-"Become a %@" = "הפוך ל %@";
-
-/* No comment provided by engineer. */
-"Body" = "גוף";
-
-/* No comment provided by engineer. */
-"By completing your tasks, you've earned a faithful steed!" = "על ידי השלמת המשימות שלכם, הרווחתם חיית רכיבה נאמנה!";
+"Broad" = "רחב";
 
 /* No comment provided by engineer. */
 "Cancel" = "בטל";
 
 /* No comment provided by engineer. */
-"Cast Spells" = "הטל קסמים";
+"Change Login Name" = "שנו שם כניסה";
 
 /* No comment provided by engineer. */
-"Change Class" = "החליפו מקצוע";
-
-/* No comment provided by engineer. */
-"Chat" = "צ׳אט";
-
-/* No comment provided by engineer. */
-"Check in with team" = "בידקו מה קורה עם הצוות";
-
-/* No comment provided by engineer. */
-"Choose a hair color!" = "בחר צבע שיער!";
-
-/* No comment provided by engineer. */
-"Choose a hairstyle!" = "בחר עיצוב שיער!";
-
-/* No comment provided by engineer. */
-"Choose a skin color!" = "בחר צבע עור!";
-
-/* No comment provided by engineer. */
-"Choose your outfit! (You'll unlock more outfits soon.)" = "בחרו את המראה שלכם! (סגנונות נוספים יחשפו בקרוב.)";
+"Change Password" = "שנו סיסמה";
 
 /* No comment provided by engineer. */
 "Chores" = "מטלות";
 
 /* No comment provided by engineer. */
-"Clear Cache" = "נקה Cache";
+"Close" = "סגור";
 
 /* No comment provided by engineer. */
-"Close" = "סגור";
+"Collect" = "לאסוף";
 
 /* No comment provided by engineer. */
 "Color" = "צבע";
@@ -184,49 +83,31 @@
 "Complete" = "הושלם";
 
 /* No comment provided by engineer. */
-"Complete Team Project" = "השלם פרוייקט קבוצתי";
-
-/* No comment provided by engineer. */
-"Connection Error" = "תקלת התחברות";
-
-/* No comment provided by engineer. */
-"Costume" = "תחפושת";
-
-/* No comment provided by engineer. */
-"Couldn't connect to the server. Check your network connection" = "כשלון בהתחברות לשרת. בדוק את חיבור הרשת שלך";
+"Confirm New Password" = "וודאו סיסמה חדשה";
 
 /* No comment provided by engineer. */
 "Creativity" = "יצירתיות";
 
 /* No comment provided by engineer. */
-"Current streak: %@" = "רצף נוכחי: %@";
-
-/* No comment provided by engineer. */
-"Custom Day Start" = "שעת התחלת יום מותאמת אישית";
-
-/* No comment provided by engineer. */
-"Customize Avatar" = "התאם אישית את הדמות";
+"Dailies" = "יומיות";
 
 /* No comment provided by engineer. */
 "Daily" = "יומי";
 
 /* No comment provided by engineer. */
-"Daily Reminder" = "תזכורת יומית";
+"Daily drop-caps doubled" = "הגבלת הביזה היומית מוכפלת";
+
+/* No comment provided by engineer. */
+"Danger Zone" = "אזור מסוכן";
 
 /* No comment provided by engineer. */
 "Dated" = "מיושן";
 
 /* No comment provided by engineer. */
-"Day Start" = "התחלת יום";
+"Delete Account" = "מחקו את חשבונכם";
 
 /* No comment provided by engineer. */
-"Declined" = "נדחה";
-
-/* No comment provided by engineer. */
-"Description" = "תיאור";
-
-/* No comment provided by engineer. */
-"Difficulty" = "רמת קושי";
+"Display Name" = "שם תצוגה";
 
 /* No comment provided by engineer. */
 "Do homework" = "הכן שיעורי בית";
@@ -235,112 +116,37 @@
 "Done" = "בוצע";
 
 /* No comment provided by engineer. */
-"Due" = "הגיע הזמן";
+"Due" = "פעיל";
 
 /* No comment provided by engineer. */
-"Due %@" = "פוקע %@";
-
-/* No comment provided by engineer. */
-"Due Date" = "תאריך פקיעה";
-
-/* No comment provided by engineer. */
-"Due in %d days" = "פוקע בעוד %d ימים";
-
-/* No comment provided by engineer. */
-"Due today" = "פוקע היום";
-
-/* No comment provided by engineer. */
-"Due tomorrow" = "פוקע מחר";
-
-/* No comment provided by engineer. */
-"ERROR" = "תקלה";
-
-/* No comment provided by engineer. */
-"Each reminder notifies on the days the daily is active." = "כל תזכורת מודיעה בימים שבהן המטלה היומית פעילה.";
-
-/* No comment provided by engineer. */
-"Earn items by completing tasks and leveling up. Tap on an item to use it!" = "זכו בחפצים על ידי השלמת משימות ועלייה בדרגות. לחצו על חפץ כדי להשתמש בו!";
-
-/* No comment provided by engineer. */
-"Easy" = "קל";
-
-/* No comment provided by engineer. */
-"Eat healthy/junk food" = "לאכול אוכל בריא / מזון מהיר";
-
-/* No comment provided by engineer. */
-"Edit %@" = "ערוך %@";
-
-/* No comment provided by engineer. */
-"Edit Party" = "ערוך חבורה";
-
-/* No comment provided by engineer. */
-"Edit Reward" = "ערוך פרס";
+"E-Mail" = "אימייל";
 
 /* No comment provided by engineer. */
 "Email" = "מייל";
 
 /* No comment provided by engineer. */
-"Email / Username" = "מייל / שם משתמש";
-
-/* No comment provided by engineer. */
-"Email already taken." = "מייל כבר תפוס.";
-
-/* No comment provided by engineer. */
 "Emails" = "מיילים";
-
-/* No comment provided by engineer. */
-"Enable Class System" = "אפשרו את מערכת המקצועות";
-
-/* No comment provided by engineer. */
-"Enter" = "הכנס";
-
-/* No comment provided by engineer. */
-"Equip" = "צייד";
-
-/* No comment provided by engineer. */
-"Equipment" = "ציוד";
-
-/* No comment provided by engineer. */
-"Equipment pieces remaining: %d" = "יחידות ציוד שנותרו: %d";
 
 /* No comment provided by engineer. */
 "Error" = "תקלה";
 
 /* No comment provided by engineer. */
-"Every x days" = "כל x ימים";
+"ERROR" = "תקלה";
 
 /* No comment provided by engineer. */
-"Exercise" = "התאמן";
+"Exclusive monthly items" = "חפצים חודשיים ייחודיים";
+
+/* No comment provided by engineer. */
+"Exercise" = "אימון";
 
 /* No comment provided by engineer. */
 "Experience" = "ניסיון";
 
 /* No comment provided by engineer. */
-"Eyewear" = "משקפיים";
-
-/* 1Password App Extension Error Message */
-"Failed to contacting the 1Password App Extension" = "תקלה בהתקשרות להרחבה לאפליקציית 1Password";
-
-/* 1Password App Extension Error Message */
-"Failed to execute script that collects web page information" = "תקלה בהרצת סקריפט שאוסף נתונים מדפי אינטרנט";
-
-/* 1Password App Extension Error Message */
-"Failed to fill web page because script could not be evaluated" = "תקלה במיליו אף האינטרנט הואיל והסקריפט לא יכל לרוץ";
-
-/* 1Password App Extension Error Message */
-"Failed to fill web page because script is missing" = "כשלון במילוי דף אינטרנט כיוון שחסר סקריפט";
-
-/* 1Password App Extension Error Message */
-"Failed to parse information returned by 1Password App Extension" = "תקלה בניתוח נתונים שחזרו מהרחבה לאפליקציית 1Password";
-
-/* No comment provided by engineer. */
-"Feed" = "האכל";
-
-/* No comment provided by engineer. */
 "Filter" = "סנן";
 
 /* No comment provided by engineer. */
-"Finish assignment for class " = "סיים משימה לשיעור";
+"Finish" = "סיים";
 
 /* No comment provided by engineer. */
 "Finish creative project" = "סיים פרוייקט יצירה";
@@ -352,318 +158,100 @@
 "Flower" = "פרח";
 
 /* No comment provided by engineer. */
-"Frequency" = "תדירות";
-
-/* No comment provided by engineer. */
 "Friday" = "שישי";
 
 /* No comment provided by engineer. */
 "Gems" = "אבני חן";
 
 /* No comment provided by engineer. */
-"Get Social and Fight Monsters" = "היו חברותיים והלחמו במפלצות";
-
-/* No comment provided by engineer. */
-"Go Back" = "חזור";
-
-/* No comment provided by engineer. */
-"Got it" = "קיבלתי";
+"Gold" = "זהב";
 
 /* No comment provided by engineer. */
 "Grey" = "אפור";
 
 /* No comment provided by engineer. */
-"Guilds" = "גילדות";
-
-/* No comment provided by engineer. */
 "Habit" = "הרגל";
 
 /* No comment provided by engineer. */
-"Hair" = "שיער";
-
-/* No comment provided by engineer. */
-"Hard" = "קשה";
-
-/* No comment provided by engineer. */
-"Has a due date" = "עם תאריך יעד";
-
-/* No comment provided by engineer. */
-"Hatch Egg" = "בקע ביצה";
-
-/* No comment provided by engineer. */
-"Hatch with Potion" = "בקע באמצעות שיקוי";
-
-/* No comment provided by engineer. */
-"Head" = "ראש";
-
-/* No comment provided by engineer. */
-"Head Accessory" = "אביזר ראש";
-
-/* No comment provided by engineer. */
-"Healer" = "מרפא";
+"Habits" = "הרגלים";
 
 /* No comment provided by engineer. */
 "Health" = "בריאות";
 
 /* No comment provided by engineer. */
-"Health + Wellness" = "בריאות + אריכות חיים";
-
-/* No comment provided by engineer. */
-"Help & FAQ" = "עזרה ושאלות נפוצות";
-
-/* No comment provided by engineer. */
-"Hey! You are awesome!
-Version %@ (%@)" = "הי! אתה מגניב!
-גרסה %1$! (%2$@)";
-
-/* No comment provided by engineer. */
-"Huzzah!" = "ישששש!";
-
-/* No comment provided by engineer. */
-"I got to level %ld in Habitica by improving my real-life habits!" = "הגעתי לדרגה %ld בהאביטיקה על ידי שיפור ההרגלים בחיים האמיתיים שלי!";
-
-/* No comment provided by engineer. */
-"I want to become a %@" = "אני רוצה להפוך להיות %@";
-
-/* No comment provided by engineer. */
-"I want to opt-out" = "אני רוצה לוותר";
-
-/* No comment provided by engineer. */
-"Invalid E-Mail Address." = "כתובת אימייל שגויה.";
-
-/* No comment provided by engineer. */
-"Invalid username or password" = "שם משתמש או סיסמה שגויים";
-
-/* No comment provided by engineer. */
-"Inventory" = "מלאי";
-
-/* No comment provided by engineer. */
 "Invitation Type" = "סוג הזמנה";
-
-/* No comment provided by engineer. */
-"Invite" = "הזמן";
 
 /* No comment provided by engineer. */
 "Invite Members" = "הזמן חברים";
 
 /* No comment provided by engineer. */
-"Invite Party" = "הזמן חבורה";
+"Join" = "הצטרפו";
 
 /* No comment provided by engineer. */
-"Invited to %@" = "מוזמן ל%@";
-
-/* No comment provided by engineer. */
-"Items" = "חפצים";
-
-/* No comment provided by engineer. */
-"Join" = "הצטרף";
-
-/* No comment provided by engineer. */
-"Last logged in" = "התחברות אחרונה";
-
-/* No comment provided by engineer. */
-"Leader" = "מנהיג";
+"Join Habitica (Check me off!)" = "הצטרפו להאביטיקה (סמנו אותי!)";
 
 /* No comment provided by engineer. */
 "Leave" = "עזוב";
 
 /* No comment provided by engineer. */
-"Leave Group" = "עזוב חבורה";
-
-/* No comment provided by engineer. */
 "Leave a Review" = "השאר משוב";
 
 /* No comment provided by engineer. */
-"Level %@" = "שלב %@";
-
-/* No comment provided by engineer. */
-"Level %@ %@" = "דרגה %1$@ %2$@";
+"Level" = "דרגה";
 
 /* No comment provided by engineer. */
 "Local" = "מקומי";
 
 /* No comment provided by engineer. */
-"Log Out" = "התנתק";
+"Login Name" = "שם כניסה";
 
 /* No comment provided by engineer. */
-"Log in" = "התחבר";
-
-/* No comment provided by engineer. */
-"Login name" = "שם משתמש";
-
-/* No comment provided by engineer. */
-"Mage" = "מכשף";
-
-/* No comment provided by engineer. */
-"Maintenance" = "תחזוקה";
+"Makes completed To-Dos and task history available for longer." = "גורם למשימות שהושלמו והיסטוריית משימות להיות זמינות זמן רב יותר.";
 
 /* No comment provided by engineer. */
 "Mana" = "מאנה";
 
 /* No comment provided by engineer. */
-"Medium" = "בינוני";
+"Market" = "שוק";
 
 /* No comment provided by engineer. */
-"Member Since" = "חבר מאז";
-
-/* No comment provided by engineer. */
-"Mental" = "שכלי";
-
-/* No comment provided by engineer. */
-"Menu" = "תפריט";
+"Moderator" = "עורך";
 
 /* No comment provided by engineer. */
 "Monday" = "שני";
 
 /* No comment provided by engineer. */
-"Most important task" = "המטלה החשובה ביותר";
+"New Login Name" = "שם כניסה חדש";
 
 /* No comment provided by engineer. */
-"Mount" = "אוכף";
+"New Password" = "סיסמה חדשה";
 
 /* No comment provided by engineer. */
-"Mount Type" = "סוג אוכף";
+"Next" = "הבא";
 
 /* No comment provided by engineer. */
-"Mounts" = "אוכפים";
+"OK" = "בסדר";
 
 /* No comment provided by engineer. */
-"Mustache" = "שפם";
+"Old Password" = "סיסמה ישנה";
 
 /* No comment provided by engineer. */
-"My Guilds" = "הגילדות שלי";
-
-/* No comment provided by engineer. */
-"Name" = "שם";
-
-/* No comment provided by engineer. */
-"Negative (-)" = "שלילי (-)";
-
-/* No comment provided by engineer. */
-"Network error" = "בעיית רשת";
-
-/* No comment provided by engineer. */
-"New Party" = "חבורה חדשה";
-
-/* No comment provided by engineer. */
-"New Reward" = "פרס חדש";
-
-/* No comment provided by engineer. */
-"News" = "חדשות";
-
-/* No comment provided by engineer. */
-"No" = "לא";
-
-/* No comment provided by engineer. */
-"Notes" = "רשימות";
-
-/* No comment provided by engineer. */
-"Nothing Equipped" = "ללא ציוד";
-
-/* No comment provided by engineer. */
-"Nothing Set" = "שום דבר לא נקבע";
-
-/* No comment provided by engineer. */
-"OK" = "או קיי";
-
-/* No comment provided by engineer. */
-"On certain days of the week" = "בימים מסויימים בשבוע";
-
-/* No comment provided by engineer. */
-"Once a quest is started, no other party members can join the quest." = "ברגע שהרפתקאה החלה, חברי חבורה נוספים לא יכולים יותר להצטרף אליה.";
-
-/* No comment provided by engineer. */
-"Opt-Out" = "וותר";
-
-/* No comment provided by engineer. */
-"Organize Closet" = "ארגן את הארון";
-
-/* No comment provided by engineer. */
-"Other" = "אחר";
-
-/* No comment provided by engineer. */
-"Participants" = "משתתפים";
-
-/* No comment provided by engineer. */
-"Party" = "חבורה";
-
-/* No comment provided by engineer. */
-"Passwords don't match." = "סיסמה לא מתאימה";
-
-/* No comment provided by engineer. */
-"Pending" = "מחכה";
-
-/* No comment provided by engineer. */
-"Pet Type" = "סוג חיית מחמד";
-
-/* No comment provided by engineer. */
-"Pets" = "חיות מחמד";
-
-/* No comment provided by engineer. */
-"Physical" = "פיזי";
-
-/* No comment provided by engineer. */
-"Positive (+)" = "חיובי (+)";
+"Password" = "סיסמה";
 
 /* No comment provided by engineer. */
 "Process email" = "טפל במיילים";
 
 /* No comment provided by engineer. */
-"Profile" = "פרופיל";
-
-/* No comment provided by engineer. */
-"Public Guilds" = "גילדות פומביות";
-
-/* No comment provided by engineer. */
-"Purchase for %@ Gems" = "רכוש בעבור %@ אבני חן";
-
-/* No comment provided by engineer. */
-"Purchase for 2 Gems" = "רכוש בעבור 2 אבני חן";
-
-/* No comment provided by engineer. */
-"Quest" = "הרפתקאה";
-
-/* No comment provided by engineer. */
-"Quest Detail" = "פרטי הרפתקאה";
-
-/* No comment provided by engineer. */
-"Quest Invitation" = "הזמנת הרפתקאה";
-
-/* No comment provided by engineer. */
-"Quest Mounts" = "הרפתקאות חיות רכיבה";
-
-/* No comment provided by engineer. */
-"Quest Pets" = "הרפתקאות חיות מחמד";
-
-/* No comment provided by engineer. */
-"Register" = "הרשמו";
-
-/* No comment provided by engineer. */
-"Reject" = "דחה";
-
-/* No comment provided by engineer. */
-"Reload Content" = "טען תוכן מחדש";
+"Reject" = "דחו";
 
 /* No comment provided by engineer. */
 "Remember to check off your Dailies!" = "זכור לסמן וי על המטלות היומיות שלך!";
 
 /* No comment provided by engineer. */
-"Remind me tomorrow" = "הזכר לי מחר";
-
-/* No comment provided by engineer. */
 "Reminder" = "תזכורת";
 
 /* No comment provided by engineer. */
-"Reminders" = "תזכורות";
-
-/* No comment provided by engineer. */
-"Repeat every X days" = "חזור מידי X ימים";
-
-/* No comment provided by engineer. */
 "Reply" = "השב";
-
-/* No comment provided by engineer. */
-"Report" = "דוח";
 
 /* No comment provided by engineer. */
 "Report %@ for violation?" = "דווח על הפרה של %@?";
@@ -672,49 +260,40 @@ Version %@ (%@)" = "הי! אתה מגניב!
 "Report a bug" = "דווח על תקלה";
 
 /* No comment provided by engineer. */
-"Reset Justins Tips" = "אפס את הטיפים של ג׳סטין";
+"Reset Account" = "אפסו את חשבונכם";
 
 /* No comment provided by engineer. */
-"Rogue" = "נוכל";
+"Retain additional history entries" = "שמור רשומות היסטוריה נוספות";
+
+/* No comment provided by engineer. */
+"Reward yourself" = "תנו לעצמכם פרס";
+
+/* No comment provided by engineer. */
+"Rewards" = "פרסים";
 
 /* No comment provided by engineer. */
 "Saturday" = "שבת";
 
 /* No comment provided by engineer. */
-"Schedule check-up" = "קבע בדיקה";
+"Save" = "שמירה";
 
 /* No comment provided by engineer. */
-"School" = "בית ספר";
+"School" = "בית-ספר";
 
 /* No comment provided by engineer. */
-"Select Attributes" = "בחרו תכונות";
+"Search" = "חיפוש";
 
 /* No comment provided by engineer. */
-"Select Class" = "בחר מקצוע";
+"Seasonal Shop" = "חנות עונתית";
 
 /* No comment provided by engineer. */
-"Select Difficulty" = "בחר רמת קושי";
-
-/* No comment provided by engineer. */
-"Select Frequency" = "בחר תדירות";
-
-/* No comment provided by engineer. */
-"Sell (%@ Gold)" = "מכור (%@ זהב)";
+"Send" = "שליחה";
 
 /* No comment provided by engineer. */
 "Send feedback" = "שלח משוב";
 
 /* No comment provided by engineer. */
-"Server error" = "תקלת שרת";
-
-/* No comment provided by engineer. */
 "Set up workout schedule" = "צור תוכנית אימונים";
-
-/* No comment provided by engineer. */
-"Settings" = "הגדרות";
-
-/* No comment provided by engineer. */
-"Shield" = "מגן";
 
 /* No comment provided by engineer. */
 "Shirt" = "חולצה";
@@ -723,40 +302,25 @@ Version %@ (%@)" = "הי! אתה מגניב!
 "Size" = "גודל";
 
 /* No comment provided by engineer. */
-"Skin" = "עור";
+"Slim" = "רזה";
 
 /* No comment provided by engineer. */
-"Sleep tight!" = "חלומות פז!";
+"Stable" = "אורווה";
 
 /* No comment provided by engineer. */
-"Social" = "חברה";
-
-/* No comment provided by engineer. */
-"Special Mounts" = "אוכפים מיוחדים";
-
-/* No comment provided by engineer. */
-"Special Pets" = "חיות מחמד מיוחדות";
-
-/* No comment provided by engineer. */
-"Stretching" = "מתיחות";
+"Staff" = "חבר צוות";
 
 /* No comment provided by engineer. */
 "Strong" = "חזק";
 
 /* No comment provided by engineer. */
-"Study a master of the craft" = "לימוד מרב-אומן בתחום";
-
-/* No comment provided by engineer. */
 "Study/Procrastinate" = "לימוד/דחיינות";
 
 /* No comment provided by engineer. */
-"Suggested Guilds" = "גילדות מומלצות";
+"Subscription" = "מנוי";
 
 /* No comment provided by engineer. */
 "Sunday" = "ראשון";
-
-/* No comment provided by engineer. */
-"Tags" = "תגיות";
 
 /* No comment provided by engineer. */
 "Tap a task to edit it and add reminders. Swipe left to delete it." = "ליחצו על משימות כדי לערוך אותן וכדי להוסיף תזכורות. החליקו שמאלה כדי למחוק אותן.";
@@ -765,46 +329,10 @@ Version %@ (%@)" = "הי! אתה מגניב!
 "Tap to add a new task." = "לחץ להוספת משימה חדשה.";
 
 /* No comment provided by engineer. */
-"Tap to change how your pets are grouped." = "לחץ כדי לשנות כיצד חיות המחמד שלך מסודרות.";
-
-/* No comment provided by engineer. */
-"Tap to edit task, change notification time, or delete." = "ליחצו על משימה כדי לערוך אותה, לשנות זמני התראות, או למחוק אותה.";
-
-/* No comment provided by engineer. */
 "Tap to filter tasks." = "לחץ לסינון משימות.";
 
 /* No comment provided by engineer. */
-"Tap to invite friends and view party members." = "לחצו כדי להזמין חברים ולראות את חברי החבורה.";
-
-/* No comment provided by engineer. */
 "Tavern" = "פונדק";
-
-/* No comment provided by engineer. */
-"Teams" = "צוותים";
-
-/* No comment provided by engineer. */
-"Text" = "טקסט";
-
-/* No comment provided by engineer. */
-"The authentication process was cancelled." = "תהליך האימות בוטל";
-
-/* No comment provided by engineer. */
-"There seems to be a problem with the server. Try again later" = "נראה שיש בעיה עם השרת. נסה שוב מאוחר יותר";
-
-/* No comment provided by engineer. */
-"There was an error verifying your purchase" = "ארעה תקלה באימות הרכישה שלך";
-
-/* No comment provided by engineer. */
-"There was an error with the authentication. Try again later" = "ארעה בעיית אימות. אנה נסה מאוחר יותר";
-
-/* No comment provided by engineer. */
-"This item can be purchased for %@ Gems" = "החפץ למכירה תמורת %@ אבני חן";
-
-/* No comment provided by engineer. */
-"This item can be purchased for 2 Gems" = "החפץ למכירה תמורת 2 אבני חן";
-
-/* No comment provided by engineer. */
-"This set can be unlocked for %@ Gems" = "הקבוצה יכולה להפתח תמורת %@ אבני חן";
 
 /* No comment provided by engineer. */
 "Thursday" = "חמישי";
@@ -813,46 +341,13 @@ Version %@ (%@)" = "הי! אתה מגניב!
 "To-Do" = "משימה";
 
 /* No comment provided by engineer. */
-"Trivial" = "טריוויאלי";
+"To-Dos" = "משימות";
 
 /* No comment provided by engineer. */
 "Tuesday" = "שלישי";
 
 /* No comment provided by engineer. */
-"Unequip" = "הסר ציוד";
-
-/* No comment provided by engineer. */
-"Unlock for %@ Gems" = "פתח בעבור %@ אבני חן";
-
-/* No comment provided by engineer. */
-"Unmount" = "הסר אוכף";
-
-/* No comment provided by engineer. */
-"Update team on status" = "עדכן את הצוות לגבי המצב";
-
-/* No comment provided by engineer. */
-"Use" = "השתמש";
-
-/* No comment provided by engineer. */
-"Use Skills" = "השתמש במיומנות";
-
-/* No comment provided by engineer. */
-"User" = "משתמש";
-
-/* No comment provided by engineer. */
 "User ID" = "מזהה משתמש";
-
-/* No comment provided by engineer. */
-"Username" = "שם משתמש";
-
-/* No comment provided by engineer. */
-"Username already taken." = "שם משתמש כבר תפוס.";
-
-/* No comment provided by engineer. */
-"Validation Error" = "תקלת אימות";
-
-/* No comment provided by engineer. */
-"Value" = "ערך";
 
 /* No comment provided by engineer. */
 "Version" = "גרסה";
@@ -861,28 +356,10 @@ Version %@ (%@)" = "הי! אתה מגניב!
 "View Source Code" = "צפה בקוד המקור";
 
 /* No comment provided by engineer. */
-"Visibility" = "נראות";
-
-/* No comment provided by engineer. */
-"Wakey Wakey!" = "בוקר טוב!";
-
-/* No comment provided by engineer. */
-"Warrior" = "לוחם";
-
-/* No comment provided by engineer. */
-"Wash Dishes" = "שטוף כלים";
-
-/* No comment provided by engineer. */
 "We love open source software." = "אנחנו אוהבים תוכנה בקוד פתוח.";
 
 /* No comment provided by engineer. */
 "Weak" = "חלש";
-
-/* No comment provided by engineer. */
-"Weapon" = "נשק";
-
-/* No comment provided by engineer. */
-"Wear costume" = "לבש תחפושת";
 
 /* No comment provided by engineer. */
 "Website" = "אתר";
@@ -891,13 +368,7 @@ Version %@ (%@)" = "הי! אתה מגניב!
 "Wednesday" = "רביעי";
 
 /* No comment provided by engineer. */
-"Weekly" = "שבועי";
-
-/* No comment provided by engineer. */
-"Welcome" = "ברוכים הבאים";
-
-/* No comment provided by engineer. */
-"Welcome to Habitica" = "ברוכים הבאים להאביטיקה";
+"Wheelchair" = "כיסא גלגלים";
 
 /* No comment provided by engineer. */
 "Work" = "עבודה";
@@ -906,29 +377,11 @@ Version %@ (%@)" = "הי! אתה מגניב!
 "Work on creative project" = "עבודה על פרוייקט יצירה";
 
 /* No comment provided by engineer. */
-"Work project" = "פרוייקט עבודה";
+"Write Message" = "כתבו הודעה";
 
 /* No comment provided by engineer. */
-"Yes" = "כן";
+"You can either complete this To-Do, edit it, or remove it." = "אתה יכול להשלים את המשימה, לערוך או למחוק אותה.";
 
 /* No comment provided by engineer. */
-"You gained a level!" = "הרווחתם דרגה!";
-
-/* No comment provided by engineer. */
-"You hatched a %@ %@!" = "הבקעת %1$@ %2$@!";
-
-/* No comment provided by engineer. */
-"You have no food" = "אין לך אוכל";
-
-/* No comment provided by engineer. */
-"You raised a mount!" = "גידלתם חיית רכיבה!";
-
-/* No comment provided by engineer. */
-"You will become a %@." = "אתה תהפוך ל%@.";
-
-/* No comment provided by engineer. */
-"Your pet eats the %@ but doesn't seem to enjoy it." = "חיית המחמד שלך אוכלת את ה%@ אך נראה שהיא לא נהנית.";
-
-/* No comment provided by engineer. */
-"equipped" = "מצוייד";
+"You earned a streak achievement!" = "הרווחת הישג רצף!";
 

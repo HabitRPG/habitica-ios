@@ -1,20 +1,8 @@
 /* No comment provided by engineer. */
-" Unlock Set for %@ Gems " = "Открыть набор за %@ самоцветов";
+"\(experience) Experience Points" = "\(experience) опыта";
 
 /* No comment provided by engineer. */
-"%.2f Gold" = "%.2f золота";
-
-/* No comment provided by engineer. */
-"%@ Gems" = "%@ самоцветов";
-
-/* No comment provided by engineer. */
-"%@ Members" = "%@ Участники";
-
-/* No comment provided by engineer. */
-"%@ Participants" = "%@ участников";
-
-/* No comment provided by engineer. */
-"%d out of %d responded" = "Откликнулись %1$d из %2$d";
+"\(gold) Gold" = "\(gold) золота";
 
 /* more than one filter */
 "%ld Filters" = "%ld фильтров";
@@ -23,43 +11,25 @@
 "1 Filter" = "1 фильтр";
 
 /* No comment provided by engineer. */
-"1 Participant" = "1 участник";
-
-/* 1Password App Extension Error Message */
-"1Password Extension was cancelled by the user" = "Ипользование 1Password отклонено пользователем";
+"5 minutes of quiet breathing" = "5 минут тихого дыхания";
 
 /* No comment provided by engineer. */
-"10 min cardio" = "10 минут кардио";
+"10 minutes cardio" = "10 минут кардио";
 
 /* No comment provided by engineer. */
 "10 minutes cleaning" = "10 минут уборки";
 
 /* No comment provided by engineer. */
-"API" = "API";
+"21-Day Streaks" = "Серии в 21 день подряд";
 
 /* No comment provided by engineer. */
-"API Key" = "Ключ API";
-
-/* No comment provided by engineer. */
-"Abort" = "Отменить";
-
-/* No comment provided by engineer. */
-"About" = "О нас";
+"About" = "О проекте";
 
 /* No comment provided by engineer. */
 "Accept" = "Принять";
 
 /* No comment provided by engineer. */
-"Accepted" = "Принято";
-
-/* No comment provided by engineer. */
-"Account Details" = "Информация об аккаунте";
-
-/* No comment provided by engineer. */
 "Acknowledgements" = "Благодарности";
-
-/* No comment provided by engineer. */
-"Actions" = "Действия";
 
 /* No comment provided by engineer. */
 "Active" = "Активные";
@@ -71,246 +41,214 @@
 "Add a User ID" = "Добавить ID пользователя";
 
 /* No comment provided by engineer. */
-"Add a new checklist item" = "Добавить новый пункт списка";
-
-/* No comment provided by engineer. */
-"Add a new reminder" = "Добавить новое напоминание";
-
-/* No comment provided by engineer. */
 "Add an Email" = "Добавить Email";
+
+/* No comment provided by engineer. */
+"Alex the Merchant" = "Торговец Александр";
 
 /* No comment provided by engineer. */
 "All" = "Все";
 
 /* No comment provided by engineer. */
-"Allocated" = "Распределено очков";
+"API Key" = "Ключ API";
 
 /* No comment provided by engineer. */
-"Animal Ears" = "Звериные уши";
-
-/* 1Password App Extension Error Message */
-"App Extension API is not available in this version of iOS" = "API-дополнение к приложению недоступно в этой версии iOS";
+"Are you sure? This will delete your account forever, and it can never be restored! You will need to register a new account to use Habitica again. Banked or spent Gems will not be refunded. If you're absolutely certain, type your password into the text box below." = "Вы уверены? Ваш аккаунт будет удален навсегда без возможности восстановления! Вам понадобится зарегистрировать новый аккаунт, если вы захотите пользоваться Habitica снова. Стоимость потраченных и находящихся в банке самоцветов не будет компенсирована. Если вы абсолютно уверены, напишите ваш пароль в текстовое поле.";
 
 /* No comment provided by engineer. */
-"App Version: %@
-" = "Версия приложения: %@
-";
+"Assigns more points to the attributes important to your Class." = "Направлять больше очков на улучшение характеристик, важных для вашего класса.";
 
 /* No comment provided by engineer. */
-"Are you sure?" = "Вы уверены?";
+"Assigns points based on the Strength, Intelligence, Constitution, and Perception categories associated with the tasks you complete." = "Распределить очки на Силу, Интеллект, Телосложение и Восприятие в соответствии с выполняемыми задачами.";
 
 /* No comment provided by engineer. */
-"Armor" = "Доспехи";
+"Assigns the same number of points to each attribute." = "Распределять одинаковое количество очков на каждую характеристику.";
 
 /* No comment provided by engineer. */
-"Attributes" = "Характеристики";
-
-/* Noun */
 "Authentication" = "Аутентификация";
 
 /* No comment provided by engineer. */
-"Authentication Cancelled" = "Авторизация отменена";
+"Bad" = "Плохо";
 
 /* No comment provided by engineer. */
-"Authentication Error" = "Ошибка авторизации";
+"Bangs" = "Чёлка";
 
 /* No comment provided by engineer. */
-"Back" = "Назад";
+"Be careful — if you miss one, your avatar will take damage overnight. Checking them off consistently brings great rewards!" = "Будьте осторожны - если вы пропустите одну задачу, ваш аватар получит урон за ночь. Периодическая провека на выполнение приносит отличные награды!";
 
 /* No comment provided by engineer. */
-"Background" = "Фоны";
+"Be careful...\nThe World Boss will lash out and attack one of our friendly shopkeepers once its rage bar fills. Keep up with your Dailies to try and prevent it from happening!" = "Будьте осторожны...\nМировой босс нападет и атакует одного из наших дружелюбных владельцев магазинов, как только шкала его ярости заполнится. Следите за своими ежедневными задачами, чтобы попытаться предотвратить это!";
 
 /* No comment provided by engineer. */
-"Bangs" = "Челки";
+"Best" = "Лучший";
 
 /* No comment provided by engineer. */
-"Base" = "Обыкновенный";
+"Better" = "Лучше";
 
 /* No comment provided by engineer. */
-"Base Mounts" = "Основные скакуны";
+"Boss Quest" = "Квест босса";
 
 /* No comment provided by engineer. */
-"Base Pets" = "Основные питомцы";
+"Brainstorm a healthy change" = "Мозговой штурм - здоровое изменение";
 
 /* No comment provided by engineer. */
-"Battle Gear" = "Боевая экипировка";
+"Broad" = "Тучное";
 
 /* No comment provided by engineer. */
-"Beard" = "Борода";
+"buy" = "купить";
 
 /* No comment provided by engineer. */
-"Become a %@" = "Стать %@";
+"Buy for \(currencyText)" = "Купить за \(currencyText)";
 
 /* No comment provided by engineer. */
-"Body" = "Тело";
+"Buy gear for your avatar with the gold you earn!" = "Купите экипировку для своего аватара за золотом, котороей вы заработали!";
 
 /* No comment provided by engineer. */
-"Boosts" = "Бафы";
-
-/* No comment provided by engineer. */
-"Buy" = "Купить";
-
-/* No comment provided by engineer. */
-"Buy %@ for %@ %@?" = "Купить %1$@ за %2$@ %3$@?";
-
-/* No comment provided by engineer. */
-"By accomplishing your real-life goals, you've grown to Level %ld!" = "За выполнение ваших жизненных целей вы выросли до %ld уровня!";
-
-/* No comment provided by engineer. */
-"By completing your tasks, you've earned a faithful steed!" = "Завершая задания, вы заработали верного скакуна!";
-
-/* No comment provided by engineer. */
-"CON %@" = "ТЕЛ %@";
-
-/* No comment provided by engineer. */
-"Can't cast a spell on a challenge task." = "Нельзя накладывать заклинания на задания испытания.";
+"Buy gems with gold" = "Купить самоцветы за золото";
 
 /* No comment provided by engineer. */
 "Cancel" = "Отмена";
 
 /* No comment provided by engineer. */
-"Cast Spells" = "Наложить заклинания";
+"Change" = "Изменить";
 
 /* No comment provided by engineer. */
-"Change Class" = "Сменить класс";
+"Change About message" = "Изменить описание в профиле";
 
 /* No comment provided by engineer. */
-"Chat" = "Чат";
+"Change Display Name" = "Изменить отображаемое имя";
 
 /* No comment provided by engineer. */
-"Check in with team" = "Задания с командой";
+"Change Email" = "Изменить адрес электронной почты";
 
 /* No comment provided by engineer. */
-"Choose a hair color!" = "Выберите цвет волос!";
+"Change Login Name" = "Изменить имя пользователя";
 
 /* No comment provided by engineer. */
-"Choose a hairstyle!" = "Выберите прическу!";
+"Change Password" = "Измененить пароль";
 
 /* No comment provided by engineer. */
-"Choose a skin color!" = "Выберите цвет кожи!";
+"Change Photo URL" = "Изменить ссылку на фото";
 
 /* No comment provided by engineer. */
-"Choose your outfit! (You'll unlock more outfits soon.)" = "Выберите одежду! (Скоро вы разблокируете новую одежду)";
+"Character Level" = "Уровень персонажа";
 
 /* No comment provided by engineer. */
 "Chores" = "Домашние дела";
 
 /* No comment provided by engineer. */
-"Class-Bonus" = "Бонус класса";
-
-/* No comment provided by engineer. */
-"Clear Cache" = "Очистить кэш";
+"Class Equipment" = "Снаряжение класса";
 
 /* No comment provided by engineer. */
 "Close" = "Закрыть";
 
 /* No comment provided by engineer. */
+"Collapse checklist" = "Свернуть список";
+
+/* No comment provided by engineer. */
+"Collect" = "Собрать";
+
+/* No comment provided by engineer. */
+"Collection Quest" = "Квест на сбор предметов";
+
+/* No comment provided by engineer. */
 "Color" = "Цвет";
 
 /* No comment provided by engineer. */
-"Complete" = "Завершить";
+"Complete" = "Сделанные";
 
 /* No comment provided by engineer. */
-"Complete Team Project" = "Завершить командный проект";
+"Complete Task" = "Завершите задание";
 
 /* No comment provided by engineer. */
-"Connection Error" = "Ошибка соединения";
+"Complete work project" = "Завершить рабочий проект";
 
 /* No comment provided by engineer. */
-"Costume" = "Костюм";
+"Completed" = "Завершено";
 
 /* No comment provided by engineer. */
-"Couldn't connect to the server. Check your network connection" = "Невозможно подключиться к серверу. Проверьте работу сети";
+"Confirm New Password" = "Подтвердите новый пароль";
+
+/* No comment provided by engineer. */
+"Copied Message" = "Сообщение скопировано";
+
+/* No comment provided by engineer. */
+"Copy Message" = "Скопировать сообщение";
 
 /* No comment provided by engineer. */
 "Create Tag" = "Создать тэг";
 
 /* No comment provided by engineer. */
-"Creativity" = "Креативность";
+"Creativity" = "Творчество";
 
 /* No comment provided by engineer. */
-"Current streak: %@" = "Текущая серия: %@";
+"Dailies" = "Ежедневные дела";
+
+/* As in 'repeats daily' */
+"daily" = "ежедневно";
 
 /* No comment provided by engineer. */
-"Custom Day Start" = "Персональное начало суток";
+"Daily" = "Ежедневно";
 
 /* No comment provided by engineer. */
-"Customize Avatar" = "Настроить аватар";
+"Daily drop-caps doubled" = "Увеличение дневного предела выпадения предметов в 2 раза";
 
 /* No comment provided by engineer. */
-"Daily" = "Ежедневное";
+"Daily workout routine" = "Ежедневная тренировка";
 
 /* No comment provided by engineer. */
-"Daily Reminder" = "Ежедневное напоминание";
+"Danger Zone" = "Опасная зона";
+
+/* No comment provided by engineer. */
+"Daniel the inn keeper" = "Даниэль, хранитель гостиницы";
 
 /* No comment provided by engineer. */
 "Dated" = "С датой";
 
 /* No comment provided by engineer. */
-"Day Start" = "Начало суток";
+"days" = "дней(-я)";
 
 /* No comment provided by engineer. */
-"Declined" = "Отклонено";
+"Delete Account" = "Удаление учетной записи";
 
 /* No comment provided by engineer. */
-"Description" = "Описание";
+"Delete Message" = "Удалить сообщение";
 
 /* No comment provided by engineer. */
-"Difficulty" = "Сложность";
+"Delete tasks" = "Удалить задания";
 
 /* No comment provided by engineer. */
-"Disable Private Messages" = "Отключить личные сообщения";
-
-/* No comment provided by engineer. */
-"Disable all Push Notifications" = "Включить все push-уведомления ";
+"Display Name" = "Отображаемое имя";
 
 /* No comment provided by engineer. */
 "Do homework" = "Сделать домашнюю работу";
 
 /* No comment provided by engineer. */
-"Done" = "Сделано";
+"Do you want to leave the challenge and keep or delete the tasks?" = "Вы хотите покинуть испытание и оставить или удалить задания?";
 
 /* No comment provided by engineer. */
-"Due" = "Сегодня";
+"Done" = "Готово";
 
 /* No comment provided by engineer. */
-"Due %@" = "Выполнить к %@";
+"Double drop caps will let you receive more items from your completed tasks every day, helping you complete your stable faster!" = "Увеличенный вдвое лимит трофеев позволит вам получать больше предметов за выполнение задач каждый день, помогая заполнить стойла быстрее!";
 
 /* No comment provided by engineer. */
-"Due Date" = "Выполнить до";
+"Double tap to complete" = "Нажмите дважды, чтобы завершить";
 
 /* No comment provided by engineer. */
-"Due in %d days" = "Выполнить через %d дней";
+"Double tap to edit" = "Нажмите дважды для правки";
 
 /* No comment provided by engineer. */
-"Due today" = "Выполнить сегодня";
+"Double tap to hide boss art" = "Нажмите дважды, чтобы скрыть изображение босса";
 
 /* No comment provided by engineer. */
-"Due tomorrow" = "Выполнить завтра";
+"Due" = "Текущие";
 
 /* No comment provided by engineer. */
-"ERROR" = "ОШИБКА";
+"E-Mail" = "Электронная почта";
 
 /* No comment provided by engineer. */
-"Each reminder notifies on the days the daily is active." = "Напоминание появляется только в те дни, когда ежедневное задание активно.";
-
-/* No comment provided by engineer. */
-"Earn items by completing tasks and leveling up. Tap on an item to use it!" = "Зарабатывайте предметы, выполняя задания. Нажмите на предмет, чтобы использовать его!";
-
-/* No comment provided by engineer. */
-"Easy" = "Легко";
-
-/* No comment provided by engineer. */
-"Eat healthy/junk food" = "Есть здоровую/вредную еду";
-
-/* No comment provided by engineer. */
-"Edit %@" = "Изменить %@";
-
-/* No comment provided by engineer. */
-"Edit Party" = "Изменить команду";
-
-/* No comment provided by engineer. */
-"Edit Reward" = "Изменить награду";
+"Eat health/junk food" = "Есть здоровую/вредную еду";
 
 /* No comment provided by engineer. */
 "Edit Tag" = "Редактировать теги";
@@ -319,70 +257,58 @@
 "Email" = "Email";
 
 /* No comment provided by engineer. */
-"Email / Username" = "Email / Имя пользователя";
-
-/* No comment provided by engineer. */
-"Email already taken." = "Электронная почта уже занята.";
+"Email a Password Reset Link" = "Отправьте мне письмо на сброс пароля";
 
 /* No comment provided by engineer. */
 "Emails" = "Email-адреса";
 
 /* No comment provided by engineer. */
-"Enable Class System" = "Включить систему классов";
+"Engage in a fun activity" = "Занимайтесь в веселой деятельности";
 
 /* No comment provided by engineer. */
-"Enter" = "Ввести";
-
-/* No comment provided by engineer. */
-"Equip" = "Надеть";
-
-/* No comment provided by engineer. */
-"Equipment" = "Снаряжение";
-
-/* No comment provided by engineer. */
-"Equipment pieces remaining: %d" = "Осталось деталей экипировки: %d";
+"Enter the email address you used to register your Habitica account." = "Введите адрес электронной почты, который вы использовали при регистрации.";
 
 /* No comment provided by engineer. */
 "Error" = "Ошибка";
 
 /* No comment provided by engineer. */
-"Every x days" = "Каждые х дней";
+"ERROR" = "ОШИБКА";
 
 /* No comment provided by engineer. */
-"Exercise" = "Зарядка";
+"every day" = "каждый день";
+
+/* No comment provided by engineer. */
+"Every time you do a positive Habit, tap the + to get experience and gold!" = "Каждый раз, когда вы выполняете положительную привычку, нажмите + чтобы получить опыт и золото!";
+
+/* No comment provided by engineer. */
+"Exclusive monthly items" = "Эксклюзивные предметы месяца";
+
+/* No comment provided by engineer. */
+"Exercise" = "Упражнение";
+
+/* No comment provided by engineer. */
+"Expand checklist" = "Раскрыть список";
 
 /* No comment provided by engineer. */
 "Experience" = "Опыт";
 
 /* No comment provided by engineer. */
-"Eyewear" = "Очки";
-
-/* 1Password App Extension Error Message */
-"Failed to contacting the 1Password App Extension" = "Не удалось подключиться к дополнению 1Password";
-
-/* 1Password App Extension Error Message */
-"Failed to execute script that collects web page information" = "Не удалось выполнить скрипт, который собирает информацию с веб-страницы";
-
-/* 1Password App Extension Error Message */
-"Failed to fill web page because script could not be evaluated" = "Не удалось заполнить веб страницу, потому что скрипт не смог быть оценён";
-
-/* 1Password App Extension Error Message */
-"Failed to fill web page because script is missing" = "Не удалось загрузить страницу, потому что скрипт отсутствует";
-
-/* 1Password App Extension Error Message */
-"Failed to parse information returned by 1Password App Extension" = "Не удалось разобрать информацию полученную дополнением 1Password";
-
-/* No comment provided by engineer. */
-"Feed" = "Покормить";
+"Export Database" = "Экспорт данных";
 
 /* No comment provided by engineer. */
 "Filter" = "Фильтр";
 
 /* No comment provided by engineer. */
-"Finish assignment for class " = "Завершить задание к уроку";
+"Finish" = "Завершить";
+
+/* No comment provided by engineer. */
+"Finish assignment for class" = "Завершить задание к уроку";
 
 /* No comment provided by engineer. */
 "Finish creative project" = "Завершить креативный проект";
+
+/* No comment provided by engineer. */
+"First up is Habits. They can be positive Habits you want to improve or negative Habits you want to quit." = "Во-первых, это привычки. Они могут быть положительными привычками, которые вы хотите закрепить, или отрицательными привычками, которые вы хотите бросить.";
 
 /* No comment provided by engineer. */
 "Floss" = "Использовать зубную нить";
@@ -391,403 +317,232 @@
 "Flower" = "Цветок";
 
 /* No comment provided by engineer. */
-"Frequency" = "Частота";
-
-/* No comment provided by engineer. */
 "Friday" = "Пятница";
 
 /* No comment provided by engineer. */
 "Gems" = "Самоцветы";
 
 /* No comment provided by engineer. */
-"Get Social and Fight Monsters" = "Заводите друзей и сражайтесь с монстрами";
+"Give it a shot! You can explore the other task types through the bottom navigation." = "Дайте шанс! Вы можете исследовать другие типы задач через нижнюю навигацию.";
 
 /* No comment provided by engineer. */
-"Gifted Gems" = "Подаренные самоцветы";
+"Glasses" = "Очки";
 
 /* No comment provided by engineer. */
-"Gifted Subscription" = "Подписка в подарок";
+"Gold" = "Золото";
 
 /* No comment provided by engineer. */
-"Go Back" = "Вернуться";
+"Good" = "Хорошо";
 
 /* No comment provided by engineer. */
-"Gold: +%.1f
-Mana: -%ld" = "Золото: +%1$.1f
-Мана: -%2$ld";
-
-/* No comment provided by engineer. */
-"Got it" = "Понятно";
+"Great!" = "Отлично!";
 
 /* No comment provided by engineer. */
 "Grey" = "Серые";
 
 /* No comment provided by engineer. */
-"Guilds" = "Гильдии";
-
-/* No comment provided by engineer. */
 "Habit" = "Привычка";
 
 /* No comment provided by engineer. */
-"Hair" = "Волосы";
-
-/* No comment provided by engineer. */
-"Hard" = "Сложно";
-
-/* No comment provided by engineer. */
-"Has a due date" = "Выполнить к определенной дате";
-
-/* No comment provided by engineer. */
-"Hatch Egg" = "Вылупить питомца";
-
-/* No comment provided by engineer. */
-"Hatch with Potion" = "Полить эликсиром";
-
-/* No comment provided by engineer. */
-"Head" = "Голова";
-
-/* No comment provided by engineer. */
-"Head Accessory" = "Аксессуар на голову";
-
-/* No comment provided by engineer. */
-"Healer" = "Целитель";
+"Habits" = "Привычки";
 
 /* No comment provided by engineer. */
 "Health" = "Здоровье";
 
 /* No comment provided by engineer. */
-"Health + Wellness" = "Здоровье и самочувствие";
-
-/* No comment provided by engineer. */
-"Health: +%.1f
-Mana: -%ld" = "Здоровье: +%1$.1f
-Мана: -%2$ld";
-
-/* No comment provided by engineer. */
-"Help & FAQ" = "Помощь и ЧаВо";
-
-/* No comment provided by engineer. */
-"Hey! You are awesome!
-Version %@ (%@)" = "Эй! Вы восхитительны!
-Версия %1$@ (%2$@)";
-
-/* No comment provided by engineer. */
 "Hold down on a task to drag it around." = "Удерживайте задачу, чтобы перемещать ее";
 
 /* No comment provided by engineer. */
-"Huzzah!" = "Ура!";
+"I earned a new achievement in Habitica! " = "Я получил новое достижение в Habitica!";
 
 /* No comment provided by engineer. */
-"I got to level %ld in Habitica by improving my real-life habits!" = "Я получил %ld уровень в Habitica, улучшая привычки в реальной жизни!";
+"Ian the Quest Guide" = " Яна квест-мастер";
 
 /* No comment provided by engineer. */
-"I want to become a %@" = "Я хочу стать %@";
+"If we have your email on file, instructions for setting a new password have been sent to your email." = "Если ваш электронный адрес указан верно, то на него отправлена ссылка для установки нового пароля.";
 
 /* No comment provided by engineer. */
-"I want to opt-out" = "Настройки по умолчанию";
+"If you slip up and do a negative Habit, tapping the - will reduce your avatar’s health to help you stay accountable." = "Если вы ошибетесь и сделаете отрицательную привычку, то нажатие на – уменьшит здоровье вашего аватара, что поможет вам оставаться ответственным.";
 
 /* No comment provided by engineer. */
-"INT %@" = "ИНТ %@";
+"If you’ve encountered a bug or made a mistake that unfairly changed your character, you can manually correct those values here." = "Если вы столкнулись с ошибкой или совершили ошибку, которая несправедливо изменила ваш персонаж, вы можете вручную исправить эти значения здесь.";
 
 /* No comment provided by engineer. */
-"Inbox" = "Почта";
-
-/* No comment provided by engineer. */
-"Invalid E-Mail Address." = "Недействительный Email.";
+"If your To-Do has to be done by a certain time, set a due date. Looks like you can check one off — go ahead!" = "Если ваша задача должна быть выполнена к определенному времени, установите срок. Похоже, вы можете проверить один - вперед!";
 
 /* No comment provided by engineer. */
 "Invalid Habitica User ID" = "Неверный ID пользователя Habitica";
 
 /* No comment provided by engineer. */
-"Invalid username or password" = "Недействительное имя или пароль";
-
-/* No comment provided by engineer. */
-"Inventory" = "Инвентарь";
-
-/* No comment provided by engineer. */
-"Invitation Error" = "Ошибка приглашения";
-
-/* No comment provided by engineer. */
-"Invitation Successful" = "Успешное приглашение";
-
-/* No comment provided by engineer. */
 "Invitation Type" = "Тип приглашения";
-
-/* No comment provided by engineer. */
-"Invite" = "Пригласить";
-
-/* No comment provided by engineer. */
-"Invite Friends" = "Пригласить друзей";
 
 /* No comment provided by engineer. */
 "Invite Members" = "Пригласить участников";
 
 /* No comment provided by engineer. */
-"Invite Party" = "Пригласить команду";
-
-/* No comment provided by engineer. */
-"Invited To Guild" = "Приглашен в гильдию";
-
-/* No comment provided by engineer. */
-"Invited To Party" = "Приглашен в команду";
-
-/* No comment provided by engineer. */
-"Invited To Quest" = "Приглашен в квест";
-
-/* No comment provided by engineer. */
-"Invited to %@" = "Приглашен в %@";
-
-/* No comment provided by engineer. */
-"Items" = "Предметы";
-
-/* No comment provided by engineer. */
 "Join" = "Присоединиться";
 
 /* No comment provided by engineer. */
-"Last logged in" = "Последний вход";
+"Join Habitica (Check me off!)" = "Присоединиться к Habitica (отметить выполненным!)";
 
 /* No comment provided by engineer. */
-"Leader" = "Предводитель";
+"Keep tasks" = "Оставить задания";
 
 /* No comment provided by engineer. */
-"Leave" = "Выйти";
-
-/* No comment provided by engineer. */
-"Leave Group" = "Покинуть группу";
+"Leave" = "Покинуть";
 
 /* No comment provided by engineer. */
 "Leave a Review" = "Оставить отзыв";
 
 /* No comment provided by engineer. */
+"Leave Challenge?" = "Покинуть испытание?";
+
+/* No comment provided by engineer. */
 "Level" = "Уровень";
 
 /* No comment provided by engineer. */
-"Level %@" = "Уровень %@";
-
-/* No comment provided by engineer. */
-"Level %@ %@" = "Уровень %1$@ %2$@";
+"Like Message" = "Нравится";
 
 /* No comment provided by engineer. */
 "Local" = "Локальное";
 
 /* No comment provided by engineer. */
-"Log Out" = "Выйти";
-
-/* No comment provided by engineer. */
-"Log in" = "Вход";
-
-/* No comment provided by engineer. */
 "Login Methods" = "Способы авторизации";
 
 /* No comment provided by engineer. */
-"Login name" = "Имя пользователя";
+"Login Name" = "Имя пользователя";
 
 /* No comment provided by engineer. */
-"Mage" = "Маг";
+"Make Dailies for time-sensitive tasks that need to be done on a regular schedule." = "Создавайте ежедневные дела для задач с учетом времени, которые необходимо выполнять по регулярному расписанию.";
 
 /* No comment provided by engineer. */
-"Maintenance" = "Поддержка";
+"Makes completed To-Dos and task history available for longer." = "Завершённые задачи дольше дольше не архивируются и доступны для просмотра. ";
 
 /* No comment provided by engineer. */
 "Mana" = "Мана";
 
 /* No comment provided by engineer. */
-"Mana: -%ld" = "Мана: -%ld";
+"Mana Points" = "Очки маны";
 
 /* No comment provided by engineer. */
 "Market" = "Рынок";
 
 /* No comment provided by engineer. */
-"Medium" = "Средне";
+"Matt the beast master" = "Мэтт повелитель зверей";
 
 /* No comment provided by engineer. */
-"Member Since" = "Участник с";
-
-/* No comment provided by engineer. */
-"Mental" = "Умственное";
-
-/* No comment provided by engineer. */
-"Menu" = "Меню";
+"Moderator" = "Модератор";
 
 /* No comment provided by engineer. */
 "Monday" = "Понедельник";
 
-/* No comment provided by engineer. */
-"Most important task" = "Самое важное задание";
+/* As in 'repeats monthly' */
+"monthly" = "ежемесячно";
 
 /* No comment provided by engineer. */
-"Mount" = "Оседлать";
+"months" = "месяцы";
 
 /* No comment provided by engineer. */
-"Mount Type" = "Вид скакуна";
+"Mystery Sets" = "Таинственный набор";
 
 /* No comment provided by engineer. */
-"Mounts" = "Скакуны";
+"Neutral" = "Нейтрально";
 
 /* No comment provided by engineer. */
-"Mustache" = "Усы";
+"never" = "никогда";
 
 /* No comment provided by engineer. */
-"My Guilds" = "Мои гильдии";
+"New Email" = "Новая электронная почта";
 
 /* No comment provided by engineer. */
-"Name" = "Имя";
+"New Login Name" = "Новое имя пользователя";
 
 /* No comment provided by engineer. */
-"Negative (-)" = "Вредная (-)";
+"New Password" = "Новый пароль";
 
 /* No comment provided by engineer. */
-"Network error" = "Сбой сети";
+"Next" = "Далее";
 
 /* No comment provided by engineer. */
-"New Party" = "Новая команда";
+"No Camera available" = "Камера не доступна";
 
 /* No comment provided by engineer. */
-"New Reward" = "Новая награда";
+"Not completed" = "Нет завершенных задач";
 
 /* No comment provided by engineer. */
-"News" = "Новости";
+"Not due" = "Необязательно";
 
 /* No comment provided by engineer. */
-"No" = "Нет";
+"Not getting the right drops? Check out the Market to buy just the things you need!" = "Не выпадают нужные трофеи? Зайдите на Рынок, чтобы купить то, что вам нужно!";
 
 /* No comment provided by engineer. */
-"Notes" = "Заметки";
-
-/* No comment provided by engineer. */
-"Nothing Equipped" = "Ничего не надето";
-
-/* No comment provided by engineer. */
-"Nothing Set" = "Ничего не выбрано";
-
-/* No comment provided by engineer. */
-"Nothing equipped" = "Ничего не надето";
+"Oh dear, pay no heed to the monster below -- this is still a safe haven to chat on your breaks." = "Дорогая, не обращай внимания на монстра внизу — это убежище по-прежнему безопасно , чтобы поболтать на перерыве.";
 
 /* No comment provided by engineer. */
 "OK" = "ОК";
 
 /* No comment provided by engineer. */
-"On certain days of the week" = "В определенные дни недели";
-
-/* No comment provided by engineer. */
-"Once a quest is started, no other party members can join the quest." = "После начала квеста к нему не могут присоединиться новые участники";
+"Old Password" = "Старый пароль";
 
 /* No comment provided by engineer. */
 "Open App Store page" = "Перейти в App Store";
 
 /* No comment provided by engineer. */
-"Opt-Out" = "Отказаться";
+"Or delete it by swiping left" = "Или удалите это, сдвинув влево";
 
 /* No comment provided by engineer. */
-"Organize Closet" = "Реогранизовать одежду";
+"Organize clutter" = "Организовать беспорядок";
 
 /* No comment provided by engineer. */
-"Other" = "Прочее";
+"Password" = "Пароль";
 
 /* No comment provided by engineer. */
-"PER %@" = "ВОС %@";
+"Pause Damage" = "Остановить урон";
 
 /* No comment provided by engineer. */
-"Participants" = "Участники";
+"Pending Strike" = "Ожидаемый урон";
 
 /* No comment provided by engineer. */
-"Party" = "Команда";
+"Photo URL" = "Ссылка на фото";
 
 /* No comment provided by engineer. */
-"Passwords don't match." = "Пароли не совпадают.";
+"Pin to Rewards" = "Добавить к наградам";
 
 /* No comment provided by engineer. */
-"Pause your Dailies" = "Приостановить выполнение ежедневных заданий";
+"Ponytail" = "Хвостик";
 
 /* No comment provided by engineer. */
-"Pending" = "В ожидании";
-
-/* No comment provided by engineer. */
-"Pet Type" = "Вид питомца";
-
-/* No comment provided by engineer. */
-"Pets" = "Питомцы";
-
-/* No comment provided by engineer. */
-"Physical" = "Физическое";
-
-/* No comment provided by engineer. */
-"Positive (+)" = "Полезная (+)";
+"Practiced a new creative technique" = "Практикуйте новую творческую технику";
 
 /* No comment provided by engineer. */
 "Process email" = "Обработать email";
 
 /* No comment provided by engineer. */
-"Profile" = "Профиль";
-
-/* No comment provided by engineer. */
-"Public Guilds" = "Открытые гильдии";
-
-/* No comment provided by engineer. */
-"Purchase for %@ Gems" = "Купить за %@ самоцветов";
-
-/* No comment provided by engineer. */
-"Purchase for 2 Gems" = "Купить за 2 самоцвета";
-
-/* No comment provided by engineer. */
-"Push Notifications" = "Уведомления";
-
-/* No comment provided by engineer. */
-"Quest" = "Квест";
-
-/* No comment provided by engineer. */
-"Quest Detail" = "Информация о квесте";
-
-/* No comment provided by engineer. */
-"Quest Invitation" = "Приглашение на квест";
-
-/* No comment provided by engineer. */
-"Quest Mounts" = "Квестовые скакуны";
-
-/* No comment provided by engineer. */
-"Quest Pets" = "Квестовые питомцы";
-
-/* No comment provided by engineer. */
-"Quests" = "Квесты";
-
-/* No comment provided by engineer. */
-"Reactivate your Dailies" = "Начать выполнение ежедневных заданий";
-
-/* No comment provided by engineer. */
-"Received Private Message" = "Получено личное сообщение";
+"Quest Shop" = "Магазин квестов";
 
 /* No comment provided by engineer. */
 "Recipient" = "Участник";
 
 /* No comment provided by engineer. */
-"Register" = "Регистрация";
-
-/* No comment provided by engineer. */
-"Reject" = "Отклонить";
-
-/* No comment provided by engineer. */
-"Reload Content" = "Обновить содержимое";
+"Reject" = "Отказать";
 
 /* No comment provided by engineer. */
 "Remember to check off your Dailies!" = "Не забудьте отметить ежедневные задачи!";
 
 /* No comment provided by engineer. */
-"Remind me tomorrow" = "Напомнить завтра";
-
-/* No comment provided by engineer. */
 "Reminder" = "Напоминание";
 
 /* No comment provided by engineer. */
-"Reminders" = "Напоминания";
+"Repeats \(repeatType.string(everyX))" = "Повторять \(repeatType.string(everyX))";
 
 /* No comment provided by engineer. */
-"Repeat every X days" = "Повторять каждые X дней";
+"Repeats \(repeatType.string(everyX)) on \(repeatOnString)" = "Повторять \(repeatType.string(everyX)) по (repeatOnString)";
 
 /* No comment provided by engineer. */
 "Reply" = "Ответить";
 
 /* No comment provided by engineer. */
-"Report" = "Пожаловаться";
+"Reply to Message" = "Ответить на сообщение";
 
 /* No comment provided by engineer. */
 "Report %@ for violation?" = "Сообщить о нарушении со стороны %@?";
@@ -796,13 +551,22 @@ Version %@ (%@)" = "Эй! Вы восхитительны!
 "Report a bug" = "Сообщить о проблеме";
 
 /* No comment provided by engineer. */
-"Reset Justins Tips" = "Сбросить Подсказки от Джастина";
+"Report Message" = "Пожаловаться на сообщение";
 
 /* No comment provided by engineer. */
-"Rogue" = "Разбойник";
+"Reset Account" = "Сброс учетной записи";
 
 /* No comment provided by engineer. */
-"STR %@" = "СИЛ %@";
+"Resume Damage" = "Вернуться в игру";
+
+/* No comment provided by engineer. */
+"Retain additional history entries" = "Увеличенный список выполненных задач ";
+
+/* No comment provided by engineer. */
+"Reward yourself" = "Наградите себя";
+
+/* No comment provided by engineer. */
+"Rewards" = "Награды";
 
 /* No comment provided by engineer. */
 "Saturday" = "Суббота";
@@ -814,196 +578,169 @@ Version %@ (%@)" = "Эй! Вы восхитительны!
 "Scan QR Code" = "Сканировать QR-код";
 
 /* No comment provided by engineer. */
-"Schedule check-up" = "Проверить расписание";
+"School" = "Учеба";
 
 /* No comment provided by engineer. */
-"School" = "Школа";
+"Score habit down" = "Понижение прывычки";
+
+/* No comment provided by engineer. */
+"Score habit up" = "Повышение прывычки";
+
+/* No comment provided by engineer. */
+"Search" = "Поиск";
 
 /* No comment provided by engineer. */
 "Seasonal Shop" = "Сезонная лавка";
 
 /* No comment provided by engineer. */
-"Select Attributes" = "Выберите характеристики";
+"Seasonal Sorceress" = "Сезонная Чародейка";
 
 /* No comment provided by engineer. */
-"Select Class" = "Выбрать класс";
+"Self-Care" = "Уход за собой";
 
 /* No comment provided by engineer. */
-"Select Difficulty" = "Выбрать сложность";
-
-/* No comment provided by engineer. */
-"Select Frequency" = "Выбрать частоту";
-
-/* No comment provided by engineer. */
-"Sell (%@ Gold)" = "Продать (%@ золота)";
+"Send" = "Отправить";
 
 /* No comment provided by engineer. */
 "Send feedback" = "Отправить отзыв";
 
 /* No comment provided by engineer. */
-"Server error" = "Ошибка сервера";
-
-/* No comment provided by engineer. */
 "Set up workout schedule" = "Составить график тренировок";
 
 /* No comment provided by engineer. */
-"Settings" = "Настройки";
-
-/* No comment provided by engineer. */
-"Shield" = "Щит";
-
-/* No comment provided by engineer. */
-"Shirt" = "Рубашки";
-
-/* No comment provided by engineer. */
-"Shops" = "Магазины";
+"Shirt" = "Рубашка";
 
 /* No comment provided by engineer. */
 "Size" = "Размер";
 
 /* No comment provided by engineer. */
-"Skin" = "Кожа";
+"Slim" = "Стройное";
 
 /* No comment provided by engineer. */
-"Sleep tight!" = "Доброй ночи!";
+"Stable" = "Стойла";
 
 /* No comment provided by engineer. */
-"Social" = "Общение";
-
-/* No comment provided by engineer. */
-"Special Mounts" = "Особые скакуны";
-
-/* No comment provided by engineer. */
-"Special Pets" = "Особые питомцы";
-
-/* No comment provided by engineer. */
-"Stretching" = "Растяжка";
+"Staff" = "Сотрудник";
 
 /* No comment provided by engineer. */
 "Strong" = "Сильные";
 
 /* No comment provided by engineer. */
-"Study a master of the craft" = "Улучшить навык владения ремеслом";
-
-/* No comment provided by engineer. */
 "Study/Procrastinate" = "Учиться/прокрастинировать";
 
 /* No comment provided by engineer. */
-"Suggested Guilds" = "Гильдии, в которые можно вступить";
+"Subscription" = "Подписка";
+
+/* No comment provided by engineer. */
+"success" = "успех";
 
 /* No comment provided by engineer. */
 "Sunday" = "Воскресенье";
 
 /* No comment provided by engineer. */
-"Tags" = "Теги";
+"Take a short break" = "Сделайте короткий перерыв";
 
 /* No comment provided by engineer. */
 "Tap a task to edit it and add reminders. Swipe left to delete it." = "Нажмите на задание, чтобы редактировать его или добавить напоминание. Смахните его влево для удаления.";
 
 /* No comment provided by engineer. */
+"Tap here to edit this into a bad habit you'd like to quit" = "Нажмите здесь, чтобы изменить данные о плохой привычки, которую вы хотели бы бросить";
+
+/* No comment provided by engineer. */
+"Tap the gray button to allocate lots of your stats at once, or tap the arrows to add them one point at a time." = "Нажмите серую кнопку, чтобы распределить очки на ваши характеристик сразу или коснитесь стрелок, чтобы добавлять в их по одному очку.";
+
+/* No comment provided by engineer. */
+"Tap to add a checklist!" = "Нажмите, чтобы добавить список";
+
+/* No comment provided by engineer. */
 "Tap to add a new task." = "Нажмите, чтобы добавить новую задачу.";
 
 /* No comment provided by engineer. */
-"Tap to change how your pets are grouped." = "Нажмите, чтобы объединить ваших питомцев по-новому.";
+"Tap to add checklists!" = "Нажмите, чтобы добавить списки";
 
 /* No comment provided by engineer. */
-"Tap to edit task, change notification time, or delete." = "Нажмите, чтобы редактировать задание, изменить время оповещения или удалить.";
+"Tap to choose your schedule and specify exercises!" = "Нажмите, чтобы выбрать расписание и указать упражнения";
+
+/* No comment provided by engineer. */
+"Tap to choose your schedule!" = "Нажмите, чтобы выбрать расписание!";
 
 /* No comment provided by engineer. */
 "Tap to filter tasks." = "Нажмите, чтобы отфильтровать заданияю";
 
 /* No comment provided by engineer. */
-"Tap to invite friends and view party members." = "Нажмите, чтобы пригласть друзей и просмотреть членов команды.";
+"Tap to make any changes!" = "Нажмите, чтобы внести какие-либо изменения!";
+
+/* No comment provided by engineer. */
+"Tap to show" = "Нажмите, чтобы показать";
+
+/* No comment provided by engineer. */
+"Tap to specify the cluttered area!" = "Нажмите, чтобы указать область беспорядка!";
+
+/* No comment provided by engineer. */
+"Tap to specify the name of your current project + set a due date!" = "Нажмите, чтобы указать имя вашего текущего проекта + установить срок выполнения!";
+
+/* No comment provided by engineer. */
+"Tap to specify the name of your current project + set the schedule!" = "Нажмите, чтобы указать имя вашего текущего проекта + установить расписание!";
+
+/* No comment provided by engineer. */
+"Tap to specify the name of your project" = "Нажмите, чтобы указать название вашего проекта.";
+
+/* No comment provided by engineer. */
+"Tap to specify what you plan to do!" = "Нажмите, чтобы указать, что вы планируете делать!";
+
+/* No comment provided by engineer. */
+"Tap to specify your most important task" = "Нажмите, чтобы указать вашу наиважнейшую задачу";
 
 /* No comment provided by engineer. */
 "Tavern" = "Таверна";
 
 /* No comment provided by engineer. */
-"Teams" = "Команды";
+"Teleporting to Habitica" = "Телепортация в Habitica";
 
 /* No comment provided by engineer. */
-"Text" = "Текст";
-
-/* No comment provided by engineer. */
-"The authentication process was cancelled." = "Аутентификация отменена.";
+"The \(locationName) was Attacked!" = "\(locationName) был атакован";
 
 /* No comment provided by engineer. */
 "The scanned QR-Code did not contain a valid Habitica User ID." = "QR-код не содержит ID пользователя Habitica.";
 
 /* No comment provided by engineer. */
-"The users were invited to your party" = "Пользователи приглашены в команду";
+"There was an error accepting the quest invitation" = "Произошла ошибка при принятии приглашения на квест";
 
 /* No comment provided by engineer. */
-"There seems to be a problem with the server. Try again later" = "Кажется, возникли проблемы с сервером. Попробуйте позднее";
-
-/* No comment provided by engineer. */
-"There was an error verifying your purchase" = "При подтверждении вашей покупки возникла ошибка";
-
-/* No comment provided by engineer. */
-"There was an error with the authentication. Try again later" = "Ппроизошла ошибка аутентификации. Попробуйте позднее.";
+"There was an error rejecting the quest invitation" = "Произошла ошибка при отказе на приглашение на квест";
 
 /* No comment provided by engineer. */
 "There was an error with your request: %@" = "При запросе возникла ошибка: %@";
 
 /* No comment provided by engineer. */
-"This item can be purchased for %@ Gems" = "Этот предмет можно купить за %@ самоцветов";
-
-/* No comment provided by engineer. */
-"This item can be purchased for 2 Gems" = "Этот предмет можно купить за 2 самоцвета";
-
-/* No comment provided by engineer. */
-"This set can be unlocked for %@ Gems" = "Этот набор можно открыть за %@ самоцветов";
+"This is where you can read and reply to private messages! You can also message people from their profiles." = "Здесь вы можете читать и отвечать на личные сообщения! Вы также можете отправлять сообщения из своих профилей.";
 
 /* No comment provided by engineer. */
 "Thursday" = "Четверг";
 
 /* No comment provided by engineer. */
-"Time Travelers" = "Путешественники во времени";
-
-/* No comment provided by engineer. */
 "To-Do" = "Задача";
 
 /* No comment provided by engineer. */
-"Trivial" = "Пустяк";
+"To-Dos" = "Задачи";
 
 /* No comment provided by engineer. */
 "Tuesday" = "Вторник";
 
 /* No comment provided by engineer. */
-"Unequip" = "Снять";
+"Unlocks after selecting a class" = "Открывается после выбора класса";
 
 /* No comment provided by engineer. */
-"Unlock for %@ Gems" = "Открыть за %@ самоцветов";
+"Unlocks at level 10" = "Открывается на 10 уровне";
 
 /* No comment provided by engineer. */
-"Unmount" = "Спешиться";
+"Unpin from Rewards" = "Убрать из наград";
 
 /* No comment provided by engineer. */
-"Update team on status" = "Узнать, как обстоят дела у команды";
-
-/* No comment provided by engineer. */
-"Use" = "Использовать";
-
-/* No comment provided by engineer. */
-"Use Skills" = "Использовать навыки";
-
-/* No comment provided by engineer. */
-"User" = "Пользователь";
+"Use To-Dos to keep track of tasks you need to do just once." = "Используйте список задач для отслеживания дел, которые необходимо выполнить только один раз.";
 
 /* No comment provided by engineer. */
 "User ID" = "ID пользователя";
-
-/* No comment provided by engineer. */
-"Username" = "Имя пользователя";
-
-/* No comment provided by engineer. */
-"Username already taken." = "Имя пользователя уже занято.";
-
-/* No comment provided by engineer. */
-"Validation Error" = "Ошибка подтверждения";
-
-/* No comment provided by engineer. */
-"Value" = "Ценность";
 
 /* No comment provided by engineer. */
 "Version" = "Версия";
@@ -1012,16 +749,10 @@ Version %@ (%@)" = "Эй! Вы восхитительны!
 "View Source Code" = "Посмотреть исходный код";
 
 /* No comment provided by engineer. */
-"Visibility" = "Видимость";
+"Wash dishes" = "Помыть посуду";
 
 /* No comment provided by engineer. */
-"Wakey Wakey!" = "Проснись и пой!";
-
-/* No comment provided by engineer. */
-"Warrior" = "Воин";
-
-/* No comment provided by engineer. */
-"Wash Dishes" = "Помыть посуду";
+"Watch TV, play a game, eat a treat, it’s up to you!" = "Смотрите телевизор, играйте в игру, ешьте в удовольствие, это зависит от вас!";
 
 /* No comment provided by engineer. */
 "We love open source software." = "Мы любим открытое программное обеспечение.";
@@ -1030,25 +761,40 @@ Version %@ (%@)" = "Эй! Вы восхитительны!
 "Weak" = "Слабые";
 
 /* No comment provided by engineer. */
-"Weapon" = "Оружие";
-
-/* No comment provided by engineer. */
-"Wear costume" = "Надеть костюм";
-
-/* No comment provided by engineer. */
-"Website" = "Веб-сайт";
+"Website" = "Сайт";
 
 /* No comment provided by engineer. */
 "Wednesday" = "Среда";
 
 /* No comment provided by engineer. */
-"Weekly" = "Еженедельные";
+"weekdays" = "дни недели";
 
 /* No comment provided by engineer. */
-"Welcome" = "Добро пожаловать";
+"weekends" = "выходные";
+
+/* As in 'repeats weekly' */
+"weekly" = "ежемесячно";
 
 /* No comment provided by engineer. */
-"Welcome to Habitica" = "Добро пожаловать в Habitica";
+"weeks" = "недели";
+
+/* No comment provided by engineer. */
+"Welcome Back!" = "С возвращением!";
+
+/* No comment provided by engineer. */
+"Welcome to the Inn! Pull up a chair to chat, or take a break from your tasks." = "Добро пожаловать в таверну! Займите столик чтобы поболтать, или отвлечься от своих задач.";
+
+/* No comment provided by engineer. */
+"What's a Rage Strike?" = "Что такое удар ярости?";
+
+/* No comment provided by engineer. */
+"What’s a World Boss?" = "Кто такой Мировой босс?";
+
+/* No comment provided by engineer. */
+"Wheelchair" = "Кресло-каталка";
+
+/* No comment provided by engineer. */
+"Whoops, looks like you haven't set up your email on this phone yet. Configure an account in the iOS mail app to use this quick-reporting option, or just email us directly at mobile@habitica.com" = "Похоже, вы еще не создали свою электронную почту на этом телефоне. Настройте учетную запись в почтовом приложении iOS, чтобы использовать опцию быстрой рассылки, или просто напишите нам по адресу mobile@habitica.com";
 
 /* No comment provided by engineer. */
 "Work" = "Работа";
@@ -1057,7 +803,16 @@ Version %@ (%@)" = "Эй! Вы восхитительны!
 "Work on creative project" = "Работать над креативным проектом";
 
 /* No comment provided by engineer. */
-"Work project" = "Рабочий проект";
+"Worked on today’s most important task" = "Работать сегодня над самым важным заданием";
+
+/* No comment provided by engineer. */
+"Worse" = "Хуже";
+
+/* No comment provided by engineer. */
+"Worst" = "Хуже всего";
+
+/* No comment provided by engineer. */
+"Write a message" = "Написать сообщение";
 
 /* No comment provided by engineer. */
 "Write Message" = "Написать сообщение";
@@ -1065,63 +820,45 @@ Version %@ (%@)" = "Эй! Вы восхитительны!
 /* No comment provided by engineer. */
 "Write to %@" = "Написать %@";
 
-/* No comment provided by engineer. */
-"Yes" = "Да";
+/* As in 'repeats yearly' */
+"yearly" = "ежегодно";
 
 /* No comment provided by engineer. */
-"You gained a level!" = "Вы получили уровень!";
+"years" = "годы";
 
 /* No comment provided by engineer. */
-"You hatched a %@ %@!" = "У вас вылупился %1$@ %2$@!";
+"You can also make real-world Custom Rewards based on what motivates you." = "Вы также можете создавать реальные пользовательские вознаграждения на основе того, что мотивирует вас.";
 
 /* No comment provided by engineer. */
-"You have no food" = "У вас нет еды";
+"You can either complete this To-Do, edit it, or remove it." = "Вы можете завершить эту задачу, отредактировать ее или удалить.";
+
+/* No comment provided by engineer. */
+"You earned a streak achievement!" = "Вы заработали достижение Серии!";
+
+/* No comment provided by engineer. */
+"You have earned a %@ for being committed to improving your life." = "Вы заработали %@ за стремление улучшить свою жизнь.";
 
 /* No comment provided by engineer. */
 "You have to specify a valid Habitica User ID as recipient." = "Вы должны указать в качестве получателя правильный пользовательский ID участника Habitica. ";
 
 /* No comment provided by engineer. */
-"You purchased %@" = "Вы приобрели %@";
+"You unlocked the drop system!" = "Вы разблокировали систему трофеев!";
 
 /* No comment provided by engineer. */
-"You purchased the set." = "Вы приобрели набор.";
+"You've completed your Daily for 21 days in a row! Amazing job. Don't break the streak!" = "Вы выполнили ежедневную задачу 21 день подряд! Отличная работа. Не прерывайте серию!";
 
 /* No comment provided by engineer. */
-"You raised a mount!" = "Вы вырастили скакуна!";
+"You've unlocked the Drop System! Now when you complete tasks, you have a small chance of finding an item, including eggs, potions, and food!" = "Вы открыли систему выпадения трофеев! Теперь, когда вы выполняете задания, у вас есть маленький шанс найти предмет, включая яйца, эликсиры и еду!";
 
 /* No comment provided by engineer. */
-"You will become a %@." = "Вы станете %@.";
-
-/* No comment provided by engineer. */
-"You won a Challenge!" = "Вы выиграли испытание!";
-
-/* No comment provided by engineer. */
-"Your Quest has Begun" = "Ваш Квест начался";
+"Your email isn't set up yet" = "Ваш адрес электронной почты не указан";
 
 /* No comment provided by engineer. */
 "Your message could not be sent." = "Ваше сообщение не может быть отправлено.";
 
 /* No comment provided by engineer. */
-"Your pet eats the %@ but doesn't seem to enjoy it." = "Ваш питомец все съел, но не похоже, что <%= foodText %> ему нравится.";
+"Your next prize unlocks in %d Check-Ins" = "Ваш следующий приз будет доступен после того, как вы войдете в игру ещё %d раз(а)!";
 
 /* No comment provided by engineer. */
-"Your pet really likes the %@!" = "Вашему питомцу очень нравится %@!";
-
-/* No comment provided by engineer. */
-"equipped" = "надето";
-
-/* Singular */
-"gem" = "самоцвет";
-
-/* Plural */
-"gems" = "самоцветы";
-
-/* Singular */
-"gold" = "золото";
-
-/* Singular */
-"hourglass" = "песочные часы";
-
-/* Plural */
-"hourglasses" = "песочные часы";
+"Your next prize unlocks in 1 Check-In." = "Ваш следующий приз будет доступен после того, как вы войдете в игру ещё 1 раз.";
 

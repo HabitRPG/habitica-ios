@@ -1,3 +1,6 @@
-/* (No Commment) */
+/* Bundle display name */
+"CFBundleDisplayName" = "Habitica";
+
+/* Bundle name */
 "CFBundleName" = "Habitica";
 

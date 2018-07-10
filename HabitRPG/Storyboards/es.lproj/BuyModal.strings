@@ -1,0 +1,30 @@
+/* Class = "UIButton"; normalTitle = "Subscribe for Hourglasses"; ObjectID = "4E3-xU-II9"; */
+"4E3-xU-II9.normalTitle" = "Suscribirse a cambio de Relojes de Arena";
+
+/* Class = "UILabel"; text = "Your balance:"; ObjectID = "b9i-sB-wsY"; */
+"b9i-sB-wsY.text" = "Tu balance:";
+
+/* Class = "UILabel"; text = "Not enough Gems"; ObjectID = "C3v-IP-fUG"; */
+"C3v-IP-fUG.text" = "No hay suficientes Gemas";
+
+/* Class = "UILabel"; text = "Buy"; ObjectID = "j5D-EL-LRQ"; */
+"j5D-EL-LRQ.text" = "Comprar";
+
+/* Class = "UILabel"; text = "Not enough Gold"; ObjectID = "MAF-Nb-1hY"; */
+"MAF-Nb-1hY.text" = "No hay suficiente oro";
+
+/* Class = "UILabel"; text = "Monthly Gem Cap Reached"; ObjectID = "osQ-wn-dQZ"; */
+"osQ-wn-dQZ.text" = "Límite de Gemas Mensuales Alcanzado";
+
+/* Class = "UIButton"; normalTitle = "Pin to Rewards"; ObjectID = "TiK-yj-cOf"; */
+"TiK-yj-cOf.normalTitle" = "Fijar en Recompensas";
+
+/* Class = "UIButton"; normalTitle = "Purchase Gems"; ObjectID = "u6f-ro-Ehm"; */
+"u6f-ro-Ehm.normalTitle" = "Comprar Gemas";
+
+/* Class = "UIButton"; normalTitle = "Take me back"; ObjectID = "Wl4-Aq-qfJ"; */
+"Wl4-Aq-qfJ.normalTitle" = "Llévame de vuelta";
+
+/* Class = "UILabel"; text = "Not enough Hourglasses"; ObjectID = "Z4L-Zx-0jp"; */
+"Z4L-Zx-0jp.text" = "No hay suficientes Relojes de Arena";
+

@@ -1,0 +1,453 @@
+/* (No Comment) */
+"active" = "Aktivní";
+
+/* (No Comment) */
+"animal_ears" = "Zvířecí uši";
+
+/* (No Comment) */
+"avatar.background" = "Pozadí";
+
+/* (No Comment) */
+"avatar.bangs" = "Ofina";
+
+/* (No Comment) */
+"avatar.beard" = "Plnovous";
+
+/* (No Comment) */
+"avatar.flower" = "Květina";
+
+/* (No Comment) */
+"avatar.glasses" = "Brýle";
+
+/* (No Comment) */
+"avatar.head" = "Vlasy";
+
+/* (No Comment) */
+"avatar.mustache" = "Knír";
+
+/* (No Comment) */
+"avatar.shirt" = "Košile";
+
+/* (No Comment) */
+"avatar.wheelchair" = "Kolečkové křeslo";
+
+/* (No Comment) */
+"cancel" = "Zrušit";
+
+/* (No Comment) */
+"chat" = "Chat";
+
+/* (No Comment) */
+"classes.become_a_class" = "Staň se %@";
+
+/* (No Comment) */
+"classes.healer" = "Léčitel";
+
+/* (No Comment) */
+"classes.healer_description" = "Léčitel je nezranitelný a ochraňuje i ostatní. Promeškané Denní úkoly a špatné Zvyky jim moc neublíží a mají možnost se zahojit. Buď léčitelem jestli rád pomůžeš ostatním v družině, nebo pokud tě inspiruje myšlenka na ošizení smrti tím, že budeš pořádně dřít!";
+
+/* (No Comment) */
+"classes.mage" = "Mág";
+
+/* (No Comment) */
+"classes.rogue" = "Zloděj";
+
+/* (No Comment) */
+"classes.rogue_description" = "Zloděj miluje střádání bohatství, získávání více zlata než mají ostatní, a je adeptem na nalezení náhodných předmětů. Jeho pověstná lstivost mu umožňuje uniknout důsledkům promeškání Denních úkolů. Buď zlodějem, pokud nacházíš silnou motivaci v odměnách a úspěších a usiluješ o velkou kořist a ocenění!";
+
+/* (No Comment) */
+"classes.warrior" = "Válečník";
+
+/* (No Comment) */
+"close" = "Zavřít";
+
+/* (No Comment) */
+"confirm" = "Potvrdit";
+
+/* (No Comment) */
+"create" = "Vytvořit";
+
+/* (No Comment) */
+"daily" = "Denně";
+
+/* (No Comment) */
+"delete" = "Vymazat";
+
+/* (No Comment) */
+"description" = "Popis";
+
+/* (No Comment) */
+"difficulty" = "Obtížnost";
+
+/* (No Comment) */
+"edit" = "Upravit";
+
+/* (No Comment) */
+"eggs" = "Vejce";
+
+/* (No Comment) */
+"equip" = "Vybavit";
+
+/* (No Comment) */
+"equipment.armor" = "Zbroj";
+
+/* (No Comment) */
+"equipment.back" = "Příslušenství na záda";
+
+/* (No Comment) */
+"equipment.battle_gear" = "Bojová výzbroj";
+
+/* (No Comment) */
+"equipment.body" = "Příslušenství na tělo";
+
+/* (No Comment) */
+"equipment.costume" = "Kostým";
+
+/* (No Comment) */
+"equipment.eyewear" = "Brýle";
+
+/* (No Comment) */
+"equipment.head_accessory" = "Doplňky na hlavu";
+
+/* (No Comment) */
+"equipment.nothing_equipped" = "Žádné vybavení";
+
+/* (No Comment) */
+"equipment.off_hand" = "Druhá ruka";
+
+/* (No Comment) */
+"equipment.use_costume" = "Použít kostým";
+
+/* (No Comment) */
+"equipment.weapon" = "Zbraň";
+
+/* (No Comment) */
+"experience" = "Zkušenost";
+
+/* (No Comment) */
+"food" = "Jídlo";
+
+/* (No Comment) */
+"glasses" = "Brýle";
+
+/* (No Comment) */
+"hatching_potions" = "Líhnoucí lektvary";
+
+/* (No Comment) */
+"health" = "Zdraví";
+
+/* (No Comment) */
+"inventory.hatched" = "Vylíhl se ti nový mazlíček!";
+
+/* (No Comment) */
+"invite_party" = "Pozvat družinu";
+
+/* (No Comment) */
+"leader" = "Vůdce";
+
+/* (No Comment) */
+"leave" = "Odejít";
+
+/* (No Comment) */
+"levelup_title" = "Dostal/a ses na další úroveň!";
+
+/* (No Comment) */
+"mana" = "Mana";
+
+/* (No Comment) */
+"member.last_logged_in" = "Naposledy přihlášen";
+
+/* (No Comment) */
+"member.member_since" = "Členem od";
+
+/* (No Comment) */
+"menu.about" = "Popis";
+
+/* (No Comment) */
+"menu.cast_spells" = "Seslat kouzla";
+
+/* (No Comment) */
+"menu.challenges" = "Výzvy";
+
+/* (No Comment) */
+"menu.customize_avatar" = "Upravit postavu";
+
+/* (No Comment) */
+"menu.equipment" = "Vybavení";
+
+/* (No Comment) */
+"menu.guilds" = "Cechy";
+
+/* (No Comment) */
+"menu.help_faq" = "Nápověda a často kladené dotazy";
+
+/* (No Comment) */
+"menu.inventory" = "Inventář";
+
+/* (No Comment) */
+"menu.items" = "Předměty";
+
+/* (No Comment) */
+"menu.news" = "Novinky";
+
+/* (No Comment) */
+"menu.party" = "Družina";
+
+/* (No Comment) */
+"menu.select_class" = "Vybrat povolání";
+
+/* (No Comment) */
+"menu.shops" = "Obchody";
+
+/* (No Comment) */
+"menu.social" = "Komunita";
+
+/* (No Comment) */
+"menu.stable" = "Stáj";
+
+/* (No Comment) */
+"menu.stats" = "Statistiky";
+
+/* (No Comment) */
+"menu.tavern" = "Krčma";
+
+/* (No Comment) */
+"menu.use_skills" = "Použít dovednosti";
+
+/* (No Comment) */
+"monthly" = "Měsíčně";
+
+/* (No Comment) */
+"mounts" = "Zvířata";
+
+/* (No Comment) */
+"my_challenges" = "Moje výzvy";
+
+/* (No Comment) */
+"my_guilds" = "Mé cechy";
+
+/* (No Comment) */
+"name" = "Název";
+
+/* (No Comment) */
+"notes" = "Poznámky";
+
+/* (No Comment) */
+"ok" = "OK";
+
+/* (No Comment) */
+"party.quest_participant_count" = "%d Účastníků";
+
+/* (No Comment) */
+"pets" = "Mazlíčci";
+
+/* (No Comment) */
+"quests" = "Výpravy";
+
+/* (No Comment) */
+"quests.accepted" = "Přijato";
+
+/* (No Comment) */
+"quests.confirm_abort" = "Jsi si jistý/á, že chceš ukončit výpravu? Bude ukončena pro všechny v družině a všechen pokrok bude ztracen. Svitek bude navrácen svému majiteli.";
+
+/* (No Comment) */
+"quests.confirm_cancel_invitation" = "Jsi si jistý/á, že chceš skončit výpravu? Všechny pozvánky budou ztraceny. Svitek bude navrácen svému majiteli.";
+
+/* (No Comment) */
+"quests.invitations_header" = "Pozvánky";
+
+/* (No Comment) */
+"quests.participants_header" = "účastníci";
+
+/* (No Comment) */
+"quests.pending" = "Nerozhodnuto";
+
+/* (No Comment) */
+"quests.rejected" = "Odmítnuto";
+
+/* (No Comment) */
+"reset_tips" = "Obnovit Justinovy tipy";
+
+/* (No Comment) */
+"resetStreak" = "Obnovit sérii úspěšnosti";
+
+/* (No Comment) */
+"save" = "Uložit";
+
+/* (No Comment) */
+"search" = "Vyhledávání";
+
+/* (No Comment) */
+"settings.api" = "API";
+
+/* (No Comment) */
+"settings.are_you_sure" = "Jsi si jistý?";
+
+/* (No Comment) */
+"settings.authentication" = "Ověření";
+
+/* (No Comment) */
+"settings.clear_cache" = "Vymazat cache";
+
+/* (No Comment) */
+"settings.custom_day_start" = "Vlastní začátek dne";
+
+/* (No Comment) */
+"settings.daily_reminder" = "Denní upomínka";
+
+/* (No Comment) */
+"settings.day_start" = "Začátek dne";
+
+/* (No Comment) */
+"settings.enable_class_system" = "Povolit systém povolání";
+
+/* (No Comment) */
+"settings.fix_characterValues" = "Opravit hodnoty postavy";
+
+/* (No Comment) */
+"settings.log_out" = "Odhlásit";
+
+/* (No Comment) */
+"settings.maintenance" = "Údržba";
+
+/* (No Comment) */
+"settings.profile" = "Profil";
+
+/* (No Comment) */
+"settings.reload_content" = "Znovu načíst obsah";
+
+/* (No Comment) */
+"settings.reminder" = "Upomínka";
+
+/* (No Comment) */
+"settings.select_class" = "Vybrat povolání";
+
+/* (No Comment) */
+"settings.social" = "Komunita";
+
+/* (No Comment) */
+"settings.user" = "Uživatel";
+
+/* (No Comment) */
+"share" = "Sdílet";
+
+/* (No Comment) */
+"stable.feed" = "Nakrmit";
+
+/* (No Comment) */
+"stable.premium" = "Magický lektvar";
+
+/* (No Comment) */
+"stable.quest_mounts" = "Zvířata z výprav";
+
+/* (No Comment) */
+"stable.quest_pets" = "Mazlíčci z výprav";
+
+/* (No Comment) */
+"stable.special_mounts" = "Speciální zvířata";
+
+/* (No Comment) */
+"stable.special_pets" = "Speciální mazlíčci";
+
+/* (No Comment) */
+"stable.standard" = "Běžný";
+
+/* (No Comment) */
+"stats.allocated" = "Přiděleno";
+
+/* (No Comment) */
+"stats.battle_gear" = "Bojová výzbroj";
+
+/* (No Comment) */
+"stats.buffs" = "Bonusy";
+
+/* (No Comment) */
+"stats.level" = "Úroveň";
+
+/* (No Comment) */
+"summary" = "Shrnutí";
+
+/* (No Comment) */
+"tags" = "Štítky";
+
+/* (No Comment) */
+"tasks.daily" = "Denně";
+
+/* (No Comment) */
+"tasks.form.checklist" = "Seznam";
+
+/* (No Comment) */
+"tasks.form.clear" = "Vymazat";
+
+/* (No Comment) */
+"tasks.form.confirm_delete" = "Jsi si jistý/á, že chceš tento úkol smazat?";
+
+/* (No Comment) */
+"tasks.form.cost" = "Cena";
+
+/* (No Comment) */
+"tasks.form.difficulty" = "Obtížnost";
+
+/* (No Comment) */
+"tasks.form.easy" = "Jednoduché";
+
+/* (No Comment) */
+"tasks.form.edit" = "Upravit %@";
+
+/* (No Comment) */
+"tasks.form.hard" = "Těžké";
+
+/* (No Comment) */
+"tasks.form.medium" = "Středně těžké";
+
+/* (No Comment) */
+"tasks.form.new_checklist_item" = "Nová položka v seznamu";
+
+/* (No Comment) */
+"tasks.form.reminders" = "Upomínky";
+
+/* (No Comment) */
+"tasks.form.repeats" = "Opakuje se";
+
+/* (No Comment) */
+"tasks.form.reset_streak" = "Obnovit sérii úspěšnosti";
+
+/* (No Comment) */
+"tasks.form.tags" = "Štítky";
+
+/* (No Comment) */
+"tasks.form.trivial" = "Triviální";
+
+/* (No Comment) */
+"tasks.habit" = "Zvyk";
+
+/* (No Comment) */
+"tasks.reward" = "Odměna";
+
+/* (No Comment) */
+"tasks.todo" = "úkol";
+
+/* (No Comment) */
+"theme.blue" = "Modrá";
+
+/* (No Comment) */
+"theme.green" = "Zelená";
+
+/* (No Comment) */
+"theme.red" = "Červená";
+
+/* (No Comment) */
+"theme.yellow" = "Žlutá";
+
+/* (No Comment) */
+"title" = "Titul";
+
+/* (No Comment) */
+"unequip" = "Odebrat";
+
+/* (No Comment) */
+"weekly" = "Týdně";
+
+/* (No Comment) */
+"yearly" = "Ročně";
+

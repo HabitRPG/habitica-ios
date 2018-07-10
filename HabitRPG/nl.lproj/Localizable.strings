@@ -1,20 +1,11 @@
 /* No comment provided by engineer. */
-" Unlock Set for %@ Gems " = "Ontgrendel Set voor %@ Edelstenen";
+"\(experience) Experience Points" = "\(experience) ervaringspunten";
 
 /* No comment provided by engineer. */
-"%.2f Gold" = "%.2f Goud";
+"\(gold) Gold" = "\(gold) Goud";
 
 /* No comment provided by engineer. */
-"%@ Gems" = "%@ Edelstenen";
-
-/* No comment provided by engineer. */
-"%@ Members" = "%@ Leden";
-
-/* No comment provided by engineer. */
-"%@ Participants" = "%@ Deelnemers";
-
-/* No comment provided by engineer. */
-"%d out of %d responded" = "%1$d van de %2$d hebben geantwoord";
+"\(npcName) is Heartbroken!\nOur beloved \(npcLongName) was devastated when \(bossName) shattered the \(locationName). Quickly, tackle your tasks to defeat the monster and help rebuild!" = "\(npcName)'s hart is gebroken!\nOnze geliefde \(npcLongName) werd verwoest toen \(bossName) de \(locationName) verbrijzelde. Snel, pak je taken aan om het monster te verslaan en te helpen heropbouwen!";
 
 /* more than one filter */
 "%ld Filters" = "%ld filters";
@@ -23,25 +14,16 @@
 "1 Filter" = "1 Filter";
 
 /* No comment provided by engineer. */
-"1 Participant" = "1 Deelnemer";
-
-/* 1Password App Extension Error Message */
-"1Password Extension was cancelled by the user" = "1Password Extension was geannuleerd door the gebruiker";
+"5 minutes of quiet breathing" = "5 minuten rustig ademen";
 
 /* No comment provided by engineer. */
-"10 min cardio" = "10 min. cardio";
+"10 minutes cardio" = "10 minuten cardio";
 
 /* No comment provided by engineer. */
 "10 minutes cleaning" = "10 minuten schoonmaken";
 
 /* No comment provided by engineer. */
-"API" = "API";
-
-/* No comment provided by engineer. */
-"API Key" = "API Sleutel";
-
-/* No comment provided by engineer. */
-"Abort" = "Afbreken";
+"21-Day Streaks" = "21-dagen-streak";
 
 /* No comment provided by engineer. */
 "About" = "Over";
@@ -50,16 +32,7 @@
 "Accept" = "Accepteren";
 
 /* No comment provided by engineer. */
-"Accepted" = "Geaccepteerd";
-
-/* No comment provided by engineer. */
-"Account Details" = "Account Informatie";
-
-/* No comment provided by engineer. */
 "Acknowledgements" = "Dankwoord";
-
-/* No comment provided by engineer. */
-"Actions" = "Acties";
 
 /* No comment provided by engineer. */
 "Active" = "Actief";
@@ -71,138 +44,115 @@
 "Add a User ID" = "Voeg een Gebruikers-ID toe";
 
 /* No comment provided by engineer. */
-"Add a new checklist item" = "Voeg een checklijst item toe";
-
-/* No comment provided by engineer. */
-"Add a new reminder" = "Voeg een nieuwe herinnering toe";
-
-/* No comment provided by engineer. */
 "Add an Email" = "Voeg een e-mail toe";
+
+/* No comment provided by engineer. */
+"Alex the Merchant" = "Alex de Handelaar";
 
 /* No comment provided by engineer. */
 "All" = "Alle";
 
 /* No comment provided by engineer. */
-"Allocated" = "Toegewezen";
+"API Key" = "API-Sleutel";
 
 /* No comment provided by engineer. */
-"Animal Ears" = "Dierenoren";
-
-/* 1Password App Extension Error Message */
-"App Extension API is not available in this version of iOS" = "App extensie API is niet beschikbaar voor deze versie van iOS";
+"Are you sure? This will delete your account forever, and it can never be restored! You will need to register a new account to use Habitica again. Banked or spent Gems will not be refunded. If you're absolutely certain, type your password into the text box below." = "Ben je zeker? Dit zal je account voor altijd verwijderen en het kan nooit meer hersteld worden! Je zal een nieuw account moeten registreren om Habitica opnieuw te gebruiken. Opgespaarde of uitgegeven Edelstenen zullen niet terugbetaald worden. Als je echt zeker bent, typ dan je wachtwoord in het onderstaande tekstvak.";
 
 /* No comment provided by engineer. */
-"App Version: %@
-" = "APP Versie: %@
-";
+"Assigns more points to the attributes important to your Class." = "Wijst meer punten toe aan de eigenschappen die belangrijk zijn voor jouw klasse.";
 
 /* No comment provided by engineer. */
-"Are you sure?" = "Weet je het zeker?";
+"Assigns points based on the Strength, Intelligence, Constitution, and Perception categories associated with the tasks you complete." = "Wijst punten toe op basis van de kracht, intelligentie, lichaam en perceptie categorieën die horen bij de taken die je vervuld hebt.";
 
 /* No comment provided by engineer. */
-"Armor" = "Wapenrusting";
+"Assigns the same number of points to each attribute." = "Wijst hetzelfde aantal punten toe aan elke eigenschap.";
 
 /* No comment provided by engineer. */
-"Attributes" = "Eigenschappen";
-
-/* Noun */
 "Authentication" = "Authenticatie";
 
 /* No comment provided by engineer. */
-"Authentication Cancelled" = "Authenticatie Geweigerd";
-
-/* No comment provided by engineer. */
-"Authentication Error" = "Authenticatie Error";
-
-/* No comment provided by engineer. */
-"Back" = "Rug";
-
-/* No comment provided by engineer. */
-"Background" = "Achtergrond";
+"Bad" = "Slecht";
 
 /* No comment provided by engineer. */
 "Bangs" = "Pony";
 
 /* No comment provided by engineer. */
-"Base" = "Normale";
+"Be careful — if you miss one, your avatar will take damage overnight. Checking them off consistently brings great rewards!" = "Wees voorzichtig — als je er één mist, dan krijgt jouw avatar 's nachts schade. Ze regelmatig afstrepen geeft grotere beloningen!";
 
 /* No comment provided by engineer. */
-"Base Mounts" = "Normale rijdieren";
+"Be careful...\nThe World Boss will lash out and attack one of our friendly shopkeepers once its rage bar fills. Keep up with your Dailies to try and prevent it from happening!" = "Wees voorzichtig...\nWanneer zijn woedebalk gevuld is, haalt de Wereldbaas uit en valt één van onze vriendelijke winkeliers aan. Hou je dagelijkse taken bij en probeer zo te zorgen dat dit niet gebeurd! ";
 
 /* No comment provided by engineer. */
-"Base Pets" = "Normale huisdieren";
+"Best" = "Beste";
 
 /* No comment provided by engineer. */
-"Battle Gear" = "Strijduitrusting";
+"Better" = "Beter";
 
 /* No comment provided by engineer. */
-"Beard" = "Baard";
+"Boss Quest" = "Baas queeste";
 
 /* No comment provided by engineer. */
-"Become a %@" = "Word een %@";
+"Brainstorm a healthy change" = "Brainstorm over een gezonde verandering";
 
 /* No comment provided by engineer. */
-"Body" = "Lichaam";
+"Broad" = "Breed";
 
 /* No comment provided by engineer. */
-"Boosts" = "Versterkingen";
+"buy" = "koop";
 
 /* No comment provided by engineer. */
-"Buy" = "Koop";
+"Buy for \(currencyText)" = "Koop voor  \(currencyText)";
 
 /* No comment provided by engineer. */
-"Buy %@ for %@ %@?" = "Koop %1$@ voor %2$@ %3$@?";
+"Buy gear for your avatar with the gold you earn!" = "Koop uitrusting voor je avatar met het goud wat je verdient! ";
 
 /* No comment provided by engineer. */
-"By accomplishing your real-life goals, you've grown to Level %ld!" = "Door doelen in je echte leven te voltooien, ben je uitgegroeid tot Niveau %Id!";
-
-/* No comment provided by engineer. */
-"By completing your tasks, you've earned a faithful steed!" = "Door het invullen van je taken heb je een trouwe ros verdiend!";
-
-/* No comment provided by engineer. */
-"CON %@" = "LIC %@";
-
-/* No comment provided by engineer. */
-"Can't cast a spell on a challenge task." = "Je kunt geen vaardigheid op een uitdagingstaak uitspreken. ";
+"Buy gems with gold" = "Koop edelstenen met goud";
 
 /* No comment provided by engineer. */
 "Cancel" = "Annuleren";
 
 /* No comment provided by engineer. */
-"Cast Spells" = "Spreek toverspreuken";
+"Change" = "Verander";
 
 /* No comment provided by engineer. */
-"Change Class" = "Verander klasse";
+"Change About message" = "Verander Over bericht";
 
 /* No comment provided by engineer. */
-"Chat" = "Chat";
+"Change Display Name" = "Verander display naam";
 
 /* No comment provided by engineer. */
-"Check in with team" = "Check in met team";
+"Change Email" = "Verander e-mail";
 
 /* No comment provided by engineer. */
-"Choose a hair color!" = "Kies een haarkleur";
+"Change Login Name" = "Verander Inlognaam";
 
 /* No comment provided by engineer. */
-"Choose a hairstyle!" = "Kies een haarstijl";
+"Change Password" = "Verander wachtwoord";
 
 /* No comment provided by engineer. */
-"Choose a skin color!" = "Kies een huidskleur";
+"Change Photo URL" = "Verander Foto URL";
 
 /* No comment provided by engineer. */
-"Choose your outfit! (You'll unlock more outfits soon.)" = "Kies jouw kostuum! (Je zal al snel meer kostuums vrijspelen.)";
+"Character Level" = "Verander niveau";
 
 /* No comment provided by engineer. */
-"Chores" = "Karweitjes";
+"Chores" = "Klusjes";
 
 /* No comment provided by engineer. */
-"Class-Bonus" = "Klasse-Bonus";
-
-/* No comment provided by engineer. */
-"Clear Cache" = "Cache wissen";
+"Class Equipment" = "Klasse Uitrusting ";
 
 /* No comment provided by engineer. */
 "Close" = "Sluiten";
+
+/* No comment provided by engineer. */
+"Collapse checklist" = "Checklijst inklappen";
+
+/* No comment provided by engineer. */
+"Collect" = "Verzamel ";
+
+/* No comment provided by engineer. */
+"Collection Quest" = "Verzameling queeste";
 
 /* No comment provided by engineer. */
 "Color" = "Kleur";
@@ -211,16 +161,22 @@
 "Complete" = "Voltooid";
 
 /* No comment provided by engineer. */
-"Complete Team Project" = "Voltooi Team Project";
+"Complete Task" = "Voltooi taak ";
 
 /* No comment provided by engineer. */
-"Connection Error" = "Verbindings fout";
+"Complete work project" = "Voltooi werkproject ";
 
 /* No comment provided by engineer. */
-"Costume" = "Kostuum";
+"Completed" = "Voltooid ";
 
 /* No comment provided by engineer. */
-"Couldn't connect to the server. Check your network connection" = "Kon niet verbinden met server. Controleer je netwerkverbinding";
+"Confirm New Password" = "Bevestig nieuw wachtwoord";
+
+/* No comment provided by engineer. */
+"Copied Message" = "Gekopiëerd Bericht";
+
+/* No comment provided by engineer. */
+"Copy Message" = "Kopieer bericht";
 
 /* No comment provided by engineer. */
 "Create Tag" = "Label maken";
@@ -229,88 +185,73 @@
 "Creativity" = "Creativiteit";
 
 /* No comment provided by engineer. */
-"Current streak: %@" = "Huidige serie: %@";
+"Dailies" = "Dagelijkse Taken";
 
-/* No comment provided by engineer. */
-"Custom Day Start" = "Aangepast begin van de dag";
-
-/* No comment provided by engineer. */
-"Customize Avatar" = "Pas Avatar Aan";
+/* As in 'repeats daily' */
+"daily" = "dagelijks";
 
 /* No comment provided by engineer. */
 "Daily" = "Dagelijkse taak";
 
 /* No comment provided by engineer. */
-"Daily Reminder" = "Dagelijkse herinnering";
+"Daily drop-caps doubled" = "Dagelijkse vondstmaximum verdubbelt";
+
+/* No comment provided by engineer. */
+"Daily workout routine" = "Dagelijkse trainingsroutine ";
+
+/* No comment provided by engineer. */
+"Danger Zone" = "Gevarenzone ";
+
+/* No comment provided by engineer. */
+"Daniel the inn keeper" = "Daniel de Herbergbeheerder ";
 
 /* No comment provided by engineer. */
 "Dated" = "Gedateerd";
 
 /* No comment provided by engineer. */
-"Day Start" = "Begin van de dag";
+"days" = "dagen";
 
 /* No comment provided by engineer. */
-"Declined" = "Geweigerd";
+"Delete Account" = "Verwijder account";
 
 /* No comment provided by engineer. */
-"Description" = "Omschrijving";
+"Delete Message" = "Verwijder bericht";
 
 /* No comment provided by engineer. */
-"Difficulty" = "Moeilijkheidsgraad";
+"Delete tasks" = "Verwijder taken";
 
 /* No comment provided by engineer. */
-"Disable Private Messages" = "Schakel privé berichten uit";
-
-/* No comment provided by engineer. */
-"Disable all Push Notifications" = "Schakel alle push notificaties uit";
+"Display Name" = "Display naam";
 
 /* No comment provided by engineer. */
 "Do homework" = "Huiswerk maken";
 
 /* No comment provided by engineer. */
+"Do you want to leave the challenge and keep or delete the tasks?" = "Wil je de uitdaging verlaten en de taken behouden of verwijderen?";
+
+/* No comment provided by engineer. */
 "Done" = "Gedaan";
+
+/* No comment provided by engineer. */
+"Double drop caps will let you receive more items from your completed tasks every day, helping you complete your stable faster!" = "Verdubbeldee drop drempels laat je elke dag meer voorwerpen ontvangen van complete taken, wat helpt om je stal sneller te voltooien!";
+
+/* No comment provided by engineer. */
+"Double tap to complete" = "Twee keer tikken om te voltooien ";
+
+/* No comment provided by engineer. */
+"Double tap to edit" = "Twee keer tikken om aan te passen ";
+
+/* No comment provided by engineer. */
+"Double tap to hide boss art" = "Tweemaal klikken om Baas kunst te verbergen";
 
 /* No comment provided by engineer. */
 "Due" = "Onvoltooid";
 
 /* No comment provided by engineer. */
-"Due %@" = "Voltooid voor %@";
+"E-Mail" = "e-mail";
 
 /* No comment provided by engineer. */
-"Due Date" = "Einddatum";
-
-/* No comment provided by engineer. */
-"Due in %d days" = "Moet worden voltooid in %d dagen";
-
-/* No comment provided by engineer. */
-"Due today" = "Moet vandaag voltooid";
-
-/* No comment provided by engineer. */
-"Due tomorrow" = "Moet morgen voltooid";
-
-/* No comment provided by engineer. */
-"ERROR" = "FOUT";
-
-/* No comment provided by engineer. */
-"Each reminder notifies on the days the daily is active." = "Elke herrinnering waarschuwt op de dag dat de daagelijkse taak actief is.";
-
-/* No comment provided by engineer. */
-"Earn items by completing tasks and leveling up. Tap on an item to use it!" = "Verdien voorwerpen door taken te voltooien en niveaus omhoog te gaan. Tik op een voorwerp om het te gebruiken!";
-
-/* No comment provided by engineer. */
-"Easy" = "Gemakkelijk";
-
-/* No comment provided by engineer. */
-"Eat healthy/junk food" = "Eet gezond/junk food";
-
-/* No comment provided by engineer. */
-"Edit %@" = "Bewerk %@";
-
-/* No comment provided by engineer. */
-"Edit Party" = "Bewerk groep";
-
-/* No comment provided by engineer. */
-"Edit Reward" = "Bewerk beloning";
+"Eat health/junk food" = "Eet gezond/junkfood";
 
 /* No comment provided by engineer. */
 "Edit Tag" = "Bewerk label";
@@ -319,70 +260,61 @@
 "Email" = "E-mail";
 
 /* No comment provided by engineer. */
-"Email / Username" = "E-mail / Gebruikersnaam";
-
-/* No comment provided by engineer. */
-"Email already taken." = "E-mail al in gebruik.";
+"Email a Password Reset Link" = "E-mail een wachtwoord reset link";
 
 /* No comment provided by engineer. */
 "Emails" = "E-mails";
 
 /* No comment provided by engineer. */
-"Enable Class System" = "Klassensysteem aanzetten";
+"Engage in a fun activity" = "Doe mee aan een leuke activiteit ";
 
 /* No comment provided by engineer. */
-"Enter" = "Invoeren";
-
-/* No comment provided by engineer. */
-"Equip" = "Trek aan";
-
-/* No comment provided by engineer. */
-"Equipment" = "Uitrusting";
-
-/* No comment provided by engineer. */
-"Equipment pieces remaining: %d" = "Stukken uitrusting resterend: %d";
+"Enter the email address you used to register your Habitica account." = "Voer je e-mailadres in die gebruikt is voor het registreten van je Habitica-account.";
 
 /* No comment provided by engineer. */
 "Error" = "Fout";
 
 /* No comment provided by engineer. */
-"Every x days" = "Elke x dagen";
+"ERROR" = "FOUT";
 
 /* No comment provided by engineer. */
-"Exercise" = "Oefening";
+"every \(everyX) \(self.repeatName())" = "iedere \(everyX) \(self.repeatName())";
+
+/* No comment provided by engineer. */
+"every day" = "iedere dag";
+
+/* No comment provided by engineer. */
+"Every time you do a positive Habit, tap the + to get experience and gold!" = "Tik op de + elke keer als je een positieve gewoonte doet om ervaring en goud te krijgen!";
+
+/* No comment provided by engineer. */
+"Exclusive monthly items" = "Exclusieve maandelijkse voorwerpen";
+
+/* No comment provided by engineer. */
+"Exercise" = "Oefen";
+
+/* No comment provided by engineer. */
+"Expand checklist" = "Breidt checklist uit";
 
 /* No comment provided by engineer. */
 "Experience" = "Ervaring";
 
 /* No comment provided by engineer. */
-"Eyewear" = "Oogaccessoire";
-
-/* 1Password App Extension Error Message */
-"Failed to contacting the 1Password App Extension" = "Kontakt met 1Password App Extension mislukt";
-
-/* 1Password App Extension Error Message */
-"Failed to execute script that collects web page information" = "Uit voeren van webpagina informatie verzamel script mislukt";
-
-/* 1Password App Extension Error Message */
-"Failed to fill web page because script could not be evaluated" = "Invullen van webpagina mislukt omdat scrip niet gelezen kon worden";
-
-/* 1Password App Extension Error Message */
-"Failed to fill web page because script is missing" = "Invullen van webpagina mislukt omdat script ontbreekt";
-
-/* 1Password App Extension Error Message */
-"Failed to parse information returned by 1Password App Extension" = "Het parse van informatie gekregen van 1Password App Extension mislukt";
-
-/* No comment provided by engineer. */
-"Feed" = "Voer";
+"Export Database" = "Exporteer database";
 
 /* No comment provided by engineer. */
 "Filter" = "Filter";
 
 /* No comment provided by engineer. */
-"Finish assignment for class " = "Werk een opdracht af voor school";
+"Finish" = "Voltooi";
 
 /* No comment provided by engineer. */
-"Finish creative project" = "Werk een creatief project af";
+"Finish assignment for class" = "Maak je huiswerk af";
+
+/* No comment provided by engineer. */
+"Finish creative project" = "Maa creatief project af";
+
+/* No comment provided by engineer. */
+"First up is Habits. They can be positive Habits you want to improve or negative Habits you want to quit." = "Ten eerste zijn er Gewoontes. Dit kunnen positieve Gewoontes zijn die je wil verbeteren of negatieve Gewoontes waar je mee op wil houden.";
 
 /* No comment provided by engineer. */
 "Floss" = "Flossen";
@@ -391,391 +323,232 @@
 "Flower" = "Bloem";
 
 /* No comment provided by engineer. */
-"Frequency" = "Frequentie";
-
-/* No comment provided by engineer. */
 "Friday" = "Vrijdag";
 
 /* No comment provided by engineer. */
 "Gems" = "Edelstenen";
 
 /* No comment provided by engineer. */
-"Get Social and Fight Monsters" = "Word sociaal en strijd tegen monsters";
+"Give it a shot! You can explore the other task types through the bottom navigation." = "Probeer het uit! Je kan de andere type taken verkennen door de navigatie aan de onderkant.";
 
 /* No comment provided by engineer. */
-"Gifted Gems" = "Edelstenen geschonken";
+"Glasses" = "Bril";
 
 /* No comment provided by engineer. */
-"Gifted Subscription" = "Abonnement geschonken";
+"Gold" = "Goud";
 
 /* No comment provided by engineer. */
-"Go Back" = "Ga terug";
+"Good" = "Goed";
 
 /* No comment provided by engineer. */
-"Gold: +%.1f
-Mana: -%ld" = "Goud: +%1$.1f
-Mana: -%2$ld";
-
-/* No comment provided by engineer. */
-"Got it" = "Begrepen";
+"Great!" = "Geweldig!";
 
 /* No comment provided by engineer. */
 "Grey" = "Grijs";
 
 /* No comment provided by engineer. */
-"Guilds" = "Gildes";
-
-/* No comment provided by engineer. */
 "Habit" = "Gewoonte";
 
 /* No comment provided by engineer. */
-"Hair" = "Haar";
-
-/* No comment provided by engineer. */
-"Hard" = "Moeilijk";
-
-/* No comment provided by engineer. */
-"Has a due date" = "Heeft een einddatum";
-
-/* No comment provided by engineer. */
-"Hatch Egg" = "Broed ei";
-
-/* No comment provided by engineer. */
-"Hatch with Potion" = "Broed met Toverdrank";
-
-/* No comment provided by engineer. */
-"Head" = "Hoofd";
-
-/* No comment provided by engineer. */
-"Head Accessory" = "Hoofdaccessoire";
-
-/* No comment provided by engineer. */
-"Healer" = "Heler";
+"Habits" = "Gewoontes";
 
 /* No comment provided by engineer. */
 "Health" = "Gezondheid";
 
 /* No comment provided by engineer. */
-"Health + Wellness" = "Gezondheid + Welzijn";
+"Hold down on a task to drag it around." = "Houd een taak ingedrukt om hem te verplaatsen.";
 
 /* No comment provided by engineer. */
-"Health: +%.1f
-Mana: -%ld" = "Gezondheid: +%1$.1f
-Mana: -%2$ld";
+"I earned a new achievement in Habitica! " = "Ik heb een nieuwe prestatie in Habitica!";
 
 /* No comment provided by engineer. */
-"Help & FAQ" = "Help & FAQ";
+"Ian the Quest Guide" = "Ian the Queeste Gids ";
 
 /* No comment provided by engineer. */
-"Hey! You are awesome!
-Version %@ (%@)" = "Hey! Jij bent fantastisch!
-Version %1$@ (%2$@)";
+"If we have your email on file, instructions for setting a new password have been sent to your email." = "Als we je e-mailadres in ons bestand hebben staan, dan zijn er nu instructies verstuurd voor het opnieuw instellen van je wachtwoord.";
 
 /* No comment provided by engineer. */
-"Huzzah!" = "Hoezee!";
+"If you slip up and do a negative Habit, tapping the - will reduce your avatar’s health to help you stay accountable." = "Als je een fout maakt en een negatieve Gewoonte uitvoert, zal je personage's gezondheid verlaagd worden na het klikken op - om ervoor te zorgen dat je verantwoordelijk blijft.";
 
 /* No comment provided by engineer. */
-"I got to level %ld in Habitica by improving my real-life habits!" = "Ik ben naar niveau %Id gevorderd in Habitica door mijn gewoontes uit het echte leven te verbeteren!";
+"If you’ve encountered a bug or made a mistake that unfairly changed your character, you can manually correct those values here." = "Als je een Fout tegenkomt of een fout gemaakt hebt die je personage oneerlijk beïnvloed heeft, kan je deze waardes hier handmatig wijzigen.";
 
 /* No comment provided by engineer. */
-"I want to become a %@" = "Ik wil een %@ worden";
+"If your To-Do has to be done by a certain time, set a due date. Looks like you can check one off — go ahead!" = "Als je To-do gedaan moet zijn voor een bepaalde tijd, zet dan een vervaldatum. Het ziet ernaar uit dat je er eentje af kan tikken. Ga je gang!";
 
 /* No comment provided by engineer. */
-"I want to opt-out" = "Ik wil me afmelden";
+"Invalid Habitica User ID" = "Ongeldig Habitica Gebruikers-ID";
 
 /* No comment provided by engineer. */
-"INT %@" = "INT %@";
+"Invitation Type" = "Uitnodigingstype";
 
 /* No comment provided by engineer. */
-"Inbox" = "Inbox";
+"Invite Members" = "Leden uitnodigen";
 
 /* No comment provided by engineer. */
-"Invalid E-Mail Address." = "E-mail adres ongeldig.";
+"Join" = "Deelnemen";
 
 /* No comment provided by engineer. */
-"Invalid Habitica User ID" = "Ongeldig Habitica Gebruikers ID";
+"Join Habitica (Check me off!)" = "Aanmelden bij Habitica (Streep mij af!)";
 
 /* No comment provided by engineer. */
-"Invalid username or password" = "Gebruikersnaam of wachtwoord ongeldig";
-
-/* No comment provided by engineer. */
-"Inventory" = "Boedel";
-
-/* No comment provided by engineer. */
-"Invitation Error" = "Uitnodigingsfout";
-
-/* No comment provided by engineer. */
-"Invitation Type" = "Uitnodigins type";
-
-/* No comment provided by engineer. */
-"Invite" = "Uitnodigen";
-
-/* No comment provided by engineer. */
-"Invite Friends" = "Nodig vrienden uit";
-
-/* No comment provided by engineer. */
-"Invite Members" = "Leden Uitnodigen";
-
-/* No comment provided by engineer. */
-"Invite Party" = "Groep uitnodigen";
-
-/* No comment provided by engineer. */
-"Invited To Guild" = "Uitgenodigd voor Gilde";
-
-/* No comment provided by engineer. */
-"Invited To Party" = "Uitgenodigd voor Groep";
-
-/* No comment provided by engineer. */
-"Invited To Quest" = "Uitgenodigd voor Queeste";
-
-/* No comment provided by engineer. */
-"Invited to %@" = "Uitgenodigd voor %@";
-
-/* No comment provided by engineer. */
-"Items" = "Goedje";
-
-/* No comment provided by engineer. */
-"Join" = "Meedoen";
-
-/* No comment provided by engineer. */
-"Last logged in" = "Laatst ingelogd op";
-
-/* No comment provided by engineer. */
-"Leader" = "Leider";
+"Keep tasks" = "Behoud taken";
 
 /* No comment provided by engineer. */
 "Leave" = "Verlaten";
 
 /* No comment provided by engineer. */
-"Leave Group" = "Verlaat groep";
+"Leave a Review" = "Laat een review achter";
 
 /* No comment provided by engineer. */
-"Leave a Review" = "Laat een review na";
+"Leave Challenge?" = "Uitdaging verlaten?";
 
 /* No comment provided by engineer. */
 "Level" = "Niveau";
 
 /* No comment provided by engineer. */
-"Level %@" = "Niveau %@";
-
-/* No comment provided by engineer. */
-"Level %@ %@" = "Level %1$@ %2$@";
+"Like Message" = "Bericht leuk vinden";
 
 /* No comment provided by engineer. */
 "Local" = "Lokaal";
 
 /* No comment provided by engineer. */
-"Log Out" = "Uitloggen";
+"Login Methods" = "Aanmeldmethodes";
 
 /* No comment provided by engineer. */
-"Log in" = "Inloggen";
+"Login Name" = "Inlognaam";
 
 /* No comment provided by engineer. */
-"Login Methods" = "Aanmeld methodes";
+"Make Dailies for time-sensitive tasks that need to be done on a regular schedule." = "Creëer dagelijkse taken voor tijdsgevoelige taken die gedaan moeten worden volgens een vast schema.";
 
 /* No comment provided by engineer. */
-"Login name" = "Inlognaam";
-
-/* No comment provided by engineer. */
-"Mage" = "Magiër";
-
-/* No comment provided by engineer. */
-"Maintenance" = "Onderhoud";
+"Makes completed To-Dos and task history available for longer." = "Maakt afgewerkte To-Do's en taak geschiedenis voor langere tijd beschikbaar.";
 
 /* No comment provided by engineer. */
 "Mana" = "Mana";
 
 /* No comment provided by engineer. */
-"Mana: -%ld" = "Mana: -%ld";
+"Mana Points" = "Manapunten ";
 
 /* No comment provided by engineer. */
 "Market" = "Markt";
 
 /* No comment provided by engineer. */
-"Medium" = "Gemiddeld";
+"Matt the beast master" = "Matt de Dierenmeester";
 
 /* No comment provided by engineer. */
-"Member Since" = "Lid sinds";
-
-/* No comment provided by engineer. */
-"Mental" = "Mentaal";
-
-/* No comment provided by engineer. */
-"Menu" = "Menu";
+"Moderator" = "Beheerder";
 
 /* No comment provided by engineer. */
 "Monday" = "Maandag";
 
-/* No comment provided by engineer. */
-"Most important task" = "Belangrijkste taak";
+/* As in 'repeats monthly' */
+"monthly" = "maandelijks";
 
 /* No comment provided by engineer. */
-"Mount" = "Rijdier";
+"months" = "maanden";
 
 /* No comment provided by engineer. */
-"Mount Type" = "Type rijdier";
+"Mystery Sets" = "Mysterie Sets";
 
 /* No comment provided by engineer. */
-"Mounts" = "Rijdieren";
+"Neutral" = "Neutraal ";
 
 /* No comment provided by engineer. */
-"Mustache" = "Snor";
+"never" = "nooit";
 
 /* No comment provided by engineer. */
-"My Guilds" = "Mijn Gildes";
+"New Email" = "Nieuwe e-mail";
 
 /* No comment provided by engineer. */
-"Name" = "Naam";
+"New Login Name" = "Nieuwe inlognaam";
 
 /* No comment provided by engineer. */
-"Negative (-)" = "Negatief (-)";
+"New Password" = "Nieuw wachtwoord";
 
 /* No comment provided by engineer. */
-"Network error" = "Netwerk fout";
+"Next" = "Volgende";
 
 /* No comment provided by engineer. */
-"New Party" = "Nieuwe groep";
+"No Camera available" = "Geen Camera beschikbaar";
 
 /* No comment provided by engineer. */
-"New Reward" = "Nieuwe Beloning";
+"Not completed" = "Onvoltooid";
 
 /* No comment provided by engineer. */
-"News" = "Nieuws";
+"Not due" = "Verloopt niet";
 
 /* No comment provided by engineer. */
-"No" = "Nee";
+"Not getting the right drops? Check out the Market to buy just the things you need!" = "Vind je niet de gewenste drops? Check de Markt om precies de dingen te kopen die je nodig hebt!";
 
 /* No comment provided by engineer. */
-"Notes" = "Aantekeningen";
-
-/* No comment provided by engineer. */
-"Nothing Equipped" = "Niks aangetrokken";
-
-/* No comment provided by engineer. */
-"Nothing Set" = "Niks ingesteld";
+"Oh dear, pay no heed to the monster below -- this is still a safe haven to chat on your breaks." = "Ojee, let niet op het monster hieronder. Dit is nog steeds een toevluchtsoord om te praten tijdens je rusttijd.";
 
 /* No comment provided by engineer. */
 "OK" = "OK";
 
 /* No comment provided by engineer. */
-"On certain days of the week" = "Op bepaalde dagen van de week";
+"Old Password" = "Oud wachtwoord";
 
 /* No comment provided by engineer. */
-"Once a quest is started, no other party members can join the quest." = "Als een queeste is begonnen, kunnen geen andere groepsleden deelnemen aan de queeste.";
+"Open App Store page" = "Open App Store pagina";
 
 /* No comment provided by engineer. */
-"Opt-Out" = "Afmelden";
+"Or delete it by swiping left" = "Of verwijder het door links te slepen ";
 
 /* No comment provided by engineer. */
-"Organize Closet" = "Kast herorganiseren";
+"Organize clutter" = "Organizeer troep";
 
 /* No comment provided by engineer. */
-"Other" = "Overige";
+"Password" = "Wachtwoord";
 
 /* No comment provided by engineer. */
-"PER %@" = "PER %@";
+"Pause Damage" = "Pauzeer Schade";
 
 /* No comment provided by engineer. */
-"Participants" = "Deelnemers";
+"Pending Strike" = "Inkomende Aanval";
 
 /* No comment provided by engineer. */
-"Party" = "Groep";
+"Photo URL" = "Foto-URL";
 
 /* No comment provided by engineer. */
-"Passwords don't match." = "Wachtwoorden komen niet overeens.";
+"Pin to Rewards" = "Aan Beloningen vastmaken";
 
 /* No comment provided by engineer. */
-"Pause your Dailies" = "Pauzeer je Dagelijkse taken";
+"Ponytail" = "Paardenstaart";
 
 /* No comment provided by engineer. */
-"Pending" = "In afwachting";
-
-/* No comment provided by engineer. */
-"Pet Type" = "Type huisdier";
-
-/* No comment provided by engineer. */
-"Pets" = "Huisdieren";
-
-/* No comment provided by engineer. */
-"Physical" = "Fysiek";
-
-/* No comment provided by engineer. */
-"Positive (+)" = "Positief (+)";
+"Practiced a new creative technique" = "Een nieuwe creatieve techniek geoefend";
 
 /* No comment provided by engineer. */
 "Process email" = "E-mail verwerken";
 
 /* No comment provided by engineer. */
-"Profile" = "Profiel";
-
-/* No comment provided by engineer. */
-"Public Guilds" = "Openbare gildes";
-
-/* No comment provided by engineer. */
-"Purchase for %@ Gems" = "Koop voor %@ Edelstenen";
-
-/* No comment provided by engineer. */
-"Purchase for 2 Gems" = "Koop voor 2 Edelstenen";
-
-/* No comment provided by engineer. */
-"Push Notifications" = "Push meldingen";
-
-/* No comment provided by engineer. */
-"Quest" = "Queeste";
-
-/* No comment provided by engineer. */
-"Quest Detail" = "Details van de queeste";
-
-/* No comment provided by engineer. */
-"Quest Invitation" = "Uitnodiging voor queeste";
-
-/* No comment provided by engineer. */
-"Quest Mounts" = "Rijdieren van queesten";
-
-/* No comment provided by engineer. */
-"Quest Pets" = "Huisdieren van queesten";
-
-/* No comment provided by engineer. */
-"Quests" = "Queestes";
-
-/* No comment provided by engineer. */
-"Reactivate your Dailies" = "Heractiveer je Dagelijkse taken";
-
-/* No comment provided by engineer. */
-"Received Private Message" = "Privé bericht ontvangen";
+"Quest Shop" = "Queeste Winkel";
 
 /* No comment provided by engineer. */
 "Recipient" = "Ontvanger";
 
 /* No comment provided by engineer. */
-"Register" = "Registreren";
-
-/* No comment provided by engineer. */
 "Reject" = "Afwijzen";
-
-/* No comment provided by engineer. */
-"Reload Content" = "Herlaad inhoud";
 
 /* No comment provided by engineer. */
 "Remember to check off your Dailies!" = "Denk er aan je dagelijkse taken af te vinken!";
 
 /* No comment provided by engineer. */
-"Remind me tomorrow" = "Herinner me morgen";
-
-/* No comment provided by engineer. */
 "Reminder" = "Herinnering";
 
 /* No comment provided by engineer. */
-"Reminders" = "Herinneringen";
+"Repeats \(repeatType.string(everyX))" = "Herhaalt \(repeatType.string(everyX))";
 
 /* No comment provided by engineer. */
-"Repeat every X days" = "Herhaal elke X dagen";
+"Repeats \(repeatType.string(everyX)) on \(repeatOnString)" = "Herhaalt \(repeatType.string(everyX)) op \(repeatOnString)";
 
 /* No comment provided by engineer. */
 "Reply" = "Antwoord";
 
 /* No comment provided by engineer. */
-"Report" = "Melding sturen";
+"Reply to Message" = "Bericht beantwoorden";
 
 /* No comment provided by engineer. */
 "Report %@ for violation?" = "%@ rapporteren wegens overtreding?";
@@ -784,13 +557,22 @@ Version %1$@ (%2$@)";
 "Report a bug" = "Fout melden";
 
 /* No comment provided by engineer. */
-"Reset Justins Tips" = "Reset Justins tips";
+"Report Message" = "Bericht melden als ongewenst";
 
 /* No comment provided by engineer. */
-"Rogue" = "Dief";
+"Reset Account" = "Reset Account";
 
 /* No comment provided by engineer. */
-"STR %@" = "KRA %@";
+"Resume Damage" = "Schade Hervatten";
+
+/* No comment provided by engineer. */
+"Retain additional history entries" = "Volledige extra geschiedenis behouden";
+
+/* No comment provided by engineer. */
+"Reward yourself" = "Beloon jezelf";
+
+/* No comment provided by engineer. */
+"Rewards" = "Beloningen";
 
 /* No comment provided by engineer. */
 "Saturday" = "Zaterdag";
@@ -799,199 +581,184 @@ Version %1$@ (%2$@)";
 "Save" = "Opslaan";
 
 /* No comment provided by engineer. */
-"Scan QR Code" = "Scan QR Code";
-
-/* No comment provided by engineer. */
-"Schedule check-up" = "Controle inplannen";
+"Scan QR Code" = "Scan QR-Code";
 
 /* No comment provided by engineer. */
 "School" = "School";
 
 /* No comment provided by engineer. */
+"Score habit down" = "Gewoonte negatief scoren";
+
+/* No comment provided by engineer. */
+"Score habit up" = "Gewoonte positief scoren";
+
+/* No comment provided by engineer. */
+"Search" = "Zoeken";
+
+/* No comment provided by engineer. */
 "Seasonal Shop" = "Seizoenswinkel";
 
 /* No comment provided by engineer. */
-"Select Attributes" = "Selecteer eigenschappen";
+"Seasonal Sorceress" = "Seizoenstovernares";
 
 /* No comment provided by engineer. */
-"Select Class" = "Selecteer klasse";
+"Self-Care" = "Persoonlijke verzorging";
 
 /* No comment provided by engineer. */
-"Select Difficulty" = "Selecteer moeilijkheidsgraad";
-
-/* No comment provided by engineer. */
-"Select Frequency" = "Selecteer frequentie";
-
-/* No comment provided by engineer. */
-"Sell (%@ Gold)" = "Verkoop (%@ Goud)";
+"Send" = "Verstuur";
 
 /* No comment provided by engineer. */
 "Send feedback" = "Stuur beoordeling";
 
 /* No comment provided by engineer. */
-"Server error" = "Server fout";
-
-/* No comment provided by engineer. */
 "Set up workout schedule" = "Trainingsschema opzetten";
-
-/* No comment provided by engineer. */
-"Settings" = "Instellingen";
-
-/* No comment provided by engineer. */
-"Shield" = "Schild";
 
 /* No comment provided by engineer. */
 "Shirt" = "Shirt";
 
 /* No comment provided by engineer. */
-"Shops" = "Winkels";
+"Size" = "Grootte";
 
 /* No comment provided by engineer. */
-"Size" = "Maat";
+"Slim" = "Smal";
 
 /* No comment provided by engineer. */
-"Skin" = "Huid";
+"Stable" = "Stal";
 
 /* No comment provided by engineer. */
-"Sleep tight!" = "Slaap lekker!";
-
-/* No comment provided by engineer. */
-"Social" = "Sociaal";
-
-/* No comment provided by engineer. */
-"Special Mounts" = "Speciale rijdieren";
-
-/* No comment provided by engineer. */
-"Special Pets" = "Speciale huisdieren";
-
-/* No comment provided by engineer. */
-"Stretching" = "Uitrekken";
+"Staff" = "Medewerkers";
 
 /* No comment provided by engineer. */
 "Strong" = "Sterk";
 
 /* No comment provided by engineer. */
-"Study a master of the craft" = "Bestudeer een meester van de ambacht";
-
-/* No comment provided by engineer. */
 "Study/Procrastinate" = "Studeren/uitstellen";
 
 /* No comment provided by engineer. */
-"Suggested Guilds" = "Aanbevolen gildes";
+"Subscription" = "Abonnement";
+
+/* No comment provided by engineer. */
+"success" = "succes";
 
 /* No comment provided by engineer. */
 "Sunday" = "Zondag";
 
 /* No comment provided by engineer. */
-"Tags" = "Labels";
+"Take a short break" = "Neem een korte pauze";
 
 /* No comment provided by engineer. */
-"Tap a task to edit it and add reminders. Swipe left to delete it." = "Tik op een taak om deze te bewerken en herinneringen toe te voegen. Veeg naar links om hem te verwijderen.";
+"Tap a task to edit it and add reminders. Swipe left to delete it." = "Tik op een taak om hem te bewerken en herinneringen toe te voegen. Veeg naar links om hem te verwijderen.";
+
+/* No comment provided by engineer. */
+"Tap here to edit this into a bad habit you'd like to quit" = "Tik hier om dit in een slechte gewoonte te veranderen die je wilt afleren";
+
+/* No comment provided by engineer. */
+"Tap the gray button to allocate lots of your stats at once, or tap the arrows to add them one point at a time." = "Tik op de grijze knop om veel punten in één keer toe te wijzen, of klik op de pijlen om één punt per keer toe te wijzen. ";
+
+/* No comment provided by engineer. */
+"Tap to add a checklist!" = "Tik om een checklijst toe te voegen!";
 
 /* No comment provided by engineer. */
 "Tap to add a new task." = "Tik om een nieuwe taak toe te voegen.";
 
 /* No comment provided by engineer. */
-"Tap to change how your pets are grouped." = "Tik om te veranderen hoe je dieren worden gegroepeerd.";
+"Tap to add checklists!" = "Tik om checklijsten toe te voegen! ";
 
 /* No comment provided by engineer. */
-"Tap to edit task, change notification time, or delete." = "Tik om een taak te bewerken, het moment van de herinnering te bewerken, of om deze te verwijderen.";
+"Tap to choose your schedule and specify exercises!" = "Tik om je rooster te kiezen en specificeer oefeningen!";
+
+/* No comment provided by engineer. */
+"Tap to choose your schedule!" = "Tik om je rooster te kiezen!";
 
 /* No comment provided by engineer. */
 "Tap to filter tasks." = "Tik om taken te filteren.";
 
 /* No comment provided by engineer. */
-"Tap to invite friends and view party members." = "Tik om vrienden uit te nodigen en groepsleden te bekijken.";
+"Tap to make any changes!" = "Tik om veranderingen te maken";
 
 /* No comment provided by engineer. */
-"Tavern" = "Kroeg";
+"Tap to show" = "Tik om weer te geven";
 
 /* No comment provided by engineer. */
-"Teams" = "Teams";
+"Tap to specify the cluttered area!" = "Tik om de rommelige plek te bepalen!";
 
 /* No comment provided by engineer. */
-"Text" = "Tekst";
+"Tap to specify the name of your current project + set a due date!" = "Tik om de naam van je project aan te geven + Kies een vervaldatum!";
 
 /* No comment provided by engineer. */
-"The authentication process was cancelled." = "Het authenticatie proces werd geannuleerd.";
+"Tap to specify the name of your current project + set the schedule!" = "Tik om de naam van je project aan te geven + Stel het rooster in!";
 
 /* No comment provided by engineer. */
-"The scanned QR-Code did not contain a valid Habitica User ID." = "De gescande QR-Code bevat geen geldig Habitica Gebruikers ID";
+"Tap to specify the name of your project" = "Tik om de naam van je project aan te geven";
 
 /* No comment provided by engineer. */
-"The users were invited to your party" = "De gebruikers zijn uitgenodigd voor je groep";
+"Tap to specify what you plan to do!" = "Tik om aan te geven wat je van plan bent om te doen";
 
 /* No comment provided by engineer. */
-"There seems to be a problem with the server. Try again later" = "Er schijnt een probleem te zijn met de server. Probeer het later nogmaals";
+"Tap to specify your most important task" = "Tik om je belangrijkste taak aan te geven";
 
 /* No comment provided by engineer. */
-"There was an error verifying your purchase" = "Er was een fout bij het controleren van uw aankoop";
+"Tavern" = "Herberg";
 
 /* No comment provided by engineer. */
-"There was an error with the authentication. Try again later" = "Er was een fout bij de verificatie. Probeer het later nogmaals";
+"Teleporting to Habitica" = "Bezig met teleporteren naar Habitica";
+
+/* No comment provided by engineer. */
+"the \(dateFormatter.string(from: startDate))" = "de \(dateFormatter.string(from: startDate))";
+
+/* No comment provided by engineer. */
+"the \(days.joined(separator: " = "de \(days.joined(seperator:";
+
+/* No comment provided by engineer. */
+"The \(locationName) was Attacked!" = "De \(locationName) is aangevallen!";
+
+/* No comment provided by engineer. */
+"The scanned QR-Code did not contain a valid Habitica User ID." = "De gescande QR-Code bevat geen geldig Habitica Gebruikers-ID.";
+
+/* No comment provided by engineer. */
+"There are 3 potential Rage Strikes\nThis gauge fills when Habiticans miss their Dailies. If it fills up, the DysHeartener will unleash its Shattering Heartbreak attack on one of Habitica's shopkeepers, so be sure to do your tasks!" = "Er zijn 3 potentiële uitbarstingen van razernij.\nDe meter vult zich wanneer Habiticanen hun dagelijkse taken niet voltooien. Als de meter helemaal vol is, dan zal de Harteloze zijn Versplinterend Hartezeer op één van Habitica’s marktkopers loslaten. Dus zorg ervoor dat je taken voltooid worden!";
+
+/* No comment provided by engineer. */
+"There was an error accepting the quest invitation" = "Er is een fout bij het accepteren van de queeste uitnodiging";
+
+/* No comment provided by engineer. */
+"There was an error rejecting the quest invitation" = "Er is een fout bij het afwijzen van de queeste uitnodiging";
 
 /* No comment provided by engineer. */
 "There was an error with your request: %@" = "Er was een fout met je verzoek: %@";
 
 /* No comment provided by engineer. */
-"This item can be purchased for %@ Gems" = "Dit voorwerp kan gekocht worden voor %@ Edelstenen";
+"This is only needed for debug purposes" = "Dit is alleen nodig voor debuggen";
 
 /* No comment provided by engineer. */
-"This item can be purchased for 2 Gems" = "Dit voorwerp kan gekocht worden voor 2 Edelstenen";
-
-/* No comment provided by engineer. */
-"This set can be unlocked for %@ Gems" = "Dit sett kan voor %@ Edelstenen ontgrendelt worden";
+"This is where you can read and reply to private messages! You can also message people from their profiles." = "Dit is waar je privé-berichten kan lezen en beantwoorden! Je kan berichten ook sturen naar mensen vanaf hun profiel.";
 
 /* No comment provided by engineer. */
 "Thursday" = "Donderdag";
 
 /* No comment provided by engineer. */
-"Time Travelers" = "Tijdreizigers";
+"To-Do" = "To-do";
 
 /* No comment provided by engineer. */
-"To-Do" = "Taak";
-
-/* No comment provided by engineer. */
-"Trivial" = "Triviaal";
+"To-Dos" = "To-do's";
 
 /* No comment provided by engineer. */
 "Tuesday" = "Dinsdag";
 
 /* No comment provided by engineer. */
-"Unequip" = "Trek uit";
+"Unlocks after selecting a class" = "Ontgrendelt na het selecteren van een klasse";
 
 /* No comment provided by engineer. */
-"Unlock for %@ Gems" = "Ontgrendel voor %@ Edelstenen";
+"Unlocks at level 10" = "Ontgrendelt bij niveau 10";
 
 /* No comment provided by engineer. */
-"Unmount" = "Stijg af";
+"Unpin from Rewards" = "Van Beloningen losmaken";
 
 /* No comment provided by engineer. */
-"Update team on status" = "Update team in status";
+"Use To-Dos to keep track of tasks you need to do just once." = "Gebruik To-do's om taken vast te leggen die maar eenmaal gedaan moeten worden.";
 
 /* No comment provided by engineer. */
-"Use" = "Gebruik";
-
-/* No comment provided by engineer. */
-"Use Skills" = "Gebruik vaardigheden";
-
-/* No comment provided by engineer. */
-"User" = "Gebruiker";
-
-/* No comment provided by engineer. */
-"User ID" = "Gebruikers-ID";
-
-/* No comment provided by engineer. */
-"Username" = "Gebruikersnaam";
-
-/* No comment provided by engineer. */
-"Username already taken." = "Gebruikersnaam al in gebruik.";
-
-/* No comment provided by engineer. */
-"Validation Error" = "Validatie fout";
-
-/* No comment provided by engineer. */
-"Value" = "Waarde";
+"User ID" = "Gebruikers ID";
 
 /* No comment provided by engineer. */
 "Version" = "Versie";
@@ -1000,16 +767,13 @@ Version %1$@ (%2$@)";
 "View Source Code" = "Broncode bekijken";
 
 /* No comment provided by engineer. */
-"Visibility" = "Zichtbaarheid";
+"WARNING! This resets many parts of your account. This is highly discouraged, but some people find it useful in the beginning after playing with the site for a short time.\n\nYou will lose all your levels, gold, and experience points. All your tasks (except those from challenges) will be deleted permanently and you will lose all of their historical data. You will lose all your equipment but you will be able to buy it all back, including all limited edition equipment or subscriber Mystery items that you already own (you will need to be in the correct class to re-buy class-specific gear). You will keep your current class and your pets and mounts. You might prefer to use an Orb of Rebirth instead, which is a much safer option and which will preserve your tasks and equipment." = "WAARSCHUWING! Dit resets veel delen van je account. Dit wordt zwaar ontmoedigd, maar sommige mensen vinden het nuttig in het begin na het spelen met de website voor een korte tijd.\n\nJe zult al je niveaus, goud en ervaringspunten verliezen. Al je taken (behalve die van uitdagingen) zullen permanent verwijderd worden en je zult al hun data uit het verleden verliezen. Je zult al je uitrusting verliezen, maar je kunt dat allemaal terug kopen, inclusief alle uitrusting van beperkte editie uitrusting of verrassingsvoorwerpen voor abonnees die je al hebt (je moet wel in de juiste klasse zitten om klasse-specifieke uitrusting terug te kopen). Je zult je huidige klasse en je huisdieren en rijdieren behouden. Misschien wil je liever een Bol der Hergeboorte gebruiken, wat een veel veiligere optie is en wat je taken en uitrusting bewaart.";
 
 /* No comment provided by engineer. */
-"Wakey Wakey!" = "Wakker worden!";
+"Wash dishes" = "Afwassen";
 
 /* No comment provided by engineer. */
-"Warrior" = "Krijger";
-
-/* No comment provided by engineer. */
-"Wash Dishes" = "De afwas doen";
+"Watch TV, play a game, eat a treat, it’s up to you!" = "Kijk tv, speel een spel, eet iets lekkers, aan jou de keuze!";
 
 /* No comment provided by engineer. */
 "We love open source software." = "Wij houden van open source software.";
@@ -1018,25 +782,40 @@ Version %1$@ (%2$@)";
 "Weak" = "Zwak";
 
 /* No comment provided by engineer. */
-"Weapon" = "Wapen";
-
-/* No comment provided by engineer. */
-"Wear costume" = "Kostuum dragen";
-
-/* No comment provided by engineer. */
 "Website" = "Website";
 
 /* No comment provided by engineer. */
 "Wednesday" = "Woensdag";
 
 /* No comment provided by engineer. */
-"Weekly" = "Wekelijks";
+"weekdays" = "doordeweeks";
 
 /* No comment provided by engineer. */
-"Welcome" = "Welkom";
+"weekends" = "weekend";
+
+/* As in 'repeats weekly' */
+"weekly" = "wekelijks";
 
 /* No comment provided by engineer. */
-"Welcome to Habitica" = "Welkom bij Habitica";
+"weeks" = "weken";
+
+/* No comment provided by engineer. */
+"Welcome Back!" = "Welkom terug!";
+
+/* No comment provided by engineer. */
+"Welcome to the Inn! Pull up a chair to chat, or take a break from your tasks." = "Welkom bij de Herberg! Neem plaats om te chatten, of om te pauzeren van je taken.";
+
+/* No comment provided by engineer. */
+"What's a Rage Strike?" = "Wat is een Woede Treffer?";
+
+/* No comment provided by engineer. */
+"What’s a World Boss?" = "Wat is een Wereldbaas?";
+
+/* No comment provided by engineer. */
+"Wheelchair" = "Rolstoel";
+
+/* No comment provided by engineer. */
+"Whoops, looks like you haven't set up your email on this phone yet. Configure an account in the iOS mail app to use this quick-reporting option, or just email us directly at mobile@habitica.com" = "Oeps! Het ziet ernaar uit dat je e-mail nog niet toegevoegd is op deze telefoon. Configureer een account in de iOS e-mail app om deze optie voor het snel melden te gebruiken, of e-mail direct naar mobile@habitica.com";
 
 /* No comment provided by engineer. */
 "Work" = "Werk";
@@ -1045,7 +824,16 @@ Version %1$@ (%2$@)";
 "Work on creative project" = "Werk aan een creatief project";
 
 /* No comment provided by engineer. */
-"Work project" = "Werk aan een project";
+"Worked on today’s most important task" = "Gewerkt aan de belangrijkste taak van vandaag";
+
+/* No comment provided by engineer. */
+"Worse" = "Slechtere";
+
+/* No comment provided by engineer. */
+"Worst" = "Slechtste";
+
+/* No comment provided by engineer. */
+"Write a message" = "Schrijf een bericht";
 
 /* No comment provided by engineer. */
 "Write Message" = "Schrijf bericht";
@@ -1053,63 +841,45 @@ Version %1$@ (%2$@)";
 /* No comment provided by engineer. */
 "Write to %@" = "Schrijf naar %@";
 
-/* No comment provided by engineer. */
-"Yes" = "Ja";
+/* As in 'repeats yearly' */
+"yearly" = "jaarlijks";
 
 /* No comment provided by engineer. */
-"You gained a level!" = "Een niveau hoger!";
+"years" = "jaren";
 
 /* No comment provided by engineer. */
-"You hatched a %@ %@!" = "Je hebt een %1$@ %2$@ uitgebroed!";
+"You can also make real-world Custom Rewards based on what motivates you." = "Je kan ook Aangepaste beloningen van de echte wereld maken gebaseerd op wat jou motivatie is.";
 
 /* No comment provided by engineer. */
-"You have no food" = "Je hebt geen voer.";
+"You can either complete this To-Do, edit it, or remove it." = "Je kunt deze To-do afmaken, bijwerken of verwijderen.";
 
 /* No comment provided by engineer. */
-"You have to specify a valid Habitica User ID as recipient." = "Je moet een geldig Habitica Gebruikers ID meegeven als ontvanger.";
+"You earned a streak achievement!" = "Je hebt een serie prestatie verdiend!";
 
 /* No comment provided by engineer. */
-"You purchased %@" = "Je hebt %@ gekocht";
+"You have earned a %@ for being committed to improving your life." = "Je hebt een %@ verdiend, omdat je toegewijd je leven aan het verbeteren bent.";
 
 /* No comment provided by engineer. */
-"You purchased the set." = "Je hebt de set gekocht.";
+"You have to specify a valid Habitica User ID as recipient." = "Je moet een geldig Habitica Gebruikers-ID meegeven als ontvanger.";
 
 /* No comment provided by engineer. */
-"You raised a mount!" = "Je hebt een rijdier grootgebracht!";
+"You unlocked the drop system!" = "Je hebt het drop-systeem vrijgespeeld!";
 
 /* No comment provided by engineer. */
-"You will become a %@." = "Je wordt een %@.";
+"You've completed your Daily for 21 days in a row! Amazing job. Don't break the streak!" = "Je hebt je dagelijkse taak 21 dagen op rij voltooid! Uitstekend. Behoud deze serie!";
 
 /* No comment provided by engineer. */
-"You won a Challenge!" = "Je hebt een uitdaging gewonnen!";
+"You've unlocked the Drop System! Now when you complete tasks, you have a small chance of finding an item, including eggs, potions, and food!" = "Je hebt het Drop-systeem vrijgespeeld! Als je nu een taak voltooid, heb je een kleine kans om een voorwerp te vinden, zoals eieren, drankjes en voedsel!";
 
 /* No comment provided by engineer. */
-"Your Quest has Begun" = "Je queeste is begonnen";
+"Your email isn't set up yet" = "Je e-mail is nog niet toegevoegd";
 
 /* No comment provided by engineer. */
 "Your message could not be sent." = "Je bericht kon niet verstuurd worden.";
 
 /* No comment provided by engineer. */
-"Your pet eats the %@ but doesn't seem to enjoy it." = "Je huisdier eet de %@, maar lijkt er niet van te genieten.";
+"Your next prize unlocks in %d Check-Ins" = "De volgende prijs wordt vrijgespeeld over %dcheck-ins";
 
 /* No comment provided by engineer. */
-"Your pet really likes the %@!" = "Je huisdier vindt %@ heel lekker!";
-
-/* No comment provided by engineer. */
-"equipped" = "uitgerust";
-
-/* Singular */
-"gem" = "edelsteen";
-
-/* Plural */
-"gems" = "edelstenen";
-
-/* Singular */
-"gold" = "goud";
-
-/* Singular */
-"hourglass" = "zandloper";
-
-/* Plural */
-"hourglasses" = "zandlopers";
+"Your next prize unlocks in 1 Check-In." = "De volgende prijs wordt vrijgespeeld over 1 check-in.";
 

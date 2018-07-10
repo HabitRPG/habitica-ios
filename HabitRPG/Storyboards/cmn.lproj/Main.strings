@@ -1,0 +1,105 @@
+/* Class = "UILabel"; text = "Unlocks at lvl 3"; ObjectID = "2yp-6U-Xpz"; */
+"2yp-6U-Xpz.text" = "等級 3 時解鎖";
+
+/* Class = "UITabBarItem"; title = "Habits"; ObjectID = "3G8-SH-Shd"; */
+"3G8-SH-Shd.title" = "習慣";
+
+/* Class = "UISegmentedControl"; 3ow-rh-Fzj.segmentTitles[0] = "Slim"; ObjectID = "3ow-rh-Fzj"; */
+"3ow-rh-Fzj.segmentTitles[0]" = "瘦小";
+
+/* Class = "UISegmentedControl"; 3ow-rh-Fzj.segmentTitles[1] = "Broad"; ObjectID = "3ow-rh-Fzj"; */
+"3ow-rh-Fzj.segmentTitles[1]" = "厚實";
+
+/* Class = "UINavigationItem"; title = "Pets"; ObjectID = "4dW-yC-5Ar"; */
+"4dW-yC-5Ar.title" = "寵物";
+
+/* Class = "UIBarButtonItem"; title = "Filter"; ObjectID = "7QR-Cq-K2a"; */
+"7QR-Cq-K2a.title" = "條件篩選";
+
+/* Class = "UINavigationItem"; title = "Items"; ObjectID = "7Sa-Zz-2NE"; */
+"7Sa-Zz-2NE.title" = "物品";
+
+/* Class = "UINavigationItem"; title = "Mounts"; ObjectID = "8QD-xr-Tcj"; */
+"8QD-xr-Tcj.title" = "座騎";
+
+/* Class = "UINavigationItem"; title = "About"; ObjectID = "970-3u-C37"; */
+"970-3u-C37.title" = "關於";
+
+/* Class = "UITabBarItem"; title = "Dailies"; ObjectID = "Aco-n2-RnG"; */
+"Aco-n2-RnG.title" = "每日任務";
+
+/* Class = "UINavigationItem"; title = "Equipment"; ObjectID = "aGP-pV-Lz5"; */
+"aGP-pV-Lz5.title" = "裝備";
+
+/* Class = "UITabBarItem"; title = "Habits"; ObjectID = "CTh-zS-7ZY"; */
+"CTh-zS-7ZY.title" = "習慣";
+
+/* Class = "UINavigationItem"; title = "Rewards"; ObjectID = "HHL-mH-FJc"; */
+"HHL-mH-FJc.title" = "獎勵";
+
+/* Class = "UIBarButtonItem"; title = "Clear"; ObjectID = "hIC-Qf-w8a"; */
+"hIC-Qf-w8a.title" = "清除";
+
+/* Class = "UINavigationItem"; title = "Scan Code"; ObjectID = "HJa-qf-ea2"; */
+"HJa-qf-ea2.title" = "掃描 Code";
+
+/* Class = "UINavigationItem"; title = "Menu"; ObjectID = "hnF-ml-Qfo"; */
+"hnF-ml-Qfo.title" = "選單";
+
+/* Class = "UITabBarItem"; title = "Menu"; ObjectID = "hyj-Mf-lvH"; */
+"hyj-Mf-lvH.title" = "選單";
+
+/* Class = "UINavigationItem"; title = "News"; ObjectID = "Jni-km-FCZ"; */
+"Jni-km-FCZ.title" = "最新消息";
+
+/* Class = "UIBarButtonItem"; title = "Filter"; ObjectID = "lJN-5G-qrz"; */
+"lJN-5G-qrz.title" = "條件篩選";
+
+/* Class = "UIBarButtonItem"; title = "Group By"; ObjectID = "mdo-xN-SW4"; */
+"mdo-xN-SW4.title" = "隊長為";
+
+/* Class = "UITabBarItem"; title = "To-Dos"; ObjectID = "Np7-ws-fF6"; */
+"Np7-ws-fF6.title" = "待辦事項";
+
+/* Class = "UITabBarItem"; title = "Dailies"; ObjectID = "pdW-W9-wj6"; */
+"pdW-W9-wj6.title" = "每日任務";
+
+/* Class = "UIBarButtonItem"; title = "Filter"; ObjectID = "r2M-pt-ZEv"; */
+"r2M-pt-ZEv.title" = "條件篩選";
+
+/* Class = "UINavigationItem"; title = "Filter by tags"; ObjectID = "RJ8-HL-bIH"; */
+"RJ8-HL-bIH.title" = "依標籤篩選";
+
+/* Class = "UINavigationItem"; title = "Mounts"; ObjectID = "si7-7p-nZ9"; */
+"si7-7p-nZ9.title" = "座騎";
+
+/* Class = "UINavigationItem"; title = "FAQ"; ObjectID = "sni-tf-k5c"; */
+"sni-tf-k5c.title" = "問與答";
+
+/* Class = "UINavigationItem"; title = "To-Dos"; ObjectID = "Tis-dF-qId"; */
+"Tis-dF-qId.title" = "待辦事項";
+
+/* Class = "UITabBarItem"; title = "To-Dos"; ObjectID = "TXB-iK-KhP"; */
+"TXB-iK-KhP.title" = "待辦事項";
+
+/* Class = "UINavigationItem"; title = "Habits"; ObjectID = "Ueo-OS-iQj"; */
+"Ueo-OS-iQj.title" = "習慣";
+
+/* Class = "UINavigationItem"; title = "Feed Pet"; ObjectID = "xZ9-Ng-9se"; */
+"xZ9-Ng-9se.title" = "餵食寵物";
+
+/* Class = "UIBarButtonItem"; title = "Group By"; ObjectID = "Y9b-tv-h4L"; */
+"Y9b-tv-h4L.title" = "隊長為";
+
+/* Class = "UINavigationItem"; title = "Choose Task"; ObjectID = "Yuh-D9-NY5"; */
+"Yuh-D9-NY5.title" = "選擇任務";
+
+/* Class = "UINavigationItem"; title = "Pets"; ObjectID = "zdm-Oo-gvg"; */
+"zdm-Oo-gvg.title" = "寵物";
+
+/* Class = "UINavigationItem"; title = "Dailies"; ObjectID = "zec-6L-pJk"; */
+"zec-6L-pJk.title" = "每日任務";
+
+/* Class = "UITabBarItem"; title = "Rewards"; ObjectID = "zFI-xr-RjT"; */
+"zFI-xr-RjT.title" = "獎勵";
+
