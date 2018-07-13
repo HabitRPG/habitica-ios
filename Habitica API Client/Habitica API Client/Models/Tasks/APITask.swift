@@ -189,5 +189,6 @@ public class APITask: TaskProtocol, Codable {
         try? container.encode(weekRepeat as? APIWeekRepeat, forKey: .weekRepeat)
         try? container.encode(daysOfMonth, forKey: .daysOfMonth)
         try? container.encode(weeksOfMonth, forKey: .weeksOfMonth)
+        try? container.encode(value, forKey: .value)
     }
 }
