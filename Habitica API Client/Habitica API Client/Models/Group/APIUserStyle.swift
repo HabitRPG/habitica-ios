@@ -13,6 +13,7 @@ class APIUserStyle: UserStyleProtocol, Decodable {
     var items: UserItemsProtocol?
     var preferences: PreferencesProtocol?
     var stats: StatsProtocol?
+    public var isValid: Bool { return true }
     
     enum CodingKeys: String, CodingKey {
         case stats

@@ -173,11 +173,6 @@ class TaskTableViewController: HRPGBaseViewController, UISearchBarDelegate, UITa
             case .changed:
                 if let sourcePath = sourceIndexPath, indexPath != sourcePath {
                     dataSource?.userDrivenDataUpdate = true
-                    if let sourceTask = dataSource?.task(at: sourcePath), let task = dataSource?.task(at: indexPath) {
-                        let sourceOrder = sourceTask.order
-                        sourceTask.order = task.order
-                        task.order = sourceOrder
-                    }
                     
                     tableView.moveRow(at: sourcePath, to: indexPath)
                     sourceIndexPath = indexPath

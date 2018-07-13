@@ -76,6 +76,9 @@ class UserTopHeader: UIView {
     }
     
     private func set(user: UserProtocol) {
+        if !user.isValid {
+            return
+        }
         avatarView.avatar = AvatarViewModel(avatar: user)
         if let stats = user.stats {
             healthLabel.value = NSNumber(value: stats.health)

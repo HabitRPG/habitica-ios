@@ -58,6 +58,10 @@ class RealmUserStyle: Object, UserStyleProtocol {
     }
     @objc dynamic var realmStats: RealmStats?
     
+    var isValid: Bool {
+        return !isInvalidated
+    }
+    
     override static func primaryKey() -> String {
         return "id"
     }

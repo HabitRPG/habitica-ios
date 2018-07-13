@@ -31,6 +31,7 @@ public class APIUser: UserProtocol, Decodable {
     public var hasNewMessages: [UserNewMessagesProtocol]
     public var invitations: [GroupInvitationProtocol]
     public var pushDevices: [PushDeviceProtocol]
+    public var isValid: Bool { return true }
     
     enum CodingKeys: String, CodingKey {
         case id

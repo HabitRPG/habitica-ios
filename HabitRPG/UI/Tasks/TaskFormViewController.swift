@@ -113,6 +113,9 @@ class TaskFormViewController: FormViewController {
             tags.forEach({ (tag) in
                 let row = CheckRow(tag.id) { row in
                     row.title = tag.text
+                    if !self.task.isValid {
+                        return
+                    }
                     row.value = self.task.tags.contains(where: { (taskTag) -> Bool in
                         return taskTag.id == tag.id
                     })

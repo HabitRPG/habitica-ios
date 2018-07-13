@@ -138,6 +138,10 @@ class RealmMember: Object, MemberProtocol {
     }
     @objc dynamic var realmAuthentication: RealmAuthentication?
     
+    var isValid: Bool {
+        return !isInvalidated
+    }
+    
     override static func primaryKey() -> String {
         return "id"
     }

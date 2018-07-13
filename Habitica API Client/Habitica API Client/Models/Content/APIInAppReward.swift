@@ -26,6 +26,7 @@ class APIInAppReward: InAppRewardProtocol, Decodable {
     var type: String?
     var value: Float = 0
     var isSubscriberItem: Bool = false
+    public var isValid: Bool { return true }
     
     enum CodingKeys: String, CodingKey {
         case key

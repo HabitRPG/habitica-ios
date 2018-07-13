@@ -77,6 +77,7 @@
 		2974BD95208E0DB700EC1A25 /* PurchasedProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BD94208E0DB700EC1A25 /* PurchasedProtocol.swift */; };
 		2974BD97208E0E0D00EC1A25 /* SubscriptionPlanProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BD96208E0E0D00EC1A25 /* SubscriptionPlanProtocol.swift */; };
 		2974BD99208E0E6800EC1A25 /* SubscriptionConsecutiveProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BD98208E0E6800EC1A25 /* SubscriptionConsecutiveProtocol.swift */; };
+		298184A020F8AC3E00F06D3D /* BaseModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2981849F20F8AC3E00F06D3D /* BaseModelProtocol.swift */; };
 		298CB20D20AF0696006DA349 /* QuestBossRageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298CB20C20AF0696006DA349 /* QuestBossRageProtocol.swift */; };
 		298CB20F20AF06DD006DA349 /* QuestDropProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298CB20E20AF06DD006DA349 /* QuestDropProtocol.swift */; };
 		298CB21120AF0722006DA349 /* QuestDropItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298CB21020AF0722006DA349 /* QuestDropItemProtocol.swift */; };
@@ -187,6 +188,7 @@
 		2974BD94208E0DB700EC1A25 /* PurchasedProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasedProtocol.swift; sourceTree = "<group>"; };
 		2974BD96208E0E0D00EC1A25 /* SubscriptionPlanProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionPlanProtocol.swift; sourceTree = "<group>"; };
 		2974BD98208E0E6800EC1A25 /* SubscriptionConsecutiveProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionConsecutiveProtocol.swift; sourceTree = "<group>"; };
+		2981849F20F8AC3E00F06D3D /* BaseModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModelProtocol.swift; sourceTree = "<group>"; };
 		298CB20C20AF0696006DA349 /* QuestBossRageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestBossRageProtocol.swift; sourceTree = "<group>"; };
 		298CB20E20AF06DD006DA349 /* QuestDropProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestDropProtocol.swift; sourceTree = "<group>"; };
 		298CB21020AF0722006DA349 /* QuestDropItemProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestDropItemProtocol.swift; sourceTree = "<group>"; };
@@ -398,6 +400,7 @@
 				29B478C020C531B000B6123F /* ArmoireResponseProtocol.swift */,
 				29DBFF0820D1336000DF9CF2 /* EquatableStringEnumProtocol.swift */,
 				29990DB120E3FA82001ADD8B /* Constants.swift */,
+				2981849F20F8AC3E00F06D3D /* BaseModelProtocol.swift */,
 			);
 			path = "Habitica Models";
 			sourceTree = "<group>";
@@ -640,6 +643,7 @@
 				290B6281207BAA5A007287C4 /* LoginResponseProtocol.swift in Sources */,
 				2902795C2057E7FB006DACB9 /* FAQEntryProtocol.swift in Sources */,
 				290B625B207B8A09007287C4 /* AuthenticationProtocol.swift in Sources */,
+				298184A020F8AC3E00F06D3D /* BaseModelProtocol.swift in Sources */,
 				298CB20F20AF06DD006DA349 /* QuestDropProtocol.swift in Sources */,
 				290B62502073D82A007287C4 /* InboxMessageProtocol.swift in Sources */,
 				290C3037206D36740066AF5B /* GroupProtocol.swift in Sources */,

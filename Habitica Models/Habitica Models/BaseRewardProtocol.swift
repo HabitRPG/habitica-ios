@@ -9,7 +9,7 @@
 import Foundation
 
 @objc
-public protocol BaseRewardProtocol {
+public protocol BaseRewardProtocol: BaseModelProtocol {
     var text: String? { get set }
     var notes: String? { get set }
     var type: String? { get set }

@@ -19,6 +19,7 @@ public class APIMember: MemberProtocol, Decodable {
     public var party: UserPartyProtocol?
     public var flags: FlagsProtocol?
     public var authentication: AuthenticationProtocol?
+    public var isValid: Bool { return true }
     
     enum CodingKeys: String, CodingKey {
         case id

@@ -52,7 +52,6 @@ public protocol TaskProtocol: BaseRewardProtocol {
     var nextDue: [Date] { get set }
     var weeksOfMonth: [Int] { get set }
     var daysOfMonth: [Int] { get set }
-    var isValid: Bool { get }
     
     var isSynced: Bool { get set }
     var isSyncing: Bool { get set }
