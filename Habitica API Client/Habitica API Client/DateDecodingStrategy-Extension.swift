@@ -26,11 +26,7 @@ extension JSONDecoder {
             if let date = dateFormatter.date(from: dateStr) {
                 return date
             }
-            
-            dateFormatter.dateFormat = "yyyy-MM-dd"
-            if let date = dateFormatter.date(from: dateStr) {
-                return date
-            }
+
             
             //This is sometimes used for the `nextDue` dates
             var splitString = dateStr.split(separator: " ")
@@ -42,6 +38,19 @@ extension JSONDecoder {
                 }
             }
             
+            //Various formats for just the day
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            if let date = dateFormatter.date(from: dateStr) {
+                return date
+            }
+            dateFormatter.dateFormat = "MM/dd/yyyy"
+            if let date = dateFormatter.date(from: dateStr) {
+                return date
+            }
+            dateFormatter.dateFormat = "dd/MM/yyyy"
+            if let date = dateFormatter.date(from: dateStr) {
+                return date
+            }
             return Date()
         })
     }

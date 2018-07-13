@@ -233,7 +233,7 @@
 "ok" = "OK";
 
 /* (No Comment) */
-"party.quest_participant_count" = "%@ Deltagere";
+"party.quest_participant_count" = "%d Deltagere";
 
 /* (No Comment) */
 "pets" = "Kæledyr";

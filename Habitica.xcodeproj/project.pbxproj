@@ -1724,24 +1724,24 @@
 		494E54051F2D7F9E0003683C /* TVDataSources */ = {
 			isa = PBXGroup;
 			children = (
-				494E54021F2D20C70003683C /* HRPGShopOverviewTableViewDataSource.h */,
-				494E54031F2D20C70003683C /* HRPGShopOverviewTableViewDataSource.m */,
-				49DCECA61F96ECEF00982E99 /* MultiModelDataSource.swift */,
-				292DEE8B204F455E0086D5F7 /* Tasks */,
+				292726B520B7094A009DD08A /* ChallengeTableViewDataSource.swift */,
+				291448832088E2E000F3A6B5 /* EquipmentViewDataSource.swift */,
 				290279722057FB4E006DACB9 /* FAQTableViewDataSource.swift */,
-				290C302B206BACBB0066AF5B /* SpellsTableViewDataSource.swift */,
+				29144871208628A300F3A6B5 /* FeedViewDataSource.swift */,
+				295E9DF320B456F100D58D45 /* FilterTableviewDataSource.swift */,
 				292F9661206E363000804151 /* GroupChatViewDataSource.swift */,
 				292F968220724B1100804151 /* GuildsOverviewDataSource.swift */,
-				292726B520B7094A009DD08A /* ChallengeTableViewDataSource.swift */,
-				290B62A3207F818E007287C4 /* ItemsViewDataSource.swift */,
-				29144871208628A300F3A6B5 /* FeedViewDataSource.swift */,
-				291448832088E2E000F3A6B5 /* EquipmentViewDataSource.swift */,
-				2974BDB52090C03E00EC1A25 /* InboxOverviewDataSource.swift */,
+				494E54021F2D20C70003683C /* HRPGShopOverviewTableViewDataSource.h */,
+				494E54031F2D20C70003683C /* HRPGShopOverviewTableViewDataSource.m */,
 				2919FDD42090CF900096A53B /* InboxMessagesDataSource.swift */,
-				295E9DF320B456F100D58D45 /* FilterTableviewDataSource.swift */,
-				29B4788520BD6E2E00B6123F /* SkillsUserTableViewDataSource.swift */,
-				29B4788720BD732A00B6123F /* SkillsTaskTableViewDataSource.swift */,
+				2974BDB52090C03E00EC1A25 /* InboxOverviewDataSource.swift */,
+				290B62A3207F818E007287C4 /* ItemsViewDataSource.swift */,
+				49DCECA61F96ECEF00982E99 /* MultiModelDataSource.swift */,
 				49A37A7F20C0EBFF008C28F5 /* SingleItemTableViewDataSource.swift */,
+				29B4788720BD732A00B6123F /* SkillsTaskTableViewDataSource.swift */,
+				29B4788520BD6E2E00B6123F /* SkillsUserTableViewDataSource.swift */,
+				290C302B206BACBB0066AF5B /* SpellsTableViewDataSource.swift */,
+				292DEE8B204F455E0086D5F7 /* Tasks */,
 			);
 			name = TVDataSources;
 			sourceTree = "<group>";

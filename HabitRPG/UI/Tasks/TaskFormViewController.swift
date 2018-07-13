@@ -180,6 +180,8 @@ class TaskFormViewController: FormViewController {
                 self.modalContainerViewController?.dismiss()
             }
         }
+        
+        isEditing = true
     }
     
     override func viewWillLayoutSubviews() {

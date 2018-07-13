@@ -30,6 +30,7 @@ public extension UIAlertController {
         return alertController
     }
 
+    @objc
     public func setSourceInCenter(_ view: UIView) {
         if let popoverController = popoverPresentationController {
             popoverController.sourceView = self.view

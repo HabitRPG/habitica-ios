@@ -18,8 +18,10 @@ extension Down {
                                              attributes: [.font: CustomFontMetrics.scaledSystemFont(ofSize: 15),
                                                           .foregroundColor: textColor])
         }
-        guard let string = try toAttributedString().mutableCopy() as? NSMutableAttributedString else {
-            return NSMutableAttributedString()
+        guard let parsedString = try? toAttributedString().mutableCopy() as? NSMutableAttributedString, let string = parsedString else {
+            return NSMutableAttributedString(string: markdownString,
+                                             attributes: [.font: CustomFontMetrics.scaledSystemFont(ofSize: 15),
+                                                          .foregroundColor: textColor])
         }
         let baseSize = baseFont.pointSize
         string.enumerateAttribute(NSAttributedStringKey.font,

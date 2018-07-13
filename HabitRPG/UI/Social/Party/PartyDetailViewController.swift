@@ -73,6 +73,7 @@ class PartyDetailViewController: GroupDetailViewController {
             })
             .skipNil()
             .skipRepeats()
+            .observe(on: QueueScheduler.main)
             .flatMap(.latest, {[weak self] groupID in
             return self?.socialRepository.getGroupMembers(groupID: groupID) ?? SignalProducer.empty
         }).on(value: {[weak self] (members, _) in

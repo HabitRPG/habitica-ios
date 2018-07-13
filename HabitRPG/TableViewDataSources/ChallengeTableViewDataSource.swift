@@ -46,7 +46,9 @@ class ChallengeTableViewDataSource: BaseReactiveTableViewDataSource<ChallengePro
                     self?.membershipIDs.append(challengeID)
                 }
             })
-            self?.updatePredicate()
+            DispatchQueue.main.async {
+                self?.updatePredicate()
+            }
         }).start())
     }
     
