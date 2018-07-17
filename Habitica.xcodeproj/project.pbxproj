@@ -92,6 +92,7 @@
 		292726B620B7094B009DD08A /* ChallengeTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292726B520B7094A009DD08A /* ChallengeTableViewDataSource.swift */; };
 		292844ED20DD1D4B0011DC43 /* GroupInvitationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292844EC20DD1D4B0011DC43 /* GroupInvitationView.swift */; };
 		292844EF20DD1D630011DC43 /* GroupInvitationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292844EE20DD1D630011DC43 /* GroupInvitationListView.swift */; };
+		292AA72420FE15090022CC5F /* UIFont-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292AA72320FE15090022CC5F /* UIFont-Extensions.swift */; };
 		292DEE3A204D9D290086D5F7 /* Habitica_Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE3B204D9D290086D5F7 /* Habitica_Models.framework */; };
 		292DEE3C204D9D360086D5F7 /* Habitica_Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE3D204D9D360086D5F7 /* Habitica_Database.framework */; };
 		292DEE4C204DA1830086D5F7 /* Habitica_API_Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE4D204DA1830086D5F7 /* Habitica_API_Client.framework */; };
@@ -609,6 +610,7 @@
 		292726B520B7094A009DD08A /* ChallengeTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeTableViewDataSource.swift; sourceTree = "<group>"; };
 		292844EC20DD1D4B0011DC43 /* GroupInvitationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInvitationView.swift; sourceTree = "<group>"; };
 		292844EE20DD1D630011DC43 /* GroupInvitationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInvitationListView.swift; sourceTree = "<group>"; };
+		292AA72320FE15090022CC5F /* UIFont-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont-Extensions.swift"; sourceTree = "<group>"; };
 		292DEE3B204D9D290086D5F7 /* Habitica_Models.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_Models.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		292DEE3D204D9D360086D5F7 /* Habitica_Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		292DEE4D204DA1830086D5F7 /* Habitica_API_Client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_API_Client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1960,6 +1962,7 @@
 				29F89F191F47882A004E5B84 /* String-Extensions.swift */,
 				29646DE0205C18FA0050886C /* TaskType-Extensions.swift */,
 				29A1B9B81F6ACC2F0055CF57 /* UIAlertAction-Extensions.swift */,
+				292AA72320FE15090022CC5F /* UIFont-Extensions.swift */,
 				D96BFC4E1E191D7200266EEF /* UIAlertController-Extensions.swift */,
 				29701FDF1F560D310097BBCC /* UIApplication-Extensions.swift */,
 				29ED1AFE1F339ACF005A3895 /* UIColor-Extensions.swift */,
@@ -3262,6 +3265,7 @@
 				D905D08F1DE2431100CABF55 /* HRPGLoginIncentiveOverlayView.m in Sources */,
 				49DCB7B21F3E6D400079FDD0 /* HRPGSingleOptionModalViewController.swift in Sources */,
 				D91CCACD1BCD9068001C6A0C /* HRPGHoledView.m in Sources */,
+				292AA72420FE15090022CC5F /* UIFont-Extensions.swift in Sources */,
 				295E9DF420B456F100D58D45 /* FilterTableviewDataSource.swift in Sources */,
 				29FC885420175C70002B3D3F /* RageStrikeView.swift in Sources */,
 				D9D9EF981D54E51C00FC89C1 /* HRPGQRCodeView.m in Sources */,
