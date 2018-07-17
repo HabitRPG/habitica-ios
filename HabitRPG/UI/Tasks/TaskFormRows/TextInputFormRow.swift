@@ -42,7 +42,9 @@ public class TaskTextInputCell: Cell<String>, CellType, UITextViewDelegate {
     
     public func textViewDidChange(_ textView: UITextView) {
         row.value = textView.text
-        row.updateCell()
+        DispatchQueue.main.async {[weak self] in
+            self?.row.updateCell()
+        }
     }
    
     private func layout() {
