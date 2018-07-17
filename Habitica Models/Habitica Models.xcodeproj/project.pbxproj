@@ -42,6 +42,8 @@
 		2927269C20B6FD34009DD08A /* ChallengeCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2927269B20B6FD34009DD08A /* ChallengeCategory.swift */; };
 		292726B020B70429009DD08A /* ChallengeMembershipProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292726AF20B70429009DD08A /* ChallengeMembershipProtocol.swift */; };
 		292844E920DD17DC0011DC43 /* GroupInvitationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292844E820DD17DC0011DC43 /* GroupInvitationProtocol.swift */; };
+		292AA71C20FDF6050022CC5F /* PinResponseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292AA71B20FDF6050022CC5F /* PinResponseProtocol.swift */; };
+		292AA71E20FDF6670022CC5F /* PinResponseItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292AA71D20FDF6670022CC5F /* PinResponseItemProtocol.swift */; };
 		292DEE5A204DAA000086D5F7 /* HabiticaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE59204DAA000086D5F7 /* HabiticaModel.swift */; };
 		292DEE7A204E36F60086D5F7 /* TagProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE79204E36F60086D5F7 /* TagProtocol.swift */; };
 		292DEE7C204E372E0086D5F7 /* ChecklistItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE7B204E372E0086D5F7 /* ChecklistItemProtocol.swift */; };
@@ -153,6 +155,8 @@
 		2927269B20B6FD34009DD08A /* ChallengeCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCategory.swift; sourceTree = "<group>"; };
 		292726AF20B70429009DD08A /* ChallengeMembershipProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeMembershipProtocol.swift; sourceTree = "<group>"; };
 		292844E820DD17DC0011DC43 /* GroupInvitationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInvitationProtocol.swift; sourceTree = "<group>"; };
+		292AA71B20FDF6050022CC5F /* PinResponseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinResponseProtocol.swift; sourceTree = "<group>"; };
+		292AA71D20FDF6670022CC5F /* PinResponseItemProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinResponseItemProtocol.swift; sourceTree = "<group>"; };
 		292DEE59204DAA000086D5F7 /* HabiticaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabiticaModel.swift; sourceTree = "<group>"; };
 		292DEE79204E36F60086D5F7 /* TagProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagProtocol.swift; sourceTree = "<group>"; };
 		292DEE7B204E372E0086D5F7 /* ChecklistItemProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistItemProtocol.swift; sourceTree = "<group>"; };
@@ -358,6 +362,8 @@
 				296AC81720AC898D00885682 /* InAppRewardProtocol.swift */,
 				295E9DE520B3257700D58D45 /* ShopProtocol.swift */,
 				295E9DE720B3263E00D58D45 /* ShopCategoryProtocol.swift */,
+				292AA71B20FDF6050022CC5F /* PinResponseProtocol.swift */,
+				292AA71D20FDF6670022CC5F /* PinResponseItemProtocol.swift */,
 			);
 			path = Content;
 			sourceTree = "<group>";
@@ -667,8 +673,10 @@
 				295611032056DBC900D9711A /* QuestProtocol.swift in Sources */,
 				290C3030206CEED20066AF5B /* SkillResponseProtocol.swift in Sources */,
 				295E9DE620B3257700D58D45 /* ShopProtocol.swift in Sources */,
+				292AA71C20FDF6050022CC5F /* PinResponseProtocol.swift in Sources */,
 				29B478C120C531B000B6123F /* ArmoireResponseProtocol.swift in Sources */,
 				29990DC020E65C05001ADD8B /* TaskResponseQuestProtocol.swift in Sources */,
+				292AA71E20FDF6670022CC5F /* PinResponseItemProtocol.swift in Sources */,
 				2927269C20B6FD34009DD08A /* ChallengeCategory.swift in Sources */,
 				290B625F207B947A007287C4 /* LocalAuthenticationProtocol.swift in Sources */,
 				2902797520580E3E006DACB9 /* BuffProtocol.swift in Sources */,

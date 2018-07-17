@@ -135,4 +135,34 @@ public class InventoryLocalRepository: ContentLocalRepository {
             user?.purchased?.subscriptionPlan?.mysteryItems.remove(at: index ?? 0)
         }
     }
+    
+    public func updatePinnedItems(userID: String, pinResponse: PinResponseProtocol) {
+        guard let realm = getRealm() else {
+            return
+        }
+        let pinnedItems = realm.objects(RealmInAppReward.self).filter("userID == %@", userID)
+        let newPinnedItems = pinResponse.pinnedItems.filter { (item) -> Bool in
+            return !pinnedItems.contains(where: { (reward) -> Bool in
+                return reward.path == item.path && reward.pinType == item.type
+            })
+        }
+        let pinsToRemove = pinnedItems.filter { (reward) -> Bool in
+            return pinResponse.unpinnedItems.contains(where: { (item) -> Bool in
+                return reward.path == item.path && reward.pinType == item.type
+            }) || !pinResponse.pinnedItems.contains(where: { (item) -> Bool in
+                return reward.path == item.path && reward.pinType == item.type
+            })
+        }
+        try? realm.write {
+            realm.delete(pinsToRemove)
+            for newItem in newPinnedItems {
+                let reward = RealmInAppReward()
+                reward.userID = userID
+                reward.key = String(newItem.path.split(separator: ".").last ?? "")
+                reward.combinedKey = (reward.userID ?? "") + (reward.key ?? "")
+                reward.path = newItem.path
+                reward.pinType = newItem.type
+            }
+        }
+    }
 }

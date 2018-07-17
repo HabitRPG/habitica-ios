@@ -195,10 +195,14 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
         })
     }
     
-    func togglePinnedItem(pinType: String, path: String) -> Signal<EmptyResponseProtocol?, NoError> {
+    func togglePinnedItem(pinType: String, path: String) -> Signal<PinResponseProtocol?, NoError> {
         let call = TogglePinnedItemCall(pinType: pinType, path: path)
         call.fire()
-        return call.objectSignal
+        return call.objectSignal.on(value: {[weak self] pinResponse in
+            if let pinResponse = pinResponse, let userID = self?.currentUserId {
+                self?.localRepository.updatePinnedItems(userID: userID, pinResponse: pinResponse)
+            }
+        })
     }
     
     func retrieveShopInventory(identifier: String) -> Signal<ShopProtocol?, NoError> {
