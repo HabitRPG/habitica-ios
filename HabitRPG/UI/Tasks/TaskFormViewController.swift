@@ -180,8 +180,13 @@ class TaskFormViewController: FormViewController {
                 self.modalContainerViewController?.dismiss()
             }
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         isEditing = true
+        tableView.isEditing = true
     }
     
     override func viewWillLayoutSubviews() {
