@@ -120,7 +120,7 @@
                     [self showNoEmailAlert];
                 }
             } else {
-                [Instabug invokeWithInvocationMode:IBGInvocationModeNewFeedback];
+                [IBGBugReporting invokeWithMode:IBGInvocationModeNewFeedback options:0];
             }
             
             break;
@@ -140,7 +140,7 @@
                     [self showNoEmailAlert];
                 }
             } else {
-                [Instabug invokeWithInvocationMode:IBGInvocationModeNewBug];
+                [IBGBugReporting invokeWithMode:IBGInvocationModeNewBug options:0];
             }
             break;
         }
