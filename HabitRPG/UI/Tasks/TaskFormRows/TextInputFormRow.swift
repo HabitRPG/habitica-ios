@@ -29,7 +29,9 @@ public class TaskTextInputCell: Cell<String>, CellType, UITextViewDelegate {
 
     public override func update() {
         titleLabel.text = row.title
-        textField.text = row.value
+        if textField.text != row.value {
+            textField.text = row.value
+        }
         
         if let taskRow = row as? TaskTextInputRow {
             cellBackgroundView.backgroundColor = taskRow.tintColor
