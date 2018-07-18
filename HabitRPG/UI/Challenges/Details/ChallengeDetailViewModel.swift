@@ -241,7 +241,8 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
     }
     
     func reloadChallenge(challenge: ChallengeProtocol?) {
-        socialRepository.retrieveChallenge(challengeID: challenge?.id ?? "").observeCompleted {[weak self] in
+        DispatchQueue.main.async {[weak self] in
+            self?.socialRepository.retrieveChallenge(challengeID: challenge?.id ?? "").observeCompleted { }
         }
     }
     

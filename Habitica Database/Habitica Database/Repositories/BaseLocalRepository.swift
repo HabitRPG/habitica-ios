@@ -22,7 +22,7 @@ public class BaseLocalRepository {
     func save(object realmObject: Object?) {
         if let object = realmObject {
             let realm = getRealm()
-            try! realm?.write {
+            try? realm?.write {
                 realm?.add(object, update: true)
             }
         }
@@ -31,7 +31,7 @@ public class BaseLocalRepository {
     func save(objects realmObjects: [Object]?) {
         if let objects = realmObjects {
             let realm = getRealm()
-            try! realm?.write {
+            try? realm?.write {
                 realm?.add(objects, update: true)
             }
         }

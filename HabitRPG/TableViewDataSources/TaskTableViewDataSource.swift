@@ -143,6 +143,9 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
     }
     
     func configure(cell: TaskTableViewCell, indexPath: IndexPath, task: TaskProtocol) {
+        if !task.isValid {
+            return
+        }
         if let checkedCell = cell as? CheckedTableViewCell {
             checkedCell.isExpanded = self.expandedIndexPath?.item == indexPath.item
         }

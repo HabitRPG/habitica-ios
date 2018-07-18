@@ -111,7 +111,7 @@ public class InventoryLocalRepository: ContentLocalRepository {
             ownedPet?.trained = trained
             ownedFood?.numberOwned -= 1
             if trained == -1 {
-                realm?.add(RealmOwnedMount(userID: userID, key: key, owned: true))
+                realm?.add(RealmOwnedMount(userID: userID, key: key, owned: true), update: true)
             }
         }
     }
