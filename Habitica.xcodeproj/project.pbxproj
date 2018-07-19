@@ -1437,15 +1437,15 @@
 		29205E332062DF620024E355 /* TaskFormRows */ = {
 			isa = PBXGroup;
 			children = (
-				29205E382062E2430024E355 /* TaskRow.swift */,
-				29205E342062DF710024E355 /* TextInputFormRow.swift */,
-				29205E362062E0030024E355 /* TaskTextInputCell.xib */,
-				294FD5682064135500EABCC9 /* HabitControlsRow.swift */,
 				294FD56A20641B2F00EABCC9 /* HabitControlsCell.xib */,
-				29A6B85C20641C9B0086B2A6 /* TaskDifficultyRow.swift */,
+				294FD5682064135500EABCC9 /* HabitControlsRow.swift */,
 				29A6B86120641FEA0086B2A6 /* TaskDifficultyCell.xib */,
-				29A6B86320644BFE0086B2A6 /* WeekdayFormCell.xib */,
+				29A6B85C20641C9B0086B2A6 /* TaskDifficultyRow.swift */,
+				29205E382062E2430024E355 /* TaskRow.swift */,
+				29205E362062E0030024E355 /* TaskTextInputCell.xib */,
+				29205E342062DF710024E355 /* TextInputFormRow.swift */,
 				29A6B86520644CA40086B2A6 /* WeekdayFormCell.swift */,
+				29A6B86320644BFE0086B2A6 /* WeekdayFormCell.xib */,
 			);
 			path = TaskFormRows;
 			sourceTree = "<group>";
@@ -4186,7 +4186,7 @@
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 331;
+				CURRENT_PROJECT_VERSION = 336;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_SOURCE_FILE_NAMES = "";
@@ -4278,7 +4278,7 @@
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 331;
+				CURRENT_PROJECT_VERSION = 336;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_SOURCE_FILE_NAMES = "FLEX*";
