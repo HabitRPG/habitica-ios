@@ -789,34 +789,43 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="acX-37-gLd" kind="relationship" relationship="rootViewController" id="wOf-tj-hvw"/>
+                        <segue destination="NAg-B6-gAf" kind="relationship" relationship="rootViewController" id="IsY-Ps-enA"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TGi-BO-Fim" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3603" y="1451"/>
         </scene>
-        <!--Invite Members View Controller-->
-        <scene sceneID="fA4-Xt-rBG">
+        <!--Invite Members-->
+        <scene sceneID="2mk-gr-xOz">
             <objects>
-                <tableViewController id="acX-37-gLd" customClass="HRPGInviteMembersViewController" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="Iu5-kH-Nzg">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="V0m-tl-nrX">
+                <viewController id="NAg-B6-gAf" customClass="InviteMembersViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8FN-16-lYP"/>
+                        <viewControllerLayoutGuide type="bottom" id="P6N-Fc-Wb3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Lyy-sF-5bz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Invite Members" id="i9P-Kk-9RH">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="jOO-Wz-tsf">
                             <connections>
-                                <segue destination="Gdw-Yu-Yfc" kind="unwind" unwindAction="unwindToList:" id="Bo0-6T-4nE"/>
+                                <segue destination="5eM-yh-uY1" kind="unwind" unwindAction="unwindToList:" id="y2j-BK-hkb"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="AQ4-Xq-gux">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="ccZ-xi-m0w">
                             <connections>
-                                <segue destination="Gdw-Yu-Yfc" kind="unwind" identifier="unwindSaveSegue" unwindAction="unwindToListSave:" id="L9D-Qq-2Z3"/>
+                                <segue destination="5eM-yh-uY1" kind="unwind" unwindAction="unwindToListInvite:" id="TxZ-B1-fsG"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                </tableViewController>
-                <exit id="Gdw-Yu-Yfc" userLabel="Exit" sceneMemberID="exit"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cRd-0L-kMD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k6Z-Ky-N8V" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="5eM-yh-uY1" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4328" y="1451"/>
+            <point key="canvasLocation" x="4327" y="1451"/>
         </scene>
         <!--User Profile View Controller-->
         <scene sceneID="9AG-Sl-966">

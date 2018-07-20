@@ -278,3 +278,10 @@
 "sunday" = "Sunday";
 "active_on" = "Active on %@";
 "no_days" = "no days";
+"groups.invite.invitation_type" = "Invitation Type";
+"userID" = "User ID";
+"email" = "Email";
+"groups.invite.add_userid" = "Add a User ID";
+"groups.invite.add_email" = "Add an Email";
+"scan_QR_code" = "Scan QR Code";
+"users_invited" = "Invitation was sent to users.";

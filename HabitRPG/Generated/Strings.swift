@@ -45,6 +45,8 @@ internal enum L10n {
   internal static let edit = L10n.tr("Mainstrings", "edit")
   /// Eggs
   internal static let eggs = L10n.tr("Mainstrings", "eggs")
+  /// Email
+  internal static let email = L10n.tr("Mainstrings", "email")
   /// Equip
   internal static let equip = L10n.tr("Mainstrings", "equip")
   /// Experience
@@ -149,6 +151,8 @@ internal enum L10n {
   internal static let saturday = L10n.tr("Mainstrings", "saturday")
   /// Save
   internal static let save = L10n.tr("Mainstrings", "save")
+  /// Scan QR Code
+  internal static let scanQRCode = L10n.tr("Mainstrings", "scan_QR_code")
   /// Search
   internal static let search = L10n.tr("Mainstrings", "search")
   /// Sell for %d gold
@@ -181,6 +185,10 @@ internal enum L10n {
   internal static let unsubscribeItunes = L10n.tr("Mainstrings", "unsubscribe_itunes")
   /// No longer want to subscribe? Due to your payment method, you can only unsubscribe through the website.
   internal static let unsubscribeWebsite = L10n.tr("Mainstrings", "unsubscribe_website")
+  /// User ID
+  internal static let userID = L10n.tr("Mainstrings", "userID")
+  /// Invitation was sent to users.
+  internal static let usersInvited = L10n.tr("Mainstrings", "users_invited")
   /// Wednesday
   internal static let wednesday = L10n.tr("Mainstrings", "wednesday")
   /// Weekly
@@ -290,6 +298,15 @@ internal enum L10n {
     }
     /// Only leader can create Challenges
     internal static let leaderChallenges = L10n.tr("Mainstrings", "groups.leader_challenges")
+
+    internal enum Invite {
+      /// Add an Email
+      internal static let addEmail = L10n.tr("Mainstrings", "groups.invite.add_email")
+      /// Add a User ID
+      internal static let addUserid = L10n.tr("Mainstrings", "groups.invite.add_userid")
+      /// Invitation Type
+      internal static let invitationType = L10n.tr("Mainstrings", "groups.invite.invitation_type")
+    }
   }
 
   internal enum Guilds {

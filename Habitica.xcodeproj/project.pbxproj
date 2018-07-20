@@ -93,6 +93,7 @@
 		292844ED20DD1D4B0011DC43 /* GroupInvitationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292844EC20DD1D4B0011DC43 /* GroupInvitationView.swift */; };
 		292844EF20DD1D630011DC43 /* GroupInvitationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292844EE20DD1D630011DC43 /* GroupInvitationListView.swift */; };
 		292AA72420FE15090022CC5F /* UIFont-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292AA72320FE15090022CC5F /* UIFont-Extensions.swift */; };
+		292D6C9B2101FF080078288A /* InviteMembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292D6C9A2101FF080078288A /* InviteMembersViewController.swift */; };
 		292DEE3A204D9D290086D5F7 /* Habitica_Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE3B204D9D290086D5F7 /* Habitica_Models.framework */; };
 		292DEE3C204D9D360086D5F7 /* Habitica_Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE3D204D9D360086D5F7 /* Habitica_Database.framework */; };
 		292DEE4C204DA1830086D5F7 /* Habitica_API_Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE4D204DA1830086D5F7 /* Habitica_API_Client.framework */; };
@@ -611,6 +612,7 @@
 		292844EC20DD1D4B0011DC43 /* GroupInvitationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInvitationView.swift; sourceTree = "<group>"; };
 		292844EE20DD1D630011DC43 /* GroupInvitationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInvitationListView.swift; sourceTree = "<group>"; };
 		292AA72320FE15090022CC5F /* UIFont-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont-Extensions.swift"; sourceTree = "<group>"; };
+		292D6C9A2101FF080078288A /* InviteMembersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteMembersViewController.swift; sourceTree = "<group>"; };
 		292DEE3B204D9D290086D5F7 /* Habitica_Models.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_Models.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		292DEE3D204D9D360086D5F7 /* Habitica_Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		292DEE4D204DA1830086D5F7 /* Habitica_API_Client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_API_Client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1089,7 +1091,6 @@
 		D94AADB8192A5CE700546C8E /* HRPGSpellTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGSpellTabBarController.h; sourceTree = "<group>"; };
 		D94AADB9192A5CE700546C8E /* HRPGSpellTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGSpellTabBarController.m; sourceTree = "<group>"; };
 		D94B969F1B8B2CEE00C977C2 /* content-24.8.15.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "content-24.8.15.json"; path = "HabiticaTests/Fixtures/content-24.8.15.json"; sourceTree = SOURCE_ROOT; };
-		D94FEDEC1BB6DA8E0046A52E /* HRPGInviteMembersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HRPGInviteMembersViewController.h; path = HabitRPG/TableViewController/Modals/HRPGInviteMembersViewController.h; sourceTree = SOURCE_ROOT; };
 		D94FEDED1BB6DA8E0046A52E /* HRPGInviteMembersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HRPGInviteMembersViewController.m; path = HabitRPG/TableViewController/Modals/HRPGInviteMembersViewController.m; sourceTree = SOURCE_ROOT; };
 		D9525F9A1E5F559600C529B8 /* ChallengeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeTableViewCell.swift; sourceTree = "<group>"; };
 		D9525F9C1E64739900C529B8 /* PaddedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddedView.swift; sourceTree = "<group>"; };
@@ -1646,6 +1647,7 @@
 				29DC5AC620A1E52400993400 /* QuestDetailViewController.swift */,
 				29DC5ACC20A321C900993400 /* GroupFormViewController.swift */,
 				297D15F920B803D30048101F /* UserProfileViewController.swift */,
+				292D6C9A2101FF080078288A /* InviteMembersViewController.swift */,
 			);
 			path = Social;
 			sourceTree = "<group>";
@@ -2430,7 +2432,6 @@
 				4908642C1F4530DC00BD9896 /* Shop */,
 				D9ADD3611944FDBE006202C1 /* HRPGFilterViewController.h */,
 				D9ADD3621944FDBE006202C1 /* HRPGFilterViewController.m */,
-				D94FEDEC1BB6DA8E0046A52E /* HRPGInviteMembersViewController.h */,
 				D94FEDED1BB6DA8E0046A52E /* HRPGInviteMembersViewController.m */,
 				D92D26121D58EEBA001FD977 /* HRPGQRCodeScannerViewController.h */,
 				D92D26131D58EEBA001FD977 /* HRPGQRCodeScannerViewController.m */,
@@ -3297,6 +3298,7 @@
 				2902796D2057F2C5006DACB9 /* Strings.swift in Sources */,
 				D9EB4E9B18CB4A9400BB2094 /* main.m in Sources */,
 				292DEE76204E053D0086D5F7 /* HabitButton.swift in Sources */,
+				292D6C9B2101FF080078288A /* InviteMembersViewController.swift in Sources */,
 				29028C392034ABAF00B7F704 /* TaskRepositoryImpl.swift in Sources */,
 				D99F15C0191027D90081836E /* HRPGBaseViewController.m in Sources */,
 				D94AADBA192A5CE700546C8E /* HRPGSpellTabBarController.m in Sources */,
