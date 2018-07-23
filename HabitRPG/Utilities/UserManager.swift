@@ -107,6 +107,7 @@ class UserManager: NSObject {
         self.userLevel = user.stats?.level ?? 0
         
         userRepository.registerPushDevice(user: user).observeCompleted {}
+        setTimezoneOffset(user)
     }
     
     private func checkFainting(user: UserProtocol) -> FaintViewController? {
@@ -253,5 +254,14 @@ class UserManager: NSObject {
         UIApplication.shared.scheduleLocalNotification(localNotification)
         print("Scheduled Notification for task", reminder.task?.text ?? "", " at time ", fireDate)
         return localNotification
+    }
+    
+    private func setTimezoneOffset(_ user: UserProtocol) {
+        let offset = NSTimeZone.local.secondsFromGMT() / 60
+        if user.preferences?.timezoneOffset != offset {
+            userRepository.updateUser(key: "preferences.timezoneOffset", value: offset).observeCompleted {
+                
+            }
+        }
     }
 }
