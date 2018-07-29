@@ -257,7 +257,7 @@ class UserManager: NSObject {
     }
     
     private func setTimezoneOffset(_ user: UserProtocol) {
-        let offset = NSTimeZone.local.secondsFromGMT() / 60
+        let offset = -(NSTimeZone.local.secondsFromGMT() / 60)
         if user.preferences?.timezoneOffset != offset {
             userRepository.updateUser(key: "preferences.timezoneOffset", value: offset).observeCompleted {
                 
