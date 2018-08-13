@@ -2137,6 +2137,7 @@
 				292F967F20723A4D00804151 /* ImageManager.swift */,
 				2919FDDC2091D5370096A53B /* UserManager.swift */,
 				29DBFF0020CE6FFF00DF9CF2 /* SoundManager.swift */,
+				299BD6391F557FE700E22935 /* AuthenticationManager.swift */,
 				49E1664920E6AE9200D510B1 /* HRPGCoachmarkFrameProvider.h */,
 				49E1664A20E6AE9200D510B1 /* HRPGCoachmarkFrameProvider.m */,
 			);
@@ -2535,7 +2536,6 @@
 				D9AEEA721ACEDD470076951B /* HRPGWebViewController.m */,
 				29FC5A6A20406932008E88C8 /* GuidelinesViewController.swift */,
 				2902799620583D82006DACB9 /* LoadingViewController.swift */,
-				299BD6391F557FE700E22935 /* AuthenticationManager.swift */,
 				290279AC20583EE8006DACB9 /* Storyboards */,
 				D9EB4EAC18CB4A9400BB2094 /* Images.xcassets */,
 				D9A63A321E10328A0083ADC4 /* Habitica-Bridging-Header.h */,
@@ -3108,7 +3108,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\" lint --reporter xcode";
+			shellScript = "
+";
 		};
 /* End PBXShellScriptBuildPhase section */
 
