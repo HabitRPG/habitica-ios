@@ -259,6 +259,9 @@ class AvatarView: UIView {
                 offset -= 3
             }
         }
+        if nameDictionary["mount-head"]??.contains("Kangaroo") == true && size == .regular {
+            offset = 16
+        }
         let name = nameDictionary[type] ?? ""
         if let name = name, specialConstraintsDictionary[name] != nil {
             specialConstraintsDictionary[name]?(self, imageView, size, offset)
