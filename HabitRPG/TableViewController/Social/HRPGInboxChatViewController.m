@@ -53,6 +53,9 @@
     self.textInputbar.charCountLabelNormalColor = [UIColor gray400];
     self.textInputbar.charCountLabelWarningColor = [UIColor red50];
     self.textInputbar.charCountLabel.font = [UIFont systemFontOfSize:11 weight:UIFontWeightBold];
+    
+    self.hrpgTopHeaderNavigationController.shouldHideTopHeader = true;
+    self.hrpgTopHeaderNavigationController.hideNavbar = false;
 }
 
 - (void)setTitleWithUsername:(NSString * _Nullable)username {

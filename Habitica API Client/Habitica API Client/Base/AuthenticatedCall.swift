@@ -43,8 +43,8 @@ public class AuthenticatedCall: JsonNetworkCall {
         if let apiKey = NetworkAuthenticationManager.shared.currentUserKey, let userId = NetworkAuthenticationManager.shared.currentUserId {
             headers[AuthenticatedCall.apiKeyHeader] = apiKey
             headers[AuthenticatedCall.apiUserIdHeader] = userId
-            headers[AuthenticatedCall.clientHeader] = "habitica-ios"
         }
+        headers[AuthenticatedCall.clientHeader] = "habitica-ios"
         return headers
     }
     

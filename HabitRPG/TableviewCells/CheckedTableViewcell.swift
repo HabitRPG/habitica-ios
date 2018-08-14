@@ -127,7 +127,11 @@ class CheckedTableViewCell: TaskTableViewCell {
                     action(item)
                 }
             }
-            checkbox.accessibilityLabel = item.text
+            if item.completed {
+                checkbox.accessibilityLabel = String.init(format: NSLocalizedString("Completed %@", comment: ""), item.text ?? "")
+            } else {
+                checkbox.accessibilityLabel = String.init(format: NSLocalizedString("Not completed %@", comment: ""), item.text ?? "")
+            }
             checkbox.shouldGroupAccessibilityChildren = true
             checkbox.isAccessibilityElement = true
             checkbox.accessibilityHint = NSLocalizedString("Double tap to complete", comment: "")

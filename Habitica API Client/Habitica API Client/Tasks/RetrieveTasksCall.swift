@@ -16,7 +16,7 @@ public class RetrieveTasksCall: ResponseArrayCall<TaskProtocol, APITask> {
         var url = "tasks/user"
         if let date = dueOnDay {
             let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssXXX"
+            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
             var dateString = formatter.string(from: date)
             let regex = try? NSRegularExpression(pattern: "T([0-9]):", options: .caseInsensitive)
             dateString = regex?.stringByReplacingMatches(in: dateString, options: [], range: NSMakeRange(0, dateString.count), withTemplate: "T0$1:") ?? ""

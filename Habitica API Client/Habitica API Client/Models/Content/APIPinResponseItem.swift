@@ -10,6 +10,6 @@ import Foundation
 import Habitica_Models
 
 public class APIPinResponseItem: PinResponseItemProtocol, Decodable {
-    public var type: String
-    public var path: String
+    public var type: String = ""
+    public var path: String = ""
 }

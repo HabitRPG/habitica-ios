@@ -62,7 +62,7 @@ class RewardViewDataSource: BaseReactiveCollectionViewDataSource<BaseRewardProto
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let reward = item(at: indexPath) as? TaskProtocol {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomRewardCell", for: indexPath)
-            if let rewardCell = cell as? CustomRewardCell {
+            if let rewardCell = cell as? CustomRewardCell, reward.isValid {
                 rewardCell.configure(reward: reward)
                 rewardCell.canAfford = reward.value < self.user?.stats?.gold ?? 0
                 rewardCell.onBuyButtonTapped = {
@@ -74,7 +74,7 @@ class RewardViewDataSource: BaseReactiveCollectionViewDataSource<BaseRewardProto
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "InAppRewardCell", for: indexPath)
-            if let rewardCell = cell as? InAppRewardCell, let reward = item(at: indexPath) as? InAppRewardProtocol {
+            if let rewardCell = cell as? InAppRewardCell, let reward = item(at: indexPath) as? InAppRewardProtocol, reward.isValid {
                 rewardCell.configure(reward: reward, user: user)
             }
             return cell

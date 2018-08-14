@@ -198,7 +198,6 @@ class TaskFormViewController: FormViewController {
         tableView.frame = view.frame
     }
     
-    
     private func setupBasicTaskInput() {
         form +++ Section { section in
             var header = HeaderFooterView<UIView>(.class)
@@ -214,6 +213,7 @@ class TaskFormViewController: FormViewController {
                 row.onChange({[weak self] _ in
                     self?.tableView.beginUpdates()
                     self?.tableView.endUpdates()
+                    self?.view.setNeedsLayout()
                 })
             }
             <<< TaskTextInputRow(TaskFormTags.notes) { row in
@@ -225,6 +225,7 @@ class TaskFormViewController: FormViewController {
                 row.onChange({[weak self] _ in
                     self?.tableView.beginUpdates()
                     self?.tableView.endUpdates()
+                    self?.view.setNeedsLayout()
                 })
         }
     }
@@ -247,12 +248,18 @@ class TaskFormViewController: FormViewController {
                                                 row.cellSetup({ (cell, _) in
                                                     cell.tintColor = self.lightTaskTintColor
                                                 })
+                                                row.onCellSelection({[weak self] (_, _) in
+                                                    self?.view.setNeedsLayout()
+                                                })
                                             }
                                         }
                                         section.multivaluedRowToInsertAt = { index in
                                             return TextRow { row in
                                                 row.cellSetup({ (cell, _) in
                                                     cell.tintColor = self.lightTaskTintColor
+                                                })
+                                                row.onCellHighlightChanged({[weak self] (_, _) in
+                                                    self?.view.setNeedsLayout()
                                                 })
                                             }
                                         }
@@ -393,6 +400,9 @@ class TaskFormViewController: FormViewController {
                                                 row.cellSetup({ (cell, _) in
                                                     cell.tintColor = self.lightTaskTintColor
                                                 })
+                                                row.onCellSelection({[weak self] (_, _) in
+                                                    self?.view.setNeedsLayout()
+                                                })
                                             }
                                         }
                                         section.multivaluedRowToInsertAt = { index in
@@ -401,6 +411,9 @@ class TaskFormViewController: FormViewController {
                                                 row.value = Date()
                                                 row.cellSetup({ (cell, _) in
                                                     cell.tintColor = self.lightTaskTintColor
+                                                })
+                                                row.onCellHighlightChanged({[weak self] (_, _) in
+                                                    self?.view.setNeedsLayout()
                                                 })
                                             }
                                         }

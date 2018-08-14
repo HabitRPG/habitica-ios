@@ -58,7 +58,7 @@ class HabiticaAppDelegate: NSObject {
             completion(Data(), response)
         }
         Instabug.reproStepsMode = .enabledWithNoScreenshots
-        Instabug.setCommentFieldRequired(true)
+        BugReporting.invocationOptions = .commentFieldRequired
         
         if HabiticaAppDelegate.isRunningLive() {
             Instabug.welcomeMessageMode = .disabled
@@ -94,7 +94,7 @@ class HabiticaAppDelegate: NSObject {
         NetworkAuthenticationManager.shared.currentUserKey = AuthenticationManager.shared.currentUserKey
         AuthenticatedCall.errorHandler = HabiticaNetworkErrorHandler()
         let configuration = URLSessionConfiguration.default
-        Instabug.enableLogging(for: configuration)
+        NetworkLogger.enableLogging(for: configuration)
         AuthenticatedCall.defaultConfiguration.urlConfiguration = configuration
     }
     

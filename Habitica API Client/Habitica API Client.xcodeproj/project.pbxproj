@@ -77,6 +77,7 @@
 		292844F120DD37F40011DC43 /* RejectGroupInvitationCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292844F020DD37F40011DC43 /* RejectGroupInvitationCall.swift */; };
 		292AA72020FDF6A30022CC5F /* APIPinResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292AA71F20FDF6A30022CC5F /* APIPinResponse.swift */; };
 		292AA72220FDF6C40022CC5F /* APIPinResponseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292AA72120FDF6C40022CC5F /* APIPinResponseItem.swift */; };
+		292D6C992101F5660078288A /* InviteToGroupCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292D6C982101F5660078288A /* InviteToGroupCall.swift */; };
 		292DEE44204D9D8D0086D5F7 /* Habitica_Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE45204D9D8D0086D5F7 /* Habitica_Models.framework */; };
 		292DEE4B204DA1220086D5F7 /* NetworkAuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE4A204DA1220086D5F7 /* NetworkAuthenticationManager.swift */; };
 		292DEE4F204DA3870086D5F7 /* RetrieveTasksCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE4E204DA3870086D5F7 /* RetrieveTasksCall.swift */; };
@@ -286,6 +287,7 @@
 		292844F020DD37F40011DC43 /* RejectGroupInvitationCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RejectGroupInvitationCall.swift; sourceTree = "<group>"; };
 		292AA71F20FDF6A30022CC5F /* APIPinResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIPinResponse.swift; sourceTree = "<group>"; };
 		292AA72120FDF6C40022CC5F /* APIPinResponseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIPinResponseItem.swift; sourceTree = "<group>"; };
+		292D6C982101F5660078288A /* InviteToGroupCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteToGroupCall.swift; sourceTree = "<group>"; };
 		292DEE45204D9D8D0086D5F7 /* Habitica_Models.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_Models.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		292DEE4A204DA1220086D5F7 /* NetworkAuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAuthenticationManager.swift; sourceTree = "<group>"; };
 		292DEE4E204DA3870086D5F7 /* RetrieveTasksCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveTasksCall.swift; sourceTree = "<group>"; };
@@ -589,6 +591,7 @@
 				290B6290207E1E76007287C4 /* RetrieveMemberCall.swift */,
 				295FE2C320A4505B00C97BA4 /* UpdateGroupCall.swift */,
 				292844F020DD37F40011DC43 /* RejectGroupInvitationCall.swift */,
+				292D6C982101F5660078288A /* InviteToGroupCall.swift */,
 			);
 			path = Group;
 			sourceTree = "<group>";
@@ -1195,6 +1198,7 @@
 				290B6293207E3E24007287C4 /* JoinGroupCall.swift in Sources */,
 				290B6279207BA8C3007287C4 /* LocalLoginCall.swift in Sources */,
 				29B478C320C5330600B6123F /* APIBuyResponse.swift in Sources */,
+				292D6C992101F5660078288A /* InviteToGroupCall.swift in Sources */,
 				294973D02081039300F02AC3 /* InviteToQuestCall.swift in Sources */,
 				29990DBC20E51FDD001ADD8B /* RegisterPushDeviceCall.swift in Sources */,
 				291E1A24209B702B00BA1FFB /* AbortQuestCall.swift in Sources */,
