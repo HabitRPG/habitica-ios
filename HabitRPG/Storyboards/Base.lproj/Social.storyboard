@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14295.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14270.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -843,7 +846,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="146.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6h4-ob-jik">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" ambiguous="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6h4-ob-jik">
                                             <rect key="frame" x="359" y="121.5" width="0.0" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" priority="500" constant="90" id="Ifd-9y-3hU"/>
@@ -853,28 +856,28 @@
                                             <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <view userInteractionEnabled="NO" tag="8" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WBQ-iv-nmE" customClass="AvatarView" customModule="Habitica" customModuleProvider="target">
+                                        <view userInteractionEnabled="NO" tag="8" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WBQ-iv-nmE" customClass="AvatarView" customModule="Habitica" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="140" height="147.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="147" id="6EA-WH-yjN"/>
                                                 <constraint firstAttribute="width" constant="140" id="JeJ-NG-u7i"/>
                                             </constraints>
                                         </view>
-                                        <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eri-z8-zzt" customClass="HRPGLabeledProgressBar">
+                                        <view tag="2" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eri-z8-zzt" customClass="HRPGLabeledProgressBar">
                                             <rect key="frame" x="148" y="13.5" width="211" height="30"/>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="y1G-Wd-RgR"/>
                                             </constraints>
                                         </view>
-                                        <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XL1-QU-JXW" customClass="HRPGLabeledProgressBar">
+                                        <view tag="3" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XL1-QU-JXW" customClass="HRPGLabeledProgressBar">
                                             <rect key="frame" x="148" y="51.5" width="211" height="30"/>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="SRA-KG-tDU"/>
                                             </constraints>
                                         </view>
-                                        <view tag="4" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oUK-8C-Vza" customClass="HRPGLabeledProgressBar">
+                                        <view tag="4" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oUK-8C-Vza" customClass="HRPGLabeledProgressBar">
                                             <rect key="frame" x="148" y="89.5" width="211" height="30"/>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
@@ -1658,8 +1661,15 @@
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m1b-sQ-3cM">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                         <subviews>
+                                            <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="8vw-l0-30Z" customClass="GroupInvitationListView" customModule="Habitica" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="0.0"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" priority="500" id="WnF-cS-Ba9"/>
+                                                </constraints>
+                                            </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="RBw-nb-5kd">
-                                                <rect key="frame" x="16" y="16" width="343" height="660.5"/>
+                                                <rect key="frame" x="16" y="8" width="343" height="660.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="l6J-yB-veD">
                                                         <rect key="frame" x="0.0" y="0.0" width="343" height="129.5"/>
@@ -1783,9 +1793,12 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="RBw-nb-5kd" firstAttribute="leading" secondItem="m1b-sQ-3cM" secondAttribute="leading" constant="16" id="0EW-4e-uad"/>
+                                            <constraint firstAttribute="trailing" secondItem="8vw-l0-30Z" secondAttribute="trailing" id="4dd-SX-2lc"/>
                                             <constraint firstAttribute="bottom" secondItem="RBw-nb-5kd" secondAttribute="bottom" constant="16" id="73S-my-yi5"/>
-                                            <constraint firstItem="RBw-nb-5kd" firstAttribute="top" secondItem="m1b-sQ-3cM" secondAttribute="top" constant="16" id="n6M-MY-Wth"/>
+                                            <constraint firstItem="RBw-nb-5kd" firstAttribute="top" secondItem="8vw-l0-30Z" secondAttribute="bottom" constant="8" id="J3p-wT-vVz"/>
+                                            <constraint firstItem="8vw-l0-30Z" firstAttribute="leading" secondItem="m1b-sQ-3cM" secondAttribute="leading" id="RQV-2M-8sJ"/>
                                             <constraint firstAttribute="trailing" secondItem="RBw-nb-5kd" secondAttribute="trailing" constant="16" id="rln-mu-0df"/>
+                                            <constraint firstItem="8vw-l0-30Z" firstAttribute="top" secondItem="m1b-sQ-3cM" secondAttribute="top" id="syl-nS-XyZ"/>
                                         </constraints>
                                     </scrollView>
                                 </subviews>
@@ -1820,6 +1833,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="editGroupButton" destination="bou-Ng-0JG" id="Ga1-eF-PML"/>
+                        <outlet property="groupInvitationListView" destination="8vw-l0-30Z" id="ugq-CH-uub"/>
                         <outlet property="leftViewWidthConstraint" destination="nVI-R5-aFv" id="iTW-Sn-jDi"/>
                         <outlet property="noPartyContainerView" destination="fUh-bv-IOV" id="GUo-RG-z0P"/>
                         <outlet property="qrCodeView" destination="nCI-rY-Dmr" id="3Rq-pu-yLs"/>
@@ -2101,7 +2115,7 @@
                                                                 </connections>
                                                             </button>
                                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oXc-S6-Df9">
-                                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="36"/>
+                                                                <rect key="frame" x="-16" y="0.0" width="0.0" height="36"/>
                                                                 <color key="backgroundColor" red="0.26895910501480103" green="0.79955726861953735" blue="0.56116724014282227" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <state key="normal" title="Join Guild">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2371,7 +2385,7 @@
                                                         <rect key="frame" x="0.0" y="128" width="375" height="0.0"/>
                                                         <subviews>
                                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aJd-M0-VrU">
-                                                                <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                                                                <rect key="frame" x="0.0" y="-254" width="375" height="49"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="49" id="8fM-IR-4sT"/>
@@ -2382,9 +2396,9 @@
                                                                 </connections>
                                                             </button>
                                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IU2-e4-Giw">
-                                                                <rect key="frame" x="0.0" y="0.0" width="375" height="61"/>
+                                                                <rect key="frame" x="0.0" y="-254" width="375" height="61"/>
                                                                 <subviews>
-                                                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EHI-LL-yeb" customClass="AvatarView" customModule="Habitica" customModuleProvider="target">
+                                                                    <view clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EHI-LL-yeb" customClass="AvatarView" customModule="Habitica" customModuleProvider="target">
                                                                         <rect key="frame" x="12" y="10.5" width="40" height="40"/>
                                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                         <constraints>
@@ -2397,7 +2411,7 @@
                                                                             </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
                                                                     </view>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lt9-My-6KD">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lt9-My-6KD">
                                                                         <rect key="frame" x="64" y="0.0" width="311" height="61"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <nil key="textColor"/>
@@ -2416,16 +2430,16 @@
                                                                 </constraints>
                                                             </view>
                                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jIr-tb-DyF">
-                                                                <rect key="frame" x="0.0" y="0.0" width="375" height="77"/>
+                                                                <rect key="frame" x="0.0" y="-286" width="375" height="77"/>
                                                                 <subviews>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9iM-dP-lgo" customClass="QuestTitleView" customModule="Habitica" customModuleProvider="target">
+                                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9iM-dP-lgo" customClass="QuestTitleView" customModule="Habitica" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="-1.5" width="359" height="80"/>
                                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="80" id="FkT-vj-p6I"/>
                                                                         </constraints>
                                                                     </view>
-                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rM9-Lq-7Cu">
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rM9-Lq-7Cu">
                                                                         <rect key="frame" x="367" y="32" width="8" height="13"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="8" id="BEx-cQ-zdW"/>
@@ -2444,9 +2458,9 @@
                                                                 </constraints>
                                                             </view>
                                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x2u-nW-8ZD">
-                                                                <rect key="frame" x="0.0" y="0.0" width="375" height="61"/>
+                                                                <rect key="frame" x="0.0" y="-266.5" width="375" height="61"/>
                                                                 <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DVS-qZ-ZmV">
+                                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DVS-qZ-ZmV">
                                                                         <rect key="frame" x="0.0" y="12.5" width="179.5" height="36"/>
                                                                         <color key="backgroundColor" red="0.95870476959999995" green="0.36744427680000002" blue="0.37960040569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <constraints>
@@ -2465,7 +2479,7 @@
                                                                             <action selector="rejectQuestInvitation:" destination="J2Y-h9-GJa" eventType="touchUpInside" id="hnE-bS-vCf"/>
                                                                         </connections>
                                                                     </button>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TdI-5q-50U">
+                                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TdI-5q-50U">
                                                                         <rect key="frame" x="195.5" y="12.5" width="179.5" height="36"/>
                                                                         <color key="backgroundColor" red="0.26895910499999998" green="0.79955726859999998" blue="0.56116724009999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <constraints>
@@ -2497,7 +2511,7 @@
                                                                 </constraints>
                                                             </view>
                                                             <view hidden="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="hzg-Uh-Mra" customClass="PartyQuestView" customModule="Habitica" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
+                                                                <rect key="frame" x="0.0" y="-254" width="375" height="128"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" priority="500" constant="100" id="ZhM-xG-Dzs"/>
