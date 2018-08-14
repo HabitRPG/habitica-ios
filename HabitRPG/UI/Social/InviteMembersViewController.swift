@@ -19,7 +19,12 @@ struct InviteMembersFormTags {
 class InviteMembersViewController: FormViewController {
         
     var invitationType: String {
-        return form.values()[InviteMembersFormTags.invitationType] as? String ?? ""
+        if let formValue = form.values()[InviteMembersFormTags.invitationType] {
+            if let labeledValue = formValue as? LabeledFormValue<String> {
+                return labeledValue.value
+            }
+        }
+        return ""
     }
     
     var members: [String] {
@@ -63,7 +68,7 @@ class InviteMembersViewController: FormViewController {
                                     header: L10n.userID) { section in
                                         section.tag = InviteMembersFormTags.userIDSection
                                         section.hidden = Condition.function([InviteMembersFormTags.invitationType], { (form) -> Bool in
-                                            return (form.values()[InviteMembersFormTags.invitationType] as? LabeledFormValue<String> )?.value == "email"
+                                            return (form.values()[InviteMembersFormTags.invitationType] as? LabeledFormValue<String> )?.value == "emails"
                                         })
                                         section.addButtonProvider = { section in
                                             return ButtonRow { row in

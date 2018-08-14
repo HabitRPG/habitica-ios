@@ -126,9 +126,7 @@ class SplitSocialViewController: HabiticaSplitViewController {
     
     @IBAction func unwindToListInvite(_ segue: UIStoryboardSegue) {
         if let groupID = groupID, let viewController = segue.source as? InviteMembersViewController {
-            socialRepository.invite(toGroup: groupID, invitationType: viewController.invitationType, inviter: "", members: []).observeCompleted {
-                ToastManager.show(text: L10n.usersInvited, color: .blue)
-            }
+            socialRepository.invite(toGroup: groupID, invitationType: viewController.invitationType, inviter: "", members:viewController.members).observeCompleted {}
         }
     }
 }
