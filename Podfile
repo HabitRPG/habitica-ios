@@ -18,7 +18,9 @@ plugin 'cocoapods-keys', {
     "SeedsReleaseShareInterstitial",
     "SeedsDevShareInterstitial",
     "ItunesSharedSecret",
-    "StagingKey"
+    "StagingKey",
+    "InstabugLive",
+    "InstabugBeta"
   ]
 }
 
