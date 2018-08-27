@@ -13,7 +13,7 @@ import ReactiveSwift
 
 public class UpdateDayStartTimeCall: ResponseObjectCall<UserProtocol, APIUser> {
     public init(_ time: Int, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "user.json")) {
-        let json = try? JSONSerialization.data(withJSONObject: ["daystart": time], options: .prettyPrinted)
+        let json = try? JSONSerialization.data(withJSONObject: ["dayStart": time], options: .prettyPrinted)
         super.init(httpMethod: .POST, endpoint: "user/custom-day-start", postData: json, stubHolder: stubHolder)
     }
 }

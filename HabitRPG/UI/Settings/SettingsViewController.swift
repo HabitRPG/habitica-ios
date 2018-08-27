@@ -217,7 +217,7 @@ class SettingsViewController: FormViewController, Themeable {
             +++ Section(L10n.Settings.dayStart)
             <<< TimeRow(SettingsTags.customDayStart) { row in
                 row.title = L10n.Settings.customDayStart
-                }.onChange({ (row) in
+                }.onCellHighlightChanged({ (_, row) in
                     if let date = row.value {
                         let calendar = Calendar.current
                         let hour = calendar.component(.hour, from: date)

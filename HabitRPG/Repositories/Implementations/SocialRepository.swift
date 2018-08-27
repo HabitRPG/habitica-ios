@@ -298,6 +298,19 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
         })
     }
     
+    public func invite(toGroup groupID: String, invitationType: String, inviter: String, members: [String]) -> Signal<EmptyResponseProtocol?, NoError> {
+        let call = InviteToGroupCall(groupID: groupID, invitationType: invitationType, inviter: inviter, members: members)
+        call.fire()
+        call.habiticaResponseSignal.observeValues { (response) in
+            if let error = response?.message {
+                ToastManager.show(text: error, color: .red)
+            } else {
+                ToastManager.show(text: L10n.usersInvited, color: .blue)
+            }
+        }
+        return call.objectSignal
+    }
+    
     public func joinChallenge(challengeID: String) -> Signal<ChallengeProtocol?, NoError> {
         let call = JoinChallengeCall(challengeID: challengeID)
         call.fire()

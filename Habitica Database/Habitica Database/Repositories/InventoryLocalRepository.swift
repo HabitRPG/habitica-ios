@@ -21,7 +21,7 @@ public class InventoryLocalRepository: ContentLocalRepository {
         } else {
             producer = RealmGear.findAll()
         }
-        return producer!.reactive().map({ (value, changeset) -> ReactiveResults<[GearProtocol]> in
+        return producer!.sorted(key: "text").reactive().map({ (value, changeset) -> ReactiveResults<[GearProtocol]> in
             return (value.map({ (entry) -> GearProtocol in return entry }), changeset)
         })
     }
@@ -48,31 +48,31 @@ public class InventoryLocalRepository: ContentLocalRepository {
         ReactiveResults<[SpecialItemProtocol]>,
         ReactiveResults<[QuestProtocol]>), ReactiveSwiftRealmError> {
         return SignalProducer.combineLatest(
-            RealmEgg.findBy(predicate: NSPredicate(format: "key IN %@", keys[ItemType.eggs] ?? [])).reactive().map({ (value, changeset) -> ReactiveResults<[EggProtocol]> in
+            RealmEgg.findBy(predicate: NSPredicate(format: "key IN %@", keys[ItemType.eggs] ?? [])).sorted(key: "text").reactive().map({ (value, changeset) -> ReactiveResults<[EggProtocol]> in
                 return (value.map({ (item) -> EggProtocol in return item }), changeset)
             }),
-            RealmFood.findBy(predicate: NSPredicate(format: "key IN %@", keys[ItemType.food] ?? [])).reactive().map({ (value, changeset) -> ReactiveResults<[FoodProtocol]> in
+            RealmFood.findBy(predicate: NSPredicate(format: "key IN %@", keys[ItemType.food] ?? [])).sorted(key: "text").reactive().map({ (value, changeset) -> ReactiveResults<[FoodProtocol]> in
                 return (value.map({ (item) -> FoodProtocol in return item }), changeset)
             }),
-            RealmHatchingPotion.findBy(predicate: NSPredicate(format: "key IN %@", keys[ItemType.hatchingPotions] ?? [])).reactive().map({ (value, changeset) -> ReactiveResults<[HatchingPotionProtocol]> in
+            RealmHatchingPotion.findBy(predicate: NSPredicate(format: "key IN %@", keys[ItemType.hatchingPotions] ?? [])).sorted(key: "text").reactive().map({ (value, changeset) -> ReactiveResults<[HatchingPotionProtocol]> in
                 return (value.map({ (item) -> HatchingPotionProtocol in return item }), changeset)
             }),
-            RealmSpecialItem.findBy(predicate: NSPredicate(format: "key IN %@", keys[ItemType.special] ?? [])).reactive().map({ (value, changeset) -> ReactiveResults<[SpecialItemProtocol]> in
+            RealmSpecialItem.findBy(predicate: NSPredicate(format: "key IN %@", keys[ItemType.special] ?? [])).sorted(key: "text").reactive().map({ (value, changeset) -> ReactiveResults<[SpecialItemProtocol]> in
                 return (value.map({ (item) -> SpecialItemProtocol in return item }), changeset)
             }),
-            RealmQuest.findBy(predicate: NSPredicate(format: "key IN %@", keys[ItemType.quests] ?? [])).reactive().map({ (value, changeset) -> ReactiveResults<[QuestProtocol]> in
+            RealmQuest.findBy(predicate: NSPredicate(format: "key IN %@", keys[ItemType.quests] ?? [])).sorted(key: "text").reactive().map({ (value, changeset) -> ReactiveResults<[QuestProtocol]> in
                 return (value.map({ (item) -> QuestProtocol in return item }), changeset)
             }))
     }
     
     public func getSpecialItems(keys: [String]) -> SignalProducer<ReactiveResults<[SpecialItemProtocol]>, ReactiveSwiftRealmError> {
-        return RealmSpecialItem.findBy(predicate: NSPredicate(format: "key IN %@", keys)).reactive().map({ (value, changeset) -> ReactiveResults<[SpecialItemProtocol]> in
+        return RealmSpecialItem.findBy(predicate: NSPredicate(format: "key IN %@", keys)).sorted(key: "text").reactive().map({ (value, changeset) -> ReactiveResults<[SpecialItemProtocol]> in
                 return (value.map({ (item) -> SpecialItemProtocol in return item }), changeset)
             })
     }
     
     public func getFood(keys: [String]) -> SignalProducer<ReactiveResults<[FoodProtocol]>, ReactiveSwiftRealmError> {
-        return RealmFood.findBy(predicate: NSPredicate(format: "key IN %@", keys)).reactive().map({ (value, changeset) -> ReactiveResults<[FoodProtocol]> in
+        return RealmFood.findBy(predicate: NSPredicate(format: "key IN %@", keys)).sorted(key: "text").reactive().map({ (value, changeset) -> ReactiveResults<[FoodProtocol]> in
             return (value.map({ (item) -> FoodProtocol in return item }), changeset)
         })
     }
@@ -111,7 +111,7 @@ public class InventoryLocalRepository: ContentLocalRepository {
             ownedPet?.trained = trained
             ownedFood?.numberOwned -= 1
             if trained == -1 {
-                realm?.add(RealmOwnedMount(userID: userID, key: key, owned: true))
+                realm?.add(RealmOwnedMount(userID: userID, key: key, owned: true), update: true)
             }
         }
     }
@@ -133,6 +133,36 @@ public class InventoryLocalRepository: ContentLocalRepository {
             realm.add(ownedGear, update: true)
             let index = user?.purchased?.subscriptionPlan?.mysteryItems.index(of: key)
             user?.purchased?.subscriptionPlan?.mysteryItems.remove(at: index ?? 0)
+        }
+    }
+    
+    public func updatePinnedItems(userID: String, pinResponse: PinResponseProtocol) {
+        guard let realm = getRealm() else {
+            return
+        }
+        let pinnedItems = realm.objects(RealmInAppReward.self).filter("userID == %@", userID)
+        let newPinnedItems = pinResponse.pinnedItems.filter { (item) -> Bool in
+            return !pinnedItems.contains(where: { (reward) -> Bool in
+                return reward.path == item.path && reward.pinType == item.type
+            })
+        }
+        let pinsToRemove = pinnedItems.filter { (reward) -> Bool in
+            return pinResponse.unpinnedItems.contains(where: { (item) -> Bool in
+                return reward.path == item.path && reward.pinType == item.type
+            }) || !pinResponse.pinnedItems.contains(where: { (item) -> Bool in
+                return reward.path == item.path && reward.pinType == item.type
+            })
+        }
+        try? realm.write {
+            realm.delete(pinsToRemove)
+            for newItem in newPinnedItems {
+                let reward = RealmInAppReward()
+                reward.userID = userID
+                reward.key = String(newItem.path.split(separator: ".").last ?? "")
+                reward.combinedKey = (reward.userID ?? "") + (reward.key ?? "")
+                reward.path = newItem.path
+                reward.pinType = newItem.type
+            }
         }
     }
 }

@@ -9,6 +9,10 @@ import Foundation
 internal enum L10n {
   /// Active
   internal static let active = L10n.tr("Mainstrings", "active")
+  /// Active on %@
+  internal static func activeOn(_ p1: String) -> String {
+    return L10n.tr("Mainstrings", "active_on", p1)
+  }
   /// Animal Ears
   internal static let animalEars = L10n.tr("Mainstrings", "animal_ears")
   /// Cancel
@@ -41,12 +45,16 @@ internal enum L10n {
   internal static let edit = L10n.tr("Mainstrings", "edit")
   /// Eggs
   internal static let eggs = L10n.tr("Mainstrings", "eggs")
+  /// Email
+  internal static let email = L10n.tr("Mainstrings", "email")
   /// Equip
   internal static let equip = L10n.tr("Mainstrings", "equip")
   /// Experience
   internal static let experience = L10n.tr("Mainstrings", "experience")
   /// Food
   internal static let food = L10n.tr("Mainstrings", "food")
+  /// Friday
+  internal static let friday = L10n.tr("Mainstrings", "friday")
   /// Glasses
   internal static let glasses = L10n.tr("Mainstrings", "glasses")
   /// Hatch egg
@@ -87,6 +95,8 @@ internal enum L10n {
   internal static let levelupTitle = L10n.tr("Mainstrings", "levelup_title")
   /// Mana
   internal static let mana = L10n.tr("Mainstrings", "mana")
+  /// Monday
+  internal static let monday = L10n.tr("Mainstrings", "monday")
   /// Monthly
   internal static let monthly = L10n.tr("Mainstrings", "monthly")
   /// Mounts
@@ -97,6 +107,8 @@ internal enum L10n {
   internal static let myGuilds = L10n.tr("Mainstrings", "my_guilds")
   /// Name
   internal static let name = L10n.tr("Mainstrings", "name")
+  /// no days
+  internal static let noDays = L10n.tr("Mainstrings", "no_days")
   /// Notes
   internal static let notes = L10n.tr("Mainstrings", "notes")
   /// OK
@@ -135,8 +147,12 @@ internal enum L10n {
   internal static let resyncAll = L10n.tr("Mainstrings", "resync_all")
   /// Resync this task
   internal static let resyncTask = L10n.tr("Mainstrings", "resync_task")
+  /// Saturday
+  internal static let saturday = L10n.tr("Mainstrings", "saturday")
   /// Save
   internal static let save = L10n.tr("Mainstrings", "save")
+  /// Scan QR Code
+  internal static let scanQRCode = L10n.tr("Mainstrings", "scan_QR_code")
   /// Search
   internal static let search = L10n.tr("Mainstrings", "search")
   /// Sell for %d gold
@@ -149,20 +165,32 @@ internal enum L10n {
   internal static let specialItems = L10n.tr("Mainstrings", "specialItems")
   /// Summary
   internal static let summary = L10n.tr("Mainstrings", "summary")
+  /// Sunday
+  internal static let sunday = L10n.tr("Mainstrings", "sunday")
   /// Sync Error
   internal static let syncError = L10n.tr("Mainstrings", "sync_error")
   /// There was an error syncing some changes.
   internal static let syncErrorMessage = L10n.tr("Mainstrings", "sync_error_message")
   /// Tags
   internal static let tags = L10n.tr("Mainstrings", "tags")
+  /// Thursday
+  internal static let thursday = L10n.tr("Mainstrings", "thursday")
   /// Title
   internal static let title = L10n.tr("Mainstrings", "title")
+  /// Tuesday
+  internal static let tuesday = L10n.tr("Mainstrings", "tuesday")
   /// Unequip
   internal static let unequip = L10n.tr("Mainstrings", "unequip")
   /// No longer want to subscribe? You can manage your subscription from iTunes.
   internal static let unsubscribeItunes = L10n.tr("Mainstrings", "unsubscribe_itunes")
   /// No longer want to subscribe? Due to your payment method, you can only unsubscribe through the website.
   internal static let unsubscribeWebsite = L10n.tr("Mainstrings", "unsubscribe_website")
+  /// User ID
+  internal static let userID = L10n.tr("Mainstrings", "userID")
+  /// Invitation was sent to users.
+  internal static let usersInvited = L10n.tr("Mainstrings", "users_invited")
+  /// Wednesday
+  internal static let wednesday = L10n.tr("Mainstrings", "wednesday")
   /// Weekly
   internal static let weekly = L10n.tr("Mainstrings", "weekly")
   /// %d Months
@@ -270,6 +298,15 @@ internal enum L10n {
     }
     /// Only leader can create Challenges
     internal static let leaderChallenges = L10n.tr("Mainstrings", "groups.leader_challenges")
+
+    internal enum Invite {
+      /// Add an Email
+      internal static let addEmail = L10n.tr("Mainstrings", "groups.invite.add_email")
+      /// Add a User ID
+      internal static let addUserid = L10n.tr("Mainstrings", "groups.invite.add_userid")
+      /// Invitation Type
+      internal static let invitationType = L10n.tr("Mainstrings", "groups.invite.invitation_type")
+    }
   }
 
   internal enum Guilds {
@@ -601,10 +638,18 @@ internal enum L10n {
       internal static let trivial = L10n.tr("Mainstrings", "tasks.form.trivial")
 
       internal enum Accessibility {
+        /// Disable %@
+        internal static func disable(_ p1: String) -> String {
+          return L10n.tr("Mainstrings", "tasks.form.accessibility.disable", p1)
+        }
         /// Disable negative action.
         internal static let disableNegative = L10n.tr("Mainstrings", "tasks.form.accessibility.disable_negative")
         /// Disable positive action.
         internal static let disablePositive = L10n.tr("Mainstrings", "tasks.form.accessibility.disable_positive")
+        /// Enable %@
+        internal static func enable(_ p1: String) -> String {
+          return L10n.tr("Mainstrings", "tasks.form.accessibility.enable", p1)
+        }
         /// Enable negative action.
         internal static let enableNegative = L10n.tr("Mainstrings", "tasks.form.accessibility.enable_negative")
         /// Enable positive action.

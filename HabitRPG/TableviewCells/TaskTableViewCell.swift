@@ -37,14 +37,14 @@ class TaskTableViewCell: UITableViewCell {
     
     @objc
     func configure(task: TaskProtocol) {
+        self.titleLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 16)
         if let text = task.text {
             self.titleLabel.attributedText = try? Down(markdownString: text.unicodeEmoji).toHabiticaAttributedString()
         }
-        self.titleLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 16)
 
         if let trimmedNotes = task.notes?.trimmingCharacters(in: .whitespacesAndNewlines), trimmedNotes.count > 0 {
-            self.subtitleLabel.attributedText = try? Down(markdownString: trimmedNotes.unicodeEmoji).toHabiticaAttributedString()
             self.subtitleLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 12)
+            self.subtitleLabel.attributedText = try? Down(markdownString: trimmedNotes.unicodeEmoji).toHabiticaAttributedString()
             self.subtitleLabel.isHidden = false
         } else {
             self.subtitleLabel.text = nil

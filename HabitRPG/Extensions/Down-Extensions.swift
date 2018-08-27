@@ -31,9 +31,11 @@ extension Down {
             if let oldFont = value as? UIFont {
                 let font: UIFont
                 let fontSizeOffset = oldFont.pointSize - 12
-                if oldFont.fontName.lowercased().contains("bold") {
+                if oldFont.fontDescriptor.symbolicTraits.contains(.traitBold) && oldFont.fontDescriptor.symbolicTraits.contains(.traitItalic) {
+                    font = UIFont.boldItalicSystemFont(ofSize: baseSize+fontSizeOffset)
+                } else if oldFont.fontDescriptor.symbolicTraits.contains(.traitBold) {
                     font = UIFont.boldSystemFont(ofSize: baseSize+fontSizeOffset)
-                } else if oldFont.fontName.lowercased().contains("italic") {
+                } else if oldFont.fontDescriptor.symbolicTraits.contains(.traitItalic) {
                     font = UIFont.italicSystemFont(ofSize: baseSize+fontSizeOffset)
                 } else {
                     font = UIFont.systemFont(ofSize: baseSize+fontSizeOffset)
