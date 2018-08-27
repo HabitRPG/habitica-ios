@@ -140,6 +140,8 @@ internal enum StoryboardScene {
 
     internal static let partyViewController = SceneType<Habitica.PartyViewController>(storyboard: Social.self, identifier: "PartyViewController")
 
+    internal static let questDetailViewController = SceneType<Habitica.QuestDetailViewController>(storyboard: Social.self, identifier: "QuestDetailViewController")
+
     internal static let tavernChatViewController = SceneType<Habitica.GroupChatViewController>(storyboard: Social.self, identifier: "TavernChatViewController")
 
     internal static let tavernNavigationViewController = SceneType<UINavigationController>(storyboard: Social.self, identifier: "TavernNavigationViewController")
@@ -209,7 +211,6 @@ internal enum StoryboardSegue {
     case stableSegue = "StableSegue"
     case statsSegue = "StatsSegue"
     case tavernSegue = "TavernSegue"
-    case unwindTagSegue = "UnwindTagSegue"
     case equipmentDetailSegue
     case unwindSaveSegue
     case unwindSegue
@@ -240,7 +241,6 @@ internal enum StoryboardSegue {
     case userProfileSegue = "UserProfileSegue"
     case writeMessageSegue = "WriteMessageSegue"
     case challengeDetailsSegue
-    case unwindSaveSegue
   }
   internal enum Tasks: String, SegueType {
     case embedSegue = "EmbedSegue"

@@ -1,0 +1,9 @@
+/* Class = "UIButton"; normalTitle = "Create"; ObjectID = "7sa-6s-dvx"; */
+"7sa-6s-dvx.normalTitle" = "Utwórz";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "dAD-tQ-bft"; */
+"dAD-tQ-bft.normalTitle" = "Anuluj";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "w7b-MM-Pyi"; */
+"w7b-MM-Pyi.text" = "Tytuł";
+

@@ -1,0 +1,60 @@
+/* Class = "UILabel"; text = "Auto Allocate Points"; ObjectID = "5gQ-dz-Izv"; */
+"5gQ-dz-Izv.text" = "ポイントの自動割り当て";
+
+/* Class = "UILabel"; text = "Distribute based on class"; ObjectID = "8Pt-YU-W3u"; */
+"8Pt-YU-W3u.text" = "クラス基準で割りあてる";
+
+/* Class = "UINavigationItem"; title = "Spells"; ObjectID = "83d-fh-zsv"; */
+"83d-fh-zsv.title" = "魔法";
+
+/* Class = "UILabel"; text = "Strength"; ObjectID = "AIz-nP-TRZ"; */
+"AIz-nP-TRZ.text" = "力";
+
+/* Class = "UILabel"; text = "Increases EXP earned from completing tasks. Also increases your mana cap and how fast mana regenerates over time."; ObjectID = "cnW-Ox-I47"; */
+"cnW-Ox-I47.text" = "タスクを完了した時に得られる経験値が多くなります。さらにマナの上限と回復速度を増やします。";
+
+/* Class = "UILabel"; text = "Intelligence"; ObjectID = "d78-r8-q0a"; */
+"d78-r8-q0a.text" = "知能";
+
+/* Class = "UILabel"; text = "Constitution"; ObjectID = "Ddy-DY-NBy"; */
+"Ddy-DY-NBy.text" = "体質";
+
+/* Class = "UILabel"; text = "Increases the bonus of critical hits and makes them more likely when scoring a task. Also increases damage dealt to bosses. "; ObjectID = "F28-BC-4hw"; */
+"F28-BC-4hw.text" = "タスクを完了した時のクリティカルヒットの確率とボーナスの量を増やします。また、ボスに与えるダメージの量も増やします。";
+
+/* Class = "UILabel"; text = "Distribute evenly"; ObjectID = "GL3-jH-b3q"; */
+"GL3-jH-b3q.text" = "均等に能力値ポイントを割りあてる";
+
+/* Class = "UILabel"; text = "Decreases the amount of damage taken from your tasks. Does not decrease the damage received from bosses."; ObjectID = "hfH-um-9Qr"; */
+"hfH-um-9Qr.text" = "タスクから受けるダメージを減らします。ボスから受けるダメージは減少しません。";
+
+/* Class = "UILabel"; text = "Use"; ObjectID = "Idt-Ls-oEA"; */
+"Idt-Ls-oEA.text" = "使う";
+
+/* Class = "UINavigationItem"; title = "Stats"; ObjectID = "jad-F6-0UB"; */
+"jad-F6-0UB.title" = "ステータス";
+
+/* Class = "UILabel"; text = "Stat guide"; ObjectID = "PAm-Rw-4AT"; */
+"PAm-Rw-4AT.text" = "能力値ガイド";
+
+/* Class = "UILabel"; text = "Distribute based on task activity"; ObjectID = "pJ1-2A-yks"; */
+"pJ1-2A-yks.text" = "タスクの実践基準で割りあてる";
+
+/* Class = "UILabel"; text = "Perception"; ObjectID = "QVe-qq-d5S"; */
+"QVe-qq-d5S.text" = "知覚";
+
+/* Class = "UILabel"; text = "0 Points to Allocate"; ObjectID = "SAQ-Tl-eLi"; */
+"SAQ-Tl-eLi.text" = "割り当てられるポイント：０";
+
+/* Class = "UILabel"; text = "Character Build"; ObjectID = "VBj-Mm-QQ4"; */
+"VBj-Mm-QQ4.text" = "キャラクターの育成";
+
+/* Class = "UILabel"; text = "10"; ObjectID = "VqQ-Ms-Edt"; */
+"VqQ-Ms-Edt.text" = "10";
+
+/* Class = "UILabel"; text = "Increases the likelihood of finding drops when completing Tasks, the daily drop-cap, Streak Bonuses, and the amount of gold awarded for Tasks."; ObjectID = "WLX-vs-pFL"; */
+"WLX-vs-pFL.text" = "タスクを完了した時のアイテムドロップの確率、1日あたりのアイテム取得の上限、連続実行のボーナス、そしてタスク完了時に得られるゴールドの量が増えます。";
+
+/* Class = "UILabel"; text = "Each level earns you one point to assign to an attribute of your choice. You can do so manually, or let the game decide for you using one of the Automatic Allocation options."; ObjectID = "wNh-Vv-aKs"; */
+"wNh-Vv-aKs.text" = "レベルが上がるごとに、能力に割り当てられる 1 ポイントを得られます。手動で好きなように割り当てることもできますし、「自動割り当て」設定でおまかせにすることもできます。";
+

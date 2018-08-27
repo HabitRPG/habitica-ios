@@ -1,0 +1,30 @@
+/* Class = "UIButton"; normalTitle = "Subscribe for Hourglasses"; ObjectID = "4E3-xU-II9"; */
+"4E3-xU-II9.normalTitle" = "砂時計を定期購入する";
+
+/* Class = "UILabel"; text = "Your balance:"; ObjectID = "b9i-sB-wsY"; */
+"b9i-sB-wsY.text" = "あなたの残高：";
+
+/* Class = "UILabel"; text = "Not enough Gems"; ObjectID = "C3v-IP-fUG"; */
+"C3v-IP-fUG.text" = "ジェムが足りません";
+
+/* Class = "UILabel"; text = "Buy"; ObjectID = "j5D-EL-LRQ"; */
+"j5D-EL-LRQ.text" = "買う";
+
+/* Class = "UILabel"; text = "Not enough Gold"; ObjectID = "MAF-Nb-1hY"; */
+"MAF-Nb-1hY.text" = "ゴールドが不足しています";
+
+/* Class = "UILabel"; text = "Monthly Gem Cap Reached"; ObjectID = "osQ-wn-dQZ"; */
+"osQ-wn-dQZ.text" = "今月のジェム上限に達しました";
+
+/* Class = "UIButton"; normalTitle = "Pin to Rewards"; ObjectID = "TiK-yj-cOf"; */
+"TiK-yj-cOf.normalTitle" = "ごほうびにピン留め";
+
+/* Class = "UIButton"; normalTitle = "Purchase Gems"; ObjectID = "u6f-ro-Ehm"; */
+"u6f-ro-Ehm.normalTitle" = "ジェムを購入する";
+
+/* Class = "UIButton"; normalTitle = "Take me back"; ObjectID = "Wl4-Aq-qfJ"; */
+"Wl4-Aq-qfJ.normalTitle" = "戻る";
+
+/* Class = "UILabel"; text = "Not enough Hourglasses"; ObjectID = "Z4L-Zx-0jp"; */
+"Z4L-Zx-0jp.text" = "砂時計が足りません";
+

@@ -20,14 +20,14 @@ class ToDoTableViewController: TaskTableViewController {
         
         tableView.register(UINib(nibName: "EmptyTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "emptyCell")
         
-        self.tutorialIdentifier = "todos";
+        self.tutorialIdentifier = "todos"
     }
     
     override func getDefinitonForTutorial(_ tutorialIdentifier: String) -> [AnyHashable: Any]? {
         if tutorialIdentifier == "todos" {
             let localizedStringArray = [NSLocalizedString("Use To-Dos to keep track of tasks you need to do just once.", comment: ""),
                                         NSLocalizedString("If your To-Do has to be done by a certain time, set a due date. Looks like you can check one off — go ahead!", comment: "")]
-            return ["textList" : localizedStringArray]
+            return ["textList": localizedStringArray]
         }
         return super.getDefinitonForTutorial(tutorialIdentifier)
     }

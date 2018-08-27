@@ -42,6 +42,9 @@ class RealmTask: Object, TaskProtocol {
     
     var tags: [TagProtocol] {
         get {
+            if realmTags.isInvalidated {
+                return []
+            }
             return realmTags.map({ (tag) -> TagProtocol in
                 return tag
             })
@@ -60,6 +63,9 @@ class RealmTask: Object, TaskProtocol {
     var realmTags = List<RealmTag>()
     var checklist: [ChecklistItemProtocol] {
         get {
+            if realmChecklist.isInvalidated {
+                return []
+            }
             return realmChecklist.map({ (tag) -> ChecklistItemProtocol in
                 return tag
             })
@@ -78,6 +84,9 @@ class RealmTask: Object, TaskProtocol {
     var realmChecklist = List<RealmChecklistItem>()
     var reminders: [ReminderProtocol] {
         get {
+            if realmReminders.isInvalidated {
+                return []
+            }
             return realmReminders.map({ (tag) -> ReminderProtocol in
                 return tag
             })
@@ -111,6 +120,9 @@ class RealmTask: Object, TaskProtocol {
     @objc dynamic var realmWeekRepeat: RealmWeekRepeat? = RealmWeekRepeat()
     @objc dynamic var nextDue: [Date] {
         get {
+            if realmNextDue.isInvalidated {
+                return []
+            }
             return realmNextDue.map({ (date) in
                 return date
             })
@@ -121,6 +133,41 @@ class RealmTask: Object, TaskProtocol {
         }
     }
     var realmNextDue = List<Date>()
+    
+    @objc dynamic var daysOfMonth: [Int] {
+        get {
+            if realmDaysOfMonth.isInvalidated {
+                return []
+            }
+            return realmDaysOfMonth.map({ (date) in
+                return date
+            })
+        }
+        set {
+            realmDaysOfMonth.removeAll()
+            realmDaysOfMonth.append(objectsIn: newValue)
+        }
+    }
+    var realmDaysOfMonth = List<Int>()
+    @objc dynamic var weeksOfMonth: [Int] {
+        get {
+            if realmWeeksOfMonth.isInvalidated {
+                return []
+            }
+            return realmWeeksOfMonth.map({ (date) in
+                return date
+            })
+        }
+        set {
+            realmWeeksOfMonth.removeAll()
+            realmWeeksOfMonth.append(objectsIn: newValue)
+        }
+    }
+    var realmWeeksOfMonth = List<Int>()
+    
+    var isValid: Bool {
+        return !isInvalidated
+    }
     
     override static func primaryKey() -> String {
         return "id"
@@ -177,6 +224,8 @@ class RealmTask: Object, TaskProtocol {
         
         isSyncing = taskProtocol.isSyncing
         isSynced = taskProtocol.isSynced
+        daysOfMonth = taskProtocol.daysOfMonth
+        weeksOfMonth = taskProtocol.weeksOfMonth
         isNewTask = taskProtocol.isNewTask
     }
 }

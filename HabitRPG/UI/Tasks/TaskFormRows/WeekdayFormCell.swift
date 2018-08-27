@@ -99,6 +99,8 @@ class WeekdayFormCell: Cell<WeekdaysValue>, CellType {
             styleView(fridayLabel, isActive: value.friday, tintColor: taskRow.tintColor)
             styleView(saturdayLabel, isActive: value.saturday, tintColor: taskRow.tintColor)
             styleView(sundayLabel, isActive: value.sunday, tintColor: taskRow.tintColor)
+            
+            applyAccessibility()
         }
     }
     
@@ -113,6 +115,78 @@ class WeekdayFormCell: Cell<WeekdaysValue>, CellType {
             view.borderColor = UIColor.gray400()
             view.borderWidth = 1
             view.textColor = UIColor.gray400()
+        }
+    }
+    
+    private func applyAccessibility() {
+        if let taskRow = row as? WeekdayRow {
+            shouldGroupAccessibilityChildren = true
+            isAccessibilityElement = true
+            var days = [String]()
+            if taskRow.value?.monday == true {
+                days.append(L10n.monday)
+            }
+            if taskRow.value?.tuesday == true {
+                days.append(L10n.tuesday)
+            }
+            if taskRow.value?.wednesday == true {
+                days.append(L10n.wednesday)
+            }
+            if taskRow.value?.thursday == true {
+                days.append(L10n.thursday)
+            }
+            if taskRow.value?.friday == true {
+                days.append(L10n.friday)
+            }
+            if taskRow.value?.saturday == true {
+                days.append(L10n.saturday)
+            }
+            if taskRow.value?.sunday == true {
+                days.append(L10n.sunday)
+            }
+            
+            if days.count > 0 {
+                accessibilityLabel = L10n.activeOn(days.joined(separator: ", "))
+            } else {
+                accessibilityLabel = L10n.activeOn(L10n.noDays)
+            }
+            
+            accessibilityCustomActions = []
+            if taskRow.value?.monday == true {
+                accessibilityCustomActions?.append(UIAccessibilityCustomAction(name: L10n.Tasks.Form.Accessibility.disable(L10n.monday), target: self, selector: #selector(mondayTapped)))
+            } else {
+                accessibilityCustomActions?.append(UIAccessibilityCustomAction(name: L10n.Tasks.Form.Accessibility.enable(L10n.monday), target: self, selector: #selector(mondayTapped)))
+            }
+            if taskRow.value?.tuesday == true {
+                accessibilityCustomActions?.append(UIAccessibilityCustomAction(name: L10n.Tasks.Form.Accessibility.disable(L10n.tuesday), target: self, selector: #selector(tuesdayTapped)))
+            } else {
+                accessibilityCustomActions?.append(UIAccessibilityCustomAction(name: L10n.Tasks.Form.Accessibility.enable(L10n.tuesday), target: self, selector: #selector(tuesdayTapped)))
+            }
+            if taskRow.value?.wednesday == true {
+                accessibilityCustomActions?.append(UIAccessibilityCustomAction(name: L10n.Tasks.Form.Accessibility.disable(L10n.wednesday), target: self, selector: #selector(wednesdayTapped)))
+            } else {
+                accessibilityCustomActions?.append(UIAccessibilityCustomAction(name: L10n.Tasks.Form.Accessibility.enable(L10n.wednesday), target: self, selector: #selector(wednesdayTapped)))
+            }
+            if taskRow.value?.thursday == true {
+                accessibilityCustomActions?.append(UIAccessibilityCustomAction(name: L10n.Tasks.Form.Accessibility.disable(L10n.thursday), target: self, selector: #selector(thursdayTapped)))
+            } else {
+                accessibilityCustomActions?.append(UIAccessibilityCustomAction(name: L10n.Tasks.Form.Accessibility.enable(L10n.thursday), target: self, selector: #selector(thursdayTapped)))
+            }
+            if taskRow.value?.friday == true {
+                accessibilityCustomActions?.append(UIAccessibilityCustomAction(name: L10n.Tasks.Form.Accessibility.disable(L10n.friday), target: self, selector: #selector(fridayTapped)))
+            } else {
+                accessibilityCustomActions?.append(UIAccessibilityCustomAction(name: L10n.Tasks.Form.Accessibility.enable(L10n.friday), target: self, selector: #selector(fridayTapped)))
+            }
+            if taskRow.value?.saturday == true {
+                accessibilityCustomActions?.append(UIAccessibilityCustomAction(name: L10n.Tasks.Form.Accessibility.disable(L10n.saturday), target: self, selector: #selector(saturdayTapped)))
+            } else {
+                accessibilityCustomActions?.append(UIAccessibilityCustomAction(name: L10n.Tasks.Form.Accessibility.enable(L10n.saturday), target: self, selector: #selector(saturdayTapped)))
+            }
+            if taskRow.value?.sunday == true {
+                accessibilityCustomActions?.append(UIAccessibilityCustomAction(name: L10n.Tasks.Form.Accessibility.disable(L10n.sunday), target: self, selector: #selector(sundayTapped)))
+            } else {
+                accessibilityCustomActions?.append(UIAccessibilityCustomAction(name: L10n.Tasks.Form.Accessibility.enable(L10n.sunday), target: self, selector: #selector(sundayTapped)))
+            }
         }
     }
 }

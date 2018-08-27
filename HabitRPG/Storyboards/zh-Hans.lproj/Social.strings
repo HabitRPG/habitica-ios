@@ -1,11 +1,11 @@
-/* Class = "UINavigationItem"; title = "Tavern"; ObjectID = "4hr-0m-2xW"; */
-"4hr-0m-2xW.title" = "酒馆";
-
-/* Class = "UILabel"; text = "Challenges"; ObjectID = "5at-ri-wP8"; */
-"5at-ri-wP8.text" = "挑战";
+/* Class = "UIButton"; normalTitle = "View FAQ"; ObjectID = "1kC-MI-SIq"; */
+"1kC-MI-SIq.normalTitle" = "查看常问问题";
 
 /* Class = "UILabel"; text = "PER"; ObjectID = "6fx-6Z-TC6"; */
 "6fx-6Z-TC6.text" = "耐力";
+
+/* Class = "UIButton"; normalTitle = "Accept"; ObjectID = "6iy-Mx-6lI"; */
+"6iy-Mx-6lI.normalTitle" = "接受";
 
 /* Class = "UIBarButtonItem"; title = "Profile"; ObjectID = "61t-W4-ftz"; */
 "61t-W4-ftz.title" = "角色信息";
@@ -13,146 +13,75 @@
 /* Class = "UILabel"; text = "Attributes"; ObjectID = "325-ui-y7c"; */
 "325-ui-y7c.text" = "属性";
 
-/* Class = "UILabel"; text = "Accept"; ObjectID = "AIV-DO-l6o"; */
-"AIV-DO-l6o.text" = "接受";
-
-/* Class = "UINavigationItem"; title = "Quest Invitation"; ObjectID = "ER1-WC-z8Y"; */
-"ER1-WC-z8Y.title" = "任务邀请";
-
-/* Class = "UILabel"; text = "Write Message"; ObjectID = "FhD-If-CW1"; */
-"FhD-If-CW1.text" = "写消息";
-
-/* Class = "UILabel"; text = "Title"; ObjectID = "Fjm-rk-34f"; */
-"Fjm-rk-34f.text" = "标题";
-
-/* Class = "UINavigationItem"; title = "Party"; ObjectID = "Fyc-Xu-ygm"; */
-"Fyc-Xu-ygm.title" = "队伍";
-
-/* Class = "UILabel"; text = "Challenges"; ObjectID = "GBy-zO-kgB"; */
-"GBy-zO-kgB.text" = "挑战";
-
-/* Class = "UINavigationItem"; title = "New Message"; ObjectID = "Ib5-SB-HqM"; */
-"Ib5-SB-HqM.title" = "新消息";
-
-/* Class = "UINavigationItem"; title = "Guild"; ObjectID = "ImZ-fI-M48"; */
-"ImZ-fI-M48.title" = "工会";
-
-/* Class = "UILabel"; text = "Detail"; ObjectID = "KHy-wR-CXa"; */
-"KHy-wR-CXa.text" = "详情";
-
-/* Class = "UILabel"; text = "INT"; ObjectID = "LGe-8Z-aDa"; */
-"LGe-8Z-aDa.text" = "智力";
-
-/* Class = "UINavigationItem"; title = "Participants"; ObjectID = "N8D-SB-Ttc"; */
-"N8D-SB-Ttc.title" = "参与者";
-
-/* Class = "UILabel"; text = "Public Guilds"; ObjectID = "NB2-59-SRo"; */
-"NB2-59-SRo.text" = "公共公会";
-
-/* Class = "UILabel"; text = "Members"; ObjectID = "OG6-95-cJg"; */
-"OG6-95-cJg.text" = "成员";
-
-/* Class = "UILabel"; text = "Invite Party to new quest"; ObjectID = "Q1q-8Q-sgW"; */
-"Q1q-8Q-sgW.text" = "邀请队伍成员开始一个新的任务";
-
-/* Class = "UIBarButtonItem"; title = "Accept Guidelines"; ObjectID = "Qsp-FO-gTG"; */
-"Qsp-FO-gTG.title" = "同意守则";
-
-/* Class = "UILabel"; text = "Label"; ObjectID = "UcA-1U-tF4"; */
-"UcA-1U-tF4.text" = "标签";
-
-/* Class = "UIButton"; normalTitle = "Join"; ObjectID = "Vel-gj-dLr"; */
-"Vel-gj-dLr.normalTitle" = "加入";
-
-/* Class = "UILabel"; text = "Write Message"; ObjectID = "WNb-BJ-2TY"; */
-"WNb-BJ-2TY.text" = "写消息";
-
-/* Class = "UINavigationItem"; title = "Inbox"; ObjectID = "WTK-c7-15D"; */
-"WTK-c7-15D.title" = "收件箱";
-
-/* Class = "UILabel"; text = "Want to join a party? Give them your User ID:"; ObjectID = "aFq-c1-alj"; */
-"aFq-c1-alj.text" = "想要加入一个队伍吗？发送给对方您的用户ID：";
-
-/* Class = "UILabel"; text = "Play Habitica with friends to stay accountable!\nBattle monsters and create Challenges!\nInvite friends now to earn a Quest Scroll!"; ObjectID = "aoA-I4-cSP"; */
-"aoA-I4-cSP.text" = "和朋友们一起玩Habitica ，互相监督！
-与怪兽作战或者创建挑战！
-现在，邀请朋友来获取探索任务卷轴！";
+/* Class = "UIButton"; normalTitle = "Report a Bug"; ObjectID = "a2o-0k-TlN"; */
+"a2o-0k-TlN.normalTitle" = "报告一个问题";
 
 /* Class = "UINavigationItem"; title = "Guilds"; ObjectID = "c0I-zN-kPF"; */
 "c0I-zN-kPF.title" = "工会";
 
-/* Class = "UILabel"; text = "Label"; ObjectID = "cHf-h0-50k"; */
-"cHf-h0-50k.text" = "标签";
+/* Class = "UIButton"; normalTitle = "Reject"; ObjectID = "DVS-qZ-ZmV"; */
+"DVS-qZ-ZmV.normalTitle" = "拒绝";
 
-/* Class = "UILabel"; text = "Challenges"; ObjectID = "cLY-z8-8pq"; */
-"cLY-z8-8pq.text" = "挑战";
+/* Class = "UINavigationItem"; title = "Quest"; ObjectID = "f1L-hl-qqv"; */
+"f1L-hl-qqv.title" = "任务";
 
-/* Class = "UILabel"; text = "Write Message"; ObjectID = "cWu-wc-Lec"; */
-"cWu-wc-Lec.text" = "写消息";
+/* Class = "UINavigationItem"; title = "Guild"; ObjectID = "H93-hs-7Lc"; */
+"H93-hs-7Lc.title" = "工会";
 
-/* Class = "UILabel"; text = "Subtitle"; ObjectID = "d2x-6l-h3J"; */
-"d2x-6l-h3J.text" = "副标题";
+/* Class = "UINavigationItem"; title = "Tavern"; ObjectID = "Iy2-WC-FJM"; */
+"Iy2-WC-FJM.title" = "酒馆";
 
-/* Class = "UILabel"; text = "Title"; ObjectID = "d7x-Bc-T1q"; */
-"d7x-Bc-T1q.text" = "标题";
-
-/* Class = "UINavigationItem"; title = "Public Guilds"; ObjectID = "etc-uL-HJd"; */
-"etc-uL-HJd.title" = "公共公会";
-
-/* Class = "UILabel"; text = "Label"; ObjectID = "evc-UL-HyC"; */
-"evc-UL-HyC.text" = "标签";
-
-/* Class = "UILabel"; text = "Create new Party"; ObjectID = "grW-d9-FRm"; */
-"grW-d9-FRm.text" = "创建新的队伍";
-
-/* Class = "UILabel"; text = "About"; ObjectID = "gsa-rZ-ddD"; */
-"gsa-rZ-ddD.text" = "关于";
-
-/* Class = "UILabel"; text = "Ask Later"; ObjectID = "ifd-yJ-Hb9"; */
-"ifd-yJ-Hb9.text" = "稍后询问";
+/* Class = "UINavigationItem"; title = "Guidelines"; ObjectID = "KAs-8j-2dX"; */
+"KAs-8j-2dX.title" = "准则";
 
 /* Class = "UILabel"; text = "CON"; ObjectID = "kjI-Lf-q1I"; */
 "kjI-Lf-q1I.text" = "体质";
 
+/* Class = "UILabel"; text = "INT"; ObjectID = "LGe-8Z-aDa"; */
+"LGe-8Z-aDa.text" = "智力";
+
+/* Class = "UINavigationItem"; title = "Choose Recipient"; ObjectID = "LNJ-85-sLW"; */
+"LNJ-85-sLW.title" = "选择一个接受者";
+
 /* Class = "UILabel"; text = "STR"; ObjectID = "mbO-Mk-igC"; */
 "mbO-Mk-igC.text" = "力量";
 
-/* Class = "UILabel"; text = "About"; ObjectID = "nEX-pd-oIw"; */
-"nEX-pd-oIw.text" = "关于";
+/* Class = "UILabel"; text = "Label"; ObjectID = "mVE-dK-Vtq"; */
+"mVE-dK-Vtq.text" = "标签";
 
-/* Class = "UILabel"; text = "Reject"; ObjectID = "nd1-bk-1P7"; */
-"nd1-bk-1P7.text" = "拒绝";
+/* Class = "UILabel"; text = "Label"; ObjectID = "o36-K8-WE9"; */
+"o36-K8-WE9.text" = "标签";
 
-/* Class = "UILabel"; text = "Label"; ObjectID = "oMJ-Hk-a6I"; */
-"oMJ-Hk-a6I.text" = "标签";
+/* Class = "UILabel"; text = "Label"; ObjectID = "ODU-Gu-ON4"; */
+"ODU-Gu-ON4.text" = "标签";
 
-/* Class = "UILabel"; text = "Rest in the Inn to prevent your undone Dailies from hurting you overnight! (Note: does not prevent you from receiving Boss damage.)"; ObjectID = "pIs-iS-tkd"; */
-"pIs-iS-tkd.text" = "在旅店中休息来避免每日任务给你带来的伤害（但并不阻挡来自Boss的伤害）";
+/* Class = "UINavigationItem"; title = "Party"; ObjectID = "ohm-N0-URb"; */
+"ohm-N0-URb.title" = "队伍";
 
-/* Class = "UILabel"; text = "Loading"; ObjectID = "qHz-u8-sDB"; */
-"qHz-u8-sDB.text" = "加载";
+/* Class = "UINavigationItem"; title = "Challenges"; ObjectID = "OHs-Q2-g2k"; */
+"OHs-Q2-g2k.title" = "挑战";
 
-/* Class = "UILabel"; text = "Name"; ObjectID = "r1V-ai-lKk"; */
-"r1V-ai-lKk.text" = "名称";
+/* Class = "UIButton"; normalTitle = "Reject"; ObjectID = "pIy-vb-vm3"; */
+"pIy-vb-vm3.normalTitle" = "拒绝";
 
-/* Class = "UINavigationItem"; title = "About"; ObjectID = "rki-x7-727"; */
-"rki-x7-727.title" = "关于";
+/* Class = "UIButton"; normalTitle = "View Community Guidelines"; ObjectID = "PQZ-Md-abl"; */
+"PQZ-Md-abl.normalTitle" = "查看社区准则";
 
-/* Class = "UILabel"; text = "Loading"; ObjectID = "tZ0-aY-Y24"; */
-"tZ0-aY-Y24.text" = "加载";
+/* Class = "UILabel"; text = "Description"; ObjectID = "PvU-aP-uYa"; */
+"PvU-aP-uYa.text" = "描述";
 
-/* Class = "UILabel"; text = "If you would like to post messages in the Tavern or any party or guild chat, please first read our  Community Guidelines and then click \"Accept Guidelines\" button below to indicate that you accept them."; ObjectID = "vLc-mV-bsJ"; */
-"vLc-mV-bsJ.text" = "如果你想在酒馆里，或是队伍和公会里张贴信息，请先阅读社区指南并点击 ”同意守则“按钮，表示您接受其中的条款。 ";
+/* Class = "UIButton"; normalTitle = "Accept"; ObjectID = "TdI-5q-50U"; */
+"TdI-5q-50U.normalTitle" = "接受";
 
-/* Class = "UILabel"; text = "Loading"; ObjectID = "wjW-Cr-qhZ"; */
-"wjW-Cr-qhZ.text" = "加载";
+/* Class = "UIButton"; normalTitle = "Abort"; ObjectID = "uJd-V9-acD"; */
+"uJd-V9-acD.normalTitle" = "放弃";
 
-/* Class = "UINavigationItem"; title = "Members"; ObjectID = "wmm-mb-Ktw"; */
-"wmm-mb-Ktw.title" = "成员";
+/* Class = "UINavigationItem"; title = "Messages"; ObjectID = "WTK-c7-15D"; */
+"WTK-c7-15D.title" = "私信";
 
-/* Class = "UIBarButtonItem"; title = "Begin"; ObjectID = "yuR-F7-zSD"; */
-"yuR-F7-zSD.title" = "开始";
+/* Class = "UIButton"; normalTitle = "Pause Damage"; ObjectID = "x55-Jn-3In"; */
+"x55-Jn-3In.normalTitle" = "进入客栈";
 
-/* Class = "UILabel"; text = "Title"; ObjectID = "zBe-ca-SpX"; */
-"zBe-ca-SpX.text" = "标题";
+/* Class = "UILabel"; text = "Label"; ObjectID = "XV0-Wd-Y6V"; */
+"XV0-Wd-Y6V.text" = "标签";
 

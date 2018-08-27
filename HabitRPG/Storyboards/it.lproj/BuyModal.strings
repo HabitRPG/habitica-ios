@@ -1,0 +1,18 @@
+/* Class = "UILabel"; text = "Your balance:"; ObjectID = "b9i-sB-wsY"; */
+"b9i-sB-wsY.text" = "Il tuo bilancio:";
+
+/* Class = "UILabel"; text = "Not enough Gems"; ObjectID = "C3v-IP-fUG"; */
+"C3v-IP-fUG.text" = "Non hai abbastanza Gemme";
+
+/* Class = "UILabel"; text = "Buy"; ObjectID = "j5D-EL-LRQ"; */
+"j5D-EL-LRQ.text" = "Compra";
+
+/* Class = "UIButton"; normalTitle = "Pin to Rewards"; ObjectID = "TiK-yj-cOf"; */
+"TiK-yj-cOf.normalTitle" = "Aggiungi ai preferiti";
+
+/* Class = "UIButton"; normalTitle = "Purchase Gems"; ObjectID = "u6f-ro-Ehm"; */
+"u6f-ro-Ehm.normalTitle" = "Acquista Gemme";
+
+/* Class = "UILabel"; text = "Not enough Hourglasses"; ObjectID = "Z4L-Zx-0jp"; */
+"Z4L-Zx-0jp.text" = "Non hai abbastanza Clessidre";
+

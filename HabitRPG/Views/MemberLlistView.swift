@@ -64,6 +64,7 @@ class MemberListView: UIView {
         return view
     }()
     let classIconView = UIImageView()
+    let buffIconView = UIImageView(image: HabiticaIcons.imageOfBuffIcon)
     let leaderView: UILabel = {
         let view = UILabel()
         view.font = UIFont.systemFont(ofSize: 12)
@@ -107,6 +108,8 @@ class MemberListView: UIView {
             } else {
                 levelLabel.text = "Lvl \(stats.level)"
             }
+            
+            buffIconView.isHidden = stats.buffs?.isBuffed != true
         }
         setNeedsLayout()
     }
@@ -133,6 +136,7 @@ class MemberListView: UIView {
         addSubview(manaBar)
         addSubview(manaLabel)
         addSubview(classIconView)
+        addSubview(buffIconView)
         
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapView)))
     }
@@ -163,7 +167,8 @@ class MemberListView: UIView {
         experienceBar.pin.after(of: avatarView).marginStart(16).below(of: healthBar).marginTop(11).height(8).before(of: healthLabel).marginEnd(12)
         manaBar.pin.after(of: avatarView).marginStart(16).below(of: experienceBar).marginTop(11).height(8).before(of: healthLabel).marginEnd(12)
 
-        classIconView.pin.size(16).end(to: healthBar.edge.end).above(of: healthBar).marginBottom(6)
+        classIconView.pin.size(15).end(to: healthBar.edge.end).above(of: healthBar).marginBottom(6)
+        buffIconView.pin.size(15).before(of: classIconView).marginEnd(8).above(of: healthBar).marginBottom(6)
     }
 
     override var intrinsicContentSize: CGSize {

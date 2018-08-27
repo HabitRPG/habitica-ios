@@ -110,7 +110,7 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
         handleDismiss()
         self.dismiss(animated: true) {}
     }
-
+    
     func handleDismiss() {
         UserManager.shared.yesterdailiesDialog = nil
         var completedTasks = [TaskProtocol]()

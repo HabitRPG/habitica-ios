@@ -88,6 +88,9 @@ class BaseReactiveTableViewDataSource<MODEL>: BaseReactiveDataSource<MODEL>, UIT
             return
         }
         
+        if emptyDelegate == nil {
+            tableView?.reloadData()
+        }
         //reload the whole tableview for now, since using the animations can cause issues
         //see https://github.com/realm/realm-cocoa/issues/4425
         /*if changes.initial == true {

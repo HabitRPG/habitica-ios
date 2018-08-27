@@ -11,6 +11,7 @@ import Foundation
 class StableSplitViewController: HabiticaSplitViewController {
 
     override func viewDidLoad() {
+        canShowAsSplitView = false
         super.viewDidLoad()
         segmentedControl.setTitle(L10n.pets, forSegmentAt: 0)
         segmentedControl.setTitle(L10n.mounts, forSegmentAt: 1)

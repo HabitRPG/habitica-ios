@@ -1,0 +1,603 @@
+/* (No Comment) */
+"active" = "アクティブ";
+
+/* (No Comment) */
+"animal_ears" = "動物の耳";
+
+/* (No Comment) */
+"avatar.background" = "背景";
+
+/* (No Comment) */
+"avatar.bangs" = "前髪";
+
+/* (No Comment) */
+"avatar.beard" = "あごひげ";
+
+/* (No Comment) */
+"avatar.flower" = "花";
+
+/* (No Comment) */
+"avatar.glasses" = "メガネ";
+
+/* (No Comment) */
+"avatar.hair_style" = "髪型";
+
+/* (No Comment) */
+"avatar.hairColor" = "髪の色";
+
+/* (No Comment) */
+"avatar.head" = "頭";
+
+/* (No Comment) */
+"avatar.mustache" = "くちひげ";
+
+/* (No Comment) */
+"avatar.shirt" = "シャツ";
+
+/* (No Comment) */
+"avatar.skin" = "肌の色";
+
+/* (No Comment) */
+"avatar.wheelchair" = "車いす";
+
+/* (No Comment) */
+"cancel" = "キャンセル";
+
+/* (No Comment) */
+"chat" = "チャット";
+
+/* (No Comment) */
+"classes.become_a_class" = "%@ になる";
+
+/* (No Comment) */
+"classes.class_header" = "%@ クラス";
+
+/* (No Comment) */
+"classes.healer" = "治療師";
+
+/* (No Comment) */
+"classes.healer_description" = "治療師は痛みに耐え、他人を守るのです。やらなかった日課や悪い習慣にも治療師は動揺せず、失敗から体力を回復させる能力を持っています。パーティーの他のメンバーを助けることに喜びを感じる、困難な仕事による死をも恐れぬ理想があるのなら、治療師でプレーしましょう!";
+
+/* (No Comment) */
+"classes.mage" = "魔道士";
+
+/* (No Comment) */
+"classes.rogue" = "盗賊";
+
+/* (No Comment) */
+"classes.rogue_description" = "盗賊は富を集めることを愛するのです。ほかのどのクラスよりもゴールドを稼ぎ、アイテムを見つける確率が高いのです。盗賊の特徴、忍びの術をもってすれば、日課をやらなかったとしても、性格的に傷つかない。戦利品や勲章――Habitica では、ごほうびと実績に強く心動かされるなら、盗賊でプレーしましょう!";
+
+/* (No Comment) */
+"classes.warrior" = "戦士";
+
+/* (No Comment) */
+"close" = "閉じる";
+
+/* (No Comment) */
+"confirm" = "確認";
+
+/* (No Comment) */
+"create" = "新規作成";
+
+/* (No Comment) */
+"daily" = "日間";
+
+/* (No Comment) */
+"delete" = "削除";
+
+/* (No Comment) */
+"description" = "説明";
+
+/* (No Comment) */
+"details" = "詳細";
+
+/* (No Comment) */
+"difficulty" = "難易度";
+
+/* (No Comment) */
+"discover" = "探す";
+
+/* (No Comment) */
+"edit" = "編集";
+
+/* (No Comment) */
+"eggs" = "たまご";
+
+/* (No Comment) */
+"equip" = "装備";
+
+/* (No Comment) */
+"equipment.armor" = "よろい";
+
+/* (No Comment) */
+"equipment.auto_equip" = "新しい装備品を自動装備する";
+
+/* (No Comment) */
+"equipment.back" = "背中のアクセサリ";
+
+/* (No Comment) */
+"equipment.battle_gear" = "武装";
+
+/* (No Comment) */
+"equipment.body" = "胴のアクセサリ";
+
+/* (No Comment) */
+"equipment.costume" = "衣装";
+
+/* (No Comment) */
+"equipment.eyewear" = "アイウェア";
+
+/* (No Comment) */
+"equipment.head" = "頭装備";
+
+/* (No Comment) */
+"equipment.head_accessory" = "頭部のアクセサリー";
+
+/* (No Comment) */
+"equipment.nothing_equipped" = "装備なし";
+
+/* (No Comment) */
+"equipment.off_hand" = "反対の手";
+
+/* (No Comment) */
+"equipment.use_costume" = "衣装を使用する";
+
+/* (No Comment) */
+"equipment.weapon" = "武器";
+
+/* (No Comment) */
+"experience" = "経験値";
+
+/* (No Comment) */
+"food" = "えさ";
+
+/* (No Comment) */
+"glasses" = "メガネ";
+
+/* (No Comment) */
+"groups.assign_new_leader" = "新しいリーダーを指定";
+
+/* (No Comment) */
+"groups.leader_challenges" = "リーダーだけが、チャレンジをつくることができます。";
+
+/* (No Comment) */
+"guilds.keep_challenges" = "チャレンジを続ける";
+
+/* (No Comment) */
+"guilds.leave_challenges" = "チャレンジをやめる";
+
+/* (No Comment) */
+"guilds.leave_guild_description" = "チャレンジをやめてタスクを保持または削除しますか？";
+
+/* (No Comment) */
+"guilds.leave_guild_title" = "ギルドをやめますか？";
+
+/* (No Comment) */
+"hatch_egg" = "たまごをかえす";
+
+/* (No Comment) */
+"hatch_potion" = "たまごがえしの薬でかえす";
+
+/* (No Comment) */
+"hatching_potions" = "たまごがえしの薬";
+
+/* (No Comment) */
+"health" = "体力";
+
+/* (No Comment) */
+"inventory.available_until" = "%@ まで有効";
+
+/* (No Comment) */
+"inventory.hatched" = "新しいペットが生まれました！";
+
+/* (No Comment) */
+"inventory.hatchedSharing" = "Habiticaで、実生活のタスクを達成して %@ %@ を孵化させました！";
+
+/* (No Comment) */
+"inventory.no_gems_left" = "今月購入できるジェムはもうありません。追加分は来月頭の3日間のうちにご用意できます。";
+
+/* (No Comment) */
+"inventory.number_gems_left" = "今月のジェム: 残り %d/%d";
+
+/* (No Comment) */
+"inventory.wrong_class" = "%@s だけが購入できます。クラスはセッティングから変更できます";
+
+/* (No Comment) */
+"invite_party" = "パーティーに招待する";
+
+/* (No Comment) */
+"leader" = "リーダー";
+
+/* (No Comment) */
+"leave" = "やめる";
+
+/* (No Comment) */
+"level_number" = "レベル %d";
+
+/* (No Comment) */
+"levelup_description" = "実生活での目標達成で、レベル %ld になりました!";
+
+/* (No Comment) */
+"levelup_share" = "実生活での習慣が向上したので、Habitica で %ld にレベルアップしました!";
+
+/* (No Comment) */
+"levelup_title" = "レベルが上がりました！";
+
+/* (No Comment) */
+"mana" = "マナ";
+
+/* (No Comment) */
+"member.last_logged_in" = "最終ログイン日";
+
+/* (No Comment) */
+"member.member_since" = "メンバー登録日";
+
+/* (No Comment) */
+"menu.about" = "自己紹介";
+
+/* (No Comment) */
+"menu.cast_spells" = "魔法を唱える";
+
+/* (No Comment) */
+"menu.challenges" = "チャレンジ";
+
+/* (No Comment) */
+"menu.customize_avatar" = "アバターのカスタマイズ";
+
+/* (No Comment) */
+"menu.equipment" = "装備";
+
+/* (No Comment) */
+"menu.gems_subscriptions" = "ジェムと寄付";
+
+/* (No Comment) */
+"menu.guilds" = "ギルド";
+
+/* (No Comment) */
+"menu.help_faq" = "ヘルプ&FAQ";
+
+/* (No Comment) */
+"menu.inventory" = "所持品";
+
+/* (No Comment) */
+"menu.items" = "アイテム";
+
+/* (No Comment) */
+"menu.news" = "ニュース";
+
+/* (No Comment) */
+"menu.party" = "パーティー";
+
+/* (No Comment) */
+"menu.select_class" = "クラスを選ぶ";
+
+/* (No Comment) */
+"menu.shops" = "ショップ";
+
+/* (No Comment) */
+"menu.social" = "ソーシャル";
+
+/* (No Comment) */
+"menu.stable" = "動物小屋";
+
+/* (No Comment) */
+"menu.stats" = "ステータス";
+
+/* (No Comment) */
+"menu.tavern" = "キャンプ場";
+
+/* (No Comment) */
+"menu.use_skills" = "スキルを使う";
+
+/* (No Comment) */
+"monthly" = "月間";
+
+/* (No Comment) */
+"mounts" = "乗騎";
+
+/* (No Comment) */
+"my_challenges" = "マイチャレンジ";
+
+/* (No Comment) */
+"my_guilds" = "所属ギルド";
+
+/* (No Comment) */
+"name" = "名前";
+
+/* (No Comment) */
+"notes" = "メモ";
+
+/* (No Comment) */
+"ok" = "OK";
+
+/* (No Comment) */
+"open" = "開く";
+
+/* (No Comment) */
+"party.invited_to_quest" = "%@ があなたをクエストに招待しました";
+
+/* (No Comment) */
+"party.quest_number_responded" = "%d/%d 人が反応しました";
+
+/* (No Comment) */
+"party.quest_participant_count" = "参加者 : %d 人";
+
+/* (No Comment) */
+"pending_damage" = "保留中のダメージ";
+
+/* (No Comment) */
+"pets" = "ペット";
+
+/* (No Comment) */
+"purchase_for_gems" = " %d ジェム購入する";
+
+/* (No Comment) */
+"quests" = "クエスト";
+
+/* (No Comment) */
+"quests.accepted" = "承認しました";
+
+/* (No Comment) */
+"quests.boss_battle" = "ボス戦";
+
+/* (No Comment) */
+"quests.collection_quest" = "アイテム集めのクエスト";
+
+/* (No Comment) */
+"quests.confirm_abort" = "このミッションを中断します。よろしいですか?　パーティの全員が中断になり、すべての進行状況は失われます。クエストの巻物はクエスト所有者の手に戻ります。";
+
+/* (No Comment) */
+"quests.confirm_cancel_invitation" = "このクエストを中止します。よろしいですか?　招待への承認は全て無効になります。クエストの巻物は、クエストの所有者の手に戻ります。";
+
+/* (No Comment) */
+"quests.confirm_force_start" = "本当によろしいですか？パーティーメンバーのうち何人かはクエストに参加していません。すべてのプレイヤーが参加または招待を辞退すると、クエストは自動的に始まります。";
+
+/* (No Comment) */
+"quests.invitations_header" = "招待状";
+
+/* (No Comment) */
+"quests.participants_header" = "参加者";
+
+/* (No Comment) */
+"quests.pending" = "未決";
+
+/* (No Comment) */
+"quests.rejected" = "拒否しました";
+
+/* (No Comment) */
+"quests.started_by" = "%@ が開始しました";
+
+/* (No Comment) */
+"reset_tips" = "Justin によるワザの紹介をリセットする";
+
+/* (No Comment) */
+"resetStreak" = "実行回数のリセット";
+
+/* (No Comment) */
+"resync" = "更新する";
+
+/* (No Comment) */
+"resync_all" = "すべて更新する";
+
+/* (No Comment) */
+"resync_task" = "このタスクを更新する";
+
+/* (No Comment) */
+"save" = "保存";
+
+/* (No Comment) */
+"search" = "検索";
+
+/* (No Comment) */
+"sell" = "%d ゴールドで売る";
+
+/* (No Comment) */
+"settings.api" = "API";
+
+/* (No Comment) */
+"settings.are_you_sure" = "本当によろしいですか?";
+
+/* (No Comment) */
+"settings.authentication" = "認証";
+
+/* (No Comment) */
+"settings.change_class" = "クラスを変更する";
+
+/* (No Comment) */
+"settings.change_class_disclaimer" = "よろしいのですか?　この操作で、あなたのキャラクターのクラスと割り当てたポイントがリセットされます(獲得したポイントについては、再割り当てできる状態に戻ります)。また、3 ジェムが必要です。";
+
+/* (No Comment) */
+"settings.clear_cache" = "キャッシュを消去する";
+
+/* (No Comment) */
+"settings.custom_day_start" = "日付更新の設定";
+
+/* (No Comment) */
+"settings.daily_reminder" = "日課の通知";
+
+/* (No Comment) */
+"settings.day_start" = "日付更新する時間";
+
+/* (No Comment) */
+"settings.disable_all_notifications" = "すべてのプッシュ通知を無効にする";
+
+/* (No Comment) */
+"settings.disable_pm" = "プライベートメッセージを停止する";
+
+/* (No Comment) */
+"settings.display_notification_badge" = "通知バッジを表示";
+
+/* (No Comment) */
+"settings.enable_class_system" = "クラスシステムを有効にする";
+
+/* (No Comment) */
+"settings.fix_characterValues" = "キャラクターの設定値を直す";
+
+/* (No Comment) */
+"settings.log_out" = "ログアウト";
+
+/* (No Comment) */
+"settings.maintenance" = "メンテナンス";
+
+/* (No Comment) */
+"settings.notification_badge" = "通知バッジ";
+
+/* (No Comment) */
+"settings.preferences" = "設定";
+
+/* (No Comment) */
+"settings.profile" = "プロフィール";
+
+/* (No Comment) */
+"settings.push_notifications" = "プッシュ通知";
+
+/* (No Comment) */
+"settings.reload_content" = "コンテンツを再読み込み";
+
+/* (No Comment) */
+"settings.reminder" = "通知";
+
+/* (No Comment) */
+"settings.select_class" = "クラスを選ぶ";
+
+/* (No Comment) */
+"settings.social" = "ソーシャル";
+
+/* (No Comment) */
+"settings.user" = "ユーザー";
+
+/* (No Comment) */
+"share" = "共有";
+
+/* (No Comment) */
+"skills.use_skill" = "%@を使う";
+
+/* (No Comment) */
+"skills.used_transformation_item" = "%@ を使用しました";
+
+/* (No Comment) */
+"stable.feed" = "えさをやる";
+
+/* (No Comment) */
+"stable.premium" = "魔法の薬";
+
+/* (No Comment) */
+"stable.quest_mounts" = "クエスト乗騎";
+
+/* (No Comment) */
+"stable.quest_pets" = "クエストペット";
+
+/* (No Comment) */
+"stable.special_mounts" = "スペシャル乗騎";
+
+/* (No Comment) */
+"stable.special_pets" = "スペシャルペット";
+
+/* (No Comment) */
+"stable.standard" = "一般";
+
+/* (No Comment) */
+"stats.allocated" = "割り当て済み";
+
+/* (No Comment) */
+"stats.battle_gear" = "武装";
+
+/* (No Comment) */
+"stats.buffs" = "勢い( 能力値ボーナス )";
+
+/* (No Comment) */
+"stats.class_bonus" = "クラスボーナス";
+
+/* (No Comment) */
+"stats.level" = "レベル";
+
+/* (No Comment) */
+"stats.no_points_to_allocate" = "割り当てられるポイント：０";
+
+/* (No Comment) */
+"summary" = "概要";
+
+/* (No Comment) */
+"tags" = "タグ";
+
+/* (No Comment) */
+"tasks.daily" = "日間";
+
+/* (No Comment) */
+"tasks.form.checklist" = "チェックリスト";
+
+/* (No Comment) */
+"tasks.form.clear" = "クリア";
+
+/* (No Comment) */
+"tasks.form.confirm_delete" = "このタスクを削除します。よろしいですか?";
+
+/* (No Comment) */
+"tasks.form.cost" = "価格";
+
+/* (No Comment) */
+"tasks.form.difficulty" = "難易度";
+
+/* (No Comment) */
+"tasks.form.easy" = "かんたん";
+
+/* (No Comment) */
+"tasks.form.edit" = "%@ を編集する";
+
+/* (No Comment) */
+"tasks.form.hard" = "難しい";
+
+/* (No Comment) */
+"tasks.form.medium" = "ふつう";
+
+/* (No Comment) */
+"tasks.form.new_checklist_item" = "新しいチェックリストを追加";
+
+/* (No Comment) */
+"tasks.form.reminders" = "通知";
+
+/* (No Comment) */
+"tasks.form.repeats" = "繰り返し";
+
+/* (No Comment) */
+"tasks.form.reset_streak" = "実行回数のリセット";
+
+/* (No Comment) */
+"tasks.form.tags" = "タグ";
+
+/* (No Comment) */
+"tasks.form.trivial" = "ちょちょい";
+
+/* (No Comment) */
+"tasks.habit" = "習慣";
+
+/* (No Comment) */
+"tasks.reward" = "ごほうび";
+
+/* (No Comment) */
+"tasks.todo" = "To-Do";
+
+/* (No Comment) */
+"theme.blue" = "青";
+
+/* (No Comment) */
+"theme.green" = "緑";
+
+/* (No Comment) */
+"theme.red" = "赤";
+
+/* (No Comment) */
+"theme.yellow" = "黄";
+
+/* (No Comment) */
+"title" = "タイトル";
+
+/* (No Comment) */
+"unequip" = "はずす";
+
+/* (No Comment) */
+"weekly" = "週間";
+
+/* (No Comment) */
+"yearly" = "年間";
+

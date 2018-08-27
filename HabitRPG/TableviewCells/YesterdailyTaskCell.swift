@@ -9,6 +9,7 @@
 import UIKit
 import Habitica_Models
 import PinLayout
+import Down
 
 class YesterdailyTaskCell: UITableViewCell {
 
@@ -29,7 +30,7 @@ class YesterdailyTaskCell: UITableViewCell {
     func configure(task: TaskProtocol) {
         backgroundColor = UIColor.gray700()
         checkbox.configure(task: task)
-        titleTextView.text = task.text?.unicodeEmoji
+        titleTextView.attributedText = try? Down(markdownString: task.text?.unicodeEmoji ?? "").toHabiticaAttributedString()
 
         checklistItems.forEach({ (view, _) in
             view.removeFromSuperview()
@@ -40,7 +41,7 @@ class YesterdailyTaskCell: UITableViewCell {
             if let view = UIView.fromNib(nibName: "YesterdailyChecklistItem") {
                 view.isUserInteractionEnabled = true
                 let label = view.viewWithTag(2) as? UILabel
-                label?.text = checklistItem.text?.unicodeEmoji
+                label?.attributedText = try? Down(markdownString: checklistItem.text?.unicodeEmoji ?? "").toHabiticaAttributedString()
                 let checkbox = view.viewWithTag(1) as? CheckboxView
                 checkbox?.configure(checklistItem: checklistItem, withTitle: false)
                 checkbox?.backgroundColor = UIColor.gray700()

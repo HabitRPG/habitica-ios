@@ -1,0 +1,63 @@
+/* Class = "UILabel"; text = "Auto Allocate Points"; ObjectID = "5gQ-dz-Izv"; */
+"5gQ-dz-Izv.text" = "Распределять автоматически";
+
+/* Class = "UILabel"; text = "Distribute based on class"; ObjectID = "8Pt-YU-W3u"; */
+"8Pt-YU-W3u.text" = "Распределять на основе класса";
+
+/* Class = "UINavigationItem"; title = "Spells"; ObjectID = "83d-fh-zsv"; */
+"83d-fh-zsv.title" = "Заклинания";
+
+/* Class = "UILabel"; text = "Strength"; ObjectID = "AIz-nP-TRZ"; */
+"AIz-nP-TRZ.text" = "Сила";
+
+/* Class = "UILabel"; text = "Increases EXP earned from completing tasks. Also increases your mana cap and how fast mana regenerates over time."; ObjectID = "cnW-Ox-I47"; */
+"cnW-Ox-I47.text" = "Увеличивает опыт полученный от выполнения задач. Также увеличивает максимальное число маны и скорость ее восстановления.";
+
+/* Class = "UILabel"; text = "Intelligence"; ObjectID = "d78-r8-q0a"; */
+"d78-r8-q0a.text" = "Интеллект";
+
+/* Class = "UILabel"; text = "Constitution"; ObjectID = "Ddy-DY-NBy"; */
+"Ddy-DY-NBy.text" = "Телосложение";
+
+/* Class = "UILabel"; text = "Increases the bonus of critical hits and makes them more likely when scoring a task. Also increases damage dealt to bosses. "; ObjectID = "F28-BC-4hw"; */
+"F28-BC-4hw.text" = "Увеличивает бонус критических ударов и делает их более вероятными при подсчете задания. Также увеличивает урон, нанесенный боссам.";
+
+/* Class = "UILabel"; text = "Distribute evenly"; ObjectID = "GL3-jH-b3q"; */
+"GL3-jH-b3q.text" = "Распределять равномерно";
+
+/* Class = "UILabel"; text = "Decreases the amount of damage taken from your tasks. Does not decrease the damage received from bosses."; ObjectID = "hfH-um-9Qr"; */
+"hfH-um-9Qr.text" = "Снижает урон от задач. Не снижает урон полученный от боссов.";
+
+/* Class = "UILabel"; text = "Use"; ObjectID = "Idt-Ls-oEA"; */
+"Idt-Ls-oEA.text" = "Использовать";
+
+/* Class = "UINavigationItem"; title = "Stats"; ObjectID = "jad-F6-0UB"; */
+"jad-F6-0UB.title" = "Характеристики";
+
+/* Class = "UILabel"; text = "Stat guide"; ObjectID = "PAm-Rw-4AT"; */
+"PAm-Rw-4AT.text" = "Руководство по характеристикам";
+
+/* Class = "UILabel"; text = "Distribute based on task activity"; ObjectID = "pJ1-2A-yks"; */
+"pJ1-2A-yks.text" = "Распределять на основе вида заданий";
+
+/* Class = "UILabel"; text = "Perception"; ObjectID = "QVe-qq-d5S"; */
+"QVe-qq-d5S.text" = "Восприятие";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "reg-ed-u0h"; */
+"reg-ed-u0h.text" = "0";
+
+/* Class = "UILabel"; text = "0 Points to Allocate"; ObjectID = "SAQ-Tl-eLi"; */
+"SAQ-Tl-eLi.text" = "0 очков для распределения";
+
+/* Class = "UILabel"; text = "Character Build"; ObjectID = "VBj-Mm-QQ4"; */
+"VBj-Mm-QQ4.text" = "Развитие персонажа";
+
+/* Class = "UILabel"; text = "10"; ObjectID = "VqQ-Ms-Edt"; */
+"VqQ-Ms-Edt.text" = "10";
+
+/* Class = "UILabel"; text = "Increases the likelihood of finding drops when completing Tasks, the daily drop-cap, Streak Bonuses, and the amount of gold awarded for Tasks."; ObjectID = "WLX-vs-pFL"; */
+"WLX-vs-pFL.text" = "Увеличивает вероятность дропа при выполнении Заданий, ежедневного дропа, бонусов за серию и количество золота за Задачи.";
+
+/* Class = "UILabel"; text = "Each level earns you one point to assign to an attribute of your choice. You can do so manually, or let the game decide for you using one of the Automatic Allocation options."; ObjectID = "wNh-Vv-aKs"; */
+"wNh-Vv-aKs.text" = "За каждый уровень вы получается одно очко для улучшения характеристик. Вы можете сделать это вручную или позволить игре решить за вас, используя одну из опций автоматического распределения.";
+

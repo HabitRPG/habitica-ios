@@ -18,7 +18,9 @@ plugin 'cocoapods-keys', {
     "SeedsReleaseShareInterstitial",
     "SeedsDevShareInterstitial",
     "ItunesSharedSecret",
-    "StagingKey"
+    "StagingKey",
+    "InstabugLive",
+    "InstabugBeta"
   ]
 }
 
@@ -107,6 +109,9 @@ end
 target "Habitica Database" do
   project 'Habitica Database/Habitica Database.xcodeproj'
   pod "RealmSwift"
+
+  pod 'Fabric'
+  pod 'Crashlytics'
   reactive_pods
 
   target 'Habitica DatabaseTests' do

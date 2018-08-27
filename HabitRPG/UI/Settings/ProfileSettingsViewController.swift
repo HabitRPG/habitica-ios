@@ -61,6 +61,7 @@ class ProfileSettingsViewController: BaseSettingsViewController {
         alertController.addTextField { (textField) in
             textField.text = value
         }
+        alertController.setSourceInCenter(view)
         self.present(alertController, animated: true, completion: nil)
     }
     

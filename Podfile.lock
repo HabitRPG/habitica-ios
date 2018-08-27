@@ -1,19 +1,19 @@
 PODS:
   - Amplitude-iOS (4.0.4)
-  - AppAuth (0.92.0)
+  - AppAuth (0.94.0)
   - Bolts (1.9.0):
     - Bolts/AppLinks (= 1.9.0)
     - Bolts/Tasks (= 1.9.0)
   - Bolts/AppLinks (1.9.0):
     - Bolts/Tasks
   - Bolts/Tasks (1.9.0)
-  - Crashlytics (3.10.2):
-    - Fabric (~> 1.7.7)
+  - Crashlytics (3.10.5):
+    - Fabric (~> 1.7.9)
   - DateTools (2.0.0)
   - Down (0.5.2)
   - DynamicBlurView (2.0.2)
-  - Eureka (4.1.1)
-  - Fabric (1.7.7)
+  - Eureka (4.2.0)
+  - Fabric (1.7.9)
   - FBSDKCoreKit (4.34.0):
     - Bolts (~> 1.7)
   - FBSDKLoginKit (4.34.0):
@@ -23,19 +23,14 @@ PODS:
     - OHHTTPStubs/Swift
     - Prelude (~> 3.0)
     - ReactiveSwift
-  - Instabug (7.14.5):
-    - Instabug/Instabug (= 7.14.5)
-    - Instabug/InstabugCore (= 7.14.5)
-  - Instabug/Instabug (7.14.5):
-    - Instabug/InstabugCore
-  - Instabug/InstabugCore (7.14.5)
+  - Instabug (8.0.4)
   - iOSSnapshotTestCase (3.0.0):
     - iOSSnapshotTestCase/SwiftSupport (= 3.0.0)
   - iOSSnapshotTestCase/Core (3.0.0)
   - iOSSnapshotTestCase/SwiftSupport (3.0.0):
     - iOSSnapshotTestCase/Core
   - KeychainAccess (3.1.1)
-  - Keys (1.0.0)
+  - Keys (1.0.1)
   - Kingfisher (4.8.0)
   - KLCPopup (1.0)
   - Masonry (1.1.0)
@@ -68,7 +63,7 @@ PODS:
   - MRProgress/Stopable (0.8.3):
     - MRProgress/Helper
   - Nimble (7.0.3)
-  - NSString+Emoji (0.2.0)
+  - "NSString+Emoji (0.2.0)"
   - OHHTTPStubs/Core (6.1.0)
   - OHHTTPStubs/Default (6.1.0):
     - OHHTTPStubs/Core
@@ -82,8 +77,8 @@ PODS:
   - OHHTTPStubs/OHPathHelpers (6.1.0)
   - OHHTTPStubs/Swift (6.1.0):
     - OHHTTPStubs/Default
-  - PinLayout (1.7.7)
-  - PopupDialog (0.7.1):
+  - PinLayout (1.7.9)
+  - PopupDialog (0.8.0):
     - DynamicBlurView (~> 2.0)
   - Prelude (3.0.0)
   - Quick (1.2.0)
@@ -101,7 +96,7 @@ PODS:
   - SlackTextViewController (1.9.6)
   - SwiftGen (5.3.0)
   - SwiftLint (0.26.0)
-  - SwiftyStoreKit (0.13.2)
+  - SwiftyStoreKit (0.13.3)
   - VTAcknowledgementsViewController (1.4.1)
   - XLForm (4.0.0)
 
@@ -126,7 +121,7 @@ DEPENDENCIES:
   - Masonry
   - MRProgress
   - Nimble (~> 7.0.0)
-  - NSString+Emoji
+  - "NSString+Emoji"
   - PinLayout
   - PopupDialog (from `https://github.com/Orderella/PopupDialog.git`, branch `development`)
   - Quick (~> 1.2.0)
@@ -139,6 +134,46 @@ DEPENDENCIES:
   - SwiftyStoreKit
   - VTAcknowledgementsViewController
   - XLForm
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Amplitude-iOS
+    - AppAuth
+    - Bolts
+    - Crashlytics
+    - DateTools
+    - Down
+    - DynamicBlurView
+    - Eureka
+    - Fabric
+    - FBSDKCoreKit
+    - FBSDKLoginKit
+    - FLEX
+    - Instabug
+    - iOSSnapshotTestCase
+    - KeychainAccess
+    - Kingfisher
+    - KLCPopup
+    - Masonry
+    - MRProgress
+    - Nimble
+    - "NSString+Emoji"
+    - OHHTTPStubs
+    - PinLayout
+    - Prelude
+    - Quick
+    - ReactiveCocoa
+    - ReactiveSwift
+    - Realm
+    - RealmSwift
+    - Result
+    - SeedsSDK
+    - SlackTextViewController
+    - SwiftGen
+    - SwiftLint
+    - SwiftyStoreKit
+    - VTAcknowledgementsViewController
+    - XLForm
 
 EXTERNAL SOURCES:
   FunkyNetwork:
@@ -154,36 +189,36 @@ CHECKOUT OPTIONS:
     :commit: 219aaf7dc77fd32e663fb416f2cd567c6950b88a
     :git: https://github.com/schrockblock/funky-network.git
   PopupDialog:
-    :commit: 180a14e3ccb7c7f851369acdab235353c0b774f3
+    :commit: fc2e6b2498e7963bb79009cc8dab8e6ee68861de
     :git: https://github.com/Orderella/PopupDialog.git
 
 SPEC CHECKSUMS:
   Amplitude-iOS: 2ad4d7270c99186236c1272a3a9425463b1ae1a7
-  AppAuth: 3f4f1d6d85ad631d0bbf15ffcdc10c447face97a
+  AppAuth: 0f099c2286a1a9754e5bd27211c43d307dc4f778
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
-  Crashlytics: 0360624eea1c978a743feddb2fb1ef8b37fb7a0d
+  Crashlytics: 7f2e38d302d9da96475b3d64d86fb29e31a542b7
   DateTools: 933ac9c490f21f92127cf690ccd8c397e0126caf
   Down: 587371ad58002b06023d9c602519216862c3acbc
   DynamicBlurView: aa6db4defc6e537eb86fc5e58dd3991666178399
-  Eureka: b88fb930e42c79f8c03c373d0fcdc28c1d6c50ed
-  Fabric: bda89e242bce1b7b8ab264248cf3407774ce0095
+  Eureka: 0748c7bbb2560130e43c7bfa83e99c98854a1f42
+  Fabric: a2917d3895e4c1569b9c3170de7320ea1b1e6661
   FBSDKCoreKit: 0ff57f093b85c8c9d5aba697d3edf68a8960ce78
   FBSDKLoginKit: 8c78f57a145afb756e4755e69195ebe08a42466e
   FLEX: bd1a39e55b56bb413b6f1b34b3c10a0dc44ef079
   FunkyNetwork: 6eb382dcab7c5947ea7e8d3c72427ee91d87c35f
-  Instabug: 7a7fea34bdc40735e8961750a2f9f34b7a8fae4a
+  Instabug: 5db1aa557d6d2d0a1ecf607c9efee5d8f41dcb15
   iOSSnapshotTestCase: 23984ffe05289728d646cbb6a7a10b4fb1c93440
   KeychainAccess: 7bd430028059754a3debab3cfc0bd1fc7fb85df3
-  Keys: af65e23feef2a047b3277b1ef0399f1209ef9d46
+  Keys: a576f4c9c1c641ca913a959a9c62ed3f215a8de9
   Kingfisher: 976d828df2b24834c6a3f2fc4d82cdbd26552be1
   KLCPopup: 76c5a19227977f1e53d85236f9ef42257c168d98
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MRProgress: 16de7cc9f347e8846797a770db102a323fe7ef09
   Nimble: 7f5a9c447a33002645a071bddafbfb24ea70e0ac
-  NSString+Emoji: 127da93993ac7c01eadb2edbb039cda89a1369f4
+  "NSString+Emoji": 127da93993ac7c01eadb2edbb039cda89a1369f4
   OHHTTPStubs: 1e21c7d2c084b8153fc53d48400d8919d2d432d0
-  PinLayout: 0777b5d8d73822aa203454d90118d4e98086e43a
-  PopupDialog: 39598b7d41719f5c025b4b70e62728bae7734fef
+  PinLayout: 21ce87a865407a7a3c8a38a326611c476095fedf
+  PopupDialog: 11347197b6ac3e0548ac445d40ce68d1d407e9a0
   Prelude: fe4cc0fd961d34edf48fe6b04d05c863449efb0a
   Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
   ReactiveCocoa: 476dae7ca790f40d30d186a1bd7ebae4290395d5
@@ -195,10 +230,10 @@ SPEC CHECKSUMS:
   SlackTextViewController: b854e62c1c156336bc4fd409c6ca79b5773e8f9d
   SwiftGen: 4379bd3640b0a212a0f6ea3c494adba385513d10
   SwiftLint: f6b83e8d95ee1e91e11932d843af4fdcbf3fc764
-  SwiftyStoreKit: b7563505440a68c9d9fa70bc43d8a97015519409
+  SwiftyStoreKit: 9ebd15971e28aa2989825fe8bc092eb5f75dd0b2
   VTAcknowledgementsViewController: 9a7d0f040f17dfa6d02fc731bec8b188e4b4ee59
   XLForm: 04110197c12187dd28a6c7295d3d8b95f4fdb4de
 
-PODFILE CHECKSUM: 6fe6054172f4166cec80df42773fb641b728c039
+PODFILE CHECKSUM: 8b1ca1d53686706badd9d2e4244e4da946e65548
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.3

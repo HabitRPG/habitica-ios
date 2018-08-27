@@ -100,14 +100,21 @@ class ItemsViewDataSource: BaseReactiveTableViewDataSource<ItemProtocol> {
                     self?.ownedItems["inventory_presentspecial"] = mysteryItemCount
                 }
             })
-            .map({ (data, user) -> [String] in
-                var keys = data.value.map({ (ownedItem) -> String in
-                    return ownedItem.key ?? ""
-                }).filter({ (key) -> Bool in
-                    return !key.isEmpty
+                .map({ (data, user) -> [ItemType: [String]] in
+                var keys: [ItemType: [String]] = [
+                    ItemType.eggs: [String](),
+                    ItemType.food: [String](),
+                    ItemType.hatchingPotions: [String](),
+                    ItemType.quests: [String](),
+                    ItemType.special: [String]()
+                ]
+                data.value.forEach({ ownedItem in
+                    if let key = ownedItem.key, let itemType = ItemType(rawValue: ownedItem.itemType ?? "") {
+                        keys[itemType]?.append(key)
+                    }
                 })
                 if let mysteryItemCount = user.purchased?.subscriptionPlan?.mysteryItems.count, mysteryItemCount > 0 {
-                    keys.append("inventory_present")
+                    keys[ItemType.special]?.append("inventory_present")
                 }
                 return keys
             })

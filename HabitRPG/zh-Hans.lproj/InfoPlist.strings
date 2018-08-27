@@ -1,9 +1,15 @@
-/* (No Commment) */
+/* Bundle display name */
 "CFBundleDisplayName" = "Habitica";
 
-/* (No Commment) */
+/* Bundle name */
 "CFBundleName" = "HabitRPG";
 
-/* (No Commment) */
-"CFBundleShortVersionString" = "1.5.3";
+/* Privacy - Camera Usage Description */
+"NSCameraUsageDescription" = "Habitica需要访问您的相机的权限以扫描二维码";
+
+/* Privacy - Microphone Usage Description */
+"NSMicrophoneUsageDescription" = "Habitica需要访问您的麦克风的权限以添加语音便笺";
+
+/* Privacy - Photo Library Usage Description */
+"NSPhotoLibraryUsageDescription" = "Habitica需要访问您的相机的权限以扫描二维码";
 

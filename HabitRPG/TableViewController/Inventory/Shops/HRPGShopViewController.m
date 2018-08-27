@@ -209,6 +209,7 @@
     
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", "") style:UIAlertActionStyleCancel handler:nil];
     [alertController addAction:cancelAction];
+    [alertController setSourceInCenter:self.view];
     [self presentViewController:alertController animated:YES completion:nil];
 }
 

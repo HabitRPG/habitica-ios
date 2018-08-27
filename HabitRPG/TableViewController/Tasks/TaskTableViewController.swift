@@ -24,7 +24,7 @@ class TaskTableViewController: HRPGBaseViewController, UISearchBarDelegate, UITa
     var editable: Bool = false
     var sourceIndexPath: IndexPath?
     var snapshot: UIView?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -97,18 +97,25 @@ class TaskTableViewController: HRPGBaseViewController, UISearchBarDelegate, UITa
         tableView.layoutMargins = UIEdgeInsets.zero
     }
     
-    @objc func refresh() {
+    @objc
+    func refresh() {
         weak var weakSelf = self
         dataSource?.retrieveData(completed: {
             weakSelf?.refreshControl?.endRefreshing()
         })
     }
     
-    @objc func didChangeFilter() {
+    @objc
+    func didChangeFilter() {
         let defaults = UserDefaults.standard
         filterType = defaults.integer(forKey: "\(typeName ?? "")Filter")
         
         dataSource?.predicate = getPredicate()
+        if typeName == "todo" && filterType == 1 {
+            dataSource?.sortKey = "duedate"
+        } else {
+            dataSource?.sortKey = "order"
+        }
         tableView.reloadData()
         
         var filterCount = 0
@@ -129,7 +136,9 @@ class TaskTableViewController: HRPGBaseViewController, UISearchBarDelegate, UITa
         }
     }
     
-    @objc @IBAction func longPressRecognized(sender: Any?) {
+    @objc
+    @IBAction
+    func longPressRecognized(sender: Any?) {
         if let longPress = sender as? UILongPressGestureRecognizer {
             let location = longPress.location(in: tableView)
             guard let indexPath = tableView.indexPathForRow(at: location) else {
@@ -161,16 +170,9 @@ class TaskTableViewController: HRPGBaseViewController, UISearchBarDelegate, UITa
                         }
                     }
                 }
-                
-                break
             case .changed:
                 if let sourcePath = sourceIndexPath, indexPath != sourcePath {
                     dataSource?.userDrivenDataUpdate = true
-                    if let sourceTask = dataSource?.task(at: sourcePath), let task = dataSource?.task(at: indexPath) {
-                        let sourceOrder = sourceTask.order
-                        sourceTask.order = task.order
-                        task.order = sourceOrder
-                    }
                     
                     tableView.moveRow(at: sourcePath, to: indexPath)
                     sourceIndexPath = indexPath
@@ -198,7 +200,6 @@ class TaskTableViewController: HRPGBaseViewController, UISearchBarDelegate, UITa
                         autoScrollSpeed = 0
                     }
                 }
-                break
             default:
                 if let sourceIndexPath = sourceIndexPath, let task = dataSource?.task(at: sourceIndexPath) {
                     dataSource?.moveTask(task: task, toPosition: task.order, completion: {})
@@ -208,7 +209,6 @@ class TaskTableViewController: HRPGBaseViewController, UISearchBarDelegate, UITa
                         self.snapshot?.transform = CGAffineTransform.identity
                     }, completion: nil)
                 }
-                break
             }
         }
     }
@@ -254,7 +254,7 @@ class TaskTableViewController: HRPGBaseViewController, UISearchBarDelegate, UITa
         return provider.getFrameForCoachmark(coachMarkIdentifier)
     }
     
-    override func getDefinitonForTutorial(_ tutorialIdentifier: String!) -> [AnyHashable : Any]! {
+    override func getDefinitonForTutorial(_ tutorialIdentifier: String!) -> [AnyHashable: Any]! {
         return HRPGCoachmarkFrameProvider().getDefinitonForTutorial(tutorialIdentifier)
     }
     
@@ -263,7 +263,7 @@ class TaskTableViewController: HRPGBaseViewController, UISearchBarDelegate, UITa
         searchBar?.setShowsCancelButton(false, animated: true)
     }
     
-    @IBAction func unwindToList(segue: UIStoryboardSegue?) {
+    @IBAction func unwindFilterChanged(segue: UIStoryboardSegue?) {
         if let tagVC = segue?.source as? HRPGFilterViewController {
             if let tabVC = tabBarController as? MainTabBarController {
                 tabVC.selectedTags = tagVC.selectedTags
@@ -340,10 +340,14 @@ class TaskTableViewController: HRPGBaseViewController, UISearchBarDelegate, UITa
             let order = movedTask.order
             let sourceIndexPath = IndexPath(row: order, section: 0)
             dataSource?.fixTaskOrder(movedTask: movedTask, toPosition: destIndexPath.item)
-            tableView.moveRow(at: sourceIndexPath, to: destIndexPath)
             dataSource?.moveTask(task: movedTask, toPosition: destIndexPath.item, completion: {
                 self.dataSource?.userDrivenDataUpdate = false
             })
+            if tableView.numberOfRows(inSection: 0) <= order && tableView.numberOfRows(inSection: 0) <= destIndexPath.item {
+                tableView.moveRow(at: sourceIndexPath, to: destIndexPath)
+            } else {
+                tableView.reloadData()
+            }
         }
     }
     
@@ -375,7 +379,7 @@ class TaskTableViewController: HRPGBaseViewController, UISearchBarDelegate, UITa
     func tableView(_ tableView: UITableView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UITableViewDropProposal {
         return UITableViewDropProposal(operation: .move, intent: .insertAtDestinationIndexPath)
     }
-
+    
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         if let movedTask = movedTask {
             dataSource?.moveTask(task: movedTask, toPosition: destinationIndexPath.item, completion: {
@@ -413,7 +417,7 @@ class TaskTableViewController: HRPGBaseViewController, UISearchBarDelegate, UITa
         
         tableView.reloadData()
     }
-
+    
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -433,7 +437,7 @@ class TaskTableViewController: HRPGBaseViewController, UISearchBarDelegate, UITa
         } else if segue.identifier == "FilterSegue" {
             if let tabVC = tabBarController as? MainTabBarController,
                 let navVC = segue.destination as? HRPGNavigationController,
-                let filterVC = navigationController?.topViewController as? HRPGFilterViewController {
+                let filterVC = navVC.topViewController as? HRPGFilterViewController {
                 navVC.sourceViewController = self
                 filterVC.selectedTags = tabVC.selectedTags
                 filterVC.taskType = typeName
@@ -447,7 +451,8 @@ class TaskTableViewController: HRPGBaseViewController, UISearchBarDelegate, UITa
         }
     }
     
-    @objc func autoscrollTimer() {
+    @objc
+    func autoscrollTimer() {
         if autoScrollSpeed == 0 {
             scrollTimer?.invalidate()
             scrollTimer = nil

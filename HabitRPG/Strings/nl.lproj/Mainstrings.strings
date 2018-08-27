@@ -1,0 +1,789 @@
+/* (No Comment) */
+"active" = "Actief";
+
+/* (No Comment) */
+"animal_ears" = "Dierenoren";
+
+/* (No Comment) */
+"avatar.background" = "Achtergrond";
+
+/* (No Comment) */
+"avatar.bangs" = "Pony";
+
+/* (No Comment) */
+"avatar.beard" = "Baard";
+
+/* (No Comment) */
+"avatar.flower" = "Bloem";
+
+/* (No Comment) */
+"avatar.glasses" = "Bril";
+
+/* (No Comment) */
+"avatar.hair_style" = "Haarstijl";
+
+/* (No Comment) */
+"avatar.hairColor" = "Haarkleur";
+
+/* (No Comment) */
+"avatar.head" = "Hoofd";
+
+/* (No Comment) */
+"avatar.mustache" = "Snor";
+
+/* (No Comment) */
+"avatar.shirt" = "Shirt";
+
+/* (No Comment) */
+"avatar.skin" = "Skinkleur";
+
+/* (No Comment) */
+"avatar.wheelchair" = "Rolstoel";
+
+/* (No Comment) */
+"cancel" = "Annuleren";
+
+/* (No Comment) */
+"chat" = "Chat";
+
+/* (No Comment) */
+"classes.become_a_class" = "Word een %@";
+
+/* (No Comment) */
+"classes.class_header" = "%@ klasse";
+
+/* (No Comment) */
+"classes.healer" = "Heler";
+
+/* (No Comment) */
+"classes.healer_description" = "Helers zijn ongevoelig voor schade, en kunnen deze bescherming uitstrekken naar anderen. Gemiste dagelijkse taken en slechte gewoontes hebben nauwelijks invloed op hun humeur, en ze hebben manieren om gezondheidspunten te herstellen na een mislukking. Speel een Heler als je het leuk vindt om anderen in je gezelschap te assisteren, of als het idee om de dood voor de gek te houden door hard te werken je inspireert!";
+
+/* (No Comment) */
+"classes.mage" = "Magiër";
+
+/* (No Comment) */
+"classes.mage_description" = "Magiërs leren snel, ze krijgen sneller ervaringspunten en niveaus dan de andere klassen. Je hebben ook veel mana beschikbaar voor speciale vaardigheden.  Speel een magiër als je houdt van de tactische aspecten van Habitica of als je erg gemotiveerd wordt door stijging in niveaus en het vrijspelen van nieuwe functionaliteiten!";
+
+/* (No Comment) */
+"classes.rogue" = "Dief";
+
+/* (No Comment) */
+"classes.rogue_description" = "Dieven houden ervan rijkdom te vergaren, verkrijgen meer goud dan enig ander en zijn bedreven in het vinden van willekeurige voorwerpen. Hun kenmerkende behendigheid laat hen de consequenties ontduiken van het missen van dagelijkse taken. Speel een dief als je veel motivatie vindt in het krijgen van beloningen, het behalen van prestaties en het streven naar buit en badges!";
+
+/* (No Comment) */
+"classes.warrior" = "Krijger";
+
+/* (No Comment) */
+"classes.warrior_description" = "Krijgers behalen meer en betere \"voltreffers"\, die willekeurig extra goud, ervaringspunten, en kans op vondsten geven voor het afstrepen van een taak. Ook doen ze veel schade aan eindbazen. Speel een Krijger als je je gemotiveerd voelt door onvoorspelbare jackpot-achtige beloningen, of als je pijn aan eindbazen wil uitdelen in queesten!";
+
+/* (No Comment) */
+"close" = "Sluiten";
+
+/* (No Comment) */
+"confirm" = "Bevestigen";
+
+/* (No Comment) */
+"controls" = "Besturingen";
+
+/* (No Comment) */
+"copied_to_clipboard" = "Gekopieerd";
+
+/* (No Comment) */
+"create" = "Aanmaken";
+
+/* (No Comment) */
+"daily" = "Dagelijkse taak";
+
+/* (No Comment) */
+"delete" = "Verwijder";
+
+/* (No Comment) */
+"description" = "Beschrijving";
+
+/* (No Comment) */
+"details" = "Details";
+
+/* (No Comment) */
+"difficulty" = "Moeilijkheidsgraad";
+
+/* (No Comment) */
+"discover" = "Ontdek";
+
+/* (No Comment) */
+"edit" = "Bewerken";
+
+/* (No Comment) */
+"eggs" = "Eieren";
+
+/* (No Comment) */
+"equip" = "Aantrekken";
+
+/* (No Comment) */
+"equipment.armor" = "Pantser";
+
+/* (No Comment) */
+"equipment.auto_equip" = "Nieuwe Automatisch Uitrusten";
+
+/* (No Comment) */
+"equipment.back" = "Rug Accessoire ";
+
+/* (No Comment) */
+"equipment.battle_gear" = "Gevechtsuitrusting";
+
+/* (No Comment) */
+"equipment.body" = "Lichaamsaccessoire  ";
+
+/* (No Comment) */
+"equipment.costume" = "Kostuum";
+
+/* (No Comment) */
+"equipment.costume_explanation" = "Selecteer \"Kostuum gebruiken\" om jouw avatar voorwerpen aan te laten trekken zonder de Eigenschappen, die je van jouw Strijduitrusting krijgt, te veranderen! Dit betekent dat je jouw avatar elke uitrusting aan kan trekken, terwijl je alsnog je Strijduitrusting gebruikt.";
+
+/* (No Comment) */
+"equipment.eyewear" = "Oogaccessoire";
+
+/* (No Comment) */
+"equipment.head" = "Hoofduitrusting";
+
+/* (No Comment) */
+"equipment.head_accessory" = "Hoofdaccessoire";
+
+/* (No Comment) */
+"equipment.nothing_equipped" = "Niks aangetrokken";
+
+/* (No Comment) */
+"equipment.off_hand" = "Andere hand";
+
+/* (No Comment) */
+"equipment.use_costume" = "Kostuum gebruiken";
+
+/* (No Comment) */
+"equipment.weapon" = "Wapen";
+
+/* (No Comment) */
+"experience" = "Ervaring";
+
+/* (No Comment) */
+"food" = "Voedsel";
+
+/* (No Comment) */
+"glasses" = "Bril";
+
+/* (No Comment) */
+"groups.assign_new_leader" = "Nieuwe leider toewijzen";
+
+/* (No Comment) */
+"groups.guild_invitation_invitername" = "%@ heeft je uitgenodigd om deel te nemen aan Gilde: %@";
+
+/* (No Comment) */
+"groups.guild_invitation_no_invitername" = "Iemand heeft je uitgenodigd om deel te nemen aan Gilde: %@";
+
+/* (No Comment) */
+"groups.leader_challenges" = "Alleen de leider kan uitdagingen maken";
+
+/* (No Comment) */
+"guilds.keep_challenges" = "Hou uitdagingen bij";
+
+/* (No Comment) */
+"guilds.leave_challenges" = "Verlaat Uitdagingen";
+
+/* (No Comment) */
+"guilds.leave_guild_description" = "Wil je de gilde verlaten en de uitdagingen bijhouden of verwijderen?";
+
+/* (No Comment) */
+"guilds.leave_guild_title" = "VerlaatGilde?";
+
+/* (No Comment) */
+"hatch_egg" = "Broedt Ei?";
+
+/* (No Comment) */
+"hatch_potion" = "Uitbroeden met toverdrank?";
+
+/* (No Comment) */
+"hatching_potions" = "Uitbroeddrankjes";
+
+/* (No Comment) */
+"headband" = "Hoofdband";
+
+/* (No Comment) */
+"health" = "Gezondheid";
+
+/* (No Comment) */
+"inactive" = "Inactief";
+
+/* (No Comment) */
+"inventory.available_until" = "Beschikbaar tot %@";
+
+/* (No Comment) */
+"inventory.hatched" = "Je hebt een nieuw huisdier uitgebroed!";
+
+/* (No Comment) */
+"inventory.hatchedSharing" = "Ik heb net een %@ %@ als huisdier uitgebroed door mijn dagelijkse taken te voltooien!";
+
+/* (No Comment) */
+"inventory.no_gems_left" = "Geen Edelstenen meer beschikbaar deze maand. Er worden er meer beschikbaar binnen de eerste 3 dagen van elke maand.";
+
+/* (No Comment) */
+"inventory.number_gems_left" = "Maandelijkse Edelstenen: %d/%d Over";
+
+/* (No Comment) */
+"inventory.wrong_class" = "Alleen beschikbaar voor %@s. Je kan je klasse veranderen in de instellingen";
+
+/* (No Comment) */
+"invite_party" = "Groep uitnodigen";
+
+/* (No Comment) */
+"last_activity" = "Laatste Activiteit %@";
+
+/* (No Comment) */
+"leader" = "Leider";
+
+/* (No Comment) */
+"leave" = "Verlaten";
+
+/* (No Comment) */
+"level_number" = "Niveau %d";
+
+/* (No Comment) */
+"levelup_description" = "Door doelen in je echte leven te voltooien, ben je gegroeid naar niveau %Id!";
+
+/* (No Comment) */
+"levelup_share" = "Ik ben naar niveau %Id gestegen in Habitica door mijn gewoontes in het echte leven te verbeteren!";
+
+/* (No Comment) */
+"levelup_title" = "Je bent een niveau gestegen!";
+
+/* (No Comment) */
+"mana" = "Mana";
+
+/* (No Comment) */
+"member.last_logged_in" = "Laatst ingelogd op";
+
+/* (No Comment) */
+"member.member_since" = "Lid sinds";
+
+/* (No Comment) */
+"menu.about" = "Over";
+
+/* (No Comment) */
+"menu.cast_spells" = "Spreek toverspreuken";
+
+/* (No Comment) */
+"menu.challenges" = "Uitdagingen";
+
+/* (No Comment) */
+"menu.customize_avatar" = "Avatar aanpassen";
+
+/* (No Comment) */
+"menu.equipment" = "Uitrusting";
+
+/* (No Comment) */
+"menu.gems_subscriptions" = "Edelstenen & Abonnementen";
+
+/* (No Comment) */
+"menu.guilds" = "Gilden";
+
+/* (No Comment) */
+"menu.help_faq" = "Help & FAQ";
+
+/* (No Comment) */
+"menu.inventory" = "Boedel";
+
+/* (No Comment) */
+"menu.items" = "Voorwerpen";
+
+/* (No Comment) */
+"menu.news" = "Nieuws";
+
+/* (No Comment) */
+"menu.party" = "Gezelschap";
+
+/* (No Comment) */
+"menu.select_class" = "Selecteer klasse";
+
+/* (No Comment) */
+"menu.shops" = "Winkels";
+
+/* (No Comment) */
+"menu.social" = "Sociaal";
+
+/* (No Comment) */
+"menu.stable" = "Stal";
+
+/* (No Comment) */
+"menu.stats" = "Statistieken";
+
+/* (No Comment) */
+"menu.tavern" = "Herberg";
+
+/* (No Comment) */
+"menu.use_skills" = "Gebruik vaardigheden";
+
+/* (No Comment) */
+"monthly" = "Maandelijks";
+
+/* (No Comment) */
+"mounts" = "Rijdieren";
+
+/* (No Comment) */
+"my_challenges" = "Mijn Uitdagingen";
+
+/* (No Comment) */
+"my_guilds" = "Mijn gilden";
+
+/* (No Comment) */
+"name" = "Naam";
+
+/* (No Comment) */
+"notes" = "Notities";
+
+/* (No Comment) */
+"ok" = "OK";
+
+/* (No Comment) */
+"one_month" = "1 Maand";
+
+/* (No Comment) */
+"open" = "Open";
+
+/* (No Comment) */
+"open_itunes" = "Open iTunes";
+
+/* (No Comment) */
+"open_website" = "Open Habitica Website";
+
+/* (No Comment) */
+"party.invitation_invitername" = "%@ heeft je uitgenodigd om deel te nemen aan hun gezelschap";
+
+/* (No Comment) */
+"party.invitation_no_invitername" = "Iemand heeft je uitgenodigd om deel te nemen aan hun gezelschap";
+
+/* (No Comment) */
+"party.invited_to_quest" = "%@ heeft je uitgenodigd om deel te nemen aan een queeste";
+
+/* (No Comment) */
+"party.quest_number_responded" = "%d/%d leden gereageerd";
+
+/* (No Comment) */
+"party.quest_participant_count" = "%d Deelnemers";
+
+/* (No Comment) */
+"pending_damage" = "Schade in afwachting";
+
+/* (No Comment) */
+"pets" = "Huisdieren";
+
+/* (No Comment) */
+"plain_backgrounds" = "Eenvoudige Achtergronden";
+
+/* (No Comment) */
+"purchase_for_gems" = "Koop voor %d Edelstenen";
+
+/* (No Comment) */
+"quests" = "Queestes";
+
+/* (No Comment) */
+"quests.accepted" = "Geaccepteerd";
+
+/* (No Comment) */
+"quests.boss_battle" = "Baasgevecht";
+
+/* (No Comment) */
+"quests.collection_quest" = "Verzamelingsqueeste";
+
+/* (No Comment) */
+"quests.confirm_abort" = "Weet je zeker dat je deze missie wilt afbreken? De missie wordt afgebroken voor iedereen in jouw gezelschap; alle vorderingen gaan verloren. De queeste-perkamentrol wordt teruggegeven aan de eigenaar van de queeste.";
+
+/* (No Comment) */
+"quests.confirm_cancel_invitation" = "Weet je zeker dat je deze queeste af wilt breken? Alle geaccepteerde uitnodigingen gaan verloren. De eigenaar van de queeste houdt de queeste-perkamentrol.";
+
+/* (No Comment) */
+"quests.confirm_force_start" = "Weet je het zeker? Niet alle gezelschapsgenoten zijn deze Queeste aangegaan! Queesten starten automatisch wanneer alle spelers hun uitnodiging hebben geaccepteerd of afgewezen. ";
+
+/* (No Comment) */
+"quests.invitations_header" = "Uitnodigingen";
+
+/* (No Comment) */
+"quests.participants_header" = "Deelnemers";
+
+/* (No Comment) */
+"quests.pending" = "In afwachting";
+
+/* (No Comment) */
+"quests.rejected" = "Geweigerd";
+
+/* (No Comment) */
+"quests.started_by" = "Gestart door %@";
+
+/* (No Comment) */
+"received_mystery_item" = "Je opent de kist en vindt %@";
+
+/* (No Comment) */
+"reset_tips" = "Reset Justins tips";
+
+/* (No Comment) */
+"resetStreak" = "Serie resetten";
+
+/* (No Comment) */
+"resync" = "Hersyncroniseer";
+
+/* (No Comment) */
+"resync_all" = "Hersyncroniseer Alles";
+
+/* (No Comment) */
+"resync_task" = "Hersyncroniseer deze taak";
+
+/* (No Comment) */
+"save" = "Opslaan";
+
+/* (No Comment) */
+"search" = "Zoeken";
+
+/* (No Comment) */
+"sell" = "Verkoop voor %d Goud";
+
+/* (No Comment) */
+"settings.api" = "API";
+
+/* (No Comment) */
+"settings.are_you_sure" = "Weet je het zeker?";
+
+/* (No Comment) */
+"settings.authentication" = "Authenticatie";
+
+/* (No Comment) */
+"settings.change_class" = "Verander klasse";
+
+/* (No Comment) */
+"settings.change_class_disclaimer" = "Dit zet de klasse van je personage en toegewezen eigenschapspunten terug op nul (je krijgt ze allemaal terug om opnieuw toe te wijzen) en kost 3 edelstenen.";
+
+/* (No Comment) */
+"settings.clear_cache" = "Cache wissen";
+
+/* (No Comment) */
+"settings.custom_day_start" = "Aangepast begin van de dag";
+
+/* (No Comment) */
+"settings.daily_reminder" = "Dagelijkse herinnering";
+
+/* (No Comment) */
+"settings.day_start" = "Begin van de dag";
+
+/* (No Comment) */
+"settings.disable_all_notifications" = "Schakel alle pushnotificaties uit";
+
+/* (No Comment) */
+"settings.disable_pm" = "Schakel privéberichten uit";
+
+/* (No Comment) */
+"settings.display_notification_badge" = "Toon Notificatie insigne";
+
+/* (No Comment) */
+"settings.enable_class_system" = "Klassesysteem aanzetten";
+
+/* (No Comment) */
+"settings.every_day" = "Elke dag om";
+
+/* (No Comment) */
+"settings.fix_characterValues" = "Personagewaarden bijstellen";
+
+/* (No Comment) */
+"settings.log_out" = "Uitloggen";
+
+/* (No Comment) */
+"settings.maintenance" = "Onderhoud";
+
+/* (No Comment) */
+"settings.notification_badge" = "Notificatie insigne";
+
+/* (No Comment) */
+"settings.preferences" = "voorkeuren";
+
+/* (No Comment) */
+"settings.profile" = "Profiel";
+
+/* (No Comment) */
+"settings.push_notifications" = "Pushnotificaties";
+
+/* (No Comment) */
+"settings.reload_content" = "Herlaad inhoud";
+
+/* (No Comment) */
+"settings.reminder" = "Herinnering";
+
+/* (No Comment) */
+"settings.select_class" = "Selecteer klasse";
+
+/* (No Comment) */
+"settings.social" = "Sociaal";
+
+/* (No Comment) */
+"settings.sound_theme" = "Geluidsthema";
+
+/* (No Comment) */
+"settings.theme_color" = "Themakleur";
+
+/* (No Comment) */
+"settings.user" = "Gebruiker";
+
+/* (No Comment) */
+"settings.wrong_password" = "Incorrect Wachtwoord";
+
+/* (No Comment) */
+"share" = "Deel";
+
+/* (No Comment) */
+"skills.cant_cast_on_challenge_tasks" = "Je kunt geen toverspreuk uitspreken over een uitdagingstaak";
+
+/* (No Comment) */
+"skills.transformation_items" = "Transformatie objecten";
+
+/* (No Comment) */
+"skills.unlocks_at" = "Wordt vrijgespeeld op niveau %d";
+
+/* (No Comment) */
+"skills.use_skill" = "Je gebruikt %@";
+
+/* (No Comment) */
+"skills.used_transformation_item" = "Je hebt %@ gebruikt";
+
+/* (No Comment) */
+"specialItems" = "Speciale artikelen";
+
+/* (No Comment) */
+"stable.feed" = "Voer";
+
+/* (No Comment) */
+"stable.premium" = "Magisch drankje";
+
+/* (No Comment) */
+"stable.quest_mounts" = "Rijdieren van queesten";
+
+/* (No Comment) */
+"stable.quest_pets" = "Huisdieren van queesten";
+
+/* (No Comment) */
+"stable.special_mounts" = "Speciale rijdieren";
+
+/* (No Comment) */
+"stable.special_pets" = "Speciale huisdieren";
+
+/* (No Comment) */
+"stable.standard" = "Standaard";
+
+/* (No Comment) */
+"stable.standard_mounts" = "Standaard Rijdieren";
+
+/* (No Comment) */
+"stable.standard_pets" = "Standaard Huisdier";
+
+/* (No Comment) */
+"stats.allocated" = "Toegewezen";
+
+/* (No Comment) */
+"stats.battle_gear" = "Gevechtsuitrusting";
+
+/* (No Comment) */
+"stats.buffs" = "Versterkingen";
+
+/* (No Comment) */
+"stats.class_bonus" = "Klassebonus";
+
+/* (No Comment) */
+"stats.level" = "Niveau";
+
+/* (No Comment) */
+"stats.no_points_to_allocate" = "0 punten om toe te wijzen";
+
+/* (No Comment) */
+"stats.one_point_to_allocate" = "1 Punt om toe te wijzen";
+
+/* (No Comment) */
+"stats.points_to_allocate" = "%d Punt om to te wijzen";
+
+/* (No Comment) */
+"summary" = "Samenvatting";
+
+/* (No Comment) */
+"sync_error" = "Syncronisatiefout";
+
+/* (No Comment) */
+"sync_error_message" = "Er is een fout opgetreden bij het syncroniseren van veranderingen.";
+
+/* (No Comment) */
+"tags" = "Labels";
+
+/* (No Comment) */
+"tasks.daily" = "Dagelijkse taak";
+
+/* (No Comment) */
+"tasks.form.accessibility.disable_negative" = "Maak negatieve actie onmogelijk";
+
+/* (No Comment) */
+"tasks.form.accessibility.disable_positive" = "Maak positieve actie onmogelijk";
+
+/* (No Comment) */
+"tasks.form.accessibility.enable_negative" = "Maak negatieve actie mogelijk";
+
+/* (No Comment) */
+"tasks.form.accessibility.enable_positive" = "Maak positieve actie mogelijk";
+
+/* (No Comment) */
+"tasks.form.accessibility.negative_enabled" = "Negatieve gewoonte actie mogelijk gemaakt.";
+
+/* (No Comment) */
+"tasks.form.accessibility.positive_and_negative_enabled" = "Positieve en negatieve gewoonte acties mogelijk gemaakt.";
+
+/* (No Comment) */
+"tasks.form.accessibility.positive_enabled" = "Positieve gewoonte actie mogelijk gemaakt.";
+
+/* (No Comment) */
+"tasks.form.accessibility.set_task_difficulty" = "Moeilijkheidsgraad veranderd in %@";
+
+/* (No Comment) */
+"tasks.form.accessibility.task_difficulty" = "Moeilijkheidsgraad is %@";
+
+/* (No Comment) */
+"tasks.form.checklist" = "Checklijst";
+
+/* (No Comment) */
+"tasks.form.clear" = "Wissen";
+
+/* (No Comment) */
+"tasks.form.confirm_delete" = "Weet je zeker dat je deze taak wil verwijderen?";
+
+/* (No Comment) */
+"tasks.form.controls" = "Besturingen";
+
+/* (No Comment) */
+"tasks.form.cost" = "Kosten";
+
+/* (No Comment) */
+"tasks.form.create" = "Nieuw %@";
+
+/* (No Comment) */
+"tasks.form.dailies_title_placeholder" = "Wat wil je vaak doen?";
+
+/* (No Comment) */
+"tasks.form.day_of_month" = "Dag van de maand";
+
+/* (No Comment) */
+"tasks.form.day_of_week" = "Dag van de week";
+
+/* (No Comment) */
+"tasks.form.difficulty" = "Moeilijkheidsgraad";
+
+/* (No Comment) */
+"tasks.form.due_date" = "Deadline";
+
+/* (No Comment) */
+"tasks.form.easy" = "Gemakkelijk";
+
+/* (No Comment) */
+"tasks.form.edit" = "Bewerk %@";
+
+/* (No Comment) */
+"tasks.form.every" = "Elke";
+
+/* (No Comment) */
+"tasks.form.habit_title_placeholder" = "Welke gewoonte wil je bevorderen of breken?";
+
+/* (No Comment) */
+"tasks.form.hard" = "Moeilijk";
+
+/* (No Comment) */
+"tasks.form.medium" = "Gemiddeld";
+
+/* (No Comment) */
+"tasks.form.new_checklist_item" = "Nieuw checklijst-item";
+
+/* (No Comment) */
+"tasks.form.new_reminder" = "Nieuwe Herinnering";
+
+/* (No Comment) */
+"tasks.form.notes_placeholder" = "Tel wat noten mee om je te helpen";
+
+/* (No Comment) */
+"tasks.form.remind_me" = "Herinner me";
+
+/* (No Comment) */
+"tasks.form.reminders" = "Herinneringen";
+
+/* (No Comment) */
+"tasks.form.repeats" = "Herhaalt";
+
+/* (No Comment) */
+"tasks.form.reset_streak" = "Serie resetten";
+
+/* (No Comment) */
+"tasks.form.rewards_title_placeholder" = "Hoe wil je jezelf belonen?";
+
+/* (No Comment) */
+"tasks.form.scheduling" = "Roosteren";
+
+/* (No Comment) */
+"tasks.form.start_date" = "Startdatum";
+
+/* (No Comment) */
+"tasks.form.tags" = "Labels";
+
+/* (No Comment) */
+"tasks.form.todos_title_placeholder" = "Wat wil je één keer voltooien?";
+
+/* (No Comment) */
+"tasks.form.trivial" = "Triviaal";
+
+/* (No Comment) */
+"tasks.habit" = "Gewoonte";
+
+/* (No Comment) */
+"tasks.reward" = "Beloning";
+
+/* (No Comment) */
+"tasks.todo" = "To-do";
+
+/* (No Comment) */
+"theme.blue" = "Blauw";
+
+/* (No Comment) */
+"theme.default_theme" = "Standaard";
+
+/* (No Comment) */
+"theme.green" = "Groen";
+
+/* (No Comment) */
+"theme.maroon" = "kastanjebruin";
+
+/* (No Comment) */
+"theme.orange" = "Oranje";
+
+/* (No Comment) */
+"theme.red" = "Rood";
+
+/* (No Comment) */
+"theme.teal" = "Taling";
+
+/* (No Comment) */
+"theme.yellow" = "Geel";
+
+/* (No Comment) */
+"title" = "Titel";
+
+/* (No Comment) */
+"unequip" = "Uittrekken";
+
+/* (No Comment) */
+"unsubscribe_itunes" = "Wil je niet langer abonneren? Je kan je abonnement beheren via iTunes.";
+
+/* (No Comment) */
+"unsubscribe_website" = "Wil je niet langer abonneren? Vanwege je betaalmethode, kan je alleen je abonnement afzeggen via de website.";
+
+/* (No Comment) */
+"weekly" = "Wekelijks";
+
+/* (No Comment) */
+"x_months" = "%d Maanden";
+
+/* (No Comment) */
+"yearly" = "Jaarlijks";
+

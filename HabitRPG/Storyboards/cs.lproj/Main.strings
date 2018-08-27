@@ -1,35 +1,17 @@
-/* Class = "UILabel"; text = "Leave the Inn"; ObjectID = "2F8-My-WsR"; */
-"2F8-My-WsR.text" = "Odejít z Hostince";
-
 /* Class = "UILabel"; text = "Unlocks at lvl 3"; ObjectID = "2yp-6U-Xpz"; */
 "2yp-6U-Xpz.text" = "Odemkne se na úrovni 3";
 
 /* Class = "UITabBarItem"; title = "Habits"; ObjectID = "3G8-SH-Shd"; */
 "3G8-SH-Shd.title" = "Zvyky";
 
-/* Class = "UINavigationItem"; title = "Equipment"; ObjectID = "3bv-D6-Dzj"; */
-"3bv-D6-Dzj.title" = "Vybavení";
+/* Class = "UISegmentedControl"; 3ow-rh-Fzj.segmentTitles[0] = "Slim"; ObjectID = "3ow-rh-Fzj"; */
+"3ow-rh-Fzj.segmentTitles[0]" = "Štíhlý";
 
-/* Class = "UIBarButtonItem"; title = "Back"; ObjectID = "3wT-JA-hE4"; */
-"3wT-JA-hE4.title" = "Záda";
-
-/* Class = "UILabel"; text = "Want to join a party? Give them your User ID:"; ObjectID = "4RA-Hp-yRh"; */
-"4RA-Hp-yRh.text" = "Chceš se přidat k družině? Dej jim své Uživatelské ID:";
+/* Class = "UISegmentedControl"; 3ow-rh-Fzj.segmentTitles[1] = "Broad"; ObjectID = "3ow-rh-Fzj"; */
+"3ow-rh-Fzj.segmentTitles[1]" = "Široký";
 
 /* Class = "UINavigationItem"; title = "Pets"; ObjectID = "4dW-yC-5Ar"; */
 "4dW-yC-5Ar.title" = "Mazlíčci";
-
-/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "5AI-vM-jzp"; */
-"5AI-vM-jzp.normalTitle" = "Zpět";
-
-/* Class = "UILabel"; text = "Size"; ObjectID = "5KS-In-70X"; */
-"5KS-In-70X.text" = "Velikost";
-
-/* Class = "UILabel"; text = "Accept"; ObjectID = "5he-Cd-t9O"; */
-"5he-Cd-t9O.text" = "Přijmout";
-
-/* Class = "UINavigationItem"; title = "Add Tag"; ObjectID = "6kN-kK-ybL"; */
-"6kN-kK-ybL.title" = "Přidat štítek";
 
 /* Class = "UIBarButtonItem"; title = "Filter"; ObjectID = "7QR-Cq-K2a"; */
 "7QR-Cq-K2a.title" = "Filtr";
@@ -37,225 +19,93 @@
 /* Class = "UINavigationItem"; title = "Items"; ObjectID = "7Sa-Zz-2NE"; */
 "7Sa-Zz-2NE.title" = "Předměty";
 
-/* Class = "UILabel"; text = "If you would like to post messages in the Tavern or any party or guild chat, please first read our  Community Guidelines and then click \"Accept Guidelines\" button below to indicate that you accept them."; ObjectID = "7iA-qA-x1r"; */
-"7iA-qA-x1r.text" = "Pokud chceš přidávat zprávy v Krčmě nebo v chatu v  jakékoliv družině nebo cechu, prosíme, nejprve si přečti Zásady komunity a poté klikni na tlačítko \"Přijmout zásady\" níže na znamení, že jim rozumíš.";
-
 /* Class = "UINavigationItem"; title = "Mounts"; ObjectID = "8QD-xr-Tcj"; */
 "8QD-xr-Tcj.title" = "Zvířata";
 
-/* Class = "UINavigationItem"; title = "Tavern"; ObjectID = "9H8-uc-YBu"; */
-"9H8-uc-YBu.title" = "Krčma";
-
-/* Class = "UILabel"; text = "Label"; ObjectID = "9b7-Yf-yJs"; */
-"9b7-Yf-yJs.text" = "Označení";
-
-/* Class = "UIButton"; normalTitle = "Finish"; ObjectID = "63H-Fj-Vls"; */
-"63H-Fj-Vls.normalTitle" = "Dokončit";
-
 /* Class = "UINavigationItem"; title = "About"; ObjectID = "970-3u-C37"; */
-"970-3u-C37.title" = "O";
-
-/* Class = "UIButton"; normalTitle = " Unlock Set for 5 gems "; ObjectID = "AQN-pU-u81"; */
-"AQN-pU-u81.normalTitle" = "Odemknout set za 5 Drahokamů";
+"970-3u-C37.title" = "Popis";
 
 /* Class = "UITabBarItem"; title = "Dailies"; ObjectID = "Aco-n2-RnG"; */
 "Aco-n2-RnG.title" = "Denní úkoly";
 
-/* Class = "UIButton"; normalTitle = "Delete"; ObjectID = "CIQ-ZB-hHa"; */
-"CIQ-ZB-hHa.normalTitle" = "Vymazat";
+/* Class = "UINavigationItem"; title = "Equipment"; ObjectID = "aGP-pV-Lz5"; */
+"aGP-pV-Lz5.title" = "Vybavení";
 
 /* Class = "UITabBarItem"; title = "Habits"; ObjectID = "CTh-zS-7ZY"; */
 "CTh-zS-7ZY.title" = "Zvyky";
 
-/* Class = "UITextField"; placeholder = "Repeat Password"; ObjectID = "DQC-ay-MKP"; */
-"DQC-ay-MKP.placeholder" = "Heslo znovu";
+/* Class = "UILabel"; text = "Select \"Use Costume\" to equip items to your avatar without affecting the Stats from your Battle Gear! This means that you can dress up your avatar in whatever outfit you like while still having your best Battle Gear equipped."; ObjectID = "d53-K0-Ybv"; */
+"d53-K0-Ybv.text" = "Vyber "Použít kostým", abys vybavil/a svého avatara, aniž bys nějak ovlivnil/a statistiky tvé Bojové výzbroje! To znamená, že můžeš obléct svého avatara do jakéhokoliv vybavení chceš a stále mít tvojí nejlepší Bojovou výzbroj na sobě!";
 
-/* Class = "UILabel"; text = "Create new Party"; ObjectID = "EFI-g8-gvi"; */
-"EFI-g8-gvi.text" = "Vytvořit novou družinu";
-
-/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "FYR-h9-UfW"; */
-"FYR-h9-UfW.normalTitle" = "Zpět";
-
-/* Class = "UIButton"; normalTitle = "Next"; ObjectID = "IRA-55-1g8"; */
-"IRA-55-1g8.normalTitle" = "Další";
-
-/* Class = "UIButton"; normalTitle = "Profile"; ObjectID = "Ida-t3-Rqb"; */
-"Ida-t3-Rqb.normalTitle" = "Profil";
-
-/* Class = "UILabel"; text = "Ask Later"; ObjectID = "Io5-GC-NPe"; */
-"Io5-GC-NPe.text" = "Zeptat se později";
-
-/* Class = "UINavigationItem"; title = "News"; ObjectID = "Jni-km-FCZ"; */
-"Jni-km-FCZ.title" = "Novinky";
-
-/* Class = "UINavigationItem"; title = "Spells"; ObjectID = "K1m-Oj-jYN"; */
-"K1m-Oj-jYN.title" = "Zaklínadla";
-
-/* Class = "UINavigationItem"; title = "Customize Avatar"; ObjectID = "K4K-zl-tiU"; */
-"K4K-zl-tiU.title" = "Upravit postavu";
-
-/* Class = "UIButton"; normalTitle = "View Profile"; ObjectID = "KDG-GT-0Yk"; */
-"KDG-GT-0Yk.normalTitle" = "Zobrazit profil";
-
-/* Class = "UIButton"; normalTitle = "Profile"; ObjectID = "Khv-VU-cz2"; */
-"Khv-VU-cz2.normalTitle" = "Profil";
-
-/* Class = "UILabel"; text = "Title"; ObjectID = "KkO-6T-Qmx"; */
-"KkO-6T-Qmx.text" = "Titul";
-
-/* Class = "UIButton"; normalTitle = "Reply"; ObjectID = "LCC-CD-ggA"; */
-"LCC-CD-ggA.normalTitle" = "Odpovědět";
-
-/* Class = "UINavigationItem"; title = "New Message"; ObjectID = "Mbw-8k-G1S"; */
-"Mbw-8k-G1S.title" = "Nová zpráva";
-
-/* Class = "UILabel"; text = "Login"; ObjectID = "MlA-iN-6gR"; */
-"MlA-iN-6gR.text" = "Přihlášení";
-
-/* Class = "UINavigationItem"; title = "Rewards"; ObjectID = "Mlq-VF-kA3"; */
-"Mlq-VF-kA3.title" = "Odměny";
-
-/* Class = "UITabBarItem"; title = "To-Dos"; ObjectID = "Np7-ws-fF6"; */
-"Np7-ws-fF6.title" = "Úkolníček";
-
-/* Class = "UILabel"; text = "No active quest"; ObjectID = "QtZ-gI-jc8"; */
-"QtZ-gI-jc8.text" = "Žádné aktivní výpravy";
-
-/* Class = "UINavigationItem"; title = "Filter by tags"; ObjectID = "RJ8-HL-bIH"; */
-"RJ8-HL-bIH.title" = "Filtrovat podle šťítků";
-
-/* Class = "UINavigationItem"; title = "Members"; ObjectID = "RLc-Ty-TSs"; */
-"RLc-Ty-TSs.title" = "Členové";
-
-/* Class = "UILabel"; text = "No data yet"; ObjectID = "Spy-XJ-HaY"; */
-"Spy-XJ-HaY.text" = "Zatím žádná data";
-
-/* Class = "UITabBarItem"; title = "To-Dos"; ObjectID = "TXB-iK-KhP"; */
-"TXB-iK-KhP.title" = "Úkolníček";
-
-/* Class = "UINavigationItem"; title = "To-Dos"; ObjectID = "Tis-dF-qId"; */
-"Tis-dF-qId.title" = "Úkolníček";
-
-/* Class = "UINavigationItem"; title = "Habits"; ObjectID = "Ueo-OS-iQj"; */
-"Ueo-OS-iQj.title" = "Zvyky";
-
-/* Class = "UIBarButtonItem"; title = "Register"; ObjectID = "XUX-eN-jCp"; */
-"XUX-eN-jCp.title" = "Registrace";
-
-/* Class = "UIBarButtonItem"; title = "Begin"; ObjectID = "XiH-W3-0uw"; */
-"XiH-W3-0uw.title" = "Začít";
-
-/* Class = "UIButton"; normalTitle = "View Profile"; ObjectID = "XmA-Fg-ETr"; */
-"XmA-Fg-ETr.normalTitle" = "Zobrazit profil";
-
-/* Class = "UIBarButtonItem"; title = "Group By"; ObjectID = "Y9b-tv-h4L"; */
-"Y9b-tv-h4L.title" = "Seřadit podle";
-
-/* Class = "UINavigationItem"; title = "Choose Task"; ObjectID = "Yuh-D9-NY5"; */
-"Yuh-D9-NY5.title" = "Vybrat úkol";
-
-/* Class = "UIBarButtonItem"; title = "Accept Guidelines"; ObjectID = "alT-a1-CTH"; */
-"alT-a1-CTH.title" = "Přijmout zásady";
-
-/* Class = "UIButton"; normalTitle = "Reply"; ObjectID = "b3r-wi-DvT"; */
-"b3r-wi-DvT.normalTitle" = "Odpovědět";
-
-/* Class = "UIButton"; normalTitle = "Reply"; ObjectID = "bKC-rj-4EH"; */
-"bKC-rj-4EH.normalTitle" = "Odpovědět";
-
-/* Class = "UITextField"; placeholder = "Email"; ObjectID = "c6L-Nt-YPn"; */
-"c6L-Nt-YPn.placeholder" = "Email";
-
-/* Class = "UILabel"; text = "Subtitle"; ObjectID = "ciB-Fl-be7"; */
-"ciB-Fl-be7.text" = "Podtitul";
-
-/* Class = "UIButton"; normalTitle = "Delete"; ObjectID = "coN-8t-vNL"; */
-"coN-8t-vNL.normalTitle" = "Vymazat";
-
-/* Class = "UILabel"; text = "Write Message"; ObjectID = "dVR-u2-O6g"; */
-"dVR-u2-O6g.text" = "Napsat zprávu";
-
-/* Class = "UINavigationItem"; title = "Party"; ObjectID = "deL-Nn-rLy"; */
-"deL-Nn-rLy.title" = "Družina";
-
-/* Class = "UILabel"; text = "Write Message"; ObjectID = "gHF-kR-cZI"; */
-"gHF-kR-cZI.text" = "Napsat zprávu";
+/* Class = "UINavigationItem"; title = "Rewards"; ObjectID = "HHL-mH-FJc"; */
+"HHL-mH-FJc.title" = "Odměny";
 
 /* Class = "UIBarButtonItem"; title = "Clear"; ObjectID = "hIC-Qf-w8a"; */
 "hIC-Qf-w8a.title" = "Vymazat";
 
-/* Class = "UINavigationItem"; title = "Profile"; ObjectID = "hnF-ml-Qfo"; */
-"hnF-ml-Qfo.title" = "Profil";
-
-/* Class = "UINavigationItem"; title = "Settings"; ObjectID = "hnb-Ox-m1C"; */
-"hnb-Ox-m1C.title" = "Nastavení";
+/* Class = "UINavigationItem"; title = "Menu"; ObjectID = "hnF-ml-Qfo"; */
+"hnF-ml-Qfo.title" = "Menu";
 
 /* Class = "UITabBarItem"; title = "Menu"; ObjectID = "hyj-Mf-lvH"; */
 "hyj-Mf-lvH.title" = "Menu";
 
-/* Class = "UILabel"; text = "Label"; ObjectID = "imx-7O-EEy"; */
-"imx-7O-EEy.text" = "Označení";
+/* Class = "UINavigationItem"; title = "News"; ObjectID = "Jni-km-FCZ"; */
+"Jni-km-FCZ.title" = "Novinky";
 
 /* Class = "UIBarButtonItem"; title = "Filter"; ObjectID = "lJN-5G-qrz"; */
 "lJN-5G-qrz.title" = "Filtr";
 
 /* Class = "UIBarButtonItem"; title = "Group By"; ObjectID = "mdo-xN-SW4"; */
-"mdo-xN-SW4.title" = "Seřadit podle";
+"mdo-xN-SW4.title" = "Seskupit podle";
 
-/* Class = "UIButton"; normalTitle = "Reply"; ObjectID = "oWY-py-aTm"; */
-"oWY-py-aTm.normalTitle" = "Odovědět";
-
-/* Class = "UIBarButtonItem"; title = "?"; ObjectID = "obl-zo-g8m"; */
-"obl-zo-g8m.title" = "?";
+/* Class = "UITabBarItem"; title = "To-Dos"; ObjectID = "Np7-ws-fF6"; */
+"Np7-ws-fF6.title" = "úkoly";
 
 /* Class = "UITabBarItem"; title = "Dailies"; ObjectID = "pdW-W9-wj6"; */
 "pdW-W9-wj6.title" = "Denní úkoly";
 
-/* Class = "UINavigationItem"; title = "Quest Invitation"; ObjectID = "peN-hy-vqi"; */
-"peN-hy-vqi.title" = "Pozvánka na výpravu";
-
 /* Class = "UIBarButtonItem"; title = "Filter"; ObjectID = "r2M-pt-ZEv"; */
 "r2M-pt-ZEv.title" = "Filtr";
 
-/* Class = "UILabel"; text = "No completed To-Dos"; ObjectID = "rRE-Ue-tyN"; */
-"rRE-Ue-tyN.text" = "Žádné nedokončené úkoly";
-
-/* Class = "UISegmentedControl"; sMQ-xU-ZOd.segmentTitles[0] = "Slim"; ObjectID = "sMQ-xU-ZOd"; */
-"sMQ-xU-ZOd.segmentTitles[0]" = "Štíhlý";
-
-/* Class = "UISegmentedControl"; sMQ-xU-ZOd.segmentTitles[1] = "Broad"; ObjectID = "sMQ-xU-ZOd"; */
-"sMQ-xU-ZOd.segmentTitles[1]" = "Široký";
+/* Class = "UINavigationItem"; title = "Filter by tags"; ObjectID = "RJ8-HL-bIH"; */
+"RJ8-HL-bIH.title" = "Filtrovat podle šťítků";
 
 /* Class = "UINavigationItem"; title = "Mounts"; ObjectID = "si7-7p-nZ9"; */
 "si7-7p-nZ9.title" = "Zvířata";
 
 /* Class = "UINavigationItem"; title = "FAQ"; ObjectID = "sni-tf-k5c"; */
-"sni-tf-k5c.title" = "Nejčastěji kladené dotazy";
+"sni-tf-k5c.title" = "FAQ";
 
-/* Class = "UINavigationItem"; title = "Participants"; ObjectID = "so4-rB-H76"; */
-"so4-rB-H76.title" = "Účastníci";
+/* Class = "UINavigationItem"; title = "To-Dos"; ObjectID = "Tis-dF-qId"; */
+"Tis-dF-qId.title" = "úkoly";
 
-/* Class = "UIBarButtonItem"; title = "Decide later"; ObjectID = "v0E-Hd-n5W"; */
-"v0E-Hd-n5W.title" = "Rozhodnout se později";
+/* Class = "UITabBarItem"; title = "To-Dos"; ObjectID = "TXB-iK-KhP"; */
+"TXB-iK-KhP.title" = "úkoly";
 
-/* Class = "UITextField"; placeholder = "Password"; ObjectID = "wUf-yh-Qus"; */
-"wUf-yh-Qus.placeholder" = "Heslo";
+/* Class = "UIButton"; normalTitle = "Checkout"; ObjectID = "ubx-Z1-yyq"; */
+"ubx-Z1-yyq.normalTitle" = "Zaplatit";
 
-/* Class = "UILabel"; text = "Reject"; ObjectID = "xJS-on-MBM"; */
-"xJS-on-MBM.text" = "Odmítnout";
+/* Class = "UINavigationItem"; title = "Habits"; ObjectID = "Ueo-OS-iQj"; */
+"Ueo-OS-iQj.title" = "Zvyky";
 
 /* Class = "UINavigationItem"; title = "Feed Pet"; ObjectID = "xZ9-Ng-9se"; */
 "xZ9-Ng-9se.title" = "Nakrmit mazlíčka";
 
-/* Class = "UILabel"; text = "Label"; ObjectID = "xcV-Mk-39A"; */
-"xcV-Mk-39A.text" = "Označení";
+/* Class = "UIBarButtonItem"; title = "Group By"; ObjectID = "Y9b-tv-h4L"; */
+"Y9b-tv-h4L.title" = "Seskupit podle";
 
-/* Class = "UITabBarItem"; title = "Rewards"; ObjectID = "zFI-xr-RjT"; */
-"zFI-xr-RjT.title" = "Odměny";
+/* Class = "UINavigationItem"; title = "Stable"; ObjectID = "yA7-ap-uv0"; */
+"yA7-ap-uv0.title" = "Stáj";
+
+/* Class = "UINavigationItem"; title = "Choose Task"; ObjectID = "Yuh-D9-NY5"; */
+"Yuh-D9-NY5.title" = "Vybrat úkol";
 
 /* Class = "UINavigationItem"; title = "Pets"; ObjectID = "zdm-Oo-gvg"; */
 "zdm-Oo-gvg.title" = "Mazlíčci";
 
 /* Class = "UINavigationItem"; title = "Dailies"; ObjectID = "zec-6L-pJk"; */
 "zec-6L-pJk.title" = "Denní úkoly";
+
+/* Class = "UITabBarItem"; title = "Rewards"; ObjectID = "zFI-xr-RjT"; */
+"zFI-xr-RjT.title" = "Odměny";
 

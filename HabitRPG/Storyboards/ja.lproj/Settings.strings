@@ -1,0 +1,36 @@
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "0kx-5y-60K"; */
+"0kx-5y-60K.text" = "サブタイトル";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "63Z-pb-uQz"; */
+"63Z-pb-uQz.text" = "タイトル";
+
+/* Class = "UINavigationItem"; title = "Profile"; ObjectID = "amL-LP-ivA"; */
+"amL-LP-ivA.title" = "プロフィール";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "OM8-O4-S2r"; */
+"OM8-O4-S2r.text" = "タイトル";
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "oRU-v6-Doo"; */
+"oRU-v6-Doo.text" = "サブタイトル";
+
+/* Class = "UINavigationItem"; title = "Select Class"; ObjectID = "Qov-6d-R8S"; */
+"Qov-6d-R8S.title" = "クラスを選ぶ";
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "SyI-y6-p07"; */
+"SyI-y6-p07.text" = "サブタイトル";
+
+/* Class = "UINavigationItem"; title = "Settings"; ObjectID = "Tco-at-cZc"; */
+"Tco-at-cZc.title" = "設定";
+
+/* Class = "UINavigationItem"; title = "API"; ObjectID = "uUr-lg-1aL"; */
+"uUr-lg-1aL.title" = "API";
+
+/* Class = "UINavigationItem"; title = "Fix Values"; ObjectID = "W3U-7T-iWa"; */
+"W3U-7T-iWa.title" = "設定値を直す";
+
+/* Class = "UINavigationItem"; title = "Authentication"; ObjectID = "ygF-eV-GSD"; */
+"ygF-eV-GSD.title" = "認証";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "zlj-cZ-ex6"; */
+"zlj-cZ-ex6.text" = "タイトル";
+

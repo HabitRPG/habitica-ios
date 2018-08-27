@@ -36,14 +36,20 @@ class FeedViewDataSource: BaseReactiveTableViewDataSource<FoodProtocol>, FeedVie
         sections.append(ItemSection<FoodProtocol>())
         
         disposable.inner.add(inventoryRepository.getOwnedItems()
-            .on(value: {[weak self]ownedItems in
+            .map({ (items) -> [OwnedItemProtocol] in
+                let filteredItems = items.value.filter({ (ownedItem) -> Bool in
+                    return ownedItem.itemType == "food"
+                })
+                return filteredItems
+            })
+            .on(value: {[weak self] ownedItems in
                 self?.ownedItems.removeAll()
-                ownedItems.value.forEach({ (item) in
+                ownedItems.forEach({ (item) in
                     self?.ownedItems[(item.key ?? "") + (item.itemType ?? "")] = item.numberOwned
                 })
             })
             .map({ (data) -> [String] in
-                return data.value.map({ ownedItem -> String in
+                return data.map({ ownedItem -> String in
                     return ownedItem.key ?? ""
                 }).filter({ (key) -> Bool in
                     return !key.isEmpty

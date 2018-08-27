@@ -92,6 +92,8 @@
 		292726B620B7094B009DD08A /* ChallengeTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292726B520B7094A009DD08A /* ChallengeTableViewDataSource.swift */; };
 		292844ED20DD1D4B0011DC43 /* GroupInvitationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292844EC20DD1D4B0011DC43 /* GroupInvitationView.swift */; };
 		292844EF20DD1D630011DC43 /* GroupInvitationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292844EE20DD1D630011DC43 /* GroupInvitationListView.swift */; };
+		292AA72420FE15090022CC5F /* UIFont-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292AA72320FE15090022CC5F /* UIFont-Extensions.swift */; };
+		292D6C9B2101FF080078288A /* InviteMembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292D6C9A2101FF080078288A /* InviteMembersViewController.swift */; };
 		292DEE3A204D9D290086D5F7 /* Habitica_Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE3B204D9D290086D5F7 /* Habitica_Models.framework */; };
 		292DEE3C204D9D360086D5F7 /* Habitica_Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE3D204D9D360086D5F7 /* Habitica_Database.framework */; };
 		292DEE4C204DA1830086D5F7 /* Habitica_API_Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE4D204DA1830086D5F7 /* Habitica_API_Client.framework */; };
@@ -527,6 +529,16 @@
 		290458CF2021D6C60032BC5E /* TopHeaderCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopHeaderCoordinator.swift; sourceTree = "<group>"; };
 		2907267D1F74279C00545550 /* TimeTravelersCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTravelersCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		2907F99D1F694C4000328AEE /* GemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GemViewController.swift; sourceTree = "<group>"; };
+		290A2AD020F508F500BF8A68 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/OnePasswordExtension.strings"; sourceTree = "<group>"; };
+		290A2AD120F508F500BF8A68 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		290A2AD220F508F500BF8A68 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Mainstrings.strings"; sourceTree = "<group>"; };
+		290A2AD320F508F500BF8A68 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Intro.strings"; sourceTree = "<group>"; };
+		290A2AD420F508F500BF8A68 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Tasks.strings"; sourceTree = "<group>"; };
+		290A2AD520F508F500BF8A68 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Shop.strings"; sourceTree = "<group>"; };
+		290A2AD620F508F500BF8A68 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/BuyModal.strings"; sourceTree = "<group>"; };
+		290A2AD720F508F500BF8A68 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Settings.strings"; sourceTree = "<group>"; };
+		290A2AD820F508F500BF8A68 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/User.strings"; sourceTree = "<group>"; };
+		290A2AD920F508F500BF8A68 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Shops.strings"; sourceTree = "<group>"; };
 		290B623E20727113007287C4 /* MyGuildCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGuildCell.swift; sourceTree = "<group>"; };
 		290B62402072711A007287C4 /* PublicGuildCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicGuildCell.swift; sourceTree = "<group>"; };
 		290B624220728E74007287C4 /* GuildOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuildOverviewViewController.swift; sourceTree = "<group>"; };
@@ -540,6 +552,21 @@
 		290C3016206A963D0066AF5B /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		290C3029206BA0B50066AF5B /* SkillTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillTableViewCell.swift; sourceTree = "<group>"; };
 		290C302B206BACBB0066AF5B /* SpellsTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellsTableViewDataSource.swift; sourceTree = "<group>"; };
+		2913E3B020F50B9300FDF81D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2913E3B120F50B9300FDF81D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/OnePasswordExtension.strings; sourceTree = "<group>"; };
+		2913E3B220F50B9300FDF81D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2913E3B320F50B9300FDF81D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2913E3B420F50B9300FDF81D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Mainstrings.strings; sourceTree = "<group>"; };
+		2913E3B520F50B9300FDF81D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2913E3B620F50B9300FDF81D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Intro.strings; sourceTree = "<group>"; };
+		2913E3B720F50B9300FDF81D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Tasks.strings; sourceTree = "<group>"; };
+		2913E3B820F50B9300FDF81D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Shop.strings; sourceTree = "<group>"; };
+		2913E3B920F50B9300FDF81D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Social.strings; sourceTree = "<group>"; };
+		2913E3BA20F50B9300FDF81D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/BuyModal.strings; sourceTree = "<group>"; };
+		2913E3BB20F50B9300FDF81D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Settings.strings; sourceTree = "<group>"; };
+		2913E3BC20F50B9300FDF81D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/User.strings; sourceTree = "<group>"; };
+		2913E3BD20F50B9300FDF81D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Shops.strings; sourceTree = "<group>"; };
+		2913E3BE20F50B9300FDF81D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
 		2914485A2084E61400F3A6B5 /* MountOverviewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountOverviewDataSource.swift; sourceTree = "<group>"; };
 		2914485C2084E6ED00F3A6B5 /* MountOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountOverviewViewController.swift; sourceTree = "<group>"; };
 		2914485F2084EA0100F3A6B5 /* PetDetailDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetDetailDataSource.swift; sourceTree = "<group>"; };
@@ -584,6 +611,8 @@
 		292726B520B7094A009DD08A /* ChallengeTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeTableViewDataSource.swift; sourceTree = "<group>"; };
 		292844EC20DD1D4B0011DC43 /* GroupInvitationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInvitationView.swift; sourceTree = "<group>"; };
 		292844EE20DD1D630011DC43 /* GroupInvitationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInvitationListView.swift; sourceTree = "<group>"; };
+		292AA72320FE15090022CC5F /* UIFont-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont-Extensions.swift"; sourceTree = "<group>"; };
+		292D6C9A2101FF080078288A /* InviteMembersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteMembersViewController.swift; sourceTree = "<group>"; };
 		292DEE3B204D9D290086D5F7 /* Habitica_Models.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_Models.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		292DEE3D204D9D360086D5F7 /* Habitica_Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		292DEE4D204DA1830086D5F7 /* Habitica_API_Client.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_API_Client.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -608,6 +637,85 @@
 		293282151F389DBB00D42961 /* SetupCustomizationItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetupCustomizationItemView.xib; sourceTree = "<group>"; };
 		293282171F39E1A400D42961 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		293282191F39E28000D42961 /* TypingTextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypingTextViewController.swift; sourceTree = "<group>"; };
+		2935440920F5088500857CE8 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/OnePasswordExtension.strings"; sourceTree = "<group>"; };
+		2935440A20F5088500857CE8 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		2935440B20F5088500857CE8 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Mainstrings.strings"; sourceTree = "<group>"; };
+		2935440C20F5088500857CE8 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Intro.strings"; sourceTree = "<group>"; };
+		2935440D20F5088500857CE8 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Tasks.strings"; sourceTree = "<group>"; };
+		2935440E20F5088500857CE8 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Shop.strings"; sourceTree = "<group>"; };
+		2935440F20F5088500857CE8 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/BuyModal.strings"; sourceTree = "<group>"; };
+		2935441020F5088500857CE8 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Settings.strings"; sourceTree = "<group>"; };
+		2935441120F5088500857CE8 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/User.strings"; sourceTree = "<group>"; };
+		2935441220F5088500857CE8 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Shops.strings"; sourceTree = "<group>"; };
+		2936525420F5058B00261740 /* bg */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bg; path = bg.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2936525520F5058B00261740 /* bg */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bg; path = bg.lproj/Mainstrings.strings; sourceTree = "<group>"; };
+		2936525620F5058B00261740 /* bg */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bg; path = bg.lproj/Intro.strings; sourceTree = "<group>"; };
+		2936525720F5058B00261740 /* bg */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bg; path = bg.lproj/Tasks.strings; sourceTree = "<group>"; };
+		2936525820F5058B00261740 /* bg */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bg; path = bg.lproj/Shop.strings; sourceTree = "<group>"; };
+		2936525920F5058B00261740 /* bg */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bg; path = bg.lproj/BuyModal.strings; sourceTree = "<group>"; };
+		2936525A20F5058B00261740 /* bg */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bg; path = bg.lproj/Settings.strings; sourceTree = "<group>"; };
+		2936525B20F5058B00261740 /* bg */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bg; path = bg.lproj/User.strings; sourceTree = "<group>"; };
+		2936525C20F5058B00261740 /* bg */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bg; path = bg.lproj/Shops.strings; sourceTree = "<group>"; };
+		2936525D20F505CC00261740 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = cmn.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2936525E20F505CC00261740 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = cmn.lproj/OnePasswordExtension.strings; sourceTree = "<group>"; };
+		2936525F20F505CC00261740 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = cmn.lproj/Mainstrings.strings; sourceTree = "<group>"; };
+		2936526020F505CC00261740 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = cmn.lproj/Intro.strings; sourceTree = "<group>"; };
+		2936526120F505CC00261740 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = cmn.lproj/Tasks.strings; sourceTree = "<group>"; };
+		2936526220F505CC00261740 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = cmn.lproj/Shop.strings; sourceTree = "<group>"; };
+		2936526320F505CC00261740 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = cmn.lproj/BuyModal.strings; sourceTree = "<group>"; };
+		2936526420F505CC00261740 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = cmn.lproj/Settings.strings; sourceTree = "<group>"; };
+		2936526520F505CC00261740 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = cmn.lproj/User.strings; sourceTree = "<group>"; };
+		2936526620F505CC00261740 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = cmn.lproj/Shops.strings; sourceTree = "<group>"; };
+		2936526720F5060C00261740 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2936526820F5060C00261740 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/OnePasswordExtension.strings; sourceTree = "<group>"; };
+		2936526920F5060C00261740 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Mainstrings.strings; sourceTree = "<group>"; };
+		2936526A20F5060C00261740 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Intro.strings; sourceTree = "<group>"; };
+		2936526B20F5060C00261740 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Tasks.strings; sourceTree = "<group>"; };
+		2936526C20F5060C00261740 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Shop.strings; sourceTree = "<group>"; };
+		2936526D20F5060C00261740 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/BuyModal.strings; sourceTree = "<group>"; };
+		2936526E20F5060C00261740 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Settings.strings; sourceTree = "<group>"; };
+		2936526F20F5060C00261740 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/User.strings; sourceTree = "<group>"; };
+		2936527020F5060C00261740 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Shops.strings; sourceTree = "<group>"; };
+		2936527120F5064400261740 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/OnePasswordExtension.strings; sourceTree = "<group>"; };
+		2936527220F5064400261740 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2936527320F5064400261740 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Mainstrings.strings; sourceTree = "<group>"; };
+		2936527420F5064400261740 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Intro.strings; sourceTree = "<group>"; };
+		2936527520F5064400261740 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Tasks.strings; sourceTree = "<group>"; };
+		2936527620F5064400261740 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Shop.strings; sourceTree = "<group>"; };
+		2936527720F5064400261740 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/BuyModal.strings; sourceTree = "<group>"; };
+		2936527820F5064400261740 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Settings.strings; sourceTree = "<group>"; };
+		2936527920F5064400261740 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/User.strings; sourceTree = "<group>"; };
+		2936527A20F5064400261740 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Shops.strings; sourceTree = "<group>"; };
+		2936527B20F5071900261740 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/OnePasswordExtension.strings; sourceTree = "<group>"; };
+		2936527C20F5071900261740 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2936527D20F5071900261740 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Mainstrings.strings; sourceTree = "<group>"; };
+		2936527E20F5071900261740 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Intro.strings; sourceTree = "<group>"; };
+		2936527F20F5071900261740 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Tasks.strings; sourceTree = "<group>"; };
+		2936528020F5071900261740 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Shop.strings; sourceTree = "<group>"; };
+		2936528120F5071900261740 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/BuyModal.strings; sourceTree = "<group>"; };
+		2936528220F5071900261740 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Settings.strings; sourceTree = "<group>"; };
+		2936528320F5071900261740 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/User.strings; sourceTree = "<group>"; };
+		2936528420F5071900261740 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Shops.strings; sourceTree = "<group>"; };
+		2936528520F5076700261740 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/OnePasswordExtension.strings; sourceTree = "<group>"; };
+		2936528620F5076700261740 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2936528720F5076700261740 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Mainstrings.strings; sourceTree = "<group>"; };
+		2936528820F5076700261740 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Intro.strings; sourceTree = "<group>"; };
+		2936528920F5076700261740 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Tasks.strings; sourceTree = "<group>"; };
+		2936528A20F5076700261740 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Shop.strings; sourceTree = "<group>"; };
+		2936528B20F5076700261740 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/BuyModal.strings; sourceTree = "<group>"; };
+		2936528C20F5076700261740 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Settings.strings; sourceTree = "<group>"; };
+		2936528D20F5076700261740 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/User.strings; sourceTree = "<group>"; };
+		2936528E20F5076700261740 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Shops.strings; sourceTree = "<group>"; };
+		293A683920F5083400685945 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/OnePasswordExtension.strings; sourceTree = "<group>"; };
+		293A683A20F5083400685945 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		293A683B20F5083400685945 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Mainstrings.strings; sourceTree = "<group>"; };
+		293A683C20F5083400685945 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Intro.strings; sourceTree = "<group>"; };
+		293A683D20F5083400685945 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Tasks.strings; sourceTree = "<group>"; };
+		293A683E20F5083400685945 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Shop.strings; sourceTree = "<group>"; };
+		293A683F20F5083400685945 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/BuyModal.strings; sourceTree = "<group>"; };
+		293A684020F5083400685945 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Settings.strings; sourceTree = "<group>"; };
+		293A684120F5083400685945 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/User.strings; sourceTree = "<group>"; };
+		293A684220F5083400685945 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Shops.strings; sourceTree = "<group>"; };
 		293BB4991FCD7DC0003B6F4F /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
 		293BB49B1FCD7DC8003B6F4F /* StatsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatsView.xib; sourceTree = "<group>"; };
 		293BB4A01FD06E7E003B6F4F /* BulkStatsAllocationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BulkStatsAllocationView.xib; sourceTree = "<group>"; };
@@ -633,6 +741,16 @@
 		29646DE2205C1F390050886C /* TaskFormVisualEffectsModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFormVisualEffectsModalViewController.swift; sourceTree = "<group>"; };
 		296AC81320AC85C200885682 /* RewardViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardViewDataSource.swift; sourceTree = "<group>"; };
 		296D6F1C20A0908B00D9CAB5 /* PartyQuestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyQuestView.swift; sourceTree = "<group>"; };
+		296E0E6320F5078200A1E991 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/OnePasswordExtension.strings; sourceTree = "<group>"; };
+		296E0E6420F5078200A1E991 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		296E0E6520F5078200A1E991 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/Mainstrings.strings; sourceTree = "<group>"; };
+		296E0E6620F5078200A1E991 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/Intro.strings; sourceTree = "<group>"; };
+		296E0E6720F5078200A1E991 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/Tasks.strings; sourceTree = "<group>"; };
+		296E0E6820F5078200A1E991 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/Shop.strings; sourceTree = "<group>"; };
+		296E0E6920F5078200A1E991 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/BuyModal.strings; sourceTree = "<group>"; };
+		296E0E6A20F5078200A1E991 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/Settings.strings; sourceTree = "<group>"; };
+		296E0E6B20F5078200A1E991 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/User.strings; sourceTree = "<group>"; };
+		296E0E6C20F5078200A1E991 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/Shops.strings; sourceTree = "<group>"; };
 		29701FDF1F560D310097BBCC /* UIApplication-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication-Extensions.swift"; sourceTree = "<group>"; };
 		29701FE11F5617900097BBCC /* ToastView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToastView.xib; sourceTree = "<group>"; };
 		29701FE31F56C2200097BBCC /* IconLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconLabel.swift; sourceTree = "<group>"; };
@@ -647,6 +765,21 @@
 		2974BDB52090C03E00EC1A25 /* InboxOverviewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxOverviewDataSource.swift; sourceTree = "<group>"; };
 		297517B31F30EBD100B5BCB9 /* AvatarSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarSetupViewController.swift; sourceTree = "<group>"; };
 		297517B51F30EBFC00B5BCB9 /* TaskSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskSetupViewController.swift; sourceTree = "<group>"; };
+		297AAB4720F508A300BD019D /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		297AAB4820F508A300BD019D /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/OnePasswordExtension.strings; sourceTree = "<group>"; };
+		297AAB4920F508A300BD019D /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		297AAB4A20F508A300BD019D /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		297AAB4B20F508A300BD019D /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Mainstrings.strings; sourceTree = "<group>"; };
+		297AAB4C20F508A300BD019D /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Localizable.strings; sourceTree = "<group>"; };
+		297AAB4D20F508A300BD019D /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Intro.strings; sourceTree = "<group>"; };
+		297AAB4E20F508A300BD019D /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Tasks.strings; sourceTree = "<group>"; };
+		297AAB4F20F508A300BD019D /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Shop.strings; sourceTree = "<group>"; };
+		297AAB5020F508A300BD019D /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Social.strings; sourceTree = "<group>"; };
+		297AAB5120F508A300BD019D /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/BuyModal.strings; sourceTree = "<group>"; };
+		297AAB5220F508A300BD019D /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Settings.strings; sourceTree = "<group>"; };
+		297AAB5320F508A300BD019D /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/User.strings; sourceTree = "<group>"; };
+		297AAB5420F508A300BD019D /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Shops.strings; sourceTree = "<group>"; };
+		297AAB5520F508A300BD019D /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Main.strings; sourceTree = "<group>"; };
 		297D15F920B803D30048101F /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		297D15FB20B825DE0048101F /* HRPGSearchDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGSearchDataManager.m; sourceTree = "<group>"; };
 		297D15FC20B825DE0048101F /* HRPGSearchDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGSearchDataManager.h; sourceTree = "<group>"; };
@@ -709,9 +842,47 @@
 		29B478BC20C1378100B6123F /* ChallengeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeTableViewCell.xib; sourceTree = "<group>"; };
 		29B6AD491F2A0C9700AC8878 /* LoginEntryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginEntryView.xib; sourceTree = "<group>"; };
 		29B6AD4B1F2A0DBE00AC8878 /* LoginEntryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginEntryView.swift; sourceTree = "<group>"; };
+		29B77C5D20F507DC00FD0AE1 /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		29B77C5E20F507DC00FD0AE1 /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/OnePasswordExtension.strings; sourceTree = "<group>"; };
+		29B77C5F20F507DC00FD0AE1 /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		29B77C6020F507DC00FD0AE1 /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		29B77C6120F507DC00FD0AE1 /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/Mainstrings.strings; sourceTree = "<group>"; };
+		29B77C6220F507DC00FD0AE1 /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		29B77C6320F507DC00FD0AE1 /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/Intro.strings; sourceTree = "<group>"; };
+		29B77C6420F507DC00FD0AE1 /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/Tasks.strings; sourceTree = "<group>"; };
+		29B77C6520F507DC00FD0AE1 /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/Shop.strings; sourceTree = "<group>"; };
+		29B77C6620F507DC00FD0AE1 /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/Social.strings; sourceTree = "<group>"; };
+		29B77C6720F507DC00FD0AE1 /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/BuyModal.strings; sourceTree = "<group>"; };
+		29B77C6820F507DC00FD0AE1 /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/Settings.strings; sourceTree = "<group>"; };
+		29B77C6920F507DC00FD0AE1 /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/User.strings; sourceTree = "<group>"; };
+		29B77C6A20F507DC00FD0AE1 /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/Shops.strings; sourceTree = "<group>"; };
 		29C1B6AA20594F500001D3EF /* VisualEffectsModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectsModalViewController.swift; sourceTree = "<group>"; };
 		29C1B6AF205952E40001D3EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Tasks.storyboard; sourceTree = "<group>"; };
 		29C1B6B320599E6D0001D3EF /* TaskFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFormViewController.swift; sourceTree = "<group>"; };
+		29C6009F20F508D8005CC6C1 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/OnePasswordExtension.strings; sourceTree = "<group>"; };
+		29C600A020F508D8005CC6C1 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		29C600A120F508D8005CC6C1 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Mainstrings.strings; sourceTree = "<group>"; };
+		29C600A220F508D8005CC6C1 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Intro.strings; sourceTree = "<group>"; };
+		29C600A320F508D8005CC6C1 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Tasks.strings; sourceTree = "<group>"; };
+		29C600A420F508D8005CC6C1 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Shop.strings; sourceTree = "<group>"; };
+		29C600A520F508D8005CC6C1 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/BuyModal.strings; sourceTree = "<group>"; };
+		29C600A620F508D8005CC6C1 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Settings.strings; sourceTree = "<group>"; };
+		29C600A720F508D8005CC6C1 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/User.strings; sourceTree = "<group>"; };
+		29C600A820F508D8005CC6C1 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Shops.strings; sourceTree = "<group>"; };
+		29D5AD5B20F50B7A00D1B869 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		29D5AD5C20F50B7A00D1B869 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/OnePasswordExtension.strings; sourceTree = "<group>"; };
+		29D5AD5D20F50B7A00D1B869 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		29D5AD5E20F50B7A00D1B869 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		29D5AD5F20F50B7A00D1B869 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Mainstrings.strings; sourceTree = "<group>"; };
+		29D5AD6020F50B7A00D1B869 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
+		29D5AD6120F50B7A00D1B869 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Intro.strings; sourceTree = "<group>"; };
+		29D5AD6220F50B7A00D1B869 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Tasks.strings; sourceTree = "<group>"; };
+		29D5AD6320F50B7A00D1B869 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Shop.strings; sourceTree = "<group>"; };
+		29D5AD6420F50B7A00D1B869 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Social.strings; sourceTree = "<group>"; };
+		29D5AD6520F50B7A00D1B869 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/BuyModal.strings; sourceTree = "<group>"; };
+		29D5AD6620F50B7A00D1B869 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Settings.strings; sourceTree = "<group>"; };
+		29D5AD6720F50B7A00D1B869 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/User.strings; sourceTree = "<group>"; };
+		29D5AD6820F50B7A00D1B869 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Shops.strings; sourceTree = "<group>"; };
 		29DBFEF620C997D100DF9CF2 /* CalculateUserStatsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateUserStatsInteractor.swift; sourceTree = "<group>"; };
 		29DBFF0020CE6FFF00DF9CF2 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		29DBFF0420CEB42F00DF9CF2 /* AvatarGearDetailViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarGearDetailViewDataSource.swift; sourceTree = "<group>"; };
@@ -762,6 +933,15 @@
 		29FD8AA6203DA42A0094322E /* NSLayoutConstraint-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint-Extensions.swift"; sourceTree = "<group>"; };
 		29FEB277202B491600EA245A /* Avatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Avatar.swift; sourceTree = "<group>"; };
 		29FEB279202B4F0400EA245A /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
+		29FFB19320F5080D0031D914 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/OnePasswordExtension.strings; sourceTree = "<group>"; };
+		29FFB19420F5080D0031D914 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		29FFB19520F5080D0031D914 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Intro.strings; sourceTree = "<group>"; };
+		29FFB19620F5080D0031D914 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Tasks.strings; sourceTree = "<group>"; };
+		29FFB19720F5080D0031D914 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Shop.strings; sourceTree = "<group>"; };
+		29FFB19820F5080D0031D914 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/BuyModal.strings; sourceTree = "<group>"; };
+		29FFB19920F5080D0031D914 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Settings.strings; sourceTree = "<group>"; };
+		29FFB19A20F5080D0031D914 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/User.strings; sourceTree = "<group>"; };
+		29FFB19B20F5080D0031D914 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Shops.strings; sourceTree = "<group>"; };
 		2AA9CAD02350FFCB017F32D0 /* Pods-Habitica Snapshots.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica Snapshots.release.xcconfig"; path = "Pods/Target Support Files/Pods-Habitica Snapshots/Pods-Habitica Snapshots.release.xcconfig"; sourceTree = "<group>"; };
 		2FD6A8DD61F63B61871C94A9 /* Pods-Habitica.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Habitica/Pods-Habitica.debug.xcconfig"; sourceTree = "<group>"; };
 		2FDBD03FA52D6A93D9B664CE /* Pods_Habitica.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -911,7 +1091,6 @@
 		D94AADB8192A5CE700546C8E /* HRPGSpellTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGSpellTabBarController.h; sourceTree = "<group>"; };
 		D94AADB9192A5CE700546C8E /* HRPGSpellTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGSpellTabBarController.m; sourceTree = "<group>"; };
 		D94B969F1B8B2CEE00C977C2 /* content-24.8.15.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "content-24.8.15.json"; path = "HabiticaTests/Fixtures/content-24.8.15.json"; sourceTree = SOURCE_ROOT; };
-		D94FEDEC1BB6DA8E0046A52E /* HRPGInviteMembersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HRPGInviteMembersViewController.h; path = HabitRPG/TableViewController/Modals/HRPGInviteMembersViewController.h; sourceTree = SOURCE_ROOT; };
 		D94FEDED1BB6DA8E0046A52E /* HRPGInviteMembersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HRPGInviteMembersViewController.m; path = HabitRPG/TableViewController/Modals/HRPGInviteMembersViewController.m; sourceTree = SOURCE_ROOT; };
 		D9525F9A1E5F559600C529B8 /* ChallengeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeTableViewCell.swift; sourceTree = "<group>"; };
 		D9525F9C1E64739900C529B8 /* PaddedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddedView.swift; sourceTree = "<group>"; };
@@ -1259,15 +1438,15 @@
 		29205E332062DF620024E355 /* TaskFormRows */ = {
 			isa = PBXGroup;
 			children = (
-				29205E382062E2430024E355 /* TaskRow.swift */,
-				29205E342062DF710024E355 /* TextInputFormRow.swift */,
-				29205E362062E0030024E355 /* TaskTextInputCell.xib */,
-				294FD5682064135500EABCC9 /* HabitControlsRow.swift */,
 				294FD56A20641B2F00EABCC9 /* HabitControlsCell.xib */,
-				29A6B85C20641C9B0086B2A6 /* TaskDifficultyRow.swift */,
+				294FD5682064135500EABCC9 /* HabitControlsRow.swift */,
 				29A6B86120641FEA0086B2A6 /* TaskDifficultyCell.xib */,
-				29A6B86320644BFE0086B2A6 /* WeekdayFormCell.xib */,
+				29A6B85C20641C9B0086B2A6 /* TaskDifficultyRow.swift */,
+				29205E382062E2430024E355 /* TaskRow.swift */,
+				29205E362062E0030024E355 /* TaskTextInputCell.xib */,
+				29205E342062DF710024E355 /* TextInputFormRow.swift */,
 				29A6B86520644CA40086B2A6 /* WeekdayFormCell.swift */,
+				29A6B86320644BFE0086B2A6 /* WeekdayFormCell.xib */,
 			);
 			path = TaskFormRows;
 			sourceTree = "<group>";
@@ -1468,6 +1647,7 @@
 				29DC5AC620A1E52400993400 /* QuestDetailViewController.swift */,
 				29DC5ACC20A321C900993400 /* GroupFormViewController.swift */,
 				297D15F920B803D30048101F /* UserProfileViewController.swift */,
+				292D6C9A2101FF080078288A /* InviteMembersViewController.swift */,
 			);
 			path = Social;
 			sourceTree = "<group>";
@@ -1548,24 +1728,24 @@
 		494E54051F2D7F9E0003683C /* TVDataSources */ = {
 			isa = PBXGroup;
 			children = (
-				494E54021F2D20C70003683C /* HRPGShopOverviewTableViewDataSource.h */,
-				494E54031F2D20C70003683C /* HRPGShopOverviewTableViewDataSource.m */,
-				49DCECA61F96ECEF00982E99 /* MultiModelDataSource.swift */,
-				292DEE8B204F455E0086D5F7 /* Tasks */,
+				292726B520B7094A009DD08A /* ChallengeTableViewDataSource.swift */,
+				291448832088E2E000F3A6B5 /* EquipmentViewDataSource.swift */,
 				290279722057FB4E006DACB9 /* FAQTableViewDataSource.swift */,
-				290C302B206BACBB0066AF5B /* SpellsTableViewDataSource.swift */,
+				29144871208628A300F3A6B5 /* FeedViewDataSource.swift */,
+				295E9DF320B456F100D58D45 /* FilterTableviewDataSource.swift */,
 				292F9661206E363000804151 /* GroupChatViewDataSource.swift */,
 				292F968220724B1100804151 /* GuildsOverviewDataSource.swift */,
-				292726B520B7094A009DD08A /* ChallengeTableViewDataSource.swift */,
-				290B62A3207F818E007287C4 /* ItemsViewDataSource.swift */,
-				29144871208628A300F3A6B5 /* FeedViewDataSource.swift */,
-				291448832088E2E000F3A6B5 /* EquipmentViewDataSource.swift */,
-				2974BDB52090C03E00EC1A25 /* InboxOverviewDataSource.swift */,
+				494E54021F2D20C70003683C /* HRPGShopOverviewTableViewDataSource.h */,
+				494E54031F2D20C70003683C /* HRPGShopOverviewTableViewDataSource.m */,
 				2919FDD42090CF900096A53B /* InboxMessagesDataSource.swift */,
-				295E9DF320B456F100D58D45 /* FilterTableviewDataSource.swift */,
-				29B4788520BD6E2E00B6123F /* SkillsUserTableViewDataSource.swift */,
-				29B4788720BD732A00B6123F /* SkillsTaskTableViewDataSource.swift */,
+				2974BDB52090C03E00EC1A25 /* InboxOverviewDataSource.swift */,
+				290B62A3207F818E007287C4 /* ItemsViewDataSource.swift */,
+				49DCECA61F96ECEF00982E99 /* MultiModelDataSource.swift */,
 				49A37A7F20C0EBFF008C28F5 /* SingleItemTableViewDataSource.swift */,
+				29B4788720BD732A00B6123F /* SkillsTaskTableViewDataSource.swift */,
+				29B4788520BD6E2E00B6123F /* SkillsUserTableViewDataSource.swift */,
+				290C302B206BACBB0066AF5B /* SpellsTableViewDataSource.swift */,
+				292DEE8B204F455E0086D5F7 /* Tasks */,
 			);
 			name = TVDataSources;
 			sourceTree = "<group>";
@@ -1784,6 +1964,7 @@
 				29F89F191F47882A004E5B84 /* String-Extensions.swift */,
 				29646DE0205C18FA0050886C /* TaskType-Extensions.swift */,
 				29A1B9B81F6ACC2F0055CF57 /* UIAlertAction-Extensions.swift */,
+				292AA72320FE15090022CC5F /* UIFont-Extensions.swift */,
 				D96BFC4E1E191D7200266EEF /* UIAlertController-Extensions.swift */,
 				29701FDF1F560D310097BBCC /* UIApplication-Extensions.swift */,
 				29ED1AFE1F339ACF005A3895 /* UIColor-Extensions.swift */,
@@ -1956,6 +2137,7 @@
 				292F967F20723A4D00804151 /* ImageManager.swift */,
 				2919FDDC2091D5370096A53B /* UserManager.swift */,
 				29DBFF0020CE6FFF00DF9CF2 /* SoundManager.swift */,
+				299BD6391F557FE700E22935 /* AuthenticationManager.swift */,
 				49E1664920E6AE9200D510B1 /* HRPGCoachmarkFrameProvider.h */,
 				49E1664A20E6AE9200D510B1 /* HRPGCoachmarkFrameProvider.m */,
 			);
@@ -2251,7 +2433,6 @@
 				4908642C1F4530DC00BD9896 /* Shop */,
 				D9ADD3611944FDBE006202C1 /* HRPGFilterViewController.h */,
 				D9ADD3621944FDBE006202C1 /* HRPGFilterViewController.m */,
-				D94FEDEC1BB6DA8E0046A52E /* HRPGInviteMembersViewController.h */,
 				D94FEDED1BB6DA8E0046A52E /* HRPGInviteMembersViewController.m */,
 				D92D26121D58EEBA001FD977 /* HRPGQRCodeScannerViewController.h */,
 				D92D26131D58EEBA001FD977 /* HRPGQRCodeScannerViewController.m */,
@@ -2355,7 +2536,6 @@
 				D9AEEA721ACEDD470076951B /* HRPGWebViewController.m */,
 				29FC5A6A20406932008E88C8 /* GuidelinesViewController.swift */,
 				2902799620583D82006DACB9 /* LoadingViewController.swift */,
-				299BD6391F557FE700E22935 /* AuthenticationManager.swift */,
 				290279AC20583EE8006DACB9 /* Storyboards */,
 				D9EB4EAC18CB4A9400BB2094 /* Images.xcassets */,
 				D9A63A321E10328A0083ADC4 /* Habitica-Bridging-Header.h */,
@@ -2404,7 +2584,6 @@
 				29701FE81F5848880097BBCC /* Frameworks */,
 				29701FE91F5848880097BBCC /* Resources */,
 				AEB059D10376C45FB9485AD4 /* [CP] Embed Pods Frameworks */,
-				AA587FA951DBC134B2AC19A9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2427,7 +2606,6 @@
 				D94461811AB34F5C0015215E /* Resources */,
 				CAC33FCF49D4A93D53AF498F /* [CP] Embed Pods Frameworks */,
 				B2FE1A291D097FDD8A4DD843 /* 📦 Embed Pods Frameworks */,
-				2D803B637C4B32EF672FA742 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2454,7 +2632,6 @@
 				33CD4301B52F7B90A552FAC3 /* 📦 Embed Pods Frameworks */,
 				D97AEBC81E7D7622007FD4A2 /* Lint */,
 				29265896206A4E84006C8B54 /* Embed Frameworks */,
-				8794EE019B74D1EFCC36E006 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2679,21 +2856,6 @@
 			shellPath = /bin/sh;
 			shellScript = ./Pods/SwiftGen/bin/swiftgen;
 		};
-		2D803B637C4B32EF672FA742 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HabiticaTests/Pods-HabiticaTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		33CD4301B52F7B90A552FAC3 /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2742,21 +2904,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8794EE019B74D1EFCC36E006 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Habitica/Pods-Habitica-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		9134C996D72DCF63C6CF68A7 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2777,8 +2924,6 @@
 				"${BUILT_PRODUCTS_DIR}/FunkyNetwork/FunkyNetwork.framework",
 				"${PODS_ROOT}/Instabug/Instabug.framework",
 				"${PODS_ROOT}/Instabug/Instabug.framework.dSYM",
-				"${PODS_ROOT}/Instabug/InstabugCore.framework",
-				"${PODS_ROOT}/Instabug/InstabugCore.framework.dSYM",
 				"${BUILT_PRODUCTS_DIR}/KLCPopup/KLCPopup.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
 				"${BUILT_PRODUCTS_DIR}/Keys/Keys.framework",
@@ -2816,8 +2961,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FunkyNetwork.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Instabug.framework",
 				"${DWARF_DSYM_FOLDER_PATH}/Instabug.framework.dSYM",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/InstabugCore.framework",
-				"${DWARF_DSYM_FOLDER_PATH}/InstabugCore.framework.dSYM",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KLCPopup.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Keys.framework",
@@ -2843,21 +2986,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Habitica/Pods-Habitica-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AA587FA951DBC134B2AC19A9 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Habitica Snapshots/Pods-Habitica Snapshots-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		AEB059D10376C45FB9485AD4 /* [CP] Embed Pods Frameworks */ = {
@@ -2980,7 +3108,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\" lint --reporter xcode";
+			shellScript = "
+";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -3138,6 +3267,7 @@
 				D905D08F1DE2431100CABF55 /* HRPGLoginIncentiveOverlayView.m in Sources */,
 				49DCB7B21F3E6D400079FDD0 /* HRPGSingleOptionModalViewController.swift in Sources */,
 				D91CCACD1BCD9068001C6A0C /* HRPGHoledView.m in Sources */,
+				292AA72420FE15090022CC5F /* UIFont-Extensions.swift in Sources */,
 				295E9DF420B456F100D58D45 /* FilterTableviewDataSource.swift in Sources */,
 				29FC885420175C70002B3D3F /* RageStrikeView.swift in Sources */,
 				D9D9EF981D54E51C00FC89C1 /* HRPGQRCodeView.m in Sources */,
@@ -3169,6 +3299,7 @@
 				2902796D2057F2C5006DACB9 /* Strings.swift in Sources */,
 				D9EB4E9B18CB4A9400BB2094 /* main.m in Sources */,
 				292DEE76204E053D0086D5F7 /* HabitButton.swift in Sources */,
+				292D6C9B2101FF080078288A /* InviteMembersViewController.swift in Sources */,
 				29028C392034ABAF00B7F704 /* TaskRepositoryImpl.swift in Sources */,
 				D99F15C0191027D90081836E /* HRPGBaseViewController.m in Sources */,
 				D94AADBA192A5CE700546C8E /* HRPGSpellTabBarController.m in Sources */,
@@ -3373,6 +3504,21 @@
 			children = (
 				2902799B20583E83006DACB9 /* bg */,
 				29B478A820BFE53500B6123F /* de */,
+				2936525E20F505CC00261740 /* zh */,
+				2936526820F5060C00261740 /* cs */,
+				2936527120F5064400261740 /* da */,
+				2936527B20F5071900261740 /* es */,
+				2936528520F5076700261740 /* fr */,
+				296E0E6320F5078200A1E991 /* he */,
+				29B77C5E20F507DC00FD0AE1 /* hr */,
+				29FFB19320F5080D0031D914 /* nl */,
+				293A683920F5083400685945 /* pl */,
+				2935440920F5088500857CE8 /* pt-BR */,
+				297AAB4820F508A300BD019D /* ro */,
+				29C6009F20F508D8005CC6C1 /* ru */,
+				290A2AD020F508F500BF8A68 /* zh-Hans */,
+				29D5AD5C20F50B7A00D1B869 /* it */,
+				2913E3B120F50B9300FDF81D /* ja */,
 			);
 			name = OnePasswordExtension.strings;
 			sourceTree = "<group>";
@@ -3382,6 +3528,22 @@
 			children = (
 				2902799E20583ECA006DACB9 /* Base */,
 				29B478B420BFE53500B6123F /* de */,
+				2936525B20F5058B00261740 /* bg */,
+				2936526520F505CC00261740 /* zh */,
+				2936526F20F5060C00261740 /* cs */,
+				2936527920F5064400261740 /* da */,
+				2936528320F5071900261740 /* es */,
+				2936528D20F5076700261740 /* fr */,
+				296E0E6B20F5078200A1E991 /* he */,
+				29B77C6920F507DC00FD0AE1 /* hr */,
+				29FFB19A20F5080D0031D914 /* nl */,
+				293A684120F5083400685945 /* pl */,
+				2935441120F5088500857CE8 /* pt-BR */,
+				297AAB5320F508A300BD019D /* ro */,
+				29C600A720F508D8005CC6C1 /* ru */,
+				290A2AD820F508F500BF8A68 /* zh-Hans */,
+				29D5AD6720F50B7A00D1B869 /* it */,
+				2913E3BC20F50B9300FDF81D /* ja */,
 			);
 			name = User.storyboard;
 			sourceTree = "<group>";
@@ -3391,6 +3553,22 @@
 			children = (
 				290279A120583ECF006DACB9 /* Base */,
 				29B478B520BFE53500B6123F /* de */,
+				2936525C20F5058B00261740 /* bg */,
+				2936526620F505CC00261740 /* zh */,
+				2936527020F5060C00261740 /* cs */,
+				2936527A20F5064400261740 /* da */,
+				2936528420F5071900261740 /* es */,
+				2936528E20F5076700261740 /* fr */,
+				296E0E6C20F5078200A1E991 /* he */,
+				29B77C6A20F507DC00FD0AE1 /* hr */,
+				29FFB19B20F5080D0031D914 /* nl */,
+				293A684220F5083400685945 /* pl */,
+				2935441220F5088500857CE8 /* pt-BR */,
+				297AAB5420F508A300BD019D /* ro */,
+				29C600A820F508D8005CC6C1 /* ru */,
+				290A2AD920F508F500BF8A68 /* zh-Hans */,
+				29D5AD6820F50B7A00D1B869 /* it */,
+				2913E3BD20F50B9300FDF81D /* ja */,
 			);
 			name = Shops.storyboard;
 			sourceTree = "<group>";
@@ -3400,6 +3578,22 @@
 			children = (
 				290279A420583ED3006DACB9 /* Base */,
 				29B478B120BFE53500B6123F /* de */,
+				2936525820F5058B00261740 /* bg */,
+				2936526220F505CC00261740 /* zh */,
+				2936526C20F5060C00261740 /* cs */,
+				2936527620F5064400261740 /* da */,
+				2936528020F5071900261740 /* es */,
+				2936528A20F5076700261740 /* fr */,
+				296E0E6820F5078200A1E991 /* he */,
+				29B77C6520F507DC00FD0AE1 /* hr */,
+				29FFB19720F5080D0031D914 /* nl */,
+				293A683E20F5083400685945 /* pl */,
+				2935440E20F5088500857CE8 /* pt-BR */,
+				297AAB4F20F508A300BD019D /* ro */,
+				29C600A420F508D8005CC6C1 /* ru */,
+				290A2AD520F508F500BF8A68 /* zh-Hans */,
+				29D5AD6320F50B7A00D1B869 /* it */,
+				2913E3B820F50B9300FDF81D /* ja */,
 			);
 			name = Shop.storyboard;
 			sourceTree = "<group>";
@@ -3409,6 +3603,22 @@
 			children = (
 				290279A720583ED8006DACB9 /* Base */,
 				29B478B220BFE53500B6123F /* de */,
+				2936525920F5058B00261740 /* bg */,
+				2936526320F505CC00261740 /* zh */,
+				2936526D20F5060C00261740 /* cs */,
+				2936527720F5064400261740 /* da */,
+				2936528120F5071900261740 /* es */,
+				2936528B20F5076700261740 /* fr */,
+				296E0E6920F5078200A1E991 /* he */,
+				29B77C6720F507DC00FD0AE1 /* hr */,
+				29FFB19820F5080D0031D914 /* nl */,
+				293A683F20F5083400685945 /* pl */,
+				2935440F20F5088500857CE8 /* pt-BR */,
+				297AAB5120F508A300BD019D /* ro */,
+				29C600A520F508D8005CC6C1 /* ru */,
+				290A2AD620F508F500BF8A68 /* zh-Hans */,
+				29D5AD6520F50B7A00D1B869 /* it */,
+				2913E3BA20F50B9300FDF81D /* ja */,
 			);
 			name = BuyModal.storyboard;
 			sourceTree = "<group>";
@@ -3418,6 +3628,22 @@
 			children = (
 				290279AA20583EDE006DACB9 /* Base */,
 				29B478B320BFE53500B6123F /* de */,
+				2936525A20F5058B00261740 /* bg */,
+				2936526420F505CC00261740 /* zh */,
+				2936526E20F5060C00261740 /* cs */,
+				2936527820F5064400261740 /* da */,
+				2936528220F5071900261740 /* es */,
+				2936528C20F5076700261740 /* fr */,
+				296E0E6A20F5078200A1E991 /* he */,
+				29B77C6820F507DC00FD0AE1 /* hr */,
+				29FFB19920F5080D0031D914 /* nl */,
+				293A684020F5083400685945 /* pl */,
+				2935441020F5088500857CE8 /* pt-BR */,
+				297AAB5220F508A300BD019D /* ro */,
+				29C600A620F508D8005CC6C1 /* ru */,
+				290A2AD720F508F500BF8A68 /* zh-Hans */,
+				29D5AD6620F50B7A00D1B869 /* it */,
+				2913E3BB20F50B9300FDF81D /* ja */,
 			);
 			name = Settings.storyboard;
 			sourceTree = "<group>";
@@ -3427,6 +3653,22 @@
 			children = (
 				290279AE20583EF9006DACB9 /* Base */,
 				29B478AF20BFE53500B6123F /* de */,
+				2936525620F5058B00261740 /* bg */,
+				2936526020F505CC00261740 /* zh */,
+				2936526A20F5060C00261740 /* cs */,
+				2936527420F5064400261740 /* da */,
+				2936527E20F5071900261740 /* es */,
+				2936528820F5076700261740 /* fr */,
+				296E0E6620F5078200A1E991 /* he */,
+				29B77C6320F507DC00FD0AE1 /* hr */,
+				29FFB19520F5080D0031D914 /* nl */,
+				293A683C20F5083400685945 /* pl */,
+				2935440C20F5088500857CE8 /* pt-BR */,
+				297AAB4D20F508A300BD019D /* ro */,
+				29C600A220F508D8005CC6C1 /* ru */,
+				290A2AD320F508F500BF8A68 /* zh-Hans */,
+				29D5AD6120F50B7A00D1B869 /* it */,
+				2913E3B620F50B9300FDF81D /* ja */,
 			);
 			name = Intro.storyboard;
 			sourceTree = "<group>";
@@ -3435,6 +3677,22 @@
 			isa = PBXVariantGroup;
 			children = (
 				29B478AA20BFE53500B6123F /* de */,
+				2936525420F5058B00261740 /* bg */,
+				2936525D20F505CC00261740 /* zh */,
+				2936526720F5060C00261740 /* cs */,
+				2936527220F5064400261740 /* da */,
+				2936527C20F5071900261740 /* es */,
+				2936528620F5076700261740 /* fr */,
+				296E0E6420F5078200A1E991 /* he */,
+				29B77C5F20F507DC00FD0AE1 /* hr */,
+				29FFB19420F5080D0031D914 /* nl */,
+				293A683A20F5083400685945 /* pl */,
+				2935440A20F5088500857CE8 /* pt-BR */,
+				297AAB4A20F508A300BD019D /* ro */,
+				29C600A020F508D8005CC6C1 /* ru */,
+				290A2AD120F508F500BF8A68 /* zh-Hans */,
+				29D5AD5D20F50B7A00D1B869 /* it */,
+				2913E3B220F50B9300FDF81D /* ja */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -3453,6 +3711,22 @@
 			children = (
 				29C1B6AF205952E40001D3EF /* Base */,
 				29B478B020BFE53500B6123F /* de */,
+				2936525720F5058B00261740 /* bg */,
+				2936526120F505CC00261740 /* zh */,
+				2936526B20F5060C00261740 /* cs */,
+				2936527520F5064400261740 /* da */,
+				2936527F20F5071900261740 /* es */,
+				2936528920F5076700261740 /* fr */,
+				296E0E6720F5078200A1E991 /* he */,
+				29B77C6420F507DC00FD0AE1 /* hr */,
+				29FFB19620F5080D0031D914 /* nl */,
+				293A683D20F5083400685945 /* pl */,
+				2935440D20F5088500857CE8 /* pt-BR */,
+				297AAB4E20F508A300BD019D /* ro */,
+				29C600A320F508D8005CC6C1 /* ru */,
+				290A2AD420F508F500BF8A68 /* zh-Hans */,
+				29D5AD6220F50B7A00D1B869 /* it */,
+				2913E3B720F50B9300FDF81D /* ja */,
 			);
 			name = Tasks.storyboard;
 			sourceTree = "<group>";
@@ -3462,6 +3736,21 @@
 			children = (
 				29B478B620BFE53A00B6123F /* de */,
 				29E30DE920DA8AFE00F74ECB /* Base */,
+				2936525520F5058B00261740 /* bg */,
+				2936525F20F505CC00261740 /* zh */,
+				2936526920F5060C00261740 /* cs */,
+				2936527320F5064400261740 /* da */,
+				2936527D20F5071900261740 /* es */,
+				2936528720F5076700261740 /* fr */,
+				296E0E6520F5078200A1E991 /* he */,
+				29B77C6120F507DC00FD0AE1 /* hr */,
+				293A683B20F5083400685945 /* pl */,
+				2935440B20F5088500857CE8 /* pt-BR */,
+				297AAB4B20F508A300BD019D /* ro */,
+				29C600A120F508D8005CC6C1 /* ru */,
+				290A2AD220F508F500BF8A68 /* zh-Hans */,
+				29D5AD5F20F50B7A00D1B869 /* it */,
+				2913E3B420F50B9300FDF81D /* ja */,
 			);
 			name = Mainstrings.strings;
 			sourceTree = "<group>";
@@ -3482,6 +3771,10 @@
 				D9B2F29E1D99672E001810BD /* ru */,
 				D9B2F2A51D996816001810BD /* bg */,
 				D9B2F2AB1D996832001810BD /* nl */,
+				29B77C5D20F507DC00FD0AE1 /* hr */,
+				297AAB4720F508A300BD019D /* ro */,
+				29D5AD5B20F50B7A00D1B869 /* it */,
+				2913E3B020F50B9300FDF81D /* ja */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -3502,6 +3795,10 @@
 				D9B2F29C1D99672D001810BD /* ru */,
 				D9B2F2A31D996815001810BD /* bg */,
 				D9B2F2A91D996831001810BD /* nl */,
+				29B77C6220F507DC00FD0AE1 /* hr */,
+				297AAB4C20F508A300BD019D /* ro */,
+				29D5AD6020F50B7A00D1B869 /* it */,
+				2913E3B520F50B9300FDF81D /* ja */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -3523,6 +3820,10 @@
 				D9B2F29F1D99672E001810BD /* ru */,
 				D9B2F2A61D996817001810BD /* bg */,
 				D9B2F2AC1D996833001810BD /* nl */,
+				29B77C6620F507DC00FD0AE1 /* hr */,
+				297AAB5020F508A300BD019D /* ro */,
+				29D5AD6420F50B7A00D1B869 /* it */,
+				2913E3B920F50B9300FDF81D /* ja */,
 			);
 			name = Social.storyboard;
 			sourceTree = "<group>";
@@ -3561,6 +3862,8 @@
 				D9B2F2A01D99672E001810BD /* ru */,
 				D9B2F2A71D996818001810BD /* bg */,
 				D9B2F2AD1D996833001810BD /* nl */,
+				297AAB5520F508A300BD019D /* ro */,
+				2913E3BE20F50B9300FDF81D /* ja */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -3582,6 +3885,10 @@
 				D9B2F29D1D99672D001810BD /* ru */,
 				D9B2F2A41D996816001810BD /* bg */,
 				D9B2F2AA1D996831001810BD /* nl */,
+				29B77C6020F507DC00FD0AE1 /* hr */,
+				297AAB4920F508A300BD019D /* ro */,
+				29D5AD5E20F50B7A00D1B869 /* it */,
+				2913E3B320F50B9300FDF81D /* ja */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -3882,7 +4189,7 @@
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 319;
+				CURRENT_PROJECT_VERSION = 336;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_SOURCE_FILE_NAMES = "";
@@ -3974,7 +4281,7 @@
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 319;
+				CURRENT_PROJECT_VERSION = 336;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_SOURCE_FILE_NAMES = "FLEX*";

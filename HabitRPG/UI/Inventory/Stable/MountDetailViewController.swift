@@ -23,16 +23,22 @@ class MountDetailViewController: StableDetailViewController<MountDetailDataSourc
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let item = datasource?.item(at: indexPath), item.owned == true {
-            showActionSheet(forStableItem: item)
+            showActionSheet(forStableItem: item, withSource: collectionView.cellForItem(at: indexPath))
         }
     }
     
-    private func showActionSheet(forStableItem stableItem: MountStableItem) {
+    private func showActionSheet(forStableItem stableItem: MountStableItem, withSource sourceView: UIView?) {
         let actionSheet = UIAlertController(title: stableItem.mount?.text, message: nil, preferredStyle: .actionSheet)
         actionSheet.addAction(UIAlertAction(title: L10n.equip, style: .default, handler: {[weak self] (_) in
             self?.inventoryRepository.equip(type: "mount", key: stableItem.mount?.key ?? "").observeCompleted {}
         }))
         actionSheet.addAction(UIAlertAction.cancelAction())
+        if let sourceView = sourceView {
+            actionSheet.popoverPresentationController?.sourceView = sourceView
+            actionSheet.popoverPresentationController?.sourceRect = sourceView.bounds
+        } else {
+            actionSheet.setSourceInCenter(view)
+        }
         actionSheet.show()
     }
 }

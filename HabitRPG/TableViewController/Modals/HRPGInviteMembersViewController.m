@@ -6,13 +6,12 @@
 //  Copyright © 2017 HabitRPG Inc. All rights reserved.
 //
 
-#import "HRPGInviteMembersViewController.h"
-#import "Amplitude.h"
-#import "XLForm.h"
+/*#import "XLForm.h"
 #import "HRPGQRCodeScannerViewController.h"
 #import "UIColor+Habitica.h"
+#import "XLFormViewController.h"
 
-@interface HRPGInviteMembersViewController ()
+@interface HRPGInviteMembersViewController : XLFormViewController
 
 @property XLFormSectionDescriptor *uuidSection;
 
@@ -167,3 +166,4 @@
 }
 
 @end
+*/

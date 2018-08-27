@@ -17,3 +17,10 @@ public protocol BuffProtocol: BaseStatsProtocol {
     var stealth: Int { get set }
     var spookySparkles: Bool { get set }
 }
+
+public extension BuffProtocol {
+    
+    var isBuffed: Bool {
+        return strength != 0 || intelligence != 0 || constitution != 0 || perception != 0
+    }
+}

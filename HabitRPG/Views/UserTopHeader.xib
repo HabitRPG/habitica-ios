@@ -59,26 +59,35 @@
                                     <color key="textColor" red="0.37254901959999998" green="0.37254901959999998" blue="0.37254901959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AL5-B2-uxe">
-                                    <rect key="frame" x="0.0" y="4" width="456" height="0.0"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AL5-B2-uxe">
+                                    <rect key="frame" x="0.0" y="4" width="0.0" height="0.0"/>
                                     <color key="backgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" priority="500" constant="21" id="Ic2-r3-SHc"/>
+                                        <constraint firstAttribute="width" priority="500" constant="100" id="dmc-aX-CbA"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                     <color key="textColor" red="0.37254901960784315" green="0.37254901960784315" blue="0.37254901960784315" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0dK-tZ-QKB">
+                                    <rect key="frame" x="6" y="-3.5" width="15" height="15"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="15" id="JCa-iu-L6L"/>
+                                        <constraint firstAttribute="height" constant="15" id="KK7-EU-3dX"/>
+                                    </constraints>
+                                </imageView>
                             </subviews>
                             <constraints>
                                 <constraint firstItem="AL5-B2-uxe" firstAttribute="leading" secondItem="J68-ym-ngp" secondAttribute="leading" id="6aI-XZ-kE7"/>
                                 <constraint firstAttribute="trailing" secondItem="v7A-NB-rwz" secondAttribute="trailing" id="L4J-Sv-8pC"/>
                                 <constraint firstItem="v7A-NB-rwz" firstAttribute="leading" secondItem="J68-ym-ngp" secondAttribute="leading" id="N87-8M-cmi"/>
+                                <constraint firstItem="0dK-tZ-QKB" firstAttribute="leading" secondItem="AL5-B2-uxe" secondAttribute="trailing" constant="6" id="O8q-ux-3So"/>
                                 <constraint firstItem="AL5-B2-uxe" firstAttribute="top" secondItem="v7A-NB-rwz" secondAttribute="bottom" constant="4" id="Wim-Qw-TAT"/>
                                 <constraint firstAttribute="bottom" secondItem="AL5-B2-uxe" secondAttribute="bottom" id="Zwe-hb-pyh"/>
-                                <constraint firstAttribute="trailing" secondItem="AL5-B2-uxe" secondAttribute="trailing" id="bLq-R0-ypy"/>
                                 <constraint firstAttribute="height" priority="500" constant="128" id="j1Z-Uy-Kjq"/>
                                 <constraint firstItem="v7A-NB-rwz" firstAttribute="top" secondItem="J68-ym-ngp" secondAttribute="top" id="laC-K2-chz"/>
+                                <constraint firstItem="AL5-B2-uxe" firstAttribute="centerY" secondItem="0dK-tZ-QKB" secondAttribute="centerY" id="nbX-zP-5Ly"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="diH-Q0-CAQ" customClass="HRPGCurrencyCountView" customModule="Habitica" customModuleProvider="target">
@@ -151,6 +160,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="avatarView" destination="UWI-d8-sGn" id="u9c-2i-E3b"/>
+                <outlet property="buffIconView" destination="0dK-tZ-QKB" id="uUp-dK-GqQ"/>
                 <outlet property="classImageView" destination="0wH-g6-8n6" id="li4-lc-Pun"/>
                 <outlet property="classImageViewWidthConstraint" destination="ehs-7W-t4k" id="lKZ-0G-gln"/>
                 <outlet property="experienceLabel" destination="BEm-of-HXC" id="AEF-d8-Rwc"/>

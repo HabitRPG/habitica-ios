@@ -10,6 +10,7 @@ import UIKit
 import DateTools
 import PinLayout
 import Habitica_Models
+import Down
 
 class ChatTableViewCell: UITableViewCell {
     
@@ -141,13 +142,11 @@ class ChatTableViewCell: UITableViewCell {
         
         setTimeStamp(date: chatMessage.timestamp)
         
-        if chatMessage.attributedText?.length ?? 0 > 0 {
-            messageTextView.attributedText = chatMessage.attributedText
-        } else {
-            messageTextView.text = chatMessage.text?.unicodeEmoji
+        if let text = chatMessage.text {
+            messageTextView.attributedText = try? Down(markdownString: text).toHabiticaAttributedString()
         }
         
-        if previousMessage?.userID == chatMessage.userID {
+        if previousMessage?.isValid == true, previousMessage?.userID == chatMessage.userID {
             topSpacing = 2
             avatarView.isHidden = true
         } else {
@@ -159,7 +158,7 @@ class ChatTableViewCell: UITableViewCell {
             }
         }
         
-        if nextMessage?.userID == chatMessage.userID {
+        if nextMessage?.isValid == true, nextMessage?.userID == chatMessage.userID {
             bottomSpacing = 2
         } else if isFirstMessage {
             bottomSpacing = 34
@@ -197,10 +196,8 @@ class ChatTableViewCell: UITableViewCell {
         
         setTimeStamp(date: inboxMessage.timestamp)
         
-        if inboxMessage.attributedText?.length ?? 0 > 0 {
-            messageTextView.attributedText = inboxMessage.attributedText
-        } else {
-            messageTextView.text = inboxMessage.text?.unicodeEmoji
+        if let text = inboxMessage.text {
+            messageTextView.attributedText = try? Down(markdownString: text).toHabiticaAttributedString()
         }
         
         if previousMessage?.sent == inboxMessage.sent {

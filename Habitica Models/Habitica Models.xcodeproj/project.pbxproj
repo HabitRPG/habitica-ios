@@ -42,6 +42,8 @@
 		2927269C20B6FD34009DD08A /* ChallengeCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2927269B20B6FD34009DD08A /* ChallengeCategory.swift */; };
 		292726B020B70429009DD08A /* ChallengeMembershipProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292726AF20B70429009DD08A /* ChallengeMembershipProtocol.swift */; };
 		292844E920DD17DC0011DC43 /* GroupInvitationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292844E820DD17DC0011DC43 /* GroupInvitationProtocol.swift */; };
+		292AA71C20FDF6050022CC5F /* PinResponseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292AA71B20FDF6050022CC5F /* PinResponseProtocol.swift */; };
+		292AA71E20FDF6670022CC5F /* PinResponseItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292AA71D20FDF6670022CC5F /* PinResponseItemProtocol.swift */; };
 		292DEE5A204DAA000086D5F7 /* HabiticaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE59204DAA000086D5F7 /* HabiticaModel.swift */; };
 		292DEE7A204E36F60086D5F7 /* TagProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE79204E36F60086D5F7 /* TagProtocol.swift */; };
 		292DEE7C204E372E0086D5F7 /* ChecklistItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE7B204E372E0086D5F7 /* ChecklistItemProtocol.swift */; };
@@ -77,6 +79,7 @@
 		2974BD95208E0DB700EC1A25 /* PurchasedProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BD94208E0DB700EC1A25 /* PurchasedProtocol.swift */; };
 		2974BD97208E0E0D00EC1A25 /* SubscriptionPlanProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BD96208E0E0D00EC1A25 /* SubscriptionPlanProtocol.swift */; };
 		2974BD99208E0E6800EC1A25 /* SubscriptionConsecutiveProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BD98208E0E6800EC1A25 /* SubscriptionConsecutiveProtocol.swift */; };
+		298184A020F8AC3E00F06D3D /* BaseModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2981849F20F8AC3E00F06D3D /* BaseModelProtocol.swift */; };
 		298CB20D20AF0696006DA349 /* QuestBossRageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298CB20C20AF0696006DA349 /* QuestBossRageProtocol.swift */; };
 		298CB20F20AF06DD006DA349 /* QuestDropProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298CB20E20AF06DD006DA349 /* QuestDropProtocol.swift */; };
 		298CB21120AF0722006DA349 /* QuestDropItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298CB21020AF0722006DA349 /* QuestDropItemProtocol.swift */; };
@@ -152,6 +155,8 @@
 		2927269B20B6FD34009DD08A /* ChallengeCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCategory.swift; sourceTree = "<group>"; };
 		292726AF20B70429009DD08A /* ChallengeMembershipProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeMembershipProtocol.swift; sourceTree = "<group>"; };
 		292844E820DD17DC0011DC43 /* GroupInvitationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInvitationProtocol.swift; sourceTree = "<group>"; };
+		292AA71B20FDF6050022CC5F /* PinResponseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinResponseProtocol.swift; sourceTree = "<group>"; };
+		292AA71D20FDF6670022CC5F /* PinResponseItemProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinResponseItemProtocol.swift; sourceTree = "<group>"; };
 		292DEE59204DAA000086D5F7 /* HabiticaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabiticaModel.swift; sourceTree = "<group>"; };
 		292DEE79204E36F60086D5F7 /* TagProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagProtocol.swift; sourceTree = "<group>"; };
 		292DEE7B204E372E0086D5F7 /* ChecklistItemProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistItemProtocol.swift; sourceTree = "<group>"; };
@@ -187,6 +192,7 @@
 		2974BD94208E0DB700EC1A25 /* PurchasedProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasedProtocol.swift; sourceTree = "<group>"; };
 		2974BD96208E0E0D00EC1A25 /* SubscriptionPlanProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionPlanProtocol.swift; sourceTree = "<group>"; };
 		2974BD98208E0E6800EC1A25 /* SubscriptionConsecutiveProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionConsecutiveProtocol.swift; sourceTree = "<group>"; };
+		2981849F20F8AC3E00F06D3D /* BaseModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModelProtocol.swift; sourceTree = "<group>"; };
 		298CB20C20AF0696006DA349 /* QuestBossRageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestBossRageProtocol.swift; sourceTree = "<group>"; };
 		298CB20E20AF06DD006DA349 /* QuestDropProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestDropProtocol.swift; sourceTree = "<group>"; };
 		298CB21020AF0722006DA349 /* QuestDropItemProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestDropItemProtocol.swift; sourceTree = "<group>"; };
@@ -356,6 +362,8 @@
 				296AC81720AC898D00885682 /* InAppRewardProtocol.swift */,
 				295E9DE520B3257700D58D45 /* ShopProtocol.swift */,
 				295E9DE720B3263E00D58D45 /* ShopCategoryProtocol.swift */,
+				292AA71B20FDF6050022CC5F /* PinResponseProtocol.swift */,
+				292AA71D20FDF6670022CC5F /* PinResponseItemProtocol.swift */,
 			);
 			path = Content;
 			sourceTree = "<group>";
@@ -398,6 +406,7 @@
 				29B478C020C531B000B6123F /* ArmoireResponseProtocol.swift */,
 				29DBFF0820D1336000DF9CF2 /* EquatableStringEnumProtocol.swift */,
 				29990DB120E3FA82001ADD8B /* Constants.swift */,
+				2981849F20F8AC3E00F06D3D /* BaseModelProtocol.swift */,
 			);
 			path = "Habitica Models";
 			sourceTree = "<group>";
@@ -471,7 +480,6 @@
 				298FB9D6204D9404004DDACC /* Frameworks */,
 				298FB9D7204D9404004DDACC /* Resources */,
 				58CF6008774C87164772031B /* [CP] Embed Pods Frameworks */,
-				91AD153EB20B028CA7F1088B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -582,21 +590,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		91AD153EB20B028CA7F1088B /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-Habitica ModelsTests/Pods-Habitica ModelsTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -640,6 +633,7 @@
 				290B6281207BAA5A007287C4 /* LoginResponseProtocol.swift in Sources */,
 				2902795C2057E7FB006DACB9 /* FAQEntryProtocol.swift in Sources */,
 				290B625B207B8A09007287C4 /* AuthenticationProtocol.swift in Sources */,
+				298184A020F8AC3E00F06D3D /* BaseModelProtocol.swift in Sources */,
 				298CB20F20AF06DD006DA349 /* QuestDropProtocol.swift in Sources */,
 				290B62502073D82A007287C4 /* InboxMessageProtocol.swift in Sources */,
 				290C3037206D36740066AF5B /* GroupProtocol.swift in Sources */,
@@ -679,8 +673,10 @@
 				295611032056DBC900D9711A /* QuestProtocol.swift in Sources */,
 				290C3030206CEED20066AF5B /* SkillResponseProtocol.swift in Sources */,
 				295E9DE620B3257700D58D45 /* ShopProtocol.swift in Sources */,
+				292AA71C20FDF6050022CC5F /* PinResponseProtocol.swift in Sources */,
 				29B478C120C531B000B6123F /* ArmoireResponseProtocol.swift in Sources */,
 				29990DC020E65C05001ADD8B /* TaskResponseQuestProtocol.swift in Sources */,
+				292AA71E20FDF6670022CC5F /* PinResponseItemProtocol.swift in Sources */,
 				2927269C20B6FD34009DD08A /* ChallengeCategory.swift in Sources */,
 				290B625F207B947A007287C4 /* LocalAuthenticationProtocol.swift in Sources */,
 				2902797520580E3E006DACB9 /* BuffProtocol.swift in Sources */,

@@ -1,0 +1,87 @@
+/* Class = "UIButton"; normalTitle = "Skip"; ObjectID = "0i8-DP-8iH"; */
+"0i8-DP-8iH.normalTitle" = "Sla over";
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "1De-XG-mrd"; */
+"1De-XG-mrd.normalTitle" = "Inloggen";
+
+/* Class = "UILabel"; text = "Progress in the game"; ObjectID = "7wU-9E-BYw"; */
+"7wU-9E-BYw.text" = "Vooruitgang in het spel";
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "8wd-GG-g6F"; */
+"8wd-GG-g6F.normalTitle" = "Inloggen";
+
+/* Class = "UIButton"; normalTitle = "Work"; ObjectID = "9Sv-nF-boz"; */
+"9Sv-nF-boz.normalTitle" = "Werk";
+
+/* Class = "UILabel"; text = "Progress in life"; ObjectID = "C1J-BA-Jk4"; */
+"C1J-BA-Jk4.text" = "Vooruitgang in het leven";
+
+/* Class = "UIButton"; normalTitle = "Let's start!"; ObjectID = "Cer-Zg-227"; */
+"Cer-Zg-227.normalTitle" = "Laten we beginnen!";
+
+/* Class = "UILabel"; text = "Next"; ObjectID = "CPE-AH-dQ8"; */
+"CPE-AH-dQ8.text" = "Volgende";
+
+/* Class = "UIButton"; normalTitle = "Login with Google"; ObjectID = "fYX-yC-fON"; */
+"fYX-yC-fON.normalTitle" = "Inloggen met Google";
+
+/* Class = "UIButton"; normalTitle = "Self-Care"; ObjectID = "iYm-7u-1VI"; */
+"iYm-7u-1VI.normalTitle" = "Persoonlijke verzorging";
+
+/* Class = "UILabel"; text = "HAIR"; ObjectID = "Jb5-CA-lT8"; */
+"Jb5-CA-lT8.text" = "HAAR";
+
+/* Class = "UIButton"; normalTitle = "Randomize"; ObjectID = "K2H-zJ-vTs"; */
+"K2H-zJ-vTs.normalTitle" = "Randomiseren";
+
+/* Class = "UIButton"; normalTitle = "Chores"; ObjectID = "kJd-TG-HlB"; */
+"kJd-TG-HlB.normalTitle" = "Klusjes";
+
+/* Class = "UILabel"; text = "Keep your goals on track with help from your friends. Support each other in life and in battle as you improve together!"; ObjectID = "MLQ-Gm-uoj"; */
+"MLQ-Gm-uoj.text" = "Houd je aan je taken met de hulp van je vrienden. Ondersteun elkaar in het leven en in het gevecht om samen beter te worden!";
+
+/* Class = "UILabel"; text = "Welcome to"; ObjectID = "n39-ny-0cS"; */
+"n39-ny-0cS.text" = "Welkom bij";
+
+/* Class = "UILabel"; text = "It’s time to have fun while you get things done. Join over 2 million others improving their life one task at a time."; ObjectID = "neo-od-L7b"; */
+"neo-od-L7b.text" = "Het is tijd om plezier te hebben terwijl je dingen afmaakt. Sluit je aan bij 2 miljoen anderen die hun leven een taak tegelijkertijd verbeteren.";
+
+/* Class = "UIButton"; normalTitle = "Register"; ObjectID = "Ohf-iu-Phe"; */
+"Ohf-iu-Phe.normalTitle" = "Registreren";
+
+/* Class = "UIButton"; normalTitle = "School"; ObjectID = "qdP-gX-YYc"; */
+"qdP-gX-YYc.normalTitle" = "School";
+
+/* Class = "UIButton"; normalTitle = "Creativity"; ObjectID = "r9x-6o-A2F"; */
+"r9x-6o-A2F.normalTitle" = "Creativiteit";
+
+/* Class = "UILabel"; text = "SKIN"; ObjectID = "teJ-1y-V0M"; */
+"teJ-1y-V0M.text" = "HUID";
+
+/* Class = "UILabel"; text = "BODY"; ObjectID = "u2M-vv-5Dd"; */
+"u2M-vv-5Dd.text" = "LICHAAM";
+
+/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "uAN-kx-bnR"; */
+"uAN-kx-bnR.normalTitle" = "Terug";
+
+/* Class = "UIButton"; normalTitle = "Health"; ObjectID = "UOx-cX-pif"; */
+"UOx-cX-pif.normalTitle" = "Gezondheid";
+
+/* Class = "UIButton"; normalTitle = "Login with Facebook"; ObjectID = "xka-dX-nD0"; */
+"xka-dX-nD0.normalTitle" = "Inloggen met Facebook";
+
+/* Class = "UILabel"; text = "Fight monsters"; ObjectID = "Y7i-gL-CVx"; */
+"Y7i-gL-CVx.text" = "Vecht tegen monsters";
+
+/* Class = "UIButton"; normalTitle = "Exercise"; ObjectID = "YG9-k8-OkO"; */
+"YG9-k8-OkO.normalTitle" = "Oefen";
+
+/* Class = "UILabel"; text = "Unlock features in the game by checking off your real life tasks. Earn armor, pets, and more as rewards for meeting your goals. "; ObjectID = "zAw-Xd-Z07"; */
+"zAw-Xd-Z07.text" = "Ontgrendel functies in het spel door taken uit je echte leven af te tikken. Verdien uitrusting, huisdieren, en meer beloningen voor het behalen van de doelen.";
+
+/* Class = "UILabel"; text = "EXTRAS"; ObjectID = "Zha-R5-vQB"; */
+"Zha-R5-vQB.text" = "EXTRA'S";
+
+/* Class = "UILabel"; text = "Get social"; ObjectID = "Zie-HC-D1t"; */
+"Zie-HC-D1t.text" = "Wordt sociaal";
+

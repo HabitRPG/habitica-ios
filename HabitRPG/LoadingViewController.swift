@@ -62,7 +62,7 @@ class LoadingViewController: UIViewController {
         }
         if !wasDismissed {
             wasDismissed = true
-            dismiss(animated: false, completion: nil)
+            //dismiss(animated: false, completion: nil)
         }
         super.viewDidDisappear(animated)
     }

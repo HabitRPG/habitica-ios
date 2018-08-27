@@ -1,0 +1,63 @@
+/* Class = "UILabel"; text = "Auto Allocate Points"; ObjectID = "5gQ-dz-Izv"; */
+"5gQ-dz-Izv.text" = "Verdeel punten automatisch";
+
+/* Class = "UILabel"; text = "Distribute based on class"; ObjectID = "8Pt-YU-W3u"; */
+"8Pt-YU-W3u.text" = "Verdeel op basis van klasse";
+
+/* Class = "UINavigationItem"; title = "Spells"; ObjectID = "83d-fh-zsv"; */
+"83d-fh-zsv.title" = "Toverspreuken";
+
+/* Class = "UILabel"; text = "Strength"; ObjectID = "AIz-nP-TRZ"; */
+"AIz-nP-TRZ.text" = "Kracht";
+
+/* Class = "UILabel"; text = "Increases EXP earned from completing tasks. Also increases your mana cap and how fast mana regenerates over time."; ObjectID = "cnW-Ox-I47"; */
+"cnW-Ox-I47.text" = "Verhoog ervaringspunten die je verdient door taken te voltooien. Verhoogt ook je Mana drempel en hoe snel je Mana terugwint.";
+
+/* Class = "UILabel"; text = "Intelligence"; ObjectID = "d78-r8-q0a"; */
+"d78-r8-q0a.text" = "Intelligentie";
+
+/* Class = "UILabel"; text = "Constitution"; ObjectID = "Ddy-DY-NBy"; */
+"Ddy-DY-NBy.text" = "Lichaam";
+
+/* Class = "UILabel"; text = "Increases the bonus of critical hits and makes them more likely when scoring a task. Also increases damage dealt to bosses. "; ObjectID = "F28-BC-4hw"; */
+"F28-BC-4hw.text" = "Verhoogt de bonus van kritieke aanvallen en zorgt dat deze vaker voorkomen wanneer je een taak aftikt. Verhoogt ook de schade die je aan bazen uitdeelt.";
+
+/* Class = "UILabel"; text = "Distribute evenly"; ObjectID = "GL3-jH-b3q"; */
+"GL3-jH-b3q.text" = "Verdeel gelijkmatig";
+
+/* Class = "UILabel"; text = "Decreases the amount of damage taken from your tasks. Does not decrease the damage received from bosses."; ObjectID = "hfH-um-9Qr"; */
+"hfH-um-9Qr.text" = "Verlaag de hoeveelheid schade van je onvoltooide taken. Verlaagt de schade van bazen niet.";
+
+/* Class = "UILabel"; text = "Use"; ObjectID = "Idt-Ls-oEA"; */
+"Idt-Ls-oEA.text" = "Gebruik";
+
+/* Class = "UINavigationItem"; title = "Stats"; ObjectID = "jad-F6-0UB"; */
+"jad-F6-0UB.title" = "Statistieken";
+
+/* Class = "UILabel"; text = "Stat guide"; ObjectID = "PAm-Rw-4AT"; */
+"PAm-Rw-4AT.text" = "Statistieken gids";
+
+/* Class = "UILabel"; text = "Distribute based on task activity"; ObjectID = "pJ1-2A-yks"; */
+"pJ1-2A-yks.text" = "Verdeel op basis van taakactiviteit";
+
+/* Class = "UILabel"; text = "Perception"; ObjectID = "QVe-qq-d5S"; */
+"QVe-qq-d5S.text" = "Perceptie";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "reg-ed-u0h"; */
+"reg-ed-u0h.text" = "0";
+
+/* Class = "UILabel"; text = "0 Points to Allocate"; ObjectID = "SAQ-Tl-eLi"; */
+"SAQ-Tl-eLi.text" = "0 punten om toe te wijzen";
+
+/* Class = "UILabel"; text = "Character Build"; ObjectID = "VBj-Mm-QQ4"; */
+"VBj-Mm-QQ4.text" = "Karakterbouw";
+
+/* Class = "UILabel"; text = "10"; ObjectID = "VqQ-Ms-Edt"; */
+"VqQ-Ms-Edt.text" = "10";
+
+/* Class = "UILabel"; text = "Increases the likelihood of finding drops when completing Tasks, the daily drop-cap, Streak Bonuses, and the amount of gold awarded for Tasks."; ObjectID = "WLX-vs-pFL"; */
+"WLX-vs-pFL.text" = "Verhoogt de waarschijnlijkheid van het vinden van drops bij het voltooien van taken, de dagelijkse drop-drempel, serie bonussen, en de hoeveelheid  Goud die je verdient door taken te voltooien. ";
+
+/* Class = "UILabel"; text = "Each level earns you one point to assign to an attribute of your choice. You can do so manually, or let the game decide for you using one of the Automatic Allocation options."; ObjectID = "wNh-Vv-aKs"; */
+"wNh-Vv-aKs.text" = "Elk niveau geeft je één punt om toe te wijzen aan een eigenschap van jouw keuze. Je kunt dit handmatig doen of het spel voor jou laten beslissen door gebruik te maken van één van de automatische verdelingsopties.";
+

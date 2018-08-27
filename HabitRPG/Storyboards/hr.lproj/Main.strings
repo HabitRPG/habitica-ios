@@ -1,0 +1,147 @@
+/* Class = "UILabel"; text = "Unlocks at lvl 3"; ObjectID = "2yp-6U-Xpz"; */
+"2yp-6U-Xpz.text" = "Otključava se na lvlu 3";
+
+/* Class = "UITabBarItem"; title = "Habits"; ObjectID = "3G8-SH-Shd"; */
+"3G8-SH-Shd.title" = "Navike";
+
+/* Class = "UISegmentedControl"; 3ow-rh-Fzj.segmentTitles[0] = "Slim"; ObjectID = "3ow-rh-Fzj"; */
+"3ow-rh-Fzj.segmentTitles[0]" = "Mršavo";
+
+/* Class = "UISegmentedControl"; 3ow-rh-Fzj.segmentTitles[1] = "Broad"; ObjectID = "3ow-rh-Fzj"; */
+"3ow-rh-Fzj.segmentTitles[1]" = "Široko";
+
+/* Class = "UINavigationItem"; title = "Pets"; ObjectID = "4dW-yC-5Ar"; */
+"4dW-yC-5Ar.title" = "Ljubimci";
+
+/* Class = "UIBarButtonItem"; title = "Filter"; ObjectID = "7QR-Cq-K2a"; */
+"7QR-Cq-K2a.title" = "Filter";
+
+/* Class = "UINavigationItem"; title = "Items"; ObjectID = "7Sa-Zz-2NE"; */
+"7Sa-Zz-2NE.title" = "Artikli";
+
+/* Class = "UINavigationItem"; title = "Mounts"; ObjectID = "8QD-xr-Tcj"; */
+"8QD-xr-Tcj.title" = "Jahaće životinje";
+
+/* Class = "UILabel"; text = "Buying gems supports the developers \nand helps keep Habitica running"; ObjectID = "421-JA-vci"; */
+"421-JA-vci.text" = "Kupovina dragulja podržava razvojne programere 
+i pomaže u održavanju Habitice";
+
+/* Class = "UINavigationItem"; title = "About"; ObjectID = "970-3u-C37"; */
+"970-3u-C37.title" = "Više o";
+
+/* Class = "UITabBarItem"; title = "Dailies"; ObjectID = "Aco-n2-RnG"; */
+"Aco-n2-RnG.title" = "Svakodnevni zadaci";
+
+/* Class = "UINavigationItem"; title = "Equipment"; ObjectID = "aGP-pV-Lz5"; */
+"aGP-pV-Lz5.title" = "Oprema";
+
+/* Class = "UILabel"; text = "No Benefit"; ObjectID = "BCV-MF-lnn"; */
+"BCV-MF-lnn.text" = "Nema prednosti";
+
+/* Class = "UITabBarItem"; title = "Habits"; ObjectID = "CTh-zS-7ZY"; */
+"CTh-zS-7ZY.title" = "Navike";
+
+/* Class = "UILabel"; text = "Select \"Use Costume\" to equip items to your avatar without affecting the Stats from your Battle Gear! This means that you can dress up your avatar in whatever outfit you like while still having your best Battle Gear equipped."; ObjectID = "d53-K0-Ybv"; */
+"d53-K0-Ybv.text" = "Odaberi "Koristi kostim" kako bi opremio/la artikle za svog avatara bez utjecanja na Statistiku svoje Ratne Opreme! Ovo znači da svog avatara možeš obući kako god hoćeš, a da pritom i dalje imaš opremljenu najbolju Ratnu Opremu.";
+
+/* Class = "UINavigationItem"; title = "Choose User"; ObjectID = "Dal-zI-Dal"; */
+"Dal-zI-Dal.title" = "Odaberi korisnika";
+
+/* Class = "UILabel"; text = "Body Size"; ObjectID = "fXX-FU-yYI"; */
+"fXX-FU-yYI.text" = "Veličina tijela";
+
+/* Class = "UINavigationItem"; title = "Rewards"; ObjectID = "HHL-mH-FJc"; */
+"HHL-mH-FJc.title" = "Nagrade";
+
+/* Class = "UIBarButtonItem"; title = "Clear"; ObjectID = "hIC-Qf-w8a"; */
+"hIC-Qf-w8a.title" = "Očisti";
+
+/* Class = "UINavigationItem"; title = "Scan Code"; ObjectID = "HJa-qf-ea2"; */
+"HJa-qf-ea2.title" = "Skeniraj kod";
+
+/* Class = "UINavigationItem"; title = "Menu"; ObjectID = "hnF-ml-Qfo"; */
+"hnF-ml-Qfo.title" = "Izbornik";
+
+/* Class = "UITabBarItem"; title = "Menu"; ObjectID = "hyj-Mf-lvH"; */
+"hyj-Mf-lvH.title" = "Izbornik";
+
+/* Class = "UINavigationItem"; title = "News"; ObjectID = "Jni-km-FCZ"; */
+"Jni-km-FCZ.title" = "Vijesti";
+
+/* Class = "UILabel"; text = "Become a subscriber and you’ll get these useful benefits:"; ObjectID = "lb7-8k-2uz"; */
+"lb7-8k-2uz.text" = "Postani pretplatnik i dobit ćeš ove korisne prednosti:";
+
+/* Class = "UIBarButtonItem"; title = "Filter"; ObjectID = "lJN-5G-qrz"; */
+"lJN-5G-qrz.title" = "Filter";
+
+/* Class = "UIBarButtonItem"; title = "Group By"; ObjectID = "mdo-xN-SW4"; */
+"mdo-xN-SW4.title" = "Grupiraj po";
+
+/* Class = "UITabBarItem"; title = "To-Dos"; ObjectID = "Np7-ws-fF6"; */
+"Np7-ws-fF6.title" = "Zadaci";
+
+/* Class = "UILabel"; text = "Buy All"; ObjectID = "Ou7-Ct-HER"; */
+"Ou7-Ct-HER.text" = "Kupi sve";
+
+/* Class = "UIButton"; normalTitle = "Restore Purchase"; ObjectID = "P89-QO-UcF"; */
+"P89-QO-UcF.normalTitle" = "Vrati kupljeno";
+
+/* Class = "UITabBarItem"; title = "Dailies"; ObjectID = "pdW-W9-wj6"; */
+"pdW-W9-wj6.title" = "Svakodnevni zadaci";
+
+/* Class = "UIBarButtonItem"; title = "Filter"; ObjectID = "r2M-pt-ZEv"; */
+"r2M-pt-ZEv.title" = "Filter";
+
+/* Class = "UINavigationItem"; title = "Filter by tags"; ObjectID = "RJ8-HL-bIH"; */
+"RJ8-HL-bIH.title" = "Filtriraj po oznakama";
+
+/* Class = "UINavigationItem"; title = "Mounts"; ObjectID = "si7-7p-nZ9"; */
+"si7-7p-nZ9.title" = "Jahaće životinje";
+
+/* Class = "UINavigationItem"; title = "FAQ"; ObjectID = "sni-tf-k5c"; */
+"sni-tf-k5c.title" = "ČPP";
+
+/* Class = "UILabel"; text = "Two-Handed"; ObjectID = "StQ-3d-kbx"; */
+"StQ-3d-kbx.text" = "Dvoručno";
+
+/* Class = "UINavigationItem"; title = "To-Dos"; ObjectID = "Tis-dF-qId"; */
+"Tis-dF-qId.title" = "Zadaci";
+
+/* Class = "UITabBarItem"; title = "To-Dos"; ObjectID = "TXB-iK-KhP"; */
+"TXB-iK-KhP.title" = "Zadaci";
+
+/* Class = "UIButton"; normalTitle = "Checkout"; ObjectID = "ubx-Z1-yyq"; */
+"ubx-Z1-yyq.normalTitle" = "Odjava";
+
+/* Class = "UINavigationItem"; title = "Habits"; ObjectID = "Ueo-OS-iQj"; */
+"Ueo-OS-iQj.title" = "Navike";
+
+/* Class = "UILabel"; text = "Subscribing supports the developers \nand helps keep Habitica running"; ObjectID = "V5k-go-mwg"; */
+"V5k-go-mwg.text" = "Pretplatama se podržavaju razvojni programeri 
+i pomaže se u održavanju Habitice";
+
+/* Class = "UILabel"; text = "Gems allow you to buy fun extras for \nyour account, including:"; ObjectID = "xhA-8b-NmG"; */
+"xhA-8b-NmG.text" = "Dragulji ti omogućuju kupovinu zabavnih dodataka za 
+svoj račun, uključujući:";
+
+/* Class = "UINavigationItem"; title = "Feed Pet"; ObjectID = "xZ9-Ng-9se"; */
+"xZ9-Ng-9se.title" = "Nahrani Ljubimca";
+
+/* Class = "UIBarButtonItem"; title = "Group By"; ObjectID = "Y9b-tv-h4L"; */
+"Y9b-tv-h4L.title" = "Grupiraj po";
+
+/* Class = "UINavigationItem"; title = "Stable"; ObjectID = "yA7-ap-uv0"; */
+"yA7-ap-uv0.title" = "Staja";
+
+/* Class = "UINavigationItem"; title = "Choose Task"; ObjectID = "Yuh-D9-NY5"; */
+"Yuh-D9-NY5.title" = "Odaberi Zadatak";
+
+/* Class = "UINavigationItem"; title = "Pets"; ObjectID = "zdm-Oo-gvg"; */
+"zdm-Oo-gvg.title" = "Ljubimce";
+
+/* Class = "UINavigationItem"; title = "Dailies"; ObjectID = "zec-6L-pJk"; */
+"zec-6L-pJk.title" = "Svakodnevni zadaci";
+
+/* Class = "UITabBarItem"; title = "Rewards"; ObjectID = "zFI-xr-RjT"; */
+"zFI-xr-RjT.title" = "Nagrade";
+

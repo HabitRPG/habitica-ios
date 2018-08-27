@@ -1,0 +1,42 @@
+/* Class = "UILabel"; text = "Auto Allocate Points"; ObjectID = "5gQ-dz-Izv"; */
+"5gQ-dz-Izv.text" = "Assegnazione Automaticamente i Punti";
+
+/* Class = "UILabel"; text = "Distribute based on class"; ObjectID = "8Pt-YU-W3u"; */
+"8Pt-YU-W3u.text" = "Distribuisci in base alla classe";
+
+/* Class = "UINavigationItem"; title = "Spells"; ObjectID = "83d-fh-zsv"; */
+"83d-fh-zsv.title" = "Incantesimi";
+
+/* Class = "UILabel"; text = "Strength"; ObjectID = "AIz-nP-TRZ"; */
+"AIz-nP-TRZ.text" = "Forza";
+
+/* Class = "UILabel"; text = "Intelligence"; ObjectID = "d78-r8-q0a"; */
+"d78-r8-q0a.text" = "Intelligenza";
+
+/* Class = "UILabel"; text = "Constitution"; ObjectID = "Ddy-DY-NBy"; */
+"Ddy-DY-NBy.text" = "Costituzione";
+
+/* Class = "UILabel"; text = "Distribute evenly"; ObjectID = "GL3-jH-b3q"; */
+"GL3-jH-b3q.text" = "Distribuisci uniformemente";
+
+/* Class = "UILabel"; text = "Use"; ObjectID = "Idt-Ls-oEA"; */
+"Idt-Ls-oEA.text" = "Usa";
+
+/* Class = "UINavigationItem"; title = "Stats"; ObjectID = "jad-F6-0UB"; */
+"jad-F6-0UB.title" = "Statistiche";
+
+/* Class = "UILabel"; text = "Distribute based on task activity"; ObjectID = "pJ1-2A-yks"; */
+"pJ1-2A-yks.text" = "Distribuisci i punti in base alle tue attività";
+
+/* Class = "UILabel"; text = "Perception"; ObjectID = "QVe-qq-d5S"; */
+"QVe-qq-d5S.text" = "Percezione";
+
+/* Class = "UILabel"; text = "0 Points to Allocate"; ObjectID = "SAQ-Tl-eLi"; */
+"SAQ-Tl-eLi.text" = "0 Punti da Assegnare";
+
+/* Class = "UILabel"; text = "Character Build"; ObjectID = "VBj-Mm-QQ4"; */
+"VBj-Mm-QQ4.text" = "Build del Personaggio";
+
+/* Class = "UILabel"; text = "Each level earns you one point to assign to an attribute of your choice. You can do so manually, or let the game decide for you using one of the Automatic Allocation options."; ObjectID = "wNh-Vv-aKs"; */
+"wNh-Vv-aKs.text" = "Ogni volta che sali di livello ottieni un punto da assegnare ad un attributo a tua scelta. Puoi farlo manualmente, o lasciare che se ne occupi il gioco selezionando una delle opzioni di allocazione automatica.";
+

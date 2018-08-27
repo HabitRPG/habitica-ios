@@ -16,8 +16,10 @@ public class TaskLocalRepository: BaseLocalRepository {
     
     func save(userID: String?, task: TaskProtocol, tags: Results<RealmTag>?) {
         if let realmTask = task as? RealmTask {
-            realmTask.userID = userID
-            save(object: realmTask)
+            try! getRealm()?.write {
+                realmTask.userID = userID
+                getRealm()?.add(realmTask, update: true)
+            }
             return
         }
         if let oldTask = getRealm()?.object(ofType: RealmTask.self, forPrimaryKey: task.id) {

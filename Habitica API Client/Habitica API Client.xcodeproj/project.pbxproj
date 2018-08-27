@@ -75,6 +75,9 @@
 		292726B420B70747009DD08A /* APIChallengeMembership.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292726B320B70747009DD08A /* APIChallengeMembership.swift */; };
 		292844EB20DD18380011DC43 /* APIGroupInvitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292844EA20DD18380011DC43 /* APIGroupInvitation.swift */; };
 		292844F120DD37F40011DC43 /* RejectGroupInvitationCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292844F020DD37F40011DC43 /* RejectGroupInvitationCall.swift */; };
+		292AA72020FDF6A30022CC5F /* APIPinResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292AA71F20FDF6A30022CC5F /* APIPinResponse.swift */; };
+		292AA72220FDF6C40022CC5F /* APIPinResponseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292AA72120FDF6C40022CC5F /* APIPinResponseItem.swift */; };
+		292D6C992101F5660078288A /* InviteToGroupCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292D6C982101F5660078288A /* InviteToGroupCall.swift */; };
 		292DEE44204D9D8D0086D5F7 /* Habitica_Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE45204D9D8D0086D5F7 /* Habitica_Models.framework */; };
 		292DEE4B204DA1220086D5F7 /* NetworkAuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE4A204DA1220086D5F7 /* NetworkAuthenticationManager.swift */; };
 		292DEE4F204DA3870086D5F7 /* RetrieveTasksCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE4E204DA3870086D5F7 /* RetrieveTasksCall.swift */; };
@@ -282,6 +285,9 @@
 		292726B320B70747009DD08A /* APIChallengeMembership.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIChallengeMembership.swift; sourceTree = "<group>"; };
 		292844EA20DD18380011DC43 /* APIGroupInvitation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIGroupInvitation.swift; sourceTree = "<group>"; };
 		292844F020DD37F40011DC43 /* RejectGroupInvitationCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RejectGroupInvitationCall.swift; sourceTree = "<group>"; };
+		292AA71F20FDF6A30022CC5F /* APIPinResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIPinResponse.swift; sourceTree = "<group>"; };
+		292AA72120FDF6C40022CC5F /* APIPinResponseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIPinResponseItem.swift; sourceTree = "<group>"; };
+		292D6C982101F5660078288A /* InviteToGroupCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteToGroupCall.swift; sourceTree = "<group>"; };
 		292DEE45204D9D8D0086D5F7 /* Habitica_Models.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_Models.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		292DEE4A204DA1220086D5F7 /* NetworkAuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAuthenticationManager.swift; sourceTree = "<group>"; };
 		292DEE4E204DA3870086D5F7 /* RetrieveTasksCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveTasksCall.swift; sourceTree = "<group>"; };
@@ -480,6 +486,8 @@
 				295E9DF120B3369C00D58D45 /* APIShopCategories.swift */,
 				295611002056D20B00D9711A /* APISkill.swift */,
 				2902798E205835DF006DACB9 /* APIWorldState.swift */,
+				292AA71F20FDF6A30022CC5F /* APIPinResponse.swift */,
+				292AA72120FDF6C40022CC5F /* APIPinResponseItem.swift */,
 			);
 			path = Content;
 			sourceTree = "<group>";
@@ -583,6 +591,7 @@
 				290B6290207E1E76007287C4 /* RetrieveMemberCall.swift */,
 				295FE2C320A4505B00C97BA4 /* UpdateGroupCall.swift */,
 				292844F020DD37F40011DC43 /* RejectGroupInvitationCall.swift */,
+				292D6C982101F5660078288A /* InviteToGroupCall.swift */,
 			);
 			path = Group;
 			sourceTree = "<group>";
@@ -656,14 +665,17 @@
 				2902798020581DE3006DACB9 /* BulkAllocateAttributePointsCall.swift */,
 				290B626E207BA6FB007287C4 /* DeleteAccountCall.swift */,
 				2919FDD62090D2510096A53B /* DeleteInboxMessageCall.swift */,
+				29990DBD20E5218C001ADD8B /* DeregisterPushDeviceCall.swift */,
 				295D42F920936CE400948E7E /* DisableClassesCall.swift */,
 				290B6278207BA8C3007287C4 /* LocalLoginCall.swift */,
 				290B627A207BA9A1007287C4 /* LocalRegisterCall.swift */,
 				2919FDDA2091D3D70096A53B /* MarkInboxAsSeenCall.swift */,
 				2919FDD82090DF1B0096A53B /* PostInboxMessageCall.swift */,
 				295E9DDB20B3060200D58D45 /* PurchaseGemsCall.swift */,
+				29990DBB20E51FDD001ADD8B /* RegisterPushDeviceCall.swift */,
 				290B626C207BA6AB007287C4 /* ResetAccountCall.swift */,
 				296AC81920ADD99900885682 /* RetrieveInAppRewardsCall.swift */,
+				29990DB320E4EB3F001ADD8B /* RetrieveInboxMessagesCall.swift */,
 				29323E182050528C00AC6D6F /* RetrieveUserCall.swift */,
 				294973CB2080FA9400F02AC3 /* ReviveCall.swift */,
 				2919FDE02091DFFE0096A53B /* ReviveUserCall.swift */,
@@ -680,9 +692,6 @@
 				290B6272207BA7D9007287C4 /* UpdateUsernameCall.swift */,
 				290C302D206BD2020066AF5B /* UseSkillCall.swift */,
 				29DBFF0220CE91A500DF9CF2 /* UseTransformationItemCall.swift */,
-				29990DB320E4EB3F001ADD8B /* RetrieveInboxMessagesCall.swift */,
-				29990DBB20E51FDD001ADD8B /* RegisterPushDeviceCall.swift */,
-				29990DBD20E5218C001ADD8B /* DeregisterPushDeviceCall.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -842,7 +851,6 @@
 				29B586EE204D92CF00301955 /* Frameworks */,
 				29B586EF204D92CF00301955 /* Headers */,
 				29B586F0204D92CF00301955 /* Resources */,
-				D6F893229E8C031F12543E9B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -862,7 +870,6 @@
 				29B586F8204D92CF00301955 /* Frameworks */,
 				29B586F9204D92CF00301955 /* Resources */,
 				BF68D5080F76F3771F799003 /* [CP] Embed Pods Frameworks */,
-				9645B8FAD9A8D74E3E45270C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -953,21 +960,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9645B8FAD9A8D74E3E45270C /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-Habitica API ClientTests/Pods-Habitica API ClientTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		BF68D5080F76F3771F799003 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1020,21 +1012,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D6F893229E8C031F12543E9B /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-Habitica API Client/Pods-Habitica API Client-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1162,6 +1139,7 @@
 				292DEE82204E411C0086D5F7 /* APIChecklistItem.swift in Sources */,
 				29990DBE20E5218C001ADD8B /* DeregisterPushDeviceCall.swift in Sources */,
 				295E9DC220B2DE7200D58D45 /* BuyItemCall.swift in Sources */,
+				292AA72220FDF6C40022CC5F /* APIPinResponseItem.swift in Sources */,
 				295610FD2056CC5D00D9711A /* APIGear.swift in Sources */,
 				295E9DF020B3362A00D58D45 /* APIShop.swift in Sources */,
 				294973C82080F98600F02AC3 /* HatchPetCall.swift in Sources */,
@@ -1195,6 +1173,7 @@
 				296AC81A20ADD99900885682 /* RetrieveInAppRewardsCall.swift in Sources */,
 				29DBFF0F20D15BEA00DF9CF2 /* APIUserNewMessages.swift in Sources */,
 				292DEEA9204F71290086D5F7 /* ScoreTaskCall.swift in Sources */,
+				292AA72020FDF6A30022CC5F /* APIPinResponse.swift in Sources */,
 				295D43022097395800948E7E /* APITutorialStep.swift in Sources */,
 				292DEE95204F4A510086D5F7 /* ResponseObjectCall.swift in Sources */,
 				295FE2C220A4501500C97BA4 /* CreateGroupCall.swift in Sources */,
@@ -1219,6 +1198,7 @@
 				290B6293207E3E24007287C4 /* JoinGroupCall.swift in Sources */,
 				290B6279207BA8C3007287C4 /* LocalLoginCall.swift in Sources */,
 				29B478C320C5330600B6123F /* APIBuyResponse.swift in Sources */,
+				292D6C992101F5660078288A /* InviteToGroupCall.swift in Sources */,
 				294973D02081039300F02AC3 /* InviteToQuestCall.swift in Sources */,
 				29990DBC20E51FDD001ADD8B /* RegisterPushDeviceCall.swift in Sources */,
 				291E1A24209B702B00BA1FFB /* AbortQuestCall.swift in Sources */,

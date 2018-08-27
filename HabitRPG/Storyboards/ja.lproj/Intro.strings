@@ -1,0 +1,87 @@
+/* Class = "UIButton"; normalTitle = "Skip"; ObjectID = "0i8-DP-8iH"; */
+"0i8-DP-8iH.normalTitle" = "スキップ";
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "1De-XG-mrd"; */
+"1De-XG-mrd.normalTitle" = "ログイン";
+
+/* Class = "UILabel"; text = "Progress in the game"; ObjectID = "7wU-9E-BYw"; */
+"7wU-9E-BYw.text" = "ゲームでの進捗";
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "8wd-GG-g6F"; */
+"8wd-GG-g6F.normalTitle" = "ログイン";
+
+/* Class = "UIButton"; normalTitle = "Work"; ObjectID = "9Sv-nF-boz"; */
+"9Sv-nF-boz.normalTitle" = "仕事";
+
+/* Class = "UILabel"; text = "Progress in life"; ObjectID = "C1J-BA-Jk4"; */
+"C1J-BA-Jk4.text" = "実生活での進捗";
+
+/* Class = "UIButton"; normalTitle = "Let's start!"; ObjectID = "Cer-Zg-227"; */
+"Cer-Zg-227.normalTitle" = "はじめよう！";
+
+/* Class = "UILabel"; text = "Next"; ObjectID = "CPE-AH-dQ8"; */
+"CPE-AH-dQ8.text" = "次へ";
+
+/* Class = "UIButton"; normalTitle = "Login with Google"; ObjectID = "fYX-yC-fON"; */
+"fYX-yC-fON.normalTitle" = "Google でログイン";
+
+/* Class = "UIButton"; normalTitle = "Self-Care"; ObjectID = "iYm-7u-1VI"; */
+"iYm-7u-1VI.normalTitle" = "セルフケア";
+
+/* Class = "UILabel"; text = "HAIR"; ObjectID = "Jb5-CA-lT8"; */
+"Jb5-CA-lT8.text" = "髪";
+
+/* Class = "UIButton"; normalTitle = "Randomize"; ObjectID = "K2H-zJ-vTs"; */
+"K2H-zJ-vTs.normalTitle" = "ランダム化";
+
+/* Class = "UIButton"; normalTitle = "Chores"; ObjectID = "kJd-TG-HlB"; */
+"kJd-TG-HlB.normalTitle" = "雑用";
+
+/* Class = "UILabel"; text = "Keep your goals on track with help from your friends. Support each other in life and in battle as you improve together!"; ObjectID = "MLQ-Gm-uoj"; */
+"MLQ-Gm-uoj.text" = "友達の助けを借りて目標に向かって進みましょう。実生活でもバトルでもお互いに支え合い一緒に成長しましょう！";
+
+/* Class = "UILabel"; text = "Welcome to"; ObjectID = "n39-ny-0cS"; */
+"n39-ny-0cS.text" = "ようこそ";
+
+/* Class = "UILabel"; text = "It’s time to have fun while you get things done. Join over 2 million others improving their life one task at a time."; ObjectID = "neo-od-L7b"; */
+"neo-od-L7b.text" = "仕事を片付けながら楽しみも満喫できる時代がやってきました。200万人のHabiticaの民とともに、あなたの人生もタスクも一気に改善しましょう。";
+
+/* Class = "UIButton"; normalTitle = "Register"; ObjectID = "Ohf-iu-Phe"; */
+"Ohf-iu-Phe.normalTitle" = "登録";
+
+/* Class = "UIButton"; normalTitle = "School"; ObjectID = "qdP-gX-YYc"; */
+"qdP-gX-YYc.normalTitle" = "学校";
+
+/* Class = "UIButton"; normalTitle = "Creativity"; ObjectID = "r9x-6o-A2F"; */
+"r9x-6o-A2F.normalTitle" = "創造性";
+
+/* Class = "UILabel"; text = "SKIN"; ObjectID = "teJ-1y-V0M"; */
+"teJ-1y-V0M.text" = "肌";
+
+/* Class = "UILabel"; text = "BODY"; ObjectID = "u2M-vv-5Dd"; */
+"u2M-vv-5Dd.text" = "胴";
+
+/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "uAN-kx-bnR"; */
+"uAN-kx-bnR.normalTitle" = "戻る";
+
+/* Class = "UIButton"; normalTitle = "Health"; ObjectID = "UOx-cX-pif"; */
+"UOx-cX-pif.normalTitle" = "体力";
+
+/* Class = "UIButton"; normalTitle = "Login with Facebook"; ObjectID = "xka-dX-nD0"; */
+"xka-dX-nD0.normalTitle" = "Facebookでログイン";
+
+/* Class = "UILabel"; text = "Fight monsters"; ObjectID = "Y7i-gL-CVx"; */
+"Y7i-gL-CVx.text" = "モンスターと戦う";
+
+/* Class = "UIButton"; normalTitle = "Exercise"; ObjectID = "YG9-k8-OkO"; */
+"YG9-k8-OkO.normalTitle" = "運動";
+
+/* Class = "UILabel"; text = "Unlock features in the game by checking off your real life tasks. Earn armor, pets, and more as rewards for meeting your goals. "; ObjectID = "zAw-Xd-Z07"; */
+"zAw-Xd-Z07.text" = "現実世界のタスクを完了することで、ゲーム内の機能がアンロックされます。自分の目標を達成したごほうびに、装備やペット、その他のいろいろなものを手に入れましょう。";
+
+/* Class = "UILabel"; text = "EXTRAS"; ObjectID = "Zha-R5-vQB"; */
+"Zha-R5-vQB.text" = "特別";
+
+/* Class = "UILabel"; text = "Get social"; ObjectID = "Zie-HC-D1t"; */
+"Zie-HC-D1t.text" = "友達とつながる";
+

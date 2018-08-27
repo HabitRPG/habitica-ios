@@ -1,0 +1,147 @@
+/* Class = "UILabel"; text = "Unlocks at lvl 3"; ObjectID = "2yp-6U-Xpz"; */
+"2yp-6U-Xpz.text" = "Se deblochează la nivelul 3";
+
+/* Class = "UITabBarItem"; title = "Habits"; ObjectID = "3G8-SH-Shd"; */
+"3G8-SH-Shd.title" = "Obiceiuri";
+
+/* Class = "UISegmentedControl"; 3ow-rh-Fzj.segmentTitles[0] = "Slim"; ObjectID = "3ow-rh-Fzj"; */
+"3ow-rh-Fzj.segmentTitles[0]" = "Suplu(ă)";
+
+/* Class = "UISegmentedControl"; 3ow-rh-Fzj.segmentTitles[1] = "Broad"; ObjectID = "3ow-rh-Fzj"; */
+"3ow-rh-Fzj.segmentTitles[1]" = "Trupeș(ă)";
+
+/* Class = "UINavigationItem"; title = "Pets"; ObjectID = "4dW-yC-5Ar"; */
+"4dW-yC-5Ar.title" = "Animale de companie";
+
+/* Class = "UIBarButtonItem"; title = "Filter"; ObjectID = "7QR-Cq-K2a"; */
+"7QR-Cq-K2a.title" = "Filtru";
+
+/* Class = "UINavigationItem"; title = "Items"; ObjectID = "7Sa-Zz-2NE"; */
+"7Sa-Zz-2NE.title" = "Obiecte";
+
+/* Class = "UINavigationItem"; title = "Mounts"; ObjectID = "8QD-xr-Tcj"; */
+"8QD-xr-Tcj.title" = "Animale de călărit";
+
+/* Class = "UILabel"; text = "Buying gems supports the developers \nand helps keep Habitica running"; ObjectID = "421-JA-vci"; */
+"421-JA-vci.text" = "Cumpărarea nestematelor îi ajută pe programatori
+și ajută la păstrarea Habitica în funcțiune";
+
+/* Class = "UINavigationItem"; title = "About"; ObjectID = "970-3u-C37"; */
+"970-3u-C37.title" = "Despre noi";
+
+/* Class = "UITabBarItem"; title = "Dailies"; ObjectID = "Aco-n2-RnG"; */
+"Aco-n2-RnG.title" = "Cotidiene";
+
+/* Class = "UINavigationItem"; title = "Equipment"; ObjectID = "aGP-pV-Lz5"; */
+"aGP-pV-Lz5.title" = "Echipament";
+
+/* Class = "UILabel"; text = "No Benefit"; ObjectID = "BCV-MF-lnn"; */
+"BCV-MF-lnn.text" = "Niciun Beneficiu";
+
+/* Class = "UITabBarItem"; title = "Habits"; ObjectID = "CTh-zS-7ZY"; */
+"CTh-zS-7ZY.title" = "Obiceiuri";
+
+/* Class = "UILabel"; text = "Select \"Use Costume\" to equip items to your avatar without affecting the Stats from your Battle Gear! This means that you can dress up your avatar in whatever outfit you like while still having your best Battle Gear equipped."; ObjectID = "d53-K0-Ybv"; */
+"d53-K0-Ybv.text" = "Selectează ”Utilizează Costum” pentru a-ți echipa avatarul cu articole, fără a-ți lăsa Statusul să fie afectat de către Echipamentul de Luptă! Asta înseamnă că-ți poți îmbrăca avatarul în orice echipament dorești, păstrând în același timp Echipamentul de Luptă echipat.";
+
+/* Class = "UINavigationItem"; title = "Choose User"; ObjectID = "Dal-zI-Dal"; */
+"Dal-zI-Dal.title" = "Alege Utilizatorul";
+
+/* Class = "UILabel"; text = "Body Size"; ObjectID = "fXX-FU-yYI"; */
+"fXX-FU-yYI.text" = "Dimensiunile Corpului";
+
+/* Class = "UINavigationItem"; title = "Rewards"; ObjectID = "HHL-mH-FJc"; */
+"HHL-mH-FJc.title" = "Recompense";
+
+/* Class = "UIBarButtonItem"; title = "Clear"; ObjectID = "hIC-Qf-w8a"; */
+"hIC-Qf-w8a.title" = "Șterge";
+
+/* Class = "UINavigationItem"; title = "Scan Code"; ObjectID = "HJa-qf-ea2"; */
+"HJa-qf-ea2.title" = "Scanează Codul";
+
+/* Class = "UINavigationItem"; title = "Menu"; ObjectID = "hnF-ml-Qfo"; */
+"hnF-ml-Qfo.title" = "Meniu";
+
+/* Class = "UITabBarItem"; title = "Menu"; ObjectID = "hyj-Mf-lvH"; */
+"hyj-Mf-lvH.title" = "Meniu";
+
+/* Class = "UINavigationItem"; title = "News"; ObjectID = "Jni-km-FCZ"; */
+"Jni-km-FCZ.title" = "Noutăți";
+
+/* Class = "UILabel"; text = "Become a subscriber and you’ll get these useful benefits:"; ObjectID = "lb7-8k-2uz"; */
+"lb7-8k-2uz.text" = "Abonează-te și primește următoarele beneficii utile:";
+
+/* Class = "UIBarButtonItem"; title = "Filter"; ObjectID = "lJN-5G-qrz"; */
+"lJN-5G-qrz.title" = "Filtru";
+
+/* Class = "UIBarButtonItem"; title = "Group By"; ObjectID = "mdo-xN-SW4"; */
+"mdo-xN-SW4.title" = "Grupează în funcție de";
+
+/* Class = "UITabBarItem"; title = "To-Dos"; ObjectID = "Np7-ws-fF6"; */
+"Np7-ws-fF6.title" = "Sarcini";
+
+/* Class = "UILabel"; text = "Buy All"; ObjectID = "Ou7-Ct-HER"; */
+"Ou7-Ct-HER.text" = "Cumpără Tot";
+
+/* Class = "UIButton"; normalTitle = "Restore Purchase"; ObjectID = "P89-QO-UcF"; */
+"P89-QO-UcF.normalTitle" = "Restaurare Achiziție";
+
+/* Class = "UITabBarItem"; title = "Dailies"; ObjectID = "pdW-W9-wj6"; */
+"pdW-W9-wj6.title" = "Cotidiene";
+
+/* Class = "UIBarButtonItem"; title = "Filter"; ObjectID = "r2M-pt-ZEv"; */
+"r2M-pt-ZEv.title" = "Filtru";
+
+/* Class = "UINavigationItem"; title = "Filter by tags"; ObjectID = "RJ8-HL-bIH"; */
+"RJ8-HL-bIH.title" = "Filtrare în funcție de etichete";
+
+/* Class = "UINavigationItem"; title = "Mounts"; ObjectID = "si7-7p-nZ9"; */
+"si7-7p-nZ9.title" = "Animale de călărit";
+
+/* Class = "UINavigationItem"; title = "FAQ"; ObjectID = "sni-tf-k5c"; */
+"sni-tf-k5c.title" = "Întrebări frecvente";
+
+/* Class = "UILabel"; text = "Two-Handed"; ObjectID = "StQ-3d-kbx"; */
+"StQ-3d-kbx.text" = "Manevrat cu două mâini";
+
+/* Class = "UINavigationItem"; title = "To-Dos"; ObjectID = "Tis-dF-qId"; */
+"Tis-dF-qId.title" = "Sarcini";
+
+/* Class = "UITabBarItem"; title = "To-Dos"; ObjectID = "TXB-iK-KhP"; */
+"TXB-iK-KhP.title" = "Sarcini";
+
+/* Class = "UIButton"; normalTitle = "Checkout"; ObjectID = "ubx-Z1-yyq"; */
+"ubx-Z1-yyq.normalTitle" = "Plată";
+
+/* Class = "UINavigationItem"; title = "Habits"; ObjectID = "Ueo-OS-iQj"; */
+"Ueo-OS-iQj.title" = "Obiceiuri";
+
+/* Class = "UILabel"; text = "Subscribing supports the developers \nand helps keep Habitica running"; ObjectID = "V5k-go-mwg"; */
+"V5k-go-mwg.text" = "Abonarea îi ajută pe programatori
+și ajută la păstrarea Habitica în funcțiune";
+
+/* Class = "UILabel"; text = "Gems allow you to buy fun extras for \nyour account, including:"; ObjectID = "xhA-8b-NmG"; */
+"xhA-8b-NmG.text" = "Nestematele îți permit să cumperi lucruri extra pentru 
+contul tău, incluzând:";
+
+/* Class = "UINavigationItem"; title = "Feed Pet"; ObjectID = "xZ9-Ng-9se"; */
+"xZ9-Ng-9se.title" = "Hrănește Animalul de Companie";
+
+/* Class = "UIBarButtonItem"; title = "Group By"; ObjectID = "Y9b-tv-h4L"; */
+"Y9b-tv-h4L.title" = "Grupează în funcție de";
+
+/* Class = "UINavigationItem"; title = "Stable"; ObjectID = "yA7-ap-uv0"; */
+"yA7-ap-uv0.title" = "Grajd";
+
+/* Class = "UINavigationItem"; title = "Choose Task"; ObjectID = "Yuh-D9-NY5"; */
+"Yuh-D9-NY5.title" = "Alege Sarcina";
+
+/* Class = "UINavigationItem"; title = "Pets"; ObjectID = "zdm-Oo-gvg"; */
+"zdm-Oo-gvg.title" = "Animale de companie";
+
+/* Class = "UINavigationItem"; title = "Dailies"; ObjectID = "zec-6L-pJk"; */
+"zec-6L-pJk.title" = "Cotidiene";
+
+/* Class = "UITabBarItem"; title = "Rewards"; ObjectID = "zFI-xr-RjT"; */
+"zFI-xr-RjT.title" = "Recompense";
+

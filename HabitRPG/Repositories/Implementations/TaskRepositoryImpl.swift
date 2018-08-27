@@ -102,13 +102,11 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
             ToastManager.show(toast: toastView)
             
             if let drop = response.temp?.drop {
-                var dialog = "You found a \(drop.key ?? "")"
-                if drop.type?.lowercased() == "food", let name = drop.dialog {
-                    dialog = "You found \(name)"
-                } else if let name = drop.dialog {
-                    dialog = "You found a \(name) \(drop.type ?? "")"
+                var dialog = drop.dialog
+                if dialog == nil {
+                    dialog = "You found a \(drop.key ?? "")"
                 }
-                ToastManager.show(text: dialog, color: .gray)
+                ToastManager.show(text: dialog ?? "", color: .gray)
             }
         }).map({ (response, _) in
             return response
@@ -192,10 +190,13 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
     }
     
     func deleteTask(_ task: TaskProtocol) -> Signal<EmptyResponseProtocol?, NoError> {
+        if !task.isValid {
+            return Signal.empty
+        }
         let call = DeleteTaskCall(task: task)
         call.fire()
         call.httpResponseSignal.observeValues { (response) in
-            if response.statusCode == 200 {
+            if response.statusCode == 200, task.isValid {
                 self.localRepository.deleteTask(task)
             }
         }

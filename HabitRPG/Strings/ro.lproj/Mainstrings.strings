@@ -1,0 +1,789 @@
+/* (No Comment) */
+"active" = "Active";
+
+/* (No Comment) */
+"animal_ears" = "Animal Ears";
+
+/* (No Comment) */
+"avatar.background" = "Imagine de Fundal";
+
+/* (No Comment) */
+"avatar.bangs" = "Breton";
+
+/* (No Comment) */
+"avatar.beard" = "Barbă";
+
+/* (No Comment) */
+"avatar.flower" = "Floare";
+
+/* (No Comment) */
+"avatar.glasses" = "Ochelari";
+
+/* (No Comment) */
+"avatar.hair_style" = "Stilul Părului";
+
+/* (No Comment) */
+"avatar.hairColor" = "Culoarea Părului";
+
+/* (No Comment) */
+"avatar.head" = "Cap";
+
+/* (No Comment) */
+"avatar.mustache" = "Mustață";
+
+/* (No Comment) */
+"avatar.shirt" = "Tricou";
+
+/* (No Comment) */
+"avatar.skin" = "Culoarea Pielii";
+
+/* (No Comment) */
+"avatar.wheelchair" = "Scaun cu rotile";
+
+/* (No Comment) */
+"cancel" = "Anulează";
+
+/* (No Comment) */
+"chat" = "Chat";
+
+/* (No Comment) */
+"classes.become_a_class" = "Devino un %@";
+
+/* (No Comment) */
+"classes.class_header" = "%@ Clasă";
+
+/* (No Comment) */
+"classes.healer" = "Vindecător";
+
+/* (No Comment) */
+"classes.healer_description" = "Vracii sunt protejați împotriva loviturilor și aplică această protecție și altora. Cotidienele ratate și obiceiurile proaste nu îi deranjează așa mult și au modalități de recuperare a sănătății în caz de eșec. Fă-te Vraci dacă îți face plăcere să-i ajuți pe alții din echipa ta sau dacă te inspiră ideea de a trișa Moartea prin muncă asiduă!";
+
+/* (No Comment) */
+"classes.mage" = "Mag";
+
+/* (No Comment) */
+"classes.mage_description" = "Magii învață rapid, obținând Experiență și Niveluri mai rapid decât celelalte clase. Primesc de asemenea o cantitate sporită de Mana pentru utilizarea abilităților speciale. Joacă ca și Mag dacă îți place aspectul tactic al Habitica, sau dacă ești puternic motivat de creșterea în nivel și deblocarea facilităților avansate!";
+
+/* (No Comment) */
+"classes.rogue" = "Bandit";
+
+/* (No Comment) */
+"classes.rogue_description" = "Bandiților le place să acumuleze bogății. Ei primesc mai mult Aur decât oricine altcineva și se pricep să găsească obiecte aleator. Discreția specifică le permite să scape de consecințele Cotidienelor ratate. Fă-te Bandit dacă ești puternic motivat de Răsplăți și Realizări, luptându-te pentru pradă și insigne!";
+
+/* (No Comment) */
+"classes.warrior" = "Războinic";
+
+/* (No Comment) */
+"classes.warrior_description" = "Războinicii dau \"critical hits\" mai frecvent și mai bine, fapt ce oferă randomizat Aur bonus, Experiență, și șanse la obiecte pentru îndeplinirea unei sarcini. Ei lovesc de asemenea puternic Căpcăunii monștri. Joacă ca și Războinic dacă ești motivat de recompense lipsite de predictibilitate, în stil-jackpot, sau dacă vrei să distribui lovituri în Expediții împotriva Căpcăunilor!";
+
+/* (No Comment) */
+"close" = "Închide";
+
+/* (No Comment) */
+"confirm" = "Confirmă";
+
+/* (No Comment) */
+"controls" = "Controale";
+
+/* (No Comment) */
+"copied_to_clipboard" = "Copiat în Clipboard";
+
+/* (No Comment) */
+"create" = "Creează";
+
+/* (No Comment) */
+"daily" = "Activitate Zilnică";
+
+/* (No Comment) */
+"delete" = "Șterge";
+
+/* (No Comment) */
+"description" = "Descriere";
+
+/* (No Comment) */
+"details" = "Detalii";
+
+/* (No Comment) */
+"difficulty" = "Dificultate";
+
+/* (No Comment) */
+"discover" = "Descoperă";
+
+/* (No Comment) */
+"edit" = "Modifică";
+
+/* (No Comment) */
+"eggs" = "Ouă";
+
+/* (No Comment) */
+"equip" = "Echipează";
+
+/* (No Comment) */
+"equipment.armor" = "Armură";
+
+/* (No Comment) */
+"equipment.auto_equip" = "Auto-echipează noutățile";
+
+/* (No Comment) */
+"equipment.back" = "Back Accessory";
+
+/* (No Comment) */
+"equipment.battle_gear" = "Echipament de luptă";
+
+/* (No Comment) */
+"equipment.body" = "Body Accessory";
+
+/* (No Comment) */
+"equipment.costume" = "Costum";
+
+/* (No Comment) */
+"equipment.costume_explanation" = "Selectează ”Utilizează Costum” pentru a-ți echipa avatarul cu articole, fără a-ți lăsa Statusul să fie afectat de către Echipamentul de Luptă! Asta înseamnă că-ți poți îmbrăca avatarul în orice echipament dorești, păstrând în același timp Echipamentul de Luptă echipat.";
+
+/* (No Comment) */
+"equipment.eyewear" = "Eyewear";
+
+/* (No Comment) */
+"equipment.head" = "Echipament pentru Cap";
+
+/* (No Comment) */
+"equipment.head_accessory" = "Accesorii pentru Cap";
+
+/* (No Comment) */
+"equipment.nothing_equipped" = "Neechipat";
+
+/* (No Comment) */
+"equipment.off_hand" = "Pe neașteptate";
+
+/* (No Comment) */
+"equipment.use_costume" = "Poartă costum";
+
+/* (No Comment) */
+"equipment.weapon" = "Armă";
+
+/* (No Comment) */
+"experience" = "Experiență";
+
+/* (No Comment) */
+"food" = "Hrană";
+
+/* (No Comment) */
+"glasses" = "Ochelari";
+
+/* (No Comment) */
+"groups.assign_new_leader" = "Numește un Lider Nou";
+
+/* (No Comment) */
+"groups.guild_invitation_invitername" = "%@ te-a invitat să te alături Breslei: %@";
+
+/* (No Comment) */
+"groups.guild_invitation_no_invitername" = "Cineva te-a invitat să te alături Breslei: %@";
+
+/* (No Comment) */
+"groups.leader_challenges" = "Doar liderul poate crea Provocări";
+
+/* (No Comment) */
+"guilds.keep_challenges" = "Păstrează provocările";
+
+/* (No Comment) */
+"guilds.leave_challenges" = "Părăsește Provocările";
+
+/* (No Comment) */
+"guilds.leave_guild_description" = "Dorești să părăsești această breaslă și să păstrezi sau ștergi provocările?";
+
+/* (No Comment) */
+"guilds.leave_guild_title" = "Părăsești Breasla?";
+
+/* (No Comment) */
+"hatch_egg" = "Clocește oul";
+
+/* (No Comment) */
+"hatch_potion" = "Clocește cu o poțiune";
+
+/* (No Comment) */
+"hatching_potions" = "Poțiuni de Eclozat";
+
+/* (No Comment) */
+"headband" = "Bentiță";
+
+/* (No Comment) */
+"health" = "Health";
+
+/* (No Comment) */
+"inactive" = "Inactiv";
+
+/* (No Comment) */
+"inventory.available_until" = "Valabil până la %@";
+
+/* (No Comment) */
+"inventory.hatched" = "Ai clocit un nou animal de companie!";
+
+/* (No Comment) */
+"inventory.hatchedSharing" = "Tocmai am clocit un animalul de companie %@ %@ în Habitica, completându-mi sarcinile din viața reală!";
+
+/* (No Comment) */
+"inventory.no_gems_left" = "Nu mai există Nestemate disponibile luna aceasta. Mai multe vor fi disponibile în primele 3 zile ale fiecărei luni.";
+
+/* (No Comment) */
+"inventory.number_gems_left" = "Nestemate lunare: %d/%d Rămase";
+
+/* (No Comment) */
+"inventory.wrong_class" = "Valabil numai pentru %@. Îți poți schimba clasa din Setări";
+
+/* (No Comment) */
+"invite_party" = "Invită Echipa";
+
+/* (No Comment) */
+"last_activity" = "Ultima activitate %@";
+
+/* (No Comment) */
+"leader" = "Lider";
+
+/* (No Comment) */
+"leave" = "Părăsește";
+
+/* (No Comment) */
+"level_number" = "Nivel %d";
+
+/* (No Comment) */
+"levelup_description" = "Prin atingerea țelurilor din viața reală, ai avansat la Nivelul %ld!";
+
+/* (No Comment) */
+"levelup_share" = "Am atins nivelul %ld în Habitica prin îmbunătățirea obiceiurilor din viața reală!";
+
+/* (No Comment) */
+"levelup_title" = "Ai crescut un nivel!";
+
+/* (No Comment) */
+"mana" = "Mana";
+
+/* (No Comment) */
+"member.last_logged_in" = "Ultima logare pe";
+
+/* (No Comment) */
+"member.member_since" = "Membru din";
+
+/* (No Comment) */
+"menu.about" = "Despre noi";
+
+/* (No Comment) */
+"menu.cast_spells" = "Fă Vrăji";
+
+/* (No Comment) */
+"menu.challenges" = "Chemări";
+
+/* (No Comment) */
+"menu.customize_avatar" = "Personalizează Avatarul";
+
+/* (No Comment) */
+"menu.equipment" = "Echipament";
+
+/* (No Comment) */
+"menu.gems_subscriptions" = "Nestemate & Abonări";
+
+/* (No Comment) */
+"menu.guilds" = "Bresle";
+
+/* (No Comment) */
+"menu.help_faq" = "Ajutor & FAQ";
+
+/* (No Comment) */
+"menu.inventory" = "Inventar";
+
+/* (No Comment) */
+"menu.items" = "Obiecte";
+
+/* (No Comment) */
+"menu.news" = "Noutăți";
+
+/* (No Comment) */
+"menu.party" = "Grup";
+
+/* (No Comment) */
+"menu.select_class" = "Selectează Clasa";
+
+/* (No Comment) */
+"menu.shops" = "Magazine";
+
+/* (No Comment) */
+"menu.social" = "Social";
+
+/* (No Comment) */
+"menu.stable" = "Grajd";
+
+/* (No Comment) */
+"menu.stats" = "Statistici";
+
+/* (No Comment) */
+"menu.tavern" = "Tavernă";
+
+/* (No Comment) */
+"menu.use_skills" = "Utilizează-ți Abilitățile";
+
+/* (No Comment) */
+"monthly" = "Lunar";
+
+/* (No Comment) */
+"mounts" = "Animale de călărit";
+
+/* (No Comment) */
+"my_challenges" = "Provocările mele";
+
+/* (No Comment) */
+"my_guilds" = "Breslele mele";
+
+/* (No Comment) */
+"name" = "Nume";
+
+/* (No Comment) */
+"notes" = "Notițe";
+
+/* (No Comment) */
+"ok" = "OK";
+
+/* (No Comment) */
+"one_month" = "1 Lună";
+
+/* (No Comment) */
+"open" = "Deschide";
+
+/* (No Comment) */
+"open_itunes" = "Deschide iTunes";
+
+/* (No Comment) */
+"open_website" = "Deschide Habitica în Site";
+
+/* (No Comment) */
+"party.invitation_invitername" = "%@ te-a invitat în Ceata lor";
+
+/* (No Comment) */
+"party.invitation_no_invitername" = "Cineva te-a invitat să te alături Cetei lor";
+
+/* (No Comment) */
+"party.invited_to_quest" = "%@ te-a invitat să participi într-o expediție";
+
+/* (No Comment) */
+"party.quest_number_responded" = "%d/%d Membri au răspuns";
+
+/* (No Comment) */
+"party.quest_participant_count" = "%d Participanți";
+
+/* (No Comment) */
+"pending_damage" = "Deteriorare iminentă";
+
+/* (No Comment) */
+"pets" = "Animale de companie";
+
+/* (No Comment) */
+"plain_backgrounds" = "Fundaluri Simple";
+
+/* (No Comment) */
+"purchase_for_gems" = "Achiziționează pentru %d Nestemate";
+
+/* (No Comment) */
+"quests" = "Căutări";
+
+/* (No Comment) */
+"quests.accepted" = "Acceptat";
+
+/* (No Comment) */
+"quests.boss_battle" = "Bătălie împotriva Căpcăunului";
+
+/* (No Comment) */
+"quests.collection_quest" = "Colecția expedițiilor";
+
+/* (No Comment) */
+"quests.confirm_abort" = "Ești sigur că vrei să abandonezi această misiune? Ea va fi abandonată pentru toți din echipa ta și tot progresul va fi pierdut.";
+
+/* (No Comment) */
+"quests.confirm_cancel_invitation" = "Ești sigur că vrei să anulezi această expediție? Toate invitațiile acceptate vor fi pierdute. Posesorul aventurii va păstra răvașul expediției.";
+
+/* (No Comment) */
+"quests.confirm_force_start" = "Ești sigur(ă)? Nu toți membrii cetei s-au alăturat acestei expediții! Expedițiile încep automat când toți jucătorii au acceptat sau refuzat invitația. ";
+
+/* (No Comment) */
+"quests.invitations_header" = "Invitations";
+
+/* (No Comment) */
+"quests.participants_header" = "Participanți";
+
+/* (No Comment) */
+"quests.pending" = "În așteptare";
+
+/* (No Comment) */
+"quests.rejected" = "Refuzat";
+
+/* (No Comment) */
+"quests.started_by" = "Început de %@";
+
+/* (No Comment) */
+"received_mystery_item" = "Deschizi cutia și primești %@";
+
+/* (No Comment) */
+"reset_tips" = "Resetează Sfaturile lui Justin";
+
+/* (No Comment) */
+"resetStreak" = "Resetează Șirul";
+
+/* (No Comment) */
+"resync" = "Resincronizează";
+
+/* (No Comment) */
+"resync_all" = "Resincronizează tot";
+
+/* (No Comment) */
+"resync_task" = "Resincronizează această sarcină";
+
+/* (No Comment) */
+"save" = "Salvează";
+
+/* (No Comment) */
+"search" = "Caută";
+
+/* (No Comment) */
+"sell" = "Vinde pentru %d monezi de aur";
+
+/* (No Comment) */
+"settings.api" = "API";
+
+/* (No Comment) */
+"settings.are_you_sure" = "Sunteți sigur?";
+
+/* (No Comment) */
+"settings.authentication" = "Autentificare";
+
+/* (No Comment) */
+"settings.change_class" = "Schimbă-ți Clasa";
+
+/* (No Comment) */
+"settings.change_class_disclaimer" = "Asta îți va reseta clasa personajului și punctele alocate (le vei primi înapoi pentru a le realoca), și va costa 3 nestemate. ";
+
+/* (No Comment) */
+"settings.clear_cache" = "Curăță Arhiva";
+
+/* (No Comment) */
+"settings.custom_day_start" = "Când începe ziua";
+
+/* (No Comment) */
+"settings.daily_reminder" = "Memento Zilnic";
+
+/* (No Comment) */
+"settings.day_start" = "Începutul Zilei";
+
+/* (No Comment) */
+"settings.disable_all_notifications" = "Dezactivarea tuturor Notificărilor Push";
+
+/* (No Comment) */
+"settings.disable_pm" = "Dezactivează Mesajele Private";
+
+/* (No Comment) */
+"settings.display_notification_badge" = "Afișează Insigna de Notificare";
+
+/* (No Comment) */
+"settings.enable_class_system" = "Activează Sistemul de Clase.";
+
+/* (No Comment) */
+"settings.every_day" = "Zilnic la ora";
+
+/* (No Comment) */
+"settings.fix_characterValues" = "Aranjează Valorile Personajului";
+
+/* (No Comment) */
+"settings.log_out" = "Deconectează-te";
+
+/* (No Comment) */
+"settings.maintenance" = "Mentenanță";
+
+/* (No Comment) */
+"settings.notification_badge" = "Insignă de Notificare";
+
+/* (No Comment) */
+"settings.preferences" = "Preferințe";
+
+/* (No Comment) */
+"settings.profile" = "Profil";
+
+/* (No Comment) */
+"settings.push_notifications" = "Notificări Push";
+
+/* (No Comment) */
+"settings.reload_content" = "Reîncarcă Conținutul";
+
+/* (No Comment) */
+"settings.reminder" = "Memento";
+
+/* (No Comment) */
+"settings.select_class" = "Selectează Clasa";
+
+/* (No Comment) */
+"settings.social" = "Social";
+
+/* (No Comment) */
+"settings.sound_theme" = "Sunetul Temei";
+
+/* (No Comment) */
+"settings.theme_color" = "Culoarea Temei";
+
+/* (No Comment) */
+"settings.user" = "Utilizator";
+
+/* (No Comment) */
+"settings.wrong_password" = "Parolă incorectă";
+
+/* (No Comment) */
+"share" = "Distribuie";
+
+/* (No Comment) */
+"skills.cant_cast_on_challenge_tasks" = "Nu poți face vrăji cu ajutorul unei sarcini dintr-o provocare";
+
+/* (No Comment) */
+"skills.transformation_items" = "Obiecte de Transformare";
+
+/* (No Comment) */
+"skills.unlocks_at" = "Se deblochează la nivelul %d";
+
+/* (No Comment) */
+"skills.use_skill" = "Folosești %@";
+
+/* (No Comment) */
+"skills.used_transformation_item" = "Ai folosit %@";
+
+/* (No Comment) */
+"specialItems" = "Obiecte Speciale";
+
+/* (No Comment) */
+"stable.feed" = "Hrănește";
+
+/* (No Comment) */
+"stable.premium" = "Poțiune Magică";
+
+/* (No Comment) */
+"stable.quest_mounts" = "Animale de călărit obținute din aventuri";
+
+/* (No Comment) */
+"stable.quest_pets" = "Companioni din adventuri";
+
+/* (No Comment) */
+"stable.special_mounts" = "Animale de Călărit Speciale";
+
+/* (No Comment) */
+"stable.special_pets" = "Animale de companie Speciale";
+
+/* (No Comment) */
+"stable.standard" = "Standard";
+
+/* (No Comment) */
+"stable.standard_mounts" = "Animale de Călărit Standard";
+
+/* (No Comment) */
+"stable.standard_pets" = "Animale de companie Standard";
+
+/* (No Comment) */
+"stats.allocated" = "Alocate";
+
+/* (No Comment) */
+"stats.battle_gear" = "Echipament de luptă";
+
+/* (No Comment) */
+"stats.buffs" = "Sporuri";
+
+/* (No Comment) */
+"stats.class_bonus" = "Bonus pentru Clasă";
+
+/* (No Comment) */
+"stats.level" = "Nivel";
+
+/* (No Comment) */
+"stats.no_points_to_allocate" = "0 Puncte de Alocat";
+
+/* (No Comment) */
+"stats.one_point_to_allocate" = "1 Punct de Alocat";
+
+/* (No Comment) */
+"stats.points_to_allocate" = "%d Puncte de Alocat";
+
+/* (No Comment) */
+"summary" = "Rezumat";
+
+/* (No Comment) */
+"sync_error" = "Eroare de Sincronizare";
+
+/* (No Comment) */
+"sync_error_message" = "A apărut o eroare de sincronizare a unor modificări";
+
+/* (No Comment) */
+"tags" = "Etichete";
+
+/* (No Comment) */
+"tasks.daily" = "Activitate Zilnică";
+
+/* (No Comment) */
+"tasks.form.accessibility.disable_negative" = "Dezactivează acțiunea negativă.";
+
+/* (No Comment) */
+"tasks.form.accessibility.disable_positive" = "Dezactivează acțiunea pozitivă.";
+
+/* (No Comment) */
+"tasks.form.accessibility.enable_negative" = "Activează acțiunea negativă.";
+
+/* (No Comment) */
+"tasks.form.accessibility.enable_positive" = "Activează acțiunea pozitivă.";
+
+/* (No Comment) */
+"tasks.form.accessibility.negative_enabled" = "Acțiune negativă a obiceiului activată.";
+
+/* (No Comment) */
+"tasks.form.accessibility.positive_and_negative_enabled" = "Acțiunile pozitive și negative ale obiceiului activate. ";
+
+/* (No Comment) */
+"tasks.form.accessibility.positive_enabled" = "Acțiune pozitivă a obiceiului activată.";
+
+/* (No Comment) */
+"tasks.form.accessibility.set_task_difficulty" = "Modifică dificultatea la %@";
+
+/* (No Comment) */
+"tasks.form.accessibility.task_difficulty" = "Dificultatea este %@";
+
+/* (No Comment) */
+"tasks.form.checklist" = "Listă bife";
+
+/* (No Comment) */
+"tasks.form.clear" = "Șterge";
+
+/* (No Comment) */
+"tasks.form.confirm_delete" = "Ești sigur că vrei să ștergi acest țel?";
+
+/* (No Comment) */
+"tasks.form.controls" = "Controale";
+
+/* (No Comment) */
+"tasks.form.cost" = "Cost";
+
+/* (No Comment) */
+"tasks.form.create" = "%@ Nou";
+
+/* (No Comment) */
+"tasks.form.dailies_title_placeholder" = "Ce vrei să faci în mod regulat?";
+
+/* (No Comment) */
+"tasks.form.day_of_month" = "Zi din lună";
+
+/* (No Comment) */
+"tasks.form.day_of_week" = "Zi din săptămână";
+
+/* (No Comment) */
+"tasks.form.difficulty" = "Dificultate";
+
+/* (No Comment) */
+"tasks.form.due_date" = "Termen limită";
+
+/* (No Comment) */
+"tasks.form.easy" = "Ușor";
+
+/* (No Comment) */
+"tasks.form.edit" = "Editează %@";
+
+/* (No Comment) */
+"tasks.form.every" = "Fiecare";
+
+/* (No Comment) */
+"tasks.form.habit_title_placeholder" = "Ce obiceiuri vrei să întărești sau să schimbi?";
+
+/* (No Comment) */
+"tasks.form.hard" = "Greu";
+
+/* (No Comment) */
+"tasks.form.medium" = "Mediu";
+
+/* (No Comment) */
+"tasks.form.new_checklist_item" = "Obiect nou în listă";
+
+/* (No Comment) */
+"tasks.form.new_reminder" = "Memento nou";
+
+/* (No Comment) */
+"tasks.form.notes_placeholder" = "Include orice notiță care să te ajute";
+
+/* (No Comment) */
+"tasks.form.remind_me" = "Amintește-mi";
+
+/* (No Comment) */
+"tasks.form.reminders" = "Memento-uri";
+
+/* (No Comment) */
+"tasks.form.repeats" = "Repetări";
+
+/* (No Comment) */
+"tasks.form.reset_streak" = "Resetează Șirul";
+
+/* (No Comment) */
+"tasks.form.rewards_title_placeholder" = "Cum vrei să te răsplătești?";
+
+/* (No Comment) */
+"tasks.form.scheduling" = "Programare";
+
+/* (No Comment) */
+"tasks.form.start_date" = "Dată de începere";
+
+/* (No Comment) */
+"tasks.form.tags" = "Etichete";
+
+/* (No Comment) */
+"tasks.form.todos_title_placeholder" = "Ce vrei să faci o singură dată?";
+
+/* (No Comment) */
+"tasks.form.trivial" = "Trivial";
+
+/* (No Comment) */
+"tasks.habit" = "Obicei";
+
+/* (No Comment) */
+"tasks.reward" = "Recompensă";
+
+/* (No Comment) */
+"tasks.todo" = "Sarcină";
+
+/* (No Comment) */
+"theme.blue" = "Albastru";
+
+/* (No Comment) */
+"theme.default_theme" = "Standard";
+
+/* (No Comment) */
+"theme.green" = "Verde";
+
+/* (No Comment) */
+"theme.maroon" = "Maro";
+
+/* (No Comment) */
+"theme.orange" = "Portocaliu";
+
+/* (No Comment) */
+"theme.red" = "Roșu";
+
+/* (No Comment) */
+"theme.teal" = "Turcoaz";
+
+/* (No Comment) */
+"theme.yellow" = "Galben";
+
+/* (No Comment) */
+"title" = "Title";
+
+/* (No Comment) */
+"unequip" = "Dezechipează";
+
+/* (No Comment) */
+"unsubscribe_itunes" = "Nu vrei să mai fii abonat? Poți gestiona abonările în iTunes.";
+
+/* (No Comment) */
+"unsubscribe_website" = "Nu vrei să mai fii abonat? Datorită metodei tale de plată, te poți dezabona numai prin intermediul site-ului. ";
+
+/* (No Comment) */
+"weekly" = "Săptămânal";
+
+/* (No Comment) */
+"x_months" = "%d Luni";
+
+/* (No Comment) */
+"yearly" = "Anual";
+

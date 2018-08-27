@@ -269,6 +269,10 @@ class RealmUser: Object, UserProtocol {
     var needsCron: Bool = false
     var lastCron: Date?
     
+    var isValid: Bool {
+        return !isInvalidated
+    }
+    
     override static func primaryKey() -> String {
         return "id"
     }

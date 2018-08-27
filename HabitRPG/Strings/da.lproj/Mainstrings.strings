@@ -1,0 +1,456 @@
+/* (No Comment) */
+"active" = "Aktiv";
+
+/* (No Comment) */
+"animal_ears" = "Dyreører";
+
+/* (No Comment) */
+"avatar.background" = "Baggrund";
+
+/* (No Comment) */
+"avatar.bangs" = "Pandehår";
+
+/* (No Comment) */
+"avatar.beard" = "Skæg";
+
+/* (No Comment) */
+"avatar.flower" = "Blomst";
+
+/* (No Comment) */
+"avatar.glasses" = "Briller";
+
+/* (No Comment) */
+"avatar.head" = "Hoved";
+
+/* (No Comment) */
+"avatar.mustache" = "Overskæg";
+
+/* (No Comment) */
+"avatar.shirt" = "Trøje";
+
+/* (No Comment) */
+"avatar.wheelchair" = "Kørestol";
+
+/* (No Comment) */
+"cancel" = "Afbryd";
+
+/* (No Comment) */
+"chat" = "Chat";
+
+/* (No Comment) */
+"classes.become_a_class" = "Bliv en %@";
+
+/* (No Comment) */
+"classes.healer" = "Helbreder";
+
+/* (No Comment) */
+"classes.healer_description" = "Helbredere er upåvirkede af skade, og giver denne beskyttelse videre til andre. Oversprungne Daglige og dårlige Vaner tager næppe pippet fra dem, og de har metoder for at genvinde Liv fra fiaskoer. Spil som Helbreder hvis du nyder at hjælpe andre i dit Selskab, eller hvis tanken om at snyde Døden med hårdt arbejde inspirerer dig!";
+
+/* (No Comment) */
+"classes.mage" = "Magiker";
+
+/* (No Comment) */
+"classes.rogue" = "Slyngel";
+
+/* (No Comment) */
+"classes.rogue_description" = "Slyngler elsker at samle sig en formue, eftersom de får mere Guld end nogen anden, og de er dygtige til at finde tilfældige ting. Deres ikoniske Listeevne lader dem undgå konsekvenserne af oversprungne Daglige. Spil  som Slyngel hvis du er stærkt motiveret af Belønninger og Præstationer, og stræber efter bytte og emblemer!";
+
+/* (No Comment) */
+"classes.warrior" = "Kriger";
+
+/* (No Comment) */
+"close" = "Luk";
+
+/* (No Comment) */
+"confirm" = "Bekræft";
+
+/* (No Comment) */
+"create" = "Opret";
+
+/* (No Comment) */
+"daily" = "Daglig opgave";
+
+/* (No Comment) */
+"delete" = "Slet";
+
+/* (No Comment) */
+"description" = "Beskrivelse";
+
+/* (No Comment) */
+"difficulty" = "Sværhedsgrad";
+
+/* (No Comment) */
+"edit" = "Redigér";
+
+/* (No Comment) */
+"eggs" = "Æg";
+
+/* (No Comment) */
+"equip" = "Brug";
+
+/* (No Comment) */
+"equipment.armor" = "Rustning";
+
+/* (No Comment) */
+"equipment.back" = "Ryg-udstyr";
+
+/* (No Comment) */
+"equipment.battle_gear" = "Kampudstyr";
+
+/* (No Comment) */
+"equipment.body" = "Krops-udstyr";
+
+/* (No Comment) */
+"equipment.costume" = "Kostume";
+
+/* (No Comment) */
+"equipment.eyewear" = "Øjenbeklædning";
+
+/* (No Comment) */
+"equipment.head_accessory" = "Hovedbeklædning";
+
+/* (No Comment) */
+"equipment.nothing_equipped" = "Intet Udstyr";
+
+/* (No Comment) */
+"equipment.use_costume" = "Brug kostume";
+
+/* (No Comment) */
+"equipment.weapon" = "Våben";
+
+/* (No Comment) */
+"experience" = "Erfaring";
+
+/* (No Comment) */
+"glasses" = "Briller";
+
+/* (No Comment) */
+"hatching_potions" = "Udrugningseliksirer";
+
+/* (No Comment) */
+"health" = "Liv";
+
+/* (No Comment) */
+"invite_party" = "Invitér Gruppe";
+
+/* (No Comment) */
+"leader" = "Leder";
+
+/* (No Comment) */
+"leave" = "Forlad";
+
+/* (No Comment) */
+"levelup_description" = "Ved at gennemføre dine mål fra den virkelig verden er du steget til Niveau %Id!";
+
+/* (No Comment) */
+"levelup_share" = "Jeg steg til niveau %ld i Habitica ved at forbedre mine vaner i det virkelige liv!";
+
+/* (No Comment) */
+"levelup_title" = "Du gik et niveau op!";
+
+/* (No Comment) */
+"mana" = "Mana";
+
+/* (No Comment) */
+"member.last_logged_in" = "Sidst logget ind";
+
+/* (No Comment) */
+"member.member_since" = "Medlem siden";
+
+/* (No Comment) */
+"menu.about" = "Om";
+
+/* (No Comment) */
+"menu.cast_spells" = "Kast Fortryllelser";
+
+/* (No Comment) */
+"menu.challenges" = "Udfordringer";
+
+/* (No Comment) */
+"menu.customize_avatar" = "Tilpas Avatar";
+
+/* (No Comment) */
+"menu.equipment" = "Udstyr";
+
+/* (No Comment) */
+"menu.guilds" = "Klaner";
+
+/* (No Comment) */
+"menu.help_faq" = "Hjælp & OSS";
+
+/* (No Comment) */
+"menu.inventory" = "Inventar";
+
+/* (No Comment) */
+"menu.items" = "Genstande";
+
+/* (No Comment) */
+"menu.news" = "Nyheder";
+
+/* (No Comment) */
+"menu.party" = "Gruppe";
+
+/* (No Comment) */
+"menu.select_class" = "Vælg Klasse";
+
+/* (No Comment) */
+"menu.shops" = "Markeder";
+
+/* (No Comment) */
+"menu.social" = "Social";
+
+/* (No Comment) */
+"menu.stable" = "Stald";
+
+/* (No Comment) */
+"menu.stats" = "Egenskaber";
+
+/* (No Comment) */
+"menu.tavern" = "Værtshus";
+
+/* (No Comment) */
+"menu.use_skills" = "Brug Evner";
+
+/* (No Comment) */
+"monthly" = "Månedlig ";
+
+/* (No Comment) */
+"mounts" = "Ridedyr";
+
+/* (No Comment) */
+"my_challenges" = "Mine Udfordringer";
+
+/* (No Comment) */
+"my_guilds" = "Mine Klaner";
+
+/* (No Comment) */
+"name" = "Navn";
+
+/* (No Comment) */
+"notes" = "Noter";
+
+/* (No Comment) */
+"ok" = "OK";
+
+/* (No Comment) */
+"party.quest_participant_count" = "%d Deltagere";
+
+/* (No Comment) */
+"pets" = "Kæledyr";
+
+/* (No Comment) */
+"quests" = "Quests";
+
+/* (No Comment) */
+"quests.accepted" = "Accepteret";
+
+/* (No Comment) */
+"quests.confirm_abort" = "Er du sikker på at du vil afbryde missionen? Det vil afbryde den for alle i gruppen og al fremskridt vil gå tabt. Quest-skriftrullen vil blive returneret til quest-lederen.";
+
+/* (No Comment) */
+"quests.confirm_cancel_invitation" = "Er du sikker på at du vil afbryde denne quest? Alle invitation-accepter vil gå tabt. Quest-lederen vil beholde quest-skriftrullen.";
+
+/* (No Comment) */
+"quests.invitations_header" = "Invitationer";
+
+/* (No Comment) */
+"quests.participants_header" = "Deltagere";
+
+/* (No Comment) */
+"quests.pending" = "Ventende";
+
+/* (No Comment) */
+"quests.rejected" = "Afvist";
+
+/* (No Comment) */
+"reset_tips" = "Nulstil Justins Råd";
+
+/* (No Comment) */
+"resetStreak" = "Nulstil stribe";
+
+/* (No Comment) */
+"save" = "Gem";
+
+/* (No Comment) */
+"search" = "Søg";
+
+/* (No Comment) */
+"settings.api" = "API";
+
+/* (No Comment) */
+"settings.are_you_sure" = "Er du sikker?";
+
+/* (No Comment) */
+"settings.authentication" = "Godkendelse";
+
+/* (No Comment) */
+"settings.change_class" = "Skift klasse";
+
+/* (No Comment) */
+"settings.clear_cache" = "Ryd Cache";
+
+/* (No Comment) */
+"settings.custom_day_start" = "Brugerdefineret Dagstart";
+
+/* (No Comment) */
+"settings.daily_reminder" = "Daglig Påmindelse";
+
+/* (No Comment) */
+"settings.day_start" = "Dagstart";
+
+/* (No Comment) */
+"settings.disable_all_notifications" = "Deaktiver alle Push-Notifikationer";
+
+/* (No Comment) */
+"settings.disable_pm" = "Deaktiver Privatbeskeder";
+
+/* (No Comment) */
+"settings.enable_class_system" = "Aktiver klassesystem";
+
+/* (No Comment) */
+"settings.fix_characterValues" = "Ret Karakterværdier";
+
+/* (No Comment) */
+"settings.log_out" = "Log ud";
+
+/* (No Comment) */
+"settings.maintenance" = "Vedligeholdelse";
+
+/* (No Comment) */
+"settings.profile" = "Profil";
+
+/* (No Comment) */
+"settings.push_notifications" = "Push notificationer";
+
+/* (No Comment) */
+"settings.reload_content" = "Genindlæs Indhold";
+
+/* (No Comment) */
+"settings.reminder" = "Påmindelse";
+
+/* (No Comment) */
+"settings.select_class" = "Vælg Klasse";
+
+/* (No Comment) */
+"settings.social" = "Social";
+
+/* (No Comment) */
+"settings.user" = "Bruger";
+
+/* (No Comment) */
+"share" = "Del";
+
+/* (No Comment) */
+"stable.feed" = "Fodr";
+
+/* (No Comment) */
+"stable.quest_mounts" = "Questridedyr";
+
+/* (No Comment) */
+"stable.quest_pets" = "Questkæledyr";
+
+/* (No Comment) */
+"stable.special_mounts" = "Specielle Ridedyr";
+
+/* (No Comment) */
+"stable.special_pets" = "Specielle Kæledyr";
+
+/* (No Comment) */
+"stats.allocated" = "Tildelt";
+
+/* (No Comment) */
+"stats.battle_gear" = "Kampudstyr";
+
+/* (No Comment) */
+"stats.buffs" = "Boostere";
+
+/* (No Comment) */
+"stats.class_bonus" = "Klasse-Bonus";
+
+/* (No Comment) */
+"stats.level" = "Niveau";
+
+/* (No Comment) */
+"summary" = "Resume";
+
+/* (No Comment) */
+"tags" = "Tags";
+
+/* (No Comment) */
+"tasks.daily" = "Daglig opgave";
+
+/* (No Comment) */
+"tasks.form.checklist" = "Tjekliste";
+
+/* (No Comment) */
+"tasks.form.clear" = "Ryd";
+
+/* (No Comment) */
+"tasks.form.confirm_delete" = "Er du sikker på du vil slette denne opgave?";
+
+/* (No Comment) */
+"tasks.form.difficulty" = "Sværhedsgrad";
+
+/* (No Comment) */
+"tasks.form.easy" = "Let";
+
+/* (No Comment) */
+"tasks.form.edit" = "Ret %@";
+
+/* (No Comment) */
+"tasks.form.hard" = "Svær";
+
+/* (No Comment) */
+"tasks.form.medium" = "Medium";
+
+/* (No Comment) */
+"tasks.form.new_checklist_item" = "Nyt tjekliste punkt";
+
+/* (No Comment) */
+"tasks.form.reminders" = "Påmindelser";
+
+/* (No Comment) */
+"tasks.form.repeats" = "Gentager";
+
+/* (No Comment) */
+"tasks.form.reset_streak" = "Nulstil stribe";
+
+/* (No Comment) */
+"tasks.form.tags" = "Tags";
+
+/* (No Comment) */
+"tasks.form.trivial" = "Triviel";
+
+/* (No Comment) */
+"tasks.habit" = "Vane";
+
+/* (No Comment) */
+"tasks.reward" = "Belønning";
+
+/* (No Comment) */
+"tasks.todo" = "To-Do";
+
+/* (No Comment) */
+"theme.blue" = "Blå";
+
+/* (No Comment) */
+"theme.green" = "Grøn";
+
+/* (No Comment) */
+"theme.red" = "Rød";
+
+/* (No Comment) */
+"theme.yellow" = "Gul";
+
+/* (No Comment) */
+"title" = "Titel";
+
+/* (No Comment) */
+"unequip" = "Fjern";
+
+/* (No Comment) */
+"weekly" = "Ugentlig";
+
+/* (No Comment) */
+"yearly" = "Årlig";
+

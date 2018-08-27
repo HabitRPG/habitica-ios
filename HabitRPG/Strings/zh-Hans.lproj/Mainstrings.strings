@@ -1,0 +1,390 @@
+/* (No Comment) */
+"active" = "进行中";
+
+/* (No Comment) */
+"animal_ears" = "兽耳";
+
+/* (No Comment) */
+"avatar.background" = "背景";
+
+/* (No Comment) */
+"avatar.bangs" = "刘海";
+
+/* (No Comment) */
+"avatar.beard" = "胡子";
+
+/* (No Comment) */
+"avatar.flower" = "花";
+
+/* (No Comment) */
+"avatar.glasses" = "眼镜";
+
+/* (No Comment) */
+"avatar.head" = "头部";
+
+/* (No Comment) */
+"avatar.mustache" = "胡须";
+
+/* (No Comment) */
+"avatar.shirt" = "上衣";
+
+/* (No Comment) */
+"avatar.wheelchair" = "轮椅";
+
+/* (No Comment) */
+"cancel" = "取消";
+
+/* (No Comment) */
+"chat" = "聊天";
+
+/* (No Comment) */
+"classes.become_a_class" = "成为 %@";
+
+/* (No Comment) */
+"classes.healer" = "医者";
+
+/* (No Comment) */
+"classes.healer_description" = "医者面对伤害毫无惧色，他能给予其他人保护。未完成的每日任务和坏习惯不会对他们造成太大的困扰，他们还能治疗损失的生命值。如果你喜欢协助队伍中的其他人，或者戏弄死神让你激情四射，那就成为医者吧。";
+
+/* (No Comment) */
+"classes.mage" = "法师";
+
+/* (No Comment) */
+"classes.rogue" = "盗贼";
+
+/* (No Comment) */
+"classes.rogue_description" = "盗贼热衷于积累财富，比其他人获得更多的金币，还擅长寻找随机物品。他们标志性的潜行技能使得他们能够躲避未完成的日常带来的伤害。如果你希望获得更多的奖励，成就，掉落以及徽章，来玩盗贼吧！";
+
+/* (No Comment) */
+"classes.warrior" = "战士";
+
+/* (No Comment) */
+"close" = "关闭";
+
+/* (No Comment) */
+"daily" = "每日";
+
+/* (No Comment) */
+"delete" = "删除";
+
+/* (No Comment) */
+"description" = "描述";
+
+/* (No Comment) */
+"difficulty" = "难度";
+
+/* (No Comment) */
+"discover" = "发现";
+
+/* (No Comment) */
+"equip" = "装备";
+
+/* (No Comment) */
+"equipment.armor" = "装备";
+
+/* (No Comment) */
+"equipment.battle_gear" = "战斗装备";
+
+/* (No Comment) */
+"equipment.costume" = "服装";
+
+/* (No Comment) */
+"equipment.eyewear" = "面部装备";
+
+/* (No Comment) */
+"equipment.head_accessory" = "头饰";
+
+/* (No Comment) */
+"equipment.nothing_equipped" = "无装备";
+
+/* (No Comment) */
+"equipment.weapon" = "武器";
+
+/* (No Comment) */
+"experience" = "经验值";
+
+/* (No Comment) */
+"glasses" = "眼镜";
+
+/* (No Comment) */
+"health" = "生命值";
+
+/* (No Comment) */
+"invite_party" = "邀请队伍";
+
+/* (No Comment) */
+"leader" = "会长";
+
+/* (No Comment) */
+"leave" = "离开";
+
+/* (No Comment) */
+"levelup_description" = "通过完成现实世界中的目标，你已经达到了%Id级！";
+
+/* (No Comment) */
+"levelup_share" = "我在Habitica中通过改善我现实生活中的习惯到达了%ld级！";
+
+/* (No Comment) */
+"levelup_title" = "你升级了！";
+
+/* (No Comment) */
+"mana" = "魔法值";
+
+/* (No Comment) */
+"member.last_logged_in" = "上一次登陆时间";
+
+/* (No Comment) */
+"member.member_since" = "成员自";
+
+/* (No Comment) */
+"menu.about" = "关于";
+
+/* (No Comment) */
+"menu.cast_spells" = "施展法术";
+
+/* (No Comment) */
+"menu.challenges" = "挑战";
+
+/* (No Comment) */
+"menu.customize_avatar" = "自定角色";
+
+/* (No Comment) */
+"menu.equipment" = "装备";
+
+/* (No Comment) */
+"menu.gems_subscriptions" = "宝石&定期捐助";
+
+/* (No Comment) */
+"menu.guilds" = "工会";
+
+/* (No Comment) */
+"menu.help_faq" = "帮助与FAQ";
+
+/* (No Comment) */
+"menu.inventory" = "物品栏";
+
+/* (No Comment) */
+"menu.items" = "物品";
+
+/* (No Comment) */
+"menu.news" = "新闻";
+
+/* (No Comment) */
+"menu.party" = "队伍";
+
+/* (No Comment) */
+"menu.select_class" = "选择职业";
+
+/* (No Comment) */
+"menu.shops" = "商店";
+
+/* (No Comment) */
+"menu.social" = "社交";
+
+/* (No Comment) */
+"menu.tavern" = "酒馆";
+
+/* (No Comment) */
+"menu.use_skills" = "使用技能";
+
+/* (No Comment) */
+"monthly" = "每月";
+
+/* (No Comment) */
+"mounts" = "坐骑";
+
+/* (No Comment) */
+"my_challenges" = "我的挑战";
+
+/* (No Comment) */
+"my_guilds" = "我的工会";
+
+/* (No Comment) */
+"name" = "名称";
+
+/* (No Comment) */
+"notes" = "备注";
+
+/* (No Comment) */
+"ok" = "OK";
+
+/* (No Comment) */
+"open" = "打开";
+
+/* (No Comment) */
+"party.quest_participant_count" = "%d位参与者";
+
+/* (No Comment) */
+"pets" = "宠物";
+
+/* (No Comment) */
+"quests" = "任务";
+
+/* (No Comment) */
+"quests.accepted" = "已接受";
+
+/* (No Comment) */
+"quests.participants_header" = "参与者";
+
+/* (No Comment) */
+"quests.pending" = "未决定";
+
+/* (No Comment) */
+"reset_tips" = "重设Justin的提示";
+
+/* (No Comment) */
+"save" = "保存";
+
+/* (No Comment) */
+"search" = "搜索";
+
+/* (No Comment) */
+"settings.api" = "API";
+
+/* (No Comment) */
+"settings.are_you_sure" = "你确定吗？";
+
+/* (No Comment) */
+"settings.authentication" = "认证";
+
+/* (No Comment) */
+"settings.change_class" = "改变职业";
+
+/* (No Comment) */
+"settings.change_class_disclaimer" = "这将会重置你角色职业和已经分配的属性点(它们将会被返还让你重新分配)，消耗3个宝石。";
+
+/* (No Comment) */
+"settings.clear_cache" = "清空缓存";
+
+/* (No Comment) */
+"settings.custom_day_start" = "自定义起始日期";
+
+/* (No Comment) */
+"settings.daily_reminder" = "每日任务提醒";
+
+/* (No Comment) */
+"settings.day_start" = "起始日期";
+
+/* (No Comment) */
+"settings.disable_all_notifications" = "关闭推送通知";
+
+/* (No Comment) */
+"settings.disable_pm" = "关闭私人消息";
+
+/* (No Comment) */
+"settings.display_notification_badge" = "展示通知徽章";
+
+/* (No Comment) */
+"settings.enable_class_system" = "开启职业系统";
+
+/* (No Comment) */
+"settings.log_out" = "注销";
+
+/* (No Comment) */
+"settings.maintenance" = "维护";
+
+/* (No Comment) */
+"settings.notification_badge" = "通知徽章";
+
+/* (No Comment) */
+"settings.profile" = "角色信息";
+
+/* (No Comment) */
+"settings.push_notifications" = "推送通知";
+
+/* (No Comment) */
+"settings.reload_content" = "重新加载内容";
+
+/* (No Comment) */
+"settings.reminder" = "提醒";
+
+/* (No Comment) */
+"settings.select_class" = "选择职业";
+
+/* (No Comment) */
+"settings.social" = "社交";
+
+/* (No Comment) */
+"settings.user" = "用户";
+
+/* (No Comment) */
+"skills.used_transformation_item" = "你使用了 %@";
+
+/* (No Comment) */
+"stable.feed" = "喂食";
+
+/* (No Comment) */
+"stable.quest_mounts" = "任务坐骑";
+
+/* (No Comment) */
+"stable.quest_pets" = "剧情任务宠物";
+
+/* (No Comment) */
+"stable.special_mounts" = "特殊坐骑";
+
+/* (No Comment) */
+"stable.special_pets" = "特殊宠物";
+
+/* (No Comment) */
+"stats.allocated" = "已降临";
+
+/* (No Comment) */
+"stats.battle_gear" = "战斗装备";
+
+/* (No Comment) */
+"stats.class_bonus" = "职业-加成";
+
+/* (No Comment) */
+"stats.level" = "等级";
+
+/* (No Comment) */
+"tags" = "标签";
+
+/* (No Comment) */
+"tasks.daily" = "每日";
+
+/* (No Comment) */
+"tasks.form.clear" = "清除";
+
+/* (No Comment) */
+"tasks.form.difficulty" = "难度";
+
+/* (No Comment) */
+"tasks.form.easy" = "简单";
+
+/* (No Comment) */
+"tasks.form.edit" = "编辑 %@";
+
+/* (No Comment) */
+"tasks.form.hard" = "困难";
+
+/* (No Comment) */
+"tasks.form.medium" = "中等";
+
+/* (No Comment) */
+"tasks.form.reminders" = "提醒";
+
+/* (No Comment) */
+"tasks.form.tags" = "标签";
+
+/* (No Comment) */
+"tasks.form.trivial" = "琐事";
+
+/* (No Comment) */
+"tasks.habit" = "习惯";
+
+/* (No Comment) */
+"tasks.todo" = "待办事项";
+
+/* (No Comment) */
+"title" = "标题";
+
+/* (No Comment) */
+"unequip" = "卸下";
+
+/* (No Comment) */
+"weekly" = "每周";
+
+/* (No Comment) */
+"yearly" = "每年";
+

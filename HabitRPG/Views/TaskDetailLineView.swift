@@ -80,7 +80,7 @@ class TaskDetailLineView: UIView {
         hasContent = false
         setTag(enabled: task.tags.count > 0)
         setReminder(enabled: task.reminders.count > 0)
-        setChallenge(enabled: task.challengeID != nil)
+        setChallenge(enabled: task.isChallengeTask)
         setStreak(count: task.streak)
 
         if task.type == "habit" {

@@ -9,6 +9,12 @@
 import Foundation
 import Habitica_Models
 
+private struct ChallengeHelper: Decodable {
+    var taskId: String?
+    var id: String?
+    var shortName: String?
+}
+
 public class APITask: TaskProtocol, Codable {
     public var id: String?
     public var text: String?
@@ -29,9 +35,9 @@ public class APITask: TaskProtocol, Codable {
     public var frequency: String?
     public var everyX: Int = 0
     public var challengeID: String?
-    public var tags: [TagProtocol]
-    public var checklist: [ChecklistItemProtocol]
-    public var reminders: [ReminderProtocol]
+    public var tags: [TagProtocol] = []
+    public var checklist: [ChecklistItemProtocol] = []
+    public var reminders: [ReminderProtocol] = []
     public var createdAt: Date?
     public var updatedAt: Date?
     public var startDate: Date?
@@ -40,7 +46,12 @@ public class APITask: TaskProtocol, Codable {
     public var isSynced: Bool = true
     public var isSyncing: Bool = false
     public var isNewTask: Bool = false
-    public var nextDue: [Date]
+    public var nextDue: [Date] = []
+    public var daysOfMonth: [Int] = []
+    public var weeksOfMonth: [Int] = []
+    public var isValid: Bool {
+        return true
+    }
     
     enum CodingKeys: String, CodingKey {
         case id = "_id"
@@ -61,7 +72,7 @@ public class APITask: TaskProtocol, Codable {
         case streak
         case frequency
         case everyX
-        case challengeID
+        case challenge
         case createdAt
         case updatedAt
         case startDate
@@ -71,6 +82,8 @@ public class APITask: TaskProtocol, Codable {
         case reminders
         case weekRepeat = "repeat"
         case nextDue
+        case daysOfMonth
+        case weeksOfMonth
     }
     
     public required init(from decoder: Decoder) throws {
@@ -94,7 +107,8 @@ public class APITask: TaskProtocol, Codable {
         streak = (try? values.decode(Int.self, forKey: .streak)) ?? 0
         frequency = try? values.decode(String.self, forKey: .frequency)
         everyX = (try? values.decode(Int.self, forKey: .everyX)) ?? 0
-        challengeID = try? values.decode(String.self, forKey: .challengeID)
+        let challengeHelper = try? values.decode(ChallengeHelper.self, forKey: .challenge)
+        challengeID = challengeHelper?.id
         createdAt = try? values.decode(Date.self, forKey: .createdAt)
         updatedAt = try? values.decode(Date.self, forKey: .updatedAt)
         startDate = try? values.decode(Date.self, forKey: .startDate)
@@ -106,14 +120,9 @@ public class APITask: TaskProtocol, Codable {
         checklist = (try? values.decode([APIChecklistItem].self, forKey: .checklist)) ?? []
         reminders = (try? values.decode([APIReminder].self, forKey: .reminders)) ?? []
         weekRepeat = try? values.decode(APIWeekRepeat.self, forKey: .weekRepeat)
+        daysOfMonth = (try? values.decode([Int].self, forKey: .daysOfMonth)) ?? []
+        weeksOfMonth = (try? values.decode([Int].self, forKey: .weeksOfMonth)) ?? []
         nextDue = (try? values.decode([Date].self, forKey: .nextDue)) ?? []
-    }
-    
-    public init() {
-        tags = []
-        checklist = []
-        reminders = []
-        nextDue = []
     }
     
     public init(_ taskProtocol: TaskProtocol) {
@@ -145,6 +154,8 @@ public class APITask: TaskProtocol, Codable {
         tags = taskProtocol.tags.map({ (tag) -> APITag in return APITag(tag) })
         weekRepeat = APIWeekRepeat(taskProtocol.weekRepeat!)
         nextDue = taskProtocol.nextDue
+        daysOfMonth = taskProtocol.daysOfMonth
+        weeksOfMonth = taskProtocol.weeksOfMonth
     }
     
     public func encode(to encoder: Encoder) throws {
@@ -168,7 +179,6 @@ public class APITask: TaskProtocol, Codable {
         try? container.encode(streak, forKey: .streak)
         try? container.encode(frequency, forKey: .frequency)
         try? container.encode(everyX, forKey: .everyX)
-        try? container.encode(challengeID, forKey: .challengeID)
         try? container.encode(startDate, forKey: .startDate)
         try? container.encode(createdAt, forKey: .createdAt)
         try? container.encode(updatedAt, forKey: .updatedAt)
@@ -177,5 +187,8 @@ public class APITask: TaskProtocol, Codable {
         try? container.encode(reminders as? [APIReminder], forKey: .reminders)
         try? container.encode(tags.map({ (tag) -> String? in return tag.id }), forKey: .tags)
         try? container.encode(weekRepeat as? APIWeekRepeat, forKey: .weekRepeat)
+        try? container.encode(daysOfMonth, forKey: .daysOfMonth)
+        try? container.encode(weeksOfMonth, forKey: .weeksOfMonth)
+        try? container.encode(value, forKey: .value)
     }
 }

@@ -1,11 +1,14 @@
-/* Class = "UINavigationItem"; title = "Tavern"; ObjectID = "4hr-0m-2xW"; */
-"4hr-0m-2xW.title" = "Herberg";
+/* Class = "UIButton"; normalTitle = "View FAQ"; ObjectID = "1kC-MI-SIq"; */
+"1kC-MI-SIq.normalTitle" = "Zie FAQ";
 
-/* Class = "UILabel"; text = "Challenges"; ObjectID = "5at-ri-wP8"; */
-"5at-ri-wP8.text" = "Uitdagingen";
+/* Class = "UILabel"; text = "Take on quests with friends or on your own. Battle monsters, create Challenges, and help yourself stay accountable through Parties. "; ObjectID = "5SV-Tv-9Xg"; */
+"5SV-Tv-9Xg.text" = "Neem queestes met je vrienden aan of alleen. Strijd tegen monsters, creëer Uitdagingen, en help jezelf verantwoordelijk te blijven met behulp van Gezelschappen.";
 
 /* Class = "UILabel"; text = "PER"; ObjectID = "6fx-6Z-TC6"; */
 "6fx-6Z-TC6.text" = "PER";
+
+/* Class = "UIButton"; normalTitle = "Accept"; ObjectID = "6iy-Mx-6lI"; */
+"6iy-Mx-6lI.normalTitle" = "Accepteren";
 
 /* Class = "UIBarButtonItem"; title = "Profile"; ObjectID = "61t-W4-ftz"; */
 "61t-W4-ftz.title" = "Profiel";
@@ -13,32 +16,56 @@
 /* Class = "UILabel"; text = "Attributes"; ObjectID = "325-ui-y7c"; */
 "325-ui-y7c.text" = "Eigenschappen";
 
-/* Class = "UILabel"; text = "Accept"; ObjectID = "AIV-DO-l6o"; */
-"AIV-DO-l6o.text" = "Accepteren";
+/* Class = "UIButton"; normalTitle = "Report a Bug"; ObjectID = "a2o-0k-TlN"; */
+"a2o-0k-TlN.normalTitle" = "Fout melden";
 
-/* Class = "UINavigationItem"; title = "Quest Invitation"; ObjectID = "ER1-WC-z8Y"; */
-"ER1-WC-z8Y.title" = "Uitnodiging voor queeste";
+/* Class = "UIButton"; normalTitle = "Start a Quest"; ObjectID = "aJd-M0-VrU"; */
+"aJd-M0-VrU.normalTitle" = "Start een queeste";
 
-/* Class = "UILabel"; text = "Write Message"; ObjectID = "FhD-If-CW1"; */
-"FhD-If-CW1.text" = "Schrijf bericht";
+/* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "bou-Ng-0JG"; */
+"bou-Ng-0JG.title" = "Bewerken";
 
-/* Class = "UILabel"; text = "Title"; ObjectID = "Fjm-rk-34f"; */
-"Fjm-rk-34f.text" = "Titel";
+/* Class = "UINavigationItem"; title = "Guilds"; ObjectID = "c0I-zN-kPF"; */
+"c0I-zN-kPF.title" = "Gilden";
 
-/* Class = "UINavigationItem"; title = "Party"; ObjectID = "Fyc-Xu-ygm"; */
-"Fyc-Xu-ygm.title" = "Groep";
+/* Class = "UIButton"; normalTitle = "Create a new Party"; ObjectID = "cAS-hA-W5E"; */
+"cAS-hA-W5E.normalTitle" = "Maak een nieuwe gezelschap aan";
 
-/* Class = "UILabel"; text = "Challenges"; ObjectID = "GBy-zO-kgB"; */
-"GBy-zO-kgB.text" = "Uitdagingen";
+/* Class = "UIButton"; normalTitle = "Reject"; ObjectID = "DVS-qZ-ZmV"; */
+"DVS-qZ-ZmV.normalTitle" = "Afwijzen";
 
-/* Class = "UINavigationItem"; title = "New Message"; ObjectID = "Ib5-SB-HqM"; */
-"Ib5-SB-HqM.title" = "Nieuw bericht";
+/* Class = "UIButton"; normalTitle = "Party Challenges"; ObjectID = "e0g-qd-d5g"; */
+"e0g-qd-d5g.normalTitle" = "gezelschapsuitdagingen";
 
-/* Class = "UINavigationItem"; title = "Guild"; ObjectID = "ImZ-fI-M48"; */
-"ImZ-fI-M48.title" = "Gilde";
+/* Class = "UINavigationItem"; title = "Quest"; ObjectID = "f1L-hl-qqv"; */
+"f1L-hl-qqv.title" = "Queeste";
 
-/* Class = "UILabel"; text = "Detail"; ObjectID = "KHy-wR-CXa"; */
-"KHy-wR-CXa.text" = "Detail";
+/* Class = "UIButton"; normalTitle = "Invite to Guild"; ObjectID = "ftv-T1-K44"; */
+"ftv-T1-K44.normalTitle" = "Uitnodigen voor gilde";
+
+/* Class = "UIButton"; normalTitle = "Leave Guild"; ObjectID = "g8o-zg-Ucv"; */
+"g8o-zg-Ucv.normalTitle" = "Verlaat gilde";
+
+/* Class = "UINavigationItem"; title = "Guild"; ObjectID = "H93-hs-7Lc"; */
+"H93-hs-7Lc.title" = "Gilde";
+
+/* Class = "UILabel"; text = "Boss Battle"; ObjectID = "Hdi-g1-MiM"; */
+"Hdi-g1-MiM.text" = "Baasgevecht";
+
+/* Class = "UIButton"; normalTitle = "Guild Challenges"; ObjectID = "I4F-83-zKJ"; */
+"I4F-83-zKJ.normalTitle" = "gildeuitdagingen";
+
+/* Class = "UINavigationItem"; title = "Tavern"; ObjectID = "Iy2-WC-FJM"; */
+"Iy2-WC-FJM.title" = "Herberg";
+
+/* Class = "UINavigationItem"; title = "Guidelines"; ObjectID = "KAs-8j-2dX"; */
+"KAs-8j-2dX.title" = "Richtlijnen";
+
+/* Class = "UIButton"; normalTitle = "Invite a member"; ObjectID = "kHV-xM-rcF"; */
+"kHV-xM-rcF.normalTitle" = "Nodig een lid uit";
+
+/* Class = "UILabel"; text = "CON"; ObjectID = "kjI-Lf-q1I"; */
+"kjI-Lf-q1I.text" = "LIC";
 
 /* Class = "UILabel"; text = "INT"; ObjectID = "LGe-8Z-aDa"; */
 "LGe-8Z-aDa.text" = "INT";
@@ -46,116 +73,84 @@
 /* Class = "UINavigationItem"; title = "Choose Recipient"; ObjectID = "LNJ-85-sLW"; */
 "LNJ-85-sLW.title" = "Kies ontvanger";
 
-/* Class = "UINavigationItem"; title = "Participants"; ObjectID = "N8D-SB-Ttc"; */
-"N8D-SB-Ttc.title" = "Deelnemers";
-
-/* Class = "UILabel"; text = "Public Guilds"; ObjectID = "NB2-59-SRo"; */
-"NB2-59-SRo.text" = "Openbare gildes";
-
-/* Class = "UILabel"; text = "Members"; ObjectID = "OG6-95-cJg"; */
-"OG6-95-cJg.text" = "Leden";
-
-/* Class = "UILabel"; text = "Invite Party to new quest"; ObjectID = "Q1q-8Q-sgW"; */
-"Q1q-8Q-sgW.text" = "Groep uitnodigen voor nieuwe queeste";
-
-/* Class = "UIBarButtonItem"; title = "Accept Guidelines"; ObjectID = "Qsp-FO-gTG"; */
-"Qsp-FO-gTG.title" = "Accepteer richtlijnen";
-
-/* Class = "UILabel"; text = "Label"; ObjectID = "UcA-1U-tF4"; */
-"UcA-1U-tF4.text" = "Label";
-
-/* Class = "UIButton"; normalTitle = "Join"; ObjectID = "Vel-gj-dLr"; */
-"Vel-gj-dLr.normalTitle" = "Meedoen";
-
-/* Class = "UILabel"; text = "Write Message"; ObjectID = "WNb-BJ-2TY"; */
-"WNb-BJ-2TY.text" = "Schrijf bericht";
-
-/* Class = "UINavigationItem"; title = "Inbox"; ObjectID = "WTK-c7-15D"; */
-"WTK-c7-15D.title" = "Inbox";
-
-/* Class = "UILabel"; text = "Want to join a party? Give them your User ID:"; ObjectID = "aFq-c1-alj"; */
-"aFq-c1-alj.text" = "Wil je lid worden van een groep? Geef ze jouw Gebruikers-ID:";
-
-/* Class = "UILabel"; text = "Play Habitica with friends to stay accountable!\nBattle monsters and create Challenges!\nInvite friends now to earn a Quest Scroll!"; ObjectID = "aoA-I4-cSP"; */
-"aoA-I4-cSP.text" = "Speel Habitica met je vrienden om verantwoordelijk te blijven!
-Strijd met monsters en creëer uitdagingen!
-Nodig je vrienden nu uit om een queeste-perkamentrol te verdienen!";
-
-/* Class = "UINavigationItem"; title = "Guilds"; ObjectID = "c0I-zN-kPF"; */
-"c0I-zN-kPF.title" = "Gildes";
-
-/* Class = "UILabel"; text = "Label"; ObjectID = "cHf-h0-50k"; */
-"cHf-h0-50k.text" = "Label";
-
-/* Class = "UILabel"; text = "Challenges"; ObjectID = "cLY-z8-8pq"; */
-"cLY-z8-8pq.text" = "Uitdagingen";
-
-/* Class = "UILabel"; text = "Write Message"; ObjectID = "cWu-wc-Lec"; */
-"cWu-wc-Lec.text" = "Schrijf bericht";
-
-/* Class = "UILabel"; text = "Subtitle"; ObjectID = "d2x-6l-h3J"; */
-"d2x-6l-h3J.text" = "Ondertitel";
-
-/* Class = "UILabel"; text = "Title"; ObjectID = "d7x-Bc-T1q"; */
-"d7x-Bc-T1q.text" = "Titel";
-
-/* Class = "UINavigationItem"; title = "Public Guilds"; ObjectID = "etc-uL-HJd"; */
-"etc-uL-HJd.title" = "Openbare gildes";
-
-/* Class = "UILabel"; text = "Label"; ObjectID = "evc-UL-HyC"; */
-"evc-UL-HyC.text" = "Label";
-
-/* Class = "UILabel"; text = "Create new Party"; ObjectID = "grW-d9-FRm"; */
-"grW-d9-FRm.text" = "Maak een nieuwe groep aan";
-
-/* Class = "UILabel"; text = "About"; ObjectID = "gsa-rZ-ddD"; */
-"gsa-rZ-ddD.text" = "Over";
-
-/* Class = "UILabel"; text = "Ask Later"; ObjectID = "ifd-yJ-Hb9"; */
-"ifd-yJ-Hb9.text" = "Vraag mij later";
-
-/* Class = "UILabel"; text = "CON"; ObjectID = "kjI-Lf-q1I"; */
-"kjI-Lf-q1I.text" = "LIC";
-
 /* Class = "UILabel"; text = "STR"; ObjectID = "mbO-Mk-igC"; */
 "mbO-Mk-igC.text" = "KRA";
 
-/* Class = "UILabel"; text = "About"; ObjectID = "nEX-pd-oIw"; */
-"nEX-pd-oIw.text" = "Over";
+/* Class = "UILabel"; text = "Guild members"; ObjectID = "mmD-db-dYd"; */
+"mmD-db-dYd.text" = "gildeleden";
 
-/* Class = "UILabel"; text = "Reject"; ObjectID = "nd1-bk-1P7"; */
-"nd1-bk-1P7.text" = "Weigeren";
+/* Class = "UILabel"; text = "Label"; ObjectID = "mVE-dK-Vtq"; */
+"mVE-dK-Vtq.text" = "Label";
 
-/* Class = "UILabel"; text = "Label"; ObjectID = "oMJ-Hk-a6I"; */
-"oMJ-Hk-a6I.text" = "Label";
+/* Class = "UILabel"; text = "Label"; ObjectID = "o36-K8-WE9"; */
+"o36-K8-WE9.text" = "Label";
 
-/* Class = "UILabel"; text = "Rest in the Inn to prevent your undone Dailies from hurting you overnight! (Note: does not prevent you from receiving Boss damage.)"; ObjectID = "pIs-iS-tkd"; */
-"pIs-iS-tkd.text" = "Rust uit in de herberg om te voorkomen dat je onvoltooide dagelijkse taken je vannacht bezeren! (Nota: voorkomt niet dat een baas je kan bezeren.)";
+/* Class = "UILabel"; text = "Label"; ObjectID = "ODU-Gu-ON4"; */
+"ODU-Gu-ON4.text" = "Label";
 
-/* Class = "UILabel"; text = "Loading"; ObjectID = "qHz-u8-sDB"; */
-"qHz-u8-sDB.text" = "Aan het laden";
+/* Class = "UINavigationItem"; title = "Party"; ObjectID = "ohm-N0-URb"; */
+"ohm-N0-URb.title" = "Gezelschap";
 
-/* Class = "UILabel"; text = "Name"; ObjectID = "r1V-ai-lKk"; */
-"r1V-ai-lKk.text" = "Naam";
+/* Class = "UINavigationItem"; title = "Challenges"; ObjectID = "OHs-Q2-g2k"; */
+"OHs-Q2-g2k.title" = "Uitdagingen";
 
-/* Class = "UINavigationItem"; title = "About"; ObjectID = "rki-x7-727"; */
-"rki-x7-727.title" = "Over";
+/* Class = "UIButton"; normalTitle = "Start Quest"; ObjectID = "Oo2-ht-HrC"; */
+"Oo2-ht-HrC.normalTitle" = "Queeste starten";
 
-/* Class = "UILabel"; text = "Loading"; ObjectID = "tZ0-aY-Y24"; */
-"tZ0-aY-Y24.text" = "Aan het laden";
+/* Class = "UIButton"; normalTitle = "Join Guild"; ObjectID = "oXc-S6-Df9"; */
+"oXc-S6-Df9.normalTitle" = "Lid worden van een gilde";
 
-/* Class = "UILabel"; text = "If you would like to post messages in the Tavern or any party or guild chat, please first read our  Community Guidelines and then click \"Accept Guidelines\" button below to indicate that you accept them."; ObjectID = "vLc-mV-bsJ"; */
-"vLc-mV-bsJ.text" = "Als je berichten in de Herberg of een groeps- of gildechat wilt plaatsen, lees dan eerst onze <%= linkStart %>Gemeenschapsrichtlijnen<%= linkEnd %>  en klik dan op \"Accepteer Richtlijnen\" onderaan om aan te geven dat je ze accepteert.";
+/* Class = "UIButton"; normalTitle = "Reject"; ObjectID = "pIy-vb-vm3"; */
+"pIy-vb-vm3.normalTitle" = "Afwijzen";
 
-/* Class = "UILabel"; text = "Loading"; ObjectID = "wjW-Cr-qhZ"; */
-"wjW-Cr-qhZ.text" = "Aan het laden";
+/* Class = "UIButton"; normalTitle = "View Community Guidelines"; ObjectID = "PQZ-Md-abl"; */
+"PQZ-Md-abl.normalTitle" = "Zie de Gemeenschapsrichtlijnen";
 
-/* Class = "UINavigationItem"; title = "Members"; ObjectID = "wmm-mb-Ktw"; */
-"wmm-mb-Ktw.title" = "Leden";
+/* Class = "UILabel"; text = "Description"; ObjectID = "PvU-aP-uYa"; */
+"PvU-aP-uYa.text" = "Beschrijving";
 
-/* Class = "UIBarButtonItem"; title = "Begin"; ObjectID = "yuR-F7-zSD"; */
-"yuR-F7-zSD.title" = "Begin";
+/* Class = "UIButton"; normalTitle = "Cancel Invitation"; ObjectID = "pXx-qO-qxd"; */
+"pXx-qO-qxd.normalTitle" = "Annuleer Uitnodiging";
 
-/* Class = "UILabel"; text = "Title"; ObjectID = "zBe-ca-SpX"; */
-"zBe-ca-SpX.text" = "Titel";
+/* Class = "UILabel"; text = "Invitations"; ObjectID = "q4z-83-kc2"; */
+"q4z-83-kc2.text" = "Uitnodigingen";
+
+/* Class = "UILabel"; text = "Want to join a party?"; ObjectID = "QiF-86-NSA"; */
+"QiF-86-NSA.text" = "Wil je jezelf bij een gezelschap aansluiten?";
+
+/* Class = "UIButton"; normalTitle = "Leave Party"; ObjectID = "qRK-ar-9GJ"; */
+"qRK-ar-9GJ.normalTitle" = "Verlaat gezelschap";
+
+/* Class = "UILabel"; text = "Guild leader"; ObjectID = "Sqv-0g-s6n"; */
+"Sqv-0g-s6n.text" = "gildeleider";
+
+/* Class = "UIButton"; normalTitle = "Accept"; ObjectID = "TdI-5q-50U"; */
+"TdI-5q-50U.normalTitle" = "Accepteren";
+
+/* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "uFa-zO-Ua8"; */
+"uFa-zO-Ua8.title" = "Bewerken";
+
+/* Class = "UIButton"; normalTitle = "Abort"; ObjectID = "uJd-V9-acD"; */
+"uJd-V9-acD.normalTitle" = "Afbreken";
+
+/* Class = "UILabel"; text = "Guild Bank"; ObjectID = "UrW-r2-Djq"; */
+"UrW-r2-Djq.text" = "Gildebank";
+
+/* Class = "UIButton"; normalTitle = "Share QR Code"; ObjectID = "V0n-Zw-feb"; */
+"V0n-Zw-feb.normalTitle" = "Deel QR code";
+
+/* Class = "UINavigationItem"; title = "Messages"; ObjectID = "WTK-c7-15D"; */
+"WTK-c7-15D.title" = "Berichten";
+
+/* Class = "UIButton"; normalTitle = "Pause Damage"; ObjectID = "x55-Jn-3In"; */
+"x55-Jn-3In.normalTitle" = "Pauzeer Schade";
+
+/* Class = "UILabel"; text = "Give them your User ID or have them scan your QR code while inviting"; ObjectID = "xuF-gH-2mn"; */
+"xuF-gH-2mn.text" = "Geef ze je Gebruikers-ID of laat ze je QR code scannen om je uit te nodigen";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "XV0-Wd-Y6V"; */
+"XV0-Wd-Y6V.text" = "Label";
+
+/* Class = "UILabel"; text = "Play Habitica in a Party"; ObjectID = "Yas-h0-Bvk"; */
+"Yas-h0-Bvk.text" = "Speel Habitica met een gezelschap";
 

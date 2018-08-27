@@ -14,15 +14,20 @@ New in this version:
 - redesigned stable
 - redesigned class selection screen
 - better display for when edits to tasks are still being synced
+- Guild invitations are displayed in the guild list and users can respond
+- Display if user is buffed
 - Themes! You can now choose between 8 different themes for the app (Note that this feature might not be included in the final 2.0, since we are still experimenting with this)
+- Delete account from app
 
 Fixes:
 - The duplicate items bug is finally gone for good!
-
+- fixed due date not being removable from todo
+- Fixed bug where a users party wasn't displayed sometimes
+- Fixed shiny seed transformation item not working on mages
+- Fixed urls in chat not being clickable
+- Fixed backgrounds naming and sorting
+- Fixed wolf mounts not being positioned correctly
 
 Known issues in this build:
-- The page that displays that you are currently not in a party does not work correctly
-- "Session outdated" error notification can appear. In this case, please use pull-to-refresh on one of the task lists
-- changing classes from settings menu doesn't work correctly
 
 We're also trying out a new feedback/bug reporting tool called Instabug. If you want to report anything you can shake your device and then the Instabug popup will appear. For those bug reports, a screenshot is also automatically attached (you can edit/remove this if wanted).

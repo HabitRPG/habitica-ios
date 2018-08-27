@@ -20,11 +20,11 @@ class UserManager: NSObject {
     
     private let userRepository = UserRepository()
     private let taskRepository = TaskRepository()
-    private let disposable = ScopedDisposable(CompositeDisposable())
+    private let disposable = CompositeDisposable()
     
     private weak var faintViewController: FaintViewController?
     private weak var classSelectionViewController: ClassSelectionViewController?
-    var yesterdailiesDialog: YesterdailiesDialogView?
+    weak var yesterdailiesDialog: YesterdailiesDialogView?
     
     private var tutorialSteps = [String: Bool]()
     
@@ -33,7 +33,7 @@ class UserManager: NSObject {
     func beginListening() {
         let today = Date()
         let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: today)
-        disposable.inner.add(userRepository.getUser()
+        disposable.add(userRepository.getUser()
             .throttle(1, on: QueueScheduler.main)
             .on(value: {[weak self]user in
                 self?.onUserUpdated(user: user)
@@ -76,7 +76,7 @@ class UserManager: NSObject {
                     }
                 }
             }).start())
-        disposable.inner.add(taskRepository.getReminders().on(value: {[weak self](reminders, changes) in
+        disposable.add(taskRepository.getReminders().on(value: {[weak self](reminders, changes) in
             if let changes = changes {
                 self?.updateReminderNotifications(reminders: reminders, changes: changes)
             }
@@ -106,7 +106,8 @@ class UserManager: NSObject {
         }
         self.userLevel = user.stats?.level ?? 0
         
-        userRepository.registerPushDevice(user: user)
+        userRepository.registerPushDevice(user: user).observeCompleted {}
+        setTimezoneOffset(user)
     }
     
     private func checkFainting(user: UserProtocol) -> FaintViewController? {
@@ -144,7 +145,7 @@ class UserManager: NSObject {
     
     @objc
     func markTutorialAsSeen(type: String, key: String) {
-        disposable.inner.add(userRepository.updateUser(key: "flags.tutorial.\(type).\(key)", value: true).observeCompleted {})
+        disposable.add(userRepository.updateUser(key: "flags.tutorial.\(type).\(key)", value: true).observeCompleted {})
     }
     
     private func updateReminderNotifications(reminders: [ReminderProtocol], changes: ReactiveChangeset) {
@@ -253,5 +254,14 @@ class UserManager: NSObject {
         UIApplication.shared.scheduleLocalNotification(localNotification)
         print("Scheduled Notification for task", reminder.task?.text ?? "", " at time ", fireDate)
         return localNotification
+    }
+    
+    private func setTimezoneOffset(_ user: UserProtocol) {
+        let offset = -(NSTimeZone.local.secondsFromGMT() / 60)
+        if user.preferences?.timezoneOffset != offset {
+            userRepository.updateUser(key: "preferences.timezoneOffset", value: offset).observeCompleted {
+                
+            }
+        }
     }
 }

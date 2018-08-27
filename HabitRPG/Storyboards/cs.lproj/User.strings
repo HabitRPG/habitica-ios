@@ -1,0 +1,27 @@
+/* Class = "UINavigationItem"; title = "Spells"; ObjectID = "83d-fh-zsv"; */
+"83d-fh-zsv.title" = "Zaklínadla";
+
+/* Class = "UILabel"; text = "Strength"; ObjectID = "AIz-nP-TRZ"; */
+"AIz-nP-TRZ.text" = "Síla";
+
+/* Class = "UILabel"; text = "Intelligence"; ObjectID = "d78-r8-q0a"; */
+"d78-r8-q0a.text" = "Inteligence";
+
+/* Class = "UILabel"; text = "Constitution"; ObjectID = "Ddy-DY-NBy"; */
+"Ddy-DY-NBy.text" = "Obrana";
+
+/* Class = "UILabel"; text = "Use"; ObjectID = "Idt-Ls-oEA"; */
+"Idt-Ls-oEA.text" = "Použít";
+
+/* Class = "UINavigationItem"; title = "Stats"; ObjectID = "jad-F6-0UB"; */
+"jad-F6-0UB.title" = "Statistiky";
+
+/* Class = "UILabel"; text = "Perception"; ObjectID = "QVe-qq-d5S"; */
+"QVe-qq-d5S.text" = "Vnímání";
+
+/* Class = "UILabel"; text = "Character Build"; ObjectID = "VBj-Mm-QQ4"; */
+"VBj-Mm-QQ4.text" = "Síla Postavy";
+
+/* Class = "UILabel"; text = "Each level earns you one point to assign to an attribute of your choice. You can do so manually, or let the game decide for you using one of the Automatic Allocation options."; ObjectID = "wNh-Vv-aKs"; */
+"wNh-Vv-aKs.text" = "S každou další úrovní získáš jeden bod, který můžeš přiřadit k libovolné vlastnosti. Přiřadit body můžeš buď manuálně anebo můžeš nechat hru rozhodnout za tebe na základě některé z možností automatického přiřazení.";
+

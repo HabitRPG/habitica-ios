@@ -1,0 +1,63 @@
+/* Class = "UILabel"; text = "Auto Allocate Points"; ObjectID = "5gQ-dz-Izv"; */
+"5gQ-dz-Izv.text" = "Colocar Puntos Automáticamente";
+
+/* Class = "UILabel"; text = "Distribute based on class"; ObjectID = "8Pt-YU-W3u"; */
+"8Pt-YU-W3u.text" = "Distribuir en función de la clase";
+
+/* Class = "UINavigationItem"; title = "Spells"; ObjectID = "83d-fh-zsv"; */
+"83d-fh-zsv.title" = "Hechizos";
+
+/* Class = "UILabel"; text = "Strength"; ObjectID = "AIz-nP-TRZ"; */
+"AIz-nP-TRZ.text" = "Fuerza";
+
+/* Class = "UILabel"; text = "Increases EXP earned from completing tasks. Also increases your mana cap and how fast mana regenerates over time."; ObjectID = "cnW-Ox-I47"; */
+"cnW-Ox-I47.text" = "Aumenta la EXP ganada por completar tareas. Además, aumenta tu obtención de maná y la velocidad de regeneración del maná a lo largo del tiempo.";
+
+/* Class = "UILabel"; text = "Intelligence"; ObjectID = "d78-r8-q0a"; */
+"d78-r8-q0a.text" = "Inteligencia";
+
+/* Class = "UILabel"; text = "Constitution"; ObjectID = "Ddy-DY-NBy"; */
+"Ddy-DY-NBy.text" = "Constitución";
+
+/* Class = "UILabel"; text = "Increases the bonus of critical hits and makes them more likely when scoring a task. Also increases damage dealt to bosses. "; ObjectID = "F28-BC-4hw"; */
+"F28-BC-4hw.text" = "Aumenta la bonificación de golpes críticos y los hace más habituales cuando completas una tarea. Además, aumenta el daño que se hace a los jefes.";
+
+/* Class = "UILabel"; text = "Distribute evenly"; ObjectID = "GL3-jH-b3q"; */
+"GL3-jH-b3q.text" = "Distribuir equitativamente";
+
+/* Class = "UILabel"; text = "Decreases the amount of damage taken from your tasks. Does not decrease the damage received from bosses."; ObjectID = "hfH-um-9Qr"; */
+"hfH-um-9Qr.text" = "Disminuye el daño recibido de tus tareas. No disminuye el daño recibido de los Jefes.";
+
+/* Class = "UILabel"; text = "Use"; ObjectID = "Idt-Ls-oEA"; */
+"Idt-Ls-oEA.text" = "Usar";
+
+/* Class = "UINavigationItem"; title = "Stats"; ObjectID = "jad-F6-0UB"; */
+"jad-F6-0UB.title" = "Estadísticas";
+
+/* Class = "UILabel"; text = "Stat guide"; ObjectID = "PAm-Rw-4AT"; */
+"PAm-Rw-4AT.text" = "Guía de atributos";
+
+/* Class = "UILabel"; text = "Distribute based on task activity"; ObjectID = "pJ1-2A-yks"; */
+"pJ1-2A-yks.text" = "Distribuir en función de la actividad de tareas";
+
+/* Class = "UILabel"; text = "Perception"; ObjectID = "QVe-qq-d5S"; */
+"QVe-qq-d5S.text" = "Percepción";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "reg-ed-u0h"; */
+"reg-ed-u0h.text" = "0";
+
+/* Class = "UILabel"; text = "0 Points to Allocate"; ObjectID = "SAQ-Tl-eLi"; */
+"SAQ-Tl-eLi.text" = "0 Puntos para Colocar";
+
+/* Class = "UILabel"; text = "Character Build"; ObjectID = "VBj-Mm-QQ4"; */
+"VBj-Mm-QQ4.text" = "Construcción del Personaje";
+
+/* Class = "UILabel"; text = "10"; ObjectID = "VqQ-Ms-Edt"; */
+"VqQ-Ms-Edt.text" = "10";
+
+/* Class = "UILabel"; text = "Increases the likelihood of finding drops when completing Tasks, the daily drop-cap, Streak Bonuses, and the amount of gold awarded for Tasks."; ObjectID = "WLX-vs-pFL"; */
+"WLX-vs-pFL.text" = "Aumenta la posibilidad de encontrar botín cuando completas una Tarea, el botín diario, las Bonificaciones de Racha, y la cantidad de oro que se recibe por cada Tarea.";
+
+/* Class = "UILabel"; text = "Each level earns you one point to assign to an attribute of your choice. You can do so manually, or let the game decide for you using one of the Automatic Allocation options."; ObjectID = "wNh-Vv-aKs"; */
+"wNh-Vv-aKs.text" = "Cada nivel te otorga un punto para asignar a un atributo de tu elección. Puedes hacerlo manualmente, o dejar que el juego decida por ti utilizando una de las opciones de Atribución Automática.";
+

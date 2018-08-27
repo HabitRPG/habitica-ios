@@ -1,0 +1,9 @@
+/* Class = "UILabel"; text = "Not enough Gems"; ObjectID = "C3v-IP-fUG"; */
+"C3v-IP-fUG.text" = "Ikke nok Ædelsten";
+
+/* Class = "UILabel"; text = "Buy"; ObjectID = "j5D-EL-LRQ"; */
+"j5D-EL-LRQ.text" = "Køb";
+
+/* Class = "UIButton"; normalTitle = "Purchase Gems"; ObjectID = "u6f-ro-Ehm"; */
+"u6f-ro-Ehm.normalTitle" = "Køb Ædelsten";
+

@@ -43,6 +43,7 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
     
     let challengeProperty: MutableProperty<ChallengeProtocol>
     let challengeMembershipProperty = MutableProperty<ChallengeMembershipProtocol?>(nil)
+    let challengeCreatorProperty = MutableProperty<MemberProtocol?>(nil)
     let viewDidLoadProperty = MutableProperty(())
     let reloadTableProperty = MutableProperty(())
     let animateUpdatesProperty = MutableProperty(())
@@ -119,10 +120,10 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
     }
     
     func setupInfo() {
-        challengeProperty.signal
-            .observeValues { challenge in
+        challengeProperty.signal.combineLatest(with: challengeCreatorProperty.signal)
+            .observeValues { (challenge, creator) in
             let infoItem = ChallengeMultiModelDataSourceItem<ChallengeDetailInfoTableViewCell>(challenge, identifier: "info")
-            let creatorItem = ChallengeCreatorMultiModelDataSourceItem(challenge, cellDelegate: self, identifier: "creator")
+                let creatorItem = ChallengeCreatorMultiModelDataSourceItem(challenge, creator: creator, cellDelegate: self, identifier: "creator")
             let categoryItem = ChallengeResizableMultiModelDataSourceItem<ChallengeCategoriesTableViewCell>(challenge, resizingDelegate: self, identifier: "categories")
             let descriptionItem = ChallengeResizableMultiModelDataSourceItem<ChallengeDescriptionTableViewCell>(challenge, resizingDelegate: self, identifier: "description")
             
@@ -224,7 +225,7 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
             self.doubleEndButtonItemProperty.value = nil
         }
         unownedChallengeSignal.withLatest(from: challengeMembershipProperty.signal)
-            .filter({ (challenge, membership) -> Bool in
+            .filter({ (_, membership) -> Bool in
                 return membership == nil
             }).observeValues {[weak self] _ in
                 self?.mainButtonItemProperty.value = ButtonCellMultiModelDataSourceItem(attributeProvider: self?.joinLeaveStyleProvider, inputs: self?.joinLeaveStyleProvider, identifier: "mainButton")
@@ -240,7 +241,8 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
     }
     
     func reloadChallenge(challenge: ChallengeProtocol?) {
-        socialRepository.retrieveChallenge(challengeID: challenge?.id ?? "").observeCompleted {[weak self] in
+        DispatchQueue.main.async {[weak self] in
+            self?.socialRepository.retrieveChallenge(challengeID: challenge?.id ?? "").observeCompleted { }
         }
     }
     
@@ -252,20 +254,20 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
     
     // MARK: Creator delegate
     
-    func userPressed(_ user: UserProtocol) {
+    func userPressed(_ member: MemberProtocol) {
         let secondStoryBoard = UIStoryboard(name: "Social", bundle: nil)
         if let userViewController: UserProfileViewController = secondStoryBoard.instantiateViewController(withIdentifier: "UserProfileViewController") as? UserProfileViewController {
-            userViewController.userID = user.id
-            userViewController.username = user.profile?.name
+            userViewController.userID = member.id
+            userViewController.username = member.profile?.name
             nextViewControllerProperty.value = userViewController
         }
     }
     
-    func messagePressed(user: UserProtocol) {
+    func messagePressed(member: MemberProtocol) {
         let secondStoryBoard = UIStoryboard(name: "Social", bundle: nil)
         if let chatViewController: HRPGInboxChatViewController = secondStoryBoard.instantiateViewController(withIdentifier: "InboxChatViewController") as? HRPGInboxChatViewController {
-            chatViewController.userID = user.id
-            chatViewController.username = user.profile?.name
+            chatViewController.userID = member.id
+            chatViewController.username = member.profile?.name
             chatViewController.isPresentedModally = true
             nextViewControllerProperty.value = chatViewController
         }
@@ -280,7 +282,19 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
             .skipNil()
             .on(value: {[weak self] challenge in
                 self?.setChallenge(challenge)
-            }).start())
+            })
+            .map { challenge in
+                return challenge.leaderID
+            }
+            .skipNil()
+            .observe(on: QueueScheduler.main)
+            .flatMap(.latest, {[weak self] leaderID in
+                return self?.socialRepository.getMember(userID: leaderID, retrieveIfNotFound: true) ?? SignalProducer.empty
+            })
+            .on(value: {[weak self] creator in
+                self?.challengeCreatorProperty.value = creator
+            })
+            .start())
         
         if let challengeID = challengeProperty.value.id {
             disposable.inner.add(socialRepository.getChallengeMembership(challengeID: challengeID).on(value: {[weak self] membership in
@@ -327,10 +341,12 @@ class ChallengeMultiModelDataSourceItem<T>: ConcreteMultiModelDataSourceItem<T> 
 
 class ChallengeCreatorMultiModelDataSourceItem: ChallengeMultiModelDataSourceItem<ChallengeCreatorTableViewCell> {
     private let challenge: ChallengeProtocol
+    private let creator: MemberProtocol?
     private weak var cellDelegate: ChallengeCreatorCellDelegate?
     
-    init(_ challenge: ChallengeProtocol, cellDelegate: ChallengeCreatorCellDelegate, identifier: String) {
+    init(_ challenge: ChallengeProtocol, creator: MemberProtocol?, cellDelegate: ChallengeCreatorCellDelegate, identifier: String) {
         self.challenge = challenge
+        self.creator = creator
         self.cellDelegate = cellDelegate
         super.init(challenge, identifier: identifier)
     }
@@ -340,6 +356,7 @@ class ChallengeCreatorMultiModelDataSourceItem: ChallengeMultiModelDataSourceIte
         
         if let creatorCell = cell as? ChallengeCreatorTableViewCell {
             creatorCell.delegate = cellDelegate
+            creatorCell.configure(member: creator)
         }
     }
 }

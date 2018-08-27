@@ -4,17 +4,14 @@
 /* Class = "UITabBarItem"; title = "Habits"; ObjectID = "3G8-SH-Shd"; */
 "3G8-SH-Shd.title" = "Привычки";
 
-/* Class = "UINavigationItem"; title = "Equipment"; ObjectID = "3bv-D6-Dzj"; */
-"3bv-D6-Dzj.title" = "Экипировка";
+/* Class = "UISegmentedControl"; 3ow-rh-Fzj.segmentTitles[0] = "Slim"; ObjectID = "3ow-rh-Fzj"; */
+"3ow-rh-Fzj.segmentTitles[0]" = "Стройное";
+
+/* Class = "UISegmentedControl"; 3ow-rh-Fzj.segmentTitles[1] = "Broad"; ObjectID = "3ow-rh-Fzj"; */
+"3ow-rh-Fzj.segmentTitles[1]" = "Тучное";
 
 /* Class = "UINavigationItem"; title = "Pets"; ObjectID = "4dW-yC-5Ar"; */
 "4dW-yC-5Ar.title" = "Питомцы";
-
-/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "5AI-vM-jzp"; */
-"5AI-vM-jzp.normalTitle" = "Назад";
-
-/* Class = "UILabel"; text = "Size"; ObjectID = "5KS-In-70X"; */
-"5KS-In-70X.text" = "Размер";
 
 /* Class = "UIBarButtonItem"; title = "Filter"; ObjectID = "7QR-Cq-K2a"; */
 "7QR-Cq-K2a.title" = "Фильтр";
@@ -25,107 +22,54 @@
 /* Class = "UINavigationItem"; title = "Mounts"; ObjectID = "8QD-xr-Tcj"; */
 "8QD-xr-Tcj.title" = "Скакуны";
 
-/* Class = "UILabel"; text = "Label"; ObjectID = "9b7-Yf-yJs"; */
-"9b7-Yf-yJs.text" = "Метка";
-
-/* Class = "UIButton"; normalTitle = "Finish"; ObjectID = "63H-Fj-Vls"; */
-"63H-Fj-Vls.normalTitle" = "Завершить";
+/* Class = "UILabel"; text = "Buying gems supports the developers \nand helps keep Habitica running"; ObjectID = "421-JA-vci"; */
+"421-JA-vci.text" = "Покупка самоцветов поддерживает разработчиков 
+и помогает работе Habitica";
 
 /* Class = "UINavigationItem"; title = "About"; ObjectID = "970-3u-C37"; */
-"970-3u-C37.title" = "Насчет";
-
-/* Class = "UIButton"; normalTitle = " Unlock Set for 5 gems "; ObjectID = "AQN-pU-u81"; */
-"AQN-pU-u81.normalTitle" = "Открыть набор за 5 самоцветов";
+"970-3u-C37.title" = "О проекте";
 
 /* Class = "UITabBarItem"; title = "Dailies"; ObjectID = "Aco-n2-RnG"; */
-"Aco-n2-RnG.title" = "Ежедневное";
+"Aco-n2-RnG.title" = "Ежедневные задания";
+
+/* Class = "UINavigationItem"; title = "Equipment"; ObjectID = "aGP-pV-Lz5"; */
+"aGP-pV-Lz5.title" = "Снаряжение";
+
+/* Class = "UILabel"; text = "No Benefit"; ObjectID = "BCV-MF-lnn"; */
+"BCV-MF-lnn.text" = "Нет выгоды";
 
 /* Class = "UITabBarItem"; title = "Habits"; ObjectID = "CTh-zS-7ZY"; */
 "CTh-zS-7ZY.title" = "Привычки";
 
-/* Class = "UITextField"; placeholder = "Repeat Password"; ObjectID = "DQC-ay-MKP"; */
-"DQC-ay-MKP.placeholder" = "Повторить пароль";
+/* Class = "UILabel"; text = "Select \"Use Costume\" to equip items to your avatar without affecting the Stats from your Battle Gear! This means that you can dress up your avatar in whatever outfit you like while still having your best Battle Gear equipped."; ObjectID = "d53-K0-Ybv"; */
+"d53-K0-Ybv.text" = "Выбор этой опции позволяет надеть на аватар вашего персонажа любые, понравившиеся вам вещи, не влияя на характеристики боевой экипировки.";
 
-/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "FYR-h9-UfW"; */
-"FYR-h9-UfW.normalTitle" = "Назад";
+/* Class = "UINavigationItem"; title = "Choose User"; ObjectID = "Dal-zI-Dal"; */
+"Dal-zI-Dal.title" = "Выбрать пользователя";
 
-/* Class = "UINavigationItem"; title = "Scan Code"; ObjectID = "HJa-qf-ea2"; */
-"HJa-qf-ea2.title" = "Сканировать код";
+/* Class = "UILabel"; text = "Body Size"; ObjectID = "fXX-FU-yYI"; */
+"fXX-FU-yYI.text" = "Размер тела";
 
-/* Class = "UIButton"; normalTitle = "Next"; ObjectID = "IRA-55-1g8"; */
-"IRA-55-1g8.normalTitle" = "Далее";
-
-/* Class = "UINavigationItem"; title = "News"; ObjectID = "Jni-km-FCZ"; */
-"Jni-km-FCZ.title" = "Новости";
-
-/* Class = "UINavigationItem"; title = "Spells"; ObjectID = "K1m-Oj-jYN"; */
-"K1m-Oj-jYN.title" = "Заклинания";
-
-/* Class = "UINavigationItem"; title = "Customize Avatar"; ObjectID = "K4K-zl-tiU"; */
-"K4K-zl-tiU.title" = "Изменить аватар";
-
-/* Class = "UILabel"; text = "Title"; ObjectID = "KkO-6T-Qmx"; */
-"KkO-6T-Qmx.text" = "Заголовок";
-
-/* Class = "UILabel"; text = "Login with Google"; ObjectID = "M1V-nF-Eg7"; */
-"M1V-nF-Eg7.text" = "Авторизоваться через Google";
-
-/* Class = "UILabel"; text = "Login"; ObjectID = "MlA-iN-6gR"; */
-"MlA-iN-6gR.text" = "Логин";
-
-/* Class = "UINavigationItem"; title = "Rewards"; ObjectID = "Mlq-VF-kA3"; */
-"Mlq-VF-kA3.title" = "Награды";
-
-/* Class = "UITabBarItem"; title = "To-Dos"; ObjectID = "Np7-ws-fF6"; */
-"Np7-ws-fF6.title" = "Задачи";
-
-/* Class = "UINavigationItem"; title = "Shops"; ObjectID = "QIL-Wo-vmp"; */
-"QIL-Wo-vmp.title" = "Магазины";
-
-/* Class = "UINavigationItem"; title = "Filter by tags"; ObjectID = "RJ8-HL-bIH"; */
-"RJ8-HL-bIH.title" = "Сортировать по тегам";
-
-/* Class = "UILabel"; text = "No data yet"; ObjectID = "Spy-XJ-HaY"; */
-"Spy-XJ-HaY.text" = "Данные недоступны";
-
-/* Class = "UITabBarItem"; title = "To-Dos"; ObjectID = "TXB-iK-KhP"; */
-"TXB-iK-KhP.title" = "Задачи";
-
-/* Class = "UINavigationItem"; title = "To-Dos"; ObjectID = "Tis-dF-qId"; */
-"Tis-dF-qId.title" = "Задачи";
-
-/* Class = "UINavigationItem"; title = "Habits"; ObjectID = "Ueo-OS-iQj"; */
-"Ueo-OS-iQj.title" = "Привычки";
-
-/* Class = "UIBarButtonItem"; title = "Register"; ObjectID = "XUX-eN-jCp"; */
-"XUX-eN-jCp.title" = "Регистрация";
-
-/* Class = "UIBarButtonItem"; title = "Group By"; ObjectID = "Y9b-tv-h4L"; */
-"Y9b-tv-h4L.title" = "Сгруппировать по";
-
-/* Class = "UINavigationItem"; title = "Choose Task"; ObjectID = "Yuh-D9-NY5"; */
-"Yuh-D9-NY5.title" = "Выбрать задание";
-
-/* Class = "UITextField"; placeholder = "Email"; ObjectID = "c6L-Nt-YPn"; */
-"c6L-Nt-YPn.placeholder" = "Email";
-
-/* Class = "UILabel"; text = "Subtitle"; ObjectID = "ciB-Fl-be7"; */
-"ciB-Fl-be7.text" = "Подзаголовок";
+/* Class = "UINavigationItem"; title = "Rewards"; ObjectID = "HHL-mH-FJc"; */
+"HHL-mH-FJc.title" = "Награды";
 
 /* Class = "UIBarButtonItem"; title = "Clear"; ObjectID = "hIC-Qf-w8a"; */
 "hIC-Qf-w8a.title" = "Очистить";
 
-/* Class = "UILabel"; text = "Label"; ObjectID = "hd1-sx-QKa"; */
-"hd1-sx-QKa.text" = "Метка";
+/* Class = "UINavigationItem"; title = "Scan Code"; ObjectID = "HJa-qf-ea2"; */
+"HJa-qf-ea2.title" = "Сканировать код";
 
-/* Class = "UINavigationItem"; title = "Profile"; ObjectID = "hnF-ml-Qfo"; */
-"hnF-ml-Qfo.title" = "Профиль";
+/* Class = "UINavigationItem"; title = "Menu"; ObjectID = "hnF-ml-Qfo"; */
+"hnF-ml-Qfo.title" = "Меню";
 
 /* Class = "UITabBarItem"; title = "Menu"; ObjectID = "hyj-Mf-lvH"; */
 "hyj-Mf-lvH.title" = "Меню";
 
-/* Class = "UILabel"; text = "Label"; ObjectID = "imx-7O-EEy"; */
-"imx-7O-EEy.text" = "Метка";
+/* Class = "UINavigationItem"; title = "News"; ObjectID = "Jni-km-FCZ"; */
+"Jni-km-FCZ.title" = "Новости";
+
+/* Class = "UILabel"; text = "Become a subscriber and you’ll get these useful benefits:"; ObjectID = "lb7-8k-2uz"; */
+"lb7-8k-2uz.text" = "Станьте подписчиком, и вы получите следующие преимущества:";
 
 /* Class = "UIBarButtonItem"; title = "Filter"; ObjectID = "lJN-5G-qrz"; */
 "lJN-5G-qrz.title" = "Фильтр";
@@ -133,8 +77,14 @@
 /* Class = "UIBarButtonItem"; title = "Group By"; ObjectID = "mdo-xN-SW4"; */
 "mdo-xN-SW4.title" = "Сгруппировать по";
 
-/* Class = "UIBarButtonItem"; title = "?"; ObjectID = "obl-zo-g8m"; */
-"obl-zo-g8m.title" = "?";
+/* Class = "UITabBarItem"; title = "To-Dos"; ObjectID = "Np7-ws-fF6"; */
+"Np7-ws-fF6.title" = "Задачи";
+
+/* Class = "UILabel"; text = "Buy All"; ObjectID = "Ou7-Ct-HER"; */
+"Ou7-Ct-HER.text" = "Купить все";
+
+/* Class = "UIButton"; normalTitle = "Restore Purchase"; ObjectID = "P89-QO-UcF"; */
+"P89-QO-UcF.normalTitle" = "Восстановить покупку";
 
 /* Class = "UITabBarItem"; title = "Dailies"; ObjectID = "pdW-W9-wj6"; */
 "pdW-W9-wj6.title" = "Ежедневные задания";
@@ -142,17 +92,8 @@
 /* Class = "UIBarButtonItem"; title = "Filter"; ObjectID = "r2M-pt-ZEv"; */
 "r2M-pt-ZEv.title" = "Фильтр";
 
-/* Class = "UITextField"; placeholder = "Email / Username"; ObjectID = "r6h-y4-Yj6"; */
-"r6h-y4-Yj6.placeholder" = "Email / Имя пользователя";
-
-/* Class = "UILabel"; text = "No completed To-Dos"; ObjectID = "rRE-Ue-tyN"; */
-"rRE-Ue-tyN.text" = "Нет завершенных задач";
-
-/* Class = "UISegmentedControl"; sMQ-xU-ZOd.segmentTitles[0] = "Slim"; ObjectID = "sMQ-xU-ZOd"; */
-"sMQ-xU-ZOd.segmentTitles[0]" = "Стройное";
-
-/* Class = "UISegmentedControl"; sMQ-xU-ZOd.segmentTitles[1] = "Broad"; ObjectID = "sMQ-xU-ZOd"; */
-"sMQ-xU-ZOd.segmentTitles[1]" = "Тучное";
+/* Class = "UINavigationItem"; title = "Filter by tags"; ObjectID = "RJ8-HL-bIH"; */
+"RJ8-HL-bIH.title" = "Сортировать по тегам";
 
 /* Class = "UINavigationItem"; title = "Mounts"; ObjectID = "si7-7p-nZ9"; */
 "si7-7p-nZ9.title" = "Скакуны";
@@ -160,21 +101,47 @@
 /* Class = "UINavigationItem"; title = "FAQ"; ObjectID = "sni-tf-k5c"; */
 "sni-tf-k5c.title" = "ЧаВо";
 
-/* Class = "UINavigationItem"; title = "Settings"; ObjectID = "uSK-A3-t5d"; */
-"uSK-A3-t5d.title" = "Настройки";
+/* Class = "UILabel"; text = "Two-Handed"; ObjectID = "StQ-3d-kbx"; */
+"StQ-3d-kbx.text" = "Двуручный";
 
-/* Class = "UITextField"; placeholder = "Password"; ObjectID = "wUf-yh-Qus"; */
-"wUf-yh-Qus.placeholder" = "Пароль";
+/* Class = "UINavigationItem"; title = "To-Dos"; ObjectID = "Tis-dF-qId"; */
+"Tis-dF-qId.title" = "Задачи";
+
+/* Class = "UITabBarItem"; title = "To-Dos"; ObjectID = "TXB-iK-KhP"; */
+"TXB-iK-KhP.title" = "Задачи";
+
+/* Class = "UIButton"; normalTitle = "Checkout"; ObjectID = "ubx-Z1-yyq"; */
+"ubx-Z1-yyq.normalTitle" = "Оформить";
+
+/* Class = "UINavigationItem"; title = "Habits"; ObjectID = "Ueo-OS-iQj"; */
+"Ueo-OS-iQj.title" = "Привычки";
+
+/* Class = "UILabel"; text = "Subscribing supports the developers \nand helps keep Habitica running"; ObjectID = "V5k-go-mwg"; */
+"V5k-go-mwg.text" = "Подписка поддерживает разработчиков
+ и помогает работе Habitica";
+
+/* Class = "UILabel"; text = "Gems allow you to buy fun extras for \nyour account, including:"; ObjectID = "xhA-8b-NmG"; */
+"xhA-8b-NmG.text" = "Самоцветы дают возможность купить
+веселые дополнения для аккаунта, в том числе:";
 
 /* Class = "UINavigationItem"; title = "Feed Pet"; ObjectID = "xZ9-Ng-9se"; */
 "xZ9-Ng-9se.title" = "Покормить";
 
-/* Class = "UITabBarItem"; title = "Rewards"; ObjectID = "zFI-xr-RjT"; */
-"zFI-xr-RjT.title" = "Награды";
+/* Class = "UIBarButtonItem"; title = "Group By"; ObjectID = "Y9b-tv-h4L"; */
+"Y9b-tv-h4L.title" = "Сгруппировать по";
+
+/* Class = "UINavigationItem"; title = "Stable"; ObjectID = "yA7-ap-uv0"; */
+"yA7-ap-uv0.title" = "Стойла";
+
+/* Class = "UINavigationItem"; title = "Choose Task"; ObjectID = "Yuh-D9-NY5"; */
+"Yuh-D9-NY5.title" = "Выбрать задание";
 
 /* Class = "UINavigationItem"; title = "Pets"; ObjectID = "zdm-Oo-gvg"; */
 "zdm-Oo-gvg.title" = "Питомцы";
 
 /* Class = "UINavigationItem"; title = "Dailies"; ObjectID = "zec-6L-pJk"; */
-"zec-6L-pJk.title" = "Ежедневное";
+"zec-6L-pJk.title" = "Ежедневные задания";
+
+/* Class = "UITabBarItem"; title = "Rewards"; ObjectID = "zFI-xr-RjT"; */
+"zFI-xr-RjT.title" = "Награды";
 

@@ -48,6 +48,14 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 90;
     self.tableView.backgroundColor = [UIColor gray700];
+    
+    self.textInputbar.maxCharCount = [[[ConfigRepository alloc] init] integerWithVariable:ConfigVariableMaxChatLength];
+    self.textInputbar.charCountLabelNormalColor = [UIColor gray400];
+    self.textInputbar.charCountLabelWarningColor = [UIColor red50];
+    self.textInputbar.charCountLabel.font = [UIFont systemFontOfSize:11 weight:UIFontWeightBold];
+    
+    self.hrpgTopHeaderNavigationController.shouldHideTopHeader = true;
+    self.hrpgTopHeaderNavigationController.hideNavbar = false;
 }
 
 - (void)setTitleWithUsername:(NSString * _Nullable)username {
@@ -62,6 +70,15 @@
     [super viewWillAppear:animated];
     if ([self hrpgTopHeaderNavigationController]) {
         [[self hrpgTopHeaderNavigationController] scrollView:self.scrollView scrolledToPosition:0];
+    }
+}
+
+- (void)textViewDidChange:(UITextView *)textView {
+    [super textViewDidChange:textView];
+    if (self.textView.text.length > (self.textInputbar.maxCharCount * 0.95)) {
+        self.textInputbar.charCountLabelNormalColor = [UIColor yellow5];
+    } else {
+        self.textInputbar.charCountLabelNormalColor = [UIColor gray400];
     }
 }
 

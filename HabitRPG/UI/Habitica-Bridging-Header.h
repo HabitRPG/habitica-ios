@@ -38,3 +38,4 @@
 #import "HRPGSearchDataManager.h"
 #import "HRPGCoachmarkFrameProvider.h"
 #import "HRPGFilterViewController.h"
+#import "HRPGQRCodeScannerViewController.h"

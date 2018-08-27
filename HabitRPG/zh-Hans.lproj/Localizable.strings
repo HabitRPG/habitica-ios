@@ -1,18 +1,3 @@
-/* No comment provided by engineer. */
-" Unlock Set for %@ Gems " = "使用 %@ 个宝石解锁此套装";
-
-/* No comment provided by engineer. */
-"%.2f Gold" = "%.2f 金币";
-
-/* No comment provided by engineer. */
-"%@ Gems" = "%@宝石";
-
-/* No comment provided by engineer. */
-"%@ Members" = "%@ 成员";
-
-/* No comment provided by engineer. */
-"%d out of %d responded" = "%2$d 位中的 %1$d 位做出了答复";
-
 /* more than one filter */
 "%ld Filters" = "%ld 条件搜寻";
 
@@ -20,25 +5,13 @@
 "1 Filter" = "1组条件筛选";
 
 /* No comment provided by engineer. */
-"1 Participant" = "1位参与者";
-
-/* 1Password App Extension Error Message */
-"1Password Extension was cancelled by the user" = "用户取消了1Password扩展";
+"5 minutes of quiet breathing" = "5分钟平静呼吸";
 
 /* No comment provided by engineer. */
-"10 min cardio" = "10分钟有氧运动";
+"10 minutes cardio" = "10分钟有氧运动";
 
 /* No comment provided by engineer. */
 "10 minutes cleaning" = "10分钟打扫";
-
-/* No comment provided by engineer. */
-"API" = "API";
-
-/* No comment provided by engineer. */
-"API Key" = "API令牌";
-
-/* No comment provided by engineer. */
-"Abort" = "放弃";
 
 /* No comment provided by engineer. */
 "About" = "关于";
@@ -47,16 +20,7 @@
 "Accept" = "接受";
 
 /* No comment provided by engineer. */
-"Accepted" = "已接受";
-
-/* No comment provided by engineer. */
-"Account Details" = "账户信息";
-
-/* No comment provided by engineer. */
 "Acknowledgements" = "鸣谢";
-
-/* No comment provided by engineer. */
-"Actions" = "动作";
 
 /* No comment provided by engineer. */
 "Active" = "进行中";
@@ -68,117 +32,49 @@
 "Add a User ID" = "添加用户ID";
 
 /* No comment provided by engineer. */
-"Add a new checklist item" = "新增清单项目";
-
-/* No comment provided by engineer. */
-"Add a new reminder" = "增加新成员";
-
-/* No comment provided by engineer. */
 "Add an Email" = "添加一个电子邮箱";
+
+/* No comment provided by engineer. */
+"Alex the Merchant" = "商人Alex";
 
 /* No comment provided by engineer. */
 "All" = "全部";
 
 /* No comment provided by engineer. */
-"Animal Ears" = "兽耳";
-
-/* 1Password App Extension Error Message */
-"App Extension API is not available in this version of iOS" = "应用扩展API不适用于此iOS版本";
+"API Key" = "API令牌";
 
 /* No comment provided by engineer. */
-"App Version: %@
-" = "应用程序版本： %@
-";
+"Are you sure? This will delete your account forever, and it can never be restored! You will need to register a new account to use Habitica again. Banked or spent Gems will not be refunded. If you're absolutely certain, type your password into the text box below." = "你确定吗？这将会永远删除你的账号，并且不能被恢复！你需要注册新的账号以便再次使用Habitica。剩余的或用掉的宝石都不能退款。如果你非常确定要删除账号，就在下面的文本框中输入密码。";
 
 /* No comment provided by engineer. */
-"Are you sure?" = "你确定吗？";
-
-/* No comment provided by engineer. */
-"Armor" = "装备";
-
-/* No comment provided by engineer. */
-"Attributes" = "属性";
-
-/* Noun */
 "Authentication" = "认证";
-
-/* No comment provided by engineer. */
-"Authentication Cancelled" = "认证已取消";
-
-/* No comment provided by engineer. */
-"Authentication Error" = "认证错误";
-
-/* No comment provided by engineer. */
-"Back" = "返回";
-
-/* No comment provided by engineer. */
-"Background" = "背景";
 
 /* No comment provided by engineer. */
 "Bangs" = "刘海";
 
 /* No comment provided by engineer. */
-"Base" = "主体";
+"Broad" = "强壮";
 
 /* No comment provided by engineer. */
-"Base Mounts" = "普通坐骑";
-
-/* No comment provided by engineer. */
-"Base Pets" = "普通宠物";
-
-/* No comment provided by engineer. */
-"Battle Gear" = "战斗装备";
-
-/* No comment provided by engineer. */
-"Beard" = "胡子";
-
-/* No comment provided by engineer. */
-"Become a %@" = "成为 %@";
-
-/* No comment provided by engineer. */
-"Body" = "身体";
-
-/* No comment provided by engineer. */
-"Boosts" = "加速";
-
-/* No comment provided by engineer. */
-"Buy" = "购买";
-
-/* No comment provided by engineer. */
-"By completing your tasks, you've earned a faithful steed!" = "通过完成您的任务，您已得到了一匹忠诚的战马！";
+"Buy gems with gold" = "用金币购买宝石";
 
 /* No comment provided by engineer. */
 "Cancel" = "取消";
 
 /* No comment provided by engineer. */
-"Cast Spells" = "施展法术";
+"Change Email" = "更改邮箱";
 
 /* No comment provided by engineer. */
-"Change Class" = "改变职业";
+"Change Login Name" = "更改登录名";
 
 /* No comment provided by engineer. */
-"Chat" = "聊天";
+"Change Password" = "更改密码";
 
 /* No comment provided by engineer. */
-"Check in with team" = "团体入住";
-
-/* No comment provided by engineer. */
-"Choose a hair color!" = "选择一个发色";
-
-/* No comment provided by engineer. */
-"Choose a hairstyle!" = "选择一个发型";
-
-/* No comment provided by engineer. */
-"Choose a skin color!" = "选择一个皮肤颜色";
-
-/* No comment provided by engineer. */
-"Choose your outfit! (You'll unlock more outfits soon.)" = "选择您的服装！(您稍后还会解锁更多服装)";
+"Change Photo URL" = "更改照片URL地址";
 
 /* No comment provided by engineer. */
 "Chores" = "杂项";
-
-/* No comment provided by engineer. */
-"Clear Cache" = "清空缓存";
 
 /* No comment provided by engineer. */
 "Close" = "关闭";
@@ -190,16 +86,19 @@
 "Complete" = "完成";
 
 /* No comment provided by engineer. */
-"Complete Team Project" = "完成团队项目";
+"Complete Task" = "完成任务";
 
 /* No comment provided by engineer. */
-"Connection Error" = "连接错误";
+"Completed" = "已完成";
 
 /* No comment provided by engineer. */
-"Costume" = "服装";
+"Confirm New Password" = "确认新密码";
 
 /* No comment provided by engineer. */
-"Couldn't connect to the server. Check your network connection" = "无法连接到服务器。请检查网络连接";
+"Copied Message" = "已复制信息";
+
+/* No comment provided by engineer. */
+"Copy Message" = "复制信息";
 
 /* No comment provided by engineer. */
 "Create Tag" = "创建标签";
@@ -208,88 +107,70 @@
 "Creativity" = "创造力";
 
 /* No comment provided by engineer. */
-"Current streak: %@" = "目前连击数： %@";
+"Dailies" = "每日任务";
+
+/* As in 'repeats daily' */
+"daily" = "每日";
 
 /* No comment provided by engineer. */
-"Custom Day Start" = "自定义起始日期";
+"Daily" = "每日";
 
 /* No comment provided by engineer. */
-"Customize Avatar" = "自定角色";
+"Daily drop-caps doubled" = "每天双倍掉落";
 
 /* No comment provided by engineer. */
-"Daily" = "每日任务";
+"Daily workout routine" = "每日训练计划";
 
 /* No comment provided by engineer. */
-"Daily Reminder" = "每日任务提醒";
+"Danger Zone" = "危险地带";
+
+/* No comment provided by engineer. */
+"Daniel the inn keeper" = "客栈老板Daniel";
 
 /* No comment provided by engineer. */
 "Dated" = "截止日";
 
 /* No comment provided by engineer. */
-"Day Start" = "起始日期";
+"days" = "日";
 
 /* No comment provided by engineer. */
-"Declined" = "已拒绝";
+"Delete Account" = "删除账号";
 
 /* No comment provided by engineer. */
-"Description" = "描述";
+"Delete Message" = "删除消息";
 
 /* No comment provided by engineer. */
-"Difficulty" = "难度";
+"Delete tasks" = "删除任务";
 
 /* No comment provided by engineer. */
-"Disable Private Messages" = "关闭私人消息";
-
-/* No comment provided by engineer. */
-"Disable all Push Notifications" = "关闭推送通知";
+"Display Name" = "显示用户名";
 
 /* No comment provided by engineer. */
 "Do homework" = "做作业";
 
 /* No comment provided by engineer. */
+"Do you want to leave the challenge and keep or delete the tasks?" = "你要离开挑战并保留或删除任务吗？";
+
+/* No comment provided by engineer. */
 "Done" = "已完成";
+
+/* No comment provided by engineer. */
+"Double drop caps will let you receive more items from your completed tasks every day, helping you complete your stable faster!" = "双倍掉落将能让你每天从你已完成的任务中获得更多的物品，帮助你更快地填满你的马厩！";
+
+/* No comment provided by engineer. */
+"Double tap to complete" = "双击完成";
+
+/* No comment provided by engineer. */
+"Double tap to edit" = "双击编辑修改";
 
 /* No comment provided by engineer. */
 "Due" = "待办";
 
 /* No comment provided by engineer. */
-"Due %@" = "%@ 到期";
+"E-Mail" = "电子邮箱";
 
 /* No comment provided by engineer. */
-"Due Date" = "截止日";
-
-/* No comment provided by engineer. */
-"Due in %d days" = "%d 日内到期";
-
-/* No comment provided by engineer. */
-"Due today" = "今天到期";
-
-/* No comment provided by engineer. */
-"Due tomorrow" = "明天到期";
-
-/* No comment provided by engineer. */
-"ERROR" = "错误";
-
-/* No comment provided by engineer. */
-"Each reminder notifies on the days the daily is active." = "每个提醒将在每日任务激活的日期时通知。";
-
-/* No comment provided by engineer. */
-"Earn items by completing tasks and leveling up. Tap on an item to use it!" = "通过升级和完成任务获得物品。点击一个物品来使用它！";
-
-/* No comment provided by engineer. */
-"Easy" = "简单";
-
-/* No comment provided by engineer. */
-"Eat healthy/junk food" = "吃健康/垃圾食品";
-
-/* No comment provided by engineer. */
-"Edit %@" = "编辑 %@";
-
-/* No comment provided by engineer. */
-"Edit Party" = "编辑队伍";
-
-/* No comment provided by engineer. */
-"Edit Reward" = "编辑奖励";
+"Eat health/junk food" = "吃健康/垃圾食品";
 
 /* No comment provided by engineer. */
 "Edit Tag" = "编辑标签";
@@ -298,67 +179,37 @@
 "Email" = "电子邮件";
 
 /* No comment provided by engineer. */
-"Email / Username" = "电子邮件 / 用户名";
-
-/* No comment provided by engineer. */
-"Email already taken." = "此电子邮件已经注册。";
-
-/* No comment provided by engineer. */
 "Emails" = "电子邮件";
-
-/* No comment provided by engineer. */
-"Enable Class System" = "开启职业系统";
-
-/* No comment provided by engineer. */
-"Enter" = "进入";
-
-/* No comment provided by engineer. */
-"Equip" = "装备";
-
-/* No comment provided by engineer. */
-"Equipment" = "装备";
-
-/* No comment provided by engineer. */
-"Equipment pieces remaining: %d" = "剩余的装备：%d";
 
 /* No comment provided by engineer. */
 "Error" = "错误";
 
 /* No comment provided by engineer. */
-"Every x days" = "每 x 天";
+"ERROR" = "错误";
+
+/* No comment provided by engineer. */
+"every day" = "每天";
+
+/* No comment provided by engineer. */
+"Exclusive monthly items" = "独有的每月物品";
 
 /* No comment provided by engineer. */
 "Exercise" = "锻炼";
 
 /* No comment provided by engineer. */
+"Expand checklist" = "展开清单";
+
+/* No comment provided by engineer. */
 "Experience" = "经验值";
 
 /* No comment provided by engineer. */
-"Eyewear" = "面部装备";
-
-/* 1Password App Extension Error Message */
-"Failed to contacting the 1Password App Extension" = "无法连接到1Password应用扩展";
-
-/* 1Password App Extension Error Message */
-"Failed to execute script that collects web page information" = "无法执行手机网络页信息的脚本";
-
-/* 1Password App Extension Error Message */
-"Failed to fill web page because script could not be evaluated" = "由于无法判别脚本，填写网页失败";
-
-/* 1Password App Extension Error Message */
-"Failed to fill web page because script is missing" = "由于脚本遗失，填写网页失败";
-
-/* 1Password App Extension Error Message */
-"Failed to parse information returned by 1Password App Extension" = "无法解析1Password外部应用返回的信息";
+"Filter" = "条件筛选";
 
 /* No comment provided by engineer. */
-"Feed" = "喂食";
+"Finish" = "完成";
 
 /* No comment provided by engineer. */
-"Filter" = "过滤器";
-
-/* No comment provided by engineer. */
-"Finish assignment for class " = "完成职业分配";
+"Finish assignment for class" = "完成职业分配";
 
 /* No comment provided by engineer. */
 "Finish creative project" = "完成创作计划";
@@ -370,327 +221,127 @@
 "Flower" = "花";
 
 /* No comment provided by engineer. */
-"Frequency" = "频率";
-
-/* No comment provided by engineer. */
 "Friday" = "星期五";
 
 /* No comment provided by engineer. */
 "Gems" = "宝石";
 
 /* No comment provided by engineer. */
-"Get Social and Fight Monsters" = "社交和打怪兽";
+"Glasses" = "眼镜";
 
 /* No comment provided by engineer. */
-"Go Back" = "返回";
-
-/* No comment provided by engineer. */
-"Got it" = "了解";
+"Great!" = "棒极啦！";
 
 /* No comment provided by engineer. */
 "Grey" = "灰色";
 
 /* No comment provided by engineer. */
-"Guilds" = "工会";
-
-/* No comment provided by engineer. */
 "Habit" = "习惯";
 
 /* No comment provided by engineer. */
-"Hair" = "头发";
-
-/* No comment provided by engineer. */
-"Hard" = "困难";
-
-/* No comment provided by engineer. */
-"Has a due date" = "有截止日";
-
-/* No comment provided by engineer. */
-"Hatch Egg" = "孵化宠物蛋";
-
-/* No comment provided by engineer. */
-"Hatch with Potion" = "用孵化药水孵化";
-
-/* No comment provided by engineer. */
-"Head" = "头部";
-
-/* No comment provided by engineer. */
-"Head Accessory" = "头饰";
-
-/* No comment provided by engineer. */
-"Healer" = "医者";
+"Habits" = "习惯";
 
 /* No comment provided by engineer. */
 "Health" = "生命值";
 
 /* No comment provided by engineer. */
-"Health + Wellness" = "健康 + 保健";
-
-/* No comment provided by engineer. */
-"Help & FAQ" = "帮助与FAQ";
-
-/* No comment provided by engineer. */
-"Hey! You are awesome!
-Version %@ (%@)" = "嘿！你真棒！
-版本 %1$@ (%2$@)";
-
-/* No comment provided by engineer. */
 "Hold down on a task to drag it around." = "你可以长按一个任务来拖动它";
 
 /* No comment provided by engineer. */
-"Huzzah!" = "吼啊~！";
-
-/* No comment provided by engineer. */
-"I got to level %ld in Habitica by improving my real-life habits!" = "我在Habitica中通过改善我现实生活中的习惯到达了%ld级！";
-
-/* No comment provided by engineer. */
-"I want to become a %@" = "我想成为 %@";
-
-/* No comment provided by engineer. */
-"I want to opt-out" = "我暂时不想选择";
-
-/* No comment provided by engineer. */
-"Inbox" = "收件箱";
-
-/* No comment provided by engineer. */
-"Invalid E-Mail Address." = "无效的电子邮件地址。";
+"I earned a new achievement in Habitica! " = "我在Habitica中获得了新成就！";
 
 /* No comment provided by engineer. */
 "Invalid Habitica User ID" = "Habitica User ID错误";
 
 /* No comment provided by engineer. */
-"Invalid username or password" = "用户名或密码错误";
-
-/* No comment provided by engineer. */
-"Inventory" = "物品栏";
-
-/* No comment provided by engineer. */
 "Invitation Type" = "邀请类型";
-
-/* No comment provided by engineer. */
-"Invite" = "邀请";
 
 /* No comment provided by engineer. */
 "Invite Members" = "邀请成员";
 
 /* No comment provided by engineer. */
-"Invite Party" = "邀请队伍";
-
-/* No comment provided by engineer. */
-"Invited to %@" = "邀请至  %@";
-
-/* No comment provided by engineer. */
-"Items" = "物品";
-
-/* No comment provided by engineer. */
 "Join" = "加入";
 
 /* No comment provided by engineer. */
-"Last logged in" = "上一次登陆时间";
-
-/* No comment provided by engineer. */
-"Leader" = "会长";
+"Keep tasks" = "保留任务";
 
 /* No comment provided by engineer. */
 "Leave" = "离开";
 
 /* No comment provided by engineer. */
-"Leave Group" = "离开小组";
-
-/* No comment provided by engineer. */
 "Leave a Review" = "撰写评论";
 
 /* No comment provided by engineer. */
-"Level %@" = "%@ 级";
+"Leave Challenge?" = "离开挑战？";
 
 /* No comment provided by engineer. */
-"Level %@ %@" = "%1$@ %2$@ 级";
+"Level" = "等级";
 
 /* No comment provided by engineer. */
 "Local" = "本地";
 
 /* No comment provided by engineer. */
-"Log Out" = "注销";
+"Login Methods" = "登陆方式";
 
 /* No comment provided by engineer. */
-"Log in" = "登录";
-
-/* No comment provided by engineer. */
-"Login name" = "登录名";
-
-/* No comment provided by engineer. */
-"Mage" = "法师";
-
-/* No comment provided by engineer. */
-"Maintenance" = "维护";
+"Makes completed To-Dos and task history available for longer." = "让已经完成的待办事项和任务历史能够保存更久一点。";
 
 /* No comment provided by engineer. */
 "Mana" = "魔法值";
 
 /* No comment provided by engineer. */
-"Medium" = "中等";
-
-/* No comment provided by engineer. */
-"Member Since" = "成员自";
-
-/* No comment provided by engineer. */
-"Mental" = "精神上的";
-
-/* No comment provided by engineer. */
-"Menu" = "菜单";
+"Market" = "市场";
 
 /* No comment provided by engineer. */
 "Monday" = "星期一";
 
-/* No comment provided by engineer. */
-"Most important task" = "最重要的任务";
+/* As in 'repeats monthly' */
+"monthly" = "每月";
 
 /* No comment provided by engineer. */
-"Mount" = "坐骑";
+"months" = "月";
 
 /* No comment provided by engineer. */
-"Mount Type" = "坐骑种类";
+"never" = "从不";
 
 /* No comment provided by engineer. */
-"Mounts" = "坐骑";
+"Next" = "下一步";
 
 /* No comment provided by engineer. */
-"Mustache" = "胡须";
-
-/* No comment provided by engineer. */
-"My Guilds" = "我的工会";
-
-/* No comment provided by engineer. */
-"Name" = "名称";
-
-/* No comment provided by engineer. */
-"Negative (-)" = "负面的 (-)";
-
-/* No comment provided by engineer. */
-"Network error" = "网络错误";
-
-/* No comment provided by engineer. */
-"New Party" = "新队伍";
-
-/* No comment provided by engineer. */
-"New Reward" = "新奖励";
-
-/* No comment provided by engineer. */
-"News" = "新闻";
-
-/* No comment provided by engineer. */
-"No" = "否";
-
-/* No comment provided by engineer. */
-"Notes" = "备注";
-
-/* No comment provided by engineer. */
-"Nothing Equipped" = "无装备";
-
-/* No comment provided by engineer. */
-"Nothing Set" = "无设置";
+"Not getting the right drops? Check out the Market to buy just the things you need!" = "没有获得想要的掉落物品？查看“市场”来买你想要的东西吧！";
 
 /* No comment provided by engineer. */
 "OK" = "OK";
 
 /* No comment provided by engineer. */
-"On certain days of the week" = "一周中的特定几天";
+"Open App Store page" = "打开App Store页面";
 
 /* No comment provided by engineer. */
-"Once a quest is started, no other party members can join the quest." = "一旦任务开始，其他团队成员将无法加入任务";
+"Password" = "密码";
 
 /* No comment provided by engineer. */
-"Opt-Out" = "不选择";
+"Pause Damage" = "进入客栈";
 
 /* No comment provided by engineer. */
-"Organize Closet" = "整理衣物";
-
-/* No comment provided by engineer. */
-"Other" = "其他";
-
-/* No comment provided by engineer. */
-"Participants" = "参与者";
-
-/* No comment provided by engineer. */
-"Party" = "队伍";
-
-/* No comment provided by engineer. */
-"Passwords don't match." = "密码不相符。";
-
-/* No comment provided by engineer. */
-"Pending" = "未决定";
-
-/* No comment provided by engineer. */
-"Pet Type" = "宠物种类";
-
-/* No comment provided by engineer. */
-"Pets" = "宠物";
-
-/* No comment provided by engineer. */
-"Physical" = "身体上的";
-
-/* No comment provided by engineer. */
-"Positive (+)" = "正面的 (+)";
+"Ponytail" = "马尾辫";
 
 /* No comment provided by engineer. */
 "Process email" = "处理电子邮件";
 
 /* No comment provided by engineer. */
-"Profile" = "角色信息";
-
-/* No comment provided by engineer. */
-"Public Guilds" = "公共公会";
-
-/* No comment provided by engineer. */
-"Purchase for %@ Gems" = "购买 %@ 个宝石";
-
-/* No comment provided by engineer. */
-"Purchase for 2 Gems" = "购买2个宝石";
-
-/* No comment provided by engineer. */
-"Quest" = "任务";
-
-/* No comment provided by engineer. */
-"Quest Detail" = "任务详情";
-
-/* No comment provided by engineer. */
-"Quest Invitation" = "任务邀请";
-
-/* No comment provided by engineer. */
-"Quest Mounts" = "任务坐骑";
-
-/* No comment provided by engineer. */
-"Quest Pets" = "剧情任务宠物";
-
-/* No comment provided by engineer. */
-"Register" = "注册";
+"Recipient" = "接受者";
 
 /* No comment provided by engineer. */
 "Reject" = "拒绝";
 
 /* No comment provided by engineer. */
-"Reload Content" = "重新加载内容";
-
-/* No comment provided by engineer. */
 "Remember to check off your Dailies!" = "记得完成你的每日任务！";
-
-/* No comment provided by engineer. */
-"Remind me tomorrow" = "明天再提醒我";
 
 /* No comment provided by engineer. */
 "Reminder" = "提醒";
 
 /* No comment provided by engineer. */
-"Reminders" = "提醒";
-
-/* No comment provided by engineer. */
-"Repeat every X days" = "每 X 天重复";
-
-/* No comment provided by engineer. */
 "Reply" = "回复";
-
-/* No comment provided by engineer. */
-"Report" = "报告";
 
 /* No comment provided by engineer. */
 "Report %@ for violation?" = "举报 %@ 违规？";
@@ -699,49 +350,34 @@ Version %@ (%@)" = "嘿！你真棒！
 "Report a bug" = "反馈一个漏洞";
 
 /* No comment provided by engineer. */
-"Reset Justins Tips" = "重设Justin的提示";
+"Retain additional history entries" = "保持额外的历史记录";
 
 /* No comment provided by engineer. */
-"Rogue" = "盗贼";
+"Rewards" = "奖励";
 
 /* No comment provided by engineer. */
 "Saturday" = "星期六";
 
 /* No comment provided by engineer. */
-"Schedule check-up" = "确认行程";
+"Save" = "保存";
+
+/* No comment provided by engineer. */
+"Scan QR Code" = "扫描二维码（QR码）";
 
 /* No comment provided by engineer. */
 "School" = "学校";
 
 /* No comment provided by engineer. */
-"Select Attributes" = "选择属性";
+"Search" = "搜索";
 
 /* No comment provided by engineer. */
-"Select Class" = "选择职业";
-
-/* No comment provided by engineer. */
-"Select Difficulty" = "选择难度";
-
-/* No comment provided by engineer. */
-"Select Frequency" = "选择频率";
-
-/* No comment provided by engineer. */
-"Sell (%@ Gold)" = "出售 (%@ 金币)";
+"Seasonal Shop" = "季度商店";
 
 /* No comment provided by engineer. */
 "Send feedback" = "提交反馈";
 
 /* No comment provided by engineer. */
-"Server error" = "服务器错误";
-
-/* No comment provided by engineer. */
 "Set up workout schedule" = "制定锻炼计划";
-
-/* No comment provided by engineer. */
-"Settings" = "设置";
-
-/* No comment provided by engineer. */
-"Shield" = "盾牌";
 
 /* No comment provided by engineer. */
 "Shirt" = "上衣";
@@ -750,40 +386,19 @@ Version %@ (%@)" = "嘿！你真棒！
 "Size" = "大小";
 
 /* No comment provided by engineer. */
-"Skin" = "皮肤";
-
-/* No comment provided by engineer. */
-"Sleep tight!" = "睡个好觉！";
-
-/* No comment provided by engineer. */
-"Social" = "社交";
-
-/* No comment provided by engineer. */
-"Special Mounts" = "特殊坐骑";
-
-/* No comment provided by engineer. */
-"Special Pets" = "特殊宠物";
-
-/* No comment provided by engineer. */
-"Stretching" = "舒展";
+"Slim" = "苗条";
 
 /* No comment provided by engineer. */
 "Strong" = "经常";
 
 /* No comment provided by engineer. */
-"Study a master of the craft" = "成为手工艺高手";
-
-/* No comment provided by engineer. */
 "Study/Procrastinate" = "学习/拖延";
 
 /* No comment provided by engineer. */
-"Suggested Guilds" = "推荐工会";
+"Subscription" = "订阅";
 
 /* No comment provided by engineer. */
 "Sunday" = "星期日";
-
-/* No comment provided by engineer. */
-"Tags" = "标签";
 
 /* No comment provided by engineer. */
 "Tap a task to edit it and add reminders. Swipe left to delete it." = "点击任务编辑和增加提醒。左划删除。";
@@ -792,46 +407,16 @@ Version %@ (%@)" = "嘿！你真棒！
 "Tap to add a new task." = "点击可增加新任务。";
 
 /* No comment provided by engineer. */
-"Tap to change how your pets are grouped." = "点击以改变宠物分组方式。";
-
-/* No comment provided by engineer. */
-"Tap to edit task, change notification time, or delete." = "点击编辑任务、更改通知时间或者删除。";
-
-/* No comment provided by engineer. */
 "Tap to filter tasks." = "点击此处筛选任务";
-
-/* No comment provided by engineer. */
-"Tap to invite friends and view party members." = "点击邀请朋友并查看队伍成员。";
 
 /* No comment provided by engineer. */
 "Tavern" = "酒馆";
 
 /* No comment provided by engineer. */
-"Teams" = "队伍";
+"The scanned QR-Code did not contain a valid Habitica User ID." = "这个二维码不包含一个有效的Habitica用户ID.";
 
 /* No comment provided by engineer. */
-"Text" = "文字";
-
-/* No comment provided by engineer. */
-"The authentication process was cancelled." = "认证过程已取消";
-
-/* No comment provided by engineer. */
-"There seems to be a problem with the server. Try again later" = "嘛……我们的服务器好像睡着了……请稍后再试一次~";
-
-/* No comment provided by engineer. */
-"There was an error verifying your purchase" = "在确认您的付款时出现错误";
-
-/* No comment provided by engineer. */
-"There was an error with the authentication. Try again later" = "鉴定出现错误，请稍后再试";
-
-/* No comment provided by engineer. */
-"This item can be purchased for %@ Gems" = "您可以使用 %@ 宝石购买这个物品";
-
-/* No comment provided by engineer. */
-"This item can be purchased for 2 Gems" = "您可以使用2宝石购买这个物品";
-
-/* No comment provided by engineer. */
-"This set can be unlocked for %@ Gems" = "您可以使用%@宝石解锁这个套装";
+"There was an error with your request: %@" = "你的请求发生错误：%@";
 
 /* No comment provided by engineer. */
 "Thursday" = "星期四";
@@ -840,46 +425,13 @@ Version %@ (%@)" = "嘿！你真棒！
 "To-Do" = "待办事项";
 
 /* No comment provided by engineer. */
-"Trivial" = "琐事";
+"To-Dos" = "待办事项";
 
 /* No comment provided by engineer. */
 "Tuesday" = "星期二";
 
 /* No comment provided by engineer. */
-"Unequip" = "卸下";
-
-/* No comment provided by engineer. */
-"Unlock for %@ Gems" = "用 %@ 个宝石解锁";
-
-/* No comment provided by engineer. */
-"Unmount" = "停止骑乘";
-
-/* No comment provided by engineer. */
-"Update team on status" = "更新团队状态";
-
-/* No comment provided by engineer. */
-"Use" = "使用";
-
-/* No comment provided by engineer. */
-"Use Skills" = "使用技能";
-
-/* No comment provided by engineer. */
-"User" = "用户";
-
-/* No comment provided by engineer. */
 "User ID" = "用户ID";
-
-/* No comment provided by engineer. */
-"Username" = "用户名";
-
-/* No comment provided by engineer. */
-"Username already taken." = "用户名已被使用。";
-
-/* No comment provided by engineer. */
-"Validation Error" = "验证错误";
-
-/* No comment provided by engineer. */
-"Value" = "值";
 
 /* No comment provided by engineer. */
 "Version" = "版本";
@@ -888,16 +440,7 @@ Version %@ (%@)" = "嘿！你真棒！
 "View Source Code" = "查看源代码";
 
 /* No comment provided by engineer. */
-"Visibility" = "显示";
-
-/* No comment provided by engineer. */
-"Wakey Wakey!" = "起床，起床！";
-
-/* No comment provided by engineer. */
-"Warrior" = "战士";
-
-/* No comment provided by engineer. */
-"Wash Dishes" = "洗盘子";
+"Wash dishes" = "洗盘子";
 
 /* No comment provided by engineer. */
 "We love open source software." = "我们喜欢开源软件。";
@@ -906,25 +449,28 @@ Version %@ (%@)" = "嘿！你真棒！
 "Weak" = "虚弱";
 
 /* No comment provided by engineer. */
-"Weapon" = "武器";
-
-/* No comment provided by engineer. */
-"Wear costume" = "穿上装扮";
-
-/* No comment provided by engineer. */
 "Website" = "网站";
 
 /* No comment provided by engineer. */
 "Wednesday" = "星期三";
 
 /* No comment provided by engineer. */
-"Weekly" = "每周";
+"weekdays" = "工作日";
 
 /* No comment provided by engineer. */
-"Welcome" = "欢迎";
+"weekends" = "周末";
+
+/* As in 'repeats weekly' */
+"weekly" = "每周";
 
 /* No comment provided by engineer. */
-"Welcome to Habitica" = "欢迎来到Habitica";
+"weeks" = "周";
+
+/* No comment provided by engineer. */
+"Welcome Back!" = "欢迎回来！";
+
+/* No comment provided by engineer. */
+"Wheelchair" = "轮椅";
 
 /* No comment provided by engineer. */
 "Work" = "工作";
@@ -933,29 +479,41 @@ Version %@ (%@)" = "嘿！你真棒！
 "Work on creative project" = "进行创作性的项目工作";
 
 /* No comment provided by engineer. */
-"Work project" = "工作方案";
+"Write Message" = "写信息";
 
 /* No comment provided by engineer. */
-"Yes" = "是";
+"Write to %@" = "写给 %@";
+
+/* As in 'repeats yearly' */
+"yearly" = "每年";
 
 /* No comment provided by engineer. */
-"You gained a level!" = "你升级了！";
+"years" = "年";
 
 /* No comment provided by engineer. */
-"You hatched a %@ %@!" = "您孵化了 %1$@ %2$@!";
+"You earned a streak achievement!" = "你获得了一个连击的成就！";
 
 /* No comment provided by engineer. */
-"You have no food" = "你没有任何食物";
+"You have earned a %@ for being committed to improving your life." = "通过承诺改善你的生活，你获得了一个%@ ";
 
 /* No comment provided by engineer. */
-"You raised a mount!" = "你培养了一匹坐骑";
+"You have to specify a valid Habitica User ID as recipient." = "你必须选择一个有效的Habitica有户ID称为接受者。";
 
 /* No comment provided by engineer. */
-"You will become a %@." = "您将成为 %@。";
+"You unlocked the drop system!" = "你解锁了掉落系统！";
 
 /* No comment provided by engineer. */
-"Your pet eats the %@ but doesn't seem to enjoy it." = "你的宠物吃了 %@ ，但好像并不喜欢。";
+"You've completed your Daily for 21 days in a row! Amazing job. Don't break the streak!" = "你已连续21天完成每日任务！做的不错。别断掉连续！";
 
 /* No comment provided by engineer. */
-"equipped" = "已装备";
+"You've unlocked the Drop System! Now when you complete tasks, you have a small chance of finding an item, including eggs, potions, and food!" = "你解锁了掉落系统！现在每当你完成任务，你有小概率找到一件物品，可获得宠物蛋、孵化药水、食物。";
+
+/* No comment provided by engineer. */
+"Your message could not be sent." = "你的信息不能被送出。";
+
+/* No comment provided by engineer. */
+"Your next prize unlocks in %d Check-Ins" = "你的下一个奖项将在%d时解锁";
+
+/* No comment provided by engineer. */
+"Your next prize unlocks in 1 Check-In." = "你的下一个奖项将在1时解锁";
 

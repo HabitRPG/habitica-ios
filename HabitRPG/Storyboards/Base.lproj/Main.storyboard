@@ -2327,7 +2327,7 @@ and helps keep Habitica running</string>
                     <navigationItem key="navigationItem" title="Filter by tags" id="RJ8-HL-bIH">
                         <barButtonItem key="leftBarButtonItem" systemItem="done" id="2yR-UY-zxm">
                             <connections>
-                                <segue destination="Rot-qR-0bj" kind="unwind" identifier="UnwindTagSegue" unwindAction="unwindToList:" id="MrB-cc-ysf"/>
+                                <segue destination="Rot-qR-0bj" kind="unwind" unwindAction="unwindFilterChangedWithSegue:" id="JlJ-u3-PVM"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="O21-kC-ShH">

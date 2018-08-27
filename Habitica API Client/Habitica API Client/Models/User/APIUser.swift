@@ -31,6 +31,7 @@ public class APIUser: UserProtocol, Decodable {
     public var hasNewMessages: [UserNewMessagesProtocol]
     public var invitations: [GroupInvitationProtocol]
     public var pushDevices: [PushDeviceProtocol]
+    public var isValid: Bool { return true }
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -91,6 +92,6 @@ public class APIUser: UserProtocol, Decodable {
             invitation.isPartyInvitation = true
         })
         invitations = (invitationsHelper?.guilds ?? []) + (invitationsHelper?.parties ?? [])
-        pushDevices = (try values.decode([APIPushDevice].self, forKey: .pushDevices))
+        pushDevices = (try? values.decode([APIPushDevice].self, forKey: .pushDevices)) ?? []
     }
 }

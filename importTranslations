@@ -1,0 +1,9 @@
+#!/bin/bash
+
+tx pull
+
+for file in translations/habitica-ios.ios-main/*
+do
+  echo "Importing $file"
+  xcodebuild -importLocalizations -project Habitica.xcodeproj -localizationPath $file
+done

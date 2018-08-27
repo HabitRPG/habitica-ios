@@ -9,7 +9,7 @@
 import Foundation
 
 @objc
-public protocol AvatarProtocol {
+public protocol AvatarProtocol: BaseModelProtocol {
     var items: UserItemsProtocol? { get set }
     var preferences: PreferencesProtocol? { get set }
     var stats: StatsProtocol? { get set }

@@ -34,8 +34,11 @@ class RealmInAppReward: Object, InAppRewardProtocol {
             return realmCategory.first
         }
     }
-    
     var realmCategory = LinkingObjects(fromType: RealmShopCategory.self, property: "realmItems")
+    
+    var isValid: Bool {
+        return !isInvalidated
+    }
     
     override static func primaryKey() -> String {
         return "combinedKey"

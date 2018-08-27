@@ -124,10 +124,15 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
     }
     
     func delete(groupID: String, chatMessage: ChatMessageProtocol) -> Signal<EmptyResponseProtocol?, NoError> {
+        if !chatMessage.isValid {
+            return Signal.empty
+        }
         let call = DeleteChatMessageCall(groupID: groupID, chatMessage: chatMessage)
         call.fire()
         return call.objectSignal.on(value: {[weak self]_ in
-            self?.localRepository.delete(chatMessage)
+            if chatMessage.isValid {
+                self?.localRepository.delete(chatMessage)
+            }
         })
     }
     
@@ -291,6 +296,19 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
                 self?.localRepository.deleteGroupInvitation(userID: userID, groupID: groupID)
             }
         })
+    }
+    
+    public func invite(toGroup groupID: String, invitationType: String, inviter: String, members: [String]) -> Signal<EmptyResponseProtocol?, NoError> {
+        let call = InviteToGroupCall(groupID: groupID, invitationType: invitationType, inviter: inviter, members: members)
+        call.fire()
+        call.habiticaResponseSignal.observeValues { (response) in
+            if let error = response?.message {
+                ToastManager.show(text: error, color: .red)
+            } else {
+                ToastManager.show(text: L10n.usersInvited, color: .blue)
+            }
+        }
+        return call.objectSignal
     }
     
     public func joinChallenge(challengeID: String) -> Signal<ChallengeProtocol?, NoError> {

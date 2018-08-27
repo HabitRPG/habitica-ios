@@ -53,11 +53,11 @@ class ItemsViewController: HRPGBaseViewController {
                 }
             }
         } else if let item = item {
-            showActionSheet(item: item)
+            showActionSheet(item: item, withSource: tableView.cellForRow(at: indexPath))
         }
     }
     
-    private func showActionSheet(item: ItemProtocol) {
+    private func showActionSheet(item: ItemProtocol, withSource sourceView: UIView?) {
         let alertController = UIAlertController(title: item.text, message: nil, preferredStyle: .actionSheet)
         if item.itemType == ItemType.eggs {
             alertController.addAction(UIAlertAction(title: L10n.hatchEgg, style: .default, handler: {[weak self] (_) in
@@ -93,6 +93,12 @@ class ItemsViewController: HRPGBaseViewController {
             }))
         }
         alertController.addAction(UIAlertAction.cancelAction())
+        if let sourceView = sourceView {
+            alertController.popoverPresentationController?.sourceView = sourceView
+            alertController.popoverPresentationController?.sourceRect = sourceView.bounds
+        } else {
+            alertController.setSourceInCenter(view)
+        }
         alertController.show()
     }
     

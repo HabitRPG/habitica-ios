@@ -24,9 +24,11 @@ class SplitSocialViewController: HabiticaSplitViewController {
     
     @objc var groupID: String? {
         didSet {
-            chatViewController?.groupID = groupID
-            retrieveGroup()
-            fetchGroup()
+            DispatchQueue.main.async { [weak self] in
+                self?.chatViewController?.groupID = self?.groupID
+                self?.retrieveGroup()
+                self?.fetchGroup()
+            }
         }
     }
     
@@ -116,6 +118,15 @@ class SplitSocialViewController: HabiticaSplitViewController {
             if let formViewController = destination?.topViewController as? GroupFormViewController {
                 formViewController.groupID = groupID
             }
+        }
+    }
+    
+    @IBAction func unwindToList(_ segue: UIStoryboardSegue) {
+    }
+    
+    @IBAction func unwindToListInvite(_ segue: UIStoryboardSegue) {
+        if let groupID = groupID, let viewController = segue.source as? InviteMembersViewController {
+            socialRepository.invite(toGroup: groupID, invitationType: viewController.invitationType, inviter: "", members:viewController.members).observeCompleted {}
         }
     }
 }

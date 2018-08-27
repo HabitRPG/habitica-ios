@@ -70,8 +70,8 @@ struct RepeatableTask {
     var saturday = false
     var sunday = false
     var startDate: Date?
-    var daysOfMonth = Set<NSNumber>()
-    var weeksOfMonth = Set<NSNumber>()
+    var daysOfMonth = [Int]()
+    var weeksOfMonth = [Int]()
 
     init(task: TaskProtocol) {
         self.frequency = task.frequency
@@ -84,35 +84,31 @@ struct RepeatableTask {
         self.saturday = task.weekRepeat?.saturday ?? false
         self.sunday = task.weekRepeat?.sunday ?? false
         self.startDate = task.startDate
-        /*if let daysOfMonth = task.daysOfMonth {
-            self.daysOfMonth = daysOfMonth
-        }
-        if let weeksOfMonth = task.weeksOfMonth {
-            self.weeksOfMonth = weeksOfMonth
-        }*/
+        self.daysOfMonth = task.daysOfMonth
+        self.weeksOfMonth = task.weeksOfMonth
     }
 
     init(frequency: String?,
-         everyX: NSNumber?,
-         monday: NSNumber?,
-         tuesday: NSNumber?,
-         wednesday: NSNumber?,
-         thursday: NSNumber?,
-         friday: NSNumber?,
-         saturday: NSNumber?,
-         sunday: NSNumber?,
+         everyX: Int?,
+         monday: Bool?,
+         tuesday: Bool?,
+         wednesday: Bool?,
+         thursday: Bool?,
+         friday: Bool?,
+         saturday: Bool?,
+         sunday: Bool?,
          startDate: Date?,
-         daysOfMonth: Set<NSNumber>?,
-         weeksOfMonth: Set<NSNumber>?) {
+         daysOfMonth: [Int]?,
+         weeksOfMonth: [Int]?) {
         self.frequency = frequency
-        self.everyX = everyX?.intValue ?? 1
-        self.monday = monday?.boolValue ?? false
-        self.tuesday = tuesday?.boolValue ?? false
-        self.wednesday = wednesday?.boolValue ?? false
-        self.thursday = thursday?.boolValue ?? false
-        self.friday = friday?.boolValue ?? false
-        self.saturday = saturday?.boolValue ?? false
-        self.sunday = sunday?.boolValue ?? false
+        self.everyX = everyX ?? 1
+        self.monday = monday ?? false
+        self.tuesday = tuesday ?? false
+        self.wednesday = wednesday ?? false
+        self.thursday = thursday ?? false
+        self.friday = friday ?? false
+        self.saturday = saturday ?? false
+        self.sunday = sunday ?? false
         self.startDate = startDate
         if let daysOfMonth = daysOfMonth {
             self.daysOfMonth = daysOfMonth
@@ -151,19 +147,18 @@ class TaskRepeatablesSummaryInteractor: NSObject {
     }
 
     //swiftlint:disable function_parameter_count
-    @objc
     func repeatablesSummary(frequency: String?,
-                            everyX: NSNumber?,
-                            monday: NSNumber?,
-                            tuesday: NSNumber?,
-                            wednesday: NSNumber?,
-                            thursday: NSNumber?,
-                            friday: NSNumber?,
-                            saturday: NSNumber?,
-                            sunday: NSNumber?,
+                            everyX: Int?,
+                            monday: Bool?,
+                            tuesday: Bool?,
+                            wednesday: Bool?,
+                            thursday: Bool?,
+                            friday: Bool?,
+                            saturday: Bool?,
+                            sunday: Bool?,
                             startDate: Date?,
-                            daysOfMonth: Set<NSNumber>?,
-                            weeksOfMonth: Set<NSNumber>?) -> String {
+                            daysOfMonth: [Int]?,
+                            weeksOfMonth: [Int]?) -> String {
         let task = RepeatableTask(frequency: frequency,
                                   everyX: everyX,
                                   monday: monday,
@@ -282,7 +277,7 @@ class TaskRepeatablesSummaryInteractor: NSObject {
             if task.daysOfMonth.count > 0 {
                 var days = [String]()
                 for day in task.daysOfMonth {
-                    days.append(day.stringValue)
+                    days.append(String(day))
                 }
                 return NSLocalizedString("the \(days.joined(separator: ", "))", comment: "")
             }

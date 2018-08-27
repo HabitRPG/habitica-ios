@@ -44,9 +44,9 @@ class HabiticaAppDelegate: NSObject {
         Fabric.with([Crashlytics.self])
         let keys = HabiticaKeys()
         let instabugKey = HabiticaAppDelegate.isRunningLive() ? keys.instabugLive : keys.instabugBeta
-        Instabug.start(withToken: instabugKey, invocationEvent: .shake)
-        Instabug.setPromptOptionsEnabledWithBug(true, feedback: true, chat: false)
-        Instabug.setNetworkLogRequestObfuscationHandler { (request) -> URLRequest in
+        Instabug.start(withToken: instabugKey, invocationEvents: [.shake])
+        BugReporting.promptOptions = [.bug, .feedback]
+        NetworkLogger.setRequestObfuscationHandler { (request) -> URLRequest in
             guard let mutableRequest = (request as NSURLRequest).mutableCopy() as? NSMutableURLRequest else {
                 return URLRequest(url: request.url ?? URL(fileURLWithPath: ""))
             }
@@ -54,16 +54,16 @@ class HabiticaAppDelegate: NSObject {
             mutableRequest.setValue("KEY", forHTTPHeaderField: "x-api-key")
             return mutableRequest as URLRequest
         }
-        Instabug.setNetworkLogResponseObfuscationHandler { (data, response, completion) in
+        NetworkLogger.setResponseObfuscationHandler { (data, response, completion) in
             completion(Data(), response)
         }
-        Instabug.setReproStepsMode(.enabledWithNoScreenshots)
-        Instabug.setCommentFieldRequired(true)
+        Instabug.reproStepsMode = .enabledWithNoScreenshots
+        BugReporting.invocationOptions = .commentFieldRequired
         
         if HabiticaAppDelegate.isRunningLive() {
-            Instabug.setWelcomeMessageMode(.disabled)
+            Instabug.welcomeMessageMode = .disabled
         } else {
-            Instabug.setWelcomeMessageMode(.beta)
+            Instabug.welcomeMessageMode = .beta
         }
     }
     
@@ -94,7 +94,7 @@ class HabiticaAppDelegate: NSObject {
         NetworkAuthenticationManager.shared.currentUserKey = AuthenticationManager.shared.currentUserKey
         AuthenticatedCall.errorHandler = HabiticaNetworkErrorHandler()
         let configuration = URLSessionConfiguration.default
-        Instabug.enableLogging(for: configuration)
+        NetworkLogger.enableLogging(for: configuration)
         AuthenticatedCall.defaultConfiguration.urlConfiguration = configuration
     }
     

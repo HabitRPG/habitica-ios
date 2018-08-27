@@ -1,12 +1,12 @@
-/* (No Comment) */
+/* Bundle display name */
 "CFBundleDisplayName" = "Хабитика";
 
-/* (No Comment) */
+/* Bundle name */
 "CFBundleName" = "Хабитика";
 
-/* (No Comment) */
+/* Privacy - Camera Usage Description */
 "NSCameraUsageDescription" = "Хабитика трябва да има достъп до камерата на устройството, за да може да сканира QR-код.";
 
-/* (No Comment) */
+/* Privacy - Photo Library Usage Description */
 "NSPhotoLibraryUsageDescription" = "Хабитика трябва да има достъп до камерата на устройството, за да може да сканира QR-код.";
 

@@ -1,0 +1,45 @@
+/* Class = "UIButton"; normalTitle = "Skip"; ObjectID = "0i8-DP-8iH"; */
+"0i8-DP-8iH.normalTitle" = "Přeskočit";
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "1De-XG-mrd"; */
+"1De-XG-mrd.normalTitle" = "Přihlásit";
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "8wd-GG-g6F"; */
+"8wd-GG-g6F.normalTitle" = "Přihlásit";
+
+/* Class = "UIButton"; normalTitle = "Work"; ObjectID = "9Sv-nF-boz"; */
+"9Sv-nF-boz.normalTitle" = "Práce";
+
+/* Class = "UILabel"; text = "Next"; ObjectID = "CPE-AH-dQ8"; */
+"CPE-AH-dQ8.text" = "Další";
+
+/* Class = "UIButton"; normalTitle = "Self-Care"; ObjectID = "iYm-7u-1VI"; */
+"iYm-7u-1VI.normalTitle" = "Péče o sebe sam";
+
+/* Class = "UIButton"; normalTitle = "Randomize"; ObjectID = "K2H-zJ-vTs"; */
+"K2H-zJ-vTs.normalTitle" = "Znáhodnit";
+
+/* Class = "UIButton"; normalTitle = "Chores"; ObjectID = "kJd-TG-HlB"; */
+"kJd-TG-HlB.normalTitle" = "Domácí práce";
+
+/* Class = "UILabel"; text = "Welcome to"; ObjectID = "n39-ny-0cS"; */
+"n39-ny-0cS.text" = "Vítej v";
+
+/* Class = "UIButton"; normalTitle = "Register"; ObjectID = "Ohf-iu-Phe"; */
+"Ohf-iu-Phe.normalTitle" = "Registrovat";
+
+/* Class = "UIButton"; normalTitle = "School"; ObjectID = "qdP-gX-YYc"; */
+"qdP-gX-YYc.normalTitle" = "Škola";
+
+/* Class = "UIButton"; normalTitle = "Creativity"; ObjectID = "r9x-6o-A2F"; */
+"r9x-6o-A2F.normalTitle" = "Kreativita";
+
+/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "uAN-kx-bnR"; */
+"uAN-kx-bnR.normalTitle" = "Zpět";
+
+/* Class = "UIButton"; normalTitle = "Health"; ObjectID = "UOx-cX-pif"; */
+"UOx-cX-pif.normalTitle" = "Zdraví";
+
+/* Class = "UIButton"; normalTitle = "Exercise"; ObjectID = "YG9-k8-OkO"; */
+"YG9-k8-OkO.normalTitle" = "Cvičení";
+
