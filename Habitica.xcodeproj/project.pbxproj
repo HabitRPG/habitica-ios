@@ -469,6 +469,9 @@
 		D9F1E3EC1E55E1DB0034D0F4 /* SubscriptionInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F1E3EB1E55E1DB0034D0F4 /* SubscriptionInformation.swift */; };
 		D9FC1A7E1BC28F4700B97D23 /* HRPGTypingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D9FC1A7D1BC28F4700B97D23 /* HRPGTypingLabel.m */; };
 		DC2C41815D97E02EF9D3BEF9 /* HRPGLabeledProgressBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2C40206801F9FB5D6D6190 /* HRPGLabeledProgressBarTests.swift */; };
+		DE3DF49C2130443E007D7F32 /* LabeledProgressBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE3DF49B2130443E007D7F32 /* LabeledProgressBar.xib */; };
+		DE3DF4A1213046EB007D7F32 /* LabeledProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3DF4A0213046EB007D7F32 /* LabeledProgressBar.swift */; };
+		DE886BBB2135B49A00550633 /* LabeledProgressBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE886BBA2135B49A00550633 /* LabeledProgressBarTests.swift */; };
 		F9E64EEA9B65CE54DBB87415 /* Pods_Habitica.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FDBD03FA52D6A93D9B664CE /* Pods_Habitica.framework */; };
 /* End PBXBuildFile section */
 
@@ -1301,6 +1304,9 @@
 		D9FC1A7C1BC28F4700B97D23 /* HRPGTypingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGTypingLabel.h; sourceTree = "<group>"; };
 		D9FC1A7D1BC28F4700B97D23 /* HRPGTypingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGTypingLabel.m; sourceTree = "<group>"; };
 		DC2C40206801F9FB5D6D6190 /* HRPGLabeledProgressBarTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGLabeledProgressBarTests.swift; sourceTree = "<group>"; };
+		DE3DF49B2130443E007D7F32 /* LabeledProgressBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabeledProgressBar.xib; sourceTree = "<group>"; };
+		DE3DF4A0213046EB007D7F32 /* LabeledProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledProgressBar.swift; sourceTree = "<group>"; };
+		DE886BBA2135B49A00550633 /* LabeledProgressBarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledProgressBarTests.swift; sourceTree = "<group>"; };
 		FF94C85B3E405C2849F2375A /* Pods-HabiticaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HabiticaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HabiticaTests/Pods-HabiticaTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -2269,6 +2275,8 @@
 				D9479605196DF4B6002CB34C /* HRPGImageOverlayView.h */,
 				D9479606196DF4B6002CB34C /* HRPGImageOverlayView.m */,
 				D9E9E0C71CCE64A3006D94A2 /* HRPGImageOverlayView.xib */,
+				DE3DF49B2130443E007D7F32 /* LabeledProgressBar.xib */,
+				DE3DF4A0213046EB007D7F32 /* LabeledProgressBar.swift */,
 				D9BA33D21AB5E5820028AFEC /* HRPGLabeledProgressBar.h */,
 				D9BA33D31AB5E5820028AFEC /* HRPGLabeledProgressBar.m */,
 				D905D08D1DE2431100CABF55 /* HRPGLoginIncentiveOverlayView.h */,
@@ -2568,6 +2576,7 @@
 			isa = PBXGroup;
 			children = (
 				DC2C40206801F9FB5D6D6190 /* HRPGLabeledProgressBarTests.swift */,
+				DE886BBA2135B49A00550633 /* LabeledProgressBarTests.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2812,6 +2821,7 @@
 				290279AD20583EF9006DACB9 /* Intro.storyboard in Resources */,
 				D984D5841E48E57C006E84F8 /* TaskDetailLineView.xib in Resources */,
 				D9A50E9A1A868DE400FC8B1A /* Launch Screen.xib in Resources */,
+				DE3DF49C2130443E007D7F32 /* LabeledProgressBar.xib in Resources */,
 				D905768A1BD83241009BB7BC /* Localizable.strings in Resources */,
 				2957B8B81F4B2F6A00E836EF /* CustomRewardCell.xib in Resources */,
 				D9C31DB31C6501090096F4EC /* Main.storyboard in Resources */,
@@ -3141,6 +3151,7 @@
 				298409CD203C3283003AD202 /* AvatarViewTests.swift in Sources */,
 				D9709A501E7F17150005F35B /* TaskDetailLineViewTests.swift in Sources */,
 				D9709A4E1E7F13330005F35B /* ChallengeTableViewControllerTests.swift in Sources */,
+				DE886BBB2135B49A00550633 /* LabeledProgressBarTests.swift in Sources */,
 				DC2C41815D97E02EF9D3BEF9 /* HRPGLabeledProgressBarTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3203,6 +3214,7 @@
 				292DEEA7204F6F8C0086D5F7 /* TodoTableViewDataSource.swift in Sources */,
 				D9D593611D0058AE00D6C388 /* HRPGInboxChatViewController.m in Sources */,
 				292DEE70204DEB120086D5F7 /* TaskTableViewDataSource.swift in Sources */,
+				DE3DF4A1213046EB007D7F32 /* LabeledProgressBar.swift in Sources */,
 				D9D17CD01E673CCC00AD9232 /* UIView-Extensions.swift in Sources */,
 				299FB2A32084B3DF00422522 /* PetOverviewViewController.swift in Sources */,
 				49A4646B1FCD18FD00E14A5D /* HRPGButtonViewModel.swift in Sources */,

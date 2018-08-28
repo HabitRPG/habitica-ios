@@ -16,9 +16,9 @@ class UserTopHeader: UIView {
     
     @IBOutlet weak var avatarView: AvatarView!
     
-    @IBOutlet weak var healthLabel: HRPGLabeledProgressBar!
-    @IBOutlet weak var experienceLabel: HRPGLabeledProgressBar!
-    @IBOutlet weak var magicLabel: HRPGLabeledProgressBar!
+    @IBOutlet weak var healthLabel: LabeledProgressBar!
+    @IBOutlet weak var experienceLabel: LabeledProgressBar!
+    @IBOutlet weak var magicLabel: LabeledProgressBar!
     
     @IBOutlet weak var levelLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
