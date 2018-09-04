@@ -49,7 +49,7 @@ class TaskDetailLineViewTests: HabiticaTests {
     }
     
     func testTagsVisible() {
-        //task.tags = Set(arrayLiteral: tag)
+        task.tags = [MockTag()]
         taskDetailLine.configure(task: task)
         expect(self.taskDetailLine.challengeIconView.isHidden) == true
         expect(self.taskDetailLine.tagIconView.isHidden) == false
@@ -67,7 +67,7 @@ class TaskDetailLineViewTests: HabiticaTests {
     }
     
     func testReminderVisible() {
-        //task.reminders = NSOrderedSet(array: [reminder])
+        task.reminders = [MockReminder()]
         taskDetailLine.configure(task: task)
         expect(self.taskDetailLine.challengeIconView.isHidden) == true
         expect(self.taskDetailLine.tagIconView.isHidden) == true
@@ -170,4 +170,17 @@ class TestTask: TaskProtocol {
     var isDue: Bool = false
     var streak: Int = 0
     var challengeID: String?
+}
+
+class MockTag: TagProtocol {
+    var id: String?
+    var text: String?
+    var order: Int = 0
+}
+
+class MockReminder: ReminderProtocol {
+    var id: String?
+    var startDate: Date?
+    var time: Date?
+    var task: TaskProtocol?
 }
