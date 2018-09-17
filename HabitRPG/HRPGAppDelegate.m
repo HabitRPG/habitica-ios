@@ -217,7 +217,7 @@
     [eventProperties setValue:@"navigate" forKey:@"eventAction"];
     [eventProperties setValue:@"navigation" forKey:@"eventCategory"];
     [eventProperties setValue:userInfo[@"identifier"] forKey:@"identifier"];
-    [[Amplitude instance] logEvent:@"open notification" withEventProperties:eventProperties];
+    [[Amplitude instance] logEvent:@"open notification" withEventProperties:eventProperties outOfSession:YES];
     
     UINavigationController *displayedNavigationController = [self displayTabAtIndex:4];
     if (displayedNavigationController) {
