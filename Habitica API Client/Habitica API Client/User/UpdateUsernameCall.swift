@@ -12,8 +12,12 @@ import FunkyNetwork
 import ReactiveSwift
 
 public class UpdateUsernameCall: ResponseObjectCall<EmptyResponseProtocol, APIEmptyResponse> {
-    public init(username: String, password: String, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "user.json")) {
-        let json = try? JSONSerialization.data(withJSONObject: ["username": username, "password": password], options: .prettyPrinted)
+    public init(username: String, password: String? = nil, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "user.json")) {
+        var obj = ["username": username]
+        if let password = password {
+            obj["password"] = password
+        }
+        let json = try? JSONSerialization.data(withJSONObject: obj, options: .prettyPrinted)
         super.init(httpMethod: .PUT, endpoint: "user/auth/update-username", postData: json, stubHolder: stubHolder)
     }
 }

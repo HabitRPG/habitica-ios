@@ -10,7 +10,7 @@ import Habitica_API_Client
 
 @objc
 enum ConfigVariable: Int {
-    case enableRepeatables, supportEmail, enableNewShops, shopSpriteSuffix, maxChatLength
+    case enableRepeatables, supportEmail, enableNewShops, shopSpriteSuffix, maxChatLength, enableChangeUsername
 
     func name() -> String {
         // swiftlint:disable switch_case_on_newline
@@ -20,6 +20,7 @@ enum ConfigVariable: Int {
         case .enableNewShops: return "enableNewShops"
         case .shopSpriteSuffix: return "shopSpriteSuffix"
         case .maxChatLength: return "maxChatLength"
+        case .enableChangeUsername: return "enableChangeUsername"
         }
         // swiftlint:enable switch_case_on_newline
     }
@@ -29,7 +30,7 @@ enum ConfigVariable: Int {
 class ConfigRepository: NSObject {
 
     private static let configUrl = "https://s3.amazonaws.com/habitica-assets/mobileApp/endpoint/config-ios.json"
-    private static let configVariables: [ConfigVariable] = [.enableRepeatables, .supportEmail, .enableNewShops, .shopSpriteSuffix, .maxChatLength]
+    private static let configVariables: [ConfigVariable] = [.enableRepeatables, .supportEmail, .enableNewShops, .shopSpriteSuffix, .maxChatLength, .enableChangeUsername]
     private let userConfig = UserDefaults.standard
 
     @objc

@@ -10,6 +10,8 @@ import UIKit
 
 class AuthenticationSettingsViewController: BaseSettingsViewController {
     
+    private var configRepository = ConfigRepository()
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
@@ -35,7 +37,11 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         if indexPath.section == 0 {
             cell.textLabel?.textColor = UIColor.black
             if indexPath.item == 0 {
-                cell.textLabel?.text = NSLocalizedString("Login Name", comment: "")
+                if configRepository.bool(variable: .enableChangeUsername) {
+                    cell.textLabel?.text = NSLocalizedString("Username", comment: "")
+                } else {
+                    cell.textLabel?.text = NSLocalizedString("Login Name", comment: "")
+                }
                 cell.detailTextLabel?.text = user?.authentication?.local?.username
             } else if indexPath.item == 1 {
                 cell.textLabel?.text = NSLocalizedString("E-Mail", comment: "")
@@ -178,36 +184,50 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
     }
     
     private func showLoginNameChangeAlert() {
-        let alertController = HabiticaAlertController(title: NSLocalizedString("Change Login Name", comment: ""))
+        var title = NSLocalizedString("Change Login Name", comment: "")
+        var placeholder = NSLocalizedString("New Login Name", comment: "")
+        if configRepository.bool(variable: .enableChangeUsername) {
+            title = NSLocalizedString("Change Username", comment: "")
+            placeholder = NSLocalizedString("New Username", comment: "")
+        }
+        let alertController = HabiticaAlertController(title: title)
         
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 16
         let loginNameTextField = UITextField()
-        loginNameTextField.placeholder = NSLocalizedString("New Login Name", comment: "")
+        loginNameTextField.placeholder = placeholder
         loginNameTextField.borderStyle = .roundedRect
         loginNameTextField.autocapitalizationType = .none
         loginNameTextField.spellCheckingType = .no
         loginNameTextField.text = user?.authentication?.local?.username
         stackView.addArrangedSubview(loginNameTextField)
         let passwordTextField = UITextField()
-        passwordTextField.placeholder = NSLocalizedString("Password", comment: "")
-        passwordTextField.isSecureTextEntry = true
-        passwordTextField.borderStyle = .roundedRect
-        stackView.addArrangedSubview(passwordTextField)
+        if !configRepository.bool(variable: .enableChangeUsername) {
+            passwordTextField.placeholder = NSLocalizedString("Password", comment: "")
+            passwordTextField.isSecureTextEntry = true
+            passwordTextField.borderStyle = .roundedRect
+            stackView.addArrangedSubview(passwordTextField)
+        }
         alertController.contentView = stackView
         
         alertController.addCancelAction()
         alertController.addAction(title: NSLocalizedString("Change", comment: ""), isMainAction: true) {[weak self] _ in
-            if let username = loginNameTextField.text, let password = passwordTextField.text {
-                self?.userRepository.updateUsername(newUsername: username, password: password).observeCompleted {}
+            if self?.configRepository.bool(variable: .enableChangeUsername) == true {
+                if let username = loginNameTextField.text {
+                    self?.userRepository.updateUsername(newUsername: username).observeCompleted {}
+                }
+            } else {
+                if let username = loginNameTextField.text, let password = passwordTextField.text {
+                    self?.userRepository.updateUsername(newUsername: username, password: password).observeCompleted {}
+                }
             }
         }
         alertController.show()
     }
     
     private func showPasswordChangeAlert() {
-        let alertController = HabiticaAlertController(title: NSLocalizedString("Change Login Name", comment: ""))
+        let alertController = HabiticaAlertController(title: NSLocalizedString("Change Password", comment: ""))
         
         let stackView = UIStackView()
         stackView.axis = .vertical

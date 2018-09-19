@@ -232,7 +232,7 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         })
     }
     
-    func updateUsername(newUsername: String, password: String) -> Signal<UserProtocol, ReactiveSwiftRealmError> {
+    func updateUsername(newUsername: String, password: String? = nil) -> Signal<UserProtocol, ReactiveSwiftRealmError> {
         let call = UpdateUsernameCall(username: newUsername, password: password)
         call.fire()
         return call.objectSignal.flatMap(.concat, {[weak self] (_) in
