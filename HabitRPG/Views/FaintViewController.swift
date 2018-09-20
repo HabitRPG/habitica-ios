@@ -12,7 +12,7 @@ import ReactiveSwift
 
 class FaintViewController: UIViewController {
     @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var healthView: HRPGLabeledProgressBar!
+    @IBOutlet weak var healthView: LabeledProgressBar!
     @IBOutlet weak var avatarView: AvatarView!
     @IBOutlet weak var tryAgainLabel: UILabel!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!

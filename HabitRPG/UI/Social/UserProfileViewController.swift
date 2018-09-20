@@ -204,21 +204,21 @@ class UserProfileViewController: HRPGBaseViewController {
         let levelLabel = cell.viewWithTag(1) as? UILabel
         levelLabel?.text = L10n.levelNumber(stats.level)
         
-        let healthLabel = cell.viewWithTag(2) as? HRPGLabeledProgressBar
+        let healthLabel = cell.viewWithTag(2) as? LabeledProgressBar
         healthLabel?.color = UIColor.red100()
         healthLabel?.icon = HabiticaIcons.imageOfHeartLightBg
         healthLabel?.type = L10n.health
         healthLabel?.value = NSNumber(value: stats.health)
         healthLabel?.maxValue = NSNumber(value: stats.maxHealth)
         
-        let experienceLabel = cell.viewWithTag(3) as? HRPGLabeledProgressBar
+        let experienceLabel = cell.viewWithTag(3) as? LabeledProgressBar
         experienceLabel?.color = UIColor.yellow100()
         experienceLabel?.icon = HabiticaIcons.imageOfExperience
         experienceLabel?.type = L10n.experience
         experienceLabel?.value = NSNumber(value: stats.experience)
         experienceLabel?.maxValue = NSNumber(value: stats.toNextLevel)
         
-        let magicLabel = cell.viewWithTag(4) as? HRPGLabeledProgressBar
+        let magicLabel = cell.viewWithTag(4) as? LabeledProgressBar
         if stats.level >= 10 {
             magicLabel?.color = UIColor.blue100()
             magicLabel?.icon = HabiticaIcons.imageOfMagic

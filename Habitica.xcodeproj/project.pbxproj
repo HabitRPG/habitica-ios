@@ -416,7 +416,6 @@
 		D9AEEA731ACEDD470076951B /* HRPGWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9AEEA721ACEDD470076951B /* HRPGWebViewController.m */; };
 		D9AEF8E41CE4CCA5006914CB /* HRPGURLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D9AEF8E31CE4CCA5006914CB /* HRPGURLParser.m */; };
 		D9B8C1281AFFB5D500634B5A /* blade.json in Resources */ = {isa = PBXBuildFile; fileRef = D9B8C1271AFFB5D500634B5A /* blade.json */; };
-		D9BA33D41AB5E5820028AFEC /* HRPGLabeledProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D9BA33D31AB5E5820028AFEC /* HRPGLabeledProgressBar.m */; };
 		D9BB45591E71AFAF0002AE2E /* Down-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BB45581E71AFAF0002AE2E /* Down-Extensions.swift */; };
 		D9BB455B1E71C52F0002AE2E /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BB455A1E71C52F0002AE2E /* TaskTableViewCell.swift */; };
 		D9BB455D1E71C8C70002AE2E /* CheckedTableViewcell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BB455C1E71C8C70002AE2E /* CheckedTableViewcell.swift */; };
@@ -468,7 +467,6 @@
 		D9F1E3EA1E55DCFB0034D0F4 /* SubscriptionInformationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9F1E3E91E55DCFB0034D0F4 /* SubscriptionInformationCell.xib */; };
 		D9F1E3EC1E55E1DB0034D0F4 /* SubscriptionInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F1E3EB1E55E1DB0034D0F4 /* SubscriptionInformation.swift */; };
 		D9FC1A7E1BC28F4700B97D23 /* HRPGTypingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D9FC1A7D1BC28F4700B97D23 /* HRPGTypingLabel.m */; };
-		DC2C41815D97E02EF9D3BEF9 /* HRPGLabeledProgressBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2C40206801F9FB5D6D6190 /* HRPGLabeledProgressBarTests.swift */; };
 		DE3DF49C2130443E007D7F32 /* LabeledProgressBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE3DF49B2130443E007D7F32 /* LabeledProgressBar.xib */; };
 		DE3DF4A1213046EB007D7F32 /* LabeledProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3DF4A0213046EB007D7F32 /* LabeledProgressBar.swift */; };
 		DE886BBB2135B49A00550633 /* LabeledProgressBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE886BBA2135B49A00550633 /* LabeledProgressBarTests.swift */; };
@@ -1228,8 +1226,6 @@
 		D9B2F2AD1D996833001810BD /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Main.strings; sourceTree = "<group>"; };
 		D9B2F2AE1D996834001810BD /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D9B8C1271AFFB5D500634B5A /* blade.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = blade.json; path = HabiticaTests/Fixtures/blade.json; sourceTree = SOURCE_ROOT; };
-		D9BA33D21AB5E5820028AFEC /* HRPGLabeledProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGLabeledProgressBar.h; sourceTree = "<group>"; };
-		D9BA33D31AB5E5820028AFEC /* HRPGLabeledProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGLabeledProgressBar.m; sourceTree = "<group>"; };
 		D9BB45581E71AFAF0002AE2E /* Down-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Down-Extensions.swift"; sourceTree = "<group>"; };
 		D9BB455A1E71C52F0002AE2E /* TaskTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		D9BB455C1E71C8C70002AE2E /* CheckedTableViewcell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckedTableViewcell.swift; sourceTree = "<group>"; };
@@ -1303,7 +1299,6 @@
 		D9F1E3EB1E55E1DB0034D0F4 /* SubscriptionInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionInformation.swift; sourceTree = "<group>"; };
 		D9FC1A7C1BC28F4700B97D23 /* HRPGTypingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGTypingLabel.h; sourceTree = "<group>"; };
 		D9FC1A7D1BC28F4700B97D23 /* HRPGTypingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGTypingLabel.m; sourceTree = "<group>"; };
-		DC2C40206801F9FB5D6D6190 /* HRPGLabeledProgressBarTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGLabeledProgressBarTests.swift; sourceTree = "<group>"; };
 		DE3DF49B2130443E007D7F32 /* LabeledProgressBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabeledProgressBar.xib; sourceTree = "<group>"; };
 		DE3DF4A0213046EB007D7F32 /* LabeledProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledProgressBar.swift; sourceTree = "<group>"; };
 		DE886BBA2135B49A00550633 /* LabeledProgressBarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledProgressBarTests.swift; sourceTree = "<group>"; };
@@ -2277,8 +2272,6 @@
 				D9E9E0C71CCE64A3006D94A2 /* HRPGImageOverlayView.xib */,
 				DE3DF49B2130443E007D7F32 /* LabeledProgressBar.xib */,
 				DE3DF4A0213046EB007D7F32 /* LabeledProgressBar.swift */,
-				D9BA33D21AB5E5820028AFEC /* HRPGLabeledProgressBar.h */,
-				D9BA33D31AB5E5820028AFEC /* HRPGLabeledProgressBar.m */,
 				D905D08D1DE2431100CABF55 /* HRPGLoginIncentiveOverlayView.h */,
 				D905D08E1DE2431100CABF55 /* HRPGLoginIncentiveOverlayView.m */,
 				D905D08B1DE241D200CABF55 /* HRPGLoginIncentiveOverlayView.xib */,
@@ -2575,7 +2568,6 @@
 		DC2C4F94176B40E92E73BD9E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				DC2C40206801F9FB5D6D6190 /* HRPGLabeledProgressBarTests.swift */,
 				DE886BBA2135B49A00550633 /* LabeledProgressBarTests.swift */,
 			);
 			path = Views;
@@ -3152,7 +3144,6 @@
 				D9709A501E7F17150005F35B /* TaskDetailLineViewTests.swift in Sources */,
 				D9709A4E1E7F13330005F35B /* ChallengeTableViewControllerTests.swift in Sources */,
 				DE886BBB2135B49A00550633 /* LabeledProgressBarTests.swift in Sources */,
-				DC2C41815D97E02EF9D3BEF9 /* HRPGLabeledProgressBarTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3235,7 +3226,6 @@
 				29E1631B200E84AC00685640 /* TavernViewController.swift in Sources */,
 				291448822087A13100F3A6B5 /* EquipmentDetailViewController.swift in Sources */,
 				29FC885C2018D47D002B3D3F /* Quest-Extensions.swift in Sources */,
-				D9BA33D41AB5E5820028AFEC /* HRPGLabeledProgressBar.m in Sources */,
 				299BD6221F505DFA00E22935 /* PaddedLabel.swift in Sources */,
 				D9F1E3E81E55DCEC0034D0F4 /* SubscriptionInformationCell.swift in Sources */,
 				290279732057FB4E006DACB9 /* FAQTableViewDataSource.swift in Sources */,

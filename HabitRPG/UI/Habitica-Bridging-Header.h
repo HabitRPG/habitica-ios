@@ -25,7 +25,6 @@
 #import "HRPGInboxChatViewController.h"
 #import <SlackTextViewController/SLKTextViewController.h>
 #import "HRPGFlagInformationOverlayView.h"
-#import "HRPGLabeledProgressBar.h"
 #import "HRPGNavigationController.h"
 #import "HRPGInboxTableViewController.h"
 #import "HRPGAboutViewController.h"
