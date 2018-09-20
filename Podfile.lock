@@ -62,7 +62,7 @@ PODS:
   - MRProgress/ProgressBaseClass (0.8.3)
   - MRProgress/Stopable (0.8.3):
     - MRProgress/Helper
-  - Nimble (7.0.3)
+  - Nimble (7.3.0)
   - "NSString+Emoji (0.2.0)"
   - OHHTTPStubs/Core (6.1.0)
   - OHHTTPStubs/Default (6.1.0):
@@ -120,7 +120,7 @@ DEPENDENCIES:
   - KLCPopup
   - Masonry
   - MRProgress
-  - Nimble (~> 7.0.0)
+  - Nimble (~> 7.3)
   - "NSString+Emoji"
   - PinLayout
   - PopupDialog (from `https://github.com/Orderella/PopupDialog.git`, branch `development`)
@@ -214,7 +214,7 @@ SPEC CHECKSUMS:
   KLCPopup: 76c5a19227977f1e53d85236f9ef42257c168d98
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MRProgress: 16de7cc9f347e8846797a770db102a323fe7ef09
-  Nimble: 7f5a9c447a33002645a071bddafbfb24ea70e0ac
+  Nimble: c8d6a1f463701921c46de965c673e13cafa09196
   "NSString+Emoji": 127da93993ac7c01eadb2edbb039cda89a1369f4
   OHHTTPStubs: 1e21c7d2c084b8153fc53d48400d8919d2d432d0
   PinLayout: 81759905f882389f4f0c15f3f5b90eb6713a01af
@@ -234,6 +234,6 @@ SPEC CHECKSUMS:
   VTAcknowledgementsViewController: 9a7d0f040f17dfa6d02fc731bec8b188e4b4ee59
   XLForm: 04110197c12187dd28a6c7295d3d8b95f4fdb4de
 
-PODFILE CHECKSUM: 8b1ca1d53686706badd9d2e4244e4da946e65548
+PODFILE CHECKSUM: e0642504fb9fc786e7be5b50b392c28f10807546
 
 COCOAPODS: 1.5.3
