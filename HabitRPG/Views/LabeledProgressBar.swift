@@ -24,6 +24,7 @@ class LabeledProgressBar: UIView {
         didSet {
             labelView.textColor = UIColor.darkGray
             labelView.textAlignment = .natural
+            labelView.font = LabeledProgressBar.scaledFontUsing(11)
             if #available(iOS 10.0, *) {
                 labelView.adjustsFontForContentSizeCategory = true
             }
@@ -34,6 +35,7 @@ class LabeledProgressBar: UIView {
         didSet {
             typeView.textColor = UIColor.darkGray
             typeView.textAlignment = .natural
+            typeView.font = LabeledProgressBar.scaledFontUsing(11)
             if #available(iOS 10.0, *) {
                 typeView.adjustsFontForContentSizeCategory = true
             }
@@ -97,10 +99,8 @@ class LabeledProgressBar: UIView {
     
     public var fontSize = 11 {
         didSet {
-            let scaledFont = CustomFontMetrics.scaledSystemFont(ofSize: CGFloat(fontSize),
-                                                                compatibleWith: nil)
-            typeView.font = scaledFont
-            labelView.font = scaledFont
+            typeView.font = LabeledProgressBar.scaledFontUsing(fontSize)
+            labelView.font = LabeledProgressBar.scaledFontUsing(fontSize)
         }
     }
     
@@ -166,4 +166,10 @@ class LabeledProgressBar: UIView {
 
         accessibilityLabel = "\(type), \(value.floatValue) of \(maxValue)"
     }
+    
+    private static func scaledFontUsing(_ size: Int) -> UIFont {
+        return CustomFontMetrics.scaledSystemFont(ofSize: CGFloat(size),
+                                                  compatibleWith: nil)
+    }
+
 }
