@@ -74,6 +74,7 @@ class SettingsViewController: FormViewController, Themeable {
     private let userRepository = UserRepository()
     private let contentRepository = ContentRepository()
     private let disposable = ScopedDisposable(CompositeDisposable())
+    private let configRepository = ConfigRepository()
     
     private var user: UserProtocol?
     
@@ -140,10 +141,15 @@ class SettingsViewController: FormViewController, Themeable {
             <<< ButtonRow { row in
                 row.title = L10n.Settings.authentication
                 row.presentationMode = .segueName(segueName: StoryboardSegue.Settings.authenticationSegue.rawValue, onDismiss: nil)
-                row.cellUpdate({ (cell, _) in
+                row.cellStyle = UITableViewCellStyle.subtitle
+                row.cellUpdate({[weak self] (cell, _) in
                     cell.textLabel?.textColor = UIColor.black
                     cell.textLabel?.textAlignment = .natural
                     cell.accessoryType = .disclosureIndicator
+                    if self?.configRepository.bool(variable: .enableChangeUsername) == true && self?.user?.flags?.verifiedUsername != true {
+                        cell.detailTextLabel?.text = L10n.Settings.usernameNotConfirmed
+                        cell.detailTextLabel?.textColor = UIColor.red50()
+                    }
                 })
             }
             <<< ButtonRow { row in

@@ -20,6 +20,7 @@ class MenuNavigationBarView: UIView, Themeable {
     @IBOutlet weak var messagesButton: UIButton!
     @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var messagesBadge: PaddedLabel!
+    @IBOutlet weak var settingsBadge: PaddedLabel!
     
     // MARK: - Private Helper Methods
    
@@ -38,7 +39,7 @@ class MenuNavigationBarView: UIView, Themeable {
     }
     
     @objc
-    public func configure(user: UserProtocol) {
+    public func configure(user: UserProtocol, enableChangeUsername: Bool) {
         usernameLabel.text = user.profile?.name
         avatarView.avatar = AvatarViewModel(avatar: user)
         if let numberNewMessages = user.inbox?.numberNewMessages, numberNewMessages > 0 {
@@ -46,6 +47,13 @@ class MenuNavigationBarView: UIView, Themeable {
             messagesBadge.isHidden = false
         } else {
             messagesBadge.isHidden = true
+        }
+        
+        if enableChangeUsername && user.flags?.verifiedUsername != true {
+            settingsBadge.text = "1"
+            settingsBadge.isHidden = false
+        } else {
+            settingsBadge.isHidden = true
         }
     }
     

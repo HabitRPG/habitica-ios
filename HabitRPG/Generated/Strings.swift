@@ -23,6 +23,8 @@ internal enum L10n {
   internal static let close = L10n.tr("Mainstrings", "close")
   /// Confirm
   internal static let confirm = L10n.tr("Mainstrings", "confirm")
+  /// Confirm Username
+  internal static let confirmUsername = L10n.tr("Mainstrings", "confirm_username")
   /// Controls
   internal static let controls = L10n.tr("Mainstrings", "controls")
   /// Copied to Clipboard
@@ -187,6 +189,18 @@ internal enum L10n {
   internal static let unsubscribeWebsite = L10n.tr("Mainstrings", "unsubscribe_website")
   /// User ID
   internal static let userID = L10n.tr("Mainstrings", "userID")
+  /// Username
+  internal static let username = L10n.tr("Mainstrings", "username")
+  /// Your username was confirmed
+  internal static let usernameConfirmedToast = L10n.tr("Mainstrings", "username_confirmed_toast")
+  /// Your display name hasn’t changed but your old login name will now be your public username used for invitations, chat @mentions, and messaging.
+  internal static let usernamePromptBody = L10n.tr("Mainstrings", "username_prompt_body")
+  /// Usernames should conform to our Terms of Service and Community Guidelines. If you didn’t previously set a login name, your username was auto-generated.
+  internal static let usernamePromptDisclaimer = L10n.tr("Mainstrings", "username_prompt_disclaimer")
+  /// It’s time to set your username!
+  internal static let usernamePromptTitle = L10n.tr("Mainstrings", "username_prompt_title")
+  /// If you’d like to learn more about this change, visit our wiki.
+  internal static let usernamePromptWiki = L10n.tr("Mainstrings", "username_prompt_wiki")
   /// Invitation was sent to users.
   internal static let usersInvited = L10n.tr("Mainstrings", "users_invited")
   /// Wednesday
@@ -452,6 +466,8 @@ internal enum L10n {
     internal static let changeClassDisclaimer = L10n.tr("Mainstrings", "settings.change_class_disclaimer")
     /// Clear Cache
     internal static let clearCache = L10n.tr("Mainstrings", "settings.clear_cache")
+    /// Are you sure you want to confirm your current username?
+    internal static let confirmUsernamePrompt = L10n.tr("Mainstrings", "settings.confirm_username_prompt")
     /// Custom Day Start
     internal static let customDayStart = L10n.tr("Mainstrings", "settings.custom_day_start")
     /// Daily Reminder
@@ -496,6 +512,8 @@ internal enum L10n {
     internal static let themeColor = L10n.tr("Mainstrings", "settings.theme_color")
     /// User
     internal static let user = L10n.tr("Mainstrings", "settings.user")
+    /// Username not confirmed
+    internal static let usernameNotConfirmed = L10n.tr("Mainstrings", "settings.username_not_confirmed")
     /// Incorrect Password
     internal static let wrongPassword = L10n.tr("Mainstrings", "settings.wrong_password")
   }

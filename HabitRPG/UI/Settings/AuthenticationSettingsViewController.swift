@@ -18,7 +18,11 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return 4
+            if configRepository.bool(variable: .enableChangeUsername) && user?.flags?.verifiedUsername != true {
+                return 5
+            } else {
+                return 4
+            }
         } else {
             return 2
         }
@@ -33,24 +37,34 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        var cellName = "Cell"
+        var cellTitle = ""
+        var cellTitleColor = UIColor.black
+        var cellDetailText: String? = nil
+        var confirmOffset = 0
+        if configRepository.bool(variable: .enableChangeUsername) && user?.flags?.verifiedUsername != true {
+            confirmOffset = 1
+        }
         if indexPath.section == 0 {
-            cell.textLabel?.textColor = UIColor.black
             if indexPath.item == 0 {
                 if configRepository.bool(variable: .enableChangeUsername) {
-                    cell.textLabel?.text = NSLocalizedString("Username", comment: "")
+                    cellTitle = L10n.username
                 } else {
-                    cell.textLabel?.text = NSLocalizedString("Login Name", comment: "")
+                    cellTitle = NSLocalizedString("Login Name", comment: "")
                 }
-                cell.detailTextLabel?.text = user?.authentication?.local?.username
-            } else if indexPath.item == 1 {
-                cell.textLabel?.text = NSLocalizedString("E-Mail", comment: "")
-                cell.detailTextLabel?.text = user?.authentication?.local?.email
-            } else if indexPath.item == 2 {
-                cell.textLabel?.text = NSLocalizedString("Change Password", comment: "")
-                cell.detailTextLabel?.text = nil
-            } else if indexPath.item == 3 {
-                cell.textLabel?.text = NSLocalizedString("Login Methods", comment: "")
+                cellDetailText = user?.authentication?.local?.username
+            } else if indexPath.item == 1 && confirmOffset > 0 {
+                cellName = "ButtonCell"
+                cellTitle = L10n.confirmUsername
+                cellTitleColor = UIColor.green50()
+            } else if indexPath.item == 1 + confirmOffset {
+                cellTitle = L10n.email
+                cellDetailText = user?.authentication?.local?.email
+            } else if indexPath.item == 2 + confirmOffset {
+                cellName = "ButtonCell"
+                cellTitle = NSLocalizedString("Change Password", comment: "")
+            } else if indexPath.item == 3 + confirmOffset {
+                cellTitle = NSLocalizedString("Login Methods", comment: "")
                 var loginMethods = [String]()
                 if user?.authentication?.local?.email != nil {
                     loginMethods.append(NSLocalizedString("Local", comment: ""))
@@ -61,29 +75,41 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
                 if user?.googleID != nil {
                     loginMethods.append("Google")
                 }*/
-                cell.detailTextLabel?.text = loginMethods.joined(separator: ", ")
+                cellDetailText = loginMethods.joined(separator: ", ")
             }
         } else {
-            cell.textLabel?.textColor = UIColor.red50()
+            cellTitleColor = UIColor.red50()
+            cellName = "ButtonCell"
             if indexPath.item == 0 {
-                cell.textLabel?.text = NSLocalizedString("Reset Account", comment: "")
-                cell.detailTextLabel?.text = nil
+                cellTitle = NSLocalizedString("Reset Account", comment: "")
             } else {
-                cell.textLabel?.text = NSLocalizedString("Delete Account", comment: "")
-                cell.detailTextLabel?.text = nil
+                cellTitle = NSLocalizedString("Delete Account", comment: "")
             }
+        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellName, for: indexPath)
+        let textLabel = cell.viewWithTag(1) as? UILabel
+        textLabel?.text = cellTitle
+        textLabel?.textColor = cellTitleColor
+        if let text = cellDetailText {
+            cell.detailTextLabel?.text = text
         }
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        var confirmOffset = 0
+        if configRepository.bool(variable: .enableChangeUsername) && user?.flags?.verifiedUsername != true {
+            confirmOffset = 1
+        }
         if indexPath.section == 0 {
             if indexPath.item == 0 {
                 showLoginNameChangeAlert()
-            } else if indexPath.item == 1 {
+            } else if indexPath.item == 1 && confirmOffset > 0 {
+                showConfirmUsernameAlert()
+            } else if indexPath.item == 1 + confirmOffset {
                 showEmailChangeAlert()
-            } else if indexPath.item == 2 {
+            } else if indexPath.item == 2 + confirmOffset {
                 showPasswordChangeAlert()
             }
         } else if indexPath.section == 1 {
@@ -253,6 +279,17 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         alertController.addAction(title: NSLocalizedString("Change", comment: ""), isMainAction: true) {[weak self] _ in
             if let newPassword = newPasswordTextField.text, let password = oldPasswordTextField.text, let confirmPassword = confirmTextField.text {
                 self?.userRepository.updatePassword(newPassword: newPassword, password: password, confirmPassword: confirmPassword).observeCompleted {}
+            }
+        }
+        alertController.show()
+    }
+    
+    private func showConfirmUsernameAlert() {
+        let alertController = HabiticaAlertController(title: L10n.Settings.confirmUsernamePrompt)
+        alertController.addCancelAction()
+        alertController.addAction(title: L10n.confirm, isMainAction: true) {[weak self] _ in
+            if let username = self?.user?.authentication?.local?.username {
+                self?.userRepository.updateUsername(newUsername: username).observeCompleted {}
             }
         }
         alertController.show()

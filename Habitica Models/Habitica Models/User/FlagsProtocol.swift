@@ -17,4 +17,5 @@ public protocol FlagsProtocol {
     var classSelected: Bool { get set }
     var itemsEnabled: Bool { get set }
     var tutorials: [TutorialStepProtocol] { get set }
+    var verifiedUsername: Bool { get set }
 }

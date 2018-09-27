@@ -235,14 +235,20 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     func updateUsername(newUsername: String, password: String? = nil) -> Signal<UserProtocol, ReactiveSwiftRealmError> {
         let call = UpdateUsernameCall(username: newUsername, password: password)
         call.fire()
-        return call.objectSignal.flatMap(.concat, {[weak self] (_) in
+        return call.objectSignal
+            .filter({ (response) -> Bool in
+                return response != nil
+            })
+            .flatMap(.concat, {[weak self] (_) in
             return self?.getUser().take(first: 1) ?? SignalProducer.empty
         }).on(value: {[weak self]user in
             self?.localRepository.updateCall({
                 if let local = user.authentication?.local {
                     local.username = newUsername
+                    user.flags?.verifiedUsername = true
                 }
             })
+            ToastManager.show(text: L10n.usernameConfirmedToast, color: .green)
         })
     }
     
