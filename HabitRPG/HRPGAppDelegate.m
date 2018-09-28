@@ -58,6 +58,11 @@
     
     [self cleanAndRefresh:application];
     
+    UINavigationController *displayedNavigationController = [self displayTabAtIndex:4];
+
+    AuthenticationSettingsViewController *authSettingsViewcontroller = (AuthenticationSettingsViewController *)[self loadViewController:@"AuthenticationSettingsViewController" fromStoryboard:@"Settings"];
+    [displayedNavigationController pushViewController:authSettingsViewcontroller animated:YES];
+    
     return YES;
 }
 
@@ -235,6 +240,9 @@
         } else if ([userInfo[@"identifier"] isEqualToString:@"questInvitation"]) {
             QuestDetailViewController *questDetailViewController = (QuestDetailViewController *)[self loadViewController:@"QuestDetailViewController" fromStoryboard:@"Social"];
             [displayedNavigationController pushViewController:questDetailViewController animated:YES];
+        } else if ([userInfo[@"identifier"] isEqualToString:@"changeUsername"]) {
+            AuthenticationSettingsViewController *authSettingsViewcontroller = (AuthenticationSettingsViewController *)[self loadViewController:@"AuthenticationSettingsViewController" fromStoryboard:@"Settings"];
+            [displayedNavigationController pushViewController:authSettingsViewcontroller animated:YES];
         }
     } else if ([self.window.rootViewController isKindOfClass:[LoadingViewController class]]) {
         LoadingViewController *loadingViewController =

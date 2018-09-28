@@ -107,6 +107,8 @@ internal enum StoryboardScene {
 
     internal static let initialScene = InitialSceneType<UINavigationController>(storyboard: Settings.self)
 
+    internal static let authenticationSettingsViewController = SceneType<Habitica.AuthenticationSettingsViewController>(storyboard: Settings.self, identifier: "AuthenticationSettingsViewController")
+
     internal static let classSelectionNavigationController = SceneType<UINavigationController>(storyboard: Settings.self, identifier: "ClassSelectionNavigationController")
   }
   internal enum Shop: StoryboardType {
