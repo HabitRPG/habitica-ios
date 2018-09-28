@@ -466,6 +466,8 @@ internal enum L10n {
     internal static let changeClassDisclaimer = L10n.tr("Mainstrings", "settings.change_class_disclaimer")
     /// Clear Cache
     internal static let clearCache = L10n.tr("Mainstrings", "settings.clear_cache")
+    /// Confirming your username will make it public for invitations, @mentions and messaging. You can change your username from settings at any time.
+    internal static let confirmUsernameDescription = L10n.tr("Mainstrings", "settings.confirm_username_description")
     /// Are you sure you want to confirm your current username?
     internal static let confirmUsernamePrompt = L10n.tr("Mainstrings", "settings.confirm_username_prompt")
     /// Custom Day Start

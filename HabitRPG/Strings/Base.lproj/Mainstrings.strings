@@ -292,5 +292,6 @@
 "confirm_username" = "Confirm Username";
 "username_prompt_disclaimer" = "Usernames should conform to our Terms of Service and Community Guidelines. If you didn’t previously set a login name, your username was auto-generated.";
 "settings.confirm_username_prompt" = "Are you sure you want to confirm your current username?";
+"settings.confirm_username_description" = "Confirming your username will make it public for invitations, @mentions and messaging. You can change your username from settings at any time.";
 "username_confirmed_toast" = "Your username was confirmed";
 "settings.username_not_confirmed" = "Username not confirmed";

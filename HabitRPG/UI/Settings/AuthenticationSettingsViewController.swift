@@ -285,7 +285,7 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
     }
     
     private func showConfirmUsernameAlert() {
-        let alertController = HabiticaAlertController(title: L10n.Settings.confirmUsernamePrompt)
+        let alertController = HabiticaAlertController(title: L10n.Settings.confirmUsernamePrompt, message: L10n.Settings.confirmUsernameDescription)
         alertController.addCancelAction()
         alertController.addAction(title: L10n.confirm, isMainAction: true) {[weak self] _ in
             if let username = self?.user?.authentication?.local?.username {
