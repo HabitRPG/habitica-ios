@@ -23,8 +23,7 @@
 "8QD-xr-Tcj.title" = "乗騎";
 
 /* Class = "UILabel"; text = "Buying gems supports the developers \nand helps keep Habitica running"; ObjectID = "421-JA-vci"; */
-"421-JA-vci.text" = "ジェムを購入することで、開発者をサポートし
-Habiticaの運営継続に貢献することができます。";
+"421-JA-vci.text" = "ジェムを購入することで、開発者をサポートし Habiticaの運営継続に貢献することができます。";
 
 /* Class = "UINavigationItem"; title = "About"; ObjectID = "970-3u-C37"; */
 "970-3u-C37.title" = "自己紹介";
@@ -111,12 +110,10 @@ Habiticaの運営継続に貢献することができます。";
 "Ueo-OS-iQj.title" = "習慣";
 
 /* Class = "UILabel"; text = "Subscribing supports the developers \nand helps keep Habitica running"; ObjectID = "V5k-go-mwg"; */
-"V5k-go-mwg.text" = "寄付することで、開発者をサポートし、
-Habiticaの運営継続に貢献することができます。";
+"V5k-go-mwg.text" = "寄付することで、開発者をサポートし、Habiticaの運営継続に貢献することができます。";
 
 /* Class = "UILabel"; text = "Gems allow you to buy fun extras for \nyour account, including:"; ObjectID = "xhA-8b-NmG"; */
-"xhA-8b-NmG.text" = "ジェムを使って、あなたのアカウントを彩る
-楽しいおまけを購入できます。例えば：";
+"xhA-8b-NmG.text" = "ジェムを使って、あなたのアカウントを彩る 楽しいおまけを購入できます。例えば：";
 
 /* Class = "UINavigationItem"; title = "Feed Pet"; ObjectID = "xZ9-Ng-9se"; */
 "xZ9-Ng-9se.title" = "ペットにえさをやる";

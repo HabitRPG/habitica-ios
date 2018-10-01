@@ -38,7 +38,7 @@
 "CTh-zS-7ZY.title" = "Nawyki";
 
 /* Class = "UILabel"; text = "Select \"Use Costume\" to equip items to your avatar without affecting the Stats from your Battle Gear! This means that you can dress up your avatar in whatever outfit you like while still having your best Battle Gear equipped."; ObjectID = "d53-K0-Ybv"; */
-"d53-K0-Ybv.text" = "Wybierz "Załóż kostium", by wyposażyć w przedmioty swojego awatara, bez oddziaływania na statystyki z wyposażenia bojowego! To znaczy, że możesz przebrać swojego awatara w cokolwiek zechcesz, jednocześnie zachowując Twoje najlepsze wyposażenie bojowe założone.";
+"d53-K0-Ybv.text" = "Wybierz \"Załóż kostium\", by wyposażyć w przedmioty swojego awatara, bez oddziaływania na statystyki z wyposażenia bojowego! To znaczy, że możesz przebrać swojego awatara w cokolwiek zechcesz, jednocześnie zachowując Twoje najlepsze wyposażenie bojowe założone.";
 
 /* Class = "UINavigationItem"; title = "Choose User"; ObjectID = "Dal-zI-Dal"; */
 "Dal-zI-Dal.title" = "Wybierz użytkownika";

@@ -23,8 +23,7 @@
 "8QD-xr-Tcj.title" = "Скакуны";
 
 /* Class = "UILabel"; text = "Buying gems supports the developers \nand helps keep Habitica running"; ObjectID = "421-JA-vci"; */
-"421-JA-vci.text" = "Покупка самоцветов поддерживает разработчиков 
-и помогает работе Habitica";
+"421-JA-vci.text" = "Покупка самоцветов поддерживает разработчиков и помогает работе Habitica";
 
 /* Class = "UINavigationItem"; title = "About"; ObjectID = "970-3u-C37"; */
 "970-3u-C37.title" = "О проекте";
@@ -117,12 +116,10 @@
 "Ueo-OS-iQj.title" = "Привычки";
 
 /* Class = "UILabel"; text = "Subscribing supports the developers \nand helps keep Habitica running"; ObjectID = "V5k-go-mwg"; */
-"V5k-go-mwg.text" = "Подписка поддерживает разработчиков
- и помогает работе Habitica";
+"V5k-go-mwg.text" = "Подписка поддерживает разработчиков и помогает работе Habitica";
 
 /* Class = "UILabel"; text = "Gems allow you to buy fun extras for \nyour account, including:"; ObjectID = "xhA-8b-NmG"; */
-"xhA-8b-NmG.text" = "Самоцветы дают возможность купить
-веселые дополнения для аккаунта, в том числе:";
+"xhA-8b-NmG.text" = "Самоцветы дают возможность купить веселые дополнения для аккаунта, в том числе:";
 
 /* Class = "UINavigationItem"; title = "Feed Pet"; ObjectID = "xZ9-Ng-9se"; */
 "xZ9-Ng-9se.title" = "Покормить";

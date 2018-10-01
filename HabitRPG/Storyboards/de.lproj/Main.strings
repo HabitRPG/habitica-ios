@@ -116,8 +116,7 @@
 "Ueo-OS-iQj.title" = "Gewohnheiten";
 
 /* Class = "UILabel"; text = "Subscribing supports the developers \nand helps keep Habitica running"; ObjectID = "V5k-go-mwg"; */
-"V5k-go-mwg.text" = "Abonnements unterstützen die Entwickler
-und helfen dabei, Habitica am Laufen zu halten";
+"V5k-go-mwg.text" = "Abonnements unterstützen die Entwickler und helfen dabei, Habitica am Laufen zu halten";
 
 /* Class = "UILabel"; text = "Gems allow you to buy fun extras for \nyour account, including:"; ObjectID = "xhA-8b-NmG"; */
 "xhA-8b-NmG.text" = "Edelsteine ermöglichen Dir, tolle Extras für Dein Konto zu kaufen, unter anderem:";

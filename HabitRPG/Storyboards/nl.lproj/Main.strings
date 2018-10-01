@@ -23,9 +23,7 @@
 "8QD-xr-Tcj.title" = "Rijdieren";
 
 /* Class = "UILabel"; text = "Buying gems supports the developers \nand helps keep Habitica running"; ObjectID = "421-JA-vci"; */
-"421-JA-vci.text" = "Door edelstenen te kopen steun je de 
-ontwikkelaars en help je Habitica online 
-te houden";
+"421-JA-vci.text" = "Door edelstenen te kopen steun je de ontwikkelaars en help je Habitica online te houden";
 
 /* Class = "UINavigationItem"; title = "About"; ObjectID = "970-3u-C37"; */
 "970-3u-C37.title" = "Over";
@@ -43,7 +41,7 @@ te houden";
 "CTh-zS-7ZY.title" = "Gewoontes";
 
 /* Class = "UILabel"; text = "Select \"Use Costume\" to equip items to your avatar without affecting the Stats from your Battle Gear! This means that you can dress up your avatar in whatever outfit you like while still having your best Battle Gear equipped."; ObjectID = "d53-K0-Ybv"; */
-"d53-K0-Ybv.text" = "Selecteer "Kostuum gebruiken" om jouw avatar voorwerpen aan te laten trekken zonder de Eigenschappen, die je van jouw Strijduitrusting krijgt, te veranderen! Dit betekent dat je jouw avatar elke uitrusting aan kan trekken, terwijl je alsnog je Strijduitrusting gebruikt.";
+"d53-K0-Ybv.text" = "Selecteer \"Kostuum gebruiken\" om jouw avatar voorwerpen aan te laten trekken zonder de Eigenschappen, die je van jouw Strijduitrusting krijgt, te veranderen! Dit betekent dat je jouw avatar elke uitrusting aan kan trekken, terwijl je alsnog je Strijduitrusting gebruikt.";
 
 /* Class = "UINavigationItem"; title = "Choose User"; ObjectID = "Dal-zI-Dal"; */
 "Dal-zI-Dal.title" = "Kies Gebruiker";
@@ -118,13 +116,10 @@ te houden";
 "Ueo-OS-iQj.title" = "Gewoontes";
 
 /* Class = "UILabel"; text = "Subscribing supports the developers \nand helps keep Habitica running"; ObjectID = "V5k-go-mwg"; */
-"V5k-go-mwg.text" = "Door te abonneren steun je de
-ontwikkelaars en help je Habitica online
-te houden";
+"V5k-go-mwg.text" = "Door te abonneren steun je de ontwikkelaars en help je Habitica online te houden";
 
 /* Class = "UILabel"; text = "Gems allow you to buy fun extras for \nyour account, including:"; ObjectID = "xhA-8b-NmG"; */
-"xhA-8b-NmG.text" = "Edelstenen staan je toe om leuke extra's
-te kopen voor je account, waaronder:";
+"xhA-8b-NmG.text" = "Edelstenen staan je toe om leuke extra's te kopen voor je account, waaronder:";
 
 /* Class = "UINavigationItem"; title = "Feed Pet"; ObjectID = "xZ9-Ng-9se"; */
 "xZ9-Ng-9se.title" = "Voer huisdier";

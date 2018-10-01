@@ -23,8 +23,7 @@
 "8QD-xr-Tcj.title" = "Montures";
 
 /* Class = "UILabel"; text = "Buying gems supports the developers \nand helps keep Habitica running"; ObjectID = "421-JA-vci"; */
-"421-JA-vci.text" = "Acheter des gemmes soutient les développeurs
-et aide Habitica à fonctionner";
+"421-JA-vci.text" = "Acheter des gemmes soutient les développeurs et aide Habitica à fonctionner";
 
 /* Class = "UINavigationItem"; title = "About"; ObjectID = "970-3u-C37"; */
 "970-3u-C37.title" = "A propos";
@@ -42,7 +41,7 @@ et aide Habitica à fonctionner";
 "CTh-zS-7ZY.title" = "Habitudes";
 
 /* Class = "UILabel"; text = "Select \"Use Costume\" to equip items to your avatar without affecting the Stats from your Battle Gear! This means that you can dress up your avatar in whatever outfit you like while still having your best Battle Gear equipped."; ObjectID = "d53-K0-Ybv"; */
-"d53-K0-Ybv.text" = "Sélectionnez "Utiliser un costume" pour équiper votre avatar sans modifier les atrributs de votre tenue de combat ! Cela signifie que vous pouvez habiller votre avatar de n'importe quelle tenue que vous aimez, tout en conservant votre meilleure tenue de combat.";
+"d53-K0-Ybv.text" = "Sélectionnez \"Utiliser un costume\" pour équiper votre avatar sans modifier les atrributs de votre tenue de combat ! Cela signifie que vous pouvez habiller votre avatar de n'importe quelle tenue que vous aimez, tout en conservant votre meilleure tenue de combat.";
 
 /* Class = "UINavigationItem"; title = "Choose User"; ObjectID = "Dal-zI-Dal"; */
 "Dal-zI-Dal.title" = "Choisir un utilisateur";
@@ -114,12 +113,10 @@ et aide Habitica à fonctionner";
 "Ueo-OS-iQj.title" = "Habitudes";
 
 /* Class = "UILabel"; text = "Subscribing supports the developers \nand helps keep Habitica running"; ObjectID = "V5k-go-mwg"; */
-"V5k-go-mwg.text" = "S'abonner permet de soutenir l'équipe de développement
-et aide Habitica à fonctionner";
+"V5k-go-mwg.text" = "S'abonner permet de soutenir l'équipe de développement et aide Habitica à fonctionner";
 
 /* Class = "UILabel"; text = "Gems allow you to buy fun extras for \nyour account, including:"; ObjectID = "xhA-8b-NmG"; */
-"xhA-8b-NmG.text" = "Les gemmes permettent d'acheter des extras
-amusants pour votre compte, comme :";
+"xhA-8b-NmG.text" = "Les gemmes permettent d'acheter des extras amusants pour votre compte, comme :";
 
 /* Class = "UINavigationItem"; title = "Feed Pet"; ObjectID = "xZ9-Ng-9se"; */
 "xZ9-Ng-9se.title" = "Nourrir le Familier";

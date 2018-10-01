@@ -23,8 +23,7 @@
 "8QD-xr-Tcj.title" = "坐骑";
 
 /* Class = "UILabel"; text = "Buying gems supports the developers \nand helps keep Habitica running"; ObjectID = "421-JA-vci"; */
-"421-JA-vci.text" = "购买宝石支持开发者
-并可维持Habitica运营";
+"421-JA-vci.text" = "购买宝石支持开发者 并可维持Habitica运营";
 
 /* Class = "UINavigationItem"; title = "About"; ObjectID = "970-3u-C37"; */
 "970-3u-C37.title" = "关于";
@@ -102,12 +101,10 @@
 "Ueo-OS-iQj.title" = "习惯";
 
 /* Class = "UILabel"; text = "Subscribing supports the developers \nand helps keep Habitica running"; ObjectID = "V5k-go-mwg"; */
-"V5k-go-mwg.text" = "定期捐助支持开发者
-并可维持Habitica运营";
+"V5k-go-mwg.text" = "定期捐助支持开发者并可维持Habitica运营";
 
 /* Class = "UILabel"; text = "Gems allow you to buy fun extras for \nyour account, including:"; ObjectID = "xhA-8b-NmG"; */
-"xhA-8b-NmG.text" = "宝石可令你为你的账户
-购买有趣的附加品，包含：";
+"xhA-8b-NmG.text" = "宝石可令你为你的账户购买有趣的附加品，包含：";
 
 /* Class = "UINavigationItem"; title = "Feed Pet"; ObjectID = "xZ9-Ng-9se"; */
 "xZ9-Ng-9se.title" = "喂食宠物";
