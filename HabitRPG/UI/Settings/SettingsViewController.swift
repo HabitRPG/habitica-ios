@@ -13,6 +13,7 @@ import ReactiveSwift
 import Habitica_Models
 
 enum SettingsTags {
+    static let authentication = "authentication"
     static let dailyReminder = "dailyReminder"
     static let dailyReminderTime = "dailyReminderTime"
     static let displayNotificationsBadge = "displayNotificationsBadge"
@@ -138,7 +139,7 @@ class SettingsViewController: FormViewController, Themeable {
                     cell.accessoryType = .disclosureIndicator
                 })
             }
-            <<< ButtonRow { row in
+            <<< ButtonRow(SettingsTags.authentication) { row in
                 row.title = L10n.Settings.authentication
                 row.presentationMode = .segueName(segueName: StoryboardSegue.Settings.authenticationSegue.rawValue, onDismiss: nil)
                 row.cellStyle = UITableViewCellStyle.subtitle
@@ -149,6 +150,8 @@ class SettingsViewController: FormViewController, Themeable {
                     if self?.configRepository.bool(variable: .enableChangeUsername) == true && self?.user?.flags?.verifiedUsername != true {
                         cell.detailTextLabel?.text = L10n.Settings.usernameNotConfirmed
                         cell.detailTextLabel?.textColor = UIColor.red50()
+                    } else {
+                        cell.detailTextLabel?.text = nil
                     }
                 })
             }
@@ -318,6 +321,11 @@ class SettingsViewController: FormViewController, Themeable {
         }) {
             (form.rowBy(tag: SettingsTags.soundTheme) as? PushRow<LabeledFormValue<String>>)?.value = LabeledFormValue(value: theme.rawValue, label: theme.niceName)
         }
+        
+        let authenticationRow = form.rowBy(tag: SettingsTags.authentication)
+        tableView.beginUpdates()
+        authenticationRow?.updateCell()
+        tableView.endUpdates()
         
         if let classRow = form.rowBy(tag: SettingsTags.changeClass) as? ButtonRow {
             if (user.stats?.level ?? 0) < 10 {

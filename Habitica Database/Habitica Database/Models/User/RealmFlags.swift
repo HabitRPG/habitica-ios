@@ -59,5 +59,6 @@ class RealmFlags: Object, FlagsProtocol {
         classSelected = flags.classSelected
         itemsEnabled = flags.itemsEnabled
         tutorials = flags.tutorials
+        verifiedUsername = flags.verifiedUsername
     }
 }
