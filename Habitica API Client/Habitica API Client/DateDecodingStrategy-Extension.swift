@@ -13,6 +13,11 @@ extension JSONDecoder {
     func setHabiticaDateDecodingStrategy() {
         dateDecodingStrategy = .custom({ dateDecoder -> Date in
             let container = try dateDecoder.singleValueContainer()
+            
+            if let timestampNumber = try? container.decode(Double.self) {
+                return Date(timeIntervalSince1970: timestampNumber)
+            }
+            
             let dateStr = try container.decode(String.self)
             
             if #available(iOS 10.0, *) {
@@ -23,6 +28,7 @@ extension JSONDecoder {
             
             let dateFormatter = DateFormatter()
             dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+            dateFormatter.timeZone = TimeZone(identifier: "UTC")
             dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
             if let date = dateFormatter.date(from: dateStr) {
                 return date

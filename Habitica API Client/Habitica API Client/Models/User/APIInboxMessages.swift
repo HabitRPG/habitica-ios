@@ -42,9 +42,7 @@ public class APIInboxMessage: InboxMessageProtocol, Decodable {
         id = try? values.decode(String.self, forKey: .id)
         userID = try? values.decode(String.self, forKey: .userID)
         text = try? values.decode(String.self, forKey: .text)
-        if let timeStampNumber = try? values.decode(Double.self, forKey: .timestamp) {
-            timestamp = Date(timeIntervalSince1970: timeStampNumber/1000)
-        }
+        timestamp = try? values.decode(Date.self, forKey: .timestamp)
         username = try? values.decode(String.self, forKey: .username)
         flagCount = (try? values.decode(Int.self, forKey: .flagCount)) ?? 0
         contributor = (try? values.decode(APIContributor.self, forKey: .contributor))
