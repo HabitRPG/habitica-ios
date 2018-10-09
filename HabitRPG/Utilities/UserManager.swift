@@ -21,6 +21,7 @@ class UserManager: NSObject {
     private let userRepository = UserRepository()
     private let taskRepository = TaskRepository()
     private let disposable = CompositeDisposable()
+    private let configRepository = ConfigRepository()
     
     private weak var faintViewController: FaintViewController?
     private weak var classSelectionViewController: ClassSelectionViewController?
@@ -108,6 +109,20 @@ class UserManager: NSObject {
         
         userRepository.registerPushDevice(user: user).observeCompleted {}
         setTimezoneOffset(user)
+        
+        if configRepository.bool(variable: ConfigVariable.enableUsernameRelease) {
+            if user.flags?.verifiedUsername == false {
+                if var topController = UIApplication.shared.keyWindow?.rootViewController {
+                    while let presentedViewController = topController.presentedViewController {
+                        topController = presentedViewController
+                    }
+                    let verifyViewController = StoryboardScene.User.verifyUsernameModalViewController.instantiate()
+                    verifyViewController.modalTransitionStyle = .crossDissolve
+                    verifyViewController.modalPresentationStyle = .overCurrentContext
+                    topController.present(verifyViewController, animated: true, completion: nil)
+                }
+            }
+        }
     }
     
     private func checkFainting(user: UserProtocol) -> FaintViewController? {

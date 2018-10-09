@@ -186,6 +186,8 @@
 		299FB28A2084988500422522 /* APIMount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB2892084988500422522 /* APIMount.swift */; };
 		299FB29420849EDD00422522 /* APIOwnedPet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB29320849EDD00422522 /* APIOwnedPet.swift */; };
 		299FB29620849F1500422522 /* APIOwnedMount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB29520849F1500422522 /* APIOwnedMount.swift */; };
+		29A62B05216CC6A100D4BD90 /* APIVerifyUsernameResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A62B04216CC6A100D4BD90 /* APIVerifyUsernameResponse.swift */; };
+		29A62B07216CC6CC00D4BD90 /* VerifyUsernameCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A62B06216CC6CC00D4BD90 /* VerifyUsernameCall.swift */; };
 		29A6B86E20690F0C0086B2A6 /* APIWeekRepeat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A6B86D20690F0C0086B2A6 /* APIWeekRepeat.swift */; };
 		29A6B870206940F80086B2A6 /* CreateTaskCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A6B86F206940F80086B2A6 /* CreateTaskCall.swift */; };
 		29A6B872206941210086B2A6 /* UpdateTaskCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A6B871206941210086B2A6 /* UpdateTaskCall.swift */; };
@@ -396,6 +398,8 @@
 		299FB2892084988500422522 /* APIMount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIMount.swift; sourceTree = "<group>"; };
 		299FB29320849EDD00422522 /* APIOwnedPet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIOwnedPet.swift; sourceTree = "<group>"; };
 		299FB29520849F1500422522 /* APIOwnedMount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIOwnedMount.swift; sourceTree = "<group>"; };
+		29A62B04216CC6A100D4BD90 /* APIVerifyUsernameResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIVerifyUsernameResponse.swift; sourceTree = "<group>"; };
+		29A62B06216CC6CC00D4BD90 /* VerifyUsernameCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyUsernameCall.swift; sourceTree = "<group>"; };
 		29A6B86D20690F0C0086B2A6 /* APIWeekRepeat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIWeekRepeat.swift; sourceTree = "<group>"; };
 		29A6B86F206940F80086B2A6 /* CreateTaskCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskCall.swift; sourceTree = "<group>"; };
 		29A6B871206941210086B2A6 /* UpdateTaskCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateTaskCall.swift; sourceTree = "<group>"; };
@@ -527,6 +531,7 @@
 				29323E502052F77F00AC6D6F /* APIUserItems.swift */,
 				291E95B4209888E1006EE585 /* APIUserParty.swift */,
 				29DBFF0E20D15BEA00DF9CF2 /* APIUserNewMessages.swift */,
+				29A62B04216CC6A100D4BD90 /* APIVerifyUsernameResponse.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -692,6 +697,7 @@
 				290B6272207BA7D9007287C4 /* UpdateUsernameCall.swift */,
 				290C302D206BD2020066AF5B /* UseSkillCall.swift */,
 				29DBFF0220CE91A500DF9CF2 /* UseTransformationItemCall.swift */,
+				29A62B06216CC6CC00D4BD90 /* VerifyUsernameCall.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -1089,6 +1095,7 @@
 				292F966A206E4FD100804151 /* PostChatMessageCall.swift in Sources */,
 				292726A620B70290009DD08A /* RetrieveChallengeCall.swift in Sources */,
 				292726B420B70747009DD08A /* APIChallengeMembership.swift in Sources */,
+				29A62B07216CC6CC00D4BD90 /* VerifyUsernameCall.swift in Sources */,
 				290B6283207BAAA2007287C4 /* APILoginResponse.swift in Sources */,
 				295E9DCC20B2DFEB00D58D45 /* PurchaseQuestCall.swift in Sources */,
 				290C3040206D3DE80066AF5B /* APIGroup.swift in Sources */,
@@ -1133,6 +1140,7 @@
 				295E9DE420B31C1300D58D45 /* DeleteTagCall.swift in Sources */,
 				299FB2882084987000422522 /* APIPet.swift in Sources */,
 				294973CA2080F9F600F02AC3 /* EquipGearCall.swift in Sources */,
+				29A62B05216CC6A100D4BD90 /* APIVerifyUsernameResponse.swift in Sources */,
 				2902797F20581CF0006DACB9 /* AllocateAttributePointCall.swift in Sources */,
 				292F9668206E4FBD00804151 /* DeleteChatMessageCall.swift in Sources */,
 				291448742086352800F3A6B5 /* FeedPetCall.swift in Sources */,

@@ -252,6 +252,12 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         })
     }
     
+    func verifyUsername(_ newUsername: String) -> Signal<VerifyUsernameResponse?, NoError> {
+        let call = VerifyUsernameCall(username: newUsername)
+        call.fire()
+        return call.objectSignal
+    }
+    
     func updatePassword(newPassword: String, password: String, confirmPassword: String) -> Signal<EmptyResponseProtocol?, NoError> {
         let call = UpdatePasswordCall(newPassword: newPassword, oldPassword: password, confirmPassword: confirmPassword)
         call.fire()

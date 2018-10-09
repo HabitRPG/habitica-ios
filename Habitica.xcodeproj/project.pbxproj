@@ -182,6 +182,7 @@
 		299FB2AA2084BA6200422522 /* StableOverviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB2A92084BA6200422522 /* StableOverviewCell.swift */; };
 		29A0FD81203DF49900590BDE /* GuidelinesPromptView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29A0FD80203DF49900590BDE /* GuidelinesPromptView.xib */; };
 		29A1B9B91F6ACC2F0055CF57 /* UIAlertAction-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A1B9B81F6ACC2F0055CF57 /* UIAlertAction-Extensions.swift */; };
+		29A62B012167D55200D4BD90 /* VerifyUsernameModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A62B002167D55200D4BD90 /* VerifyUsernameModalViewController.swift */; };
 		29A6B85D20641C9B0086B2A6 /* TaskDifficultyRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A6B85C20641C9B0086B2A6 /* TaskDifficultyRow.swift */; };
 		29A6B86220641FEA0086B2A6 /* TaskDifficultyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29A6B86120641FEA0086B2A6 /* TaskDifficultyCell.xib */; };
 		29A6B86420644BFE0086B2A6 /* WeekdayFormCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29A6B86320644BFE0086B2A6 /* WeekdayFormCell.xib */; };
@@ -808,6 +809,7 @@
 		299FB2A92084BA6200422522 /* StableOverviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StableOverviewCell.swift; sourceTree = "<group>"; };
 		29A0FD80203DF49900590BDE /* GuidelinesPromptView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GuidelinesPromptView.xib; sourceTree = "<group>"; };
 		29A1B9B81F6ACC2F0055CF57 /* UIAlertAction-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertAction-Extensions.swift"; sourceTree = "<group>"; };
+		29A62B002167D55200D4BD90 /* VerifyUsernameModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyUsernameModalViewController.swift; sourceTree = "<group>"; };
 		29A6B85C20641C9B0086B2A6 /* TaskDifficultyRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDifficultyRow.swift; sourceTree = "<group>"; };
 		29A6B86120641FEA0086B2A6 /* TaskDifficultyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskDifficultyCell.xib; sourceTree = "<group>"; };
 		29A6B86320644BFE0086B2A6 /* WeekdayFormCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeekdayFormCell.xib; sourceTree = "<group>"; };
@@ -1515,6 +1517,7 @@
 		2986EB091FCC63CC00B316F6 /* User */ = {
 			isa = PBXGroup;
 			children = (
+				29A62B002167D55200D4BD90 /* VerifyUsernameModalViewController.swift */,
 				2986EB0A1FCC63F900B316F6 /* AttributePointsViewController.swift */,
 				293BB4A81FD0806C003B6F4F /* BulkStatsAllocationViewController.swift */,
 				291E95AE20988025006EE585 /* NewsViewController.swift */,
@@ -3174,6 +3177,7 @@
 				D97C71E418ECE09A0089FDC6 /* HRPGSpellViewController.m in Sources */,
 				2986EB0B1FCC63F900B316F6 /* AttributePointsViewController.swift in Sources */,
 				49DCECA91F96F8DE00982E99 /* ChallengeDetailViewModel.swift in Sources */,
+				29A62B012167D55200D4BD90 /* VerifyUsernameModalViewController.swift in Sources */,
 				2919FDD52090CF900096A53B /* InboxMessagesDataSource.swift in Sources */,
 				29A6B86620644CA40086B2A6 /* WeekdayFormCell.swift in Sources */,
 				29E16313200E619400685640 /* QuestProgressView.swift in Sources */,

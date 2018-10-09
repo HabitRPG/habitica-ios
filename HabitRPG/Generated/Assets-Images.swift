@@ -58,6 +58,7 @@ internal enum Asset {
   internal static let cloud2 = ImageAsset(name: "Cloud2")
   internal static let diamondButton = ImageAsset(name: "DiamondButton")
   internal static let gem = ImageAsset(name: "Gem")
+  internal static let helloHabitican = ImageAsset(name: "HelloHabitican")
   internal static let introPage1 = ImageAsset(name: "IntroPage1")
   internal static let introPage2 = ImageAsset(name: "IntroPage2")
   internal static let introPage3 = ImageAsset(name: "IntroPage3")
@@ -223,6 +224,7 @@ internal enum Asset {
     cloud2,
     diamondButton,
     gem,
+    helloHabitican,
     introPage1,
     introPage2,
     introPage3,

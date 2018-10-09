@@ -10,7 +10,8 @@ import Habitica_API_Client
 
 @objc
 enum ConfigVariable: Int {
-    case enableRepeatables, supportEmail, enableNewShops, shopSpriteSuffix, maxChatLength, enableChangeUsername
+    case enableRepeatables, supportEmail, enableNewShops, shopSpriteSuffix
+    case maxChatLength, enableChangeUsername, enableUsernameRelease
 
     func name() -> String {
         // swiftlint:disable switch_case_on_newline
@@ -21,6 +22,7 @@ enum ConfigVariable: Int {
         case .shopSpriteSuffix: return "shopSpriteSuffix"
         case .maxChatLength: return "maxChatLength"
         case .enableChangeUsername: return "enableChangeUsername"
+        case .enableUsernameRelease: return "enableUsernameRelease"
         }
         // swiftlint:enable switch_case_on_newline
     }
@@ -47,6 +49,7 @@ class ConfigRepository: NSObject {
                     }
                 }
             }
+            self.userConfig.set(true, forKey: ConfigVariable.enableUsernameRelease.name())
         }
     }
 
