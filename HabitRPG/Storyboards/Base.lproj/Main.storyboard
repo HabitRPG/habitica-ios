@@ -267,7 +267,7 @@
         <!--About-->
         <scene sceneID="Whw-Wx-8Rx">
             <objects>
-                <tableViewController storyboardIdentifier="AboutViewController" id="r5L-RV-Ig6" customClass="HRPGAboutViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="AboutViewController" id="r5L-RV-Ig6" customClass="AboutViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="qDx-P9-rXy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

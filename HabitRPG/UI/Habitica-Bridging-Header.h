@@ -28,7 +28,6 @@
 #import "HRPGLabeledProgressBar.h"
 #import "HRPGNavigationController.h"
 #import "HRPGInboxTableViewController.h"
-#import "HRPGAboutViewController.h"
 #import "HRPGShopOverviewViewController.h"
 #import "HRPGSpellViewController.h"
 #import "HRPGSharingManager.h"

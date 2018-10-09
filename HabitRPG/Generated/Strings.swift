@@ -214,6 +214,33 @@ internal enum L10n {
   /// Yearly
   internal static let yearly = L10n.tr("Mainstrings", "yearly")
 
+  internal enum About {
+    /// Acknowledgements
+    internal static let acknowledgements = L10n.tr("Mainstrings", "about.acknowledgements")
+    /// Export Database
+    internal static let exportDatabase = L10n.tr("Mainstrings", "about.export_database")
+    /// Leave Review
+    internal static let leaveReview = L10n.tr("Mainstrings", "about.leave_review")
+    /// Web love open source software.
+    internal static let loveOpenSource = L10n.tr("Mainstrings", "about.love_open_source")
+    /// Whoops, looks like you haven't set up your email on this phone yet. Configure an account in the iOS mail app to use this quick-reporting option, or just email us directly at %@
+    internal static func noEmailMessage(_ p1: String) -> String {
+      return L10n.tr("Mainstrings", "about.no_email_message", p1)
+    }
+    /// Your email isn't set up yet
+    internal static let noEmailTitle = L10n.tr("Mainstrings", "about.no_email_title")
+    /// Report a Bug
+    internal static let reportBug = L10n.tr("Mainstrings", "about.report_bug")
+    /// Send Feedback
+    internal static let sendFeedback = L10n.tr("Mainstrings", "about.send_feedback")
+    /// Version
+    internal static let version = L10n.tr("Mainstrings", "about.version")
+    /// View Source Code
+    internal static let viewSourceCode = L10n.tr("Mainstrings", "about.view_source_code")
+    /// Website
+    internal static let website = L10n.tr("Mainstrings", "about.website")
+  }
+
   internal enum Avatar {
     /// Background
     internal static let background = L10n.tr("Mainstrings", "avatar.background")

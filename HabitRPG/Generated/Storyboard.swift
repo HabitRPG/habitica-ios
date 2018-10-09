@@ -78,7 +78,7 @@ internal enum StoryboardScene {
   internal enum Main: StoryboardType {
     internal static let storyboardName = "Main"
 
-    internal static let aboutViewController = SceneType<HRPGAboutViewController>(storyboard: Main.self, identifier: "AboutViewController")
+    internal static let aboutViewController = SceneType<Habitica.AboutViewController>(storyboard: Main.self, identifier: "AboutViewController")
 
     internal static let faqOverviewViewController = SceneType<Habitica.FAQTableViewController>(storyboard: Main.self, identifier: "FAQOverviewViewController")
 

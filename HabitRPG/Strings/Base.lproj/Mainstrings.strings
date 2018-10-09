@@ -295,3 +295,14 @@
 "settings.confirm_username_description" = "Confirming your username will make it public for invitations, @mentions and messaging. You can change your username from settings at any time.";
 "username_confirmed_toast" = "Your username was confirmed";
 "settings.username_not_confirmed" = "Username not confirmed";
+"about.website" = "Website";
+"about.send_feedback" = "Send Feedback";
+"about.report_bug" = "Report a Bug";
+"about.leave_review" = "Leave Review";
+"about.view_source_code" = "View Source Code";
+"about.acknowledgements" = "Acknowledgements";
+"about.version" = "Version";
+"about.export_database" = "Export Database";
+"about.love_open_source" = "Web love open source software.";
+"about.no_email_title" = "Your email isn't set up yet";
+"about.no_email_message" = "Whoops, looks like you haven't set up your email on this phone yet. Configure an account in the iOS mail app to use this quick-reporting option, or just email us directly at %@";
