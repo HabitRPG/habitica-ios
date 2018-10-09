@@ -49,7 +49,6 @@ class ConfigRepository: NSObject {
                     }
                 }
             }
-            self.userConfig.set(true, forKey: ConfigVariable.enableUsernameRelease.name())
         }
     }
 
