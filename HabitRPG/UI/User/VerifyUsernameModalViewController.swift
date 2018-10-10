@@ -11,6 +11,7 @@ import ReactiveSwift
 import ReactiveCocoa
 import Habitica_Models
 import Result
+import Habitica_Database
 
 class VerifyUsernameModalViewController: UIViewController {
     
@@ -22,6 +23,7 @@ class VerifyUsernameModalViewController: UIViewController {
     @IBOutlet weak var displayNameIconView: UIImageView!
     @IBOutlet weak var usernameIconView: UIImageView!
     @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet weak var confirmButton: UIButton!
     
     private var usernameProperty = MutableProperty<String?>(nil)
     
@@ -51,6 +53,7 @@ class VerifyUsernameModalViewController: UIViewController {
             .skipNil()
             .on(value: {[weak self] response in
                 self?.usernameIconView.isHidden = !response.isUsable
+                self?.confirmButton.isEnabled = response.isUsable
                 self?.errorLabel.text = response.issues?.joined(separator: "\n")
             }).start()
     }
@@ -61,11 +64,44 @@ class VerifyUsernameModalViewController: UIViewController {
     }
     
     @IBAction func confirmUsernameButtonTapped(_ sender: Any) {
-        userRepository.updateUser(["profile.name": displayNameTextField.text ?? ""])
-            .flatMap(.latest) { _ in
-                return self.userRepository.updateUsername(newUsername: self.usernameProperty.value ?? "")
-            }.observeCompleted {
-                self.dismiss(animated: true, completion: nil)
+        guard let displayname = displayNameTextField.text else {
+            return
         }
+        guard let username = usernameTextField.text else {
+            return
+        }
+        confirmButton.isEnabled = false
+        userRepository.updateUser(key: "profile.name", value: displayname)
+            .flatMap(.latest, { user -> SignalProducer<UserProtocol, ValidationError> in
+                if user == nil {
+                    return SignalProducer.init(error: ValidationError(""))
+                }
+                return self.userRepository.updateUsername(newUsername: username).mapError({ error -> ValidationError in
+                    return ValidationError(error.localizedDescription)
+                }).producer
+            })
+            .on(value: { user in
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                    if self.presentedViewController != nil {
+                        self.presentedViewController?.dismiss(animated: false, completion: nil)
+                    }
+                    self.dismiss(animated: true, completion: nil)
+                }
+            })
+            .observeCompleted {
+                self.confirmButton.isEnabled = true
+        }
+    }
+}
+
+private struct ValidationError: Error {
+    let message: String
+    
+    init(_ message: String) {
+        self.message = message
+    }
+    
+    public var localizedDescription: String {
+        return message
     }
 }

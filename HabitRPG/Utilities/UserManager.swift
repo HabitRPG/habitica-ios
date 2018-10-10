@@ -109,7 +109,7 @@ class UserManager: NSObject {
         
         userRepository.registerPushDevice(user: user).observeCompleted {}
         setTimezoneOffset(user)
-        
+
         if configRepository.bool(variable: ConfigVariable.enableUsernameRelease) {
             if user.flags?.verifiedUsername == false {
                 if var topController = UIApplication.shared.keyWindow?.rootViewController {

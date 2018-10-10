@@ -589,6 +589,7 @@
                         <viewLayoutGuide key="safeArea" id="FK0-CO-PAF"/>
                     </view>
                     <connections>
+                        <outlet property="confirmButton" destination="CqQ-x9-BSL" id="xVk-Ql-vaL"/>
                         <outlet property="displayNameIconView" destination="0Yt-T5-thI" id="3Np-sV-lqQ"/>
                         <outlet property="displayNameTextField" destination="zyp-9h-rAj" id="ica-Cj-geF"/>
                         <outlet property="errorLabel" destination="BVH-dn-2fc" id="Zhf-wS-b2y"/>
