@@ -55,7 +55,6 @@ class PurchaseHandler: NSObject {
                     for product in products {
                         if product.transaction.transactionState == .purchased || product.transaction.transactionState == .restored {
                             if product.needsFinishTransaction {
-                                
                                 if self.isInAppPurchase(product.productId) {
                                     self.activatePurchase(product.productId, receipt: receiptData) { status in
                                         if status {
@@ -64,26 +63,8 @@ class PurchaseHandler: NSObject {
                                     }
                                 } else if self.isSubscription(product.productId) {
                                     self.userRepository.getUser().take(first: 1).on(value: {[weak self]user in
-                                        if !user.isSubscribed {
-                                            guard let weakSelf = self else {
-                                                return
-                                            }
-                                            SwiftyStoreKit.verifyReceipt(using: weakSelf.appleValidator, completion: { (verificationResult) in
-                                                switch verificationResult {
-                                                case .success(let receipt):
-                                                    if weakSelf.isValidSubscription(product.productId, receipt: receipt) {
-                                                        weakSelf.activateSubscription(product.productId, receipt: receipt) { status in
-                                                            if status {
-                                                                SwiftyStoreKit.finishTransaction(product.transaction)
-                                                            }
-                                                        }
-                                                    } else {
-                                                        SwiftyStoreKit.finishTransaction(product.transaction)
-                                                    }
-                                                case .error(let error):
-                                                    Crashlytics.sharedInstance().recordError(error)
-                                                }
-                                            })
+                                        if !user.isSubscribed || user.purchased?.subscriptionPlan?.dateCreated != nil {
+                                            self?.applySubscription(purchase: product)
                                         }
                                     }).start()
                                 }
@@ -192,5 +173,24 @@ class PurchaseHandler: NSObject {
         case .notPurchased:
             return false
         }
+    }
+    
+    private func applySubscription(purchase: Purchase) {
+        SwiftyStoreKit.verifyReceipt(using: appleValidator, completion: { (verificationResult) in
+            switch verificationResult {
+            case .success(let receipt):
+                if self.isValidSubscription(purchase.productId, receipt: receipt) {
+                    self.activateSubscription(purchase.productId, receipt: receipt) { status in
+                        if status {
+                            SwiftyStoreKit.finishTransaction(purchase.transaction)
+                        }
+                    }
+                } else {
+                    SwiftyStoreKit.finishTransaction(purchase.transaction)
+                }
+            case .error(let error):
+                Crashlytics.sharedInstance().recordError(error)
+            }
+        })
     }
 }
