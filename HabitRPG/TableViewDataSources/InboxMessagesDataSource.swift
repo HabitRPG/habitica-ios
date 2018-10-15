@@ -81,7 +81,7 @@ class InboxMessagesDataSource: BaseReactiveTableViewDataSource<InboxMessageProto
                 return
             }
             profileViewController.userID = message.userID
-            profileViewController.username = message.username
+            profileViewController.username = message.displayName
             self.viewController?.navigationController?.pushViewController(profileViewController, animated: true)
         }
         cell.copyAction = {

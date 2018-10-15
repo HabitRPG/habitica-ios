@@ -15,6 +15,7 @@ public protocol ChatMessageProtocol {
     var text: String? { get set }
     var attributedText: NSAttributedString? { get set }
     var timestamp: Date? { get set }
+    var displayName: String? { get set }
     var username: String? { get set }
     var flagCount: Int { get set }
     var contributor: ContributorProtocol? { get set }

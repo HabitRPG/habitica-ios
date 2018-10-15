@@ -17,6 +17,7 @@ class RealmChatMessage: Object, ChatMessageProtocol {
     @objc dynamic var text: String?
     var attributedText: NSAttributedString?
     @objc dynamic var timestamp: Date?
+    @objc dynamic var displayName: String?
     @objc dynamic var username: String?
     @objc dynamic var flagCount: Int = 0
     var contributor: ContributorProtocol? {
@@ -107,6 +108,7 @@ class RealmChatMessage: Object, ChatMessageProtocol {
         userID = chatMessage.userID
         text = chatMessage.text
         timestamp = chatMessage.timestamp
+        displayName = chatMessage.displayName
         username = chatMessage.username
         flagCount = chatMessage.flagCount
         contributor = chatMessage.contributor

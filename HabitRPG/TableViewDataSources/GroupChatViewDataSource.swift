@@ -74,14 +74,14 @@ class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtoc
                 return
             }
             profileViewController.userID = chatMessage.userID
-            profileViewController.username = chatMessage.username
+            profileViewController.username = chatMessage.displayName
             self.viewController?.navigationController?.pushViewController(profileViewController, animated: true)
         }
         cell.reportAction = {[weak self] in
             guard let view = Bundle.main.loadNibNamed("HRPGFlagInformationOverlayView", owner: self, options: nil)?.first as? HRPGFlagInformationOverlayView else {
                 return
             }
-            view.username = chatMessage.username
+            view.username = chatMessage.displayName
             view.message = chatMessage.text
             view.flagAction = {
                 if let strongSelf = self {
@@ -98,7 +98,7 @@ class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtoc
             popup?.show()
         }
         cell.replyAction = {
-            self.viewController?.configureReplyTo(chatMessage.username)
+            self.viewController?.configureReplyTo(chatMessage.displayName)
         }
         cell.plusOneAction = {
             self.socialRepository.like(groupID: self.groupID, chatMessage: chatMessage).observeCompleted {}

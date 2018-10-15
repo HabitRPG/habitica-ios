@@ -18,6 +18,7 @@ class RealmInboxMessage: Object, InboxMessageProtocol {
     @objc dynamic var text: String?
     var attributedText: NSAttributedString?
     @objc dynamic var timestamp: Date?
+    @objc dynamic var displayName: String?
     @objc dynamic var username: String?
     @objc dynamic var flagCount: Int = 0
     var sent: Bool = false
@@ -90,6 +91,7 @@ class RealmInboxMessage: Object, InboxMessageProtocol {
         self.userID = inboxMessage.userID
         text = inboxMessage.text
         timestamp = inboxMessage.timestamp
+        displayName = inboxMessage.displayName
         username = inboxMessage.username
         flagCount = inboxMessage.flagCount
         contributor = inboxMessage.contributor

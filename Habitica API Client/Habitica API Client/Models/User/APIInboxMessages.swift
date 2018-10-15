@@ -20,6 +20,7 @@ public class APIInboxMessage: InboxMessageProtocol, Decodable {
     public var attributedText: NSAttributedString?
     public var sent: Bool
     public var sort: Int
+    public var displayName: String?
     public var username: String?
     public var flagCount: Int
     
@@ -28,7 +29,8 @@ public class APIInboxMessage: InboxMessageProtocol, Decodable {
         case userID = "uuid"
         case text
         case timestamp
-        case username = "user"
+        case displayName = "user"
+        case username
         case flagCount
         case contributor
         case likes
@@ -43,6 +45,7 @@ public class APIInboxMessage: InboxMessageProtocol, Decodable {
         userID = try? values.decode(String.self, forKey: .userID)
         text = try? values.decode(String.self, forKey: .text)
         timestamp = try? values.decode(Date.self, forKey: .timestamp)
+        displayName = try? values.decode(String.self, forKey: .displayName)
         username = try? values.decode(String.self, forKey: .username)
         flagCount = (try? values.decode(Int.self, forKey: .flagCount)) ?? 0
         contributor = (try? values.decode(APIContributor.self, forKey: .contributor))

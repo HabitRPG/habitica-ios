@@ -54,7 +54,7 @@ class InboxOverviewDataSource: BaseReactiveTableViewDataSource<InboxMessageProto
         
         if let message = item(at: indexPath) {
             let usernameLabel = cell.viewWithTag(1) as? UsernameLabel
-            usernameLabel?.text = message.username
+            usernameLabel?.text = message.displayName
             usernameLabel?.contributorLevel = message.contributor?.level ?? 0
             usernameLabel?.font = CustomFontMetrics.scaledSystemFont(ofSize: 17)
             let textLabel = cell.viewWithTag(2) as? UILabel
