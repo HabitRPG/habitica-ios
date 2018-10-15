@@ -22,6 +22,7 @@ class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtoc
     private let userRepository = UserRepository()
     private var user: UserProtocol?
     private let groupID: String
+    private let enableUsernameRelease = ConfigRepository().bool(variable: .enableUsernameRelease)
     
     init(groupID: String) {
         self.groupID = groupID
@@ -61,11 +62,15 @@ class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtoc
         }
         
         cell.isFirstMessage = indexPath?.item == 0
+        var username = user?.username ?? ""
+        if enableUsernameRelease || username.count == 0 {
+            username = self.user?.profile?.name ?? ""
+        }
         cell.configure(chatMessage: chatMessage,
                        previousMessage: item(at: IndexPath(item: (indexPath?.item ?? 0)+1, section: indexPath?.section ?? 0)),
                        nextMessage: item(at: IndexPath(item: (indexPath?.item ?? 0)-1, section: indexPath?.section ?? 0)),
                        userID: self.user?.id ?? "",
-                       username: self.user?.profile?.name ?? "",
+                       username: username,
                        isModerator: self.user?.isModerator == true,
                        isExpanded: isExpanded)
         
@@ -98,7 +103,7 @@ class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtoc
             popup?.show()
         }
         cell.replyAction = {
-            self.viewController?.configureReplyTo(chatMessage.displayName)
+            self.viewController?.configureReplyTo(chatMessage.username ?? chatMessage.displayName)
         }
         cell.plusOneAction = {
             self.socialRepository.like(groupID: self.groupID, chatMessage: chatMessage).observeCompleted {}

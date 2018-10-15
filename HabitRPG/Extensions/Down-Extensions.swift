@@ -13,15 +13,24 @@ extension Down {
 
     func toHabiticaAttributedString(baseFont: UIFont = CustomFontMetrics.scaledSystemFont(ofSize: 15),
                                     textColor: UIColor = UIColor.gray100()) throws -> NSMutableAttributedString {
+        let mentions = markdownString.components(separatedBy: " ").filter({ $0.first == "@"})
         if markdownString.range(of: "[*_#\\[<]", options: .regularExpression, range: nil, locale: nil) == nil {
-            return NSMutableAttributedString(string: markdownString,
-                                             attributes: [.font: CustomFontMetrics.scaledSystemFont(ofSize: 15),
-                                                          .foregroundColor: textColor])
+            let string = NSMutableAttributedString(string: markdownString,
+                                                   attributes: [.font: CustomFontMetrics.scaledSystemFont(ofSize: 15),
+                                                                .foregroundColor: textColor])
+            if mentions.count > 0 {
+                applyMentions(string, mentions: mentions)
+            }
+            return string
         }
         guard let parsedString = try? toAttributedString().mutableCopy() as? NSMutableAttributedString, let string = parsedString else {
-            return NSMutableAttributedString(string: markdownString,
-                                             attributes: [.font: CustomFontMetrics.scaledSystemFont(ofSize: 15),
-                                                          .foregroundColor: textColor])
+            let string = NSMutableAttributedString(string: markdownString,
+                                                  attributes: [.font: CustomFontMetrics.scaledSystemFont(ofSize: 15),
+                                                               .foregroundColor: textColor])
+            if mentions.count > 0 {
+                applyMentions(string, mentions: mentions)
+            }
+            return string
         }
         let baseSize = baseFont.pointSize
         string.enumerateAttribute(NSAttributedStringKey.font,
@@ -44,11 +53,22 @@ extension Down {
                 string.addAttribute(NSAttributedStringKey.foregroundColor, value: textColor, range: range)
             }
         })
+        if mentions.count > 0 {
+            applyMentions(string, mentions: mentions)
+        }
         if string.length == 0 {
             return string
         }
         string.deleteCharacters(in: NSRange(location: string.length-1, length: 1))
         return string
+    }
+    
+    private func applyMentions(_ string: NSMutableAttributedString, mentions: [String]) {
+        let text = string.mutableString
+        for mention in mentions {
+            let range = text.range(of: mention)
+            string.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.purple400(), range: range)
+        }
     }
 }
 

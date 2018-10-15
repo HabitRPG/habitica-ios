@@ -132,7 +132,7 @@ class ChatTableViewCell: UITableViewCell {
         isPrivateMessage = false
         self.isModerator = isModerator
         isOwnMessage = chatMessage.userID == userID
-        wasMentioned = chatMessage.text?.range(of: username) != nil
+        wasMentioned = chatMessage.text?.range(of: "@\(username)") != nil
 
         displaynameLabel.text = chatMessage.displayName?.unicodeEmoji
         contributorLevel = chatMessage.contributor?.level ?? 0
@@ -143,7 +143,7 @@ class ChatTableViewCell: UITableViewCell {
         setSubline(username: chatMessage.username, date: chatMessage.timestamp)
         
         if let text = chatMessage.text {
-            messageTextView.attributedText = try? Down(markdownString: text).toHabiticaAttributedString()
+            setMessageText(text)
         }
         
         if previousMessage?.isValid == true, previousMessage?.userID == chatMessage.userID {
@@ -230,6 +230,14 @@ class ChatTableViewCell: UITableViewCell {
             sublineLabel.text = "@\(username) · \(date)"
         } else {
             sublineLabel.text = date
+        }
+    }
+    
+    private func setMessageText(_ text: String) {
+        if let attributedText = try? Down(markdownString: text).toHabiticaAttributedString() {
+            messageTextView.attributedText = attributedText
+        } else {
+            messageTextView.text = ""
         }
     }
     
