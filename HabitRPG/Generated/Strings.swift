@@ -345,6 +345,8 @@ internal enum L10n {
       internal static let addEmail = L10n.tr("Mainstrings", "groups.invite.add_email")
       /// Add a User ID
       internal static let addUserid = L10n.tr("Mainstrings", "groups.invite.add_userid")
+      /// Add a Username
+      internal static let addUsername = L10n.tr("Mainstrings", "groups.invite.add_username")
       /// Invitation Type
       internal static let invitationType = L10n.tr("Mainstrings", "groups.invite.invitation_type")
     }
@@ -443,6 +445,8 @@ internal enum L10n {
     internal static func invitedToQuest(_ p1: String) -> String {
       return L10n.tr("Mainstrings", "party.invited_to_quest", p1)
     }
+    /// Give a Party member the username found below and they can send you an invite
+    internal static let joinPartyDescription = L10n.tr("Mainstrings", "party.join_party_description")
     /// %d/%d Members responded
     internal static func questNumberResponded(_ p1: Int, _ p2: Int) -> String {
       return L10n.tr("Mainstrings", "party.quest_number_responded", p1, p2)

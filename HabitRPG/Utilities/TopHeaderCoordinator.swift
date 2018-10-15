@@ -22,8 +22,24 @@ class TopHeaderCoordinator: NSObject {
         }
     }
     @objc var followScrollView = true
-    @objc var navbarHiddenColor: UIColor?
-    @objc var navbarVisibleColor: UIColor?
+    @objc var navbarHiddenColor: UIColor? {
+        didSet {
+            if didAppear {
+                if let navbarHiddenColor = self.navbarHiddenColor ?? topHeaderNavigationController?.defaultNavbarHiddenColor {
+                    topHeaderNavigationController?.navbarHiddenColor = navbarHiddenColor
+                }
+            }
+        }
+    }
+    @objc var navbarVisibleColor: UIColor? {
+        didSet {
+            if didAppear {
+                if let navbarVisibleColor = self.navbarVisibleColor ?? topHeaderNavigationController?.defaultNavbarVisibleColor{
+                    topHeaderNavigationController?.navbarVisibleColor = navbarVisibleColor
+                }
+            }
+        }
+    }
     
     private var didAppear = false
     

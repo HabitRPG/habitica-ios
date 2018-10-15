@@ -35,8 +35,8 @@ class VerifyUsernameModalViewController: UIViewController {
         
         userRepository.getUser().take(first: 1) .on(value: { user in
             self.displayNameTextField.text = user.profile?.name
-            self.usernameTextField.text = user.authentication?.local?.username
-            self.currentUsername = user.authentication?.local?.username
+            self.usernameTextField.text = user.username
+            self.currentUsername = user.username
         }).start()
         
         displayNameIconView.isHidden = true

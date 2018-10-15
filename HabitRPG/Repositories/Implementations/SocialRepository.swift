@@ -298,8 +298,8 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
         })
     }
     
-    public func invite(toGroup groupID: String, invitationType: String, inviter: String, members: [String]) -> Signal<EmptyResponseProtocol?, NoError> {
-        let call = InviteToGroupCall(groupID: groupID, invitationType: invitationType, inviter: inviter, members: members)
+    public func invite(toGroup groupID: String, members: [String: Any]) -> Signal<EmptyResponseProtocol?, NoError> {
+        let call = InviteToGroupCall(groupID: groupID, members: members)
         call.fire()
         call.habiticaResponseSignal.observeValues { (response) in
             if let error = response?.message {

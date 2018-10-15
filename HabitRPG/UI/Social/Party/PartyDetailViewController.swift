@@ -11,7 +11,7 @@ import Habitica_Models
 import ReactiveSwift
 
 class PartyDetailViewController: GroupDetailViewController {
-
+    
     private let inventoryRepository = InventoryRepository()
     
     @IBOutlet weak var membersStackview: CollapsibleStackView!

@@ -808,7 +808,7 @@
                         <viewControllerLayoutGuide type="bottom" id="P6N-Fc-Wb3"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Lyy-sF-5bz">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
@@ -820,10 +820,13 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="ccZ-xi-m0w">
                             <connections>
-                                <segue destination="5eM-yh-uY1" kind="unwind" unwindAction="unwindToListInvite:" id="TxZ-B1-fsG"/>
+                                <action selector="doneButtonTapped:" destination="NAg-B6-gAf" id="gyB-Wj-Bzr"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="doneButton" destination="ccZ-xi-m0w" id="ffD-h7-1mK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k6Z-Ky-N8V" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="5eM-yh-uY1" userLabel="Exit" sceneMemberID="exit"/>
@@ -1668,33 +1671,66 @@
                                                     <constraint firstAttribute="height" priority="500" id="WnF-cS-Ba9"/>
                                                 </constraints>
                                             </view>
-                                            <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="RBw-nb-5kd">
-                                                <rect key="frame" x="16" y="8" width="343" height="660.5"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PDG-l8-q0L">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="158"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="l6J-yB-veD">
-                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="129.5"/>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="41A-LO-60S" customClass="GradientImageView" customModule="Habitica" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="124"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="124" id="h7s-Sf-R9e"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tKo-H6-Fq3">
+                                                        <rect key="frame" x="21.5" y="12" width="332" height="146"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="332" id="RBz-vL-Vk5"/>
+                                                            <constraint firstAttribute="height" constant="146" id="jnS-2o-2wg"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="41A-LO-60S" firstAttribute="leading" secondItem="PDG-l8-q0L" secondAttribute="leading" id="3yg-hT-eeb"/>
+                                                    <constraint firstAttribute="height" constant="158" id="5Nm-Bw-vRd"/>
+                                                    <constraint firstItem="tKo-H6-Fq3" firstAttribute="top" secondItem="PDG-l8-q0L" secondAttribute="top" constant="12" id="BW6-YT-lDP"/>
+                                                    <constraint firstItem="tKo-H6-Fq3" firstAttribute="centerX" secondItem="PDG-l8-q0L" secondAttribute="centerX" id="Tcd-qa-eBE"/>
+                                                    <constraint firstAttribute="trailing" secondItem="41A-LO-60S" secondAttribute="trailing" id="lMA-AS-WOE"/>
+                                                    <constraint firstItem="41A-LO-60S" firstAttribute="top" secondItem="PDG-l8-q0L" secondAttribute="top" id="vAz-gC-26H"/>
+                                                </constraints>
+                                            </view>
+                                            <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="RBw-nb-5kd">
+                                                <rect key="frame" x="16" y="166" width="343" height="661.5"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="l6J-yB-veD">
+                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="125.5"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Play Habitica in a Party" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yas-h0-Bvk">
-                                                                <rect key="frame" x="0.0" y="0.0" width="343" height="20.5"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" priority="500" constant="20" id="iWu-jw-4bY"/>
-                                                                </constraints>
-                                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                                                <color key="textColor" red="0.53023332359999997" green="0.50720638039999999" blue="0.56472396849999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5SV-Tv-9Xg">
-                                                                <rect key="frame" x="0.0" y="32.5" width="343" height="47"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" priority="500" constant="47" id="WNO-sI-TTK"/>
-                                                                </constraints>
-                                                                <string key="text">Take on quests with friends or on your own. Battle monsters, create Challenges, and help yourself stay accountable through Parties. </string>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                                <color key="textColor" red="0.64723795650000004" green="0.63275462390000003" blue="0.67308568950000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="9xs-gj-06i">
+                                                                <rect key="frame" x="0.0" y="0.0" width="343" height="71.5"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Play Habitica in a Party" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yas-h0-Bvk">
+                                                                        <rect key="frame" x="21" y="0.0" width="301" height="20.5"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" priority="500" constant="20" id="iWu-jw-4bY"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                                        <color key="textColor" red="0.53023332359999997" green="0.50720638039999999" blue="0.56472396849999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5SV-Tv-9Xg">
+                                                                        <rect key="frame" x="21" y="24.5" width="301" height="47"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" priority="500" constant="47" id="WNO-sI-TTK"/>
+                                                                        </constraints>
+                                                                        <string key="text">Take on quests with friends or on your own. Battle monsters, create Challenges, and help yourself stay accountable through Parties. </string>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                                        <color key="textColor" red="0.64723795650000004" green="0.63275462390000003" blue="0.67308568950000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                                <edgeInsets key="layoutMargins" top="0.0" left="21" bottom="0.0" right="21"/>
+                                                            </stackView>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cAS-hA-W5E">
-                                                                <rect key="frame" x="0.0" y="91.5" width="343" height="38"/>
+                                                                <rect key="frame" x="0.0" y="87.5" width="343" height="38"/>
                                                                 <color key="backgroundColor" red="0.97592383620000001" green="0.97666221860000002" blue="0.97603815790000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="38" id="uGG-bW-cgc"/>
@@ -1714,36 +1750,35 @@
                                                             <constraint firstAttribute="height" priority="500" constant="150" id="WU6-cy-Fhz"/>
                                                         </constraints>
                                                     </stackView>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ilt-vP-4RM">
-                                                        <rect key="frame" x="0.0" y="153.5" width="343" height="1"/>
-                                                        <color key="backgroundColor" red="0.88328301909999996" green="0.87696492670000004" blue="0.89030760529999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="1" id="W3z-A1-pqH"/>
-                                                        </constraints>
-                                                    </view>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="tBJ-xP-Ydp">
-                                                        <rect key="frame" x="0.0" y="178.5" width="343" height="482"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="tBJ-xP-Ydp">
+                                                        <rect key="frame" x="0.0" y="175.5" width="343" height="486"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Want to join a party?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QiF-86-NSA">
-                                                                <rect key="frame" x="0.0" y="0.0" width="343" height="20.5"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" priority="500" constant="20" id="kdN-gR-PsC"/>
-                                                                </constraints>
-                                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                                                <color key="textColor" red="0.53023332359999997" green="0.50720638039999999" blue="0.56472396849999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Give them your User ID or have them scan your QR code while inviting" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xuF-gH-2mn">
-                                                                <rect key="frame" x="0.0" y="32.5" width="343" height="31.5"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" priority="500" constant="16" id="hTc-wW-aMF"/>
-                                                                </constraints>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                                <color key="textColor" red="0.64723795650000004" green="0.63275462390000003" blue="0.67308568950000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Fip-ob-Bxm">
+                                                                <rect key="frame" x="0.0" y="0.0" width="343" height="56"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Want to join a party?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QiF-86-NSA">
+                                                                        <rect key="frame" x="21" y="0.0" width="301" height="20.5"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" priority="500" constant="20" id="kdN-gR-PsC"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                                        <color key="textColor" red="0.53023332359999997" green="0.50720638039999999" blue="0.56472396849999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Give them your User ID or have them scan your QR code while inviting" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xuF-gH-2mn">
+                                                                        <rect key="frame" x="21" y="24.5" width="301" height="31.5"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" priority="500" constant="16" id="hTc-wW-aMF"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                                        <color key="textColor" red="0.64723795650000004" green="0.63275462390000003" blue="0.67308568950000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                                <edgeInsets key="layoutMargins" top="0.0" left="21" bottom="0.0" right="21"/>
+                                                            </stackView>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ftp-vm-loC">
-                                                                <rect key="frame" x="0.0" y="76" width="343" height="38"/>
+                                                                <rect key="frame" x="0.0" y="72" width="343" height="38"/>
                                                                 <color key="backgroundColor" red="0.97592383620000001" green="0.97666221860000002" blue="0.97603815790000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="38" id="nPi-Ad-O5m"/>
@@ -1765,7 +1800,7 @@
                                                                 </constraints>
                                                             </view>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V0n-Zw-feb">
-                                                                <rect key="frame" x="0.0" y="444" width="343" height="38"/>
+                                                                <rect key="frame" x="0.0" y="448" width="343" height="38"/>
                                                                 <color key="backgroundColor" red="0.97592383620000001" green="0.97666221860000002" blue="0.97603815790000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="38" id="JPw-Vo-z9p"/>
@@ -1782,7 +1817,7 @@
                                                             </button>
                                                         </subviews>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" priority="500" constant="500" id="eKF-cB-uvt"/>
+                                                            <constraint firstAttribute="height" priority="500" constant="60" id="eKF-cB-uvt"/>
                                                         </constraints>
                                                     </stackView>
                                                 </subviews>
@@ -1795,9 +1830,12 @@
                                             <constraint firstItem="RBw-nb-5kd" firstAttribute="leading" secondItem="m1b-sQ-3cM" secondAttribute="leading" constant="16" id="0EW-4e-uad"/>
                                             <constraint firstAttribute="trailing" secondItem="8vw-l0-30Z" secondAttribute="trailing" id="4dd-SX-2lc"/>
                                             <constraint firstAttribute="bottom" secondItem="RBw-nb-5kd" secondAttribute="bottom" constant="16" id="73S-my-yi5"/>
-                                            <constraint firstItem="RBw-nb-5kd" firstAttribute="top" secondItem="8vw-l0-30Z" secondAttribute="bottom" constant="8" id="J3p-wT-vVz"/>
+                                            <constraint firstItem="PDG-l8-q0L" firstAttribute="top" secondItem="8vw-l0-30Z" secondAttribute="bottom" id="8M8-iK-0WU"/>
                                             <constraint firstItem="8vw-l0-30Z" firstAttribute="leading" secondItem="m1b-sQ-3cM" secondAttribute="leading" id="RQV-2M-8sJ"/>
+                                            <constraint firstItem="RBw-nb-5kd" firstAttribute="top" secondItem="PDG-l8-q0L" secondAttribute="bottom" constant="8" id="aWn-Id-ANW"/>
+                                            <constraint firstAttribute="trailing" secondItem="PDG-l8-q0L" secondAttribute="trailing" id="fE9-rf-WoA"/>
                                             <constraint firstAttribute="trailing" secondItem="RBw-nb-5kd" secondAttribute="trailing" constant="16" id="rln-mu-0df"/>
+                                            <constraint firstItem="PDG-l8-q0L" firstAttribute="leading" secondItem="m1b-sQ-3cM" secondAttribute="leading" id="rn6-3o-fLS"/>
                                             <constraint firstItem="8vw-l0-30Z" firstAttribute="top" secondItem="m1b-sQ-3cM" secondAttribute="top" id="syl-nS-XyZ"/>
                                         </constraints>
                                     </scrollView>
@@ -1834,13 +1872,17 @@
                     <connections>
                         <outlet property="editGroupButton" destination="bou-Ng-0JG" id="Ga1-eF-PML"/>
                         <outlet property="groupInvitationListView" destination="8vw-l0-30Z" id="ugq-CH-uub"/>
+                        <outlet property="joinPartyDescription" destination="xuF-gH-2mn" id="OAx-8q-crk"/>
                         <outlet property="leftViewWidthConstraint" destination="nVI-R5-aFv" id="iTW-Sn-jDi"/>
                         <outlet property="noPartyContainerView" destination="fUh-bv-IOV" id="GUo-RG-z0P"/>
+                        <outlet property="noPartyHeaderBackground" destination="41A-LO-60S" id="RuY-UF-dha"/>
+                        <outlet property="qrCodeButtonHeight" destination="sla-n3-7V8" id="CL8-9i-pfx"/>
                         <outlet property="qrCodeView" destination="nCI-rY-Dmr" id="3Rq-pu-yLs"/>
                         <outlet property="rightViewWidthConstraint" destination="stf-nJ-K0j" id="YWw-9P-YVA"/>
                         <outlet property="scrollView" destination="mMp-6b-m4W" id="CgO-ZW-lwh"/>
                         <outlet property="scrollViewTopConstraint" destination="zAV-rE-QSF" id="DBM-Xk-JqQ"/>
                         <outlet property="separatorView" destination="76c-yj-biB" id="7l6-HB-She"/>
+                        <outlet property="shareQRCodeButton" destination="V0n-Zw-feb" id="44Z-NN-fV3"/>
                         <outlet property="userIDButton" destination="Ftp-vm-loC" id="Q6P-74-EPq"/>
                     </connections>
                 </viewController>
@@ -2111,7 +2153,7 @@
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                                 <connections>
-                                                                    <segue destination="Jki-T5-YYo" kind="presentation" identifier="InviteUsersSegue" id="yXa-uT-GhF"/>
+                                                                    <segue destination="Jki-T5-YYo" kind="presentation" identifier="InvitationSegue" id="yXa-uT-GhF"/>
                                                                 </connections>
                                                             </button>
                                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oXc-S6-Df9">
@@ -2430,7 +2472,7 @@
                                                                 </constraints>
                                                             </view>
                                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jIr-tb-DyF">
-                                                                <rect key="frame" x="0.0" y="-286" width="375" height="77"/>
+                                                                <rect key="frame" x="0.0" y="-254" width="375" height="77"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9iM-dP-lgo" customClass="QuestTitleView" customModule="Habitica" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="-1.5" width="359" height="80"/>
@@ -2458,7 +2500,7 @@
                                                                 </constraints>
                                                             </view>
                                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x2u-nW-8ZD">
-                                                                <rect key="frame" x="0.0" y="-266.5" width="375" height="61"/>
+                                                                <rect key="frame" x="0.0" y="-254" width="375" height="61"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DVS-qZ-ZmV">
                                                                         <rect key="frame" x="0.0" y="12.5" width="179.5" height="36"/>
@@ -2723,7 +2765,7 @@
         <segue reference="9hs-wq-6bn"/>
         <segue reference="jXp-j5-lvy"/>
         <segue reference="ypV-Mu-tgU"/>
-        <segue reference="Nsp-ag-Sds"/>
+        <segue reference="yXa-uT-GhF"/>
         <segue reference="wif-V9-Mcy"/>
         <segue reference="rs9-Lf-2VQ"/>
     </inferredMetricsTieBreakers>

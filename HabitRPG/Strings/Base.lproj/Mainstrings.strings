@@ -228,6 +228,7 @@
 "party.quest_participant_count" = "%d Participants";
 "party.invitation_no_invitername" = "Someone invited you to join their party";
 "party.invitation_invitername" = "%@ invited you to join their party";
+"party.join_party_description" = "Give a Party member the username found below and they can send you an invite";
 "pending_damage" = "Pending damage";
 "quests.boss_battle" = "Boss battle";
 "quests.collection_quest" = "Collection quest";
@@ -282,6 +283,7 @@
 "userID" = "User ID";
 "email" = "Email";
 "groups.invite.add_userid" = "Add a User ID";
+"groups.invite.add_username" = "Add a Username";
 "groups.invite.add_email" = "Add an Email";
 "scan_QR_code" = "Scan QR Code";
 "users_invited" = "Invitation was sent to users.";

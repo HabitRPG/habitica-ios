@@ -52,7 +52,7 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
                 } else {
                     cellTitle = NSLocalizedString("Login Name", comment: "")
                 }
-                cellDetailText = user?.authentication?.local?.username
+                cellDetailText = user?.username
             } else if indexPath.item == 1 && confirmOffset > 0 {
                 cellName = "ButtonCell"
                 cellTitle = L10n.confirmUsername
@@ -226,7 +226,7 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         loginNameTextField.borderStyle = .roundedRect
         loginNameTextField.autocapitalizationType = .none
         loginNameTextField.spellCheckingType = .no
-        loginNameTextField.text = user?.authentication?.local?.username
+        loginNameTextField.text = user?.username
         stackView.addArrangedSubview(loginNameTextField)
         let passwordTextField = UITextField()
         if !configRepository.bool(variable: .enableChangeUsername) {
@@ -288,7 +288,7 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         let alertController = HabiticaAlertController(title: L10n.Settings.confirmUsernamePrompt, message: L10n.Settings.confirmUsernameDescription)
         alertController.addCancelAction()
         alertController.addAction(title: L10n.confirm, isMainAction: true) {[weak self] _ in
-            if let username = self?.user?.authentication?.local?.username {
+            if let username = self?.user?.username {
                 self?.userRepository.updateUsername(newUsername: username).observeCompleted {}
             }
         }

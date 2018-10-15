@@ -2259,6 +2259,8 @@
 				D99E42671D6B1FD500811B6D /* FaintViewController.xib */,
 				4904C73F1F1ED87400F80723 /* GradientImageView.swift */,
 				29AAA15C1F2A3AA600029737 /* GradientView.swift */,
+				292844EE20DD1D630011DC43 /* GroupInvitationListView.swift */,
+				292844EC20DD1D4B0011DC43 /* GroupInvitationView.swift */,
 				29A0FD80203DF49900590BDE /* GuidelinesPromptView.xib */,
 				29B3FEBB1F9E3B17000B12CF /* HabiticaAlertController.swift */,
 				29B3FEBD1F9E3DC3000B12CF /* HabiticaAlertController.xib */,
@@ -2321,8 +2323,6 @@
 				D91CCACF1BCF11CC001C6A0C /* UserTopHeader.xib */,
 				2980E6081EEA25CD005B7100 /* YesterdailiesDialogView.swift */,
 				2980E6061EEA1F55005B7100 /* YesterdailiesDialogView.xib */,
-				292844EC20DD1D4B0011DC43 /* GroupInvitationView.swift */,
-				292844EE20DD1D630011DC43 /* GroupInvitationListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

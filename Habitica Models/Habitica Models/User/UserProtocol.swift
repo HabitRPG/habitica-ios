@@ -40,6 +40,10 @@ public protocol UserProtocol: AvatarProtocol {
 
 public extension UserProtocol {
     
+    var username: String? {
+        return authentication?.local?.username
+    }
+    
     var gemCount: Int {
         return Int(balance * 4.0)
     }
