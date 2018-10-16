@@ -30,6 +30,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.datasource = [InboxMessagesDataSourceInstantiator instantiateWithOtherUserID: self.userID];
+    self.datasource.otherUsername = self.username;
     self.datasource.tableView = self.tableView;
     self.datasource.viewController = self;
     
@@ -58,9 +59,9 @@
     self.hrpgTopHeaderNavigationController.hideNavbar = false;
 }
 
-- (void)setTitleWithUsername:(NSString * _Nullable)username {
-    if (username) {
-        self.navigationItem.title = [NSString stringWithFormat:NSLocalizedString(@"Write to %@", nil), self.username];
+- (void)setTitleWithUsername:(NSString * _Nullable)displayName {
+    if (displayName) {
+        self.navigationItem.title = [NSString stringWithFormat:NSLocalizedString(@"Write to %@", nil), self.displayName];
     } else {
         self.navigationItem.title = NSLocalizedString(@"Write Message", nil);
     }
@@ -95,7 +96,7 @@
     if ([segue.identifier isEqualToString:@"UserProfileSegue"]) {
         UserProfileViewController *userProfileViewController = segue.destinationViewController;
         userProfileViewController.userID = self.userID;
-        userProfileViewController.username = self.username;
+        userProfileViewController.username = self.displayName;
     }
     [super prepareForSegue:segue sender:sender];
 }

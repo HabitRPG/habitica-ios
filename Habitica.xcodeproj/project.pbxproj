@@ -2353,10 +2353,14 @@
 			children = (
 				49A84FB41F9FCA54003E2956 /* Challenges */,
 				D9BB455C1E71C8C70002AE2E /* CheckedTableViewcell.swift */,
+				2974BD90208DEFEA00EC1A25 /* CustomizationDetailCell.swift */,
+				2974BDAC208F68A800EC1A25 /* CustomizationHeaderView.swift */,
 				2957B8C31F4D922C00E836EF /* CustomRewardCell.swift */,
 				2957B8B71F4B2F6A00E836EF /* CustomRewardCell.xib */,
 				D9BB45601E71CD850002AE2E /* DailyTableViewCell.swift */,
 				D9BB45C91E76DF260002AE2E /* DailyTableViewCell.xib */,
+				49A37A8120C0FA49008C28F5 /* EmptyTableViewCell.swift */,
+				49A37A8220C0FA49008C28F5 /* EmptyTableViewCell.xib */,
 				D9BE05831DA6ADE70074D3B7 /* GemPurchaseView.xib */,
 				D9BB45621E71CE910002AE2E /* HabitTableViewCell.swift */,
 				D9D17CD11E6898E400AD9232 /* HabitTableViewCell.xib */,
@@ -2382,10 +2386,6 @@
 				29B388E01EF2BB7600A72950 /* YesterdailyChecklistItem.xib */,
 				2980E60A1EEA39B1005B7100 /* YesterdailyTaskCell.swift */,
 				2980E60C1EEA39DF005B7100 /* YesterdailyTaskCell.xib */,
-				2974BD90208DEFEA00EC1A25 /* CustomizationDetailCell.swift */,
-				2974BDAC208F68A800EC1A25 /* CustomizationHeaderView.swift */,
-				49A37A8120C0FA49008C28F5 /* EmptyTableViewCell.swift */,
-				49A37A8220C0FA49008C28F5 /* EmptyTableViewCell.xib */,
 			);
 			name = Cells;
 			path = TableviewCells;

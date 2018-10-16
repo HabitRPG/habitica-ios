@@ -13,6 +13,7 @@
 
 @property NSString *userID;
 @property NSString *username;
+@property NSString *displayName;
 @property BOOL isPresentedModally;
 @property BOOL isScrolling;
 

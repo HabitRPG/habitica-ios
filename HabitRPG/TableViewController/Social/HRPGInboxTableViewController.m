@@ -13,7 +13,7 @@
 
 @interface HRPGInboxTableViewController ()
 
-@property NSString *recipientUserID;
+@property NSString *recipientUsername;
 @property id<InboxOverviewDataSourceProtocol> datasource;
 
 @end
@@ -67,8 +67,8 @@
 
 - (IBAction)unwindToListSave:(UIStoryboardSegue *)segue {
     HRPGChoosePMRecipientViewController *recipientViewController = segue.sourceViewController;
-    if (recipientViewController.userID) {
-        self.recipientUserID = recipientViewController.userID;
+    if (recipientViewController.username) {
+        self.recipientUsername = recipientViewController.username;
         [self performSelector:@selector(performChatSegue) withObject:nil afterDelay:2];
 
     }
@@ -82,13 +82,13 @@
     if ([segue.identifier isEqualToString:@"ChatSegue"]) {
         HRPGInboxChatViewController *chatViewController = (HRPGInboxChatViewController *)segue.destinationViewController;
         if (sender == self) {
-            chatViewController.userID = self.recipientUserID;
+            chatViewController.username = self.recipientUsername;
         } else {
             UITableViewCell *cell = sender;
             NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
             id message = [self.datasource messageAtIndexPath:indexPath];
             chatViewController.userID = [message valueForKey:@"userID"];
-            chatViewController.username =  [message valueForKey:@"username"];
+            chatViewController.displayName =  [message valueForKey:@"displayName"];
         }
     }
 }

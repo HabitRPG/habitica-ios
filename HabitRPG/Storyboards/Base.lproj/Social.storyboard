@@ -16,16 +16,16 @@
         <scene sceneID="TTR-QM-ipF">
             <objects>
                 <tableViewController restorationIdentifier="InboxViewController" storyboardIdentifier="InboxViewController" id="H0x-Lc-j2i" customClass="HRPGInboxTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="75" sectionHeaderHeight="28" sectionFooterHeight="28" id="lBk-hJ-ap4">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="173" sectionHeaderHeight="28" sectionFooterHeight="28" id="lBk-hJ-ap4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" rowHeight="80" id="UVy-ld-FO9">
-                                <rect key="frame" x="0.0" y="28" width="375" height="80"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" rowHeight="173" id="UVy-ld-FO9">
+                                <rect key="frame" x="0.0" y="28" width="375" height="173"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UVy-ld-FO9" id="Kx6-Wm-aAQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="341" height="79.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="341" height="172.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m6q-Ji-EAr" customClass="UsernameLabel" customModule="Habitica" customModuleProvider="target">
@@ -38,7 +38,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e2S-uS-OIt">
-                                            <rect key="frame" x="16" y="23" width="317" height="40"/>
+                                            <rect key="frame" x="16" y="44.5" width="317" height="111.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" priority="500" constant="18" id="E3i-j7-ITV"/>
                                             </constraints>
@@ -55,17 +55,39 @@
                                             <color key="textColor" red="0.64723795650000004" green="0.63275462390000003" blue="0.67308568950000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jAO-b2-Iy9">
+                                            <rect key="frame" x="16" y="21" width="0.0" height="19.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" priority="501" constant="19" id="ZpD-vC-wkU"/>
+                                                <constraint firstAttribute="width" priority="500" constant="42" id="qFL-LM-xZ9"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" red="0.64723795650000004" green="0.63275462390000003" blue="0.67308568950000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <view tag="5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZyY-ce-wgC" customClass="AvatarView" customModule="Habitica" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="10" width="0.0" height="36"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" id="Dql-D4-eIj"/>
+                                                <constraint firstAttribute="height" constant="36" id="iVl-BJ-nlW"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="ZyY-ce-wgC" firstAttribute="leading" secondItem="Kx6-Wm-aAQ" secondAttribute="leading" id="0Xb-OE-Wd5"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="e2S-uS-OIt" secondAttribute="trailing" id="2IU-i3-TiN"/>
-                                        <constraint firstItem="e2S-uS-OIt" firstAttribute="leading" secondItem="Kx6-Wm-aAQ" secondAttribute="leadingMargin" id="3vm-Wu-MEh"/>
-                                        <constraint firstItem="e2S-uS-OIt" firstAttribute="top" secondItem="m6q-Ji-EAr" secondAttribute="bottom" constant="6" id="Kd3-nc-wWl"/>
-                                        <constraint firstItem="m6q-Ji-EAr" firstAttribute="leading" secondItem="Kx6-Wm-aAQ" secondAttribute="leadingMargin" id="OP6-G2-mxm"/>
+                                        <constraint firstItem="m6q-Ji-EAr" firstAttribute="leading" secondItem="ZyY-ce-wgC" secondAttribute="trailing" constant="16" id="HOM-2T-h1q"/>
+                                        <constraint firstItem="e2S-uS-OIt" firstAttribute="leading" secondItem="ZyY-ce-wgC" secondAttribute="trailing" constant="16" id="HR0-PG-bXg"/>
                                         <constraint firstItem="HwB-Xq-If7" firstAttribute="height" secondItem="m6q-Ji-EAr" secondAttribute="height" id="Q6I-cU-1dm"/>
                                         <constraint firstItem="m6q-Ji-EAr" firstAttribute="top" secondItem="Kx6-Wm-aAQ" secondAttribute="topMargin" constant="6" id="R7G-Vq-4Tj"/>
                                         <constraint firstItem="HwB-Xq-If7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="m6q-Ji-EAr" secondAttribute="trailing" constant="8" id="RDW-sK-dA6"/>
                                         <constraint firstItem="HwB-Xq-If7" firstAttribute="top" secondItem="Kx6-Wm-aAQ" secondAttribute="topMargin" constant="6" id="Ua5-1v-GNb"/>
+                                        <constraint firstItem="ZyY-ce-wgC" firstAttribute="top" secondItem="Kx6-Wm-aAQ" secondAttribute="top" constant="10" id="V1j-M6-PPX"/>
+                                        <constraint firstItem="jAO-b2-Iy9" firstAttribute="leading" secondItem="ZyY-ce-wgC" secondAttribute="trailing" constant="16" id="Wv5-s6-8Tg"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="e2S-uS-OIt" secondAttribute="bottom" constant="6" id="bz0-3y-OmP"/>
+                                        <constraint firstItem="jAO-b2-Iy9" firstAttribute="top" secondItem="m6q-Ji-EAr" secondAttribute="bottom" constant="4" id="qAH-iN-j7a"/>
+                                        <constraint firstItem="e2S-uS-OIt" firstAttribute="top" secondItem="jAO-b2-Iy9" secondAttribute="bottom" constant="4" id="vW5-Iy-MSv"/>
                                         <constraint firstAttribute="trailing" secondItem="HwB-Xq-If7" secondAttribute="trailing" id="wDO-vU-66r"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -838,7 +860,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="UserProfileViewController" id="MTH-Re-wqo" customClass="UserProfileViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="WTt-7r-yfN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
@@ -2764,10 +2786,10 @@
         <segue reference="lgk-R4-zXr"/>
         <segue reference="9hs-wq-6bn"/>
         <segue reference="jXp-j5-lvy"/>
-        <segue reference="ypV-Mu-tgU"/>
+        <segue reference="Hfa-0k-B92"/>
         <segue reference="yXa-uT-GhF"/>
         <segue reference="wif-V9-Mcy"/>
-        <segue reference="rs9-Lf-2VQ"/>
+        <segue reference="2EH-Sz-Osv"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.6058621407" green="0.38462612029999999" blue="0.99835687880000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
