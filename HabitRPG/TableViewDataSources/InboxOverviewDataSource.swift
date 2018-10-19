@@ -73,7 +73,8 @@ class InboxOverviewDataSource: BaseReactiveTableViewDataSource<InboxMessageProto
             avatarView?.showPet = false
             if let userStyle = message.userStyles {
                 avatarView?.avatar = AvatarViewModel(avatar: userStyle)
-                avatarView?.isHidden = false
+                //temporarily hide this until it is sorted out whose avatar is stored in the messge
+                avatarView?.isHidden = true
             } else {
                 avatarView?.isHidden = true
             }

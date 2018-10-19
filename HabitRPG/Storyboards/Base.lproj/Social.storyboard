@@ -68,7 +68,7 @@
                                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0vJ-cS-5P7">
                                             <rect key="frame" x="16" y="11" width="36" height="36"/>
                                             <subviews>
-                                                <view tag="5" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cOn-Go-iHY" customClass="AvatarView" customModule="Habitica" customModuleProvider="target">
+                                                <view tag="5" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cOn-Go-iHY" customClass="AvatarView" customModule="Habitica" customModuleProvider="target">
                                                     <rect key="frame" x="-11" y="-3" width="50" height="50"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>

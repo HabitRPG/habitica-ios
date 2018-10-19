@@ -155,11 +155,11 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
         })
     }
     
-    func post(inboxMessage: String, toUserID userID: String) -> Signal<UserProtocol?, NoError> {
+    func post(inboxMessage: String, toUserID userID: String) -> Signal<[InboxMessageProtocol]?, NoError> {
         let call = PostInboxMessageCall(userID: userID, inboxMessage: inboxMessage)
         call.fire()
         return call.objectSignal.flatMap(.latest, {[weak self] (_) in
-            return self?.userRepository.retrieveUser() ?? Signal.empty
+            return self?.userRepository.retrieveInboxMessages() ?? Signal.empty
         })
     }
     
