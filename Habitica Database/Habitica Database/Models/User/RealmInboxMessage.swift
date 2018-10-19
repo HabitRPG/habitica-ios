@@ -75,13 +75,28 @@ class RealmInboxMessage: Object, InboxMessageProtocol {
         }
     }
     var realmFlags = List<RealmChatMessageReaction>()
+    var userStyles: UserStyleProtocol? {
+        get {
+            return realmUserStyles
+        }
+        set {
+            if let newUserStyle = newValue as? RealmUserStyle {
+                realmUserStyles = newUserStyle
+                return
+            }
+            if let newUserStyle = newValue {
+                realmUserStyles = RealmUserStyle(messageID: id, userStyleProtocol: newUserStyle)
+            }
+        }
+    }
+    @objc dynamic var realmUserStyles: RealmUserStyle?
     
     override static func primaryKey() -> String {
         return "id"
     }
     
     override static func ignoredProperties() -> [String] {
-        return ["contributor", "attributedText", "likes", "flags"]
+        return ["contributor", "attributedText", "likes", "flags", "userStyles"]
     }
     
     convenience init(userID: String?, inboxMessage: InboxMessageProtocol) {
@@ -99,5 +114,6 @@ class RealmInboxMessage: Object, InboxMessageProtocol {
         flags = inboxMessage.flags
         sent = inboxMessage.sent
         sort = inboxMessage.sort
+        userStyles = inboxMessage.userStyles
     }
 }

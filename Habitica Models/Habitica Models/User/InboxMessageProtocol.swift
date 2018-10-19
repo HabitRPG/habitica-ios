@@ -23,4 +23,5 @@ public protocol InboxMessageProtocol {
     @objc var displayName: String? { get set }
     @objc var username: String? { get set }
     @objc var flagCount: Int { get set }
+    @objc var userStyles: UserStyleProtocol? { get set }
 }

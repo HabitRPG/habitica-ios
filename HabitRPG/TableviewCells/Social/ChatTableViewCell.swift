@@ -128,7 +128,7 @@ class ChatTableViewCell: UITableViewCell {
         messageTextView.font = CustomFontMetrics.scaledSystemFont(ofSize: 15, ofWeight: .regular)
     }
     
-    func configure(chatMessage: ChatMessageProtocol, previousMessage: ChatMessageProtocol?, nextMessage: ChatMessageProtocol?, userID: String, username: String, isModerator: Bool, isExpanded: Bool) {
+    func configure(chatMessage: ChatMessageProtocol, previousMessage: ChatMessageProtocol?, nextMessage: ChatMessageProtocol?, userID: String, username: String, isModerator: Bool, isExpanded: Bool, enableUsernameRelease: Bool) {
         isPrivateMessage = false
         self.isModerator = isModerator
         isOwnMessage = chatMessage.userID == userID
@@ -140,7 +140,7 @@ class ChatTableViewCell: UITableViewCell {
         
         stylePlusOneButton(likes: chatMessage.likes, userID: userID)
         
-        setSubline(username: chatMessage.username, date: chatMessage.timestamp)
+        setSubline(username: enableUsernameRelease ? chatMessage.username : nil, date: chatMessage.timestamp)
         
         if let text = chatMessage.text {
             setMessageText(text)
@@ -179,7 +179,7 @@ class ChatTableViewCell: UITableViewCell {
     }
     
     @objc
-    func configure(inboxMessage: InboxMessageProtocol, previousMessage: InboxMessageProtocol?, nextMessage: InboxMessageProtocol?, user: UserProtocol?, isExpanded: Bool) {
+    func configure(inboxMessage: InboxMessageProtocol, previousMessage: InboxMessageProtocol?, nextMessage: InboxMessageProtocol?, user: UserProtocol?, isExpanded: Bool, enableUsernameRelease: Bool) {
         isPrivateMessage = true
         plusOneButton.isHidden = true
         isOwnMessage = inboxMessage.sent
@@ -188,12 +188,12 @@ class ChatTableViewCell: UITableViewCell {
             displaynameLabel.text = user?.profile?.name?.unicodeEmoji
             contributorLevel = user?.contributor?.level ?? 0
             if inboxMessage.username != nil {
-                setSubline(username: user?.username, date: inboxMessage.timestamp)
+                setSubline(username: enableUsernameRelease ? user?.username : nil, date: inboxMessage.timestamp)
             }
         } else {
             displaynameLabel.text = inboxMessage.displayName?.unicodeEmoji
             contributorLevel = inboxMessage.contributor?.level ?? 0
-            setSubline(username: inboxMessage.username, date: inboxMessage.timestamp)
+            setSubline(username: enableUsernameRelease ? inboxMessage.username : nil, date: inboxMessage.timestamp)
         }
         displaynameLabel.contributorLevel = contributorLevel
         messageTextView.textColor = .black

@@ -20,6 +20,7 @@ class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtoc
 
     private let socialRepository = SocialRepository()
     private let userRepository = UserRepository()
+    private let configRepository = ConfigRepository()
     private var user: UserProtocol?
     private let groupID: String
     private let enableUsernameRelease = ConfigRepository().bool(variable: .enableUsernameRelease)
@@ -72,7 +73,8 @@ class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtoc
                        userID: self.user?.id ?? "",
                        username: username,
                        isModerator: self.user?.isModerator == true,
-                       isExpanded: isExpanded)
+                       isExpanded: isExpanded,
+                       enableUsernameRelease: configRepository.bool(variable: .enableUsernameRelease))
         
         cell.profileAction = {
             guard let profileViewController = self.viewController?.storyboard?.instantiateViewController(withIdentifier: "UserProfileViewController") as? UserProfileViewController else {

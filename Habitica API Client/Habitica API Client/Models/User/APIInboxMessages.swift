@@ -23,6 +23,7 @@ public class APIInboxMessage: InboxMessageProtocol, Decodable {
     public var displayName: String?
     public var username: String?
     public var flagCount: Int
+    public var userStyles: UserStyleProtocol?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -37,6 +38,7 @@ public class APIInboxMessage: InboxMessageProtocol, Decodable {
         case flags
         case sent
         case sort
+        case userStyles
     }
     
     public required init(from decoder: Decoder) throws {
@@ -49,6 +51,9 @@ public class APIInboxMessage: InboxMessageProtocol, Decodable {
         username = try? values.decode(String.self, forKey: .username)
         flagCount = (try? values.decode(Int.self, forKey: .flagCount)) ?? 0
         contributor = (try? values.decode(APIContributor.self, forKey: .contributor))
+        if values.contains(.userStyles) {
+            userStyles = try! values.decode(APIUserStyle.self, forKey: .userStyles)
+        }
         if values.contains(.likes) {
             likes = APIChatMessageReaction.fromList(try? values.decode([String: Bool].self, forKey: .likes))
         }

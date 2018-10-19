@@ -15,6 +15,7 @@ class MenuNavigationBarView: UIView, Themeable {
     @objc public var settingsAction: (() -> Void)?
     
     @IBOutlet weak var avatarView: AvatarView!
+    @IBOutlet weak var displayNameLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
     
     @IBOutlet weak var messagesButton: UIButton!
@@ -40,7 +41,13 @@ class MenuNavigationBarView: UIView, Themeable {
     
     @objc
     public func configure(user: UserProtocol, enableChangeUsername: Bool) {
-        usernameLabel.text = user.profile?.name
+        displayNameLabel.text = user.profile?.name
+        if enableChangeUsername, let username = user.username {
+            usernameLabel.text = "@\(username)"
+            usernameLabel.isHidden = false
+        } else {
+            usernameLabel.isHidden = true
+        }
         avatarView.avatar = AvatarViewModel(avatar: user)
         if let numberNewMessages = user.inbox?.numberNewMessages, numberNewMessages > 0 {
             messagesBadge.text = String(numberNewMessages)

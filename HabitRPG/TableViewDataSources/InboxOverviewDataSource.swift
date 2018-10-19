@@ -67,8 +67,16 @@ class InboxOverviewDataSource: BaseReactiveTableViewDataSource<InboxMessageProto
             } else {
                 usernameLabel?.text = nil
             }
-            //let avatarView = cell.viewWithTag(5) as? AvatarView
-            //avatarView?.avatar = message.
+            let avatarView = cell.viewWithTag(5) as? AvatarView
+            avatarView?.size = .compact
+            avatarView?.showMount = false
+            avatarView?.showPet = false
+            if let userStyle = message.userStyles {
+                avatarView?.avatar = AvatarViewModel(avatar: userStyle)
+                avatarView?.isHidden = false
+            } else {
+                avatarView?.isHidden = true
+            }
         }
         
         return cell
