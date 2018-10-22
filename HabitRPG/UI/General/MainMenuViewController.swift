@@ -60,7 +60,7 @@ class MainMenuViewController: HRPGBaseViewController, Themeable {
     private var user: UserProtocol? {
         didSet {
             if let user = self.user {
-                navbarView?.configure(user: user, enableChangeUsername: configRepository.bool(variable: .enableChangeUsername))
+                navbarView?.configure(user: user, enableChangeUsername: configRepository.bool(variable: .enableUsernameRelease))
             }
             if user?.stats?.habitClass == "wizard" || user?.stats?.habitClass == "healer" {
                 menuSections[0].items[0].title = L10n.Menu.castSpells
