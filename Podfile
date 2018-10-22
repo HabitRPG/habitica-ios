@@ -25,7 +25,7 @@ plugin 'cocoapods-keys', {
 }
 
 def reactive_pods
-  pod 'ReactiveCocoa', '~> 7'
+  pod 'ReactiveCocoa', '~> 8'
 end
 
 def test_pods

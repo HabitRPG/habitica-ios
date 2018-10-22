@@ -12,8 +12,6 @@ import RealmSwift
 
 class RealmPushDevice: Object, PushDeviceProtocol {
     @objc dynamic var combinedKey: String?
-    var updatedAt: Date?
-    var createdAt: Date?
     var type: String?
     var regId: String?
     
@@ -26,8 +24,6 @@ class RealmPushDevice: Object, PushDeviceProtocol {
         self.init()
         self.userID = userID
         combinedKey = (userID ?? "") + String(protocolObject.regId?.hashValue ?? 0)
-        updatedAt = protocolObject.updatedAt
-        createdAt = protocolObject.createdAt
         type = protocolObject.type
         regId = protocolObject.regId
     }

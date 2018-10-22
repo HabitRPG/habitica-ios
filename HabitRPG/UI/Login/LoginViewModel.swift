@@ -19,6 +19,14 @@ enum LoginViewAuthType {
     case register
 }
 
+private struct AuthValues {
+    var authType: LoginViewAuthType = LoginViewAuthType.none
+    var email: String?
+    var username: String?
+    var password: String?
+    var passwordRepeat: String?
+}
+
 protocol  LoginViewModelInputs {
     func authTypeChanged()
     func setAuthType(authType: LoginViewAuthType)
@@ -93,7 +101,9 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
             Signal.merge(self.passwordRepeatChangedProperty.signal, self.prefillPasswordRepeatProperty.signal)
         )
 
-        self.authValuesProperty = Property(initial: nil, then: authValues.map { $0 })
+        self.authValuesProperty = Property<AuthValues?>(initial: AuthValues(), then: authValues.map {
+            return AuthValues(authType: $0.0, email: $0.1, username: $0.2, password: $0.3, passwordRepeat: $0.4)
+        })
 
         self.authTypeButtonTitle = self.authTypeProperty.signal.map { value -> String? in
             switch value {
@@ -264,21 +274,20 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
     }
 
     //swiftlint:disable large_tuple
-    private let authValuesProperty: Property<(authType: LoginViewAuthType, email: String, username: String, password: String, passwordRepeat: String)?>
+    private let authValuesProperty: Property<AuthValues?>
     func loginButtonPressed() {
-        guard let (authType, email, username, password, passwordRepeat) = self.authValuesProperty.value else {
+        guard let authValues = self.authValuesProperty.value else {
             return
         }
 
-        if isValid(authType: authType,
-                   email: email,
-                   username: username,
-                   password: password,
-                   passwordRepeat: passwordRepeat) {
+        if isValid(authType: authValues.authType,
+                   email: authValues.email,
+                   username: authValues.username,
+                   password: authValues.password,
+                   passwordRepeat: authValues.passwordRepeat) {
             self.loadingIndicatorVisibilityObserver.send(value: true)
-            let authValues = self.authValuesProperty.value
-            if self.authTypeProperty.value == .login {
-                userRepository.login(username: authValues?.username ?? "", password: authValues?.password ?? "").observeValues { loginResult in
+            if authValues.authType == .login {
+                userRepository.login(username: authValues.username ?? "", password: authValues.password ?? "").observeValues { loginResult in
                     if loginResult != nil {
                         self.onSuccessfulLogin()
                     } else {
@@ -287,7 +296,7 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
                     }
                 }
             } else {
-                userRepository.register(username: authValues?.username ?? "", password: authValues?.password ?? "", confirmPassword: authValues?.passwordRepeat ?? "", email: authValues?.email ?? "").observeValues { loginResult in
+                userRepository.register(username: authValues.username ?? "", password: authValues.password ?? "", confirmPassword: authValues.passwordRepeat ?? "", email: authValues.email ?? "").observeValues { loginResult in
                     if loginResult != nil {
                         self.onSuccessfulLogin()
                     } else {
@@ -407,9 +416,9 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
     }
 }
 
-func isValid(authType: LoginViewAuthType, email: String, username: String, password: String, passwordRepeat: String) -> Bool {
+func isValid(authType: LoginViewAuthType, email: String?, username: String?, password: String?, passwordRepeat: String?) -> Bool {
 
-    if username.isEmpty || password.isEmpty {
+    if username?.isEmpty != false || password?.isEmpty != false {
         return false
     }
 
@@ -418,7 +427,7 @@ func isValid(authType: LoginViewAuthType, email: String, username: String, passw
             return false
         }
 
-        if !password.isEmpty && password != passwordRepeat {
+        if password?.isEmpty != true && password != passwordRepeat {
             return false
         }
     }
@@ -426,7 +435,7 @@ func isValid(authType: LoginViewAuthType, email: String, username: String, passw
     return true
 }
 
-func isValidEmail(email: String) -> Bool {
+func isValidEmail(email: String?) -> Bool {
     let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
 
     let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegEx)

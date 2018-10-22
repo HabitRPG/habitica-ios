@@ -518,6 +518,7 @@
 				29323E38205212E400AC6D6F /* APIPreferences.swift */,
 				29323E3A205212F900AC6D6F /* APIProfile.swift */,
 				2974BD9A208E103B00EC1A25 /* APIPurchased.swift */,
+				29990DB920E51F54001ADD8B /* APIPushDevice.swift */,
 				290B62532073D957007287C4 /* APIPushNotifications.swift */,
 				290C3031206CF0190066AF5B /* APISkillResponse.swift */,
 				29323E1620504F5600AC6D6F /* APIStats.swift */,
@@ -526,11 +527,10 @@
 				292DEE7D204E37670086D5F7 /* APITag.swift */,
 				295D43012097395800948E7E /* APITutorialStep.swift */,
 				29323E1420504F2300AC6D6F /* APIUser.swift */,
-				29990DB920E51F54001ADD8B /* APIPushDevice.swift */,
 				29323E522052F7A600AC6D6F /* APIUserGear.swift */,
 				29323E502052F77F00AC6D6F /* APIUserItems.swift */,
-				291E95B4209888E1006EE585 /* APIUserParty.swift */,
 				29DBFF0E20D15BEA00DF9CF2 /* APIUserNewMessages.swift */,
+				291E95B4209888E1006EE585 /* APIUserParty.swift */,
 				29A62B04216CC6A100D4BD90 /* APIVerifyUsernameResponse.swift */,
 			);
 			path = User;

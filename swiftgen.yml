@@ -1,13 +1,17 @@
 strings:
-  paths: HabitRPG/Strings/Base.lproj/Mainstrings.strings
-  templatePath: swiftgen-templates/habiticastrings-swift4.stencil
-  output: HabitRPG/Generated/Strings.swift
+  inputs: HabitRPG/Strings/Base.lproj/Mainstrings.strings
+  outputs:
+    - templatePath: swiftgen-templates/habiticastrings-swift4.stencil
+      output: HabitRPG/Generated/Strings.swift
 xcassets:
-  paths: HabitRPG/Images.xcassets
-  templateName: swift4
-  output: HabitRPG/Generated/Assets-Images.swift
-storyboards:
-  paths:
-    - HabitRPG/Storyboards/Base.lproj/
-  templateName: swift4
-  output: HabitRPG/Generated/Storyboard.swift
+  inputs: HabitRPG/Images.xcassets
+  outputs:
+    - templateName: swift4
+      output: HabitRPG/Generated/Assets-Images.swift
+ib:
+  inputs: HabitRPG/Storyboards/Base.lproj/
+  outputs:
+    - templateName: scenes-swift4
+      output: HabitRPG/Generated/Storyboard Scenes.swift
+    - templateName: segues-swift4
+      output: HabitRPG/Generated/Storyboard Segues.swift

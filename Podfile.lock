@@ -1,37 +1,37 @@
 PODS:
   - Amplitude-iOS (4.0.4)
-  - AppAuth (0.94.0)
+  - AppAuth (0.95.0)
   - Bolts (1.9.0):
     - Bolts/AppLinks (= 1.9.0)
     - Bolts/Tasks (= 1.9.0)
   - Bolts/AppLinks (1.9.0):
     - Bolts/Tasks
   - Bolts/Tasks (1.9.0)
-  - Crashlytics (3.10.7):
-    - Fabric (~> 1.7.11)
+  - Crashlytics (3.10.9):
+    - Fabric (~> 1.7.13)
   - DateTools (2.0.0)
   - Down (0.5.2)
-  - DynamicBlurView (2.0.2)
-  - Eureka (4.2.0)
-  - Fabric (1.7.11)
-  - FBSDKCoreKit (4.36.0):
+  - DynamicBlurView (3.0.1)
+  - Eureka (4.3.0)
+  - Fabric (1.7.13)
+  - FBSDKCoreKit (4.37.0):
     - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.36.0):
+  - FBSDKLoginKit (4.37.0):
     - FBSDKCoreKit
   - FLEX (2.4.0)
-  - FunkyNetwork (0.1.4):
+  - FunkyNetwork (0.1.10):
     - OHHTTPStubs/Swift
     - Prelude (~> 3.0)
     - ReactiveSwift
-  - Instabug (8.0.13)
+  - Instabug (8.0.15)
   - iOSSnapshotTestCase (4.0.0):
     - iOSSnapshotTestCase/SwiftSupport (= 4.0.0)
   - iOSSnapshotTestCase/Core (4.0.0)
   - iOSSnapshotTestCase/SwiftSupport (4.0.0):
     - iOSSnapshotTestCase/Core
-  - KeychainAccess (3.1.1)
+  - KeychainAccess (3.1.2)
   - Keys (1.0.1)
-  - Kingfisher (4.9.0)
+  - Kingfisher (4.10.0)
   - KLCPopup (1.0)
   - Masonry (1.1.0)
   - MRProgress (0.8.3):
@@ -77,27 +77,27 @@ PODS:
   - OHHTTPStubs/OHPathHelpers (6.1.0)
   - OHHTTPStubs/Swift (6.1.0):
     - OHHTTPStubs/Default
-  - PinLayout (1.8.3)
-  - PopupDialog (0.8.1):
-    - DynamicBlurView (~> 2.0)
+  - PinLayout (1.8.6)
+  - PopupDialog (0.9.0):
+    - DynamicBlurView (~> 3.0.1)
   - Prelude (3.0.0)
   - Quick (1.2.0)
-  - ReactiveCocoa (7.2.0):
-    - ReactiveSwift (~> 3.1)
-  - ReactiveSwift (3.1.0):
-    - Result (~> 3.2)
-  - Realm (3.9.0):
-    - Realm/Headers (= 3.9.0)
-  - Realm/Headers (3.9.0)
-  - RealmSwift (3.9.0):
-    - Realm (= 3.9.0)
-  - Result (3.2.4)
+  - ReactiveCocoa (8.0.2):
+    - ReactiveSwift (~> 4.0)
+  - ReactiveSwift (4.0.0):
+    - Result (~> 4.0)
+  - Realm (3.11.1):
+    - Realm/Headers (= 3.11.1)
+  - Realm/Headers (3.11.1)
+  - RealmSwift (3.11.1):
+    - Realm (= 3.11.1)
+  - Result (4.0.0)
   - SeedsSDK (0.5.0)
   - SlackTextViewController (1.9.6)
-  - SwiftGen (5.3.0)
+  - SwiftGen (6.0.2)
   - SwiftLint (0.27.0)
   - SwiftyStoreKit (0.13.3)
-  - VTAcknowledgementsViewController (1.4.1)
+  - VTAcknowledgementsViewController (1.5)
   - XLForm (4.0.0)
 
 DEPENDENCIES:
@@ -125,7 +125,7 @@ DEPENDENCIES:
   - PinLayout
   - PopupDialog (from `https://github.com/Orderella/PopupDialog.git`, branch `development`)
   - Quick (~> 1.2.0)
-  - ReactiveCocoa (~> 7)
+  - ReactiveCocoa (~> 8)
   - RealmSwift
   - SeedsSDK
   - SlackTextViewController
@@ -186,54 +186,54 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   FunkyNetwork:
-    :commit: 219aaf7dc77fd32e663fb416f2cd567c6950b88a
+    :commit: a59d87439d97c9c62b3dbc9dcbfbe19276589c5a
     :git: https://github.com/schrockblock/funky-network.git
   PopupDialog:
-    :commit: f291e878e1153d5d3b89e27d568e6a497103e3e1
+    :commit: b0bd3b4d5321a518e924ab99d52bcff8ac80f4ff
     :git: https://github.com/Orderella/PopupDialog.git
 
 SPEC CHECKSUMS:
   Amplitude-iOS: 2ad4d7270c99186236c1272a3a9425463b1ae1a7
-  AppAuth: 0f099c2286a1a9754e5bd27211c43d307dc4f778
+  AppAuth: 137f6bb6fc9dfbaf2cf9f6fcff1d336ff0163bc6
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
-  Crashlytics: ccaac42660eb9351b9960c0d66106b0bcf99f4fa
+  Crashlytics: 55e24fc23989680285a21cb1146578d9d18e432c
   DateTools: 933ac9c490f21f92127cf690ccd8c397e0126caf
   Down: 587371ad58002b06023d9c602519216862c3acbc
-  DynamicBlurView: aa6db4defc6e537eb86fc5e58dd3991666178399
-  Eureka: 0748c7bbb2560130e43c7bfa83e99c98854a1f42
-  Fabric: f233c9492b3bbc1f04e3882986740f7988a58edb
-  FBSDKCoreKit: 3b8e6570eedb443f9fc4af196a7bf39f18e3a3d8
-  FBSDKLoginKit: 8bccb6064708ab2f4251a7fc4e3b6d8d00ad91ba
+  DynamicBlurView: b1df5415f9bd31897549e5d7077e5ec120a4d636
+  Eureka: 6d711cb30ca333b4bc893110285a722ae3840114
+  Fabric: 25d0963b691fc97be566392243ff0ecef5a68338
+  FBSDKCoreKit: fe5f3474499a81963e11e3f3a5c753d0a95ca2b4
+  FBSDKLoginKit: 2f7249686d1e30ce8a5ef5400eedf50b3e3df332
   FLEX: bd1a39e55b56bb413b6f1b34b3c10a0dc44ef079
-  FunkyNetwork: 6eb382dcab7c5947ea7e8d3c72427ee91d87c35f
-  Instabug: 0c390ca1911b444e86daeb5e82755891ba92e584
+  FunkyNetwork: 4473963af524d2fe1bbdb7578df160fb2dbdefe9
+  Instabug: 1f26cca29ec1fc49ba7dffbc5533734c14f8c28d
   iOSSnapshotTestCase: 711379b19f69a22c131527df862352c877c2773c
-  KeychainAccess: 7bd430028059754a3debab3cfc0bd1fc7fb85df3
+  KeychainAccess: b3816fddcf28aa29d94b10ec305cd52be14c472b
   Keys: a576f4c9c1c641ca913a959a9c62ed3f215a8de9
-  Kingfisher: 64539b51826b778206daa6ed815d12653caa69dd
+  Kingfisher: 43c4b802d8b5256cf1f4379e9cd10b329be6d3e2
   KLCPopup: 76c5a19227977f1e53d85236f9ef42257c168d98
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MRProgress: 16de7cc9f347e8846797a770db102a323fe7ef09
   Nimble: 7f5a9c447a33002645a071bddafbfb24ea70e0ac
   "NSString+Emoji": 127da93993ac7c01eadb2edbb039cda89a1369f4
   OHHTTPStubs: 1e21c7d2c084b8153fc53d48400d8919d2d432d0
-  PinLayout: 81759905f882389f4f0c15f3f5b90eb6713a01af
-  PopupDialog: 3d4e8e0795c3a614f407d730986c9b9af9781123
+  PinLayout: fe2a2432d6982588e208572005c941aeeae417ab
+  PopupDialog: 953c9502f0aa0adcead7d5eb3e9a4d46a11a0093
   Prelude: fe4cc0fd961d34edf48fe6b04d05c863449efb0a
   Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
-  ReactiveCocoa: 476dae7ca790f40d30d186a1bd7ebae4290395d5
-  ReactiveSwift: 5b26d2e988fe0eed2daf48c4054d1de74db50184
-  Realm: 3d36f208bf3aff8335dc3298742140182bde4edb
-  RealmSwift: aa4d11917bfcfaa3ed51f219102a487ecd895447
-  Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
+  ReactiveCocoa: fbd26e9ba60e98417ee47433e59465a98ed9da0f
+  ReactiveSwift: a2bb9ace428a109e9c0209615645d9d286c8c433
+  Realm: 037c5919b9ceb59d6beed5d3b031096856b119b3
+  RealmSwift: c9580133e73ef40ed340401af2dbc9a5790dfea7
+  Result: 7645bb3f50c2ce726dd0ff2fa7b6f42bbe6c3713
   SeedsSDK: 8de27e088c15ff3eba33a6d2941ec507e4a5bb95
   SlackTextViewController: b854e62c1c156336bc4fd409c6ca79b5773e8f9d
-  SwiftGen: 4379bd3640b0a212a0f6ea3c494adba385513d10
+  SwiftGen: e5b047067aa84082826a0c4f1c4c2ddc95bcf74c
   SwiftLint: 3207c1faa2240bf8973b191820a116113cd11073
   SwiftyStoreKit: 9ebd15971e28aa2989825fe8bc092eb5f75dd0b2
-  VTAcknowledgementsViewController: 9a7d0f040f17dfa6d02fc731bec8b188e4b4ee59
+  VTAcknowledgementsViewController: 9bc9f81aa09bc574b22e10f01fd84f73918280c7
   XLForm: 04110197c12187dd28a6c7295d3d8b95f4fdb4de
 
-PODFILE CHECKSUM: 8b1ca1d53686706badd9d2e4244e4da946e65548
+PODFILE CHECKSUM: e4f94a6c71806d9c8146d4868f8bd0ad3a1383f1
 
 COCOAPODS: 1.5.3
