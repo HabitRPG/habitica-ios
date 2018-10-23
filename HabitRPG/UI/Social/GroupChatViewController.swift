@@ -112,10 +112,6 @@ class GroupChatViewController: SLKTextViewController {
         acceptView?.frame = CGRect(x: 0, y: view.frame.size.height-90, width: view.frame.size.width, height: 90)
     }
     
-    private func render(message: ChatMessageProtocol) {
-        message.attributedText = try? Down(markdownString: message.text?.unicodeEmoji ?? "").toHabiticaAttributedString()
-    }
-    
     @objc
     func refresh() {
         if let groupID = self.groupID {
@@ -184,9 +180,11 @@ class GroupChatViewController: SLKTextViewController {
     }
     
     func configureReplyTo(_ username: String?) {
-        self.textView.text = "@\(username ?? "") "
-        self.textView.becomeFirstResponder()
-        self.textView.selectedRange = NSRange(location: self.textView.text.count, length: 0)
+        if !textView.text.contains("@\(username ?? "")") {
+            textView.text = "@\(username ?? "") \(textView.text)"
+        }
+        textView.becomeFirstResponder()
+        textView.selectedRange = NSRange(location: self.textView.text.count, length: 0)
     }
 
 }
