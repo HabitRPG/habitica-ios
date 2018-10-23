@@ -158,7 +158,10 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     func login(username: String, password: String) -> Signal<LoginResponseProtocol?, NoError> {
         let call = LocalLoginCall(username: username, password: password)
         call.fire()
-        return call.objectSignal.on(value: { loginResponse in
+        return call.objectSignal.merge(with: call.responseSignal.map({ _ -> LoginResponseProtocol? in
+            return nil
+        }))
+            .on(value: { loginResponse in
             if let response = loginResponse {
                 AuthenticationManager.shared.currentUserId = response.id
                 AuthenticationManager.shared.currentUserKey = response.apiToken

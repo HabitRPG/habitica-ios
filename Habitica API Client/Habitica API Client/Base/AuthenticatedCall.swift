@@ -18,6 +18,10 @@ enum HTTPMethod: String {
 }
 
 public class AuthenticatedCall: JsonNetworkCall {
+    public lazy var errorJsonSignal: Signal<Dictionary<String, Any>, NoError> = self.errorDataSignal.map(JsonDataHandler.serialize).map({ json in
+        return json as? Dictionary<String, Any>
+    }).skipNil()
+
     public static var errorHandler: NetworkErrorHandler?
     public static var defaultConfiguration = HabiticaServerConfig.current
     private var debugHandler: DebugOutputHandler?
@@ -31,8 +35,8 @@ public class AuthenticatedCall: JsonNetworkCall {
     
     init(configuration: ServerConfigurationProtocol? = nil, httpMethod: HTTPMethod, httpHeaders: Dictionary<String, String>? = AuthenticatedCall.jsonHeaders(), endpoint: String, postData: Data? = nil, stubHolder: StubHolderProtocol? = nil) {
         super.init(configuration: configuration ?? AuthenticatedCall.defaultConfiguration, httpMethod: httpMethod.rawValue, httpHeaders: httpHeaders, endpoint: endpoint, postData: postData, stubHolder: stubHolder)
-        debugHandler = DebugOutputHandler(httpMethod: httpMethod, url: urlString(endpoint))
         
+        debugHandler = DebugOutputHandler(httpMethod: httpMethod, url: urlString(endpoint))
         debugHandler?.observe(call: self)
         
         setupErrorHandler()

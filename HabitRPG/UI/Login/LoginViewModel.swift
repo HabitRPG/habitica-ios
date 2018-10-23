@@ -292,7 +292,6 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
                         self.onSuccessfulLogin()
                     } else {
                         self.loadingIndicatorVisibilityObserver.send(value: false)
-                        self.showErrorObserver.send(value: "Invalid username or password".localized)
                     }
                 }
             } else {

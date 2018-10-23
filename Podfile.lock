@@ -78,7 +78,7 @@ PODS:
   - OHHTTPStubs/Swift (6.1.0):
     - OHHTTPStubs/Default
   - PinLayout (1.8.6)
-  - PopupDialog (0.9.0):
+  - PopupDialog (0.9.1):
     - DynamicBlurView (~> 3.0.1)
   - Prelude (3.0.0)
   - Quick (1.2.0)
@@ -123,7 +123,7 @@ DEPENDENCIES:
   - Nimble (~> 7.0.0)
   - "NSString+Emoji"
   - PinLayout
-  - PopupDialog (from `https://github.com/Orderella/PopupDialog.git`, branch `development`)
+  - PopupDialog
   - Quick (~> 1.2.0)
   - ReactiveCocoa (~> 8)
   - RealmSwift
@@ -160,6 +160,7 @@ SPEC REPOS:
     - "NSString+Emoji"
     - OHHTTPStubs
     - PinLayout
+    - PopupDialog
     - Prelude
     - Quick
     - ReactiveCocoa
@@ -180,17 +181,11 @@ EXTERNAL SOURCES:
     :git: https://github.com/schrockblock/funky-network.git
   Keys:
     :path: Pods/CocoaPodsKeys
-  PopupDialog:
-    :branch: development
-    :git: https://github.com/Orderella/PopupDialog.git
 
 CHECKOUT OPTIONS:
   FunkyNetwork:
     :commit: a59d87439d97c9c62b3dbc9dcbfbe19276589c5a
     :git: https://github.com/schrockblock/funky-network.git
-  PopupDialog:
-    :commit: b0bd3b4d5321a518e924ab99d52bcff8ac80f4ff
-    :git: https://github.com/Orderella/PopupDialog.git
 
 SPEC CHECKSUMS:
   Amplitude-iOS: 2ad4d7270c99186236c1272a3a9425463b1ae1a7
@@ -218,7 +213,7 @@ SPEC CHECKSUMS:
   "NSString+Emoji": 127da93993ac7c01eadb2edbb039cda89a1369f4
   OHHTTPStubs: 1e21c7d2c084b8153fc53d48400d8919d2d432d0
   PinLayout: fe2a2432d6982588e208572005c941aeeae417ab
-  PopupDialog: 953c9502f0aa0adcead7d5eb3e9a4d46a11a0093
+  PopupDialog: 03985b669c29802661c187513bf827340db1ae4d
   Prelude: fe4cc0fd961d34edf48fe6b04d05c863449efb0a
   Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
   ReactiveCocoa: fbd26e9ba60e98417ee47433e59465a98ed9da0f
@@ -234,6 +229,6 @@ SPEC CHECKSUMS:
   VTAcknowledgementsViewController: 9bc9f81aa09bc574b22e10f01fd84f73918280c7
   XLForm: 04110197c12187dd28a6c7295d3d8b95f4fdb4de
 
-PODFILE CHECKSUM: e4f94a6c71806d9c8146d4868f8bd0ad3a1383f1
+PODFILE CHECKSUM: 4d97a83357a5c7bc739d91b367d08a75117a9f70
 
 COCOAPODS: 1.5.3
