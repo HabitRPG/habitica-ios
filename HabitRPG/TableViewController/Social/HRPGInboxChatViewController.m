@@ -50,6 +50,11 @@
     self.tableView.estimatedRowHeight = 90;
     self.tableView.backgroundColor = [UIColor gray700];
     
+    [self.textView registerMarkdownFormattingSymbol:@"**" withTitle:@"Bold"];
+    [self.textView registerMarkdownFormattingSymbol:@"*" withTitle:@"Italics"];
+    [self.textView registerMarkdownFormattingSymbol:@"~~" withTitle:@"Strike"];
+
+    self.textView.placeholder = NSLocalizedString(@"Write a message", comment: "");
     self.textInputbar.maxCharCount = [[[ConfigRepository alloc] init] integerWithVariable:ConfigVariableMaxChatLength];
     self.textInputbar.charCountLabelNormalColor = [UIColor gray400];
     self.textInputbar.charCountLabelWarningColor = [UIColor red50];

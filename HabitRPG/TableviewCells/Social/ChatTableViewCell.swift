@@ -349,7 +349,7 @@ class ChatTableViewCell: UITableViewCell {
     }
     
     private func showHideExtraButtons(_ shouldShow: Bool) {
-        replyButton.isHidden = !shouldShow
+        replyButton.isHidden = !shouldShow || isPrivateMessage
         copyButton.isHidden = !shouldShow
         if shouldShow {
             reportButton.isHidden = hideReportButton
@@ -414,7 +414,11 @@ class ChatTableViewCell: UITableViewCell {
         if isExpanded {
             height += 36
             replyButton.pin.start(12).below(of: messageTextView).marginTop(4).sizeToFit(.width)
-            copyButton.pin.after(of: replyButton, aligned: .top).marginStart(8).sizeToFit(.width)
+            if replyButton.isHidden {
+                copyButton.pin.start(12).below(of: messageTextView).marginTop(4).sizeToFit(.width)
+            } else {
+                copyButton.pin.after(of: replyButton, aligned: .top).marginStart(8).sizeToFit(.width)
+            }
             reportButton.pin.after(of: copyButton, aligned: .top).marginStart(8).sizeToFit(.width)
             deleteButton.pin.after(of: visible([copyButton, reportButton]), aligned: .top).marginStart(8).sizeToFit(.width)
         }
