@@ -281,7 +281,7 @@ class ChatTableViewCell: UITableViewCell {
             let characterIndex = layoutManager.characterIndex(for: messageViewLocation, in: messageTextView.textContainer, fractionOfDistanceBetweenInsertionPoints: nil)
             if characterIndex < messageTextView.textStorage.length {
                 let attributes = messageTextView.textStorage.attributes(at: characterIndex, effectiveRange: nil)
-                if attributes[NSAttributedStringKey.link] != nil {
+                if attributes[NSAttributedString.Key.link] != nil {
                     return false
                 }
             }

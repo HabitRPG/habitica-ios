@@ -15,7 +15,7 @@ class LoginEntryView: UIView, UITextFieldDelegate {
         didSet {
             if let text = placeholderText {
                 let color = UIColor.white.withAlphaComponent(0.5)
-                entryView.attributedPlaceholder = NSAttributedString(string: text, attributes: [NSAttributedStringKey.foregroundColor: color])
+                entryView.attributedPlaceholder = NSAttributedString(string: text, attributes: [NSAttributedString.Key.foregroundColor: color])
             } else {
                 entryView.placeholder = ""
             }
@@ -67,7 +67,7 @@ class LoginEntryView: UIView, UITextFieldDelegate {
     func xibSetup() {
         if let view = loadViewFromNib() {
             view.frame = bounds
-            view.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
+            view.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
             addSubview(view)
             
             self.gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tappedView))

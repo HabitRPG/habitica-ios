@@ -66,7 +66,7 @@ class PartyViewController: SplitSocialViewController {
         
         let spriteSuffix = configRepository.string(variable: .shopSpriteSuffix, defaultValue: "")
         ImageManager.getImage(name: "timeTravelersShop_background"+spriteSuffix) { (image, _) in
-            self.noPartyHeaderBackground.image = image?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: UIImageResizingMode.tile)
+            self.noPartyHeaderBackground.image = image?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: UIImage.ResizingMode.tile)
         }
         let gradient = CAGradientLayer()
         gradient.colors = [UIColor.white.cgColor, UIColor.init(white: 1, alpha: 0).cgColor, UIColor.white.cgColor]

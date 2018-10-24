@@ -52,7 +52,7 @@ class TaskTableViewController: HRPGBaseViewController, UISearchBarDelegate, UITa
         if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad {
             extraCellSpacing = 8
         }
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44
         tableView.tableFooterView = UIView()
         
@@ -159,7 +159,7 @@ class TaskTableViewController: HRPGBaseViewController, UISearchBarDelegate, UITa
                         snapshot.center = center
                         tableView.addSubview(snapshot)
                         
-                        UIView.animate(withDuration: 0.3, delay: 0.0, usingSpringWithDamping: 0.25, initialSpringVelocity: 0.75, options: UIViewAnimationOptions.init(rawValue: 0), animations: {
+                        UIView.animate(withDuration: 0.3, delay: 0.0, usingSpringWithDamping: 0.25, initialSpringVelocity: 0.75, options: UIView.AnimationOptions.init(rawValue: 0), animations: {
                             center.y = location.y
                             snapshot.center = center
                             snapshot.transform = CGAffineTransform(scaleX: 1.075, y: 1.075)
@@ -205,7 +205,7 @@ class TaskTableViewController: HRPGBaseViewController, UISearchBarDelegate, UITa
                     dataSource?.moveTask(task: task, toPosition: task.order, completion: {})
                     let cell = tableView.cellForRow(at: sourceIndexPath)
                     cell?.alpha = 0.0
-                    UIView.animate(withDuration: 2.0, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1.0, options: UIViewAnimationOptions(rawValue: 0), animations: {
+                    UIView.animate(withDuration: 2.0, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1.0, options: UIView.AnimationOptions(rawValue: 0), animations: {
                         self.snapshot?.transform = CGAffineTransform.identity
                     }, completion: nil)
                 }
@@ -322,7 +322,7 @@ class TaskTableViewController: HRPGBaseViewController, UISearchBarDelegate, UITa
         if let height: NSNumber = heightAtIndexPath[indexPath] as? NSNumber {
             return CGFloat(height.floatValue)
         } else {
-            return UITableViewAutomaticDimension
+            return UITableView.automaticDimension
         }
     }
     

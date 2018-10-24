@@ -101,7 +101,7 @@ class MainMenuViewController: HRPGBaseViewController, Themeable {
         }
         
         let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(refresh), for: UIControlEvents.valueChanged)
+        refreshControl.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
         self.refreshControl = refreshControl
         
         setupMenu()

@@ -6562,7 +6562,7 @@ public class HabiticaIcons : NSObject {
             .font: UIFont(name: "HelveticaNeue", size: 12)!,
             .foregroundColor: crestColor5,
             .paragraphStyle: labelStyle,
-        ] as [NSAttributedStringKey: Any]
+            ] as [NSAttributedString.Key: Any]
 
         let labelTextHeight: CGFloat = memberCountLabel.boundingRect(with: CGSize(width: labelRect.width, height: CGFloat.infinity), options: .usesLineFragmentOrigin, attributes: labelFontAttributes, context: nil).height
         context.saveGState()
@@ -7089,7 +7089,7 @@ public class HabiticaIcons : NSObject {
             .font: UIFont(name: "HelveticaNeue", size: 12)!,
             .foregroundColor: textForeground2,
             .paragraphStyle: labelStyle,
-        ] as [NSAttributedStringKey: Any]
+            ] as [NSAttributedString.Key: Any]
 
         let labelTextHeight: CGFloat = labelTextContent.boundingRect(with: CGSize(width: labelRect.width, height: CGFloat.infinity), options: .usesLineFragmentOrigin, attributes: labelFontAttributes, context: nil).height
         context.saveGState()
@@ -7111,7 +7111,7 @@ public class HabiticaIcons : NSObject {
             .font: UIFont(name: "HelveticaNeue", size: 12)!,
             .foregroundColor: textForeground2,
             .paragraphStyle: label2Style,
-        ] as [NSAttributedStringKey: Any]
+            ] as [NSAttributedString.Key: Any]
 
         let label2TextHeight: CGFloat = label2TextContent.boundingRect(with: CGSize(width: label2Rect.width, height: CGFloat.infinity), options: .usesLineFragmentOrigin, attributes: label2FontAttributes, context: nil).height
         context.saveGState()

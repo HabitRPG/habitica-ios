@@ -70,7 +70,7 @@ class UserProfileViewController: HRPGBaseViewController {
             }).start())
         }
         
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44
     }
     

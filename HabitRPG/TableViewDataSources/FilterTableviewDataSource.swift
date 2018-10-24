@@ -115,7 +115,7 @@ class FilterTableViewDataSource: BaseReactiveTableViewDataSource<TagProtocol>, F
         }
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             self.deleteTag(at: indexPath)
         }

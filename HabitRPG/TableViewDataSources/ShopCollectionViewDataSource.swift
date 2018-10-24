@@ -197,7 +197,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let view = collectionView.dequeueReusableSupplementaryView(
-                ofKind: UICollectionElementKindSectionHeader,
+            ofKind: UICollectionView.elementKindSectionHeader,
                 withReuseIdentifier: "sectionHeader", for: indexPath
             ) as? HRPGShopSectionHeaderCollectionReusableView
         

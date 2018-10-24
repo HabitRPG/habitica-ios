@@ -44,17 +44,17 @@ class ToastManager: NSObject {
             if let tabbarController = viewController.tabBarController {
                 viewController = tabbarController
             }
-            UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, toast.accessibilityLabel)
+            UIAccessibility.post(notification: UIAccessibility.Notification.announcement, argument: toast.accessibilityLabel)
             let contentView = toast
             contentView.frame = CGRect(x: 0, y: 0, width: viewController.view.frame.size.width, height: viewController.view.frame.size.height)
             contentView.setNeedsLayout()
             contentView.alpha = 0
             viewController.view.addSubview(contentView)
             viewController.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|",
-                                                                              options: NSLayoutFormatOptions(rawValue: 0),
+                                                                              options: NSLayoutConstraint.FormatOptions(rawValue: 0),
                                                                               metrics: nil, views: ["view": contentView]))
             viewController.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|",
-                                                                              options: NSLayoutFormatOptions(rawValue: 0),
+                                                                              options: NSLayoutConstraint.FormatOptions(rawValue: 0),
                                                                               metrics: nil, views: ["view": contentView]))
                 UIView.animate(withDuration: 0.2, animations: { () -> Void in
                     contentView.alpha = 1

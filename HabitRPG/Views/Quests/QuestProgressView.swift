@@ -56,8 +56,8 @@ class QuestProgressView: UIView {
             
             view.frame = bounds
             view.autoresizingMask = [
-                UIViewAutoresizing.flexibleWidth,
-                UIViewAutoresizing.flexibleHeight
+                UIView.AutoresizingMask.flexibleWidth,
+                UIView.AutoresizingMask.flexibleHeight
             ]
             addSubview(view)
             
@@ -125,13 +125,13 @@ class QuestProgressView: UIView {
                                                                          bossColorMedium: colorMedium,
                                                                          bossColorLight: colorExtraLight)
             .resizableImage(withCapInsets: UIEdgeInsets.init(top: 10, left: 10, bottom: 10, right: 10),
-                            resizingMode: UIImageResizingMode.stretch)
+                            resizingMode: UIImage.ResizingMode.stretch)
         
         gradientView.endColor = colorLight
         descriptionSeparator.backgroundColor = colorLight
         questArtSeparator.backgroundColor = colorLight
         let description = try? Down(markdownString: quest.notes?.replacingOccurrences(of: "<br>", with: "\n") ?? "").toHabiticaAttributedString()
-        description?.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: description?.length ?? 0))
+        description?.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: description?.length ?? 0))
         description?.append(NSAttributedString(string: "\n"))
         descriptionTextView.attributedText = description
         

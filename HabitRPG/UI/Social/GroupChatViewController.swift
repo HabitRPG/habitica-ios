@@ -41,7 +41,7 @@ class GroupChatViewController: SLKTextViewController {
         tableView?.register(systemNib, forCellReuseIdentifier: "SystemMessageCell")
         
         tableView?.separatorStyle = .none
-        tableView?.rowHeight = UITableViewAutomaticDimension
+        tableView?.rowHeight = UITableView.automaticDimension
         tableView?.estimatedRowHeight = 90
         tableView?.backgroundColor = UIColor.gray700()
 

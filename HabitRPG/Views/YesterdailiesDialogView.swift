@@ -38,7 +38,7 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
 
         let nib = UINib.init(nibName: "YesterdailyTaskCell", bundle: Bundle.main)
         yesterdailiesTableView.register(nib, forCellReuseIdentifier: "Cell")
-        yesterdailiesTableView.rowHeight = UITableViewAutomaticDimension
+        yesterdailiesTableView.rowHeight = UITableView.automaticDimension
         yesterdailiesTableView.estimatedRowHeight = 60
 
         updateTitleBanner()

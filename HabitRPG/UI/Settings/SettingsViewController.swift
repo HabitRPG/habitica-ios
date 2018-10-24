@@ -142,7 +142,7 @@ class SettingsViewController: FormViewController, Themeable {
             <<< ButtonRow(SettingsTags.authentication) { row in
                 row.title = L10n.Settings.authentication
                 row.presentationMode = .segueName(segueName: StoryboardSegue.Settings.authenticationSegue.rawValue, onDismiss: nil)
-                row.cellStyle = UITableViewCellStyle.subtitle
+                row.cellStyle = UITableViewCell.CellStyle.subtitle
                 row.cellUpdate({[weak self] (cell, _) in
                     cell.textLabel?.textColor = UIColor.black
                     cell.textLabel?.textAlignment = .natural

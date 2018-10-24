@@ -62,11 +62,11 @@ class SubscriptionViewController: HRPGBaseViewController {
 
         if let termsView = self.tableView.tableFooterView?.viewWithTag(2) as? UITextView {
             let termsAttributedText = NSMutableAttributedString(string: "Once we've confirmed your purchase, the payment will be charged to your iTunes Account! Thank you so much for your support.\n\nPlease note that subscriptions automatically renew unless your auto-renew is turned off at least 24-hours before the end of the current period, which you can do by going to your Account Settings page after you've made your purchase. You can also manage subscriptions from the Account Settings page. If you have an active subscription, your account will be charged for renewal within 24-hours prior to the end of your current subscription period. When your subscription renews, you will be charged the same price that you initially paid. If you have any questions, feel free to ask in the Habitica Help Guild\nBy continuing you accept the Terms of Use and Privacy Policy")
-            termsAttributedText.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.gray50(), range: NSRange(location: 0, length: termsAttributedText.length))
+            termsAttributedText.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.gray50(), range: NSRange(location: 0, length: termsAttributedText.length))
             let termsRange = termsAttributedText.mutableString.range(of: "Terms of Use")
-            termsAttributedText.addAttributes([NSAttributedStringKey.link: "https://habitica.com/static/terms"], range: termsRange)
+            termsAttributedText.addAttributes([NSAttributedString.Key.link: "https://habitica.com/static/terms"], range: termsRange)
             let privacyRange = termsAttributedText.mutableString.range(of: "Privacy Policy")
-            termsAttributedText.addAttributes([NSAttributedStringKey.link: "https://habitica.com/static/privacy"], range: privacyRange)
+            termsAttributedText.addAttributes([NSAttributedString.Key.link: "https://habitica.com/static/privacy"], range: privacyRange)
             termsView.attributedText = termsAttributedText
         }
         let optionNib = UINib.init(nibName: "SubscriptionOptionView", bundle: nil)
@@ -178,7 +178,7 @@ class SubscriptionViewController: HRPGBaseViewController {
                 let description = SubscriptionInformation.descriptions[indexPath.item] as NSString
                 let height = 90 + description.boundingRect(with: CGSize.init(width: self.viewWidth-80, height: CGFloat.infinity),
                                                      options: NSStringDrawingOptions.usesLineFragmentOrigin,
-                                                     attributes: [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .body)],
+                                                     attributes: [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .body)],
                                                      context: nil).size.height
                 return height
             } else {

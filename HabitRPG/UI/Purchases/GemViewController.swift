@@ -127,17 +127,17 @@ class GemViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         var identifier = "nil"
         
-        if kind == UICollectionElementKindSectionHeader {
+        if kind == UICollectionView.elementKindSectionHeader {
             identifier = "HeaderView"
         }
         
-        if kind == UICollectionElementKindSectionFooter {
+        if kind == UICollectionView.elementKindSectionFooter {
             identifier = "FooterView"
         }
         
         let view = collectionView .dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: identifier, for: indexPath)
         
-        if kind == UICollectionElementKindSectionHeader {
+        if kind == UICollectionView.elementKindSectionHeader {
             if let imageView = view.viewWithTag(1) as? UIImageView {
                 imageView.image = HabiticaIcons.imageOfHeartLarge
             }

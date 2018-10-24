@@ -19,7 +19,7 @@ class BaseSettingsViewController: HRPGBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.estimatedRowHeight = 45
         
         disposable.inner.add(userRepository.getUser().on(value: {user in

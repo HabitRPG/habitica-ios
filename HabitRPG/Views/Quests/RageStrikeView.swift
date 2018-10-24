@@ -139,7 +139,7 @@ class RageStrikeView: UIView {
             let label = contentView.viewWithTag(3) as? UITextView
             
             ImageManager.getImage(name: "\(locationIdentifier)_background_\(questIdentifier)") { (image, error) in
-                npcBackgroundView?.image = image?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: UIImageResizingMode.tile)
+                npcBackgroundView?.image = image?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: UIImage.ResizingMode.tile)
 
             }
             npcSceneView?.setImagewith(name: "\(locationIdentifier)_scene_\(questIdentifier)")

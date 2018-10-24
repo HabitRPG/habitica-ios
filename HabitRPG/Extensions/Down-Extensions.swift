@@ -33,7 +33,7 @@ extension Down {
             return string
         }
         let baseSize = baseFont.pointSize
-        string.enumerateAttribute(NSAttributedStringKey.font,
+        string.enumerateAttribute(NSAttributedString.Key.font,
                                   in: NSRange(location: 0, length: string.length),
                                   options: NSAttributedString.EnumerationOptions.longestEffectiveRangeNotRequired,
                                   using: { (value, range, _) in
@@ -49,8 +49,8 @@ extension Down {
                 } else {
                     font = UIFont.systemFont(ofSize: baseSize+fontSizeOffset)
                 }
-                string.addAttribute(NSAttributedStringKey.font, value: font, range: range)
-                string.addAttribute(NSAttributedStringKey.foregroundColor, value: textColor, range: range)
+                string.addAttribute(NSAttributedString.Key.font, value: font, range: range)
+                string.addAttribute(NSAttributedString.Key.foregroundColor, value: textColor, range: range)
             }
         })
         if mentions.count > 0 {
@@ -67,7 +67,7 @@ extension Down {
         let text = string.mutableString
         for mention in mentions {
             let range = text.range(of: mention)
-            string.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.purple400(), range: range)
+            string.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.purple400(), range: range)
         }
     }
 }

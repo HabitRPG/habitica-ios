@@ -54,12 +54,12 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        topContentView.superview?.bringSubview(toFront: topContentView)
-        bottomButtons.superview?.bringSubview(toFront: bottomButtons)
+        topContentView.superview?.bringSubviewToFront(topContentView)
+        bottomButtons.superview?.bringSubviewToFront(bottomButtons)
         styleViews()
         setupItem()
         
-        closableShopModal.closeButton.addTarget(self, action: #selector(closePressed), for: UIControlEvents.touchUpInside)
+        closableShopModal.closeButton.addTarget(self, action: #selector(closePressed), for: UIControl.Event.touchUpInside)
         buyButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(buyPressed)))
         let inAppReward = reward
         pinButton.isHidden = !showPinning ||  inAppReward?.pinType == "armoire" || inAppReward?.pinType == "potion"
@@ -431,14 +431,14 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
 extension NSLayoutConstraint {
     static func defaultVerticalConstraints(_ visualFormat: String, _ views: [String: UIView]) -> [NSLayoutConstraint] {
         return NSLayoutConstraint.constraints(withVisualFormat: visualFormat,
-                                              options: NSLayoutFormatOptions(rawValue: 0),
+                                              options: NSLayoutConstraint.FormatOptions(rawValue: 0),
                                               metrics: nil,
                                               views: views)
     }
     
     static func defaultHorizontalConstraints(_ view: UIView) -> [NSLayoutConstraint] {
         return NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|",
-                                              options: NSLayoutFormatOptions(rawValue: 0),
+                                              options: NSLayoutConstraint.FormatOptions(rawValue: 0),
                                               metrics: nil,
                                               views: ["view": view])
     }

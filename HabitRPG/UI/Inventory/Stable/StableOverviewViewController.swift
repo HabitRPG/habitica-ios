@@ -17,7 +17,7 @@ class StableOverviewViewController<DS>: HRPGCollectionViewController {
     
     override func viewDidLoad() {
         let headerXib = UINib.init(nibName: "StableSectionHeader", bundle: .main)
-        collectionView?.register(headerXib, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "SectionHeader")
+        collectionView?.register(headerXib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "SectionHeader")
         
         let layout = collectionViewLayout as? UICollectionViewFlowLayout
         layout?.headerReferenceSize = CGSize(width: collectionView?.bounds.size.width ?? 50, height: 60)

@@ -30,8 +30,8 @@ class HRPGShopModalBgView: UIView {
             view.frame = bounds
             
             view.autoresizingMask = [
-                UIViewAutoresizing.flexibleWidth,
-                UIViewAutoresizing.flexibleHeight
+                UIView.AutoresizingMask.flexibleWidth,
+                UIView.AutoresizingMask.flexibleHeight
             ]
             
             addSubview(view)

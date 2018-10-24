@@ -61,7 +61,7 @@ class SplitSocialViewController: HabiticaSplitViewController {
         
         scrollView.delegate = self
         
-        for childViewController in childViewControllers {
+        for childViewController in children {
             if let viewController = childViewController as? GroupDetailViewController {
                 detailViewController = viewController
             }

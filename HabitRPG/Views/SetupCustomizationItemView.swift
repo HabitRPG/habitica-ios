@@ -33,7 +33,7 @@ class SetupCustomizationItemView: UIView {
     func xibSetup() {
         if let view = loadViewFromNib() {
             view.frame = bounds
-            view.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
+            view.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
             addSubview(view)
             borderView.layer.borderColor = UIColor.purple400().cgColor
         }

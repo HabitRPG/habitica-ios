@@ -57,7 +57,7 @@ class TaskDetailLineView: UIView {
         if let view = loadViewFromNib() {
             self.contentView = view
             view.frame = bounds
-            view.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
+            view.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
             addSubview(view)
             
             let font = CustomFontMetrics(forTextStyle: .body).scaledFont(for: UIFont.systemFont(ofSize: 13))

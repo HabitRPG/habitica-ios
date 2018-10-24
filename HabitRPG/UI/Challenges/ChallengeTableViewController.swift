@@ -59,7 +59,7 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate,
             self.tableView?.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         }
 
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 100
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         tableView.keyboardDismissMode = .onDrag

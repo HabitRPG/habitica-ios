@@ -63,7 +63,7 @@ class SpeechbubbleView: UIView {
     func xibSetup() {
         if let view = loadViewFromNib() {
             view.frame = bounds
-            view.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
+            view.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
             addSubview(view)
             
             textView.textContainerInset = UIEdgeInsets(top: 16, left: 20, bottom: 12, right: 12)

@@ -20,7 +20,7 @@ private extension UIFont {
     }
     
     func scaledValue(forValue value: CGFloat) -> CGFloat {
-        guard let style = fontDescriptor.object(forKey: .textStyle) as? UIFontTextStyle else {
+        guard let style = fontDescriptor.object(forKey: .textStyle) as? UIFont.TextStyle else {
             return value
             
         }
@@ -57,7 +57,7 @@ public class CustomFontMetrics: NSObject {
         @available(iOS 11.0, tvOS 11.0, watchOS 4.0, *)
         case modern(UIFontMetrics)
         
-        case legacy(UIFontTextStyle)
+        case legacy(UIFont.TextStyle)
         static let legacyDefault = Representation.legacy(.body)
     }
     
@@ -78,7 +78,7 @@ public class CustomFontMetrics: NSObject {
     
     /// Creates font metrics for interpolating values for a `textStyle`.
     @objc
-    public init(forTextStyle textStyle: UIFontTextStyle) {
+    public init(forTextStyle textStyle: UIFont.TextStyle) {
         if #available(iOS 11.0, tvOS 11.0, watchOS 4.0, *) {
             rep = .modern(UIFontMetrics(forTextStyle: textStyle))
         } else {
@@ -86,7 +86,7 @@ public class CustomFontMetrics: NSObject {
         }
     }
     
-    private static let supportedDynamicTypeStyles: Set<UIFontTextStyle> = [
+    private static let supportedDynamicTypeStyles: Set<UIFont.TextStyle> = [
         .title1, .title2, .title3, .headline, .subheadline, .body, .callout, .footnote, .caption1, .caption2
     ]
     
@@ -133,7 +133,7 @@ public class CustomFontMetrics: NSObject {
             }
             
             /// Is it a system font? Then we can simply re-make it.
-            if let originalStyle = descriptor.object(forKey: .textStyle) as? UIFontTextStyle, CustomFontMetrics.supportedDynamicTypeStyles.contains(originalStyle) {
+            if let originalStyle = descriptor.object(forKey: .textStyle) as? UIFont.TextStyle, CustomFontMetrics.supportedDynamicTypeStyles.contains(originalStyle) {
                 return systemFont
             }
             

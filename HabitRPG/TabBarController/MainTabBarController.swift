@@ -51,7 +51,7 @@ class MainTabBarController: UITabBarController {
         let dateString = dateFormatter.string(from: Date()) as NSString
         let style = NSParagraphStyle.default.mutableCopy() as? NSMutableParagraphStyle
         style?.alignment = .left
-        let textAttributes: [NSAttributedStringKey: Any] = [
+        let textAttributes: [NSAttributedString.Key: Any] = [
             .font: UIFont.systemFont(ofSize: 10, weight: .semibold),
             .paragraphStyle: style ?? NSParagraphStyle.default
         ]

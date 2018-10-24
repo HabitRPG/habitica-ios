@@ -151,7 +151,7 @@ class BaseReactiveTableViewDataSource<MODEL>: BaseReactiveDataSource<MODEL>, UIT
         return UITableViewCell()
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    private func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     }
 }
 
@@ -183,7 +183,7 @@ class BaseReactiveCollectionViewDataSource<MODEL>: BaseReactiveDataSource<MODEL>
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "SectionHeader", for: indexPath)
+        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "SectionHeader", for: indexPath)
         let label = headerView.viewWithTag(1) as? UILabel
         label?.text = visibleSections[indexPath.section].title
         return headerView

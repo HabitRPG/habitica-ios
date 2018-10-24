@@ -132,14 +132,14 @@ class HabiticaAlertController: UIViewController, Themeable {
         configureMessageView()
         configureCloseButton()
         configureButtons()
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
 
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
         super.viewWillDisappear(animated)
     }
     
@@ -161,7 +161,7 @@ class HabiticaAlertController: UIViewController, Themeable {
     
     @objc
     func keyboardWillShow(notification: NSNotification) {
-        if let keyboardFrame: NSValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardRectangle = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRectangle.height
             self.bottomOffsetConstraint.constant = keyboardHeight + 8
@@ -181,7 +181,7 @@ class HabiticaAlertController: UIViewController, Themeable {
     }
     
     @objc
-    func addAction(title: String, style: UIAlertActionStyle = .default, isMainAction: Bool = false, closeOnTap: Bool = true, handler: ((UIButton) -> Swift.Void)? = nil) {
+    func addAction(title: String, style: UIAlertAction.Style = .default, isMainAction: Bool = false, closeOnTap: Bool = true, handler: ((UIButton) -> Swift.Void)? = nil) {
         let button = UIButton()
         button.titleLabel?.lineBreakMode = .byWordWrapping
         button.titleLabel?.textAlignment = .center
