@@ -12,6 +12,7 @@ import ReactiveSwift
 import Result
 import Habitica_Database
 import PopupDialog
+import Crashlytics
 
 @objc
 class UserManager: NSObject {
@@ -59,11 +60,16 @@ class UserManager: NSObject {
                 if !user.needsCron {
                     return
                 }
-                let viewController = YesterdailiesDialogView()
                 if !hasUncompletedDailies {
-                    self.userRepository.runCron(tasks: []).observeCompleted {}
+                    self.userRepository.runCron(tasks: [])
+                        .on(failed: { error in
+                            Crashlytics.sharedInstance().recordError(error)
+                        })
+                        .observeCompleted {}
                     return
                 }
+                
+                let viewController = YesterdailiesDialogView()
                 viewController.tasks = tasks
                 let popup = PopupDialog(viewController: viewController)
                 if var topController = UIApplication.shared.keyWindow?.rootViewController {
@@ -76,7 +82,11 @@ class UserManager: NSObject {
                         self.yesterdailiesDialog = viewController
                     }
                 }
-            }).start())
+            })
+            .on(failed: { error in
+                Crashlytics.sharedInstance().recordError(error)
+            })
+            .start())
         disposable.add(taskRepository.getReminders().on(value: {[weak self](reminders, changes) in
             if let changes = changes {
                 self?.updateReminderNotifications(reminders: reminders, changes: changes)

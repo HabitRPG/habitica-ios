@@ -10,6 +10,7 @@ import UIKit
 import PopupDialog
 import Habitica_Models
 import ReactiveSwift
+import Crashlytics
 
 class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -119,6 +120,10 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
                 completedTasks.append(task)
             }
         }
-        userRepository.runCron(tasks: completedTasks).observeCompleted {}
+        userRepository.runCron(tasks: completedTasks)
+            .on(failed: { error in
+                Crashlytics.sharedInstance().recordError(error)
+            })
+            .observeCompleted {}
     }
 }
