@@ -511,6 +511,8 @@ internal enum L10n {
     internal static let disableAllNotifications = L10n.tr("Mainstrings", "settings.disable_all_notifications")
     /// Disable Private Messages
     internal static let disablePm = L10n.tr("Mainstrings", "settings.disable_pm")
+    /// Your display name has to be between 1 and 30 characters.
+    internal static let displayNameLengthError = L10n.tr("Mainstrings", "settings.display_name_length_error")
     /// Display Notification Badge
     internal static let displayNotificationBadge = L10n.tr("Mainstrings", "settings.display_notification_badge")
     /// Enable Class System

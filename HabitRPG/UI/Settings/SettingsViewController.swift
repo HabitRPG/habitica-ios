@@ -147,7 +147,7 @@ class SettingsViewController: FormViewController, Themeable {
                     cell.textLabel?.textColor = UIColor.black
                     cell.textLabel?.textAlignment = .natural
                     cell.accessoryType = .disclosureIndicator
-                    if self?.configRepository.bool(variable: .enableChangeUsername) == true && self?.user?.flags?.verifiedUsername != true {
+                    if self?.configRepository.bool(variable: .enableChangeUsername) == true && self?.user?.flags?.verifiedUsername == false {
                         cell.detailTextLabel?.text = L10n.Settings.usernameNotConfirmed
                         cell.detailTextLabel?.textColor = UIColor.red50()
                     } else {

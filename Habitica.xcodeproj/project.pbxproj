@@ -1382,15 +1382,15 @@
 		290279AC20583EE8006DACB9 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				D9C31DB11C6501090096F4EC /* Main.storyboard */,
-				2902799F20583ECA006DACB9 /* User.storyboard */,
-				290279A220583ECF006DACB9 /* Shops.storyboard */,
-				290279A520583ED3006DACB9 /* Shop.storyboard */,
 				290279A820583ED8006DACB9 /* BuyModal.storyboard */,
-				D942B53A1CAAE6B1009AB756 /* Social.storyboard */,
-				290279AB20583EDE006DACB9 /* Settings.storyboard */,
 				290279AF20583EF9006DACB9 /* Intro.storyboard */,
+				D9C31DB11C6501090096F4EC /* Main.storyboard */,
+				290279AB20583EDE006DACB9 /* Settings.storyboard */,
+				290279A520583ED3006DACB9 /* Shop.storyboard */,
+				290279A220583ECF006DACB9 /* Shops.storyboard */,
+				D942B53A1CAAE6B1009AB756 /* Social.storyboard */,
 				29C1B6B0205952E40001D3EF /* Tasks.storyboard */,
+				2902799F20583ECA006DACB9 /* User.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";

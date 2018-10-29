@@ -9,6 +9,7 @@
 import UIKit
 import MRProgress
 import Habitica_Models
+import ReactiveSwift
 
 class SetupViewController: UIViewController, UIScrollViewDelegate {
 
@@ -61,6 +62,8 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
                 avatarSetupView.isHidden = false
             }
             scrollToPage(currentSetupStep)
+        } else {
+            enableNextButton(enabled: false)
         }
         
         if self.view.frame.size.height <= 480 {
@@ -70,6 +73,10 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        (viewControllers[0] as? WelcomeViewController)?.onEnableNextButton = {[weak self] enable in
+            self?.enableNextButton(enabled: enable)
+        }
         
         viewControllers[0].startTyping()
     }
@@ -100,6 +107,8 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
         if getCurrentPage() >= 2 {
             completeSetup()
             return
+        } else if getCurrentPage() == 0 {
+            confirmNames()
         }
         scrollToPage(getCurrentPage()+1)
     }
@@ -143,6 +152,30 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
             nextButtonTextView.text = NSLocalizedString("Finish", comment: "")
         } else {
             nextButtonTextView.text = NSLocalizedString("Next", comment: "")
+        }
+    }
+    
+    func enablePreviousButton(enabled: Bool) {
+        if enabled {
+            previousButtonImageView.tintColor = UIColor.white
+            previousButtonTextView.textColor = UIColor.white
+            previousButtonView.isUserInteractionEnabled = true
+        } else {
+            previousButtonImageView.tintColor = UIColor.purple500()
+            previousButtonTextView.textColor = UIColor.purple500()
+            previousButtonView.isUserInteractionEnabled = false
+        }
+    }
+    
+    func enableNextButton(enabled: Bool) {
+        if enabled {
+            nextButtonImageView.tintColor = UIColor.white
+            nextButtonTextView.textColor = UIColor.white
+            nextButtonView.isUserInteractionEnabled = true
+        } else {
+            nextButtonImageView.tintColor = UIColor(white: 1.0, alpha: 0.5)
+            nextButtonTextView.textColor = UIColor(white: 1.0, alpha: 0.5)
+            nextButtonView.isUserInteractionEnabled = false
         }
     }
     
@@ -242,5 +275,40 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
                 }
             }
         }
+    }
+    
+    
+    func confirmNames() {
+        guard let welcomeViewController = viewControllers[0] as? WelcomeViewController else {
+            return
+        }
+        guard let displayname = welcomeViewController.displayName else {
+            return
+        }
+        guard let username = welcomeViewController.username else {
+            return
+        }
+        userRepository.updateUser(key: "profile.name", value: displayname)
+            .flatMap(.latest, { user -> SignalProducer<UserProtocol, ValidationError> in
+                if user == nil {
+                    return SignalProducer.init(error: ValidationError(""))
+                }
+                return self.userRepository.updateUsername(newUsername: username).mapError({ error -> ValidationError in
+                    return ValidationError(error.localizedDescription)
+                }).producer
+            })
+            .observeCompleted {}
+    }
+}
+
+private struct ValidationError: Error {
+    let message: String
+    
+    init(_ message: String) {
+        self.message = message
+    }
+    
+    public var localizedDescription: String {
+        return message
     }
 }
