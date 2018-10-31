@@ -33,6 +33,8 @@ internal enum L10n {
   internal static let create = L10n.tr("Mainstrings", "create")
   /// Daily
   internal static let daily = L10n.tr("Mainstrings", "daily")
+  /// Damage Paused
+  internal static let damagePaused = L10n.tr("Mainstrings", "damage_paused")
   /// Delete
   internal static let delete = L10n.tr("Mainstrings", "delete")
   /// Description

@@ -58,6 +58,9 @@ public extension CustomizationProtocol {
     func iconName(forUserPreferences preferences: PreferencesProtocol?) -> String? {
         let imagename = imageName(forUserPreferences: preferences)
         if let name = imagename {
+            if name == "chair_none" {
+                return "head_0"
+            }
             return "Icon_\(name)"
         } else {
             return nil
@@ -84,6 +87,8 @@ public extension CustomizationProtocol {
             return "preferences.skin"
         case "background":
             return "preferences.background"
+        case "chair":
+            return "preferences.chair"
         case "hair":
             switch group {
             case "bangs":

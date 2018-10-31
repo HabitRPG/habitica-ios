@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -154,13 +152,13 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7mY-LD-ILX">
-                                            <rect key="frame" x="20" y="11" width="281" height="21"/>
+                                            <rect key="frame" x="20" y="11" width="305" height="21.5"/>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view clipsSubviews="YES" tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y81-RX-OwJ">
-                                            <rect key="frame" x="325" y="13" width="16" height="16"/>
+                                            <rect key="frame" x="325" y="14" width="16" height="16"/>
                                             <color key="backgroundColor" red="0.3816543818" green="0.200278759" blue="0.7049210668" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="16" id="1dc-A0-aHW"/>
@@ -168,7 +166,7 @@
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Shv-nt-cy9">
-                                            <rect key="frame" x="317" y="11" width="0.0" height="22"/>
+                                            <rect key="frame" x="341" y="11" width="0.0" height="22"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" priority="500" constant="42" id="sZc-ak-ace"/>
                                             </constraints>
@@ -184,7 +182,7 @@
                                         <constraint firstItem="Shv-nt-cy9" firstAttribute="leading" secondItem="7mY-LD-ILX" secondAttribute="trailing" constant="16" id="F5h-Ix-Dp5"/>
                                         <constraint firstItem="Shv-nt-cy9" firstAttribute="top" secondItem="Wng-vv-ZBj" secondAttribute="topMargin" id="Og8-lv-4ng"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="Shv-nt-cy9" secondAttribute="bottom" id="Wmq-9C-Sc1"/>
-                                        <constraint firstItem="y81-RX-OwJ" firstAttribute="leading" secondItem="Shv-nt-cy9" secondAttribute="trailing" constant="8" id="pSj-Ah-OCV"/>
+                                        <constraint firstAttribute="trailing" secondItem="Shv-nt-cy9" secondAttribute="trailing" id="rwy-WN-Uj9"/>
                                         <constraint firstItem="7mY-LD-ILX" firstAttribute="top" secondItem="Wng-vv-ZBj" secondAttribute="top" constant="11" id="tnp-Rw-8tc"/>
                                         <constraint firstAttribute="bottom" secondItem="7mY-LD-ILX" secondAttribute="bottom" constant="11" id="yh4-O8-3li"/>
                                     </constraints>
@@ -198,7 +196,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ps-a8-I03">
-                                            <rect key="frame" x="40" y="11" width="206" height="21"/>
+                                            <rect key="frame" x="40" y="11" width="206" height="21.5"/>
                                             <color key="backgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="highlightedColor"/>
@@ -636,7 +634,7 @@
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pWt-Qo-uxJ">
-                                    <rect key="frame" x="8" y="8" width="217.5" height="44"/>
+                                    <rect key="frame" x="8" y="28" width="217.5" height="24"/>
                                     <constraints>
                                         <constraint firstAttribute="height" priority="500" constant="26" id="AXg-RX-7v0"/>
                                     </constraints>
@@ -801,7 +799,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KEt-eV-vgw">
-                                            <rect key="frame" x="-0.5" y="0.0" width="80.5" height="60"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="80" height="60"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="60" id="ayb-an-B0G"/>
                                             </constraints>
@@ -939,7 +937,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="i4O-mB-OwI">
-                                            <rect key="frame" x="-0.5" y="0.0" width="81" height="60"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="80" height="60"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="60" id="Fr7-cR-mU5"/>
                                             </constraints>
@@ -1031,7 +1029,7 @@
                                             </constraints>
                                         </progressView>
                                         <imageView userInteractionEnabled="NO" tag="1" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eoV-zR-Bm4">
-                                            <rect key="frame" x="3" y="0.0" width="81" height="90"/>
+                                            <rect key="frame" x="2.5" y="0.0" width="81" height="90"/>
                                             <color key="tintColor" red="0.88328301909999996" green="0.87696492670000004" blue="0.89030760529999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="81" id="FmG-Kv-Kb5"/>
@@ -1197,25 +1195,25 @@
                                             <rect key="frame" x="106" y="69" width="60" height="20"/>
                                             <subviews>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hld-ok-bJx">
-                                                    <rect key="frame" x="-106" y="0.0" width="0.0" height="20"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="0.0" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m8C-vp-JgN">
-                                                    <rect key="frame" x="-106" y="0.0" width="0.0" height="20"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="0.0" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Uv-Ix-dTT">
-                                                    <rect key="frame" x="-106" y="0.0" width="0.0" height="20"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="0.0" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9AR-f7-UpH">
-                                                    <rect key="frame" x="-106" y="0.0" width="0.0" height="20"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="0.0" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1349,7 +1347,7 @@ and helps keep Habitica running</string>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <imageView userInteractionEnabled="NO" tag="1" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="McX-fu-cEX">
-                                    <rect key="frame" x="170" y="16" width="36" height="36"/>
+                                    <rect key="frame" x="169.5" y="16" width="36" height="36"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="36" id="Stk-pd-YeO"/>
                                         <constraint firstAttribute="height" constant="36" id="ZfH-Ya-fcD"/>
@@ -1370,7 +1368,7 @@ and helps keep Habitica running</string>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xhA-8b-NmG">
-                                    <rect key="frame" x="8" y="16" width="359" height="41"/>
+                                    <rect key="frame" x="8" y="36" width="359" height="41"/>
                                     <constraints>
                                         <constraint firstAttribute="height" priority="500" constant="21" id="Myz-28-LqS"/>
                                     </constraints>
@@ -1381,7 +1379,7 @@ your account, including:</string>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xmc-Sz-mph">
-                                    <rect key="frame" x="8" y="69" width="359" height="75.5"/>
+                                    <rect key="frame" x="8" y="89" width="359" height="75.5"/>
                                     <constraints>
                                         <constraint firstAttribute="height" priority="500" constant="21" id="Ns1-9T-eqn"/>
                                     </constraints>
@@ -1655,7 +1653,7 @@ and helps keep Habitica running</string>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ubx-Z1-yyq">
-                                            <rect key="frame" x="143" y="8" width="90" height="34"/>
+                                            <rect key="frame" x="142.5" y="8" width="90" height="34"/>
                                             <color key="backgroundColor" red="0.3803921639919281" green="0.20000000298023224" blue="0.70588237047195435" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="500" constant="90" id="VeR-Vl-iz5"/>
@@ -2004,13 +2002,13 @@ and helps keep Habitica running</string>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YhU-da-mlI">
-                                            <rect key="frame" x="98" y="0.0" width="269" height="89"/>
+                                            <rect key="frame" x="98" y="0.0" width="269" height="89.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pOk-IY-fz3" customClass="AvatarView" customModule="Habitica" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="-0.5" width="90" height="90"/>
+                                            <rect key="frame" x="0.0" y="-0.5" width="90" height="90.5"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="90" id="f70-4Y-46X"/>
@@ -2234,7 +2232,7 @@ and helps keep Habitica running</string>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="223" translatesAutoresizingMaskIntoConstraints="NO" id="GcJ-Of-cxA">
-                                            <rect key="frame" x="62" y="11" width="297" height="37"/>
+                                            <rect key="frame" x="62" y="11" width="297" height="37.5"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -2266,7 +2264,7 @@ and helps keep Habitica running</string>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="183" translatesAutoresizingMaskIntoConstraints="NO" id="qjU-BV-CDx">
-                                            <rect key="frame" x="62" y="11" width="251" height="37"/>
+                                            <rect key="frame" x="62" y="11" width="251" height="37.5"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>

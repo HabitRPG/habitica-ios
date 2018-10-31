@@ -2103,18 +2103,22 @@
 		D987393919687E46002A2426 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				29FC5A6320402EE2008E88C8 /* Theme Engine */,
 				D99BC43019D4C34A006DC132 /* 1Password.xcassets */,
 				494E540E1F2EEF810003683C /* Amplitude+HRPGHelpers.h */,
 				494E540F1F2EEF810003683C /* Amplitude+HRPGHelpers.m */,
+				299BD6391F557FE700E22935 /* AuthenticationManager.swift */,
 				494E53FF1F2D1ED90003683C /* CAGradientLayer+HRPGShopGradient.h */,
 				494E54001F2D1ED90003683C /* CAGradientLayer+HRPGShopGradient.m */,
 				29E162E11FFC21E100685640 /* CustomFontMetrics.swift */,
 				299BD6361F5457E100E22935 /* HabiticaIcons.swift */,
+				49E1664920E6AE9200D510B1 /* HRPGCoachmarkFrameProvider.h */,
+				49E1664A20E6AE9200D510B1 /* HRPGCoachmarkFrameProvider.m */,
 				D9E9E0C21CCE55DA006D94A2 /* HRPGSharingManager.h */,
 				D9E9E0C31CCE55DA006D94A2 /* HRPGSharingManager.m */,
 				D9AEF8E21CE4CCA5006914CB /* HRPGURLParser.h */,
 				D9AEF8E31CE4CCA5006914CB /* HRPGURLParser.m */,
+				292F967F20723A4D00804151 /* ImageManager.swift */,
+				29323E1E2050563700AC6D6F /* NetworkErrorHandler.swift */,
 				D9ADD3521CF3169B001D005B /* NSString+StripHTML.h */,
 				D9ADD3531CF3169B001D005B /* NSString+StripHTML.m */,
 				D92503BC1D5C9219006C9388 /* NSString+UUID.h */,
@@ -2122,10 +2126,12 @@
 				D99BC43119D4C34A006DC132 /* OnePasswordExtension.h */,
 				D99BC43219D4C34A006DC132 /* OnePasswordExtension.m */,
 				29FC885120134A8F002B3D3F /* PurchaseHandler.swift */,
+				29DBFF0020CE6FFF00DF9CF2 /* SoundManager.swift */,
+				29FC5A6320402EE2008E88C8 /* Theme Engine */,
 				290458CF2021D6C60032BC5E /* TopHeaderCoordinator.swift */,
 				D9CD2DD61BCAC00300B1304B /* TutorialStepsProtocol.h */,
-				D976D23E1B98FA940032BC41 /* UIColor+Habitica.h */,
 				D976D23F1B98FA940032BC41 /* UIColor.Habitica.m */,
+				D976D23E1B98FA940032BC41 /* UIColor+Habitica.h */,
 				D994B1471AD9177D008AE188 /* UIView+Screenshot.h */,
 				D994B1481AD9177D008AE188 /* UIView+Screenshot.m */,
 				494E53FC1F2D0A330003683C /* UIViewController+HRPGTopHeaderNavigationController.h */,
@@ -2136,13 +2142,7 @@
 				D9CD2DD41BCAA6F700B1304B /* UIViewController+TutorialSteps.m */,
 				D96C85461DCCD8BC003E3616 /* UIWindow+VisibleController.h */,
 				D96C85471DCCD8BC003E3616 /* UIWindow+VisibleController.m */,
-				29323E1E2050563700AC6D6F /* NetworkErrorHandler.swift */,
-				292F967F20723A4D00804151 /* ImageManager.swift */,
 				2919FDDC2091D5370096A53B /* UserManager.swift */,
-				29DBFF0020CE6FFF00DF9CF2 /* SoundManager.swift */,
-				299BD6391F557FE700E22935 /* AuthenticationManager.swift */,
-				49E1664920E6AE9200D510B1 /* HRPGCoachmarkFrameProvider.h */,
-				49E1664A20E6AE9200D510B1 /* HRPGCoachmarkFrameProvider.m */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -4195,7 +4195,7 @@
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 343;
+				CURRENT_PROJECT_VERSION = 344;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_SOURCE_FILE_NAMES = "";
@@ -4287,7 +4287,7 @@
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 343;
+				CURRENT_PROJECT_VERSION = 344;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_SOURCE_FILE_NAMES = "FLEX*";

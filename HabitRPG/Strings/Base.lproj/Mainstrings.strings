@@ -309,3 +309,4 @@
 "about.love_open_source" = "Web love open source software.";
 "about.no_email_title" = "Your email isn't set up yet";
 "about.no_email_message" = "Whoops, looks like you haven't set up your email on this phone yet. Configure an account in the iOS mail app to use this quick-reporting option, or just email us directly at %@";
+"damage_paused" = "Damage Paused";

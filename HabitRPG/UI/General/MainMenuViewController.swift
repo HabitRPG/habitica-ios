@@ -13,14 +13,16 @@ import ReactiveSwift
 
 struct MenuItem {
     var title: String
+    var subtitle: String?
     var accessibilityLabel: String?
     var segue: String
     var cellName = "Cell"
     var showIndicator = false
     var isHidden = false
     
-    init(title: String, accessibilityLabel: String? = nil, segue: String, cellName: String = "Cell", showIndicator: Bool = false) {
+    init(title: String, subtitle: String? = nil, accessibilityLabel: String? = nil, segue: String, cellName: String = "Cell", showIndicator: Bool = false) {
         self.title = title
+        self.subtitle = subtitle
         self.accessibilityLabel = accessibilityLabel
         self.segue = segue
         self.cellName = cellName
@@ -79,6 +81,8 @@ class MainMenuViewController: HRPGBaseViewController, Themeable {
             } else {
                 menuSections[1].items[1].showIndicator = false
             }
+            
+            menuSections[1].items[0].subtitle = user?.preferences?.sleep == true ? L10n.damagePaused : nil
             
             tableView.reloadData()
         }
@@ -209,6 +213,11 @@ class MainMenuViewController: HRPGBaseViewController, Themeable {
         indicatorView?.isHidden = item?.showIndicator == false
         indicatorView?.layer.cornerRadius = (indicatorView?.frame.size.height ?? 0) / 2
         indicatorView?.backgroundColor = ThemeService.shared.theme.backgroundTintColor
+        
+        let subtitleLabel = cell.viewWithTag(3) as? UILabel
+        subtitleLabel?.text = item?.subtitle
+        subtitleLabel?.font = CustomFontMetrics.scaledSystemFont(ofSize: 12)
+        subtitleLabel?.textColor = UIColor.orange50()
         return cell
     }
     
