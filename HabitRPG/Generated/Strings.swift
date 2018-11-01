@@ -614,6 +614,8 @@ internal enum L10n {
     internal static func pointsToAllocate(_ p1: Int) -> String {
       return L10n.tr("Mainstrings", "stats.points_to_allocate", p1)
     }
+    /// Total
+    internal static let total = L10n.tr("Mainstrings", "stats.total")
   }
 
   internal enum Tasks {

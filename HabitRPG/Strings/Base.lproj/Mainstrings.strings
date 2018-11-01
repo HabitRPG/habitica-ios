@@ -14,6 +14,7 @@
 "stats.class_bonus" = "Class-Bonus";
 "stats.allocated" = "Allocated";
 "stats.buffs" = "Buffs";
+"stats.total" = "Total";
 "controls" = "Controls";
 "difficulty" = "Difficulty";
 "resetStreak" = "Reset Streak";

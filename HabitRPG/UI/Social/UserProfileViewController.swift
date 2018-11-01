@@ -341,6 +341,7 @@ class UserProfileViewController: HRPGBaseViewController {
         var constitution = 0
         var perception = 0
         if (index == 1 && !isAttributesExpanded) || index == 6 {
+            descriptionLabel?.text = L10n.Stats.total
             strength = calculatedStats.totalStrength
             intelligence = calculatedStats.totalIntelligence
             constitution = calculatedStats.totalConstitution
