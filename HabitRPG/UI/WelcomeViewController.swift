@@ -13,7 +13,7 @@ import Habitica_Models
 import Result
 import Habitica_Database
 
-class WelcomeViewController: UIViewController, TypingTextViewController {
+class WelcomeViewController: UIViewController, TypingTextViewController, UITextFieldDelegate {
     
     var onEnableNextButton: ((Bool) -> Void)?
     var displayName: String? {
@@ -98,5 +98,10 @@ class WelcomeViewController: UIViewController, TypingTextViewController {
     @objc
     private func displayNameChanged(_ textField: UITextField?) {
         displayNameProperty.value = textField?.text
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return false
     }
 }
