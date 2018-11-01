@@ -84,8 +84,13 @@ class InboxMessagesDataSource: BaseReactiveTableViewDataSource<InboxMessageProto
             guard let profileViewController = self.viewController?.storyboard?.instantiateViewController(withIdentifier: "UserProfileViewController") as? UserProfileViewController else {
                 return
             }
-            profileViewController.userID = message.userID
-            profileViewController.username = message.displayName
+            if message.sent {
+                profileViewController.userID = self.user?.id
+                profileViewController.username = self.user?.profile?.name
+            } else {
+                profileViewController.userID = message.userID
+                profileViewController.username = message.displayName
+            }
             self.viewController?.navigationController?.pushViewController(profileViewController, animated: true)
         }
         cell.copyAction = {
