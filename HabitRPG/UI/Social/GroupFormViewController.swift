@@ -41,6 +41,7 @@ class GroupFormViewController: FormViewController {
             <<< TextRow(GroupFormTags.name) { row in
                 row.title = L10n.name
                 row.cell.tintColor = ThemeService.shared.theme.tintColor
+                row.add(rule: RuleRequired())
             }
             <<< TextAreaRow(GroupFormTags.summary) { row in
                 row.placeholder = L10n.summary
