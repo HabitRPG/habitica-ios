@@ -53,7 +53,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jAO-b2-Iy9">
-                                            <rect key="frame" x="52" y="21" width="0.0" height="19"/>
+                                            <rect key="frame" x="60" y="21" width="0.0" height="19"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" priority="501" constant="19" id="ZpD-vC-wkU"/>
                                                 <constraint firstAttribute="width" priority="500" constant="42" id="qFL-LM-xZ9"/>
@@ -65,8 +65,8 @@
                                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0vJ-cS-5P7">
                                             <rect key="frame" x="16" y="11" width="36" height="36"/>
                                             <subviews>
-                                                <view tag="5" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cOn-Go-iHY" customClass="AvatarView" customModule="Habitica" customModuleProvider="target">
-                                                    <rect key="frame" x="-11" y="-3" width="50" height="50"/>
+                                                <view tag="5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cOn-Go-iHY" customClass="AvatarView" customModule="Habitica" customModuleProvider="target">
+                                                    <rect key="frame" x="-11" y="-2" width="50" height="50"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="MHL-Ed-BXi"/>
@@ -90,7 +90,7 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailingMargin" secondItem="e2S-uS-OIt" secondAttribute="trailing" id="2IU-i3-TiN"/>
-                                        <constraint firstItem="jAO-b2-Iy9" firstAttribute="leading" secondItem="0vJ-cS-5P7" secondAttribute="trailing" id="IdR-gs-bSz"/>
+                                        <constraint firstItem="jAO-b2-Iy9" firstAttribute="leading" secondItem="0vJ-cS-5P7" secondAttribute="trailing" constant="8" id="IdR-gs-bSz"/>
                                         <constraint firstItem="m6q-Ji-EAr" firstAttribute="leading" secondItem="0vJ-cS-5P7" secondAttribute="trailing" constant="8" id="NAz-or-qrg"/>
                                         <constraint firstItem="0vJ-cS-5P7" firstAttribute="top" secondItem="Kx6-Wm-aAQ" secondAttribute="top" constant="11" id="Pv0-vb-W4x"/>
                                         <constraint firstItem="HwB-Xq-If7" firstAttribute="height" secondItem="m6q-Ji-EAr" secondAttribute="height" id="Q6I-cU-1dm"/>
@@ -805,7 +805,7 @@
             <objects>
                 <tableViewController id="LJL-4h-PRX" customClass="ChallengeDetailsTableViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="mSs-Sh-idc">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -1304,11 +1304,11 @@
                         <viewControllerLayoutGuide type="bottom" id="jjC-Ag-kKu"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="0az-3L-YFU">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="vH0-3y-TsP">
-                                <rect key="frame" x="16" y="64" width="343" height="539"/>
+                                <rect key="frame" x="16" y="64" width="343" height="583"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1342,7 +1342,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="ChallengeTableViewController" automaticallyAdjustsScrollViewInsets="NO" id="BE2-xn-Wwl" customClass="ChallengeTableViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="86" sectionHeaderHeight="28" sectionFooterHeight="28" id="SWx-Y1-cyG">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <connections>
@@ -1630,7 +1630,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Sur-1o-ymQ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="OFX-9b-U2U">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -2317,6 +2317,7 @@
                                                         <color key="textColor" red="0.40768876669999998" green="0.3832124174" blue="0.4558907747" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                        <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES"/>
                                                     </textView>
                                                 </subviews>
                                                 <userDefinedRuntimeAttributes>
@@ -2624,6 +2625,7 @@
                                                         <color key="textColor" red="0.40768876669999998" green="0.3832124174" blue="0.4558907747" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                        <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES"/>
                                                     </textView>
                                                 </subviews>
                                                 <userDefinedRuntimeAttributes>
@@ -2797,14 +2799,14 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="71z-UW-WBb"/>
-        <segue reference="gAH-Zh-PJ3"/>
-        <segue reference="lgk-R4-zXr"/>
+        <segue reference="xLb-S3-ALp"/>
+        <segue reference="BKi-xg-gxr"/>
         <segue reference="UUp-aA-Ao9"/>
-        <segue reference="jXp-j5-lvy"/>
-        <segue reference="Hfa-0k-B92"/>
+        <segue reference="MnH-ar-sz7"/>
+        <segue reference="RWA-7r-R8g"/>
         <segue reference="yXa-uT-GhF"/>
         <segue reference="wif-V9-Mcy"/>
-        <segue reference="2EH-Sz-Osv"/>
+        <segue reference="rs9-Lf-2VQ"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.6058621407" green="0.38462612029999999" blue="0.99835687880000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
