@@ -415,6 +415,7 @@ class UserProfileViewController: HRPGBaseViewController {
             chatViewController?.isPresentedModally = true
             chatViewController?.userID = userID
             chatViewController?.username = username
+            chatViewController?.displayName = member?.profile?.name
         }
     }
 }
