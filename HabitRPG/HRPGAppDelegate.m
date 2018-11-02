@@ -32,6 +32,7 @@
     
     [self.swiftAppDelegate setupLogging];
     [self.swiftAppDelegate setupAnalytics];
+    [self.swiftAppDelegate setupRouter];
     [self.swiftAppDelegate setupPopups];
     [self.swiftAppDelegate setupPurchaseHandling];
     [self.swiftAppDelegate setupNetworkClient];
@@ -99,10 +100,27 @@
         return YES;
     }
     
-    return [[FBSDKApplicationDelegate sharedInstance] application:application
+    BOOL wasHandled = [[FBSDKApplicationDelegate sharedInstance] application:application
                                                           openURL:url
                                                 sourceApplication:sourceApplication
                                                        annotation:annotation];
+    
+    if (!wasHandled) {
+        return [RouterHandler.shared handleWithUrl:url];
+    }
+    return YES;
+}
+
+- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray<id<UIUserActivityRestoring>> * _Nullable))restorationHandler {
+    if ([userActivity.activityType isEqualToString:CSSearchableItemActionType]) {
+        NSString *uniqueIdentifier = userActivity.userInfo[CSSearchableItemActivityIdentifier];
+        NSArray *components = [uniqueIdentifier componentsSeparatedByString:@"."];
+        NSString *taskType = components[4];
+        NSString *taskID = components[5];
+        [self displayTaskWithId:taskID fromType:taskType];
+        return YES;
+    }
+    return [RouterHandler.shared handleWithUserActivity:userActivity];
 }
 
 - (void)application:(UIApplication *)application
@@ -128,19 +146,6 @@
                                                           sender:displayedTableViewController];
     }
     completionHandler(YES);
-}
-
-- (BOOL)application:(UIApplication *)application
-    continueUserActivity:(NSUserActivity *)userActivity
-      restorationHandler:(void (^)(NSArray *_Nullable))restorationHandler {
-    if ([userActivity.activityType isEqualToString:CSSearchableItemActionType]) {
-        NSString *uniqueIdentifier = userActivity.userInfo[CSSearchableItemActivityIdentifier];
-        NSArray *components = [uniqueIdentifier componentsSeparatedByString:@"."];
-        NSString *taskType = components[4];
-        NSString *taskID = components[5];
-        [self displayTaskWithId:taskID fromType:taskType];
-    }
-    return YES;
 }
 
 - (void)application:(UIApplication *)application
@@ -231,8 +236,7 @@
             inboxChatViewController.userID = userInfo[@"replyTo"];
             [displayedNavigationController pushViewController:inboxChatViewController animated:YES];
         } else if ([userInfo[@"identifier"] isEqualToString:@"invitedParty"] || [userInfo[@"identifier"] isEqualToString:@"questStarted"]) {
-            PartyViewController *partyViewController = (PartyViewController *)[self loadViewController:@"PartyViewController" fromStoryboard:@"Social"];
-            [displayedNavigationController pushViewController:partyViewController animated:YES];
+            [RouterHandler.shared handleWithUrlString:@"/party"];
         } else if ([userInfo[@"identifier"] isEqualToString:@"invitedGuild"]) {
             SplitSocialViewController *guildViewController = (SplitSocialViewController *)[self loadViewController:@"GroupTableViewController" fromStoryboard:@"Social"];
             guildViewController.groupID = userInfo[@"groupID"];

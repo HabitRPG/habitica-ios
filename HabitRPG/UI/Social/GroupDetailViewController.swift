@@ -11,7 +11,7 @@ import Habitica_Models
 import ReactiveSwift
 import Down
 
-class GroupDetailViewController: HRPGUIViewController {
+class GroupDetailViewController: HRPGUIViewController, UITextViewDelegate {
     var groupID: String?
 
     var groupProperty = MutableProperty<GroupProtocol?>(nil)
@@ -31,6 +31,8 @@ class GroupDetailViewController: HRPGUIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        groupDescriptionTextView?.delegate = self
         
         let margins = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         groupDescriptionStackView?.layoutMargins = margins
@@ -79,5 +81,9 @@ class GroupDetailViewController: HRPGUIViewController {
                 invitationViewController.groupID = groupID
             }
         }
+    }
+    
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
+        return RouterHandler.shared.handle(url: URL)
     }
 }

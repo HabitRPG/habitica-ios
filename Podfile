@@ -79,6 +79,8 @@ target 'Habitica' do
 
   pod 'Instabug'
 
+  pod "DeepLinkKit"
+
   target 'HabiticaTests' do
     inherit! :search_paths
     test_pods

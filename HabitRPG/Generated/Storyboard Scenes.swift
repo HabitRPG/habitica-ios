@@ -39,21 +39,33 @@ internal enum StoryboardScene {
 
     internal static let aboutViewController = SceneType<Habitica.AboutViewController>(storyboard: Main.self, identifier: "AboutViewController")
 
+    internal static let avatarOverviewViewController = SceneType<Habitica.AvatarOverviewViewController>(storyboard: Main.self, identifier: "AvatarOverviewViewController")
+
+    internal static let equipmentOverviewViewController = SceneType<Habitica.EquipmentOverviewViewController>(storyboard: Main.self, identifier: "EquipmentOverviewViewController")
+
     internal static let faqOverviewViewController = SceneType<Habitica.FAQTableViewController>(storyboard: Main.self, identifier: "FAQOverviewViewController")
 
     internal static let gemPurchaseViewController = SceneType<Habitica.GemViewController>(storyboard: Main.self, identifier: "GemPurchaseViewController")
 
-    internal static let groupTableViewController = SceneType<Habitica.StableSplitViewController>(storyboard: Main.self, identifier: "GroupTableViewController")
-
     internal static let itemNavigationController = SceneType<UIKit.UINavigationController>(storyboard: Main.self, identifier: "ItemNavigationController")
 
+    internal static let itemsViewController = SceneType<Habitica.ItemsViewController>(storyboard: Main.self, identifier: "ItemsViewController")
+
     internal static let mainTabBarController = SceneType<Habitica.MainTabBarController>(storyboard: Main.self, identifier: "MainTabBarController")
+
+    internal static let mountsOverviewViewController = SceneType<Habitica.MountOverviewViewController>(storyboard: Main.self, identifier: "MountsOverviewViewController")
+
+    internal static let newsViewController = SceneType<Habitica.NewsViewController>(storyboard: Main.self, identifier: "NewsViewController")
+
+    internal static let petsOverviewViewController = SceneType<Habitica.PetOverviewViewController>(storyboard: Main.self, identifier: "PetsOverviewViewController")
 
     internal static let purchaseGemNavController = SceneType<HRPGGemHeaderNavigationController>(storyboard: Main.self, identifier: "PurchaseGemNavController")
 
     internal static let scanQRCodeNavController = SceneType<UIKit.UINavigationController>(storyboard: Main.self, identifier: "ScanQRCodeNavController")
 
     internal static let spellUserNavigationController = SceneType<UIKit.UINavigationController>(storyboard: Main.self, identifier: "SpellUserNavigationController")
+
+    internal static let stableViewController = SceneType<Habitica.StableSplitViewController>(storyboard: Main.self, identifier: "StableViewController")
 
     internal static let subscriptionViewController = SceneType<Habitica.SubscriptionViewController>(storyboard: Main.self, identifier: "SubscriptionViewController")
 
@@ -83,11 +95,17 @@ internal enum StoryboardScene {
   internal enum Social: StoryboardType {
     internal static let storyboardName = "Social"
 
+    internal static let challengeDetailViewController = SceneType<Habitica.ChallengeDetailsTableViewController>(storyboard: Social.self, identifier: "ChallengeDetailViewController")
+
     internal static let challengeNavigationViewController = SceneType<UIKit.UINavigationController>(storyboard: Social.self, identifier: "ChallengeNavigationViewController")
 
     internal static let challengeTableViewController = SceneType<Habitica.ChallengeTableViewController>(storyboard: Social.self, identifier: "ChallengeTableViewController")
 
     internal static let groupTableViewController = SceneType<Habitica.SplitSocialViewController>(storyboard: Social.self, identifier: "GroupTableViewController")
+
+    internal static let guidelinesNavigationViewController = SceneType<UIKit.UINavigationController>(storyboard: Social.self, identifier: "GuidelinesNavigationViewController")
+
+    internal static let guidelinesViewController = SceneType<Habitica.GuidelinesViewController>(storyboard: Social.self, identifier: "GuidelinesViewController")
 
     internal static let guildsOverviewViewController = SceneType<Habitica.GuildOverviewViewController>(storyboard: Social.self, identifier: "GuildsOverviewViewController")
 

@@ -117,6 +117,11 @@ class HabiticaAppDelegate: NSObject {
     }
     
     @objc
+    func setupRouter() {
+        RouterHandler.shared.register()
+    }
+    
+    @objc
     func handleInitialLaunch() {
         let defaults = UserDefaults.standard
         if !defaults.bool(forKey: "wasLaunchedBefore") {

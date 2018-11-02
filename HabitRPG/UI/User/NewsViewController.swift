@@ -36,4 +36,14 @@ class NewsViewController: HRPGUIViewController, UIWebViewDelegate {
         userRepository.updateUser(key: "flags.newStuff", value: false).observeCompleted {}
     }
     
+    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
+        if request.url?.absoluteString.contains("/new-stuff") == true {
+            return true
+        }
+        if let url = request.url {
+            RouterHandler.shared.handleOrOpen(url: url)
+            return false
+        }
+        return true
+    }
 }

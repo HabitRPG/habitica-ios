@@ -11,7 +11,7 @@ import Down
 import Habitica_Models
 
 @objc
-class TaskTableViewCell: UITableViewCell {
+class TaskTableViewCell: UITableViewCell, UITextViewDelegate {
 
     //swiftlint:disable private_outlet
     @IBOutlet weak var titleLabel: UILabel!
@@ -94,5 +94,9 @@ class TaskTableViewCell: UITableViewCell {
         if let action = syncErrorTouched {
             action()
         }
+    }
+    
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
+        return RouterHandler.shared.handle(url: URL)
     }
 }

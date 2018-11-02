@@ -12,7 +12,7 @@ import PinLayout
 import Habitica_Models
 import Down
 
-class ChatTableViewCell: UITableViewCell {
+class ChatTableViewCell: UITableViewCell, UITextViewDelegate {
     
     @IBOutlet weak var avatarView: AvatarView!
     @IBOutlet weak var avatarWrapper: UIView!
@@ -98,6 +98,7 @@ class ChatTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        messageTextView.delegate = self
         let wrapperTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(expandCell))
         wrapperTapRecognizer.delegate = self
         wrapperTapRecognizer.cancelsTouchesInView = false
@@ -427,5 +428,9 @@ class ChatTableViewCell: UITableViewCell {
         contentView.pin.width(size.width)
         layout()
         return CGSize(width: contentView.frame.width, height: messageWrapper.frame.height + topSpacing + bottomSpacing)
+    }
+    
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
+        return RouterHandler.shared.handle(url: URL)
     }
 }
