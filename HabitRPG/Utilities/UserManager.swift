@@ -121,15 +121,17 @@ class UserManager: NSObject {
         setTimezoneOffset(user)
 
         if configRepository.bool(variable: ConfigVariable.enableUsernameRelease) {
-            if user.flags?.verifiedUsername == false {
+            if user.flags?.verifiedUsername == true {
                 if var topController = UIApplication.shared.keyWindow?.rootViewController {
                     while let presentedViewController = topController.presentedViewController {
                         topController = presentedViewController
                     }
-                    let verifyViewController = StoryboardScene.User.verifyUsernameModalViewController.instantiate()
-                    verifyViewController.modalTransitionStyle = .crossDissolve
-                    verifyViewController.modalPresentationStyle = .overCurrentContext
-                    topController.present(verifyViewController, animated: true, completion: nil)
+                    if let controller = topController as? MainTabBarController {
+                        let verifyViewController = StoryboardScene.User.verifyUsernameModalViewController.instantiate()
+                        verifyViewController.modalTransitionStyle = .crossDissolve
+                        verifyViewController.modalPresentationStyle = .overCurrentContext
+                        controller.present(verifyViewController, animated: true, completion: nil)
+                    }
                 }
             }
         }

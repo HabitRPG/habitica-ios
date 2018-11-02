@@ -60,11 +60,7 @@ class HabiticaAppDelegate: NSObject {
         Instabug.reproStepsMode = .enabledWithNoScreenshots
         BugReporting.invocationOptions = .commentFieldRequired
         
-        if HabiticaAppDelegate.isRunningLive() {
-            Instabug.welcomeMessageMode = .disabled
-        } else {
-            Instabug.welcomeMessageMode = .beta
-        }
+        Instabug.welcomeMessageMode = .disabled
     }
     
     @objc
