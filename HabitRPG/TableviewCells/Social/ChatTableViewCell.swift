@@ -431,6 +431,6 @@ class ChatTableViewCell: UITableViewCell, UITextViewDelegate {
     }
     
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
-        return RouterHandler.shared.handle(url: URL)
+        return !RouterHandler.shared.handle(url: URL)
     }
 }

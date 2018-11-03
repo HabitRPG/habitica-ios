@@ -31,13 +31,12 @@ class RouterHandler: NSObject {
             self.displayTab(index: 4)
             self.push(StoryboardScene.Social.guildsOverviewViewController.instantiate())
         }
-        /*router.register("/challenges/:challengeID") { link in
-            self.displayTab(index: 4)
+        router.register("/challenges/:challengeID") { link in
             let viewController = StoryboardScene.Social.challengeDetailViewController.instantiate()
-            let viewModel = ChallengeDetailViewModel(challenge: selectedChallenge)
+            let viewModel = ChallengeDetailViewModel(challengeID: (link?.routeParameters["challengeID"] as? String) ?? "")
             viewController.viewModel = viewModel
             self.push(viewController)
-        }*/
+        }
         router.register("/challenges/myChallenges") { link in
             self.displayTab(index: 4)
             self.push(StoryboardScene.Social.guildsOverviewViewController.instantiate())

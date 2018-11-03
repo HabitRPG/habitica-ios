@@ -167,7 +167,7 @@ class ParticipantsButtonAttributeProvider: HRPGButtonAttributeProvider, HRPGButt
     let titleSignal: Signal<String, NoError>
     let enabledSignal: Signal<Bool, NoError>
     
-    init(_ challenge: ChallengeProtocol) {
+    init(_ challenge: ChallengeProtocol?) {
         let participantsViewableSignal = challengeProperty.signal
             .filter({ (challenge) -> Bool in
                 return challenge?.isOwner() == true && challenge?.isPublished() == true
@@ -207,7 +207,7 @@ class EndChallengeButtonAttributeProvider: HRPGButtonAttributeProvider, HRPGButt
     let titleSignal: Signal<String, NoError>
     let enabledSignal: Signal<Bool, NoError>
     
-    init(_ challenge: ChallengeProtocol) {
+    init(_ challenge: ChallengeProtocol?) {
         let endableSignal = challengeProperty.signal
             .filter({ (challenge) -> Bool in
                 return challenge?.isOwner() == true

@@ -41,7 +41,9 @@ class NewsViewController: HRPGUIViewController, UIWebViewDelegate {
             return true
         }
         if let url = request.url {
-            RouterHandler.shared.handleOrOpen(url: url)
+            DispatchQueue.main.asyncAfter(deadline: .now()+0.6) {
+                RouterHandler.shared.handleOrOpen(url: url)
+            }
             return false
         }
         return true
