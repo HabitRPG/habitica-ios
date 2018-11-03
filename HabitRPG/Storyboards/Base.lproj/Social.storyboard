@@ -26,7 +26,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m6q-Ji-EAr" customClass="UsernameLabel" customModule="Habitica" customModuleProvider="target">
-                                            <rect key="frame" x="60" y="17" width="0.0" height="0.0"/>
+                                            <rect key="frame" x="16" y="17" width="0.0" height="0.0"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" priority="501" constant="21" id="5uE-AJ-wfw"/>
                                             </constraints>
@@ -35,7 +35,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e2S-uS-OIt">
-                                            <rect key="frame" x="60" y="44" width="273" height="112"/>
+                                            <rect key="frame" x="16" y="44" width="317" height="112"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" priority="500" constant="18" id="E3i-j7-ITV"/>
                                             </constraints>
@@ -53,7 +53,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jAO-b2-Iy9">
-                                            <rect key="frame" x="60" y="21" width="0.0" height="19"/>
+                                            <rect key="frame" x="16" y="21" width="0.0" height="19"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" priority="501" constant="19" id="ZpD-vC-wkU"/>
                                                 <constraint firstAttribute="width" priority="500" constant="42" id="qFL-LM-xZ9"/>
@@ -63,10 +63,10 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0vJ-cS-5P7">
-                                            <rect key="frame" x="16" y="11" width="36" height="36"/>
+                                            <rect key="frame" x="8" y="11" width="0.0" height="36"/>
                                             <subviews>
                                                 <view tag="5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cOn-Go-iHY" customClass="AvatarView" customModule="Habitica" customModuleProvider="target">
-                                                    <rect key="frame" x="-11" y="-2" width="50" height="50"/>
+                                                    <rect key="frame" x="-29" y="-2" width="50" height="50"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="MHL-Ed-BXi"/>
@@ -78,7 +78,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="36" id="4Nw-m9-ixa"/>
                                                 <constraint firstItem="cOn-Go-iHY" firstAttribute="centerX" secondItem="0vJ-cS-5P7" secondAttribute="centerX" constant="-4" id="9Yq-Is-agM"/>
-                                                <constraint firstAttribute="width" constant="36" id="PXy-ZU-VHe"/>
+                                                <constraint firstAttribute="width" id="PXy-ZU-VHe"/>
                                                 <constraint firstItem="cOn-Go-iHY" firstAttribute="centerY" secondItem="0vJ-cS-5P7" secondAttribute="centerY" constant="5" id="e2q-BK-07f"/>
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
@@ -96,7 +96,7 @@
                                         <constraint firstItem="HwB-Xq-If7" firstAttribute="height" secondItem="m6q-Ji-EAr" secondAttribute="height" id="Q6I-cU-1dm"/>
                                         <constraint firstItem="m6q-Ji-EAr" firstAttribute="top" secondItem="Kx6-Wm-aAQ" secondAttribute="topMargin" constant="6" id="R7G-Vq-4Tj"/>
                                         <constraint firstItem="HwB-Xq-If7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="m6q-Ji-EAr" secondAttribute="trailing" constant="8" id="RDW-sK-dA6"/>
-                                        <constraint firstItem="0vJ-cS-5P7" firstAttribute="leading" secondItem="Kx6-Wm-aAQ" secondAttribute="leading" constant="16" id="SMh-RN-SwS"/>
+                                        <constraint firstItem="0vJ-cS-5P7" firstAttribute="leading" secondItem="Kx6-Wm-aAQ" secondAttribute="leading" constant="8" id="SMh-RN-SwS"/>
                                         <constraint firstItem="HwB-Xq-If7" firstAttribute="top" secondItem="Kx6-Wm-aAQ" secondAttribute="topMargin" constant="6" id="Ua5-1v-GNb"/>
                                         <constraint firstItem="e2S-uS-OIt" firstAttribute="leading" secondItem="0vJ-cS-5P7" secondAttribute="trailing" constant="8" id="b0y-T2-hNQ"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="e2S-uS-OIt" secondAttribute="bottom" constant="6" id="bz0-3y-OmP"/>
@@ -874,7 +874,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="UserProfileViewController" id="MTH-Re-wqo" customClass="UserProfileViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="WTt-7r-yfN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
@@ -2806,7 +2806,7 @@
         <segue reference="BKi-xg-gxr"/>
         <segue reference="9hs-wq-6bn"/>
         <segue reference="MnH-ar-sz7"/>
-        <segue reference="RWA-7r-R8g"/>
+        <segue reference="Hfa-0k-B92"/>
         <segue reference="yXa-uT-GhF"/>
         <segue reference="wif-V9-Mcy"/>
         <segue reference="rs9-Lf-2VQ"/>
