@@ -449,7 +449,7 @@
 		D9D17CCE1E6736B500AD9232 /* ChallengeDetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CCD1E6736B500AD9232 /* ChallengeDetailHeaderView.xib */; };
 		D9D17CD01E673CCC00AD9232 /* UIView-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D17CCF1E673CCC00AD9232 /* UIView-Extensions.swift */; };
 		D9D17CD21E6898E400AD9232 /* HabitTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CD11E6898E400AD9232 /* HabitTableViewCell.xib */; };
-		D9D17CD41E68995000AD9232 /* (null) in Resources */ = {isa = PBXBuildFile; };
+		D9D17CD41E68995000AD9232 /* BuildFile in Resources */ = {isa = PBXBuildFile; };
 		D9D17CD61E6899A800AD9232 /* ToDoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CD51E6899A800AD9232 /* ToDoTableViewCell.xib */; };
 		D9D17CDA1E69C68000AD9232 /* ChallengeDetailAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CD91E69C68000AD9232 /* ChallengeDetailAlert.xib */; };
 		D9D17CDE1E6AFFD900AD9232 /* ChallengeDetailAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D17CDD1E6AFFD900AD9232 /* ChallengeDetailAlert.swift */; };
@@ -2753,15 +2753,15 @@
 				49E378532009542C00E0DA3D /* ChallengeTableViewHeaderView.xib in Resources */,
 				498E4D001FA17C1A006933FF /* ChallengeCategoriesTableViewCell.xib in Resources */,
 				2914487A20864A3300F3A6B5 /* EquipmentOverviewView.xib in Resources */,
-				D9D17CD41E68995000AD9232 /* (null) in Resources */,
+				D9D17CD41E68995000AD9232 /* BuildFile in Resources */,
 				29028C442037132A00B7F704 /* SystemMessageTableViewCell.xib in Resources */,
 				29AAA1611F2B597400029737 /* SpeechbubbleView.xib in Resources */,
 				29FC885E2018D858002B3D3F /* WorldBossDescription.xib in Resources */,
 				293BB4A31FD07603003B6F4F /* StatsSliderView.xib in Resources */,
-				D9D17CD41E68995000AD9232 /* (null) in Resources */,
+				D9D17CD41E68995000AD9232 /* BuildFile in Resources */,
 				29E16311200E5FEA00685640 /* QuestProgressView.xib in Resources */,
 				2902799A20583E83006DACB9 /* OnePasswordExtension.strings in Resources */,
-				D9D17CD41E68995000AD9232 /* (null) in Resources */,
+				D9D17CD41E68995000AD9232 /* BuildFile in Resources */,
 				D9BB45CA1E76DF260002AE2E /* DailyTableViewCell.xib in Resources */,
 				29B6AD4A1F2A0C9800AC8878 /* LoginEntryView.xib in Resources */,
 				2914486C208512ED00F3A6B5 /* StableSectionHeader.xib in Resources */,
@@ -2929,6 +2929,9 @@
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FLEX/FLEX.framework",
 				"${BUILT_PRODUCTS_DIR}/FunkyNetwork/FunkyNetwork.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${PODS_ROOT}/Instabug/Instabug.framework",
 				"${PODS_ROOT}/Instabug/Instabug.framework.dSYM",
 				"${BUILT_PRODUCTS_DIR}/KLCPopup/KLCPopup.framework",
@@ -2942,6 +2945,7 @@
 				"${BUILT_PRODUCTS_DIR}/PinLayout/PinLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/PopupDialog/PopupDialog.framework",
 				"${BUILT_PRODUCTS_DIR}/Prelude/Prelude.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveSwift/ReactiveSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
@@ -2952,6 +2956,7 @@
 				"${BUILT_PRODUCTS_DIR}/SwiftyStoreKit/SwiftyStoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/VTAcknowledgementsViewController/VTAcknowledgementsViewController.framework",
 				"${BUILT_PRODUCTS_DIR}/XLForm/XLForm.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -2966,6 +2971,9 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLEX.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FunkyNetwork.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Instabug.framework",
 				"${DWARF_DSYM_FOLDER_PATH}/Instabug.framework.dSYM",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KLCPopup.framework",
@@ -2979,6 +2987,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PinLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PopupDialog.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Prelude.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
@@ -2989,6 +2998,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyStoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/VTAcknowledgementsViewController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XLForm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -3096,12 +3106,13 @@
 			files = (
 			);
 			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "bin/xcode-build-phase/fabric.sh";
+			shellScript = "bin/xcode-build-phase/fabric.sh\n";
 		};
 		D97AEBC81E7D7622007FD4A2 /* Lint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -3115,8 +3126,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "
-";
+			shellScript = "\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

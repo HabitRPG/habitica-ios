@@ -53,8 +53,10 @@ target 'Habitica' do
   pod 'FBSDKCoreKit', '~> 4'
   pod 'FBSDKLoginKit', '~> 4'
 
+  pod 'Firebase/Core'
   pod 'Fabric'
   pod 'Crashlytics'
+  pod 'Firebase/Performance'
 
   reactive_pods
 

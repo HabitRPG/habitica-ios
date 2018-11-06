@@ -62,8 +62,6 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
                 avatarSetupView.isHidden = false
             }
             scrollToPage(currentSetupStep)
-        } else {
-            enableNextButton(enabled: false)
         }
         
         if self.view.frame.size.height <= 480 {

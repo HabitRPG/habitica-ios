@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -591,6 +591,7 @@
                         <outlet property="displayNameIconView" destination="0Yt-T5-thI" id="3Np-sV-lqQ"/>
                         <outlet property="displayNameTextField" destination="zyp-9h-rAj" id="ica-Cj-geF"/>
                         <outlet property="errorLabel" destination="BVH-dn-2fc" id="Zhf-wS-b2y"/>
+                        <outlet property="scrollView" destination="2xD-rf-HIY" id="9gj-x6-N93"/>
                         <outlet property="usernameIconView" destination="eXq-X3-TB9" id="mMo-dz-O1m"/>
                         <outlet property="usernameTextField" destination="SDV-EC-LPB" id="slN-ZC-zNf"/>
                     </connections>

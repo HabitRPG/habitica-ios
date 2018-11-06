@@ -24,11 +24,16 @@ class VerifyUsernameModalViewController: UIViewController {
     @IBOutlet weak var usernameIconView: UIImageView!
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var confirmButton: UIButton!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     private var usernameProperty = MutableProperty<String?>(nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+
         
         displayNameIconView.image = HabiticaIcons.imageOfCheckmark(checkmarkColor: UIColor.green50(), percentage: 100)
         usernameIconView.image = HabiticaIcons.imageOfCheckmark(checkmarkColor: UIColor.green50(), percentage: 100)
@@ -56,6 +61,12 @@ class VerifyUsernameModalViewController: UIViewController {
                 self?.confirmButton.isEnabled = response.isUsable
                 self?.errorLabel.text = response.issues?.joined(separator: "\n")
             }).start()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     @objc
@@ -90,6 +101,29 @@ class VerifyUsernameModalViewController: UIViewController {
             })
             .observeCompleted {
                 self.confirmButton.isEnabled = true
+        }
+    }
+    
+    @objc func keyboardWasShown(notification: NSNotification) {
+        //Need to calculate keyboard exact size due to Apple suggestions
+        if let info = notification.userInfo {
+            let keyboardSize = (info[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
+            let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom:  keyboardSize!.height, right: 0)
+            
+            self.scrollView.contentInset = contentInsets
+            self.scrollView.scrollIndicatorInsets = contentInsets
+        }
+    }
+    
+    
+    @objc func keyboardWillBeHidden(notification: NSNotification) {
+        //Once keyboard disappears, restore original positions
+        if let info = notification.userInfo {
+            let keyboardSize = (info[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
+            let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: -keyboardSize!.height, right: 0.0)
+            self.scrollView.contentInset = contentInsets
+            self.scrollView.scrollIndicatorInsets = contentInsets
+            self.view.endEditing(true)
         }
     }
 }

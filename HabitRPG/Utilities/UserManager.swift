@@ -121,7 +121,7 @@ class UserManager: NSObject {
         setTimezoneOffset(user)
 
         if configRepository.bool(variable: ConfigVariable.enableUsernameRelease) {
-            if user.flags?.verifiedUsername == false {
+            if user.flags?.verifiedUsername == true {
                 if var topController = UIApplication.shared.keyWindow?.rootViewController {
                     while let presentedViewController = topController.presentedViewController {
                         topController = presentedViewController

@@ -187,11 +187,7 @@ class ChatTableViewCell: UITableViewCell {
         if inboxMessage.sent {
             displaynameLabel.text = user?.profile?.name?.unicodeEmoji
             contributorLevel = user?.contributor?.level ?? 0
-            if inboxMessage.username != nil {
-                setSubline(username: enableUsernameRelease ? user?.username : nil, date: inboxMessage.timestamp)
-            } else {
-                setSubline(username: nil, date: inboxMessage.timestamp)
-            }
+            setSubline(username: enableUsernameRelease ? user?.username : nil, date: inboxMessage.timestamp)
         } else {
             displaynameLabel.text = inboxMessage.displayName?.unicodeEmoji
             contributorLevel = inboxMessage.contributor?.level ?? 0

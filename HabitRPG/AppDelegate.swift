@@ -18,6 +18,7 @@ import RealmSwift
 import ReactiveSwift
 import Result
 import Instabug
+import Firebase
 
 //This will eventually replace the old ObjC AppDelegate once that code is ported to swift.
 //Reason for adding this class now is mostly, to configure PopupDialogs dim color.
@@ -41,6 +42,7 @@ class HabiticaAppDelegate: NSObject {
     
     @objc
     func setupLogging() {
+        FirebaseApp.configure()
         Fabric.with([Crashlytics.self])
         let keys = HabiticaKeys()
         let instabugKey = HabiticaAppDelegate.isRunningLive() ? keys.instabugLive : keys.instabugBeta
@@ -66,7 +68,6 @@ class HabiticaAppDelegate: NSObject {
     @objc
     func setupAnalytics() {
         let keys = HabiticaKeys()
-        
         Amplitude.instance().initializeApiKey(keys.amplitudeApiKey)
     }
     

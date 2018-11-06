@@ -61,13 +61,8 @@ class WelcomeViewController: UIViewController, TypingTextViewController, UITextF
             .skipNil()
             .on(value: {[weak self] response in
                 self?.usernameIconView.isHidden = !response.isUsable
-                if let action = self?.onEnableNextButton {
-                    action(response.isUsable)
-                }
                 self?.errorLabel.text = response.issues?.joined(separator: "\n")
-            }).start()
-        
-        displayNameProperty.producer
+            }).withLatest(from: displayNameProperty.producer
             .skipNil()
             .map({ (displayName) -> Bool in
                 return displayName.count > 0 && displayName.count <= 30
@@ -78,6 +73,11 @@ class WelcomeViewController: UIViewController, TypingTextViewController, UITextF
                     self?.errorLabel.text = L10n.Settings.displayNameLengthError
                 } else {
                     self?.errorLabel.text = nil
+                }
+            }))
+            .on(value: {[weak self] usernameResponse, isDisplayNameValid in
+                if let action = self?.onEnableNextButton {
+                    action(usernameResponse.isUsable && isDisplayNameValid)
                 }
             }).start()
         
