@@ -43,8 +43,8 @@
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
     if ([identifier isEqualToString:@"SelectedRecipientSegue"]) {
-        id userID = self.formValues[@"username"];
-        if (userID == [NSNull null] || ![userID isValidUUID]) {
+        id username = self.formValues[@"username"];
+        if (username == [NSNull null]) {
             HabiticaAlertController *alertController = [HabiticaAlertController genericErrorWithMessage:NSLocalizedString(@"You have to specify a valid Habitica Username as recipient.", nil) title:NSLocalizedString(@"Invalid Habitica Username", nil)];
             [alertController show];
             return NO;
