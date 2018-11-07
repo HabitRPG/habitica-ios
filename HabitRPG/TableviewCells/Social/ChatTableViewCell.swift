@@ -95,7 +95,7 @@ class ChatTableViewCell: UITableViewCell, UITextViewDelegate {
             }
         }
     }
-    
+                                                                                                                                                    
     override func awakeFromNib() {
         super.awakeFromNib()
         messageTextView.delegate = self

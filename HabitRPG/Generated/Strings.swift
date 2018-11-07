@@ -195,13 +195,13 @@ internal enum L10n {
   internal static let username = L10n.tr("Mainstrings", "username")
   /// Your username was confirmed
   internal static let usernameConfirmedToast = L10n.tr("Mainstrings", "username_confirmed_toast")
-  /// Your display name hasn’t changed but your old login name will now be your public username used for invitations, chat @mentions, and messaging.
+  /// Your display name hasn’t changed but your old login name will now be your username used for invitations, chat @mentions, and messaging.
   internal static let usernamePromptBody = L10n.tr("Mainstrings", "username_prompt_body")
-  /// Usernames should conform to our Terms of Service and Community Guidelines. If you didn’t previously set a login name, your username was auto-generated.
+  /// Usernames should conform to our #<ts>Terms of Service# and #<cg>Community Guidelines#. If you didn’t previously set a login name, your username was auto-generated.
   internal static let usernamePromptDisclaimer = L10n.tr("Mainstrings", "username_prompt_disclaimer")
   /// It’s time to set your username!
   internal static let usernamePromptTitle = L10n.tr("Mainstrings", "username_prompt_title")
-  /// If you’d like to learn more about this change, visit our wiki.
+  /// If you’d like to learn more about this change, #<wk>visit our wiki.#
   internal static let usernamePromptWiki = L10n.tr("Mainstrings", "username_prompt_wiki")
   /// Invitation was sent to users.
   internal static let usersInvited = L10n.tr("Mainstrings", "users_invited")

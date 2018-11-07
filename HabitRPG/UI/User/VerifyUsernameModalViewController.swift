@@ -25,6 +25,8 @@ class VerifyUsernameModalViewController: UIViewController {
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var descriptionTextView: UITextView!
+    @IBOutlet weak var footerTextView: UITextView!
     
     private var usernameProperty = MutableProperty<String?>(nil)
     
@@ -61,6 +63,11 @@ class VerifyUsernameModalViewController: UIViewController {
                 self?.confirmButton.isEnabled = response.isUsable
                 self?.errorLabel.text = response.issues?.joined(separator: "\n")
             }).start()
+        
+        let descriptionString = NSMutableAttributedString(string: "\(L10n.usernamePromptBody)\n\n")
+        descriptionString.append(formattedWikiString())
+        descriptionTextView.attributedText = descriptionString
+        footerTextView.attributedText = formattedFooterString()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -125,6 +132,42 @@ class VerifyUsernameModalViewController: UIViewController {
             self.scrollView.scrollIndicatorInsets = contentInsets
             self.view.endEditing(true)
         }
+    }
+    
+    private func formattedWikiString() -> NSAttributedString {
+        let stringComponents = L10n.usernamePromptWiki.split(separator: "#")
+        let finalString = NSMutableAttributedString()
+        for component in stringComponents {
+            if component.starts(with: "<wk>") {
+                let attributedComponent = NSMutableAttributedString(string: component.replacingOccurrences(of: "<wk>", with: ""))
+                attributedComponent.addAttribute(.link, value: "https://habitica.wikia.com/wiki/Player_Names", range: NSRange(location: 0, length: attributedComponent.length))
+                finalString.append(attributedComponent)
+            } else {
+                finalString.append(NSAttributedString(string: String(component)))
+            }
+        }
+        
+        return finalString
+    }
+    
+    private func formattedFooterString() -> NSAttributedString {
+        let stringComponents = L10n.usernamePromptDisclaimer.split(separator: "#")
+        let finalString = NSMutableAttributedString()
+        for component in stringComponents {
+            if component.starts(with: "<ts>") {
+                let attributedComponent = NSMutableAttributedString(string: component.replacingOccurrences(of: "<ts>", with: ""))
+                attributedComponent.addAttribute(.link, value: "https://habitica.com/static/terms", range: NSRange(location: 0, length: attributedComponent.length))
+                finalString.append(attributedComponent)
+            } else if component.starts(with: "<cg>") {
+                let attributedComponent = NSMutableAttributedString(string: component.replacingOccurrences(of: "<cg>", with: ""))
+                attributedComponent.addAttribute(.link, value: "https://habitica.com/static/community-guidelines", range: NSRange(location: 0, length: attributedComponent.length))
+                finalString.append(attributedComponent)
+            } else {
+                finalString.append(NSAttributedString(string: String(component)))
+            }
+        }
+        
+        return finalString
     }
 }
 

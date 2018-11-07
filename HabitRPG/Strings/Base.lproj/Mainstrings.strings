@@ -290,10 +290,10 @@
 "users_invited" = "Invitation was sent to users.";
 "username" = "Username";
 "username_prompt_title" = "It’s time to set your username!";
-"username_prompt_body" = "Your display name hasn’t changed but your old login name will now be your public username used for invitations, chat @mentions, and messaging.";
-"username_prompt_wiki" = "If you’d like to learn more about this change, visit our wiki.";
+"username_prompt_body" = "Your display name hasn’t changed but your old login name will now be your username used for invitations, chat @mentions, and messaging.";
+"username_prompt_wiki" = "If you’d like to learn more about this change, #<wk>visit our wiki.#";
 "confirm_username" = "Confirm Username";
-"username_prompt_disclaimer" = "Usernames should conform to our Terms of Service and Community Guidelines. If you didn’t previously set a login name, your username was auto-generated.";
+"username_prompt_disclaimer" = "Usernames should conform to our #<ts>Terms of Service# and #<cg>Community Guidelines#. If you didn’t previously set a login name, your username was auto-generated.";
 "settings.confirm_username_prompt" = "Are you sure you want to confirm your current username?";
 "settings.confirm_username_description" = "Confirming your username will make it public for invitations, @mentions and messaging. You can change your username from settings at any time.";
 "username_confirmed_toast" = "Your username was confirmed";

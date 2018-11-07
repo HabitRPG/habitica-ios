@@ -10,6 +10,7 @@ PODS:
   - Crashlytics (3.11.1):
     - Fabric (~> 1.8.1)
   - DateTools (2.0.0)
+  - DeepLinkKit (1.5.0)
   - Down (0.5.2)
   - DynamicBlurView (3.0.1)
   - Eureka (4.3.0)
@@ -186,6 +187,7 @@ DEPENDENCIES:
   - AppAuth
   - Crashlytics
   - DateTools
+  - DeepLinkKit
   - Down
   - Eureka
   - Fabric
@@ -225,6 +227,7 @@ SPEC REPOS:
     - Bolts
     - Crashlytics
     - DateTools
+    - DeepLinkKit
     - Down
     - DynamicBlurView
     - Eureka
@@ -289,6 +292,7 @@ SPEC CHECKSUMS:
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   Crashlytics: ca7ab4bc304aa216bdc2e4c1a96389ee77252203
   DateTools: 933ac9c490f21f92127cf690ccd8c397e0126caf
+  DeepLinkKit: 98a26f2c5cf4c86b97c1170cdf3737ae49a3a50c
   Down: 587371ad58002b06023d9c602519216862c3acbc
   DynamicBlurView: b1df5415f9bd31897549e5d7077e5ec120a4d636
   Eureka: 6d711cb30ca333b4bc893110285a722ae3840114
@@ -338,6 +342,6 @@ SPEC CHECKSUMS:
   VTAcknowledgementsViewController: 9bc9f81aa09bc574b22e10f01fd84f73918280c7
   XLForm: 04110197c12187dd28a6c7295d3d8b95f4fdb4de
 
-PODFILE CHECKSUM: 68b31f25aa521fd61c2f96126559b44bcb6a7b0c
+PODFILE CHECKSUM: 60fe13df00843bebcb2cab935574cb7c9b78ad5c
 
 COCOAPODS: 1.5.3
