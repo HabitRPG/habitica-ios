@@ -180,9 +180,7 @@ class GroupChatViewController: SLKTextViewController {
     }
     
     func configureReplyTo(_ username: String?) {
-        if !textView.text.contains("@\(username ?? "")") {
-            textView.text = "@\(username ?? "") \(textView.text ?? "")"
-        }
+        textView.text = "\(textView.text ?? "") @\(username ?? "")"
         textView.becomeFirstResponder()
         textView.selectedRange = NSRange(location: self.textView.text.count, length: 0)
     }
