@@ -32,8 +32,8 @@ class PartyViewController: SplitSocialViewController {
                     self?.userIDButton.setTitle(user.id, for: .normal)
                     self?.qrCodeView.userID = user.id
                     self?.qrCodeView.setAvatarViewWithUser(user)
-                    self?.groupInvitationListView.set(invitations: user.invitations)
                 }
+                self?.groupInvitationListView.set(invitations: user.invitations)
             })
             .map({ (user) -> String? in
             return user.party?.id

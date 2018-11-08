@@ -101,7 +101,9 @@ class GroupChatViewController: SLKTextViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if let groupID = self.groupID, groupID != Constants.TAVERN_ID {
-            socialRepository.markChatAsSeen(groupID: groupID).observeCompleted {}
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.socialRepository.markChatAsSeen(groupID: groupID).observeCompleted {}
+            }
         }
     }
     
@@ -180,7 +182,11 @@ class GroupChatViewController: SLKTextViewController {
     }
     
     func configureReplyTo(_ username: String?) {
-        textView.text = "\(textView.text ?? "") @\(username ?? "")"
+        if textView.text.count > 0 {
+            textView.text = "\(textView.text ?? "") @\(username ?? "") "
+        } else {
+            textView.text = "@\(username ?? "") "
+        }
         textView.becomeFirstResponder()
         textView.selectedRange = NSRange(location: self.textView.text.count, length: 0)
     }
