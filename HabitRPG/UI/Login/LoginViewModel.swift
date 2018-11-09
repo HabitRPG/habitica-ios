@@ -79,6 +79,7 @@ protocol LoginViewModelOutputs {
     var loadingIndicatorVisibility: Signal<Bool, NoError> { get }
     
     var currentAuthType: LoginViewAuthType { get }
+    var arePasswordsSame: Signal<Bool, NoError> { get }
 }
 
 protocol LoginViewModelType {
@@ -154,10 +155,12 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
         self.passwordFieldReturnButtonIsDone = isRegistering.map({ value -> Bool in
             return !value
         })
-        self.passwordRepeatFieldReturnButtonIsDone = isRegistering.map({ value -> Bool in
-            return value
-        })
+        self.passwordRepeatFieldReturnButtonIsDone = isRegistering
 
+        self.arePasswordsSame = Signal.combineLatest(passwordChangedProperty.signal, passwordRepeatChangedProperty.signal).map({ (password, passwordRepeat) -> Bool in
+            return password == passwordRepeat
+        })
+        
         self.isFormValid = authValues.map(isValid)
 
         self.emailChangedProperty.value = ""
@@ -303,6 +306,10 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
                     }
                 }
             }
+        } else {
+            if authValues.authType == .register && authValues.password != authValues.passwordRepeat {
+                showErrorObserver.send(value: L10n.Login.passwordConfirmError)
+            }
         }
     }
 
@@ -339,7 +346,7 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
                         case .success:
                             self?.onSuccessfulLogin()
                         case .failure:
-                            self?.showErrorObserver.send(value: "There was an error with the authentication. Try again later")
+                            self?.showErrorObserver.send(value: L10n.Login.authenticationError)
                         }
                     }
                 }
@@ -367,7 +374,7 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
                     case .success:
                         self?.onSuccessfulLogin()
                     case .failure:
-                        self?.showErrorObserver.send(value: "There was an error with the authentication. Try again later")
+                        self?.showErrorObserver.send(value: L10n.Login.authenticationError)
                     }
                 }
             }
@@ -392,6 +399,7 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
     internal var showNextViewController: Signal<String, NoError>
     internal var loadingIndicatorVisibility: Signal<Bool, NoError>
     internal var onePasswordFindLogin: Signal<(), NoError>
+    internal var arePasswordsSame: Signal<Bool, NoError>
     
     internal var formVisibility: Signal<Bool, NoError>
     internal var beginButtonsVisibility: Signal<Bool, NoError>

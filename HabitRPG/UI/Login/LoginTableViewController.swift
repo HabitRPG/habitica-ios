@@ -327,6 +327,10 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
         self.emailField.entryView.reactive.text <~ self.viewModel.outputs.emailText
         self.passwordField.entryView.reactive.text <~ self.viewModel.outputs.passwordText
         self.passwordRepeatField.entryView.reactive.text <~ self.viewModel.outputs.passwordRepeatText
+        
+        self.viewModel.outputs.arePasswordsSame.observeValues { areSame in
+            self.passwordRepeatField.hasError = !areSame
+        }
     }
 
     func setupOnePassword() {

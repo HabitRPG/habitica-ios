@@ -388,6 +388,13 @@ internal enum L10n {
     }
   }
 
+  internal enum Login {
+    /// There was an error with the authentication. Try again later
+    internal static let authenticationError = L10n.tr("Mainstrings", "login.authentication_error")
+    /// Password and password confirmation have to match.
+    internal static let passwordConfirmError = L10n.tr("Mainstrings", "login.password_confirm_error")
+  }
+
   internal enum Member {
     /// Last logged in
     internal static let lastLoggedIn = L10n.tr("Mainstrings", "member.last_logged_in")

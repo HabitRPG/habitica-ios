@@ -311,3 +311,5 @@
 "about.no_email_title" = "Your email isn't set up yet";
 "about.no_email_message" = "Whoops, looks like you haven't set up your email on this phone yet. Configure an account in the iOS mail app to use this quick-reporting option, or just email us directly at %@";
 "damage_paused" = "Damage Paused";
+"login.password_confirm_error" = "Password and password confirmation have to match.";
+"login.authentication_error" = "There was an error with the authentication. Try again later";
