@@ -13,7 +13,7 @@ extension Down {
 
     func toHabiticaAttributedString(baseFont: UIFont = CustomFontMetrics.scaledSystemFont(ofSize: 15),
                                     textColor: UIColor = UIColor.gray100()) throws -> NSMutableAttributedString {
-        let mentions = markdownString.components(separatedBy: " ").filter({ $0.first == "@"})
+        let mentions = markdownString.split { [" ", "\n", "\t"].contains($0.description) }.filter({ $0.first == "@"})
         if markdownString.range(of: "[*_#\\[<]", options: .regularExpression, range: nil, locale: nil) == nil {
             let string = NSMutableAttributedString(string: markdownString,
                                                    attributes: [.font: CustomFontMetrics.scaledSystemFont(ofSize: 15),
@@ -63,10 +63,10 @@ extension Down {
         return string
     }
     
-    private func applyMentions(_ string: NSMutableAttributedString, mentions: [String]) {
+    private func applyMentions(_ string: NSMutableAttributedString, mentions: [String.SubSequence]) {
         let text = string.mutableString
         for mention in mentions {
-            let range = text.range(of: mention)
+            let range = text.range(of: String(mention))
             string.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.purple400(), range: range)
         }
     }
