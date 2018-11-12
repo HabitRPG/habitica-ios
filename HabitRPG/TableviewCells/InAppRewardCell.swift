@@ -23,7 +23,7 @@ class InAppRewardCell: UICollectionViewCell {
     var itemsLeft = 0 {
         didSet {
             if itemsLeft > 0 {
-                infoImageView.image = HabiticaIcons.imageOfItemIndicatorNumber
+                infoImageView.image = HabiticaIcons.imageOfItemIndicatorNumber()
                 infoImageView.isHidden = false
                 infoLabel.isHidden = false
                 infoLabel.text = String(describing: itemsLeft)
@@ -37,7 +37,7 @@ class InAppRewardCell: UICollectionViewCell {
     private var isLocked = false {
         didSet {
             if isLocked {
-                infoImageView.image = HabiticaIcons.imageOfItemIndicatorLocked
+                infoImageView.image = HabiticaIcons.imageOfItemIndicatorLocked()
                 infoImageView.isHidden = false
                 infoLabel.isHidden = true
             } else {
@@ -50,7 +50,7 @@ class InAppRewardCell: UICollectionViewCell {
     private var availableUntil: Date? = nil {
         didSet {
             if availableUntil != nil {
-                infoImageView.image = HabiticaIcons.imageOfItemIndicatorLimited
+                infoImageView.image = HabiticaIcons.imageOfItemIndicatorLimited()
                 infoImageView.isHidden = false
                 infoLabel.isHidden = true
             } else if isLocked == false {

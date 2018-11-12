@@ -28,6 +28,7 @@ class VerifyUsernameModalViewController: UIViewController {
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var footerTextView: UITextView!
     
+    private var displaynameProperty = MutableProperty<String?>(nil)
     private var usernameProperty = MutableProperty<String?>(nil)
     
     override func viewDidLoad() {
@@ -36,44 +37,75 @@ class VerifyUsernameModalViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
 
-        
-        displayNameIconView.image = HabiticaIcons.imageOfCheckmark(checkmarkColor: UIColor.green50(), percentage: 100)
         usernameIconView.image = HabiticaIcons.imageOfCheckmark(checkmarkColor: UIColor.green50(), percentage: 100)
+        
+        displayNameTextField.addTarget(self, action: #selector(displayNameChanged), for: .editingChanged)
+        usernameTextField.addTarget(self, action: #selector(usernameChanged), for: .editingChanged)
+        
+        SignalProducer.combineLatest(displayNameChangeProducer(), usernameChangeProducer()).on(value: {[weak self] (displayNameUsable, usernameUsable) in
+            self?.confirmButton.isEnabled = usernameUsable.isUsable && displayNameUsable
+            var issues = usernameUsable.issues ?? []
+            if !displayNameUsable {
+                issues.append("Display name must be between 1 and 30 characters")
+            }
+            self?.errorLabel.text = issues.joined(separator: "\n")
+        }).start()
+        
+        let descriptionString = NSMutableAttributedString(string: "\(L10n.usernamePromptBody)\n\n")
+        descriptionString.addAttribute(.foregroundColor, value: UIColor.gray100(), range: NSRange(location: 0, length: descriptionString.length))
+        descriptionString.append(formattedWikiString())
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .center
+        descriptionString.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length: descriptionString.length))
+        descriptionTextView.attributedText = descriptionString
+        footerTextView.attributedText = formattedFooterString()
         
         userRepository.getUser().take(first: 1) .on(value: { user in
             self.displayNameTextField.text = user.profile?.name
+            self.displaynameProperty.value = user.profile?.name
             self.usernameTextField.text = user.username
+            self.usernameProperty.value = user.username
             self.currentUsername = user.username
         }).start()
-        
-        displayNameIconView.isHidden = true
-        usernameIconView.isHidden = true
-        
-        usernameTextField.addTarget(self, action: #selector(usernameChanged), for: .editingChanged)
-        
-        usernameProperty.producer.throttle(2, on: QueueScheduler.main)
+    }
+    
+    private func displayNameChangeProducer() -> SignalProducer<Bool, NoError> {
+        return displaynameProperty.producer.map { name -> Bool in
+            return name?.count ?? 0 > 1 && name?.count ?? 0 < 30
+            }.on(value: {[weak self] isUsable in
+                if isUsable {
+                    self?.displayNameIconView.image = HabiticaIcons.imageOfCheckmark(checkmarkColor: UIColor.green50(), percentage: 100)
+                } else {
+                    self?.displayNameIconView.image = HabiticaIcons.imageOfAlertIcon
+                }
+            })
+    }
+    
+    private func usernameChangeProducer() -> SignalProducer<VerifyUsernameResponse, NoError> {
+        return usernameProperty.producer.throttle(2, on: QueueScheduler.main)
             .skipNil()
-            .filter({[weak self] username -> Bool in self?.currentUsername != username })
             .flatMap(.latest) {[weak self] text -> SignalProducer<VerifyUsernameResponse?, NoError> in
                 return self?.userRepository.verifyUsername(text).producer ?? SignalProducer.empty
             }
             .skipNil()
             .on(value: {[weak self] response in
-                self?.usernameIconView.isHidden = !response.isUsable
-                self?.confirmButton.isEnabled = response.isUsable
-                self?.errorLabel.text = response.issues?.joined(separator: "\n")
-            }).start()
-        
-        let descriptionString = NSMutableAttributedString(string: "\(L10n.usernamePromptBody)\n\n")
-        descriptionString.append(formattedWikiString())
-        descriptionTextView.attributedText = descriptionString
-        footerTextView.attributedText = formattedFooterString()
+                if response.isUsable {
+                    self?.usernameIconView.image = HabiticaIcons.imageOfCheckmark(checkmarkColor: UIColor.green50(), percentage: 100)
+                } else {
+                    self?.usernameIconView.image = HabiticaIcons.imageOfAlertIcon
+                }
+            })
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc
+    private func displayNameChanged(_ textField: UITextField?) {
+        displaynameProperty.value = textField?.text
     }
     
     @objc
@@ -140,10 +172,14 @@ class VerifyUsernameModalViewController: UIViewController {
         for component in stringComponents {
             if component.starts(with: "<wk>") {
                 let attributedComponent = NSMutableAttributedString(string: component.replacingOccurrences(of: "<wk>", with: ""))
-                attributedComponent.addAttribute(.link, value: "https://habitica.wikia.com/wiki/Player_Names", range: NSRange(location: 0, length: attributedComponent.length))
+                let range = NSRange(location: 0, length: attributedComponent.length)
+                attributedComponent.addAttribute(.link, value: "https://habitica.wikia.com/wiki/Player_Names", range: range)
                 finalString.append(attributedComponent)
             } else {
-                finalString.append(NSAttributedString(string: String(component)))
+                let attributedComponent = NSMutableAttributedString(string: String(component))
+                let range = NSRange(location: 0, length: attributedComponent.length)
+                attributedComponent.addAttribute(.foregroundColor, value: UIColor.gray100(), range: range)
+                finalString.append(attributedComponent)
             }
         }
         
@@ -163,9 +199,14 @@ class VerifyUsernameModalViewController: UIViewController {
                 attributedComponent.addAttribute(.link, value: "https://habitica.com/static/community-guidelines", range: NSRange(location: 0, length: attributedComponent.length))
                 finalString.append(attributedComponent)
             } else {
-                finalString.append(NSAttributedString(string: String(component)))
-            }
+                let attributedComponent = NSMutableAttributedString(string: String(component))
+                let range = NSRange(location: 0, length: attributedComponent.length)
+                attributedComponent.addAttribute(.foregroundColor, value: UIColor.gray100(), range: range)
+                finalString.append(attributedComponent)            }
         }
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .center
+        finalString.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length: finalString.length))
         
         return finalString
     }
