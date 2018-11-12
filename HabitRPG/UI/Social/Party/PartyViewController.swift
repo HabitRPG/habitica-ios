@@ -64,8 +64,7 @@ class PartyViewController: SplitSocialViewController {
             joinPartyDescription.text = L10n.Party.joinPartyDescription
         }
         
-        let spriteSuffix = configRepository.string(variable: .shopSpriteSuffix, defaultValue: "")
-        ImageManager.getImage(name: "timeTravelersShop_background"+spriteSuffix) { (image, _) in
+        ImageManager.getImage(name: "timeTravelersShop_background_fall") { (image, _) in
             self.noPartyHeaderBackground.image = image?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: UIImage.ResizingMode.tile)
         }
         let gradient = CAGradientLayer()

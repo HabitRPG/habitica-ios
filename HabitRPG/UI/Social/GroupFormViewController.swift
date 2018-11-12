@@ -41,7 +41,8 @@ class GroupFormViewController: FormViewController {
             <<< TextRow(GroupFormTags.name) { row in
                 row.title = L10n.name
                 row.cell.tintColor = ThemeService.shared.theme.tintColor
-                row.add(rule: RuleRequired())
+                row.add(rule: RuleRequired(msg: L10n.Groups.errorNameRequired))
+                row.validationOptions = .validatesOnChange
             }
             <<< TextAreaRow(GroupFormTags.summary) { row in
                 row.placeholder = L10n.summary
@@ -115,11 +116,19 @@ class GroupFormViewController: FormViewController {
     }
     
     @IBAction func saveButtonTapped(_ sender: Any) {
-        save()
-        self.dismiss(animated: true, completion: nil)
+        if save() {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
-    private func save() {
+    private func save() -> Bool {
+        let errors = form.validate()
+        if errors.count > 0 {
+            let alert = HabiticaAlertController(title: errors[0].msg)
+            alert.addCloseAction()
+            alert.show()
+            return false
+        }
         let values = form.values()
         group.name = values[GroupFormTags.name] as? String
         if values[GroupFormTags.summary] != nil {
@@ -137,5 +146,6 @@ class GroupFormViewController: FormViewController {
         } else {
             socialRepository.updateGroup(group).observeCompleted {}
         }
+        return true
     }
 }

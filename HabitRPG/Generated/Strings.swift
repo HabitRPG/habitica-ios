@@ -331,6 +331,8 @@ internal enum L10n {
   internal enum Groups {
     /// Assign new Leader
     internal static let assignNewLeader = L10n.tr("Mainstrings", "groups.assign_new_leader")
+    /// Name may not be empty.
+    internal static let errorNameRequired = L10n.tr("Mainstrings", "groups.error_name_required")
     /// %@ invited you to join Guild: %@
     internal static func guildInvitationInvitername(_ p1: String, _ p2: String) -> String {
       return L10n.tr("Mainstrings", "groups.guild_invitation_invitername", p1, p2)

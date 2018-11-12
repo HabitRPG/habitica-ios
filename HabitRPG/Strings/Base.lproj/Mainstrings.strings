@@ -313,3 +313,4 @@
 "damage_paused" = "Damage Paused";
 "login.password_confirm_error" = "Password and password confirmation have to match.";
 "login.authentication_error" = "There was an error with the authentication. Try again later";
+"groups.error_name_required" = "Name may not be empty.";
