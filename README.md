@@ -1,4 +1,5 @@
 # Habitica for iOS [![Build Status](https://travis-ci.org/HabitRPG/habitica-ios.svg?branch=master)](https://travis-ci.org/HabitRPG/habitica-ios)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FHabitRPG%2Fhabitica-ios.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FHabitRPG%2Fhabitica-ios?ref=badge_shield)
 
 Native iOS app for [Habitica](https://habitica.com/).
 
@@ -56,3 +57,7 @@ CocoaPods requires that you open the *Habitica.xcworkspace*.
 $ open Habitica.xcworkspace
 ```
 
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FHabitRPG%2Fhabitica-ios.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FHabitRPG%2Fhabitica-ios?ref=badge_large)
