@@ -13,7 +13,7 @@ extension Down {
 
     func toHabiticaAttributedString(baseFont: UIFont = CustomFontMetrics.scaledSystemFont(ofSize: 15),
                                     textColor: UIColor = UIColor.gray100()) throws -> NSMutableAttributedString {
-        let mentions = markdownString.split { [" ", "\n", "\t"].contains($0.description) }.filter({ $0.first == "@"})
+        let mentions = matchUsernames(text: markdownString)
         if markdownString.range(of: "[*_#\\[<]", options: .regularExpression, range: nil, locale: nil) == nil {
             let string = NSMutableAttributedString(string: markdownString,
                                                    attributes: [.font: CustomFontMetrics.scaledSystemFont(ofSize: 15),
@@ -63,11 +63,26 @@ extension Down {
         return string
     }
     
-    private func applyMentions(_ string: NSMutableAttributedString, mentions: [String.SubSequence]) {
+    private func applyMentions(_ string: NSMutableAttributedString, mentions: [String]) {
         let text = string.mutableString
         for mention in mentions {
             let range = text.range(of: String(mention))
             string.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.purple400(), range: range)
+        }
+    }
+    
+    private func matchUsernames(text: String) -> [String] {
+        
+        do {
+            let regex = try NSRegularExpression(pattern: "\\B@[-\\w]+")
+            let results = regex.matches(in: text,
+                                        range: NSRange(text.startIndex..., in: text))
+            return results.map {
+                String(text[Range($0.range, in: text)!])
+            }
+        } catch let error {
+            print("invalid regex: \(error.localizedDescription)")
+            return []
         }
     }
 }
