@@ -14,6 +14,7 @@ import ReactiveSwift
 public class InviteToGroupCall: ResponseObjectCall<EmptyResponseProtocol, APIEmptyResponse> {
     public init(groupID: String, members: [String: Any], stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "group.json")) {
         let json = try? JSONSerialization.data(withJSONObject: members, options: .prettyPrinted)
+        print(try! JSONSerialization.jsonObject(with: json!, options: .allowFragments))
         super.init(httpMethod: .POST, endpoint: "groups/\(groupID)/invite", postData: json, stubHolder: stubHolder)
     }
 }

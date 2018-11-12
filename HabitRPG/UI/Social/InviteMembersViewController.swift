@@ -41,10 +41,8 @@ class InviteMembersViewController: FormViewController {
         if let section = form.sectionBy(tag: InviteMembersFormTags.userIDSection) {
             var sectionMembers = [String]()
             for row in section {
-                for row in section {
-                    if let textRow = row as? TextRow, let value = textRow.value {
-                        sectionMembers.append(value)
-                    }
+                if let textRow = row as? TextRow, let value = textRow.value {
+                    sectionMembers.append(value)
                 }
             }
             members["uuids"] = sectionMembers
@@ -52,10 +50,8 @@ class InviteMembersViewController: FormViewController {
         if let section = form.sectionBy(tag: InviteMembersFormTags.usernameSection) {
             var sectionMembers = [String]()
             for row in section {
-                for row in section {
-                    if let textRow = row as? TextRow, let value = textRow.value {
-                        sectionMembers.append(value)
-                    }
+                if let textRow = row as? TextRow, let value = textRow.value {
+                    sectionMembers.append(value)
                 }
             }
             members["usernames"] = sectionMembers
@@ -63,13 +59,11 @@ class InviteMembersViewController: FormViewController {
         if let section = form.sectionBy(tag: InviteMembersFormTags.emailsSection) {
             var sectionMembers = [[String: String]]()
             for row in section {
-                for row in section {
-                    if let textRow = row as? TextRow, let value = textRow.value {
-                        sectionMembers.append([
-                            "email": value,
-                            "name": value
-                            ])
-                    }
+                if let textRow = row as? TextRow, let value = textRow.value {
+                    sectionMembers.append([
+                        "email": value,
+                        "name": value
+                        ])
                 }
             }
             members["emails"] = sectionMembers

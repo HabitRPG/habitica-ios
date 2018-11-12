@@ -359,7 +359,6 @@
 		D9479607196DF4B6002CB34C /* HRPGImageOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9479606196DF4B6002CB34C /* HRPGImageOverlayView.m */; };
 		D94AADBA192A5CE700546C8E /* HRPGSpellTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = D94AADB9192A5CE700546C8E /* HRPGSpellTabBarController.m */; };
 		D94B96A01B8B2CEE00C977C2 /* content-24.8.15.json in Resources */ = {isa = PBXBuildFile; fileRef = D94B969F1B8B2CEE00C977C2 /* content-24.8.15.json */; };
-		D94FEDEE1BB6DA8E0046A52E /* HRPGInviteMembersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D94FEDED1BB6DA8E0046A52E /* HRPGInviteMembersViewController.m */; };
 		D9525F9B1E5F559600C529B8 /* ChallengeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9525F9A1E5F559600C529B8 /* ChallengeTableViewCell.swift */; };
 		D9525F9D1E64739900C529B8 /* PaddedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9525F9C1E64739900C529B8 /* PaddedView.swift */; };
 		D9525F9F1E65A18300C529B8 /* EmojifiedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9525F9E1E65A18300C529B8 /* EmojifiedString.swift */; };
@@ -1102,7 +1101,6 @@
 		D94AADB8192A5CE700546C8E /* HRPGSpellTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGSpellTabBarController.h; sourceTree = "<group>"; };
 		D94AADB9192A5CE700546C8E /* HRPGSpellTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGSpellTabBarController.m; sourceTree = "<group>"; };
 		D94B969F1B8B2CEE00C977C2 /* content-24.8.15.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "content-24.8.15.json"; path = "HabiticaTests/Fixtures/content-24.8.15.json"; sourceTree = SOURCE_ROOT; };
-		D94FEDED1BB6DA8E0046A52E /* HRPGInviteMembersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HRPGInviteMembersViewController.m; path = HabitRPG/TableViewController/Modals/HRPGInviteMembersViewController.m; sourceTree = SOURCE_ROOT; };
 		D9525F9A1E5F559600C529B8 /* ChallengeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeTableViewCell.swift; sourceTree = "<group>"; };
 		D9525F9C1E64739900C529B8 /* PaddedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddedView.swift; sourceTree = "<group>"; };
 		D9525F9E1E65A18300C529B8 /* EmojifiedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojifiedString.swift; sourceTree = "<group>"; };
@@ -2446,7 +2444,6 @@
 				4908642C1F4530DC00BD9896 /* Shop */,
 				D9ADD3611944FDBE006202C1 /* HRPGFilterViewController.h */,
 				D9ADD3621944FDBE006202C1 /* HRPGFilterViewController.m */,
-				D94FEDED1BB6DA8E0046A52E /* HRPGInviteMembersViewController.m */,
 				D92D26121D58EEBA001FD977 /* HRPGQRCodeScannerViewController.h */,
 				D92D26131D58EEBA001FD977 /* HRPGQRCodeScannerViewController.m */,
 				D93432551D5A2B9400025412 /* HRPGChoosePMRecipientViewController.h */,
@@ -3270,7 +3267,6 @@
 				291448882088F3F700F3A6B5 /* NSAttributedString.swift in Sources */,
 				29AAA15D1F2A3AA600029737 /* GradientView.swift in Sources */,
 				29B4788A20BD752C00B6123F /* SkillsTaskTableViewController.swift in Sources */,
-				D94FEDEE1BB6DA8E0046A52E /* HRPGInviteMembersViewController.m in Sources */,
 				294EB59D1FA0A7E4006083BD /* FixCharacterViewController.swift in Sources */,
 				D96C86CB1BB0546400E4C134 /* HRPGCopyLabel.m in Sources */,
 				D92C60FC1BD3FAC1005F68CC /* HRPGCopyTableViewCell.m in Sources */,

@@ -310,7 +310,7 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
         call.habiticaResponseSignal.observeValues { (response) in
             if let error = response?.message {
                 ToastManager.show(text: error, color: .red)
-            } else {
+            } else if response != nil {
                 ToastManager.show(text: L10n.usersInvited, color: .blue)
             }
         }
