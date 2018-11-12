@@ -44,6 +44,14 @@ extension String {
             return "b"
         case 4:
             return "t"
+        case 5:
+            return "p"
+        case 6:
+            return "e"
+        case 7:
+            return "z"
+        case 8:
+            return "s"
         default:
             return ""
         }
