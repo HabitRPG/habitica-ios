@@ -15,5 +15,6 @@ public class LocalRegisterCall: ResponseObjectCall<LoginResponseProtocol, APILog
     public init(username: String, password: String, confirmPassword: String, email: String, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "user.json")) {
         let json = try? JSONSerialization.data(withJSONObject: ["username": username, "password": password, "confirmPassword": confirmPassword, "email": email], options: .prettyPrinted)
         super.init(httpMethod: .POST, endpoint: "user/auth/local/register", postData: json, stubHolder: stubHolder)
+        needsAuthentication = false
     }
 }

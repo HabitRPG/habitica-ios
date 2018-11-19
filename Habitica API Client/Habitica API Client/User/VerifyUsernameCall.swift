@@ -16,5 +16,6 @@ public class VerifyUsernameCall: ResponseObjectCall<VerifyUsernameResponse, APIV
         let obj = ["username": username]
         let json = try? JSONSerialization.data(withJSONObject: obj, options: .prettyPrinted)
         super.init(httpMethod: .POST, endpoint: "user/auth/verify-username", postData: json, stubHolder: stubHolder)
+        needsAuthentication = false
     }
 }
