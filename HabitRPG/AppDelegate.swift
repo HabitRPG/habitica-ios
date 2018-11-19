@@ -42,8 +42,11 @@ class HabiticaAppDelegate: NSObject {
     
     @objc
     func setupLogging() {
+        let userID = AuthenticationManager.shared.currentUserId
         FirebaseApp.configure()
         Fabric.with([Crashlytics.self])
+        Crashlytics.sharedInstance().setUserIdentifier(userID)
+        Crashlytics.sharedInstance().setUserName(userID)
         let keys = HabiticaKeys()
         let instabugKey = HabiticaAppDelegate.isRunningLive() ? keys.instabugLive : keys.instabugBeta
         Instabug.start(withToken: instabugKey, invocationEvents: [.shake])
@@ -63,12 +66,14 @@ class HabiticaAppDelegate: NSObject {
         BugReporting.invocationOptions = .commentFieldRequired
         
         Instabug.welcomeMessageMode = .disabled
+        Instabug.setUserAttribute(userID ?? "", withKey: "userID")
     }
     
     @objc
     func setupAnalytics() {
         let keys = HabiticaKeys()
         Amplitude.instance().initializeApiKey(keys.amplitudeApiKey)
+        Amplitude.instance().setUserId(AuthenticationManager.shared.currentUserId)
     }
     
     @objc
