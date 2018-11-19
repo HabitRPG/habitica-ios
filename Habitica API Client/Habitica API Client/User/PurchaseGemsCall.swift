@@ -14,6 +14,6 @@ import ReactiveSwift
 public class PurchaseGemsCall: ResponseObjectCall<EmptyResponseProtocol, APIEmptyResponse> {
     public init(receipt: [String: Any], stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "user.json")) {
         let json = try? JSONSerialization.data(withJSONObject: receipt, options: [])
-        super.init(httpMethod: .POST, endpoint: "iap/ios/verify", postData: json, stubHolder: stubHolder)
+        super.init(httpMethod: .POST, endpoint: "iap/ios/verify", postData: json, stubHolder: stubHolder, errorHandler: PrintNetworkErrorHandler())
     }
 }
