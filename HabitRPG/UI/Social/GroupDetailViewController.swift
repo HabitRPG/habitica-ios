@@ -62,7 +62,10 @@ class GroupDetailViewController: HRPGUIViewController, UITextViewDelegate {
     
     func updateData(group: GroupProtocol) {
         groupNameLabel?.text = group.name
-        groupDescriptionTextView?.attributedText = try? Down(markdownString: group.groupDescription ?? "").toHabiticaAttributedString()
+        groupDescriptionTextView?.text = group.groupDescription
+        Down(markdownString: group.groupDescription ?? "").toHabiticaAttributedStringAsync {[weak self] markDownString in
+            self?.groupDescriptionTextView?.attributedText = markDownString
+        }
     }
     
     @IBAction func leaveButtonTapped(_ sender: Any) {

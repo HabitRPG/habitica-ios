@@ -8,9 +8,20 @@
 
 import Foundation
 import Down
+import ReactiveSwift
 
 extension Down {
 
+    func toHabiticaAttributedStringAsync(baseFont: UIFont = CustomFontMetrics.scaledSystemFont(ofSize: 15),
+                                         textColor: UIColor = UIColor.gray100(), onComplete: @escaping ((NSMutableAttributedString?) -> Void)) {
+        DispatchQueue.global(qos: .background).async {
+            let string = try? self.toHabiticaAttributedString()
+            DispatchQueue.main.async {
+                onComplete(string)
+            }
+        }
+    }
+    
     func toHabiticaAttributedString(baseFont: UIFont = CustomFontMetrics.scaledSystemFont(ofSize: 15),
                                     textColor: UIColor = UIColor.gray100()) throws -> NSMutableAttributedString {
         let mentions = matchUsernames(text: markdownString)
