@@ -498,6 +498,8 @@ internal enum L10n {
   internal enum Settings {
     /// API
     internal static let api = L10n.tr("Mainstrings", "settings.api")
+    /// App Icon
+    internal static let appIcon = L10n.tr("Mainstrings", "settings.app_icon")
     /// Are you sure?
     internal static let areYouSure = L10n.tr("Mainstrings", "settings.are_you_sure")
     /// Authentication

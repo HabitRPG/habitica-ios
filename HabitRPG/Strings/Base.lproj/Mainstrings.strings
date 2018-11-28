@@ -140,6 +140,7 @@
 "settings.change_class_disclaimer" = "This will reset your character's class and allocated points (you'll get them all back to re-allocate), and costs 3 gems.";
 "settings.enable_class_system" = "Enable Class System";
 "settings.select_class" = "Select Class";
+"settings.app_icon" = "App Icon";
 "theme.default_theme" = "Default";
 "theme.blue" = "Blue";
 "theme.teal" = "Teal";

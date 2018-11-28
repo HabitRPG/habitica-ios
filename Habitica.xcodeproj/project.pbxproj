@@ -143,6 +143,48 @@
 		296AC81420AC85C200885682 /* RewardViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296AC81320AC85C200885682 /* RewardViewDataSource.swift */; };
 		296CB4EE218C99FD0044A33E /* HabiticaButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296CB4ED218C99FD0044A33E /* HabiticaButton.swift */; };
 		296D6F1D20A0908B00D9CAB5 /* PartyQuestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296D6F1C20A0908B00D9CAB5 /* PartyQuestView.swift */; };
+		296E4B6221AEF35E00DB3602 /* PrideHabiticaAlt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 296E4B2621AEF35E00DB3602 /* PrideHabiticaAlt@2x.png */; };
+		296E4B6421AEF35E00DB3602 /* PrideHabitica@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 296E4B2821AEF35E00DB3602 /* PrideHabitica@2x.png */; };
+		296E4B6521AEF35E00DB3602 /* PrideHabitica@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 296E4B2921AEF35E00DB3602 /* PrideHabitica@3x.png */; };
+		296E4B6621AEF35E00DB3602 /* PrideHabiticaAlt@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 296E4B2A21AEF35E00DB3602 /* PrideHabiticaAlt@3x.png */; };
+		296E4B7221AEF35E00DB3602 /* PrideAlt@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 296E4B3621AEF35E00DB3602 /* PrideAlt@3x.png */; };
+		296E4B7A21AEF35E00DB3602 /* PrideAlt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 296E4B3E21AEF35E00DB3602 /* PrideAlt@2x.png */; };
+		296E4B8621AEF35E00DB3602 /* Pride@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 296E4B4A21AEF35E00DB3602 /* Pride@2x.png */; };
+		296E4B9421AEF35E00DB3602 /* Pride@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 296E4B5821AEF35E00DB3602 /* Pride@3x.png */; };
+		296E4BB821AEFE6100DB3602 /* Orange@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 296E4B9621AEFE5F00DB3602 /* Orange@3x.png */; };
+		296E4BB921AEFE6100DB3602 /* PurpleAlt@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 296E4B9721AEFE5F00DB3602 /* PurpleAlt@3x.png */; };
+		296E4BBA21AEFE6100DB3602 /* PurpleAlt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 296E4B9821AEFE5F00DB3602 /* PurpleAlt@2x.png */; };
+		296E4BBB21AEFE6100DB3602 /* Green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 296E4B9921AEFE5F00DB3602 /* Green@2x.png */; };
+		296E4BBC21AEFE6100DB3602 /* Black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 296E4B9A21AEFE5F00DB3602 /* Black@3x.png */; };
+		296E4BBD21AEFE6100DB3602 /* BlackAlt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 296E4B9B21AEFE5F00DB3602 /* BlackAlt@2x.png */; };
+		296E4BBE21AEFE6100DB3602 /* YellowAlt@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 296E4B9C21AEFE5F00DB3602 /* YellowAlt@3x.png */; };
+		296E4BBF21AEFE6100DB3602 /* Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 296E4B9D21AEFE5F00DB3602 /* Black@2x.png */; };
+		296E4BC021AEFE6100DB3602 /* Maroon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 296E4B9E21AEFE5F00DB3602 /* Maroon@2x.png */; };
+		296E4BC121AEFE6100DB3602 /* RedAlt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 296E4B9F21AEFE5F00DB3602 /* RedAlt@2x.png */; };
+		296E4BC221AEFE6100DB3602 /* Red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 296E4BA021AEFE5F00DB3602 /* Red@2x.png */; };
+		296E4BC321AEFE6100DB3602 /* BlueAlt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 296E4BA121AEFE5F00DB3602 /* BlueAlt@2x.png */; };
+		296E4BC421AEFE6100DB3602 /* YellowAlt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 296E4BA221AEFE6000DB3602 /* YellowAlt@2x.png */; };
+		296E4BC521AEFE6100DB3602 /* Yellow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 296E4BA321AEFE6000DB3602 /* Yellow@2x.png */; };
+		296E4BC621AEFE6100DB3602 /* OrangeAlt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 296E4BA421AEFE6000DB3602 /* OrangeAlt@2x.png */; };
+		296E4BC721AEFE6100DB3602 /* RedAlt@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 296E4BA521AEFE6000DB3602 /* RedAlt@3x.png */; };
+		296E4BC821AEFE6100DB3602 /* Red@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 296E4BA621AEFE6000DB3602 /* Red@3x.png */; };
+		296E4BC921AEFE6100DB3602 /* TealAlt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 296E4BA721AEFE6000DB3602 /* TealAlt@2x.png */; };
+		296E4BCA21AEFE6100DB3602 /* Yellow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 296E4BA821AEFE6000DB3602 /* Yellow@3x.png */; };
+		296E4BCB21AEFE6100DB3602 /* BlueAlt@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 296E4BA921AEFE6000DB3602 /* BlueAlt@3x.png */; };
+		296E4BCC21AEFE6100DB3602 /* Maroon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 296E4BAA21AEFE6000DB3602 /* Maroon@3x.png */; };
+		296E4BCD21AEFE6100DB3602 /* BlackAlt@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 296E4BAB21AEFE6000DB3602 /* BlackAlt@3x.png */; };
+		296E4BCE21AEFE6100DB3602 /* Blue@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 296E4BAC21AEFE6000DB3602 /* Blue@3x.png */; };
+		296E4BCF21AEFE6100DB3602 /* Orange@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 296E4BAD21AEFE6000DB3602 /* Orange@2x.png */; };
+		296E4BD021AEFE6100DB3602 /* Teal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 296E4BAE21AEFE6100DB3602 /* Teal@2x.png */; };
+		296E4BD121AEFE6100DB3602 /* Teal@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 296E4BAF21AEFE6100DB3602 /* Teal@3x.png */; };
+		296E4BD221AEFE6100DB3602 /* GreenAlt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 296E4BB021AEFE6100DB3602 /* GreenAlt@2x.png */; };
+		296E4BD321AEFE6100DB3602 /* GreenAlt@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 296E4BB121AEFE6100DB3602 /* GreenAlt@3x.png */; };
+		296E4BD421AEFE6100DB3602 /* Blue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 296E4BB221AEFE6100DB3602 /* Blue@2x.png */; };
+		296E4BD521AEFE6100DB3602 /* TealAlt@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 296E4BB321AEFE6100DB3602 /* TealAlt@3x.png */; };
+		296E4BD621AEFE6100DB3602 /* MaroonAlt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 296E4BB421AEFE6100DB3602 /* MaroonAlt@2x.png */; };
+		296E4BD721AEFE6100DB3602 /* Green@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 296E4BB521AEFE6100DB3602 /* Green@3x.png */; };
+		296E4BD821AEFE6100DB3602 /* MaroonAlt@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 296E4BB621AEFE6100DB3602 /* MaroonAlt@3x.png */; };
+		296E4BD921AEFE6100DB3602 /* OrangeAlt@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 296E4BB721AEFE6100DB3602 /* OrangeAlt@3x.png */; };
 		29701FE01F560D310097BBCC /* UIApplication-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29701FDF1F560D310097BBCC /* UIApplication-Extensions.swift */; };
 		29701FE21F5617900097BBCC /* ToastView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29701FE11F5617900097BBCC /* ToastView.xib */; };
 		29701FE41F56C2200097BBCC /* IconLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29701FE31F56C2200097BBCC /* IconLabel.swift */; };
@@ -755,6 +797,48 @@
 		296E0E6A20F5078200A1E991 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/Settings.strings; sourceTree = "<group>"; };
 		296E0E6B20F5078200A1E991 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/User.strings; sourceTree = "<group>"; };
 		296E0E6C20F5078200A1E991 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/Shops.strings; sourceTree = "<group>"; };
+		296E4B2621AEF35E00DB3602 /* PrideHabiticaAlt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PrideHabiticaAlt@2x.png"; sourceTree = "<group>"; };
+		296E4B2821AEF35E00DB3602 /* PrideHabitica@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PrideHabitica@2x.png"; sourceTree = "<group>"; };
+		296E4B2921AEF35E00DB3602 /* PrideHabitica@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PrideHabitica@3x.png"; sourceTree = "<group>"; };
+		296E4B2A21AEF35E00DB3602 /* PrideHabiticaAlt@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PrideHabiticaAlt@3x.png"; sourceTree = "<group>"; };
+		296E4B3621AEF35E00DB3602 /* PrideAlt@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PrideAlt@3x.png"; sourceTree = "<group>"; };
+		296E4B3E21AEF35E00DB3602 /* PrideAlt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PrideAlt@2x.png"; sourceTree = "<group>"; };
+		296E4B4A21AEF35E00DB3602 /* Pride@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pride@2x.png"; sourceTree = "<group>"; };
+		296E4B5821AEF35E00DB3602 /* Pride@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pride@3x.png"; sourceTree = "<group>"; };
+		296E4B9621AEFE5F00DB3602 /* Orange@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Orange@3x.png"; sourceTree = "<group>"; };
+		296E4B9721AEFE5F00DB3602 /* PurpleAlt@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PurpleAlt@3x.png"; sourceTree = "<group>"; };
+		296E4B9821AEFE5F00DB3602 /* PurpleAlt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PurpleAlt@2x.png"; sourceTree = "<group>"; };
+		296E4B9921AEFE5F00DB3602 /* Green@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Green@2x.png"; sourceTree = "<group>"; };
+		296E4B9A21AEFE5F00DB3602 /* Black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Black@3x.png"; sourceTree = "<group>"; };
+		296E4B9B21AEFE5F00DB3602 /* BlackAlt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlackAlt@2x.png"; sourceTree = "<group>"; };
+		296E4B9C21AEFE5F00DB3602 /* YellowAlt@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "YellowAlt@3x.png"; sourceTree = "<group>"; };
+		296E4B9D21AEFE5F00DB3602 /* Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Black@2x.png"; sourceTree = "<group>"; };
+		296E4B9E21AEFE5F00DB3602 /* Maroon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Maroon@2x.png"; sourceTree = "<group>"; };
+		296E4B9F21AEFE5F00DB3602 /* RedAlt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RedAlt@2x.png"; sourceTree = "<group>"; };
+		296E4BA021AEFE5F00DB3602 /* Red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red@2x.png"; sourceTree = "<group>"; };
+		296E4BA121AEFE5F00DB3602 /* BlueAlt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlueAlt@2x.png"; sourceTree = "<group>"; };
+		296E4BA221AEFE6000DB3602 /* YellowAlt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "YellowAlt@2x.png"; sourceTree = "<group>"; };
+		296E4BA321AEFE6000DB3602 /* Yellow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Yellow@2x.png"; sourceTree = "<group>"; };
+		296E4BA421AEFE6000DB3602 /* OrangeAlt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OrangeAlt@2x.png"; sourceTree = "<group>"; };
+		296E4BA521AEFE6000DB3602 /* RedAlt@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RedAlt@3x.png"; sourceTree = "<group>"; };
+		296E4BA621AEFE6000DB3602 /* Red@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Red@3x.png"; sourceTree = "<group>"; };
+		296E4BA721AEFE6000DB3602 /* TealAlt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TealAlt@2x.png"; sourceTree = "<group>"; };
+		296E4BA821AEFE6000DB3602 /* Yellow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Yellow@3x.png"; sourceTree = "<group>"; };
+		296E4BA921AEFE6000DB3602 /* BlueAlt@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlueAlt@3x.png"; sourceTree = "<group>"; };
+		296E4BAA21AEFE6000DB3602 /* Maroon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Maroon@3x.png"; sourceTree = "<group>"; };
+		296E4BAB21AEFE6000DB3602 /* BlackAlt@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlackAlt@3x.png"; sourceTree = "<group>"; };
+		296E4BAC21AEFE6000DB3602 /* Blue@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue@3x.png"; sourceTree = "<group>"; };
+		296E4BAD21AEFE6000DB3602 /* Orange@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Orange@2x.png"; sourceTree = "<group>"; };
+		296E4BAE21AEFE6100DB3602 /* Teal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Teal@2x.png"; sourceTree = "<group>"; };
+		296E4BAF21AEFE6100DB3602 /* Teal@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Teal@3x.png"; sourceTree = "<group>"; };
+		296E4BB021AEFE6100DB3602 /* GreenAlt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GreenAlt@2x.png"; sourceTree = "<group>"; };
+		296E4BB121AEFE6100DB3602 /* GreenAlt@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GreenAlt@3x.png"; sourceTree = "<group>"; };
+		296E4BB221AEFE6100DB3602 /* Blue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue@2x.png"; sourceTree = "<group>"; };
+		296E4BB321AEFE6100DB3602 /* TealAlt@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TealAlt@3x.png"; sourceTree = "<group>"; };
+		296E4BB421AEFE6100DB3602 /* MaroonAlt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MaroonAlt@2x.png"; sourceTree = "<group>"; };
+		296E4BB521AEFE6100DB3602 /* Green@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Green@3x.png"; sourceTree = "<group>"; };
+		296E4BB621AEFE6100DB3602 /* MaroonAlt@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MaroonAlt@3x.png"; sourceTree = "<group>"; };
+		296E4BB721AEFE6100DB3602 /* OrangeAlt@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OrangeAlt@3x.png"; sourceTree = "<group>"; };
 		29701FDF1F560D310097BBCC /* UIApplication-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication-Extensions.swift"; sourceTree = "<group>"; };
 		29701FE11F5617900097BBCC /* ToastView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToastView.xib; sourceTree = "<group>"; };
 		29701FE31F56C2200097BBCC /* IconLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconLabel.swift; sourceTree = "<group>"; };
@@ -1500,6 +1584,55 @@
 				2957B8B21F4B2D5A00E836EF /* RewardViewController.swift */,
 			);
 			name = Rewards;
+			sourceTree = "<group>";
+		};
+		296E4B1D21AEF35E00DB3602 /* AppIcons */ = {
+			isa = PBXGroup;
+			children = (
+				296E4B9D21AEFE5F00DB3602 /* Black@2x.png */,
+				296E4B9A21AEFE5F00DB3602 /* Black@3x.png */,
+				296E4B9B21AEFE5F00DB3602 /* BlackAlt@2x.png */,
+				296E4BAB21AEFE6000DB3602 /* BlackAlt@3x.png */,
+				296E4BB221AEFE6100DB3602 /* Blue@2x.png */,
+				296E4BAC21AEFE6000DB3602 /* Blue@3x.png */,
+				296E4BA121AEFE5F00DB3602 /* BlueAlt@2x.png */,
+				296E4BA921AEFE6000DB3602 /* BlueAlt@3x.png */,
+				296E4B9921AEFE5F00DB3602 /* Green@2x.png */,
+				296E4BB521AEFE6100DB3602 /* Green@3x.png */,
+				296E4BB021AEFE6100DB3602 /* GreenAlt@2x.png */,
+				296E4BB121AEFE6100DB3602 /* GreenAlt@3x.png */,
+				296E4B9E21AEFE5F00DB3602 /* Maroon@2x.png */,
+				296E4BAA21AEFE6000DB3602 /* Maroon@3x.png */,
+				296E4BB421AEFE6100DB3602 /* MaroonAlt@2x.png */,
+				296E4BB621AEFE6100DB3602 /* MaroonAlt@3x.png */,
+				296E4BAD21AEFE6000DB3602 /* Orange@2x.png */,
+				296E4B9621AEFE5F00DB3602 /* Orange@3x.png */,
+				296E4BA421AEFE6000DB3602 /* OrangeAlt@2x.png */,
+				296E4BB721AEFE6100DB3602 /* OrangeAlt@3x.png */,
+				296E4B4A21AEF35E00DB3602 /* Pride@2x.png */,
+				296E4B5821AEF35E00DB3602 /* Pride@3x.png */,
+				296E4B3E21AEF35E00DB3602 /* PrideAlt@2x.png */,
+				296E4B3621AEF35E00DB3602 /* PrideAlt@3x.png */,
+				296E4B2821AEF35E00DB3602 /* PrideHabitica@2x.png */,
+				296E4B2921AEF35E00DB3602 /* PrideHabitica@3x.png */,
+				296E4B2621AEF35E00DB3602 /* PrideHabiticaAlt@2x.png */,
+				296E4B2A21AEF35E00DB3602 /* PrideHabiticaAlt@3x.png */,
+				296E4B9821AEFE5F00DB3602 /* PurpleAlt@2x.png */,
+				296E4B9721AEFE5F00DB3602 /* PurpleAlt@3x.png */,
+				296E4BA021AEFE5F00DB3602 /* Red@2x.png */,
+				296E4BA621AEFE6000DB3602 /* Red@3x.png */,
+				296E4B9F21AEFE5F00DB3602 /* RedAlt@2x.png */,
+				296E4BA521AEFE6000DB3602 /* RedAlt@3x.png */,
+				296E4BAE21AEFE6100DB3602 /* Teal@2x.png */,
+				296E4BAF21AEFE6100DB3602 /* Teal@3x.png */,
+				296E4BA721AEFE6000DB3602 /* TealAlt@2x.png */,
+				296E4BB321AEFE6100DB3602 /* TealAlt@3x.png */,
+				296E4BA321AEFE6000DB3602 /* Yellow@2x.png */,
+				296E4BA821AEFE6000DB3602 /* Yellow@3x.png */,
+				296E4BA221AEFE6000DB3602 /* YellowAlt@2x.png */,
+				296E4B9C21AEFE5F00DB3602 /* YellowAlt@3x.png */,
+			);
+			path = AppIcons;
 			sourceTree = "<group>";
 		};
 		29701FEC1F5848880097BBCC /* Habitica Snapshots */ = {
@@ -2551,6 +2684,7 @@
 				D9A63A321E10328A0083ADC4 /* Habitica-Bridging-Header.h */,
 				290279672057F0B7006DACB9 /* Generated */,
 				290279642057F005006DACB9 /* Strings */,
+				296E4B1D21AEF35E00DB3602 /* AppIcons */,
 				D9EB4E9518CB4A9400BB2094 /* Supporting Files */,
 			);
 			name = Habitica;
@@ -2747,9 +2881,14 @@
 				290279A620583ED8006DACB9 /* BuyModal.storyboard in Resources */,
 				D9EB4EAD18CB4A9400BB2094 /* Images.xcassets in Resources */,
 				D942B5381CAAE6B1009AB756 /* Social.storyboard in Resources */,
+				296E4BD821AEFE6100DB3602 /* MaroonAlt@3x.png in Resources */,
+				296E4BCA21AEFE6100DB3602 /* Yellow@3x.png in Resources */,
+				296E4BC121AEFE6100DB3602 /* RedAlt@2x.png in Resources */,
+				296E4BBD21AEFE6100DB3602 /* BlackAlt@2x.png in Resources */,
 				29B3FEBE1F9E3DC3000B12CF /* HabiticaAlertController.xib in Resources */,
 				29B478BD20C1378100B6123F /* ChallengeTableViewCell.xib in Resources */,
 				298119B51F5048C000F9FB39 /* QuestGoalView.xib in Resources */,
+				296E4BD921AEFE6100DB3602 /* OrangeAlt@3x.png in Resources */,
 				D9BB45D81E7998710002AE2E /* ChallengeFilterAlert.xib in Resources */,
 				2980E6071EEA1F55005B7100 /* YesterdailiesDialogView.xib in Resources */,
 				293BB4A11FD06E7E003B6F4F /* BulkStatsAllocationView.xib in Resources */,
@@ -2761,28 +2900,43 @@
 				29AAA1611F2B597400029737 /* SpeechbubbleView.xib in Resources */,
 				29FC885E2018D858002B3D3F /* WorldBossDescription.xib in Resources */,
 				293BB4A31FD07603003B6F4F /* StatsSliderView.xib in Resources */,
+				296E4BC921AEFE6100DB3602 /* TealAlt@2x.png in Resources */,
+				296E4B7221AEF35E00DB3602 /* PrideAlt@3x.png in Resources */,
 				D9D17CD41E68995000AD9232 /* (null) in Resources */,
 				29E16311200E5FEA00685640 /* QuestProgressView.xib in Resources */,
+				296E4BCB21AEFE6100DB3602 /* BlueAlt@3x.png in Resources */,
+				296E4BC721AEFE6100DB3602 /* RedAlt@3x.png in Resources */,
+				296E4BBF21AEFE6100DB3602 /* Black@2x.png in Resources */,
+				296E4BC621AEFE6100DB3602 /* OrangeAlt@2x.png in Resources */,
+				296E4B8621AEF35E00DB3602 /* Pride@2x.png in Resources */,
 				2902799A20583E83006DACB9 /* OnePasswordExtension.strings in Resources */,
 				D9D17CD41E68995000AD9232 /* (null) in Resources */,
 				D9BB45CA1E76DF260002AE2E /* DailyTableViewCell.xib in Resources */,
+				296E4B9421AEF35E00DB3602 /* Pride@3x.png in Resources */,
 				29B6AD4A1F2A0C9800AC8878 /* LoginEntryView.xib in Resources */,
 				2914486C208512ED00F3A6B5 /* StableSectionHeader.xib in Resources */,
 				4924314F202CD19A00288278 /* ChallengeRewardTableViewCell.xib in Resources */,
 				D99BC43319D4C34A006DC132 /* 1Password.xcassets in Resources */,
 				29A6B86420644BFE0086B2A6 /* WeekdayFormCell.xib in Resources */,
+				296E4BD421AEFE6100DB3602 /* Blue@2x.png in Resources */,
+				296E4BD321AEFE6100DB3602 /* GreenAlt@3x.png in Resources */,
 				49E6F57E1FF9A2AE0062C8B2 /* DoubleButtonTableViewCell.xib in Resources */,
 				29A0FD81203DF49900590BDE /* GuidelinesPromptView.xib in Resources */,
+				296E4BBC21AEFE6100DB3602 /* Black@3x.png in Resources */,
 				49DCB7C41F40D80B0079FDD0 /* NPCBannerView.xib in Resources */,
 				D905D08C1DE241D200CABF55 /* HRPGLoginIncentiveOverlayView.xib in Resources */,
+				296E4BB921AEFE6100DB3602 /* PurpleAlt@3x.png in Resources */,
 				498E4CF81FA17B7F006933FF /* ChallengeButtonTableViewCell.xib in Resources */,
 				299BD6351F54346F00E22935 /* QuestDetailRewardView.xib in Resources */,
 				498E4D081FA17DB9006933FF /* ChallengeActionsTableViewCell.xib in Resources */,
+				296E4BCC21AEFE6100DB3602 /* Maroon@3x.png in Resources */,
 				49DCB7B81F3F64D40079FDD0 /* HRPGShopModalBgView.xib in Resources */,
 				D98F5DC31C6A34540035CBEC /* ChatMessageCell.xib in Resources */,
 				493ECBB91F47D82A0099B1FC /* HRPGGearSetItem.xib in Resources */,
+				296E4BD621AEFE6100DB3602 /* MaroonAlt@2x.png in Resources */,
 				29FC8864201B78D6002B3D3F /* WorldBossMenuHeader.xib in Resources */,
 				290279A020583ECF006DACB9 /* Shops.storyboard in Resources */,
+				296E4BBE21AEFE6100DB3602 /* YellowAlt@3x.png in Resources */,
 				294FD56B20641B2F00EABCC9 /* HabitControlsCell.xib in Resources */,
 				493ECBB51F47A58F0099B1FC /* HRPGItemStatsView.xib in Resources */,
 				29028BB120319E4000B7F704 /* RageStrikeActiveContentView.xib in Resources */,
@@ -2793,44 +2947,66 @@
 				2914487C20864EB800F3A6B5 /* EquipmentOverviewItemView.xib in Resources */,
 				49A84FB31F9FCA30003E2956 /* ChallengeDetailInfoTableViewCell.xib in Resources */,
 				49A37A8420C0FA49008C28F5 /* EmptyTableViewCell.xib in Resources */,
+				296E4B7A21AEF35E00DB3602 /* PrideAlt@2x.png in Resources */,
+				296E4BC321AEFE6100DB3602 /* BlueAlt@2x.png in Resources */,
 				D9D17CDA1E69C68000AD9232 /* ChallengeDetailAlert.xib in Resources */,
 				2957B8BA1F4B4B3300E836EF /* InAppRewardCell.xib in Resources */,
 				D9CE90431E4CDC9100702578 /* SubscriptionDetailView.xib in Resources */,
+				296E4BC521AEFE6100DB3602 /* Yellow@2x.png in Resources */,
 				498E4D041FA17C31006933FF /* ChallengeDescriptionTableViewCell.xib in Resources */,
 				29255E451F3DD3ED0094A3E3 /* TutorialStepView.xib in Resources */,
 				D9BE05841DA6ADE70074D3B7 /* GemPurchaseView.xib in Resources */,
+				296E4B6521AEF35E00DB3602 /* PrideHabitica@3x.png in Resources */,
 				29B388E11EF2BB7600A72950 /* YesterdailyChecklistItem.xib in Resources */,
 				498E4CFC1FA17B9E006933FF /* ChallengeCreatorTableViewCell.xib in Resources */,
+				296E4B6621AEF35E00DB3602 /* PrideHabiticaAlt@3x.png in Resources */,
+				296E4BCF21AEFE6100DB3602 /* Orange@2x.png in Resources */,
 				D9D17CCE1E6736B500AD9232 /* ChallengeDetailHeaderView.xib in Resources */,
 				29E1630D200E23A500685640 /* MenuNavigationBarView.xib in Resources */,
 				D99DEC89190842CA00FFD2B9 /* Placeholder.png in Resources */,
 				49DCB7B01F3923F20079FDD0 /* HRPGSimpleShopItemView.xib in Resources */,
+				296E4BC421AEFE6100DB3602 /* YellowAlt@2x.png in Resources */,
 				D91CCAD01BCF11CC001C6A0C /* UserTopHeader.xib in Resources */,
 				49DCB7BA1F3F6F620079FDD0 /* HRPGCloseableShopModalView.xib in Resources */,
 				290279A320583ED3006DACB9 /* Shop.storyboard in Resources */,
+				296E4BD021AEFE6100DB3602 /* Teal@2x.png in Resources */,
+				296E4BD721AEFE6100DB3602 /* Green@3x.png in Resources */,
+				296E4BD221AEFE6100DB3602 /* GreenAlt@2x.png in Resources */,
 				D9EB4E9918CB4A9400BB2094 /* InfoPlist.strings in Resources */,
+				296E4BB821AEFE6100DB3602 /* Orange@3x.png in Resources */,
+				296E4BD521AEFE6100DB3602 /* TealAlt@3x.png in Resources */,
 				293BB49C1FCD7DC8003B6F4F /* StatsView.xib in Resources */,
 				290279A920583EDE006DACB9 /* Settings.storyboard in Resources */,
 				29701FE21F5617900097BBCC /* ToastView.xib in Resources */,
 				D9D17CD21E6898E400AD9232 /* HabitTableViewCell.xib in Resources */,
 				49005B7E1F183775004830D9 /* HRPGShopUserHeaderView.xib in Resources */,
 				D9F1E3EA1E55DCFB0034D0F4 /* SubscriptionInformationCell.xib in Resources */,
+				296E4BC021AEFE6100DB3602 /* Maroon@2x.png in Resources */,
 				293282161F389DBB00D42961 /* SetupCustomizationItemView.xib in Resources */,
 				D9E9E0C81CCE64A3006D94A2 /* HRPGImageOverlayView.xib in Resources */,
 				D984D58F1E4A2F41006E84F8 /* SubscriptionOptionView.xib in Resources */,
 				29205E372062E0030024E355 /* TaskTextInputCell.xib in Resources */,
+				296E4BCD21AEFE6100DB3602 /* BlackAlt@3x.png in Resources */,
 				290279AD20583EF9006DACB9 /* Intro.storyboard in Resources */,
 				D984D5841E48E57C006E84F8 /* TaskDetailLineView.xib in Resources */,
 				D9A50E9A1A868DE400FC8B1A /* Launch Screen.xib in Resources */,
 				D905768A1BD83241009BB7BC /* Localizable.strings in Resources */,
 				2957B8B81F4B2F6A00E836EF /* CustomRewardCell.xib in Resources */,
 				D9C31DB31C6501090096F4EC /* Main.storyboard in Resources */,
+				296E4BBB21AEFE6100DB3602 /* Green@2x.png in Resources */,
 				D99E42681D6B1FD500811B6D /* FaintViewController.xib in Resources */,
 				D98F5DD11C6CB4BE0035CBEC /* HRPGFlagInformationOverlayView.xib in Resources */,
 				D902AD871B53E1B60098A1BD /* GoogleService-Info.plist in Resources */,
+				296E4BC821AEFE6100DB3602 /* Red@3x.png in Resources */,
 				29DC5AC320A1D85300993400 /* Mainstrings.strings in Resources */,
+				296E4B6221AEF35E00DB3602 /* PrideHabiticaAlt@2x.png in Resources */,
+				296E4BD121AEFE6100DB3602 /* Teal@3x.png in Resources */,
 				2980E60D1EEA39DF005B7100 /* YesterdailyTaskCell.xib in Resources */,
 				298119AD1F5040B900F9FB39 /* QuestDetailView.xib in Resources */,
+				296E4B6421AEF35E00DB3602 /* PrideHabitica@2x.png in Resources */,
+				296E4BBA21AEFE6100DB3602 /* PurpleAlt@2x.png in Resources */,
+				296E4BCE21AEFE6100DB3602 /* Blue@3x.png in Resources */,
+				296E4BC221AEFE6100DB3602 /* Red@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -21,6 +21,7 @@ enum SettingsTags {
     static let disableAllNotifications = "disableAllNotifications"
     static let disablePrivateMessages = "disablePrivateMessages"
     static let themeColor = "themeColor"
+    static let appIcon = "appIcon"
     static let soundTheme = "soundTheme"
     static let changeClass = "changeClass"
 }
@@ -66,6 +67,93 @@ enum ThemeName: String {
             .orange,
             .red,
             .maroon
+        ]
+    }
+}
+
+enum AppIconName: String {
+    case defaultTheme = "Default"
+    case maroon = "Maroon"
+    case red = "Red"
+    case orange = "Orange"
+    case yellow = "Yellow"
+    case blue = "Blue"
+    case green = "Green"
+    case teal = "Teal"
+    case black = "Black"
+    case maroonAlt = "Maroon Alternative"
+    case redAlt = "Red Alternative"
+    case orangeAlt = "Orange Alternative"
+    case yellowAlt = "Yellow Alternative"
+    case blueAlt = "Blue Alternative"
+    case greenAlt = "Green Alternative"
+    case tealAlt = "Teal Alternative"
+    case blackAlt = "Black Alternative"
+    case prideHabitica = "Pride"
+    case prideHabiticaAlt = "Pride Alt"
+
+    var fileName: String? {
+        switch self {
+        case .defaultTheme:
+            return nil
+        case .prideHabitica:
+            return "PrideHabitica"
+        case .prideHabiticaAlt:
+            return "PrideHabiticaAlt"
+        case .maroon:
+            return "Maroon"
+        case .red:
+            return "Red"
+        case .orange:
+            return "Orange"
+        case .yellow:
+            return "Yellow"
+        case .blue:
+            return "Blue"
+        case .teal:
+            return "Teal"
+        case .green:
+            return "Green"
+        case .black:
+            return "Black"
+        case .maroonAlt:
+            return "MaroonAlt"
+        case .redAlt:
+            return "RedAlt"
+        case .orangeAlt:
+            return "OrangeAlt"
+        case .yellowAlt:
+            return "YellowAlt"
+        case .blueAlt:
+            return "BlueAlt"
+        case .tealAlt:
+            return "TealAlt"
+        case .greenAlt:
+            return "GreenAlt"
+        case .blackAlt:
+            return "BlackAlt"
+        }
+    }
+    
+    static var allNames: [AppIconName] {
+        return [
+            .defaultTheme,
+            .maroon,
+            .maroonAlt,
+            .red,
+            .redAlt,
+            .orange,
+            .orangeAlt,
+            .yellow,
+            .yellowAlt,
+            .blue,
+            .blueAlt,
+            .teal,
+            .tealAlt,
+            .green,
+            .greenAlt,
+            .black,
+            .blackAlt,
         ]
     }
 }
@@ -259,7 +347,7 @@ class SettingsViewController: FormViewController, Themeable {
                     }
                 })
         }
-        +++ Section(L10n.Settings.preferences)
+        let section = Section(L10n.Settings.preferences)
             <<< PushRow<LabeledFormValue<String>>(SettingsTags.soundTheme) { row in
                 row.title = L10n.Settings.soundTheme
                 row.options = SoundTheme.allThemes.map({ (theme) -> LabeledFormValue<String> in
@@ -288,6 +376,38 @@ class SettingsViewController: FormViewController, Themeable {
                     let defaults = UserDefaults.standard
                     defaults.set(row.value, forKey: "theme")
                 })
+            }
+        form +++ section
+        if #available(iOS 10.3, *) {
+            section <<< PushRow<String>(SettingsTags.appIcon) { row in
+                row.title = L10n.Settings.appIcon
+                row.options = AppIconName.allNames.map({ (name) -> String in
+                    return name.rawValue
+                })
+                row.value = UIApplication.shared.alternateIconName ?? AppIconName.defaultTheme.rawValue
+                row.onPresent({ (from, to) in
+                    to.selectableRowCellUpdate = { cell, row in
+                        if let filename = AppIconName(rawValue: row.title ?? "")?.fileName {
+                            cell.height = { 68 }
+                            cell.imageView?.cornerRadius = 12
+                            cell.imageView?.contentMode = .center
+                            cell.imageView?.image = UIImage(named: filename)
+                            cell.contentView.layoutMargins = UIEdgeInsets(top: 4, left: cell.layoutMargins.left, bottom: 4, right: cell.layoutMargins.right)
+                        }
+                    }
+                })
+                row.onChange({ (row) in
+                    if let newAppIcon = AppIconName(rawValue: row.value ?? "") {
+                        DispatchQueue.main.async {
+                            UIApplication.shared.setAlternateIconName(newAppIcon.fileName) { (error) in
+                                if let error = error {
+                                    print("error: \(error)")
+                                }
+                            }
+                        }
+                    }
+                })
+            }
         }
     }
     
