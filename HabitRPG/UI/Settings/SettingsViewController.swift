@@ -396,6 +396,7 @@ class SettingsViewController: FormViewController, Themeable {
                             cell.imageView?.cornerRadius = 12
                             cell.imageView?.contentMode = .center
                             cell.imageView?.image = UIImage(named: filename)
+                            cell.contentView.layoutMargins = UIEdgeInsets(top: 4, left: cell.layoutMargins.left, bottom: 4, right: cell.layoutMargins.right)
                         }
                     }
                 })
