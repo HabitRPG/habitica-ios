@@ -73,6 +73,7 @@ enum ThemeName: String {
 
 enum AppIconName: String {
     case defaultTheme = "Default"
+    case purpleAlt = "Default Alternative"
     case maroon = "Maroon"
     case red = "Red"
     case orange = "Orange"
@@ -96,6 +97,8 @@ enum AppIconName: String {
         switch self {
         case .defaultTheme:
             return nil
+        case.purpleAlt:
+            return "PurpleAlt"
         case .prideHabitica:
             return "PrideHabitica"
         case .prideHabiticaAlt:
@@ -138,6 +141,7 @@ enum AppIconName: String {
     static var allNames: [AppIconName] {
         return [
             .defaultTheme,
+            .purpleAlt,
             .maroon,
             .maroonAlt,
             .red,
@@ -392,7 +396,6 @@ class SettingsViewController: FormViewController, Themeable {
                             cell.imageView?.cornerRadius = 12
                             cell.imageView?.contentMode = .center
                             cell.imageView?.image = UIImage(named: filename)
-                            cell.contentView.layoutMargins = UIEdgeInsets(top: 4, left: cell.layoutMargins.left, bottom: 4, right: cell.layoutMargins.right)
                         }
                     }
                 })

@@ -31,6 +31,15 @@
 	<dict>
 		<key>CFBundleAlternateIcons</key>
 		<dict>
+            <key>PurpleAlt</key>
+            <dict>
+                <key>UIPrerenderedIcon</key>
+                <false/>
+                <key>CFBundleIconFiles</key>
+                <array>
+                    <string>PurpleAlt</string>
+                </array>
+            </dict>
 			<key>Maroon</key>
 			<dict>
 				<key>UIPrerenderedIcon</key>
