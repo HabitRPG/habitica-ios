@@ -71,6 +71,10 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
         }
     }
     
+    override func didSetTableView() {
+        tableView?.reloadData()
+    }
+    
     internal let userRepository = UserRepository()
     internal let repository = TaskRepository()
     
@@ -134,6 +138,7 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
             }
         }
     }
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)

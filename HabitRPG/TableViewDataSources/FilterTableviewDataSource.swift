@@ -25,6 +25,14 @@ protocol FilterTableViewDataSourceProtocol {
     func updateTag(id: String, text: String)
     @objc
     func deleteTag(at indexPath: IndexPath)
+    @objc(numberOfSectionsInTableView:)
+    func numberOfSections(in tableView: UITableView) -> Int
+    @objc
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    @objc(tableView:cellForRowAtIndexPath:)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    @objc
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath)
 }
 
 @objc
@@ -36,12 +44,16 @@ class FilterTableViewDataSourceInstantiator: NSObject {
     }
 }
 
-class FilterTableViewDataSource: BaseReactiveTableViewDataSource<TagProtocol>, FilterTableViewDataSourceProtocol {
+class FilterTableViewDataSource: BaseReactiveTableViewDataSource<TagProtocol>, FilterTableViewDataSourceProtocol, UITableViewDelegate {
     
     private let userRepository = UserRepository()
     private let taskRepository = TaskRepository()
     
     @objc var selectedTagIds = [String]()
+    
+    override func didSetTableView() {
+        tableView?.reloadData()
+    }
     
     func tagAt(indexPath: IndexPath) -> TagProtocol? {
         return item(at: indexPath)
@@ -56,6 +68,7 @@ class FilterTableViewDataSource: BaseReactiveTableViewDataSource<TagProtocol>, F
         }).start())
     }
     
+    @objc(tableView:cellForRowAtIndexPath:)
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         if let tag = item(at: indexPath) {
@@ -119,9 +132,5 @@ class FilterTableViewDataSource: BaseReactiveTableViewDataSource<TagProtocol>, F
         if editingStyle == .delete {
             self.deleteTag(at: indexPath)
         }
-    }
-    
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
     }
 }

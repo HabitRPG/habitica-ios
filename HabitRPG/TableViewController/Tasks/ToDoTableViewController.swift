@@ -14,7 +14,7 @@ class ToDoTableViewController: TaskTableViewController {
     override func viewDidLoad() {
         readableName = NSLocalizedString("To-Do", comment: "")
         typeName = "todo"
-        dataSource = TodoTableViewDataSourceInstantiator.instantiate(predicate: self.getPredicate())
+        dataSource = TodoTableViewDataSource(predicate: getPredicate())
         
         super.viewDidLoad()
         
