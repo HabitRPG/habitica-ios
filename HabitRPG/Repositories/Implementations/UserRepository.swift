@@ -321,8 +321,14 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         return call.objectSignal
     }
     
-    func purchaseGems(receipt: [String: Any]) -> Signal<EmptyResponseProtocol?, NoError> {
-        let call = PurchaseGemsCall(receipt: receipt)
+    func purchaseGems(receipt: [String: Any], recipient: String? = nil) -> Signal<EmptyResponseProtocol?, NoError> {
+        let call = PurchaseGemsCall(receipt: receipt, recipient: recipient)
+        call.fire()
+        return call.objectSignal
+    }
+    
+    func purchaseNoRenewSubscription(receipt: [String: Any], recipient: String? = nil) -> Signal<EmptyResponseProtocol?, NoError> {
+        let call = PurchaseNoRenewSubscriptionCall(receipt: receipt, recipient: recipient)
         call.fire()
         return call.objectSignal
     }

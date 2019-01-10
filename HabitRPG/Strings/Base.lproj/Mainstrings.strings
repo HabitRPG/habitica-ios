@@ -314,3 +314,6 @@
 "login.password_confirm_error" = "Password and password confirmation have to match.";
 "login.authentication_error" = "There was an error with the authentication. Try again later";
 "groups.error_name_required" = "Name may not be empty.";
+"gift_recipient_title" = "Who would you like to gift to?";
+"gift_recipient_subtitle" = "Enter recipient's @ username";
+"continue" = "Continue";

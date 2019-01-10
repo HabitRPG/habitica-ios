@@ -12,7 +12,7 @@ import FunkyNetwork
 public class HabiticaServerConfig {
     public static let production = ServerConfiguration(scheme: "https", host: "habitica.com", apiRoute: "api/v4")
     public static let staging = ServerConfiguration(scheme: "https", host: "staging.habitica.com", apiRoute: "api/v4")
-    public static let localhost = ServerConfiguration(scheme: "http", host: "localhost", apiRoute: "api/v4")
+    public static let localhost = ServerConfiguration(scheme: "http", host: "192.168.178.55:3000", apiRoute: "api/v4")
     public static let stub = ServerConfiguration(shouldStub: true, scheme: "https", host: "habitica.com", apiRoute: "api/v4")
     
     public static var current = production

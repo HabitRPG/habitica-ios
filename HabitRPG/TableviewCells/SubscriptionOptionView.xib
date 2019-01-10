@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,28 +15,28 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="135"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Zew-JC-xiP" id="RYX-V6-Kpl">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="134"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="134.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rGG-fK-sIG">
-                        <rect key="frame" x="16" y="8" width="343" height="119"/>
+                        <rect key="frame" x="16" y="8" width="343" height="126.5"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle_unselected" translatesAutoresizingMaskIntoConstraints="NO" id="cN1-0z-yC8">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="119"/>
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="126.5"/>
                                 <color key="backgroundColor" red="0.88664805889129639" green="0.84805387258529663" blue="0.99289208650588989" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="04Z-kh-kkI"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ahl-VE-epw">
-                                <rect key="frame" x="58" y="57" width="277" height="4"/>
+                                <rect key="frame" x="58" y="61.5" width="277" height="4"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lya-yE-68a">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lya-yE-68a">
                                         <rect key="frame" x="0.0" y="0.0" width="277" height="0.0"/>
                                         <constraints>
                                             <constraint firstAttribute="height" priority="500" constant="10" id="TNd-5R-izk"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
                                         <color key="textColor" red="0.29921266436576843" green="0.17604684829711914" blue="0.4975128173828125" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -77,7 +77,7 @@
                 <constraints>
                     <constraint firstItem="rGG-fK-sIG" firstAttribute="top" secondItem="RYX-V6-Kpl" secondAttribute="top" constant="8" id="3nD-2M-J8R"/>
                     <constraint firstItem="rGG-fK-sIG" firstAttribute="leading" secondItem="RYX-V6-Kpl" secondAttribute="leading" constant="16" id="DMO-1W-Zbc"/>
-                    <constraint firstAttribute="bottom" secondItem="rGG-fK-sIG" secondAttribute="bottom" constant="8" id="N3y-LG-6Ql"/>
+                    <constraint firstAttribute="bottom" secondItem="rGG-fK-sIG" secondAttribute="bottom" id="N3y-LG-6Ql"/>
                     <constraint firstAttribute="trailing" secondItem="rGG-fK-sIG" secondAttribute="trailing" constant="16" id="rjK-xZ-3gz"/>
                 </constraints>
             </tableViewCellContentView>

@@ -47,6 +47,10 @@ internal enum StoryboardScene {
 
     internal static let gemPurchaseViewController = SceneType<Habitica.GemViewController>(storyboard: Main.self, identifier: "GemPurchaseViewController")
 
+    internal static let giftSubscriptionNavController = SceneType<UIKit.UINavigationController>(storyboard: Main.self, identifier: "GiftSubscriptionNavController")
+
+    internal static let giftSubscriptionViewController = SceneType<Habitica.GiftSubscriptionViewController>(storyboard: Main.self, identifier: "GiftSubscriptionViewController")
+
     internal static let itemNavigationController = SceneType<UIKit.UINavigationController>(storyboard: Main.self, identifier: "ItemNavigationController")
 
     internal static let itemsViewController = SceneType<Habitica.ItemsViewController>(storyboard: Main.self, identifier: "ItemsViewController")

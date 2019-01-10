@@ -59,6 +59,7 @@ internal enum StoryboardSegue {
     case statsSegue = "StatsSegue"
     case tavernSegue = "TavernSegue"
     case equipmentDetailSegue
+    case openGiftGemDialog
     case unwindSaveSegue
     case unwindSegue
   }

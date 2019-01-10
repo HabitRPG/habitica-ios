@@ -247,6 +247,16 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
         })
     }
     
+    public func retrieveMemberWithUsername(_ username: String) -> Signal<MemberProtocol?, NoError> {
+        let call = RetrieveMemberUsernameCall(username: username)
+        call.fire()
+        return call.objectSignal.on(value: {[weak self] member in
+            if let member = member {
+                self?.localRepository.save(member)
+            }
+        })
+    }
+    
     public func getMember(userID: String, retrieveIfNotFound: Bool = false) -> SignalProducer<MemberProtocol?, NoError> {
         return localRepository.getMember(userID: userID)
             .flatMapError({ (_) -> SignalProducer<MemberProtocol?, NoError> in

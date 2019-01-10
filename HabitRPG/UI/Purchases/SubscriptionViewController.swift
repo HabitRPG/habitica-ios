@@ -31,6 +31,7 @@ class SubscriptionViewController: HRPGBaseViewController {
                 isSubscribed = true
                 restorePurchaseButton.isHidden = true
             }
+            hasTerminationDate = user?.purchased?.subscriptionPlan?.dateTerminated != nil
         }
     }
     let appleValidator: AppleReceiptValidator
@@ -56,6 +57,7 @@ class SubscriptionViewController: HRPGBaseViewController {
     }
 
     var isSubscribed = false
+    var hasTerminationDate = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,6 +102,7 @@ class SubscriptionViewController: HRPGBaseViewController {
                 }
                 return firstIndex < secondIndex
             })
+            self.selectedSubscriptionPlan = self.products?.first
             self.tableView.reloadData()
         }
     }
@@ -149,7 +152,11 @@ class SubscriptionViewController: HRPGBaseViewController {
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        if (isSubscribed && hasTerminationDate) {
+            return 4
+        } else {
+            return 3
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -163,13 +170,12 @@ class SubscriptionViewController: HRPGBaseViewController {
         } else if isDetailSection(section) {
             return 1
         } else {
-            if isSubscribed || self.products == nil || self.products?.count == 0 {
+            if (isSubscribed && !hasTerminationDate) || self.products == nil || self.products?.count == 0 {
                 return 0
             } else {
                 return 1
             }
         }
-
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -189,7 +195,7 @@ class SubscriptionViewController: HRPGBaseViewController {
         } else if isDetailSection(indexPath.section) {
             return 550
         }
-        return 50
+        return 60
     }
 
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
@@ -226,6 +232,7 @@ class SubscriptionViewController: HRPGBaseViewController {
             let product = self.products?[indexPath.item]
             cell.priceLabel.text = product?.localizedPrice
             cell.titleLabel.text = product?.localizedTitle
+            cell.setSelected(product?.productIdentifier == selectedSubscriptionPlan?.productIdentifier, animated: false)
             returnedCell = cell
         } else if self.isDetailSection(indexPath.section) {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "DetailCell", for: indexPath) as? SubscriptionDetailView else {
@@ -258,11 +265,11 @@ class SubscriptionViewController: HRPGBaseViewController {
     }
 
     func isOptionSection(_ section: Int) -> Bool {
-        return !isSubscribed && section == 1
+        return (!isSubscribed || hasTerminationDate) && section == 1
     }
 
     func isDetailSection(_ section: Int) -> Bool {
-        return isSubscribed && section == 1
+        return (isSubscribed && !hasTerminationDate && section == 2) || (isSubscribed && hasTerminationDate && section == 3)
     }
 
     @IBAction func subscribeButtonPressed(_ sender: Any) {
@@ -340,6 +347,35 @@ class SubscriptionViewController: HRPGBaseViewController {
             return false
         case .notPurchased:
             return false
+        }
+    }
+    
+    private var giftRecipientUsername = ""
+    
+    @IBAction func giftSubscriptionButtonTapped(_ sender: Any) {
+        let alertController = HabiticaAlertController(title: L10n.giftRecipientTitle)
+        let textField = UITextField()
+        textField.autocorrectionType = .no
+        textField.autocapitalizationType = .none
+        textField.borderColor = UIColor.gray300()
+        textField.borderWidth = 1
+        textField.tintColor = ThemeService.shared.theme.tintColor
+        alertController.contentView = textField
+        alertController.addCancelAction()
+        alertController.addAction(title: L10n.continue, style: .default, isMainAction: true, closeOnTap: true, handler: { _ in
+            if let username = textField.text, username.count > 0 {
+                self.giftRecipientUsername = username
+                self.perform(segue: StoryboardSegue.Main.openGiftGemDialog)
+            }
+        })
+        alertController.show()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == StoryboardSegue.Main.openGiftGemDialog.rawValue {
+            let navigationController = segue.destination as? UINavigationController
+            let giftSubscriptionController = navigationController?.topViewController as? GiftSubscriptionViewController
+            giftSubscriptionController?.giftRecipientUsername = giftRecipientUsername
         }
     }
 }
