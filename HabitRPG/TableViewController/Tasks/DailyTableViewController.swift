@@ -14,7 +14,7 @@ class DailyTableViewController: TaskTableViewController {
     override func viewDidLoad() {
         readableName = NSLocalizedString("Daily", comment: "")
         typeName = "daily"
-        dataSource = DailyTableViewDataSourceInstantiator.instantiate(predicate: self.getPredicate())
+        dataSource = DailyTableViewDataSource(predicate: self.getPredicate())
         
         super.viewDidLoad()
         

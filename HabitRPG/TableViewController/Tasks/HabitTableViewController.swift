@@ -14,7 +14,7 @@ class HabitTableViewController: TaskTableViewController {
     override func viewDidLoad() {
         readableName = NSLocalizedString("Habit", comment: "")
         typeName = "habit"
-        dataSource = HabitTableViewDataSourceInstantiator.instantiate(predicate: self.getPredicate())
+        dataSource = HabitTableViewDataSource(predicate: self.getPredicate())
         
         super.viewDidLoad()
         

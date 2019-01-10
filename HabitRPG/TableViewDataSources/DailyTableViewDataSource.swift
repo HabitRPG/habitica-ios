@@ -9,15 +9,11 @@
 import Foundation
 import Habitica_Models
 
-@objc
-class DailyTableViewDataSourceInstantiator: NSObject {
-    @objc
-    static func instantiate(predicate: NSPredicate) -> TaskTableViewDataSourceProtocol {
-        return DailyTableViewDataSource(predicate: predicate, taskType: TaskType.daily)
-    }
-}
-
 class DailyTableViewDataSource: TaskTableViewDataSource {
+    
+    init(predicate: NSPredicate) {
+        super.init(predicate: predicate, taskType: TaskType.habit)
+    }
     
     override func configure(cell: TaskTableViewCell, indexPath: IndexPath, task: TaskProtocol) {
         super.configure(cell: cell, indexPath: indexPath, task: task)

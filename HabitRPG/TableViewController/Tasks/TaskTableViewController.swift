@@ -10,7 +10,7 @@ import UIKit
 import Habitica_Models
 
 class TaskTableViewController: HRPGBaseViewController, UISearchBarDelegate, UITableViewDragDelegate, UITableViewDropDelegate, DataSourceEmptyDelegate {
-    public var dataSource: TaskTableViewDataSourceProtocol?
+    public var dataSource: TaskTableViewDataSource?
     public var filterType: Int = 0
     @objc public var scrollToTaskAfterLoading: String?
     var readableName: String?
@@ -29,7 +29,7 @@ class TaskTableViewController: HRPGBaseViewController, UISearchBarDelegate, UITa
         super.viewDidLoad()
         
         dataSource?.tableView = tableView
-        dataSource?.emptyDelegate = self
+        //dataSource?.emptyDelegate = self
         
         let nib = UINib(nibName: getCellNibName() ?? "", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "Cell")
@@ -54,7 +54,6 @@ class TaskTableViewController: HRPGBaseViewController, UISearchBarDelegate, UITa
         }
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44
-        tableView.tableFooterView = UIView()
         
         if #available(iOS 11.0, *) {
             tableView.dragDelegate = self
@@ -332,6 +331,10 @@ class TaskTableViewController: HRPGBaseViewController, UISearchBarDelegate, UITa
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
     // MARK: - Drop delegate
     
     @available(iOS 11.0, *)
@@ -462,5 +465,21 @@ class TaskTableViewController: HRPGBaseViewController, UISearchBarDelegate, UITa
                 tableView.setContentOffset(scrollPoint, animated: false)
             }
         }
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return dataSource?.numberOfSections(in: tableView) ?? 0
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return dataSource?.tableView(tableView, numberOfRowsInSection: section) ?? 0
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return dataSource?.tableView(tableView, cellForRowAt: indexPath) ?? UITableViewCell()
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        dataSource?.tableView(tableView, commit: editingStyle, forRowAt: indexPath)
     }
 }
