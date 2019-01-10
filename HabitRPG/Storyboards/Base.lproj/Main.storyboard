@@ -1318,7 +1318,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4RK-O9-N6X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="294" y="9646"/>
+            <point key="canvasLocation" x="225" y="9645"/>
         </scene>
         <!--Gem View Controller-->
         <scene sceneID="KJ7-Ra-M0o">
@@ -1565,18 +1565,18 @@ your account, including:</string>
         <scene sceneID="7EM-S5-j9C">
             <objects>
                 <tableViewController storyboardIdentifier="SubscriptionViewController" id="32f-nw-z2z" customClass="SubscriptionViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="52" sectionHeaderHeight="28" sectionFooterHeight="28" id="uHA-ok-e4Z">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="61" sectionHeaderHeight="28" sectionFooterHeight="28" id="uHA-ok-e4Z">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="2y3-dE-HOI">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="86"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Become a subscriber and you’ll get these useful benefits:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lb7-8k-2uz">
-                                    <rect key="frame" x="16" y="0.0" width="343" height="86"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" red="0.26360577340000002" green="0.17136606569999999" blue="0.43369138239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Become a subscriber and you’ll get these useful benefits:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lb7-8k-2uz">
+                                    <rect key="frame" x="16" y="0.0" width="343" height="75"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                    <color key="textColor" red="0.42476743459701538" green="0.22142499685287476" blue="0.73873388767242432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
@@ -1589,17 +1589,17 @@ your account, including:</string>
                             </constraints>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="0ge-iM-ebO">
-                            <rect key="frame" x="0.0" y="164" width="375" height="308"/>
+                            <rect key="frame" x="0.0" y="164" width="375" height="532"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qWw-qV-Dif">
-                                    <rect key="frame" x="8" y="45" width="359" height="36"/>
+                                    <rect key="frame" x="8" y="122.5" width="359" height="36"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="36" id="WMy-Bc-rwq"/>
                                     </constraints>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P89-QO-UcF">
-                                    <rect key="frame" x="0.0" y="262" width="375" height="30"/>
+                                    <rect key="frame" x="0.0" y="486" width="375" height="30"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="30" id="FRr-fd-XWw"/>
                                     </constraints>
@@ -1609,7 +1609,7 @@ your account, including:</string>
                                     </connections>
                                 </button>
                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" scrollEnabled="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2lA-HR-ThY">
-                                    <rect key="frame" x="8" y="0.0" width="359" height="37"/>
+                                    <rect key="frame" x="8" y="77.5" width="359" height="37"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" priority="500" constant="28" id="Nvl-9T-i7B"/>
@@ -1620,47 +1620,74 @@ your account, including:</string>
                                     <dataDetectorType key="dataDetectorTypes" link="YES"/>
                                 </textView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V5k-go-mwg">
-                                    <rect key="frame" x="8" y="89" width="359" height="41"/>
+                                    <rect key="frame" x="8" y="166.5" width="359" height="31.5"/>
                                     <string key="text">Subscribing supports the developers 
 and helps keep Habitica running</string>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" red="0.27450981736183167" green="0.65490198135375977" blue="0.85098040103912354" alpha="1" colorSpace="deviceRGB"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <color key="textColor" red="0.68403255939483643" green="0.66976314783096313" blue="0.7059674859046936" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Want to give the benefits of a subscription to someone else?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f3o-aH-Po4">
+                                    <rect key="frame" x="32" y="0.0" width="311" height="31.5"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" priority="500" constant="21" id="5pb-O5-r1I"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
+                                    <color key="textColor" red="0.53023332359999997" green="0.50720638039999999" blue="0.56472396849999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CrM-dg-eMS">
+                                    <rect key="frame" x="32" y="35.5" width="311" height="30"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="30" id="NqX-6e-kQp"/>
+                                    </constraints>
+                                    <state key="normal" title="Gift a Subscription"/>
+                                    <connections>
+                                        <action selector="giftSubscriptionButtonTapped:" destination="32f-nw-z2z" eventType="touchUpInside" id="VQj-Qj-OiF"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
+                                <constraint firstItem="CrM-dg-eMS" firstAttribute="top" secondItem="f3o-aH-Po4" secondAttribute="bottom" constant="4" id="11j-4s-haY"/>
                                 <constraint firstAttribute="trailing" secondItem="qWw-qV-Dif" secondAttribute="trailing" constant="8" id="5aa-Kf-1bE"/>
                                 <constraint firstItem="V5k-go-mwg" firstAttribute="leading" secondItem="0ge-iM-ebO" secondAttribute="leading" constant="8" id="7zl-d0-mjK"/>
+                                <constraint firstItem="f3o-aH-Po4" firstAttribute="leading" secondItem="0ge-iM-ebO" secondAttribute="leading" constant="32" id="9GF-OG-sD2"/>
                                 <constraint firstItem="V5k-go-mwg" firstAttribute="top" secondItem="qWw-qV-Dif" secondAttribute="bottom" constant="8" id="9uL-17-PV3"/>
                                 <constraint firstAttribute="trailing" secondItem="V5k-go-mwg" secondAttribute="trailing" constant="8" id="B8s-XZ-5BU"/>
                                 <constraint firstItem="qWw-qV-Dif" firstAttribute="leading" secondItem="0ge-iM-ebO" secondAttribute="leading" constant="8" id="BdZ-Ny-hd3"/>
                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="V5k-go-mwg" secondAttribute="bottom" constant="16" id="C2j-ma-EGd"/>
-                                <constraint firstItem="2lA-HR-ThY" firstAttribute="top" secondItem="0ge-iM-ebO" secondAttribute="top" id="DeT-FE-ykG"/>
+                                <constraint firstAttribute="trailing" secondItem="f3o-aH-Po4" secondAttribute="trailing" constant="32" id="C73-ld-Kc6"/>
                                 <constraint firstAttribute="bottom" secondItem="P89-QO-UcF" secondAttribute="bottom" constant="16" id="Eah-64-bm3"/>
+                                <constraint firstItem="2lA-HR-ThY" firstAttribute="top" secondItem="CrM-dg-eMS" secondAttribute="bottom" constant="12" id="FPy-Nn-7he"/>
                                 <constraint firstItem="2lA-HR-ThY" firstAttribute="leading" secondItem="0ge-iM-ebO" secondAttribute="leading" constant="8" id="GCz-y3-YAR"/>
                                 <constraint firstItem="P89-QO-UcF" firstAttribute="leading" secondItem="0ge-iM-ebO" secondAttribute="leading" id="ZfF-fg-lmt"/>
                                 <constraint firstAttribute="trailing" secondItem="2lA-HR-ThY" secondAttribute="trailing" constant="8" id="gOt-we-wOj"/>
                                 <constraint firstItem="qWw-qV-Dif" firstAttribute="top" secondItem="2lA-HR-ThY" secondAttribute="bottom" constant="8" id="gui-rC-ejx"/>
                                 <constraint firstAttribute="trailing" secondItem="P89-QO-UcF" secondAttribute="trailing" id="nik-bX-WWV"/>
+                                <constraint firstItem="f3o-aH-Po4" firstAttribute="top" secondItem="0ge-iM-ebO" secondAttribute="top" id="tfl-lJ-eW3"/>
+                                <constraint firstItem="CrM-dg-eMS" firstAttribute="leading" secondItem="0ge-iM-ebO" secondAttribute="leading" constant="32" id="vwe-rX-MxV"/>
+                                <constraint firstAttribute="trailing" secondItem="CrM-dg-eMS" secondAttribute="trailing" constant="32" id="whQ-oz-se5"/>
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SubscribeButtonCell" rowHeight="50" id="gBX-7d-nGt">
-                                <rect key="frame" x="0.0" y="114" width="375" height="50"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SubscribeButtonCell" rowHeight="61" id="gBX-7d-nGt">
+                                <rect key="frame" x="0.0" y="103" width="375" height="61"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gBX-7d-nGt" id="wdr-8P-A8u">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="61"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ubx-Z1-yyq">
-                                            <rect key="frame" x="142.5" y="8" width="90" height="34"/>
+                                            <rect key="frame" x="16" y="8" width="343" height="36"/>
                                             <color key="backgroundColor" red="0.3803921639919281" green="0.20000000298023224" blue="0.70588237047195435" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="500" constant="90" id="VeR-Vl-iz5"/>
+                                                <constraint firstAttribute="height" constant="36" id="zIr-J0-Xja"/>
                                             </constraints>
                                             <color key="tintColor" red="0.9686274528503418" green="0.93725490570068359" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <state key="normal" title="Checkout"/>
+                                            <state key="normal" title="Subscribe">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                     <integer key="value" value="4"/>
@@ -1672,10 +1699,9 @@ and helps keep Habitica running</string>
                                         </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="ubx-Z1-yyq" firstAttribute="centerY" secondItem="wdr-8P-A8u" secondAttribute="centerY" id="HLR-vF-qND"/>
-                                        <constraint firstAttribute="bottom" secondItem="ubx-Z1-yyq" secondAttribute="bottom" constant="8" id="Mhp-sY-QQw"/>
                                         <constraint firstItem="ubx-Z1-yyq" firstAttribute="top" secondItem="wdr-8P-A8u" secondAttribute="top" constant="8" id="cwQ-4A-6Z5"/>
-                                        <constraint firstItem="ubx-Z1-yyq" firstAttribute="centerX" secondItem="wdr-8P-A8u" secondAttribute="centerX" id="uFs-I4-YhQ"/>
+                                        <constraint firstAttribute="trailing" secondItem="ubx-Z1-yyq" secondAttribute="trailing" constant="16" id="nxP-N0-uSE"/>
+                                        <constraint firstItem="ubx-Z1-yyq" firstAttribute="leading" secondItem="wdr-8P-A8u" secondAttribute="leading" constant="16" id="ruu-wj-YJn"/>
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -1694,6 +1720,7 @@ and helps keep Habitica running</string>
                     </navigationItem>
                     <connections>
                         <outlet property="restorePurchaseButton" destination="P89-QO-UcF" id="fMV-BP-fee"/>
+                        <segue destination="KOH-m5-9hA" kind="show" identifier="openGiftGemDialog" id="ImE-mD-NfV"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MeY-fC-rDA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1704,7 +1731,7 @@ and helps keep Habitica running</string>
                     </connections>
                 </customObject>
             </objects>
-            <point key="canvasLocation" x="1014" y="10426"/>
+            <point key="canvasLocation" x="1013.6" y="10418.140929535233"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zXE-Rb-Ijy">
@@ -2634,6 +2661,180 @@ and helps keep Habitica running</string>
             </objects>
             <point key="canvasLocation" x="2457" y="2514"/>
         </scene>
+        <!--Gift Subscription-->
+        <scene sceneID="aJR-oR-FEx">
+            <objects>
+                <tableViewController storyboardIdentifier="GiftSubscriptionViewController" id="fI8-Sl-MPA" customClass="GiftSubscriptionViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="71" sectionHeaderHeight="28" sectionFooterHeight="28" id="YuZ-Eb-iNX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="0xr-mh-PES">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KSp-Pa-Hsw">
+                                    <rect key="frame" x="165.5" y="50" width="44" height="44"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QfC-at-thI" customClass="AvatarView" customModule="Habitica" customModuleProvider="target">
+                                            <rect key="frame" x="-34" y="-46" width="90" height="90"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="90" id="wt3-OQ-fJy"/>
+                                                <constraint firstAttribute="height" constant="90" id="z2U-Z1-xCo"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="QfC-at-thI" secondAttribute="bottom" id="0fu-eq-EfH"/>
+                                        <constraint firstAttribute="trailing" secondItem="QfC-at-thI" secondAttribute="trailing" constant="-12" id="TPr-qQ-VBt"/>
+                                        <constraint firstAttribute="width" constant="44" id="V7z-E2-Nmh"/>
+                                        <constraint firstAttribute="height" constant="44" id="Z7o-IO-OcA"/>
+                                    </constraints>
+                                </view>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NMm-pQ-wSm" customClass="UsernameLabel" customModule="Habitica" customModuleProvider="target">
+                                    <rect key="frame" x="187.5" y="102" width="0.0" height="0.0"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" priority="500" constant="42" id="7DH-dY-xpR"/>
+                                        <constraint firstAttribute="height" priority="500" constant="21" id="k2c-kP-uUM"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xvW-Tc-HI8">
+                                    <rect key="frame" x="187.5" y="106" width="0.0" height="0.0"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" priority="500" constant="42" id="aI6-OQ-oIv"/>
+                                        <constraint firstAttribute="height" priority="500" constant="21" id="bTH-2K-EH5"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <color key="textColor" red="0.57231205701828003" green="0.54968619346618652" blue="0.60629409551620483" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="xvW-Tc-HI8" firstAttribute="centerX" secondItem="0xr-mh-PES" secondAttribute="centerX" id="2xb-NC-eFc"/>
+                                <constraint firstItem="xvW-Tc-HI8" firstAttribute="top" secondItem="NMm-pQ-wSm" secondAttribute="bottom" constant="4" id="JkN-gd-ayG"/>
+                                <constraint firstItem="KSp-Pa-Hsw" firstAttribute="top" secondItem="0xr-mh-PES" secondAttribute="top" constant="50" id="Li5-yI-lb0"/>
+                                <constraint firstItem="NMm-pQ-wSm" firstAttribute="centerX" secondItem="0xr-mh-PES" secondAttribute="centerX" id="PSg-ei-ABE"/>
+                                <constraint firstItem="NMm-pQ-wSm" firstAttribute="top" secondItem="KSp-Pa-Hsw" secondAttribute="bottom" constant="8" id="fne-H5-geF"/>
+                                <constraint firstItem="KSp-Pa-Hsw" firstAttribute="centerX" secondItem="0xr-mh-PES" secondAttribute="centerX" id="g6X-pQ-QX9"/>
+                            </constraints>
+                        </view>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="ev4-GE-6Md">
+                            <rect key="frame" x="0.0" y="238" width="375" height="111"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Gift one, Get one!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vqR-47-Okh">
+                                    <rect key="frame" x="16" y="16" width="343" height="21"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" priority="500" constant="21" id="YF5-zM-xfc"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b7s-sU-IE0">
+                                    <rect key="frame" x="40" y="41" width="295" height="47"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" priority="500" constant="21" id="T5l-kL-oeU"/>
+                                    </constraints>
+                                    <string key="text">While this promotion is active, you’ll receive 
+a matching subscription automatically after sending your gift.</string>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" red="0.24680608510971069" green="0.70955049991607666" blue="0.75657778978347778" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="b7s-sU-IE0" secondAttribute="trailing" constant="40" id="GAI-co-lcW"/>
+                                <constraint firstItem="vqR-47-Okh" firstAttribute="top" secondItem="ev4-GE-6Md" secondAttribute="top" constant="16" id="NcG-Tr-ajw"/>
+                                <constraint firstItem="vqR-47-Okh" firstAttribute="leading" secondItem="ev4-GE-6Md" secondAttribute="leading" constant="16" id="aSn-7Y-ns5"/>
+                                <constraint firstItem="b7s-sU-IE0" firstAttribute="top" secondItem="vqR-47-Okh" secondAttribute="bottom" constant="4" id="mwE-lv-4zr"/>
+                                <constraint firstItem="b7s-sU-IE0" firstAttribute="leading" secondItem="ev4-GE-6Md" secondAttribute="leading" constant="40" id="vdU-Uk-t3R"/>
+                                <constraint firstAttribute="trailing" secondItem="vqR-47-Okh" secondAttribute="trailing" constant="16" id="xV8-Pc-CKD"/>
+                            </constraints>
+                        </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SubscribeButtonCell" rowHeight="70" id="vN3-lc-K1M">
+                                <rect key="frame" x="0.0" y="168" width="375" height="70"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vN3-lc-K1M" id="NTC-7R-KQH">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hf5-hq-Cbp">
+                                            <rect key="frame" x="16" y="0.0" width="343" height="36"/>
+                                            <color key="backgroundColor" red="0.38039216399999998" green="0.20000000300000001" blue="0.70588237050000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="36" id="RYc-Vh-fEt"/>
+                                            </constraints>
+                                            <color key="tintColor" red="0.96862745289999996" green="0.93725490570000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <state key="normal" title="Send Gift">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="4"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="subscribeButtonPressed:" destination="fI8-Sl-MPA" eventType="touchUpInside" id="Dfv-TN-m6M"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Hf5-hq-Cbp" firstAttribute="leading" secondItem="NTC-7R-KQH" secondAttribute="leading" constant="16" id="3J2-7W-ros"/>
+                                        <constraint firstItem="Hf5-hq-Cbp" firstAttribute="top" secondItem="NTC-7R-KQH" secondAttribute="top" id="ocA-UC-qhr"/>
+                                        <constraint firstAttribute="trailing" secondItem="Hf5-hq-Cbp" secondAttribute="trailing" constant="16" id="rie-w6-dcN"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="fI8-Sl-MPA" id="Vce-K2-Ck7"/>
+                            <outlet property="delegate" destination="fI8-Sl-MPA" id="m7c-kd-fUS"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Gift Subscription" id="Puw-P3-s3j">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="2VZ-VC-snP">
+                            <connections>
+                                <segue destination="3qU-U4-oGh" kind="unwind" unwindAction="unwindToList:" id="hLO-fD-2Xi"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="avatarView" destination="QfC-at-thI" id="mEj-ID-lER"/>
+                        <outlet property="displayNameLabel" destination="NMm-pQ-wSm" id="lXg-bT-m3c"/>
+                        <outlet property="usernameLabel" destination="xvW-Tc-HI8" id="gRf-Zg-b2d"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fRS-6v-2oA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="3qU-U4-oGh" userLabel="Exit" sceneMemberID="exit"/>
+                <customObject id="Vhp-sO-dDd" customClass="HabiticaIcons" customModule="Habitica" customModuleProvider="target"/>
+            </objects>
+            <point key="canvasLocation" x="2804" y="10417.241379310346"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="WeW-04-8lU">
+            <objects>
+                <navigationController storyboardIdentifier="GiftSubscriptionNavController" id="KOH-m5-9hA" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="frT-yt-SsM">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="fI8-Sl-MPA" kind="relationship" relationship="rootViewController" id="0LY-Cb-ihy"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fQ2-AU-dks" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1993" y="10418"/>
+        </scene>
     </scenes>
     <resources>
         <image name="icon_lock" width="16" height="18"/>
@@ -2644,10 +2845,10 @@ and helps keep Habitica running</string>
         <image name="tabbar_todos" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="iSa-66-Wjc"/>
+        <segue reference="njg-A8-lDq"/>
         <segue reference="ETz-qE-xC2"/>
         <segue reference="V6b-ej-qnx"/>
-        <segue reference="WX7-CS-CSr"/>
+        <segue reference="PHp-cT-md6"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.44783598184585571" green="0.10848048329353333" blue="0.9984632134437561" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

@@ -21,6 +21,9 @@ class PurchaseHandler: NSObject {
     static let subscriptionIdentifiers = ["subscription1month", "com.habitrpg.ios.habitica.subscription.3month",
                        "com.habitrpg.ios.habitica.subscription.6month", "com.habitrpg.ios.habitica.subscription.12month"
     ]
+    static let noRenewSubscriptionIdentifiers = ["com.habitrpg.ios.habitica.norenew_subscription.1month", "com.habitrpg.ios.habitica.norenew_subscription.3month",
+                                          "com.habitrpg.ios.habitica.norenew_subscription.6month", "com.habitrpg.ios.habitica.norenew_subscription.12month"
+    ]
     
     private let itunesSharedSecret = HabiticaKeys().itunesSharedSecret
     private let appleValidator: AppleReceiptValidator
@@ -67,6 +70,12 @@ class PurchaseHandler: NSObject {
                                             self?.applySubscription(purchase: product)
                                         }
                                     }).start()
+                                } else if self.isNoRenewSubscription(product.productId) {
+                                    self.activateNoRenewSubscription(product.productId, receipt: receiptData) { status in
+                                        if status {
+                                            SwiftyStoreKit.finishTransaction(product.transaction)
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -111,7 +120,18 @@ class PurchaseHandler: NSObject {
     }
     
     func activatePurchase(_ identifier: String, receipt: Data, completion: @escaping (Bool) -> Void) {
-        userRepository.purchaseGems(receipt: ["transaction": ["receipt": receipt.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))]]).observeResult { (result) in
+        userRepository.purchaseGems(receipt: ["receipt": receipt.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))]).observeResult { (result) in
+            switch result {
+            case .success:
+                completion(true)
+            case .failure:
+                completion(false)
+            }
+        }
+    }
+    
+    func activateNoRenewSubscription(_ identifier: String, receipt: Data, completion: @escaping (Bool) -> Void) {
+        userRepository.purchaseNoRenewSubscription(receipt: ["receipt": receipt.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))]).observeResult { (result) in
             switch result {
             case .success:
                 completion(true)
@@ -153,6 +173,10 @@ class PurchaseHandler: NSObject {
     
     func isSubscription(_ identifier: String) -> Bool {
         return  PurchaseHandler.subscriptionIdentifiers.contains(identifier)
+    }
+    
+    func isNoRenewSubscription(_ identifier: String) -> Bool {
+        return  PurchaseHandler.noRenewSubscriptionIdentifiers.contains(identifier)
     }
     
     func isValidSubscription(_ identifier: String, receipt: ReceiptInfo) -> Bool {

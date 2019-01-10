@@ -25,6 +25,8 @@ internal enum L10n {
   internal static let confirm = L10n.tr("Mainstrings", "confirm")
   /// Confirm Username
   internal static let confirmUsername = L10n.tr("Mainstrings", "confirm_username")
+  /// Continue
+  internal static let `continue` = L10n.tr("Mainstrings", "continue")
   /// Controls
   internal static let controls = L10n.tr("Mainstrings", "controls")
   /// Copied to Clipboard
@@ -59,6 +61,10 @@ internal enum L10n {
   internal static let food = L10n.tr("Mainstrings", "food")
   /// Friday
   internal static let friday = L10n.tr("Mainstrings", "friday")
+  /// Enter recipient's @ username
+  internal static let giftRecipientSubtitle = L10n.tr("Mainstrings", "gift_recipient_subtitle")
+  /// Who would you like to gift to?
+  internal static let giftRecipientTitle = L10n.tr("Mainstrings", "gift_recipient_title")
   /// Glasses
   internal static let glasses = L10n.tr("Mainstrings", "glasses")
   /// Hatch egg

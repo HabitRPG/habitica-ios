@@ -143,6 +143,7 @@
 		296AC81420AC85C200885682 /* RewardViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296AC81320AC85C200885682 /* RewardViewDataSource.swift */; };
 		296CB4EE218C99FD0044A33E /* HabiticaButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296CB4ED218C99FD0044A33E /* HabiticaButton.swift */; };
 		296D6F1D20A0908B00D9CAB5 /* PartyQuestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296D6F1C20A0908B00D9CAB5 /* PartyQuestView.swift */; };
+		296E480821BE86F800D15E4A /* GiftSubscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296E480721BE86F800D15E4A /* GiftSubscriptionViewController.swift */; };
 		296E4B6221AEF35E00DB3602 /* PrideHabiticaAlt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 296E4B2621AEF35E00DB3602 /* PrideHabiticaAlt@2x.png */; };
 		296E4B6421AEF35E00DB3602 /* PrideHabitica@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 296E4B2821AEF35E00DB3602 /* PrideHabitica@2x.png */; };
 		296E4B6521AEF35E00DB3602 /* PrideHabitica@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 296E4B2921AEF35E00DB3602 /* PrideHabitica@3x.png */; };
@@ -797,6 +798,7 @@
 		296E0E6A20F5078200A1E991 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/Settings.strings; sourceTree = "<group>"; };
 		296E0E6B20F5078200A1E991 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/User.strings; sourceTree = "<group>"; };
 		296E0E6C20F5078200A1E991 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/Shops.strings; sourceTree = "<group>"; };
+		296E480721BE86F800D15E4A /* GiftSubscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftSubscriptionViewController.swift; sourceTree = "<group>"; };
 		296E4B2621AEF35E00DB3602 /* PrideHabiticaAlt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PrideHabiticaAlt@2x.png"; sourceTree = "<group>"; };
 		296E4B2821AEF35E00DB3602 /* PrideHabitica@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PrideHabitica@2x.png"; sourceTree = "<group>"; };
 		296E4B2921AEF35E00DB3602 /* PrideHabitica@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PrideHabitica@3x.png"; sourceTree = "<group>"; };
@@ -2234,6 +2236,7 @@
 			children = (
 				D984D58A1E4A1F59006E84F8 /* SubscriptionViewController.swift */,
 				2907F99D1F694C4000328AEE /* GemViewController.swift */,
+				296E480721BE86F800D15E4A /* GiftSubscriptionViewController.swift */,
 			);
 			path = Purchases;
 			sourceTree = "<group>";
@@ -3521,6 +3524,7 @@
 				D984D5861E48E5CF006E84F8 /* TaskDetailLineView.swift in Sources */,
 				292DEE53204DA5B40086D5F7 /* Repositories.swift in Sources */,
 				2980E60B1EEA39B1005B7100 /* YesterdailyTaskCell.swift in Sources */,
+				296E480821BE86F800D15E4A /* GiftSubscriptionViewController.swift in Sources */,
 				4904C7401F1ED87400F80723 /* GradientImageView.swift in Sources */,
 				2957B8CA1F4ED7C800E836EF /* Currency.swift in Sources */,
 				290279702057F4A4006DACB9 /* FAQDetailViewController.swift in Sources */,
