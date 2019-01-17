@@ -61,6 +61,16 @@ internal enum L10n {
   internal static let food = L10n.tr("Mainstrings", "food")
   /// Friday
   internal static let friday = L10n.tr("Mainstrings", "friday")
+  /// You sent %@ a %@-month Habitica subscription.
+  internal static func giftConfirmationBody(_ p1: String, _ p2: String) -> String {
+    return L10n.tr("Mainstrings", "gift_confirmation_body", p1, p2)
+  }
+  /// You sent %@ a %@-month Habitica subscription and the same subscription was applied to your account for our Gift One Get One promotion!
+  internal static func giftConfirmationBodyG1g1(_ p1: String, _ p2: String) -> String {
+    return L10n.tr("Mainstrings", "gift_confirmation_body_g1g1", p1, p2)
+  }
+  /// Your gift was sent!
+  internal static let giftConfirmationTitle = L10n.tr("Mainstrings", "gift_confirmation_title")
   /// Enter recipient's @ username
   internal static let giftRecipientSubtitle = L10n.tr("Mainstrings", "gift_recipient_subtitle")
   /// Who would you like to gift to?

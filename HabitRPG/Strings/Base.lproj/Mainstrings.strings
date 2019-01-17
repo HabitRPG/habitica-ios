@@ -318,3 +318,6 @@
 "gift_recipient_title" = "Who would you like to gift to?";
 "gift_recipient_subtitle" = "Enter recipient's @ username";
 "continue" = "Continue";
+"gift_confirmation_title" = "Your gift was sent!";
+"gift_confirmation_body_g1g1" = "You sent %@ a %@-month Habitica subscription and the same subscription was applied to your account for our Gift One Get One promotion!";
+"gift_confirmation_body" = "You sent %@ a %@-month Habitica subscription.";
