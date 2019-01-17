@@ -1313,7 +1313,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="0F5-C1-rPv" kind="relationship" relationship="rootViewController" id="eiB-fe-CPZ"/>
+                        <segue destination="32f-nw-z2z" kind="relationship" relationship="rootViewController" id="XWL-Jj-bKy"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4RK-O9-N6X" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1552,14 +1552,11 @@ your account, including:</string>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <segue destination="32f-nw-z2z" kind="show" id="UQy-dj-Y8G"/>
-                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8lh-sE-Tlg" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Zv0-8I-Rax" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1014" y="9646"/>
+            <point key="canvasLocation" x="1014" y="9645"/>
         </scene>
         <!--Subscription View Controller-->
         <scene sceneID="7EM-S5-j9C">

@@ -19,6 +19,8 @@ import ReactiveSwift
 import Result
 import Instabug
 import Firebase
+import SwiftyStoreKit
+import StoreKit
 
 //This will eventually replace the old ObjC AppDelegate once that code is ported to swift.
 //Reason for adding this class now is mostly, to configure PopupDialogs dim color.
@@ -119,6 +121,7 @@ class HabiticaAppDelegate: NSObject {
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             UserManager.shared.beginListening()
         }
+        
     }
     
     @objc

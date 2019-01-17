@@ -327,8 +327,8 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         return call.objectSignal
     }
     
-    func purchaseNoRenewSubscription(receipt: [String: Any], recipient: String? = nil) -> Signal<EmptyResponseProtocol?, NoError> {
-        let call = PurchaseNoRenewSubscriptionCall(receipt: receipt, recipient: recipient)
+    func purchaseNoRenewSubscription(identifier: String, receipt: [String: Any], recipient: String? = nil) -> Signal<EmptyResponseProtocol?, NoError> {
+        let call = PurchaseNoRenewSubscriptionCall(identifier: identifier, receipt: receipt, recipient: recipient)
         call.fire()
         return call.objectSignal
     }

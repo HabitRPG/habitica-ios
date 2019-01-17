@@ -12,6 +12,7 @@ import StoreKit
 import Keys
 import ReactiveSwift
 import Habitica_Models
+import Crashlytics
 
 class GiftSubscriptionViewController: HRPGBaseViewController {
     
@@ -164,7 +165,7 @@ class GiftSubscriptionViewController: HRPGBaseViewController {
         SwiftyStoreKit.purchaseProduct(identifier, atomically: false) { result in
             switch result {
             case .success(let product):
-                self.verifyAndSubscribe(product)
+                self.displayConfirmationDialog()
                 print("Purchase Success: \(product.productId)")
             case .error(let error):
                 print("Purchase Failed: \(error)")
@@ -173,36 +174,24 @@ class GiftSubscriptionViewController: HRPGBaseViewController {
     }
     
     func verifyAndSubscribe(_ product: PurchaseDetails) {
-        SwiftyStoreKit.verifyReceipt(using: appleValidator, forceRefresh: true) { result in
+        SwiftyStoreKit.fetchReceipt(forceRefresh: false) { result in
             switch result {
-            case .success(let receipt):
+            case .success(let receiptData):
                 // Verify the purchase of a Subscription
-                if self.isValidSubscription(product.productId, receipt: receipt) {
-                    self.activateSubscription(product.productId, receipt: receipt) { status in
-                        if status {
-                            if product.needsFinishTransaction {
-                                SwiftyStoreKit.finishTransaction(product.transaction)
-                            }
+                PurchaseHandler.shared.activateNoRenewSubscription(product.productId, receipt: receiptData, recipientID: self.giftedUser?.id) { status in
+                    if status {
+                        if product.needsFinishTransaction {
+                            SwiftyStoreKit.finishTransaction(product.transaction)
+                        }
+                        DispatchQueue.main.async {
+                            self.displayConfirmationDialog()
                         }
                     }
                 }
             case .error(let error):
+                Crashlytics.sharedInstance().recordError(error)
                 print("Receipt verification failed: \(error)")
             }
-        }
-    }
-    
-    func activateSubscription(_ identifier: String, receipt: ReceiptInfo, completion: @escaping (Bool) -> Void) {
-        if let lastReceipt = receipt["latest_receipt"] as? String {
-            /*userRepository.subscribe(sku: identifier, receipt: lastReceipt).observeResult { (result) in
-                switch result {
-                case .success(_):
-                    completion(true)
-                    self.tableView.reloadData()
-                case .failure(_):
-                    completion(false)
-                }
-            }*/
         }
     }
     
@@ -228,6 +217,30 @@ class GiftSubscriptionViewController: HRPGBaseViewController {
         case .notPurchased:
             return false
         }
+    }
+    
+    private func selectedDurationString() -> String {
+        switch selectedSubscriptionPlan?.productIdentifier {
+        case PurchaseHandler.noRenewSubscriptionIdentifiers[0]:
+            return "1"
+        case PurchaseHandler.noRenewSubscriptionIdentifiers[1]:
+            return "3"
+        case PurchaseHandler.noRenewSubscriptionIdentifiers[2]:
+            return "6"
+        case PurchaseHandler.noRenewSubscriptionIdentifiers[3]:
+            return "12"
+        default:
+            return ""
+        }
+    }
+    
+    func displayConfirmationDialog() {
+        let body = L10n.giftConfirmationBody(usernameLabel.text ?? "", selectedDurationString())
+        let alertController = HabiticaAlertController(title: L10n.giftConfirmationTitle, message: body)
+        alertController.addCloseAction { _ in
+            self.dismiss(animated: true, completion: nil)
+        }
+        alertController.show()
     }
 }
 
