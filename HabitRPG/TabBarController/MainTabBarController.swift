@@ -90,16 +90,13 @@ class MainTabBarController: UITabBarController {
         disposable.inner.add(taskRepository.getDueTasks().on(value: {[weak self] tasks in
             self?.dueDailiesCount = 0
             self?.dueToDosCount = 0
-            let calendar = Calendar.current
-            let cal = Calendar(identifier: .gregorian)
-            let todayMidnight = cal.startOfDay(for: Date())
+            let calendar = Calendar(identifier: .gregorian)
+            let today = Date()
             for task in tasks.value where !task.completed {
                 if task.type == TaskType.daily {
                     self?.dueDailiesCount += 1
                 } else if task.type == TaskType.todo, let duedate = task.duedate {
-                    let duedateMidnight = cal.startOfDay(for: duedate)
-                    let diff = calendar.dateComponents([.day], from: todayMidnight, to: duedateMidnight)
-                    if (diff.day ?? 2) <= 0 {
+                    if calendar.isDate(today, inSameDayAs: duedate) {
                         self?.dueToDosCount += 1
                     }
                 }

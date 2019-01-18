@@ -184,6 +184,7 @@
 		29990DC620E65CF1001ADD8B /* APITaskResponseQuest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29990DC520E65CF1001ADD8B /* APITaskResponseQuest.swift */; };
 		29990DC820E65D16001ADD8B /* APITaskResponseDrop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29990DC720E65D16001ADD8B /* APITaskResponseDrop.swift */; };
 		29990DCA20E65D38001ADD8B /* APITaskResponseTemp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29990DC920E65D38001ADD8B /* APITaskResponseTemp.swift */; };
+		299DDFC921F215E8002B67D5 /* UnlockGearCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299DDFC821F215E8002B67D5 /* UnlockGearCall.swift */; };
 		299FB2882084987000422522 /* APIPet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB2872084987000422522 /* APIPet.swift */; };
 		299FB28A2084988500422522 /* APIMount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB2892084988500422522 /* APIMount.swift */; };
 		299FB29420849EDD00422522 /* APIOwnedPet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB29320849EDD00422522 /* APIOwnedPet.swift */; };
@@ -398,6 +399,7 @@
 		29990DC520E65CF1001ADD8B /* APITaskResponseQuest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITaskResponseQuest.swift; sourceTree = "<group>"; };
 		29990DC720E65D16001ADD8B /* APITaskResponseDrop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITaskResponseDrop.swift; sourceTree = "<group>"; };
 		29990DC920E65D38001ADD8B /* APITaskResponseTemp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITaskResponseTemp.swift; sourceTree = "<group>"; };
+		299DDFC821F215E8002B67D5 /* UnlockGearCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockGearCall.swift; sourceTree = "<group>"; };
 		299FB2872084987000422522 /* APIPet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIPet.swift; sourceTree = "<group>"; };
 		299FB2892084988500422522 /* APIMount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIMount.swift; sourceTree = "<group>"; };
 		299FB29320849EDD00422522 /* APIOwnedPet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIOwnedPet.swift; sourceTree = "<group>"; };
@@ -734,6 +736,7 @@
 				291448732086352800F3A6B5 /* FeedPetCall.swift */,
 				294973CD2080FAD500F02AC3 /* OpenMysteryItemCall.swift */,
 				2974BDAA208F4D6B00EC1A25 /* UnlockCustomizationsCall.swift */,
+				299DDFC821F215E8002B67D5 /* UnlockGearCall.swift */,
 			);
 			path = Inventory;
 			sourceTree = "<group>";
@@ -1044,6 +1047,7 @@
 				29A6B872206941210086B2A6 /* UpdateTaskCall.swift in Sources */,
 				29B4788C20BEFBDC00B6123F /* ScoreChecklistItem.swift in Sources */,
 				2919FDD72090D2510096A53B /* DeleteInboxMessageCall.swift in Sources */,
+				299DDFC921F215E8002B67D5 /* UnlockGearCall.swift in Sources */,
 				295E9DC820B2DF9600D58D45 /* PurchaseItemCall.swift in Sources */,
 				290B6291207E1E76007287C4 /* RetrieveMemberCall.swift in Sources */,
 				2914489E208A346700F3A6B5 /* APICustomization.swift in Sources */,

@@ -42,5 +42,8 @@ class CustomizationDetailCell: UICollectionViewCell {
     
     func configure(gear: GearProtocol) {
         imageView.setImagewith(name: "shop_\(gear.key ?? "")")
+        if gear.gearSet == "animal" {
+            currencyView.amount = 2
+        }
     }
 }

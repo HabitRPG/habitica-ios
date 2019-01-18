@@ -48,4 +48,15 @@ class CustomizationRepository: BaseRepository<CustomizationLocalRepository> {
             }
         })
     }
+    
+    public func unlock(gear: GearProtocol, value: Int) -> Signal<UserProtocol?, NoError> {
+        let call = UnlockGearCall(gear: [gear])
+        call.fire()
+        return call.objectSignal.on(value: {[weak self]newUser in
+            if let userID = self?.currentUserId, let user = newUser {
+                self?.userLocalRepository.updateUser(id: userID, balanceDiff: -(Float(value) / 4.0))
+                self?.userLocalRepository.updateUser(id: userID, updateUser: user)
+            }
+        })
+    }
 }
