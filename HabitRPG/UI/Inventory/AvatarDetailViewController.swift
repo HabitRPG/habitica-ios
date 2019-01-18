@@ -80,8 +80,12 @@ class AvatarDetailViewController: HRPGCollectionViewController, UICollectionView
     private func showPurchaseDialog(gear: GearProtocol, withSource sourceView: UIView?) {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         alertController.addAction(UIAlertAction.cancelAction())
-        alertController.addAction(UIAlertAction(title: L10n.purchaseForGems(Int(gear.value)), style: .default, handler: {[weak self] (_) in
-            //self?.customizationRepository.unlock(customization: customization, value: customization.price).observeCompleted {}
+        var value = Int(gear.value)
+        if gear.gearSet == "animal" {
+            value = 2
+        }
+        alertController.addAction(UIAlertAction(title: L10n.purchaseForGems(value), style: .default, handler: {[weak self] (_) in
+            self?.customizationRepository.unlock(gear: gear, value: value).observeCompleted {}
         }))
         if let sourceView = sourceView {
             alertController.popoverPresentationController?.sourceView = sourceView

@@ -102,6 +102,8 @@ target "Habitica API Client" do
   project 'Habitica API Client/Habitica API Client.xcodeproj'
   pod 'FunkyNetwork', git: 'https://github.com/schrockblock/funky-network.git'
   reactive_pods
+  pod 'Fabric'
+  pod 'Crashlytics'
 
   target 'Habitica API ClientTests' do
     inherit! :search_paths

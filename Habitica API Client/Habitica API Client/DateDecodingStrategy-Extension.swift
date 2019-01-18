@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Crashlytics
 
 extension JSONDecoder {
     
@@ -58,7 +59,10 @@ extension JSONDecoder {
             if let date = dateFormatter.date(from: dateStr) {
                 return date
             }
-            return Date()
+            
+            Crashlytics.sharedInstance().recordCustomExceptionName("DateParserException", reason: "Date \(dateStr) could not be parsed", frameArray: [])
+            
+            return Date(timeIntervalSince1970: 0)
         })
     }
     
