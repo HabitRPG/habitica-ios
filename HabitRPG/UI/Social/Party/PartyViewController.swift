@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Crashlytics
 
 class PartyViewController: SplitSocialViewController {
     
@@ -39,7 +40,9 @@ class PartyViewController: SplitSocialViewController {
             return user.party?.id
         })
             .skipRepeats()
-            .on(value: {[weak self] partyID in
+            .on(failed: { error in
+                Crashlytics.sharedInstance().recordError(error)
+            }, value: {[weak self] partyID in
                 self?.groupID = partyID
                 
                 if partyID == nil {

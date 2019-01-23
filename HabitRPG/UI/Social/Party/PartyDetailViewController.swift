@@ -9,6 +9,7 @@
 import Foundation
 import Habitica_Models
 import ReactiveSwift
+import Crashlytics
 
 class PartyDetailViewController: GroupDetailViewController {
     
@@ -76,7 +77,9 @@ class PartyDetailViewController: GroupDetailViewController {
             .observe(on: QueueScheduler.main)
             .flatMap(.latest, {[weak self] groupID in
             return self?.socialRepository.getGroupMembers(groupID: groupID) ?? SignalProducer.empty
-        }).on(value: {[weak self] (members, _) in
+            }).on(failed: { error in
+                Crashlytics.sharedInstance().recordError(error)
+            }, value: {[weak self] (members, _) in
             self?.set(members: members)
         }).start())
     }

@@ -10,6 +10,7 @@ import Foundation
 import Habitica_Models
 import ReactiveSwift
 import Down
+import Crashlytics
 
 class GroupDetailViewController: HRPGUIViewController, UITextViewDelegate {
     var groupID: String?
@@ -38,7 +39,11 @@ class GroupDetailViewController: HRPGUIViewController, UITextViewDelegate {
         groupDescriptionStackView?.layoutMargins = margins
         groupDescriptionStackView?.isLayoutMarginsRelativeArrangement = true
         
-        disposable.inner.add(groupProperty.signal.skipNil().observeValues({[weak self] group in
+        disposable.inner.add(groupProperty.signal.skipNil()
+            .on(failed: { error in
+                Crashlytics.sharedInstance().recordError(error)
+            })
+            .observeValues({[weak self] group in
                 self?.updateData(group: group)
         }))
         
