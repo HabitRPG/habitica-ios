@@ -232,7 +232,21 @@ class SubscriptionViewController: HRPGBaseViewController {
             let product = self.products?[indexPath.item]
             cell.priceLabel.text = product?.localizedPrice
             cell.titleLabel.text = product?.localizedTitle
-            cell.setSelected(product?.productIdentifier == selectedSubscriptionPlan?.productIdentifier, animated: false)
+            
+            switch product?.productIdentifier {
+            case PurchaseHandler.subscriptionIdentifiers[0]:
+                cell.setMonthCount(1)
+            case PurchaseHandler.subscriptionIdentifiers[1]:
+                cell.setMonthCount(3)
+            case PurchaseHandler.subscriptionIdentifiers[2]:
+                cell.setMonthCount(6)
+            case PurchaseHandler.subscriptionIdentifiers[3]:
+                cell.setMonthCount(12)
+            default: break
+            }
+            DispatchQueue.main.async {
+                cell.setSelected(product?.productIdentifier == self.selectedSubscriptionPlan?.productIdentifier, animated: true)
+            }
             returnedCell = cell
         } else if self.isDetailSection(indexPath.section) {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "DetailCell", for: indexPath) as? SubscriptionDetailView else {

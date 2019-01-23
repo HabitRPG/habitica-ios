@@ -49,7 +49,7 @@ extension Avatar {
         return value?.contains("base_0") != true
     }
     
-    func getViewDictionary(showsBackground: Bool, showsMount: Bool, showsPet: Bool, isFainted: Bool) -> [String: Bool] {
+    func getViewDictionary(showsBackground: Bool, showsMount: Bool, showsPet: Bool, isFainted: Bool, ignoreSleeping: Bool) -> [String: Bool] {
         let hasNoVisualBuff = !isValid(visualBuff)
         return [
             "background": showsBackground && isValid(background),
@@ -73,19 +73,19 @@ extension Avatar {
             "weapon": hasNoVisualBuff && isValid(weapon) && isAvailableGear(weapon),
             "visual-buff": isValid(visualBuff),
             "mount-head": showsMount && isValid(mount),
-            "zzz": isSleep && !isFainted,
+            "zzz": (isSleep && !ignoreSleeping) && !isFainted,
             "knockout": isFainted,
             "pet": showsPet && isValid(pet)
         ]
     }
     
-    func getFilenameDictionary() -> [String: String?] {
+    func getFilenameDictionary(ignoreSleeping: Bool) -> [String: String?] {
         return [
             "background": "background_\(background ?? "")",
             "mount-body": "Mount_Body_\(mount ?? "")",
             "chair": "chair_\(chair ?? "")",
             "back": back,
-            "skin": isSleep ? "skin_\(skin ?? "")_sleep" : "skin_\(skin ?? "")",
+            "skin": (isSleep ?? !ignoreSleeping) ? "skin_\(skin ?? "")_sleep" : "skin_\(skin ?? "")",
             "shirt": "\(size ?? "slim")_shirt_\( shirt ?? "")",
             "armor": "\(size ?? "slim")_\(armor ?? "")",
             "body": body,

@@ -454,17 +454,18 @@ class SettingsViewController: FormViewController, Themeable {
         if let classRow = form.rowBy(tag: SettingsTags.changeClass) as? ButtonRow {
             if (user.stats?.level ?? 0) < 10 {
                 classRow.hidden = true
-                return
-            }
-            classRow.hidden = false
-            if !user.canChooseClassForFree {
-                classRow.title = L10n.Settings.changeClass
-            } else if user.needsToChooseClass {
-                classRow.title = L10n.Settings.selectClass
             } else {
-                classRow.title = L10n.Settings.enableClassSystem
+                classRow.hidden = false
+                if !user.canChooseClassForFree {
+                    classRow.title = L10n.Settings.changeClass
+                } else if user.needsToChooseClass {
+                    classRow.title = L10n.Settings.selectClass
+                } else {
+                    classRow.title = L10n.Settings.enableClassSystem
+                }
+                classRow.updateCell()
             }
-            classRow.updateCell()
+            classRow.evaluateHidden()
         }
     }
     

@@ -19,6 +19,7 @@ class GiftSubscriptionViewController: HRPGBaseViewController {
     @IBOutlet weak var avatarView: AvatarView!
     @IBOutlet weak var displayNameLabel: UsernameLabel!
     @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var explanationTitle: UILabel!
     
     private let socialRepository = SocialRepository()
     private let configRepository = ConfigRepository()
@@ -69,6 +70,7 @@ class GiftSubscriptionViewController: HRPGBaseViewController {
         avatarView.showPet = false
         avatarView.showMount = false
         avatarView.showBackground = false
+        avatarView.ignoreSleeping = true
         
         if let username = giftRecipientUsername {
             disposable.inner.add(socialRepository.retrieveMemberWithUsername(username).observeValues({ member in
@@ -79,6 +81,8 @@ class GiftSubscriptionViewController: HRPGBaseViewController {
         if !configRepository.bool(variable: .enableGiftOneGetOne) {
             tableView.tableFooterView = nil
         }
+        
+        explanationTitle.text = L10n.giftSubscriptionPrompt
     }
     
     func retrieveProductList() {
@@ -142,6 +146,20 @@ class GiftSubscriptionViewController: HRPGBaseViewController {
             let product = self.products?[indexPath.item]
             cell.priceLabel.text = product?.localizedPrice
             cell.titleLabel.text = product?.localizedTitle
+            switch product?.productIdentifier {
+            case PurchaseHandler.noRenewSubscriptionIdentifiers[0]:
+                cell.setMonthCount(1)
+            case PurchaseHandler.noRenewSubscriptionIdentifiers[1]:
+                cell.setMonthCount(3)
+            case PurchaseHandler.noRenewSubscriptionIdentifiers[2]:
+                cell.setMonthCount(6)
+            case PurchaseHandler.noRenewSubscriptionIdentifiers[3]:
+                cell.setMonthCount(12)
+            default: break
+            }
+            DispatchQueue.main.async {
+                cell.setSelected(product?.productIdentifier == self.selectedSubscriptionPlan?.productIdentifier, animated: true)
+            }
             returnedCell = cell
         } else if indexPath.section == tableView.numberOfSections-1 {
             returnedCell = tableView.dequeueReusableCell(withIdentifier: "SubscribeButtonCell", for: indexPath)

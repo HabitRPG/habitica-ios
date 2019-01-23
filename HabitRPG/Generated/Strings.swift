@@ -61,6 +61,10 @@ internal enum L10n {
   internal static let food = L10n.tr("Mainstrings", "food")
   /// Friday
   internal static let friday = L10n.tr("Mainstrings", "friday")
+  /// %d Gem cap
+  internal static func gemCap(_ p1: Int) -> String {
+    return L10n.tr("Mainstrings", "gem_cap", p1)
+  }
   /// You sent %@ a %@-month Habitica subscription.
   internal static func giftConfirmationBody(_ p1: String, _ p2: String) -> String {
     return L10n.tr("Mainstrings", "gift_confirmation_body", p1, p2)
@@ -75,6 +79,8 @@ internal enum L10n {
   internal static let giftRecipientSubtitle = L10n.tr("Mainstrings", "gift_recipient_subtitle")
   /// Who would you like to gift to?
   internal static let giftRecipientTitle = L10n.tr("Mainstrings", "gift_recipient_title")
+  /// Choose the subscription you’d like to gift below! This purchase won’t automatically renew.
+  internal static let giftSubscriptionPrompt = L10n.tr("Mainstrings", "gift_subscription_prompt")
   /// Glasses
   internal static let glasses = L10n.tr("Mainstrings", "glasses")
   /// Hatch egg
@@ -87,6 +93,10 @@ internal enum L10n {
   internal static let headband = L10n.tr("Mainstrings", "headband")
   /// Health
   internal static let health = L10n.tr("Mainstrings", "health")
+  /// +%d Mystic Hourglass
+  internal static func hourglassCount(_ p1: Int) -> String {
+    return L10n.tr("Mainstrings", "hourglass_count", p1)
+  }
   /// Inactive
   internal static let inactive = L10n.tr("Mainstrings", "inactive")
   /// Invite Party

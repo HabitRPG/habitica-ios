@@ -29,10 +29,10 @@
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ahl-VE-epw">
-                                <rect key="frame" x="58" y="61.5" width="277" height="4"/>
+                                <rect key="frame" x="58" y="29.5" width="277" height="67.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lya-yE-68a">
-                                        <rect key="frame" x="0.0" y="0.0" width="277" height="0.0"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="test" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lya-yE-68a">
+                                        <rect key="frame" x="0.0" y="0.0" width="277" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" priority="500" constant="10" id="TNd-5R-izk"/>
                                         </constraints>
@@ -40,8 +40,8 @@
                                         <color key="textColor" red="0.29921266436576843" green="0.17604684829711914" blue="0.4975128173828125" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5yl-hB-j4J">
-                                        <rect key="frame" x="0.0" y="4" width="277" height="0.0"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="123" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5yl-hB-j4J">
+                                        <rect key="frame" x="0.0" y="34" width="277" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="height" priority="500" constant="20" id="YFF-Oy-Qdz"/>
                                         </constraints>
@@ -49,17 +49,54 @@
                                         <color key="textColor" red="0.29921266436576843" green="0.17604684829711914" blue="0.4975128173828125" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="100" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8G-oZ-Yon" customClass="PaddedLabel" customModule="Habitica" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="54" width="28.5" height="13.5"/>
+                                        <color key="backgroundColor" red="0.92813128229999997" green="0.92537832259999997" blue="0.93166613580000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" priority="500" constant="42" id="3JM-al-1nN"/>
+                                            <constraint firstAttribute="height" priority="500" constant="21" id="ik9-FL-azR"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <color key="textColor" red="0.3075395823" green="0.2903449535" blue="0.34151983260000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="100" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Et-rt-l2T" customClass="PaddedLabel" customModule="Habitica" customModuleProvider="target">
+                                        <rect key="frame" x="36.5" y="54" width="28.5" height="13.5"/>
+                                        <color key="backgroundColor" red="0.92813128229999997" green="0.92537832259999997" blue="0.93166613580000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" priority="500" constant="42" id="Abu-XA-0SE"/>
+                                            <constraint firstAttribute="height" priority="500" constant="21" id="cRg-rh-FNf"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <color key="textColor" red="0.3075395823" green="0.2903449535" blue="0.34151983260000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.97931915521621704" green="0.9800599217414856" blue="0.97943383455276489" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="7Et-rt-l2T" firstAttribute="leading" secondItem="V8G-oZ-Yon" secondAttribute="trailing" constant="8" id="D8o-OY-cm9"/>
+                                    <constraint firstItem="V8G-oZ-Yon" firstAttribute="leading" secondItem="Ahl-VE-epw" secondAttribute="leading" id="Erx-tP-UYh"/>
                                     <constraint firstItem="5yl-hB-j4J" firstAttribute="leading" secondItem="Ahl-VE-epw" secondAttribute="leading" id="GmE-3m-myu"/>
+                                    <constraint firstItem="7Et-rt-l2T" firstAttribute="top" secondItem="V8G-oZ-Yon" secondAttribute="top" id="Il6-Rj-9oW"/>
                                     <constraint firstItem="lya-yE-68a" firstAttribute="top" secondItem="Ahl-VE-epw" secondAttribute="top" id="Nhm-A9-sBB"/>
+                                    <constraint firstItem="V8G-oZ-Yon" firstAttribute="top" secondItem="5yl-hB-j4J" secondAttribute="bottom" constant="4" id="OJO-9j-H5C"/>
                                     <constraint firstAttribute="height" priority="500" constant="40" id="OUc-vH-rNi"/>
+                                    <constraint firstAttribute="bottom" secondItem="7Et-rt-l2T" secondAttribute="bottom" id="Psb-Ov-Jjf"/>
                                     <constraint firstAttribute="trailing" secondItem="5yl-hB-j4J" secondAttribute="trailing" id="SSe-QJ-b2G"/>
+                                    <constraint firstAttribute="bottom" secondItem="V8G-oZ-Yon" secondAttribute="bottom" id="Z4m-FX-lIA"/>
                                     <constraint firstItem="lya-yE-68a" firstAttribute="leading" secondItem="Ahl-VE-epw" secondAttribute="leading" id="cby-K9-kry"/>
                                     <constraint firstItem="5yl-hB-j4J" firstAttribute="top" secondItem="lya-yE-68a" secondAttribute="bottom" constant="4" id="kKw-Fn-X1u"/>
                                     <constraint firstAttribute="trailing" secondItem="lya-yE-68a" secondAttribute="trailing" id="mgX-h4-hPc"/>
-                                    <constraint firstAttribute="bottom" secondItem="5yl-hB-j4J" secondAttribute="bottom" id="skT-c2-7PS"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -82,6 +119,8 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="gemCapLabel" destination="V8G-oZ-Yon" id="Fte-qz-G5j"/>
+                <outlet property="mysticHourglassLabel" destination="7Et-rt-l2T" id="JHD-1z-8Im"/>
                 <outlet property="priceLabel" destination="lya-yE-68a" id="IaO-ju-UXn"/>
                 <outlet property="selectionView" destination="cN1-0z-yC8" id="KkB-vj-xf8"/>
                 <outlet property="titleLabel" destination="5yl-hB-j4J" id="8FT-I7-5IN"/>

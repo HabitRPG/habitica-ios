@@ -2667,7 +2667,7 @@ and helps keep Habitica running</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="0xr-mh-PES">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KSp-Pa-Hsw">
@@ -2710,19 +2710,29 @@ and helps keep Habitica running</string>
                                     <color key="textColor" red="0.57231205701828003" green="0.54968619346618652" blue="0.60629409551620483" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="evr-kJ-ljY">
+                                    <rect key="frame" x="20" y="114" width="335" height="78"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstItem="xvW-Tc-HI8" firstAttribute="centerX" secondItem="0xr-mh-PES" secondAttribute="centerX" id="2xb-NC-eFc"/>
+                                <constraint firstAttribute="trailing" secondItem="evr-kJ-ljY" secondAttribute="trailing" constant="20" id="BcU-gF-TIi"/>
                                 <constraint firstItem="xvW-Tc-HI8" firstAttribute="top" secondItem="NMm-pQ-wSm" secondAttribute="bottom" constant="4" id="JkN-gd-ayG"/>
                                 <constraint firstItem="KSp-Pa-Hsw" firstAttribute="top" secondItem="0xr-mh-PES" secondAttribute="top" constant="50" id="Li5-yI-lb0"/>
+                                <constraint firstAttribute="bottom" secondItem="evr-kJ-ljY" secondAttribute="bottom" constant="8" id="Oei-5L-FJy"/>
                                 <constraint firstItem="NMm-pQ-wSm" firstAttribute="centerX" secondItem="0xr-mh-PES" secondAttribute="centerX" id="PSg-ei-ABE"/>
                                 <constraint firstItem="NMm-pQ-wSm" firstAttribute="top" secondItem="KSp-Pa-Hsw" secondAttribute="bottom" constant="8" id="fne-H5-geF"/>
                                 <constraint firstItem="KSp-Pa-Hsw" firstAttribute="centerX" secondItem="0xr-mh-PES" secondAttribute="centerX" id="g6X-pQ-QX9"/>
+                                <constraint firstItem="evr-kJ-ljY" firstAttribute="leading" secondItem="0xr-mh-PES" secondAttribute="leading" constant="20" id="lAf-i4-z5v"/>
+                                <constraint firstItem="evr-kJ-ljY" firstAttribute="top" secondItem="xvW-Tc-HI8" secondAttribute="bottom" constant="8" id="nxz-ns-EmA"/>
                             </constraints>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="ev4-GE-6Md">
-                            <rect key="frame" x="0.0" y="238" width="375" height="111"/>
+                            <rect key="frame" x="0.0" y="298" width="375" height="111"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Gift one, Get one!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vqR-47-Okh">
@@ -2758,7 +2768,7 @@ a matching subscription automatically after sending your gift.</string>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SubscribeButtonCell" rowHeight="70" id="vN3-lc-K1M">
-                                <rect key="frame" x="0.0" y="168" width="375" height="70"/>
+                                <rect key="frame" x="0.0" y="228" width="375" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vN3-lc-K1M" id="NTC-7R-KQH">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
@@ -2798,7 +2808,7 @@ a matching subscription automatically after sending your gift.</string>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Gift Subscription" id="Puw-P3-s3j">
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="2VZ-VC-snP">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="cancel" id="2VZ-VC-snP">
                             <connections>
                                 <segue destination="3qU-U4-oGh" kind="unwind" unwindAction="unwindToList:" id="hLO-fD-2Xi"/>
                             </connections>
@@ -2807,6 +2817,7 @@ a matching subscription automatically after sending your gift.</string>
                     <connections>
                         <outlet property="avatarView" destination="QfC-at-thI" id="mEj-ID-lER"/>
                         <outlet property="displayNameLabel" destination="NMm-pQ-wSm" id="lXg-bT-m3c"/>
+                        <outlet property="explanationTitle" destination="evr-kJ-ljY" id="RQA-9R-rZB"/>
                         <outlet property="usernameLabel" destination="xvW-Tc-HI8" id="gRf-Zg-b2d"/>
                     </connections>
                 </tableViewController>
