@@ -19,4 +19,5 @@
 @property TutorialStepView *activeTutorialView;
 @property TopHeaderCoordinator *topHeaderCoordinator;
 
+- (void) populateText;
 @end

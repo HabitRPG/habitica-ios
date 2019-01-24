@@ -767,22 +767,58 @@ internal enum L10n {
   internal enum Stats {
     /// Allocated
     internal static let allocated = L10n.tr("Mainstrings", "stats.allocated")
+    /// Auto Allocate Points
+    internal static let autoAllocatePoints = L10n.tr("Mainstrings", "stats.auto_allocate_points")
     /// Battle Gear
     internal static let battleGear = L10n.tr("Mainstrings", "stats.battle_gear")
     /// Buffs
     internal static let buffs = L10n.tr("Mainstrings", "stats.buffs")
+    /// Each level earns you one point to assign to an attribute of your choice. You can do so manually, or let the game decide for you using one of the Automatic Allocation options.
+    internal static let characterBuildText = L10n.tr("Mainstrings", "stats.character_build_text")
+    /// Character Build
+    internal static let characterBuildTitle = L10n.tr("Mainstrings", "stats.character_build_title")
     /// Class-Bonus
     internal static let classBonus = L10n.tr("Mainstrings", "stats.class_bonus")
+    /// Decreases the amount of damage taken from your tasks. Does not decrease the damage received from bosses.
+    internal static let constitutionText = L10n.tr("Mainstrings", "stats.constitution_text")
+    /// Constitution
+    internal static let constitutionTitle = L10n.tr("Mainstrings", "stats.constitution_title")
+    /// Distribute based on class
+    internal static let distributeClass = L10n.tr("Mainstrings", "stats.distribute_class")
+    /// Assigns more points to the attributes important to your Class.
+    internal static let distributeClassHelp = L10n.tr("Mainstrings", "stats.distribute_class_help")
+    /// Distribute evenly
+    internal static let distributeEvenly = L10n.tr("Mainstrings", "stats.distribute_evenly")
+    /// Assigns the same number of points to each attribute.
+    internal static let distributeEvenlyHelp = L10n.tr("Mainstrings", "stats.distribute_evenly_help")
+    /// Distribute based on task activity
+    internal static let distributeTasks = L10n.tr("Mainstrings", "stats.distribute_tasks")
+    /// Assigns points based on the Strength, Intelligence, Constitution, and Perception categories associated with the tasks you complete.
+    internal static let distributeTasksHelp = L10n.tr("Mainstrings", "stats.distribute_tasks_help")
+    /// Increases EXP earned from completing tasks. Also increases your mana cap and how fast mana regenerates over time.
+    internal static let intelligenceText = L10n.tr("Mainstrings", "stats.intelligence_text")
+    /// Intelligence
+    internal static let intelligenceTitle = L10n.tr("Mainstrings", "stats.intelligence_title")
     /// Level
     internal static let level = L10n.tr("Mainstrings", "stats.level")
     /// 0 Points to Allocate
     internal static let noPointsToAllocate = L10n.tr("Mainstrings", "stats.no_points_to_allocate")
     /// 1 Point to Allocate
     internal static let onePointToAllocate = L10n.tr("Mainstrings", "stats.one_point_to_allocate")
+    /// Increases the likelihood of finding drops when completing Tasks, the daily drop-cap, Streak Bonuses, and the amount of gold awarded for Tasks.
+    internal static let perceptionText = L10n.tr("Mainstrings", "stats.perception_text")
+    /// Perception
+    internal static let perceptionTitle = L10n.tr("Mainstrings", "stats.perception_title")
     /// %d Point to Allocate
     internal static func pointsToAllocate(_ p1: Int) -> String {
       return L10n.tr("Mainstrings", "stats.points_to_allocate", p1)
     }
+    /// Stat guide
+    internal static let statGuide = L10n.tr("Mainstrings", "stats.stat_guide")
+    /// Increases the bonus of critical hits and makes them more likely when scoring a task. Also increases damage dealt to bosses. 
+    internal static let strengthText = L10n.tr("Mainstrings", "stats.strength_text")
+    /// Strength
+    internal static let strengthTitle = L10n.tr("Mainstrings", "stats.strength_title")
     /// Total
     internal static let total = L10n.tr("Mainstrings", "stats.total")
   }
@@ -944,6 +980,15 @@ internal enum L10n {
     internal static let selectClass = L10n.tr("Mainstrings", "titles.select_class")
     /// Settings
     internal static let settings = L10n.tr("Mainstrings", "titles.settings")
+    /// Skills
+    internal static let skills = L10n.tr("Mainstrings", "titles.skills")
+    /// Stats
+    internal static let stats = L10n.tr("Mainstrings", "titles.stats")
+  }
+
+  internal enum Tutorials {
+    /// Tap the gray button to allocate lots of your stats at once, or tap the arrows to add them one point at a time.
+    internal static let stats = L10n.tr("Mainstrings", "tutorials.stats")
   }
 }
 // swiftlint:enable explicit_type_interface identifier_name line_length nesting type_body_length type_name
