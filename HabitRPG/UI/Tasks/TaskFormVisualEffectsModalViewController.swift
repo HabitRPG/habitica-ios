@@ -20,6 +20,11 @@ class TaskFormVisualEffectsModalViewController: VisualEffectModalViewController 
         taskType = TaskType(rawValue: type) ?? .habit
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        leftButton.setTitle(L10n.cancel, for: .normal)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == StoryboardSegue.Tasks.embedSegue.rawValue {
             let destination = segue.destination as? TaskFormViewController
