@@ -7,6 +7,8 @@ import Foundation
 
 // swiftlint:disable explicit_type_interface identifier_name line_length nesting type_body_length type_name
 internal enum L10n {
+  /// About
+  internal static let aboutText = L10n.tr("Mainstrings", "aboutText")
   /// Active
   internal static let active = L10n.tr("Mainstrings", "active")
   /// Active on %@
@@ -15,10 +17,16 @@ internal enum L10n {
   }
   /// Animal Ears
   internal static let animalEars = L10n.tr("Mainstrings", "animal_ears")
+  /// API Key
+  internal static let apiKey = L10n.tr("Mainstrings", "api_key")
   /// Back
   internal static let back = L10n.tr("Mainstrings", "back")
   /// Cancel
   internal static let cancel = L10n.tr("Mainstrings", "cancel")
+  /// Change
+  internal static let change = L10n.tr("Mainstrings", "change")
+  /// Character Level
+  internal static let characterLevel = L10n.tr("Mainstrings", "character_level")
   /// Chat
   internal static let chat = L10n.tr("Mainstrings", "chat")
   /// Close
@@ -39,6 +47,8 @@ internal enum L10n {
   internal static let daily = L10n.tr("Mainstrings", "daily")
   /// Damage Paused
   internal static let damagePaused = L10n.tr("Mainstrings", "damage_paused")
+  /// 21-Day Streaks
+  internal static let dayStreaks = L10n.tr("Mainstrings", "day_streaks")
   /// Delete
   internal static let delete = L10n.tr("Mainstrings", "delete")
   /// Description
@@ -89,6 +99,8 @@ internal enum L10n {
   internal static let giftSubscriptionPrompt = L10n.tr("Mainstrings", "gift_subscription_prompt")
   /// Glasses
   internal static let glasses = L10n.tr("Mainstrings", "glasses")
+  /// Gold
+  internal static let gold = L10n.tr("Mainstrings", "gold")
   /// Hatch egg
   internal static let hatchEgg = L10n.tr("Mainstrings", "hatch_egg")
   /// Hatch with potion
@@ -131,6 +143,8 @@ internal enum L10n {
   internal static let levelupTitle = L10n.tr("Mainstrings", "levelup_title")
   /// Mana
   internal static let mana = L10n.tr("Mainstrings", "mana")
+  /// Mana Points
+  internal static let manaPoints = L10n.tr("Mainstrings", "mana_points")
   /// Monday
   internal static let monday = L10n.tr("Mainstrings", "monday")
   /// Monthly
@@ -165,6 +179,8 @@ internal enum L10n {
   internal static let pendingDamage = L10n.tr("Mainstrings", "pending_damage")
   /// Pets
   internal static let pets = L10n.tr("Mainstrings", "pets")
+  /// Photo URL
+  internal static let photoUrl = L10n.tr("Mainstrings", "photo_url")
   /// Plain Backgrounds
   internal static let plainBackgrounds = L10n.tr("Mainstrings", "plain_backgrounds")
   /// Purchase for %d Gems
@@ -219,6 +235,8 @@ internal enum L10n {
   internal static let syncErrorMessage = L10n.tr("Mainstrings", "sync_error_message")
   /// Tags
   internal static let tags = L10n.tr("Mainstrings", "tags")
+  /// Tap to Show
+  internal static let tapToShow = L10n.tr("Mainstrings", "tap_to_show")
   /// Thursday
   internal static let thursday = L10n.tr("Mainstrings", "thursday")
   /// Title
@@ -598,18 +616,34 @@ internal enum L10n {
   internal enum Settings {
     /// API
     internal static let api = L10n.tr("Mainstrings", "settings.api")
+    /// Copy these for use in third party applications. However, think of your API Token like a password, and do not share it publicly. You may occasionally be asked for your User ID, but never post your API Token where others can see it, including on Github.
+    internal static let apiDisclaimer = L10n.tr("Mainstrings", "settings.api_disclaimer")
     /// App Icon
     internal static let appIcon = L10n.tr("Mainstrings", "settings.app_icon")
     /// Are you sure?
     internal static let areYouSure = L10n.tr("Mainstrings", "settings.are_you_sure")
     /// Authentication
     internal static let authentication = L10n.tr("Mainstrings", "settings.authentication")
+    /// Change About Message
+    internal static let changeAboutMessage = L10n.tr("Mainstrings", "settings.change_about_message")
     /// Change Class
     internal static let changeClass = L10n.tr("Mainstrings", "settings.change_class")
     /// This will reset your character's class and allocated points (you'll get them all back to re-allocate), and costs 3 gems.
     internal static let changeClassDisclaimer = L10n.tr("Mainstrings", "settings.change_class_disclaimer")
+    /// Change Display Name
+    internal static let changeDisplayName = L10n.tr("Mainstrings", "settings.change_display_name")
+    /// Change Email
+    internal static let changeEmail = L10n.tr("Mainstrings", "settings.change_email")
+    /// Change Password
+    internal static let changePassword = L10n.tr("Mainstrings", "settings.change_password")
+    /// Change Photo URL
+    internal static let changePhotoUrl = L10n.tr("Mainstrings", "settings.change_photo_url")
+    /// Change Username
+    internal static let changeUsername = L10n.tr("Mainstrings", "settings.change_username")
     /// Clear Cache
     internal static let clearCache = L10n.tr("Mainstrings", "settings.clear_cache")
+    /// Confirm new Password
+    internal static let confirmNewPassword = L10n.tr("Mainstrings", "settings.confirm_new_password")
     /// Confirming your username will make it public for invitations, @mentions and messaging. You can change your username from settings at any time.
     internal static let confirmUsernameDescription = L10n.tr("Mainstrings", "settings.confirm_username_description")
     /// Are you sure you want to confirm your current username?
@@ -618,8 +652,14 @@ internal enum L10n {
     internal static let customDayStart = L10n.tr("Mainstrings", "settings.custom_day_start")
     /// Daily Reminder
     internal static let dailyReminder = L10n.tr("Mainstrings", "settings.daily_reminder")
+    /// Danger Zone
+    internal static let dangerZone = L10n.tr("Mainstrings", "settings.danger_zone")
     /// Day Start
     internal static let dayStart = L10n.tr("Mainstrings", "settings.day_start")
+    /// Delete Account
+    internal static let deleteAccount = L10n.tr("Mainstrings", "settings.delete_account")
+    /// Are you sure? This will delete your account forever, and it can never be restored! You will need to register a new account to use Habitica again. Banked or spent Gems will not be refunded. If you're absolutely certain, type your password into the text box below.
+    internal static let deleteAccountDescription = L10n.tr("Mainstrings", "settings.delete_account_description")
     /// Disable all Push Notifications
     internal static let disableAllNotifications = L10n.tr("Mainstrings", "settings.disable_all_notifications")
     /// Disable Private Messages
@@ -634,12 +674,26 @@ internal enum L10n {
     internal static let everyDay = L10n.tr("Mainstrings", "settings.every_day")
     /// Fix Character Values
     internal static let fixCharacterValues = L10n.tr("Mainstrings", "settings.fix_characterValues")
+    /// If you’ve encountered a bug or made a mistake that unfairly changed your character, you can manually correct those values here.
+    internal static let fixValuesDescription = L10n.tr("Mainstrings", "settings.fix_values_description")
+    /// Local
+    internal static let local = L10n.tr("Mainstrings", "settings.local")
     /// Log Out
     internal static let logOut = L10n.tr("Mainstrings", "settings.log_out")
+    /// Login Methods
+    internal static let loginMethods = L10n.tr("Mainstrings", "settings.login_methods")
     /// Maintenance
     internal static let maintenance = L10n.tr("Mainstrings", "settings.maintenance")
+    /// New Email
+    internal static let newEmail = L10n.tr("Mainstrings", "settings.new_email")
+    /// New Password
+    internal static let newPassword = L10n.tr("Mainstrings", "settings.new_password")
+    /// New Username
+    internal static let newUsername = L10n.tr("Mainstrings", "settings.new_username")
     /// Notification Badge
     internal static let notificationBadge = L10n.tr("Mainstrings", "settings.notification_badge")
+    /// Old Password
+    internal static let oldPassword = L10n.tr("Mainstrings", "settings.old_password")
     /// Preferences
     internal static let preferences = L10n.tr("Mainstrings", "settings.preferences")
     /// Profile
@@ -650,6 +704,10 @@ internal enum L10n {
     internal static let reloadContent = L10n.tr("Mainstrings", "settings.reload_content")
     /// Reminder
     internal static let reminder = L10n.tr("Mainstrings", "settings.reminder")
+    /// Reset Account
+    internal static let resetAccount = L10n.tr("Mainstrings", "settings.reset_account")
+    /// WARNING! This resets many parts of your account. This is highly discouraged, but some people find it useful in the beginning after playing with the site for a short time.\n\nYou will lose all your levels, gold, and experience points. All your tasks (except those from challenges) will be deleted permanently and you will lose all of their historical data. You will lose all your equipment but you will be able to buy it all back, including all limited edition equipment or subscriber Mystery items that you already own (you will need to be in the correct class to re-buy class-specific gear). You will keep your current class and your pets and mounts. You might prefer to use an Orb of Rebirth instead, which is a much safer option and which will preserve your tasks and equipment.
+    internal static let resetAccountDescription = L10n.tr("Mainstrings", "settings.reset_account_description")
     /// Select Class
     internal static let selectClass = L10n.tr("Mainstrings", "settings.select_class")
     /// Social
@@ -871,6 +929,21 @@ internal enum L10n {
     internal static let teal = L10n.tr("Mainstrings", "theme.teal")
     /// Yellow
     internal static let yellow = L10n.tr("Mainstrings", "theme.yellow")
+  }
+
+  internal enum Titles {
+    /// API
+    internal static let api = L10n.tr("Mainstrings", "titles.api")
+    /// Authentication
+    internal static let authentication = L10n.tr("Mainstrings", "titles.authentication")
+    /// Fix Values
+    internal static let fixValues = L10n.tr("Mainstrings", "titles.fix_values")
+    /// Profile
+    internal static let profile = L10n.tr("Mainstrings", "titles.profile")
+    /// Select Class
+    internal static let selectClass = L10n.tr("Mainstrings", "titles.select_class")
+    /// Settings
+    internal static let settings = L10n.tr("Mainstrings", "titles.settings")
   }
 }
 // swiftlint:enable explicit_type_interface identifier_name line_length nesting type_body_length type_name

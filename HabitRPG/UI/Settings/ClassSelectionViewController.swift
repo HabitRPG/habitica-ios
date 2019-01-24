@@ -34,6 +34,8 @@ class ClassSelectionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.title = L10n.Titles.selectClass
+        
         configure(view: warriorOptionView, class: .warrior)
         configure(view: mageOptionView, class: .mage)
         configure(view: healerOptionView, class: .healer)

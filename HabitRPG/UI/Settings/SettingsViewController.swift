@@ -173,6 +173,7 @@ class SettingsViewController: FormViewController, Themeable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = L10n.Titles.settings
         setupForm()
         loadSettingsFromUserDefaults()
         

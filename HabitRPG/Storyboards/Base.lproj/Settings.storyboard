@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Mxq-5y-Lb4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Mxq-5y-Lb4">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -61,7 +59,7 @@
             </objects>
             <point key="canvasLocation" x="127" y="543"/>
         </scene>
-        <!--Authentication-->
+        <!--Authentication Settings View Controller-->
         <scene sceneID="EDX-vo-07R">
             <objects>
                 <tableViewController storyboardIdentifier="AuthenticationSettingsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BCm-To-foE" customClass="AuthenticationSettingsViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
@@ -124,7 +122,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LAx-3w-uwb" customClass="HRPGQRCodeView">
-                                            <rect key="frame" x="35" y="7" width="306" height="306"/>
+                                            <rect key="frame" x="34.5" y="7" width="306" height="306"/>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="306" id="0Ov-h9-9W1"/>
@@ -156,13 +154,13 @@
                             <outlet property="delegate" destination="BCm-To-foE" id="aUQ-9G-avW"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Authentication" id="ygF-eV-GSD"/>
+                    <navigationItem key="navigationItem" id="ygF-eV-GSD"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="asR-JL-7SB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1142" y="543"/>
         </scene>
-        <!--Fix Values-->
+        <!--Fix Character View Controller-->
         <scene sceneID="aSY-Ef-GXl">
             <objects>
                 <tableViewController id="Ph2-GT-Uhf" customClass="FixCharacterViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
@@ -179,7 +177,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BXQ-V5-Y4s">
-                                            <rect key="frame" x="26" y="15" width="333" height="18.5"/>
+                                            <rect key="frame" x="26" y="15" width="333" height="19"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" priority="500" constant="21" id="TOy-Uw-y4G"/>
                                             </constraints>
@@ -188,7 +186,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view tag="4" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aFt-Hz-EOc">
-                                            <rect key="frame" x="16" y="39.5" width="343" height="40"/>
+                                            <rect key="frame" x="16" y="40" width="343" height="40"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" tag="3" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6bN-BC-TgC">
                                                     <rect key="frame" x="303" y="0.0" width="40" height="40"/>
@@ -241,7 +239,7 @@
                             <outlet property="delegate" destination="Ph2-GT-Uhf" id="OsS-bS-a4z"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Fix Values" id="W3U-7T-iWa">
+                    <navigationItem key="navigationItem" id="W3U-7T-iWa">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="LZp-2y-LXL">
                             <connections>
                                 <segue destination="Iw5-Ng-voH" kind="unwind" unwindAction="unwindToList:" id="8nD-KN-oEK"/>
@@ -277,7 +275,7 @@
             </objects>
             <point key="canvasLocation" x="2150" y="1472"/>
         </scene>
-        <!--Select Class-->
+        <!--Class Selection View Controller-->
         <scene sceneID="6Am-P4-F55">
             <objects>
                 <viewController id="UhS-h9-0Xt" customClass="ClassSelectionViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
@@ -351,7 +349,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="bYe-9J-YkB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Select Class" id="Qov-6d-R8S">
+                    <navigationItem key="navigationItem" id="Qov-6d-R8S">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="fN7-3R-K4L">
                             <connections>
                                 <action selector="cancelButtonTapped:" destination="UhS-h9-0Xt" id="t3n-vP-nGi"/>
@@ -390,7 +388,7 @@
             </objects>
             <point key="canvasLocation" x="1900" y="399"/>
         </scene>
-        <!--Profile-->
+        <!--Profile Settings View Controller-->
         <scene sceneID="sOe-kM-vmx">
             <objects>
                 <tableViewController id="6ke-ha-crS" customClass="ProfileSettingsViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
@@ -429,13 +427,13 @@
                             <outlet property="delegate" destination="6ke-ha-crS" id="KC1-pk-chi"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Profile" id="amL-LP-ivA"/>
+                    <navigationItem key="navigationItem" id="amL-LP-ivA"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CuE-mG-K9d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1142" y="-149"/>
         </scene>
-        <!--API-->
+        <!--Settings View Controller-->
         <scene sceneID="bYQ-Nm-sZ6">
             <objects>
                 <tableViewController id="wOo-je-HNh" customClass="APISettingsViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
@@ -474,7 +472,7 @@
                             <outlet property="delegate" destination="wOo-je-HNh" id="PnO-aC-NQN"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="API" id="uUr-lg-1aL"/>
+                    <navigationItem key="navigationItem" id="uUr-lg-1aL"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dvj-uc-lyj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
