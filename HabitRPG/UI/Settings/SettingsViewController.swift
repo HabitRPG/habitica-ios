@@ -27,7 +27,7 @@ enum SettingsTags {
 }
 
 enum ThemeName: String {
-    case defaultTheme = "Default"
+    case defaultTheme = "Purple (Default)"
     case blue = "Blue"
     case teal = "Teal"
     case green = "Green"
@@ -72,8 +72,8 @@ enum ThemeName: String {
 }
 
 enum AppIconName: String {
-    case defaultTheme = "Default"
-    case purpleAlt = "Default Alternative"
+    case defaultTheme = "Purple (Default)"
+    case purpleAlt = "Purple Alternative"
     case maroon = "Maroon"
     case red = "Red"
     case orange = "Orange"
@@ -391,13 +391,12 @@ class SettingsViewController: FormViewController, Themeable {
                 row.value = UIApplication.shared.alternateIconName ?? AppIconName.defaultTheme.rawValue
                 row.onPresent({ (from, to) in
                     to.selectableRowCellUpdate = { cell, row in
-                        if let filename = AppIconName(rawValue: row.title ?? "")?.fileName {
-                            cell.height = { 68 }
-                            cell.imageView?.cornerRadius = 12
-                            cell.imageView?.contentMode = .center
-                            cell.imageView?.image = UIImage(named: filename)
-                            cell.contentView.layoutMargins = UIEdgeInsets(top: 4, left: cell.layoutMargins.left, bottom: 4, right: cell.layoutMargins.right)
-                        }
+                        let filename = AppIconName(rawValue: row.title ?? "")?.fileName ?? "Purple"
+                        cell.height = { 68 }
+                        cell.imageView?.cornerRadius = 12
+                        cell.imageView?.contentMode = .center
+                        cell.imageView?.image = UIImage(named: filename)
+                        cell.contentView.layoutMargins = UIEdgeInsets(top: 4, left: cell.layoutMargins.left, bottom: 4, right: cell.layoutMargins.right)
                     }
                 })
                 row.onChange({ (row) in
