@@ -15,6 +15,8 @@ internal enum L10n {
   }
   /// Animal Ears
   internal static let animalEars = L10n.tr("Mainstrings", "animal_ears")
+  /// Back
+  internal static let back = L10n.tr("Mainstrings", "back")
   /// Cancel
   internal static let cancel = L10n.tr("Mainstrings", "cancel")
   /// Chat
@@ -47,6 +49,8 @@ internal enum L10n {
   internal static let difficulty = L10n.tr("Mainstrings", "difficulty")
   /// Discover
   internal static let discover = L10n.tr("Mainstrings", "discover")
+  /// Display name
+  internal static let displayName = L10n.tr("Mainstrings", "display_name")
   /// Edit
   internal static let edit = L10n.tr("Mainstrings", "edit")
   /// Eggs
@@ -57,6 +61,8 @@ internal enum L10n {
   internal static let equip = L10n.tr("Mainstrings", "equip")
   /// Experience
   internal static let experience = L10n.tr("Mainstrings", "experience")
+  /// Finish
+  internal static let finish = L10n.tr("Mainstrings", "finish")
   /// Food
   internal static let food = L10n.tr("Mainstrings", "food")
   /// Friday
@@ -137,6 +143,8 @@ internal enum L10n {
   internal static let myGuilds = L10n.tr("Mainstrings", "my_guilds")
   /// Name
   internal static let name = L10n.tr("Mainstrings", "name")
+  /// Next
+  internal static let next = L10n.tr("Mainstrings", "next")
   /// no days
   internal static let noDays = L10n.tr("Mainstrings", "no_days")
   /// Notes
@@ -151,6 +159,8 @@ internal enum L10n {
   internal static let openItunes = L10n.tr("Mainstrings", "open_itunes")
   /// Open Habitica Website
   internal static let openWebsite = L10n.tr("Mainstrings", "open_website")
+  /// Password
+  internal static let password = L10n.tr("Mainstrings", "password")
   /// Pending damage
   internal static let pendingDamage = L10n.tr("Mainstrings", "pending_damage")
   /// Pets
@@ -163,10 +173,14 @@ internal enum L10n {
   }
   /// Quests
   internal static let quests = L10n.tr("Mainstrings", "quests")
+  /// Randomize
+  internal static let randomize = L10n.tr("Mainstrings", "randomize")
   /// You open the box and receive %@
   internal static func receivedMysteryItem(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "received_mystery_item", p1)
   }
+  /// Repeat Password
+  internal static let repeatPassword = L10n.tr("Mainstrings", "repeat_password")
   /// Reset Justins Tips
   internal static let resetTips = L10n.tr("Mainstrings", "reset_tips")
   /// Reset Streak
@@ -191,6 +205,8 @@ internal enum L10n {
   }
   /// Share
   internal static let share = L10n.tr("Mainstrings", "share")
+  /// Skip
+  internal static let skip = L10n.tr("Mainstrings", "skip")
   /// Special Items
   internal static let specialItems = L10n.tr("Mainstrings", "specialItems")
   /// Summary
@@ -276,10 +292,16 @@ internal enum L10n {
     internal static let bangs = L10n.tr("Mainstrings", "avatar.bangs")
     /// Beard
     internal static let beard = L10n.tr("Mainstrings", "avatar.beard")
+    /// Body
+    internal static let body = L10n.tr("Mainstrings", "avatar.body")
+    /// Extras
+    internal static let extras = L10n.tr("Mainstrings", "avatar.extras")
     /// Flower
     internal static let flower = L10n.tr("Mainstrings", "avatar.flower")
     /// Glasses
     internal static let glasses = L10n.tr("Mainstrings", "avatar.glasses")
+    /// Hair
+    internal static let hair = L10n.tr("Mainstrings", "avatar.hair")
     /// Hair Style
     internal static let hairStyle = L10n.tr("Mainstrings", "avatar.hair_style")
     /// Hair Color
@@ -290,8 +312,10 @@ internal enum L10n {
     internal static let mustache = L10n.tr("Mainstrings", "avatar.mustache")
     /// Shirt
     internal static let shirt = L10n.tr("Mainstrings", "avatar.shirt")
-    /// Skin Color
+    /// Skin
     internal static let skin = L10n.tr("Mainstrings", "avatar.skin")
+    /// Skin Color
+    internal static let skinColor = L10n.tr("Mainstrings", "avatar.skin_color")
     /// Wheelchair
     internal static let wheelchair = L10n.tr("Mainstrings", "avatar.wheelchair")
   }
@@ -393,6 +417,44 @@ internal enum L10n {
     internal static let leaveGuildTitle = L10n.tr("Mainstrings", "guilds.leave_guild_title")
   }
 
+  internal enum Intro {
+    /// So how would you like to look? Don’t worry, you can change this later.
+    internal static let avatarSetupSpeechbubble = L10n.tr("Mainstrings", "intro.avatar_setup_speechbubble")
+    /// Let's start!
+    internal static let letsGo = L10n.tr("Mainstrings", "intro.lets_go")
+    /// Great! Now, what are you interested in working on throughout this journey?
+    internal static let taskSetupSpeechbubble = L10n.tr("Mainstrings", "intro.task_setup_speechbubble")
+    /// What should we call you?
+    internal static let welcomePrompt = L10n.tr("Mainstrings", "intro.welcome_prompt")
+    /// Oh, you must be new here. I’m Justin, your guide to Habitica.\n\nFirst, what should we call you? Feel free to change what I picked. When you’re all set, let’s create your avatar!
+    internal static let welcomeSpeechbubble = L10n.tr("Mainstrings", "intro.welcome_speechbubble")
+
+    internal enum Card1 {
+      /// It’s time to have fun while you get things done. Join over 2 million others improving their life one task at a time.
+      internal static let text = L10n.tr("Mainstrings", "intro.card1.text")
+      /// Welcome to
+      internal static let title = L10n.tr("Mainstrings", "intro.card1.title")
+    }
+
+    internal enum Card2 {
+      /// Progress in life
+      internal static let subtitle = L10n.tr("Mainstrings", "intro.card2.subtitle")
+      /// Unlock features in the game by checking off your real life tasks. Earn armor, pets, and more as rewards for meeting your goals. 
+      internal static let text = L10n.tr("Mainstrings", "intro.card2.text")
+      /// Progress in the game
+      internal static let title = L10n.tr("Mainstrings", "intro.card2.title")
+    }
+
+    internal enum Card3 {
+      /// Fight monsters
+      internal static let subtitle = L10n.tr("Mainstrings", "intro.card3.subtitle")
+      /// Keep your goals on track with help from your friends. Support each other in life and in battle as you improve together!
+      internal static let text = L10n.tr("Mainstrings", "intro.card3.text")
+      /// Get social
+      internal static let title = L10n.tr("Mainstrings", "intro.card3.title")
+    }
+  }
+
   internal enum Inventory {
     /// Available Until %@
     internal static func availableUntil(_ p1: String) -> String {
@@ -419,8 +481,20 @@ internal enum L10n {
   internal enum Login {
     /// There was an error with the authentication. Try again later
     internal static let authenticationError = L10n.tr("Mainstrings", "login.authentication_error")
+    /// Email / Username
+    internal static let emailUsername = L10n.tr("Mainstrings", "login.email_username")
+    /// Forgot Password
+    internal static let forgotPassword = L10n.tr("Mainstrings", "login.forgot_password")
+    /// Login
+    internal static let login = L10n.tr("Mainstrings", "login.login")
+    /// Login with Facebook
+    internal static let loginFacebook = L10n.tr("Mainstrings", "login.login_facebook")
+    /// Login with Google
+    internal static let loginGoogle = L10n.tr("Mainstrings", "login.login_google")
     /// Password and password confirmation have to match.
     internal static let passwordConfirmError = L10n.tr("Mainstrings", "login.password_confirm_error")
+    /// Register
+    internal static let register = L10n.tr("Mainstrings", "login.register")
   }
 
   internal enum Member {
@@ -656,14 +730,28 @@ internal enum L10n {
   }
 
   internal enum Tasks {
+    /// Chores
+    internal static let chores = L10n.tr("Mainstrings", "tasks.chores")
+    /// Creativity
+    internal static let creativity = L10n.tr("Mainstrings", "tasks.creativity")
     /// Daily
     internal static let daily = L10n.tr("Mainstrings", "tasks.daily")
+    /// Exercise
+    internal static let exercise = L10n.tr("Mainstrings", "tasks.exercise")
     /// Habit
     internal static let habit = L10n.tr("Mainstrings", "tasks.habit")
+    /// Health
+    internal static let health = L10n.tr("Mainstrings", "tasks.health")
     /// Reward
     internal static let reward = L10n.tr("Mainstrings", "tasks.reward")
+    /// School
+    internal static let school = L10n.tr("Mainstrings", "tasks.school")
+    /// Team
+    internal static let team = L10n.tr("Mainstrings", "tasks.team")
     /// To-Do
     internal static let todo = L10n.tr("Mainstrings", "tasks.todo")
+    /// Work
+    internal static let work = L10n.tr("Mainstrings", "tasks.work")
 
     internal enum Form {
       /// Checklist

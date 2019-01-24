@@ -100,6 +100,8 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        populateText()
+        
         avatarView.showBackground = false
         avatarView.showMount = false
         avatarView.showPet = false
@@ -128,6 +130,15 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController {
             contentHeight.constant = 120
             categoryHeight.constant = 85
         }
+    }
+    
+    func populateText() {
+        randomizeButton.setTitle(L10n.randomize, for: .normal)
+        speechbubbleView.text = L10n.Intro.avatarSetupSpeechbubble
+        bodyLabel.text = L10n.Avatar.body
+        skinLabel.text = L10n.Avatar.skin
+        hairLabel.text = L10n.Avatar.hair
+        extrasLabel.text = L10n.Avatar.extras
     }
     
     override func viewDidAppear(_ animated: Bool) {

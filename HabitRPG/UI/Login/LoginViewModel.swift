@@ -109,9 +109,9 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
         self.authTypeButtonTitle = self.authTypeProperty.signal.map { value -> String? in
             switch value {
             case .login:
-                return "Register".localized
+                return L10n.Login.register
             case .register:
-                return "Login".localized
+                return L10n.Login.login
             case .none:
                 return nil
             }
@@ -120,9 +120,9 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
         self.loginButtonTitle = self.authTypeProperty.signal.map { value -> String? in
             switch value {
             case .login:
-                return "Login".localized
+                return L10n.Login.login
             case .register:
-                return "Register".localized
+                return L10n.Login.register
             case .none:
                 return nil
             }
@@ -131,9 +131,9 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
         self.usernameFieldTitle = self.authTypeProperty.signal.map { value -> String? in
             switch value {
             case .login:
-                return "Email / Username".localized
+                return L10n.Login.emailUsername
             case .register:
-                return "Username".localized
+                return L10n.username
             case .none:
                 return nil
             }

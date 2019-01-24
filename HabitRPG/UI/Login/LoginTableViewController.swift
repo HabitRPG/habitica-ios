@@ -43,6 +43,8 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        populateText()
+        
         self.viewModel.inputs.setViewController(viewController: self)
 
         loginBeginButton.addTarget(self, action: #selector(loginBeginButtonPressed), for: .touchUpInside)
@@ -83,6 +85,22 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    func populateText() {
+        registerBeginButton.setTitle(L10n.Login.register, for: .normal)
+        loginBeginButton.setTitle(L10n.Login.login, for: .normal)
+        backButton.setTitle(L10n.back, for: .normal)
+        
+        usernameField.placeholderText = L10n.username
+        emailField.placeholderText = L10n.email
+        passwordField.placeholderText = L10n.password
+        passwordRepeatField.placeholderText = L10n.repeatPassword
+        
+        facebookLoginButton.setTitle(L10n.Login.loginFacebook, for: .normal)
+        googleLoginButton.setTitle(L10n.Login.loginGoogle, for: .normal)
+        
+        forgotPasswordButton.setTitle(L10n.Login.forgotPassword, for: .normal)
     }
     
     private func initialUISetup() {

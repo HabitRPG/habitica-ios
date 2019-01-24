@@ -154,6 +154,8 @@ class TaskSetupViewController: UIViewController, TypingTextViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        speechBubbleView.text = L10n.Intro.taskSetupSpeechbubble
+        
         avatarView.showBackground = false
         avatarView.showMount = false
         avatarView.showPet = false
@@ -171,6 +173,14 @@ class TaskSetupViewController: UIViewController, TypingTextViewController {
     }
     
     func initButtons() {
+        workCategoryButton.setTitle(L10n.Tasks.work, for: .normal)
+        exerciseCategoryButton.setTitle(L10n.Tasks.exercise, for: .normal)
+        healthCategoryButton.setTitle(L10n.Tasks.health, for: .normal)
+        schoolCategoryButton.setTitle(L10n.Tasks.school, for: .normal)
+        teamCategoryButton.setTitle(L10n.Tasks.team, for: .normal)
+        choresCategoryButtton.setTitle(L10n.Tasks.chores, for: .normal)
+        creativityCategoryButton.setTitle(L10n.Tasks.creativity, for: .normal)
+        
         workCategoryButton.setBackgroundImage(buttonBackground, for: .normal)
         exerciseCategoryButton.setBackgroundImage(buttonBackground, for: .normal)
         healthCategoryButton.setBackgroundImage(buttonBackground, for: .normal)

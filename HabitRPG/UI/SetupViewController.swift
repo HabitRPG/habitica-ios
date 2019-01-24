@@ -147,9 +147,9 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
             previousButtonImageView.tintColor = UIColor.white
         }
         if page >= 2 {
-            nextButtonTextView.text = NSLocalizedString("Finish", comment: "")
+            nextButtonTextView.text = L10n.finish
         } else {
-            nextButtonTextView.text = NSLocalizedString("Next", comment: "")
+            nextButtonTextView.text = L10n.next
         }
     }
     

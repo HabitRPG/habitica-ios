@@ -31,7 +31,9 @@ class WelcomeViewController: UIViewController, TypingTextViewController, UITextF
     @IBOutlet weak var displayNameIconView: UIImageView!
     @IBOutlet weak var usernameIconView: UIImageView!
     @IBOutlet weak var errorLabel: UILabel!
-    
+    @IBOutlet weak var welcomePromptLabel: UILabel!
+    @IBOutlet weak var displayNameLabel: UILabel!
+    @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var speechbubbleView: SpeechbubbleView!
     
     func startTyping() {
@@ -43,6 +45,8 @@ class WelcomeViewController: UIViewController, TypingTextViewController, UITextF
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        populateText()
         
         displayNameIconView.image = HabiticaIcons.imageOfCheckmark(checkmarkColor: UIColor.green50(), percentage: 100)
         usernameIconView.image = HabiticaIcons.imageOfCheckmark(checkmarkColor: UIColor.green50(), percentage: 100)
@@ -88,6 +92,13 @@ class WelcomeViewController: UIViewController, TypingTextViewController, UITextF
             self.usernameProperty.value = user.username
             self.currentUsername = user.username
         }).start()
+    }
+    
+    func populateText() {
+        welcomePromptLabel.text = L10n.Intro.welcomePrompt
+        displayNameLabel.text = L10n.displayName
+        usernameLabel.text = L10n.username
+        speechbubbleView.text = L10n.Intro.welcomeSpeechbubble
     }
     
     @objc
