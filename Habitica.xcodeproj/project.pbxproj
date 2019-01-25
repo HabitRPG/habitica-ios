@@ -407,7 +407,6 @@
 		D9525F9B1E5F559600C529B8 /* ChallengeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9525F9A1E5F559600C529B8 /* ChallengeTableViewCell.swift */; };
 		D9525F9D1E64739900C529B8 /* PaddedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9525F9C1E64739900C529B8 /* PaddedView.swift */; };
 		D9525F9F1E65A18300C529B8 /* EmojifiedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9525F9E1E65A18300C529B8 /* EmojifiedString.swift */; };
-		D95704391E106C11004F6804 /* LocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95704381E106C11004F6804 /* LocalizedString.swift */; };
 		D957043E1E151C1C004F6804 /* LoginViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D957043D1E151C1C004F6804 /* LoginViewModelTests.swift */; };
 		D95704431E1528F2004F6804 /* Event-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95704421E1528F2004F6804 /* Event-Extensions.swift */; };
 		D95704471E153767004F6804 /* TestObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95704461E153767004F6804 /* TestObserver.swift */; };
@@ -1194,7 +1193,6 @@
 		D9525F9A1E5F559600C529B8 /* ChallengeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeTableViewCell.swift; sourceTree = "<group>"; };
 		D9525F9C1E64739900C529B8 /* PaddedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddedView.swift; sourceTree = "<group>"; };
 		D9525F9E1E65A18300C529B8 /* EmojifiedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojifiedString.swift; sourceTree = "<group>"; };
-		D95704381E106C11004F6804 /* LocalizedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizedString.swift; sourceTree = "<group>"; };
 		D957043C1E151C1C004F6804 /* HabiticaTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "HabiticaTests-Bridging-Header.h"; path = "UI/Login/HabiticaTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		D957043D1E151C1C004F6804 /* LoginViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModelTests.swift; sourceTree = "<group>"; };
 		D95704421E1528F2004F6804 /* Event-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Event-Extensions.swift"; sourceTree = "<group>"; };
@@ -2104,7 +2102,6 @@
 				D9525F9E1E65A18300C529B8 /* EmojifiedString.swift */,
 				D95704421E1528F2004F6804 /* Event-Extensions.swift */,
 				292F967D207239A700804151 /* ImageView-Extensions.swift */,
-				D95704381E106C11004F6804 /* LocalizedString.swift */,
 				291448872088F3F700F3A6B5 /* NSAttributedString.swift */,
 				29FD8AA6203DA42A0094322E /* NSLayoutConstraint-Extensions.swift */,
 				29FC885B2018D47D002B3D3F /* Quest-Extensions.swift */,
@@ -3496,7 +3493,6 @@
 				D994B1491AD9177D008AE188 /* UIView+Screenshot.m in Sources */,
 				299FB29F2084A8FD00422522 /* StableSplitViewController.swift in Sources */,
 				295D42F620921F4200948E7E /* ClassSelectionViewController.swift in Sources */,
-				D95704391E106C11004F6804 /* LocalizedString.swift in Sources */,
 				C897F640218CE054002907C2 /* Storyboard Segues.swift in Sources */,
 				29205E392062E2430024E355 /* TaskRow.swift in Sources */,
 				4994065A20C83D4F0084CC40 /* DailyTableViewController.swift in Sources */,

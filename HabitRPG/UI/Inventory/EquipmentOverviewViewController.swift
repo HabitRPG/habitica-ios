@@ -68,6 +68,10 @@ class EquipmentOverviewViewController: HRPGUIViewController, UIScrollViewDelegat
         topHeaderCoordinator.scrollViewDidScroll()
     }
     
+    override func populateText() {
+        navigationItem.title = L10n.Titles.equipment
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == StoryboardSegue.Main.equipmentDetailSegue.rawValue {
             let destination = segue.destination as? EquipmentDetailViewController

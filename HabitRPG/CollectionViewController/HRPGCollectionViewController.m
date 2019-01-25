@@ -19,6 +19,7 @@
 - (void)viewDidLoad {
     self.topHeaderCoordinator = [[TopHeaderCoordinator alloc] initWithTopHeaderNavigationController:self.topHeaderNavigationController scrollView:self.collectionView];
     [super viewDidLoad];
+    [self populateText];
     
     [[Amplitude instance] logNavigateEventForClass:NSStringFromClass([self class])];
     
@@ -47,6 +48,10 @@
 
 - (TopHeaderViewController *)topHeaderNavigationController {
     return [self hrpgTopHeaderNavigationController];
+}
+    
+- (void)populateText {
+    
 }
 
 @end

@@ -133,7 +133,7 @@ class TaskTableViewController: HRPGBaseViewController, UISearchBarDelegate, UITa
         } else if filterCount == 1 {
             navigationItem.leftBarButtonItem?.title = L10n.oneFilter
         } else {
-            navigationItem.leftBarButtonItem?.title = L10n.xFilter(filterCount)
+            navigationItem.leftBarButtonItem?.title = L10n.xFilters(filterCount)
         }
     }
     

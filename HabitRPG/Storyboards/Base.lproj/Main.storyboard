@@ -216,7 +216,7 @@
             </objects>
             <point key="canvasLocation" x="1993" y="1751"/>
         </scene>
-        <!--About-->
+        <!--About View Controller-->
         <scene sceneID="Whw-Wx-8Rx">
             <objects>
                 <tableViewController storyboardIdentifier="AboutViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="r5L-RV-Ig6" customClass="AboutViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
@@ -273,7 +273,7 @@
                             <outlet property="delegate" destination="r5L-RV-Ig6" id="oBw-q7-Djv"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="About" id="970-3u-C37"/>
+                    <navigationItem key="navigationItem" id="970-3u-C37"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MpM-NM-NJ3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -295,7 +295,7 @@
             </objects>
             <point key="canvasLocation" x="7009" y="1433"/>
         </scene>
-        <!--FAQ-->
+        <!--Table View Controller-->
         <scene sceneID="V5q-Dw-DeL">
             <objects>
                 <tableViewController storyboardIdentifier="FAQOverviewViewController" id="Kau-eC-iCv" customClass="FAQTableViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
@@ -327,7 +327,7 @@
                             <outlet property="delegate" destination="Kau-eC-iCv" id="Yvb-le-LCn"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="FAQ" id="sni-tf-k5c"/>
+                    <navigationItem key="navigationItem" id="sni-tf-k5c"/>
                     <connections>
                         <segue destination="EKs-nQ-slC" kind="show" identifier="FAQDetailSegue" id="kWM-WS-dNV"/>
                     </connections>
@@ -400,8 +400,8 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WwC-SX-HDy">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Body Size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fXX-FU-yYI">
-                                        <rect key="frame" x="8" y="8" width="72" height="20"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fXX-FU-yYI">
+                                        <rect key="frame" x="8" y="8" width="0.0" height="0.0"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" red="0.3075395823" green="0.2903449535" blue="0.34151983260000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -411,8 +411,8 @@
                                         <rect key="frame" x="246" y="8" width="121" height="29"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <segments>
-                                            <segment title="Slim"/>
-                                            <segment title="Broad"/>
+                                            <segment title=""/>
+                                            <segment title=""/>
                                         </segments>
                                         <connections>
                                             <action selector="bodySizeChanged:" destination="o49-Mt-AdO" eventType="valueChanged" id="xXr-fr-lBn"/>
@@ -588,7 +588,7 @@
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pWt-Qo-uxJ">
-                                    <rect key="frame" x="8" y="28" width="217.5" height="24"/>
+                                    <rect key="frame" x="8" y="28" width="265" height="24"/>
                                     <constraints>
                                         <constraint firstAttribute="height" priority="500" constant="26" id="AXg-RX-7v0"/>
                                     </constraints>
@@ -597,17 +597,17 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view tag="2" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="5Gj-Xb-syN">
-                                    <rect key="frame" x="241.5" y="12" width="117.5" height="36"/>
+                                    <rect key="frame" x="289" y="12" width="70" height="36"/>
                                     <subviews>
                                         <view tag="2" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="56g-wy-uNY" customClass="HRPGCurrencyCountView" customModule="Habitica" customModuleProvider="target">
-                                            <rect key="frame" x="71.5" y="0.0" width="30" height="36"/>
+                                            <rect key="frame" x="24" y="0.0" width="30" height="36"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" priority="501" constant="30" id="Wbl-kw-VR2"/>
                                             </constraints>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Buy All" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ou7-Ct-HER">
-                                            <rect key="frame" x="16" y="0.0" width="47.5" height="36"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ou7-Ct-HER">
+                                            <rect key="frame" x="16" y="0.0" width="0.0" height="36"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" priority="500" constant="42" id="MA9-Pg-Vag"/>
                                             </constraints>
@@ -650,6 +650,7 @@
                                 <constraint firstItem="5Gj-Xb-syN" firstAttribute="leading" secondItem="pWt-Qo-uxJ" secondAttribute="trailing" constant="16" id="qpd-5F-5Lc"/>
                             </constraints>
                             <connections>
+                                <outlet property="buyAllLabel" destination="Ou7-Ct-HER" id="ufg-qW-ErB"/>
                                 <outlet property="currencyView" destination="56g-wy-uNY" id="aPA-TC-QxV"/>
                                 <outlet property="label" destination="pWt-Qo-uxJ" id="SLw-2L-Pb8"/>
                                 <outlet property="purchaseButton" destination="5Gj-Xb-syN" id="T7C-l8-d0k"/>
@@ -730,7 +731,7 @@
             </objects>
             <point key="canvasLocation" x="3933" y="1486"/>
         </scene>
-        <!--Mounts-->
+        <!--Mount Overview View Controller-->
         <scene sceneID="Ntu-Ub-BnA">
             <objects>
                 <collectionViewController storyboardIdentifier="MountsOverviewViewController" autoresizesArchivedViewToFullSize="NO" id="k4g-ZO-Buh" customClass="MountOverviewViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
@@ -807,15 +808,15 @@
                             <outlet property="delegate" destination="k4g-ZO-Buh" id="IHH-Cv-dyz"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Mounts" id="8QD-xr-Tcj">
-                        <barButtonItem key="rightBarButtonItem" title="Group By" id="mdo-xN-SW4"/>
+                    <navigationItem key="navigationItem" id="8QD-xr-Tcj">
+                        <barButtonItem key="rightBarButtonItem" id="mdo-xN-SW4"/>
                     </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m49-II-1Fe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2094.375" y="3867.5"/>
         </scene>
-        <!--Mounts-->
+        <!--Mount Detail View Controller-->
         <scene sceneID="U2z-Dp-QKQ">
             <objects>
                 <collectionViewController autoresizesArchivedViewToFullSize="NO" id="LGJ-iF-vTZ" customClass="MountDetailViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
@@ -862,13 +863,13 @@
                             <outlet property="delegate" destination="LGJ-iF-vTZ" id="VsO-b8-cRe"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Mounts" id="si7-7p-nZ9"/>
+                    <navigationItem key="navigationItem" id="si7-7p-nZ9"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aay-u8-F7P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2825" y="3867"/>
         </scene>
-        <!--Pets-->
+        <!--Pet Overview View Controller-->
         <scene sceneID="12D-16-Ge5">
             <objects>
                 <collectionViewController storyboardIdentifier="PetsOverviewViewController" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iyK-dS-pks" customClass="PetOverviewViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
@@ -945,15 +946,15 @@
                             <outlet property="delegate" destination="iyK-dS-pks" id="ydz-uG-FgW"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Pets" id="zdm-Oo-gvg">
-                        <barButtonItem key="rightBarButtonItem" title="Group By" id="Y9b-tv-h4L"/>
+                    <navigationItem key="navigationItem" id="zdm-Oo-gvg">
+                        <barButtonItem key="rightBarButtonItem" id="Y9b-tv-h4L"/>
                     </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oEZ-xz-ZVh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3114" y="3103"/>
         </scene>
-        <!--Pets-->
+        <!--Pet Detail View Controller-->
         <scene sceneID="hyi-ES-K3e">
             <objects>
                 <collectionViewController autoresizesArchivedViewToFullSize="NO" id="OMM-QF-DNw" customClass="PetDetailViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
@@ -1017,7 +1018,7 @@
                             <outlet property="delegate" destination="OMM-QF-DNw" id="X3n-Lp-Sy3"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Pets" id="4dW-yC-5Ar"/>
+                    <navigationItem key="navigationItem" id="4dW-yC-5Ar"/>
                     <connections>
                         <segue destination="tLB-b1-3s8" kind="presentation" identifier="FeedSegue" modalPresentationStyle="formSheet" id="HqS-75-pYX"/>
                     </connections>
@@ -1173,7 +1174,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Benefit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BCV-MF-lnn">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BCV-MF-lnn">
                                                     <rect key="frame" x="0.0" y="0.0" width="60" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.76474183799999995" green="0.75285440680000004" blue="0.78110462430000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1187,8 +1188,8 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ogx-Ep-izu">
                                             <rect key="frame" x="106" y="45" width="253" height="20"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Two-Handed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="StQ-3d-kbx">
-                                                    <rect key="frame" x="19" y="0.0" width="78.5" height="20"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="StQ-3d-kbx">
+                                                    <rect key="frame" x="19" y="0.0" width="0.0" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" red="0.60365134480000004" green="0.38511508700000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1242,6 +1243,7 @@
                                     <outlet property="strengthLabel" destination="Hld-ok-bJx" id="Nvy-48-3r5"/>
                                     <outlet property="titleLabel" destination="5s9-Yq-fnA" id="suN-KO-hlz"/>
                                     <outlet property="twoHandedIconView" destination="gfN-10-DvM" id="glK-A9-gar"/>
+                                    <outlet property="twoHandedLabel" destination="StQ-3d-kbx" id="xwi-EK-d8w"/>
                                     <outlet property="twoHandedSpacing" destination="sUb-Xq-x15" id="AMz-rW-HXA"/>
                                     <outlet property="twoHandedView" destination="Ogx-Ep-izu" id="KRB-rH-cHS"/>
                                 </connections>
@@ -1729,7 +1731,7 @@ and helps keep Habitica running</string>
             </objects>
             <point key="canvasLocation" x="1014" y="8795"/>
         </scene>
-        <!--News-->
+        <!--News View Controller-->
         <scene sceneID="jdB-Bz-v0P">
             <objects>
                 <viewController storyboardIdentifier="NewsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rxD-1b-YpQ" customClass="NewsViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
@@ -1760,7 +1762,7 @@ and helps keep Habitica running</string>
                             <constraint firstAttribute="centerX" secondItem="alG-bc-9xq" secondAttribute="centerX" id="xgu-H2-CB2"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="News" id="Jni-km-FCZ"/>
+                    <navigationItem key="navigationItem" id="Jni-km-FCZ"/>
                     <connections>
                         <outlet property="loadingIndicator" destination="alG-bc-9xq" id="IOM-xa-api"/>
                         <outlet property="newsWebView" destination="n8Y-qd-yqL" id="tEj-pC-E08"/>
@@ -1770,7 +1772,7 @@ and helps keep Habitica running</string>
             </objects>
             <point key="canvasLocation" x="4348.125" y="731.25"/>
         </scene>
-        <!--Equipment-->
+        <!--Equipment Overview View Controller-->
         <scene sceneID="kth-SG-qfp">
             <objects>
                 <viewController storyboardIdentifier="EquipmentOverviewViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="AjM-Kx-nSU" customClass="EquipmentOverviewViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
@@ -1833,7 +1835,7 @@ and helps keep Habitica running</string>
                             <constraint firstAttribute="trailing" secondItem="byv-HU-Kh3" secondAttribute="trailing" id="WdO-bi-Mgg"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Equipment" id="aGP-pV-Lz5"/>
+                    <navigationItem key="navigationItem" id="aGP-pV-Lz5"/>
                     <connections>
                         <outlet property="costumeView" destination="3uQ-7Q-HJM" id="GaC-re-Yo1"/>
                         <outlet property="gearView" destination="HkH-1H-IQH" id="45F-bN-8Tr"/>
@@ -1861,7 +1863,7 @@ and helps keep Habitica running</string>
             </objects>
             <point key="canvasLocation" x="4426" y="2188"/>
         </scene>
-        <!--Items-->
+        <!--Items View Controller-->
         <scene sceneID="hkB-oV-wsF">
             <objects>
                 <tableViewController storyboardIdentifier="ItemsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="sS8-cF-myv" customClass="ItemsViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
@@ -1919,7 +1921,7 @@ and helps keep Habitica running</string>
                             <outlet property="delegate" destination="sS8-cF-myv" id="bIM-MF-xHF"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Items" id="7Sa-Zz-2NE">
+                    <navigationItem key="navigationItem" id="7Sa-Zz-2NE">
                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="DLa-xG-L7z">
                             <connections>
                                 <action selector="cancelButtonTapped:" destination="sS8-cF-myv" id="UCu-rW-pV6"/>
@@ -1964,7 +1966,7 @@ and helps keep Habitica running</string>
             </objects>
             <point key="canvasLocation" x="2709.375" y="4980"/>
         </scene>
-        <!--Choose User-->
+        <!--Skills User Table View Controller-->
         <scene sceneID="0hc-ne-2lf">
             <objects>
                 <tableViewController id="57X-FG-jGF" customClass="SkillsUserTableViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
@@ -2011,7 +2013,7 @@ and helps keep Habitica running</string>
                             <outlet property="delegate" destination="57X-FG-jGF" id="9mv-Q1-gII"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Choose User" id="Dal-zI-Dal">
+                    <navigationItem key="navigationItem" id="Dal-zI-Dal">
                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="mqC-7b-uWd">
                             <connections>
                                 <segue destination="Kde-XX-1zI" kind="unwind" unwindAction="unwindToList:" id="fVD-Te-Qyo"/>
@@ -2538,7 +2540,7 @@ and helps keep Habitica running</string>
             </objects>
             <point key="canvasLocation" x="-464" y="2641"/>
         </scene>
-        <!--Stable-->
+        <!--Stable Split View Controller-->
         <scene sceneID="dL9-mT-DcX">
             <objects>
                 <viewController storyboardIdentifier="StableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="HEh-dF-ytU" customClass="StableSplitViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
@@ -2599,7 +2601,7 @@ and helps keep Habitica running</string>
                             <constraint firstAttribute="trailing" secondItem="S70-Y1-yfR" secondAttribute="trailing" id="xSt-th-JXe"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Stable" id="yA7-ap-uv0"/>
+                    <navigationItem key="navigationItem" id="yA7-ap-uv0"/>
                     <connections>
                         <outlet property="leftViewWidthConstraint" destination="9tD-k9-D74" id="NPC-we-A57"/>
                         <outlet property="rightViewWidthConstraint" destination="EZi-uG-Zq2" id="D8b-DY-wXZ"/>
@@ -2612,7 +2614,7 @@ and helps keep Habitica running</string>
             </objects>
             <point key="canvasLocation" x="2457" y="2514"/>
         </scene>
-        <!--Gift Subscription-->
+        <!--Gift Subscription View Controller-->
         <scene sceneID="aJR-oR-FEx">
             <objects>
                 <tableViewController storyboardIdentifier="GiftSubscriptionViewController" id="fI8-Sl-MPA" customClass="GiftSubscriptionViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
@@ -2761,7 +2763,7 @@ a matching subscription automatically after sending your gift.</string>
                             <outlet property="delegate" destination="fI8-Sl-MPA" id="m7c-kd-fUS"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Gift Subscription" id="Puw-P3-s3j">
+                    <navigationItem key="navigationItem" id="Puw-P3-s3j">
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="cancel" id="2VZ-VC-snP">
                             <connections>
                                 <segue destination="3qU-U4-oGh" kind="unwind" unwindAction="unwindToList:" id="hLO-fD-2Xi"/>
@@ -2807,8 +2809,8 @@ a matching subscription automatically after sending your gift.</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="njg-A8-lDq"/>
-        <segue reference="ETz-qE-xC2"/>
-        <segue reference="V6b-ej-qnx"/>
+        <segue reference="vFt-wX-7j8"/>
+        <segue reference="nYO-SY-Og4"/>
         <segue reference="tO1-JH-hWy"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.44783598184585571" green="0.10848048329353333" blue="0.9984632134437561" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

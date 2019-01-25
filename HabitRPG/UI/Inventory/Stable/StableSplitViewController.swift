@@ -17,4 +17,7 @@ class StableSplitViewController: HabiticaSplitViewController {
         segmentedControl.setTitle(L10n.mounts, forSegmentAt: 1)
     }
     
+    override func populateText() {
+        navigationItem.title = L10n.Titles.stable
+    }
 }

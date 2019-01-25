@@ -21,6 +21,12 @@ internal enum L10n {
   internal static let apiKey = L10n.tr("Mainstrings", "api_key")
   /// Back
   internal static let back = L10n.tr("Mainstrings", "back")
+  /// Body Size
+  internal static let bodySize = L10n.tr("Mainstrings", "body_size")
+  /// Broad
+  internal static let broad = L10n.tr("Mainstrings", "broad")
+  /// Buy All
+  internal static let buyAll = L10n.tr("Mainstrings", "buy_all")
   /// Cancel
   internal static let cancel = L10n.tr("Mainstrings", "cancel")
   /// Change
@@ -103,6 +109,8 @@ internal enum L10n {
   internal static let glasses = L10n.tr("Mainstrings", "glasses")
   /// Gold
   internal static let gold = L10n.tr("Mainstrings", "gold")
+  /// Group By
+  internal static let groupBy = L10n.tr("Mainstrings", "group_by")
   /// Hatch egg
   internal static let hatchEgg = L10n.tr("Mainstrings", "hatch_egg")
   /// Hatch with potion
@@ -163,6 +171,8 @@ internal enum L10n {
   internal static let name = L10n.tr("Mainstrings", "name")
   /// Next
   internal static let next = L10n.tr("Mainstrings", "next")
+  /// No Benefit
+  internal static let noBenefit = L10n.tr("Mainstrings", "no_benefit")
   /// no days
   internal static let noDays = L10n.tr("Mainstrings", "no_days")
   /// Notes
@@ -229,6 +239,8 @@ internal enum L10n {
   internal static let share = L10n.tr("Mainstrings", "share")
   /// Skip
   internal static let skip = L10n.tr("Mainstrings", "skip")
+  /// Slim
+  internal static let slim = L10n.tr("Mainstrings", "slim")
   /// Special Items
   internal static let specialItems = L10n.tr("Mainstrings", "specialItems")
   /// Summary
@@ -249,6 +261,8 @@ internal enum L10n {
   internal static let title = L10n.tr("Mainstrings", "title")
   /// Tuesday
   internal static let tuesday = L10n.tr("Mainstrings", "tuesday")
+  /// Two-Handed
+  internal static let twoHanded = L10n.tr("Mainstrings", "twoHanded")
   /// Unequip
   internal static let unequip = L10n.tr("Mainstrings", "unequip")
   /// No longer want to subscribe? You can manage your subscription from iTunes.
@@ -533,42 +547,22 @@ internal enum L10n {
   }
 
   internal enum Menu {
-    /// About
-    internal static let about = L10n.tr("Mainstrings", "menu.about")
     /// Cast Spells
     internal static let castSpells = L10n.tr("Mainstrings", "menu.cast_spells")
-    /// Challenges
-    internal static let challenges = L10n.tr("Mainstrings", "menu.challenges")
     /// Customize Avatar
     internal static let customizeAvatar = L10n.tr("Mainstrings", "menu.customize_avatar")
-    /// Equipment
-    internal static let equipment = L10n.tr("Mainstrings", "menu.equipment")
     /// Gems & Subscriptions
     internal static let gemsSubscriptions = L10n.tr("Mainstrings", "menu.gems_subscriptions")
-    /// Guilds
-    internal static let guilds = L10n.tr("Mainstrings", "menu.guilds")
     /// Help & FAQ
     internal static let helpFaq = L10n.tr("Mainstrings", "menu.help_faq")
     /// Inventory
     internal static let inventory = L10n.tr("Mainstrings", "menu.inventory")
-    /// Items
-    internal static let items = L10n.tr("Mainstrings", "menu.items")
-    /// News
-    internal static let news = L10n.tr("Mainstrings", "menu.news")
-    /// Party
-    internal static let party = L10n.tr("Mainstrings", "menu.party")
     /// Select Class
     internal static let selectClass = L10n.tr("Mainstrings", "menu.select_class")
     /// Shops
     internal static let shops = L10n.tr("Mainstrings", "menu.shops")
     /// Social
     internal static let social = L10n.tr("Mainstrings", "menu.social")
-    /// Stable
-    internal static let stable = L10n.tr("Mainstrings", "menu.stable")
-    /// Stats
-    internal static let stats = L10n.tr("Mainstrings", "menu.stats")
-    /// Tavern
-    internal static let tavern = L10n.tr("Mainstrings", "menu.tavern")
     /// Use Skills
     internal static let useSkills = L10n.tr("Mainstrings", "menu.use_skills")
   }
@@ -834,6 +828,10 @@ internal enum L10n {
   }
 
   internal enum Tasks {
+    /// Add %@
+    internal static func addX(_ p1: String) -> String {
+      return L10n.tr("Mainstrings", "tasks.add_x", p1)
+    }
     /// Chores
     internal static let chores = L10n.tr("Mainstrings", "tasks.chores")
     /// Creativity
@@ -986,22 +984,56 @@ internal enum L10n {
   }
 
   internal enum Titles {
+    /// About
+    internal static let about = L10n.tr("Mainstrings", "titles.about")
     /// API
     internal static let api = L10n.tr("Mainstrings", "titles.api")
     /// Authentication
     internal static let authentication = L10n.tr("Mainstrings", "titles.authentication")
+    /// Avatar
+    internal static let avatar = L10n.tr("Mainstrings", "titles.avatar")
+    /// Challenges
+    internal static let challenges = L10n.tr("Mainstrings", "titles.challenges")
+    /// Choose User
+    internal static let chooseUser = L10n.tr("Mainstrings", "titles.choose_user")
+    /// Equipment
+    internal static let equipment = L10n.tr("Mainstrings", "titles.equipment")
+    /// FAQ
+    internal static let faq = L10n.tr("Mainstrings", "titles.faq")
     /// Fix Values
     internal static let fixValues = L10n.tr("Mainstrings", "titles.fix_values")
+    /// Gift Subscription
+    internal static let giftSubscription = L10n.tr("Mainstrings", "titles.gift_subscription")
+    /// Guild
+    internal static let guild = L10n.tr("Mainstrings", "titles.guild")
+    /// Guilds
+    internal static let guilds = L10n.tr("Mainstrings", "titles.guilds")
+    /// Items
+    internal static let items = L10n.tr("Mainstrings", "titles.items")
+    /// Mounts
+    internal static let mounts = L10n.tr("Mainstrings", "titles.mounts")
+    /// News
+    internal static let news = L10n.tr("Mainstrings", "titles.news")
+    /// Party
+    internal static let party = L10n.tr("Mainstrings", "titles.party")
+    /// Pets
+    internal static let pets = L10n.tr("Mainstrings", "titles.pets")
     /// Profile
     internal static let profile = L10n.tr("Mainstrings", "titles.profile")
     /// Select Class
     internal static let selectClass = L10n.tr("Mainstrings", "titles.select_class")
     /// Settings
     internal static let settings = L10n.tr("Mainstrings", "titles.settings")
+    /// Shops
+    internal static let shops = L10n.tr("Mainstrings", "titles.shops")
     /// Skills
     internal static let skills = L10n.tr("Mainstrings", "titles.skills")
+    /// Stable
+    internal static let stable = L10n.tr("Mainstrings", "titles.stable")
     /// Stats
     internal static let stats = L10n.tr("Mainstrings", "titles.stats")
+    /// Tavern
+    internal static let tavern = L10n.tr("Mainstrings", "titles.tavern")
   }
 
   internal enum Tutorials {

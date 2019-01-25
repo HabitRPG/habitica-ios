@@ -89,8 +89,8 @@ class SetupCustomizationRepository {
     
     private static func getSizes() -> [SetupCustomization] {
         return [
-            SetupCustomization.createSize(key: "slim", icon: #imageLiteral(resourceName: "creator_slim_shirt_white"), text: NSLocalizedString("Slim", comment: "")),
-            SetupCustomization.createSize(key: "broad", icon: #imageLiteral(resourceName: "creator_broad_shirt_white"), text: NSLocalizedString("Broad", comment: ""))
+            SetupCustomization.createSize(key: "slim", icon: #imageLiteral(resourceName: "creator_slim_shirt_white"), text: L10n.slim),
+            SetupCustomization.createSize(key: "broad", icon: #imageLiteral(resourceName: "creator_broad_shirt_white"), text: L10n.broad)
         ]
     }
     

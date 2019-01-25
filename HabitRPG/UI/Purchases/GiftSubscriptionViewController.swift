@@ -85,6 +85,10 @@ class GiftSubscriptionViewController: HRPGBaseViewController {
         explanationTitle.text = L10n.giftSubscriptionPrompt
     }
     
+    override func populateText() {
+        navigationItem.title = L10n.Titles.giftSubscription
+    }
+    
     func retrieveProductList() {
         SwiftyStoreKit.retrieveProductsInfo(Set(PurchaseHandler.noRenewSubscriptionIdentifiers)) { (result) in
             self.products = Array(result.retrievedProducts)

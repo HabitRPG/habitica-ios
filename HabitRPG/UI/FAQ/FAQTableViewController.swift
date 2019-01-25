@@ -43,6 +43,10 @@ class FAQTableViewController: HRPGBaseViewController {
         tableView.estimatedRowHeight = 50
     }
     
+    override func populateText() {
+        navigationItem.title = L10n.Titles.faq
+    }
+    
     override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         searchBar.resignFirstResponder()
         searchBar.setShowsCancelButton(false, animated: true)

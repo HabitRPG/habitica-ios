@@ -19,6 +19,8 @@ class SkillsUserTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         datasource.tableView = tableView
+        
+        navigationItem.title = L10n.Titles.chooseUser
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

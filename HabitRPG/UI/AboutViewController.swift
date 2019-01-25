@@ -46,6 +46,10 @@ class AboutViewController: HRPGBaseViewController, MFMailComposeViewControllerDe
         }).start()
     }
     
+    override func populateText() {
+        navigationItem.title = L10n.Titles.about
+    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

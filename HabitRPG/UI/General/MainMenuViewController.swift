@@ -124,26 +124,26 @@ class MainMenuViewController: HRPGBaseViewController, Themeable {
             MenuSection(title: nil, iconAsset: nil, items: [
                 MenuItem(title: L10n.Menu.castSpells, segue: StoryboardSegue.Main.spellsSegue.rawValue),
                 //MenuItem(title: L10n.Menu.selectClass, segue: StoryboardSegue.Main.selectClassSegue.rawValue),
-                MenuItem(title: L10n.Menu.stats, segue: StoryboardSegue.Main.statsSegue.rawValue)
+                MenuItem(title: L10n.Titles.stats, segue: StoryboardSegue.Main.statsSegue.rawValue)
                 ]),
             MenuSection(title: L10n.Menu.social, iconAsset: Asset.iconSocial, items: [
-                MenuItem(title: L10n.Menu.tavern, segue: StoryboardSegue.Main.tavernSegue.rawValue),
-                MenuItem(title: L10n.Menu.party, segue: StoryboardSegue.Main.partySegue.rawValue),
-                MenuItem(title: L10n.Menu.guilds, segue: StoryboardSegue.Main.guildsSegue.rawValue),
-                MenuItem(title: L10n.Menu.challenges, segue: StoryboardSegue.Main.challengesSegue.rawValue)
+                MenuItem(title: L10n.Titles.tavern, segue: StoryboardSegue.Main.tavernSegue.rawValue),
+                MenuItem(title: L10n.Titles.party, segue: StoryboardSegue.Main.partySegue.rawValue),
+                MenuItem(title: L10n.Titles.guilds, segue: StoryboardSegue.Main.guildsSegue.rawValue),
+                MenuItem(title: L10n.Titles.challenges, segue: StoryboardSegue.Main.challengesSegue.rawValue)
                 ]),
             MenuSection(title: L10n.Menu.inventory, iconAsset: Asset.iconInventory, items: [
-                MenuItem(title: L10n.Menu.shops, segue: StoryboardSegue.Main.shopsSegue.rawValue),
+                MenuItem(title: L10n.Titles.shops, segue: StoryboardSegue.Main.shopsSegue.rawValue),
                 MenuItem(title: L10n.Menu.customizeAvatar, segue: StoryboardSegue.Main.customizationSegue.rawValue),
-                MenuItem(title: L10n.Menu.equipment, segue: StoryboardSegue.Main.equipmentSegue.rawValue),
-                MenuItem(title: L10n.Menu.items, segue: StoryboardSegue.Main.itemSegue.rawValue),
-                MenuItem(title: L10n.Menu.stable, segue: StoryboardSegue.Main.stableSegue.rawValue),
+                MenuItem(title: L10n.Titles.equipment, segue: StoryboardSegue.Main.equipmentSegue.rawValue),
+                MenuItem(title: L10n.Titles.items, segue: StoryboardSegue.Main.itemSegue.rawValue),
+                MenuItem(title: L10n.Titles.stable, segue: StoryboardSegue.Main.stableSegue.rawValue),
                 MenuItem(title: L10n.Menu.gemsSubscriptions, segue: StoryboardSegue.Main.gemSubscriptionSegue.rawValue)
                 ]),
-            MenuSection(title: L10n.Menu.about, iconAsset: Asset.iconHelp, items: [
-                MenuItem(title: L10n.Menu.news, segue: StoryboardSegue.Main.newsSegue.rawValue),
+            MenuSection(title: L10n.Titles.about, iconAsset: Asset.iconHelp, items: [
+                MenuItem(title: L10n.Titles.news, segue: StoryboardSegue.Main.newsSegue.rawValue),
                 MenuItem(title: L10n.Menu.helpFaq, segue: StoryboardSegue.Main.faqSegue.rawValue),
-                MenuItem(title: L10n.Menu.about, segue: StoryboardSegue.Main.aboutSegue.rawValue)
+                MenuItem(title: L10n.Titles.about, segue: StoryboardSegue.Main.aboutSegue.rawValue)
                 ])
         ]
     }

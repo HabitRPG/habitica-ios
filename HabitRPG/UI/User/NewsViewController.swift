@@ -28,6 +28,10 @@ class NewsViewController: HRPGUIViewController, UIWebViewDelegate {
         loadingIndicator.startAnimating()
     }
     
+    override func populateText() {
+        navigationItem.title = L10n.Titles.news
+    }
+    
     func webViewDidFinishLoad(_ webView: UIWebView) {
         UIView.animate(withDuration: 0.4) {
             self.newsWebView.alpha = 1
