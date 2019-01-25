@@ -105,7 +105,7 @@ class GiftSubscriptionViewController: HRPGBaseViewController {
             })
             self.selectedSubscriptionPlan = self.products?.first
             self.tableView.reloadData()
-            self.tableView.selectRow(at: IndexPath(item: 0, section: 1), animated: true, scrollPosition: .none)
+            self.tableView.selectRow(at: IndexPath(item: 0, section: 0), animated: true, scrollPosition: .none)
         }
     }
     
