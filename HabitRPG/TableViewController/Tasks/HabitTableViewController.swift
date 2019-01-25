@@ -21,6 +21,7 @@ class HabitTableViewController: TaskTableViewController {
         tableView.register(UINib(nibName: "EmptyTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "emptyCell")
         
         self.tutorialIdentifier = "habits"
+        configureTitle(L10n.Tasks.habits)
     }
     
     override func getDefinitonForTutorial(_ tutorialIdentifier: String) -> [AnyHashable: Any]! {

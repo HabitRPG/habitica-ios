@@ -71,6 +71,8 @@ internal enum L10n {
   internal static let equip = L10n.tr("Mainstrings", "equip")
   /// Experience
   internal static let experience = L10n.tr("Mainstrings", "experience")
+  /// Filter
+  internal static let filter = L10n.tr("Mainstrings", "filter")
   /// Finish
   internal static let finish = L10n.tr("Mainstrings", "finish")
   /// Food
@@ -145,6 +147,8 @@ internal enum L10n {
   internal static let mana = L10n.tr("Mainstrings", "mana")
   /// Mana Points
   internal static let manaPoints = L10n.tr("Mainstrings", "mana_points")
+  /// Menu
+  internal static let menu = L10n.tr("Mainstrings", "menu")
   /// Monday
   internal static let monday = L10n.tr("Mainstrings", "monday")
   /// Monthly
@@ -165,6 +169,8 @@ internal enum L10n {
   internal static let notes = L10n.tr("Mainstrings", "notes")
   /// OK
   internal static let ok = L10n.tr("Mainstrings", "ok")
+  /// 1 Filter
+  internal static let oneFilter = L10n.tr("Mainstrings", "one_filter")
   /// 1 Month
   internal static let oneMonth = L10n.tr("Mainstrings", "one_month")
   /// Open
@@ -269,6 +275,10 @@ internal enum L10n {
   internal static let wednesday = L10n.tr("Mainstrings", "wednesday")
   /// Weekly
   internal static let weekly = L10n.tr("Mainstrings", "weekly")
+  /// %ld Filters
+  internal static func xFilters(_ p1: Int) -> String {
+    return L10n.tr("Mainstrings", "x_filters", p1)
+  }
   /// %d Months
   internal static func xMonths(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "x_months", p1)
@@ -828,22 +838,30 @@ internal enum L10n {
     internal static let chores = L10n.tr("Mainstrings", "tasks.chores")
     /// Creativity
     internal static let creativity = L10n.tr("Mainstrings", "tasks.creativity")
+    /// Dailies
+    internal static let dailies = L10n.tr("Mainstrings", "tasks.dailies")
     /// Daily
     internal static let daily = L10n.tr("Mainstrings", "tasks.daily")
     /// Exercise
     internal static let exercise = L10n.tr("Mainstrings", "tasks.exercise")
     /// Habit
     internal static let habit = L10n.tr("Mainstrings", "tasks.habit")
+    /// Habits
+    internal static let habits = L10n.tr("Mainstrings", "tasks.habits")
     /// Health
     internal static let health = L10n.tr("Mainstrings", "tasks.health")
     /// Reward
     internal static let reward = L10n.tr("Mainstrings", "tasks.reward")
+    /// Rewards
+    internal static let rewards = L10n.tr("Mainstrings", "tasks.rewards")
     /// School
     internal static let school = L10n.tr("Mainstrings", "tasks.school")
     /// Team
     internal static let team = L10n.tr("Mainstrings", "tasks.team")
     /// To-Do
     internal static let todo = L10n.tr("Mainstrings", "tasks.todo")
+    /// To-Dos
+    internal static let todos = L10n.tr("Mainstrings", "tasks.todos")
     /// Work
     internal static let work = L10n.tr("Mainstrings", "tasks.work")
 

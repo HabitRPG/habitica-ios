@@ -32,7 +32,7 @@
             </objects>
             <point key="canvasLocation" x="277.5" y="225"/>
         </scene>
-        <!--Habits-->
+        <!--Habit Table View Controller-->
         <scene sceneID="L5r-pU-vZs">
             <objects>
                 <tableViewController id="9wT-fg-nmz" customClass="HabitTableViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
@@ -43,8 +43,8 @@
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <sections/>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Habits" id="Ueo-OS-iQj">
-                        <barButtonItem key="leftBarButtonItem" title="Filter" id="r2M-pt-ZEv">
+                    <navigationItem key="navigationItem" id="Ueo-OS-iQj">
+                        <barButtonItem key="leftBarButtonItem" id="r2M-pt-ZEv">
                             <connections>
                                 <segue destination="6vN-Em-JCA" kind="presentation" identifier="FilterSegue" id="njg-A8-lDq"/>
                             </connections>
@@ -72,7 +72,7 @@
             </objects>
             <point key="canvasLocation" x="3617" y="-816"/>
         </scene>
-        <!--Dailies-->
+        <!--Daily Table View Controller-->
         <scene sceneID="wsG-G7-Bvd">
             <objects>
                 <tableViewController id="YnE-7V-tix" customClass="DailyTableViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
@@ -82,8 +82,8 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <sections/>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Dailies" id="zec-6L-pJk">
-                        <barButtonItem key="leftBarButtonItem" title="Filter" id="lJN-5G-qrz">
+                    <navigationItem key="navigationItem" id="zec-6L-pJk">
+                        <barButtonItem key="leftBarButtonItem" id="lJN-5G-qrz">
                             <connections>
                                 <segue destination="6vN-Em-JCA" kind="presentation" identifier="FilterSegue" id="04Z-5H-zfF"/>
                             </connections>
@@ -103,7 +103,7 @@
             </objects>
             <point key="canvasLocation" x="2804" y="62.518740629685162"/>
         </scene>
-        <!--To-Dos-->
+        <!--To Do Table View Controller-->
         <scene sceneID="d7F-oT-WJq">
             <objects>
                 <tableViewController restorationIdentifier="TodoTableViewCntroller" id="sPQ-za-Ji6" customClass="ToDoTableViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
@@ -113,8 +113,8 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <sections/>
                     </tableView>
-                    <navigationItem key="navigationItem" title="To-Dos" id="Tis-dF-qId">
-                        <barButtonItem key="leftBarButtonItem" title="Filter" id="7QR-Cq-K2a">
+                    <navigationItem key="navigationItem" id="Tis-dF-qId">
+                        <barButtonItem key="leftBarButtonItem" id="7QR-Cq-K2a">
                             <connections>
                                 <action selector="editButtonSelected:" destination="sPQ-za-Ji6" id="cc5-TO-pi3"/>
                                 <segue destination="6vN-Em-JCA" kind="presentation" identifier="FilterSegue" id="iSa-66-Wjc"/>
@@ -135,7 +135,7 @@
             </objects>
             <point key="canvasLocation" x="1993" y="885"/>
         </scene>
-        <!--Menu-->
+        <!--Main Menu View Controller-->
         <scene sceneID="STv-3f-rgk">
             <objects>
                 <tableViewController id="SXb-nw-RKG" customClass="MainMenuViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
@@ -188,56 +188,10 @@
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LockedCell" id="pc2-9F-939">
-                                <rect key="frame" x="0.0" y="99.5" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pc2-9F-939" id="PWW-Go-gmX">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ps-a8-I03">
-                                            <rect key="frame" x="40" y="11" width="206" height="21.5"/>
-                                            <color key="backgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Unlocks at lvl 3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2yp-6U-Xpz">
-                                            <rect key="frame" x="254" y="14" width="105" height="16"/>
-                                            <color key="backgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="500" constant="117" id="iUi-4v-T0d"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_lock" translatesAutoresizingMaskIntoConstraints="NO" id="sRR-tQ-eJL">
-                                            <rect key="frame" x="16" y="14" width="16" height="16"/>
-                                            <color key="backgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="16" id="8U3-Qh-4cF"/>
-                                                <constraint firstAttribute="width" constant="16" id="DyV-m2-cYa"/>
-                                            </constraints>
-                                        </imageView>
-                                    </subviews>
-                                    <color key="backgroundColor" red="0.97647058963775635" green="0.97647058963775635" blue="0.97647058963775635" alpha="1" colorSpace="calibratedRGB"/>
-                                    <constraints>
-                                        <constraint firstAttribute="bottomMargin" secondItem="2yp-6U-Xpz" secondAttribute="bottom" constant="3" id="1kE-M0-20z"/>
-                                        <constraint firstItem="2yp-6U-Xpz" firstAttribute="trailing" secondItem="PWW-Go-gmX" secondAttribute="trailingMargin" id="6nM-M6-IJQ"/>
-                                        <constraint firstItem="sRR-tQ-eJL" firstAttribute="centerY" secondItem="PWW-Go-gmX" secondAttribute="centerY" id="EyW-bl-eot"/>
-                                        <constraint firstAttribute="bottom" secondItem="3Ps-a8-I03" secondAttribute="bottom" constant="11" id="R3K-Gx-sdN"/>
-                                        <constraint firstItem="2yp-6U-Xpz" firstAttribute="top" secondItem="PWW-Go-gmX" secondAttribute="topMargin" constant="3" id="TlN-dZ-1xq"/>
-                                        <constraint firstItem="3Ps-a8-I03" firstAttribute="leading" secondItem="sRR-tQ-eJL" secondAttribute="trailing" constant="8" id="W6z-Ya-SDr"/>
-                                        <constraint firstItem="2yp-6U-Xpz" firstAttribute="leading" secondItem="3Ps-a8-I03" secondAttribute="trailing" constant="8" id="m7c-UK-r5w"/>
-                                        <constraint firstItem="3Ps-a8-I03" firstAttribute="top" secondItem="PWW-Go-gmX" secondAttribute="top" constant="11" id="n42-Hf-wdB"/>
-                                        <constraint firstItem="sRR-tQ-eJL" firstAttribute="leading" secondItem="PWW-Go-gmX" secondAttribute="leadingMargin" id="zU3-y5-Z1v"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                            </tableViewCell>
                         </prototypes>
                         <sections/>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Menu" id="hnF-ml-Qfo"/>
+                    <navigationItem key="navigationItem" id="hnF-ml-Qfo"/>
                     <connections>
                         <segue destination="sS8-cF-myv" kind="show" identifier="ItemSegue" id="ETz-qE-xC2"/>
                         <segue destination="rxD-1b-YpQ" kind="show" identifier="NewsSegue" id="A1v-Vl-4j8"/>
@@ -2388,11 +2342,11 @@ and helps keep Habitica running</string>
             </objects>
             <point key="canvasLocation" x="294.375" y="5827.5"/>
         </scene>
-        <!--Menu-->
+        <!--Top Header View Controller-->
         <scene sceneID="Vp9-dg-sDn">
             <objects>
                 <navigationController restorationIdentifier="ProfileNavigationController" definesPresentationContext="YES" id="JSb-MY-Gwo" customClass="TopHeaderViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Menu" image="tabbar_menu" id="hyj-Mf-lvH"/>
+                    <tabBarItem key="tabBarItem" title="" image="tabbar_menu" id="hyj-Mf-lvH"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gph-cu-5tJ">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2405,11 +2359,11 @@ and helps keep Habitica running</string>
             </objects>
             <point key="canvasLocation" x="1171.875" y="1751.25"/>
         </scene>
-        <!--To-Dos-->
+        <!--Top Header View Controller-->
         <scene sceneID="xdc-Uc-O5P">
             <objects>
                 <navigationController restorationIdentifier="TodoNavigationController" definesPresentationContext="YES" id="F9m-od-YIG" customClass="TopHeaderViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="To-Dos" image="tabbar_todos" id="Np7-ws-fF6"/>
+                    <tabBarItem key="tabBarItem" title="" image="tabbar_todos" id="Np7-ws-fF6"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="mXU-6R-4bg">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2422,11 +2376,11 @@ and helps keep Habitica running</string>
             </objects>
             <point key="canvasLocation" x="1170" y="885"/>
         </scene>
-        <!--Dailies-->
+        <!--Top Header View Controller-->
         <scene sceneID="qkM-wB-5kH">
             <objects>
                 <navigationController restorationIdentifier="DailyNavigationController" definesPresentationContext="YES" id="szj-Xo-0pc" customClass="TopHeaderViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Dailies" id="pdW-W9-wj6"/>
+                    <tabBarItem key="tabBarItem" title="" id="pdW-W9-wj6"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Tc8-JW-aRd">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2439,11 +2393,11 @@ and helps keep Habitica running</string>
             </objects>
             <point key="canvasLocation" x="1983" y="63"/>
         </scene>
-        <!--Habits-->
+        <!--Top Header View Controller-->
         <scene sceneID="0w6-RO-vbL">
             <objects>
                 <navigationController restorationIdentifier="HabitNavigationController" definesPresentationContext="YES" id="ZPa-UZ-Rgq" customClass="TopHeaderViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Habits" image="tabbar_habits" id="3G8-SH-Shd"/>
+                    <tabBarItem key="tabBarItem" title="" image="tabbar_habits" id="3G8-SH-Shd"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="qQq-gV-VmG">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2476,11 +2430,11 @@ and helps keep Habitica running</string>
             </objects>
             <point key="canvasLocation" x="4779.375" y="3272.5"/>
         </scene>
-        <!--Rewards-->
+        <!--Top Header View Controller-->
         <scene sceneID="ADP-AR-Pd2">
             <objects>
                 <navigationController restorationIdentifier="RewardNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="tYf-ZM-zIQ" customClass="TopHeaderViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Rewards" image="tabbar_rewards" id="zFI-xr-RjT"/>
+                    <tabBarItem key="tabBarItem" title="" image="tabbar_rewards" id="zFI-xr-RjT"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="qZ5-Dx-RNg"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="n1T-X7-pMj">
@@ -2496,7 +2450,7 @@ and helps keep Habitica running</string>
             </objects>
             <point key="canvasLocation" x="-464" y="1906"/>
         </scene>
-        <!--Rewards-->
+        <!--Reward View Controller-->
         <scene sceneID="XE8-n2-dkq">
             <objects>
                 <collectionViewController id="wkr-0z-ZYr" customClass="RewardViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
@@ -2525,7 +2479,7 @@ and helps keep Habitica running</string>
                             <outlet property="delegate" destination="wkr-0z-ZYr" id="f3e-2C-mAS"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Rewards" id="HHL-mH-FJc">
+                    <navigationItem key="navigationItem" id="HHL-mH-FJc">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="NiR-ou-IuB">
                             <connections>
                                 <segue destination="s5d-Hq-9de" kind="presentation" identifier="FormSegue" animates="NO" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="tO1-JH-hWy"/>
@@ -2845,7 +2799,6 @@ a matching subscription automatically after sending your gift.</string>
         </scene>
     </scenes>
     <resources>
-        <image name="icon_lock" width="16" height="18"/>
         <image name="tabbar_dailies" width="32" height="32"/>
         <image name="tabbar_habits" width="32" height="32"/>
         <image name="tabbar_menu" width="36" height="28"/>
@@ -2856,7 +2809,7 @@ a matching subscription automatically after sending your gift.</string>
         <segue reference="njg-A8-lDq"/>
         <segue reference="ETz-qE-xC2"/>
         <segue reference="V6b-ej-qnx"/>
-        <segue reference="PHp-cT-md6"/>
+        <segue reference="tO1-JH-hWy"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.44783598184585571" green="0.10848048329353333" blue="0.9984632134437561" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

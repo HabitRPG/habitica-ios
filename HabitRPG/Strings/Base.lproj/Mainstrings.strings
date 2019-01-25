@@ -55,6 +55,10 @@
 "tasks.daily" = "Daily";
 "tasks.todo" = "To-Do";
 "tasks.reward" = "Reward";
+"tasks.habits" = "Habits";
+"tasks.dailies" = "Dailies";
+"tasks.rewards" = "Rewards";
+"tasks.todos" = "To-Dos";
 "tasks.form.create" = "New %@";
 "tasks.form.edit" = "Edit %@";
 "tasks.form.habit_title_placeholder" = "What habits do you want to foster or break?";
@@ -102,6 +106,11 @@
 "tasks.team" = "Team";
 "tasks.chores" = "Chores";
 "tasks.creativity" = "Creativity";
+"tasks.add_x" = "Add %@";
+"menu" = "Menu";
+"filter" = "Filter";
+"one_filter" = "1 Filter";
+"x_filters" = "%ld Filters";
 "daily" = "Daily";
 "weekly" = "Weekly";
 "monthly" = "Monthly";

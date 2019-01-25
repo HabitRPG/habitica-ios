@@ -21,6 +21,7 @@ class ToDoTableViewController: TaskTableViewController {
         tableView.register(UINib(nibName: "EmptyTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "emptyCell")
         
         self.tutorialIdentifier = "todos"
+        configureTitle(L10n.Tasks.todos)
     }
     
     override func getDefinitonForTutorial(_ tutorialIdentifier: String) -> [AnyHashable: Any]? {

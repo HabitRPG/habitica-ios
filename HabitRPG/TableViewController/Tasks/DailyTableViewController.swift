@@ -21,6 +21,7 @@ class DailyTableViewController: TaskTableViewController {
         tableView.register(UINib(nibName: "EmptyTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "emptyCell")
         
         self.tutorialIdentifier = "dailies"
+        configureTitle(L10n.Tasks.dailies)
     }
     
     override func getDefinitonForTutorial(_ tutorialIdentifier: String) -> [AnyHashable: Any]? {

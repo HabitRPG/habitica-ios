@@ -31,6 +31,12 @@ class MainTabBarController: UITabBarController {
         
         setupDailyIcon()
         
+        tabBar.items?[0].title = L10n.Tasks.habits
+        tabBar.items?[1].title = L10n.Tasks.dailies
+        tabBar.items?[2].title = L10n.Tasks.todos
+        tabBar.items?[3].title = L10n.Tasks.rewards
+        tabBar.items?[4].title = L10n.menu
+        
         fetchData()
         
         #if DEBUG

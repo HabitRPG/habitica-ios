@@ -41,7 +41,7 @@ class TaskTableViewController: HRPGBaseViewController, UISearchBarDelegate, UITa
         refreshControl = refresher
         
         searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 48))
-        searchBar?.placeholder = NSLocalizedString("Search", comment: "")
+        searchBar?.placeholder = L10n.search
         searchBar?.delegate = self
         searchBar?.backgroundImage = UIImage()
         tableView.tableHeaderView = searchBar
@@ -63,6 +63,8 @@ class TaskTableViewController: HRPGBaseViewController, UISearchBarDelegate, UITa
             let longPress = UILongPressGestureRecognizer(target: self, action: #selector(longPressRecognized))
             tableView.addGestureRecognizer(longPress)
         }
+        
+        navigationItem.leftBarButtonItem?.title = L10n.filter
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -77,7 +79,7 @@ class TaskTableViewController: HRPGBaseViewController, UISearchBarDelegate, UITa
         
         tableView.reloadData()
         
-        navigationItem.rightBarButtonItem?.accessibilityLabel = String(format: NSLocalizedString("Add %@", comment: ""), readableName ?? "")
+        navigationItem.rightBarButtonItem?.accessibilityLabel = L10n.Tasks.addX(readableName ?? "")
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -127,12 +129,16 @@ class TaskTableViewController: HRPGBaseViewController, UISearchBarDelegate, UITa
         }
         
         if filterCount == 0 {
-            navigationItem.leftBarButtonItem?.title = NSLocalizedString("Filter", comment: "")
+            navigationItem.leftBarButtonItem?.title = L10n.filter
         } else if filterCount == 1 {
-            navigationItem.leftBarButtonItem?.title = NSLocalizedString("1 Filter", comment: "")
+            navigationItem.leftBarButtonItem?.title = L10n.oneFilter
         } else {
-            navigationItem.leftBarButtonItem?.title = String(format: NSLocalizedString("%ld Filters", comment: "more than one filter"), filterCount)
+            navigationItem.leftBarButtonItem?.title = L10n.xFilter(filterCount)
         }
+    }
+    
+    func configureTitle(_ title: String) {
+        navigationItem.title = title
     }
     
     @objc

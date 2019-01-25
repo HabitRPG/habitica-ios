@@ -33,7 +33,7 @@ class RewardViewController: HRPGBaseCollectionViewController, UICollectionViewDe
         collectionView?.addSubview(refreshControl)
         
         tutorialIdentifier = "rewards"
-        
+        navigationItem.title = L10n.Tasks.reward
         refresh()
     }
     
