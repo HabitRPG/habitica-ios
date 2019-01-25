@@ -21,10 +21,7 @@ class SubscriptionOptionView: UITableViewCell {
     private var isAlreadySelected = false
 
     override func setSelected(_ selected: Bool, animated: Bool) {
-        if isAlreadySelected == selected {
-            return
-        }
-        isAlreadySelected = selected
+        super.setSelected(selected, animated: animated)
         let animDuration = 0.3
         if selected {
             UIView.animate(withDuration: animDuration, animations: {[weak self] () in

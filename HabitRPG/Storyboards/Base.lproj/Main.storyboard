@@ -1625,7 +1625,7 @@ and helps keep Habitica running</string>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Want to give the benefits of a subscription to someone else?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f3o-aH-Po4">
-                                    <rect key="frame" x="32" y="0.0" width="311" height="31.5"/>
+                                    <rect key="frame" x="32" y="4" width="311" height="31.5"/>
                                     <constraints>
                                         <constraint firstAttribute="height" priority="500" constant="21" id="5pb-O5-r1I"/>
                                     </constraints>
@@ -1646,7 +1646,7 @@ and helps keep Habitica running</string>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstItem="CrM-dg-eMS" firstAttribute="top" secondItem="f3o-aH-Po4" secondAttribute="bottom" constant="4" id="11j-4s-haY"/>
+                                <constraint firstItem="CrM-dg-eMS" firstAttribute="top" secondItem="f3o-aH-Po4" secondAttribute="bottom" id="11j-4s-haY"/>
                                 <constraint firstAttribute="trailing" secondItem="qWw-qV-Dif" secondAttribute="trailing" constant="8" id="5aa-Kf-1bE"/>
                                 <constraint firstItem="V5k-go-mwg" firstAttribute="leading" secondItem="0ge-iM-ebO" secondAttribute="leading" constant="8" id="7zl-d0-mjK"/>
                                 <constraint firstItem="f3o-aH-Po4" firstAttribute="leading" secondItem="0ge-iM-ebO" secondAttribute="leading" constant="32" id="9GF-OG-sD2"/>
@@ -1662,7 +1662,7 @@ and helps keep Habitica running</string>
                                 <constraint firstAttribute="trailing" secondItem="2lA-HR-ThY" secondAttribute="trailing" constant="8" id="gOt-we-wOj"/>
                                 <constraint firstItem="qWw-qV-Dif" firstAttribute="top" secondItem="2lA-HR-ThY" secondAttribute="bottom" constant="8" id="gui-rC-ejx"/>
                                 <constraint firstAttribute="trailing" secondItem="P89-QO-UcF" secondAttribute="trailing" id="nik-bX-WWV"/>
-                                <constraint firstItem="f3o-aH-Po4" firstAttribute="top" secondItem="0ge-iM-ebO" secondAttribute="top" id="tfl-lJ-eW3"/>
+                                <constraint firstItem="f3o-aH-Po4" firstAttribute="top" secondItem="0ge-iM-ebO" secondAttribute="top" constant="4" id="tfl-lJ-eW3"/>
                                 <constraint firstItem="CrM-dg-eMS" firstAttribute="leading" secondItem="0ge-iM-ebO" secondAttribute="leading" constant="32" id="vwe-rX-MxV"/>
                                 <constraint firstAttribute="trailing" secondItem="CrM-dg-eMS" secondAttribute="trailing" constant="32" id="whQ-oz-se5"/>
                             </constraints>
@@ -2712,8 +2712,8 @@ and helps keep Habitica running</string>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="evr-kJ-ljY">
                                     <rect key="frame" x="20" y="114" width="335" height="78"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="textColor"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <color key="textColor" red="0.53023332359999997" green="0.50720638039999999" blue="0.56472396849999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>

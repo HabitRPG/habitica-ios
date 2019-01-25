@@ -249,7 +249,7 @@ class HabiticaAlertController: UIViewController, Themeable {
         }
         label.numberOfLines = 0
         label.textAlignment = .center
-        containerView.addArrangedSubview(label)
+        containerView.insertArrangedSubview(label, at: 0)
     }
     
     private func configureContentView() {

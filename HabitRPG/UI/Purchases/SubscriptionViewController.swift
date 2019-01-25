@@ -104,6 +104,7 @@ class SubscriptionViewController: HRPGBaseViewController {
             })
             self.selectedSubscriptionPlan = self.products?.first
             self.tableView.reloadData()
+            self.tableView.selectRow(at: IndexPath(item: 0, section: 1), animated: true, scrollPosition: .none)
         }
     }
 
@@ -367,7 +368,7 @@ class SubscriptionViewController: HRPGBaseViewController {
     private var giftRecipientUsername = ""
     
     @IBAction func giftSubscriptionButtonTapped(_ sender: Any) {
-        let alertController = HabiticaAlertController(title: L10n.giftRecipientTitle)
+        let alertController = HabiticaAlertController(title: L10n.giftRecipientTitle, message: L10n.giftRecipientSubtitle)
         let textField = UITextField()
         textField.autocorrectionType = .no
         textField.autocapitalizationType = .none
@@ -383,6 +384,8 @@ class SubscriptionViewController: HRPGBaseViewController {
             }
         })
         alertController.show()
+        alertController.containerViewSpacing = 8
+        alertController.containerView.spacing = 4
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
