@@ -12,7 +12,7 @@ import Habitica_Models
 class DailyTableViewDataSource: TaskTableViewDataSource {
     
     init(predicate: NSPredicate) {
-        super.init(predicate: predicate, taskType: TaskType.habit)
+        super.init(predicate: predicate, taskType: TaskType.daily)
     }
     
     override func configure(cell: TaskTableViewCell, indexPath: IndexPath, task: TaskProtocol) {
