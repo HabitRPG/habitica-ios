@@ -25,21 +25,35 @@ class PartyViewController: SplitSocialViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if configRepository.bool(variable: .enableUsernameRelease) {
+            qrCodeView.isHidden = true
+            qrCodeButtonHeight.constant = 0
+            shareQRCodeButton.isHidden = true
+            joinPartyDescription.text = L10n.Party.joinPartyDescription
+        }
+        
+        ImageManager.getImage(name: "timeTravelersShop_background_fall") { (image, _) in
+            self.noPartyHeaderBackground.image = image?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: UIImage.ResizingMode.tile)
+        }
+        let gradient = CAGradientLayer()
+        gradient.colors = [UIColor.white.cgColor, UIColor.init(white: 1, alpha: 0).cgColor, UIColor.white.cgColor]
+        gradient.startPoint = CGPoint(x: 0, y: 0)
+        gradient.endPoint = CGPoint(x: 0, y: 1)
+        gradient.locations =  [0, 0.4, 1]
+        noPartyHeaderBackground.gradient = gradient
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         disposable.inner.add(userRepository.getUser()
             .on(value: {[weak self] user in
-                if self?.configRepository.bool(variable: .enableUsernameRelease) == true {
-                    self?.userIDButton.setTitle("@\(user.username ?? "")", for: .normal)
-                } else {
-                    self?.userIDButton.setTitle(user.id, for: .normal)
-                    self?.qrCodeView.userID = user.id
-                    self?.qrCodeView.setAvatarViewWithUser(user)
-                }
+                self?.userIDButton.setTitle("@\(user.username ?? "")", for: .normal)
                 self?.groupInvitationListView.set(invitations: user.invitations)
             })
             .map({ (user) -> String? in
-            return user.party?.id
-        })
-            .skipRepeats()
+                return user.party?.id
+            })
             .on(failed: { error in
                 Crashlytics.sharedInstance().recordError(error)
             }, value: {[weak self] partyID in
@@ -59,23 +73,6 @@ class PartyViewController: SplitSocialViewController {
                 }
             })
             .start())
-        
-        if configRepository.bool(variable: .enableUsernameRelease) {
-            qrCodeView.isHidden = true
-            qrCodeButtonHeight.constant = 0
-            shareQRCodeButton.isHidden = true
-            joinPartyDescription.text = L10n.Party.joinPartyDescription
-        }
-        
-        ImageManager.getImage(name: "timeTravelersShop_background_fall") { (image, _) in
-            self.noPartyHeaderBackground.image = image?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: UIImage.ResizingMode.tile)
-        }
-        let gradient = CAGradientLayer()
-        gradient.colors = [UIColor.white.cgColor, UIColor.init(white: 1, alpha: 0).cgColor, UIColor.white.cgColor]
-        gradient.startPoint = CGPoint(x: 0, y: 0)
-        gradient.endPoint = CGPoint(x: 0, y: 1)
-        gradient.locations =  [0, 0.4, 1]
-        noPartyHeaderBackground.gradient = gradient
     }
 
     override func viewDidAppear(_ animated: Bool) {
