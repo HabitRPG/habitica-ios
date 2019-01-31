@@ -14,6 +14,7 @@ class QuestGoalView: UIView {
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var healthIcon: UIImageView!
     @IBOutlet weak var goalDetailLabel: UILabel!
+    @IBOutlet weak var difficultyLabel: UILabel!
     @IBOutlet weak var difficultyImageView: UIImageView!
     @IBOutlet weak var rageMeterView: PaddedLabel!
     @IBOutlet weak var typeBackgroundView: UIView!
@@ -37,6 +38,9 @@ class QuestGoalView: UIView {
             view.frame = bounds
             addSubview(view)
             
+            difficultyLabel.text = L10n.difficulty
+            rageMeterView.text = L10n.rageMeter
+            
             addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["view": view]))
             addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["view": view]))
             rageMeterView.verticalPadding = 0
@@ -51,14 +55,14 @@ class QuestGoalView: UIView {
     func configure(quest: QuestProtocol) {
         if let bossHealth = quest.boss?.health, bossHealth > 0 {
             healthIcon.isHidden = false
-            typeLabel.text = NSLocalizedString("Health", comment: "")
+            typeLabel.text = L10n.health
             goalDetailLabel.text = "\(bossHealth)"
             //rageMeterView.isHidden = (quest.boss?.rage ?? 0) == 0
             typeBackgroundView.backgroundColor = .red100()
             difficultyImageView.image = HabiticaIcons.imageOfDifficultyStars(difficulty: CGFloat(quest.boss?.strength ?? 0))
         } else {
             healthIcon.isHidden = true
-            typeLabel.text = NSLocalizedString("Collect", comment: "")
+            typeLabel.text = L10n.collect
             goalDetailLabel.text = ""
             rageMeterView.isHidden = true
             typeBackgroundView.backgroundColor = .green100()

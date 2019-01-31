@@ -77,7 +77,7 @@ class TaskTableViewCell: UITableViewCell, UITextViewDelegate {
         self.mainTaskWrapper.accessibilityCustomActions = []
         self.mainTaskWrapper.shouldGroupAccessibilityChildren = true
         self.mainTaskWrapper.isAccessibilityElement = true
-        self.mainTaskWrapper.accessibilityHint = NSLocalizedString("Double tap to edit", comment: "")
+        self.mainTaskWrapper.accessibilityHint = L10n.Accessibility.doubleTapToEdit
         self.mainTaskWrapper.accessibilityLabel = "\(task.text ?? "")"
         self.mainTaskWrapper.accessibilityLabel = "\(self.mainTaskWrapper.accessibilityLabel ?? ""), Value: \(String.forTaskQuality(task: task))"
         if let notes = task.notes, !notes.isEmpty {

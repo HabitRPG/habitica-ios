@@ -3,6 +3,8 @@ strings:
   outputs:
     - templatePath: swiftgen-templates/habiticastrings-swift4.stencil
       output: HabitRPG/Generated/Strings.swift
+      params:
+          publicAccess: true
 xcassets:
   inputs: HabitRPG/Images.xcassets
   outputs:

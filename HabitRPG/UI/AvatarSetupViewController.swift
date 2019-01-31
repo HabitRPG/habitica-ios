@@ -20,21 +20,21 @@ public enum AvatarCustomizationSubcategory {
     var text: String {
         switch self {
         case .size:
-            return NSLocalizedString("Size", comment: "")
+            return L10n.size
         case .shirt:
-            return NSLocalizedString("Shirt", comment: "")
+            return L10n.shirt
         case .bangs:
-            return NSLocalizedString("Bangs", comment: "")
+            return L10n.bangs
         case .ponytail:
-            return NSLocalizedString("Ponytail", comment: "")
+            return L10n.ponytail
         case .color:
-            return NSLocalizedString("Color", comment: "")
+            return L10n.color
         case .flower:
-            return NSLocalizedString("Flower", comment: "")
+            return L10n.flower
         case .glasses:
-            return NSLocalizedString("Glasses", comment: "")
+            return L10n.glasses
         case .wheelchair:
-            return NSLocalizedString("Wheelchair", comment: "")
+            return L10n.wheelchair
         default:
             return ""
         }

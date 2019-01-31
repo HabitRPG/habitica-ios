@@ -25,7 +25,9 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var checkinIconHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var checkinTitle: UILabel!
     @IBOutlet weak var checkinDescription: UILabel!
-
+    @IBOutlet weak var checkinYesterdaysDailiesLabel: UILabel!
+    @IBOutlet weak var startDayButton: UIButton!
+    
     let taskRepository = TaskRepository()
     private let userRepository = UserRepository()
     private let disposable = ScopedDisposable(CompositeDisposable())
@@ -44,6 +46,9 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
 
         updateTitleBanner()
         updateCheckinScreen()
+        
+        checkinYesterdaysDailiesLabel.text = L10n.checkinYesterdaysDalies
+        startDayButton.setTitle(L10n.startMyDay, for: .normal)
     }
 
     override func viewWillLayoutSubviews() {
@@ -97,7 +102,7 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
     }
 
     func updateTitleBanner() {
-        checkinCountView.text = NSLocalizedString("Welcome Back!", comment: "")
+        checkinCountView.text = L10n.welcomeBack
         nextCheckinCountView.text = nil
     }
 

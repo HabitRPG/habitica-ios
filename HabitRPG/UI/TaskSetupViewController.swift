@@ -11,7 +11,7 @@ import Habitica_Models
 import ReactiveSwift
 
 enum SetupTaskCategory {
-    case work, exercise, health, school, selfcare, chores, creativity
+    case work, exercise, health, school, team, chores, creativity
 
     //siwftlint:disable:next identifier_name
     func createSampleHabit(_ text: String, tagId: String?, positive: Bool, negative: Bool, taskRepository: TaskRepository) -> TaskProtocol {
@@ -54,48 +54,45 @@ enum SetupTaskCategory {
         switch self {
         case .work:
             return [
-                createSampleHabit(NSLocalizedString("Process email", comment: ""), tagId: tagId, positive: true, negative: false, taskRepository: taskRepository),
-                createSampleDaily(NSLocalizedString("Worked on today’s most important task", comment: ""),
-                                  tagId: tagId, notes: NSLocalizedString("Tap to specify your most important task", comment: ""), taskRepository: taskRepository),
-                createSampleToDo(NSLocalizedString("Complete work project", comment: ""), tagId: tagId,
-                                 notes: NSLocalizedString("Tap to specify the name of your current project + set a due date!", comment: ""), taskRepository: taskRepository)
+                createSampleHabit(L10n.Tasks.Examples.workHabit, tagId: tagId, positive: true, negative: false, taskRepository: taskRepository),
+                createSampleDaily(L10n.Tasks.Examples.workDailyText, tagId: tagId, notes: L10n.Tasks.Examples.workDailyNotes, taskRepository: taskRepository),
+                createSampleToDo(L10n.Tasks.Examples.workTodoText, tagId: tagId, notes: L10n.Tasks.Examples.workTodoNotes, taskRepository: taskRepository)
             ]
         case .exercise:
             return [
-                createSampleHabit(NSLocalizedString("10 minutes cardio", comment: ""), tagId: tagId, positive: true, negative: false, taskRepository: taskRepository),
-                createSampleDaily(NSLocalizedString("Daily workout routine", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to choose your schedule and specify exercises!", comment: ""), taskRepository: taskRepository),
-                createSampleToDo(NSLocalizedString("Set up workout schedule", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to add a checklist!", comment: ""), taskRepository: taskRepository)
+                createSampleHabit(L10n.Tasks.Examples.exerciseHabit, tagId: tagId, positive: true, negative: false, taskRepository: taskRepository),
+                createSampleDaily(L10n.Tasks.Examples.exerciseDailyText, tagId: tagId, notes: L10n.Tasks.Examples.exerciseDailyNotes, taskRepository: taskRepository),
+                createSampleToDo(L10n.Tasks.Examples.exerciseTodoText, tagId: tagId, notes: L10n.Tasks.Examples.exerciseTodoNotes, taskRepository: taskRepository)
             ]
         case .health:
             return [
-                createSampleHabit(NSLocalizedString("Eat health/junk food", comment: ""), tagId: tagId, positive: true, negative: true, taskRepository: taskRepository),
-                createSampleDaily(NSLocalizedString("Floss", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to make any changes!", comment: ""), taskRepository: taskRepository),
-                createSampleToDo(NSLocalizedString("Brainstorm a healthy change", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to add checklists!", comment: ""), taskRepository: taskRepository)
+                createSampleHabit(L10n.Tasks.Examples.healthHabit, tagId: tagId, positive: true, negative: true, taskRepository: taskRepository),
+                createSampleDaily(L10n.Tasks.Examples.healthDailyText, tagId: tagId, notes: L10n.Tasks.Examples.healthDailyNotes, taskRepository: taskRepository),
+                createSampleToDo(L10n.Tasks.Examples.healthTodoText, tagId: tagId, notes: L10n.Tasks.Examples.healthTodoNotes, taskRepository: taskRepository)
             ]
         case .school:
             return [
-                createSampleHabit(NSLocalizedString("Study/Procrastinate", comment: ""), tagId: tagId, positive: true, negative: true, taskRepository: taskRepository),
-                createSampleDaily(NSLocalizedString("Do homework", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to specify your most important task", comment: ""), taskRepository: taskRepository),
-                createSampleToDo(NSLocalizedString("Finish assignment for class", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to specify your most important task", comment: ""), taskRepository: taskRepository)
+                createSampleHabit(L10n.Tasks.Examples.schoolHabit, tagId: tagId, positive: true, negative: true, taskRepository: taskRepository),
+                createSampleDaily(L10n.Tasks.Examples.schoolDailyText, tagId: tagId, notes: L10n.Tasks.Examples.schoolDailyNotes, taskRepository: taskRepository),
+                createSampleToDo(L10n.Tasks.Examples.schoolTodoText, tagId: tagId, notes: L10n.Tasks.Examples.schoolTodoNotes, taskRepository: taskRepository)
             ]
-        case .selfcare:
+        case .team:
             return [
-                createSampleHabit(NSLocalizedString("Take a short break", comment: ""), tagId: tagId, positive: true, negative: false, taskRepository: taskRepository),
-                createSampleDaily(NSLocalizedString("5 minutes of quiet breathing", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to choose your schedule!", comment: ""), taskRepository: taskRepository),
-                createSampleToDo(NSLocalizedString("Engage in a fun activity", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to specify what you plan to do!", comment: ""), taskRepository: taskRepository)
+                createSampleHabit(L10n.Tasks.Examples.teamHabit, tagId: tagId, positive: true, negative: false, taskRepository: taskRepository),
+                createSampleDaily(L10n.Tasks.Examples.teamDailyText, tagId: tagId, notes: L10n.Tasks.Examples.teamDailyNotes, taskRepository: taskRepository),
+                createSampleToDo(L10n.Tasks.Examples.teamTodoText, tagId: tagId, notes: L10n.Tasks.Examples.teamTodoNotes, taskRepository: taskRepository)
             ]
         case .chores:
             return [
-                createSampleHabit(NSLocalizedString("10 minutes cleaning", comment: ""), tagId: tagId, positive: true, negative: false, taskRepository: taskRepository),
-                createSampleDaily(NSLocalizedString("Wash dishes", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to choose your schedule!", comment: ""), taskRepository: taskRepository),
-                createSampleToDo(NSLocalizedString("Organize clutter", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to specify the cluttered area!", comment: ""), taskRepository: taskRepository)
+                createSampleHabit(L10n.Tasks.Examples.choresHabit, tagId: tagId, positive: true, negative: false, taskRepository: taskRepository),
+                createSampleDaily(L10n.Tasks.Examples.choresDailyText, tagId: tagId, notes: L10n.Tasks.Examples.choresDailyNotes, taskRepository: taskRepository),
+                createSampleToDo(L10n.Tasks.Examples.choresTodoText, tagId: tagId, notes: L10n.Tasks.Examples.choresTodoNotes, taskRepository: taskRepository)
             ]
         case .creativity:
             return [
-                createSampleHabit(NSLocalizedString("Practiced a new creative technique", comment: ""), tagId: tagId, positive: true, negative: false, taskRepository: taskRepository),
-                createSampleDaily(NSLocalizedString("Work on creative project", comment: ""), tagId: tagId,
-                                  notes: NSLocalizedString("Tap to specify the name of your current project + set the schedule!", comment: ""), taskRepository: taskRepository),
-                createSampleToDo(NSLocalizedString("Finish creative project", comment: ""), tagId: tagId, notes: NSLocalizedString("Tap to specify the name of your project", comment: ""), taskRepository: taskRepository)
+                createSampleHabit(L10n.Tasks.Examples.creativityHabit, tagId: tagId, positive: true, negative: false, taskRepository: taskRepository),
+                createSampleDaily(L10n.Tasks.Examples.creativityDailyText, tagId: tagId, notes: L10n.Tasks.Examples.creativityDailyNotes, taskRepository: taskRepository),
+                createSampleToDo(L10n.Tasks.Examples.creativityTodoText, tagId: tagId, notes: L10n.Tasks.Examples.creativityTodoNotes, taskRepository: taskRepository)
             ]
         }
     }
@@ -104,19 +101,19 @@ enum SetupTaskCategory {
         let tag = taskRepository.getNewTag()
         switch self {
         case .work:
-            tag.text = NSLocalizedString("Work", comment: "")
+            tag.text = L10n.Tasks.work
         case .exercise:
-            tag.text = NSLocalizedString("Exercise", comment: "")
+            tag.text = L10n.Tasks.exercise
         case .health:
-            tag.text = NSLocalizedString("Health", comment: "")
+            tag.text = L10n.Tasks.health
         case .school:
-            tag.text = NSLocalizedString("School", comment: "")
-        case .selfcare:
-            tag.text = NSLocalizedString("Self-Care", comment: "")
+            tag.text = L10n.Tasks.school
+        case .team:
+            tag.text = L10n.Tasks.team
         case .chores:
-            tag.text = NSLocalizedString("Chores", comment: "")
+            tag.text = L10n.Tasks.chores
         case .creativity:
-            tag.text = NSLocalizedString("Creativity", comment: "")
+            tag.text = L10n.Tasks.creativity
         }
         return tag
     }
@@ -226,7 +223,7 @@ class TaskSetupViewController: UIViewController, TypingTextViewController {
             case schoolCategoryButton:
                 return .school
             case teamCategoryButton:
-                return .selfcare
+                return .team
             case choresCategoryButtton:
                 return .chores
             case creativityCategoryButton:
@@ -271,7 +268,7 @@ class TaskSetupViewController: UIViewController, TypingTextViewController {
         case schoolCategoryButton:
             return selectedCategories.contains(.school)
         case teamCategoryButton:
-            return selectedCategories.contains(.selfcare)
+            return selectedCategories.contains(.team)
         case choresCategoryButtton:
             return selectedCategories.contains(.chores)
         case creativityCategoryButton:

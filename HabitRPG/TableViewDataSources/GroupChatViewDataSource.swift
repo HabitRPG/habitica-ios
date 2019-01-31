@@ -113,7 +113,7 @@ class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtoc
         cell.copyAction = {
             let pasteboard = UIPasteboard.general
             pasteboard.string = chatMessage.text
-            let toastView = ToastView(title: NSLocalizedString("Copied Message", comment: ""), background: .green)
+            let toastView = ToastView(title: L10n.copiedMessage, background: .green)
             ToastManager.show(toast: toastView)
         }
         cell.deleteAction = {

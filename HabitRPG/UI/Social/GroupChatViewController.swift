@@ -53,7 +53,7 @@ class GroupChatViewController: SLKTextViewController {
         textView.registerMarkdownFormattingSymbol("**", withTitle: "Bold")
         textView.registerMarkdownFormattingSymbol("*", withTitle: "Italics")
         textView.registerMarkdownFormattingSymbol("~~", withTitle: "Strike")
-        textView.placeholder = NSLocalizedString("Write a message", comment: "")
+        textView.placeholder = L10n.writeMessage
         textInputbar.maxCharCount = UInt(ConfigRepository().integer(variable: .maxChatLength))
         textInputbar.charCountLabelNormalColor = UIColor.gray400()
         textInputbar.charCountLabelWarningColor = UIColor.red50()

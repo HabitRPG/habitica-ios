@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -37,7 +37,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bcu-PY-akv">
-                    <rect key="frame" x="22" y="0.0" width="222.5" height="667"/>
+                    <rect key="frame" x="22" y="0.0" width="235" height="667"/>
                     <constraints>
                         <constraint firstAttribute="height" priority="500" constant="21" id="guY-mp-8fF"/>
                     </constraints>
@@ -46,35 +46,35 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tag" translatesAutoresizingMaskIntoConstraints="NO" id="WLH-ru-0L3">
-                    <rect key="frame" x="357" y="324" width="18" height="18"/>
+                    <rect key="frame" x="357" y="324.5" width="18" height="18"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="18" id="eom-MT-FEN"/>
                         <constraint firstAttribute="height" constant="18" id="xu6-eK-fXf"/>
                     </constraints>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reminder" translatesAutoresizingMaskIntoConstraints="NO" id="Aa8-qQ-EQP">
-                    <rect key="frame" x="327" y="324" width="18" height="18"/>
+                    <rect key="frame" x="327" y="324.5" width="18" height="18"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="18" id="R4K-Tj-rxP"/>
                         <constraint firstAttribute="height" constant="18" id="naO-hT-gHu"/>
                     </constraints>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="challenge" translatesAutoresizingMaskIntoConstraints="NO" id="bsa-9e-Xu0">
-                    <rect key="frame" x="297" y="324" width="18" height="18"/>
+                    <rect key="frame" x="297" y="324.5" width="18" height="18"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="18" id="GS1-kQ-goW"/>
                         <constraint firstAttribute="width" constant="18" id="wof-te-bj5"/>
                     </constraints>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="streak" translatesAutoresizingMaskIntoConstraints="NO" id="WuC-MB-KK0">
-                    <rect key="frame" x="256.5" y="327" width="12" height="12"/>
+                    <rect key="frame" x="269" y="327.5" width="12" height="12"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="12" id="Zr8-lh-WQV"/>
                         <constraint firstAttribute="width" constant="12" id="gZJ-cQ-WmH"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zte-Jt-U0D">
-                    <rect key="frame" x="272.5" y="0.0" width="12.5" height="667"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zte-Jt-U0D">
+                    <rect key="frame" x="285" y="0.0" width="0.0" height="667"/>
                     <constraints>
                         <constraint firstAttribute="height" priority="500" constant="21" id="Wll-t7-Ton"/>
                         <constraint firstAttribute="width" priority="50" constant="42" id="kmE-7K-u9L"/>
@@ -84,7 +84,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar" translatesAutoresizingMaskIntoConstraints="NO" id="7WY-0y-yka">
-                    <rect key="frame" x="0.0" y="324" width="18" height="18"/>
+                    <rect key="frame" x="0.0" y="324.5" width="18" height="18"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="18" id="RJq-Dt-YJ2"/>
                         <constraint firstAttribute="width" constant="18" id="T97-3E-9fY"/>
@@ -117,10 +117,10 @@
         </view>
     </objects>
     <resources>
-        <image name="calendar" width="12" height="12"/>
-        <image name="challenge" width="17" height="15"/>
-        <image name="reminder" width="16" height="18"/>
-        <image name="streak" width="12" height="8"/>
-        <image name="tag" width="18" height="17"/>
+        <image name="calendar" width="20" height="20"/>
+        <image name="challenge" width="20" height="20"/>
+        <image name="reminder" width="20" height="20"/>
+        <image name="streak" width="20" height="20"/>
+        <image name="tag" width="20" height="20"/>
     </resources>
 </document>

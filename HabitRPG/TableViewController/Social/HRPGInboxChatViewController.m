@@ -54,7 +54,7 @@
     [self.textView registerMarkdownFormattingSymbol:@"*" withTitle:@"Italics"];
     [self.textView registerMarkdownFormattingSymbol:@"~~" withTitle:@"Strike"];
 
-    self.textView.placeholder = NSLocalizedString(@"Write a message", comment: "");
+    self.textView.placeholder = objcL10n.writeAMessage;
     self.textInputbar.maxCharCount = [[[ConfigRepository alloc] init] integerWithVariable:ConfigVariableMaxChatLength];
     self.textInputbar.charCountLabelNormalColor = [UIColor gray400];
     self.textInputbar.charCountLabelWarningColor = [UIColor red50];
@@ -66,9 +66,9 @@
 
 - (void)setTitleWithUsername:(NSString * _Nullable)displayName {
     if (displayName) {
-        self.navigationItem.title = [NSString stringWithFormat:NSLocalizedString(@"Write to %@", nil), self.displayName];
+        self.navigationItem.title = [objcL10n writeToUsername: displayName];
     } else {
-        self.navigationItem.title = NSLocalizedString(@"Write Message", nil);
+        self.navigationItem.title = objcL10n.writeMessage;
     }
 }
 

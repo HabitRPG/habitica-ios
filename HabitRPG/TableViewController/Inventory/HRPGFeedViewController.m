@@ -49,7 +49,7 @@
     openShopButton.layer.borderWidth = 1.0;
     openShopButton.layer.cornerRadius = 5;
     
-    label.text = NSLocalizedString(@"Not getting the right drops? Check out the Market to buy just the things you need!", nil);
+    label.text = objcL10n.notGettingDrops;
     [openShopButton addTarget:self action:@selector(openMarket:) forControlEvents:UIControlEventTouchUpInside];
     return view;
 }

@@ -60,19 +60,19 @@ extension String {
     public static func forTaskQuality(task: TaskProtocol) -> String {
         let taskValue = task.value
         if taskValue < -20 {
-            return NSLocalizedString("Worst", comment: "")
+            return L10n.Tasks.Quality.worst
         } else if taskValue < -10 {
-            return NSLocalizedString("Worse", comment: "")
+            return L10n.Tasks.Quality.worse
         } else if taskValue < -1 {
-            return NSLocalizedString("Bad", comment: "")
+            return L10n.Tasks.Quality.bad
         } else if taskValue < 1 {
-            return NSLocalizedString("Neutral", comment: "")
+            return L10n.Tasks.Quality.neutral
         } else if taskValue < 5 {
-            return NSLocalizedString("Good", comment: "")
+            return L10n.Tasks.Quality.good
         } else if taskValue < 10 {
-            return NSLocalizedString("Better", comment: "")
+            return L10n.Tasks.Quality.better
         } else {
-            return NSLocalizedString("Best", comment: "")
+            return L10n.Tasks.Quality.best
         }
     }
     

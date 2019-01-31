@@ -56,8 +56,7 @@
         [self.contentView addSubview:self.descriptionTextView];
 
         self.appstoreButton = [[UIButton alloc] init];
-        [self.appstoreButton setTitle:NSLocalizedString(@"Open App Store page", nil)
-                             forState:UIControlStateNormal];
+        [self.appstoreButton setTitle:objcL10n.openAppStore forState:UIControlStateNormal];
         [self.appstoreButton addTarget:self
                                 action:@selector(appstoreButtonPressed)
                       forControlEvents:UIControlEventTouchUpInside];

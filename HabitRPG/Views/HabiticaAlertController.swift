@@ -348,7 +348,7 @@ extension HabiticaAlertController {
     }
     
     @objc
-    public static func genericError(message: String?, title: String = NSLocalizedString("Error", comment: "")) -> HabiticaAlertController {
+    public static func genericError(message: String?, title: String = L10n.Errors.error) -> HabiticaAlertController {
         let alertController = HabiticaAlertController(
             title: title,
             message: message

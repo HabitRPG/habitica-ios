@@ -57,7 +57,7 @@
 
 - (void) setupNoCameraView {
     UILabel *labelNoCam = [[UILabel alloc] init];
-    labelNoCam.text = NSLocalizedString(@"No Camera available", nil);
+    labelNoCam.text = objcL10n.noCamera;
     labelNoCam.textColor = [UIColor blackColor];
     [self.view addSubview:labelNoCam];
     [labelNoCam sizeToFit];
@@ -173,7 +173,7 @@
                 if ([self.scannedCode isValidUUID]) {
                     [self performSegueWithIdentifier:@"ScannedCodeSegue" sender:self];
                 } else {
-                    HabiticaAlertController *alertController = [HabiticaAlertController alertWithTitle:NSLocalizedString(@"Invalid Habitica User ID", nil) message:NSLocalizedString(@"The scanned QR-Code did not contain a valid Habitica User ID.", nil)];
+                    HabiticaAlertController *alertController = [HabiticaAlertController alertWithTitle:objcL10n.qrInvalidIdTitle message:objcL10n.qrInvalidIdMessage];
                     [alertController addOkActionWithHandler:^(UIButton * _Nonnull button) {
                         self.scannedCode = nil;
                     }];

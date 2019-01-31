@@ -59,7 +59,7 @@
     if ([tutorialIdentifier isEqualToString:@"inbox"]) {
         return @{
                  @"text" :
-                     NSLocalizedString(@"This is where you can read and reply to private messages! You can also message people from their profiles.", nil)
+                     objcL10n.tutorialInbox
                  };
     }
     return nil;

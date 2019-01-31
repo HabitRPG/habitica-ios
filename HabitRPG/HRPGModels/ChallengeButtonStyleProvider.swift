@@ -52,10 +52,10 @@ class JoinLeaveButtonAttributeProvider: ChallengeButtonStyleProvider {
         let leaveStyleSignal = buttonStateSignal.filter { $0 == .leave }
         
         let greenSignal = joinStyleSignal.map { _ in UIColor.green100() }
-        let joinTitleSignal = joinStyleSignal.signal.map { _ in "Join Challenge" }
+        let joinTitleSignal = joinStyleSignal.signal.map { _ in L10n.joinChallenge }
         
         let redSignal = leaveStyleSignal.map { _ in UIColor.red100() }
-        let leaveTitleSignal = leaveStyleSignal.signal.map { _ in "Leave Challenge" }
+        let leaveTitleSignal = leaveStyleSignal.signal.map { _ in L10n.leaveChallenge }
         
         bgColorSignal = Signal.merge(greenSignal, redSignal)
         titleSignal = Signal.merge(joinTitleSignal, leaveTitleSignal)
@@ -75,19 +75,19 @@ class JoinLeaveButtonAttributeProvider: ChallengeButtonStyleProvider {
     }
     
     func leavePrompt() -> UIViewController {
-        let alert = HabiticaAlertController(title: NSLocalizedString("Leave Challenge?", comment: ""),
-                                            message: NSLocalizedString("Do you want to leave the challenge and keep or delete the tasks?", comment: ""))
-        alert.addAction(title: NSLocalizedString("Keep tasks", comment: ""), style: .default, handler: {[weak self] (_) in
+        let alert = HabiticaAlertController(title: L10n.leaveChallengeTitle,
+                                            message: L10n.leaveChallengePrompt)
+        alert.addAction(title: L10n.keepTasks, style: .default, handler: {[weak self] (_) in
             self?.socialRepository.leaveChallenge(challengeID: self?.challengeProperty.value?.id ?? "", keepTasks: true).observeCompleted {
                 self?.challengeUpdatedProperty.value = ()
             }
         })
-        alert.addAction(title: NSLocalizedString("Delete tasks", comment: ""), style: .default, handler: {[weak self] (_) in
+        alert.addAction(title: L10n.deleteTasks, style: .default, handler: {[weak self] (_) in
             self?.socialRepository.leaveChallenge(challengeID: self?.challengeProperty.value?.id ?? "", keepTasks: false).observeCompleted {
                 self?.challengeUpdatedProperty.value = ()
             }
         })
-        alert.addAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { (_) in })
+        alert.addAction(title: L10n.cancel, style: .cancel, handler: { (_) in })
         
         return alert
     }
@@ -131,7 +131,7 @@ class PublishButtonAttributeProvider: HRPGButtonAttributeProvider, HRPGButtonMod
         let publishSignal = buttonStateSignal.filter { $0 == .publishEnabled || $0 == .publishDisabled }
         
         bgColorSignal = publishSignal.map { _ in UIColor.purple300() }
-        titleSignal = publishSignal.signal.map { _ in "Publish Challenge" }
+        titleSignal = publishSignal.signal.map { _ in L10n.publishChallenge }
         enabledSignal = buttonStateSignal.map { $0 != .publishDisabled }
         
         buttonStateSignal.sample(on: buttonPressedProperty.signal).observeValues { (state) in
@@ -179,7 +179,7 @@ class ParticipantsButtonAttributeProvider: HRPGButtonAttributeProvider, HRPGButt
         let participantsSignal =  buttonStateSignal.filter { $0 == .viewParticipants }
         
         bgColorSignal = participantsSignal.map { _ in UIColor.gray600() }
-        titleSignal = participantsSignal.signal.map { _ in "View Participant Progress" }
+        titleSignal = participantsSignal.signal.map { _ in L10n.viewParticipantProgress }
         enabledSignal = buttonStateSignal.map { $0 != .publishDisabled }
     }
     
@@ -219,7 +219,7 @@ class EndChallengeButtonAttributeProvider: HRPGButtonAttributeProvider, HRPGButt
         let endSignal =  buttonStateSignal.filter { $0 == .endChallenge }
         
         bgColorSignal = endSignal.map { _ in UIColor.red100() }
-        titleSignal = endSignal.signal.map { _ in "End Challenge" }
+        titleSignal = endSignal.signal.map { _ in L10n.endChallenge }
         enabledSignal = buttonStateSignal.map { $0 != .publishDisabled }
     }
     

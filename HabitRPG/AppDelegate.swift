@@ -164,7 +164,7 @@ class HabiticaAppDelegate: NSObject {
             let localNotification = UILocalNotification()
             localNotification.fireDate = date
             localNotification.repeatInterval = .day
-            localNotification.alertBody = NSLocalizedString("Remember to check off your Dailies!", comment: "")
+            localNotification.alertBody = L10n.rememberCheckOffDailies
             localNotification.soundName = UILocalNotificationDefaultSoundName
             localNotification.timeZone = NSTimeZone.default
             UIApplication.shared.scheduleLocalNotification(localNotification)

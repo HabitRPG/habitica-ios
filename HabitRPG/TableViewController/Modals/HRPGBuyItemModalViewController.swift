@@ -44,9 +44,9 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     private var isPinned: Bool = false {
         didSet {
             if isPinned {
-                pinButton.setTitle(NSLocalizedString("Unpin from Rewards", comment: ""), for: .normal)
+                pinButton.setTitle(L10n.unpinFromRewards, for: .normal)
             } else {
-                pinButton.setTitle(NSLocalizedString("Pin to Rewards", comment: ""), for: .normal)
+                pinButton.setTitle(L10n.pinToRewards, for: .normal)
             }
         }
     }
@@ -201,8 +201,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         buyButton.shouldGroupAccessibilityChildren = true
         buyButton.isAccessibilityElement = true
         currencyCountView.isAccessibilityElement = false
-        let currencyText = currencyCountView.accessibilityLabel ?? ""
-        buyButton.accessibilityLabel = NSLocalizedString("Buy for \(currencyText)", comment: "")
+        buyButton.accessibilityLabel = L10n.buyForX(currencyCountView.accessibilityLabel ?? "")
     }
     
     func canAfford() -> Bool {

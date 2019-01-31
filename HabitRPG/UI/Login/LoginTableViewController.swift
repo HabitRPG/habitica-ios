@@ -424,13 +424,13 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
     
     @objc
     func forgotPasswordButtonPressed() {
-        let alertController = HabiticaAlertController(title: NSLocalizedString("Email a Password Reset Link", comment: ""))
+        let alertController = HabiticaAlertController(title: L10n.Login.emailPasswordLink)
         
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 16
         let textView = UITextView()
-        textView.text = NSLocalizedString("Enter the email address you used to register your Habitica account.", comment: "")
+        textView.text = L10n.Login.enterEmail
         textView.font = UIFont.preferredFont(forTextStyle: .subheadline)
         textView.textColor = UIColor.gray100()
         textView.isEditable = false
@@ -438,16 +438,16 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
         textView.isSelectable = false
         stackView.addArrangedSubview(textView)
         let textField = UITextField()
-        textField.placeholder = NSLocalizedString("Email", comment: "")
+        textField.placeholder = L10n.email
         textField.borderStyle = .roundedRect
         textField.keyboardType = .emailAddress
         stackView.addArrangedSubview(textField)
         alertController.contentView = stackView
         
         alertController.addCancelAction()
-        alertController.addAction(title: NSLocalizedString("Send", comment: ""), isMainAction: true) { _ in
+        alertController.addAction(title: L10n.send, isMainAction: true) { _ in
             self.userRepository.sendPasswordResetEmail(email: textField.text ?? "").observeCompleted {
-                ToastManager.show(text: NSLocalizedString("If we have your email on file, instructions for setting a new password have been sent to your email.", comment: ""), color: .green)
+                ToastManager.show(text: L10n.Login.resetPasswordResponse, color: .green)
             }
         }
         alertController.show()

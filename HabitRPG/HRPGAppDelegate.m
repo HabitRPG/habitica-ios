@@ -165,14 +165,14 @@
     if ([identifier isEqualToString:@"acceptAction"]) {
         [self.swiftAppDelegate acceptQuestInvitation:^(BOOL success) {
             if (!success) {
-                [self displayLocalNotificationWithMessage:NSLocalizedString(@"There was an error accepting the quest invitation", nil) withApplication:application];
+                [self displayLocalNotificationWithMessage:objcL10n.errorQuestInviteAccept withApplication:application];
             }
             completionHandler();
         }];
     } else if ([identifier isEqualToString:@"rejectAction"]) {
         [self.swiftAppDelegate rejectQuestInvitation:^(BOOL success) {
             if (!success) {
-                [self displayLocalNotificationWithMessage:NSLocalizedString(@"There was an error rejecting the quest invitation", nil) withApplication:application];
+                [self displayLocalNotificationWithMessage:objcL10n.errorQuestInviteReject withApplication:application];
             }
             completionHandler();
         }];
@@ -181,7 +181,7 @@
                                                   message:responseInfo[UIUserNotificationActionResponseTypedTextKey]
                                                 completed:^(BOOL success) {
                                                     if (!success) {
-                                                        [self displayLocalNotificationWithMessage:NSLocalizedString(@"Your message could not be sent.", nil) withApplication:application];
+                                                        [self displayLocalNotificationWithMessage:objcL10n.errorReply withApplication:application];
                                                     }
                                                     completionHandler();
                                                 }];
@@ -190,7 +190,7 @@
 
 - (void) displayLocalNotificationWithMessage:(NSString *)message withApplication:(UIApplication *)application {
     UILocalNotification *notification = [[UILocalNotification alloc]init];
-    [notification setAlertBody:[NSString stringWithFormat:NSLocalizedString(@"There was an error with your request: %@", nil), message]];
+    [notification setAlertBody:[objcL10n errorRequestWithMessage: message]];
     [notification setFireDate:[NSDate dateWithTimeIntervalSinceNow:1]];
     [notification setTimeZone:[NSTimeZone  defaultTimeZone]];
     [application setScheduledLocalNotifications:[NSArray arrayWithObject:notification]];
@@ -205,9 +205,9 @@
         return;
     }
 
-    HabiticaAlertController *alertController = [HabiticaAlertController alertWithTitle:NSLocalizedString(@"Reminder", nil) message:notification.alertBody];
-    [alertController addActionWithTitle:NSLocalizedString(@"Close", nil) style:UIAlertActionStyleDefault isMainAction:NO closeOnTap:true handler:nil];
-    [alertController addActionWithTitle:NSLocalizedString(@"Complete", nil) style:UIAlertActionStyleDefault isMainAction:YES closeOnTap:true handler:^(UIButton * _Nonnull button) {
+    HabiticaAlertController *alertController = [HabiticaAlertController alertWithTitle:objcL10n.reminder message:notification.alertBody];
+    [alertController addActionWithTitle:objcL10n.close style:UIAlertActionStyleDefault isMainAction:NO closeOnTap:true handler:nil];
+    [alertController addActionWithTitle:objcL10n.complete style:UIAlertActionStyleDefault isMainAction:YES closeOnTap:true handler:^(UIButton * _Nonnull button) {
         [self completeTaskWithId:[notification.userInfo valueForKey:@"taskID"] completionHandler:nil];
     }];
     [alertController show];
@@ -264,7 +264,7 @@
         UIMutableUserNotificationAction *completeAction =
             [[UIMutableUserNotificationAction alloc] init];
         completeAction.identifier = @"completeAction";
-        completeAction.title = NSLocalizedString(@"Complete", nil);
+        completeAction.title = objcL10n.complete;
         completeAction.activationMode = UIUserNotificationActivationModeBackground;
         completeAction.authenticationRequired = NO;
         UIMutableUserNotificationCategory *completeCategory =
@@ -276,13 +276,13 @@
         UIMutableUserNotificationAction *acceptAction =
         [[UIMutableUserNotificationAction alloc] init];
         acceptAction.identifier = @"acceptAction";
-        acceptAction.title = NSLocalizedString(@"Accept", nil);
+        acceptAction.title = objcL10n.accept;
         acceptAction.activationMode = UIUserNotificationActivationModeBackground;
         acceptAction.authenticationRequired = NO;
         UIMutableUserNotificationAction *rejectAction =
         [[UIMutableUserNotificationAction alloc] init];
         rejectAction.identifier = @"rejectAction";
-        rejectAction.title = NSLocalizedString(@"Reject", nil);
+        rejectAction.title = objcL10n.reject;
         rejectAction.activationMode = UIUserNotificationActivationModeBackground;
         rejectAction.destructive = YES;
         rejectAction.authenticationRequired = NO;
@@ -295,7 +295,7 @@
         UIMutableUserNotificationAction *replyAction =
         [[UIMutableUserNotificationAction alloc] init];
         replyAction.identifier = @"replyAction";
-        replyAction.title = NSLocalizedString(@"Reply", nil);
+        replyAction.title = objcL10n.reply;
         replyAction.activationMode = UIUserNotificationActivationModeBackground;
         replyAction.authenticationRequired = NO;
         if ([UIMutableUserNotificationAction instancesRespondToSelector:@selector(setBehavior:)]) {

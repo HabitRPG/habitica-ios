@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -26,10 +26,10 @@
                         </constraints>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="999" verticalCompressionResistancePriority="1000" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="jKr-fl-ipo">
-                        <rect key="frame" x="55" y="12" width="346" height="59"/>
+                        <rect key="frame" x="55" y="12" width="235" height="59"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2tO-84-pCm">
-                                <rect key="frame" x="0.0" y="0.0" width="346" height="18"/>
+                                <rect key="frame" x="0.0" y="0.0" width="235" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="500" constant="21" id="Chq-sY-aIf"/>
                                 </constraints>
@@ -38,7 +38,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="999" verticalCompressionResistancePriority="1000" text=" " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eYM-Wz-v5L">
-                                <rect key="frame" x="0.0" y="18" width="346" height="41"/>
+                                <rect key="frame" x="0.0" y="18" width="235" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="500" constant="21" id="yC5-jn-G0L"/>
                                 </constraints>
@@ -53,17 +53,17 @@
                         </constraints>
                     </stackView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kff-Ah-KbA">
-                        <rect key="frame" x="346" y="0.0" width="48" height="83"/>
+                        <rect key="frame" x="298" y="0.0" width="48" height="83"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="voU-fj-NTW">
-                                <rect key="frame" x="0.0" y="19.5" width="22" height="22"/>
+                                <rect key="frame" x="13" y="19.5" width="22" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="22" id="kwO-SW-FQ3"/>
                                     <constraint firstAttribute="height" constant="22" id="tov-6M-DXX"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MPB-27-hRy" customClass="HRPGAbbrevNumberLabel">
-                                <rect key="frame" x="0.0" y="43.5" width="40" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MPB-27-hRy" customClass="HRPGAbbrevNumberLabel">
+                                <rect key="frame" x="4" y="43.5" width="40" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="6vW-kp-s32"/>
                                 </constraints>

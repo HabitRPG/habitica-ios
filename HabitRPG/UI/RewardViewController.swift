@@ -40,8 +40,7 @@ class RewardViewController: HRPGBaseCollectionViewController, UICollectionViewDe
     override func getDefinitonForTutorial(_ tutorialIdentifier: String!) -> [AnyHashable: Any] {
         if tutorialIdentifier == "rewards" {
             return [
-                "textList": NSArray.init(array: [NSLocalizedString("Buy gear for your avatar with the gold you earn!", comment: ""),
-                                                 NSLocalizedString("You can also make real-world Custom Rewards based on what motivates you.", comment: "")])
+                "textList": NSArray.init(array: [L10n.Tutorials.rewards1, L10n.Tutorials.rewards2])
             ]
         }
         return [:]

@@ -51,7 +51,7 @@
     self.upperBackgroundView = [[UIView alloc] init];
     [self.upperBackgroundView setBackgroundColor:[UIColor whiteColor]];
     
-    self.segmentedControl = [[UISegmentedControl alloc] initWithItems:@[NSLocalizedString(@"Subscription", nil), NSLocalizedString(@"Gems", nil)]];
+    self.segmentedControl = [[UISegmentedControl alloc] initWithItems:@[objcL10n.subscription, objcL10n.gems]];
     [self.segmentedControl sizeToFit];
     self.segmentedControl.tintColor = [UIColor purple300];
     self.segmentedControl.selectedSegmentIndex = 0;

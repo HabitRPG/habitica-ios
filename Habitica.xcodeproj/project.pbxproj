@@ -28,6 +28,7 @@
 		290458D02021D6C60032BC5E /* TopHeaderCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290458CF2021D6C60032BC5E /* TopHeaderCoordinator.swift */; };
 		2907267E1F74279C00545550 /* TimeTravelersCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2907267D1F74279C00545550 /* TimeTravelersCollectionViewDataSource.swift */; };
 		2907F99E1F694C4000328AEE /* GemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2907F99D1F694C4000328AEE /* GemViewController.swift */; };
+		2908784A220210CF0010820A /* Strings-objcBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29087849220210CF0010820A /* Strings-objcBridge.swift */; };
 		290A405421FA175800A409BA /* Purple@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 290A405221FA175700A409BA /* Purple@2x.png */; };
 		290A405521FA175800A409BA /* Purple@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 290A405321FA175800A409BA /* Purple@3x.png */; };
 		290B623F20727113007287C4 /* MyGuildCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B623E20727113007287C4 /* MyGuildCell.swift */; };
@@ -382,7 +383,6 @@
 		D905766F1BD7F581009BB7BC /* HRPGHintView.m in Sources */ = {isa = PBXBuildFile; fileRef = D905766E1BD7F581009BB7BC /* HRPGHintView.m */; };
 		D90576851BD83240009BB7BC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D90576871BD83240009BB7BC /* InfoPlist.strings */; };
 		D905768A1BD83241009BB7BC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D905768C1BD83241009BB7BC /* Localizable.strings */; };
-		D905D08A1DE22CBF00CABF55 /* HRPGLoginIncentiveNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = D905D0891DE22CBF00CABF55 /* HRPGLoginIncentiveNotification.m */; };
 		D905D08C1DE241D200CABF55 /* HRPGLoginIncentiveOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D905D08B1DE241D200CABF55 /* HRPGLoginIncentiveOverlayView.xib */; };
 		D905D08F1DE2431100CABF55 /* HRPGLoginIncentiveOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = D905D08E1DE2431100CABF55 /* HRPGLoginIncentiveOverlayView.m */; };
 		D914890D1CD23A900015B42D /* HRPGMaintenanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D914890B1CD23A900015B42D /* HRPGMaintenanceViewController.m */; };
@@ -576,6 +576,7 @@
 		290458CF2021D6C60032BC5E /* TopHeaderCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopHeaderCoordinator.swift; sourceTree = "<group>"; };
 		2907267D1F74279C00545550 /* TimeTravelersCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTravelersCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		2907F99D1F694C4000328AEE /* GemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GemViewController.swift; sourceTree = "<group>"; };
+		29087849220210CF0010820A /* Strings-objcBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Strings-objcBridge.swift"; sourceTree = "<group>"; };
 		290A2AD020F508F500BF8A68 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/OnePasswordExtension.strings"; sourceTree = "<group>"; };
 		290A2AD120F508F500BF8A68 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		290A2AD220F508F500BF8A68 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Mainstrings.strings"; sourceTree = "<group>"; };
@@ -1137,8 +1138,6 @@
 		D90576981BD8326F009BB7BC /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D90576991BD8326F009BB7BC /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D905769A1BD8326F009BB7BC /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Localizable.strings; sourceTree = "<group>"; };
-		D905D0881DE22CBF00CABF55 /* HRPGLoginIncentiveNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGLoginIncentiveNotification.h; sourceTree = "<group>"; };
-		D905D0891DE22CBF00CABF55 /* HRPGLoginIncentiveNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGLoginIncentiveNotification.m; sourceTree = "<group>"; };
 		D905D08B1DE241D200CABF55 /* HRPGLoginIncentiveOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPGLoginIncentiveOverlayView.xib; sourceTree = "<group>"; };
 		D905D08D1DE2431100CABF55 /* HRPGLoginIncentiveOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGLoginIncentiveOverlayView.h; sourceTree = "<group>"; };
 		D905D08E1DE2431100CABF55 /* HRPGLoginIncentiveOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGLoginIncentiveOverlayView.m; sourceTree = "<group>"; };
@@ -1468,6 +1467,7 @@
 				C897F63D218CE052002907C2 /* Storyboard Scenes.swift */,
 				C897F63E218CE052002907C2 /* Storyboard Segues.swift */,
 				2902796A2057F2C5006DACB9 /* Strings.swift */,
+				29087849220210CF0010820A /* Strings-objcBridge.swift */,
 			);
 			path = Generated;
 			sourceTree = "<group>";
@@ -2165,8 +2165,6 @@
 				D96C85441DCBAC90003E3616 /* HRPGStreakAchievementNotification.m */,
 				D96C85401DCB6501003E3616 /* HRPGDropsEnabledNotification.h */,
 				D96C85411DCB6501003E3616 /* HRPGDropsEnabledNotification.m */,
-				D905D0881DE22CBF00CABF55 /* HRPGLoginIncentiveNotification.h */,
-				D905D0891DE22CBF00CABF55 /* HRPGLoginIncentiveNotification.m */,
 				29B388DE1EEF4FBD00A72950 /* MorningNotification.swift */,
 			);
 			path = Notifications;
@@ -3505,6 +3503,7 @@
 				49391ED320C9C94B002B2BB5 /* ToDoTableViewController.swift in Sources */,
 				293BB49A1FCD7DC0003B6F4F /* StatsView.swift in Sources */,
 				49005B7C1F18371F004830D9 /* HRPGShopUserHeaderView.swift in Sources */,
+				2908784A220210CF0010820A /* Strings-objcBridge.swift in Sources */,
 				2902796D2057F2C5006DACB9 /* Strings.swift in Sources */,
 				D9EB4E9B18CB4A9400BB2094 /* main.m in Sources */,
 				292DEE76204E053D0086D5F7 /* HabitButton.swift in Sources */,
@@ -3589,7 +3588,6 @@
 				29144898208A271C00F3A6B5 /* AvatarDetailViewDataSource.swift in Sources */,
 				49A84FB21F9FCA30003E2956 /* ChallengeDetailInfoTableViewCell.swift in Sources */,
 				49DCECA71F96ECEF00982E99 /* MultiModelDataSource.swift in Sources */,
-				D905D08A1DE22CBF00CABF55 /* HRPGLoginIncentiveNotification.m in Sources */,
 				29646DD6205BE4C10050886C /* TaskFormViewModel.swift in Sources */,
 				2957B8B31F4B2D5A00E836EF /* RewardViewController.swift in Sources */,
 				291448682084FBCF00F3A6B5 /* MountDetailCell.swift in Sources */,

@@ -12,7 +12,7 @@ class ToDoTableViewController: TaskTableViewController {
     var emptyDataSource = SingleItemTableViewDataSource<EmptyTableViewCell>(cellIdentifier: "emptyCell", styleFunction: EmptyTableViewCell.todoStyle)
     
     override func viewDidLoad() {
-        readableName = NSLocalizedString("To-Do", comment: "")
+        readableName = L10n.Tasks.todo
         typeName = "todo"
         dataSource = TodoTableViewDataSource(predicate: getPredicate())
         
@@ -26,8 +26,7 @@ class ToDoTableViewController: TaskTableViewController {
     
     override func getDefinitonForTutorial(_ tutorialIdentifier: String) -> [AnyHashable: Any]? {
         if tutorialIdentifier == "todos" {
-            let localizedStringArray = [NSLocalizedString("Use To-Dos to keep track of tasks you need to do just once.", comment: ""),
-                                        NSLocalizedString("If your To-Do has to be done by a certain time, set a due date. Looks like you can check one off — go ahead!", comment: "")]
+            let localizedStringArray = [L10n.Tutorials.todos1, L10n.Tutorials.todos2]
             return ["textList": localizedStringArray]
         }
         return super.getDefinitonForTutorial(tutorialIdentifier)

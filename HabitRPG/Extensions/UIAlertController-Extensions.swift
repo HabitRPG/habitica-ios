@@ -19,10 +19,10 @@ public extension UIAlertController {
         return alertController
     }
 
-    public static func genericError(message: String, title: String = NSLocalizedString("Error", comment: "")) -> UIAlertController {
+    public static func genericError(message: String, title: String = L10n.Errors.error) -> UIAlertController {
         let alertController = UIAlertController(
-            title: title.localized,
-            message: message.localized,
+            title: title,
+            message: message,
             preferredStyle: .alert
         )
         alertController.addAction(UIAlertAction.okAction())

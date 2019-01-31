@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -19,25 +19,25 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yuX-eM-obY">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="76.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="48"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="A World Boss is a special event where the whole community works together to take down a powerful monster with their tasks!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZRf-Ka-hx1">
-                            <rect key="frame" x="0.0" y="88.5" width="375" height="54"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZRf-Ka-hx1">
+                            <rect key="frame" x="0.0" y="60" width="375" height="0.0"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" red="0.40768876669999998" green="0.3832124174" blue="0.4558907747" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="w7v-7L-dpj">
-                            <rect key="frame" x="0.0" y="154.5" width="375" height="75.5"/>
+                            <rect key="frame" x="0.0" y="72" width="375" height="48"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u4h-Op-AiH">
-                                    <rect key="frame" x="0.0" y="0.0" width="6" height="75.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="6" height="48"/>
                                     <subviews>
                                         <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MKu-OA-aNf">
-                                            <rect key="frame" x="0.0" y="34.5" width="6" height="6"/>
+                                            <rect key="frame" x="0.0" y="21" width="6" height="6"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="6" id="S4d-Sx-3b9"/>
@@ -57,8 +57,8 @@
                                         <constraint firstAttribute="width" constant="6" id="v9e-O0-SfQ"/>
                                     </constraints>
                                 </view>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Complete tasks to damage the Boss" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hlU-Y5-3k7">
-                                    <rect key="frame" x="14" y="0.0" width="361" height="75.5"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hlU-Y5-3k7">
+                                    <rect key="frame" x="14" y="0.0" width="361" height="48"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <color key="textColor" red="0.40768876669999998" green="0.3832124174" blue="0.4558907747" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
@@ -66,13 +66,13 @@
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="nFQ-Ms-p8w">
-                            <rect key="frame" x="0.0" y="242" width="375" height="76.5"/>
+                            <rect key="frame" x="0.0" y="132" width="375" height="80"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u4L-7H-uMW">
-                                    <rect key="frame" x="0.0" y="0.0" width="6" height="76.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="6" height="80"/>
                                     <subviews>
                                         <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aMX-eM-8Bu">
-                                            <rect key="frame" x="0.0" y="34.5" width="6" height="6"/>
+                                            <rect key="frame" x="0.0" y="37" width="6" height="6"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="6" id="4dI-T3-Cdl"/>
@@ -92,9 +92,8 @@
                                         <constraint firstItem="aMX-eM-8Bu" firstAttribute="centerY" secondItem="u4L-7H-uMW" secondAttribute="centerY" id="piN-Vt-Wsb"/>
                                     </constraints>
                                 </view>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D4S-mj-QE4">
-                                    <rect key="frame" x="14" y="0.0" width="361" height="76.5"/>
-                                    <string key="text">The Boss won’t damage you for missed tasks, but its Rage meter will go up. If the bar fills up, the Boss will attack one of the shopkeepers!</string>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D4S-mj-QE4">
+                                    <rect key="frame" x="14" y="0.0" width="361" height="80"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <color key="textColor" red="0.40768876669999998" green="0.3832124174" blue="0.4558907747" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
@@ -102,13 +101,13 @@
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="AVQ-gR-TzR">
-                            <rect key="frame" x="0.0" y="330.5" width="375" height="92.5"/>
+                            <rect key="frame" x="0.0" y="224" width="375" height="241.5"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a1O-xH-WJI">
-                                    <rect key="frame" x="0.0" y="0.0" width="6" height="92.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="6" height="241.5"/>
                                     <subviews>
                                         <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VfD-kL-aXt">
-                                            <rect key="frame" x="0.0" y="42.5" width="6" height="6"/>
+                                            <rect key="frame" x="0.0" y="118" width="6" height="6"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="6" id="Tbb-gL-cpU"/>
@@ -128,8 +127,8 @@
                                         <constraint firstAttribute="width" constant="6" id="xYy-tc-4Lc"/>
                                     </constraints>
                                 </view>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can continue with normal Quest Bosses, damage will apply to both" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bhY-Ut-TVP">
-                                    <rect key="frame" x="14" y="0.0" width="361" height="92.5"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bhY-Ut-TVP">
+                                    <rect key="frame" x="14" y="0.0" width="361" height="241.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <color key="textColor" red="0.40768876669999998" green="0.3832124174" blue="0.4558907747" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
@@ -137,13 +136,13 @@
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="0XT-nZ-FuY">
-                            <rect key="frame" x="0.0" y="435" width="375" height="114.5"/>
+                            <rect key="frame" x="0.0" y="477.5" width="375" height="177.5"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AnC-Xo-ieP">
-                                    <rect key="frame" x="0.0" y="0.0" width="6" height="114.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="6" height="177.5"/>
                                     <subviews>
                                         <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HRx-jy-iYi">
-                                            <rect key="frame" x="0.0" y="53.5" width="6" height="6"/>
+                                            <rect key="frame" x="0.0" y="85.5" width="6" height="6"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="6" id="mwR-5Z-myn"/>
@@ -163,8 +162,8 @@
                                         <constraint firstItem="HRx-jy-iYi" firstAttribute="centerY" secondItem="AnC-Xo-ieP" secondAttribute="centerY" id="UYo-vN-bSe"/>
                                     </constraints>
                                 </view>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Check the Tavern to see Boss progress and Rage attacks" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iQl-fQ-dwa">
-                                    <rect key="frame" x="14" y="0.0" width="361" height="114.5"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iQl-fQ-dwa">
+                                    <rect key="frame" x="14" y="0.0" width="361" height="177.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <color key="textColor" red="0.40768876669999998" green="0.3832124174" blue="0.4558907747" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
@@ -172,7 +171,7 @@
                             </subviews>
                         </stackView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rqz-kz-T8L" customClass="PaddedLabel" customModule="Habitica" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="561.5" width="375" height="105.5"/>
+                            <rect key="frame" x="0.0" y="667" width="375" height="0.0"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -195,10 +194,15 @@
             <connections>
                 <outlet property="actionPromptLabel" destination="rqz-kz-T8L" id="YjT-RO-R9E"/>
                 <outlet property="firstBullet" destination="w7v-7L-dpj" id="TEo-Px-GT9"/>
+                <outlet property="firstBulletLabel" destination="hlU-Y5-3k7" id="Agg-BD-afk"/>
                 <outlet property="fourthBullet" destination="0XT-nZ-FuY" id="p7o-SM-H7G"/>
+                <outlet property="fourthBulletLabel" destination="iQl-fQ-dwa" id="tAW-8g-l2t"/>
                 <outlet property="secondBullet" destination="nFQ-Ms-p8w" id="nmp-54-oSf"/>
+                <outlet property="secondBulletLabel" destination="D4S-mj-QE4" id="Sp5-hE-IvR"/>
                 <outlet property="thirdBullet" destination="AVQ-gR-TzR" id="7Em-Xi-SM0"/>
+                <outlet property="thirdBulletLabel" destination="bhY-Ut-TVP" id="pAd-ZH-AWJ"/>
                 <outlet property="titleView" destination="yuX-eM-obY" id="Lly-fb-0dP"/>
+                <outlet property="worldBossDescriptionLabel" destination="ZRf-Ka-hx1" id="GZr-LX-6bT"/>
             </connections>
         </view>
     </objects>

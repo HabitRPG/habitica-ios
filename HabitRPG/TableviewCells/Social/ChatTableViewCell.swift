@@ -77,10 +77,10 @@ class ChatTableViewCell: UITableViewCell, UITextViewDelegate {
             displaynameLabel.contributorLevel = contributorLevel
             positionLabel.isHidden = contributorLevel < 8
             if contributorLevel == 8 {
-                positionLabel.text = NSLocalizedString("Moderator", comment: "")
+                positionLabel.text = L10n.moderator
                 positionLabel.backgroundColor = UIColor.blue10()
             } else if contributorLevel == 9 {
-                positionLabel.text = NSLocalizedString("Staff", comment: "")
+                positionLabel.text = L10n.staff
                 positionLabel.backgroundColor = UIColor.purple300()
             }
         }
@@ -375,14 +375,14 @@ class ChatTableViewCell: UITableViewCell, UITextViewDelegate {
         messageTextView.isAccessibilityElement = false
         plusOneButton.isAccessibilityElement = false
         accessibilityCustomActions = [
-            UIAccessibilityCustomAction(name: NSLocalizedString("Reply to Message", comment: ""), target: self, selector: #selector(replyButtonTapped(_:))),
-            UIAccessibilityCustomAction(name: NSLocalizedString("Copy Message", comment: ""), target: self, selector: #selector(copyButtonTapped(_:)))
+            UIAccessibilityCustomAction(name: L10n.Accessibility.replyToMessage, target: self, selector: #selector(replyButtonTapped(_:))),
+            UIAccessibilityCustomAction(name: L10n.Accessibility.copyMessage, target: self, selector: #selector(copyButtonTapped(_:)))
         ]
         if isOwnMessage {
-            accessibilityCustomActions?.append(UIAccessibilityCustomAction(name: NSLocalizedString("Delete Message", comment: ""), target: self, selector: #selector(deleteButtonTapped(_:))))
+            accessibilityCustomActions?.append(UIAccessibilityCustomAction(name: L10n.Accessibility.deleteMessage, target: self, selector: #selector(deleteButtonTapped(_:))))
         } else {
-            accessibilityCustomActions?.append(UIAccessibilityCustomAction(name: NSLocalizedString("Like Message", comment: ""), target: self, selector: #selector(plusOneButtonTapped(_:))))
-            accessibilityCustomActions?.append(UIAccessibilityCustomAction(name: NSLocalizedString("Report Message", comment: ""), target: self, selector: #selector(reportButtonTapped(_:))))
+            accessibilityCustomActions?.append(UIAccessibilityCustomAction(name: L10n.Accessibility.likeMessage, target: self, selector: #selector(plusOneButtonTapped(_:))))
+            accessibilityCustomActions?.append(UIAccessibilityCustomAction(name: L10n.Accessibility.reportMessage, target: self, selector: #selector(reportButtonTapped(_:))))
         }
     }
     

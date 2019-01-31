@@ -96,7 +96,7 @@ class InboxMessagesDataSource: BaseReactiveTableViewDataSource<InboxMessageProto
         cell.copyAction = {
             let pasteboard = UIPasteboard.general
             pasteboard.string = message.text
-            let toastView = ToastView(title: NSLocalizedString("Copied Message", comment: ""), background: .green)
+            let toastView = ToastView(title: L10n.copiedMessage, background: .green)
             ToastManager.show(toast: toastView)
         }
         cell.deleteAction = {

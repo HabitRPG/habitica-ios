@@ -180,7 +180,7 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
     func completeSetup() {
         UserDefaults.standard.set(false, forKey: "isInSetup")
         UserDefaults.standard.set(0, forKey: "currentSetupStep")
-        let overlayView = MRProgressOverlayView.showOverlayAdded(to: self.view, title: NSLocalizedString("Teleporting to Habitica", comment: ""), mode: .indeterminate, animated: true)
+        let overlayView = MRProgressOverlayView.showOverlayAdded(to: self.view, title: L10n.teleportingHabitica, mode: .indeterminate, animated: true)
         overlayView?.setTintColor(ThemeService.shared.theme.tintColor)
         overlayView?.backgroundColor = ThemeService.shared.theme.backgroundTintColor.withAlphaComponent(0.6)
         if let viewController = taskSetupViewController {
@@ -218,19 +218,19 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
                 tasks.append(contentsOf: taskCategory.getTasks(tagId: createdTags[taskCategory]?.id, taskRepository: taskRepository))
             }
             var task = taskRepository.getNewTask()
-            task.text = NSLocalizedString("Reward yourself", comment: "")
-            task.notes = NSLocalizedString("Watch TV, play a game, eat a treat, it’s up to you!", comment: "")
+            task.text = L10n.Tasks.Examples.rewardText
+            task.notes = L10n.Tasks.Examples.rewardNotes
             task.value = 20
             task.type = "reward"
             tasks.append(task)
             task = taskRepository.getNewTask()
-            task.text = NSLocalizedString("Join Habitica (Check me off!)", comment: "")
-            task.notes = NSLocalizedString("You can either complete this To-Do, edit it, or remove it.", comment: "")
+            task.text = L10n.Tasks.Examples.todoText
+            task.notes = L10n.Tasks.Examples.todoNotes
             task.type = "todo"
             tasks.append(task)
             task = taskRepository.getNewTask()
-            task.text = NSLocalizedString("Tap here to edit this into a bad habit you'd like to quit", comment: "")
-            task.notes = NSLocalizedString("Or delete it by swiping left", comment: "")
+            task.text = L10n.Tasks.Examples.habitText
+            task.notes = L10n.Tasks.Examples.habitNotes
             task.up = false
             task.down = true
             task.type = "habit"

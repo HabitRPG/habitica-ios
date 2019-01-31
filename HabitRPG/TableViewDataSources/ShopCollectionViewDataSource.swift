@@ -205,7 +205,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
             headerView.gearCategoryButton.isHidden = true
             headerView.otherClassDisclaimer.isHidden = true
             if indexPath.section == 0 && needsGearSection {
-                headerView.titleLabel.text = NSLocalizedString("Class Equipment", comment: "")
+                headerView.titleLabel.text = L10n.Equipment.classEquipment
                 headerView.gearCategoryLabel.text = selectedGearCategory?.capitalized
                 headerView.gearCategoryButton.isHidden = false
                 headerView.onGearCategoryLabelTapped = {[weak self] in

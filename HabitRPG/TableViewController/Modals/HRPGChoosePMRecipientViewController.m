@@ -24,7 +24,7 @@
     [super viewDidLoad];
     
     XLFormDescriptor *formDescriptor =
-    [XLFormDescriptor formDescriptorWithTitle:NSLocalizedString(@"Recipient", nil)];
+    [XLFormDescriptor formDescriptorWithTitle:objcL10n.recipient];
     formDescriptor.assignFirstResponderOnShow = YES;
     
     self.form = formDescriptor;
@@ -35,7 +35,7 @@
     self.usernameFormRow = [XLFormRowDescriptor
            formRowDescriptorWithTag:@"username"
            rowType:XLFormRowDescriptorTypeText];
-    self.usernameFormRow.title = NSLocalizedString(@"Username", nil);
+    self.usernameFormRow.title = objcL10n.username;
     [self.usernameFormRow.cellConfig setObject:[UIColor purple400] forKey:@"self.tintColor"];
     [section addFormRow:self.usernameFormRow];
     [formDescriptor addFormSection:section];
@@ -45,7 +45,7 @@
     if ([identifier isEqualToString:@"SelectedRecipientSegue"]) {
         id username = self.formValues[@"username"];
         if (username == [NSNull null]) {
-            HabiticaAlertController *alertController = [HabiticaAlertController genericErrorWithMessage:NSLocalizedString(@"You have to specify a valid Habitica Username as recipient.", nil) title:NSLocalizedString(@"Invalid Habitica Username", nil)];
+            HabiticaAlertController *alertController = [HabiticaAlertController genericErrorWithMessage:objcL10n.invalidRecipientMessage title:objcL10n.invalidRecipientTitle];
             [alertController show];
             return NO;
         }

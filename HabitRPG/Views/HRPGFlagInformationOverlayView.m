@@ -8,6 +8,7 @@
 
 #import "HRPGFlagInformationOverlayView.h"
 #import "KLCPopup.h"
+#import "Habitica-Swift.h"
 
 static inline UIImage *MTDContextCreateRoundedMask(CGRect rect, CGFloat radius_tl,
                                                    CGFloat radius_tr, CGFloat radius_bl,
@@ -67,8 +68,7 @@ static inline UIImage *MTDContextCreateRoundedMask(CGRect rect, CGFloat radius_t
 @implementation HRPGFlagInformationOverlayView
 
 - (void)setUsername:(NSString *)username {
-    NSString *titleString =
-        [NSString stringWithFormat:NSLocalizedString(@"Report %@ for violation?", nil), username];
+    NSString *titleString = [objcL10n reportXViolationWithUsername: username];
     NSMutableAttributedString *title =
         [[NSMutableAttributedString alloc] initWithString:titleString];
     NSRegularExpression *regex = [NSRegularExpression

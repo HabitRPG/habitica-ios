@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -37,7 +36,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="NPK-t4-F2f" customClass="RoundedView" customModule="Habitica" customModuleProvider="target">
-                    <rect key="frame" x="19.5" y="553" width="336.5" height="54"/>
+                    <rect key="frame" x="144.5" y="553" width="86" height="54"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GNY-gD-41u">
                             <rect key="frame" x="0.0" y="4" width="46" height="46"/>
@@ -53,10 +52,10 @@
                             </userDefinedRuntimeAttributes>
                         </imageView>
                         <view contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="999" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="999" translatesAutoresizingMaskIntoConstraints="NO" id="pe6-F8-HOG">
-                            <rect key="frame" x="58" y="0.0" width="250.5" height="54"/>
+                            <rect key="frame" x="58" y="0.0" width="0.0" height="54"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="999" verticalHuggingPriority="999" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="999" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lD7-0L-PQG">
-                                    <rect key="frame" x="0.0" y="54" width="250.5" height="0.0"/>
+                                    <rect key="frame" x="0.0" y="54" width="0.0" height="0.0"/>
                                     <constraints>
                                         <constraint firstAttribute="width" priority="500" constant="20" id="LC1-6E-baL"/>
                                         <constraint firstAttribute="height" priority="500" constant="21" id="NbH-zu-twc"/>
@@ -65,8 +64,8 @@
                                     <color key="textColor" red="1" green="1" blue="1" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="999" verticalHuggingPriority="998" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="999" text="Bla bla Bla123 asdf qwer qwerqwe rdvqwer sdfqwer sdvqwer sadvqwer sdfqwer asdfqwer sadvqwer asdvqwer sdfqwer sadv" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jcS-mO-KCf">
-                                    <rect key="frame" x="0.0" y="0.0" width="250.5" height="54"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="999" verticalHuggingPriority="998" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="999" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jcS-mO-KCf">
+                                    <rect key="frame" x="0.0" y="0.0" width="0.0" height="54"/>
                                     <constraints>
                                         <constraint firstAttribute="height" priority="500" constant="21" id="978-zt-2L9"/>
                                         <constraint firstAttribute="width" priority="500" constant="20" id="kEE-Hy-frs"/>
@@ -90,7 +89,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" horizontalHuggingPriority="998" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="998" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="68M-1i-eli">
-                            <rect key="frame" x="320.5" y="0.0" width="16" height="54"/>
+                            <rect key="frame" x="70" y="0.0" width="16" height="54"/>
                             <subviews>
                                 <view contentMode="scaleToFill" horizontalHuggingPriority="998" verticalHuggingPriority="998" horizontalCompressionResistancePriority="998" verticalCompressionResistancePriority="998" translatesAutoresizingMaskIntoConstraints="NO" id="sNP-7x-25G" customClass="IconLabel" customModule="Habitica" customModuleProvider="target">
                                     <rect key="frame" x="8" y="0.0" width="0.0" height="54"/>
@@ -110,7 +109,7 @@
                             </constraints>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="XKx-yH-QI0">
-                            <rect key="frame" x="54" y="4" width="259" height="46"/>
+                            <rect key="frame" x="54" y="4" width="8" height="46"/>
                             <constraints>
                                 <constraint firstAttribute="height" priority="500" constant="20" id="mb3-Y7-V0u"/>
                                 <constraint firstAttribute="width" priority="500" constant="20" id="rOZ-AB-geC"/>

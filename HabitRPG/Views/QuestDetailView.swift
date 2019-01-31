@@ -47,17 +47,17 @@ class QuestDetailView: UIView {
     
     func configure(quest: QuestProtocol) {
         if quest.boss?.health ?? 0 > 0 {
-            questTypeLabel.text = NSLocalizedString("Boss Quest", comment: "")
+            questTypeLabel.text = L10n.Quests.bossBattle
         } else {
-            questTypeLabel.text = NSLocalizedString("Collection Quest", comment: "")
+            questTypeLabel.text = L10n.Quests.collectionQuest
         }
         questGoalView.configure(quest: quest)
         
         if let experience = quest.drop?.experience, experience > 0 {
-            rewardsStackView.addArrangedSubview(makeRewardView(title: NSLocalizedString("\(experience) Experience Points", comment: ""), image: HabiticaIcons.imageOfExperienceReward))
+            rewardsStackView.addArrangedSubview(makeRewardView(title: L10n.Quests.rewardExperience(experience), image: HabiticaIcons.imageOfExperienceReward))
         }
         if let gold = quest.drop?.gold, gold > 0 {
-            rewardsStackView.addArrangedSubview(makeRewardView(title: NSLocalizedString("\(gold) Gold", comment: ""), image: HabiticaIcons.imageOfGoldReward))
+            rewardsStackView.addArrangedSubview(makeRewardView(title: L10n.Quests.rewardGold(gold), image: HabiticaIcons.imageOfGoldReward))
         }
         
         var hasOwnerRewards = false

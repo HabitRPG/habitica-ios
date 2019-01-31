@@ -157,7 +157,7 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
         }
         cell.configure(task: task)
         cell.syncErrorTouched = {[weak self] in
-            let alertController = HabiticaAlertController(title: L10n.syncError, message: L10n.syncErrorMessage)
+            let alertController = HabiticaAlertController(title: L10n.Errors.sync, message: L10n.Errors.syncMessage)
             alertController.addAction(title: L10n.resyncTask, style: .default, isMainAction: false, handler: {[weak self] (_) in
                 self?.repository.syncTask(task).observeCompleted {}
             })
