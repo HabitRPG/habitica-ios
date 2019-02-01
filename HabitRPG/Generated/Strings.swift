@@ -7,6 +7,8 @@ import Foundation
 
 // swiftlint:disable explicit_type_interface identifier_name line_length nesting type_body_length type_name
 public enum L10n {
+  /// Abort
+  public static let abort = L10n.tr("Mainstrings", "abort")
   /// About
   public static let aboutText = L10n.tr("Mainstrings", "aboutText")
   /// Accept
@@ -55,6 +57,10 @@ public enum L10n {
   public static let chat = L10n.tr("Mainstrings", "chat")
   /// Check off any Dailies you did yesterday:
   public static let checkinYesterdaysDalies = L10n.tr("Mainstrings", "checkin_yesterdays_dalies")
+  /// Choose Task
+  public static let chooseTask = L10n.tr("Mainstrings", "choose_task")
+  /// Clear
+  public static let clear = L10n.tr("Mainstrings", "clear")
   /// Close
   public static let close = L10n.tr("Mainstrings", "close")
   /// Collect
@@ -125,20 +131,28 @@ public enum L10n {
   public static let experience = L10n.tr("Mainstrings", "experience")
   /// Filter
   public static let filter = L10n.tr("Mainstrings", "filter")
+  /// Filter by Tags
+  public static let filterByTags = L10n.tr("Mainstrings", "filter_by_tags")
   /// Finish
   public static let finish = L10n.tr("Mainstrings", "finish")
   /// Flower
   public static let flower = L10n.tr("Mainstrings", "flower")
   /// Food
   public static let food = L10n.tr("Mainstrings", "food")
+  /// Force Start
+  public static let forceStart = L10n.tr("Mainstrings", "force_start")
   /// Friday
   public static let friday = L10n.tr("Mainstrings", "friday")
+  /// Gems allow you to buy fun extras for your account, including:
+  public static let gemBenefitsTitle = L10n.tr("Mainstrings", "gem_benefits_title")
   /// %d Gem cap
   public static func gemCap(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "gem_cap", p1)
   }
   /// Gems
   public static let gems = L10n.tr("Mainstrings", "gems")
+  /// Buying gems supports the developers\nand helps keep Habitica running
+  public static let gemsSupportDevelopers = L10n.tr("Mainstrings", "gems_support_developers")
   /// You sent %@ a %@-month Habitica subscription.
   public static func giftConfirmationBody(_ p1: String, _ p2: String) -> String {
     return L10n.tr("Mainstrings", "gift_confirmation_body", p1, p2)
@@ -149,6 +163,10 @@ public enum L10n {
   }
   /// Your gift was sent!
   public static let giftConfirmationTitle = L10n.tr("Mainstrings", "gift_confirmation_title")
+  /// While this promotion is active, you’ll receive a matching subscription automatically after sending your gift.
+  public static let giftOneGetOneDescription = L10n.tr("Mainstrings", "gift_one_get_one_description")
+  /// Gift one, Get one!
+  public static let giftOneGetOneTitle = L10n.tr("Mainstrings", "gift_one_get_one_title")
   /// Enter recipient's @ username
   public static let giftRecipientSubtitle = L10n.tr("Mainstrings", "gift_recipient_subtitle")
   /// Who would you like to gift to?
@@ -185,6 +203,8 @@ public enum L10n {
   public static let invalidRecipientMessage = L10n.tr("Mainstrings", "invalid_recipient_message")
   /// Invalid Habitica Username
   public static let invalidRecipientTitle = L10n.tr("Mainstrings", "invalid_recipient_title")
+  /// Invitations
+  public static let invitations = L10n.tr("Mainstrings", "invitations")
   /// Invite Party
   public static let inviteParty = L10n.tr("Mainstrings", "invite_party")
   /// Join
@@ -235,6 +255,8 @@ public enum L10n {
   public static let monday = L10n.tr("Mainstrings", "monday")
   /// Monthly
   public static let monthly = L10n.tr("Mainstrings", "monthly")
+  /// Monthly Gem Cap Reached
+  public static let monthlyGemCapReached = L10n.tr("Mainstrings", "monthly_gem_cap_reached")
   /// months
   public static let months = L10n.tr("Mainstrings", "months")
   /// Mounts
@@ -263,6 +285,12 @@ public enum L10n {
   public static let noCamera = L10n.tr("Mainstrings", "no_camera")
   /// no days
   public static let noDays = L10n.tr("Mainstrings", "no_days")
+  /// Not enough Gems
+  public static let notEnoughGems = L10n.tr("Mainstrings", "not_enough_gems")
+  /// Not enough Gold
+  public static let notEnoughGold = L10n.tr("Mainstrings", "not_enough_gold")
+  /// Not enough Hourglasses
+  public static let notEnoughHourglasses = L10n.tr("Mainstrings", "not_enough_hourglasses")
   /// Not getting the right drops? Check out the Market to buy just the things you need!
   public static let notGettingDrops = L10n.tr("Mainstrings", "not_getting_drops")
   /// Notes
@@ -303,6 +331,8 @@ public enum L10n {
   public static func purchaseForGems(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "purchase_for_gems", p1)
   }
+  /// Purchase Gems
+  public static let purchaseGems = L10n.tr("Mainstrings", "purchase_gems")
   /// The scanned QR-Code did not contain a valid Habitica User ID.
   public static let qrInvalidIdMessage = L10n.tr("Mainstrings", "qr_invalid_id_message")
   /// Invalid Habitica User ID
@@ -359,6 +389,8 @@ public enum L10n {
   }
   /// Send
   public static let send = L10n.tr("Mainstrings", "send")
+  /// Send Gift
+  public static let sendGift = L10n.tr("Mainstrings", "send_gift")
   /// Share
   public static let share = L10n.tr("Mainstrings", "share")
   /// Shirt
@@ -381,8 +413,18 @@ public enum L10n {
   public static let streakAchievementTitle = L10n.tr("Mainstrings", "streak_achievement_title")
   /// Strong
   public static let strong = L10n.tr("Mainstrings", "strong")
+  /// Subscribe
+  public static let subscribe = L10n.tr("Mainstrings", "subscribe")
+  /// Subscribe for Hourglasses
+  public static let subscribeForHourglasses = L10n.tr("Mainstrings", "subscribe_for_hourglasses")
   /// Subscription
   public static let subscription = L10n.tr("Mainstrings", "subscription")
+  /// Become a subscriber and you’ll get these useful benefits:
+  public static let subscriptionBenefitsTitle = L10n.tr("Mainstrings", "subscription_benefits_title")
+  /// Gift a Subscription
+  public static let subscriptionGiftButton = L10n.tr("Mainstrings", "subscription_gift_button")
+  /// Want to give the benefits of a subscription to someone else?
+  public static let subscriptionGiftExplanation = L10n.tr("Mainstrings", "subscription_gift_explanation")
   /// Alexander the Merchant will sell you Gems at a cost of 20 gold per gem. His monthly shipments are initially capped at 25 Gems per month, but this cap increases by 5 Gems for every three months of consecutive subscription, up to a maximum of 50 Gems per month!
   public static let subscriptionInfo1Description = L10n.tr("Mainstrings", "subscription_info_1_description")
   /// Buy gems with gold
@@ -399,6 +441,8 @@ public enum L10n {
   public static let subscriptionInfo4Description = L10n.tr("Mainstrings", "subscription_info_4_description")
   /// Daily drop-caps doubled
   public static let subscriptionInfo4Title = L10n.tr("Mainstrings", "subscription_info_4_title")
+  /// Subscribing supports the developers\nand helps keep Habitica running
+  public static let subscriptionSupportDevelopers = L10n.tr("Mainstrings", "subscription_support_developers")
   /// success
   public static let success = L10n.tr("Mainstrings", "success")
   /// Summary
@@ -407,6 +451,8 @@ public enum L10n {
   public static let sunday = L10n.tr("Mainstrings", "sunday")
   /// Tags
   public static let tags = L10n.tr("Mainstrings", "tags")
+  /// Take me back
+  public static let takeMeBack = L10n.tr("Mainstrings", "take_me_back")
   /// Tap to Show
   public static let tapToShow = L10n.tr("Mainstrings", "tap_to_show")
   /// Welcome to the Inn! Pull up a chair to chat, or take a break from your tasks.
@@ -437,6 +483,8 @@ public enum L10n {
   public static let unsubscribeItunes = L10n.tr("Mainstrings", "unsubscribe_itunes")
   /// No longer want to subscribe? Due to your payment method, you can only unsubscribe through the website.
   public static let unsubscribeWebsite = L10n.tr("Mainstrings", "unsubscribe_website")
+  /// Use
+  public static let use = L10n.tr("Mainstrings", "use")
   /// User ID
   public static let userID = L10n.tr("Mainstrings", "userID")
   /// Username
@@ -491,6 +539,8 @@ public enum L10n {
   public static let yearly = L10n.tr("Mainstrings", "yearly")
   /// years
   public static let years = L10n.tr("Mainstrings", "years")
+  /// Your balance:
+  public static let yourBalance = L10n.tr("Mainstrings", "your_balance")
 
   public enum NPCs {
     /// Alex the Merchant
@@ -723,8 +773,12 @@ public enum L10n {
     public static func guildInvitationNoInvitername(_ p1: String) -> String {
       return L10n.tr("Mainstrings", "groups.guild_invitation_no_invitername", p1)
     }
+    /// Invite a Member
+    public static let inviteMember = L10n.tr("Mainstrings", "groups.invite_member")
     /// Only leader can create Challenges
     public static let leaderChallenges = L10n.tr("Mainstrings", "groups.leader_challenges")
+    /// Members
+    public static let members = L10n.tr("Mainstrings", "groups.members")
 
     public enum Invite {
       /// Add an Email
@@ -739,6 +793,20 @@ public enum L10n {
   }
 
   public enum Guilds {
+    /// Guild Bank
+    public static let guildBank = L10n.tr("Mainstrings", "guilds.guild_bank")
+    /// Guild Challenges
+    public static let guildChallenges = L10n.tr("Mainstrings", "guilds.guild_challenges")
+    /// Guild Description
+    public static let guildDescription = L10n.tr("Mainstrings", "guilds.guild_description")
+    /// Guild Leader
+    public static let guildLeader = L10n.tr("Mainstrings", "guilds.guild_leader")
+    /// Guild Members
+    public static let guildMembers = L10n.tr("Mainstrings", "guilds.guild_members")
+    /// Invite to Guild
+    public static let inviteToGuild = L10n.tr("Mainstrings", "guilds.invite_to_guild")
+    /// Join Guilds
+    public static let joinGuild = L10n.tr("Mainstrings", "guilds.join_guild")
     /// Keep challenges
     public static let keepChallenges = L10n.tr("Mainstrings", "guilds.keep_challenges")
     /// Leave Challenges
@@ -877,6 +945,12 @@ public enum L10n {
   }
 
   public enum Party {
+    /// Create a new Party
+    public static let createPartyButton = L10n.tr("Mainstrings", "party.create_party_button")
+    /// Take on quests with friends or on your own. Battle monsters, create Challenges, and help yourself stay accountable through Parties. 
+    public static let createPartyDescription = L10n.tr("Mainstrings", "party.create_party_description")
+    /// Play Habitica in a Party
+    public static let createPartyTitle = L10n.tr("Mainstrings", "party.create_party_title")
     /// %@ invited you to join their party
     public static func invitationInvitername(_ p1: String) -> String {
       return L10n.tr("Mainstrings", "party.invitation_invitername", p1)
@@ -889,6 +963,12 @@ public enum L10n {
     }
     /// Give a Party member the username found below and they can send you an invite
     public static let joinPartyDescription = L10n.tr("Mainstrings", "party.join_party_description")
+    /// Want to join a party?
+    public static let joinPartyTitle = L10n.tr("Mainstrings", "party.join_party_title")
+    /// Party Challenges
+    public static let partyChallenges = L10n.tr("Mainstrings", "party.party_challenges")
+    /// Party Description
+    public static let partyDescription = L10n.tr("Mainstrings", "party.party_description")
     /// %d/%d Members responded
     public static func questNumberResponded(_ p1: Int, _ p2: Int) -> String {
       return L10n.tr("Mainstrings", "party.quest_number_responded", p1, p2)
@@ -897,6 +977,8 @@ public enum L10n {
     public static func questParticipantCount(_ p1: Int) -> String {
       return L10n.tr("Mainstrings", "party.quest_participant_count", p1)
     }
+    /// Start a Quest
+    public static let startQuest = L10n.tr("Mainstrings", "party.start_quest")
   }
 
   public enum Quests {
@@ -1047,6 +1129,13 @@ public enum L10n {
     public static let usernameNotConfirmed = L10n.tr("Mainstrings", "settings.username_not_confirmed")
     /// Incorrect Password
     public static let wrongPassword = L10n.tr("Mainstrings", "settings.wrong_password")
+  }
+
+  public enum Shops {
+    /// You can only purchase gear for your current class
+    public static let otherClassDisclaimer = L10n.tr("Mainstrings", "shops.other_class_disclaimer")
+    /// You already have all your class equipment! More will be released during the Grand Galas, near the solstices and equinoxes.
+    public static let purchasedAllGear = L10n.tr("Mainstrings", "shops.purchased_all_gear")
   }
 
   public enum Skills {
@@ -1462,20 +1551,28 @@ public enum L10n {
     public static let avatar = L10n.tr("Mainstrings", "titles.avatar")
     /// Challenges
     public static let challenges = L10n.tr("Mainstrings", "titles.challenges")
+    /// Choose Recipient
+    public static let chooseRecipient = L10n.tr("Mainstrings", "titles.choose_recipient")
     /// Choose User
     public static let chooseUser = L10n.tr("Mainstrings", "titles.choose_user")
     /// Equipment
     public static let equipment = L10n.tr("Mainstrings", "titles.equipment")
     /// FAQ
     public static let faq = L10n.tr("Mainstrings", "titles.faq")
+    /// Feed Pet
+    public static let feedPet = L10n.tr("Mainstrings", "titles.feed_pet")
     /// Fix Values
     public static let fixValues = L10n.tr("Mainstrings", "titles.fix_values")
     /// Gift Subscription
     public static let giftSubscription = L10n.tr("Mainstrings", "titles.gift_subscription")
+    /// Guidelines
+    public static let guidelines = L10n.tr("Mainstrings", "titles.guidelines")
     /// Guild
     public static let guild = L10n.tr("Mainstrings", "titles.guild")
     /// Guilds
     public static let guilds = L10n.tr("Mainstrings", "titles.guilds")
+    /// Invite Members
+    public static let inviteMembers = L10n.tr("Mainstrings", "titles.invite_members")
     /// Items
     public static let items = L10n.tr("Mainstrings", "titles.items")
     /// Mounts
@@ -1496,6 +1593,8 @@ public enum L10n {
     public static let shops = L10n.tr("Mainstrings", "titles.shops")
     /// Skills
     public static let skills = L10n.tr("Mainstrings", "titles.skills")
+    /// Spells
+    public static let spells = L10n.tr("Mainstrings", "titles.spells")
     /// Stable
     public static let stable = L10n.tr("Mainstrings", "titles.stable")
     /// Stats
@@ -1576,6 +1675,8 @@ public enum L10n {
     public static func title(_ p1: String) -> String {
       return L10n.tr("Mainstrings", "world_boss.title", p1)
     }
+    /// World Boss
+    public static let worldBoss = L10n.tr("Mainstrings", "world_boss.world_boss")
   }
 }
 // swiftlint:enable explicit_type_interface identifier_name line_length nesting type_body_length type_name

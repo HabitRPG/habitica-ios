@@ -23,6 +23,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.navigationItem.title = objcL10n.titleChooseRecipient;
+    
     XLFormDescriptor *formDescriptor =
     [XLFormDescriptor formDescriptorWithTitle:objcL10n.recipient];
     formDescriptor.assignFirstResponderOnShow = YES;

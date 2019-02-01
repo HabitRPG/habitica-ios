@@ -27,7 +27,7 @@ class GemViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         let nib = UINib.init(nibName: "GemPurchaseView", bundle: nil)
         self.collectionView?.register(nib, forCellWithReuseIdentifier: "Cell")
         
@@ -140,6 +140,9 @@ class GemViewController: UICollectionViewController {
         if kind == UICollectionView.elementKindSectionHeader {
             if let imageView = view.viewWithTag(1) as? UIImageView {
                 imageView.image = HabiticaIcons.imageOfHeartLarge
+            }
+            if let label = view.viewWithTag(2) as? UILabel {
+                label.text = L10n.gemsSupportDevelopers
             }
         }
         

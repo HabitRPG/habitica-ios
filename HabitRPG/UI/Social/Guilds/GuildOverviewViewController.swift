@@ -31,6 +31,8 @@ class GuildOverviewViewController: HRPGBaseViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.title = L10n.Titles.guilds
+        
         self.segmentedFilterControl.selectedSegmentIndex = 0
         self.segmentedFilterControl.addTarget(self, action: #selector(switchFilter), for: .valueChanged)
         segmentedWrapper.addSubview(self.segmentedFilterControl)

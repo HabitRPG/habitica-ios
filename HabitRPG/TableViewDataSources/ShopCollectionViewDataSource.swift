@@ -212,6 +212,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
                     self?.delegate?.showGearSelection()
                 }
                  headerView.otherClassDisclaimer.isHidden = userClass == selectedGearCategory
+                headerView.otherClassDisclaimer.text = L10n.Shops.otherClassDisclaimer
             } else {
                 headerView.titleLabel.text = titleFor(section: indexPath.section)
             }
@@ -253,7 +254,9 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
             return cell
         } else if indexPath.section == 0 && needsGearSection {
             if !hasGearSection() {
-                return collectionView.dequeueReusableCell(withReuseIdentifier: "EmptyGearCell", for: indexPath)
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmptyGearCell", for: indexPath)
+                (cell.viewWithTag(1) as? UILabel)?.text = L10n.Shops.purchasedAllGear
+                return cell
             }
         }
         return collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath)

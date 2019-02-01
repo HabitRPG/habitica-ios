@@ -81,6 +81,11 @@ class TavernDetailViewController: GroupDetailViewController {
         }).start())
     }
     
+    override func populateText() {
+        worldBossTitleView.text = L10n.WorldBoss.worldBoss
+        
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         

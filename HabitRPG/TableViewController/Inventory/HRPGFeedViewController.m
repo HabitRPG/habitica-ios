@@ -22,6 +22,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.navigationItem.title = objcL10n.titleFeedPet;
+    
     [self setupTableView];
 }
 

@@ -20,6 +20,8 @@ class GiftSubscriptionViewController: HRPGBaseViewController {
     @IBOutlet weak var displayNameLabel: UsernameLabel!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var explanationTitle: UILabel!
+    @IBOutlet weak var giftOneGetOneTitleLabel: UILabel!
+    @IBOutlet weak var giftOneGetOneDescriptionLabel: UILabel!
     
     private let socialRepository = SocialRepository()
     private let configRepository = ConfigRepository()
@@ -168,6 +170,7 @@ class GiftSubscriptionViewController: HRPGBaseViewController {
             returnedCell = cell
         } else if indexPath.section == tableView.numberOfSections-1 {
             returnedCell = tableView.dequeueReusableCell(withIdentifier: "SubscribeButtonCell", for: indexPath)
+            (returnedCell?.viewWithTag(1) as? UIButton)?.setTitle(L10n.sendGift, for: .normal)
         }
         returnedCell?.selectionStyle = .none
         return returnedCell ?? UITableViewCell()

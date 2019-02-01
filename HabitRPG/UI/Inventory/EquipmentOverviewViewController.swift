@@ -18,6 +18,7 @@ class EquipmentOverviewViewController: HRPGUIViewController, UIScrollViewDelegat
     
     private let userRepository = UserRepository()
     private let disposable = ScopedDisposable(CompositeDisposable())
+    @IBOutlet weak var costumeExplanationLabel: UILabel!
     
     private var selectedCostume = false
     private var selectedType = ""
@@ -70,6 +71,7 @@ class EquipmentOverviewViewController: HRPGUIViewController, UIScrollViewDelegat
     
     override func populateText() {
         navigationItem.title = L10n.Titles.equipment
+        costumeExplanationLabel.text = L10n.Equipment.costumeExplanation
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

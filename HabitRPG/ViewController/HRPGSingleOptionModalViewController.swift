@@ -20,6 +20,11 @@ class HRPGSingleOptionModalViewController: UIViewController {
         view.addGestureRecognizer(tap)
 
         styleViews()
+        populateText()
+    }
+    
+    func populateText() {
+        
     }
     
     func styleViews() {

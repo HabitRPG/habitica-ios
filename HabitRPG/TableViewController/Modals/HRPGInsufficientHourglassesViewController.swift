@@ -19,7 +19,11 @@ class HRPGInsufficientHourglassesViewController: HRPGSingleOptionModalViewContro
         backgroundModalView.sendSubviewToBack(backgroundModalView.shopModalBgView)
         
         infoView.image = HabiticaIcons.imageOfHourglassShop
-        
+    }
+    
+    override func populateText() {
+        titleLabel.text = L10n.notEnoughHourglasses
+        actionButton?.setTitle(L10n.subscribeForHourglasses, for: .normal)
     }
     
     @IBAction func subscribePressed() {

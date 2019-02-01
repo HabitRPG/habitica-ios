@@ -18,6 +18,11 @@ class HRPGInsufficientGemsViewController: HRPGSingleOptionModalViewController {
         backgroundModalView.sendSubviewToBack(backgroundModalView.shopModalBgView)
     }
     
+    override func populateText() {
+        titleLabel.text = L10n.notEnoughGems
+        actionButton?.setTitle(L10n.purchaseGems, for: .normal)
+    }
+    
     @IBAction func actionButtonPressed() {
         dismiss(animated: true, completion: nil)
         if let parentViewController = self.presentingViewController {

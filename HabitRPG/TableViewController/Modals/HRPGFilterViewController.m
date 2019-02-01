@@ -29,6 +29,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.navigationItem.title = objcL10n.filterByTags;
+    self.clearButton.title = objcL10n.clear;
+    
     self.dataSource = [FilterTableViewDataSourceInstantiator instantiate];
     self.dataSource.tableView = self.tableView;
     self.dataSource.selectedTagIds = self.selectedTags;

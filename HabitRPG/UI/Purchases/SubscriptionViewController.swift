@@ -23,6 +23,11 @@ class SubscriptionViewController: HRPGBaseViewController {
     private let userRepository = UserRepository()
     private let disposable = ScopedDisposable(CompositeDisposable())
     
+    @IBOutlet weak var subscriptionBenefitsTitleLabel: UILabel!
+    @IBOutlet weak var giftSubscriptionExplanationLabel: UILabel!
+    @IBOutlet weak var giftSubscriptionButton: UIButton!
+    @IBOutlet weak var subscriptionSupportLabel: UILabel!
+    
     var products: [SKProduct]?
     var selectedSubscriptionPlan: SKProduct?
     var user: UserProtocol? {
@@ -61,7 +66,7 @@ class SubscriptionViewController: HRPGBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         if let termsView = self.tableView.tableFooterView?.viewWithTag(2) as? UITextView {
             let termsAttributedText = NSMutableAttributedString(string: "Once we've confirmed your purchase, the payment will be charged to your iTunes Account! Thank you so much for your support.\n\nPlease note that subscriptions automatically renew unless your auto-renew is turned off at least 24-hours before the end of the current period, which you can do by going to your Account Settings page after you've made your purchase. You can also manage subscriptions from the Account Settings page. If you have an active subscription, your account will be charged for renewal within 24-hours prior to the end of your current subscription period. When your subscription renews, you will be charged the same price that you initially paid. If you have any questions, feel free to ask in the Habitica Help Guild\nBy continuing you accept the Terms of Use and Privacy Policy")
             termsAttributedText.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.gray50(), range: NSRange(location: 0, length: termsAttributedText.length))
@@ -88,6 +93,13 @@ class SubscriptionViewController: HRPGBaseViewController {
         disposable.inner.add(userRepository.getUser().on(value: {[weak self]user in
             self?.user = user
         }).start())
+    }
+    
+    override func populateText() {
+        subscriptionBenefitsTitleLabel.text = L10n.subscriptionBenefitsTitle
+        giftSubscriptionExplanationLabel.text = L10n.subscriptionGiftExplanation
+        giftSubscriptionButton.setTitle(L10n.subscriptionBenefitsTitle, for: .normal)
+        subscriptionSupportLabel.text = L10n.subscriptionSupportDevelopers
     }
 
     func retrieveProductList() {
@@ -270,6 +282,7 @@ class SubscriptionViewController: HRPGBaseViewController {
             returnedCell = cell
         } else if indexPath.section == tableView.numberOfSections-1 {
             returnedCell = tableView.dequeueReusableCell(withIdentifier: "SubscribeButtonCell", for: indexPath)
+            (returnedCell?.viewWithTag(1) as? UIButton)?.setTitle(L10n.subscribe, for: .normal)
         }
         returnedCell?.selectionStyle = .none
         return returnedCell ?? UITableViewCell()

@@ -24,7 +24,17 @@ public class objcL10n: NSObject {
     @objc public static let openAppStore = L10n.openAppStore
     @objc static let writeAMessage = L10n.writeAMessage
     @objc static let writeMessage = L10n.writeMessage
-    
+    @objc static let chooseTask = L10n.chooseTask
+    @objc static let habits = L10n.Tasks.habits
+    @objc static let dailies = L10n.Tasks.dailies
+    @objc static let todos = L10n.Tasks.todos
+    @objc static let filterByTags = L10n.filterByTags
+    @objc static let clear = L10n.clear
+    @objc static let titleFeedPet = L10n.Titles.feedPet
+    @objc static let titleShops = L10n.Titles.shops
+    @objc static let titleSpells = L10n.Titles.spells
+    @objc static let titleChooseRecipient = L10n.Titles.chooseRecipient
+
     @objc public static let all = L10n.all
     @objc public static let weak = L10n.weak
     @objc public static let strong = L10n.strong

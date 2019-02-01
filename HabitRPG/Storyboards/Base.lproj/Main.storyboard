@@ -1027,7 +1027,7 @@
             </objects>
             <point key="canvasLocation" x="3844" y="3103"/>
         </scene>
-        <!--Feed Pet-->
+        <!--Feed View Controller-->
         <scene sceneID="QbV-9U-Vv1">
             <objects>
                 <tableViewController id="cVq-Fh-1Yu" customClass="HRPGFeedViewController" sceneMemberID="viewController">
@@ -1088,7 +1088,7 @@
                             <outlet property="delegate" destination="cVq-Fh-1Yu" id="WEX-Bo-QYt"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Feed Pet" id="xZ9-Ng-9se">
+                    <navigationItem key="navigationItem" id="xZ9-Ng-9se">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="8Rh-92-RAO">
                             <connections>
                                 <segue destination="neK-n6-0WI" kind="unwind" unwindAction="unwindToList:" id="k3r-Fp-PmN"/>
@@ -1258,7 +1258,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tmi-8L-gp6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4348" y="4052.0239880059971"/>
+            <point key="canvasLocation" x="3958" y="3762"/>
         </scene>
         <!--Gem Header Navigation Controller-->
         <scene sceneID="xVP-nc-WPW">
@@ -1295,10 +1295,8 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="148"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="421-JA-vci">
+                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="421-JA-vci">
                                     <rect key="frame" x="8" y="52" width="359" height="88"/>
-                                    <string key="text">Buying gems supports the developers 
-and helps keep Habitica running</string>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" red="0.16078431904315948" green="0.58431375026702881" blue="0.80392158031463623" alpha="1" colorSpace="deviceRGB"/>
                                     <nil key="highlightedColor"/>
@@ -1324,13 +1322,11 @@ and helps keep Habitica running</string>
                             <rect key="frame" x="0.0" y="148" width="375" height="173"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xhA-8b-NmG">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Gems allow you to buy fun extras for your account, including:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xhA-8b-NmG">
                                     <rect key="frame" x="8" y="36" width="359" height="41"/>
                                     <constraints>
                                         <constraint firstAttribute="height" priority="500" constant="21" id="Myz-28-LqS"/>
                                     </constraints>
-                                    <string key="text">Gems allow you to buy fun extras for 
-your account, including:</string>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                     <color key="textColor" red="0.20000000000000001" green="0.086274509799999996" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
@@ -1526,7 +1522,7 @@ your account, including:</string>
                             <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Become a subscriber and you’ll get these useful benefits:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lb7-8k-2uz">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lb7-8k-2uz">
                                     <rect key="frame" x="16" y="0.0" width="343" height="75"/>
                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                     <color key="textColor" red="0.42476743459701538" green="0.22142499685287476" blue="0.73873388767242432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1546,7 +1542,7 @@ your account, including:</string>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qWw-qV-Dif">
-                                    <rect key="frame" x="8" y="122.5" width="359" height="36"/>
+                                    <rect key="frame" x="8" y="91" width="359" height="36"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="36" id="WMy-Bc-rwq"/>
                                     </constraints>
@@ -1562,7 +1558,7 @@ your account, including:</string>
                                     </connections>
                                 </button>
                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" scrollEnabled="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2lA-HR-ThY">
-                                    <rect key="frame" x="8" y="77.5" width="359" height="37"/>
+                                    <rect key="frame" x="8" y="46" width="359" height="37"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" priority="500" constant="28" id="Nvl-9T-i7B"/>
@@ -1572,16 +1568,14 @@ your account, including:</string>
                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     <dataDetectorType key="dataDetectorTypes" link="YES"/>
                                 </textView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V5k-go-mwg">
-                                    <rect key="frame" x="8" y="166.5" width="359" height="31.5"/>
-                                    <string key="text">Subscribing supports the developers 
-and helps keep Habitica running</string>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V5k-go-mwg">
+                                    <rect key="frame" x="8" y="135" width="359" height="0.0"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                     <color key="textColor" red="0.68403255939483643" green="0.66976314783096313" blue="0.7059674859046936" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Want to give the benefits of a subscription to someone else?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f3o-aH-Po4">
-                                    <rect key="frame" x="32" y="4" width="311" height="31.5"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f3o-aH-Po4">
+                                    <rect key="frame" x="32" y="4" width="311" height="0.0"/>
                                     <constraints>
                                         <constraint firstAttribute="height" priority="500" constant="21" id="5pb-O5-r1I"/>
                                     </constraints>
@@ -1590,11 +1584,10 @@ and helps keep Habitica running</string>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CrM-dg-eMS">
-                                    <rect key="frame" x="32" y="35.5" width="311" height="30"/>
+                                    <rect key="frame" x="32" y="4" width="311" height="30"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="30" id="NqX-6e-kQp"/>
                                     </constraints>
-                                    <state key="normal" title="Gift a Subscription"/>
                                     <connections>
                                         <action selector="giftSubscriptionButtonTapped:" destination="32f-nw-z2z" eventType="touchUpInside" id="VQj-Qj-OiF"/>
                                     </connections>
@@ -1631,14 +1624,14 @@ and helps keep Habitica running</string>
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="61"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ubx-Z1-yyq">
+                                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ubx-Z1-yyq">
                                             <rect key="frame" x="16" y="8" width="343" height="36"/>
                                             <color key="backgroundColor" red="0.3803921639919281" green="0.20000000298023224" blue="0.70588237047195435" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="36" id="zIr-J0-Xja"/>
                                             </constraints>
                                             <color key="tintColor" red="0.9686274528503418" green="0.93725490570068359" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <state key="normal" title="Subscribe">
+                                            <state key="normal">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </state>
                                             <userDefinedRuntimeAttributes>
@@ -1672,7 +1665,11 @@ and helps keep Habitica running</string>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="giftSubscriptionButton" destination="CrM-dg-eMS" id="Wvc-9c-dKa"/>
+                        <outlet property="giftSubscriptionExplanationLabel" destination="f3o-aH-Po4" id="jgt-rY-2nB"/>
                         <outlet property="restorePurchaseButton" destination="P89-QO-UcF" id="fMV-BP-fee"/>
+                        <outlet property="subscriptionBenefitsTitleLabel" destination="lb7-8k-2uz" id="H7A-e6-L3x"/>
+                        <outlet property="subscriptionSupportLabel" destination="V5k-go-mwg" id="bcu-hM-Vg3"/>
                         <segue destination="KOH-m5-9hA" kind="show" identifier="openGiftGemDialog" id="ImE-mD-NfV"/>
                     </connections>
                 </tableViewController>
@@ -1801,12 +1798,11 @@ and helps keep Habitica running</string>
                                             <constraint firstAttribute="height" priority="500" constant="317" id="xo7-Md-yDd"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d53-K0-Ybv">
-                                        <rect key="frame" x="16" y="642" width="343" height="62.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d53-K0-Ybv">
+                                        <rect key="frame" x="16" y="642" width="343" height="0.0"/>
                                         <constraints>
                                             <constraint firstAttribute="height" priority="500" constant="21" id="gMU-Ms-hdu"/>
                                         </constraints>
-                                        <string key="text">Select "Use Costume" to equip items to your avatar without affecting the Stats from your Battle Gear! This means that you can dress up your avatar in whatever outfit you like while still having your best Battle Gear equipped.</string>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                         <color key="textColor" red="0.64723795650000004" green="0.63275462390000003" blue="0.67308568950000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1837,6 +1833,7 @@ and helps keep Habitica running</string>
                     </view>
                     <navigationItem key="navigationItem" id="aGP-pV-Lz5"/>
                     <connections>
+                        <outlet property="costumeExplanationLabel" destination="d53-K0-Ybv" id="pN2-vS-RIR"/>
                         <outlet property="costumeView" destination="3uQ-7Q-HJM" id="GaC-re-Yo1"/>
                         <outlet property="gearView" destination="HkH-1H-IQH" id="45F-bN-8Tr"/>
                         <outlet property="scrollView" destination="byv-HU-Kh3" id="j6z-Ce-nNw"/>
@@ -1937,11 +1934,11 @@ and helps keep Habitica running</string>
             </objects>
             <point key="canvasLocation" x="5196" y="2070.3148425787108"/>
         </scene>
-        <!--Choose Task-->
+        <!--Spell Tab Bar Controller-->
         <scene sceneID="oWJ-eh-rJ0">
             <objects>
                 <tabBarController definesPresentationContext="YES" id="tGw-Sj-nll" customClass="HRPGSpellTabBarController" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" title="Choose Task" id="Yuh-D9-NY5">
+                    <navigationItem key="navigationItem" id="Yuh-D9-NY5">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="PBv-iZ-ev0">
                             <connections>
                                 <action selector="cancelAction:" destination="tGw-Sj-nll" id="rxo-kg-FDV"/>
@@ -2045,7 +2042,7 @@ and helps keep Habitica running</string>
             </objects>
             <point key="canvasLocation" x="1926" y="5845"/>
         </scene>
-        <!--To-Dos-->
+        <!--Skills Task Table View Controller-->
         <scene sceneID="WgF-4W-TMv">
             <objects>
                 <tableViewController id="DhB-2l-6nh" customClass="SkillsTaskTableViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
@@ -2084,13 +2081,13 @@ and helps keep Habitica running</string>
                             <outlet property="delegate" destination="DhB-2l-6nh" id="36h-85-9NO"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="To-Dos" image="tabbar_todos" id="TXB-iK-KhP"/>
+                    <tabBarItem key="tabBarItem" image="tabbar_todos" id="TXB-iK-KhP"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YWa-8S-jGa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4558.125" y="5885"/>
+            <point key="canvasLocation" x="3828" y="5862"/>
         </scene>
-        <!--Dailies-->
+        <!--Skills Task Table View Controller-->
         <scene sceneID="ZtU-ke-UJe">
             <objects>
                 <tableViewController id="7lu-pK-DCS" customClass="SkillsTaskTableViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
@@ -2129,13 +2126,13 @@ and helps keep Habitica running</string>
                             <outlet property="delegate" destination="7lu-pK-DCS" id="gFd-Yz-QB9"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Dailies" image="tabbar_dailies" id="Aco-n2-RnG"/>
+                    <tabBarItem key="tabBarItem" image="tabbar_dailies" id="Aco-n2-RnG"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qq3-Vg-EmH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4558.125" y="5170"/>
+            <point key="canvasLocation" x="3828" y="5210"/>
         </scene>
-        <!--Habits-->
+        <!--Skills Task Table View Controller-->
         <scene sceneID="pyJ-pU-Dzp">
             <objects>
                 <tableViewController id="Sir-tg-Qda" customClass="SkillsTaskTableViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
@@ -2174,11 +2171,11 @@ and helps keep Habitica running</string>
                             <outlet property="delegate" destination="Sir-tg-Qda" id="YdM-Xd-OnM"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Habits" image="tabbar_habits" id="CTh-zS-7ZY"/>
+                    <tabBarItem key="tabBarItem" image="tabbar_habits" id="CTh-zS-7ZY"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C3e-cK-1k5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3571.875" y="4457.5"/>
+            <point key="canvasLocation" x="3828" y="4559"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Khf-yu-jYt">
@@ -2196,7 +2193,7 @@ and helps keep Habitica running</string>
             </objects>
             <point key="canvasLocation" x="1796.25" y="4980"/>
         </scene>
-        <!--Filter by tags-->
+        <!--Filter View Controller-->
         <scene sceneID="8q0-MG-Oh7">
             <objects>
                 <tableViewController id="CZc-T4-a1C" customClass="HRPGFilterViewController" sceneMemberID="viewController">
@@ -2296,14 +2293,14 @@ and helps keep Habitica running</string>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="OZY-o0-CAc"/>
-                        <barButtonItem title="Clear" id="hIC-Qf-w8a">
+                        <barButtonItem id="hIC-Qf-w8a">
                             <color key="tintColor" red="0.94815266132354736" green="0.20718780159950256" blue="0.25553801655769348" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="clearTags:" destination="CZc-T4-a1C" id="GA7-07-5qy"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" title="Filter by tags" id="RJ8-HL-bIH">
+                    <navigationItem key="navigationItem" id="RJ8-HL-bIH">
                         <barButtonItem key="leftBarButtonItem" systemItem="done" id="2yR-UY-zxm">
                             <connections>
                                 <segue destination="Rot-qR-0bj" kind="unwind" unwindAction="unwindFilterChangedWithSegue:" id="JlJ-u3-PVM"/>
@@ -2691,8 +2688,8 @@ and helps keep Habitica running</string>
                             <rect key="frame" x="0.0" y="298" width="375" height="111"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Gift one, Get one!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vqR-47-Okh">
-                                    <rect key="frame" x="16" y="16" width="343" height="21"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vqR-47-Okh">
+                                    <rect key="frame" x="16" y="16" width="343" height="0.0"/>
                                     <constraints>
                                         <constraint firstAttribute="height" priority="500" constant="21" id="YF5-zM-xfc"/>
                                     </constraints>
@@ -2700,13 +2697,11 @@ and helps keep Habitica running</string>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b7s-sU-IE0">
-                                    <rect key="frame" x="40" y="41" width="295" height="47"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b7s-sU-IE0">
+                                    <rect key="frame" x="40" y="20" width="295" height="0.0"/>
                                     <constraints>
                                         <constraint firstAttribute="height" priority="500" constant="21" id="T5l-kL-oeU"/>
                                     </constraints>
-                                    <string key="text">While this promotion is active, you’ll receive 
-a matching subscription automatically after sending your gift.</string>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
@@ -2737,7 +2732,7 @@ a matching subscription automatically after sending your gift.</string>
                                                 <constraint firstAttribute="height" constant="36" id="RYc-Vh-fEt"/>
                                             </constraints>
                                             <color key="tintColor" red="0.96862745289999996" green="0.93725490570000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <state key="normal" title="Send Gift">
+                                            <state key="normal">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </state>
                                             <userDefinedRuntimeAttributes>
@@ -2774,6 +2769,8 @@ a matching subscription automatically after sending your gift.</string>
                         <outlet property="avatarView" destination="QfC-at-thI" id="mEj-ID-lER"/>
                         <outlet property="displayNameLabel" destination="NMm-pQ-wSm" id="lXg-bT-m3c"/>
                         <outlet property="explanationTitle" destination="evr-kJ-ljY" id="RQA-9R-rZB"/>
+                        <outlet property="giftOneGetOneDescriptionLabel" destination="b7s-sU-IE0" id="73T-VD-C7e"/>
+                        <outlet property="giftOneGetOneTitleLabel" destination="vqR-47-Okh" id="Q6U-qm-rbB"/>
                         <outlet property="usernameLabel" destination="xvW-Tc-HI8" id="gRf-Zg-b2d"/>
                     </connections>
                 </tableViewController>

@@ -73,6 +73,8 @@ class InviteMembersViewController: FormViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.title = L10n.Titles.inviteMembers
 
         form +++ MultivaluedSection(multivaluedOptions: [.Reorder, .Insert, .Delete],
                                     header: L10n.userID) { section in

@@ -34,6 +34,10 @@ class PartyDetailViewController: GroupDetailViewController {
     @IBOutlet weak var questTitleDisclosureView: UIImageView!
     @IBOutlet weak var partyQuestView: PartyQuestView!
     @IBOutlet weak var mainStackviewOffset: NSLayoutConstraint!
+    @IBOutlet weak var partyChallengesButton: UIButton!
+    @IBOutlet weak var membersTitleView: CollapsibleTitle!
+    @IBOutlet weak var descriptionTitleView: CollapsibleTitle!
+    @IBOutlet weak var inviteMemberButton: UIButton!
     
     var fetchMembersDisposable: Disposable?
     var questStateDisposable: CompositeDisposable?
@@ -82,6 +86,16 @@ class PartyDetailViewController: GroupDetailViewController {
             }, value: {[weak self] (members, _) in
             self?.set(members: members)
         }).start())
+    }
+    
+    override func populateText() {
+        descriptionTitleView.text = L10n.Party.joinPartyDescription
+        membersTitleView.text = L10n.Groups.members
+        partyChallengesButton.setTitle(L10n.Party.partyChallenges, for: .normal)
+        inviteMemberButton.setTitle(L10n.Groups.inviteMember, for: .normal)
+        startQuestButton.setTitle(L10n.Party.startQuest, for: .normal)
+        questInvitationAcceptButton.setTitle(L10n.accept, for: .normal)
+        questInvitationRejectButton.setTitle(L10n.reject, for: .normal)
     }
     
     deinit {

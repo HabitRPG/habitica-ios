@@ -44,6 +44,10 @@
     [self refresh];
 }
 
+- (void)populateText {
+    
+}
+
 - (void)refresh {
     [self.dataSource retrieveShopInventory:nil];
 }

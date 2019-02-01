@@ -31,6 +31,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     @IBOutlet weak var buyLabel: UILabel!
     @IBOutlet weak var currencyCountView: HRPGCurrencyCountView!
     @IBOutlet weak var closableShopModal: HRPGCloseableShopModalView!
+    @IBOutlet weak var balanceLabel: UILabel!
     
     @objc public weak var shopViewController: HRPGShopViewController?
     
@@ -65,6 +66,8 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         pinButton.isHidden = !showPinning ||  inAppReward?.pinType == "armoire" || inAppReward?.pinType == "potion"
         
         ThemeService.shared.addThemeable(themable: self)
+        
+        populateText()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,6 +75,12 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
             self?.user = user
         }).start())
+    }
+    
+    func populateText() {
+        pinButton.setTitle(L10n.pinToRewards, for: .normal)
+        buyLabel.text = L10n.buy.localizedCapitalized
+        balanceLabel.text = L10n.yourBalance
     }
     
     func applyTheme(theme: Theme) {
