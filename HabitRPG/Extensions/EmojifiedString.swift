@@ -1,5 +1,4 @@
 import Foundation
-import NSString_Emoji
 
 extension String {
     var unicodeEmoji: String {

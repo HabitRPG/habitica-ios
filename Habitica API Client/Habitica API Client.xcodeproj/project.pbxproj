@@ -47,6 +47,7 @@
 		290C3040206D3DE80066AF5B /* APIGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C303F206D3DE80066AF5B /* APIGroup.swift */; };
 		290C3042206D3EC30066AF5B /* APIChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C3041206D3EC30066AF5B /* APIChatMessage.swift */; };
 		290C3046206D44670066AF5B /* RetrieveGroupCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C3045206D44670066AF5B /* RetrieveGroupCall.swift */; };
+		2913BC5A220C62D9001ECF00 /* FindUsernamesCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2913BC59220C62D9001ECF00 /* FindUsernamesCall.swift */; };
 		291448742086352800F3A6B5 /* FeedPetCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291448732086352800F3A6B5 /* FeedPetCall.swift */; };
 		29144894208A1C9400F3A6B5 /* APIHair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29144893208A1C9400F3A6B5 /* APIHair.swift */; };
 		2914489E208A346700F3A6B5 /* APICustomization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2914489D208A346700F3A6B5 /* APICustomization.swift */; };
@@ -262,6 +263,7 @@
 		290C303F206D3DE80066AF5B /* APIGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIGroup.swift; sourceTree = "<group>"; };
 		290C3041206D3EC30066AF5B /* APIChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIChatMessage.swift; sourceTree = "<group>"; };
 		290C3045206D44670066AF5B /* RetrieveGroupCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveGroupCall.swift; sourceTree = "<group>"; };
+		2913BC59220C62D9001ECF00 /* FindUsernamesCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindUsernamesCall.swift; sourceTree = "<group>"; };
 		291448732086352800F3A6B5 /* FeedPetCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPetCall.swift; sourceTree = "<group>"; };
 		29144893208A1C9400F3A6B5 /* APIHair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHair.swift; sourceTree = "<group>"; };
 		2914489D208A346700F3A6B5 /* APICustomization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICustomization.swift; sourceTree = "<group>"; };
@@ -604,6 +606,7 @@
 				292844F020DD37F40011DC43 /* RejectGroupInvitationCall.swift */,
 				292D6C982101F5660078288A /* InviteToGroupCall.swift */,
 				296E480921BEBC0600D15E4A /* RetrieveMemberUsernameCall.swift */,
+				2913BC59220C62D9001ECF00 /* FindUsernamesCall.swift */,
 			);
 			path = Group;
 			sourceTree = "<group>";
@@ -1182,6 +1185,7 @@
 				292DEE91204F4A0F0086D5F7 /* HabiticaServerConfig.swift in Sources */,
 				29323E512052F77F00AC6D6F /* APIUserItems.swift in Sources */,
 				292DEE4F204DA3870086D5F7 /* RetrieveTasksCall.swift in Sources */,
+				2913BC5A220C62D9001ECF00 /* FindUsernamesCall.swift in Sources */,
 				295E9DF220B3369C00D58D45 /* APIShopCategories.swift in Sources */,
 				292844F120DD37F40011DC43 /* RejectGroupInvitationCall.swift in Sources */,
 				290B6271207BA765007287C4 /* UpdateEmailCall.swift in Sources */,

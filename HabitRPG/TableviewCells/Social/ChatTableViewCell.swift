@@ -199,7 +199,7 @@ class ChatTableViewCell: UITableViewCell, UITextViewDelegate {
         
         
         if let text = inboxMessage.text {
-            messageTextView.attributedText = try? Down(markdownString: text).toHabiticaAttributedString()
+            messageTextView.attributedText = try? Down(markdownString: text.unicodeEmoji).toHabiticaAttributedString()
         }
         
         if previousMessage?.sent == inboxMessage.sent {
@@ -233,7 +233,7 @@ class ChatTableViewCell: UITableViewCell, UITextViewDelegate {
     }
     
     private func setMessageText(_ text: String) {
-        if let attributedText = try? Down(markdownString: text).toHabiticaAttributedString() {
+        if let attributedText = try? Down(markdownString: text.unicodeEmoji).toHabiticaAttributedString() {
             messageTextView.attributedText = attributedText
         } else {
             messageTextView.text = ""

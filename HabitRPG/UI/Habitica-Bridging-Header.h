@@ -38,3 +38,4 @@
 #import "HRPGCoachmarkFrameProvider.h"
 #import "HRPGFilterViewController.h"
 #import "HRPGQRCodeScannerViewController.h"
+#import "NSString+Emoji.h"

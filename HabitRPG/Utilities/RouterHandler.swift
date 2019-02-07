@@ -73,6 +73,12 @@ class RouterHandler: NSObject {
             self.displayTab(index: 4)
             self.push(StoryboardScene.Settings.initialScene.instantiate())
         }
+        router.register("profile/:userID") { link in
+            self.displayTab(index: 4)
+            let viewController = StoryboardScene.Social.userProfileViewController.instantiate()
+            viewController.userID = link?.routeParameters["userID"] as? String
+            self.push(viewController)
+        }
     }
     
     @objc
