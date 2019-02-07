@@ -39,7 +39,6 @@ target 'Habitica' do
   pod 'KeychainAccess'
   pod 'VTAcknowledgementsViewController'
   pod 'DateTools'
-  pod 'NSString+Emoji'
   pod 'XLForm'
   pod 'FLEX', '~> 2.0', :configurations => ['Debug']
   pod 'MRProgress'

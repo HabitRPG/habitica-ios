@@ -11,6 +11,7 @@ import SlackTextViewController
 import Down
 import Habitica_Models
 import ReactiveSwift
+import Result
 
 class GroupChatViewController: SLKTextViewController {
     
@@ -29,7 +30,12 @@ class GroupChatViewController: SLKTextViewController {
     
     private let socialRepository = SocialRepository()
     private let userRepository = UserRepository()
+    private let configRepository = ConfigRepository()
     private let disposable = ScopedDisposable(CompositeDisposable())
+    private var autocompleteUsernamesObserver: Signal<String, NoError>.Observer?
+    private var autocompleteUsernames: [MemberProtocol] = []
+    private var autocompleteEmojisObserver: Signal<String, NoError>.Observer?
+    private var autocompleteEmojis: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,6 +68,38 @@ class GroupChatViewController: SLKTextViewController {
         disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
             self?.checkGuidelinesAccepted(user: user)
         }).start())
+        
+        if configRepository.bool(variable: .enableUsernameAutocomplete) {
+            self.registerPrefixes(forAutoCompletion: ["@", ":"])
+        } else {
+            self.registerPrefixes(forAutoCompletion: [":"])
+        }
+        let (signal, observer) = Signal<String, NoError>.pipe()
+        autocompleteUsernamesObserver = observer
+        disposable.inner.add(signal
+            .filter({ username -> Bool in return !username.isEmpty })
+            .throttle(2, on: QueueScheduler.main)
+            .flatMap(.latest, { username in
+                self.socialRepository.findUsernames(username)
+            })
+            .observeValues({ members in
+                self.autocompleteUsernames = members
+                if self.foundWord != nil {
+                    self.showAutoCompletionView(self.autocompleteUsernames.count > 0)
+                }
+            })
+        )
+        
+        let (emojiSignal, emojiObserver) = Signal<String, NoError>.pipe()
+        autocompleteEmojisObserver = emojiObserver
+        disposable.inner.add(emojiSignal
+            .filter { emoji -> Bool in return !emoji.isEmpty }
+            .throttle(0.5, on: QueueScheduler.main)
+            .observeValues({ emoji in
+                self.autocompleteEmojis = NSString.emojiCheatCodes(matching: emoji)
+                self.showAutoCompletionView(self.autocompleteEmojis.count > 0)
+            })
+        )
     }
     
     override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
@@ -144,6 +182,92 @@ class GroupChatViewController: SLKTextViewController {
         }*/
         
         super.didPressRightButton(sender)
+    }
+
+    override func didChangeAutoCompletionPrefix(_ prefix: String, andWord word: String) {
+        if prefix == "@" {
+            
+            autocompleteUsernamesObserver?.send(value: word)
+        } else if prefix == ":" {
+            autocompleteEmojisObserver?.send(value: word)
+        }
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if foundPrefix == "@" {
+            return autocompleteUsernames.count
+        } else if foundPrefix == ":" {
+            return autocompleteEmojis.count
+        }
+        return 0
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if foundPrefix == "@" {
+            let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "UsernameCell")
+            let member = autocompleteUsernames[indexPath.item]
+            cell.textLabel?.text = member.profile?.name
+            cell.textLabel?.textColor = member.contributor?.color
+            cell.detailTextLabel?.text = "@\(member.username ?? "")"
+            return cell
+            
+        } else if foundPrefix == ":" {
+            let cell = UITableViewCell(style: .value1, reuseIdentifier: "EmojiCell")
+            cell.textLabel?.text = autocompleteEmojis[indexPath.item]
+            cell.detailTextLabel?.text = autocompleteEmojis[indexPath.item].unicodeEmoji
+            return cell
+        }
+        return UITableViewCell()
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if tableView == self.autoCompletionView {
+            if foundPrefix == "@" {
+                return 60
+            } else if foundPrefix == ":" {
+                return 44
+            }
+        }
+        return UITableView.automaticDimension
+    }
+    
+    override func heightForAutoCompletionView() -> CGFloat {
+        var count = 0
+        if foundPrefix == "@" {
+            count = autocompleteUsernames.count
+        } else if foundPrefix == ":" {
+            count = autocompleteEmojis.count
+        }
+        if count == 0 {
+            return 0
+        }
+        let cellHeight = self.autoCompletionView.delegate?.tableView!(self.autoCompletionView, heightForRowAt: IndexPath(row: 0, section: 0))
+        guard let height = cellHeight else {
+            return 0
+        }
+        return height * CGFloat(count)
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView == self.autoCompletionView {
+            var item = ""
+            if self.foundPrefix == "@" {
+                item += autocompleteUsernames[indexPath.row].username ?? ""
+                if self.foundPrefixRange.location == 0 {
+                    item += ":"
+                }
+            } else if self.foundPrefix == ":" || self.foundPrefix == "+:" {
+                var cheatcode = autocompleteEmojis[indexPath.row]
+                cheatcode.remove(at: cheatcode.startIndex)
+                item += cheatcode
+            }
+            item += " "
+            self.acceptAutoCompletion(with: item, keepPrefix: true)
+        }
     }
     
     private func checkGuidelinesAccepted(user: UserProtocol) {

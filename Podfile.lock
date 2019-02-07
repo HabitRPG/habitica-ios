@@ -144,7 +144,6 @@ PODS:
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
   - Nimble (7.0.3)
-  - "NSString+Emoji (0.2.0)"
   - OHHTTPStubs/Core (6.1.0)
   - OHHTTPStubs/Default (6.1.0):
     - OHHTTPStubs/Core
@@ -206,7 +205,6 @@ DEPENDENCIES:
   - Masonry
   - MRProgress
   - Nimble (~> 7.0.0)
-  - "NSString+Emoji"
   - PinLayout
   - PopupDialog
   - Quick (~> 1.2.0)
@@ -255,7 +253,6 @@ SPEC REPOS:
     - MRProgress
     - nanopb
     - Nimble
-    - "NSString+Emoji"
     - OHHTTPStubs
     - PinLayout
     - PopupDialog
@@ -322,7 +319,6 @@ SPEC CHECKSUMS:
   MRProgress: 16de7cc9f347e8846797a770db102a323fe7ef09
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Nimble: 7f5a9c447a33002645a071bddafbfb24ea70e0ac
-  "NSString+Emoji": 127da93993ac7c01eadb2edbb039cda89a1369f4
   OHHTTPStubs: 1e21c7d2c084b8153fc53d48400d8919d2d432d0
   PinLayout: fe2a2432d6982588e208572005c941aeeae417ab
   PopupDialog: f4bb461bf70ff422be0b56656566424ee9273080
@@ -342,6 +338,6 @@ SPEC CHECKSUMS:
   VTAcknowledgementsViewController: 3bb742da852a5161dc9f4b017e52f926a41ef5d3
   XLForm: 04110197c12187dd28a6c7295d3d8b95f4fdb4de
 
-PODFILE CHECKSUM: 46de38702e87bdd6c0b6081bb59e46b26d18e160
+PODFILE CHECKSUM: f2a9fbf84cbb57d73baccd23a720a8f91757ff66
 
 COCOAPODS: 1.5.3

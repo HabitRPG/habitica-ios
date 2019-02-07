@@ -11,7 +11,7 @@ import Habitica_API_Client
 @objc
 enum ConfigVariable: Int {
     case enableRepeatables, supportEmail, enableNewShops, shopSpriteSuffix
-    case maxChatLength, enableChangeUsername, enableUsernameRelease, enableGiftOneGetOne
+    case maxChatLength, enableChangeUsername, enableUsernameRelease, enableGiftOneGetOne, enableUsernameAutocomplete
 
     func name() -> String {
         // swiftlint:disable switch_case_on_newline
@@ -24,6 +24,7 @@ enum ConfigVariable: Int {
         case .enableChangeUsername: return "enableChangeUsername"
         case .enableUsernameRelease: return "enableUsernameRelease"
         case .enableGiftOneGetOne: return "enableGiftOneGetOne"
+        case .enableUsernameAutocomplete: return "enableUsernameAutocomplete"
         }
         // swiftlint:enable switch_case_on_newline
     }
