@@ -215,7 +215,7 @@ class UserManager: NSObject {
                     continue
                 }
                 let checkedDate = Date(timeIntervalSinceNow: TimeInterval(day * 86400))
-                if task.dueOn(date: checkedDate, calendar: calendar) {
+                if (task.isDue && day == 0) || task.dueOn(date: checkedDate, calendar: calendar) {
                     newNotifications.append(scheduleForDay(reminder: reminder, date: checkedDate, atTime: reminder.time, existingNotifications: existingNotifications))
                 }
             }
