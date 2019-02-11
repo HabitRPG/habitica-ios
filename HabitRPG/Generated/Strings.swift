@@ -1117,6 +1117,8 @@ public enum L10n {
     public static let resetAccountDescription = L10n.tr("Mainstrings", "settings.reset_account_description")
     /// Select Class
     public static let selectClass = L10n.tr("Mainstrings", "settings.select_class")
+    /// Server
+    internal static let server = L10n.tr("Mainstrings", "settings.server")
     /// Social
     public static let social = L10n.tr("Mainstrings", "settings.social")
     /// Sound Theme

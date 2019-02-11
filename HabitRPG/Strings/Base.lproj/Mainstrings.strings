@@ -264,6 +264,7 @@
 "settings.enable_class_system" = "Enable Class System";
 "settings.select_class" = "Select Class";
 "settings.app_icon" = "App Icon";
+"settings.server" = "Server";
 "settings.fix_values_description" = "If you’ve encountered a bug or made a mistake that unfairly changed your character, you can manually correct those values here.";
 "settings.change_display_name" = "Change Display Name";
 "settings.change_photo_url" = "Change Photo URL";
