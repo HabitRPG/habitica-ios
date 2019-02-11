@@ -14,7 +14,7 @@ import ReactiveSwift
 public class StableLocalRepository: ContentLocalRepository {
     
     public func getOwnedPets(userID: String) -> SignalProducer<ReactiveResults<[OwnedPetProtocol]>, ReactiveSwiftRealmError> {
-        return RealmOwnedPet.findBy(query: "userID == '\(userID)'").reactive().map({ (value, changeset) -> ReactiveResults<[OwnedPetProtocol]> in
+        return RealmOwnedPet.findBy(query: "userID == '\(userID)' && trained > 0").reactive().map({ (value, changeset) -> ReactiveResults<[OwnedPetProtocol]> in
             return (value.map({ (item) -> OwnedPetProtocol in return item }), changeset)
         })
     }
