@@ -17,6 +17,6 @@ class APIProfile: ProfileProtocol, Codable {
     enum CodingKeys: String, CodingKey {
         case name
         case blurb
-        case photoUrl = "url"
+        case photoUrl = "imageUrl"
     }
 }
