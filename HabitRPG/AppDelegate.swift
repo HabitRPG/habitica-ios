@@ -96,10 +96,28 @@ class HabiticaAppDelegate: NSObject {
     func setupNetworkClient() {
         NetworkAuthenticationManager.shared.currentUserId = AuthenticationManager.shared.currentUserId
         NetworkAuthenticationManager.shared.currentUserKey = AuthenticationManager.shared.currentUserKey
+        updateServer()
         AuthenticatedCall.errorHandler = HabiticaNetworkErrorHandler()
         let configuration = URLSessionConfiguration.default
         NetworkLogger.enableLogging(for: configuration)
         AuthenticatedCall.defaultConfiguration.urlConfiguration = configuration
+    }
+    
+    func updateServer() {
+        if let chosenServer = UserDefaults().string(forKey: "chosenServer") {
+            switch chosenServer {
+            case "staging":
+                AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.staging
+            case "beta":
+                AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.beta
+            case "gamma":
+                AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.gamma
+            case "delta":
+                AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.delta
+            default:
+                AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.production
+            }
+        }
     }
     
     @objc

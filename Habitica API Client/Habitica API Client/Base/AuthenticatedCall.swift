@@ -10,6 +10,7 @@ import UIKit
 import FunkyNetwork
 import ReactiveSwift
 import Result
+import Keys
 enum HTTPMethod: String {
     case GET
     case POST
@@ -21,6 +22,7 @@ public class AuthenticatedCall: JsonNetworkCall {
     fileprivate static let apiKeyHeader = "x-api-key"
     fileprivate static let apiUserIdHeader = "x-api-user"
     fileprivate static let clientHeader = "x-client"
+    fileprivate static let stagingKey = ""
     
     public lazy var errorJsonSignal: Signal<Dictionary<String, Any>, NoError> = self.errorDataSignal.map(JsonDataHandler.serialize).map({ json in
         return json as? Dictionary<String, Any>
@@ -53,6 +55,7 @@ public class AuthenticatedCall: JsonNetworkCall {
             headers[AuthenticatedCall.apiKeyHeader] = apiKey
             headers[AuthenticatedCall.apiUserIdHeader] = userId
         }
+        headers["Authorization"] = "Basic \(HabiticaKeys().stagingKey)"
         headers[AuthenticatedCall.clientHeader] = "habitica-ios"
         return headers
     }

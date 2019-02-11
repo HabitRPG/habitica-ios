@@ -578,6 +578,8 @@ internal enum L10n {
     internal static let reminder = L10n.tr("Mainstrings", "settings.reminder")
     /// Select Class
     internal static let selectClass = L10n.tr("Mainstrings", "settings.select_class")
+    /// Server
+    internal static let server = L10n.tr("Mainstrings", "settings.server")
     /// Social
     internal static let social = L10n.tr("Mainstrings", "settings.social")
     /// Sound Theme

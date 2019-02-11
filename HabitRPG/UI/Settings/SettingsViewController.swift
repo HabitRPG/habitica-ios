@@ -24,7 +24,42 @@ enum SettingsTags {
     static let appIcon = "appIcon"
     static let soundTheme = "soundTheme"
     static let changeClass = "changeClass"
+    static let server = "server"
 }
+
+enum Servers: String {
+    case production = "production"
+    case staging = "staging"
+    case beta = "beta"
+    case gamma = "gamma"
+    case delta = "delta"
+    
+    var niceName: String {
+        switch self {
+        case .production:
+            return "Production"
+        case .staging:
+            return "Staging"
+        case .beta:
+            return "Beta"
+        case.gamma:
+            return "Gamma"
+        case.delta:
+            return "Delta"
+        }
+    }
+    
+    static var allServers: [Servers] {
+        return [
+            .production,
+            .staging,
+            .beta,
+            .gamma,
+            .delta
+        ]
+    }
+}
+
 
 enum ThemeName: String {
     case defaultTheme = "Purple (Default)"
@@ -218,6 +253,21 @@ class SettingsViewController: FormViewController, Themeable {
                         progressView?.dismiss(true)
                     }
                 })
+            <<< AlertRow<LabeledFormValue<String>>(SettingsTags.server) { row in
+                row.title = L10n.Settings.server
+                row.hidden = true
+                row.options = Servers.allServers.map({ (server) -> LabeledFormValue<String> in
+                    return LabeledFormValue(value: server.rawValue, label: server.niceName)
+                })
+                if let server = Servers(rawValue: UserDefaults().string(forKey: "chosenServer") ?? "") {
+                    row.value = LabeledFormValue(value: server.rawValue, label: server.niceName)
+                }
+                row.onChange({ (row) in
+                    UserDefaults().set(row.value?.value, forKey: "chosenServer")
+                    let appDelegate = UIApplication.shared.delegate as! HRPGAppDelegate
+                    appDelegate.swiftAppDelegate.updateServer()
+                })
+        }
     }
     
     private func setupUserSection() {
@@ -465,6 +515,12 @@ class SettingsViewController: FormViewController, Themeable {
                 classRow.updateCell()
             }
             classRow.evaluateHidden()
+        }
+        
+        if user.contributor?.admin == true {
+            let serverRow = (form.rowBy(tag: SettingsTags.server) as? AlertRow<LabeledFormValue<String>>)
+            serverRow?.hidden = false
+            serverRow?.evaluateHidden()
         }
     }
     

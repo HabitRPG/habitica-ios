@@ -141,6 +141,7 @@
 "settings.enable_class_system" = "Enable Class System";
 "settings.select_class" = "Select Class";
 "settings.app_icon" = "App Icon";
+"settings.server" = "Server";
 "theme.default_theme" = "Default";
 "theme.blue" = "Blue";
 "theme.teal" = "Teal";
