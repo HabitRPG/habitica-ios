@@ -1,516 +1,657 @@
 /* (No Comment) */
 "active" = "Незавършени";
-
 /* (No Comment) */
 "animal_ears" = "Животински уши";
-
 /* (No Comment) */
 "avatar.background" = "Фоново изображение";
-
 /* (No Comment) */
 "avatar.bangs" = "Бретон";
-
 /* (No Comment) */
 "avatar.beard" = "Брада";
-
 /* (No Comment) */
 "avatar.flower" = "Цвете";
-
 /* (No Comment) */
 "avatar.glasses" = "Очила";
-
 /* (No Comment) */
 "avatar.head" = "Глава";
-
 /* (No Comment) */
 "avatar.mustache" = "Мустак";
-
 /* (No Comment) */
 "avatar.shirt" = "Риза";
-
 /* (No Comment) */
 "avatar.wheelchair" = "Инвалидна количка";
-
 /* (No Comment) */
 "cancel" = "Отказ";
-
 /* (No Comment) */
 "chat" = "Чат";
-
 /* (No Comment) */
 "classes.become_a_class" = "Станете %@";
-
 /* (No Comment) */
 "classes.healer" = "Лечител";
-
 /* (No Comment) */
 "classes.healer_description" = "Лечителите трудно могат да бъдат наранени, и разпростират защитата си върху останалите. Пропуснатите ежедневни задачи и лошите навици не ги смущават толкова много; те винаги могат да възстановят здравето си след провал. Играйте като лечител, ако обичате да помагате на останалите в групата си или ако искате да изиграете смъртта чрез усърдна работа!";
-
 /* (No Comment) */
 "classes.mage" = "Магьосник";
-
 /* (No Comment) */
 "classes.rogue" = "Мошеник";
-
 /* (No Comment) */
 "classes.rogue_description" = "Мошениците обичат да трупат богатства, печелят повече злато от останалите и са майстори в намирането на случайни предмети. Отличителното им умение „Невидимост“ им позволява да избегнат последствията от пропуснати ежедневни задачи. Играйте като мошеник, ако Ви мотивират наградите и постиженията, и обичате плячката и значките!";
-
 /* (No Comment) */
 "classes.warrior" = "Воин";
-
 /* (No Comment) */
 "close" = "Затваряне";
-
 /* (No Comment) */
 "confirm" = "Потвърждаване";
-
 /* (No Comment) */
 "create" = "Създаване";
-
 /* (No Comment) */
 "daily" = "Ежедневна";
-
 /* (No Comment) */
 "delete" = "Изтриване";
-
 /* (No Comment) */
 "description" = "Описание";
-
 /* (No Comment) */
 "details" = "Подробности";
-
 /* (No Comment) */
 "difficulty" = "Ниво на трудност";
-
 /* (No Comment) */
 "discover" = "Разглеждане";
-
 /* (No Comment) */
 "edit" = "Редактиране";
-
 /* (No Comment) */
 "eggs" = "Яйца";
-
 /* (No Comment) */
 "equip" = "Екипиране";
-
 /* (No Comment) */
 "equipment.armor" = "Броня";
-
 /* (No Comment) */
 "equipment.back" = "Аксесоар за гръб";
-
 /* (No Comment) */
 "equipment.battle_gear" = "Бойно снаряжение";
-
 /* (No Comment) */
 "equipment.body" = "Аксесоар за тяло";
-
 /* (No Comment) */
 "equipment.costume" = "Костюм";
-
 /* (No Comment) */
 "equipment.eyewear" = "Предмет за очи";
-
 /* (No Comment) */
 "equipment.head" = "Екипировка за глава";
-
 /* (No Comment) */
 "equipment.head_accessory" = "Аксесоар за глава";
-
 /* (No Comment) */
 "equipment.nothing_equipped" = "Няма нищо екипирано";
-
 /* (No Comment) */
 "equipment.off_hand" = "Страничен";
-
 /* (No Comment) */
 "equipment.use_costume" = "Използване на костюм";
-
 /* (No Comment) */
 "equipment.weapon" = "Оръжие";
-
 /* (No Comment) */
 "experience" = "Опит";
-
 /* (No Comment) */
 "food" = "Храна";
-
 /* (No Comment) */
 "glasses" = "Очила";
-
 /* (No Comment) */
 "hatching_potions" = "Излюпващи отвари";
-
 /* (No Comment) */
 "headband" = "Лента за коса";
-
 /* (No Comment) */
 "health" = "Здраве";
-
 /* (No Comment) */
 "inventory.hatched" = "Излюпихте нов любимец!";
-
 /* (No Comment) */
 "inventory.no_gems_left" = "Не можете да купите повече диаманти този месец. Ограничението се премахва през първите три дни на всеки месец.";
-
 /* (No Comment) */
 "invite_party" = "Канене на групата";
-
 /* (No Comment) */
 "leader" = "Водач";
-
 /* (No Comment) */
 "leave" = "Напускане";
-
 /* (No Comment) */
 "levelup_description" = "Изпълнявайки целите си в истинския живот, Вие достигнахте ниво %ld!";
-
 /* (No Comment) */
 "levelup_share" = "Достигнах ниво %ld в Хабитика като подобрих навиците си в истинския живот!";
-
 /* (No Comment) */
 "levelup_title" = "Вдигнахте ниво!";
-
 /* (No Comment) */
 "mana" = "Мана";
-
 /* (No Comment) */
 "member.last_logged_in" = "Последно влизане на";
-
 /* (No Comment) */
 "member.member_since" = "Потребител от";
-
 /* (No Comment) */
 "menu.about" = "Относно";
-
 /* (No Comment) */
 "menu.cast_spells" = "Изпълняване на заклинания";
-
 /* (No Comment) */
 "menu.challenges" = "Предизвикателства";
-
 /* (No Comment) */
 "menu.customize_avatar" = "Персонализиране на героя";
-
 /* (No Comment) */
 "menu.equipment" = "Екипировка";
-
 /* (No Comment) */
 "menu.gems_subscriptions" = "Диаманти и абонаменти";
-
 /* (No Comment) */
 "menu.guilds" = "Гилдии";
-
 /* (No Comment) */
 "menu.help_faq" = "Помощ и ЧЗВ";
-
 /* (No Comment) */
 "menu.inventory" = "Инвентар";
-
 /* (No Comment) */
 "menu.items" = "Предмети";
-
 /* (No Comment) */
 "menu.news" = "Новини";
-
 /* (No Comment) */
 "menu.party" = "Група";
-
 /* (No Comment) */
 "menu.select_class" = "Изберете клас";
-
 /* (No Comment) */
 "menu.shops" = "Магазини";
-
 /* (No Comment) */
 "menu.social" = "Общност";
-
 /* (No Comment) */
 "menu.stable" = "Конюшня";
-
 /* (No Comment) */
 "menu.stats" = "Показатели";
-
 /* (No Comment) */
 "menu.tavern" = "Кръчма";
-
 /* (No Comment) */
 "menu.use_skills" = "Използване на умения";
-
 /* (No Comment) */
 "monthly" = "Месечно";
-
 /* (No Comment) */
 "mounts" = "Превози";
-
 /* (No Comment) */
 "my_challenges" = "Моите предизвикателства";
-
 /* (No Comment) */
 "my_guilds" = "Моите гилдии";
-
 /* (No Comment) */
 "name" = "Име";
-
 /* (No Comment) */
 "notes" = "Бележки";
-
 /* (No Comment) */
 "ok" = "Добре";
-
 /* (No Comment) */
 "open" = "Отваряне";
-
 /* (No Comment) */
 "party.quest_participant_count" = "%d участници";
-
 /* (No Comment) */
 "pets" = "Любимци";
-
 /* (No Comment) */
 "quests" = "Мисии";
-
 /* (No Comment) */
 "quests.accepted" = "Прието";
-
 /* (No Comment) */
 "quests.confirm_abort" = "Наистина ли искате да прекратите мисията? Тя ще бъде прекратена за всекиго в групата, а напредъкът по нея ще бъде загубен. Свитъкът с мисията ще бъде върнат на притежателя си.";
-
 /* (No Comment) */
 "quests.confirm_cancel_invitation" = "Наистина ли искате да прекратите мисията? Всички приети покани ще бъдат загубени. Притежателят на мисията ще си запази свитъка ѝ.";
-
 /* (No Comment) */
 "quests.invitations_header" = "Покани";
-
 /* (No Comment) */
 "quests.participants_header" = "Участници";
-
 /* (No Comment) */
 "quests.pending" = "В очакване";
-
 /* (No Comment) */
 "quests.rejected" = "Отказана";
-
 /* (No Comment) */
 "reset_tips" = "Нулиране на съветите на Джъстин";
-
 /* (No Comment) */
 "resetStreak" = "Нулиране на серията";
-
 /* (No Comment) */
 "save" = "Запазване";
-
 /* (No Comment) */
 "search" = "Търсене";
-
 /* (No Comment) */
 "settings.api" = "ППИ";
-
 /* (No Comment) */
 "settings.are_you_sure" = "Сигурен/на ли сте?";
-
 /* (No Comment) */
 "settings.authentication" = "Удостоверяване";
-
 /* (No Comment) */
 "settings.change_class" = "Промяна на класа";
-
 /* (No Comment) */
 "settings.change_class_disclaimer" = "Това ще нулира класа на героя Ви и разпределените точки (ще си ги получите обратно за повторно разпределение), както и ще струва 3 диаманта.";
-
 /* (No Comment) */
 "settings.clear_cache" = "Изчистване на кеша";
-
 /* (No Comment) */
 "settings.custom_day_start" = "Персонализирано начало на деня";
-
 /* (No Comment) */
 "settings.daily_reminder" = "Ежедневно напомняне";
-
 /* (No Comment) */
 "settings.day_start" = "Начало на деня";
-
 /* (No Comment) */
 "settings.disable_all_notifications" = "Забраняване на всички известия";
-
 /* (No Comment) */
 "settings.disable_pm" = "Забраняване на личните съобщения";
-
 /* (No Comment) */
 "settings.display_notification_badge" = "Показване на значката за известия";
-
 /* (No Comment) */
 "settings.enable_class_system" = "Включване на класовата система";
-
 /* (No Comment) */
 "settings.fix_characterValues" = "Промяна на стойностите на героя";
-
 /* (No Comment) */
 "settings.log_out" = "Изход";
-
 /* (No Comment) */
 "settings.maintenance" = "Профилактика";
-
 /* (No Comment) */
 "settings.notification_badge" = "Значка за известия";
-
 /* (No Comment) */
 "settings.profile" = "Профил";
-
 /* (No Comment) */
 "settings.push_notifications" = "Известия";
-
 /* (No Comment) */
 "settings.reload_content" = "Презареждане на съдържанието";
-
 /* (No Comment) */
 "settings.reminder" = "Напомняне";
-
 /* (No Comment) */
 "settings.select_class" = "Изберете клас";
-
 /* (No Comment) */
 "settings.social" = "Общност";
-
 /* (No Comment) */
 "settings.user" = "Потребител";
-
 /* (No Comment) */
 "share" = "Споделяне";
-
 /* (No Comment) */
 "skills.use_skill" = "Използвате %@";
-
 /* (No Comment) */
 "skills.used_transformation_item" = "Използвахте %@";
-
 /* (No Comment) */
 "stable.feed" = "Хранене";
-
 /* (No Comment) */
 "stable.premium" = "Магическа отвара";
-
 /* (No Comment) */
 "stable.quest_mounts" = "Превози от мисии";
-
 /* (No Comment) */
 "stable.quest_pets" = "Любимци от мисии";
-
 /* (No Comment) */
 "stable.special_mounts" = "Специални превози";
-
 /* (No Comment) */
 "stable.special_pets" = "Специални любимци";
-
 /* (No Comment) */
 "stable.standard" = "Стандартно";
-
 /* (No Comment) */
 "stats.allocated" = "Разпределени";
-
 /* (No Comment) */
 "stats.battle_gear" = "Бойно снаряжение";
-
 /* (No Comment) */
 "stats.buffs" = "Подсилки";
-
 /* (No Comment) */
 "stats.class_bonus" = "Класов бонус";
-
 /* (No Comment) */
 "stats.level" = "Ниво";
-
 /* (No Comment) */
 "stats.no_points_to_allocate" = "0 точки за разпределяне";
-
 /* (No Comment) */
 "stats.one_point_to_allocate" = "1 точка за разпределяне";
-
 /* (No Comment) */
 "summary" = "Резюме";
-
 /* (No Comment) */
 "tags" = "Етикети";
-
 /* (No Comment) */
 "tasks.daily" = "Ежедневна";
-
 /* (No Comment) */
 "tasks.form.checklist" = "Подзадачи";
-
 /* (No Comment) */
 "tasks.form.clear" = "Изчистване";
-
 /* (No Comment) */
 "tasks.form.confirm_delete" = "Наистина ли искате да изтриете тази задача?";
-
 /* (No Comment) */
 "tasks.form.cost" = "Цена";
-
 /* (No Comment) */
 "tasks.form.difficulty" = "Ниво на трудност";
-
 /* (No Comment) */
 "tasks.form.easy" = "Лесно";
-
 /* (No Comment) */
 "tasks.form.edit" = "Редактиране на %@";
-
 /* (No Comment) */
 "tasks.form.hard" = "Трудно";
-
 /* (No Comment) */
 "tasks.form.medium" = "Средно";
-
 /* (No Comment) */
 "tasks.form.new_checklist_item" = "Нова подзадача";
-
 /* (No Comment) */
 "tasks.form.reminders" = "Напямняния";
-
 /* (No Comment) */
 "tasks.form.repeats" = "Повтаря се";
-
 /* (No Comment) */
 "tasks.form.reset_streak" = "Нулиране на серията";
-
 /* (No Comment) */
 "tasks.form.tags" = "Етикети";
-
 /* (No Comment) */
 "tasks.form.trivial" = "Елементарно";
-
 /* (No Comment) */
 "tasks.habit" = "Навик";
-
 /* (No Comment) */
 "tasks.reward" = "Награда";
-
 /* (No Comment) */
 "tasks.todo" = "Задача";
-
 /* (No Comment) */
 "theme.blue" = "Синьо";
-
 /* (No Comment) */
 "theme.green" = "Зелено";
-
 /* (No Comment) */
 "theme.red" = "Червено";
-
 /* (No Comment) */
 "theme.yellow" = "Жълто";
-
 /* (No Comment) */
 "title" = "Заглавие";
-
 /* (No Comment) */
 "unequip" = "Разекипиране";
-
 /* (No Comment) */
 "weekly" = "Седмично";
-
 /* (No Comment) */
 "yearly" = "Годишно";
-
+"back" = "Назад";
+"all" = "Всички";
+"weak" = "Неустойчиви";
+"strong" = "Устойчиви";
+"due" = "За изпълнение";
+"grey" = "Неактивни / сиви";
+"dated" = "С краен срок";
+"done" = "Готово";
+"change" = "Промяна";
+"clear" = "Изчистване";
+"use" = "Използване";
+"titles.settings" = "Настройки";
+"titles.authentication" = "Удостоверяване";
+"titles.profile" = "Профил";
+"titles.api" = "ППИ";
+"titles.fix_values" = "Промяна на стойности";
+"titles.select_class" = "Изберете клас";
+"titles.stats" = "Показатели";
+"titles.equipment" = "Екипировка";
+"titles.items" = "Предмети";
+"titles.faq" = "ЧЗВ";
+"titles.about" = "Относно";
+"titles.news" = "Новини";
+"titles.stable" = "Конюшня";
+"titles.pets" = "Любимци";
+"titles.mounts" = "Превози";
+"titles.tavern" = "Кръчма";
+"titles.party" = "Група";
+"titles.guilds" = "Гилдии";
+"titles.guild" = "Гилдия";
+"titles.challenges" = "Предизвикателства";
+"titles.shops" = "Магазини";
+"titles.choose_user" = "Изберете потребител";
+"titles.choose_recipient" = "Изберете получател";
+"titles.feed_pet" = "Хранене на любимец";
+"titles.guidelines" = "Правила";
+"titles.invite_members" = "Канене на членове";
+"titles.spells" = "Заклинания";
+"stats.auto_allocate_points" = "Авт. разпределяне на точките";
+"stats.distribute_evenly" = "Разпределяне по равно";
+"stats.distribute_evenly_help" = "Разпределяне на един и същ брой точки за всеки показател.";
+"stats.distribute_class" = "Разпределяне според класа";
+"stats.distribute_class_help" = "Разпределяне на повече точки към показателите, важни за Вашия клас.";
+"stats.distribute_tasks" = "Разпределяне според дейността по задачите";
+"stats.distribute_tasks_help" = "Разпределяне на точките според категориите „сила“, „интелигентност“, „якост“ и „усет“, свързани със задачите, които изпълнявате.";
+"stats.character_build_title" = "Изграждане на героя";
+"stats.character_build_text" = "Всяко ниво Ви дава една точка, която можете да разпределите на показател по свой избор. Можете да го направите ръчно или да оставите играта да реши вместо Вас, използвайки една възможностите за автоматично разпределяне.";
+"stats.stat_guide" = "Ръководство за показателите";
+"stats.strength_title" = "Сила";
+"stats.intelligence_title" = "Интелигентност";
+"stats.intelligence_text" = "Увеличава спечеления опит от изпълнение на задачи. Също така увеличава максималната Ви мана, както и скоростта на възстановяване на маната в покой.";
+"stats.constitution_title" = "Якост";
+"stats.constitution_text" = "Намалява щетите, които получавате от задачите си. Не намалява щетите получавани от главатари.";
+"stats.perception_title" = "Усет";
+"stats.perception_text" = "Увеличава шанса за падания на предмети при изпълнение на задачи, ограничението за падания на предмети на ден, бонусите за серии и количеството злато получено като награда за задачите.";
+"tasks.habits" = "Навици";
+"tasks.dailies" = "Ежедневни";
+"tasks.rewards" = "Награди";
+"tasks.todos" = "Задачи";
+"tasks.work" = "Работа";
+"tasks.exercise" = "Упражнения";
+"tasks.health" = "Здраве";
+"tasks.school" = "Училище";
+"tasks.chores" = "Домакинска работа";
+"tasks.creativity" = "Творчество";
+"tasks.add_x" = "Добавяне на %@";
+"tasks.repeats.daily" = "ежедневно";
+"tasks.repeats.weekly" = "ежеседмично";
+"tasks.repeats.monthly" = "ежемесечно";
+"tasks.repeats.yearly" = "годишно";
+"tasks.repeats.every_day" = "всеки ден";
+"tasks.repeats.weekdays" = "работните дни";
+"tasks.repeats.weekends" = "събота и неделя";
+"tasks.quality.worst" = "Най-зле";
+"tasks.quality.worse" = "По-зле";
+"tasks.quality.bad" = "Зле";
+"tasks.quality.neutral" = "Неутрално";
+"tasks.quality.good" = "Добре";
+"tasks.quality.better" = "По-добре";
+"tasks.quality.best" = "Най-добре";
+"tasks.examples.habit_text" = "Натиснете тук, за да редактирате този навик и да го направите лош, тоест такъв, от който искате да се отървете";
+"tasks.examples.habit_notes" = "Или изтрийте това чрез плъзване наляво";
+"tasks.examples.todo_text" = "Присъединяване към Хабитика (отметнете ме!)";
+"tasks.examples.todo_notes" = "Можете да изпълните тази задача, да я редактирате или да я премахнете.";
+"tasks.examples.reward_text" = "Наградете се";
+"tasks.examples.reward_notes" = "Гледайте телевизия, изиграйте някоя игра или хапнете нещо. Вие решавате!";
+"tasks.examples.work_habit" = "Обработка на е-поща";
+"tasks.examples.work_daily_text" = "Свършена работа по най-важната задача за днес";
+"tasks.examples.work_daily_notes" = "Докоснете за определяне на най-важната задача";
+"tasks.examples.work_todo_text" = "Да завърша проекта в работата";
+"tasks.examples.work_todo_notes" = "Докоснете за въвеждане на името на текущия проект и задаване на крайна дата!";
+"tasks.examples.exercise_habit" = "10 минути аеробни упражнения";
+"tasks.examples.exercise_daily_text" = "Ежедневни упражнения";
+"tasks.examples.exercise_daily_notes" = "Докоснете за избор на график и определяне на упражненията!";
+"tasks.examples.exercise_todo_text" = "Да организирам тренировките си";
+"tasks.examples.exercise_todo_notes" = "Докоснете за добавяне на списък от подзадачи!";
+"tasks.examples.health_habit" = "Да ям полезна/вредна храна";
+"tasks.examples.health_daily_text" = "Да изчистя зъбите си с конец";
+"tasks.examples.health_daily_notes" = "Докоснете за промяна";
+"tasks.examples.health_todo_text" = "Да нахвърляме идеи за здравословна промяна";
+"tasks.examples.health_todo_notes" = "Докоснете за добавяне на списъци от подзадачи!";
+"tasks.examples.school_habit" = "Учене/отлагане";
+"tasks.examples.school_daily_text" = "Да напиша домашното си";
+"tasks.examples.school_daily_notes" = "Докоснете за определяне на най-важната задача";
+"tasks.examples.school_todo_text" = "Да напиша домашното за училище";
+"tasks.examples.school_todo_notes" = "Докоснете за определяне на най-важната задача";
+"tasks.examples.team_daily_notes" = "Докоснете за определяне на най-важната задача";
+"tasks.examples.team_todo_notes" = "Докоснете за определяне на най-важната задача";
+"tasks.examples.chores_habit" = "10 мин чистене";
+"tasks.examples.chores_daily_text" = "Да измия чиниите";
+"tasks.examples.chores_daily_notes" = "Докоснете за избор на график!";
+"tasks.examples.chores_todo_text" = "Да подредя боклуците си";
+"tasks.examples.chores_todo_notes" = "Докоснете за посочване на областта с боклуци!";
+"tasks.examples.creativity_habit" = "Практикуване на нова креативна техника";
+"tasks.examples.creativity_daily_text" = "Да работя по проекта си";
+"tasks.examples.creativity_daily_notes" = "Докоснете за въвеждане на името на текущия проект и задаване на график!";
+"tasks.examples.creativity_todo_text" = "Да завърша проекта си";
+"tasks.examples.creativity_todo_notes" = "Докоснете за въвеждане на името на текущия проект";
+"menu" = "Меню";
+"filter" = "Филтриране";
+"one_filter" = "1 филтър";
+"x_filters" = "%ld филтъра";
+"settings.fix_values_description" = "Ако сте се сблъскали с проблем или сте направили грешка, която е променила героя Ви несправедливо, можете да промените стойностите си ръчно от тук.";
+"settings.change_display_name" = "Промяна на екранното име";
+"settings.change_photo_url" = "Промяна на адреса на снимката";
+"settings.danger_zone" = "Опасна зона";
+"settings.login_methods" = "Начини на влизане";
+"settings.reset_account" = "Нулиране на профила";
+"settings.delete_account" = "Изтриване на профила";
+"settings.delete_account_description" = "Наистина ли искате това? Профилът Ви ще бъде изтрит завинаги и няма да може да бъде възстановен! Ще трябва да регистрирате нов профил, ако искате да използвате Хабитика отново. Закупените и използваните диаманти няма да Ви бъдат възстановени. Ако сте напълно сигурен/на в решението си, въведете паролата си в полето.";
+"settings.change_email" = "Промяна на е-пощата";
+"settings.new_email" = "Нова е-поща";
+"settings.change_username" = "Промяна на потребителско име";
+"settings.new_username" = "Ново потребителско име";
+"settings.change_password" = "Промяна на паролата";
+"settings.new_password" = "Нова парола";
+"settings.old_password" = "Стара парола";
+"settings.local" = "Местно";
+"guilds.guild_bank" = "Банка на гилдията";
+"guilds.invite_to_guild" = "Покана в гилдията";
+"join" = "Присъединяване";
+"equipment.equipment" = "Екипировка";
+"equipment.costume_explanation" = "Изберете „Използване на костюм“, за да екипирате героя си без да променяте показателите на своето бойно снаряжение! Това означава, че облечете каквото пожелаете на героя си без да премахвате бойното си снаряжение.";
+"equipment.class_equipment" = "Класова екипировка";
+"purchase_gems" = "Купуване на диаманти";
+"level" = "Ниво";
+"size" = "Размер";
+"shirt" = "Риза";
+"bangs" = "Бретон";
+"ponytail" = "Конска опашка";
+"color" = "Цвят";
+"flower" = "Цвете";
+"wheelchair" = "Инвалидна количка";
+"monday" = "Понеделник";
+"tuesday" = "Вторник";
+"wednesday" = "Сряда";
+"thursday" = "Четвъртък";
+"friday" = "Петък";
+"saturday" = "Събота";
+"sunday" = "Неделя";
+"groups.invite.invitation_type" = "Вид на поканата";
+"userID" = "Потребителски идентификатор";
+"api_key" = "Ключ за ППИ";
+"email" = "Е-поща";
+"groups.invite.add_userid" = "Добавяне на потр. ид.";
+"groups.invite.add_email" = "Добавяне на е-поща";
+"scan_QR_code" = "Сканиране на QR-код";
+"username" = "Потребителско име";
+"password" = "Парола";
+"confirm_username" = "Потвърждаване на потребителското име";
+"about.website" = "Уеб сайт";
+"about.report_bug" = "Докладване на проблем";
+"about.view_source_code" = "Преглед на изходния код";
+"about.acknowledgements" = "Благодарности";
+"about.version" = "Версия";
+"about.no_email_title" = "Е-пощата Ви все още не е зададена";
+"login.register" = "Регистрирация";
+"login.login" = "Вход";
+"login.login_facebook" = "Вписване чрез Фейсбук";
+"login.login_google" = "Вписване чрез Гугъл";
+"login.email_password_link" = "Изпращане на е-писмо с връзка за подновяване на паролата";
+"login.enter_email" = "Въведете е-пощата, с която сте се регистрирали в Хабитика.";
+"login.reset_password_response" = "Ако имаме адреса на Вашата е-поща, значи ще получите е-писмо с инструкции за подновяване на паролата си там.";
+"intro.card1.title" = "Добре дошли в";
+"intro.card1.text" = "Време е да започнете да се забавлявате, докато вършите задачите си. Над 2 милиона вече подобряват живота си с малки стъпки.";
+"intro.card2.title" = "Напредък в играта";
+"intro.card2.subtitle" = "Напредък в живота";
+"intro.card3.title" = "Общувайте";
+"intro.card3.subtitle" = "Бийте се с чудовища";
+"intro.card3.text" = "Приятелите Ви могат да Ви помогнат да постигнете целите си. Подкрепяйте се взаимно в живота и битките, за да израснете заедно!";
+"intro.lets_go" = "Да започваме!";
+"skip" = "Пропускане";
+"randomize" = "Разбъркване";
+"finish" = "Завършване";
+"next" = "Напред";
+"mana_points" = "точки мана";
+"character_level" = "Ниво на героя";
+"gold" = "Злато";
+"day_streaks" = "21-дневни серии";
+"aboutText" = "Относно";
+"photo_url" = "Адрес на снимка";
+"group_by" = "Групиране по";
+"slim" = "Слаб";
+"broad" = "Широк";
+"errors.error" = "Грешка";
+"errors.reply" = "Съобщението Ви не може да бъде изпратено.";
+"errors.request" = "Имаше грешка със заявката Ви: %@";
+"days" = "дни";
+"weeks" = "седмици";
+"months" = "месеца";
+"years" = "години";
+"leave_challenge_title" = "Напускане на предизвикателството?";
+"leave_challenge_prompt" = "Искате ли да напуснете предизвикателството и да запазите или изтриете задачите?";
+"locations.market" = "Пазар";
+"locations.tavern" = "Кръчма";
+"locations.quest_shop" = "Магазин за мисии";
+"locations.seasonal_shop" = "Сезонен магазин";
+"locations.stable" = "Конюшня";
+"NPCs.alex" = "Алекс Търговеца";
+"NPCs.daniel" = "Даниел Кръчмаря";
+"NPCs.ian" = "Иън Пазителят на Мисиите";
+"NPCs.seasonalSorceress" = "Сезонната магьосница";
+"NPCs.matt" = "господар на зверовете Мат";
+"unlocks_selecting_class" = "Отключва се след избор на клас";
+"unlocks_level_ten" = "Отключва се на ниво 10";
+"write_message" = "Напишете съобщение";
+"write_to" = "Пишете на %@";
+"tavern_intro_header" = "Добре дошли в Странноприемницата! Поседнете, за да си поговорим, или за да си починете от задачите.";
+"resume_damage" = "Продължаване на щетите";
+"pause_damage" = "Спиране на щетите";
+"world_boss_intro_header" = "Не обръщай внимание на чудовището по-долу – това все още е спокойно място за разговори по време на почивките Ви.";
+"tutorials.habits_1" = "Първо, навиците. Те могат да са положителни — тоест такива, каквито искате да си създадете или затвърдите, и отрицателни — от които искате да се откажете.";
+"tutorials.habits_2" = "Всеки път, когато извършите нещо, което е положителен навик, докоснете знака +, за да получите опит и злато!";
+"tutorials.habits_3" = "Ако се отпуснете и направите нещо, което е лош навик, докоснете знака - и героят Ви ще загуби малко здраве — това ще Ви държи отговорни за действията си.";
+"tutorials.habits_4" = "Опитайте! Можете да разгледате и другите видове задачи чрез бутоните отдолу.";
+"tutorials.dailies_1" = "Създайте ежедневни задачи за онези неща, които трябва да се правят редовно или по график.";
+"tutorials.dailies_2" = "Внимавайте – ако пропуснете някоя, героят Ви ще получи щети след края на деня. Всекидневното отмятане на тези задачи ще Ви донесе страхотни награди!";
+"tutorials.todos_1" = "Използвайте задачите за изпълнение, за да следите онези неща, които трябва да извършите само веднъж.";
+"tutorials.todos_2" = "Ако дадена задача трябва да бъде изпълнена навреме, задайте ѝ краен срок. Изглежда можете да отметнете една още сега. Направете го!";
+"tutorials.rewards_1" = "Купувайте снаряжение за героя си със златото, което печелите!";
+"tutorials.rewards_2" = "Можете и да си създадете реални персонализирани награди, в зависимост от това какво Ви мотивира.";
+"tutorials.add_task" = "Докоснете за добавяне на нова задача.";
+"tutorials.edit_task" = "Докоснете задача, за да я редактирате или добавите напомняния. Плъзнете я наляво, за да я изтриете.";
+"tutorials.filter_task" = "Докоснете, за да филтрирате задачите.";
+"tutorials.reorder_task" = "Задръжте пръст върху задача, за да я преместите.";
+"tutorials.inbox" = "Тук можете да прочетете личните си съобщения и да отговорите на тях! Можете да пишете на някого от профила му.";
+"tutorials.stats" = "Докоснете сивия бутон, за да разпределите по много от точките си наведнъж, или докоснете стрелките, за да добавяте по една точка.";
+"world_boss.pending_strike" = "Изчакващ удар";
+"world_boss.rage_strike_explanation_button" = "Какво е яростен удар?";
+"buffs" = "Подсилки";
+"allocated" = "Разпределени";
+"gems" = "Диаманти";
+"teleporting_habitica" = "Телепортиране в Хабитика";
+"subscription" = "Абонамент";
+"remember_check_off_dailies" = "Не забравяйте да изпълнявате ежедневните си задачи!";
+"complete" = "Завършени";
+"accept" = "Приемане";
+"reject" = "Отхвърляне";
+"abort" = "Прекратяване";
+"reply" = "Отговор";
+"send" = "Изпращане";
+"reminder" = "Напомняне";
+"buy" = "купуване";
+"success" = "успех";
+"invitations" = "Покани";
+"accessibility.tap_hide_boss_art" = "Докоснете два пъти за скриване на графиката на главатаря";
+"accessibility.reply_to_message" = "Отговор на съобщението";
+"accessibility.copy_message" = "Копиране на съобщението";
+"accessibility.delete_message" = "Изтриване на съобщението";
+"accessibility.like_message" = "Харесване на съобщението";
+"accessibility.report_message" = "Докладване на съобщението";
+"accessibility.double_tap_to_complete" = "Докоснете два пъти за завършване";
+"accessibility.double_tap_to_edit" = "Докоснете два пъти за редактиране";
+"accessibility.complete_task" = "Завършване на задачата";
+"accessibility.due" = "За изпълнение";
+"accessibility.completed" = "Завършени";
+"collect" = "Събиране";
+"mystery_sets" = "Тайнствени комплекти";
+"edit_tag" = "Редактиране на етикета";
+"create_tag" = "Създаване на етикет";
+"unlockDropsTitle" = "Отключихте системата за падания на предмети!";
+"unlockDropsDescription" = "Отключихте системата за падане на предмети! Сега като изпълните задача, има малък шанс да Ви се падне някакъв предмет, включително яйца, отвари и храна!";
+"subscription_info_1_title" = "Купуване на диаманти със злато";
+"subscription_info_2_title" = "Изключителни месечни предмети";
+"subscription_info_3_title" = "Запазвате по-голяма история";
+"subscription_info_3_description" = "Завършените задачи за изпълнение остават по-дълго в историята.";
+"subscription_info_4_title" = "Удвоен дневен максимален брой падания";
+"subscription_info_4_description" = "Двойното ограничение за падане на предмети ще Ви позволи да получавате повече предмети от завършените си задачи за всеки ден, спомагайки да попълните конюшнята си по-бързо!";
+"subscription_benefits_title" = "Станете абонат и ще получите следните предимства:";
+"gem_benefits_title" = "Диамантите Ви позволяват да купувате забавни неща за профила си, като:";
+"unpin_from_rewards" = "Откачане от наградите";
+"pin_to_rewards" = "Закачане в наградите";
+"moderator" = "Модератор";
+"staff" = "Екип";
+"report_x_violation" = "Докладване на %@ за нарушение?";
+"not_getting_drops" = "Не Ви се пада това, което искате? Разгледайте пазара и си купете това, което Ви трябва!";
+"streak_achievement_title" = "Спечелихте постижение за серия!";
+"streak_achievement_description" = "Вие сте изпълнявали своя ежедневна задача 21 дни поред! Браво! Не нарушавайте серията си!";
+"next_checkin_prize_1_day" = "Следващата Ви награда ще се отключи след 1 отчитане.";
+"next_checkin_prize_x_days" = "Следващата Ви награда ще се отключи след %d отчитания";
+"recipient" = "Получател";
+"no_camera" = "Няма налична камера";
+"qr_invalid_id_title" = "Грешен потребителски ид.";
+"qr_invalid_id_message" = "Сканираният QR-код не съдържа правилен потребителски идентификатор за Хабитика.";
+"not_enough_gems" = "Нямате достатъчно диаманти";
+"not_enough_hourglasses" = "Нямате достатъчно Пясъчни часовници";
+"subscribe_for_hourglasses" = "Абонирайте се за Пясъчни часовници";
+"not_enough_gold" = "Нямате достатъчно злато";
+"take_me_back" = "Върнете ме обратно";
+"monthly_gem_cap_reached" = "Достигнато е месечното ограничение на диамантите";
+"your_balance" = "Вашата наличност:";
+"choose_task" = "Изберете задача";
+"shops.purchased_all_gear" = "Вече имате всичката възможна класова екипировка! Още ще стане налична по време на големите празненства, около слънцестоенията и равноденствията.";
