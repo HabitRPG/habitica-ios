@@ -1118,7 +1118,7 @@ public enum L10n {
     /// Select Class
     public static let selectClass = L10n.tr("Mainstrings", "settings.select_class")
     /// Server
-    internal static let server = L10n.tr("Mainstrings", "settings.server")
+    public static let server = L10n.tr("Mainstrings", "settings.server")
     /// Social
     public static let social = L10n.tr("Mainstrings", "settings.social")
     /// Sound Theme

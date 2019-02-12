@@ -29,13 +29,6 @@ class PartyViewController: SplitSocialViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if configRepository.bool(variable: .enableUsernameRelease) {
-            qrCodeView.isHidden = true
-            qrCodeButtonHeight.constant = 0
-            shareQRCodeButton.isHidden = true
-            joinPartyDescription.text = L10n.Party.joinPartyDescription
-        }
-        
         ImageManager.getImage(name: "timeTravelersShop_background_fall") { (image, _) in
             self.noPartyHeaderBackground.image = image?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: UIImage.ResizingMode.tile)
         }
