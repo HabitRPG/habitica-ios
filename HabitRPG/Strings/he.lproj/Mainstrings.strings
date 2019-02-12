@@ -1,420 +1,442 @@
 /* (No Comment) */
 "active" = "פעיל";
-
 /* (No Comment) */
 "animal_ears" = "אוזני חיות";
-
 /* (No Comment) */
 "avatar.background" = "רקע";
-
 /* (No Comment) */
 "avatar.bangs" = "טלטלים";
-
 /* (No Comment) */
 "avatar.beard" = "זקן";
-
 /* (No Comment) */
 "avatar.flower" = "פרח";
-
 /* (No Comment) */
 "avatar.head" = "ראש";
-
 /* (No Comment) */
 "avatar.mustache" = "שפם";
-
 /* (No Comment) */
 "avatar.shirt" = "חולצה";
-
 /* (No Comment) */
 "avatar.wheelchair" = "כיסא גלגלים";
-
 /* (No Comment) */
 "cancel" = "בטל";
-
 /* (No Comment) */
 "chat" = "שיחה";
-
 /* (No Comment) */
 "classes.become_a_class" = "הפוך ל %@";
-
 /* (No Comment) */
 "classes.healer" = "מרפא";
-
 /* (No Comment) */
 "classes.healer_description" = "כהנים הם איתנים לפגיעות, וחולקים את האיתנות הזו עם אחרים. משימות יומיות מפוספסות והרגלים רעים, לא מבלבלים אותם יותר מידי - ויש להם דרכים להתאושש מכשלונות. שחק בתור כהן אם אתה נהנה לסייע לאחרים בחבורה שלך, או אם הרעיון של לרמות את המוות באמצעות עבודה קשה נותן לך השראה!";
-
 /* (No Comment) */
 "classes.mage" = "מכשף";
-
 /* (No Comment) */
 "classes.rogue" = "נוכל";
-
 /* (No Comment) */
 "classes.rogue_description" = "נוכלים אוהבים לצבור ממון, זוכים ביותר זהב מכל אחד אחר, ומוכשרים במציאת חפצים אקראיים. הזריזות האפית שלהם, מאפשרת להם להתחמק מההשלחות של משימות יומיות מפוספסות. שחק בתור נוכל אם אתה מוצא עיניין בפרסים והישגים, ושואף לאוצרות ותגיות הוכרה.";
-
 /* (No Comment) */
 "classes.warrior" = "לוחם";
-
 /* (No Comment) */
 "close" = "סגור";
-
 /* (No Comment) */
 "confirm" = "אישור";
-
 /* (No Comment) */
 "create" = "היכנס";
-
 /* (No Comment) */
 "daily" = "יומי";
-
 /* (No Comment) */
 "delete" = "מחק";
-
 /* (No Comment) */
 "description" = "תיאור";
-
 /* (No Comment) */
 "difficulty" = "רמת קושי";
-
 /* (No Comment) */
 "edit" = "עריכה";
-
 /* (No Comment) */
 "eggs" = "ביצים";
-
 /* (No Comment) */
 "equip" = "צייד";
-
 /* (No Comment) */
 "equipment.armor" = "שריון";
-
 /* (No Comment) */
 "equipment.back" = "אביזר גב";
-
 /* (No Comment) */
 "equipment.battle_gear" = "ציוד לחימה";
-
 /* (No Comment) */
 "equipment.body" = "אביזר גוף";
-
 /* (No Comment) */
 "equipment.costume" = "תחפושת";
-
 /* (No Comment) */
 "equipment.eyewear" = "לבוש לעיניים";
-
 /* (No Comment) */
 "equipment.head_accessory" = "אביזר ראש";
-
 /* (No Comment) */
 "equipment.nothing_equipped" = "ללא ציוד";
-
 /* (No Comment) */
 "equipment.use_costume" = "שימוש בתחפושת";
-
 /* (No Comment) */
 "equipment.weapon" = "נשק";
-
 /* (No Comment) */
 "experience" = "ניסיון";
-
 /* (No Comment) */
 "hatching_potions" = "שיקויי בקיעה";
-
 /* (No Comment) */
 "health" = "בריאות";
-
 /* (No Comment) */
 "invite_party" = "הזמן חבורה";
-
 /* (No Comment) */
 "leader" = "מנהיג";
-
 /* (No Comment) */
 "leave" = "עזוב";
-
 /* (No Comment) */
 "levelup_share" = "הגעתי לדרגה %ld בהאביטיקה על ידי שיפור ההרגלים בחיים האמיתיים שלי!";
-
 /* (No Comment) */
 "levelup_title" = "הרווחתם דרגה!";
-
 /* (No Comment) */
 "mana" = "מאנה";
-
 /* (No Comment) */
 "member.last_logged_in" = "התחברות אחרונה";
-
 /* (No Comment) */
 "member.member_since" = "חבר מאז";
-
 /* (No Comment) */
 "menu.about" = "אודות";
-
 /* (No Comment) */
 "menu.cast_spells" = "הטל קסמים";
-
 /* (No Comment) */
 "menu.challenges" = "אתגרים";
-
 /* (No Comment) */
 "menu.customize_avatar" = "התאם דמות";
-
 /* (No Comment) */
 "menu.equipment" = "ציוד";
-
 /* (No Comment) */
 "menu.guilds" = "גילדות";
-
 /* (No Comment) */
 "menu.help_faq" = "עזרה ושאלות נפוצות";
-
 /* (No Comment) */
 "menu.inventory" = "מלאי";
-
 /* (No Comment) */
 "menu.items" = "פריטים";
-
 /* (No Comment) */
 "menu.news" = "חדשות";
-
 /* (No Comment) */
 "menu.party" = "חבורה";
-
 /* (No Comment) */
 "menu.select_class" = "בחר מקצוע";
-
 /* (No Comment) */
 "menu.shops" = "חנויות";
-
 /* (No Comment) */
 "menu.social" = "חברה";
-
 /* (No Comment) */
 "menu.stable" = "אורווה";
-
 /* (No Comment) */
 "menu.stats" = "נתונים";
-
 /* (No Comment) */
 "menu.tavern" = "פונדק";
-
 /* (No Comment) */
 "menu.use_skills" = "השתמש במיומנות";
-
 /* (No Comment) */
 "monthly" = "חודשי";
-
 /* (No Comment) */
 "mounts" = "חיות רכיבה";
-
 /* (No Comment) */
 "my_guilds" = "הגילדות שלי";
-
 /* (No Comment) */
 "name" = "שם";
-
 /* (No Comment) */
 "notes" = "רשימות";
-
 /* (No Comment) */
 "ok" = "בסדר";
-
 /* (No Comment) */
 "party.quest_participant_count" = "%d משתתפים";
-
 /* (No Comment) */
 "pets" = "חיות מחמד";
-
 /* (No Comment) */
 "quests" = "הרפתקאות";
-
 /* (No Comment) */
 "quests.accepted" = "התקבל";
-
 /* (No Comment) */
 "quests.confirm_abort" = "האם אתם בטוחים שברצונכם לבטל את ההרפתקה הזו? היא תבוטל עבור כל החבורה שלכם, וההתקדמות שלכם תאבד. המגילה תוחזר לבעלי ההרפתקה.";
-
 /* (No Comment) */
 "quests.confirm_cancel_invitation" = "האם אתם בטוחים שברצונכם לבטל את ההרפתקה? כל ההסכמות להשתתפות יאבדו, ובעלי ההרפתקה ישמרו בעלות על המגילה.";
-
 /* (No Comment) */
 "quests.invitations_header" = "הזמנות";
-
 /* (No Comment) */
 "quests.participants_header" = "משתתפים";
-
 /* (No Comment) */
 "quests.pending" = "מחכה";
-
 /* (No Comment) */
 "quests.rejected" = "נדחה";
-
 /* (No Comment) */
 "reset_tips" = "אפס את הטיפים של ג׳סטין";
-
 /* (No Comment) */
 "save" = "שמירה";
-
 /* (No Comment) */
 "search" = "חיפוש";
-
 /* (No Comment) */
 "settings.api" = "API";
-
 /* (No Comment) */
 "settings.are_you_sure" = "האם אתם בטוחים?";
-
 /* (No Comment) */
 "settings.authentication" = "אימות";
-
 /* (No Comment) */
 "settings.change_class" = "החליפו מקצוע";
-
 /* (No Comment) */
 "settings.change_class_disclaimer" = "זה יאפס את מקצוע הדמות שלכם ואת הנקודות שהוקצו לה (תקבלו את כולן בחזרה כדי להקצות מחדש). המחיר הוא 3 אבני חן.";
-
 /* (No Comment) */
 "settings.clear_cache" = "נקה Cache";
-
 /* (No Comment) */
 "settings.custom_day_start" = "שעת התחלת יום מותאמת אישית";
-
 /* (No Comment) */
 "settings.daily_reminder" = "תזכורת יומית";
-
 /* (No Comment) */
 "settings.day_start" = "התחלת יום";
-
 /* (No Comment) */
 "settings.enable_class_system" = "אפשרו את מערכת המקצועות";
-
 /* (No Comment) */
 "settings.fix_characterValues" = "תקן ערכי דמות";
-
 /* (No Comment) */
 "settings.log_out" = "התנתק";
-
 /* (No Comment) */
 "settings.maintenance" = "תחזוקה";
-
 /* (No Comment) */
 "settings.profile" = "פרופיל";
-
 /* (No Comment) */
 "settings.reload_content" = "טען תוכן מחדש";
-
 /* (No Comment) */
 "settings.reminder" = "תזכורת";
-
 /* (No Comment) */
 "settings.select_class" = "בחר מקצוע";
-
 /* (No Comment) */
 "settings.social" = "חברה";
-
 /* (No Comment) */
 "settings.user" = "משתמש";
-
 /* (No Comment) */
 "stable.feed" = "האכל";
-
 /* (No Comment) */
 "stable.quest_mounts" = "הרפתקאות חיות רכיבה";
-
 /* (No Comment) */
 "stable.quest_pets" = "חיות הרפתקה";
-
 /* (No Comment) */
 "stable.special_mounts" = "אוכפים מיוחדים";
-
 /* (No Comment) */
 "stable.special_pets" = "חיות מחמד מיוחדות";
-
 /* (No Comment) */
 "stats.allocated" = "הוקצו";
-
 /* (No Comment) */
 "stats.battle_gear" = "ציוד לחימה";
-
 /* (No Comment) */
 "stats.buffs" = "הגברות";
-
 /* (No Comment) */
 "stats.level" = "דרגה";
-
 /* (No Comment) */
 "summary" = "סיכום";
-
 /* (No Comment) */
 "tags" = "תגיות";
-
 /* (No Comment) */
 "tasks.daily" = "יומי";
-
 /* (No Comment) */
 "tasks.form.checklist" = "רשימה";
-
 /* (No Comment) */
 "tasks.form.clear" = "נקה";
-
 /* (No Comment) */
 "tasks.form.confirm_delete" = "בטוח/ה שיש צורך למחוק את המשימה הזו?";
-
 /* (No Comment) */
 "tasks.form.difficulty" = "רמת קושי";
-
 /* (No Comment) */
 "tasks.form.easy" = "קל";
-
 /* (No Comment) */
 "tasks.form.edit" = "ערוך %@";
-
 /* (No Comment) */
 "tasks.form.hard" = "קשה";
-
 /* (No Comment) */
 "tasks.form.medium" = "בינוני";
-
 /* (No Comment) */
 "tasks.form.reminders" = "תזכורות";
-
 /* (No Comment) */
 "tasks.form.tags" = "תגיות";
-
 /* (No Comment) */
 "tasks.form.trivial" = "טריוויאלי";
-
 /* (No Comment) */
 "tasks.habit" = "הרגל";
-
 /* (No Comment) */
 "tasks.reward" = "פרס";
-
 /* (No Comment) */
 "tasks.todo" = "משימה";
-
 /* (No Comment) */
 "theme.blue" = "כחול";
-
 /* (No Comment) */
 "theme.green" = "ירוק";
-
 /* (No Comment) */
 "theme.red" = "אדום";
-
 /* (No Comment) */
 "theme.yellow" = "צהוב";
-
 /* (No Comment) */
 "title" = "כותרת";
-
 /* (No Comment) */
 "unequip" = "הסר ציוד";
-
 /* (No Comment) */
 "weekly" = "שבועי";
-
 /* (No Comment) */
 "yearly" = "שנתי";
-
+"back" = "חזור";
+"all" = "הכל";
+"weak" = "חלש";
+"strong" = "חזק";
+"due" = "פעיל";
+"grey" = "אפור";
+"dated" = "מיושן";
+"done" = "בוצע";
+"clear" = "נקה";
+"use" = "השתמש";
+"titles.settings" = "הגדרות";
+"titles.authentication" = "אימות";
+"titles.profile" = "פרופיל";
+"titles.api" = "API";
+"titles.fix_values" = "תקן ערכים";
+"titles.select_class" = "בחר מקצוע";
+"titles.stats" = "נתונים";
+"titles.equipment" = "ציוד";
+"titles.items" = "פריטים";
+"titles.faq" = "שאלות נפוצות";
+"titles.about" = "אודות";
+"titles.news" = "חדשות";
+"titles.stable" = "אורווה";
+"titles.pets" = "חיות מחמד";
+"titles.mounts" = "חיות רכיבה";
+"titles.tavern" = "פונדק";
+"titles.party" = "חבורה";
+"titles.guilds" = "גילדות";
+"titles.guild" = "גילדה";
+"titles.challenges" = "אתגרים";
+"titles.shops" = "חנויות";
+"titles.feed_pet" = "האכל חיית מחמד";
+"titles.invite_members" = "הזמן חברים";
+"titles.spells" = "קסמים";
+"stats.distribute_evenly_help" = "מקצה את אותו מספר נקודות לכל תכונה";
+"stats.distribute_class_help" = "מקצה יותר נקודות לתכונות שחשובות למקצוע שלך";
+"stats.distribute_tasks_help" = "הקצו נקודות בהתבסס על הקטגוריות של כוח, תבונה, חוסן, ותפיסה שקשורות למשימות שאתם משלימים.";
+"stats.character_build_title" = "בניית דמות";
+"stats.character_build_text" = "כל דרגה מעניקה לך נקודה אחת להקצות לתכונה לפי בחירתך. ניתן לעשות זאת באופן ידני, או לתת למשחק להחליט בשבילך באמצעות אחת האופציות להקצאה אוטומטית.";
+"stats.strength_title" = "כוח";
+"stats.intelligence_title" = "תבונה";
+"stats.constitution_title" = "חוסן";
+"stats.perception_title" = "תפיסה";
+"tasks.habits" = "הרגלים";
+"tasks.dailies" = "יומיות";
+"tasks.rewards" = "פרסים";
+"tasks.todos" = "משימות";
+"tasks.work" = "עבודה";
+"tasks.exercise" = "אימון";
+"tasks.health" = "בריאות";
+"tasks.school" = "בית-ספר";
+"tasks.chores" = "מטלות";
+"tasks.creativity" = "יצירתיות";
+"tasks.add_x" = "הוסף %@";
+"tasks.examples.todo_text" = "הצטרפו להאביטיקה (סמנו אותי!)";
+"tasks.examples.todo_notes" = "אתה יכול להשלים את המשימה, לערוך או למחוק אותה.";
+"tasks.examples.reward_text" = "תנו לעצמכם פרס";
+"tasks.examples.work_habit" = "טפל במיילים";
+"tasks.examples.exercise_todo_text" = "צור תוכנית אימונים";
+"tasks.examples.health_daily_text" = "חוט דנטלי";
+"tasks.examples.school_habit" = "לימוד/דחיינות";
+"tasks.examples.school_daily_text" = "הכן שיעורי בית";
+"tasks.examples.chores_habit" = "10 דקות ניקיונות";
+"tasks.examples.creativity_daily_text" = "עבודה על פרוייקט יצירה";
+"tasks.examples.creativity_todo_text" = "סיים פרוייקט יצירה";
+"menu" = "תפריט";
+"filter" = "סנן";
+"one_filter" = "1 סינון";
+"x_filters" = "%ld סינונים";
+"my_challenges" = "האתגרים שלי";
+"settings.danger_zone" = "אזור מסוכן";
+"settings.reset_account" = "אפסו את חשבונכם";
+"settings.delete_account" = "מחקו את חשבונכם";
+"settings.delete_account_description" = "האם אתם בטוחים? פעולה זו תמחק את החשבון שלכם לצמיתות, ולא ניתן יהיה לשחזרו! עליכה יהיה ליצור חשבון חדש על מנת להשתמש בHabitica שוב. לא יתקבל החזר כספי עבור אבני-חן. אם אתם בטוחים לחלוטין, הקלידו את הסיסמה שלכם בתיבת הטקסט.";
+"settings.change_username" = "שנה/י שם משתמש/ת";
+"settings.new_username" = "שם משתמש/ת חדש";
+"settings.change_password" = "שנו סיסמה";
+"settings.new_password" = "סיסמה חדשה";
+"settings.old_password" = "סיסמה ישנה";
+"settings.local" = "מקומי";
+"guilds.guild_bank" = "בנק הגילדה";
+"join" = "הצטרפו";
+"food" = "אוכל";
+"share" = "שתף";
+"equipment.equipment" = "ציוד";
+"avatar.glasses" = "משקפיים";
+"purchase_gems" = "רכשו אבני חן";
+"level" = "דרגה";
+"glasses" = "משקפיים";
+"size" = "גודל";
+"shirt" = "חולצה";
+"bangs" = "טלטלים";
+"ponytail" = "קוקו";
+"color" = "צבע";
+"flower" = "פרח";
+"wheelchair" = "כיסא גלגלים";
+"monday" = "שני";
+"tuesday" = "שלישי";
+"wednesday" = "רביעי";
+"thursday" = "חמישי";
+"friday" = "שישי";
+"saturday" = "שבת";
+"sunday" = "ראשון";
+"groups.invite.invitation_type" = "סוג הזמנה";
+"userID" = "מזהה משתמש";
+"api_key" = "מפתח API";
+"email" = "מייל";
+"groups.invite.add_userid" = "הוסף מזהה משתמש";
+"groups.invite.add_email" = "הוסף מייל";
+"username" = "שם משתמש";
+"password" = "סיסמה";
+"about.website" = "אתר";
+"about.report_bug" = "דיווח על תקלה";
+"about.view_source_code" = "צפה בקוד המקור";
+"about.acknowledgements" = "תודות";
+"about.version" = "גרסה";
+"login.register" = "הרשמו";
+"login.login" = "התחבר";
+"intro.card3.text" = "השארו מחוייבים למטרות שלכם עם חבריכם. תמכו אחד בשני בחיים ובקרב כשאתם משתפרים ביחד!";
+"skip" = "דלג";
+"finish" = "סיים";
+"next" = "הבא";
+"gold" = "זהב";
+"day_streaks" = "רצפי 21-יום";
+"aboutText" = "אודות";
+"group_by" = "קבץ לפי";
+"slim" = "רזה";
+"broad" = "רחב";
+"errors.error" = "תקלה";
+"locations.market" = "שוק";
+"locations.tavern" = "פונדק";
+"locations.seasonal_shop" = "חנות עונתית";
+"locations.stable" = "אורווה";
+"write_message" = "כתבו הודעה";
+"tutorials.add_task" = "לחץ להוספת משימה חדשה.";
+"tutorials.edit_task" = "ליחצו על משימות כדי לערוך אותן וכדי להוסיף תזכורות. החליקו שמאלה כדי למחוק אותן.";
+"tutorials.filter_task" = "לחץ לסינון משימות.";
+"buffs" = "הגברות";
+"allocated" = "הוקצו";
+"gems" = "אבני חן";
+"subscription" = "מנוי";
+"remember_check_off_dailies" = "זכור לסמן וי על המטלות היומיות שלך!";
+"complete" = "הושלם";
+"accept" = "לקבל";
+"reject" = "דחו";
+"abort" = "בטל";
+"reply" = "השב";
+"send" = "שליחה";
+"reminder" = "תזכורת";
+"invitations" = "הזמנות";
+"accessibility.due" = "פעיל";
+"collect" = "לאסוף";
+"subscription_info_2_title" = "חפצים חודשיים ייחודיים";
+"subscription_info_3_title" = "שמור רשומות היסטוריה נוספות";
+"subscription_info_3_description" = "גורם למשימות שהושלמו והיסטוריית משימות להיות זמינות זמן רב יותר.";
+"subscription_info_4_title" = "הגבלת הביזה היומית מוכפלת";
+"moderator" = "עורך";
+"staff" = "חבר צוות";
+"report_x_violation" = "דווח על הפרה של %@?";
+"streak_achievement_title" = "הרווחת הישג רצף!";
+"not_enough_gems" = "חסרות לך אבני חן";
+"choose_task" = "בחר משימה";
