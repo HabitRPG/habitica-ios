@@ -23,7 +23,7 @@
 /* (No Comment) */
 "avatar.shirt" = "Shirt";
 /* (No Comment) */
-"avatar.skin" = "Hautfarbe";
+"avatar.skin" = "Haut";
 /* (No Comment) */
 "avatar.wheelchair" = "Rollstuhl";
 /* (No Comment) */
@@ -862,3 +862,5 @@
 "choose_task" = "Aufgabe aussuchen";
 "shops.other_class_disclaimer" = "Du kannst nur Ausrüstung für deine aktuelle Klasse kaufen";
 "shops.purchased_all_gear" = "Du besitzt bereits sämtliche Klassen-Ausrüstung! Mehr wird während der großen Galas veröffentlicht, um die Sonnenwenden und Tagundnachtgleichen herum.";
+"titles.avatar" = "Avatar";
+"stats.total" = "Gesamt";
