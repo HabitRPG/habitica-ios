@@ -34,7 +34,7 @@ enum ConfigVariable: Int {
 class ConfigRepository: NSObject {
 
     private static let configUrl = "https://s3.amazonaws.com/habitica-assets/mobileApp/endpoint/config-ios.json"
-    private static let configVariables: [ConfigVariable] = [.enableRepeatables, .supportEmail, .enableNewShops, .shopSpriteSuffix, .maxChatLength, .enableChangeUsername]
+    private static let configVariables: [ConfigVariable] = [.enableRepeatables, .supportEmail, .enableNewShops, .shopSpriteSuffix, .maxChatLength, .enableChangeUsername, .enableUsernameAutocomplete]
     private let userConfig = UserDefaults.standard
 
     @objc
