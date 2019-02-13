@@ -33,6 +33,7 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var logoFormSpacing: NSLayoutConstraint!
     @IBOutlet weak var logoHeight: NSLayoutConstraint!
     @IBOutlet weak var forgotPasswordButton: UIButton!
+    @IBOutlet weak var privacyPolicyLabel: UITextView!
     
     @IBOutlet weak var logoView: UIImageView!
     @IBOutlet weak private var loginActivityIndicator: UIActivityIndicatorView!
@@ -101,6 +102,20 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
         googleLoginButton.setTitle(L10n.Login.loginGoogle, for: .normal)
         
         forgotPasswordButton.setTitle(L10n.Login.forgotPassword, for: .normal)
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .center
+        let privacyAttributedText = NSMutableAttributedString(string: "By signing up, you are indicating that you have read and agree to the Terms of Service and Privacy Policy.")
+        privacyAttributedText.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor(red:0.84, green:0.78, blue:1.00, alpha:1.0), range: NSRange(location: 0, length: privacyAttributedText.length))
+        privacyAttributedText.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length: privacyAttributedText.length))
+        let termsRange = privacyAttributedText.mutableString.range(of: "Terms of Service")
+        privacyAttributedText.addAttributes([NSAttributedString.Key.link: "https://habitica.com/static/terms"], range: termsRange)
+        privacyAttributedText.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: termsRange)
+        let privacyRange = privacyAttributedText.mutableString.range(of: "Privacy Policy")
+        privacyAttributedText.addAttributes([NSAttributedString.Key.link: "https://habitica.com/static/privacy",
+                                             NSAttributedString.Key.foregroundColor: UIColor.white], range: privacyRange)
+        privacyPolicyLabel.attributedText = privacyAttributedText
+        privacyPolicyLabel.linkTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
     }
     
     private func initialUISetup() {
@@ -221,9 +236,11 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
             if value {
                 weakSelf.passwordRepeatField.isHidden = false
                 weakSelf.passwordRepeatField.entryView.isEnabled = true
+                weakSelf.privacyPolicyLabel.isHidden = false
             } else {
                 weakSelf.passwordRepeatField.isHidden = true
                 weakSelf.passwordRepeatField.entryView.isEnabled = false
+                weakSelf.privacyPolicyLabel.isHidden = true
             }
         }
     }

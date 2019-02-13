@@ -126,7 +126,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="QC8-Jd-4Uw">
-                                        <rect key="frame" x="16" y="218" width="288" height="421"/>
+                                        <rect key="frame" x="16" y="218" width="288" height="466"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u44-DM-dLI" customClass="LoginEntryView" customModule="Habitica" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="288" height="40"/>
@@ -173,8 +173,15 @@
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSecureTextEntry" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="E6t-4E-ZNY">
+                                                <rect key="frame" x="0.0" y="208" width="288" height="33"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                                            </textView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8wd-GG-g6F">
-                                                <rect key="frame" x="0.0" y="208" width="288" height="32"/>
+                                                <rect key="frame" x="0.0" y="253" width="288" height="32"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <state key="normal">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -184,35 +191,35 @@
                                                 </state>
                                             </button>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="KQj-IJ-ThB">
-                                                <rect key="frame" x="0.0" y="246" width="288" height="0.0"/>
+                                                <rect key="frame" x="0.0" y="291" width="288" height="0.0"/>
                                             </activityIndicatorView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8sd-aG-gHH">
-                                                <rect key="frame" x="0.0" y="252" width="288" height="8"/>
+                                                <rect key="frame" x="0.0" y="297" width="288" height="8"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="8" id="kOg-I2-lxs"/>
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xka-dX-nD0">
-                                                <rect key="frame" x="0.0" y="272" width="288" height="32"/>
+                                                <rect key="frame" x="0.0" y="317" width="288" height="32"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <state key="normal">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fYX-yC-fON">
-                                                <rect key="frame" x="0.0" y="316" width="288" height="32"/>
+                                                <rect key="frame" x="0.0" y="361" width="288" height="32"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W6d-TO-AE1">
-                                                <rect key="frame" x="0.0" y="360" width="288" height="20"/>
+                                                <rect key="frame" x="0.0" y="405" width="288" height="20"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="BRw-cI-Hg3"/>
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Ld-qT-Xe8">
-                                                <rect key="frame" x="0.0" y="392" width="288" height="29"/>
+                                                <rect key="frame" x="0.0" y="437" width="288" height="29"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <state key="normal" title="">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -327,6 +334,7 @@
                         <outlet property="onePasswordButton" destination="TwO-74-NWY" id="Yoa-14-PSb"/>
                         <outlet property="passwordField" destination="JRp-kH-W9U" id="fxX-yL-zrR"/>
                         <outlet property="passwordRepeatField" destination="U2x-qx-w87" id="1Vy-ry-F6M"/>
+                        <outlet property="privacyPolicyLabel" destination="E6t-4E-ZNY" id="Mk6-AI-XL5"/>
                         <outlet property="registerBeginButton" destination="Ohf-iu-Phe" id="POZ-1N-6gG"/>
                         <outlet property="usernameField" destination="u44-DM-dLI" id="qp1-8m-KY5"/>
                         <segue destination="seU-hw-U1M" kind="show" identifier="OauthWebViewSegue" id="X3R-vL-F90"/>
