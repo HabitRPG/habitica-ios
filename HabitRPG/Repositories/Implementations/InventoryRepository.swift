@@ -107,9 +107,9 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
                     }
                     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) {
                         if armoire.type == "experience" {
-                            ToastManager.show(text: text, color: .yellow)
+                            ToastManager.show(text: text, color: .yellow, duration: 4.0)
                         } else if armoire.type == "food" {
-                            ToastManager.show(text: text, color: .gray)
+                            ToastManager.show(text: text, color: .gray, duration: 4.0)
                             //TODO: Show images in armoire toasts
                             /*ImageManager.getImage(name: "Pet_Food_\(armoire.dropText ?? "")", completion: { (image, _) in
                              if let image = image {
@@ -118,7 +118,7 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
                              }
                              })*/
                         } else if armoire.type == "gear" {
-                            ToastManager.show(text: text, color: .gray)
+                            ToastManager.show(text: text, color: .gray, duration: 4.0)
                             //TODO: Show images in armoire toasts
                             /*ImageManager.getImage(name: "shop_\(armoire.dropText ?? "")", completion: { (image, _) in
                              if let image = image {

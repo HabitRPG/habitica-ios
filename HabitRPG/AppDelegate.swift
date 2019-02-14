@@ -335,6 +335,11 @@ class HabiticaAppDelegate: NSObject {
     }
     
     @objc
+    func displayNotificationInApp(text: String) {
+       ToastManager.show(text: text, color: .purple)
+    }
+    
+    @objc
     static func isRunningLive() -> Bool {
         #if targetEnvironment(simulator)
         return false

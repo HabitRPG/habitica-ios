@@ -218,7 +218,7 @@
     if ([UIApplication sharedApplication].applicationState == UIApplicationStateInactive) {
         [self handlePushNotification:userInfo];
     } else if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
-        [self displayPushNotificationInApp:userInfo];
+        [self.swiftAppDelegate displayNotificationInAppWithText:userInfo[@"aps"][@"alert"]];
     }
 }
 
@@ -373,11 +373,6 @@
 - (UIViewController *)loadViewController:(NSString *)name fromStoryboard:(NSString *)storyboardName {
     UIStoryboard *secondStoryBoard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
     return [secondStoryBoard instantiateViewControllerWithIdentifier:name];
-}
-
-- (void)displayPushNotificationInApp:(NSDictionary *)userInfo {
-    NSString *text = userInfo[@"aps"][@"alert"];
-    [ToastManager showWithText:text color:ToastColorPurple];
 }
 
 -(void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler{
