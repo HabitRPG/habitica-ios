@@ -78,8 +78,6 @@
 "difficulty" = "Difficulty";
 "resetStreak" = "Reset Streak";
 "tags" = "Tags";
-"title" = "Title";
-"notes" = "Notes";
 "create" = "Create";
 "save" = "Save";
 "tasks.habit" = "Habit";
@@ -280,7 +278,6 @@
 "settings.new_email" = "New Email";
 "settings.change_username" = "Change Username";
 "settings.new_username" = "New Username";
-"settings.change_password" = "Change Password";
 "settings.new_password" = "New Password";
 "settings.old_password" = "Old Password";
 "settings.confirm_new_password" = "Confirm new Password";
@@ -320,7 +317,6 @@
 "invite_party" = "Invite Party";
 "share" = "Share";
 "close" = "Close";
-"cancel" = "Cancel";
 "ok" = "OK";
 "inventory.hatched" = "You hatched a new pet!";
 "inventory.hatchedSharing" = "I just hatched a %@ %@ pet in Habitica by completing my real-life tasks!";
