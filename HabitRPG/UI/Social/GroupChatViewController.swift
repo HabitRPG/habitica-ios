@@ -25,6 +25,7 @@ class GroupChatViewController: SLKTextViewController {
             }
         }
     }
+    @objc public var autocompleteContext = "guild"
     private var dataSource: GroupChatViewDataSource?
     var isScrolling = false
     
@@ -80,7 +81,7 @@ class GroupChatViewController: SLKTextViewController {
             .filter({ username -> Bool in return !username.isEmpty })
             .throttle(2, on: QueueScheduler.main)
             .flatMap(.latest, { username in
-                self.socialRepository.findUsernames(username)
+                self.socialRepository.findUsernames(username, context: self.autocompleteContext, id: self.groupID)
             })
             .observeValues({ members in
                 self.autocompleteUsernames = members
@@ -103,13 +104,17 @@ class GroupChatViewController: SLKTextViewController {
     }
     
     override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        dismissKeyboard(true)
-        isScrolling = true
+        if scrollView != autoCompletionView {
+            dismissKeyboard(true)
+            isScrolling = true
+        }
     }
     
     override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         super.scrollViewDidEndDecelerating(scrollView)
-        isScrolling = false
+        if scrollView != autoCompletionView {
+            isScrolling = false
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

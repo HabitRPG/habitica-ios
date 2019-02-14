@@ -333,6 +333,10 @@ public enum L10n {
   }
   /// Purchase Gems
   public static let purchaseGems = L10n.tr("Mainstrings", "purchase_gems")
+  /// You purchased %@
+  public static func purchased(_ p1: String) -> String {
+    return L10n.tr("Mainstrings", "purchased", p1)
+  }
   /// The scanned QR-Code did not contain a valid Habitica User ID.
   public static let qrInvalidIdMessage = L10n.tr("Mainstrings", "qr_invalid_id_message")
   /// Invalid Habitica User ID

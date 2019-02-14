@@ -719,3 +719,4 @@
 "filter_by_tags" = "Filter by Tags";
 "shops.other_class_disclaimer" = "You can only purchase gear for your current class";
 "shops.purchased_all_gear" = "You already have all your class equipment! More will be released during the Grand Galas, near the solstices and equinoxes.";
+"purchased" = "You purchased %@";

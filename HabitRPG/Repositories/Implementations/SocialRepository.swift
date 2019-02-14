@@ -257,8 +257,8 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
         })
     }
     
-    public func findUsernames(_ username: String) -> Signal<[MemberProtocol], NoError> {
-        let call = FindUsernamesCall(username: username)
+    public func findUsernames(_ username: String, context: String?, id: String?) -> Signal<[MemberProtocol], NoError> {
+        let call = FindUsernamesCall(username: username, context: context, id: id)
         call.fire()
         return call.arraySignal.map({ result in
             return result ?? []

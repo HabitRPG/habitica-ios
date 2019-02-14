@@ -69,7 +69,6 @@ class SplitSocialViewController: HabiticaSplitViewController {
                 chatViewController = viewController
             }
         }
-        
         navigationItem.rightBarButtonItem = nil
     }
     

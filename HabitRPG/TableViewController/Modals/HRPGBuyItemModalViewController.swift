@@ -303,6 +303,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         var setIdentifier = ""
         var value = 0
         var successBlock = {}
+        var text = ""
         /*if let shopItem = item {
             key = shopItem.key ?? ""
             purchaseType = shopItem.purchaseType ?? ""
@@ -325,6 +326,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
             purchaseType = inAppReward.purchaseType ?? ""
             setIdentifier = inAppReward.key ?? ""
             value = Int(inAppReward.value)
+            text = inAppReward.text ?? ""
             if let currencyString = inAppReward.currency, let thisCurrency = Currency(rawValue: currencyString) {
                 currency = thisCurrency
             }
@@ -360,7 +362,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
             
             if currency == .hourglass {
                 if purchaseType == "gear" || purchaseType == "mystery_set" {
-                    inventoryRepository.purchaseMysterySet(identifier: setIdentifier).observeResult({ (result) in
+                    inventoryRepository.purchaseMysterySet(identifier: setIdentifier, text: text).observeResult({ (result) in
                         if result.error != nil {
                             HRPGBuyItemModalViewController.displayViewController(name: "InsufficientHourglassesViewController", parent: topViewController)
                         } else {
@@ -368,7 +370,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                         }
                     })
                 } else {
-                    inventoryRepository.purchaseHourglassItem(purchaseType: purchaseType, key: key).observeResult({ (result) in
+                    inventoryRepository.purchaseHourglassItem(purchaseType: purchaseType, key: key, text: text).observeResult({ (result) in
                         if result.error != nil {
                             HRPGBuyItemModalViewController.displayViewController(name: "InsufficientHourglassesViewController", parent: topViewController)
                         } else {
@@ -377,7 +379,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                     })
                 }
             } else if currency == .gem || purchaseType == "gems" {
-                inventoryRepository.purchaseItem(purchaseType: purchaseType, key: key, value: value).observeResult({ (result) in
+                inventoryRepository.purchaseItem(purchaseType: purchaseType, key: key, value: value, text: text).observeResult({ (result) in
                     if result.error != nil {
                         if key == "gem" {
                             HRPGBuyItemModalViewController.displayViewController(name: "GemCapReachedViewController", parent: topViewController)
@@ -398,7 +400,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                 })
             } else {
                 if currency == .gold && purchaseType == "quests" {
-                    inventoryRepository.purchaseQuest(key: key).observeResult({ (result) in
+                    inventoryRepository.purchaseQuest(key: key, text: text).observeResult({ (result) in
                         if result.error != nil {
                             HRPGBuyItemModalViewController.displayViewController(name: "InsufficientGoldViewController", parent: topViewController)
                         } else {
@@ -406,7 +408,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                         }
                     })
                 } else {
-                    inventoryRepository.buyObject(key: key).observeResult({ (result) in
+                    inventoryRepository.buyObject(key: key, text: text).observeResult({ (result) in
                         if result.error != nil {
                             HRPGBuyItemModalViewController.displayViewController(name: "InsufficientGoldViewController", parent: topViewController)
                         } else {

@@ -94,7 +94,7 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
         })
     }
     
-    func buyObject(key: String) -> Signal<BuyResponseProtocol?, NoError> {
+    func buyObject(key: String, text: String) -> Signal<BuyResponseProtocol?, NoError> {
         let call = BuyObjectCall(key: key)
         call.fire()
         return call.habiticaResponseSignal.on(value: {[weak self]habiticaResponse in
@@ -128,6 +128,8 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
                              })*/
                         }
                     }
+                } else {
+                    ToastManager.show(text: L10n.purchased(text), color: .green)
                 }
             }
         }).map({ habiticaResponse in
@@ -135,7 +137,7 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
         })
     }
     
-    func purchaseItem(purchaseType: String, key: String, value: Int) -> Signal<UserProtocol?, NoError> {
+    func purchaseItem(purchaseType: String, key: String, value: Int, text: String) -> Signal<UserProtocol?, NoError> {
         let call = PurchaseItemCall(purchaseType: purchaseType, key: key)
         call.fire()
         return call.objectSignal.on(value: {[weak self]updatedUser in
@@ -143,26 +145,29 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
                 self?.localUserRepository.updateUser(id: userID, balanceDiff: -(Float(value) / 4.0))
                 self?.localUserRepository.updateUser(id: userID, updateUser: updatedUser)
             }
+            ToastManager.show(text: L10n.purchased(text), color: .green)
         })
     }
     
-    func purchaseHourglassItem(purchaseType: String, key: String) -> Signal<UserProtocol?, NoError> {
+    func purchaseHourglassItem(purchaseType: String, key: String, text: String) -> Signal<UserProtocol?, NoError> {
         let call = PurchaseHourglassItemCall(purchaseType: purchaseType, key: key)
         call.fire()
         return call.objectSignal.on(value: {[weak self]updatedUser in
             if let updatedUser = updatedUser, let userID = self?.currentUserId {
                 self?.localUserRepository.updateUser(id: userID, updateUser: updatedUser)
             }
+            ToastManager.show(text: L10n.purchased(text), color: .green)
         })
     }
     
-    func purchaseMysterySet(identifier: String) -> Signal<UserProtocol?, NoError> {
+    func purchaseMysterySet(identifier: String, text: String) -> Signal<UserProtocol?, NoError> {
         let call = PurchaseMysterySetCall(identifier: identifier)
         call.fire()
         return call.objectSignal.on(value: {[weak self]updatedUser in
             if let updatedUser = updatedUser, let userID = self?.currentUserId {
                 self?.localUserRepository.updateUser(id: userID, updateUser: updatedUser)
             }
+            ToastManager.show(text: L10n.purchased(text), color: .green)
         })
     }
     
@@ -187,13 +192,14 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
             })
     }
     
-    func purchaseQuest(key: String) -> Signal<UserProtocol?, NoError> {
+    func purchaseQuest(key: String, text: String) -> Signal<UserProtocol?, NoError> {
         let call = PurchaseQuestCall(key: key)
         call.fire()
         return call.objectSignal.on(value: {[weak self]updatedUser in
             if let updatedUser = updatedUser, let userID = self?.currentUserId {
                 self?.localUserRepository.updateUser(id: userID, updateUser: updatedUser)
             }
+            ToastManager.show(text: L10n.purchased(text), color: .green)
         })
     }
     

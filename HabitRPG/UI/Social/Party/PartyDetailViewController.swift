@@ -89,7 +89,7 @@ class PartyDetailViewController: GroupDetailViewController {
     }
     
     override func populateText() {
-        descriptionTitleView.text = L10n.Party.joinPartyDescription
+        descriptionTitleView.text = L10n.Party.partyDescription
         membersTitleView.text = L10n.Groups.members
         partyChallengesButton.setTitle(L10n.Party.partyChallenges, for: .normal)
         inviteMemberButton.setTitle(L10n.Groups.inviteMember, for: .normal)

@@ -22,6 +22,8 @@ class TavernViewController: SplitSocialViewController {
         }
         
         super.viewDidLoad()
+        
+        chatViewController?.autocompleteContext = "tavern"
 
         scrollView.delegate = self
 

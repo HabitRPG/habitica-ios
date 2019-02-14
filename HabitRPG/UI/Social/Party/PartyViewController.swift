@@ -38,6 +38,7 @@ class PartyViewController: SplitSocialViewController {
         gradient.endPoint = CGPoint(x: 0, y: 1)
         gradient.locations =  [0, 0.4, 1]
         noPartyHeaderBackground.gradient = gradient
+        chatViewController?.autocompleteContext = "party"
     }
     
     override func viewWillAppear(_ animated: Bool) {
