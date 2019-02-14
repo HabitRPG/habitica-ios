@@ -21,7 +21,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="di7-JQ-KmH" customClass="HRPGCloseableShopModalView" customModule="Habitica" customModuleProvider="target">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="di7-JQ-KmH" customClass="HRPGCloseableShopModalView" customModule="Habitica" customModuleProvider="target">
                                 <rect key="frame" x="184" y="384" width="400" height="256"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g3P-N6-MBj">
@@ -72,7 +72,7 @@
                                             <constraint firstItem="b9i-sB-wsY" firstAttribute="centerY" secondItem="g3P-N6-MBj" secondAttribute="centerY" id="jk3-uk-5fM"/>
                                         </constraints>
                                     </view>
-                                    <view clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7w1-M9-yF5">
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7w1-M9-yF5">
                                         <rect key="frame" x="0.0" y="144" width="400" height="58"/>
                                         <subviews>
                                             <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lLq-BF-AiO">
@@ -91,46 +91,43 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e3z-QN-KcI">
                                                         <rect key="frame" x="200" y="0.0" width="200" height="50"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SaL-Vs-PkR">
-                                                                <rect key="frame" x="99" y="0.0" width="2" height="50"/>
-                                                                <color key="backgroundColor" red="0.97597450017929077" green="0.96980291604995728" blue="0.99977797269821167" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="dSN-o6-cbs">
+                                                                <rect key="frame" x="30" y="0.0" width="140" height="50"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j5D-EL-LRQ">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <accessibility key="accessibilityConfiguration">
+                                                                            <bool key="isElement" value="NO"/>
+                                                                        </accessibility>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" priority="500" constant="42" id="1WG-Zg-4BH"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                                        <color key="textColor" red="0.6058621407" green="0.38462612029999999" blue="0.99835687880000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <view contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="few-vN-72G" customClass="HRPGCurrencyCountView" customModule="Habitica" customModuleProvider="target">
+                                                                        <rect key="frame" x="54" y="0.0" width="86" height="50"/>
+                                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" priority="500" constant="60" id="bZB-jm-BNG"/>
+                                                                        </constraints>
+                                                                    </view>
+                                                                </subviews>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" constant="2" id="nYp-3B-VF4"/>
+                                                                    <constraint firstAttribute="width" priority="500" constant="200" id="Vhe-Ij-ECa"/>
                                                                 </constraints>
-                                                            </view>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j5D-EL-LRQ">
-                                                                <rect key="frame" x="92" y="0.0" width="0.0" height="50"/>
-                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <accessibility key="accessibilityConfiguration">
-                                                                    <bool key="isElement" value="NO"/>
-                                                                </accessibility>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" priority="500" constant="42" id="1WG-Zg-4BH"/>
-                                                                </constraints>
-                                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                                                <color key="textColor" red="0.6058621407" green="0.38462612029999999" blue="0.99835687880000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <view contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="few-vN-72G" customClass="HRPGCurrencyCountView" customModule="Habitica" customModuleProvider="target">
-                                                                <rect key="frame" x="108" y="0.0" width="60" height="50"/>
-                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" priority="500" constant="60" id="bZB-jm-BNG"/>
-                                                                </constraints>
-                                                            </view>
+                                                            </stackView>
                                                         </subviews>
                                                         <color key="backgroundColor" red="0.97597450017929077" green="0.96980291604995728" blue="0.99977797269821167" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
-                                                            <constraint firstItem="SaL-Vs-PkR" firstAttribute="top" secondItem="e3z-QN-KcI" secondAttribute="top" id="2rV-BU-1dM"/>
-                                                            <constraint firstItem="SaL-Vs-PkR" firstAttribute="centerX" secondItem="e3z-QN-KcI" secondAttribute="centerX" id="308-Ir-V32"/>
-                                                            <constraint firstItem="j5D-EL-LRQ" firstAttribute="top" secondItem="e3z-QN-KcI" secondAttribute="top" id="GBS-98-d7s"/>
-                                                            <constraint firstAttribute="bottom" secondItem="j5D-EL-LRQ" secondAttribute="bottom" id="JFB-yL-FsX"/>
-                                                            <constraint firstItem="few-vN-72G" firstAttribute="top" secondItem="e3z-QN-KcI" secondAttribute="top" id="LxB-fd-WOk"/>
+                                                            <constraint firstItem="dSN-o6-cbs" firstAttribute="leading" secondItem="e3z-QN-KcI" secondAttribute="leading" priority="500" id="AOT-3k-3wL"/>
+                                                            <constraint firstAttribute="bottom" secondItem="dSN-o6-cbs" secondAttribute="bottom" id="PTr-Wy-Kex"/>
                                                             <constraint firstAttribute="height" constant="50" id="U5P-8I-TeS"/>
-                                                            <constraint firstItem="few-vN-72G" firstAttribute="leading" secondItem="SaL-Vs-PkR" secondAttribute="trailing" constant="7" id="VUu-hE-VjE"/>
-                                                            <constraint firstAttribute="bottom" secondItem="SaL-Vs-PkR" secondAttribute="bottom" id="eRQ-3T-by9"/>
-                                                            <constraint firstItem="SaL-Vs-PkR" firstAttribute="leading" secondItem="j5D-EL-LRQ" secondAttribute="trailing" constant="7" id="enm-o8-MYM"/>
-                                                            <constraint firstAttribute="bottom" secondItem="few-vN-72G" secondAttribute="bottom" id="jG5-Sc-pn7"/>
+                                                            <constraint firstItem="dSN-o6-cbs" firstAttribute="top" secondItem="e3z-QN-KcI" secondAttribute="top" id="uEI-zl-qXN"/>
+                                                            <constraint firstAttribute="trailing" secondItem="dSN-o6-cbs" secondAttribute="trailing" priority="500" id="uTE-Rq-DOO"/>
+                                                            <constraint firstItem="dSN-o6-cbs" firstAttribute="centerX" secondItem="e3z-QN-KcI" secondAttribute="centerX" id="vpr-H6-T5f"/>
                                                         </constraints>
                                                     </view>
                                                 </subviews>
