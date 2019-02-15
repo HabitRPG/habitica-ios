@@ -29,6 +29,7 @@
 		2907267E1F74279C00545550 /* TimeTravelersCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2907267D1F74279C00545550 /* TimeTravelersCollectionViewDataSource.swift */; };
 		2907F99E1F694C4000328AEE /* GemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2907F99D1F694C4000328AEE /* GemViewController.swift */; };
 		2908784A220210CF0010820A /* Strings-objcBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29087849220210CF0010820A /* Strings-objcBridge.swift */; };
+		2908E3512217255600D246CD /* (null) in Resources */ = {isa = PBXBuildFile; };
 		290A405421FA175800A409BA /* Purple@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 290A405221FA175700A409BA /* Purple@2x.png */; };
 		290A405521FA175800A409BA /* Purple@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 290A405321FA175800A409BA /* Purple@3x.png */; };
 		290B623F20727113007287C4 /* MyGuildCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B623E20727113007287C4 /* MyGuildCell.swift */; };
@@ -86,11 +87,8 @@
 		29255E491F3E1B0F0094A3E3 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29255E481F3E1B0F0094A3E3 /* ToastView.swift */; };
 		29255E4B1F3E236C0094A3E3 /* ToastManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29255E4A1F3E236C0094A3E3 /* ToastManager.swift */; };
 		29255E4D1F3E25910094A3E3 /* CGRect-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29255E4C1F3E25910094A3E3 /* CGRect-Extensions.swift */; };
-		29265890206A4E84006C8B54 /* Habitica_Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE3B204D9D290086D5F7 /* Habitica_Models.framework */; };
 		29265891206A4E84006C8B54 /* Habitica_Models.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE3B204D9D290086D5F7 /* Habitica_Models.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		29265892206A4E84006C8B54 /* Habitica_Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE3D204D9D360086D5F7 /* Habitica_Database.framework */; };
 		29265893206A4E84006C8B54 /* Habitica_Database.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE3D204D9D360086D5F7 /* Habitica_Database.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		29265894206A4E84006C8B54 /* Habitica_API_Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE4D204DA1830086D5F7 /* Habitica_API_Client.framework */; };
 		29265895206A4E84006C8B54 /* Habitica_API_Client.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE4D204DA1830086D5F7 /* Habitica_API_Client.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		292726B620B7094B009DD08A /* ChallengeTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292726B520B7094A009DD08A /* ChallengeTableViewDataSource.swift */; };
 		292844ED20DD1D4B0011DC43 /* GroupInvitationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292844EC20DD1D4B0011DC43 /* GroupInvitationView.swift */; };
@@ -494,7 +492,6 @@
 		D9D17CCE1E6736B500AD9232 /* ChallengeDetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CCD1E6736B500AD9232 /* ChallengeDetailHeaderView.xib */; };
 		D9D17CD01E673CCC00AD9232 /* UIView-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D17CCF1E673CCC00AD9232 /* UIView-Extensions.swift */; };
 		D9D17CD21E6898E400AD9232 /* HabitTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CD11E6898E400AD9232 /* HabitTableViewCell.xib */; };
-		D9D17CD41E68995000AD9232 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		D9D17CD61E6899A800AD9232 /* ToDoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CD51E6899A800AD9232 /* ToDoTableViewCell.xib */; };
 		D9D17CDA1E69C68000AD9232 /* ChallengeDetailAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CD91E69C68000AD9232 /* ChallengeDetailAlert.xib */; };
 		D9D17CDE1E6AFFD900AD9232 /* ChallengeDetailAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D17CDD1E6AFFD900AD9232 /* ChallengeDetailAlert.swift */; };
@@ -1260,17 +1257,14 @@
 				D92D26161D58EF00001FD977 /* AVFoundation.framework in Frameworks */,
 				D9CD2DBE1BC7FBB500B1304B /* CoreSpotlight.framework in Frameworks */,
 				D958E2B11915D41D00186A08 /* SystemConfiguration.framework in Frameworks */,
-				29265890206A4E84006C8B54 /* Habitica_Models.framework in Frameworks */,
 				D958E2B01915D41400186A08 /* Security.framework in Frameworks */,
 				D958E2AE1915D40F00186A08 /* QuartzCore.framework in Frameworks */,
 				D958E2AD1915D40600186A08 /* CoreText.framework in Frameworks */,
 				D9EB4E9118CB4A9400BB2094 /* CoreGraphics.framework in Frameworks */,
 				D9EB4E9318CB4A9400BB2094 /* UIKit.framework in Frameworks */,
-				29265892206A4E84006C8B54 /* Habitica_Database.framework in Frameworks */,
 				D9EB4E8F18CB4A9400BB2094 /* Foundation.framework in Frameworks */,
 				D9C89CF91B1F0E6C00A599B0 /* StoreKit.framework in Frameworks */,
 				F9E64EEA9B65CE54DBB87415 /* Pods_Habitica.framework in Frameworks */,
-				29265894206A4E84006C8B54 /* Habitica_API_Client.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2633,7 +2627,7 @@
 			attributes = {
 				CLASSPREFIX = HRPG;
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "HabitRPG Inc.";
 				TargetAttributes = {
 					29701FEA1F5848880097BBCC = {
@@ -2734,14 +2728,13 @@
 				49E378532009542C00E0DA3D /* ChallengeTableViewHeaderView.xib in Resources */,
 				498E4D001FA17C1A006933FF /* ChallengeCategoriesTableViewCell.xib in Resources */,
 				2914487A20864A3300F3A6B5 /* EquipmentOverviewView.xib in Resources */,
-				D9D17CD41E68995000AD9232 /* (null) in Resources */,
+				2908E3512217255600D246CD /* (null) in Resources */,
 				29028C442037132A00B7F704 /* SystemMessageTableViewCell.xib in Resources */,
 				29AAA1611F2B597400029737 /* SpeechbubbleView.xib in Resources */,
 				29FC885E2018D858002B3D3F /* WorldBossDescription.xib in Resources */,
 				293BB4A31FD07603003B6F4F /* StatsSliderView.xib in Resources */,
 				296E4BC921AEFE6100DB3602 /* TealAlt@2x.png in Resources */,
 				296E4B7221AEF35E00DB3602 /* PrideAlt@3x.png in Resources */,
-				D9D17CD41E68995000AD9232 /* (null) in Resources */,
 				29E16311200E5FEA00685640 /* QuestProgressView.xib in Resources */,
 				296E4BCB21AEFE6100DB3602 /* BlueAlt@3x.png in Resources */,
 				296E4BC721AEFE6100DB3602 /* RedAlt@3x.png in Resources */,
@@ -2750,7 +2743,6 @@
 				296E4B8621AEF35E00DB3602 /* Pride@2x.png in Resources */,
 				2902799A20583E83006DACB9 /* OnePasswordExtension.strings in Resources */,
 				290A405421FA175800A409BA /* Purple@2x.png in Resources */,
-				D9D17CD41E68995000AD9232 /* (null) in Resources */,
 				D9BB45CA1E76DF260002AE2E /* DailyTableViewCell.xib in Resources */,
 				296E4B9421AEF35E00DB3602 /* Pride@3x.png in Resources */,
 				29B6AD4A1F2A0C9800AC8878 /* LoginEntryView.xib in Resources */,
@@ -3968,14 +3960,22 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -4014,14 +4014,22 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
