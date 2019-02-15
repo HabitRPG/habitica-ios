@@ -108,6 +108,13 @@ class SplitSocialViewController: HabiticaSplitViewController {
     
     internal func set(group: GroupProtocol) {
         detailViewController?.groupProperty.value = group
+        if group.type == "guild" {
+            if group.privacy == "public" {
+                chatViewController?.autocompleteContext = "publicGuild"
+            } else {
+                chatViewController?.autocompleteContext = "privateGuild"
+            }
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
