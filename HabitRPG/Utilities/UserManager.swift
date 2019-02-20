@@ -87,7 +87,9 @@ class UserManager: NSObject {
                 Crashlytics.sharedInstance().recordError(error)
             })
             .start())
-        disposable.add(taskRepository.getReminders().on(value: {[weak self](reminders, changes) in
+        disposable.add(taskRepository.getReminders()
+            .debounce(2, on: QueueScheduler.main)
+            .on(value: {[weak self](reminders, changes) in
             if let changes = changes {
                 self?.updateReminderNotifications(reminders: reminders, changes: changes)
             }
