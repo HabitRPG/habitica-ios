@@ -482,6 +482,7 @@
 "username_confirmed_toast" = "Your username was confirmed";
 "settings.username_not_confirmed" = "Username not confirmed";
 "settings.display_name_length_error" = "Your display name has to be between 1 and 30 characters.";
+"settings.searchable_username" = "Make username searchable";
 "about.website" = "Website";
 "about.send_feedback" = "Send Feedback";
 "about.report_bug" = "Report a Bug";

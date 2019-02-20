@@ -25,6 +25,7 @@ enum SettingsTags {
     static let soundTheme = "soundTheme"
     static let changeClass = "changeClass"
     static let server = "server"
+    static let searchableUsername = "searchableUsername"
 }
 
 enum Servers: String {
@@ -380,6 +381,17 @@ class SettingsViewController: FormViewController, Themeable {
                     }
                 })
             +++ Section(L10n.Settings.social)
+            <<< SwitchRow(SettingsTags.searchableUsername) { row in
+                row.title = L10n.Settings.searchableUsername
+                row.onChange({ (row) in
+                    if row.value == self.user?.preferences?.searchableUsername {
+                        return
+                    }
+                    if let value = row.value {
+                        self.userRepository.updateUser(key: "preferences.searchableUsername", value: value).observeCompleted {}
+                    }
+                })
+            }
             <<< SwitchRow(SettingsTags.disableAllNotifications) { row in
                 row.title = L10n.Settings.disableAllNotifications
                 row.onChange({ (row) in
@@ -482,6 +494,10 @@ class SettingsViewController: FormViewController, Themeable {
         let timeRow = (form.rowBy(tag: SettingsTags.customDayStart) as? TimeRow)
         timeRow?.value = calendar.date(from: components)
         timeRow?.updateCell()
+        
+        let searchableUsernameRow = (form.rowBy(tag: SettingsTags.searchableUsername) as? SwitchRow)
+        searchableUsernameRow?.value = user.preferences?.searchableUsername
+        searchableUsernameRow?.updateCell()
         
         let disableNotificationsRow = (form.rowBy(tag: SettingsTags.disableAllNotifications) as? SwitchRow)
         disableNotificationsRow?.value = user.preferences?.pushNotifications?.unsubscribeFromAll

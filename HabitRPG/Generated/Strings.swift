@@ -1119,6 +1119,8 @@ public enum L10n {
     public static let resetAccount = L10n.tr("Mainstrings", "settings.reset_account")
     /// WARNING! This resets many parts of your account. This is highly discouraged, but some people find it useful in the beginning after playing with the site for a short time.\n\nYou will lose all your levels, gold, and experience points. All your tasks (except those from challenges) will be deleted permanently and you will lose all of their historical data. You will lose all your equipment but you will be able to buy it all back, including all limited edition equipment or subscriber Mystery items that you already own (you will need to be in the correct class to re-buy class-specific gear). You will keep your current class and your pets and mounts. You might prefer to use an Orb of Rebirth instead, which is a much safer option and which will preserve your tasks and equipment.
     public static let resetAccountDescription = L10n.tr("Mainstrings", "settings.reset_account_description")
+    /// Make username searchable
+    public static let searchableUsername = L10n.tr("Mainstrings", "settings.searchable_username")
     /// Select Class
     public static let selectClass = L10n.tr("Mainstrings", "settings.select_class")
     /// Server
