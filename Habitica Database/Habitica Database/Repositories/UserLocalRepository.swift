@@ -12,6 +12,7 @@ import ReactiveSwift
 
 public class UserLocalRepository: BaseLocalRepository {
     public func save(_ user: UserProtocol) {
+        removeOldTags(userID: user.id, newTags: user.tags)
         if let realmUser = user as? RealmUser {
             save(object: realmUser)
             return
@@ -62,6 +63,24 @@ public class UserLocalRepository: BaseLocalRepository {
             let realm = getRealm()
             try? realm?.write {
                 realm?.delete(rewardsToRemove)
+            }
+        }
+    }
+    
+    private func removeOldTags(userID: String?, newTags: [TagProtocol]) {
+        let oldTags = getRealm()?.objects(RealmTag.self).filter("userID == '\(userID ?? "")'")
+        var tagsToRemove = [RealmTag]()
+        oldTags?.forEach({ (tag) in
+            if !newTags.contains(where: { (newTag) -> Bool in
+                return newTag.id == tag.id
+            }) {
+                tagsToRemove.append(tag)
+            }
+        })
+        if tagsToRemove.count > 0 {
+            let realm = getRealm()
+            try? realm?.write {
+                realm?.delete(tagsToRemove)
             }
         }
     }
