@@ -35,8 +35,6 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     
     @objc public weak var shopViewController: HRPGShopViewController?
     
-    private var isBuying = false
-    
     private var user: UserProtocol? {
         didSet {
             refreshBalances()
@@ -296,19 +294,15 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     //swiftlint:disable cyclomatic_complexity
     @objc
     func buyPressed() {
-        if isBuying {
-            return
-        }
         if itemIsLocked() {
             return
         }
-        isBuying = true
         var key = ""
         var purchaseType = ""
         var currency = Currency.gold
         var setIdentifier = ""
         var value = 0
-        var successBlock = { return SignalProducer<[InAppRewardProtocol]?, NoError>.empty }
+        var successBlock = {}
         var text = ""
         /*if let shopItem = item {
             key = shopItem.key ?? ""
@@ -337,11 +331,12 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                 currency = thisCurrency
             }
             successBlock = {
-                return self.userRepository.retrieveInAppRewards().producer
+                self.userRepository.retrieveInAppRewards().observeCompleted {}
             }
         }
         
         if key != "" {
+            self.dismiss(animated: true, completion: nil)
             
             let topViewController = self.presentingViewController
             if !canBuy() {
@@ -367,70 +362,57 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
             
             if currency == .hourglass {
                 if purchaseType == "gear" || purchaseType == "mystery_set" {
-                    inventoryRepository.purchaseMysterySet(identifier: setIdentifier, text: text)
-                        .flatMap(.latest, { _ in
-                            return successBlock()
-                        }).observeResult({ (result) in
-                        self.dismiss(animated: true, completion: nil)
+                    inventoryRepository.purchaseMysterySet(identifier: setIdentifier, text: text).observeResult({ (result) in
                         if result.error != nil {
                             HRPGBuyItemModalViewController.displayViewController(name: "InsufficientHourglassesViewController", parent: topViewController)
+                        } else {
+                            successBlock()
                         }
                     })
                 } else {
-                    inventoryRepository.purchaseHourglassItem(purchaseType: purchaseType, key: key, text: text)
-                        .flatMap(.latest, { _ in
-                            return successBlock()
-                        }).observeResult({ (result) in
-                            self.dismiss(animated: true, completion: nil)
-                            if result.error != nil {
+                    inventoryRepository.purchaseHourglassItem(purchaseType: purchaseType, key: key, text: text).observeResult({ (result) in
+                        if result.error != nil {
                             HRPGBuyItemModalViewController.displayViewController(name: "InsufficientHourglassesViewController", parent: topViewController)
+                        } else {
+                            successBlock()
                         }
                     })
                 }
             } else if currency == .gem || purchaseType == "gems" {
-                inventoryRepository.purchaseItem(purchaseType: purchaseType, key: key, value: value, text: text)
-                    .flatMap(.latest, { _ in
-                        return successBlock()
-                    }).observeResult({ (result) in
+                inventoryRepository.purchaseItem(purchaseType: purchaseType, key: key, value: value, text: text).observeResult({ (result) in
                     if result.error != nil {
-                        self.dismiss(animated: true, completion: nil)
                         if key == "gem" {
                             HRPGBuyItemModalViewController.displayViewController(name: "GemCapReachedViewController", parent: topViewController)
                         } else {
                             HRPGBuyItemModalViewController.displayViewController(name: "InsufficientGemsViewController", parent: topViewController)
                         }
+                    } else {
+                        successBlock()
                     }
                 })
             } else if purchaseType == "fortify" {
-                userRepository.reroll()
-                    .flatMap(.latest, { _ in
-                        return successBlock()
-                    }).observeResult({ (result) in
-                        self.dismiss(animated: true, completion: nil)
-                        if result.error != nil {
+                userRepository.reroll().observeResult({ (result) in
+                    if result.error != nil {
                         HRPGBuyItemModalViewController.displayViewController(name: "InsufficientGoldViewController", parent: topViewController)
+                    } else {
+                        successBlock()
                     }
                 })
             } else {
                 if currency == .gold && purchaseType == "quests" {
-                    inventoryRepository.purchaseQuest(key: key, text: text)
-                        .flatMap(.latest, { _ in
-                            return successBlock()
-                        }).observeResult({ (result) in
-                            self.dismiss(animated: true, completion: nil)
-                            if result.error != nil {
+                    inventoryRepository.purchaseQuest(key: key, text: text).observeResult({ (result) in
+                        if result.error != nil {
                             HRPGBuyItemModalViewController.displayViewController(name: "InsufficientGoldViewController", parent: topViewController)
+                        } else {
+                            successBlock()
                         }
                     })
                 } else {
-                    inventoryRepository.buyObject(key: key, text: text)
-                        .flatMap(.latest, { _ in
-                            return successBlock()
-                        })
-                        .observeResult({ (result) in
-                            self.dismiss(animated: true, completion: nil)
-                            if result.error != nil {
+                    inventoryRepository.buyObject(key: key, text: text).observeResult({ (result) in
+                        if result.error != nil {
                             HRPGBuyItemModalViewController.displayViewController(name: "InsufficientGoldViewController", parent: topViewController)
+                        } else {
+                            successBlock()
                         }
                     })
                 }
