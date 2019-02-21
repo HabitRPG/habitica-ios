@@ -129,7 +129,9 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
                         }
                     }
                 } else {
-                    ToastManager.show(text: L10n.purchased(text), color: .green)
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) {
+                        ToastManager.show(text: L10n.purchased(text), color: .green)
+                    }
                 }
             }
         }).map({ habiticaResponse in
@@ -145,7 +147,9 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
                 self?.localUserRepository.updateUser(id: userID, balanceDiff: -(Float(value) / 4.0))
                 self?.localUserRepository.updateUser(id: userID, updateUser: updatedUser)
             }
-            ToastManager.show(text: L10n.purchased(text), color: .green)
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) {
+                ToastManager.show(text: L10n.purchased(text), color: .green)
+            }
         })
     }
     
@@ -156,7 +160,9 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
             if let updatedUser = updatedUser, let userID = self?.currentUserId {
                 self?.localUserRepository.updateUser(id: userID, updateUser: updatedUser)
             }
-            ToastManager.show(text: L10n.purchased(text), color: .green)
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) {
+                ToastManager.show(text: L10n.purchased(text), color: .green)
+            }
         })
     }
     
@@ -167,7 +173,9 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
             if let updatedUser = updatedUser, let userID = self?.currentUserId {
                 self?.localUserRepository.updateUser(id: userID, updateUser: updatedUser)
             }
-            ToastManager.show(text: L10n.purchased(text), color: .green)
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) {
+                ToastManager.show(text: L10n.purchased(text), color: .green)
+            }
         })
     }
     
@@ -187,7 +195,9 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
             .on(value: {[weak self] gear in
                 if let key = gear?.key {
                     self?.localRepository.receiveMysteryItem(userID: self?.currentUserId ?? "", key: key)
-                    ToastManager.show(text: L10n.receivedMysteryItem(gear?.text ?? ""), color: .green)
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) {
+                        ToastManager.show(text: L10n.receivedMysteryItem(gear?.text ?? ""), color: .green)
+                    }
                 }
             })
     }
@@ -199,7 +209,9 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
             if let updatedUser = updatedUser, let userID = self?.currentUserId {
                 self?.localUserRepository.updateUser(id: userID, updateUser: updatedUser)
             }
-            ToastManager.show(text: L10n.purchased(text), color: .green)
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) {
+                ToastManager.show(text: L10n.purchased(text), color: .green)
+            }
         })
     }
     
