@@ -18,6 +18,9 @@ import RealmSwift
 import ReactiveSwift
 import Result
 import Instabug
+import Firebase
+import SwiftyStoreKit
+import StoreKit
 
 //This will eventually replace the old ObjC AppDelegate once that code is ported to swift.
 //Reason for adding this class now is mostly, to configure PopupDialogs dim color.
@@ -41,7 +44,11 @@ class HabiticaAppDelegate: NSObject {
     
     @objc
     func setupLogging() {
+        let userID = AuthenticationManager.shared.currentUserId
+        FirebaseApp.configure()
         Fabric.with([Crashlytics.self])
+        Crashlytics.sharedInstance().setUserIdentifier(userID)
+        Crashlytics.sharedInstance().setUserName(userID)
         let keys = HabiticaKeys()
         let instabugKey = HabiticaAppDelegate.isRunningLive() ? keys.instabugLive : keys.instabugBeta
         Instabug.start(withToken: instabugKey, invocationEvents: [.shake])
@@ -60,18 +67,15 @@ class HabiticaAppDelegate: NSObject {
         Instabug.reproStepsMode = .enabledWithNoScreenshots
         BugReporting.invocationOptions = .commentFieldRequired
         
-        if HabiticaAppDelegate.isRunningLive() {
-            Instabug.welcomeMessageMode = .disabled
-        } else {
-            Instabug.welcomeMessageMode = .beta
-        }
+        Instabug.welcomeMessageMode = .disabled
+        Instabug.setUserAttribute(userID ?? "", withKey: "userID")
     }
     
     @objc
     func setupAnalytics() {
         let keys = HabiticaKeys()
-        
         Amplitude.instance().initializeApiKey(keys.amplitudeApiKey)
+        Amplitude.instance().setUserId(AuthenticationManager.shared.currentUserId)
     }
     
     @objc
@@ -92,10 +96,28 @@ class HabiticaAppDelegate: NSObject {
     func setupNetworkClient() {
         NetworkAuthenticationManager.shared.currentUserId = AuthenticationManager.shared.currentUserId
         NetworkAuthenticationManager.shared.currentUserKey = AuthenticationManager.shared.currentUserKey
+        updateServer()
         AuthenticatedCall.errorHandler = HabiticaNetworkErrorHandler()
         let configuration = URLSessionConfiguration.default
         NetworkLogger.enableLogging(for: configuration)
         AuthenticatedCall.defaultConfiguration.urlConfiguration = configuration
+    }
+    
+    func updateServer() {
+        if let chosenServer = UserDefaults().string(forKey: "chosenServer") {
+            switch chosenServer {
+            case "staging":
+                AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.staging
+            case "beta":
+                AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.beta
+            case "gamma":
+                AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.gamma
+            case "delta":
+                AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.delta
+            default:
+                AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.production
+            }
+        }
     }
     
     @objc
@@ -117,6 +139,12 @@ class HabiticaAppDelegate: NSObject {
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             UserManager.shared.beginListening()
         }
+        
+    }
+    
+    @objc
+    func setupRouter() {
+        RouterHandler.shared.register()
     }
     
     @objc
@@ -154,7 +182,7 @@ class HabiticaAppDelegate: NSObject {
             let localNotification = UILocalNotification()
             localNotification.fireDate = date
             localNotification.repeatInterval = .day
-            localNotification.alertBody = NSLocalizedString("Remember to check off your Dailies!", comment: "")
+            localNotification.alertBody = L10n.rememberCheckOffDailies
             localNotification.soundName = UILocalNotificationDefaultSoundName
             localNotification.timeZone = NSTimeZone.default
             UIApplication.shared.scheduleLocalNotification(localNotification)
@@ -304,6 +332,11 @@ class HabiticaAppDelegate: NSObject {
                 completed(false)
             }
         })
+    }
+    
+    @objc
+    func displayNotificationInApp(text: String) {
+       ToastManager.show(text: text, color: .purple)
     }
     
     @objc

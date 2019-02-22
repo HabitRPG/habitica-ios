@@ -48,10 +48,10 @@ class ImageOverlayView: HabiticaAlertController {
         contentView = imageView
         imageView.contentMode = .center
         imageHeightConstraint = NSLayoutConstraint(item: imageView,
-                                                   attribute: NSLayoutAttribute.height,
-                                                   relatedBy: NSLayoutRelation.equal,
+                                                   attribute: NSLayoutConstraint.Attribute.height,
+                                                   relatedBy: NSLayoutConstraint.Relation.equal,
                                                    toItem: nil,
-                                                   attribute: NSLayoutAttribute.notAnAttribute,
+                                                   attribute: NSLayoutConstraint.Attribute.notAnAttribute,
                                                    multiplier: 1,
                                                    constant: 100)
         if let constraint = imageHeightConstraint {

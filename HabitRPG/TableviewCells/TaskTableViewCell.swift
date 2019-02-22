@@ -11,7 +11,7 @@ import Down
 import Habitica_Models
 
 @objc
-class TaskTableViewCell: UITableViewCell {
+class TaskTableViewCell: UITableViewCell, UITextViewDelegate {
 
     //swiftlint:disable private_outlet
     @IBOutlet weak var titleLabel: UILabel!
@@ -77,7 +77,7 @@ class TaskTableViewCell: UITableViewCell {
         self.mainTaskWrapper.accessibilityCustomActions = []
         self.mainTaskWrapper.shouldGroupAccessibilityChildren = true
         self.mainTaskWrapper.isAccessibilityElement = true
-        self.mainTaskWrapper.accessibilityHint = NSLocalizedString("Double tap to edit", comment: "")
+        self.mainTaskWrapper.accessibilityHint = L10n.Accessibility.doubleTapToEdit
         self.mainTaskWrapper.accessibilityLabel = "\(task.text ?? "")"
         self.mainTaskWrapper.accessibilityLabel = "\(self.mainTaskWrapper.accessibilityLabel ?? ""), Value: \(String.forTaskQuality(task: task))"
         if let notes = task.notes, !notes.isEmpty {
@@ -94,5 +94,9 @@ class TaskTableViewCell: UITableViewCell {
         if let action = syncErrorTouched {
             action()
         }
+    }
+    
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
+        return !RouterHandler.shared.handle(url: URL)
     }
 }

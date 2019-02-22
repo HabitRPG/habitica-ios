@@ -20,8 +20,12 @@
 
     UIImage *calendarImage = [UIImage imageNamed:@"tabbar_dailies"];
     
-    UIGraphicsBeginImageContextWithOptions(
-                                           CGSizeMake(calendarImage.size.width, calendarImage.size.height), NO, 0.0f);
+    self.navigationItem.title = objcL10n.chooseTask;
+    self.tabBar.items[0].title = objcL10n.habits;
+    self.tabBar.items[1].title = objcL10n.dailies;
+    self.tabBar.items[2].title = objcL10n.todos;
+    
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(calendarImage.size.width, calendarImage.size.height), NO, 0.0f);
     [calendarImage
      drawInRect:CGRectMake(0, 0, calendarImage.size.width, calendarImage.size.height)];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];

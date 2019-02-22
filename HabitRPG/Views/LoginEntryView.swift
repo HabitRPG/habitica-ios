@@ -15,7 +15,7 @@ class LoginEntryView: UIView, UITextFieldDelegate {
         didSet {
             if let text = placeholderText {
                 let color = UIColor.white.withAlphaComponent(0.5)
-                entryView.attributedPlaceholder = NSAttributedString(string: text, attributes: [NSAttributedStringKey.foregroundColor: color])
+                entryView.attributedPlaceholder = NSAttributedString(string: text, attributes: [NSAttributedString.Key.foregroundColor: color])
             } else {
                 entryView.placeholder = ""
             }
@@ -54,6 +54,14 @@ class LoginEntryView: UIView, UITextFieldDelegate {
     
     var gestureRecognizer: UIGestureRecognizer?
     
+    var hasError: Bool = false {
+        didSet {
+            setBarColor()
+        }
+    }
+    
+    private var wasEdited = false
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         xibSetup()
@@ -67,7 +75,7 @@ class LoginEntryView: UIView, UITextFieldDelegate {
     func xibSetup() {
         if let view = loadViewFromNib() {
             view.frame = bounds
-            view.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
+            view.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
             addSubview(view)
             
             self.gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tappedView))
@@ -89,6 +97,7 @@ class LoginEntryView: UIView, UITextFieldDelegate {
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        wasEdited = true
         UIView.animate(withDuration: 0.3) {
             self.bottomBorder.alpha = 1.0
         }
@@ -116,5 +125,17 @@ class LoginEntryView: UIView, UITextFieldDelegate {
     @objc
     func tappedView() {
         entryView.becomeFirstResponder()
+    }
+    
+    private func setBarColor() {
+        if !wasEdited {
+            return
+        }
+        
+        if hasError {
+            bottomBorder.backgroundColor = UIColor.red50()
+        } else {
+            bottomBorder.backgroundColor = .white
+        }
     }
 }

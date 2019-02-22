@@ -39,8 +39,8 @@
                         <rect key="frame" x="53" y="4" width="397" height="117"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" fixedFrame="YES" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YoQ-TM-ipq" customClass="UsernameLabel" customModule="Habitica" customModuleProvider="target">
-                                <rect key="frame" x="12" y="8" width="79" height="20.5"/>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" fixedFrame="YES" text="Display Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YoQ-TM-ipq" customClass="UsernameLabel" customModule="Habitica" customModuleProvider="target">
+                                <rect key="frame" x="12" y="8" width="105" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -117,7 +117,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" fixedFrame="YES" text="Staff" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rx1-HL-DWe" customClass="PaddedLabel" customModule="Habitica" customModuleProvider="target">
-                                <rect key="frame" x="99" y="8.5" width="27.5" height="20"/>
+                                <rect key="frame" x="124" y="8.5" width="27.5" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.37997829910000003" green="0.1982949376" blue="0.70615965130000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -176,6 +176,7 @@
                 <outlet property="avatarWrapper" destination="ISS-gO-fwb" id="XaL-xJ-HGw"/>
                 <outlet property="copyButton" destination="G1R-RL-d8l" id="sPR-xx-sL5"/>
                 <outlet property="deleteButton" destination="dUD-VU-Sa0" id="Gfd-tq-BVV"/>
+                <outlet property="displaynameLabel" destination="YoQ-TM-ipq" id="VgH-YO-VP6"/>
                 <outlet property="messageTextView" destination="TbF-Ge-g2M" id="ej9-Rj-7Cp"/>
                 <outlet property="messageWrapper" destination="73G-Ol-XzR" id="vXg-1a-Qzj"/>
                 <outlet property="plusOneButton" destination="bFH-4J-Pe0" id="h50-yg-naf"/>
@@ -183,8 +184,7 @@
                 <outlet property="replyButton" destination="kRh-ZJ-rwO" id="Ahb-vN-P2V"/>
                 <outlet property="reportButton" destination="sSF-K3-LSE" id="Dzi-2j-JP4"/>
                 <outlet property="reportView" destination="FFc-TR-yty" id="jm0-I4-hbG"/>
-                <outlet property="timeLabel" destination="xNL-2w-tsy" id="WaV-Wb-kyX"/>
-                <outlet property="usernameLabel" destination="YoQ-TM-ipq" id="VgH-YO-VP6"/>
+                <outlet property="sublineLabel" destination="xNL-2w-tsy" id="WaV-Wb-kyX"/>
             </connections>
             <point key="canvasLocation" x="228" y="218.5"/>
         </tableViewCell>

@@ -22,19 +22,36 @@ class AttributePointsViewController: HRPGUIViewController, Themeable {
     @IBOutlet weak var intelligenceStatsView: StatsView!
     @IBOutlet weak var constitutionStatsView: StatsView!
     @IBOutlet weak var perceptionStatsView: StatsView!
+    @IBOutlet weak var autoAllocateLabel: UILabel!
     @IBOutlet weak var autoAllocationSwitch: UISwitch!
     
     @IBOutlet weak var distributionStackView: UIStackView!
     @IBOutlet weak var distributionBackground: UIView!
     @IBOutlet weak var distributeEvenlyView: UIView!
+    @IBOutlet weak var distributeEvenlyLabel: UILabel!
     @IBOutlet weak var distributeEvenlyHelpView: UIImageView!
     @IBOutlet weak var distributeEvenlyCheckmark: UIImageView!
     @IBOutlet weak var distributeClassView: UIView!
+    @IBOutlet weak var distributeClassLabel: UILabel!
     @IBOutlet weak var distributeClassHelpView: UIImageView!
     @IBOutlet weak var distributeClassCheckmark: UIImageView!
     @IBOutlet weak var distributeTaskView: UIView!
+    @IBOutlet weak var distributeTasksLabel: UILabel!
     @IBOutlet weak var distributeTaskHelpView: UIImageView!
     @IBOutlet weak var distributeTaskCheckmark: UIImageView!
+    
+    @IBOutlet weak var statGuideTitleLabel: UILabel!
+    
+    @IBOutlet weak var characterBuildTitleLabel: UILabel!
+    @IBOutlet weak var characterBuildTextLabel: UILabel!
+    @IBOutlet weak var strengthTitleLabel: UILabel!
+    @IBOutlet weak var strengthTextLabel: UILabel!
+    @IBOutlet weak var intelligenceTitleLabel: UILabel!
+    @IBOutlet weak var intelligenceTextLabel: UILabel!
+    @IBOutlet weak var constitutionTitleLabel: UILabel!
+    @IBOutlet weak var constitutionTextLabel: UILabel!
+    @IBOutlet weak var perceptionTitleLabel: UILabel!
+    @IBOutlet weak var perceptionTextLabel: UILabel!
     
     var totalStrength: Int = 0 {
         didSet {
@@ -89,9 +106,31 @@ class AttributePointsViewController: HRPGUIViewController, Themeable {
         ThemeService.shared.addThemeable(themable: self, applyImmediately: true)
     }
     
+    override func populateText() {
+        navigationItem.title = L10n.Titles.stats
+        
+        autoAllocateLabel.text = L10n.Stats.autoAllocatePoints
+        distributeEvenlyLabel.text = L10n.Stats.distributeEvenly
+        distributeClassLabel.text = L10n.Stats.distributeClass
+        distributeTasksLabel.text = L10n.Stats.distributeTasks
+        
+        statGuideTitleLabel.text = L10n.Stats.statGuide
+        
+        characterBuildTitleLabel.text = L10n.Stats.characterBuildTitle
+        characterBuildTextLabel.text = L10n.Stats.characterBuildText
+        strengthTitleLabel.text = L10n.Stats.strengthTitle
+        strengthTextLabel.text = L10n.Stats.strengthText
+        intelligenceTitleLabel.text = L10n.Stats.intelligenceTitle
+        intelligenceTextLabel.text = L10n.Stats.intelligenceText
+        constitutionTitleLabel.text = L10n.Stats.constitutionTitle
+        constitutionTextLabel.text = L10n.Stats.constitutionText
+        perceptionTitleLabel.text = L10n.Stats.perceptionTitle
+        perceptionTextLabel.text = L10n.Stats.perceptionText
+    }
+    
     override func getDefinitonForTutorial(_ tutorialIdentifier: String) -> [AnyHashable: Any]? {
         if tutorialIdentifier == "stats" {
-            return ["text": NSLocalizedString("Tap the gray button to allocate lots of your stats at once, or tap the arrows to add them one point at a time.", comment: "")]
+            return ["text": L10n.Tutorials.stats]
         }
         return nil
     }
@@ -258,17 +297,17 @@ class AttributePointsViewController: HRPGUIViewController, Themeable {
     
     @objc
     func distributeEvenlyHelpTapped() {
-        showHelpView(NSLocalizedString("Assigns the same number of points to each attribute.", comment: ""))
+        showHelpView(L10n.Stats.distributeEvenlyHelp)
     }
     
     @objc
     func distributeClassHelpTapped() {
-        showHelpView(NSLocalizedString("Assigns more points to the attributes important to your Class.", comment: ""))
+        showHelpView(L10n.Stats.distributeClassHelp)
     }
     
     @objc
     func distributeTaskHelpTapped() {
-        showHelpView(NSLocalizedString("Assigns points based on the Strength, Intelligence, Constitution, and Perception categories associated with the tasks you complete.", comment: ""))
+        showHelpView(L10n.Stats.distributeTasksHelp)
     }
     
     func showHelpView(_ message: String) {

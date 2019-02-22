@@ -94,37 +94,43 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
         })
     }
     
-    func buyObject(key: String) -> Signal<BuyResponseProtocol?, NoError> {
+    func buyObject(key: String, price: Int, text: String) -> Signal<BuyResponseProtocol?, NoError> {
         let call = BuyObjectCall(key: key)
         call.fire()
         return call.habiticaResponseSignal.on(value: {[weak self]habiticaResponse in
             if let buyResponse = habiticaResponse?.data, let userID = self?.currentUserId {
-                self?.localUserRepository.updateUser(id: userID, buyResponse: buyResponse)
+                self?.localUserRepository.updateUser(id: userID, price: price, buyResponse: buyResponse)
                 
                 if let armoire = buyResponse.armoire {
                     guard let text = habiticaResponse?.message?.stripHTML().trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) else {
                         return
                     }
-                    if armoire.type == "experience" {
-                        ToastManager.show(text: text, color: .yellow)
-                    } else if armoire.type == "food" {
-                        ToastManager.show(text: text, color: .gray)
-                        //TODO: Show images in armoire toasts
-                        /*ImageManager.getImage(name: "Pet_Food_\(armoire.dropText ?? "")", completion: { (image, _) in
-                            if let image = image {
-                                let toastView = ToastView(title: text, icon: image, background: .gray)
-                                ToastManager.show(toast: toastView)
-                            }
-                        })*/
-                    } else if armoire.type == "gear" {
-                        ToastManager.show(text: text, color: .gray)
-                        //TODO: Show images in armoire toasts
-                        /*ImageManager.getImage(name: "shop_\(armoire.dropText ?? "")", completion: { (image, _) in
-                            if let image = image {
-                                let toastView = ToastView(title: text, icon: image, background: .gray)
-                                ToastManager.show(toast: toastView)
-                            }
-                        })*/
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) {
+                        if armoire.type == "experience" {
+                            ToastManager.show(text: text, color: .yellow, duration: 4.0)
+                        } else if armoire.type == "food" {
+                            ToastManager.show(text: text, color: .gray, duration: 4.0)
+                            //TODO: Show images in armoire toasts
+                            /*ImageManager.getImage(name: "Pet_Food_\(armoire.dropText ?? "")", completion: { (image, _) in
+                             if let image = image {
+                             let toastView = ToastView(title: text, icon: image, background: .gray)
+                             ToastManager.show(toast: toastView)
+                             }
+                             })*/
+                        } else if armoire.type == "gear" {
+                            ToastManager.show(text: text, color: .gray, duration: 4.0)
+                            //TODO: Show images in armoire toasts
+                            /*ImageManager.getImage(name: "shop_\(armoire.dropText ?? "")", completion: { (image, _) in
+                             if let image = image {
+                             let toastView = ToastView(title: text, icon: image, background: .gray)
+                             ToastManager.show(toast: toastView)
+                             }
+                             })*/
+                        }
+                    }
+                } else {
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) {
+                        ToastManager.show(text: L10n.purchased(text), color: .green)
                     }
                 }
             }
@@ -133,7 +139,7 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
         })
     }
     
-    func purchaseItem(purchaseType: String, key: String, value: Int) -> Signal<UserProtocol?, NoError> {
+    func purchaseItem(purchaseType: String, key: String, value: Int, text: String) -> Signal<UserProtocol?, NoError> {
         let call = PurchaseItemCall(purchaseType: purchaseType, key: key)
         call.fire()
         return call.objectSignal.on(value: {[weak self]updatedUser in
@@ -141,25 +147,34 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
                 self?.localUserRepository.updateUser(id: userID, balanceDiff: -(Float(value) / 4.0))
                 self?.localUserRepository.updateUser(id: userID, updateUser: updatedUser)
             }
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) {
+                ToastManager.show(text: L10n.purchased(text), color: .green)
+            }
         })
     }
     
-    func purchaseHourglassItem(purchaseType: String, key: String) -> Signal<UserProtocol?, NoError> {
+    func purchaseHourglassItem(purchaseType: String, key: String, text: String) -> Signal<UserProtocol?, NoError> {
         let call = PurchaseHourglassItemCall(purchaseType: purchaseType, key: key)
         call.fire()
         return call.objectSignal.on(value: {[weak self]updatedUser in
             if let updatedUser = updatedUser, let userID = self?.currentUserId {
                 self?.localUserRepository.updateUser(id: userID, updateUser: updatedUser)
             }
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) {
+                ToastManager.show(text: L10n.purchased(text), color: .green)
+            }
         })
     }
     
-    func purchaseMysterySet(identifier: String) -> Signal<UserProtocol?, NoError> {
+    func purchaseMysterySet(identifier: String, text: String) -> Signal<UserProtocol?, NoError> {
         let call = PurchaseMysterySetCall(identifier: identifier)
         call.fire()
         return call.objectSignal.on(value: {[weak self]updatedUser in
             if let updatedUser = updatedUser, let userID = self?.currentUserId {
                 self?.localUserRepository.updateUser(id: userID, updateUser: updatedUser)
+            }
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) {
+                ToastManager.show(text: L10n.purchased(text), color: .green)
             }
         })
     }
@@ -180,17 +195,22 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
             .on(value: {[weak self] gear in
                 if let key = gear?.key {
                     self?.localRepository.receiveMysteryItem(userID: self?.currentUserId ?? "", key: key)
-                    ToastManager.show(text: L10n.receivedMysteryItem(gear?.text ?? ""), color: .green)
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) {
+                        ToastManager.show(text: L10n.receivedMysteryItem(gear?.text ?? ""), color: .green)
+                    }
                 }
             })
     }
     
-    func purchaseQuest(key: String) -> Signal<UserProtocol?, NoError> {
+    func purchaseQuest(key: String, text: String) -> Signal<UserProtocol?, NoError> {
         let call = PurchaseQuestCall(key: key)
         call.fire()
         return call.objectSignal.on(value: {[weak self]updatedUser in
             if let updatedUser = updatedUser, let userID = self?.currentUserId {
                 self?.localUserRepository.updateUser(id: userID, updateUser: updatedUser)
+            }
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) {
+                ToastManager.show(text: L10n.purchased(text), color: .green)
             }
         })
     }

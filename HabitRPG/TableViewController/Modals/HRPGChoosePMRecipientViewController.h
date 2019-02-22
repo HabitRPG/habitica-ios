@@ -10,6 +10,6 @@
 
 @interface HRPGChoosePMRecipientViewController : XLFormViewController
 
-@property NSString *userID;
+@property NSString *username;
 
 @end

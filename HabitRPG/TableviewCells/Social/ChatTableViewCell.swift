@@ -12,14 +12,14 @@ import PinLayout
 import Habitica_Models
 import Down
 
-class ChatTableViewCell: UITableViewCell {
+class ChatTableViewCell: UITableViewCell, UITextViewDelegate {
     
     @IBOutlet weak var avatarView: AvatarView!
     @IBOutlet weak var avatarWrapper: UIView!
     @IBOutlet weak private var messageWrapper: UIView!
-    @IBOutlet weak private var usernameLabel: UsernameLabel!
+    @IBOutlet weak private var displaynameLabel: UsernameLabel!
     @IBOutlet weak private var positionLabel: PaddedLabel!
-    @IBOutlet weak private var timeLabel: UILabel!
+    @IBOutlet weak private var sublineLabel: UILabel!
     @IBOutlet weak private var messageTextView: UITextView!
     @IBOutlet weak private var plusOneButton: UIButton!
     @IBOutlet weak private var replyButton: UIButton!
@@ -74,13 +74,13 @@ class ChatTableViewCell: UITableViewCell {
     
     private var contributorLevel = 0 {
         didSet {
-            usernameLabel.contributorLevel = contributorLevel
+            displaynameLabel.contributorLevel = contributorLevel
             positionLabel.isHidden = contributorLevel < 8
             if contributorLevel == 8 {
-                positionLabel.text = NSLocalizedString("Moderator", comment: "")
+                positionLabel.text = L10n.moderator
                 positionLabel.backgroundColor = UIColor.blue10()
             } else if contributorLevel == 9 {
-                positionLabel.text = NSLocalizedString("Staff", comment: "")
+                positionLabel.text = L10n.staff
                 positionLabel.backgroundColor = UIColor.purple300()
             }
         }
@@ -95,9 +95,10 @@ class ChatTableViewCell: UITableViewCell {
             }
         }
     }
-    
+                                                                                                                                                    
     override func awakeFromNib() {
         super.awakeFromNib()
+        messageTextView.delegate = self
         let wrapperTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(expandCell))
         wrapperTapRecognizer.delegate = self
         wrapperTapRecognizer.cancelsTouchesInView = false
@@ -107,7 +108,7 @@ class ChatTableViewCell: UITableViewCell {
         messageTapRecognizer.cancelsTouchesInView = false
         messageTextView.addGestureRecognizer(messageTapRecognizer)
         
-        usernameLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(displayProfile)))
+        displaynameLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(displayProfile)))
         avatarWrapper.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(displayProfile)))
         
         selectionStyle = .none
@@ -128,22 +129,22 @@ class ChatTableViewCell: UITableViewCell {
         messageTextView.font = CustomFontMetrics.scaledSystemFont(ofSize: 15, ofWeight: .regular)
     }
     
-    func configure(chatMessage: ChatMessageProtocol, previousMessage: ChatMessageProtocol?, nextMessage: ChatMessageProtocol?, userID: String, username: String, isModerator: Bool, isExpanded: Bool) {
+    func configure(chatMessage: ChatMessageProtocol, previousMessage: ChatMessageProtocol?, nextMessage: ChatMessageProtocol?, userID: String, username: String, isModerator: Bool, isExpanded: Bool, enableUsernameRelease: Bool) {
         isPrivateMessage = false
         self.isModerator = isModerator
         isOwnMessage = chatMessage.userID == userID
-        wasMentioned = chatMessage.text?.range(of: username) != nil
+        wasMentioned = chatMessage.text?.range(of: "@\(username)") != nil
 
-        usernameLabel.text = chatMessage.username?.unicodeEmoji
+        displaynameLabel.text = chatMessage.displayName?.unicodeEmoji
         contributorLevel = chatMessage.contributor?.level ?? 0
         messageTextView.textColor = UIColor.gray10()
         
         stylePlusOneButton(likes: chatMessage.likes, userID: userID)
         
-        setTimeStamp(date: chatMessage.timestamp)
+        setSubline(username: enableUsernameRelease ? chatMessage.username : nil, date: chatMessage.timestamp)
         
         if let text = chatMessage.text {
-            messageTextView.attributedText = try? Down(markdownString: text).toHabiticaAttributedString()
+            setMessageText(text)
         }
         
         if previousMessage?.isValid == true, previousMessage?.userID == chatMessage.userID {
@@ -179,25 +180,26 @@ class ChatTableViewCell: UITableViewCell {
     }
     
     @objc
-    func configure(inboxMessage: InboxMessageProtocol, previousMessage: InboxMessageProtocol?, nextMessage: InboxMessageProtocol?, user: UserProtocol?, isExpanded: Bool) {
+    func configure(inboxMessage: InboxMessageProtocol, previousMessage: InboxMessageProtocol?, nextMessage: InboxMessageProtocol?, user: UserProtocol?, isExpanded: Bool, enableUsernameRelease: Bool) {
         isPrivateMessage = true
         plusOneButton.isHidden = true
         isOwnMessage = inboxMessage.sent
         isAvatarHidden = true
         if inboxMessage.sent {
-            usernameLabel.text = user?.profile?.name?.unicodeEmoji
+            displaynameLabel.text = user?.profile?.name?.unicodeEmoji
             contributorLevel = user?.contributor?.level ?? 0
+            setSubline(username: enableUsernameRelease ? user?.username : nil, date: inboxMessage.timestamp)
         } else {
-            usernameLabel.text = inboxMessage.username?.unicodeEmoji
+            displaynameLabel.text = inboxMessage.displayName?.unicodeEmoji
             contributorLevel = inboxMessage.contributor?.level ?? 0
+            setSubline(username: enableUsernameRelease ? inboxMessage.username : nil, date: inboxMessage.timestamp)
         }
-        usernameLabel.contributorLevel = contributorLevel
+        displaynameLabel.contributorLevel = contributorLevel
         messageTextView.textColor = .black
         
-        setTimeStamp(date: inboxMessage.timestamp)
         
         if let text = inboxMessage.text {
-            messageTextView.attributedText = try? Down(markdownString: text).toHabiticaAttributedString()
+            messageTextView.attributedText = try? Down(markdownString: text.unicodeEmoji).toHabiticaAttributedString()
         }
         
         if previousMessage?.sent == inboxMessage.sent {
@@ -221,8 +223,21 @@ class ChatTableViewCell: UITableViewCell {
         setNeedsLayout()
     }
     
-    private func setTimeStamp(date: Date?) {
-        timeLabel.text = (date as NSDate?)?.timeAgoSinceNow()
+    private func setSubline(username: String?, date: Date?) {
+        let date = (date as NSDate?)?.timeAgoSinceNow() ?? ""
+        if let username = username {
+            sublineLabel.text = "@\(username) · \(date)"
+        } else {
+            sublineLabel.text = date
+        }
+    }
+    
+    private func setMessageText(_ text: String) {
+        if let attributedText = try? Down(markdownString: text.unicodeEmoji).toHabiticaAttributedString() {
+            messageTextView.attributedText = attributedText
+        } else {
+            messageTextView.text = ""
+        }
     }
     
     private func stylePlusOneButton(likes: [ChatMessageReactionProtocol], userID: String) {
@@ -265,12 +280,12 @@ class ChatTableViewCell: UITableViewCell {
             let characterIndex = layoutManager.characterIndex(for: messageViewLocation, in: messageTextView.textContainer, fractionOfDistanceBetweenInsertionPoints: nil)
             if characterIndex < messageTextView.textStorage.length {
                 let attributes = messageTextView.textStorage.attributes(at: characterIndex, effectiveRange: nil)
-                if attributes[NSAttributedStringKey.link] != nil {
+                if attributes[NSAttributedString.Key.link] != nil {
                     return false
                 }
             }
         }
-        if usernameLabel.frame.contains(location) {
+        if displaynameLabel.frame.contains(location) {
             return false
         }
         if replyButton.frame.contains(location) {
@@ -333,7 +348,7 @@ class ChatTableViewCell: UITableViewCell {
     }
     
     private func showHideExtraButtons(_ shouldShow: Bool) {
-        replyButton.isHidden = !shouldShow
+        replyButton.isHidden = !shouldShow || isPrivateMessage
         copyButton.isHidden = !shouldShow
         if shouldShow {
             reportButton.isHidden = hideReportButton
@@ -355,19 +370,19 @@ class ChatTableViewCell: UITableViewCell {
     }
     
     private func applyAccessibility() {
-        accessibilityLabel = "\(usernameLabel.text ?? ""), \(timeLabel.text ?? ""), \(messageTextView.text ?? "")"
+        accessibilityLabel = "\(displaynameLabel.text ?? ""), \(sublineLabel.text ?? ""), \(messageTextView.text ?? "")"
         shouldGroupAccessibilityChildren = true
         messageTextView.isAccessibilityElement = false
         plusOneButton.isAccessibilityElement = false
         accessibilityCustomActions = [
-            UIAccessibilityCustomAction(name: NSLocalizedString("Reply to Message", comment: ""), target: self, selector: #selector(replyButtonTapped(_:))),
-            UIAccessibilityCustomAction(name: NSLocalizedString("Copy Message", comment: ""), target: self, selector: #selector(copyButtonTapped(_:)))
+            UIAccessibilityCustomAction(name: L10n.Accessibility.replyToMessage, target: self, selector: #selector(replyButtonTapped(_:))),
+            UIAccessibilityCustomAction(name: L10n.Accessibility.copyMessage, target: self, selector: #selector(copyButtonTapped(_:)))
         ]
         if isOwnMessage {
-            accessibilityCustomActions?.append(UIAccessibilityCustomAction(name: NSLocalizedString("Delete Message", comment: ""), target: self, selector: #selector(deleteButtonTapped(_:))))
+            accessibilityCustomActions?.append(UIAccessibilityCustomAction(name: L10n.Accessibility.deleteMessage, target: self, selector: #selector(deleteButtonTapped(_:))))
         } else {
-            accessibilityCustomActions?.append(UIAccessibilityCustomAction(name: NSLocalizedString("Like Message", comment: ""), target: self, selector: #selector(plusOneButtonTapped(_:))))
-            accessibilityCustomActions?.append(UIAccessibilityCustomAction(name: NSLocalizedString("Report Message", comment: ""), target: self, selector: #selector(reportButtonTapped(_:))))
+            accessibilityCustomActions?.append(UIAccessibilityCustomAction(name: L10n.Accessibility.likeMessage, target: self, selector: #selector(plusOneButtonTapped(_:))))
+            accessibilityCustomActions?.append(UIAccessibilityCustomAction(name: L10n.Accessibility.reportMessage, target: self, selector: #selector(reportButtonTapped(_:))))
         }
     }
     
@@ -383,14 +398,14 @@ class ChatTableViewCell: UITableViewCell {
         } else {
             messageWrapper.pin.top(topSpacing).after(of: avatarWrapper).marginStart(leftSpacing).end(12)
         }
-        usernameLabel.pin.start(12).top(8).maxWidth(65%).sizeToFit(.widthFlexible)
-        positionLabel.pin.right(of: usernameLabel).marginStart(8).top(8).sizeToFit(.heightFlexible)
-        if usernameLabel.bounds.size.height < positionLabel.bounds.size.height {
-            usernameLabel.pin.height(positionLabel.bounds.size.height)
+        displaynameLabel.pin.start(12).top(8).maxWidth(65%).sizeToFit(.widthFlexible)
+        positionLabel.pin.right(of: displaynameLabel).marginStart(8).top(8).sizeToFit(.heightFlexible)
+        if displaynameLabel.bounds.size.height < positionLabel.bounds.size.height {
+            displaynameLabel.pin.height(positionLabel.bounds.size.height)
         }
-        positionLabel.pin.vCenter(to: usernameLabel.edge.vCenter)
-        timeLabel.pin.left(12).below(of: usernameLabel).marginTop(2).sizeToFit(.widthFlexible)
-        messageTextView.pin.horizontally(8).below(of: timeLabel).sizeToFit(.width)
+        positionLabel.pin.vCenter(to: displaynameLabel.edge.vCenter)
+        sublineLabel.pin.left(12).below(of: displaynameLabel).marginTop(2).sizeToFit(.widthFlexible)
+        messageTextView.pin.horizontally(8).below(of: sublineLabel).sizeToFit(.width)
         plusOneButton.pin.top(8).right(8).minWidth(20).sizeToFit(.height)
         reportView.pin.top(12).left(of: plusOneButton).marginRight(8)
         
@@ -398,7 +413,11 @@ class ChatTableViewCell: UITableViewCell {
         if isExpanded {
             height += 36
             replyButton.pin.start(12).below(of: messageTextView).marginTop(4).sizeToFit(.width)
-            copyButton.pin.after(of: replyButton, aligned: .top).marginStart(8).sizeToFit(.width)
+            if replyButton.isHidden {
+                copyButton.pin.start(12).below(of: messageTextView).marginTop(4).sizeToFit(.width)
+            } else {
+                copyButton.pin.after(of: replyButton, aligned: .top).marginStart(8).sizeToFit(.width)
+            }
             reportButton.pin.after(of: copyButton, aligned: .top).marginStart(8).sizeToFit(.width)
             deleteButton.pin.after(of: visible([copyButton, reportButton]), aligned: .top).marginStart(8).sizeToFit(.width)
         }
@@ -409,5 +428,9 @@ class ChatTableViewCell: UITableViewCell {
         contentView.pin.width(size.width)
         layout()
         return CGSize(width: contentView.frame.width, height: messageWrapper.frame.height + topSpacing + bottomSpacing)
+    }
+    
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
+        return !RouterHandler.shared.handle(url: URL)
     }
 }

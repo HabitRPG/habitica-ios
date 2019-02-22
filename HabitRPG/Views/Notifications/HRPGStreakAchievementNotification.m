@@ -11,6 +11,7 @@
 #import "HRPGAppDelegate.h"
 #import "HRPGSharingManager.h"
 #import "UIView+Screenshot.h"
+#import "Habitica-Swift.h"
 
 @implementation HRPGStreakAchievementNotification
 
@@ -25,10 +26,9 @@
                 showsBackground:YES
                      showsMount:YES
                        showsPet:YES];*/
-    overlayView.titleText = NSLocalizedString(@"You earned a streak achievement!", nil);
-    overlayView.descriptionText = NSLocalizedString(
-                                                     @"You've completed your Daily for 21 days in a row! Amazing job. Don't break the streak!", nil);
-    overlayView.dismissButtonText = NSLocalizedString(@"Great!", nil);
+    overlayView.titleText = objcL10n.streakAchievementTitle;
+    overlayView.descriptionText = objcL10n.streakAchievementDescription;
+    overlayView.dismissButtonText = objcL10n.great;
     [overlayView setAchievementWithName:@"achievement-thermometer"];
     UIImageView *__weak weakAvatarView = overlayView.imageView;
     overlayView.shareAction = ^() {
@@ -37,9 +37,7 @@
         del.window.visibleViewController;
         [HRPGSharingManager shareItems:@[
                                          [
-                                           NSLocalizedString(
-                                                             @"I earned a new achievement in Habitica! ",
-                                                             nil)
+                                           objcL10n.earnedAchievementShare
                                           stringByAppendingString:@" https://habitica.com/social/achievement"],
                                          [weakAvatarView pb_takeScreenshot]
                                          ]

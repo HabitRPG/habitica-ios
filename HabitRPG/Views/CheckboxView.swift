@@ -167,12 +167,12 @@ class CheckboxView: UIView {
     
     private func animateTo(value: CGFloat) {
         let layer = self.layer as? CheckmarkLayer
-        let timing = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        let timing = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
         
         let animation = CABasicAnimation(keyPath: "drawPercentage")
         animation.isAdditive = true
         animation.duration = 0.2
-        animation.fillMode = kCAFillModeBoth
+        animation.fillMode = CAMediaTimingFillMode.both
         animation.timingFunction = timing
         animation.fromValue = NSNumber(value: 0)
         animation.toValue = NSNumber(value: 1)

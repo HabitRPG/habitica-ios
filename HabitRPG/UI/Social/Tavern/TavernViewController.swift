@@ -15,13 +15,15 @@ class TavernViewController: SplitSocialViewController {
     
     override func viewDidLoad() {
         groupID = "00000000-0000-4000-A000-000000000000"
-        for childViewController in self.childViewControllers {
+        for childViewController in self.children {
             if let viewController = childViewController as? TavernDetailViewController {
                 tavernDetailViewController = viewController
             }
         }
         
         super.viewDidLoad()
+        
+        chatViewController?.autocompleteContext = "tavern"
 
         scrollView.delegate = self
 

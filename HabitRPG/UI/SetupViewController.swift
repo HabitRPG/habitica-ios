@@ -9,6 +9,7 @@
 import UIKit
 import MRProgress
 import Habitica_Models
+import ReactiveSwift
 
 class SetupViewController: UIViewController, UIScrollViewDelegate {
 
@@ -71,6 +72,10 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        (viewControllers[0] as? WelcomeViewController)?.onEnableNextButton = {[weak self] enable in
+            self?.enableNextButton(enabled: enable)
+        }
+        
         viewControllers[0].startTyping()
     }
     
@@ -100,6 +105,8 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
         if getCurrentPage() >= 2 {
             completeSetup()
             return
+        } else if getCurrentPage() == 0 {
+            confirmNames()
         }
         scrollToPage(getCurrentPage()+1)
     }
@@ -140,16 +147,40 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
             previousButtonImageView.tintColor = UIColor.white
         }
         if page >= 2 {
-            nextButtonTextView.text = NSLocalizedString("Finish", comment: "")
+            nextButtonTextView.text = L10n.finish
         } else {
-            nextButtonTextView.text = NSLocalizedString("Next", comment: "")
+            nextButtonTextView.text = L10n.next
+        }
+    }
+    
+    func enablePreviousButton(enabled: Bool) {
+        if enabled {
+            previousButtonImageView.tintColor = UIColor.white
+            previousButtonTextView.textColor = UIColor.white
+            previousButtonView.isUserInteractionEnabled = true
+        } else {
+            previousButtonImageView.tintColor = UIColor.purple500()
+            previousButtonTextView.textColor = UIColor.purple500()
+            previousButtonView.isUserInteractionEnabled = false
+        }
+    }
+    
+    func enableNextButton(enabled: Bool) {
+        if enabled {
+            nextButtonImageView.tintColor = UIColor.white
+            nextButtonTextView.textColor = UIColor.white
+            nextButtonView.isUserInteractionEnabled = true
+        } else {
+            nextButtonImageView.tintColor = UIColor(white: 1.0, alpha: 0.5)
+            nextButtonTextView.textColor = UIColor(white: 1.0, alpha: 0.5)
+            nextButtonView.isUserInteractionEnabled = false
         }
     }
     
     func completeSetup() {
         UserDefaults.standard.set(false, forKey: "isInSetup")
         UserDefaults.standard.set(0, forKey: "currentSetupStep")
-        let overlayView = MRProgressOverlayView.showOverlayAdded(to: self.view, title: NSLocalizedString("Teleporting to Habitica", comment: ""), mode: .indeterminate, animated: true)
+        let overlayView = MRProgressOverlayView.showOverlayAdded(to: self.view, title: L10n.teleportingHabitica, mode: .indeterminate, animated: true)
         overlayView?.setTintColor(ThemeService.shared.theme.tintColor)
         overlayView?.backgroundColor = ThemeService.shared.theme.backgroundTintColor.withAlphaComponent(0.6)
         if let viewController = taskSetupViewController {
@@ -187,19 +218,19 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
                 tasks.append(contentsOf: taskCategory.getTasks(tagId: createdTags[taskCategory]?.id, taskRepository: taskRepository))
             }
             var task = taskRepository.getNewTask()
-            task.text = NSLocalizedString("Reward yourself", comment: "")
-            task.notes = NSLocalizedString("Watch TV, play a game, eat a treat, it’s up to you!", comment: "")
+            task.text = L10n.Tasks.Examples.rewardText
+            task.notes = L10n.Tasks.Examples.rewardNotes
             task.value = 20
             task.type = "reward"
             tasks.append(task)
             task = taskRepository.getNewTask()
-            task.text = NSLocalizedString("Join Habitica (Check me off!)", comment: "")
-            task.notes = NSLocalizedString("You can either complete this To-Do, edit it, or remove it.", comment: "")
+            task.text = L10n.Tasks.Examples.todoText
+            task.notes = L10n.Tasks.Examples.todoNotes
             task.type = "todo"
             tasks.append(task)
             task = taskRepository.getNewTask()
-            task.text = NSLocalizedString("Tap here to edit this into a bad habit you'd like to quit", comment: "")
-            task.notes = NSLocalizedString("Or delete it by swiping left", comment: "")
+            task.text = L10n.Tasks.Examples.habitText
+            task.notes = L10n.Tasks.Examples.habitNotes
             task.up = false
             task.down = true
             task.type = "habit"
@@ -242,5 +273,40 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
                 }
             }
         }
+    }
+    
+    
+    func confirmNames() {
+        guard let welcomeViewController = viewControllers[0] as? WelcomeViewController else {
+            return
+        }
+        guard let displayname = welcomeViewController.displayName else {
+            return
+        }
+        guard let username = welcomeViewController.username else {
+            return
+        }
+        userRepository.updateUser(key: "profile.name", value: displayname)
+            .flatMap(.latest, { user -> SignalProducer<UserProtocol, ValidationError> in
+                if user == nil {
+                    return SignalProducer.init(error: ValidationError(""))
+                }
+                return self.userRepository.updateUsername(newUsername: username).mapError({ error -> ValidationError in
+                    return ValidationError(error.localizedDescription)
+                }).producer
+            })
+            .observeCompleted {}
+    }
+}
+
+private struct ValidationError: Error {
+    let message: String
+    
+    init(_ message: String) {
+        self.message = message
+    }
+    
+    public var localizedDescription: String {
+        return message
     }
 }

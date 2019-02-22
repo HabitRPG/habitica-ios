@@ -330,6 +330,7 @@ class TaskFormViewController: FormViewController {
                     return (form.rowBy(tag: TaskFormTags.dailyRepeat) as? ActionSheetRow<LabeledFormValue<String>>)?.value?.value != "monthly"
                 })
                 row.cellSetup({ (cell, _) in
+                    cell.tintColor = self.taskTintColor
                     cell.segmentedControl.tintColor = self.taskTintColor
                 })
                 row.onChange({[weak self] _ in
@@ -583,12 +584,19 @@ class TaskFormViewController: FormViewController {
         task.everyX = values[TaskFormTags.dailyEvery] as? Int ?? 1
         task.frequency = (values[TaskFormTags.dailyRepeat] as? LabeledFormValue<String>)?.value
         if task.frequency == "monthly", let startDate = task.startDate {
-            let selectedValue = (values[TaskFormTags.repeatMonthlySegment] as? SegmentedRow<String>)?.value
+            let calendar = Calendar.current
+            let selectedValue = values[TaskFormTags.repeatMonthlySegment] as? String
             if selectedValue == L10n.Tasks.Form.dayOfMonth {
-                task.daysOfMonth = [Calendar.current.component(.day, from: startDate)]
+                task.daysOfMonth = [calendar.component(.day, from: startDate)]
                 task.weeksOfMonth = []
             } else {
-                task.weeksOfMonth = [Calendar.current.component(.weekOfMonth, from: startDate)]
+                var weeks = 0
+                var currentDate = calendar.date(byAdding: .day, value: -7, to: startDate) ?? startDate
+                while calendar.component(.month, from: currentDate) == calendar.component(.month, from: startDate) {
+                    weeks += 1
+                    currentDate = calendar.date(byAdding: .day, value: -7, to: currentDate) ?? currentDate
+                }
+                task.weeksOfMonth = [weeks]
                 task.daysOfMonth = []
             }
         }

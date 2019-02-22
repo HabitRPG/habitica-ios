@@ -56,8 +56,8 @@ class QuestProgressView: UIView {
             
             view.frame = bounds
             view.autoresizingMask = [
-                UIViewAutoresizing.flexibleWidth,
-                UIViewAutoresizing.flexibleHeight
+                UIView.AutoresizingMask.flexibleWidth,
+                UIView.AutoresizingMask.flexibleHeight
             ]
             addSubview(view)
             
@@ -111,7 +111,7 @@ class QuestProgressView: UIView {
         healthProgressView.maxValue = Float(quest.boss?.health ?? 0)
         if let bossRage = quest.boss?.rage?.value, bossRage > 0 {
             rageProgressView.maxValue = Float(quest.boss?.rage?.value ?? 0)
-            rageProgressView.title = NSLocalizedString("Rage attack: \(quest.boss?.rage?.title ?? "")", comment: "")
+            rageProgressView.title = L10n.Quests.rageAttack(quest.boss?.rage?.title ?? "")
         } else {
             rageProgressView.isHidden = true
         }
@@ -125,13 +125,13 @@ class QuestProgressView: UIView {
                                                                          bossColorMedium: colorMedium,
                                                                          bossColorLight: colorExtraLight)
             .resizableImage(withCapInsets: UIEdgeInsets.init(top: 10, left: 10, bottom: 10, right: 10),
-                            resizingMode: UIImageResizingMode.stretch)
+                            resizingMode: UIImage.ResizingMode.stretch)
         
         gradientView.endColor = colorLight
         descriptionSeparator.backgroundColor = colorLight
         questArtSeparator.backgroundColor = colorLight
         let description = try? Down(markdownString: quest.notes?.replacingOccurrences(of: "<br>", with: "\n") ?? "").toHabiticaAttributedString()
-        description?.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: description?.length ?? 0))
+        description?.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: description?.length ?? 0))
         description?.append(NSAttributedString(string: "\n"))
         descriptionTextView.attributedText = description
         
@@ -231,13 +231,13 @@ class QuestProgressView: UIView {
     
     @objc
     func rageStrikeButtonTapped() {
-        let string = NSLocalizedString("There are 3 potential Rage Strikes\nThis gauge fills when Habiticans miss their Dailies. If it fills up, the DysHeartener will unleash its Shattering Heartbreak attack on one of Habitica's shopkeepers, so be sure to do your tasks!", comment: "")
+        let string = L10n.WorldBoss.rageStrikeExplanation
         let attributedString = NSMutableAttributedString(string: string)
         let firstLineRange = NSRange(location: 0, length: string.components(separatedBy: "\n")[0].count)
         attributedString.addAttribute(.font, value: CustomFontMetrics.scaledSystemFont(ofSize: 17), range: firstLineRange)
         attributedString.addAttribute(.foregroundColor, value: UIColor.black, range: firstLineRange)
         attributedString.addAttribute(.font, value: CustomFontMetrics.scaledSystemFont(ofSize: 15), range: NSRange.init(location: firstLineRange.length, length: string.count - firstLineRange.length))
-        let alertController = HabiticaAlertController.alert(title: NSLocalizedString("What's a Rage Strike?", comment: ""), attributedMessage: attributedString)
+        let alertController = HabiticaAlertController.alert(title: L10n.WorldBoss.rageStrikeExplanationButton, attributedMessage: attributedString)
         alertController.titleBackgroundColor = UIColor.orange50()
         alertController.addCloseAction()
         alertController.show()

@@ -24,7 +24,7 @@ class PartyQuestView: UIView {
                                                           bossColorMedium: UIColor.gray400(),
                                                           bossColorLight: UIColor.gray500())
             .resizableImage(withCapInsets: UIEdgeInsets.init(top: 10, left: 10, bottom: 10, right: 10),
-                            resizingMode: UIImageResizingMode.stretch)
+                            resizingMode: UIImage.ResizingMode.stretch)
         return view
     }()
     var progressBarViews = [QuestProgressBarView]()

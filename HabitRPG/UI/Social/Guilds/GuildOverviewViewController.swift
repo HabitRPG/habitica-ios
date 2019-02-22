@@ -31,6 +31,8 @@ class GuildOverviewViewController: HRPGBaseViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.title = L10n.Titles.guilds
+        
         self.segmentedFilterControl.selectedSegmentIndex = 0
         self.segmentedFilterControl.addTarget(self, action: #selector(switchFilter), for: .valueChanged)
         segmentedWrapper.addSubview(self.segmentedFilterControl)
@@ -47,7 +49,7 @@ class GuildOverviewViewController: HRPGBaseViewController, UISearchBarDelegate {
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 100
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         tableView.keyboardDismissMode = .onDrag

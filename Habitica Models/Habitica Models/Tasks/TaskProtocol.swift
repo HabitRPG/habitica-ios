@@ -63,8 +63,7 @@ extension TaskProtocol {
         return isDue
     }
     
-    public func dueOn(date: Date) -> Bool {
-        let calendar = Calendar.current
+    public func dueOn(date: Date, calendar: Calendar = Calendar.current) -> Bool {
         for dueDate in nextDue {
             if calendar.isDate(dueDate, inSameDayAs: date) {
                 return true

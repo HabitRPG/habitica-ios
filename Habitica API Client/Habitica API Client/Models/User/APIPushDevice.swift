@@ -10,8 +10,6 @@ import Foundation
 import Habitica_Models
 
 class APIPushDevice: PushDeviceProtocol, Decodable {
-    var updatedAt: Date?
-    var createdAt: Date?
     var type: String?
     var regId: String?
 }

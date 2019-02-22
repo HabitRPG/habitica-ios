@@ -47,6 +47,7 @@ class QuestDetailViewController: HRPGUIViewController {
     @IBOutlet weak var bossHealthlabel: UILabel!
     @IBOutlet weak var bossDifficultyImageView: UIImageView!
     @IBOutlet weak var bossDifficultyLabel: UILabel!
+    @IBOutlet weak var descriptionHeaderView: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,6 +85,17 @@ class QuestDetailViewController: HRPGUIViewController {
         
         descriptionTextView.textContainerInset = UIEdgeInsets.zero
         descriptionTextView.textContainer.lineFragmentPadding = 0
+    }
+    
+    override func populateText() {
+        rejectButton.setTitle(L10n.reject, for: .normal)
+        acceptButton.setTitle(L10n.accept, for: .normal)
+        cancelButton.setTitle(L10n.cancel, for: .normal)
+        abortButton.setTitle(L10n.abort, for: .normal)
+        forceStartButton.setTitle(L10n.forceStart, for: .normal)
+        
+        invitationsHeader.text = L10n.invitations
+        descriptionHeaderView.text = L10n.description
     }
     
     private func set(user: UserProtocol) {

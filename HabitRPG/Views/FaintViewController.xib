@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -13,8 +13,12 @@
             <connections>
                 <outlet property="avatarView" destination="BiN-OV-Veq" id="GxA-pg-Eda"/>
                 <outlet property="containerView" destination="u1H-w9-Ufk" id="57d-AN-HFZ"/>
+                <outlet property="descriptionLabel" destination="niM-hg-PSf" id="5O2-Xp-lYE"/>
+                <outlet property="dontDespairLabel" destination="C1G-bQ-a4O" id="9se-aX-MPB"/>
+                <outlet property="goodLuckLabel" destination="s3j-0V-V9N" id="frT-Ok-MeS"/>
                 <outlet property="healthView" destination="g8Q-Ba-epA" id="DJt-Yj-Nbm"/>
                 <outlet property="loadingIndicator" destination="xIO-GU-jWU" id="7tb-Em-wxH"/>
+                <outlet property="titleLabel" destination="FFL-KP-98R" id="M8c-tQ-0Tp"/>
                 <outlet property="tryAgainLabel" destination="VbC-96-IOJ" id="eYV-Zp-Kcr"/>
                 <outlet property="view" destination="XQG-Am-Sdc" id="rAi-UQ-rfd"/>
             </connections>
@@ -24,8 +28,8 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Refill Health &amp; Try Again" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VbC-96-IOJ">
-                    <rect key="frame" x="0.0" y="623" width="375" height="24"/>
+                <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VbC-96-IOJ">
+                    <rect key="frame" x="0.0" y="626" width="375" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" priority="500" constant="21" id="ht8-Os-liI"/>
                     </constraints>
@@ -34,10 +38,10 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u1H-w9-Ufk">
-                    <rect key="frame" x="40" y="151.5" width="295" height="364.5"/>
+                    <rect key="frame" x="40" y="174.5" width="295" height="318"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You ran out of Health!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FFL-KP-98R">
-                            <rect key="frame" x="0.0" y="0.0" width="295" height="24"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FFL-KP-98R">
+                            <rect key="frame" x="0.0" y="0.0" width="295" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" priority="500" constant="21" id="QjQ-5h-OTg"/>
                             </constraints>
@@ -45,8 +49,8 @@
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You lost a Level, your Gold, and a piece of Equipment, but you can get them all back with hard work!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="niM-hg-PSf">
-                            <rect key="frame" x="0.0" y="263" width="295" height="64.5"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="niM-hg-PSf">
+                            <rect key="frame" x="0.0" y="260" width="295" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" priority="500" constant="21" id="Yyt-UU-ssP"/>
                             </constraints>
@@ -54,8 +58,8 @@
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't despair!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C1G-bQ-a4O">
-                            <rect key="frame" x="0.0" y="226" width="295" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C1G-bQ-a4O">
+                            <rect key="frame" x="0.0" y="223" width="295" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" priority="500" constant="21" id="FdJ-OQ-B5V"/>
                             </constraints>
@@ -64,22 +68,22 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g8Q-Ba-epA" customClass="HRPGLabeledProgressBar">
-                            <rect key="frame" x="0.0" y="56" width="295" height="40"/>
+                            <rect key="frame" x="0.0" y="53" width="295" height="40"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="w6l-Mb-1Le"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BiN-OV-Veq" customClass="AvatarView" customModule="Habitica" customModuleProvider="target">
-                            <rect key="frame" x="72.5" y="112" width="120" height="90"/>
+                            <rect key="frame" x="72.5" y="109" width="120" height="90"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="120" id="igV-qV-Zbi"/>
                                 <constraint firstAttribute="height" constant="90" id="jSd-g4-Kga"/>
                             </constraints>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Good luck--you'll do great." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s3j-0V-V9N">
-                            <rect key="frame" x="0.0" y="343.5" width="295" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s3j-0V-V9N">
+                            <rect key="frame" x="0.0" y="297" width="295" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" priority="500" constant="21" id="upM-gc-Lx0"/>
                             </constraints>
@@ -119,7 +123,7 @@
                     </variation>
                 </view>
                 <activityIndicatorView opaque="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="xIO-GU-jWU">
-                    <rect key="frame" x="177.5" y="625" width="20" height="20"/>
+                    <rect key="frame" x="177.5" y="626.5" width="20" height="20"/>
                 </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>

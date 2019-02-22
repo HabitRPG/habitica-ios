@@ -19,25 +19,25 @@ private enum RepeatType {
 
     func string(_ everyX: Int) -> String {
         if self == .never {
-            return NSLocalizedString("never", comment: "")
+            return L10n.never
         }
         if everyX == 1 {
             return self.everyName()
         } else {
-            return NSLocalizedString("every \(everyX) \(self.repeatName())", comment: "")
+            return L10n.Tasks.everyX(self.repeatName())
         }
     }
 
     private func everyName() -> String {
         switch self {
         case .daily:
-            return NSLocalizedString("daily", comment: "As in 'repeats daily'")
+            return L10n.Tasks.Repeats.daily
         case .weekly:
-            return NSLocalizedString("weekly", comment: "As in 'repeats weekly'")
+            return L10n.Tasks.Repeats.weekly
         case .monthly:
-            return NSLocalizedString("monthly", comment: "As in 'repeats monthly'")
+            return L10n.Tasks.Repeats.monthly
         case .yearly:
-            return NSLocalizedString("yearly", comment: "As in 'repeats yearly'")
+            return L10n.Tasks.Repeats.yearly
         default:
             return ""
         }
@@ -46,13 +46,13 @@ private enum RepeatType {
     private func repeatName() -> String {
         switch self {
         case .daily:
-            return NSLocalizedString("days", comment: "")
+            return L10n.days
         case .weekly:
-            return NSLocalizedString("weeks", comment: "")
+            return L10n.weeks
         case .monthly:
-            return NSLocalizedString("months", comment: "")
+            return L10n.months
         case .yearly:
-            return NSLocalizedString("years", comment: "")
+            return L10n.years
         default:
             return ""
         }
@@ -209,9 +209,9 @@ class TaskRepeatablesSummaryInteractor: NSObject {
             repeatType = .never
         }
         if let repeatOnString = repeatOnString, repeatType != .never {
-            return NSLocalizedString("Repeats \(repeatType.string(everyX)) on \(repeatOnString)", comment: "")
+            return L10n.Tasks.Repeats.repeatsEveryOn(repeatType.string(everyX), repeatOnString)
         } else {
-            return NSLocalizedString("Repeats \(repeatType.string(everyX))", comment: "")
+            return L10n.Tasks.Repeats.repeatsEvery(repeatType.string(everyX))
         }
     }
 
@@ -225,7 +225,7 @@ class TaskRepeatablesSummaryInteractor: NSObject {
             task.friday &&
             task.saturday &&
             task.sunday {
-            return NSLocalizedString("every day", comment: "")
+            return L10n.Tasks.Repeats.everyDay
         } else if task.monday &&
             task.tuesday  &&
             task.wednesday &&
@@ -233,7 +233,7 @@ class TaskRepeatablesSummaryInteractor: NSObject {
             task.friday &&
             !task.saturday &&
             !task.sunday {
-            return NSLocalizedString("weekdays", comment: "")
+            return L10n.Tasks.Repeats.weekdays
         } else if !task.monday &&
             !task.tuesday  &&
             !task.wednesday &&
@@ -241,7 +241,7 @@ class TaskRepeatablesSummaryInteractor: NSObject {
             !task.friday &&
             task.saturday &&
             task.sunday {
-            return NSLocalizedString("weekends", comment: "")
+            return L10n.Tasks.Repeats.weekends
         } else {
             return assembleActiveDaysString(task)
         }
@@ -250,25 +250,25 @@ class TaskRepeatablesSummaryInteractor: NSObject {
     private func assembleActiveDaysString(_ task: RepeatableTask) -> String {
         var repeatOnComponents = [String]()
         if task.monday {
-            repeatOnComponents.append(NSLocalizedString("Monday", comment: ""))
+            repeatOnComponents.append(L10n.monday)
         }
         if task.tuesday {
-            repeatOnComponents.append(NSLocalizedString("Tuesday", comment: ""))
+            repeatOnComponents.append(L10n.tuesday)
         }
         if task.wednesday {
-            repeatOnComponents.append(NSLocalizedString("Wednesday", comment: ""))
+            repeatOnComponents.append(L10n.wednesday)
         }
         if task.thursday {
-            repeatOnComponents.append(NSLocalizedString("Thursday", comment: ""))
+            repeatOnComponents.append(L10n.thursday)
         }
         if task.friday {
-            repeatOnComponents.append(NSLocalizedString("Friday", comment: ""))
+            repeatOnComponents.append(L10n.friday)
         }
         if task.saturday {
-            repeatOnComponents.append(NSLocalizedString("Saturday", comment: ""))
+            repeatOnComponents.append(L10n.saturday)
         }
         if task.sunday {
-            repeatOnComponents.append(NSLocalizedString("Sunday", comment: ""))
+            repeatOnComponents.append(L10n.sunday)
         }
         return repeatOnComponents.joined(separator: ", ")
     }
@@ -279,12 +279,12 @@ class TaskRepeatablesSummaryInteractor: NSObject {
                 for day in task.daysOfMonth {
                     days.append(String(day))
                 }
-                return NSLocalizedString("the \(days.joined(separator: ", "))", comment: "")
+                return L10n.Tasks.Repeats.monthlyThe(days.joined(separator: ", "))
             }
             if task.weeksOfMonth.count > 0 {
                 if let startDate = task.startDate {
                     self.dateFormatter.dateFormat = monthlyFormat
-                    return NSLocalizedString("the \(dateFormatter.string(from: startDate))", comment: "")
+                    return L10n.Tasks.Repeats.monthlyThe(dateFormatter.string(from: startDate))
                 }
             }
         return nil

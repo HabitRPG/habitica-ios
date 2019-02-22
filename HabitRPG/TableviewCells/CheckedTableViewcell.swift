@@ -128,32 +128,32 @@ class CheckedTableViewCell: TaskTableViewCell {
                 }
             }
             if item.completed {
-                checkbox.accessibilityLabel = String.init(format: NSLocalizedString("Completed %@", comment: ""), item.text ?? "")
+                checkbox.accessibilityLabel = L10n.Accessibility.completedX(item.text ?? "")
             } else {
-                checkbox.accessibilityLabel = String.init(format: NSLocalizedString("Not completed %@", comment: ""), item.text ?? "")
+                checkbox.accessibilityLabel = L10n.Accessibility.notCompletedX(item.text ?? "")
             }
             checkbox.shouldGroupAccessibilityChildren = true
             checkbox.isAccessibilityElement = true
-            checkbox.accessibilityHint = NSLocalizedString("Double tap to complete", comment: "")
+            checkbox.accessibilityHint = L10n.Accessibility.doubleTapToComplete
         }
     }
     
     override func applyAccessibility(_ task: TaskProtocol) {
         super.applyAccessibility(task)
-        self.mainTaskWrapper?.accessibilityCustomActions?.append(UIAccessibilityCustomAction(name: NSLocalizedString("Complete Task", comment: ""), target: self, selector: #selector(checkTask)))
+        self.mainTaskWrapper?.accessibilityCustomActions?.append(UIAccessibilityCustomAction(name: L10n.Accessibility.completeTask, target: self, selector: #selector(checkTask)))
 
         var stateText = ""
         if task.type == "daily" {
             if task.isDue {
-                stateText = NSLocalizedString("Due", comment: "")
+                stateText = L10n.Accessibility.due
             } else {
-                stateText = NSLocalizedString("Not due", comment: "")
+                stateText = L10n.Accessibility.notDue
             }
         } else {
-            stateText = NSLocalizedString("Not completed", comment: "")
+            stateText = L10n.Accessibility.notCompleted
         }
         if task.completed {
-            stateText = NSLocalizedString("Completed", comment: "")
+            stateText = L10n.Accessibility.completed
         }
         self.mainTaskWrapper?.accessibilityLabel = "\(stateText), \(mainTaskWrapper.accessibilityLabel ?? "")"
         
@@ -162,9 +162,9 @@ class CheckedTableViewCell: TaskTableViewCell {
             self.mainTaskWrapper?.accessibilityLabel = "\(mainTaskWrapper.accessibilityLabel ?? ""), \(checklistCount) checklist items"
             self.isAccessibilityElement = false
             if isExpanded {
-                self.mainTaskWrapper?.accessibilityCustomActions?.append(UIAccessibilityCustomAction(name: NSLocalizedString("Collapse checklist", comment: ""), target: self, selector: #selector(expandTask)))
+                self.mainTaskWrapper?.accessibilityCustomActions?.append(UIAccessibilityCustomAction(name: L10n.Accessibility.collapseChecklist, target: self, selector: #selector(expandTask)))
             } else {
-                self.mainTaskWrapper?.accessibilityCustomActions?.append(UIAccessibilityCustomAction(name: NSLocalizedString("Expand checklist", comment: ""), target: self, selector: #selector(expandTask)))
+                self.mainTaskWrapper?.accessibilityCustomActions?.append(UIAccessibilityCustomAction(name: L10n.Accessibility.expandChecklist, target: self, selector: #selector(expandTask)))
             }
         }
     }

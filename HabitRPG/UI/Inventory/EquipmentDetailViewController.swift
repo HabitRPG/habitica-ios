@@ -24,7 +24,7 @@ class EquipmentDetailViewController: HRPGBaseViewController {
             datasource?.tableView = self.tableView
         }
         
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 100
     }
     

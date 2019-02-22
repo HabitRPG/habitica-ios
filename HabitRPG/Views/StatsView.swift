@@ -14,8 +14,11 @@ class StatsView: UIView {
     @IBOutlet private weak var topBackground: UIView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var totalValueLabel: UILabel!
+    @IBOutlet weak var levelLabel: UILabel!
     @IBOutlet private weak var levelValueLabel: UILabel!
+    @IBOutlet weak var equipmentLabel: UILabel!
     @IBOutlet private weak var equipmentValueLabel: UILabel!
+    @IBOutlet weak var buffsLabel: UILabel!
     @IBOutlet private weak var buffsValueLabel: UILabel!
     @IBOutlet private weak var allocatedValueLabel: UILabel!
     @IBOutlet private weak var allocatedLabel: UILabel!
@@ -99,8 +102,13 @@ class StatsView: UIView {
             view.frame = bounds
             addSubview(view)
             
-            addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["view": view]))
-            addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["view": view]))
+            levelLabel.text = L10n.level
+            equipmentLabel.text = L10n.Equipment.equipment
+            buffsLabel.text = L10n.buffs
+            allocatedLabel.text = L10n.allocated
+            
+            addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["view": view]))
+            addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["view": view]))
             
             allocateButton.setImage(HabiticaIcons.imageOfAttributeAllocateButton, for: .normal)
             allocateButton.tintColor = UIColor(red: 0.529, green: 0.506, blue: 0.565, alpha: 1.000)

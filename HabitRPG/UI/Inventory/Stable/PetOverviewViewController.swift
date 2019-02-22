@@ -26,4 +26,9 @@ class PetOverviewViewController: StableOverviewViewController<PetOverviewDataSou
             destination?.eggType = datasource?.item(at: indexPath)?.eggType ?? ""
         }
     }
+    
+    override func populateText() {
+        navigationItem.title = L10n.Titles.pets
+        navigationItem.rightBarButtonItem?.title = L10n.groupBy
+    }
 }

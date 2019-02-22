@@ -22,6 +22,7 @@
 - (void)viewDidLoad {
     self.topHeaderCoordinator = [[TopHeaderCoordinator alloc] initWithTopHeaderNavigationController:self.topHeaderNavigationController scrollView:self.tableView];
     [super viewDidLoad];
+    [self populateText];
 
     [[Amplitude instance] logNavigateEventForClass:NSStringFromClass([self class])];
 
@@ -78,6 +79,10 @@
     [self.topHeaderCoordinator viewDidAppear];
 }
 
+- (void)populateText {
+    
+}
+    
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     [self.topHeaderCoordinator scrollViewDidScroll];
 }

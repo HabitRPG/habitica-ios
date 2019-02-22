@@ -21,6 +21,10 @@ class HabiticaResponseCall<T: Any, C: Decodable>: AuthenticatedCall {
         }
         .skipNil()
         .map(type(of: self).parse)
+        .merge(with: errorDataSignal.map { _ -> HabiticaResponse<C>? in
+            return nil
+        })
+        .take(first: 1)
     
     static func parse(_ data: Data) -> HabiticaResponse<C>? {
         let decoder = JSONDecoder()
@@ -36,8 +40,12 @@ class HabiticaResponseCall<T: Any, C: Decodable>: AuthenticatedCall {
     }
     
     override func setupErrorHandler() {
-        AuthenticatedCall.errorHandler?.observe(signal: errorSignal)
-        AuthenticatedCall.errorHandler?.observe(signal: serverErrorSignal.combineLatest(with: jsonSignal)
+        let errorHandler = customErrorHandler ?? AuthenticatedCall.errorHandler
+        errorHandler?.observe(signal: errorSignal)
+        errorHandler?.observe(signal: errorJsonSignal.map({ json -> [String] in
+            return [json["message"] as? String ?? ""]
+        }))
+        errorHandler?.observe(signal: serverErrorSignal.combineLatest(with: jsonSignal)
             .map({ (error, jsonAny) -> (NSError, [String]) in
                 let json = jsonAny as? Dictionary<String, Any>
                 var errors = [String]()

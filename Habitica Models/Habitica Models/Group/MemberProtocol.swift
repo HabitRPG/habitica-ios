@@ -19,6 +19,10 @@ public protocol MemberProtocol: AvatarProtocol {
 }
 
 public extension MemberProtocol {
+    var username: String? {
+        return authentication?.local?.username
+    }
+    
     var isModerator: Bool {
         return (contributor?.level ?? 0) >= 8
     }

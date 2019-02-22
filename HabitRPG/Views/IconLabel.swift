@@ -66,7 +66,7 @@ class IconLabel: UIView {
         iconView.translatesAutoresizingMaskIntoConstraints = false
         label.translatesAutoresizingMaskIntoConstraints = false
         
-        iconView.contentMode = UIViewContentMode.center
+        iconView.contentMode = UIView.ContentMode.center
         
         label.font = UIFont.preferredFont(forTextStyle: .footnote)
         label.textColor = .white
@@ -75,30 +75,30 @@ class IconLabel: UIView {
         addSubview(iconView)
         
         let viewDictionary = ["image": self.iconView, "label": self.label]
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[image]-4-[label]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDictionary))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[image]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewDictionary))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[image]-4-[label]-0-|", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: viewDictionary))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[image]-0-|", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: viewDictionary))
         
         addConstraint(NSLayoutConstraint.init(item: label,
-                                              attribute: NSLayoutAttribute.centerY,
-                                              relatedBy: NSLayoutRelation.equal,
+                                              attribute: NSLayoutConstraint.Attribute.centerY,
+                                              relatedBy: NSLayoutConstraint.Relation.equal,
                                               toItem: self,
-                                              attribute: NSLayoutAttribute.centerY,
+                                              attribute: NSLayoutConstraint.Attribute.centerY,
                                               multiplier: 1,
                                               constant: 0))
         iconView.addConstraint(
             NSLayoutConstraint.init(item: iconView,
-                                    attribute: NSLayoutAttribute.width,
-                                    relatedBy: NSLayoutRelation.equal,
+                                    attribute: NSLayoutConstraint.Attribute.width,
+                                    relatedBy: NSLayoutConstraint.Relation.equal,
                                     toItem: nil,
-                                    attribute: NSLayoutAttribute.notAnAttribute,
+                                    attribute: NSLayoutConstraint.Attribute.notAnAttribute,
                                     multiplier: 1,
                                     constant: 18))
         
         let widthConstraint = NSLayoutConstraint.init(item: self,
-                                                      attribute: NSLayoutAttribute.width,
-                                                      relatedBy: NSLayoutRelation.equal,
+                                                      attribute: NSLayoutConstraint.Attribute.width,
+                                                      relatedBy: NSLayoutConstraint.Relation.equal,
                                                       toItem: nil,
-                                                      attribute: NSLayoutAttribute.notAnAttribute,
+                                                      attribute: NSLayoutConstraint.Attribute.notAnAttribute,
                                                       multiplier: 1,
                                                       constant: 18)
         widthConstraint.priority = UILayoutPriority(rawValue: 500)

@@ -39,15 +39,15 @@ class UserTopHeader: UIView {
     
         healthLabel.color = UIColor.red100()
         healthLabel.icon = HabiticaIcons.imageOfHeartLightBg
-        healthLabel.type = NSLocalizedString("Health", comment: "")
+        healthLabel.type = L10n.health
         
         experienceLabel.color = UIColor.yellow100()
         experienceLabel.icon = HabiticaIcons.imageOfExperience
-        experienceLabel.type = NSLocalizedString("Experience", comment: "")
+        experienceLabel.type = L10n.experience
         
         magicLabel.color = UIColor.blue100()
         magicLabel.icon = HabiticaIcons.imageOfMagic
-        magicLabel.type = NSLocalizedString("Mana", comment: "")
+        magicLabel.type = L10n.mana
         
         if UI_USER_INTERFACE_IDIOM() == .pad {
             healthLabel.fontSize = 13
@@ -105,14 +105,14 @@ class UserTopHeader: UIView {
                     magicLabel.isActive = false
                     magicLabel.value = NSNumber(value: 0)
                     if stats.level >= 10 {
-                        magicLabel.labelView.text = NSLocalizedString("Unlocks after selecting a class", comment: "")
+                        magicLabel.labelView.text = L10n.unlocksSelectingClass
                     } else {
-                        magicLabel.labelView.text = NSLocalizedString("Unlocks at level 10", comment: "")
+                        magicLabel.labelView.text = L10n.unlocksLevelTen
                     }
                 }
             }
             
-            let levelString = NSLocalizedString("Level", comment: "")
+            let levelString = L10n.level
             if user.preferences?.disableClasses != true && stats.level >= 10 {
                 levelLabel.text = "\(levelString) \(stats.level) \(stats.habitClassNice?.capitalized ?? "")"
                 switch stats.habitClass ?? "" {

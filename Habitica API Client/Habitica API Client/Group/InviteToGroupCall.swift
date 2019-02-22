@@ -12,23 +12,9 @@ import FunkyNetwork
 import ReactiveSwift
 
 public class InviteToGroupCall: ResponseObjectCall<EmptyResponseProtocol, APIEmptyResponse> {
-    public init(groupID: String, invitationType: String, inviter: String, members: [String], stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "group.json")) {
-        var data: [String: Any] = [
-            "inviter": inviter
-        ]
-        if invitationType == "uuids" {
-            data[invitationType] = members
-        } else {
-            members.forEach { (email) in
-            }
-            data[invitationType] = members.map({ (email) -> [String:String] in
-                return [
-                    "email": email,
-                    "name": email
-                ]
-            })
-        }
-        let json = try? JSONSerialization.data(withJSONObject: data, options: .prettyPrinted)
+    public init(groupID: String, members: [String: Any], stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "group.json")) {
+        let json = try? JSONSerialization.data(withJSONObject: members, options: .prettyPrinted)
+        print(try! JSONSerialization.jsonObject(with: json!, options: .allowFragments))
         super.init(httpMethod: .POST, endpoint: "groups/\(groupID)/invite", postData: json, stubHolder: stubHolder)
     }
 }

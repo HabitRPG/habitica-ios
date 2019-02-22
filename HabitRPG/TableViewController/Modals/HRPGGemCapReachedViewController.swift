@@ -15,8 +15,12 @@ class HRPGGemCapReachedViewController: HRPGSingleOptionModalViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        backgroundModalView.closeButton.addTarget(self, action: #selector(closePressed), for: UIControlEvents.touchUpInside)
-        backgroundModalView.sendSubview(toBack: backgroundModalView.shopModalBgView)
+        backgroundModalView.closeButton.addTarget(self, action: #selector(closePressed), for: UIControl.Event.touchUpInside)
+        backgroundModalView.sendSubviewToBack(backgroundModalView.shopModalBgView)
+    }
+    
+    override func populateText() {
+        titleLabel.text = L10n.monthlyGemCapReached
     }
     
     @objc

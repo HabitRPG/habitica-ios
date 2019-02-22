@@ -75,9 +75,13 @@ class BaseReactiveTableViewDataSource<MODEL>: BaseReactiveDataSource<MODEL>, UIT
     
     @objc weak var tableView: UITableView? {
         didSet {
-            tableView?.dataSource = self
-            tableView?.reloadData()
+            didSetTableView()
         }
+    }
+    
+    func didSetTableView() {
+        tableView?.dataSource = self
+        tableView?.reloadData()
     }
     
     override func notify(changes: ReactiveChangeset?, section: Int = 0) {
@@ -126,7 +130,7 @@ class BaseReactiveTableViewDataSource<MODEL>: BaseReactiveDataSource<MODEL>, UIT
         }
     }
     
-    @objc
+    @objc(numberOfSectionsInTableView:)
     func numberOfSections(in tableView: UITableView) -> Int {
         return visibleSections.count
     }
@@ -151,7 +155,7 @@ class BaseReactiveTableViewDataSource<MODEL>: BaseReactiveDataSource<MODEL>, UIT
         return UITableViewCell()
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    private func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     }
 }
 

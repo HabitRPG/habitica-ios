@@ -12,7 +12,7 @@ import StoreKit
 import Keys
 import Crashlytics
 
-class PurchaseHandler: NSObject {
+class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
     @objc static let shared = PurchaseHandler()
 
     static let IAPIdentifiers = ["com.habitrpg.ios.Habitica.4gems", "com.habitrpg.ios.Habitica.21gems",
@@ -21,10 +21,15 @@ class PurchaseHandler: NSObject {
     static let subscriptionIdentifiers = ["subscription1month", "com.habitrpg.ios.habitica.subscription.3month",
                        "com.habitrpg.ios.habitica.subscription.6month", "com.habitrpg.ios.habitica.subscription.12month"
     ]
+    static let noRenewSubscriptionIdentifiers = ["com.habitrpg.ios.habitica.norenew_subscription.1month", "com.habitrpg.ios.habitica.norenew_subscription.3month",
+                                          "com.habitrpg.ios.habitica.norenew_subscription.6month", "com.habitrpg.ios.habitica.norenew_subscription.12month"
+    ]
     
     private let itunesSharedSecret = HabiticaKeys().itunesSharedSecret
     private let appleValidator: AppleReceiptValidator
     private let userRepository = UserRepository()
+    
+    private var pendingGifts = [String: String]()
 
     private var hasCompletionHandler = false
     override private init() {
@@ -41,58 +46,69 @@ class PurchaseHandler: NSObject {
             return
         }
         hasCompletionHandler = true
-        SwiftyStoreKit.completeTransactions(atomically: false) { products in
-            if products.count > 0 {
-                for product in products {
-                    CLSLogv("Purchase: %@ %@", getVaList([product.productId, NSNumber(value: product.needsFinishTransaction)]))
-                }
-                let error = NSError(domain: SKErrorDomain, code: -1001, userInfo: nil)
-                Crashlytics.sharedInstance().recordError(error)
+        
+        //Workaround for SwiftyStoreKit.completeTransactions not correctly returning consumable IAPs
+        SKPaymentQueue.default().add(self)
+        SwiftyStoreKit.completeTransactions(atomically: false) { _ in
+        }
+        
+        SwiftyStoreKit.restorePurchases(atomically: false) { results in
+            if results.restoreFailedPurchases.count > 0 {
+                print("Restore Failed: \(results.restoreFailedPurchases)")
             }
-            SwiftyStoreKit.fetchReceipt(forceRefresh: false) { result in
-                switch result {
-                case .success(let receiptData):
-                    for product in products {
-                        if product.transaction.transactionState == .purchased || product.transaction.transactionState == .restored {
-                            if product.needsFinishTransaction {
-                                
-                                if self.isInAppPurchase(product.productId) {
-                                    self.activatePurchase(product.productId, receipt: receiptData) { status in
-                                        if status {
-                                            SwiftyStoreKit.finishTransaction(product.transaction)
-                                        }
-                                    }
-                                } else if self.isSubscription(product.productId) {
-                                    self.userRepository.getUser().take(first: 1).on(value: {[weak self]user in
-                                        if !user.isSubscribed {
-                                            guard let weakSelf = self else {
-                                                return
-                                            }
-                                            SwiftyStoreKit.verifyReceipt(using: weakSelf.appleValidator, completion: { (verificationResult) in
-                                                switch verificationResult {
-                                                case .success(let receipt):
-                                                    if weakSelf.isValidSubscription(product.productId, receipt: receipt) {
-                                                        weakSelf.activateSubscription(product.productId, receipt: receipt) { status in
-                                                            if status {
-                                                                SwiftyStoreKit.finishTransaction(product.transaction)
-                                                            }
-                                                        }
-                                                    } else {
-                                                        SwiftyStoreKit.finishTransaction(product.transaction)
-                                                    }
-                                                case .error(let error):
-                                                    Crashlytics.sharedInstance().recordError(error)
-                                                }
-                                            })
-                                        }
-                                    }).start()
+            else if results.restoredPurchases.count > 0 {
+                for purchase in results.restoredPurchases {
+                    // fetch content from your server, then:
+                    SwiftyStoreKit.finishTransaction(purchase.transaction)
+                }
+                print("Restore Success: \(results.restoredPurchases)")
+            }
+            else {
+                print("Nothing to Restore")
+            }
+        }
+    }
+    
+    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        if transactions.count > 0 {
+            for product in transactions {
+                CLSLogv("Purchase: %@", getVaList([product.payment.productIdentifier]))
+            }
+            let error = NSError(domain: SKErrorDomain, code: -1001, userInfo: nil)
+            Crashlytics.sharedInstance().recordError(error)
+        }
+        SwiftyStoreKit.fetchReceipt(forceRefresh: false) { result in
+            switch result {
+            case .success(let receiptData):
+                for transaction in transactions {
+                    let productIdentifier = transaction.payment.productIdentifier
+                    if transaction.transactionState == .purchased || transaction.transactionState == .restored {
+                        if self.isInAppPurchase(productIdentifier) {
+                            self.activatePurchase(productIdentifier, receipt: receiptData) { status in
+                                if status {
+                                    SwiftyStoreKit.finishTransaction(transaction)
+                                }
+                            }
+                        } else if self.isSubscription(productIdentifier) {
+                            self.userRepository.getUser().take(first: 1).on(value: {[weak self]user in
+                                if !user.isSubscribed || user.purchased?.subscriptionPlan?.dateCreated != nil {
+                                    self?.applySubscription(transaction: transaction)
+                                }
+                            }).start()
+                        } else if self.isNoRenewSubscription(productIdentifier) {
+                            self.activateNoRenewSubscription(productIdentifier, receipt: receiptData, recipientID: self.pendingGifts[productIdentifier]) { status in
+                                if status {
+                                    self.pendingGifts.removeValue(forKey: productIdentifier)
+                                    SwiftyStoreKit.finishTransaction(transaction)
                                 }
                             }
                         }
+                    } else if transaction.transactionState == .failed {
+                        SwiftyStoreKit.finishTransaction(transaction)
                     }
-                case .error(let error):
-                    Crashlytics.sharedInstance().recordError(error)
                 }
+            case .error(let error):
+                Crashlytics.sharedInstance().recordError(error)
             }
         }
     }
@@ -130,11 +146,22 @@ class PurchaseHandler: NSObject {
     }
     
     func activatePurchase(_ identifier: String, receipt: Data, completion: @escaping (Bool) -> Void) {
-        userRepository.purchaseGems(receipt: ["transaction": ["receipt": receipt.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))]]).observeResult { (result) in
-            switch result {
-            case .success:
+        userRepository.purchaseGems(receipt: ["receipt": receipt.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))]).observeValues { (result) in
+            if result != nil {
                 completion(true)
-            case .failure:
+            } else {
+                completion(false)
+            }
+        }
+    }
+    
+    func activateNoRenewSubscription(_ identifier: String, receipt: Data, recipientID: String?, completion: @escaping (Bool) -> Void) {
+        pendingGifts[identifier] = recipientID
+        userRepository.purchaseNoRenewSubscription(identifier: identifier, receipt: ["receipt": receipt.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))], recipient: recipientID).observeValues { (result) in
+            if result != nil {
+                self.pendingGifts.removeValue(forKey: identifier)
+                completion(true)
+            } else {
                 completion(false)
             }
         }
@@ -174,6 +201,10 @@ class PurchaseHandler: NSObject {
         return  PurchaseHandler.subscriptionIdentifiers.contains(identifier)
     }
     
+    func isNoRenewSubscription(_ identifier: String) -> Bool {
+        return  PurchaseHandler.noRenewSubscriptionIdentifiers.contains(identifier)
+    }
+    
     func isValidSubscription(_ identifier: String, receipt: ReceiptInfo) -> Bool {
         if !isSubscription(identifier) {
             return false
@@ -192,5 +223,24 @@ class PurchaseHandler: NSObject {
         case .notPurchased:
             return false
         }
+    }
+    
+    private func applySubscription(transaction: SKPaymentTransaction) {
+        SwiftyStoreKit.verifyReceipt(using: appleValidator, completion: { (verificationResult) in
+            switch verificationResult {
+            case .success(let receipt):
+                if self.isValidSubscription(transaction.payment.productIdentifier, receipt: receipt) {
+                    self.activateSubscription(transaction.payment.productIdentifier, receipt: receipt) { status in
+                        if status {
+                            SwiftyStoreKit.finishTransaction(transaction)
+                        }
+                    }
+                } else {
+                    SwiftyStoreKit.finishTransaction(transaction)
+                }
+            case .error(let error):
+                Crashlytics.sharedInstance().recordError(error)
+            }
+        })
     }
 }

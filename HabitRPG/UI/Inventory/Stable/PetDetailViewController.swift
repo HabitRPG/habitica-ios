@@ -30,6 +30,10 @@ class PetDetailViewController: StableDetailViewController<PetDetailDataSource> {
         }).start())
     }
     
+    override func populateText() {
+        navigationItem.title = L10n.Titles.pets
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let item = datasource?.item(at: indexPath), item.trained > 0 {
             showActionSheet(forStableItem: item, withSource: collectionView.cellForItem(at: indexPath))

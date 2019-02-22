@@ -12,21 +12,21 @@ class DailyTableViewController: TaskTableViewController {
     var emptyDataSource = SingleItemTableViewDataSource<EmptyTableViewCell>(cellIdentifier: "emptyCell", styleFunction: EmptyTableViewCell.dailiesStyle)
     
     override func viewDidLoad() {
-        readableName = NSLocalizedString("Daily", comment: "")
+        readableName = L10n.Tasks.daily
         typeName = "daily"
-        dataSource = DailyTableViewDataSourceInstantiator.instantiate(predicate: self.getPredicate())
+        dataSource = DailyTableViewDataSource(predicate: self.getPredicate())
         
         super.viewDidLoad()
         
         tableView.register(UINib(nibName: "EmptyTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "emptyCell")
         
         self.tutorialIdentifier = "dailies"
+        configureTitle(L10n.Tasks.dailies)
     }
     
     override func getDefinitonForTutorial(_ tutorialIdentifier: String) -> [AnyHashable: Any]? {
         if tutorialIdentifier == "dailies" {
-            let localizedStringArray = [NSLocalizedString("Make Dailies for time-sensitive tasks that need to be done on a regular schedule.", comment: ""),
-                                        NSLocalizedString("Be careful — if you miss one, your avatar will take damage overnight. Checking them off consistently brings great rewards!", comment: "")]
+            let localizedStringArray = [L10n.Tutorials.dailies1, L10n.Tutorials.dailies2]
             return ["textList" : localizedStringArray]
         }
         return super.getDefinitonForTutorial(tutorialIdentifier)

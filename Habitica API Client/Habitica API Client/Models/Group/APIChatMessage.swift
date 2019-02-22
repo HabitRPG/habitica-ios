@@ -15,6 +15,7 @@ public class APIChatMessage: ChatMessageProtocol, Codable {
     public var text: String?
     public var attributedText: NSAttributedString?
     public var timestamp: Date?
+    public var displayName: String?
     public var username: String?
     public var flagCount: Int
     public var contributor: ContributorProtocol?
@@ -30,7 +31,8 @@ public class APIChatMessage: ChatMessageProtocol, Codable {
         case userID = "uuid"
         case text
         case timestamp
-        case username = "user"
+        case displayName = "user"
+        case username
         case flagCount
         case contributor
         case userStyles
@@ -51,6 +53,7 @@ public class APIChatMessage: ChatMessageProtocol, Codable {
         if let timeStampNumber = try? values.decode(Double.self, forKey: .timestamp) {
             timestamp = Date(timeIntervalSince1970: timeStampNumber/1000)
         }
+        displayName = try? values.decode(String.self, forKey: .displayName)
         username = try? values.decode(String.self, forKey: .username)
         flagCount = (try? values.decode(Int.self, forKey: .flagCount)) ?? 0
         contributor = (try? values.decode(APIContributor.self, forKey: .contributor))

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,10 +14,13 @@
             <connections>
                 <outlet property="allocateButton" destination="3nk-sp-ofO" id="DvW-8s-V7d"/>
                 <outlet property="allocatedBackgroundView" destination="v8X-2J-018" id="3Ms-H9-8Tg"/>
-                <outlet property="allocatedLabel" destination="wqP-zc-iqp" id="2m3-wI-jS4"/>
+                <outlet property="allocatedLabel" destination="wqP-zc-iqp" id="ZtE-nZ-2XM"/>
                 <outlet property="allocatedValueLabel" destination="fGW-Wj-Eqh" id="p3N-uD-Gbb"/>
+                <outlet property="buffsLabel" destination="A8j-vC-mpF" id="RcW-Af-T4M"/>
                 <outlet property="buffsValueLabel" destination="wMZ-jm-0Vv" id="FPM-s2-aid"/>
+                <outlet property="equipmentLabel" destination="f51-Wu-8qL" id="3OR-1c-Qdp"/>
                 <outlet property="equipmentValueLabel" destination="L5T-45-9Wq" id="abx-BT-hdD"/>
+                <outlet property="levelLabel" destination="kru-VY-faT" id="oAe-2R-kdM"/>
                 <outlet property="levelValueLabel" destination="2HU-7u-7wS" id="d77-db-ckz"/>
                 <outlet property="titleLabel" destination="Otd-xL-WlU" id="IMW-q9-pyH"/>
                 <outlet property="topBackground" destination="A0y-c2-3s6" id="pjO-7b-hWb"/>
@@ -35,7 +38,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A0y-c2-3s6">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Strength" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Otd-xL-WlU">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Otd-xL-WlU">
                                     <rect key="frame" x="12" y="0.0" width="330.5" height="43"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

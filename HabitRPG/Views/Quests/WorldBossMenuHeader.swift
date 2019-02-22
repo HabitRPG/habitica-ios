@@ -90,8 +90,8 @@ class WorldBossMenuHeader: UIView {
         isAccessibilityElement = true
         shouldGroupAccessibilityChildren = true
         collapseButton.isAccessibilityElement = false
-        accessibilityHint = NSLocalizedString("Double tap to hide boss art", comment: "")
-        accessibilityLabel = "\(quest?.boss?.name ?? ""), World Boss, pending damage: \(pendingDamageLabel.text ?? "")"
+        accessibilityHint = L10n.Accessibility.tapHideBossArt
+        accessibilityLabel = L10n.Accessibility.worldBossPendingDamage(quest?.boss?.name ?? "", pendingDamageLabel.text ?? "")
     }
 
     @IBAction func collapseButtonTapped(_ sender: Any) {
@@ -137,7 +137,7 @@ class WorldBossMenuHeader: UIView {
         guard let quest = self.quest else {
             return
         }
-        let alertController = HabiticaAlertController.alert(title: NSLocalizedString("What’s a World Boss?", comment: ""))
+        let alertController = HabiticaAlertController.alert(title: L10n.whatsWorldBoss)
         let view = Bundle.main.loadNibNamed("WorldBossDescription", owner: nil, options: nil)?.last as? WorldBossDescriptionView
         view?.bossName = quest.boss?.name
         view?.questColorLight = quest.uicolorLight

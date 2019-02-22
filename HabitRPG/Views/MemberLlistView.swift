@@ -14,17 +14,9 @@ class MemberListView: UIView {
 
     var viewTapped: (() -> Void)?
     
-    let avatarView: AvatarView = {
-        let view = AvatarView()
-        return view
-    }()
-    let usernameLabel: UILabel = {
-        let view = UILabel()
-        view.textColor = UIColor.gray50()
-        view.font = UIFont.systemFont(ofSize: 16)
-        return view
-    }()
-    let levelLabel: UILabel = {
+    let avatarView: AvatarView = AvatarView()
+    let displayNameLabel: UsernameLabel = UsernameLabel()
+    let sublineLabel: UILabel = {
         let view = UILabel()
         view.font = UIFont.systemFont(ofSize: 12)
         view.textColor = UIColor.gray200()
@@ -78,7 +70,8 @@ class MemberListView: UIView {
 
     func configure(member: MemberProtocol, isLeader: Bool) {
         avatarView.avatar = AvatarViewModel(avatar: member)
-        usernameLabel.text = member.profile?.name
+        displayNameLabel.text = member.profile?.name
+        displayNameLabel.contributorLevel = member.contributor?.level ?? 0
 
         leaderView.isHidden = !isLeader
 
@@ -94,7 +87,6 @@ class MemberListView: UIView {
             manaLabel.text = "\(Int(stats.mana)) / \(Int(stats.maxMana))"
 
             if member.hasHabiticaClass, let habiticaClass = HabiticaClass(rawValue: stats.habitClass ?? "") {
-                levelLabel.text = "Lvl \(stats.level) \(habiticaClass)"
                 switch habiticaClass {
                 case .warrior:
                     classIconView.image = HabiticaIcons.imageOfWarriorLightBg
@@ -105,8 +97,12 @@ class MemberListView: UIView {
                 case .rogue:
                     classIconView.image = HabiticaIcons.imageOfRogueLightBg
                 }
+            }
+            
+            if let username = member.username {
+                sublineLabel.text = "@\(username) · Lvl \(stats.level)"
             } else {
-                levelLabel.text = "Lvl \(stats.level)"
+                sublineLabel.text = "Lvl \(stats.level)"
             }
             
             buffIconView.isHidden = stats.buffs?.isBuffed != true
@@ -126,9 +122,9 @@ class MemberListView: UIView {
 
     private func setupView() {
         addSubview(avatarView)
-        addSubview(usernameLabel)
+        addSubview(displayNameLabel)
         addSubview(leaderView)
-        addSubview(levelLabel)
+        addSubview(sublineLabel)
         addSubview(healthBar)
         addSubview(healthLabel)
         addSubview(experienceBar)
@@ -148,12 +144,12 @@ class MemberListView: UIView {
 
     func layout() {
         avatarView.pin.start().width(97).height(99).vCenter()
-        usernameLabel.pin.top(14).after(of: avatarView).marginStart(16).height(21).sizeToFit(.height)
-        leaderView.pin.top(14).after(of: usernameLabel).marginStart(6).height(20).sizeToFit(.height)
-        leaderView.pin.width(leaderView.bounds.size.width + 16)
-        levelLabel.pin.after(of: avatarView).marginStart(16).below(of: usernameLabel).marginTop(8).height(18).sizeToFit(.height)
+        displayNameLabel.pin.top(14).after(of: avatarView).marginStart(16).height(21).sizeToFit(.height)
+        leaderView.pin.top(to: displayNameLabel.edge.top).height(20).sizeToFit(.height)
+        leaderView.pin.width(leaderView.bounds.size.width + 16).end()
+        sublineLabel.pin.after(of: avatarView).marginStart(16).below(of: displayNameLabel).marginTop(4).height(18).sizeToFit(.height)
 
-        healthLabel.pin.below(of: levelLabel).height(16).sizeToFit(.height)
+        healthLabel.pin.below(of: sublineLabel).height(16).sizeToFit(.height)
         experienceLabel.pin.below(of: healthLabel).marginTop(3).height(16).sizeToFit(.height)
         manaLabel.pin.below(of: experienceLabel).marginTop(3).height(16).sizeToFit(.height)
 
@@ -163,12 +159,17 @@ class MemberListView: UIView {
         experienceLabel.pin.end().width(labelWidth)
         manaLabel.pin.end().width(labelWidth)
 
-        healthBar.pin.after(of: avatarView).marginStart(16).below(of: levelLabel).marginTop(5).height(8).before(of: healthLabel).marginEnd(12)
+        healthBar.pin.after(of: avatarView).marginStart(16).below(of: sublineLabel).marginTop(4).height(8).before(of: healthLabel).marginEnd(12)
         experienceBar.pin.after(of: avatarView).marginStart(16).below(of: healthBar).marginTop(11).height(8).before(of: healthLabel).marginEnd(12)
         manaBar.pin.after(of: avatarView).marginStart(16).below(of: experienceBar).marginTop(11).height(8).before(of: healthLabel).marginEnd(12)
 
-        classIconView.pin.size(15).end(to: healthBar.edge.end).above(of: healthBar).marginBottom(6)
-        buffIconView.pin.size(15).before(of: classIconView).marginEnd(8).above(of: healthBar).marginBottom(6)
+        buffIconView.pin.size(15).after(of: displayNameLabel).top(to: displayNameLabel.edge.top).marginStart(6).marginTop(4)
+        classIconView.pin.size(15).top(to: displayNameLabel.edge.top).marginStart(4).marginTop(4)
+        if buffIconView.isHidden {
+            classIconView.pin.after(of: displayNameLabel)
+        } else {
+            classIconView.pin.after(of: buffIconView)
+        }
     }
 
     override var intrinsicContentSize: CGSize {

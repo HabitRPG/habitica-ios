@@ -21,12 +21,49 @@ enum SettingsTags {
     static let disableAllNotifications = "disableAllNotifications"
     static let disablePrivateMessages = "disablePrivateMessages"
     static let themeColor = "themeColor"
+    static let appIcon = "appIcon"
     static let soundTheme = "soundTheme"
     static let changeClass = "changeClass"
+    static let server = "server"
+    static let searchableUsername = "searchableUsername"
 }
 
+enum Servers: String {
+    case production = "production"
+    case staging = "staging"
+    case beta = "beta"
+    case gamma = "gamma"
+    case delta = "delta"
+    
+    var niceName: String {
+        switch self {
+        case .production:
+            return "Production"
+        case .staging:
+            return "Staging"
+        case .beta:
+            return "Beta"
+        case.gamma:
+            return "Gamma"
+        case.delta:
+            return "Delta"
+        }
+    }
+    
+    static var allServers: [Servers] {
+        return [
+            .production,
+            .staging,
+            .beta,
+            .gamma,
+            .delta
+        ]
+    }
+}
+
+
 enum ThemeName: String {
-    case defaultTheme = "Default"
+    case defaultTheme = "Purple (Default)"
     case blue = "Blue"
     case teal = "Teal"
     case green = "Green"
@@ -70,6 +107,97 @@ enum ThemeName: String {
     }
 }
 
+enum AppIconName: String {
+    case defaultTheme = "Purple (Default)"
+    case purpleAlt = "Purple Alternative"
+    case maroon = "Maroon"
+    case red = "Red"
+    case orange = "Orange"
+    case yellow = "Yellow"
+    case blue = "Blue"
+    case green = "Green"
+    case teal = "Teal"
+    case black = "Black"
+    case maroonAlt = "Maroon Alternative"
+    case redAlt = "Red Alternative"
+    case orangeAlt = "Orange Alternative"
+    case yellowAlt = "Yellow Alternative"
+    case blueAlt = "Blue Alternative"
+    case greenAlt = "Green Alternative"
+    case tealAlt = "Teal Alternative"
+    case blackAlt = "Black Alternative"
+    case prideHabitica = "Pride"
+    case prideHabiticaAlt = "Pride Alt"
+
+    var fileName: String? {
+        switch self {
+        case .defaultTheme:
+            return nil
+        case.purpleAlt:
+            return "PurpleAlt"
+        case .prideHabitica:
+            return "PrideHabitica"
+        case .prideHabiticaAlt:
+            return "PrideHabiticaAlt"
+        case .maroon:
+            return "Maroon"
+        case .red:
+            return "Red"
+        case .orange:
+            return "Orange"
+        case .yellow:
+            return "Yellow"
+        case .blue:
+            return "Blue"
+        case .teal:
+            return "Teal"
+        case .green:
+            return "Green"
+        case .black:
+            return "Black"
+        case .maroonAlt:
+            return "MaroonAlt"
+        case .redAlt:
+            return "RedAlt"
+        case .orangeAlt:
+            return "OrangeAlt"
+        case .yellowAlt:
+            return "YellowAlt"
+        case .blueAlt:
+            return "BlueAlt"
+        case .tealAlt:
+            return "TealAlt"
+        case .greenAlt:
+            return "GreenAlt"
+        case .blackAlt:
+            return "BlackAlt"
+        }
+    }
+    
+    static var allNames: [AppIconName] {
+        return [
+            .defaultTheme,
+            .purpleAlt,
+            .maroon,
+            .maroonAlt,
+            .red,
+            .redAlt,
+            .orange,
+            .orangeAlt,
+            .yellow,
+            .yellowAlt,
+            .blue,
+            .blueAlt,
+            .teal,
+            .tealAlt,
+            .green,
+            .greenAlt,
+            .black,
+            .blackAlt,
+        ]
+    }
+}
+
 class SettingsViewController: FormViewController, Themeable {
     
     private let userRepository = UserRepository()
@@ -81,6 +209,7 @@ class SettingsViewController: FormViewController, Themeable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = L10n.Titles.settings
         setupForm()
         loadSettingsFromUserDefaults()
         
@@ -126,6 +255,21 @@ class SettingsViewController: FormViewController, Themeable {
                         progressView?.dismiss(true)
                     }
                 })
+            <<< AlertRow<LabeledFormValue<String>>(SettingsTags.server) { row in
+                row.title = L10n.Settings.server
+                row.hidden = true
+                row.options = Servers.allServers.map({ (server) -> LabeledFormValue<String> in
+                    return LabeledFormValue(value: server.rawValue, label: server.niceName)
+                })
+                if let server = Servers(rawValue: UserDefaults().string(forKey: "chosenServer") ?? "") {
+                    row.value = LabeledFormValue(value: server.rawValue, label: server.niceName)
+                }
+                row.onChange({ (row) in
+                    UserDefaults().set(row.value?.value, forKey: "chosenServer")
+                    let appDelegate = UIApplication.shared.delegate as! HRPGAppDelegate
+                    appDelegate.swiftAppDelegate.updateServer()
+                })
+        }
     }
     
     private func setupUserSection() {
@@ -142,12 +286,12 @@ class SettingsViewController: FormViewController, Themeable {
             <<< ButtonRow(SettingsTags.authentication) { row in
                 row.title = L10n.Settings.authentication
                 row.presentationMode = .segueName(segueName: StoryboardSegue.Settings.authenticationSegue.rawValue, onDismiss: nil)
-                row.cellStyle = UITableViewCellStyle.subtitle
+                row.cellStyle = UITableViewCell.CellStyle.subtitle
                 row.cellUpdate({[weak self] (cell, _) in
                     cell.textLabel?.textColor = UIColor.black
                     cell.textLabel?.textAlignment = .natural
                     cell.accessoryType = .disclosureIndicator
-                    if self?.configRepository.bool(variable: .enableChangeUsername) == true && self?.user?.flags?.verifiedUsername != true {
+                    if self?.configRepository.bool(variable: .enableChangeUsername) == true && self?.user?.flags?.verifiedUsername == false {
                         cell.detailTextLabel?.text = L10n.Settings.usernameNotConfirmed
                         cell.detailTextLabel?.textColor = UIColor.red50()
                     } else {
@@ -237,6 +381,17 @@ class SettingsViewController: FormViewController, Themeable {
                     }
                 })
             +++ Section(L10n.Settings.social)
+            <<< SwitchRow(SettingsTags.searchableUsername) { row in
+                row.title = L10n.Settings.searchableUsername
+                row.onChange({ (row) in
+                    if row.value == self.user?.preferences?.searchableUsername {
+                        return
+                    }
+                    if let value = row.value {
+                        self.userRepository.updateUser(key: "preferences.searchableUsername", value: value).observeCompleted {}
+                    }
+                })
+            }
             <<< SwitchRow(SettingsTags.disableAllNotifications) { row in
                 row.title = L10n.Settings.disableAllNotifications
                 row.onChange({ (row) in
@@ -259,7 +414,7 @@ class SettingsViewController: FormViewController, Themeable {
                     }
                 })
         }
-        +++ Section(L10n.Settings.preferences)
+        let section = Section(L10n.Settings.preferences)
             <<< PushRow<LabeledFormValue<String>>(SettingsTags.soundTheme) { row in
                 row.title = L10n.Settings.soundTheme
                 row.options = SoundTheme.allThemes.map({ (theme) -> LabeledFormValue<String> in
@@ -288,6 +443,37 @@ class SettingsViewController: FormViewController, Themeable {
                     let defaults = UserDefaults.standard
                     defaults.set(row.value, forKey: "theme")
                 })
+            }
+        form +++ section
+        if #available(iOS 10.3, *) {
+            section <<< PushRow<String>(SettingsTags.appIcon) { row in
+                row.title = L10n.Settings.appIcon
+                row.options = AppIconName.allNames.map({ (name) -> String in
+                    return name.rawValue
+                })
+                row.value = UIApplication.shared.alternateIconName ?? AppIconName.defaultTheme.rawValue
+                row.onPresent({ (from, to) in
+                    to.selectableRowCellUpdate = { cell, row in
+                        let filename = AppIconName(rawValue: row.title ?? "")?.fileName ?? "Purple"
+                        cell.height = { 68 }
+                        cell.imageView?.cornerRadius = 12
+                        cell.imageView?.contentMode = .center
+                        cell.imageView?.image = UIImage(named: filename)
+                        cell.contentView.layoutMargins = UIEdgeInsets(top: 4, left: cell.layoutMargins.left, bottom: 4, right: cell.layoutMargins.right)
+                    }
+                })
+                row.onChange({ (row) in
+                    if let newAppIcon = AppIconName(rawValue: row.value ?? "") {
+                        DispatchQueue.main.async {
+                            UIApplication.shared.setAlternateIconName(newAppIcon.fileName) { (error) in
+                                if let error = error {
+                                    print("error: \(error)")
+                                }
+                            }
+                        }
+                    }
+                })
+            }
         }
     }
     
@@ -308,6 +494,10 @@ class SettingsViewController: FormViewController, Themeable {
         let timeRow = (form.rowBy(tag: SettingsTags.customDayStart) as? TimeRow)
         timeRow?.value = calendar.date(from: components)
         timeRow?.updateCell()
+        
+        let searchableUsernameRow = (form.rowBy(tag: SettingsTags.searchableUsername) as? SwitchRow)
+        searchableUsernameRow?.value = user.preferences?.searchableUsername
+        searchableUsernameRow?.updateCell()
         
         let disableNotificationsRow = (form.rowBy(tag: SettingsTags.disableAllNotifications) as? SwitchRow)
         disableNotificationsRow?.value = user.preferences?.pushNotifications?.unsubscribeFromAll
@@ -330,17 +520,24 @@ class SettingsViewController: FormViewController, Themeable {
         if let classRow = form.rowBy(tag: SettingsTags.changeClass) as? ButtonRow {
             if (user.stats?.level ?? 0) < 10 {
                 classRow.hidden = true
-                return
-            }
-            classRow.hidden = false
-            if !user.canChooseClassForFree {
-                classRow.title = L10n.Settings.changeClass
-            } else if user.needsToChooseClass {
-                classRow.title = L10n.Settings.selectClass
             } else {
-                classRow.title = L10n.Settings.enableClassSystem
+                classRow.hidden = false
+                if !user.canChooseClassForFree {
+                    classRow.title = L10n.Settings.changeClass
+                } else if user.needsToChooseClass {
+                    classRow.title = L10n.Settings.selectClass
+                } else {
+                    classRow.title = L10n.Settings.enableClassSystem
+                }
+                classRow.updateCell()
             }
-            classRow.updateCell()
+            classRow.evaluateHidden()
+        }
+        
+        if user.contributor?.admin == true {
+            let serverRow = (form.rowBy(tag: SettingsTags.server) as? AlertRow<LabeledFormValue<String>>)
+            serverRow?.hidden = false
+            serverRow?.evaluateHidden()
         }
     }
     

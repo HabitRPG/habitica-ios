@@ -9,20 +9,12 @@
 import Foundation
 import Habitica_Models
 
-@objc
-class TodoTableViewDataSourceInstantiator: NSObject {
-    @objc
-    static func instantiate(predicate: NSPredicate) -> TaskTableViewDataSourceProtocol {
-        return TodoTableViewDataSource(predicate: predicate, taskType: TaskType.todo)
-    }
-}
-
 class TodoTableViewDataSource: TaskTableViewDataSource {
     
     let dateFormatter = DateFormatter()
     
-    override init(predicate: NSPredicate, taskType: TaskType) {
-        super.init(predicate: predicate, taskType: taskType)
+    init(predicate: NSPredicate) {
+        super.init(predicate: predicate, taskType: TaskType.todo)
         
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .none

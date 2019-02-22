@@ -28,6 +28,10 @@ class NewsViewController: HRPGUIViewController, UIWebViewDelegate {
         loadingIndicator.startAnimating()
     }
     
+    override func populateText() {
+        navigationItem.title = L10n.Titles.news
+    }
+    
     func webViewDidFinishLoad(_ webView: UIWebView) {
         UIView.animate(withDuration: 0.4) {
             self.newsWebView.alpha = 1
@@ -36,4 +40,16 @@ class NewsViewController: HRPGUIViewController, UIWebViewDelegate {
         userRepository.updateUser(key: "flags.newStuff", value: false).observeCompleted {}
     }
     
+    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
+        if request.url?.absoluteString.contains("/new-stuff") == true {
+            return true
+        }
+        if let url = request.url {
+            DispatchQueue.main.asyncAfter(deadline: .now()+0.6) {
+                RouterHandler.shared.handleOrOpen(url: url)
+            }
+            return false
+        }
+        return true
+    }
 }

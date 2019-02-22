@@ -104,7 +104,13 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
     func markChatAsSeen(groupID: String) -> Signal<EmptyResponseProtocol?, NoError> {
         let call = MarkChatSeenCall(groupID: groupID)
         call.fire()
-        return call.objectSignal
+        return call.objectSignal.on(failed: { error in
+            print(error)
+        }, value: { response in
+            if response != nil, let userID = self.currentUserId {
+                self.localRepository.setNoNewMessages(userID: userID, groupID: groupID)
+            }
+        })
     }
     
     func like(groupID: String, chatMessage: ChatMessageProtocol) -> Signal<ChatMessageProtocol?, NoError> {
@@ -155,11 +161,11 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
         })
     }
     
-    func post(inboxMessage: String, toUserID userID: String) -> Signal<UserProtocol?, NoError> {
+    func post(inboxMessage: String, toUserID userID: String) -> Signal<[InboxMessageProtocol]?, NoError> {
         let call = PostInboxMessageCall(userID: userID, inboxMessage: inboxMessage)
         call.fire()
         return call.objectSignal.flatMap(.latest, {[weak self] (_) in
-            return self?.userRepository.retrieveUser() ?? Signal.empty
+            return self?.userRepository.retrieveInboxMessages() ?? Signal.empty
         })
     }
     
@@ -241,6 +247,24 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
         })
     }
     
+    public func retrieveMemberWithUsername(_ username: String) -> Signal<MemberProtocol?, NoError> {
+        let call = RetrieveMemberUsernameCall(username: username)
+        call.fire()
+        return call.objectSignal.on(value: {[weak self] member in
+            if let member = member {
+                self?.localRepository.save(member)
+            }
+        })
+    }
+    
+    public func findUsernames(_ username: String, context: String?, id: String?) -> Signal<[MemberProtocol], NoError> {
+        let call = FindUsernamesCall(username: username, context: context, id: id)
+        call.fire()
+        return call.arraySignal.map({ result in
+            return result ?? []
+        })
+    }
+    
     public func getMember(userID: String, retrieveIfNotFound: Bool = false) -> SignalProducer<MemberProtocol?, NoError> {
         return localRepository.getMember(userID: userID)
             .flatMapError({ (_) -> SignalProducer<MemberProtocol?, NoError> in
@@ -298,13 +322,13 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
         })
     }
     
-    public func invite(toGroup groupID: String, invitationType: String, inviter: String, members: [String]) -> Signal<EmptyResponseProtocol?, NoError> {
-        let call = InviteToGroupCall(groupID: groupID, invitationType: invitationType, inviter: inviter, members: members)
+    public func invite(toGroup groupID: String, members: [String: Any]) -> Signal<EmptyResponseProtocol?, NoError> {
+        let call = InviteToGroupCall(groupID: groupID, members: members)
         call.fire()
         call.habiticaResponseSignal.observeValues { (response) in
             if let error = response?.message {
                 ToastManager.show(text: error, color: .red)
-            } else {
+            } else if response != nil {
                 ToastManager.show(text: L10n.usersInvited, color: .blue)
             }
         }

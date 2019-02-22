@@ -315,7 +315,7 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
         self.topViewController?.navigationItem.rightBarButtonItems?.forEach({ (button) in
             button.tintColor = tintColor
         })
-        self.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: (visibleTextColor.blend(with: hiddenTextColor, alpha: alpha) ?? .white)]
+        self.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: (visibleTextColor.blend(with: hiddenTextColor, alpha: alpha) ?? .white)]
         updateStatusbarColor()
     }
     

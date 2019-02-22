@@ -7,12 +7,18 @@
 //
 
 import Foundation
+import Crashlytics
 
 extension JSONDecoder {
     
     func setHabiticaDateDecodingStrategy() {
         dateDecodingStrategy = .custom({ dateDecoder -> Date in
             let container = try dateDecoder.singleValueContainer()
+            
+            if let timestampNumber = try? container.decode(Double.self) {
+                return Date(timeIntervalSince1970: timestampNumber)
+            }
+            
             let dateStr = try container.decode(String.self)
             
             if #available(iOS 10.0, *) {
@@ -23,6 +29,7 @@ extension JSONDecoder {
             
             let dateFormatter = DateFormatter()
             dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+            dateFormatter.timeZone = TimeZone(identifier: "UTC")
             dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
             if let date = dateFormatter.date(from: dateStr) {
                 return date
@@ -52,7 +59,10 @@ extension JSONDecoder {
             if let date = dateFormatter.date(from: dateStr) {
                 return date
             }
-            return Date()
+            
+            Crashlytics.sharedInstance().recordCustomExceptionName("DateParserException", reason: "Date \(dateStr) could not be parsed", frameArray: [])
+            
+            return Date(timeIntervalSince1970: 0)
         })
     }
     

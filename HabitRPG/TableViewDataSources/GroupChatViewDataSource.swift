@@ -20,8 +20,10 @@ class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtoc
 
     private let socialRepository = SocialRepository()
     private let userRepository = UserRepository()
+    private let configRepository = ConfigRepository()
     private var user: UserProtocol?
     private let groupID: String
+    private let enableUsernameRelease = ConfigRepository().bool(variable: .enableUsernameRelease)
     
     init(groupID: String) {
         self.groupID = groupID
@@ -61,27 +63,32 @@ class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtoc
         }
         
         cell.isFirstMessage = indexPath?.item == 0
+        var username = user?.username ?? ""
+        if !enableUsernameRelease || username.count == 0 {
+            username = self.user?.profile?.name ?? ""
+        }
         cell.configure(chatMessage: chatMessage,
                        previousMessage: item(at: IndexPath(item: (indexPath?.item ?? 0)+1, section: indexPath?.section ?? 0)),
                        nextMessage: item(at: IndexPath(item: (indexPath?.item ?? 0)-1, section: indexPath?.section ?? 0)),
                        userID: self.user?.id ?? "",
-                       username: self.user?.profile?.name ?? "",
+                       username: username,
                        isModerator: self.user?.isModerator == true,
-                       isExpanded: isExpanded)
+                       isExpanded: isExpanded,
+                       enableUsernameRelease: configRepository.bool(variable: .enableUsernameRelease))
         
         cell.profileAction = {
             guard let profileViewController = self.viewController?.storyboard?.instantiateViewController(withIdentifier: "UserProfileViewController") as? UserProfileViewController else {
                 return
             }
             profileViewController.userID = chatMessage.userID
-            profileViewController.username = chatMessage.username
+            profileViewController.username = chatMessage.displayName
             self.viewController?.navigationController?.pushViewController(profileViewController, animated: true)
         }
         cell.reportAction = {[weak self] in
             guard let view = Bundle.main.loadNibNamed("HRPGFlagInformationOverlayView", owner: self, options: nil)?.first as? HRPGFlagInformationOverlayView else {
                 return
             }
-            view.username = chatMessage.username
+            view.username = chatMessage.displayName
             view.message = chatMessage.text
             view.flagAction = {
                 if let strongSelf = self {
@@ -98,7 +105,7 @@ class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtoc
             popup?.show()
         }
         cell.replyAction = {
-            self.viewController?.configureReplyTo(chatMessage.username)
+            self.viewController?.configureReplyTo(chatMessage.username ?? chatMessage.displayName)
         }
         cell.plusOneAction = {
             self.socialRepository.like(groupID: self.groupID, chatMessage: chatMessage).observeCompleted {}
@@ -106,7 +113,7 @@ class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtoc
         cell.copyAction = {
             let pasteboard = UIPasteboard.general
             pasteboard.string = chatMessage.text
-            let toastView = ToastView(title: NSLocalizedString("Copied Message", comment: ""), background: .green)
+            let toastView = ToastView(title: L10n.copiedMessage, background: .green)
             ToastManager.show(toast: toastView)
         }
         cell.deleteAction = {

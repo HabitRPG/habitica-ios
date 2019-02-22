@@ -10,7 +10,8 @@ import Habitica_API_Client
 
 @objc
 enum ConfigVariable: Int {
-    case enableRepeatables, supportEmail, enableNewShops, shopSpriteSuffix, maxChatLength, enableChangeUsername
+    case enableRepeatables, supportEmail, enableNewShops, shopSpriteSuffix
+    case maxChatLength, enableChangeUsername, enableUsernameRelease, enableGiftOneGetOne, enableUsernameAutocomplete
 
     func name() -> String {
         // swiftlint:disable switch_case_on_newline
@@ -21,6 +22,9 @@ enum ConfigVariable: Int {
         case .shopSpriteSuffix: return "shopSpriteSuffix"
         case .maxChatLength: return "maxChatLength"
         case .enableChangeUsername: return "enableChangeUsername"
+        case .enableUsernameRelease: return "enableUsernameRelease"
+        case .enableGiftOneGetOne: return "enableGiftOneGetOne"
+        case .enableUsernameAutocomplete: return "enableUsernameAutocomplete"
         }
         // swiftlint:enable switch_case_on_newline
     }
@@ -30,7 +34,7 @@ enum ConfigVariable: Int {
 class ConfigRepository: NSObject {
 
     private static let configUrl = "https://s3.amazonaws.com/habitica-assets/mobileApp/endpoint/config-ios.json"
-    private static let configVariables: [ConfigVariable] = [.enableRepeatables, .supportEmail, .enableNewShops, .shopSpriteSuffix, .maxChatLength, .enableChangeUsername]
+    private static let configVariables: [ConfigVariable] = [.enableRepeatables, .supportEmail, .enableNewShops, .shopSpriteSuffix, .maxChatLength, .enableChangeUsername, .enableUsernameAutocomplete]
     private let userConfig = UserDefaults.standard
 
     @objc
@@ -47,6 +51,7 @@ class ConfigRepository: NSObject {
                     }
                 }
             }
+            self.userConfig.set(true, forKey: ConfigVariable.enableUsernameRelease.name())
         }
     }
 

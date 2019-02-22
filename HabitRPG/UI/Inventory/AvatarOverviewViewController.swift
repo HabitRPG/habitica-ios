@@ -50,6 +50,13 @@ class AvatarOverviewViewController: HRPGUIViewController, UIScrollViewDelegate {
         view.setNeedsLayout()
     }
     
+    override func populateText() {
+        navigationItem.title = L10n.Titles.avatar
+        bodySizeLabel.text = L10n.bodySize
+        bodySizeControl.setTitle(L10n.slim, forSegmentAt: 0)
+        bodySizeControl.setTitle(L10n.broad, forSegmentAt: 1)
+    }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         topHeaderCoordinator.scrollViewDidScroll()
     }

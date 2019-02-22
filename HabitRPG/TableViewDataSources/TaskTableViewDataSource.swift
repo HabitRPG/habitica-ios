@@ -71,6 +71,10 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
         }
     }
     
+    override func didSetTableView() {
+        tableView?.reloadData()
+    }
+    
     internal let userRepository = UserRepository()
     internal let repository = TaskRepository()
     
@@ -126,13 +130,15 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
         return true
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             if let task = self.item(at: indexPath) {
                 repository.deleteTask(task).observeCompleted {}
             }
         }
     }
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
@@ -151,7 +157,7 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
         }
         cell.configure(task: task)
         cell.syncErrorTouched = {[weak self] in
-            let alertController = HabiticaAlertController(title: L10n.syncError, message: L10n.syncErrorMessage)
+            let alertController = HabiticaAlertController(title: L10n.Errors.sync, message: L10n.Errors.syncMessage)
             alertController.addAction(title: L10n.resyncTask, style: .default, isMainAction: false, handler: {[weak self] (_) in
                 self?.repository.syncTask(task).observeCompleted {}
             })

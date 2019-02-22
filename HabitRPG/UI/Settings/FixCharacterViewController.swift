@@ -28,10 +28,13 @@ class FixCharacterViewController: HRPGBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.title = L10n.Titles.fixValues
+        
         let view = UIView()
         
         let label = UILabel()
-        label.text = NSLocalizedString("If you’ve encountered a bug or made a mistake that unfairly changed your character, you can manually correct those values here.", comment: "")
+        label.text = L10n.Settings.fixValuesDescription
         view.backgroundColor = UIColor.gray700()
         label.textColor = UIColor.gray300()
         label.numberOfLines = 0
@@ -100,36 +103,36 @@ class FixCharacterViewController: HRPGBaseViewController {
         valueField.text = "\(stats[identifierFor(index: item)] ?? 0)"
         switch item {
         case 0:
-            titleLabel.text = NSLocalizedString("Health", comment: "")
+            titleLabel.text = L10n.health
             titleLabel.textColor = .red10()
             iconView.backgroundColor = UIColor.red500().withAlphaComponent(0.5)
             iconView.image = HabiticaIcons.imageOfHeartLightBg
             return
         case 1:
-            titleLabel.text = NSLocalizedString("Experience", comment: "")
+            titleLabel.text = L10n.experience
             titleLabel.textColor = .yellow10()
             iconView.backgroundColor = UIColor.yellow500().withAlphaComponent(0.5)
             iconView.image = HabiticaIcons.imageOfExperience
             return
         case 2:
-            titleLabel.text = NSLocalizedString("Mana Points", comment: "")
+            titleLabel.text = L10n.manaPoints
             titleLabel.textColor = .blue10()
             iconView.backgroundColor = UIColor.blue500().withAlphaComponent(0.5)
             iconView.image = HabiticaIcons.imageOfMagic
             return
         case 3:
-            titleLabel.text = NSLocalizedString("Gold", comment: "")
+            titleLabel.text = L10n.gold
             titleLabel.textColor = .yellow10()
             iconView.backgroundColor = UIColor.yellow500().withAlphaComponent(0.5)
             iconView.image = HabiticaIcons.imageOfGold
             return
         case 4:
-            titleLabel.text = NSLocalizedString("Character Level", comment: "")
+            titleLabel.text = L10n.characterLevel
             titleLabel.textColor = .purple300()
             configure(iconView: iconView, forHabitClass: habitClass)
             return
         case 5:
-            titleLabel.text = NSLocalizedString("21-Day Streaks", comment: "")
+            titleLabel.text = L10n.dayStreaks
             titleLabel.textColor = .gray10()
             iconView.backgroundColor = UIColor.gray500().withAlphaComponent(0.5)
             iconView.image = #imageLiteral(resourceName: "streak_achievement")

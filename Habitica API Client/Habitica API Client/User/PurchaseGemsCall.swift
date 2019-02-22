@@ -12,8 +12,12 @@ import FunkyNetwork
 import ReactiveSwift
 
 public class PurchaseGemsCall: ResponseObjectCall<EmptyResponseProtocol, APIEmptyResponse> {
-    public init(receipt: [String: Any], stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "user.json")) {
-        let json = try? JSONSerialization.data(withJSONObject: receipt, options: [])
-        super.init(httpMethod: .POST, endpoint: "iap/ios/verify", postData: json, stubHolder: stubHolder)
+    public init(receipt: [String: Any], recipient: String?, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "user.json")) {
+        var data = ["transaction": receipt]
+        if let recipient = recipient {
+            data["gift"] = ["uuid": recipient]
+        }
+        let json = try? JSONSerialization.data(withJSONObject: data, options: [])
+        super.init(httpMethod: .POST, endpoint: "iap/ios/verify", postData: json, stubHolder: stubHolder, errorHandler: PrintNetworkErrorHandler())
     }
 }

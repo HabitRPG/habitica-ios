@@ -197,7 +197,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let view = collectionView.dequeueReusableSupplementaryView(
-                ofKind: UICollectionElementKindSectionHeader,
+            ofKind: UICollectionView.elementKindSectionHeader,
                 withReuseIdentifier: "sectionHeader", for: indexPath
             ) as? HRPGShopSectionHeaderCollectionReusableView
         
@@ -205,13 +205,14 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
             headerView.gearCategoryButton.isHidden = true
             headerView.otherClassDisclaimer.isHidden = true
             if indexPath.section == 0 && needsGearSection {
-                headerView.titleLabel.text = NSLocalizedString("Class Equipment", comment: "")
+                headerView.titleLabel.text = L10n.Equipment.classEquipment
                 headerView.gearCategoryLabel.text = selectedGearCategory?.capitalized
                 headerView.gearCategoryButton.isHidden = false
                 headerView.onGearCategoryLabelTapped = {[weak self] in
                     self?.delegate?.showGearSelection()
                 }
                  headerView.otherClassDisclaimer.isHidden = userClass == selectedGearCategory
+                headerView.otherClassDisclaimer.text = L10n.Shops.otherClassDisclaimer
             } else {
                 headerView.titleLabel.text = titleFor(section: indexPath.section)
             }
@@ -253,7 +254,9 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
             return cell
         } else if indexPath.section == 0 && needsGearSection {
             if !hasGearSection() {
-                return collectionView.dequeueReusableCell(withReuseIdentifier: "EmptyGearCell", for: indexPath)
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmptyGearCell", for: indexPath)
+                (cell.viewWithTag(1) as? UILabel)?.text = L10n.Shops.purchasedAllGear
+                return cell
             }
         }
         return collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath)

@@ -32,6 +32,7 @@
     
     [self.swiftAppDelegate setupLogging];
     [self.swiftAppDelegate setupAnalytics];
+    [self.swiftAppDelegate setupRouter];
     [self.swiftAppDelegate setupPopups];
     [self.swiftAppDelegate setupPurchaseHandling];
     [self.swiftAppDelegate setupNetworkClient];
@@ -99,10 +100,27 @@
         return YES;
     }
     
-    return [[FBSDKApplicationDelegate sharedInstance] application:application
+    BOOL wasHandled = [[FBSDKApplicationDelegate sharedInstance] application:application
                                                           openURL:url
                                                 sourceApplication:sourceApplication
                                                        annotation:annotation];
+    
+    if (!wasHandled) {
+        return [RouterHandler.shared handleWithUrl:url];
+    }
+    return YES;
+}
+
+- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray<id<UIUserActivityRestoring>> * _Nullable))restorationHandler {
+    if ([userActivity.activityType isEqualToString:CSSearchableItemActionType]) {
+        NSString *uniqueIdentifier = userActivity.userInfo[CSSearchableItemActivityIdentifier];
+        NSArray *components = [uniqueIdentifier componentsSeparatedByString:@"."];
+        NSString *taskType = components[4];
+        NSString *taskID = components[5];
+        [self displayTaskWithId:taskID fromType:taskType];
+        return YES;
+    }
+    return [RouterHandler.shared handleWithUserActivity:userActivity];
 }
 
 - (void)application:(UIApplication *)application
@@ -130,19 +148,6 @@
     completionHandler(YES);
 }
 
-- (BOOL)application:(UIApplication *)application
-    continueUserActivity:(NSUserActivity *)userActivity
-      restorationHandler:(void (^)(NSArray *_Nullable))restorationHandler {
-    if ([userActivity.activityType isEqualToString:CSSearchableItemActionType]) {
-        NSString *uniqueIdentifier = userActivity.userInfo[CSSearchableItemActivityIdentifier];
-        NSArray *components = [uniqueIdentifier componentsSeparatedByString:@"."];
-        NSString *taskType = components[4];
-        NSString *taskID = components[5];
-        [self displayTaskWithId:taskID fromType:taskType];
-    }
-    return YES;
-}
-
 - (void)application:(UIApplication *)application
     handleActionWithIdentifier:(NSString *)identifier
           forLocalNotification:(UILocalNotification *)notification
@@ -160,14 +165,14 @@
     if ([identifier isEqualToString:@"acceptAction"]) {
         [self.swiftAppDelegate acceptQuestInvitation:^(BOOL success) {
             if (!success) {
-                [self displayLocalNotificationWithMessage:NSLocalizedString(@"There was an error accepting the quest invitation", nil) withApplication:application];
+                [self displayLocalNotificationWithMessage:objcL10n.errorQuestInviteAccept withApplication:application];
             }
             completionHandler();
         }];
     } else if ([identifier isEqualToString:@"rejectAction"]) {
         [self.swiftAppDelegate rejectQuestInvitation:^(BOOL success) {
             if (!success) {
-                [self displayLocalNotificationWithMessage:NSLocalizedString(@"There was an error rejecting the quest invitation", nil) withApplication:application];
+                [self displayLocalNotificationWithMessage:objcL10n.errorQuestInviteReject withApplication:application];
             }
             completionHandler();
         }];
@@ -176,7 +181,7 @@
                                                   message:responseInfo[UIUserNotificationActionResponseTypedTextKey]
                                                 completed:^(BOOL success) {
                                                     if (!success) {
-                                                        [self displayLocalNotificationWithMessage:NSLocalizedString(@"Your message could not be sent.", nil) withApplication:application];
+                                                        [self displayLocalNotificationWithMessage:objcL10n.errorReply withApplication:application];
                                                     }
                                                     completionHandler();
                                                 }];
@@ -185,7 +190,7 @@
 
 - (void) displayLocalNotificationWithMessage:(NSString *)message withApplication:(UIApplication *)application {
     UILocalNotification *notification = [[UILocalNotification alloc]init];
-    [notification setAlertBody:[NSString stringWithFormat:NSLocalizedString(@"There was an error with your request: %@", nil), message]];
+    [notification setAlertBody:[objcL10n errorRequestWithMessage: message]];
     [notification setFireDate:[NSDate dateWithTimeIntervalSinceNow:1]];
     [notification setTimeZone:[NSTimeZone  defaultTimeZone]];
     [application setScheduledLocalNotifications:[NSArray arrayWithObject:notification]];
@@ -200,9 +205,9 @@
         return;
     }
 
-    HabiticaAlertController *alertController = [HabiticaAlertController alertWithTitle:NSLocalizedString(@"Reminder", nil) message:notification.alertBody];
-    [alertController addActionWithTitle:NSLocalizedString(@"Close", nil) style:UIAlertActionStyleDefault isMainAction:NO closeOnTap:true handler:nil];
-    [alertController addActionWithTitle:NSLocalizedString(@"Complete", nil) style:UIAlertActionStyleDefault isMainAction:YES closeOnTap:true handler:^(UIButton * _Nonnull button) {
+    HabiticaAlertController *alertController = [HabiticaAlertController alertWithTitle:objcL10n.reminder message:notification.alertBody];
+    [alertController addActionWithTitle:objcL10n.close style:UIAlertActionStyleDefault isMainAction:NO closeOnTap:true handler:nil];
+    [alertController addActionWithTitle:objcL10n.complete style:UIAlertActionStyleDefault isMainAction:YES closeOnTap:true handler:^(UIButton * _Nonnull button) {
         [self completeTaskWithId:[notification.userInfo valueForKey:@"taskID"] completionHandler:nil];
     }];
     [alertController show];
@@ -213,7 +218,7 @@
     if ([UIApplication sharedApplication].applicationState == UIApplicationStateInactive) {
         [self handlePushNotification:userInfo];
     } else if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
-        [self displayPushNotificationInApp:userInfo];
+        [self.swiftAppDelegate displayNotificationInAppWithText:userInfo[@"aps"][@"alert"]];
     }
 }
 
@@ -231,8 +236,7 @@
             inboxChatViewController.userID = userInfo[@"replyTo"];
             [displayedNavigationController pushViewController:inboxChatViewController animated:YES];
         } else if ([userInfo[@"identifier"] isEqualToString:@"invitedParty"] || [userInfo[@"identifier"] isEqualToString:@"questStarted"]) {
-            PartyViewController *partyViewController = (PartyViewController *)[self loadViewController:@"PartyViewController" fromStoryboard:@"Social"];
-            [displayedNavigationController pushViewController:partyViewController animated:YES];
+            [RouterHandler.shared handleWithUrlString:@"/party"];
         } else if ([userInfo[@"identifier"] isEqualToString:@"invitedGuild"]) {
             SplitSocialViewController *guildViewController = (SplitSocialViewController *)[self loadViewController:@"GroupTableViewController" fromStoryboard:@"Social"];
             guildViewController.groupID = userInfo[@"groupID"];
@@ -260,7 +264,7 @@
         UIMutableUserNotificationAction *completeAction =
             [[UIMutableUserNotificationAction alloc] init];
         completeAction.identifier = @"completeAction";
-        completeAction.title = NSLocalizedString(@"Complete", nil);
+        completeAction.title = objcL10n.complete;
         completeAction.activationMode = UIUserNotificationActivationModeBackground;
         completeAction.authenticationRequired = NO;
         UIMutableUserNotificationCategory *completeCategory =
@@ -272,13 +276,13 @@
         UIMutableUserNotificationAction *acceptAction =
         [[UIMutableUserNotificationAction alloc] init];
         acceptAction.identifier = @"acceptAction";
-        acceptAction.title = NSLocalizedString(@"Accept", nil);
+        acceptAction.title = objcL10n.accept;
         acceptAction.activationMode = UIUserNotificationActivationModeBackground;
         acceptAction.authenticationRequired = NO;
         UIMutableUserNotificationAction *rejectAction =
         [[UIMutableUserNotificationAction alloc] init];
         rejectAction.identifier = @"rejectAction";
-        rejectAction.title = NSLocalizedString(@"Reject", nil);
+        rejectAction.title = objcL10n.reject;
         rejectAction.activationMode = UIUserNotificationActivationModeBackground;
         rejectAction.destructive = YES;
         rejectAction.authenticationRequired = NO;
@@ -291,7 +295,7 @@
         UIMutableUserNotificationAction *replyAction =
         [[UIMutableUserNotificationAction alloc] init];
         replyAction.identifier = @"replyAction";
-        replyAction.title = NSLocalizedString(@"Reply", nil);
+        replyAction.title = objcL10n.reply;
         replyAction.activationMode = UIUserNotificationActivationModeBackground;
         replyAction.authenticationRequired = NO;
         if ([UIMutableUserNotificationAction instancesRespondToSelector:@selector(setBehavior:)]) {
@@ -369,11 +373,6 @@
 - (UIViewController *)loadViewController:(NSString *)name fromStoryboard:(NSString *)storyboardName {
     UIStoryboard *secondStoryBoard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
     return [secondStoryBoard instantiateViewControllerWithIdentifier:name];
-}
-
-- (void)displayPushNotificationInApp:(NSDictionary *)userInfo {
-    NSString *text = userInfo[@"aps"][@"alert"];
-    [ToastManager showWithText:text color:ToastColorPurple];
 }
 
 -(void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler{

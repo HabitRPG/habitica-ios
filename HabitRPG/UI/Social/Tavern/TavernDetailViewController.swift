@@ -27,11 +27,11 @@ class TavernDetailViewController: GroupDetailViewController {
             if let quest = self.quest {
                 worldBossStackView.isHidden = false
                 questProgressView.configure(quest: quest)
-                tavernHeaderView.setNotes(NSLocalizedString("Oh dear, pay no heed to the monster below -- this is still a safe haven to chat on your breaks.", comment: ""))
+                tavernHeaderView.setNotes(L10n.worldBossIntroHeader)
                 questProgressView.isHidden = false
                 
                 worldBossTitleView.infoIconAction = {
-                    let alertController = HabiticaAlertController.alert(title: NSLocalizedString("What’s a World Boss?", comment: ""))
+                    let alertController = HabiticaAlertController.alert(title: L10n.whatsWorldBoss)
                     let view = Bundle.main.loadNibNamed("WorldBossDescription", owner: nil, options: nil)?.last as? WorldBossDescriptionView
                     view?.bossName = quest.boss?.name
                     view?.questColorLight = quest.uicolorLight
@@ -53,7 +53,7 @@ class TavernDetailViewController: GroupDetailViewController {
         
         tavernHeaderView.npcNameLabel.text = "Daniel"
         tavernHeaderView.setSprites(identifier: "tavern")
-        tavernHeaderView.setNotes(NSLocalizedString("Welcome to the Inn! Pull up a chair to chat, or take a break from your tasks.", comment: ""))
+        tavernHeaderView.setNotes(L10n.tavernIntroHeader)
         
         let margins = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         worldBossStackView.layoutMargins = margins
@@ -73,12 +73,17 @@ class TavernDetailViewController: GroupDetailViewController {
         
         disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
             if user.preferences?.sleep == true {
-                self?.innButton.setTitle(NSLocalizedString("Resume Damage", comment: ""), for: .normal)
+                self?.innButton.setTitle(L10n.resumeDamage, for: .normal)
             } else {
-                self?.innButton.setTitle(NSLocalizedString("Pause Damage", comment: ""), for: .normal)
+                self?.innButton.setTitle(L10n.pauseDamage, for: .normal)
             }
             self?.questProgressView.configure(user: user)
         }).start())
+    }
+    
+    override func populateText() {
+        worldBossTitleView.text = L10n.WorldBoss.worldBoss
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

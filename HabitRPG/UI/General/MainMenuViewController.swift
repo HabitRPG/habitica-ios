@@ -13,14 +13,16 @@ import ReactiveSwift
 
 struct MenuItem {
     var title: String
+    var subtitle: String?
     var accessibilityLabel: String?
     var segue: String
     var cellName = "Cell"
     var showIndicator = false
     var isHidden = false
     
-    init(title: String, accessibilityLabel: String? = nil, segue: String, cellName: String = "Cell", showIndicator: Bool = false) {
+    init(title: String, subtitle: String? = nil, accessibilityLabel: String? = nil, segue: String, cellName: String = "Cell", showIndicator: Bool = false) {
         self.title = title
+        self.subtitle = subtitle
         self.accessibilityLabel = accessibilityLabel
         self.segue = segue
         self.cellName = cellName
@@ -60,7 +62,7 @@ class MainMenuViewController: HRPGBaseViewController, Themeable {
     private var user: UserProtocol? {
         didSet {
             if let user = self.user {
-                navbarView?.configure(user: user, enableChangeUsername: configRepository.bool(variable: .enableChangeUsername))
+                navbarView?.configure(user: user, enableChangeUsername: configRepository.bool(variable: .enableUsernameRelease))
             }
             if user?.stats?.habitClass == "wizard" || user?.stats?.habitClass == "healer" {
                 menuSections[0].items[0].title = L10n.Menu.castSpells
@@ -79,6 +81,8 @@ class MainMenuViewController: HRPGBaseViewController, Themeable {
             } else {
                 menuSections[1].items[1].showIndicator = false
             }
+            
+            menuSections[1].items[0].subtitle = user?.preferences?.sleep == true ? L10n.damagePaused : nil
             
             tableView.reloadData()
         }
@@ -101,7 +105,7 @@ class MainMenuViewController: HRPGBaseViewController, Themeable {
         }
         
         let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(refresh), for: UIControlEvents.valueChanged)
+        refreshControl.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
         self.refreshControl = refreshControl
         
         setupMenu()
@@ -120,26 +124,26 @@ class MainMenuViewController: HRPGBaseViewController, Themeable {
             MenuSection(title: nil, iconAsset: nil, items: [
                 MenuItem(title: L10n.Menu.castSpells, segue: StoryboardSegue.Main.spellsSegue.rawValue),
                 //MenuItem(title: L10n.Menu.selectClass, segue: StoryboardSegue.Main.selectClassSegue.rawValue),
-                MenuItem(title: L10n.Menu.stats, segue: StoryboardSegue.Main.statsSegue.rawValue)
+                MenuItem(title: L10n.Titles.stats, segue: StoryboardSegue.Main.statsSegue.rawValue)
                 ]),
             MenuSection(title: L10n.Menu.social, iconAsset: Asset.iconSocial, items: [
-                MenuItem(title: L10n.Menu.tavern, segue: StoryboardSegue.Main.tavernSegue.rawValue),
-                MenuItem(title: L10n.Menu.party, segue: StoryboardSegue.Main.partySegue.rawValue),
-                MenuItem(title: L10n.Menu.guilds, segue: StoryboardSegue.Main.guildsSegue.rawValue),
-                MenuItem(title: L10n.Menu.challenges, segue: StoryboardSegue.Main.challengesSegue.rawValue)
+                MenuItem(title: L10n.Titles.tavern, segue: StoryboardSegue.Main.tavernSegue.rawValue),
+                MenuItem(title: L10n.Titles.party, segue: StoryboardSegue.Main.partySegue.rawValue),
+                MenuItem(title: L10n.Titles.guilds, segue: StoryboardSegue.Main.guildsSegue.rawValue),
+                MenuItem(title: L10n.Titles.challenges, segue: StoryboardSegue.Main.challengesSegue.rawValue)
                 ]),
             MenuSection(title: L10n.Menu.inventory, iconAsset: Asset.iconInventory, items: [
-                MenuItem(title: L10n.Menu.shops, segue: StoryboardSegue.Main.shopsSegue.rawValue),
+                MenuItem(title: L10n.Titles.shops, segue: StoryboardSegue.Main.shopsSegue.rawValue),
                 MenuItem(title: L10n.Menu.customizeAvatar, segue: StoryboardSegue.Main.customizationSegue.rawValue),
-                MenuItem(title: L10n.Menu.equipment, segue: StoryboardSegue.Main.equipmentSegue.rawValue),
-                MenuItem(title: L10n.Menu.items, segue: StoryboardSegue.Main.itemSegue.rawValue),
-                MenuItem(title: L10n.Menu.stable, segue: StoryboardSegue.Main.stableSegue.rawValue),
+                MenuItem(title: L10n.Titles.equipment, segue: StoryboardSegue.Main.equipmentSegue.rawValue),
+                MenuItem(title: L10n.Titles.items, segue: StoryboardSegue.Main.itemSegue.rawValue),
+                MenuItem(title: L10n.Titles.stable, segue: StoryboardSegue.Main.stableSegue.rawValue),
                 MenuItem(title: L10n.Menu.gemsSubscriptions, segue: StoryboardSegue.Main.gemSubscriptionSegue.rawValue)
                 ]),
-            MenuSection(title: L10n.Menu.about, iconAsset: Asset.iconHelp, items: [
-                MenuItem(title: L10n.Menu.news, segue: StoryboardSegue.Main.newsSegue.rawValue),
+            MenuSection(title: L10n.Titles.about, iconAsset: Asset.iconHelp, items: [
+                MenuItem(title: L10n.Titles.news, segue: StoryboardSegue.Main.newsSegue.rawValue),
                 MenuItem(title: L10n.Menu.helpFaq, segue: StoryboardSegue.Main.faqSegue.rawValue),
-                MenuItem(title: L10n.Menu.about, segue: StoryboardSegue.Main.aboutSegue.rawValue)
+                MenuItem(title: L10n.Titles.about, segue: StoryboardSegue.Main.aboutSegue.rawValue)
                 ])
         ]
     }
@@ -209,6 +213,11 @@ class MainMenuViewController: HRPGBaseViewController, Themeable {
         indicatorView?.isHidden = item?.showIndicator == false
         indicatorView?.layer.cornerRadius = (indicatorView?.frame.size.height ?? 0) / 2
         indicatorView?.backgroundColor = ThemeService.shared.theme.backgroundTintColor
+        
+        let subtitleLabel = cell.viewWithTag(3) as? UILabel
+        subtitleLabel?.text = item?.subtitle
+        subtitleLabel?.font = CustomFontMetrics.scaledSystemFont(ofSize: 12)
+        subtitleLabel?.textColor = UIColor.orange50()
         return cell
     }
     

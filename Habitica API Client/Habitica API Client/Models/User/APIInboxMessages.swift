@@ -20,21 +20,25 @@ public class APIInboxMessage: InboxMessageProtocol, Decodable {
     public var attributedText: NSAttributedString?
     public var sent: Bool
     public var sort: Int
+    public var displayName: String?
     public var username: String?
     public var flagCount: Int
+    public var userStyles: UserStyleProtocol?
     
     enum CodingKeys: String, CodingKey {
         case id
         case userID = "uuid"
         case text
         case timestamp
-        case username = "user"
+        case displayName = "user"
+        case username
         case flagCount
         case contributor
         case likes
         case flags
         case sent
         case sort
+        case userStyles
     }
     
     public required init(from decoder: Decoder) throws {
@@ -42,12 +46,14 @@ public class APIInboxMessage: InboxMessageProtocol, Decodable {
         id = try? values.decode(String.self, forKey: .id)
         userID = try? values.decode(String.self, forKey: .userID)
         text = try? values.decode(String.self, forKey: .text)
-        if let timeStampNumber = try? values.decode(Double.self, forKey: .timestamp) {
-            timestamp = Date(timeIntervalSince1970: timeStampNumber/1000)
-        }
+        timestamp = try? values.decode(Date.self, forKey: .timestamp)
+        displayName = try? values.decode(String.self, forKey: .displayName)
         username = try? values.decode(String.self, forKey: .username)
         flagCount = (try? values.decode(Int.self, forKey: .flagCount)) ?? 0
         contributor = (try? values.decode(APIContributor.self, forKey: .contributor))
+        if values.contains(.userStyles) {
+            userStyles = try! values.decode(APIUserStyle.self, forKey: .userStyles)
+        }
         if values.contains(.likes) {
             likes = APIChatMessageReaction.fromList(try? values.decode([String: Bool].self, forKey: .likes))
         }

@@ -11,6 +11,10 @@ import Habitica_Models
 import ReactiveSwift
 
 class FaintViewController: UIViewController {
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var dontDespairLabel: UILabel!
+    @IBOutlet weak var goodLuckLabel: UILabel!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var healthView: HRPGLabeledProgressBar!
     @IBOutlet weak var avatarView: AvatarView!
@@ -33,6 +37,8 @@ class FaintViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        populateText()
+        
         reviveGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(revive))
         
         if let gestureRecognizer = reviveGestureRecognizer {
@@ -53,6 +59,14 @@ class FaintViewController: UIViewController {
         disposable.inner.add(userRepository.getUser().on(value: {[weak self]user in
             self?.avatarView.avatar = AvatarViewModel(avatar: user)
         }).start())
+    }
+    
+    func populateText() {
+        titleLabel.text = L10n.Faint.title
+        descriptionLabel.text = L10n.Faint.description
+        dontDespairLabel.text = L10n.Faint.dontDespair
+        goodLuckLabel.text = L10n.Faint.goodLuck
+        tryAgainLabel.text = L10n.Faint.button
     }
     
     override func viewDidAppear(_ animated: Bool) {

@@ -57,7 +57,7 @@ class TaskDetailLineView: UIView {
         if let view = loadViewFromNib() {
             self.contentView = view
             view.frame = bounds
-            view.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
+            view.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
             addSubview(view)
             
             let font = CustomFontMetrics(forTextStyle: .body).scaledFont(for: UIFont.systemFont(ofSize: 13))
@@ -135,7 +135,7 @@ class TaskDetailLineView: UIView {
             if duedate.compare(today) == .orderedAscending {
                 setCalendarIcon(enabled: true, isUrgent: true)
                 self.detailLabel.textColor = .red10()
-                self.detailLabel.text = "Due \(formatter.string(from: duedate))".localized
+                self.detailLabel.text = L10n.Tasks.dueX(formatter.string(from: duedate))
             } else {
                 detailLabel.textColor = .gray50()
                 guard let differenceInDays = calendar.dateComponents([.day], from: today, to: duedate).day else {
@@ -145,17 +145,17 @@ class TaskDetailLineView: UIView {
                     if differenceInDays == 0 {
                         setCalendarIcon(enabled: true, isUrgent: true)
                         detailLabel.textColor = .red10()
-                        detailLabel.text = "Due today".localized
+                        detailLabel.text = L10n.Tasks.dueToday
                     } else if differenceInDays == 1 {
                         setCalendarIcon(enabled: true)
-                        detailLabel.text = "Due tomorrow".localized
+                        detailLabel.text = L10n.Tasks.dueTomorrow
                     } else {
                         setCalendarIcon(enabled: true)
-                        detailLabel.text = "Due in \(differenceInDays) days".localized
+                        detailLabel.text = L10n.Tasks.dueInXDays(differenceInDays)
                     }
                 } else {
                     setCalendarIcon(enabled: true)
-                    self.detailLabel.text = "Due \(formatter.string(from: duedate))".localized
+                    self.detailLabel.text = L10n.Tasks.dueX(formatter.string(from: duedate))
                 }
             }
         } else {

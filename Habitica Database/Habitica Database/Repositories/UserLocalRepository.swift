@@ -12,6 +12,7 @@ import ReactiveSwift
 
 public class UserLocalRepository: BaseLocalRepository {
     public func save(_ user: UserProtocol) {
+        removeOldTags(userID: user.id, newTags: user.tags)
         if let realmUser = user as? RealmUser {
             save(object: realmUser)
             return
@@ -62,6 +63,24 @@ public class UserLocalRepository: BaseLocalRepository {
             let realm = getRealm()
             try? realm?.write {
                 realm?.delete(rewardsToRemove)
+            }
+        }
+    }
+    
+    private func removeOldTags(userID: String?, newTags: [TagProtocol]) {
+        let oldTags = getRealm()?.objects(RealmTag.self).filter("userID == '\(userID ?? "")'")
+        var tagsToRemove = [RealmTag]()
+        oldTags?.forEach({ (tag) in
+            if !newTags.contains(where: { (newTag) -> Bool in
+                return newTag.id == tag.id
+            }) {
+                tagsToRemove.append(tag)
+            }
+        })
+        if tagsToRemove.count > 0 {
+            let realm = getRealm()
+            try? realm?.write {
+                realm?.delete(tagsToRemove)
             }
         }
     }
@@ -118,7 +137,7 @@ public class UserLocalRepository: BaseLocalRepository {
         }
     }
     
-    public func updateUser(id: String, buyResponse: BuyResponseProtocol) {
+    public func updateUser(id: String, price: Int, buyResponse: BuyResponseProtocol) {
         let realm = getRealm()
         if let existingUser = realm?.object(ofType: RealmUser.self, forPrimaryKey: id) {
             try? realm?.write {
@@ -127,7 +146,7 @@ public class UserLocalRepository: BaseLocalRepository {
                     stats.experience = buyResponse.experience ?? stats.experience
                     stats.mana = buyResponse.mana ?? stats.mana
                     stats.level = buyResponse.level ?? stats.level
-                    stats.gold = buyResponse.gold ?? stats.gold
+                    stats.gold = buyResponse.gold ?? (stats.gold - Float(price))
                     stats.points = buyResponse.attributePoints ?? stats.points
                     stats.strength = buyResponse.strength ?? stats.strength
                     stats.intelligence = buyResponse.intelligence ?? stats.intelligence

@@ -24,7 +24,7 @@ class EmptyTableViewCell: UITableViewCell {
     static func dailiesStyle(cell: EmptyTableViewCell) {
         cell.emptyImageView.image = #imageLiteral(resourceName: "tabbar_dailies")
         cell.titleLabel.text = "These are your Dailies"
-        cell.firstParagraphLabel.text = "To-Dos need to be completed once. Add checklists to your To-Dos to increase their value."
+        cell.firstParagraphLabel.text = "Dailies are tasks that repeat on a regular basis. Choose the schedule that works you!"
         cell.secondParagraphLabel.text = ""
     }
     

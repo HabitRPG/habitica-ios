@@ -13,7 +13,9 @@ import ReactiveSwift
 class GuildDetailViewController: GroupDetailViewController {
     
     @IBOutlet weak var guildMembersLabel: UILabel!
+    @IBOutlet weak var guildMembersTitleLabel: UILabel!
     @IBOutlet weak var guildGemCountLabel: UILabel!
+    @IBOutlet weak var guildGemTitleLabel: UILabel!
     @IBOutlet weak var guildMembersCrestIcon: UIImageView!
     @IBOutlet weak var gemIconView: UIImageView!
     @IBOutlet weak var inviteButton: UIButton!
@@ -21,6 +23,9 @@ class GuildDetailViewController: GroupDetailViewController {
     @IBOutlet weak var guildLeaderWrapper: UIView!
     @IBOutlet weak var guildLeaderNameLabel: UILabel!
     @IBOutlet weak var guildLeaderAvatarView: AvatarView!
+    @IBOutlet weak var guildLeaderTitleLabel: UILabel!
+    @IBOutlet weak var guildChallengesButton: UIButton!
+    @IBOutlet weak var guildDescriptionTitleLabel: CollapsibleTitle!
     
     let numberFormatter = NumberFormatter()
 
@@ -55,6 +60,16 @@ class GuildDetailViewController: GroupDetailViewController {
         }).start())
         
         guildLeaderWrapper.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openGuildLeaderProfile)))
+    }
+    
+    override func populateText() {
+        guildMembersTitleLabel.text = L10n.Guilds.guildMembers
+        guildGemTitleLabel.text = L10n.Guilds.guildBank
+        joinButton.setTitle(L10n.Guilds.joinGuild, for: .normal)
+        inviteButton.setTitle(L10n.Guilds.inviteToGuild, for: .normal)
+        guildLeaderTitleLabel.text = L10n.Guilds.guildLeader
+        guildDescriptionTitleLabel.text = L10n.Guilds.guildDescription
+        guildChallengesButton.setTitle(L10n.Guilds.guildChallenges, for: .normal)
     }
     
     override func updateData(group: GroupProtocol) {

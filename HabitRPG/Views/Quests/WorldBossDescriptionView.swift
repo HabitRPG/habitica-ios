@@ -12,10 +12,15 @@ class WorldBossDescriptionView: UIView {
     
     @IBOutlet private weak var titleView: UILabel!
     @IBOutlet weak var firstBullet: UIView!
+    @IBOutlet weak var firstBulletLabel: UILabel!
     @IBOutlet weak var secondBullet: UIView!
+    @IBOutlet weak var secondBulletLabel: UILabel!
     @IBOutlet weak var thirdBullet: UIView!
+    @IBOutlet weak var thirdBulletLabel: UILabel!
     @IBOutlet weak var fourthBullet: UIView!
+    @IBOutlet weak var fourthBulletLabel: UILabel!
     @IBOutlet weak var actionPromptLabel: PaddedLabel!
+    @IBOutlet weak var worldBossDescriptionLabel: UILabel!
     
     var title: String? {
         get {
@@ -28,8 +33,8 @@ class WorldBossDescriptionView: UIView {
     
     var bossName: String? {
         didSet {
-            title = "The \(bossName ?? "") attacks!"
-            actionPromptLabel.text = NSLocalizedString("Defeat the Boss to earn special rewards and save Habitica from \(bossName ?? "")'s Terror!", comment: "")
+            title = L10n.WorldBoss.title(bossName ?? "")
+            actionPromptLabel.text = L10n.WorldBoss.actionPrompt(bossName ?? "")
             actionPromptLabel.horizontalPadding = 16
         }
     }
@@ -55,6 +60,12 @@ class WorldBossDescriptionView: UIView {
         actionPromptLabel.horizontalPadding = 16
         actionPromptLabel.verticalPadding = 12
         actionPromptLabel.layer.borderWidth = 1
+        
+        worldBossDescriptionLabel.text = L10n.WorldBoss.description
+        firstBulletLabel.text = L10n.WorldBoss.firstBullet
+        secondBulletLabel.text = L10n.WorldBoss.secondBullet
+        thirdBulletLabel.text = L10n.WorldBoss.thirdBullet
+        fourthBulletLabel.text = L10n.WorldBoss.fourthBullet
         
         super.awakeFromNib()
     }

@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -34,7 +32,7 @@
             </objects>
             <point key="canvasLocation" x="277.5" y="225"/>
         </scene>
-        <!--Habits-->
+        <!--Habit Table View Controller-->
         <scene sceneID="L5r-pU-vZs">
             <objects>
                 <tableViewController id="9wT-fg-nmz" customClass="HabitTableViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
@@ -45,8 +43,8 @@
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <sections/>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Habits" id="Ueo-OS-iQj">
-                        <barButtonItem key="leftBarButtonItem" title="Filter" id="r2M-pt-ZEv">
+                    <navigationItem key="navigationItem" id="Ueo-OS-iQj">
+                        <barButtonItem key="leftBarButtonItem" id="r2M-pt-ZEv">
                             <connections>
                                 <segue destination="6vN-Em-JCA" kind="presentation" identifier="FilterSegue" id="njg-A8-lDq"/>
                             </connections>
@@ -74,7 +72,7 @@
             </objects>
             <point key="canvasLocation" x="3617" y="-816"/>
         </scene>
-        <!--Dailies-->
+        <!--Daily Table View Controller-->
         <scene sceneID="wsG-G7-Bvd">
             <objects>
                 <tableViewController id="YnE-7V-tix" customClass="DailyTableViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
@@ -84,8 +82,8 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <sections/>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Dailies" id="zec-6L-pJk">
-                        <barButtonItem key="leftBarButtonItem" title="Filter" id="lJN-5G-qrz">
+                    <navigationItem key="navigationItem" id="zec-6L-pJk">
+                        <barButtonItem key="leftBarButtonItem" id="lJN-5G-qrz">
                             <connections>
                                 <segue destination="6vN-Em-JCA" kind="presentation" identifier="FilterSegue" id="04Z-5H-zfF"/>
                             </connections>
@@ -105,7 +103,7 @@
             </objects>
             <point key="canvasLocation" x="2804" y="62.518740629685162"/>
         </scene>
-        <!--To-Dos-->
+        <!--To Do Table View Controller-->
         <scene sceneID="d7F-oT-WJq">
             <objects>
                 <tableViewController restorationIdentifier="TodoTableViewCntroller" id="sPQ-za-Ji6" customClass="ToDoTableViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
@@ -115,8 +113,8 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <sections/>
                     </tableView>
-                    <navigationItem key="navigationItem" title="To-Dos" id="Tis-dF-qId">
-                        <barButtonItem key="leftBarButtonItem" title="Filter" id="7QR-Cq-K2a">
+                    <navigationItem key="navigationItem" id="Tis-dF-qId">
+                        <barButtonItem key="leftBarButtonItem" id="7QR-Cq-K2a">
                             <connections>
                                 <action selector="editButtonSelected:" destination="sPQ-za-Ji6" id="cc5-TO-pi3"/>
                                 <segue destination="6vN-Em-JCA" kind="presentation" identifier="FilterSegue" id="iSa-66-Wjc"/>
@@ -137,7 +135,7 @@
             </objects>
             <point key="canvasLocation" x="1993" y="885"/>
         </scene>
-        <!--Menu-->
+        <!--Main Menu View Controller-->
         <scene sceneID="STv-3f-rgk">
             <objects>
                 <tableViewController id="SXb-nw-RKG" customClass="MainMenuViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
@@ -154,13 +152,13 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7mY-LD-ILX">
-                                            <rect key="frame" x="20" y="11" width="281" height="21"/>
+                                            <rect key="frame" x="20" y="11" width="305" height="21.5"/>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view clipsSubviews="YES" tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y81-RX-OwJ">
-                                            <rect key="frame" x="325" y="13" width="16" height="16"/>
+                                            <rect key="frame" x="325" y="14" width="16" height="16"/>
                                             <color key="backgroundColor" red="0.3816543818" green="0.200278759" blue="0.7049210668" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="16" id="1dc-A0-aHW"/>
@@ -168,7 +166,7 @@
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Shv-nt-cy9">
-                                            <rect key="frame" x="317" y="11" width="0.0" height="22"/>
+                                            <rect key="frame" x="341" y="11" width="0.0" height="22"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" priority="500" constant="42" id="sZc-ak-ace"/>
                                             </constraints>
@@ -184,62 +182,16 @@
                                         <constraint firstItem="Shv-nt-cy9" firstAttribute="leading" secondItem="7mY-LD-ILX" secondAttribute="trailing" constant="16" id="F5h-Ix-Dp5"/>
                                         <constraint firstItem="Shv-nt-cy9" firstAttribute="top" secondItem="Wng-vv-ZBj" secondAttribute="topMargin" id="Og8-lv-4ng"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="Shv-nt-cy9" secondAttribute="bottom" id="Wmq-9C-Sc1"/>
-                                        <constraint firstItem="y81-RX-OwJ" firstAttribute="leading" secondItem="Shv-nt-cy9" secondAttribute="trailing" constant="8" id="pSj-Ah-OCV"/>
+                                        <constraint firstAttribute="trailing" secondItem="Shv-nt-cy9" secondAttribute="trailing" id="rwy-WN-Uj9"/>
                                         <constraint firstItem="7mY-LD-ILX" firstAttribute="top" secondItem="Wng-vv-ZBj" secondAttribute="top" constant="11" id="tnp-Rw-8tc"/>
                                         <constraint firstAttribute="bottom" secondItem="7mY-LD-ILX" secondAttribute="bottom" constant="11" id="yh4-O8-3li"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LockedCell" id="pc2-9F-939">
-                                <rect key="frame" x="0.0" y="99.5" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pc2-9F-939" id="PWW-Go-gmX">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ps-a8-I03">
-                                            <rect key="frame" x="40" y="11" width="206" height="21"/>
-                                            <color key="backgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Unlocks at lvl 3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2yp-6U-Xpz">
-                                            <rect key="frame" x="254" y="14" width="105" height="16"/>
-                                            <color key="backgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="500" constant="117" id="iUi-4v-T0d"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_lock" translatesAutoresizingMaskIntoConstraints="NO" id="sRR-tQ-eJL">
-                                            <rect key="frame" x="16" y="14" width="16" height="16"/>
-                                            <color key="backgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="16" id="8U3-Qh-4cF"/>
-                                                <constraint firstAttribute="width" constant="16" id="DyV-m2-cYa"/>
-                                            </constraints>
-                                        </imageView>
-                                    </subviews>
-                                    <color key="backgroundColor" red="0.97647058963775635" green="0.97647058963775635" blue="0.97647058963775635" alpha="1" colorSpace="calibratedRGB"/>
-                                    <constraints>
-                                        <constraint firstAttribute="bottomMargin" secondItem="2yp-6U-Xpz" secondAttribute="bottom" constant="3" id="1kE-M0-20z"/>
-                                        <constraint firstItem="2yp-6U-Xpz" firstAttribute="trailing" secondItem="PWW-Go-gmX" secondAttribute="trailingMargin" id="6nM-M6-IJQ"/>
-                                        <constraint firstItem="sRR-tQ-eJL" firstAttribute="centerY" secondItem="PWW-Go-gmX" secondAttribute="centerY" id="EyW-bl-eot"/>
-                                        <constraint firstAttribute="bottom" secondItem="3Ps-a8-I03" secondAttribute="bottom" constant="11" id="R3K-Gx-sdN"/>
-                                        <constraint firstItem="2yp-6U-Xpz" firstAttribute="top" secondItem="PWW-Go-gmX" secondAttribute="topMargin" constant="3" id="TlN-dZ-1xq"/>
-                                        <constraint firstItem="3Ps-a8-I03" firstAttribute="leading" secondItem="sRR-tQ-eJL" secondAttribute="trailing" constant="8" id="W6z-Ya-SDr"/>
-                                        <constraint firstItem="2yp-6U-Xpz" firstAttribute="leading" secondItem="3Ps-a8-I03" secondAttribute="trailing" constant="8" id="m7c-UK-r5w"/>
-                                        <constraint firstItem="3Ps-a8-I03" firstAttribute="top" secondItem="PWW-Go-gmX" secondAttribute="top" constant="11" id="n42-Hf-wdB"/>
-                                        <constraint firstItem="sRR-tQ-eJL" firstAttribute="leading" secondItem="PWW-Go-gmX" secondAttribute="leadingMargin" id="zU3-y5-Z1v"/>
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Menu" id="hnF-ml-Qfo"/>
+                    <navigationItem key="navigationItem" id="hnF-ml-Qfo"/>
                     <connections>
                         <segue destination="sS8-cF-myv" kind="show" identifier="ItemSegue" id="ETz-qE-xC2"/>
                         <segue destination="rxD-1b-YpQ" kind="show" identifier="NewsSegue" id="A1v-Vl-4j8"/>
@@ -264,10 +216,10 @@
             </objects>
             <point key="canvasLocation" x="1993" y="1751"/>
         </scene>
-        <!--About-->
+        <!--About View Controller-->
         <scene sceneID="Whw-Wx-8Rx">
             <objects>
-                <tableViewController storyboardIdentifier="AboutViewController" id="r5L-RV-Ig6" customClass="HRPGAboutViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="AboutViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="r5L-RV-Ig6" customClass="AboutViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="qDx-P9-rXy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -321,7 +273,7 @@
                             <outlet property="delegate" destination="r5L-RV-Ig6" id="oBw-q7-Djv"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="About" id="970-3u-C37"/>
+                    <navigationItem key="navigationItem" id="970-3u-C37"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MpM-NM-NJ3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -343,7 +295,7 @@
             </objects>
             <point key="canvasLocation" x="7009" y="1433"/>
         </scene>
-        <!--FAQ-->
+        <!--Table View Controller-->
         <scene sceneID="V5q-Dw-DeL">
             <objects>
                 <tableViewController storyboardIdentifier="FAQOverviewViewController" id="Kau-eC-iCv" customClass="FAQTableViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
@@ -375,7 +327,7 @@
                             <outlet property="delegate" destination="Kau-eC-iCv" id="Yvb-le-LCn"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="FAQ" id="sni-tf-k5c"/>
+                    <navigationItem key="navigationItem" id="sni-tf-k5c"/>
                     <connections>
                         <segue destination="EKs-nQ-slC" kind="show" identifier="FAQDetailSegue" id="kWM-WS-dNV"/>
                     </connections>
@@ -436,7 +388,7 @@
         <!--Avatar Overview View Controller-->
         <scene sceneID="raq-ir-4h4">
             <objects>
-                <viewController id="o49-Mt-AdO" customClass="AvatarOverviewViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AvatarOverviewViewController" id="o49-Mt-AdO" customClass="AvatarOverviewViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Y0d-VG-Fv7"/>
                         <viewControllerLayoutGuide type="bottom" id="3Tg-SP-0y0"/>
@@ -448,8 +400,8 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WwC-SX-HDy">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Body Size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fXX-FU-yYI">
-                                        <rect key="frame" x="8" y="8" width="72" height="20"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fXX-FU-yYI">
+                                        <rect key="frame" x="8" y="8" width="0.0" height="0.0"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" red="0.3075395823" green="0.2903449535" blue="0.34151983260000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -459,8 +411,8 @@
                                         <rect key="frame" x="246" y="8" width="121" height="29"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <segments>
-                                            <segment title="Slim"/>
-                                            <segment title="Broad"/>
+                                            <segment title=""/>
+                                            <segment title=""/>
                                         </segments>
                                         <connections>
                                             <action selector="bodySizeChanged:" destination="o49-Mt-AdO" eventType="valueChanged" id="xXr-fr-lBn"/>
@@ -636,7 +588,7 @@
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pWt-Qo-uxJ">
-                                    <rect key="frame" x="8" y="8" width="217.5" height="44"/>
+                                    <rect key="frame" x="8" y="28" width="265" height="24"/>
                                     <constraints>
                                         <constraint firstAttribute="height" priority="500" constant="26" id="AXg-RX-7v0"/>
                                     </constraints>
@@ -645,17 +597,17 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view tag="2" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="5Gj-Xb-syN">
-                                    <rect key="frame" x="241.5" y="12" width="117.5" height="36"/>
+                                    <rect key="frame" x="289" y="12" width="70" height="36"/>
                                     <subviews>
                                         <view tag="2" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="56g-wy-uNY" customClass="HRPGCurrencyCountView" customModule="Habitica" customModuleProvider="target">
-                                            <rect key="frame" x="71.5" y="0.0" width="30" height="36"/>
+                                            <rect key="frame" x="24" y="0.0" width="30" height="36"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" priority="501" constant="30" id="Wbl-kw-VR2"/>
                                             </constraints>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Buy All" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ou7-Ct-HER">
-                                            <rect key="frame" x="16" y="0.0" width="47.5" height="36"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ou7-Ct-HER">
+                                            <rect key="frame" x="16" y="0.0" width="0.0" height="36"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" priority="500" constant="42" id="MA9-Pg-Vag"/>
                                             </constraints>
@@ -698,6 +650,7 @@
                                 <constraint firstItem="5Gj-Xb-syN" firstAttribute="leading" secondItem="pWt-Qo-uxJ" secondAttribute="trailing" constant="16" id="qpd-5F-5Lc"/>
                             </constraints>
                             <connections>
+                                <outlet property="buyAllLabel" destination="Ou7-Ct-HER" id="ufg-qW-ErB"/>
                                 <outlet property="currencyView" destination="56g-wy-uNY" id="aPA-TC-QxV"/>
                                 <outlet property="label" destination="pWt-Qo-uxJ" id="SLw-2L-Pb8"/>
                                 <outlet property="purchaseButton" destination="5Gj-Xb-syN" id="T7C-l8-d0k"/>
@@ -782,10 +735,10 @@
             </objects>
             <point key="canvasLocation" x="3933" y="1486"/>
         </scene>
-        <!--Mounts-->
+        <!--Mount Overview View Controller-->
         <scene sceneID="Ntu-Ub-BnA">
             <objects>
-                <collectionViewController autoresizesArchivedViewToFullSize="NO" id="k4g-ZO-Buh" customClass="MountOverviewViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="MountsOverviewViewController" autoresizesArchivedViewToFullSize="NO" id="k4g-ZO-Buh" customClass="MountOverviewViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="uMo-F9-k66">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -805,7 +758,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KEt-eV-vgw">
-                                            <rect key="frame" x="-0.5" y="0.0" width="80.5" height="60"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="80" height="60"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="60" id="ayb-an-B0G"/>
                                             </constraints>
@@ -859,15 +812,15 @@
                             <outlet property="delegate" destination="k4g-ZO-Buh" id="IHH-Cv-dyz"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Mounts" id="8QD-xr-Tcj">
-                        <barButtonItem key="rightBarButtonItem" title="Group By" id="mdo-xN-SW4"/>
+                    <navigationItem key="navigationItem" id="8QD-xr-Tcj">
+                        <barButtonItem key="rightBarButtonItem" id="mdo-xN-SW4"/>
                     </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m49-II-1Fe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2094.375" y="3867.5"/>
         </scene>
-        <!--Mounts-->
+        <!--Mount Detail View Controller-->
         <scene sceneID="U2z-Dp-QKQ">
             <objects>
                 <collectionViewController autoresizesArchivedViewToFullSize="NO" id="LGJ-iF-vTZ" customClass="MountDetailViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
@@ -914,16 +867,16 @@
                             <outlet property="delegate" destination="LGJ-iF-vTZ" id="VsO-b8-cRe"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Mounts" id="si7-7p-nZ9"/>
+                    <navigationItem key="navigationItem" id="si7-7p-nZ9"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aay-u8-F7P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2825" y="3867"/>
         </scene>
-        <!--Pets-->
+        <!--Pet Overview View Controller-->
         <scene sceneID="12D-16-Ge5">
             <objects>
-                <collectionViewController autoresizesArchivedViewToFullSize="NO" id="iyK-dS-pks" customClass="PetOverviewViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="PetsOverviewViewController" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iyK-dS-pks" customClass="PetOverviewViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="0uY-w8-R73">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -943,7 +896,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="i4O-mB-OwI">
-                                            <rect key="frame" x="-0.5" y="0.0" width="81" height="60"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="80" height="60"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="60" id="Fr7-cR-mU5"/>
                                             </constraints>
@@ -997,15 +950,15 @@
                             <outlet property="delegate" destination="iyK-dS-pks" id="ydz-uG-FgW"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Pets" id="zdm-Oo-gvg">
-                        <barButtonItem key="rightBarButtonItem" title="Group By" id="Y9b-tv-h4L"/>
+                    <navigationItem key="navigationItem" id="zdm-Oo-gvg">
+                        <barButtonItem key="rightBarButtonItem" id="Y9b-tv-h4L"/>
                     </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oEZ-xz-ZVh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3114" y="3103"/>
         </scene>
-        <!--Pets-->
+        <!--Pet Detail View Controller-->
         <scene sceneID="hyi-ES-K3e">
             <objects>
                 <collectionViewController autoresizesArchivedViewToFullSize="NO" id="OMM-QF-DNw" customClass="PetDetailViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
@@ -1033,9 +986,10 @@
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="4" id="rHG-RZ-r9e"/>
                                             </constraints>
+                                            <color key="trackTintColor" red="0.92813128229999997" green="0.92537832259999997" blue="0.93166613580000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </progressView>
                                         <imageView userInteractionEnabled="NO" tag="1" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eoV-zR-Bm4">
-                                            <rect key="frame" x="3" y="0.0" width="81" height="90"/>
+                                            <rect key="frame" x="2.5" y="0.0" width="81" height="90"/>
                                             <color key="tintColor" red="0.88328301909999996" green="0.87696492670000004" blue="0.89030760529999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="81" id="FmG-Kv-Kb5"/>
@@ -1068,7 +1022,7 @@
                             <outlet property="delegate" destination="OMM-QF-DNw" id="X3n-Lp-Sy3"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Pets" id="4dW-yC-5Ar"/>
+                    <navigationItem key="navigationItem" id="4dW-yC-5Ar"/>
                     <connections>
                         <segue destination="tLB-b1-3s8" kind="presentation" identifier="FeedSegue" modalPresentationStyle="formSheet" id="HqS-75-pYX"/>
                     </connections>
@@ -1077,7 +1031,7 @@
             </objects>
             <point key="canvasLocation" x="3844" y="3103"/>
         </scene>
-        <!--Feed Pet-->
+        <!--Feed View Controller-->
         <scene sceneID="QbV-9U-Vv1">
             <objects>
                 <tableViewController id="cVq-Fh-1Yu" customClass="HRPGFeedViewController" sceneMemberID="viewController">
@@ -1138,7 +1092,7 @@
                             <outlet property="delegate" destination="cVq-Fh-1Yu" id="WEX-Bo-QYt"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Feed Pet" id="xZ9-Ng-9se">
+                    <navigationItem key="navigationItem" id="xZ9-Ng-9se">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="8Rh-92-RAO">
                             <connections>
                                 <segue destination="neK-n6-0WI" kind="unwind" unwindAction="unwindToList:" id="k3r-Fp-PmN"/>
@@ -1201,30 +1155,30 @@
                                             <rect key="frame" x="106" y="69" width="60" height="20"/>
                                             <subviews>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hld-ok-bJx">
-                                                    <rect key="frame" x="-106" y="0.0" width="0.0" height="20"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="0.0" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m8C-vp-JgN">
-                                                    <rect key="frame" x="-106" y="0.0" width="0.0" height="20"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="0.0" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Uv-Ix-dTT">
-                                                    <rect key="frame" x="-106" y="0.0" width="0.0" height="20"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="0.0" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9AR-f7-UpH">
-                                                    <rect key="frame" x="-106" y="0.0" width="0.0" height="20"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="0.0" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Benefit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BCV-MF-lnn">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BCV-MF-lnn">
                                                     <rect key="frame" x="0.0" y="0.0" width="60" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.76474183799999995" green="0.75285440680000004" blue="0.78110462430000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1238,8 +1192,8 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ogx-Ep-izu">
                                             <rect key="frame" x="106" y="45" width="253" height="20"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Two-Handed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="StQ-3d-kbx">
-                                                    <rect key="frame" x="19" y="0.0" width="78.5" height="20"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="StQ-3d-kbx">
+                                                    <rect key="frame" x="19" y="0.0" width="0.0" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" red="0.60365134480000004" green="0.38511508700000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1293,6 +1247,7 @@
                                     <outlet property="strengthLabel" destination="Hld-ok-bJx" id="Nvy-48-3r5"/>
                                     <outlet property="titleLabel" destination="5s9-Yq-fnA" id="suN-KO-hlz"/>
                                     <outlet property="twoHandedIconView" destination="gfN-10-DvM" id="glK-A9-gar"/>
+                                    <outlet property="twoHandedLabel" destination="StQ-3d-kbx" id="xwi-EK-d8w"/>
                                     <outlet property="twoHandedSpacing" destination="sUb-Xq-x15" id="AMz-rW-HXA"/>
                                     <outlet property="twoHandedView" destination="Ogx-Ep-izu" id="KRB-rH-cHS"/>
                                 </connections>
@@ -1307,7 +1262,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tmi-8L-gp6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4348" y="4052.0239880059971"/>
+            <point key="canvasLocation" x="3958" y="3762"/>
         </scene>
         <!--Gem Header Navigation Controller-->
         <scene sceneID="xVP-nc-WPW">
@@ -1318,12 +1273,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="0F5-C1-rPv" kind="relationship" relationship="rootViewController" id="eiB-fe-CPZ"/>
+                        <segue destination="32f-nw-z2z" kind="relationship" relationship="rootViewController" id="XWL-Jj-bKy"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4RK-O9-N6X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="294" y="9646"/>
+            <point key="canvasLocation" x="225" y="9645"/>
         </scene>
         <!--Gem View Controller-->
         <scene sceneID="KJ7-Ra-M0o">
@@ -1344,16 +1299,14 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="148"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="421-JA-vci">
+                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="421-JA-vci">
                                     <rect key="frame" x="8" y="52" width="359" height="88"/>
-                                    <string key="text">Buying gems supports the developers 
-and helps keep Habitica running</string>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" red="0.16078431904315948" green="0.58431375026702881" blue="0.80392158031463623" alpha="1" colorSpace="deviceRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <imageView userInteractionEnabled="NO" tag="1" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="McX-fu-cEX">
-                                    <rect key="frame" x="170" y="16" width="36" height="36"/>
+                                    <rect key="frame" x="169.5" y="16" width="36" height="36"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="36" id="Stk-pd-YeO"/>
                                         <constraint firstAttribute="height" constant="36" id="ZfH-Ya-fcD"/>
@@ -1373,19 +1326,17 @@ and helps keep Habitica running</string>
                             <rect key="frame" x="0.0" y="148" width="375" height="173"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xhA-8b-NmG">
-                                    <rect key="frame" x="8" y="16" width="359" height="41"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Gems allow you to buy fun extras for your account, including:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xhA-8b-NmG">
+                                    <rect key="frame" x="8" y="36" width="359" height="41"/>
                                     <constraints>
                                         <constraint firstAttribute="height" priority="500" constant="21" id="Myz-28-LqS"/>
                                     </constraints>
-                                    <string key="text">Gems allow you to buy fun extras for 
-your account, including:</string>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                     <color key="textColor" red="0.20000000000000001" green="0.086274509799999996" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xmc-Sz-mph">
-                                    <rect key="frame" x="8" y="69" width="359" height="75.5"/>
+                                    <rect key="frame" x="8" y="89" width="359" height="75.5"/>
                                     <constraints>
                                         <constraint firstAttribute="height" priority="500" constant="21" id="Ns1-9T-eqn"/>
                                     </constraints>
@@ -1557,31 +1508,28 @@ your account, including:</string>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <segue destination="32f-nw-z2z" kind="show" id="UQy-dj-Y8G"/>
-                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8lh-sE-Tlg" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Zv0-8I-Rax" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1014" y="9646"/>
+            <point key="canvasLocation" x="1014" y="9645"/>
         </scene>
         <!--Subscription View Controller-->
         <scene sceneID="7EM-S5-j9C">
             <objects>
                 <tableViewController storyboardIdentifier="SubscriptionViewController" id="32f-nw-z2z" customClass="SubscriptionViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="52" sectionHeaderHeight="28" sectionFooterHeight="28" id="uHA-ok-e4Z">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="61" sectionHeaderHeight="28" sectionFooterHeight="28" id="uHA-ok-e4Z">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="2y3-dE-HOI">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="86"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Become a subscriber and you’ll get these useful benefits:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lb7-8k-2uz">
-                                    <rect key="frame" x="16" y="0.0" width="343" height="86"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" red="0.26360577340000002" green="0.17136606569999999" blue="0.43369138239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lb7-8k-2uz">
+                                    <rect key="frame" x="16" y="0.0" width="343" height="75"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                    <color key="textColor" red="0.42476743459701538" green="0.22142499685287476" blue="0.73873388767242432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
@@ -1594,17 +1542,17 @@ your account, including:</string>
                             </constraints>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="0ge-iM-ebO">
-                            <rect key="frame" x="0.0" y="164" width="375" height="308"/>
+                            <rect key="frame" x="0.0" y="164" width="375" height="532"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qWw-qV-Dif">
-                                    <rect key="frame" x="8" y="45" width="359" height="36"/>
+                                    <rect key="frame" x="8" y="91" width="359" height="36"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="36" id="WMy-Bc-rwq"/>
                                     </constraints>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P89-QO-UcF">
-                                    <rect key="frame" x="0.0" y="262" width="375" height="30"/>
+                                    <rect key="frame" x="0.0" y="486" width="375" height="30"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="30" id="FRr-fd-XWw"/>
                                     </constraints>
@@ -1614,7 +1562,7 @@ your account, including:</string>
                                     </connections>
                                 </button>
                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" scrollEnabled="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2lA-HR-ThY">
-                                    <rect key="frame" x="8" y="0.0" width="359" height="37"/>
+                                    <rect key="frame" x="8" y="46" width="359" height="37"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" priority="500" constant="28" id="Nvl-9T-i7B"/>
@@ -1624,48 +1572,72 @@ your account, including:</string>
                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     <dataDetectorType key="dataDetectorTypes" link="YES"/>
                                 </textView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V5k-go-mwg">
-                                    <rect key="frame" x="8" y="89" width="359" height="41"/>
-                                    <string key="text">Subscribing supports the developers 
-and helps keep Habitica running</string>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" red="0.27450981736183167" green="0.65490198135375977" blue="0.85098040103912354" alpha="1" colorSpace="deviceRGB"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V5k-go-mwg">
+                                    <rect key="frame" x="8" y="135" width="359" height="0.0"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <color key="textColor" red="0.68403255939483643" green="0.66976314783096313" blue="0.7059674859046936" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f3o-aH-Po4">
+                                    <rect key="frame" x="32" y="4" width="311" height="0.0"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" priority="500" constant="21" id="5pb-O5-r1I"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
+                                    <color key="textColor" red="0.53023332359999997" green="0.50720638039999999" blue="0.56472396849999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CrM-dg-eMS">
+                                    <rect key="frame" x="32" y="4" width="311" height="30"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="30" id="NqX-6e-kQp"/>
+                                    </constraints>
+                                    <connections>
+                                        <action selector="giftSubscriptionButtonTapped:" destination="32f-nw-z2z" eventType="touchUpInside" id="VQj-Qj-OiF"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
+                                <constraint firstItem="CrM-dg-eMS" firstAttribute="top" secondItem="f3o-aH-Po4" secondAttribute="bottom" id="11j-4s-haY"/>
                                 <constraint firstAttribute="trailing" secondItem="qWw-qV-Dif" secondAttribute="trailing" constant="8" id="5aa-Kf-1bE"/>
                                 <constraint firstItem="V5k-go-mwg" firstAttribute="leading" secondItem="0ge-iM-ebO" secondAttribute="leading" constant="8" id="7zl-d0-mjK"/>
+                                <constraint firstItem="f3o-aH-Po4" firstAttribute="leading" secondItem="0ge-iM-ebO" secondAttribute="leading" constant="32" id="9GF-OG-sD2"/>
                                 <constraint firstItem="V5k-go-mwg" firstAttribute="top" secondItem="qWw-qV-Dif" secondAttribute="bottom" constant="8" id="9uL-17-PV3"/>
                                 <constraint firstAttribute="trailing" secondItem="V5k-go-mwg" secondAttribute="trailing" constant="8" id="B8s-XZ-5BU"/>
                                 <constraint firstItem="qWw-qV-Dif" firstAttribute="leading" secondItem="0ge-iM-ebO" secondAttribute="leading" constant="8" id="BdZ-Ny-hd3"/>
                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="V5k-go-mwg" secondAttribute="bottom" constant="16" id="C2j-ma-EGd"/>
-                                <constraint firstItem="2lA-HR-ThY" firstAttribute="top" secondItem="0ge-iM-ebO" secondAttribute="top" id="DeT-FE-ykG"/>
+                                <constraint firstAttribute="trailing" secondItem="f3o-aH-Po4" secondAttribute="trailing" constant="32" id="C73-ld-Kc6"/>
                                 <constraint firstAttribute="bottom" secondItem="P89-QO-UcF" secondAttribute="bottom" constant="16" id="Eah-64-bm3"/>
+                                <constraint firstItem="2lA-HR-ThY" firstAttribute="top" secondItem="CrM-dg-eMS" secondAttribute="bottom" constant="12" id="FPy-Nn-7he"/>
                                 <constraint firstItem="2lA-HR-ThY" firstAttribute="leading" secondItem="0ge-iM-ebO" secondAttribute="leading" constant="8" id="GCz-y3-YAR"/>
                                 <constraint firstItem="P89-QO-UcF" firstAttribute="leading" secondItem="0ge-iM-ebO" secondAttribute="leading" id="ZfF-fg-lmt"/>
                                 <constraint firstAttribute="trailing" secondItem="2lA-HR-ThY" secondAttribute="trailing" constant="8" id="gOt-we-wOj"/>
                                 <constraint firstItem="qWw-qV-Dif" firstAttribute="top" secondItem="2lA-HR-ThY" secondAttribute="bottom" constant="8" id="gui-rC-ejx"/>
                                 <constraint firstAttribute="trailing" secondItem="P89-QO-UcF" secondAttribute="trailing" id="nik-bX-WWV"/>
+                                <constraint firstItem="f3o-aH-Po4" firstAttribute="top" secondItem="0ge-iM-ebO" secondAttribute="top" constant="4" id="tfl-lJ-eW3"/>
+                                <constraint firstItem="CrM-dg-eMS" firstAttribute="leading" secondItem="0ge-iM-ebO" secondAttribute="leading" constant="32" id="vwe-rX-MxV"/>
+                                <constraint firstAttribute="trailing" secondItem="CrM-dg-eMS" secondAttribute="trailing" constant="32" id="whQ-oz-se5"/>
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SubscribeButtonCell" rowHeight="50" id="gBX-7d-nGt">
-                                <rect key="frame" x="0.0" y="114" width="375" height="50"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SubscribeButtonCell" rowHeight="61" id="gBX-7d-nGt">
+                                <rect key="frame" x="0.0" y="103" width="375" height="61"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gBX-7d-nGt" id="wdr-8P-A8u">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="61"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ubx-Z1-yyq">
-                                            <rect key="frame" x="143" y="8" width="90" height="34"/>
-                                            <color key="backgroundColor" red="0.3803921639919281" green="0.20000000298023224" blue="0.70588237047195435" alpha="1" colorSpace="calibratedRGB"/>
+                                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ubx-Z1-yyq">
+                                            <rect key="frame" x="16" y="8" width="343" height="36"/>
+                                            <color key="backgroundColor" red="0.37997829910000003" green="0.1982949376" blue="0.70615965130000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="500" constant="90" id="VeR-Vl-iz5"/>
+                                                <constraint firstAttribute="height" constant="36" id="zIr-J0-Xja"/>
                                             </constraints>
                                             <color key="tintColor" red="0.9686274528503418" green="0.93725490570068359" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <state key="normal" title="Checkout"/>
+                                            <state key="normal">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                     <integer key="value" value="4"/>
@@ -1677,10 +1649,9 @@ and helps keep Habitica running</string>
                                         </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="ubx-Z1-yyq" firstAttribute="centerY" secondItem="wdr-8P-A8u" secondAttribute="centerY" id="HLR-vF-qND"/>
-                                        <constraint firstAttribute="bottom" secondItem="ubx-Z1-yyq" secondAttribute="bottom" constant="8" id="Mhp-sY-QQw"/>
                                         <constraint firstItem="ubx-Z1-yyq" firstAttribute="top" secondItem="wdr-8P-A8u" secondAttribute="top" constant="8" id="cwQ-4A-6Z5"/>
-                                        <constraint firstItem="ubx-Z1-yyq" firstAttribute="centerX" secondItem="wdr-8P-A8u" secondAttribute="centerX" id="uFs-I4-YhQ"/>
+                                        <constraint firstAttribute="trailing" secondItem="ubx-Z1-yyq" secondAttribute="trailing" constant="16" id="nxP-N0-uSE"/>
+                                        <constraint firstItem="ubx-Z1-yyq" firstAttribute="leading" secondItem="wdr-8P-A8u" secondAttribute="leading" constant="16" id="ruu-wj-YJn"/>
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -1698,7 +1669,12 @@ and helps keep Habitica running</string>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="giftSubscriptionButton" destination="CrM-dg-eMS" id="Wvc-9c-dKa"/>
+                        <outlet property="giftSubscriptionExplanationLabel" destination="f3o-aH-Po4" id="jgt-rY-2nB"/>
                         <outlet property="restorePurchaseButton" destination="P89-QO-UcF" id="fMV-BP-fee"/>
+                        <outlet property="subscriptionBenefitsTitleLabel" destination="lb7-8k-2uz" id="H7A-e6-L3x"/>
+                        <outlet property="subscriptionSupportLabel" destination="V5k-go-mwg" id="bcu-hM-Vg3"/>
+                        <segue destination="KOH-m5-9hA" kind="show" identifier="openGiftGemDialog" id="ImE-mD-NfV"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MeY-fC-rDA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1709,7 +1685,7 @@ and helps keep Habitica running</string>
                     </connections>
                 </customObject>
             </objects>
-            <point key="canvasLocation" x="1014" y="10426"/>
+            <point key="canvasLocation" x="1013.6" y="10418.140929535233"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zXE-Rb-Ijy">
@@ -1756,10 +1732,10 @@ and helps keep Habitica running</string>
             </objects>
             <point key="canvasLocation" x="1014" y="8795"/>
         </scene>
-        <!--News-->
+        <!--News View Controller-->
         <scene sceneID="jdB-Bz-v0P">
             <objects>
-                <viewController id="rxD-1b-YpQ" customClass="NewsViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rxD-1b-YpQ" customClass="NewsViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IbB-TZ-RPt"/>
                         <viewControllerLayoutGuide type="bottom" id="3V8-DZ-gWL"/>
@@ -1787,7 +1763,7 @@ and helps keep Habitica running</string>
                             <constraint firstAttribute="centerX" secondItem="alG-bc-9xq" secondAttribute="centerX" id="xgu-H2-CB2"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="News" id="Jni-km-FCZ"/>
+                    <navigationItem key="navigationItem" id="Jni-km-FCZ"/>
                     <connections>
                         <outlet property="loadingIndicator" destination="alG-bc-9xq" id="IOM-xa-api"/>
                         <outlet property="newsWebView" destination="n8Y-qd-yqL" id="tEj-pC-E08"/>
@@ -1797,10 +1773,10 @@ and helps keep Habitica running</string>
             </objects>
             <point key="canvasLocation" x="4348.125" y="731.25"/>
         </scene>
-        <!--Equipment-->
+        <!--Equipment Overview View Controller-->
         <scene sceneID="kth-SG-qfp">
             <objects>
-                <viewController id="AjM-Kx-nSU" customClass="EquipmentOverviewViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EquipmentOverviewViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="AjM-Kx-nSU" customClass="EquipmentOverviewViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nEy-E4-Fb1"/>
                         <viewControllerLayoutGuide type="bottom" id="z8M-C8-CNZ"/>
@@ -1826,12 +1802,11 @@ and helps keep Habitica running</string>
                                             <constraint firstAttribute="height" priority="500" constant="317" id="xo7-Md-yDd"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d53-K0-Ybv">
-                                        <rect key="frame" x="16" y="642" width="343" height="62.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d53-K0-Ybv">
+                                        <rect key="frame" x="16" y="642" width="343" height="0.0"/>
                                         <constraints>
                                             <constraint firstAttribute="height" priority="500" constant="21" id="gMU-Ms-hdu"/>
                                         </constraints>
-                                        <string key="text">Select "Use Costume" to equip items to your avatar without affecting the Stats from your Battle Gear! This means that you can dress up your avatar in whatever outfit you like while still having your best Battle Gear equipped.</string>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                         <color key="textColor" red="0.64723795650000004" green="0.63275462390000003" blue="0.67308568950000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1860,8 +1835,9 @@ and helps keep Habitica running</string>
                             <constraint firstAttribute="trailing" secondItem="byv-HU-Kh3" secondAttribute="trailing" id="WdO-bi-Mgg"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Equipment" id="aGP-pV-Lz5"/>
+                    <navigationItem key="navigationItem" id="aGP-pV-Lz5"/>
                     <connections>
+                        <outlet property="costumeExplanationLabel" destination="d53-K0-Ybv" id="pN2-vS-RIR"/>
                         <outlet property="costumeView" destination="3uQ-7Q-HJM" id="GaC-re-Yo1"/>
                         <outlet property="gearView" destination="HkH-1H-IQH" id="45F-bN-8Tr"/>
                         <outlet property="scrollView" destination="byv-HU-Kh3" id="j6z-Ce-nNw"/>
@@ -1888,10 +1864,10 @@ and helps keep Habitica running</string>
             </objects>
             <point key="canvasLocation" x="4426" y="2188"/>
         </scene>
-        <!--Items-->
+        <!--Items View Controller-->
         <scene sceneID="hkB-oV-wsF">
             <objects>
-                <tableViewController id="sS8-cF-myv" customClass="ItemsViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ItemsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="sS8-cF-myv" customClass="ItemsViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="68" sectionHeaderHeight="10" sectionFooterHeight="10" id="bMx-6c-VyS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1946,7 +1922,7 @@ and helps keep Habitica running</string>
                             <outlet property="delegate" destination="sS8-cF-myv" id="bIM-MF-xHF"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Items" id="7Sa-Zz-2NE">
+                    <navigationItem key="navigationItem" id="7Sa-Zz-2NE">
                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="DLa-xG-L7z">
                             <connections>
                                 <action selector="cancelButtonTapped:" destination="sS8-cF-myv" id="UCu-rW-pV6"/>
@@ -1962,11 +1938,11 @@ and helps keep Habitica running</string>
             </objects>
             <point key="canvasLocation" x="5196" y="2070.3148425787108"/>
         </scene>
-        <!--Choose Task-->
+        <!--Spell Tab Bar Controller-->
         <scene sceneID="oWJ-eh-rJ0">
             <objects>
                 <tabBarController definesPresentationContext="YES" id="tGw-Sj-nll" customClass="HRPGSpellTabBarController" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" title="Choose Task" id="Yuh-D9-NY5">
+                    <navigationItem key="navigationItem" id="Yuh-D9-NY5">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="PBv-iZ-ev0">
                             <connections>
                                 <action selector="cancelAction:" destination="tGw-Sj-nll" id="rxo-kg-FDV"/>
@@ -1991,7 +1967,7 @@ and helps keep Habitica running</string>
             </objects>
             <point key="canvasLocation" x="2709.375" y="4980"/>
         </scene>
-        <!--Choose User-->
+        <!--Skills User Table View Controller-->
         <scene sceneID="0hc-ne-2lf">
             <objects>
                 <tableViewController id="57X-FG-jGF" customClass="SkillsUserTableViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
@@ -2008,13 +1984,13 @@ and helps keep Habitica running</string>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YhU-da-mlI">
-                                            <rect key="frame" x="98" y="0.0" width="269" height="89"/>
+                                            <rect key="frame" x="98" y="0.0" width="269" height="89.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pOk-IY-fz3" customClass="AvatarView" customModule="Habitica" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="-0.5" width="90" height="90"/>
+                                            <rect key="frame" x="0.0" y="-0.5" width="90" height="90.5"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="90" id="f70-4Y-46X"/>
@@ -2038,7 +2014,7 @@ and helps keep Habitica running</string>
                             <outlet property="delegate" destination="57X-FG-jGF" id="9mv-Q1-gII"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Choose User" id="Dal-zI-Dal">
+                    <navigationItem key="navigationItem" id="Dal-zI-Dal">
                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="mqC-7b-uWd">
                             <connections>
                                 <segue destination="Kde-XX-1zI" kind="unwind" unwindAction="unwindToList:" id="fVD-Te-Qyo"/>
@@ -2070,7 +2046,7 @@ and helps keep Habitica running</string>
             </objects>
             <point key="canvasLocation" x="1926" y="5845"/>
         </scene>
-        <!--To-Dos-->
+        <!--Skills Task Table View Controller-->
         <scene sceneID="WgF-4W-TMv">
             <objects>
                 <tableViewController id="DhB-2l-6nh" customClass="SkillsTaskTableViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
@@ -2109,13 +2085,13 @@ and helps keep Habitica running</string>
                             <outlet property="delegate" destination="DhB-2l-6nh" id="36h-85-9NO"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="To-Dos" image="tabbar_todos" id="TXB-iK-KhP"/>
+                    <tabBarItem key="tabBarItem" image="tabbar_todos" id="TXB-iK-KhP"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YWa-8S-jGa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4558.125" y="5885"/>
+            <point key="canvasLocation" x="3828" y="5862"/>
         </scene>
-        <!--Dailies-->
+        <!--Skills Task Table View Controller-->
         <scene sceneID="ZtU-ke-UJe">
             <objects>
                 <tableViewController id="7lu-pK-DCS" customClass="SkillsTaskTableViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
@@ -2154,13 +2130,13 @@ and helps keep Habitica running</string>
                             <outlet property="delegate" destination="7lu-pK-DCS" id="gFd-Yz-QB9"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Dailies" image="tabbar_dailies" id="Aco-n2-RnG"/>
+                    <tabBarItem key="tabBarItem" image="tabbar_dailies" id="Aco-n2-RnG"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qq3-Vg-EmH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4558.125" y="5170"/>
+            <point key="canvasLocation" x="3828" y="5210"/>
         </scene>
-        <!--Habits-->
+        <!--Skills Task Table View Controller-->
         <scene sceneID="pyJ-pU-Dzp">
             <objects>
                 <tableViewController id="Sir-tg-Qda" customClass="SkillsTaskTableViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
@@ -2199,11 +2175,11 @@ and helps keep Habitica running</string>
                             <outlet property="delegate" destination="Sir-tg-Qda" id="YdM-Xd-OnM"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Habits" image="tabbar_habits" id="CTh-zS-7ZY"/>
+                    <tabBarItem key="tabBarItem" image="tabbar_habits" id="CTh-zS-7ZY"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C3e-cK-1k5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3571.875" y="4457.5"/>
+            <point key="canvasLocation" x="3828" y="4559"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Khf-yu-jYt">
@@ -2221,7 +2197,7 @@ and helps keep Habitica running</string>
             </objects>
             <point key="canvasLocation" x="1796.25" y="4980"/>
         </scene>
-        <!--Filter by tags-->
+        <!--Filter View Controller-->
         <scene sceneID="8q0-MG-Oh7">
             <objects>
                 <tableViewController id="CZc-T4-a1C" customClass="HRPGFilterViewController" sceneMemberID="viewController">
@@ -2238,7 +2214,7 @@ and helps keep Habitica running</string>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="223" translatesAutoresizingMaskIntoConstraints="NO" id="GcJ-Of-cxA">
-                                            <rect key="frame" x="62" y="11" width="297" height="37"/>
+                                            <rect key="frame" x="62" y="11" width="297" height="37.5"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -2270,7 +2246,7 @@ and helps keep Habitica running</string>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="183" translatesAutoresizingMaskIntoConstraints="NO" id="qjU-BV-CDx">
-                                            <rect key="frame" x="62" y="11" width="251" height="37"/>
+                                            <rect key="frame" x="62" y="11" width="251" height="37.5"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -2321,14 +2297,14 @@ and helps keep Habitica running</string>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="OZY-o0-CAc"/>
-                        <barButtonItem title="Clear" id="hIC-Qf-w8a">
+                        <barButtonItem id="hIC-Qf-w8a">
                             <color key="tintColor" red="0.94815266132354736" green="0.20718780159950256" blue="0.25553801655769348" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="clearTags:" destination="CZc-T4-a1C" id="GA7-07-5qy"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" title="Filter by tags" id="RJ8-HL-bIH">
+                    <navigationItem key="navigationItem" id="RJ8-HL-bIH">
                         <barButtonItem key="leftBarButtonItem" systemItem="done" id="2yR-UY-zxm">
                             <connections>
                                 <segue destination="Rot-qR-0bj" kind="unwind" unwindAction="unwindFilterChangedWithSegue:" id="JlJ-u3-PVM"/>
@@ -2369,11 +2345,11 @@ and helps keep Habitica running</string>
             </objects>
             <point key="canvasLocation" x="294.375" y="5827.5"/>
         </scene>
-        <!--Menu-->
+        <!--Top Header View Controller-->
         <scene sceneID="Vp9-dg-sDn">
             <objects>
                 <navigationController restorationIdentifier="ProfileNavigationController" definesPresentationContext="YES" id="JSb-MY-Gwo" customClass="TopHeaderViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Menu" image="tabbar_menu" id="hyj-Mf-lvH"/>
+                    <tabBarItem key="tabBarItem" title="" image="tabbar_menu" id="hyj-Mf-lvH"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gph-cu-5tJ">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2386,11 +2362,11 @@ and helps keep Habitica running</string>
             </objects>
             <point key="canvasLocation" x="1171.875" y="1751.25"/>
         </scene>
-        <!--To-Dos-->
+        <!--Top Header View Controller-->
         <scene sceneID="xdc-Uc-O5P">
             <objects>
                 <navigationController restorationIdentifier="TodoNavigationController" definesPresentationContext="YES" id="F9m-od-YIG" customClass="TopHeaderViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="To-Dos" image="tabbar_todos" id="Np7-ws-fF6"/>
+                    <tabBarItem key="tabBarItem" title="" image="tabbar_todos" id="Np7-ws-fF6"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="mXU-6R-4bg">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2403,11 +2379,11 @@ and helps keep Habitica running</string>
             </objects>
             <point key="canvasLocation" x="1170" y="885"/>
         </scene>
-        <!--Dailies-->
+        <!--Top Header View Controller-->
         <scene sceneID="qkM-wB-5kH">
             <objects>
                 <navigationController restorationIdentifier="DailyNavigationController" definesPresentationContext="YES" id="szj-Xo-0pc" customClass="TopHeaderViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Dailies" id="pdW-W9-wj6"/>
+                    <tabBarItem key="tabBarItem" title="" id="pdW-W9-wj6"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Tc8-JW-aRd">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2420,11 +2396,11 @@ and helps keep Habitica running</string>
             </objects>
             <point key="canvasLocation" x="1983" y="63"/>
         </scene>
-        <!--Habits-->
+        <!--Top Header View Controller-->
         <scene sceneID="0w6-RO-vbL">
             <objects>
                 <navigationController restorationIdentifier="HabitNavigationController" definesPresentationContext="YES" id="ZPa-UZ-Rgq" customClass="TopHeaderViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Habits" image="tabbar_habits" id="3G8-SH-Shd"/>
+                    <tabBarItem key="tabBarItem" title="" image="tabbar_habits" id="3G8-SH-Shd"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="qQq-gV-VmG">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2457,11 +2433,11 @@ and helps keep Habitica running</string>
             </objects>
             <point key="canvasLocation" x="4779.375" y="3272.5"/>
         </scene>
-        <!--Rewards-->
+        <!--Top Header View Controller-->
         <scene sceneID="ADP-AR-Pd2">
             <objects>
                 <navigationController restorationIdentifier="RewardNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="tYf-ZM-zIQ" customClass="TopHeaderViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Rewards" image="tabbar_rewards" id="zFI-xr-RjT"/>
+                    <tabBarItem key="tabBarItem" title="" image="tabbar_rewards" id="zFI-xr-RjT"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="qZ5-Dx-RNg"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="n1T-X7-pMj">
@@ -2477,7 +2453,7 @@ and helps keep Habitica running</string>
             </objects>
             <point key="canvasLocation" x="-464" y="1906"/>
         </scene>
-        <!--Rewards-->
+        <!--Reward View Controller-->
         <scene sceneID="XE8-n2-dkq">
             <objects>
                 <collectionViewController id="wkr-0z-ZYr" customClass="RewardViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
@@ -2506,7 +2482,7 @@ and helps keep Habitica running</string>
                             <outlet property="delegate" destination="wkr-0z-ZYr" id="f3e-2C-mAS"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Rewards" id="HHL-mH-FJc">
+                    <navigationItem key="navigationItem" id="HHL-mH-FJc">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="NiR-ou-IuB">
                             <connections>
                                 <segue destination="s5d-Hq-9de" kind="presentation" identifier="FormSegue" animates="NO" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="tO1-JH-hWy"/>
@@ -2565,10 +2541,10 @@ and helps keep Habitica running</string>
             </objects>
             <point key="canvasLocation" x="-464" y="2641"/>
         </scene>
-        <!--Stable-->
+        <!--Stable Split View Controller-->
         <scene sceneID="dL9-mT-DcX">
             <objects>
-                <viewController restorationIdentifier="GroupTableViewController" storyboardIdentifier="GroupTableViewController" id="HEh-dF-ytU" customClass="StableSplitViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="HEh-dF-ytU" customClass="StableSplitViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HP6-xx-TVS"/>
                         <viewControllerLayoutGuide type="bottom" id="THH-f4-eYM"/>
@@ -2626,7 +2602,7 @@ and helps keep Habitica running</string>
                             <constraint firstAttribute="trailing" secondItem="S70-Y1-yfR" secondAttribute="trailing" id="xSt-th-JXe"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Stable" id="yA7-ap-uv0"/>
+                    <navigationItem key="navigationItem" id="yA7-ap-uv0"/>
                     <connections>
                         <outlet property="leftViewWidthConstraint" destination="9tD-k9-D74" id="NPC-we-A57"/>
                         <outlet property="rightViewWidthConstraint" destination="EZi-uG-Zq2" id="D8b-DY-wXZ"/>
@@ -2639,9 +2615,193 @@ and helps keep Habitica running</string>
             </objects>
             <point key="canvasLocation" x="2457" y="2514"/>
         </scene>
+        <!--Gift Subscription View Controller-->
+        <scene sceneID="aJR-oR-FEx">
+            <objects>
+                <tableViewController storyboardIdentifier="GiftSubscriptionViewController" id="fI8-Sl-MPA" customClass="GiftSubscriptionViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="71" sectionHeaderHeight="28" sectionFooterHeight="28" id="YuZ-Eb-iNX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="0xr-mh-PES">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KSp-Pa-Hsw">
+                                    <rect key="frame" x="165.5" y="50" width="44" height="44"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QfC-at-thI" customClass="AvatarView" customModule="Habitica" customModuleProvider="target">
+                                            <rect key="frame" x="-34" y="-46" width="90" height="90"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="90" id="wt3-OQ-fJy"/>
+                                                <constraint firstAttribute="height" constant="90" id="z2U-Z1-xCo"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="QfC-at-thI" secondAttribute="bottom" id="0fu-eq-EfH"/>
+                                        <constraint firstAttribute="trailing" secondItem="QfC-at-thI" secondAttribute="trailing" constant="-12" id="TPr-qQ-VBt"/>
+                                        <constraint firstAttribute="width" constant="44" id="V7z-E2-Nmh"/>
+                                        <constraint firstAttribute="height" constant="44" id="Z7o-IO-OcA"/>
+                                    </constraints>
+                                </view>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NMm-pQ-wSm" customClass="UsernameLabel" customModule="Habitica" customModuleProvider="target">
+                                    <rect key="frame" x="187.5" y="102" width="0.0" height="0.0"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" priority="500" constant="42" id="7DH-dY-xpR"/>
+                                        <constraint firstAttribute="height" priority="500" constant="21" id="k2c-kP-uUM"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xvW-Tc-HI8">
+                                    <rect key="frame" x="187.5" y="106" width="0.0" height="0.0"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" priority="500" constant="42" id="aI6-OQ-oIv"/>
+                                        <constraint firstAttribute="height" priority="500" constant="21" id="bTH-2K-EH5"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <color key="textColor" red="0.57231205701828003" green="0.54968619346618652" blue="0.60629409551620483" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="evr-kJ-ljY">
+                                    <rect key="frame" x="20" y="114" width="335" height="78"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <color key="textColor" red="0.53023332359999997" green="0.50720638039999999" blue="0.56472396849999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="xvW-Tc-HI8" firstAttribute="centerX" secondItem="0xr-mh-PES" secondAttribute="centerX" id="2xb-NC-eFc"/>
+                                <constraint firstAttribute="trailing" secondItem="evr-kJ-ljY" secondAttribute="trailing" constant="20" id="BcU-gF-TIi"/>
+                                <constraint firstItem="xvW-Tc-HI8" firstAttribute="top" secondItem="NMm-pQ-wSm" secondAttribute="bottom" constant="4" id="JkN-gd-ayG"/>
+                                <constraint firstItem="KSp-Pa-Hsw" firstAttribute="top" secondItem="0xr-mh-PES" secondAttribute="top" constant="50" id="Li5-yI-lb0"/>
+                                <constraint firstAttribute="bottom" secondItem="evr-kJ-ljY" secondAttribute="bottom" constant="8" id="Oei-5L-FJy"/>
+                                <constraint firstItem="NMm-pQ-wSm" firstAttribute="centerX" secondItem="0xr-mh-PES" secondAttribute="centerX" id="PSg-ei-ABE"/>
+                                <constraint firstItem="NMm-pQ-wSm" firstAttribute="top" secondItem="KSp-Pa-Hsw" secondAttribute="bottom" constant="8" id="fne-H5-geF"/>
+                                <constraint firstItem="KSp-Pa-Hsw" firstAttribute="centerX" secondItem="0xr-mh-PES" secondAttribute="centerX" id="g6X-pQ-QX9"/>
+                                <constraint firstItem="evr-kJ-ljY" firstAttribute="leading" secondItem="0xr-mh-PES" secondAttribute="leading" constant="20" id="lAf-i4-z5v"/>
+                                <constraint firstItem="evr-kJ-ljY" firstAttribute="top" secondItem="xvW-Tc-HI8" secondAttribute="bottom" constant="8" id="nxz-ns-EmA"/>
+                            </constraints>
+                        </view>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="ev4-GE-6Md">
+                            <rect key="frame" x="0.0" y="298" width="375" height="111"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vqR-47-Okh">
+                                    <rect key="frame" x="16" y="16" width="343" height="0.0"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" priority="500" constant="21" id="YF5-zM-xfc"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b7s-sU-IE0">
+                                    <rect key="frame" x="40" y="20" width="295" height="0.0"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" priority="500" constant="21" id="T5l-kL-oeU"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" red="0.24680608510971069" green="0.70955049991607666" blue="0.75657778978347778" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="b7s-sU-IE0" secondAttribute="trailing" constant="40" id="GAI-co-lcW"/>
+                                <constraint firstItem="vqR-47-Okh" firstAttribute="top" secondItem="ev4-GE-6Md" secondAttribute="top" constant="16" id="NcG-Tr-ajw"/>
+                                <constraint firstItem="vqR-47-Okh" firstAttribute="leading" secondItem="ev4-GE-6Md" secondAttribute="leading" constant="16" id="aSn-7Y-ns5"/>
+                                <constraint firstItem="b7s-sU-IE0" firstAttribute="top" secondItem="vqR-47-Okh" secondAttribute="bottom" constant="4" id="mwE-lv-4zr"/>
+                                <constraint firstItem="b7s-sU-IE0" firstAttribute="leading" secondItem="ev4-GE-6Md" secondAttribute="leading" constant="40" id="vdU-Uk-t3R"/>
+                                <constraint firstAttribute="trailing" secondItem="vqR-47-Okh" secondAttribute="trailing" constant="16" id="xV8-Pc-CKD"/>
+                            </constraints>
+                        </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SubscribeButtonCell" rowHeight="70" id="vN3-lc-K1M">
+                                <rect key="frame" x="0.0" y="228" width="375" height="70"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vN3-lc-K1M" id="NTC-7R-KQH">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hf5-hq-Cbp">
+                                            <rect key="frame" x="16" y="0.0" width="343" height="36"/>
+                                            <color key="backgroundColor" red="0.37997829910000003" green="0.1982949376" blue="0.70615965130000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="36" id="RYc-Vh-fEt"/>
+                                            </constraints>
+                                            <color key="tintColor" red="0.96862745289999996" green="0.93725490570000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <state key="normal">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="4"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="subscribeButtonPressed:" destination="fI8-Sl-MPA" eventType="touchUpInside" id="Dfv-TN-m6M"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Hf5-hq-Cbp" firstAttribute="leading" secondItem="NTC-7R-KQH" secondAttribute="leading" constant="16" id="3J2-7W-ros"/>
+                                        <constraint firstItem="Hf5-hq-Cbp" firstAttribute="top" secondItem="NTC-7R-KQH" secondAttribute="top" id="ocA-UC-qhr"/>
+                                        <constraint firstAttribute="trailing" secondItem="Hf5-hq-Cbp" secondAttribute="trailing" constant="16" id="rie-w6-dcN"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="fI8-Sl-MPA" id="Vce-K2-Ck7"/>
+                            <outlet property="delegate" destination="fI8-Sl-MPA" id="m7c-kd-fUS"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="Puw-P3-s3j">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="cancel" id="2VZ-VC-snP">
+                            <connections>
+                                <segue destination="3qU-U4-oGh" kind="unwind" unwindAction="unwindToList:" id="hLO-fD-2Xi"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="avatarView" destination="QfC-at-thI" id="mEj-ID-lER"/>
+                        <outlet property="displayNameLabel" destination="NMm-pQ-wSm" id="lXg-bT-m3c"/>
+                        <outlet property="explanationTitle" destination="evr-kJ-ljY" id="RQA-9R-rZB"/>
+                        <outlet property="giftOneGetOneDescriptionLabel" destination="b7s-sU-IE0" id="73T-VD-C7e"/>
+                        <outlet property="giftOneGetOneTitleLabel" destination="vqR-47-Okh" id="Q6U-qm-rbB"/>
+                        <outlet property="usernameLabel" destination="xvW-Tc-HI8" id="gRf-Zg-b2d"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fRS-6v-2oA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="3qU-U4-oGh" userLabel="Exit" sceneMemberID="exit"/>
+                <customObject id="Vhp-sO-dDd" customClass="HabiticaIcons" customModule="Habitica" customModuleProvider="target"/>
+            </objects>
+            <point key="canvasLocation" x="2804" y="10417.241379310346"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="WeW-04-8lU">
+            <objects>
+                <navigationController storyboardIdentifier="GiftSubscriptionNavController" id="KOH-m5-9hA" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="frT-yt-SsM">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="fI8-Sl-MPA" kind="relationship" relationship="rootViewController" id="0LY-Cb-ihy"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fQ2-AU-dks" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1993" y="10418"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="icon_lock" width="16" height="18"/>
         <image name="tabbar_dailies" width="32" height="32"/>
         <image name="tabbar_habits" width="32" height="32"/>
         <image name="tabbar_menu" width="36" height="28"/>
@@ -2649,10 +2809,10 @@ and helps keep Habitica running</string>
         <image name="tabbar_todos" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="iSa-66-Wjc"/>
-        <segue reference="ETz-qE-xC2"/>
-        <segue reference="V6b-ej-qnx"/>
-        <segue reference="WX7-CS-CSr"/>
+        <segue reference="njg-A8-lDq"/>
+        <segue reference="vFt-wX-7j8"/>
+        <segue reference="nYO-SY-Og4"/>
+        <segue reference="tO1-JH-hWy"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.44783598184585571" green="0.10848048329353333" blue="0.9984632134437561" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

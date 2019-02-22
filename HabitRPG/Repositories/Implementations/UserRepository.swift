@@ -158,7 +158,10 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     func login(username: String, password: String) -> Signal<LoginResponseProtocol?, NoError> {
         let call = LocalLoginCall(username: username, password: password)
         call.fire()
-        return call.objectSignal.on(value: { loginResponse in
+        return call.objectSignal.merge(with: call.responseSignal.map({ _ -> LoginResponseProtocol? in
+            return nil
+        }))
+            .on(value: { loginResponse in
             if let response = loginResponse {
                 AuthenticationManager.shared.currentUserId = response.id
                 AuthenticationManager.shared.currentUserKey = response.apiToken
@@ -252,6 +255,12 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         })
     }
     
+    func verifyUsername(_ newUsername: String) -> Signal<VerifyUsernameResponse?, NoError> {
+        let call = VerifyUsernameCall(username: newUsername)
+        call.fire()
+        return call.objectSignal
+    }
+    
     func updatePassword(newPassword: String, password: String, confirmPassword: String) -> Signal<EmptyResponseProtocol?, NoError> {
         let call = UpdatePasswordCall(newPassword: newPassword, oldPassword: password, confirmPassword: confirmPassword)
         call.fire()
@@ -277,9 +286,9 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     func retrieveInAppRewards() -> Signal<[InAppRewardProtocol]?, NoError> {
         let call = RetrieveInAppRewardsCall()
         call.fire()
-        return call.arraySignal.on(value: {[weak self]inAppRewards in
-            if let userID = self?.currentUserId, let inAppRewards = inAppRewards {
-                self?.localRepository.save(userID: userID, inAppRewards: inAppRewards)
+        return call.arraySignal.on(value: { inAppRewards in
+            if let userID = self.currentUserId, let inAppRewards = inAppRewards {
+                self.localRepository.save(userID: userID, inAppRewards: inAppRewards)
             }
         })
     }
@@ -312,8 +321,14 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         return call.objectSignal
     }
     
-    func purchaseGems(receipt: [String: Any]) -> Signal<EmptyResponseProtocol?, NoError> {
-        let call = PurchaseGemsCall(receipt: receipt)
+    func purchaseGems(receipt: [String: Any], recipient: String? = nil) -> Signal<EmptyResponseProtocol?, NoError> {
+        let call = PurchaseGemsCall(receipt: receipt, recipient: recipient)
+        call.fire()
+        return call.objectSignal
+    }
+    
+    func purchaseNoRenewSubscription(identifier: String, receipt: [String: Any], recipient: String? = nil) -> Signal<EmptyResponseProtocol?, NoError> {
+        let call = PurchaseNoRenewSubscriptionCall(identifier: identifier, receipt: receipt, recipient: recipient)
         call.fire()
         return call.objectSignal
     }

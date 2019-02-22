@@ -39,8 +39,12 @@ class FAQTableViewController: HRPGBaseViewController {
         resetTutorialButton.frame = CGRect(x: 0, y: 0, width: self.tableView.bounds.size.width, height: 70)
         tableView.tableFooterView = resetTutorialButton
         
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 50
+    }
+    
+    override func populateText() {
+        navigationItem.title = L10n.Titles.faq
     }
     
     override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {

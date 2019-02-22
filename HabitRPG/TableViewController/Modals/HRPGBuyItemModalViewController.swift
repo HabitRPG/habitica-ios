@@ -31,6 +31,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     @IBOutlet weak var buyLabel: UILabel!
     @IBOutlet weak var currencyCountView: HRPGCurrencyCountView!
     @IBOutlet weak var closableShopModal: HRPGCloseableShopModalView!
+    @IBOutlet weak var balanceLabel: UILabel!
     
     @objc public weak var shopViewController: HRPGShopViewController?
     
@@ -44,9 +45,9 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     private var isPinned: Bool = false {
         didSet {
             if isPinned {
-                pinButton.setTitle(NSLocalizedString("Unpin from Rewards", comment: ""), for: .normal)
+                pinButton.setTitle(L10n.unpinFromRewards, for: .normal)
             } else {
-                pinButton.setTitle(NSLocalizedString("Pin to Rewards", comment: ""), for: .normal)
+                pinButton.setTitle(L10n.pinToRewards, for: .normal)
             }
         }
     }
@@ -54,17 +55,19 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        topContentView.superview?.bringSubview(toFront: topContentView)
-        bottomButtons.superview?.bringSubview(toFront: bottomButtons)
+        topContentView.superview?.bringSubviewToFront(topContentView)
+        bottomButtons.superview?.bringSubviewToFront(bottomButtons)
         styleViews()
         setupItem()
         
-        closableShopModal.closeButton.addTarget(self, action: #selector(closePressed), for: UIControlEvents.touchUpInside)
+        closableShopModal.closeButton.addTarget(self, action: #selector(closePressed), for: UIControl.Event.touchUpInside)
         buyButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(buyPressed)))
         let inAppReward = reward
         pinButton.isHidden = !showPinning ||  inAppReward?.pinType == "armoire" || inAppReward?.pinType == "potion"
         
         ThemeService.shared.addThemeable(themable: self)
+        
+        populateText()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,6 +75,12 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
             self?.user = user
         }).start())
+    }
+    
+    func populateText() {
+        pinButton.setTitle(L10n.pinToRewards, for: .normal)
+        buyLabel.text = L10n.buy.localizedCapitalized
+        balanceLabel.text = L10n.yourBalance
     }
     
     func applyTheme(theme: Theme) {
@@ -201,8 +210,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         buyButton.shouldGroupAccessibilityChildren = true
         buyButton.isAccessibilityElement = true
         currencyCountView.isAccessibilityElement = false
-        let currencyText = currencyCountView.accessibilityLabel ?? ""
-        buyButton.accessibilityLabel = NSLocalizedString("Buy for \(currencyText)", comment: "")
+        buyButton.accessibilityLabel = L10n.buyForX(currencyCountView.accessibilityLabel ?? "")
     }
     
     func canAfford() -> Bool {
@@ -295,6 +303,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         var setIdentifier = ""
         var value = 0
         var successBlock = {}
+        var text = ""
         /*if let shopItem = item {
             key = shopItem.key ?? ""
             purchaseType = shopItem.purchaseType ?? ""
@@ -317,6 +326,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
             purchaseType = inAppReward.purchaseType ?? ""
             setIdentifier = inAppReward.key ?? ""
             value = Int(inAppReward.value)
+            text = inAppReward.text ?? ""
             if let currencyString = inAppReward.currency, let thisCurrency = Currency(rawValue: currencyString) {
                 currency = thisCurrency
             }
@@ -352,7 +362,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
             
             if currency == .hourglass {
                 if purchaseType == "gear" || purchaseType == "mystery_set" {
-                    inventoryRepository.purchaseMysterySet(identifier: setIdentifier).observeResult({ (result) in
+                    inventoryRepository.purchaseMysterySet(identifier: setIdentifier, text: text).observeResult({ (result) in
                         if result.error != nil {
                             HRPGBuyItemModalViewController.displayViewController(name: "InsufficientHourglassesViewController", parent: topViewController)
                         } else {
@@ -360,7 +370,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                         }
                     })
                 } else {
-                    inventoryRepository.purchaseHourglassItem(purchaseType: purchaseType, key: key).observeResult({ (result) in
+                    inventoryRepository.purchaseHourglassItem(purchaseType: purchaseType, key: key, text: text).observeResult({ (result) in
                         if result.error != nil {
                             HRPGBuyItemModalViewController.displayViewController(name: "InsufficientHourglassesViewController", parent: topViewController)
                         } else {
@@ -369,7 +379,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                     })
                 }
             } else if currency == .gem || purchaseType == "gems" {
-                inventoryRepository.purchaseItem(purchaseType: purchaseType, key: key, value: value).observeResult({ (result) in
+                inventoryRepository.purchaseItem(purchaseType: purchaseType, key: key, value: value, text: text).observeResult({ (result) in
                     if result.error != nil {
                         if key == "gem" {
                             HRPGBuyItemModalViewController.displayViewController(name: "GemCapReachedViewController", parent: topViewController)
@@ -390,7 +400,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                 })
             } else {
                 if currency == .gold && purchaseType == "quests" {
-                    inventoryRepository.purchaseQuest(key: key).observeResult({ (result) in
+                    inventoryRepository.purchaseQuest(key: key, text: text).observeResult({ (result) in
                         if result.error != nil {
                             HRPGBuyItemModalViewController.displayViewController(name: "InsufficientGoldViewController", parent: topViewController)
                         } else {
@@ -398,7 +408,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                         }
                     })
                 } else {
-                    inventoryRepository.buyObject(key: key).observeResult({ (result) in
+                    inventoryRepository.buyObject(key: key, price: value, text: text).observeResult({ (result) in
                         if result.error != nil {
                             HRPGBuyItemModalViewController.displayViewController(name: "InsufficientGoldViewController", parent: topViewController)
                         } else {
@@ -431,14 +441,14 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
 extension NSLayoutConstraint {
     static func defaultVerticalConstraints(_ visualFormat: String, _ views: [String: UIView]) -> [NSLayoutConstraint] {
         return NSLayoutConstraint.constraints(withVisualFormat: visualFormat,
-                                              options: NSLayoutFormatOptions(rawValue: 0),
+                                              options: NSLayoutConstraint.FormatOptions(rawValue: 0),
                                               metrics: nil,
                                               views: views)
     }
     
     static func defaultHorizontalConstraints(_ view: UIView) -> [NSLayoutConstraint] {
         return NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|",
-                                              options: NSLayoutFormatOptions(rawValue: 0),
+                                              options: NSLayoutConstraint.FormatOptions(rawValue: 0),
                                               metrics: nil,
                                               views: ["view": view])
     }

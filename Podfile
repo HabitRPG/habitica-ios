@@ -25,7 +25,7 @@ plugin 'cocoapods-keys', {
 }
 
 def reactive_pods
-  pod 'ReactiveCocoa', '~> 7'
+  pod 'ReactiveCocoa', '~> 8'
 end
 
 def test_pods
@@ -39,7 +39,6 @@ target 'Habitica' do
   pod 'KeychainAccess'
   pod 'VTAcknowledgementsViewController'
   pod 'DateTools'
-  pod 'NSString+Emoji'
   pod 'XLForm'
   pod 'FLEX', '~> 2.0', :configurations => ['Debug']
   pod 'MRProgress'
@@ -53,8 +52,10 @@ target 'Habitica' do
   pod 'FBSDKCoreKit', '~> 4'
   pod 'FBSDKLoginKit', '~> 4'
 
+  pod 'Firebase/Core'
   pod 'Fabric'
   pod 'Crashlytics'
+  pod 'Firebase/Performance'
 
   reactive_pods
 
@@ -64,7 +65,7 @@ target 'Habitica' do
 
   pod 'PinLayout'
 
-  pod 'PopupDialog', :git => 'https://github.com/Orderella/PopupDialog.git', :branch => 'development'
+  pod 'PopupDialog'
   pod 'SwiftLint'
   pod 'Eureka'
 
@@ -76,6 +77,8 @@ target 'Habitica' do
   pod 'SwiftGen'
 
   pod 'Instabug'
+
+  pod "DeepLinkKit"
 
   target 'HabiticaTests' do
     inherit! :search_paths
@@ -98,6 +101,8 @@ target "Habitica API Client" do
   project 'Habitica API Client/Habitica API Client.xcodeproj'
   pod 'FunkyNetwork', git: 'https://github.com/schrockblock/funky-network.git'
   reactive_pods
+  pod 'Fabric'
+  pod 'Crashlytics'
 
   target 'Habitica API ClientTests' do
     inherit! :search_paths

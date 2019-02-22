@@ -41,7 +41,9 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
     let animateUpdatesSignal: Signal<(), NoError>
     let nextViewControllerSignal: Signal<UIViewController, NoError>
     
-    let challengeProperty: MutableProperty<ChallengeProtocol>
+    let challengeID: String?
+    
+    let challengeProperty: MutableProperty<ChallengeProtocol?>
     let challengeMembershipProperty = MutableProperty<ChallengeMembershipProtocol?>(nil)
     let challengeCreatorProperty = MutableProperty<MemberProtocol?>(nil)
     let viewDidLoadProperty = MutableProperty(())
@@ -70,7 +72,8 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
     private let disposable = ScopedDisposable(CompositeDisposable())
     
     init(challenge: ChallengeProtocol) {
-        challengeProperty = MutableProperty<ChallengeProtocol>(challenge)
+        self.challengeID = challenge.id
+        challengeProperty = MutableProperty<ChallengeProtocol?>(challenge)
         reloadTableSignal = reloadTableProperty.signal
         animateUpdatesSignal = animateUpdatesProperty.signal
         nextViewControllerSignal = nextViewControllerProperty.signal.skipNil()
@@ -83,7 +86,32 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
         let initialCellModelsSignal = cellModelsProperty.signal.sample(on: viewDidLoadProperty.signal)
         
         cellModelsSignal = Signal.merge(cellModelsProperty.signal, initialCellModelsSignal)
+        setup(challenge: challenge)
+        reloadChallenge()
+    }
+    
+    init(challengeID: String) {
+        self.challengeID = challengeID
         
+        challengeProperty = MutableProperty<ChallengeProtocol?>(nil)
+        reloadTableSignal = reloadTableProperty.signal
+        animateUpdatesSignal = animateUpdatesProperty.signal
+        nextViewControllerSignal = nextViewControllerProperty.signal.skipNil()
+        
+        joinLeaveStyleProvider = JoinLeaveButtonAttributeProvider(nil)
+        publishStyleProvider = PublishButtonAttributeProvider(nil)
+        participantsStyleProvider = ParticipantsButtonAttributeProvider(nil)
+        endChallengeStyleProvider = EndChallengeButtonAttributeProvider(nil)
+        
+        let initialCellModelsSignal = cellModelsProperty.signal.sample(on: viewDidLoadProperty.signal)
+        
+        cellModelsSignal = Signal.merge(cellModelsProperty.signal, initialCellModelsSignal)
+        
+        setup(challenge: nil)
+        reloadChallenge()
+    }
+        
+    private func setup(challenge: ChallengeProtocol?) {
         Signal.zip(infoSectionProperty.signal,
                    habitsSectionProperty.signal,
                    dailiesSectionProperty.signal,
@@ -101,7 +129,6 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
         
         setupInfo()
         
-        reloadChallenge(challenge: challenge)
         
         challengeProperty.signal.observeValues {[weak self] newChallenge in
             self?.joinLeaveStyleProvider.challengeProperty.value = newChallenge
@@ -115,12 +142,12 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
         }
         
         joinLeaveStyleProvider.challengeUpdatedProperty.signal.observeValues {[weak self] _ in
-            self?.reloadChallenge(challenge: self?.challengeProperty.value)
+            self?.reloadChallenge()
         }
     }
     
     func setupInfo() {
-        challengeProperty.signal.combineLatest(with: challengeCreatorProperty.signal)
+        challengeProperty.signal.skipNil().combineLatest(with: challengeCreatorProperty.signal)
             .observeValues { (challenge, creator) in
             let infoItem = ChallengeMultiModelDataSourceItem<ChallengeDetailInfoTableViewCell>(challenge, identifier: "info")
                 let creatorItem = ChallengeCreatorMultiModelDataSourceItem(challenge, creator: creator, cellDelegate: self, identifier: "creator")
@@ -138,7 +165,7 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
     }
     
     func setupTasks() {
-        disposable.inner.add(socialRepository.getChallengeTasks(challengeID: challengeProperty.value.id ?? "").on(value: {[weak self] (tasks, _) in
+        disposable.inner.add(socialRepository.getChallengeTasks(challengeID: challengeProperty.value?.id ?? "").on(value: {[weak self] (tasks, _) in
             let habitsSection = MultiModelDataSourceSection()
             habitsSection.title = "Habits"
             habitsSection.items = tasks.filter({ (task) -> Bool in
@@ -178,10 +205,10 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
     }
     
     func setupButtons() {
-        let ownedChallengeSignal = challengeProperty.signal.filter { (challenge) -> Bool in
+        let ownedChallengeSignal = challengeProperty.signal.skipNil().filter { (challenge) -> Bool in
             return challenge.isOwner()
         }
-        let unownedChallengeSignal = challengeProperty.signal.filter { (challenge) -> Bool in
+        let unownedChallengeSignal = challengeProperty.signal.skipNil().filter { (challenge) -> Bool in
             return !challenge.isOwner()
         }
         
@@ -240,9 +267,9 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
         }
     }
     
-    func reloadChallenge(challenge: ChallengeProtocol?) {
+    func reloadChallenge() {
         DispatchQueue.main.async {[weak self] in
-            self?.socialRepository.retrieveChallenge(challengeID: challenge?.id ?? "").observeCompleted { }
+            self?.socialRepository.retrieveChallenge(challengeID: self?.challengeID ?? "").observeCompleted { }
         }
     }
     
@@ -278,7 +305,7 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
     func viewDidLoad() {
         viewDidLoadProperty.value = ()
         
-        disposable.inner.add(socialRepository.getChallenge(challengeID: challengeProperty.value.id ?? "")
+        disposable.inner.add(socialRepository.getChallenge(challengeID: challengeID ?? "")
             .skipNil()
             .on(value: {[weak self] challenge in
                 self?.setChallenge(challenge)
@@ -296,7 +323,7 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
             })
             .start())
         
-        if let challengeID = challengeProperty.value.id {
+        if let challengeID = self.challengeID {
             disposable.inner.add(socialRepository.getChallengeMembership(challengeID: challengeID).on(value: {[weak self] membership in
                 self?.setChallengeMembership(membership)
             }).start())
