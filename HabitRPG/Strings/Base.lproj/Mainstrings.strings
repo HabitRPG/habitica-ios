@@ -283,6 +283,9 @@
 "settings.confirm_new_password" = "Confirm new Password";
 "settings.api_disclaimer" = "Copy these for use in third party applications. However, think of your API Token like a password, and do not share it publicly. You may occasionally be asked for your User ID, but never post your API Token where others can see it, including on Github.";
 "settings.local" = "Local";
+"settings.searchable_everywhere" = "Everywhere";
+"settings.searchable_private_spaces" = "Only Private Spaces";
+"settings.mentions" = "Mentions";
 "theme.default_theme" = "Default";
 "theme.blue" = "Blue";
 "theme.teal" = "Teal";
@@ -482,7 +485,7 @@
 "username_confirmed_toast" = "Your username was confirmed";
 "settings.username_not_confirmed" = "Username not confirmed";
 "settings.display_name_length_error" = "Your display name has to be between 1 and 30 characters.";
-"settings.searchable_username" = "Make username searchable";
+"settings.searchable_username" = "Suggest my username";
 "about.website" = "Website";
 "about.send_feedback" = "Send Feedback";
 "about.report_bug" = "Report a Bug";
@@ -721,3 +724,4 @@
 "shops.other_class_disclaimer" = "You can only purchase gear for your current class";
 "shops.purchased_all_gear" = "You already have all your class equipment! More will be released during the Grand Galas, near the solstices and equinoxes.";
 "purchased" = "You purchased %@";
+"buy_reward" = "You bought '%@' for %f gold";

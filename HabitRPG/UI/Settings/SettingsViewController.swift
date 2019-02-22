@@ -380,18 +380,23 @@ class SettingsViewController: FormViewController, Themeable {
                         self.userRepository.updateDayStartTime(hour).observeCompleted {}
                     }
                 })
-            +++ Section(L10n.Settings.social)
-            <<< SwitchRow(SettingsTags.searchableUsername) { row in
+            +++ Section(L10n.Settings.mentions)
+            <<< AlertRow<LabeledFormValue<Bool>>(SettingsTags.searchableUsername) { row in
                 row.title = L10n.Settings.searchableUsername
+                row.options = [LabeledFormValue(value: true, label: L10n.Settings.searchableEverywhere),
+                               LabeledFormValue(value: false, label: L10n.Settings.searchablePrivateSpaces)
+                ]
+                row.selectorTitle = row.title
                 row.onChange({ (row) in
-                    if row.value == self.user?.preferences?.searchableUsername {
+                    if row.value?.value == self.user?.preferences?.searchableUsername {
                         return
                     }
                     if let value = row.value {
-                        self.userRepository.updateUser(key: "preferences.searchableUsername", value: value).observeCompleted {}
+                        self.userRepository.updateUser(key: "preferences.searchableUsername", value: value.value).observeCompleted {}
                     }
                 })
             }
+            +++ Section(L10n.Settings.social)
             <<< SwitchRow(SettingsTags.disableAllNotifications) { row in
                 row.title = L10n.Settings.disableAllNotifications
                 row.onChange({ (row) in
@@ -495,8 +500,8 @@ class SettingsViewController: FormViewController, Themeable {
         timeRow?.value = calendar.date(from: components)
         timeRow?.updateCell()
         
-        let searchableUsernameRow = (form.rowBy(tag: SettingsTags.searchableUsername) as? SwitchRow)
-        searchableUsernameRow?.value = user.preferences?.searchableUsername
+        let searchableUsernameRow = (form.rowBy(tag: SettingsTags.searchableUsername) as? AlertRow<LabeledFormValue<Bool>>)
+        searchableUsernameRow?.value = user.preferences?.searchableUsername == true ? LabeledFormValue(value: true, label: L10n.Settings.searchableEverywhere) : LabeledFormValue(value: false, label: L10n.Settings.searchablePrivateSpaces)
         searchableUsernameRow?.updateCell()
         
         let disableNotificationsRow = (form.rowBy(tag: SettingsTags.disableAllNotifications) as? SwitchRow)
