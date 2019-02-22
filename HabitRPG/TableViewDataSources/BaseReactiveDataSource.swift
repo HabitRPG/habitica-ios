@@ -187,10 +187,10 @@ class BaseReactiveCollectionViewDataSource<MODEL>: BaseReactiveDataSource<MODEL>
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let reuseIdentifier = (kind == UICollectionElementKindSectionFooter) ? "SectionFooter" : "SectionHeader"
+        let reuseIdentifier = (kind == UICollectionView.elementKindSectionFooter) ? "SectionFooter" : "SectionHeader"
         let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: reuseIdentifier, for: indexPath)
 
-        if kind == UICollectionElementKindSectionHeader {
+        if kind == UICollectionView.elementKindSectionHeader {
             let label = view.viewWithTag(1) as? UILabel
             label?.text = visibleSections[indexPath.section].title
         }

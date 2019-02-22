@@ -85,7 +85,7 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
             let expDiff = (response.experience ?? 0) - stats.experience
             let goldDiff = (response.gold ?? 0) - stats.gold
             let questDamage = (response.temp?.quest?.progressDelta ?? 0)
-            if task.type != "reward", let taskId = task.id {
+            if task.type == "reward", let taskId = task.id {
                 self?.localRepository.update(taskId: taskId, stats: stats, direction: direction, response: response)
                 ToastManager.show(text: L10n.buyReward(task.text ?? "", task.value), color: .green)
             } else {
