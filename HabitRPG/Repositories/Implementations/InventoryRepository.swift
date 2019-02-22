@@ -94,12 +94,12 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
         })
     }
     
-    func buyObject(key: String, text: String) -> Signal<BuyResponseProtocol?, NoError> {
+    func buyObject(key: String, price: Int, text: String) -> Signal<BuyResponseProtocol?, NoError> {
         let call = BuyObjectCall(key: key)
         call.fire()
         return call.habiticaResponseSignal.on(value: {[weak self]habiticaResponse in
             if let buyResponse = habiticaResponse?.data, let userID = self?.currentUserId {
-                self?.localUserRepository.updateUser(id: userID, buyResponse: buyResponse)
+                self?.localUserRepository.updateUser(id: userID, price: price, buyResponse: buyResponse)
                 
                 if let armoire = buyResponse.armoire {
                     guard let text = habiticaResponse?.message?.stripHTML().trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) else {

@@ -408,7 +408,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                         }
                     })
                 } else {
-                    inventoryRepository.buyObject(key: key, text: text).observeResult({ (result) in
+                    inventoryRepository.buyObject(key: key, price: value, text: text).observeResult({ (result) in
                         if result.error != nil {
                             HRPGBuyItemModalViewController.displayViewController(name: "InsufficientGoldViewController", parent: topViewController)
                         } else {

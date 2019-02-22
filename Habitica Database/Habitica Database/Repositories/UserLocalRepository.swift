@@ -137,7 +137,7 @@ public class UserLocalRepository: BaseLocalRepository {
         }
     }
     
-    public func updateUser(id: String, buyResponse: BuyResponseProtocol) {
+    public func updateUser(id: String, price: Int, buyResponse: BuyResponseProtocol) {
         let realm = getRealm()
         if let existingUser = realm?.object(ofType: RealmUser.self, forPrimaryKey: id) {
             try? realm?.write {
@@ -146,7 +146,7 @@ public class UserLocalRepository: BaseLocalRepository {
                     stats.experience = buyResponse.experience ?? stats.experience
                     stats.mana = buyResponse.mana ?? stats.mana
                     stats.level = buyResponse.level ?? stats.level
-                    stats.gold = buyResponse.gold ?? stats.gold
+                    stats.gold = buyResponse.gold ?? (stats.gold - Float(price))
                     stats.points = buyResponse.attributePoints ?? stats.points
                     stats.strength = buyResponse.strength ?? stats.strength
                     stats.intelligence = buyResponse.intelligence ?? stats.intelligence
