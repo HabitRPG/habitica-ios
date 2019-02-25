@@ -46,11 +46,6 @@ class PartyQuestView: UIView {
     }
     
     func configure(state: QuestStateProtocol, quest: QuestProtocol) {
-        let existingPendingDamage = progressBarViews.first?.pendingValue
-        progressBarViews.forEach { (view) in
-            view.removeFromSuperview()
-        }
-        progressBarViews.removeAll()
         ImageManager.getImage(name: "quest_\(quest.key ?? "")") { (image, _) in
             self.questImageView.image = image
             self.setNeedsLayout()
@@ -58,7 +53,11 @@ class PartyQuestView: UIView {
         }
         if let boss = quest.boss {
             isBossQuest = true
-            let bossView = QuestProgressBarView()
+            let bossView = progressBarViews.first ?? QuestProgressBarView()
+            if progressBarViews.count == 0 {
+                addSubview(bossView)
+                progressBarViews.append(bossView)
+            }
             bossView.titleTextColor = UIColor.black.withAlphaComponent(0.8)
             bossView.valueTextColor = UIColor.gray200()
             bossView.barBackgroundColor = UIColor.gray500()
@@ -66,10 +65,20 @@ class PartyQuestView: UIView {
             bossView.maxValue = Float(boss.health)
             bossView.barColor = UIColor.red100()
             bossView.currentValue = state.progress?.health ?? 0
-            bossView.pendingValue = existingPendingDamage ?? 0
-            addSubview(bossView)
-            progressBarViews.append(bossView)
+            
+            if progressBarViews.count > 1 {
+                progressBarViews.forEach { (view) in
+                    if view != bossView {
+                        view.removeFromSuperview()
+                    }
+                }
+                progressBarViews = [bossView]
+            }
         } else {
+            progressBarViews.forEach { (view) in
+                view.removeFromSuperview()
+            }
+            progressBarViews.removeAll()
             isBossQuest = false
             quest.collect?.forEach { (questCollect) in
                 let collectView = QuestProgressBarView()
