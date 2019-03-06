@@ -864,3 +864,8 @@
 "shops.purchased_all_gear" = "Du besitzt bereits sämtliche Klassen-Ausrüstung! Mehr wird während der großen Galas veröffentlicht, um die Sonnenwenden und Tagundnachtgleichen herum.";
 "titles.avatar" = "Avatar";
 "stats.total" = "Gesamt";
+"titles.skills" = "Fähigkeiten";
+"titles.gift_subscription" = "Abonnement verschenken";
+"tasks.team" = "Team";
+"tasks.due_tomorrow" = "Morgen fällig";
+"tasks.due_in_x_days" = "in %d Tagen fällig";
