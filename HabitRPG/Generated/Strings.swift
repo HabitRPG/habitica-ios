@@ -519,7 +519,7 @@ public enum L10n {
   public static let weekly = L10n.tr("Mainstrings", "weekly")
   /// weeks
   public static let weeks = L10n.tr("Mainstrings", "weeks")
-  /// Wecome Back!
+  /// Welcome Back!
   public static let welcomeBack = L10n.tr("Mainstrings", "welcome_back")
   /// What's a World Boss?
   public static let whatsWorldBoss = L10n.tr("Mainstrings", "whats_world_boss")
