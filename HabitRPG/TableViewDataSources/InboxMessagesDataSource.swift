@@ -77,8 +77,7 @@ class InboxMessagesDataSource: BaseReactiveTableViewDataSource<InboxMessageProto
         cell.configure(inboxMessage: message,
                        previousMessage: item(at: IndexPath(item: (indexPath?.item ?? 0)+1, section: indexPath?.section ?? 0)),
                        nextMessage: item(at: IndexPath(item: (indexPath?.item ?? 0)-1, section: indexPath?.section ?? 0)),
-                       user: self.user, isExpanded: isExpanded,
-                       enableUsernameRelease: configRepository.bool(variable: .enableUsernameRelease))
+                       user: self.user, isExpanded: isExpanded)
         
         cell.profileAction = {
             guard let profileViewController = self.viewController?.storyboard?.instantiateViewController(withIdentifier: "UserProfileViewController") as? UserProfileViewController else {

@@ -102,11 +102,7 @@ class UserProfileViewController: HRPGBaseViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            if configRepository.bool(variable: .enableUsernameRelease) {
-                return 5
-            } else {
-                return 4
-            }
+            return 5
         case 1, 2:
             return 8
         case 3:
@@ -125,28 +121,15 @@ class UserProfileViewController: HRPGBaseViewController {
         var cellname = "Cell"
         switch indexPath.section {
         case 0:
-            if configRepository.bool(variable: .enableUsernameRelease) {
-                switch indexPath.item {
-                case 0:
-                    cellname = "ProfileCell"
-                case 2:
-                    cellname = "TextCell"
-                case 1, 3, 4:
-                    cellname = "SubtitleCell"
-                default:
-                    break
-                }
-            } else {
-                switch indexPath.item {
-                case 0:
-                    cellname = "ProfileCell"
-                case 1:
-                    cellname = "TextCell"
-                case 2, 3:
-                    cellname = "SubtitleCell"
-                default:
-                    break
-                }
+            switch indexPath.item {
+            case 0:
+                cellname = "ProfileCell"
+            case 2:
+                cellname = "TextCell"
+            case 1, 3, 4:
+                cellname = "SubtitleCell"
+            default:
+                break
             }
         case 1, 2:
             cellname = "EquipmentCell"
@@ -163,49 +146,27 @@ class UserProfileViewController: HRPGBaseViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellname, for: indexPath)
         switch indexPath.section {
         case 0:
-            if configRepository.bool(variable: .enableUsernameRelease) {
-                switch indexPath.item {
-                case 0:
-                    configureUserStatsCell(cell)
-                case 1:
-                    cell.textLabel?.text = L10n.username
-                    cell.detailTextLabel?.text = member?.authentication?.local?.username
-                case 2:
-                    let textView = cell.viewWithTag(1) as? UITextView
-                    textView?.attributedText = try? Down(markdownString: member?.profile?.blurb ?? "").toHabiticaAttributedString()
-                case 3:
-                    cell.textLabel?.text = L10n.Member.memberSince
-                    if let date = member?.authentication?.timestamps?.createdAt {
-                        cell.detailTextLabel?.text = DateFormatter.localizedString(from: date, dateStyle: .medium, timeStyle: .none)
-                    }
-                case 4:
-                    cell.textLabel?.text = L10n.Member.lastLoggedIn
-                    if let date = member?.authentication?.timestamps?.loggedIn {
-                        cell.detailTextLabel?.text = DateFormatter.localizedString(from: date, dateStyle: .medium, timeStyle: .none)
-                    }
-                default:
-                    break
+            switch indexPath.item {
+            case 0:
+                configureUserStatsCell(cell)
+            case 1:
+                cell.textLabel?.text = L10n.username
+                cell.detailTextLabel?.text = member?.authentication?.local?.username
+            case 2:
+                let textView = cell.viewWithTag(1) as? UITextView
+                textView?.attributedText = try? Down(markdownString: member?.profile?.blurb ?? "").toHabiticaAttributedString()
+            case 3:
+                cell.textLabel?.text = L10n.Member.memberSince
+                if let date = member?.authentication?.timestamps?.createdAt {
+                    cell.detailTextLabel?.text = DateFormatter.localizedString(from: date, dateStyle: .medium, timeStyle: .none)
                 }
-            } else {
-                switch indexPath.item {
-                case 0:
-                    configureUserStatsCell(cell)
-                case 1:
-                    let textView = cell.viewWithTag(1) as? UITextView
-                    textView?.attributedText = try? Down(markdownString: member?.profile?.blurb ?? "").toHabiticaAttributedString()
-                case 2:
-                    cell.textLabel?.text = L10n.Member.memberSince
-                    if let date = member?.authentication?.timestamps?.createdAt {
-                        cell.detailTextLabel?.text = DateFormatter.localizedString(from: date, dateStyle: .medium, timeStyle: .none)
-                    }
-                case 3:
-                    cell.textLabel?.text = L10n.Member.lastLoggedIn
-                    if let date = member?.authentication?.timestamps?.loggedIn {
-                        cell.detailTextLabel?.text = DateFormatter.localizedString(from: date, dateStyle: .medium, timeStyle: .none)
-                    }
-                default:
-                    break
+            case 4:
+                cell.textLabel?.text = L10n.Member.lastLoggedIn
+                if let date = member?.authentication?.timestamps?.loggedIn {
+                    cell.detailTextLabel?.text = DateFormatter.localizedString(from: date, dateStyle: .medium, timeStyle: .none)
                 }
+            default:
+                break
             }
         case 1:
             if let outfit = member?.items?.gear?.equipped {

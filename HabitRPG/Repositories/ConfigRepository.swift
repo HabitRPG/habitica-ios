@@ -7,70 +7,87 @@
 //
 import Foundation
 import Habitica_API_Client
+import FirebaseRemoteConfig
 
 @objc
 enum ConfigVariable: Int {
-    case enableRepeatables, supportEmail, enableNewShops, shopSpriteSuffix
-    case maxChatLength, enableChangeUsername, enableUsernameRelease, enableGiftOneGetOne, enableUsernameAutocomplete
+    case supportEmail
+    case shopSpriteSuffix
+    case maxChatLength
+    case enableGiftOneGetOne
+    case enableUsernameAutocomplete
+    case spriteSubstitutions
 
     func name() -> String {
         // swiftlint:disable switch_case_on_newline
         switch self {
-        case .enableRepeatables: return "enableRepeatables"
         case .supportEmail: return "supportEmail"
-        case .enableNewShops: return "enableNewShops"
         case .shopSpriteSuffix: return "shopSpriteSuffix"
         case .maxChatLength: return "maxChatLength"
-        case .enableChangeUsername: return "enableChangeUsername"
-        case .enableUsernameRelease: return "enableUsernameRelease"
         case .enableGiftOneGetOne: return "enableGiftOneGetOne"
         case .enableUsernameAutocomplete: return "enableUsernameAutocomplete"
+        case .spriteSubstitutions: return "spriteSubstitutions"
         }
         // swiftlint:enable switch_case_on_newline
+    }
+    
+    func defaultValue() -> NSObject {
+        switch self {
+        case .supportEmail: return NSString(string: "admin@habitica.com")
+        case .shopSpriteSuffix: return NSString(string: "")
+        case .maxChatLength: return NSNumber(integerLiteral: 3000)
+        case .enableGiftOneGetOne: return NSNumber(booleanLiteral: false)
+        case .enableUsernameAutocomplete: return NSNumber(booleanLiteral: false)
+        case .spriteSubstitutions: return NSDictionary()
+        }
+    }
+    
+    static func allVariables() -> [ConfigVariable] {
+        return [
+            .supportEmail,
+            .shopSpriteSuffix,
+            .maxChatLength,
+            .enableGiftOneGetOne,
+            .enableUsernameAutocomplete,
+            .spriteSubstitutions
+        ]
     }
 }
 
 @objc
 class ConfigRepository: NSObject {
 
-    private static let configUrl = "https://s3.amazonaws.com/habitica-assets/mobileApp/endpoint/config-ios.json"
-    private static let configVariables: [ConfigVariable] = [.enableRepeatables, .supportEmail, .enableNewShops, .shopSpriteSuffix, .maxChatLength, .enableChangeUsername, .enableUsernameAutocomplete]
+    private static let remoteConfig = RemoteConfig.remoteConfig()
     private let userConfig = UserDefaults.standard
 
     @objc
     func fetchremoteConfig() {
-        let call = RetrieveRemoteConfigCall()
-        call.fire()
-        call.jsonSignal.observeValues { jsonObject in
-            if let jsonDict = jsonObject as? [String: Any] {
-                for variable in ConfigRepository.configVariables {
-                    if jsonDict.contains(where: { (key, _) -> Bool in
-                        return key == variable.name()
-                    }) {
-                        self.userConfig.set(jsonDict[variable.name()], forKey: variable.name())
-                    }
-                }
-            }
-            self.userConfig.set(true, forKey: ConfigVariable.enableUsernameRelease.name())
+        ConfigRepository.remoteConfig.fetch(withExpirationDuration: HabiticaAppDelegate.isRunningLive() ? 3600 : 0) { (status, error) in
+            ConfigRepository.remoteConfig.activateFetched()
         }
+        var defaults = [String: NSObject]()
+        for variable in ConfigVariable.allVariables() {
+            defaults[variable.name()] = variable.defaultValue()
+        }
+        ConfigRepository.remoteConfig.setDefaults(defaults)
     }
 
     @objc
     func bool(variable: ConfigVariable) -> Bool {
-        return userConfig.bool(forKey: variable.name())
+        return ConfigRepository.remoteConfig.configValue(forKey: variable.name()).boolValue
     }
 
     @objc
     func string(variable: ConfigVariable) -> String? {
-        return userConfig.string(forKey: variable.name())
+        return ConfigRepository.remoteConfig.configValue(forKey: variable.name()).stringValue
     }
     @objc
     func string(variable: ConfigVariable, defaultValue: String) -> String {
-        return userConfig.string(forKey: variable.name()) ?? defaultValue
+        return ConfigRepository.remoteConfig.configValue(forKey: variable.name()).stringValue ?? defaultValue
     }
     
     @objc
     func integer(variable: ConfigVariable) -> Int {
-        return userConfig.integer(forKey: variable.name())
+        return ConfigRepository.remoteConfig.configValue(forKey: variable.name()).numberValue?.intValue ?? 0
     }
 }

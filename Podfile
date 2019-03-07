@@ -56,7 +56,8 @@ target 'Habitica' do
   pod 'Fabric'
   pod 'Crashlytics'
   pod 'Firebase/Performance'
-
+  pod 'Firebase/RemoteConfig'
+  
   reactive_pods
 
   pod 'SwiftyStoreKit'

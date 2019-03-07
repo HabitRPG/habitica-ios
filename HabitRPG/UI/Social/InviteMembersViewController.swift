@@ -75,35 +75,10 @@ class InviteMembersViewController: FormViewController {
         super.viewDidLoad()
         
         navigationItem.title = L10n.Titles.inviteMembers
-
-        form +++ MultivaluedSection(multivaluedOptions: [.Reorder, .Insert, .Delete],
-                                    header: L10n.userID) { section in
-                                        section.tag = InviteMembersFormTags.userIDSection
-                                        section.hidden = Condition.function([InviteMembersFormTags.invitationType], { (form) -> Bool in
-                                            return self.configRepository.bool(variable: .enableUsernameRelease)
-                                        })
-                                        section.addButtonProvider = { section in
-                                            return ButtonRow { row in
-                                                row.title = L10n.Groups.Invite.addUserid
-                                                row.cellSetup({ (cell, _) in
-                                                    cell.tintColor = ThemeService.shared.theme.tintColor
-                                                })
-                                            }
-                                        }
-                                        section.multivaluedRowToInsertAt = { index in
-                                            return TextRow { row in
-                                                row.cellSetup({ (cell, _) in
-                                                    cell.tintColor = ThemeService.shared.theme.tintColor
-                                                })
-                                            }
-                                        }
-        }
         form +++ MultivaluedSection(multivaluedOptions: [.Reorder, .Insert, .Delete],
                                     header: L10n.username) { section in
                                         section.tag = InviteMembersFormTags.usernameSection
-                                        section.hidden = Condition.function([InviteMembersFormTags.invitationType], { (form) -> Bool in
-                                            return !self.configRepository.bool(variable: .enableUsernameRelease)
-                                        })
+
                                         section.addButtonProvider = { section in
                                             return ButtonRow { row in
                                                 row.title = L10n.Groups.Invite.addUsername

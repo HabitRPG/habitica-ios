@@ -23,7 +23,7 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            if configRepository.bool(variable: .enableChangeUsername) && user?.flags?.verifiedUsername != true {
+            if user?.flags?.verifiedUsername != true {
                 return 5
             } else {
                 return 4
@@ -47,7 +47,7 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         var cellTitleColor = UIColor.black
         var cellDetailText: String? = nil
         var confirmOffset = 0
-        if configRepository.bool(variable: .enableChangeUsername) && user?.flags?.verifiedUsername != true {
+        if user?.flags?.verifiedUsername != true {
             confirmOffset = 1
         }
         if indexPath.section == 0 {
@@ -100,7 +100,7 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         var confirmOffset = 0
-        if configRepository.bool(variable: .enableChangeUsername) && user?.flags?.verifiedUsername != true {
+        if user?.flags?.verifiedUsername != true {
             confirmOffset = 1
         }
         if indexPath.section == 0 {
@@ -226,24 +226,12 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         loginNameTextField.text = user?.username
         stackView.addArrangedSubview(loginNameTextField)
         let passwordTextField = UITextField()
-        if !configRepository.bool(variable: .enableChangeUsername) {
-            passwordTextField.placeholder = L10n.password
-            passwordTextField.isSecureTextEntry = true
-            passwordTextField.borderStyle = .roundedRect
-            stackView.addArrangedSubview(passwordTextField)
-        }
         alertController.contentView = stackView
         
         alertController.addCancelAction()
         alertController.addAction(title: L10n.change, isMainAction: true) {[weak self] _ in
-            if self?.configRepository.bool(variable: .enableChangeUsername) == true {
-                if let username = loginNameTextField.text {
-                    self?.userRepository.updateUsername(newUsername: username).observeCompleted {}
-                }
-            } else {
-                if let username = loginNameTextField.text, let password = passwordTextField.text {
-                    self?.userRepository.updateUsername(newUsername: username, password: password).observeCompleted {}
-                }
+            if let username = loginNameTextField.text {
+                self?.userRepository.updateUsername(newUsername: username).observeCompleted {}
             }
         }
         alertController.show()

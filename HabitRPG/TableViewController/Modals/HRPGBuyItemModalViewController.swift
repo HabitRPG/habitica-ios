@@ -17,9 +17,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     private let inventoryRepository = InventoryRepository()
     private let userRepository = UserRepository()
     private let disposable = ScopedDisposable(CompositeDisposable())
-    
-    let showPinning = ConfigRepository().bool(variable: .enableNewShops)
-    
+        
     @IBOutlet weak var topContentView: UIView!
     @IBOutlet weak var bottomButtons: UIView!
     
@@ -63,7 +61,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         closableShopModal.closeButton.addTarget(self, action: #selector(closePressed), for: UIControl.Event.touchUpInside)
         buyButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(buyPressed)))
         let inAppReward = reward
-        pinButton.isHidden = !showPinning ||  inAppReward?.pinType == "armoire" || inAppReward?.pinType == "potion"
+        pinButton.isHidden = inAppReward?.pinType == "armoire" || inAppReward?.pinType == "potion"
         
         ThemeService.shared.addThemeable(themable: self)
         

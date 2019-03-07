@@ -40,9 +40,9 @@ class MenuNavigationBarView: UIView, Themeable {
     }
     
     @objc
-    public func configure(user: UserProtocol, enableChangeUsername: Bool) {
+    public func configure(user: UserProtocol) {
         displayNameLabel.text = user.profile?.name
-        if enableChangeUsername, let username = user.username {
+        if let username = user.username {
             usernameLabel.text = "@\(username)"
             usernameLabel.isHidden = false
         } else {
@@ -56,7 +56,7 @@ class MenuNavigationBarView: UIView, Themeable {
             messagesBadge.isHidden = true
         }
         
-        if enableChangeUsername && user.flags?.verifiedUsername != true {
+        if user.flags?.verifiedUsername != true {
             settingsBadge.text = "1"
             settingsBadge.isHidden = false
         } else {

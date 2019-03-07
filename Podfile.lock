@@ -27,6 +27,9 @@ PODS:
   - Firebase/Performance (5.15.0):
     - Firebase/Core
     - FirebasePerformance (= 2.2.2)
+  - Firebase/RemoteConfig (5.15.0):
+    - Firebase/Core
+    - FirebaseRemoteConfig (= 3.1.0)
   - FirebaseABTesting (2.0.0):
     - FirebaseCore (~> 5.0)
     - Protobuf (~> 3.5)
@@ -194,6 +197,7 @@ DEPENDENCIES:
   - FBSDKLoginKit (~> 4)
   - Firebase/Core
   - Firebase/Performance
+  - Firebase/RemoteConfig
   - FLEX (~> 2.0)
   - FunkyNetwork (from `https://github.com/schrockblock/funky-network.git`)
   - Instabug
@@ -338,6 +342,6 @@ SPEC CHECKSUMS:
   VTAcknowledgementsViewController: 3bb742da852a5161dc9f4b017e52f926a41ef5d3
   XLForm: 04110197c12187dd28a6c7295d3d8b95f4fdb4de
 
-PODFILE CHECKSUM: f2a9fbf84cbb57d73baccd23a720a8f91757ff66
+PODFILE CHECKSUM: 2285a8a603e3c9ddcfc24008c660bf8203b08c87
 
 COCOAPODS: 1.5.3
