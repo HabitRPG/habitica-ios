@@ -42,6 +42,9 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
     
     @objc
     func completionHandler() {
+        if !SKPaymentQueue.canMakePayments() {
+            return
+        }
         if hasCompletionHandler {
             return
         }
