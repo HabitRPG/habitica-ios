@@ -90,4 +90,18 @@ class ConfigRepository: NSObject {
     func integer(variable: ConfigVariable) -> Int {
         return ConfigRepository.remoteConfig.configValue(forKey: variable.name()).numberValue?.intValue ?? 0
     }
+    
+    
+    @objc
+    func dictionary(variable: ConfigVariable) -> NSDictionary {
+        let configString = ConfigRepository.remoteConfig.configValue(forKey: variable.name()).stringValue
+        if let data = configString?.data(using: String.Encoding.utf8) {
+            if let json = try? JSONSerialization.jsonObject(with: data, options: []) {
+                if let jsonDictionary = json as? NSDictionary {
+                    return jsonDictionary
+                }
+            }
+        }
+        return NSDictionary()
+    }
 }

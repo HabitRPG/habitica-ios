@@ -22,6 +22,7 @@ class AvatarView: UIView {
 
     @objc var avatar: Avatar? {
         didSet {
+            avatar?.substitutions = ConfigRepository().dictionary(variable: .spriteSubstitutions)
             if let dict = avatar?.getFilenameDictionary(ignoreSleeping: ignoreSleeping) {
                 nameDictionary = dict
             }
