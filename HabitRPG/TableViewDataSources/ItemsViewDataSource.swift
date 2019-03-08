@@ -146,10 +146,14 @@ class ItemsViewDataSource: BaseReactiveTableViewDataSource<ItemProtocol> {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         if let ownedItem = item(at: indexPath) {
+            let theme = ThemeService.shared.theme
+            cell.backgroundColor = theme.contentBackgroundColor
             let label = cell.viewWithTag(1) as? UILabel
             label?.text = ownedItem.text
+            label?.textColor = theme.primaryTextColor
             let detailLabel = cell.viewWithTag(2) as? UILabel
             detailLabel?.text = "\(ownedItems[(ownedItem.key ?? "") + (ownedItem.itemType ?? "")] ?? 0)"
+            detailLabel?.textColor = theme.secondaryTextColor
             let imageView = cell.viewWithTag(3) as? UIImageView
             imageView?.setImagewith(name: ownedItem.imageName)
             

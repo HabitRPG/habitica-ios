@@ -37,9 +37,16 @@ public class ThemeService: NSObject {
     private func applyTheme() {
         UINavigationBar.appearance().tintColor = theme.tintColor
         UINavigationBar.appearance().backgroundColor = theme.contentBackgroundColor
-        UITabBar.appearance().tintColor = theme.tintColor
-        UITabBar.appearance().barTintColor = theme.contentBackgroundColor
-        UITabBar.appearance().barStyle = .black
+        if theme.isDark {
+            UITabBar.appearance().tintColor = theme.tintColor
+            UITabBar.appearance().backgroundColor = theme.windowBackgroundColor
+            UITabBar.appearance().barStyle = .black
+        } else {
+            UITabBar.appearance().tintColor = theme.tintColor
+            UITabBar.appearance().barTintColor = theme.contentBackgroundColor
+            UITabBar.appearance().barStyle = .black
+        }
+
         UIToolbar.appearance().tintColor = theme.tintColor
         UIToolbar.appearance().backgroundColor = theme.contentBackgroundColor
         UIRefreshControl.appearance().tintColor = theme.tintColor
@@ -48,11 +55,21 @@ public class ThemeService: NSObject {
         UIButton.appearance().tintColor = theme.tintColor
         UISearchBar.appearance().backgroundColor = theme.windowBackgroundColor
         UISearchBar.appearance().tintColor = theme.tintColor
+        
+        UILabel.appearance(whenContainedInInstancesOf: [UITableViewHeaderFooterView.self]).textColor = theme.primaryTextColor
+        UILabel.appearance(whenContainedInInstancesOf: [UICollectionReusableView.self]).textColor = theme.primaryTextColor
+        UILabel.appearance(whenContainedInInstancesOf: [UITableViewCell.self]).textColor = theme.primaryTextColor
+        UITableViewCell.appearance().backgroundColor = theme.contentBackgroundColor
+        UITableView.appearance().backgroundColor = theme.windowBackgroundColor
+        UITableView.appearance().separatorColor = theme.tableviewSeparatorColor
+        UICollectionView.appearance().backgroundColor = theme.windowBackgroundColor
+        
         let view = UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self])
         view.tintColor = theme.tintColor
         // Update styles via UIAppearance
         if #available(iOS 10.0, *) {
             UITabBarItem.appearance().badgeColor = theme.tintColor
+            UITabBar.appearance().unselectedItemTintColor = theme.primaryTextColor
         }
         
         Instabug.setPrimaryColor(theme.tintColor)

@@ -9,7 +9,7 @@
 import UIKit
 import Habitica_Models
 
-class TaskTableViewController: HRPGBaseViewController, UISearchBarDelegate, UITableViewDragDelegate, UITableViewDropDelegate, DataSourceEmptyDelegate, Themeable {
+class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UITableViewDragDelegate, UITableViewDropDelegate, DataSourceEmptyDelegate {
     public var dataSource: TaskTableViewDataSource?
     public var filterType: Int = 0
     @objc public var scrollToTaskAfterLoading: String?
@@ -65,14 +65,7 @@ class TaskTableViewController: HRPGBaseViewController, UISearchBarDelegate, UITa
         }
         
         navigationItem.leftBarButtonItem?.title = L10n.filter
-        
-        ThemeService.shared.addThemeable(themable: self)
-    }
-    
-    func applyTheme(theme: Theme) {
-        tableView.backgroundColor = theme.windowBackgroundColor
-        tableView.separatorColor = theme.tableviewSeparatorColor
-    }
+            }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

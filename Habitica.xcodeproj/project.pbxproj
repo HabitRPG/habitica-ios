@@ -29,6 +29,7 @@
 		2907267E1F74279C00545550 /* TimeTravelersCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2907267D1F74279C00545550 /* TimeTravelersCollectionViewDataSource.swift */; };
 		2907F99E1F694C4000328AEE /* GemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2907F99D1F694C4000328AEE /* GemViewController.swift */; };
 		2908784A220210CF0010820A /* Strings-objcBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29087849220210CF0010820A /* Strings-objcBridge.swift */; };
+		2908D8742232D45D00DDECA1 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2908D8732232D45D00DDECA1 /* BaseTableViewController.swift */; };
 		2908E3512217255600D246CD /* (null) in Resources */ = {isa = PBXBuildFile; };
 		290A405421FA175800A409BA /* Purple@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 290A405221FA175700A409BA /* Purple@2x.png */; };
 		290A405521FA175800A409BA /* Purple@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 290A405321FA175800A409BA /* Purple@3x.png */; };
@@ -574,6 +575,7 @@
 		2907267D1F74279C00545550 /* TimeTravelersCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTravelersCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		2907F99D1F694C4000328AEE /* GemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GemViewController.swift; sourceTree = "<group>"; };
 		29087849220210CF0010820A /* Strings-objcBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Strings-objcBridge.swift"; sourceTree = "<group>"; };
+		2908D8732232D45D00DDECA1 /* BaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		2908E3502217245500D246CD /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Mainstrings.strings; sourceTree = "<group>"; };
 		290A2AD020F508F500BF8A68 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/OnePasswordExtension.strings"; sourceTree = "<group>"; };
 		290A2AD120F508F500BF8A68 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -1343,6 +1345,7 @@
 				290C3016206A963D0066AF5B /* MainMenuViewController.swift */,
 				29C1B6AA20594F500001D3EF /* VisualEffectsModalViewController.swift */,
 				299FB2A02084A93100422522 /* HabiticaSplitViewController.swift */,
+				2908D8732232D45D00DDECA1 /* BaseTableViewController.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -3249,6 +3252,7 @@
 				29C1B6B420599E6D0001D3EF /* TaskFormViewController.swift in Sources */,
 				290B6285207BD531007287C4 /* GuildDetailViewController.swift in Sources */,
 				D9525F9F1E65A18300C529B8 /* EmojifiedString.swift in Sources */,
+				2908D8742232D45D00DDECA1 /* BaseTableViewController.swift in Sources */,
 				29E30DE620D935AF00F74ECB /* LevelUpOverlayView.swift in Sources */,
 				49DCB7B61F3F64B40079FDD0 /* HRPGShopModalBgView.swift in Sources */,
 				29E1631B200E84AC00685640 /* TavernViewController.swift in Sources */,

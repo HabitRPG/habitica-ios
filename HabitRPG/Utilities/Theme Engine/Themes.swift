@@ -53,13 +53,17 @@ public struct DysheatenerTheme: Theme {
     public var tintColor: UIColor { return UIColor("#931F4D") }
 }
 
-public struct NightTheme: Theme {
+public struct NightTheme: DarkTheme {
     public var windowBackgroundColor: UIColor { return UIColor.purple10() }
     public var contentBackgroundColorDimmed: UIColor { return UIColor.purple10() }
     public var contentBackgroundColor: UIColor { return UIColor.purple50() }
+    public var offsetBackgroundColor: UIColor { return UIColor.purple100() }
     public var tintColor: UIColor { return UIColor.purple500() }
     public var primaryTextColor: UIColor { return UIColor.purple600() }
     public var secondaryTextColor: UIColor { return UIColor.purple500() }
+    public var dimmedTextColor: UIColor { return UIColor.purple300() }
     public var separatorColor: UIColor { return UIColor.purple50() }
     public var tableviewSeparatorColor: UIColor { return UIColor.purple300() }
+    public var navbarHiddenColor: UIColor { return contentBackgroundColor }
+    public var dimmedColor: UIColor { return UIColor.purple200() }
 }

@@ -11,7 +11,7 @@ import Habitica_Models
 import ReactiveSwift
 import Result
 
-class FAQTableViewController: HRPGBaseViewController {
+class FAQTableViewController: BaseTableViewController {
     
     private let searchBar = UISearchBar()
     private let resetTutorialButton = UIButton()

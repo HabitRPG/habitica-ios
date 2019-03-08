@@ -50,7 +50,7 @@ class GroupChatViewController: SLKTextViewController {
         tableView?.separatorStyle = .none
         tableView?.rowHeight = UITableView.automaticDimension
         tableView?.estimatedRowHeight = 90
-        tableView?.backgroundColor = UIColor.gray700()
+        tableView?.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
 
         if #available(iOS 10.0, *) {
             tableView?.refreshControl = UIRefreshControl()
@@ -65,6 +65,7 @@ class GroupChatViewController: SLKTextViewController {
         textInputbar.charCountLabelNormalColor = UIColor.gray400()
         textInputbar.charCountLabelWarningColor = UIColor.red50()
         textInputbar.charCountLabel.font = UIFont.systemFont(ofSize: 11, weight: .bold)
+        textInputbar.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
         
         disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
             self?.checkGuidelinesAccepted(user: user)

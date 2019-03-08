@@ -47,8 +47,8 @@ class NPCBannerView: UIView {
             
             plaqueImageView.image = UIImage(named: "Nameplate")?.resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: 21, bottom: 0, right: 21))
             
-            gradientView.startColor = UIColor.white.withAlphaComponent(0.8)
-            gradientView.endColor = UIColor.white
+            gradientView.startColor = ThemeService.shared.theme.windowBackgroundColor.withAlphaComponent(0.8)
+            gradientView.endColor = ThemeService.shared.theme.windowBackgroundColor
         }
     }
     

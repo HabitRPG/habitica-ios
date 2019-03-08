@@ -40,9 +40,9 @@ struct MenuSection {
     }
 }
 
-class MainMenuViewController: HRPGBaseViewController, Themeable {
+class MainMenuViewController: BaseTableViewController {
     
-    private var navbarColor = UIColor.purple300() {
+    private var navbarColor = ThemeService.shared.theme.navbarHiddenColor {
         didSet {
             topHeaderCoordinator.navbarVisibleColor = navbarColor
             navbarView?.backgroundColor = navbarColor
@@ -90,7 +90,6 @@ class MainMenuViewController: HRPGBaseViewController, Themeable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        ThemeService.shared.addThemeable(themable: self, applyImmediately: true)
         topHeaderCoordinator?.hideNavBar = true
         topHeaderCoordinator?.alternativeHeader = navbarView
         topHeaderCoordinator?.navbarVisibleColor = navbarColor
@@ -115,8 +114,9 @@ class MainMenuViewController: HRPGBaseViewController, Themeable {
         }).start())
     }
     
-    func applyTheme(theme: Theme) {
-        navbarColor = theme.backgroundTintColor
+    override func applyTheme(theme: Theme) {
+        super.applyTheme(theme: theme)
+        navbarColor = theme.navbarHiddenColor
     }
     
     private func setupMenu() {
@@ -178,10 +178,10 @@ class MainMenuViewController: HRPGBaseViewController, Themeable {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 37.5))
         let label = UILabel(frame: labelFrame)
         label.font = CustomFontMetrics.scaledSystemFont(ofSize: 14)
-        label.textColor = .darkGray
+        label.textColor = ThemeService.shared.theme.primaryTextColor
         view.addSubview(label)
         let iconView = UIImageView(frame: iconFrame)
-        iconView.tintColor = .darkGray
+        iconView.tintColor = ThemeService.shared.theme.primaryTextColor
         view.addSubview(iconView)
         
         label.text = self.tableView(tableView, titleForHeaderInSection: section)
@@ -198,6 +198,7 @@ class MainMenuViewController: HRPGBaseViewController, Themeable {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = visibleItemAt(indexPath: indexPath)
         let cell = tableView .dequeueReusableCell(withIdentifier: item?.cellName ?? "", for: indexPath)
+        cell.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
         
         if item?.accessibilityLabel?.isEmpty != true {
             cell.accessibilityLabel = accessibilityLabel
@@ -208,6 +209,8 @@ class MainMenuViewController: HRPGBaseViewController, Themeable {
         let label = cell.viewWithTag(1) as? UILabel
         label?.text = item?.title
         label?.font = CustomFontMetrics.scaledSystemFont(ofSize: 17)
+        label?.textColor = ThemeService.shared.theme.primaryTextColor
+        label?.backgroundColor = cell.backgroundColor
         
         let indicatorView = cell.viewWithTag(2)
         indicatorView?.isHidden = item?.showIndicator == false

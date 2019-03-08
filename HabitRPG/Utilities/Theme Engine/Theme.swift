@@ -9,31 +9,47 @@
 import UIKit
 
 public protocol Theme {
-    
+    var isDark: Bool { get }
     var contentBackgroundColor: UIColor { get }
     var contentBackgroundColorDimmed: UIColor { get }
+    var offsetBackgroundColor: UIColor { get }
     var windowBackgroundColor: UIColor { get }
     var backgroundTintColor: UIColor { get }
     var tintColor: UIColor { get }
     var separatorColor: UIColor { get }
     var tableviewSeparatorColor: UIColor { get }
     
+    var dimmedColor: UIColor { get }
+    
+    var navbarHiddenColor: UIColor { get }
+    
     var primaryTextColor: UIColor { get }
     var secondaryTextColor: UIColor { get }
+    var dimmedTextColor: UIColor { get }
+}
 
+public protocol DarkTheme: Theme {
+    
 }
 
 extension Theme {
+    public var isDark: Bool { return false }
     public var contentBackgroundColor: UIColor { return UIColor.white }
     public var contentBackgroundColorDimmed: UIColor { return UIColor.gray700() }
+    public var offsetBackgroundColor: UIColor { return UIColor.gray600() }
     public var windowBackgroundColor: UIColor { return UIColor.gray700() }
     public var backgroundTintColor: UIColor { return UIColor.purple300() }
     public var tintColor: UIColor { return UIColor.purple400() }
     public var separatorColor: UIColor { return UIColor.gray600() }
     public var tableviewSeparatorColor: UIColor { return UIColor.gray500() }
     
+    public var dimmedColor: UIColor { return UIColor.gray500() }
+    
+    public var navbarHiddenColor: UIColor { return backgroundTintColor }
+    
     public var primaryTextColor: UIColor { return UIColor.gray10() }
     public var secondaryTextColor: UIColor { return UIColor.gray100() }
+    public var dimmedTextColor: UIColor { return UIColor.gray400() }
     
     public func applyContentBackgroundColor(views: [UIView]) {
         applyBackgroundColor(views: views, color: contentBackgroundColor)
@@ -44,6 +60,10 @@ extension Theme {
             $0.backgroundColor = color
         }
     }
+}
+
+extension DarkTheme {
+    public var isDark: Bool { return true }
 }
 
 @objc

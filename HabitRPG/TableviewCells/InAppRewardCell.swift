@@ -17,6 +17,8 @@ class InAppRewardCell: UICollectionViewCell {
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var pinnedIndicatorView: UIImageView!
     @IBOutlet weak var purchaseConfirmationView: UIImageView!
+    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var currencyBackgroundView: UIView!
     
     private var itemName = ""
     
@@ -104,6 +106,11 @@ class InAppRewardCell: UICollectionViewCell {
         }
         availableUntil = reward.availableUntil
         applyAccessibility()
+        
+        let theme = ThemeService.shared.theme
+        backgroundColor = theme.windowBackgroundColor
+        containerView.backgroundColor = theme.contentBackgroundColor
+        currencyBackgroundView.backgroundColor = theme.offsetBackgroundColor
     }
     
     func wasRecentlyPurchased(_ lastPurchase: Date) -> Bool {

@@ -14,6 +14,8 @@ class MountDetailCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     
     func configure(mountItem: MountStableItem) {
+        backgroundColor = ThemeService.shared.theme.contentBackgroundColor
+        imageView.tintColor = ThemeService.shared.theme.dimmedColor
         if let key = mountItem.mount?.key {
             if mountItem.owned {
                 imageView.setImagewith(name: "Mount_Icon_\(key)")

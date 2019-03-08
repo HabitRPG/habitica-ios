@@ -168,8 +168,8 @@ class UserTopHeader: UIView, Themeable {
             usernameLabel.textColor = contributor.color
             levelLabel.textColor = contributor.color
         } else {
-            usernameLabel.textColor = UIColor.gray10()
-            levelLabel.textColor = UIColor.gray10()
+            usernameLabel.textColor = ThemeService.shared.theme.primaryTextColor
+            levelLabel.textColor = ThemeService.shared.theme.primaryTextColor
         }
         gemView.amount = user.gemCount
         
@@ -181,7 +181,6 @@ class UserTopHeader: UIView, Themeable {
         }
         
         setNeedsLayout()
-        applyTheme(theme: ThemeService.shared.theme)
     }
  
     @objc

@@ -9,7 +9,7 @@
 import Foundation
 import Habitica_Models
 
-class ItemsViewController: HRPGBaseViewController {
+class ItemsViewController: BaseTableViewController {
     
     private let dataSource = ItemsViewDataSource()
     

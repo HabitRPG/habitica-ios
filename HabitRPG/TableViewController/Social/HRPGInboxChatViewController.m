@@ -48,7 +48,7 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 90;
-    self.tableView.backgroundColor = [UIColor gray700];
+    self.tableView.backgroundColor = [ObjcThemeWrapper windowBackgroundColor];
     
     [self.textView registerMarkdownFormattingSymbol:@"**" withTitle:@"Bold"];
     [self.textView registerMarkdownFormattingSymbol:@"*" withTitle:@"Italics"];

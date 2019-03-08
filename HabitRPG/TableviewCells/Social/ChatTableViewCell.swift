@@ -12,7 +12,7 @@ import PinLayout
 import Habitica_Models
 import Down
 
-class ChatTableViewCell: UITableViewCell, UITextViewDelegate {
+class ChatTableViewCell: UITableViewCell, UITextViewDelegate, Themeable {
     
     @IBOutlet weak var avatarView: AvatarView!
     @IBOutlet weak var avatarWrapper: UIView!
@@ -137,7 +137,6 @@ class ChatTableViewCell: UITableViewCell, UITextViewDelegate {
 
         displaynameLabel.text = chatMessage.displayName?.unicodeEmoji
         contributorLevel = chatMessage.contributor?.level ?? 0
-        messageTextView.textColor = UIColor.gray10()
         
         stylePlusOneButton(likes: chatMessage.likes, userID: userID)
         
@@ -177,6 +176,8 @@ class ChatTableViewCell: UITableViewCell, UITextViewDelegate {
         self.isExpanded = isExpanded
         applyAccessibility()
         setNeedsLayout()
+        
+        applyTheme(theme: ThemeService.shared.theme)
     }
     
     @objc
@@ -195,8 +196,6 @@ class ChatTableViewCell: UITableViewCell, UITextViewDelegate {
             setSubline(username: inboxMessage.username, date: inboxMessage.timestamp)
         }
         displaynameLabel.contributorLevel = contributorLevel
-        messageTextView.textColor = .black
-        
         
         if let text = inboxMessage.text {
             messageTextView.attributedText = try? Down(markdownString: text.unicodeEmoji).toHabiticaAttributedString()
@@ -221,6 +220,16 @@ class ChatTableViewCell: UITableViewCell, UITextViewDelegate {
         self.isExpanded = isExpanded
         applyAccessibility()
         setNeedsLayout()
+        
+        applyTheme(theme: ThemeService.shared.theme)
+    }
+    
+    func applyTheme(theme: Theme) {
+        messageTextView.textColor = theme.primaryTextColor
+        backgroundColor = theme.windowBackgroundColor
+        contentView.backgroundColor = theme.windowBackgroundColor
+        messageWrapper.backgroundColor = theme.contentBackgroundColor
+        plusOneButton.backgroundColor = theme.windowBackgroundColor
     }
     
     private func setSubline(username: String?, date: Date?) {

@@ -195,7 +195,7 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
     }
 
     func applyTheme(theme: Theme) {
-        defaultNavbarHiddenColor = theme.backgroundTintColor
+        defaultNavbarHiddenColor = theme.navbarHiddenColor
         defaultNavbarVisibleColor = theme.contentBackgroundColor
         visibleTintColor = theme.tintColor
         setNavigationBarColors(navbarColorBlendingAlpha)

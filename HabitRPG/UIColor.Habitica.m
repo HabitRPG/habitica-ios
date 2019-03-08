@@ -7,6 +7,7 @@
 //
 
 #import "UIColor+Habitica.h"
+#import "Habitica-Swift.h"
 
 @implementation UIColor (Habitica)
 
@@ -242,7 +243,7 @@
     } else if (level == 9) {
         return [UIColor purple300];
     }
-    return [UIColor blackColor];
+    return [ObjcThemeWrapper primaryTextColor];
 }
 
 

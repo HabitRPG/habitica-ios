@@ -10,7 +10,7 @@ import UIKit
 import Habitica_Models
 import ReactiveSwift
 
-class FixCharacterViewController: HRPGBaseViewController {
+class FixCharacterViewController: BaseTableViewController {
     
     let disposable = ScopedDisposable(CompositeDisposable())
     
@@ -24,6 +24,9 @@ class FixCharacterViewController: HRPGBaseViewController {
         "stats.lvl": 0
     ]
     
+    private var headerView = UIView()
+    private var headerLabel = UILabel()
+    
     var habitClass = ""
     
     override func viewDidLoad() {
@@ -31,18 +34,14 @@ class FixCharacterViewController: HRPGBaseViewController {
         
         navigationItem.title = L10n.Titles.fixValues
         
-        let view = UIView()
         
-        let label = UILabel()
-        label.text = L10n.Settings.fixValuesDescription
-        view.backgroundColor = UIColor.gray700()
-        label.textColor = UIColor.gray300()
-        label.numberOfLines = 0
-        label.preferredMaxLayoutWidth = self.view.frame.size.width-52
-        label.frame = CGRect(origin: CGPoint(x: 26, y: 10), size: label.intrinsicContentSize)
-        view.frame = CGRect(x: 0, y: 0, width: label.frame.size.width+42, height: label.frame.size.height+20)
-        view.addSubview(label)
-        tableView.tableHeaderView = view
+        headerLabel.text = L10n.Settings.fixValuesDescription
+        headerLabel.numberOfLines = 0
+        headerLabel.preferredMaxLayoutWidth = self.view.frame.size.width-52
+        headerLabel.frame = CGRect(origin: CGPoint(x: 26, y: 10), size: headerLabel.intrinsicContentSize)
+        headerView.frame = CGRect(x: 0, y: 0, width: headerLabel.frame.size.width+42, height: headerLabel.frame.size.height+20)
+        headerView.addSubview(headerLabel)
+        tableView.tableHeaderView = headerView
         
         disposable.inner.add(userRepository.getUser().on(value: {[weak self]user in
             self?.stats["stats.hp"] = user.stats?.health
@@ -54,6 +53,12 @@ class FixCharacterViewController: HRPGBaseViewController {
             self?.habitClass = user.stats?.habitClass ?? ""
             self?.tableView.reloadData()
         }).start())
+    }
+    
+    override func applyTheme(theme: Theme) {
+        super.applyTheme(theme: theme)
+        headerView.backgroundColor = theme.windowBackgroundColor
+        headerLabel.textColor = theme.dimmedTextColor
     }
     
     private func identifierFor(index: Int) -> String {

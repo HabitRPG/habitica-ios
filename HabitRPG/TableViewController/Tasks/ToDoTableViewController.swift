@@ -43,7 +43,7 @@ class ToDoTableViewController: TaskTableViewController {
     override func dataSourceIsEmpty() {
         tableView.dataSource = emptyDataSource
         tableView.reloadData()
-        tableView.backgroundColor = UIColor.gray700()
+        tableView.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
         tableView.separatorStyle = .none
         tableView.allowsSelection = false
     }
