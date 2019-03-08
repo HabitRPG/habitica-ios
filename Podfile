@@ -30,7 +30,7 @@ end
 
 def test_pods
   pod 'Quick', '~> 1.2.0'
-  pod 'Nimble', '~> 7.0.0'
+  pod 'Nimble', '~> 7.3'
   pod 'iOSSnapshotTestCase'
 end
 

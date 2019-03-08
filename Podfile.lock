@@ -208,7 +208,8 @@ DEPENDENCIES:
   - KLCPopup
   - Masonry
   - MRProgress
-  - Nimble (~> 7.0.0)
+  - Nimble (~> 7.3)
+  - "NSString+Emoji"
   - PinLayout
   - PopupDialog
   - Quick (~> 1.2.0)
@@ -341,6 +342,7 @@ SPEC CHECKSUMS:
   SwiftyStoreKit: a5cdece4327f3943eb72fa81aebe3aa6684b5eab
   VTAcknowledgementsViewController: 3bb742da852a5161dc9f4b017e52f926a41ef5d3
   XLForm: 04110197c12187dd28a6c7295d3d8b95f4fdb4de
+
 
 PODFILE CHECKSUM: 2285a8a603e3c9ddcfc24008c660bf8203b08c87
 
