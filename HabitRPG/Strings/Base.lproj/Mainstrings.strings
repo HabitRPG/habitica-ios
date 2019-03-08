@@ -297,7 +297,7 @@
 "details" = "Details";
 "chat" = "Chat";
 "guilds.leave_guild_title" = "Leave Guild?";
-"guilds.leave_guild_description" = "Do you want to leave the guild and keep or delete the challenges?";
+"guilds.leave_guild_description" = "Do you want to leave the guild and keep or leave the challenges?";
 "guilds.keep_challenges" = "Keep challenges";
 "guilds.leave_challenges" = "Leave Challenges";
 "guilds.guild_members" = "Guild Members";
@@ -398,6 +398,8 @@
 "party.party_description" = "Party Description";
 "party.party_challenges" = "Party Challenges";
 "party.start_quest" = "Start a Quest";
+"party.leave_party_title" = "Leave Party?";
+"party.leave_party_description" = "Do you want to leave the party and keep or leave the challenges?";
 "groups.members" = "Members";
 "groups.invite_member" = "Invite a Member";
 "pending_damage" = "Pending damage";

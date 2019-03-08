@@ -819,7 +819,7 @@ public enum L10n {
     public static let keepChallenges = L10n.tr("Mainstrings", "guilds.keep_challenges")
     /// Leave Challenges
     public static let leaveChallenges = L10n.tr("Mainstrings", "guilds.leave_challenges")
-    /// Do you want to leave the guild and keep or delete the challenges?
+    /// Do you want to leave the guild and keep or leave the challenges?
     public static let leaveGuildDescription = L10n.tr("Mainstrings", "guilds.leave_guild_description")
     /// Leave Guild?
     public static let leaveGuildTitle = L10n.tr("Mainstrings", "guilds.leave_guild_title")
@@ -973,6 +973,10 @@ public enum L10n {
     public static let joinPartyDescription = L10n.tr("Mainstrings", "party.join_party_description")
     /// Want to join a party?
     public static let joinPartyTitle = L10n.tr("Mainstrings", "party.join_party_title")
+    /// Do you want to leave the party and keep or leave the challenges?
+    public static let leavePartyDescription = L10n.tr("Mainstrings", "party.leave_party_description")
+    /// Leave Party?
+    public static let leavePartyTitle = L10n.tr("Mainstrings", "party.leave_party_title")
     /// Party Challenges
     public static let partyChallenges = L10n.tr("Mainstrings", "party.party_challenges")
     /// Party Description

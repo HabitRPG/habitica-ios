@@ -74,8 +74,8 @@ class GroupDetailViewController: HRPGUIViewController, UITextViewDelegate {
     }
     
     @IBAction func leaveButtonTapped(_ sender: Any) {
-        if let groupID = self.groupProperty.value?.id {
-            leaveInteractor?.run(with: groupID)
+        if let group = self.groupProperty.value {
+            leaveInteractor?.run(with: group)
         }
     }
     
