@@ -90,7 +90,6 @@ class HabiticaAppDelegate: NSObject {
         let defaults = UserDefaults.standard
         let themeName = ThemeName(rawValue: defaults.string(forKey: "theme") ?? "") ?? ThemeName.defaultTheme
         ThemeService.shared.theme = themeName.themeClass
-        ThemeService.shared.theme = NightTheme()
     }
     
     @objc
