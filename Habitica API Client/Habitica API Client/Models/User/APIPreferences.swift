@@ -71,7 +71,7 @@ class APIPreferences: PreferencesProtocol, Decodable {
         sound = try? values.decode(String.self, forKey: .sound)
         autoEquip = (try? values.decode(Bool.self, forKey: .autoEquip)) ?? false
         pushNotifications = try? values.decode(APIPushNotifications.self, forKey: .pushNotifications)
-        hair = try! values.decode(APIHair.self, forKey: .hair)
+        hair = try? values.decode(APIHair.self, forKey: .hair)
         searchableUsername = (try? values.decode(Bool.self, forKey: .searchableUsername)) ?? false
     }
 }
