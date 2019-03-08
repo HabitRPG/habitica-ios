@@ -21,6 +21,7 @@ class CheckedTableViewCell: TaskTableViewCell {
     @IBOutlet weak var checklistContainer: UIStackView!
     @IBOutlet weak var checklistLeftBorderView: UIView!
     @IBOutlet weak var checklistRightBorderView: UIView!
+    @IBOutlet weak var checklistItemBackgroundView: UIView!
     
     weak var task: TaskProtocol?
     @objc var isExpanded = false
@@ -54,7 +55,7 @@ class CheckedTableViewCell: TaskTableViewCell {
         if task.completed {
             self.checklistIndicator.backgroundColor = .gray500()
             self.titleLabel.textColor = .gray300()
-            self.backgroundColor = .gray700()
+            self.backgroundColor = ThemeService.shared.theme.contentBackgroundColorDimmed
         } else {
             self.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
             self.titleLabel.textColor = ThemeService.shared.theme.primaryTextColor
@@ -115,6 +116,7 @@ class CheckedTableViewCell: TaskTableViewCell {
         if isExpanded {
             addChecklistViews(task: task)
         }
+        checklistItemBackgroundView.backgroundColor = ThemeService.shared.theme.contentBackgroundColorDimmed
     }
     
     private func addChecklistViews(task: TaskProtocol) {

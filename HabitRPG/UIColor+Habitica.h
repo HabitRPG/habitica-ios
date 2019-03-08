@@ -10,6 +10,7 @@
 
 @interface UIColor (Habitica)
 
++ (nonnull UIColor *)purple10;
 + (nonnull UIColor *)purple50;
 + (nonnull UIColor *)purple100;
 + (nonnull UIColor *)purple200;

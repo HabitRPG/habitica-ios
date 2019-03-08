@@ -179,7 +179,6 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
         
         let nibViews = Bundle.main.loadNibNamed("UserTopHeader", owner: self, options: nil)
         self.headerView = nibViews?[0] as? UIView
-        self.backgroundView.backgroundColor = .gray700()
         self.bottomBorderView.backgroundColor = .gray600()
         self.upperBackgroundView.backgroundColor = .white
         if let headerView = self.headerView {
@@ -201,6 +200,7 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
         visibleTintColor = theme.tintColor
         setNavigationBarColors(navbarColorBlendingAlpha)
         bottomBorderView.backgroundColor = theme.separatorColor
+        self.backgroundView.backgroundColor = theme.contentBackgroundColorDimmed
     }
     
     override func viewWillLayoutSubviews() {

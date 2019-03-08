@@ -13,7 +13,7 @@ import ReactiveSwift
 import FLEX
 #endif
 
-class MainTabBarController: UITabBarController {
+class MainTabBarController: UITabBarController, Themeable {
     
     private let userRepository = UserRepository()
     private let taskRepository = TaskRepository()
@@ -46,6 +46,12 @@ class MainTabBarController: UITabBarController {
         swipe.numberOfTouchesRequired = 1
         tabBar.addGestureRecognizer(swipe)
         #endif
+        
+        ThemeService.shared.addThemeable(themable: self)
+    }
+    
+    func applyTheme(theme: Theme) {
+        tabBar.backgroundColor = theme.contentBackgroundColor
     }
     
     private func setupDailyIcon() {

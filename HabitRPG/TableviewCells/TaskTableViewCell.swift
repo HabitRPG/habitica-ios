@@ -71,6 +71,14 @@ class TaskTableViewCell: UITableViewCell, UITextViewDelegate {
         self.setNeedsLayout()
         
         self.applyAccessibility(task)
+        
+        
+        contentView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
+        mainTaskWrapper.backgroundColor = contentView.backgroundColor
+        titleLabel.backgroundColor = contentView.backgroundColor
+        subtitleLabel.backgroundColor = contentView.backgroundColor
+        titleLabel.textColor = ThemeService.shared.theme.primaryTextColor
+        subtitleLabel.textColor = ThemeService.shared.theme.secondaryTextColor
     }
     
     func applyAccessibility(_ task: TaskProtocol) {
@@ -83,10 +91,6 @@ class TaskTableViewCell: UITableViewCell, UITextViewDelegate {
         if let notes = task.notes, !notes.isEmpty {
             self.mainTaskWrapper.accessibilityLabel = "\(self.mainTaskWrapper.accessibilityLabel ?? ""), \(notes)"
         }
-        
-        contentView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
-        titleLabel.textColor = ThemeService.shared.theme.primaryTextColor
-        subtitleLabel.textColor = ThemeService.shared.theme.secondaryTextColor
     }
     
     @objc

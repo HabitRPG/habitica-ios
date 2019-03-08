@@ -10,6 +10,9 @@
 
 @implementation UIColor (Habitica)
 
++ (UIColor *)purple10 {
+    return [UIColor colorWithRed:0.18 green:0.11 blue:0.31 alpha:1.0];
+}
 + (UIColor *)purple50 {
     return [UIColor colorWithRed:0.212 green:0.125 blue:0.365 alpha:1.000];
 }

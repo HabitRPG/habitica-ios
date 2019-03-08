@@ -63,9 +63,9 @@ class HabitButton: UIView {
             } else {
                 label.image = #imageLiteral(resourceName: "plus_gray")
             }
-            backgroundColor = UIColor.gray700()
+            backgroundColor = ThemeService.shared.theme.contentBackgroundColorDimmed
             roundedView.layer.borderColor = UIColor.gray600().cgColor
-            roundedView.backgroundColor = UIColor.gray700()
+            roundedView.backgroundColor = ThemeService.shared.theme.contentBackgroundColorDimmed
         }
     }
     

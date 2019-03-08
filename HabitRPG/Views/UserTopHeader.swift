@@ -12,7 +12,7 @@ import ReactiveSwift
 import Habitica_Database
 import PinLayout
 
-class UserTopHeader: UIView {
+class UserTopHeader: UIView, Themeable {
     
     @IBOutlet weak var avatarView: AvatarView!
     
@@ -23,6 +23,7 @@ class UserTopHeader: UIView {
     @IBOutlet weak var levelLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var buffIconView: UIImageView!
+    @IBOutlet weak var bottomView: UIView!
     
     @IBOutlet weak var classImageView: UIImageView!
     @IBOutlet weak var classImageViewWidthConstraint: NSLayoutConstraint!
@@ -73,6 +74,30 @@ class UserTopHeader: UIView {
         disposable.inner.add(repository.getUser().on(value: {[weak self] user in
             self?.set(user: user)
         }).start())
+        
+        ThemeService.shared.addThemeable(themable: self)
+    }
+    
+    func applyTheme(theme: Theme) {
+        backgroundColor = theme.contentBackgroundColor
+        theme.applyBackgroundColor(views: [
+            bottomView,
+            classImageView,
+            usernameLabel,
+            levelLabel,
+            hourglassView,
+            gemView,
+            goldView
+            ], color: theme.contentBackgroundColorDimmed)
+        healthLabel.textColor = theme.primaryTextColor
+        healthLabel.backgroundColor = theme.contentBackgroundColor
+        healthLabel.progressBar.barBackgroundColor = theme.contentBackgroundColorDimmed
+        experienceLabel.textColor = theme.primaryTextColor
+        experienceLabel.backgroundColor = theme.contentBackgroundColor
+        experienceLabel.progressBar.barBackgroundColor = theme.contentBackgroundColorDimmed
+        magicLabel.textColor = theme.primaryTextColor
+        magicLabel.backgroundColor = theme.contentBackgroundColor
+        magicLabel.progressBar.barBackgroundColor = theme.contentBackgroundColorDimmed
     }
     
     private func set(user: UserProtocol) {
@@ -156,6 +181,7 @@ class UserTopHeader: UIView {
         }
         
         setNeedsLayout()
+        applyTheme(theme: ThemeService.shared.theme)
     }
  
     @objc

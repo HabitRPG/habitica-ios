@@ -54,10 +54,12 @@ public struct DysheatenerTheme: Theme {
 }
 
 public struct NightTheme: Theme {
-    public var windowBackgroundColor: UIColor { return UIColor.purple50() }
-    public var contentBackgroundColor: UIColor { return UIColor.purple100() }
+    public var windowBackgroundColor: UIColor { return UIColor.purple10() }
+    public var contentBackgroundColorDimmed: UIColor { return UIColor.purple10() }
+    public var contentBackgroundColor: UIColor { return UIColor.purple50() }
     public var tintColor: UIColor { return UIColor.purple500() }
     public var primaryTextColor: UIColor { return UIColor.purple600() }
     public var secondaryTextColor: UIColor { return UIColor.purple500() }
     public var separatorColor: UIColor { return UIColor.purple50() }
+    public var tableviewSeparatorColor: UIColor { return UIColor.purple300() }
 }
