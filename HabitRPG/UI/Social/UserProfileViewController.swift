@@ -16,6 +16,8 @@ class UserProfileViewController: HRPGBaseViewController {
     
     private let socialRepository = SocialRepository()
     private let inventoryRepository = InventoryRepository()
+    private let configRepository = ConfigRepository()
+    
     var interactor = CalculateUserStatsInteractor()
     private let (lifetime, token) = Lifetime.make()
     private let disposable = ScopedDisposable(CompositeDisposable())
@@ -68,7 +70,7 @@ class UserProfileViewController: HRPGBaseViewController {
             }).start())
         }
         
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44
     }
     
@@ -100,7 +102,7 @@ class UserProfileViewController: HRPGBaseViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return 4
+            return 5
         case 1, 2:
             return 8
         case 3:
@@ -122,9 +124,9 @@ class UserProfileViewController: HRPGBaseViewController {
             switch indexPath.item {
             case 0:
                 cellname = "ProfileCell"
-            case 1:
+            case 2:
                 cellname = "TextCell"
-            case 2, 3:
+            case 1, 3, 4:
                 cellname = "SubtitleCell"
             default:
                 break
@@ -148,14 +150,17 @@ class UserProfileViewController: HRPGBaseViewController {
             case 0:
                 configureUserStatsCell(cell)
             case 1:
+                cell.textLabel?.text = L10n.username
+                cell.detailTextLabel?.text = member?.authentication?.local?.username
+            case 2:
                 let textView = cell.viewWithTag(1) as? UITextView
                 textView?.attributedText = try? Down(markdownString: member?.profile?.blurb ?? "").toHabiticaAttributedString()
-            case 2:
+            case 3:
                 cell.textLabel?.text = L10n.Member.memberSince
                 if let date = member?.authentication?.timestamps?.createdAt {
                     cell.detailTextLabel?.text = DateFormatter.localizedString(from: date, dateStyle: .medium, timeStyle: .none)
                 }
-            case 3:
+            case 4:
                 cell.textLabel?.text = L10n.Member.lastLoggedIn
                 if let date = member?.authentication?.timestamps?.loggedIn {
                     cell.detailTextLabel?.text = DateFormatter.localizedString(from: date, dateStyle: .medium, timeStyle: .none)
@@ -297,6 +302,7 @@ class UserProfileViewController: HRPGBaseViewController {
         var constitution = 0
         var perception = 0
         if (index == 1 && !isAttributesExpanded) || index == 6 {
+            descriptionLabel?.text = L10n.Stats.total
             strength = calculatedStats.totalStrength
             intelligence = calculatedStats.totalIntelligence
             constitution = calculatedStats.totalConstitution
@@ -370,6 +376,7 @@ class UserProfileViewController: HRPGBaseViewController {
             chatViewController?.isPresentedModally = true
             chatViewController?.userID = userID
             chatViewController?.username = username
+            chatViewController?.displayName = member?.profile?.name
         }
     }
 }

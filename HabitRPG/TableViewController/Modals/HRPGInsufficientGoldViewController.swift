@@ -16,6 +16,11 @@ class HRPGInsufficientGoldViewController: HRPGSingleOptionModalViewController {
         
         infoView.image = HabiticaIcons.imageOfGoldReward
     }
+    
+    override func populateText() {
+        titleLabel.text = L10n.notEnoughGems
+        actionButton?.setTitle(L10n.takeMeBack, for: .normal)
+    }
 
     @IBAction func closePressed() {
         dismiss(animated: true, completion: nil)

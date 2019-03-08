@@ -7,21 +7,20 @@
 //
 
 #import "HRPGCoachmarkFrameProvider.h"
+#import "Habitica-Swift.h"
 
 @implementation HRPGCoachmarkFrameProvider
 
 - (NSDictionary *)getDefinitonForTutorial:(NSString *)tutorialIdentifier {
     if ([tutorialIdentifier isEqualToString:@"addTask"]) {
-        return @{ @"text" : NSLocalizedString(@"Tap to add a new task.", nil) };
+        return @{ @"text" : objcL10n.tutorialAddTask };
     } else if ([tutorialIdentifier isEqualToString:@"editTask"]) {
         return @{
-                 @"text" : NSLocalizedString(
-                                             @"Tap a task to edit it and add reminders. Swipe left to delete it.", nil)
-                 };
+                 @"text" : objcL10n.tutorialEditTask};
     } else if ([tutorialIdentifier isEqualToString:@"filterTask"]) {
-        return @{ @"text" : NSLocalizedString(@"Tap to filter tasks.", nil) };
+        return @{ @"text" : objcL10n.tutorialFilterTask };
     } else if ([tutorialIdentifier isEqualToString:@"reorderTask"]) {
-        return @{@"text" : NSLocalizedString(@"Hold down on a task to drag it around.", nil)};
+        return @{@"text" : objcL10n.tutorialReorderTask};
     }
     return nil;
 }

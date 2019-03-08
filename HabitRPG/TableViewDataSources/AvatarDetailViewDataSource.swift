@@ -45,6 +45,8 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
                 self?.equippedKey = user.preferences?.shirt
             case "skin":
                 self?.equippedKey = user.preferences?.skin
+            case "chair":
+                self?.equippedKey = user.preferences?.chair
             case "hair":
                 switch self?.customizationGroup {
                 case "bangs":
@@ -65,6 +67,7 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
             default:
                 return
             }
+            self?.collectionView?.reloadData()
         }).start())
     }
     

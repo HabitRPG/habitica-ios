@@ -14,6 +14,7 @@ class CustomizationHeaderView: UICollectionReusableView {
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var currencyView: HRPGCurrencyCountView!
     @IBOutlet weak var purchaseButton: UIView!
+    @IBOutlet weak var buyAllLabel: UILabel!
     
     var purchaseButtonTapped: (() -> Void)?
     
@@ -22,6 +23,8 @@ class CustomizationHeaderView: UICollectionReusableView {
         currencyView.currency = .gem
         
         purchaseButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(buttonTapped)))
+        
+        buyAllLabel.text = L10n.buyAll
     }
     
     func configure(customizationSet: CustomizationSetProtocol, isBackground: Bool) {

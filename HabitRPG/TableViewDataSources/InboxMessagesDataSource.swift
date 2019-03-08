@@ -12,6 +12,7 @@ import Habitica_Models
 @objc public protocol InboxMessagesDataSourceProtocol {
     @objc weak var tableView: UITableView? { get set }
     @objc weak var viewController: HRPGInboxChatViewController? { get set }
+    @objc var otherUsername: String? { get set }
     
     @objc
     func sendMessage(messageText: String)
@@ -20,7 +21,7 @@ import Habitica_Models
 @objc
 class InboxMessagesDataSourceInstantiator: NSObject {
     @objc
-    static func instantiate(otherUserID: String) -> InboxMessagesDataSourceProtocol {
+    static func instantiate(otherUserID: String?) -> InboxMessagesDataSourceProtocol {
         return InboxMessagesDataSource(otherUserID: otherUserID)
     }
 }
@@ -32,10 +33,12 @@ class InboxMessagesDataSource: BaseReactiveTableViewDataSource<InboxMessageProto
     
     private let socialRepository = SocialRepository()
     private let userRepository = UserRepository()
+    private let configRepository = ConfigRepository()
     private var user: UserProtocol?
-    private let otherUserID: String
+    private let otherUserID: String?
+    internal var otherUsername: String?
     
-    init(otherUserID: String) {
+    init(otherUserID: String?) {
         self.otherUserID = otherUserID
         super.init()
         sections.append(ItemSection<InboxMessageProtocol>())
@@ -44,10 +47,10 @@ class InboxMessagesDataSource: BaseReactiveTableViewDataSource<InboxMessageProto
             self?.user = user
             self?.tableView?.reloadData()
         }).start())
-        disposable.inner.add(socialRepository.getMember(userID: otherUserID, retrieveIfNotFound: true).on(value: {[weak self]member in
+        disposable.inner.add(socialRepository.getMember(userID: otherUserID ?? otherUsername ?? "", retrieveIfNotFound: true).on(value: {[weak self]member in
             self?.viewController?.setTitleWithUsername(member?.profile?.name)
         }).start())
-        disposable.inner.add(socialRepository.getMessages(withUserID: otherUserID).on(value: {[weak self] (messages, changes) in
+        disposable.inner.add(socialRepository.getMessages(withUserID: otherUserID ?? otherUsername ?? "").on(value: {[weak self] (messages, changes) in
             self?.sections[0].items = messages
             self?.notify(changes: changes)
         }).start())
@@ -80,14 +83,19 @@ class InboxMessagesDataSource: BaseReactiveTableViewDataSource<InboxMessageProto
             guard let profileViewController = self.viewController?.storyboard?.instantiateViewController(withIdentifier: "UserProfileViewController") as? UserProfileViewController else {
                 return
             }
-            profileViewController.userID = message.userID
-            profileViewController.username = message.username
+            if message.sent {
+                profileViewController.userID = self.user?.id
+                profileViewController.username = self.user?.profile?.name
+            } else {
+                profileViewController.userID = message.userID
+                profileViewController.username = message.displayName
+            }
             self.viewController?.navigationController?.pushViewController(profileViewController, animated: true)
         }
         cell.copyAction = {
             let pasteboard = UIPasteboard.general
             pasteboard.string = message.text
-            let toastView = ToastView(title: NSLocalizedString("Copied Message", comment: ""), background: .green)
+            let toastView = ToastView(title: L10n.copiedMessage, background: .green)
             ToastManager.show(toast: toastView)
         }
         cell.deleteAction = {
@@ -132,6 +140,6 @@ class InboxMessagesDataSource: BaseReactiveTableViewDataSource<InboxMessageProto
     }
     
     func sendMessage(messageText: String) {
-        socialRepository.post(inboxMessage: messageText, toUserID: otherUserID).observeCompleted {}
+        socialRepository.post(inboxMessage: messageText, toUserID: otherUserID ?? otherUsername ?? "").observeCompleted {}
     }
 }

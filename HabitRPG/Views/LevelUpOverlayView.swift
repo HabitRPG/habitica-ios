@@ -54,10 +54,10 @@ class LevelUpOverlayView: HabiticaAlertController {
         avatarView.avatar = AvatarViewModel(avatar: avatar)
         
         avatarWrapper.addConstraint(NSLayoutConstraint(item: avatarWrapper,
-                                                       attribute: NSLayoutAttribute.height,
-                                                       relatedBy: NSLayoutRelation.equal,
+                                                       attribute: NSLayoutConstraint.Attribute.height,
+                                                       relatedBy: NSLayoutConstraint.Relation.equal,
                                                        toItem: nil,
-                                                       attribute: NSLayoutAttribute.notAnAttribute,
+                                                       attribute: NSLayoutConstraint.Attribute.notAnAttribute,
                                                        multiplier: 1,
                                                        constant: 160))
     }

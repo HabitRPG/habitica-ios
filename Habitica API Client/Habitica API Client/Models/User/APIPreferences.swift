@@ -28,6 +28,7 @@ class APIPreferences: PreferencesProtocol, Decodable {
     var autoEquip: Bool = false
     var pushNotifications: PushNotificationsProtocol?
     var hair: HairProtocol?
+    var searchableUsername: Bool = false
     
     enum CodingKeys: String, CodingKey {
         case skin
@@ -48,6 +49,7 @@ class APIPreferences: PreferencesProtocol, Decodable {
         case autoEquip
         case pushNotifications
         case hair
+        case searchableUsername
     }
     
     public required init(from decoder: Decoder) throws {
@@ -70,5 +72,6 @@ class APIPreferences: PreferencesProtocol, Decodable {
         autoEquip = (try? values.decode(Bool.self, forKey: .autoEquip)) ?? false
         pushNotifications = try? values.decode(APIPushNotifications.self, forKey: .pushNotifications)
         hair = try! values.decode(APIHair.self, forKey: .hair)
+        searchableUsername = (try? values.decode(Bool.self, forKey: .searchableUsername)) ?? false
     }
 }

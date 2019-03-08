@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="QuestGoalView">
             <connections>
                 <outlet property="difficultyImageView" destination="bAY-vY-nCp" id="ddz-tq-P2y"/>
+                <outlet property="difficultyLabel" destination="HDl-eR-Km6" id="Fm2-O7-3NQ"/>
                 <outlet property="goalDetailLabel" destination="BHt-Da-4LB" id="Lb3-TJ-AZp"/>
                 <outlet property="healthIcon" destination="axU-4V-iqm" id="Fhc-kg-034"/>
                 <outlet property="rageMeterView" destination="geE-ui-lhL" id="HRh-Oc-d0R"/>
@@ -28,7 +28,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ev4-Ud-RMg">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="34"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="999" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Health" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L5I-9u-vBO">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="999" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L5I-9u-vBO">
                             <rect key="frame" x="16" y="0.0" width="54.5" height="34"/>
                             <constraints>
                                 <constraint firstAttribute="width" priority="500" constant="20" id="Kam-Nf-h8i"/>
@@ -78,8 +78,8 @@
                             <color key="textColor" red="0.30608683819999999" green="0.2891013026" blue="0.34288242460000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Rage Meter" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="geE-ui-lhL" customClass="PaddedLabel" customModule="Habitica" customModuleProvider="target">
-                            <rect key="frame" x="301.5" y="7" width="65.5" height="20"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="geE-ui-lhL" customClass="PaddedLabel" customModule="Habitica" customModuleProvider="target">
+                            <rect key="frame" x="367" y="7" width="0.0" height="20"/>
                             <color key="backgroundColor" red="0.88232439756393433" green="0.87825006246566772" blue="0.89052397012710571" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" priority="500" constant="42" id="YTp-S7-nhh"/>
@@ -95,7 +95,7 @@
                             </userDefinedRuntimeAttributes>
                         </label>
                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bAY-vY-nCp">
-                            <rect key="frame" x="95" y="0.0" width="60" height="34"/>
+                            <rect key="frame" x="94.5" y="0.0" width="60" height="34"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="60" id="6Zj-1L-sqZ"/>
                             </constraints>

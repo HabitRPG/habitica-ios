@@ -30,6 +30,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.datasource = [InboxMessagesDataSourceInstantiator instantiateWithOtherUserID: self.userID];
+    self.datasource.otherUsername = self.username;
     self.datasource.tableView = self.tableView;
     self.datasource.viewController = self;
     
@@ -49,6 +50,11 @@
     self.tableView.estimatedRowHeight = 90;
     self.tableView.backgroundColor = [UIColor gray700];
     
+    [self.textView registerMarkdownFormattingSymbol:@"**" withTitle:@"Bold"];
+    [self.textView registerMarkdownFormattingSymbol:@"*" withTitle:@"Italics"];
+    [self.textView registerMarkdownFormattingSymbol:@"~~" withTitle:@"Strike"];
+
+    self.textView.placeholder = objcL10n.writeAMessage;
     self.textInputbar.maxCharCount = [[[ConfigRepository alloc] init] integerWithVariable:ConfigVariableMaxChatLength];
     self.textInputbar.charCountLabelNormalColor = [UIColor gray400];
     self.textInputbar.charCountLabelWarningColor = [UIColor red50];
@@ -58,11 +64,11 @@
     self.hrpgTopHeaderNavigationController.hideNavbar = false;
 }
 
-- (void)setTitleWithUsername:(NSString * _Nullable)username {
-    if (username) {
-        self.navigationItem.title = [NSString stringWithFormat:NSLocalizedString(@"Write to %@", nil), self.username];
+- (void)setTitleWithUsername:(NSString * _Nullable)displayName {
+    if (displayName) {
+        self.navigationItem.title = [objcL10n writeToUsername: displayName];
     } else {
-        self.navigationItem.title = NSLocalizedString(@"Write Message", nil);
+        self.navigationItem.title = objcL10n.writeMessage;
     }
 }
 
@@ -95,7 +101,7 @@
     if ([segue.identifier isEqualToString:@"UserProfileSegue"]) {
         UserProfileViewController *userProfileViewController = segue.destinationViewController;
         userProfileViewController.userID = self.userID;
-        userProfileViewController.username = self.username;
+        userProfileViewController.username = self.displayName;
     }
     [super prepareForSegue:segue sender:sender];
 }

@@ -35,10 +35,10 @@ class HabitTableViewCell: TaskTableViewCell {
         super.applyAccessibility(task)
         var customActions = [UIAccessibilityCustomAction]()
         if task.up {
-            customActions.append(UIAccessibilityCustomAction(name: NSLocalizedString("Score habit up", comment: ""), target: self, selector: #selector(scoreUp)))
+            customActions.append(UIAccessibilityCustomAction(name: L10n.Accessibility.scoreHabitUp, target: self, selector: #selector(scoreUp)))
         }
         if task.down {
-            customActions.append(UIAccessibilityCustomAction(name: NSLocalizedString("Score habit down", comment: ""), target: self, selector: #selector(scoreDown)))
+            customActions.append(UIAccessibilityCustomAction(name: L10n.Accessibility.scoreHabitDown, target: self, selector: #selector(scoreDown)))
         }
         self.accessibilityCustomActions = customActions
     }

@@ -20,21 +20,21 @@ public enum AvatarCustomizationSubcategory {
     var text: String {
         switch self {
         case .size:
-            return NSLocalizedString("Size", comment: "")
+            return L10n.size
         case .shirt:
-            return NSLocalizedString("Shirt", comment: "")
+            return L10n.shirt
         case .bangs:
-            return NSLocalizedString("Bangs", comment: "")
+            return L10n.bangs
         case .ponytail:
-            return NSLocalizedString("Ponytail", comment: "")
+            return L10n.ponytail
         case .color:
-            return NSLocalizedString("Color", comment: "")
+            return L10n.color
         case .flower:
-            return NSLocalizedString("Flower", comment: "")
+            return L10n.flower
         case .glasses:
-            return NSLocalizedString("Glasses", comment: "")
+            return L10n.glasses
         case .wheelchair:
-            return NSLocalizedString("Wheelchair", comment: "")
+            return L10n.wheelchair
         default:
             return ""
         }
@@ -100,6 +100,8 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        populateText()
+        
         avatarView.showBackground = false
         avatarView.showMount = false
         avatarView.showPet = false
@@ -128,6 +130,15 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController {
             contentHeight.constant = 120
             categoryHeight.constant = 85
         }
+    }
+    
+    func populateText() {
+        randomizeButton.setTitle(L10n.randomize, for: .normal)
+        speechbubbleView.text = L10n.Intro.avatarSetupSpeechbubble
+        bodyLabel.text = L10n.Avatar.body
+        skinLabel.text = L10n.Avatar.skin
+        hairLabel.text = L10n.Avatar.hair
+        extrasLabel.text = L10n.Avatar.extras
     }
     
     override func viewDidAppear(_ animated: Bool) {

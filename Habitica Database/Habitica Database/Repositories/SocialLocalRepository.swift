@@ -355,4 +355,15 @@ public class SocialLocalRepository: BaseLocalRepository {
             }
         }
     }
+    
+    public func setNoNewMessages(userID: String, groupID: String) {
+        if let realm = getRealm(), let user = realm.object(ofType: RealmUser.self, forPrimaryKey: userID) {
+            try? realm.write {
+                let newMessages = user.hasNewMessages.first(where: { (newMessages) -> Bool in
+                    return newMessages.id == groupID
+                })
+                newMessages?.hasNewMessages = false
+            }
+        }
+    }
 }

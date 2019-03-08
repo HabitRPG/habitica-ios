@@ -29,7 +29,7 @@ class TimeTravelersCollectionViewDataSource: ShopCollectionViewDataSource {
                     if sections.count == 0 || !sections.contains(where: { (section) -> Bool in section.key == "mystery_sets" }) {
                         let section = ItemSection<InAppRewardProtocol>()
                         section.key = "mystery_sets"
-                        section.title = NSLocalizedString("Mystery Sets", comment: "")
+                        section.title = L10n.mysterySets
                         section.items = [InAppRewardProtocol]()
                         sections.append(section)
                     }

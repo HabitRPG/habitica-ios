@@ -20,18 +20,23 @@ class HRPGSingleOptionModalViewController: UIViewController {
         view.addGestureRecognizer(tap)
 
         styleViews()
+        populateText()
+    }
+    
+    func populateText() {
+        
     }
     
     func styleViews() {
-        titleLabel.superview?.bringSubview(toFront: titleLabel)
+        titleLabel.superview?.bringSubviewToFront(titleLabel)
         if let button = actionButton {
-            button.superview?.bringSubview(toFront: button)
+            button.superview?.bringSubviewToFront(button)
         }
-        titleLabel.superview?.bringSubview(toFront: imageTextView)
+        titleLabel.superview?.bringSubviewToFront(imageTextView)
         
         actionButton?.layer.borderWidth = 0.5
         actionButton?.layer.borderColor = UIColor.gray400().cgColor
-        actionButton?.setTitleColor(UIColor.purple400(), for: UIControlState.normal)
+        actionButton?.setTitleColor(UIColor.purple400(), for: UIControl.State.normal)
         
         imageTextView.shopItemTitleLabel.font = UIFont.systemFont(ofSize: 15)
         imageTextView.shopItemTitleLabel.textColor = UIColor.gray200()

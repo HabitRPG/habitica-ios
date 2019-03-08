@@ -10,9 +10,11 @@ import Foundation
 import Habitica_Models
 import ReactiveSwift
 import Down
+import Crashlytics
 
-class GroupDetailViewController: HRPGUIViewController {
-    
+class GroupDetailViewController: HRPGUIViewController, UITextViewDelegate {
+    var groupID: String?
+
     var groupProperty = MutableProperty<GroupProtocol?>(nil)
     
     let socialRepository = SocialRepository()
@@ -31,11 +33,17 @@ class GroupDetailViewController: HRPGUIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        groupDescriptionTextView?.delegate = self
+        
         let margins = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         groupDescriptionStackView?.layoutMargins = margins
         groupDescriptionStackView?.isLayoutMarginsRelativeArrangement = true
         
-        disposable.inner.add(groupProperty.signal.skipNil().observeValues({[weak self] group in
+        disposable.inner.add(groupProperty.signal.skipNil()
+            .on(failed: { error in
+                Crashlytics.sharedInstance().recordError(error)
+            })
+            .observeValues({[weak self] group in
                 self?.updateData(group: group)
         }))
         
@@ -44,7 +52,11 @@ class GroupDetailViewController: HRPGUIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        disposable.inner.add(self.leaveInteractor?.reactive.take(during: self.lifetime).observeCompleted {})
+        disposable.inner.add(self.leaveInteractor?.reactive.take(during: self.lifetime)
+            .flatMap(.latest, { group in
+                return self.userRepository.retrieveUser()
+            })
+            .observeCompleted {})
     }
     
     override func viewWillLayoutSubviews() {
@@ -55,7 +67,10 @@ class GroupDetailViewController: HRPGUIViewController {
     
     func updateData(group: GroupProtocol) {
         groupNameLabel?.text = group.name
-        groupDescriptionTextView?.attributedText = try? Down(markdownString: group.groupDescription ?? "").toHabiticaAttributedString()
+        groupDescriptionTextView?.text = group.groupDescription
+        Down(markdownString: group.groupDescription ?? "").toHabiticaAttributedStringAsync {[weak self] markDownString in
+            self?.groupDescriptionTextView?.attributedText = markDownString
+        }
     }
     
     @IBAction func leaveButtonTapped(_ sender: Any) {
@@ -72,6 +87,15 @@ class GroupDetailViewController: HRPGUIViewController {
                 destination?.dataSource.isShowingJoinedChallenges = false
                 destination?.segmentedFilterControl.selectedSegmentIndex = 1
             }
+        } else if segue.identifier == StoryboardSegue.Social.invitationSegue.rawValue {
+            let destination = segue.destination as? UINavigationController
+            if let invitationViewController = destination?.topViewController as? InviteMembersViewController {
+                invitationViewController.groupID = groupID
+            }
         }
+    }
+    
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
+        return !RouterHandler.shared.handle(url: URL)
     }
 }

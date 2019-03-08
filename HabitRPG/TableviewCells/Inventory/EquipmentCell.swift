@@ -17,6 +17,7 @@ class EquipmentCell: UITableViewCell {
     @IBOutlet weak var twoHandedSpacing: NSLayoutConstraint!
     @IBOutlet weak var twoHandedView: UIView!
     @IBOutlet weak var twoHandedIconView: UIImageView!
+    @IBOutlet weak var twoHandedLabel: UILabel!
     
     @IBOutlet weak var strengthLabel: UILabel!
     @IBOutlet weak var constitutionLabel: UILabel!
@@ -39,6 +40,8 @@ class EquipmentCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         twoHandedIconView.image = HabiticaIcons.imageOfTwoHandedIcon
+        twoHandedLabel.text = L10n.twoHanded
+        noBenefitsLabel.text = L10n.noBenefit
     }
     
     func configure(_ gear: GearProtocol) {

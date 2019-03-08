@@ -33,6 +33,7 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var logoFormSpacing: NSLayoutConstraint!
     @IBOutlet weak var logoHeight: NSLayoutConstraint!
     @IBOutlet weak var forgotPasswordButton: UIButton!
+    @IBOutlet weak var privacyPolicyLabel: UITextView!
     
     @IBOutlet weak var logoView: UIImageView!
     @IBOutlet weak private var loginActivityIndicator: UIActivityIndicatorView!
@@ -43,6 +44,8 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        populateText()
+        
         self.viewModel.inputs.setViewController(viewController: self)
 
         loginBeginButton.addTarget(self, action: #selector(loginBeginButtonPressed), for: .touchUpInside)
@@ -75,14 +78,44 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShowNotification(notification:)), name: .UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHideNotification(notification:)), name: .UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShowNotification(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHideNotification(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    func populateText() {
+        registerBeginButton.setTitle(L10n.Login.register, for: .normal)
+        loginBeginButton.setTitle(L10n.Login.login, for: .normal)
+        backButton.setTitle(L10n.back, for: .normal)
+        
+        usernameField.placeholderText = L10n.username
+        emailField.placeholderText = L10n.email
+        passwordField.placeholderText = L10n.password
+        passwordRepeatField.placeholderText = L10n.repeatPassword
+        
+        facebookLoginButton.setTitle(L10n.Login.loginFacebook, for: .normal)
+        googleLoginButton.setTitle(L10n.Login.loginGoogle, for: .normal)
+        
+        forgotPasswordButton.setTitle(L10n.Login.forgotPassword, for: .normal)
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .center
+        let privacyAttributedText = NSMutableAttributedString(string: "By signing up, you are indicating that you have read and agree to the Terms of Service and Privacy Policy.")
+        privacyAttributedText.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor(red:0.84, green:0.78, blue:1.00, alpha:1.0), range: NSRange(location: 0, length: privacyAttributedText.length))
+        privacyAttributedText.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length: privacyAttributedText.length))
+        let termsRange = privacyAttributedText.mutableString.range(of: "Terms of Service")
+        privacyAttributedText.addAttributes([NSAttributedString.Key.link: "https://habitica.com/static/terms"], range: termsRange)
+        privacyAttributedText.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: termsRange)
+        let privacyRange = privacyAttributedText.mutableString.range(of: "Privacy Policy")
+        privacyAttributedText.addAttributes([NSAttributedString.Key.link: "https://habitica.com/static/privacy",
+                                             NSAttributedString.Key.foregroundColor: UIColor.white], range: privacyRange)
+        privacyPolicyLabel.attributedText = privacyAttributedText
+        privacyPolicyLabel.linkTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
     }
     
     private func initialUISetup() {
@@ -106,7 +139,7 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
         return .lightContent
     }
     
-    override func prefersHomeIndicatorAutoHidden() -> Bool {
+    override var prefersHomeIndicatorAutoHidden: Bool {
         return true
     }
     
@@ -203,9 +236,11 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
             if value {
                 weakSelf.passwordRepeatField.isHidden = false
                 weakSelf.passwordRepeatField.entryView.isEnabled = true
+                weakSelf.privacyPolicyLabel.isHidden = false
             } else {
                 weakSelf.passwordRepeatField.isHidden = true
                 weakSelf.passwordRepeatField.entryView.isEnabled = false
+                weakSelf.privacyPolicyLabel.isHidden = true
             }
         }
     }
@@ -327,6 +362,10 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
         self.emailField.entryView.reactive.text <~ self.viewModel.outputs.emailText
         self.passwordField.entryView.reactive.text <~ self.viewModel.outputs.passwordText
         self.passwordRepeatField.entryView.reactive.text <~ self.viewModel.outputs.passwordRepeatText
+        
+        self.viewModel.outputs.arePasswordsSame.observeValues { areSame in
+            self.passwordRepeatField.hasError = !areSame
+        }
     }
 
     func setupOnePassword() {
@@ -402,13 +441,13 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
     
     @objc
     func forgotPasswordButtonPressed() {
-        let alertController = HabiticaAlertController(title: NSLocalizedString("Email a Password Reset Link", comment: ""))
+        let alertController = HabiticaAlertController(title: L10n.Login.emailPasswordLink)
         
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 16
         let textView = UITextView()
-        textView.text = NSLocalizedString("Enter the email address you used to register your Habitica account.", comment: "")
+        textView.text = L10n.Login.enterEmail
         textView.font = UIFont.preferredFont(forTextStyle: .subheadline)
         textView.textColor = UIColor.gray100()
         textView.isEditable = false
@@ -416,16 +455,16 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
         textView.isSelectable = false
         stackView.addArrangedSubview(textView)
         let textField = UITextField()
-        textField.placeholder = NSLocalizedString("Email", comment: "")
+        textField.placeholder = L10n.email
         textField.borderStyle = .roundedRect
         textField.keyboardType = .emailAddress
         stackView.addArrangedSubview(textField)
         alertController.contentView = stackView
         
         alertController.addCancelAction()
-        alertController.addAction(title: NSLocalizedString("Send", comment: ""), isMainAction: true) { _ in
+        alertController.addAction(title: L10n.send, isMainAction: true) { _ in
             self.userRepository.sendPasswordResetEmail(email: textField.text ?? "").observeCompleted {
-                ToastManager.show(text: NSLocalizedString("If we have your email on file, instructions for setting a new password have been sent to your email.", comment: ""), color: .green)
+                ToastManager.show(text: L10n.Login.resetPasswordResponse, color: .green)
             }
         }
         alertController.show()
@@ -471,14 +510,14 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
             return
         }
 
-        guard let animationDuration = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue,
-            let keyboardEndFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
-            var rawAnimationCurve = (userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber)?.uint32Value else {
+        guard let animationDuration = (userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue,
+            let keyboardEndFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
+            var rawAnimationCurve = (userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as? NSNumber)?.uint32Value else {
             return
         }
         let convertedKeyboardEndFrame = view.convert(keyboardEndFrame, from: view.window)
         rawAnimationCurve = rawAnimationCurve << 16
-        let animationCurve = UIViewAnimationOptions.init(rawValue: UInt(rawAnimationCurve))
+        let animationCurve = UIView.AnimationOptions.init(rawValue: UInt(rawAnimationCurve))
         formBottomConstraint.constant = view.bounds.maxY - convertedKeyboardEndFrame.minY
         
         UIView.animate(withDuration: animationDuration, delay: 0.0, options: [.beginFromCurrentState, animationCurve], animations: {

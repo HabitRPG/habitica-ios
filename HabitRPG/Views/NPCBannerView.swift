@@ -39,8 +39,8 @@ class NPCBannerView: UIView {
             view.frame = bounds
             
             view.autoresizingMask = [
-                UIViewAutoresizing.flexibleWidth,
-                UIViewAutoresizing.flexibleHeight
+                UIView.AutoresizingMask.flexibleWidth,
+                UIView.AutoresizingMask.flexibleHeight
             ]
             
             addSubview(view)
@@ -87,7 +87,7 @@ class NPCBannerView: UIView {
     func setSprites(identifier: String) {
         let spriteSuffix = ConfigRepository().string(variable: .shopSpriteSuffix, defaultValue: "")
         ImageManager.getImage(name: identifier + "_background"+spriteSuffix) { (image, _) in
-            self.bgImageView.image = image?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: UIImageResizingMode.tile)
+            self.bgImageView.image = image?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: UIImage.ResizingMode.tile)
         }
         foregroundImageView.setImagewith(name: identifier + "_scene"+spriteSuffix)
     }
@@ -97,7 +97,7 @@ class NPCBannerView: UIView {
         paragraphStyle.lineSpacing = 4
         
         let attrString = NSMutableAttributedString(string: notes)
-        attrString.addAttribute(NSAttributedStringKey.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length:   attrString.length))
+        attrString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length:   attrString.length))
         self.notesLabel.attributedText = attrString
     }
 }

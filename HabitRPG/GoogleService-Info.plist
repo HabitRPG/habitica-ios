@@ -2,25 +2,41 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>TRACKING_ID</key>
-	<string>UA-33510635-2</string>
-	<key>PLIST_VERSION</key>
-	<string>1</string>
-	<key>BUNDLE_ID</key>
-	<string>com.habitrpg.ios.Habitica</string>
+        <key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+        <string>ca-app-pub-3940256099942544/2934735716</string>
+        <key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+        <string>ca-app-pub-3940256099942544/4411468910</string>
+        <key>CLIENT_ID</key>
+        <string>1035232791481-agikq8q8drk5gi6jlnb81d4if5m33ei7.apps.googleusercontent.com</string>
+        <key>REVERSED_CLIENT_ID</key>
+        <string>com.googleusercontent.apps.1035232791481-agikq8q8drk5gi6jlnb81d4if5m33ei7</string>
+        <key>ANDROID_CLIENT_ID</key>
+        <string>1035232791481-f4t7rqrvhn4hna5dbe9346lkb51jdegv.apps.googleusercontent.com</string>
+        <key>API_KEY</key>
+        <string>AIzaSyC_o6DbNLftMATtOj6o8ENZMQoDV5O1CCQ</string>
+        <key>GCM_SENDER_ID</key>
+        <string>1035232791481</string>
+        <key>PLIST_VERSION</key>
+        <string>1</string>
+        <key>BUNDLE_ID</key>
+        <string>com.habitrpg.ios.Habitica</string>
         <key>PROJECT_ID</key>
-        <string>habitica-e34e3</string>
+        <string>habitica-android-production</string>
+        <key>STORAGE_BUCKET</key>
+        <string>habitica-android-production.appspot.com</string>
         <key>IS_ADS_ENABLED</key>
-        <false/>
+        <true></true>
         <key>IS_ANALYTICS_ENABLED</key>
-        <true/>
+        <false></false>
         <key>IS_APPINVITE_ENABLED</key>
-        <false/>
+        <true></true>
         <key>IS_GCM_ENABLED</key>
-        <false/>
+        <true></true>
         <key>IS_SIGNIN_ENABLED</key>
-        <false/>
+        <true></true>
         <key>GOOGLE_APP_ID</key>
-        <string>1:293904580953:ios:2d51dbddce3ceb45</string>
+        <string>1:1035232791481:ios:2d51dbddce3ceb45</string>
+        <key>DATABASE_URL</key>
+        <string>https://habitica-android-production.firebaseio.com</string>
 </dict>
 </plist>

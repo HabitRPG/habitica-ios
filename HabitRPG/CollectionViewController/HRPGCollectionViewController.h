@@ -14,4 +14,6 @@
 @property (nonatomic, readonly) TopHeaderViewController *topHeaderNavigationController;
 @property (nonatomic) TopHeaderCoordinator *topHeaderCoordinator;
 
+- (void) populateText;
+    
 @end

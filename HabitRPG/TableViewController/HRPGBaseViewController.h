@@ -29,4 +29,6 @@
 
 - (BOOL)isIndexPathVisible:(NSIndexPath *)indexPath;
 
+- (void) populateText;
+
 @end

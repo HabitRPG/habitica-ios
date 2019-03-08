@@ -187,7 +187,7 @@ extension UIColor {
         }
     }
     
-    func lighter(by percentage: CGFloat=30.0) -> UIColor? {
+func lighter(by percentage: CGFloat=30.0) -> UIColor? {
         return self.adjust(by: abs(percentage) )
     }
     

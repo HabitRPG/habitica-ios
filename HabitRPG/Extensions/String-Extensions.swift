@@ -14,7 +14,7 @@ extension String {
     //https://gist.github.com/zhjuncai/6af27ca9649126dd326c
     func widthWithConstrainedHeight(_ height: CGFloat, font: UIFont) -> CGFloat {
         let constraintRect = CGSize(width: CGFloat.greatestFiniteMagnitude, height: height)
-        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font: font], context: nil)
+        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font], context: nil)
         return boundingBox.width
     }
     
@@ -44,6 +44,14 @@ extension String {
             return "b"
         case 4:
             return "t"
+        case 5:
+            return "p"
+        case 6:
+            return "e"
+        case 7:
+            return "z"
+        case 8:
+            return "s"
         default:
             return ""
         }
@@ -52,19 +60,19 @@ extension String {
     public static func forTaskQuality(task: TaskProtocol) -> String {
         let taskValue = task.value
         if taskValue < -20 {
-            return NSLocalizedString("Worst", comment: "")
+            return L10n.Tasks.Quality.worst
         } else if taskValue < -10 {
-            return NSLocalizedString("Worse", comment: "")
+            return L10n.Tasks.Quality.worse
         } else if taskValue < -1 {
-            return NSLocalizedString("Bad", comment: "")
+            return L10n.Tasks.Quality.bad
         } else if taskValue < 1 {
-            return NSLocalizedString("Neutral", comment: "")
+            return L10n.Tasks.Quality.neutral
         } else if taskValue < 5 {
-            return NSLocalizedString("Good", comment: "")
+            return L10n.Tasks.Quality.good
         } else if taskValue < 10 {
-            return NSLocalizedString("Better", comment: "")
+            return L10n.Tasks.Quality.better
         } else {
-            return NSLocalizedString("Best", comment: "")
+            return L10n.Tasks.Quality.best
         }
     }
     

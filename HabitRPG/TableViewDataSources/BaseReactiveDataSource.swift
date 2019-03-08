@@ -75,9 +75,13 @@ class BaseReactiveTableViewDataSource<MODEL>: BaseReactiveDataSource<MODEL>, UIT
     
     @objc weak var tableView: UITableView? {
         didSet {
-            tableView?.dataSource = self
-            tableView?.reloadData()
+            didSetTableView()
         }
+    }
+    
+    func didSetTableView() {
+        tableView?.dataSource = self
+        tableView?.reloadData()
     }
     
     override func notify(changes: ReactiveChangeset?, section: Int = 0) {
@@ -126,7 +130,7 @@ class BaseReactiveTableViewDataSource<MODEL>: BaseReactiveDataSource<MODEL>, UIT
         }
     }
     
-    @objc
+    @objc(numberOfSectionsInTableView:)
     func numberOfSections(in tableView: UITableView) -> Int {
         return visibleSections.count
     }
@@ -151,7 +155,7 @@ class BaseReactiveTableViewDataSource<MODEL>: BaseReactiveDataSource<MODEL>, UIT
         return UITableViewCell()
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    private func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     }
 }
 
@@ -183,10 +187,15 @@ class BaseReactiveCollectionViewDataSource<MODEL>: BaseReactiveDataSource<MODEL>
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "SectionHeader", for: indexPath)
-        let label = headerView.viewWithTag(1) as? UILabel
-        label?.text = visibleSections[indexPath.section].title
-        return headerView
+        let reuseIdentifier = (kind == UICollectionView.elementKindSectionFooter) ? "SectionFooter" : "SectionHeader"
+        let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: reuseIdentifier, for: indexPath)
+
+        if kind == UICollectionView.elementKindSectionHeader {
+            let label = view.viewWithTag(1) as? UILabel
+            label?.text = visibleSections[indexPath.section].title
+        }
+
+        return view
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

@@ -22,7 +22,7 @@ class VisualEffectModalViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var contentHeightConstraint: NSLayoutConstraint!
     
     @objc var containedViewController: UIViewController? {
-        return childViewControllers.first
+        return children.first
     }
     
     private var topHeaderSize: CGFloat = 38

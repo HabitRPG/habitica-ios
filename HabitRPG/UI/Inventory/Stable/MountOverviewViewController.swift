@@ -16,6 +16,11 @@ class MountOverviewViewController: StableOverviewViewController<MountOverviewDat
         super.viewDidLoad()
     }
     
+    override func populateText() {
+        navigationItem.title = L10n.Titles.mounts
+        navigationItem.rightBarButtonItem?.title = L10n.groupBy
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == StoryboardSegue.Main.mountDetailSegue.rawValue {
             let destination = segue.destination as? MountDetailViewController

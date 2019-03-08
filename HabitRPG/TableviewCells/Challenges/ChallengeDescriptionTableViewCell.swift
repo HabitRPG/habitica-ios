@@ -47,8 +47,8 @@ class ChallengeDescriptionTableViewCell: ResizableTableViewCell, ChallengeConfig
         
         self.marginConstraint.constant = 0
         if self.heightConstraint == nil {
-            self.heightConstraint = NSLayoutConstraint(item: descriptionLabel, attribute: NSLayoutAttribute.height, relatedBy: .equal,
-                                                       toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 0)
+            self.heightConstraint = NSLayoutConstraint(item: descriptionLabel, attribute: NSLayoutConstraint.Attribute.height, relatedBy: .equal,
+                                                       toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 0)
         }
         
         if let constraint = self.heightConstraint {

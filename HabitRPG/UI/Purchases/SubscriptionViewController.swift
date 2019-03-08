@@ -23,6 +23,11 @@ class SubscriptionViewController: HRPGBaseViewController {
     private let userRepository = UserRepository()
     private let disposable = ScopedDisposable(CompositeDisposable())
     
+    @IBOutlet weak var subscriptionBenefitsTitleLabel: UILabel!
+    @IBOutlet weak var giftSubscriptionExplanationLabel: UILabel!
+    @IBOutlet weak var giftSubscriptionButton: UIButton!
+    @IBOutlet weak var subscriptionSupportLabel: UILabel!
+    
     var products: [SKProduct]?
     var selectedSubscriptionPlan: SKProduct?
     var user: UserProtocol? {
@@ -31,6 +36,7 @@ class SubscriptionViewController: HRPGBaseViewController {
                 isSubscribed = true
                 restorePurchaseButton.isHidden = true
             }
+            hasTerminationDate = user?.purchased?.subscriptionPlan?.dateTerminated != nil
         }
     }
     let appleValidator: AppleReceiptValidator
@@ -56,17 +62,18 @@ class SubscriptionViewController: HRPGBaseViewController {
     }
 
     var isSubscribed = false
+    var hasTerminationDate = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         if let termsView = self.tableView.tableFooterView?.viewWithTag(2) as? UITextView {
             let termsAttributedText = NSMutableAttributedString(string: "Once we've confirmed your purchase, the payment will be charged to your iTunes Account! Thank you so much for your support.\n\nPlease note that subscriptions automatically renew unless your auto-renew is turned off at least 24-hours before the end of the current period, which you can do by going to your Account Settings page after you've made your purchase. You can also manage subscriptions from the Account Settings page. If you have an active subscription, your account will be charged for renewal within 24-hours prior to the end of your current subscription period. When your subscription renews, you will be charged the same price that you initially paid. If you have any questions, feel free to ask in the Habitica Help Guild\nBy continuing you accept the Terms of Use and Privacy Policy")
-            termsAttributedText.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.gray50(), range: NSRange(location: 0, length: termsAttributedText.length))
+            termsAttributedText.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.gray50(), range: NSRange(location: 0, length: termsAttributedText.length))
             let termsRange = termsAttributedText.mutableString.range(of: "Terms of Use")
-            termsAttributedText.addAttributes([NSAttributedStringKey.link: "https://habitica.com/static/terms"], range: termsRange)
+            termsAttributedText.addAttributes([NSAttributedString.Key.link: "https://habitica.com/static/terms"], range: termsRange)
             let privacyRange = termsAttributedText.mutableString.range(of: "Privacy Policy")
-            termsAttributedText.addAttributes([NSAttributedStringKey.link: "https://habitica.com/static/privacy"], range: privacyRange)
+            termsAttributedText.addAttributes([NSAttributedString.Key.link: "https://habitica.com/static/privacy"], range: privacyRange)
             termsView.attributedText = termsAttributedText
         }
         let optionNib = UINib.init(nibName: "SubscriptionOptionView", bundle: nil)
@@ -87,6 +94,13 @@ class SubscriptionViewController: HRPGBaseViewController {
             self?.user = user
         }).start())
     }
+    
+    override func populateText() {
+        subscriptionBenefitsTitleLabel.text = L10n.subscriptionBenefitsTitle
+        giftSubscriptionExplanationLabel.text = L10n.subscriptionGiftExplanation
+        giftSubscriptionButton.setTitle(L10n.subscriptionBenefitsTitle, for: .normal)
+        subscriptionSupportLabel.text = L10n.subscriptionSupportDevelopers
+    }
 
     func retrieveProductList() {
         SwiftyStoreKit.retrieveProductsInfo(Set(PurchaseHandler.subscriptionIdentifiers)) { (result) in
@@ -100,7 +114,9 @@ class SubscriptionViewController: HRPGBaseViewController {
                 }
                 return firstIndex < secondIndex
             })
+            self.selectedSubscriptionPlan = self.products?.first
             self.tableView.reloadData()
+            self.tableView.selectRow(at: IndexPath(item: 0, section: 1), animated: true, scrollPosition: .none)
         }
     }
 
@@ -149,7 +165,11 @@ class SubscriptionViewController: HRPGBaseViewController {
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        if (isSubscribed && hasTerminationDate) {
+            return 4
+        } else {
+            return 3
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -163,13 +183,12 @@ class SubscriptionViewController: HRPGBaseViewController {
         } else if isDetailSection(section) {
             return 1
         } else {
-            if isSubscribed || self.products == nil || self.products?.count == 0 {
+            if (isSubscribed && !hasTerminationDate) || self.products == nil || self.products?.count == 0 {
                 return 0
             } else {
                 return 1
             }
         }
-
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -178,7 +197,7 @@ class SubscriptionViewController: HRPGBaseViewController {
                 let description = SubscriptionInformation.descriptions[indexPath.item] as NSString
                 let height = 90 + description.boundingRect(with: CGSize.init(width: self.viewWidth-80, height: CGFloat.infinity),
                                                      options: NSStringDrawingOptions.usesLineFragmentOrigin,
-                                                     attributes: [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: .body)],
+                                                     attributes: [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .body)],
                                                      context: nil).size.height
                 return height
             } else {
@@ -189,7 +208,7 @@ class SubscriptionViewController: HRPGBaseViewController {
         } else if isDetailSection(indexPath.section) {
             return 550
         }
-        return 50
+        return 60
     }
 
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
@@ -226,6 +245,21 @@ class SubscriptionViewController: HRPGBaseViewController {
             let product = self.products?[indexPath.item]
             cell.priceLabel.text = product?.localizedPrice
             cell.titleLabel.text = product?.localizedTitle
+            
+            switch product?.productIdentifier {
+            case PurchaseHandler.subscriptionIdentifiers[0]:
+                cell.setMonthCount(1)
+            case PurchaseHandler.subscriptionIdentifiers[1]:
+                cell.setMonthCount(3)
+            case PurchaseHandler.subscriptionIdentifiers[2]:
+                cell.setMonthCount(6)
+            case PurchaseHandler.subscriptionIdentifiers[3]:
+                cell.setMonthCount(12)
+            default: break
+            }
+            DispatchQueue.main.async {
+                cell.setSelected(product?.productIdentifier == self.selectedSubscriptionPlan?.productIdentifier, animated: true)
+            }
             returnedCell = cell
         } else if self.isDetailSection(indexPath.section) {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "DetailCell", for: indexPath) as? SubscriptionDetailView else {
@@ -248,6 +282,7 @@ class SubscriptionViewController: HRPGBaseViewController {
             returnedCell = cell
         } else if indexPath.section == tableView.numberOfSections-1 {
             returnedCell = tableView.dequeueReusableCell(withIdentifier: "SubscribeButtonCell", for: indexPath)
+            (returnedCell?.viewWithTag(1) as? UIButton)?.setTitle(L10n.subscribe, for: .normal)
         }
         returnedCell?.selectionStyle = .none
         return returnedCell ?? UITableViewCell()
@@ -258,11 +293,11 @@ class SubscriptionViewController: HRPGBaseViewController {
     }
 
     func isOptionSection(_ section: Int) -> Bool {
-        return !isSubscribed && section == 1
+        return (!isSubscribed || hasTerminationDate) && section == 1
     }
 
     func isDetailSection(_ section: Int) -> Bool {
-        return isSubscribed && section == 1
+        return (isSubscribed && !hasTerminationDate && section == 2) || (isSubscribed && hasTerminationDate && section == 3)
     }
 
     @IBAction func subscribeButtonPressed(_ sender: Any) {
@@ -340,6 +375,37 @@ class SubscriptionViewController: HRPGBaseViewController {
             return false
         case .notPurchased:
             return false
+        }
+    }
+    
+    private var giftRecipientUsername = ""
+    
+    @IBAction func giftSubscriptionButtonTapped(_ sender: Any) {
+        let alertController = HabiticaAlertController(title: L10n.giftRecipientTitle, message: L10n.giftRecipientSubtitle)
+        let textField = UITextField()
+        textField.autocorrectionType = .no
+        textField.autocapitalizationType = .none
+        textField.borderColor = UIColor.gray300()
+        textField.borderWidth = 1
+        textField.tintColor = ThemeService.shared.theme.tintColor
+        alertController.contentView = textField
+        alertController.addCancelAction()
+        alertController.addAction(title: L10n.continue, style: .default, isMainAction: true, closeOnTap: true, handler: { _ in
+            if let username = textField.text, username.count > 0 {
+                self.giftRecipientUsername = username
+                self.perform(segue: StoryboardSegue.Main.openGiftGemDialog)
+            }
+        })
+        alertController.show()
+        alertController.containerViewSpacing = 8
+        alertController.containerView.spacing = 4
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == StoryboardSegue.Main.openGiftGemDialog.rawValue {
+            let navigationController = segue.destination as? UINavigationController
+            let giftSubscriptionController = navigationController?.topViewController as? GiftSubscriptionViewController
+            giftSubscriptionController?.giftRecipientUsername = giftRecipientUsername
         }
     }
 }

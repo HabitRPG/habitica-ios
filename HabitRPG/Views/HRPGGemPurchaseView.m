@@ -8,6 +8,7 @@
 
 #import "HRPGGemPurchaseView.h"
 #import "HRPGPurchaseLoadingButton.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGGemPurchaseView ()
 
@@ -15,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *amountLabel;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *promoHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *promoGemsSpace;
+@property (weak, nonatomic) IBOutlet UILabel *gemsLabel;
 @property(nonatomic) void (^promoTapEvent)();
 
 @end
@@ -40,6 +42,8 @@
         default:
             break;
     }
+    
+    self.gemsLabel.text = objcL10n.gems;
 }
 
 - (void)setPrice:(NSString *)price {

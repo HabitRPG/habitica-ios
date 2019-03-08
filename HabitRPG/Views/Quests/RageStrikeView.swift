@@ -83,15 +83,15 @@ class RageStrikeView: UIView {
     private func getLocationName() -> String {
         switch locationIdentifier {
         case "market":
-            return NSLocalizedString("Market", comment: "")
+            return L10n.Locations.market
         case "tavern":
-            return NSLocalizedString("Tavern", comment: "")
+            return L10n.Locations.tavern
         case "questShop":
-            return NSLocalizedString("Quest Shop", comment: "")
+            return L10n.Locations.questShop
         case "seasonalShop":
-            return NSLocalizedString("Seasonal Shop", comment: "")
+            return L10n.Locations.seasonalShop
         case "stable":
-            return NSLocalizedString("Stable", comment: "")
+            return L10n.Locations.stable
         default:
             return ""
         }
@@ -100,15 +100,15 @@ class RageStrikeView: UIView {
     private func getLongNPCName() -> String {
         switch locationIdentifier {
         case "market":
-            return NSLocalizedString("Alex the Merchant", comment: "")
+            return L10n.NPCs.alex
         case "tavern":
-            return NSLocalizedString("Daniel the inn keeper", comment: "")
+            return L10n.NPCs.daniel
         case "questShop":
-            return NSLocalizedString("Ian the Quest Guide", comment: "")
+            return L10n.NPCs.ian
         case "seasonalShop":
-            return NSLocalizedString("Seasonal Sorceress", comment: "")
+            return L10n.NPCs.seasonalSorceress
         case "stable":
-            return NSLocalizedString("Matt the beast master", comment: "")
+            return L10n.NPCs.matt
         default:
             return ""
         }
@@ -117,16 +117,14 @@ class RageStrikeView: UIView {
     @objc
     func viewTapped() {
         if isActive {
-            let npcName = getNPCName()
             let locationName = getLocationName()
-            let npcLongName = getLongNPCName()
-            let string = NSLocalizedString("\(npcName) is Heartbroken!\nOur beloved \(npcLongName) was devastated when \(bossName) shattered the \(locationName). Quickly, tackle your tasks to defeat the monster and help rebuild!", comment: "")
+            let string = L10n.WorldBoss.rageStrikeDamaged(getNPCName(), getLongNPCName(), bossName, getLocationName())
             let attributedString = NSMutableAttributedString(string: string)
             let firstLineRange = NSRange(location: 0, length: string.components(separatedBy: "\n")[0].count)
             attributedString.addAttribute(.font, value: CustomFontMetrics.scaledSystemFont(ofSize: 17), range: firstLineRange)
             attributedString.addAttribute(.foregroundColor, value: UIColor.black, range: firstLineRange)
             attributedString.addAttribute(.font, value: CustomFontMetrics.scaledSystemFont(ofSize: 15), range: NSRange.init(location: firstLineRange.length, length: string.count - firstLineRange.length))
-            let alertController = HabiticaAlertController.alert(title: NSLocalizedString("The \(locationName) was Attacked!", comment: ""))
+            let alertController = HabiticaAlertController.alert(title: L10n.WorldBoss.rageStrikeTitle(locationName))
             alertController.contentViewInsets = UIEdgeInsets(top: 0, left: 0, bottom: 16, right: 0)
             alertController.containerViewSpacing = 0
             alertController.titleBackgroundColor = UIColor.orange50()
@@ -139,7 +137,7 @@ class RageStrikeView: UIView {
             let label = contentView.viewWithTag(3) as? UITextView
             
             ImageManager.getImage(name: "\(locationIdentifier)_background_\(questIdentifier)") { (image, error) in
-                npcBackgroundView?.image = image?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: UIImageResizingMode.tile)
+                npcBackgroundView?.image = image?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: UIImage.ResizingMode.tile)
 
             }
             npcSceneView?.setImagewith(name: "\(locationIdentifier)_scene_\(questIdentifier)")
@@ -150,13 +148,13 @@ class RageStrikeView: UIView {
             alertController.view.setNeedsLayout()
             alertController.titleLabel.textColor = .white
         } else {
-            let string = NSLocalizedString("Be careful...\nThe World Boss will lash out and attack one of our friendly shopkeepers once its rage bar fills. Keep up with your Dailies to try and prevent it from happening!", comment: "")
+            let string = L10n.WorldBoss.rageStrikeWarning
             let attributedString = NSMutableAttributedString(string: string)
             let firstLineRange = NSRange(location: 0, length: string.components(separatedBy: "\n")[0].count)
             attributedString.addAttribute(.font, value: CustomFontMetrics.scaledSystemFont(ofSize: 17), range: firstLineRange)
             attributedString.addAttribute(.foregroundColor, value: UIColor.black, range: firstLineRange)
             attributedString.addAttribute(.font, value: CustomFontMetrics.scaledSystemFont(ofSize: 15), range: NSRange.init(location: firstLineRange.length, length: string.count - firstLineRange.length))
-            let alertController = HabiticaAlertController.alert(title: NSLocalizedString("Pending Strike", comment: ""), attributedMessage: attributedString)
+            let alertController = HabiticaAlertController.alert(title: L10n.WorldBoss.pendingStrike, attributedMessage: attributedString)
             alertController.titleBackgroundColor = UIColor.orange50()
             alertController.addCloseAction()
             alertController.show()

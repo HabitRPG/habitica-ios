@@ -15,6 +15,8 @@ class GuidelinesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.title = L10n.Titles.guidelines
+        
         let urlString = "https://s3.amazonaws.com/habitica-assets/mobileApp/endpoint/community-guidelines.md"
         guard let url = URL(string: urlString) else {
             return

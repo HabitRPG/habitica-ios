@@ -21,6 +21,10 @@ class MountDetailViewController: StableDetailViewController<MountDetailDataSourc
         super.viewDidLoad()
     }
     
+    override func populateText() {
+        navigationItem.title = L10n.Titles.mounts
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let item = datasource?.item(at: indexPath), item.owned == true {
             showActionSheet(forStableItem: item, withSource: collectionView.cellForItem(at: indexPath))

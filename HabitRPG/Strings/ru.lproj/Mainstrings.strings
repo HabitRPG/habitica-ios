@@ -1,699 +1,930 @@
 /* (No Comment) */
 "active" = "Активные";
-
 /* (No Comment) */
 "animal_ears" = "Звериные уши";
-
 /* (No Comment) */
 "avatar.background" = "Фон";
-
 /* (No Comment) */
 "avatar.bangs" = "Чёлка";
-
 /* (No Comment) */
 "avatar.beard" = "Борода";
-
 /* (No Comment) */
 "avatar.flower" = "Цветок";
-
 /* (No Comment) */
 "avatar.glasses" = "Очки";
-
 /* (No Comment) */
 "avatar.hair_style" = "Стиль волос";
-
 /* (No Comment) */
 "avatar.hairColor" = "Цвет волос";
-
 /* (No Comment) */
 "avatar.head" = "Голова";
-
 /* (No Comment) */
 "avatar.mustache" = "Усы";
-
 /* (No Comment) */
 "avatar.shirt" = "Рубашка";
-
 /* (No Comment) */
 "avatar.skin" = "Цвет кожи";
-
 /* (No Comment) */
 "avatar.wheelchair" = "Кресло-каталка";
-
 /* (No Comment) */
 "cancel" = "Отмена";
-
 /* (No Comment) */
 "chat" = "Чат";
-
 /* (No Comment) */
 "classes.become_a_class" = "Стать %@";
-
 /* (No Comment) */
 "classes.class_header" = "%@ Класс";
-
 /* (No Comment) */
 "classes.healer" = "Целитель";
-
 /* (No Comment) */
 "classes.healer_description" = "Целители неуязвимы перед уроном и распространяют защиту на других. Пропущенные ежедневные задания и вредные привычки несильно их беспокоят, а после неудачи они могут восстановить здоровье. Играйте за целителя, если вам нравится помогать другим членам команды или если вас вдохновляет мысль о возможности усердным трудом обмануть смерть.";
-
 /* (No Comment) */
 "classes.mage" = "Маг";
-
 /* (No Comment) */
 "classes.rogue" = "Разбойник";
-
 /* (No Comment) */
 "classes.rogue_description" = "Разбойники накапливают богатства, получая больше золота, чем кто бы там ни было. Они также эксперты по поиску различных предметов. Их культовая способность «Хитрость» позволяет им уклониться от последствий невыполненных ежедневных заданий. Играйте за разбойника, если хорошей мотивацией для вас являются награды и достижения и вы жаждете трофеев и значков!";
-
 /* (No Comment) */
 "classes.warrior" = "Воин";
-
 /* (No Comment) */
 "close" = "Закрыть";
-
 /* (No Comment) */
 "confirm" = "Подтвердить";
-
 /* (No Comment) */
 "controls" = "Управление";
-
 /* (No Comment) */
 "create" = "Добавить";
-
 /* (No Comment) */
 "daily" = "Ежедневно";
-
 /* (No Comment) */
 "delete" = "Удалить";
-
 /* (No Comment) */
 "description" = "Описание группы";
-
 /* (No Comment) */
 "details" = "Подробности";
-
 /* (No Comment) */
 "difficulty" = "Сложность";
-
 /* (No Comment) */
 "discover" = "Найти";
-
 /* (No Comment) */
 "edit" = "Изменить";
-
 /* (No Comment) */
 "eggs" = "Яйца";
-
 /* (No Comment) */
 "equip" = "Надеть";
-
 /* (No Comment) */
 "equipment.armor" = "Броня";
-
 /* (No Comment) */
 "equipment.auto_equip" = "Авто-надевание нового";
-
 /* (No Comment) */
 "equipment.back" = "Аксессуар на спину";
-
 /* (No Comment) */
 "equipment.battle_gear" = "Боевая экипировка";
-
 /* (No Comment) */
 "equipment.body" = "Аксессуар на тело";
-
 /* (No Comment) */
 "equipment.costume" = "Костюм";
-
 /* (No Comment) */
 "equipment.eyewear" = "Очки";
-
 /* (No Comment) */
 "equipment.head" = "Экипировка на голову";
-
 /* (No Comment) */
 "equipment.head_accessory" = "Аксессуар на голову";
-
 /* (No Comment) */
 "equipment.nothing_equipped" = "Ничего не надето";
-
 /* (No Comment) */
 "equipment.off_hand" = "Защита";
-
 /* (No Comment) */
 "equipment.use_costume" = "Использовать костюм";
-
 /* (No Comment) */
 "equipment.weapon" = "Оружие";
-
 /* (No Comment) */
 "experience" = "Опыт";
-
 /* (No Comment) */
 "food" = "Еда";
-
 /* (No Comment) */
 "glasses" = "Очки";
-
 /* (No Comment) */
 "groups.assign_new_leader" = "Назначить нового лидера";
-
 /* (No Comment) */
 "groups.leader_challenges" = "Только лидер может создавать Испытания";
-
 /* (No Comment) */
 "guilds.keep_challenges" = "Оставить испытания";
-
 /* (No Comment) */
 "guilds.leave_challenges" = "Покинуть Испытание";
-
 /* (No Comment) */
 "guilds.leave_guild_description" = "Вы хотите покинуть гильдию и оставить или удалить испытания?";
-
 /* (No Comment) */
 "guilds.leave_guild_title" = "Покинуть гильдию?";
-
 /* (No Comment) */
 "hatch_egg" = "Вылупить питомца";
-
 /* (No Comment) */
 "hatch_potion" = "Полить эликсиром";
-
 /* (No Comment) */
 "hatching_potions" = "Инкубационные эликсиры";
-
 /* (No Comment) */
 "headband" = "Повязка на голове";
-
 /* (No Comment) */
 "health" = "Здоровье";
-
 /* (No Comment) */
 "inactive" = "Неактивный";
-
 /* (No Comment) */
 "inventory.available_until" = "Доступно до %@";
-
 /* (No Comment) */
 "inventory.hatched" = "У вас вылупился новый питомец!";
-
 /* (No Comment) */
 "inventory.no_gems_left" = "В этом месяц нет доступных самоцветов. Новая партия появляется в течение первых 3 дней каждого месяца.";
-
 /* (No Comment) */
 "inventory.wrong_class" = "Доступно только для %@s. Вы можете сменить класс в Настройках";
-
 /* (No Comment) */
 "invite_party" = "Пригласить команду";
-
 /* (No Comment) */
 "last_activity" = "Последняя активность %@";
-
 /* (No Comment) */
 "leader" = "Предводитель";
-
 /* (No Comment) */
 "leave" = "Покинуть";
-
 /* (No Comment) */
 "level_number" = "Уровень %d";
-
 /* (No Comment) */
 "levelup_description" = "За выполнение ваших жизненных целей вы выросли до %ld уровня!";
-
 /* (No Comment) */
 "levelup_share" = "Я получил %ld уровень в Habitica, улучшая привычки в реальной жизни!";
-
 /* (No Comment) */
 "levelup_title" = "Вы получили уровень!";
-
 /* (No Comment) */
 "mana" = "Мана";
-
 /* (No Comment) */
 "member.last_logged_in" = "Последний вход";
-
 /* (No Comment) */
 "member.member_since" = "Участник с";
-
 /* (No Comment) */
 "menu.about" = "О проекте";
-
 /* (No Comment) */
 "menu.cast_spells" = "Наложить заклинания";
-
 /* (No Comment) */
 "menu.challenges" = "Испытания";
-
 /* (No Comment) */
 "menu.customize_avatar" = "Изменить аватар";
-
 /* (No Comment) */
 "menu.equipment" = "Снаряжение";
-
 /* (No Comment) */
 "menu.gems_subscriptions" = "Самоцветы и подписки";
-
 /* (No Comment) */
 "menu.guilds" = "Гильдии";
-
 /* (No Comment) */
 "menu.help_faq" = "Помощь и ЧаВо";
-
 /* (No Comment) */
 "menu.inventory" = "Инвентарь";
-
 /* (No Comment) */
 "menu.items" = "Предметы";
-
 /* (No Comment) */
 "menu.news" = "Новости";
-
 /* (No Comment) */
 "menu.party" = "Команда";
-
 /* (No Comment) */
 "menu.select_class" = "Выбрать класс";
-
 /* (No Comment) */
 "menu.shops" = "Магазины";
-
 /* (No Comment) */
 "menu.social" = "Общение";
-
 /* (No Comment) */
 "menu.stable" = "Стойла";
-
 /* (No Comment) */
 "menu.stats" = "Характеристики";
-
 /* (No Comment) */
 "menu.tavern" = "Таверна";
-
 /* (No Comment) */
 "menu.use_skills" = "Использовать навыки";
-
 /* (No Comment) */
 "monthly" = "Ежемесячно";
-
 /* (No Comment) */
 "mounts" = "Скакуны";
-
 /* (No Comment) */
 "my_challenges" = "Мои испытания";
-
 /* (No Comment) */
 "my_guilds" = "Мои гильдии";
-
 /* (No Comment) */
 "name" = "Имя";
-
 /* (No Comment) */
 "notes" = "Заметки";
-
 /* (No Comment) */
 "ok" = "ОК";
-
 /* (No Comment) */
 "one_month" = "1 Месяц";
-
 /* (No Comment) */
 "open" = "Открыть";
-
 /* (No Comment) */
 "open_itunes" = "Открыть iTunes";
-
 /* (No Comment) */
 "open_website" = "Открыть веб-сайт Habitica";
-
 /* (No Comment) */
 "party.invited_to_quest" = "%@ пригласил(а) вас принять участие в квесте";
-
 /* (No Comment) */
 "party.quest_number_responded" = "%d/%d откликнулось Участников";
-
 /* (No Comment) */
 "party.quest_participant_count" = "%d участников";
-
 /* (No Comment) */
 "pending_damage" = "Ожидаемый урон";
-
 /* (No Comment) */
 "pets" = "Питомцы";
-
 /* (No Comment) */
 "plain_backgrounds" = "Простые фоны";
-
 /* (No Comment) */
 "purchase_for_gems" = "Купить за %d самоцветов";
-
 /* (No Comment) */
 "quests" = "Квесты";
-
 /* (No Comment) */
 "quests.accepted" = "Принято";
-
 /* (No Comment) */
 "quests.boss_battle" = "Бой с Боссом";
-
 /* (No Comment) */
 "quests.collection_quest" = "Собираемый квест";
-
 /* (No Comment) */
 "quests.confirm_abort" = "Вы уверены, что хотите отменить эту миссию? Она отменится для всех членов группы, весь прогресс будет утерян. Свиток вернется к владельцу квеста.";
-
 /* (No Comment) */
 "quests.confirm_cancel_invitation" = "Вы уверены, что хотите отменить квест? Приглашение будет потеряно. Свиток сохранится у владельца квеста.";
-
 /* (No Comment) */
 "quests.invitations_header" = "Приглашения";
-
 /* (No Comment) */
 "quests.participants_header" = "Участники";
-
 /* (No Comment) */
 "quests.pending" = "В ожидании";
-
 /* (No Comment) */
 "quests.rejected" = "Отклонено";
-
 /* (No Comment) */
 "quests.started_by" = "Стартовал %@";
-
 /* (No Comment) */
 "received_mystery_item" = "Вы открываете коробку и находите %@";
-
 /* (No Comment) */
 "reset_tips" = "Сбросить Подсказки от Джастина";
-
 /* (No Comment) */
 "resetStreak" = "Сбросить серию";
-
 /* (No Comment) */
 "resync" = "Синхронизировать";
-
 /* (No Comment) */
 "resync_all" = "Синхронизировать все";
-
 /* (No Comment) */
 "resync_task" = "Синхронизировать задачу";
-
 /* (No Comment) */
 "save" = "Сохранить";
-
 /* (No Comment) */
 "search" = "Поиск";
-
 /* (No Comment) */
 "sell" = "Продать за %d золота";
-
 /* (No Comment) */
 "settings.api" = "API";
-
 /* (No Comment) */
 "settings.are_you_sure" = "Вы уверены?";
-
 /* (No Comment) */
 "settings.authentication" = "Аутентификация";
-
 /* (No Comment) */
 "settings.change_class" = "Сменить класс";
-
 /* (No Comment) */
 "settings.change_class_disclaimer" = "После сброса потребуется заново выбрать класс персонажа и перераспределить очки характеристик (будут доступны все ранее полученные очки). Цена — 3 самоцвета.";
-
 /* (No Comment) */
 "settings.clear_cache" = "Очистить кэш";
-
 /* (No Comment) */
 "settings.custom_day_start" = "Персональное начало суток";
-
 /* (No Comment) */
 "settings.daily_reminder" = "Ежедневное напоминание";
-
 /* (No Comment) */
 "settings.day_start" = "Начало суток";
-
 /* (No Comment) */
 "settings.disable_all_notifications" = "Включить все push-уведомления ";
-
 /* (No Comment) */
 "settings.disable_pm" = "Заблокировать получение личных сообщений";
-
 /* (No Comment) */
 "settings.display_notification_badge" = "Показать уведомления";
-
 /* (No Comment) */
 "settings.enable_class_system" = "Включить систему классов";
-
 /* (No Comment) */
 "settings.every_day" = "Каждый день в";
-
 /* (No Comment) */
 "settings.fix_characterValues" = "Исправить данные персонажа";
-
 /* (No Comment) */
 "settings.log_out" = "Выйти";
-
 /* (No Comment) */
 "settings.maintenance" = "Техническое обслуживание";
-
 /* (No Comment) */
 "settings.notification_badge" = "Уведомление";
-
 /* (No Comment) */
 "settings.preferences" = "Настройки";
-
 /* (No Comment) */
 "settings.profile" = "Профиль";
-
 /* (No Comment) */
 "settings.push_notifications" = "Уведомления";
-
 /* (No Comment) */
 "settings.reload_content" = "Обновить содержимое";
-
 /* (No Comment) */
 "settings.reminder" = "Напоминание";
-
 /* (No Comment) */
 "settings.select_class" = "Выбрать класс";
-
 /* (No Comment) */
 "settings.social" = "Общение";
-
 /* (No Comment) */
 "settings.sound_theme" = "Звуковая тема";
-
 /* (No Comment) */
 "settings.theme_color" = "Цвет темы";
-
 /* (No Comment) */
 "settings.user" = "Пользователь";
-
 /* (No Comment) */
 "settings.wrong_password" = "Неверный пароль";
-
 /* (No Comment) */
 "share" = "Поделиться";
-
 /* (No Comment) */
 "skills.cant_cast_on_challenge_tasks" = "Нельзя накладывать заклинания на задания испытания";
-
 /* (No Comment) */
 "skills.unlocks_at" = "Открывается на уровне %d";
-
 /* (No Comment) */
 "skills.use_skill" = "Вы используете %@";
-
 /* (No Comment) */
 "skills.used_transformation_item" = "Вы использовали %@";
-
 /* (No Comment) */
 "specialItems" = "Особые предметы";
-
 /* (No Comment) */
 "stable.feed" = "Покормить";
-
 /* (No Comment) */
 "stable.premium" = "Из Волшебного эликсира";
-
 /* (No Comment) */
 "stable.quest_mounts" = "Квестовые скакуны";
-
 /* (No Comment) */
 "stable.quest_pets" = "Квестовые питомцы";
-
 /* (No Comment) */
 "stable.special_mounts" = "Особые скакуны";
-
 /* (No Comment) */
 "stable.special_pets" = "Особые питомцы";
-
 /* (No Comment) */
 "stable.standard" = "Обычные";
-
 /* (No Comment) */
 "stable.standard_mounts" = "Обычные скакуны";
-
 /* (No Comment) */
 "stable.standard_pets" = "Обычные питомцы";
-
 /* (No Comment) */
 "stats.allocated" = "Распределено очков";
-
 /* (No Comment) */
 "stats.battle_gear" = "Боевая экипировка";
-
 /* (No Comment) */
 "stats.buffs" = "Бафы";
-
 /* (No Comment) */
 "stats.class_bonus" = "Бонус класса";
-
 /* (No Comment) */
 "stats.level" = "Уровень";
-
 /* (No Comment) */
 "stats.no_points_to_allocate" = "0 очков для распределения";
-
 /* (No Comment) */
 "stats.one_point_to_allocate" = "1 очко для распределения";
-
 /* (No Comment) */
 "summary" = "Сводка о гильдии";
-
 /* (No Comment) */
 "sync_error" = "Ошибка синхронизирования";
-
 /* (No Comment) */
 "sync_error_message" = "Произошла ошибка при синхронизировании некоторых изменений.";
-
 /* (No Comment) */
 "tags" = "Теги";
-
 /* (No Comment) */
 "tasks.daily" = "Ежедневно";
-
 /* (No Comment) */
 "tasks.form.checklist" = "Список";
-
 /* (No Comment) */
 "tasks.form.clear" = "Очистить";
-
 /* (No Comment) */
 "tasks.form.confirm_delete" = "Вы уверены, что хотите удалить эту задачу?";
-
 /* (No Comment) */
 "tasks.form.controls" = "Управление";
-
 /* (No Comment) */
 "tasks.form.cost" = "цене";
-
 /* (No Comment) */
 "tasks.form.create" = "Новый %@";
-
 /* (No Comment) */
 "tasks.form.dailies_title_placeholder" = "Что вы хотите делать регулярно?";
-
 /* (No Comment) */
 "tasks.form.day_of_month" = "Число месяца";
-
 /* (No Comment) */
 "tasks.form.day_of_week" = "День недели";
-
 /* (No Comment) */
 "tasks.form.difficulty" = "Сложность";
-
 /* (No Comment) */
 "tasks.form.due_date" = "Выполнить до";
-
 /* (No Comment) */
 "tasks.form.easy" = "Легко";
-
 /* (No Comment) */
 "tasks.form.edit" = "Изменить %@";
-
 /* (No Comment) */
 "tasks.form.every" = "Каждый";
-
 /* (No Comment) */
 "tasks.form.hard" = "Сложно";
-
 /* (No Comment) */
 "tasks.form.medium" = "Средне";
-
 /* (No Comment) */
 "tasks.form.new_checklist_item" = "Новый пункт списка";
-
 /* (No Comment) */
 "tasks.form.new_reminder" = "Новое напоминание";
-
 /* (No Comment) */
 "tasks.form.notes_placeholder" = "Добавьте любые заметки для справки";
-
 /* (No Comment) */
 "tasks.form.remind_me" = "Напомнить мне";
-
 /* (No Comment) */
 "tasks.form.reminders" = "Напоминания";
-
 /* (No Comment) */
 "tasks.form.repeats" = "Повторения";
-
 /* (No Comment) */
 "tasks.form.reset_streak" = "Сбросить серию";
-
 /* (No Comment) */
 "tasks.form.rewards_title_placeholder" = "Как вы хотите себя наградить?";
-
 /* (No Comment) */
 "tasks.form.tags" = "Теги";
-
 /* (No Comment) */
 "tasks.form.todos_title_placeholder" = "Что вы хотите выполнить один раз?";
-
 /* (No Comment) */
 "tasks.form.trivial" = "Пустяк";
-
 /* (No Comment) */
 "tasks.habit" = "Привычка";
-
 /* (No Comment) */
 "tasks.reward" = "Награда";
-
 /* (No Comment) */
 "tasks.todo" = "Задача";
-
 /* (No Comment) */
 "theme.blue" = "Синий";
-
 /* (No Comment) */
 "theme.default_theme" = "По умолчанию";
-
 /* (No Comment) */
 "theme.green" = "Зеленый";
-
 /* (No Comment) */
 "theme.orange" = "Оранжевый";
-
 /* (No Comment) */
 "theme.red" = "Красный";
-
 /* (No Comment) */
 "theme.yellow" = "Желтый";
-
 /* (No Comment) */
 "title" = "Заголовок";
-
 /* (No Comment) */
 "unequip" = "Снять";
-
 /* (No Comment) */
 "weekly" = "Еженедельно";
-
 /* (No Comment) */
 "yearly" = "Ежегодно";
-
+"back" = "Назад";
+"all" = "Все";
+"weak" = "Слабые";
+"strong" = "Сильные";
+"due" = "Текущие";
+"grey" = "Серые";
+"dated" = "С датой";
+"done" = "Готово";
+"change" = "Изменить";
+"clear" = "Очистить";
+"use" = "Использовать";
+"titles.settings" = "Настройки";
+"titles.authentication" = "Аутентификация";
+"titles.profile" = "Профиль";
+"titles.api" = "API";
+"titles.fix_values" = "Исправить данные";
+"titles.select_class" = "Выбрать класс";
+"titles.stats" = "Характеристики";
+"titles.equipment" = "Снаряжение";
+"titles.items" = "Предметы";
+"titles.faq" = "ЧаВо";
+"titles.about" = "О проекте";
+"titles.news" = "Новости";
+"titles.stable" = "Стойла";
+"titles.pets" = "Питомцы";
+"titles.mounts" = "Скакуны";
+"titles.tavern" = "Таверна";
+"titles.party" = "Команда";
+"titles.guilds" = "Гильдии";
+"titles.guild" = "Гильдия";
+"titles.challenges" = "Испытания";
+"titles.shops" = "Магазины";
+"titles.choose_user" = "Выбрать пользователя";
+"titles.choose_recipient" = "Выберите участника";
+"titles.feed_pet" = "Покормить";
+"titles.guidelines" = "Правила";
+"titles.invite_members" = "Пригласить участников";
+"titles.spells" = "Заклинания";
+"stats.points_to_allocate" = "%d очков для распределения";
+"stats.auto_allocate_points" = "Распределять автоматически";
+"stats.distribute_evenly" = "Распределять равномерно";
+"stats.distribute_evenly_help" = "Распределять одинаковое количество очков на каждую характеристику.";
+"stats.distribute_class" = "Распределять на основе класса";
+"stats.distribute_class_help" = "Направлять больше очков на улучшение характеристик, важных для вашего класса.";
+"stats.distribute_tasks" = "Распределять на основе вида заданий";
+"stats.distribute_tasks_help" = "Распределить очки на Силу, Интеллект, Телосложение и Восприятие в соответствии с выполняемыми задачами.";
+"stats.character_build_title" = "Развитие персонажа";
+"stats.character_build_text" = "За каждый уровень вы получается одно очко для улучшения характеристик. Вы можете сделать это вручную или позволить игре решить за вас, используя одну из опций автоматического распределения.";
+"stats.stat_guide" = "Руководство по характеристикам";
+"stats.strength_title" = "Сила";
+"stats.intelligence_title" = "Интеллект";
+"stats.intelligence_text" = "Увеличивает опыт полученный от выполнения задач. Также увеличивает максимальное число маны и скорость ее восстановления.";
+"stats.constitution_title" = "Телосложение";
+"stats.constitution_text" = "Снижает урон от задач. Не снижает урон полученный от боссов.";
+"stats.perception_title" = "Восприятие";
+"stats.perception_text" = "Увеличивает вероятность дропа при выполнении Заданий, ежедневного дропа, бонусов за серию и количество золота за Задачи.";
+"tasks.habits" = "Привычки";
+"tasks.dailies" = "Ежедневные задания";
+"tasks.rewards" = "Награды";
+"tasks.todos" = "Задачи";
+"tasks.form.habit_title_placeholder" = "Какие привычки вы хотите улучшить или победить?";
+"tasks.form.scheduling" = "На сегодня";
+"tasks.form.start_date" = "Дата начала";
+"tasks.form.accessibility.positive_and_negative_enabled" = "Установлена привычка с плюсом и минусом.";
+"tasks.form.accessibility.positive_enabled" = "Установлена привычка с плюсом.";
+"tasks.form.accessibility.negative_enabled" = "Установлена привычка с минусом.";
+"tasks.form.accessibility.enable_positive" = "Включить положительный эффект.";
+"tasks.form.accessibility.disable_positive" = "Выключить положительный эффект.";
+"tasks.form.accessibility.enable_negative" = "Включить негативный эффект.";
+"tasks.form.accessibility.disable_negative" = "Выключить отрицательный эффект.";
+"tasks.form.accessibility.task_difficulty" = "Сложность %@";
+"tasks.form.accessibility.set_task_difficulty" = "Изменить сложность на %@";
+"tasks.form.accessibility.enable" = "Включить %@";
+"tasks.form.accessibility.disable" = "Отключить %@";
+"tasks.work" = "Работа";
+"tasks.exercise" = "Упражнение";
+"tasks.health" = "Здоровье";
+"tasks.school" = "Учеба";
+"tasks.chores" = "Домашние дела";
+"tasks.creativity" = "Творчество";
+"tasks.add_x" = "Добавить %@";
+"tasks.repeats.daily" = "ежедневно";
+"tasks.repeats.weekly" = "ежемесячно";
+"tasks.repeats.monthly" = "ежемесячно";
+"tasks.repeats.yearly" = "ежегодно";
+"tasks.repeats.every_day" = "каждый день";
+"tasks.repeats.weekdays" = "дни недели";
+"tasks.repeats.weekends" = "выходные";
+"tasks.quality.worst" = "Хуже всего";
+"tasks.quality.worse" = "Хуже";
+"tasks.quality.bad" = "Плохо";
+"tasks.quality.neutral" = "Нейтрально";
+"tasks.quality.good" = "Хорошо";
+"tasks.quality.better" = "Лучше";
+"tasks.quality.best" = "Лучший";
+"tasks.examples.habit_text" = "Нажмите здесь, чтобы изменить данные о плохой привычки, которую вы хотели бы бросить";
+"tasks.examples.habit_notes" = "Или удалите это, сдвинув влево";
+"tasks.examples.todo_text" = "Присоединиться к Habitica (отметить выполненным!)";
+"tasks.examples.todo_notes" = "Вы можете завершить эту задачу, отредактировать ее или удалить.";
+"tasks.examples.reward_text" = "Наградите себя";
+"tasks.examples.reward_notes" = "Смотрите телевизор, играйте в игру, ешьте в удовольствие, это зависит от вас!";
+"tasks.examples.work_habit" = "Обработать email";
+"tasks.examples.work_daily_text" = "Работать сегодня над самым важным заданием";
+"tasks.examples.work_daily_notes" = "Нажмите, чтобы указать вашу наиважнейшую задачу";
+"tasks.examples.work_todo_text" = "Завершить рабочий проект";
+"tasks.examples.work_todo_notes" = "Нажмите, чтобы указать имя вашего текущего проекта + установить срок выполнения!";
+"tasks.examples.exercise_habit" = "10 минут кардио";
+"tasks.examples.exercise_daily_text" = "Ежедневная тренировка";
+"tasks.examples.exercise_daily_notes" = "Нажмите, чтобы выбрать расписание и указать упражнения";
+"tasks.examples.exercise_todo_text" = "Составить график тренировок";
+"tasks.examples.exercise_todo_notes" = "Нажмите, чтобы добавить список";
+"tasks.examples.health_habit" = "Есть здоровую/вредную еду";
+"tasks.examples.health_daily_text" = "Использовать зубную нить";
+"tasks.examples.health_daily_notes" = "Нажмите, чтобы внести какие-либо изменения!";
+"tasks.examples.health_todo_text" = "Мозговой штурм - здоровое изменение";
+"tasks.examples.health_todo_notes" = "Нажмите, чтобы добавить списки";
+"tasks.examples.school_habit" = "Учиться/прокрастинировать";
+"tasks.examples.school_daily_text" = "Сделать домашнюю работу";
+"tasks.examples.school_daily_notes" = "Нажмите, чтобы указать вашу наиважнейшую задачу";
+"tasks.examples.school_todo_text" = "Завершить задание к уроку";
+"tasks.examples.school_todo_notes" = "Нажмите, чтобы указать вашу наиважнейшую задачу";
+"tasks.examples.team_daily_notes" = "Нажмите, чтобы указать вашу наиважнейшую задачу";
+"tasks.examples.team_todo_notes" = "Нажмите, чтобы указать вашу наиважнейшую задачу";
+"tasks.examples.chores_habit" = "10 минут уборки";
+"tasks.examples.chores_daily_text" = "Помыть посуду";
+"tasks.examples.chores_daily_notes" = "Нажмите, чтобы выбрать расписание!";
+"tasks.examples.chores_todo_text" = "Организовать беспорядок";
+"tasks.examples.chores_todo_notes" = "Нажмите, чтобы указать область беспорядка!";
+"tasks.examples.creativity_habit" = "Практикуйте новую творческую технику";
+"tasks.examples.creativity_daily_text" = "Работать над креативным проектом";
+"tasks.examples.creativity_daily_notes" = "Нажмите, чтобы указать имя вашего текущего проекта + установить расписание!";
+"tasks.examples.creativity_todo_text" = "Завершить креативный проект";
+"tasks.examples.creativity_todo_notes" = "Нажмите, чтобы указать название вашего проекта.";
+"menu" = "Меню";
+"filter" = "Фильтр";
+"one_filter" = "1 фильтр";
+"x_filters" = "%ld фильтров";
+"skills.transformation_items" = "Косметические предметы";
+"settings.fix_values_description" = "Если вы столкнулись с ошибкой или совершили ошибку, которая несправедливо изменила ваш персонаж, вы можете вручную исправить эти значения здесь.";
+"settings.change_display_name" = "Изменить отображаемое имя";
+"settings.change_photo_url" = "Изменить ссылку на фото";
+"settings.danger_zone" = "Опасная зона";
+"settings.login_methods" = "Способы авторизации";
+"settings.reset_account" = "Сброс учетной записи";
+"settings.delete_account" = "Удаление учетной записи";
+"settings.delete_account_description" = "Вы уверены? Ваш аккаунт будет удален навсегда без возможности восстановления! Вам понадобится зарегистрировать новый аккаунт, если вы захотите пользоваться Habitica снова. Стоимость потраченных и находящихся в банке самоцветов не будет компенсирована. Если вы абсолютно уверены, напишите ваш пароль в текстовое поле.";
+"settings.change_email" = "Изменить адрес электронной почты";
+"settings.new_email" = "Новая электронная почта";
+"settings.change_username" = "Сменить Имя Пользователя";
+"settings.new_username" = "Новое Имя Пользователя";
+"settings.change_password" = "Измененить пароль";
+"settings.new_password" = "Новый пароль";
+"settings.old_password" = "Старый пароль";
+"settings.local" = "Локальное";
+"theme.teal" = "Бирюзовый";
+"theme.maroon" = "Каштановый";
+"guilds.guild_bank" = "Банк гильдии";
+"guilds.guild_challenges" = "Испытания гильдии";
+"guilds.invite_to_guild" = "Пригласить в гильдию";
+"join" = "Присоединиться";
+"inventory.hatchedSharing" = "У меня только что вылупился новый питомец %@ %@ в Habitica благодаря завершению заданий в реальной жизни!";
+"equipment.equipment" = "Снаряжение";
+"equipment.costume_explanation" = "Выбор этой опции позволяет надеть на аватар вашего персонажа любые, понравившиеся вам вещи, не влияя на характеристики боевой экипировки.";
+"equipment.class_equipment" = "Снаряжение класса";
+"avatar.skin_color" = "Цвет кожи";
+"purchase_gems" = "Купить самоцветы";
+"level" = "Уровень";
+"party.invitation_no_invitername" = "Кто-то пригласил вас в команду.";
+"party.invitation_invitername" = "%@ пригласил вас присоединиться к команде";
+"party.create_party_title" = "Играйте в Habitica с командой";
+"party.create_party_button" = "Создать новую команду";
+"party.join_party_title" = "Хотите присоединиться к команде?";
+"party.party_challenges" = "Испытания команды";
+"party.start_quest" = "Начать квест";
+"quests.confirm_force_start" = "Вы уверены? Не все участники команды присоединились к этому квесту! Квест начнется автоматически, когда все игроки к нему присоединяются или отклонят.";
+"groups.guild_invitation_no_invitername" = "Кто-то пригласил вас в Гильдию: %@";
+"groups.guild_invitation_invitername" = "%@ пригласил вас присоединиться к Гильдии: %@";
+"inventory.number_gems_left" = "Ежемесячные самоцветы: %d/%d в наличии";
+"x_months" = "%d Месяцев";
+"unsubscribe_itunes" = "Больше не хотите иметь подписку? Вы можете управлять своей подпиской прямо из iTunes.";
+"unsubscribe_website" = "Больше не хотите иметь подписку? Ваш способ оплаты позволяет отказаться от подписки только через сам веб-сайт.";
+"size" = "Размер";
+"shirt" = "Рубашка";
+"bangs" = "Чёлка";
+"ponytail" = "Хвостик";
+"color" = "Цвет";
+"flower" = "Цветок";
+"wheelchair" = "Кресло-каталка";
+"copied_to_clipboard" = "Скопировано в буфер обмена";
+"monday" = "Понедельник";
+"tuesday" = "Вторник";
+"wednesday" = "Среда";
+"thursday" = "Четверг";
+"friday" = "Пятница";
+"saturday" = "Суббота";
+"sunday" = "Воскресенье";
+"active_on" = "Активен %@";
+"no_days" = "не осталось дней";
+"groups.invite.invitation_type" = "Тип приглашения";
+"userID" = "ID пользователя";
+"api_key" = "Ключ API";
+"email" = "Email";
+"groups.invite.add_userid" = "Добавить ID пользователя";
+"groups.invite.add_email" = "Добавить Email";
+"scan_QR_code" = "Сканировать QR-код";
+"users_invited" = "Приглашение отправлено пользователям.";
+"username" = "Имя пользователя";
+"password" = "Пароль";
+"username_prompt_title" = "Время выбрать свое имя пользователя!";
+"confirm_username" = "Подтвердите свое имя пользователя";
+"settings.confirm_username_prompt" = "Вы уверены, что хотите выбрать такое Имя пользователя?";
+"username_confirmed_toast" = "Имя пользователя подтверждено";
+"settings.username_not_confirmed" = "Имя пользователя не принято";
+"about.website" = "Сайт";
+"about.report_bug" = "Сообщить о проблеме";
+"about.view_source_code" = "Посмотреть исходный код";
+"about.acknowledgements" = "Благодарности";
+"about.version" = "Версия";
+"about.export_database" = "Экспорт данных";
+"about.no_email_title" = "Ваш адрес электронной почты не указан";
+"login.register" = "Регистрация";
+"login.login" = "Вход";
+"login.login_facebook" = "Войти через Facebook";
+"login.login_google" = "Авторизоваться через Google";
+"login.email_password_link" = "Отправьте мне письмо на сброс пароля";
+"login.enter_email" = "Введите адрес электронной почты, который вы использовали при регистрации.";
+"login.reset_password_response" = "Если ваш электронный адрес указан верно, то на него отправлена ссылка для установки нового пароля.";
+"intro.card1.title" = "Добро пожаловать в";
+"intro.card1.text" = "Время получать удовольствие от выполнения дел. Присоединитесь к 2 миллионам пользователей улучшающих свою жизнь, выполняя задачи.";
+"intro.card2.title" = "Прогресс в игре";
+"intro.card2.subtitle" = "Прогресс в жизни";
+"intro.card3.title" = "Становиться социальнее";
+"intro.card3.subtitle" = "Сражайтесь с монстрами";
+"intro.card3.text" = "Добивайтесь поставленнх целей с помощью друзей. Поддерживайте друг друга в реальной жизни и в сражении, делая свою жизнь лучше!";
+"intro.lets_go" = "Начнем!";
+"skip" = "Пропустить";
+"randomize" = "Случайно";
+"finish" = "Завершить";
+"next" = "Далее";
+"mana_points" = "Очки маны";
+"character_level" = "Уровень персонажа";
+"gold" = "Золото";
+"day_streaks" = "Серии в 21 день подряд";
+"aboutText" = "О проекте";
+"photo_url" = "Ссылка на фото";
+"group_by" = "Сгруппировать по";
+"twoHanded" = "Двуручный";
+"body_size" = "Размер тела";
+"slim" = "Стройное";
+"broad" = "Тучное";
+"buy_all" = "Купить все";
+"no_benefit" = "Нет выгоды";
+"errors.error" = "Ошибка";
+"errors.sync" = "Ошибка синхронизирования";
+"errors.sync_message" = "Произошла ошибка при синхронизировании некоторых изменений.";
+"errors.quest_invite_accept" = "Произошла ошибка при принятии приглашения на квест";
+"errors.quest_invite_reject" = "Произошла ошибка при отказе на приглашение на квест";
+"errors.reply" = "Ваше сообщение не может быть отправлено.";
+"errors.request" = "При запросе возникла ошибка: %@";
+"days" = "дней(-я)";
+"weeks" = "недели";
+"months" = "месяцы";
+"years" = "годы";
+"leave_challenge_title" = "Покинуть испытание?";
+"leave_challenge_prompt" = "Вы хотите покинуть испытание и оставить или удалить задания?";
+"locations.market" = "Рынок";
+"locations.tavern" = "Таверна";
+"locations.quest_shop" = "Магазин квестов";
+"locations.seasonal_shop" = "Сезонная лавка";
+"locations.stable" = "Стойла";
+"NPCs.alex" = "Торговец Александр";
+"NPCs.daniel" = "Даниэль, хранитель гостиницы";
+"NPCs.ian" = "Яна квест-мастер";
+"NPCs.seasonalSorceress" = "Сезонная Чародейка";
+"NPCs.matt" = "Мэтт повелитель зверей";
+"unlocks_selecting_class" = "Открывается после выбора класса";
+"unlocks_level_ten" = "Открывается на 10 уровне";
+"copied_message" = "Сообщение скопировано";
+"write_message" = "Написать сообщение";
+"write_to" = "Написать %@";
+"tavern_intro_header" = "Добро пожаловать в таверну! Займите столик чтобы поболтать, или отвлечься от своих задач.";
+"resume_damage" = "Вернуться в игру";
+"pause_damage" = "Остановить урон";
+"world_boss_intro_header" = "Дорогая, не обращай внимания на монстра внизу — это убежище по-прежнему безопасно , чтобы поболтать на перерыве.";
+"tutorials.habits_1" = "Во-первых, это привычки. Они могут быть положительными привычками, которые вы хотите закрепить, или отрицательными привычками, которые вы хотите бросить.";
+"tutorials.habits_2" = "Каждый раз, когда вы выполняете положительную привычку, нажмите + чтобы получить опыт и золото!";
+"tutorials.habits_3" = "Если вы ошибетесь и сделаете отрицательную привычку, то нажатие на – уменьшит здоровье вашего аватара, что поможет вам оставаться ответственным.";
+"tutorials.habits_4" = "Дайте шанс! Вы можете исследовать другие типы задач через нижнюю навигацию.";
+"tutorials.dailies_1" = "Создавайте ежедневные дела для задач с учетом времени, которые необходимо выполнять по регулярному расписанию.";
+"tutorials.dailies_2" = "Будьте осторожны - если вы пропустите одну задачу, ваш аватар получит урон за ночь. Периодическая провека на выполнение приносит отличные награды!";
+"tutorials.todos_1" = "Используйте список задач для отслеживания дел, которые необходимо выполнить только один раз.";
+"tutorials.todos_2" = "Если ваша задача должна быть выполнена к определенному времени, установите срок. Похоже, вы можете проверить один - вперед!";
+"tutorials.rewards_1" = "Купите экипировку для своего аватара за золотом, котороей вы заработали!";
+"tutorials.rewards_2" = "Вы также можете создавать реальные пользовательские вознаграждения на основе того, что мотивирует вас.";
+"tutorials.add_task" = "Нажмите, чтобы добавить новую задачу.";
+"tutorials.edit_task" = "Нажмите на задание, чтобы редактировать его или добавить напоминание. Смахните его влево для удаления.";
+"tutorials.filter_task" = "Нажмите, чтобы отфильтровать заданияю";
+"tutorials.reorder_task" = "Удерживайте задачу, чтобы перемещать ее";
+"tutorials.inbox" = "Здесь вы можете читать и отвечать на личные сообщения! Вы также можете отправлять сообщения из своих профилей.";
+"tutorials.stats" = "Нажмите серую кнопку, чтобы распределить очки на ваши характеристик сразу или коснитесь стрелок, чтобы добавлять в их по одному очку.";
+"world_boss.pending_strike" = "Ожидаемый урон";
+"world_boss.rage_strike_explanation_button" = "Что такое удар ярости?";
+"buffs" = "Бафы";
+"allocated" = "Распределено очков";
+"gems" = "Самоцветы";
+"teleporting_habitica" = "Телепортация в Habitica";
+"subscription" = "Подписка";
+"remember_check_off_dailies" = "Не забудьте отметить ежедневные задачи!";
+"complete" = "Сделанные";
+"accept" = "Принять";
+"reject" = "Отказать";
+"abort" = "Отменить";
+"reply" = "Ответить";
+"send" = "Отправить";
+"reminder" = "Напоминание";
+"buy" = "купить";
+"success" = "успех";
+"invitations" = "Приглашения";
+"accessibility.tap_hide_boss_art" = "Нажмите дважды, чтобы скрыть изображение босса";
+"accessibility.reply_to_message" = "Ответить на сообщение";
+"accessibility.copy_message" = "Скопировать сообщение";
+"accessibility.delete_message" = "Удалить сообщение";
+"accessibility.like_message" = "Нравится";
+"accessibility.report_message" = "Пожаловаться на сообщение";
+"accessibility.completed_x" = "Выполнено %@";
+"accessibility.double_tap_to_complete" = "Нажмите дважды, чтобы завершить";
+"accessibility.double_tap_to_edit" = "Нажмите дважды для правки";
+"accessibility.complete_task" = "Завершите задание";
+"accessibility.due" = "Текущие";
+"accessibility.completed" = "Завершено";
+"collect" = "Собрать";
+"mystery_sets" = "Таинственный набор";
+"edit_tag" = "Редактировать теги";
+"create_tag" = "Создать тэг";
+"unlockDropsTitle" = "Вы разблокировали систему трофеев!";
+"unlockDropsDescription" = "Вы открыли систему выпадения трофеев! Теперь, когда вы выполняете задания, у вас есть маленький шанс найти предмет, включая яйца, эликсиры и еду!";
+"subscription_info_1_title" = "Купить самоцветы за золото";
+"subscription_info_2_title" = "Эксклюзивные предметы месяца";
+"subscription_info_3_title" = "Увеличенный список выполненных задач";
+"subscription_info_3_description" = "Завершённые задачи дольше дольше не архивируются и доступны для просмотра.";
+"subscription_info_4_title" = "Увеличение дневного предела выпадения предметов в 2 раза";
+"subscription_info_4_description" = "Увеличенный вдвое лимит трофеев позволит вам получать больше предметов за выполнение задач каждый день, помогая заполнить стойла быстрее!";
+"subscription_benefits_title" = "Станьте подписчиком, и вы получите следующие преимущества:";
+"gem_benefits_title" = "Самоцветы дают возможность купить веселые дополнения для аккаунта, в том числе:";
+"unpin_from_rewards" = "Убрать из наград";
+"pin_to_rewards" = "Добавить к наградам";
+"moderator" = "Модератор";
+"staff" = "Сотрудник";
+"report_x_violation" = "Сообщить о нарушении со стороны %@?";
+"not_getting_drops" = "Не выпадают нужные трофеи? Зайдите на Рынок, чтобы купить то, что вам нужно!";
+"streak_achievement_title" = "Вы заработали достижение Серии!";
+"streak_achievement_description" = "Вы выполнили ежедневную задачу 21 день подряд! Отличная работа. Не прерывайте серию!";
+"next_checkin_prize_1_day" = "Ваш следующий приз будет доступен после того, как вы войдете в игру ещё 1 раз.";
+"next_checkin_prize_x_days" = "Ваш следующий приз будет доступен после того, как вы войдете в игру ещё %d раз(а)!";
+"recipient" = "Участник";
+"no_camera" = "Камера не доступна";
+"qr_invalid_id_title" = "Неверный ID пользователя Habitica";
+"qr_invalid_id_message" = "QR-код не содержит ID пользователя Habitica.";
+"not_enough_gems" = "Недостаточно самоцветов";
+"not_enough_hourglasses" = "Недостаточно песочных часов";
+"subscribe_for_hourglasses" = "Подписаться на мистические песочные часы";
+"not_enough_gold" = "Недостаточно золота";
+"take_me_back" = "Верните меня обратно";
+"monthly_gem_cap_reached" = "Достигнут ежемесячный предел самоцветов";
+"your_balance" = "Ваш баланс:";
+"choose_task" = "Выбрать задание";
+"shops.other_class_disclaimer" = "Ты можешь купить экипировку только для твоего текущего класса";
+"shops.purchased_all_gear" = "У вас уже есть всё снаряжение вашего класса! Дополнительное снаряжение будет появляться в течение сезонных Гранд-Гала, во время солнцестояний и равноденствий.";
+"titles.skills" = "Навыки";
+"titles.avatar" = "Аватар";
+"titles.gift_subscription" = "Подписка в подарок";
+"stats.strength_text" = "Увеличивает бонус критических ударов и повышает их вероятность при выполнении заданий. Также увеличивает урон, наносимый боссам. ";
+"tasks.team" = "Команда";
+"tasks.due_today" = "";
+"tasks.due_in_x_days" = "Через %d дн.";
+"tasks.every_x" = "каждый %@";
+"tasks.repeats.repeats_every_on" = "Повторять %@ по %@";
+"tasks.repeats.repeats_every" = "Повторять %@";
+"tasks.repeats.monthly_the" = "%@";
+"tasks.examples.team_habit" = "Задания с командой";
+"tasks.examples.team_daily_text" = "Узнать, как обстоят дела у команды";
+"tasks.examples.team_todo_text" = "Завершить командный проект";
+"settings.app_icon" = "Значок приложения";
+"settings.server" = "Сервер";
+"settings.confirm_new_password" = "Подтвердите новый пароль";
+"guilds.guild_members" = "Участники гильдии";
+"guilds.guild_description" = "Описание гильдии";
+"guilds.guild_leader" = "Лидер гильдии";
+"avatar.body" = "Тело";
+"avatar.hair" = "Прическа";
+"avatar.extras" = "Другое";
+"party.party_description" = "Описание команды";
+"groups.members" = "Участники";
+"groups.invite_member" = "Пригласить участника";
+"quests.reward_experience" = "%d опыта";
+"quests.reward_gold" = "%d золота";
+"quests.rage_attack" = "Атака при ярости: %@";
+"open_app_store" = "Открыть в App Store";
+"tap_to_show" = "Нажмите, чтобы показать";
+"groups.invite.add_username" = "Добавить имя пользователя";
+"display_name" = "Отображаемое имя";
+"repeat_password" = "Повторите пароль";
+"username_prompt_wiki" = "Если хотите более подробно узнать про изменения, то #<wk>посетите нашу вики.#";
+"settings.display_name_length_error" = "Ваше отображаемое имя должно быть от 1 до 30 символов.";
+"about.send_feedback" = "Отправить отзыв";
+"about.leave_review" = "Оставить отзыв";
+"login.password_confirm_error" = "Пароль и подтверждение пароля должны совпадать.";
+"login.authentication_error" = "Кажется, возникли технические проблемы на сервере. Повторите попытку позже.";
+"login.forgot_password" = "Напомнить пароль";
+"groups.error_name_required" = "В приглашении нет текста.";
+"gift_recipient_title" = "Кому бы вы хотели сделать подарок?";
+"gift_recipient_subtitle" = "Введите @ имя получателя";
+"continue" = "Продолжить";
+"gift_confirmation_title" = "Ваш подарок отправлен!";
+"gift_confirmation_body" = "Вы отправили %@ %@-мес. подписку Habitica.";
+"gift_subscription_prompt" = "Выберите подписку, которую хотите подарить ниже! Эта покупка не будет автоматически продлена.";
+"gem_cap" = "Предел в %d самоцветов";
+"hourglass_count" = "+%d мистических песочных часов";
+"intro.welcome_prompt" = "Как к вам обращаться?";
+"intro.welcome_speechbubble" = "О, должно быть, ты тут впервые. Я Джастин, и буду твоим наставником в Habitica. \n\nДля начала, как тебя зовут, герой? Не беспокойся, имя, которое я выбрал, потом можно будет изменить. Ну что, а теперь давай создадим твой аватар!";
+"intro.avatar_setup_speechbubble" = "Итак, как бы вы хотели выглядеть? Не беспокойтесь, вы сможете это изменить позже.";
+"intro.task_setup_speechbubble" = "Великолепно! Теперь, над чем вы хотите работать на протяжении всего этого путешествия?";
+"intro.card2.text" = "Разблокируйте возможности в игре, отмечая выполненные задания в реальной жизни. Получите доспехи, питомцев и многое другое в качестве наград за достижение целей. ";
+"keep_tasks" = "Оставить задания";
+"delete_tasks" = "Удалить задания";
+"write_a_message" = "Написать сообщение";
+"whats_world_boss" = "Кто такой Мировой босс?";
+"tutorials.spells" = "Навыки — это специальные способности, которые имеют мощные эффекты! Нажмите на навык, чтобы использовать его. Это будет стоить вам очков маны (синяя шкала), которая пополняется при входе в игру каждый день и завершением задач в реальной жизни. Читайте ЧаВо в меню, чтобы узнать подробности!";
+"faint.title" = "У вас закончилось здоровье!";
+"faint.description" = "Вы потеряли уровень, ваше золото и часть вашего снаряжения, но вы можете вернуть их обратно, если постараетесь! Удачи! У вас всё получится!";
+"faint.dont_despair" = "Не отчаивайтесь!";
+"faint.good_luck" = "Удачи, у вас всё получится.";
+"faint.button" = "Восстановить здоровье и попробовать снова";
+"agree_guidelines_prompt" = "Я обязуюсь соблюдать Правила сообщества";
+"rage_meter" = "Шкала ярости";
+"world_boss.world_boss" = "Мировой босс";
+"world_boss.title" = "%s атаки!";
+"world_boss.description" = "Мировой босс — особое событие, во время которого сообщество Habitica объединяет усилия, чтобы своими заданиями победить сильнейшего монстра!";
+"world_boss.first_bullet" = "Завершите задачи, чтобы нанести урон боссу";
+"world_boss.second_bullet" = "Мировой босс не тронет вас за пропущенные задания, но уровень его ярости будет расти. Когда шкала ярости заполнится, босс атакует одного из владельцев лавки!";
+"world_boss.third_bullet" = "Можно одновременно сражаться с обычным квестовым боссом, вы нанесёте урон обоим.";
+"world_boss.fourth_bullet" = "Проверяйте Таверну, чтобы увидеть уровни здоровья и ярости мирового босса.";
+"world_boss.rage_strike_title" = "%@ атакован(а)!";
+"start_my_day" = "Начать день";
+"accessibility.world_boss_pending_damage" = "%@, мировой босс, ожидаемый урон: %@";
+"accessibility.not_completed_x" = "Не выполнено %@";
+"accessibility.not_completed" = "Не выполнено";
+"accessibility.collapse_checklist" = "Скрыть список";
+"accessibility.expand_checklist" = "Показать список";
+"leave_challenge" = "Покинуть испытание";
+"join_challenge" = "Присоединиться";
+"publish_challenge" = "Опубликовать испытание";
+"view_participant_progress" = "Показать прогресс участника";
+"end_challenge" = "Завершить";
+"subscription_gift_explanation" = "Хотите подарить подписку кому-то ещё?";
+"subscription_gift_button" = "Подписка в подарок";
+"subscription_support_developers" = "Подписка поддерживает разработчиков и помогает развивать Habitica";
+"subscribe" = "Подписаться";
+"send_gift" = "Отправить подарок";
+"buy_for_x" = "Купить за %@";
+"earned_achievement_share" = "Я получил новое достижение в Habitica! ";
+"invalid_recipient_title" = "Неверное имя пользователя";
+"filter_by_tags" = "Фильтровать по тегам";
+"purchased" = "Вы купили %@";

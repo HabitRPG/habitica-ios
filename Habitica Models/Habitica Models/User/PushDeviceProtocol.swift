@@ -10,8 +10,6 @@ import Foundation
 
 @objc
 public protocol PushDeviceProtocol {
-    var updatedAt: Date? { get set }
-    var createdAt: Date? { get set }
     var type: String? { get set }
     var regId: String? { get set }
 }

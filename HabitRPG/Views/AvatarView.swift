@@ -22,7 +22,8 @@ class AvatarView: UIView {
 
     @objc var avatar: Avatar? {
         didSet {
-            if let dict = avatar?.getFilenameDictionary() {
+            avatar?.substitutions = ConfigRepository().dictionary(variable: .spriteSubstitutions)
+            if let dict = avatar?.getFilenameDictionary(ignoreSleeping: ignoreSleeping) {
                 nameDictionary = dict
             }
             updateView()
@@ -33,6 +34,7 @@ class AvatarView: UIView {
     @IBInspectable @objc var showMount: Bool = true
     @IBInspectable @objc var showPet: Bool = true
     @IBInspectable @objc var isFainted: Bool = false
+    @IBInspectable @objc var ignoreSleeping: Bool = false
     @objc var size: AvatarViewSize = .regular
     
     public var onRenderingFinished: (() -> Void)?
@@ -192,7 +194,7 @@ class AvatarView: UIView {
         guard let avatar = self.avatar else {
             return
         }
-        viewDictionary = avatar.getViewDictionary(showsBackground: showBackground, showsMount: showMount, showsPet: showPet, isFainted: isFainted)
+        viewDictionary = avatar.getViewDictionary(showsBackground: showBackground, showsMount: showMount, showsPet: showPet, isFainted: isFainted, ignoreSleeping: ignoreSleeping)
 
         viewOrder.enumerated().forEach({ (index, type) in
             if viewDictionary[type] ?? false {

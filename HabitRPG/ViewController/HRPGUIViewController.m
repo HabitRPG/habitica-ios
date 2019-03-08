@@ -16,6 +16,7 @@
 - (void)viewDidLoad {
     self.topHeaderCoordinator = [[TopHeaderCoordinator alloc] initWithTopHeaderNavigationController:[self hrpgTopHeaderNavigationController]];
     [super viewDidLoad];
+    [self populateText];
     [self.topHeaderCoordinator viewDidLoad];
 }
 
@@ -37,4 +38,8 @@
     [super viewWillDisappear:animated];
 }
 
+- (void)populateText {
+    
+}
+    
 @end

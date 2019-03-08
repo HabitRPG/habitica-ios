@@ -19,6 +19,14 @@ enum LoginViewAuthType {
     case register
 }
 
+private struct AuthValues {
+    var authType: LoginViewAuthType = LoginViewAuthType.none
+    var email: String?
+    var username: String?
+    var password: String?
+    var passwordRepeat: String?
+}
+
 protocol  LoginViewModelInputs {
     func authTypeChanged()
     func setAuthType(authType: LoginViewAuthType)
@@ -71,6 +79,7 @@ protocol LoginViewModelOutputs {
     var loadingIndicatorVisibility: Signal<Bool, NoError> { get }
     
     var currentAuthType: LoginViewAuthType { get }
+    var arePasswordsSame: Signal<Bool, NoError> { get }
 }
 
 protocol LoginViewModelType {
@@ -93,14 +102,16 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
             Signal.merge(self.passwordRepeatChangedProperty.signal, self.prefillPasswordRepeatProperty.signal)
         )
 
-        self.authValuesProperty = Property(initial: nil, then: authValues.map { $0 })
+        self.authValuesProperty = Property<AuthValues?>(initial: AuthValues(), then: authValues.map {
+            return AuthValues(authType: $0.0, email: $0.1, username: $0.2, password: $0.3, passwordRepeat: $0.4)
+        })
 
         self.authTypeButtonTitle = self.authTypeProperty.signal.map { value -> String? in
             switch value {
             case .login:
-                return "Register".localized
+                return L10n.Login.register
             case .register:
-                return "Login".localized
+                return L10n.Login.login
             case .none:
                 return nil
             }
@@ -109,9 +120,9 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
         self.loginButtonTitle = self.authTypeProperty.signal.map { value -> String? in
             switch value {
             case .login:
-                return "Login".localized
+                return L10n.Login.login
             case .register:
-                return "Register".localized
+                return L10n.Login.register
             case .none:
                 return nil
             }
@@ -120,9 +131,9 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
         self.usernameFieldTitle = self.authTypeProperty.signal.map { value -> String? in
             switch value {
             case .login:
-                return "Email / Username".localized
+                return L10n.Login.emailUsername
             case .register:
-                return "Username".localized
+                return L10n.username
             case .none:
                 return nil
             }
@@ -144,10 +155,12 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
         self.passwordFieldReturnButtonIsDone = isRegistering.map({ value -> Bool in
             return !value
         })
-        self.passwordRepeatFieldReturnButtonIsDone = isRegistering.map({ value -> Bool in
-            return value
-        })
+        self.passwordRepeatFieldReturnButtonIsDone = isRegistering
 
+        self.arePasswordsSame = Signal.combineLatest(passwordChangedProperty.signal, passwordRepeatChangedProperty.signal).map({ (password, passwordRepeat) -> Bool in
+            return password == passwordRepeat
+        })
+        
         self.isFormValid = authValues.map(isValid)
 
         self.emailChangedProperty.value = ""
@@ -264,36 +277,38 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
     }
 
     //swiftlint:disable large_tuple
-    private let authValuesProperty: Property<(authType: LoginViewAuthType, email: String, username: String, password: String, passwordRepeat: String)?>
+    private let authValuesProperty: Property<AuthValues?>
     func loginButtonPressed() {
-        guard let (authType, email, username, password, passwordRepeat) = self.authValuesProperty.value else {
+        guard let authValues = self.authValuesProperty.value else {
             return
         }
 
-        if isValid(authType: authType,
-                   email: email,
-                   username: username,
-                   password: password,
-                   passwordRepeat: passwordRepeat) {
+        if isValid(authType: authValues.authType,
+                   email: authValues.email,
+                   username: authValues.username,
+                   password: authValues.password,
+                   passwordRepeat: authValues.passwordRepeat) {
             self.loadingIndicatorVisibilityObserver.send(value: true)
-            let authValues = self.authValuesProperty.value
-            if self.authTypeProperty.value == .login {
-                userRepository.login(username: authValues?.username ?? "", password: authValues?.password ?? "").observeValues { loginResult in
+            if authValues.authType == .login {
+                userRepository.login(username: authValues.username ?? "", password: authValues.password ?? "").observeValues { loginResult in
                     if loginResult != nil {
                         self.onSuccessfulLogin()
                     } else {
                         self.loadingIndicatorVisibilityObserver.send(value: false)
-                        self.showErrorObserver.send(value: "Invalid username or password".localized)
                     }
                 }
             } else {
-                userRepository.register(username: authValues?.username ?? "", password: authValues?.password ?? "", confirmPassword: authValues?.passwordRepeat ?? "", email: authValues?.email ?? "").observeValues { loginResult in
+                userRepository.register(username: authValues.username ?? "", password: authValues.password ?? "", confirmPassword: authValues.passwordRepeat ?? "", email: authValues.email ?? "").observeValues { loginResult in
                     if loginResult != nil {
                         self.onSuccessfulLogin()
                     } else {
                         self.loadingIndicatorVisibilityObserver.send(value: false)
                     }
                 }
+            }
+        } else {
+            if authValues.authType == .register && authValues.password != authValues.passwordRepeat {
+                showErrorObserver.send(value: L10n.Login.passwordConfirmError)
             }
         }
     }
@@ -331,7 +346,7 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
                         case .success:
                             self?.onSuccessfulLogin()
                         case .failure:
-                            self?.showErrorObserver.send(value: "There was an error with the authentication. Try again later")
+                            self?.showErrorObserver.send(value: L10n.Login.authenticationError)
                         }
                     }
                 }
@@ -359,7 +374,7 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
                     case .success:
                         self?.onSuccessfulLogin()
                     case .failure:
-                        self?.showErrorObserver.send(value: "There was an error with the authentication. Try again later")
+                        self?.showErrorObserver.send(value: L10n.Login.authenticationError)
                     }
                 }
             }
@@ -384,6 +399,7 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
     internal var showNextViewController: Signal<String, NoError>
     internal var loadingIndicatorVisibility: Signal<Bool, NoError>
     internal var onePasswordFindLogin: Signal<(), NoError>
+    internal var arePasswordsSame: Signal<Bool, NoError>
     
     internal var formVisibility: Signal<Bool, NoError>
     internal var beginButtonsVisibility: Signal<Bool, NoError>
@@ -407,9 +423,9 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
     }
 }
 
-func isValid(authType: LoginViewAuthType, email: String, username: String, password: String, passwordRepeat: String) -> Bool {
+func isValid(authType: LoginViewAuthType, email: String?, username: String?, password: String?, passwordRepeat: String?) -> Bool {
 
-    if username.isEmpty || password.isEmpty {
+    if username?.isEmpty != false || password?.isEmpty != false {
         return false
     }
 
@@ -418,7 +434,7 @@ func isValid(authType: LoginViewAuthType, email: String, username: String, passw
             return false
         }
 
-        if !password.isEmpty && password != passwordRepeat {
+        if password?.isEmpty != true && password != passwordRepeat {
             return false
         }
     }
@@ -426,7 +442,7 @@ func isValid(authType: LoginViewAuthType, email: String, username: String, passw
     return true
 }
 
-func isValidEmail(email: String) -> Bool {
+func isValidEmail(email: String?) -> Bool {
     let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
 
     let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegEx)

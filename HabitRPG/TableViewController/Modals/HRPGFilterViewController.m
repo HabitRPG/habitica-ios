@@ -29,6 +29,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.navigationItem.title = objcL10n.filterByTags;
+    self.clearButton.title = objcL10n.clear;
+    
     self.dataSource = [FilterTableViewDataSourceInstantiator instantiate];
     self.dataSource.tableView = self.tableView;
     self.dataSource.selectedTagIds = self.selectedTags;
@@ -37,18 +40,15 @@
         [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 60)];
     if ([self.taskType isEqualToString:@"habit"]) {
         self.filterTypeControl = [[UISegmentedControl alloc] initWithItems:@[
-            NSLocalizedString(@"All", nil), NSLocalizedString(@"Weak", nil),
-            NSLocalizedString(@"Strong", nil)
+            objcL10n.all, objcL10n.weak, objcL10n.strong
         ]];
     } else if ([self.taskType isEqualToString:@"daily"]) {
         self.filterTypeControl = [[UISegmentedControl alloc] initWithItems:@[
-            NSLocalizedString(@"All", nil), NSLocalizedString(@"Due", nil),
-            NSLocalizedString(@"Grey", nil)
+            objcL10n.all, objcL10n.due, objcL10n.grey
         ]];
     } else if ([self.taskType isEqualToString:@"todo"]) {
         self.filterTypeControl = [[UISegmentedControl alloc] initWithItems:@[
-            NSLocalizedString(@"Active", nil), NSLocalizedString(@"Dated", nil),
-            NSLocalizedString(@"Done", nil)
+            objcL10n.active, objcL10n.dated, objcL10n.done
         ]];
     }
     self.filterTypeControl.frame = CGRectMake(8, (self.headerView.frame.size.height - 30) / 2,
@@ -73,6 +73,11 @@
     if (self.selectedTags == nil) {
         self.selectedTags = [[NSMutableArray alloc] init];
     }
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self.tableView reloadData];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -131,16 +136,16 @@
 - (void)showFormAlertForTag:(id)tag {
     NSString *title = nil;
     if (tag) {
-        title = NSLocalizedString(@"Edit Tag", nil);
+        title = objcL10n.editTag;
         self.editedTag = tag;
     } else {
-        title = NSLocalizedString(@"Create Tag", nil);
+        title = objcL10n.createTag;
     self.editedTag = nil;
     }
 
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:nil preferredStyle:UIAlertControllerStyleAlert];
     [alertController addAction:[UIAlertAction cancelActionWithHandler:nil]];
-     [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Save", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+     [alertController addAction:[UIAlertAction actionWithTitle:objcL10n.save style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
          UITextField *textField = alertController.textFields[0];
          NSString *newTagName = textField.text;
          if (self.editedTag) {
@@ -157,6 +162,22 @@
         }
     }];
     [self presentViewController:alertController animated:YES completion:nil];
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return [self.dataSource numberOfSectionsInTableView:tableView];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [self.dataSource tableView:tableView numberOfRowsInSection:section];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return [self.dataSource tableView:tableView cellForRowAtIndexPath:indexPath];
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.dataSource tableView:tableView commit:editingStyle forRowAt:indexPath];
 }
 
 @end

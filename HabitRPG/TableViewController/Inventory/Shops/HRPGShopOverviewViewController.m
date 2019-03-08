@@ -27,6 +27,8 @@
     [super viewDidLoad];
     self.topHeaderCoordinator.hideHeader = YES;
     
+    self.navigationItem.title = objcL10n.titleShops;
+    
     self.viewModel.delegate = self;
     [self.viewModel fetchShops];
     [self.viewModel refreshShops];

@@ -45,7 +45,7 @@ class TutorialStepView: UIView {
     func xibSetup() {
         if let view = loadViewFromNib() {
             view.frame = bounds
-            view.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
+            view.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
             addSubview(view)
             
             self.backgroundView.dimColor = UIColor.purple50().withAlphaComponent(0.6)
@@ -115,7 +115,7 @@ class TutorialStepView: UIView {
              speechbubbleView.caretView.isHidden = true
         }
         self.accessibilityLabel = text
-        UIAccessibilityPostNotification(UIAccessibilityLayoutChangedNotification, self)
+        UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: self)
     }
     
     @objc

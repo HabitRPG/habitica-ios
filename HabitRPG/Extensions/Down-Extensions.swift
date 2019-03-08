@@ -8,23 +8,43 @@
 
 import Foundation
 import Down
+import ReactiveSwift
 
 extension Down {
 
+    func toHabiticaAttributedStringAsync(baseFont: UIFont = CustomFontMetrics.scaledSystemFont(ofSize: 15),
+                                         textColor: UIColor = UIColor.gray100(), onComplete: @escaping ((NSMutableAttributedString?) -> Void)) {
+        DispatchQueue.global(qos: .background).async {
+            let string = try? self.toHabiticaAttributedString()
+            DispatchQueue.main.async {
+                onComplete(string)
+            }
+        }
+    }
+    
     func toHabiticaAttributedString(baseFont: UIFont = CustomFontMetrics.scaledSystemFont(ofSize: 15),
                                     textColor: UIColor = UIColor.gray100()) throws -> NSMutableAttributedString {
+        let mentions = matchUsernames(text: markdownString)
         if markdownString.range(of: "[*_#\\[<]", options: .regularExpression, range: nil, locale: nil) == nil {
-            return NSMutableAttributedString(string: markdownString,
-                                             attributes: [.font: CustomFontMetrics.scaledSystemFont(ofSize: 15),
-                                                          .foregroundColor: textColor])
+            let string = NSMutableAttributedString(string: markdownString,
+                                                   attributes: [.font: CustomFontMetrics.scaledSystemFont(ofSize: 15),
+                                                                .foregroundColor: textColor])
+            if mentions.count > 0 {
+                applyMentions(string, mentions: mentions)
+            }
+            return string
         }
         guard let parsedString = try? toAttributedString().mutableCopy() as? NSMutableAttributedString, let string = parsedString else {
-            return NSMutableAttributedString(string: markdownString,
-                                             attributes: [.font: CustomFontMetrics.scaledSystemFont(ofSize: 15),
-                                                          .foregroundColor: textColor])
+            let string = NSMutableAttributedString(string: markdownString,
+                                                  attributes: [.font: CustomFontMetrics.scaledSystemFont(ofSize: 15),
+                                                               .foregroundColor: textColor])
+            if mentions.count > 0 {
+                applyMentions(string, mentions: mentions)
+            }
+            return string
         }
         let baseSize = baseFont.pointSize
-        string.enumerateAttribute(NSAttributedStringKey.font,
+        string.enumerateAttribute(NSAttributedString.Key.font,
                                   in: NSRange(location: 0, length: string.length),
                                   options: NSAttributedString.EnumerationOptions.longestEffectiveRangeNotRequired,
                                   using: { (value, range, _) in
@@ -40,15 +60,41 @@ extension Down {
                 } else {
                     font = UIFont.systemFont(ofSize: baseSize+fontSizeOffset)
                 }
-                string.addAttribute(NSAttributedStringKey.font, value: font, range: range)
-                string.addAttribute(NSAttributedStringKey.foregroundColor, value: textColor, range: range)
+                string.addAttribute(NSAttributedString.Key.font, value: font, range: range)
+                string.addAttribute(NSAttributedString.Key.foregroundColor, value: textColor, range: range)
             }
         })
+        if mentions.count > 0 {
+            applyMentions(string, mentions: mentions)
+        }
         if string.length == 0 {
             return string
         }
         string.deleteCharacters(in: NSRange(location: string.length-1, length: 1))
         return string
+    }
+    
+    private func applyMentions(_ string: NSMutableAttributedString, mentions: [String]) {
+        let text = string.mutableString
+        for mention in mentions {
+            let range = text.range(of: String(mention))
+            string.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.purple400(), range: range)
+        }
+    }
+    
+    private func matchUsernames(text: String) -> [String] {
+        
+        do {
+            let regex = try NSRegularExpression(pattern: "\\B@[-\\w]+")
+            let results = regex.matches(in: text,
+                                        range: NSRange(text.startIndex..., in: text))
+            return results.map {
+                String(text[Range($0.range, in: text)!])
+            }
+        } catch let error {
+            print("invalid regex: \(error.localizedDescription)")
+            return []
+        }
     }
 }
 

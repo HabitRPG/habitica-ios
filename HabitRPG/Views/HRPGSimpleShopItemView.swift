@@ -32,8 +32,8 @@ class HRPGSimpleShopItemView: UIView {
             if shouldHideNotes {
                 self.shopItemDescriptionLabel.isHidden = true
                 if let label = self.shopItemDescriptionLabel {
-                    let constraint = NSLayoutConstraint(item: label, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal,
-                                                        toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 0)
+                    let constraint = NSLayoutConstraint(item: label, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal,
+                                                        toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 0)
                     self.shopItemDescriptionLabel.addConstraint(constraint)
                     self.notesMargin.constant = 0
                 }
@@ -114,8 +114,8 @@ class HRPGSimpleShopItemView: UIView {
         } else {
             self.shopItemDescriptionLabel.text = ""
             if let label = self.shopItemDescriptionLabel {
-                let constraint = NSLayoutConstraint(item: label, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal,
-                                                    toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 0)
+                let constraint = NSLayoutConstraint(item: label, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal,
+                                                    toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 0)
                 self.shopItemDescriptionLabel.addConstraint(constraint)
             }
         }
@@ -191,8 +191,8 @@ class HRPGSimpleShopItemView: UIView {
             view.frame = bounds
             addSubview(view)
             
-            addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["view": view]))
-            addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["view": view]))
+            addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["view": view]))
+            addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["view": view]))
             
             setNeedsUpdateConstraints()
             updateConstraints()

@@ -12,7 +12,7 @@ extension UIAlertAction {
     
     @objc
     static func cancelAction(handler: ((UIAlertAction) -> Void)? = nil) -> UIAlertAction {
-        return UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: {(action) in
+        return UIAlertAction(title: L10n.cancel, style: .cancel, handler: {(action) in
             if let clickHandler = handler {
                 clickHandler(action)
             }
@@ -21,7 +21,7 @@ extension UIAlertAction {
     
     @objc
     static func okAction(handler: ((UIAlertAction) -> Void)? = nil) -> UIAlertAction {
-        return UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: {(action) in
+        return UIAlertAction(title: L10n.ok, style: .default, handler: {(action) in
             if let clickHandler = handler {
                 clickHandler(action)
             }

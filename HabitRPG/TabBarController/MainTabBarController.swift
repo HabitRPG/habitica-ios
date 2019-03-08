@@ -31,6 +31,12 @@ class MainTabBarController: UITabBarController {
         
         setupDailyIcon()
         
+        tabBar.items?[0].title = L10n.Tasks.habits
+        tabBar.items?[1].title = L10n.Tasks.dailies
+        tabBar.items?[2].title = L10n.Tasks.todos
+        tabBar.items?[3].title = L10n.Tasks.rewards
+        tabBar.items?[4].title = L10n.menu
+        
         fetchData()
         
         #if DEBUG
@@ -51,7 +57,7 @@ class MainTabBarController: UITabBarController {
         let dateString = dateFormatter.string(from: Date()) as NSString
         let style = NSParagraphStyle.default.mutableCopy() as? NSMutableParagraphStyle
         style?.alignment = .left
-        let textAttributes: [NSAttributedStringKey: Any] = [
+        let textAttributes: [NSAttributedString.Key: Any] = [
             .font: UIFont.systemFont(ofSize: 10, weight: .semibold),
             .paragraphStyle: style ?? NSParagraphStyle.default
         ]
@@ -90,14 +96,13 @@ class MainTabBarController: UITabBarController {
         disposable.inner.add(taskRepository.getDueTasks().on(value: {[weak self] tasks in
             self?.dueDailiesCount = 0
             self?.dueToDosCount = 0
-            let calendar = Calendar.current
+            let calendar = Calendar(identifier: .gregorian)
             let today = Date()
             for task in tasks.value where !task.completed {
                 if task.type == TaskType.daily {
                     self?.dueDailiesCount += 1
                 } else if task.type == TaskType.todo, let duedate = task.duedate {
-                    let diff = calendar.dateComponents([.day], from: today, to: duedate)
-                    if (diff.day ?? 1) <= 0 {
+                    if duedate < today || calendar.isDate(today, inSameDayAs: duedate) {
                         self?.dueToDosCount += 1
                     }
                 }

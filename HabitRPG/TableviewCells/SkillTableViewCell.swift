@@ -43,7 +43,7 @@ class SkillTableViewCell: UITableViewCell {
     
     func configureLocked(skill: SkillProtocol) {
         titleLabel.text = L10n.Skills.unlocksAt(skill.level)
-        magicIconView?.image = HabiticaIcons.imageOfLocked
+        magicIconView?.image = HabiticaIcons.imageOfLocked()
         magicIconView?.contentMode = .center
         skillImageView.setShopImagewith(name: skill.key)
         skillImageView.alpha = 0.3
@@ -54,6 +54,8 @@ class SkillTableViewCell: UITableViewCell {
         notesLabel.text = transformationItem.notes
         skillImageView.setShopImagewith(name: transformationItem.key)
         numberOwnedLabel?.text = String(numberOwned)
+        
+        (buyButton.viewWithTag(1) as? UILabel)?.text = L10n.use
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -29,7 +29,7 @@ class HRPGCloseableShopModalView: UIView {
     
     func styleViews() {
         closeButton.layer.cornerRadius = 12
-        closeButton.setTitleColor(ThemeService.shared.theme.tintColor, for: UIControlState.normal)
+        closeButton.setTitleColor(ThemeService.shared.theme.tintColor, for: UIControl.State.normal)
     }
     
     // MARK: - Private Helper Methods
@@ -39,8 +39,8 @@ class HRPGCloseableShopModalView: UIView {
             view.frame = bounds
             
             view.autoresizingMask = [
-                UIViewAutoresizing.flexibleWidth,
-                UIViewAutoresizing.flexibleHeight
+                UIView.AutoresizingMask.flexibleWidth,
+                UIView.AutoresizingMask.flexibleHeight
             ]
             
             addSubview(view)

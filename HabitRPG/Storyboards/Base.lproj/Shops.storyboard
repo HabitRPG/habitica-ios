@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="66e-gX-CcK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="66e-gX-CcK">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Shops-->
+        <!--Shop Overview View Controller-->
         <scene sceneID="1Yh-0o-hEA">
             <objects>
                 <tableViewController id="66e-gX-CcK" customClass="HRPGShopOverviewViewController" sceneMemberID="viewController">
@@ -52,7 +52,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="355" height="124"/>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zqf-Hz-ESK">
-                                                    <rect key="frame" x="285" y="60" width="0.0" height="4"/>
+                                                    <rect key="frame" x="249" y="60" width="0.0" height="4"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H4v-db-1J4">
                                                             <constraints>
@@ -84,7 +84,7 @@
                                                     </constraints>
                                                 </view>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_chevron_right_white" translatesAutoresizingMaskIntoConstraints="NO" id="Cku-Je-kQu">
-                                                    <rect key="frame" x="311" y="44" width="36" height="36"/>
+                                                    <rect key="frame" x="275" y="26" width="72" height="72"/>
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </imageView>
                                             </subviews>
@@ -135,7 +135,7 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Shops" id="Bdk-xt-Yo0"/>
+                    <navigationItem key="navigationItem" id="Bdk-xt-Yo0"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HWx-ps-8Md" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -151,7 +151,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ic_chevron_right_white" width="36" height="36"/>
+        <image name="ic_chevron_right_white" width="72" height="72"/>
     </resources>
     <color key="tintColor" red="0.6058621407" green="0.38462612029999999" blue="0.99835687880000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

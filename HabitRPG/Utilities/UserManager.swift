@@ -12,6 +12,7 @@ import ReactiveSwift
 import Result
 import Habitica_Database
 import PopupDialog
+import Crashlytics
 
 @objc
 class UserManager: NSObject {
@@ -21,6 +22,7 @@ class UserManager: NSObject {
     private let userRepository = UserRepository()
     private let taskRepository = TaskRepository()
     private let disposable = CompositeDisposable()
+    private let configRepository = ConfigRepository()
     
     private weak var faintViewController: FaintViewController?
     private weak var classSelectionViewController: ClassSelectionViewController?
@@ -58,11 +60,16 @@ class UserManager: NSObject {
                 if !user.needsCron {
                     return
                 }
-                let viewController = YesterdailiesDialogView()
                 if !hasUncompletedDailies {
-                    self.userRepository.runCron(tasks: []).observeCompleted {}
+                    self.userRepository.runCron(tasks: [])
+                        .on(failed: { error in
+                            Crashlytics.sharedInstance().recordError(error)
+                        })
+                        .observeCompleted {}
                     return
                 }
+                
+                let viewController = YesterdailiesDialogView()
                 viewController.tasks = tasks
                 let popup = PopupDialog(viewController: viewController)
                 if var topController = UIApplication.shared.keyWindow?.rootViewController {
@@ -75,8 +82,14 @@ class UserManager: NSObject {
                         self.yesterdailiesDialog = viewController
                     }
                 }
-            }).start())
-        disposable.add(taskRepository.getReminders().on(value: {[weak self](reminders, changes) in
+            })
+            .on(failed: { error in
+                Crashlytics.sharedInstance().recordError(error)
+            })
+            .start())
+        disposable.add(taskRepository.getReminders()
+            .debounce(2, on: QueueScheduler.main)
+            .on(value: {[weak self](reminders, changes) in
             if let changes = changes {
                 self?.updateReminderNotifications(reminders: reminders, changes: changes)
             }
@@ -108,6 +121,20 @@ class UserManager: NSObject {
         
         userRepository.registerPushDevice(user: user).observeCompleted {}
         setTimezoneOffset(user)
+
+        if user.flags?.verifiedUsername == false {
+            if var topController = UIApplication.shared.keyWindow?.rootViewController {
+                while let presentedViewController = topController.presentedViewController {
+                    topController = presentedViewController
+                }
+                if let controller = topController as? MainTabBarController {
+                    let verifyViewController = StoryboardScene.User.verifyUsernameModalViewController.instantiate()
+                    verifyViewController.modalTransitionStyle = .crossDissolve
+                    verifyViewController.modalPresentationStyle = .overCurrentContext
+                    controller.present(verifyViewController, animated: true, completion: nil)
+                }
+            }
+        }
     }
     
     private func checkFainting(user: UserProtocol) -> FaintViewController? {
@@ -149,20 +176,9 @@ class UserManager: NSObject {
     }
     
     private func updateReminderNotifications(reminders: [ReminderProtocol], changes: ReactiveChangeset) {
-        if changes.deleted.count == 0 && changes.inserted.count == 0 {
-            let sharedApplication = UIApplication.shared
-            let existingNotifications = sharedApplication.scheduledLocalNotifications ?? []
-            for index in changes.updated {
-                let notificationsForReminder = existingNotifications.filter { (notification) -> Bool in
-                    return (notification.userInfo?["ID"] as? String ?? "") == reminders[index].id
-                }
-                scheduleNotifications(reminder: reminders[index], existingNotifications: notificationsForReminder)
-            }
-        } else {
-            removeAllReminderNotifications()
-            for reminder in reminders {
-                scheduleNotifications(reminder: reminder)
-            }
+        removeAllReminderNotifications()
+        for reminder in reminders {
+            scheduleNotifications(reminder: reminder)
         }
     }
     
@@ -188,14 +204,18 @@ class UserManager: NSObject {
         guard let task = reminder.task else {
             return
         }
-        if task.completed || reminder.id == nil || reminder.id == "" {
+        if reminder.id == nil || reminder.id == "" {
             return
         }
         var newNotifications = [UILocalNotification?]()
         if task.type == TaskType.daily {
+            let calendar = Calendar(identifier: .gregorian)
             for day in 0...6 {
+                if day == 0 && task.completed {
+                    continue
+                }
                 let checkedDate = Date(timeIntervalSinceNow: TimeInterval(day * 86400))
-                if task.dueOn(date: checkedDate) {
+                if (task.isDue && day == 0) || task.dueOn(date: checkedDate, calendar: calendar) {
                     newNotifications.append(scheduleForDay(reminder: reminder, date: checkedDate, atTime: reminder.time, existingNotifications: existingNotifications))
                 }
             }
@@ -230,15 +250,16 @@ class UserManager: NSObject {
             return nil
         }
         
+        let taskText = reminder.task?.text?.unicodeEmoji
         if let notification = existingNotifications.first(where: { (notification) -> Bool in
-            return notification.fireDate == fireDate && notification.alertBody == reminder.task?.text
+            return notification.fireDate == fireDate && notification.alertBody == taskText
         }) {
             return notification
         }
         
         let localNotification = UILocalNotification()
         localNotification.fireDate = fireDate
-        localNotification.alertBody = reminder.task?.text
+        localNotification.alertBody = taskText
         localNotification.timeZone = TimeZone.current
         if let taskID = reminder.task?.id, let taskType = reminder.task?.type {
             localNotification.userInfo = [

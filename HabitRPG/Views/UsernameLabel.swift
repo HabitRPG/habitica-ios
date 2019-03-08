@@ -21,6 +21,25 @@ class UsernameLabel: UILabel {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        setupView()
+    }
+    
+    init() {
+        super.init(frame: CGRect.zero)
+        setupView()
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupView()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setupView()
+    }
+    
+    private func setupView() {
         font = UIFont.systemFont(ofSize: 15.0)
         addSubview(iconView)
         self.isUserInteractionEnabled = true
@@ -32,14 +51,18 @@ class UsernameLabel: UILabel {
     
     override var intrinsicContentSize: CGSize {
         var size = super.intrinsicContentSize
-        size.width += 18
+        if contributorLevel > 0 {
+            size.width += 18
+        }
         return size
     }
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         let paddedSize = CGSize(width: size.width - 18, height: size.height)
         var newSize = super.sizeThatFits(paddedSize)
-        newSize.width += 18
+        if contributorLevel > 0 {
+            newSize.width += 18
+        }
         return newSize
     }
 }

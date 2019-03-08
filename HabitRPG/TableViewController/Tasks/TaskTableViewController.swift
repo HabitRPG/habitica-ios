@@ -10,7 +10,7 @@ import UIKit
 import Habitica_Models
 
 class TaskTableViewController: HRPGBaseViewController, UISearchBarDelegate, UITableViewDragDelegate, UITableViewDropDelegate, DataSourceEmptyDelegate {
-    public var dataSource: TaskTableViewDataSourceProtocol?
+    public var dataSource: TaskTableViewDataSource?
     public var filterType: Int = 0
     @objc public var scrollToTaskAfterLoading: String?
     var readableName: String?
@@ -29,7 +29,7 @@ class TaskTableViewController: HRPGBaseViewController, UISearchBarDelegate, UITa
         super.viewDidLoad()
         
         dataSource?.tableView = tableView
-        dataSource?.emptyDelegate = self
+        //dataSource?.emptyDelegate = self
         
         let nib = UINib(nibName: getCellNibName() ?? "", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "Cell")
@@ -41,7 +41,7 @@ class TaskTableViewController: HRPGBaseViewController, UISearchBarDelegate, UITa
         refreshControl = refresher
         
         searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 48))
-        searchBar?.placeholder = NSLocalizedString("Search", comment: "")
+        searchBar?.placeholder = L10n.search
         searchBar?.delegate = self
         searchBar?.backgroundImage = UIImage()
         tableView.tableHeaderView = searchBar
@@ -52,9 +52,8 @@ class TaskTableViewController: HRPGBaseViewController, UISearchBarDelegate, UITa
         if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad {
             extraCellSpacing = 8
         }
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44
-        tableView.tableFooterView = UIView()
         
         if #available(iOS 11.0, *) {
             tableView.dragDelegate = self
@@ -64,6 +63,8 @@ class TaskTableViewController: HRPGBaseViewController, UISearchBarDelegate, UITa
             let longPress = UILongPressGestureRecognizer(target: self, action: #selector(longPressRecognized))
             tableView.addGestureRecognizer(longPress)
         }
+        
+        navigationItem.leftBarButtonItem?.title = L10n.filter
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -78,7 +79,7 @@ class TaskTableViewController: HRPGBaseViewController, UISearchBarDelegate, UITa
         
         tableView.reloadData()
         
-        navigationItem.rightBarButtonItem?.accessibilityLabel = String(format: NSLocalizedString("Add %@", comment: ""), readableName ?? "")
+        navigationItem.rightBarButtonItem?.accessibilityLabel = L10n.Tasks.addX(readableName ?? "")
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -128,12 +129,16 @@ class TaskTableViewController: HRPGBaseViewController, UISearchBarDelegate, UITa
         }
         
         if filterCount == 0 {
-            navigationItem.leftBarButtonItem?.title = NSLocalizedString("Filter", comment: "")
+            navigationItem.leftBarButtonItem?.title = L10n.filter
         } else if filterCount == 1 {
-            navigationItem.leftBarButtonItem?.title = NSLocalizedString("1 Filter", comment: "")
+            navigationItem.leftBarButtonItem?.title = L10n.oneFilter
         } else {
-            navigationItem.leftBarButtonItem?.title = String(format: NSLocalizedString("%ld Filters", comment: "more than one filter"), filterCount)
+            navigationItem.leftBarButtonItem?.title = L10n.xFilters(filterCount)
         }
+    }
+    
+    func configureTitle(_ title: String) {
+        navigationItem.title = title
     }
     
     @objc
@@ -159,7 +164,7 @@ class TaskTableViewController: HRPGBaseViewController, UISearchBarDelegate, UITa
                         snapshot.center = center
                         tableView.addSubview(snapshot)
                         
-                        UIView.animate(withDuration: 0.3, delay: 0.0, usingSpringWithDamping: 0.25, initialSpringVelocity: 0.75, options: UIViewAnimationOptions.init(rawValue: 0), animations: {
+                        UIView.animate(withDuration: 0.3, delay: 0.0, usingSpringWithDamping: 0.25, initialSpringVelocity: 0.75, options: UIView.AnimationOptions.init(rawValue: 0), animations: {
                             center.y = location.y
                             snapshot.center = center
                             snapshot.transform = CGAffineTransform(scaleX: 1.075, y: 1.075)
@@ -205,7 +210,7 @@ class TaskTableViewController: HRPGBaseViewController, UISearchBarDelegate, UITa
                     dataSource?.moveTask(task: task, toPosition: task.order, completion: {})
                     let cell = tableView.cellForRow(at: sourceIndexPath)
                     cell?.alpha = 0.0
-                    UIView.animate(withDuration: 2.0, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1.0, options: UIViewAnimationOptions(rawValue: 0), animations: {
+                    UIView.animate(withDuration: 2.0, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1.0, options: UIView.AnimationOptions(rawValue: 0), animations: {
                         self.snapshot?.transform = CGAffineTransform.identity
                     }, completion: nil)
                 }
@@ -305,7 +310,7 @@ class TaskTableViewController: HRPGBaseViewController, UISearchBarDelegate, UITa
     // MARK: - Empty delegate
     
     func dataSourceHasItems() {
-        tableView.dataSource = dataSource as? UITableViewDataSource
+        tableView.dataSource = dataSource
         tableView.reloadData()
         tableView.backgroundColor = .white
         tableView.separatorStyle = .singleLine
@@ -322,7 +327,7 @@ class TaskTableViewController: HRPGBaseViewController, UISearchBarDelegate, UITa
         if let height: NSNumber = heightAtIndexPath[indexPath] as? NSNumber {
             return CGFloat(height.floatValue)
         } else {
-            return UITableViewAutomaticDimension
+            return UITableView.automaticDimension
         }
     }
     
@@ -330,6 +335,10 @@ class TaskTableViewController: HRPGBaseViewController, UISearchBarDelegate, UITa
         dataSource?.selectRowAt(indexPath: indexPath)
         performSegue(withIdentifier: "FormSegue", sender: self)
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
     }
     
     // MARK: - Drop delegate
@@ -462,5 +471,21 @@ class TaskTableViewController: HRPGBaseViewController, UISearchBarDelegate, UITa
                 tableView.setContentOffset(scrollPoint, animated: false)
             }
         }
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return dataSource?.numberOfSections(in: tableView) ?? 0
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return dataSource?.tableView(tableView, numberOfRowsInSection: section) ?? 0
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return dataSource?.tableView(tableView, cellForRowAt: indexPath) ?? UITableViewCell()
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        dataSource?.tableView(tableView, commit: editingStyle, forRowAt: indexPath)
     }
 }

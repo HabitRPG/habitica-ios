@@ -32,7 +32,7 @@ class CollapsibleStackView: SeparatedStackView {
                 }
                 return
             }
-            let transitionOptions: UIViewAnimationOptions = [isCollapsed ? .transitionFlipFromBottom : .transitionFlipFromTop, .showHideTransitionViews]
+            let transitionOptions: UIView.AnimationOptions = [isCollapsed ? .transitionFlipFromBottom : .transitionFlipFromTop, .showHideTransitionViews]
             for subview in self.arrangedSubviews where subview != self.titleView {
                 UIView.animate(withDuration: 0.3, animations: {
                     subview.isHidden = self.isCollapsed

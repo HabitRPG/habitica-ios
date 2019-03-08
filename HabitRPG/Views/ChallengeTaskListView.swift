@@ -145,13 +145,13 @@ class ChallengeTaskListView: UIView {
             var title: String?
             switch taskType {
             case "habit":
-                title = NSLocalizedString("Habits", comment: "")
+                title = L10n.Tasks.habits
             case "daily":
-                title = NSLocalizedString("Dailies", comment: "")
+                title = L10n.Tasks.dailies
             case "todo":
-                title = NSLocalizedString("To-Dos", comment: "")
+                title = L10n.Tasks.todos
             case "reward":
-                title = NSLocalizedString("Rewards", comment: "")
+                title = L10n.Tasks.rewards
             default:
                 title = ""
             }

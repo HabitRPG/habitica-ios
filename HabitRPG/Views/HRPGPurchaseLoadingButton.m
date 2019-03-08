@@ -8,6 +8,7 @@
 
 #import "HRPGPurchaseLoadingButton.h"
 #import "UIColor+Habitica.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGPurchaseLoadingButton ()
 
@@ -33,8 +34,8 @@
         self.tintColor = [UIColor purple300];
         self.layer.masksToBounds = YES;
         self.text = @"";
-        self.confirmText = NSLocalizedString(@"buy", nil);
-        self.doneText = NSLocalizedString(@"success", nil);
+        self.confirmText = objcL10n.buy;
+        self.doneText = objcL10n.success;
         self.state = HRPGPurchaseButtonStateLabel;
         UILongPressGestureRecognizer *tapGestureRecognizer =
             [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
@@ -104,7 +105,7 @@
             [self addLabelToView];
             self.originalTintColor = self.tintColor;
             self.tintColor = [UIColor redColor];
-            self.label.text = NSLocalizedString(@"ERROR", nil);
+            self.label.text = [objcL10n.error localizedUppercaseString];
             break;
 
         default:

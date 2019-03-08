@@ -12,12 +12,20 @@ import Eureka
 struct InviteMembersFormTags {
     static let invitationType = "TypeRow"
     static let userIDSection = "userIDSection"
+    static let usernameSection = "usernameSection"
     static let emailsSection = "emailsSection"
     static let qrCodeButton = "qrCodeButton"
 }
 
 class InviteMembersViewController: FormViewController {
-        
+    
+    var groupID: String?
+    
+    private let configRepository = ConfigRepository()
+    private let socialRepository = SocialRepository()
+    
+    @IBOutlet weak var doneButton: UIBarButtonItem!
+    
     var invitationType: String {
         if let formValue = form.values()[InviteMembersFormTags.invitationType] {
             if let labeledValue = formValue as? LabeledFormValue<String> {
@@ -27,52 +35,53 @@ class InviteMembersViewController: FormViewController {
         return ""
     }
     
-    var members: [String] {
-        var section: Section?
-        if invitationType == "uuids" {
-            section = form.sectionBy(tag: InviteMembersFormTags.userIDSection)
-        } else {
-            section = form.sectionBy(tag: InviteMembersFormTags.emailsSection)
-        }
-        
-        var members = [String]()
-        if let section = section {
+    var members: [String: Any] {
+        var members: [String: Any] = [:]
+
+        if let section = form.sectionBy(tag: InviteMembersFormTags.userIDSection) {
+            var sectionMembers = [String]()
             for row in section {
                 if let textRow = row as? TextRow, let value = textRow.value {
-                    members.append(value)
+                    sectionMembers.append(value)
                 }
             }
+            members["uuids"] = sectionMembers
+        }
+        if let section = form.sectionBy(tag: InviteMembersFormTags.usernameSection) {
+            var sectionMembers = [String]()
+            for row in section {
+                if let textRow = row as? TextRow, let value = textRow.value {
+                    sectionMembers.append(value)
+                }
+            }
+            members["usernames"] = sectionMembers
+        }
+        if let section = form.sectionBy(tag: InviteMembersFormTags.emailsSection) {
+            var sectionMembers = [[String: String]]()
+            for row in section {
+                if let textRow = row as? TextRow, let value = textRow.value {
+                    sectionMembers.append([
+                        "email": value,
+                        "name": value
+                        ])
+                }
+            }
+            members["emails"] = sectionMembers
         }
         return members
     }
     
-    private static let invitationTypes = [
-        LabeledFormValue<String>(value: "uuids", label: L10n.userID),
-        LabeledFormValue<String>(value: "emails", label: L10n.email)
-    ]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        form +++ Section()
-            <<< SegmentedRow<LabeledFormValue<String>>(InviteMembersFormTags.invitationType) { row in
-                row.title = L10n.Groups.Invite.invitationType
-                row.options = InviteMembersViewController.invitationTypes
-                row.value = InviteMembersViewController.invitationTypes[0]
-                row.cellSetup({ (cell, _) in
-                    cell.tintColor = ThemeService.shared.theme.tintColor
-                })
-        }
-        
+        navigationItem.title = L10n.Titles.inviteMembers
         form +++ MultivaluedSection(multivaluedOptions: [.Reorder, .Insert, .Delete],
-                                    header: L10n.userID) { section in
-                                        section.tag = InviteMembersFormTags.userIDSection
-                                        section.hidden = Condition.function([InviteMembersFormTags.invitationType], { (form) -> Bool in
-                                            return (form.values()[InviteMembersFormTags.invitationType] as? LabeledFormValue<String> )?.value == "emails"
-                                        })
+                                    header: L10n.username) { section in
+                                        section.tag = InviteMembersFormTags.usernameSection
+
                                         section.addButtonProvider = { section in
                                             return ButtonRow { row in
-                                                row.title = L10n.Groups.Invite.addUserid
+                                                row.title = L10n.Groups.Invite.addUsername
                                                 row.cellSetup({ (cell, _) in
                                                     cell.tintColor = ThemeService.shared.theme.tintColor
                                                 })
@@ -86,13 +95,10 @@ class InviteMembersViewController: FormViewController {
                                             }
                                         }
         }
-        
         form +++ MultivaluedSection(multivaluedOptions: [.Reorder, .Insert, .Delete],
                                     header: L10n.email) { section in
                                         section.tag = InviteMembersFormTags.emailsSection
-                                        section.hidden = Condition.function([InviteMembersFormTags.invitationType], { (form) -> Bool in
-                                            return (form.values()[InviteMembersFormTags.invitationType] as? LabeledFormValue<String> )?.value == "uuids"
-                                        })
+                                        
                                         section.addButtonProvider = { section in
                                             return ButtonRow { row in
                                                 row.title = L10n.Groups.Invite.addEmail
@@ -109,39 +115,26 @@ class InviteMembersViewController: FormViewController {
                                             }
                                         }
         }
-        form +++ Section() { section in
-            section.hidden = Condition.function([InviteMembersFormTags.invitationType], { (form) -> Bool in
-                return (form.values()[InviteMembersFormTags.invitationType] as? LabeledFormValue<String> )?.value == "emails"
-            })
-        }
-            <<< ButtonRow(InviteMembersFormTags.qrCodeButton) { row in
-                row.title = L10n.scanQRCode
-                row.cellSetup({ (cell, _) in
-                    cell.tintColor = ThemeService.shared.theme.tintColor
-                })
-                row.onCellSelection({[weak self] (_, _) in
-                    let viewController = StoryboardScene.Main.scanQRCodeNavController.instantiate()
-                    self?.present(viewController, animated: true, completion: nil)
-                })
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.isEditing = true
     }
-
-    @IBAction func unwindToList(_ segue: UIStoryboardSegue) {
-    }
     
-    @IBAction func unwindToListSave(_ segue: UIStoryboardSegue) {
-        if let scannerViewController = segue.source as? HRPGQRCodeScannerViewController, let code = scannerViewController.scannedCode {
-            var userIDSection = self.form.sectionBy(tag: InviteMembersFormTags.userIDSection)
-            let row = TextRow(code) { row in
-                row.value = code
+    @IBAction func doneButtonTapped(_ sender: Any) {
+        doneButton.isEnabled = false
+        if let groupID = groupID {
+            socialRepository.invite(toGroup: groupID, members: members)
+                .on(event: { _ in
+                    self.doneButton.isEnabled = true
+                })
+                .skipNil()
+                .observeValues { _ in
+                    self.dismiss(animated: true, completion: nil)
             }
-            let lastIndex = (userIDSection?.count ?? 1) - 1
-            userIDSection?.insert(row, at: lastIndex)
+        } else {
+            dismiss(animated: true, completion: nil)
         }
     }
 }

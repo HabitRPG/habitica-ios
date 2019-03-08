@@ -18,6 +18,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.navigationItem.title = objcL10n.titleSpells;
+    
     [self setupTableView];
     self.tutorialIdentifier = @"skills";
 }
@@ -32,12 +35,7 @@
 - (NSDictionary *)getDefinitonForTutorial:(NSString *)tutorialIdentifier {
     if ([tutorialIdentifier isEqualToString:@"skills"]) {
         return @{
-            @"text" :
-                NSLocalizedString(@"Skills are special abilities that have powerful effects! Tap "
-                                  @"on a skill to use it. It will cost Mana (the blue bar), which "
-                                  @"you earn by checking in every day and by completing your "
-                                  @"real-life tasks. Check out the FAQ in the menu for more info!",
-                                  nil)
+            @"text" : objcL10n.tutorialSpells
         };
     }
     return nil;

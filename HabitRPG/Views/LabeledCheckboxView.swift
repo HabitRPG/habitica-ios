@@ -44,7 +44,7 @@ class LabeledCheckboxView: UILabel {
     }
 
     override func drawText(in rect: CGRect) {
-        super.drawText(in: UIEdgeInsetsInsetRect(rect, self.edgeInsets))
+        super.drawText(in: rect.inset(by: self.edgeInsets))
     }
 
     override var intrinsicContentSize: CGSize {

@@ -29,6 +29,7 @@ class RealmPreferences: Object, PreferencesProtocol {
     @objc dynamic var timezoneOffset: Int = 0
     @objc dynamic var sound: String?
     @objc dynamic var autoEquip: Bool = false
+    @objc dynamic var searchableUsername: Bool = false
     var pushNotifications: PushNotificationsProtocol? {
         get {
             return realmPushNotifications
@@ -89,5 +90,6 @@ class RealmPreferences: Object, PreferencesProtocol {
         autoEquip = preferences.autoEquip
         pushNotifications = preferences.pushNotifications
         hair = preferences.hair
+        searchableUsername = preferences.searchableUsername
     }
 }

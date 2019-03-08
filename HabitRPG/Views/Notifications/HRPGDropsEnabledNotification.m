@@ -10,6 +10,7 @@
 #import "HRPGImageOverlayView.h"
 #import "HRPGAppDelegate.h"
 #import "KLCPopup.h"
+#import "Habitica-Swift.h"
 
 @implementation HRPGDropsEnabledNotification
 
@@ -24,10 +25,9 @@
                 showsBackground:YES
                      showsMount:YES
                        showsPet:YES];*/
-    overlayView.titleText = NSLocalizedString(@"You unlocked the drop system!", nil);
-    overlayView.descriptionText = NSLocalizedString(
-                                                    @"You've unlocked the Drop System! Now when you complete tasks, you have a small chance of finding an item, including eggs, potions, and food!", nil);
-    overlayView.dismissButtonText = NSLocalizedString(@"Great!", nil);
+    overlayView.titleText = objcL10n.unlockDropsTitle;
+    overlayView.descriptionText = objcL10n.unlockDropsDescription;
+    overlayView.dismissButtonText = objcL10n.great;
     overlayView.dismissAction = ^() {
         if (completionBlock) {
             completionBlock();

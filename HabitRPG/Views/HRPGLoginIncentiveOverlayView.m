@@ -122,9 +122,9 @@ static inline UIImage *MTDContextCreateRoundedMask(CGRect rect, CGFloat radius_t
 
 - (void)setNextUnlock:(NSInteger)nextUnlock {
     if (nextUnlock == 1) {
-        self.nextUnlockLabel.text = NSLocalizedString(@"Your next prize unlocks in 1 Check-In.", nil);
+        self.nextUnlockLabel.text = objcL10n.nextCheckinPrize1Day;
     } else {
-        self.nextUnlockLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Your next prize unlocks in %d Check-Ins", nil), nextUnlock];
+        self.nextUnlockLabel.text = [objcL10n nextCheckinPrizeXWithDays:nextUnlock];
     }
 }
 

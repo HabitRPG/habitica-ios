@@ -26,6 +26,7 @@ class SplitSocialViewController: HabiticaSplitViewController {
         didSet {
             DispatchQueue.main.async { [weak self] in
                 self?.chatViewController?.groupID = self?.groupID
+                self?.detailViewController?.groupID = self?.groupID
                 self?.retrieveGroup()
                 self?.fetchGroup()
             }
@@ -60,7 +61,7 @@ class SplitSocialViewController: HabiticaSplitViewController {
         
         scrollView.delegate = self
         
-        for childViewController in childViewControllers {
+        for childViewController in children {
             if let viewController = childViewController as? GroupDetailViewController {
                 detailViewController = viewController
             }
@@ -68,7 +69,6 @@ class SplitSocialViewController: HabiticaSplitViewController {
                 chatViewController = viewController
             }
         }
-        
         navigationItem.rightBarButtonItem = nil
     }
     
@@ -108,6 +108,13 @@ class SplitSocialViewController: HabiticaSplitViewController {
     
     internal func set(group: GroupProtocol) {
         detailViewController?.groupProperty.value = group
+        if group.type == "guild" {
+            if group.privacy == "public" {
+                chatViewController?.autocompleteContext = "publicGuild"
+            } else {
+                chatViewController?.autocompleteContext = "privateGuild"
+            }
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -118,15 +125,14 @@ class SplitSocialViewController: HabiticaSplitViewController {
             if let formViewController = destination?.topViewController as? GroupFormViewController {
                 formViewController.groupID = groupID
             }
+        } else if segue.identifier == StoryboardSegue.Social.invitationSegue.rawValue {
+            let destination = segue.destination as? UINavigationController
+            if let invitationViewController = destination?.topViewController as? InviteMembersViewController {
+                invitationViewController.groupID = groupID
+            }
         }
     }
     
     @IBAction func unwindToList(_ segue: UIStoryboardSegue) {
-    }
-    
-    @IBAction func unwindToListInvite(_ segue: UIStoryboardSegue) {
-        if let groupID = groupID, let viewController = segue.source as? InviteMembersViewController {
-            socialRepository.invite(toGroup: groupID, invitationType: viewController.invitationType, inviter: "", members:viewController.members).observeCompleted {}
-        }
     }
 }

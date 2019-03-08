@@ -39,6 +39,10 @@ class ItemsViewController: HRPGBaseViewController {
         }
     }
     
+    override func populateText() {
+        navigationItem.title = L10n.Titles.items
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let item = dataSource.item(at: indexPath)
         if isHatching {

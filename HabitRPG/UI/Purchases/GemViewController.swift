@@ -27,7 +27,7 @@ class GemViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         let nib = UINib.init(nibName: "GemPurchaseView", bundle: nil)
         self.collectionView?.register(nib, forCellWithReuseIdentifier: "Cell")
         
@@ -127,19 +127,22 @@ class GemViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         var identifier = "nil"
         
-        if kind == UICollectionElementKindSectionHeader {
+        if kind == UICollectionView.elementKindSectionHeader {
             identifier = "HeaderView"
         }
         
-        if kind == UICollectionElementKindSectionFooter {
+        if kind == UICollectionView.elementKindSectionFooter {
             identifier = "FooterView"
         }
         
         let view = collectionView .dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: identifier, for: indexPath)
         
-        if kind == UICollectionElementKindSectionHeader {
+        if kind == UICollectionView.elementKindSectionHeader {
             if let imageView = view.viewWithTag(1) as? UIImageView {
                 imageView.image = HabiticaIcons.imageOfHeartLarge
+            }
+            if let label = view.viewWithTag(2) as? UILabel {
+                label.text = L10n.gemsSupportDevelopers
             }
         }
         

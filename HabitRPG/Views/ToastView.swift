@@ -32,60 +32,69 @@ class ToastView: UIView {
     
     var options: ToastOptions = ToastOptions()
     
-    @objc
-    public convenience init(title: String, subtitle: String, background: ToastColor) {
+    public convenience init(title: String, subtitle: String, background: ToastColor, duration: Double? = nil) {
         self.init(frame: CGRect.zero)
         options.title = title
         options.subtitle = subtitle
         options.backgroundColor = background
+        if let duration = duration {
+            options.displayDuration = duration
+        }
         loadOptions()
         accessibilityLabel = "\(title), \(subtitle)"
     }
     
-    @objc
-    public convenience init(title: String, background: ToastColor) {
+    public convenience init(title: String, background: ToastColor, duration: Double? = nil) {
         self.init(frame: CGRect.zero)
         options.title = title
         options.backgroundColor = background
+        if let duration = duration {
+            options.displayDuration = duration
+        }
         loadOptions()
         accessibilityLabel = title
     }
     
-    @objc
-    public convenience init(title: String, subtitle: String, icon: UIImage, background: ToastColor) {
+    public convenience init(title: String, subtitle: String, icon: UIImage, background: ToastColor, duration: Double? = nil) {
         self.init(frame: CGRect.zero)
         options.title = title
         options.subtitle = subtitle
         options.leftImage = icon
         options.backgroundColor = background
+        if let duration = duration {
+            options.displayDuration = duration
+        }
         loadOptions()
         accessibilityLabel = "\(title), \(subtitle)"
     }
     
-    @objc
-    public convenience init(title: String, icon: UIImage, background: ToastColor) {
+    public convenience init(title: String, icon: UIImage, background: ToastColor, duration: Double? = nil) {
         self.init(frame: CGRect.zero)
         options.title = title
         options.backgroundColor = background
         options.leftImage = icon
+        if let duration = duration {
+            options.displayDuration = duration
+        }
         loadOptions()
         accessibilityLabel = title
     }
     
-    @objc
-    public convenience init(title: String, rightIcon: UIImage, rightText: String, rightTextColor: UIColor, background: ToastColor) {
+    public convenience init(title: String, rightIcon: UIImage, rightText: String, rightTextColor: UIColor, background: ToastColor, duration: Double? = nil) {
         self.init(frame: CGRect.zero)
         options.title = title
         options.backgroundColor = background
         options.rightIcon = rightIcon
         options.rightText = rightText
         options.rightTextColor = rightTextColor
+        if let duration = duration {
+            options.displayDuration = duration
+        }
         loadOptions()
         accessibilityLabel = title
     }
     
-    @objc
-    public convenience init(healthDiff: Float, magicDiff: Float, expDiff: Float, goldDiff: Float, questDamage: Float, background: ToastColor) {
+    public convenience init(healthDiff: Float, magicDiff: Float, expDiff: Float, goldDiff: Float, questDamage: Float, background: ToastColor, duration: Double? = nil) {
         self.init(frame: CGRect.zero)
         accessibilityLabel = "You received "
         addStatsView(HabiticaIcons.imageOfHeartDarkBg, diff: healthDiff, label: "Health")
@@ -126,8 +135,8 @@ class ToastView: UIView {
             view.frame = bounds
             addSubview(view)
             
-            addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["view": view]))
-            addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["view": view]))
+            addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["view": view]))
+            addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["view": view]))
             
             backgroundView.layer.borderColor = UIColor.black.withAlphaComponent(0.1).cgColor
             backgroundView.layer.borderWidth = 1

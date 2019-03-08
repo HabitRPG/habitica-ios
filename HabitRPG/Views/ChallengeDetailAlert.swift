@@ -41,10 +41,10 @@ class ChallengeDetailAlert: UIViewController {
                 return
             }
             if isMember {
-                joinLeaveButton.setTitle(NSLocalizedString("Leave", comment: ""), for: .normal)
+                joinLeaveButton.setTitle(L10n.leave, for: .normal)
                 joinLeaveButton.setTitleColor(.red100(), for: .normal)
             } else {
-                joinLeaveButton.setTitle(NSLocalizedString("Join", comment: ""), for: .normal)
+                joinLeaveButton.setTitle(L10n.join, for: .normal)
                 joinLeaveButton.setTitleColor(.green100(), for: .normal)
             }
         }
