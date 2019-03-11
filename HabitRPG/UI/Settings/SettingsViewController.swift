@@ -71,6 +71,7 @@ enum ThemeName: String {
     case orange = "Orange"
     case red = "Red"
     case maroon = "Maroon"
+    case night = "Night (experimental)"
     
     var themeClass: Theme {
         switch self {
@@ -90,11 +91,13 @@ enum ThemeName: String {
             return RedTheme()
         case .maroon:
             return MaroonTheme()
+        case .night:
+            return NightTheme()
         }
     }
     
     static var allNames: [ThemeName] {
-        return [
+        var themes: [ThemeName] = [
             .defaultTheme,
             .blue,
             .teal,
@@ -104,6 +107,10 @@ enum ThemeName: String {
             .red,
             .maroon
         ]
+        if !HabiticaAppDelegate.isRunningLive() {
+            themes.append(.night)
+        }
+        return themes
     }
 }
 
