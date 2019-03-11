@@ -30,5 +30,7 @@ class MyGuildCell: UITableViewCell {
                                                                isPublic: group.privacy == "public",
                                                                memberCount: CGFloat(group.memberCount),
                                                                memberCountLabel: String(describing: group.memberCount).stringWithAbbreviatedNumber(roundingIncrement: 0.1))
+        
+        titleLabel.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
     }
 }

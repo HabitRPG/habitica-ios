@@ -16,7 +16,7 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
     var readableName: String?
     var typeName: String?
     var extraCellSpacing: Int = 0
-    var searchBar: UISearchBar?
+    var searchBar = UISearchBar()
     var scrollTimer: Timer?
     var autoScrollSpeed: CGFloat = 0.0
     var movedTask: TaskProtocol?
@@ -40,10 +40,10 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
         refresher.addTarget(self, action: #selector(refresh), for: .valueChanged)
         refreshControl = refresher
         
-        searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 48))
-        searchBar?.placeholder = L10n.search
-        searchBar?.delegate = self
-        searchBar?.backgroundImage = UIImage()
+        searchBar.frame = CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 48)
+        searchBar.placeholder = L10n.search
+        searchBar.delegate = self
+        searchBar.backgroundImage = UIImage()
         tableView.tableHeaderView = searchBar
         
         NotificationCenter.default.addObserver(self, selector: #selector(didChangeFilter), name: NSNotification.Name(rawValue: "taskFilterChanged"), object: nil)
@@ -65,16 +65,16 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
         }
         
         navigationItem.leftBarButtonItem?.title = L10n.filter
-            }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         if let searchString = HRPGSearchDataManager.shared().searchString, searchString != "" {
-            searchBar?.text = searchString
+            searchBar.text = searchString
         } else {
-            searchBar?.text = ""
-            searchBar?.setShowsCancelButton(false, animated: true)
+            searchBar.text = ""
+            searchBar.setShowsCancelButton(false, animated: true)
         }
         
         tableView.reloadData()
@@ -264,8 +264,8 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
     }
     
     override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        searchBar?.resignFirstResponder()
-        searchBar?.setShowsCancelButton(false, animated: true)
+        searchBar.resignFirstResponder()
+        searchBar.setShowsCancelButton(false, animated: true)
     }
     
     @IBAction func unwindFilterChanged(segue: UIStoryboardSegue?) {

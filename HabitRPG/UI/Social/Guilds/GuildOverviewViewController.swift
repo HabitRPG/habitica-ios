@@ -11,7 +11,7 @@ import ReactiveSwift
 import Habitica_Models
 import PinLayout
 
-class GuildOverviewViewController: HRPGBaseViewController, UISearchBarDelegate {
+class GuildOverviewViewController: BaseTableViewController, UISearchBarDelegate {
     
     let segmentedWrapper = UIView()
     let headerImageView = UIImageView()
@@ -39,7 +39,6 @@ class GuildOverviewViewController: HRPGBaseViewController, UISearchBarDelegate {
         headerImageView.image = HabiticaIcons.imageOfGuildHeaderCrest()
         headerImageView.contentMode = .center
         segmentedWrapper.addSubview(self.headerImageView)
-        headerSeparator.backgroundColor = UIColor.gray700()
         segmentedWrapper.addSubview(headerSeparator)
         layoutHeader()
         topHeaderCoordinator?.alternativeHeader = segmentedWrapper
@@ -65,6 +64,14 @@ class GuildOverviewViewController: HRPGBaseViewController, UISearchBarDelegate {
         tableView.tableHeaderView = tableHeaderWrapper
         
         dataSource.retrieveData(completed: nil)
+    }
+    
+    override func applyTheme(theme: Theme) {
+        super.applyTheme(theme: theme)
+        headerSeparator.backgroundColor = theme.separatorColor
+        searchbar.backgroundColor = theme.windowBackgroundColor
+        searchbar.barTintColor = theme.contentBackgroundColor
+        searchbar.tintColor = theme.tintColor
     }
     
     override func viewWillLayoutSubviews() {

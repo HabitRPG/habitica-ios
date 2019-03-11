@@ -370,11 +370,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FSC-0T-avm">
-                                        <rect key="frame" x="0.0" y="-384" width="375" height="2916.5"/>
+                                        <rect key="frame" x="0.0" y="-384" width="375" height="2449.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" distribution="fillProportionally" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="Q0X-P7-X28">
-                                        <rect key="frame" x="15" y="16" width="345" height="2501.5"/>
+                                        <rect key="frame" x="15" y="16" width="345" height="2034.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="vms-Gl-8Ff">
                                                 <rect key="frame" x="0.0" y="0.0" width="345" height="1129.5"/>
@@ -474,10 +474,10 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="03F-b3-D6O">
-                                                <rect key="frame" x="0.0" y="2034.5" width="345" height="467"/>
+                                                <rect key="frame" x="0.0" y="2034.5" width="345" height="0.0"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q4z-83-kc2">
-                                                        <rect key="frame" x="0.0" y="0.0" width="345" height="467"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="345" height="0.0"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <color key="textColor" red="0.53023332359999997" green="0.50720638039999999" blue="0.56472396849999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -490,7 +490,7 @@
                                         </constraints>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gLh-F8-lA2">
-                                        <rect key="frame" x="0.0" y="2532.5" width="375" height="70"/>
+                                        <rect key="frame" x="0.0" y="2065.5" width="375" height="70"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Tp5-9p-PEL">
                                                 <rect key="frame" x="16" y="18" width="343" height="36"/>
@@ -1633,7 +1633,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Sur-1o-ymQ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="OFX-9b-U2U">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -2780,10 +2780,10 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="71z-UW-WBb"/>
-        <segue reference="gAH-Zh-PJ3"/>
+        <segue reference="xLb-S3-ALp"/>
         <segue reference="BKi-xg-gxr"/>
         <segue reference="9hs-wq-6bn"/>
-        <segue reference="jXp-j5-lvy"/>
+        <segue reference="MnH-ar-sz7"/>
         <segue reference="RWA-7r-R8g"/>
         <segue reference="yXa-uT-GhF"/>
         <segue reference="wif-V9-Mcy"/>

@@ -40,7 +40,7 @@ public class ThemeService: NSObject {
         if theme.isDark {
             UITabBar.appearance().tintColor = theme.tintColor
             UITabBar.appearance().backgroundColor = theme.windowBackgroundColor
-            UITabBar.appearance().barStyle = .black
+            UITabBar.appearance().barStyle = .blackOpaque
         } else {
             UITabBar.appearance().tintColor = theme.tintColor
             UITabBar.appearance().barTintColor = theme.contentBackgroundColor
@@ -55,7 +55,8 @@ public class ThemeService: NSObject {
         UIButton.appearance().tintColor = theme.tintColor
         UISearchBar.appearance().backgroundColor = theme.windowBackgroundColor
         UISearchBar.appearance().tintColor = theme.tintColor
-        
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).backgroundColor = theme.contentBackgroundColor
+
         UILabel.appearance(whenContainedInInstancesOf: [UITableViewHeaderFooterView.self]).textColor = theme.primaryTextColor
         UILabel.appearance(whenContainedInInstancesOf: [UICollectionReusableView.self]).textColor = theme.primaryTextColor
         UILabel.appearance(whenContainedInInstancesOf: [UITableViewCell.self]).textColor = theme.primaryTextColor
@@ -69,10 +70,10 @@ public class ThemeService: NSObject {
         // Update styles via UIAppearance
         if #available(iOS 10.0, *) {
             UITabBarItem.appearance().badgeColor = theme.tintColor
-            UITabBar.appearance().unselectedItemTintColor = theme.primaryTextColor
+            UITabBar.appearance().unselectedItemTintColor = theme.dimmedTextColor
         }
         
-        Instabug.setPrimaryColor(theme.tintColor)
+        Instabug.tintColor = theme.tintColor
         
         // The tintColor will trickle down to each view
         if let window = UIApplication.shared.keyWindow {

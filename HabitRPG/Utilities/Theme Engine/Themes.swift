@@ -58,6 +58,7 @@ public struct NightTheme: DarkTheme {
     public var contentBackgroundColorDimmed: UIColor { return UIColor.purple10() }
     public var contentBackgroundColor: UIColor { return UIColor.purple50() }
     public var offsetBackgroundColor: UIColor { return UIColor.purple100() }
+    public var backgroundTintColor: UIColor { return UIColor.purple400() }
     public var tintColor: UIColor { return UIColor.purple500() }
     public var primaryTextColor: UIColor { return UIColor.purple600() }
     public var secondaryTextColor: UIColor { return UIColor.purple500() }

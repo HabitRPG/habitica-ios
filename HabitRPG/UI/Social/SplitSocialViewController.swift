@@ -70,6 +70,8 @@ class SplitSocialViewController: HabiticaSplitViewController {
             }
         }
         navigationItem.rightBarButtonItem = nil
+        
+        view.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
     }
     
     deinit {
