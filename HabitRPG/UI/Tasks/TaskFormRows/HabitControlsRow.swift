@@ -35,6 +35,8 @@ class HabitControlsCell: Cell<HabitControlsValue>, CellType {
         if row.value == nil {
             row.value = HabitControlsValue()
         }
+        
+        contentView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor.withAlphaComponent(0.8)
     }
 
     @objc

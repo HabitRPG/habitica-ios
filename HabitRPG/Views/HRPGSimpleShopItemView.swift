@@ -194,6 +194,12 @@ class HRPGSimpleShopItemView: UIView {
             addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["view": view]))
             addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["view": view]))
             
+            let theme = ThemeService.shared.theme
+            view.backgroundColor = theme.contentBackgroundColor
+            shopItemTitleLabel.textColor = theme.primaryTextColor
+            shopItemDescriptionLabel.textColor = theme.secondaryTextColor
+            topBannerWrapper.backgroundColor = theme.contentBackgroundColor
+            
             setNeedsUpdateConstraints()
             updateConstraints()
             setNeedsLayout()

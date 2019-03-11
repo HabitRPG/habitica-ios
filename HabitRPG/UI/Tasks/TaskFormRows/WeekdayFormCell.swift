@@ -46,6 +46,8 @@ class WeekdayFormCell: Cell<WeekdaysValue>, CellType {
         fridayLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(fridayTapped)))
         saturdayLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(saturdayTapped)))
         sundayLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(sundayTapped)))
+        
+        contentView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor.withAlphaComponent(0.8)
     }
     
     @objc

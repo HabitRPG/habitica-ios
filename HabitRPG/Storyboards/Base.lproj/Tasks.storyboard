@@ -142,6 +142,7 @@
                         <outlet property="titleBar" destination="9gT-95-TiU" id="Thn-9g-3uF"/>
                         <outlet property="titleLabel" destination="w7b-MM-Pyi" id="cCV-j3-4dQ"/>
                         <outlet property="topHeaderOffset" destination="13H-i5-O7Y" id="CMs-T1-K1h"/>
+                        <outlet property="visualEffectView" destination="JKD-06-9z5" id="n3G-fj-Tx2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h48-Kn-rSb" userLabel="First Responder" sceneMemberID="firstResponder"/>

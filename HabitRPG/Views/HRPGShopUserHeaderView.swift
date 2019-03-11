@@ -31,6 +31,7 @@ class HRPGShopUserHeaderView: UIView {
         hourglassCountView.currency = .hourglass
         gemCountView.currency = .gem
         goldCountView.currency = .gold
+        backgroundColor = ThemeService.shared.theme.contentBackgroundColor
         super.awakeFromNib()
     }
 

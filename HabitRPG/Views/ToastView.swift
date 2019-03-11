@@ -150,7 +150,7 @@ class ToastView: UIView {
 
     func loadOptions() {
         self.backgroundView.backgroundColor = options.backgroundColor.getUIColor()
-        self.backgroundView.layer.borderColor = options.backgroundColor.getUIColor().darker(by: 10)?.cgColor
+        self.backgroundView.layer.borderColor = options.backgroundColor.getUIColor().darker(by: 10).cgColor
 
         topSpacing.constant = 6
         bottomSpacing.constant = 6

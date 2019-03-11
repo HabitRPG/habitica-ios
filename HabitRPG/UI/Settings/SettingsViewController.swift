@@ -69,9 +69,12 @@ enum ThemeName: String {
     case green = "Green"
     case yellow = "Yellow"
     case orange = "Orange"
-    case red = "Red"
+    case red = "Red Task Redemption"
     case maroon = "Maroon"
+    case gray = "Gray"
     case night = "Night (experimental)"
+    case darkNight = "The Dark Task (experimental)"
+    case trueBlack = "True Black (experimental)"
     
     var themeClass: Theme {
         switch self {
@@ -91,8 +94,14 @@ enum ThemeName: String {
             return RedTheme()
         case .maroon:
             return MaroonTheme()
+        case .gray:
+            return GrayTheme()
         case .night:
             return NightTheme()
+        case .darkNight:
+            return DarkNightTheme()
+        case .trueBlack:
+            return TrueBlackTheme()
         }
     }
     
@@ -105,10 +114,13 @@ enum ThemeName: String {
             .yellow,
             .orange,
             .red,
-            .maroon
+            .maroon,
+            .gray
         ]
         if !HabiticaAppDelegate.isRunningLive() {
             themes.append(.night)
+            themes.append(.darkNight)
+            themes.append(.trueBlack)
         }
         return themes
     }
@@ -285,7 +297,7 @@ class SettingsViewController: FormViewController, Themeable {
                 row.title = L10n.Settings.profile
                 row.presentationMode = .segueName(segueName: StoryboardSegue.Settings.profileSegue.rawValue, onDismiss: nil)
                 row.cellUpdate({ (cell, _) in
-                    cell.textLabel?.textColor = UIColor.black
+                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
                     cell.textLabel?.textAlignment = .natural
                     cell.accessoryType = .disclosureIndicator
                 })
@@ -295,7 +307,7 @@ class SettingsViewController: FormViewController, Themeable {
                 row.presentationMode = .segueName(segueName: StoryboardSegue.Settings.authenticationSegue.rawValue, onDismiss: nil)
                 row.cellStyle = UITableViewCell.CellStyle.subtitle
                 row.cellUpdate({[weak self] (cell, _) in
-                    cell.textLabel?.textColor = UIColor.black
+                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
                     cell.textLabel?.textAlignment = .natural
                     cell.accessoryType = .disclosureIndicator
                     if self?.user?.flags?.verifiedUsername == false {
@@ -310,7 +322,7 @@ class SettingsViewController: FormViewController, Themeable {
                 row.title = L10n.Settings.api
                 row.presentationMode = .segueName(segueName: StoryboardSegue.Settings.apiSegue.rawValue, onDismiss: nil)
                 row.cellUpdate({ (cell, _) in
-                    cell.textLabel?.textColor = UIColor.black
+                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
                     cell.textLabel?.textAlignment = .natural
                     cell.accessoryType = .disclosureIndicator
                 })
@@ -319,7 +331,7 @@ class SettingsViewController: FormViewController, Themeable {
                 row.title = L10n.Settings.fixCharacterValues
                 row.presentationMode = .segueName(segueName: StoryboardSegue.Settings.fixValuesSegue.rawValue, onDismiss: nil)
                 row.cellUpdate({ (cell, _) in
-                    cell.textLabel?.textColor = UIColor.black
+                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
                     cell.textLabel?.textAlignment = .natural
                     cell.accessoryType = .disclosureIndicator
                 })
@@ -327,7 +339,7 @@ class SettingsViewController: FormViewController, Themeable {
             <<< ButtonRow(SettingsTags.changeClass) { row in
                 row.title = L10n.Settings.changeClass
                 row.cellUpdate({ (cell, _) in
-                    cell.textLabel?.textColor = UIColor.black
+                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
                 }).onCellSelection({[weak self] (_, _) in
                     self?.classSelectionButtonTapped()
                 })

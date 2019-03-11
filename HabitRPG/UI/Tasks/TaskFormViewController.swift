@@ -55,7 +55,7 @@ class TaskFormViewController: FormViewController {
             if tableView != nil {
                 tableView.reloadData()
             }
-            modalContainerViewController?.screenDimView.backgroundColor = taskTintColor.darker(by: 50)?.withAlphaComponent(0.6)
+            modalContainerViewController?.screenDimView.backgroundColor = taskTintColor.darker(by: 50).withAlphaComponent(0.6)
         }
     }
     var lightTaskTintColor: UIColor = UIColor.purple400()
@@ -119,8 +119,10 @@ class TaskFormViewController: FormViewController {
                     row.value = self.task.tags.contains(where: { (taskTag) -> Bool in
                         return taskTag.id == tag.id
                     })
-                    row.cellSetup({ (cell, _) in
+                    row.cellUpdate({ (cell, _) in
                         cell.tintColor = self.taskTintColor
+                        cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                        cell.detailTextLabel?.textColor = ThemeService.shared.theme.primaryTextColor
                     })
                 }
                 section.append(row)
@@ -280,6 +282,7 @@ class TaskFormViewController: FormViewController {
                 row.options = TaskFormViewController.habitResetStreakOptions
                 row.value = TaskFormViewController.habitResetStreakOptions[0]
                 row.cellSetup({ (cell, _) in
+                    cell.tintColor = self.taskTintColor
                     cell.segmentedControl.tintColor = self.taskTintColor
                 })
             }

@@ -65,6 +65,9 @@
 + (nonnull UIColor *)gray600;
 + (nonnull UIColor *)gray700;
 
++ (nonnull UIColor *)blackPurple50;
++ (nonnull UIColor *)blackPurple100;
+
 + (nonnull UIColor *)contributorColorFor:(NSInteger)level;
 
 - (nullable UIColor *)blendWithColor:(nullable UIColor *)color2 alpha:(CGFloat)alpha2;

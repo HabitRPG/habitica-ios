@@ -36,6 +36,8 @@
     self.refreshControl = refresh;
     
     self.navigationItem.rightBarButtonItem = nil;
+    
+    self.tableView.backgroundColor = ObjcThemeWrapper.contentBackgroundColor;
 }
 
 - (void)didReceiveMemoryWarning {

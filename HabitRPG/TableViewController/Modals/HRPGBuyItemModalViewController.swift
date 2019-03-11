@@ -84,20 +84,24 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     func applyTheme(theme: Theme) {
         pinButton.setTitleColor(theme.tintColor, for: .normal)
         pinButton.backgroundColor = theme.backgroundTintColor.withAlphaComponent(0.05)
+        pinButton.layer.borderColor = theme.dimmedColor.cgColor
         buyButton.backgroundColor = theme.backgroundTintColor.withAlphaComponent(0.05)
+        buyButton.layer.borderColor = theme.dimmedColor.cgColor
         closableShopModal.closeButton.setTitleColor(theme.tintColor, for: .normal)
+        closableShopModal.closeButton.backgroundColor = theme.contentBackgroundColor
+        closableShopModal.shopModalBgView.backgroundColor = theme.contentBackgroundColor
+        closableShopModal.shopModalBgView.contentView.backgroundColor = theme.contentBackgroundColor
+
         if !itemIsLocked() {
             buyLabel.textColor = theme.tintColor
         }
-        view.backgroundColor = theme.backgroundTintColor.darker(by: 50)?.withAlphaComponent(0.6)
+        view.backgroundColor = theme.backgroundTintColor.darker(by: 50).withAlphaComponent(0.6)
     }
     
     func styleViews() {
         pinButton.layer.borderWidth = 0.5
-        pinButton.layer.borderColor = UIColor.gray400().cgColor
         
         buyButton.layer.borderWidth = 0.5
-        buyButton.layer.borderColor = UIColor.gray400().cgColor
         currencyCountView.font = UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.semibold)
         
         hourglassCountView.currency = .hourglass

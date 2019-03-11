@@ -47,12 +47,20 @@ class HabitButton: UIView {
             } else {
                 label.image = #imageLiteral(resourceName: "plus")
             }
-            backgroundColor = UIColor.forTaskValue(Int(task.value))
+            if ThemeService.shared.theme.isDark {
+                backgroundColor = UIColor.forTaskValueDark(Int(task.value))
+            } else {
+                backgroundColor = UIColor.forTaskValue(Int(task.value))
+            }
             
             if task.value >= 10 && task.value < -1 {
                 roundedView.backgroundColor = UIColor.orange10()
             } else if task.value >= -1 && task.value < 1 {
-                roundedView.backgroundColor = UIColor.yellow10()
+                if ThemeService.shared.theme.isDark {
+                    roundedView.backgroundColor = UIColor.yellow5()
+                } else {
+                    roundedView.backgroundColor = UIColor.yellow10()
+                }
             } else {
                 roundedView.backgroundColor = UIColor(white: 0, alpha: 0.1)
             }

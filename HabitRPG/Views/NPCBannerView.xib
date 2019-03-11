@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NPCBannerView" customModule="Habitica" customModuleProvider="target">
             <connections>
                 <outlet property="bgImageView" destination="du6-vW-1QD" id="qYa-Py-Z6P"/>
+                <outlet property="bgWhiteView" destination="PDB-0h-qte" id="Cxa-QC-tdu"/>
                 <outlet property="foregroundImageView" destination="au3-k0-leG" id="LGZ-oh-Wqd"/>
                 <outlet property="gradientView" destination="m9F-F1-Flu" id="oB7-Uy-5Li"/>
                 <outlet property="notesLabel" destination="g3I-SJ-7Li" id="Px4-Sr-jfq"/>

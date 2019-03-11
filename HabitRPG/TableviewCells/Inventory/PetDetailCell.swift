@@ -31,6 +31,7 @@ class PetDetailCell: UICollectionViewCell {
         } else {
             imageView.alpha = 1.0
         }
+        progressView.tintColor = ThemeService.shared.theme.successColor
         progressView.trackTintColor = ThemeService.shared.theme.windowBackgroundColor
         if petItem.pet?.type != " " && petItem.trained > 0 && petItem.mountOwned == false {
             progressView.isHidden = false

@@ -16,6 +16,7 @@ class NPCBannerView: UIView {
     @IBOutlet weak var npcNameLabel: UILabel!
     @IBOutlet weak var plaqueImageView: UIImageView!
     @IBOutlet weak var gradientView: GradientView!
+    @IBOutlet weak var bgWhiteView: UILabel!
     @objc var shop: ShopProtocol? {
         didSet {
             setupShop()
@@ -47,8 +48,12 @@ class NPCBannerView: UIView {
             
             plaqueImageView.image = UIImage(named: "Nameplate")?.resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: 21, bottom: 0, right: 21))
             
-            gradientView.startColor = ThemeService.shared.theme.windowBackgroundColor.withAlphaComponent(0.8)
-            gradientView.endColor = ThemeService.shared.theme.windowBackgroundColor
+            let theme = ThemeService.shared.theme
+            gradientView.startColor = theme.windowBackgroundColor.withAlphaComponent(0.8)
+            gradientView.endColor = theme.windowBackgroundColor
+            notesLabel.backgroundColor = theme.windowBackgroundColor
+            notesLabel.textColor = theme.primaryTextColor
+            bgWhiteView.backgroundColor = theme.windowBackgroundColor
         }
     }
     

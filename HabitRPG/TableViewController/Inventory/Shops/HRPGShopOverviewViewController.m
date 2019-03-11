@@ -32,6 +32,8 @@
     self.viewModel.delegate = self;
     [self.viewModel fetchShops];
     [self.viewModel refreshShops];
+    
+    self.tableView.backgroundColor = ObjcThemeWrapper.contentBackgroundColor;
 }
 
 - (void)viewDidAppear:(BOOL)animated {

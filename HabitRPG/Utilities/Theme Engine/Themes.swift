@@ -48,6 +48,11 @@ public struct YellowTheme: Theme {
     public var tintColor: UIColor { return UIColor.yellow10() }
 }
 
+public struct GrayTheme: Theme {
+    public var backgroundTintColor: UIColor { return UIColor.gray50() }
+    public var tintColor: UIColor { return UIColor.gray100() }
+}
+
 public struct DysheatenerTheme: Theme {
     public var backgroundTintColor: UIColor { return UIColor("#410F2A") }
     public var tintColor: UIColor { return UIColor("#931F4D") }
@@ -58,6 +63,39 @@ public struct NightTheme: DarkTheme {
     public var contentBackgroundColorDimmed: UIColor { return UIColor.purple10() }
     public var contentBackgroundColor: UIColor { return UIColor.purple50() }
     public var offsetBackgroundColor: UIColor { return UIColor.purple100() }
+    public var backgroundTintColor: UIColor { return UIColor.purple400() }
+    public var tintColor: UIColor { return UIColor.purple500() }
+    public var primaryTextColor: UIColor { return UIColor.purple600() }
+    public var secondaryTextColor: UIColor { return UIColor.purple500() }
+    public var dimmedTextColor: UIColor { return UIColor.purple300() }
+    public var separatorColor: UIColor { return UIColor.purple50() }
+    public var tableviewSeparatorColor: UIColor { return UIColor.purple300() }
+    public var navbarHiddenColor: UIColor { return contentBackgroundColor }
+    public var dimmedColor: UIColor { return UIColor.purple200() }
+}
+
+public struct DarkNightTheme: DarkTheme {
+    public var windowBackgroundColor: UIColor { return UIColor.blackPurple100().darker(by: 7) }
+    public var contentBackgroundColorDimmed: UIColor { return UIColor.blackPurple100().darker(by: 6) }
+    public var contentBackgroundColor: UIColor { return UIColor.blackPurple50() }
+    public var offsetBackgroundColor: UIColor { return UIColor.blackPurple100() }
+    public var backgroundTintColor: UIColor { return UIColor.gray400() }
+    public var tintColor: UIColor { return UIColor.gray600() }
+    public var primaryTextColor: UIColor { return UIColor.gray700() }
+    public var secondaryTextColor: UIColor { return UIColor.gray600() }
+    public var dimmedTextColor: UIColor { return UIColor.gray200() }
+    public var separatorColor: UIColor { return UIColor.gray10() }
+    public var tableviewSeparatorColor: UIColor { return UIColor.blackPurple100() }
+    public var navbarHiddenColor: UIColor { return contentBackgroundColor }
+    public var dimmedColor: UIColor { return UIColor.gray200() }
+    public var badgeColor: UIColor { return UIColor.gray200() }
+}
+
+public struct TrueBlackTheme: DarkTheme {
+    public var windowBackgroundColor: UIColor { return UIColor.blackPurple50() }
+    public var contentBackgroundColorDimmed: UIColor { return UIColor.blackPurple50() }
+    public var contentBackgroundColor: UIColor { return UIColor.black }
+    public var offsetBackgroundColor: UIColor { return UIColor.blackPurple100() }
     public var backgroundTintColor: UIColor { return UIColor.purple400() }
     public var tintColor: UIColor { return UIColor.purple500() }
     public var primaryTextColor: UIColor { return UIColor.purple600() }

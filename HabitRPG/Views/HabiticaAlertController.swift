@@ -24,6 +24,7 @@ class HabiticaAlertController: UIViewController, Themeable {
     @IBOutlet var centerConstraint: NSLayoutConstraint!
     @IBOutlet weak var scrollviewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var buttonBackgroundView: UIView!
+    @IBOutlet weak var alertBackgroundView: UIView!
     
     private var buttonHandlers = [Int: ((UIButton) -> Swift.Void)]()
     private var buttons = [UIButton]()
@@ -121,8 +122,12 @@ class HabiticaAlertController: UIViewController, Themeable {
     }
     
     func applyTheme(theme: Theme) {
-        view.backgroundColor = theme.backgroundTintColor.darker(by: 50)?.withAlphaComponent(0.6)
+        view.backgroundColor = theme.backgroundTintColor.darker(by: 50).withAlphaComponent(0.6)
         buttonBackgroundView.backgroundColor = theme.tintColor.withAlphaComponent(0.05)
+        alertBackgroundView.backgroundColor = theme.contentBackgroundColor
+        closeButton.backgroundColor = theme.contentBackgroundColor
+        
+        titleLabel.textColor = theme.primaryTextColor
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -240,7 +245,7 @@ class HabiticaAlertController: UIViewController, Themeable {
             return
         }
         let label = UILabel()
-        label.textColor = UIColor.gray100()
+        label.textColor = ThemeService.shared.theme.secondaryTextColor
         label.font = CustomFontMetrics.scaledSystemFont(ofSize: 15)
         if message != nil {
             label.text = message

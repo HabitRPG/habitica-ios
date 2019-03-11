@@ -26,10 +26,11 @@ public protocol Theme {
     var primaryTextColor: UIColor { get }
     var secondaryTextColor: UIColor { get }
     var dimmedTextColor: UIColor { get }
+    var badgeColor: UIColor { get }
+    var successColor: UIColor { get }
 }
 
 public protocol DarkTheme: Theme {
-    
 }
 
 extension Theme {
@@ -51,6 +52,9 @@ extension Theme {
     public var secondaryTextColor: UIColor { return UIColor.gray100() }
     public var dimmedTextColor: UIColor { return UIColor.gray400() }
     
+    public var badgeColor: UIColor { return tintColor }
+    public var successColor: UIColor { return UIColor.green100() }
+    
     public func applyContentBackgroundColor(views: [UIView]) {
         applyBackgroundColor(views: views, color: contentBackgroundColor)
     }
@@ -64,6 +68,7 @@ extension Theme {
 
 extension DarkTheme {
     public var isDark: Bool { return true }
+    public var successColor: UIColor { return UIColor.green10() }
 }
 
 @objc

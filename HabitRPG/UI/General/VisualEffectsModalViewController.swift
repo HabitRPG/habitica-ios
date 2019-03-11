@@ -9,7 +9,7 @@
 import UIKit
 
 @objc
-class VisualEffectModalViewController: UIViewController, UIScrollViewDelegate {
+class VisualEffectModalViewController: UIViewController, UIScrollViewDelegate, Themeable {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var leftButton: UIButton!
@@ -20,6 +20,7 @@ class VisualEffectModalViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var topHeaderOffset: NSLayoutConstraint!
     @IBOutlet weak var scrollViewTopOffset: NSLayoutConstraint!
     @IBOutlet weak var contentHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var visualEffectView: UIVisualEffectView!
     
     @objc var containedViewController: UIViewController? {
         return children.first
@@ -42,6 +43,12 @@ class VisualEffectModalViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        ThemeService.shared.addThemeable(themable: self)
+    }
+    
+    func applyTheme(theme: Theme) {
+        visualEffectView.effect = UIBlurEffect(style: theme.isDark ? .dark : .extraLight)
     }
     
     override func viewWillAppear(_ animated: Bool) {

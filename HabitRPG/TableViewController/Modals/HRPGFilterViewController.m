@@ -64,6 +64,8 @@
 
     self.tableView.tableHeaderView = self.headerView;
     
+    self.tableView.backgroundColor = ObjcThemeWrapper.contentBackgroundColor;
+    
     [self doneButtonTapped:nil];
 }
 

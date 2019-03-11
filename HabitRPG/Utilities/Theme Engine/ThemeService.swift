@@ -36,7 +36,11 @@ public class ThemeService: NSObject {
     
     private func applyTheme() {
         UINavigationBar.appearance().tintColor = theme.tintColor
+            UINavigationBar.appearance().titleTextAttributes = [
+                NSAttributedString.Key.foregroundColor: theme.primaryTextColor
+        ]
         UINavigationBar.appearance().backgroundColor = theme.contentBackgroundColor
+        UINavigationBar.appearance().barTintColor = theme.contentBackgroundColor
         if theme.isDark {
             UITabBar.appearance().tintColor = theme.tintColor
             UITabBar.appearance().backgroundColor = theme.windowBackgroundColor
@@ -49,6 +53,7 @@ public class ThemeService: NSObject {
 
         UIToolbar.appearance().tintColor = theme.tintColor
         UIToolbar.appearance().backgroundColor = theme.contentBackgroundColor
+        UIToolbar.appearance().barTintColor = theme.contentBackgroundColor
         UIRefreshControl.appearance().tintColor = theme.tintColor
         UISegmentedControl.appearance().tintColor = theme.backgroundTintColor
         UISwitch.appearance().onTintColor = theme.backgroundTintColor
@@ -69,7 +74,7 @@ public class ThemeService: NSObject {
         view.tintColor = theme.tintColor
         // Update styles via UIAppearance
         if #available(iOS 10.0, *) {
-            UITabBarItem.appearance().badgeColor = theme.tintColor
+            UITabBarItem.appearance().badgeColor = theme.badgeColor
             UITabBar.appearance().unselectedItemTintColor = theme.dimmedTextColor
         }
         
