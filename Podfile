@@ -57,6 +57,7 @@ target 'Habitica' do
   pod 'Crashlytics'
   pod 'Firebase/Performance'
   pod 'Firebase/RemoteConfig'
+  pod 'Firebase/Messaging'
   
   reactive_pods
 

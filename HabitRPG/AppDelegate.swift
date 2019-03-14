@@ -21,15 +21,25 @@ import Instabug
 import Firebase
 import SwiftyStoreKit
 import StoreKit
+import UserNotifications
+import FirebaseMessaging
 
 //This will eventually replace the old ObjC AppDelegate once that code is ported to swift.
 //Reason for adding this class now is mostly, to configure PopupDialogs dim color.
-class HabiticaAppDelegate: NSObject {
+class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenterDelegate {
+    
+    private let application: UIApplication
     
     private let userRepository = UserRepository()
     private let contentRepository = ContentRepository()
     private let taskRepository = TaskRepository()
     private let socialRepository = SocialRepository()
+    
+    @objc
+    init(application: UIApplication) {
+        self.application = application
+        super.init()
+    }
     
     @objc
     func setupPopups() {
@@ -39,7 +49,26 @@ class HabiticaAppDelegate: NSObject {
         appearance.blurEnabled = false
         let dialogAppearance = PopupDialogDefaultView.appearance()
         dialogAppearance.cornerRadius = 12
-
+    }
+    
+    @objc
+    func setupFirebase() {
+        if #available(iOS 10.0, *) {
+            // For iOS 10 display notification (sent via APNS)
+            UNUserNotificationCenter.current().delegate = self
+            
+            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+            UNUserNotificationCenter.current().requestAuthorization(
+                options: authOptions,
+                completionHandler: {_, _ in })
+        } else {
+            let settings: UIUserNotificationSettings =
+                UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+            application.registerUserNotificationSettings(settings)
+        }
+        
+        application.registerForRemoteNotifications()
+        Messaging.messaging().delegate = self
     }
     
     @objc
@@ -89,7 +118,7 @@ class HabiticaAppDelegate: NSObject {
     func setupTheme() {
         let defaults = UserDefaults.standard
         let themeName = ThemeName(rawValue: defaults.string(forKey: "theme") ?? "") ?? ThemeName.defaultTheme
-        ThemeService.shared.theme = themeName.themeClass
+        ThemeService.shared.theme = DarkNightTheme()
     }
     
     @objc
@@ -352,5 +381,14 @@ class HabiticaAppDelegate: NSObject {
             return true
         }
         #endif
+    }
+    
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+        print("Firebase registration token: \(fcmToken)")
+        
+        let dataDict:[String: String] = ["token": fcmToken]
+        NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
+        // TODO: If necessary send token to application server.
+        // Note: This callback is fired at each app startup and whenever a new token is generated.
     }
 }

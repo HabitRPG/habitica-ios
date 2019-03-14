@@ -28,7 +28,7 @@
 
 - (BOOL)application:(UIApplication *)application
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    self.swiftAppDelegate = [[HabiticaAppDelegate alloc] init];
+    self.swiftAppDelegate = [[HabiticaAppDelegate alloc] initWithApplication: application];
     
     [self.swiftAppDelegate setupLogging];
     [self.swiftAppDelegate setupAnalytics];
@@ -38,6 +38,7 @@
     [self.swiftAppDelegate setupNetworkClient];
     [self.swiftAppDelegate setupDatabase];
     [self.swiftAppDelegate setupTheme];
+    [self.swiftAppDelegate setupFirebase];
     
     [self configureNotifications:application];
 

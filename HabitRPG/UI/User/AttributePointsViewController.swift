@@ -168,6 +168,19 @@ class AttributePointsViewController: HRPGUIViewController, Themeable {
         distributeEvenlyCheckmark.image = HabiticaIcons.imageOfCheckmark(checkmarkColor: theme.tintColor, percentage: 1.0)
         distributeClassCheckmark.image = HabiticaIcons.imageOfCheckmark(checkmarkColor: theme.tintColor, percentage: 1.0)
         distributeTaskCheckmark.image = HabiticaIcons.imageOfCheckmark(checkmarkColor: theme.tintColor, percentage: 1.0)
+        autoAllocateLabel.textColor = theme.primaryTextColor
+        distributionBackground.backgroundColor = theme.contentBackgroundColorDimmed
+        distributeEvenlyLabel.textColor = theme.primaryTextColor
+        distributeTasksLabel.textColor = theme.primaryTextColor
+        distributeClassLabel.textColor = theme.primaryTextColor
+        view.backgroundColor = theme.contentBackgroundColor
+        statGuideTitleLabel.textColor = theme.primaryTextColor
+        characterBuildTitleLabel.textColor = theme.primaryTextColor
+        characterBuildTextLabel.textColor = theme.secondaryTextColor
+        strengthTextLabel.textColor = theme.secondaryTextColor
+        intelligenceTextLabel.textColor = theme.secondaryTextColor
+        constitutionTextLabel.textColor = theme.secondaryTextColor
+        perceptionTextLabel.textColor = theme.secondaryTextColor
     }
     
     private func allocate(_ attribute: String) {
