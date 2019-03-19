@@ -145,6 +145,15 @@ enum AppIconName: String {
     case greenAlt = "Green Alternative"
     case tealAlt = "Teal Alternative"
     case blackAlt = "Black Alternative"
+    case purpleAltBlack = "Purple Alternative Black"
+    case maroonAltBlack = "Maroon Alternative Black"
+    case redAltBlack = "Red Alternative Black"
+    case orangeAltBlack = "Orange Alternative Black"
+    case yellowAltBlack = "Yellow Alternative Black"
+    case blueAltBlack = "Blue Alternative Black"
+    case greenAltBlack = "Green Alternative Black"
+    case tealAltBlack = "Teal Alternative Black"
+    case blackAltBlack = "Black Alternative Black"
     case prideHabitica = "Pride"
     case prideHabiticaAlt = "Pride Alt"
 
@@ -190,6 +199,24 @@ enum AppIconName: String {
             return "GreenAlt"
         case .blackAlt:
             return "BlackAlt"
+        case.purpleAltBlack:
+            return "PurpleAltBlack"
+        case .maroonAltBlack:
+            return "MaroonAltBlack"
+        case .redAltBlack:
+            return "RedAltBlack"
+        case .orangeAltBlack:
+            return "OrangeAltBlack"
+        case .yellowAltBlack:
+            return "YellowAltBlack"
+        case .blueAltBlack:
+            return "BlueAltBlack"
+        case .tealAltBlack:
+            return "TealAltBlack"
+        case .greenAltBlack:
+            return "GreenAltBlack"
+        case .blackAltBlack:
+            return "BlackAltBlack"
         }
     }
     
@@ -197,22 +224,31 @@ enum AppIconName: String {
         return [
             .defaultTheme,
             .purpleAlt,
+            .purpleAltBlack,
             .maroon,
             .maroonAlt,
+            .maroonAltBlack,
             .red,
             .redAlt,
+            .redAltBlack,
             .orange,
             .orangeAlt,
+            .orangeAltBlack,
             .yellow,
             .yellowAlt,
+            .yellowAltBlack,
             .blue,
             .blueAlt,
+            .blueAltBlack,
             .teal,
             .tealAlt,
+            .tealAltBlack,
             .green,
             .greenAlt,
+            .greenAltBlack,
             .black,
             .blackAlt,
+            .blackAltBlack,
         ]
     }
 }
