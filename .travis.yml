@@ -29,7 +29,7 @@ env:
   matrix:
     - DESTINATION="platform=iOS Simulator,name=iPhone 6,OS=10.3.1"
     - DESTINATION="platform=iOS Simulator,name=iPhone 8,OS=11.2"
-    - Destination="platform=iOS SImulator,name=iPhone 8,OS=12.1"
+    - DESTINATION="platform=iOS SImulator,name=iPhone 8,OS=12.1"
 script:
   - set -o pipefail
   - xcodebuild -workspace Habitica.xcworkspace -scheme HabiticaTests -destination "$DESTINATION" -sdk iphonesimulator12.1 clean build build-for-testing ONLY_ACTIVE_ARCH=NO | xcpretty  -f `xcpretty-travis-formatter`
