@@ -275,6 +275,8 @@ public enum L10n {
   public static let name = L10n.tr("Mainstrings", "name")
   /// Never
   public static let never = L10n.tr("Mainstrings", "never")
+  /// never
+  public static let neverLowerCase = L10n.tr("Mainstrings", "never_lower_case")
   /// Next
   public static let next = L10n.tr("Mainstrings", "next")
   /// Your next prize unlocks in 1 Check-In.
@@ -1284,9 +1286,9 @@ public enum L10n {
     public static func dueX(_ p1: String) -> String {
       return L10n.tr("Mainstrings", "tasks.due_x", p1)
     }
-    /// every %@
-    public static func everyX(_ p1: String) -> String {
-      return L10n.tr("Mainstrings", "tasks.every_x", p1)
+    /// every %d %@
+    public static func everyX(_ p1: Int, _ p2: String) -> String {
+      return L10n.tr("Mainstrings", "tasks.every_x", p1, p2)
     }
     /// Exercise
     public static let exercise = L10n.tr("Mainstrings", "tasks.exercise")

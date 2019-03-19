@@ -19,12 +19,12 @@ private enum RepeatType {
 
     func string(_ everyX: Int) -> String {
         if self == .never {
-            return L10n.never
+            return L10n.neverLowerCase
         }
         if everyX == 1 {
             return self.everyName()
         } else {
-            return L10n.Tasks.everyX(self.repeatName())
+            return L10n.Tasks.everyX(everyX, self.repeatName())
         }
     }
 
