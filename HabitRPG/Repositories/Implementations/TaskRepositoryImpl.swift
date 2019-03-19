@@ -101,7 +101,6 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
                                           background: healthDiff >= 0 ? .green : .red)
                 ToastManager.show(toast: toastView)
             }
-        
             
             if let drop = response.temp?.drop {
                 var dialog = drop.dialog
@@ -251,7 +250,7 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
         localRepository.fixTaskOrder(movedTask: movedTask, toPosition: toPosition)
     }
     
-    func getReminders() -> SignalProducer<ReactiveResults<[ReminderProtocol]>, ReactiveSwiftRealmError>  {
+    func getReminders() -> SignalProducer<ReactiveResults<[ReminderProtocol]>, ReactiveSwiftRealmError> {
         return currentUserIDProducer.skipNil().flatMap(.latest, {[weak self] (userID) in
             return self?.localRepository.getReminders(userID: userID) ?? SignalProducer.empty
         })

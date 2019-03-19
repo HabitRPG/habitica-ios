@@ -111,7 +111,7 @@ class TutorialStepView: UIView {
     @objc
     func setText(_ text: String) {
         speechbubbleView.text = text
-        if textList.count == 0 {
+        if textList.isEmpty {
              speechbubbleView.caretView.isHidden = true
         }
         self.accessibilityLabel = text
@@ -120,7 +120,7 @@ class TutorialStepView: UIView {
     
     @objc
     func setTexts(list: [String]) {
-        if list.count > 0 {
+        if list.isEmpty == false {
             speechbubbleView.caretView.isHidden = false
             textList = list
             setText(textList.removeFirst())
@@ -139,7 +139,7 @@ class TutorialStepView: UIView {
     
     @objc
     func viewTapped() {
-        if textList.count == 0 {
+        if textList.isEmpty {
             self.dismiss(animated: true)
         } else {
             setText(textList.removeFirst())

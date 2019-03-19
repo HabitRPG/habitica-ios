@@ -78,8 +78,8 @@ class TaskDetailLineView: UIView {
     @objc
     public func configure(task: TaskProtocol) {
         hasContent = false
-        setTag(enabled: task.tags.count > 0)
-        setReminder(enabled: task.reminders.count > 0)
+        setTag(enabled: task.tags.isEmpty == false)
+        setReminder(enabled: task.reminders.isEmpty == false)
         setChallenge(enabled: task.isChallengeTask)
         setStreak(count: task.streak)
 
@@ -166,6 +166,7 @@ class TaskDetailLineView: UIView {
     }
 
     private func setStreak(count: Int) {
+        // swiftlint:disable:next empty_count
         if count > 0 {
             streakLabel.text = String(count)
             streakIconView.isHidden = false
@@ -194,7 +195,7 @@ class TaskDetailLineView: UIView {
             counterString = "\(downCounter)"
         }
         
-        if counterString.count > 0 {
+        if counterString.isEmpty == false {
             streakLabel.text = counterString
             streakIconView.isHidden = false
             streakIconViewWidth.constant = 12

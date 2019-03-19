@@ -53,7 +53,7 @@ class GroupDetailViewController: HRPGUIViewController, UITextViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         disposable.inner.add(self.leaveInteractor?.reactive.take(during: self.lifetime)
-            .flatMap(.latest, { group in
+            .flatMap(.latest, { _ in
                 return self.userRepository.retrieveUser()
             })
             .observeCompleted {})

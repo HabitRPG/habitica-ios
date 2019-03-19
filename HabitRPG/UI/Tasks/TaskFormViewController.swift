@@ -177,7 +177,7 @@ class TaskFormViewController: FormViewController {
         
         modalContainerViewController?.onRightButtonTapped = {
             let errors = self.form.validate()
-            if errors.count == 0 {
+            if errors.isEmpty {
                 self.save()
                 self.modalContainerViewController?.dismiss()
             }
@@ -498,10 +498,10 @@ class TaskFormViewController: FormViewController {
             TaskFormTags.dailyEvery: task.everyX,
             TaskFormTags.repeatWeekdays: weekRepeat
             ])
-        if task.daysOfMonth.count != 0 {
+        if task.daysOfMonth.isEmpty == false {
             form.setValues([TaskFormTags.repeatMonthlySegment: L10n.Tasks.Form.dayOfMonth])
         }
-        if task.weeksOfMonth.count != 0 {
+        if task.weeksOfMonth.isEmpty == false {
             form.setValues([TaskFormTags.repeatMonthlySegment: L10n.Tasks.Form.dayOfWeek])
         }
         fillChecklistValues()

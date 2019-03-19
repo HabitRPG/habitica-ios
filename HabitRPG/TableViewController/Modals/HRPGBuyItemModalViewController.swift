@@ -337,12 +337,12 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
             }
         }
         
-        if key != "" {
+        if key.isEmpty == false {
             self.dismiss(animated: true, completion: nil)
             
             let topViewController = self.presentingViewController
             if !canBuy() {
-                var viewControllerName: String? = nil
+                var viewControllerName: String?
                 if !canAfford() {
                     if currency == .hourglass {
                         viewControllerName = "InsufficientHourglassesViewController"

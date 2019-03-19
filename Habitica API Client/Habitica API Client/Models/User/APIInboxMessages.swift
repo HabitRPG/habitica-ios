@@ -52,7 +52,7 @@ public class APIInboxMessage: InboxMessageProtocol, Decodable {
         flagCount = (try? values.decode(Int.self, forKey: .flagCount)) ?? 0
         contributor = (try? values.decode(APIContributor.self, forKey: .contributor))
         if values.contains(.userStyles) {
-            userStyles = try! values.decode(APIUserStyle.self, forKey: .userStyles)
+            userStyles = try? values.decode(APIUserStyle.self, forKey: .userStyles)
         }
         if values.contains(.likes) {
             likes = APIChatMessageReaction.fromList(try? values.decode([String: Bool].self, forKey: .likes))

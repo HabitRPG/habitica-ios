@@ -9,6 +9,7 @@
 import XCTest
 @testable import Habitica_Database
 
+// swiftlint:disable:next type_name
 class Habitica_DatabaseTests: XCTestCase {
     
     override func setUp() {

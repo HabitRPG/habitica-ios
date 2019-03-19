@@ -111,7 +111,7 @@ class GuildsOverviewDataSource: BaseReactiveTableViewDataSource<GroupProtocol> {
         } else {
             predicates.append(NSPredicate(format: "type == 'guild'"))
         }
-        if let searchText = searchText, searchText.count > 0 {
+        if let searchText = searchText, searchText.isEmpty == false {
             predicates.append(NSPredicate(format: "name CONTAINS[cd] %@ || summary CONTAINS[cd] %@", searchText, searchText))
         }
         return NSCompoundPredicate(andPredicateWithSubpredicates: predicates)

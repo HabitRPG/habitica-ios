@@ -85,7 +85,7 @@ class ChallengeTaskListView: UIView {
     }
 
     override var intrinsicContentSize: CGSize {
-        if taskViews.count == 0 {
+        if taskViews.isEmpty {
             return CGSize.zero
         }
         var height = titleLabel.intrinsicContentSize.height + 8

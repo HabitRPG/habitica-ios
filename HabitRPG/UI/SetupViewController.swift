@@ -235,7 +235,7 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
             task.down = true
             task.type = "habit"
             tasks.append(task)
-            if tasks.count == 0 {
+            if tasks.isEmpty {
                 completeFunc()
                 return
             }
@@ -274,7 +274,6 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
             }
         }
     }
-    
     
     func confirmNames() {
         guard let welcomeViewController = viewControllers[0] as? WelcomeViewController else {

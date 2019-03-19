@@ -79,6 +79,7 @@ class MainTabBarController: UITabBarController, Themeable {
     private func fetchData() {
         disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
             var badgeCount = 0
+            // swiftlint:disable:next empty_count
             if let count = user.inbox?.numberNewMessages, count > 0 {
                 badgeCount += count
             }
@@ -148,6 +149,7 @@ class MainTabBarController: UITabBarController, Themeable {
     
     private func setBadgeCount(index: Int, count: Int) {
         let item = tabBar.items?[index]
+        // swiftlint:disable:next empty_count
         if count > 0 {
             item?.badgeValue = "\(count)"
         } else {

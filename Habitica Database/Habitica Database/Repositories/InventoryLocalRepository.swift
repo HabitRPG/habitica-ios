@@ -21,6 +21,8 @@ public class InventoryLocalRepository: ContentLocalRepository {
         } else {
             producer = RealmGear.findAll()
         }
+        
+        // swiftlint:disable:next force_unwrapping
         return producer!.sorted(key: "text").reactive().map({ (value, changeset) -> ReactiveResults<[GearProtocol]> in
             return (value.map({ (entry) -> GearProtocol in return entry }), changeset)
         })
@@ -42,6 +44,7 @@ public class InventoryLocalRepository: ContentLocalRepository {
         })
     }
     
+    // swiftlint:disable:next large_tuple
     public func getItems(keys: [ItemType: [String]]) -> SignalProducer<(ReactiveResults<[EggProtocol]>,
         ReactiveResults<[FoodProtocol]>,
         ReactiveResults<[HatchingPotionProtocol]>,

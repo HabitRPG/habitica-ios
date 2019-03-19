@@ -27,7 +27,7 @@ class DailyTableViewController: TaskTableViewController {
     override func getDefinitonForTutorial(_ tutorialIdentifier: String) -> [AnyHashable: Any]? {
         if tutorialIdentifier == "dailies" {
             let localizedStringArray = [L10n.Tutorials.dailies1, L10n.Tutorials.dailies2]
-            return ["textList" : localizedStringArray]
+            return ["textList": localizedStringArray]
         }
         return super.getDefinitonForTutorial(tutorialIdentifier)
     }

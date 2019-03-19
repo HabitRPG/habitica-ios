@@ -47,7 +47,7 @@ class CustomRewardCell: UICollectionViewCell {
         } else {
             titleLabel.text = ""
         }
-        if let trimmedNotes = reward.notes?.trimmingCharacters(in: .whitespacesAndNewlines), trimmedNotes.count > 0 {
+        if let trimmedNotes = reward.notes?.trimmingCharacters(in: .whitespacesAndNewlines), trimmedNotes.isEmpty == false {
             notesLabel.attributedText = try? Down(markdownString: trimmedNotes.unicodeEmoji).toHabiticaAttributedString()
             notesLabel.isHidden = false
         } else {

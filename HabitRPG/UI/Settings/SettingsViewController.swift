@@ -61,7 +61,6 @@ enum Servers: String {
     }
 }
 
-
 enum ThemeName: String {
     case defaultTheme = "Purple (Default)"
     case blue = "Blue"
@@ -248,7 +247,7 @@ enum AppIconName: String {
             .greenAltBlack,
             .black,
             .blackAlt,
-            .blackAltBlack,
+            .blackAltBlack
         ]
     }
 }
@@ -512,7 +511,7 @@ class SettingsViewController: FormViewController, Themeable {
                     return name.rawValue
                 })
                 row.value = UIApplication.shared.alternateIconName ?? AppIconName.defaultTheme.rawValue
-                row.onPresent({ (from, to) in
+                row.onPresent({ (_, to) in
                     to.selectableRowCellUpdate = { cell, row in
                         let filename = AppIconName(rawValue: row.title ?? "")?.fileName ?? "Purple"
                         cell.height = { 68 }

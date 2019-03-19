@@ -121,7 +121,7 @@ class ChallengeTableViewDataSource: BaseReactiveTableViewDataSource<ChallengePro
         }
         if let shownGuilds = self.shownGuilds {
             var component = "groupID IN {"
-            if shownGuilds.count > 0 {
+            if shownGuilds.isEmpty == false {
                 component.append("\'\(shownGuilds[0])\'")
             }
             for id in shownGuilds.dropFirst() {
@@ -131,14 +131,14 @@ class ChallengeTableViewDataSource: BaseReactiveTableViewDataSource<ChallengePro
             searchComponents.append(component)
         }
         if let searchText = self.searchText {
-            if searchText.count > 0 {
+            if searchText.isEmpty == false {
                 searchComponents.append("((name CONTAINS[cd] \'\(searchText)\') OR (notes CONTAINS[cd] \'\(searchText)\'))")
             }
         }
         
         if isShowingJoinedChallenges {
             var component = "id IN {"
-            if membershipIDs.count > 0 {
+            if membershipIDs.isEmpty == false {
                 component.append("\'\(membershipIDs[0])\'")
             }
             for id in membershipIDs.dropFirst() {
@@ -148,7 +148,7 @@ class ChallengeTableViewDataSource: BaseReactiveTableViewDataSource<ChallengePro
             searchComponents.append(component)
         }
         
-        if searchComponents.count > 0 {
+        if searchComponents.isEmpty == false {
             return NSPredicate(format: searchComponents.joined(separator: " && "))
         } else {
             return nil

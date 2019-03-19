@@ -147,7 +147,7 @@ class WeekdayFormCell: Cell<WeekdaysValue>, CellType {
                 days.append(L10n.sunday)
             }
             
-            if days.count > 0 {
+            if !days.isEmpty {
                 accessibilityLabel = L10n.activeOn(days.joined(separator: ", "))
             } else {
                 accessibilityLabel = L10n.activeOn(L10n.noDays)

@@ -85,7 +85,7 @@ class GroupChatViewController: SLKTextViewController {
                 .observeValues({ members in
                     self.autocompleteUsernames = members
                     if self.foundWord != nil {
-                        self.showAutoCompletionView(self.autocompleteUsernames.count > 0)
+                        self.showAutoCompletionView(self.autocompleteUsernames.isEmpty == false)
                     }
                 })
             )
@@ -98,7 +98,7 @@ class GroupChatViewController: SLKTextViewController {
                 .observeValues({ (members) in
                     self.autocompleteUsernames = members
                     if self.foundWord != nil {
-                        self.showAutoCompletionView(self.autocompleteUsernames.count > 0)
+                        self.showAutoCompletionView(self.autocompleteUsernames.isEmpty == false)
                     }
                 }))
         }
@@ -110,7 +110,7 @@ class GroupChatViewController: SLKTextViewController {
             .throttle(0.5, on: QueueScheduler.main)
             .observeValues({ emoji in
                 self.autocompleteEmojis = NSString.emojiCheatCodes(matching: emoji)
-                self.showAutoCompletionView(self.autocompleteEmojis.count > 0)
+                self.showAutoCompletionView(self.autocompleteEmojis.isEmpty == false)
             })
         )
     }
@@ -188,7 +188,7 @@ class GroupChatViewController: SLKTextViewController {
                 switch result {
                 case .failure:
                     self.textView.text = message
-                case .success(_):
+                case .success:
                     return
                 }
             }
@@ -259,6 +259,7 @@ class GroupChatViewController: SLKTextViewController {
         } else if foundPrefix == ":" {
             count = autocompleteEmojis.count
         }
+        // swiftlint:disable:next empty_count
         if count == 0 {
             return 0
         }
@@ -323,7 +324,7 @@ class GroupChatViewController: SLKTextViewController {
     }
     
     func configureReplyTo(_ username: String?) {
-        if textView.text.count > 0 {
+        if textView.text.isEmpty == false {
             textView.text = "\(textView.text ?? "") @\(username ?? "") "
         } else {
             textView.text = "@\(username ?? "") "

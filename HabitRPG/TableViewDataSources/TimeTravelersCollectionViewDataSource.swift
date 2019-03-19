@@ -26,7 +26,7 @@ class TimeTravelersCollectionViewDataSource: ShopCollectionViewDataSource {
                         sections.append(section)
                     }
                 } else {
-                    if sections.count == 0 || !sections.contains(where: { (section) -> Bool in section.key == "mystery_sets" }) {
+                    if sections.isEmpty || !sections.contains(where: { (section) -> Bool in section.key == "mystery_sets" }) {
                         let section = ItemSection<InAppRewardProtocol>()
                         section.key = "mystery_sets"
                         section.title = L10n.mysterySets
@@ -36,7 +36,7 @@ class TimeTravelersCollectionViewDataSource: ShopCollectionViewDataSource {
                     if let setSection = sections.first(where: { (section) -> Bool in
                         section.key == "mystery_sets"
                     }) {
-                        if setSection.items.count == 0 || setSection.items.last?.key != item.category?.identifier {
+                        if setSection.items.isEmpty || setSection.items.last?.key != item.category?.identifier {
                             let newItem = inventoryRepository.getNewInAppReward()
                             let key = item.category?.identifier ?? ""
                             newItem.text = item.category?.text

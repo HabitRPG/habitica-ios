@@ -82,6 +82,7 @@ public class ContentLocalRepository: BaseLocalRepository {
         } else {
             producer = RealmFAQEntry.findAll()
         }
+        // swiftlint:disable:next force_unwrapping
         return producer!.reactive().map({ (value, changeset) -> ReactiveResults<[FAQEntryProtocol]> in
             return (value.map({ (entry) -> FAQEntryProtocol in return entry }), changeset)
         })

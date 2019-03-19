@@ -111,8 +111,6 @@ enum SoundTheme: String, EquatableStringEnumProtocol {
             return "Triumph's Theme"
         case .watts:
             return "Watts' Theme"
-        default:
-            return ""
         }
     }
 }
@@ -134,7 +132,7 @@ class SoundManager {
         let documentDirectory = FileManager.SearchPathDirectory.documentDirectory
         let userDomainMask = FileManager.SearchPathDomainMask.userDomainMask
         let paths = NSSearchPathForDirectoriesInDomains(documentDirectory, userDomainMask, true)
-        if paths.count > 0 {
+        if paths.isEmpty == false {
             let folderPath = String(paths[0])
             var folder = URL(fileURLWithPath: folderPath)
             folder = folder.appendingPathComponent("sounds", isDirectory: true)

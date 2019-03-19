@@ -16,7 +16,7 @@ public class TaskLocalRepository: BaseLocalRepository {
     
     func save(userID: String?, task: TaskProtocol, tags: Results<RealmTag>?) {
         if let realmTask = task as? RealmTask {
-            try! getRealm()?.write {
+            try? getRealm()?.write {
                 realmTask.userID = userID
                 getRealm()?.add(realmTask, update: true)
             }
@@ -78,7 +78,7 @@ public class TaskLocalRepository: BaseLocalRepository {
                 tasksToRemove.append(task)
             }
         })
-        if tasksToRemove.count > 0 {
+        if tasksToRemove.isEmpty == false {
             let realm = getRealm()
             try? realm?.write {
                 realm?.delete(tasksToRemove)
@@ -114,7 +114,7 @@ public class TaskLocalRepository: BaseLocalRepository {
         RealmTask.findBy(key: taskId).take(first: 1).skipNil().on(value: {[weak self]realmTask in
             try? self?.getRealm()?.write {
                 if let delta = response.delta {
-                    realmTask.value = realmTask.value + delta
+                    realmTask.value += delta
                 }
                 if realmTask.type != TaskType.habit {
                     realmTask.completed = direction == .up

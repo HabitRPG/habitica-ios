@@ -10,6 +10,7 @@ import Foundation
 
 @objc
 public class Constants: NSObject {
+    // swiftlint:disable:next identifier_name
     public static let TAVERN_ID = "00000000-0000-4000-A000-000000000000"
     @objc public static let MarketKey = "market"
     @objc public static let GearMarketKey = "market-gear"

@@ -165,7 +165,7 @@ class SubscriptionViewController: HRPGBaseViewController {
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        if (isSubscribed && hasTerminationDate) {
+        if isSubscribed && hasTerminationDate {
             return 4
         } else {
             return 3
@@ -183,7 +183,7 @@ class SubscriptionViewController: HRPGBaseViewController {
         } else if isDetailSection(section) {
             return 1
         } else {
-            if (isSubscribed && !hasTerminationDate) || self.products == nil || self.products?.count == 0 {
+            if (isSubscribed && !hasTerminationDate) || self.products == nil || self.products?.isEmpty == true {
                 return 0
             } else {
                 return 1
@@ -343,11 +343,11 @@ class SubscriptionViewController: HRPGBaseViewController {
         if let lastReceipt = receipt["latest_receipt"] as? String {
             userRepository.subscribe(sku: identifier, receipt: lastReceipt).observeResult { (result) in
                 switch result {
-                case .success(_):
+                case .success:
                     completion(true)
                     self.isSubscribed = true
                     self.tableView.reloadData()
-                case .failure(_):
+                case .failure:
                     completion(false)
                 }
             }
@@ -391,7 +391,7 @@ class SubscriptionViewController: HRPGBaseViewController {
         alertController.contentView = textField
         alertController.addCancelAction()
         alertController.addAction(title: L10n.continue, style: .default, isMainAction: true, closeOnTap: true, handler: { _ in
-            if let username = textField.text, username.count > 0 {
+            if let username = textField.text, username.isEmpty == false {
                 self.giftRecipientUsername = username
                 self.perform(segue: StoryboardSegue.Main.openGiftGemDialog)
             }

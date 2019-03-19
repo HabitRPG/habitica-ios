@@ -56,24 +56,22 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
         }
         
         SwiftyStoreKit.restorePurchases(atomically: false) { results in
-            if results.restoreFailedPurchases.count > 0 {
+            if results.restoreFailedPurchases.isEmpty == false {
                 print("Restore Failed: \(results.restoreFailedPurchases)")
-            }
-            else if results.restoredPurchases.count > 0 {
+            } else if results.restoredPurchases.isEmpty == false {
                 for purchase in results.restoredPurchases {
                     // fetch content from your server, then:
                     SwiftyStoreKit.finishTransaction(purchase.transaction)
                 }
                 print("Restore Success: \(results.restoredPurchases)")
-            }
-            else {
+            } else {
                 print("Nothing to Restore")
             }
         }
     }
     
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
-        if transactions.count > 0 {
+        if transactions.isEmpty == false {
             for product in transactions {
                 CLSLogv("Purchase: %@", getVaList([product.payment.productIdentifier]))
             }
@@ -191,9 +189,9 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
         if let lastReceipt = receipt["latest_receipt"] as? String {
             userRepository.subscribe(sku: identifier, receipt: lastReceipt).observeResult { (result) in
                 switch result {
-                case .success(_):
+                case .success:
                     completion(true)
-                case .failure(_):
+                case .failure:
                     completion(false)
                 }
             }

@@ -14,7 +14,4 @@ import Habitica_Database
 @objc
 protocol TaskRepositoryProtocol {
     
-    
 }
-
-

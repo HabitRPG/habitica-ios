@@ -196,7 +196,7 @@ class PartyDetailViewController: GroupDetailViewController {
         let partyInvitations = user.invitations.filter { (invitation) -> Bool in
             return invitation.isPartyInvitation
         }
-        if partyInvitations.count == 0 {
+        if partyInvitations.isEmpty {
             invitationsListView.isHidden = true
             mainStackviewOffset.constant = 16
         } else {

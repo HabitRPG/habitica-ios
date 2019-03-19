@@ -34,7 +34,6 @@ class FixCharacterViewController: BaseTableViewController {
         
         navigationItem.title = L10n.Titles.fixValues
         
-        
         headerLabel.text = L10n.Settings.fixValuesDescription
         headerLabel.numberOfLines = 0
         headerLabel.preferredMaxLayoutWidth = self.view.frame.size.width-52

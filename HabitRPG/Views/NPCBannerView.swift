@@ -102,7 +102,7 @@ class NPCBannerView: UIView {
         paragraphStyle.lineSpacing = 4
         
         let attrString = NSMutableAttributedString(string: notes)
-        attrString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length:   attrString.length))
+        attrString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length: attrString.length))
         self.notesLabel.attributedText = attrString
     }
 }

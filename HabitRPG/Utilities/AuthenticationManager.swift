@@ -74,7 +74,7 @@ class AuthenticationManager: NSObject {
             return false
         }
         if let userId = self.currentUserId {
-            return userId.count > 0
+            return userId.isEmpty == false
         }
         return false
     }

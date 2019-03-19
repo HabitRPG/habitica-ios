@@ -58,7 +58,7 @@ class ProfileSettingsViewController: BaseSettingsViewController {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction.cancelAction())
         alertController.addAction(UIAlertAction(title: L10n.save, style: .default, handler: { (_) in
-            if let textFields = alertController.textFields, textFields.count > 0 {
+            if let textFields = alertController.textFields, !textFields.isEmpty {
                 let textField = textFields[0]
                 action(textField.text)
             }

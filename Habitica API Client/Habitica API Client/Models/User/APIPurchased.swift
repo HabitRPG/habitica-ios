@@ -25,7 +25,7 @@ class APIPurchased: PurchasedProtocol, Decodable {
     }
     
     required init(from decoder: Decoder) throws {
-        let values = try! decoder.container(keyedBy: CodingKeys.self)
+        let values = try decoder.container(keyedBy: CodingKeys.self)
         let hairDict = try?values.decode([String: [String: Bool]].self, forKey: .hair)
         hair = (hairDict?.map({ (hairGroup) -> [OwnedCustomizationProtocol] in
             return hairGroup.value.map({ (key, isOwned) -> OwnedCustomizationProtocol in

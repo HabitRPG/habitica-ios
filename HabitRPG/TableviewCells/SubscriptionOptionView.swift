@@ -67,6 +67,7 @@ class SubscriptionOptionView: UITableViewCell {
     }
     
     func setHourglassCount(_ count: Int) {
+        // swiftlint:disable:next empty_count
         mysticHourglassLabel.isHidden = count == 0
         mysticHourglassLabel.text = L10n.hourglassCount(count)
     }

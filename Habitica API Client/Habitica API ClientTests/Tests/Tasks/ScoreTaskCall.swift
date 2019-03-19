@@ -29,6 +29,7 @@ class ScoreTaskCallSpec: QuickSpec {
             }
             context("Success") {
                 it("Should score task up") {
+                    // swiftlint:disable:next force_unwrapping
                     let call = ScoreTaskCall(task: self.task!, direction: .up, stubHolder: self.stubHolder)
                     
                     waitUntil(timeout: 0.5) { done in
@@ -42,6 +43,7 @@ class ScoreTaskCallSpec: QuickSpec {
             }
             context("Success") {
                 it("Should score task down") {
+                    // swiftlint:disable:next force_unwrapping
                     let call = ScoreTaskCall(task: self.task!, direction: .down, stubHolder: self.stubHolder)
                     
                     waitUntil(timeout: 0.5) { done in

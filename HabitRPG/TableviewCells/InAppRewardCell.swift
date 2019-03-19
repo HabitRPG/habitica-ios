@@ -64,7 +64,7 @@ class InAppRewardCell: UICollectionViewCell {
     
     public var imageName = "" {
         didSet {
-            if imageName.count == 0 {
+            if imageName.isEmpty {
                 return
             }
             if imageName.contains(" ") {

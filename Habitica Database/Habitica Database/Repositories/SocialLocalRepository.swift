@@ -214,7 +214,7 @@ public class SocialLocalRepository: BaseLocalRepository {
                 messagesToRemove.append(message)
             }
         })
-        if messagesToRemove.count > 0 {
+        if messagesToRemove.isEmpty == false {
             let realm = getRealm()
             try? realm?.write {
                 realm?.delete(messagesToRemove)
@@ -259,6 +259,7 @@ public class SocialLocalRepository: BaseLocalRepository {
         } else {
             query = RealmChallenge.findAll()
         }
+        // swiftlint:disable:next force_unwrapping
         return query!.sorted(key: "memberCount", ascending: false).reactive().map({ (value, changeset) -> ReactiveResults<[ChallengeProtocol]> in
             return (value.map({ (challenge) -> ChallengeProtocol in return challenge }), changeset)
         })
@@ -330,6 +331,7 @@ public class SocialLocalRepository: BaseLocalRepository {
     }
     
     public func changeQuestRSVP(userID: String, rsvpNeeded: Bool) {
+        // swiftlint:disable:next first_where
         if let realm = getRealm(), let questState = realm.objects(RealmQuestState.self).filter("combinedKey BEGINSWITH %@", userID).first {
             try? realm.write {
                 questState.rsvpNeeded = rsvpNeeded

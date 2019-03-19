@@ -23,11 +23,11 @@ class RouterHandler: NSObject {
             viewController.groupID = link?.routeParameters["groupID"] as? String
             self.push(viewController)
         }
-        router.register("/groups/myGuilds") { link in
+        router.register("/groups/myGuilds") { _ in
             self.displayTab(index: 4)
             self.push(StoryboardScene.Social.guildsOverviewViewController.instantiate())
         }
-        router.register("/groups/discovery") { link in
+        router.register("/groups/discovery") { _ in
             self.displayTab(index: 4)
             self.push(StoryboardScene.Social.guildsOverviewViewController.instantiate())
         }
@@ -37,39 +37,39 @@ class RouterHandler: NSObject {
             viewController.viewModel = viewModel
             self.push(viewController)
         }
-        router.register("/challenges/myChallenges") { link in
+        router.register("/challenges/myChallenges") { _ in
             self.displayTab(index: 4)
             self.push(StoryboardScene.Social.guildsOverviewViewController.instantiate())
         }
-        router.register("/challenges/findChallenges") { link in
+        router.register("/challenges/findChallenges") { _ in
             self.displayTab(index: 4)
             self.push(StoryboardScene.Social.guildsOverviewViewController.instantiate())
         }
-        router.register("/tavern") { link in
+        router.register("/tavern") { _ in
             self.displayTab(index: 4)
             self.push(StoryboardScene.Social.tavernViewController.instantiate())
         }
-        router.register("/party") { link in
+        router.register("/party") { _ in
             self.displayTab(index: 4)
             self.push(StoryboardScene.Social.partyViewController.instantiate())
         }
-        router.register("/inventory/items") { link in
+        router.register("/inventory/items") { _ in
             self.displayTab(index: 4)
             self.push(StoryboardScene.Main.itemsViewController.instantiate())
         }
-        router.register("/inventory/equipment") { link in
+        router.register("/inventory/equipment") { _ in
             self.displayTab(index: 4)
             self.push(StoryboardScene.Main.equipmentOverviewViewController.instantiate())
         }
-        router.register("/inventory/stable") { link in
+        router.register("/inventory/stable") { _ in
             self.displayTab(index: 4)
             self.push(StoryboardScene.Main.stableViewController.instantiate())
         }
-        router.register("/static/faq") { link in
+        router.register("/static/faq") { _ in
             self.displayTab(index: 4)
             self.push(StoryboardScene.Main.faqOverviewViewController.instantiate())
         }
-        router.register("user/settings.*") { link in
+        router.register("user/settings.*") { _ in
             self.displayTab(index: 4)
             self.push(StoryboardScene.Settings.initialScene.instantiate())
         }
@@ -83,7 +83,7 @@ class RouterHandler: NSObject {
     
     @objc
     func handle(url: URL) -> Bool {
-        return router.handle(url) { (_, error) in
+        return router.handle(url) { (_, _) in
         }
     }
     
@@ -107,7 +107,7 @@ class RouterHandler: NSObject {
     
     @objc
     func handle(userActivity: NSUserActivity) -> Bool {
-        return router.handle(userActivity, withCompletion: { (_, error) in
+        return router.handle(userActivity, withCompletion: { (_, _) in
         })
     }
     
@@ -132,13 +132,13 @@ class RouterHandler: NSObject {
     }
     
     private func push(_ viewController: UIViewController) {
-        if let navigationController = selectedNavigationController{
+        if let navigationController = selectedNavigationController {
             navigationController.pushViewController(viewController, animated: true)
         }
     }
     
     private func push(_ viewControllers: [UIViewController]) {
-        if let navigationController = selectedNavigationController{
+        if let navigationController = selectedNavigationController {
             var existingControllers = navigationController.viewControllers
             existingControllers.append(contentsOf: viewControllers)
             navigationController.setViewControllers(existingControllers, animated: true)

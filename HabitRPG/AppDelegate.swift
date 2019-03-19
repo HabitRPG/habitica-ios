@@ -60,7 +60,7 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
             let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
             UNUserNotificationCenter.current().requestAuthorization(
                 options: authOptions,
-                completionHandler: {_, _ in })
+                completionHandler: { _, _ in })
         } else {
             let settings: UIUserNotificationSettings =
                 UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
@@ -90,7 +90,7 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
             mutableRequest.setValue("KEY", forHTTPHeaderField: "x-api-key")
             return mutableRequest as URLRequest
         }
-        NetworkLogger.setResponseObfuscationHandler { (data, response, completion) in
+        NetworkLogger.setResponseObfuscationHandler { (_, response, completion) in
             completion(Data(), response)
         }
         Instabug.reproStepsMode = .enabledWithNoScreenshots
@@ -386,7 +386,7 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
         print("Firebase registration token: \(fcmToken)")
         
-        let dataDict:[String: String] = ["token": fcmToken]
+        let dataDict: [String: String] = ["token": fcmToken]
         NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
         // TODO: If necessary send token to application server.
         // Note: This callback is fired at each app startup and whenever a new token is generated.

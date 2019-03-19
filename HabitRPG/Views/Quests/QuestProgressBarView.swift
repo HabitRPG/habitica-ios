@@ -146,8 +146,8 @@ class QuestProgressBarView: UIView {
     }
     
     private func updatePendingLabel() {
-        pendingLabel.isHidden = pendingTitle.count == 0
-        pendingIconView.isHidden = pendingTitle.count == 0
+        pendingLabel.isHidden = pendingTitle.isEmpty
+        pendingIconView.isHidden = pendingTitle.isEmpty
         pendingLabel.text = "\(formatter.string(from: NSNumber(value: pendingValue)) ?? "") \(pendingTitle)"
         setNeedsLayout()
     }

@@ -129,7 +129,6 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
         
         setupInfo()
         
-        
         challengeProperty.signal.observeValues {[weak self] newChallenge in
             self?.joinLeaveStyleProvider.challengeProperty.value = newChallenge
             self?.publishStyleProvider.challengeProperty.value = newChallenge

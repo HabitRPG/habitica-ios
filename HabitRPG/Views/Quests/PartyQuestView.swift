@@ -54,7 +54,7 @@ class PartyQuestView: UIView {
         if let boss = quest.boss {
             isBossQuest = true
             let bossView = progressBarViews.first ?? QuestProgressBarView()
-            if progressBarViews.count == 0 {
+            if progressBarViews.isEmpty {
                 addSubview(bossView)
                 progressBarViews.append(bossView)
             }

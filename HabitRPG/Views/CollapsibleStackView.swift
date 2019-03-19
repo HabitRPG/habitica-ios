@@ -73,7 +73,7 @@ class CollapsibleStackView: SeparatedStackView {
     }
     
     private func setupView() {
-        if arrangedSubviews.count > 0, let subView = arrangedSubviews[0] as? CollapsibleTitle {
+        if arrangedSubviews.isEmpty == false, let subView = arrangedSubviews[0] as? CollapsibleTitle {
             titleView = subView
         } else {
             let view = CollapsibleTitle()

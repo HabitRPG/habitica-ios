@@ -20,7 +20,7 @@ public protocol TaskTableViewDataSourceProtocol {
     @objc var emptyDelegate: DataSourceEmptyDelegate? { get set }
     @objc var isEmpty: Bool { get set }
     
-    @objc var tasks: [TaskProtocol] { get set}
+    @objc var tasks: [TaskProtocol] { get set }
     @objc var taskToEdit: TaskProtocol? { get set }
     
     @objc
@@ -130,7 +130,6 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
         return true
     }
     
-    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             if let task = self.item(at: indexPath) {
@@ -138,7 +137,6 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
             }
         }
     }
-    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)

@@ -70,7 +70,7 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if let searchString = HRPGSearchDataManager.shared().searchString, searchString != "" {
+        if let searchString = HRPGSearchDataManager.shared().searchString, searchString.isEmpty == false {
             searchBar.text = searchString
         } else {
             searchBar.text = ""
@@ -223,7 +223,7 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
     }
     
     func scrollToTask(with taskId: String) {
-        if let index = dataSource?.tasks.indices.filter({ dataSource?.tasks[$0].id == taskId }).first {
+        if let index = dataSource?.tasks.indices.first(where: { dataSource?.tasks[$0].id == taskId }) {
             let indexPath = IndexPath(item: index, section: 0)
             tableView.scrollToRow(at: indexPath, at: .middle, animated: true)
         }
@@ -237,7 +237,7 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
                 predicates.append(contentsOf: dataSource.predicates(filterType: filterType))
                 
                 let selectedTags = tabBarController.selectedTags
-                if selectedTags.count > 0 {
+                if selectedTags.isEmpty == false {
                     predicates.append(NSPredicate(format: "SUBQUERY(realmTags, $tag, $tag.id IN %@).@count = %d", selectedTags, selectedTags.count))
                 }
             }
@@ -406,7 +406,7 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         HRPGSearchDataManager.shared().searchString = searchText
         
-        if searchText == "" {
+        if searchText.isEmpty {
             HRPGSearchDataManager.shared().searchString = nil
         }
         

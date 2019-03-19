@@ -84,7 +84,7 @@ class BulkStatsAllocationViewController: UIViewController {
     private func checkRedistribution(excludedSlider: StatsSliderView?) {
         let diff = pointsAllocated - pointsToAllocate
         if diff > 0 {
-            var highestSlider: StatsSliderView? = nil
+            var highestSlider: StatsSliderView?
             if excludedSlider != strengthSliderView {
                 highestSlider = getSliderWithHigherValue(first: highestSlider, second: strengthSliderView)
             }

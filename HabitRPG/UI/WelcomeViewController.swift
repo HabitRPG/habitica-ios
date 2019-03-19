@@ -69,7 +69,7 @@ class WelcomeViewController: UIViewController, TypingTextViewController, UITextF
             }).withLatest(from: displayNameProperty.producer
             .skipNil()
             .map({ (displayName) -> Bool in
-                return displayName.count > 0 && displayName.count <= 30
+                return displayName.isEmpty == false && displayName.count <= 30
             })
             .on(value: {[weak self] isRightLength in
                 self?.displayNameIconView.isHidden = !isRightLength

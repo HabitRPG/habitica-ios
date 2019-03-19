@@ -267,7 +267,7 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
     
     public func findUsernamesLocally(_ username: String, id: String?) -> SignalProducer<[MemberProtocol], NoError> {
         return localRepository.findUsernames(username, id: id)
-            .flatMapError({ (error) -> SignalProducer<[MemberProtocol], NoError> in
+            .flatMapError({ (_) -> SignalProducer<[MemberProtocol], NoError> in
                 return SignalProducer.empty
             })
     }

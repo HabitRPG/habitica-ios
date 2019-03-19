@@ -123,7 +123,7 @@ class GroupFormViewController: FormViewController {
     
     private func save() -> Bool {
         let errors = form.validate()
-        if errors.count > 0 {
+        if errors.isEmpty == false {
             let alert = HabiticaAlertController(title: errors[0].msg)
             alert.addCloseAction()
             alert.show()

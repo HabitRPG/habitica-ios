@@ -36,7 +36,7 @@ class ToastManager: NSObject {
 
     var displayQueue: [ToastView] = [ToastView]()
     var showingNotification: Bool {
-        return displayQueue.count > 0
+        return displayQueue.isEmpty == false
     }
     
     private func present(toast: ToastView, completion: (() -> Void)?) {
@@ -88,7 +88,7 @@ class ToastManager: NSObject {
         present(toast: toast) {
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+toast.options.displayDuration) {
                 self.dismiss(toast: toast) { () -> Void in
-                    if self.displayQueue.count == 0 {
+                    if self.displayQueue.isEmpty {
                         return
                     }
                     self.displayQueue.removeFirst()

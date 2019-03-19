@@ -106,7 +106,7 @@ class UserRepository: BaseRepository<UserLocalRepository> {
                 user.needsCron = false
             }
         }).start()
-        if tasks.count > 0 {
+        if tasks.isEmpty == false {
             var signal = taskRepository.score(task: tasks[0], direction: .up)
             for task in tasks.dropFirst() {
                 signal = signal.flatMap(.concat, { _ in

@@ -44,7 +44,6 @@ class HRPGItemStatsView: UIView {
             let theme = ThemeService.shared.theme
             view.backgroundColor = theme.contentBackgroundColor
             
-            
             setNeedsUpdateConstraints()
             updateConstraints()
             setNeedsLayout()

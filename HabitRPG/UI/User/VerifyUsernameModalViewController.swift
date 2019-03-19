@@ -130,7 +130,7 @@ class VerifyUsernameModalViewController: UIViewController {
                     return ValidationError(error.localizedDescription)
                 }).producer
             })
-            .on(value: { user in
+            .on(value: { _ in
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                     if self.presentedViewController != nil {
                         self.presentedViewController?.dismiss(animated: false, completion: nil)
@@ -147,13 +147,12 @@ class VerifyUsernameModalViewController: UIViewController {
         //Need to calculate keyboard exact size due to Apple suggestions
         if let info = notification.userInfo {
             let keyboardSize = (info[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
-            let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom:  keyboardSize?.height ?? 0, right: 0)
+            let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize?.height ?? 0, right: 0)
             
             self.scrollView.contentInset = contentInsets
             self.scrollView.scrollIndicatorInsets = contentInsets
         }
     }
-    
     
     @objc func keyboardWillBeHidden(notification: NSNotification) {
         //Once keyboard disappears, restore original positions

@@ -199,7 +199,7 @@ class UserManager: NSObject {
     private func removeReminderNotifications(ids: [String]) {
         let sharedApplication = UIApplication.shared
         for notification in (sharedApplication.scheduledLocalNotifications ?? []) {
-            if let reminderID = notification.userInfo?["ID"] as? String, reminderID.count > 0 {
+            if let reminderID = notification.userInfo?["ID"] as? String, reminderID.isEmpty == false {
                 if ids.contains(reminderID) {
                     sharedApplication.cancelLocalNotification(notification)
                 }
@@ -211,7 +211,7 @@ class UserManager: NSObject {
         guard let task = reminder.task else {
             return
         }
-        if reminder.id == nil || reminder.id == "" {
+        if reminder.id == nil || reminder.id?.isEmpty == true {
             return
         }
         var newNotifications = [UILocalNotification?]()

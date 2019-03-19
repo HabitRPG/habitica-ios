@@ -139,9 +139,9 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
         }
         fetchGearDisposable = inventoryRepository.getShop(identifier: Constants.GearMarketKey)
             .map({ (shop) -> [InAppRewardProtocol] in
-                return shop?.categories.filter({ (category) -> Bool in
+                return shop?.categories.first(where: { (category) -> Bool in
                     category.identifier == self.selectedGearCategory
-                }).first?.items ?? []
+                })?.items ?? []
             })
             .combineLatest(with: self.inventoryRepository.getOwnedGear()
                 .map({ (ownedGear, _) in

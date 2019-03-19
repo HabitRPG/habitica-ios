@@ -50,6 +50,7 @@ public class StableLocalRepository: ContentLocalRepository {
         } else {
             producer = RealmPet.findAll()
         }
+        // swiftlint:disable:next force_unwrapping
         return producer!.sorted(key: "key").reactive().map({ (value, changeset) -> ReactiveResults<[PetProtocol]> in
             return (value.map({ (item) -> PetProtocol in return item }), changeset)
         })
@@ -68,6 +69,7 @@ public class StableLocalRepository: ContentLocalRepository {
         } else {
             producer = RealmMount.findAll()
         }
+        // swiftlint:disable:next force_unwrapping
         return producer!.sorted(key: "key").reactive().map({ (value, changeset) -> ReactiveResults<[MountProtocol]> in
             return (value.map({ (item) -> MountProtocol in return item }), changeset)
         })

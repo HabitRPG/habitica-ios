@@ -29,7 +29,7 @@ extension Down {
             let string = NSMutableAttributedString(string: markdownString,
                                                    attributes: [.font: CustomFontMetrics.scaledSystemFont(ofSize: 15),
                                                                 .foregroundColor: textColor])
-            if mentions.count > 0 {
+            if mentions.isEmpty == false {
                 applyMentions(string, mentions: mentions)
             }
             return string
@@ -38,7 +38,7 @@ extension Down {
             let string = NSMutableAttributedString(string: markdownString,
                                                   attributes: [.font: CustomFontMetrics.scaledSystemFont(ofSize: 15),
                                                                .foregroundColor: textColor])
-            if mentions.count > 0 {
+            if mentions.isEmpty == false {
                 applyMentions(string, mentions: mentions)
             }
             return string
@@ -64,7 +64,7 @@ extension Down {
                 string.addAttribute(NSAttributedString.Key.foregroundColor, value: textColor, range: range)
             }
         })
-        if mentions.count > 0 {
+        if mentions.isEmpty == false {
             applyMentions(string, mentions: mentions)
         }
         if string.length == 0 {

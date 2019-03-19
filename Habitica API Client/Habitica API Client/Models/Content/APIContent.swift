@@ -131,17 +131,17 @@ public class APIContent: ContentProtocol, Decodable {
         special = try? values.decode([String: APISpecialItem].self, forKey: .special).map({ (key, value) in
             return value
         })
-        let gearWrapper = try! values.decode(APIGearWrapper.self, forKey: .gear)
-        gear = gearWrapper.flat?.map({ (key, value) in
+        let gearWrapper = try? values.decode(APIGearWrapper.self, forKey: .gear)
+        gear = gearWrapper?.flat?.map({ (key, value) in
             return value
         })
-        quests = try! values.decode([String: APIQuest].self, forKey: .quests).map({ (key, value) in
+        quests = try? values.decode([String: APIQuest].self, forKey: .quests).map({ (key, value) in
             return value
         })
-        faq = try! values.decode(APIFAQWrapper.self, forKey: .faq).questions?.enumerated().map({ (index, entry) in
+        faq = try? values.decode(APIFAQWrapper.self, forKey: .faq).questions?.enumerated().map({ (index, entry) in
             entry.index = index
             return entry
-        })
+        }) ?? []
         let parsedSkills = (try? values.decode([String: [String: APISkill]].self, forKey: .skills)) ?? [:]
         skills = []
         for skillSection in parsedSkills {

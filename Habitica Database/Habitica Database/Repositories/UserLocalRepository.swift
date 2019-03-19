@@ -59,7 +59,7 @@ public class UserLocalRepository: BaseLocalRepository {
                 rewardsToRemove.append(reward)
             }
         })
-        if rewardsToRemove.count > 0 {
+        if rewardsToRemove.isEmpty == false {
             let realm = getRealm()
             try? realm?.write {
                 realm?.delete(rewardsToRemove)
@@ -77,7 +77,7 @@ public class UserLocalRepository: BaseLocalRepository {
                 tagsToRemove.append(tag)
             }
         })
-        if tagsToRemove.count > 0 {
+        if tagsToRemove.isEmpty == false {
             let realm = getRealm()
             try? realm?.write {
                 realm?.delete(tagsToRemove)
@@ -119,7 +119,7 @@ public class UserLocalRepository: BaseLocalRepository {
     public func updateUser(id: String, balanceDiff: Float) {
         if let user = getRealm()?.object(ofType: RealmUser.self, forPrimaryKey: id) {
             try? getRealm()?.write {
-                user.balance = user.balance + balanceDiff
+                user.balance += balanceDiff
             }
         }
     }

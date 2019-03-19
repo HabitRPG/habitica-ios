@@ -62,7 +62,7 @@ class ConfigRepository: NSObject {
 
     @objc
     func fetchremoteConfig() {
-        ConfigRepository.remoteConfig.fetch(withExpirationDuration: HabiticaAppDelegate.isRunningLive() ? 3600 : 0) { (status, error) in
+        ConfigRepository.remoteConfig.fetch(withExpirationDuration: HabiticaAppDelegate.isRunningLive() ? 3600 : 0) { (_, _) in
             ConfigRepository.remoteConfig.activateFetched()
         }
         var defaults = [String: NSObject]()
@@ -90,7 +90,6 @@ class ConfigRepository: NSObject {
     func integer(variable: ConfigVariable) -> Int {
         return ConfigRepository.remoteConfig.configValue(forKey: variable.name()).numberValue?.intValue ?? 0
     }
-    
     
     @objc
     func dictionary(variable: ConfigVariable) -> NSDictionary {

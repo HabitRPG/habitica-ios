@@ -45,7 +45,7 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         var cellName = "Cell"
         var cellTitle = ""
         var cellTitleColor = UIColor.black
-        var cellDetailText: String? = nil
+        var cellDetailText: String?
         var confirmOffset = 0
         if user?.flags?.verifiedUsername != true {
             confirmOffset = 1
@@ -225,7 +225,6 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         loginNameTextField.spellCheckingType = .no
         loginNameTextField.text = user?.username
         stackView.addArrangedSubview(loginNameTextField)
-        let passwordTextField = UITextField()
         alertController.contentView = stackView
         
         alertController.addCancelAction()

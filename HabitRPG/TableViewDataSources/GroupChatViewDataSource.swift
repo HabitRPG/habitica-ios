@@ -63,7 +63,7 @@ class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtoc
         
         cell.isFirstMessage = indexPath?.item == 0
         var username = user?.username ?? ""
-        if username.count == 0 {
+        if username.isEmpty {
             username = self.user?.profile?.name ?? ""
         }
         cell.configure(chatMessage: chatMessage,

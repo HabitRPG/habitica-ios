@@ -42,7 +42,7 @@ class TaskTableViewCell: UITableViewCell, UITextViewDelegate {
             self.titleLabel.attributedText = try? Down(markdownString: text.unicodeEmoji).toHabiticaAttributedString()
         }
 
-        if let trimmedNotes = task.notes?.trimmingCharacters(in: .whitespacesAndNewlines), trimmedNotes.count > 0 {
+        if let trimmedNotes = task.notes?.trimmingCharacters(in: .whitespacesAndNewlines), trimmedNotes.isEmpty == false {
             self.subtitleLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 12)
             self.subtitleLabel.attributedText = try? Down(markdownString: trimmedNotes.unicodeEmoji).toHabiticaAttributedString()
             self.subtitleLabel.isHidden = false
@@ -71,7 +71,6 @@ class TaskTableViewCell: UITableViewCell, UITextViewDelegate {
         self.setNeedsLayout()
         
         self.applyAccessibility(task)
-        
         
         contentView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
         mainTaskWrapper.backgroundColor = contentView.backgroundColor
