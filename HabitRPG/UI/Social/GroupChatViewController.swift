@@ -71,26 +71,37 @@ class GroupChatViewController: SLKTextViewController {
             self?.checkGuidelinesAccepted(user: user)
         }).start())
         
-        if configRepository.bool(variable: .enableUsernameAutocomplete) {
-            self.registerPrefixes(forAutoCompletion: ["@", ":"])
-        } else {
-            self.registerPrefixes(forAutoCompletion: [":"])
-        }
+        self.registerPrefixes(forAutoCompletion: ["@", ":"])
         let (signal, observer) = Signal<String, NoError>.pipe()
         autocompleteUsernamesObserver = observer
-        disposable.inner.add(signal
-            .filter({ username -> Bool in return !username.isEmpty })
-            .throttle(2, on: QueueScheduler.main)
-            .flatMap(.latest, { username in
-                self.socialRepository.findUsernames(username, context: self.autocompleteContext, id: self.groupID)
-            })
-            .observeValues({ members in
-                self.autocompleteUsernames = members
-                if self.foundWord != nil {
-                    self.showAutoCompletionView(self.autocompleteUsernames.count > 0)
-                }
-            })
-        )
+        
+        if configRepository.bool(variable: .enableUsernameAutocomplete) {
+            disposable.inner.add(signal
+                .filter({ username -> Bool in return !username.isEmpty })
+                .throttle(2, on: QueueScheduler.main)
+                .flatMap(.latest, { username in
+                    self.socialRepository.findUsernames(username, context: self.autocompleteContext, id: self.groupID)
+                })
+                .observeValues({ members in
+                    self.autocompleteUsernames = members
+                    if self.foundWord != nil {
+                        self.showAutoCompletionView(self.autocompleteUsernames.count > 0)
+                    }
+                })
+            )
+        } else {
+            disposable.inner.add(signal
+                .filter({ username -> Bool in return !username.isEmpty })
+                .flatMap(.latest, { username in
+                    self.socialRepository.findUsernamesLocally(username, id: self.groupID)
+                })
+                .observeValues({ (members) in
+                    self.autocompleteUsernames = members
+                    if self.foundWord != nil {
+                        self.showAutoCompletionView(self.autocompleteUsernames.count > 0)
+                    }
+                }))
+        }
         
         let (emojiSignal, emojiObserver) = Signal<String, NoError>.pipe()
         autocompleteEmojisObserver = emojiObserver

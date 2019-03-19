@@ -51,9 +51,7 @@ class PartyViewController: SplitSocialViewController {
             .map({ (user) -> String? in
                 return user.party?.id
             })
-            .on(failed: { error in
-                Crashlytics.sharedInstance().recordError(error)
-            }, value: {[weak self] partyID in
+            .on(value: {[weak self] partyID in
                 self?.groupID = partyID
                 
                 if partyID == nil {
@@ -68,6 +66,9 @@ class PartyViewController: SplitSocialViewController {
                     self?.topHeaderCoordinator.hideHeader = false
                     self?.topHeaderCoordinator.showHideHeader(show: true)
                 }
+            })
+            .on(failed: { error in
+                Crashlytics.sharedInstance().recordError(error)
             })
             .start())
     }

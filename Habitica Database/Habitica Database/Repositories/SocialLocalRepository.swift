@@ -366,4 +366,24 @@ public class SocialLocalRepository: BaseLocalRepository {
             }
         }
     }
+    
+    public func findUsernames(_ username: String, id: String?) -> SignalProducer<[MemberProtocol], ReactiveSwiftRealmError> {
+        return RealmChatMessage.findBy(query: "groupID == '\(id ?? "")' && username BEGINSWITH[c] '\(username)'")
+            .distinct(by: ["username"])
+            .sorted(key: "timestamp", ascending: false)
+            .reactive()
+            .map({ (result, changes) -> [MemberProtocol] in
+                return result.map({ (message) -> MemberProtocol in
+                    let member = RealmMember()
+                    member.authentication = RealmAuthentication()
+                    member.authentication?.local = RealmLocalAuthentication()
+                    member.authentication?.local?.username = message.username
+                    member.profile = RealmProfile()
+                    member.profile?.name = message.displayName
+                    member.contributor = RealmContributor()
+                    member.contributor?.level = message.contributor?.level ?? 0
+                    return member
+                })
+            })
+    }
 }
