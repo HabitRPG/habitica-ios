@@ -64,6 +64,7 @@ public struct NightTheme: DarkTheme {
     public var contentBackgroundColor: UIColor { return UIColor.purple50() }
     public var offsetBackgroundColor: UIColor { return UIColor.purple100() }
     public var backgroundTintColor: UIColor { return UIColor.purple400() }
+    public var lightlyTintedBackgroundColor: UIColor { return UIColor.purple200() }
     public var tintColor: UIColor { return UIColor.purple500() }
     public var primaryTextColor: UIColor { return UIColor.purple600() }
     public var secondaryTextColor: UIColor { return UIColor.purple500() }
@@ -79,6 +80,7 @@ public struct DarkNightTheme: DarkTheme {
     public var contentBackgroundColorDimmed: UIColor { return UIColor.blackPurple100().darker(by: 6) }
     public var contentBackgroundColor: UIColor { return UIColor.blackPurple50() }
     public var offsetBackgroundColor: UIColor { return UIColor.blackPurple100() }
+    public var lightlyTintedBackgroundColor: UIColor { return UIColor.gray300() }
     public var backgroundTintColor: UIColor { return UIColor.gray400() }
     public var tintColor: UIColor { return UIColor.gray600() }
     public var primaryTextColor: UIColor { return UIColor.gray700() }

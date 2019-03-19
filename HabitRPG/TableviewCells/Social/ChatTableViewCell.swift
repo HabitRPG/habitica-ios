@@ -86,16 +86,7 @@ class ChatTableViewCell: UITableViewCell, UITextViewDelegate, Themeable {
         }
     }
 
-    private var wasMentioned = false {
-        didSet {
-            if wasMentioned {
-                messageWrapper.backgroundColor = UIColor.purple600()
-            } else {
-                messageWrapper.backgroundColor = .white
-            }
-        }
-    }
-                                                                                                                                                    
+    private var wasMentioned = false
     override func awakeFromNib() {
         super.awakeFromNib()
         messageTextView.delegate = self
@@ -228,8 +219,12 @@ class ChatTableViewCell: UITableViewCell, UITextViewDelegate, Themeable {
         messageTextView.textColor = theme.primaryTextColor
         backgroundColor = theme.windowBackgroundColor
         contentView.backgroundColor = theme.windowBackgroundColor
-        messageWrapper.backgroundColor = theme.contentBackgroundColor
         plusOneButton.backgroundColor = theme.windowBackgroundColor
+        if wasMentioned {
+            messageWrapper.backgroundColor = theme.lightlyTintedBackgroundColor
+        } else {
+            messageWrapper.backgroundColor = theme.contentBackgroundColor
+        }
     }
     
     private func setSubline(username: String?, date: Date?) {
