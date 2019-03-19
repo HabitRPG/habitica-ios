@@ -49,18 +49,25 @@ class UserManager: NSObject {
                         })
                     }).withLatest(from: SignalProducer<UserProtocol, NoError>(value: user)) ?? Signal<([TaskProtocol], UserProtocol), NoError>.empty
             }).on(value: { (tasks, user) in
-                var hasUncompletedDailies = false
+                var uncompletedTaskCount = 0
                 for task in tasks {
                     if task.type == "daily" && !task.completed {
-                        hasUncompletedDailies = true
-                        break
+                        uncompletedTaskCount += 1
                     }
                 }
                 
                 if !user.needsCron {
                     return
                 }
-                if !hasUncompletedDailies {
+                
+                var eventProperties = Dictionary<AnyHashable, Any>()
+                eventProperties["eventAction"] = "show cron"
+                eventProperties["eventCategory"] = "behaviour"
+                eventProperties["event"] = "event"
+                eventProperties["task count"] = uncompletedTaskCount
+                Amplitude.instance()?.logEvent("show cron", withEventProperties: eventProperties)
+                
+                if uncompletedTaskCount == 0 {
                     self.userRepository.runCron(tasks: [])
                         .on(failed: { error in
                             Crashlytics.sharedInstance().recordError(error)
