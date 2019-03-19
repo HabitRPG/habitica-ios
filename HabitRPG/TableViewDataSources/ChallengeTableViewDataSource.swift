@@ -28,6 +28,10 @@ class ChallengeTableViewDataSource: BaseReactiveTableViewDataSource<ChallengePro
     var showNotOwned = true
     @objc var shownGuilds: [String]?
     var searchText: String?
+    
+    var nextPage = 0
+    var loadedAllData = false
+    var isLoading = false
 
     private var fetchChallengesDisposable: Disposable?
     private let socialRepository = SocialRepository()
@@ -62,11 +66,27 @@ class ChallengeTableViewDataSource: BaseReactiveTableViewDataSource<ChallengePro
         }).start()
     }
     
-    override func retrieveData(completed: (() -> Void)?) {
-        socialRepository.retrieveChallenges().observeCompleted {
-            if let action = completed {
-                action()
-            }
+    func retrieveData(forced: Bool, completed: (() -> Void)?) {
+        if forced {
+            nextPage = 0
+            loadedAllData = false
+        }
+        if loadedAllData || isLoading {
+            return
+        }
+        isLoading = true
+        socialRepository.retrieveChallenges(page: nextPage, memberOnly: isShowingJoinedChallenges)
+            .on(value: { challenges in
+                if challenges?.count ?? 0 < 10 {
+                    self.loadedAllData = true
+                }
+                self.nextPage += 1
+            })
+            .observeCompleted {
+                self.isLoading = false
+                if let action = completed {
+                    action()
+                }
         }
     }
     

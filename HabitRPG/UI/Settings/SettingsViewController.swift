@@ -321,8 +321,8 @@ class SettingsViewController: FormViewController, Themeable {
                 }
                 row.onChange({ (row) in
                     UserDefaults().set(row.value?.value, forKey: "chosenServer")
-                    let appDelegate = UIApplication.shared.delegate as! HRPGAppDelegate
-                    appDelegate.swiftAppDelegate.updateServer()
+                    let appDelegate = UIApplication.shared.delegate as? HRPGAppDelegate
+                    appDelegate?.swiftAppDelegate.updateServer()
                 })
         }
     }
@@ -391,7 +391,7 @@ class SettingsViewController: FormViewController, Themeable {
                 })
         }
     }
-    
+    // swiftlint:disable:next function_body_length
     private func setupSettingsSections() {
         form +++ Section(L10n.Settings.reminder)
             <<< SwitchRow(SettingsTags.dailyReminder) { row in

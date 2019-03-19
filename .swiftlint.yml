@@ -31,4 +31,4 @@ type_name:
     warning: 45
     error: 50
   excluded: iPhone # excluded via string
-reporter: "emoji"
+reporter: "xcode"

@@ -147,7 +147,7 @@ class VerifyUsernameModalViewController: UIViewController {
         //Need to calculate keyboard exact size due to Apple suggestions
         if let info = notification.userInfo {
             let keyboardSize = (info[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
-            let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom:  keyboardSize!.height, right: 0)
+            let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom:  keyboardSize?.height ?? 0, right: 0)
             
             self.scrollView.contentInset = contentInsets
             self.scrollView.scrollIndicatorInsets = contentInsets
@@ -159,7 +159,7 @@ class VerifyUsernameModalViewController: UIViewController {
         //Once keyboard disappears, restore original positions
         if let info = notification.userInfo {
             let keyboardSize = (info[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
-            let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: -keyboardSize!.height, right: 0.0)
+            let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: -(keyboardSize?.height ?? 0), right: 0.0)
             self.scrollView.contentInset = contentInsets
             self.scrollView.scrollIndicatorInsets = contentInsets
             self.view.endEditing(true)

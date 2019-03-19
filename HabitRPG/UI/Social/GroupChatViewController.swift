@@ -262,7 +262,7 @@ class GroupChatViewController: SLKTextViewController {
         if count == 0 {
             return 0
         }
-        let cellHeight = self.autoCompletionView.delegate?.tableView!(self.autoCompletionView, heightForRowAt: IndexPath(row: 0, section: 0))
+        let cellHeight = self.autoCompletionView.delegate?.tableView?(self.autoCompletionView, heightForRowAt: IndexPath(row: 0, section: 0))
         guard let height = cellHeight else {
             return 0
         }

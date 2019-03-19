@@ -89,7 +89,11 @@ extension Down {
             let results = regex.matches(in: text,
                                         range: NSRange(text.startIndex..., in: text))
             return results.map {
-                String(text[Range($0.range, in: text)!])
+                if let range = Range($0.range, in: text) {
+                    return String(text[range])
+                } else {
+                    return text
+                }
             }
         } catch let error {
             print("invalid regex: \(error.localizedDescription)")

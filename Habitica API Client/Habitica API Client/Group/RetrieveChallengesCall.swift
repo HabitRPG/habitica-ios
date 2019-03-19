@@ -12,7 +12,7 @@ import FunkyNetwork
 import ReactiveSwift
 
 public class RetrieveChallengesCall: ResponseArrayCall<ChallengeProtocol, APIChallenge> {
-    public init(stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "group.json")) {
-        super.init(httpMethod: .GET, endpoint: "challenges/user", stubHolder: stubHolder)
+    public init(page: Int, memberOnly: Bool, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "group.json")) {
+        super.init(httpMethod: .GET, endpoint: "challenges/user?page=\(page)&member=\(memberOnly)", stubHolder: stubHolder)
     }
 }

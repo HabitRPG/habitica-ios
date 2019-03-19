@@ -66,6 +66,8 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate,
         
         refresh()
         dataSource.tableView = self.tableView
+        
+        segmentedFilterControl.selectedSegmentIndex = 0
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -89,6 +91,14 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate,
         super.viewWillLayoutSubviews()
     }
     
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.item == dataSource.tableView(tableView, numberOfRowsInSection: indexPath.section)-1 {
+            dataSource.retrieveData(forced: false) {
+                self.refreshControl?.endRefreshing()
+            }
+        }
+    }
+    
     private func layoutHeader() {
         let size = segmentedFilterControl.intrinsicContentSize
         segmentedFilterControl.frame = CGRect(x: 8, y: 4, width: viewWidth-16, height: size.height)
@@ -97,7 +107,7 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate,
     
     @objc
     private func refresh() {
-        dataSource.retrieveData {
+        dataSource.retrieveData(forced: true) {
             self.refreshControl?.endRefreshing()
         }
     }

@@ -57,8 +57,8 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
         })
     }
     
-    func retrieveChallenges() -> Signal<[ChallengeProtocol]?, NoError> {
-        let call = RetrieveChallengesCall()
+    func retrieveChallenges(page: Int, memberOnly: Bool) -> Signal<[ChallengeProtocol]?, NoError> {
+        let call = RetrieveChallengesCall(page: page, memberOnly: memberOnly)
         call.fire()
         return call.arraySignal.on(value: {[weak self]challenges in
             guard let challenges = challenges else {
