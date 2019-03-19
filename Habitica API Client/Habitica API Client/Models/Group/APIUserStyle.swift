@@ -23,8 +23,8 @@ class APIUserStyle: UserStyleProtocol, Decodable {
     
     public required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        stats = (try! values.decode(APIStats.self, forKey: .stats))
-        preferences = (try! values.decode(APIPreferences.self, forKey: .preferences))
-        items = (try! values.decode(APIUserItems.self, forKey: .items))
+        stats = (try? values.decode(APIStats.self, forKey: .stats))
+        preferences = (try? values.decode(APIPreferences.self, forKey: .preferences))
+        items = (try? values.decode(APIUserItems.self, forKey: .items))
     }
 }

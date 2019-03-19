@@ -40,7 +40,7 @@ public class APIMember: MemberProtocol, Decodable {
         preferences = (try? values.decode(APIPreferences.self, forKey: .preferences))
         profile = (try? values.decode(APIProfile.self, forKey: .profile))
         contributor = (try? values.decode(APIContributor.self, forKey: .contributor))
-        items = (try? values.decode(APIUserItems.self, forKey: .items))
+        items = (try? values.decode(APIMemberItems.self, forKey: .items))
         party = try? values.decode(APIUserParty.self, forKey: .party)
         flags = try? values.decode(APIFlags.self, forKey: .flags)
         authentication = try? values.decode(APIAuthentication.self, forKey: .authentication)
