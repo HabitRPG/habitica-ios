@@ -15,5 +15,4 @@ class APIQuestColors: QuestColorsProtocol, Decodable {
     var light: String?
     var extralight: String?
     
-    
 }

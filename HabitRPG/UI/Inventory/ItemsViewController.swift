@@ -31,7 +31,7 @@ class ItemsViewController: BaseTableViewController {
         dataSource.tableView = tableView
         dataSource.itemType = itemType
         
-        if let _ = navigationController as? TopHeaderViewController {
+        if (navigationController as? TopHeaderViewController) != nil {
             navigationItem.rightBarButtonItem = nil
             isPresentedModally = false
         } else {

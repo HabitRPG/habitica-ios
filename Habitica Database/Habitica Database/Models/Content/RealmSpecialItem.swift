@@ -15,7 +15,6 @@ class RealmSpecialItem: RealmItem, SpecialItemProtocol {
     var immediateUse: Bool = false
     var silent: Bool = false
     
-    
     convenience init(_ specialItem: SpecialItemProtocol) {
         self.init(item: specialItem)
         target = specialItem.target

@@ -10,7 +10,6 @@ import Foundation
 import Habitica_Models
 import FunkyNetwork
 
-
 public class CreateTaskCall: ResponseObjectCall<TaskProtocol, APITask> {
     public init(task: TaskProtocol, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "tasks.json")) {
         let encoder = JSONEncoder()

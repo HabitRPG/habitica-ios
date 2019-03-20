@@ -55,9 +55,15 @@ class SeparatedStackView: StackView {
             }
             let item = visibleSubviews[itemIndex]
             if self.axis == .vertical {
-                layer.frame = CGRect(x: separatorInsets.left, y: item.frame.origin.y+item.frame.size.height + (spacing/2), width: frame.size.width - (separatorInsets.left + separatorInsets.right), height: separatorThickness)
+                layer.frame = CGRect(x: separatorInsets.left,
+                                     y: item.frame.origin.y+item.frame.size.height + (spacing/2),
+                                     width: frame.size.width - (separatorInsets.left + separatorInsets.right),
+                                     height: separatorThickness)
             } else {
-                layer.frame = CGRect(x: item.frame.origin.x + item.frame.size.width + (spacing/2), y: separatorInsets.top, width: separatorThickness, height: frame.size.height - (separatorInsets.top + separatorInsets.bottom))
+                layer.frame = CGRect(x: item.frame.origin.x + item.frame.size.width + (spacing/2),
+                                     y: separatorInsets.top,
+                                     width: separatorThickness,
+                                     height: frame.size.height - (separatorInsets.top + separatorInsets.bottom))
             }
         }
     }

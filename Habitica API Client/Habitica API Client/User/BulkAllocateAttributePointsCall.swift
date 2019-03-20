@@ -13,7 +13,7 @@ import ReactiveSwift
 
 public class BulkAllocateAttributePointsCall: ResponseObjectCall<StatsProtocol, APIStats> {
     public init(strength: Int, intelligence: Int, constitution: Int, perception: Int, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "user.json")) {
-        let updateDict = ["stats":[
+        let updateDict = ["stats": [
             "str": strength,
             "int": intelligence,
             "con": constitution,

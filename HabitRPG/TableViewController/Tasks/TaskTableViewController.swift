@@ -141,9 +141,7 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
         navigationItem.title = title
     }
     
-    @objc
-    @IBAction
-    func longPressRecognized(sender: Any?) {
+    @IBAction func longPressRecognized(sender: Any?) {
         if let longPress = sender as? UILongPressGestureRecognizer {
             let location = longPress.location(in: tableView)
             guard let indexPath = tableView.indexPathForRow(at: location) else {

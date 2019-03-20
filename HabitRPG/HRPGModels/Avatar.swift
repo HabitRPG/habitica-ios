@@ -87,7 +87,7 @@ extension Avatar {
             "mount-body": "Mount_Body_\(mount ?? "")",
             "chair": "chair_\(chair ?? "")",
             "back": back,
-            "skin": (isSleep ?? !ignoreSleeping) ? "skin_\(skin ?? "")_sleep" : "skin_\(skin ?? "")",
+            "skin": (isSleep && !ignoreSleeping) ? "skin_\(skin ?? "")_sleep" : "skin_\(skin ?? "")",
             "shirt": "\(size ?? "slim")_shirt_\( shirt ?? "")",
             "armor": "\(size ?? "slim")_\(armor ?? "")",
             "body": body,

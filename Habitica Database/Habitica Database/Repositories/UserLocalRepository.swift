@@ -31,7 +31,7 @@ public class UserLocalRepository: BaseLocalRepository {
     }
     
     public func save(userID: String?, inAppRewards: [InAppRewardProtocol]) {
-        save(objects:inAppRewards.map { (inAppReward) in
+        save(objects: inAppRewards.map { (inAppReward) in
             if let realmInAppReward = inAppReward as? RealmInAppReward {
                 return realmInAppReward
             }
@@ -41,7 +41,7 @@ public class UserLocalRepository: BaseLocalRepository {
     }
     
     public func save(userID: String, messages: [InboxMessageProtocol]) {
-        save(objects:messages.map { (messsage) in
+        save(objects: messages.map { (messsage) in
             if let realmInboxMessage = messsage as? RealmInboxMessage {
                 return realmInboxMessage
             }
@@ -86,7 +86,7 @@ public class UserLocalRepository: BaseLocalRepository {
     }
     
     public func getUser(_ id: String) -> SignalProducer<UserProtocol, ReactiveSwiftRealmError> {
-        return RealmUser.findBy(query: "id == '\(id)'").reactive().map({ (users, changes) -> UserProtocol? in
+        return RealmUser.findBy(query: "id == '\(id)'").reactive().map({ (users, _) -> UserProtocol? in
             return users.first
         }).skipNil()
     }

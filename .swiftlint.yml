@@ -13,7 +13,6 @@ opt_in_rules:
   - first_where
   - last_where
   - sorted_first_last
-  - discouraged_object_literal
 included: # paths to include during linting. `--path` is ignored if present.
   - HabitRPG
   - Habitica Models
@@ -43,14 +42,14 @@ type_name:
   excluded:
     - iPhone
     - id
+    - up
 identifier_name:
   excluded:
     - id
-
+    - up
 empty_string: error
 contains_over_first_not_nil: error
 first_where: error
 last_where: error
 sorted_first_last: error
-discouraged_object_literal: error
 reporter: "xcode"

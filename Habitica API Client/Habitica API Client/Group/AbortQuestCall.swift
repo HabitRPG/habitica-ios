@@ -16,4 +16,3 @@ public class AbortQuestCall: ResponseObjectCall<QuestStateProtocol, APIQuestStat
         super.init(httpMethod: .POST, endpoint: "groups/\(groupID)/quests/abort", postData: nil, stubHolder: stubHolder)
     }
 }
-

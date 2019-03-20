@@ -65,4 +65,3 @@ class UserProtocolSpec: QuickSpec {
         }
     }
 }
-

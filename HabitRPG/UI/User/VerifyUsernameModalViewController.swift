@@ -143,7 +143,8 @@ class VerifyUsernameModalViewController: UIViewController {
         }
     }
     
-    @objc func keyboardWasShown(notification: NSNotification) {
+    @objc
+    func keyboardWasShown(notification: NSNotification) {
         //Need to calculate keyboard exact size due to Apple suggestions
         if let info = notification.userInfo {
             let keyboardSize = (info[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
@@ -154,7 +155,8 @@ class VerifyUsernameModalViewController: UIViewController {
         }
     }
     
-    @objc func keyboardWillBeHidden(notification: NSNotification) {
+    @objc
+    func keyboardWillBeHidden(notification: NSNotification) {
         //Once keyboard disappears, restore original positions
         if let info = notification.userInfo {
             let keyboardSize = (info[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size

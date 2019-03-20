@@ -18,6 +18,6 @@ class TestUser: UserProtocol {
     var contributor: ContributorProtocol?
     var items: UserItemsProtocol?
     var balance: Float = 0
-    var tasksOrder: [String : [String]] = [String:[String]]()
+    var tasksOrder: [String: [String]] = [String: [String]]()
     var tags: [TagProtocol] = [TagProtocol]()
 }

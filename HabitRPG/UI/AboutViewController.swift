@@ -64,7 +64,7 @@ class AboutViewController: HRPGBaseViewController, MFMailComposeViewControllerDe
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cellName = "BasicCell"
-        if (indexPath.item == 0 || indexPath.item == 3 || indexPath.item == 7) {
+        if indexPath.item == 0 || indexPath.item == 3 || indexPath.item == 7 {
             cellName = "RightDetailCell"
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: cellName, for: indexPath)

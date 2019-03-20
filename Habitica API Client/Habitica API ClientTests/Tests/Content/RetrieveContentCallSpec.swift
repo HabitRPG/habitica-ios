@@ -17,6 +17,7 @@ import ReactiveSwift
 class RetrieveContentCallSpec: QuickSpec {
     var stubHolder: StubHolderProtocol?
     
+    // swiftlint:disable:next function_body_length
     override func spec() {
         HabiticaServerConfig.current = HabiticaServerConfig.stub
         describe("Retrieve content tests") {

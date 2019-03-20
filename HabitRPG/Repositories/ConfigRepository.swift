@@ -33,12 +33,18 @@ enum ConfigVariable: Int {
     
     func defaultValue() -> NSObject {
         switch self {
-        case .supportEmail: return NSString(string: "admin@habitica.com")
-        case .shopSpriteSuffix: return NSString(string: "")
-        case .maxChatLength: return NSNumber(integerLiteral: 3000)
-        case .enableGiftOneGetOne: return NSNumber(booleanLiteral: false)
-        case .enableUsernameAutocomplete: return NSNumber(booleanLiteral: false)
-        case .spriteSubstitutions: return NSDictionary()
+        case .supportEmail:
+            return NSString(string: "admin@habitica.com")
+        case .shopSpriteSuffix:
+            return NSString(string: "")
+        case .maxChatLength:
+            return NSNumber(integerLiteral: 3000)
+        case .enableGiftOneGetOne:
+            return NSNumber(booleanLiteral: false)
+        case .enableUsernameAutocomplete:
+            return NSNumber(booleanLiteral: false)
+        case .spriteSubstitutions:
+            return NSDictionary()
         }
     }
     

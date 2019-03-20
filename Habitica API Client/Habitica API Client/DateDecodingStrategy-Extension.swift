@@ -34,7 +34,6 @@ extension JSONDecoder {
             if let date = dateFormatter.date(from: dateStr) {
                 return date
             }
-
             
             //This is sometimes used for the `nextDue` dates
             var splitString = dateStr.split(separator: " ")

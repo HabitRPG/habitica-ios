@@ -138,7 +138,6 @@ class StatsView: UIView, Themeable {
         allocatedValueLabel.textColor = theme.primaryTextColor
     }
     
-    @objc
     @IBAction func allocateButtonTapped(_ sender: Any) {
         allocateButton.backgroundColor = UIColor.gray500()
         if let action = allocateAction {

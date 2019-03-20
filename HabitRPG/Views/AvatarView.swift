@@ -16,7 +16,6 @@ enum AvatarViewSize: Int {
     case regular
 }
 
-@objc
 @IBDesignable
 class AvatarView: UIView {
 
@@ -30,11 +29,11 @@ class AvatarView: UIView {
         }
     }
     
-    @IBInspectable @objc var showBackground: Bool = true
-    @IBInspectable @objc var showMount: Bool = true
-    @IBInspectable @objc var showPet: Bool = true
-    @IBInspectable @objc var isFainted: Bool = false
-    @IBInspectable @objc var ignoreSleeping: Bool = false
+    @IBInspectable var showBackground: Bool = true
+    @IBInspectable var showMount: Bool = true
+    @IBInspectable var showPet: Bool = true
+    @IBInspectable var isFainted: Bool = false
+    @IBInspectable var ignoreSleeping: Bool = false
     @objc var size: AvatarViewSize = .regular
     
     public var onRenderingFinished: (() -> Void)?

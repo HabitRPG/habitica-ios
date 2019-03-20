@@ -15,4 +15,3 @@ public protocol SubscriptionConsecutiveProtocol {
     var count: Int { get set }
     var offset: Int { get set }
 }
-

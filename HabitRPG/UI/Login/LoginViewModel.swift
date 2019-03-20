@@ -276,7 +276,6 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
         self.prefillPasswordRepeatProperty.value = password
     }
 
-    //swiftlint:disable large_tuple
     private let authValuesProperty: Property<AuthValues?>
     func loginButtonPressed() {
         guard let authValues = self.authValuesProperty.value else {
@@ -298,7 +297,10 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
                     }
                 }
             } else {
-                userRepository.register(username: authValues.username ?? "", password: authValues.password ?? "", confirmPassword: authValues.passwordRepeat ?? "", email: authValues.email ?? "").observeValues { loginResult in
+                userRepository.register(username: authValues.username ?? "",
+                                        password: authValues.password ?? "",
+                                        confirmPassword: authValues.passwordRepeat ?? "",
+                                        email: authValues.email ?? "").observeValues { loginResult in
                     if loginResult != nil {
                         self.onSuccessfulLogin()
                     } else {

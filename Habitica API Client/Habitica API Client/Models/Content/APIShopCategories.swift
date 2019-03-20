@@ -15,7 +15,6 @@ class APIShopCategory: ShopCategoryProtocol, Decodable {
     var notes: String?
     var items: [InAppRewardProtocol] = []
     
-    
     enum CodingKeys: String, CodingKey {
         case identifier
         case text

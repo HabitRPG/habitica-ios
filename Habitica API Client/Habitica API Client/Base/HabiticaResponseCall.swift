@@ -13,7 +13,7 @@ import Result
 
 class HabiticaResponseCall<T: Any, C: Decodable>: AuthenticatedCall {
     public lazy var habiticaResponseSignal: Signal<HabiticaResponse<C>?, NoError> = jsonSignal.map({ json in
-        return json as? Dictionary<String, Any>
+        return json as? [String: Any]
     })
         .skipNil()
         .map { (jsonData) -> Data? in
@@ -47,7 +47,7 @@ class HabiticaResponseCall<T: Any, C: Decodable>: AuthenticatedCall {
         }))
         errorHandler?.observe(signal: serverErrorSignal.combineLatest(with: jsonSignal)
             .map({ (error, jsonAny) -> (NSError, [String]) in
-                let json = jsonAny as? Dictionary<String, Any>
+                let json = jsonAny as? [String: Any]
                 var errors = [String]()
                 if let jsonErrors = json?["errors"] as? [[String: Any]] {
                     for jsonError in jsonErrors {

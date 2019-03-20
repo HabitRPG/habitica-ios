@@ -38,7 +38,7 @@ public class StableLocalRepository: ContentLocalRepository {
     }
     
     public func getOwnedMount(key: String, userID: String) -> SignalProducer<OwnedMountProtocol?, ReactiveSwiftRealmError> {
-        return RealmOwnedMount.findBy(query: "key == '\(key)' && userID == '\(userID)' && owned == true").reactive().map({ (value, changeset) -> OwnedMountProtocol? in
+        return RealmOwnedMount.findBy(query: "key == '\(key)' && userID == '\(userID)' && owned == true").reactive().map({ (value, _) -> OwnedMountProtocol? in
             return value.first
         })
     }

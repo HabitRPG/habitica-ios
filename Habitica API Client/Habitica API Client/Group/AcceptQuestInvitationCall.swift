@@ -16,4 +16,3 @@ public class AcceptQuestInvitationCall: ResponseObjectCall<QuestStateProtocol, A
         super.init(httpMethod: .POST, endpoint: "groups/\(groupID)/quests/accept", postData: nil, stubHolder: stubHolder)
     }
 }
-

@@ -24,9 +24,10 @@ public class AuthenticatedCall: JsonNetworkCall {
     fileprivate static let clientHeader = "x-client"
     fileprivate static let stagingKey = ""
     
-    public lazy var errorJsonSignal: Signal<Dictionary<String, Any>, NoError> = self.errorDataSignal.map(JsonDataHandler.serialize).map({ json in
-        return json as? Dictionary<String, Any>
-    }).skipNil()
+    public lazy var errorJsonSignal: Signal<[String: Any], NoError> = self.errorDataSignal
+        .map(JsonDataHandler.serialize).map({ json in
+            return json as? Dictionary<String, Any>
+        }).skipNil()
 
     public static var errorHandler: NetworkErrorHandler?
     public static var defaultConfiguration = HabiticaServerConfig.current
@@ -34,12 +35,31 @@ public class AuthenticatedCall: JsonNetworkCall {
     var customErrorHandler: NetworkErrorHandler?
     var needsAuthentication = true
     
-    private init(configuration: ServerConfigurationProtocol? = nil, httpMethod: String, httpHeaders: Dictionary<String, String>?, endpoint: String, postData: Data?, stubHolder: StubHolderProtocol?) {
-        super.init(configuration: configuration ?? AuthenticatedCall.defaultConfiguration, httpMethod: httpMethod, httpHeaders: httpHeaders, endpoint: endpoint, postData: postData, stubHolder: stubHolder)
+    private init(configuration: ServerConfigurationProtocol? = nil,
+                 httpMethod: String,
+                 httpHeaders: [String: String]?,
+                 endpoint: String,
+                 postData: Data?,
+                 stubHolder: StubHolderProtocol?) {
+        super.init(configuration: configuration ?? AuthenticatedCall.defaultConfiguration,
+                   httpMethod: httpMethod,
+                   httpHeaders: httpHeaders,
+                   endpoint: endpoint,
+                   postData: postData,
+                   stubHolder: stubHolder)
     }
     
-    init(configuration: ServerConfigurationProtocol? = nil, httpMethod: HTTPMethod, httpHeaders: Dictionary<String, String>? = AuthenticatedCall.jsonHeaders(), endpoint: String, postData: Data? = nil, stubHolder: StubHolderProtocol? = nil, errorHandler: NetworkErrorHandler? = nil) {
-        super.init(configuration: configuration ?? AuthenticatedCall.defaultConfiguration, httpMethod: httpMethod.rawValue, httpHeaders: httpHeaders, endpoint: endpoint, postData: postData, stubHolder: stubHolder)
+    init(configuration: ServerConfigurationProtocol? = nil,
+         httpMethod: HTTPMethod, httpHeaders: [String: String]? = AuthenticatedCall.jsonHeaders(),
+         endpoint: String, postData: Data? = nil,
+         stubHolder: StubHolderProtocol? = nil,
+         errorHandler: NetworkErrorHandler? = nil) {
+        super.init(configuration: configuration ?? AuthenticatedCall.defaultConfiguration,
+                   httpMethod: httpMethod.rawValue,
+                   httpHeaders: httpHeaders,
+                   endpoint: endpoint,
+                   postData: postData,
+                   stubHolder: stubHolder)
         
         customErrorHandler = errorHandler
         
@@ -49,7 +69,7 @@ public class AuthenticatedCall: JsonNetworkCall {
         setupErrorHandler()
     }
     
-    public static override func jsonHeaders() -> Dictionary<String, String> {
+    public static override func jsonHeaders() -> [String: String] {
         var headers = super.jsonHeaders()
         if let apiKey = NetworkAuthenticationManager.shared.currentUserKey, let userId = NetworkAuthenticationManager.shared.currentUserId {
             headers[AuthenticatedCall.apiKeyHeader] = apiKey

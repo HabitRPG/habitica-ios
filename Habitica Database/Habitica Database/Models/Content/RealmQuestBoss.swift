@@ -32,7 +32,6 @@ class RealmQuestBoss: Object, QuestBossProtocol {
     }
     @objc dynamic var realmRage: RealmQuestBossRage?
     
-    
     override static func primaryKey() -> String {
         return "key"
     }

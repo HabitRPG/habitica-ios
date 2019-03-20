@@ -53,7 +53,9 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
     
     func getDueTasks() -> SignalProducer<ReactiveResults<[TaskProtocol]>, ReactiveSwiftRealmError> {
         return currentUserIDProducer.skipNil().flatMap(.latest, {[weak self] (userID) in
-            return self?.localRepository.getTasks(userID: userID, predicate: NSPredicate(format: "(type == 'daily' && isDue == true) || (type == 'todo' && completed == false)"), sortKey: "order") ?? SignalProducer.empty
+            return self?.localRepository.getTasks(userID: userID,
+                                                  predicate: NSPredicate(format: "(type == 'daily' && isDue == true) || (type == 'todo' && completed == false)"),
+                                                  sortKey: "order") ?? SignalProducer.empty
         })
     }
     

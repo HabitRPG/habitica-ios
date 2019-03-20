@@ -10,7 +10,6 @@ import Foundation
 import Habitica_Models
 import FunkyNetwork
 
-
 public class CreateGroupCall: ResponseObjectCall<GroupProtocol, APIGroup> {
     public init(group: GroupProtocol, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "group.json")) {
         let encoder = JSONEncoder()

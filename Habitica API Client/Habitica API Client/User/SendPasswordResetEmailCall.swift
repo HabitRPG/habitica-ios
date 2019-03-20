@@ -13,7 +13,7 @@ import ReactiveSwift
 
 public class SendPasswordResetEmailCall: ResponseObjectCall<EmptyResponseProtocol, APIEmptyResponse> {
     public init(email: String, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "user.json")) {
-        let json = try? JSONSerialization.data(withJSONObject: ["email": email,], options: .prettyPrinted)
+        let json = try? JSONSerialization.data(withJSONObject: ["email": email ], options: .prettyPrinted)
         super.init(httpMethod: .POST, endpoint: "user/reset-password", postData: json, stubHolder: stubHolder)
     }
 }

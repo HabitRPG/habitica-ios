@@ -55,7 +55,7 @@ public class APIGroup: GroupProtocol, Codable {
             let leader = try? values.decode(LeaderObject.self, forKey: .leader)
             leaderID = leader?.id
         }
-        leaderOnlyChallenges = (try? values.decode([String: Bool].self, forKey: .leaderOnlyChallenges).first(where: { (key, value) -> Bool in
+        leaderOnlyChallenges = (try? values.decode([String: Bool].self, forKey: .leaderOnlyChallenges).first(where: { (key, _) -> Bool in
             return key == "challenges"
         })?.value == true) ?? false
         quest = try? values.decode(APIQuestState.self, forKey: .quest)

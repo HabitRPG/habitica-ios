@@ -16,4 +16,3 @@ public class ForceStartQuestCall: ResponseObjectCall<QuestStateProtocol, APIQues
         super.init(httpMethod: .POST, endpoint: "groups/\(groupID)/quests/force-start", postData: nil, stubHolder: stubHolder)
     }
 }
-

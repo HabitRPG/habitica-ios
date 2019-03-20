@@ -16,4 +16,3 @@ public class CancelQuestInvitationCall: ResponseObjectCall<QuestStateProtocol, A
         super.init(httpMethod: .POST, endpoint: "groups/\(groupID)/quests/cancel", postData: nil, stubHolder: stubHolder)
     }
 }
-

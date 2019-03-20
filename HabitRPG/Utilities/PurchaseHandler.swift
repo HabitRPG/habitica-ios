@@ -158,7 +158,9 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
     
     func activateNoRenewSubscription(_ identifier: String, receipt: Data, recipientID: String?, completion: @escaping (Bool) -> Void) {
         pendingGifts[identifier] = recipientID
-        userRepository.purchaseNoRenewSubscription(identifier: identifier, receipt: ["receipt": receipt.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))], recipient: recipientID).observeValues { (result) in
+        userRepository.purchaseNoRenewSubscription(identifier: identifier,
+                                                   receipt: ["receipt": receipt.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))],
+                                                   recipient: recipientID).observeValues { (result) in
             if result != nil {
                 self.pendingGifts.removeValue(forKey: identifier)
                 completion(true)

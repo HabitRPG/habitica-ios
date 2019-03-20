@@ -21,4 +21,3 @@ public class PostInboxMessageCall: ResponseObjectCall<EmptyResponseProtocol, API
         super.init(httpMethod: .POST, endpoint: "members/send-private-message", postData: json, stubHolder: stubHolder)
     }
 }
-

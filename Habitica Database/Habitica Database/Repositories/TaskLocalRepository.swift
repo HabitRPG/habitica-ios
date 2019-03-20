@@ -40,7 +40,7 @@ public class TaskLocalRepository: BaseLocalRepository {
         var taskOrder = ["habits": [String](),
                          "dailies": [String](),
                          "todos": [String](),
-                         "rewards": [String](),
+                         "rewards": [String]()
                          ]
         if let order = order {
             taskOrder = order
@@ -49,7 +49,7 @@ public class TaskLocalRepository: BaseLocalRepository {
                 taskOrder[(task.type ?? "")+"s"]?.append(task.id ?? "")
             })
         }
-        save(objects:tasks.map { (task) in
+        save(objects: tasks.map { (task) in
             task.order = taskOrder[(task.type ?? "")+"s"]?.index(of: task.id ?? "") ?? 0
             if let realmTask = task as? RealmTask {
                 return realmTask

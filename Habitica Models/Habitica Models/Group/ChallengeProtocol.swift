@@ -32,4 +32,3 @@ public protocol ChallengeProtocol {
     var todos: [TaskProtocol] { get }
     var rewards: [TaskProtocol] { get }
 }
-

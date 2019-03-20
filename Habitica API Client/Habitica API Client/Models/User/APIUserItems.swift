@@ -57,7 +57,7 @@ public class APIUserItems: UserItemsProtocol, Decodable {
             return APIOwnedItem(key: key, numberOwned: numberOwned, itemType: ItemType.eggs.rawValue)
         })) ?? []
         let specialDict = try? values.decode([String: Any].self, forKey: .ownedSpecialItems)
-        ownedSpecialItems = (specialDict?.filter({ (key, value) -> Bool in
+        ownedSpecialItems = (specialDict?.filter({ (_, value) -> Bool in
             return (value as? Int) != nil
         }).map({ (key, numberOwned) -> OwnedItemProtocol in
             return APIOwnedItem(key: key, numberOwned: numberOwned as? Int ?? 0, itemType: ItemType.special.rawValue)

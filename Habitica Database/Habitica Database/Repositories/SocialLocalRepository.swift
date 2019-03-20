@@ -73,7 +73,7 @@ public class SocialLocalRepository: BaseLocalRepository {
     }
     
     public func save(groupID: String?, chatMessages: [ChatMessageProtocol]) {
-        save(objects:chatMessages.map { (chatMessage) in
+        save(objects: chatMessages.map { (chatMessage) in
             if let realmChatMessage = chatMessage as? RealmChatMessage {
                 return realmChatMessage
             }
@@ -103,7 +103,7 @@ public class SocialLocalRepository: BaseLocalRepository {
     }
     
     public func save(userID: String?, groupIDs: [String?]) {
-        save(objects:groupIDs.filter({ (id) -> Bool in
+        save(objects: groupIDs.filter({ (id) -> Bool in
             return id != nil
         }).map({ (groupID) -> RealmGroupMembership in
             return RealmGroupMembership(userID: userID, groupID: groupID)
@@ -123,7 +123,7 @@ public class SocialLocalRepository: BaseLocalRepository {
     
     public func save(challengeID: String?, tasks: [TaskProtocol], order: [String: [String]]) {
         let tags = getRealm()?.objects(RealmTag.self)
-        save(objects:tasks.map { (task) in
+        save(objects: tasks.map { (task) in
             task.order = order[(task.type ?? "")+"s"]?.index(of: task.id ?? "") ?? 0
             if let realmTask = task as? RealmTask {
                 return realmTask
@@ -223,13 +223,13 @@ public class SocialLocalRepository: BaseLocalRepository {
     }
     
     public func getGroup(groupID: String) -> SignalProducer<GroupProtocol?, ReactiveSwiftRealmError> {
-        return RealmGroup.findBy(query: "id == '\(groupID)'").reactive().map({ (groups, changes) -> GroupProtocol? in
+        return RealmGroup.findBy(query: "id == '\(groupID)'").reactive().map({ (groups, _) -> GroupProtocol? in
             return groups.first
         })
     }
     
     public func getChallenge(challengeID: String) -> SignalProducer<ChallengeProtocol?, ReactiveSwiftRealmError> {
-        return RealmChallenge.findBy(query: "id == '\(challengeID)'").reactive().map({ (groups, changes) -> ChallengeProtocol? in
+        return RealmChallenge.findBy(query: "id == '\(challengeID)'").reactive().map({ (groups, _) -> ChallengeProtocol? in
             return groups.first
         })
     }
@@ -290,19 +290,19 @@ public class SocialLocalRepository: BaseLocalRepository {
     }
     
     public func getGroupMembership(userID: String, groupID: String) -> SignalProducer<GroupMembershipProtocol?, ReactiveSwiftRealmError> {
-        return RealmGroupMembership.findBy(query: "userID == '\(userID)' && groupID == '\(groupID)'").reactive().map({ (memberships, changes) -> GroupMembershipProtocol? in
+        return RealmGroupMembership.findBy(query: "userID == '\(userID)' && groupID == '\(groupID)'").reactive().map({ (memberships, _) -> GroupMembershipProtocol? in
             return memberships.first
         })
     }
     
     public func getChallengeMembership(userID: String, challengeID: String) -> SignalProducer<ChallengeMembershipProtocol?, ReactiveSwiftRealmError> {
-        return RealmChallengeMembership.findBy(query: "userID == '\(userID)' && challengeID == '\(challengeID)'").reactive().map({ (memberships, changes) -> ChallengeMembershipProtocol? in
+        return RealmChallengeMembership.findBy(query: "userID == '\(userID)' && challengeID == '\(challengeID)'").reactive().map({ (memberships, _) -> ChallengeMembershipProtocol? in
             return memberships.first
         })
     }
     
     public func getMember(userID: String) -> SignalProducer<MemberProtocol?, ReactiveSwiftRealmError> {
-        return RealmMember.findBy(query: "id == '\(userID)'").reactive().map({ (members, changes) -> MemberProtocol? in
+        return RealmMember.findBy(query: "id == '\(userID)'").reactive().map({ (members, _) -> MemberProtocol? in
             return members.first
         })
     }
@@ -374,7 +374,7 @@ public class SocialLocalRepository: BaseLocalRepository {
             .distinct(by: ["username"])
             .sorted(key: "timestamp", ascending: false)
             .reactive()
-            .map({ (result, changes) -> [MemberProtocol] in
+            .map({ (result, _) -> [MemberProtocol] in
                 return result.map({ (message) -> MemberProtocol in
                     let member = RealmMember()
                     member.authentication = RealmAuthentication()
