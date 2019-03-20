@@ -17,6 +17,7 @@ enum ConfigVariable: Int {
     case enableGiftOneGetOne
     case enableUsernameAutocomplete
     case spriteSubstitutions
+    case stableName
 
     func name() -> String {
         // swiftlint:disable switch_case_on_newline
@@ -27,6 +28,7 @@ enum ConfigVariable: Int {
         case .enableGiftOneGetOne: return "enableGiftOneGetOne"
         case .enableUsernameAutocomplete: return "enableUsernameAutocomplete"
         case .spriteSubstitutions: return "spriteSubstitutions"
+        case .stableName: return "stableName"
         }
         // swiftlint:enable switch_case_on_newline
     }
@@ -45,6 +47,8 @@ enum ConfigVariable: Int {
             return NSNumber(booleanLiteral: false)
         case .spriteSubstitutions:
             return NSDictionary()
+        case .stableName:
+            return NSString(string: "")
         }
     }
     
@@ -55,7 +59,8 @@ enum ConfigVariable: Int {
             .maxChatLength,
             .enableGiftOneGetOne,
             .enableUsernameAutocomplete,
-            .spriteSubstitutions
+            .spriteSubstitutions,
+            .stableName
         ]
     }
 }
@@ -87,6 +92,7 @@ class ConfigRepository: NSObject {
     func string(variable: ConfigVariable) -> String? {
         return ConfigRepository.remoteConfig.configValue(forKey: variable.name()).stringValue
     }
+    
     @objc
     func string(variable: ConfigVariable, defaultValue: String) -> String {
         return ConfigRepository.remoteConfig.configValue(forKey: variable.name()).stringValue ?? defaultValue

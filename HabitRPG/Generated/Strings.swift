@@ -1100,6 +1100,8 @@ public enum L10n {
     public static var fixCharacterValues: String { return L10n.tr("Mainstrings", "settings.fix_characterValues") }
     /// If you’ve encountered a bug or made a mistake that unfairly changed your character, you can manually correct those values here.
     public static var fixValuesDescription: String { return L10n.tr("Mainstrings", "settings.fix_values_description") }
+    /// Language
+    public static var language: String { return L10n.tr("Mainstrings", "settings.language") }
     /// Local
     public static var local: String { return L10n.tr("Mainstrings", "settings.local") }
     /// Log Out

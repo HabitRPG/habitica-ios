@@ -120,6 +120,10 @@ class MainMenuViewController: BaseTableViewController {
     }
     
     private func setupMenu() {
+        var stableName = configRepository.string(variable: .stableName) ?? ""
+        if stableName.isEmpty != false {
+            stableName = L10n.Titles.stable
+        }
         menuSections = [
             MenuSection(title: nil, iconAsset: nil, items: [
                 MenuItem(title: L10n.Menu.castSpells, segue: StoryboardSegue.Main.spellsSegue.rawValue),
@@ -137,7 +141,7 @@ class MainMenuViewController: BaseTableViewController {
                 MenuItem(title: L10n.Menu.customizeAvatar, segue: StoryboardSegue.Main.customizationSegue.rawValue),
                 MenuItem(title: L10n.Titles.equipment, segue: StoryboardSegue.Main.equipmentSegue.rawValue),
                 MenuItem(title: L10n.Titles.items, segue: StoryboardSegue.Main.itemSegue.rawValue),
-                MenuItem(title: L10n.Titles.stable, segue: StoryboardSegue.Main.stableSegue.rawValue),
+                MenuItem(title: stableName, segue: StoryboardSegue.Main.stableSegue.rawValue),
                 MenuItem(title: L10n.Menu.gemsSubscriptions, segue: StoryboardSegue.Main.gemSubscriptionSegue.rawValue)
                 ]),
             MenuSection(title: L10n.Titles.about, iconAsset: Asset.iconHelp, items: [

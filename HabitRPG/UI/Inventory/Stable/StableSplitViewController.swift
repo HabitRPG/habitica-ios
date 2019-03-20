@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FirebaseAnalytics
 
 class StableSplitViewController: HabiticaSplitViewController {
 
@@ -15,6 +16,8 @@ class StableSplitViewController: HabiticaSplitViewController {
         super.viewDidLoad()
         segmentedControl.setTitle(L10n.pets, forSegmentAt: 0)
         segmentedControl.setTitle(L10n.mounts, forSegmentAt: 1)
+        
+        Analytics.logEvent("open_stable", parameters: nil)
     }
     
     override func populateText() {

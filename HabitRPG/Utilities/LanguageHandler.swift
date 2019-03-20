@@ -150,11 +150,14 @@ class LanguageHandler: NSObject {
     
     @objc
     static func getAppLanguage() -> AppLanguage {
-        let languageCode = UserDefaults.standard.array(forKey: "AppleLanguages")?.first as? String
-        if let code = languageCode, let language = AppLanguage.allLanguages().first(where: { language -> Bool in
-            return language.code == code
-        }) {
-            return language
+        let languageCodes = UserDefaults.standard.array(forKey: "AppleLanguages") as? [String]
+        for code in languageCodes ?? [] {
+            let locale = Locale(identifier: code)
+            if let language = AppLanguage.allLanguages().first(where: { language -> Bool in
+                return language.code == locale.languageCode
+            }) {
+                return language
+            }
         }
         return AppLanguage.english
     }

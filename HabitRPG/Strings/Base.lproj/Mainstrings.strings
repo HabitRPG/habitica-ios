@@ -286,6 +286,7 @@
 "settings.searchable_everywhere" = "Everywhere";
 "settings.searchable_private_spaces" = "Only Private Spaces";
 "settings.mentions" = "Mentions";
+"settings.language" = "Language";
 "theme.default_theme" = "Default";
 "theme.blue" = "Blue";
 "theme.teal" = "Teal";

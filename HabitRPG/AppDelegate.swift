@@ -69,6 +69,8 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
         
         application.registerForRemoteNotifications()
         Messaging.messaging().delegate = self
+        
+        Analytics.setUserProperty(LanguageHandler.getAppLanguage().code, forName: "app_language")
     }
     
     @objc

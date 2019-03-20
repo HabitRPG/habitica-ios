@@ -476,14 +476,12 @@ class SettingsViewController: FormViewController, Themeable {
         }
         let section = Section(L10n.Settings.preferences)
             <<< PushRow<LabeledFormValue<Int>>(SettingsTags.appLanguage) { row in
-                row.title = L10n.Settings.soundTheme
+                row.title = L10n.Settings.language
                 row.options = AppLanguage.allLanguages().map({ language -> LabeledFormValue<Int> in
                     return LabeledFormValue(value: language.rawValue, label: language.name)
                 })
-                let defaults = UserDefaults.standard
-                if let language = AppLanguage(rawValue: defaults.integer(forKey: "ChosenLanguage")) {
-                    row.value = LabeledFormValue(value: language.rawValue, label: language.name)
-                }
+                let language = LanguageHandler.getAppLanguage()
+                row.value = LabeledFormValue(value: language.rawValue, label: language.name)
                 row.onChange({ (row) in
                     if let value = row.value?.value, let newLanguage = AppLanguage(rawValue: value) {
                         self.update(language: newLanguage)
