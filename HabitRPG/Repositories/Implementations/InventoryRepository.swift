@@ -226,7 +226,7 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
     }
     
     func retrieveShopInventory(identifier: String) -> Signal<ShopProtocol?, NoError> {
-        let call = RetrieveShopInventoryCall(identifier: identifier)
+        let call = RetrieveShopInventoryCall(identifier: identifier, language: LanguageHandler.getAppLanguage().code)
         call.fire()
         return call.objectSignal.on(value: {[weak self]shop in
             if let shop = shop {

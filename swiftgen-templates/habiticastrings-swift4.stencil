@@ -26,7 +26,7 @@ import Foundation
 {{sp}}    return {{enumName}}.tr("{{table}}", "{{string.key}}", {% call argumentsBlock string.types %})
 {{sp}}  }
 {{sp}}  {% else %}
-{{sp}}  {{accessModifier}} static let {{string.name|swiftIdentifier:"pretty"|lowerFirstWord|escapeReservedKeywords}} = {{enumName}}.tr("{{table}}", "{{string.key}}")
+{{sp}}  {{accessModifier}} static var {{string.name|swiftIdentifier:"pretty"|lowerFirstWord|escapeReservedKeywords}}: String { return {{enumName}}.tr("{{table}}", "{{string.key}}") }
 {{sp}}  {% endif %}
 {{sp}}  {% endfor %}
 {{sp}}  {% for child in item.children %}
@@ -41,6 +41,9 @@ import Foundation
 // swiftlint:disable explicit_type_interface identifier_name line_length nesting type_body_length type_name
 {% set enumName %}{{param.enumName|default:"L10n"}}{% endset %}
 {{accessModifier}} enum {{enumName}} {
+  /// Update bundle if you need to change app language
+  static var bundle: Bundle?
+
   {% if tables.count > 1 %}
   {% for table in tables %}
   {{accessModifier}} enum {{table.name|swiftIdentifier:"pretty"|escapeReservedKeywords}} {
@@ -55,7 +58,7 @@ import Foundation
 
 extension {{enumName}} {
   private static func tr(_ table: String, _ key: String, _ args: CVarArg...) -> String {
-    var format = NSLocalizedString(key, tableName: table, bundle: Bundle(for: BundleToken.self), comment: "")
+    var format = NSLocalizedString(key, tableName: table, bundle: bundle ?? Bundle(for: BundleToken.self), comment: "")
     let value = String(format: format, locale: Locale.current, arguments: args)
     if value != key || NSLocale.preferredLanguages.first == "en" {
         return value

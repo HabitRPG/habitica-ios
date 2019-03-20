@@ -26,14 +26,15 @@ enum SettingsTags {
     static let changeClass = "changeClass"
     static let server = "server"
     static let searchableUsername = "searchableUsername"
+    static let appLanguage = "appLanguage"
 }
 
 enum Servers: String {
-    case production = "production"
-    case staging = "staging"
-    case beta = "beta"
-    case gamma = "gamma"
-    case delta = "delta"
+    case production
+    case staging
+    case beta
+    case gamma
+    case delta
     
     var niceName: String {
         switch self {
@@ -474,6 +475,21 @@ class SettingsViewController: FormViewController, Themeable {
                 })
         }
         let section = Section(L10n.Settings.preferences)
+            <<< PushRow<LabeledFormValue<Int>>(SettingsTags.appLanguage) { row in
+                row.title = L10n.Settings.soundTheme
+                row.options = AppLanguage.allLanguages().map({ language -> LabeledFormValue<Int> in
+                    return LabeledFormValue(value: language.rawValue, label: language.name)
+                })
+                let defaults = UserDefaults.standard
+                if let language = AppLanguage(rawValue: defaults.integer(forKey: "ChosenLanguage")) {
+                    row.value = LabeledFormValue(value: language.rawValue, label: language.name)
+                }
+                row.onChange({ (row) in
+                    if let value = row.value?.value, let newLanguage = AppLanguage(rawValue: value) {
+                        self.update(language: newLanguage)
+                    }
+                })
+            }
             <<< PushRow<LabeledFormValue<String>>(SettingsTags.soundTheme) { row in
                 row.title = L10n.Settings.soundTheme
                 row.options = SoundTheme.allThemes.map({ (theme) -> LabeledFormValue<String> in
@@ -555,7 +571,7 @@ class SettingsViewController: FormViewController, Themeable {
         timeRow?.updateCell()
         
         let searchableUsernameRow = (form.rowBy(tag: SettingsTags.searchableUsername) as? AlertRow<LabeledFormValue<Bool>>)
-        searchableUsernameRow?.value = user.preferences?.searchableUsername == true ? LabeledFormValue(value: true, label: L10n.Settings.searchableEverywhere) : LabeledFormValue(value: false, label: L10n.Settings.searchablePrivateSpaces)
+        searchableUsernameRow?.value = user.preferences?.searchableUsername == true ? LabeledFormValue(value: true,label: L10n.Settings.searchableEverywhere) : LabeledFormValue(value: false, label: L10n.Settings.searchablePrivateSpaces)
         searchableUsernameRow?.updateCell()
         
         let disableNotificationsRow = (form.rowBy(tag: SettingsTags.disableAllNotifications) as? SwitchRow)
@@ -617,5 +633,24 @@ class SettingsViewController: FormViewController, Themeable {
         let viewController = StoryboardScene.Settings.classSelectionNavigationController.instantiate()
         viewController.modalPresentationStyle = .fullScreen
         present(viewController, animated: true, completion: nil)
+    }
+    
+    private func update(language: AppLanguage) {
+        let progressView = MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
+        progressView?.tintColor = ThemeService.shared.theme.tintColor
+
+        let defaults = UserDefaults.standard
+        defaults.set(language.rawValue, forKey: "ChosenLanguage")
+        LanguageHandler.setAppLanguage(language)
+        self.userRepository.updateUser(key: "preferences.language", value: language.code)
+            .flatMap(.latest, { _ in
+                return self.contentRepository.retrieveContent()
+            })
+            .observeCompleted {
+                progressView?.dismiss(true)
+                self.dismiss(animated: true, completion: {
+                    UIApplication.topViewController()?.dismiss(animated: true, completion: nil)
+                })
+        }
     }
 }

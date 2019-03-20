@@ -16,7 +16,7 @@ import Result
 class ContentRepository: BaseRepository<ContentLocalRepository> {
     
     func retrieveContent() -> Signal<ContentProtocol?, NoError> {
-        let call = RetrieveContentCall()
+        let call = RetrieveContentCall(language: LanguageHandler.getAppLanguage().code)
         call.fire()
         return call.objectSignal.on(value: {[weak self] content in
             if let content = content {
