@@ -32,7 +32,7 @@ class StableOverviewDataSource<ANIMAL: AnimalProtocol>: BaseReactiveCollectionVi
     }
     
     internal func mapData(owned: [String], animals: [AnimalProtocol]) -> [String: [StableOverviewItem]] {
-        var data = ["drop": [StableOverviewItem](), "quest": [StableOverviewItem](), "special": [StableOverviewItem]()]
+        var data = ["drop": [StableOverviewItem](), "quest": [StableOverviewItem](), "special": [StableOverviewItem](), "whacky": [StableOverviewItem]()]
         animals.forEach { (animal) in
             let type = (animal.type == "premium" ? "drop" : animal.type) ?? ""
             var item = data[type]?.last
