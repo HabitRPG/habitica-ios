@@ -107,7 +107,9 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
         }
         
         if customizationType == "background" {
-            sections = sections.sorted { (firstSection, secondSection) -> Bool in
+            sections = sections.filter({ section -> Bool in
+                return section.items.isEmpty == false
+            }).sorted { (firstSection, secondSection) -> Bool in
                 if firstSection.key?.contains("incentive") == true {
                     return true
                 } else if secondSection.key?.contains("incentive") == true {
