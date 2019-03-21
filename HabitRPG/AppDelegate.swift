@@ -71,6 +71,9 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
         Messaging.messaging().delegate = self
         
         Analytics.setUserProperty(LanguageHandler.getAppLanguage().code, forName: "app_language")
+        if #available(iOS 10.3, *) {
+            Analytics.setUserProperty(UIApplication.shared.alternateIconName, forName: "app_icon")
+        }
     }
     
     @objc
@@ -121,6 +124,7 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
         let defaults = UserDefaults.standard
         let themeName = ThemeName(rawValue: defaults.string(forKey: "theme") ?? "") ?? ThemeName.defaultTheme
         ThemeService.shared.theme = themeName.themeClass
+        Analytics.setUserProperty(themeName.rawValue, forName: "theme")
     }
     
     @objc

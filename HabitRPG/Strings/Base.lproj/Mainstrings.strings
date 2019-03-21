@@ -47,6 +47,7 @@
 "titles.guidelines" = "Guidelines";
 "titles.invite_members" = "Invite Members";
 "titles.spells" = "Spells";
+"titles.messages" = "Messages";
 "stats.no_points_to_allocate" = "0 Points to Allocate";
 "stats.one_point_to_allocate" = "1 Point to Allocate";
 "stats.points_to_allocate" = "%d Point to Allocate";

@@ -1608,6 +1608,8 @@ public enum L10n {
     public static var inviteMembers: String { return L10n.tr("Mainstrings", "titles.invite_members") }
     /// Items
     public static var items: String { return L10n.tr("Mainstrings", "titles.items") }
+    /// Messages
+    public static var messages: String { return L10n.tr("Mainstrings", "titles.messages") }
     /// Mounts
     public static var mounts: String { return L10n.tr("Mainstrings", "titles.mounts") }
     /// News

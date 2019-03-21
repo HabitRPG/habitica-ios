@@ -27,6 +27,7 @@ public protocol Theme {
     var primaryTextColor: UIColor { get }
     var secondaryTextColor: UIColor { get }
     var dimmedTextColor: UIColor { get }
+    var lightTextColor: UIColor { get }
     var badgeColor: UIColor { get }
     var successColor: UIColor { get }
 }
@@ -53,6 +54,7 @@ extension Theme {
     public var primaryTextColor: UIColor { return UIColor.gray10() }
     public var secondaryTextColor: UIColor { return UIColor.gray100() }
     public var dimmedTextColor: UIColor { return UIColor.gray400() }
+    public var lightTextColor: UIColor { return UIColor.white }
     
     public var badgeColor: UIColor { return tintColor }
     public var successColor: UIColor { return UIColor.green100() }
@@ -84,4 +86,5 @@ class ObjcThemeWrapper: NSObject {
     
     @objc public static var primaryTextColor: UIColor { return ThemeService.shared.theme.primaryTextColor }
     @objc public static var secondaryTextColor: UIColor { return ThemeService.shared.theme.secondaryTextColor }
+    @objc public static var lightTextColor: UIColor { return ThemeService.shared.theme.lightTextColor}
 }

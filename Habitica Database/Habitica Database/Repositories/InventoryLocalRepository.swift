@@ -110,11 +110,11 @@ public class InventoryLocalRepository: ContentLocalRepository {
         let realm = getRealm()
         let ownedPet = realm?.object(ofType: RealmOwnedPet.self, forPrimaryKey: userID+key)
         let ownedFood = realm?.object(ofType: RealmOwnedItem.self, forPrimaryKey: userID + consumedFood + "food")
-        try? realm?.write {
+        updateCall { realm in
             ownedPet?.trained = trained
             ownedFood?.numberOwned -= 1
             if trained == -1 {
-                realm?.add(RealmOwnedMount(userID: userID, key: key, owned: true), update: true)
+                realm.add(RealmOwnedMount(userID: userID, key: key, owned: true), update: true)
             }
         }
     }
@@ -132,7 +132,7 @@ public class InventoryLocalRepository: ContentLocalRepository {
         ownedGear.userID = userID
         ownedGear.isOwned = true
         let user = realm.object(ofType: RealmUser.self, forPrimaryKey: userID)
-        try? realm.write {
+        updateCall { realm in
             realm.add(ownedGear, update: true)
             let index = user?.purchased?.subscriptionPlan?.mysteryItems.index(of: key)
             user?.purchased?.subscriptionPlan?.mysteryItems.remove(at: index ?? 0)
@@ -156,7 +156,7 @@ public class InventoryLocalRepository: ContentLocalRepository {
                 return reward.path == item.path && reward.pinType == item.type
             })
         }
-        try? realm.write {
+        updateCall { realm in
             realm.delete(pinsToRemove)
             for newItem in newPinnedItems {
                 let reward = RealmInAppReward()

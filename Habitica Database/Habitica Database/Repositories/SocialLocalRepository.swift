@@ -112,7 +112,7 @@ public class SocialLocalRepository: BaseLocalRepository {
     
     public func delete(_ chatMessage: ChatMessageProtocol) {
         if let realm = getRealm(), let message = realm.object(ofType: RealmChatMessage.self, forPrimaryKey: chatMessage.id) {
-            try? realm.write {
+            updateCall { realm in
                 if message.isInvalidated {
                     return
                 }
@@ -134,7 +134,7 @@ public class SocialLocalRepository: BaseLocalRepository {
     
     public func delete(_ message: InboxMessageProtocol) {
         if let realm = getRealm(), let message = realm.object(ofType: RealmInboxMessage.self, forPrimaryKey: message.id) {
-            try? realm.write {
+            updateCall { realm in
                 if message.isInvalidated {
                     return
                 }
@@ -145,15 +145,15 @@ public class SocialLocalRepository: BaseLocalRepository {
     
     public func joinGroup(userID: String, groupID: String, group: GroupProtocol?) {
         let realm = getRealm()
-        try? realm?.write {
-            realm?.add(RealmGroupMembership(userID: userID, groupID: groupID), update: true)
+        updateCall { realm in
+            realm.add(RealmGroupMembership(userID: userID, groupID: groupID), update: true)
         }
         if group?.type == "party", let user = realm?.object(ofType: RealmUser.self, forPrimaryKey: userID) {
             let userParty = RealmUserParty()
             userParty.id = groupID
             userParty.userID = userID
-            try? realm?.write {
-                realm?.add(userParty, update: true)
+            updateCall { realm in
+                realm.add(userParty, update: true)
                 user.party = userParty
             }
         }
@@ -162,15 +162,15 @@ public class SocialLocalRepository: BaseLocalRepository {
     public func leaveGroup(userID: String, groupID: String, group: GroupProtocol?) {
         let realm = getRealm()
         if let membership = realm?.object(ofType: RealmGroupMembership.self, forPrimaryKey: userID+groupID) {
-            try? realm?.write {
-                realm?.delete(membership)
+            updateCall { realm in
+                realm.delete(membership)
                 if let group = group {
-                    realm?.add(RealmGroup(group), update: true)
+                    realm.add(RealmGroup(group), update: true)
                 }
             }
         }
         if group?.type == "party", let userParty = realm?.object(ofType: RealmUserParty.self, forPrimaryKey: userID) {
-            try? realm?.write {
+            updateCall { realm in
                 userParty.id = nil
             }
         }
@@ -179,26 +179,25 @@ public class SocialLocalRepository: BaseLocalRepository {
     public func deleteGroupInvitation(userID: String, groupID: String) {
         let realm = getRealm()
         if let invitation = realm?.object(ofType: RealmGroupInvitation.self, forPrimaryKey: userID+groupID) {
-            try? realm?.write {
-                realm?.delete(invitation)
+            updateCall { realm in
+                realm.delete(invitation)
             }
         }
     }
     
     public func joinChallenge(userID: String, challengeID: String, challenge: ChallengeProtocol?) {
-        let realm = getRealm()
-        try? realm?.write {
-            realm?.add(RealmChallengeMembership(userID: userID, challengeID: challengeID), update: true)
+        updateCall { realm in
+            realm.add(RealmChallengeMembership(userID: userID, challengeID: challengeID), update: true)
         }
     }
     
     public func leaveChallenge(userID: String, challengeID: String, challenge: ChallengeProtocol?) {
         let realm = getRealm()
         if let membership = realm?.object(ofType: RealmChallengeMembership.self, forPrimaryKey: userID+challengeID) {
-            try? realm?.write {
-                realm?.delete(membership)
+            updateCall { realm in
+                realm.delete(membership)
                 if let challenge = challenge {
-                    realm?.add(RealmChallenge(challenge), update: true)
+                    realm.add(RealmChallenge(challenge), update: true)
                 }
             }
         }
@@ -215,9 +214,8 @@ public class SocialLocalRepository: BaseLocalRepository {
             }
         })
         if messagesToRemove.isEmpty == false {
-            let realm = getRealm()
-            try? realm?.write {
-                realm?.delete(messagesToRemove)
+            updateCall { realm in
+                realm.delete(messagesToRemove)
             }
         }
     }
@@ -333,7 +331,7 @@ public class SocialLocalRepository: BaseLocalRepository {
     public func changeQuestRSVP(userID: String, rsvpNeeded: Bool) {
         // swiftlint:disable:next first_where
         if let realm = getRealm(), let questState = realm.objects(RealmQuestState.self).filter("combinedKey BEGINSWITH %@", userID).first {
-            try? realm.write {
+            updateCall { _ in
                 questState.rsvpNeeded = rsvpNeeded
             }
         }
@@ -352,7 +350,7 @@ public class SocialLocalRepository: BaseLocalRepository {
     
     public func markInboxAsSeen(userID: String) {
         if let realm = getRealm(), let user = realm.object(ofType: RealmUser.self, forPrimaryKey: userID) {
-            try? realm.write {
+            updateCall { _ in
                 user.inbox?.numberNewMessages = 0
             }
         }
@@ -360,7 +358,7 @@ public class SocialLocalRepository: BaseLocalRepository {
     
     public func setNoNewMessages(userID: String, groupID: String) {
         if let realm = getRealm(), let user = realm.object(ofType: RealmUser.self, forPrimaryKey: userID) {
-            try? realm.write {
+            updateCall { _ in
                 let newMessages = user.hasNewMessages.first(where: { (newMessages) -> Bool in
                     return newMessages.id == groupID
                 })

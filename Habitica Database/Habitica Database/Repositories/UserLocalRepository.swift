@@ -22,9 +22,9 @@ public class UserLocalRepository: BaseLocalRepository {
     
     public func save(_ userId: String, stats: StatsProtocol) {
         RealmUser.findBy(key: userId).take(first: 1).on(value: {[weak self] user in
-            try? self?.getRealm()?.write {
+            self?.updateCall { realm in
                 let realmStats = RealmStats(id: userId, stats: stats)
-                self?.getRealm()?.add(realmStats, update: true)
+                realm.add(realmStats, update: true)
                 user?.stats = realmStats
             }
         }).start()
@@ -60,9 +60,8 @@ public class UserLocalRepository: BaseLocalRepository {
             }
         })
         if rewardsToRemove.isEmpty == false {
-            let realm = getRealm()
-            try? realm?.write {
-                realm?.delete(rewardsToRemove)
+            updateCall { realm in
+                realm.delete(rewardsToRemove)
             }
         }
     }
@@ -78,9 +77,8 @@ public class UserLocalRepository: BaseLocalRepository {
             }
         })
         if tagsToRemove.isEmpty == false {
-            let realm = getRealm()
-            try? realm?.write {
-                realm?.delete(tagsToRemove)
+            updateCall { realm in
+                realm.delete(tagsToRemove)
             }
         }
     }
@@ -110,7 +108,7 @@ public class UserLocalRepository: BaseLocalRepository {
     
     public func toggleSleep(_ userID: String) {
         if let user = getRealm()?.object(ofType: RealmUser.self, forPrimaryKey: userID) {
-            try? getRealm()?.write {
+            updateCall { _ in
                 user.preferences?.sleep = !(user.preferences?.sleep ?? false)
             }
         }
@@ -118,7 +116,7 @@ public class UserLocalRepository: BaseLocalRepository {
     
     public func updateUser(id: String, balanceDiff: Float) {
         if let user = getRealm()?.object(ofType: RealmUser.self, forPrimaryKey: id) {
-            try? getRealm()?.write {
+            updateCall { _ in
                 user.balance += balanceDiff
             }
         }
@@ -131,16 +129,15 @@ public class UserLocalRepository: BaseLocalRepository {
     }
     
     public func updateUser(id: String, userItems: UserItemsProtocol) {
-        let realm = getRealm()
-        try? realm?.write {
-            realm?.add(RealmUserItems(id: id, userItems: userItems), update: true)
+        updateCall { realm in
+            realm.add(RealmUserItems(id: id, userItems: userItems), update: true)
         }
     }
     
     public func updateUser(id: String, price: Int, buyResponse: BuyResponseProtocol) {
         let realm = getRealm()
         if let existingUser = realm?.object(ofType: RealmUser.self, forPrimaryKey: id) {
-            try? realm?.write {
+            updateCall { _ in
                 if let stats = existingUser.stats {
                     stats.health = buyResponse.health ?? stats.health
                     stats.experience = buyResponse.experience ?? stats.experience
@@ -194,11 +191,9 @@ public class UserLocalRepository: BaseLocalRepository {
     }
     
     public func usedTransformationItem(userID: String, key: String) {
-        guard let realm = getRealm() else {
-            return
-        }
-        let ownedItem = realm.object(ofType: RealmOwnedItem.self, forPrimaryKey: "\(userID)\(key)special")
-        try? realm.write {
+        let realm = getRealm()
+        let ownedItem = realm?.object(ofType: RealmOwnedItem.self, forPrimaryKey: "\(userID)\(key)special")
+        updateCall { _ in
             ownedItem?.numberOwned -= 1
         }
     }
@@ -230,10 +225,7 @@ public class UserLocalRepository: BaseLocalRepository {
     }
     
     private func mergeUsers(oldUser: UserProtocol, newUser: UserProtocol) {
-        guard let realm = getRealm() else {
-            return
-        }
-        try? realm.write {
+        updateCall { realm in
             if newUser.balance >= 0 {
                 oldUser.balance = newUser.balance
             }

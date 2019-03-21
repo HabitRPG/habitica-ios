@@ -102,7 +102,7 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     
     func runCron(tasks: [TaskProtocol]) -> Signal<UserProtocol?, NoError> {
         getUser().take(first: 1).on(value: {[weak self]user in
-            self?.localRepository.updateCall {
+            self?.localRepository.updateCall { _ in
                 user.needsCron = false
             }
         }).start()
@@ -227,11 +227,11 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         return call.objectSignal.flatMap(.concat, {[weak self] (_) in
             return self?.getUser().take(first: 1) ?? SignalProducer.empty
         }).on(value: {[weak self]user in
-            self?.localRepository.updateCall({
+            self?.localRepository.updateCall { _ in
                 if let local = user.authentication?.local {
                     local.email = newEmail
                 }
-            })
+            }
         })
     }
     
@@ -245,12 +245,12 @@ class UserRepository: BaseRepository<UserLocalRepository> {
             .flatMap(.concat, {[weak self] (_) in
             return self?.getUser().take(first: 1) ?? SignalProducer.empty
         }).on(value: {[weak self]user in
-            self?.localRepository.updateCall({
+            self?.localRepository.updateCall { _ in
                 if let local = user.authentication?.local {
                     local.username = newUsername
                     user.flags?.verifiedUsername = true
                 }
-            })
+            }
             ToastManager.show(text: L10n.usernameConfirmedToast, color: .green)
         })
     }

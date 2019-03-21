@@ -16,9 +16,9 @@ public class TaskLocalRepository: BaseLocalRepository {
     
     func save(userID: String?, task: TaskProtocol, tags: Results<RealmTag>?) {
         if let realmTask = task as? RealmTask {
-            try? getRealm()?.write {
+            updateCall { realm in
                 realmTask.userID = userID
-                getRealm()?.add(realmTask, update: true)
+                realm.add(realmTask, update: true)
             }
             return
         }
@@ -79,9 +79,8 @@ public class TaskLocalRepository: BaseLocalRepository {
             }
         })
         if tasksToRemove.isEmpty == false {
-            let realm = getRealm()
-            try? realm?.write {
-                realm?.delete(tasksToRemove)
+            updateCall { realm in
+                realm.delete(tasksToRemove)
             }
         }
     }
@@ -111,8 +110,8 @@ public class TaskLocalRepository: BaseLocalRepository {
     }
     
     public func update(taskId: String, stats: StatsProtocol, direction: TaskScoringDirection, response: TaskResponseProtocol) {
-        RealmTask.findBy(key: taskId).take(first: 1).skipNil().on(value: {[weak self]realmTask in
-            try? self?.getRealm()?.write {
+        RealmTask.findBy(key: taskId).take(first: 1).skipNil().on(value: {[weak self] realmTask in
+            self?.updateCall { _ in
                 if let delta = response.delta {
                     realmTask.value += delta
                 }
@@ -180,7 +179,7 @@ public class TaskLocalRepository: BaseLocalRepository {
     
     public func setTaskSyncing(userID: String?, task: TaskProtocol, isSyncing: Bool) {
         if let realmTask = task as? RealmTask {
-            try? getRealm()?.write {
+            updateCall { _ in
                 realmTask.isSyncing = isSyncing
             }
         } else {
@@ -198,7 +197,7 @@ public class TaskLocalRepository: BaseLocalRepository {
     public func deleteTask(_ task: TaskProtocol) {
         let realm = getRealm()
         if let realmTask = realm?.object(ofType: RealmTask.self, forPrimaryKey: task.id) {
-            try? realm?.write {
+            updateCall { _ in
                 if realmTask.isInvalidated {
                     return
                 }
@@ -208,7 +207,7 @@ public class TaskLocalRepository: BaseLocalRepository {
     }
     
     public func moveTask(_ task: TaskProtocol, toPosition: Int) {
-        try? getRealm()?.write {
+        updateCall { _ in
             task.order = toPosition
         }
     }
@@ -216,7 +215,7 @@ public class TaskLocalRepository: BaseLocalRepository {
     public func deleteTag(_ tag: TagProtocol) {
         let realm = getRealm()
         if let realmTag = realm?.object(ofType: RealmTag.self, forPrimaryKey: tag.id) {
-            try? realm?.write {
+            updateCall { _ in
                 realm?.delete(realmTag)
             }
         }
@@ -228,7 +227,7 @@ public class TaskLocalRepository: BaseLocalRepository {
         guard let tasks = realm?.objects(RealmTask.self).filter("type == %@", movedTask.type ?? "").sorted(byKeyPath: "order") else {
             return
         }
-        try? realm?.write {
+        updateCall { _ in
             for task in tasks {
                 if task.id == movedTask.id {
                     task.order = toPosition
@@ -251,7 +250,7 @@ public class TaskLocalRepository: BaseLocalRepository {
         guard let tasks = realm?.objects(RealmTask.self).filter("type == %@", taskType) else {
             return
         }
-        try? realm?.write {
+        updateCall { _ in
             for task in tasks {
                 if let position = order.index(of: task.id ?? "") {
                     task.order = position

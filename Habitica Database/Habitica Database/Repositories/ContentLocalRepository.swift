@@ -62,8 +62,8 @@ public class ContentLocalRepository: BaseLocalRepository {
         mysteryItem.notes = "Each month, subscribers will receive a mystery item. This is usually released about one week before the end of the month."
         mysteryItem.isSubscriberItem = true
         mysteryItem.itemType = "special"
-        try? getRealm()?.write {
-            getRealm()?.add(mysteryItem, update: true)
+        updateCall { realm in
+            realm.add(mysteryItem, update: true)
         }
     }
     

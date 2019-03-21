@@ -32,6 +32,9 @@ class MenuNavigationBarView: UIView, Themeable {
         avatarView.size = .compact
         messagesBadge.horizontalPadding = 4
         
+        messagesButton.accessibilityLabel = L10n.Titles.messages
+        settingsButton.accessibilityLabel = L10n.Titles.settings
+        
         ThemeService.shared.addThemeable(themable: self, applyImmediately: true)
     }
     
