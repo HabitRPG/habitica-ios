@@ -22,6 +22,9 @@ class PublicGuildCell: UITableViewCell {
         descriptionLabel.text = group.summary
         memberCountLabel.text = String(describing: group.memberCount).stringWithAbbreviatedNumber()
         crestIconView.image = HabiticaIcons.imageOfGuildCrestSmall(memberCount: CGFloat(group.memberCount))
+        
+        descriptionLabel.textColor = ThemeService.shared.theme.secondaryTextColor
+        memberCountLabel.textColor = ThemeService.shared.theme.secondaryTextColor
     }
     
 }
