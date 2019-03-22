@@ -103,11 +103,26 @@ public class SocialLocalRepository: BaseLocalRepository {
     }
     
     public func save(userID: String?, groupIDs: [String?]) {
-        save(objects: groupIDs.filter({ (id) -> Bool in
+        let newMemberships = groupIDs.filter({ (id) -> Bool in
             return id != nil
         }).map({ (groupID) -> RealmGroupMembership in
             return RealmGroupMembership(userID: userID, groupID: groupID)
-        }))
+        })
+        let oldGroupMemberships = getRealm()?.objects(RealmGroupMembership.self).filter("userID == '\(userID ?? "")'")
+        var membershipsToRemove = [Object]()
+        oldGroupMemberships?.forEach({ (membership) in
+            if !newMemberships.contains(where: { (newMembership) -> Bool in
+                return newMembership.groupID == membership.groupID
+            }) {
+                membershipsToRemove.append(membership)
+            }
+        })
+        if membershipsToRemove.isEmpty == false {
+            updateCall { realm in
+                realm.delete(membershipsToRemove)
+                realm.add(newMemberships, update: true)
+            }
+        }
     }
     
     public func delete(_ chatMessage: ChatMessageProtocol) {

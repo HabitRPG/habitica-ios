@@ -9,10 +9,12 @@
 import Foundation
 import Habitica_Models
 import ReactiveSwift
+import RealmSwift
 
 public class UserLocalRepository: BaseLocalRepository {
     public func save(_ user: UserProtocol) {
         removeOldTags(userID: user.id, newTags: user.tags)
+        removeOldMemberships(userID: user.id, newChallengeMemberships: user.challenges)
         if let realmUser = user as? RealmUser {
             save(object: realmUser)
             return
@@ -79,6 +81,23 @@ public class UserLocalRepository: BaseLocalRepository {
         if tagsToRemove.isEmpty == false {
             updateCall { realm in
                 realm.delete(tagsToRemove)
+            }
+        }
+    }
+    
+    private func removeOldMemberships(userID: String?, newChallengeMemberships: [ChallengeMembershipProtocol]) {
+        let oldChallengeMemberships = getRealm()?.objects(RealmChallengeMembership.self).filter("userID == '\(userID ?? "")'")
+        var membershipsToRemove = [Object]()
+        oldChallengeMemberships?.forEach({ (membership) in
+            if !newChallengeMemberships.contains(where: { (newMembership) -> Bool in
+                return newMembership.challengeID == membership.challengeID
+            }) {
+                membershipsToRemove.append(membership)
+            }
+        })
+        if membershipsToRemove.isEmpty == false {
+            updateCall { realm in
+                realm.delete(membershipsToRemove)
             }
         }
     }
