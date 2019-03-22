@@ -30,7 +30,7 @@
 		2907F99E1F694C4000328AEE /* GemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2907F99D1F694C4000328AEE /* GemViewController.swift */; };
 		2908784A220210CF0010820A /* Strings-objcBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29087849220210CF0010820A /* Strings-objcBridge.swift */; };
 		2908D8742232D45D00DDECA1 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2908D8732232D45D00DDECA1 /* BaseTableViewController.swift */; };
-		2908E3512217255600D246CD /* BuildFile in Resources */ = {isa = PBXBuildFile; };
+		2908E3512217255600D246CD /* (null) in Resources */ = {isa = PBXBuildFile; };
 		290922F02242628600645D0E /* LanguageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290922EF2242628600645D0E /* LanguageHandler.swift */; };
 		290A405421FA175800A409BA /* Purple@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 290A405221FA175700A409BA /* Purple@2x.png */; };
 		290A405521FA175800A409BA /* Purple@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 290A405321FA175800A409BA /* Purple@3x.png */; };
@@ -495,7 +495,6 @@
 		D9BB45D81E7998710002AE2E /* ChallengeFilterAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9BB45D71E7998710002AE2E /* ChallengeFilterAlert.xib */; };
 		D9BB45DA1E79A02C0002AE2E /* LabeledCheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BB45D91E79A02C0002AE2E /* LabeledCheckboxView.swift */; };
 		D9BB45DD1E7AE5240002AE2E /* ConfigRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BB45DC1E7AE5240002AE2E /* ConfigRepository.swift */; };
-		D9BBF32C1DBD127A00C4114C /* HRPGShopAdFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = D9BBF32B1DBD127A00C4114C /* HRPGShopAdFooter.m */; };
 		D9BBF32E1DBD128700C4114C /* ShopAdFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9BBF32D1DBD128700C4114C /* ShopAdFooter.xib */; };
 		D9BE05821DA6ADDB0074D3B7 /* HRPGGemPurchaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9BE05811DA6ADDB0074D3B7 /* HRPGGemPurchaseView.m */; };
 		D9BE05841DA6ADE70074D3B7 /* GemPurchaseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9BE05831DA6ADE70074D3B7 /* GemPurchaseView.xib */; };
@@ -1209,8 +1208,6 @@
 		D9BB45D71E7998710002AE2E /* ChallengeFilterAlert.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChallengeFilterAlert.xib; sourceTree = "<group>"; };
 		D9BB45D91E79A02C0002AE2E /* LabeledCheckboxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabeledCheckboxView.swift; sourceTree = "<group>"; };
 		D9BB45DC1E7AE5240002AE2E /* ConfigRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigRepository.swift; sourceTree = "<group>"; };
-		D9BBF32A1DBD127A00C4114C /* HRPGShopAdFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGShopAdFooter.h; sourceTree = "<group>"; };
-		D9BBF32B1DBD127A00C4114C /* HRPGShopAdFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGShopAdFooter.m; sourceTree = "<group>"; };
 		D9BBF32D1DBD128700C4114C /* ShopAdFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopAdFooter.xib; sourceTree = "<group>"; };
 		D9BE05801DA6ADDB0074D3B7 /* HRPGGemPurchaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HRPGGemPurchaseView.h; path = ../Views/HRPGGemPurchaseView.h; sourceTree = "<group>"; };
 		D9BE05811DA6ADDB0074D3B7 /* HRPGGemPurchaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HRPGGemPurchaseView.m; path = ../Views/HRPGGemPurchaseView.m; sourceTree = "<group>"; };
@@ -1856,16 +1853,14 @@
 				D9A28F711B08DF58002907E0 /* HRPGPurchaseButton.m */,
 				D9C89CF41B1DEB6800A599B0 /* HRPGPurchaseLoadingButton.h */,
 				D9C89CF51B1DEB6800A599B0 /* HRPGPurchaseLoadingButton.m */,
-				D9BBF32A1DBD127A00C4114C /* HRPGShopAdFooter.h */,
-				D9BBF32B1DBD127A00C4114C /* HRPGShopAdFooter.m */,
 				49DCB7B51F3F64B40079FDD0 /* HRPGShopModalBgView.swift */,
 				49DCB7B71F3F64D40079FDD0 /* HRPGShopModalBgView.xib */,
 				49005B7B1F18371E004830D9 /* HRPGShopUserHeaderView.swift */,
 				49005B7D1F183775004830D9 /* HRPGShopUserHeaderView.xib */,
 				49DCB7AB1F39239D0079FDD0 /* HRPGSimpleShopItemView.swift */,
 				49DCB7AF1F3923F20079FDD0 /* HRPGSimpleShopItemView.xib */,
-				298119AE1F5040DA00F9FB39 /* QuestDetailView.swift */,
 				299BD6341F54346F00E22935 /* QuestDetailRewardView.xib */,
+				298119AE1F5040DA00F9FB39 /* QuestDetailView.swift */,
 				298119AC1F5040B900F9FB39 /* QuestDetailView.xib */,
 				D9BBF32D1DBD128700C4114C /* ShopAdFooter.xib */,
 			);
@@ -2789,7 +2784,7 @@
 				49E378532009542C00E0DA3D /* ChallengeTableViewHeaderView.xib in Resources */,
 				498E4D001FA17C1A006933FF /* ChallengeCategoriesTableViewCell.xib in Resources */,
 				2914487A20864A3300F3A6B5 /* EquipmentOverviewView.xib in Resources */,
-				2908E3512217255600D246CD /* BuildFile in Resources */,
+				2908E3512217255600D246CD /* (null) in Resources */,
 				29028C442037132A00B7F704 /* SystemMessageTableViewCell.xib in Resources */,
 				29AAA1611F2B597400029737 /* SpeechbubbleView.xib in Resources */,
 				29FC885E2018D858002B3D3F /* WorldBossDescription.xib in Resources */,
@@ -3462,7 +3457,6 @@
 				29A1B9B91F6ACC2F0055CF57 /* UIAlertAction-Extensions.swift in Sources */,
 				29FC884C2010CC8A002B3D3F /* SocialRepository.swift in Sources */,
 				498E4D031FA17C31006933FF /* ChallengeDescriptionTableViewCell.swift in Sources */,
-				D9BBF32C1DBD127A00C4114C /* HRPGShopAdFooter.m in Sources */,
 				D9BB455B1E71C52F0002AE2E /* TaskTableViewCell.swift in Sources */,
 				291E95B720988B85006EE585 /* PartyDetailViewController.swift in Sources */,
 				29E16315200E629800685640 /* QuestProgressBarView.swift in Sources */,
