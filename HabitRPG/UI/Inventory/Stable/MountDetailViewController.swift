@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Habitica_Models
 
 class MountDetailViewController: StableDetailViewController<MountDetailDataSource> {
     
@@ -14,11 +15,18 @@ class MountDetailViewController: StableDetailViewController<MountDetailDataSourc
     
     private var inventoryRepository = InventoryRepository()
     private var stableRepository = StableRepository()
+    private let userRepository = UserRepository()
+    
+    private var user: UserProtocol?
     
     override func viewDidLoad() {
         datasource = MountDetailDataSource(eggType: eggType)
         datasource?.collectionView = self.collectionView
         super.viewDidLoad()
+        
+        disposable.inner.add(userRepository.getUser().on(value: {[weak self]user in
+            self?.user = user
+        }).start())
     }
     
     override func populateText() {
@@ -33,7 +41,11 @@ class MountDetailViewController: StableDetailViewController<MountDetailDataSourc
     
     private func showActionSheet(forStableItem stableItem: MountStableItem, withSource sourceView: UIView?) {
         let actionSheet = UIAlertController(title: stableItem.mount?.text, message: nil, preferredStyle: .actionSheet)
-        actionSheet.addAction(UIAlertAction(title: L10n.equip, style: .default, handler: {[weak self] (_) in
+        var equipString = L10n.equip
+        if user?.items?.currentMount == stableItem.mount?.key {
+            equipString = L10n.unequip
+        }
+        actionSheet.addAction(UIAlertAction(title: equipString, style: .default, handler: {[weak self] (_) in
             self?.inventoryRepository.equip(type: "mount", key: stableItem.mount?.key ?? "").observeCompleted {}
         }))
         actionSheet.addAction(UIAlertAction.cancelAction())
