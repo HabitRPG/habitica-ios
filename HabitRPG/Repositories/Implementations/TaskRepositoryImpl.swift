@@ -28,7 +28,11 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
     func retrieveCompletedTodos() -> Signal<[TaskProtocol]?, NoError> {
         let call = RetrieveTasksCall(type: "completedTodos")
         call.fire()
-        return call.arraySignal
+        return call.arraySignal.on(value: {[weak self] tasks in
+            if let tasks = tasks {
+                self?.localRepository.save(userID: self?.currentUserId, tasks: tasks, removeCompletedTodos: true)
+            }
+        })
     }
     
     func clearCompletedTodos() -> Signal<[TaskProtocol]?, NoError> {

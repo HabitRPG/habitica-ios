@@ -35,7 +35,7 @@ public class TaskLocalRepository: BaseLocalRepository {
         save(userID: userID, task: task, tags: tags)
     }
     
-    public func save(userID: String?, tasks: [TaskProtocol], order: [String: [String]]? = nil) {
+    public func save(userID: String?, tasks: [TaskProtocol], order: [String: [String]]? = nil, removeCompletedTodos: Bool = false) {
         let tags = getRealm()?.objects(RealmTag.self)
         var taskOrder = ["habits": [String](),
                          "dailies": [String](),
@@ -56,7 +56,7 @@ public class TaskLocalRepository: BaseLocalRepository {
             }
             return RealmTask(userID: userID, taskProtocol: task, tags: tags)
         })
-        removeOldTasks(userID: userID, newTasks: tasks)
+        removeOldTasks(userID: userID, newTasks: tasks, removeCompletedTodos: removeCompletedTodos)
     }
     
     public func save(userID: String?, tag: TagProtocol) {
@@ -68,8 +68,14 @@ public class TaskLocalRepository: BaseLocalRepository {
         
     }
     
-    private func removeOldTasks(userID: String?, newTasks: [TaskProtocol]) {
-        let oldTasks = getRealm()?.objects(RealmTask.self).filter("userID == '\(userID ?? "")'")
+    private func removeOldTasks(userID: String?, newTasks: [TaskProtocol], removeCompletedTodos: Bool = false) {
+        var predicate = "userID == '\(userID ?? "")'"
+        if removeCompletedTodos {
+            predicate += " && completed == true"
+        } else {
+            predicate += " && (type != 'todo' || (type == 'todo' && completed == false))"
+        }
+        let oldTasks = getRealm()?.objects(RealmTask.self).filter(predicate)
         var tasksToRemove = [RealmTask]()
         oldTasks?.forEach({ (task) in
             if !newTasks.contains(where: { (newTask) -> Bool in

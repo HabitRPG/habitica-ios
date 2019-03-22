@@ -100,9 +100,8 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
     
     @objc
     func refresh() {
-        weak var weakSelf = self
-        dataSource?.retrieveData(completed: {
-            weakSelf?.refreshControl?.endRefreshing()
+        dataSource?.retrieveData(completed: { [weak self] in
+            self?.refreshControl?.endRefreshing()
         })
     }
     
