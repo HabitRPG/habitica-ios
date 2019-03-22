@@ -108,8 +108,8 @@ class InAppRewardCell: UICollectionViewCell {
         applyAccessibility()
         
         let theme = ThemeService.shared.theme
-        backgroundColor = theme.windowBackgroundColor
-        containerView.backgroundColor = theme.contentBackgroundColor
+        backgroundColor = theme.contentBackgroundColor
+        containerView.backgroundColor = theme.windowBackgroundColor
         currencyBackgroundView.backgroundColor = theme.offsetBackgroundColor
     }
     

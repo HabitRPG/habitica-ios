@@ -61,7 +61,7 @@ class HabiticaNetworkErrorHandler: NetworkErrorHandler {
             alertController.addCloseAction()
             alertController.show()
         } else {
-            var duration: Double? = nil
+            var duration: Double?
             if message.count > 200 {
                 duration = 4.0
             }

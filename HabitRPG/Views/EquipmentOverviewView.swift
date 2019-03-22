@@ -70,6 +70,12 @@ class EquipmentOverviewView: UIView {
         layout()
     }
     
+    func getTotalHeight(for width: CGFloat) -> CGFloat {
+        let itemWidth = (width - (7*8)) / 4
+        let itemHeights = (itemWidth+36)*2+(3*8)
+        return itemHeights+79
+    }
+    
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         layout()
         return CGSize(width: size.width, height: containerView.frame.origin.y+containerView.frame.size.height+25)

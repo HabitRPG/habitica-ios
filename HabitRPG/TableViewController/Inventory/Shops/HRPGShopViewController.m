@@ -42,6 +42,8 @@
     }
     
     [self refresh];
+    
+    self.collectionView.backgroundColor = UIColor.whiteColor;
 }
 
 - (void)populateText {

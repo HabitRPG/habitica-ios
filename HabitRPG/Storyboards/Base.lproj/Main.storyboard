@@ -1792,14 +1792,14 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="317"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" priority="500" constant="317" id="PCV-BR-eLd"/>
+                                            <constraint firstAttribute="height" constant="317" id="PCV-BR-eLd"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="3uQ-7Q-HJM" customClass="EquipmentOverviewView" customModule="Habitica" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="317" width="375" height="317"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" priority="500" constant="317" id="xo7-Md-yDd"/>
+                                            <constraint firstAttribute="height" constant="317" id="xo7-Md-yDd"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d53-K0-Ybv">
@@ -1839,7 +1839,9 @@
                     <connections>
                         <outlet property="costumeExplanationLabel" destination="d53-K0-Ybv" id="pN2-vS-RIR"/>
                         <outlet property="costumeView" destination="3uQ-7Q-HJM" id="GaC-re-Yo1"/>
+                        <outlet property="costumeViewHeightConstraint" destination="xo7-Md-yDd" id="Deb-ZB-6LH"/>
                         <outlet property="gearView" destination="HkH-1H-IQH" id="45F-bN-8Tr"/>
+                        <outlet property="gearViewHeightConstraint" destination="PCV-BR-eLd" id="YjG-Ch-Lol"/>
                         <outlet property="scrollView" destination="byv-HU-Kh3" id="j6z-Ce-nNw"/>
                         <segue destination="eiK-eD-kuH" kind="show" identifier="equipmentDetailSegue" id="hbq-W6-4i8"/>
                     </connections>
