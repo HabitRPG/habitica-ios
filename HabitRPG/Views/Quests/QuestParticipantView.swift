@@ -93,4 +93,8 @@ class QuestParticipantView: UIView {
     override var intrinsicContentSize: CGSize {
         return CGSize(width: frame.size.width, height: 56)
     }
+    
+    override func sizeThatFits(_ size: CGSize) -> CGSize {
+        return CGSize(width: size.width, height: 56)
+    }
 }

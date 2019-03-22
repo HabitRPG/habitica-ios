@@ -185,6 +185,7 @@ class QuestDetailViewController: HRPGUIViewController {
             }
             invitationsStackView.addArrangedSubview(view)
         }
+        invitationsStackView.setNeedsLayout()
     }
     
     @IBAction func rejectButtonTapped(_ sender: Any) {
