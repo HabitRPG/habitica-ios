@@ -13,6 +13,10 @@ import ReactiveSwift
 
 public class RetrieveChallengesCall: ResponseArrayCall<ChallengeProtocol, APIChallenge> {
     public init(page: Int, memberOnly: Bool, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "group.json")) {
-        super.init(httpMethod: .GET, endpoint: "challenges/user?page=\(page)&member=\(memberOnly)", stubHolder: stubHolder)
+        var url = "challenges/user?page=\(page)"
+        if memberOnly {
+            url += "&member=true"
+        }
+        super.init(httpMethod: .GET, endpoint: url, stubHolder: stubHolder)
     }
 }
