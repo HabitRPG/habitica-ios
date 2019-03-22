@@ -44,7 +44,7 @@ class RealmQuestProgress: Object, QuestProgressProtocol {
         self.combinedKey = combinedKey
         self.id = id
         health = progress.health
-        rage = progress.health
+        rage = progress.rage
         up = progress.up
         collect = progress.collect
     }

@@ -54,6 +54,7 @@ class PartyQuestView: UIView {
         if let boss = quest.boss {
             isBossQuest = true
             let bossView = progressBarViews.first ?? QuestProgressBarView()
+            var newProgressBars = [bossView]
             if progressBarViews.isEmpty {
                 addSubview(bossView)
                 progressBarViews.append(bossView)
@@ -65,14 +66,33 @@ class PartyQuestView: UIView {
             bossView.maxValue = Float(boss.health)
             bossView.barColor = UIColor.red100()
             bossView.currentValue = state.progress?.health ?? 0
+            bossView.bigIcon = nil
             
-            if progressBarViews.count > 1 {
+            if let rage = boss.rage, rage.value > 0 {
+                let rageView = progressBarViews.count >= 2 ? progressBarViews[1] : QuestProgressBarView()
+                newProgressBars.append(rageView)
+                if progressBarViews.count < 2 {
+                    addSubview(rageView)
+                    progressBarViews.append(rageView)
+                }
+                
+                rageView.titleTextColor = UIColor.black.withAlphaComponent(0.8)
+                rageView.valueTextColor = UIColor.gray200()
+                rageView.barBackgroundColor = UIColor.gray500()
+                rageView.title = rage.title
+                rageView.maxValue = Float(rage.value)
+                rageView.barColor = UIColor.orange100()
+                rageView.currentValue = state.progress?.rage ?? 0
+                rageView.bigIcon = nil
+            }
+            
+            if progressBarViews.count > newProgressBars.count {
                 progressBarViews.forEach { (view) in
                     if view != bossView {
                         view.removeFromSuperview()
                     }
                 }
-                progressBarViews = [bossView]
+                progressBarViews = newProgressBars
             }
         } else {
             progressBarViews.forEach { (view) in
