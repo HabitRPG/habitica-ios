@@ -61,7 +61,11 @@ class HabiticaNetworkErrorHandler: NetworkErrorHandler {
             alertController.addCloseAction()
             alertController.show()
         } else {
-            let toastView = ToastView(title: message, background: .red)
+            var duration: Double? = nil
+            if message.count > 200 {
+                duration = 4.0
+            }
+            let toastView = ToastView(title: message, background: .red, duration: duration)
             ToastManager.show(toast: toastView)
         }
     }
