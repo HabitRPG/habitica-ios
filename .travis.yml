@@ -32,9 +32,8 @@ env:
     - DESTINATION="platform=iOS SImulator,name=iPhone 8,OS=12.1"
 script:
   - set -o pipefail
+  - swiftlint --reporter "emoji"
   - xcodebuild -workspace Habitica.xcworkspace -scheme HabiticaTests -destination "$DESTINATION" -sdk iphonesimulator12.1 clean build build-for-testing ONLY_ACTIVE_ARCH=NO | xcpretty  -f `xcpretty-travis-formatter`
   - xcodebuild -workspace Habitica.xcworkspace -scheme HabiticaTests -destination "$DESTINATION" -sdk iphonesimulator12.1 test-without-building ONLY_ACTIVE_ARCH=NO | xcpretty  -f `xcpretty-travis-formatter`
-  - find /Users/travis/Library/Developer/Xcode/DerivedData/Habitica* -type f | grep "Logs/Test" | grep -i ".log" | xargs cat
-  - swiftlint --reporter "emoji"
 after_success:
   - sleep 10
