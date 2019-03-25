@@ -82,35 +82,39 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
             switch result {
             case .success(let receiptData):
                 for transaction in transactions {
-                    let productIdentifier = transaction.payment.productIdentifier
-                    if transaction.transactionState == .purchased || transaction.transactionState == .restored {
-                        if self.isInAppPurchase(productIdentifier) {
-                            self.activatePurchase(productIdentifier, receipt: receiptData) { status in
-                                if status {
-                                    SwiftyStoreKit.finishTransaction(transaction)
-                                }
-                            }
-                        } else if self.isSubscription(productIdentifier) {
-                            self.userRepository.getUser().take(first: 1).on(value: {[weak self]user in
-                                if !user.isSubscribed || user.purchased?.subscriptionPlan?.dateCreated != nil {
-                                    self?.applySubscription(transaction: transaction)
-                                }
-                            }).start()
-                        } else if self.isNoRenewSubscription(productIdentifier) {
-                            self.activateNoRenewSubscription(productIdentifier, receipt: receiptData, recipientID: self.pendingGifts[productIdentifier]) { status in
-                                if status {
-                                    self.pendingGifts.removeValue(forKey: productIdentifier)
-                                    SwiftyStoreKit.finishTransaction(transaction)
-                                }
-                            }
-                        }
-                    } else if transaction.transactionState == .failed {
-                        SwiftyStoreKit.finishTransaction(transaction)
-                    }
+                    self.handleUnfinished(transaction: transaction, receiptData: receiptData)
                 }
             case .error(let error):
                 Crashlytics.sharedInstance().recordError(error)
             }
+        }
+    }
+    
+    func handleUnfinished(transaction: SKPaymentTransaction, receiptData: Data) {
+        let productIdentifier = transaction.payment.productIdentifier
+        if transaction.transactionState == .purchased || transaction.transactionState == .restored {
+            if self.isInAppPurchase(productIdentifier) {
+                self.activatePurchase(productIdentifier, receipt: receiptData) { status in
+                    if status {
+                        SwiftyStoreKit.finishTransaction(transaction)
+                    }
+                }
+            } else if self.isSubscription(productIdentifier) {
+                self.userRepository.getUser().take(first: 1).on(value: {[weak self] user in
+                    if !user.isSubscribed || user.purchased?.subscriptionPlan?.dateCreated == nil {
+                        self?.applySubscription(transaction: transaction)
+                    }
+                }).start()
+            } else if self.isNoRenewSubscription(productIdentifier) {
+                self.activateNoRenewSubscription(productIdentifier, receipt: receiptData, recipientID: self.pendingGifts[productIdentifier]) { status in
+                    if status {
+                        self.pendingGifts.removeValue(forKey: productIdentifier)
+                        SwiftyStoreKit.finishTransaction(transaction)
+                    }
+                }
+            }
+        } else if transaction.transactionState == .failed {
+            SwiftyStoreKit.finishTransaction(transaction)
         }
     }
     
