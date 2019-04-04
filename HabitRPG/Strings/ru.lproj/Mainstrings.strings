@@ -839,7 +839,6 @@
 "tasks.team" = "Команда";
 "tasks.due_today" = "";
 "tasks.due_in_x_days" = "Через %d дн.";
-"tasks.every_x" = "каждый %@";
 "tasks.repeats.repeats_every_on" = "Повторять %@ по %@";
 "tasks.repeats.repeats_every" = "Повторять %@";
 "tasks.repeats.monthly_the" = "%@";
