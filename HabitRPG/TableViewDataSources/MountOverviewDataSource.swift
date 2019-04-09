@@ -15,8 +15,8 @@ class MountOverviewDataSource: StableOverviewDataSource<PetProtocol> {
         super.init()
         sections.append(ItemSection<StableOverviewItem>(title: L10n.Stable.standardMounts))
         sections.append(ItemSection<StableOverviewItem>(title: L10n.Stable.questMounts))
-        sections.append(ItemSection<StableOverviewItem>(title: L10n.Stable.specialMounts))
         sections.append(ItemSection<StableOverviewItem>(title: L10n.Stable.whackyMounts))
+        sections.append(ItemSection<StableOverviewItem>(title: L10n.Stable.specialMounts))
         
         disposable.inner.add(stableRepository.getOwnedMounts()
             .map({ data -> [String] in
