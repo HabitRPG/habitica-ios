@@ -19,6 +19,7 @@ struct PetStableItem {
 class PetDetailDataSource: BaseReactiveCollectionViewDataSource<PetStableItem> {
     
     private let stableRepsository = StableRepository()
+    var types = ["drop", "premium"]
     
     init(eggType: String) {
         super.init()
@@ -31,7 +32,8 @@ class PetDetailDataSource: BaseReactiveCollectionViewDataSource<PetStableItem> {
         disposable.inner.add(SignalProducer.combineLatest(stableRepsository.getOwnedPets(query: "key CONTAINS '\(eggType)'")
             .map({ data -> [String: Int] in
                 var ownedPets = [String: Int]()
-                data.value.forEach({ (ownedPet) in
+                data.value
+                    .forEach({ (ownedPet) in
                     ownedPets[ownedPet.key ?? ""] = ownedPet.trained
                 })
                 return ownedPets
@@ -42,12 +44,17 @@ class PetDetailDataSource: BaseReactiveCollectionViewDataSource<PetStableItem> {
                         ownedMounts[ownedMount.key ?? ""] = ownedMount.owned
                     })
                     return ownedMounts
-                }), stableRepsository.getPets(query: query))
+                }), stableRepsository.getPets(query: query)
+                    .map({ pets in
+                        return pets.value.filter({ pet -> Bool in
+                            return self.types.contains(pet.type ?? "")
+                            })
+                    }))
 
             .on(value: {[weak self](ownedPets, ownedMounts, pets) in
                 self?.sections[0].items.removeAll()
                 self?.sections[1].items.removeAll()
-                pets.value.forEach({ (pet) in
+                pets.forEach({ (pet) in
                     let item = PetStableItem(pet: pet, trained: ownedPets[pet.key ?? ""] ?? 0, mountOwned: ownedMounts[pet.key ?? ""] ?? false)
                     if pet.type == "premium" {
                         self?.sections[1].items.append(item)
@@ -55,6 +62,9 @@ class PetDetailDataSource: BaseReactiveCollectionViewDataSource<PetStableItem> {
                         self?.sections[0].items.append(item)
                     }
                 })
+                if self?.visibleSections.count == 1 {
+                    self?.visibleSections[0].title = nil
+                }
                 self?.collectionView?.reloadData()
             }).start())
     }

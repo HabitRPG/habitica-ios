@@ -15,6 +15,7 @@ struct StableOverviewItem {
     var numberOwned: Int
     var totalNumber: Int
     var eggType: String
+    var type: String
 }
 
 class StableOverviewDataSource<ANIMAL: AnimalProtocol>: BaseReactiveCollectionViewDataSource<StableOverviewItem> {
@@ -32,7 +33,7 @@ class StableOverviewDataSource<ANIMAL: AnimalProtocol>: BaseReactiveCollectionVi
     }
     
     internal func mapData(owned: [String], animals: [AnimalProtocol]) -> [String: [StableOverviewItem]] {
-        var data = ["drop": [StableOverviewItem](), "quest": [StableOverviewItem](), "special": [StableOverviewItem](), "whacky": [StableOverviewItem]()]
+        var data = ["drop": [StableOverviewItem](), "quest": [StableOverviewItem](), "special": [StableOverviewItem](), "wacky": [StableOverviewItem]()]
         animals.forEach { (animal) in
             let type = (animal.type == "premium" ? "drop" : animal.type) ?? ""
             var item = data[type]?.last
@@ -43,7 +44,7 @@ class StableOverviewDataSource<ANIMAL: AnimalProtocol>: BaseReactiveCollectionVi
             }
             
             if item?.text == nil || item?.text != animal.egg {
-                item = StableOverviewItem(imageName: getImageName(animal), text: animal.egg ?? "", numberOwned: 0, totalNumber: 0, eggType: animal.egg ?? animal.key ?? "")
+                item = StableOverviewItem(imageName: getImageName(animal), text: animal.egg ?? "", numberOwned: 0, totalNumber: 0, eggType: animal.egg ?? animal.key ?? "", type: animal.type ?? "")
                 if let item = item {
                     data[type]?.append(item)
                 }

@@ -17,6 +17,7 @@ struct MountStableItem {
 class MountDetailDataSource: BaseReactiveCollectionViewDataSource<MountStableItem> {
     
     private let stableRepsository = StableRepository()
+    var types = ["drop", "premium"]
     
     init(eggType: String) {
         super.init()
@@ -34,11 +35,16 @@ class MountDetailDataSource: BaseReactiveCollectionViewDataSource<MountStableIte
                 })
                 return ownedMounts
             })
-            .combineLatest(with: stableRepsository.getMounts(query: query))
+            .combineLatest(with: stableRepsository.getMounts(query: query)
+                .map({ mounts in
+                    return mounts.value.filter({ (mount) -> Bool in
+                        return self.types.contains(mount.type ?? "")
+                        })
+                }))
             .on(value: {[weak self](ownedMounts, mounts) in
                 self?.sections[0].items.removeAll()
                 self?.sections[1].items.removeAll()
-                mounts.value.forEach({ (mount) in
+                mounts.forEach({ (mount) in
                     let item = MountStableItem(mount: mount, owned: ownedMounts[mount.key ?? ""] ?? false)
                     if mount.type == "premium" {
                         self?.sections[1].items.append(item)
@@ -46,6 +52,9 @@ class MountDetailDataSource: BaseReactiveCollectionViewDataSource<MountStableIte
                         self?.sections[0].items.append(item)
                     }
                 })
+                if self?.visibleSections.count == 1 {
+                    self?.visibleSections[0].title = nil
+                }
                 self?.collectionView?.reloadData()
             }).start())
     }

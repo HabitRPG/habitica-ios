@@ -12,6 +12,7 @@ import Habitica_Models
 class PetDetailViewController: StableDetailViewController<PetDetailDataSource> {
     
     var eggType: String = ""
+    var petType: String = "drop"
     
     private let inventoryRepository = InventoryRepository()
     private let userRepository = UserRepository()
@@ -22,6 +23,11 @@ class PetDetailViewController: StableDetailViewController<PetDetailDataSource> {
     
     override func viewDidLoad() {
         datasource = PetDetailDataSource(eggType: eggType)
+        if petType == "drop" || petType == "premium" {
+            datasource?.types = ["drop", "premium"]
+        } else {
+            datasource?.types = [petType]
+        }
         datasource?.collectionView = self.collectionView
         super.viewDidLoad()
         

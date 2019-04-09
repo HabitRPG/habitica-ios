@@ -1205,10 +1205,10 @@ public enum L10n {
     public static var standardMounts: String { return L10n.tr("Mainstrings", "stable.standard_mounts") }
     /// Standard Pets
     public static var standardPets: String { return L10n.tr("Mainstrings", "stable.standard_pets") }
-    /// Whacky Mounts
-    public static var whackyMounts: String { return L10n.tr("Mainstrings", "stable.whacky_mounts") }
-    /// Whacky Pets
-    public static var whackyPets: String { return L10n.tr("Mainstrings", "stable.whacky_pets") }
+    /// Wacky Mounts
+    public static var wackyMounts: String { return L10n.tr("Mainstrings", "stable.wacky_mounts") }
+    /// Wacky Pets
+    public static var wackyPets: String { return L10n.tr("Mainstrings", "stable.wacky_pets") }
   }
 
   public enum Stats {

@@ -27,7 +27,7 @@ enum ConfigVariable: Int {
         case .maxChatLength: return "maxChatLength"
         case .enableGiftOneGetOne: return "enableGiftOneGetOne"
         case .enableUsernameAutocomplete: return "enableUsernameAutocomplete"
-        case .spriteSubstitutions: return "spriteSubstitutions"
+        case .spriteSubstitutions: return "spriteSubstitution"
         case .stableName: return "stableName"
         }
         // swiftlint:enable switch_case_on_newline
@@ -46,7 +46,92 @@ enum ConfigVariable: Int {
         case .enableUsernameAutocomplete:
             return NSNumber(booleanLiteral: false)
         case .spriteSubstitutions:
-            return NSDictionary()
+            return NSString(string: """
+{
+  \"pets\": {
+    \"Wolf-Veteran\": \"PandaCub-Veggie\",
+    \"Wolf-Cerberus\": \"PandaCub-Veggie\",
+    \"Dragon-Hydra\": \"PandaCub-Veggie\",
+    \"Turkey-\": \"PandaCub-Veggie\",
+    \"BearCub-Polar\": \"PandaCub-Veggie\",
+    \"MantisShrimp-\": \"PandaCub-Veggie\",
+    \"JackOLantern-\": \"PandaCub-Veggie\",
+    \"Mammoth-\": \"PandaCub-Veggie\",
+    \"Tiger-Veteran\": \"PandaCub-Veggie\",
+    \"Phoenix-\": \"PandaCub-Veggie\",
+    \"Turkey-Gilded\": \"PandaCub-Veggie\",
+    \"MagicalBee-\": \"PandaCub-Veggie\",
+    \"Lion-Veteran\": \"PandaCub-Veggie\",
+    \"Gryphon-RoyalPurple\": \"PandaCub-Veggie\",
+    \"JackOLantern-Ghost\": \"PandaCub-Veggie\",
+    \"Jackalope-RoyalPurple\": \"PandaCub-Veggie\",
+    \"Orca-\": \"PandaCub-Veggie\",
+    \"Bear-Veteran\": \"PandaCub-Veggie\",
+    \"Hippogriff-Hopeful\": \"PandaCub-Veggie\",
+    \"Fox-Veteran\": \"PandaCub-Veggie\",
+    \"JackOLantern-Glow\": \"PandaCub-Veggie\",
+    \"Wolf-\": \"Wolf-Veggie\",
+    \"TigerCub-\": \"TigerCub-Veggie\",
+    \"PandaCub-\": \"PandaCub-Veggie\",
+    \"LionCub-\": \"LionCub-Veggie\",
+    \"Fox-\": \"Fox-Veggie\",
+    \"FlyingPig-\": \"FlyingPig-Veggie\",
+    \"Dragon-\": \"Dragon-Veggie\",
+    \"Cactus-\": \"Cactus-Veggie\",
+    \"BearCub-\": \"BearCub-Veggie\",
+    \"Gryphon-\": \"Fox-Veggie\",
+    \"Hedgehog-\": \"Fox-Veggie\",
+    \"Deer-\": \"Fox-Veggie\",
+    \"Egg-\": \"Fox-Veggie\",
+    \"Rat-\": \"Fox-Veggie\",
+    \"Octopus-\": \"Fox-Veggie\",
+    \"Seahorse-\": \"Fox-Veggie\",
+    \"Parrot-\": \"Fox-Veggie\",
+    \"Rooster-\": \"Fox-Veggie\",
+    \"Spider-\": \"Fox-Veggie\",
+    \"Owl-\": \"Fox-Veggie\",
+    \"Penguin-\": \"Fox-Veggie\",
+    \"TRex-\": \"Fox-Veggie\",
+    \"Rock-\": \"Fox-Veggie\",
+    \"Bunny-\": \"Fox-Veggie\",
+    \"Slime-\": \"Fox-Veggie\",
+    \"Sheep-\": \"Fox-Veggie\",
+    \"Cuttlefish-\": \"Fox-Veggie\",
+    \"Whale-\": \"Fox-Veggie\",
+    \"Cheetah-\": \"Fox-Veggie\",
+    \"Horse-\": \"Fox-Veggie\",
+    \"Frog-\": \"Fox-Veggie\",
+    \"Snake-\": \"Fox-Veggie\",
+    \"Unicorn-\": \"Fox-Veggie\",
+    \"Sabretooth-\": \"Fox-Veggie\",
+    \"Monkey-\": \"Fox-Veggie\",
+    \"Snail-\": \"Fox-Veggie\",
+    \"Falcon-\": \"Fox-Veggie\",
+    \"Treeling-\": \"Fox-Veggie\",
+    \"Axolotl-\": \"Fox-Veggie\",
+    \"Turtle-\": \"Fox-Veggie\",
+    \"Armadillo-\": \"Fox-Veggie\",
+    \"Cow-\": \"Fox-Veggie\",
+    \"Beetle-\": \"Fox-Veggie\",
+    \"Ferret-\": \"Fox-Veggie\",
+    \"Sloth-\": \"Fox-Veggie\",
+    \"Triceratops-\": \"Fox-Veggie\",
+    \"GuineaPig-\": \"Fox-Veggie\",
+    \"Peacock-\": \"Fox-Veggie\",
+    \"Butterfly-\": \"Fox-Veggie\",
+    \"Nudibranch-\": \"Fox-Veggie\",
+    \"Hippo-\": \"Fox-Veggie\",
+    \"Yarn-\": \"Fox-Veggie\",
+    \"Pterodactyl-\": \"Fox-Veggie\",
+    \"Badger-\": \"Fox-Veggie\",
+    \"Squirrel-\": \"Fox-Veggie\",
+    \"SeaSerpent-\": \"Fox-Veggie\",
+    \"Kangaroo-\": \"Fox-Veggie\",
+    \"Alligator-\": \"Fox-Veggie\",
+    \"Velociraptor-\": \"Fox-Veggie\",
+  }
+}
+""")
         case .stableName:
             return NSString(string: "")
         }
@@ -73,7 +158,7 @@ class ConfigRepository: NSObject {
 
     @objc
     func fetchremoteConfig() {
-        ConfigRepository.remoteConfig.fetch(withExpirationDuration: HabiticaAppDelegate.isRunningLive() ? 3600 : 0) { (_, _) in
+        ConfigRepository.remoteConfig.fetch(withExpirationDuration: HabiticaAppDelegate.isRunningLive() ? 3600 : 0) { (first, second) in
             ConfigRepository.remoteConfig.activateFetched()
         }
         var defaults = [String: NSObject]()
