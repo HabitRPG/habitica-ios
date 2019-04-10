@@ -33,7 +33,7 @@ class PetDetailCell: UICollectionViewCell {
         }
         progressView.tintColor = ThemeService.shared.theme.successColor
         progressView.trackTintColor = ThemeService.shared.theme.windowBackgroundColor
-        if petItem.pet?.type != " " && petItem.trained > 0 && petItem.mountOwned == false {
+        if petItem.pet?.type != " " && petItem.trained > 0 && petItem.canRaise == true {
             progressView.isHidden = false
             progressView.progress = Float(petItem.trained) / 50.0
         } else {

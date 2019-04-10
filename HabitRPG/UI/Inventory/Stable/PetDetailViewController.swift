@@ -48,7 +48,7 @@ class PetDetailViewController: StableDetailViewController<PetDetailDataSource> {
     
     private func showActionSheet(forStableItem stableItem: PetStableItem, withSource sourceView: UIView?) {
         let actionSheet = UIAlertController(title: stableItem.pet?.text, message: nil, preferredStyle: .actionSheet)
-        if stableItem.trained > 0 && stableItem.pet?.type != "special" && !stableItem.mountOwned {
+        if stableItem.trained > 0 && stableItem.pet?.type != "special" && stableItem.canRaise {
             actionSheet.addAction(UIAlertAction(title: L10n.Stable.feed, style: .default, handler: {[weak self] (_) in
                 self?.selectedPet = stableItem.pet
                 self?.perform(segue: StoryboardSegue.Main.feedSegue)

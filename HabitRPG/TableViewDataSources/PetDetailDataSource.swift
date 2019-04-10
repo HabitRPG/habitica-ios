@@ -13,7 +13,7 @@ import ReactiveSwift
 struct PetStableItem {
     var pet: PetProtocol?
     var trained: Int
-    var mountOwned: Bool
+    var canRaise: Bool
 }
 
 class PetDetailDataSource: BaseReactiveCollectionViewDataSource<PetStableItem> {
@@ -41,7 +41,7 @@ class PetDetailDataSource: BaseReactiveCollectionViewDataSource<PetStableItem> {
                 .map({ data -> [String: Bool] in
                     var ownedMounts = [String: Bool]()
                     data.value.forEach({ (ownedMount) in
-                        ownedMounts[ownedMount.key ?? ""] = ownedMount.owned
+                        ownedMounts[ownedMount.key ?? ""] = !ownedMount.owned
                     })
                     return ownedMounts
                 }), stableRepsository.getPets(query: query)
@@ -49,13 +49,20 @@ class PetDetailDataSource: BaseReactiveCollectionViewDataSource<PetStableItem> {
                         return pets.value.filter({ pet -> Bool in
                             return self.types.contains(pet.type ?? "")
                             })
-                    }))
+                    }), stableRepsository.getMounts(query: query)
+                        .map({ data -> [String: Bool] in
+                            var mounts = [String: Bool]()
+                            data.value.forEach({ mount in
+                                mounts[mount.key ?? ""] = true
+                            })
+                            return mounts
+                        }))
 
-            .on(value: {[weak self](ownedPets, ownedMounts, pets) in
+            .on(value: {[weak self](ownedPets, ownedMounts, pets, mounts) in
                 self?.sections[0].items.removeAll()
                 self?.sections[1].items.removeAll()
                 pets.forEach({ (pet) in
-                    let item = PetStableItem(pet: pet, trained: ownedPets[pet.key ?? ""] ?? 0, mountOwned: ownedMounts[pet.key ?? ""] ?? false)
+                    let item = PetStableItem(pet: pet, trained: ownedPets[pet.key ?? ""] ?? 0, canRaise: ownedMounts[pet.key ?? ""] ?? mounts[pet.key ?? ""] ?? false)
                     if pet.type == "premium" {
                         self?.sections[1].items.append(item)
                     } else {
