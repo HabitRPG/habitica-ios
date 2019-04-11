@@ -117,7 +117,7 @@ class ItemsViewController: BaseTableViewController {
         imageAlert.addShareAction { (_) in
             HRPGSharingManager.shareItems([
                     L10n.Inventory.hatchedSharing(egg.text ?? "", potion.text ?? "")
-                ], withPresenting: self, withSourceView: nil)
+                ], withPresenting: imageAlert, withSourceView: nil)
         }
         imageAlert.containerViewSpacing = 12
         imageAlert.addCloseAction()
