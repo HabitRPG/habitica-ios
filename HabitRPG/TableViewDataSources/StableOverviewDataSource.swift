@@ -64,7 +64,7 @@ class StableOverviewDataSource<ANIMAL: AnimalProtocol>: BaseReactiveCollectionVi
     }
     
     internal func getImageName(_ animal: AnimalProtocol) -> String {
-        if animal.type == "special" {
+        if animal.type == "special" || animal.type == "wacky" {
             return "Pet-\(animal.key ?? "")"
         } else {
             return "Pet_Egg_\(animal.egg ?? "")"
