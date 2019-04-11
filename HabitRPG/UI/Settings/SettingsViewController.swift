@@ -435,7 +435,9 @@ class SettingsViewController: FormViewController, Themeable {
                         self.userRepository.updateDayStartTime(hour).observeCompleted {}
                     }
                 })
-            +++ Section(L10n.Settings.mentions)
+            +++ Section(L10n.Settings.mentions) { section in
+                section.hidden = true
+            }
             <<< AlertRow<LabeledFormValue<Bool>>(SettingsTags.searchableUsername) { row in
                 row.title = L10n.Settings.searchableUsername
                 row.options = [LabeledFormValue(value: true, label: L10n.Settings.searchableEverywhere),
