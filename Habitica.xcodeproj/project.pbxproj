@@ -212,8 +212,6 @@
 		29701FE21F5617900097BBCC /* ToastView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29701FE11F5617900097BBCC /* ToastView.xib */; };
 		29701FE41F56C2200097BBCC /* IconLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29701FE31F56C2200097BBCC /* IconLabel.swift */; };
 		29701FE61F56DABC0097BBCC /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29701FE51F56DABC0097BBCC /* RoundedView.swift */; };
-		29701FEE1F5848880097BBCC /* Habitica_Snapshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29701FED1F5848880097BBCC /* Habitica_Snapshots.swift */; };
-		29701FF61F5848A40097BBCC /* SnapshotHelperXcode8.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29701FF51F5848A40097BBCC /* SnapshotHelperXcode8.swift */; };
 		2974BD91208DEFEA00EC1A25 /* CustomizationDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BD90208DEFEA00EC1A25 /* CustomizationDetailCell.swift */; };
 		2974BDAD208F68A800EC1A25 /* CustomizationHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BDAC208F68A800EC1A25 /* CustomizationHeaderView.swift */; };
 		2974BDB42090926B00EC1A25 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BDB32090926B00EC1A25 /* MainTabBarController.swift */; };
@@ -270,7 +268,6 @@
 		29B4788620BD6E2E00B6123F /* SkillsUserTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4788520BD6E2E00B6123F /* SkillsUserTableViewDataSource.swift */; };
 		29B4788820BD732A00B6123F /* SkillsTaskTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4788720BD732A00B6123F /* SkillsTaskTableViewDataSource.swift */; };
 		29B4788A20BD752C00B6123F /* SkillsTaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4788920BD752C00B6123F /* SkillsTaskTableViewController.swift */; };
-		29B478AB20BFE53500B6123F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 29B478A920BFE53500B6123F /* InfoPlist.strings */; };
 		29B478BD20C1378100B6123F /* ChallengeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29B478BC20C1378100B6123F /* ChallengeTableViewCell.xib */; };
 		29B6AD4A1F2A0C9800AC8878 /* LoginEntryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29B6AD491F2A0C9700AC8878 /* LoginEntryView.xib */; };
 		29B6AD4C1F2A0DBE00AC8878 /* LoginEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B6AD4B1F2A0DBE00AC8878 /* LoginEntryView.swift */; };
@@ -393,7 +390,8 @@
 		49EE3FD8201908AB00CD7608 /* ChallengeButtonStyleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE3FD7201908AB00CD7608 /* ChallengeButtonStyleProvider.swift */; };
 		49FA9FF720DC47AD0086C478 /* TaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FA9FF620DC47AD0086C478 /* TaskTableViewController.swift */; };
 		823F7132DD74058859184F61 /* Pods_HabiticaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC1D483830288A543073AEBA /* Pods_HabiticaTests.framework */; };
-		C5F01A11F4A9ED7974598C1E /* Pods_Habitica_Snapshots.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAD902171AE5A8C0E6177D71 /* Pods_Habitica_Snapshots.framework */; };
+		C8415994225F8B7800989FB8 /* Habitica_Snapshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8415993225F8B7800989FB8 /* Habitica_Snapshots.swift */; };
+		C841599C225F8C2A00989FB8 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C841599B225F8C2900989FB8 /* SnapshotHelper.swift */; };
 		C897F63C218CCF51002907C2 /* RouterHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C897F63B218CCF51002907C2 /* RouterHandler.swift */; };
 		C897F63F218CE054002907C2 /* Storyboard Scenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C897F63D218CE052002907C2 /* Storyboard Scenes.swift */; };
 		C897F640218CE054002907C2 /* Storyboard Segues.swift in Sources */ = {isa = PBXBuildFile; fileRef = C897F63E218CE052002907C2 /* Storyboard Segues.swift */; };
@@ -537,7 +535,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		29701FF01F5848890097BBCC /* PBXContainerItemProxy */ = {
+		C8415996225F8B7800989FB8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D9EB4E8318CB4A9400BB2094 /* Project object */;
 			proxyType = 1;
@@ -597,7 +595,6 @@
 		2908E3502217245500D246CD /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Mainstrings.strings; sourceTree = "<group>"; };
 		290922EF2242628600645D0E /* LanguageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageHandler.swift; sourceTree = "<group>"; };
 		290A2AD020F508F500BF8A68 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/OnePasswordExtension.strings"; sourceTree = "<group>"; };
-		290A2AD120F508F500BF8A68 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		290A2AD220F508F500BF8A68 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Mainstrings.strings"; sourceTree = "<group>"; };
 		290A405221FA175700A409BA /* Purple@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Purple@2x.png"; sourceTree = "<group>"; };
 		290A405321FA175800A409BA /* Purple@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Purple@3x.png"; sourceTree = "<group>"; };
@@ -618,7 +615,6 @@
 		2913BC5C220C69F5001ECF00 /* NSString+Emoji.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Emoji.m"; sourceTree = "<group>"; };
 		2913E3B020F50B9300FDF81D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2913E3B120F50B9300FDF81D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/OnePasswordExtension.strings; sourceTree = "<group>"; };
-		2913E3B220F50B9300FDF81D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2913E3B320F50B9300FDF81D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2913E3B420F50B9300FDF81D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Mainstrings.strings; sourceTree = "<group>"; };
 		2914485A2084E61400F3A6B5 /* MountOverviewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountOverviewDataSource.swift; sourceTree = "<group>"; };
@@ -692,26 +688,18 @@
 		293282171F39E1A400D42961 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		293282191F39E28000D42961 /* TypingTextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypingTextViewController.swift; sourceTree = "<group>"; };
 		2935440920F5088500857CE8 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/OnePasswordExtension.strings"; sourceTree = "<group>"; };
-		2935440A20F5088500857CE8 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		2935440B20F5088500857CE8 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Mainstrings.strings"; sourceTree = "<group>"; };
-		2936525420F5058B00261740 /* bg */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bg; path = bg.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2936525520F5058B00261740 /* bg */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bg; path = bg.lproj/Mainstrings.strings; sourceTree = "<group>"; };
-		2936525D20F505CC00261740 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = cmn.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2936525E20F505CC00261740 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = cmn.lproj/OnePasswordExtension.strings; sourceTree = "<group>"; };
-		2936526720F5060C00261740 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2936526820F5060C00261740 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/OnePasswordExtension.strings; sourceTree = "<group>"; };
 		2936526920F5060C00261740 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Mainstrings.strings; sourceTree = "<group>"; };
 		2936527120F5064400261740 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/OnePasswordExtension.strings; sourceTree = "<group>"; };
-		2936527220F5064400261740 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2936527320F5064400261740 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Mainstrings.strings; sourceTree = "<group>"; };
 		2936527B20F5071900261740 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/OnePasswordExtension.strings; sourceTree = "<group>"; };
-		2936527C20F5071900261740 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2936527D20F5071900261740 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Mainstrings.strings; sourceTree = "<group>"; };
 		2936528520F5076700261740 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/OnePasswordExtension.strings; sourceTree = "<group>"; };
-		2936528620F5076700261740 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2936528720F5076700261740 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Mainstrings.strings; sourceTree = "<group>"; };
 		293A683920F5083400685945 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/OnePasswordExtension.strings; sourceTree = "<group>"; };
-		293A683A20F5083400685945 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		293A683B20F5083400685945 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Mainstrings.strings; sourceTree = "<group>"; };
 		293BB4991FCD7DC0003B6F4F /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
 		293BB49B1FCD7DC8003B6F4F /* StatsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatsView.xib; sourceTree = "<group>"; };
@@ -758,7 +746,6 @@
 		296CB4ED218C99FD0044A33E /* HabiticaButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabiticaButton.swift; sourceTree = "<group>"; };
 		296D6F1C20A0908B00D9CAB5 /* PartyQuestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyQuestView.swift; sourceTree = "<group>"; };
 		296E0E6320F5078200A1E991 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/OnePasswordExtension.strings; sourceTree = "<group>"; };
-		296E0E6420F5078200A1E991 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		296E0E6520F5078200A1E991 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/Mainstrings.strings; sourceTree = "<group>"; };
 		296E480721BE86F800D15E4A /* GiftSubscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftSubscriptionViewController.swift; sourceTree = "<group>"; };
 		296E4B2621AEF35E00DB3602 /* PrideHabiticaAlt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PrideHabiticaAlt@2x.png"; sourceTree = "<group>"; };
@@ -807,10 +794,6 @@
 		29701FE11F5617900097BBCC /* ToastView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToastView.xib; sourceTree = "<group>"; };
 		29701FE31F56C2200097BBCC /* IconLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconLabel.swift; sourceTree = "<group>"; };
 		29701FE51F56DABC0097BBCC /* RoundedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
-		29701FEB1F5848880097BBCC /* Habitica Snapshots.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Habitica Snapshots.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		29701FED1F5848880097BBCC /* Habitica_Snapshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habitica_Snapshots.swift; sourceTree = "<group>"; };
-		29701FEF1F5848890097BBCC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		29701FF51F5848A40097BBCC /* SnapshotHelperXcode8.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelperXcode8.swift; sourceTree = "<group>"; };
 		2974BD90208DEFEA00EC1A25 /* CustomizationDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationDetailCell.swift; sourceTree = "<group>"; };
 		2974BDAC208F68A800EC1A25 /* CustomizationHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationHeaderView.swift; sourceTree = "<group>"; };
 		2974BDB32090926B00EC1A25 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
@@ -820,7 +803,6 @@
 		297AAB4720F508A300BD019D /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		297AAB4820F508A300BD019D /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/OnePasswordExtension.strings; sourceTree = "<group>"; };
 		297AAB4920F508A300BD019D /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		297AAB4A20F508A300BD019D /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		297AAB4B20F508A300BD019D /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Mainstrings.strings; sourceTree = "<group>"; };
 		297D15F920B803D30048101F /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		297D15FB20B825DE0048101F /* HRPGSearchDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGSearchDataManager.m; sourceTree = "<group>"; };
@@ -874,7 +856,6 @@
 		29B4788720BD732A00B6123F /* SkillsTaskTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsTaskTableViewDataSource.swift; sourceTree = "<group>"; };
 		29B4788920BD752C00B6123F /* SkillsTaskTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsTaskTableViewController.swift; sourceTree = "<group>"; };
 		29B478A820BFE53500B6123F /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/OnePasswordExtension.strings; sourceTree = "<group>"; };
-		29B478AA20BFE53500B6123F /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		29B478AD20BFE53500B6123F /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		29B478B620BFE53A00B6123F /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Mainstrings.strings; sourceTree = "<group>"; };
 		29B478BC20C1378100B6123F /* ChallengeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeTableViewCell.xib; sourceTree = "<group>"; };
@@ -882,18 +863,15 @@
 		29B6AD4B1F2A0DBE00AC8878 /* LoginEntryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginEntryView.swift; sourceTree = "<group>"; };
 		29B77C5D20F507DC00FD0AE1 /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		29B77C5E20F507DC00FD0AE1 /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/OnePasswordExtension.strings; sourceTree = "<group>"; };
-		29B77C5F20F507DC00FD0AE1 /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		29B77C6020F507DC00FD0AE1 /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		29B77C6120F507DC00FD0AE1 /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = hr.lproj/Mainstrings.strings; sourceTree = "<group>"; };
 		29C1B6AA20594F500001D3EF /* VisualEffectsModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectsModalViewController.swift; sourceTree = "<group>"; };
 		29C1B6AF205952E40001D3EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Tasks.storyboard; sourceTree = "<group>"; };
 		29C1B6B320599E6D0001D3EF /* TaskFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFormViewController.swift; sourceTree = "<group>"; };
 		29C6009F20F508D8005CC6C1 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/OnePasswordExtension.strings; sourceTree = "<group>"; };
-		29C600A020F508D8005CC6C1 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		29C600A120F508D8005CC6C1 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Mainstrings.strings; sourceTree = "<group>"; };
 		29D5AD5B20F50B7A00D1B869 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		29D5AD5C20F50B7A00D1B869 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/OnePasswordExtension.strings; sourceTree = "<group>"; };
-		29D5AD5D20F50B7A00D1B869 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		29D5AD5E20F50B7A00D1B869 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		29D5AD5F20F50B7A00D1B869 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Mainstrings.strings; sourceTree = "<group>"; };
 		29DBFEF620C997D100DF9CF2 /* CalculateUserStatsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateUserStatsInteractor.swift; sourceTree = "<group>"; };
@@ -947,7 +925,6 @@
 		29FEB277202B491600EA245A /* Avatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Avatar.swift; sourceTree = "<group>"; };
 		29FEB279202B4F0400EA245A /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		29FFB19320F5080D0031D914 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/OnePasswordExtension.strings; sourceTree = "<group>"; };
-		29FFB19420F5080D0031D914 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2AA9CAD02350FFCB017F32D0 /* Pods-Habitica Snapshots.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica Snapshots.release.xcconfig"; path = "Pods/Target Support Files/Pods-Habitica Snapshots/Pods-Habitica Snapshots.release.xcconfig"; sourceTree = "<group>"; };
 		2FD6A8DD61F63B61871C94A9 /* Pods-Habitica.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Habitica/Pods-Habitica.debug.xcconfig"; sourceTree = "<group>"; };
 		2FDBD03FA52D6A93D9B664CE /* Pods_Habitica.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1028,6 +1005,10 @@
 		9C2AF135C6B99AC360682846 /* Pods-Habitica Snapshots.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica Snapshots.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Habitica Snapshots/Pods-Habitica Snapshots.debug.xcconfig"; sourceTree = "<group>"; };
 		AAD902171AE5A8C0E6177D71 /* Pods_Habitica_Snapshots.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica_Snapshots.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC1D483830288A543073AEBA /* Pods_HabiticaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HabiticaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C8415991225F8B7800989FB8 /* Habitica Snapshots.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Habitica Snapshots.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C8415993225F8B7800989FB8 /* Habitica_Snapshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habitica_Snapshots.swift; sourceTree = "<group>"; };
+		C8415995225F8B7800989FB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C841599B225F8C2900989FB8 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		C897F63B218CCF51002907C2 /* RouterHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterHandler.swift; sourceTree = "<group>"; };
 		C897F63D218CE052002907C2 /* Storyboard Scenes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Storyboard Scenes.swift"; sourceTree = "<group>"; };
 		C897F63E218CE052002907C2 /* Storyboard Segues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Storyboard Segues.swift"; sourceTree = "<group>"; };
@@ -1267,11 +1248,10 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		29701FE81F5848880097BBCC /* Frameworks */ = {
+		C841598E225F8B7800989FB8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C5F01A11F4A9ED7974598C1E /* Pods_Habitica_Snapshots.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1523,17 +1503,6 @@
 				2959813D2241189E00819029 /* YellowAltBlack@3x.png */,
 			);
 			path = AppIcons;
-			sourceTree = "<group>";
-		};
-		29701FEC1F5848880097BBCC /* Habitica Snapshots */ = {
-			isa = PBXGroup;
-			children = (
-				29701FED1F5848880097BBCC /* Habitica_Snapshots.swift */,
-				29701FF51F5848A40097BBCC /* SnapshotHelperXcode8.swift */,
-				29701FEF1F5848890097BBCC /* Info.plist */,
-				29B478A920BFE53500B6123F /* InfoPlist.strings */,
-			);
-			path = "Habitica Snapshots";
 			sourceTree = "<group>";
 		};
 		2974BDAE2090896600EC1A25 /* Inbox */ = {
@@ -1878,6 +1847,16 @@
 				2AA9CAD02350FFCB017F32D0 /* Pods-Habitica Snapshots.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		C8415992225F8B7800989FB8 /* Habitica Snapshots */ = {
+			isa = PBXGroup;
+			children = (
+				C8415993225F8B7800989FB8 /* Habitica_Snapshots.swift */,
+				C841599B225F8C2900989FB8 /* SnapshotHelper.swift */,
+				C8415995225F8B7800989FB8 /* Info.plist */,
+			);
+			path = "Habitica Snapshots";
 			sourceTree = "<group>";
 		};
 		D91489091CD23A600015B42D /* ViewController */ = {
@@ -2491,7 +2470,7 @@
 				D9B2F2911D99669C001810BD /* Localizable.strings */,
 				D9EB4E9418CB4A9400BB2094 /* Habitica */,
 				D94461841AB34F5C0015215E /* HabiticaTests */,
-				29701FEC1F5848880097BBCC /* Habitica Snapshots */,
+				C8415992225F8B7800989FB8 /* Habitica Snapshots */,
 				D9EB4E8D18CB4A9400BB2094 /* Frameworks */,
 				D9EB4E8C18CB4A9400BB2094 /* Products */,
 				B4CD8E50098CF9B62A999CCD /* Pods */,
@@ -2503,7 +2482,7 @@
 			children = (
 				D9EB4E8B18CB4A9400BB2094 /* Habitica.app */,
 				D94461831AB34F5C0015215E /* HabiticaTests.xctest */,
-				29701FEB1F5848880097BBCC /* Habitica Snapshots.xctest */,
+				C8415991225F8B7800989FB8 /* Habitica Snapshots.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2607,24 +2586,22 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		29701FEA1F5848880097BBCC /* Habitica Snapshots */ = {
+		C8415990225F8B7800989FB8 /* Habitica Snapshots */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 29701FF41F5848890097BBCC /* Build configuration list for PBXNativeTarget "Habitica Snapshots" */;
+			buildConfigurationList = C8415998225F8B7800989FB8 /* Build configuration list for PBXNativeTarget "Habitica Snapshots" */;
 			buildPhases = (
-				835CD31D8EE12936E1E31F64 /* [CP] Check Pods Manifest.lock */,
-				29701FE71F5848880097BBCC /* Sources */,
-				29701FE81F5848880097BBCC /* Frameworks */,
-				29701FE91F5848880097BBCC /* Resources */,
-				AEB059D10376C45FB9485AD4 /* [CP] Embed Pods Frameworks */,
+				C841598D225F8B7800989FB8 /* Sources */,
+				C841598E225F8B7800989FB8 /* Frameworks */,
+				C841598F225F8B7800989FB8 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				29701FF11F5848890097BBCC /* PBXTargetDependency */,
+				C8415997225F8B7800989FB8 /* PBXTargetDependency */,
 			);
 			name = "Habitica Snapshots";
 			productName = "Habitica Snapshots";
-			productReference = 29701FEB1F5848880097BBCC /* Habitica Snapshots.xctest */;
+			productReference = C8415991225F8B7800989FB8 /* Habitica Snapshots.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 		D94461821AB34F5C0015215E /* HabiticaTests */ = {
@@ -2681,14 +2658,13 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = HRPG;
-				LastSwiftUpdateCheck = 0830;
+				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "HabitRPG Inc.";
 				TargetAttributes = {
-					29701FEA1F5848880097BBCC = {
-						CreatedOnToolsVersion = 8.3.3;
+					C8415990225F8B7800989FB8 = {
+						CreatedOnToolsVersion = 10.1;
 						DevelopmentTeam = 9Q9SMRMCNN;
-						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 						TestTargetID = D9EB4E8A18CB4A9400BB2094;
 					};
@@ -2735,17 +2711,16 @@
 			targets = (
 				D9EB4E8A18CB4A9400BB2094 /* Habitica */,
 				D94461821AB34F5C0015215E /* HabiticaTests */,
-				29701FEA1F5848880097BBCC /* Habitica Snapshots */,
+				C8415990225F8B7800989FB8 /* Habitica Snapshots */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		29701FE91F5848880097BBCC /* Resources */ = {
+		C841598F225F8B7800989FB8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				29B478AB20BFE53500B6123F /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2977,24 +2952,6 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		835CD31D8EE12936E1E31F64 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Habitica Snapshots-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		9134C996D72DCF63C6CF68A7 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -3087,28 +3044,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Habitica/Pods-Habitica-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AEB059D10376C45FB9485AD4 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Habitica Snapshots/Pods-Habitica Snapshots-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
-				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
-				"${BUILT_PRODUCTS_DIR}/iOSSnapshotTestCase/FBSnapshotTestCase.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSnapshotTestCase.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Habitica Snapshots/Pods-Habitica Snapshots-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B2FE1A291D097FDD8A4DD843 /* 📦 Embed Pods Frameworks */ = {
@@ -3215,12 +3150,12 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		29701FE71F5848880097BBCC /* Sources */ = {
+		C841598D225F8B7800989FB8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				29701FF61F5848A40097BBCC /* SnapshotHelperXcode8.swift in Sources */,
-				29701FEE1F5848880097BBCC /* Habitica_Snapshots.swift in Sources */,
+				C8415994225F8B7800989FB8 /* Habitica_Snapshots.swift in Sources */,
+				C841599C225F8C2A00989FB8 /* SnapshotHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3593,10 +3528,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		29701FF11F5848890097BBCC /* PBXTargetDependency */ = {
+		C8415997225F8B7800989FB8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D9EB4E8A18CB4A9400BB2094 /* Habitica */;
-			targetProxy = 29701FF01F5848890097BBCC /* PBXContainerItemProxy */;
+			targetProxy = C8415996225F8B7800989FB8 /* PBXContainerItemProxy */;
 		};
 		D944618A1AB34F5C0015215E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -3676,30 +3611,6 @@
 				290279AE20583EF9006DACB9 /* Base */,
 			);
 			name = Intro.storyboard;
-			sourceTree = "<group>";
-		};
-		29B478A920BFE53500B6123F /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				29B478AA20BFE53500B6123F /* de */,
-				2936525420F5058B00261740 /* bg */,
-				2936525D20F505CC00261740 /* zh */,
-				2936526720F5060C00261740 /* cs */,
-				2936527220F5064400261740 /* da */,
-				2936527C20F5071900261740 /* es */,
-				2936528620F5076700261740 /* fr */,
-				296E0E6420F5078200A1E991 /* he */,
-				29B77C5F20F507DC00FD0AE1 /* hr */,
-				29FFB19420F5080D0031D914 /* nl */,
-				293A683A20F5083400685945 /* pl */,
-				2935440A20F5088500857CE8 /* pt-BR */,
-				297AAB4A20F508A300BD019D /* ro */,
-				29C600A020F508D8005CC6C1 /* ru */,
-				290A2AD120F508F500BF8A68 /* zh-Hans */,
-				29D5AD5D20F50B7A00D1B869 /* it */,
-				2913E3B220F50B9300FDF81D /* ja */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 		29B478AC20BFE53500B6123F /* Main.strings */ = {
@@ -3828,51 +3739,63 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		29701FF21F5848890097BBCC /* Debug */ = {
+		C8415999225F8B7800989FB8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9C2AF135C6B99AC360682846 /* Pods-Habitica Snapshots.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Habitica Snapshots/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.habitica.Habitica-Snapshots";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.habitica.ios.Habitica-Snapshots";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Habitica;
 			};
 			name = Debug;
 		};
-		29701FF31F5848890097BBCC /* Release */ = {
+		C841599A225F8B7800989FB8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2AA9CAD02350FFCB017F32D0 /* Pods-Habitica Snapshots.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "Habitica Snapshots/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.habitica.Habitica-Snapshots";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.habitica.ios.Habitica-Snapshots";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Habitica;
 			};
 			name = Release;
@@ -4312,11 +4235,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		29701FF41F5848890097BBCC /* Build configuration list for PBXNativeTarget "Habitica Snapshots" */ = {
+		C8415998225F8B7800989FB8 /* Build configuration list for PBXNativeTarget "Habitica Snapshots" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				29701FF21F5848890097BBCC /* Debug */,
-				29701FF31F5848890097BBCC /* Release */,
+				C8415999225F8B7800989FB8 /* Debug */,
+				C841599A225F8B7800989FB8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
