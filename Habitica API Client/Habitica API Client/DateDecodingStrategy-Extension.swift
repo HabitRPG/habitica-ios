@@ -59,6 +59,11 @@ extension JSONDecoder {
                 return date
             }
             
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
+            if let date = dateFormatter.date(from: dateStr) {
+                return date
+            }
+            
             Crashlytics.sharedInstance().recordCustomExceptionName("DateParserException", reason: "Date \(dateStr) could not be parsed", frameArray: [])
             
             return Date(timeIntervalSince1970: 0)
