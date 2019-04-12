@@ -28,6 +28,11 @@ fastlane ios beta
 Submit a new Beta Build to Apple TestFlight
 
 This will also make sure the profile is up to date
+### ios betatrusted
+```
+fastlane ios betatrusted
+```
+
 ### ios betapublic
 ```
 fastlane ios betapublic

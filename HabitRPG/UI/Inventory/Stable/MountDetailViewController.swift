@@ -12,6 +12,7 @@ import Habitica_Models
 class MountDetailViewController: StableDetailViewController<MountDetailDataSource> {
     
     var eggType: String = ""
+    var mountType: String = "drop"
     
     private var inventoryRepository = InventoryRepository()
     private var stableRepository = StableRepository()
@@ -21,6 +22,11 @@ class MountDetailViewController: StableDetailViewController<MountDetailDataSourc
     
     override func viewDidLoad() {
         datasource = MountDetailDataSource(eggType: eggType)
+        if mountType == "drop" || mountType == "premium" {
+            datasource?.types = ["drop", "premium"]
+        } else {
+            datasource?.types = [mountType]
+        }
         datasource?.collectionView = self.collectionView
         super.viewDidLoad()
         

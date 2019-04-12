@@ -330,11 +330,11 @@
 "stable.standard_pets" = "Standard Pets";
 "stable.quest_pets" = "Quest Pets";
 "stable.special_pets" = "Special Pets";
-"stable.whacky_pets" = "Whacky Pets";
+"stable.wacky_pets" = "Wacky Pets";
 "stable.standard_mounts" = "Standard Mounts";
 "stable.quest_mounts" = "Quest Mounts";
 "stable.special_mounts" = "Special Mounts";
-"stable.whacky_mounts" = "Whacky Mounts";
+"stable.wacky_mounts" = "Wacky Mounts";
 "stable.standard" = "Standard";
 "stable.premium" = "Magic Potion";
 "stable.feed" = "Feed";

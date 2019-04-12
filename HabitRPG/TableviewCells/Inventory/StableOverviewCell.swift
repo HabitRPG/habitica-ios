@@ -31,6 +31,12 @@ class StableOverviewCell: UICollectionViewCell {
         } else {
             countLabel.textColor = ThemeService.shared.theme.secondaryTextColor
         }
+        
+        if item.type == "wacky" {
+            textLabel.isHidden = true
+        } else {
+            textLabel.isHidden = false
+        }
     }
     
 }

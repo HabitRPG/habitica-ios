@@ -12,6 +12,7 @@ import Habitica_Models
 class PetDetailViewController: StableDetailViewController<PetDetailDataSource> {
     
     var eggType: String = ""
+    var petType: String = "drop"
     
     private let inventoryRepository = InventoryRepository()
     private let userRepository = UserRepository()
@@ -22,6 +23,11 @@ class PetDetailViewController: StableDetailViewController<PetDetailDataSource> {
     
     override func viewDidLoad() {
         datasource = PetDetailDataSource(eggType: eggType)
+        if petType == "drop" || petType == "premium" {
+            datasource?.types = ["drop", "premium"]
+        } else {
+            datasource?.types = [petType]
+        }
         datasource?.collectionView = self.collectionView
         super.viewDidLoad()
         
@@ -42,7 +48,7 @@ class PetDetailViewController: StableDetailViewController<PetDetailDataSource> {
     
     private func showActionSheet(forStableItem stableItem: PetStableItem, withSource sourceView: UIView?) {
         let actionSheet = UIAlertController(title: stableItem.pet?.text, message: nil, preferredStyle: .actionSheet)
-        if stableItem.trained > 0 && stableItem.pet?.type != "special" && !stableItem.mountOwned {
+        if stableItem.trained > 0 && stableItem.pet?.type != "special" && stableItem.canRaise {
             actionSheet.addAction(UIAlertAction(title: L10n.Stable.feed, style: .default, handler: {[weak self] (_) in
                 self?.selectedPet = stableItem.pet
                 self?.perform(segue: StoryboardSegue.Main.feedSegue)

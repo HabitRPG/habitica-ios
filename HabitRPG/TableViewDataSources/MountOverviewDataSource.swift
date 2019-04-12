@@ -15,8 +15,8 @@ class MountOverviewDataSource: StableOverviewDataSource<PetProtocol> {
         super.init()
         sections.append(ItemSection<StableOverviewItem>(title: L10n.Stable.standardMounts))
         sections.append(ItemSection<StableOverviewItem>(title: L10n.Stable.questMounts))
+        sections.append(ItemSection<StableOverviewItem>(title: L10n.Stable.wackyMounts))
         sections.append(ItemSection<StableOverviewItem>(title: L10n.Stable.specialMounts))
-        sections.append(ItemSection<StableOverviewItem>(title: L10n.Stable.whackyMounts))
         
         disposable.inner.add(stableRepository.getOwnedMounts()
             .map({ data -> [String] in
@@ -36,7 +36,7 @@ class MountOverviewDataSource: StableOverviewDataSource<PetProtocol> {
                 self?.sections[1].items.removeAll()
                 self?.sections[1].items.append(contentsOf: overviewItems["quest"] ?? [])
                 self?.sections[2].items.removeAll()
-                self?.sections[2].items.append(contentsOf: overviewItems["whacky"] ?? [])
+                self?.sections[2].items.append(contentsOf: overviewItems["wacky"] ?? [])
                 self?.sections[3].items.removeAll()
                 self?.sections[3].items.append(contentsOf: overviewItems["special"] ?? [])
                 self?.collectionView?.reloadData()

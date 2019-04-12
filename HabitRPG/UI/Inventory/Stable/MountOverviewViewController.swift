@@ -29,6 +29,7 @@ class MountOverviewViewController: StableOverviewViewController<MountOverviewDat
             }
             let indexPath = collectionView?.indexPath(for: cell)
             destination?.eggType = datasource?.item(at: indexPath)?.eggType ?? ""
+            destination?.mountType = datasource?.item(at: indexPath)?.type ?? ""
         }
     }
 }

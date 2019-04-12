@@ -89,6 +89,7 @@ target 'Habitica' do
   
   target 'Habitica Snapshots' do
     inherit! :search_paths
+    pod 'KeychainAccess'
     test_pods
   end
 

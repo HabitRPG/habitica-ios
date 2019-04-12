@@ -117,11 +117,11 @@ public class SocialLocalRepository: BaseLocalRepository {
                 membershipsToRemove.append(membership)
             }
         })
-        if membershipsToRemove.isEmpty == false {
-            updateCall { realm in
+        updateCall { realm in
+            if membershipsToRemove.isEmpty == false {
                 realm.delete(membershipsToRemove)
-                realm.add(newMemberships, update: true)
             }
+            realm.add(newMemberships, update: true)
         }
     }
     

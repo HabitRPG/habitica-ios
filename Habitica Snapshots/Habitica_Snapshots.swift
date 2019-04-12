@@ -2,59 +2,64 @@
 //  Habitica_Snapshots.swift
 //  Habitica Snapshots
 //
-//  Created by Phillip on 31.08.17.
-//  Copyright © 2017 HabitRPG Inc. All rights reserved.
+//  Created by Phillip Thelen on 11.04.19.
+//  Copyright © 2019 HabitRPG Inc. All rights reserved.
 //
 
 import XCTest
+import KeychainAccess
 
 class Habitica_Snapshots: XCTestCase {
-        
+
     override func setUp() {
-        super.setUp()
-        
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-        
-        // In UI tests it is usually best to stop immediately when a failure occurs.
-        continueAfterFailure = false
         let app = XCUIApplication()
         setupSnapshot(app)
+        let keychain = Keychain(server: "https://habitica.com", protocolType: .https)
+            .accessibility(.afterFirstUnlock)
+        
+        let defaults = UserDefaults.standard
         app.launch()
+        
     }
-    
+
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
     }
-    
+
     func testExample() {
+        snapshot("Habits")
+        
         let app = XCUIApplication()
-        
-        app.buttons["Skip"].tap()
-        app.scrollViews.otherElements.containing(.button, identifier:"Register").buttons["Login"].tap()
-        
-        
-        let scrollViewsQuery = app.scrollViews
-        let elementsQuery = scrollViewsQuery.otherElements
-        elementsQuery.textFields["Email / Username"].tap()
-        elementsQuery.textFields["Email / Username"].typeText("maya")
-        
-        
-        let passwordSecureTextField = scrollViewsQuery.otherElements.secureTextFields["Password"]
-        passwordSecureTextField.tap()
-        passwordSecureTextField.typeText("t")
-        scrollViewsQuery.otherElements.containing(.activityIndicator, identifier:"In progress").buttons["Login"].tap()
-        
         let tabBarsQuery = app.tabBars
-        tabBarsQuery.buttons["Habits"].tap()
-        snapshot("0Habits")
         tabBarsQuery.buttons["Dailies"].tap()
-        snapshot("1Dailies")
+        sleep(2)
+        snapshot("Dailies")
+        tabBarsQuery.buttons["To-Dos"].tap()
+        sleep(2)
+        snapshot("T-Dos")
+        tabBarsQuery.buttons["Menu"].tap()
         
-    }
-    
-    func loginUser() {
+        let tablesQuery = app.tables
+        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Stable"]/*[[".cells.staticTexts[\"Stable\"]",".staticTexts[\"Stable\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        sleep(5)
+        snapshot("Stable")
+        app.navigationBars["Stable"].buttons["Back"].tap()
+        tablesQuery.staticTexts["Party"].tap()
+        app.navigationBars["Items"].buttons["Back"].tap()
         
+        
+        app.scrollViews.otherElements.scrollViews.otherElements.staticTexts["Dilatory Distress, Part 2: Creatures of the Crevasse"].tap()
+        app.navigationBars["Quest"].buttons["Party"].tap()
+        sleep(2)
+        snapshot("Quest")
+        
+        let ourPartyElementsQuery = XCUIApplication().scrollViews.otherElements.scrollViews.otherElements.containing(.staticText, identifier:"Our Party")
+        let element = ourPartyElementsQuery.children(matching: .other).element(boundBy: 1)
+        element.children(matching: .other).element.swipeUp()
+        element.swipeUp()
+        ourPartyElementsQuery.children(matching: .other).element(boundBy: 3).children(matching: .other).element(boundBy: 1).swipeUp()
+        sleep(5)
+        snapshot("Members")
     }
-    
+
 }
