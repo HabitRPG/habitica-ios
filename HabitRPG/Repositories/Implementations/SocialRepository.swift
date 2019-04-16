@@ -333,10 +333,12 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
         let call = InviteToGroupCall(groupID: groupID, members: members)
         call.fire()
         call.habiticaResponseSignal.observeValues { (response) in
-            if let error = response?.message {
-                ToastManager.show(text: error, color: .red)
-            } else if response != nil {
-                ToastManager.show(text: L10n.usersInvited, color: .blue)
+            DispatchQueue.main.asyncAfter(wallDeadline: .now()+1) {
+                if let error = response?.message {
+                    ToastManager.show(text: error, color: .red)
+                } else if response != nil {
+                    ToastManager.show(text: L10n.usersInvited, color: .blue)
+                }
             }
         }
         return call.objectSignal

@@ -91,6 +91,7 @@ class InviteMembersViewController: FormViewController {
                                             return TextRow { row in
                                                 row.cellSetup({ (cell, _) in
                                                     cell.tintColor = ThemeService.shared.theme.tintColor
+                                                    cell.textField.autocapitalizationType = .none
                                                 })
                                             }
                                         }
@@ -111,6 +112,8 @@ class InviteMembersViewController: FormViewController {
                                             return TextRow { row in
                                                 row.cellSetup({ (cell, _) in
                                                     cell.tintColor = ThemeService.shared.theme.tintColor
+                                                    cell.textField.keyboardType = .emailAddress
+                                                    cell.textField.autocapitalizationType = .none
                                                 })
                                             }
                                         }
