@@ -492,6 +492,8 @@
 "settings.username_not_confirmed" = "Username not confirmed";
 "settings.display_name_length_error" = "Your display name has to be between 1 and 30 characters.";
 "settings.searchable_username" = "Suggest my username";
+"about.new_version" = "Update available: %@";
+"about.whats_new" = "See what's new";
 "about.website" = "Website";
 "about.send_feedback" = "Send Feedback";
 "about.report_bug" = "Report a Bug";

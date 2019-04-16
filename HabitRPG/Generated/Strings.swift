@@ -577,6 +577,10 @@ public enum L10n {
     public static var leaveReview: String { return L10n.tr("Mainstrings", "about.leave_review") }
     /// Web love open source software.
     public static var loveOpenSource: String { return L10n.tr("Mainstrings", "about.love_open_source") }
+    /// Update available: %@
+    public static func newVersion(_ p1: String) -> String {
+      return L10n.tr("Mainstrings", "about.new_version", p1)
+    }
     /// Whoops, looks like you haven't set up your email on this phone yet. Configure an account in the iOS mail app to use this quick-reporting option, or just email us directly at %@
     public static func noEmailMessage(_ p1: String) -> String {
       return L10n.tr("Mainstrings", "about.no_email_message", p1)
@@ -593,6 +597,8 @@ public enum L10n {
     public static var viewSourceCode: String { return L10n.tr("Mainstrings", "about.view_source_code") }
     /// Website
     public static var website: String { return L10n.tr("Mainstrings", "about.website") }
+    /// See what's new
+    public static var whatsNew: String { return L10n.tr("Mainstrings", "about.whats_new") }
   }
 
   public enum Accessibility {
