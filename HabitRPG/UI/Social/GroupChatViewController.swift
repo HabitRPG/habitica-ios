@@ -298,6 +298,7 @@ class GroupChatViewController: SLKTextViewController {
                 return
             }
             let acceptButton = acceptView.viewWithTag(1) as? UIButton
+            acceptButton?.setTitle(L10n.accept, for: .normal)
             acceptButton?.addTarget(self, action: #selector(acceptGuidelines), for: .touchUpInside)
             let descriptionButton = acceptView.viewWithTag(2) as? UIButton
             descriptionButton?.addTarget(self, action: #selector(openGuidelinesView), for: .touchUpInside)
