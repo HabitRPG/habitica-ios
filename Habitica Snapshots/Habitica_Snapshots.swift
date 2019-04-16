@@ -7,19 +7,14 @@
 //
 
 import XCTest
-import KeychainAccess
 
 class Habitica_Snapshots: XCTestCase {
 
     override func setUp() {
         let app = XCUIApplication()
         setupSnapshot(app)
-        let keychain = Keychain(server: "https://habitica.com", protocolType: .https)
-            .accessibility(.afterFirstUnlock)
         
-        let defaults = UserDefaults.standard
         app.launch()
-        
     }
 
     override func tearDown() {
@@ -27,39 +22,55 @@ class Habitica_Snapshots: XCTestCase {
     }
 
     func testExample() {
-        snapshot("Habits")
         
         let app = XCUIApplication()
         let tabBarsQuery = app.tabBars
-        tabBarsQuery.buttons["Dailies"].tap()
-        sleep(2)
+        tabBarsQuery.buttons.element(boundBy: 0).tap()
+
+        tabBarsQuery.buttons.element(boundBy: 1).tap()
+        sleep(1)
         snapshot("Dailies")
-        tabBarsQuery.buttons["To-Dos"].tap()
-        sleep(2)
-        snapshot("T-Dos")
-        tabBarsQuery.buttons["Menu"].tap()
+        tabBarsQuery.buttons.element(boundBy: 1).tap()
+        XCUIApplication().tables.cells.element(boundBy: 0).tap()
+        sleep(1)
+        snapshot("LevelUp")
         
-        let tablesQuery = app.tables
-        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Stable"]/*[[".cells.staticTexts[\"Stable\"]",".staticTexts[\"Stable\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        sleep(5)
+        app.buttons.element(matching: .button, identifier: "Close").tap()
+        tabBarsQuery.buttons.element(boundBy: 4).tap()
+        
+        
+        app.tables.cells.element(boundBy: 10).tap()
+        sleep(3)
         snapshot("Stable")
-        app.navigationBars["Stable"].buttons["Back"].tap()
-        tablesQuery.staticTexts["Party"].tap()
-        app.navigationBars["Items"].buttons["Back"].tap()
+        tabBarsQuery.buttons.element(boundBy: 4).tap()
+        app.tables.cells.element(boundBy: 3).tap()
         
         
-        app.scrollViews.otherElements.scrollViews.otherElements.staticTexts["Dilatory Distress, Part 2: Creatures of the Crevasse"].tap()
-        app.navigationBars["Quest"].buttons["Party"].tap()
-        sleep(2)
+        app.scrollViews.otherElements.matching(identifier: "QuestDetailButton").element.tap()
+        sleep(3)
         snapshot("Quest")
         
-        let ourPartyElementsQuery = XCUIApplication().scrollViews.otherElements.scrollViews.otherElements.containing(.staticText, identifier:"Our Party")
-        let element = ourPartyElementsQuery.children(matching: .other).element(boundBy: 1)
-        element.children(matching: .other).element.swipeUp()
-        element.swipeUp()
-        ourPartyElementsQuery.children(matching: .other).element(boundBy: 3).children(matching: .other).element(boundBy: 1).swipeUp()
-        sleep(5)
+        tabBarsQuery.buttons.element(boundBy: 4).tap()
+        app.tables.cells.element(boundBy: 3).tap()
+
+        let scrollView = XCUIApplication().scrollViews.otherElements.scrollViews.element(boundBy: 0)
+        let memberElement = XCUIApplication().scrollViews.otherElements.scrollViews.otherElements.staticTexts["Aiden M."]
+        scrollView.scrollToElement(element: memberElement)
+        
+        sleep(3)
         snapshot("Members")
     }
+}
 
+extension XCUIElement {
+    func scrollToElement(element: XCUIElement) {
+        while !element.visible() {
+            swipeUp()
+        }
+    }
+    
+    func visible() -> Bool {
+        guard self.exists && !self.frame.isEmpty else { return false }
+        return XCUIApplication().windows.element(boundBy: 0).frame.contains(self.frame)
+    }
 }

@@ -9,14 +9,17 @@ devices([
   "iPhone XS Max",
   "iPad Pro (12.9-inch)",
   "iPad Pro (9.7-inch)",
+#  "iPad Pro (10.5-inch)",
+#  "iPad Pro (11-inch)",
+#  "iPad Pro (12.9-inch) (3rd generation)"
 ])
 
-# languages([
-#   "en-US",
-#   "de-DE",
+languages([
+  "en-US",
+  "de-DE",
 #   "it-IT",
 #   ["pt", "pt_BR"] # Portuguese with Brazilian locale
-# ])
+])
 
 # The name of the scheme which contains the UI Tests
 scheme("Habitica Snapshots")

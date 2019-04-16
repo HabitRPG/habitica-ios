@@ -28,6 +28,8 @@ import FirebaseMessaging
 //Reason for adding this class now is mostly, to configure PopupDialogs dim color.
 class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenterDelegate {
     
+    static let possibleLaunchArgs = ["userid", "apikey"]
+    
     private let application: UIApplication
     
     private let userRepository = UserRepository()
@@ -39,6 +41,17 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
     init(application: UIApplication) {
         self.application = application
         super.init()
+    }
+    
+    @objc
+    func handleLaunchArgs() {
+        let launchArgs = ProcessInfo.processInfo.environment
+        if (launchArgs["userid"] != nil) {
+            AuthenticationManager.shared.currentUserId = launchArgs["userid"]
+        }
+        if (launchArgs["apikey"] != nil) {
+            AuthenticationManager.shared.currentUserKey = launchArgs["apikey"]
+        }
     }
     
     @objc
@@ -386,6 +399,16 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
         } else {
             return true
         }
+        #endif
+    }
+    
+    @objc
+    static func isRunningScreenshots() -> Bool {
+        #if !targetEnvironment(simulator)
+        return false
+        #else
+        return true
+        return UserDefaults.standard.bool(forKey: "FASTLANE_SNAPSHOT")
         #endif
     }
     

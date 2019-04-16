@@ -82,17 +82,17 @@ target 'Habitica' do
 
   pod "DeepLinkKit"
 
+  pod 'SimulatorStatusMagic', :configurations => ['Debug']
+
   target 'HabiticaTests' do
     inherit! :search_paths
     test_pods
   end
-  
-  target 'Habitica Snapshots' do
-    inherit! :search_paths
-    pod 'KeychainAccess'
-    test_pods
-  end
+end
 
+target 'Habitica Snapshots' do
+  pod 'KeychainAccess'
+  test_pods
 end
 
 target "Habitica ModelsTests" do

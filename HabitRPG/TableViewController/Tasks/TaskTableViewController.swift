@@ -329,6 +329,15 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        #if targetEnvironment(simulator)
+        if HabiticaAppDelegate.isRunningScreenshots() {
+            dataSource?.userRepository.getUser().take(first: 1).on(value: { user in
+                let levelUpView = LevelUpOverlayView(avatar: user)
+                levelUpView.show()
+            }).start()
+            return
+        }
+        #endif
         dataSource?.selectRowAt(indexPath: indexPath)
         performSegue(withIdentifier: "FormSegue", sender: self)
         tableView.deselectRow(at: indexPath, animated: true)

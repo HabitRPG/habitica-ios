@@ -21,6 +21,11 @@ or alternatively using `brew cask install fastlane`
 fastlane ios test
 ```
 Runs all the tests
+### ios snap
+```
+fastlane ios snap
+```
+
 ### ios beta
 ```
 fastlane ios beta
@@ -28,11 +33,6 @@ fastlane ios beta
 Submit a new Beta Build to Apple TestFlight
 
 This will also make sure the profile is up to date
-### ios betatrusted
-```
-fastlane ios betatrusted
-```
-
 ### ios betapublic
 ```
 fastlane ios betapublic

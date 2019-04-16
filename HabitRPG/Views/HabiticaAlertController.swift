@@ -186,8 +186,11 @@ class HabiticaAlertController: UIViewController, Themeable {
     }
     
     @objc
-    func addAction(title: String, style: UIAlertAction.Style = .default, isMainAction: Bool = false, closeOnTap: Bool = true, handler: ((UIButton) -> Swift.Void)? = nil) {
+    func addAction(title: String, style: UIAlertAction.Style = .default, isMainAction: Bool = false, closeOnTap: Bool = true, identifier: String? = nil, handler: ((UIButton) -> Swift.Void)? = nil) {
         let button = UIButton()
+        if let identifier = identifier {
+            button.accessibilityIdentifier = identifier
+        }
         button.titleLabel?.lineBreakMode = .byWordWrapping
         button.titleLabel?.textAlignment = .center
         button.setTitle(title, for: .normal)
@@ -365,12 +368,12 @@ extension HabiticaAlertController {
     
     @objc
     func addCancelAction(handler: ((UIButton) -> Void)? = nil) {
-        self.addAction(title: L10n.cancel, handler: handler)
+        self.addAction(title: L10n.cancel, identifier: "Cancel", handler: handler)
     }
     
     @objc
     func addCloseAction(handler: ((UIButton) -> Void)? = nil) {
-        self.addAction(title: L10n.close, handler: handler)
+        self.addAction(title: L10n.close, identifier: "Close", handler: handler)
     }
     
     @objc

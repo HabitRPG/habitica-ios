@@ -52,7 +52,7 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
             return sections[0].items
         }
         set {
-            sections[0].items = tasks
+            sections[0].items = newValue
         }
     }
     

@@ -18,6 +18,9 @@
 #import <Keys/HabiticaKeys.h>
 #import "AppAuth.h"
 #import "Habitica-Swift.h"
+#if DEBUG
+    #import "SDStatusBarManager.h"
+#endif
 
 @interface HRPGAppDelegate ()
 
@@ -29,6 +32,11 @@
 - (BOOL)application:(UIApplication *)application
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.swiftAppDelegate = [[HabiticaAppDelegate alloc] initWithApplication: application];
+    
+    [self.swiftAppDelegate handleLaunchArgs];
+#if DEBUG
+    [[SDStatusBarManager sharedInstance] enableOverrides];
+#endif
     
     [self.swiftAppDelegate setupLogging];
     [self.swiftAppDelegate setupAnalytics];
@@ -207,8 +215,8 @@
     }
 
     HabiticaAlertController *alertController = [HabiticaAlertController alertWithTitle:objcL10n.reminder message:notification.alertBody];
-    [alertController addActionWithTitle:objcL10n.close style:UIAlertActionStyleDefault isMainAction:NO closeOnTap:true handler:nil];
-    [alertController addActionWithTitle:objcL10n.complete style:UIAlertActionStyleDefault isMainAction:YES closeOnTap:true handler:^(UIButton * _Nonnull button) {
+    [alertController addActionWithTitle:objcL10n.close style:UIAlertActionStyleDefault isMainAction:NO closeOnTap:true identifier:nil handler:nil];
+    [alertController addActionWithTitle:objcL10n.complete style:UIAlertActionStyleDefault isMainAction:YES closeOnTap:true identifier:nil handler:^(UIButton * _Nonnull button) {
         [self completeTaskWithId:[notification.userInfo valueForKey:@"taskID"] completionHandler:nil];
     }];
     [alertController show];
@@ -308,10 +316,12 @@
         [privateMessageCategory setActions:@[ replyAction ]
                           forContext:UIUserNotificationActionContextDefault];
 
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"FASTLANE_SNAPSHOT"]) {
         UIUserNotificationSettings *settings =
-            [UIUserNotificationSettings settingsForTypes:types
-                                              categories:[NSSet setWithObjects:completeCategory, questInviteCategory, privateMessageCategory, nil]];
+        [UIUserNotificationSettings settingsForTypes:types
+                                          categories:[NSSet setWithObjects:completeCategory, questInviteCategory, privateMessageCategory, nil]];
         [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+    }
 }
 
 - (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings {
