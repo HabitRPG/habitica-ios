@@ -29,7 +29,7 @@ enum ConfigVariable: Int {
         case .maxChatLength: return "maxChatLength"
         case .enableGiftOneGetOne: return "enableGiftOneGetOne"
         case .enableUsernameAutocomplete: return "enableUsernameAutocomplete"
-        case .spriteSubstitutions: return "spriteSubstitution"
+        case .spriteSubstitutions: return "spriteSubstitutions"
         case .stableName: return "stableName"
         case .lastVersionNumber: return "lastVersionNumber"
         case .lastVersionCode: return "lastVersionCode"
