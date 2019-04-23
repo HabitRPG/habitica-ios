@@ -118,7 +118,7 @@ public class UserLocalRepository: BaseLocalRepository {
             if let oldTask = getRealm()?.object(ofType: RealmTask.self, forPrimaryKey: task.id) {
                 task.order = oldTask.order
             }
-            save(object: RealmTask(userID: userID, taskProtocol: task, tags: tags))
+            save(object: RealmTask(ownerID: userID, taskProtocol: task, tags: tags))
         }
         if let newUser = skillResponse.user {
             save(newUser)

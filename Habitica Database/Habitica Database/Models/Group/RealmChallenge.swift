@@ -46,23 +46,23 @@ class RealmChallenge: Object, ChallengeProtocol {
     var realmCategories = List<RealmChallengeCategory>()
     var tasksOrder: [String: [String]] = [:]
     var habits: [TaskProtocol] {
-        let predicate = NSPredicate(format: "userID == %@ && type == 'habit'", id ?? "")
+        let predicate = NSPredicate(format: "ownerID == %@ && type == 'habit'", id ?? "")
         return (try? Realm().objects(RealmTask.self).filter(predicate).map({ (task) -> TaskProtocol in
             return task
         })) ?? []
     }
     var dailies: [TaskProtocol] {
-        return (try? Realm().objects(RealmTask.self).filter("userID == %@ && type == 'daily'", id ?? "").map({ (task) -> TaskProtocol in
+        return (try? Realm().objects(RealmTask.self).filter("ownerID == %@ && type == 'daily'", id ?? "").map({ (task) -> TaskProtocol in
             return task
         })) ?? []
     }
     var todos: [TaskProtocol] {
-        return (try? Realm().objects(RealmTask.self).filter("userID == %@ && type == 'todo'", id ?? "").map({ (task) -> TaskProtocol in
+        return (try? Realm().objects(RealmTask.self).filter("ownerID == %@ && type == 'todo'", id ?? "").map({ (task) -> TaskProtocol in
             return task
         })) ?? []
     }
     var rewards: [TaskProtocol] {
-        return (try? Realm().objects(RealmTask.self).filter("userID == %@ && type == 'reward'", id ?? "").map({ (task) -> TaskProtocol in
+        return (try? Realm().objects(RealmTask.self).filter("ownerID == %@ && type == 'reward'", id ?? "").map({ (task) -> TaskProtocol in
             return task
         })) ?? []
     }

@@ -17,7 +17,7 @@ public class TaskLocalRepository: BaseLocalRepository {
     func save(userID: String?, task: TaskProtocol, tags: Results<RealmTag>?) {
         if let realmTask = task as? RealmTask {
             updateCall { realm in
-                realmTask.userID = userID
+                realmTask.ownerID = userID
                 realm.add(realmTask, update: true)
             }
             return
@@ -25,7 +25,7 @@ public class TaskLocalRepository: BaseLocalRepository {
         if let oldTask = getRealm()?.object(ofType: RealmTask.self, forPrimaryKey: task.id) {
             task.order = oldTask.order
         }
-        save(object: RealmTask(userID: userID, taskProtocol: task, tags: tags))
+        save(object: RealmTask(ownerID: userID, taskProtocol: task, tags: tags))
     }
     
     public func save(userID: String?, task: TaskProtocol) {
@@ -54,7 +54,7 @@ public class TaskLocalRepository: BaseLocalRepository {
             if let realmTask = task as? RealmTask {
                 return realmTask
             }
-            return RealmTask(userID: userID, taskProtocol: task, tags: tags)
+            return RealmTask(ownerID: userID, taskProtocol: task, tags: tags)
         })
         removeOldTasks(userID: userID, newTasks: tasks, removeCompletedTodos: removeCompletedTodos)
     }
@@ -69,7 +69,7 @@ public class TaskLocalRepository: BaseLocalRepository {
     }
     
     private func removeOldTasks(userID: String?, newTasks: [TaskProtocol], removeCompletedTodos: Bool = false) {
-        var predicate = "userID == '\(userID ?? "")'"
+        var predicate = "ownerID == '\(userID ?? "")'"
         if removeCompletedTodos {
             predicate += " && completed == true"
         } else {
@@ -92,7 +92,7 @@ public class TaskLocalRepository: BaseLocalRepository {
     }
     
     public func getTasks(userID: String, predicate: NSPredicate, sortKey: String) -> SignalProducer<ReactiveResults<[TaskProtocol]>, ReactiveSwiftRealmError> {
-        return RealmTask.findBy(predicate: NSCompoundPredicate(andPredicateWithSubpredicates: [NSPredicate(format: "userID == %@", userID), predicate])).sorted(key: sortKey).reactive().map({ (value, changeset) -> ReactiveResults<[TaskProtocol]> in
+        return RealmTask.findBy(predicate: NSCompoundPredicate(andPredicateWithSubpredicates: [NSPredicate(format: "ownerID == %@", userID), predicate])).sorted(key: sortKey).reactive().map({ (value, changeset) -> ReactiveResults<[TaskProtocol]> in
             return (value.map({ (task) -> TaskProtocol in return task }), changeset)
         })
     }

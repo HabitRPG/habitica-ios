@@ -143,7 +143,7 @@ public class SocialLocalRepository: BaseLocalRepository {
             if let realmTask = task as? RealmTask {
                 return realmTask
             }
-            return RealmTask(userID: challengeID, taskProtocol: task, tags: tags)
+            return RealmTask(ownerID: challengeID, taskProtocol: task, tags: tags)
         })
     }
     
