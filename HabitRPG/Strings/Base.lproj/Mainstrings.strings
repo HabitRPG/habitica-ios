@@ -48,6 +48,7 @@
 "titles.invite_members" = "Invite Members";
 "titles.spells" = "Spells";
 "titles.messages" = "Messages";
+"titles.notifications" = "Notifications";
 "stats.no_points_to_allocate" = "0 Points to Allocate";
 "stats.one_point_to_allocate" = "1 Point to Allocate";
 "stats.points_to_allocate" = "%d Point to Allocate";
@@ -734,3 +735,5 @@
 "shops.purchased_all_gear" = "You already have all your class equipment! More will be released during the Grand Galas, near the solstices and equinoxes.";
 "purchased" = "You purchased %@";
 "buy_reward" = "You bought '%@' for %f gold";
+"notifications.unallocated_stat_points" = "You have %d unallocated Stat Points";
+"notifications.new_bailey" = "New Bailey Update!";

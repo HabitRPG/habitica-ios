@@ -102,6 +102,9 @@ class MainMenuViewController: BaseTableViewController {
         navbarView?.settingsAction = {[weak self] in
             self?.perform(segue: StoryboardSegue.Main.settingsSegue)
         }
+        navbarView?.notificationsAction = {[weak self] in
+            self?.perform(segue: StoryboardSegue.Main.notificationsSegue)
+        }
         
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)

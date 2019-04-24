@@ -10,6 +10,7 @@ import Foundation
 import Habitica_Database
 import ReactiveSwift
 import Result
+import RealmSwift
 
 class BaseRepository<T: BaseLocalRepository>: NSObject {
     
@@ -20,5 +21,11 @@ class BaseRepository<T: BaseLocalRepository>: NSObject {
     }
     var currentUserIDProducer: SignalProducer<String?, NoError> {
         return AuthenticationManager.shared.currentUserIDProperty.producer
+    }
+    
+    func save(object: Any) {
+        if let realmObject = object as? Object {
+            localRepository.save(object: realmObject)
+        }
     }
 }

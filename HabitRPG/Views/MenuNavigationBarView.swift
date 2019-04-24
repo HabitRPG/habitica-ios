@@ -13,6 +13,7 @@ class MenuNavigationBarView: UIView, Themeable {
     
     @objc public var messagesAction: (() -> Void)?
     @objc public var settingsAction: (() -> Void)?
+    @objc public var notificationsAction: (() -> Void)?
     
     @IBOutlet weak var avatarView: AvatarView!
     @IBOutlet weak var displayNameLabel: UILabel!
@@ -20,8 +21,10 @@ class MenuNavigationBarView: UIView, Themeable {
     
     @IBOutlet weak var messagesButton: UIButton!
     @IBOutlet weak var settingsButton: UIButton!
+    @IBOutlet weak var notificationsButton: UIButton!
     @IBOutlet weak var messagesBadge: PaddedLabel!
     @IBOutlet weak var settingsBadge: PaddedLabel!
+    @IBOutlet weak var notificationsBadge: PaddedLabel!
     
     // MARK: - Private Helper Methods
    
@@ -34,6 +37,7 @@ class MenuNavigationBarView: UIView, Themeable {
         
         messagesButton.accessibilityLabel = L10n.Titles.messages
         settingsButton.accessibilityLabel = L10n.Titles.settings
+        notificationsButton.accessibilityLabel = L10n.Titles.notifications
         
         ThemeService.shared.addThemeable(themable: self, applyImmediately: true)
     }
@@ -75,6 +79,12 @@ class MenuNavigationBarView: UIView, Themeable {
     
     @IBAction func settingsButtonTapped(_ sender: Any) {
         if let action = settingsAction {
+            action()
+        }
+    }
+    
+    @IBAction func notificationsButtonTapped(_ sender: Any) {
+        if let action = notificationsAction {
             action()
         }
     }

@@ -963,6 +963,15 @@ public enum L10n {
     public static var useSkills: String { return L10n.tr("Mainstrings", "menu.use_skills") }
   }
 
+  public enum Notifications {
+    /// New Bailey Update!
+    public static var newBailey: String { return L10n.tr("Mainstrings", "notifications.new_bailey") }
+    /// You have %d unallocated Stat Points
+    public static func unallocatedStatPoints(_ p1: Int) -> String {
+      return L10n.tr("Mainstrings", "notifications.unallocated_stat_points", p1)
+    }
+  }
+
   public enum Party {
     /// Create a new Party
     public static var createPartyButton: String { return L10n.tr("Mainstrings", "party.create_party_button") }
@@ -1620,6 +1629,8 @@ public enum L10n {
     public static var mounts: String { return L10n.tr("Mainstrings", "titles.mounts") }
     /// News
     public static var news: String { return L10n.tr("Mainstrings", "titles.news") }
+    /// Notifications
+    public static var notifications: String { return L10n.tr("Mainstrings", "titles.notifications") }
     /// Party
     public static var party: String { return L10n.tr("Mainstrings", "titles.party") }
     /// Pets

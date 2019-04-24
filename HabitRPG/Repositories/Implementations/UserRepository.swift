@@ -377,6 +377,16 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         return Signal.empty
     }
     
+    func getNotifications() -> SignalProducer<ReactiveResults<[NotificationProtocol]>, ReactiveSwiftRealmError> {
+        return currentUserIDProducer.skipNil().flatMap(.latest, { (userID) in
+            return self.localRepository.getNotifications(userID: userID)
+        })
+    }
+    
+    func createNotification(id: String, type: HabiticaNotificationType) -> NotificationProtocol {
+        return localRepository.createNotification(userID: currentUserId ?? "", id: id, type: type)
+    }
+    
     private func handleUserUpdate() -> ((UserProtocol?) -> Void) {
         return { updatedUser in
             if let userID = self.currentUserId, let updatedUser = updatedUser {

@@ -29,7 +29,7 @@ public class BaseLocalRepository {
         return try? Realm()
     }
     
-    func save(object realmObject: Object?) {
+    public func save(object realmObject: Object?) {
         if let object = realmObject {
             let realm = getRealm()
             realm?.refresh()
@@ -39,7 +39,7 @@ public class BaseLocalRepository {
         }
     }
     
-    func save(objects realmObjects: [Object]?) {
+    public func save(objects realmObjects: [Object]?) {
         if let objects = realmObjects {
             let realm = getRealm()
             realm?.refresh()

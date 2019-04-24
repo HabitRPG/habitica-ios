@@ -67,6 +67,7 @@
 		295611222057D60F00D9711A /* RealmQuest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295611212057D60F00D9711A /* RealmQuest.swift */; };
 		295611242057D65500D9711A /* RealmQuestBoss.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295611232057D65500D9711A /* RealmQuestBoss.swift */; };
 		295611262057D77600D9711A /* RealmQuestCollect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295611252057D77600D9711A /* RealmQuestCollect.swift */; };
+		295BC6F4226F3D8200DDDF1A /* RealmNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295BC6F3226F3D8200DDDF1A /* RealmNotification.swift */; };
 		295D430420973A3F00948E7E /* RealmTutorialStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295D430320973A3F00948E7E /* RealmTutorialStep.swift */; };
 		295E9DBF20B2C8CF00D58D45 /* RealmQuestBossRage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295E9DBE20B2C8CF00D58D45 /* RealmQuestBossRage.swift */; };
 		295E9DEC20B3326700D58D45 /* RealmShop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295E9DEB20B3326700D58D45 /* RealmShop.swift */; };
@@ -168,6 +169,7 @@
 		295611212057D60F00D9711A /* RealmQuest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmQuest.swift; sourceTree = "<group>"; };
 		295611232057D65500D9711A /* RealmQuestBoss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmQuestBoss.swift; sourceTree = "<group>"; };
 		295611252057D77600D9711A /* RealmQuestCollect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmQuestCollect.swift; sourceTree = "<group>"; };
+		295BC6F3226F3D8200DDDF1A /* RealmNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmNotification.swift; sourceTree = "<group>"; };
 		295D430320973A3F00948E7E /* RealmTutorialStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmTutorialStep.swift; sourceTree = "<group>"; };
 		295E9DBE20B2C8CF00D58D45 /* RealmQuestBossRage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmQuestBossRage.swift; sourceTree = "<group>"; };
 		295E9DEB20B3326700D58D45 /* RealmShop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmShop.swift; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 		292DEE69204DCF240086D5F7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				295BC6F2226F3D5B00DDDF1A /* Notifications */,
 				292F965C206E305800804151 /* Group */,
 				2956110E2056EC0E00D9711A /* Content */,
 				29323E2F2051FA7700AC6D6F /* Tasks */,
@@ -360,6 +363,14 @@
 				290279882058344B006DACB9 /* RealmWorldState.swift */,
 			);
 			path = Content;
+			sourceTree = "<group>";
+		};
+		295BC6F2226F3D5B00DDDF1A /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				295BC6F3226F3D8200DDDF1A /* RealmNotification.swift */,
+			);
+			path = Notifications;
 			sourceTree = "<group>";
 		};
 		298FB9A2204D9338004DDACC = {
@@ -642,6 +653,7 @@
 				2956111A2057C93200D9711A /* RealmFood.swift in Sources */,
 				295E9DEC20B3326700D58D45 /* RealmShop.swift in Sources */,
 				290B628D207E174C007287C4 /* RealmMember.swift in Sources */,
+				295BC6F4226F3D8200DDDF1A /* RealmNotification.swift in Sources */,
 				2974BDB020908BE500EC1A25 /* RealmInboxMessage.swift in Sources */,
 				290B6269207B9987007287C4 /* RealmLocalAuthentication.swift in Sources */,
 				2974BDA9208E1AFB00EC1A25 /* RealmSubscriptionConsecutive.swift in Sources */,

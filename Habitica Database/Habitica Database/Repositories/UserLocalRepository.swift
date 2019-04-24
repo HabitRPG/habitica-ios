@@ -217,6 +217,16 @@ public class UserLocalRepository: BaseLocalRepository {
         }
     }
     
+    public func getNotifications(userID: String) -> SignalProducer<ReactiveResults<[NotificationProtocol]>, ReactiveSwiftRealmError> {
+        return RealmNotification.findBy(query: "userID == '\(userID)'").sorted(key: "priority").reactive().map({ (value, changeset) -> ReactiveResults<[NotificationProtocol]> in
+            return (value.map({ (notification) -> NotificationProtocol in return notification }), changeset)
+        })
+    }
+    
+    public func createNotification(userID: String, id: String, type: HabiticaNotificationType) -> NotificationProtocol {
+        return RealmNotification(id, userID: userID, type: type)
+    }
+    
     private func outfitFor(class habiticaClass: HabiticaClass) -> OutfitProtocol {
         let outfit = RealmOutfit()
         switch habiticaClass {
