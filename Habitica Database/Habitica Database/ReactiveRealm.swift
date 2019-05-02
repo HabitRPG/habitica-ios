@@ -8,7 +8,6 @@
 
 import Foundation
 import ReactiveSwift
-import Result
 import RealmSwift
 import Crashlytics
 

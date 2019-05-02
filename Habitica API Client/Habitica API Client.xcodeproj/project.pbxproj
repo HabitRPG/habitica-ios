@@ -111,7 +111,6 @@
 		29323E192050528C00AC6D6F /* RetrieveUserCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E182050528C00AC6D6F /* RetrieveUserCall.swift */; };
 		29323E23205099FF00AC6D6F /* HabiticaResponseCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E22205099FF00AC6D6F /* HabiticaResponseCall.swift */; };
 		29323E2520509B9000AC6D6F /* HabiticaResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E2420509B9000AC6D6F /* HabiticaResponse.swift */; };
-		29323E272051659C00AC6D6F /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E262051659C00AC6D6F /* ErrorHandler.swift */; };
 		29323E2D2051B43100AC6D6F /* DebugOutputHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E2C2051B43100AC6D6F /* DebugOutputHandler.swift */; };
 		29323E37205212C400AC6D6F /* APIFlags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E36205212C400AC6D6F /* APIFlags.swift */; };
 		29323E39205212E400AC6D6F /* APIPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E38205212E400AC6D6F /* APIPreferences.swift */; };
@@ -173,6 +172,13 @@
 		296AC81C20ADD9D500885682 /* APIInAppReward.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296AC81B20ADD9D500885682 /* APIInAppReward.swift */; };
 		296E480A21BEBC0600D15E4A /* RetrieveMemberUsernameCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296E480921BEBC0600D15E4A /* RetrieveMemberUsernameCall.swift */; };
 		296E480E21C4095300D15E4A /* PurchaseNoRenewSubscriptionCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296E480D21C4095300D15E4A /* PurchaseNoRenewSubscriptionCall.swift */; };
+		2970CB4A227B098400FACCB7 /* ServerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2970CB43227B098300FACCB7 /* ServerConfiguration.swift */; };
+		2970CB4B227B098400FACCB7 /* NetworkCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2970CB44227B098400FACCB7 /* NetworkCall.swift */; };
+		2970CB4C227B098400FACCB7 /* JsonNetworkCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2970CB45227B098400FACCB7 /* JsonNetworkCall.swift */; };
+		2970CB4D227B098400FACCB7 /* StubbableNetworkCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2970CB46227B098400FACCB7 /* StubbableNetworkCall.swift */; };
+		2970CB4E227B098400FACCB7 /* JsonDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2970CB47227B098400FACCB7 /* JsonDataHandler.swift */; };
+		2970CB4F227B098400FACCB7 /* StubHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2970CB48227B098400FACCB7 /* StubHolder.swift */; };
+		2970CB50227B098400FACCB7 /* NetworkErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2970CB49227B098400FACCB7 /* NetworkErrorHandler.swift */; };
 		2974BD9B208E103B00EC1A25 /* APIPurchased.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BD9A208E103B00EC1A25 /* APIPurchased.swift */; };
 		2974BD9D208E120200EC1A25 /* APIOwnedCustomization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BD9C208E120200EC1A25 /* APIOwnedCustomization.swift */; };
 		2974BD9F208E15FD00EC1A25 /* APISubscriptionPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BD9E208E15FD00EC1A25 /* APISubscriptionPlan.swift */; };
@@ -329,7 +335,6 @@
 		29323E182050528C00AC6D6F /* RetrieveUserCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveUserCall.swift; sourceTree = "<group>"; };
 		29323E22205099FF00AC6D6F /* HabiticaResponseCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabiticaResponseCall.swift; sourceTree = "<group>"; };
 		29323E2420509B9000AC6D6F /* HabiticaResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabiticaResponse.swift; sourceTree = "<group>"; };
-		29323E262051659C00AC6D6F /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		29323E2C2051B43100AC6D6F /* DebugOutputHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugOutputHandler.swift; sourceTree = "<group>"; };
 		29323E36205212C400AC6D6F /* APIFlags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIFlags.swift; sourceTree = "<group>"; };
 		29323E38205212E400AC6D6F /* APIPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIPreferences.swift; sourceTree = "<group>"; };
@@ -391,6 +396,13 @@
 		296AC81B20ADD9D500885682 /* APIInAppReward.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIInAppReward.swift; sourceTree = "<group>"; };
 		296E480921BEBC0600D15E4A /* RetrieveMemberUsernameCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveMemberUsernameCall.swift; sourceTree = "<group>"; };
 		296E480D21C4095300D15E4A /* PurchaseNoRenewSubscriptionCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseNoRenewSubscriptionCall.swift; sourceTree = "<group>"; };
+		2970CB43227B098300FACCB7 /* ServerConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServerConfiguration.swift; path = "../../../../funky-network/FunkyNetwork/Classes/ServerConfiguration.swift"; sourceTree = "<group>"; };
+		2970CB44227B098400FACCB7 /* NetworkCall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkCall.swift; path = "../../../../funky-network/FunkyNetwork/Classes/NetworkCall.swift"; sourceTree = "<group>"; };
+		2970CB45227B098400FACCB7 /* JsonNetworkCall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JsonNetworkCall.swift; path = "../../../../funky-network/FunkyNetwork/Classes/JsonNetworkCall.swift"; sourceTree = "<group>"; };
+		2970CB46227B098400FACCB7 /* StubbableNetworkCall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StubbableNetworkCall.swift; path = "../../../../funky-network/FunkyNetwork/Classes/StubbableNetworkCall.swift"; sourceTree = "<group>"; };
+		2970CB47227B098400FACCB7 /* JsonDataHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JsonDataHandler.swift; path = "../../../../funky-network/FunkyNetwork/Classes/JsonDataHandler.swift"; sourceTree = "<group>"; };
+		2970CB48227B098400FACCB7 /* StubHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StubHolder.swift; path = "../../../../funky-network/FunkyNetwork/Classes/StubHolder.swift"; sourceTree = "<group>"; };
+		2970CB49227B098400FACCB7 /* NetworkErrorHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkErrorHandler.swift; path = "../../../../funky-network/FunkyNetwork/Classes/NetworkErrorHandler.swift"; sourceTree = "<group>"; };
 		2974BD9A208E103B00EC1A25 /* APIPurchased.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIPurchased.swift; sourceTree = "<group>"; };
 		2974BD9C208E120200EC1A25 /* APIOwnedCustomization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIOwnedCustomization.swift; sourceTree = "<group>"; };
 		2974BD9E208E15FD00EC1A25 /* APISubscriptionPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISubscriptionPlan.swift; sourceTree = "<group>"; };
@@ -630,6 +642,13 @@
 		292DEE46204D9D9E0086D5F7 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				2970CB47227B098400FACCB7 /* JsonDataHandler.swift */,
+				2970CB45227B098400FACCB7 /* JsonNetworkCall.swift */,
+				2970CB44227B098400FACCB7 /* NetworkCall.swift */,
+				2970CB49227B098400FACCB7 /* NetworkErrorHandler.swift */,
+				2970CB43227B098300FACCB7 /* ServerConfiguration.swift */,
+				2970CB46227B098400FACCB7 /* StubbableNetworkCall.swift */,
+				2970CB48227B098400FACCB7 /* StubHolder.swift */,
 				292DEE8E204F49D50086D5F7 /* AuthenticatedCall.swift */,
 				29323E22205099FF00AC6D6F /* HabiticaResponseCall.swift */,
 				292DEE92204F4A430086D5F7 /* ResponseArrayCall.swift */,
@@ -812,7 +831,6 @@
 				291E95AC20986CDE006EE585 /* DateEncodingStrategy-Extension.swift */,
 				29323E2C2051B43100AC6D6F /* DebugOutputHandler.swift */,
 				29DBFEFE20CE6D7F00DF9CF2 /* Decoding-Extensions.swift */,
-				29323E262051659C00AC6D6F /* ErrorHandler.swift */,
 				290C3043206D44580066AF5B /* Group */,
 				29B586F5204D92CF00301955 /* Habitica_API_Client.h */,
 				292DEE90204F4A0F0086D5F7 /* HabiticaServerConfig.swift */,
@@ -994,26 +1012,22 @@
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
 				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
 				"${BUILT_PRODUCTS_DIR}/iOSSnapshotTestCase/FBSnapshotTestCase.framework",
-				"${BUILT_PRODUCTS_DIR}/FunkyNetwork/FunkyNetwork.framework",
 				"${BUILT_PRODUCTS_DIR}/Keys/Keys.framework",
 				"${BUILT_PRODUCTS_DIR}/OHHTTPStubs/OHHTTPStubs.framework",
 				"${BUILT_PRODUCTS_DIR}/Prelude/Prelude.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveSwift/ReactiveSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSnapshotTestCase.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FunkyNetwork.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Keys.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OHHTTPStubs.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Prelude.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1074,13 +1088,14 @@
 				295E9DE220B31BE400D58D45 /* UpdateTagCall.swift in Sources */,
 				29323E3B205212FA00AC6D6F /* APIProfile.swift in Sources */,
 				290C302E206BD2020066AF5B /* UseSkillCall.swift in Sources */,
-				29323E272051659C00AC6D6F /* ErrorHandler.swift in Sources */,
 				291448A0208A34D100F3A6B5 /* APICustomizationSet.swift in Sources */,
 				290B6275207BA805007287C4 /* UpdatePasswordCall.swift in Sources */,
 				29027995205836A8006DACB9 /* RetrieveWorldStateCall.swift in Sources */,
 				292F965B206E2AE300804151 /* RetrieveChatCall.swift in Sources */,
+				2970CB4C227B098400FACCB7 /* JsonNetworkCall.swift in Sources */,
 				29323E4720521B5000AC6D6F /* APIContributor.swift in Sources */,
 				290C300F206A779E0066AF5B /* DeleteTaskCall.swift in Sources */,
+				2970CB4D227B098400FACCB7 /* StubbableNetworkCall.swift in Sources */,
 				291E1A22209B701D00BA1FFB /* AcceptQuestInvitationCall.swift in Sources */,
 				295E9DCA20B2DFB700D58D45 /* PurchaseHourglassItemCall.swift in Sources */,
 				290B6295207E3E6C007287C4 /* LeaveGroupCall.swift in Sources */,
@@ -1104,12 +1119,14 @@
 				2974BD9D208E120200EC1A25 /* APIOwnedCustomization.swift in Sources */,
 				29A6B870206940F80086B2A6 /* CreateTaskCall.swift in Sources */,
 				29323E552052F7C400AC6D6F /* APIOutfit.swift in Sources */,
+				2970CB50227B098400FACCB7 /* NetworkErrorHandler.swift in Sources */,
 				292F96742072277D00804151 /* APIChatMessageReaction.swift in Sources */,
 				2974BD9B208E103B00EC1A25 /* APIPurchased.swift in Sources */,
 				29323E2D2051B43100AC6D6F /* DebugOutputHandler.swift in Sources */,
 				292DEE8F204F49D50086D5F7 /* AuthenticatedCall.swift in Sources */,
 				299FB28A2084988500422522 /* APIMount.swift in Sources */,
 				295E9DDC20B3060200D58D45 /* PurchaseGemsCall.swift in Sources */,
+				2970CB4E227B098400FACCB7 /* JsonDataHandler.swift in Sources */,
 				292DEE93204F4A430086D5F7 /* ResponseArrayCall.swift in Sources */,
 				292F966A206E4FD100804151 /* PostChatMessageCall.swift in Sources */,
 				292726A620B70290009DD08A /* RetrieveChallengeCall.swift in Sources */,
@@ -1127,6 +1144,7 @@
 				2927269620B6F316009DD08A /* RetrieveMaintenanceInfoCall.swift in Sources */,
 				292F9664206E4F5500804151 /* LikeChatMessageCall.swift in Sources */,
 				29B478BB20C0360E00B6123F /* UpdateDayStartTimeCall.swift in Sources */,
+				2970CB4B227B098400FACCB7 /* NetworkCall.swift in Sources */,
 				295E9DDA20B2FBC000D58D45 /* CreateTasksCall.swift in Sources */,
 				29990DC820E65D16001ADD8B /* APITaskResponseDrop.swift in Sources */,
 				295D42FC20936D4300948E7E /* SelectClassCall.swift in Sources */,
@@ -1176,6 +1194,7 @@
 				29DBFEFF20CE6D7F00DF9CF2 /* Decoding-Extensions.swift in Sources */,
 				29990DBA20E51F54001ADD8B /* APIPushDevice.swift in Sources */,
 				29323E39205212E400AC6D6F /* APIPreferences.swift in Sources */,
+				2970CB4A227B098400FACCB7 /* ServerConfiguration.swift in Sources */,
 				29990DB420E4EB3F001ADD8B /* RetrieveInboxMessagesCall.swift in Sources */,
 				290B627F207BAA23007287C4 /* SleepCall.swift in Sources */,
 				290B6265207B978F007287C4 /* APIAuthentication.swift in Sources */,
@@ -1183,6 +1202,7 @@
 				290A1D96223FEEEC004E32A2 /* APIMemberItems.swift in Sources */,
 				292726A220B6FFE3009DD08A /* APIChallenge.swift in Sources */,
 				290B623D207267AA007287C4 /* RetrieveGroupsCall.swift in Sources */,
+				2970CB4F227B098400FACCB7 /* StubHolder.swift in Sources */,
 				29990DCA20E65D38001ADD8B /* APITaskResponseTemp.swift in Sources */,
 				292726A420B6FFF5009DD08A /* APIChallengeCategory.swift in Sources */,
 				2902797920580EFD006DACB9 /* APIBuff.swift in Sources */,
@@ -1389,13 +1409,13 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Habitica API Client/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.habitica.Habitica-API-Client";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1415,12 +1435,12 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Habitica API Client/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.habitica.Habitica-API-Client";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -1436,7 +1456,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.habitica.Habitica-API-ClientTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1452,7 +1472,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.habitica.Habitica-API-ClientTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

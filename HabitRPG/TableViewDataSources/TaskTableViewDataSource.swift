@@ -9,7 +9,6 @@
 import UIKit
 import Habitica_Models
 import ReactiveSwift
-import Result
 
 @objc
 public protocol TaskTableViewDataSourceProtocol {
@@ -130,7 +129,7 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
         return true
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             if let task = self.item(at: indexPath) {
                 repository.deleteTask(task).observeCompleted {}

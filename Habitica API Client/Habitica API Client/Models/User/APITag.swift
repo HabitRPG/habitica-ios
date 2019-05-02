@@ -9,10 +9,10 @@
 import Foundation
 import Habitica_Models
 
-class APITag: TagProtocol, Codable {
-    var id: String?
-    var text: String?
-    var order: Int = 0
+public class APITag: TagProtocol, Codable {
+    public var id: String?
+    public var text: String?
+    public var order: Int = 0
     
     enum CodingKeys: String, CodingKey {
         case id

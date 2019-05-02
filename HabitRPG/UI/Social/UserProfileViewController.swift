@@ -10,7 +10,6 @@ import Foundation
 import Habitica_Models
 import ReactiveSwift
 import Down
-import Result
 
 class UserProfileViewController: HRPGBaseViewController {
     
@@ -345,7 +344,7 @@ class UserProfileViewController: HRPGBaseViewController {
         perceptionLabel?.text = String(perception)
     }
     
-    private func fetchGearStats(member: MemberProtocol) -> SignalProducer<(MemberProtocol, [GearProtocol]), NoError> {
+    private func fetchGearStats(member: MemberProtocol) -> SignalProducer<(MemberProtocol, [GearProtocol]), Never> {
         var keys = [String]()
         if let outfit = member.items?.gear?.equipped {
             keys.append(outfit.armor ?? "")
@@ -360,11 +359,11 @@ class UserProfileViewController: HRPGBaseViewController {
         
         let gearProducer = inventoryRepository.getGear(predicate: NSPredicate(format: "key in %@", keys)).map({ gear in
             return gear.value
-        }).flatMapError({ (_) -> SignalProducer<[GearProtocol], NoError> in
+        }).flatMapError({ (_) -> SignalProducer<[GearProtocol], Never> in
             return SignalProducer.empty
         })
         
-        return gearProducer.withLatest(from: SignalProducer<MemberProtocol, NoError>(value: member)).map({ (gear, user) in
+        return gearProducer.withLatest(from: SignalProducer<MemberProtocol, Never>(value: member)).map({ (gear, user) in
             return (user, gear)
         })
     }

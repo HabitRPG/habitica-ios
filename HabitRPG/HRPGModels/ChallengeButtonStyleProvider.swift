@@ -8,11 +8,10 @@
 
 import UIKit
 import ReactiveSwift
-import Result
 import Habitica_Models
 
 protocol ChallengeButtonStyleProvider: HRPGButtonAttributeProvider, HRPGButtonModelInputs {
-    var challengeUpdatedSignal: Signal<Bool, NoError> { get }
+    var challengeUpdatedSignal: Signal<Bool, Never> { get }
 }
 
 class JoinLeaveButtonAttributeProvider: ChallengeButtonStyleProvider {
@@ -22,17 +21,17 @@ class JoinLeaveButtonAttributeProvider: ChallengeButtonStyleProvider {
     let challengeProperty = MutableProperty<ChallengeProtocol?>(nil)
     let challengeMembershipProperty = MutableProperty<ChallengeMembershipProtocol?>(nil)
     
-    let buttonStateSignal: Signal<ChallengeButtonState, NoError>
+    let buttonStateSignal: Signal<ChallengeButtonState, Never>
     let buttonPressedProperty = MutableProperty(())
     
-    let challengeUpdatedSignal: Signal<Bool, NoError>
+    let challengeUpdatedSignal: Signal<Bool, Never>
     let challengeUpdatedProperty = MutableProperty(())
     
     let promptProperty = MutableProperty<UIViewController?>(nil)
     
-    let bgColorSignal: Signal<UIColor, NoError>
-    let titleSignal: Signal<String, NoError>
-    let enabledSignal: Signal<Bool, NoError>
+    let bgColorSignal: Signal<UIColor, Never>
+    let titleSignal: Signal<String, Never>
+    let enabledSignal: Signal<Bool, Never>
     
     init(_ challenge: ChallengeProtocol?) {
         challengeUpdatedSignal = challengeUpdatedProperty.signal.map { _ in true }
@@ -109,12 +108,12 @@ class JoinLeaveButtonAttributeProvider: ChallengeButtonStyleProvider {
 class PublishButtonAttributeProvider: HRPGButtonAttributeProvider, HRPGButtonModelInputs {
     let challengeProperty: MutableProperty<ChallengeProtocol?> = MutableProperty<ChallengeProtocol?>(nil)
     
-    let buttonStateSignal: Signal<ChallengeButtonState, NoError>
+    let buttonStateSignal: Signal<ChallengeButtonState, Never>
     let buttonPressedProperty = MutableProperty(())
     
-    let bgColorSignal: Signal<UIColor, NoError>
-    let titleSignal: Signal<String, NoError>
-    let enabledSignal: Signal<Bool, NoError>
+    let bgColorSignal: Signal<UIColor, Never>
+    let titleSignal: Signal<String, Never>
+    let enabledSignal: Signal<Bool, Never>
     
     init(_ challenge: ChallengeProtocol?) {
         let publishableChallengeSignal = challengeProperty.signal
@@ -160,12 +159,12 @@ class PublishButtonAttributeProvider: HRPGButtonAttributeProvider, HRPGButtonMod
 class ParticipantsButtonAttributeProvider: HRPGButtonAttributeProvider, HRPGButtonModelInputs {
     let challengeProperty: MutableProperty<ChallengeProtocol?> = MutableProperty<ChallengeProtocol?>(nil)
     
-    let buttonStateSignal: Signal<ChallengeButtonState, NoError>
+    let buttonStateSignal: Signal<ChallengeButtonState, Never>
     let buttonPressedProperty = MutableProperty(())
     
-    let bgColorSignal: Signal<UIColor, NoError>
-    let titleSignal: Signal<String, NoError>
-    let enabledSignal: Signal<Bool, NoError>
+    let bgColorSignal: Signal<UIColor, Never>
+    let titleSignal: Signal<String, Never>
+    let enabledSignal: Signal<Bool, Never>
     
     init(_ challenge: ChallengeProtocol?) {
         let participantsViewableSignal = challengeProperty.signal
@@ -200,12 +199,12 @@ class ParticipantsButtonAttributeProvider: HRPGButtonAttributeProvider, HRPGButt
 class EndChallengeButtonAttributeProvider: HRPGButtonAttributeProvider, HRPGButtonModelInputs {
     let challengeProperty: MutableProperty<ChallengeProtocol?> = MutableProperty<ChallengeProtocol?>(nil)
     
-    let buttonStateSignal: Signal<ChallengeButtonState, NoError>
+    let buttonStateSignal: Signal<ChallengeButtonState, Never>
     let buttonPressedProperty = MutableProperty(())
     
-    let bgColorSignal: Signal<UIColor, NoError>
-    let titleSignal: Signal<String, NoError>
-    let enabledSignal: Signal<Bool, NoError>
+    let bgColorSignal: Signal<UIColor, Never>
+    let titleSignal: Signal<String, Never>
+    let enabledSignal: Signal<Bool, Never>
     
     init(_ challenge: ChallengeProtocol?) {
         let endableSignal = challengeProperty.signal

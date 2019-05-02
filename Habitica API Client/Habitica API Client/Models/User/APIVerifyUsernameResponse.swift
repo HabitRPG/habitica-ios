@@ -9,7 +9,7 @@
 import Foundation
 import Habitica_Models
 
-class APIVerifyUsernameResponse: Decodable, VerifyUsernameResponse {
-    var isUsable: Bool = false
-    var issues: [String]? = []
+public class APIVerifyUsernameResponse: Decodable, VerifyUsernameResponse {
+    public var isUsable: Bool = false
+    public var issues: [String]? = []
 }

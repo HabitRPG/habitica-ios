@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import FunkyNetwork
 
 public class RetrieveMaintenanceInfoCall: JsonNetworkCall {
     public init() {

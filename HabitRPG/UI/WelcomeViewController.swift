@@ -10,7 +10,6 @@ import Foundation
 import ReactiveSwift
 import ReactiveCocoa
 import Habitica_Models
-import Result
 import Habitica_Database
 
 class WelcomeViewController: UIViewController, TypingTextViewController, UITextFieldDelegate {
@@ -59,7 +58,7 @@ class WelcomeViewController: UIViewController, TypingTextViewController, UITextF
         
         usernameProperty.producer.throttle(2, on: QueueScheduler.main)
             .skipNil()
-            .flatMap(.latest) {[weak self] text -> SignalProducer<VerifyUsernameResponse?, NoError> in
+            .flatMap(.latest) {[weak self] text -> SignalProducer<VerifyUsernameResponse?, Never> in
                 return self?.userRepository.verifyUsername(text).producer ?? SignalProducer.empty
             }
             .skipNil()

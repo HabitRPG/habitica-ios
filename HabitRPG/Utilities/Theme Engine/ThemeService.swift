@@ -34,9 +34,9 @@ public class ThemeService: NSObject {
     }
     
     private func applyTheme() {
-        UINavigationBar.appearance().tintColor = theme.tintColor
-            UINavigationBar.appearance().titleTextAttributes = [
-                NSAttributedString.Key.foregroundColor: theme.primaryTextColor
+        //UINavigationBar.appearance().tintColor = theme.tintColor
+        UINavigationBar.appearance().titleTextAttributes = [
+            NSAttributedString.Key.foregroundColor: theme.primaryTextColor
         ]
         UINavigationBar.appearance().backgroundColor = theme.contentBackgroundColor
         UINavigationBar.appearance().barTintColor = theme.contentBackgroundColor

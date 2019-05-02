@@ -7,12 +7,10 @@
 //
 
 import Foundation
-import FunkyNetwork
 import ReactiveSwift
-import Result
 
-class HabiticaResponseCall<T: Any, C: Decodable>: AuthenticatedCall {
-    public lazy var habiticaResponseSignal: Signal<HabiticaResponse<C>?, NoError> = jsonSignal.map({ json in
+public class HabiticaResponseCall<T: Any, C: Decodable>: AuthenticatedCall {
+    public lazy var habiticaResponseSignal: Signal<HabiticaResponse<C>?, Never> = jsonSignal.map({ json in
         return json as? [String: Any]
     })
         .skipNil()

@@ -11,7 +11,6 @@ import Habitica_Database
 import Habitica_Models
 import Habitica_API_Client
 import ReactiveSwift
-import Result
 
 class CustomizationRepository: BaseRepository<CustomizationLocalRepository> {
     
@@ -27,7 +26,7 @@ class CustomizationRepository: BaseRepository<CustomizationLocalRepository> {
         })
     }
     
-    public func unlock(customization: CustomizationProtocol, value: Float) -> Signal<UserProtocol?, NoError> {
+    public func unlock(customization: CustomizationProtocol, value: Float) -> Signal<UserProtocol?, Never> {
         let call = UnlockCustomizationsCall(customizations: [customization])
         call.fire()
         return call.objectSignal.on(value: {[weak self] newUser in
@@ -38,7 +37,7 @@ class CustomizationRepository: BaseRepository<CustomizationLocalRepository> {
         })
     }
     
-    public func unlock(customizationSet: CustomizationSetProtocol, value: Float) -> Signal<UserProtocol?, NoError> {
+    public func unlock(customizationSet: CustomizationSetProtocol, value: Float) -> Signal<UserProtocol?, Never> {
         let call = UnlockCustomizationsCall(customizations: customizationSet.setItems ?? [])
         call.fire()
         return call.objectSignal.on(value: {[weak self]newUser in
@@ -49,7 +48,7 @@ class CustomizationRepository: BaseRepository<CustomizationLocalRepository> {
         })
     }
     
-    public func unlock(gear: GearProtocol, value: Int) -> Signal<UserProtocol?, NoError> {
+    public func unlock(gear: GearProtocol, value: Int) -> Signal<UserProtocol?, Never> {
         let call = UnlockGearCall(gear: [gear])
         call.fire()
         return call.objectSignal.on(value: {[weak self]newUser in

@@ -1,14 +1,14 @@
 import XCTest
 import ReactiveCocoa
 import ReactiveSwift
-import Result
+
 /**
  A `TestObserver` is a wrapper around an `Observer` that saves all events to an internal array so that
  assertions can be made on a signal's behavior. To use, just create an instance of `TestObserver` that
  matches the type of signal/producer you are testing, and observer/start your signal by feeding it the
  wrapped observer. For example,
  ```
- let test = TestObserver<Int, NoError>()
+ let test = TestObserver<Int, Never>()
  mySignal.observer(test.observer)
  // ... later ...
  test.assertValues([1, 2, 3])

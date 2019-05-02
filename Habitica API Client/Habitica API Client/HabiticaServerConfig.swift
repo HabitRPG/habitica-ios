@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import FunkyNetwork
 
 public class HabiticaServerConfig {
     public static let production = ServerConfiguration(scheme: "https", host: "habitica.com", apiRoute: "api/v4")

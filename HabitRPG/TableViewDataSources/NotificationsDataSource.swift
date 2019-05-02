@@ -9,7 +9,6 @@
 import Foundation
 import Habitica_Models
 import ReactiveSwift
-import Result
 
 class NotificationsDataSource: BaseReactiveTableViewDataSource<NotificationProtocol> {
     

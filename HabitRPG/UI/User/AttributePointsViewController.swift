@@ -10,7 +10,6 @@ import UIKit
 import PopupDialog
 import Habitica_Models
 import ReactiveSwift
-import Result
 
 class AttributePointsViewController: HRPGUIViewController, Themeable {
     
@@ -240,7 +239,7 @@ class AttributePointsViewController: HRPGUIViewController, Themeable {
         perceptionStatsView.equipmentValue = stats.gearWithBonusPerception
     }
     
-    private func fetchGearStats(user: UserProtocol) -> SignalProducer<(UserProtocol, [GearProtocol]), NoError> {
+    private func fetchGearStats(user: UserProtocol) -> SignalProducer<(UserProtocol, [GearProtocol]), Never> {
         var keys = [String]()
         if let outfit = user.items?.gear?.equipped {
             keys.append(outfit.armor ?? "")
@@ -255,11 +254,11 @@ class AttributePointsViewController: HRPGUIViewController, Themeable {
         
         let gearProducer = inventoryRepository.getGear(predicate: NSPredicate(format: "key in %@", keys)).map({ gear in
             return gear.value
-        }).flatMapError({ (_) -> SignalProducer<[GearProtocol], NoError> in
+        }).flatMapError({ (_) -> SignalProducer<[GearProtocol], Never> in
             return SignalProducer.empty
         })
         
-        return gearProducer.withLatest(from: SignalProducer<UserProtocol, NoError>(value: user)).map({ (gear, user) in
+        return gearProducer.withLatest(from: SignalProducer<UserProtocol, Never>(value: user)).map({ (gear, user) in
             return (user, gear)
         })
     }

@@ -9,7 +9,6 @@
 import UIKit
 import Habitica_Models
 import ReactiveSwift
-import Result
 
 @objc
 protocol ShopCollectionViewDataSourceProtocol: UICollectionViewDelegateFlowLayout {
@@ -165,11 +164,11 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
     
     func retrieveShopInventory(_ completed: (() -> Void)?) {
         inventoryRepository.retrieveShopInventory(identifier: shopIdentifier)
-            .flatMap(.latest, {[weak self] (shop) -> Signal<ShopProtocol?, NoError> in
+            .flatMap(.latest, {[weak self] (shop) -> Signal<ShopProtocol?, Never> in
                 if shop?.identifier == Constants.MarketKey {
                     return self?.inventoryRepository.retrieveShopInventory(identifier: Constants.GearMarketKey) ?? Signal.empty
                 } else {
-                    let signal = Signal<ShopProtocol?, NoError>.pipe()
+                    let signal = Signal<ShopProtocol?, Never>.pipe()
                     signal.input.send(value: shop)
                     return signal.output
                 }

@@ -9,7 +9,6 @@
 import Foundation
 @testable import Habitica
 import Habitica_Models
-import Result
 import Nimble
 
 class TaskRepeatablesSummaryInteractorTests: HabiticaTests {

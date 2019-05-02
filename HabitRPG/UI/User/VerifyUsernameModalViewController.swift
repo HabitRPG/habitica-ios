@@ -10,7 +10,7 @@ import UIKit
 import ReactiveSwift
 import ReactiveCocoa
 import Habitica_Models
-import Result
+
 import Habitica_Database
 
 class VerifyUsernameModalViewController: UIViewController {
@@ -69,7 +69,7 @@ class VerifyUsernameModalViewController: UIViewController {
         }).start()
     }
     
-    private func displayNameChangeProducer() -> SignalProducer<Bool, NoError> {
+    private func displayNameChangeProducer() -> SignalProducer<Bool, Never> {
         return displaynameProperty.producer.map { name -> Bool in
             return name?.count ?? 0 > 1 && name?.count ?? 0 < 30
             }.on(value: {[weak self] isUsable in
@@ -81,10 +81,10 @@ class VerifyUsernameModalViewController: UIViewController {
             })
     }
     
-    private func usernameChangeProducer() -> SignalProducer<VerifyUsernameResponse, NoError> {
+    private func usernameChangeProducer() -> SignalProducer<VerifyUsernameResponse, Never> {
         return usernameProperty.producer.throttle(2, on: QueueScheduler.main)
             .skipNil()
-            .flatMap(.latest) {[weak self] text -> SignalProducer<VerifyUsernameResponse?, NoError> in
+            .flatMap(.latest) {[weak self] text -> SignalProducer<VerifyUsernameResponse?, Never> in
                 return self?.userRepository.verifyUsername(text).producer ?? SignalProducer.empty
             }
             .skipNil()

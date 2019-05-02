@@ -6,11 +6,10 @@
 //  Copyright © 2018 HabitRPG Inc. All rights reserved.
 //
 
-import UIKit
-import FunkyNetwork
+import Foundation
 import ReactiveSwift
-import Result
 import Keys
+
 enum HTTPMethod: String {
     case GET
     case POST
@@ -24,7 +23,7 @@ public class AuthenticatedCall: JsonNetworkCall {
     fileprivate static let clientHeader = "x-client"
     fileprivate static let stagingKey = ""
     
-    public lazy var errorJsonSignal: Signal<[String: Any], NoError> = self.errorDataSignal
+    public lazy var errorJsonSignal: Signal<[String: Any], Never> = self.errorDataSignal
         .map(JsonDataHandler.serialize).map({ json in
             return json as? Dictionary<String, Any>
         }).skipNil()
@@ -92,7 +91,7 @@ public class AuthenticatedCall: JsonNetworkCall {
     
     func setupErrorHandler() {
         let errorHandler = customErrorHandler ?? AuthenticatedCall.errorHandler
-        errorHandler?.observe(signal: Signal<NSError, NoError>.merge([serverErrorSignal, errorSignal]))
+        errorHandler?.observe(signal: Signal<NSError, Never>.merge([serverErrorSignal, errorSignal]))
     }
     
 }

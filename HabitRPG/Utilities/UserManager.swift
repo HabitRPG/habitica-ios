@@ -9,7 +9,6 @@
 import Foundation
 import Habitica_Models
 import ReactiveSwift
-import Result
 import Habitica_Database
 import PopupDialog
 import Crashlytics
@@ -47,7 +46,7 @@ class UserManager: NSObject {
                         return tasks.filter({ task in
                             return task.isDue && !task.completed
                         })
-                    }).withLatest(from: SignalProducer<UserProtocol, NoError>(value: user)) ?? Signal<([TaskProtocol], UserProtocol), NoError>.empty
+                    }).withLatest(from: SignalProducer<UserProtocol, Never>(value: user)) ?? Signal<([TaskProtocol], UserProtocol), Never>.empty
             }).on(value: { (tasks, user) in
                 var uncompletedTaskCount = 0
                 for task in tasks {

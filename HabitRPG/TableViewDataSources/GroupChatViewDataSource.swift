@@ -9,7 +9,6 @@
 import Foundation
 import Habitica_Models
 import ReactiveSwift
-import Result
 import KLCPopup
 
 class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtocol> {

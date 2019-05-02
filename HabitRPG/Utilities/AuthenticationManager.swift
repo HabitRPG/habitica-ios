@@ -8,7 +8,6 @@
 
 import Foundation
 import ReactiveSwift
-import Result
 import KeychainAccess
 import Crashlytics
 import Amplitude_iOS

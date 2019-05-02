@@ -10,7 +10,6 @@ import Foundation
 import Habitica_Models
 import ReactiveSwift
 import RealmSwift
-import Result
 
 public class TaskLocalRepository: BaseLocalRepository {
     

@@ -8,16 +8,15 @@
 
 import UIKit
 import ReactiveSwift
-import Result
 
 protocol HRPGButtonModelInputs: class {
     func hrpgButtonPressed()
 }
 
 protocol HRPGButtonAttributeProvider: class {
-    var bgColorSignal: Signal<UIColor, NoError> { get }
-    var titleSignal: Signal<String, NoError> { get }
-    var enabledSignal: Signal<Bool, NoError> { get }
+    var bgColorSignal: Signal<UIColor, Never> { get }
+    var titleSignal: Signal<String, Never> { get }
+    var enabledSignal: Signal<Bool, Never> { get }
     
     func triggerStyle()
 }

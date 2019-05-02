@@ -11,7 +11,6 @@ import SlackTextViewController
 import Down
 import Habitica_Models
 import ReactiveSwift
-import Result
 
 class GroupChatViewController: SLKTextViewController {
     
@@ -33,9 +32,9 @@ class GroupChatViewController: SLKTextViewController {
     private let userRepository = UserRepository()
     private let configRepository = ConfigRepository()
     private let disposable = ScopedDisposable(CompositeDisposable())
-    private var autocompleteUsernamesObserver: Signal<String, NoError>.Observer?
+    private var autocompleteUsernamesObserver: Signal<String, Never>.Observer?
     private var autocompleteUsernames: [MemberProtocol] = []
-    private var autocompleteEmojisObserver: Signal<String, NoError>.Observer?
+    private var autocompleteEmojisObserver: Signal<String, Never>.Observer?
     private var autocompleteEmojis: [String] = []
     
     override func viewDidLoad() {
@@ -72,7 +71,7 @@ class GroupChatViewController: SLKTextViewController {
         }).start())
         
         self.registerPrefixes(forAutoCompletion: ["@", ":"])
-        let (signal, observer) = Signal<String, NoError>.pipe()
+        let (signal, observer) = Signal<String, Never>.pipe()
         autocompleteUsernamesObserver = observer
         
         if configRepository.bool(variable: .enableUsernameAutocomplete) {
@@ -103,7 +102,7 @@ class GroupChatViewController: SLKTextViewController {
                 }))
         }
         
-        let (emojiSignal, emojiObserver) = Signal<String, NoError>.pipe()
+        let (emojiSignal, emojiObserver) = Signal<String, Never>.pipe()
         autocompleteEmojisObserver = emojiObserver
         disposable.inner.add(emojiSignal
             .filter { emoji -> Bool in return !emoji.isEmpty }

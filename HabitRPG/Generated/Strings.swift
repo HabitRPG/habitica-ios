@@ -824,7 +824,7 @@ public enum L10n {
     public static var guildMembers: String { return L10n.tr("Mainstrings", "guilds.guild_members") }
     /// Invite to Guild
     public static var inviteToGuild: String { return L10n.tr("Mainstrings", "guilds.invite_to_guild") }
-    /// Join Guilds
+    /// Join Guild
     public static var joinGuild: String { return L10n.tr("Mainstrings", "guilds.join_guild") }
     /// Keep challenges
     public static var keepChallenges: String { return L10n.tr("Mainstrings", "guilds.keep_challenges") }

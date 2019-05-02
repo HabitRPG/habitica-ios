@@ -9,7 +9,6 @@
 import Foundation
 import Habitica_Database
 import ReactiveSwift
-import Result
 import RealmSwift
 
 class BaseRepository<T: BaseLocalRepository>: NSObject {
@@ -19,7 +18,7 @@ class BaseRepository<T: BaseLocalRepository>: NSObject {
     var currentUserId: String? {
         return AuthenticationManager.shared.currentUserId
     }
-    var currentUserIDProducer: SignalProducer<String?, NoError> {
+    var currentUserIDProducer: SignalProducer<String?, Never> {
         return AuthenticationManager.shared.currentUserIDProperty.producer
     }
     

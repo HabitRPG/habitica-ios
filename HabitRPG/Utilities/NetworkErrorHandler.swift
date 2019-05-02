@@ -8,7 +8,6 @@
 
 import Foundation
 import ReactiveSwift
-import Result
 import Habitica_API_Client
 
 public struct DefaultServerUnavailableErrorMessage: ErrorMessage {

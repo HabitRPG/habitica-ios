@@ -10,7 +10,6 @@ import Foundation
 import ReactiveSwift
 import Habitica_Database
 import Habitica_Models
-import Result
 
 @objc public protocol DataSourceEmptyDelegate: class {
     func dataSourceHasItems()
@@ -155,7 +154,7 @@ class BaseReactiveTableViewDataSource<MODEL>: BaseReactiveDataSource<MODEL>, UIT
         return UITableViewCell()
     }
     
-    private func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    internal func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     }
 }
 

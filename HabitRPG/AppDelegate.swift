@@ -16,7 +16,6 @@ import Habitica_API_Client
 import Habitica_Models
 import RealmSwift
 import ReactiveSwift
-import Result
 import Firebase
 import SwiftyStoreKit
 import StoreKit
@@ -241,7 +240,7 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
                 }
                 return false
             }
-            .flatMap(.latest) { (_) -> Signal<Any, NoError> in
+            .flatMap(.latest) { (_) -> Signal<Any, Never> in
                 let call = RetrieveDeprecationInfoCall()
                 call.fire()
                 return call.jsonSignal
@@ -284,7 +283,7 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
         let currentBuildNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String
         if lastContentFetch == nil || (lastContentFetch?.timeIntervalSinceNow ?? 0) < 1 || lastContentFetchVersion != currentBuildNumber {
             contentRepository.retrieveContent()
-                .flatMap(.latest, {[weak self] (_) -> Signal<WorldStateProtocol?, NoError> in
+                .flatMap(.latest, {[weak self] (_) -> Signal<WorldStateProtocol?, Never> in
                     return self?.contentRepository.retrieveWorldState() ?? Signal.empty
                 })
                 .observeCompleted {

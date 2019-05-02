@@ -9,7 +9,6 @@
 import UIKit
 import Habitica_Models
 import ReactiveSwift
-import Result
 
 class BulkStatsAllocationViewController: UIViewController {
     private let disposable = ScopedDisposable(CompositeDisposable())

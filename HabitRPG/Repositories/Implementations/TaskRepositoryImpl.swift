@@ -11,11 +11,10 @@ import ReactiveSwift
 import Habitica_Models
 import Habitica_API_Client
 import Habitica_Database
-import Result
 
 class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtocol {
     
-    func retrieveTasks(dueOnDay: Date? = nil) -> Signal<[TaskProtocol]?, NoError> {
+    func retrieveTasks(dueOnDay: Date? = nil) -> Signal<[TaskProtocol]?, Never> {
         let call = RetrieveTasksCall(dueOnDay: dueOnDay)
         call.fire()
         return call.arraySignal.on(value: {[weak self] tasks in
@@ -25,7 +24,7 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
         })
     }
     
-    func retrieveCompletedTodos() -> Signal<[TaskProtocol]?, NoError> {
+    func retrieveCompletedTodos() -> Signal<[TaskProtocol]?, Never> {
         let call = RetrieveTasksCall(type: "completedTodos")
         call.fire()
         return call.arraySignal.on(value: {[weak self] tasks in
@@ -35,7 +34,7 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
         })
     }
     
-    func clearCompletedTodos() -> Signal<[TaskProtocol]?, NoError> {
+    func clearCompletedTodos() -> Signal<[TaskProtocol]?, Never> {
         let call = ClearCompletedTodosCall()
         call.fire()
         return call.arraySignal
@@ -75,7 +74,7 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
         localRepository.save(userID: self.currentUserId, task: task)
     }
     
-    func score(task: TaskProtocol, direction: TaskScoringDirection) -> Signal<TaskResponseProtocol?, NoError> {
+    func score(task: TaskProtocol, direction: TaskScoringDirection) -> Signal<TaskResponseProtocol?, Never> {
         let call = ScoreTaskCall(task: task, direction: direction)
         call.fire()
         return call.objectSignal.withLatest(from: localRepository.getUserStats(id: AuthenticationManager.shared.currentUserId ?? "")
@@ -120,7 +119,7 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
         })
     }
     
-    func score(checklistItem: ChecklistItemProtocol, task: TaskProtocol) -> Signal<TaskProtocol?, NoError> {
+    func score(checklistItem: ChecklistItemProtocol, task: TaskProtocol) -> Signal<TaskProtocol?, Never> {
         let call = ScoreChecklistItem(item: checklistItem, task: task)
         call.fire()
         return call.objectSignal.on(value: {[weak self] task in
@@ -154,7 +153,7 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
         return localRepository.getEditableTag(id: id)
     }
     
-    func createTask(_ task: TaskProtocol) -> Signal<TaskProtocol?, NoError> {
+    func createTask(_ task: TaskProtocol) -> Signal<TaskProtocol?, Never> {
         localRepository.save(userID: currentUserId, task: task)
         localRepository.setTaskSyncing(userID: currentUserId, task: task, isSyncing: true)
         let call = CreateTaskCall(task: task)
@@ -166,13 +165,13 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
         })
     }
     
-    func createTasks(_ tasks: [TaskProtocol]) -> Signal<[TaskProtocol]?, NoError> {
+    func createTasks(_ tasks: [TaskProtocol]) -> Signal<[TaskProtocol]?, Never> {
         let call = CreateTasksCall(tasks: tasks)
         call.fire()
         return call.arraySignal
     }
     
-    func updateTask(_ task: TaskProtocol) -> Signal<TaskProtocol?, NoError> {
+    func updateTask(_ task: TaskProtocol) -> Signal<TaskProtocol?, Never> {
         localRepository.save(userID: currentUserId, task: task)
         localRepository.setTaskSyncing(userID: currentUserId, task: task, isSyncing: true)
         let call = UpdateTaskCall(task: task)
@@ -188,7 +187,7 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
         })
     }
     
-    func syncTask(_ task: TaskProtocol) -> Signal<TaskProtocol?, NoError> {
+    func syncTask(_ task: TaskProtocol) -> Signal<TaskProtocol?, Never> {
         if task.isNewTask {
             return self.createTask(task)
         } else {
@@ -196,7 +195,7 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
         }
     }
     
-    func deleteTask(_ task: TaskProtocol) -> Signal<EmptyResponseProtocol?, NoError> {
+    func deleteTask(_ task: TaskProtocol) -> Signal<EmptyResponseProtocol?, Never> {
         if !task.isValid {
             return Signal.empty
         }
@@ -210,7 +209,7 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
         return call.objectSignal
     }
     
-    func createTag(_ tag: TagProtocol) -> Signal<TagProtocol?, NoError> {
+    func createTag(_ tag: TagProtocol) -> Signal<TagProtocol?, Never> {
         let call = CreateTagCall(tag: tag)
         call.fire()
         return call.objectSignal.on(value: {[weak self]returnedTag in
@@ -220,7 +219,7 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
         })
     }
     
-    func updateTag(_ tag: TagProtocol) -> Signal<TagProtocol?, NoError> {
+    func updateTag(_ tag: TagProtocol) -> Signal<TagProtocol?, Never> {
         let call = UpdateTagCall(tag: tag)
         call.fire()
         return call.objectSignal.on(value: {[weak self]returnedTag in
@@ -231,7 +230,7 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
         })
     }
     
-    func deleteTag(_ tag: TagProtocol) -> Signal<EmptyResponseProtocol?, NoError> {
+    func deleteTag(_ tag: TagProtocol) -> Signal<EmptyResponseProtocol?, Never> {
         let call = DeleteTagCall(tag: tag)
         call.fire()
         call.httpResponseSignal.observeValues {[weak self] (response) in
@@ -242,7 +241,7 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
         return call.objectSignal
     }
     
-    func moveTask(_ task: TaskProtocol, toPosition: Int) -> Signal<[String]?, NoError> {
+    func moveTask(_ task: TaskProtocol, toPosition: Int) -> Signal<[String]?, Never> {
         let call = MoveTaskCall(task: task, toPosition: toPosition)
         call.fire()
         return call.arraySignal.on(value: {[weak self] taskOrder in

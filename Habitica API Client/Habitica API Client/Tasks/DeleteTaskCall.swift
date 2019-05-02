@@ -8,7 +8,6 @@
 
 import Foundation
 import Habitica_Models
-import FunkyNetwork
 
 public class DeleteTaskCall: ResponseObjectCall<EmptyResponseProtocol, APIEmptyResponse> {
     public init(task: TaskProtocol, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "task.json")) {

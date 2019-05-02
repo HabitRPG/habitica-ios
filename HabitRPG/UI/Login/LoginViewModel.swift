@@ -8,7 +8,6 @@
 
 import ReactiveCocoa
 import ReactiveSwift
-import Result
 import AppAuth
 import Keys
 import FBSDKLoginKit
@@ -50,36 +49,36 @@ protocol  LoginViewModelInputs {
 
 protocol LoginViewModelOutputs {
 
-    var authTypeButtonTitle: Signal<String, NoError> { get }
-    var usernameFieldTitle: Signal<String, NoError> { get }
-    var loginButtonTitle: Signal<String, NoError> { get }
-    var isFormValid: Signal<Bool, NoError> { get }
+    var authTypeButtonTitle: Signal<String, Never> { get }
+    var usernameFieldTitle: Signal<String, Never> { get }
+    var loginButtonTitle: Signal<String, Never> { get }
+    var isFormValid: Signal<Bool, Never> { get }
 
-    var emailFieldVisibility: Signal<Bool, NoError> { get }
-    var passwordRepeatFieldVisibility: Signal<Bool, NoError> { get }
-    var passwordFieldReturnButtonIsDone: Signal<Bool, NoError> { get }
-    var passwordRepeatFieldReturnButtonIsDone: Signal<Bool, NoError> { get }
+    var emailFieldVisibility: Signal<Bool, Never> { get }
+    var passwordRepeatFieldVisibility: Signal<Bool, Never> { get }
+    var passwordFieldReturnButtonIsDone: Signal<Bool, Never> { get }
+    var passwordRepeatFieldReturnButtonIsDone: Signal<Bool, Never> { get }
 
-    var onePasswordButtonHidden: Signal<Bool, NoError> { get }
-    var onePasswordFindLogin: Signal<(), NoError> { get }
+    var onePasswordButtonHidden: Signal<Bool, Never> { get }
+    var onePasswordFindLogin: Signal<(), Never> { get }
 
-    var emailText: Signal<String, NoError> { get }
-    var usernameText: Signal<String, NoError> { get }
-    var passwordText: Signal<String, NoError> { get }
-    var passwordRepeatText: Signal<String, NoError> { get }
+    var emailText: Signal<String, Never> { get }
+    var usernameText: Signal<String, Never> { get }
+    var passwordText: Signal<String, Never> { get }
+    var passwordRepeatText: Signal<String, Never> { get }
 
-    var showError: Signal<String, NoError> { get }
-    var showNextViewController: Signal<String, NoError> { get }
+    var showError: Signal<String, Never> { get }
+    var showNextViewController: Signal<String, Never> { get }
     
-    var formVisibility: Signal<Bool, NoError> { get }
-    var beginButtonsVisibility: Signal<Bool, NoError> { get }
-    var backButtonVisibility: Signal<Bool, NoError> { get }
-    var backgroundScrolledToTop: Signal<Bool, NoError> { get }
+    var formVisibility: Signal<Bool, Never> { get }
+    var beginButtonsVisibility: Signal<Bool, Never> { get }
+    var backButtonVisibility: Signal<Bool, Never> { get }
+    var backgroundScrolledToTop: Signal<Bool, Never> { get }
 
-    var loadingIndicatorVisibility: Signal<Bool, NoError> { get }
+    var loadingIndicatorVisibility: Signal<Bool, Never> { get }
     
     var currentAuthType: LoginViewAuthType { get }
-    var arePasswordsSame: Signal<Bool, NoError> { get }
+    var arePasswordsSame: Signal<Bool, Never> { get }
 }
 
 protocol LoginViewModelType {
@@ -180,7 +179,7 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
         }
         self.onePasswordFindLogin = self.onePasswordTappedProperty.signal
 
-        let (showNextViewControllerSignal, showNextViewControllerObserver) = Signal<(), NoError>.pipe()
+        let (showNextViewControllerSignal, showNextViewControllerObserver) = Signal<(), Never>.pipe()
         self.showNextViewControllerObserver = showNextViewControllerObserver
         self.showNextViewController = Signal.merge(
             showNextViewControllerSignal,
@@ -195,7 +194,7 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
         })
         (self.showError, self.showErrorObserver) = Signal.pipe()
 
-        (self.loadingIndicatorVisibility, self.loadingIndicatorVisibilityObserver) = Signal<Bool, NoError>.pipe()
+        (self.loadingIndicatorVisibility, self.loadingIndicatorVisibilityObserver) = Signal<Bool, Never>.pipe()
         
         self.formVisibility = self.authTypeProperty.signal.map({ (authType) -> Bool in
             return authType != .none
@@ -365,12 +364,12 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
 
     private let facebookLoginButtonPressedProperty = MutableProperty(())
     func facebookLoginButtonPressed() {
-        let fbManager = FBSDKLoginManager()
-        fbManager.logIn(withReadPermissions: ["public_profile", "email"], from: viewController) { [weak self] (result, error) in
+        let fbManager = LoginManager()
+        fbManager.logIn(permissions: ["public_profile", "email"], from: viewController) { [weak self] (result, error) in
             if error != nil || result?.isCancelled == true {
                 // If there is an error or the user cancelled login
 
-            } else if let userId = result?.token.userID, let token = result?.token.tokenString {
+            } else if let userId = result?.token?.userID, let token = result?.token?.tokenString {
                 self?.userRepository.login(userID: userId, network: "facebook", accessToken: token).observeResult { (result) in
                     switch result {
                     case .success:
@@ -388,34 +387,34 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
         self.viewController = viewController
     }
 
-    internal var authTypeButtonTitle: Signal<String, NoError>
-    internal var loginButtonTitle: Signal<String, NoError>
-    internal var usernameFieldTitle: Signal<String, NoError>
-    internal var isFormValid: Signal<Bool, NoError>
-    internal var emailFieldVisibility: Signal<Bool, NoError>
-    internal var passwordRepeatFieldVisibility: Signal<Bool, NoError>
-    internal var passwordFieldReturnButtonIsDone: Signal<Bool, NoError>
-    internal var passwordRepeatFieldReturnButtonIsDone: Signal<Bool, NoError>
-    internal var onePasswordButtonHidden: Signal<Bool, NoError>
-    internal var showError: Signal<String, NoError>
-    internal var showNextViewController: Signal<String, NoError>
-    internal var loadingIndicatorVisibility: Signal<Bool, NoError>
-    internal var onePasswordFindLogin: Signal<(), NoError>
-    internal var arePasswordsSame: Signal<Bool, NoError>
+    internal var authTypeButtonTitle: Signal<String, Never>
+    internal var loginButtonTitle: Signal<String, Never>
+    internal var usernameFieldTitle: Signal<String, Never>
+    internal var isFormValid: Signal<Bool, Never>
+    internal var emailFieldVisibility: Signal<Bool, Never>
+    internal var passwordRepeatFieldVisibility: Signal<Bool, Never>
+    internal var passwordFieldReturnButtonIsDone: Signal<Bool, Never>
+    internal var passwordRepeatFieldReturnButtonIsDone: Signal<Bool, Never>
+    internal var onePasswordButtonHidden: Signal<Bool, Never>
+    internal var showError: Signal<String, Never>
+    internal var showNextViewController: Signal<String, Never>
+    internal var loadingIndicatorVisibility: Signal<Bool, Never>
+    internal var onePasswordFindLogin: Signal<(), Never>
+    internal var arePasswordsSame: Signal<Bool, Never>
     
-    internal var formVisibility: Signal<Bool, NoError>
-    internal var beginButtonsVisibility: Signal<Bool, NoError>
-    internal var backButtonVisibility: Signal<Bool, NoError>
-    var backgroundScrolledToTop: Signal<Bool, NoError>
+    internal var formVisibility: Signal<Bool, Never>
+    internal var beginButtonsVisibility: Signal<Bool, Never>
+    internal var backButtonVisibility: Signal<Bool, Never>
+    var backgroundScrolledToTop: Signal<Bool, Never>
 
-    internal var emailText: Signal<String, NoError>
-    internal var usernameText: Signal<String, NoError>
-    internal var passwordText: Signal<String, NoError>
-    internal var passwordRepeatText: Signal<String, NoError>
+    internal var emailText: Signal<String, Never>
+    internal var usernameText: Signal<String, Never>
+    internal var passwordText: Signal<String, Never>
+    internal var passwordRepeatText: Signal<String, Never>
 
-    private var showNextViewControllerObserver: Signal<(), NoError>.Observer
-    private var showErrorObserver: Signal<String, NoError>.Observer
-    private var loadingIndicatorVisibilityObserver: Signal<Bool, NoError>.Observer
+    private var showNextViewControllerObserver: Signal<(), Never>.Observer
+    private var showErrorObserver: Signal<String, Never>.Observer
+    private var loadingIndicatorVisibilityObserver: Signal<Bool, Never>.Observer
 
     internal var inputs: LoginViewModelInputs { return self }
     internal var outputs: LoginViewModelOutputs { return self }
