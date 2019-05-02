@@ -39,12 +39,12 @@ class TaskTableViewCell: UITableViewCell, UITextViewDelegate {
     func configure(task: TaskProtocol) {
         self.titleLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 16)
         if let text = task.text {
-            self.titleLabel.attributedText = try? Down(markdownString: text.unicodeEmoji).toHabiticaAttributedString()
+            self.titleLabel.attributedText = try? Down(markdownString: text.unicodeEmoji).toHabiticaAttributedString(baseSize: 16, textColor: ThemeService.shared.theme.primaryTextColor)
         }
 
         if let trimmedNotes = task.notes?.trimmingCharacters(in: .whitespacesAndNewlines), trimmedNotes.isEmpty == false {
-            self.subtitleLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 12)
-            self.subtitleLabel.attributedText = try? Down(markdownString: trimmedNotes.unicodeEmoji).toHabiticaAttributedString()
+            self.subtitleLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 13)
+            self.subtitleLabel.attributedText = try? Down(markdownString: trimmedNotes.unicodeEmoji).toHabiticaAttributedString(baseSize: 13, textColor: ThemeService.shared.theme.secondaryTextColor)
             self.subtitleLabel.isHidden = false
         } else {
             self.subtitleLabel.text = nil
@@ -76,8 +76,6 @@ class TaskTableViewCell: UITableViewCell, UITextViewDelegate {
         mainTaskWrapper.backgroundColor = contentView.backgroundColor
         titleLabel.backgroundColor = contentView.backgroundColor
         subtitleLabel.backgroundColor = contentView.backgroundColor
-        titleLabel.textColor = ThemeService.shared.theme.primaryTextColor
-        subtitleLabel.textColor = ThemeService.shared.theme.secondaryTextColor
     }
     
     func applyAccessibility(_ task: TaskProtocol) {

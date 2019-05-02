@@ -21,4 +21,11 @@ extension UIFont {
         return UIFont.systemFont(ofSize: ofSize).withTraits(traits: .traitBold, .traitItalic)
     }
     
+    var isBold: Bool {
+        return fontDescriptor.symbolicTraits.contains(.traitBold)
+    }
+    
+    var isItalic: Bool {
+        return fontDescriptor.symbolicTraits.contains(.traitItalic)
+    }
 }

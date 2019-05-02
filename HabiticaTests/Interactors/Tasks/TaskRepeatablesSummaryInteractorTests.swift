@@ -23,7 +23,6 @@ class TaskRepeatablesSummaryInteractorTests: HabiticaTests {
         
         self.task.weekRepeat = TestWeekRepeat()
         
-        self.initializeCoreDataStorage()
         /*guard let task = NSEntityDescription.insertNewObject(forEntityName: "Task", into: HRPGManager.shared().getManagedObjectContext()) as? Task else {
             return;
         }

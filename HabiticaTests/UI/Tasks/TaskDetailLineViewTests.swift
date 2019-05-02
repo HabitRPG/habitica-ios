@@ -19,7 +19,6 @@ class TaskDetailLineViewTests: HabiticaTests {
     
     override func setUp() {
         super.setUp()
-        self.initializeCoreDataStorage()
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium

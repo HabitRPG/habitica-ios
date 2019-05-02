@@ -76,6 +76,7 @@ class ChatTableViewCell: UITableViewCell, UITextViewDelegate, Themeable {
         didSet {
             displaynameLabel.contributorLevel = contributorLevel
             positionLabel.isHidden = contributorLevel < 8
+            positionLabel.textColor = .white
             if contributorLevel == 8 {
                 positionLabel.text = L10n.moderator
                 positionLabel.backgroundColor = UIColor.blue10()
@@ -216,7 +217,6 @@ class ChatTableViewCell: UITableViewCell, UITextViewDelegate, Themeable {
     }
     
     func applyTheme(theme: Theme) {
-        messageTextView.textColor = theme.primaryTextColor
         backgroundColor = theme.windowBackgroundColor
         contentView.backgroundColor = theme.windowBackgroundColor
         plusOneButton.backgroundColor = theme.windowBackgroundColor

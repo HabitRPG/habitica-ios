@@ -30,7 +30,7 @@
 		2907F99E1F694C4000328AEE /* GemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2907F99D1F694C4000328AEE /* GemViewController.swift */; };
 		2908784A220210CF0010820A /* Strings-objcBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29087849220210CF0010820A /* Strings-objcBridge.swift */; };
 		2908D8742232D45D00DDECA1 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2908D8732232D45D00DDECA1 /* BaseTableViewController.swift */; };
-		2908E3512217255600D246CD /* BuildFile in Resources */ = {isa = PBXBuildFile; };
+		2908E3512217255600D246CD /* (null) in Resources */ = {isa = PBXBuildFile; };
 		290922F02242628600645D0E /* LanguageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290922EF2242628600645D0E /* LanguageHandler.swift */; };
 		290A405421FA175800A409BA /* Purple@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 290A405221FA175700A409BA /* Purple@2x.png */; };
 		290A405521FA175800A409BA /* Purple@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 290A405321FA175800A409BA /* Purple@3x.png */; };
@@ -217,6 +217,7 @@
 		29701FE21F5617900097BBCC /* ToastView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29701FE11F5617900097BBCC /* ToastView.xib */; };
 		29701FE41F56C2200097BBCC /* IconLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29701FE31F56C2200097BBCC /* IconLabel.swift */; };
 		29701FE61F56DABC0097BBCC /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29701FE51F56DABC0097BBCC /* RoundedView.swift */; };
+		2970CB52227B1A8600FACCB7 /* MarkdownTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2970CB51227B1A8600FACCB7 /* MarkdownTests.swift */; };
 		2974BD91208DEFEA00EC1A25 /* CustomizationDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BD90208DEFEA00EC1A25 /* CustomizationDetailCell.swift */; };
 		2974BDAD208F68A800EC1A25 /* CustomizationHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BDAC208F68A800EC1A25 /* CustomizationHeaderView.swift */; };
 		2974BDB42090926B00EC1A25 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BDB32090926B00EC1A25 /* MainTabBarController.swift */; };
@@ -806,6 +807,7 @@
 		29701FE11F5617900097BBCC /* ToastView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToastView.xib; sourceTree = "<group>"; };
 		29701FE31F56C2200097BBCC /* IconLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconLabel.swift; sourceTree = "<group>"; };
 		29701FE51F56DABC0097BBCC /* RoundedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
+		2970CB51227B1A8600FACCB7 /* MarkdownTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownTests.swift; sourceTree = "<group>"; };
 		2974BD90208DEFEA00EC1A25 /* CustomizationDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationDetailCell.swift; sourceTree = "<group>"; };
 		2974BDAC208F68A800EC1A25 /* CustomizationHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationHeaderView.swift; sourceTree = "<group>"; };
 		2974BDB32090926B00EC1A25 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
@@ -1957,6 +1959,7 @@
 				D9B967CB1AB33BD0001D84F7 /* Fixtures */,
 				D92C0C401B8745DF000AF799 /* HRPGAPITests.m */,
 				D94461851AB34F5C0015215E /* Supporting Files */,
+				2970CB51227B1A8600FACCB7 /* MarkdownTests.swift */,
 			);
 			path = HabiticaTests;
 			sourceTree = "<group>";
@@ -2804,7 +2807,7 @@
 				49E378532009542C00E0DA3D /* ChallengeTableViewHeaderView.xib in Resources */,
 				498E4D001FA17C1A006933FF /* ChallengeCategoriesTableViewCell.xib in Resources */,
 				2914487A20864A3300F3A6B5 /* EquipmentOverviewView.xib in Resources */,
-				2908E3512217255600D246CD /* BuildFile in Resources */,
+				2908E3512217255600D246CD /* (null) in Resources */,
 				29028C442037132A00B7F704 /* SystemMessageTableViewCell.xib in Resources */,
 				29AAA1611F2B597400029737 /* SpeechbubbleView.xib in Resources */,
 				29FC885E2018D858002B3D3F /* WorldBossDescription.xib in Resources */,
@@ -3256,6 +3259,7 @@
 				D957044B1E1585DB004F6804 /* LoginViewControllerTests.swift in Sources */,
 				D95704431E1528F2004F6804 /* Event-Extensions.swift in Sources */,
 				D957044D1E1589AB004F6804 /* TraitController.swift in Sources */,
+				2970CB52227B1A8600FACCB7 /* MarkdownTests.swift in Sources */,
 				D9709A581E8053A00005F35B /* TaskRepeatablesSummaryInteractorTests.swift in Sources */,
 				D957043E1E151C1C004F6804 /* LoginViewModelTests.swift in Sources */,
 				49B87D96201BBF3800CA1A75 /* HabiticaTests.m in Sources */,

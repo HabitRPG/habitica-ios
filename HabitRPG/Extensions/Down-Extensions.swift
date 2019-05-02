@@ -22,55 +22,59 @@ extension Down {
         }
     }
     
-    func toHabiticaAttributedString(baseFont: UIFont = CustomFontMetrics.scaledSystemFont(ofSize: 15),
-                                    textColor: UIColor = UIColor.gray100()) throws -> NSMutableAttributedString {
+    func toHabiticaAttributedString(baseSize: CGFloat = 15,
+                                    textColor: UIColor = ThemeService.shared.theme.primaryTextColor, useAST: Bool = true) throws -> NSMutableAttributedString {
         let mentions = matchUsernames(text: markdownString)
-        if markdownString.range(of: "[*_#\\[<]", options: .regularExpression, range: nil, locale: nil) == nil {
+        if markdownString.range(of: "[*_#\\[<`]", options: .regularExpression, range: nil, locale: nil) == nil {
             let string = NSMutableAttributedString(string: markdownString,
-                                                   attributes: [.font: CustomFontMetrics.scaledSystemFont(ofSize: 15),
+                                                   attributes: [.font: CustomFontMetrics.scaledSystemFont(ofSize: baseSize),
                                                                 .foregroundColor: textColor])
             if mentions.isEmpty == false {
                 applyMentions(string, mentions: mentions)
             }
             return string
         }
-        guard let string = try? toAttributedString().mutableCopy() as? NSMutableAttributedString else {
+        guard let string = try? (useAST ? toAttributedString(styler: HabiticaStyler(ofSize: baseSize, textColor: textColor)) : toAttributedString()).mutableCopy() as? NSMutableAttributedString else {
             let string = NSMutableAttributedString(string: markdownString,
-                                                  attributes: [.font: CustomFontMetrics.scaledSystemFont(ofSize: 15),
+                                                  attributes: [.font: CustomFontMetrics.scaledSystemFont(ofSize: baseSize),
                                                                .foregroundColor: textColor])
             if mentions.isEmpty == false {
                 applyMentions(string, mentions: mentions)
             }
             return string
         }
-        let baseSize = baseFont.pointSize
-        string.enumerateAttribute(NSAttributedString.Key.font,
-                                  in: NSRange(location: 0, length: string.length),
-                                  options: NSAttributedString.EnumerationOptions.longestEffectiveRangeNotRequired,
-                                  using: { (value, range, _) in
-            if let oldFont = value as? UIFont {
-                let font: UIFont
-                let fontSizeOffset = oldFont.pointSize - 12
-                if oldFont.fontDescriptor.symbolicTraits.contains(.traitBold) && oldFont.fontDescriptor.symbolicTraits.contains(.traitItalic) {
-                    font = UIFont.boldItalicSystemFont(ofSize: baseSize+fontSizeOffset)
-                } else if oldFont.fontDescriptor.symbolicTraits.contains(.traitBold) {
-                    font = UIFont.boldSystemFont(ofSize: baseSize+fontSizeOffset)
-                } else if oldFont.fontDescriptor.symbolicTraits.contains(.traitItalic) {
-                    font = UIFont.italicSystemFont(ofSize: baseSize+fontSizeOffset)
-                } else {
-                    font = UIFont.systemFont(ofSize: baseSize+fontSizeOffset)
-                }
-                string.addAttribute(NSAttributedString.Key.font, value: font, range: range)
-                string.addAttribute(NSAttributedString.Key.foregroundColor, value: textColor, range: range)
-            }
-        })
+        if !useAST {
+            let scaledBaseSize = CustomFontMetrics.scaledSystemFont(ofSize: baseSize).pointSize
+            string.enumerateAttribute(NSAttributedString.Key.font,
+                                      in: NSRange(location: 0, length: string.length),
+                                      options: NSAttributedString.EnumerationOptions.longestEffectiveRangeNotRequired,
+                                      using: { (value, range, _) in
+                                        if let oldFont = value as? UIFont {
+                                            let font: UIFont
+                                            let fontSizeOffset = oldFont.pointSize - 12
+                                            if oldFont.fontDescriptor.symbolicTraits.contains(.traitBold) && oldFont.fontDescriptor.symbolicTraits.contains(.traitItalic) {
+                                                font = UIFont.boldItalicSystemFont(ofSize: scaledBaseSize+fontSizeOffset)
+                                            } else if oldFont.fontDescriptor.symbolicTraits.contains(.traitBold) {
+                                                font = UIFont.boldSystemFont(ofSize: scaledBaseSize+fontSizeOffset)
+                                            } else if oldFont.fontDescriptor.symbolicTraits.contains(.traitItalic) {
+                                                font = UIFont.italicSystemFont(ofSize: scaledBaseSize+fontSizeOffset)
+                                            } else {
+                                                font = UIFont.systemFont(ofSize: scaledBaseSize+fontSizeOffset)
+                                            }
+                                            string.addAttribute(NSAttributedString.Key.font, value: font, range: range)
+                                            string.addAttribute(NSAttributedString.Key.foregroundColor, value: textColor, range: range)
+                                        }
+            })
+        }
         if mentions.isEmpty == false {
             applyMentions(string, mentions: mentions)
         }
-        if string.length == 0 {
-            return string
+        if !useAST {
+            if string.length == 0 {
+                return string
+            }
+            string.deleteCharacters(in: NSRange(location: string.length-1, length: 1))
         }
-        string.deleteCharacters(in: NSRange(location: string.length-1, length: 1))
         return string
     }
     
@@ -78,12 +82,11 @@ extension Down {
         let text = string.mutableString
         for mention in mentions {
             let range = text.range(of: String(mention))
-            string.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.purple400(), range: range)
+            string.addAttribute(.foregroundColor, value: UIColor.purple400(), range: range)
         }
     }
     
     private func matchUsernames(text: String) -> [String] {
-        
         do {
             let regex = try NSRegularExpression(pattern: "\\B@[-\\w]+")
             let results = regex.matches(in: text,
@@ -110,5 +113,94 @@ class HabiticaMarkdownHelper: NSObject {
             return attributedString
         }
         return NSMutableAttributedString(string: text)
+    }
+}
+
+private class HabiticaStyler: Styler {
+    let baseSize: CGFloat
+    let textColor: UIColor
+    
+    init(ofSize baseSize: CGFloat, textColor: UIColor) {
+        self.baseSize = baseSize
+        self.textColor = textColor
+    }
+    
+    var listPrefixAttributes: [NSAttributedString.Key: Any] = [:]
+    func style(document str: NSMutableAttributedString) {}
+    func style(blockQuote str: NSMutableAttributedString) {}
+    func style(list str: NSMutableAttributedString) {}
+    func style(item str: NSMutableAttributedString) {}
+    func style(codeBlock str: NSMutableAttributedString, fenceInfo: String?) {
+        str.addAttributes([
+            .font: CustomFontMetrics.scaledFont(for: UIFont(name: "Menlo", size: baseSize) ?? UIFont.systemFont(ofSize: baseSize))
+            ], range: NSRange(location: 0, length: str.length))
+    }
+    func style(htmlBlock str: NSMutableAttributedString) {}
+    func style(customBlock str: NSMutableAttributedString) {}
+    func style(paragraph str: NSMutableAttributedString) {}
+    func style(heading str: NSMutableAttributedString, level: Int) {
+        switch level {
+        case 1:
+            str.addAttribute(.font, value: CustomFontMetrics.scaledBoldSystemFont(ofSize: 27))
+        case 2:
+            str.addAttribute(.font, value: CustomFontMetrics.scaledBoldSystemFont(ofSize: 21))
+        case 3:
+            str.addAttribute(.font, value: CustomFontMetrics.scaledBoldSystemFont(ofSize: 17))
+        case 4:
+            str.addAttribute(.font, value: CustomFontMetrics.scaledBoldSystemFont(ofSize: 15))
+        case 5:
+            str.addAttribute(.font, value: CustomFontMetrics.scaledBoldSystemFont(ofSize: 13))
+        case 6:
+            str.addAttribute(.font, value: CustomFontMetrics.scaledBoldSystemFont(ofSize: 12))
+        default:
+            return
+        }
+    }
+    func style(thematicBreak str: NSMutableAttributedString) {}
+    func style(text str: NSMutableAttributedString) {
+        str.addAttribute(.font, value: CustomFontMetrics.scaledSystemFont(ofSize: baseSize))
+        str.addAttribute(.foregroundColor, value: textColor)
+    }
+    func style(softBreak str: NSMutableAttributedString) {}
+    func style(lineBreak str: NSMutableAttributedString) {}
+    func style(code str: NSMutableAttributedString) {
+        str.addAttributes([
+                .foregroundColor: UIColor.red50(),
+                .font: CustomFontMetrics.scaledFont(for: UIFont(name: "Menlo", size: baseSize) ?? UIFont.systemFont(ofSize: baseSize))
+            ], range: NSRange(location: 0, length: str.length))
+    }
+    func style(htmlInline str: NSMutableAttributedString) {}
+    func style(customInline str: NSMutableAttributedString) {}
+    func style(emphasis str: NSMutableAttributedString) {
+        if (str.attribute(.font, at: 0, effectiveRange: nil) as? UIFont)?.isItalic == true {
+            str.addAttribute(.font, value: CustomFontMetrics.scaledBoldItalicSystemFont(ofSize: baseSize))
+        } else {
+            str.addAttribute(.font, value: CustomFontMetrics.scaledItalicSystemFont(ofSize: baseSize))
+        }
+    }
+    func style(strong str: NSMutableAttributedString) {
+        if (str.attribute(.font, at: 0, effectiveRange: nil) as? UIFont)?.isItalic == true {
+            str.addAttribute(.font, value: CustomFontMetrics.scaledBoldItalicSystemFont(ofSize: baseSize))
+        } else {
+            str.addAttribute(.font, value: CustomFontMetrics.scaledBoldSystemFont(ofSize: baseSize))
+        }
+    }
+    func style(link str: NSMutableAttributedString, title: String?, url: String?) {
+        guard let url = url else {
+            return
+        }
+        var range = NSRange(location: 0, length: str.length)
+        if let title = title {
+            str.replaceCharacters(in: NSRange(location: 0, length: str.length), with: title)
+            range = NSRange(location: 0, length: title.count)
+        }
+        str.addAttribute(.link, value: url, range: range)
+    }
+    func style(image str: NSMutableAttributedString, title: String?, url: String?) {}
+}
+
+private extension NSMutableAttributedString {
+    func addAttribute(_ name: NSAttributedString.Key, value: Any) {
+        addAttribute(name, value: value, range: NSRange(location: 0, length: length))
     }
 }

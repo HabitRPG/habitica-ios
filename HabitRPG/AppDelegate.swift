@@ -385,7 +385,6 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
         #if !targetEnvironment(simulator)
         return false
         #else
-        return true
         return UserDefaults.standard.bool(forKey: "FASTLANE_SNAPSHOT")
         #endif
     }

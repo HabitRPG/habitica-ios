@@ -111,6 +111,11 @@ public class CustomFontMetrics: NSObject {
     }
     
     @objc
+    public static func scaledBoldItalicSystemFont(ofSize size: CGFloat, compatibleWith traitCollection: UITraitCollection? = nil) -> UIFont {
+        return CustomFontMetrics(forTextStyle: .body).scaledFont(for: UIFont.boldItalicSystemFont(ofSize: size), compatibleWith: traitCollection)
+    }
+    
+    @objc
     public static func scaledSystemFont(ofSize size: CGFloat, ofWeight weight: UIFont.Weight, compatibleWith traitCollection: UITraitCollection? = nil) -> UIFont {
         return CustomFontMetrics(forTextStyle: .body).scaledFont(for: UIFont.systemFont(ofSize: size, weight: weight), compatibleWith: traitCollection)
     }

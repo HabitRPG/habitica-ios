@@ -15,13 +15,6 @@ class ChallengeTableViewControllerTests: HabiticaTests {
     let viewController = (UIStoryboard(name: "Social", bundle: Bundle(identifier: Bundle.main.bundleIdentifier!))
         .instantiateViewController(withIdentifier: "ChallengeTableViewController") as? ChallengeTableViewController)!
     
-    override func setUp() {
-        super.setUp()
-        self.initializeCoreDataStorage()
-        //let user = NSEntityDescription.insertNewObject(forEntityName: "User", into: HRPGManager.shared().getManagedObjectContext()) as! User
-        //user.id = "userId"
-    }
-    
     override func tearDown() {
         super.tearDown()
     }
