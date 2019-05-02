@@ -19,7 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.title = objcL10n.titleSpells;
+    self.navigationItem.title = objcL10n.titleSkills;    
     
     [self setupTableView];
     self.tutorialIdentifier = @"skills";
