@@ -10,7 +10,6 @@ import Foundation
 import ReactiveSwift
 import Result
 import Habitica_API_Client
-import Instabug
 
 public struct DefaultServerUnavailableErrorMessage: ErrorMessage {
     public let message: String = "The server is unavailable! Try again in a bit. If this keeps happening, please let us know!"
@@ -38,11 +37,6 @@ class HabiticaNetworkErrorHandler: NetworkErrorHandler {
             self.notify(message: messages[0], code: error.code)
         } else {
             self.notify(message: error.localizedDescription, code: 0)
-        }
-        
-        IBGLog.logError(error.localizedDescription)
-        for message in messages {
-            IBGLog.logError("Network Error: \(message)")
         }
     }
     

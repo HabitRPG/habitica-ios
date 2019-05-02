@@ -17,7 +17,6 @@ import Habitica_Models
 import RealmSwift
 import ReactiveSwift
 import Result
-import Instabug
 import Firebase
 import SwiftyStoreKit
 import StoreKit
@@ -96,26 +95,6 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
         Fabric.with([Crashlytics.self])
         Crashlytics.sharedInstance().setUserIdentifier(userID)
         Crashlytics.sharedInstance().setUserName(userID)
-        let keys = HabiticaKeys()
-        let instabugKey = HabiticaAppDelegate.isRunningLive() ? keys.instabugLive : keys.instabugBeta
-        Instabug.start(withToken: instabugKey, invocationEvents: [.shake])
-        BugReporting.promptOptions = [.bug, .feedback]
-        NetworkLogger.setRequestObfuscationHandler { (request) -> URLRequest in
-            guard let mutableRequest = (request as NSURLRequest).mutableCopy() as? NSMutableURLRequest else {
-                return URLRequest(url: request.url ?? URL(fileURLWithPath: ""))
-            }
-            mutableRequest.setValue("USERID", forHTTPHeaderField: "x-api-user")
-            mutableRequest.setValue("KEY", forHTTPHeaderField: "x-api-key")
-            return mutableRequest as URLRequest
-        }
-        NetworkLogger.setResponseObfuscationHandler { (_, response, completion) in
-            completion(Data(), response)
-        }
-        Instabug.reproStepsMode = .enabledWithNoScreenshots
-        BugReporting.invocationOptions = .commentFieldRequired
-        
-        Instabug.welcomeMessageMode = .disabled
-        Instabug.setUserAttribute(userID ?? "", withKey: "userID")
     }
     
     @objc
@@ -148,7 +127,6 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
         updateServer()
         AuthenticatedCall.errorHandler = HabiticaNetworkErrorHandler()
         let configuration = URLSessionConfiguration.default
-        NetworkLogger.enableLogging(for: configuration)
         AuthenticatedCall.defaultConfiguration.urlConfiguration = configuration
     }
     

@@ -115,7 +115,6 @@ PODS:
   - GoogleUtilities/UserDefaults (5.5.0):
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (1.2.1)
-  - Instabug (8.1)
   - iOSSnapshotTestCase (5.0.2):
     - iOSSnapshotTestCase/SwiftSupport (= 5.0.2)
   - iOSSnapshotTestCase/Core (5.0.2)
@@ -215,7 +214,6 @@ DEPENDENCIES:
   - Firebase/RemoteConfig
   - FLEX (~> 2.0)
   - FunkyNetwork (from `https://github.com/schrockblock/funky-network.git`)
-  - Instabug
   - iOSSnapshotTestCase
   - KeychainAccess
   - Keys (from `Pods/CocoaPodsKeys`)
@@ -266,7 +264,6 @@ SPEC REPOS:
     - GoogleToolboxForMac
     - GoogleUtilities
     - GTMSessionFetcher
-    - Instabug
     - iOSSnapshotTestCase
     - KeychainAccess
     - Kingfisher
@@ -334,7 +331,6 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: ff31605b7d66400dcec09bed5861689aebadda4d
   GoogleUtilities: 6481e6318c5fcabaaa8513ef8120f329055d7c10
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
-  Instabug: 592a4deabae96082ea20d1afac0ec7c34ef650fb
   iOSSnapshotTestCase: 2d51aa06775e95cecb0a1fb9c5c159ccd1dd4596
   KeychainAccess: b3816fddcf28aa29d94b10ec305cd52be14c472b
   Keys: a576f4c9c1c641ca913a959a9c62ed3f215a8de9
@@ -364,6 +360,6 @@ SPEC CHECKSUMS:
   VTAcknowledgementsViewController: 3bb742da852a5161dc9f4b017e52f926a41ef5d3
   XLForm: 04110197c12187dd28a6c7295d3d8b95f4fdb4de
 
-PODFILE CHECKSUM: 55d91619012e6aa19704fb66a8dc81489a068855
+PODFILE CHECKSUM: 2be3c34a851251c195c3590fdcd07fb12eb30157
 
 COCOAPODS: 1.5.3

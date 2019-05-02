@@ -8,7 +8,6 @@
 
 import Foundation
 import Kingfisher
-import Instabug
 
 @objc
 class ImageManager: NSObject {
@@ -32,7 +31,6 @@ class ImageManager: NSObject {
         KingfisherManager.shared.retrieveImage(with: url, options: nil, progressBlock: nil) { (image, error, _, _) in
             if let error = error {
                 print("Image loading error:", name, error.localizedDescription)
-                IBGLog.logError(error.localizedDescription)
             }
             completion(image, error)
         }
@@ -46,7 +44,6 @@ class ImageManager: NSObject {
         KingfisherManager.shared.retrieveImage(with: url, options: nil, progressBlock: nil) { (image, error, _, _) in
             if let error = error {
                 print("Image loading error:", url, error.localizedDescription)
-                IBGLog.logError(error.localizedDescription)
             }
             completion(image, error)
         }

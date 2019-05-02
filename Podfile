@@ -1,4 +1,4 @@
-platform :ios, '9.3'
+platform :ios, '12.0'
 use_frameworks!
 inhibit_all_warnings!
 
@@ -19,8 +19,6 @@ plugin 'cocoapods-keys', {
     "SeedsDevShareInterstitial",
     "ItunesSharedSecret",
     "StagingKey",
-    "InstabugLive",
-    "InstabugBeta"
   ]
 }
 
@@ -77,8 +75,6 @@ target 'Habitica' do
   pod 'Kingfisher'
 
   pod 'SwiftGen'
-
-  pod 'Instabug'
 
   pod "DeepLinkKit"
 

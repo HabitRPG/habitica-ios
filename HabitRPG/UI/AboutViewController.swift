@@ -9,7 +9,6 @@
 import UIKit
 import Realm
 import VTAcknowledgementsViewController
-import Instabug
 import Habitica_Models
 import MessageUI
 
@@ -149,19 +148,11 @@ class AboutViewController: HRPGBaseViewController, MFMailComposeViewControllerDe
     }
     
     private func handleAppFeedback() {
-        if HabiticaAppDelegate.isRunningLive() {
-            sendEmail(subject: "[iOS] Feedback")
-        } else {
-            BugReporting.invoke(with: .newFeedback, options: [])
-        }
+        sendEmail(subject: "[iOS] Feedback")
     }
     
     private func handleBugReport() {
-        if HabiticaAppDelegate.isRunningLive() {
-            sendEmail(subject: "[iOS] Bugreport")
-        } else {
-            BugReporting.invoke(with: .newFeedback, options: [])
-        }
+        sendEmail(subject: "[iOS] Bugreport")
     }
     
     private func sendEmail(subject: String) {
