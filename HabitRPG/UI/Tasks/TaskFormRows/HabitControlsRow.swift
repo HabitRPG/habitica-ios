@@ -15,7 +15,7 @@ struct HabitControlsValue: Equatable {
     }
     
     var positive = true
-    var negative = true
+    var negative = false
 }
 
 class HabitControlsCell: Cell<HabitControlsValue>, CellType {
