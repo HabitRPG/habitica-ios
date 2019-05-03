@@ -27,6 +27,7 @@ class ClassSelectionViewController: UIViewController {
     private let disposable = ScopedDisposable(CompositeDisposable())
     
     private var selectedClass: HabiticaClass?
+    private var isSelecting = false
     
     private var showBottomView = false
     private var selectedView: UIView?
@@ -143,6 +144,10 @@ class ClassSelectionViewController: UIViewController {
     }
     
     @IBAction func selectClass(_ sender: Any) {
+        if isSelecting {
+            return
+        }
+        isSelecting = true
         if let selectedClass = self.selectedClass {
             switch selectedClass {
             case .warrior:
@@ -156,7 +161,11 @@ class ClassSelectionViewController: UIViewController {
             }
             showLoadingSelection()
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.userRepository.selectClass(selectedClass).observeCompleted {
+                self.userRepository.selectClass(selectedClass)
+                    .on(failed: { _ in
+                        self.isSelecting = false
+                    })
+                    .observeCompleted {
                  self.dismiss(animated: true, completion: nil)
                  }
             }
@@ -194,7 +203,9 @@ class ClassSelectionViewController: UIViewController {
     }
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
-        self.userRepository.disableClassSystem().observeCompleted {}
+        if !isSelecting {
+            self.userRepository.disableClassSystem().observeCompleted {}
+        }
         self.dismiss(animated: true, completion: nil)
     }
 }

@@ -25,6 +25,7 @@ class UserManager: NSObject {
     
     private weak var faintViewController: FaintViewController?
     private weak var classSelectionViewController: ClassSelectionViewController?
+    private var lastClassSelectionDisplayed: Date?
     weak var yesterdailiesDialog: YesterdailiesDialogView?
     
     private var tutorialSteps = [String: Bool]()
@@ -149,7 +150,7 @@ class UserManager: NSObject {
             }
         }
         if user.flags?.hasNewStuff == true {
-            if var notification = userRepository.createNotification(id: HabiticaNotificationType.newStuff.rawValue, type: HabiticaNotificationType.newStuff) as? NotificationNewsProtocol {
+            if let notification = userRepository.createNotification(id: HabiticaNotificationType.newStuff.rawValue, type: HabiticaNotificationType.newStuff) as? NotificationNewsProtocol {
                 userRepository.save(object: notification)
             }
         }
@@ -166,6 +167,9 @@ class UserManager: NSObject {
     
     private func checkClassSelection(user: UserProtocol) -> Bool {
         if user.flags?.classSelected == false && user.preferences?.disableClasses == false && (user.stats?.level ?? 0) >= 10 {
+            if let lastSelection = lastClassSelectionDisplayed, lastSelection.timeIntervalSinceNow > -300 {
+                return false
+            }
             if self.classSelectionViewController == nil {
                 let classSelectionController = StoryboardScene.Settings.classSelectionNavigationController.instantiate()
                 if var topController = UIApplication.shared.keyWindow?.rootViewController {
@@ -176,6 +180,7 @@ class UserManager: NSObject {
                     classSelectionController.modalPresentationStyle = .overCurrentContext
                     topController.present(classSelectionController, animated: true) {
                     }
+                    lastClassSelectionDisplayed = Date()
                     return true
                 }
             }

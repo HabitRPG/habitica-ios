@@ -1543,6 +1543,7 @@
 		2986EB091FCC63CC00B316F6 /* User */ = {
 			isa = PBXGroup;
 			children = (
+				295D42F520921F4200948E7E /* ClassSelectionViewController.swift */,
 				29A62B002167D55200D4BD90 /* VerifyUsernameModalViewController.swift */,
 				2986EB0A1FCC63F900B316F6 /* AttributePointsViewController.swift */,
 				293BB4A81FD0806C003B6F4F /* BulkStatsAllocationViewController.swift */,
@@ -1640,7 +1641,6 @@
 				29B3FEAE1F9A33AB000B12CF /* APISettingsViewController.swift */,
 				29B3FEB91F9A6FAD000B12CF /* AuthenticationSettingsViewController.swift */,
 				290B62492073C37A007287C4 /* SettingsViewController.swift */,
-				295D42F520921F4200948E7E /* ClassSelectionViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -4160,7 +4160,7 @@
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 388;
+				CURRENT_PROJECT_VERSION = 389;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_SOURCE_FILE_NAMES = "";
@@ -4252,7 +4252,7 @@
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 388;
+				CURRENT_PROJECT_VERSION = 389;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_SOURCE_FILE_NAMES = "FLEX*";

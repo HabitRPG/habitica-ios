@@ -105,6 +105,7 @@ class MainMenuViewController: BaseTableViewController {
         navbarView?.notificationsAction = {[weak self] in
             self?.perform(segue: StoryboardSegue.Main.notificationsSegue)
         }
+        navbarView?.notificationsButton.isHidden = true
         
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)

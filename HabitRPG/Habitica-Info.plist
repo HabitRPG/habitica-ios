@@ -277,7 +277,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.3.1</string>
+	<string>2.3.2</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -297,7 +297,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>394</string>
+	<string>389</string>
 	<key>CustomDomain</key>
 	<string>${CUSTOM_DOMAIN}</string>
 	<key>DisableSSL</key>
