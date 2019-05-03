@@ -105,9 +105,12 @@ class CollapsibleStackView: SeparatedStackView {
         }
         disableAnimations = false
         
-        topBorder = addTopBorderWithColor(color: UIColor.gray600(), width: 1)
-        bottomBorder = addBottomBorderWithColor(color: UIColor.gray600(), width: 1)
-        titleBottomBorder = addBottomBorderWithColor(color: UIColor.gray600(), width: 1)
+        let separatorColor = ThemeService.shared.theme.separatorColor
+        topBorder = addTopBorderWithColor(color: separatorColor, width: 1)
+        bottomBorder = addBottomBorderWithColor(color: separatorColor, width: 1)
+        titleBottomBorder = addBottomBorderWithColor(color: separatorColor, width: 1)
+        
+        backgroundColor = ThemeService.shared.theme.contentBackgroundColor
         
         super.awakeFromNib()
     }

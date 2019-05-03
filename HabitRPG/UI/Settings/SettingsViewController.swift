@@ -286,10 +286,7 @@ class SettingsViewController: FormViewController, Themeable {
         form +++ Section(L10n.Settings.maintenance)
             <<< ButtonRow { row in
                 row.title = L10n.Settings.clearCache
-                row.cellSetup({ (cell, _) in
-                    cell.tintColor = ThemeService.shared.theme.tintColor
-                })
-                }.onCellSelection({ (_, _) in
+                row.onCellSelection({ (_, _) in
                     let progressView = MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
                     progressView?.setTintColor(ThemeService.shared.theme.tintColor)
                     self.contentRepository.clearDatabase()
@@ -298,6 +295,7 @@ class SettingsViewController: FormViewController, Themeable {
                             progressView?.dismiss(true)
                     }
                 })
+            }
             <<< ButtonRow { row in
                 row.title = L10n.Settings.reloadContent
                 row.cellSetup({ (cell, _) in
@@ -517,6 +515,7 @@ class SettingsViewController: FormViewController, Themeable {
                     }
                     let defaults = UserDefaults.standard
                     defaults.set(row.value, forKey: "theme")
+                    self.relaunchMainApp()
                 })
             }
         form +++ section
@@ -648,9 +647,13 @@ class SettingsViewController: FormViewController, Themeable {
             })
             .observeCompleted {
                 progressView?.dismiss(true)
-                self.dismiss(animated: true, completion: {
-                    UIApplication.topViewController()?.dismiss(animated: true, completion: nil)
-                })
+                self.relaunchMainApp()
         }
+    }
+    
+    private func relaunchMainApp() {
+        self.dismiss(animated: true, completion: {
+            UIApplication.topViewController()?.dismiss(animated: true, completion: nil)
+        })
     }
 }

@@ -43,7 +43,6 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
         searchBar.frame = CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 48)
         searchBar.placeholder = L10n.search
         searchBar.delegate = self
-        searchBar.backgroundImage = UIImage()
         tableView.tableHeaderView = searchBar
         
         NotificationCenter.default.addObserver(self, selector: #selector(didChangeFilter), name: NSNotification.Name(rawValue: "taskFilterChanged"), object: nil)

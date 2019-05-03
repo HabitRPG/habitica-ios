@@ -68,6 +68,7 @@ public struct NightTheme: DarkTheme {
     public var tintColor: UIColor { return UIColor.purple500() }
     public var primaryTextColor: UIColor { return UIColor.purple600() }
     public var secondaryTextColor: UIColor { return UIColor.purple500() }
+    public var ternaryTextColor: UIColor { return UIColor.purple400() }
     public var dimmedTextColor: UIColor { return UIColor.purple300() }
     public var separatorColor: UIColor { return UIColor.purple50() }
     public var tableviewSeparatorColor: UIColor { return UIColor.purple300() }
@@ -85,8 +86,9 @@ public struct DarkNightTheme: DarkTheme {
     public var tintColor: UIColor { return UIColor.gray600() }
     public var primaryTextColor: UIColor { return UIColor.gray700() }
     public var secondaryTextColor: UIColor { return UIColor.gray600() }
+    public var ternaryTextColor: UIColor { return UIColor.gray500() }
     public var dimmedTextColor: UIColor { return UIColor.gray200() }
-    public var separatorColor: UIColor { return UIColor.gray10() }
+    public var separatorColor: UIColor { return UIColor.gray50() }
     public var tableviewSeparatorColor: UIColor { return UIColor.blackPurple100() }
     public var navbarHiddenColor: UIColor { return contentBackgroundColor }
     public var dimmedColor: UIColor { return UIColor.gray200() }
@@ -102,6 +104,7 @@ public struct TrueBlackTheme: DarkTheme {
     public var tintColor: UIColor { return UIColor.purple500() }
     public var primaryTextColor: UIColor { return UIColor.purple600() }
     public var secondaryTextColor: UIColor { return UIColor.purple500() }
+    public var ternaryTextColor: UIColor { return UIColor.purple400() }
     public var dimmedTextColor: UIColor { return UIColor.purple300() }
     public var separatorColor: UIColor { return UIColor.purple50() }
     public var tableviewSeparatorColor: UIColor { return UIColor.purple300() }

@@ -88,6 +88,11 @@ class PartyDetailViewController: GroupDetailViewController {
         }).start())
     }
     
+    override func applyTheme(theme: Theme) {
+        super.applyTheme(theme: theme)
+        partyChallengesButton.backgroundColor = theme.contentBackgroundColor
+    }
+    
     override func populateText() {
         descriptionTitleView.text = L10n.Party.partyDescription
         membersTitleView.text = L10n.Groups.members

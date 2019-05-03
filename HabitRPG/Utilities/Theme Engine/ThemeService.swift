@@ -44,10 +44,12 @@ public class ThemeService: NSObject {
             UITabBar.appearance().tintColor = theme.tintColor
             UITabBar.appearance().backgroundColor = theme.windowBackgroundColor
             UITabBar.appearance().barStyle = .blackOpaque
+            UISearchBar.appearance().barStyle = .blackTranslucent
         } else {
             UITabBar.appearance().tintColor = theme.tintColor
             UITabBar.appearance().barTintColor = theme.contentBackgroundColor
             UITabBar.appearance().barStyle = .black
+            UISearchBar.appearance().barStyle = .default
         }
 
         UIToolbar.appearance().tintColor = theme.tintColor
@@ -61,6 +63,7 @@ public class ThemeService: NSObject {
         UISearchBar.appearance().tintColor = theme.tintColor
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).backgroundColor = theme.contentBackgroundColor
         UITextView.appearance().tintColor = theme.tintColor
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).textColor = theme.primaryTextColor
 
         UILabel.appearance(whenContainedInInstancesOf: [UITableViewHeaderFooterView.self]).textColor = theme.primaryTextColor
         UILabel.appearance(whenContainedInInstancesOf: [UICollectionReusableView.self]).textColor = theme.primaryTextColor

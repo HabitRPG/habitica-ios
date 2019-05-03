@@ -280,11 +280,11 @@ class UserProfileViewController: HRPGBaseViewController {
             imageView?.setImagewith(name: "shop_\(equipmentKey)")
             let gear = gearDictionary[equipmentKey]
             detailTextLabel?.text = gear?.text
-            detailTextLabel?.textColor = .black
+            detailTextLabel?.textColor = ThemeService.shared.theme.primaryTextColor
             attributeLabel?.text = gear?.statsText
         } else {
             detailTextLabel?.text = L10n.Equipment.nothingEquipped
-            detailTextLabel?.textColor = .gray
+            detailTextLabel?.textColor = ThemeService.shared.theme.dimmedTextColor
             attributeLabel?.text = nil
         }
     }

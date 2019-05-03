@@ -12,7 +12,7 @@ class SeparatedStackView: StackView {
     
     private var itemSeparators = [CALayer]()
     
-    var separatorColor = UIColor.gray600() {
+    var separatorColor = ThemeService.shared.theme.separatorColor {
         didSet {
             itemSeparators.forEach { (layer) in
                 layer.backgroundColor = separatorColor.cgColor

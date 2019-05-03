@@ -23,5 +23,13 @@ class SystemMessageTableViewCell: UITableViewCell {
     @objc
     func configure(chatMessage: ChatMessageProtocol) {
         messageTextView.text = chatMessage.text?.unicodeEmoji.replacingOccurrences(of: "`", with: "")
+        
+        applyTheme(theme: ThemeService.shared.theme)
+    }
+    
+    func applyTheme(theme: Theme) {
+        backgroundColor = theme.windowBackgroundColor
+        contentView.backgroundColor = theme.windowBackgroundColor
+        messageTextView.textColor = theme.tintColor
     }
 }

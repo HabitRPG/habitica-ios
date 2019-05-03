@@ -12,7 +12,7 @@ import ReactiveSwift
 import Down
 import Crashlytics
 
-class GroupDetailViewController: HRPGUIViewController, UITextViewDelegate {
+class GroupDetailViewController: HRPGUIViewController, UITextViewDelegate, Themeable {
     var groupID: String?
 
     var groupProperty = MutableProperty<GroupProtocol?>(nil)
@@ -21,6 +21,7 @@ class GroupDetailViewController: HRPGUIViewController, UITextViewDelegate {
     let userRepository = UserRepository()
     let disposable = ScopedDisposable(CompositeDisposable())
     
+    @IBOutlet weak var scrollView: UIScrollView?
     @IBOutlet weak var groupNameLabel: UILabel?
     @IBOutlet weak var groupDescriptionStackView: CollapsibleStackView?
     @IBOutlet weak var groupDescriptionTextView: UITextView?
@@ -48,6 +49,13 @@ class GroupDetailViewController: HRPGUIViewController, UITextViewDelegate {
         }))
         
         self.leaveInteractor = LeaveGroupInteractor(presentingViewController: self)
+        
+        ThemeService.shared.addThemeable(themable: self)
+    }
+    
+    func applyTheme(theme: Theme) {
+        groupNameLabel?.textColor = theme.primaryTextColor
+        scrollView?.backgroundColor = theme.windowBackgroundColor
     }
     
     override func viewWillAppear(_ animated: Bool) {

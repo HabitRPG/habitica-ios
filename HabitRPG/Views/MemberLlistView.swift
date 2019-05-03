@@ -61,7 +61,7 @@ class MemberListView: UIView {
         let view = UILabel()
         view.font = UIFont.systemFont(ofSize: 12)
         view.textColor = UIColor.gray300()
-        view.backgroundColor = UIColor.gray600()
+        view.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
         view.cornerRadius = 10
         view.textAlignment = .center
         view.text = L10n.leader
