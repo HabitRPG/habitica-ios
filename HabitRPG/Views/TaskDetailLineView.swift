@@ -137,7 +137,7 @@ class TaskDetailLineView: UIView {
                 self.detailLabel.textColor = .red10()
                 self.detailLabel.text = L10n.Tasks.dueX(formatter.string(from: duedate))
             } else {
-                detailLabel.textColor = .gray50()
+                detailLabel.textColor = ThemeService.shared.theme.secondaryTextColor
                 guard let differenceInDays = calendar.dateComponents([.day], from: today, to: duedate).day else {
                     return
                 }
@@ -180,6 +180,7 @@ class TaskDetailLineView: UIView {
             streakIconLabelSpacing.constant = 0
             detailStreakSpacing.constant = 0
         }
+        streakLabel.textColor = ThemeService.shared.theme.secondaryTextColor
     }
 
     private func setLastCompleted(task: TaskProtocol) {

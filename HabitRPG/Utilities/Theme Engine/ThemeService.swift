@@ -34,7 +34,7 @@ public class ThemeService: NSObject {
     }
     
     private func applyTheme() {
-        //UINavigationBar.appearance().tintColor = theme.tintColor
+        UINavigationBar.appearance().tintColor = theme.tintColor
         UINavigationBar.appearance().titleTextAttributes = [
             NSAttributedString.Key.foregroundColor: theme.primaryTextColor
         ]
@@ -56,14 +56,18 @@ public class ThemeService: NSObject {
         UIRefreshControl.appearance().tintColor = theme.tintColor
         UISegmentedControl.appearance().tintColor = theme.backgroundTintColor
         UISwitch.appearance().onTintColor = theme.backgroundTintColor
-        UIButton.appearance().tintColor = theme.tintColor
+        //UIButton.appearance().tintColor = theme.tintColor
         UISearchBar.appearance().backgroundColor = theme.windowBackgroundColor
         UISearchBar.appearance().tintColor = theme.tintColor
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).backgroundColor = theme.contentBackgroundColor
+        UITextView.appearance().tintColor = theme.tintColor
 
         UILabel.appearance(whenContainedInInstancesOf: [UITableViewHeaderFooterView.self]).textColor = theme.primaryTextColor
         UILabel.appearance(whenContainedInInstancesOf: [UICollectionReusableView.self]).textColor = theme.primaryTextColor
         UILabel.appearance(whenContainedInInstancesOf: [UITableViewCell.self]).textColor = theme.primaryTextColor
+        UIButton.appearance(whenContainedInInstancesOf: [UITableView.self]).tintColor = theme.tintColor
+        UIButton.appearance(whenContainedInInstancesOf: [UICollectionView.self]).tintColor = theme.tintColor
+        UIButton.appearance(whenContainedInInstancesOf: [UIScrollView.self]).tintColor = theme.tintColor
         UITableViewCell.appearance().backgroundColor = theme.contentBackgroundColor
         UITableView.appearance().backgroundColor = theme.windowBackgroundColor
         UITableView.appearance().separatorColor = theme.tableviewSeparatorColor

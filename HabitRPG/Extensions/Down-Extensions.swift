@@ -137,7 +137,12 @@ private class HabiticaStyler: Styler {
     }
     func style(htmlBlock str: NSMutableAttributedString) {}
     func style(customBlock str: NSMutableAttributedString) {}
-    func style(paragraph str: NSMutableAttributedString) {}
+    func style(paragraph str: NSMutableAttributedString) {
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 4
+        paragraphStyle.paragraphSpacing = 8
+        str.addAttribute(.paragraphStyle, value: paragraphStyle)
+    }
     func style(heading str: NSMutableAttributedString, level: Int) {
         switch level {
         case 1:
@@ -155,6 +160,10 @@ private class HabiticaStyler: Styler {
         default:
             return
         }
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 4
+        paragraphStyle.paragraphSpacing = 16
+        str.addAttribute(.paragraphStyle, value: paragraphStyle)
     }
     func style(thematicBreak str: NSMutableAttributedString) {}
     func style(text str: NSMutableAttributedString) {
