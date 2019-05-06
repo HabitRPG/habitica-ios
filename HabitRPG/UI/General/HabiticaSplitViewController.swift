@@ -8,7 +8,7 @@
 
 import Foundation
 
-class HabiticaSplitViewController: HRPGUIViewController, UIScrollViewDelegate {
+class HabiticaSplitViewController: BaseUIViewController, UIScrollViewDelegate {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var scrollViewTopConstraint: NSLayoutConstraint!
     @IBOutlet var leftViewWidthConstraint: NSLayoutConstraint!

@@ -25,6 +25,7 @@ class HabiticaAlertController: UIViewController, Themeable {
     @IBOutlet weak var scrollviewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var buttonBackgroundView: UIView!
     @IBOutlet weak var alertBackgroundView: UIView!
+    @IBOutlet weak var buttonContainerView: UIView!
     
     private var buttonHandlers = [Int: ((UIButton) -> Swift.Void)]()
     private var buttons = [UIButton]()
@@ -42,7 +43,7 @@ class HabiticaAlertController: UIViewController, Themeable {
         }
     }
     
-    var titleBackgroundColor: UIColor = .white {
+    var titleBackgroundColor: UIColor = ThemeService.shared.theme.contentBackgroundColor {
         didSet {
             configureTitleView()
         }
@@ -54,7 +55,7 @@ class HabiticaAlertController: UIViewController, Themeable {
                 return
             }
             attributedMessage = nil
-            titleBackgroundColor = .white
+            titleBackgroundColor = ThemeService.shared.theme.contentBackgroundColor
             configureMessageView()
         }
     }
@@ -65,7 +66,7 @@ class HabiticaAlertController: UIViewController, Themeable {
                 return
             }
             message = nil
-            titleBackgroundColor = .white
+            titleBackgroundColor = ThemeService.shared.theme.contentBackgroundColor
             configureMessageView()
         }
     }
@@ -123,6 +124,7 @@ class HabiticaAlertController: UIViewController, Themeable {
     
     func applyTheme(theme: Theme) {
         view.backgroundColor = theme.backgroundTintColor.darker(by: 50).withAlphaComponent(0.6)
+        buttonContainerView.backgroundColor = theme.contentBackgroundColor
         buttonBackgroundView.backgroundColor = theme.tintColor.withAlphaComponent(0.05)
         alertBackgroundView.backgroundColor = theme.contentBackgroundColor
         closeButton.backgroundColor = theme.contentBackgroundColor
@@ -194,9 +196,8 @@ class HabiticaAlertController: UIViewController, Themeable {
         button.titleLabel?.lineBreakMode = .byWordWrapping
         button.titleLabel?.textAlignment = .center
         button.setTitle(title, for: .normal)
-        button.backgroundColor = UIColor("#F9F7FF")
         if style == .destructive {
-            button.setTitleColor(UIColor.red100(), for: .normal)
+            button.setTitleColor(ThemeService.shared.theme.errorColor, for: .normal)
         } else {
             button.setTitleColor(ThemeService.shared.theme.tintColor, for: .normal)
         }

@@ -11,7 +11,7 @@ import Habitica_Models
 import ReactiveSwift
 import Down
 
-class UserProfileViewController: HRPGBaseViewController {
+class UserProfileViewController: BaseTableViewController {
     
     private let socialRepository = SocialRepository()
     private let inventoryRepository = InventoryRepository()
@@ -235,6 +235,17 @@ class UserProfileViewController: HRPGBaseViewController {
         }
         let avatarView = cell.viewWithTag(8) as? AvatarView
         avatarView?.avatar = AvatarViewModel(avatar: member)
+        
+        let theme = ThemeService.shared.theme
+        healthLabel?.textColor = theme.primaryTextColor
+        healthLabel?.backgroundColor = theme.contentBackgroundColor
+        healthLabel?.progressBar.barBackgroundColor = theme.contentBackgroundColorDimmed
+        experienceLabel?.textColor = theme.primaryTextColor
+        experienceLabel?.backgroundColor = theme.contentBackgroundColor
+        experienceLabel?.progressBar.barBackgroundColor = theme.contentBackgroundColorDimmed
+        magicLabel?.textColor = theme.primaryTextColor
+        magicLabel?.backgroundColor = theme.contentBackgroundColor
+        magicLabel?.progressBar.barBackgroundColor = theme.contentBackgroundColorDimmed
     }
     
     private func configureEquipmentCell(_ cell: UITableViewCell, atIndex index: Int, outfit: OutfitProtocol) {

@@ -114,6 +114,9 @@ class EquipmentOverviewView: UIView {
             addSubview(view)
 
             setupLabels()
+            titleLabel.textColor = ThemeService.shared.theme.primaryTextColor
+            switchLabelView.textColor = ThemeService.shared.theme.secondaryTextColor
+            backgroundColor = ThemeService.shared.theme.contentBackgroundColor
             
             setNeedsUpdateConstraints()
             updateConstraints()

@@ -43,7 +43,7 @@
     
     [self refresh];
     
-    self.collectionView.backgroundColor = UIColor.whiteColor;
+    self.collectionView.backgroundColor = ObjcThemeWrapper.contentBackgroundColor;
 }
 
 - (void)populateText {

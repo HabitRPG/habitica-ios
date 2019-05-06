@@ -35,6 +35,7 @@ class ProfileSettingsViewController: BaseSettingsViewController {
             cell.textLabel?.text = L10n.aboutText
             cell.detailTextLabel?.text = user?.profile?.blurb
         }
+        cell.detailTextLabel?.textColor = ThemeService.shared.theme.secondaryTextColor
         return cell
     }
     

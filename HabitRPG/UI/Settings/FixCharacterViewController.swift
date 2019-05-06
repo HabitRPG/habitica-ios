@@ -94,10 +94,12 @@ class FixCharacterViewController: BaseTableViewController {
             let iconView = cell.viewWithTag(3) as? UIImageView,
             let valueField = cell.viewWithTag(2) as? UITextField {
             configure(item: indexPath.item, titleLabel: titleLabel, iconView: iconView, valueField: valueField)
+            valueField.textColor = ThemeService.shared.theme.primaryTextColor
         }
         if let wrapper = cell.viewWithTag(4) {
-            wrapper.layer.borderColor = UIColor.gray600().cgColor
-            wrapper.layer.borderWidth = 1
+            wrapper.borderColor = ThemeService.shared.theme.separatorColor
+            wrapper.borderWidth = 1
+            wrapper.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
         }
         
         return cell
@@ -137,7 +139,7 @@ class FixCharacterViewController: BaseTableViewController {
             return
         case 5:
             titleLabel.text = L10n.dayStreaks
-            titleLabel.textColor = .gray10()
+            titleLabel.textColor = ThemeService.shared.theme.primaryTextColor
             iconView.backgroundColor = UIColor.gray500().withAlphaComponent(0.5)
             iconView.image = #imageLiteral(resourceName: "streak_achievement")
             return

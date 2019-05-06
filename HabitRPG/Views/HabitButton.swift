@@ -17,7 +17,7 @@ class HabitButton: UIView {
     private var isActive = false
     var dimmOverlayView: UIView = {
         let view = UIView()
-        view.backgroundColor = ThemeService.shared.theme.contentBackgroundColor.withAlphaComponent(0.25)
+        view.backgroundColor = ThemeService.shared.theme.taskOverlayTint
         view.isHidden = true
         view.isUserInteractionEnabled = false
         return view
@@ -37,13 +37,13 @@ class HabitButton: UIView {
     
     private func setupView() {
         addSubview(roundedView)
-        addSubview(label)
         roundedView.layer.cornerRadius = buttonSize / 2
         label.contentMode = .center
         label.isUserInteractionEnabled = true
         label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap)))
         roundedView.layer.borderWidth = 1
         addSubview(dimmOverlayView)
+        addSubview(label)
     }
     
     func configure(task: TaskProtocol, isNegative: Bool) {

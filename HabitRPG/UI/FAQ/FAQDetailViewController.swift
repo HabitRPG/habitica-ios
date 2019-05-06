@@ -11,7 +11,7 @@ import Habitica_Models
 import ReactiveSwift
 import Down
 
-class FAQDetailViewController: HRPGUIViewController {
+class FAQDetailViewController: BaseUIViewController {
     
     var index: Int = 0
     
@@ -30,7 +30,12 @@ class FAQDetailViewController: HRPGUIViewController {
         disposable.inner.add(contentRepository.getFAQEntry(index: index).on(value: {[weak self]entry in
             self?.questionLabel.text = entry.question
             self?.answerTextView.attributedText = try? Down(markdownString: entry.answer).toHabiticaAttributedString()
-            
         }).start())
+    }
+    
+    override func applyTheme(theme: Theme) {
+        super.applyTheme(theme: theme)
+        questionLabel.textColor = theme.primaryTextColor
+        answerTextView.backgroundColor = theme.contentBackgroundColor
     }
 }

@@ -38,6 +38,7 @@ class CustomizationDetailCell: UICollectionViewCell {
             imageView.setImagewith(name: customization.iconName(forUserPreferences: preferences))
         }
         currencyView.amount = Int(customization.price)
+        applyTheme()
     }
     
     func configure(gear: GearProtocol) {
@@ -45,5 +46,13 @@ class CustomizationDetailCell: UICollectionViewCell {
         if gear.gearSet == "animal" {
             currencyView.amount = 2
         }
+        applyTheme()
+    }
+    
+    private func applyTheme() {
+        let theme = ThemeService.shared.theme
+        backgroundColor = theme.windowBackgroundColor
+        currencyView.backgroundColor = theme.offsetBackgroundColor
+        borderColor = theme.tintColor
     }
 }

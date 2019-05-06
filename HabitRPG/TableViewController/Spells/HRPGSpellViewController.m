@@ -30,6 +30,7 @@
     self.dataSource.tableView = self.tableView;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 95;
+    self.tableView.backgroundColor = ObjcThemeWrapper.contentBackgroundColor;
 }
 
 - (NSDictionary *)getDefinitonForTutorial:(NSString *)tutorialIdentifier {

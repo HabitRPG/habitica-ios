@@ -23,7 +23,7 @@ class QuestParticipantView: UIView {
     let usernameLabel: UILabel = {
         let view = UILabel()
         view.font = CustomFontMetrics.scaledSystemFont(ofSize: 14, ofWeight: .medium)
-        view.textColor = UIColor.gray10()
+        view.textColor = ThemeService.shared.theme.primaryTextColor
         return view
     }()
     lazy var invitationLabel: UILabel = {

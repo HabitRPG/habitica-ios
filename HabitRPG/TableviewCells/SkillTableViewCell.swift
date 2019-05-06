@@ -30,7 +30,7 @@ class SkillTableViewCell: UITableViewCell {
         notesLabel.text = skill.notes
         costLabel?.text = String(describing: skill.mana)
         if manaLeft < Float(skill.mana) {
-            buyButton.backgroundColor = UIColor.gray600()
+            buyButton.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
             magicIconView?.alpha = 0.3
             costLabel?.alpha = 0.3
         } else {
@@ -63,11 +63,11 @@ class SkillTableViewCell: UITableViewCell {
         
         if selected {
             UIView.animate(withDuration: animated ? 0.2 : 0) {[weak self] in
-                self?.containerView?.backgroundColor = UIColor.gray600()
+                self?.containerView?.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
             }
         } else {
             UIView.animate(withDuration: animated ? 0.2 : 0) {[weak self] in
-                self?.containerView?.backgroundColor = UIColor.gray700()
+                self?.containerView?.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
             }
             
         }

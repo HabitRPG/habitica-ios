@@ -17,7 +17,6 @@ class PartyViewController: SplitSocialViewController {
     @IBOutlet weak var noPartyContainerView: UIView!
     @IBOutlet weak var userIDButton: UIButton!
     @IBOutlet weak var groupInvitationListView: GroupInvitationListView!
-    @IBOutlet weak var shareQRCodeButton: UIButton!
     @IBOutlet weak var noPartyHeaderBackground: GradientImageView!
     
     @IBOutlet weak var createPartyTitleLabel: UILabel!
@@ -33,7 +32,8 @@ class PartyViewController: SplitSocialViewController {
             self.noPartyHeaderBackground.image = image?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: UIImage.ResizingMode.tile)
         }
         let gradient = CAGradientLayer()
-        gradient.colors = [UIColor.white.cgColor, UIColor.init(white: 1, alpha: 0).cgColor, UIColor.white.cgColor]
+        let bgColor = ThemeService.shared.theme.contentBackgroundColor
+        gradient.colors = [bgColor.cgColor, bgColor.withAlphaComponent(0).cgColor, bgColor.cgColor]
         gradient.startPoint = CGPoint(x: 0, y: 0)
         gradient.endPoint = CGPoint(x: 0, y: 1)
         gradient.locations =  [0, 0.4, 1]
@@ -71,6 +71,12 @@ class PartyViewController: SplitSocialViewController {
                 Crashlytics.sharedInstance().recordError(error)
             })
             .start())
+    }
+    
+    override func applyTheme(theme: Theme) {
+        super.applyTheme(theme: theme)
+        createPartyButton.backgroundColor = theme.windowBackgroundColor
+        userIDButton.backgroundColor = theme.windowBackgroundColor
     }
     
     override func populateText() {

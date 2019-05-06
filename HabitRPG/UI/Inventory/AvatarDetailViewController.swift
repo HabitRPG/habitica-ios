@@ -9,7 +9,7 @@
 import Foundation
 import Habitica_Models
 
-class AvatarDetailViewController: HRPGCollectionViewController, UICollectionViewDelegateFlowLayout {
+class AvatarDetailViewController: BaseCollectionViewController, UICollectionViewDelegateFlowLayout {
     
     private var customizationDataSource: AvatarDetailViewDataSource?
     private var gearDataSource: AvatarGearDetailViewDataSource?
@@ -34,6 +34,11 @@ class AvatarDetailViewController: HRPGCollectionViewController, UICollectionView
                  }
             }
         }
+    }
+    
+    override func applyTheme(theme: Theme) {
+        super.applyTheme(theme: theme)
+        collectionView.backgroundColor = theme.contentBackgroundColor
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

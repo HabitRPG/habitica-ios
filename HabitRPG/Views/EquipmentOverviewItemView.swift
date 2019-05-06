@@ -71,6 +71,7 @@ class EquipmentOverviewItemView: UIView {
             imageView.setImagewith(name: "shop_\(key)")
             imageView.isHidden = false
             noEquipmentLabel.isHidden = true
+            imageView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
         } else {
             imageView.isHidden = true
             noEquipmentLabel.isHidden = false

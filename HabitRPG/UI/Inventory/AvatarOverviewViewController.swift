@@ -10,7 +10,7 @@ import Foundation
 import Habitica_Models
 import ReactiveSwift
 
-class AvatarOverviewViewController: HRPGUIViewController, UIScrollViewDelegate {
+class AvatarOverviewViewController: BaseUIViewController, UIScrollViewDelegate {
     
     private let userRepository = UserRepository()
     private let disposable = ScopedDisposable(CompositeDisposable())
@@ -48,6 +48,11 @@ class AvatarOverviewViewController: HRPGUIViewController, UIScrollViewDelegate {
         }).start())
         
         view.setNeedsLayout()
+    }
+    
+    override func applyTheme(theme: Theme) {
+        super.applyTheme(theme: theme)
+        bodySizeLabel.textColor = theme.primaryTextColor
     }
     
     override func populateText() {

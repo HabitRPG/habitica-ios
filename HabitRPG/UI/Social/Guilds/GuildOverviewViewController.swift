@@ -69,9 +69,6 @@ class GuildOverviewViewController: BaseTableViewController, UISearchBarDelegate 
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
         headerSeparator.backgroundColor = theme.separatorColor
-        searchbar.backgroundColor = theme.windowBackgroundColor
-        searchbar.barTintColor = theme.contentBackgroundColor
-        searchbar.tintColor = theme.tintColor
     }
     
     override func viewWillLayoutSubviews() {

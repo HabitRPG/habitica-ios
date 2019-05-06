@@ -64,7 +64,7 @@ class CheckboxView: UIView {
     var borderedBox = false
     var dimmOverlayView: UIView = {
         let view = UIView()
-        view.backgroundColor = ThemeService.shared.theme.contentBackgroundColor.withAlphaComponent(0.25)
+        view.backgroundColor = ThemeService.shared.theme.taskOverlayTint
         view.isHidden = true
         view.isUserInteractionEnabled = false
         return view

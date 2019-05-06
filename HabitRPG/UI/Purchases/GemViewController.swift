@@ -14,7 +14,7 @@ import Keys
 import ReactiveSwift
 import Habitica_Models
 
-class GemViewController: UICollectionViewController {
+class GemViewController: BaseCollectionViewController {
     
     var products: [SKProduct]?
     var user: UserProtocol?

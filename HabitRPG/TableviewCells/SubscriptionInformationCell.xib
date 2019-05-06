@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -55,12 +55,10 @@
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="14g-dg-eyz">
                                 <rect key="frame" x="8" y="56" width="327" height="219"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="U5F-yU-dC1" firstAttribute="leading" secondItem="Zfm-2d-JMj" secondAttribute="leading" id="3Qx-Jv-MUu"/>
                             <constraint firstItem="14g-dg-eyz" firstAttribute="top" secondItem="U5F-yU-dC1" secondAttribute="bottom" priority="999" constant="8" id="82t-9M-8eE"/>
@@ -83,11 +81,12 @@
                 <outlet property="descriptionTextView" destination="14g-dg-eyz" id="YSF-k9-SP8"/>
                 <outlet property="expandButton" destination="rn0-xq-Rgq" id="fvz-Ub-xWW"/>
                 <outlet property="titleLabel" destination="eeU-9K-cA6" id="I5h-F2-zPb"/>
+                <outlet property="titleWrapper" destination="U5F-yU-dC1" id="4y1-Ne-THb"/>
             </connections>
             <point key="canvasLocation" x="33.5" y="-236.5"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="carret_down" width="48" height="48"/>
+        <image name="carret_down" width="24" height="24"/>
     </resources>
 </document>

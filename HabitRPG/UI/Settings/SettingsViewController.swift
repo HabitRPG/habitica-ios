@@ -273,6 +273,13 @@ class SettingsViewController: FormViewController, Themeable {
             self?.setUser(user)
         }).start())
         
+        ButtonRow.defaultCellSetup = { cell, _ in
+            cell.tintColor = ThemeService.shared.theme.tintColor
+        }
+        TimeRow.defaultCellSetup = { cell, _ in
+            cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+        }
+        
         ThemeService.shared.addThemeable(themable: self, applyImmediately: true)
     }
     
@@ -298,9 +305,6 @@ class SettingsViewController: FormViewController, Themeable {
             }
             <<< ButtonRow { row in
                 row.title = L10n.Settings.reloadContent
-                row.cellSetup({ (cell, _) in
-                    cell.tintColor = ThemeService.shared.theme.tintColor
-                })
                 }.onCellSelection({ (_, _) in
                     let progressView = MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
                     progressView?.tintColor = ThemeService.shared.theme.tintColor
@@ -394,6 +398,10 @@ class SettingsViewController: FormViewController, Themeable {
         form +++ Section(L10n.Settings.reminder)
             <<< SwitchRow(SettingsTags.dailyReminder) { row in
                 row.title = L10n.Settings.dailyReminder
+                row.cellUpdate { cell, _ in
+                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    cell.tintColor = ThemeService.shared.theme.tintColor
+                }
                 }.onChange({ (row) in
                     let defaults = UserDefaults()
                     defaults.set(row.value ?? false, forKey: "dailyReminderActive")
@@ -406,6 +414,10 @@ class SettingsViewController: FormViewController, Themeable {
                 row.hidden = Condition.function([SettingsTags.dailyReminder], { (form) -> Bool in
                     return (form.rowBy(tag: SettingsTags.dailyReminder) as? SwitchRow)?.value == false
                 })
+                row.cellUpdate { cell, _ in
+                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    cell.tintColor = ThemeService.shared.theme.tintColor
+                }
                 }.onChange({ (row) in
                     let defaults = UserDefaults()
                     defaults.set(row.value, forKey: "dailyReminderTime")
@@ -416,6 +428,10 @@ class SettingsViewController: FormViewController, Themeable {
             +++ Section(L10n.Settings.notificationBadge)
             <<< SwitchRow(SettingsTags.displayNotificationsBadge) { row in
                 row.title = L10n.Settings.displayNotificationBadge
+                row.cellUpdate { cell, _ in
+                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    cell.tintColor = ThemeService.shared.theme.tintColor
+                }
                 }.onChange({ (row) in
                     let defaults = UserDefaults()
                     defaults.set(row.value ?? false, forKey: "appBadgeActive")
@@ -423,6 +439,10 @@ class SettingsViewController: FormViewController, Themeable {
             +++ Section(L10n.Settings.dayStart)
             <<< TimeRow(SettingsTags.customDayStart) { row in
                 row.title = L10n.Settings.customDayStart
+                row.cellUpdate { cell, _ in
+                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    cell.tintColor = ThemeService.shared.theme.tintColor
+                }
                 }.onCellHighlightChanged({ (_, row) in
                     if let date = row.value {
                         let calendar = Calendar.current
@@ -438,6 +458,10 @@ class SettingsViewController: FormViewController, Themeable {
             }
             <<< AlertRow<LabeledFormValue<Bool>>(SettingsTags.searchableUsername) { row in
                 row.title = L10n.Settings.searchableUsername
+                row.cellUpdate { cell, _ in
+                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    cell.tintColor = ThemeService.shared.theme.tintColor
+                }
                 row.options = [LabeledFormValue(value: true, label: L10n.Settings.searchableEverywhere),
                                LabeledFormValue(value: false, label: L10n.Settings.searchablePrivateSpaces)
                 ]
@@ -454,6 +478,10 @@ class SettingsViewController: FormViewController, Themeable {
             +++ Section(L10n.Settings.social)
             <<< SwitchRow(SettingsTags.disableAllNotifications) { row in
                 row.title = L10n.Settings.disableAllNotifications
+                row.cellUpdate { cell, _ in
+                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    cell.tintColor = ThemeService.shared.theme.tintColor
+                }
                 row.onChange({ (row) in
                     if row.value == self.user?.preferences?.pushNotifications?.unsubscribeFromAll {
                         return
@@ -465,6 +493,10 @@ class SettingsViewController: FormViewController, Themeable {
             }
             <<< SwitchRow(SettingsTags.disablePrivateMessages) { row in
                 row.title = L10n.Settings.disablePm
+                row.cellUpdate { cell, _ in
+                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    cell.tintColor = ThemeService.shared.theme.tintColor
+                }
                 row.onChange({ (row) in
                     if row.value == self.user?.inbox?.optOut {
                         return
@@ -477,6 +509,10 @@ class SettingsViewController: FormViewController, Themeable {
         let section = Section(L10n.Settings.preferences)
             <<< PushRow<LabeledFormValue<Int>>(SettingsTags.appLanguage) { row in
                 row.title = L10n.Settings.language
+                row.cellUpdate { cell, _ in
+                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    cell.tintColor = ThemeService.shared.theme.tintColor
+                }
                 row.options = AppLanguage.allLanguages().map({ language -> LabeledFormValue<Int> in
                     return LabeledFormValue(value: language.rawValue, label: language.name)
                 })
@@ -487,9 +523,18 @@ class SettingsViewController: FormViewController, Themeable {
                         self.update(language: newLanguage)
                     }
                 })
+                row.onPresent({ (_, to) in
+                    to.selectableRowCellUpdate = { cell, row in
+                        cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    }
+                })
             }
             <<< PushRow<LabeledFormValue<String>>(SettingsTags.soundTheme) { row in
                 row.title = L10n.Settings.soundTheme
+                row.cellUpdate { cell, _ in
+                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    cell.tintColor = ThemeService.shared.theme.tintColor
+                }
                 row.options = SoundTheme.allThemes.map({ (theme) -> LabeledFormValue<String> in
                     return LabeledFormValue(value: theme.rawValue, label: theme.niceName)
                 })
@@ -501,9 +546,18 @@ class SettingsViewController: FormViewController, Themeable {
                         self.userRepository.updateUser(key: "preferences.sound", value: value).observeCompleted {}
                     }
                 })
+                row.onPresent({ (_, to) in
+                    to.selectableRowCellUpdate = { cell, row in
+                        cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    }
+                })
             }
             <<< PushRow<String>(SettingsTags.themeColor) { row in
                 row.title = L10n.Settings.themeColor
+                row.cellUpdate { cell, _ in
+                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    cell.tintColor = ThemeService.shared.theme.tintColor
+                }
                 row.options = ThemeName.allNames.map({ (name) -> String in
                     return name.rawValue
                 })
@@ -517,11 +571,20 @@ class SettingsViewController: FormViewController, Themeable {
                     defaults.set(row.value, forKey: "theme")
                     self.relaunchMainApp()
                 })
+                row.onPresent({ (_, to) in
+                    to.selectableRowCellUpdate = { cell, row in
+                        cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    }
+                })
             }
         form +++ section
         if #available(iOS 10.3, *) {
             section <<< PushRow<String>(SettingsTags.appIcon) { row in
                 row.title = L10n.Settings.appIcon
+                row.cellUpdate { cell, _ in
+                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    cell.tintColor = ThemeService.shared.theme.tintColor
+                }
                 row.options = AppIconName.allNames.map({ (name) -> String in
                     return name.rawValue
                 })
@@ -533,6 +596,7 @@ class SettingsViewController: FormViewController, Themeable {
                         cell.imageView?.cornerRadius = 12
                         cell.imageView?.contentMode = .center
                         cell.imageView?.image = UIImage(named: filename)
+                        cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
                         cell.contentView.layoutMargins = UIEdgeInsets(top: 4, left: cell.layoutMargins.left, bottom: 4, right: cell.layoutMargins.right)
                     }
                 })

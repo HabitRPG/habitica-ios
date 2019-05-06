@@ -44,7 +44,7 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cellName = "Cell"
         var cellTitle = ""
-        var cellTitleColor = UIColor.black
+        var cellTitleColor = ThemeService.shared.theme.primaryTextColor
         var cellDetailText: String?
         var confirmOffset = 0
         if user?.flags?.verifiedUsername != true {
@@ -57,7 +57,7 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
             } else if indexPath.item == 1 && confirmOffset > 0 {
                 cellName = "ButtonCell"
                 cellTitle = L10n.confirmUsername
-                cellTitleColor = UIColor.green50()
+                cellTitleColor = ThemeService.shared.theme.successColor
             } else if indexPath.item == 1 + confirmOffset {
                 cellTitle = L10n.email
                 cellDetailText = user?.authentication?.local?.email
@@ -93,6 +93,7 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         textLabel?.textColor = cellTitleColor
         if let text = cellDetailText {
             cell.detailTextLabel?.text = text
+            cell.detailTextLabel?.textColor = ThemeService.shared.theme.secondaryTextColor
         }
         return cell
     }

@@ -10,7 +10,7 @@ import UIKit
 import Habitica_Models
 import ReactiveSwift
 
-class BaseSettingsViewController: HRPGBaseViewController {
+class BaseSettingsViewController: BaseTableViewController {
 
     let disposable = ScopedDisposable(CompositeDisposable())
     

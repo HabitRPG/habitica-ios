@@ -11,7 +11,7 @@ import Habitica_Models
 import ReactiveSwift
 import PinLayout
 
-class EquipmentOverviewViewController: HRPGUIViewController, UIScrollViewDelegate {
+class EquipmentOverviewViewController: BaseUIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var gearView: EquipmentOverviewView!

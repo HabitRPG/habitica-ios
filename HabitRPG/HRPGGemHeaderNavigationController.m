@@ -38,7 +38,7 @@
     self.navigationBar.shadowImage = [UIImage new];
     self.navigationBar.translucent = YES;
     self.view.backgroundColor = [UIColor clearColor];
-    self.navigationBar.backgroundColor = [UIColor clearColor];
+    self.navigationBar.backgroundColor = ObjcThemeWrapper.contentBackgroundColor;
     
     UIImageView *headerImageView = [[UIImageView alloc] init];
     headerImageView.image = [UIImage imageNamed:@"support_art"];
@@ -46,14 +46,13 @@
     self.headerView = headerImageView;
     self.state = TopHeaderStateVisible;
     self.backgroundView = [[UIView alloc] init];
-    self.backgroundView.backgroundColor = [UIColor whiteColor];
+    self.backgroundView.backgroundColor = ObjcThemeWrapper.contentBackgroundColor;
     
     self.upperBackgroundView = [[UIView alloc] init];
-    [self.upperBackgroundView setBackgroundColor:[UIColor whiteColor]];
+    [self.upperBackgroundView setBackgroundColor:ObjcThemeWrapper.contentBackgroundColor];
     
     self.segmentedControl = [[UISegmentedControl alloc] initWithItems:@[objcL10n.subscription, objcL10n.gems]];
     [self.segmentedControl sizeToFit];
-    self.segmentedControl.tintColor = [UIColor purple300];
     self.segmentedControl.selectedSegmentIndex = 0;
     [self.segmentedControl addTarget:self
                          action:@selector(viewControllerChanged:)

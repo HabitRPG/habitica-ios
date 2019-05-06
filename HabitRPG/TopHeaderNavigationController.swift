@@ -50,7 +50,7 @@ protocol TopHeaderNavigationControllerProtocol: class {
 class TopHeaderViewController: UINavigationController, TopHeaderNavigationControllerProtocol, Themeable {
     @objc public var state: TopHeaderState = .visible
     @objc public var defaultNavbarHiddenColor = UIColor.purple300()
-    @objc public var defaultNavbarVisibleColor = UIColor.white
+    @objc public var defaultNavbarVisibleColor = ThemeService.shared.theme.contentBackgroundColor
     private var headerView: UIView?
     private var alternativeHeaderView: UIView?
     private let backgroundView = UIView()
@@ -180,7 +180,7 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
         let nibViews = Bundle.main.loadNibNamed("UserTopHeader", owner: self, options: nil)
         self.headerView = nibViews?[0] as? UIView
         self.bottomBorderView.backgroundColor = .gray600()
-        self.upperBackgroundView.backgroundColor = .white
+        self.upperBackgroundView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
         if let headerView = self.headerView {
             self.backgroundView.addSubview(headerView)
         }

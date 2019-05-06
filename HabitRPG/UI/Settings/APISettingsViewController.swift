@@ -39,6 +39,7 @@ class APISettingsViewController: BaseSettingsViewController {
                 cell.detailTextLabel?.text = L10n.tapToShow
             }
         }
+        cell.detailTextLabel?.textColor = ThemeService.shared.theme.secondaryTextColor
         return cell
     }
     

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Eureka
 
 @objc
 public class ThemeService: NSObject {

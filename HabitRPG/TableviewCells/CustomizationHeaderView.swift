@@ -43,6 +43,9 @@ class CustomizationHeaderView: UICollectionReusableView {
             label.text = customizationSet.text
         }
         currencyView.amount = Int(customizationSet.setPrice)
+        
+        purchaseButton.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+        purchaseButton.borderColor = ThemeService.shared.theme.tintColor
     }
     
     @objc

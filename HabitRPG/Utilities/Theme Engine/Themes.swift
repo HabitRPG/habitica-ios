@@ -74,6 +74,7 @@ public struct NightTheme: DarkTheme {
     public var tableviewSeparatorColor: UIColor { return UIColor.purple300() }
     public var navbarHiddenColor: UIColor { return contentBackgroundColor }
     public var dimmedColor: UIColor { return UIColor.purple200() }
+    public var taskOverlayTint: UIColor { return UIColor.blackPurple50().withAlphaComponent(0.15) }
 }
 
 public struct DarkNightTheme: DarkTheme {
@@ -93,6 +94,7 @@ public struct DarkNightTheme: DarkTheme {
     public var navbarHiddenColor: UIColor { return contentBackgroundColor }
     public var dimmedColor: UIColor { return UIColor.gray200() }
     public var badgeColor: UIColor { return UIColor.gray200() }
+    public var taskOverlayTint: UIColor { return UIColor.blackPurple50().withAlphaComponent(0.15) }
 }
 
 public struct TrueBlackTheme: DarkTheme {
@@ -110,4 +112,5 @@ public struct TrueBlackTheme: DarkTheme {
     public var tableviewSeparatorColor: UIColor { return UIColor.purple300() }
     public var navbarHiddenColor: UIColor { return contentBackgroundColor }
     public var dimmedColor: UIColor { return UIColor.purple200() }
+    public var taskOverlayTint: UIColor { return UIColor.black.withAlphaComponent(0.15) }
 }
