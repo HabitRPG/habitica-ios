@@ -18,7 +18,7 @@ open class NetworkCall {
     public let httpHeaders: [String: String]?
     
     open var requestFromEndpoint: (String) -> NSMutableURLRequest?
-    open var configuredRequest: (NSMutableURLRequest?) -> NSMutableURLRequest? = { r in r }
+    open var configuredRequest: (NSMutableURLRequest?) -> NSMutableURLRequest? = { request in request }
     open var url: (String) -> URL?
     open var urlString: (String) -> String
     
@@ -110,7 +110,9 @@ open class NetworkCall {
         if let mutableRequest = request?.mutableCopy() as? NSMutableURLRequest {
             if let headers = httpHeaders {
                 for key in headers.keys {
-                    mutableRequest.addValue(headers[key]!, forHTTPHeaderField: key)
+                    if let header = headers[key] {
+                        mutableRequest.addValue(header, forHTTPHeaderField: key)
+                    }
                 }
             }
             return mutableRequest
@@ -141,10 +143,10 @@ precedencegroup ForwardApplication {
 
 infix operator <^>: ForwardApplication
 
-func <^><A, B, C>(f: @escaping (A) -> B?, g: @escaping (B) -> C) -> (A) -> C? {
-    return { a in
-        if let b = f(a) {
-            return g(b)
+func <^><A, B, C>(function1: @escaping (A) -> B?, function2: @escaping (B) -> C) -> (A) -> C? {
+    return { first in
+        if let second = function1(first) {
+            return function2(second)
         } else {
             return nil
         }
