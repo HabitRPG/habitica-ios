@@ -2309,6 +2309,7 @@
 				29A0FD80203DF49900590BDE /* GuidelinesPromptView.xib */,
 				29B3FEBB1F9E3B17000B12CF /* HabiticaAlertController.swift */,
 				29B3FEBD1F9E3DC3000B12CF /* HabiticaAlertController.xib */,
+				296CB4ED218C99FD0044A33E /* HabiticaButton.swift */,
 				D96760C61B2EF9B600DB07DF /* HRPGAbbrevNumberLabel.h */,
 				D96760C71B2EF9B600DB07DF /* HRPGAbbrevNumberLabel.m */,
 				D96C86C91BB0546400E4C134 /* HRPGCopyLabel.h */,
@@ -2368,7 +2369,6 @@
 				D91CCACF1BCF11CC001C6A0C /* UserTopHeader.xib */,
 				2980E6081EEA25CD005B7100 /* YesterdailiesDialogView.swift */,
 				2980E6061EEA1F55005B7100 /* YesterdailiesDialogView.xib */,
-				296CB4ED218C99FD0044A33E /* HabiticaButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

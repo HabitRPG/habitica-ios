@@ -43,7 +43,7 @@ class MenuNavigationBarView: UIView, Themeable {
     }
     
     func applyTheme(theme: Theme) {
-        backgroundColor = theme.backgroundTintColor
+        backgroundColor = theme.navbarHiddenColor
     }
     
     @objc
