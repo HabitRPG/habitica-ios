@@ -47,6 +47,8 @@ class SkillTableViewCell: UITableViewCell {
         magicIconView?.contentMode = .center
         skillImageView.setShopImagewith(name: skill.key)
         skillImageView.alpha = 0.3
+        containerView?.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
+        buyButton.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
     }
     
     func configure(transformationItem: SpecialItemProtocol, numberOwned: Int) {

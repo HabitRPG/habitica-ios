@@ -1,4 +1,8 @@
 Thanks for everyone helping with testing!
 
+We are currently investigating an issue that prevents users from creating habits. This build contains some logging that should help us figure this out. If you are affected by this bug, please contact us using the in-app reporting option from the about screen. Thanks for your help!
+
+The experimental dark themes for the app should now be fully working. If you find a spot that has unreadable text or is still white, please let us know!
+
 This build brings new markdown handling, that should provide a lot smoother scrolling in tasks and chat. There are still some issues (p.e. images are not correctly handled), that are being worked on.
 
