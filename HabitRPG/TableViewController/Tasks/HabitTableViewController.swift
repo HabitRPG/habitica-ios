@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import Crashlytics
 
 class HabitTableViewController: TaskTableViewController {
+    var lastLoggedPredicate: String?
     var emptyDataSource = SingleItemTableViewDataSource<EmptyTableViewCell>(cellIdentifier: "emptyCell", styleFunction: EmptyTableViewCell.habitsStyle)
     
     override func viewDidLoad() {
@@ -44,4 +46,16 @@ class HabitTableViewController: TaskTableViewController {
         tableView.allowsSelection = false
     }
 
+    override func getPredicate() -> NSPredicate {
+        let predicate = super.getPredicate()
+        if !HabiticaAppDelegate.isRunningLive() && lastLoggedPredicate != predicate.predicateFormat {
+            lastLoggedPredicate = predicate.predicateFormat
+            let userInfo = [
+                NSLocalizedDescriptionKey: predicate.predicateFormat
+            ]
+            let error = NSError(domain: "habit_filter", code: -1337, userInfo: userInfo)
+            Crashlytics.sharedInstance().recordError(error)
+        }
+        return predicate
+    }
 }
