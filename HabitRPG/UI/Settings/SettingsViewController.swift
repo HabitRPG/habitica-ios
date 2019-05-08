@@ -63,18 +63,18 @@ enum Servers: String {
 }
 
 enum ThemeName: String {
-    case defaultTheme = "Purple (Default)"
-    case blue = "Blue"
-    case teal = "Teal"
-    case green = "Green"
-    case yellow = "Yellow"
-    case orange = "Orange"
-    case red = "Red Task Redemption"
-    case maroon = "Maroon"
-    case gray = "Gray"
-    case night = "Night (experimental)"
-    case darkNight = "The Dark Task (experimental)"
-    case trueBlack = "True Black (experimental)"
+    case defaultTheme
+    case blue
+    case teal
+    case green
+    case yellow
+    case orange
+    case red
+    case maroon
+    case gray
+    case night
+    case darkNight
+    case trueBlack
     
     var themeClass: Theme {
         switch self {
@@ -102,6 +102,35 @@ enum ThemeName: String {
             return DarkNightTheme()
         case .trueBlack:
             return TrueBlackTheme()
+        }
+    }
+    
+    var niceName: String {
+        switch self {
+        case .defaultTheme:
+            return "Royal Purple (Default)"
+        case .blue:
+            return "Blue Task Group"
+        case .teal:
+            return "The real Teal"
+        case .green:
+            return "Against the Green"
+        case .yellow:
+            return "Yellow Subtask"
+        case .orange:
+            return "Orange you glad"
+        case .red:
+            return "Red Task Redemption"
+        case .maroon:
+            return "Maroon"
+        case .gray:
+            return "Plain Gray"
+        case .night:
+            return "The Royal Night"
+        case .darkNight:
+            return "The Dark Task"
+        case .trueBlack:
+            return "True Black"
         }
     }
     
@@ -273,10 +302,10 @@ class SettingsViewController: FormViewController, Themeable {
             self?.setUser(user)
         }).start())
         
-        ButtonRow.defaultCellSetup = { cell, _ in
+        ButtonRow.defaultCellUpdate = { cell, _ in
             cell.tintColor = ThemeService.shared.theme.tintColor
         }
-        TimeRow.defaultCellSetup = { cell, _ in
+        TimeRow.defaultCellUpdate = { cell, _ in
             cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
         }
         
@@ -285,6 +314,13 @@ class SettingsViewController: FormViewController, Themeable {
     
     func applyTheme(theme: Theme) {
         tableView.reloadData()
+        
+        navigationController?.navigationBar.tintColor = theme.tintColor
+        navigationController?.navigationBar.titleTextAttributes = [
+            NSAttributedString.Key.foregroundColor: theme.primaryTextColor
+        ]
+        navigationController?.navigationBar.backgroundColor = theme.contentBackgroundColor
+        navigationController?.navigationBar.barTintColor = theme.contentBackgroundColor
     }
     
     private func setupForm() {
@@ -552,24 +588,27 @@ class SettingsViewController: FormViewController, Themeable {
                     }
                 })
             }
-            <<< PushRow<String>(SettingsTags.themeColor) { row in
+            <<< PushRow<LabeledFormValue<String>>(SettingsTags.themeColor) { row in
                 row.title = L10n.Settings.themeColor
                 row.cellUpdate { cell, _ in
                     cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
                     cell.tintColor = ThemeService.shared.theme.tintColor
                 }
-                row.options = ThemeName.allNames.map({ (name) -> String in
-                    return name.rawValue
+                row.options = ThemeName.allNames.map({ (theme) -> LabeledFormValue<String> in
+                    return LabeledFormValue(value: theme.rawValue, label: theme.niceName)
                 })
                 let defaults = UserDefaults.standard
-                row.value = defaults.string(forKey: "theme") ?? ThemeName.defaultTheme.rawValue
+                if let theme = ThemeName.allNames.first(where: { (theme) -> Bool in
+                    return theme.rawValue == defaults.string(forKey: "theme") ?? ThemeName.defaultTheme.rawValue
+                }) {
+                    row.value = LabeledFormValue(value: theme.rawValue, label: theme.niceName)
+                }
                 row.onChange({ (row) in
-                    if let newTheme = ThemeName(rawValue: row.value ?? "")?.themeClass {
-                        ThemeService.shared.theme = newTheme
+                    if let newTheme = ThemeName(rawValue: row.value?.value ?? "") {
+                        ThemeService.shared.theme = newTheme.themeClass
+                        let defaults = UserDefaults.standard
+                        defaults.set(newTheme.rawValue, forKey: "theme")
                     }
-                    let defaults = UserDefaults.standard
-                    defaults.set(row.value, forKey: "theme")
-                    self.relaunchMainApp()
                 })
                 row.onPresent({ (_, to) in
                     to.selectableRowCellUpdate = { cell, row in

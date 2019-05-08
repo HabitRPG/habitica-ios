@@ -134,6 +134,7 @@ class CheckboxView: UIView {
         }
         
         dimmOverlayView.isHidden = !theme.isDark
+        dimmOverlayView.backgroundColor = theme.taskOverlayTint
         
         layer.setNeedsDisplay()
     }

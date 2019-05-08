@@ -44,11 +44,13 @@ public class ThemeService: NSObject {
         if theme.isDark {
             UITabBar.appearance().tintColor = theme.tintColor
             UITabBar.appearance().backgroundColor = theme.windowBackgroundColor
+            UITabBar.appearance().barTintColor = .clear
             UITabBar.appearance().barStyle = .blackOpaque
             UISearchBar.appearance().barStyle = .blackTranslucent
         } else {
             UITabBar.appearance().tintColor = theme.tintColor
             UITabBar.appearance().barTintColor = theme.contentBackgroundColor
+            UITabBar.appearance().backgroundColor = .clear
             UITabBar.appearance().barStyle = .black
             UISearchBar.appearance().barStyle = .default
         }

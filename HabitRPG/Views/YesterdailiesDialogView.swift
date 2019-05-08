@@ -12,14 +12,16 @@ import Habitica_Models
 import ReactiveSwift
 import Crashlytics
 
-class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableViewDataSource, Themeable {
 
     @IBOutlet weak var heightConstraint: NSLayoutConstraint!
     @IBOutlet weak var yesterdailiesHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var yesterdailiesTableView: UITableView!
     @IBOutlet weak var checkinCountView: UILabel!
     @IBOutlet weak var nextCheckinCountView: UILabel!
+    @IBOutlet weak var headerWrapperView: UIView!
     
+    @IBOutlet weak var tableViewWrapper: UIView!
     @IBOutlet weak var checkinWrapper: UIView!
     @IBOutlet weak var checkinIcon: UIImageView!
     @IBOutlet weak var checkinIconHeightConstraint: NSLayoutConstraint!
@@ -27,6 +29,7 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var checkinDescription: UILabel!
     @IBOutlet weak var checkinYesterdaysDailiesLabel: UILabel!
     @IBOutlet weak var startDayButton: UIButton!
+    @IBOutlet weak var separatorView: UIView!
     
     let taskRepository = TaskRepository()
     private let userRepository = UserRepository()
@@ -49,6 +52,20 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
         
         checkinYesterdaysDailiesLabel.text = L10n.checkinYesterdaysDalies
         startDayButton.setTitle(L10n.startMyDay, for: .normal)
+        
+        ThemeService.shared.addThemeable(themable: self)
+    }
+    
+    func applyTheme(theme: Theme) {
+        view.backgroundColor = theme.contentBackgroundColor
+        startDayButton.tintColor = theme.tintColor
+        startDayButton.backgroundColor = theme.offsetBackgroundColor
+        headerWrapperView.backgroundColor = theme.offsetBackgroundColor
+        tableViewWrapper.backgroundColor = theme.windowBackgroundColor
+        checkinTitle.textColor = theme.primaryTextColor
+        checkinDescription.textColor = theme.secondaryTextColor
+        checkinCountView.textColor = theme.primaryTextColor
+        separatorView.backgroundColor = theme.separatorColor
     }
 
     override func viewWillLayoutSubviews() {

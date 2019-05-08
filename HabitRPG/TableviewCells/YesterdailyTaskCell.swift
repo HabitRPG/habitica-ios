@@ -24,11 +24,14 @@ class YesterdailyTaskCell: UITableViewCell {
         super.awakeFromNib()
         self.selectionStyle = .none
         self.wrapperView.layer.borderWidth = 1
-        self.wrapperView.layer.borderColor = UIColor.lightGray.cgColor
+        
+        let theme = ThemeService.shared.theme
+        self.wrapperView.layer.borderColor = theme.separatorColor.cgColor
+        wrapperView.backgroundColor = theme.contentBackgroundColor
     }
 
     func configure(task: TaskProtocol) {
-        backgroundColor = UIColor.gray700()
+        backgroundColor = ThemeService.shared.theme.windowBackgroundColor
         checkbox.configure(task: task)
         titleTextView.attributedText = try? Down(markdownString: task.text?.unicodeEmoji ?? "").toHabiticaAttributedString()
 
@@ -40,11 +43,12 @@ class YesterdailyTaskCell: UITableViewCell {
         for checklistItem in task.checklist {
             if let view = UIView.fromNib(nibName: "YesterdailyChecklistItem") {
                 view.isUserInteractionEnabled = true
+                view.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
                 let label = view.viewWithTag(2) as? UILabel
                 label?.attributedText = try? Down(markdownString: checklistItem.text?.unicodeEmoji ?? "").toHabiticaAttributedString()
                 let checkbox = view.viewWithTag(1) as? CheckboxView
                 checkbox?.configure(checklistItem: checklistItem, withTitle: false)
-                checkbox?.backgroundColor = UIColor.gray700()
+                checkbox?.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
                 checkbox?.wasTouched = {
                     if let checked = self.onChecklistItemChecked {
                         checked(checklistItem)

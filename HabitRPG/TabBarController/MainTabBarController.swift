@@ -51,7 +51,6 @@ class MainTabBarController: UITabBarController, Themeable {
     }
     
     func applyTheme(theme: Theme) {
-        tabBar.backgroundColor = theme.contentBackgroundColor
     }
     
     private func setupDailyIcon() {

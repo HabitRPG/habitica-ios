@@ -121,6 +121,7 @@ class MainMenuViewController: BaseTableViewController {
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
         navbarColor = theme.navbarHiddenColor
+        tableView.reloadData()
     }
     
     private func setupMenu() {

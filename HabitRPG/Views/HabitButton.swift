@@ -81,6 +81,7 @@ class HabitButton: UIView {
         }
         
         dimmOverlayView.isHidden = !theme.isDark
+        dimmOverlayView.backgroundColor = theme.taskOverlayTint
     }
     
     override func layoutSubviews() {
