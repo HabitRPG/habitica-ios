@@ -25,6 +25,7 @@ extension Down {
     func toHabiticaAttributedString(baseSize: CGFloat = 15,
                                     textColor: UIColor = ThemeService.shared.theme.primaryTextColor, useAST: Bool = true) throws -> NSMutableAttributedString {
         let mentions = matchUsernames(text: markdownString)
+        
         if markdownString.range(of: "[*_#\\[<`]", options: .regularExpression, range: nil, locale: nil) == nil {
             let string = NSMutableAttributedString(string: markdownString,
                                                    attributes: [.font: CustomFontMetrics.scaledSystemFont(ofSize: baseSize),
@@ -32,6 +33,7 @@ extension Down {
             if mentions.isEmpty == false {
                 applyMentions(string, mentions: mentions)
             }
+            applyCustomEmoji(string, size: baseSize)
             return string
         }
         guard let string = try? (useAST ? toAttributedString(styler: HabiticaStyler(ofSize: baseSize, textColor: textColor)) : toAttributedString()).mutableCopy() as? NSMutableAttributedString else {
@@ -41,6 +43,7 @@ extension Down {
             if mentions.isEmpty == false {
                 applyMentions(string, mentions: mentions)
             }
+            applyCustomEmoji(string, size: baseSize)
             return string
         }
         if !useAST {
@@ -69,6 +72,7 @@ extension Down {
         if mentions.isEmpty == false {
             applyMentions(string, mentions: mentions)
         }
+        applyCustomEmoji(string, size: baseSize)
         if !useAST {
             if string.length == 0 {
                 return string
@@ -83,6 +87,18 @@ extension Down {
         for mention in mentions {
             let range = text.range(of: String(mention))
             string.addAttribute(.foregroundColor, value: UIColor.purple400(), range: range)
+        }
+    }
+    
+    private func applyCustomEmoji(_ string: NSMutableAttributedString, size: CGFloat) {
+        let text = string.mutableString
+        let range = text.range(of: ":melior:")
+        if range.length > 0 {
+            let attachment = NSTextAttachment()
+            attachment.image = UIImage(named: "melior.png")
+            attachment.bounds = CGRect(x: 0, y: 0, width: size, height: size)
+            let addedString = NSAttributedString(attachment: attachment)
+            string.replaceCharacters(in: range, with: addedString)
         }
     }
     
@@ -205,7 +221,14 @@ private class HabiticaStyler: Styler {
         }
         str.addAttribute(.link, value: url, range: range)
     }
-    func style(image str: NSMutableAttributedString, title: String?, url: String?) {}
+    func style(image str: NSMutableAttributedString, title: String?, url: String?) {
+        if let imageURL = URL(string: url ?? ""), let data = try? Data(contentsOf: imageURL) {
+            let attachment = NSTextAttachment()
+            attachment.image = UIImage(data: data)
+            let addedString = NSAttributedString(attachment: attachment)
+            str.replaceCharacters(in: NSRange(location: 0, length: str.length), with: addedString)
+        }
+    }
 }
 
 private extension NSMutableAttributedString {

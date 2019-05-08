@@ -151,6 +151,7 @@ internal enum Asset {
   internal static let loginPassword = ImageAsset(name: "login_password")
   internal static let loginUsername = ImageAsset(name: "login_username")
   internal static let logoText = ImageAsset(name: "logo_text")
+  internal static let melior = ImageAsset(name: "melior")
   internal static let messages = ImageAsset(name: "messages")
   internal static let minus = ImageAsset(name: "minus")
   internal static let minusGray = ImageAsset(name: "minus_gray")
