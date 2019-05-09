@@ -30,6 +30,7 @@ extension Down {
             let string = NSMutableAttributedString(string: markdownString,
                                                    attributes: [.font: CustomFontMetrics.scaledSystemFont(ofSize: baseSize),
                                                                 .foregroundColor: textColor])
+            applyParagraphStyling(string)
             if mentions.isEmpty == false {
                 applyMentions(string, mentions: mentions)
             }
@@ -40,6 +41,7 @@ extension Down {
             let string = NSMutableAttributedString(string: markdownString,
                                                   attributes: [.font: CustomFontMetrics.scaledSystemFont(ofSize: baseSize),
                                                                .foregroundColor: textColor])
+            applyParagraphStyling(string)
             if mentions.isEmpty == false {
                 applyMentions(string, mentions: mentions)
             }
@@ -102,6 +104,13 @@ extension Down {
         }
     }
     
+    private func applyParagraphStyling(_ string: NSMutableAttributedString) {
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 3
+        paragraphStyle.paragraphSpacing = 7
+        string.addAttribute(.paragraphStyle, value: paragraphStyle)
+    }
+    
     private func matchUsernames(text: String) -> [String] {
         do {
             let regex = try NSRegularExpression(pattern: "\\B@[-\\w]+")
@@ -155,8 +164,8 @@ private class HabiticaStyler: Styler {
     func style(customBlock str: NSMutableAttributedString) {}
     func style(paragraph str: NSMutableAttributedString) {
         let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineSpacing = 4
-        paragraphStyle.paragraphSpacing = 8
+        paragraphStyle.lineSpacing = 3
+        paragraphStyle.paragraphSpacing = 7
         str.addAttribute(.paragraphStyle, value: paragraphStyle)
     }
     func style(heading str: NSMutableAttributedString, level: Int) {
