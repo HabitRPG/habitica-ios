@@ -132,6 +132,9 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
                         ToastManager.show(text: L10n.purchased(text), color: .green)
                     }
                 }
+                if #available(iOS 10.0, *) {
+                    UINotificationFeedbackGenerator.oneShotNotificationOccurred(.success)
+                }
             }
         }).map({ habiticaResponse in
             return habiticaResponse?.data

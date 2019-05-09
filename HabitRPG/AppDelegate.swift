@@ -363,6 +363,9 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
     @objc
     func displayNotificationInApp(text: String) {
        ToastManager.show(text: text, color: .purple)
+        if #available(iOS 10.0, *) {
+            UINotificationFeedbackGenerator.oneShotNotificationOccurred(.success)
+        }
     }
     
     @objc
@@ -396,5 +399,18 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
         NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
         // TODO: If necessary send token to application server.
         // Note: This callback is fired at each app startup and whenever a new token is generated.
+    }
+    
+    @objc
+    func displayInAppNotification(taskID: String, text: String) {
+        let alertController = HabiticaAlertController(title: L10n.reminder, message: text)
+        alertController.addCloseAction()
+        alertController.addAction(title: L10n.complete, style: .default, isMainAction: true, closeOnTap: true, identifier: nil) { _ in
+            self.scoreTask(taskID, direction: "up") {}
+        }
+        alertController.show()
+        if #available(iOS 10.0, *) {
+            UINotificationFeedbackGenerator.oneShotNotificationOccurred(.warning)
+        }
     }
 }

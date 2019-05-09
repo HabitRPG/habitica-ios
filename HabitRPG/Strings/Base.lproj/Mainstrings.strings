@@ -303,6 +303,8 @@
 "guilds.leave_guild_description" = "Do you want to leave the guild and keep or leave the challenges?";
 "guilds.keep_challenges" = "Keep challenges";
 "guilds.leave_challenges" = "Leave Challenges";
+"guilds.joined_guild" = "You joined the guild";
+"guilds.left_guild" = "You left the guild";
 "guilds.guild_members" = "Guild Members";
 "guilds.guild_bank" = "Guild Bank";
 "guilds.guild_challenges" = "Guild Challenges";

@@ -40,24 +40,36 @@ public class TaskDifficultyCell: Cell<Float>, CellType {
     private func trivialTapped() {
         row.value = 0.1
         row.updateCell()
+        if #available(iOS 10, *) {
+            UISelectionFeedbackGenerator.oneShotSelectionChanged()
+        }
     }
     
     @objc
     private func easyTapped() {
         row.value = 1
         row.updateCell()
+        if #available(iOS 10, *) {
+            UISelectionFeedbackGenerator.oneShotSelectionChanged()
+        }
     }
     
     @objc
     private func mediumTapped() {
         row.value = 1.5
         row.updateCell()
+        if #available(iOS 10, *) {
+            UISelectionFeedbackGenerator.oneShotSelectionChanged()
+        }
     }
     
     @objc
     private func hardTapped() {
         row.value = 2
         row.updateCell()
+        if #available(iOS 10, *) {
+            UISelectionFeedbackGenerator.oneShotSelectionChanged()
+        }
     }
 
     public override func update() {

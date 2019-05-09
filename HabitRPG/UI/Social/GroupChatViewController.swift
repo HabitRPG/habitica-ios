@@ -186,6 +186,9 @@ class GroupChatViewController: SLKTextViewController {
         self.textView.refreshFirstResponder()
         let message = self.textView.text
         if let message = message, let groupID = self.groupID {
+            if #available(iOS 10.0, *) {
+                UIImpactFeedbackGenerator.oneShotImpactOccurred(.light)
+            }
             socialRepository.post(chatMessage: message, toGroup: groupID).observeResult { (result) in
                 switch result {
                 case .failure:

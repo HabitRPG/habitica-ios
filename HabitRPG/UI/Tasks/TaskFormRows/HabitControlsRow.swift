@@ -43,12 +43,18 @@ class HabitControlsCell: Cell<HabitControlsValue>, CellType {
     private func plusTapped() {
         row.value?.positive = !(row.value?.positive ?? false)
         row.updateCell()
+        if #available(iOS 10, *) {
+            UISelectionFeedbackGenerator.oneShotSelectionChanged()
+        }
     }
     
     @objc
     private func minusTapped() {
         row.value?.negative = !(row.value?.negative ?? false)
         row.updateCell()
+        if #available(iOS 10, *) {
+            UISelectionFeedbackGenerator.oneShotSelectionChanged()
+        }
     }
 
     public override func update() {

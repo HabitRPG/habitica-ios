@@ -826,6 +826,8 @@ public enum L10n {
     public static var inviteToGuild: String { return L10n.tr("Mainstrings", "guilds.invite_to_guild") }
     /// Join Guild
     public static var joinGuild: String { return L10n.tr("Mainstrings", "guilds.join_guild") }
+    /// You joined the guild
+    public static var joinedGuild: String { return L10n.tr("Mainstrings", "guilds.joined_guild") }
     /// Keep challenges
     public static var keepChallenges: String { return L10n.tr("Mainstrings", "guilds.keep_challenges") }
     /// Leave Challenges
@@ -834,6 +836,8 @@ public enum L10n {
     public static var leaveGuildDescription: String { return L10n.tr("Mainstrings", "guilds.leave_guild_description") }
     /// Leave Guild?
     public static var leaveGuildTitle: String { return L10n.tr("Mainstrings", "guilds.leave_guild_title") }
+    /// You left the guild
+    public static var leftGuild: String { return L10n.tr("Mainstrings", "guilds.left_guild") }
   }
 
   public enum Intro {

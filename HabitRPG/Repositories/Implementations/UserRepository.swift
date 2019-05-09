@@ -86,6 +86,9 @@ class UserRepository: BaseRepository<UserLocalRepository> {
                 rightTextColor: UIColor.blue10(),
                 background: .blue)
                 ToastManager.show(toast: toastView)
+                if #available(iOS 10.0, *) {
+                    UINotificationFeedbackGenerator.oneShotNotificationOccurred(.success)
+                }
             })
     }
     

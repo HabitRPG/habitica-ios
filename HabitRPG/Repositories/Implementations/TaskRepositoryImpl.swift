@@ -107,6 +107,10 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
                 ToastManager.show(toast: toastView)
             }
             
+            if #available(iOS 10, *) {
+                UIImpactFeedbackGenerator.oneShotImpactOccurred(.light)
+            }
+            
             if let drop = response.temp?.drop {
                 var dialog = drop.dialog
                 if dialog == nil {

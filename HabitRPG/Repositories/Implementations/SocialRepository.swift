@@ -303,6 +303,10 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
         call.fire()
         return call.objectSignal.on(value: {[weak self]group in
             if let userID = AuthenticationManager.shared.currentUserId {
+                ToastManager.show(text: L10n.Guilds.joinedGuild, color: .green)
+                if #available(iOS 10.0, *) {
+                    UINotificationFeedbackGenerator.oneShotNotificationOccurred(.success)
+                }
                 self?.localRepository.joinGroup(userID: userID, groupID: groupID, group: group)
                 self?.localRepository.deleteGroupInvitation(userID: userID, groupID: groupID)
             }
@@ -314,6 +318,10 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
         call.fire()
         return call.objectSignal.on(value: {[weak self]group in
             if let userID = AuthenticationManager.shared.currentUserId {
+                ToastManager.show(text: L10n.Guilds.leftGuild, color: .green)
+                if #available(iOS 10.0, *) {
+                    UINotificationFeedbackGenerator.oneShotNotificationOccurred(.success)
+                }
                 self?.localRepository.leaveGroup(userID: userID, groupID: groupID, group: group)
             }
         })
@@ -336,8 +344,14 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
             DispatchQueue.main.asyncAfter(wallDeadline: .now()+1) {
                 if let error = response?.message {
                     ToastManager.show(text: error, color: .red)
+                    if #available(iOS 10.0, *) {
+                        UINotificationFeedbackGenerator.oneShotNotificationOccurred(.error)
+                    }
                 } else if response != nil {
-                    ToastManager.show(text: L10n.usersInvited, color: .blue)
+                    ToastManager.show(text: L10n.usersInvited, color: .green)
+                    if #available(iOS 10.0, *) {
+                        UINotificationFeedbackGenerator.oneShotNotificationOccurred(.success)
+                    }
                 }
             }
         }

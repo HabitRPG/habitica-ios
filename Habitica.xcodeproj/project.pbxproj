@@ -260,6 +260,7 @@
 		29A6B86620644CA40086B2A6 /* WeekdayFormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A6B86520644CA40086B2A6 /* WeekdayFormCell.swift */; };
 		29A9B0552280825A0049291E /* BaseUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A9B0542280825A0049291E /* BaseUIViewController.swift */; };
 		29A9B057228082BF0049291E /* BaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A9B056228082BF0049291E /* BaseCollectionViewController.swift */; };
+		29A9B06722843DEB0049291E /* UINotificationFeedbackGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A9B06622843DEB0049291E /* UINotificationFeedbackGenerator.swift */; };
 		29AAA15D1F2A3AA600029737 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AAA15C1F2A3AA600029737 /* GradientView.swift */; };
 		29AAA15F1F2B596900029737 /* SpeechbubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AAA15E1F2B596900029737 /* SpeechbubbleView.swift */; };
 		29AAA1611F2B597400029737 /* SpeechbubbleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29AAA1601F2B597400029737 /* SpeechbubbleView.xib */; };
@@ -857,6 +858,7 @@
 		29A6B86520644CA40086B2A6 /* WeekdayFormCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekdayFormCell.swift; sourceTree = "<group>"; };
 		29A9B0542280825A0049291E /* BaseUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUIViewController.swift; sourceTree = "<group>"; };
 		29A9B056228082BF0049291E /* BaseCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewController.swift; sourceTree = "<group>"; };
+		29A9B06622843DEB0049291E /* UINotificationFeedbackGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINotificationFeedbackGenerator.swift; sourceTree = "<group>"; };
 		29AAA15C1F2A3AA600029737 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		29AAA15E1F2B596900029737 /* SpeechbubbleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechbubbleView.swift; sourceTree = "<group>"; };
 		29AAA1601F2B597400029737 /* SpeechbubbleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpeechbubbleView.xib; sourceTree = "<group>"; };
@@ -2015,6 +2017,7 @@
 				29ED1AFE1F339ACF005A3895 /* UIColor-Extensions.swift */,
 				D9D17CCF1E673CCC00AD9232 /* UIView-Extensions.swift */,
 				29A62B0A216CF4E200D4BD90 /* UIDevice-Extensions.swift */,
+				29A9B06622843DEB0049291E /* UINotificationFeedbackGenerator.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -3530,6 +3533,7 @@
 				2957B8B31F4B2D5A00E836EF /* RewardViewController.swift in Sources */,
 				291448682084FBCF00F3A6B5 /* MountDetailCell.swift in Sources */,
 				29AAA1631F2B6D2000029737 /* SetupViewController.swift in Sources */,
+				29A9B06722843DEB0049291E /* UINotificationFeedbackGenerator.swift in Sources */,
 				29A62B0B216CF4E200D4BD90 /* UIDevice-Extensions.swift in Sources */,
 				29B3FEBC1F9E3B17000B12CF /* HabiticaAlertController.swift in Sources */,
 				4924314E202CD19A00288278 /* ChallengeRewardTableViewCell.swift in Sources */,

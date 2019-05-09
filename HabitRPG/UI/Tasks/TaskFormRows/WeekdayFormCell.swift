@@ -54,36 +54,54 @@ class WeekdayFormCell: Cell<WeekdaysValue>, CellType {
     func mondayTapped() {
         row.value?.monday = !(row.value?.monday ?? false)
         row.updateCell()
+        if #available(iOS 10, *) {
+            UISelectionFeedbackGenerator.oneShotSelectionChanged()
+        }
     }
     
     @objc
     func tuesdayTapped() {
         row.value?.tuesday = !(row.value?.tuesday ?? false)
         row.updateCell()
+        if #available(iOS 10, *) {
+            UISelectionFeedbackGenerator.oneShotSelectionChanged()
+        }
     }
     
     @objc
     func wednesdayTapped() {
         row.value?.wednesday = !(row.value?.wednesday ?? false)
         row.updateCell()
+        if #available(iOS 10, *) {
+            UISelectionFeedbackGenerator.oneShotSelectionChanged()
+        }
     }
     
     @objc
     func thursdayTapped() {
         row.value?.thursday = !(row.value?.thursday ?? false)
         row.updateCell()
+        if #available(iOS 10, *) {
+            UISelectionFeedbackGenerator.oneShotSelectionChanged()
+        }
     }
     
     @objc
     func fridayTapped() {
         row.value?.friday = !(row.value?.friday ?? false)
         row.updateCell()
+        if #available(iOS 10, *) {
+            UISelectionFeedbackGenerator.oneShotSelectionChanged()
+        }
     }
     
     @objc
     func saturdayTapped() {
         row.value?.saturday = !(row.value?.saturday ?? false)
         row.updateCell()
+        if #available(iOS 10, *) {
+            UISelectionFeedbackGenerator.oneShotSelectionChanged()
+        }
     }
     
     @objc

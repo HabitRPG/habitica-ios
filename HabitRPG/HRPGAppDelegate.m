@@ -213,6 +213,7 @@
                        fromType:[notification.userInfo valueForKey:@"taskType"]];
         return;
     }
+    [self.swiftAppDelegate displayInAppNotificationWithTaskID:[notification.userInfo valueForKey:@"taskID"] text:notification.alertBody];
 
     HabiticaAlertController *alertController = [HabiticaAlertController alertWithTitle:objcL10n.reminder message:notification.alertBody];
     [alertController addActionWithTitle:objcL10n.close style:UIAlertActionStyleDefault isMainAction:NO closeOnTap:true identifier:nil handler:nil];
