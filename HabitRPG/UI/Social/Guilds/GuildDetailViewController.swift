@@ -12,8 +12,10 @@ import ReactiveSwift
 
 class GuildDetailViewController: GroupDetailViewController {
     
+    @IBOutlet weak var guildMembersWrapper: UIView!
     @IBOutlet weak var guildMembersLabel: UILabel!
     @IBOutlet weak var guildMembersTitleLabel: UILabel!
+    @IBOutlet weak var guildGemWrapper: UIView!
     @IBOutlet weak var guildGemCountLabel: UILabel!
     @IBOutlet weak var guildGemTitleLabel: UILabel!
     @IBOutlet weak var guildMembersCrestIcon: UIImageView!
@@ -26,6 +28,7 @@ class GuildDetailViewController: GroupDetailViewController {
     @IBOutlet weak var guildLeaderTitleLabel: UILabel!
     @IBOutlet weak var guildChallengesButton: UIButton!
     @IBOutlet weak var guildDescriptionTitleLabel: CollapsibleTitle!
+    @IBOutlet weak var buttonsBackgorundView: UIView!
     
     let numberFormatter = NumberFormatter()
 
@@ -60,6 +63,19 @@ class GuildDetailViewController: GroupDetailViewController {
         }).start())
         
         guildLeaderWrapper.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openGuildLeaderProfile)))
+    }
+    
+    override func applyTheme(theme: Theme) {
+        super.applyTheme(theme: theme)
+        guildMembersWrapper.backgroundColor = theme.contentBackgroundColor
+        guildMembersLabel.textColor = theme.primaryTextColor
+        guildMembersTitleLabel.textColor = theme.primaryTextColor
+        guildGemWrapper.backgroundColor = theme.contentBackgroundColor
+        guildGemCountLabel.textColor = theme.primaryTextColor
+        guildGemTitleLabel.textColor = theme.primaryTextColor
+        buttonsBackgorundView.backgroundColor = theme.contentBackgroundColor
+        guildLeaderTitleLabel.textColor = theme.secondaryTextColor
+        guildChallengesButton.backgroundColor = theme.contentBackgroundColor
     }
     
     override func populateText() {

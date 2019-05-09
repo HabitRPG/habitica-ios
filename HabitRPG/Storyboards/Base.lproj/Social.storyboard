@@ -2024,7 +2024,6 @@
                                                                                 </constraints>
                                                                             </imageView>
                                                                         </subviews>
-                                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" priority="500" constant="24" id="Bgd-LU-y7I"/>
                                                                             <constraint firstAttribute="bottom" secondItem="ZfZ-Mp-g8x" secondAttribute="bottom" constant="2" id="SwN-dM-20a"/>
@@ -2086,7 +2085,6 @@
                                                                                 </constraints>
                                                                             </imageView>
                                                                         </subviews>
-                                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="bottom" secondItem="e3Y-Jr-xC4" secondAttribute="bottom" constant="2" id="5bS-9e-QIN"/>
                                                                             <constraint firstItem="e3Y-Jr-xC4" firstAttribute="leading" secondItem="keB-dO-rLl" secondAttribute="trailing" constant="6" id="Cru-Ed-k6a"/>
@@ -2208,7 +2206,6 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstItem="dqf-HT-q0B" firstAttribute="leading" secondItem="JuB-qY-9Ry" secondAttribute="trailing" constant="12" id="E4a-jp-Dxj"/>
                                                             <constraint firstItem="dqf-HT-q0B" firstAttribute="top" secondItem="fwD-XM-c7N" secondAttribute="top" constant="12" id="IXC-l6-pGt"/>
@@ -2337,6 +2334,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="buttonsBackgorundView" destination="eAc-h8-QYV" id="FeK-IC-jMD"/>
                         <outlet property="gemIconView" destination="keB-dO-rLl" id="lwJ-IL-XMf"/>
                         <outlet property="groupDescriptionStackView" destination="G0x-IZ-Qmk" id="cFc-h0-W8N"/>
                         <outlet property="groupDescriptionTextView" destination="WAF-D1-XAL" id="3OA-Hp-TL7"/>
@@ -2345,6 +2343,7 @@
                         <outlet property="guildDescriptionTitleLabel" destination="kdN-X9-FEY" id="aMU-85-sJK"/>
                         <outlet property="guildGemCountLabel" destination="e3Y-Jr-xC4" id="fcp-mI-aN7"/>
                         <outlet property="guildGemTitleLabel" destination="UrW-r2-Djq" id="g85-Lz-HiC"/>
+                        <outlet property="guildGemWrapper" destination="MGJ-7C-DGx" id="iFx-8l-QsS"/>
                         <outlet property="guildLeaderAvatarView" destination="JuB-qY-9Ry" id="mHj-Xc-2N0"/>
                         <outlet property="guildLeaderNameLabel" destination="dqf-HT-q0B" id="ftO-Vf-WKO"/>
                         <outlet property="guildLeaderTitleLabel" destination="Sqv-0g-s6n" id="6me-Up-1Nw"/>
@@ -2352,6 +2351,7 @@
                         <outlet property="guildMembersCrestIcon" destination="UNq-RH-gKz" id="omh-2y-q2y"/>
                         <outlet property="guildMembersLabel" destination="ZfZ-Mp-g8x" id="ALk-PO-RpS"/>
                         <outlet property="guildMembersTitleLabel" destination="mmD-db-dYd" id="juY-Jz-9vh"/>
+                        <outlet property="guildMembersWrapper" destination="QNN-Jl-P8Y" id="SKh-W6-XMW"/>
                         <outlet property="inviteButton" destination="ftv-T1-K44" id="QJ4-da-56C"/>
                         <outlet property="joinButton" destination="oXc-S6-Df9" id="E0K-ZV-Dkh"/>
                         <outlet property="leaveButton" destination="g8o-zg-Ucv" id="qdw-oD-hRD"/>
@@ -2733,7 +2733,7 @@
         <segue reference="RWA-7r-R8g"/>
         <segue reference="yXa-uT-GhF"/>
         <segue reference="wif-V9-Mcy"/>
-        <segue reference="2EH-Sz-Osv"/>
+        <segue reference="rs9-Lf-2VQ"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.6058621407" green="0.38462612029999999" blue="0.99835687880000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
