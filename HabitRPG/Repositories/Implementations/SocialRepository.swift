@@ -50,6 +50,11 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
     func retrieveGroup(groupID: String) -> Signal<GroupProtocol?, Never> {
         let call = RetrieveGroupCall(groupID: groupID)
         call.fire()
+        call.serverErrorSignal.observeValues { (error) in
+            if error.code == 404 || error.code == 401 {
+                self.localRepository.deleteGroup(groupID: groupID)
+            }
+        }
         return call.objectSignal.on(value: {[weak self]group in
             if let group = group {
                 self?.localRepository.save(group)

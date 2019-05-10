@@ -200,6 +200,20 @@ public class SocialLocalRepository: BaseLocalRepository {
         }
     }
     
+    public func deleteGroup(groupID: String) {
+        guard let realm = getRealm() else {
+            return
+        }
+        let guild = realm.object(ofType: RealmGroup.self, forPrimaryKey: groupID)
+        let messages = realm.objects(RealmChatMessage.self).filter("groupID == %@", groupID)
+        updateCall({ (realm) in
+            if let guild = guild {
+                realm.delete(guild)
+            }
+            realm.delete(messages)
+        })
+    }
+    
     public func joinChallenge(userID: String, challengeID: String, challenge: ChallengeProtocol?) {
         updateCall { realm in
             realm.add(RealmChallengeMembership(userID: userID, challengeID: challengeID), update: true)
@@ -248,7 +262,7 @@ public class SocialLocalRepository: BaseLocalRepository {
     }
     
     public func getChallengeTasks(challengeID: String) -> SignalProducer<ReactiveResults<[TaskProtocol]>, ReactiveSwiftRealmError> {
-        return RealmTask.findBy(query: "userID == '\(challengeID)'").reactive().map({ (value, changeset) -> ReactiveResults<[TaskProtocol]> in
+        return RealmTask.findBy(query: "ownerID == '\(challengeID)'").reactive().map({ (value, changeset) -> ReactiveResults<[TaskProtocol]> in
             return (value.map({ (task) -> TaskProtocol in return task }), changeset)
         })
     }
