@@ -39,6 +39,8 @@ class UserProfileViewController: BaseTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        topHeaderCoordinator?.hideHeader = true
+        topHeaderCoordinator.followScrollView = false
         
         refresh()
         
@@ -209,14 +211,22 @@ class UserProfileViewController: BaseTableViewController {
         levelLabel?.text = L10n.levelNumber(stats.level)
         
         let healthLabel = cell.viewWithTag(2) as? HRPGLabeledProgressBar
-        healthLabel?.color = UIColor.red100()
+        if ThemeService.shared.theme.isDark {
+            healthLabel?.color = UIColor.red50()
+        } else {
+            healthLabel?.color = UIColor.red100()
+        }
         healthLabel?.icon = HabiticaIcons.imageOfHeartLightBg
         healthLabel?.type = L10n.health
         healthLabel?.value = NSNumber(value: stats.health)
         healthLabel?.maxValue = NSNumber(value: stats.maxHealth)
         
         let experienceLabel = cell.viewWithTag(3) as? HRPGLabeledProgressBar
-        experienceLabel?.color = UIColor.yellow100()
+        if ThemeService.shared.theme.isDark {
+            experienceLabel?.color = UIColor.yellow50()
+        } else {
+            experienceLabel?.color = UIColor.yellow100()
+        }
         experienceLabel?.icon = HabiticaIcons.imageOfExperience
         experienceLabel?.type = L10n.experience
         experienceLabel?.value = NSNumber(value: stats.experience)
@@ -224,7 +234,11 @@ class UserProfileViewController: BaseTableViewController {
         
         let magicLabel = cell.viewWithTag(4) as? HRPGLabeledProgressBar
         if stats.level >= 10 {
-            magicLabel?.color = UIColor.blue100()
+            if ThemeService.shared.theme.isDark {
+                magicLabel?.color = UIColor.blue50()
+            } else {
+                magicLabel?.color = UIColor.blue100()
+            }
             magicLabel?.icon = HabiticaIcons.imageOfMagic
             magicLabel?.type = L10n.mana
             magicLabel?.value = NSNumber(value: stats.mana)

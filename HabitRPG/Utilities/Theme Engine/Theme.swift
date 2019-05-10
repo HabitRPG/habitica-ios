@@ -21,6 +21,7 @@ public protocol Theme {
     var tableviewSeparatorColor: UIColor { get }
     
     var dimmedColor: UIColor { get }
+    var dimmBackgroundColor: UIColor { get }
     
     var navbarHiddenColor: UIColor { get }
     
@@ -51,6 +52,7 @@ extension Theme {
     public var tableviewSeparatorColor: UIColor { return UIColor.gray500() }
     
     public var dimmedColor: UIColor { return UIColor.gray500() }
+    public var dimmBackgroundColor: UIColor { return UIColor.purple50() }
     
     public var navbarHiddenColor: UIColor { return backgroundTintColor }
     

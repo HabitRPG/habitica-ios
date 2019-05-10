@@ -123,7 +123,7 @@ class HabiticaAlertController: UIViewController, Themeable {
     }
     
     func applyTheme(theme: Theme) {
-        view.backgroundColor = theme.backgroundTintColor.darker(by: 50).withAlphaComponent(0.6)
+        view.backgroundColor = theme.dimmBackgroundColor.withAlphaComponent(0.7)
         buttonContainerView.backgroundColor = theme.contentBackgroundColor
         buttonBackgroundView.backgroundColor = theme.tintColor.withAlphaComponent(0.05)
         alertBackgroundView.backgroundColor = theme.contentBackgroundColor
@@ -286,6 +286,7 @@ class HabiticaAlertController: UIViewController, Themeable {
         if closeButton != nil {
             closeButton.isHidden = closeAction == nil
             closeButton.setTitle(closeTitle, for: .normal)
+            closeButton.tintColor = ThemeService.shared.theme.tintColor
         }
     }
     

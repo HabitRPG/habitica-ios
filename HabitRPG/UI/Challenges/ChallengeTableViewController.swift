@@ -12,7 +12,7 @@ import ReactiveSwift
 import ReactiveCocoa
 import Habitica_Models
 
-class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate, ChallengeFilterChangedDelegate {
+class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate, ChallengeFilterChangedDelegate {
     
     var selectedChallenge: ChallengeProtocol?
 
@@ -43,7 +43,7 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate,
         
         self.tableView.tableHeaderView = searchbar
         
-        filterButton.setImage(HabiticaIcons.imageOfFilterIcon(), for: .normal)
+        filterButton.setImage(HabiticaIcons.imageOfFilterIcon().withRenderingMode(.alwaysTemplate), for: .normal)
         filterButton.addTarget(self, action: #selector(filterTapped(_:)), for: .touchUpInside)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: filterButton)
         
@@ -68,6 +68,11 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate,
         dataSource.tableView = self.tableView
         
         segmentedFilterControl.selectedSegmentIndex = 0
+    }
+    
+    override func applyTheme(theme: Theme) {
+        super.applyTheme(theme: theme)
+        navigationItem.rightBarButtonItem?.tintColor = theme.tintColor
     }
 
     override func viewWillAppear(_ animated: Bool) {

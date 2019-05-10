@@ -55,7 +55,6 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
     @objc
     func setupPopups() {
         let appearance = PopupDialogOverlayView.appearance()
-        appearance.color = UIColor.purple50()
         appearance.opacity = 0.6
         appearance.blurEnabled = false
         let dialogAppearance = PopupDialogDefaultView.appearance()

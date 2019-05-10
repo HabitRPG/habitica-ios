@@ -38,15 +38,12 @@ class UserTopHeader: UIView, Themeable {
     override func awakeFromNib() {
         super.awakeFromNib()
     
-        healthLabel.color = UIColor.red100()
         healthLabel.icon = HabiticaIcons.imageOfHeartLightBg
         healthLabel.type = L10n.health
         
-        experienceLabel.color = UIColor.yellow100()
         experienceLabel.icon = HabiticaIcons.imageOfExperience
         experienceLabel.type = L10n.experience
         
-        magicLabel.color = UIColor.blue100()
         magicLabel.icon = HabiticaIcons.imageOfMagic
         magicLabel.type = L10n.mana
         
@@ -98,6 +95,16 @@ class UserTopHeader: UIView, Themeable {
         magicLabel.textColor = theme.primaryTextColor
         magicLabel.backgroundColor = theme.contentBackgroundColor
         magicLabel.progressBar.barBackgroundColor = theme.contentBackgroundColorDimmed
+        
+        if theme.isDark {
+            healthLabel.color = UIColor.red50()
+            experienceLabel.color = UIColor.yellow50()
+            magicLabel.color = UIColor.blue50()
+        } else {
+            healthLabel.color = UIColor.red100()
+            experienceLabel.color = UIColor.yellow100()
+            magicLabel.color = UIColor.blue100()
+        }
     }
     
     private func set(user: UserProtocol) {

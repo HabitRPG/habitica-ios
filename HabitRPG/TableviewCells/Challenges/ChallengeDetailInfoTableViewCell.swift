@@ -15,6 +15,8 @@ class ChallengeDetailInfoTableViewCell: UITableViewCell, ChallengeConfigurable {
     @IBOutlet weak var rewardCurrencyCountView: HRPGCurrencyCountView!
     @IBOutlet weak var participantsLabel: UILabel!
     @IBOutlet weak var tagHolderView: UIView!
+    @IBOutlet weak var participantsWrapper: UIView!
+    @IBOutlet weak var prizeWrapper: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,6 +31,11 @@ class ChallengeDetailInfoTableViewCell: UITableViewCell, ChallengeConfigurable {
         
         tagHolderView.translatesAutoresizingMaskIntoConstraints = false
         addTags(for: challenge)
+        
+        let theme = ThemeService.shared.theme
+        contentView.backgroundColor = theme.windowBackgroundColor
+        participantsWrapper.backgroundColor = theme.contentBackgroundColor
+        prizeWrapper.backgroundColor = theme.contentBackgroundColor
     }
     
     func addTags(for challenge: ChallengeProtocol) {
@@ -107,7 +114,7 @@ class ChallengeDetailInfoTableViewCell: UITableViewCell, ChallengeConfigurable {
         let label = emptyTagLabel()
         label.text = "  \(shortName.unicodeEmoji)  "
         label.textColor = UIColor.gray200()
-        label.backgroundColor = UIColor.gray600()
+        label.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
         
         return label
     }

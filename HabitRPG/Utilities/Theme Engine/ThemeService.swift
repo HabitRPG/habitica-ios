@@ -8,6 +8,7 @@
 
 import UIKit
 import Eureka
+import PopupDialog
 
 @objc
 public class ThemeService: NSObject {
@@ -80,6 +81,9 @@ public class ThemeService: NSObject {
         UITableView.appearance().backgroundColor = theme.windowBackgroundColor
         UITableView.appearance().separatorColor = theme.tableviewSeparatorColor
         UICollectionView.appearance().backgroundColor = theme.windowBackgroundColor
+        
+        let appearance = PopupDialogOverlayView.appearance()
+        appearance.color = theme.dimmBackgroundColor
         
         let view = UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self])
         view.tintColor = theme.tintColor

@@ -17,6 +17,12 @@ protocol ChallengeFilterChangedDelegate: class {
 
 class ChallengeFilterAlert: UIViewController, Themeable {
 
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var topSeparator: UIView!
+    @IBOutlet weak var middleSeparator: UIView!
+    @IBOutlet weak var groupsTitleLabel: UILabel!
+    @IBOutlet weak var ownershipTitleLabel: UILabel!
+    
     @IBOutlet weak private var doneButton: UIButton!
     @IBOutlet weak private var allGroupsButton: UIButton!
     @IBOutlet weak private var noGroupsButton: UIButton!
@@ -43,11 +49,19 @@ class ChallengeFilterAlert: UIViewController, Themeable {
     }
     
     func applyTheme(theme: Theme) {
+        view.backgroundColor = theme.contentBackgroundColor
+        titleLabel.textColor = theme.primaryTextColor
+        topSeparator.backgroundColor = theme.separatorColor
+        middleSeparator.backgroundColor = theme.separatorColor
+        groupsTitleLabel.textColor = theme.ternaryTextColor
+        ownershipTitleLabel.textColor = theme.ternaryTextColor
         doneButton.setTitleColor(theme.tintColor, for: .normal)
         allGroupsButton.setTitleColor(theme.tintColor, for: .normal)
         noGroupsButton.setTitleColor(theme.tintColor, for: .normal)
         ownedButton.tintColor = theme.tintColor
+        ownedButton.textColor = theme.primaryTextColor
         notOwnedButton.tintColor = theme.tintColor
+        notOwnedButton.textColor = theme.primaryTextColor
         groupListView.arrangedSubviews.forEach { (view) in
             if let checkview = view as? LabeledCheckboxView {
                 checkview.tintColor = theme.tintColor
@@ -131,7 +145,7 @@ class ChallengeFilterAlert: UIViewController, Themeable {
             }
             groupView.isChecked = shownGuilds.contains(groupID)
             groupView.numberOfLines = 0
-            groupView.textColor = UIColor(white: 0, alpha: 0.5)
+            groupView.textColor = ThemeService.shared.theme.secondaryTextColor
             groupView.tintColor = ThemeService.shared.theme.tintColor
             groupView.checkedAction = { [weak self] isChecked in
                 if isChecked {

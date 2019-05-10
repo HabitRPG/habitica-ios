@@ -85,7 +85,14 @@ class GroupInvitationView: UIView {
         addSubview(acceptButton)
         addSubview(separatorView)
         
-        backgroundColor = UIColor.blue100()
+        let theme = ThemeService.shared.theme
+        if theme.isDark {
+            backgroundColor = UIColor.blue10()
+        } else {
+            backgroundColor = UIColor.blue100()
+        }
+        acceptButton.backgroundColor = theme.contentBackgroundColor
+        declineButton.backgroundColor = theme.contentBackgroundColor
     }
     
     func set(invitation: GroupInvitationProtocol) {

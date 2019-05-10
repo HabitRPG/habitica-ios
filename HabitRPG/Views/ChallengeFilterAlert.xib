@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,9 +15,14 @@
                 <outlet property="allGroupsButton" destination="NYk-ki-ylf" id="vHH-ns-qjy"/>
                 <outlet property="doneButton" destination="xiO-DA-hFh" id="D7f-GU-gfa"/>
                 <outlet property="groupListView" destination="Mxr-wB-rfG" id="kbO-1G-7Af"/>
+                <outlet property="groupsTitleLabel" destination="Uut-nF-9j5" id="1Tj-bt-DGK"/>
                 <outlet property="heightConstraint" destination="rxx-Tv-GXn" id="Ko5-qS-UKx"/>
+                <outlet property="middleSeparator" destination="wWF-8E-u3J" id="aAE-qU-78x"/>
                 <outlet property="notOwnedButton" destination="tn7-Ob-POT" id="RZu-Kd-N85"/>
                 <outlet property="ownedButton" destination="obx-BP-Btf" id="cvc-Gi-omK"/>
+                <outlet property="ownershipTitleLabel" destination="bnc-7M-J7M" id="T34-vC-0eU"/>
+                <outlet property="titleLabel" destination="ZI2-9S-IzK" id="hAR-Ts-z6B"/>
+                <outlet property="topSeparator" destination="1iV-ne-ksQ" id="SIf-CO-RS3"/>
                 <outlet property="view" destination="iN0-l3-epB" id="7KS-fG-XwV"/>
             </connections>
         </placeholder>
@@ -94,7 +99,6 @@
                                 </button>
                                 <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Mxr-wB-rfG" customClass="UIStackView">
                                     <rect key="frame" x="16" y="62" width="343" height="25"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" priority="500" constant="128" id="s87-Ti-iWi"/>
                                     </constraints>
@@ -134,7 +138,6 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstItem="wWF-8E-u3J" firstAttribute="leading" secondItem="Zbu-Lv-kTO" secondAttribute="leading" constant="16" id="0Qe-pX-H0k"/>
                                 <constraint firstAttribute="height" priority="501" constant="211" id="0vi-D0-rUi"/>

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MultiModelTableViewController: HRPGBaseViewController {
+class MultiModelTableViewController: BaseTableViewController {
     let dataSource: MultiModelDataSource = MultiModelDataSource()
 
     override func viewDidLoad() {

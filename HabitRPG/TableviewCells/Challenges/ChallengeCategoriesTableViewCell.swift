@@ -51,8 +51,8 @@ class ChallengeCategoriesTableViewCell: ResizableTableViewCell, ChallengeConfigu
     func createCategoryLabel(_ category: String) -> UILabel {
         let label = emptyTagLabel()
         label.text = "  \(category)  "
-        label.textColor = UIColor.gray200()
-        label.backgroundColor = UIColor.gray600()
+        label.textColor = ThemeService.shared.theme.ternaryTextColor
+        label.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
         label.translatesAutoresizingMaskIntoConstraints = false
         label.sizeToFit()
         return label

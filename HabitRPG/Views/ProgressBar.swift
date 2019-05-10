@@ -35,7 +35,7 @@ class ProgressBar: UIView {
             setNeedsDisplay()
         }
     }
-    @objc var barBackgroundColor: UIColor = UIColor.gray600() {
+    @objc var barBackgroundColor: UIColor = ThemeService.shared.theme.offsetBackgroundColor {
         didSet {
             setNeedsDisplay()
         }
