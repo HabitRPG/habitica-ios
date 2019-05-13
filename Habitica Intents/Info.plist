@@ -28,9 +28,9 @@
 			<array/>
 			<key>IntentsSupported</key>
 			<array>
-				<string>INSendMessageIntent</string>
-				<string>INSearchForMessagesIntent</string>
-				<string>INSetMessageAttributeIntent</string>
+				<string>INSetTaskAttributeIntent</string>
+				<string>INAddTasksIntent</string>
+				<string>INSearchForNotebookItemsIntent</string>
 			</array>
 		</dict>
 		<key>NSExtensionPointIdentifier</key>
