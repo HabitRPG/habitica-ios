@@ -82,6 +82,7 @@ public class AuthenticatedCall: JsonNetworkCall {
     public override func fire() {
         if needsAuthentication {
             if NetworkAuthenticationManager.shared.currentUserId == nil {
+                print("User ID is not set in authentication")
                 return
             }
         }
