@@ -16,7 +16,8 @@ import Habitica_API_Client
 class AuthenticationManager: NSObject {
     
     @objc static let shared = AuthenticationManager()
-    
+    let localKeychain = Keychain(service: "com.chabitrpg.ios.Habitica", accessGroup: "HabiticaIntent.shared")
+
     private var keychain: Keychain {
         return Keychain(server: "https://habitica.com", protocolType: .https)
             .accessibility(.afterFirstUnlock)
@@ -24,13 +25,14 @@ class AuthenticationManager: NSObject {
     
     @objc var currentUserId: String? {
         get {
-            let defaults = UserDefaults.standard
-            return defaults.string(forKey: "currentUserId")
+            let defaults = UserDefaults(suiteName: "group.chabitica.TasksSiri")
+            return defaults?.string(forKey: "currentUserId")
         }
         
         set(newUserId) {
-            let defaults = UserDefaults.standard
-            defaults.set(newUserId, forKey: "currentUserId")
+            let defaults = UserDefaults(suiteName: "group.chabitica.TasksSiri")
+            defaults?.set(newUserId, forKey: "currentUserId")
+            defaults?.synchronize()
             NetworkAuthenticationManager.shared.currentUserId = newUserId
             currentUserIDProperty.value = newUserId
             if newUserId != nil {
@@ -46,6 +48,7 @@ class AuthenticationManager: NSObject {
     @objc var currentUserKey: String? {
         get {
             if let userId = currentUserId {
+                localKeychain[userId] = keychain[userId]
                 return keychain[userId]
             }
             return nil
@@ -53,6 +56,7 @@ class AuthenticationManager: NSObject {
         
         set(newKey) {
             if let userId = currentUserId {
+                localKeychain[userId] = newKey
                 keychain[userId] = newKey
             }
             NetworkAuthenticationManager.shared.currentUserKey = newKey
@@ -76,6 +80,7 @@ class AuthenticationManager: NSObject {
     func setAuthentication(userId: String, key: String) {
         currentUserId = userId
         currentUserKey = key
+        localKeychain[userId] = key
     }
     
     @objc

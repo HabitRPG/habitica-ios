@@ -35,7 +35,7 @@ class IntentHandler: INExtension, INAddTasksIntentHandling, INSearchForNotebookI
         let response = INSearchForNotebookItemsIntentResponse(code: .success, userActivity: userActivity)
         // Initialize with found message's attributes
         response.tasks = []
-        TaskManager.sharedInstance.tasksForList(withName: "todo", oncompletion: {(taskTitles) in
+        TaskManager.shared.tasksForList(withName: "todo", oncompletion: {(taskTitles) in
             for taskTitle in taskTitles {
                 response.tasks?.append(INTask(
                     title: INSpeakableString(spokenPhrase: taskTitle),
@@ -70,13 +70,17 @@ class IntentHandler: INExtension, INAddTasksIntentHandling, INSearchForNotebookI
     
     func handle(intent: INAddTasksIntent, completion: @escaping (INAddTasksIntentResponse) -> Void) {
         let userActivity = NSUserActivity(activityType: NSStringFromClass(INAddTasksIntent.self))
-        let taskList = intent.targetTaskList
-        // TODO assume todo list if not specified
-        
-        guard let title = taskList?.title else {
+        guard let targetTaskList = intent.targetTaskList?.title else {
             completion(INAddTasksIntentResponse(code: .failure, userActivity: nil))
             return
         }
+        // return with failure if it's not the todo list
+        if targetTaskList.spokenPhrase != "todo" {
+            completion(INAddTasksIntentResponse(code: .failure, userActivity: nil))
+            print("Could not add to this list")
+            return
+        }
+        // add to the given list
         var tasks: [INTask] = []
         if let taskTitles = intent.taskTitles {
             let taskTitlesStrings = taskTitles.map {
@@ -84,7 +88,7 @@ class IntentHandler: INExtension, INAddTasksIntentHandling, INSearchForNotebookI
                 return taskTitle.spokenPhrase
             }
             tasks = createTasks(fromTitles: taskTitlesStrings)
-            TaskManager.sharedInstance.add(tasks: taskTitlesStrings, type: title.spokenPhrase, oncompletion: {
+            TaskManager.shared.add(tasks: taskTitlesStrings, type: targetTaskList.spokenPhrase, oncompletion: {
                 // to require app launch
                 //let response = INAddTasksIntentResponse(code: .failureRequiringAppLaunch, userActivity: nil)
                 let response = INAddTasksIntentResponse(code: .success, userActivity: nil)

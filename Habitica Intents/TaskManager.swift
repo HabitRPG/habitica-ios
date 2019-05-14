@@ -15,20 +15,14 @@ import Habitica_Models
 
 
 class TaskManager: BaseRepository<TaskLocalRepository>, TaskRepositoryProtocol {
-    // TODO remove, not using shared defaults anymore
-    //static let GroupId = "group.chabitica.TasksSiri"
-    //let sharedDefaults = UserDefaults(suiteName: TaskManager.GroupId)
-    
-    // setting things because I don't know how to get them
-    let userKey = "4688587f-7910-42ae-ac91-94fbf3c95942"
-    
-    static let sharedInstance = TaskManager()
+    static let shared = TaskManager()
     
     override init() {
         super.init()
         self.setupNetworkClient()
-        AuthenticationManager.shared.currentUserId = "b8e592e4-b686-4582-bd26-5e173ecd9875"
-        AuthenticationManager.shared.currentUserKey = self.userKey
+        if let cid = AuthenticationManager.shared.currentUserId {
+            AuthenticationManager.shared.currentUserKey = AuthenticationManager.shared.localKeychain[cid]
+        }
         print("Auth at start id, ", AuthenticationManager.shared.currentUserId)
         print("Auth at start key, ", AuthenticationManager.shared.currentUserKey)
     }
