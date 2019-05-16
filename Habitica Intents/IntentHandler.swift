@@ -68,6 +68,33 @@ class IntentHandler: INExtension, INAddTasksIntentHandling, INSearchForNotebookI
         return tasks
     }
     
+    func resolveTargetTaskList(for intent: INAddTasksIntent, with completion: @escaping (INTaskListResolutionResult) -> Void) {
+        let result: INTaskListResolutionResult
+        //, INTaskList(title: INSpeakableString(spokenPhrase: "todo"), tasks: [])
+        let list = ["todo", "habits", "dalies"]
+        var possibleNames: [INTaskList] = list.map {
+            return INTaskList(title: INSpeakableString(spokenPhrase: $0),
+                              tasks: [],
+                              groupName: nil,
+                              createdDateComponents: nil,
+                              modifiedDateComponents: nil,
+                              identifier: "com.habitica."+$0)}
+        //let task = INTaskList(title: INSpeakableString(spokenPhrase: "habits"), tasks: tasks)
+        if let taskList = intent.targetTaskList {
+            if list.contains(taskList.title.spokenPhrase) {
+                result = INTaskListResolutionResult.success(with: taskList)
+            }
+            else {
+                result = INTaskListResolutionResult.disambiguation(with: possibleNames)
+            }
+        }
+        else {
+            result = INTaskListResolutionResult.needsValue()
+        }
+        
+        completion(result)
+    }
+    
     func handle(intent: INAddTasksIntent, completion: @escaping (INAddTasksIntentResponse) -> Void) {
         let userActivity = NSUserActivity(activityType: NSStringFromClass(INAddTasksIntent.self))
         guard let targetTaskList = intent.targetTaskList?.title else {
