@@ -25,12 +25,12 @@ class AuthenticationManager: NSObject {
     
     @objc var currentUserId: String? {
         get {
-            let defaults = UserDefaults(suiteName: "group.chabitica")
+            let defaults = UserDefaults(suiteName: "group.habitica")
             return defaults?.string(forKey: "currentUserId")
         }
         
         set(newUserId) {
-            let defaults = UserDefaults(suiteName: "group.chabitica")
+            let defaults = UserDefaults(suiteName: "group.habitica")
             defaults?.set(newUserId, forKey: "currentUserId")
             defaults?.synchronize()
             NetworkAuthenticationManager.shared.currentUserId = newUserId
