@@ -305,7 +305,7 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         return call.objectSignal.on(value: handleUserUpdate())
     }
     
-    func selectClass(_ habiticaClass: HabiticaClass) -> Signal<UserProtocol?, Never> {
+    func selectClass(_ habiticaClass: HabiticaClass? = nil) -> Signal<UserProtocol?, Never> {
         let call = SelectClassCall(class: habiticaClass)
         call.fire()
         return call.objectSignal.on(value: handleUserUpdate())
