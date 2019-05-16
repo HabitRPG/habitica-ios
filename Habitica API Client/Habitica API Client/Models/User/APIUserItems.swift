@@ -52,7 +52,7 @@ public class APIUserItems: UserItemsProtocol, Decodable {
         ownedHatchingPotions = (hatchingPotionsDict?.map({ (key, numberOwned) -> OwnedItemProtocol in
             return APIOwnedItem(key: key, numberOwned: numberOwned, itemType: ItemType.hatchingPotions.rawValue)
         })) ?? []
-        let eggsDict = try?values.decode([String: Int].self, forKey: .ownedEggs)
+        let eggsDict = try? values.decode([String: Int].self, forKey: .ownedEggs)
         ownedEggs = (eggsDict?.map({ (key, numberOwned) -> OwnedItemProtocol in
             return APIOwnedItem(key: key, numberOwned: numberOwned, itemType: ItemType.eggs.rawValue)
         })) ?? []

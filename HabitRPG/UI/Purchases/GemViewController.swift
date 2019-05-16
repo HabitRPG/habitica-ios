@@ -14,13 +14,15 @@ import Keys
 import ReactiveSwift
 import Habitica_Models
 
-class GemViewController: BaseCollectionViewController {
+class GemViewController: BaseCollectionViewController, SeedsInterstitialsEventProtocol {
+
     
     var products: [SKProduct]?
     var user: UserProtocol?
     var expandedList = [Bool](repeating: false, count: 4)
     
     private let userRepository = UserRepository()
+    private let configRepository = ConfigRepository()
     private let disposable = ScopedDisposable(CompositeDisposable())
     
     var isSubscribed = false
@@ -41,16 +43,20 @@ class GemViewController: BaseCollectionViewController {
         disposable.inner.add(userRepository.getUser().on(value: {[weak self]user in
             self?.user = user
         }).start())
+        
+        Seeds.initWithAppKey(HabiticaKeys().seedsReleaseApiKey)
+        Seeds.interstitials()?.fetch(withId: HabiticaKeys().seedsReleaseGemsInterstitial)
+        Seeds.interstitials()?.setEventsHandler(self)
     }
     
     func retrieveProductList() {
         SwiftyStoreKit.retrieveProductsInfo(Set(PurchaseHandler.IAPIdentifiers)) { (result) in
             self.products = Array(result.retrievedProducts)
             self.products?.sort(by: { (product1, product2) -> Bool in
-                guard let firstIndex = PurchaseHandler.IAPIdentifiers.index(of: product1.productIdentifier) else {
+                guard let firstIndex = PurchaseHandler.IAPIdentifiers.firstIndex(of: product1.productIdentifier) else {
                     return false
                 }
-                guard let secondIndex = PurchaseHandler.IAPIdentifiers.index(of: product2.productIdentifier) else {
+                guard let secondIndex = PurchaseHandler.IAPIdentifiers.firstIndex(of: product2.productIdentifier) else {
                     return true
                 }
                 return firstIndex < secondIndex
@@ -106,7 +112,9 @@ class GemViewController: BaseCollectionViewController {
             cell.setGemAmount(42)
         } else if product.productIdentifier == "com.habitrpg.ios.Habitica.84gems" {
             cell.setGemAmount(84)
-            cell.showSeedsPromo(false)
+            cell.showSeedsPromo(configRepository.bool(variable: .showSeedsPromo))
+            cell.seeds_promo.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showSeedsPromo)))
+
         }
         
         cell.setPurchaseTap {[weak self] (purchaseButton) in
@@ -158,4 +166,26 @@ class GemViewController: BaseCollectionViewController {
         }
     }
     
+    func interstitialDidClick(_ interstitial: SeedsInterstitial!) {
+        purchaseGems(identifier: "com.habitrpg.ios.Habitica.84gems")
+    }
+    
+    func interstitialDidShow(_ interstitial: SeedsInterstitial!) {
+        Amplitude.instance()?.logEvent("opened seeds promo")
+    }
+    
+    func interstitialDidLoad(_ interstitial: SeedsInterstitial!) {
+    }
+    
+    func interstitialDidClose(_ interstitial: SeedsInterstitial!) {
+    }
+    
+    func interstitial(_ interstitialId: String!, error: Error!) {
+    }
+    
+    @objc
+    private func showSeedsPromo() {
+        let promoID = HabiticaKeys().seedsReleaseGemsInterstitial
+        Seeds.interstitials()?.show(withId: promoID, on: self, inContext: "")
+    }
 }
