@@ -91,6 +91,10 @@ class TaskManager: BaseRepository<TaskLocalRepository>, TaskRepositoryProtocol {
          may be a better solution to handle the project inegration, to avoid the duplicate
          code, but it's beyond what I know regarding swift project setup. Alternatively,
          we could separate the code, but that doesn't seem like a call I should make.
+         
+         Adding TaskManagerImpl directly causes there to be a chain of inclusions which
+         leads to inclusions of many of the UI elements as well. This seemed like to many
+         dependencies for these two functions.
          - Chris Coffin
          */
         return currentUserIDProducer.skipNil().flatMap(.latest, {[weak self] (userID) in
@@ -105,6 +109,10 @@ class TaskManager: BaseRepository<TaskLocalRepository>, TaskRepositoryProtocol {
          may be a better solution to handle the project inegration, to avoid the duplicate
          code, but it's beyond what I know regarding swift project setup. Alternatively,
          we could separate the code, but that doesn't seem like a call I should make.
+         
+         Adding TaskManagerImpl directly causes there to be a chain of inclusions which
+         leads to inclusions of many of the UI elements as well. This seemed like to many
+         dependencies for these two functions.
          - Chris Coffin
          */
         let call = RetrieveTasksCall(dueOnDay: dueOnDay)//, type: "todo"
@@ -169,9 +177,9 @@ class TaskManager: BaseRepository<TaskLocalRepository>, TaskRepositoryProtocol {
         // create a blank task
         let task = localRepository.getNewTask()
         // set title and text as that's all we know about from a simple comm
-        // Comment for code review, TODO remove, anything I'm missing?
         task.text = title
         task.type = type
+        // notes and start date specified for the sake of adding habits
         task.notes = ""
         task.startDate = Date()
         // actually add the task and start it syncing with server
