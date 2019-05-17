@@ -70,22 +70,13 @@ class IntentHandler: INExtension, INAddTasksIntentHandling, INSearchForNotebookI
     
     func resolveTargetTaskList(for intent: INAddTasksIntent, with completion: @escaping (INTaskListResolutionResult) -> Void) {
         let result: INTaskListResolutionResult
-        //, INTaskList(title: INSpeakableString(spokenPhrase: "todo"), tasks: [])
-        let list = ["todo", "habits", "dalies"]
-        var possibleNames: [INTaskList] = list.map {
-            return INTaskList(title: INSpeakableString(spokenPhrase: $0),
-                              tasks: [],
-                              groupName: nil,
-                              createdDateComponents: nil,
-                              modifiedDateComponents: nil,
-                              identifier: "com.habitica."+$0)}
         //let task = INTaskList(title: INSpeakableString(spokenPhrase: "habits"), tasks: tasks)
         if let taskList = intent.targetTaskList {
-            if list.contains(taskList.title.spokenPhrase) {
+            if TaskManager.shared.isValidTaskList(taskList: taskList) {
                 result = INTaskListResolutionResult.success(with: taskList)
             }
             else {
-                result = INTaskListResolutionResult.disambiguation(with: possibleNames)
+                result = INTaskListResolutionResult.disambiguation(with: TaskManager.shared.possibleTaskLists)
             }
         }
         else {
@@ -98,13 +89,8 @@ class IntentHandler: INExtension, INAddTasksIntentHandling, INSearchForNotebookI
     func handle(intent: INAddTasksIntent, completion: @escaping (INAddTasksIntentResponse) -> Void) {
         let userActivity = NSUserActivity(activityType: NSStringFromClass(INAddTasksIntent.self))
         guard let targetTaskList = intent.targetTaskList?.title else {
+            print("Could not find a target task list")
             completion(INAddTasksIntentResponse(code: .failure, userActivity: nil))
-            return
-        }
-        // return with failure if it's not the todo list
-        if targetTaskList.spokenPhrase != "todo" {
-            completion(INAddTasksIntentResponse(code: .failure, userActivity: nil))
-            print("Could not add to this list")
             return
         }
         // add to the given list
