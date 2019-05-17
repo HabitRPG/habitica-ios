@@ -11,13 +11,22 @@ import Habitica_API_Client
 import Habitica_Database
 import ReactiveSwift
 import Habitica_Models
-//import Result
+import Intents
 
 
 class TaskManager: BaseRepository<TaskLocalRepository>, TaskRepositoryProtocol {
     static let shared = TaskManager()
+    let possibleListNames = ["todo", "habit", "daily"]
+    var possibleTaskLists: [INTaskList]
     
     override init() {
+        self.possibleTaskLists = self.possibleListNames.map {
+            return INTaskList(title: INSpeakableString(spokenPhrase: $0),
+                              tasks: [],
+                              groupName: nil,
+                              createdDateComponents: nil,
+                              modifiedDateComponents: nil,
+                              identifier: "com.habitica."+$0)}
         super.init()
         self.setupNetworkClient()
         if let cid = AuthenticationManager.shared.currentUserId {
@@ -25,6 +34,10 @@ class TaskManager: BaseRepository<TaskLocalRepository>, TaskRepositoryProtocol {
         }
         print("Auth at start id, ", AuthenticationManager.shared.currentUserId)
         print("Auth at start key, ", AuthenticationManager.shared.currentUserKey)
+    }
+    
+    func isValidTaskList(taskList: INTaskList) -> Bool {
+        return self.possibleListNames.contains(taskList.title.spokenPhrase)
     }
     
     @objc
@@ -146,15 +159,10 @@ class TaskManager: BaseRepository<TaskLocalRepository>, TaskRepositoryProtocol {
     
     func add(tasks: [String], type: String, oncompletion: @escaping () -> Void) {
         // validate that it's a known list, so far just todo's are supported, could add habits and dailies
-        if (type.lowercased() == "todo") {
-            tasks.forEach({(title) in
-                createTask(title: title, type: type).observeCompleted {}
-            })
-            oncompletion()
-        }
-        else {
-            // TODO send an error to on completion
-        }
+        tasks.forEach({(title) in
+            createTask(title: title, type: type).observeCompleted {}
+        })
+        oncompletion()
     }
     
     func createTask(title: String, type: String) -> Signal<TaskProtocol?, Never> {
@@ -164,6 +172,8 @@ class TaskManager: BaseRepository<TaskLocalRepository>, TaskRepositoryProtocol {
         // Comment for code review, TODO remove, anything I'm missing?
         task.text = title
         task.type = type
+        task.notes = ""
+        task.startDate = Date()
         // actually add the task and start it syncing with server
         localRepository.save(userID: currentUserId, task: task)
         localRepository.setTaskSyncing(userID: currentUserId, task: task, isSyncing: true)
