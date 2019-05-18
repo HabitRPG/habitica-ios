@@ -70,14 +70,14 @@ class IntentHandler: INExtension, INAddTasksIntentHandling, INSearchForNotebookI
     
     func resolveTargetTaskList(for intent: INAddTasksIntent, with completion: @escaping (INTaskListResolutionResult) -> Void) {
         let result: INTaskListResolutionResult
-        //let task = INTaskList(title: INSpeakableString(spokenPhrase: "habits"), tasks: tasks)
         if let taskList = intent.targetTaskList {
-            if TaskManager.shared.isValidTaskList(taskList: taskList) {
-                result = INTaskListResolutionResult.success(with: taskList)
-            }
-            else {
+            guard let validTaskListTitle = TaskManager.shared.getValidTaskListFromSpokenPhrase(spokenPhrase: taskList.title.spokenPhrase) else {
+                // we don't know what it is so ask for clarification
                 result = INTaskListResolutionResult.disambiguation(with: TaskManager.shared.possibleTaskLists)
+                completion(result)
+                return
             }
+            result = INTaskListResolutionResult.success(with: taskList)
         }
         else {
             result = INTaskListResolutionResult.needsValue()
@@ -93,6 +93,12 @@ class IntentHandler: INExtension, INAddTasksIntentHandling, INSearchForNotebookI
             completion(INAddTasksIntentResponse(code: .failure, userActivity: nil))
             return
         }
+        guard let validTaskListTitle = TaskManager.shared.getValidTaskListFromSpokenPhrase(spokenPhrase: targetTaskList.spokenPhrase) else {
+            // This should never be hit as we already filter the title
+            completion(INAddTasksIntentResponse(code: .failure, userActivity: nil))
+            return
+        }
+
         // add to the given list
         var tasks: [INTask] = []
         if let taskTitles = intent.taskTitles {
@@ -101,11 +107,12 @@ class IntentHandler: INExtension, INAddTasksIntentHandling, INSearchForNotebookI
                 return taskTitle.spokenPhrase
             }
             tasks = createTasks(fromTitles: taskTitlesStrings)
-            TaskManager.shared.add(tasks: taskTitlesStrings, type: targetTaskList.spokenPhrase, oncompletion: {
+            TaskManager.shared.add(tasks: taskTitlesStrings, type: validTaskListTitle, oncompletion: {
                 // to require app launch
                 //let response = INAddTasksIntentResponse(code: .failureRequiringAppLaunch, userActivity: nil)
                 let response = INAddTasksIntentResponse(code: .success, userActivity: nil)
                 response.modifiedTaskList = intent.targetTaskList
+                response.modifiedTaskList?.setValue(validTaskListTitle, forKeyPath: "title")
                 response.addedTasks = tasks
                 completion(response)
             })
