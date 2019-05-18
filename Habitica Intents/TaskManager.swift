@@ -16,11 +16,13 @@ import Intents
 
 class TaskManager: BaseRepository<TaskLocalRepository>, TaskRepositoryProtocol {
     static let shared = TaskManager()
-    let possibleListNames = ["todo", "habit", "daily"]
+    let listSpokenPhraseMap = ["todo": ["todo", "to-do", "todos"],
+                             "habit": ["habit", "habits"],
+                             "daily": ["daily", "dailies", "dailys"]]
     var possibleTaskLists: [INTaskList]
     
     override init() {
-        self.possibleTaskLists = self.possibleListNames.map {
+        self.possibleTaskLists = self.listSpokenPhraseMap.keys.map {
             return INTaskList(title: INSpeakableString(spokenPhrase: $0),
                               tasks: [],
                               groupName: nil,
@@ -36,8 +38,13 @@ class TaskManager: BaseRepository<TaskLocalRepository>, TaskRepositoryProtocol {
         print("Auth at start key, ", AuthenticationManager.shared.currentUserKey)
     }
     
-    func isValidTaskList(taskList: INTaskList) -> Bool {
-        return self.possibleListNames.contains(taskList.title.spokenPhrase)
+    func getValidTaskListFromSpokenPhrase(spokenPhrase: String) -> String? {
+        for minimap in self.listSpokenPhraseMap {
+            if minimap.value.contains(spokenPhrase) {
+                return minimap.key
+            }
+        }
+        return nil
     }
     
     @objc
@@ -115,7 +122,7 @@ class TaskManager: BaseRepository<TaskLocalRepository>, TaskRepositoryProtocol {
          dependencies for these two functions.
          - Chris Coffin
          */
-        let call = RetrieveTasksCall(dueOnDay: dueOnDay)//, type: "todo"
+        let call = RetrieveTasksCall(dueOnDay: dueOnDay, type: type)
         call.fire()
         return call.arraySignal.on(value: {[weak self] tasks in
             if let tasks = tasks, dueOnDay == nil {
@@ -130,17 +137,6 @@ class TaskManager: BaseRepository<TaskLocalRepository>, TaskRepositoryProtocol {
             let signalObserver = Signal<[TaskProtocol]?, Never>.Observer(
                 value: { value in
                     print("Got value from server ?? got no value", value ?? "no value")
-                    /*
-                    var titles: [String] = []
-                    value?.forEach({(task) in
-                        if let taskTitle = task.text {
-                            if !task.completed && task.isValid {
-                                titles.append(taskTitle)
-                            }
-                        }
-                    })
-                    print("server direct titles", titles)
-                    oncompletion(titles)*/
             }, completed: {
                 print("DEBUG completed")
             }, interrupted: {
