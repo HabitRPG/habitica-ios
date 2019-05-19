@@ -45,7 +45,7 @@
                         <color key="textColor" red="0.16078431904315948" green="0.58431375026702881" blue="0.80392158031463623" alpha="1" colorSpace="deviceRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="seeds_promo" translatesAutoresizingMaskIntoConstraints="NO" id="PrB-ws-N1Y">
+                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="seeds_promo" translatesAutoresizingMaskIntoConstraints="NO" id="PrB-ws-N1Y">
                         <rect key="frame" x="0.0" y="225" width="290" height="28"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="28" id="36P-4T-Ien"/>

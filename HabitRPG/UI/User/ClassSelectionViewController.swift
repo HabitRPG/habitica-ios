@@ -47,6 +47,12 @@ class ClassSelectionViewController: UIViewController {
         navigationController?.navigationBar.isTranslucent = true
         navigationController?.view.backgroundColor = .clear
         navigationController?.navigationBar.backgroundColor = .clear
+        
+        disposable.inner.add(userRepository.getUser()
+            .filter({ user in !user.canChooseClassForFree })
+            .flatMap(.latest, { (user) in
+                return self.userRepository.selectClass()
+            }).start())
     }
     
     override func viewWillAppear(_ animated: Bool) {
