@@ -23,11 +23,34 @@ class IntentHandler: INExtension, INAddTasksIntentHandling, INSearchForNotebookI
     override func handler(for intent: INIntent) -> Any {
         // This is the default implementation.  If you want different objects to handle different intents,
         // you can override this and return the handler you want for that particular intent.
-        
         return self
     }
 
     // handle for reading the list of task in todo
+    /* makes sure that we have a valid title for a list when searching for items in a list,
+     If siri didn't hear a list that matches one of the known lists, it will ask for the
+     user to select from a known list.
+     */
+    func resolveTitle(for intent: INSearchForNotebookItemsIntent, with completion: @escaping (INSpeakableStringResolutionResult) -> Void) {
+        print("Searching for items in list", intent.title?.spokenPhrase)
+        let result: INSpeakableStringResolutionResult
+        if let taskList = intent.title {
+            guard let validTaskListTitle = TaskManager.shared.getValidTaskListFromSpokenPhrase(spokenPhrase: taskList.spokenPhrase) else {
+                // we don't know what it is so ask for clarification
+                result = INSpeakableStringResolutionResult.disambiguation(with: TaskManager.shared.listSpokenPhraseMap.keys.map {
+                    return INSpeakableString(spokenPhrase: $0)})
+                completion(result)
+                return
+            }
+            result = INSpeakableStringResolutionResult.success(with: taskList)
+        }
+        else {
+            result = INSpeakableStringResolutionResult.needsValue()
+        }
+        completion(result)
+    }
+    
+    // handle for reading the list of tasks in one of todo, habit, daily
     func handle(intent: INSearchForNotebookItemsIntent, completion: @escaping (INSearchForNotebookItemsIntentResponse) -> Void) {
         
         let userActivity = NSUserActivity(activityType: NSStringFromClass(INSearchForNotebookItemsIntent.self))
@@ -68,6 +91,10 @@ class IntentHandler: INExtension, INAddTasksIntentHandling, INSearchForNotebookI
         return tasks
     }
     
+    /* makes sure that we have a valid title for a list when adding a task
+     If siri didn't hear a list that matches one of the known lists, it will ask for the
+     user to select from a known list.
+     */
     func resolveTargetTaskList(for intent: INAddTasksIntent, with completion: @escaping (INTaskListResolutionResult) -> Void) {
         let result: INTaskListResolutionResult
         if let taskList = intent.targetTaskList {
@@ -86,6 +113,7 @@ class IntentHandler: INExtension, INAddTasksIntentHandling, INSearchForNotebookI
         completion(result)
     }
     
+    // handles adding one or more tasks to a list
     func handle(intent: INAddTasksIntent, completion: @escaping (INAddTasksIntentResponse) -> Void) {
         let userActivity = NSUserActivity(activityType: NSStringFromClass(INAddTasksIntent.self))
         guard let targetTaskList = intent.targetTaskList?.title else {
