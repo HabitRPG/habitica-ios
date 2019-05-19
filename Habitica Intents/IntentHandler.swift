@@ -26,7 +26,6 @@ class IntentHandler: INExtension, INAddTasksIntentHandling, INSearchForNotebookI
         return self
     }
 
-    // handle for reading the list of task in todo
     /* makes sure that we have a valid title for a list when searching for items in a list,
      If siri didn't hear a list that matches one of the known lists, it will ask for the
      user to select from a known list.
@@ -149,7 +148,6 @@ class IntentHandler: INExtension, INAddTasksIntentHandling, INSearchForNotebookI
                 //let response = INAddTasksIntentResponse(code: .failureRequiringAppLaunch, userActivity: nil)
                 let response = INAddTasksIntentResponse(code: .success, userActivity: nil)
                 response.modifiedTaskList = intent.targetTaskList
-                response.modifiedTaskList?.setValue(validTaskListTitle, forKeyPath: "title")
                 response.addedTasks = tasks
                 completion(response)
             })
