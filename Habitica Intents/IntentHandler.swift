@@ -86,15 +86,14 @@ class IntentHandler: INExtension, INAddTasksIntentHandling, INSearchForNotebookI
     func createTasks(fromTitles taskTitles: [String]) -> [INTask] {
         var tasks: [INTask] = []
         tasks = taskTitles.map { taskTitle -> INTask in
-            let task = INTask(title: INSpeakableString(spokenPhrase: taskTitle),
-                              status: .notCompleted,
-                              taskType: .completable,
-                              spatialEventTrigger: nil,
-                              temporalEventTrigger: nil,
-                              createdDateComponents: nil,
-                              modifiedDateComponents: nil,
-                              identifier: nil)
-            return task
+            return INTask(title: INSpeakableString(spokenPhrase: taskTitle),
+                          status: .notCompleted,
+                          taskType: .completable,
+                          spatialEventTrigger: nil,
+                          temporalEventTrigger: nil,
+                          createdDateComponents: nil,
+                          modifiedDateComponents: nil,
+                          identifier: nil)
         }
         return tasks
     }
