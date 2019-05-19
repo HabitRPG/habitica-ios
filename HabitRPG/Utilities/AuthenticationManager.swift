@@ -25,14 +25,18 @@ class AuthenticationManager: NSObject {
     
     @objc var currentUserId: String? {
         get {
-            let defaults = UserDefaults(suiteName: "group.habitica")
-            return defaults?.string(forKey: "currentUserId")
+            // using this to bootstrap identification so user's don't have to re-log in
+            guard let cuid = localKeychain["currentUserId"] else {
+                let cuid = UserDefaults.standard.string(forKey: "currentUserId")
+                localKeychain["currentUserId"] = cuid
+                return cuid
+            }
+            return cuid
         }
         
         set(newUserId) {
-            let defaults = UserDefaults(suiteName: "group.habitica")
-            defaults?.set(newUserId, forKey: "currentUserId")
-            defaults?.synchronize()
+            localKeychain["currentUserId"] = newUserId
+            UserDefaults.standard.set(newUserId, forKey: "currentUserId")
             NetworkAuthenticationManager.shared.currentUserId = newUserId
             currentUserIDProperty.value = newUserId
             if newUserId != nil {
