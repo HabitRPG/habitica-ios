@@ -16,14 +16,14 @@ import Intents
 
 class TaskManager: BaseRepository<TaskLocalRepository>, TaskRepositoryProtocol {
     static let shared = TaskManager()
-    let listSpokenPhraseMap = ["todo": ["todo", "to-do", "todos"],
+    let listSpokenPhraseMap = ["todo": ["todo", "to do", "to-do", "todos"],
                              "habit": ["habit", "habits"],
                              "daily": ["daily", "dailies", "dailys"]]
     var possibleTaskLists: [INTaskList]
-    
+
     override init() {
         self.possibleTaskLists = self.listSpokenPhraseMap.keys.map {
-            return INTaskList(title: INSpeakableString(spokenPhrase: $0),
+            return INTaskList(title: INSpeakableString(spokenPhrase: $0 != "todo" ? $0 : "to do"),
                               tasks: [],
                               groupName: nil,
                               createdDateComponents: nil,
