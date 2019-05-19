@@ -52,7 +52,16 @@ class IntentHandler: INExtension, INAddTasksIntentHandling, INSearchForNotebookI
     
     // handle for reading the list of tasks in one of todo, habit, daily
     func handle(intent: INSearchForNotebookItemsIntent, completion: @escaping (INSearchForNotebookItemsIntentResponse) -> Void) {
-        
+        guard let targetTaskList = intent.title else {
+            print("Could not find a target task list")
+            completion(INSearchForNotebookItemsIntentResponse(code: .failure, userActivity: nil))
+            return
+        }
+        guard let validTaskListTitle = TaskManager.shared.getValidTaskListFromSpokenPhrase(spokenPhrase: targetTaskList.spokenPhrase) else {
+            // This should never be hit as we already filter the title
+            completion(INSearchForNotebookItemsIntentResponse(code: .failure, userActivity: nil))
+            return
+        }
         let userActivity = NSUserActivity(activityType: NSStringFromClass(INSearchForNotebookItemsIntent.self))
         //let response = INSearchForNotebookItemsIntentResponse(code: .inProgress, userActivity: userActivity)
         let response = INSearchForNotebookItemsIntentResponse(code: .success, userActivity: userActivity)
