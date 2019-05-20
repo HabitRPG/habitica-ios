@@ -8,10 +8,9 @@
 /* Sample intents
  Add the following under Siri intent query:
  
- Add Task
  Add get grocieries to my todo list in Habitica
  
- Show Tasks in a given list
+ Example showing tasks in a list
  Show my todo list in Habitica
  */
 
@@ -26,12 +25,11 @@ class IntentHandler: INExtension, INAddTasksIntentHandling, INSearchForNotebookI
         return self
     }
 
-    /* makes sure that we have a valid title for a list when searching for items in a list,
+    /*  Ensures that we have a valid title for a list when searching for items in a list,
      If siri didn't hear a list that matches one of the known lists, it will ask for the
      user to select from a known list.
      */
     func resolveTitle(for intent: INSearchForNotebookItemsIntent, with completion: @escaping (INSpeakableStringResolutionResult) -> Void) {
-        print("Searching for items in list", intent.title?.spokenPhrase)
         let result: INSpeakableStringResolutionResult
         if let taskList = intent.title {
             guard let validTaskListTitle = TaskManager.shared.getValidTaskListFromSpokenPhrase(spokenPhrase: taskList.spokenPhrase) else {
@@ -61,9 +59,7 @@ class IntentHandler: INExtension, INAddTasksIntentHandling, INSearchForNotebookI
             completion(INSearchForNotebookItemsIntentResponse(code: .failure, userActivity: nil))
             return
         }
-        let userActivity = NSUserActivity(activityType: NSStringFromClass(INSearchForNotebookItemsIntent.self))
-        //let response = INSearchForNotebookItemsIntentResponse(code: .inProgress, userActivity: userActivity)
-        let response = INSearchForNotebookItemsIntentResponse(code: .success, userActivity: userActivity)
+        let response = INSearchForNotebookItemsIntentResponse(code: .success, userActivity: NSUserActivity(activityType: NSStringFromClass(INSearchForNotebookItemsIntent.self)))
         // Initialize with found message's attributes
         response.tasks = []
         TaskManager.shared.tasksForList(withName: "todo", oncompletion: {(taskTitles) in
@@ -122,10 +118,11 @@ class IntentHandler: INExtension, INAddTasksIntentHandling, INSearchForNotebookI
     
     // handles adding one or more tasks to a list
     func handle(intent: INAddTasksIntent, completion: @escaping (INAddTasksIntentResponse) -> Void) {
-        let userActivity = NSUserActivity(activityType: NSStringFromClass(INAddTasksIntent.self))
         guard let targetTaskList = intent.targetTaskList?.title else {
             print("Could not find a target task list")
             completion(INAddTasksIntentResponse(code: .failure, userActivity: nil))
+            // to require app launch
+            //let response = INAddTasksIntentResponse(code: .failureRequiringAppLaunch, userActivity: nil)
             return
         }
         guard let validTaskListTitle = TaskManager.shared.getValidTaskListFromSpokenPhrase(spokenPhrase: targetTaskList.spokenPhrase) else {
@@ -143,8 +140,6 @@ class IntentHandler: INExtension, INAddTasksIntentHandling, INSearchForNotebookI
             }
             tasks = createTasks(fromTitles: taskTitlesStrings)
             TaskManager.shared.add(tasks: taskTitlesStrings, type: validTaskListTitle, oncompletion: {
-                // to require app launch
-                //let response = INAddTasksIntentResponse(code: .failureRequiringAppLaunch, userActivity: nil)
                 let response = INAddTasksIntentResponse(code: .success, userActivity: nil)
                 response.modifiedTaskList = intent.targetTaskList
                 response.addedTasks = tasks
