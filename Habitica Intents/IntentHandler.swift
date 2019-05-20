@@ -8,6 +8,7 @@
 /* Sample intents
  Add the following under Siri intent query:
  
+ Example to add a task:
  Add get grocieries to my todo list in Habitica
  
  Example showing tasks in a list
