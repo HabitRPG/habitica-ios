@@ -6,7 +6,7 @@
 	<array/>
 	<key>keychain-access-groups</key>
 	<array>
-		<string>$(AppIdentifierPrefix)com.chabitrpg.ios.Habitica</string>
+		<string>$(AppIdentifierPrefix)com.habitrpg.ios.Habitica</string>
 	</array>
 </dict>
 </plist>
