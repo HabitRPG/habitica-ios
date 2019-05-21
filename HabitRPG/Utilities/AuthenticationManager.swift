@@ -16,7 +16,7 @@ import Habitica_API_Client
 class AuthenticationManager: NSObject {
     
     @objc static let shared = AuthenticationManager()
-    let localKeychain = Keychain(service: "com.chabitrpg.ios.Habitica", accessGroup: "HabiticaIntent.shared")
+    let localKeychain = Keychain(service: "com.habitrpg.ios.Habitica", accessGroup: "HabiticaIntent.shared")
 
     private var keychain: Keychain {
         return Keychain(server: "https://habitica.com", protocolType: .https)
