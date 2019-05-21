@@ -163,10 +163,15 @@ class TaskManager: BaseRepository<TaskLocalRepository>, TaskRepositoryProtocol {
     
     func add(tasks: [String], type: String, oncompletion: @escaping () -> Void) {
         // validate that it's a known list, so far just todo's are supported, could add habits and dailies
+        var addedTasks: [String] = []
         tasks.forEach({(title) in
-            createTask(title: title, type: type).observeCompleted {}
+            createTask(title: title, type: type).observeCompleted {
+                addedTasks.append(title)
+                if addedTasks.count == tasks.count {
+                    oncompletion()
+                }
+            }
         })
-        oncompletion()
     }
     
     func createTask(title: String, type: String) -> Signal<TaskProtocol?, Never> {
