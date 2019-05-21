@@ -119,6 +119,10 @@ class IntentHandler: INExtension, INAddTasksIntentHandling, INSearchForNotebookI
     
     // handles adding one or more tasks to a list
     func handle(intent: INAddTasksIntent, completion: @escaping (INAddTasksIntentResponse) -> Void) {
+        if AuthenticationManager.shared.currentUserKey == nil {
+            completion(INAddTasksIntentResponse(code: .failure, userActivity: nil))
+            return
+        }
         guard let targetTaskList = intent.targetTaskList?.title else {
             print("Could not find a target task list")
             completion(INAddTasksIntentResponse(code: .failure, userActivity: nil))
