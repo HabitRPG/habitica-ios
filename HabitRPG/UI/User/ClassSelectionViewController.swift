@@ -49,10 +49,11 @@ class ClassSelectionViewController: UIViewController {
         navigationController?.navigationBar.backgroundColor = .clear
         
         disposable.inner.add(userRepository.getUser()
+            .take(first: 1)
             .filter({ user in !user.canChooseClassForFree })
-            .flatMap(.latest, { (user) in
+            .flatMap(.latest) { _ in
                 return self.userRepository.selectClass()
-            }).start())
+            }.start())
     }
     
     override func viewWillAppear(_ animated: Bool) {
