@@ -719,8 +719,15 @@ class SettingsViewController: FormViewController, Themeable {
     }
     
     private func classSelectionButtonTapped() {
-        if user?.canChooseClassForFree == true {
-            showClassSelectionViewController()
+        guard let user = self.user else {
+            assertionFailure("Attempting to change class but there is no user!"); return
+        }
+        if user.canChooseClassForFree == true {
+            if user.needsToChooseClass {
+                showClassSelectionViewController()
+            } else {
+                enableClassSystemAndShowClassSelection()
+            }
         } else {
             let alertController = HabiticaAlertController(title: L10n.Settings.areYouSure, message: L10n.Settings.changeClassDisclaimer)
             alertController.addCancelAction()
@@ -728,6 +735,16 @@ class SettingsViewController: FormViewController, Themeable {
                 self?.showClassSelectionViewController()
             }
             alertController.show()
+        }
+    }
+    
+    private func enableClassSystemAndShowClassSelection() {
+        disposable.inner.add { [weak self] in
+            self?.userRepository.selectClass(nil)
+                .observe(on: UIScheduler())
+                .observeCompleted { [weak self] in
+                    self?.showClassSelectionViewController()
+            }
         }
     }
     
