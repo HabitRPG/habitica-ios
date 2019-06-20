@@ -9,6 +9,7 @@
 import UIKit
 import Habitica_Models
 import ReactiveSwift
+import Crashlytics
 
 @objc
 public protocol TaskTableViewDataSourceProtocol {
@@ -100,9 +101,12 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
         if let disposable = fetchTasksDisposable, !disposable.isDisposed {
             disposable.dispose()
         }
-        fetchTasksDisposable = repository.getTasks(predicate: predicate, sortKey: sortKey).on(value: {[weak self] (tasks, changes) in
-            self?.sections[0].items = tasks
-            self?.notify(changes: changes)
+        fetchTasksDisposable = repository.getTasks(predicate: predicate, sortKey: sortKey).on(failed: {[weak self] error in
+                Crashlytics.sharedInstance().recordError(error)
+                self?.fetchTasks()
+            }, value: {[weak self] (tasks, changes) in
+                self?.sections[0].items = tasks
+                self?.notify(changes: changes)
         }).start()
     }
 

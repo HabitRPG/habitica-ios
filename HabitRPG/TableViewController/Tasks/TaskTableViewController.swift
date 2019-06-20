@@ -76,7 +76,7 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
             searchBar.setShowsCancelButton(false, animated: true)
         }
         
-        tableView.reloadData()
+        dataSource?.tableView = tableView
         
         navigationItem.rightBarButtonItem?.accessibilityLabel = L10n.Tasks.addX(readableName ?? "")
     }
