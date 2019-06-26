@@ -255,6 +255,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
             if !hasGearSection() {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmptyGearCell", for: indexPath)
                 (cell.viewWithTag(1) as? UILabel)?.text = L10n.Shops.purchasedAllGear
+                cell.viewWithTag(2)?.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
                 return cell
             }
         }

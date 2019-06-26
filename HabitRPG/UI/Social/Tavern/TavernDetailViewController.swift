@@ -14,7 +14,10 @@ class TavernDetailViewController: GroupDetailViewController {
     
     @IBOutlet weak var tavernHeaderView: NPCBannerView!
     
-    @IBOutlet weak var innButton: UIButton!
+    @IBOutlet weak var innButton: HabiticaButton!
+    @IBOutlet weak var guidelinesButton: UIButton!
+    @IBOutlet weak var faqButton: UIButton!
+    @IBOutlet weak var reportButton: UIButton!
     @IBOutlet weak var worldBossStackView: CollapsibleStackView!
     @IBOutlet weak var innStackView: CollapsibleStackView!
     @IBOutlet weak var guidelinesStackView: CollapsibleStackView!
@@ -83,7 +86,14 @@ class TavernDetailViewController: GroupDetailViewController {
     
     override func populateText() {
         worldBossTitleView.text = L10n.WorldBoss.worldBoss
-        
+    }
+    
+    override func applyTheme(theme: Theme) {
+        super.applyTheme(theme: theme)
+        innButton.buttonColor = theme.warningColor
+        guidelinesButton.backgroundColor = theme.offsetBackgroundColor
+        faqButton.backgroundColor = theme.offsetBackgroundColor
+        reportButton.backgroundColor = theme.offsetBackgroundColor
     }
     
     override func viewWillAppear(_ animated: Bool) {

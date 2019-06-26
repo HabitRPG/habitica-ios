@@ -249,7 +249,11 @@
     } else if (level == 8) {
         return [UIColor tierModColor];
     } else if (level == 9) {
-        return [UIColor purple300];
+        if ([ObjcThemeWrapper themeIsDark]) {
+            return [UIColor purple400];
+        } else {
+            return [UIColor purple300];
+        }
     }
     return [ObjcThemeWrapper primaryTextColor];
 }

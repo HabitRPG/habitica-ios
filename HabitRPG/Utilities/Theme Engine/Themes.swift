@@ -93,8 +93,8 @@ public struct DarkNightTheme: DarkTheme {
     public var contentBackgroundColor: UIColor { return UIColor.blackPurple50() }
     public var offsetBackgroundColor: UIColor { return UIColor.blackPurple100() }
     public var lightlyTintedBackgroundColor: UIColor { return UIColor.gray300() }
-    public var backgroundTintColor: UIColor { return UIColor.gray400() }
-    public var tintColor: UIColor { return UIColor.gray600() }
+    public var backgroundTintColor: UIColor { return UIColor.gray300() }
+    public var tintColor: UIColor { return UIColor.gray500() }
     public var primaryTextColor: UIColor { return UIColor.gray700() }
     public var secondaryTextColor: UIColor { return UIColor.gray600() }
     public var ternaryTextColor: UIColor { return UIColor.gray500() }
@@ -102,10 +102,10 @@ public struct DarkNightTheme: DarkTheme {
     public var separatorColor: UIColor { return UIColor.gray10() }
     public var tableviewSeparatorColor: UIColor { return UIColor.gray100() }
     public var navbarHiddenColor: UIColor { return contentBackgroundColor }
-    public var dimmedColor: UIColor { return UIColor.gray200() }
+    public var dimmedColor: UIColor { return UIColor.gray100() }
     public var dimmBackgroundColor: UIColor { return UIColor.gray50() }
     public var badgeColor: UIColor { return UIColor.gray200() }
-    public var taskOverlayTint: UIColor { return UIColor.blackPurple50().withAlphaComponent(0.15) }
+    public var taskOverlayTint: UIColor { return UIColor.blackPurple50().withAlphaComponent(0.30) }
 }
 
 public struct TrueBlackTheme: DarkTheme {
@@ -125,5 +125,5 @@ public struct TrueBlackTheme: DarkTheme {
     public var dimmedColor: UIColor { return UIColor.gray200() }
     public var dimmBackgroundColor: UIColor { return UIColor.gray10() }
     public var badgeColor: UIColor { return UIColor.gray100() }
-    public var taskOverlayTint: UIColor { return UIColor.black.withAlphaComponent(0.15) }
+    public var taskOverlayTint: UIColor { return UIColor.black.withAlphaComponent(0.30) }
 }

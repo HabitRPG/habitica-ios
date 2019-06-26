@@ -33,6 +33,7 @@ public protocol Theme {
     var badgeColor: UIColor { get }
     var successColor: UIColor { get }
     var errorColor: UIColor { get }
+    var warningColor: UIColor { get }
     var taskOverlayTint: UIColor { get }
 }
 
@@ -65,6 +66,7 @@ extension Theme {
     public var badgeColor: UIColor { return tintColor }
     public var successColor: UIColor { return UIColor.green100() }
     public var errorColor: UIColor { return UIColor.red100() }
+    public var warningColor: UIColor { return UIColor.yellow100() }
     public var taskOverlayTint: UIColor { return UIColor.white.withAlphaComponent(0) }
     
     public func applyContentBackgroundColor(views: [UIView]) {
@@ -80,8 +82,9 @@ extension Theme {
 
 extension DarkTheme {
     public var isDark: Bool { return true }
-    public var successColor: UIColor { return UIColor.green10() }
+    public var successColor: UIColor { return UIColor.green10().withAlphaComponent(0.7) }
     public var errorColor: UIColor { return UIColor.red10() }
+    public var warningColor: UIColor { return UIColor.yellow10().withAlphaComponent(0.7) }
 }
 
 @objc
@@ -96,5 +99,6 @@ class ObjcThemeWrapper: NSObject {
     @objc public static var primaryTextColor: UIColor { return ThemeService.shared.theme.primaryTextColor }
     @objc public static var secondaryTextColor: UIColor { return ThemeService.shared.theme.secondaryTextColor }
     @objc public static var dimmedTextColor: UIColor { return ThemeService.shared.theme.dimmedTextColor }
-    @objc public static var lightTextColor: UIColor { return ThemeService.shared.theme.lightTextColor}
+    @objc public static var lightTextColor: UIColor { return ThemeService.shared.theme.lightTextColor }
+    @objc public static var themeIsDark: Bool { return ThemeService.shared.theme.isDark }
 }

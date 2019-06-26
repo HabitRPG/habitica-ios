@@ -62,6 +62,17 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         let inAppReward = reward
         pinButton.isHidden = inAppReward?.pinType == "armoire" || inAppReward?.pinType == "potion"
         
+        if #available(iOS 11.0, *) {
+            pinButton.layer.cornerRadius = 12
+            buyButton.layer.cornerRadius = 12
+            if pinButton.isHidden {
+                buyButton.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+            } else {
+                pinButton.layer.maskedCorners = [ .layerMinXMaxYCorner]
+                buyButton.layer.maskedCorners = [ .layerMaxXMaxYCorner]
+            }
+        }
+
         ThemeService.shared.addThemeable(themable: self)
         
         populateText()
