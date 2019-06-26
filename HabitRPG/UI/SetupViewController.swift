@@ -34,11 +34,14 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
     var views: [UIView] = []
     var viewControllers: [TypingTextViewController] = []
     var taskSetupViewController: TaskSetupViewController?
+    var avatarSetupViewController: AvatarSetupViewController?
     var currentpage = 0
     
     var createdTags = [SetupTaskCategory: TagProtocol]()
     var tagsToCreate = [SetupTaskCategory: TagProtocol]()
     
+    private let configRepository = ConfigRepository()
+
     override func viewDidLoad() {
         super.viewDidLoad()
                 
@@ -77,6 +80,10 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
         }
         
         viewControllers[0].startTyping()
+        
+        if configRepository.bool(variable: .randomizeAvatar) {
+            avatarSetupViewController?.randomizeButtonTapped()
+        }
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
@@ -261,6 +268,9 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
                     viewControllers.append(viewController)
                 } else {
                     viewControllers.insert(viewController, at: 1)
+                }
+                if let avatarSetupViewController = viewController as? AvatarSetupViewController {
+                    self.avatarSetupViewController = avatarSetupViewController
                 }
             } else if segue.identifier == "TaskSegue" {
                 if viewControllers.count < 2 {
