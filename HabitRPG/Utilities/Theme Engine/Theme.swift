@@ -121,12 +121,7 @@ extension DarkTheme {
         return UIColor.gray600()
         }
     }
-    public var ternaryTextColor: UIColor { if #available(iOS 13.0, *) {
-        return UIColor.tertiaryLabel
-    } else {
-        return UIColor.gray500()
-        }
-    }
+    public var ternaryTextColor: UIColor { return UIColor.gray500() }
     public var dimmedTextColor: UIColor { return UIColor.gray200() }
     public var separatorColor: UIColor { return UIColor.gray10() }
     public var tableviewSeparatorColor: UIColor { if #available(iOS 13.0, *) {

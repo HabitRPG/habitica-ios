@@ -12,7 +12,7 @@ import VTAcknowledgementsViewController
 import Habitica_Models
 import MessageUI
 
-class AboutViewController: HRPGBaseViewController, MFMailComposeViewControllerDelegate {
+class AboutViewController: BaseTableViewController, MFMailComposeViewControllerDelegate {
     
     private let configRepository = ConfigRepository()
     private let userRepository = UserRepository()
