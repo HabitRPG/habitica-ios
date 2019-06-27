@@ -14,6 +14,7 @@ import PopupDialog
 public class ThemeService: NSObject {
     
     public static let shared = ThemeService()
+    public var isDarkTheme = false
     public var theme: Theme = DefaultTheme() {
         didSet {
             applyTheme()
@@ -22,7 +23,11 @@ public class ThemeService: NSObject {
     
     private var listeners = NSHashTable<AnyObject>.weakObjects()
     
-    override public init() {}
+    override public init() {
+        if #available(iOS 12.0, *) {
+            isDarkTheme = UIScreen.main.traitCollection.userInterfaceStyle == .dark
+        }
+    }
     
     public func addThemeable(themable: Themeable, applyImmediately: Bool = true) {
         guard !listeners.contains(themable) else {
@@ -104,6 +109,17 @@ public class ThemeService: NSObject {
             .forEach { $0.applyTheme(theme: theme) }
     }
     
+    @available(iOS 12.0, *)
+    func updateInterfaceStyle(newStyle: UIUserInterfaceStyle) {
+        let isDark = newStyle == .dark
+        if isDark != self.isDarkTheme {
+            self.isDarkTheme = isDark
+            
+            let defaults = UserDefaults.standard
+            let themeName = ThemeName(rawValue: defaults.string(forKey: "theme") ?? "") ?? ThemeName.defaultTheme
+            ThemeService.shared.theme = themeName.themeClass
+        }
+    }
 }
 
 public protocol Themeable: AnyObject {

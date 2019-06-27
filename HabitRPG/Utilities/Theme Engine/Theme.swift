@@ -82,6 +82,64 @@ extension Theme {
 
 extension DarkTheme {
     public var isDark: Bool { return true }
+    public var windowBackgroundColor: UIColor { if #available(iOS 13.0, *) {
+        return UIColor.systemGray5
+    } else {
+        return UIColor.blackPurple100().darker(by: 6)
+        }
+    }
+    public var contentBackgroundColorDimmed: UIColor { if #available(iOS 13.0, *) {
+        return UIColor.systemGray5
+    } else {
+        return UIColor.blackPurple100().darker(by: 7)
+        }
+    }
+    public var contentBackgroundColor: UIColor { if #available(iOS 13.0, *) {
+        return UIColor.systemGray6
+    } else {
+        return UIColor.blackPurple50()
+        }
+        }
+    public var offsetBackgroundColor: UIColor { if #available(iOS 13.0, *) {
+        return UIColor.systemGray4
+    } else {
+        return UIColor.blackPurple100()
+        }
+    }
+    public var lightlyTintedBackgroundColor: UIColor { return UIColor.gray300() }
+    public var backgroundTintColor: UIColor { return UIColor.gray300() }
+    public var tintColor: UIColor { return UIColor.gray500() }
+    public var primaryTextColor: UIColor { if #available(iOS 13.0, *) {
+        return UIColor.label
+    } else {
+        return UIColor.gray700()
+        }
+    }
+    public var secondaryTextColor: UIColor { if #available(iOS 13.0, *) {
+        return UIColor.secondaryLabel
+    } else {
+        return UIColor.gray600()
+        }
+    }
+    public var ternaryTextColor: UIColor { if #available(iOS 13.0, *) {
+        return UIColor.tertiaryLabel
+    } else {
+        return UIColor.gray500()
+        }
+    }
+    public var dimmedTextColor: UIColor { return UIColor.gray200() }
+    public var separatorColor: UIColor { return UIColor.gray10() }
+    public var tableviewSeparatorColor: UIColor { if #available(iOS 13.0, *) {
+        return UIColor.opaqueSeparator.darker(by: 10)
+    } else {
+        return UIColor.gray100()
+        }
+    }
+    public var navbarHiddenColor: UIColor { return contentBackgroundColor }
+    public var dimmedColor: UIColor { return UIColor.gray100() }
+    public var dimmBackgroundColor: UIColor { return UIColor.gray50() }
+    public var badgeColor: UIColor { return UIColor.gray200() }
+    public var taskOverlayTint: UIColor { return UIColor.blackPurple50().withAlphaComponent(0.30) }
     public var successColor: UIColor { return UIColor.green10().withAlphaComponent(0.7) }
     public var errorColor: UIColor { return UIColor.red10() }
     public var warningColor: UIColor { return UIColor.yellow10().withAlphaComponent(0.7) }
@@ -101,4 +159,7 @@ class ObjcThemeWrapper: NSObject {
     @objc public static var dimmedTextColor: UIColor { return ThemeService.shared.theme.dimmedTextColor }
     @objc public static var lightTextColor: UIColor { return ThemeService.shared.theme.lightTextColor }
     @objc public static var themeIsDark: Bool { return ThemeService.shared.theme.isDark }
+    
+    @available(iOS 12.0, *)
+    @objc public static func updateUserInterfaceStyle(_ newStyle: UIUserInterfaceStyle) { ThemeService.shared.updateInterfaceStyle(newStyle: newStyle)}
 }

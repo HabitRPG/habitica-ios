@@ -18,7 +18,6 @@ class BaseTableViewController: HRPGBaseViewController, Themeable {
     func applyTheme(theme: Theme) {
         tableView.backgroundColor = theme.windowBackgroundColor
         tableView.separatorColor = theme.tableviewSeparatorColor
-        //tableView.reloadData()
+        tableView.reloadData()
     }
-    
 }

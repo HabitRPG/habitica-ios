@@ -219,12 +219,12 @@ class MainMenuViewController: BaseTableViewController {
         label?.text = item?.title
         label?.font = CustomFontMetrics.scaledSystemFont(ofSize: 17)
         label?.textColor = ThemeService.shared.theme.primaryTextColor
-        label?.backgroundColor = cell.backgroundColor
-        
+        label?.backgroundColor = .clear
+
         let indicatorView = cell.viewWithTag(2)
         indicatorView?.isHidden = item?.showIndicator == false
         indicatorView?.layer.cornerRadius = (indicatorView?.frame.size.height ?? 0) / 2
-        indicatorView?.backgroundColor = ThemeService.shared.theme.backgroundTintColor
+        indicatorView?.backgroundColor = .clear
         
         let subtitleLabel = cell.viewWithTag(3) as? UILabel
         subtitleLabel?.text = item?.subtitle

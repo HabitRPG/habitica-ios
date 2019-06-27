@@ -51,6 +51,18 @@ class MainTabBarController: UITabBarController, Themeable {
     }
     
     func applyTheme(theme: Theme) {
+        tabBar.tintColor = theme.tintColor
+        if theme.isDark {
+            tabBar.tintColor = theme.tintColor
+            tabBar.backgroundColor = theme.windowBackgroundColor
+            tabBar.barTintColor = .clear
+            tabBar.barStyle = .blackOpaque
+        } else {
+            tabBar.tintColor = theme.tintColor
+            tabBar.barTintColor = theme.contentBackgroundColor
+            tabBar.backgroundColor = .clear
+            tabBar.barStyle = .black
+        }
     }
     
     private func setupDailyIcon() {
@@ -162,6 +174,12 @@ class MainTabBarController: UITabBarController, Themeable {
             UIApplication.shared.applicationIconBadgeNumber = dueDailiesCount + dueToDosCount
         } else {
             UIApplication.shared.applicationIconBadgeNumber = 0
+        }
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        if #available(iOS 12.0, *) {
+            ThemeService.shared.updateInterfaceStyle(newStyle: traitCollection.userInterfaceStyle)
         }
     }
     

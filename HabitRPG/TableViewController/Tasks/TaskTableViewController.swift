@@ -66,6 +66,15 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
         navigationItem.leftBarButtonItem?.title = L10n.filter
     }
     
+    override func applyTheme(theme: Theme) {
+        super.applyTheme(theme: theme)
+        if theme.isDark {
+            searchBar.barStyle = .blackTranslucent
+        } else {
+            searchBar.barStyle = .default
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         

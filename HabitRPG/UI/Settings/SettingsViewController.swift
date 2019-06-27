@@ -72,36 +72,50 @@ enum ThemeName: String {
     case red
     case maroon
     case gray
-    case night
-    case darkNight
-    case trueBlack
     
     var themeClass: Theme {
-        switch self {
-        case .defaultTheme:
-            return DefaultTheme()
-        case .blue:
-            return BlueTheme()
-        case .teal:
-            return TealTheme()
-        case .green:
-            return GreenTheme()
-        case .yellow:
-            return YellowTheme()
-        case .orange:
-            return OrangeTheme()
-        case .red:
-            return RedTheme()
-        case .maroon:
-            return MaroonTheme()
-        case .gray:
-            return GrayTheme()
-        case .night:
-            return NightTheme()
-        case .darkNight:
-            return DarkNightTheme()
-        case .trueBlack:
-            return TrueBlackTheme()
+        if ThemeService.shared.isDarkTheme {
+            switch self {
+            case .defaultTheme:
+                return DefaultDarkTheme()
+            case .blue:
+                return BlueDarkTheme()
+            case .teal:
+                return TealDarkTheme()
+            case .green:
+                return GreenDarkTheme()
+            case .yellow:
+                return YellowDarkTheme()
+            case .orange:
+                return OrangeDarkTheme()
+            case .red:
+                return RedDarkTheme()
+            case .maroon:
+                return MaroonDarkTheme()
+            case .gray:
+                return GrayDarkTheme()
+            }
+        } else {
+            switch self {
+            case .defaultTheme:
+                return DefaultTheme()
+            case .blue:
+                return BlueTheme()
+            case .teal:
+                return TealTheme()
+            case .green:
+                return GreenTheme()
+            case .yellow:
+                return YellowTheme()
+            case .orange:
+                return OrangeTheme()
+            case .red:
+                return RedTheme()
+            case .maroon:
+                return MaroonTheme()
+            case .gray:
+                return GrayTheme()
+            }
         }
     }
     
@@ -125,12 +139,6 @@ enum ThemeName: String {
             return "Maroon"
         case .gray:
             return "Plain Gray"
-        case .night:
-            return "The Royal Night"
-        case .darkNight:
-            return "The Dark Task"
-        case .trueBlack:
-            return "True Black"
         }
     }
     
@@ -146,11 +154,6 @@ enum ThemeName: String {
             .maroon,
             .gray
         ]
-        if !HabiticaAppDelegate.isRunningLive() {
-            themes.append(.night)
-            themes.append(.darkNight)
-            themes.append(.trueBlack)
-        }
         return themes
     }
 }
@@ -313,6 +316,7 @@ class SettingsViewController: FormViewController, Themeable {
     }
     
     func applyTheme(theme: Theme) {
+        tableView.backgroundColor = theme.windowBackgroundColor
         tableView.reloadData()
         
         navigationController?.navigationBar.tintColor = theme.tintColor
