@@ -167,6 +167,15 @@
 				<key>UIPrerenderedIcon</key>
 				<false/>
 			</dict>
+            <key>PrideHabiticaAltBlack</key>
+            <dict>
+                <key>CFBundleIconFiles</key>
+                <array>
+                    <string>PrideHabiticaAltBlack</string>
+                </array>
+                <key>UIPrerenderedIcon</key>
+                <false/>
+            </dict>
 			<key>PurpleAlt</key>
 			<dict>
 				<key>CFBundleIconFiles</key>

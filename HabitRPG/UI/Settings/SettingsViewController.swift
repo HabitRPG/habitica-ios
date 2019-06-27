@@ -187,7 +187,8 @@ enum AppIconName: String {
     case tealAltBlack = "Teal Alternative Black"
     case blackAltBlack = "Black Alternative Black"
     case prideHabitica = "Pride"
-    case prideHabiticaAlt = "Pride Alt"
+    case prideHabiticaAlt = "Pride Alternative"
+    case prideHabiticaAltBlack = "Pride Alternative Black"
 
     var fileName: String? {
         switch self {
@@ -199,6 +200,8 @@ enum AppIconName: String {
             return "PrideHabitica"
         case .prideHabiticaAlt:
             return "PrideHabiticaAlt"
+        case .prideHabiticaAltBlack:
+            return "PrideHabiticaAltBlack"
         case .maroon:
             return "Maroon"
         case .red:
@@ -280,7 +283,10 @@ enum AppIconName: String {
             .greenAltBlack,
             .black,
             .blackAlt,
-            .blackAltBlack
+            .blackAltBlack,
+            .prideHabitica,
+            .prideHabiticaAlt,
+            .prideHabiticaAltBlack
         ]
     }
 }
