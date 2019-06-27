@@ -405,6 +405,9 @@
 		C897F63C218CCF51002907C2 /* RouterHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C897F63B218CCF51002907C2 /* RouterHandler.swift */; };
 		C897F63F218CE054002907C2 /* Storyboard Scenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C897F63D218CE052002907C2 /* Storyboard Scenes.swift */; };
 		C897F640218CE054002907C2 /* Storyboard Segues.swift in Sources */ = {isa = PBXBuildFile; fileRef = C897F63E218CE052002907C2 /* Storyboard Segues.swift */; };
+		C8FA550B22C5425E0017DD65 /* PrideHabiticaAltBlack.png in Resources */ = {isa = PBXBuildFile; fileRef = C8FA550822C5425D0017DD65 /* PrideHabiticaAltBlack.png */; };
+		C8FA550C22C5425E0017DD65 /* PrideHabiticaAltBlack@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C8FA550922C5425E0017DD65 /* PrideHabiticaAltBlack@3x.png */; };
+		C8FA550D22C5425E0017DD65 /* PrideHabiticaAltBlack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C8FA550A22C5425E0017DD65 /* PrideHabiticaAltBlack@2x.png */; };
 		D902AD871B53E1B60098A1BD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D902AD861B53E1B60098A1BD /* GoogleService-Info.plist */; };
 		D902AD8A1B540AE30098A1BD /* HRPGBaseCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D902AD891B540AE30098A1BD /* HRPGBaseCollectionViewController.m */; };
 		D905766F1BD7F581009BB7BC /* HRPGHintView.m in Sources */ = {isa = PBXBuildFile; fileRef = D905766E1BD7F581009BB7BC /* HRPGHintView.m */; };
@@ -1033,6 +1036,9 @@
 		C897F63B218CCF51002907C2 /* RouterHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterHandler.swift; sourceTree = "<group>"; };
 		C897F63D218CE052002907C2 /* Storyboard Scenes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Storyboard Scenes.swift"; sourceTree = "<group>"; };
 		C897F63E218CE052002907C2 /* Storyboard Segues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Storyboard Segues.swift"; sourceTree = "<group>"; };
+		C8FA550822C5425D0017DD65 /* PrideHabiticaAltBlack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PrideHabiticaAltBlack.png; sourceTree = "<group>"; };
+		C8FA550922C5425E0017DD65 /* PrideHabiticaAltBlack@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PrideHabiticaAltBlack@3x.png"; sourceTree = "<group>"; };
+		C8FA550A22C5425E0017DD65 /* PrideHabiticaAltBlack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PrideHabiticaAltBlack@2x.png"; sourceTree = "<group>"; };
 		D902AD861B53E1B60098A1BD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D902AD881B540AE30098A1BD /* HRPGBaseCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGBaseCollectionViewController.h; sourceTree = "<group>"; };
 		D902AD891B540AE30098A1BD /* HRPGBaseCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGBaseCollectionViewController.m; sourceTree = "<group>"; };
@@ -1504,6 +1510,9 @@
 				296E4B2921AEF35E00DB3602 /* PrideHabitica@3x.png */,
 				296E4B2621AEF35E00DB3602 /* PrideHabiticaAlt@2x.png */,
 				296E4B2A21AEF35E00DB3602 /* PrideHabiticaAlt@3x.png */,
+				C8FA550822C5425D0017DD65 /* PrideHabiticaAltBlack.png */,
+				C8FA550A22C5425E0017DD65 /* PrideHabiticaAltBlack@2x.png */,
+				C8FA550922C5425E0017DD65 /* PrideHabiticaAltBlack@3x.png */,
 				290A405221FA175700A409BA /* Purple@2x.png */,
 				290A405321FA175800A409BA /* Purple@3x.png */,
 				296E4B9821AEFE5F00DB3602 /* PurpleAlt@2x.png */,
@@ -2824,6 +2833,7 @@
 				296E4BC921AEFE6100DB3602 /* TealAlt@2x.png in Resources */,
 				296E4B7221AEF35E00DB3602 /* PrideAlt@3x.png in Resources */,
 				29E16311200E5FEA00685640 /* QuestProgressView.xib in Resources */,
+				C8FA550B22C5425E0017DD65 /* PrideHabiticaAltBlack.png in Resources */,
 				296E4BCB21AEFE6100DB3602 /* BlueAlt@3x.png in Resources */,
 				296E4BC721AEFE6100DB3602 /* RedAlt@3x.png in Resources */,
 				296E4BBF21AEFE6100DB3602 /* Black@2x.png in Resources */,
@@ -2907,6 +2917,7 @@
 				2959815B224118A100819029 /* PurpleAltBlack@2x.png in Resources */,
 				293BB49C1FCD7DC8003B6F4F /* StatsView.xib in Resources */,
 				290279A920583EDE006DACB9 /* Settings.storyboard in Resources */,
+				C8FA550C22C5425E0017DD65 /* PrideHabiticaAltBlack@3x.png in Resources */,
 				29701FE21F5617900097BBCC /* ToastView.xib in Resources */,
 				D9D17CD21E6898E400AD9232 /* HabitTableViewCell.xib in Resources */,
 				49005B7E1F183775004830D9 /* HRPGShopUserHeaderView.xib in Resources */,
@@ -2923,6 +2934,7 @@
 				D9A50E9A1A868DE400FC8B1A /* Launch Screen.xib in Resources */,
 				290A405521FA175800A409BA /* Purple@3x.png in Resources */,
 				2957B8B81F4B2F6A00E836EF /* CustomRewardCell.xib in Resources */,
+				C8FA550D22C5425E0017DD65 /* PrideHabiticaAltBlack@2x.png in Resources */,
 				D9C31DB31C6501090096F4EC /* Main.storyboard in Resources */,
 				296E4BBB21AEFE6100DB3602 /* Green@2x.png in Resources */,
 				29598157224118A100819029 /* BlackAltBlack@3x.png in Resources */,
