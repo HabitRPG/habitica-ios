@@ -103,8 +103,8 @@
               openURL:(NSURL *)url
     sourceApplication:(NSString *)sourceApplication
            annotation:(id)annotation {
-    
-    if ([_currentAuthorizationFlow resumeAuthorizationFlowWithURL:url]) {
+        
+    if ([_currentAuthorizationFlow resumeExternalUserAgentFlowWithURL:url]) {
         _currentAuthorizationFlow = nil;
         return YES;
     }

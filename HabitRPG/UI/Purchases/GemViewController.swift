@@ -114,7 +114,6 @@ class GemViewController: BaseCollectionViewController, SeedsInterstitialsEventPr
             cell.setGemAmount(84)
             cell.showSeedsPromo(configRepository.bool(variable: .showSeedsPromo))
             cell.seeds_promo.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showSeedsPromo)))
-
         }
         
         cell.setPurchaseTap {[weak self] (purchaseButton) in

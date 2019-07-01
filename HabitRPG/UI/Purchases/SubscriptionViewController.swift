@@ -103,7 +103,7 @@ class SubscriptionViewController: BaseTableViewController {
     override func populateText() {
         subscriptionBenefitsTitleLabel.text = L10n.subscriptionBenefitsTitle
         giftSubscriptionExplanationLabel.text = L10n.subscriptionGiftExplanation
-        giftSubscriptionButton.setTitle(L10n.subscriptionBenefitsTitle, for: .normal)
+        giftSubscriptionButton.setTitle(L10n.subscriptionGiftButton, for: .normal)
         subscriptionSupportLabel.text = L10n.subscriptionSupportDevelopers
     }
 
