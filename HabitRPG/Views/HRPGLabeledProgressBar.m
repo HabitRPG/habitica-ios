@@ -45,26 +45,77 @@
 
     self.color = [UIColor blackColor];
 
-    self.progressBar = [[ProgressBar alloc] init];
+    self.progressBar = [[ProgressBar alloc] initWithFrame:CGRectZero];
+    self.progressBar.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:self.progressBar];
-    self.iconView = [[UIImageView alloc] init];
-    self.iconView.contentMode = UIViewContentModeLeft;
+    
+    self.iconView = [[UIImageView alloc] initWithFrame:CGRectZero];
+    self.iconView.translatesAutoresizingMaskIntoConstraints = NO;
     self.iconView.tintColor = [UIColor blackColor];
     [self addSubview:self.iconView];
-    self.labelView = [[UILabel alloc] init];
-    self.labelView.textAlignment = NSTextAlignmentLeft;
+    
+    self.labelView = [[UILabel alloc] initWithFrame:CGRectZero];
+    self.labelView.translatesAutoresizingMaskIntoConstraints = NO;
     self.labelView.textColor = [UIColor darkGrayColor];
     [self addSubview:self.labelView];
-    self.typeView = [[UILabel alloc] init];
-    self.typeView.textAlignment = NSTextAlignmentRight;
-    self.typeView.textColor = [UIColor darkGrayColor];
+    
+    self.typeView = [[UILabel alloc] initWithFrame:CGRectZero];
+    self.typeView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.typeView.textColor = [UIColor darkGrayColor ];
+    
     [self addSubview:self.typeView];
     self.fontSize = 11;
-    NSOperatingSystemVersion ios10_0_0 = (NSOperatingSystemVersion){10, 0, 0};
-    if ([[NSProcessInfo processInfo] isOperatingSystemAtLeastVersion:ios10_0_0]) {
+
+    if (@available(iOS 10.0, *)) {
         self.labelView.adjustsFontForContentSizeCategory = YES;
         self.typeView.adjustsFontForContentSizeCategory = YES;
     }
+    
+    UIUserInterfaceLayoutDirection direction = [UIView userInterfaceLayoutDirectionForSemanticContentAttribute:self.semanticContentAttribute];
+    if (direction == UIUserInterfaceLayoutDirectionRightToLeft) {
+        self.progressBar.transform = CGAffineTransformMakeScale(-1.0, 1.0);
+    } else {
+        self.progressBar.transform = CGAffineTransformIdentity;
+    }
+    
+    [self setupConstraints];
+}
+
+-(void)setupConstraints {
+    
+    // iconView placement and size
+    [self.iconView.leadingAnchor constraintEqualToAnchor:self.leadingAnchor].active = YES;
+    [self.iconView.widthAnchor constraintEqualToConstant:18.0].active = YES;
+    [self.iconView.topAnchor constraintEqualToAnchor:self.topAnchor].active = YES;
+    [self.iconView.heightAnchor constraintEqualToConstant:18.0].active = YES;
+    
+    // progressBar placement and size
+    [self.progressBar.leadingAnchor constraintEqualToAnchor:self.iconView.trailingAnchor constant:6.0].active = YES;
+    [self.progressBar.trailingAnchor constraintEqualToAnchor:self.trailingAnchor].active = YES;
+
+    [self.progressBar.heightAnchor constraintEqualToConstant:16.0].active = YES;
+    [self.progressBar.centerYAnchor constraintEqualToAnchor:self.iconView.centerYAnchor].active = YES;
+    
+    // label sizes will be intrinsic
+    
+    // labelView and typeView placement (horizontal):
+    [self.labelView.leadingAnchor constraintEqualToAnchor:self.progressBar.leadingAnchor constant:1.0].active = YES;
+    [self.labelView.trailingAnchor constraintGreaterThanOrEqualToAnchor:self.typeView.leadingAnchor constant:-4.0].active = YES;
+    [self.typeView.trailingAnchor constraintEqualToAnchor:self.progressBar.trailingAnchor constant:-1.0].active = YES;
+    
+    // Keep labelView to smallest possible size, this prevents need for alignment
+    [self.labelView setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
+    [self.typeView setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
+
+    // Favor showing all of the typeView label if combined is too big; this only kicks in if label is very long
+    [self.labelView setContentCompressionResistancePriority:751 forAxis:UILayoutConstraintAxisHorizontal];
+    
+    // Labels Placement (vertical)
+    
+    [self.labelView.topAnchor constraintEqualToAnchor:self.progressBar.bottomAnchor constant:2.0].active = YES;
+    [self.typeView.topAnchor constraintEqualToAnchor:self.progressBar.bottomAnchor constant:2.0].active = YES;
+    [self.labelView.bottomAnchor constraintEqualToAnchor:self.bottomAnchor].active = YES;
+    [self.typeView.bottomAnchor constraintEqualToAnchor:self.bottomAnchor].active = YES;
 }
 
 - (void)setColor:(UIColor *)color {
@@ -90,15 +141,9 @@
     self.progressBar.maxValue = [maxValue floatValue];
 }
 
-- (void)setFrame:(CGRect)frame {
-    [super setFrame:frame];
-    [self updateViewFrames];
-}
-
 - (void)setType:(NSString *)type {
     _type = type;
     self.typeView.text = self.type;
-    [self updateViewFrames];
     [self applyAccessibility];
 }
 
@@ -125,20 +170,11 @@
     _fontSize = (NSInteger) scaledFont.pointSize;
     self.typeView.font = scaledFont;
     self.labelView.font = scaledFont;
-    [self updateViewFrames];
-}
-- (void)updateViewFrames {
-    self.iconView.frame = CGRectMake(0, 0, 18, 18);
-    self.progressBar.frame = CGRectMake(24, 1, self.frame.size.width - 24, 16);
-    self.labelView.frame = CGRectMake(25, 19, (self.frame.size.width - 25) / 2, self.fontSize + 1);
-    self.typeView.frame = CGRectMake((self.frame.size.width + 25) / 2, 19,
-                                     (self.frame.size.width - 25) / 2, self.fontSize + 1);
 }
 
 - (void)layoutSubviews {
     [super layoutSubviews];
     [self.progressBar setNeedsDisplay];
-    [self updateViewFrames];
 }
 
 - (void)setIsActive:(BOOL)isActive {
