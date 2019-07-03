@@ -18,6 +18,7 @@ class  RealmGroupInvitation: Object, GroupInvitationProtocol {
     var name: String?
     var inviterID: String?
     var isPartyInvitation: Bool = false
+    var isPublicGuild: Bool = false
     
     override static func primaryKey() -> String {
         return "combinedID"
@@ -31,5 +32,6 @@ class  RealmGroupInvitation: Object, GroupInvitationProtocol {
         self.name = protocolObject.name
         self.inviterID = protocolObject.inviterID
         self.isPartyInvitation = protocolObject.isPartyInvitation
+        self.isPublicGuild = protocolObject.isPublicGuild
     }
 }

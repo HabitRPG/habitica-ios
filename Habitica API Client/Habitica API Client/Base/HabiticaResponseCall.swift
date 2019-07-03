@@ -8,8 +8,10 @@
 
 import Foundation
 import ReactiveSwift
+import Habitica_Models
 
 public class HabiticaResponseCall<T: Any, C: Decodable>: AuthenticatedCall {
+    
     public lazy var habiticaResponseSignal: Signal<HabiticaResponse<C>?, Never> = jsonSignal.map({ json in
         return json as? [String: Any]
     })
@@ -23,6 +25,9 @@ public class HabiticaResponseCall<T: Any, C: Decodable>: AuthenticatedCall {
             return nil
         })
         .take(first: 1)
+        .on(value: {response in
+            AuthenticatedCall.notificationListener?(response?.notifications)
+        })
     
     static func parse(_ data: Data) -> HabiticaResponse<C>? {
         let decoder = JSONDecoder()

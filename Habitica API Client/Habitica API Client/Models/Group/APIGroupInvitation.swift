@@ -19,10 +19,12 @@ class APIGroupInvitation: GroupInvitationProtocol, Decodable {
     var name: String?
     var inviterID: String?
     var isPartyInvitation: Bool = false
+    var isPublicGuild: Bool = false
     
     enum CodingKeys: String, CodingKey {
         case id
         case name
         case inviterID = "inviter"
+        case isPublicGuild = "publicGuild"
     }
 }

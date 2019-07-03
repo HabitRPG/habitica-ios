@@ -47,6 +47,11 @@
 		290C3017206A963D0066AF5B /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C3016206A963D0066AF5B /* MainMenuViewController.swift */; };
 		290C302A206BA0B50066AF5B /* SkillTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C3029206BA0B50066AF5B /* SkillTableViewCell.swift */; };
 		290C302C206BACBB0066AF5B /* SpellsTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C302B206BACBB0066AF5B /* SpellsTableViewDataSource.swift */; };
+		2912C3B022CA701C00BC485F /* QuestCompletedAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2912C3AF22CA701C00BC485F /* QuestCompletedAlertController.swift */; };
+		2912C3B222CB415100BC485F /* UnreadGroupNotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2912C3B122CB415100BC485F /* UnreadGroupNotificationCell.swift */; };
+		2912C3B422CB441C00BC485F /* NewMysteryitemNotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2912C3B322CB441C00BC485F /* NewMysteryitemNotificationCell.swift */; };
+		2912C3C522CB955B00BC485F /* QuestInviteNotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2912C3C422CB955B00BC485F /* QuestInviteNotificationCell.swift */; };
+		2912C3C722CB956400BC485F /* GroupInviteNotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2912C3C622CB956400BC485F /* GroupInviteNotificationCell.swift */; };
 		2913BC5D220C69F6001ECF00 /* NSString+Emoji.m in Sources */ = {isa = PBXBuildFile; fileRef = 2913BC5C220C69F5001ECF00 /* NSString+Emoji.m */; };
 		2914485B2084E61400F3A6B5 /* MountOverviewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2914485A2084E61400F3A6B5 /* MountOverviewDataSource.swift */; };
 		2914485D2084E6ED00F3A6B5 /* MountOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2914485C2084E6ED00F3A6B5 /* MountOverviewViewController.swift */; };
@@ -625,6 +630,11 @@
 		290C3016206A963D0066AF5B /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		290C3029206BA0B50066AF5B /* SkillTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillTableViewCell.swift; sourceTree = "<group>"; };
 		290C302B206BACBB0066AF5B /* SpellsTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellsTableViewDataSource.swift; sourceTree = "<group>"; };
+		2912C3AF22CA701C00BC485F /* QuestCompletedAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestCompletedAlertController.swift; sourceTree = "<group>"; };
+		2912C3B122CB415100BC485F /* UnreadGroupNotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnreadGroupNotificationCell.swift; sourceTree = "<group>"; };
+		2912C3B322CB441C00BC485F /* NewMysteryitemNotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMysteryitemNotificationCell.swift; sourceTree = "<group>"; };
+		2912C3C422CB955B00BC485F /* QuestInviteNotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestInviteNotificationCell.swift; sourceTree = "<group>"; };
+		2912C3C622CB956400BC485F /* GroupInviteNotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInviteNotificationCell.swift; sourceTree = "<group>"; };
 		2913BC5B220C69F4001ECF00 /* NSString+Emoji.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Emoji.h"; sourceTree = "<group>"; };
 		2913BC5C220C69F5001ECF00 /* NSString+Emoji.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Emoji.m"; sourceTree = "<group>"; };
 		2913E3B020F50B9300FDF81D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -1475,6 +1485,10 @@
 				295BC6F8226F5B6400DDDF1A /* BaseNotificationCell.swift */,
 				295BC6FC226F5E3700DDDF1A /* UnallocatedPointsNotificationCell.swift */,
 				295BC700226F677100DDDF1A /* NewsNotificationCell.swift */,
+				2912C3B122CB415100BC485F /* UnreadGroupNotificationCell.swift */,
+				2912C3B322CB441C00BC485F /* NewMysteryitemNotificationCell.swift */,
+				2912C3C422CB955B00BC485F /* QuestInviteNotificationCell.swift */,
+				2912C3C622CB956400BC485F /* GroupInviteNotificationCell.swift */,
 			);
 			path = Notifications;
 			sourceTree = "<group>";
@@ -2381,6 +2395,7 @@
 				D91CCACF1BCF11CC001C6A0C /* UserTopHeader.xib */,
 				2980E6081EEA25CD005B7100 /* YesterdailiesDialogView.swift */,
 				2980E6061EEA1F55005B7100 /* YesterdailiesDialogView.xib */,
+				2912C3AF22CA701C00BC485F /* QuestCompletedAlertController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -3342,9 +3357,11 @@
 				299FB29D2084A67D00422522 /* StableOverviewViewController.swift in Sources */,
 				290B6287207CD6B5007287C4 /* GroupDetailViewController.swift in Sources */,
 				290B6298207E3F37007287C4 /* LeaveGroupInteractor.swift in Sources */,
+				2912C3C522CB955B00BC485F /* QuestInviteNotificationCell.swift in Sources */,
 				298119B11F50453100F9FB39 /* QuestGoalView.swift in Sources */,
 				D9D17CCC1E6736A600AD9232 /* ChallengeDetailHeaderView.swift in Sources */,
 				291448A8208A3DD200F3A6B5 /* CustomizationRepository.swift in Sources */,
+				2912C3B222CB415100BC485F /* UnreadGroupNotificationCell.swift in Sources */,
 				D9BB45D61E79968B0002AE2E /* ChallengeFilterAlert.swift in Sources */,
 				29FD8AA0203D753F0094322E /* SplitSocialViewController.swift in Sources */,
 				291448862088E87F00F3A6B5 /* EquipmentCell.swift in Sources */,
@@ -3431,6 +3448,7 @@
 				D9D9EF981D54E51C00FC89C1 /* HRPGQRCodeView.m in Sources */,
 				4908641D1F43DE2B00BD9896 /* HRPGInsufficientGemsViewController.swift in Sources */,
 				292844EF20DD1D630011DC43 /* GroupInvitationListView.swift in Sources */,
+				2912C3C722CB956400BC485F /* GroupInviteNotificationCell.swift in Sources */,
 				29FD8AA7203DA42A0094322E /* NSLayoutConstraint-Extensions.swift in Sources */,
 				291448702085EC0F00F3A6B5 /* MountDetailViewController.swift in Sources */,
 				D97ED0B01E6DBC87006C2A26 /* Interactor.swift in Sources */,
@@ -3455,6 +3473,7 @@
 				293BB49A1FCD7DC0003B6F4F /* StatsView.swift in Sources */,
 				49005B7C1F18371F004830D9 /* HRPGShopUserHeaderView.swift in Sources */,
 				2908784A220210CF0010820A /* Strings-objcBridge.swift in Sources */,
+				2912C3B422CB441C00BC485F /* NewMysteryitemNotificationCell.swift in Sources */,
 				2902796D2057F2C5006DACB9 /* Strings.swift in Sources */,
 				D9EB4E9B18CB4A9400BB2094 /* main.m in Sources */,
 				292DEE76204E053D0086D5F7 /* HabitButton.swift in Sources */,
@@ -3513,6 +3532,7 @@
 				498E4D031FA17C31006933FF /* ChallengeDescriptionTableViewCell.swift in Sources */,
 				D9BB455B1E71C52F0002AE2E /* TaskTableViewCell.swift in Sources */,
 				291E95B720988B85006EE585 /* PartyDetailViewController.swift in Sources */,
+				2912C3B022CA701C00BC485F /* QuestCompletedAlertController.swift in Sources */,
 				29E16315200E629800685640 /* QuestProgressBarView.swift in Sources */,
 				49E378512009540500E0DA3D /* ChallengeTableViewHeaderView.swift in Sources */,
 				292F968320724B1100804151 /* GuildsOverviewDataSource.swift in Sources */,

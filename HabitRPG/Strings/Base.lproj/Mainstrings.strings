@@ -647,6 +647,7 @@
 "remember_check_off_dailies" = "Remember to check off your Dailies!";
 "complete" = "Complete";
 "accept" = "Accept";
+"decline" = "Decline";
 "reject" = "Reject";
 "abort" = "Abort";
 "force_start" = "Force Start";
@@ -677,6 +678,7 @@
 "accessibility.collapse_checklist" = "Collapse Checklist";
 "accessibility.expand_checklist" = "Expand Checklist";
 "collect" = "Collect";
+"defeat" = "Defeat";
 "mystery_sets" = "Mystery Sets";
 "edit_tag" = "Edit Tag";
 "create_tag" = "Create Tag";
@@ -737,5 +739,12 @@
 "shops.purchased_all_gear" = "You already have all your class equipment! More will be released during the Grand Galas, near the solstices and equinoxes.";
 "purchased" = "You purchased %@";
 "buy_reward" = "You bought '%@' for %f gold";
-"notifications.unallocated_stat_points" = "You have %d unallocated Stat Points";
+"notifications.unallocated_stat_points" = "You have **%d unallocated Stat Points**";
 "notifications.new_bailey" = "New Bailey Update!";
+"notifications.new_mystery_item" = "You have new **Mystery Items**";
+"notifications.unread_guild_message" = "**%@** has new posts.";
+"notifications.unread_party_message" = "Your party, **%@**, has new posts.";
+"notifications.party_invite" = "You were invited to join the Party **%s**";
+"notifications.public_guild_invite" = "You were invited to join the public guild **%s**";
+"notifications.private_guild_invite" = "You were invited to join the private guild **%s**";
+"notifications.quest_invite" = "You were invited to the Quest **%s**";

@@ -379,9 +379,42 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         return Signal.empty
     }
     
+    func saveNotifications(_ notifications: [NotificationProtocol]?) {
+        if let userID = currentUserId {
+            localRepository.save(userID: userID, notifications: notifications)
+        }
+    }
+    
     func getNotifications() -> SignalProducer<ReactiveResults<[NotificationProtocol]>, ReactiveSwiftRealmError> {
         return currentUserIDProducer.skipNil().flatMap(.latest, { (userID) in
             return self.localRepository.getNotifications(userID: userID)
+        })
+    }
+    
+    func getUnreadNotificationCount() -> SignalProducer<Int, ReactiveSwiftRealmError> {
+        return currentUserIDProducer.skipNil().flatMap(.latest, { (userID) in
+            return self.localRepository.getUnreadNotificationCount(userID: userID)
+        })
+    }
+    
+    func readNotification(notification: NotificationProtocol) -> Signal<[NotificationProtocol]?, Never> {
+        if notification.id.contains("-invite-") {
+            localRepository.delete(object: notification)
+            return Signal.empty
+        } else {
+            let call = ReadNotificationCall(notificationID: notification.id)
+            call.fire()
+            return call.arraySignal.on(value: {[weak self] notifications in
+                self?.saveNotifications(notifications)
+            })
+        }
+    }
+    
+    func readNotifications(notifications: [NotificationProtocol]) -> Signal<[NotificationProtocol]?, Never> {
+        let call = ReadNotificationsCall(notificationIDs: notifications.map({ $0.id }))
+        call.fire()
+        return call.arraySignal.on(value: {[weak self] notifications in
+            self?.saveNotifications(notifications)
         })
     }
     
