@@ -142,18 +142,6 @@ class UserManager: NSObject {
                 }
             }
         }
-        
-        if let points = user.stats?.points, points > 0 {
-            if var notification = userRepository.createNotification(id: HabiticaNotificationType.unallocatedStatsPoints.rawValue, type: HabiticaNotificationType.unallocatedStatsPoints) as? NotificationUnallocatedStatsProtocol {
-                notification.points = points
-                userRepository.save(object: notification)
-            }
-        }
-        if user.flags?.hasNewStuff == true {
-            if let notification = userRepository.createNotification(id: HabiticaNotificationType.newStuff.rawValue, type: HabiticaNotificationType.newStuff) as? NotificationNewsProtocol {
-                userRepository.save(object: notification)
-            }
-        }
     }
     
     private func checkFainting(user: UserProtocol) -> FaintViewController? {

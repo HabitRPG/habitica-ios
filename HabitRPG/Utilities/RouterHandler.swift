@@ -73,6 +73,10 @@ class RouterHandler: NSObject {
             self.displayTab(index: 4)
             self.push(StoryboardScene.Settings.initialScene.instantiate())
         }
+        router.register("/user/stats") { _ in
+            self.displayTab(index: 4)
+            self.push(StoryboardScene.User.attributePointsViewController.instantiate())
+        }
         router.register("profile/:userID") { link in
             self.displayTab(index: 4)
             let viewController = StoryboardScene.Social.userProfileViewController.instantiate()
@@ -82,12 +86,14 @@ class RouterHandler: NSObject {
     }
     
     @objc
+    @discardableResult
     func handle(url: URL) -> Bool {
         return router.handle(url) { (_, _) in
         }
     }
     
     @objc
+    @discardableResult
     func handle(urlString: String) -> Bool {
         if let url = URL(string: urlString) {
             return handle(url: url)

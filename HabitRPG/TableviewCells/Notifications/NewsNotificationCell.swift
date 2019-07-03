@@ -9,11 +9,12 @@
 import Foundation
 import Habitica_Models
 
-class NewsNotificationCell: BaseNotificationCell {
+class NewsNotificationCell: BaseNotificationCell<NotificationNewsProtocol> {
     
-    func configureFor(notification: NotificationNewsProtocol) {
-        isClosable = true
-        titleLabel.text = L10n.Notifications.newBailey
+    override func configureFor(notification: NotificationNewsProtocol) {
+        super.configureFor(notification: notification)
+        title = L10n.Notifications.newBailey
+        itemDescription = notification.title
         iconView.image = UIImage(asset: Asset.notificationsBailey)
         super.configureFor(notification: notification)
         setNeedsLayout()

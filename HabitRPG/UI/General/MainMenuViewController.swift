@@ -105,7 +105,6 @@ class MainMenuViewController: BaseTableViewController {
         navbarView?.notificationsAction = {[weak self] in
             self?.perform(segue: StoryboardSegue.Main.notificationsSegue)
         }
-        navbarView?.notificationsButton.isHidden = true
         
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
@@ -115,6 +114,14 @@ class MainMenuViewController: BaseTableViewController {
         
         disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
             self?.user = user
+        }).start())
+        disposable.inner.add(userRepository.getUnreadNotificationCount().on(value: {[weak self] count in
+            if count > 0 {
+                self?.navbarView?.notificationsBadge.text = String(count)
+                self?.navbarView?.notificationsBadge.isHidden = false
+            } else {
+                self?.navbarView?.notificationsBadge.isHidden = true
+            }
         }).start())
     }
     

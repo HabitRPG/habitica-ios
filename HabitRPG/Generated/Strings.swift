@@ -102,6 +102,10 @@ public enum L10n {
   public static var dayStreaks: String { return L10n.tr("Mainstrings", "day_streaks") }
   /// days
   public static var days: String { return L10n.tr("Mainstrings", "days") }
+  /// Decline
+  public static var decline: String { return L10n.tr("Mainstrings", "decline") }
+  /// Defeat
+  public static var defeat: String { return L10n.tr("Mainstrings", "defeat") }
   /// Delete
   public static var delete: String { return L10n.tr("Mainstrings", "delete") }
   /// Delete Tasks
@@ -970,9 +974,35 @@ public enum L10n {
   public enum Notifications {
     /// New Bailey Update!
     public static var newBailey: String { return L10n.tr("Mainstrings", "notifications.new_bailey") }
-    /// You have %d unallocated Stat Points
+    /// You have new **Mystery Items**
+    public static var newMysteryItem: String { return L10n.tr("Mainstrings", "notifications.new_mystery_item") }
+    /// You were invited to join the Party **%s**
+    public static func partyInvite(_ p1: UnsafePointer<CChar>) -> String {
+      return L10n.tr("Mainstrings", "notifications.party_invite", p1)
+    }
+    /// You were invited to join the private guild **%s**
+    public static func privateGuildInvite(_ p1: UnsafePointer<CChar>) -> String {
+      return L10n.tr("Mainstrings", "notifications.private_guild_invite", p1)
+    }
+    /// You were invited to join the public guild **%s**
+    public static func publicGuildInvite(_ p1: UnsafePointer<CChar>) -> String {
+      return L10n.tr("Mainstrings", "notifications.public_guild_invite", p1)
+    }
+    /// You were invited to the Quest **%s**
+    public static func questInvite(_ p1: UnsafePointer<CChar>) -> String {
+      return L10n.tr("Mainstrings", "notifications.quest_invite", p1)
+    }
+    /// You have **%d unallocated Stat Points**
     public static func unallocatedStatPoints(_ p1: Int) -> String {
       return L10n.tr("Mainstrings", "notifications.unallocated_stat_points", p1)
+    }
+    /// **%@** has new posts.
+    public static func unreadGuildMessage(_ p1: String) -> String {
+      return L10n.tr("Mainstrings", "notifications.unread_guild_message", p1)
+    }
+    /// Your party, **%@**, has new posts.
+    public static func unreadPartyMessage(_ p1: String) -> String {
+      return L10n.tr("Mainstrings", "notifications.unread_party_message", p1)
     }
   }
 

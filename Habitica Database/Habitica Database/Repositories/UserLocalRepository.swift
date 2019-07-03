@@ -19,14 +19,45 @@ public class UserLocalRepository: BaseLocalRepository {
             save(object: realmUser)
             return
         }
-        save(object: RealmUser(user))
+        save(object: RealmUser(user), update: .modified)
+        
+        let userID = user.id ?? ""
+        
+        if user.party?.quest?.rsvpNeeded == true {
+            let notification = createNotification(userID: userID, id: "quest-invite-\(userID)", type: .questInvite)
+            if var notification = notification as? NotificationQuestInviteProtocol {
+                notification.questKey = user.party?.quest?.key
+            }
+            if let notification = notification as? RealmNotification {
+                save(object: notification, update: .modified)
+            }
+        } else {
+            removeNotification("quest-invite-\(userID)")
+        }
+        if let inviteNotifications = getRealm()?.objects(RealmNotification.self).filter("id BEGINSWITH 'group-invite-\(userID)'"), inviteNotifications.count > 0 {
+            try? getRealm()?.write { getRealm()?.delete(inviteNotifications) }
+        }
+        if user.invitations.count > 0 {
+            let notifications = user.invitations.map { (invitation) -> RealmNotification? in
+                let notification = createNotification(userID: userID, id: "group-invite-\(userID)-\(invitation.id ?? "")", type: .groupInvite)
+                if var notification = notification as? NotificationGroupInviteProtocol {
+                    notification.groupID = invitation.id
+                    notification.groupName = invitation.name
+                    notification.inviterID = invitation.inviterID
+                    notification.isParty = invitation.isPartyInvitation
+                    notification.isPublicGuild = invitation.isPublicGuild
+                }
+                return notification as? RealmNotification
+            }
+            save(objects: notifications.flatMap { $0 })
+        }
     }
     
     public func save(_ userId: String, stats: StatsProtocol) {
         RealmUser.findBy(key: userId).take(first: 1).on(value: {[weak self] user in
             self?.updateCall { realm in
                 let realmStats = RealmStats(id: userId, stats: stats)
-                realm.add(realmStats, update: true)
+                realm.add(realmStats, update: .modified)
                 user?.stats = realmStats
             }
         }).start()
@@ -49,6 +80,16 @@ public class UserLocalRepository: BaseLocalRepository {
             }
             return RealmInboxMessage(userID: userID, inboxMessage: messsage)
         })
+    }
+    
+    public func save(userID: String, notifications: [NotificationProtocol]?) {
+        save(objects: notifications?.map { (notification) in
+            if let realmNotification = notification as? RealmNotification {
+                return realmNotification
+            }
+            return RealmNotification(userID: userID, protocolObject: notification)
+        })
+        removeOldNotifications(userID: userID, newNotifications: notifications)
     }
     
     private func removeOldInAppRewards(userID: String?, newInAppRewards: [InAppRewardProtocol]) {
@@ -102,6 +143,33 @@ public class UserLocalRepository: BaseLocalRepository {
         }
     }
     
+    private func removeOldNotifications(userID: String?, newNotifications: [NotificationProtocol]?) {
+        let oldNotifications = getRealm()?.objects(RealmNotification.self).filter("userID == '\(userID ?? "")' && !(id CONTAINS '-invite-')")
+        var notificationsToRemove = [Object]()
+        oldNotifications?.forEach({ (notification) in
+            if newNotifications?.contains(where: { (newNotification) -> Bool in
+                return newNotification.id == notification.id
+            }) != true {
+                notificationsToRemove.append(notification)
+            }
+        })
+        if notificationsToRemove.isEmpty == false {
+            updateCall { realm in
+                realm.delete(notificationsToRemove)
+            }
+        }
+    }
+    
+    private func removeNotification(_ id: String) {
+        let realm = getRealm()
+        if let notification = realm?.objects(RealmNotification.self).filter("id == '\(id)'").first {
+            realm?.refresh()
+            try? realm?.write {
+                realm?.delete(notification)
+            }
+        }
+    }
+    
     public func getUser(_ id: String) -> SignalProducer<UserProtocol, ReactiveSwiftRealmError> {
         return RealmUser.findBy(query: "id == '\(id)'").reactive().map({ (users, _) -> UserProtocol? in
             return users.first
@@ -149,7 +217,7 @@ public class UserLocalRepository: BaseLocalRepository {
     
     public func updateUser(id: String, userItems: UserItemsProtocol) {
         updateCall { realm in
-            realm.add(RealmUserItems(id: id, userItems: userItems), update: true)
+            realm.add(RealmUserItems(id: id, userItems: userItems), update: .modified)
         }
     }
     
@@ -170,13 +238,13 @@ public class UserLocalRepository: BaseLocalRepository {
                     stats.perception = buyResponse.perception ?? stats.perception
                     if let newBuffs = buyResponse.buffs {
                         let realmBuffs = RealmBuff(id: id, buff: newBuffs)
-                        realm?.add(realmBuffs, update: true)
+                        realm?.add(realmBuffs, update: .modified)
                         stats.buffs = realmBuffs
                     }
                 }
                 if let outfit = buyResponse.items?.gear?.equipped {
                     let realmOutfit = RealmOutfit(id: id, type: "equipped", outfit: outfit)
-                    realm?.add(realmOutfit, update: true)
+                    realm?.add(realmOutfit, update: .modified)
                     existingUser.items?.gear?.equipped = realmOutfit
                 }
             }
@@ -218,8 +286,14 @@ public class UserLocalRepository: BaseLocalRepository {
     }
     
     public func getNotifications(userID: String) -> SignalProducer<ReactiveResults<[NotificationProtocol]>, ReactiveSwiftRealmError> {
-        return RealmNotification.findBy(query: "userID == '\(userID)'").sorted(key: "priority").reactive().map({ (value, changeset) -> ReactiveResults<[NotificationProtocol]> in
+        return RealmNotification.findBy(query: "userID == '\(userID)' && realmType != ''").sorted(key: "priority").reactive().map({ (value, changeset) -> ReactiveResults<[NotificationProtocol]> in
             return (value.map({ (notification) -> NotificationProtocol in return notification }), changeset)
+        })
+    }
+    
+    public func getUnreadNotificationCount(userID: String) -> SignalProducer<Int, ReactiveSwiftRealmError> {
+        return RealmNotification.findBy(query: "userID == '\(userID)' && realmType != '' && seen == false").reactive().map({ (value, changeset) -> Int in
+            return value.count
         })
     }
     
@@ -259,7 +333,7 @@ public class UserLocalRepository: BaseLocalRepository {
                 oldUser.balance = newUser.balance
             }
             if let newItems = newUser.items {
-                realm.add(RealmUserItems(id: oldUser.id, userItems: newItems), update: true)
+                realm.add(RealmUserItems(id: oldUser.id, userItems: newItems), update: .modified)
             }
             if let newStats = newUser.stats {
                 if newStats.maxHealth == 0, let maxHealth = oldUser.stats?.maxHealth {
@@ -271,25 +345,25 @@ public class UserLocalRepository: BaseLocalRepository {
                 if newStats.toNextLevel == 0, let toNextLevel = oldUser.stats?.toNextLevel {
                     newStats.toNextLevel = toNextLevel
                 }
-                realm.add(RealmStats(id: oldUser.id, stats: newStats), update: true)
+                realm.add(RealmStats(id: oldUser.id, stats: newStats), update: .modified)
             }
             if let newProfile = newUser.profile {
-                realm.add(RealmProfile(id: oldUser.id, profile: newProfile), update: true)
+                realm.add(RealmProfile(id: oldUser.id, profile: newProfile), update: .modified)
             }
             if let newContributor = newUser.contributor {
-                realm.add(RealmContributor(id: oldUser.id, contributor: newContributor), update: true)
+                realm.add(RealmContributor(id: oldUser.id, contributor: newContributor), update: .modified)
             }
             if let newFlags = newUser.flags {
-                realm.add(RealmFlags(id: oldUser.id, flags: newFlags), update: true)
+                realm.add(RealmFlags(id: oldUser.id, flags: newFlags), update: .modified)
             }
             if let newInbox = newUser.inbox {
-                realm.add(RealmInbox(id: oldUser.id, inboxProtocol: newInbox), update: true)
+                realm.add(RealmInbox(id: oldUser.id, inboxProtocol: newInbox), update: .modified)
             }
             if let newPreferences = newUser.preferences {
-                realm.add(RealmPreferences(id: oldUser.id, preferences: newPreferences), update: true)
+                realm.add(RealmPreferences(id: oldUser.id, preferences: newPreferences), update: .modified)
             }
             if let newPurchaseed = newUser.purchased {
-                realm.add(RealmPurchased(userID: oldUser.id, protocolObject: newPurchaseed), update: true)
+                realm.add(RealmPurchased(userID: oldUser.id, protocolObject: newPurchaseed), update: .modified)
             }
         }
     }

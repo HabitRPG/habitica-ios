@@ -17,7 +17,7 @@ public class TaskLocalRepository: BaseLocalRepository {
         if let realmTask = task as? RealmTask {
             updateCall { realm in
                 realmTask.ownerID = userID
-                realm.add(realmTask, update: true)
+                realm.add(realmTask, update: .modified)
             }
             return
         }
@@ -54,7 +54,7 @@ public class TaskLocalRepository: BaseLocalRepository {
                 return realmTask
             }
             return RealmTask(ownerID: userID, taskProtocol: task, tags: tags)
-        })
+        }, update: .modified)
         removeOldTasks(userID: userID, newTasks: tasks, removeCompletedTodos: removeCompletedTodos)
     }
     

@@ -9,6 +9,7 @@
 import Foundation
 import ReactiveSwift
 import Keys
+import Habitica_Models
 
 enum HTTPMethod: String {
     case GET
@@ -30,6 +31,8 @@ public class AuthenticatedCall: JsonNetworkCall {
 
     public static var errorHandler: NetworkErrorHandler?
     public static var defaultConfiguration = HabiticaServerConfig.current
+    public static var notificationListener: (([NotificationProtocol]?) -> Void)?
+
     private var debugHandler: DebugOutputHandler?
     var customErrorHandler: NetworkErrorHandler?
     var needsAuthentication = true

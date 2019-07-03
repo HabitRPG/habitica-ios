@@ -29,22 +29,32 @@ public class BaseLocalRepository {
         return try? Realm()
     }
     
-    public func save(object realmObject: Object?) {
+    public func save(object realmObject: Object?, update: Realm.UpdatePolicy = .all) {
         if let object = realmObject {
             let realm = getRealm()
             realm?.refresh()
             try? realm?.safeWrite {
-                realm?.add(object, update: true)
+                realm?.add(object, update: update)
             }
         }
     }
     
-    public func save(objects realmObjects: [Object]?) {
+    public func save(objects realmObjects: [Object]?, update: Realm.UpdatePolicy = .all) {
         if let objects = realmObjects {
             let realm = getRealm()
             realm?.refresh()
             try? realm?.safeWrite {
-                realm?.add(objects, update: true)
+                realm?.add(objects, update: update)
+            }
+        }
+    }
+    
+    public func delete(object: Any) {
+        if let realmObject = object as? Object {
+            let realm = getRealm()
+            realm?.refresh()
+            try? realm?.safeWrite {
+                realm?.delete(realmObject)
             }
         }
     }
@@ -61,7 +71,7 @@ public class BaseLocalRepository {
     public func clearDatabase() {
         let realm = getRealm()
         realm?.refresh()
-        try? realm?.write {
+        try? realm?.safeWrite {
             realm?.deleteAll()
         }
     }

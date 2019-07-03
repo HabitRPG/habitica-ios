@@ -124,6 +124,9 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
         NetworkAuthenticationManager.shared.currentUserKey = AuthenticationManager.shared.currentUserKey
         updateServer()
         AuthenticatedCall.errorHandler = HabiticaNetworkErrorHandler()
+        AuthenticatedCall.notificationListener = {[weak self] notifications in
+            self?.userRepository.saveNotifications(notifications)
+        }
         let configuration = URLSessionConfiguration.default
         AuthenticatedCall.defaultConfiguration.urlConfiguration = configuration
     }

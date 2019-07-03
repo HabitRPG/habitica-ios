@@ -14,7 +14,9 @@ class RealmNotification: Object,
     NotificationNewsProtocol,
     NotificationUnallocatedStatsProtocol,
     NotificationNewChatProtocol,
-    NotificationQuestInvitationProtocol {
+    NotificationQuestInviteProtocol,
+    NotificationGroupInviteProtocol,
+    NotificationNewMysteryItemProtocol {
     @objc dynamic var id: String = ""
     @objc dynamic var realmType: String = ""
     var type: HabiticaNotificationType {
@@ -34,8 +36,10 @@ class RealmNotification: Object,
     @objc dynamic var title: String?
     @objc dynamic var groupID: String?
     @objc dynamic var groupName: String?
-    @objc dynamic var questID: String?
-    @objc dynamic var questName: String?
+    @objc dynamic var inviterID: String?
+    @objc dynamic var isParty: Bool = false
+    @objc dynamic var isPublicGuild: Bool = false
+    @objc dynamic var questKey: String?
     @objc dynamic var points: Int = 0
     
     override static func primaryKey() -> String {
@@ -47,5 +51,22 @@ class RealmNotification: Object,
         self.id = id
         self.userID = userID
         self.type = type
+    }
+    
+    convenience init(userID: String?, protocolObject: NotificationProtocol) {
+        self.init()
+        self.userID = userID ?? ""
+        self.id = protocolObject.id
+        self.type = protocolObject.type
+        if let notification = protocolObject as? NotificationNewChatProtocol {
+            groupID = notification.groupID
+            groupName = notification.groupName
+        }
+        if let notification = protocolObject as? NotificationUnallocatedStatsProtocol {
+            points = notification.points
+        }
+        if let notification = protocolObject as? NotificationNewsProtocol {
+            title = notification.title
+        }
     }
 }

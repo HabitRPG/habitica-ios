@@ -19,15 +19,15 @@ public protocol QuestProtocol: ItemProtocol {
 }
 
 public extension QuestProtocol {
-    public var imageName: String {
+    var imageName: String {
         return "inventory_quest_scroll_\(key ?? "")"
     }
     
-    public var isBossQuest: Bool {
+    var isBossQuest: Bool {
         return (boss?.health ?? 0) > 0
     }
     
-    public var isCollectionQuest: Bool {
+    var isCollectionQuest: Bool {
         return (collect?.count ?? 0) > 0
     }
 }
