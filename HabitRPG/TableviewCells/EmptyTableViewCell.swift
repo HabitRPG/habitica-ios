@@ -46,3 +46,4 @@ class EmptyTableViewCell: UITableViewCell {
         cell.firstParagraphLabel.textColor = ThemeService.shared.theme.secondaryTextColor
     }
 }
+

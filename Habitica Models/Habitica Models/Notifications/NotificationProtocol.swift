@@ -14,3 +14,9 @@ public protocol NotificationProtocol {
     var type: HabiticaNotificationType { get set }
     var seen: Bool { get set }
 }
+
+public extension NotificationProtocol {
+    var isDismissable: Bool {
+        return !id.contains("invite-")
+    }
+}

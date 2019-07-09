@@ -1010,6 +1010,8 @@ public enum L10n {
   }
 
   public enum Notifications {
+    /// Dismiss all
+    public static var dismissAll: String { return L10n.tr("Mainstrings", "notifications.dismiss_all") }
     /// New Bailey Update!
     public static var newBailey: String { return L10n.tr("Mainstrings", "notifications.new_bailey") }
     /// You have new **Mystery Items**

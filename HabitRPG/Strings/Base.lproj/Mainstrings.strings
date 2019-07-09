@@ -748,6 +748,7 @@
 "notifications.public_guild_invite" = "You were invited to join the public guild **%s**";
 "notifications.private_guild_invite" = "You were invited to join the private guild **%s**";
 "notifications.quest_invite" = "You were invited to the Quest **%s**";
+"notifications.dismiss_all" = "Dismiss all";
 "empty.habits.title" = "These are your Habits";
 "empty.habits.description" = "Habits don't have a rigid schedule. You can check them off multiple times per day.";
 "empty.dailies.title" = "These are your Dailies";

@@ -130,6 +130,7 @@ class BaseReactiveTableViewDataSource<MODEL>: BaseReactiveDataSource<MODEL>, UIT
                 tableView?.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
                 tableView?.separatorStyle = .none
                 tableView?.allowsSelection = false
+                tableView?.bounces = false
             }
         } else {
             isEmpty = false
@@ -140,6 +141,7 @@ class BaseReactiveTableViewDataSource<MODEL>: BaseReactiveDataSource<MODEL>, UIT
                 tableView?.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
                 tableView?.separatorStyle = .singleLine
                 tableView?.allowsSelection = true
+                tableView?.bounces = true
             }
         }
     }

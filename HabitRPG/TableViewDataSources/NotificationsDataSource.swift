@@ -9,6 +9,7 @@
 import Foundation
 import Habitica_Models
 import ReactiveSwift
+import PinLayout
 
 class NotificationsDataSource: BaseReactiveTableViewDataSource<NotificationProtocol> {
     
@@ -29,6 +30,45 @@ class NotificationsDataSource: BaseReactiveTableViewDataSource<NotificationProto
                 self?.sections[0].items = entries
                 self?.notify(changes: changes)
             }).start())
+    }
+    
+    func headerView(forSection section: Int, frame: CGRect) -> UIView? {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: 54))
+        view.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
+        if sections[0].items.count == 0 {
+            return view
+        }
+        let label = UILabel()
+        label.font = CustomFontMetrics.scaledSystemFont(ofSize: 14)
+        label.textColor = ThemeService.shared.theme.secondaryTextColor
+        label.text = L10n.Titles.notifications.uppercased()
+        view.addSubview(label)
+        label.pin.start(16).sizeToFit().vCenter()
+        let pillLabel = UILabel()
+        pillLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 12)
+        pillLabel.textColor = ThemeService.shared.theme.secondaryTextColor
+        pillLabel.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
+        pillLabel.textAlignment = .center
+        pillLabel.text = "\(sections[0].items.count)"
+        view.addSubview(pillLabel)
+        pillLabel.pin.after(of: label).marginStart(8).sizeToFit().wrapContent(padding: 8)
+        pillLabel.pin.width(pillLabel.frame.size.width + 12).height(pillLabel.frame.size.height + 4).vCenter()
+        pillLabel.cornerRadius = pillLabel.frame.size.height/2
+        
+        let button = UIButton()
+        button.setTitle(L10n.Notifications.dismissAll, for: .normal)
+        button.backgroundColor = .clear
+        button.setTitleColor(ThemeService.shared.theme.tintColor, for: .normal)
+        view.addSubview(button)
+        button.pin.top().bottom().sizeToFit(.height).end(16)
+        button.addTarget(self, action: #selector(dismissAll), for: .touchUpInside)
+        
+        let separator = UIView()
+        separator.backgroundColor = ThemeService.shared.theme.tableviewSeparatorColor
+        view.addSubview(separator)
+        separator.pin.start().end().bottom().height(1)
+        
+        return view
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -99,7 +139,15 @@ class NotificationsDataSource: BaseReactiveTableViewDataSource<NotificationProto
     }
     
     private func dismiss(notification: NotificationProtocol) {
-        userRepository.readNotification(notification: notification)
+        disposable.inner.add(userRepository.readNotification(notification: notification).observeCompleted { })
+    }
+    
+    @objc
+    private func dismissAll() {
+        let dismissableNotifications = sections[0].items.filter { (notification) -> Bool in
+            return notification.isDismissable
+        }
+        disposable.inner.add(userRepository.readNotifications(notifications: dismissableNotifications).observeCompleted {})
     }
     
     private func openNotification(notification: NotificationProtocol) {
