@@ -31,6 +31,7 @@ internal enum Asset {
   internal static let cloud1 = ImageAsset(name: "Cloud1")
   internal static let cloud2 = ImageAsset(name: "Cloud2")
   internal static let diamondButton = ImageAsset(name: "DiamondButton")
+  internal static let emptyNotificationsIcon = ImageAsset(name: "EmptyNotificationsIcon")
   internal static let gem = ImageAsset(name: "Gem")
   internal static let helloHabitican = ImageAsset(name: "HelloHabitican")
   internal static let helloHabiticanOnboarding = ImageAsset(name: "HelloHabiticanOnboarding")

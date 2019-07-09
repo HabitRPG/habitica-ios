@@ -15,30 +15,34 @@ class EmptyTableViewCell: UITableViewCell {
     @IBOutlet weak var secondParagraphLabel: UILabel!
     
     static func habitsStyle(cell: EmptyTableViewCell) {
-        cell.emptyImageView.image = #imageLiteral(resourceName: "tabbar_habits")
-        cell.titleLabel.text = "These are your Habits"
-        cell.firstParagraphLabel.text = "Habits don't have a rigid schedule. You can check them off multiple times per day."
-        cell.secondParagraphLabel.text = ""
+        cell.emptyImageView.image = Asset.tabbarHabits.image
+        cell.titleLabel.text = L10n.Empty.Habits.title
+        cell.firstParagraphLabel.text = L10n.Empty.Habits.description
     }
     
     static func dailiesStyle(cell: EmptyTableViewCell) {
-        cell.emptyImageView.image = #imageLiteral(resourceName: "tabbar_dailies")
-        cell.titleLabel.text = "These are your Dailies"
-        cell.firstParagraphLabel.text = "Dailies are tasks that repeat on a regular basis. Choose the schedule that works you!"
-        cell.secondParagraphLabel.text = ""
+        cell.emptyImageView.image = Asset.tabbarDailies.image
+        cell.titleLabel.text = L10n.Empty.Dailies.title
+        cell.firstParagraphLabel.text = L10n.Empty.Dailies.description
     }
     
     static func todoStyle(cell: EmptyTableViewCell) {
-        cell.emptyImageView.image = #imageLiteral(resourceName: "tabbar_todos")
-        cell.titleLabel.text = "These are your To-Dos"
-        cell.firstParagraphLabel.text = "To-Dos need to be completed once. Add checklists to your To-Dos to increase their value."
-        cell.secondParagraphLabel.text = ""
+        cell.emptyImageView.image = Asset.tabbarTodos.image
+        cell.titleLabel.text = L10n.Empty.Todos.title
+        cell.firstParagraphLabel.text = L10n.Empty.Todos.description
     }
     
     static func rewardsStyle(cell: EmptyTableViewCell) {
-        cell.emptyImageView.image = #imageLiteral(resourceName: "tabbar_rewards")
-        cell.titleLabel.text = "These are your Rewards"
-        cell.firstParagraphLabel.text = "Rewards are a great way to use Habitica and complete your tasks. Try adding a few today!"
-        cell.secondParagraphLabel.text = ""
+        cell.emptyImageView.image = Asset.tabbarRewards.image
+        cell.titleLabel.text = L10n.Empty.Rewards.title
+        cell.firstParagraphLabel.text = L10n.Empty.Rewards.description
+    }
+    
+    static func notificationsStyle(cell: EmptyTableViewCell) {
+        cell.emptyImageView.image = Asset.emptyNotificationsIcon.image
+        cell.titleLabel.text = L10n.Empty.Notifications.title
+        cell.firstParagraphLabel.text = L10n.Empty.Notifications.description
+        cell.titleLabel.textColor = ThemeService.shared.theme.secondaryTextColor
+        cell.firstParagraphLabel.textColor = ThemeService.shared.theme.secondaryTextColor
     }
 }

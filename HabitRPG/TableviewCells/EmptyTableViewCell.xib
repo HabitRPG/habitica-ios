@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,45 +20,45 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f0y-AY-szM">
-                        <rect key="frame" x="16" y="210" width="288" height="0.0"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" white="0.0" alpha="0.53924601510067116" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <rect key="frame" x="32" y="202" width="256" height="0.0"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                        <color key="textColor" red="0.53023332359999997" green="0.50720638039999999" blue="0.56472396849999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Fa-aj-eWh">
-                        <rect key="frame" x="16" y="218" width="288" height="0.0"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <color key="textColor" white="0.0" alpha="0.39838506711409394" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <rect key="frame" x="32" y="218" width="256" height="0.0"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.53023332359999997" green="0.50720638039999999" blue="0.56472396849999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pso-iC-KIt">
-                        <rect key="frame" x="16" y="37" width="288" height="165"/>
+                        <rect key="frame" x="16" y="37" width="288" height="133"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FKz-dg-aZe">
-                        <rect key="frame" x="16" y="226" width="288" height="0.0"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <color key="textColor" white="0.0" alpha="0.39838506711409394" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <rect key="frame" x="32" y="226" width="256" height="0.0"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.53023332359999997" green="0.50720638039999999" blue="0.56472396849999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="2Fa-aj-eWh" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="GHr-VF-7ES"/>
-                    <constraint firstItem="f0y-AY-szM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="GYl-U2-MMB"/>
+                    <constraint firstItem="f0y-AY-szM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="32" id="GYl-U2-MMB"/>
                     <constraint firstItem="pso-iC-KIt" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="KXa-By-Y9U"/>
-                    <constraint firstAttribute="trailing" secondItem="2Fa-aj-eWh" secondAttribute="trailing" constant="16" id="NVV-75-OVT"/>
+                    <constraint firstAttribute="trailing" secondItem="2Fa-aj-eWh" secondAttribute="trailing" constant="32" id="NVV-75-OVT"/>
                     <constraint firstAttribute="trailing" secondItem="pso-iC-KIt" secondAttribute="trailing" constant="16" id="P4d-2n-ZVB"/>
                     <constraint firstItem="f0y-AY-szM" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Rh3-yY-ktY"/>
-                    <constraint firstItem="2Fa-aj-eWh" firstAttribute="top" secondItem="f0y-AY-szM" secondAttribute="bottom" constant="8" id="YEQ-xh-JAw"/>
+                    <constraint firstItem="2Fa-aj-eWh" firstAttribute="top" secondItem="f0y-AY-szM" secondAttribute="bottom" constant="16" id="YEQ-xh-JAw"/>
                     <constraint firstAttribute="bottom" secondItem="FKz-dg-aZe" secondAttribute="bottom" constant="19.5" id="YH4-fW-O6v"/>
                     <constraint firstItem="FKz-dg-aZe" firstAttribute="top" secondItem="2Fa-aj-eWh" secondAttribute="bottom" constant="8" id="aqu-ag-Dcf"/>
-                    <constraint firstAttribute="trailing" secondItem="FKz-dg-aZe" secondAttribute="trailing" constant="16" id="fiF-dw-pL9"/>
+                    <constraint firstAttribute="trailing" secondItem="FKz-dg-aZe" secondAttribute="trailing" constant="32" id="fiF-dw-pL9"/>
                     <constraint firstItem="FKz-dg-aZe" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="mT0-SN-xFT"/>
                     <constraint firstItem="pso-iC-KIt" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="37" id="mkB-Jh-bVe"/>
-                    <constraint firstItem="FKz-dg-aZe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="oiV-73-DtA"/>
-                    <constraint firstItem="f0y-AY-szM" firstAttribute="top" secondItem="pso-iC-KIt" secondAttribute="bottom" constant="8" id="rPH-J9-10R"/>
+                    <constraint firstItem="FKz-dg-aZe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="32" id="oiV-73-DtA"/>
+                    <constraint firstItem="f0y-AY-szM" firstAttribute="top" secondItem="pso-iC-KIt" secondAttribute="bottom" constant="32" id="rPH-J9-10R"/>
                     <constraint firstItem="pso-iC-KIt" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="tI5-dY-ZdO"/>
-                    <constraint firstItem="2Fa-aj-eWh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="ttX-l2-9d3"/>
-                    <constraint firstAttribute="trailing" secondItem="f0y-AY-szM" secondAttribute="trailing" constant="16" id="vJS-DQ-e38"/>
+                    <constraint firstItem="2Fa-aj-eWh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="32" id="ttX-l2-9d3"/>
+                    <constraint firstAttribute="trailing" secondItem="f0y-AY-szM" secondAttribute="trailing" constant="32" id="vJS-DQ-e38"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>

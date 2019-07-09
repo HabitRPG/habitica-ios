@@ -9,7 +9,7 @@
 import UIKit
 import Habitica_Models
 
-class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UITableViewDragDelegate, UITableViewDropDelegate, DataSourceEmptyDelegate {
+class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UITableViewDragDelegate, UITableViewDropDelegate {
     public var dataSource: TaskTableViewDataSource?
     public var filterType: Int = 0
     @objc public var scrollToTaskAfterLoading: String?
@@ -29,8 +29,8 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
         super.viewDidLoad()
         
         dataSource?.tableView = tableView
-        //dataSource?.emptyDelegate = self
-        
+        tableView.register(UINib(nibName: "EmptyTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "emptyCell")
+
         let nib = UINib(nibName: getCellNibName() ?? "", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "Cell")
         
@@ -301,20 +301,6 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
         snapshot.layer.shadowOpacity = 0.4
         
         return snapshot
-    }
-    
-    // MARK: - Empty delegate
-    
-    func dataSourceHasItems() {
-        tableView.dataSource = dataSource
-        tableView.reloadData()
-        tableView.backgroundColor = .white
-        tableView.separatorStyle = .singleLine
-        tableView.allowsSelection = true
-    }
-    
-    func dataSourceIsEmpty() {
-        // NO OP: override me!
     }
     
     // MARK: - Table view

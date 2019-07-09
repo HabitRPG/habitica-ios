@@ -11,17 +11,14 @@ import Crashlytics
 
 class HabitTableViewController: TaskTableViewController {
     var lastLoggedPredicate: String?
-    var emptyDataSource = SingleItemTableViewDataSource<EmptyTableViewCell>(cellIdentifier: "emptyCell", styleFunction: EmptyTableViewCell.habitsStyle)
     
     override func viewDidLoad() {
         readableName = L10n.Tasks.habit
         typeName = "habit"
         dataSource = HabitTableViewDataSource(predicate: self.getPredicate())
-        
         super.viewDidLoad()
-        
-        tableView.register(UINib(nibName: "EmptyTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "emptyCell")
-        
+        dataSource?.emptyDataSource = SingleItemTableViewDataSource<EmptyTableViewCell>(cellIdentifier: "emptyCell", styleFunction: EmptyTableViewCell.habitsStyle)
+                
         self.tutorialIdentifier = "habits"
         configureTitle(L10n.Tasks.habits)
     }
@@ -36,14 +33,6 @@ class HabitTableViewController: TaskTableViewController {
     
     override func getCellNibName() -> String {
         return "HabitTableViewCell"
-    }
-    
-    override func dataSourceIsEmpty() {
-        tableView.dataSource = emptyDataSource
-        tableView.reloadData()
-        tableView.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
-        tableView.separatorStyle = .none
-        tableView.allowsSelection = false
     }
 
     override func getPredicate() -> NSPredicate {

@@ -9,16 +9,13 @@
 import UIKit
 
 class DailyTableViewController: TaskTableViewController {
-    var emptyDataSource = SingleItemTableViewDataSource<EmptyTableViewCell>(cellIdentifier: "emptyCell", styleFunction: EmptyTableViewCell.dailiesStyle)
     
     override func viewDidLoad() {
         readableName = L10n.Tasks.daily
         typeName = "daily"
         dataSource = DailyTableViewDataSource(predicate: self.getPredicate())
-        
         super.viewDidLoad()
-        
-        tableView.register(UINib(nibName: "EmptyTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "emptyCell")
+        dataSource?.emptyDataSource = SingleItemTableViewDataSource<EmptyTableViewCell>(cellIdentifier: "emptyCell", styleFunction: EmptyTableViewCell.dailiesStyle)
         
         self.tutorialIdentifier = "dailies"
         configureTitle(L10n.Tasks.dailies)
@@ -34,13 +31,5 @@ class DailyTableViewController: TaskTableViewController {
     
     override func getCellNibName() -> String {
         return "DailyTableViewCell"
-    }
-    
-    override func dataSourceIsEmpty() {
-        tableView.dataSource = emptyDataSource
-        tableView.reloadData()
-        tableView.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
-        tableView.separatorStyle = .none
-        tableView.allowsSelection = false
     }
 }

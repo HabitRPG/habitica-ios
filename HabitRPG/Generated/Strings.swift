@@ -716,6 +716,44 @@ public enum L10n {
     public static var warriorDescription: String { return L10n.tr("Mainstrings", "classes.warrior_description") }
   }
 
+  public enum Empty {
+
+    public enum Dailies {
+      /// Dailies are tasks that repeat on a regular basis. Choose the schedule that works you!
+      public static var description: String { return L10n.tr("Mainstrings", "empty.dailies.description") }
+      /// These are your Dailies
+      public static var title: String { return L10n.tr("Mainstrings", "empty.dailies.title") }
+    }
+
+    public enum Habits {
+      /// Habits don't have a rigid schedule. You can check them off multiple times per day.
+      public static var description: String { return L10n.tr("Mainstrings", "empty.habits.description") }
+      /// These are your Habits
+      public static var title: String { return L10n.tr("Mainstrings", "empty.habits.title") }
+    }
+
+    public enum Notifications {
+      /// The notification fairies give you a raucous round of applause! Well done!
+      public static var description: String { return L10n.tr("Mainstrings", "empty.notifications.description") }
+      /// You're all caught up!
+      public static var title: String { return L10n.tr("Mainstrings", "empty.notifications.title") }
+    }
+
+    public enum Rewards {
+      /// Rewards are a great way to use Habitica and complete your tasks. Try adding a few today!
+      public static var description: String { return L10n.tr("Mainstrings", "empty.rewards.description") }
+      /// These are your Rewards
+      public static var title: String { return L10n.tr("Mainstrings", "empty.rewards.title") }
+    }
+
+    public enum Todos {
+      /// To-Dos need to be completed once. Add checklists to your To-Dos to increase their value.
+      public static var description: String { return L10n.tr("Mainstrings", "empty.todos.description") }
+      /// These are your To-Dos
+      public static var title: String { return L10n.tr("Mainstrings", "empty.todos.title") }
+    }
+  }
+
   public enum Equipment {
     /// Armor
     public static var armor: String { return L10n.tr("Mainstrings", "equipment.armor") }

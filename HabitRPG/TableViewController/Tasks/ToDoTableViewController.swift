@@ -9,16 +9,13 @@
 import UIKit
 
 class ToDoTableViewController: TaskTableViewController {
-    var emptyDataSource = SingleItemTableViewDataSource<EmptyTableViewCell>(cellIdentifier: "emptyCell", styleFunction: EmptyTableViewCell.todoStyle)
     
     override func viewDidLoad() {
         readableName = L10n.Tasks.todo
         typeName = "todo"
         dataSource = TodoTableViewDataSource(predicate: getPredicate())
-        
         super.viewDidLoad()
-        
-        tableView.register(UINib(nibName: "EmptyTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "emptyCell")
+        dataSource?.emptyDataSource = SingleItemTableViewDataSource<EmptyTableViewCell>(cellIdentifier: "emptyCell", styleFunction: EmptyTableViewCell.todoStyle)
         
         self.tutorialIdentifier = "todos"
         configureTitle(L10n.Tasks.todos)
@@ -55,13 +52,4 @@ class ToDoTableViewController: TaskTableViewController {
             dataSource?.fetchCompletedTodos()
         }
     }
-    
-    override func dataSourceIsEmpty() {
-        tableView.dataSource = emptyDataSource
-        tableView.reloadData()
-        tableView.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
-        tableView.separatorStyle = .none
-        tableView.allowsSelection = false
-    }
-
 }
