@@ -33,42 +33,42 @@ class ChallengeDescriptionTableViewCell: ResizableTableViewCell, ChallengeConfig
     func expand() {
         rotateCaret()
         
-        self.marginConstraint.constant = 8
+        marginConstraint.constant = 8
         if let constraint = self.heightConstraint {
-            self.descriptionLabel.removeConstraint(constraint)
+            descriptionLabel.removeConstraint(constraint)
         }
         
-        self.resizingDelegate?.cellResized()
+        resizingDelegate?.cellResized()
     }
     
     func collapse() {
         rotateCaret()
         
         self.marginConstraint.constant = 0
-        if self.heightConstraint == nil {
-            self.heightConstraint = NSLayoutConstraint(item: descriptionLabel, attribute: NSLayoutConstraint.Attribute.height, relatedBy: .equal,
+        if heightConstraint == nil {
+            heightConstraint = NSLayoutConstraint(item: descriptionLabel, attribute: NSLayoutConstraint.Attribute.height, relatedBy: .equal,
                                                        toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 0)
         }
         
         if let constraint = self.heightConstraint {
-            self.descriptionLabel.addConstraint(constraint)
+            descriptionLabel.addConstraint(constraint)
         }
         
-        UIView.animate(withDuration: 0.25) {
-            self.contentView.updateLayout()
+        UIView.animate(withDuration: 0.25) {[weak self] in
+            self?.contentView.updateLayout()
         }
         
-        self.resizingDelegate?.cellResized()
+        resizingDelegate?.cellResized()
     }
     
     func rotateCaret() {
         caretButton.isEnabled = false
 
-        UIView.animate(withDuration: 0.25, animations: {
-            let angle = self.isExpanded ? 0 : CGFloat.pi
-            self.caretButton.transform = CGAffineTransform(rotationAngle: angle)
-        }, completion: { _ in
-            self.caretButton.isEnabled = true
+        UIView.animate(withDuration: 0.25, animations: {[weak self] in
+            let angle = self?.isExpanded == true ? 0 : CGFloat.pi
+            self?.caretButton.transform = CGAffineTransform(rotationAngle: angle)
+        }, completion: {[weak self] _ in
+            self?.caretButton.isEnabled = true
         })
     }
     

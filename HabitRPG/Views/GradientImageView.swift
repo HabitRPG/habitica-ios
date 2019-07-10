@@ -15,7 +15,7 @@ class GradientImageView: UIImageView {
             gradient?.removeFromSuperlayer()
             _gradient = newValue
             if let newGradient = gradient {
-                self.layer.insertSublayer(newGradient, at: 0)
+                layer.insertSublayer(newGradient, at: 0)
             }
             setNeedsLayout()
         }
@@ -27,6 +27,6 @@ class GradientImageView: UIImageView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        gradient?.frame = self.bounds
+        gradient?.frame = bounds
     }
 }

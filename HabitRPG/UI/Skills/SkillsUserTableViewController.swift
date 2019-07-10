@@ -25,7 +25,7 @@ class SkillsUserTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let member = datasource.item(at: indexPath) {
-            self.selectedUserID = member.id
+            selectedUserID = member.id
         }
         perform(segue: StoryboardSegue.Main.castUserSpellSegue)
     }

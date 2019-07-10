@@ -164,7 +164,7 @@ class TaskSetupViewController: UIViewController, TypingTextViewController {
         
         initButtons()
     
-        if self.view.frame.size.height <= 568 {
+        if view.frame.size.height <= 568 {
             containerHeight.constant = 205
         }
     }

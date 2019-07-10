@@ -12,7 +12,7 @@ class PetOverviewViewController: StableOverviewViewController<PetOverviewDataSou
     
     override func viewDidLoad() {
         datasource = PetOverviewDataSource()
-        datasource?.collectionView = self.collectionView
+        datasource?.collectionView = collectionView
         super.viewDidLoad()
     }
     

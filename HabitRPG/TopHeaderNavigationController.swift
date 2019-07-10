@@ -85,23 +85,23 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
     
     @objc public var hideNavbar = false {
         didSet {
-            self.setNavigationBarHidden(hideNavbar, animated: false)
-            self.view.setNeedsLayout()
-            self.view.layoutIfNeeded()
-            self.setNavigationBarColors(navbarColorBlendingAlpha)
+            setNavigationBarHidden(hideNavbar, animated: false)
+            view.setNeedsLayout()
+            view.layoutIfNeeded()
+            setNavigationBarColors(navbarColorBlendingAlpha)
         }
     }
     
     @objc var shouldHideTopHeader: Bool = false {
         willSet {
-            if self.shouldHideTopHeader != newValue {
+            if shouldHideTopHeader != newValue {
                 if newValue {
-                    self.hideHeader()
+                    hideHeader()
                 } else {
-                    self.showHeader()
+                    showHeader()
                 }
-                self.view.setNeedsLayout()
-                self.view.layoutIfNeeded()
+                view.setNeedsLayout()
+                view.layoutIfNeeded()
             }
         }
     }
@@ -171,23 +171,23 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationBar.shadowImage = UIImage()
-        self.navigationBar.isTranslucent = true
-        self.view.backgroundColor = .clear
-        self.navigationBar.backgroundColor = .clear
+        navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationBar.shadowImage = UIImage()
+        navigationBar.isTranslucent = true
+        view.backgroundColor = .clear
+        navigationBar.backgroundColor = .clear
         
         let nibViews = Bundle.main.loadNibNamed("UserTopHeader", owner: self, options: nil)
-        self.headerView = nibViews?[0] as? UIView
-        if let headerView = self.headerView {
-            self.backgroundView.addSubview(headerView)
+        headerView = nibViews?[0] as? UIView
+        if let headerView = headerView {
+            backgroundView.addSubview(headerView)
         }
-        self.backgroundView.addSubview(self.bottomBorderView)
+        backgroundView.addSubview(bottomBorderView)
         
-        self.view.insertSubview(self.upperBackgroundView, belowSubview: self.navigationBar)
-        self.view.insertSubview(self.backgroundView, belowSubview: self.upperBackgroundView)
+        view.insertSubview(upperBackgroundView, belowSubview: navigationBar)
+        view.insertSubview(backgroundView, belowSubview: upperBackgroundView)
         
-        self.headerYPosition = self.bgViewOffset
+        headerYPosition = bgViewOffset
         
         ThemeService.shared.addThemeable(themable: self, applyImmediately: true)
     }
@@ -204,13 +204,13 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        let parentFrame = self.view.frame
-        self.backgroundView.frame = CGRect(x: 0.0, y: self.headerYPosition, width: parentFrame.size.width, height: self.topHeaderHeight + 2)
-        self.upperBackgroundView.frame = CGRect(x: 0, y: 0, width: parentFrame.size.width, height: self.bgViewOffset)
-        self.bottomBorderView.frame = CGRect(x: 0, y: self.backgroundView.frame.size.height - 2, width: parentFrame.size.width, height: 2)
-        self.bottomBorderView.frame = CGRect(x: 0, y: self.backgroundView.frame.size.height - 2, width: parentFrame.size.width, height: 2)
-        self.headerView?.frame = CGRect(x: 0, y: 0, width: parentFrame.size.width, height: self.defaultHeaderHeight)
-        if let header = self.alternativeHeaderView {
+        let parentFrame = view.frame
+        backgroundView.frame = CGRect(x: 0.0, y: headerYPosition, width: parentFrame.size.width, height: topHeaderHeight + 2)
+        upperBackgroundView.frame = CGRect(x: 0, y: 0, width: parentFrame.size.width, height: bgViewOffset)
+        bottomBorderView.frame = CGRect(x: 0, y: backgroundView.frame.size.height - 2, width: parentFrame.size.width, height: 2)
+        bottomBorderView.frame = CGRect(x: 0, y: backgroundView.frame.size.height - 2, width: parentFrame.size.width, height: 2)
+        headerView?.frame = CGRect(x: 0, y: 0, width: parentFrame.size.width, height: defaultHeaderHeight)
+        if let header = alternativeHeaderView {
             let intrinsicHeight = header.intrinsicContentSize.height
             if intrinsicHeight <= 0 {
                 header.frame = CGRect(x: 0, y: 0, width: parentFrame.size.width, height: header.frame.size.height)
@@ -237,7 +237,7 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
     @objc
     public func showHeader(animated: Bool = true) {
         self.state = .visible
-        var frame = self.backgroundView.frame
+        var frame = backgroundView.frame
         frame.origin.y = self.bgViewOffset
         self.headerYPosition = frame.origin.y
         UIView.animate(withDuration: animated ? 0.3 : 0.0, delay: 0, options: .curveEaseInOut, animations: {
@@ -248,7 +248,7 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
     @objc
     public func hideHeader(animated: Bool = true) {
         self.state = .hidden
-        var frame = self.backgroundView.frame
+        var frame = backgroundView.frame
         frame.origin.y = -topHeaderHeight
         self.headerYPosition = frame.origin.y
         UIView.animate(withDuration: animated ? 0.3 : 0.0, delay: 0, options: .curveEaseInOut, animations: {
@@ -271,7 +271,7 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
     
     @objc
     public func stopFollowingScrollView() {
-        if let recognizer = self.gestureRecognizer {
+        if let recognizer = gestureRecognizer {
             self.scrollableView?.removeGestureRecognizer(recognizer)
         }
         self.gestureRecognizer = nil
@@ -283,38 +283,38 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
         if self.scrollableView != scrollView {
             return
         }
-        var frame = self.backgroundView.frame
+        var frame = backgroundView.frame
         var newYPos = -position - frame.size.height
-        if newYPos > self.bgViewOffset {
-            newYPos = self.bgViewOffset
+        if newYPos > bgViewOffset {
+            newYPos = bgViewOffset
         }
         if (newYPos + frame.size.height) > bgViewOffset {
-            self.state = .visible
+            state = .visible
         } else {
-            if self.state == .hidden {
+            if state == .hidden {
                 return
             }
-            self.state = .hidden
+            state = .hidden
         }
         frame.origin.y = newYPos
-        self.headerYPosition = frame.origin.y
-        self.backgroundView.frame = frame
-        self.setNavigationBarColors(navbarColorBlendingAlpha)
+        headerYPosition = frame.origin.y
+        backgroundView.frame = frame
+        setNavigationBarColors(navbarColorBlendingAlpha)
     }
     
     @objc
     public func setNavigationBarColors(_ alpha: CGFloat) {
-        self.upperBackgroundView.backgroundColor = navbarVisibleColor.blend(with: navbarHiddenColor, alpha: alpha)
-        self.backgroundView.backgroundColor = navbarVisibleColor.blend(with: navbarHiddenColor, alpha: alpha)
+        upperBackgroundView.backgroundColor = navbarVisibleColor.blend(with: navbarHiddenColor, alpha: alpha)
+        backgroundView.backgroundColor = navbarVisibleColor.blend(with: navbarHiddenColor, alpha: alpha)
         let tintColor = visibleTintColor.blend(with: hiddenTintColor, alpha: alpha)
-        self.navigationBar.tintColor = tintColor
-        self.topViewController?.navigationItem.leftBarButtonItems?.forEach({ (button) in
+        navigationBar.tintColor = tintColor
+        topViewController?.navigationItem.leftBarButtonItems?.forEach({ (button) in
             button.tintColor = tintColor
         })
-        self.topViewController?.navigationItem.rightBarButtonItems?.forEach({ (button) in
+        topViewController?.navigationItem.rightBarButtonItems?.forEach({ (button) in
             button.tintColor = tintColor
         })
-        self.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: (visibleTextColor.blend(with: hiddenTextColor, alpha: alpha) ?? .white)]
+        navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: (visibleTextColor.blend(with: hiddenTextColor, alpha: alpha) ?? .white)]
         updateStatusbarColor()
     }
     
@@ -323,10 +323,10 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
         let currentStyle = UIApplication.shared.statusBarStyle
         if currentStyle == .default && !isLightColor {
             UIApplication.shared.statusBarStyle = .lightContent
-            self.setNeedsStatusBarAppearanceUpdate()
+            setNeedsStatusBarAppearanceUpdate()
         } else if currentStyle == .lightContent && isLightColor {
             UIApplication.shared.statusBarStyle = .default
-            self.setNeedsStatusBarAppearanceUpdate()
+            setNeedsStatusBarAppearanceUpdate()
         }
     }
     

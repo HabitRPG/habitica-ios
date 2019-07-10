@@ -73,6 +73,7 @@ open class NetworkCall {
         dataTaskSignal.observeValues { task in
             task.resume()
         }
+        fire()
     }
     
     open func fire() {

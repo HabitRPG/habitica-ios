@@ -126,7 +126,6 @@ class BaseReactiveTableViewDataSource<MODEL>: BaseReactiveDataSource<MODEL>, UIT
             emptyDelegate?.dataSourceIsEmpty()
             if emptyDataSource != nil {
                 tableView?.dataSource = emptyDataSource
-                tableView?.reloadData()
                 tableView?.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
                 tableView?.separatorStyle = .none
                 tableView?.allowsSelection = false
@@ -137,13 +136,13 @@ class BaseReactiveTableViewDataSource<MODEL>: BaseReactiveDataSource<MODEL>, UIT
             emptyDelegate?.dataSourceHasItems()
             if emptyDataSource != nil {
                 tableView?.dataSource = self
-                tableView?.reloadData()
                 tableView?.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
                 tableView?.separatorStyle = .singleLine
                 tableView?.allowsSelection = true
                 tableView?.bounces = true
             }
         }
+        tableView?.reloadData()
     }
     
     @objc(numberOfSectionsInTableView:)

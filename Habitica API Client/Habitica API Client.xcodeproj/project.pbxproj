@@ -666,18 +666,18 @@
 		292DEE46204D9D9E0086D5F7 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				29A9B06022817DCE0049291E /* ServerConfiguration.swift */,
-				29A9B06122817DCF0049291E /* StubbableNetworkCall.swift */,
-				29A9B06222817DCF0049291E /* StubHolder.swift */,
+				292DEE8E204F49D50086D5F7 /* AuthenticatedCall.swift */,
+				29323E2420509B9000AC6D6F /* HabiticaResponse.swift */,
+				29323E22205099FF00AC6D6F /* HabiticaResponseCall.swift */,
 				29A9B05822817DBC0049291E /* JsonDataHandler.swift */,
 				29A9B05A22817DBD0049291E /* JsonNetworkCall.swift */,
 				29A9B05922817DBD0049291E /* NetworkCall.swift */,
 				29A9B05B22817DBD0049291E /* NetworkErrorHandler.swift */,
-				292DEE8E204F49D50086D5F7 /* AuthenticatedCall.swift */,
-				29323E22205099FF00AC6D6F /* HabiticaResponseCall.swift */,
 				292DEE92204F4A430086D5F7 /* ResponseArrayCall.swift */,
 				292DEE94204F4A510086D5F7 /* ResponseObjectCall.swift */,
-				29323E2420509B9000AC6D6F /* HabiticaResponse.swift */,
+				29A9B06022817DCE0049291E /* ServerConfiguration.swift */,
+				29A9B06122817DCF0049291E /* StubbableNetworkCall.swift */,
+				29A9B06222817DCF0049291E /* StubHolder.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";

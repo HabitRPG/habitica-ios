@@ -31,16 +31,16 @@ class HabiticaNetworkErrorHandler: NetworkErrorHandler {
     
     public static func handle(error: NSError, messages: [String]) {
         if let errorMessage = errorMessageForCode(code: error.code) {
-            self.notify(message: errorMessage.message, code: error.code)
+            notify(message: errorMessage.message, code: error.code)
         } else if !messages.isEmpty {
-            self.notify(message: messages[0], code: error.code)
+            notify(message: messages[0], code: error.code)
         } else {
-            self.notify(message: error.localizedDescription, code: 0)
+            notify(message: error.localizedDescription, code: 0)
         }
     }
     
     static func errorMessageForCode(code: Int) -> ErrorMessage? {
-        if let messages = self.errorMessages {
+        if let messages = errorMessages {
             for errorMessage in messages where code == errorMessage.forCode {
                 return errorMessage
             }

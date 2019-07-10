@@ -134,7 +134,7 @@ class WorldBossMenuHeader: UIView {
     
     @objc
     func bossArtTapped() {
-        guard let quest = self.quest else {
+        guard let quest = quest else {
             return
         }
         let alertController = HabiticaAlertController.alert(title: L10n.whatsWorldBoss)

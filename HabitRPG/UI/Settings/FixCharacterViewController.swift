@@ -149,8 +149,8 @@ class FixCharacterViewController: BaseTableViewController {
     }
     
     @IBAction func savePressed(_ sender: Any) {
-        userRepository.updateUser(stats).observeCompleted {
-            self.dismiss(animated: true, completion: nil)
+        userRepository.updateUser(stats).observeCompleted {[weak self] in
+            self?.dismiss(animated: true, completion: nil)
         }
     }
     

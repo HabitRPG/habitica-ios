@@ -89,7 +89,7 @@ class HabitButton: UIView {
         let verticalCenter = frame.size.height / 2
         let horizontalCenter = frame.size.width / 2
         
-        roundedView.frame = CGRect(x: horizontalCenter - self.buttonSize/2, y: verticalCenter - buttonSize/2, width: buttonSize, height: buttonSize)
+        roundedView.frame = CGRect(x: horizontalCenter - buttonSize/2, y: verticalCenter - buttonSize/2, width: buttonSize, height: buttonSize)
         label.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height)
         dimmOverlayView.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height)
     }
@@ -97,7 +97,7 @@ class HabitButton: UIView {
     @objc
     private func handleTap() {
         if isActive {
-            if let action = self.action {
+            if let action = action {
                 action()
             }
             UIView.animate(withDuration: 0.2, animations: {[weak self] in

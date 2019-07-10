@@ -35,7 +35,7 @@ class EquipmentOverviewItemView: UIView {
             view.frame = bounds
             addSubview(view)
       
-            self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewTapped)))
+            addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewTapped)))
 
             noEquipmentBorder.strokeColor = UIColor.gray50().cgColor
             noEquipmentBorder.lineWidth = 2

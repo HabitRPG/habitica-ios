@@ -27,8 +27,8 @@ class MountOverviewDataSource: StableOverviewDataSource<PetProtocol> {
                 })
             })
             .combineLatest(with: self.stableRepository.getMounts())
-            .map({ (ownedMounts, mounts) in
-                return self.mapData(owned: ownedMounts, animals: mounts.value)
+            .map({[weak self] (ownedMounts, mounts) in
+                return self?.mapData(owned: ownedMounts, animals: mounts.value) ?? [:]
             })
             .on(value: {[weak self]overviewItems in
                 self?.sections[0].items.removeAll()

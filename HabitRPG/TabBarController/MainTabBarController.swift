@@ -84,7 +84,7 @@ class MainTabBarController: UITabBarController, Themeable {
         let resultImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        self.tabBar.items?[1].image = resultImage
+        tabBar.items?[1].image = resultImage
     }
     
     private func fetchData() {
@@ -134,18 +134,18 @@ class MainTabBarController: UITabBarController, Themeable {
     private func updateTutorialSteps(_ tutorials: [TutorialStepProtocol]) {
         for tutorial in tutorials {
             if tutorial.key == "habits" {
-                self.setBadgeCount(index: 0, count: tutorial.wasSeen ? 0 : 1)
+                setBadgeCount(index: 0, count: tutorial.wasSeen ? 0 : 1)
             }
             if tutorial.key == "dailies" {
-                self.tutorialDailyCount = tutorial.wasSeen ? 0 : 1
-                self.updateDailyBadge()
+                tutorialDailyCount = tutorial.wasSeen ? 0 : 1
+                updateDailyBadge()
             }
             if tutorial.key == "todos" {
-                self.tutorialToDoCount = tutorial.wasSeen ? 0 : 1
-                self.updateToDoBadge()
+                tutorialToDoCount = tutorial.wasSeen ? 0 : 1
+                updateToDoBadge()
             }
             if tutorial.key == "rewards" {
-                self.setBadgeCount(index: 3, count: tutorial.wasSeen ? 0 : 1)
+                setBadgeCount(index: 3, count: tutorial.wasSeen ? 0 : 1)
             }
         }
     }

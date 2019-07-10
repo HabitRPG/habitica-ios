@@ -375,8 +375,8 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController {
         if let title = button.title(for: .normal), let font = button.titleLabel?.font {
             let width = title.widthWithConstrainedHeight(CGFloat.greatestFiniteMagnitude, font: font)+30
             let middle = button.frame.origin.x+16+button.frame.size.width/2
-            self.subcategoryIndicatorPosition.constant = middle - width/2
-            self.subcategoryIndicatorWidth.constant = width
+            subcategoryIndicatorPosition.constant = middle - width/2
+            subcategoryIndicatorWidth.constant = width
         }
         UIView.animate(withDuration: 0.2) {[weak self] in
             self?.view.layoutIfNeeded()

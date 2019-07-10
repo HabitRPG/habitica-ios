@@ -45,14 +45,14 @@ class AuthenticationManager: NSObject {
     
     @objc var currentUserKey: String? {
         get {
-            if let userId = self.currentUserId {
+            if let userId = currentUserId {
                 return keychain[userId]
             }
             return nil
         }
         
         set(newKey) {
-            if let userId = self.currentUserId {
+            if let userId = currentUserId {
                 keychain[userId] = newKey
             }
             NetworkAuthenticationManager.shared.currentUserKey = newKey
@@ -66,7 +66,7 @@ class AuthenticationManager: NSObject {
     
     @objc
     func hasAuthentication() -> Bool {
-        if let userId = self.currentUserId {
+        if let userId = currentUserId {
             return userId.isEmpty == false
         }
         return false

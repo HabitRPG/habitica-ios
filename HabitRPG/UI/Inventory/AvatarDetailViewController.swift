@@ -24,13 +24,13 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
         if let type = customizationType {
             if type == "eyewear" || type == "headAccessory" {
                 gearDataSource = AvatarGearDetailViewDataSource(type: type)
-                gearDataSource?.collectionView = self.collectionView
+                gearDataSource?.collectionView = collectionView
             } else {
                 customizationDataSource = AvatarDetailViewDataSource(type: type, group: customizationGroup)
-                customizationDataSource?.collectionView = self.collectionView
+                customizationDataSource?.collectionView = collectionView
                 
-                customizationDataSource?.purchaseSet = { set in
-                    self.showPurchaseDialog(customizationSet: set, withSource: nil)
+                customizationDataSource?.purchaseSet = {[weak self] set in
+                    self?.showPurchaseDialog(customizationSet: set, withSource: nil)
                  }
             }
         }

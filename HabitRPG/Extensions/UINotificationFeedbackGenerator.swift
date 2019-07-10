@@ -11,14 +11,14 @@ import UIKit
 @available(iOS 10.0, *)
 extension UINotificationFeedbackGenerator {
     func safePrepare() {
-        DispatchQueue.main.async {
-            self.prepare()
+        DispatchQueue.main.async {[weak self] in
+            self?.prepare()
         }
     }
     
     func safeNotificationOccurred(_ type: UINotificationFeedbackGenerator.FeedbackType) {
-        DispatchQueue.main.async {
-            self.notificationOccurred(type)
+        DispatchQueue.main.async {[weak self] in
+            self?.notificationOccurred(type)
         }
     }
     

@@ -109,13 +109,13 @@ class GroupInvitationView: UIView {
     
     private func setLabel() {
         if isPartyInvitation {
-            if let inviterName = self.inviterName {
+            if let inviterName = inviterName {
                 label.text = L10n.Party.invitationInvitername(inviterName)
             } else {
                 label.text = L10n.Party.invitationNoInvitername
             }
         } else {
-            if let inviterName = self.inviterName {
+            if let inviterName = inviterName {
                 label.text = L10n.Groups.guildInvitationInvitername(inviterName, name ?? "")
             } else {
                 label.text = L10n.Groups.guildInvitationNoInvitername(name ?? "")

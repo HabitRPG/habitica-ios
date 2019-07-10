@@ -209,9 +209,9 @@ class AvatarOverviewViewController: BaseUIViewController, UIScrollViewDelegate {
     }
     
     private func openDetailView(type: String, group: String? = nil) {
-        self.selectedType = type
-        self.selectedGroup = group
-        self.perform(segue: StoryboardSegue.Main.detailSegue)
+        selectedType = type
+        selectedGroup = group
+        perform(segue: StoryboardSegue.Main.detailSegue)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

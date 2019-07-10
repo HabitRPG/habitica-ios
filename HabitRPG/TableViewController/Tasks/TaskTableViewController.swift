@@ -215,8 +215,8 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
                     dataSource?.moveTask(task: task, toPosition: task.order, completion: {})
                     let cell = tableView.cellForRow(at: sourceIndexPath)
                     cell?.alpha = 0.0
-                    UIView.animate(withDuration: 2.0, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1.0, options: UIView.AnimationOptions(rawValue: 0), animations: {
-                        self.snapshot?.transform = CGAffineTransform.identity
+                    UIView.animate(withDuration: 2.0, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1.0, options: UIView.AnimationOptions(rawValue: 0), animations: {[weak self] in
+                        self?.snapshot?.transform = CGAffineTransform.identity
                     }, completion: nil)
                 }
             }
@@ -257,10 +257,10 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
     
     override func getFrameForCoachmark(_ coachMarkIdentifier: String!) -> CGRect {
         let provider = HRPGCoachmarkFrameProvider()
-        provider.view = self.view
-        provider.tableView = self.tableView
-        provider.navigationItem = self.navigationItem
-        provider.parentViewController = self.parent
+        provider.view = view
+        provider.tableView = tableView
+        provider.navigationItem = navigationItem
+        provider.parentViewController = parent
         return provider.getFrameForCoachmark(coachMarkIdentifier)
     }
     
@@ -349,8 +349,8 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
             let order = movedTask.order
             let sourceIndexPath = IndexPath(row: order, section: 0)
             dataSource?.fixTaskOrder(movedTask: movedTask, toPosition: destIndexPath.item)
-            dataSource?.moveTask(task: movedTask, toPosition: destIndexPath.item, completion: {
-                self.dataSource?.userDrivenDataUpdate = false
+            dataSource?.moveTask(task: movedTask, toPosition: destIndexPath.item, completion: {[weak self] in
+                self?.dataSource?.userDrivenDataUpdate = false
             })
             if tableView.numberOfRows(inSection: 0) <= order && tableView.numberOfRows(inSection: 0) <= destIndexPath.item {
                 tableView.moveRow(at: sourceIndexPath, to: destIndexPath)
@@ -391,8 +391,8 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
     
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         if let movedTask = movedTask {
-            dataSource?.moveTask(task: movedTask, toPosition: destinationIndexPath.item, completion: {
-                self.dataSource?.userDrivenDataUpdate = false
+            dataSource?.moveTask(task: movedTask, toPosition: destinationIndexPath.item, completion: {[weak self] in
+                self?.dataSource?.userDrivenDataUpdate = false
             })
         }
     }

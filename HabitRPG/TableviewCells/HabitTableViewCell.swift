@@ -21,12 +21,12 @@ class HabitTableViewCell: TaskTableViewCell {
 
     override func configure(task: TaskProtocol) {
         super.configure(task: task)
-        self.plusButton.configure(task: task, isNegative: false)
-        self.minusButton.configure(task: task, isNegative: true)
-        self.plusButton.action = {[weak self] in
+        plusButton.configure(task: task, isNegative: false)
+        minusButton.configure(task: task, isNegative: true)
+        plusButton.action = {[weak self] in
             self?.scoreUp()
         }
-        self.minusButton.action = {[weak self] in
+        minusButton.action = {[weak self] in
             self?.scoreDown()
         }
     }
@@ -40,7 +40,7 @@ class HabitTableViewCell: TaskTableViewCell {
         if task.down {
             customActions.append(UIAccessibilityCustomAction(name: L10n.Accessibility.scoreHabitDown, target: self, selector: #selector(scoreDown)))
         }
-        self.accessibilityCustomActions = customActions
+        accessibilityCustomActions = customActions
     }
     
     @objc

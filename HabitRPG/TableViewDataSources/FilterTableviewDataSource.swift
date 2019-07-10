@@ -59,7 +59,7 @@ class FilterTableViewDataSource: BaseReactiveTableViewDataSource<TagProtocol>, F
     
     override init() {
         super.init()
-        self.sections.append(ItemSection<TagProtocol>())
+        sections.append(ItemSection<TagProtocol>())
         disposable.inner.add(userRepository.getTags().on(value: {[weak self](tags, changes) in
             self?.sections[0].items = tags
             self?.notify(changes: changes)
@@ -100,7 +100,7 @@ class FilterTableViewDataSource: BaseReactiveTableViewDataSource<TagProtocol>, F
                 selectedTagIds.append(tagID)
             }
         }
-        self.tableView?.reloadRows(at: [indexPath], with: .automatic)
+        tableView?.reloadRows(at: [indexPath], with: .automatic)
     }
     
     func clearTags() {

@@ -121,7 +121,7 @@ class QuestProgressView: UIView {
         let colorMedium = quest.uicolorMedium
         let colorLight = quest.uicolorLight
         let colorExtraLight = quest.uicolorExtraLight
-        self.backgroundView.image = HabiticaIcons.imageOfQuestBackground(bossColorDark: colorDark,
+        backgroundView.image = HabiticaIcons.imageOfQuestBackground(bossColorDark: colorDark,
                                                                          bossColorMedium: colorMedium,
                                                                          bossColorLight: colorExtraLight)
             .resizableImage(withCapInsets: UIEdgeInsets.init(top: 10, left: 10, bottom: 10, right: 10),

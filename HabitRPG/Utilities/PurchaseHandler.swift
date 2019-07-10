@@ -164,9 +164,9 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
         pendingGifts[identifier] = recipientID
         userRepository.purchaseNoRenewSubscription(identifier: identifier,
                                                    receipt: ["receipt": receipt.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))],
-                                                   recipient: recipientID).observeValues { (result) in
+                                                   recipient: recipientID).observeValues {[weak self] (result) in
             if result != nil {
-                self.pendingGifts.removeValue(forKey: identifier)
+                self?.pendingGifts.removeValue(forKey: identifier)
                 completion(true)
             } else {
                 completion(false)
@@ -233,11 +233,11 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
     }
     
     private func applySubscription(transaction: SKPaymentTransaction) {
-        SwiftyStoreKit.verifyReceipt(using: appleValidator, completion: { (verificationResult) in
+        SwiftyStoreKit.verifyReceipt(using: appleValidator, completion: {[weak self] (verificationResult) in
             switch verificationResult {
             case .success(let receipt):
-                if self.isValidSubscription(transaction.payment.productIdentifier, receipt: receipt) {
-                    self.activateSubscription(transaction.payment.productIdentifier, receipt: receipt) { status in
+                if self?.isValidSubscription(transaction.payment.productIdentifier, receipt: receipt) == true {
+                    self?.activateSubscription(transaction.payment.productIdentifier, receipt: receipt) { status in
                         if status {
                             SwiftyStoreKit.finishTransaction(transaction)
                         }

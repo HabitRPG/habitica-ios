@@ -84,12 +84,12 @@ class WelcomeViewController: UIViewController, TypingTextViewController, UITextF
                 }
             }).start()
         
-        userRepository.getUser().take(first: 1) .on(value: { user in
-            self.displayNameTextField.text = user.profile?.name
-            self.displayNameProperty.value = user.profile?.name
-            self.usernameTextField.text = user.username
-            self.usernameProperty.value = user.username
-            self.currentUsername = user.username
+        userRepository.getUser().take(first: 1) .on(value: {[weak self] user in
+            self?.displayNameTextField.text = user.profile?.name
+            self?.displayNameProperty.value = user.profile?.name
+            self?.usernameTextField.text = user.username
+            self?.usernameProperty.value = user.username
+            self?.currentUsername = user.username
         }).start()
     }
     

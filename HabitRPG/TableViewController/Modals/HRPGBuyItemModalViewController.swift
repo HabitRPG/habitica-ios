@@ -468,15 +468,15 @@ extension NSLayoutConstraint {
 
 extension UIView {
     func addSingleViewWithConstraints(_ view: UIView) {
-        self.addSubview(view)
-        self.addConstraints(NSLayoutConstraint.defaultVerticalConstraints("V:|-0-[view]-0-|", ["view": view]))
-        self.addConstraints(NSLayoutConstraint.defaultHorizontalConstraints(view))
+        addSubview(view)
+        addConstraints(NSLayoutConstraint.defaultVerticalConstraints("V:|-0-[view]-0-|", ["view": view]))
+        addConstraints(NSLayoutConstraint.defaultHorizontalConstraints(view))
     }
     
     func triggerLayout() {
-        self.setNeedsUpdateConstraints()
-        self.updateConstraints()
-        self.setNeedsLayout()
-        self.layoutIfNeeded()
+        setNeedsUpdateConstraints()
+        updateConstraints()
+        setNeedsLayout()
+        layoutIfNeeded()
     }
 }

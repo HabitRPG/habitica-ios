@@ -33,9 +33,9 @@ class NewsViewController: HRPGUIViewController, UIWebViewDelegate {
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
-        UIView.animate(withDuration: 0.4) {
-            self.newsWebView.alpha = 1
-            self.loadingIndicator.alpha = 0
+        UIView.animate(withDuration: 0.4) {[weak self] in
+            self?.newsWebView.alpha = 1
+            self?.loadingIndicator.alpha = 0
         }
         userRepository.updateUser(key: "flags.newStuff", value: false).observeCompleted {}
     }
