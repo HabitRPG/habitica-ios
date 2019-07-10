@@ -48,7 +48,7 @@ class GroupDetailViewController: HRPGUIViewController, UITextViewDelegate, Theme
                 self?.updateData(group: group)
         }))
         
-        self.leaveInteractor = LeaveGroupInteractor(presentingViewController: self)
+        leaveInteractor = LeaveGroupInteractor(presentingViewController: self)
         
         ThemeService.shared.addThemeable(themable: self)
     }
@@ -60,9 +60,9 @@ class GroupDetailViewController: HRPGUIViewController, UITextViewDelegate, Theme
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        disposable.inner.add(self.leaveInteractor?.reactive.take(during: self.lifetime)
-            .flatMap(.latest, { _ in
-                return self.userRepository.retrieveUser()
+        disposable.inner.add(leaveInteractor?.reactive.take(during: lifetime)
+            .flatMap(.latest, {[weak self] _ in
+                return self?.userRepository.retrieveUser() ?? Signal.empty
             })
             .observeCompleted {})
     }

@@ -32,11 +32,11 @@ class LoginEntryView: UIView, UITextFieldDelegate {
     
     @IBInspectable var keyboard: Int {
         get {
-            return self.entryView.keyboardType.rawValue
+            return entryView.keyboardType.rawValue
         }
         set(keyboardIndex) {
             if let type = UIKeyboardType.init(rawValue: keyboardIndex) {
-            self.entryView.keyboardType = type
+            entryView.keyboardType = type
             }
             
         }
@@ -78,12 +78,12 @@ class LoginEntryView: UIView, UITextFieldDelegate {
             view.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
             addSubview(view)
             
-            self.gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tappedView))
+            gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tappedView))
             
             if let gestureRecognizer = self.gestureRecognizer {
-                self.addGestureRecognizer(gestureRecognizer)
+                addGestureRecognizer(gestureRecognizer)
             }
-            self.isUserInteractionEnabled = true
+            isUserInteractionEnabled = true
         }
     }
     
@@ -98,25 +98,25 @@ class LoginEntryView: UIView, UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         wasEdited = true
-        UIView.animate(withDuration: 0.3) {
-            self.bottomBorder.alpha = 1.0
+        UIView.animate(withDuration: 0.3) {[weak self] in
+            self?.bottomBorder.alpha = 1.0
         }
         if let gestureRecognizer = self.gestureRecognizer {
-            self.removeGestureRecognizer(gestureRecognizer)
+            removeGestureRecognizer(gestureRecognizer)
         }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        UIView.animate(withDuration: 0.3) {
-            self.bottomBorder.alpha = 0.15
+        UIView.animate(withDuration: 0.3) {[weak self] in
+            self?.bottomBorder.alpha = 0.15
         }
-        if let gestureRecognizer = self.gestureRecognizer {
-            self.addGestureRecognizer(gestureRecognizer)
+        if let gestureRecognizer = gestureRecognizer {
+            addGestureRecognizer(gestureRecognizer)
         }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if let function = self.delegate?.textFieldShouldReturn {
+        if let function = delegate?.textFieldShouldReturn {
             return function(textField)
         }
         return false

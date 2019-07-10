@@ -88,7 +88,7 @@ class GroupFormViewController: FormViewController {
                         return formValue.value == self.leaderID
                     })
                 }
-                self.form.rows.forEach({ (row) in
+                form.rows.forEach({ (row) in
                     row.reload()
                     row.evaluateHidden()
                 })
@@ -112,12 +112,12 @@ class GroupFormViewController: FormViewController {
     }
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func saveButtonTapped(_ sender: Any) {
         if save() {
-            self.dismiss(animated: true, completion: nil)
+            dismiss(animated: true, completion: nil)
         }
     }
     

@@ -27,7 +27,7 @@ class MountDetailViewController: StableDetailViewController<MountDetailDataSourc
         } else {
             datasource?.types = [mountType]
         }
-        datasource?.collectionView = self.collectionView
+        datasource?.collectionView = collectionView
         super.viewDidLoad()
         
         disposable.inner.add(userRepository.getUser().on(value: {[weak self]user in

@@ -70,8 +70,8 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
 
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        if let window = self.view.window {
-            self.heightConstraint.constant = window.frame.size.height - 200
+        if let window = view.window {
+            heightConstraint.constant = window.frame.size.height - 200
         }
         if #available(iOS 10.0, *) {
             yesterdailiesHeightConstraint.constant = yesterdailiesTableView.contentSize.height
@@ -90,7 +90,7 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? YesterdailyTaskCell
-        if let tasks = self.tasks {
+        if let tasks = tasks {
             cell?.configure(task: tasks[indexPath.item])
             cell?.checkbox.wasTouched = {[weak self] in
                 self?.checkedCell(indexPath)
@@ -107,15 +107,15 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
     }
 
     private func checkedCell(_ indexPath: IndexPath) {
-        if let tasks = self.tasks {
+        if let tasks = tasks {
             tasks[indexPath.item].completed = !tasks[indexPath.item].completed
-            self.yesterdailiesTableView.reloadRows(at: [indexPath], with: .fade)
+            yesterdailiesTableView.reloadRows(at: [indexPath], with: .fade)
         }
     }
     
     private func checkChecklistItem(_ indexPath: IndexPath, item: ChecklistItemProtocol) {
         item.completed = !item.completed
-        self.yesterdailiesTableView.reloadRows(at: [indexPath], with: .fade)
+        yesterdailiesTableView.reloadRows(at: [indexPath], with: .fade)
     }
 
     func updateTitleBanner() {
@@ -131,13 +131,13 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
 
     @IBAction func allDoneTapped(_ sender: Any) {
         handleDismiss()
-        self.dismiss(animated: true) {}
+        dismiss(animated: true) {}
     }
     
     func handleDismiss() {
         UserManager.shared.yesterdailiesDialog = nil
         var completedTasks = [TaskProtocol]()
-        if let tasks = self.tasks {
+        if let tasks = tasks {
             for task in tasks where task.completed {
                 completedTasks.append(task)
             }

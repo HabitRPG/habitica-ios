@@ -95,10 +95,10 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
     init() {
         let authValues = Signal.combineLatest(
             self.authTypeProperty.signal,
-            Signal.merge(self.emailChangedProperty.signal, self.prefillEmailProperty.signal),
-            Signal.merge(self.usernameChangedProperty.signal, self.prefillUsernameProperty.signal),
-            Signal.merge(self.passwordChangedProperty.signal, self.prefillPasswordProperty.signal),
-            Signal.merge(self.passwordRepeatChangedProperty.signal, self.prefillPasswordRepeatProperty.signal)
+            Signal.merge(emailChangedProperty.signal, prefillEmailProperty.signal),
+            Signal.merge(usernameChangedProperty.signal, prefillUsernameProperty.signal),
+            Signal.merge(passwordChangedProperty.signal, prefillPasswordProperty.signal),
+            Signal.merge(passwordRepeatChangedProperty.signal, prefillPasswordRepeatProperty.signal)
         )
 
         self.authValuesProperty = Property<AuthValues?>(initial: AuthValues(), then: authValues.map {
@@ -116,7 +116,7 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
             }
         }.skipNil()
 
-        self.loginButtonTitle = self.authTypeProperty.signal.map { value -> String? in
+        self.loginButtonTitle = authTypeProperty.signal.map { value -> String? in
             switch value {
             case .login:
                 return L10n.Login.login
@@ -127,7 +127,7 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
             }
         }.skipNil()
 
-        self.usernameFieldTitle = self.authTypeProperty.signal.map { value -> String? in
+        self.usernameFieldTitle = authTypeProperty.signal.map { value -> String? in
             switch value {
             case .login:
                 return L10n.Login.emailUsername
@@ -138,7 +138,7 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
             }
         }.skipNil()
 
-        let isRegistering = self.authTypeProperty.signal.map { value -> Bool? in
+        let isRegistering = authTypeProperty.signal.map { value -> Bool? in
             switch value {
             case .login:
                 return false
@@ -149,42 +149,42 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
             }
         }.skipNil()
 
-        self.emailFieldVisibility = isRegistering
-        self.passwordRepeatFieldVisibility = isRegistering
-        self.passwordFieldReturnButtonIsDone = isRegistering.map({ value -> Bool in
+        emailFieldVisibility = isRegistering
+        passwordRepeatFieldVisibility = isRegistering
+        passwordFieldReturnButtonIsDone = isRegistering.map({ value -> Bool in
             return !value
         })
-        self.passwordRepeatFieldReturnButtonIsDone = isRegistering
+        passwordRepeatFieldReturnButtonIsDone = isRegistering
 
-        self.arePasswordsSame = Signal.combineLatest(passwordChangedProperty.signal, passwordRepeatChangedProperty.signal).map({ (password, passwordRepeat) -> Bool in
+        arePasswordsSame = Signal.combineLatest(passwordChangedProperty.signal, passwordRepeatChangedProperty.signal).map({ (password, passwordRepeat) -> Bool in
             return password == passwordRepeat
         })
         
-        self.isFormValid = authValues.map(isValid)
+        isFormValid = authValues.map(isValid)
 
-        self.emailChangedProperty.value = ""
-        self.usernameChangedProperty.value = ""
-        self.passwordChangedProperty.value = ""
-        self.passwordRepeatChangedProperty.value = ""
+        emailChangedProperty.value = ""
+        usernameChangedProperty.value = ""
+        passwordChangedProperty.value = ""
+        passwordRepeatChangedProperty.value = ""
 
-        self.usernameText = self.prefillUsernameProperty.signal
-        self.emailText = self.prefillEmailProperty.signal
-        self.passwordText = self.prefillPasswordProperty.signal
-        self.passwordRepeatText = self.prefillPasswordRepeatProperty.signal
+        usernameText = self.prefillUsernameProperty.signal
+        emailText = self.prefillEmailProperty.signal
+        passwordText = self.prefillPasswordProperty.signal
+        passwordRepeatText = self.prefillPasswordRepeatProperty.signal
 
-        self.onePasswordButtonHidden = self.onePasswordAvailable.signal
-            .combineLatest(with: self.authTypeProperty.signal)
+        onePasswordButtonHidden = onePasswordAvailable.signal
+            .combineLatest(with: authTypeProperty.signal)
             .map { (isAvailable, authType) in
             return !isAvailable || authType == .none
         }
-        self.onePasswordFindLogin = self.onePasswordTappedProperty.signal
+        onePasswordFindLogin = onePasswordTappedProperty.signal
 
         let (showNextViewControllerSignal, showNextViewControllerObserver) = Signal<(), Never>.pipe()
         self.showNextViewControllerObserver = showNextViewControllerObserver
-        self.showNextViewController = Signal.merge(
+        showNextViewController = Signal.merge(
             showNextViewControllerSignal,
             self.onSuccessfulLoginProperty.signal
-            ).combineLatest(with: self.authTypeProperty.signal)
+            ).combineLatest(with: authTypeProperty.signal)
         .map({ (_, authType) -> String in
             if authType == .login {
                 return "MainSegue"
@@ -192,20 +192,20 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
                 return "SetupSegue"
             }
         })
-        (self.showError, self.showErrorObserver) = Signal.pipe()
+        (showError, showErrorObserver) = Signal.pipe()
 
-        (self.loadingIndicatorVisibility, self.loadingIndicatorVisibilityObserver) = Signal<Bool, Never>.pipe()
+        (loadingIndicatorVisibility, loadingIndicatorVisibilityObserver) = Signal<Bool, Never>.pipe()
         
-        self.formVisibility = self.authTypeProperty.signal.map({ (authType) -> Bool in
+        formVisibility = authTypeProperty.signal.map({ (authType) -> Bool in
             return authType != .none
         })
-        self.beginButtonsVisibility = self.authTypeProperty.signal.map({ (authType) -> Bool in
+        beginButtonsVisibility = authTypeProperty.signal.map({ (authType) -> Bool in
             return authType == .none
         })
-        self.backButtonVisibility = self.authTypeProperty.signal.map({ (authType) -> Bool in
+        backButtonVisibility = authTypeProperty.signal.map({ (authType) -> Bool in
             return authType != .none
         })
-        self.backgroundScrolledToTop = self.authTypeProperty.signal.map({ (authType) -> Bool in
+        backgroundScrolledToTop = authTypeProperty.signal.map({ (authType) -> Bool in
             return authType != .none
         })
     }

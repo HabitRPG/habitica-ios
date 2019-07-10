@@ -33,12 +33,12 @@ class GuildOverviewViewController: BaseTableViewController, UISearchBarDelegate 
         
         navigationItem.title = L10n.Titles.guilds
         
-        self.segmentedFilterControl.selectedSegmentIndex = 0
-        self.segmentedFilterControl.addTarget(self, action: #selector(switchFilter), for: .valueChanged)
-        segmentedWrapper.addSubview(self.segmentedFilterControl)
+        segmentedFilterControl.selectedSegmentIndex = 0
+        segmentedFilterControl.addTarget(self, action: #selector(switchFilter), for: .valueChanged)
+        segmentedWrapper.addSubview(segmentedFilterControl)
         headerImageView.image = HabiticaIcons.imageOfGuildHeaderCrest()
         headerImageView.contentMode = .center
-        segmentedWrapper.addSubview(self.headerImageView)
+        segmentedWrapper.addSubview(headerImageView)
         segmentedWrapper.addSubview(headerSeparator)
         layoutHeader()
         topHeaderCoordinator?.alternativeHeader = segmentedWrapper
@@ -53,7 +53,7 @@ class GuildOverviewViewController: BaseTableViewController, UISearchBarDelegate 
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         tableView.keyboardDismissMode = .onDrag
         
-        dataSource.tableView = self.tableView
+        dataSource.tableView = tableView
         dataSource.invitationListView = invitationListView
         
         searchbar.placeholder = L10n.search
@@ -106,7 +106,7 @@ class GuildOverviewViewController: BaseTableViewController, UISearchBarDelegate 
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        self.dataSource.searchText = searchText
+        dataSource.searchText = searchText
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -16,7 +16,7 @@ class ContentRepository: BaseRepository<ContentLocalRepository> {
     
     func retrieveContent() -> Signal<ContentProtocol?, Never> {
         let call = RetrieveContentCall(language: LanguageHandler.getAppLanguage().code)
-        call.fire()
+        
         return call.objectSignal.on(value: {[weak self] content in
             if let content = content {
                 self?.localRepository.save(content)
@@ -26,7 +26,7 @@ class ContentRepository: BaseRepository<ContentLocalRepository> {
     
     func retrieveWorldState() -> Signal<WorldStateProtocol?, Never> {
         let call = RetrieveWorldStateCall()
-        call.fire()
+        
         return call.objectSignal.on(value: {[weak self] worldState in
             if let worldState = worldState {
                 self?.localRepository.save(worldState)

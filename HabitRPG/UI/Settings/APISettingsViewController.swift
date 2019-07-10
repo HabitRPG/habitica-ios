@@ -53,7 +53,7 @@ class APISettingsViewController: BaseSettingsViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.item == 1 && !showAPIKey {
             showAPIKey = true
-            self.tableView.reloadRows(at: [indexPath], with: .automatic)
+            tableView.reloadRows(at: [indexPath], with: .automatic)
             return
         }
         tableView.deselectRow(at: indexPath, animated: true)

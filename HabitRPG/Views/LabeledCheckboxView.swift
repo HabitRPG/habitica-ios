@@ -35,28 +35,28 @@ class LabeledCheckboxView: UILabel {
 
     private func setupView() {
         checkboxView.contentMode = .center
-        self.addSubview(checkboxView)
+        addSubview(checkboxView)
         updateCheckbox()
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tapped))
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapped))
         gestureRecognizer.numberOfTapsRequired = 1
-        self.addGestureRecognizer(gestureRecognizer)
-        self.isUserInteractionEnabled = true
+        addGestureRecognizer(gestureRecognizer)
+        isUserInteractionEnabled = true
     }
 
     override func drawText(in rect: CGRect) {
-        super.drawText(in: rect.inset(by: self.edgeInsets))
+        super.drawText(in: rect.inset(by: edgeInsets))
     }
 
     override var intrinsicContentSize: CGSize {
             var size = super.intrinsicContentSize
-            size.width += self.edgeInsets.left + self.edgeInsets.right
-            size.height += self.edgeInsets.top + self.edgeInsets.bottom
+            size.width += self.edgeInsets.left + edgeInsets.right
+            size.height += self.edgeInsets.top + edgeInsets.bottom
             return size
     }
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        checkboxView.frame = CGRect(x: 0, y: 0, width: 20, height: self.frame.size.height)
+        checkboxView.frame = CGRect(x: 0, y: 0, width: 20, height: frame.size.height)
     }
 
     func updateCheckbox() {

@@ -16,7 +16,7 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
     
     func retrieveTasks(dueOnDay: Date? = nil) -> Signal<[TaskProtocol]?, Never> {
         let call = RetrieveTasksCall(dueOnDay: dueOnDay)
-        call.fire()
+        
         return call.arraySignal.on(value: {[weak self] tasks in
             if let tasks = tasks, dueOnDay == nil {
                 self?.localRepository.save(userID: self?.currentUserId, tasks: tasks)
@@ -26,7 +26,7 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
     
     func retrieveCompletedTodos() -> Signal<[TaskProtocol]?, Never> {
         let call = RetrieveTasksCall(type: "completedTodos")
-        call.fire()
+        
         return call.arraySignal.on(value: {[weak self] tasks in
             if let tasks = tasks {
                 self?.localRepository.save(userID: self?.currentUserId, tasks: tasks, removeCompletedTodos: true)
@@ -36,7 +36,7 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
     
     func clearCompletedTodos() -> Signal<[TaskProtocol]?, Never> {
         let call = ClearCompletedTodosCall()
-        call.fire()
+        
         return call.arraySignal
     }
     
@@ -67,16 +67,16 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
     }
     
     func save(_ tasks: [TaskProtocol], order: [String: [String]]) {
-        localRepository.save(userID: self.currentUserId, tasks: tasks, order: order)
+        localRepository.save(userID: currentUserId, tasks: tasks, order: order)
     }
     
     func save(task: TaskProtocol) {
-        localRepository.save(userID: self.currentUserId, task: task)
+        localRepository.save(userID: currentUserId, task: task)
     }
     
     func score(task: TaskProtocol, direction: TaskScoringDirection) -> Signal<TaskResponseProtocol?, Never> {
         let call = ScoreTaskCall(task: task, direction: direction)
-        call.fire()
+        
         return call.objectSignal.withLatest(from: localRepository.getUserStats(id: AuthenticationManager.shared.currentUserId ?? "")
             .flatMapError({ (_) in
             return SignalProducer.empty
@@ -125,7 +125,7 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
     
     func score(checklistItem: ChecklistItemProtocol, task: TaskProtocol) -> Signal<TaskProtocol?, Never> {
         let call = ScoreChecklistItem(item: checklistItem, task: task)
-        call.fire()
+        
         return call.objectSignal.on(value: {[weak self] task in
                 if let task = task {
                     self?.localRepository.save(userID: self?.currentUserId, task: task)
@@ -161,7 +161,7 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
         localRepository.save(userID: currentUserId, task: task)
         localRepository.setTaskSyncing(userID: currentUserId, task: task, isSyncing: true)
         let call = CreateTaskCall(task: task)
-        call.fire()
+        
         return call.objectSignal.on(value: {[weak self]returnedTask in
             if let returnedTask = returnedTask {
                 self?.localRepository.save(userID: self?.currentUserId, task: returnedTask)
@@ -171,7 +171,7 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
     
     func createTasks(_ tasks: [TaskProtocol]) -> Signal<[TaskProtocol]?, Never> {
         let call = CreateTasksCall(tasks: tasks)
-        call.fire()
+        
         return call.arraySignal
     }
     
@@ -179,9 +179,9 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
         localRepository.save(userID: currentUserId, task: task)
         localRepository.setTaskSyncing(userID: currentUserId, task: task, isSyncing: true)
         let call = UpdateTaskCall(task: task)
-        call.fire()
-        call.errorSignal.observeValues({ _ in
-            self.localRepository.setTaskSyncing(userID: self.currentUserId, task: task, isSyncing: false)
+        
+        call.errorSignal.observeValues({[weak self] _ in
+            self?.localRepository.setTaskSyncing(userID: self?.currentUserId, task: task, isSyncing: false)
         })
         return call.objectSignal.on(value: {[weak self]returnedTask in
             if let returnedTask = returnedTask {
@@ -204,10 +204,10 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
             return Signal.empty
         }
         let call = DeleteTaskCall(task: task)
-        call.fire()
-        call.httpResponseSignal.observeValues { (response) in
+        
+        call.httpResponseSignal.observeValues {[weak self] (response) in
             if response.statusCode == 200, task.isValid {
-                self.localRepository.deleteTask(task)
+                self?.localRepository.deleteTask(task)
             }
         }
         return call.objectSignal
@@ -215,7 +215,7 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
     
     func createTag(_ tag: TagProtocol) -> Signal<TagProtocol?, Never> {
         let call = CreateTagCall(tag: tag)
-        call.fire()
+        
         return call.objectSignal.on(value: {[weak self]returnedTag in
             if let returnedTag = returnedTag {
                 self?.localRepository.save(userID: self?.currentUserId, tag: returnedTag)
@@ -225,7 +225,7 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
     
     func updateTag(_ tag: TagProtocol) -> Signal<TagProtocol?, Never> {
         let call = UpdateTagCall(tag: tag)
-        call.fire()
+        
         return call.objectSignal.on(value: {[weak self]returnedTag in
             if let returnedTag = returnedTag {
                 returnedTag.order = tag.order
@@ -236,7 +236,7 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
     
     func deleteTag(_ tag: TagProtocol) -> Signal<EmptyResponseProtocol?, Never> {
         let call = DeleteTagCall(tag: tag)
-        call.fire()
+        
         call.httpResponseSignal.observeValues {[weak self] (response) in
             if response.statusCode == 200 {
                 self?.localRepository.deleteTag(tag)
@@ -247,7 +247,7 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
     
     func moveTask(_ task: TaskProtocol, toPosition: Int) -> Signal<[String]?, Never> {
         let call = MoveTaskCall(task: task, toPosition: toPosition)
-        call.fire()
+        
         return call.arraySignal.on(value: {[weak self] taskOrder in
             if let taskType = task.type, let taskOrder = taskOrder {
                 self?.localRepository.updateTaskOrder(taskType: taskType, order: taskOrder)

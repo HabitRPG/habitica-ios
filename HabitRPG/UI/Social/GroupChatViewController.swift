@@ -20,7 +20,7 @@ class GroupChatViewController: SLKTextViewController {
                 setupDataSource(groupID: groupID)
             }
             if groupID != oldValue {
-                self.refresh()
+                refresh()
             }
         }
     }
@@ -81,26 +81,26 @@ class GroupChatViewController: SLKTextViewController {
             disposable.inner.add(signal
                 .filter({ username -> Bool in return !username.isEmpty })
                 .throttle(2, on: QueueScheduler.main)
-                .flatMap(.latest, { username in
-                    self.socialRepository.findUsernames(username, context: self.autocompleteContext, id: self.groupID)
+                .flatMap(.latest, {[weak self] username in
+                    self?.socialRepository.findUsernames(username, context: self?.autocompleteContext, id: self?.groupID) ?? Signal.empty
                 })
-                .observeValues({ members in
-                    self.autocompleteUsernames = members
-                    if self.foundWord != nil {
-                        self.showAutoCompletionView(self.autocompleteUsernames.isEmpty == false)
+                .observeValues({[weak self] members in
+                    self?.autocompleteUsernames = members
+                    if self?.foundWord != nil {
+                        self?.showAutoCompletionView(self?.autocompleteUsernames.isEmpty == false)
                     }
                 })
             )
         } else {
             disposable.inner.add(signal
                 .filter({ username -> Bool in return !username.isEmpty })
-                .flatMap(.latest, { username in
-                    self.socialRepository.findUsernamesLocally(username, id: self.groupID)
+                .flatMap(.latest, {[weak self] username in
+                    self?.socialRepository.findUsernamesLocally(username, id: self?.groupID) ?? SignalProducer.empty
                 })
-                .observeValues({ (members) in
-                    self.autocompleteUsernames = members
-                    if self.foundWord != nil {
-                        self.showAutoCompletionView(self.autocompleteUsernames.isEmpty == false)
+                .observeValues({[weak self] (members) in
+                    self?.autocompleteUsernames = members
+                    if self?.foundWord != nil {
+                        self?.showAutoCompletionView(self?.autocompleteUsernames.isEmpty == false)
                     }
                 }))
         }
@@ -110,9 +110,9 @@ class GroupChatViewController: SLKTextViewController {
         disposable.inner.add(emojiSignal
             .filter { emoji -> Bool in return !emoji.isEmpty }
             .throttle(0.5, on: QueueScheduler.main)
-            .observeValues({ emoji in
-                self.autocompleteEmojis = NSString.emojiCheatCodes(matching: emoji)
-                self.showAutoCompletionView(self.autocompleteEmojis.isEmpty == false)
+            .observeValues({[weak self] emoji in
+                self?.autocompleteEmojis = NSString.emojiCheatCodes(matching: emoji)
+                self?.showAutoCompletionView(self?.autocompleteEmojis.isEmpty == false)
             })
         )
     }
@@ -137,6 +137,11 @@ class GroupChatViewController: SLKTextViewController {
         if let groupID = self.groupID {
             setupDataSource(groupID: groupID)
         }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        dataSource = nil
+        super.viewDidDisappear(animated)
     }
     
     override func textViewDidChange(_ textView: UITextView) {
@@ -173,18 +178,16 @@ class GroupChatViewController: SLKTextViewController {
     
     @objc
     func refresh() {
-        if let groupID = self.groupID {
-            socialRepository.retrieveChat(groupID: groupID).observeCompleted {[weak self] in
-                if #available(iOS 10.0, *) {
-                    self?.tableView?.refreshControl?.endRefreshing()
-                }
+        dataSource?.retrieveData(completed: {[weak self] in
+            if #available(iOS 10.0, *) {
+                self?.tableView?.refreshControl?.endRefreshing()
             }
-        }
+        })
     }
     
     override func didPressRightButton(_ sender: Any?) {
         self.textView.refreshFirstResponder()
-        let message = self.textView.text
+        let message = textView.text
         if let message = message, let groupID = self.groupID {
             if #available(iOS 10.0, *) {
                 UIImpactFeedbackGenerator.oneShotImpactOccurred(.light)
@@ -247,7 +250,7 @@ class GroupChatViewController: SLKTextViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if tableView == self.autoCompletionView {
+        if tableView == autoCompletionView {
             if foundPrefix == "@" {
                 return 60
             } else if foundPrefix == ":" {
@@ -268,7 +271,7 @@ class GroupChatViewController: SLKTextViewController {
         if count == 0 {
             return 0
         }
-        let cellHeight = self.autoCompletionView.delegate?.tableView?(self.autoCompletionView, heightForRowAt: IndexPath(row: 0, section: 0))
+        let cellHeight = autoCompletionView.delegate?.tableView?(autoCompletionView, heightForRowAt: IndexPath(row: 0, section: 0))
         guard let height = cellHeight else {
             return 0
         }
@@ -276,20 +279,20 @@ class GroupChatViewController: SLKTextViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if tableView == self.autoCompletionView {
+        if tableView == autoCompletionView {
             var item = ""
             if self.foundPrefix == "@" {
                 item += autocompleteUsernames[indexPath.row].username ?? ""
-                if self.foundPrefixRange.location == 0 {
+                if foundPrefixRange.location == 0 {
                     item += ":"
                 }
-            } else if self.foundPrefix == ":" || self.foundPrefix == "+:" {
+            } else if foundPrefix == ":" || foundPrefix == "+:" {
                 var cheatcode = autocompleteEmojis[indexPath.row]
                 cheatcode.remove(at: cheatcode.startIndex)
                 item += cheatcode
             }
             item += " "
-            self.acceptAutoCompletion(with: item, keepPrefix: true)
+            acceptAutoCompletion(with: item, keepPrefix: true)
         }
     }
     
@@ -317,7 +320,7 @@ class GroupChatViewController: SLKTextViewController {
     
     @objc
     private func openGuidelinesView() {
-        self.performSegue(withIdentifier: "GuidelinesSegue", sender: self)
+        performSegue(withIdentifier: "GuidelinesSegue", sender: self)
     }
     
     @IBAction func unwindToAcceptGuidelines(_ segue: UIStoryboardSegue) {
@@ -336,7 +339,7 @@ class GroupChatViewController: SLKTextViewController {
             textView.text = "@\(username ?? "") "
         }
         textView.becomeFirstResponder()
-        textView.selectedRange = NSRange(location: self.textView.text.count, length: 0)
+        textView.selectedRange = NSRange(location: textView.text.count, length: 0)
     }
 
 }

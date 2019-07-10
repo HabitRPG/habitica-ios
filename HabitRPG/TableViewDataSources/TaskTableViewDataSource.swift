@@ -168,7 +168,7 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
     }
     
     internal func expandSelectedCell(indexPath: IndexPath) {
-        var expandedPath = self.expandedIndexPath
+        var expandedPath = expandedIndexPath
         if tableView?.numberOfRows(inSection: 0) ?? 0 < (expandedPath?.item ?? 0) {
             expandedPath = nil
         }
@@ -177,8 +177,8 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
         }
         self.expandedIndexPath = indexPath
         if expandedPath == nil || indexPath.item == expandedPath?.item {
-            if expandedPath?.item == self.expandedIndexPath?.item {
-                self.expandedIndexPath = nil
+            if expandedPath?.item == expandedIndexPath?.item {
+                expandedIndexPath = nil
             }
             tableView?.beginUpdates()
             tableView?.reloadRows(at: [indexPath], with: .none)

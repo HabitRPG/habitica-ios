@@ -83,7 +83,7 @@ class AttributePointsViewController: HRPGUIViewController, Themeable {
     override func viewDidLoad() {
         super.viewDidLoad()
         topHeaderCoordinator?.hideHeader = true
-        self.tutorialIdentifier = "stats"
+        tutorialIdentifier = "stats"
         
         let subscriber = Signal<CalculatedUserStats, NSError>.Observer(value: {[weak self] stats in
             self?.updateStats(stats)
@@ -339,6 +339,6 @@ class AttributePointsViewController: HRPGUIViewController, Themeable {
         let popup = PopupDialog(viewController: viewController, tapGestureDismissal: false) {
         }
     
-        self.present(popup, animated: true, completion: nil)
+        present(popup, animated: true, completion: nil)
     }
 }

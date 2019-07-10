@@ -67,7 +67,7 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
             scrollToPage(currentSetupStep)
         }
         
-        if self.view.frame.size.height <= 480 {
+        if view.frame.size.height <= 480 {
             pageIndicatorHeightConstraint.constant = 42
         }
     }
@@ -255,7 +255,7 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func showMainView() {
-        MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
+        MRProgressOverlayView.dismissOverlay(for: view, animated: true)
         performSegue(withIdentifier: "MainSegue", sender: self)
     }
     
@@ -296,13 +296,13 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
             return
         }
         userRepository.updateUser(key: "profile.name", value: displayname)
-            .flatMap(.latest, { user -> SignalProducer<UserProtocol, ValidationError> in
+            .flatMap(.latest, {[weak self] user -> SignalProducer<UserProtocol, ValidationError> in
                 if user == nil {
                     return SignalProducer.init(error: ValidationError(""))
                 }
-                return self.userRepository.updateUsername(newUsername: username).mapError({ error -> ValidationError in
+                return self?.userRepository.updateUsername(newUsername: username).mapError({ error -> ValidationError in
                     return ValidationError(error.localizedDescription)
-                }).producer
+                }).producer ?? SignalProducer.empty
             })
             .observeCompleted {}
     }

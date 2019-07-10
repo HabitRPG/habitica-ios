@@ -74,7 +74,7 @@ class IconLabel: UIView {
         addSubview(label)
         addSubview(iconView)
         
-        let viewDictionary = ["image": self.iconView, "label": self.label]
+        let viewDictionary = ["image": iconView, "label": label]
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[image]-4-[label]-0-|", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: viewDictionary))
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[image]-0-|", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: viewDictionary))
         
@@ -102,7 +102,7 @@ class IconLabel: UIView {
                                                       multiplier: 1,
                                                       constant: 18)
         widthConstraint.priority = UILayoutPriority(rawValue: 500)
-        self.addConstraint(widthConstraint)
+        addConstraint(widthConstraint)
         
         setNeedsUpdateConstraints()
         updateConstraints()

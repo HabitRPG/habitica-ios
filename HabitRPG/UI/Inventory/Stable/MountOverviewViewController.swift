@@ -12,7 +12,7 @@ class MountOverviewViewController: StableOverviewViewController<MountOverviewDat
     
     override func viewDidLoad() {
         datasource = MountOverviewDataSource()
-        datasource?.collectionView = self.collectionView
+        datasource?.collectionView = collectionView
         super.viewDidLoad()
     }
     

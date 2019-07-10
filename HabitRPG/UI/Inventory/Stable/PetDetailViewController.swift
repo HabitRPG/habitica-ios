@@ -28,7 +28,7 @@ class PetDetailViewController: StableDetailViewController<PetDetailDataSource> {
         } else {
             datasource?.types = [petType]
         }
-        datasource?.collectionView = self.collectionView
+        datasource?.collectionView = collectionView
         super.viewDidLoad()
         
         disposable.inner.add(userRepository.getUser().on(value: {[weak self]user in

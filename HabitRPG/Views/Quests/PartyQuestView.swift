@@ -47,10 +47,10 @@ class PartyQuestView: UIView {
     }
     
     func configure(state: QuestStateProtocol, quest: QuestProtocol) {
-        ImageManager.getImage(name: "quest_\(quest.key ?? "")") { (image, _) in
-            self.questImageView.image = image
-            self.setNeedsLayout()
-            self.invalidateIntrinsicContentSize()
+        ImageManager.getImage(name: "quest_\(quest.key ?? "")") {[weak self] (image, _) in
+            self?.questImageView.image = image
+            self?.setNeedsLayout()
+            self?.invalidateIntrinsicContentSize()
         }
         if let boss = quest.boss {
             isBossQuest = true

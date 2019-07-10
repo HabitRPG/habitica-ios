@@ -109,26 +109,26 @@ class TavernDetailViewController: GroupDetailViewController {
     }
     
     @IBAction func innButtonTapped(_ sender: Any) {
-        self.configureInnButton(disabled: true)
-        userRepository.sleep().observeCompleted {
-            self.configureInnButton()
+        configureInnButton(disabled: true)
+        userRepository.sleep().observeCompleted {[weak self] in
+            self?.configureInnButton()
         }
     }
     
     @IBAction func guidelinesButtonTapped(_ sender: Any) {
-        self.performSegue(withIdentifier: "GuidelinesSegue", sender: self)
+        performSegue(withIdentifier: "GuidelinesSegue", sender: self)
     }
     
     @IBAction func faqButtonTapped(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "FAQOverviewViewController")
-        self.navigationController?.pushViewController(viewController, animated: true)
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
     @IBAction func reportBugButtonTapped(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "AboutViewController")
-        self.navigationController?.pushViewController(viewController, animated: true)
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
     func configureInnButton(disabled: Bool = false) {

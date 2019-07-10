@@ -15,12 +15,12 @@ class DailyTableViewCell: CheckedTableViewCell {
         super.configure(task: task)
         if !(task.completed) {
             if !task.dueToday() {
-                self.checklistIndicator.backgroundColor = .gray600()
-                self.checklistDoneLabel.textColor = .gray100()
-                self.checklistAllLabel.textColor = .gray100()
-                self.checklistSeparator.backgroundColor = .gray100()
-                self.checklistLeftBorderView.backgroundColor = .gray500()
-                self.checklistRightBorderView.backgroundColor = .gray500()
+                checklistIndicator.backgroundColor = .gray600()
+                checklistDoneLabel.textColor = .gray100()
+                checklistAllLabel.textColor = .gray100()
+                checklistSeparator.backgroundColor = .gray100()
+                checklistLeftBorderView.backgroundColor = .gray500()
+                checklistRightBorderView.backgroundColor = .gray500()
             }
         }
     }

@@ -179,7 +179,7 @@ class PartyDetailViewController: GroupDetailViewController {
                     questInvitationUserView.isHidden = true
                 }
             }
-            self.questTitleContentView.setNeedsLayout()
+            questTitleContentView.setNeedsLayout()
         } else {
             startQuestButton.isHidden = false
             questTitleView.isHidden = true
@@ -225,7 +225,7 @@ class PartyDetailViewController: GroupDetailViewController {
     
     @objc
     private func openQuestDetailView() {
-        self.perform(segue: StoryboardSegue.Social.questDetailSegue)
+        perform(segue: StoryboardSegue.Social.questDetailSegue)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -247,6 +247,6 @@ class PartyDetailViewController: GroupDetailViewController {
         let itemNavigationController = StoryboardScene.Main.itemNavigationController.instantiate()
         let itemViewController = itemNavigationController.topViewController as? ItemsViewController
         itemViewController?.itemType = "quests"
-        self.present(itemNavigationController, animated: true, completion: nil)
+        present(itemNavigationController, animated: true, completion: nil)
     }
 }

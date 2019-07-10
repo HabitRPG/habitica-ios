@@ -60,8 +60,8 @@ class UserProfileViewController: BaseTableViewController {
         }).start())
         
         if let userID = userID {
-            disposable.inner.add(socialRepository.getMember(userID: userID).skipNil().flatMap(.latest, { (member) in
-                return self.fetchGearStats(member: member)
+            disposable.inner.add(socialRepository.getMember(userID: userID).skipNil().flatMap(.latest, {[weak self] (member) in
+                return self?.fetchGearStats(member: member) ?? SignalProducer.empty
             }).on(value: {[weak self] (member, gear) in
                 self?.member = member
                 self?.navigationItem.title = member.profile?.name

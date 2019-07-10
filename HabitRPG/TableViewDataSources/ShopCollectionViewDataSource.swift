@@ -58,7 +58,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
     
     @objc var needsGearSection: Bool = false {
         didSet {
-            self.sections[0].isHidden = !needsGearSection
+            sections[0].isHidden = !needsGearSection
         }
     }
     @objc var selectedGearCategory: String? {
@@ -81,7 +81,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
         self.shopIdentifier = identifier
         self.delegate = delegate
         super.init()
-        self.sections.append(ItemSection<InAppRewardProtocol>())
+        sections.append(ItemSection<InAppRewardProtocol>())
         sections[0].showIfEmpty = true
         
         disposable.inner.add(inventoryRepository.getShop(identifier: identifier).combineLatest(with: userRepository.getUser()).on(value: {[weak self] (shop, user) in
@@ -138,11 +138,11 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
         }
         fetchGearDisposable = inventoryRepository.getShop(identifier: Constants.GearMarketKey)
             .map({ (shop) -> [InAppRewardProtocol] in
-                return shop?.categories.first(where: { (category) -> Bool in
-                    category.identifier == self.selectedGearCategory
+                return shop?.categories.first(where: {[weak self] (category) -> Bool in
+                    category.identifier == self?.selectedGearCategory
                 })?.items ?? []
             })
-            .combineLatest(with: self.inventoryRepository.getOwnedGear()
+            .combineLatest(with: inventoryRepository.getOwnedGear()
                 .map({ (ownedGear, _) in
                     return ownedGear.map({ item -> String in
                         return item.key ?? ""

@@ -55,6 +55,6 @@ class TimeTravelersCollectionViewDataSource: ShopCollectionViewDataSource {
         }
         //Flip the order to have pets and mounts first
         sections.reverse()
-        self.collectionView?.reloadData()
+        collectionView?.reloadData()
     }
 }
