@@ -140,7 +140,8 @@ class MainMenuViewController: BaseTableViewController {
             MenuSection(title: nil, iconAsset: nil, items: [
                 MenuItem(title: L10n.Menu.castSpells, segue: StoryboardSegue.Main.spellsSegue.rawValue),
                 //MenuItem(title: L10n.Menu.selectClass, segue: StoryboardSegue.Main.selectClassSegue.rawValue),
-                MenuItem(title: L10n.Titles.stats, segue: StoryboardSegue.Main.statsSegue.rawValue)
+                MenuItem(title: L10n.Titles.stats, segue: StoryboardSegue.Main.statsSegue.rawValue),
+                MenuItem(title: L10n.Titles.achievements, segue: StoryboardSegue.Main.achievementsSegue.rawValue)
                 ]),
             MenuSection(title: L10n.Menu.social, iconAsset: Asset.iconSocial, items: [
                 MenuItem(title: L10n.Titles.tavern, segue: StoryboardSegue.Main.tavernSegue.rawValue),

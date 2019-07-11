@@ -53,6 +53,12 @@ class MainTabBarController: UITabBarController, Themeable {
     func applyTheme(theme: Theme) {
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        presentingViewController?.willMove(toParent: nil)
+        presentingViewController?.removeFromParent()
+    }
+    
     private func setupDailyIcon() {
         let calendarImage = #imageLiteral(resourceName: "tabbar_dailies")
         UIGraphicsBeginImageContextWithOptions(CGSize(width: calendarImage.size.width, height: calendarImage.size.height), false, 0)

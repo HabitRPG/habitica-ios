@@ -211,6 +211,7 @@
                         <segue destination="AjM-Kx-nSU" kind="show" identifier="EquipmentSegue" id="mE7-db-9QB"/>
                         <segue destination="o49-Mt-AdO" kind="show" identifier="CustomizationSegue" id="9Yx-3K-EPv"/>
                         <segue destination="nb1-qt-uKV" kind="presentation" identifier="NotificationsSegue" id="3jW-QR-Ocs"/>
+                        <segue destination="hEH-25-nQA" kind="show" identifier="AchievementsSegue" id="ZL6-DZ-Nc4"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YVG-cg-SZN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -770,6 +771,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v3c-2r-ADh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3933" y="1486"/>
+        </scene>
+        <!--AchievementsCollectionViewController-->
+        <scene sceneID="Fro-hY-CK8">
+            <objects>
+                <viewControllerPlaceholder storyboardName="User" referencedIdentifier="AchievementsCollectionViewController" id="hEH-25-nQA" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WNI-zW-5VJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3976" y="1518"/>
         </scene>
         <!--Mount Overview View Controller-->
         <scene sceneID="Ntu-Ub-BnA">

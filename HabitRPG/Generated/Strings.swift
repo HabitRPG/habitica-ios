@@ -1665,6 +1665,8 @@ public enum L10n {
   public enum Titles {
     /// About
     public static var about: String { return L10n.tr("Mainstrings", "titles.about") }
+    /// Achievements
+    public static var achievements: String { return L10n.tr("Mainstrings", "titles.achievements") }
     /// API
     public static var api: String { return L10n.tr("Mainstrings", "titles.api") }
     /// Authentication

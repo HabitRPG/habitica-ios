@@ -394,6 +394,22 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         })
     }
     
+    func retrieveAchievements() -> Signal<[AchievementProtocol]?, Never> {
+        return RetrieveAchievementsCall(userID: currentUserId ?? "").objectSignal.map({ achievementList in
+            return achievementList?.achievements
+        }).on(value: {[weak self] achievements in
+            if let achievements = achievements {
+                self?.localRepository.save(userID: self?.currentUserId ?? "", achievements: achievements)
+            }
+        })
+    }
+    
+    func getAchievements() -> SignalProducer<ReactiveResults<[AchievementProtocol]>, ReactiveSwiftRealmError> {
+        return currentUserIDProducer.skipNil().flatMap(.latest, {[weak self] (userID) in
+            return self?.localRepository.getAchievements(userID: userID) ?? SignalProducer.empty
+        })
+    }
+    
     func readNotification(notification: NotificationProtocol) -> Signal<[NotificationProtocol]?, Never> {
         if notification.id.contains("-invite-") {
             localRepository.delete(object: notification)
