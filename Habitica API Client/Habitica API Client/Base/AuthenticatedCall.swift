@@ -65,7 +65,7 @@ public class AuthenticatedCall: JsonNetworkCall {
         
         customErrorHandler = errorHandler
         
-        debugHandler = DebugOutputHandler(httpMethod: httpMethod, url: urlString(endpoint))
+        debugHandler = DebugOutputHandler(httpMethod: httpMethod, url: urlString)
         debugHandler?.observe(call: self)
         
         setupErrorHandler()
