@@ -213,7 +213,7 @@ class MainMenuViewController: BaseTableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = visibleItemAt(indexPath: indexPath)
-        let cell = tableView .dequeueReusableCell(withIdentifier: item?.cellName ?? "", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: item?.cellName ?? "", for: indexPath)
         cell.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
         
         if item?.accessibilityLabel?.isEmpty != true {

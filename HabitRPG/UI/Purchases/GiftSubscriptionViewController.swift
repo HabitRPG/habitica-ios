@@ -95,10 +95,10 @@ class GiftSubscriptionViewController: HRPGBaseViewController {
         SwiftyStoreKit.retrieveProductsInfo(Set(PurchaseHandler.noRenewSubscriptionIdentifiers)) { (result) in
             self.products = Array(result.retrievedProducts)
             self.products?.sort(by: { (product1, product2) -> Bool in
-                guard let firstIndex = PurchaseHandler.noRenewSubscriptionIdentifiers.index(of: product1.productIdentifier) else {
+                guard let firstIndex = PurchaseHandler.noRenewSubscriptionIdentifiers.firstIndex(of: product1.productIdentifier) else {
                     return false
                 }
-                guard let secondIndex = PurchaseHandler.noRenewSubscriptionIdentifiers.index(of: product2.productIdentifier) else {
+                guard let secondIndex = PurchaseHandler.noRenewSubscriptionIdentifiers.firstIndex(of: product2.productIdentifier) else {
                     return true
                 }
                 return firstIndex < secondIndex

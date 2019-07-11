@@ -435,7 +435,7 @@ class TaskFormViewController: FormViewController {
     }
     
     private func updateDailySchedulingFooter() {
-        let values = form.values()
+        /*let values = form.values()
         let weekdays = values[TaskFormTags.repeatWeekdays] as? WeekdaysValue
         let summary = repeatablesSummaryInteractor.repeatablesSummary(frequency: values[TaskFormTags.dailyRepeat] as? String,
                                                                       everyX: values[TaskFormTags.dailyEvery] as? Int,
@@ -449,7 +449,7 @@ class TaskFormViewController: FormViewController {
                                                                       startDate: values[TaskFormTags.startDate] as? Date,
                                                                       daysOfMonth: [],
                                                                       weeksOfMonth: [])
-        /*schedulingSection?.footer = HeaderFooterView(title: summary)
+        schedulingSection?.footer = HeaderFooterView(title: summary)
         tableView.beginUpdates()
         tableView.reloadSections(IndexSet(integer: schedulingSection?.index ?? 2), with: .automatic)
         tableView.endUpdates()*/

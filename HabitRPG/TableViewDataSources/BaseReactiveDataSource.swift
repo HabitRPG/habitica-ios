@@ -89,7 +89,7 @@ class BaseReactiveTableViewDataSource<MODEL>: BaseReactiveDataSource<MODEL>, UIT
     }
     
     override func notify(changes: ReactiveChangeset?, section: Int = 0) {
-        guard let changes = changes else {
+        if changes == nil {
             return
         }
         if userDrivenDataUpdate {

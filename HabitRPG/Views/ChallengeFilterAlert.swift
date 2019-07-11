@@ -151,7 +151,7 @@ class ChallengeFilterAlert: UIViewController, Themeable {
                 if isChecked {
                     self?.shownGuilds.append(groupID)
                 } else {
-                    if let index = self?.shownGuilds.index(of: groupID) {
+                    if let index = self?.shownGuilds.firstIndex(of: groupID) {
                         self?.shownGuilds.remove(at: index)
                     }
                 }

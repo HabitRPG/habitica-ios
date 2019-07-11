@@ -217,7 +217,7 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController {
         
         currentSubcategory = subcategories[0]
         
-        if let activeIndex = getSubcategoriesForCurrentCategory().index(of: currentSubcategory), let button = subCategoryContainer.arrangedSubviews[activeIndex] as? UIButton {
+        if let activeIndex = getSubcategoriesForCurrentCategory().firstIndex(of: currentSubcategory), let button = subCategoryContainer.arrangedSubviews[activeIndex] as? UIButton {
             self.view.layoutIfNeeded()
             updateSubcategoryIndicator(button)
         }
@@ -263,7 +263,7 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController {
     }
     
     private func updateSubcategoryButtons() {
-        let activeIndex = getSubcategoriesForCurrentCategory().index(of: currentSubcategory)
+        let activeIndex = getSubcategoriesForCurrentCategory().firstIndex(of: currentSubcategory)
         UIView.animate(withDuration: 0.2) {[weak self] in
             guard let weakSelf = self else {
                 return
@@ -298,7 +298,7 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController {
     @objc
     func subcategoryTapped(_ sender: UIButton!) {
         updateSubcategoryIndicator(sender)
-        guard let activeIndex = subCategoryContainer.arrangedSubviews.index(of: sender) else {
+        guard let activeIndex = subCategoryContainer.arrangedSubviews.firstIndex(of: sender) else {
             return
         }
         currentSubcategory = getSubcategoriesForCurrentCategory()[activeIndex]
@@ -327,7 +327,7 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController {
         guard let view = sender.view as? SetupCustomizationItemView else {
             return
         }
-        guard let activeIndex = contentContainer.arrangedSubviews.index(of: view) else {
+        guard let activeIndex = contentContainer.arrangedSubviews.firstIndex(of: view) else {
             return
         }
         

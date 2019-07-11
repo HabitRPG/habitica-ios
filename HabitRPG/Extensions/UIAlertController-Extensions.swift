@@ -6,7 +6,7 @@ import FBSDKLoginKit
 public extension UIAlertController {
 
     @objc
-    public static func alert(title: String? = nil,
+    static func alert(title: String? = nil,
                              message: String? = nil,
                              handler: ((UIAlertAction) -> Void)? = nil) -> UIAlertController {
         let alertController = UIAlertController(
@@ -19,7 +19,7 @@ public extension UIAlertController {
         return alertController
     }
 
-    public static func genericError(message: String, title: String = L10n.Errors.error) -> UIAlertController {
+    static func genericError(message: String, title: String = L10n.Errors.error) -> UIAlertController {
         let alertController = UIAlertController(
             title: title,
             message: message,
@@ -31,7 +31,7 @@ public extension UIAlertController {
     }
 
     @objc
-    public func setSourceInCenter(_ view: UIView) {
+    func setSourceInCenter(_ view: UIView) {
         if let popoverController = popoverPresentationController {
             popoverController.sourceView = self.view
             popoverController.sourceRect = CGRect(x: view.bounds.midX, y: view.bounds.midY, width: 0, height: 0)
