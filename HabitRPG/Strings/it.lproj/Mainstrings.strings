@@ -766,3 +766,17 @@
 "choose_task" = "Scegli attività";
 "shops.other_class_disclaimer" = "Puoi comprare attrezzatura solo per la classe attuale";
 "shops.purchased_all_gear" = "Possiedi già tutto l'equipaggiamento della tua classe! Altri oggetti verranno messi a disposizione durante i Gran Galà, nel periodo dei solstizi e degli equinozi.";
+"titles.skills" = "Abilità";
+"titles.gift_subscription" = "Regala un Abbonamento";
+"stats.total" = "Totale";
+"stats.strength_text" = "Aumenta la possibilità di colpi critici e li rende più probabili quando una attività viene completata. Inoltre aumenta il danno inflitto ai boss. ";
+"tasks.team" = "Squadra";
+"tasks.due_today" = "Scade oggi";
+"tasks.due_tomorrow" = "Scade domani";
+"tasks.due_in_x_days" = "Scade tra %d giorni";
+"tasks.due_x" = "Scade %@";
+"tasks.every_x" = "ogni %@";
+"titles.avatar" = "Avatar";
+"tasks.examples.team_todo_text" = "Completa il progetto della squadra";
+"settings.app_icon" = "Icona dell'App";
+"settings.server" = "Server";

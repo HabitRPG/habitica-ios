@@ -41,7 +41,7 @@
 /* (No Comment) */
 "classes.mage" = "Magier";
 /* (No Comment) */
-"classes.mage_description" = "Magier lernen rasch, sie erhalten schneller Erfahrung und Level als andere Klassen. Sie bekommen zudem eine große Menge an Mana, die sie für Spezialfähigkeiten einsetzen können. Entscheide dich für den Magier, wenn du die taktischen Spielaspekte von Habitica liebst oder wenn du hochmotiviert bist, Stufen aufzusteigen und weitere Features freizuschalten!";
+"classes.mage_description" = "Magier lernen rasch, sie erhalten schneller Erfahrung und Level als andere Klassen. Sie bekommen zudem eine große Menge an Mana, die sie für Spezialfähigkeiten einsetzen können. Entscheide dich für den Magier, wenn du die taktischen Spielaspekte von Habitica liebst oder wenn du hochmotiviert bist, Stufen aufzusteigen und weitere Features freizuschalten! ";
 /* (No Comment) */
 "classes.rogue" = "Schurke";
 /* (No Comment) */
@@ -49,7 +49,7 @@
 /* (No Comment) */
 "classes.warrior" = "Krieger";
 /* (No Comment) */
-"classes.warrior_description" = "Krieger verursachen mehr und stärkere \"kritische Treffer\", die zufällige Boni auf Gold, Erfahrung und Beute beim Erfüllen einer Aufgabe geben. Sie sind auch sehr stark gegen Bossmonster. Spiele einen Krieger, wenn Dich die Chance auf Belohnungen im Lottogewinn-Stil besonders reizt und Du besonders effektiv gegen Bossmonster sein willst.";
+"classes.warrior_description" = "Krieger verursachen mehr und stärkere \"kritische Treffer\", die zufällige Boni auf Gold, Erfahrung und Beute beim Erfüllen einer Aufgabe geben. Sie sind auch sehr stark gegen Bossmonster. Spiele einen Krieger, wenn Dich die Chance auf Belohnungen im Lottogewinn-Stil besonders reizt und Du besonders effektiv gegen Bossmonster sein willst!";
 /* (No Comment) */
 "close" = "Schließen";
 /* (No Comment) */
@@ -91,7 +91,7 @@
 /* (No Comment) */
 "equipment.costume" = "Kostüm";
 /* (No Comment) */
-"equipment.costume_explanation" = "Wähle \"Kostüm nutzen\", um Deinen Avatar mit Ausrüstung auszustatten, ohne die Werte Deiner Kampfausrüstung zu beeinflussen! Damit kannst Du Deinen Avatar anziehen, wie Du willst und gleichzeitig Deine beste Kampfausrüstung angelegt haben. ";
+"equipment.costume_explanation" = "Wähle \"Kostüm nutzen\", um Deinen Avatar mit Ausrüstung auszustatten, ohne die Werte Deiner Kampfausrüstung zu beeinflussen! Damit kannst Du Deinen Avatar anziehen, wie Du willst und gleichzeitig Deine beste Kampfausrüstung angelegt haben.";
 /* (No Comment) */
 "equipment.eyewear" = "Brillen & Masken";
 /* (No Comment) */
@@ -151,7 +151,7 @@
 /* (No Comment) */
 "inventory.number_gems_left" = "Monatliche Edelsteine: %d/%d übrig";
 /* (No Comment) */
-"inventory.wrong_class" = "Nur verfügbar für %@s. Du kannst deine Klasse in den Einstellungen ändern.";
+"inventory.wrong_class" = "Nur verfügbar für %@s. Du kannst deine Klasse in den Einstellungen ändern";
 /* (No Comment) */
 "invite_party" = "Gruppe einladen";
 /* (No Comment) */
@@ -355,7 +355,7 @@
 /* (No Comment) */
 "share" = "Teilen";
 /* (No Comment) */
-"skills.cant_cast_on_challenge_tasks" = "Fähigkeiten können nicht auf Wettbewerbsaufgaben angewandt werden.";
+"skills.cant_cast_on_challenge_tasks" = "Fähigkeiten können nicht auf Wettbewerbsaufgaben angewandt werden";
 /* (No Comment) */
 "skills.transformation_items" = "Transformationsgegenstände";
 /* (No Comment) */
@@ -602,8 +602,8 @@
 "tasks.quality.good" = "Gut";
 "tasks.quality.better" = "Besser";
 "tasks.quality.best" = "Am besten";
-"tasks.examples.habit_text" = "Tippe hier um dies als schlechte Gewohnheit zu markieren, die Du gerne loswerden willst.";
-"tasks.examples.habit_notes" = "Oder lösche es, indem Du nach links wischst.";
+"tasks.examples.habit_text" = "Tippe hier um dies als schlechte Gewohnheit zu markieren, die Du gerne loswerden willst";
+"tasks.examples.habit_notes" = "Oder lösche es, indem Du nach links wischst";
 "tasks.examples.todo_text" = "Habitica beitreten (Hake mich ab!)";
 "tasks.examples.todo_notes" = "Du kannst dieses To-Do entweder abhaken, es bearbeiten, oder löschen.";
 "tasks.examples.reward_text" = "Belohne Dich selbst";
@@ -669,7 +669,7 @@
 "avatar.skin_color" = "Hautfarbe";
 "purchase_gems" = "Kaufe Edelsteine";
 "level" = "Level";
-"party.create_party_title" = "Spiele Habitica in einer Gruppe!";
+"party.create_party_title" = "Spiele Habitica in einer Gruppe";
 "party.create_party_button" = "Neue Gruppe erstellen";
 "party.join_party_title" = "Möchtest Du einer Gruppe beitreten?";
 "party.party_challenges" = "Gruppenwettbewerbe";
@@ -703,7 +703,7 @@
 "username" = "Benutzername";
 "password" = "Passwort";
 "username_prompt_title" = "Zeit, Deinen Benutzernamen festzulegen!";
-"confirm_username" = "Bestätige Deinen Benutzernamen!";
+"confirm_username" = "Bestätige Deinen Benutzernamen";
 "settings.confirm_username_prompt" = "Bist Du sicher, dass Du Deinen aktuellen Benutzernamen bestätigen möchtest?";
 "username_confirmed_toast" = "Dein Benutzername wurde bestätigt";
 "settings.username_not_confirmed" = "Benutzername nicht bestätigt";
@@ -869,3 +869,41 @@
 "tasks.team" = "Team";
 "tasks.due_tomorrow" = "Morgen fällig";
 "tasks.due_in_x_days" = "in %d Tagen fällig";
+"stats.strength_text" = "Erhöht die Wahrscheinlichkeit und den Bonus von kritischen Treffen wenn Du eine Aufgabe erledigst. Außerdem wird der Schaden gegen Bosse erhöht. ";
+"tasks.due_today" = "Heute fällig";
+"settings.change_about_message" = "Info ändern";
+"settings.reset_account_description" = "ACHTUNG! Diese Funktion setzt große Teile Deines Kontos zurück. Es ist wirklich nicht zu empfehlen, aber manche Leute finden es praktisch, nachdem sie sich etwas in Habitica umgeschaut haben.\n\nDu wirst alle Deine Levels, Dein Gold und Deine Erfahrungspunkte verlieren. Alle Deine Aufgaben (außer diejenigen von Herausforderungen) und alle gespeicherten Daten in den Aufgaben werden dauerhaft gelöscht. Du wirst Deine gesamte Ausrüstung verlieren aber Du kannst sie erneut kaufen. Das schließt auch die limitierte Ausrüstung und die mysteriösen Gegenstände von Abonnenten ein, die Du bereits besitzt (Du musst allerdings die richtige Klasse haben, um klassen-spezifische Gegenstände erneut zu kaufen). Du wirst Deine aktuelle Klasse und Deine Haus- und Reittiere behalten. Statt Dein Konto zurückzusetzen kannst Du auch eine Kugel der Wiedergeburt einsetzen; das ist eine sicherere Option, bei der Du Deine Aufgaben und Deine Ausrüstung behältst.";
+"settings.confirm_new_password" = "Neues Passwort bestätigen";
+"settings.searchable_everywhere" = "Überall";
+"guilds.guild_members" = "Gildenmitglieder";
+"guilds.guild_description" = "Gildenbeschreibung";
+"avatar.body" = "Körper";
+"avatar.hair" = "Haare";
+"avatar.extras" = "Extras";
+"party.join_party_description" = "Gib einem Gruppenmitglied den Benutzernamen unten an, damit Du eine Einladung bekommen kannst";
+"party.party_description" = "Gruppenbeschreibung";
+"groups.members" = "Mitglieder";
+"groups.invite_member" = "Neues Mitglied einladen";
+"quests.reward_experience" = "%d Erfahrungspunkte";
+"quests.reward_gold" = "%d Gold";
+"open_app_store" = "App-Store-Seite öffnen";
+"tap_to_show" = "Tippen zum anzeigen";
+"groups.invite.add_username" = "Benutzernamen hinzufügen";
+"display_name" = "Angezeigter Name";
+"repeat_password" = "Passwort wiederholen";
+"username_prompt_wiki" = "Wenn Du mehr über diese Änderung wissen möchtest, #<wk>besuche unser Wiki.#";
+"buy_reward" = "Du hast '%@' für %f Gold gekauft";
+"tasks.due_x" = "Fällig %@";
+"tasks.every_x" = "jeden %@";
+"tasks.repeats.repeats_every_on" = "Wiederholt %@ am %@";
+"tasks.repeats.repeats_every" = "Wiederholt %@";
+"tasks.examples.team_habit" = "Checke mit dem Team ein";
+"tasks.examples.team_daily_text" = "Aktualisiere das Team über den Status";
+"tasks.examples.team_todo_text" = "Vervollständige das Teamprojekt";
+"settings.app_icon" = "App-Symbol";
+"settings.server" = "Server";
+"settings.searchable_private_spaces" = "Nur private Räume";
+"settings.mentions" = "Erwähnungen";
+"guilds.join_guild" = "Trete den Gilden bei";
+"guilds.guild_leader" = "Gildenleiter";
+"tasks.repeats.monthly_the" = "am %@";
