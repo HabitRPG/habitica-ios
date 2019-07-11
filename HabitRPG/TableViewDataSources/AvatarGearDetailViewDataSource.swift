@@ -86,7 +86,7 @@ class AvatarGearDetailViewDataSource: BaseReactiveCollectionViewDataSource<GearP
         sections.append(ItemSection<GearProtocol>())
         for gear in gear {
             if let set = gear.gearSet {
-                if let index = sections.index(where: { (section) -> Bool in
+                if let index = sections.firstIndex(where: { (section) -> Bool in
                     return section.key == set
                 }) {
                     sections[index].items.append(gear)

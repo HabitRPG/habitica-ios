@@ -161,11 +161,11 @@ class SoundManager {
         
         do {
             if #available(iOS 10.0, *) {
-                try? AVAudioSession.sharedInstance().setCategory(.ambient, mode: .default)
+                try AVAudioSession.sharedInstance().setCategory(.ambient, mode: .default)
             } else {
                 // Fallback on earlier versions
             }
-            try? AVAudioSession.sharedInstance().setActive(true)
+            try AVAudioSession.sharedInstance().setActive(true)
             
             /* The following line is required for the player to work on iOS 11. Change the file type accordingly*/
             player = try? AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)

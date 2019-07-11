@@ -113,7 +113,7 @@ public class InventoryLocalRepository: ContentLocalRepository {
             ownedPet?.trained = trained
             ownedFood?.numberOwned -= 1
             if trained == -1 {
-                realm.add(RealmOwnedMount(userID: userID, key: key, owned: true), update: true)
+                realm.add(RealmOwnedMount(userID: userID, key: key, owned: true), update: .modified)
             }
         }
     }
@@ -132,8 +132,8 @@ public class InventoryLocalRepository: ContentLocalRepository {
         ownedGear.isOwned = true
         let user = realm.object(ofType: RealmUser.self, forPrimaryKey: userID)
         updateCall { realm in
-            realm.add(ownedGear, update: true)
-            let index = user?.purchased?.subscriptionPlan?.mysteryItems.index(of: key)
+            realm.add(ownedGear, update: .modified)
+            let index = user?.purchased?.subscriptionPlan?.mysteryItems.firstIndex(of: key)
             user?.purchased?.subscriptionPlan?.mysteryItems.remove(at: index ?? 0)
         }
     }

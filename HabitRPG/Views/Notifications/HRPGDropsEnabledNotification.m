@@ -14,7 +14,7 @@
 
 @implementation HRPGDropsEnabledNotification
 
-- (void)displayNotification:(void (^)())completionBlock {
+- (void)displayNotification:(void (^)(void))completionBlock {
     NSArray *nibViews =
     [[NSBundle mainBundle] loadNibNamed:@"HRPGImageOverlayView" owner:self options:nil];
     HRPGImageOverlayView *overlayView = [nibViews objectAtIndex:0];

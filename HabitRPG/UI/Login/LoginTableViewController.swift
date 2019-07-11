@@ -475,7 +475,7 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
             guard let parentView = textField.superview?.superview else {
                 return false
             }
-            guard var index = formContainer.arrangedSubviews.index(of: parentView) else {
+            guard var index = formContainer.arrangedSubviews.firstIndex(of: parentView) else {
                 return false
             }
             while true {

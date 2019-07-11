@@ -45,8 +45,8 @@ class ChallengeDescriptionTableViewCell: ResizableTableViewCell, ChallengeConfig
         rotateCaret()
         
         self.marginConstraint.constant = 0
-        if heightConstraint == nil {
-            heightConstraint = NSLayoutConstraint(item: descriptionLabel, attribute: NSLayoutConstraint.Attribute.height, relatedBy: .equal,
+        if heightConstraint == nil, let label = descriptionLabel {
+            heightConstraint = NSLayoutConstraint(item: label, attribute: NSLayoutConstraint.Attribute.height, relatedBy: .equal,
                                                        toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 0)
         }
         

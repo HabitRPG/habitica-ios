@@ -107,7 +107,7 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
     }
     
     var topHeaderHeight: CGFloat {
-        if let header = self.alternativeHeaderView {
+        if self.alternativeHeaderView != nil {
             return alternativeHeaderHeight
         } else {
             return defaultHeaderHeight

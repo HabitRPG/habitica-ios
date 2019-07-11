@@ -20,8 +20,6 @@ extension TaskType {
             return L10n.Tasks.todo
         case .reward:
             return L10n.Tasks.reward
-        default:
-            return ""
         }
     }
 }

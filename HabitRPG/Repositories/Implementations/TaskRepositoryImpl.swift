@@ -75,9 +75,7 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
     }
     
     func score(task: TaskProtocol, direction: TaskScoringDirection) -> Signal<TaskResponseProtocol?, Never> {
-        let call = ScoreTaskCall(task: task, direction: direction)
-        
-        return call.objectSignal.withLatest(from: localRepository.getUserStats(id: AuthenticationManager.shared.currentUserId ?? "")
+        return ScoreTaskCall(task: task, direction: direction).objectSignal.withLatest(from: localRepository.getUserStats(id: AuthenticationManager.shared.currentUserId ?? "")
             .flatMapError({ (_) in
             return SignalProducer.empty
         })).on(value: {[weak self] (taskResponse, stats) in
