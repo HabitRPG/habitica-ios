@@ -367,7 +367,7 @@
 "tasks.examples.reward_text" = "Odměň se";
 "tasks.examples.work_habit" = "Zpracovat email";
 "tasks.examples.work_todo_text" = "Dokončit skupinový projekt";
-"tasks.examples.exercise_habit" = "Desetiminutové kardio.";
+"tasks.examples.exercise_habit" = "Desetiminutové kardio";
 "tasks.examples.exercise_daily_text" = "Denní cvičební rutina";
 "tasks.examples.exercise_todo_text" = "Naplánovat cvičení";
 "tasks.examples.exercise_todo_notes" = "Ťuknutím přidáš na seznam!";
@@ -403,7 +403,7 @@
 "guilds.guild_bank" = "Banka cechu";
 "join" = "Přidat se";
 "equipment.equipment" = "Vybavení";
-"equipment.costume_explanation" = "Vyber \"Použít kostým\", abys vybavil/a svého avatara, aniž bys nějak ovlivnil/a statistiky tvé Bojové výzbroje! To znamená, že můžeš obléct svého avatara do jakéhokoliv vybavení chceš a stále mít tvojí nejlepší Bojovou výzbroj na sobě!";
+"equipment.costume_explanation" = "Vyber \"Použít kostým\", abys vybavil/a svého avatara, aniž bys nějak ovlivnil/a statistiky tvé Bojové výzbroje! To znamená, že můžeš obléct svého avatara do jakéhokoliv vybavení chceš a stále mít tvojí nejlepší Bojovou výzbroj na sobě.";
 "equipment.class_equipment" = "Vybavení třídy";
 "purchase_gems" = "Koupit drahokamy";
 "level" = "Úroveň";
@@ -523,3 +523,14 @@
 "not_enough_gems" = "Nedostatek drahokamů";
 "choose_task" = "Vybrat úkol";
 "shops.purchased_all_gear" = "Už máš všechno vybavení tvého povolání! Více bude vypuštěno během Velké Slavnosti, blízko slunovratů a rovnodenností.";
+"titles.skills" = "Dovednosti";
+"titles.avatar" = "Avatar";
+"titles.gift_subscription" = "Uveďte předplatné";
+"titles.choose_user" = "Zvolte Uživatel";
+"titles.choose_recipient" = "Zvolte Příjemce";
+"titles.guidelines" = "Pokyny";
+"stats.no_points_to_allocate" = "0 bodů pro přidělení";
+"stats.one_point_to_allocate" = "1 Přejděte na položku Přidělit";
+"stats.points_to_allocate" = "%d Přejděte na položku Přidělit";
+"stats.class_bonus" = "Bonus třídy";
+"stats.total" = "Celkový";
