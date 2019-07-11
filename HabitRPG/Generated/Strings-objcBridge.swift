@@ -9,6 +9,7 @@
 import Foundation
 
 @objc
+// swiftlint:disable:next type_name
 public class objcL10n: NSObject {
     @objc public static let close = L10n.close
     @objc public static let cancel = L10n.cancel
@@ -32,6 +33,7 @@ public class objcL10n: NSObject {
     @objc static let clear = L10n.clear
     @objc static let titleFeedPet = L10n.Titles.feedPet
     @objc static let titleShops = L10n.Titles.shops
+    @objc static let titleSkills = L10n.Titles.skills
     @objc static let titleSpells = L10n.Titles.spells
     @objc static let titleChooseRecipient = L10n.Titles.chooseRecipient
 

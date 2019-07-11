@@ -85,7 +85,14 @@ class GroupInvitationView: UIView {
         addSubview(acceptButton)
         addSubview(separatorView)
         
-        backgroundColor = UIColor.blue100()
+        let theme = ThemeService.shared.theme
+        if theme.isDark {
+            backgroundColor = UIColor.blue10()
+        } else {
+            backgroundColor = UIColor.blue100()
+        }
+        acceptButton.backgroundColor = theme.contentBackgroundColor
+        declineButton.backgroundColor = theme.contentBackgroundColor
     }
     
     func set(invitation: GroupInvitationProtocol) {
@@ -102,13 +109,13 @@ class GroupInvitationView: UIView {
     
     private func setLabel() {
         if isPartyInvitation {
-            if let inviterName = self.inviterName {
+            if let inviterName = inviterName {
                 label.text = L10n.Party.invitationInvitername(inviterName)
             } else {
                 label.text = L10n.Party.invitationNoInvitername
             }
         } else {
-            if let inviterName = self.inviterName {
+            if let inviterName = inviterName {
                 label.text = L10n.Groups.guildInvitationInvitername(inviterName, name ?? "")
             } else {
                 label.text = L10n.Groups.guildInvitationNoInvitername(name ?? "")

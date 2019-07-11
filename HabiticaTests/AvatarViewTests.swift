@@ -44,7 +44,7 @@ class AvatarViewTests: HabiticaTests {
         
         waitUntil(timeout: 5) { (done) in
             self.avatarView.onRenderingFinished = {
-                self.FBSnapshotVerifyView(self.avatarView, tolerance: 0.1)
+                self.FBSnapshotVerifyView(self.avatarView, overallTolerance: 0.13)
                 done()
             }
             self.avatarView.avatar = avatar
@@ -75,7 +75,7 @@ class AvatarViewTests: HabiticaTests {
         
         waitUntil(timeout: 5) { (done) in
             self.avatarView.onRenderingFinished = {
-                self.FBSnapshotVerifyView(self.avatarView, tolerance: 0.1)
+                self.FBSnapshotVerifyView(self.avatarView, overallTolerance: 0.13)
                 done()
             }
             self.avatarView.avatar = avatar
@@ -106,7 +106,7 @@ class AvatarViewTests: HabiticaTests {
         
         waitUntil(timeout: 5) { (done) in
             self.avatarView.onRenderingFinished = {
-                self.FBSnapshotVerifyView(self.avatarView, tolerance: 0.1)
+                self.FBSnapshotVerifyView(self.avatarView, overallTolerance: 0.13)
                 done()
             }
             self.avatarView.avatar = avatar
@@ -140,7 +140,7 @@ class AvatarViewTests: HabiticaTests {
         
         waitUntil(timeout: 5) { (done) in
             self.avatarView.onRenderingFinished = {
-                self.FBSnapshotVerifyView(self.avatarView, tolerance: 0.1)
+                self.FBSnapshotVerifyView(self.avatarView, overallTolerance: 0.13)
                 done()
             }
             self.avatarView.avatar = avatar
@@ -164,7 +164,7 @@ class AvatarViewTests: HabiticaTests {
         
         waitUntil(timeout: 5) { (done) in
             self.avatarView.onRenderingFinished = {
-                self.FBSnapshotVerifyView(self.avatarView, tolerance: 0.1)
+                self.FBSnapshotVerifyView(self.avatarView, overallTolerance: 0.13)
                 done()
             }
             self.avatarView.avatar = avatar
@@ -192,7 +192,7 @@ class AvatarViewTests: HabiticaTests {
         
         waitUntil(timeout: 5) { (done) in
             self.avatarView.onRenderingFinished = {
-                self.FBSnapshotVerifyView(self.avatarView, tolerance: 0.1)
+                self.FBSnapshotVerifyView(self.avatarView, overallTolerance: 0.13)
                 done()
             }
             self.avatarView.avatar = avatar
@@ -217,7 +217,7 @@ class AvatarViewTests: HabiticaTests {
         
         waitUntil(timeout: 5) { (done) in
             self.avatarView.onRenderingFinished = {
-                self.FBSnapshotVerifyView(self.avatarView, tolerance: 0.1)
+                self.FBSnapshotVerifyView(self.avatarView, overallTolerance: 0.13)
                 done()
             }
             self.avatarView.avatar = avatar
@@ -251,7 +251,7 @@ class AvatarViewTests: HabiticaTests {
         
         waitUntil(timeout: 5) { (done) in
             self.avatarView.onRenderingFinished = {
-                self.FBSnapshotVerifyView(self.avatarView, tolerance: 0.1)
+                self.FBSnapshotVerifyView(self.avatarView, overallTolerance: 0.13)
                 done()
             }
             self.avatarView.avatar = avatar
@@ -282,7 +282,7 @@ class AvatarViewTests: HabiticaTests {
         
         waitUntil(timeout: 5) { (done) in
             self.avatarView.onRenderingFinished = {
-                self.FBSnapshotVerifyView(self.avatarView, tolerance: 0.1)
+                self.FBSnapshotVerifyView(self.avatarView, overallTolerance: 0.13)
                 done()
             }
             self.avatarView.avatar = avatar
@@ -291,6 +291,7 @@ class AvatarViewTests: HabiticaTests {
 }
 
 class TestAvatar: Avatar {
+    var substitutions: NSDictionary? = [:]
     var background: String?
     var chair: String?
     var back: String?

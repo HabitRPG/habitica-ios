@@ -10,7 +10,7 @@ import UIKit
 import ReactiveSwift
 import ReactiveCocoa
 import Habitica_Models
-import Result
+
 import Habitica_Database
 
 class VerifyUsernameModalViewController: UIViewController {
@@ -69,7 +69,7 @@ class VerifyUsernameModalViewController: UIViewController {
         }).start()
     }
     
-    private func displayNameChangeProducer() -> SignalProducer<Bool, NoError> {
+    private func displayNameChangeProducer() -> SignalProducer<Bool, Never> {
         return displaynameProperty.producer.map { name -> Bool in
             return name?.count ?? 0 > 1 && name?.count ?? 0 < 30
             }.on(value: {[weak self] isUsable in
@@ -81,10 +81,10 @@ class VerifyUsernameModalViewController: UIViewController {
             })
     }
     
-    private func usernameChangeProducer() -> SignalProducer<VerifyUsernameResponse, NoError> {
+    private func usernameChangeProducer() -> SignalProducer<VerifyUsernameResponse, Never> {
         return usernameProperty.producer.throttle(2, on: QueueScheduler.main)
             .skipNil()
-            .flatMap(.latest) {[weak self] text -> SignalProducer<VerifyUsernameResponse?, NoError> in
+            .flatMap(.latest) {[weak self] text -> SignalProducer<VerifyUsernameResponse?, Never> in
                 return self?.userRepository.verifyUsername(text).producer ?? SignalProducer.empty
             }
             .skipNil()
@@ -130,7 +130,7 @@ class VerifyUsernameModalViewController: UIViewController {
                     return ValidationError(error.localizedDescription)
                 }).producer
             })
-            .on(value: { user in
+            .on(value: { _ in
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                     if self.presentedViewController != nil {
                         self.presentedViewController?.dismiss(animated: false, completion: nil)
@@ -143,23 +143,24 @@ class VerifyUsernameModalViewController: UIViewController {
         }
     }
     
-    @objc func keyboardWasShown(notification: NSNotification) {
+    @objc
+    func keyboardWasShown(notification: NSNotification) {
         //Need to calculate keyboard exact size due to Apple suggestions
         if let info = notification.userInfo {
             let keyboardSize = (info[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
-            let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom:  keyboardSize!.height, right: 0)
+            let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize?.height ?? 0, right: 0)
             
             self.scrollView.contentInset = contentInsets
             self.scrollView.scrollIndicatorInsets = contentInsets
         }
     }
     
-    
-    @objc func keyboardWillBeHidden(notification: NSNotification) {
+    @objc
+    func keyboardWillBeHidden(notification: NSNotification) {
         //Once keyboard disappears, restore original positions
         if let info = notification.userInfo {
             let keyboardSize = (info[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
-            let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: -keyboardSize!.height, right: 0.0)
+            let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: -(keyboardSize?.height ?? 0), right: 0.0)
             self.scrollView.contentInset = contentInsets
             self.scrollView.scrollIndicatorInsets = contentInsets
             self.view.endEditing(true)

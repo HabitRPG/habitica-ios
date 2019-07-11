@@ -7,9 +7,13 @@
 //
 
 #import "UIColor+Habitica.h"
+#import "Habitica-Swift.h"
 
 @implementation UIColor (Habitica)
 
++ (UIColor *)purple10 {
+    return [UIColor colorWithRed:0.18 green:0.11 blue:0.31 alpha:1.0];
+}
 + (UIColor *)purple50 {
     return [UIColor colorWithRed:0.212 green:0.125 blue:0.365 alpha:1.000];
 }
@@ -187,6 +191,14 @@
     return [UIColor colorWithWhite:249.0f / 255.0f alpha:1.0f];
 }
 
++ (UIColor *)blackPurple50 {
+    return [UIColor colorWithRed:0.10 green:0.09 blue:0.11 alpha:1.0];
+}
+
++ (UIColor *)blackPurple100 {
+    return [UIColor colorWithRed:0.20 green:0.19 blue:0.23 alpha:1.0];
+}
+
 + (UIColor * _Nonnull)tier1Color {
     return [UIColor colorWithRed:196.0f / 255.0f green:40.0f / 255.0f blue:113.0f / 255.0f alpha:1.0f];
 }
@@ -237,9 +249,13 @@
     } else if (level == 8) {
         return [UIColor tierModColor];
     } else if (level == 9) {
-        return [UIColor purple300];
+        if ([ObjcThemeWrapper themeIsDark]) {
+            return [UIColor purple400];
+        } else {
+            return [UIColor purple300];
+        }
     }
-    return [UIColor blackColor];
+    return [ObjcThemeWrapper primaryTextColor];
 }
 
 

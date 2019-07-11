@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,15 +15,15 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="159"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tP1-9i-M3A" customClass="HRPGLabeledProgressBar">
+                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tP1-9i-M3A" customClass="HRPGLabeledProgressBar">
                     <rect key="frame" x="125" y="0.0" width="467" height="32.5"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BEm-of-HXC" customClass="HRPGLabeledProgressBar">
+                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BEm-of-HXC" customClass="HRPGLabeledProgressBar">
                     <rect key="frame" x="125" y="40.5" width="467" height="32"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jkr-YH-kSX" customClass="HRPGLabeledProgressBar">
+                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jkr-YH-kSX" customClass="HRPGLabeledProgressBar">
                     <rect key="frame" x="125" y="80.5" width="467" height="32.5"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
@@ -160,6 +160,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="avatarView" destination="UWI-d8-sGn" id="u9c-2i-E3b"/>
+                <outlet property="bottomView" destination="BPv-ZA-fig" id="5wh-oR-JMV"/>
                 <outlet property="buffIconView" destination="0dK-tZ-QKB" id="uUp-dK-GqQ"/>
                 <outlet property="classImageView" destination="0wH-g6-8n6" id="li4-lc-Pun"/>
                 <outlet property="classImageViewWidthConstraint" destination="ehs-7W-t4k" id="lKZ-0G-gln"/>

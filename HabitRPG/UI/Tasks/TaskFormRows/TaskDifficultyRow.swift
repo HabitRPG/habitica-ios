@@ -32,30 +32,44 @@ public class TaskDifficultyCell: Cell<Float>, CellType {
         easyControlView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(easyTapped)))
         mediumControlView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(mediumTapped)))
         hardControlView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hardTapped)))
+        
+        contentView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor.withAlphaComponent(0.8)
     }
     
     @objc
     private func trivialTapped() {
         row.value = 0.1
         row.updateCell()
+        if #available(iOS 10, *) {
+            UISelectionFeedbackGenerator.oneShotSelectionChanged()
+        }
     }
     
     @objc
     private func easyTapped() {
         row.value = 1
         row.updateCell()
+        if #available(iOS 10, *) {
+            UISelectionFeedbackGenerator.oneShotSelectionChanged()
+        }
     }
     
     @objc
     private func mediumTapped() {
         row.value = 1.5
         row.updateCell()
+        if #available(iOS 10, *) {
+            UISelectionFeedbackGenerator.oneShotSelectionChanged()
+        }
     }
     
     @objc
     private func hardTapped() {
         row.value = 2
         row.updateCell()
+        if #available(iOS 10, *) {
+            UISelectionFeedbackGenerator.oneShotSelectionChanged()
+        }
     }
 
     public override func update() {

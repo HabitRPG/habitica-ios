@@ -7,42 +7,45 @@ import Foundation
 
 // swiftlint:disable explicit_type_interface identifier_name line_length nesting type_body_length type_name
 public enum L10n {
+  /// Update bundle if you need to change app language
+  static var bundle: Bundle?
+
   /// Abort
-  public static let abort = L10n.tr("Mainstrings", "abort")
+  public static var abort: String { return L10n.tr("Mainstrings", "abort") }
   /// About
-  public static let aboutText = L10n.tr("Mainstrings", "aboutText")
+  public static var aboutText: String { return L10n.tr("Mainstrings", "aboutText") }
   /// Accept
-  public static let accept = L10n.tr("Mainstrings", "accept")
+  public static var accept: String { return L10n.tr("Mainstrings", "accept") }
   /// Active
-  public static let active = L10n.tr("Mainstrings", "active")
+  public static var active: String { return L10n.tr("Mainstrings", "active") }
   /// Active on %@
   public static func activeOn(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "active_on", p1)
   }
   /// I agree to follow the guidelines
-  public static let agreeGuidelinesPrompt = L10n.tr("Mainstrings", "agree_guidelines_prompt")
+  public static var agreeGuidelinesPrompt: String { return L10n.tr("Mainstrings", "agree_guidelines_prompt") }
   /// All
-  public static let all = L10n.tr("Mainstrings", "all")
+  public static var all: String { return L10n.tr("Mainstrings", "all") }
   /// Allocated
-  public static let allocated = L10n.tr("Mainstrings", "allocated")
+  public static var allocated: String { return L10n.tr("Mainstrings", "allocated") }
   /// Animal Ears
-  public static let animalEars = L10n.tr("Mainstrings", "animal_ears")
+  public static var animalEars: String { return L10n.tr("Mainstrings", "animal_ears") }
   /// API Key
-  public static let apiKey = L10n.tr("Mainstrings", "api_key")
+  public static var apiKey: String { return L10n.tr("Mainstrings", "api_key") }
   /// Back
-  public static let back = L10n.tr("Mainstrings", "back")
+  public static var back: String { return L10n.tr("Mainstrings", "back") }
   /// Bangs
-  public static let bangs = L10n.tr("Mainstrings", "bangs")
+  public static var bangs: String { return L10n.tr("Mainstrings", "bangs") }
   /// Body Size
-  public static let bodySize = L10n.tr("Mainstrings", "body_size")
+  public static var bodySize: String { return L10n.tr("Mainstrings", "body_size") }
   /// Broad
-  public static let broad = L10n.tr("Mainstrings", "broad")
+  public static var broad: String { return L10n.tr("Mainstrings", "broad") }
   /// Buffs
-  public static let buffs = L10n.tr("Mainstrings", "buffs")
+  public static var buffs: String { return L10n.tr("Mainstrings", "buffs") }
   /// buy
-  public static let buy = L10n.tr("Mainstrings", "buy")
+  public static var buy: String { return L10n.tr("Mainstrings", "buy") }
   /// Buy All
-  public static let buyAll = L10n.tr("Mainstrings", "buy_all")
+  public static var buyAll: String { return L10n.tr("Mainstrings", "buy_all") }
   /// Buy for %@
   public static func buyForX(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "buy_for_x", p1)
@@ -52,111 +55,115 @@ public enum L10n {
     return L10n.tr("Mainstrings", "buy_reward", p1, p2)
   }
   /// Cancel
-  public static let cancel = L10n.tr("Mainstrings", "cancel")
+  public static var cancel: String { return L10n.tr("Mainstrings", "cancel") }
   /// Change
-  public static let change = L10n.tr("Mainstrings", "change")
+  public static var change: String { return L10n.tr("Mainstrings", "change") }
   /// Character Level
-  public static let characterLevel = L10n.tr("Mainstrings", "character_level")
+  public static var characterLevel: String { return L10n.tr("Mainstrings", "character_level") }
   /// Chat
-  public static let chat = L10n.tr("Mainstrings", "chat")
+  public static var chat: String { return L10n.tr("Mainstrings", "chat") }
   /// Check off any Dailies you did yesterday:
-  public static let checkinYesterdaysDalies = L10n.tr("Mainstrings", "checkin_yesterdays_dalies")
+  public static var checkinYesterdaysDalies: String { return L10n.tr("Mainstrings", "checkin_yesterdays_dalies") }
   /// Choose Task
-  public static let chooseTask = L10n.tr("Mainstrings", "choose_task")
+  public static var chooseTask: String { return L10n.tr("Mainstrings", "choose_task") }
   /// Clear
-  public static let clear = L10n.tr("Mainstrings", "clear")
+  public static var clear: String { return L10n.tr("Mainstrings", "clear") }
   /// Close
-  public static let close = L10n.tr("Mainstrings", "close")
+  public static var close: String { return L10n.tr("Mainstrings", "close") }
   /// Collect
-  public static let collect = L10n.tr("Mainstrings", "collect")
+  public static var collect: String { return L10n.tr("Mainstrings", "collect") }
   /// Color
-  public static let color = L10n.tr("Mainstrings", "color")
+  public static var color: String { return L10n.tr("Mainstrings", "color") }
   /// Complete
-  public static let complete = L10n.tr("Mainstrings", "complete")
+  public static var complete: String { return L10n.tr("Mainstrings", "complete") }
   /// Confirm
-  public static let confirm = L10n.tr("Mainstrings", "confirm")
+  public static var confirm: String { return L10n.tr("Mainstrings", "confirm") }
   /// Confirm Username
-  public static let confirmUsername = L10n.tr("Mainstrings", "confirm_username")
+  public static var confirmUsername: String { return L10n.tr("Mainstrings", "confirm_username") }
   /// Continue
-  public static let `continue` = L10n.tr("Mainstrings", "continue")
+  public static var `continue`: String { return L10n.tr("Mainstrings", "continue") }
   /// Controls
-  public static let controls = L10n.tr("Mainstrings", "controls")
+  public static var controls: String { return L10n.tr("Mainstrings", "controls") }
   /// Copied Message
-  public static let copiedMessage = L10n.tr("Mainstrings", "copied_message")
+  public static var copiedMessage: String { return L10n.tr("Mainstrings", "copied_message") }
   /// Copied to Clipboard
-  public static let copiedToClipboard = L10n.tr("Mainstrings", "copied_to_clipboard")
+  public static var copiedToClipboard: String { return L10n.tr("Mainstrings", "copied_to_clipboard") }
   /// Create
-  public static let create = L10n.tr("Mainstrings", "create")
+  public static var create: String { return L10n.tr("Mainstrings", "create") }
   /// Create Tag
-  public static let createTag = L10n.tr("Mainstrings", "create_tag")
+  public static var createTag: String { return L10n.tr("Mainstrings", "create_tag") }
   /// Daily
-  public static let daily = L10n.tr("Mainstrings", "daily")
+  public static var daily: String { return L10n.tr("Mainstrings", "daily") }
   /// Damage Paused
-  public static let damagePaused = L10n.tr("Mainstrings", "damage_paused")
+  public static var damagePaused: String { return L10n.tr("Mainstrings", "damage_paused") }
   /// Dated
-  public static let dated = L10n.tr("Mainstrings", "dated")
+  public static var dated: String { return L10n.tr("Mainstrings", "dated") }
   /// 21-Day Streaks
-  public static let dayStreaks = L10n.tr("Mainstrings", "day_streaks")
+  public static var dayStreaks: String { return L10n.tr("Mainstrings", "day_streaks") }
   /// days
-  public static let days = L10n.tr("Mainstrings", "days")
+  public static var days: String { return L10n.tr("Mainstrings", "days") }
+  /// Decline
+  public static var decline: String { return L10n.tr("Mainstrings", "decline") }
+  /// Defeat
+  public static var defeat: String { return L10n.tr("Mainstrings", "defeat") }
   /// Delete
-  public static let delete = L10n.tr("Mainstrings", "delete")
+  public static var delete: String { return L10n.tr("Mainstrings", "delete") }
   /// Delete Tasks
-  public static let deleteTasks = L10n.tr("Mainstrings", "delete_tasks")
+  public static var deleteTasks: String { return L10n.tr("Mainstrings", "delete_tasks") }
   /// Description
-  public static let description = L10n.tr("Mainstrings", "description")
+  public static var description: String { return L10n.tr("Mainstrings", "description") }
   /// Details
-  public static let details = L10n.tr("Mainstrings", "details")
+  public static var details: String { return L10n.tr("Mainstrings", "details") }
   /// Difficulty
-  public static let difficulty = L10n.tr("Mainstrings", "difficulty")
+  public static var difficulty: String { return L10n.tr("Mainstrings", "difficulty") }
   /// Discover
-  public static let discover = L10n.tr("Mainstrings", "discover")
+  public static var discover: String { return L10n.tr("Mainstrings", "discover") }
   /// Display name
-  public static let displayName = L10n.tr("Mainstrings", "display_name")
+  public static var displayName: String { return L10n.tr("Mainstrings", "display_name") }
   /// Done
-  public static let done = L10n.tr("Mainstrings", "done")
+  public static var done: String { return L10n.tr("Mainstrings", "done") }
   /// Due
-  public static let due = L10n.tr("Mainstrings", "due")
+  public static var due: String { return L10n.tr("Mainstrings", "due") }
   /// I earned a new achievement in Habitica! 
-  public static let earnedAchievementShare = L10n.tr("Mainstrings", "earned_achievement_share")
+  public static var earnedAchievementShare: String { return L10n.tr("Mainstrings", "earned_achievement_share") }
   /// Edit
-  public static let edit = L10n.tr("Mainstrings", "edit")
+  public static var edit: String { return L10n.tr("Mainstrings", "edit") }
   /// Edit Tag
-  public static let editTag = L10n.tr("Mainstrings", "edit_tag")
+  public static var editTag: String { return L10n.tr("Mainstrings", "edit_tag") }
   /// Eggs
-  public static let eggs = L10n.tr("Mainstrings", "eggs")
+  public static var eggs: String { return L10n.tr("Mainstrings", "eggs") }
   /// Email
-  public static let email = L10n.tr("Mainstrings", "email")
+  public static var email: String { return L10n.tr("Mainstrings", "email") }
   /// End Challenge
-  public static let endChallenge = L10n.tr("Mainstrings", "end_challenge")
+  public static var endChallenge: String { return L10n.tr("Mainstrings", "end_challenge") }
   /// Equip
-  public static let equip = L10n.tr("Mainstrings", "equip")
+  public static var equip: String { return L10n.tr("Mainstrings", "equip") }
   /// Experience
-  public static let experience = L10n.tr("Mainstrings", "experience")
+  public static var experience: String { return L10n.tr("Mainstrings", "experience") }
   /// Filter
-  public static let filter = L10n.tr("Mainstrings", "filter")
+  public static var filter: String { return L10n.tr("Mainstrings", "filter") }
   /// Filter by Tags
-  public static let filterByTags = L10n.tr("Mainstrings", "filter_by_tags")
+  public static var filterByTags: String { return L10n.tr("Mainstrings", "filter_by_tags") }
   /// Finish
-  public static let finish = L10n.tr("Mainstrings", "finish")
+  public static var finish: String { return L10n.tr("Mainstrings", "finish") }
   /// Flower
-  public static let flower = L10n.tr("Mainstrings", "flower")
+  public static var flower: String { return L10n.tr("Mainstrings", "flower") }
   /// Food
-  public static let food = L10n.tr("Mainstrings", "food")
+  public static var food: String { return L10n.tr("Mainstrings", "food") }
   /// Force Start
-  public static let forceStart = L10n.tr("Mainstrings", "force_start")
+  public static var forceStart: String { return L10n.tr("Mainstrings", "force_start") }
   /// Friday
-  public static let friday = L10n.tr("Mainstrings", "friday")
+  public static var friday: String { return L10n.tr("Mainstrings", "friday") }
   /// Gems allow you to buy fun extras for your account, including:
-  public static let gemBenefitsTitle = L10n.tr("Mainstrings", "gem_benefits_title")
+  public static var gemBenefitsTitle: String { return L10n.tr("Mainstrings", "gem_benefits_title") }
   /// %d Gem cap
   public static func gemCap(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "gem_cap", p1)
   }
   /// Gems
-  public static let gems = L10n.tr("Mainstrings", "gems")
+  public static var gems: String { return L10n.tr("Mainstrings", "gems") }
   /// Buying gems supports the developers\nand helps keep Habitica running
-  public static let gemsSupportDevelopers = L10n.tr("Mainstrings", "gems_support_developers")
+  public static var gemsSupportDevelopers: String { return L10n.tr("Mainstrings", "gems_support_developers") }
   /// You sent %@ a %@-month Habitica subscription.
   public static func giftConfirmationBody(_ p1: String, _ p2: String) -> String {
     return L10n.tr("Mainstrings", "gift_confirmation_body", p1, p2)
@@ -166,73 +173,73 @@ public enum L10n {
     return L10n.tr("Mainstrings", "gift_confirmation_body_g1g1", p1, p2)
   }
   /// Your gift was sent!
-  public static let giftConfirmationTitle = L10n.tr("Mainstrings", "gift_confirmation_title")
+  public static var giftConfirmationTitle: String { return L10n.tr("Mainstrings", "gift_confirmation_title") }
   /// While this promotion is active, you’ll receive a matching subscription automatically after sending your gift.
-  public static let giftOneGetOneDescription = L10n.tr("Mainstrings", "gift_one_get_one_description")
+  public static var giftOneGetOneDescription: String { return L10n.tr("Mainstrings", "gift_one_get_one_description") }
   /// Gift one, Get one!
-  public static let giftOneGetOneTitle = L10n.tr("Mainstrings", "gift_one_get_one_title")
+  public static var giftOneGetOneTitle: String { return L10n.tr("Mainstrings", "gift_one_get_one_title") }
   /// Enter recipient's @ username
-  public static let giftRecipientSubtitle = L10n.tr("Mainstrings", "gift_recipient_subtitle")
+  public static var giftRecipientSubtitle: String { return L10n.tr("Mainstrings", "gift_recipient_subtitle") }
   /// Who would you like to gift to?
-  public static let giftRecipientTitle = L10n.tr("Mainstrings", "gift_recipient_title")
+  public static var giftRecipientTitle: String { return L10n.tr("Mainstrings", "gift_recipient_title") }
   /// Choose the subscription you’d like to gift below! This purchase won’t automatically renew.
-  public static let giftSubscriptionPrompt = L10n.tr("Mainstrings", "gift_subscription_prompt")
+  public static var giftSubscriptionPrompt: String { return L10n.tr("Mainstrings", "gift_subscription_prompt") }
   /// Glasses
-  public static let glasses = L10n.tr("Mainstrings", "glasses")
+  public static var glasses: String { return L10n.tr("Mainstrings", "glasses") }
   /// Gold
-  public static let gold = L10n.tr("Mainstrings", "gold")
+  public static var gold: String { return L10n.tr("Mainstrings", "gold") }
   /// Great
-  public static let great = L10n.tr("Mainstrings", "great")
+  public static var great: String { return L10n.tr("Mainstrings", "great") }
   /// Grey
-  public static let grey = L10n.tr("Mainstrings", "grey")
+  public static var grey: String { return L10n.tr("Mainstrings", "grey") }
   /// Group By
-  public static let groupBy = L10n.tr("Mainstrings", "group_by")
+  public static var groupBy: String { return L10n.tr("Mainstrings", "group_by") }
   /// Hatch egg
-  public static let hatchEgg = L10n.tr("Mainstrings", "hatch_egg")
+  public static var hatchEgg: String { return L10n.tr("Mainstrings", "hatch_egg") }
   /// Hatch with potion
-  public static let hatchPotion = L10n.tr("Mainstrings", "hatch_potion")
+  public static var hatchPotion: String { return L10n.tr("Mainstrings", "hatch_potion") }
   /// Hatching Potions
-  public static let hatchingPotions = L10n.tr("Mainstrings", "hatching_potions")
+  public static var hatchingPotions: String { return L10n.tr("Mainstrings", "hatching_potions") }
   /// Headband
-  public static let headband = L10n.tr("Mainstrings", "headband")
+  public static var headband: String { return L10n.tr("Mainstrings", "headband") }
   /// Health
-  public static let health = L10n.tr("Mainstrings", "health")
+  public static var health: String { return L10n.tr("Mainstrings", "health") }
   /// +%d Mystic Hourglass
   public static func hourglassCount(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "hourglass_count", p1)
   }
   /// Inactive
-  public static let inactive = L10n.tr("Mainstrings", "inactive")
+  public static var inactive: String { return L10n.tr("Mainstrings", "inactive") }
   /// You have to specify a valid Habitica Username as recipient.
-  public static let invalidRecipientMessage = L10n.tr("Mainstrings", "invalid_recipient_message")
+  public static var invalidRecipientMessage: String { return L10n.tr("Mainstrings", "invalid_recipient_message") }
   /// Invalid Habitica Username
-  public static let invalidRecipientTitle = L10n.tr("Mainstrings", "invalid_recipient_title")
+  public static var invalidRecipientTitle: String { return L10n.tr("Mainstrings", "invalid_recipient_title") }
   /// Invitations
-  public static let invitations = L10n.tr("Mainstrings", "invitations")
+  public static var invitations: String { return L10n.tr("Mainstrings", "invitations") }
   /// Invite Party
-  public static let inviteParty = L10n.tr("Mainstrings", "invite_party")
+  public static var inviteParty: String { return L10n.tr("Mainstrings", "invite_party") }
   /// Join
-  public static let join = L10n.tr("Mainstrings", "join")
+  public static var join: String { return L10n.tr("Mainstrings", "join") }
   /// Join Challenge
-  public static let joinChallenge = L10n.tr("Mainstrings", "join_challenge")
+  public static var joinChallenge: String { return L10n.tr("Mainstrings", "join_challenge") }
   /// Keep Tasks
-  public static let keepTasks = L10n.tr("Mainstrings", "keep_tasks")
+  public static var keepTasks: String { return L10n.tr("Mainstrings", "keep_tasks") }
   /// Last Activity %@
   public static func lastActivity(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "last_activity", p1)
   }
   /// Leader
-  public static let leader = L10n.tr("Mainstrings", "leader")
+  public static var leader: String { return L10n.tr("Mainstrings", "leader") }
   /// Leave
-  public static let leave = L10n.tr("Mainstrings", "leave")
+  public static var leave: String { return L10n.tr("Mainstrings", "leave") }
   /// Leave Challenge
-  public static let leaveChallenge = L10n.tr("Mainstrings", "leave_challenge")
+  public static var leaveChallenge: String { return L10n.tr("Mainstrings", "leave_challenge") }
   /// Do you want to leave the challenge and keep or delete the tasks?
-  public static let leaveChallengePrompt = L10n.tr("Mainstrings", "leave_challenge_prompt")
+  public static var leaveChallengePrompt: String { return L10n.tr("Mainstrings", "leave_challenge_prompt") }
   /// Leave Challenge?
-  public static let leaveChallengeTitle = L10n.tr("Mainstrings", "leave_challenge_title")
+  public static var leaveChallengeTitle: String { return L10n.tr("Mainstrings", "leave_challenge_title") }
   /// Level
-  public static let level = L10n.tr("Mainstrings", "level")
+  public static var level: String { return L10n.tr("Mainstrings", "level") }
   /// Level %d
   public static func levelNumber(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "level_number", p1)
@@ -246,291 +253,293 @@ public enum L10n {
     return L10n.tr("Mainstrings", "levelup_share", p1)
   }
   /// You gained a level!
-  public static let levelupTitle = L10n.tr("Mainstrings", "levelup_title")
+  public static var levelupTitle: String { return L10n.tr("Mainstrings", "levelup_title") }
   /// Mana
-  public static let mana = L10n.tr("Mainstrings", "mana")
+  public static var mana: String { return L10n.tr("Mainstrings", "mana") }
   /// Mana Points
-  public static let manaPoints = L10n.tr("Mainstrings", "mana_points")
+  public static var manaPoints: String { return L10n.tr("Mainstrings", "mana_points") }
   /// Menu
-  public static let menu = L10n.tr("Mainstrings", "menu")
+  public static var menu: String { return L10n.tr("Mainstrings", "menu") }
   /// Moderator
-  public static let moderator = L10n.tr("Mainstrings", "moderator")
+  public static var moderator: String { return L10n.tr("Mainstrings", "moderator") }
   /// Monday
-  public static let monday = L10n.tr("Mainstrings", "monday")
+  public static var monday: String { return L10n.tr("Mainstrings", "monday") }
   /// Monthly
-  public static let monthly = L10n.tr("Mainstrings", "monthly")
+  public static var monthly: String { return L10n.tr("Mainstrings", "monthly") }
   /// Monthly Gem Cap Reached
-  public static let monthlyGemCapReached = L10n.tr("Mainstrings", "monthly_gem_cap_reached")
+  public static var monthlyGemCapReached: String { return L10n.tr("Mainstrings", "monthly_gem_cap_reached") }
   /// months
-  public static let months = L10n.tr("Mainstrings", "months")
+  public static var months: String { return L10n.tr("Mainstrings", "months") }
   /// Mounts
-  public static let mounts = L10n.tr("Mainstrings", "mounts")
+  public static var mounts: String { return L10n.tr("Mainstrings", "mounts") }
   /// My Challenges
-  public static let myChallenges = L10n.tr("Mainstrings", "my_challenges")
+  public static var myChallenges: String { return L10n.tr("Mainstrings", "my_challenges") }
   /// My Guilds
-  public static let myGuilds = L10n.tr("Mainstrings", "my_guilds")
+  public static var myGuilds: String { return L10n.tr("Mainstrings", "my_guilds") }
   /// Mystery Sets
-  public static let mysterySets = L10n.tr("Mainstrings", "mystery_sets")
+  public static var mysterySets: String { return L10n.tr("Mainstrings", "mystery_sets") }
   /// Name
-  public static let name = L10n.tr("Mainstrings", "name")
+  public static var name: String { return L10n.tr("Mainstrings", "name") }
   /// Never
-  public static let never = L10n.tr("Mainstrings", "never")
+  public static var never: String { return L10n.tr("Mainstrings", "never") }
+  /// never
+  public static var neverLowerCase: String { return L10n.tr("Mainstrings", "never_lower_case") }
   /// Next
-  public static let next = L10n.tr("Mainstrings", "next")
+  public static var next: String { return L10n.tr("Mainstrings", "next") }
   /// Your next prize unlocks in 1 Check-In.
-  public static let nextCheckinPrize1Day = L10n.tr("Mainstrings", "next_checkin_prize_1_day")
+  public static var nextCheckinPrize1Day: String { return L10n.tr("Mainstrings", "next_checkin_prize_1_day") }
   /// Your next prize unlocks in %d Check-Ins
   public static func nextCheckinPrizeXDays(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "next_checkin_prize_x_days", p1)
   }
   /// No Benefit
-  public static let noBenefit = L10n.tr("Mainstrings", "no_benefit")
+  public static var noBenefit: String { return L10n.tr("Mainstrings", "no_benefit") }
   /// No Camera available
-  public static let noCamera = L10n.tr("Mainstrings", "no_camera")
+  public static var noCamera: String { return L10n.tr("Mainstrings", "no_camera") }
   /// no days
-  public static let noDays = L10n.tr("Mainstrings", "no_days")
+  public static var noDays: String { return L10n.tr("Mainstrings", "no_days") }
   /// Not enough Gems
-  public static let notEnoughGems = L10n.tr("Mainstrings", "not_enough_gems")
+  public static var notEnoughGems: String { return L10n.tr("Mainstrings", "not_enough_gems") }
   /// Not enough Gold
-  public static let notEnoughGold = L10n.tr("Mainstrings", "not_enough_gold")
+  public static var notEnoughGold: String { return L10n.tr("Mainstrings", "not_enough_gold") }
   /// Not enough Hourglasses
-  public static let notEnoughHourglasses = L10n.tr("Mainstrings", "not_enough_hourglasses")
+  public static var notEnoughHourglasses: String { return L10n.tr("Mainstrings", "not_enough_hourglasses") }
   /// Not getting the right drops? Check out the Market to buy just the things you need!
-  public static let notGettingDrops = L10n.tr("Mainstrings", "not_getting_drops")
+  public static var notGettingDrops: String { return L10n.tr("Mainstrings", "not_getting_drops") }
   /// Notes
-  public static let notes = L10n.tr("Mainstrings", "notes")
+  public static var notes: String { return L10n.tr("Mainstrings", "notes") }
   /// OK
-  public static let ok = L10n.tr("Mainstrings", "ok")
+  public static var ok: String { return L10n.tr("Mainstrings", "ok") }
   /// 1 Filter
-  public static let oneFilter = L10n.tr("Mainstrings", "one_filter")
+  public static var oneFilter: String { return L10n.tr("Mainstrings", "one_filter") }
   /// 1 Month
-  public static let oneMonth = L10n.tr("Mainstrings", "one_month")
+  public static var oneMonth: String { return L10n.tr("Mainstrings", "one_month") }
   /// Open
-  public static let `open` = L10n.tr("Mainstrings", "open")
+  public static var `open`: String { return L10n.tr("Mainstrings", "open") }
   /// Open App Store Page
-  public static let openAppStore = L10n.tr("Mainstrings", "open_app_store")
+  public static var openAppStore: String { return L10n.tr("Mainstrings", "open_app_store") }
   /// Open iTunes
-  public static let openItunes = L10n.tr("Mainstrings", "open_itunes")
+  public static var openItunes: String { return L10n.tr("Mainstrings", "open_itunes") }
   /// Open Habitica Website
-  public static let openWebsite = L10n.tr("Mainstrings", "open_website")
+  public static var openWebsite: String { return L10n.tr("Mainstrings", "open_website") }
   /// Password
-  public static let password = L10n.tr("Mainstrings", "password")
+  public static var password: String { return L10n.tr("Mainstrings", "password") }
   /// Pause Damage
-  public static let pauseDamage = L10n.tr("Mainstrings", "pause_damage")
+  public static var pauseDamage: String { return L10n.tr("Mainstrings", "pause_damage") }
   /// Pending damage
-  public static let pendingDamage = L10n.tr("Mainstrings", "pending_damage")
+  public static var pendingDamage: String { return L10n.tr("Mainstrings", "pending_damage") }
   /// Pets
-  public static let pets = L10n.tr("Mainstrings", "pets")
+  public static var pets: String { return L10n.tr("Mainstrings", "pets") }
   /// Photo URL
-  public static let photoUrl = L10n.tr("Mainstrings", "photo_url")
+  public static var photoUrl: String { return L10n.tr("Mainstrings", "photo_url") }
   /// Pin to Rewards
-  public static let pinToRewards = L10n.tr("Mainstrings", "pin_to_rewards")
+  public static var pinToRewards: String { return L10n.tr("Mainstrings", "pin_to_rewards") }
   /// Plain Backgrounds
-  public static let plainBackgrounds = L10n.tr("Mainstrings", "plain_backgrounds")
+  public static var plainBackgrounds: String { return L10n.tr("Mainstrings", "plain_backgrounds") }
   /// Ponytail
-  public static let ponytail = L10n.tr("Mainstrings", "ponytail")
+  public static var ponytail: String { return L10n.tr("Mainstrings", "ponytail") }
   /// Publish Challenge
-  public static let publishChallenge = L10n.tr("Mainstrings", "publish_challenge")
+  public static var publishChallenge: String { return L10n.tr("Mainstrings", "publish_challenge") }
   /// Purchase for %d Gems
   public static func purchaseForGems(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "purchase_for_gems", p1)
   }
   /// Purchase Gems
-  public static let purchaseGems = L10n.tr("Mainstrings", "purchase_gems")
+  public static var purchaseGems: String { return L10n.tr("Mainstrings", "purchase_gems") }
   /// You purchased %@
   public static func purchased(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "purchased", p1)
   }
   /// The scanned QR-Code did not contain a valid Habitica User ID.
-  public static let qrInvalidIdMessage = L10n.tr("Mainstrings", "qr_invalid_id_message")
+  public static var qrInvalidIdMessage: String { return L10n.tr("Mainstrings", "qr_invalid_id_message") }
   /// Invalid Habitica User ID
-  public static let qrInvalidIdTitle = L10n.tr("Mainstrings", "qr_invalid_id_title")
+  public static var qrInvalidIdTitle: String { return L10n.tr("Mainstrings", "qr_invalid_id_title") }
   /// Quests
-  public static let quests = L10n.tr("Mainstrings", "quests")
+  public static var quests: String { return L10n.tr("Mainstrings", "quests") }
   /// Rage Meter
-  public static let rageMeter = L10n.tr("Mainstrings", "rage_meter")
+  public static var rageMeter: String { return L10n.tr("Mainstrings", "rage_meter") }
   /// Randomize
-  public static let randomize = L10n.tr("Mainstrings", "randomize")
+  public static var randomize: String { return L10n.tr("Mainstrings", "randomize") }
   /// You open the box and receive %@
   public static func receivedMysteryItem(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "received_mystery_item", p1)
   }
   /// Recipient
-  public static let recipient = L10n.tr("Mainstrings", "recipient")
+  public static var recipient: String { return L10n.tr("Mainstrings", "recipient") }
   /// Reject
-  public static let reject = L10n.tr("Mainstrings", "reject")
+  public static var reject: String { return L10n.tr("Mainstrings", "reject") }
   /// Remember to check off your Dailies!
-  public static let rememberCheckOffDailies = L10n.tr("Mainstrings", "remember_check_off_dailies")
+  public static var rememberCheckOffDailies: String { return L10n.tr("Mainstrings", "remember_check_off_dailies") }
   /// Reminder
-  public static let reminder = L10n.tr("Mainstrings", "reminder")
+  public static var reminder: String { return L10n.tr("Mainstrings", "reminder") }
   /// Repeat Password
-  public static let repeatPassword = L10n.tr("Mainstrings", "repeat_password")
+  public static var repeatPassword: String { return L10n.tr("Mainstrings", "repeat_password") }
   /// Reply
-  public static let reply = L10n.tr("Mainstrings", "reply")
+  public static var reply: String { return L10n.tr("Mainstrings", "reply") }
   /// Report %@ for violation?
   public static func reportXViolation(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "report_x_violation", p1)
   }
   /// Reset Justins Tips
-  public static let resetTips = L10n.tr("Mainstrings", "reset_tips")
+  public static var resetTips: String { return L10n.tr("Mainstrings", "reset_tips") }
   /// Reset Streak
-  public static let resetStreak = L10n.tr("Mainstrings", "resetStreak")
+  public static var resetStreak: String { return L10n.tr("Mainstrings", "resetStreak") }
   /// Resume Damage
-  public static let resumeDamage = L10n.tr("Mainstrings", "resume_damage")
+  public static var resumeDamage: String { return L10n.tr("Mainstrings", "resume_damage") }
   /// Resync
-  public static let resync = L10n.tr("Mainstrings", "resync")
+  public static var resync: String { return L10n.tr("Mainstrings", "resync") }
   /// Resync all
-  public static let resyncAll = L10n.tr("Mainstrings", "resync_all")
+  public static var resyncAll: String { return L10n.tr("Mainstrings", "resync_all") }
   /// Resync this task
-  public static let resyncTask = L10n.tr("Mainstrings", "resync_task")
+  public static var resyncTask: String { return L10n.tr("Mainstrings", "resync_task") }
   /// Saturday
-  public static let saturday = L10n.tr("Mainstrings", "saturday")
+  public static var saturday: String { return L10n.tr("Mainstrings", "saturday") }
   /// Save
-  public static let save = L10n.tr("Mainstrings", "save")
+  public static var save: String { return L10n.tr("Mainstrings", "save") }
   /// Scan QR Code
-  public static let scanQRCode = L10n.tr("Mainstrings", "scan_QR_code")
+  public static var scanQRCode: String { return L10n.tr("Mainstrings", "scan_QR_code") }
   /// Search
-  public static let search = L10n.tr("Mainstrings", "search")
+  public static var search: String { return L10n.tr("Mainstrings", "search") }
   /// Sell for %d gold
   public static func sell(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "sell", p1)
   }
   /// Send
-  public static let send = L10n.tr("Mainstrings", "send")
+  public static var send: String { return L10n.tr("Mainstrings", "send") }
   /// Send Gift
-  public static let sendGift = L10n.tr("Mainstrings", "send_gift")
+  public static var sendGift: String { return L10n.tr("Mainstrings", "send_gift") }
   /// Share
-  public static let share = L10n.tr("Mainstrings", "share")
+  public static var share: String { return L10n.tr("Mainstrings", "share") }
   /// Shirt
-  public static let shirt = L10n.tr("Mainstrings", "shirt")
+  public static var shirt: String { return L10n.tr("Mainstrings", "shirt") }
   /// Size
-  public static let size = L10n.tr("Mainstrings", "size")
+  public static var size: String { return L10n.tr("Mainstrings", "size") }
   /// Skip
-  public static let skip = L10n.tr("Mainstrings", "skip")
+  public static var skip: String { return L10n.tr("Mainstrings", "skip") }
   /// Slim
-  public static let slim = L10n.tr("Mainstrings", "slim")
+  public static var slim: String { return L10n.tr("Mainstrings", "slim") }
   /// Special Items
-  public static let specialItems = L10n.tr("Mainstrings", "specialItems")
+  public static var specialItems: String { return L10n.tr("Mainstrings", "specialItems") }
   /// Staff
-  public static let staff = L10n.tr("Mainstrings", "staff")
+  public static var staff: String { return L10n.tr("Mainstrings", "staff") }
   /// Start my day
-  public static let startMyDay = L10n.tr("Mainstrings", "start_my_day")
+  public static var startMyDay: String { return L10n.tr("Mainstrings", "start_my_day") }
   /// You've completed your Daily for 21 days in a row! Amazing job. Don't break the streak!
-  public static let streakAchievementDescription = L10n.tr("Mainstrings", "streak_achievement_description")
+  public static var streakAchievementDescription: String { return L10n.tr("Mainstrings", "streak_achievement_description") }
   /// You earned a streak achievement!
-  public static let streakAchievementTitle = L10n.tr("Mainstrings", "streak_achievement_title")
+  public static var streakAchievementTitle: String { return L10n.tr("Mainstrings", "streak_achievement_title") }
   /// Strong
-  public static let strong = L10n.tr("Mainstrings", "strong")
+  public static var strong: String { return L10n.tr("Mainstrings", "strong") }
   /// Subscribe
-  public static let subscribe = L10n.tr("Mainstrings", "subscribe")
+  public static var subscribe: String { return L10n.tr("Mainstrings", "subscribe") }
   /// Subscribe for Hourglasses
-  public static let subscribeForHourglasses = L10n.tr("Mainstrings", "subscribe_for_hourglasses")
+  public static var subscribeForHourglasses: String { return L10n.tr("Mainstrings", "subscribe_for_hourglasses") }
   /// Subscription
-  public static let subscription = L10n.tr("Mainstrings", "subscription")
+  public static var subscription: String { return L10n.tr("Mainstrings", "subscription") }
   /// Become a subscriber and you’ll get these useful benefits:
-  public static let subscriptionBenefitsTitle = L10n.tr("Mainstrings", "subscription_benefits_title")
+  public static var subscriptionBenefitsTitle: String { return L10n.tr("Mainstrings", "subscription_benefits_title") }
   /// Gift a Subscription
-  public static let subscriptionGiftButton = L10n.tr("Mainstrings", "subscription_gift_button")
+  public static var subscriptionGiftButton: String { return L10n.tr("Mainstrings", "subscription_gift_button") }
   /// Want to give the benefits of a subscription to someone else?
-  public static let subscriptionGiftExplanation = L10n.tr("Mainstrings", "subscription_gift_explanation")
+  public static var subscriptionGiftExplanation: String { return L10n.tr("Mainstrings", "subscription_gift_explanation") }
   /// Alexander the Merchant will sell you Gems at a cost of 20 gold per gem. His monthly shipments are initially capped at 25 Gems per month, but this cap increases by 5 Gems for every three months of consecutive subscription, up to a maximum of 50 Gems per month!
-  public static let subscriptionInfo1Description = L10n.tr("Mainstrings", "subscription_info_1_description")
+  public static var subscriptionInfo1Description: String { return L10n.tr("Mainstrings", "subscription_info_1_description") }
   /// Buy gems with gold
-  public static let subscriptionInfo1Title = L10n.tr("Mainstrings", "subscription_info_1_title")
+  public static var subscriptionInfo1Title: String { return L10n.tr("Mainstrings", "subscription_info_1_title") }
   /// Each month you will receive a unique cosmetic item for your avatar!\n\nPlus, for every three months of consecutive subscription, the Mysterious Time Travelers will grant you access to historic (and futuristic!) cosmetic items.
-  public static let subscriptionInfo2Description = L10n.tr("Mainstrings", "subscription_info_2_description")
+  public static var subscriptionInfo2Description: String { return L10n.tr("Mainstrings", "subscription_info_2_description") }
   /// Exclusive monthly items
-  public static let subscriptionInfo2Title = L10n.tr("Mainstrings", "subscription_info_2_title")
+  public static var subscriptionInfo2Title: String { return L10n.tr("Mainstrings", "subscription_info_2_title") }
   /// Makes completed To-Dos and task history available for longer.
-  public static let subscriptionInfo3Description = L10n.tr("Mainstrings", "subscription_info_3_description")
+  public static var subscriptionInfo3Description: String { return L10n.tr("Mainstrings", "subscription_info_3_description") }
   /// Retain additional history entries
-  public static let subscriptionInfo3Title = L10n.tr("Mainstrings", "subscription_info_3_title")
+  public static var subscriptionInfo3Title: String { return L10n.tr("Mainstrings", "subscription_info_3_title") }
   /// Double drop caps will let you receive more items from your completed tasks every day, helping you complete your stable faster!
-  public static let subscriptionInfo4Description = L10n.tr("Mainstrings", "subscription_info_4_description")
+  public static var subscriptionInfo4Description: String { return L10n.tr("Mainstrings", "subscription_info_4_description") }
   /// Daily drop-caps doubled
-  public static let subscriptionInfo4Title = L10n.tr("Mainstrings", "subscription_info_4_title")
+  public static var subscriptionInfo4Title: String { return L10n.tr("Mainstrings", "subscription_info_4_title") }
   /// Subscribing supports the developers\nand helps keep Habitica running
-  public static let subscriptionSupportDevelopers = L10n.tr("Mainstrings", "subscription_support_developers")
+  public static var subscriptionSupportDevelopers: String { return L10n.tr("Mainstrings", "subscription_support_developers") }
   /// success
-  public static let success = L10n.tr("Mainstrings", "success")
+  public static var success: String { return L10n.tr("Mainstrings", "success") }
   /// Summary
-  public static let summary = L10n.tr("Mainstrings", "summary")
+  public static var summary: String { return L10n.tr("Mainstrings", "summary") }
   /// Sunday
-  public static let sunday = L10n.tr("Mainstrings", "sunday")
+  public static var sunday: String { return L10n.tr("Mainstrings", "sunday") }
   /// Tags
-  public static let tags = L10n.tr("Mainstrings", "tags")
+  public static var tags: String { return L10n.tr("Mainstrings", "tags") }
   /// Take me back
-  public static let takeMeBack = L10n.tr("Mainstrings", "take_me_back")
+  public static var takeMeBack: String { return L10n.tr("Mainstrings", "take_me_back") }
   /// Tap to Show
-  public static let tapToShow = L10n.tr("Mainstrings", "tap_to_show")
+  public static var tapToShow: String { return L10n.tr("Mainstrings", "tap_to_show") }
   /// Welcome to the Inn! Pull up a chair to chat, or take a break from your tasks.
-  public static let tavernIntroHeader = L10n.tr("Mainstrings", "tavern_intro_header")
+  public static var tavernIntroHeader: String { return L10n.tr("Mainstrings", "tavern_intro_header") }
   /// Teleporting to Habitica
-  public static let teleportingHabitica = L10n.tr("Mainstrings", "teleporting_habitica")
+  public static var teleportingHabitica: String { return L10n.tr("Mainstrings", "teleporting_habitica") }
   /// Thursday
-  public static let thursday = L10n.tr("Mainstrings", "thursday")
+  public static var thursday: String { return L10n.tr("Mainstrings", "thursday") }
   /// Title
-  public static let title = L10n.tr("Mainstrings", "title")
+  public static var title: String { return L10n.tr("Mainstrings", "title") }
   /// Tuesday
-  public static let tuesday = L10n.tr("Mainstrings", "tuesday")
+  public static var tuesday: String { return L10n.tr("Mainstrings", "tuesday") }
   /// Two-Handed
-  public static let twoHanded = L10n.tr("Mainstrings", "twoHanded")
+  public static var twoHanded: String { return L10n.tr("Mainstrings", "twoHanded") }
   /// Unequip
-  public static let unequip = L10n.tr("Mainstrings", "unequip")
+  public static var unequip: String { return L10n.tr("Mainstrings", "unequip") }
   /// You've unlocked the Drop System! Now when you complete tasks, you have a small chance of finding an item, including eggs, potions, and food!
-  public static let unlockDropsDescription = L10n.tr("Mainstrings", "unlockDropsDescription")
+  public static var unlockDropsDescription: String { return L10n.tr("Mainstrings", "unlockDropsDescription") }
   /// You unlocked the drop system!
-  public static let unlockDropsTitle = L10n.tr("Mainstrings", "unlockDropsTitle")
+  public static var unlockDropsTitle: String { return L10n.tr("Mainstrings", "unlockDropsTitle") }
   /// Unlocks at level 10
-  public static let unlocksLevelTen = L10n.tr("Mainstrings", "unlocks_level_ten")
+  public static var unlocksLevelTen: String { return L10n.tr("Mainstrings", "unlocks_level_ten") }
   /// Unlocks after selecting a class
-  public static let unlocksSelectingClass = L10n.tr("Mainstrings", "unlocks_selecting_class")
+  public static var unlocksSelectingClass: String { return L10n.tr("Mainstrings", "unlocks_selecting_class") }
   /// Unpin from Rewards
-  public static let unpinFromRewards = L10n.tr("Mainstrings", "unpin_from_rewards")
+  public static var unpinFromRewards: String { return L10n.tr("Mainstrings", "unpin_from_rewards") }
   /// No longer want to subscribe? You can manage your subscription from iTunes.
-  public static let unsubscribeItunes = L10n.tr("Mainstrings", "unsubscribe_itunes")
+  public static var unsubscribeItunes: String { return L10n.tr("Mainstrings", "unsubscribe_itunes") }
   /// No longer want to subscribe? Due to your payment method, you can only unsubscribe through the website.
-  public static let unsubscribeWebsite = L10n.tr("Mainstrings", "unsubscribe_website")
+  public static var unsubscribeWebsite: String { return L10n.tr("Mainstrings", "unsubscribe_website") }
   /// Use
-  public static let use = L10n.tr("Mainstrings", "use")
+  public static var use: String { return L10n.tr("Mainstrings", "use") }
   /// User ID
-  public static let userID = L10n.tr("Mainstrings", "userID")
+  public static var userID: String { return L10n.tr("Mainstrings", "userID") }
   /// Username
-  public static let username = L10n.tr("Mainstrings", "username")
+  public static var username: String { return L10n.tr("Mainstrings", "username") }
   /// Your username was confirmed
-  public static let usernameConfirmedToast = L10n.tr("Mainstrings", "username_confirmed_toast")
+  public static var usernameConfirmedToast: String { return L10n.tr("Mainstrings", "username_confirmed_toast") }
   /// Your display name hasn’t changed but your old login name will now be your username used for invitations, chat @mentions, and messaging.
-  public static let usernamePromptBody = L10n.tr("Mainstrings", "username_prompt_body")
+  public static var usernamePromptBody: String { return L10n.tr("Mainstrings", "username_prompt_body") }
   /// Usernames should conform to our #<ts>Terms of Service# and #<cg>Community Guidelines#. If you didn’t previously set a login name, your username was auto-generated.
-  public static let usernamePromptDisclaimer = L10n.tr("Mainstrings", "username_prompt_disclaimer")
+  public static var usernamePromptDisclaimer: String { return L10n.tr("Mainstrings", "username_prompt_disclaimer") }
   /// It’s time to set your username!
-  public static let usernamePromptTitle = L10n.tr("Mainstrings", "username_prompt_title")
+  public static var usernamePromptTitle: String { return L10n.tr("Mainstrings", "username_prompt_title") }
   /// If you’d like to learn more about this change, #<wk>visit our wiki.#
-  public static let usernamePromptWiki = L10n.tr("Mainstrings", "username_prompt_wiki")
+  public static var usernamePromptWiki: String { return L10n.tr("Mainstrings", "username_prompt_wiki") }
   /// Invitation was sent to users.
-  public static let usersInvited = L10n.tr("Mainstrings", "users_invited")
+  public static var usersInvited: String { return L10n.tr("Mainstrings", "users_invited") }
   /// View Participant Progress
-  public static let viewParticipantProgress = L10n.tr("Mainstrings", "view_participant_progress")
+  public static var viewParticipantProgress: String { return L10n.tr("Mainstrings", "view_participant_progress") }
   /// Weak
-  public static let `weak` = L10n.tr("Mainstrings", "weak")
+  public static var `weak`: String { return L10n.tr("Mainstrings", "weak") }
   /// Wednesday
-  public static let wednesday = L10n.tr("Mainstrings", "wednesday")
+  public static var wednesday: String { return L10n.tr("Mainstrings", "wednesday") }
   /// Weekly
-  public static let weekly = L10n.tr("Mainstrings", "weekly")
+  public static var weekly: String { return L10n.tr("Mainstrings", "weekly") }
   /// weeks
-  public static let weeks = L10n.tr("Mainstrings", "weeks")
-  /// Wecome Back!
-  public static let welcomeBack = L10n.tr("Mainstrings", "welcome_back")
+  public static var weeks: String { return L10n.tr("Mainstrings", "weeks") }
+  /// Welcome Back!
+  public static var welcomeBack: String { return L10n.tr("Mainstrings", "welcome_back") }
   /// What's a World Boss?
-  public static let whatsWorldBoss = L10n.tr("Mainstrings", "whats_world_boss")
+  public static var whatsWorldBoss: String { return L10n.tr("Mainstrings", "whats_world_boss") }
   /// Wheelchair
-  public static let wheelchair = L10n.tr("Mainstrings", "wheelchair")
+  public static var wheelchair: String { return L10n.tr("Mainstrings", "wheelchair") }
   /// Oh dear, pay no heed to the monster below -- this is still a safe haven to chat on your breaks.
-  public static let worldBossIntroHeader = L10n.tr("Mainstrings", "world_boss_intro_header")
+  public static var worldBossIntroHeader: String { return L10n.tr("Mainstrings", "world_boss_intro_header") }
   /// Write a Message
-  public static let writeAMessage = L10n.tr("Mainstrings", "write_a_message")
+  public static var writeAMessage: String { return L10n.tr("Mainstrings", "write_a_message") }
   /// Write Message
-  public static let writeMessage = L10n.tr("Mainstrings", "write_message")
+  public static var writeMessage: String { return L10n.tr("Mainstrings", "write_message") }
   /// Write to %@
   public static func writeTo(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "write_to", p1)
@@ -544,95 +553,101 @@ public enum L10n {
     return L10n.tr("Mainstrings", "x_months", p1)
   }
   /// Yearly
-  public static let yearly = L10n.tr("Mainstrings", "yearly")
+  public static var yearly: String { return L10n.tr("Mainstrings", "yearly") }
   /// years
-  public static let years = L10n.tr("Mainstrings", "years")
+  public static var years: String { return L10n.tr("Mainstrings", "years") }
   /// Your balance:
-  public static let yourBalance = L10n.tr("Mainstrings", "your_balance")
+  public static var yourBalance: String { return L10n.tr("Mainstrings", "your_balance") }
 
   public enum NPCs {
     /// Alex the Merchant
-    public static let alex = L10n.tr("Mainstrings", "NPCs.alex")
+    public static var alex: String { return L10n.tr("Mainstrings", "NPCs.alex") }
     /// Daniel the inn keeper
-    public static let daniel = L10n.tr("Mainstrings", "NPCs.daniel")
+    public static var daniel: String { return L10n.tr("Mainstrings", "NPCs.daniel") }
     /// Ian the Quest Guide
-    public static let ian = L10n.tr("Mainstrings", "NPCs.ian")
+    public static var ian: String { return L10n.tr("Mainstrings", "NPCs.ian") }
     /// Matt the beast master
-    public static let matt = L10n.tr("Mainstrings", "NPCs.matt")
+    public static var matt: String { return L10n.tr("Mainstrings", "NPCs.matt") }
     /// Seasonal Sorceress
-    public static let seasonalSorceress = L10n.tr("Mainstrings", "NPCs.seasonalSorceress")
+    public static var seasonalSorceress: String { return L10n.tr("Mainstrings", "NPCs.seasonalSorceress") }
   }
 
   public enum About {
     /// Acknowledgements
-    public static let acknowledgements = L10n.tr("Mainstrings", "about.acknowledgements")
+    public static var acknowledgements: String { return L10n.tr("Mainstrings", "about.acknowledgements") }
     /// Export Database
-    public static let exportDatabase = L10n.tr("Mainstrings", "about.export_database")
+    public static var exportDatabase: String { return L10n.tr("Mainstrings", "about.export_database") }
     /// Leave Review
-    public static let leaveReview = L10n.tr("Mainstrings", "about.leave_review")
+    public static var leaveReview: String { return L10n.tr("Mainstrings", "about.leave_review") }
     /// Web love open source software.
-    public static let loveOpenSource = L10n.tr("Mainstrings", "about.love_open_source")
+    public static var loveOpenSource: String { return L10n.tr("Mainstrings", "about.love_open_source") }
+    /// Update available: %@
+    public static func newVersion(_ p1: String) -> String {
+      return L10n.tr("Mainstrings", "about.new_version", p1)
+    }
     /// Whoops, looks like you haven't set up your email on this phone yet. Configure an account in the iOS mail app to use this quick-reporting option, or just email us directly at %@
     public static func noEmailMessage(_ p1: String) -> String {
       return L10n.tr("Mainstrings", "about.no_email_message", p1)
     }
     /// Your email isn't set up yet
-    public static let noEmailTitle = L10n.tr("Mainstrings", "about.no_email_title")
+    public static var noEmailTitle: String { return L10n.tr("Mainstrings", "about.no_email_title") }
     /// Report a Bug
-    public static let reportBug = L10n.tr("Mainstrings", "about.report_bug")
+    public static var reportBug: String { return L10n.tr("Mainstrings", "about.report_bug") }
     /// Send Feedback
-    public static let sendFeedback = L10n.tr("Mainstrings", "about.send_feedback")
+    public static var sendFeedback: String { return L10n.tr("Mainstrings", "about.send_feedback") }
     /// Version
-    public static let version = L10n.tr("Mainstrings", "about.version")
+    public static var version: String { return L10n.tr("Mainstrings", "about.version") }
     /// View Source Code
-    public static let viewSourceCode = L10n.tr("Mainstrings", "about.view_source_code")
+    public static var viewSourceCode: String { return L10n.tr("Mainstrings", "about.view_source_code") }
     /// Website
-    public static let website = L10n.tr("Mainstrings", "about.website")
+    public static var website: String { return L10n.tr("Mainstrings", "about.website") }
+    /// See what's new
+    public static var whatsNew: String { return L10n.tr("Mainstrings", "about.whats_new") }
   }
 
   public enum Accessibility {
     /// Collapse Checklist
-    public static let collapseChecklist = L10n.tr("Mainstrings", "accessibility.collapse_checklist")
+    public static var collapseChecklist: String { return L10n.tr("Mainstrings", "accessibility.collapse_checklist") }
     /// Complete Task
-    public static let completeTask = L10n.tr("Mainstrings", "accessibility.complete_task")
+    public static var completeTask: String { return L10n.tr("Mainstrings", "accessibility.complete_task") }
     /// Completed
-    public static let completed = L10n.tr("Mainstrings", "accessibility.completed")
+    public static var completed: String { return L10n.tr("Mainstrings", "accessibility.completed") }
     /// Completed %@
     public static func completedX(_ p1: String) -> String {
       return L10n.tr("Mainstrings", "accessibility.completed_x", p1)
     }
     /// Copy Message
-    public static let copyMessage = L10n.tr("Mainstrings", "accessibility.copy_message")
+    public static var copyMessage: String { return L10n.tr("Mainstrings", "accessibility.copy_message") }
     /// Delete Message
-    public static let deleteMessage = L10n.tr("Mainstrings", "accessibility.delete_message")
+    public static var deleteMessage: String { return L10n.tr("Mainstrings", "accessibility.delete_message") }
     /// Double tap to complete
-    public static let doubleTapToComplete = L10n.tr("Mainstrings", "accessibility.double_tap_to_complete")
+    public static var doubleTapToComplete: String { return L10n.tr("Mainstrings", "accessibility.double_tap_to_complete") }
     /// Double tap to edit
-    public static let doubleTapToEdit = L10n.tr("Mainstrings", "accessibility.double_tap_to_edit")
+    public static var doubleTapToEdit: String { return L10n.tr("Mainstrings", "accessibility.double_tap_to_edit") }
     /// Due
-    public static let due = L10n.tr("Mainstrings", "accessibility.due")
+    public static var due: String { return L10n.tr("Mainstrings", "accessibility.due") }
     /// Expand Checklist
-    public static let expandChecklist = L10n.tr("Mainstrings", "accessibility.expand_checklist")
+    public static var expandChecklist: String { return L10n.tr("Mainstrings", "accessibility.expand_checklist") }
     /// Like Message
-    public static let likeMessage = L10n.tr("Mainstrings", "accessibility.like_message")
+    public static var likeMessage: String { return L10n.tr("Mainstrings", "accessibility.like_message") }
     /// Not Completed
-    public static let notCompleted = L10n.tr("Mainstrings", "accessibility.not_completed")
+    public static var notCompleted: String { return L10n.tr("Mainstrings", "accessibility.not_completed") }
     /// Not Completed %@
     public static func notCompletedX(_ p1: String) -> String {
       return L10n.tr("Mainstrings", "accessibility.not_completed_x", p1)
     }
     /// Not Due
-    public static let notDue = L10n.tr("Mainstrings", "accessibility.not_due")
+    public static var notDue: String { return L10n.tr("Mainstrings", "accessibility.not_due") }
     /// Reply to Message
-    public static let replyToMessage = L10n.tr("Mainstrings", "accessibility.reply_to_message")
+    public static var replyToMessage: String { return L10n.tr("Mainstrings", "accessibility.reply_to_message") }
     /// Report Message
-    public static let reportMessage = L10n.tr("Mainstrings", "accessibility.report_message")
+    public static var reportMessage: String { return L10n.tr("Mainstrings", "accessibility.report_message") }
     /// Score Habit Down
-    public static let scoreHabitDown = L10n.tr("Mainstrings", "accessibility.score_habit_down")
+    public static var scoreHabitDown: String { return L10n.tr("Mainstrings", "accessibility.score_habit_down") }
     /// Score Habit Up
-    public static let scoreHabitUp = L10n.tr("Mainstrings", "accessibility.score_habit_up")
+    public static var scoreHabitUp: String { return L10n.tr("Mainstrings", "accessibility.score_habit_up") }
     /// Double tap to hide boss art
-    public static let tapHideBossArt = L10n.tr("Mainstrings", "accessibility.tap_hide_boss_art")
+    public static var tapHideBossArt: String { return L10n.tr("Mainstrings", "accessibility.tap_hide_boss_art") }
     /// %@, World Boss, pending damage: %@
     public static func worldBossPendingDamage(_ p1: String, _ p2: String) -> String {
       return L10n.tr("Mainstrings", "accessibility.world_boss_pending_damage", p1, p2)
@@ -641,37 +656,37 @@ public enum L10n {
 
   public enum Avatar {
     /// Background
-    public static let background = L10n.tr("Mainstrings", "avatar.background")
+    public static var background: String { return L10n.tr("Mainstrings", "avatar.background") }
     /// Bangs
-    public static let bangs = L10n.tr("Mainstrings", "avatar.bangs")
+    public static var bangs: String { return L10n.tr("Mainstrings", "avatar.bangs") }
     /// Beard
-    public static let beard = L10n.tr("Mainstrings", "avatar.beard")
+    public static var beard: String { return L10n.tr("Mainstrings", "avatar.beard") }
     /// Body
-    public static let body = L10n.tr("Mainstrings", "avatar.body")
+    public static var body: String { return L10n.tr("Mainstrings", "avatar.body") }
     /// Extras
-    public static let extras = L10n.tr("Mainstrings", "avatar.extras")
+    public static var extras: String { return L10n.tr("Mainstrings", "avatar.extras") }
     /// Flower
-    public static let flower = L10n.tr("Mainstrings", "avatar.flower")
+    public static var flower: String { return L10n.tr("Mainstrings", "avatar.flower") }
     /// Glasses
-    public static let glasses = L10n.tr("Mainstrings", "avatar.glasses")
+    public static var glasses: String { return L10n.tr("Mainstrings", "avatar.glasses") }
     /// Hair
-    public static let hair = L10n.tr("Mainstrings", "avatar.hair")
+    public static var hair: String { return L10n.tr("Mainstrings", "avatar.hair") }
     /// Hair Style
-    public static let hairStyle = L10n.tr("Mainstrings", "avatar.hair_style")
+    public static var hairStyle: String { return L10n.tr("Mainstrings", "avatar.hair_style") }
     /// Hair Color
-    public static let hairColor = L10n.tr("Mainstrings", "avatar.hairColor")
+    public static var hairColor: String { return L10n.tr("Mainstrings", "avatar.hairColor") }
     /// Head
-    public static let head = L10n.tr("Mainstrings", "avatar.head")
+    public static var head: String { return L10n.tr("Mainstrings", "avatar.head") }
     /// Mustache
-    public static let mustache = L10n.tr("Mainstrings", "avatar.mustache")
+    public static var mustache: String { return L10n.tr("Mainstrings", "avatar.mustache") }
     /// Shirt
-    public static let shirt = L10n.tr("Mainstrings", "avatar.shirt")
+    public static var shirt: String { return L10n.tr("Mainstrings", "avatar.shirt") }
     /// Skin
-    public static let skin = L10n.tr("Mainstrings", "avatar.skin")
+    public static var skin: String { return L10n.tr("Mainstrings", "avatar.skin") }
     /// Skin Color
-    public static let skinColor = L10n.tr("Mainstrings", "avatar.skin_color")
+    public static var skinColor: String { return L10n.tr("Mainstrings", "avatar.skin_color") }
     /// Wheelchair
-    public static let wheelchair = L10n.tr("Mainstrings", "avatar.wheelchair")
+    public static var wheelchair: String { return L10n.tr("Mainstrings", "avatar.wheelchair") }
   }
 
   public enum Classes {
@@ -684,95 +699,133 @@ public enum L10n {
       return L10n.tr("Mainstrings", "classes.class_header", p1)
     }
     /// Healer
-    public static let healer = L10n.tr("Mainstrings", "classes.healer")
+    public static var healer: String { return L10n.tr("Mainstrings", "classes.healer") }
     /// Healers stand impervious against harm, and extend that protection to others. Missed Dailies and bad Habits don't faze them much, and they have ways to recover Health from failure. Play a Healer if you enjoy assisting others in your Party, or if the idea of cheating Death through hard work inspires you!
-    public static let healerDescription = L10n.tr("Mainstrings", "classes.healer_description")
+    public static var healerDescription: String { return L10n.tr("Mainstrings", "classes.healer_description") }
     /// Mage
-    public static let mage = L10n.tr("Mainstrings", "classes.mage")
+    public static var mage: String { return L10n.tr("Mainstrings", "classes.mage") }
     /// Mages learn swiftly, gaining Experience and Levels faster than other classes. They also get a great deal of Mana for using special abilities. Play a Mage if you enjoy the tactical game aspects of Habitica, or if you are strongly motivated by leveling up and unlocking advanced features! 
-    public static let mageDescription = L10n.tr("Mainstrings", "classes.mage_description")
+    public static var mageDescription: String { return L10n.tr("Mainstrings", "classes.mage_description") }
     /// Rogue
-    public static let rogue = L10n.tr("Mainstrings", "classes.rogue")
+    public static var rogue: String { return L10n.tr("Mainstrings", "classes.rogue") }
     /// Rogues love to accumulate wealth, gaining more Gold than anyone else, and are adept at finding random items. Their iconic Stealth ability lets them duck the consequences of missed Dailies. Play a Rogue if you find strong motivation from Rewards and Achievements, striving for loot and badges!
-    public static let rogueDescription = L10n.tr("Mainstrings", "classes.rogue_description")
+    public static var rogueDescription: String { return L10n.tr("Mainstrings", "classes.rogue_description") }
     /// Warrior
-    public static let warrior = L10n.tr("Mainstrings", "classes.warrior")
+    public static var warrior: String { return L10n.tr("Mainstrings", "classes.warrior") }
     /// Warriors score more and better "critical hits", which randomly give bonus Gold, Experience, and drop chance for scoring a task. They also deal heavy damage to boss monsters. Play a Warrior if you find motivation from unpredictable jackpot-style rewards, or want to dish out the hurt in boss Quests!
-    public static let warriorDescription = L10n.tr("Mainstrings", "classes.warrior_description")
+    public static var warriorDescription: String { return L10n.tr("Mainstrings", "classes.warrior_description") }
+  }
+
+  public enum Empty {
+
+    public enum Dailies {
+      /// Dailies are tasks that repeat on a regular basis. Choose the schedule that works you!
+      public static var description: String { return L10n.tr("Mainstrings", "empty.dailies.description") }
+      /// These are your Dailies
+      public static var title: String { return L10n.tr("Mainstrings", "empty.dailies.title") }
+    }
+
+    public enum Habits {
+      /// Habits don't have a rigid schedule. You can check them off multiple times per day.
+      public static var description: String { return L10n.tr("Mainstrings", "empty.habits.description") }
+      /// These are your Habits
+      public static var title: String { return L10n.tr("Mainstrings", "empty.habits.title") }
+    }
+
+    public enum Notifications {
+      /// The notification fairies give you a raucous round of applause! Well done!
+      public static var description: String { return L10n.tr("Mainstrings", "empty.notifications.description") }
+      /// You're all caught up!
+      public static var title: String { return L10n.tr("Mainstrings", "empty.notifications.title") }
+    }
+
+    public enum Rewards {
+      /// Rewards are a great way to use Habitica and complete your tasks. Try adding a few today!
+      public static var description: String { return L10n.tr("Mainstrings", "empty.rewards.description") }
+      /// These are your Rewards
+      public static var title: String { return L10n.tr("Mainstrings", "empty.rewards.title") }
+    }
+
+    public enum Todos {
+      /// To-Dos need to be completed once. Add checklists to your To-Dos to increase their value.
+      public static var description: String { return L10n.tr("Mainstrings", "empty.todos.description") }
+      /// These are your To-Dos
+      public static var title: String { return L10n.tr("Mainstrings", "empty.todos.title") }
+    }
   }
 
   public enum Equipment {
     /// Armor
-    public static let armor = L10n.tr("Mainstrings", "equipment.armor")
+    public static var armor: String { return L10n.tr("Mainstrings", "equipment.armor") }
     /// Auto-Equip new
-    public static let autoEquip = L10n.tr("Mainstrings", "equipment.auto_equip")
+    public static var autoEquip: String { return L10n.tr("Mainstrings", "equipment.auto_equip") }
     /// Back Accessory
-    public static let back = L10n.tr("Mainstrings", "equipment.back")
+    public static var back: String { return L10n.tr("Mainstrings", "equipment.back") }
     /// Battle Gear
-    public static let battleGear = L10n.tr("Mainstrings", "equipment.battle_gear")
+    public static var battleGear: String { return L10n.tr("Mainstrings", "equipment.battle_gear") }
     /// Body Accessory
-    public static let body = L10n.tr("Mainstrings", "equipment.body")
+    public static var body: String { return L10n.tr("Mainstrings", "equipment.body") }
     /// Class Equipment
-    public static let classEquipment = L10n.tr("Mainstrings", "equipment.class_equipment")
+    public static var classEquipment: String { return L10n.tr("Mainstrings", "equipment.class_equipment") }
     /// Costume
-    public static let costume = L10n.tr("Mainstrings", "equipment.costume")
+    public static var costume: String { return L10n.tr("Mainstrings", "equipment.costume") }
     /// Select "Use Costume" to equip items to your avatar without affecting the Stats from your Battle Gear! This means that you can dress up your avatar in whatever outfit you like while still having your best Battle Gear equipped.
-    public static let costumeExplanation = L10n.tr("Mainstrings", "equipment.costume_explanation")
+    public static var costumeExplanation: String { return L10n.tr("Mainstrings", "equipment.costume_explanation") }
     /// Equipment
-    public static let equipment = L10n.tr("Mainstrings", "equipment.equipment")
+    public static var equipment: String { return L10n.tr("Mainstrings", "equipment.equipment") }
     /// Eyewear
-    public static let eyewear = L10n.tr("Mainstrings", "equipment.eyewear")
+    public static var eyewear: String { return L10n.tr("Mainstrings", "equipment.eyewear") }
     /// Head Gear
-    public static let head = L10n.tr("Mainstrings", "equipment.head")
+    public static var head: String { return L10n.tr("Mainstrings", "equipment.head") }
     /// Head Accessory
-    public static let headAccessory = L10n.tr("Mainstrings", "equipment.head_accessory")
+    public static var headAccessory: String { return L10n.tr("Mainstrings", "equipment.head_accessory") }
     /// Nothing Equipped
-    public static let nothingEquipped = L10n.tr("Mainstrings", "equipment.nothing_equipped")
+    public static var nothingEquipped: String { return L10n.tr("Mainstrings", "equipment.nothing_equipped") }
     /// Off-Hand
-    public static let offHand = L10n.tr("Mainstrings", "equipment.off_hand")
+    public static var offHand: String { return L10n.tr("Mainstrings", "equipment.off_hand") }
     /// Use Costume
-    public static let useCostume = L10n.tr("Mainstrings", "equipment.use_costume")
+    public static var useCostume: String { return L10n.tr("Mainstrings", "equipment.use_costume") }
     /// Weapon
-    public static let weapon = L10n.tr("Mainstrings", "equipment.weapon")
+    public static var weapon: String { return L10n.tr("Mainstrings", "equipment.weapon") }
   }
 
   public enum Errors {
     /// Error
-    public static let error = L10n.tr("Mainstrings", "errors.error")
+    public static var error: String { return L10n.tr("Mainstrings", "errors.error") }
     /// There was an error accepting the quest invitation
-    public static let questInviteAccept = L10n.tr("Mainstrings", "errors.quest_invite_accept")
+    public static var questInviteAccept: String { return L10n.tr("Mainstrings", "errors.quest_invite_accept") }
     /// There was an error rejecting the quest invitation
-    public static let questInviteReject = L10n.tr("Mainstrings", "errors.quest_invite_reject")
+    public static var questInviteReject: String { return L10n.tr("Mainstrings", "errors.quest_invite_reject") }
     /// Your message could not be sent.
-    public static let reply = L10n.tr("Mainstrings", "errors.reply")
+    public static var reply: String { return L10n.tr("Mainstrings", "errors.reply") }
     /// There was an error with your request: %@
     public static func request(_ p1: String) -> String {
       return L10n.tr("Mainstrings", "errors.request", p1)
     }
     /// Sync Error
-    public static let sync = L10n.tr("Mainstrings", "errors.sync")
+    public static var sync: String { return L10n.tr("Mainstrings", "errors.sync") }
     /// There was an error syncing some changes.
-    public static let syncMessage = L10n.tr("Mainstrings", "errors.sync_message")
+    public static var syncMessage: String { return L10n.tr("Mainstrings", "errors.sync_message") }
   }
 
   public enum Faint {
     /// Refill Health & Try Again
-    public static let button = L10n.tr("Mainstrings", "faint.button")
+    public static var button: String { return L10n.tr("Mainstrings", "faint.button") }
     /// You lost a Level, your Gold, and a piece of Equipment, but you can get them all back with hard work!
-    public static let description = L10n.tr("Mainstrings", "faint.description")
+    public static var description: String { return L10n.tr("Mainstrings", "faint.description") }
     /// Don't despair!
-    public static let dontDespair = L10n.tr("Mainstrings", "faint.dont_despair")
+    public static var dontDespair: String { return L10n.tr("Mainstrings", "faint.dont_despair") }
     /// Good luck--you'll do great.
-    public static let goodLuck = L10n.tr("Mainstrings", "faint.good_luck")
+    public static var goodLuck: String { return L10n.tr("Mainstrings", "faint.good_luck") }
     /// You ran out of Health!
-    public static let title = L10n.tr("Mainstrings", "faint.title")
+    public static var title: String { return L10n.tr("Mainstrings", "faint.title") }
   }
 
   public enum Groups {
     /// Assign new Leader
-    public static let assignNewLeader = L10n.tr("Mainstrings", "groups.assign_new_leader")
+    public static var assignNewLeader: String { return L10n.tr("Mainstrings", "groups.assign_new_leader") }
     /// Name may not be empty.
-    public static let errorNameRequired = L10n.tr("Mainstrings", "groups.error_name_required")
+    public static var errorNameRequired: String { return L10n.tr("Mainstrings", "groups.error_name_required") }
     /// %@ invited you to join Guild: %@
     public static func guildInvitationInvitername(_ p1: String, _ p2: String) -> String {
       return L10n.tr("Mainstrings", "groups.guild_invitation_invitername", p1, p2)
@@ -782,84 +835,88 @@ public enum L10n {
       return L10n.tr("Mainstrings", "groups.guild_invitation_no_invitername", p1)
     }
     /// Invite a Member
-    public static let inviteMember = L10n.tr("Mainstrings", "groups.invite_member")
+    public static var inviteMember: String { return L10n.tr("Mainstrings", "groups.invite_member") }
     /// Only leader can create Challenges
-    public static let leaderChallenges = L10n.tr("Mainstrings", "groups.leader_challenges")
+    public static var leaderChallenges: String { return L10n.tr("Mainstrings", "groups.leader_challenges") }
     /// Members
-    public static let members = L10n.tr("Mainstrings", "groups.members")
+    public static var members: String { return L10n.tr("Mainstrings", "groups.members") }
 
     public enum Invite {
       /// Add an Email
-      public static let addEmail = L10n.tr("Mainstrings", "groups.invite.add_email")
+      public static var addEmail: String { return L10n.tr("Mainstrings", "groups.invite.add_email") }
       /// Add a User ID
-      public static let addUserid = L10n.tr("Mainstrings", "groups.invite.add_userid")
+      public static var addUserid: String { return L10n.tr("Mainstrings", "groups.invite.add_userid") }
       /// Add a Username
-      public static let addUsername = L10n.tr("Mainstrings", "groups.invite.add_username")
+      public static var addUsername: String { return L10n.tr("Mainstrings", "groups.invite.add_username") }
       /// Invitation Type
-      public static let invitationType = L10n.tr("Mainstrings", "groups.invite.invitation_type")
+      public static var invitationType: String { return L10n.tr("Mainstrings", "groups.invite.invitation_type") }
     }
   }
 
   public enum Guilds {
     /// Guild Bank
-    public static let guildBank = L10n.tr("Mainstrings", "guilds.guild_bank")
+    public static var guildBank: String { return L10n.tr("Mainstrings", "guilds.guild_bank") }
     /// Guild Challenges
-    public static let guildChallenges = L10n.tr("Mainstrings", "guilds.guild_challenges")
+    public static var guildChallenges: String { return L10n.tr("Mainstrings", "guilds.guild_challenges") }
     /// Guild Description
-    public static let guildDescription = L10n.tr("Mainstrings", "guilds.guild_description")
+    public static var guildDescription: String { return L10n.tr("Mainstrings", "guilds.guild_description") }
     /// Guild Leader
-    public static let guildLeader = L10n.tr("Mainstrings", "guilds.guild_leader")
+    public static var guildLeader: String { return L10n.tr("Mainstrings", "guilds.guild_leader") }
     /// Guild Members
-    public static let guildMembers = L10n.tr("Mainstrings", "guilds.guild_members")
+    public static var guildMembers: String { return L10n.tr("Mainstrings", "guilds.guild_members") }
     /// Invite to Guild
-    public static let inviteToGuild = L10n.tr("Mainstrings", "guilds.invite_to_guild")
-    /// Join Guilds
-    public static let joinGuild = L10n.tr("Mainstrings", "guilds.join_guild")
+    public static var inviteToGuild: String { return L10n.tr("Mainstrings", "guilds.invite_to_guild") }
+    /// Join Guild
+    public static var joinGuild: String { return L10n.tr("Mainstrings", "guilds.join_guild") }
+    /// You joined the guild
+    public static var joinedGuild: String { return L10n.tr("Mainstrings", "guilds.joined_guild") }
     /// Keep challenges
-    public static let keepChallenges = L10n.tr("Mainstrings", "guilds.keep_challenges")
+    public static var keepChallenges: String { return L10n.tr("Mainstrings", "guilds.keep_challenges") }
     /// Leave Challenges
-    public static let leaveChallenges = L10n.tr("Mainstrings", "guilds.leave_challenges")
-    /// Do you want to leave the guild and keep or delete the challenges?
-    public static let leaveGuildDescription = L10n.tr("Mainstrings", "guilds.leave_guild_description")
+    public static var leaveChallenges: String { return L10n.tr("Mainstrings", "guilds.leave_challenges") }
+    /// Do you want to leave the guild and keep or leave the challenges?
+    public static var leaveGuildDescription: String { return L10n.tr("Mainstrings", "guilds.leave_guild_description") }
     /// Leave Guild?
-    public static let leaveGuildTitle = L10n.tr("Mainstrings", "guilds.leave_guild_title")
+    public static var leaveGuildTitle: String { return L10n.tr("Mainstrings", "guilds.leave_guild_title") }
+    /// You left the guild
+    public static var leftGuild: String { return L10n.tr("Mainstrings", "guilds.left_guild") }
   }
 
   public enum Intro {
     /// So how would you like to look? Don’t worry, you can change this later.
-    public static let avatarSetupSpeechbubble = L10n.tr("Mainstrings", "intro.avatar_setup_speechbubble")
+    public static var avatarSetupSpeechbubble: String { return L10n.tr("Mainstrings", "intro.avatar_setup_speechbubble") }
     /// Let's start!
-    public static let letsGo = L10n.tr("Mainstrings", "intro.lets_go")
+    public static var letsGo: String { return L10n.tr("Mainstrings", "intro.lets_go") }
     /// Great! Now, what are you interested in working on throughout this journey?
-    public static let taskSetupSpeechbubble = L10n.tr("Mainstrings", "intro.task_setup_speechbubble")
+    public static var taskSetupSpeechbubble: String { return L10n.tr("Mainstrings", "intro.task_setup_speechbubble") }
     /// What should we call you?
-    public static let welcomePrompt = L10n.tr("Mainstrings", "intro.welcome_prompt")
+    public static var welcomePrompt: String { return L10n.tr("Mainstrings", "intro.welcome_prompt") }
     /// Oh, you must be new here. I’m Justin, your guide to Habitica.\n\nFirst, what should we call you? Feel free to change what I picked. When you’re all set, let’s create your avatar!
-    public static let welcomeSpeechbubble = L10n.tr("Mainstrings", "intro.welcome_speechbubble")
+    public static var welcomeSpeechbubble: String { return L10n.tr("Mainstrings", "intro.welcome_speechbubble") }
 
     public enum Card1 {
       /// It’s time to have fun while you get things done. Join over 2 million others improving their life one task at a time.
-      public static let text = L10n.tr("Mainstrings", "intro.card1.text")
+      public static var text: String { return L10n.tr("Mainstrings", "intro.card1.text") }
       /// Welcome to
-      public static let title = L10n.tr("Mainstrings", "intro.card1.title")
+      public static var title: String { return L10n.tr("Mainstrings", "intro.card1.title") }
     }
 
     public enum Card2 {
       /// Progress in life
-      public static let subtitle = L10n.tr("Mainstrings", "intro.card2.subtitle")
+      public static var subtitle: String { return L10n.tr("Mainstrings", "intro.card2.subtitle") }
       /// Unlock features in the game by checking off your real life tasks. Earn armor, pets, and more as rewards for meeting your goals. 
-      public static let text = L10n.tr("Mainstrings", "intro.card2.text")
+      public static var text: String { return L10n.tr("Mainstrings", "intro.card2.text") }
       /// Progress in the game
-      public static let title = L10n.tr("Mainstrings", "intro.card2.title")
+      public static var title: String { return L10n.tr("Mainstrings", "intro.card2.title") }
     }
 
     public enum Card3 {
       /// Fight monsters
-      public static let subtitle = L10n.tr("Mainstrings", "intro.card3.subtitle")
+      public static var subtitle: String { return L10n.tr("Mainstrings", "intro.card3.subtitle") }
       /// Keep your goals on track with help from your friends. Support each other in life and in battle as you improve together!
-      public static let text = L10n.tr("Mainstrings", "intro.card3.text")
+      public static var text: String { return L10n.tr("Mainstrings", "intro.card3.text") }
       /// Get social
-      public static let title = L10n.tr("Mainstrings", "intro.card3.title")
+      public static var title: String { return L10n.tr("Mainstrings", "intro.card3.title") }
     }
   }
 
@@ -869,13 +926,13 @@ public enum L10n {
       return L10n.tr("Mainstrings", "inventory.available_until", p1)
     }
     /// You hatched a new pet!
-    public static let hatched = L10n.tr("Mainstrings", "inventory.hatched")
+    public static var hatched: String { return L10n.tr("Mainstrings", "inventory.hatched") }
     /// I just hatched a %@ %@ pet in Habitica by completing my real-life tasks!
     public static func hatchedSharing(_ p1: String, _ p2: String) -> String {
       return L10n.tr("Mainstrings", "inventory.hatchedSharing", p1, p2)
     }
     /// No more Gems available this month. More become available within the first 3 days of each month.
-    public static let noGemsLeft = L10n.tr("Mainstrings", "inventory.no_gems_left")
+    public static var noGemsLeft: String { return L10n.tr("Mainstrings", "inventory.no_gems_left") }
     /// Monthly Gems: %d/%d Remaining
     public static func numberGemsLeft(_ p1: Int, _ p2: Int) -> String {
       return L10n.tr("Mainstrings", "inventory.number_gems_left", p1, p2)
@@ -888,95 +945,136 @@ public enum L10n {
 
   public enum Locations {
     /// Market
-    public static let market = L10n.tr("Mainstrings", "locations.market")
+    public static var market: String { return L10n.tr("Mainstrings", "locations.market") }
     /// Quest Shop
-    public static let questShop = L10n.tr("Mainstrings", "locations.quest_shop")
+    public static var questShop: String { return L10n.tr("Mainstrings", "locations.quest_shop") }
     /// Seasonal Shop
-    public static let seasonalShop = L10n.tr("Mainstrings", "locations.seasonal_shop")
+    public static var seasonalShop: String { return L10n.tr("Mainstrings", "locations.seasonal_shop") }
     /// Stable
-    public static let stable = L10n.tr("Mainstrings", "locations.stable")
+    public static var stable: String { return L10n.tr("Mainstrings", "locations.stable") }
     /// Tavern
-    public static let tavern = L10n.tr("Mainstrings", "locations.tavern")
+    public static var tavern: String { return L10n.tr("Mainstrings", "locations.tavern") }
   }
 
   public enum Login {
     /// There was an error with the authentication. Try again later
-    public static let authenticationError = L10n.tr("Mainstrings", "login.authentication_error")
+    public static var authenticationError: String { return L10n.tr("Mainstrings", "login.authentication_error") }
     /// Email a Password Reset Link
-    public static let emailPasswordLink = L10n.tr("Mainstrings", "login.email_password_link")
+    public static var emailPasswordLink: String { return L10n.tr("Mainstrings", "login.email_password_link") }
     /// Email / Username
-    public static let emailUsername = L10n.tr("Mainstrings", "login.email_username")
+    public static var emailUsername: String { return L10n.tr("Mainstrings", "login.email_username") }
     /// Enter the email address you used to register your Habitica account.
-    public static let enterEmail = L10n.tr("Mainstrings", "login.enter_email")
+    public static var enterEmail: String { return L10n.tr("Mainstrings", "login.enter_email") }
     /// Forgot Password
-    public static let forgotPassword = L10n.tr("Mainstrings", "login.forgot_password")
+    public static var forgotPassword: String { return L10n.tr("Mainstrings", "login.forgot_password") }
     /// Login
-    public static let login = L10n.tr("Mainstrings", "login.login")
+    public static var login: String { return L10n.tr("Mainstrings", "login.login") }
     /// Login with Facebook
-    public static let loginFacebook = L10n.tr("Mainstrings", "login.login_facebook")
+    public static var loginFacebook: String { return L10n.tr("Mainstrings", "login.login_facebook") }
     /// Login with Google
-    public static let loginGoogle = L10n.tr("Mainstrings", "login.login_google")
+    public static var loginGoogle: String { return L10n.tr("Mainstrings", "login.login_google") }
     /// Password and password confirmation have to match.
-    public static let passwordConfirmError = L10n.tr("Mainstrings", "login.password_confirm_error")
+    public static var passwordConfirmError: String { return L10n.tr("Mainstrings", "login.password_confirm_error") }
     /// Register
-    public static let register = L10n.tr("Mainstrings", "login.register")
+    public static var register: String { return L10n.tr("Mainstrings", "login.register") }
     /// If we have your email on file, instructions for setting a new password have been sent to your email.
-    public static let resetPasswordResponse = L10n.tr("Mainstrings", "login.reset_password_response")
+    public static var resetPasswordResponse: String { return L10n.tr("Mainstrings", "login.reset_password_response") }
   }
 
   public enum Member {
     /// Last logged in
-    public static let lastLoggedIn = L10n.tr("Mainstrings", "member.last_logged_in")
+    public static var lastLoggedIn: String { return L10n.tr("Mainstrings", "member.last_logged_in") }
     /// Member Since
-    public static let memberSince = L10n.tr("Mainstrings", "member.member_since")
+    public static var memberSince: String { return L10n.tr("Mainstrings", "member.member_since") }
   }
 
   public enum Menu {
     /// Cast Spells
-    public static let castSpells = L10n.tr("Mainstrings", "menu.cast_spells")
+    public static var castSpells: String { return L10n.tr("Mainstrings", "menu.cast_spells") }
     /// Customize Avatar
-    public static let customizeAvatar = L10n.tr("Mainstrings", "menu.customize_avatar")
+    public static var customizeAvatar: String { return L10n.tr("Mainstrings", "menu.customize_avatar") }
     /// Gems & Subscriptions
-    public static let gemsSubscriptions = L10n.tr("Mainstrings", "menu.gems_subscriptions")
+    public static var gemsSubscriptions: String { return L10n.tr("Mainstrings", "menu.gems_subscriptions") }
     /// Help & FAQ
-    public static let helpFaq = L10n.tr("Mainstrings", "menu.help_faq")
+    public static var helpFaq: String { return L10n.tr("Mainstrings", "menu.help_faq") }
     /// Inventory
-    public static let inventory = L10n.tr("Mainstrings", "menu.inventory")
+    public static var inventory: String { return L10n.tr("Mainstrings", "menu.inventory") }
     /// Select Class
-    public static let selectClass = L10n.tr("Mainstrings", "menu.select_class")
+    public static var selectClass: String { return L10n.tr("Mainstrings", "menu.select_class") }
     /// Shops
-    public static let shops = L10n.tr("Mainstrings", "menu.shops")
+    public static var shops: String { return L10n.tr("Mainstrings", "menu.shops") }
     /// Social
-    public static let social = L10n.tr("Mainstrings", "menu.social")
+    public static var social: String { return L10n.tr("Mainstrings", "menu.social") }
     /// Use Skills
-    public static let useSkills = L10n.tr("Mainstrings", "menu.use_skills")
+    public static var useSkills: String { return L10n.tr("Mainstrings", "menu.use_skills") }
+  }
+
+  public enum Notifications {
+    /// Dismiss all
+    public static var dismissAll: String { return L10n.tr("Mainstrings", "notifications.dismiss_all") }
+    /// New Bailey Update!
+    public static var newBailey: String { return L10n.tr("Mainstrings", "notifications.new_bailey") }
+    /// You have new **Mystery Items**
+    public static var newMysteryItem: String { return L10n.tr("Mainstrings", "notifications.new_mystery_item") }
+    /// You were invited to join the Party **%s**
+    public static func partyInvite(_ p1: UnsafePointer<CChar>) -> String {
+      return L10n.tr("Mainstrings", "notifications.party_invite", p1)
+    }
+    /// You were invited to join the private guild **%s**
+    public static func privateGuildInvite(_ p1: UnsafePointer<CChar>) -> String {
+      return L10n.tr("Mainstrings", "notifications.private_guild_invite", p1)
+    }
+    /// You were invited to join the public guild **%s**
+    public static func publicGuildInvite(_ p1: UnsafePointer<CChar>) -> String {
+      return L10n.tr("Mainstrings", "notifications.public_guild_invite", p1)
+    }
+    /// You were invited to the Quest **%s**
+    public static func questInvite(_ p1: UnsafePointer<CChar>) -> String {
+      return L10n.tr("Mainstrings", "notifications.quest_invite", p1)
+    }
+    /// You have **%d unallocated Stat Points**
+    public static func unallocatedStatPoints(_ p1: Int) -> String {
+      return L10n.tr("Mainstrings", "notifications.unallocated_stat_points", p1)
+    }
+    /// **%@** has new posts.
+    public static func unreadGuildMessage(_ p1: String) -> String {
+      return L10n.tr("Mainstrings", "notifications.unread_guild_message", p1)
+    }
+    /// Your party, **%@**, has new posts.
+    public static func unreadPartyMessage(_ p1: String) -> String {
+      return L10n.tr("Mainstrings", "notifications.unread_party_message", p1)
+    }
   }
 
   public enum Party {
     /// Create a new Party
-    public static let createPartyButton = L10n.tr("Mainstrings", "party.create_party_button")
+    public static var createPartyButton: String { return L10n.tr("Mainstrings", "party.create_party_button") }
     /// Take on quests with friends or on your own. Battle monsters, create Challenges, and help yourself stay accountable through Parties. 
-    public static let createPartyDescription = L10n.tr("Mainstrings", "party.create_party_description")
+    public static var createPartyDescription: String { return L10n.tr("Mainstrings", "party.create_party_description") }
     /// Play Habitica in a Party
-    public static let createPartyTitle = L10n.tr("Mainstrings", "party.create_party_title")
+    public static var createPartyTitle: String { return L10n.tr("Mainstrings", "party.create_party_title") }
     /// %@ invited you to join their party
     public static func invitationInvitername(_ p1: String) -> String {
       return L10n.tr("Mainstrings", "party.invitation_invitername", p1)
     }
     /// Someone invited you to join their party
-    public static let invitationNoInvitername = L10n.tr("Mainstrings", "party.invitation_no_invitername")
+    public static var invitationNoInvitername: String { return L10n.tr("Mainstrings", "party.invitation_no_invitername") }
     /// %@ invited you to participate in a quest
     public static func invitedToQuest(_ p1: String) -> String {
       return L10n.tr("Mainstrings", "party.invited_to_quest", p1)
     }
     /// Give a Party member the username found below and they can send you an invite
-    public static let joinPartyDescription = L10n.tr("Mainstrings", "party.join_party_description")
+    public static var joinPartyDescription: String { return L10n.tr("Mainstrings", "party.join_party_description") }
     /// Want to join a party?
-    public static let joinPartyTitle = L10n.tr("Mainstrings", "party.join_party_title")
+    public static var joinPartyTitle: String { return L10n.tr("Mainstrings", "party.join_party_title") }
+    /// Do you want to leave the party and keep or leave the challenges?
+    public static var leavePartyDescription: String { return L10n.tr("Mainstrings", "party.leave_party_description") }
+    /// Leave Party?
+    public static var leavePartyTitle: String { return L10n.tr("Mainstrings", "party.leave_party_title") }
     /// Party Challenges
-    public static let partyChallenges = L10n.tr("Mainstrings", "party.party_challenges")
+    public static var partyChallenges: String { return L10n.tr("Mainstrings", "party.party_challenges") }
     /// Party Description
-    public static let partyDescription = L10n.tr("Mainstrings", "party.party_description")
+    public static var partyDescription: String { return L10n.tr("Mainstrings", "party.party_description") }
     /// %d/%d Members responded
     public static func questNumberResponded(_ p1: Int, _ p2: Int) -> String {
       return L10n.tr("Mainstrings", "party.quest_number_responded", p1, p2)
@@ -986,34 +1084,34 @@ public enum L10n {
       return L10n.tr("Mainstrings", "party.quest_participant_count", p1)
     }
     /// Start a Quest
-    public static let startQuest = L10n.tr("Mainstrings", "party.start_quest")
+    public static var startQuest: String { return L10n.tr("Mainstrings", "party.start_quest") }
   }
 
   public enum Quests {
     /// Accepted
-    public static let accepted = L10n.tr("Mainstrings", "quests.accepted")
+    public static var accepted: String { return L10n.tr("Mainstrings", "quests.accepted") }
     /// Boss Battle
-    public static let bossBattle = L10n.tr("Mainstrings", "quests.boss_battle")
+    public static var bossBattle: String { return L10n.tr("Mainstrings", "quests.boss_battle") }
     /// Collection quest
-    public static let collectionQuest = L10n.tr("Mainstrings", "quests.collection_quest")
+    public static var collectionQuest: String { return L10n.tr("Mainstrings", "quests.collection_quest") }
     /// Are you sure you want to abort this mission? It will abort it for everyone in your party and all progress will be lost. The quest scroll will be returned to the quest owner.
-    public static let confirmAbort = L10n.tr("Mainstrings", "quests.confirm_abort")
+    public static var confirmAbort: String { return L10n.tr("Mainstrings", "quests.confirm_abort") }
     /// Are you sure you want to cancel this quest? All invitation acceptances will be lost. The quest owner will retain possession of the quest scroll.
-    public static let confirmCancelInvitation = L10n.tr("Mainstrings", "quests.confirm_cancel_invitation")
+    public static var confirmCancelInvitation: String { return L10n.tr("Mainstrings", "quests.confirm_cancel_invitation") }
     /// Are you sure? Not all party members have joined this quest! Quests start automatically when all players have joined or rejected the invitation.
-    public static let confirmForceStart = L10n.tr("Mainstrings", "quests.confirm_force_start")
+    public static var confirmForceStart: String { return L10n.tr("Mainstrings", "quests.confirm_force_start") }
     /// Invitations
-    public static let invitationsHeader = L10n.tr("Mainstrings", "quests.invitations_header")
+    public static var invitationsHeader: String { return L10n.tr("Mainstrings", "quests.invitations_header") }
     /// Participants
-    public static let participantsHeader = L10n.tr("Mainstrings", "quests.participants_header")
+    public static var participantsHeader: String { return L10n.tr("Mainstrings", "quests.participants_header") }
     /// Pending
-    public static let pending = L10n.tr("Mainstrings", "quests.pending")
+    public static var pending: String { return L10n.tr("Mainstrings", "quests.pending") }
     /// Rage attack: %@
     public static func rageAttack(_ p1: String) -> String {
       return L10n.tr("Mainstrings", "quests.rage_attack", p1)
     }
     /// Rejected
-    public static let rejected = L10n.tr("Mainstrings", "quests.rejected")
+    public static var rejected: String { return L10n.tr("Mainstrings", "quests.rejected") }
     /// %d Experience Points
     public static func rewardExperience(_ p1: Int) -> String {
       return L10n.tr("Mainstrings", "quests.reward_experience", p1)
@@ -1030,137 +1128,139 @@ public enum L10n {
 
   public enum Settings {
     /// API
-    public static let api = L10n.tr("Mainstrings", "settings.api")
+    public static var api: String { return L10n.tr("Mainstrings", "settings.api") }
     /// Copy these for use in third party applications. However, think of your API Token like a password, and do not share it publicly. You may occasionally be asked for your User ID, but never post your API Token where others can see it, including on Github.
-    public static let apiDisclaimer = L10n.tr("Mainstrings", "settings.api_disclaimer")
+    public static var apiDisclaimer: String { return L10n.tr("Mainstrings", "settings.api_disclaimer") }
     /// App Icon
-    public static let appIcon = L10n.tr("Mainstrings", "settings.app_icon")
+    public static var appIcon: String { return L10n.tr("Mainstrings", "settings.app_icon") }
     /// Are you sure?
-    public static let areYouSure = L10n.tr("Mainstrings", "settings.are_you_sure")
+    public static var areYouSure: String { return L10n.tr("Mainstrings", "settings.are_you_sure") }
     /// Authentication
-    public static let authentication = L10n.tr("Mainstrings", "settings.authentication")
+    public static var authentication: String { return L10n.tr("Mainstrings", "settings.authentication") }
     /// Change About Message
-    public static let changeAboutMessage = L10n.tr("Mainstrings", "settings.change_about_message")
+    public static var changeAboutMessage: String { return L10n.tr("Mainstrings", "settings.change_about_message") }
     /// Change Class
-    public static let changeClass = L10n.tr("Mainstrings", "settings.change_class")
+    public static var changeClass: String { return L10n.tr("Mainstrings", "settings.change_class") }
     /// This will reset your character's class and allocated points (you'll get them all back to re-allocate), and costs 3 gems.
-    public static let changeClassDisclaimer = L10n.tr("Mainstrings", "settings.change_class_disclaimer")
+    public static var changeClassDisclaimer: String { return L10n.tr("Mainstrings", "settings.change_class_disclaimer") }
     /// Change Display Name
-    public static let changeDisplayName = L10n.tr("Mainstrings", "settings.change_display_name")
+    public static var changeDisplayName: String { return L10n.tr("Mainstrings", "settings.change_display_name") }
     /// Change Email
-    public static let changeEmail = L10n.tr("Mainstrings", "settings.change_email")
+    public static var changeEmail: String { return L10n.tr("Mainstrings", "settings.change_email") }
     /// Change Password
-    public static let changePassword = L10n.tr("Mainstrings", "settings.change_password")
+    public static var changePassword: String { return L10n.tr("Mainstrings", "settings.change_password") }
     /// Change Photo URL
-    public static let changePhotoUrl = L10n.tr("Mainstrings", "settings.change_photo_url")
+    public static var changePhotoUrl: String { return L10n.tr("Mainstrings", "settings.change_photo_url") }
     /// Change Username
-    public static let changeUsername = L10n.tr("Mainstrings", "settings.change_username")
+    public static var changeUsername: String { return L10n.tr("Mainstrings", "settings.change_username") }
     /// Clear Cache
-    public static let clearCache = L10n.tr("Mainstrings", "settings.clear_cache")
+    public static var clearCache: String { return L10n.tr("Mainstrings", "settings.clear_cache") }
     /// Confirm new Password
-    public static let confirmNewPassword = L10n.tr("Mainstrings", "settings.confirm_new_password")
+    public static var confirmNewPassword: String { return L10n.tr("Mainstrings", "settings.confirm_new_password") }
     /// Confirming your username will make it public for invitations, @mentions and messaging. You can change your username from settings at any time.
-    public static let confirmUsernameDescription = L10n.tr("Mainstrings", "settings.confirm_username_description")
+    public static var confirmUsernameDescription: String { return L10n.tr("Mainstrings", "settings.confirm_username_description") }
     /// Are you sure you want to confirm your current username?
-    public static let confirmUsernamePrompt = L10n.tr("Mainstrings", "settings.confirm_username_prompt")
+    public static var confirmUsernamePrompt: String { return L10n.tr("Mainstrings", "settings.confirm_username_prompt") }
     /// Custom Day Start
-    public static let customDayStart = L10n.tr("Mainstrings", "settings.custom_day_start")
+    public static var customDayStart: String { return L10n.tr("Mainstrings", "settings.custom_day_start") }
     /// Daily Reminder
-    public static let dailyReminder = L10n.tr("Mainstrings", "settings.daily_reminder")
+    public static var dailyReminder: String { return L10n.tr("Mainstrings", "settings.daily_reminder") }
     /// Danger Zone
-    public static let dangerZone = L10n.tr("Mainstrings", "settings.danger_zone")
+    public static var dangerZone: String { return L10n.tr("Mainstrings", "settings.danger_zone") }
     /// Day Start
-    public static let dayStart = L10n.tr("Mainstrings", "settings.day_start")
+    public static var dayStart: String { return L10n.tr("Mainstrings", "settings.day_start") }
     /// Delete Account
-    public static let deleteAccount = L10n.tr("Mainstrings", "settings.delete_account")
+    public static var deleteAccount: String { return L10n.tr("Mainstrings", "settings.delete_account") }
     /// Are you sure? This will delete your account forever, and it can never be restored! You will need to register a new account to use Habitica again. Banked or spent Gems will not be refunded. If you're absolutely certain, type your password into the text box below.
-    public static let deleteAccountDescription = L10n.tr("Mainstrings", "settings.delete_account_description")
+    public static var deleteAccountDescription: String { return L10n.tr("Mainstrings", "settings.delete_account_description") }
     /// Disable all Push Notifications
-    public static let disableAllNotifications = L10n.tr("Mainstrings", "settings.disable_all_notifications")
+    public static var disableAllNotifications: String { return L10n.tr("Mainstrings", "settings.disable_all_notifications") }
     /// Disable Private Messages
-    public static let disablePm = L10n.tr("Mainstrings", "settings.disable_pm")
+    public static var disablePm: String { return L10n.tr("Mainstrings", "settings.disable_pm") }
     /// Your display name has to be between 1 and 30 characters.
-    public static let displayNameLengthError = L10n.tr("Mainstrings", "settings.display_name_length_error")
+    public static var displayNameLengthError: String { return L10n.tr("Mainstrings", "settings.display_name_length_error") }
     /// Display Notification Badge
-    public static let displayNotificationBadge = L10n.tr("Mainstrings", "settings.display_notification_badge")
+    public static var displayNotificationBadge: String { return L10n.tr("Mainstrings", "settings.display_notification_badge") }
     /// Enable Class System
-    public static let enableClassSystem = L10n.tr("Mainstrings", "settings.enable_class_system")
+    public static var enableClassSystem: String { return L10n.tr("Mainstrings", "settings.enable_class_system") }
     /// Every day at
-    public static let everyDay = L10n.tr("Mainstrings", "settings.every_day")
+    public static var everyDay: String { return L10n.tr("Mainstrings", "settings.every_day") }
     /// Fix Character Values
-    public static let fixCharacterValues = L10n.tr("Mainstrings", "settings.fix_characterValues")
+    public static var fixCharacterValues: String { return L10n.tr("Mainstrings", "settings.fix_characterValues") }
     /// If you’ve encountered a bug or made a mistake that unfairly changed your character, you can manually correct those values here.
-    public static let fixValuesDescription = L10n.tr("Mainstrings", "settings.fix_values_description")
+    public static var fixValuesDescription: String { return L10n.tr("Mainstrings", "settings.fix_values_description") }
+    /// Language
+    public static var language: String { return L10n.tr("Mainstrings", "settings.language") }
     /// Local
-    public static let local = L10n.tr("Mainstrings", "settings.local")
+    public static var local: String { return L10n.tr("Mainstrings", "settings.local") }
     /// Log Out
-    public static let logOut = L10n.tr("Mainstrings", "settings.log_out")
+    public static var logOut: String { return L10n.tr("Mainstrings", "settings.log_out") }
     /// Login Methods
-    public static let loginMethods = L10n.tr("Mainstrings", "settings.login_methods")
+    public static var loginMethods: String { return L10n.tr("Mainstrings", "settings.login_methods") }
     /// Maintenance
-    public static let maintenance = L10n.tr("Mainstrings", "settings.maintenance")
+    public static var maintenance: String { return L10n.tr("Mainstrings", "settings.maintenance") }
     /// Mentions
-    public static let mentions = L10n.tr("Mainstrings", "settings.mentions")
+    public static var mentions: String { return L10n.tr("Mainstrings", "settings.mentions") }
     /// New Email
-    public static let newEmail = L10n.tr("Mainstrings", "settings.new_email")
+    public static var newEmail: String { return L10n.tr("Mainstrings", "settings.new_email") }
     /// New Password
-    public static let newPassword = L10n.tr("Mainstrings", "settings.new_password")
+    public static var newPassword: String { return L10n.tr("Mainstrings", "settings.new_password") }
     /// New Username
-    public static let newUsername = L10n.tr("Mainstrings", "settings.new_username")
+    public static var newUsername: String { return L10n.tr("Mainstrings", "settings.new_username") }
     /// Notification Badge
-    public static let notificationBadge = L10n.tr("Mainstrings", "settings.notification_badge")
+    public static var notificationBadge: String { return L10n.tr("Mainstrings", "settings.notification_badge") }
     /// Old Password
-    public static let oldPassword = L10n.tr("Mainstrings", "settings.old_password")
+    public static var oldPassword: String { return L10n.tr("Mainstrings", "settings.old_password") }
     /// Preferences
-    public static let preferences = L10n.tr("Mainstrings", "settings.preferences")
+    public static var preferences: String { return L10n.tr("Mainstrings", "settings.preferences") }
     /// Profile
-    public static let profile = L10n.tr("Mainstrings", "settings.profile")
+    public static var profile: String { return L10n.tr("Mainstrings", "settings.profile") }
     /// Push Notifications
-    public static let pushNotifications = L10n.tr("Mainstrings", "settings.push_notifications")
+    public static var pushNotifications: String { return L10n.tr("Mainstrings", "settings.push_notifications") }
     /// Reload Content
-    public static let reloadContent = L10n.tr("Mainstrings", "settings.reload_content")
+    public static var reloadContent: String { return L10n.tr("Mainstrings", "settings.reload_content") }
     /// Reminder
-    public static let reminder = L10n.tr("Mainstrings", "settings.reminder")
+    public static var reminder: String { return L10n.tr("Mainstrings", "settings.reminder") }
     /// Reset Account
-    public static let resetAccount = L10n.tr("Mainstrings", "settings.reset_account")
+    public static var resetAccount: String { return L10n.tr("Mainstrings", "settings.reset_account") }
     /// WARNING! This resets many parts of your account. This is highly discouraged, but some people find it useful in the beginning after playing with the site for a short time.\n\nYou will lose all your levels, gold, and experience points. All your tasks (except those from challenges) will be deleted permanently and you will lose all of their historical data. You will lose all your equipment but you will be able to buy it all back, including all limited edition equipment or subscriber Mystery items that you already own (you will need to be in the correct class to re-buy class-specific gear). You will keep your current class and your pets and mounts. You might prefer to use an Orb of Rebirth instead, which is a much safer option and which will preserve your tasks and equipment.
-    public static let resetAccountDescription = L10n.tr("Mainstrings", "settings.reset_account_description")
+    public static var resetAccountDescription: String { return L10n.tr("Mainstrings", "settings.reset_account_description") }
     /// Everywhere
-    public static let searchableEverywhere = L10n.tr("Mainstrings", "settings.searchable_everywhere")
+    public static var searchableEverywhere: String { return L10n.tr("Mainstrings", "settings.searchable_everywhere") }
     /// Only Private Spaces
-    public static let searchablePrivateSpaces = L10n.tr("Mainstrings", "settings.searchable_private_spaces")
+    public static var searchablePrivateSpaces: String { return L10n.tr("Mainstrings", "settings.searchable_private_spaces") }
     /// Suggest my username
-    public static let searchableUsername = L10n.tr("Mainstrings", "settings.searchable_username")
+    public static var searchableUsername: String { return L10n.tr("Mainstrings", "settings.searchable_username") }
     /// Select Class
-    public static let selectClass = L10n.tr("Mainstrings", "settings.select_class")
+    public static var selectClass: String { return L10n.tr("Mainstrings", "settings.select_class") }
     /// Server
-    public static let server = L10n.tr("Mainstrings", "settings.server")
+    public static var server: String { return L10n.tr("Mainstrings", "settings.server") }
     /// Social
-    public static let social = L10n.tr("Mainstrings", "settings.social")
+    public static var social: String { return L10n.tr("Mainstrings", "settings.social") }
     /// Sound Theme
-    public static let soundTheme = L10n.tr("Mainstrings", "settings.sound_theme")
+    public static var soundTheme: String { return L10n.tr("Mainstrings", "settings.sound_theme") }
     /// Theme Color
-    public static let themeColor = L10n.tr("Mainstrings", "settings.theme_color")
+    public static var themeColor: String { return L10n.tr("Mainstrings", "settings.theme_color") }
     /// User
-    public static let user = L10n.tr("Mainstrings", "settings.user")
+    public static var user: String { return L10n.tr("Mainstrings", "settings.user") }
     /// Username not confirmed
-    public static let usernameNotConfirmed = L10n.tr("Mainstrings", "settings.username_not_confirmed")
+    public static var usernameNotConfirmed: String { return L10n.tr("Mainstrings", "settings.username_not_confirmed") }
     /// Incorrect Password
-    public static let wrongPassword = L10n.tr("Mainstrings", "settings.wrong_password")
+    public static var wrongPassword: String { return L10n.tr("Mainstrings", "settings.wrong_password") }
   }
 
   public enum Shops {
     /// You can only purchase gear for your current class
-    public static let otherClassDisclaimer = L10n.tr("Mainstrings", "shops.other_class_disclaimer")
+    public static var otherClassDisclaimer: String { return L10n.tr("Mainstrings", "shops.other_class_disclaimer") }
     /// You already have all your class equipment! More will be released during the Grand Galas, near the solstices and equinoxes.
-    public static let purchasedAllGear = L10n.tr("Mainstrings", "shops.purchased_all_gear")
+    public static var purchasedAllGear: String { return L10n.tr("Mainstrings", "shops.purchased_all_gear") }
   }
 
   public enum Skills {
     /// Can't cast a spell on a challenge task
-    public static let cantCastOnChallengeTasks = L10n.tr("Mainstrings", "skills.cant_cast_on_challenge_tasks")
+    public static var cantCastOnChallengeTasks: String { return L10n.tr("Mainstrings", "skills.cant_cast_on_challenge_tasks") }
     /// Transformation Items
-    public static let transformationItems = L10n.tr("Mainstrings", "skills.transformation_items")
+    public static var transformationItems: String { return L10n.tr("Mainstrings", "skills.transformation_items") }
     /// Unlocks at level %d
     public static func unlocksAt(_ p1: Int) -> String {
       return L10n.tr("Mainstrings", "skills.unlocks_at", p1)
@@ -1177,82 +1277,86 @@ public enum L10n {
 
   public enum Stable {
     /// Feed
-    public static let feed = L10n.tr("Mainstrings", "stable.feed")
+    public static var feed: String { return L10n.tr("Mainstrings", "stable.feed") }
     /// Magic Potion
-    public static let premium = L10n.tr("Mainstrings", "stable.premium")
+    public static var premium: String { return L10n.tr("Mainstrings", "stable.premium") }
     /// Quest Mounts
-    public static let questMounts = L10n.tr("Mainstrings", "stable.quest_mounts")
+    public static var questMounts: String { return L10n.tr("Mainstrings", "stable.quest_mounts") }
     /// Quest Pets
-    public static let questPets = L10n.tr("Mainstrings", "stable.quest_pets")
+    public static var questPets: String { return L10n.tr("Mainstrings", "stable.quest_pets") }
     /// Special Mounts
-    public static let specialMounts = L10n.tr("Mainstrings", "stable.special_mounts")
+    public static var specialMounts: String { return L10n.tr("Mainstrings", "stable.special_mounts") }
     /// Special Pets
-    public static let specialPets = L10n.tr("Mainstrings", "stable.special_pets")
+    public static var specialPets: String { return L10n.tr("Mainstrings", "stable.special_pets") }
     /// Standard
-    public static let standard = L10n.tr("Mainstrings", "stable.standard")
+    public static var standard: String { return L10n.tr("Mainstrings", "stable.standard") }
     /// Standard Mounts
-    public static let standardMounts = L10n.tr("Mainstrings", "stable.standard_mounts")
+    public static var standardMounts: String { return L10n.tr("Mainstrings", "stable.standard_mounts") }
     /// Standard Pets
-    public static let standardPets = L10n.tr("Mainstrings", "stable.standard_pets")
+    public static var standardPets: String { return L10n.tr("Mainstrings", "stable.standard_pets") }
+    /// Wacky Mounts
+    public static var wackyMounts: String { return L10n.tr("Mainstrings", "stable.wacky_mounts") }
+    /// Wacky Pets
+    public static var wackyPets: String { return L10n.tr("Mainstrings", "stable.wacky_pets") }
   }
 
   public enum Stats {
     /// Allocated
-    public static let allocated = L10n.tr("Mainstrings", "stats.allocated")
+    public static var allocated: String { return L10n.tr("Mainstrings", "stats.allocated") }
     /// Auto Allocate Points
-    public static let autoAllocatePoints = L10n.tr("Mainstrings", "stats.auto_allocate_points")
+    public static var autoAllocatePoints: String { return L10n.tr("Mainstrings", "stats.auto_allocate_points") }
     /// Battle Gear
-    public static let battleGear = L10n.tr("Mainstrings", "stats.battle_gear")
+    public static var battleGear: String { return L10n.tr("Mainstrings", "stats.battle_gear") }
     /// Buffs
-    public static let buffs = L10n.tr("Mainstrings", "stats.buffs")
+    public static var buffs: String { return L10n.tr("Mainstrings", "stats.buffs") }
     /// Each level earns you one point to assign to an attribute of your choice. You can do so manually, or let the game decide for you using one of the Automatic Allocation options.
-    public static let characterBuildText = L10n.tr("Mainstrings", "stats.character_build_text")
+    public static var characterBuildText: String { return L10n.tr("Mainstrings", "stats.character_build_text") }
     /// Character Build
-    public static let characterBuildTitle = L10n.tr("Mainstrings", "stats.character_build_title")
+    public static var characterBuildTitle: String { return L10n.tr("Mainstrings", "stats.character_build_title") }
     /// Class-Bonus
-    public static let classBonus = L10n.tr("Mainstrings", "stats.class_bonus")
+    public static var classBonus: String { return L10n.tr("Mainstrings", "stats.class_bonus") }
     /// Decreases the amount of damage taken from your tasks. Does not decrease the damage received from bosses.
-    public static let constitutionText = L10n.tr("Mainstrings", "stats.constitution_text")
+    public static var constitutionText: String { return L10n.tr("Mainstrings", "stats.constitution_text") }
     /// Constitution
-    public static let constitutionTitle = L10n.tr("Mainstrings", "stats.constitution_title")
+    public static var constitutionTitle: String { return L10n.tr("Mainstrings", "stats.constitution_title") }
     /// Distribute based on class
-    public static let distributeClass = L10n.tr("Mainstrings", "stats.distribute_class")
+    public static var distributeClass: String { return L10n.tr("Mainstrings", "stats.distribute_class") }
     /// Assigns more points to the attributes important to your Class.
-    public static let distributeClassHelp = L10n.tr("Mainstrings", "stats.distribute_class_help")
+    public static var distributeClassHelp: String { return L10n.tr("Mainstrings", "stats.distribute_class_help") }
     /// Distribute evenly
-    public static let distributeEvenly = L10n.tr("Mainstrings", "stats.distribute_evenly")
+    public static var distributeEvenly: String { return L10n.tr("Mainstrings", "stats.distribute_evenly") }
     /// Assigns the same number of points to each attribute.
-    public static let distributeEvenlyHelp = L10n.tr("Mainstrings", "stats.distribute_evenly_help")
+    public static var distributeEvenlyHelp: String { return L10n.tr("Mainstrings", "stats.distribute_evenly_help") }
     /// Distribute based on task activity
-    public static let distributeTasks = L10n.tr("Mainstrings", "stats.distribute_tasks")
+    public static var distributeTasks: String { return L10n.tr("Mainstrings", "stats.distribute_tasks") }
     /// Assigns points based on the Strength, Intelligence, Constitution, and Perception categories associated with the tasks you complete.
-    public static let distributeTasksHelp = L10n.tr("Mainstrings", "stats.distribute_tasks_help")
+    public static var distributeTasksHelp: String { return L10n.tr("Mainstrings", "stats.distribute_tasks_help") }
     /// Increases EXP earned from completing tasks. Also increases your mana cap and how fast mana regenerates over time.
-    public static let intelligenceText = L10n.tr("Mainstrings", "stats.intelligence_text")
+    public static var intelligenceText: String { return L10n.tr("Mainstrings", "stats.intelligence_text") }
     /// Intelligence
-    public static let intelligenceTitle = L10n.tr("Mainstrings", "stats.intelligence_title")
+    public static var intelligenceTitle: String { return L10n.tr("Mainstrings", "stats.intelligence_title") }
     /// Level
-    public static let level = L10n.tr("Mainstrings", "stats.level")
+    public static var level: String { return L10n.tr("Mainstrings", "stats.level") }
     /// 0 Points to Allocate
-    public static let noPointsToAllocate = L10n.tr("Mainstrings", "stats.no_points_to_allocate")
+    public static var noPointsToAllocate: String { return L10n.tr("Mainstrings", "stats.no_points_to_allocate") }
     /// 1 Point to Allocate
-    public static let onePointToAllocate = L10n.tr("Mainstrings", "stats.one_point_to_allocate")
+    public static var onePointToAllocate: String { return L10n.tr("Mainstrings", "stats.one_point_to_allocate") }
     /// Increases the likelihood of finding drops when completing Tasks, the daily drop-cap, Streak Bonuses, and the amount of gold awarded for Tasks.
-    public static let perceptionText = L10n.tr("Mainstrings", "stats.perception_text")
+    public static var perceptionText: String { return L10n.tr("Mainstrings", "stats.perception_text") }
     /// Perception
-    public static let perceptionTitle = L10n.tr("Mainstrings", "stats.perception_title")
+    public static var perceptionTitle: String { return L10n.tr("Mainstrings", "stats.perception_title") }
     /// %d Point to Allocate
     public static func pointsToAllocate(_ p1: Int) -> String {
       return L10n.tr("Mainstrings", "stats.points_to_allocate", p1)
     }
     /// Stat guide
-    public static let statGuide = L10n.tr("Mainstrings", "stats.stat_guide")
+    public static var statGuide: String { return L10n.tr("Mainstrings", "stats.stat_guide") }
     /// Increases the bonus of critical hits and makes them more likely when scoring a task. Also increases damage dealt to bosses. 
-    public static let strengthText = L10n.tr("Mainstrings", "stats.strength_text")
+    public static var strengthText: String { return L10n.tr("Mainstrings", "stats.strength_text") }
     /// Strength
-    public static let strengthTitle = L10n.tr("Mainstrings", "stats.strength_title")
+    public static var strengthTitle: String { return L10n.tr("Mainstrings", "stats.strength_title") }
     /// Total
-    public static let total = L10n.tr("Mainstrings", "stats.total")
+    public static var total: String { return L10n.tr("Mainstrings", "stats.total") }
   }
 
   public enum Tasks {
@@ -1261,202 +1365,202 @@ public enum L10n {
       return L10n.tr("Mainstrings", "tasks.add_x", p1)
     }
     /// Chores
-    public static let chores = L10n.tr("Mainstrings", "tasks.chores")
+    public static var chores: String { return L10n.tr("Mainstrings", "tasks.chores") }
     /// Creativity
-    public static let creativity = L10n.tr("Mainstrings", "tasks.creativity")
+    public static var creativity: String { return L10n.tr("Mainstrings", "tasks.creativity") }
     /// Dailies
-    public static let dailies = L10n.tr("Mainstrings", "tasks.dailies")
+    public static var dailies: String { return L10n.tr("Mainstrings", "tasks.dailies") }
     /// Daily
-    public static let daily = L10n.tr("Mainstrings", "tasks.daily")
+    public static var daily: String { return L10n.tr("Mainstrings", "tasks.daily") }
     /// Due in %d days
     public static func dueInXDays(_ p1: Int) -> String {
       return L10n.tr("Mainstrings", "tasks.due_in_x_days", p1)
     }
     /// Due today
-    public static let dueToday = L10n.tr("Mainstrings", "tasks.due_today")
+    public static var dueToday: String { return L10n.tr("Mainstrings", "tasks.due_today") }
     /// Due tomorrow
-    public static let dueTomorrow = L10n.tr("Mainstrings", "tasks.due_tomorrow")
+    public static var dueTomorrow: String { return L10n.tr("Mainstrings", "tasks.due_tomorrow") }
     /// Due %@
     public static func dueX(_ p1: String) -> String {
       return L10n.tr("Mainstrings", "tasks.due_x", p1)
     }
-    /// every %@
-    public static func everyX(_ p1: String) -> String {
-      return L10n.tr("Mainstrings", "tasks.every_x", p1)
+    /// every %d %@
+    public static func everyX(_ p1: Int, _ p2: String) -> String {
+      return L10n.tr("Mainstrings", "tasks.every_x", p1, p2)
     }
     /// Exercise
-    public static let exercise = L10n.tr("Mainstrings", "tasks.exercise")
+    public static var exercise: String { return L10n.tr("Mainstrings", "tasks.exercise") }
     /// Habit
-    public static let habit = L10n.tr("Mainstrings", "tasks.habit")
+    public static var habit: String { return L10n.tr("Mainstrings", "tasks.habit") }
     /// Habits
-    public static let habits = L10n.tr("Mainstrings", "tasks.habits")
+    public static var habits: String { return L10n.tr("Mainstrings", "tasks.habits") }
     /// Health
-    public static let health = L10n.tr("Mainstrings", "tasks.health")
+    public static var health: String { return L10n.tr("Mainstrings", "tasks.health") }
     /// Reward
-    public static let reward = L10n.tr("Mainstrings", "tasks.reward")
+    public static var reward: String { return L10n.tr("Mainstrings", "tasks.reward") }
     /// Rewards
-    public static let rewards = L10n.tr("Mainstrings", "tasks.rewards")
+    public static var rewards: String { return L10n.tr("Mainstrings", "tasks.rewards") }
     /// School
-    public static let school = L10n.tr("Mainstrings", "tasks.school")
+    public static var school: String { return L10n.tr("Mainstrings", "tasks.school") }
     /// Team
-    public static let team = L10n.tr("Mainstrings", "tasks.team")
+    public static var team: String { return L10n.tr("Mainstrings", "tasks.team") }
     /// To-Do
-    public static let todo = L10n.tr("Mainstrings", "tasks.todo")
+    public static var todo: String { return L10n.tr("Mainstrings", "tasks.todo") }
     /// To-Dos
-    public static let todos = L10n.tr("Mainstrings", "tasks.todos")
+    public static var todos: String { return L10n.tr("Mainstrings", "tasks.todos") }
     /// Work
-    public static let work = L10n.tr("Mainstrings", "tasks.work")
+    public static var work: String { return L10n.tr("Mainstrings", "tasks.work") }
 
     public enum Examples {
       /// Tap to choose your schedule!
-      public static let choresDailyNotes = L10n.tr("Mainstrings", "tasks.examples.chores_daily_notes")
+      public static var choresDailyNotes: String { return L10n.tr("Mainstrings", "tasks.examples.chores_daily_notes") }
       /// Wash dishes
-      public static let choresDailyText = L10n.tr("Mainstrings", "tasks.examples.chores_daily_text")
+      public static var choresDailyText: String { return L10n.tr("Mainstrings", "tasks.examples.chores_daily_text") }
       /// 10 minutes cleaning
-      public static let choresHabit = L10n.tr("Mainstrings", "tasks.examples.chores_habit")
+      public static var choresHabit: String { return L10n.tr("Mainstrings", "tasks.examples.chores_habit") }
       /// Tap to specify the cluttered area!
-      public static let choresTodoNotes = L10n.tr("Mainstrings", "tasks.examples.chores_todo_notes")
+      public static var choresTodoNotes: String { return L10n.tr("Mainstrings", "tasks.examples.chores_todo_notes") }
       /// Organize clutter
-      public static let choresTodoText = L10n.tr("Mainstrings", "tasks.examples.chores_todo_text")
+      public static var choresTodoText: String { return L10n.tr("Mainstrings", "tasks.examples.chores_todo_text") }
       /// Tap to specify the name of your current project + set the schedule!
-      public static let creativityDailyNotes = L10n.tr("Mainstrings", "tasks.examples.creativity_daily_notes")
+      public static var creativityDailyNotes: String { return L10n.tr("Mainstrings", "tasks.examples.creativity_daily_notes") }
       /// Work on creative project
-      public static let creativityDailyText = L10n.tr("Mainstrings", "tasks.examples.creativity_daily_text")
+      public static var creativityDailyText: String { return L10n.tr("Mainstrings", "tasks.examples.creativity_daily_text") }
       /// Practiced a new creative technique
-      public static let creativityHabit = L10n.tr("Mainstrings", "tasks.examples.creativity_habit")
+      public static var creativityHabit: String { return L10n.tr("Mainstrings", "tasks.examples.creativity_habit") }
       /// Tap to specify the name of your project
-      public static let creativityTodoNotes = L10n.tr("Mainstrings", "tasks.examples.creativity_todo_notes")
+      public static var creativityTodoNotes: String { return L10n.tr("Mainstrings", "tasks.examples.creativity_todo_notes") }
       /// Finish creative project
-      public static let creativityTodoText = L10n.tr("Mainstrings", "tasks.examples.creativity_todo_text")
+      public static var creativityTodoText: String { return L10n.tr("Mainstrings", "tasks.examples.creativity_todo_text") }
       /// Tap to choose your schedule and specify exercises!
-      public static let exerciseDailyNotes = L10n.tr("Mainstrings", "tasks.examples.exercise_daily_notes")
+      public static var exerciseDailyNotes: String { return L10n.tr("Mainstrings", "tasks.examples.exercise_daily_notes") }
       /// Daily workout routine
-      public static let exerciseDailyText = L10n.tr("Mainstrings", "tasks.examples.exercise_daily_text")
+      public static var exerciseDailyText: String { return L10n.tr("Mainstrings", "tasks.examples.exercise_daily_text") }
       /// 10 minutes cardio
-      public static let exerciseHabit = L10n.tr("Mainstrings", "tasks.examples.exercise_habit")
+      public static var exerciseHabit: String { return L10n.tr("Mainstrings", "tasks.examples.exercise_habit") }
       /// Tap to add a checklist!
-      public static let exerciseTodoNotes = L10n.tr("Mainstrings", "tasks.examples.exercise_todo_notes")
+      public static var exerciseTodoNotes: String { return L10n.tr("Mainstrings", "tasks.examples.exercise_todo_notes") }
       /// Set up workout schedule
-      public static let exerciseTodoText = L10n.tr("Mainstrings", "tasks.examples.exercise_todo_text")
+      public static var exerciseTodoText: String { return L10n.tr("Mainstrings", "tasks.examples.exercise_todo_text") }
       /// Or delete it by swiping left
-      public static let habitNotes = L10n.tr("Mainstrings", "tasks.examples.habit_notes")
+      public static var habitNotes: String { return L10n.tr("Mainstrings", "tasks.examples.habit_notes") }
       /// Tap here to edit this into a bad habit you'd like to quit
-      public static let habitText = L10n.tr("Mainstrings", "tasks.examples.habit_text")
+      public static var habitText: String { return L10n.tr("Mainstrings", "tasks.examples.habit_text") }
       /// Tap to make any changes!
-      public static let healthDailyNotes = L10n.tr("Mainstrings", "tasks.examples.health_daily_notes")
+      public static var healthDailyNotes: String { return L10n.tr("Mainstrings", "tasks.examples.health_daily_notes") }
       /// Floss
-      public static let healthDailyText = L10n.tr("Mainstrings", "tasks.examples.health_daily_text")
+      public static var healthDailyText: String { return L10n.tr("Mainstrings", "tasks.examples.health_daily_text") }
       /// Eat health/junk food
-      public static let healthHabit = L10n.tr("Mainstrings", "tasks.examples.health_habit")
+      public static var healthHabit: String { return L10n.tr("Mainstrings", "tasks.examples.health_habit") }
       /// Tap to add checklists!
-      public static let healthTodoNotes = L10n.tr("Mainstrings", "tasks.examples.health_todo_notes")
+      public static var healthTodoNotes: String { return L10n.tr("Mainstrings", "tasks.examples.health_todo_notes") }
       /// Brainstorm a healthy change
-      public static let healthTodoText = L10n.tr("Mainstrings", "tasks.examples.health_todo_text")
+      public static var healthTodoText: String { return L10n.tr("Mainstrings", "tasks.examples.health_todo_text") }
       /// Watch TV, play a game, eat a treat, it’s up to you!
-      public static let rewardNotes = L10n.tr("Mainstrings", "tasks.examples.reward_notes")
+      public static var rewardNotes: String { return L10n.tr("Mainstrings", "tasks.examples.reward_notes") }
       /// Reward yourself
-      public static let rewardText = L10n.tr("Mainstrings", "tasks.examples.reward_text")
+      public static var rewardText: String { return L10n.tr("Mainstrings", "tasks.examples.reward_text") }
       /// Tap to specify your most important task
-      public static let schoolDailyNotes = L10n.tr("Mainstrings", "tasks.examples.school_daily_notes")
+      public static var schoolDailyNotes: String { return L10n.tr("Mainstrings", "tasks.examples.school_daily_notes") }
       /// Do homework
-      public static let schoolDailyText = L10n.tr("Mainstrings", "tasks.examples.school_daily_text")
+      public static var schoolDailyText: String { return L10n.tr("Mainstrings", "tasks.examples.school_daily_text") }
       /// Study/Procrastinate
-      public static let schoolHabit = L10n.tr("Mainstrings", "tasks.examples.school_habit")
+      public static var schoolHabit: String { return L10n.tr("Mainstrings", "tasks.examples.school_habit") }
       /// Tap to specify your most important task
-      public static let schoolTodoNotes = L10n.tr("Mainstrings", "tasks.examples.school_todo_notes")
+      public static var schoolTodoNotes: String { return L10n.tr("Mainstrings", "tasks.examples.school_todo_notes") }
       /// Finish assignment for class
-      public static let schoolTodoText = L10n.tr("Mainstrings", "tasks.examples.school_todo_text")
+      public static var schoolTodoText: String { return L10n.tr("Mainstrings", "tasks.examples.school_todo_text") }
       /// Tap to specify your most important task
-      public static let teamDailyNotes = L10n.tr("Mainstrings", "tasks.examples.team_daily_notes")
+      public static var teamDailyNotes: String { return L10n.tr("Mainstrings", "tasks.examples.team_daily_notes") }
       /// Update team on status
-      public static let teamDailyText = L10n.tr("Mainstrings", "tasks.examples.team_daily_text")
+      public static var teamDailyText: String { return L10n.tr("Mainstrings", "tasks.examples.team_daily_text") }
       /// Check in with team
-      public static let teamHabit = L10n.tr("Mainstrings", "tasks.examples.team_habit")
+      public static var teamHabit: String { return L10n.tr("Mainstrings", "tasks.examples.team_habit") }
       /// Tap to specify your most important task
-      public static let teamTodoNotes = L10n.tr("Mainstrings", "tasks.examples.team_todo_notes")
+      public static var teamTodoNotes: String { return L10n.tr("Mainstrings", "tasks.examples.team_todo_notes") }
       /// Complete team project
-      public static let teamTodoText = L10n.tr("Mainstrings", "tasks.examples.team_todo_text")
+      public static var teamTodoText: String { return L10n.tr("Mainstrings", "tasks.examples.team_todo_text") }
       /// You can either complete this To-Do, edit it, or remove it.
-      public static let todoNotes = L10n.tr("Mainstrings", "tasks.examples.todo_notes")
+      public static var todoNotes: String { return L10n.tr("Mainstrings", "tasks.examples.todo_notes") }
       /// Join Habitica (Check me off!)
-      public static let todoText = L10n.tr("Mainstrings", "tasks.examples.todo_text")
+      public static var todoText: String { return L10n.tr("Mainstrings", "tasks.examples.todo_text") }
       /// Tap to specify your most important task
-      public static let workDailyNotes = L10n.tr("Mainstrings", "tasks.examples.work_daily_notes")
+      public static var workDailyNotes: String { return L10n.tr("Mainstrings", "tasks.examples.work_daily_notes") }
       /// Worked on today’s most important task
-      public static let workDailyText = L10n.tr("Mainstrings", "tasks.examples.work_daily_text")
+      public static var workDailyText: String { return L10n.tr("Mainstrings", "tasks.examples.work_daily_text") }
       /// Process email
-      public static let workHabit = L10n.tr("Mainstrings", "tasks.examples.work_habit")
+      public static var workHabit: String { return L10n.tr("Mainstrings", "tasks.examples.work_habit") }
       /// Tap to specify the name of your current project + set a due date!
-      public static let workTodoNotes = L10n.tr("Mainstrings", "tasks.examples.work_todo_notes")
+      public static var workTodoNotes: String { return L10n.tr("Mainstrings", "tasks.examples.work_todo_notes") }
       /// Complete work project
-      public static let workTodoText = L10n.tr("Mainstrings", "tasks.examples.work_todo_text")
+      public static var workTodoText: String { return L10n.tr("Mainstrings", "tasks.examples.work_todo_text") }
     }
 
     public enum Form {
       /// Checklist
-      public static let checklist = L10n.tr("Mainstrings", "tasks.form.checklist")
+      public static var checklist: String { return L10n.tr("Mainstrings", "tasks.form.checklist") }
       /// Clear
-      public static let clear = L10n.tr("Mainstrings", "tasks.form.clear")
+      public static var clear: String { return L10n.tr("Mainstrings", "tasks.form.clear") }
       /// Are you sure you want to delete this task?
-      public static let confirmDelete = L10n.tr("Mainstrings", "tasks.form.confirm_delete")
+      public static var confirmDelete: String { return L10n.tr("Mainstrings", "tasks.form.confirm_delete") }
       /// Controls
-      public static let controls = L10n.tr("Mainstrings", "tasks.form.controls")
+      public static var controls: String { return L10n.tr("Mainstrings", "tasks.form.controls") }
       /// Cost
-      public static let cost = L10n.tr("Mainstrings", "tasks.form.cost")
+      public static var cost: String { return L10n.tr("Mainstrings", "tasks.form.cost") }
       /// New %@
       public static func create(_ p1: String) -> String {
         return L10n.tr("Mainstrings", "tasks.form.create", p1)
       }
       /// What do you want to do regularly?
-      public static let dailiesTitlePlaceholder = L10n.tr("Mainstrings", "tasks.form.dailies_title_placeholder")
+      public static var dailiesTitlePlaceholder: String { return L10n.tr("Mainstrings", "tasks.form.dailies_title_placeholder") }
       /// Day of the month
-      public static let dayOfMonth = L10n.tr("Mainstrings", "tasks.form.day_of_month")
+      public static var dayOfMonth: String { return L10n.tr("Mainstrings", "tasks.form.day_of_month") }
       /// Day of the week
-      public static let dayOfWeek = L10n.tr("Mainstrings", "tasks.form.day_of_week")
+      public static var dayOfWeek: String { return L10n.tr("Mainstrings", "tasks.form.day_of_week") }
       /// Difficulty
-      public static let difficulty = L10n.tr("Mainstrings", "tasks.form.difficulty")
+      public static var difficulty: String { return L10n.tr("Mainstrings", "tasks.form.difficulty") }
       /// Due date
-      public static let dueDate = L10n.tr("Mainstrings", "tasks.form.due_date")
+      public static var dueDate: String { return L10n.tr("Mainstrings", "tasks.form.due_date") }
       /// Easy
-      public static let easy = L10n.tr("Mainstrings", "tasks.form.easy")
+      public static var easy: String { return L10n.tr("Mainstrings", "tasks.form.easy") }
       /// Edit %@
       public static func edit(_ p1: String) -> String {
         return L10n.tr("Mainstrings", "tasks.form.edit", p1)
       }
       /// Every
-      public static let every = L10n.tr("Mainstrings", "tasks.form.every")
+      public static var every: String { return L10n.tr("Mainstrings", "tasks.form.every") }
       /// What habits do you want to foster or break?
-      public static let habitTitlePlaceholder = L10n.tr("Mainstrings", "tasks.form.habit_title_placeholder")
+      public static var habitTitlePlaceholder: String { return L10n.tr("Mainstrings", "tasks.form.habit_title_placeholder") }
       /// Hard
-      public static let hard = L10n.tr("Mainstrings", "tasks.form.hard")
+      public static var hard: String { return L10n.tr("Mainstrings", "tasks.form.hard") }
       /// Medium
-      public static let medium = L10n.tr("Mainstrings", "tasks.form.medium")
+      public static var medium: String { return L10n.tr("Mainstrings", "tasks.form.medium") }
       /// New checklist item
-      public static let newChecklistItem = L10n.tr("Mainstrings", "tasks.form.new_checklist_item")
+      public static var newChecklistItem: String { return L10n.tr("Mainstrings", "tasks.form.new_checklist_item") }
       /// New reminder
-      public static let newReminder = L10n.tr("Mainstrings", "tasks.form.new_reminder")
+      public static var newReminder: String { return L10n.tr("Mainstrings", "tasks.form.new_reminder") }
       /// Include any notes to help you out
-      public static let notesPlaceholder = L10n.tr("Mainstrings", "tasks.form.notes_placeholder")
+      public static var notesPlaceholder: String { return L10n.tr("Mainstrings", "tasks.form.notes_placeholder") }
       /// Remind me
-      public static let remindMe = L10n.tr("Mainstrings", "tasks.form.remind_me")
+      public static var remindMe: String { return L10n.tr("Mainstrings", "tasks.form.remind_me") }
       /// Reminders
-      public static let reminders = L10n.tr("Mainstrings", "tasks.form.reminders")
+      public static var reminders: String { return L10n.tr("Mainstrings", "tasks.form.reminders") }
       /// Repeats
-      public static let repeats = L10n.tr("Mainstrings", "tasks.form.repeats")
+      public static var repeats: String { return L10n.tr("Mainstrings", "tasks.form.repeats") }
       /// Reset Streak
-      public static let resetStreak = L10n.tr("Mainstrings", "tasks.form.reset_streak")
+      public static var resetStreak: String { return L10n.tr("Mainstrings", "tasks.form.reset_streak") }
       /// How do you want to reward yourself?
-      public static let rewardsTitlePlaceholder = L10n.tr("Mainstrings", "tasks.form.rewards_title_placeholder")
+      public static var rewardsTitlePlaceholder: String { return L10n.tr("Mainstrings", "tasks.form.rewards_title_placeholder") }
       /// Scheduling
-      public static let scheduling = L10n.tr("Mainstrings", "tasks.form.scheduling")
+      public static var scheduling: String { return L10n.tr("Mainstrings", "tasks.form.scheduling") }
       /// Start date
-      public static let startDate = L10n.tr("Mainstrings", "tasks.form.start_date")
+      public static var startDate: String { return L10n.tr("Mainstrings", "tasks.form.start_date") }
       /// Tags
-      public static let tags = L10n.tr("Mainstrings", "tasks.form.tags")
+      public static var tags: String { return L10n.tr("Mainstrings", "tasks.form.tags") }
       /// What do you want to complete once?
-      public static let todosTitlePlaceholder = L10n.tr("Mainstrings", "tasks.form.todos_title_placeholder")
+      public static var todosTitlePlaceholder: String { return L10n.tr("Mainstrings", "tasks.form.todos_title_placeholder") }
       /// Trivial
-      public static let trivial = L10n.tr("Mainstrings", "tasks.form.trivial")
+      public static var trivial: String { return L10n.tr("Mainstrings", "tasks.form.trivial") }
 
       public enum Accessibility {
         /// Disable %@
@@ -1464,23 +1568,23 @@ public enum L10n {
           return L10n.tr("Mainstrings", "tasks.form.accessibility.disable", p1)
         }
         /// Disable negative action.
-        public static let disableNegative = L10n.tr("Mainstrings", "tasks.form.accessibility.disable_negative")
+        public static var disableNegative: String { return L10n.tr("Mainstrings", "tasks.form.accessibility.disable_negative") }
         /// Disable positive action.
-        public static let disablePositive = L10n.tr("Mainstrings", "tasks.form.accessibility.disable_positive")
+        public static var disablePositive: String { return L10n.tr("Mainstrings", "tasks.form.accessibility.disable_positive") }
         /// Enable %@
         public static func enable(_ p1: String) -> String {
           return L10n.tr("Mainstrings", "tasks.form.accessibility.enable", p1)
         }
         /// Enable negative action.
-        public static let enableNegative = L10n.tr("Mainstrings", "tasks.form.accessibility.enable_negative")
+        public static var enableNegative: String { return L10n.tr("Mainstrings", "tasks.form.accessibility.enable_negative") }
         /// Enable positive action.
-        public static let enablePositive = L10n.tr("Mainstrings", "tasks.form.accessibility.enable_positive")
+        public static var enablePositive: String { return L10n.tr("Mainstrings", "tasks.form.accessibility.enable_positive") }
         /// Negative habit action enabled.
-        public static let negativeEnabled = L10n.tr("Mainstrings", "tasks.form.accessibility.negative_enabled")
+        public static var negativeEnabled: String { return L10n.tr("Mainstrings", "tasks.form.accessibility.negative_enabled") }
         /// Positive and negative habit actions enabled.
-        public static let positiveAndNegativeEnabled = L10n.tr("Mainstrings", "tasks.form.accessibility.positive_and_negative_enabled")
+        public static var positiveAndNegativeEnabled: String { return L10n.tr("Mainstrings", "tasks.form.accessibility.positive_and_negative_enabled") }
         /// Positive habit action enabled.
-        public static let positiveEnabled = L10n.tr("Mainstrings", "tasks.form.accessibility.positive_enabled")
+        public static var positiveEnabled: String { return L10n.tr("Mainstrings", "tasks.form.accessibility.positive_enabled") }
         /// Change difficuly to %@
         public static func setTaskDifficulty(_ p1: String) -> String {
           return L10n.tr("Mainstrings", "tasks.form.accessibility.set_task_difficulty", p1)
@@ -1494,28 +1598,28 @@ public enum L10n {
 
     public enum Quality {
       /// Bad
-      public static let bad = L10n.tr("Mainstrings", "tasks.quality.bad")
+      public static var bad: String { return L10n.tr("Mainstrings", "tasks.quality.bad") }
       /// Best
-      public static let best = L10n.tr("Mainstrings", "tasks.quality.best")
+      public static var best: String { return L10n.tr("Mainstrings", "tasks.quality.best") }
       /// Better
-      public static let better = L10n.tr("Mainstrings", "tasks.quality.better")
+      public static var better: String { return L10n.tr("Mainstrings", "tasks.quality.better") }
       /// Good
-      public static let good = L10n.tr("Mainstrings", "tasks.quality.good")
+      public static var good: String { return L10n.tr("Mainstrings", "tasks.quality.good") }
       /// Neutral
-      public static let neutral = L10n.tr("Mainstrings", "tasks.quality.neutral")
+      public static var neutral: String { return L10n.tr("Mainstrings", "tasks.quality.neutral") }
       /// Worse
-      public static let worse = L10n.tr("Mainstrings", "tasks.quality.worse")
+      public static var worse: String { return L10n.tr("Mainstrings", "tasks.quality.worse") }
       /// Worst
-      public static let worst = L10n.tr("Mainstrings", "tasks.quality.worst")
+      public static var worst: String { return L10n.tr("Mainstrings", "tasks.quality.worst") }
     }
 
     public enum Repeats {
       /// daily
-      public static let daily = L10n.tr("Mainstrings", "tasks.repeats.daily")
+      public static var daily: String { return L10n.tr("Mainstrings", "tasks.repeats.daily") }
       /// every day
-      public static let everyDay = L10n.tr("Mainstrings", "tasks.repeats.every_day")
+      public static var everyDay: String { return L10n.tr("Mainstrings", "tasks.repeats.every_day") }
       /// monthly
-      public static let monthly = L10n.tr("Mainstrings", "tasks.repeats.monthly")
+      public static var monthly: String { return L10n.tr("Mainstrings", "tasks.repeats.monthly") }
       /// the %@
       public static func monthlyThe(_ p1: String) -> String {
         return L10n.tr("Mainstrings", "tasks.repeats.monthly_the", p1)
@@ -1529,133 +1633,137 @@ public enum L10n {
         return L10n.tr("Mainstrings", "tasks.repeats.repeats_every_on", p1, p2)
       }
       /// weekdays
-      public static let weekdays = L10n.tr("Mainstrings", "tasks.repeats.weekdays")
+      public static var weekdays: String { return L10n.tr("Mainstrings", "tasks.repeats.weekdays") }
       /// weekends
-      public static let weekends = L10n.tr("Mainstrings", "tasks.repeats.weekends")
+      public static var weekends: String { return L10n.tr("Mainstrings", "tasks.repeats.weekends") }
       /// weekly
-      public static let weekly = L10n.tr("Mainstrings", "tasks.repeats.weekly")
+      public static var weekly: String { return L10n.tr("Mainstrings", "tasks.repeats.weekly") }
       /// yearly
-      public static let yearly = L10n.tr("Mainstrings", "tasks.repeats.yearly")
+      public static var yearly: String { return L10n.tr("Mainstrings", "tasks.repeats.yearly") }
     }
   }
 
   public enum Theme {
     /// Blue
-    public static let blue = L10n.tr("Mainstrings", "theme.blue")
+    public static var blue: String { return L10n.tr("Mainstrings", "theme.blue") }
     /// Default
-    public static let defaultTheme = L10n.tr("Mainstrings", "theme.default_theme")
+    public static var defaultTheme: String { return L10n.tr("Mainstrings", "theme.default_theme") }
     /// Green
-    public static let green = L10n.tr("Mainstrings", "theme.green")
+    public static var green: String { return L10n.tr("Mainstrings", "theme.green") }
     /// Maroon
-    public static let maroon = L10n.tr("Mainstrings", "theme.maroon")
+    public static var maroon: String { return L10n.tr("Mainstrings", "theme.maroon") }
     /// Orange
-    public static let orange = L10n.tr("Mainstrings", "theme.orange")
+    public static var orange: String { return L10n.tr("Mainstrings", "theme.orange") }
     /// Red
-    public static let red = L10n.tr("Mainstrings", "theme.red")
+    public static var red: String { return L10n.tr("Mainstrings", "theme.red") }
     /// Teal
-    public static let teal = L10n.tr("Mainstrings", "theme.teal")
+    public static var teal: String { return L10n.tr("Mainstrings", "theme.teal") }
     /// Yellow
-    public static let yellow = L10n.tr("Mainstrings", "theme.yellow")
+    public static var yellow: String { return L10n.tr("Mainstrings", "theme.yellow") }
   }
 
   public enum Titles {
     /// About
-    public static let about = L10n.tr("Mainstrings", "titles.about")
+    public static var about: String { return L10n.tr("Mainstrings", "titles.about") }
     /// API
-    public static let api = L10n.tr("Mainstrings", "titles.api")
+    public static var api: String { return L10n.tr("Mainstrings", "titles.api") }
     /// Authentication
-    public static let authentication = L10n.tr("Mainstrings", "titles.authentication")
+    public static var authentication: String { return L10n.tr("Mainstrings", "titles.authentication") }
     /// Avatar
-    public static let avatar = L10n.tr("Mainstrings", "titles.avatar")
+    public static var avatar: String { return L10n.tr("Mainstrings", "titles.avatar") }
     /// Challenges
-    public static let challenges = L10n.tr("Mainstrings", "titles.challenges")
+    public static var challenges: String { return L10n.tr("Mainstrings", "titles.challenges") }
     /// Choose Recipient
-    public static let chooseRecipient = L10n.tr("Mainstrings", "titles.choose_recipient")
+    public static var chooseRecipient: String { return L10n.tr("Mainstrings", "titles.choose_recipient") }
     /// Choose User
-    public static let chooseUser = L10n.tr("Mainstrings", "titles.choose_user")
+    public static var chooseUser: String { return L10n.tr("Mainstrings", "titles.choose_user") }
     /// Equipment
-    public static let equipment = L10n.tr("Mainstrings", "titles.equipment")
+    public static var equipment: String { return L10n.tr("Mainstrings", "titles.equipment") }
     /// FAQ
-    public static let faq = L10n.tr("Mainstrings", "titles.faq")
+    public static var faq: String { return L10n.tr("Mainstrings", "titles.faq") }
     /// Feed Pet
-    public static let feedPet = L10n.tr("Mainstrings", "titles.feed_pet")
+    public static var feedPet: String { return L10n.tr("Mainstrings", "titles.feed_pet") }
     /// Fix Values
-    public static let fixValues = L10n.tr("Mainstrings", "titles.fix_values")
+    public static var fixValues: String { return L10n.tr("Mainstrings", "titles.fix_values") }
     /// Gift Subscription
-    public static let giftSubscription = L10n.tr("Mainstrings", "titles.gift_subscription")
+    public static var giftSubscription: String { return L10n.tr("Mainstrings", "titles.gift_subscription") }
     /// Guidelines
-    public static let guidelines = L10n.tr("Mainstrings", "titles.guidelines")
+    public static var guidelines: String { return L10n.tr("Mainstrings", "titles.guidelines") }
     /// Guild
-    public static let guild = L10n.tr("Mainstrings", "titles.guild")
+    public static var guild: String { return L10n.tr("Mainstrings", "titles.guild") }
     /// Guilds
-    public static let guilds = L10n.tr("Mainstrings", "titles.guilds")
+    public static var guilds: String { return L10n.tr("Mainstrings", "titles.guilds") }
     /// Invite Members
-    public static let inviteMembers = L10n.tr("Mainstrings", "titles.invite_members")
+    public static var inviteMembers: String { return L10n.tr("Mainstrings", "titles.invite_members") }
     /// Items
-    public static let items = L10n.tr("Mainstrings", "titles.items")
+    public static var items: String { return L10n.tr("Mainstrings", "titles.items") }
+    /// Messages
+    public static var messages: String { return L10n.tr("Mainstrings", "titles.messages") }
     /// Mounts
-    public static let mounts = L10n.tr("Mainstrings", "titles.mounts")
+    public static var mounts: String { return L10n.tr("Mainstrings", "titles.mounts") }
     /// News
-    public static let news = L10n.tr("Mainstrings", "titles.news")
+    public static var news: String { return L10n.tr("Mainstrings", "titles.news") }
+    /// Notifications
+    public static var notifications: String { return L10n.tr("Mainstrings", "titles.notifications") }
     /// Party
-    public static let party = L10n.tr("Mainstrings", "titles.party")
+    public static var party: String { return L10n.tr("Mainstrings", "titles.party") }
     /// Pets
-    public static let pets = L10n.tr("Mainstrings", "titles.pets")
+    public static var pets: String { return L10n.tr("Mainstrings", "titles.pets") }
     /// Profile
-    public static let profile = L10n.tr("Mainstrings", "titles.profile")
+    public static var profile: String { return L10n.tr("Mainstrings", "titles.profile") }
     /// Select Class
-    public static let selectClass = L10n.tr("Mainstrings", "titles.select_class")
+    public static var selectClass: String { return L10n.tr("Mainstrings", "titles.select_class") }
     /// Settings
-    public static let settings = L10n.tr("Mainstrings", "titles.settings")
+    public static var settings: String { return L10n.tr("Mainstrings", "titles.settings") }
     /// Shops
-    public static let shops = L10n.tr("Mainstrings", "titles.shops")
+    public static var shops: String { return L10n.tr("Mainstrings", "titles.shops") }
     /// Skills
-    public static let skills = L10n.tr("Mainstrings", "titles.skills")
+    public static var skills: String { return L10n.tr("Mainstrings", "titles.skills") }
     /// Spells
-    public static let spells = L10n.tr("Mainstrings", "titles.spells")
+    public static var spells: String { return L10n.tr("Mainstrings", "titles.spells") }
     /// Stable
-    public static let stable = L10n.tr("Mainstrings", "titles.stable")
+    public static var stable: String { return L10n.tr("Mainstrings", "titles.stable") }
     /// Stats
-    public static let stats = L10n.tr("Mainstrings", "titles.stats")
+    public static var stats: String { return L10n.tr("Mainstrings", "titles.stats") }
     /// Tavern
-    public static let tavern = L10n.tr("Mainstrings", "titles.tavern")
+    public static var tavern: String { return L10n.tr("Mainstrings", "titles.tavern") }
   }
 
   public enum Tutorials {
     /// Tap to add a new task.
-    public static let addTask = L10n.tr("Mainstrings", "tutorials.add_task")
+    public static var addTask: String { return L10n.tr("Mainstrings", "tutorials.add_task") }
     /// Make Dailies for time-sensitive tasks that need to be done on a regular schedule.
-    public static let dailies1 = L10n.tr("Mainstrings", "tutorials.dailies_1")
+    public static var dailies1: String { return L10n.tr("Mainstrings", "tutorials.dailies_1") }
     /// Be careful — if you miss one, your avatar will take damage overnight. Checking them off consistently brings great rewards!
-    public static let dailies2 = L10n.tr("Mainstrings", "tutorials.dailies_2")
+    public static var dailies2: String { return L10n.tr("Mainstrings", "tutorials.dailies_2") }
     /// Tap a task to edit it and add reminders. Swipe left to delete it.
-    public static let editTask = L10n.tr("Mainstrings", "tutorials.edit_task")
+    public static var editTask: String { return L10n.tr("Mainstrings", "tutorials.edit_task") }
     /// Tap to filter tasks.
-    public static let filterTask = L10n.tr("Mainstrings", "tutorials.filter_task")
+    public static var filterTask: String { return L10n.tr("Mainstrings", "tutorials.filter_task") }
     /// First up is Habits. They can be positive Habits you want to improve or negative Habits you want to quit.
-    public static let habits1 = L10n.tr("Mainstrings", "tutorials.habits_1")
+    public static var habits1: String { return L10n.tr("Mainstrings", "tutorials.habits_1") }
     /// Every time you do a positive Habit, tap the + to get experience and gold!
-    public static let habits2 = L10n.tr("Mainstrings", "tutorials.habits_2")
+    public static var habits2: String { return L10n.tr("Mainstrings", "tutorials.habits_2") }
     /// If you slip up and do a negative Habit, tapping the - will reduce your avatar’s health to help you stay accountable.
-    public static let habits3 = L10n.tr("Mainstrings", "tutorials.habits_3")
+    public static var habits3: String { return L10n.tr("Mainstrings", "tutorials.habits_3") }
     /// Give it a shot! You can explore the other task types through the bottom navigation.
-    public static let habits4 = L10n.tr("Mainstrings", "tutorials.habits_4")
+    public static var habits4: String { return L10n.tr("Mainstrings", "tutorials.habits_4") }
     /// This is where you can read and reply to private messages! You can also message people from their profiles.
-    public static let inbox = L10n.tr("Mainstrings", "tutorials.inbox")
+    public static var inbox: String { return L10n.tr("Mainstrings", "tutorials.inbox") }
     /// Hold down on a task to drag it around.
-    public static let reorderTask = L10n.tr("Mainstrings", "tutorials.reorder_task")
+    public static var reorderTask: String { return L10n.tr("Mainstrings", "tutorials.reorder_task") }
     /// Buy gear for your avatar with the gold you earn!
-    public static let rewards1 = L10n.tr("Mainstrings", "tutorials.rewards_1")
+    public static var rewards1: String { return L10n.tr("Mainstrings", "tutorials.rewards_1") }
     /// You can also make real-world Custom Rewards based on what motivates you.
-    public static let rewards2 = L10n.tr("Mainstrings", "tutorials.rewards_2")
+    public static var rewards2: String { return L10n.tr("Mainstrings", "tutorials.rewards_2") }
     /// Skills are special abilities that have powerful effects! Tap on a skill to use it. It will cost Mana (the blue bar), which you earn by checking in every day and by completing your real-life tasks. Check out the FAQ in the menu for more info!
-    public static let spells = L10n.tr("Mainstrings", "tutorials.spells")
+    public static var spells: String { return L10n.tr("Mainstrings", "tutorials.spells") }
     /// Tap the gray button to allocate lots of your stats at once, or tap the arrows to add them one point at a time.
-    public static let stats = L10n.tr("Mainstrings", "tutorials.stats")
+    public static var stats: String { return L10n.tr("Mainstrings", "tutorials.stats") }
     /// Use To-Dos to keep track of tasks you need to do just once.
-    public static let todos1 = L10n.tr("Mainstrings", "tutorials.todos_1")
+    public static var todos1: String { return L10n.tr("Mainstrings", "tutorials.todos_1") }
     /// If your To-Do has to be done by a certain time, set a due date. Looks like you can check one off — go ahead!
-    public static let todos2 = L10n.tr("Mainstrings", "tutorials.todos_2")
+    public static var todos2: String { return L10n.tr("Mainstrings", "tutorials.todos_2") }
   }
 
   public enum WorldBoss {
@@ -1664,44 +1772,44 @@ public enum L10n {
       return L10n.tr("Mainstrings", "world_boss.action_prompt", p1)
     }
     /// A World Boss is a special event where the whole community works together to take down a powerful monster with their tasks!
-    public static let description = L10n.tr("Mainstrings", "world_boss.description")
+    public static var description: String { return L10n.tr("Mainstrings", "world_boss.description") }
     /// Complete tasks to damage the Boss
-    public static let firstBullet = L10n.tr("Mainstrings", "world_boss.first_bullet")
+    public static var firstBullet: String { return L10n.tr("Mainstrings", "world_boss.first_bullet") }
     /// Check the Tavern to see Boss progress and Rage attacks
-    public static let fourthBullet = L10n.tr("Mainstrings", "world_boss.fourth_bullet")
+    public static var fourthBullet: String { return L10n.tr("Mainstrings", "world_boss.fourth_bullet") }
     /// Pending Strike
-    public static let pendingStrike = L10n.tr("Mainstrings", "world_boss.pending_strike")
+    public static var pendingStrike: String { return L10n.tr("Mainstrings", "world_boss.pending_strike") }
     /// %@ is Heartbroken!\nOur beloved %@ was devastated when %@ shattered the %@. Quickly, tackle your tasks to defeat the monster and help rebuild!
     public static func rageStrikeDamaged(_ p1: String, _ p2: String, _ p3: String, _ p4: String) -> String {
       return L10n.tr("Mainstrings", "world_boss.rage_strike_damaged", p1, p2, p3, p4)
     }
     /// There are 3 potential Rage Strikes\nThis gauge fills when Habiticans miss their Dailies. If it fills up, the DysHeartener will unleash its Shattering Heartbreak attack on one of Habitica's shopkeepers, so be sure to do your tasks!
-    public static let rageStrikeExplanation = L10n.tr("Mainstrings", "world_boss.rage_strike_explanation")
+    public static var rageStrikeExplanation: String { return L10n.tr("Mainstrings", "world_boss.rage_strike_explanation") }
     /// What's a Rage Strike?
-    public static let rageStrikeExplanationButton = L10n.tr("Mainstrings", "world_boss.rage_strike_explanation_button")
+    public static var rageStrikeExplanationButton: String { return L10n.tr("Mainstrings", "world_boss.rage_strike_explanation_button") }
     /// The %@ was Attacked!
     public static func rageStrikeTitle(_ p1: String) -> String {
       return L10n.tr("Mainstrings", "world_boss.rage_strike_title", p1)
     }
     /// Be careful...\nThe World Boss will lash out and attack one of our friendly shopkeepers once its rage bar fills. Keep up with your Dailies to try and prevent it from happening!
-    public static let rageStrikeWarning = L10n.tr("Mainstrings", "world_boss.rage_strike_warning")
+    public static var rageStrikeWarning: String { return L10n.tr("Mainstrings", "world_boss.rage_strike_warning") }
     /// The Boss won’t damage you for missed tasks, but its Rage meter will go up. If the bar fills up, the Boss will attack one of the shopkeepers!
-    public static let secondBullet = L10n.tr("Mainstrings", "world_boss.second_bullet")
+    public static var secondBullet: String { return L10n.tr("Mainstrings", "world_boss.second_bullet") }
     /// You can continue with normal Quest Bosses, damage will apply to both
-    public static let thirdBullet = L10n.tr("Mainstrings", "world_boss.third_bullet")
+    public static var thirdBullet: String { return L10n.tr("Mainstrings", "world_boss.third_bullet") }
     /// The %@ attacks!
     public static func title(_ p1: String) -> String {
       return L10n.tr("Mainstrings", "world_boss.title", p1)
     }
     /// World Boss
-    public static let worldBoss = L10n.tr("Mainstrings", "world_boss.world_boss")
+    public static var worldBoss: String { return L10n.tr("Mainstrings", "world_boss.world_boss") }
   }
 }
 // swiftlint:enable explicit_type_interface identifier_name line_length nesting type_body_length type_name
 
 extension L10n {
   private static func tr(_ table: String, _ key: String, _ args: CVarArg...) -> String {
-    var format = NSLocalizedString(key, tableName: table, bundle: Bundle(for: BundleToken.self), comment: "")
+    var format = NSLocalizedString(key, tableName: table, bundle: bundle ?? Bundle(for: BundleToken.self), comment: "")
     let value = String(format: format, locale: Locale.current, arguments: args)
     if value != key || NSLocale.preferredLanguages.first == "en" {
         return value

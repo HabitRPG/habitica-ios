@@ -16,15 +16,19 @@ import Habitica_API_Client
 import Habitica_Models
 import RealmSwift
 import ReactiveSwift
-import Result
-import Instabug
 import Firebase
 import SwiftyStoreKit
 import StoreKit
+import UserNotifications
+import FirebaseMessaging
 
 //This will eventually replace the old ObjC AppDelegate once that code is ported to swift.
 //Reason for adding this class now is mostly, to configure PopupDialogs dim color.
-class HabiticaAppDelegate: NSObject {
+class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenterDelegate {
+    
+    static let possibleLaunchArgs = ["userid", "apikey"]
+    
+    private let application: UIApplication
     
     private let userRepository = UserRepository()
     private let contentRepository = ContentRepository()
@@ -32,14 +36,54 @@ class HabiticaAppDelegate: NSObject {
     private let socialRepository = SocialRepository()
     
     @objc
+    init(application: UIApplication) {
+        self.application = application
+        super.init()
+    }
+    
+    @objc
+    func handleLaunchArgs() {
+        let launchArgs = ProcessInfo.processInfo.environment
+        if (launchArgs["userid"] != nil) {
+            AuthenticationManager.shared.currentUserId = launchArgs["userid"]
+        }
+        if (launchArgs["apikey"] != nil) {
+            AuthenticationManager.shared.currentUserKey = launchArgs["apikey"]
+        }
+    }
+    
+    @objc
     func setupPopups() {
         let appearance = PopupDialogOverlayView.appearance()
-        appearance.color = UIColor.purple50()
         appearance.opacity = 0.6
         appearance.blurEnabled = false
         let dialogAppearance = PopupDialogDefaultView.appearance()
         dialogAppearance.cornerRadius = 12
-
+    }
+    
+    @objc
+    func setupFirebase() {
+        if #available(iOS 10.0, *) {
+            // For iOS 10 display notification (sent via APNS)
+            UNUserNotificationCenter.current().delegate = self
+            
+            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+            UNUserNotificationCenter.current().requestAuthorization(
+                options: authOptions,
+                completionHandler: { _, _ in })
+        } else {
+            let settings: UIUserNotificationSettings =
+                UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+            application.registerUserNotificationSettings(settings)
+        }
+        
+        application.registerForRemoteNotifications()
+        Messaging.messaging().delegate = self
+        
+        Analytics.setUserProperty(LanguageHandler.getAppLanguage().code, forName: "app_language")
+        if #available(iOS 10.3, *) {
+            Analytics.setUserProperty(UIApplication.shared.alternateIconName, forName: "app_icon")
+        }
     }
     
     @objc
@@ -49,26 +93,6 @@ class HabiticaAppDelegate: NSObject {
         Fabric.with([Crashlytics.self])
         Crashlytics.sharedInstance().setUserIdentifier(userID)
         Crashlytics.sharedInstance().setUserName(userID)
-        let keys = HabiticaKeys()
-        let instabugKey = HabiticaAppDelegate.isRunningLive() ? keys.instabugLive : keys.instabugBeta
-        Instabug.start(withToken: instabugKey, invocationEvents: [.shake])
-        BugReporting.promptOptions = [.bug, .feedback]
-        NetworkLogger.setRequestObfuscationHandler { (request) -> URLRequest in
-            guard let mutableRequest = (request as NSURLRequest).mutableCopy() as? NSMutableURLRequest else {
-                return URLRequest(url: request.url ?? URL(fileURLWithPath: ""))
-            }
-            mutableRequest.setValue("USERID", forHTTPHeaderField: "x-api-user")
-            mutableRequest.setValue("KEY", forHTTPHeaderField: "x-api-key")
-            return mutableRequest as URLRequest
-        }
-        NetworkLogger.setResponseObfuscationHandler { (data, response, completion) in
-            completion(Data(), response)
-        }
-        Instabug.reproStepsMode = .enabledWithNoScreenshots
-        BugReporting.invocationOptions = .commentFieldRequired
-        
-        Instabug.welcomeMessageMode = .disabled
-        Instabug.setUserAttribute(userID ?? "", withKey: "userID")
     }
     
     @objc
@@ -76,6 +100,7 @@ class HabiticaAppDelegate: NSObject {
         let keys = HabiticaKeys()
         Amplitude.instance().initializeApiKey(keys.amplitudeApiKey)
         Amplitude.instance().setUserId(AuthenticationManager.shared.currentUserId)
+        Amplitude.instance()?.setUserProperties(["iosTimezoneOffset": -(NSTimeZone.local.secondsFromGMT() / 60)])
     }
     
     @objc
@@ -90,6 +115,7 @@ class HabiticaAppDelegate: NSObject {
         let defaults = UserDefaults.standard
         let themeName = ThemeName(rawValue: defaults.string(forKey: "theme") ?? "") ?? ThemeName.defaultTheme
         ThemeService.shared.theme = themeName.themeClass
+        Analytics.setUserProperty(themeName.rawValue, forName: "theme")
     }
     
     @objc
@@ -98,8 +124,10 @@ class HabiticaAppDelegate: NSObject {
         NetworkAuthenticationManager.shared.currentUserKey = AuthenticationManager.shared.currentUserKey
         updateServer()
         AuthenticatedCall.errorHandler = HabiticaNetworkErrorHandler()
+        AuthenticatedCall.notificationListener = {[weak self] notifications in
+            self?.userRepository.saveNotifications(notifications)
+        }
         let configuration = URLSessionConfiguration.default
-        NetworkLogger.enableLogging(for: configuration)
         AuthenticatedCall.defaultConfiguration.urlConfiguration = configuration
     }
     
@@ -192,7 +220,7 @@ class HabiticaAppDelegate: NSObject {
     @objc
     func handleMaintenanceScreen() {
         let call = RetrieveMaintenanceInfoCall()
-        call.fire()
+        
         call.jsonSignal.map({ json -> [String: Any]? in
             let jsonDict = json as? [String: Any]
             return jsonDict
@@ -214,17 +242,17 @@ class HabiticaAppDelegate: NSObject {
                 }
                 return false
             }
-            .flatMap(.latest) { (_) -> Signal<Any, NoError> in
+            .flatMap(.latest) { (_) -> Signal<Any, Never> in
                 let call = RetrieveDeprecationInfoCall()
-                call.fire()
+                
                 return call.jsonSignal
             }
             .map({ (jsonObject) in
                 return jsonObject as? [AnyHashable: Any]
             })
             .skipNil()
-            .observeValues { (json) in
-                self.displayMaintenanceScreen(data: json, isDeprecated: true)
+            .observeValues {[weak self] (json) in
+                self?.displayMaintenanceScreen(data: json, isDeprecated: true)
         }
     }
     
@@ -257,7 +285,7 @@ class HabiticaAppDelegate: NSObject {
         let currentBuildNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String
         if lastContentFetch == nil || (lastContentFetch?.timeIntervalSinceNow ?? 0) < 1 || lastContentFetchVersion != currentBuildNumber {
             contentRepository.retrieveContent()
-                .flatMap(.latest, {[weak self] (_) -> Signal<WorldStateProtocol?, NoError> in
+                .flatMap(.latest, {[weak self] (_) -> Signal<WorldStateProtocol?, Never> in
                     return self?.contentRepository.retrieveWorldState() ?? Signal.empty
                 })
                 .observeCompleted {
@@ -337,6 +365,9 @@ class HabiticaAppDelegate: NSObject {
     @objc
     func displayNotificationInApp(text: String) {
        ToastManager.show(text: text, color: .purple)
+        if #available(iOS 10.0, *) {
+            UINotificationFeedbackGenerator.oneShotNotificationOccurred(.success)
+        }
     }
     
     @objc
@@ -352,5 +383,36 @@ class HabiticaAppDelegate: NSObject {
             return true
         }
         #endif
+    }
+    
+    @objc
+    static func isRunningScreenshots() -> Bool {
+        #if !targetEnvironment(simulator)
+        return false
+        #else
+        return UserDefaults.standard.bool(forKey: "FASTLANE_SNAPSHOT")
+        #endif
+    }
+    
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+        print("Firebase registration token: \(fcmToken)")
+        
+        let dataDict: [String: String] = ["token": fcmToken]
+        NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
+        // TODO: If necessary send token to application server.
+        // Note: This callback is fired at each app startup and whenever a new token is generated.
+    }
+    
+    @objc
+    func displayInAppNotification(taskID: String, text: String) {
+        let alertController = HabiticaAlertController(title: L10n.reminder, message: text)
+        alertController.addCloseAction()
+        alertController.addAction(title: L10n.complete, style: .default, isMainAction: true, closeOnTap: true, identifier: nil) {[weak self] _ in
+            self?.scoreTask(taskID, direction: "up") {}
+        }
+        alertController.show()
+        if #available(iOS 10.0, *) {
+            UINotificationFeedbackGenerator.oneShotNotificationOccurred(.warning)
+        }
     }
 }

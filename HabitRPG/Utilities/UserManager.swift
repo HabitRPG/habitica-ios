@@ -9,7 +9,6 @@
 import Foundation
 import Habitica_Models
 import ReactiveSwift
-import Result
 import Habitica_Database
 import PopupDialog
 import Crashlytics
@@ -26,6 +25,7 @@ class UserManager: NSObject {
     
     private weak var faintViewController: FaintViewController?
     private weak var classSelectionViewController: ClassSelectionViewController?
+    private var lastClassSelectionDisplayed: Date?
     weak var yesterdailiesDialog: YesterdailiesDialogView?
     
     private var tutorialSteps = [String: Bool]()
@@ -47,21 +47,28 @@ class UserManager: NSObject {
                         return tasks.filter({ task in
                             return task.isDue && !task.completed
                         })
-                    }).withLatest(from: SignalProducer<UserProtocol, NoError>(value: user)) ?? Signal<([TaskProtocol], UserProtocol), NoError>.empty
-            }).on(value: { (tasks, user) in
-                var hasUncompletedDailies = false
+                    }).withLatest(from: SignalProducer<UserProtocol, Never>(value: user)) ?? Signal<([TaskProtocol], UserProtocol), Never>.empty
+            }).on(value: {[weak self] (tasks, user) in
+                var uncompletedTaskCount = 0
                 for task in tasks {
                     if task.type == "daily" && !task.completed {
-                        hasUncompletedDailies = true
-                        break
+                        uncompletedTaskCount += 1
                     }
                 }
                 
                 if !user.needsCron {
                     return
                 }
-                if !hasUncompletedDailies {
-                    self.userRepository.runCron(tasks: [])
+                
+                var eventProperties = Dictionary<AnyHashable, Any>()
+                eventProperties["eventAction"] = "show cron"
+                eventProperties["eventCategory"] = "behaviour"
+                eventProperties["event"] = "event"
+                eventProperties["task count"] = uncompletedTaskCount
+                Amplitude.instance()?.logEvent("show cron", withEventProperties: eventProperties)
+                
+                if uncompletedTaskCount == 0 {
+                    self?.userRepository.runCron(tasks: [])
                         .on(failed: { error in
                             Crashlytics.sharedInstance().recordError(error)
                         })
@@ -79,7 +86,7 @@ class UserManager: NSObject {
                     if let controller = topController as? MainTabBarController {
                         controller.present(popup, animated: true) {
                         }
-                        self.yesterdailiesDialog = viewController
+                        self?.yesterdailiesDialog = viewController
                     }
                 }
             })
@@ -110,30 +117,28 @@ class UserManager: NSObject {
         
         let wasShown = checkClassSelection(user: user)
         
-        if !wasShown, let userLevel = self.userLevel {
+        if !wasShown, let userLevel = userLevel {
             if userLevel < (user.stats?.level ?? 0) {
                 let levelUpView = LevelUpOverlayView(avatar: user)
                 levelUpView.show()
                 SoundManager.shared.play(effect: .levelUp)
             }
         }
-        self.userLevel = user.stats?.level ?? 0
+        userLevel = user.stats?.level ?? 0
         
         userRepository.registerPushDevice(user: user).observeCompleted {}
         setTimezoneOffset(user)
 
-        if configRepository.bool(variable: ConfigVariable.enableUsernameRelease) {
-            if user.flags?.verifiedUsername == false {
-                if var topController = UIApplication.shared.keyWindow?.rootViewController {
-                    while let presentedViewController = topController.presentedViewController {
-                        topController = presentedViewController
-                    }
-                    if let controller = topController as? MainTabBarController {
-                        let verifyViewController = StoryboardScene.User.verifyUsernameModalViewController.instantiate()
-                        verifyViewController.modalTransitionStyle = .crossDissolve
-                        verifyViewController.modalPresentationStyle = .overCurrentContext
-                        controller.present(verifyViewController, animated: true, completion: nil)
-                    }
+        if user.flags?.verifiedUsername == false {
+            if var topController = UIApplication.shared.keyWindow?.rootViewController {
+                while let presentedViewController = topController.presentedViewController {
+                    topController = presentedViewController
+                }
+                if let controller = topController as? MainTabBarController {
+                    let verifyViewController = StoryboardScene.User.verifyUsernameModalViewController.instantiate()
+                    verifyViewController.modalTransitionStyle = .crossDissolve
+                    verifyViewController.modalPresentationStyle = .overCurrentContext
+                    controller.present(verifyViewController, animated: true, completion: nil)
                 }
             }
         }
@@ -150,7 +155,10 @@ class UserManager: NSObject {
     
     private func checkClassSelection(user: UserProtocol) -> Bool {
         if user.flags?.classSelected == false && user.preferences?.disableClasses == false && (user.stats?.level ?? 0) >= 10 {
-            if self.classSelectionViewController == nil {
+            if let lastSelection = lastClassSelectionDisplayed, lastSelection.timeIntervalSinceNow > -300 {
+                return false
+            }
+            if classSelectionViewController == nil {
                 let classSelectionController = StoryboardScene.Settings.classSelectionNavigationController.instantiate()
                 if var topController = UIApplication.shared.keyWindow?.rootViewController {
                     while let presentedViewController = topController.presentedViewController {
@@ -160,6 +168,7 @@ class UserManager: NSObject {
                     classSelectionController.modalPresentationStyle = .overCurrentContext
                     topController.present(classSelectionController, animated: true) {
                     }
+                    lastClassSelectionDisplayed = Date()
                     return true
                 }
             }
@@ -194,7 +203,7 @@ class UserManager: NSObject {
     private func removeReminderNotifications(ids: [String]) {
         let sharedApplication = UIApplication.shared
         for notification in (sharedApplication.scheduledLocalNotifications ?? []) {
-            if let reminderID = notification.userInfo?["ID"] as? String, reminderID.count > 0 {
+            if let reminderID = notification.userInfo?["ID"] as? String, reminderID.isEmpty == false {
                 if ids.contains(reminderID) {
                     sharedApplication.cancelLocalNotification(notification)
                 }
@@ -206,7 +215,7 @@ class UserManager: NSObject {
         guard let task = reminder.task else {
             return
         }
-        if reminder.id == nil || reminder.id == "" {
+        if reminder.id == nil || reminder.id?.isEmpty == true {
             return
         }
         var newNotifications = [UILocalNotification?]()

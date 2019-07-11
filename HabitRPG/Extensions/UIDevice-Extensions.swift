@@ -9,7 +9,7 @@ import UIKit
 
 //https://stackoverflow.com/a/26962452
 public extension UIDevice {
-    
+    // swiftlint:disable all
     static let modelName: String = {
         var systemInfo = utsname()
         uname(&systemInfo)
@@ -18,8 +18,7 @@ public extension UIDevice {
             guard let value = element.value as? Int8, value != 0 else { return identifier }
             return identifier + String(UnicodeScalar(UInt8(value)))
         }
-        
-        func mapToDevice(identifier: String) -> String { // swiftlint:disable:this cyclomatic_complexity
+        func mapToDevice(identifier: String) -> String {
             #if os(iOS)
             switch identifier {
             case "iPod5,1":                                 return "iPod Touch 5"
@@ -72,7 +71,7 @@ public extension UIDevice {
             }
             #endif
         }
-        
+        // swiftlint:disable all
         return mapToDevice(identifier: identifier)
     }()
     

@@ -29,4 +29,10 @@ extension CGRect {
         rect.origin.y = newValue
         return rect
     }
+    
+    var totalHeight: CGFloat {
+        get {
+            return origin.y + size.height
+        }
+    }
 }

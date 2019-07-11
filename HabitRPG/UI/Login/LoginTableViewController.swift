@@ -106,7 +106,7 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
         let privacyAttributedText = NSMutableAttributedString(string: "By signing up, you are indicating that you have read and agree to the Terms of Service and Privacy Policy.")
-        privacyAttributedText.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor(red:0.84, green:0.78, blue:1.00, alpha:1.0), range: NSRange(location: 0, length: privacyAttributedText.length))
+        privacyAttributedText.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor(red: 0.84, green: 0.78, blue: 1.00, alpha: 1.0), range: NSRange(location: 0, length: privacyAttributedText.length))
         privacyAttributedText.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length: privacyAttributedText.length))
         let termsRange = privacyAttributedText.mutableString.range(of: "Terms of Service")
         privacyAttributedText.addAttributes([NSAttributedString.Key.link: "https://habitica.com/static/terms"], range: termsRange)
@@ -464,7 +464,7 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
         alertController.addCancelAction()
         alertController.addAction(title: L10n.send, isMainAction: true) { _ in
             self.userRepository.sendPasswordResetEmail(email: textField.text ?? "").observeCompleted {
-                ToastManager.show(text: L10n.Login.resetPasswordResponse, color: .green)
+                ToastManager.show(text: L10n.Login.resetPasswordResponse, color: .green, duration: 4.0)
             }
         }
         alertController.show()

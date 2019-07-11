@@ -9,7 +9,7 @@
 import UIKit
 import Habitica_Models
 import ReactiveSwift
-import Result
+import Crashlytics
 
 @objc
 public protocol TaskTableViewDataSourceProtocol {
@@ -20,7 +20,7 @@ public protocol TaskTableViewDataSourceProtocol {
     @objc var emptyDelegate: DataSourceEmptyDelegate? { get set }
     @objc var isEmpty: Bool { get set }
     
-    @objc var tasks: [TaskProtocol] { get set}
+    @objc var tasks: [TaskProtocol] { get set }
     @objc var taskToEdit: TaskProtocol? { get set }
     
     @objc
@@ -52,7 +52,7 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
             return sections[0].items
         }
         set {
-            sections[0].items = tasks
+            sections[0].items = newValue
         }
     }
     
@@ -101,9 +101,12 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
         if let disposable = fetchTasksDisposable, !disposable.isDisposed {
             disposable.dispose()
         }
-        fetchTasksDisposable = repository.getTasks(predicate: predicate, sortKey: sortKey).on(value: {[weak self] (tasks, changes) in
-            self?.sections[0].items = tasks
-            self?.notify(changes: changes)
+        fetchTasksDisposable = repository.getTasks(predicate: predicate, sortKey: sortKey).on(failed: {[weak self] error in
+                Crashlytics.sharedInstance().recordError(error)
+                self?.fetchTasks()
+            }, value: {[weak self] (tasks, changes) in
+                self?.sections[0].items = tasks
+                self?.notify(changes: changes)
         }).start()
     }
 
@@ -130,15 +133,13 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
         return true
     }
     
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             if let task = self.item(at: indexPath) {
                 repository.deleteTask(task).observeCompleted {}
             }
         }
     }
-    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
@@ -167,7 +168,7 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
     }
     
     internal func expandSelectedCell(indexPath: IndexPath) {
-        var expandedPath = self.expandedIndexPath
+        var expandedPath = expandedIndexPath
         if tableView?.numberOfRows(inSection: 0) ?? 0 < (expandedPath?.item ?? 0) {
             expandedPath = nil
         }
@@ -176,8 +177,8 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
         }
         self.expandedIndexPath = indexPath
         if expandedPath == nil || indexPath.item == expandedPath?.item {
-            if expandedPath?.item == self.expandedIndexPath?.item {
-                self.expandedIndexPath = nil
+            if expandedPath?.item == expandedIndexPath?.item {
+                expandedIndexPath = nil
             }
             tableView?.beginUpdates()
             tableView?.reloadRows(at: [indexPath], with: .none)

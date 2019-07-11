@@ -9,6 +9,16 @@
 import Foundation
 import RealmSwift
 
+extension Realm {
+    public func safeWrite(_ block: (() throws -> Void)) throws {
+        if isInWriteTransaction {
+            try block()
+        } else {
+            try write(block)
+        }
+    }
+}
+
 public class BaseLocalRepository {
     
     required public init() {
@@ -19,33 +29,49 @@ public class BaseLocalRepository {
         return try? Realm()
     }
     
-    func save(object realmObject: Object?) {
+    public func save(object realmObject: Object?, update: Realm.UpdatePolicy = .all) {
         if let object = realmObject {
             let realm = getRealm()
-            try? realm?.write {
-                realm?.add(object, update: true)
+            realm?.refresh()
+            try? realm?.safeWrite {
+                realm?.add(object, update: update)
             }
         }
     }
     
-    func save(objects realmObjects: [Object]?) {
+    public func save(objects realmObjects: [Object]?, update: Realm.UpdatePolicy = .all) {
         if let objects = realmObjects {
             let realm = getRealm()
-            try? realm?.write {
-                realm?.add(objects, update: true)
+            realm?.refresh()
+            try? realm?.safeWrite {
+                realm?.add(objects, update: update)
             }
         }
     }
     
-    public func updateCall(_ transaction: (() -> Void)) {
-        try? getRealm()?.write {
-            transaction()
+    public func delete(object: Any) {
+        if let realmObject = object as? Object {
+            let realm = getRealm()
+            realm?.refresh()
+            try? realm?.safeWrite {
+                realm?.delete(realmObject)
+            }
+        }
+    }
+    
+    public func updateCall(_ transaction: ((Realm) -> Void)) {
+        if let realm = getRealm() {
+            realm.refresh()
+            try? realm.safeWrite {
+                transaction(realm)
+            }
         }
     }
     
     public func clearDatabase() {
         let realm = getRealm()
-        try? realm?.write {
+        realm?.refresh()
+        try? realm?.safeWrite {
             realm?.deleteAll()
         }
     }

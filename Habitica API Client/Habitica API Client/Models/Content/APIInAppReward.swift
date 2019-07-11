@@ -9,23 +9,23 @@
 import Foundation
 import Habitica_Models
 
-class APIInAppReward: InAppRewardProtocol, Decodable {
-    var category: ShopCategoryProtocol?
-    var key: String?
-    var availableUntil: Date?
-    var currency: String?
-    var isSuggested: Bool = false
-    var lastPurchased: Date?
-    var locked: Bool = false
-    var path: String?
-    var pinType: String?
-    var purchaseType: String?
-    var imageName: String?
-    var text: String?
-    var notes: String?
-    var type: String?
-    var value: Float = 0
-    var isSubscriberItem: Bool = false
+public class APIInAppReward: InAppRewardProtocol, Decodable {
+    public var category: ShopCategoryProtocol?
+    public var key: String?
+    public var availableUntil: Date?
+    public var currency: String?
+    public var isSuggested: Bool = false
+    public var lastPurchased: Date?
+    public var locked: Bool = false
+    public var path: String?
+    public var pinType: String?
+    public var purchaseType: String?
+    public var imageName: String?
+    public var text: String?
+    public var notes: String?
+    public var type: String?
+    public var value: Float = 0
+    public var isSubscriberItem: Bool = false
     public var isValid: Bool { return true }
     
     enum CodingKeys: String, CodingKey {

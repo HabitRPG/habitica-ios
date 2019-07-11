@@ -1,6 +1,6 @@
 language: objective-c
 cache: cocoapods
-osx_image: xcode9.2
+osx_image: xcode10.2
 install:
   - rvm install ruby-2.3.3
   - bundle update
@@ -23,15 +23,17 @@ env:
     - SeedsDevShareInterstitial=123
     - ItunesSharedSecret=123
     - StagingKey=123
+    - InstabugLive=123
+    - InstabugBeta=123
     - FB_REFERENCE_IMAGE_DIR="./ReferenceImages_32"
   matrix:
     - DESTINATION="platform=iOS Simulator,name=iPhone 6,OS=10.3.1"
     - DESTINATION="platform=iOS Simulator,name=iPhone 8,OS=11.2"
+    - DESTINATION="platform=iOS SImulator,name=iPhone 8,OS=12.1"
 script:
   - set -o pipefail
-  - xcodebuild -workspace Habitica.xcworkspace -scheme HabiticaTests -destination "$DESTINATION" -sdk iphonesimulator11.2 clean build build-for-testing ONLY_ACTIVE_ARCH=NO | xcpretty  -f `xcpretty-travis-formatter`
-  - xcodebuild -workspace Habitica.xcworkspace -scheme HabiticaTests -destination "$DESTINATION" -sdk iphonesimulator11.2 test-without-building ONLY_ACTIVE_ARCH=NO | xcpretty  -f `xcpretty-travis-formatter`
-  - find /Users/travis/Library/Developer/Xcode/DerivedData/Habitica* -type f | grep "Logs/Test" | grep -i ".log" | xargs cat
-  - swiftlint
+  - swiftlint --reporter "emoji"
+  - xcodebuild -workspace Habitica.xcworkspace -scheme HabiticaTests -destination "$DESTINATION" -sdk iphonesimulator12.1 clean build build-for-testing ONLY_ACTIVE_ARCH=NO | xcpretty  -f `xcpretty-travis-formatter`
+  - xcodebuild -workspace Habitica.xcworkspace -scheme HabiticaTests -destination "$DESTINATION" -sdk iphonesimulator12.1 test-without-building ONLY_ACTIVE_ARCH=NO | xcpretty  -f `xcpretty-travis-formatter`
 after_success:
   - sleep 10

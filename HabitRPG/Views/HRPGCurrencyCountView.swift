@@ -126,7 +126,7 @@ class HRPGCurrencyCountView: UIView {
             countLabel.textColor = .red100()
             currencyImageView.alpha = 0.3
         case .locked:
-            countLabel.textColor = .gray400()
+            countLabel.textColor = ThemeService.shared.theme.dimmedTextColor
             currencyImageView.alpha = 0.3
         }
     }

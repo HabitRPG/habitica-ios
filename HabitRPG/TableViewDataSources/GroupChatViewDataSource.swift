@@ -9,7 +9,6 @@
 import Foundation
 import Habitica_Models
 import ReactiveSwift
-import Result
 import KLCPopup
 
 class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtocol> {
@@ -23,7 +22,6 @@ class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtoc
     private let configRepository = ConfigRepository()
     private var user: UserProtocol?
     private let groupID: String
-    private let enableUsernameRelease = ConfigRepository().bool(variable: .enableUsernameRelease)
     
     init(groupID: String) {
         self.groupID = groupID
@@ -39,6 +37,8 @@ class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtoc
             self?.sections[0].items = chatMessages
             self?.notify(changes: changes)
         }).start())
+        let timerSignal: SignalProducer<Date, Never> = SignalProducer.timer(interval: .seconds(30), on: QueueScheduler.main)
+        disposable.inner.add(timerSignal.on(value: {[weak self] date in self?.retrieveData(completed: nil) }).start())
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -64,7 +64,7 @@ class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtoc
         
         cell.isFirstMessage = indexPath?.item == 0
         var username = user?.username ?? ""
-        if !enableUsernameRelease || username.count == 0 {
+        if username.isEmpty {
             username = self.user?.profile?.name ?? ""
         }
         cell.configure(chatMessage: chatMessage,
@@ -73,16 +73,15 @@ class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtoc
                        userID: self.user?.id ?? "",
                        username: username,
                        isModerator: self.user?.isModerator == true,
-                       isExpanded: isExpanded,
-                       enableUsernameRelease: configRepository.bool(variable: .enableUsernameRelease))
+                       isExpanded: isExpanded)
         
-        cell.profileAction = {
-            guard let profileViewController = self.viewController?.storyboard?.instantiateViewController(withIdentifier: "UserProfileViewController") as? UserProfileViewController else {
+        cell.profileAction = {[weak self] in
+            guard let profileViewController = self?.viewController?.storyboard?.instantiateViewController(withIdentifier: "UserProfileViewController") as? UserProfileViewController else {
                 return
             }
             profileViewController.userID = chatMessage.userID
             profileViewController.username = chatMessage.displayName
-            self.viewController?.navigationController?.pushViewController(profileViewController, animated: true)
+            self?.viewController?.navigationController?.pushViewController(profileViewController, animated: true)
         }
         cell.reportAction = {[weak self] in
             guard let view = Bundle.main.loadNibNamed("HRPGFlagInformationOverlayView", owner: self, options: nil)?.first as? HRPGFlagInformationOverlayView else {
@@ -91,9 +90,7 @@ class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtoc
             view.username = chatMessage.displayName
             view.message = chatMessage.text
             view.flagAction = {
-                if let strongSelf = self {
-                    strongSelf.socialRepository.flag(groupID: strongSelf.groupID, chatMessage: chatMessage).observeCompleted {}
-                }
+                self?.socialRepository.flag(groupID: self?.groupID ?? "", chatMessage: chatMessage).observeCompleted {}
             }
             view.sizeToFit()
             let popup = KLCPopup(contentView: view,
@@ -104,11 +101,11 @@ class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtoc
                                  dismissOnContentTouch: false)
             popup?.show()
         }
-        cell.replyAction = {
-            self.viewController?.configureReplyTo(chatMessage.username ?? chatMessage.displayName)
+        cell.replyAction = {[weak self] in
+            self?.viewController?.configureReplyTo(chatMessage.username ?? chatMessage.displayName)
         }
-        cell.plusOneAction = {
-            self.socialRepository.like(groupID: self.groupID, chatMessage: chatMessage).observeCompleted {}
+        cell.plusOneAction = {[weak self] in
+            self?.socialRepository.like(groupID: self?.groupID ?? "", chatMessage: chatMessage).observeCompleted {}
         }
         cell.copyAction = {
             let pasteboard = UIPasteboard.general
@@ -116,18 +113,24 @@ class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtoc
             let toastView = ToastView(title: L10n.copiedMessage, background: .green)
             ToastManager.show(toast: toastView)
         }
-        cell.deleteAction = {
-            self.socialRepository.delete(groupID: self.groupID, chatMessage: chatMessage).observeCompleted {}
+        cell.deleteAction = {[weak self] in
+            self?.socialRepository.delete(groupID: self?.groupID ?? "", chatMessage: chatMessage).observeCompleted {}
         }
-        cell.expandAction = {
+        cell.expandAction = {[weak self] in
             if let path = indexPath {
-                self.expandSelectedCell(path)
+                self?.expandSelectedCell(path)
             }
         }
         
         if let transform = self.tableView?.transform {
             cell.transform = transform
         }
+    }
+    
+    override func retrieveData(completed: (() -> Void)?) {
+        disposable.inner.add(socialRepository.retrieveChat(groupID: groupID).observeCompleted {
+            completed?()
+        })
     }
     
     private func expandSelectedCell(_ indexPath: IndexPath) {

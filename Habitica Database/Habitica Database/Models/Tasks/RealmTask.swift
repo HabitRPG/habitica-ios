@@ -12,7 +12,7 @@ import Habitica_Models
 
 class RealmTask: Object, TaskProtocol {
     @objc dynamic var id: String?
-    @objc dynamic var userID: String?
+    @objc dynamic var ownerID: String?
     @objc dynamic var text: String?
     @objc dynamic var notes: String?
     @objc dynamic var type: String?
@@ -55,7 +55,7 @@ class RealmTask: Object, TaskProtocol {
                 if let realmTag = tag as? RealmTag {
                     realmTags.append(realmTag)
                 } else {
-                    realmTags.append(RealmTag(userID: userID, tagProtocol: tag))
+                    realmTags.append(RealmTag(userID: ownerID, tagProtocol: tag))
                 }
             }
         }
@@ -97,7 +97,7 @@ class RealmTask: Object, TaskProtocol {
                 if let realmReminder = reminder as? RealmReminder {
                     realmReminders.append(realmReminder)
                 } else {
-                    realmReminders.append(RealmReminder(userID: userID, reminderProtocol: reminder))
+                    realmReminders.append(RealmReminder(userID: ownerID, reminderProtocol: reminder))
                 }
             }
         }
@@ -177,10 +177,10 @@ class RealmTask: Object, TaskProtocol {
         return ["tags", "checklist", "reminders"]
     }
     
-    convenience init(userID: String?, taskProtocol: TaskProtocol, tags: Results<RealmTag>?) {
+    convenience init(ownerID: String?, taskProtocol: TaskProtocol, tags: Results<RealmTag>?) {
         self.init()
         id = taskProtocol.id
-        self.userID = userID
+        self.ownerID = ownerID
         text = taskProtocol.text
         notes = taskProtocol.notes
         type = taskProtocol.type

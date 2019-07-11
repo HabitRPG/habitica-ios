@@ -14,7 +14,7 @@ class QuestTitleView: UIView {
     let imageView: UIImageView = {
         let view = UIImageView()
         view.cornerRadius = 6
-        view.backgroundColor = UIColor.gray700()
+        view.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
         return view
     }()
     let titleLabel: UILabel = {
@@ -52,6 +52,11 @@ class QuestTitleView: UIView {
         addSubview(imageView)
         addSubview(titleLabel)
         addSubview(detailLabel)
+        
+        let theme = ThemeService.shared.theme
+        backgroundColor = theme.contentBackgroundColor
+        titleLabel.textColor = theme.primaryTextColor
+        detailLabel.textColor = theme.secondaryTextColor
     }
     
     override func layoutSubviews() {

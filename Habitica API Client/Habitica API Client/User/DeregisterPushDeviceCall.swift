@@ -8,11 +8,10 @@
 
 import Foundation
 import Habitica_Models
-import FunkyNetwork
 import ReactiveSwift
 
 public class DeregisterPushDeviceCall: ResponseObjectCall<EmptyResponseProtocol, APIEmptyResponse> {
     public init(regID: String, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "tasks.json")) {
-        super.init(httpMethod: .DELETE, endpoint: "user/push-devices/\(regID ?? "")", stubHolder: stubHolder)
+        super.init(httpMethod: .DELETE, endpoint: "user/push-devices/\(regID)", stubHolder: stubHolder)
     }
 }

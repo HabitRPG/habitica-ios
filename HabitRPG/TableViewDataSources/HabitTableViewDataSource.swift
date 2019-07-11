@@ -35,9 +35,9 @@ class HabitTableViewDataSource: TaskTableViewDataSource {
         var predicates = super.predicates(filterType: filterType)
         switch filterType {
         case 1:
-            predicates.append(NSPredicate(format: "value <= 0"))
+            predicates.append(NSPredicate(format: "value < 0"))
         case 2:
-            predicates.append(NSPredicate(format: "value > 0"))
+            predicates.append(NSPredicate(format: "value >= 0"))
         default:
             break
         }

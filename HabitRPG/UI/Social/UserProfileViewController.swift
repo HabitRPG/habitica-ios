@@ -10,9 +10,8 @@ import Foundation
 import Habitica_Models
 import ReactiveSwift
 import Down
-import Result
 
-class UserProfileViewController: HRPGBaseViewController {
+class UserProfileViewController: BaseTableViewController {
     
     private let socialRepository = SocialRepository()
     private let inventoryRepository = InventoryRepository()
@@ -40,6 +39,8 @@ class UserProfileViewController: HRPGBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        topHeaderCoordinator?.hideHeader = true
+        topHeaderCoordinator.followScrollView = false
         
         refresh()
         
@@ -59,8 +60,8 @@ class UserProfileViewController: HRPGBaseViewController {
         }).start())
         
         if let userID = userID {
-            disposable.inner.add(socialRepository.getMember(userID: userID).skipNil().flatMap(.latest, { (member) in
-                return self.fetchGearStats(member: member)
+            disposable.inner.add(socialRepository.getMember(userID: userID).skipNil().flatMap(.latest, {[weak self] (member) in
+                return self?.fetchGearStats(member: member) ?? SignalProducer.empty
             }).on(value: {[weak self] (member, gear) in
                 self?.member = member
                 self?.navigationItem.title = member.profile?.name
@@ -102,11 +103,7 @@ class UserProfileViewController: HRPGBaseViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            if configRepository.bool(variable: .enableUsernameRelease) {
-                return 5
-            } else {
-                return 4
-            }
+            return 5
         case 1, 2:
             return 8
         case 3:
@@ -125,28 +122,15 @@ class UserProfileViewController: HRPGBaseViewController {
         var cellname = "Cell"
         switch indexPath.section {
         case 0:
-            if configRepository.bool(variable: .enableUsernameRelease) {
-                switch indexPath.item {
-                case 0:
-                    cellname = "ProfileCell"
-                case 2:
-                    cellname = "TextCell"
-                case 1, 3, 4:
-                    cellname = "SubtitleCell"
-                default:
-                    break
-                }
-            } else {
-                switch indexPath.item {
-                case 0:
-                    cellname = "ProfileCell"
-                case 1:
-                    cellname = "TextCell"
-                case 2, 3:
-                    cellname = "SubtitleCell"
-                default:
-                    break
-                }
+            switch indexPath.item {
+            case 0:
+                cellname = "ProfileCell"
+            case 2:
+                cellname = "TextCell"
+            case 1, 3, 4:
+                cellname = "SubtitleCell"
+            default:
+                break
             }
         case 1, 2:
             cellname = "EquipmentCell"
@@ -163,49 +147,27 @@ class UserProfileViewController: HRPGBaseViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellname, for: indexPath)
         switch indexPath.section {
         case 0:
-            if configRepository.bool(variable: .enableUsernameRelease) {
-                switch indexPath.item {
-                case 0:
-                    configureUserStatsCell(cell)
-                case 1:
-                    cell.textLabel?.text = L10n.username
-                    cell.detailTextLabel?.text = member?.authentication?.local?.username
-                case 2:
-                    let textView = cell.viewWithTag(1) as? UITextView
-                    textView?.attributedText = try? Down(markdownString: member?.profile?.blurb ?? "").toHabiticaAttributedString()
-                case 3:
-                    cell.textLabel?.text = L10n.Member.memberSince
-                    if let date = member?.authentication?.timestamps?.createdAt {
-                        cell.detailTextLabel?.text = DateFormatter.localizedString(from: date, dateStyle: .medium, timeStyle: .none)
-                    }
-                case 4:
-                    cell.textLabel?.text = L10n.Member.lastLoggedIn
-                    if let date = member?.authentication?.timestamps?.loggedIn {
-                        cell.detailTextLabel?.text = DateFormatter.localizedString(from: date, dateStyle: .medium, timeStyle: .none)
-                    }
-                default:
-                    break
+            switch indexPath.item {
+            case 0:
+                configureUserStatsCell(cell)
+            case 1:
+                cell.textLabel?.text = L10n.username
+                cell.detailTextLabel?.text = member?.authentication?.local?.username
+            case 2:
+                let textView = cell.viewWithTag(1) as? UITextView
+                textView?.attributedText = try? Down(markdownString: member?.profile?.blurb ?? "").toHabiticaAttributedString()
+            case 3:
+                cell.textLabel?.text = L10n.Member.memberSince
+                if let date = member?.authentication?.timestamps?.createdAt {
+                    cell.detailTextLabel?.text = DateFormatter.localizedString(from: date, dateStyle: .medium, timeStyle: .none)
                 }
-            } else {
-                switch indexPath.item {
-                case 0:
-                    configureUserStatsCell(cell)
-                case 1:
-                    let textView = cell.viewWithTag(1) as? UITextView
-                    textView?.attributedText = try? Down(markdownString: member?.profile?.blurb ?? "").toHabiticaAttributedString()
-                case 2:
-                    cell.textLabel?.text = L10n.Member.memberSince
-                    if let date = member?.authentication?.timestamps?.createdAt {
-                        cell.detailTextLabel?.text = DateFormatter.localizedString(from: date, dateStyle: .medium, timeStyle: .none)
-                    }
-                case 3:
-                    cell.textLabel?.text = L10n.Member.lastLoggedIn
-                    if let date = member?.authentication?.timestamps?.loggedIn {
-                        cell.detailTextLabel?.text = DateFormatter.localizedString(from: date, dateStyle: .medium, timeStyle: .none)
-                    }
-                default:
-                    break
+            case 4:
+                cell.textLabel?.text = L10n.Member.lastLoggedIn
+                if let date = member?.authentication?.timestamps?.loggedIn {
+                    cell.detailTextLabel?.text = DateFormatter.localizedString(from: date, dateStyle: .medium, timeStyle: .none)
                 }
+            default:
+                break
             }
         case 1:
             if let outfit = member?.items?.gear?.equipped {
@@ -249,14 +211,26 @@ class UserProfileViewController: HRPGBaseViewController {
         levelLabel?.text = L10n.levelNumber(stats.level)
         
         let healthLabel = cell.viewWithTag(2) as? HRPGLabeledProgressBar
-        healthLabel?.color = UIColor.red100()
+        if ThemeService.shared.theme.isDark {
+            healthLabel?.color = UIColor.red50().withAlphaComponent(0.75)
+            healthLabel?.iconView.alpha = 0.8
+        } else {
+            healthLabel?.color = UIColor.red100()
+            healthLabel?.iconView.alpha = 1.0
+        }
         healthLabel?.icon = HabiticaIcons.imageOfHeartLightBg
         healthLabel?.type = L10n.health
         healthLabel?.value = NSNumber(value: stats.health)
         healthLabel?.maxValue = NSNumber(value: stats.maxHealth)
         
         let experienceLabel = cell.viewWithTag(3) as? HRPGLabeledProgressBar
-        experienceLabel?.color = UIColor.yellow100()
+        if ThemeService.shared.theme.isDark {
+            experienceLabel?.color = UIColor.yellow50().withAlphaComponent(0.75)
+            experienceLabel?.iconView.alpha = 0.8
+        } else {
+            experienceLabel?.color = UIColor.yellow100()
+            experienceLabel?.iconView.alpha = 1.0
+        }
         experienceLabel?.icon = HabiticaIcons.imageOfExperience
         experienceLabel?.type = L10n.experience
         experienceLabel?.value = NSNumber(value: stats.experience)
@@ -264,7 +238,13 @@ class UserProfileViewController: HRPGBaseViewController {
         
         let magicLabel = cell.viewWithTag(4) as? HRPGLabeledProgressBar
         if stats.level >= 10 {
-            magicLabel?.color = UIColor.blue100()
+            if ThemeService.shared.theme.isDark {
+                magicLabel?.color = UIColor.blue50().withAlphaComponent(0.75)
+                magicLabel?.iconView.alpha = 0.8
+            } else {
+                magicLabel?.color = UIColor.blue100()
+                magicLabel?.iconView.alpha = 1.0
+            }
             magicLabel?.icon = HabiticaIcons.imageOfMagic
             magicLabel?.type = L10n.mana
             magicLabel?.value = NSNumber(value: stats.mana)
@@ -275,6 +255,17 @@ class UserProfileViewController: HRPGBaseViewController {
         }
         let avatarView = cell.viewWithTag(8) as? AvatarView
         avatarView?.avatar = AvatarViewModel(avatar: member)
+        
+        let theme = ThemeService.shared.theme
+        healthLabel?.textColor = theme.primaryTextColor
+        healthLabel?.backgroundColor = theme.contentBackgroundColor
+        healthLabel?.progressBar.barBackgroundColor = theme.contentBackgroundColorDimmed
+        experienceLabel?.textColor = theme.primaryTextColor
+        experienceLabel?.backgroundColor = theme.contentBackgroundColor
+        experienceLabel?.progressBar.barBackgroundColor = theme.contentBackgroundColorDimmed
+        magicLabel?.textColor = theme.primaryTextColor
+        magicLabel?.backgroundColor = theme.contentBackgroundColor
+        magicLabel?.progressBar.barBackgroundColor = theme.contentBackgroundColorDimmed
     }
     
     private func configureEquipmentCell(_ cell: UITableViewCell, atIndex index: Int, outfit: OutfitProtocol) {
@@ -320,11 +311,11 @@ class UserProfileViewController: HRPGBaseViewController {
             imageView?.setImagewith(name: "shop_\(equipmentKey)")
             let gear = gearDictionary[equipmentKey]
             detailTextLabel?.text = gear?.text
-            detailTextLabel?.textColor = .black
+            detailTextLabel?.textColor = ThemeService.shared.theme.primaryTextColor
             attributeLabel?.text = gear?.statsText
         } else {
             detailTextLabel?.text = L10n.Equipment.nothingEquipped
-            detailTextLabel?.textColor = .gray
+            detailTextLabel?.textColor = ThemeService.shared.theme.dimmedTextColor
             attributeLabel?.text = nil
         }
     }
@@ -384,7 +375,7 @@ class UserProfileViewController: HRPGBaseViewController {
         perceptionLabel?.text = String(perception)
     }
     
-    private func fetchGearStats(member: MemberProtocol) -> SignalProducer<(MemberProtocol, [GearProtocol]), NoError> {
+    private func fetchGearStats(member: MemberProtocol) -> SignalProducer<(MemberProtocol, [GearProtocol]), Never> {
         var keys = [String]()
         if let outfit = member.items?.gear?.equipped {
             keys.append(outfit.armor ?? "")
@@ -399,11 +390,11 @@ class UserProfileViewController: HRPGBaseViewController {
         
         let gearProducer = inventoryRepository.getGear(predicate: NSPredicate(format: "key in %@", keys)).map({ gear in
             return gear.value
-        }).flatMapError({ (_) -> SignalProducer<[GearProtocol], NoError> in
+        }).flatMapError({ (_) -> SignalProducer<[GearProtocol], Never> in
             return SignalProducer.empty
         })
         
-        return gearProducer.withLatest(from: SignalProducer<MemberProtocol, NoError>(value: member)).map({ (gear, user) in
+        return gearProducer.withLatest(from: SignalProducer<MemberProtocol, Never>(value: member)).map({ (gear, user) in
             return (user, gear)
         })
     }

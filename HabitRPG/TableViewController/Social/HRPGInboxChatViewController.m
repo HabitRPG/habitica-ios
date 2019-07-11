@@ -48,7 +48,7 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 90;
-    self.tableView.backgroundColor = [UIColor gray700];
+    self.tableView.backgroundColor = [ObjcThemeWrapper windowBackgroundColor];
     
     [self.textView registerMarkdownFormattingSymbol:@"**" withTitle:@"Bold"];
     [self.textView registerMarkdownFormattingSymbol:@"*" withTitle:@"Italics"];
@@ -59,6 +59,9 @@
     self.textInputbar.charCountLabelNormalColor = [UIColor gray400];
     self.textInputbar.charCountLabelWarningColor = [UIColor red50];
     self.textInputbar.charCountLabel.font = [UIFont systemFontOfSize:11 weight:UIFontWeightBold];
+    self.textInputbar.textView.backgroundColor = ObjcThemeWrapper.contentBackgroundColor;
+    self.textInputbar.textView.placeholderColor = ObjcThemeWrapper.dimmedTextColor;
+    self.textInputbar.textView.textColor = ObjcThemeWrapper.primaryTextColor;
     
     self.hrpgTopHeaderNavigationController.shouldHideTopHeader = true;
     self.hrpgTopHeaderNavigationController.hideNavbar = false;

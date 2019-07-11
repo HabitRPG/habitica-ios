@@ -73,7 +73,7 @@ public class SocialLocalRepository: BaseLocalRepository {
     }
     
     public func save(groupID: String?, chatMessages: [ChatMessageProtocol]) {
-        save(objects:chatMessages.map { (chatMessage) in
+        save(objects: chatMessages.map { (chatMessage) in
             if let realmChatMessage = chatMessage as? RealmChatMessage {
                 return realmChatMessage
             }
@@ -103,16 +103,31 @@ public class SocialLocalRepository: BaseLocalRepository {
     }
     
     public func save(userID: String?, groupIDs: [String?]) {
-        save(objects:groupIDs.filter({ (id) -> Bool in
+        let newMemberships = groupIDs.filter({ (id) -> Bool in
             return id != nil
         }).map({ (groupID) -> RealmGroupMembership in
             return RealmGroupMembership(userID: userID, groupID: groupID)
-        }))
+        })
+        let oldGroupMemberships = getRealm()?.objects(RealmGroupMembership.self).filter("userID == '\(userID ?? "")'")
+        var membershipsToRemove = [Object]()
+        oldGroupMemberships?.forEach({ (membership) in
+            if !newMemberships.contains(where: { (newMembership) -> Bool in
+                return newMembership.groupID == membership.groupID
+            }) {
+                membershipsToRemove.append(membership)
+            }
+        })
+        updateCall { realm in
+            if membershipsToRemove.isEmpty == false {
+                realm.delete(membershipsToRemove)
+            }
+            realm.add(newMemberships, update: true)
+        }
     }
     
     public func delete(_ chatMessage: ChatMessageProtocol) {
         if let realm = getRealm(), let message = realm.object(ofType: RealmChatMessage.self, forPrimaryKey: chatMessage.id) {
-            try? realm.write {
+            updateCall { realm in
                 if message.isInvalidated {
                     return
                 }
@@ -123,18 +138,18 @@ public class SocialLocalRepository: BaseLocalRepository {
     
     public func save(challengeID: String?, tasks: [TaskProtocol], order: [String: [String]]) {
         let tags = getRealm()?.objects(RealmTag.self)
-        save(objects:tasks.map { (task) in
+        save(objects: tasks.map { (task) in
             task.order = order[(task.type ?? "")+"s"]?.index(of: task.id ?? "") ?? 0
             if let realmTask = task as? RealmTask {
                 return realmTask
             }
-            return RealmTask(userID: challengeID, taskProtocol: task, tags: tags)
+            return RealmTask(ownerID: challengeID, taskProtocol: task, tags: tags)
         })
     }
     
     public func delete(_ message: InboxMessageProtocol) {
         if let realm = getRealm(), let message = realm.object(ofType: RealmInboxMessage.self, forPrimaryKey: message.id) {
-            try? realm.write {
+            updateCall { realm in
                 if message.isInvalidated {
                     return
                 }
@@ -145,15 +160,15 @@ public class SocialLocalRepository: BaseLocalRepository {
     
     public func joinGroup(userID: String, groupID: String, group: GroupProtocol?) {
         let realm = getRealm()
-        try? realm?.write {
-            realm?.add(RealmGroupMembership(userID: userID, groupID: groupID), update: true)
+        updateCall { realm in
+            realm.add(RealmGroupMembership(userID: userID, groupID: groupID), update: true)
         }
         if group?.type == "party", let user = realm?.object(ofType: RealmUser.self, forPrimaryKey: userID) {
             let userParty = RealmUserParty()
             userParty.id = groupID
             userParty.userID = userID
-            try? realm?.write {
-                realm?.add(userParty, update: true)
+            updateCall { realm in
+                realm.add(userParty, update: true)
                 user.party = userParty
             }
         }
@@ -162,15 +177,15 @@ public class SocialLocalRepository: BaseLocalRepository {
     public func leaveGroup(userID: String, groupID: String, group: GroupProtocol?) {
         let realm = getRealm()
         if let membership = realm?.object(ofType: RealmGroupMembership.self, forPrimaryKey: userID+groupID) {
-            try? realm?.write {
-                realm?.delete(membership)
+            updateCall { realm in
+                realm.delete(membership)
                 if let group = group {
-                    realm?.add(RealmGroup(group), update: true)
+                    realm.add(RealmGroup(group), update: true)
                 }
             }
         }
         if group?.type == "party", let userParty = realm?.object(ofType: RealmUserParty.self, forPrimaryKey: userID) {
-            try? realm?.write {
+            updateCall { realm in
                 userParty.id = nil
             }
         }
@@ -179,26 +194,39 @@ public class SocialLocalRepository: BaseLocalRepository {
     public func deleteGroupInvitation(userID: String, groupID: String) {
         let realm = getRealm()
         if let invitation = realm?.object(ofType: RealmGroupInvitation.self, forPrimaryKey: userID+groupID) {
-            try? realm?.write {
-                realm?.delete(invitation)
+            updateCall { realm in
+                realm.delete(invitation)
             }
         }
     }
     
+    public func deleteGroup(groupID: String) {
+        guard let realm = getRealm() else {
+            return
+        }
+        let guild = realm.object(ofType: RealmGroup.self, forPrimaryKey: groupID)
+        let messages = realm.objects(RealmChatMessage.self).filter("groupID == %@", groupID)
+        updateCall({ (realm) in
+            if let guild = guild {
+                realm.delete(guild)
+            }
+            realm.delete(messages)
+        })
+    }
+    
     public func joinChallenge(userID: String, challengeID: String, challenge: ChallengeProtocol?) {
-        let realm = getRealm()
-        try? realm?.write {
-            realm?.add(RealmChallengeMembership(userID: userID, challengeID: challengeID), update: true)
+        updateCall { realm in
+            realm.add(RealmChallengeMembership(userID: userID, challengeID: challengeID), update: true)
         }
     }
     
     public func leaveChallenge(userID: String, challengeID: String, challenge: ChallengeProtocol?) {
         let realm = getRealm()
         if let membership = realm?.object(ofType: RealmChallengeMembership.self, forPrimaryKey: userID+challengeID) {
-            try? realm?.write {
-                realm?.delete(membership)
+            updateCall { realm in
+                realm.delete(membership)
                 if let challenge = challenge {
-                    realm?.add(RealmChallenge(challenge), update: true)
+                    realm.add(RealmChallenge(challenge), update: true)
                 }
             }
         }
@@ -214,28 +242,27 @@ public class SocialLocalRepository: BaseLocalRepository {
                 messagesToRemove.append(message)
             }
         })
-        if messagesToRemove.count > 0 {
-            let realm = getRealm()
-            try? realm?.write {
-                realm?.delete(messagesToRemove)
+        if messagesToRemove.isEmpty == false {
+            updateCall { realm in
+                realm.delete(messagesToRemove)
             }
         }
     }
     
     public func getGroup(groupID: String) -> SignalProducer<GroupProtocol?, ReactiveSwiftRealmError> {
-        return RealmGroup.findBy(query: "id == '\(groupID)'").reactive().map({ (groups, changes) -> GroupProtocol? in
+        return RealmGroup.findBy(query: "id == '\(groupID)'").reactive().map({ (groups, _) -> GroupProtocol? in
             return groups.first
         })
     }
     
     public func getChallenge(challengeID: String) -> SignalProducer<ChallengeProtocol?, ReactiveSwiftRealmError> {
-        return RealmChallenge.findBy(query: "id == '\(challengeID)'").reactive().map({ (groups, changes) -> ChallengeProtocol? in
+        return RealmChallenge.findBy(query: "id == '\(challengeID)'").reactive().map({ (groups, _) -> ChallengeProtocol? in
             return groups.first
         })
     }
     
     public func getChallengeTasks(challengeID: String) -> SignalProducer<ReactiveResults<[TaskProtocol]>, ReactiveSwiftRealmError> {
-        return RealmTask.findBy(query: "userID == '\(challengeID)'").reactive().map({ (value, changeset) -> ReactiveResults<[TaskProtocol]> in
+        return RealmTask.findBy(query: "ownerID == '\(challengeID)'").reactive().map({ (value, changeset) -> ReactiveResults<[TaskProtocol]> in
             return (value.map({ (task) -> TaskProtocol in return task }), changeset)
         })
     }
@@ -259,6 +286,7 @@ public class SocialLocalRepository: BaseLocalRepository {
         } else {
             query = RealmChallenge.findAll()
         }
+        // swiftlint:disable:next force_unwrapping
         return query!.sorted(key: "memberCount", ascending: false).reactive().map({ (value, changeset) -> ReactiveResults<[ChallengeProtocol]> in
             return (value.map({ (challenge) -> ChallengeProtocol in return challenge }), changeset)
         })
@@ -289,19 +317,19 @@ public class SocialLocalRepository: BaseLocalRepository {
     }
     
     public func getGroupMembership(userID: String, groupID: String) -> SignalProducer<GroupMembershipProtocol?, ReactiveSwiftRealmError> {
-        return RealmGroupMembership.findBy(query: "userID == '\(userID)' && groupID == '\(groupID)'").reactive().map({ (memberships, changes) -> GroupMembershipProtocol? in
+        return RealmGroupMembership.findBy(query: "userID == '\(userID)' && groupID == '\(groupID)'").reactive().map({ (memberships, _) -> GroupMembershipProtocol? in
             return memberships.first
         })
     }
     
     public func getChallengeMembership(userID: String, challengeID: String) -> SignalProducer<ChallengeMembershipProtocol?, ReactiveSwiftRealmError> {
-        return RealmChallengeMembership.findBy(query: "userID == '\(userID)' && challengeID == '\(challengeID)'").reactive().map({ (memberships, changes) -> ChallengeMembershipProtocol? in
+        return RealmChallengeMembership.findBy(query: "userID == '\(userID)' && challengeID == '\(challengeID)'").reactive().map({ (memberships, _) -> ChallengeMembershipProtocol? in
             return memberships.first
         })
     }
     
     public func getMember(userID: String) -> SignalProducer<MemberProtocol?, ReactiveSwiftRealmError> {
-        return RealmMember.findBy(query: "id == '\(userID)'").reactive().map({ (members, changes) -> MemberProtocol? in
+        return RealmMember.findBy(query: "id == '\(userID)'").reactive().map({ (members, _) -> MemberProtocol? in
             return members.first
         })
     }
@@ -330,8 +358,9 @@ public class SocialLocalRepository: BaseLocalRepository {
     }
     
     public func changeQuestRSVP(userID: String, rsvpNeeded: Bool) {
+        // swiftlint:disable:next first_where
         if let realm = getRealm(), let questState = realm.objects(RealmQuestState.self).filter("combinedKey BEGINSWITH %@", userID).first {
-            try? realm.write {
+            updateCall { _ in
                 questState.rsvpNeeded = rsvpNeeded
             }
         }
@@ -350,7 +379,7 @@ public class SocialLocalRepository: BaseLocalRepository {
     
     public func markInboxAsSeen(userID: String) {
         if let realm = getRealm(), let user = realm.object(ofType: RealmUser.self, forPrimaryKey: userID) {
-            try? realm.write {
+            updateCall { _ in
                 user.inbox?.numberNewMessages = 0
             }
         }
@@ -358,12 +387,32 @@ public class SocialLocalRepository: BaseLocalRepository {
     
     public func setNoNewMessages(userID: String, groupID: String) {
         if let realm = getRealm(), let user = realm.object(ofType: RealmUser.self, forPrimaryKey: userID) {
-            try? realm.write {
+            updateCall { _ in
                 let newMessages = user.hasNewMessages.first(where: { (newMessages) -> Bool in
                     return newMessages.id == groupID
                 })
                 newMessages?.hasNewMessages = false
             }
         }
+    }
+    
+    public func findUsernames(_ username: String, id: String?) -> SignalProducer<[MemberProtocol], ReactiveSwiftRealmError> {
+        return RealmChatMessage.findBy(query: "groupID == '\(id ?? "")' && username BEGINSWITH[c] '\(username)'")
+            .distinct(by: ["username"])
+            .sorted(key: "timestamp", ascending: false)
+            .reactive()
+            .map({ (result, _) -> [MemberProtocol] in
+                return result.map({ (message) -> MemberProtocol in
+                    let member = RealmMember()
+                    member.authentication = RealmAuthentication()
+                    member.authentication?.local = RealmLocalAuthentication()
+                    member.authentication?.local?.username = message.username
+                    member.profile = RealmProfile()
+                    member.profile?.name = message.displayName
+                    member.contributor = RealmContributor()
+                    member.contributor?.level = message.contributor?.level ?? 0
+                    return member
+                })
+            })
     }
 }

@@ -13,7 +13,8 @@ class SubscriptionInformationCell: UITableViewCell {
     @IBOutlet weak private var titleLabel: UILabel!
     @IBOutlet weak private var expandButton: UIButton!
     @IBOutlet weak private var descriptionTextView: UITextView!
-
+    @IBOutlet weak var titleWrapper: UIView!
+    
     var expandButtonPressedAction: ((Bool) -> Void)?
 
     var isExpanded = false
@@ -31,6 +32,7 @@ class SubscriptionInformationCell: UITableViewCell {
     var descriptionText: String {
         set {
             descriptionTextView.text = newValue
+            descriptionTextView.textColor = ThemeService.shared.theme.primaryTextColor
         }
 
         get {

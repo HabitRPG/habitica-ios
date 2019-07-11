@@ -9,7 +9,6 @@
 import Foundation
 @testable import Habitica
 import Habitica_Models
-import Result
 import Nimble
 
 class TaskRepeatablesSummaryInteractorTests: HabiticaTests {
@@ -22,15 +21,16 @@ class TaskRepeatablesSummaryInteractorTests: HabiticaTests {
     override func setUp() {
         super.setUp()
         
-        self.initializeCoreDataStorage()
+        self.task.weekRepeat = TestWeekRepeat()
+        
         /*guard let task = NSEntityDescription.insertNewObject(forEntityName: "Task", into: HRPGManager.shared().getManagedObjectContext()) as? Task else {
             return;
         }
-        self.task = task
+        self.task = task*/
         task.text = "Task Title"
         task.notes = "Task notes"
         task.type = "daily"
-        task.startDate = Date(timeIntervalSince1970: 1485887999)*/
+        task.startDate = Date(timeIntervalSince1970: 1485887999)
     }
     
     func testDailyNeverRepeats() {
@@ -145,28 +145,28 @@ class TaskRepeatablesSummaryInteractorTests: HabiticaTests {
     func testMonthyEveryDayOfMonth() {
         task.everyX = 1
         task.frequency = "monthly"
-        //task.daysOfMonth = Set(arrayLiteral: 31)
+        task.daysOfMonth = [31]
         expect(self.interactor.repeatablesSummary(self.task)) == "Repeats monthly on the 31"
     }
     
     func testMonthyEveryThreeDayOfMonth() {
         task.everyX = 3
         task.frequency = "monthly"
-        //task.daysOfMonth = Set(arrayLiteral: 31)
+        task.daysOfMonth = [31]
         expect(self.interactor.repeatablesSummary(self.task)) == "Repeats every 3 months on the 31"
     }
     
     func testMonthyEveryWeekOfMonth() {
         task.everyX = 1
         task.frequency = "monthly"
-        //task.weeksOfMonth = Set(arrayLiteral: 5)
+        task.weeksOfMonth = [5]
         expect(self.interactor.repeatablesSummary(self.task)) == "Repeats monthly on the 5 Tuesday"
     }
     
     func testMonthyEveryThreeWeekOfMonth() {
         task.everyX = 3
         task.frequency = "monthly"
-        //task.weeksOfMonth = Set(arrayLiteral: 5)
+        task.weeksOfMonth = [5]
         expect(self.interactor.repeatablesSummary(self.task)) == "Repeats every 3 months on the 5 Tuesday"
         
     }
@@ -182,4 +182,14 @@ class TaskRepeatablesSummaryInteractorTests: HabiticaTests {
         task.frequency = "yearly"
         expect(self.interactor.repeatablesSummary(self.task)) == "Repeats every 3 years on January 31"
     }
+}
+
+private class TestWeekRepeat: WeekRepeatProtocol {
+    var monday: Bool = false
+    var tuesday: Bool = false
+    var wednesday: Bool = false
+    var thursday: Bool = false
+    var friday: Bool = false
+    var saturday: Bool = false
+    var sunday: Bool = false
 }

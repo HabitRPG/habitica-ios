@@ -12,7 +12,7 @@ import ReactiveSwift
 import ReactiveCocoa
 import Habitica_Models
 
-class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate, ChallengeFilterChangedDelegate {
+class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate, ChallengeFilterChangedDelegate {
     
     var selectedChallenge: ChallengeProtocol?
 
@@ -43,7 +43,7 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate,
         
         self.tableView.tableHeaderView = searchbar
         
-        filterButton.setImage(HabiticaIcons.imageOfFilterIcon(), for: .normal)
+        filterButton.setImage(HabiticaIcons.imageOfFilterIcon().withRenderingMode(.alwaysTemplate), for: .normal)
         filterButton.addTarget(self, action: #selector(filterTapped(_:)), for: .touchUpInside)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: filterButton)
         
@@ -66,6 +66,13 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate,
         
         refresh()
         dataSource.tableView = self.tableView
+        
+        segmentedFilterControl.selectedSegmentIndex = 0
+    }
+    
+    override func applyTheme(theme: Theme) {
+        super.applyTheme(theme: theme)
+        navigationItem.rightBarButtonItem?.tintColor = theme.tintColor
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -89,6 +96,14 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate,
         super.viewWillLayoutSubviews()
     }
     
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.item == dataSource.tableView(tableView, numberOfRowsInSection: indexPath.section)-1 {
+            dataSource.retrieveData(forced: false) {
+                self.refreshControl?.endRefreshing()
+            }
+        }
+    }
+    
     private func layoutHeader() {
         let size = segmentedFilterControl.intrinsicContentSize
         segmentedFilterControl.frame = CGRect(x: 8, y: 4, width: viewWidth-16, height: size.height)
@@ -97,7 +112,7 @@ class ChallengeTableViewController: HRPGBaseViewController, UISearchBarDelegate,
     
     @objc
     private func refresh() {
-        dataSource.retrieveData {
+        dataSource.retrieveData(forced: true) {
             self.refreshControl?.endRefreshing()
         }
     }

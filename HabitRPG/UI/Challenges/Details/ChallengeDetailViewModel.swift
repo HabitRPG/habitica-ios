@@ -8,7 +8,6 @@
 
 import UIKit
 import ReactiveSwift
-import Result
 import Habitica_Models
 
 enum ChallengeButtonState {
@@ -21,10 +20,10 @@ protocol ChallengeDetailViewModelInputs {
 }
 
 protocol ChallengeDetailViewModelOutputs {
-    var cellModelsSignal: Signal<[MultiModelDataSourceSection], NoError> { get }
-    var reloadTableSignal: Signal<Void, NoError> { get }
-    var animateUpdatesSignal: Signal<(), NoError> { get }
-    var nextViewControllerSignal: Signal<UIViewController, NoError> { get }
+    var cellModelsSignal: Signal<[MultiModelDataSourceSection], Never> { get }
+    var reloadTableSignal: Signal<Void, Never> { get }
+    var animateUpdatesSignal: Signal<(), Never> { get }
+    var nextViewControllerSignal: Signal<UIViewController, Never> { get }
 }
 
 protocol ChallengeDetailViewModelProtocol {
@@ -36,10 +35,10 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
     var inputs: ChallengeDetailViewModelInputs { return self }
     var outputs: ChallengeDetailViewModelOutputs { return self }
     
-    let cellModelsSignal: Signal<[MultiModelDataSourceSection], NoError>
-    let reloadTableSignal: Signal<Void, NoError>
-    let animateUpdatesSignal: Signal<(), NoError>
-    let nextViewControllerSignal: Signal<UIViewController, NoError>
+    let cellModelsSignal: Signal<[MultiModelDataSourceSection], Never>
+    let reloadTableSignal: Signal<Void, Never>
+    let animateUpdatesSignal: Signal<(), Never>
+    let nextViewControllerSignal: Signal<UIViewController, Never>
     
     let challengeID: String?
     
@@ -128,7 +127,6 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
         setupButtons()
         
         setupInfo()
-        
         
         challengeProperty.signal.observeValues {[weak self] newChallenge in
             self?.joinLeaveStyleProvider.challengeProperty.value = newChallenge

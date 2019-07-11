@@ -11,7 +11,7 @@ import Habitica_Models
 import ReactiveSwift
 import Down
 
-class QuestDetailViewController: HRPGUIViewController {
+class QuestDetailViewController: BaseUIViewController {
     
     private let socialRepository = SocialRepository()
     private let inventoryRepository = InventoryRepository()
@@ -30,6 +30,7 @@ class QuestDetailViewController: HRPGUIViewController {
         return view
     }()
     
+    @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var questTypeHeader: UILabel!
     @IBOutlet weak var descriptionTextView: UITextView!
@@ -85,6 +86,13 @@ class QuestDetailViewController: HRPGUIViewController {
         
         descriptionTextView.textContainerInset = UIEdgeInsets.zero
         descriptionTextView.textContainer.lineFragmentPadding = 0
+    }
+    
+    override func applyTheme(theme: Theme) {
+        super.applyTheme(theme: theme)
+        scrollView.backgroundColor = theme.windowBackgroundColor
+        backgroundView.backgroundColor = theme.contentBackgroundColor
+        bossImageView.backgroundColor = theme.windowBackgroundColor
     }
     
     override func populateText() {
@@ -185,6 +193,7 @@ class QuestDetailViewController: HRPGUIViewController {
             }
             invitationsStackView.addArrangedSubview(view)
         }
+        invitationsStackView.setNeedsLayout()
     }
     
     @IBAction func rejectButtonTapped(_ sender: Any) {

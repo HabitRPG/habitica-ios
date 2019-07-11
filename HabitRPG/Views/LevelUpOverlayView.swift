@@ -21,8 +21,8 @@ class LevelUpOverlayView: HabiticaAlertController {
     
     init(avatar: AvatarProtocol) {
         super.init()
-        self.title = L10n.levelupTitle
-        self.message = L10n.levelupDescription(avatar.stats?.level ?? 0)
+        title = L10n.levelupTitle
+        message = L10n.levelupDescription(avatar.stats?.level ?? 0)
         setupAvatarView(avatar: avatar)
         addShareAction {[weak self] (_) in
             var items: [Any] = [

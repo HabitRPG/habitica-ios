@@ -1,38 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="167"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="Sh">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="135"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LPL-dL-APd">
-                    <rect key="frame" x="178" y="8" width="189" height="114"/>
+                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LPL-dL-APd">
+                    <rect key="frame" x="8" y="8" width="359" height="95"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" tag="1" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SfB-zM-e3r">
-                    <rect key="frame" x="8" y="8" width="162" height="138"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="162" id="8jj-wN-VZ4"/>
-                        <constraint firstAttribute="height" constant="138" id="XJF-sQ-Vzo"/>
-                    </constraints>
-                </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7k6-GD-5r2">
-                    <rect key="frame" x="178" y="122" width="189" height="24"/>
+                    <rect key="frame" x="8" y="103" width="359" height="24"/>
                     <subviews>
                         <button opaque="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dov-vA-RKV">
-                            <rect key="frame" x="52" y="0.0" width="85" height="24"/>
+                            <rect key="frame" x="137" y="0.0" width="85" height="24"/>
                             <constraints>
                                 <constraint firstAttribute="width" priority="500" constant="60" id="bX0-AL-Emi"/>
                             </constraints>
@@ -55,16 +48,14 @@
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="7k6-GD-5r2" secondAttribute="trailing" constant="8" id="4k2-cg-5h7"/>
                 <constraint firstItem="LPL-dL-APd" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="58F-2q-29M"/>
-                <constraint firstItem="SfB-zM-e3r" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="IbG-kL-iI0"/>
+                <constraint firstAttribute="bottom" secondItem="7k6-GD-5r2" secondAttribute="bottom" constant="8" id="IE3-yh-38S"/>
+                <constraint firstItem="LPL-dL-APd" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="SgA-N3-Kza"/>
                 <constraint firstItem="7k6-GD-5r2" firstAttribute="top" secondItem="LPL-dL-APd" secondAttribute="bottom" id="brG-Fn-6W2"/>
-                <constraint firstItem="SfB-zM-e3r" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="cbq-Ug-uow"/>
-                <constraint firstItem="7k6-GD-5r2" firstAttribute="bottom" secondItem="SfB-zM-e3r" secondAttribute="bottom" id="iTj-ta-1pF"/>
-                <constraint firstItem="7k6-GD-5r2" firstAttribute="leading" secondItem="SfB-zM-e3r" secondAttribute="trailing" constant="8" id="oBk-RI-zXt"/>
-                <constraint firstItem="LPL-dL-APd" firstAttribute="leading" secondItem="SfB-zM-e3r" secondAttribute="trailing" constant="8" id="pge-Rg-Lcu"/>
-                <constraint firstAttribute="trailing" secondItem="LPL-dL-APd" secondAttribute="trailing" constant="8" id="uCg-2g-6S8"/>
+                <constraint firstAttribute="trailing" secondItem="LPL-dL-APd" secondAttribute="trailing" constant="8" id="oH4-RS-pFh"/>
+                <constraint firstItem="7k6-GD-5r2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="uQw-eQ-acU"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="34.5" y="-191.5"/>
+            <point key="canvasLocation" x="34.399999999999999" y="-206.44677661169416"/>
         </view>
     </objects>
 </document>

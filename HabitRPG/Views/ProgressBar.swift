@@ -35,7 +35,7 @@ class ProgressBar: UIView {
             setNeedsDisplay()
         }
     }
-    @objc var barBackgroundColor: UIColor = UIColor.gray600() {
+    @objc var barBackgroundColor: UIColor = ThemeService.shared.theme.offsetBackgroundColor {
         didSet {
             setNeedsDisplay()
         }
@@ -71,13 +71,13 @@ class ProgressBar: UIView {
         context?.setFillColor(barBackgroundColor.cgColor)
         trackPath.fill()
         trackPath.addClip()
-        var percent = self.value / self.maxValue
+        var percent = value / maxValue
         if stackedValue > 0 {
-            var stackedPercent = self.stackedValue / self.maxValue
+            var stackedPercent = stackedValue / maxValue
             if stackedPercent > 1 {
                 stackedPercent = 1
             }
-            if !(self.maxValue == 0 || stackedPercent < 0) {
+            if !(maxValue == 0 || stackedPercent < 0) {
                 let rect = CGRect.init(x: rect.origin.x,
                                        y: rect.origin.y,
                                        width: rect.size.width * percent,
@@ -88,7 +88,7 @@ class ProgressBar: UIView {
             }
             percent -= stackedPercent
         }
-        if !(self.maxValue == 0 || percent < 0) {
+        if !(maxValue == 0 || percent < 0) {
             let fillPath = UIBezierPath(roundedRect: CGRect.init(x: rect.origin.x, y: rect.origin.y, width: rect.size.width * percent, height: rect.size.height), cornerRadius: rect.size.height/2)
             context?.setFillColor(barColor.cgColor)
             fillPath.fill()

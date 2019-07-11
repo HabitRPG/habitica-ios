@@ -24,7 +24,6 @@ public class TaskTextInputCell: Cell<String>, CellType, UITextViewDelegate {
         super.setup()
         textField.delegate = self
         selectionStyle = .none
-
     }
 
     public override func update() {
@@ -36,6 +35,8 @@ public class TaskTextInputCell: Cell<String>, CellType, UITextViewDelegate {
         if let taskRow = row as? TaskTextInputRow {
             cellBackgroundView.backgroundColor = taskRow.tintColor
             textField.tintColor = taskRow.tintColor.lighter(by: 10)
+            textField.keyboardAppearance = ThemeService.shared.theme.isDark ? .dark : .default
+            titleLabel.textColor = UIColor(white: 1, alpha: 0.7)
             //textField.attributedPlaceholder = NSAttributedString(string: taskRow.placeholder ?? "", attributes: [NSAttributedStringKey.foregroundColor: UIColor(white: 1.0, alpha: 0.5)])
             topSpacing = taskRow.topSpacing
             bottomSpacing = taskRow.bottomSpacing

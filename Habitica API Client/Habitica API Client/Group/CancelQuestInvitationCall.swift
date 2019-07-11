@@ -8,7 +8,6 @@
 
 import Foundation
 import Habitica_Models
-import FunkyNetwork
 import ReactiveSwift
 
 public class CancelQuestInvitationCall: ResponseObjectCall<QuestStateProtocol, APIQuestState> {
@@ -16,4 +15,3 @@ public class CancelQuestInvitationCall: ResponseObjectCall<QuestStateProtocol, A
         super.init(httpMethod: .POST, endpoint: "groups/\(groupID)/quests/cancel", postData: nil, stubHolder: stubHolder)
     }
 }
-

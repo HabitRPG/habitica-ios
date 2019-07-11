@@ -15,6 +15,8 @@ class PetDetailCell: UICollectionViewCell {
     @IBOutlet weak var progressView: UIProgressView!
     
     func configure(petItem: PetStableItem) {
+        backgroundColor = ThemeService.shared.theme.contentBackgroundColor
+        imageView.tintColor = ThemeService.shared.theme.dimmedColor
         if let key = petItem.pet?.key {
             if petItem.trained != 0 {
                 imageView.setImagewith(name: "Pet-\(key)")
@@ -29,7 +31,9 @@ class PetDetailCell: UICollectionViewCell {
         } else {
             imageView.alpha = 1.0
         }
-        if petItem.pet?.type != " " && petItem.trained > 0 && petItem.mountOwned == false {
+        progressView.tintColor = ThemeService.shared.theme.successColor
+        progressView.trackTintColor = ThemeService.shared.theme.windowBackgroundColor
+        if petItem.pet?.type != " " && petItem.trained > 0 && petItem.canRaise == true {
             progressView.isHidden = false
             progressView.progress = Float(petItem.trained) / 50.0
         } else {

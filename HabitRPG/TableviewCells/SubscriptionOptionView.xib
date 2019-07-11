@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -82,7 +82,6 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.97931915521621704" green="0.9800599217414856" blue="0.97943383455276489" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="7Et-rt-l2T" firstAttribute="leading" secondItem="V8G-oZ-Yon" secondAttribute="trailing" constant="8" id="D8o-OY-cm9"/>
                                     <constraint firstItem="V8G-oZ-Yon" firstAttribute="leading" secondItem="Ahl-VE-epw" secondAttribute="leading" id="Erx-tP-UYh"/>
@@ -124,6 +123,7 @@
                 <outlet property="priceLabel" destination="lya-yE-68a" id="IaO-ju-UXn"/>
                 <outlet property="selectionView" destination="cN1-0z-yC8" id="KkB-vj-xf8"/>
                 <outlet property="titleLabel" destination="5yl-hB-j4J" id="8FT-I7-5IN"/>
+                <outlet property="wrapperView" destination="rGG-fK-sIG" id="Lkh-6F-wrH"/>
             </connections>
             <point key="canvasLocation" x="-50.5" y="500.5"/>
         </tableViewCell>

@@ -94,7 +94,8 @@ class CollapsibleTitle: UIView, UIGestureRecognizerDelegate {
         addSubview(carretIconView)
         addSubview(label)
         carretIconView.contentMode = .center
-        carretIconView.tintColor = UIColor.gray500()
+        carretIconView.tintColor = ThemeService.shared.theme.dimmedColor
+        label.textColor = ThemeService.shared.theme.primaryTextColor
                 
         isUserInteractionEnabled = true
         

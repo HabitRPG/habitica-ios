@@ -7,13 +7,13 @@
 //
 
 import Foundation
-import FunkyNetwork
 import ReactiveSwift
-import Result
+import Habitica_Models
 
-class HabiticaResponseCall<T: Any, C: Decodable>: AuthenticatedCall {
-    public lazy var habiticaResponseSignal: Signal<HabiticaResponse<C>?, NoError> = jsonSignal.map({ json in
-        return json as? Dictionary<String, Any>
+public class HabiticaResponseCall<T: Any, C: Decodable>: AuthenticatedCall {
+    
+    public lazy var habiticaResponseSignal: Signal<HabiticaResponse<C>?, Never> = jsonSignal.map({ json in
+        return json as? [String: Any]
     })
         .skipNil()
         .map { (jsonData) -> Data? in
@@ -25,6 +25,9 @@ class HabiticaResponseCall<T: Any, C: Decodable>: AuthenticatedCall {
             return nil
         })
         .take(first: 1)
+        .on(value: {response in
+            AuthenticatedCall.notificationListener?(response?.notifications)
+        })
     
     static func parse(_ data: Data) -> HabiticaResponse<C>? {
         let decoder = JSONDecoder()
@@ -47,7 +50,7 @@ class HabiticaResponseCall<T: Any, C: Decodable>: AuthenticatedCall {
         }))
         errorHandler?.observe(signal: serverErrorSignal.combineLatest(with: jsonSignal)
             .map({ (error, jsonAny) -> (NSError, [String]) in
-                let json = jsonAny as? Dictionary<String, Any>
+                let json = jsonAny as? [String: Any]
                 var errors = [String]()
                 if let jsonErrors = json?["errors"] as? [[String: Any]] {
                     for jsonError in jsonErrors {

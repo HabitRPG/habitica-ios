@@ -16,7 +16,7 @@ class APISkill: SkillProtocol, Codable {
     var mana: Int = 0
     var level: Int = 0
     var target: String?
-    var habitClass: String? = nil
+    var habitClass: String?
     var value: Float = 0
     var immediateUse: Bool = false
     var silent: Bool = false

@@ -23,7 +23,7 @@ class AvatarGearDetailViewDataSource: BaseReactiveCollectionViewDataSource<GearP
     private var preferences: PreferencesProtocol?
     
     init(type: String) {
-        self.gearType = type
+        gearType = type
         super.init()
         sections.append(ItemSection<GearProtocol>())
 
@@ -98,7 +98,7 @@ class AvatarGearDetailViewDataSource: BaseReactiveCollectionViewDataSource<GearP
                 sections[0].items.append(gear)
             }
         }
-        self.collectionView?.reloadData()
+        collectionView?.reloadData()
     }
     
     private func sectionTitle(_ sectionKey: String) -> String {

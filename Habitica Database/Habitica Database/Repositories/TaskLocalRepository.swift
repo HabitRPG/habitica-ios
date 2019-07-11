@@ -10,22 +10,21 @@ import Foundation
 import Habitica_Models
 import ReactiveSwift
 import RealmSwift
-import Result
 
 public class TaskLocalRepository: BaseLocalRepository {
     
     func save(userID: String?, task: TaskProtocol, tags: Results<RealmTag>?) {
         if let realmTask = task as? RealmTask {
-            try! getRealm()?.write {
-                realmTask.userID = userID
-                getRealm()?.add(realmTask, update: true)
+            updateCall { realm in
+                realmTask.ownerID = userID
+                realm.add(realmTask, update: .modified)
             }
             return
         }
         if let oldTask = getRealm()?.object(ofType: RealmTask.self, forPrimaryKey: task.id) {
             task.order = oldTask.order
         }
-        save(object: RealmTask(userID: userID, taskProtocol: task, tags: tags))
+        save(object: RealmTask(ownerID: userID, taskProtocol: task, tags: tags))
     }
     
     public func save(userID: String?, task: TaskProtocol) {
@@ -35,12 +34,12 @@ public class TaskLocalRepository: BaseLocalRepository {
         save(userID: userID, task: task, tags: tags)
     }
     
-    public func save(userID: String?, tasks: [TaskProtocol], order: [String: [String]]? = nil) {
+    public func save(userID: String?, tasks: [TaskProtocol], order: [String: [String]]? = nil, removeCompletedTodos: Bool = false) {
         let tags = getRealm()?.objects(RealmTag.self)
         var taskOrder = ["habits": [String](),
                          "dailies": [String](),
                          "todos": [String](),
-                         "rewards": [String](),
+                         "rewards": [String]()
                          ]
         if let order = order {
             taskOrder = order
@@ -49,14 +48,14 @@ public class TaskLocalRepository: BaseLocalRepository {
                 taskOrder[(task.type ?? "")+"s"]?.append(task.id ?? "")
             })
         }
-        save(objects:tasks.map { (task) in
+        save(objects: tasks.map { (task) in
             task.order = taskOrder[(task.type ?? "")+"s"]?.index(of: task.id ?? "") ?? 0
             if let realmTask = task as? RealmTask {
                 return realmTask
             }
-            return RealmTask(userID: userID, taskProtocol: task, tags: tags)
-        })
-        removeOldTasks(userID: userID, newTasks: tasks)
+            return RealmTask(ownerID: userID, taskProtocol: task, tags: tags)
+        }, update: .modified)
+        removeOldTasks(userID: userID, newTasks: tasks, removeCompletedTodos: removeCompletedTodos)
     }
     
     public func save(userID: String?, tag: TagProtocol) {
@@ -68,8 +67,14 @@ public class TaskLocalRepository: BaseLocalRepository {
         
     }
     
-    private func removeOldTasks(userID: String?, newTasks: [TaskProtocol]) {
-        let oldTasks = getRealm()?.objects(RealmTask.self).filter("userID == '\(userID ?? "")'")
+    private func removeOldTasks(userID: String?, newTasks: [TaskProtocol], removeCompletedTodos: Bool = false) {
+        var predicate = "ownerID == '\(userID ?? "")'"
+        if removeCompletedTodos {
+            predicate += " && completed == true"
+        } else {
+            predicate += " && (type != 'todo' || (type == 'todo' && completed == false))"
+        }
+        let oldTasks = getRealm()?.objects(RealmTask.self).filter(predicate)
         var tasksToRemove = [RealmTask]()
         oldTasks?.forEach({ (task) in
             if !newTasks.contains(where: { (newTask) -> Bool in
@@ -78,16 +83,15 @@ public class TaskLocalRepository: BaseLocalRepository {
                 tasksToRemove.append(task)
             }
         })
-        if tasksToRemove.count > 0 {
-            let realm = getRealm()
-            try? realm?.write {
-                realm?.delete(tasksToRemove)
+        if tasksToRemove.isEmpty == false {
+            updateCall { realm in
+                realm.delete(tasksToRemove)
             }
         }
     }
     
     public func getTasks(userID: String, predicate: NSPredicate, sortKey: String) -> SignalProducer<ReactiveResults<[TaskProtocol]>, ReactiveSwiftRealmError> {
-        return RealmTask.findBy(predicate: NSCompoundPredicate(andPredicateWithSubpredicates: [NSPredicate(format: "userID == %@", userID), predicate])).sorted(key: sortKey).reactive().map({ (value, changeset) -> ReactiveResults<[TaskProtocol]> in
+        return RealmTask.findBy(predicate: NSCompoundPredicate(andPredicateWithSubpredicates: [NSPredicate(format: "ownerID == %@", userID), predicate])).sorted(key: sortKey).reactive().map({ (value, changeset) -> ReactiveResults<[TaskProtocol]> in
             return (value.map({ (task) -> TaskProtocol in return task }), changeset)
         })
     }
@@ -111,10 +115,10 @@ public class TaskLocalRepository: BaseLocalRepository {
     }
     
     public func update(taskId: String, stats: StatsProtocol, direction: TaskScoringDirection, response: TaskResponseProtocol) {
-        RealmTask.findBy(key: taskId).take(first: 1).skipNil().on(value: {[weak self]realmTask in
-            try? self?.getRealm()?.write {
+        RealmTask.findBy(key: taskId).take(first: 1).skipNil().on(value: {[weak self] realmTask in
+            self?.updateCall { _ in
                 if let delta = response.delta {
-                    realmTask.value = realmTask.value + delta
+                    realmTask.value += delta
                 }
                 if realmTask.type != TaskType.habit {
                     realmTask.completed = direction == .up
@@ -180,7 +184,7 @@ public class TaskLocalRepository: BaseLocalRepository {
     
     public func setTaskSyncing(userID: String?, task: TaskProtocol, isSyncing: Bool) {
         if let realmTask = task as? RealmTask {
-            try? getRealm()?.write {
+            updateCall { _ in
                 realmTask.isSyncing = isSyncing
             }
         } else {
@@ -198,7 +202,7 @@ public class TaskLocalRepository: BaseLocalRepository {
     public func deleteTask(_ task: TaskProtocol) {
         let realm = getRealm()
         if let realmTask = realm?.object(ofType: RealmTask.self, forPrimaryKey: task.id) {
-            try? realm?.write {
+            updateCall { _ in
                 if realmTask.isInvalidated {
                     return
                 }
@@ -208,7 +212,7 @@ public class TaskLocalRepository: BaseLocalRepository {
     }
     
     public func moveTask(_ task: TaskProtocol, toPosition: Int) {
-        try? getRealm()?.write {
+        updateCall { _ in
             task.order = toPosition
         }
     }
@@ -216,7 +220,7 @@ public class TaskLocalRepository: BaseLocalRepository {
     public func deleteTag(_ tag: TagProtocol) {
         let realm = getRealm()
         if let realmTag = realm?.object(ofType: RealmTag.self, forPrimaryKey: tag.id) {
-            try? realm?.write {
+            updateCall { _ in
                 realm?.delete(realmTag)
             }
         }
@@ -228,7 +232,7 @@ public class TaskLocalRepository: BaseLocalRepository {
         guard let tasks = realm?.objects(RealmTask.self).filter("type == %@", movedTask.type ?? "").sorted(byKeyPath: "order") else {
             return
         }
-        try? realm?.write {
+        updateCall { _ in
             for task in tasks {
                 if task.id == movedTask.id {
                     task.order = toPosition
@@ -251,7 +255,7 @@ public class TaskLocalRepository: BaseLocalRepository {
         guard let tasks = realm?.objects(RealmTask.self).filter("type == %@", taskType) else {
             return
         }
-        try? realm?.write {
+        updateCall { _ in
             for task in tasks {
                 if let position = order.index(of: task.id ?? "") {
                     task.order = position

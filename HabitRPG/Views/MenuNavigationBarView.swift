@@ -13,6 +13,7 @@ class MenuNavigationBarView: UIView, Themeable {
     
     @objc public var messagesAction: (() -> Void)?
     @objc public var settingsAction: (() -> Void)?
+    @objc public var notificationsAction: (() -> Void)?
     
     @IBOutlet weak var avatarView: AvatarView!
     @IBOutlet weak var displayNameLabel: UILabel!
@@ -20,8 +21,10 @@ class MenuNavigationBarView: UIView, Themeable {
     
     @IBOutlet weak var messagesButton: UIButton!
     @IBOutlet weak var settingsButton: UIButton!
+    @IBOutlet weak var notificationsButton: UIButton!
     @IBOutlet weak var messagesBadge: PaddedLabel!
     @IBOutlet weak var settingsBadge: PaddedLabel!
+    @IBOutlet weak var notificationsBadge: PaddedLabel!
     
     // MARK: - Private Helper Methods
    
@@ -32,17 +35,21 @@ class MenuNavigationBarView: UIView, Themeable {
         avatarView.size = .compact
         messagesBadge.horizontalPadding = 4
         
+        messagesButton.accessibilityLabel = L10n.Titles.messages
+        settingsButton.accessibilityLabel = L10n.Titles.settings
+        notificationsButton.accessibilityLabel = L10n.Titles.notifications
+        
         ThemeService.shared.addThemeable(themable: self, applyImmediately: true)
     }
     
     func applyTheme(theme: Theme) {
-        backgroundColor = theme.backgroundTintColor
+        backgroundColor = theme.navbarHiddenColor
     }
     
     @objc
-    public func configure(user: UserProtocol, enableChangeUsername: Bool) {
+    public func configure(user: UserProtocol) {
         displayNameLabel.text = user.profile?.name
-        if enableChangeUsername, let username = user.username {
+        if let username = user.username {
             usernameLabel.text = "@\(username)"
             usernameLabel.isHidden = false
         } else {
@@ -56,7 +63,7 @@ class MenuNavigationBarView: UIView, Themeable {
             messagesBadge.isHidden = true
         }
         
-        if enableChangeUsername && user.flags?.verifiedUsername != true {
+        if user.flags?.verifiedUsername != true {
             settingsBadge.text = "1"
             settingsBadge.isHidden = false
         } else {
@@ -72,6 +79,12 @@ class MenuNavigationBarView: UIView, Themeable {
     
     @IBAction func settingsButtonTapped(_ sender: Any) {
         if let action = settingsAction {
+            action()
+        }
+    }
+    
+    @IBAction func notificationsButtonTapped(_ sender: Any) {
+        if let action = notificationsAction {
             action()
         }
     }

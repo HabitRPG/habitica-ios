@@ -8,7 +8,6 @@
 
 import Foundation
 import Habitica_Models
-import FunkyNetwork
 import ReactiveSwift
 
 public class SubscribeCall: ResponseObjectCall<EmptyResponseProtocol, APIEmptyResponse> {

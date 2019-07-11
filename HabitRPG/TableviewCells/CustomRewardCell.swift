@@ -28,8 +28,8 @@ class CustomRewardCell: UICollectionViewCell {
                 amountLabel.textColor = .yellow5()
             } else {
                 currencyImageView.alpha = 0.3
-                buyButton.backgroundColor = .gray600()
-                amountLabel.textColor = .gray300()
+                buyButton.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
+                amountLabel.textColor = ThemeService.shared.theme.dimmedTextColor
             }
         }
     }
@@ -47,13 +47,18 @@ class CustomRewardCell: UICollectionViewCell {
         } else {
             titleLabel.text = ""
         }
-        if let trimmedNotes = reward.notes?.trimmingCharacters(in: .whitespacesAndNewlines), trimmedNotes.count > 0 {
+        if let trimmedNotes = reward.notes?.trimmingCharacters(in: .whitespacesAndNewlines), trimmedNotes.isEmpty == false {
             notesLabel.attributedText = try? Down(markdownString: trimmedNotes.unicodeEmoji).toHabiticaAttributedString()
             notesLabel.isHidden = false
         } else {
             notesLabel.isHidden = true
         }
         amountLabel.text = String(reward.value)
+        
+        let theme = ThemeService.shared.theme
+        backgroundColor = theme.contentBackgroundColor
+        titleLabel.textColor = theme.primaryTextColor
+        notesLabel.textColor = theme.secondaryTextColor
     }
     
     @objc

@@ -16,7 +16,6 @@ class RealmTutorialStep: Object, TutorialStepProtocol {
     @objc dynamic var type: String?
     @objc dynamic var wasSeen: Bool = false
     
-    
     override static func primaryKey() -> String {
         return "combinedKey"
     }

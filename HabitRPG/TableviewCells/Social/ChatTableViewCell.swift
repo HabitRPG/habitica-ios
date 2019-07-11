@@ -12,7 +12,7 @@ import PinLayout
 import Habitica_Models
 import Down
 
-class ChatTableViewCell: UITableViewCell, UITextViewDelegate {
+class ChatTableViewCell: UITableViewCell, UITextViewDelegate, Themeable {
     
     @IBOutlet weak var avatarView: AvatarView!
     @IBOutlet weak var avatarWrapper: UIView!
@@ -76,6 +76,7 @@ class ChatTableViewCell: UITableViewCell, UITextViewDelegate {
         didSet {
             displaynameLabel.contributorLevel = contributorLevel
             positionLabel.isHidden = contributorLevel < 8
+            positionLabel.textColor = .white
             if contributorLevel == 8 {
                 positionLabel.text = L10n.moderator
                 positionLabel.backgroundColor = UIColor.blue10()
@@ -86,16 +87,7 @@ class ChatTableViewCell: UITableViewCell, UITextViewDelegate {
         }
     }
 
-    private var wasMentioned = false {
-        didSet {
-            if wasMentioned {
-                messageWrapper.backgroundColor = UIColor.purple600()
-            } else {
-                messageWrapper.backgroundColor = .white
-            }
-        }
-    }
-                                                                                                                                                    
+    private var wasMentioned = false
     override func awakeFromNib() {
         super.awakeFromNib()
         messageTextView.delegate = self
@@ -129,7 +121,7 @@ class ChatTableViewCell: UITableViewCell, UITextViewDelegate {
         messageTextView.font = CustomFontMetrics.scaledSystemFont(ofSize: 15, ofWeight: .regular)
     }
     
-    func configure(chatMessage: ChatMessageProtocol, previousMessage: ChatMessageProtocol?, nextMessage: ChatMessageProtocol?, userID: String, username: String, isModerator: Bool, isExpanded: Bool, enableUsernameRelease: Bool) {
+    func configure(chatMessage: ChatMessageProtocol, previousMessage: ChatMessageProtocol?, nextMessage: ChatMessageProtocol?, userID: String, username: String, isModerator: Bool, isExpanded: Bool) {
         isPrivateMessage = false
         self.isModerator = isModerator
         isOwnMessage = chatMessage.userID == userID
@@ -137,11 +129,10 @@ class ChatTableViewCell: UITableViewCell, UITextViewDelegate {
 
         displaynameLabel.text = chatMessage.displayName?.unicodeEmoji
         contributorLevel = chatMessage.contributor?.level ?? 0
-        messageTextView.textColor = UIColor.gray10()
         
         stylePlusOneButton(likes: chatMessage.likes, userID: userID)
         
-        setSubline(username: enableUsernameRelease ? chatMessage.username : nil, date: chatMessage.timestamp)
+        setSubline(username: chatMessage.username, date: chatMessage.timestamp)
         
         if let text = chatMessage.text {
             setMessageText(text)
@@ -167,7 +158,7 @@ class ChatTableViewCell: UITableViewCell, UITextViewDelegate {
             bottomSpacing = 4
         }
         
-        if isModerator && chatMessage.flags.count > 0 {
+        if isModerator && chatMessage.flags.isEmpty == false {
             reportView.isHidden = false
             reportView.setTitle("\(chatMessage.flags.count)", for: .normal)
         } else {
@@ -177,10 +168,12 @@ class ChatTableViewCell: UITableViewCell, UITextViewDelegate {
         self.isExpanded = isExpanded
         applyAccessibility()
         setNeedsLayout()
+        
+        applyTheme(theme: ThemeService.shared.theme)
     }
     
     @objc
-    func configure(inboxMessage: InboxMessageProtocol, previousMessage: InboxMessageProtocol?, nextMessage: InboxMessageProtocol?, user: UserProtocol?, isExpanded: Bool, enableUsernameRelease: Bool) {
+    func configure(inboxMessage: InboxMessageProtocol, previousMessage: InboxMessageProtocol?, nextMessage: InboxMessageProtocol?, user: UserProtocol?, isExpanded: Bool) {
         isPrivateMessage = true
         plusOneButton.isHidden = true
         isOwnMessage = inboxMessage.sent
@@ -188,15 +181,13 @@ class ChatTableViewCell: UITableViewCell, UITextViewDelegate {
         if inboxMessage.sent {
             displaynameLabel.text = user?.profile?.name?.unicodeEmoji
             contributorLevel = user?.contributor?.level ?? 0
-            setSubline(username: enableUsernameRelease ? user?.username : nil, date: inboxMessage.timestamp)
+            setSubline(username: user?.username, date: inboxMessage.timestamp)
         } else {
             displaynameLabel.text = inboxMessage.displayName?.unicodeEmoji
             contributorLevel = inboxMessage.contributor?.level ?? 0
-            setSubline(username: enableUsernameRelease ? inboxMessage.username : nil, date: inboxMessage.timestamp)
+            setSubline(username: inboxMessage.username, date: inboxMessage.timestamp)
         }
         displaynameLabel.contributorLevel = contributorLevel
-        messageTextView.textColor = .black
-        
         
         if let text = inboxMessage.text {
             messageTextView.attributedText = try? Down(markdownString: text.unicodeEmoji).toHabiticaAttributedString()
@@ -221,6 +212,19 @@ class ChatTableViewCell: UITableViewCell, UITextViewDelegate {
         self.isExpanded = isExpanded
         applyAccessibility()
         setNeedsLayout()
+        
+        applyTheme(theme: ThemeService.shared.theme)
+    }
+    
+    func applyTheme(theme: Theme) {
+        backgroundColor = theme.windowBackgroundColor
+        contentView.backgroundColor = theme.windowBackgroundColor
+        plusOneButton.backgroundColor = theme.windowBackgroundColor
+        if wasMentioned {
+            messageWrapper.backgroundColor = theme.lightlyTintedBackgroundColor
+        } else {
+            messageWrapper.backgroundColor = theme.contentBackgroundColor
+        }
     }
     
     private func setSubline(username: String?, date: Date?) {

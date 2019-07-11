@@ -100,7 +100,7 @@ public class APITask: TaskProtocol, Codable {
         priority = (try? values.decode(Float.self, forKey: .priority)) ?? 0
         counterUp = (try? values.decode(Int.self, forKey: .counterUp)) ?? 0
         counterDown = (try? values.decode(Int.self, forKey: .counterDown)) ?? 0
-        if let dateString = try? values.decode(String.self, forKey: .duedate), dateString.count > 0 {
+        if let dateString = try? values.decode(String.self, forKey: .duedate), dateString.isEmpty == false {
             duedate = try? values.decode(Date.self, forKey: .duedate)
         }
         isDue = (try? values.decode(Bool.self, forKey: .isDue)) ?? false
@@ -113,10 +113,10 @@ public class APITask: TaskProtocol, Codable {
         updatedAt = try? values.decode(Date.self, forKey: .updatedAt)
         startDate = try? values.decode(Date.self, forKey: .startDate)
         yesterDaily = (try? values.decode(Bool.self, forKey: .yesterDaily)) ?? true
-        let tagList = try! values.decode([String].self, forKey: .tags)
-        tags = tagList.map { (key) -> APITag in
+        let tagList = try? values.decode([String].self, forKey: .tags)
+        tags = tagList?.map { key -> APITag in
             return APITag(key)
-        }
+            } ?? []
         checklist = (try? values.decode([APIChecklistItem].self, forKey: .checklist)) ?? []
         reminders = (try? values.decode([APIReminder].self, forKey: .reminders)) ?? []
         weekRepeat = try? values.decode(APIWeekRepeat.self, forKey: .weekRepeat)
@@ -152,7 +152,9 @@ public class APITask: TaskProtocol, Codable {
         checklist = taskProtocol.checklist.map({ (item) -> APIChecklistItem in return APIChecklistItem(item) })
         reminders = taskProtocol.reminders.map({ (reminder) -> APIReminder in return APIReminder(reminder) })
         tags = taskProtocol.tags.map({ (tag) -> APITag in return APITag(tag) })
-        weekRepeat = APIWeekRepeat(taskProtocol.weekRepeat!)
+        if let thisRepeat = taskProtocol.weekRepeat {
+            weekRepeat = APIWeekRepeat(thisRepeat)
+        }
         nextDue = taskProtocol.nextDue
         daysOfMonth = taskProtocol.daysOfMonth
         weeksOfMonth = taskProtocol.weeksOfMonth

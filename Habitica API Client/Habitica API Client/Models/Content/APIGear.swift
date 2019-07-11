@@ -9,22 +9,22 @@
 import Foundation
 import Habitica_Models
 
-class APIGear: GearProtocol, Codable {
-    var key: String?
-    var text: String?
-    var notes: String?
-    var value: Float = 0
-    var type: String?
-    var set: String?
-    var gearSet: String?
-    var habitClass: String?
-    var specialClass: String?
-    var index: String?
-    var twoHanded: Bool = false
-    var strength: Int = 0
-    var intelligence: Int = 0
-    var perception: Int = 0
-    var constitution: Int = 0
+public class APIGear: GearProtocol, Codable {
+    public var key: String?
+    public var text: String?
+    public var notes: String?
+    public var value: Float = 0
+    public var type: String?
+    public var set: String?
+    public var gearSet: String?
+    public var habitClass: String?
+    public var specialClass: String?
+    public var index: String?
+    public var twoHanded: Bool = false
+    public var strength: Int = 0
+    public var intelligence: Int = 0
+    public var perception: Int = 0
+    public var constitution: Int = 0
     
     enum CodingKeys: String, CodingKey {
         case key

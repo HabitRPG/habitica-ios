@@ -8,8 +8,6 @@
 
 import Foundation
 import Habitica_Models
-import FunkyNetwork
-
 
 public class UpdateGroupCall: ResponseObjectCall<GroupProtocol, APIGroup> {
     public init(group: GroupProtocol, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "group.json")) {

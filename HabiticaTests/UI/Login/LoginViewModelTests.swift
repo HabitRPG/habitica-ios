@@ -10,19 +10,18 @@ import XCTest
 @testable import Habitica
 @testable import ReactiveCocoa
 @testable import ReactiveSwift
-@testable import Result
 
 class LoginViewModelTests: HabiticaTests {
     
     var viewModel = LoginViewModel()
     
-    private let isFormValidObserver = TestObserver<Bool, NoError>()
-    private let emailVisibilityObserver = TestObserver<Bool, NoError>()
-    private let passwordRepeatVisibilityObserver = TestObserver<Bool, NoError>()
-    private let loginButtonTitleObserver = TestObserver<String, NoError>()
-    private let usernameFieldTitleObserver = TestObserver<String, NoError>()
-    private let authTypeButtonTitleObserver = TestObserver<String, NoError>()
-    private let onePasswordHiddenObserver = TestObserver<Bool, NoError>()
+    private let isFormValidObserver = TestObserver<Bool, Never>()
+    private let emailVisibilityObserver = TestObserver<Bool, Never>()
+    private let passwordRepeatVisibilityObserver = TestObserver<Bool, Never>()
+    private let loginButtonTitleObserver = TestObserver<String, Never>()
+    private let usernameFieldTitleObserver = TestObserver<String, Never>()
+    private let authTypeButtonTitleObserver = TestObserver<String, Never>()
+    private let onePasswordHiddenObserver = TestObserver<Bool, Never>()
     
     override func setUp() {
         super.setUp()

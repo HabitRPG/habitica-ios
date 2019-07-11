@@ -8,12 +8,11 @@
 
 import Foundation
 import Habitica_Models
-import FunkyNetwork
 import ReactiveSwift
 
 public class PurchaseNoRenewSubscriptionCall: ResponseObjectCall<EmptyResponseProtocol, APIEmptyResponse> {
     public init(identifier: String, receipt: [String: Any], recipient: String?, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "user.json")) {
-        var data = ["transaction": receipt, "sku": identifier] as [String : Any]
+        var data = ["transaction": receipt, "sku": identifier] as [String: Any]
         if let recipient = recipient {
             data["gift"] = ["uuid": recipient]
         }

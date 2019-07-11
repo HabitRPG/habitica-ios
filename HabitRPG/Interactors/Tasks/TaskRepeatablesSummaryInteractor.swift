@@ -19,12 +19,12 @@ private enum RepeatType {
 
     func string(_ everyX: Int) -> String {
         if self == .never {
-            return L10n.never
+            return L10n.neverLowerCase
         }
         if everyX == 1 {
             return self.everyName()
         } else {
-            return L10n.Tasks.everyX(self.repeatName())
+            return L10n.Tasks.everyX(everyX, self.repeatName())
         }
     }
 
@@ -184,7 +184,7 @@ class TaskRepeatablesSummaryInteractor: NSObject {
         let everyX = task.everyX
 
         var repeatType = RepeatType.daily
-        var repeatOnString: String? = nil
+        var repeatOnString: String?
         switch task.frequency ?? "" {
         case "daily":
             repeatType = .daily
@@ -274,14 +274,14 @@ class TaskRepeatablesSummaryInteractor: NSObject {
     }
 
     private func monthlyRepeatOn(_ task: RepeatableTask) -> String? {
-            if task.daysOfMonth.count > 0 {
+            if task.daysOfMonth.isEmpty == false {
                 var days = [String]()
                 for day in task.daysOfMonth {
                     days.append(String(day))
                 }
                 return L10n.Tasks.Repeats.monthlyThe(days.joined(separator: ", "))
             }
-            if task.weeksOfMonth.count > 0 {
+            if task.weeksOfMonth.isEmpty == false {
                 if let startDate = task.startDate {
                     self.dateFormatter.dateFormat = monthlyFormat
                     return L10n.Tasks.Repeats.monthlyThe(dateFormatter.string(from: startDate))

@@ -10,7 +10,7 @@ import Foundation
 import Habitica_Models
 import RealmSwift
 
-class RealmUserGear: Object, UserGearProtocol {    
+class RealmUserGear: Object, UserGearProtocol {
     @objc dynamic var equipped: OutfitProtocol? {
         get {
             return realmEquipped

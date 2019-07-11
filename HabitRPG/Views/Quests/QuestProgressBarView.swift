@@ -141,13 +141,13 @@ class QuestProgressBarView: UIView {
     }
     
     private func updateValueLabel() {
-        self.valueLabel.text = "\(formatter.string(from: NSNumber(value: currentValue)) ?? "") / \(formatter.string(from: NSNumber(value: maxValue)) ?? "")"
+        valueLabel.text = "\(formatter.string(from: NSNumber(value: currentValue)) ?? "") / \(formatter.string(from: NSNumber(value: maxValue)) ?? "")"
         setNeedsLayout()
     }
     
     private func updatePendingLabel() {
-        pendingLabel.isHidden = pendingTitle.count == 0
-        pendingIconView.isHidden = pendingTitle.count == 0
+        pendingLabel.isHidden = pendingTitle.isEmpty
+        pendingIconView.isHidden = pendingTitle.isEmpty
         pendingLabel.text = "\(formatter.string(from: NSNumber(value: pendingValue)) ?? "") \(pendingTitle)"
         setNeedsLayout()
     }
@@ -193,7 +193,7 @@ class QuestProgressBarView: UIView {
     
     func layout() {
         var offset = CGFloat(0)
-        if let bigIcon = self.bigIcon {
+        if let bigIcon = bigIcon {
             bigIconView.pin.start().top().bottom().width(bigIcon.size.width)
             offset = bigIcon.size.width + 6
         }
@@ -213,7 +213,7 @@ class QuestProgressBarView: UIView {
     
     override var intrinsicContentSize: CGSize {
         layout()
-        return CGSize(width: self.frame.size.width, height: valueLabel.frame.origin.y + valueLabel.frame.size.height)
+        return CGSize(width: frame.size.width, height: valueLabel.frame.origin.y + valueLabel.frame.size.height)
     }
     
 }

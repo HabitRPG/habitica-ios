@@ -75,35 +75,10 @@ class InviteMembersViewController: FormViewController {
         super.viewDidLoad()
         
         navigationItem.title = L10n.Titles.inviteMembers
-
-        form +++ MultivaluedSection(multivaluedOptions: [.Reorder, .Insert, .Delete],
-                                    header: L10n.userID) { section in
-                                        section.tag = InviteMembersFormTags.userIDSection
-                                        section.hidden = Condition.function([InviteMembersFormTags.invitationType], { (form) -> Bool in
-                                            return self.configRepository.bool(variable: .enableUsernameRelease)
-                                        })
-                                        section.addButtonProvider = { section in
-                                            return ButtonRow { row in
-                                                row.title = L10n.Groups.Invite.addUserid
-                                                row.cellSetup({ (cell, _) in
-                                                    cell.tintColor = ThemeService.shared.theme.tintColor
-                                                })
-                                            }
-                                        }
-                                        section.multivaluedRowToInsertAt = { index in
-                                            return TextRow { row in
-                                                row.cellSetup({ (cell, _) in
-                                                    cell.tintColor = ThemeService.shared.theme.tintColor
-                                                })
-                                            }
-                                        }
-        }
         form +++ MultivaluedSection(multivaluedOptions: [.Reorder, .Insert, .Delete],
                                     header: L10n.username) { section in
                                         section.tag = InviteMembersFormTags.usernameSection
-                                        section.hidden = Condition.function([InviteMembersFormTags.invitationType], { (form) -> Bool in
-                                            return !self.configRepository.bool(variable: .enableUsernameRelease)
-                                        })
+
                                         section.addButtonProvider = { section in
                                             return ButtonRow { row in
                                                 row.title = L10n.Groups.Invite.addUsername
@@ -116,6 +91,7 @@ class InviteMembersViewController: FormViewController {
                                             return TextRow { row in
                                                 row.cellSetup({ (cell, _) in
                                                     cell.tintColor = ThemeService.shared.theme.tintColor
+                                                    cell.textField.autocapitalizationType = .none
                                                 })
                                             }
                                         }
@@ -136,6 +112,8 @@ class InviteMembersViewController: FormViewController {
                                             return TextRow { row in
                                                 row.cellSetup({ (cell, _) in
                                                     cell.tintColor = ThemeService.shared.theme.tintColor
+                                                    cell.textField.keyboardType = .emailAddress
+                                                    cell.textField.autocapitalizationType = .none
                                                 })
                                             }
                                         }
@@ -151,12 +129,12 @@ class InviteMembersViewController: FormViewController {
         doneButton.isEnabled = false
         if let groupID = groupID {
             socialRepository.invite(toGroup: groupID, members: members)
-                .on(event: { _ in
-                    self.doneButton.isEnabled = true
+                .on(event: {[weak self] _ in
+                    self?.doneButton.isEnabled = true
                 })
                 .skipNil()
-                .observeValues { _ in
-                    self.dismiss(animated: true, completion: nil)
+                .observeValues {[weak self] _ in
+                    self?.dismiss(animated: true, completion: nil)
             }
         } else {
             dismiss(animated: true, completion: nil)

@@ -40,9 +40,9 @@ struct MenuSection {
     }
 }
 
-class MainMenuViewController: HRPGBaseViewController, Themeable {
+class MainMenuViewController: BaseTableViewController {
     
-    private var navbarColor = UIColor.purple300() {
+    private var navbarColor = ThemeService.shared.theme.navbarHiddenColor {
         didSet {
             topHeaderCoordinator.navbarVisibleColor = navbarColor
             navbarView?.backgroundColor = navbarColor
@@ -62,7 +62,7 @@ class MainMenuViewController: HRPGBaseViewController, Themeable {
     private var user: UserProtocol? {
         didSet {
             if let user = self.user {
-                navbarView?.configure(user: user, enableChangeUsername: configRepository.bool(variable: .enableUsernameRelease))
+                navbarView?.configure(user: user)
             }
             if user?.stats?.habitClass == "wizard" || user?.stats?.habitClass == "healer" {
                 menuSections[0].items[0].title = L10n.Menu.castSpells
@@ -90,7 +90,6 @@ class MainMenuViewController: HRPGBaseViewController, Themeable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        ThemeService.shared.addThemeable(themable: self, applyImmediately: true)
         topHeaderCoordinator?.hideNavBar = true
         topHeaderCoordinator?.alternativeHeader = navbarView
         topHeaderCoordinator?.navbarVisibleColor = navbarColor
@@ -103,6 +102,9 @@ class MainMenuViewController: HRPGBaseViewController, Themeable {
         navbarView?.settingsAction = {[weak self] in
             self?.perform(segue: StoryboardSegue.Main.settingsSegue)
         }
+        navbarView?.notificationsAction = {[weak self] in
+            self?.perform(segue: StoryboardSegue.Main.notificationsSegue)
+        }
         
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
@@ -113,13 +115,27 @@ class MainMenuViewController: HRPGBaseViewController, Themeable {
         disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
             self?.user = user
         }).start())
+        disposable.inner.add(userRepository.getUnreadNotificationCount().on(value: {[weak self] count in
+            if count > 0 {
+                self?.navbarView?.notificationsBadge.text = String(count)
+                self?.navbarView?.notificationsBadge.isHidden = false
+            } else {
+                self?.navbarView?.notificationsBadge.isHidden = true
+            }
+        }).start())
     }
     
-    func applyTheme(theme: Theme) {
-        navbarColor = theme.backgroundTintColor
+    override func applyTheme(theme: Theme) {
+        super.applyTheme(theme: theme)
+        navbarColor = theme.navbarHiddenColor
+        tableView.reloadData()
     }
     
     private func setupMenu() {
+        var stableName = configRepository.string(variable: .stableName) ?? ""
+        if stableName.isEmpty != false {
+            stableName = L10n.Titles.stable
+        }
         menuSections = [
             MenuSection(title: nil, iconAsset: nil, items: [
                 MenuItem(title: L10n.Menu.castSpells, segue: StoryboardSegue.Main.spellsSegue.rawValue),
@@ -137,7 +153,7 @@ class MainMenuViewController: HRPGBaseViewController, Themeable {
                 MenuItem(title: L10n.Menu.customizeAvatar, segue: StoryboardSegue.Main.customizationSegue.rawValue),
                 MenuItem(title: L10n.Titles.equipment, segue: StoryboardSegue.Main.equipmentSegue.rawValue),
                 MenuItem(title: L10n.Titles.items, segue: StoryboardSegue.Main.itemSegue.rawValue),
-                MenuItem(title: L10n.Titles.stable, segue: StoryboardSegue.Main.stableSegue.rawValue),
+                MenuItem(title: stableName, segue: StoryboardSegue.Main.stableSegue.rawValue),
                 MenuItem(title: L10n.Menu.gemsSubscriptions, segue: StoryboardSegue.Main.gemSubscriptionSegue.rawValue)
                 ]),
             MenuSection(title: L10n.Titles.about, iconAsset: Asset.iconHelp, items: [
@@ -178,10 +194,10 @@ class MainMenuViewController: HRPGBaseViewController, Themeable {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 37.5))
         let label = UILabel(frame: labelFrame)
         label.font = CustomFontMetrics.scaledSystemFont(ofSize: 14)
-        label.textColor = .darkGray
+        label.textColor = ThemeService.shared.theme.primaryTextColor
         view.addSubview(label)
         let iconView = UIImageView(frame: iconFrame)
-        iconView.tintColor = .darkGray
+        iconView.tintColor = ThemeService.shared.theme.primaryTextColor
         view.addSubview(iconView)
         
         label.text = self.tableView(tableView, titleForHeaderInSection: section)
@@ -198,6 +214,7 @@ class MainMenuViewController: HRPGBaseViewController, Themeable {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = visibleItemAt(indexPath: indexPath)
         let cell = tableView .dequeueReusableCell(withIdentifier: item?.cellName ?? "", for: indexPath)
+        cell.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
         
         if item?.accessibilityLabel?.isEmpty != true {
             cell.accessibilityLabel = accessibilityLabel
@@ -208,6 +225,8 @@ class MainMenuViewController: HRPGBaseViewController, Themeable {
         let label = cell.viewWithTag(1) as? UILabel
         label?.text = item?.title
         label?.font = CustomFontMetrics.scaledSystemFont(ofSize: 17)
+        label?.textColor = ThemeService.shared.theme.primaryTextColor
+        label?.backgroundColor = cell.backgroundColor
         
         let indicatorView = cell.viewWithTag(2)
         indicatorView?.isHidden = item?.showIndicator == false

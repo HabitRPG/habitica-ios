@@ -90,23 +90,33 @@ public class CustomFontMetrics: NSObject {
         .title1, .title2, .title3, .headline, .subheadline, .body, .callout, .footnote, .caption1, .caption2
     ]
     
-    @objc public static func scaledFont(for font: UIFont, compatibleWith traitCollection: UITraitCollection? = nil) -> UIFont {
+    @objc
+    public static func scaledFont(for font: UIFont, compatibleWith traitCollection: UITraitCollection? = nil) -> UIFont {
         return CustomFontMetrics(forTextStyle: .body).scaledFont(for: font, compatibleWith: traitCollection)
     }
     
-    @objc public static func scaledSystemFont(ofSize size: CGFloat, compatibleWith traitCollection: UITraitCollection? = nil) -> UIFont {
+    @objc
+    public static func scaledSystemFont(ofSize size: CGFloat, compatibleWith traitCollection: UITraitCollection? = nil) -> UIFont {
         return CustomFontMetrics(forTextStyle: .body).scaledFont(for: UIFont.systemFont(ofSize: size), compatibleWith: traitCollection)
     }
     
-    @objc public static func scaledBoldSystemFont(ofSize size: CGFloat, compatibleWith traitCollection: UITraitCollection? = nil) -> UIFont {
+    @objc
+    public static func scaledBoldSystemFont(ofSize size: CGFloat, compatibleWith traitCollection: UITraitCollection? = nil) -> UIFont {
         return CustomFontMetrics(forTextStyle: .body).scaledFont(for: UIFont.boldSystemFont(ofSize: size), compatibleWith: traitCollection)
     }
     
-    @objc public static func scaledItalicSystemFont(ofSize size: CGFloat, compatibleWith traitCollection: UITraitCollection? = nil) -> UIFont {
+    @objc
+    public static func scaledItalicSystemFont(ofSize size: CGFloat, compatibleWith traitCollection: UITraitCollection? = nil) -> UIFont {
         return CustomFontMetrics(forTextStyle: .body).scaledFont(for: UIFont.italicSystemFont(ofSize: size), compatibleWith: traitCollection)
     }
     
-    @objc public static func scaledSystemFont(ofSize size: CGFloat, ofWeight weight: UIFont.Weight, compatibleWith traitCollection: UITraitCollection? = nil) -> UIFont {
+    @objc
+    public static func scaledBoldItalicSystemFont(ofSize size: CGFloat, compatibleWith traitCollection: UITraitCollection? = nil) -> UIFont {
+        return CustomFontMetrics(forTextStyle: .body).scaledFont(for: UIFont.boldItalicSystemFont(ofSize: size), compatibleWith: traitCollection)
+    }
+    
+    @objc
+    public static func scaledSystemFont(ofSize size: CGFloat, ofWeight weight: UIFont.Weight, compatibleWith traitCollection: UITraitCollection? = nil) -> UIFont {
         return CustomFontMetrics(forTextStyle: .body).scaledFont(for: UIFont.systemFont(ofSize: size, weight: weight), compatibleWith: traitCollection)
     }
     
@@ -120,7 +130,8 @@ public class CustomFontMetrics: NSObject {
     ///
     /// For example, you may observe this method always returns `value` in a
     /// pristine iOS simulator, because it is set to the standard text size.
-    @objc public func scaledFont(for font: UIFont, compatibleWith traitCollection: UITraitCollection? = nil) -> UIFont {
+    @objc
+    public func scaledFont(for font: UIFont, compatibleWith traitCollection: UITraitCollection? = nil) -> UIFont {
         // TODO: support "maximumPointSize: CGFloat = 0"
         switch rep {
         case .modern(let metrics):

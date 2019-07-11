@@ -35,7 +35,9 @@
     [refresh addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refresh;
     
-    self.navigationItem.rightBarButtonItem = nil;
+    self.navigationItem.leftBarButtonItem = nil;
+    
+    self.tableView.backgroundColor = ObjcThemeWrapper.contentBackgroundColor;
 }
 
 - (void)didReceiveMemoryWarning {

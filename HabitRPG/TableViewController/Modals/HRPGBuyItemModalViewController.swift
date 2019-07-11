@@ -9,7 +9,6 @@
 import UIKit
 import Habitica_Models
 import ReactiveSwift
-import Result
 
 class HRPGBuyItemModalViewController: UIViewController, Themeable {
     @objc var reward: InAppRewardProtocol?
@@ -17,9 +16,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     private let inventoryRepository = InventoryRepository()
     private let userRepository = UserRepository()
     private let disposable = ScopedDisposable(CompositeDisposable())
-    
-    let showPinning = ConfigRepository().bool(variable: .enableNewShops)
-    
+        
     @IBOutlet weak var topContentView: UIView!
     @IBOutlet weak var bottomButtons: UIView!
     
@@ -63,8 +60,19 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         closableShopModal.closeButton.addTarget(self, action: #selector(closePressed), for: UIControl.Event.touchUpInside)
         buyButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(buyPressed)))
         let inAppReward = reward
-        pinButton.isHidden = !showPinning ||  inAppReward?.pinType == "armoire" || inAppReward?.pinType == "potion"
+        pinButton.isHidden = inAppReward?.pinType == "armoire" || inAppReward?.pinType == "potion"
         
+        if #available(iOS 11.0, *) {
+            pinButton.layer.cornerRadius = 12
+            buyButton.layer.cornerRadius = 12
+            if pinButton.isHidden {
+                buyButton.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+            } else {
+                pinButton.layer.maskedCorners = [ .layerMinXMaxYCorner]
+                buyButton.layer.maskedCorners = [ .layerMaxXMaxYCorner]
+            }
+        }
+
         ThemeService.shared.addThemeable(themable: self)
         
         populateText()
@@ -86,20 +94,24 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     func applyTheme(theme: Theme) {
         pinButton.setTitleColor(theme.tintColor, for: .normal)
         pinButton.backgroundColor = theme.backgroundTintColor.withAlphaComponent(0.05)
+        pinButton.layer.borderColor = theme.dimmedColor.cgColor
         buyButton.backgroundColor = theme.backgroundTintColor.withAlphaComponent(0.05)
+        buyButton.layer.borderColor = theme.dimmedColor.cgColor
         closableShopModal.closeButton.setTitleColor(theme.tintColor, for: .normal)
+        closableShopModal.closeButton.backgroundColor = theme.contentBackgroundColor
+        closableShopModal.shopModalBgView.backgroundColor = theme.contentBackgroundColor
+        closableShopModal.shopModalBgView.contentView.backgroundColor = theme.contentBackgroundColor
+
         if !itemIsLocked() {
             buyLabel.textColor = theme.tintColor
         }
-        view.backgroundColor = theme.backgroundTintColor.darker(by: 50)?.withAlphaComponent(0.6)
+        view.backgroundColor = theme.backgroundTintColor.darker(by: 50).withAlphaComponent(0.6)
     }
     
     func styleViews() {
         pinButton.layer.borderWidth = 0.5
-        pinButton.layer.borderColor = UIColor.gray400().cgColor
         
         buyButton.layer.borderWidth = 0.5
-        buyButton.layer.borderColor = UIColor.gray400().cgColor
         currencyCountView.font = UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.semibold)
         
         hourglassCountView.currency = .hourglass
@@ -335,12 +347,12 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
             }
         }
         
-        if key != "" {
+        if key.isEmpty == false {
             self.dismiss(animated: true, completion: nil)
             
             let topViewController = self.presentingViewController
             if !canBuy() {
-                var viewControllerName: String? = nil
+                var viewControllerName: String?
                 if !canAfford() {
                     if currency == .hourglass {
                         viewControllerName = "InsufficientHourglassesViewController"
@@ -456,15 +468,15 @@ extension NSLayoutConstraint {
 
 extension UIView {
     func addSingleViewWithConstraints(_ view: UIView) {
-        self.addSubview(view)
-        self.addConstraints(NSLayoutConstraint.defaultVerticalConstraints("V:|-0-[view]-0-|", ["view": view]))
-        self.addConstraints(NSLayoutConstraint.defaultHorizontalConstraints(view))
+        addSubview(view)
+        addConstraints(NSLayoutConstraint.defaultVerticalConstraints("V:|-0-[view]-0-|", ["view": view]))
+        addConstraints(NSLayoutConstraint.defaultHorizontalConstraints(view))
     }
     
     func triggerLayout() {
-        self.setNeedsUpdateConstraints()
-        self.updateConstraints()
-        self.setNeedsLayout()
-        self.layoutIfNeeded()
+        setNeedsUpdateConstraints()
+        updateConstraints()
+        setNeedsLayout()
+        layoutIfNeeded()
     }
 }

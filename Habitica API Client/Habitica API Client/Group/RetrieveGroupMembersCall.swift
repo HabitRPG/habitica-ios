@@ -5,7 +5,6 @@
 
 import Foundation
 import Habitica_Models
-import FunkyNetwork
 import ReactiveSwift
 
 public class RetrieveGroupMembersCall: ResponseArrayCall<MemberProtocol, APIMember> {

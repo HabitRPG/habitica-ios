@@ -33,6 +33,7 @@ class SubscriptionDetailView: UITableViewCell {
         typeLabel.text = plan.planId
         paymentMethodLabel.text = plan.paymentMethod
 
+        // swiftlint:disable:next empty_count
         if plan.consecutive?.count == 0 {
             monthsSubscribedPill.text = L10n.oneMonth
         } else {

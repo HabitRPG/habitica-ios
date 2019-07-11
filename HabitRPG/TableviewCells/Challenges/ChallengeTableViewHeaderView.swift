@@ -17,14 +17,15 @@ class ChallengeTableViewHeaderView: UITableViewHeaderFooterView {
     }
     
     func setup() {
-        titleLabel.textColor = UIColor.gray50()
+        let theme = ThemeService.shared.theme
+        titleLabel.textColor = theme.primaryTextColor
 
-        countLabel.textColor = UIColor.gray400()
         countLabel.layer.cornerRadius = 11
-        countLabel.backgroundColor = UIColor.white
-        countLabel.textColor = UIColor.gray400()
+        countLabel.backgroundColor = theme.contentBackgroundColor
+        countLabel.textColor = theme.dimmedTextColor
         countLabel.clipsToBounds = true
 
-        backgroundView?.backgroundColor = UIColor.gray700()
+        backgroundView?.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+
     }
 }

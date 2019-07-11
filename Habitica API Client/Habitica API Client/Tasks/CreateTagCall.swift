@@ -8,8 +8,6 @@
 
 import Foundation
 import Habitica_Models
-import FunkyNetwork
-
 
 public class CreateTagCall: ResponseObjectCall<TagProtocol, APITag> {
     public init(tag: TagProtocol, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "tasks.json")) {

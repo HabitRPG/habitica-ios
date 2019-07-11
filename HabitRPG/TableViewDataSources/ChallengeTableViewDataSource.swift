@@ -28,6 +28,10 @@ class ChallengeTableViewDataSource: BaseReactiveTableViewDataSource<ChallengePro
     var showNotOwned = true
     @objc var shownGuilds: [String]?
     var searchText: String?
+    
+    var nextPage = 0
+    var loadedAllData = false
+    var isLoading = false
 
     private var fetchChallengesDisposable: Disposable?
     private let socialRepository = SocialRepository()
@@ -62,11 +66,27 @@ class ChallengeTableViewDataSource: BaseReactiveTableViewDataSource<ChallengePro
         }).start()
     }
     
-    override func retrieveData(completed: (() -> Void)?) {
-        socialRepository.retrieveChallenges().observeCompleted {
-            if let action = completed {
-                action()
-            }
+    func retrieveData(forced: Bool, completed: (() -> Void)?) {
+        if forced {
+            nextPage = 0
+            loadedAllData = false
+        }
+        if loadedAllData || isLoading {
+            return
+        }
+        isLoading = true
+        socialRepository.retrieveChallenges(page: nextPage, memberOnly: isShowingJoinedChallenges)
+            .on(value: { challenges in
+                if challenges?.count ?? 0 < 10 {
+                    self.loadedAllData = true
+                }
+                self.nextPage += 1
+            })
+            .observeCompleted {
+                self.isLoading = false
+                if let action = completed {
+                    action()
+                }
         }
     }
     
@@ -101,7 +121,7 @@ class ChallengeTableViewDataSource: BaseReactiveTableViewDataSource<ChallengePro
         }
         if let shownGuilds = self.shownGuilds {
             var component = "groupID IN {"
-            if shownGuilds.count > 0 {
+            if shownGuilds.isEmpty == false {
                 component.append("\'\(shownGuilds[0])\'")
             }
             for id in shownGuilds.dropFirst() {
@@ -111,14 +131,14 @@ class ChallengeTableViewDataSource: BaseReactiveTableViewDataSource<ChallengePro
             searchComponents.append(component)
         }
         if let searchText = self.searchText {
-            if searchText.count > 0 {
+            if searchText.isEmpty == false {
                 searchComponents.append("((name CONTAINS[cd] \'\(searchText)\') OR (notes CONTAINS[cd] \'\(searchText)\'))")
             }
         }
         
         if isShowingJoinedChallenges {
             var component = "id IN {"
-            if membershipIDs.count > 0 {
+            if membershipIDs.isEmpty == false {
                 component.append("\'\(membershipIDs[0])\'")
             }
             for id in membershipIDs.dropFirst() {
@@ -128,7 +148,7 @@ class ChallengeTableViewDataSource: BaseReactiveTableViewDataSource<ChallengePro
             searchComponents.append(component)
         }
         
-        if searchComponents.count > 0 {
+        if searchComponents.isEmpty == false {
             return NSPredicate(format: searchComponents.joined(separator: " && "))
         } else {
             return nil

@@ -9,7 +9,6 @@
 import UIKit
 import Realm
 import VTAcknowledgementsViewController
-import Instabug
 import Habitica_Models
 import MessageUI
 
@@ -23,9 +22,10 @@ class AboutViewController: HRPGBaseViewController, MFMailComposeViewControllerDe
     private var supportEmail = ""
     private var user: UserProtocol?
     
-    private var appVersionString: String = {
-        let versionString = Bundle.main.infoDictionary?["CFBundleShortVersionString"]
-        let buildNumber = Bundle.main.infoDictionary?["CFBundleVersion"]
+    private let versionString = Bundle.main.infoDictionary?["CFBundleShortVersionString"]
+    private let buildNumber = Bundle.main.infoDictionary?["CFBundleVersion"]
+    
+    private lazy var appVersionString: String = {
         return "\(versionString ?? "") (\(buildNumber ?? ""))"
     }()
     
@@ -55,41 +55,55 @@ class AboutViewController: HRPGBaseViewController, MFMailComposeViewControllerDe
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if HabiticaAppDelegate.isRunningLive() {
-            return 8
-        } else {
-            return 9
+        var count = 8
+        if !HabiticaAppDelegate.isRunningLive() {
+            count += 1
         }
+        if needsUpdate() {
+            count += 1
+        }
+        return count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let offset = needsUpdate() ? 1 : 0
         var cellName = "BasicCell"
-        if (indexPath.item == 0 || indexPath.item == 3 || indexPath.item == 7) {
+        if indexPath.item == 0 || (needsUpdate() && indexPath.item == 1) || indexPath.item == offset + 4 || indexPath.item == offset + 4 {
             cellName = "RightDetailCell"
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: cellName, for: indexPath)
         cell.accessoryType = .none
         cell.selectionStyle = .default
-        if indexPath.item == 0 {
-            cell.textLabel?.text = L10n.About.website
-            cell.detailTextLabel?.text = "habitica.com"
-        } else if indexPath.item == 1 {
-            cell.textLabel?.text = L10n.About.sendFeedback
-        } else if indexPath.item == 2 {
-            cell.textLabel?.text = L10n.About.reportBug
-        } else if indexPath.item == 3 {
-            cell.textLabel?.text = "Twitter"
-            cell.detailTextLabel?.text = "@habitica"
-        } else if indexPath.item == 4 {
-            cell.textLabel?.text = L10n.About.leaveReview
-        } else if indexPath.item == 5 {
-            cell.textLabel?.text = L10n.About.viewSourceCode
-        } else if indexPath.item == 6 {
-            cell.textLabel?.text = L10n.About.acknowledgements
-        } else if indexPath.item == 7 {
+        cell.textLabel?.font = CustomFontMetrics.scaledSystemFont(ofSize: cell.textLabel?.font.pointSize ?? 14)
+        let theme = ThemeService.shared.theme
+        cell.textLabel?.textColor = theme.primaryTextColor
+        cell.detailTextLabel?.textColor = theme.secondaryTextColor
+        if needsUpdate() && indexPath.item == 1 {
+            cell.textLabel?.text = L10n.About.newVersion(configRepository.string(variable: .lastVersionNumber) ?? "")
+            cell.textLabel?.textColor = theme.tintColor
+            cell.textLabel?.font = CustomFontMetrics.scaledBoldSystemFont(ofSize: cell.textLabel?.font.pointSize ?? 14)
+            cell.detailTextLabel?.text = L10n.About.whatsNew
+            cell.detailTextLabel?.textColor = theme.tintColor
+        } else if indexPath.item == 0 {
             cell.textLabel?.text = L10n.About.version
             cell.detailTextLabel?.text = appVersionString
-        } else if indexPath.item == 8 {
+        } else if indexPath.item == offset + 1 {
+            cell.textLabel?.text = L10n.About.sendFeedback
+        } else if indexPath.item == offset + 2 {
+            cell.textLabel?.text = L10n.About.reportBug
+        } else if indexPath.item == offset + 3 {
+            cell.textLabel?.text = L10n.About.website
+            cell.detailTextLabel?.text = "habitica.com"
+        } else if indexPath.item == offset + 4 {
+            cell.textLabel?.text = "Twitter"
+            cell.detailTextLabel?.text = "@habitica"
+        } else if indexPath.item == offset + 5 {
+            cell.textLabel?.text = L10n.About.leaveReview
+        } else if indexPath.item == offset + 6 {
+            cell.textLabel?.text = L10n.About.viewSourceCode
+        } else if indexPath.item == offset + 7 {
+            cell.textLabel?.text = L10n.About.acknowledgements
+        } else if indexPath.item == offset + 8 {
             cell.textLabel?.text = L10n.About.exportDatabase
         }
         
@@ -98,24 +112,28 @@ class AboutViewController: HRPGBaseViewController, MFMailComposeViewControllerDe
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedIndexPath = indexPath
-        if indexPath.item == 0 {
-            open(url: "https://habitica.com/")
-        } else if indexPath.item == 1 {
-            handleAppFeedback()
-        } else if indexPath.item == 2 {
-            handleBugReport()
-        } else if indexPath.item == 3 {
-            open(url: "https://twitter.com/habitica")
-        } else if indexPath.item == 4 {
+        let offset = needsUpdate() ? 1 : 0
+
+        if needsUpdate() && indexPath.item == 1 {
             open(url: "itms-apps://itunes.apple.com/app/id994882113")
-        } else if indexPath.item == 5 {
+        } else if indexPath.item == offset + 3 {
+            open(url: "https://habitica.com/")
+        } else if indexPath.item == offset + 1 {
+            handleAppFeedback()
+        } else if indexPath.item == offset + 2 {
+            handleBugReport()
+        } else if indexPath.item == offset + 4 {
+            open(url: "https://twitter.com/habitica")
+        } else if indexPath.item == offset + 5 {
+            open(url: "itms-apps://itunes.apple.com/app/id994882113")
+        } else if indexPath.item == offset + 6 {
             open(url: "https://github.com/habitRPG/habitica-ios")
-        } else if indexPath.item == 6 {
+        } else if indexPath.item == offset + 7 {
             if let viewController = VTAcknowledgementsViewController.acknowledgementsViewController() {
                 viewController.headerText = L10n.About.loveOpenSource
                 navigationController?.pushViewController(viewController, animated: true)
             }
-        } else if indexPath.item == 8 {
+        } else if indexPath.item == offset + 8 {
             if let url = RLMRealmConfiguration.default().fileURL {
                 let activityViewController = UIActivityViewController.init(activityItems: [url], applicationActivities: nil)
                 present(activityViewController, animated: true, completion: nil)
@@ -130,19 +148,11 @@ class AboutViewController: HRPGBaseViewController, MFMailComposeViewControllerDe
     }
     
     private func handleAppFeedback() {
-        if HabiticaAppDelegate.isRunningLive() {
-            sendEmail(subject: "[iOS] Feedback")
-        } else {
-            BugReporting.invoke(with: .newFeedback, options: [])
-        }
+        sendEmail(subject: "[iOS] Feedback")
     }
     
     private func handleBugReport() {
-        if HabiticaAppDelegate.isRunningLive() {
-            sendEmail(subject: "[iOS] Bugreport")
-        } else {
-            BugReporting.invoke(with: .newFeedback, options: [])
-        }
+        sendEmail(subject: "[iOS] Bugreport")
     }
     
     private func sendEmail(subject: String) {
@@ -202,5 +212,9 @@ class AboutViewController: HRPGBaseViewController, MFMailComposeViewControllerDe
         if let indexPath = selectedIndexPath {
             tableView.deselectRow(at: indexPath, animated: true)
         }
+    }
+    
+    private func needsUpdate() -> Bool {
+        return (buildNumber as? NSString)?.intValue ?? 0 < configRepository.integer(variable: .lastVersionCode)
     }
 }

@@ -9,7 +9,6 @@
 import UIKit
 import Habitica_Models
 import ReactiveSwift
-import Result
 
 @objc
 protocol ShopCollectionViewDataSourceProtocol: UICollectionViewDelegateFlowLayout {
@@ -59,7 +58,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
     
     @objc var needsGearSection: Bool = false {
         didSet {
-            self.sections[0].isHidden = !needsGearSection
+            sections[0].isHidden = !needsGearSection
         }
     }
     @objc var selectedGearCategory: String? {
@@ -82,7 +81,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
         self.shopIdentifier = identifier
         self.delegate = delegate
         super.init()
-        self.sections.append(ItemSection<InAppRewardProtocol>())
+        sections.append(ItemSection<InAppRewardProtocol>())
         sections[0].showIfEmpty = true
         
         disposable.inner.add(inventoryRepository.getShop(identifier: identifier).combineLatest(with: userRepository.getUser()).on(value: {[weak self] (shop, user) in
@@ -139,11 +138,11 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
         }
         fetchGearDisposable = inventoryRepository.getShop(identifier: Constants.GearMarketKey)
             .map({ (shop) -> [InAppRewardProtocol] in
-                return shop?.categories.filter({ (category) -> Bool in
-                    category.identifier == self.selectedGearCategory
-                }).first?.items ?? []
+                return shop?.categories.first(where: {[weak self] (category) -> Bool in
+                    category.identifier == self?.selectedGearCategory
+                })?.items ?? []
             })
-            .combineLatest(with: self.inventoryRepository.getOwnedGear()
+            .combineLatest(with: inventoryRepository.getOwnedGear()
                 .map({ (ownedGear, _) in
                     return ownedGear.map({ item -> String in
                         return item.key ?? ""
@@ -165,11 +164,11 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
     
     func retrieveShopInventory(_ completed: (() -> Void)?) {
         inventoryRepository.retrieveShopInventory(identifier: shopIdentifier)
-            .flatMap(.latest, {[weak self] (shop) -> Signal<ShopProtocol?, NoError> in
+            .flatMap(.latest, {[weak self] (shop) -> Signal<ShopProtocol?, Never> in
                 if shop?.identifier == Constants.MarketKey {
                     return self?.inventoryRepository.retrieveShopInventory(identifier: Constants.GearMarketKey) ?? Signal.empty
                 } else {
-                    let signal = Signal<ShopProtocol?, NoError>.pipe()
+                    let signal = Signal<ShopProtocol?, Never>.pipe()
                     signal.input.send(value: shop)
                     return signal.output
                 }
@@ -216,7 +215,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
             } else {
                 headerView.titleLabel.text = titleFor(section: indexPath.section)
             }
-            
+            headerView.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
             return headerView
         }
         return UICollectionReusableView()
@@ -256,6 +255,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
             if !hasGearSection() {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmptyGearCell", for: indexPath)
                 (cell.viewWithTag(1) as? UILabel)?.text = L10n.Shops.purchasedAllGear
+                cell.viewWithTag(2)?.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
                 return cell
             }
         }

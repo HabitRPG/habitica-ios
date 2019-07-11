@@ -46,42 +46,62 @@ class WeekdayFormCell: Cell<WeekdaysValue>, CellType {
         fridayLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(fridayTapped)))
         saturdayLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(saturdayTapped)))
         sundayLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(sundayTapped)))
+        
+        contentView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor.withAlphaComponent(0.8)
     }
     
     @objc
     func mondayTapped() {
         row.value?.monday = !(row.value?.monday ?? false)
         row.updateCell()
+        if #available(iOS 10, *) {
+            UISelectionFeedbackGenerator.oneShotSelectionChanged()
+        }
     }
     
     @objc
     func tuesdayTapped() {
         row.value?.tuesday = !(row.value?.tuesday ?? false)
         row.updateCell()
+        if #available(iOS 10, *) {
+            UISelectionFeedbackGenerator.oneShotSelectionChanged()
+        }
     }
     
     @objc
     func wednesdayTapped() {
         row.value?.wednesday = !(row.value?.wednesday ?? false)
         row.updateCell()
+        if #available(iOS 10, *) {
+            UISelectionFeedbackGenerator.oneShotSelectionChanged()
+        }
     }
     
     @objc
     func thursdayTapped() {
         row.value?.thursday = !(row.value?.thursday ?? false)
         row.updateCell()
+        if #available(iOS 10, *) {
+            UISelectionFeedbackGenerator.oneShotSelectionChanged()
+        }
     }
     
     @objc
     func fridayTapped() {
         row.value?.friday = !(row.value?.friday ?? false)
         row.updateCell()
+        if #available(iOS 10, *) {
+            UISelectionFeedbackGenerator.oneShotSelectionChanged()
+        }
     }
     
     @objc
     func saturdayTapped() {
         row.value?.saturday = !(row.value?.saturday ?? false)
         row.updateCell()
+        if #available(iOS 10, *) {
+            UISelectionFeedbackGenerator.oneShotSelectionChanged()
+        }
     }
     
     @objc
@@ -145,7 +165,7 @@ class WeekdayFormCell: Cell<WeekdaysValue>, CellType {
                 days.append(L10n.sunday)
             }
             
-            if days.count > 0 {
+            if !days.isEmpty {
                 accessibilityLabel = L10n.activeOn(days.joined(separator: ", "))
             } else {
                 accessibilityLabel = L10n.activeOn(L10n.noDays)

@@ -32,14 +32,5 @@ class TavernViewController: SplitSocialViewController {
     
     override internal func set(group: GroupProtocol) {
         super.set(group: group)
-        if let detailViewController = self.tavernDetailViewController {
-            
-            /*if let questKey = group.questKey {
-                let quest = InventoryRepository().getQuest(questKey)
-                detailViewController.quest = quest
-            } else {
-                detailViewController.quest = nil
-            }*/
-        }
     }
 }

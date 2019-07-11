@@ -7,8 +7,17 @@ opt_in_rules:
   - force_unwrapping
   - private_outlet
   - switch_case_on_newline
+  - contains_over_first_not_nil
+  - empty_count
+  - empty_string
+  - first_where
+  - last_where
+  - sorted_first_last
 included: # paths to include during linting. `--path` is ignored if present.
   - HabitRPG
+  - Habitica Models
+  - Habitica Database
+  - Habitica API Client
 excluded: # paths to ignore during linting. Takes precedence over `included`.
   - Pods
   - HabitRPG/Utilities/HabiticaIcons.swift
@@ -30,5 +39,17 @@ type_name:
   max_length: # warning and error
     warning: 45
     error: 50
-  excluded: iPhone # excluded via string
-reporter: "emoji"
+  excluded:
+    - iPhone
+    - id
+    - up
+identifier_name:
+  excluded:
+    - id
+    - up
+empty_string: error
+contains_over_first_not_nil: error
+first_where: error
+last_where: error
+sorted_first_last: error
+reporter: "xcode"

@@ -77,21 +77,20 @@ class InboxMessagesDataSource: BaseReactiveTableViewDataSource<InboxMessageProto
         cell.configure(inboxMessage: message,
                        previousMessage: item(at: IndexPath(item: (indexPath?.item ?? 0)+1, section: indexPath?.section ?? 0)),
                        nextMessage: item(at: IndexPath(item: (indexPath?.item ?? 0)-1, section: indexPath?.section ?? 0)),
-                       user: self.user, isExpanded: isExpanded,
-                       enableUsernameRelease: configRepository.bool(variable: .enableUsernameRelease))
+                       user: self.user, isExpanded: isExpanded)
         
-        cell.profileAction = {
-            guard let profileViewController = self.viewController?.storyboard?.instantiateViewController(withIdentifier: "UserProfileViewController") as? UserProfileViewController else {
+        cell.profileAction = {[weak self] in
+            guard let profileViewController = self?.viewController?.storyboard?.instantiateViewController(withIdentifier: "UserProfileViewController") as? UserProfileViewController else {
                 return
             }
             if message.sent {
-                profileViewController.userID = self.user?.id
-                profileViewController.username = self.user?.profile?.name
+                profileViewController.userID = self?.user?.id
+                profileViewController.username = self?.user?.profile?.name
             } else {
                 profileViewController.userID = message.userID
                 profileViewController.username = message.displayName
             }
-            self.viewController?.navigationController?.pushViewController(profileViewController, animated: true)
+            self?.viewController?.navigationController?.pushViewController(profileViewController, animated: true)
         }
         cell.copyAction = {
             let pasteboard = UIPasteboard.general
@@ -99,12 +98,12 @@ class InboxMessagesDataSource: BaseReactiveTableViewDataSource<InboxMessageProto
             let toastView = ToastView(title: L10n.copiedMessage, background: .green)
             ToastManager.show(toast: toastView)
         }
-        cell.deleteAction = {
-            self.socialRepository.delete(message: message).observeCompleted {}
+        cell.deleteAction = {[weak self] in
+            self?.socialRepository.delete(message: message).observeCompleted {}
         }
-        cell.expandAction = {
+        cell.expandAction = {[weak self] in
             if let path = indexPath {
-                self.expandSelectedCell(path)
+                self?.expandSelectedCell(path)
             }
         }
         

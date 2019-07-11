@@ -27,8 +27,8 @@ class TutorialStepView: UIView {
     
     @objc var highlightedFrame: CGRect = CGRect.zero {
         didSet {
-            self.backgroundView.highlightedFrame = highlightedFrame
-            self.backgroundView.setNeedsDisplay()
+            backgroundView.highlightedFrame = highlightedFrame
+            backgroundView.setNeedsDisplay()
         }
     }
 
@@ -48,12 +48,12 @@ class TutorialStepView: UIView {
             view.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
             addSubview(view)
             
-            self.backgroundView.dimColor = UIColor.purple50().withAlphaComponent(0.6)
+            backgroundView.dimColor = UIColor.purple50().withAlphaComponent(0.6)
             
-            self.shouldGroupAccessibilityChildren = true
-            self.isAccessibilityElement = true
+            shouldGroupAccessibilityChildren = true
+            isAccessibilityElement = true
             
-            self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewTapped)))
+            addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewTapped)))
         }
     }
 
@@ -83,7 +83,7 @@ class TutorialStepView: UIView {
     @objc
     func display(onView: UIView, animated: Bool) {
         onView.addSubview(self)
-        self.frame = onView.frame
+        frame = onView.frame
         UIView.animate(withDuration: 0.3, animations: {[weak self] in
             self?.backgroundView.alpha = 1
         }, completion: {[weak self] _ in
@@ -97,7 +97,7 @@ class TutorialStepView: UIView {
     
     @objc
     func dismiss(animated: Bool) {
-        self.displayView = nil
+        displayView = nil
         if let action = self.dismissAction {
             action()
         }
@@ -111,16 +111,16 @@ class TutorialStepView: UIView {
     @objc
     func setText(_ text: String) {
         speechbubbleView.text = text
-        if textList.count == 0 {
+        if textList.isEmpty {
              speechbubbleView.caretView.isHidden = true
         }
-        self.accessibilityLabel = text
+        accessibilityLabel = text
         UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: self)
     }
     
     @objc
     func setTexts(list: [String]) {
-        if list.count > 0 {
+        if list.isEmpty == false {
             speechbubbleView.caretView.isHidden = false
             textList = list
             setText(textList.removeFirst())
@@ -130,8 +130,8 @@ class TutorialStepView: UIView {
     
     @objc
     func hintViewTapped() {
-        self.hintView?.removeFromSuperview()
-        self.hintView = nil
+        hintView?.removeFromSuperview()
+        hintView = nil
         if let view = displayView {
             display(onView: view, animated: true)
         }
@@ -139,8 +139,8 @@ class TutorialStepView: UIView {
     
     @objc
     func viewTapped() {
-        if textList.count == 0 {
-            self.dismiss(animated: true)
+        if textList.isEmpty {
+            dismiss(animated: true)
         } else {
             setText(textList.removeFirst())
             speechbubbleView.animateTextView()

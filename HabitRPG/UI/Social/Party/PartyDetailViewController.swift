@@ -88,6 +88,11 @@ class PartyDetailViewController: GroupDetailViewController {
         }).start())
     }
     
+    override func applyTheme(theme: Theme) {
+        super.applyTheme(theme: theme)
+        partyChallengesButton.backgroundColor = theme.contentBackgroundColor
+    }
+    
     override func populateText() {
         descriptionTitleView.text = L10n.Party.partyDescription
         membersTitleView.text = L10n.Groups.members
@@ -174,7 +179,7 @@ class PartyDetailViewController: GroupDetailViewController {
                     questInvitationUserView.isHidden = true
                 }
             }
-            self.questTitleContentView.setNeedsLayout()
+            questTitleContentView.setNeedsLayout()
         } else {
             startQuestButton.isHidden = false
             questTitleView.isHidden = true
@@ -196,7 +201,7 @@ class PartyDetailViewController: GroupDetailViewController {
         let partyInvitations = user.invitations.filter { (invitation) -> Bool in
             return invitation.isPartyInvitation
         }
-        if partyInvitations.count == 0 {
+        if partyInvitations.isEmpty {
             invitationsListView.isHidden = true
             mainStackviewOffset.constant = 16
         } else {
@@ -220,7 +225,7 @@ class PartyDetailViewController: GroupDetailViewController {
     
     @objc
     private func openQuestDetailView() {
-        self.perform(segue: StoryboardSegue.Social.questDetailSegue)
+        perform(segue: StoryboardSegue.Social.questDetailSegue)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -242,6 +247,6 @@ class PartyDetailViewController: GroupDetailViewController {
         let itemNavigationController = StoryboardScene.Main.itemNavigationController.instantiate()
         let itemViewController = itemNavigationController.topViewController as? ItemsViewController
         itemViewController?.itemType = "quests"
-        self.present(itemNavigationController, animated: true, completion: nil)
+        present(itemNavigationController, animated: true, completion: nil)
     }
 }

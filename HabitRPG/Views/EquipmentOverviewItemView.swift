@@ -35,7 +35,7 @@ class EquipmentOverviewItemView: UIView {
             view.frame = bounds
             addSubview(view)
       
-            self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewTapped)))
+            addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewTapped)))
 
             noEquipmentBorder.strokeColor = UIColor.gray50().cgColor
             noEquipmentBorder.lineWidth = 2
@@ -71,6 +71,7 @@ class EquipmentOverviewItemView: UIView {
             imageView.setImagewith(name: "shop_\(key)")
             imageView.isHidden = false
             noEquipmentLabel.isHidden = true
+            imageView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
         } else {
             imageView.isHidden = true
             noEquipmentLabel.isHidden = false

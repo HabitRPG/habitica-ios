@@ -10,7 +10,7 @@ import UIKit
 import Habitica_Models
 import ReactiveSwift
 
-class RewardViewController: HRPGBaseCollectionViewController, UICollectionViewDelegateFlowLayout {
+class RewardViewController: BaseCollectionViewController, UICollectionViewDelegateFlowLayout {
     
     let userRepository = UserRepository()
     
@@ -35,6 +35,13 @@ class RewardViewController: HRPGBaseCollectionViewController, UICollectionViewDe
         tutorialIdentifier = "rewards"
         navigationItem.title = L10n.Tasks.reward
         refresh()
+        
+        ThemeService.shared.addThemeable(themable: self)
+    }
+    
+    override func applyTheme(theme: Theme) {
+        super.applyTheme(theme: theme)
+        collectionView.backgroundColor = theme.contentBackgroundColor
     }
     
     override func getDefinitonForTutorial(_ tutorialIdentifier: String!) -> [AnyHashable: Any] {
@@ -105,7 +112,7 @@ class RewardViewController: HRPGBaseCollectionViewController, UICollectionViewDe
             } else {
                 destinationController.isCreating = true
             }
-            self.editedReward = nil
+            editedReward = nil
         }
     }
 }

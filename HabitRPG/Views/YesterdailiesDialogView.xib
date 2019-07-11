@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -18,9 +18,12 @@
                 <outlet property="checkinTitle" destination="eiW-cW-QdO" id="SjI-JJ-6kY"/>
                 <outlet property="checkinWrapper" destination="151-uA-7bM" id="yfZ-8w-457"/>
                 <outlet property="checkinYesterdaysDailiesLabel" destination="Cnh-f6-c1z" id="we5-Qn-xcQ"/>
+                <outlet property="headerWrapperView" destination="o1c-In-w1k" id="MZW-IJ-aPf"/>
                 <outlet property="heightConstraint" destination="S45-nu-wMF" id="kJ7-WI-Fw3"/>
                 <outlet property="nextCheckinCountView" destination="xVk-F2-Prf" id="6hf-WE-zku"/>
+                <outlet property="separatorView" destination="ruC-mI-iea" id="u4C-el-yRT"/>
                 <outlet property="startDayButton" destination="f9U-qb-rV9" id="I50-tF-QyL"/>
+                <outlet property="tableViewWrapper" destination="dgP-Ii-oSg" id="O7i-FH-9zF"/>
                 <outlet property="view" destination="iN0-l3-epB" id="LC2-X1-9k9"/>
                 <outlet property="yesterdailiesHeightConstraint" destination="7W4-JT-4UY" id="vnt-iW-sdw"/>
                 <outlet property="yesterdailiesTableView" destination="8bJ-eN-LzI" id="Yf7-u1-C68"/>
@@ -133,7 +136,6 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstItem="zK0-ec-rtU" firstAttribute="top" secondItem="151-uA-7bM" secondAttribute="top" id="0xF-7F-Xph"/>
                                 <constraint firstItem="eiW-cW-QdO" firstAttribute="top" secondItem="zK0-ec-rtU" secondAttribute="bottom" constant="8" id="2wl-9z-PoL"/>
@@ -173,9 +175,6 @@
                     <constraints>
                         <constraint firstAttribute="height" priority="500" constant="50" id="n11-lc-Fn1"/>
                     </constraints>
-                    <state key="normal">
-                        <color key="titleColor" red="0.60586214065551758" green="0.3846261203289032" blue="0.99835687875747681" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </state>
                     <connections>
                         <action selector="allDoneTapped:" destination="-1" eventType="touchUpInside" id="0f4-zD-6n6"/>
                     </connections>

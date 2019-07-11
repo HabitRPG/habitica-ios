@@ -26,7 +26,11 @@ class RealmPet: Object, PetProtocol {
         key = petProtocol.key
         egg = petProtocol.egg
         potion = petProtocol.potion
-        type = petProtocol.type
+        if petProtocol.type == "whacky" {
+            type = "wacky"
+        } else {
+            type = petProtocol.type
+        }
         text = petProtocol.text
     }
 }

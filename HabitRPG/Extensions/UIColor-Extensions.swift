@@ -145,6 +145,30 @@ extension UIColor {
     }
     
     /**
+     The dark color associated with a specific task value. Defaults to blue50.
+     
+     - parameter taskValue: NSNumber value.
+     */
+    @objc
+    public static func forTaskValueDark(_ taskValue: Int) -> UIColor {
+        if taskValue < -20 {
+            return UIColor.darkRed10()
+        } else if taskValue < -10 {
+            return UIColor.red10()
+        } else if taskValue < -1 {
+            return UIColor.orange10()
+        } else if taskValue < 1 {
+            return UIColor.yellow10()
+        } else if taskValue < 5 {
+            return UIColor.green10()
+        } else if taskValue < 10 {
+            return UIColor.teal10()
+        } else {
+            return UIColor.blue10()
+        }
+    }
+    
+    /**
      The light color associated with a specific task value. Defaults to blue100.
      
      - parameter taskValue: NSNumber value.
@@ -187,15 +211,15 @@ extension UIColor {
         }
     }
     
-func lighter(by percentage: CGFloat=30.0) -> UIColor? {
+func lighter(by percentage: CGFloat=30.0) -> UIColor {
         return self.adjust(by: abs(percentage) )
     }
     
-    func darker(by percentage: CGFloat=30.0) -> UIColor? {
+    func darker(by percentage: CGFloat=30.0) -> UIColor {
         return self.adjust(by: -1 * abs(percentage) )
     }
     
-    func adjust(by percentage: CGFloat=30.0) -> UIColor? {
+    func adjust(by percentage: CGFloat=30.0) -> UIColor {
         var red: CGFloat=0, green: CGFloat=0, blue: CGFloat=0, alpha: CGFloat=0
         if self.getRed(&red, green: &green, blue: &blue, alpha: &alpha) {
             return UIColor(red: min(red + percentage/100, 1.0),
@@ -203,7 +227,7 @@ func lighter(by percentage: CGFloat=30.0) -> UIColor? {
                            blue: min(blue + percentage/100, 1.0),
                            alpha: alpha)
         } else {
-            return nil
+            return self
         }
     }
     
@@ -219,7 +243,7 @@ func lighter(by percentage: CGFloat=30.0) -> UIColor? {
             brightness = components[0]
         }
         
-        if brightness < 0.5 {
+        if brightness < 0.65 {
             return false
         } else {
             return true

@@ -9,7 +9,7 @@
 import UIKit
 
 @IBDesignable
-class StatsView: UIView {
+class StatsView: UIView, Themeable {
     
     @IBOutlet private weak var topBackground: UIView!
     @IBOutlet private weak var titleLabel: UILabel!
@@ -24,6 +24,8 @@ class StatsView: UIView {
     @IBOutlet private weak var allocatedLabel: UILabel!
     @IBOutlet private weak var allocatedBackgroundView: UIView!
     @IBOutlet private weak var allocateButton: UIButton!
+    
+    private var containedView: UIView?
     
     @IBInspectable var title: String? {
         didSet {
@@ -67,16 +69,17 @@ class StatsView: UIView {
     var canAllocatePoints: Bool = false {
         didSet {
             allocateButton.isHidden = !canAllocatePoints
+            let theme = ThemeService.shared.theme
             if canAllocatePoints {
-                allocateButton.backgroundColor = UIColor.gray600()
-                allocatedBackgroundView.backgroundColor = UIColor.gray600()
+                allocateButton.backgroundColor = theme.offsetBackgroundColor
+                allocatedBackgroundView.backgroundColor = theme.offsetBackgroundColor
                 allocatedValueLabel.textColor = attributeTextColor
                 allocatedLabel.textColor = attributeTextColor
             } else {
-                allocateButton.backgroundColor = UIColor.gray700()
-                allocatedBackgroundView.backgroundColor = UIColor.gray700()
-                allocatedValueLabel.textColor = UIColor.gray50()
-                allocatedLabel.textColor = UIColor.gray300()
+                allocateButton.backgroundColor = theme.windowBackgroundColor
+                allocatedBackgroundView.backgroundColor = theme.windowBackgroundColor
+                allocatedLabel.textColor = theme.dimmedTextColor
+                allocatedValueLabel.textColor = theme.primaryTextColor
             }
         }
     }
@@ -97,6 +100,7 @@ class StatsView: UIView {
     
     private func setupView() {
         if let view = viewFromNibForClass() {
+            containedView = view
             translatesAutoresizingMaskIntoConstraints = false
             
             view.frame = bounds
@@ -118,9 +122,22 @@ class StatsView: UIView {
             setNeedsLayout()
             layoutIfNeeded()
         }
+        ThemeService.shared.addThemeable(themable: self)
     }
     
-    @objc
+    func applyTheme(theme: Theme) {
+        backgroundColor = theme.contentBackgroundColor
+        containedView?.backgroundColor = theme.contentBackgroundColorDimmed
+        levelLabel.textColor = theme.dimmedTextColor
+        levelValueLabel.textColor = theme.primaryTextColor
+        equipmentLabel.textColor = theme.dimmedTextColor
+        equipmentValueLabel.textColor = theme.primaryTextColor
+        buffsLabel.textColor = theme.dimmedTextColor
+        buffsValueLabel.textColor = theme.primaryTextColor
+        allocatedLabel.textColor = theme.dimmedTextColor
+        allocatedValueLabel.textColor = theme.primaryTextColor
+    }
+    
     @IBAction func allocateButtonTapped(_ sender: Any) {
         allocateButton.backgroundColor = UIColor.gray500()
         if let action = allocateAction {

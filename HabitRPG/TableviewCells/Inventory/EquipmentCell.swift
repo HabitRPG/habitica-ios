@@ -28,11 +28,12 @@ class EquipmentCell: UITableViewCell {
     var isEquipped: Bool = false {
         didSet {
             if isEquipped {
-                backgroundColor = UIColor.purple300().withAlphaComponent(0.1)
-                gearImageView.backgroundColor = .white
+                backgroundColor = ThemeService.shared.theme.tintColor.withAlphaComponent(0.1)
+                gearImageView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
             } else {
-                backgroundColor = .white
-                gearImageView.backgroundColor = UIColor.gray700()
+                backgroundColor = ThemeService.shared.theme.contentBackgroundColor
+                gearImageView.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+
             }
         }
     }
@@ -45,6 +46,7 @@ class EquipmentCell: UITableViewCell {
     }
     
     func configure(_ gear: GearProtocol) {
+        twoHandedView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
         gearImageView.setImagewith(name: "shop_\(gear.key ?? "")")
         titleLabel.text = gear.text
         descriptionlabel.text = gear.notes

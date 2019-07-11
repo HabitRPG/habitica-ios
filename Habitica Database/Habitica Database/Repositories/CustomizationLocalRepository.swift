@@ -10,7 +10,6 @@ import Foundation
 import Habitica_Models
 import RealmSwift
 import ReactiveSwift
-import Result
 
 public class CustomizationLocalRepository: ContentLocalRepository {
     

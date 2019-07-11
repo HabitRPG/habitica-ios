@@ -12,7 +12,7 @@ class PetOverviewViewController: StableOverviewViewController<PetOverviewDataSou
     
     override func viewDidLoad() {
         datasource = PetOverviewDataSource()
-        datasource?.collectionView = self.collectionView
+        datasource?.collectionView = collectionView
         super.viewDidLoad()
     }
     
@@ -24,6 +24,7 @@ class PetOverviewViewController: StableOverviewViewController<PetOverviewDataSou
             }
             let indexPath = collectionView?.indexPath(for: cell)
             destination?.eggType = datasource?.item(at: indexPath)?.eggType ?? ""
+            destination?.petType = datasource?.item(at: indexPath)?.type ?? ""
         }
     }
     

@@ -1,14 +1,14 @@
 import XCTest
 import ReactiveCocoa
 import ReactiveSwift
-import Result
+
 /**
  A `TestObserver` is a wrapper around an `Observer` that saves all events to an internal array so that
  assertions can be made on a signal's behavior. To use, just create an instance of `TestObserver` that
  matches the type of signal/producer you are testing, and observer/start your signal by feeding it the
  wrapped observer. For example,
  ```
- let test = TestObserver<Int, NoError>()
+ let test = TestObserver<Int, Never>()
  mySignal.observer(test.observer)
  // ... later ...
  test.assertValues([1, 2, 3])
@@ -39,7 +39,7 @@ internal final class TestObserver <Value, E: Error> {
     
     /// `true` if at least one `.Next` value has been emitted.
     internal var didEmitValue: Bool {
-        return self.values.count > 0
+        return self.values.isEmpty == false
     }
     
     /// The failed error if the signal has failed.
@@ -54,12 +54,12 @@ internal final class TestObserver <Value, E: Error> {
     
     /// `true` if a `.Completed` event has been emitted.
     internal var didComplete: Bool {
-        return self.events.filter { $0.isCompleted }.count > 0
+        return self.events.filter { $0.isCompleted }.isEmpty == false
     }
     
     /// `true` if a .Interrupt` event has been emitted.
     internal var didInterrupt: Bool {
-        return self.events.filter { $0.isInterrupted }.count > 0
+        return self.events.filter { $0.isInterrupted }.isEmpty == false
     }
     
     internal func assertDidComplete(message: String = "Should have completed.",
@@ -94,7 +94,7 @@ internal final class TestObserver <Value, E: Error> {
     
     internal func assertDidEmitValue(message: String = "Should have emitted at least one value.",
                                      file: StaticString = #file, line: UInt = #line) {
-        XCTAssert(self.values.count > 0, message, file: file, line: line)
+        XCTAssert(self.values.isEmpty == false, message, file: file, line: line)
     }
     
     internal func assertDidNotEmitValue(message: String = "Should not have emitted any values.",

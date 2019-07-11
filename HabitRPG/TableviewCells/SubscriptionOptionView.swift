@@ -11,6 +11,7 @@ import UIKit
 class SubscriptionOptionView: UITableViewCell {
 
     //swiftlint:disable private_outlet
+    @IBOutlet weak var wrapperView: UIView!
     @IBOutlet weak var selectionView: UIImageView!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
@@ -42,6 +43,7 @@ class SubscriptionOptionView: UITableViewCell {
                 self?.mysticHourglassLabel.backgroundColor = UIColor.gray600()
             })
         }
+        wrapperView.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
     }
     
     func setMonthCount(_ count: Int) {
@@ -67,6 +69,7 @@ class SubscriptionOptionView: UITableViewCell {
     }
     
     func setHourglassCount(_ count: Int) {
+        // swiftlint:disable:next empty_count
         mysticHourglassLabel.isHidden = count == 0
         mysticHourglassLabel.text = L10n.hourglassCount(count)
     }

@@ -8,8 +8,6 @@
 
 import Foundation
 import Habitica_Models
-import FunkyNetwork
-
 
 public class ScoreChecklistItem: ResponseObjectCall<TaskProtocol, APITask> {
     public init(item: ChecklistItemProtocol, task: TaskProtocol, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "tasks.json")) {

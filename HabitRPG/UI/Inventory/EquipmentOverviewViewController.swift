@@ -9,12 +9,15 @@
 import Foundation
 import Habitica_Models
 import ReactiveSwift
+import PinLayout
 
-class EquipmentOverviewViewController: HRPGUIViewController, UIScrollViewDelegate {
+class EquipmentOverviewViewController: BaseUIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var gearView: EquipmentOverviewView!
     @IBOutlet weak var costumeView: EquipmentOverviewView!
+    @IBOutlet weak var costumeViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var gearViewHeightConstraint: NSLayoutConstraint!
     
     private let userRepository = UserRepository()
     private let disposable = ScopedDisposable(CompositeDisposable())
@@ -63,6 +66,12 @@ class EquipmentOverviewViewController: HRPGUIViewController, UIScrollViewDelegat
             }
             self?.costumeView.switchValue = user.preferences?.useCostume ?? false
         }).start())
+    }
+    
+    override func viewWillLayoutSubviews() {
+        gearViewHeightConstraint.constant = gearView.getTotalHeight(for: view.frame.width)
+        costumeViewHeightConstraint.constant = costumeView.getTotalHeight(for: view.frame.width)
+        super.viewWillLayoutSubviews()
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

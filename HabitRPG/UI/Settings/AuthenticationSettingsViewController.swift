@@ -23,7 +23,7 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            if configRepository.bool(variable: .enableChangeUsername) && user?.flags?.verifiedUsername != true {
+            if user?.flags?.verifiedUsername != true {
                 return 5
             } else {
                 return 4
@@ -44,10 +44,10 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cellName = "Cell"
         var cellTitle = ""
-        var cellTitleColor = UIColor.black
-        var cellDetailText: String? = nil
+        var cellTitleColor = ThemeService.shared.theme.primaryTextColor
+        var cellDetailText: String?
         var confirmOffset = 0
-        if configRepository.bool(variable: .enableChangeUsername) && user?.flags?.verifiedUsername != true {
+        if user?.flags?.verifiedUsername != true {
             confirmOffset = 1
         }
         if indexPath.section == 0 {
@@ -57,7 +57,7 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
             } else if indexPath.item == 1 && confirmOffset > 0 {
                 cellName = "ButtonCell"
                 cellTitle = L10n.confirmUsername
-                cellTitleColor = UIColor.green50()
+                cellTitleColor = ThemeService.shared.theme.successColor
             } else if indexPath.item == 1 + confirmOffset {
                 cellTitle = L10n.email
                 cellDetailText = user?.authentication?.local?.email
@@ -93,6 +93,7 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         textLabel?.textColor = cellTitleColor
         if let text = cellDetailText {
             cell.detailTextLabel?.text = text
+            cell.detailTextLabel?.textColor = ThemeService.shared.theme.secondaryTextColor
         }
         return cell
     }
@@ -100,7 +101,7 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         var confirmOffset = 0
-        if configRepository.bool(variable: .enableChangeUsername) && user?.flags?.verifiedUsername != true {
+        if user?.flags?.verifiedUsername != true {
             confirmOffset = 1
         }
         if indexPath.section == 0 {
@@ -225,25 +226,12 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         loginNameTextField.spellCheckingType = .no
         loginNameTextField.text = user?.username
         stackView.addArrangedSubview(loginNameTextField)
-        let passwordTextField = UITextField()
-        if !configRepository.bool(variable: .enableChangeUsername) {
-            passwordTextField.placeholder = L10n.password
-            passwordTextField.isSecureTextEntry = true
-            passwordTextField.borderStyle = .roundedRect
-            stackView.addArrangedSubview(passwordTextField)
-        }
         alertController.contentView = stackView
         
         alertController.addCancelAction()
         alertController.addAction(title: L10n.change, isMainAction: true) {[weak self] _ in
-            if self?.configRepository.bool(variable: .enableChangeUsername) == true {
-                if let username = loginNameTextField.text {
-                    self?.userRepository.updateUsername(newUsername: username).observeCompleted {}
-                }
-            } else {
-                if let username = loginNameTextField.text, let password = passwordTextField.text {
-                    self?.userRepository.updateUsername(newUsername: username, password: password).observeCompleted {}
-                }
+            if let username = loginNameTextField.text {
+                self?.userRepository.updateUsername(newUsername: username).observeCompleted {}
             }
         }
         alertController.show()

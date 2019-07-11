@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -19,20 +19,20 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kZt-Pf-hDf">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="82"/>
                         <subviews>
                             <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ifb-Uy-aJJ" customClass="CheckboxView" customModule="Habitica" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="48" height="50"/>
+                                <rect key="frame" x="0.0" y="0.0" width="48" height="82"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="48" id="Wv6-cU-7bd"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vIn-t1-fNp">
-                                <rect key="frame" x="343" y="0.0" width="32" height="50"/>
+                                <rect key="frame" x="343" y="0.0" width="32" height="82"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fsF-Bc-klr">
-                                        <rect key="frame" x="0.0" y="4" width="32" height="21"/>
+                                        <rect key="frame" x="0.0" y="19.5" width="32" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="NSr-8c-tKe"/>
                                         </constraints>
@@ -41,7 +41,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yxJ-at-XsQ">
-                                        <rect key="frame" x="10.5" y="25" width="12" height="1"/>
+                                        <rect key="frame" x="10" y="40.5" width="12" height="1"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="12" id="8TY-51-Zdq"/>
@@ -49,7 +49,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KHK-7B-5ok">
-                                        <rect key="frame" x="0.0" y="26" width="32" height="21"/>
+                                        <rect key="frame" x="0.0" y="41.5" width="32" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="q7Z-NK-00t"/>
                                         </constraints>
@@ -72,7 +72,7 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="xTj-AX-Njp">
-                                <rect key="frame" x="60" y="12" width="247" height="26"/>
+                                <rect key="frame" x="60" y="12" width="247" height="58"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="999" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="08f-NY-m4k" userLabel="Title">
                                         <rect key="frame" x="0.0" y="0.0" width="247" height="0.0"/>
@@ -95,7 +95,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="O8c-rS-Lp5" customClass="TaskDetailLineView" customModule="Habitica" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="8" width="247" height="18"/>
+                                        <rect key="frame" x="0.0" y="8" width="247" height="50"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" priority="501" constant="18" id="X4u-5p-rWn"/>
@@ -107,7 +107,7 @@
                                 </constraints>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g9Y-gE-1z4">
-                                <rect key="frame" x="315" y="15" width="20" height="20"/>
+                                <rect key="frame" x="315" y="31" width="20" height="20"/>
                                 <subviews>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="aUc-r5-hyI">
                                         <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
@@ -146,25 +146,25 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jy7-IE-t1M">
-                        <rect key="frame" x="0.0" y="50" width="48" height="90.5"/>
+                        <rect key="frame" x="0.0" y="82" width="48" height="58.5"/>
                         <color key="backgroundColor" red="0.76070064309999996" green="0.76083260770000005" blue="0.76069229839999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="48" id="K56-Nx-jvq"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B3d-7U-gIx">
-                        <rect key="frame" x="343" y="50" width="32" height="90.5"/>
+                        <rect key="frame" x="343" y="82" width="32" height="58.5"/>
                         <color key="backgroundColor" red="0.76070064309999996" green="0.76083260770000005" blue="0.76069229839999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="32" id="bKb-pI-Gta"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6f5-qQ-Ubz">
-                        <rect key="frame" x="48" y="50" width="295" height="90.5"/>
+                        <rect key="frame" x="48" y="82" width="295" height="58.5"/>
                         <color key="backgroundColor" red="0.97636479139328003" green="0.97653168439865112" blue="0.97635418176651001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="4AX-AP-buh">
-                        <rect key="frame" x="48" y="50" width="295" height="90.5"/>
+                        <rect key="frame" x="48" y="82" width="295" height="58.5"/>
                         <color key="backgroundColor" red="0.97636479139328003" green="0.97653168439865112" blue="0.97635418176651001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" priority="500" id="MGG-dr-8Dc"/>
@@ -199,6 +199,7 @@
                 <outlet property="checklistDoneLabel" destination="fsF-Bc-klr" id="Efl-fz-DgW"/>
                 <outlet property="checklistIndicator" destination="vIn-t1-fNp" id="Obd-Mt-oHk"/>
                 <outlet property="checklistIndicatorWidth" destination="xtr-IG-BT0" id="lhu-CQ-W3h"/>
+                <outlet property="checklistItemBackgroundView" destination="6f5-qQ-Ubz" id="xf9-Gf-dBL"/>
                 <outlet property="checklistLeftBorderView" destination="jy7-IE-t1M" id="8vn-Al-7jy"/>
                 <outlet property="checklistRightBorderView" destination="B3d-7U-gIx" id="g8w-QI-uWV"/>
                 <outlet property="checklistSeparator" destination="yxJ-at-XsQ" id="IIF-Q8-Bbm"/>

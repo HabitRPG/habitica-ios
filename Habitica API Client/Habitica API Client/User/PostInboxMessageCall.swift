@@ -8,7 +8,6 @@
 
 import Foundation
 import Habitica_Models
-import FunkyNetwork
 import ReactiveSwift
 
 public class PostInboxMessageCall: ResponseObjectCall<EmptyResponseProtocol, APIEmptyResponse> {
@@ -21,4 +20,3 @@ public class PostInboxMessageCall: ResponseObjectCall<EmptyResponseProtocol, API
         super.init(httpMethod: .POST, endpoint: "members/send-private-message", postData: json, stubHolder: stubHolder)
     }
 }
-

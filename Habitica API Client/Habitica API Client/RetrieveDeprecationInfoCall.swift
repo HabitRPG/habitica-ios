@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import FunkyNetwork
 
 public class RetrieveDeprecationInfoCall: JsonNetworkCall {
     public init() {

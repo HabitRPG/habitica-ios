@@ -29,7 +29,7 @@ class GiftSubscriptionViewController: HRPGBaseViewController {
     
     var products: [SKProduct]?
     var selectedSubscriptionPlan: SKProduct?
-    public var giftRecipientUsername: String? = nil
+    public var giftRecipientUsername: String?
     var giftedUser: MemberProtocol? {
         didSet {
             if let user = giftedUser {
@@ -162,7 +162,8 @@ class GiftSubscriptionViewController: HRPGBaseViewController {
                 cell.setMonthCount(6)
             case PurchaseHandler.noRenewSubscriptionIdentifiers[3]:
                 cell.setMonthCount(12)
-            default: break
+            default:
+                break
             }
             DispatchQueue.main.async {
                 cell.setSelected(product?.productIdentifier == self.selectedSubscriptionPlan?.productIdentifier, animated: true)
@@ -269,4 +270,3 @@ class GiftSubscriptionViewController: HRPGBaseViewController {
         alertController.show()
     }
 }
-

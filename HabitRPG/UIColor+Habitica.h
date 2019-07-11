@@ -10,6 +10,7 @@
 
 @interface UIColor (Habitica)
 
++ (nonnull UIColor *)purple10;
 + (nonnull UIColor *)purple50;
 + (nonnull UIColor *)purple100;
 + (nonnull UIColor *)purple200;
@@ -63,6 +64,9 @@
 + (nonnull UIColor *)gray500;
 + (nonnull UIColor *)gray600;
 + (nonnull UIColor *)gray700;
+
++ (nonnull UIColor *)blackPurple50;
++ (nonnull UIColor *)blackPurple100;
 
 + (nonnull UIColor *)contributorColorFor:(NSInteger)level;
 

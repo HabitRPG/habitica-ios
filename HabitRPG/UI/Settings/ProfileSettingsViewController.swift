@@ -35,6 +35,7 @@ class ProfileSettingsViewController: BaseSettingsViewController {
             cell.textLabel?.text = L10n.aboutText
             cell.detailTextLabel?.text = user?.profile?.blurb
         }
+        cell.detailTextLabel?.textColor = ThemeService.shared.theme.secondaryTextColor
         return cell
     }
     
@@ -58,7 +59,7 @@ class ProfileSettingsViewController: BaseSettingsViewController {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction.cancelAction())
         alertController.addAction(UIAlertAction(title: L10n.save, style: .default, handler: { (_) in
-            if let textFields = alertController.textFields, textFields.count > 0 {
+            if let textFields = alertController.textFields, !textFields.isEmpty {
                 let textField = textFields[0]
                 action(textField.text)
             }
@@ -67,7 +68,7 @@ class ProfileSettingsViewController: BaseSettingsViewController {
             textField.text = value
         }
         alertController.setSourceInCenter(view)
-        self.present(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
     
     private func updateValue(path: String, newValue: String?, indexPath: IndexPath) {

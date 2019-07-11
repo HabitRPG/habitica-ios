@@ -19,40 +19,52 @@ class MemberListView: UIView {
     let sublineLabel: UILabel = {
         let view = UILabel()
         view.font = UIFont.systemFont(ofSize: 12)
-        view.textColor = UIColor.gray200()
+        view.textColor = ThemeService.shared.theme.ternaryTextColor
         return view
     }()
     let healthBar: ProgressBar = {
         let view = ProgressBar()
-        view.barColor = UIColor.red100()
+        if ThemeService.shared.theme.isDark {
+            view.barColor = UIColor.red50()
+        } else {
+            view.barColor = UIColor.red100()
+        }
         return view
     }()
     let healthLabel: UILabel = {
         let view = UILabel()
         view.font = UIFont.systemFont(ofSize: 12)
-        view.textColor = UIColor.gray200()
+        view.textColor = ThemeService.shared.theme.ternaryTextColor
         return view
     }()
     let experienceBar: ProgressBar = {
         let view = ProgressBar()
-        view.barColor = UIColor.yellow50()
+        if ThemeService.shared.theme.isDark {
+            view.barColor = UIColor.yellow10()
+        } else {
+            view.barColor = UIColor.yellow50()
+        }
         return view
     }()
     let experienceLabel: UILabel = {
         let view = UILabel()
         view.font = UIFont.systemFont(ofSize: 12)
-        view.textColor = UIColor.gray200()
+        view.textColor = ThemeService.shared.theme.ternaryTextColor
         return view
     }()
     let manaBar: ProgressBar = {
         let view = ProgressBar()
-        view.barColor = UIColor.blue100()
+        if ThemeService.shared.theme.isDark {
+            view.barColor = UIColor.blue50()
+        } else {
+            view.barColor = UIColor.blue100()
+        }
         return view
     }()
     let manaLabel: UILabel = {
         let view = UILabel()
         view.font = UIFont.systemFont(ofSize: 12)
-        view.textColor = UIColor.gray200()
+        view.textColor = ThemeService.shared.theme.ternaryTextColor
         return view
     }()
     let classIconView = UIImageView()
@@ -60,8 +72,8 @@ class MemberListView: UIView {
     let leaderView: UILabel = {
         let view = UILabel()
         view.font = UIFont.systemFont(ofSize: 12)
-        view.textColor = UIColor.gray300()
-        view.backgroundColor = UIColor.gray600()
+        view.textColor = ThemeService.shared.theme.dimmedTextColor
+        view.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
         view.cornerRadius = 10
         view.textAlignment = .center
         view.text = L10n.leader

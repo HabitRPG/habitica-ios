@@ -62,6 +62,13 @@ class CheckboxView: UIView {
     var centerCheckbox = true
     var padding: CGFloat = 12
     var borderedBox = false
+    var dimmOverlayView: UIView = {
+        let view = UIView()
+        view.backgroundColor = ThemeService.shared.theme.taskOverlayTint
+        view.isHidden = true
+        view.isUserInteractionEnabled = false
+        return view
+    }()
     
     var wasTouched: (() -> Void)? {
         didSet {
@@ -88,6 +95,7 @@ class CheckboxView: UIView {
     private func setupView() {
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewTapped)))
         isUserInteractionEnabled = true
+        addSubview(dimmOverlayView)
     }
     
     func configure(task: TaskProtocol) {
@@ -96,14 +104,17 @@ class CheckboxView: UIView {
         if let layer = self.layer as? CheckmarkLayer {
             layer.drawPercentage = checked ? 1 : 0
         }
+        
+        let theme = ThemeService.shared.theme
+        
         if task.type == "daily" {
             boxCornerRadius = 3
             if task.completed {
-                boxFillColor = UIColor.gray400()
-                backgroundColor = UIColor.gray500()
+                boxFillColor = theme.dimmedTextColor
+                backgroundColor = theme.dimmedColor
                 checkColor = UIColor.gray200()
             } else {
-                backgroundColor = UIColor.gray600()
+                backgroundColor = theme.offsetBackgroundColor
                 checkColor = UIColor.gray200()
                 if task.dueToday() {
                     backgroundColor = UIColor.forTaskValueLight(Int(task.value))
@@ -113,14 +124,17 @@ class CheckboxView: UIView {
         } else {
             boxCornerRadius = size/2
             if task.completed {
-                boxFillColor = UIColor.gray400()
-                backgroundColor = UIColor.gray600()
+                boxFillColor = theme.dimmedTextColor
+                backgroundColor = theme.offsetBackgroundColor
                 checkColor = UIColor.gray200()
             } else {
                 backgroundColor = UIColor.forTaskValueLight(Int(task.value))
                 checkColor = UIColor.forTaskValue(Int(task.value))
             }
         }
+        
+        dimmOverlayView.isHidden = !theme.isDark
+        dimmOverlayView.backgroundColor = theme.taskOverlayTint
         
         layer.setNeedsDisplay()
     }
@@ -187,6 +201,7 @@ class CheckboxView: UIView {
     override func layoutSubviews() {
         let leftOffset = padding * 2 + size
         label.frame = CGRect(x: leftOffset, y: 0, width: frame.size.width - leftOffset, height: frame.size.height)
+        dimmOverlayView.frame = frame
     }
     
     override func draw(_ rect: CGRect) {

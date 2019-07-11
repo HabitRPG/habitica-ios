@@ -73,7 +73,7 @@ class CollapsibleStackView: SeparatedStackView {
     }
     
     private func setupView() {
-        if arrangedSubviews.count > 0, let subView = arrangedSubviews[0] as? CollapsibleTitle {
+        if arrangedSubviews.isEmpty == false, let subView = arrangedSubviews[0] as? CollapsibleTitle {
             titleView = subView
         } else {
             let view = CollapsibleTitle()
@@ -105,9 +105,12 @@ class CollapsibleStackView: SeparatedStackView {
         }
         disableAnimations = false
         
-        topBorder = addTopBorderWithColor(color: UIColor.gray600(), width: 1)
-        bottomBorder = addBottomBorderWithColor(color: UIColor.gray600(), width: 1)
-        titleBottomBorder = addBottomBorderWithColor(color: UIColor.gray600(), width: 1)
+        let separatorColor = ThemeService.shared.theme.separatorColor
+        topBorder = addTopBorderWithColor(color: separatorColor, width: 1)
+        bottomBorder = addBottomBorderWithColor(color: separatorColor, width: 1)
+        titleBottomBorder = addBottomBorderWithColor(color: separatorColor, width: 1)
+        
+        backgroundColor = ThemeService.shared.theme.contentBackgroundColor
         
         super.awakeFromNib()
     }

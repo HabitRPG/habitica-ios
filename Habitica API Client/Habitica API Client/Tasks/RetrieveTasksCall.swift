@@ -8,7 +8,6 @@
 
 import Foundation
 import Habitica_Models
-import FunkyNetwork
 import ReactiveSwift
 
 public class RetrieveTasksCall: ResponseArrayCall<TaskProtocol, APITask> {
@@ -19,7 +18,7 @@ public class RetrieveTasksCall: ResponseArrayCall<TaskProtocol, APITask> {
             formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
             var dateString = formatter.string(from: date)
             let regex = try? NSRegularExpression(pattern: "T([0-9]):", options: .caseInsensitive)
-            dateString = regex?.stringByReplacingMatches(in: dateString, options: [], range: NSMakeRange(0, dateString.count), withTemplate: "T0$1:") ?? ""
+            dateString = regex?.stringByReplacingMatches(in: dateString, options: [], range: NSRange(location: 0, length: dateString.count), withTemplate: "T0$1:") ?? ""
             url = "\(url)?type=dailys&dueDate=\(dateString)"
             url = url.replacingOccurrences(of: "+", with: "%2B")
         }

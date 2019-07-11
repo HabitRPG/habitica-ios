@@ -23,7 +23,7 @@ class QuestParticipantView: UIView {
     let usernameLabel: UILabel = {
         let view = UILabel()
         view.font = CustomFontMetrics.scaledSystemFont(ofSize: 14, ofWeight: .medium)
-        view.textColor = UIColor.gray10()
+        view.textColor = ThemeService.shared.theme.primaryTextColor
         return view
     }()
     lazy var invitationLabel: UILabel = {
@@ -92,5 +92,9 @@ class QuestParticipantView: UIView {
     
     override var intrinsicContentSize: CGSize {
         return CGSize(width: frame.size.width, height: 56)
+    }
+    
+    override func sizeThatFits(_ size: CGSize) -> CGSize {
+        return CGSize(width: size.width, height: 56)
     }
 }

@@ -15,6 +15,7 @@ class PetOverviewDataSource: StableOverviewDataSource<PetProtocol> {
         super.init()
         sections.append(ItemSection<StableOverviewItem>(title: L10n.Stable.standardPets))
         sections.append(ItemSection<StableOverviewItem>(title: L10n.Stable.questPets))
+        sections.append(ItemSection<StableOverviewItem>(title: L10n.Stable.wackyPets))
         sections.append(ItemSection<StableOverviewItem>(title: L10n.Stable.specialPets))
         
         disposable.inner.add(stableRepository.getOwnedPets()
@@ -35,7 +36,9 @@ class PetOverviewDataSource: StableOverviewDataSource<PetProtocol> {
                 self?.sections[1].items.removeAll()
                 self?.sections[1].items.append(contentsOf: overviewItems["quest"] ?? [])
                 self?.sections[2].items.removeAll()
-                self?.sections[2].items.append(contentsOf: overviewItems["special"] ?? [])
+                self?.sections[2].items.append(contentsOf: overviewItems["wacky"] ?? [])
+                self?.sections[3].items.removeAll()
+                self?.sections[3].items.append(contentsOf: overviewItems["special"] ?? [])
                 self?.collectionView?.reloadData()
             }).start())
     }

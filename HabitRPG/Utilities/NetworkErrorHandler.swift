@@ -8,9 +8,7 @@
 
 import Foundation
 import ReactiveSwift
-import Result
 import Habitica_API_Client
-import Instabug
 
 public struct DefaultServerUnavailableErrorMessage: ErrorMessage {
     public let message: String = "The server is unavailable! Try again in a bit. If this keeps happening, please let us know!"
@@ -33,21 +31,16 @@ class HabiticaNetworkErrorHandler: NetworkErrorHandler {
     
     public static func handle(error: NSError, messages: [String]) {
         if let errorMessage = errorMessageForCode(code: error.code) {
-            self.notify(message: errorMessage.message, code: error.code)
+            notify(message: errorMessage.message, code: error.code)
         } else if !messages.isEmpty {
-            self.notify(message: messages[0], code: error.code)
+            notify(message: messages[0], code: error.code)
         } else {
-            self.notify(message: error.localizedDescription, code: 0)
-        }
-        
-        IBGLog.logError(error.localizedDescription)
-        for message in messages {
-            IBGLog.logError("Network Error: \(message)")
+            notify(message: error.localizedDescription, code: 0)
         }
     }
     
     static func errorMessageForCode(code: Int) -> ErrorMessage? {
-        if let messages = self.errorMessages {
+        if let messages = errorMessages {
             for errorMessage in messages where code == errorMessage.forCode {
                 return errorMessage
             }
@@ -61,7 +54,11 @@ class HabiticaNetworkErrorHandler: NetworkErrorHandler {
             alertController.addCloseAction()
             alertController.show()
         } else {
-            let toastView = ToastView(title: message, background: .red)
+            var duration: Double?
+            if message.count > 200 {
+                duration = 4.0
+            }
+            let toastView = ToastView(title: message, background: .red, duration: duration)
             ToastManager.show(toast: toastView)
         }
     }

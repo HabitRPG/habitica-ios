@@ -10,7 +10,6 @@ import UIKit
 import PopupDialog
 import Habitica_Models
 import ReactiveSwift
-import Result
 
 class AttributePointsViewController: HRPGUIViewController, Themeable {
     
@@ -84,7 +83,7 @@ class AttributePointsViewController: HRPGUIViewController, Themeable {
     override func viewDidLoad() {
         super.viewDidLoad()
         topHeaderCoordinator?.hideHeader = true
-        self.tutorialIdentifier = "stats"
+        tutorialIdentifier = "stats"
         
         let subscriber = Signal<CalculatedUserStats, NSError>.Observer(value: {[weak self] stats in
             self?.updateStats(stats)
@@ -168,6 +167,19 @@ class AttributePointsViewController: HRPGUIViewController, Themeable {
         distributeEvenlyCheckmark.image = HabiticaIcons.imageOfCheckmark(checkmarkColor: theme.tintColor, percentage: 1.0)
         distributeClassCheckmark.image = HabiticaIcons.imageOfCheckmark(checkmarkColor: theme.tintColor, percentage: 1.0)
         distributeTaskCheckmark.image = HabiticaIcons.imageOfCheckmark(checkmarkColor: theme.tintColor, percentage: 1.0)
+        autoAllocateLabel.textColor = theme.primaryTextColor
+        distributionBackground.backgroundColor = theme.contentBackgroundColorDimmed
+        distributeEvenlyLabel.textColor = theme.primaryTextColor
+        distributeTasksLabel.textColor = theme.primaryTextColor
+        distributeClassLabel.textColor = theme.primaryTextColor
+        view.backgroundColor = theme.contentBackgroundColor
+        statGuideTitleLabel.textColor = theme.primaryTextColor
+        characterBuildTitleLabel.textColor = theme.primaryTextColor
+        characterBuildTextLabel.textColor = theme.secondaryTextColor
+        strengthTextLabel.textColor = theme.secondaryTextColor
+        intelligenceTextLabel.textColor = theme.secondaryTextColor
+        constitutionTextLabel.textColor = theme.secondaryTextColor
+        perceptionTextLabel.textColor = theme.secondaryTextColor
     }
     
     private func allocate(_ attribute: String) {
@@ -227,7 +239,7 @@ class AttributePointsViewController: HRPGUIViewController, Themeable {
         perceptionStatsView.equipmentValue = stats.gearWithBonusPerception
     }
     
-    private func fetchGearStats(user: UserProtocol) -> SignalProducer<(UserProtocol, [GearProtocol]), NoError> {
+    private func fetchGearStats(user: UserProtocol) -> SignalProducer<(UserProtocol, [GearProtocol]), Never> {
         var keys = [String]()
         if let outfit = user.items?.gear?.equipped {
             keys.append(outfit.armor ?? "")
@@ -242,11 +254,11 @@ class AttributePointsViewController: HRPGUIViewController, Themeable {
         
         let gearProducer = inventoryRepository.getGear(predicate: NSPredicate(format: "key in %@", keys)).map({ gear in
             return gear.value
-        }).flatMapError({ (_) -> SignalProducer<[GearProtocol], NoError> in
+        }).flatMapError({ (_) -> SignalProducer<[GearProtocol], Never> in
             return SignalProducer.empty
         })
         
-        return gearProducer.withLatest(from: SignalProducer<UserProtocol, NoError>(value: user)).map({ (gear, user) in
+        return gearProducer.withLatest(from: SignalProducer<UserProtocol, Never>(value: user)).map({ (gear, user) in
             return (user, gear)
         })
     }
@@ -327,6 +339,6 @@ class AttributePointsViewController: HRPGUIViewController, Themeable {
         let popup = PopupDialog(viewController: viewController, tapGestureDismissal: false) {
         }
     
-        self.present(popup, animated: true, completion: nil)
+        present(popup, animated: true, completion: nil)
     }
 }

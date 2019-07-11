@@ -1,33 +1,8 @@
 Thanks for everyone helping with testing!
 
-Get ready for version 2.0 of the Habitica iOS app!
+We are currently investigating an issue that prevents users from creating habits. This build contains some logging that should help us figure this out. If you are affected by this bug, please contact us using the in-app reporting option from the about screen. Thanks for your help!
 
-The apps internals have been completely reworked and rewritten, to allow for faster and easier development in the future and also fixing a lot of long standing issues.
+The experimental dark themes for the app should now be fully working. If you find a spot that has unreadable text or is still white, please let us know!
 
-New in this version:
-- Sound effects!
-- redesigned task form
-- redesigned Equipment page
-- redesigned Avatar Customization page
-- redesigned guild and party page
-- redesigned skills page
-- redesigned stable
-- redesigned class selection screen
-- better display for when edits to tasks are still being synced
-- Guild invitations are displayed in the guild list and users can respond
-- Display if user is buffed
-- Themes! You can now choose between 8 different themes for the app (Note that this feature might not be included in the final 2.0, since we are still experimenting with this)
-- Delete account from app
+This build brings new markdown handling, that should provide a lot smoother scrolling in tasks and chat. There are still some issues (p.e. images are not correctly handled), that are being worked on.
 
-Fixes:
-- The duplicate items bug is finally gone for good!
-- fixed due date not being removable from todo
-- Fixed bug where a users party wasn't displayed sometimes
-- Fixed shiny seed transformation item not working on mages
-- Fixed urls in chat not being clickable
-- Fixed backgrounds naming and sorting
-- Fixed wolf mounts not being positioned correctly
-
-Known issues in this build:
-
-We're also trying out a new feedback/bug reporting tool called Instabug. If you want to report anything you can shake your device and then the Instabug popup will appear. For those bug reports, a screenshot is also automatically attached (you can edit/remove this if wanted).

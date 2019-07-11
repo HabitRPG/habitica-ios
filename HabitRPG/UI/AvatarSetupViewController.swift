@@ -185,7 +185,7 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController {
     }
     
     func chooseRandomKey(_ items: [SetupCustomization], weighFirstOption: Bool) -> String {
-        if items.count == 0 {
+        if items.isEmpty {
             return ""
         }
         if weighFirstOption {
@@ -201,7 +201,7 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController {
             view.removeFromSuperview()
         }
         
-        if subcategories.count == 0 {
+        if subcategories.isEmpty {
             return
         }
         
@@ -339,7 +339,7 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController {
         let newCustomization = content[activeIndex]
         if newCustomization.path == "glasses" {
             var key: String?
-            if newCustomization.key.count == 0 {
+            if newCustomization.key.isEmpty {
                 key = user?.items?.gear?.equipped?.eyewear
             } else {
                 key = newCustomization.key
@@ -375,8 +375,8 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController {
         if let title = button.title(for: .normal), let font = button.titleLabel?.font {
             let width = title.widthWithConstrainedHeight(CGFloat.greatestFiniteMagnitude, font: font)+30
             let middle = button.frame.origin.x+16+button.frame.size.width/2
-            self.subcategoryIndicatorPosition.constant = middle - width/2
-            self.subcategoryIndicatorWidth.constant = width
+            subcategoryIndicatorPosition.constant = middle - width/2
+            subcategoryIndicatorWidth.constant = width
         }
         UIView.animate(withDuration: 0.2) {[weak self] in
             self?.view.layoutIfNeeded()

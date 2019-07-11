@@ -10,7 +10,6 @@ import Foundation
 import Habitica_Models
 import RealmSwift
 import ReactiveSwift
-import Result
 
 public class ContentLocalRepository: BaseLocalRepository {
     
@@ -52,7 +51,7 @@ public class ContentLocalRepository: BaseLocalRepository {
         
         saveMysteryItem()
         
-        save(objects: newObjects)
+        save(objects: newObjects, update: .modified)
     }
     
     public func saveMysteryItem() {
@@ -62,8 +61,8 @@ public class ContentLocalRepository: BaseLocalRepository {
         mysteryItem.notes = "Each month, subscribers will receive a mystery item. This is usually released about one week before the end of the month."
         mysteryItem.isSubscriberItem = true
         mysteryItem.itemType = "special"
-        try? getRealm()?.write {
-            getRealm()?.add(mysteryItem, update: true)
+        updateCall { realm in
+            realm.add(mysteryItem, update: .modified)
         }
     }
     
@@ -82,6 +81,7 @@ public class ContentLocalRepository: BaseLocalRepository {
         } else {
             producer = RealmFAQEntry.findAll()
         }
+        // swiftlint:disable:next force_unwrapping
         return producer!.reactive().map({ (value, changeset) -> ReactiveResults<[FAQEntryProtocol]> in
             return (value.map({ (entry) -> FAQEntryProtocol in return entry }), changeset)
         })

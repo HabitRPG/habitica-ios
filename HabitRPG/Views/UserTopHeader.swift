@@ -12,7 +12,7 @@ import ReactiveSwift
 import Habitica_Database
 import PinLayout
 
-class UserTopHeader: UIView {
+class UserTopHeader: UIView, Themeable {
     
     @IBOutlet weak var avatarView: AvatarView!
     
@@ -23,6 +23,7 @@ class UserTopHeader: UIView {
     @IBOutlet weak var levelLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var buffIconView: UIImageView!
+    @IBOutlet weak var bottomView: UIView!
     
     @IBOutlet weak var classImageView: UIImageView!
     @IBOutlet weak var classImageViewWidthConstraint: NSLayoutConstraint!
@@ -37,15 +38,12 @@ class UserTopHeader: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
     
-        healthLabel.color = UIColor.red100()
         healthLabel.icon = HabiticaIcons.imageOfHeartLightBg
         healthLabel.type = L10n.health
         
-        experienceLabel.color = UIColor.yellow100()
         experienceLabel.icon = HabiticaIcons.imageOfExperience
         experienceLabel.type = L10n.experience
         
-        magicLabel.color = UIColor.blue100()
         magicLabel.icon = HabiticaIcons.imageOfMagic
         magicLabel.type = L10n.mana
         
@@ -73,6 +71,48 @@ class UserTopHeader: UIView {
         disposable.inner.add(repository.getUser().on(value: {[weak self] user in
             self?.set(user: user)
         }).start())
+        
+        ThemeService.shared.addThemeable(themable: self)
+    }
+    
+    func applyTheme(theme: Theme) {
+        backgroundColor = theme.contentBackgroundColor
+        theme.applyBackgroundColor(views: [
+            bottomView,
+            classImageView,
+            usernameLabel,
+            levelLabel,
+            hourglassView,
+            gemView,
+            goldView
+            ], color: theme.contentBackgroundColorDimmed)
+        healthLabel.textColor = theme.primaryTextColor
+        healthLabel.backgroundColor = theme.contentBackgroundColor
+        healthLabel.progressBar.barBackgroundColor = theme.contentBackgroundColorDimmed
+        experienceLabel.textColor = theme.primaryTextColor
+        experienceLabel.backgroundColor = theme.contentBackgroundColor
+        experienceLabel.progressBar.barBackgroundColor = theme.contentBackgroundColorDimmed
+        magicLabel.textColor = theme.primaryTextColor
+        magicLabel.backgroundColor = theme.contentBackgroundColor
+        magicLabel.progressBar.barBackgroundColor = theme.contentBackgroundColorDimmed
+        
+        if theme.isDark {
+            healthLabel.color = UIColor.red50().withAlphaComponent(0.75)
+            experienceLabel.color = UIColor.yellow50().withAlphaComponent(0.75)
+            magicLabel.color = UIColor.blue50().withAlphaComponent(0.75)
+            healthLabel.iconView.alpha = 0.8
+            experienceLabel.iconView.alpha = 0.8
+            magicLabel.iconView.alpha = 0.8
+            classImageView.alpha = 0.8
+        } else {
+            healthLabel.color = UIColor.red100()
+            experienceLabel.color = UIColor.yellow100()
+            magicLabel.color = UIColor.blue100()
+            healthLabel.iconView.alpha = 1.0
+            experienceLabel.iconView.alpha = 1.0
+            magicLabel.iconView.alpha = 1.0
+            classImageView.alpha = 1.0
+        }
     }
     
     private func set(user: UserProtocol) {
@@ -143,8 +183,8 @@ class UserTopHeader: UIView {
             usernameLabel.textColor = contributor.color
             levelLabel.textColor = contributor.color
         } else {
-            usernameLabel.textColor = UIColor.gray10()
-            levelLabel.textColor = UIColor.gray10()
+            usernameLabel.textColor = ThemeService.shared.theme.primaryTextColor
+            levelLabel.textColor = ThemeService.shared.theme.primaryTextColor
         }
         gemView.amount = user.gemCount
         

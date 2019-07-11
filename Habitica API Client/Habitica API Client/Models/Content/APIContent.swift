@@ -27,32 +27,32 @@ private struct APIHairCustomizationWrapper: Decodable {
     
     func asList() -> [CustomizationProtocol] {
         var customizations = [CustomizationProtocol]()
-        beard.forEach { (key, value) in
+        beard.forEach { (_, value) in
             value.type = "hair"
             value.group = "beard"
             customizations.append(value)
         }
-        bangs.forEach { (key, value) in
+        bangs.forEach { (_, value) in
             value.type = "hair"
             value.group = "bangs"
             customizations.append(value)
         }
-        mustache.forEach { (key, value) in
+        mustache.forEach { (_, value) in
             value.type = "hair"
             value.group = "mustache"
             customizations.append(value)
         }
-        base.forEach { (key, value) in
+        base.forEach { (_, value) in
             value.type = "hair"
             value.group = "base"
             customizations.append(value)
         }
-        color.forEach { (key, value) in
+        color.forEach { (_, value) in
             value.type = "hair"
             value.group = "color"
             customizations.append(value)
         }
-        flower.forEach { (key, value) in
+        flower.forEach { (_, value) in
             value.type = "hair"
             value.group = "flower"
             customizations.append(value)
@@ -70,19 +70,19 @@ private struct APICustomizationsWrapper: Decodable {
     
     func asList() -> [CustomizationProtocol] {
         var customizations = hair?.asList() ?? []
-        shirt.forEach { (key, value) in
+        shirt.forEach { (_, value) in
             value.type = "shirt"
             customizations.append(value)
         }
-        chair.forEach { (key, value) in
+        chair.forEach { (_, value) in
             value.type = "chair"
             customizations.append(value)
         }
-        background.forEach { (key, value) in
+        background.forEach { (_, value) in
             value.type = "background"
             customizations.append(value)
         }
-        skin.forEach { (key, value) in
+        skin.forEach { (_, value) in
             value.type = "skin"
             customizations.append(value)
         }
@@ -119,29 +119,29 @@ public class APIContent: ContentProtocol, Decodable {
     
     public required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        food = try? values.decode([String: APIFood].self, forKey: .food).map({ (key, value) in
+        food = try? values.decode([String: APIFood].self, forKey: .food).map({ (_, value) in
             return value
         })
-        eggs = try? values.decode([String: APIEgg].self, forKey: .eggs).map({ (key, value) in
+        eggs = try? values.decode([String: APIEgg].self, forKey: .eggs).map({ (_, value) in
             return value
         })
-        hatchingPotions = try? values.decode([String: APIHatchingPotion].self, forKey: .hatchingPotions).map({ (key, value) in
+        hatchingPotions = try? values.decode([String: APIHatchingPotion].self, forKey: .hatchingPotions).map({ (_, value) in
             return value
         })
-        special = try? values.decode([String: APISpecialItem].self, forKey: .special).map({ (key, value) in
+        special = try? values.decode([String: APISpecialItem].self, forKey: .special).map({ (_, value) in
             return value
         })
-        let gearWrapper = try! values.decode(APIGearWrapper.self, forKey: .gear)
-        gear = gearWrapper.flat?.map({ (key, value) in
+        let gearWrapper = try? values.decode(APIGearWrapper.self, forKey: .gear)
+        gear = gearWrapper?.flat?.map({ (_, value) in
             return value
         })
-        quests = try! values.decode([String: APIQuest].self, forKey: .quests).map({ (key, value) in
+        quests = try? values.decode([String: APIQuest].self, forKey: .quests).map({ (_, value) in
             return value
         })
-        faq = try! values.decode(APIFAQWrapper.self, forKey: .faq).questions?.enumerated().map({ (index, entry) in
+        faq = try? values.decode(APIFAQWrapper.self, forKey: .faq).questions?.enumerated().map({ (index, entry) in
             entry.index = index
             return entry
-        })
+        }) ?? []
         let parsedSkills = (try? values.decode([String: [String: APISkill]].self, forKey: .skills)) ?? [:]
         skills = []
         for skillSection in parsedSkills {
@@ -150,10 +150,10 @@ public class APIContent: ContentProtocol, Decodable {
                 skills?.append(skill.value)
             }
         }
-        self.pets = try? values.decode([String: APIPet].self, forKey: .pets).map({ (key, value) in
+        self.pets = try? values.decode([String: APIPet].self, forKey: .pets).map({ (_, value) in
             return value
         })
-        self.mounts = try? values.decode([String: APIMount].self, forKey: .mounts).map({ (key, value) in
+        self.mounts = try? values.decode([String: APIMount].self, forKey: .mounts).map({ (_, value) in
             return value
         })
         let customizationsWrapper = try? values.decode(APICustomizationsWrapper.self, forKey: .customizations)

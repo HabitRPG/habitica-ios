@@ -9,16 +9,13 @@
 import UIKit
 
 class ToDoTableViewController: TaskTableViewController {
-    var emptyDataSource = SingleItemTableViewDataSource<EmptyTableViewCell>(cellIdentifier: "emptyCell", styleFunction: EmptyTableViewCell.todoStyle)
     
     override func viewDidLoad() {
         readableName = L10n.Tasks.todo
         typeName = "todo"
         dataSource = TodoTableViewDataSource(predicate: getPredicate())
-        
         super.viewDidLoad()
-        
-        tableView.register(UINib(nibName: "EmptyTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "emptyCell")
+        dataSource?.emptyDataSource = SingleItemTableViewDataSource<EmptyTableViewCell>(cellIdentifier: "emptyCell", styleFunction: EmptyTableViewCell.todoStyle)
         
         self.tutorialIdentifier = "todos"
         configureTitle(L10n.Tasks.todos)
@@ -40,12 +37,19 @@ class ToDoTableViewController: TaskTableViewController {
         dataSource?.clearCompletedTodos()
     }
     
-    override func dataSourceIsEmpty() {
-        tableView.dataSource = emptyDataSource
-        tableView.reloadData()
-        tableView.backgroundColor = UIColor.gray700()
-        tableView.separatorStyle = .none
-        tableView.allowsSelection = false
+    override func refresh() {
+        dataSource?.retrieveData(completed: { [weak self] in
+            self?.refreshControl?.endRefreshing()
+            if self?.filterType == 2 {
+                self?.dataSource?.fetchCompletedTodos()
+            }
+        })
     }
-
+    
+    override func didChangeFilter() {
+        super.didChangeFilter()
+        if filterType == 2 {
+            dataSource?.fetchCompletedTodos()
+        }
+    }
 }

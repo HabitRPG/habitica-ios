@@ -8,11 +8,10 @@
 
 import Foundation
 import Habitica_Models
-import FunkyNetwork
 import ReactiveSwift
 
 public class RetrieveShopInventoryCall: ResponseObjectCall<ShopProtocol, APIShop> {
-    public init(identifier: String, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "user.json")) {
+    public init(identifier: String, language: String? = nil, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "user.json")) {
         var shopIdentifier = identifier
         switch identifier {
         case Constants.QuestShopKey:
@@ -24,6 +23,7 @@ public class RetrieveShopInventoryCall: ResponseObjectCall<ShopProtocol, APIShop
         default:
             shopIdentifier = identifier
         }
-        super.init(httpMethod: .GET, endpoint: "shops/\(shopIdentifier)", postData: nil, stubHolder: stubHolder)
+        let url = language != nil ? "shops/\(shopIdentifier)?language=\(language ?? "")" : "shops/\(shopIdentifier)"
+        super.init(httpMethod: .GET, endpoint: url, postData: nil, stubHolder: stubHolder)
     }
 }

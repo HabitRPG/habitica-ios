@@ -12,8 +12,10 @@ import ReactiveSwift
 
 class GuildDetailViewController: GroupDetailViewController {
     
+    @IBOutlet weak var guildMembersWrapper: UIView!
     @IBOutlet weak var guildMembersLabel: UILabel!
     @IBOutlet weak var guildMembersTitleLabel: UILabel!
+    @IBOutlet weak var guildGemWrapper: UIView!
     @IBOutlet weak var guildGemCountLabel: UILabel!
     @IBOutlet weak var guildGemTitleLabel: UILabel!
     @IBOutlet weak var guildMembersCrestIcon: UIImageView!
@@ -26,6 +28,7 @@ class GuildDetailViewController: GroupDetailViewController {
     @IBOutlet weak var guildLeaderTitleLabel: UILabel!
     @IBOutlet weak var guildChallengesButton: UIButton!
     @IBOutlet weak var guildDescriptionTitleLabel: CollapsibleTitle!
+    @IBOutlet weak var buttonsBackgorundView: UIView!
     
     let numberFormatter = NumberFormatter()
 
@@ -62,6 +65,19 @@ class GuildDetailViewController: GroupDetailViewController {
         guildLeaderWrapper.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openGuildLeaderProfile)))
     }
     
+    override func applyTheme(theme: Theme) {
+        super.applyTheme(theme: theme)
+        guildMembersWrapper.backgroundColor = theme.contentBackgroundColor
+        guildMembersLabel.textColor = theme.primaryTextColor
+        guildMembersTitleLabel.textColor = theme.primaryTextColor
+        guildGemWrapper.backgroundColor = theme.contentBackgroundColor
+        guildGemCountLabel.textColor = theme.primaryTextColor
+        guildGemTitleLabel.textColor = theme.primaryTextColor
+        buttonsBackgorundView.backgroundColor = theme.contentBackgroundColor
+        guildLeaderTitleLabel.textColor = theme.secondaryTextColor
+        guildChallengesButton.backgroundColor = theme.contentBackgroundColor
+    }
+    
     override func populateText() {
         guildMembersTitleLabel.text = L10n.Guilds.guildMembers
         guildGemTitleLabel.text = L10n.Guilds.guildBank
@@ -84,14 +100,14 @@ class GuildDetailViewController: GroupDetailViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == StoryboardSegue.Social.challengesSegue.rawValue, let groupID = self.groupProperty.value?.id {
+        if segue.identifier == StoryboardSegue.Social.challengesSegue.rawValue, let groupID = groupProperty.value?.id {
             let challengesViewController = segue.destination as? ChallengeTableViewController
             challengesViewController?.dataSource.shownGuilds = [groupID]
             challengesViewController?.showOnlyUserChallenges = false
-        } else if segue.identifier == StoryboardSegue.Social.userProfileSegue.rawValue, let leaderID = self.guildLeaderID {
+        } else if segue.identifier == StoryboardSegue.Social.userProfileSegue.rawValue, let leaderID = guildLeaderID {
             let profileViewController = segue.destination as? UserProfileViewController
             profileViewController?.userID = leaderID
-        } else if segue.identifier == StoryboardSegue.Social.sendMessageSegue.rawValue, let leaderID = self.guildLeaderID {
+        } else if segue.identifier == StoryboardSegue.Social.sendMessageSegue.rawValue, let leaderID = guildLeaderID {
             let navigationController = segue.destination as? UINavigationController
             let messageViewController = navigationController?.topViewController as? HRPGInboxChatViewController
             messageViewController?.isPresentedModally = true

@@ -24,6 +24,8 @@ class HabiticaAlertController: UIViewController, Themeable {
     @IBOutlet var centerConstraint: NSLayoutConstraint!
     @IBOutlet weak var scrollviewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var buttonBackgroundView: UIView!
+    @IBOutlet weak var alertBackgroundView: UIView!
+    @IBOutlet weak var buttonContainerView: UIView!
     
     private var buttonHandlers = [Int: ((UIButton) -> Swift.Void)]()
     private var buttons = [UIButton]()
@@ -41,7 +43,7 @@ class HabiticaAlertController: UIViewController, Themeable {
         }
     }
     
-    var titleBackgroundColor: UIColor = .white {
+    var titleBackgroundColor: UIColor = ThemeService.shared.theme.contentBackgroundColor {
         didSet {
             configureTitleView()
         }
@@ -53,7 +55,7 @@ class HabiticaAlertController: UIViewController, Themeable {
                 return
             }
             attributedMessage = nil
-            titleBackgroundColor = .white
+            titleBackgroundColor = ThemeService.shared.theme.contentBackgroundColor
             configureMessageView()
         }
     }
@@ -64,7 +66,7 @@ class HabiticaAlertController: UIViewController, Themeable {
                 return
             }
             message = nil
-            titleBackgroundColor = .white
+            titleBackgroundColor = ThemeService.shared.theme.contentBackgroundColor
             configureMessageView()
         }
     }
@@ -96,14 +98,14 @@ class HabiticaAlertController: UIViewController, Themeable {
     
     convenience init(title newTitle: String?, message newMessage: String? = nil) {
         self.init()
-        self.title = newTitle
-        self.message = newMessage
+        title = newTitle
+        message = newMessage
     }
     
     convenience init(title newTitle: String?, attributedMessage newMessage: NSAttributedString) {
         self.init()
-        self.title = newTitle
-        self.attributedMessage = newMessage
+        title = newTitle
+        attributedMessage = newMessage
     }
     
     init() {
@@ -121,8 +123,13 @@ class HabiticaAlertController: UIViewController, Themeable {
     }
     
     func applyTheme(theme: Theme) {
-        view.backgroundColor = theme.backgroundTintColor.darker(by: 50)?.withAlphaComponent(0.6)
+        view.backgroundColor = theme.dimmBackgroundColor.withAlphaComponent(0.7)
+        buttonContainerView.backgroundColor = theme.contentBackgroundColor
         buttonBackgroundView.backgroundColor = theme.tintColor.withAlphaComponent(0.05)
+        alertBackgroundView.backgroundColor = theme.contentBackgroundColor
+        closeButton.backgroundColor = theme.contentBackgroundColor
+        
+        titleLabel.textColor = theme.primaryTextColor
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -165,8 +172,8 @@ class HabiticaAlertController: UIViewController, Themeable {
             let keyboardRectangle = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRectangle.height
             self.bottomOffsetConstraint.constant = keyboardHeight + 8
-            if self.centerConstraint.isActive {
-                self.centerConstraint.isActive = false
+            if centerConstraint.isActive {
+                centerConstraint.isActive = false
             }
         }
     }
@@ -174,21 +181,23 @@ class HabiticaAlertController: UIViewController, Themeable {
     @objc
     func keyboardWillHide(notification: NSNotification) {
         self.bottomOffsetConstraint.constant = 16
-        if !self.centerConstraint.isActive {
-            self.centerConstraint.isActive = true
+        if !centerConstraint.isActive {
+            centerConstraint.isActive = true
         }
         
     }
     
     @objc
-    func addAction(title: String, style: UIAlertAction.Style = .default, isMainAction: Bool = false, closeOnTap: Bool = true, handler: ((UIButton) -> Swift.Void)? = nil) {
+    func addAction(title: String, style: UIAlertAction.Style = .default, isMainAction: Bool = false, closeOnTap: Bool = true, identifier: String? = nil, handler: ((UIButton) -> Swift.Void)? = nil) {
         let button = UIButton()
+        if let identifier = identifier {
+            button.accessibilityIdentifier = identifier
+        }
         button.titleLabel?.lineBreakMode = .byWordWrapping
         button.titleLabel?.textAlignment = .center
         button.setTitle(title, for: .normal)
-        button.backgroundColor = UIColor("#F9F7FF")
         if style == .destructive {
-            button.setTitleColor(UIColor.red100(), for: .normal)
+            button.setTitleColor(ThemeService.shared.theme.errorColor, for: .normal)
         } else {
             button.setTitleColor(ThemeService.shared.theme.tintColor, for: .normal)
         }
@@ -240,7 +249,7 @@ class HabiticaAlertController: UIViewController, Themeable {
             return
         }
         let label = UILabel()
-        label.textColor = UIColor.gray100()
+        label.textColor = ThemeService.shared.theme.secondaryTextColor
         label.font = CustomFontMetrics.scaledSystemFont(ofSize: 15)
         if message != nil {
             label.text = message
@@ -269,7 +278,7 @@ class HabiticaAlertController: UIViewController, Themeable {
             if let oldView = containerView.arrangedSubviews.first {
                 oldView.removeFromSuperview()
             }
-            self.containerView.addArrangedSubview(view)
+            containerView.addArrangedSubview(view)
         }
     }
     
@@ -277,6 +286,7 @@ class HabiticaAlertController: UIViewController, Themeable {
         if closeButton != nil {
             closeButton.isHidden = closeAction == nil
             closeButton.setTitle(closeTitle, for: .normal)
+            closeButton.tintColor = ThemeService.shared.theme.tintColor
         }
     }
     
@@ -300,8 +310,8 @@ class HabiticaAlertController: UIViewController, Themeable {
             while let presentedViewController = topController.presentedViewController {
                 topController = presentedViewController
             }
-            self.modalTransitionStyle = .crossDissolve
-            self.modalPresentationStyle = .overCurrentContext
+            modalTransitionStyle = .crossDissolve
+            modalPresentationStyle = .overCurrentContext
             topController.present(self, animated: true) {
             }
         }
@@ -310,16 +320,16 @@ class HabiticaAlertController: UIViewController, Themeable {
     @objc
     func buttonTapped(_ button: UIButton) {
         if shouldCloseOnButtonTap[button.tag] != false {
-        self.dismiss(animated: true, completion: {
-            self.buttonHandlers[button.tag]?(button)
+        dismiss(animated: true, completion: {[weak self] in
+            self?.buttonHandlers[button.tag]?(button)
         })
         } else {
-            self.buttonHandlers[button.tag]?(button)
+            buttonHandlers[button.tag]?(button)
         }
     }
     
     @IBAction func closeTapped(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
         if let action = closeAction {
             action()
         }
@@ -360,21 +370,21 @@ extension HabiticaAlertController {
     
     @objc
     func addCancelAction(handler: ((UIButton) -> Void)? = nil) {
-        self.addAction(title: L10n.cancel, handler: handler)
+        addAction(title: L10n.cancel, identifier: "Cancel", handler: handler)
     }
     
     @objc
     func addCloseAction(handler: ((UIButton) -> Void)? = nil) {
-        self.addAction(title: L10n.close, handler: handler)
+        addAction(title: L10n.close, identifier: "Close", handler: handler)
     }
     
     @objc
     func addShareAction(handler: ((UIButton) -> Void)? = nil) {
-        self.addAction(title: L10n.share, isMainAction: true, closeOnTap: false, handler: handler)
+        addAction(title: L10n.share, isMainAction: true, closeOnTap: false, handler: handler)
     }
     
     @objc
     func addOkAction(handler: ((UIButton) -> Void)? = nil) {
-        self.addAction(title: L10n.ok, handler: handler)
+        addAction(title: L10n.ok, handler: handler)
     }
 }

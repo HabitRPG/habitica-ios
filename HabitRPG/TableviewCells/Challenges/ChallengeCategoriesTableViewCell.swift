@@ -25,7 +25,7 @@ class ChallengeCategoriesTableViewCell: ResizableTableViewCell, ChallengeConfigu
     func configure(with challenge: ChallengeProtocol) {
         categories = challenge.categories.map { $0.name ?? "" }
         if isExpanded {
-            self.contentView.removeConstraint(bottomConstraint)
+            contentView.removeConstraint(bottomConstraint)
             removeOldCategoryViews()
             addCategories()
             contentView.updateLayout()
@@ -51,8 +51,8 @@ class ChallengeCategoriesTableViewCell: ResizableTableViewCell, ChallengeConfigu
     func createCategoryLabel(_ category: String) -> UILabel {
         let label = emptyTagLabel()
         label.text = "  \(category)  "
-        label.textColor = UIColor.gray200()
-        label.backgroundColor = UIColor.gray600()
+        label.textColor = ThemeService.shared.theme.ternaryTextColor
+        label.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
         label.translatesAutoresizingMaskIntoConstraints = false
         label.sizeToFit()
         return label
@@ -68,10 +68,10 @@ class ChallengeCategoriesTableViewCell: ResizableTableViewCell, ChallengeConfigu
     func expand() {
         rotateCaret()
         
-        self.contentView.removeConstraint(bottomConstraint)
+        contentView.removeConstraint(bottomConstraint)
         addCategories()
         
-        self.resizingDelegate?.cellResized()
+        resizingDelegate?.cellResized()
     }
     
     func collapse() {
@@ -79,20 +79,20 @@ class ChallengeCategoriesTableViewCell: ResizableTableViewCell, ChallengeConfigu
         
         removeOldCategoryViews()
         categoryViews = []
-        self.contentView.addConstraint(bottomConstraint)
-        self.contentView.updateLayout()
+        contentView.addConstraint(bottomConstraint)
+        contentView.updateLayout()
         
-        self.resizingDelegate?.cellResized()
+        resizingDelegate?.cellResized()
     }
     
     func rotateCaret() {
         caretButton.isEnabled = false
 
-        UIView.animate(withDuration: 0.25, animations: {
-            let angle = self.isExpanded ? 0 : CGFloat.pi
-            self.caretButton.transform = CGAffineTransform(rotationAngle: angle)
-        }, completion: { _ in
-            self.caretButton.isEnabled = true
+        UIView.animate(withDuration: 0.25, animations: {[weak self] in
+            let angle = self?.isExpanded == true ? 0 : CGFloat.pi
+            self?.caretButton.transform = CGAffineTransform(rotationAngle: angle)
+        }, completion: {[weak self] _ in
+            self?.caretButton.isEnabled = true
         })
     }
     

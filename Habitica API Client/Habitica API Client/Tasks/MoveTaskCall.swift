@@ -8,8 +8,6 @@
 
 import Foundation
 import Habitica_Models
-import FunkyNetwork
-
 
 public class MoveTaskCall: ResponseArrayCall<String, String> {
     public init(task: TaskProtocol, toPosition: Int, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "tasks.json")) {

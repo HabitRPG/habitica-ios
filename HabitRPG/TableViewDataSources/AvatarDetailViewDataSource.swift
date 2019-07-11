@@ -40,35 +40,39 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
         disposable.inner.add(userRepository.getUser().on(value: {[weak self]user in
             self?.preferences = user.preferences
             
-            switch self?.customizationType {
-            case "shirt":
-                self?.equippedKey = user.preferences?.shirt
-            case "skin":
-                self?.equippedKey = user.preferences?.skin
-            case "chair":
-                self?.equippedKey = user.preferences?.chair
-            case "hair":
-                switch self?.customizationGroup {
-                case "bangs":
-                    self?.equippedKey = String(user.preferences?.hair?.bangs ?? 0)
-                case "base":
-                    self?.equippedKey = String(user.preferences?.hair?.base ?? 0)
-                case "mustache":
-                    self?.equippedKey = String(user.preferences?.hair?.mustache ?? 0)
-                case "beard":
-                    self?.equippedKey = String(user.preferences?.hair?.beard ?? 0)
-                case "color":
-                    self?.equippedKey = String(user.preferences?.hair?.color ?? "")
-                case "flower":
-                    self?.equippedKey = String(user.preferences?.hair?.flower ?? 0)
-                default:
-                    return
-                }
+            self?.updateEquippedKey(user: user)
+            self?.collectionView?.reloadData()
+        }).start())
+    }
+    
+    func updateEquippedKey(user: UserProtocol) {
+        switch customizationType {
+        case "shirt":
+            equippedKey = user.preferences?.shirt
+        case "skin":
+            equippedKey = user.preferences?.skin
+        case "chair":
+            equippedKey = user.preferences?.chair
+        case "hair":
+            switch customizationGroup {
+            case "bangs":
+                equippedKey = String(user.preferences?.hair?.bangs ?? 0)
+            case "base":
+                equippedKey = String(user.preferences?.hair?.base ?? 0)
+            case "mustache":
+                equippedKey = String(user.preferences?.hair?.mustache ?? 0)
+            case "beard":
+                equippedKey = String(user.preferences?.hair?.beard ?? 0)
+            case "color":
+                equippedKey = String(user.preferences?.hair?.color ?? "")
+            case "flower":
+                equippedKey = String(user.preferences?.hair?.flower ?? 0)
             default:
                 return
             }
-            self?.collectionView?.reloadData()
-        }).start())
+        default:
+            return
+        }
     }
     
     func owns(customization: CustomizationProtocol) -> Bool {
@@ -103,7 +107,9 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
         }
         
         if customizationType == "background" {
-            sections = sections.sorted { (firstSection, secondSection) -> Bool in
+            sections = sections.filter({ section -> Bool in
+                return section.items.isEmpty == false
+            }).sorted { (firstSection, secondSection) -> Bool in
                 if firstSection.key?.contains("incentive") == true {
                     return true
                 } else if secondSection.key?.contains("incentive") == true {

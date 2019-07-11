@@ -44,6 +44,8 @@
     }
     
     cell.backgroundImageView.contentMode = UIViewContentModeRedraw;
+    
+    cell.titleLabel.textColor = ObjcThemeWrapper.lightTextColor;
 }
 
 - (NSString *)titleForIdentifier:(NSString *)identifier {

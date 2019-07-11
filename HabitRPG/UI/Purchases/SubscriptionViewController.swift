@@ -13,7 +13,7 @@ import Keys
 import ReactiveSwift
 import Habitica_Models
 
-class SubscriptionViewController: HRPGBaseViewController {
+class SubscriptionViewController: BaseTableViewController {
 
     @IBOutlet weak private var restorePurchaseButton: UIButton!
     let identifiers = ["subscription1month", "com.habitrpg.ios.habitica.subscription.3month",
@@ -69,7 +69,7 @@ class SubscriptionViewController: HRPGBaseViewController {
         
         if let termsView = self.tableView.tableFooterView?.viewWithTag(2) as? UITextView {
             let termsAttributedText = NSMutableAttributedString(string: "Once we've confirmed your purchase, the payment will be charged to your iTunes Account! Thank you so much for your support.\n\nPlease note that subscriptions automatically renew unless your auto-renew is turned off at least 24-hours before the end of the current period, which you can do by going to your Account Settings page after you've made your purchase. You can also manage subscriptions from the Account Settings page. If you have an active subscription, your account will be charged for renewal within 24-hours prior to the end of your current subscription period. When your subscription renews, you will be charged the same price that you initially paid. If you have any questions, feel free to ask in the Habitica Help Guild\nBy continuing you accept the Terms of Use and Privacy Policy")
-            termsAttributedText.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.gray50(), range: NSRange(location: 0, length: termsAttributedText.length))
+            termsAttributedText.addAttribute(NSAttributedString.Key.foregroundColor, value: ThemeService.shared.theme.primaryTextColor, range: NSRange(location: 0, length: termsAttributedText.length))
             let termsRange = termsAttributedText.mutableString.range(of: "Terms of Use")
             termsAttributedText.addAttributes([NSAttributedString.Key.link: "https://habitica.com/static/terms"], range: termsRange)
             let privacyRange = termsAttributedText.mutableString.range(of: "Privacy Policy")
@@ -95,10 +95,15 @@ class SubscriptionViewController: HRPGBaseViewController {
         }).start())
     }
     
+    override func applyTheme(theme: Theme) {
+        super.applyTheme(theme: theme)
+        tableView.backgroundColor = theme.contentBackgroundColor
+    }
+    
     override func populateText() {
         subscriptionBenefitsTitleLabel.text = L10n.subscriptionBenefitsTitle
         giftSubscriptionExplanationLabel.text = L10n.subscriptionGiftExplanation
-        giftSubscriptionButton.setTitle(L10n.subscriptionBenefitsTitle, for: .normal)
+        giftSubscriptionButton.setTitle(L10n.subscriptionGiftButton, for: .normal)
         subscriptionSupportLabel.text = L10n.subscriptionSupportDevelopers
     }
 
@@ -165,7 +170,7 @@ class SubscriptionViewController: HRPGBaseViewController {
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        if (isSubscribed && hasTerminationDate) {
+        if isSubscribed && hasTerminationDate {
             return 4
         } else {
             return 3
@@ -183,7 +188,7 @@ class SubscriptionViewController: HRPGBaseViewController {
         } else if isDetailSection(section) {
             return 1
         } else {
-            if (isSubscribed && !hasTerminationDate) || self.products == nil || self.products?.count == 0 {
+            if (isSubscribed && !hasTerminationDate) || self.products == nil || self.products?.isEmpty == true {
                 return 0
             } else {
                 return 1
@@ -236,6 +241,7 @@ class SubscriptionViewController: HRPGBaseViewController {
                 self?.expandedList[indexPath.item] = isExpanded
                 self?.tableView.reloadRows(at: [indexPath], with: .none)
             }
+            cell.titleWrapper.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
             returnedCell = cell
         } else if self.isOptionSection(indexPath.section) {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "OptionCell", for: indexPath) as? SubscriptionOptionView else {
@@ -343,11 +349,11 @@ class SubscriptionViewController: HRPGBaseViewController {
         if let lastReceipt = receipt["latest_receipt"] as? String {
             userRepository.subscribe(sku: identifier, receipt: lastReceipt).observeResult { (result) in
                 switch result {
-                case .success(_):
+                case .success:
                     completion(true)
                     self.isSubscribed = true
                     self.tableView.reloadData()
-                case .failure(_):
+                case .failure:
                     completion(false)
                 }
             }
@@ -391,7 +397,7 @@ class SubscriptionViewController: HRPGBaseViewController {
         alertController.contentView = textField
         alertController.addCancelAction()
         alertController.addAction(title: L10n.continue, style: .default, isMainAction: true, closeOnTap: true, handler: { _ in
-            if let username = textField.text, username.count > 0 {
+            if let username = textField.text, username.isEmpty == false {
                 self.giftRecipientUsername = username
                 self.perform(segue: StoryboardSegue.Main.openGiftGemDialog)
             }

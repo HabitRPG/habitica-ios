@@ -8,7 +8,7 @@
 
 import Foundation
 
-class HabiticaSplitViewController: HRPGUIViewController, UIScrollViewDelegate {
+class HabiticaSplitViewController: BaseUIViewController, UIScrollViewDelegate {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var scrollViewTopConstraint: NSLayoutConstraint!
     @IBOutlet var leftViewWidthConstraint: NSLayoutConstraint!
@@ -33,7 +33,7 @@ class HabiticaSplitViewController: HRPGUIViewController, UIScrollViewDelegate {
         segmentedWrapper.insets = UIEdgeInsets(top: 4, left: 8, bottom: 10, right: 8)
         segmentedWrapper.containedView = segmentedControl
         let borderView = UIView(frame: CGRect(x: 0, y: segmentedWrapper.intrinsicContentSize.height+1, width: self.view.bounds.size.width, height: 1))
-        borderView.backgroundColor = UIColor.gray500()
+        borderView.backgroundColor = ThemeService.shared.theme.separatorColor
         segmentedWrapper.addSubview(borderView)
         topHeaderCoordinator.alternativeHeader = segmentedWrapper
         topHeaderCoordinator.hideHeader = canShowAsSplitView && showAsSplitView

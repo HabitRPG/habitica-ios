@@ -12,7 +12,7 @@ class SeparatedStackView: StackView {
     
     private var itemSeparators = [CALayer]()
     
-    var separatorColor = UIColor.gray600() {
+    var separatorColor = ThemeService.shared.theme.separatorColor {
         didSet {
             itemSeparators.forEach { (layer) in
                 layer.backgroundColor = separatorColor.cgColor
@@ -54,10 +54,16 @@ class SeparatedStackView: StackView {
                 return
             }
             let item = visibleSubviews[itemIndex]
-            if self.axis == .vertical {
-                layer.frame = CGRect(x: separatorInsets.left, y: item.frame.origin.y+item.frame.size.height + (spacing/2), width: frame.size.width - (separatorInsets.left + separatorInsets.right), height: separatorThickness)
+            if axis == .vertical {
+                layer.frame = CGRect(x: separatorInsets.left,
+                                     y: item.frame.origin.y+item.frame.size.height + (spacing/2),
+                                     width: frame.size.width - (separatorInsets.left + separatorInsets.right),
+                                     height: separatorThickness)
             } else {
-                layer.frame = CGRect(x: item.frame.origin.x + item.frame.size.width + (spacing/2), y: separatorInsets.top, width: separatorThickness, height: frame.size.height - (separatorInsets.top + separatorInsets.bottom))
+                layer.frame = CGRect(x: item.frame.origin.x + item.frame.size.width + (spacing/2),
+                                     y: separatorInsets.top,
+                                     width: separatorThickness,
+                                     height: frame.size.height - (separatorInsets.top + separatorInsets.bottom))
             }
         }
     }

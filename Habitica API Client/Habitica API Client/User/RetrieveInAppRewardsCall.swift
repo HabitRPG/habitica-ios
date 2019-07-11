@@ -8,11 +8,11 @@
 
 import Foundation
 import Habitica_Models
-import FunkyNetwork
 import ReactiveSwift
 
 public class RetrieveInAppRewardsCall: ResponseArrayCall<InAppRewardProtocol, APIInAppReward> {
-    public init(stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "user.json")) {
-        super.init(httpMethod: .GET, endpoint: "user/in-app-rewards", stubHolder: stubHolder)
+    public init(language: String? = nil, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "user.json")) {
+        let url = language != nil ? "user/in-app-rewards?language=\(language ?? "")" : "user/in-app-rewards"
+        super.init(httpMethod: .GET, endpoint: url, stubHolder: stubHolder)
     }
 }

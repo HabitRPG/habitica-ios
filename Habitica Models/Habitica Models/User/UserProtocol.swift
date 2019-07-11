@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 public enum HabiticaClass: String {
     case warrior
     case mage = "wizard"

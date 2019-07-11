@@ -1,5 +1,5 @@
 // swiftlint:disable all
-// Generated using SwiftGen, by O.Halligon — https://github.com/SwiftGen/SwiftGen
+// Generated using SwiftGen — https://github.com/SwiftGen/SwiftGen
 
 #if os(OSX)
   import AppKit.NSImage
@@ -31,6 +31,7 @@ internal enum Asset {
   internal static let cloud1 = ImageAsset(name: "Cloud1")
   internal static let cloud2 = ImageAsset(name: "Cloud2")
   internal static let diamondButton = ImageAsset(name: "DiamondButton")
+  internal static let emptyNotificationsIcon = ImageAsset(name: "EmptyNotificationsIcon")
   internal static let gem = ImageAsset(name: "Gem")
   internal static let helloHabitican = ImageAsset(name: "HelloHabitican")
   internal static let helloHabiticanOnboarding = ImageAsset(name: "HelloHabiticanOnboarding")
@@ -45,6 +46,7 @@ internal enum Asset {
   internal static let logo = ImageAsset(name: "Logo")
   internal static let memberCountIcon = ImageAsset(name: "MemberCountIcon")
   internal static let menuMessages = ImageAsset(name: "MenuMessages")
+  internal static let menuNotifications = ImageAsset(name: "MenuNotifications")
   internal static let menuSettings = ImageAsset(name: "MenuSettings")
   internal static let moreInteractionsIcon = ImageAsset(name: "MoreInteractionsIcon")
   internal static let nameplate = ImageAsset(name: "Nameplate")
@@ -151,9 +153,14 @@ internal enum Asset {
   internal static let loginPassword = ImageAsset(name: "login_password")
   internal static let loginUsername = ImageAsset(name: "login_username")
   internal static let logoText = ImageAsset(name: "logo_text")
+  internal static let melior = ImageAsset(name: "melior")
   internal static let messages = ImageAsset(name: "messages")
   internal static let minus = ImageAsset(name: "minus")
   internal static let minusGray = ImageAsset(name: "minus_gray")
+  internal static let notificationsBailey = ImageAsset(name: "notifications_bailey")
+  internal static let notificationsClose = ImageAsset(name: "notifications_close")
+  internal static let notificationsMystery = ImageAsset(name: "notifications_mystery")
+  internal static let notificationsStats = ImageAsset(name: "notifications_stats")
   internal static let participantsDetails = ImageAsset(name: "participants_details")
   internal static let participantsList = ImageAsset(name: "participants_list")
   internal static let pillGryphon = ImageAsset(name: "pillGryphon")

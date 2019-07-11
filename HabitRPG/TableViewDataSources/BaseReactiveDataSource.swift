@@ -10,7 +10,6 @@ import Foundation
 import ReactiveSwift
 import Habitica_Database
 import Habitica_Models
-import Result
 
 @objc public protocol DataSourceEmptyDelegate: class {
     func dataSourceHasItems()
@@ -25,7 +24,7 @@ class ItemSection<MODEL> {
     var items = [MODEL]()
     
     var isVisible: Bool {
-        return !isHidden && (items.count > 0 || showIfEmpty)
+        return !isHidden && (items.isEmpty == false || showIfEmpty)
     }
     
     init(key: String? = nil, title: String? = nil) {
@@ -72,6 +71,11 @@ class BaseReactiveDataSource<MODEL>: NSObject {
 class BaseReactiveTableViewDataSource<MODEL>: BaseReactiveDataSource<MODEL>, UITableViewDataSource {
     @objc weak var emptyDelegate: DataSourceEmptyDelegate?
     @objc var isEmpty: Bool = true
+    var emptyDataSource: UITableViewDataSource? {
+        didSet {
+            checkForEmpty()
+        }
+    }
     
     @objc weak var tableView: UITableView? {
         didSet {
@@ -91,10 +95,6 @@ class BaseReactiveTableViewDataSource<MODEL>: BaseReactiveDataSource<MODEL>, UIT
         if userDrivenDataUpdate {
             return
         }
-        
-        if emptyDelegate == nil {
-            tableView?.reloadData()
-        }
         //reload the whole tableview for now, since using the animations can cause issues
         //see https://github.com/realm/realm-cocoa/issues/4425
         /*if changes.initial == true {
@@ -110,7 +110,7 @@ class BaseReactiveTableViewDataSource<MODEL>: BaseReactiveDataSource<MODEL>, UIT
          tableView?.insertRows(at: changes.inserted.map({ IndexPath(row: $0, section: section) }), with: .top)
          tableView?.deleteRows(at: changes.deleted.map({ IndexPath(row: $0, section: section) }), with: .automatic)
          tableView?.reloadRows(at: changes.updated.map({ IndexPath(row: $0, section: section) }), with: .automatic)
-         if sections[section].items.count == 0 {
+         if sections[section].items.isEmpty {
          //Remove section since it empty sections are hidden
          tableView?.deleteSections([section], with: .automatic)
          }
@@ -121,13 +121,28 @@ class BaseReactiveTableViewDataSource<MODEL>: BaseReactiveDataSource<MODEL>, UIT
     }
     
     func checkForEmpty() {
-        if sections.filter({ $0.items.count > 0 }).count == 0 {
+        if sections.filter({ $0.items.isEmpty == false }).isEmpty {
             isEmpty = true
             emptyDelegate?.dataSourceIsEmpty()
+            if emptyDataSource != nil {
+                tableView?.dataSource = emptyDataSource
+                tableView?.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
+                tableView?.separatorStyle = .none
+                tableView?.allowsSelection = false
+                tableView?.bounces = false
+            }
         } else {
             isEmpty = false
             emptyDelegate?.dataSourceHasItems()
+            if emptyDataSource != nil {
+                tableView?.dataSource = self
+                tableView?.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
+                tableView?.separatorStyle = .singleLine
+                tableView?.allowsSelection = true
+                tableView?.bounces = true
+            }
         }
+        tableView?.reloadData()
     }
     
     @objc(numberOfSectionsInTableView:)
@@ -155,7 +170,7 @@ class BaseReactiveTableViewDataSource<MODEL>: BaseReactiveDataSource<MODEL>, UIT
         return UITableViewCell()
     }
     
-    private func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    internal func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     }
 }
 

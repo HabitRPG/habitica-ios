@@ -14,4 +14,5 @@ public protocol GroupInvitationProtocol {
     var name: String? { get set }
     var inviterID: String? { get set }
     var isPartyInvitation: Bool { get set }
+    var isPublicGuild: Bool { get set }
 }

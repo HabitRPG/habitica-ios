@@ -35,7 +35,7 @@ class APISubscriptionPlan: SubscriptionPlanProtocol, Decodable {
     }
     
     required init(from decoder: Decoder) throws {
-        let values = try! decoder.container(keyedBy: CodingKeys.self)
+        let values = try decoder.container(keyedBy: CodingKeys.self)
         quantity = (try? values.decode(Int.self, forKey: .quantity)) ?? 0
         gemsBought = (try? values.decode(Int.self, forKey: .gemsBought)) ?? 0
         dateTerminated = try? values.decode(Date.self, forKey: .dateTerminated)

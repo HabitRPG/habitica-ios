@@ -9,7 +9,6 @@
 import Foundation
 import Habitica_Models
 import ReactiveSwift
-import Result
 
 class FAQTableViewDataSource: BaseReactiveTableViewDataSource<FAQEntryProtocol>, UISearchBarDelegate {
     
@@ -50,6 +49,8 @@ class FAQTableViewDataSource: BaseReactiveTableViewDataSource<FAQEntryProtocol>,
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let entry = item(at: indexPath)
         cell.textLabel?.text = entry?.question
+        cell.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
+        cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
         return cell
     }
     

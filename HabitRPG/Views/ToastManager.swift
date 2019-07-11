@@ -36,7 +36,7 @@ class ToastManager: NSObject {
 
     var displayQueue: [ToastView] = [ToastView]()
     var showingNotification: Bool {
-        return displayQueue.count > 0
+        return displayQueue.isEmpty == false
     }
     
     private func present(toast: ToastView, completion: (() -> Void)?) {
@@ -67,7 +67,7 @@ class ToastManager: NSObject {
                     }
             })
         } else {
-            self.displayQueue.removeFirst()
+            displayQueue.removeFirst()
         }
     }
     
@@ -86,14 +86,14 @@ class ToastManager: NSObject {
     
     private func display(toast: ToastView) {
         present(toast: toast) {
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+toast.options.displayDuration) {
-                self.dismiss(toast: toast) { () -> Void in
-                    if self.displayQueue.count == 0 {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+toast.options.displayDuration) {[weak self] in
+                self?.dismiss(toast: toast) { () -> Void in
+                    if self?.displayQueue.isEmpty == true {
                         return
                     }
-                    self.displayQueue.removeFirst()
-                    if let toast = self.displayQueue.first {
-                        self.display(toast: toast)
+                    self?.displayQueue.removeFirst()
+                    if let toast = self?.displayQueue.first {
+                        self?.display(toast: toast)
                     }
                 }
             }
@@ -111,7 +111,7 @@ class ToastManager: NSObject {
     
     @objc
     class func show(toast: ToastView) {
-        self.shared.add(toast: toast)
+        shared.add(toast: toast)
     }
     
     class func show(text: String, color: ToastColor, duration: Double? = nil) {

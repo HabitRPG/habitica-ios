@@ -15,7 +15,7 @@ struct HabitControlsValue: Equatable {
     }
     
     var positive = true
-    var negative = true
+    var negative = false
 }
 
 class HabitControlsCell: Cell<HabitControlsValue>, CellType {
@@ -35,18 +35,26 @@ class HabitControlsCell: Cell<HabitControlsValue>, CellType {
         if row.value == nil {
             row.value = HabitControlsValue()
         }
+        
+        contentView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor.withAlphaComponent(0.8)
     }
 
     @objc
     private func plusTapped() {
         row.value?.positive = !(row.value?.positive ?? false)
         row.updateCell()
+        if #available(iOS 10, *) {
+            UISelectionFeedbackGenerator.oneShotSelectionChanged()
+        }
     }
     
     @objc
     private func minusTapped() {
         row.value?.negative = !(row.value?.negative ?? false)
         row.updateCell()
+        if #available(iOS 10, *) {
+            UISelectionFeedbackGenerator.oneShotSelectionChanged()
+        }
     }
 
     public override func update() {

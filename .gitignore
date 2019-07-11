@@ -32,3 +32,5 @@ fastlane/Preview.html
 /Habitica.ipa
 /Habitica.app.dSYM.zip
 /HabiticaTests/FailureDiffs
+/fastlane/Fastfile
+/fastlane/Snapfile

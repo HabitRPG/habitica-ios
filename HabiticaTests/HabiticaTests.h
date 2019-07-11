@@ -12,7 +12,6 @@
 
 @interface HabiticaTests : FBSnapshotTestCase
 
--(void)initializeCoreDataStorage;
 -(void)setUpStubs;
 
 @end

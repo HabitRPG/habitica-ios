@@ -8,7 +8,6 @@
 
 import Foundation
 import Habitica_Models
-import FunkyNetwork
 import ReactiveSwift
 
 public class ForceStartQuestCall: ResponseObjectCall<QuestStateProtocol, APIQuestState> {
@@ -16,4 +15,3 @@ public class ForceStartQuestCall: ResponseObjectCall<QuestStateProtocol, APIQues
         super.init(httpMethod: .POST, endpoint: "groups/\(groupID)/quests/force-start", postData: nil, stubHolder: stubHolder)
     }
 }
-

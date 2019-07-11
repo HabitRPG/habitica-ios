@@ -33,6 +33,8 @@
 		290C3030206CEED20066AF5B /* SkillResponseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C302F206CEED20066AF5B /* SkillResponseProtocol.swift */; };
 		290C3037206D36740066AF5B /* GroupProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C3036206D36740066AF5B /* GroupProtocol.swift */; };
 		290C3039206D3BAD0066AF5B /* ChatMessageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290C3038206D3BAD0066AF5B /* ChatMessageProtocol.swift */; };
+		2912C3C122CB912B00BC485F /* NotificationQuestInviteProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2912C3C022CB912B00BC485F /* NotificationQuestInviteProtocol.swift */; };
+		2912C3C322CB913500BC485F /* NotificationGroupInviteProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2912C3C222CB913500BC485F /* NotificationGroupInviteProtocol.swift */; };
 		29144890208A1B1500F3A6B5 /* HairProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2914488F208A1B1500F3A6B5 /* HairProtocol.swift */; };
 		2914489A208A32B400F3A6B5 /* CustomizationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29144899208A32B400F3A6B5 /* CustomizationProtocol.swift */; };
 		2914489C208A335C00F3A6B5 /* CustomizationSetProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2914489B208A335C00F3A6B5 /* CustomizationSetProtocol.swift */; };
@@ -69,6 +71,12 @@
 		295611032056DBC900D9711A /* QuestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295611022056DBC900D9711A /* QuestProtocol.swift */; };
 		295611052056DC7100D9711A /* QuestBossProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295611042056DC7100D9711A /* QuestBossProtocol.swift */; };
 		2956110B2056E14300D9711A /* QuestCollectProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2956110A2056E14300D9711A /* QuestCollectProtocol.swift */; };
+		295BC6E7226F0FF700DDDF1A /* NotificationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295BC6E6226F0FF700DDDF1A /* NotificationProtocol.swift */; };
+		295BC6E9226F105C00DDDF1A /* HabiticaNotificationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295BC6E8226F105C00DDDF1A /* HabiticaNotificationType.swift */; };
+		295BC6EB226F111B00DDDF1A /* NotificationNewsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295BC6EA226F111B00DDDF1A /* NotificationNewsProtocol.swift */; };
+		295BC6ED226F113400DDDF1A /* NotificationNewChatProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295BC6EC226F113400DDDF1A /* NotificationNewChatProtocol.swift */; };
+		295BC6EF226F117400DDDF1A /* NotificationUnallocatedStatsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295BC6EE226F117400DDDF1A /* NotificationUnallocatedStatsProtocol.swift */; };
+		295BC6FF226F607F00DDDF1A /* NotificationNewMysteryItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295BC6FE226F607F00DDDF1A /* NotificationNewMysteryItemProtocol.swift */; };
 		295D43002097380700948E7E /* TutorialStepProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295D42FF2097380700948E7E /* TutorialStepProtocol.swift */; };
 		295E9DE620B3257700D58D45 /* ShopProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295E9DE520B3257700D58D45 /* ShopProtocol.swift */; };
 		295E9DE820B3263E00D58D45 /* ShopCategoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295E9DE720B3263E00D58D45 /* ShopCategoryProtocol.swift */; };
@@ -147,6 +155,8 @@
 		290C302F206CEED20066AF5B /* SkillResponseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillResponseProtocol.swift; sourceTree = "<group>"; };
 		290C3036206D36740066AF5B /* GroupProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupProtocol.swift; sourceTree = "<group>"; };
 		290C3038206D3BAD0066AF5B /* ChatMessageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageProtocol.swift; sourceTree = "<group>"; };
+		2912C3C022CB912B00BC485F /* NotificationQuestInviteProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationQuestInviteProtocol.swift; sourceTree = "<group>"; };
+		2912C3C222CB913500BC485F /* NotificationGroupInviteProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationGroupInviteProtocol.swift; sourceTree = "<group>"; };
 		2914488F208A1B1500F3A6B5 /* HairProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HairProtocol.swift; sourceTree = "<group>"; };
 		29144899208A32B400F3A6B5 /* CustomizationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationProtocol.swift; sourceTree = "<group>"; };
 		2914489B208A335C00F3A6B5 /* CustomizationSetProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizationSetProtocol.swift; sourceTree = "<group>"; };
@@ -183,6 +193,12 @@
 		295611022056DBC900D9711A /* QuestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestProtocol.swift; sourceTree = "<group>"; };
 		295611042056DC7100D9711A /* QuestBossProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestBossProtocol.swift; sourceTree = "<group>"; };
 		2956110A2056E14300D9711A /* QuestCollectProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestCollectProtocol.swift; sourceTree = "<group>"; };
+		295BC6E6226F0FF700DDDF1A /* NotificationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationProtocol.swift; sourceTree = "<group>"; };
+		295BC6E8226F105C00DDDF1A /* HabiticaNotificationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabiticaNotificationType.swift; sourceTree = "<group>"; };
+		295BC6EA226F111B00DDDF1A /* NotificationNewsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNewsProtocol.swift; sourceTree = "<group>"; };
+		295BC6EC226F113400DDDF1A /* NotificationNewChatProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNewChatProtocol.swift; sourceTree = "<group>"; };
+		295BC6EE226F117400DDDF1A /* NotificationUnallocatedStatsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationUnallocatedStatsProtocol.swift; sourceTree = "<group>"; };
+		295BC6FE226F607F00DDDF1A /* NotificationNewMysteryItemProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNewMysteryItemProtocol.swift; sourceTree = "<group>"; };
 		295D42FF2097380700948E7E /* TutorialStepProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialStepProtocol.swift; sourceTree = "<group>"; };
 		295E9DE520B3257700D58D45 /* ShopProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopProtocol.swift; sourceTree = "<group>"; };
 		295E9DE720B3263E00D58D45 /* ShopCategoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCategoryProtocol.swift; sourceTree = "<group>"; };
@@ -370,6 +386,21 @@
 			path = Content;
 			sourceTree = "<group>";
 		};
+		295BC6E5226F0FE300DDDF1A /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				295BC6E6226F0FF700DDDF1A /* NotificationProtocol.swift */,
+				295BC6EA226F111B00DDDF1A /* NotificationNewsProtocol.swift */,
+				295BC6EC226F113400DDDF1A /* NotificationNewChatProtocol.swift */,
+				295BC6EE226F117400DDDF1A /* NotificationUnallocatedStatsProtocol.swift */,
+				295BC6E8226F105C00DDDF1A /* HabiticaNotificationType.swift */,
+				295BC6FE226F607F00DDDF1A /* NotificationNewMysteryItemProtocol.swift */,
+				2912C3C022CB912B00BC485F /* NotificationQuestInviteProtocol.swift */,
+				2912C3C222CB913500BC485F /* NotificationGroupInviteProtocol.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
 		298FB9C6204D9403004DDACC = {
 			isa = PBXGroup;
 			children = (
@@ -393,6 +424,7 @@
 		298FB9D2204D9403004DDACC /* Habitica Models */ = {
 			isa = PBXGroup;
 			children = (
+				295BC6E5226F0FE300DDDF1A /* Notifications */,
 				290C3035206D366A0066AF5B /* Group */,
 				295610E52056C5B500D9711A /* Content */,
 				29323E0E20504D9900AC6D6F /* User */,
@@ -602,6 +634,7 @@
 			files = (
 				29323E4F2052F68A00AC6D6F /* UserGearProtocol.swift in Sources */,
 				292DEE7A204E36F60086D5F7 /* TagProtocol.swift in Sources */,
+				295BC6EB226F111B00DDDF1A /* NotificationNewsProtocol.swift in Sources */,
 				298CB21120AF0722006DA349 /* QuestDropItemProtocol.swift in Sources */,
 				29DBFEF920CAD7C200DF9CF2 /* SpecialItemProtocol.swift in Sources */,
 				290B625D207B945A007287C4 /* AuthenticationTimestampsProtocol.swift in Sources */,
@@ -613,6 +646,7 @@
 				29990DB620E51C4B001ADD8B /* PushDeviceProtocol.swift in Sources */,
 				290279872058341F006DACB9 /* QuestProgressProtocol.swift in Sources */,
 				29990DB220E3FA82001ADD8B /* Constants.swift in Sources */,
+				295BC6FF226F607F00DDDF1A /* NotificationNewMysteryItemProtocol.swift in Sources */,
 				292DEE86204E48A80086D5F7 /* ReminderProtocol.swift in Sources */,
 				292DEE7C204E372E0086D5F7 /* ChecklistItemProtocol.swift in Sources */,
 				299FB28C20849DF300422522 /* OwnedPetProtocol.swift in Sources */,
@@ -635,10 +669,12 @@
 				2974BD93208E0C7B00EC1A25 /* OwnedCustomizationProtocol.swift in Sources */,
 				292726B020B70429009DD08A /* ChallengeMembershipProtocol.swift in Sources */,
 				290B6281207BAA5A007287C4 /* LoginResponseProtocol.swift in Sources */,
+				2912C3C322CB913500BC485F /* NotificationGroupInviteProtocol.swift in Sources */,
 				2902795C2057E7FB006DACB9 /* FAQEntryProtocol.swift in Sources */,
 				290B625B207B8A09007287C4 /* AuthenticationProtocol.swift in Sources */,
 				298184A020F8AC3E00F06D3D /* BaseModelProtocol.swift in Sources */,
 				298CB20F20AF06DD006DA349 /* QuestDropProtocol.swift in Sources */,
+				295BC6E9226F105C00DDDF1A /* HabiticaNotificationType.swift in Sources */,
 				290B62502073D82A007287C4 /* InboxMessageProtocol.swift in Sources */,
 				290C3037206D36740066AF5B /* GroupProtocol.swift in Sources */,
 				2902798320583383006DACB9 /* WorldStateProtocol.swift in Sources */,
@@ -655,12 +691,14 @@
 				298FB9EB204D940E004DDACC /* TaskProtocol.swift in Sources */,
 				290C3039206D3BAD0066AF5B /* ChatMessageProtocol.swift in Sources */,
 				290B624C2073D73A007287C4 /* PushNotificationsProtocol.swift in Sources */,
+				295BC6EF226F117400DDDF1A /* NotificationUnallocatedStatsProtocol.swift in Sources */,
 				299FB27E208494E200422522 /* MountProtocol.swift in Sources */,
 				29027985205833EA006DACB9 /* QuestStateProtocol.swift in Sources */,
 				29144890208A1B1500F3A6B5 /* HairProtocol.swift in Sources */,
 				29A6B86A20690D470086B2A6 /* WeekRepeatProtocol.swift in Sources */,
 				295611052056DC7100D9711A /* QuestBossProtocol.swift in Sources */,
 				29990DC420E65CA4001ADD8B /* TaskResponseDropProtocol.swift in Sources */,
+				2912C3C122CB912B00BC485F /* NotificationQuestInviteProtocol.swift in Sources */,
 				29323E1020504DA600AC6D6F /* UserProtocol.swift in Sources */,
 				299FB27C208494CA00422522 /* PetProtocol.swift in Sources */,
 				299FB27A2084946700422522 /* AnimalProtocol.swift in Sources */,
@@ -677,6 +715,7 @@
 				295611032056DBC900D9711A /* QuestProtocol.swift in Sources */,
 				290C3030206CEED20066AF5B /* SkillResponseProtocol.swift in Sources */,
 				295E9DE620B3257700D58D45 /* ShopProtocol.swift in Sources */,
+				295BC6E7226F0FF700DDDF1A /* NotificationProtocol.swift in Sources */,
 				292AA71C20FDF6050022CC5F /* PinResponseProtocol.swift in Sources */,
 				29B478C120C531B000B6123F /* ArmoireResponseProtocol.swift in Sources */,
 				29990DC020E65C05001ADD8B /* TaskResponseQuestProtocol.swift in Sources */,
@@ -689,6 +728,7 @@
 				298CB20D20AF0696006DA349 /* QuestBossRageProtocol.swift in Sources */,
 				DC2C4767C68C2D9F295C7804 /* ProfileProtocol.swift in Sources */,
 				2914489A208A32B400F3A6B5 /* CustomizationProtocol.swift in Sources */,
+				295BC6ED226F113400DDDF1A /* NotificationNewChatProtocol.swift in Sources */,
 				2956110B2056E14300D9711A /* QuestCollectProtocol.swift in Sources */,
 				295E9DE820B3263E00D58D45 /* ShopCategoryProtocol.swift in Sources */,
 				29DBFF0B20D15A4A00DF9CF2 /* UserNewMessagesProtocol.swift in Sources */,
@@ -836,7 +876,7 @@
 		298FB9E5204D9404004DDACC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -853,7 +893,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -861,7 +901,7 @@
 		298FB9E6204D9404004DDACC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -877,7 +917,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.habitica.Habitica-Models";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -893,7 +933,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.habitica.Habitica-ModelsTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -909,7 +949,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.habitica.Habitica-ModelsTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

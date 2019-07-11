@@ -18,7 +18,6 @@
 
 - (void)setUp {
     [super setUp];
-    [self initializeCoreDataStorage];
     [self setUpStubs];
 }
 

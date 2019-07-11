@@ -64,6 +64,8 @@
 
     self.tableView.tableHeaderView = self.headerView;
     
+    self.tableView.backgroundColor = ObjcThemeWrapper.contentBackgroundColor;
+    
     [self doneButtonTapped:nil];
 }
 
@@ -177,7 +179,9 @@
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self.dataSource tableView:tableView commit:editingStyle forRowAt:indexPath];
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [self.dataSource deleteTagAt: indexPath];
+    }
 }
 
 @end

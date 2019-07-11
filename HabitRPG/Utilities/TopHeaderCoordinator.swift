@@ -34,7 +34,7 @@ class TopHeaderCoordinator: NSObject {
     @objc var navbarVisibleColor: UIColor? {
         didSet {
             if didAppear {
-                if let navbarVisibleColor = self.navbarVisibleColor ?? topHeaderNavigationController?.defaultNavbarVisibleColor{
+                if let navbarVisibleColor = self.navbarVisibleColor ?? topHeaderNavigationController?.defaultNavbarVisibleColor {
                     topHeaderNavigationController?.navbarVisibleColor = navbarVisibleColor
                 }
             }

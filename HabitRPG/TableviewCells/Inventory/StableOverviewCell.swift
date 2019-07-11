@@ -15,20 +15,27 @@ class StableOverviewCell: UICollectionViewCell {
     @IBOutlet weak var countLabel: UILabel!
     
     func configure(item: StableOverviewItem) {
+        backgroundColor = ThemeService.shared.theme.contentBackgroundColor
         imageView.setImagewith(name: item.imageName)
         textLabel.text = item.text
         countLabel.text = "\(item.numberOwned)/\(item.totalNumber)"
         
-        countLabel.backgroundColor = UIColor.gray600()
-        textLabel.textColor = UIColor.gray100()
+        countLabel.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
+        textLabel.textColor = ThemeService.shared.theme.secondaryTextColor
         if item.numberOwned == 0 {
-            countLabel.textColor = UIColor.gray400()
-            textLabel.textColor = UIColor.gray400()
+            countLabel.textColor = ThemeService.shared.theme.dimmedTextColor
+            textLabel.textColor = ThemeService.shared.theme.dimmedTextColor
         } else if item.numberOwned == item.totalNumber {
-            countLabel.backgroundColor = UIColor.green100()
+            countLabel.backgroundColor = ThemeService.shared.theme.successColor
             countLabel.textColor = .white
         } else {
-            countLabel.textColor = UIColor.gray100()
+            countLabel.textColor = ThemeService.shared.theme.secondaryTextColor
+        }
+        
+        if item.type == "wacky" {
+            textLabel.isHidden = true
+        } else {
+            textLabel.isHidden = false
         }
     }
     

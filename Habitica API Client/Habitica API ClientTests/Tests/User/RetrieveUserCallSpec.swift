@@ -9,8 +9,6 @@
 import Foundation
 import Quick
 import Nimble
-import FunkyNetwork
-import Result
 import ReactiveSwift
 @testable import Habitica_API_Client
 

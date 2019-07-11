@@ -42,6 +42,8 @@
     }
     
     [self refresh];
+    
+    self.collectionView.backgroundColor = ObjcThemeWrapper.contentBackgroundColor;
 }
 
 - (void)populateText {
@@ -176,8 +178,13 @@
     vc.reward = item;
     vc.shopIdentifier = self.shopIdentifier;
     vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    vc.modalPresentationStyle = UIModalPresentationOverFullScreen;
     vc.shopViewController = self;
-    [self.tabBarController presentViewController:vc animated:YES completion:nil];
+    if (self.tabBarController != nil) {
+        [self.tabBarController presentViewController:vc animated:YES completion:nil];
+    } else if (self.navigationController) {
+        [self.navigationController presentViewController:vc animated:YES completion:nil];
+    }
 }
 
 - (void)onEmptyFetchedResults {

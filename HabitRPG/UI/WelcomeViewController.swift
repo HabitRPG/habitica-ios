@@ -10,7 +10,6 @@ import Foundation
 import ReactiveSwift
 import ReactiveCocoa
 import Habitica_Models
-import Result
 import Habitica_Database
 
 class WelcomeViewController: UIViewController, TypingTextViewController, UITextFieldDelegate {
@@ -59,7 +58,7 @@ class WelcomeViewController: UIViewController, TypingTextViewController, UITextF
         
         usernameProperty.producer.throttle(2, on: QueueScheduler.main)
             .skipNil()
-            .flatMap(.latest) {[weak self] text -> SignalProducer<VerifyUsernameResponse?, NoError> in
+            .flatMap(.latest) {[weak self] text -> SignalProducer<VerifyUsernameResponse?, Never> in
                 return self?.userRepository.verifyUsername(text).producer ?? SignalProducer.empty
             }
             .skipNil()
@@ -69,7 +68,7 @@ class WelcomeViewController: UIViewController, TypingTextViewController, UITextF
             }).withLatest(from: displayNameProperty.producer
             .skipNil()
             .map({ (displayName) -> Bool in
-                return displayName.count > 0 && displayName.count <= 30
+                return displayName.isEmpty == false && displayName.count <= 30
             })
             .on(value: {[weak self] isRightLength in
                 self?.displayNameIconView.isHidden = !isRightLength
@@ -85,12 +84,12 @@ class WelcomeViewController: UIViewController, TypingTextViewController, UITextF
                 }
             }).start()
         
-        userRepository.getUser().take(first: 1) .on(value: { user in
-            self.displayNameTextField.text = user.profile?.name
-            self.displayNameProperty.value = user.profile?.name
-            self.usernameTextField.text = user.username
-            self.usernameProperty.value = user.username
-            self.currentUsername = user.username
+        userRepository.getUser().take(first: 1) .on(value: {[weak self] user in
+            self?.displayNameTextField.text = user.profile?.name
+            self?.displayNameProperty.value = user.profile?.name
+            self?.usernameTextField.text = user.username
+            self?.usernameProperty.value = user.username
+            self?.currentUsername = user.username
         }).start()
     }
     

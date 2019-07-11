@@ -17,7 +17,6 @@ class PartyViewController: SplitSocialViewController {
     @IBOutlet weak var noPartyContainerView: UIView!
     @IBOutlet weak var userIDButton: UIButton!
     @IBOutlet weak var groupInvitationListView: GroupInvitationListView!
-    @IBOutlet weak var shareQRCodeButton: UIButton!
     @IBOutlet weak var noPartyHeaderBackground: GradientImageView!
     
     @IBOutlet weak var createPartyTitleLabel: UILabel!
@@ -29,11 +28,12 @@ class PartyViewController: SplitSocialViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        ImageManager.getImage(name: "timeTravelersShop_background_fall") { (image, _) in
-            self.noPartyHeaderBackground.image = image?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: UIImage.ResizingMode.tile)
+        ImageManager.getImage(name: "timeTravelersShop_background_fall") {[weak self] (image, _) in
+            self?.noPartyHeaderBackground.image = image?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: UIImage.ResizingMode.tile)
         }
         let gradient = CAGradientLayer()
-        gradient.colors = [UIColor.white.cgColor, UIColor.init(white: 1, alpha: 0).cgColor, UIColor.white.cgColor]
+        let bgColor = ThemeService.shared.theme.contentBackgroundColor
+        gradient.colors = [bgColor.cgColor, bgColor.withAlphaComponent(0).cgColor, bgColor.cgColor]
         gradient.startPoint = CGPoint(x: 0, y: 0)
         gradient.endPoint = CGPoint(x: 0, y: 1)
         gradient.locations =  [0, 0.4, 1]
@@ -51,9 +51,7 @@ class PartyViewController: SplitSocialViewController {
             .map({ (user) -> String? in
                 return user.party?.id
             })
-            .on(failed: { error in
-                Crashlytics.sharedInstance().recordError(error)
-            }, value: {[weak self] partyID in
+            .on(value: {[weak self] partyID in
                 self?.groupID = partyID
                 
                 if partyID == nil {
@@ -69,7 +67,16 @@ class PartyViewController: SplitSocialViewController {
                     self?.topHeaderCoordinator.showHideHeader(show: true)
                 }
             })
+            .on(failed: { error in
+                Crashlytics.sharedInstance().recordError(error)
+            })
             .start())
+    }
+    
+    override func applyTheme(theme: Theme) {
+        super.applyTheme(theme: theme)
+        createPartyButton.backgroundColor = theme.windowBackgroundColor
+        userIDButton.backgroundColor = theme.windowBackgroundColor
     }
     
     override func populateText() {

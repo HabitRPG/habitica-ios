@@ -12,14 +12,16 @@ import Habitica_Models
 import ReactiveSwift
 import Crashlytics
 
-class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableViewDataSource, Themeable {
 
     @IBOutlet weak var heightConstraint: NSLayoutConstraint!
     @IBOutlet weak var yesterdailiesHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var yesterdailiesTableView: UITableView!
     @IBOutlet weak var checkinCountView: UILabel!
     @IBOutlet weak var nextCheckinCountView: UILabel!
+    @IBOutlet weak var headerWrapperView: UIView!
     
+    @IBOutlet weak var tableViewWrapper: UIView!
     @IBOutlet weak var checkinWrapper: UIView!
     @IBOutlet weak var checkinIcon: UIImageView!
     @IBOutlet weak var checkinIconHeightConstraint: NSLayoutConstraint!
@@ -27,6 +29,7 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var checkinDescription: UILabel!
     @IBOutlet weak var checkinYesterdaysDailiesLabel: UILabel!
     @IBOutlet weak var startDayButton: UIButton!
+    @IBOutlet weak var separatorView: UIView!
     
     let taskRepository = TaskRepository()
     private let userRepository = UserRepository()
@@ -49,12 +52,26 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
         
         checkinYesterdaysDailiesLabel.text = L10n.checkinYesterdaysDalies
         startDayButton.setTitle(L10n.startMyDay, for: .normal)
+        
+        ThemeService.shared.addThemeable(themable: self)
+    }
+    
+    func applyTheme(theme: Theme) {
+        view.backgroundColor = theme.contentBackgroundColor
+        startDayButton.tintColor = theme.tintColor
+        startDayButton.backgroundColor = theme.offsetBackgroundColor
+        headerWrapperView.backgroundColor = theme.offsetBackgroundColor
+        tableViewWrapper.backgroundColor = theme.windowBackgroundColor
+        checkinTitle.textColor = theme.primaryTextColor
+        checkinDescription.textColor = theme.secondaryTextColor
+        checkinCountView.textColor = theme.primaryTextColor
+        separatorView.backgroundColor = theme.separatorColor
     }
 
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        if let window = self.view.window {
-            self.heightConstraint.constant = window.frame.size.height - 200
+        if let window = view.window {
+            heightConstraint.constant = window.frame.size.height - 200
         }
         if #available(iOS 10.0, *) {
             yesterdailiesHeightConstraint.constant = yesterdailiesTableView.contentSize.height
@@ -73,7 +90,7 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? YesterdailyTaskCell
-        if let tasks = self.tasks {
+        if let tasks = tasks {
             cell?.configure(task: tasks[indexPath.item])
             cell?.checkbox.wasTouched = {[weak self] in
                 self?.checkedCell(indexPath)
@@ -90,15 +107,15 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
     }
 
     private func checkedCell(_ indexPath: IndexPath) {
-        if let tasks = self.tasks {
+        if let tasks = tasks {
             tasks[indexPath.item].completed = !tasks[indexPath.item].completed
-            self.yesterdailiesTableView.reloadRows(at: [indexPath], with: .fade)
+            yesterdailiesTableView.reloadRows(at: [indexPath], with: .fade)
         }
     }
     
     private func checkChecklistItem(_ indexPath: IndexPath, item: ChecklistItemProtocol) {
         item.completed = !item.completed
-        self.yesterdailiesTableView.reloadRows(at: [indexPath], with: .fade)
+        yesterdailiesTableView.reloadRows(at: [indexPath], with: .fade)
     }
 
     func updateTitleBanner() {
@@ -114,13 +131,13 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
 
     @IBAction func allDoneTapped(_ sender: Any) {
         handleDismiss()
-        self.dismiss(animated: true) {}
+        dismiss(animated: true) {}
     }
     
     func handleDismiss() {
         UserManager.shared.yesterdailiesDialog = nil
         var completedTasks = [TaskProtocol]()
-        if let tasks = self.tasks {
+        if let tasks = tasks {
             for task in tasks where task.completed {
                 completedTasks.append(task)
             }

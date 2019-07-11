@@ -22,13 +22,16 @@ class YesterdailyTaskCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.selectionStyle = .none
-        self.wrapperView.layer.borderWidth = 1
-        self.wrapperView.layer.borderColor = UIColor.lightGray.cgColor
+        selectionStyle = .none
+        wrapperView.layer.borderWidth = 1
+        
+        let theme = ThemeService.shared.theme
+        wrapperView.layer.borderColor = theme.separatorColor.cgColor
+        wrapperView.backgroundColor = theme.contentBackgroundColor
     }
 
     func configure(task: TaskProtocol) {
-        backgroundColor = UIColor.gray700()
+        backgroundColor = ThemeService.shared.theme.windowBackgroundColor
         checkbox.configure(task: task)
         titleTextView.attributedText = try? Down(markdownString: task.text?.unicodeEmoji ?? "").toHabiticaAttributedString()
 
@@ -40,13 +43,14 @@ class YesterdailyTaskCell: UITableViewCell {
         for checklistItem in task.checklist {
             if let view = UIView.fromNib(nibName: "YesterdailyChecklistItem") {
                 view.isUserInteractionEnabled = true
+                view.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
                 let label = view.viewWithTag(2) as? UILabel
                 label?.attributedText = try? Down(markdownString: checklistItem.text?.unicodeEmoji ?? "").toHabiticaAttributedString()
                 let checkbox = view.viewWithTag(1) as? CheckboxView
                 checkbox?.configure(checklistItem: checklistItem, withTitle: false)
-                checkbox?.backgroundColor = UIColor.gray700()
-                checkbox?.wasTouched = {
-                    if let checked = self.onChecklistItemChecked {
+                checkbox?.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+                checkbox?.wasTouched = {[weak self] in
+                    if let checked = self?.onChecklistItemChecked {
                         checked(checklistItem)
                     }
                 }
@@ -105,7 +109,7 @@ class YesterdailyTaskCell: UITableViewCell {
         if let (_, checklistItem) = checklistItems.first(where: { (view, _) -> Bool in
             return view == recognizer.view
         }) {
-            if let checked = self.onChecklistItemChecked {
+            if let checked = onChecklistItemChecked {
                 checked(checklistItem)
             }
             return

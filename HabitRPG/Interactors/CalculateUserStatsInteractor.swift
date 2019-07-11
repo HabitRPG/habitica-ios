@@ -44,10 +44,10 @@ struct CalculatedUserStats {
     var gearWithBonusPerception: Int = 0
     
     mutating func recalculateTotals() {
-        totalStrength = levelStat + buffStrength + allocatedStrength + gearStrength
-        totalIntelligence = levelStat + buffIntelligence + allocatedIntelligence + gearIntelligence
-        totalConstitution = levelStat + buffConstitution + allocatedConstitution + gearConstitution
-        totalPerception = levelStat + buffPerception + allocatedPerception + gearPerception
+        totalStrength = levelStat + buffStrength + allocatedStrength + gearStrength + gearBonusStrength
+        totalIntelligence = levelStat + buffIntelligence + allocatedIntelligence + gearIntelligence + gearBonusIntelligence
+        totalConstitution = levelStat + buffConstitution + allocatedConstitution + gearConstitution + gearBonusConstitution
+        totalPerception = levelStat + buffPerception + allocatedPerception + gearPerception + gearBonusPerception
     }
 }
 

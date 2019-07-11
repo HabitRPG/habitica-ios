@@ -9,7 +9,7 @@
 import Foundation
 import Habitica_Models
 
-class ItemsViewController: HRPGBaseViewController {
+class ItemsViewController: BaseTableViewController {
     
     private let dataSource = ItemsViewDataSource()
     
@@ -31,7 +31,7 @@ class ItemsViewController: HRPGBaseViewController {
         dataSource.tableView = tableView
         dataSource.itemType = itemType
         
-        if let _ = navigationController as? TopHeaderViewController {
+        if (navigationController as? TopHeaderViewController) != nil {
             navigationItem.rightBarButtonItem = nil
             isPresentedModally = false
         } else {
@@ -117,7 +117,7 @@ class ItemsViewController: HRPGBaseViewController {
         imageAlert.addShareAction { (_) in
             HRPGSharingManager.shareItems([
                     L10n.Inventory.hatchedSharing(egg.text ?? "", potion.text ?? "")
-                ], withPresenting: self, withSourceView: nil)
+                ], withPresenting: imageAlert, withSourceView: nil)
         }
         imageAlert.containerViewSpacing = 12
         imageAlert.addCloseAction()

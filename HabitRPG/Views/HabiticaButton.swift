@@ -8,12 +8,10 @@
 
 import UIKit
 
-
 @IBDesignable
 class HabiticaButton: UIButton {
     
-    @IBInspectable
-    public var buttonColor: UIColor = UIColor.purple200() {
+    @IBInspectable public var buttonColor: UIColor = UIColor.purple200() {
         didSet {
             backgroundColor = buttonColor
         }

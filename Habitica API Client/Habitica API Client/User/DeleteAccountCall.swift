@@ -8,7 +8,6 @@
 
 import Foundation
 import Habitica_Models
-import FunkyNetwork
 import ReactiveSwift
 
 public class DeleteAccountCall: ResponseObjectCall<EmptyResponseProtocol, APIEmptyResponse> {

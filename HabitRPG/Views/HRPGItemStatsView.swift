@@ -41,6 +41,9 @@ class HRPGItemStatsView: UIView {
             addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["view": view]))
             addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["view": view]))
             
+            let theme = ThemeService.shared.theme
+            view.backgroundColor = theme.contentBackgroundColor
+            
             setNeedsUpdateConstraints()
             updateConstraints()
             setNeedsLayout()
@@ -58,8 +61,11 @@ class HRPGItemStatsView: UIView {
     private func configureFields(descriptionLabel: UILabel, valueLabel: UILabel, value: Int) {
         valueLabel.text = "+\(value)"
         if value == 0 {
-            descriptionLabel.textColor = .gray400()
-            valueLabel.textColor = .gray400()
+            descriptionLabel.textColor = ThemeService.shared.theme.dimmedTextColor
+            valueLabel.textColor = ThemeService.shared.theme.dimmedTextColor
+        } else {
+            descriptionLabel.textColor = ThemeService.shared.theme.primaryTextColor
+            valueLabel.textColor = ThemeService.shared.theme.successColor
         }
     }
 }

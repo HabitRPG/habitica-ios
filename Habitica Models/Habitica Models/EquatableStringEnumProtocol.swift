@@ -12,7 +12,6 @@ public protocol EquatableStringEnumProtocol {
     var rawValue: String { get }
 }
 
-
 public func == (lhs: String, rhs: EquatableStringEnumProtocol) -> Bool {
     return lhs == rhs.rawValue
 }

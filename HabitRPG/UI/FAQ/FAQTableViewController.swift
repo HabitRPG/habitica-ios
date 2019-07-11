@@ -9,15 +9,14 @@
 import UIKit
 import Habitica_Models
 import ReactiveSwift
-import Result
 
-class FAQTableViewController: HRPGBaseViewController {
+class FAQTableViewController: BaseTableViewController {
     
     private let searchBar = UISearchBar()
     private let resetTutorialButton = UIButton()
     
     private let dataSource = FAQTableViewDataSource()
-    private var selectedIndexPath: IndexPath?
+    private var selectedIndex: Int?
     
     private let userRepository = UserRepository()
     private let disposable = ScopedDisposable(CompositeDisposable())
@@ -53,14 +52,14 @@ class FAQTableViewController: HRPGBaseViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedIndexPath = indexPath
+        selectedIndex = dataSource.item(at: indexPath)?.index
         perform(segue: StoryboardSegue.Main.faqDetailSegue)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == StoryboardSegue.Main.faqDetailSegue.rawValue, let indexPath = selectedIndexPath {
+        if segue.identifier == StoryboardSegue.Main.faqDetailSegue.rawValue, let index = selectedIndex {
             if let detailViewController = segue.destination as? FAQDetailViewController {
-                detailViewController.index = indexPath.item
+                detailViewController.index = index
             }
         }
     }

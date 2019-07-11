@@ -13,6 +13,6 @@ extension QuickSpec {
     
     func dataFor(fileName: String, fileExtension: String) -> Data? {
         let path = Bundle(for: type(of: self)).path(forResource: fileName, ofType: fileExtension)
-        return try! Data(contentsOf: URL(fileURLWithPath: path!), options: .mappedIfSafe)
+        return try? Data(contentsOf: URL(fileURLWithPath: path ?? ""), options: .mappedIfSafe)
     }
 }
