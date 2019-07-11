@@ -141,6 +141,8 @@ internal enum StoryboardScene {
   internal enum User: StoryboardType {
     internal static let storyboardName = "User"
 
+    internal static let achievementsCollectionViewController = SceneType<Habitica.AchievementsCollectionViewController>(storyboard: User.self, identifier: "AchievementsCollectionViewController")
+
     internal static let attributePointsViewController = SceneType<Habitica.AttributePointsViewController>(storyboard: User.self, identifier: "AttributePointsViewController")
 
     internal static let spellsViewController = SceneType<HRPGSpellViewController>(storyboard: User.self, identifier: "SpellsViewController")

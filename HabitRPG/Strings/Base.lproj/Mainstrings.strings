@@ -49,6 +49,7 @@
 "titles.spells" = "Spells";
 "titles.messages" = "Messages";
 "titles.notifications" = "Notifications";
+"titles.achievements" = "Achievements";
 "stats.no_points_to_allocate" = "0 Points to Allocate";
 "stats.one_point_to_allocate" = "1 Point to Allocate";
 "stats.points_to_allocate" = "%d Point to Allocate";

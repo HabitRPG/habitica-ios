@@ -81,6 +81,8 @@ target 'Habitica' do
   pod 'OHHTTPStubs/Swift'
   pod 'Prelude'
 
+  pod 'Magnetic'
+
   target 'HabiticaTests' do
     inherit! :search_paths
     test_pods

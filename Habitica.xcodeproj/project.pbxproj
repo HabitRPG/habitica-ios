@@ -30,7 +30,7 @@
 		2907F99E1F694C4000328AEE /* GemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2907F99D1F694C4000328AEE /* GemViewController.swift */; };
 		2908784A220210CF0010820A /* Strings-objcBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29087849220210CF0010820A /* Strings-objcBridge.swift */; };
 		2908D8742232D45D00DDECA1 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2908D8732232D45D00DDECA1 /* BaseTableViewController.swift */; };
-		2908E3512217255600D246CD /* (null) in Resources */ = {isa = PBXBuildFile; };
+		2908E3512217255600D246CD /* BuildFile in Resources */ = {isa = PBXBuildFile; };
 		290922F02242628600645D0E /* LanguageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290922EF2242628600645D0E /* LanguageHandler.swift */; };
 		290A405421FA175800A409BA /* Purple@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 290A405221FA175700A409BA /* Purple@2x.png */; };
 		290A405521FA175800A409BA /* Purple@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 290A405321FA175800A409BA /* Purple@3x.png */; };
@@ -118,6 +118,9 @@
 		292F967E207239A700804151 /* ImageView-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292F967D207239A700804151 /* ImageView-Extensions.swift */; };
 		292F968020723A4D00804151 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292F967F20723A4D00804151 /* ImageManager.swift */; };
 		292F968320724B1100804151 /* GuildsOverviewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292F968220724B1100804151 /* GuildsOverviewDataSource.swift */; };
+		2931150422D744ED00E4A9E3 /* AchievementsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2931150322D744ED00E4A9E3 /* AchievementsCollectionViewController.swift */; };
+		2931150622D745A700E4A9E3 /* AchievementsViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2931150522D745A700E4A9E3 /* AchievementsViewDataSource.swift */; };
+		2931151022D75B4B00E4A9E3 /* AchievementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2931150F22D75B4B00E4A9E3 /* AchievementCell.swift */; };
 		29323E1B2050532D00AC6D6F /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E1A2050532D00AC6D6F /* UserRepository.swift */; };
 		29323E1F2050563700AC6D6F /* NetworkErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E1E2050563700AC6D6F /* NetworkErrorHandler.swift */; };
 		29323E352052008800AC6D6F /* UserTopHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E342052008800AC6D6F /* UserTopHeader.swift */; };
@@ -703,6 +706,9 @@
 		292F967D207239A700804151 /* ImageView-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageView-Extensions.swift"; sourceTree = "<group>"; };
 		292F967F20723A4D00804151 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		292F968220724B1100804151 /* GuildsOverviewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuildsOverviewDataSource.swift; sourceTree = "<group>"; };
+		2931150322D744ED00E4A9E3 /* AchievementsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsCollectionViewController.swift; sourceTree = "<group>"; };
+		2931150522D745A700E4A9E3 /* AchievementsViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsViewDataSource.swift; sourceTree = "<group>"; };
+		2931150F22D75B4B00E4A9E3 /* AchievementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementCell.swift; sourceTree = "<group>"; };
 		29323E1A2050532D00AC6D6F /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		29323E1E2050563700AC6D6F /* NetworkErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorHandler.swift; sourceTree = "<group>"; };
 		29323E342052008800AC6D6F /* UserTopHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTopHeader.swift; sourceTree = "<group>"; };
@@ -1575,11 +1581,12 @@
 		2986EB091FCC63CC00B316F6 /* User */ = {
 			isa = PBXGroup;
 			children = (
-				295D42F520921F4200948E7E /* ClassSelectionViewController.swift */,
-				29A62B002167D55200D4BD90 /* VerifyUsernameModalViewController.swift */,
+				2931150322D744ED00E4A9E3 /* AchievementsCollectionViewController.swift */,
 				2986EB0A1FCC63F900B316F6 /* AttributePointsViewController.swift */,
 				293BB4A81FD0806C003B6F4F /* BulkStatsAllocationViewController.swift */,
+				295D42F520921F4200948E7E /* ClassSelectionViewController.swift */,
 				291E95AE20988025006EE585 /* NewsViewController.swift */,
+				29A62B002167D55200D4BD90 /* VerifyUsernameModalViewController.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -1821,6 +1828,7 @@
 				29DBFF0420CEB42F00DF9CF2 /* AvatarGearDetailViewDataSource.swift */,
 				2914485E2084E9F300F3A6B5 /* Stable */,
 				296AC81320AC85C200885682 /* RewardViewDataSource.swift */,
+				2931150522D745A700E4A9E3 /* AchievementsViewDataSource.swift */,
 			);
 			name = CVDataSources;
 			sourceTree = "<group>";
@@ -2424,6 +2432,7 @@
 		D9C2570D1B9B4BFB00839F48 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				2931150F22D75B4B00E4A9E3 /* AchievementCell.swift */,
 				295BC6F7226F5B4A00DDDF1A /* Notifications */,
 				49A84FB41F9FCA54003E2956 /* Challenges */,
 				D9BB455C1E71C8C70002AE2E /* CheckedTableViewcell.swift */,
@@ -2840,7 +2849,7 @@
 				49E378532009542C00E0DA3D /* ChallengeTableViewHeaderView.xib in Resources */,
 				498E4D001FA17C1A006933FF /* ChallengeCategoriesTableViewCell.xib in Resources */,
 				2914487A20864A3300F3A6B5 /* EquipmentOverviewView.xib in Resources */,
-				2908E3512217255600D246CD /* (null) in Resources */,
+				2908E3512217255600D246CD /* BuildFile in Resources */,
 				29028C442037132A00B7F704 /* SystemMessageTableViewCell.xib in Resources */,
 				29AAA1611F2B597400029737 /* SpeechbubbleView.xib in Resources */,
 				29FC885E2018D858002B3D3F /* WorldBossDescription.xib in Resources */,
@@ -3113,6 +3122,7 @@
 				"${BUILT_PRODUCTS_DIR}/Keys/Keys.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/MRProgress/MRProgress.framework",
+				"${BUILT_PRODUCTS_DIR}/Magnetic/Magnetic.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/OHHTTPStubs/OHHTTPStubs.framework",
 				"${BUILT_PRODUCTS_DIR}/PinLayout/PinLayout.framework",
@@ -3151,6 +3161,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Keys.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MRProgress.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Magnetic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OHHTTPStubs.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PinLayout.framework",
@@ -3273,8 +3284,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "
-";
+			shellScript = "\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -3399,6 +3409,7 @@
 				291448822087A13100F3A6B5 /* EquipmentDetailViewController.swift in Sources */,
 				29FC885C2018D47D002B3D3F /* Quest-Extensions.swift in Sources */,
 				D9BA33D41AB5E5820028AFEC /* HRPGLabeledProgressBar.m in Sources */,
+				2931150422D744ED00E4A9E3 /* AchievementsCollectionViewController.swift in Sources */,
 				299BD6221F505DFA00E22935 /* PaddedLabel.swift in Sources */,
 				D9F1E3E81E55DCEC0034D0F4 /* SubscriptionInformationCell.swift in Sources */,
 				290279732057FB4E006DACB9 /* FAQTableViewDataSource.swift in Sources */,
@@ -3532,6 +3543,7 @@
 				498E4D031FA17C31006933FF /* ChallengeDescriptionTableViewCell.swift in Sources */,
 				D9BB455B1E71C52F0002AE2E /* TaskTableViewCell.swift in Sources */,
 				291E95B720988B85006EE585 /* PartyDetailViewController.swift in Sources */,
+				2931151022D75B4B00E4A9E3 /* AchievementCell.swift in Sources */,
 				2912C3B022CA701C00BC485F /* QuestCompletedAlertController.swift in Sources */,
 				29E16315200E629800685640 /* QuestProgressBarView.swift in Sources */,
 				49E378512009540500E0DA3D /* ChallengeTableViewHeaderView.swift in Sources */,
@@ -3628,6 +3640,7 @@
 				29144896208A270800F3A6B5 /* AvatarDetailViewController.swift in Sources */,
 				49DCECE81F9A843E00982E99 /* MultiModelTableViewController.swift in Sources */,
 				293282181F39E1A400D42961 /* WelcomeViewController.swift in Sources */,
+				2931150622D745A700E4A9E3 /* AchievementsViewDataSource.swift in Sources */,
 				29144876208648D500F3A6B5 /* EquipmentOverviewViewController.swift in Sources */,
 				491C6E5B2020FE64005030A2 /* Challenge-Extensions.swift in Sources */,
 				D96C85451DCBAC90003E3616 /* HRPGStreakAchievementNotification.m in Sources */,
