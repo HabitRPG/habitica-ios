@@ -13,7 +13,6 @@ import ReactiveSwift
 public class SubscribeCall: ResponseObjectCall<EmptyResponseProtocol, APIEmptyResponse> {
     public init(sku: String, receipt: String, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "user.json")) {
         let json = try? JSONSerialization.data(withJSONObject: ["sku": sku, "receipt": receipt], options: [])
-        super.init(httpMethod: .POST, endpoint: "iap/ios/subscribe", postData: json, stubHolder: stubHolder, errorHandler: PrintNetworkErrorHandler())
-        needsAuthentication = false
+        super.init(httpMethod: .POST, endpoint: "iap/ios/subscribe", postData: json, stubHolder: stubHolder, errorHandler: PrintNetworkErrorHandler(), needsAuthentication: false)
     }
 }

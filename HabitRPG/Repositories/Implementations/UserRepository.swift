@@ -43,9 +43,7 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     }
     
     func allocate(attributePoint: String) -> Signal<StatsProtocol?, Never> {
-        let call = AllocateAttributePointCall(attribute: attributePoint)
-        
-        return call.objectSignal.on(value: {[weak self] stats in
+        return AllocateAttributePointCall(attribute: attributePoint).objectSignal.on(value: {[weak self] stats in
             if let userId = self?.currentUserId, let stats = stats {
                 self?.localRepository.save(userId, stats: stats)
             }
@@ -53,9 +51,8 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     }
     
     func bulkAllocate(strength: Int, intelligence: Int, constitution: Int, perception: Int) -> Signal<StatsProtocol?, Never> {
-        let call = BulkAllocateAttributePointsCall(strength: strength, intelligence: intelligence, constitution: constitution, perception: perception)
-        
-        return call.objectSignal.on(value: {[weak self] stats in
+        return BulkAllocateAttributePointsCall(strength: strength, intelligence: intelligence, constitution: constitution, perception: perception)
+            .objectSignal.on(value: {[weak self] stats in
             if let userId = self?.currentUserId, let stats = stats {
                 self?.localRepository.save(userId, stats: stats)
             }
@@ -71,9 +68,7 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     }
     
     func useSkill(skill: SkillProtocol, targetId: String? = nil) -> Signal<SkillResponseProtocol?, Never> {
-        let call = UseSkillCall(skill: skill, target: targetId)
-        
-        return call.objectSignal.on(value: {[weak self] skillResponse in
+        return UseSkillCall(skill: skill, target: targetId).objectSignal.on(value: {[weak self] skillResponse in
                 if let response = skillResponse {
                     self?.localRepository.save(userID: self?.currentUserId, skillResponse: response)
                 }
@@ -90,9 +85,7 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     }
     
     func useTransformationItem(item: SpecialItemProtocol, targetId: String) -> Signal<EmptyResponseProtocol?, Never> {
-        let call = UseTransformationItemCall(item: item, target: targetId)
-        
-        return call.objectSignal.on(value: {[weak self] _ in
+        return UseTransformationItemCall(item: item, target: targetId).objectSignal.on(value: {[weak self] _ in
             self?.localRepository.usedTransformationItem(userID: self?.currentUserId ?? "", key: item.key ?? "")
             let toastView = ToastView(title: L10n.Skills.usedTransformationItem(item.text ?? ""), background: .gray)
             ToastManager.show(toast: toastView)
@@ -129,9 +122,7 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     }
     
     func updateUser(_ updateDict: [String: Encodable]) -> Signal<UserProtocol?, Never> {
-        let call = UpdateUserCall(updateDict)
-        
-        return call.objectSignal.on(value: handleUserUpdate())
+        return UpdateUserCall(updateDict).objectSignal.on(value: handleUserUpdate())
     }
     
     func updateUser(key: String, value: Encodable) -> Signal<UserProtocol?, Never> {
@@ -169,9 +160,7 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     }
     
     func register(username: String, password: String, confirmPassword: String, email: String) -> Signal<LoginResponseProtocol?, Never> {
-        let call = LocalRegisterCall(username: username, password: password, confirmPassword: confirmPassword, email: email)
-        
-        return call.objectSignal.on(value: { loginResponse in
+        return LocalRegisterCall(username: username, password: password, confirmPassword: confirmPassword, email: email).objectSignal.on(value: { loginResponse in
             if let response = loginResponse {
                 AuthenticationManager.shared.currentUserId = response.id
                 AuthenticationManager.shared.currentUserKey = response.apiToken
@@ -180,9 +169,7 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     }
     
     func login(userID: String, network: String, accessToken: String) -> Signal<LoginResponseProtocol?, Never> {
-        let call = SocialLoginCall(userID: userID, network: network, accessToken: accessToken)
-        
-        return call.objectSignal.on(value: { loginResponse in
+        return SocialLoginCall(userID: userID, network: network, accessToken: accessToken).objectSignal.on(value: { loginResponse in
             if let response = loginResponse {
                 AuthenticationManager.shared.currentUserId = response.id
                 AuthenticationManager.shared.currentUserKey = response.apiToken
@@ -191,17 +178,13 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     }
     
     func resetAccount() -> Signal<UserProtocol?, Never> {
-        let call = ResetAccountCall()
-        
-        return call.objectSignal.flatMap(.latest, {[weak self] (_) in
+        return ResetAccountCall().objectSignal.flatMap(.latest, {[weak self] (_) in
             return self?.retrieveUser() ?? Signal.empty
         })
     }
     
     func deleteAccount(password: String) -> Signal<HTTPURLResponse, Never> {
-        let call = DeleteAccountCall(password: password)
-        
-        return call.httpResponseSignal.on(value: {[weak self] response in
+        return DeleteAccountCall(password: password).httpResponseSignal.on(value: {[weak self] response in
             if response.statusCode == 200 {
                 self?.logoutAccount()
             }

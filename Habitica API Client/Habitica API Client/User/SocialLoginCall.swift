@@ -16,7 +16,6 @@ public class SocialLoginCall: ResponseObjectCall<LoginResponseProtocol, APILogin
             "access_token": accessToken,
             "client_id": userID
             ]], options: .prettyPrinted)
-        super.init(httpMethod: .POST, endpoint: "user/auth/social", postData: json, stubHolder: stubHolder)
-        needsAuthentication = false
+        super.init(httpMethod: .POST, endpoint: "user/auth/social", postData: json, stubHolder: stubHolder, needsAuthentication: false)
     }
 }
