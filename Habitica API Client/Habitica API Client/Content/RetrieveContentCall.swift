@@ -13,7 +13,6 @@ import ReactiveSwift
 public class RetrieveContentCall: ResponseObjectCall<ContentProtocol, APIContent> {
     public init(language: String? = nil, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "content.json")) {
         let url = language != nil ? "content?language=\(language ?? "")" : "content"
-        super.init(httpMethod: .GET, endpoint: url, stubHolder: stubHolder)
-        needsAuthentication = false
+        super.init(httpMethod: .GET, endpoint: url, stubHolder: stubHolder, needsAuthentication: false)
     }
 }

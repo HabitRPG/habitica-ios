@@ -55,7 +55,9 @@ public class AuthenticatedCall: JsonNetworkCall {
          httpMethod: HTTPMethod, httpHeaders: [String: String]? = AuthenticatedCall.jsonHeaders(),
          endpoint: String, postData: Data? = nil,
          stubHolder: StubHolderProtocol? = nil,
-         errorHandler: NetworkErrorHandler? = nil) {
+         errorHandler: NetworkErrorHandler? = nil,
+         needsAuthentication: Bool = true) {
+        self.needsAuthentication = needsAuthentication
         super.init(configuration: configuration ?? AuthenticatedCall.defaultConfiguration,
                    httpMethod: httpMethod.rawValue,
                    httpHeaders: httpHeaders,

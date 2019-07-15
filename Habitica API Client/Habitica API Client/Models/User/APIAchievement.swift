@@ -37,7 +37,7 @@ public class APIAchievement: Decodable, AchievementProtocol {
         key = try? values.decode(String.self, forKey: .key)
         title = try? values.decode(String.self, forKey: .title)
         text = try? values.decode(String.self, forKey: .text)
-        icon = try? values.decode(String.self, forKey: .key)
+        icon = try? values.decode(String.self, forKey: .icon)
         index = (try? values.decode(Int.self, forKey: .index)) ?? 0
         earned = (try? values.decode(Bool.self, forKey: .earned)) ?? false
         optionalCount = (try? values.decode(Int.self, forKey: .optionalCount)) ?? -1
