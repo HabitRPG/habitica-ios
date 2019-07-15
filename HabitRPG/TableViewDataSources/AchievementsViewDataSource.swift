@@ -12,7 +12,23 @@ import Habitica_Models
 class AchievementsViewDataSource: BaseReactiveCollectionViewDataSource<AchievementProtocol> {
     
     private let userRepository = UserRepository()
-    private var isGridLayout = false
+    var isGridLayout = false {
+        didSet {
+            if isGridLayout {
+                collectionView?.contentInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+                if let flowLayout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
+                    flowLayout.minimumLineSpacing = 16
+                }
+            } else {
+                collectionView?.contentInset = UIEdgeInsets.zero
+                
+                if let flowLayout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
+                    flowLayout.minimumLineSpacing = 1
+                }
+            }
+            collectionView?.reloadData()
+        }
+    }
     
     override init() {
         super.init()
@@ -37,14 +53,5 @@ class AchievementsViewDataSource: BaseReactiveCollectionViewDataSource<Achieveme
             cell.configure(achievement: achievement)
         }
         return cell
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let totalWidth = collectionView.frame.size.width
-        if isGridLayout {
-            return CGSize(width: totalWidth/2, height: 106)
-        } else {
-            return CGSize(width: totalWidth, height: 40)
-        }
     }
 }
