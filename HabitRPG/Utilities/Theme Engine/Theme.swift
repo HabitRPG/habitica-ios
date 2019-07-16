@@ -31,6 +31,7 @@ public protocol Theme {
     var dimmedTextColor: UIColor { get }
     var lightTextColor: UIColor { get }
     var badgeColor: UIColor { get }
+    var secondaryBadgeColor: UIColor { get }
     var successColor: UIColor { get }
     var errorColor: UIColor { get }
     var warningColor: UIColor { get }
@@ -64,6 +65,7 @@ extension Theme {
     public var lightTextColor: UIColor { return UIColor.white }
     
     public var badgeColor: UIColor { return tintColor }
+    public var secondaryBadgeColor: UIColor { return UIColor.gray300() }
     public var successColor: UIColor { return UIColor.green100() }
     public var errorColor: UIColor { return UIColor.red100() }
     public var warningColor: UIColor { return UIColor.yellow100() }
@@ -138,6 +140,7 @@ extension DarkTheme {
     public var successColor: UIColor { return UIColor.green10().withAlphaComponent(0.7) }
     public var errorColor: UIColor { return UIColor.red10() }
     public var warningColor: UIColor { return UIColor.yellow10().withAlphaComponent(0.7) }
+    public var badgeColor: UIColor { return tintColor }
 }
 
 @objc

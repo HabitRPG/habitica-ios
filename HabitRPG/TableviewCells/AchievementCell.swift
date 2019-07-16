@@ -17,20 +17,26 @@ class AchievementCell: UICollectionViewCell {
             if isGridLayout {
                 titleLabel.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
                 titleLabel.textAlignment = .center
-                titleLabel.cornerRadius = 6
-                backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+                titleLabel.numberOfLines = 3
+                descriptionlabel.isHidden = true
+                contentBackgroundView.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+                contentBackgroundView.isHidden = false
             } else {
                 titleLabel.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
                 titleLabel.textAlignment = .natural
-                titleLabel.cornerRadius = 0
-                backgroundColor = ThemeService.shared.theme.contentBackgroundColor
+                titleLabel.numberOfLines = 3
+                descriptionlabel.isHidden = false
+                contentBackgroundView.isHidden = true
             }
         }
     }
     
+    private var contentBackgroundView: UIView = UIView()
+    
     private var titleLabel: UILabel = {
         let label = UILabel()
         label.font = CustomFontMetrics.scaledSystemFont(ofSize: 14, ofWeight: .medium)
+        label.cornerRadius = 6
         if #available(iOS 11.0, *) {
             label.layer.maskedCorners = [.layerMinXMaxYCorner,.layerMaxXMaxYCorner]
         }
@@ -48,6 +54,15 @@ class AchievementCell: UICollectionViewCell {
         return view
     }()
     
+    private var countBadge: UILabel = {
+        let label = UILabel()
+        label.backgroundColor = ThemeService.shared.theme.secondaryBadgeColor
+        label.textColor = ThemeService.shared.theme.lightTextColor
+        label.textAlignment = .center
+        label.font = CustomFontMetrics.scaledSystemFont(ofSize: 12)
+        return label
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -58,9 +73,11 @@ class AchievementCell: UICollectionViewCell {
     }
     
     private func setup() {
+        contentView.addSubview(contentBackgroundView)
         contentView.addSubview(titleLabel)
         contentView.addSubview(descriptionlabel)
         contentView.addSubview(iconView)
+        contentView.addSubview(countBadge)
         cornerRadius = 6
     }
     
@@ -86,16 +103,21 @@ class AchievementCell: UICollectionViewCell {
     
     private func layout() {
         if isGridLayout {
-            iconView.pin.start().top().end().height(66)
-            titleLabel.pin.start().below(of: iconView).bottom().end()
+            iconView.pin.start(4).top(4).end(4).height(66)
+            titleLabel.pin.start(4).below(of: iconView).bottom().end(4)
+            countBadge.pin.start().top().sizeToFit()
+            contentBackgroundView.pin.top(to: iconView.edge.top).start(4).end(4).bottom(to: titleLabel.edge.bottom)
         } else {
             iconView.pin.start(16).width(48).height(52).vCenter()
+            countBadge.pin.start(12).top(to: iconView.edge.top).marginTop(-4).sizeToFit()
             titleLabel.pin.after(of: iconView).marginStart(16).end(16).sizeToFit(.width)
             descriptionlabel.pin.after(of: iconView).marginStart(16).below(of: titleLabel).marginTop(4).end(16).sizeToFit(.width)
             let offset = (frame.size.height - (titleLabel.frame.size.height + descriptionlabel.frame.size.height)) / 2
             titleLabel.pin.top(offset)
             descriptionlabel.pin.below(of: titleLabel)
         }
+        countBadge.pin.width(countBadge.frame.size.width + 8).height(countBadge.frame.size.height + 4)
+        countBadge.cornerRadius = countBadge.frame.size.height / 2
     }
     
     func heightForWidth(_ width: CGFloat) -> CGFloat {
@@ -118,5 +140,12 @@ class AchievementCell: UICollectionViewCell {
         if !isGridLayout {
             descriptionlabel.text = achievement.text
         }
+        if achievement.optionalCount > 0 {
+            countBadge.text = String(achievement.optionalCount)
+            countBadge.isHidden = false
+        } else {
+            countBadge.isHidden = true
+        }
+        setNeedsLayout()
     }
 }
