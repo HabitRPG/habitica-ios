@@ -46,8 +46,8 @@ class AchievementHeaderReusableView: UICollectionReusableView {
     private func layout() {
         earnedCountLabel.pin.end(16).sizeToFit()
         earnedCountLabel.pin.width(earnedCountLabel.frame.size.width + 8).height(earnedCountLabel.frame.size.height + 4)
-        earnedCountLabel.pin.vCenter()
+        earnedCountLabel.pin.vCenter().marginTop(8)
         earnedCountLabel.cornerRadius = earnedCountLabel.frame.size.height / 2
-        titleLabel.pin.start(16).before(of: earnedCountLabel).top().bottom()
+        titleLabel.pin.start(16).before(of: earnedCountLabel).top(8).bottom()
     }
 }
