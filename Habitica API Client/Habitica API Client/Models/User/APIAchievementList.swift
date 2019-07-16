@@ -27,14 +27,17 @@ public class APIAchievementList: Decodable, AchievementListProtocol {
         achievements = []
         try? values.decode(AchievementCategory.self, forKey: .basic).achievements.forEach({ (key, achievement) in
             achievement.key = key
+            achievement.category = "basic"
             achievements.append(achievement)
         })
         try? values.decode(AchievementCategory.self, forKey: .seasonal).achievements.forEach({ (key, achievement) in
             achievement.key = key
+            achievement.category = "seasonal"
             achievements.append(achievement)
         })
         try? values.decode(AchievementCategory.self, forKey: .special).achievements.forEach({ (key, achievement) in
             achievement.key = key
+            achievement.category = "special"
             achievements.append(achievement)
         })
     }

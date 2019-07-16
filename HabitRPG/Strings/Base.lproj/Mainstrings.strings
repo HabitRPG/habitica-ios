@@ -760,3 +760,6 @@
 "empty.rewards.description" = "Rewards are a great way to use Habitica and complete your tasks. Try adding a few today!";
 "empty.notifications.title" = "You're all caught up!";
 "empty.notifications.description" = "The notification fairies give you a raucous round of applause! Well done!";
+"achievements.basic" = "Basic Achievements";
+"achievements.seasonal" = "Seasonal Achievements";
+"achievements.special" = "Special Achievements";
