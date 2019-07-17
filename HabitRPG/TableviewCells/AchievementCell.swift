@@ -14,7 +14,7 @@ class AchievementCell: UICollectionViewCell {
     
     var isGridLayout = false {
         didSet {
-            if isGridLayout {
+            if isGridLayout && !isQuestAchievement {
                 titleLabel.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
                 titleLabel.textAlignment = .center
                 titleLabel.numberOfLines = 3
@@ -63,6 +63,16 @@ class AchievementCell: UICollectionViewCell {
         return label
     }()
     
+    private var isQuestAchievement: Bool = false {
+        didSet {
+            if isQuestAchievement {
+                countBadge.font = CustomFontMetrics.scaledSystemFont(ofSize: 14, ofWeight: .medium)
+            } else {
+                countBadge.font = CustomFontMetrics.scaledSystemFont(ofSize: 10, ofWeight: .bold)
+            }
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -83,7 +93,7 @@ class AchievementCell: UICollectionViewCell {
     
     override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
             var newFrame = layoutAttributes.frame
-            if isGridLayout {
+            if isGridLayout && !isQuestAchievement {
                 newFrame.size.width = 156
                 newFrame.size.height = 106
             } else {
@@ -102,7 +112,7 @@ class AchievementCell: UICollectionViewCell {
     }
     
     private func layout() {
-        if isGridLayout {
+        if isGridLayout && !isQuestAchievement {
             iconView.pin.start(4).top(4).end(4).height(66)
             titleLabel.pin.start(4).below(of: iconView).bottom().end(4)
             countBadge.pin.start().top().sizeToFit()
@@ -116,12 +126,16 @@ class AchievementCell: UICollectionViewCell {
             titleLabel.pin.top(offset)
             descriptionlabel.pin.below(of: titleLabel)
         }
-        countBadge.pin.width(countBadge.frame.size.width + 8).height(countBadge.frame.size.height + 4)
+        if isQuestAchievement {
+            countBadge.pin.size(40).vCenter()
+        } else {
+            countBadge.pin.width(countBadge.frame.size.width + 8).minWidth(countBadge.frame.size.height + 4).height(countBadge.frame.size.height + 4)
+        }
         countBadge.cornerRadius = countBadge.frame.size.height / 2
     }
     
     func heightForWidth(_ width: CGFloat) -> CGFloat {
-        if isGridLayout {
+        if isGridLayout && !isQuestAchievement {
             return 106
         } else {
             var height = titleLabel.sizeThatFits(CGSize(width: width - 84, height: 200)).height
@@ -132,20 +146,28 @@ class AchievementCell: UICollectionViewCell {
     
     func configure(achievement: AchievementProtocol) {
         titleLabel.text = achievement.title
-        if achievement.earned {
-            iconView.setImagewith(name: (achievement.icon ?? "") + "2x")
-        } else {
-            iconView.setImagewith(name: "achievement-unearned2x")
+        if !achievement.isQuestAchievement {
+            if achievement.earned {
+                iconView.setImagewith(name: (achievement.icon ?? "") + "2x")
+            } else {
+                iconView.setImagewith(name: "achievement-unearned2x")
+            }
         }
-        if !isGridLayout {
-            descriptionlabel.text = achievement.text
-        }
+        descriptionlabel.text = achievement.text
         if achievement.optionalCount > 0 {
             countBadge.text = String(achievement.optionalCount)
             countBadge.isHidden = false
         } else {
             countBadge.isHidden = true
         }
+        
+        isQuestAchievement = achievement.isQuestAchievement
+        
         setNeedsLayout()
+    }
+    
+    func configure(achievement: AchievementProtocol, quest: QuestProtocol) {
+        configure(achievement: achievement)
+        titleLabel.text = quest.text
     }
 }

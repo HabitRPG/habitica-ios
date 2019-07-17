@@ -85,6 +85,12 @@ public class InventoryLocalRepository: ContentLocalRepository {
         })
     }
     
+    public func getQuests(keys: [String]) -> SignalProducer<ReactiveResults<[QuestProtocol]>, ReactiveSwiftRealmError> {
+        return RealmQuest.findBy(predicate: NSPredicate(format: "key IN %@", keys)).reactive().map({ (value, changeset) -> ReactiveResults<[QuestProtocol]> in
+            return (value.map({ (item) -> QuestProtocol in return item }), changeset)
+        })
+    }
+    
     public func getShop(identifier: String) -> SignalProducer<ShopProtocol?, ReactiveSwiftRealmError> {
         return RealmShop.findBy(query: "identifier == '\(identifier)'").reactive().map({ shops -> ShopProtocol? in
             return shops.value.first

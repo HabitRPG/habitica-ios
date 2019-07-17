@@ -14,7 +14,6 @@ class RealmAchievement: Object, AchievementProtocol {
     @objc dynamic var combinedID: String?
     @objc dynamic var userID: String?
     var key: String?
-    var type: String?
     var title: String?
     var text: String?
     var icon: String?
@@ -33,7 +32,6 @@ class RealmAchievement: Object, AchievementProtocol {
         self.combinedID = (userID ?? "") + (protocolObject.key ?? "")
         self.userID = userID
         key = protocolObject.key
-        type = protocolObject.type
         title = protocolObject.title
         text = protocolObject.text
         icon = protocolObject.icon

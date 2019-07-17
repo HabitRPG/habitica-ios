@@ -11,7 +11,6 @@ import Foundation
 @objc
 public protocol AchievementProtocol {
     var key: String? { get set }
-    var type: String? { get set }
     var title: String? { get set }
     var text: String? { get set }
     var icon: String? { get set }
@@ -19,4 +18,10 @@ public protocol AchievementProtocol {
     var earned: Bool { get set }
     var index: Int { get set }
     var optionalCount: Int { get set }
+}
+
+public extension AchievementProtocol {
+    var isQuestAchievement: Bool {
+        return category == "quests"
+    }
 }
