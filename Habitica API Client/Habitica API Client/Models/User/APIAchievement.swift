@@ -11,7 +11,6 @@ import Habitica_Models
 
 public class APIAchievement: Decodable, AchievementProtocol {
     public var key: String?
-    public var type: String?
     public var title: String?
     public var text: String?
     public var icon: String?
@@ -41,5 +40,8 @@ public class APIAchievement: Decodable, AchievementProtocol {
         index = (try? values.decode(Int.self, forKey: .index)) ?? 0
         earned = (try? values.decode(Bool.self, forKey: .earned)) ?? false
         optionalCount = (try? values.decode(Int.self, forKey: .optionalCount)) ?? -1
+    }
+    
+    init() {
     }
 }

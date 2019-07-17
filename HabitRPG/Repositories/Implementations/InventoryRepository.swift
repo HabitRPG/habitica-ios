@@ -57,6 +57,10 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
         return localRepository.getQuest(key: key)
     }
     
+    func getQuests(keys: [String]) ->SignalProducer<ReactiveResults<[QuestProtocol]>, ReactiveSwiftRealmError> {
+        return localRepository.getQuests(keys: keys)
+    }
+    
     func sell(item: ItemProtocol) -> Signal<UserProtocol?, Never> {
         let call = SellItemCall(item: item)
         

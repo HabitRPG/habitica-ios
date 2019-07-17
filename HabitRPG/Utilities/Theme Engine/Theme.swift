@@ -65,7 +65,7 @@ extension Theme {
     public var lightTextColor: UIColor { return UIColor.white }
     
     public var badgeColor: UIColor { return tintColor }
-    public var secondaryBadgeColor: UIColor { return UIColor.gray300() }
+    public var secondaryBadgeColor: UIColor { return UIColor.gray200() }
     public var successColor: UIColor { return UIColor.green100() }
     public var errorColor: UIColor { return UIColor.red100() }
     public var warningColor: UIColor { return UIColor.yellow100() }

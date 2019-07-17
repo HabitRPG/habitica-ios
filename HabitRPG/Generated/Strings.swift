@@ -657,6 +657,8 @@ public enum L10n {
   public enum Achievements {
     /// Basic Achievements
     public static var basic: String { return L10n.tr("Mainstrings", "achievements.basic") }
+    /// Quest Achievements
+    public static var quests: String { return L10n.tr("Mainstrings", "achievements.quests") }
     /// Seasonal Achievements
     public static var seasonal: String { return L10n.tr("Mainstrings", "achievements.seasonal") }
     /// Special Achievements
