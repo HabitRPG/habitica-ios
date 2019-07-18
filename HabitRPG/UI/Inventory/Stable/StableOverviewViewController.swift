@@ -9,7 +9,7 @@
 import Foundation
 import Habitica_Models
 
-class StableOverviewViewController<DS>: HRPGCollectionViewController {
+class StableOverviewViewController<DS>: BaseCollectionViewController {
     
     var datasource: DS?
     
@@ -28,5 +28,9 @@ class StableOverviewViewController<DS>: HRPGCollectionViewController {
         
         collectionView?.addSubview(headerView)
         collectionView?.contentInset = UIEdgeInsets(top: 124, left: 0, bottom: 0, right: 0)
+    }
+    
+    override func applyTheme(theme: Theme) {
+        collectionView.backgroundColor = theme.contentBackgroundColor
     }
 }

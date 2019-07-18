@@ -85,4 +85,22 @@ class PetDetailDataSource: BaseReactiveCollectionViewDataSource<PetStableItem> {
         
         return cell
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let reuseIdentifier = (kind == UICollectionView.elementKindSectionFooter) ? "SectionFooter" : "SectionHeader"
+        let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: reuseIdentifier, for: indexPath)
+        
+        if kind == UICollectionView.elementKindSectionHeader {
+            let label = view.viewWithTag(1) as? UILabel
+            label?.text = visibleSections[indexPath.section].title
+            let countLabel = view.viewWithTag(2) as? UILabel
+            countLabel?.textColor = ThemeService.shared.theme.ternaryTextColor
+            view.viewWithTag(3)?.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
+            let ownedCount = visibleSections[indexPath.section].items.filter { $0.trained > 0 }.count
+            let totalCount = visibleSections[indexPath.section].items.count
+            countLabel?.text = "\(ownedCount)/\(totalCount)"
+        }
+        
+        return view
+    }
 }
