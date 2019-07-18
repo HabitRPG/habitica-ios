@@ -71,4 +71,23 @@ class StableOverviewDataSource<ANIMAL: AnimalProtocol>: BaseReactiveCollectionVi
         }
     }
     
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let reuseIdentifier = (kind == UICollectionView.elementKindSectionFooter) ? "SectionFooter" : "SectionHeader"
+        let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: reuseIdentifier, for: indexPath)
+        
+        if kind == UICollectionView.elementKindSectionHeader {
+            let label = view.viewWithTag(1) as? UILabel
+            label?.text = visibleSections[indexPath.section].title
+            let countLabel = view.viewWithTag(2) as? UILabel
+            countLabel?.textColor = ThemeService.shared.theme.ternaryTextColor
+            view.viewWithTag(3)?.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
+            var ownedCount = 0
+            visibleSections[indexPath.section].items.forEach { ownedCount += $0.numberOwned }
+            var totalCount = 0
+            visibleSections[indexPath.section].items.forEach { totalCount += $0.totalNumber }
+            countLabel?.text = "\(ownedCount)/\(totalCount)"
+        }
+        
+        return view
+    }
 }
