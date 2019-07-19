@@ -51,7 +51,11 @@ class MountOverviewDataSource: StableOverviewDataSource<PetProtocol> {
         if animal.type == "special" {
             return "Mount_Icon_\(animal.key ?? "")"
         } else {
-            return "Mount_Icon_\(animal.egg ?? "")-Base"
+            if organizeByColor {
+                return "Pet_HatchingPotion_\(animal.potion ?? "")"
+            } else {
+                return "Mount_Icon_\(animal.egg ?? "")-Base"
+            }
         }
     }
 }
