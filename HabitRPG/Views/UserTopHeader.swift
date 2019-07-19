@@ -65,8 +65,8 @@ class UserTopHeader: UIView, Themeable {
         
         gemView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showGemView)))
         
-        usernameLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 16)
-        levelLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 11)
+        usernameLabel.font = UIFont.preferredFont(forTextStyle: .body)
+        levelLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
         
         disposable.inner.add(repository.getUser().on(value: {[weak self] user in
             self?.set(user: user)
