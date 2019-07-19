@@ -19,19 +19,23 @@ class StableSplitViewController: HabiticaSplitViewController {
         didSet {
             petViewController?.organizeByColor = organizeByColor
             mountViewController?.organizeByColor = organizeByColor
+            UserDefaults.standard.set(organizeByColor, forKey: "stableOrganize")
         }
     }
     
     override func viewDidLoad() {
         canShowAsSplitView = false
         super.viewDidLoad()
+        organizeByColor = UserDefaults.standard.bool(forKey: "stableOrganize")
         
         for childViewController in children {
             if let viewController = childViewController as? PetOverviewViewController {
                 petViewController = viewController
+                viewController.organizeByColor = organizeByColor
             }
             if let viewController = childViewController as? MountOverviewViewController {
                 mountViewController = viewController
+                viewController.organizeByColor = organizeByColor
             }
         }
         
