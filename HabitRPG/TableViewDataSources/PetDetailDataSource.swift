@@ -21,15 +21,19 @@ class PetDetailDataSource: BaseReactiveCollectionViewDataSource<PetStableItem> {
     private let stableRepsository = StableRepository()
     var types = ["drop", "premium"]
     
-    init(eggType: String) {
+    init(searchEggs: Bool, searchKey: String) {
         super.init()
         sections.append(ItemSection<PetStableItem>(title: L10n.Stable.standard))
         sections.append(ItemSection<PetStableItem>(title: L10n.Stable.premium))
-        var query = "egg == '\(eggType)'"
-        if eggType.contains("-") {
-            query = "key == '\(eggType)'"
+        var query = ""
+        if searchKey.contains("-") {
+            query = "key == '\(searchKey)'"
+        } else if searchEggs {
+            query = "egg == '\(searchKey)'"
+        } else {
+            query = "potion == '\(searchKey)'"
         }
-        disposable.inner.add(SignalProducer.combineLatest(stableRepsository.getOwnedPets(query: "key CONTAINS '\(eggType)'")
+        disposable.inner.add(SignalProducer.combineLatest(stableRepsository.getOwnedPets(query: "key CONTAINS '\(searchKey)'")
             .map({ data -> [String: Int] in
                 var ownedPets = [String: Int]()
                 data.value
@@ -37,7 +41,7 @@ class PetDetailDataSource: BaseReactiveCollectionViewDataSource<PetStableItem> {
                     ownedPets[ownedPet.key ?? ""] = ownedPet.trained
                 })
                 return ownedPets
-            }), stableRepsository.getOwnedMounts(query: "key CONTAINS '\(eggType)'")
+            }), stableRepsository.getOwnedMounts(query: "key CONTAINS '\(searchKey)'")
                 .map({ data -> [String: Bool] in
                     var ownedMounts = [String: Bool]()
                     data.value.forEach({ (ownedMount) in

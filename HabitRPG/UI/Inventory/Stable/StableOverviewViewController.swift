@@ -13,6 +13,8 @@ class StableOverviewViewController<DS>: BaseCollectionViewController {
     
     var datasource: DS?
     
+    var organizeByColor = false
+    
     private let headerView = NPCBannerView(frame: CGRect(x: 0, y: -124, width: UIScreen.main.bounds.size.width, height: 124))
     
     override func viewDidLoad() {

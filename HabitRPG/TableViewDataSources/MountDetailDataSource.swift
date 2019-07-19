@@ -19,15 +19,19 @@ class MountDetailDataSource: BaseReactiveCollectionViewDataSource<MountStableIte
     private let stableRepsository = StableRepository()
     var types = ["drop", "premium"]
     
-    init(eggType: String) {
+    init(searchEggs: Bool, searchKey: String) {
         super.init()
         sections.append(ItemSection<MountStableItem>(title: L10n.Stable.standard))
         sections.append(ItemSection<MountStableItem>(title: L10n.Stable.premium))
-        var query = "egg == '\(eggType)'"
-        if eggType.contains("-") {
-            query = "key == '\(eggType)'"
+        var query = ""
+        if searchKey.contains("-") {
+            query = "key == '\(searchKey)'"
+        } else if searchEggs {
+            query = "egg == '\(searchKey)'"
+        } else {
+            query = "potion == '\(searchKey)'"
         }
-        disposable.inner.add(stableRepsository.getOwnedMounts(query: "key CONTAINS '\(eggType)'")
+        disposable.inner.add(stableRepsository.getOwnedMounts(query: "key CONTAINS '\(searchKey)'")
             .map({ data -> [String: Bool] in
                 var ownedMounts = [String: Bool]()
                 data.value.forEach({ (ownedMount) in

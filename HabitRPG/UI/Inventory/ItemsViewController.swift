@@ -103,7 +103,7 @@ class ItemsViewController: BaseTableViewController {
         } else {
             alertController.setSourceInCenter(view)
         }
-        alertController.show()
+        present(alertController, animated: true, completion: nil)
     }
     
     private func dismissIfNeeded() {

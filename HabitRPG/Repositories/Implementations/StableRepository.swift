@@ -24,12 +24,12 @@ class StableRepository: BaseRepository<StableLocalRepository> {
         })
     }
     
-    func getPets(keys: [String]? = nil) -> SignalProducer<ReactiveResults<[PetProtocol]>, ReactiveSwiftRealmError> {
-            return localRepository.getPets(keys: keys)
+    func getPets(keys: [String]? = nil, sortKey: String = "key") -> SignalProducer<ReactiveResults<[PetProtocol]>, ReactiveSwiftRealmError> {
+            return localRepository.getPets(keys: keys, sortKey: sortKey)
     }
     
-    func getPets(query: String) -> SignalProducer<ReactiveResults<[PetProtocol]>, ReactiveSwiftRealmError> {
-        return localRepository.getPets(query: query)
+    func getPets(query: String, sortKey: String = "key") -> SignalProducer<ReactiveResults<[PetProtocol]>, ReactiveSwiftRealmError> {
+        return localRepository.getPets(query: query, sortKey: sortKey)
     }
     
     func getOwnedMounts(userID: String? = nil) -> SignalProducer<ReactiveResults<[OwnedMountProtocol]>, ReactiveSwiftRealmError> {
@@ -50,11 +50,11 @@ class StableRepository: BaseRepository<StableLocalRepository> {
         })
     }
     
-    func getMounts(keys: [String]? = nil) -> SignalProducer<ReactiveResults<[MountProtocol]>, ReactiveSwiftRealmError> {
-        return localRepository.getMounts(keys: keys)
+    func getMounts(keys: [String]? = nil, sortKey: String = "key") -> SignalProducer<ReactiveResults<[MountProtocol]>, ReactiveSwiftRealmError> {
+        return localRepository.getMounts(keys: keys, sortKey: sortKey)
     }
     
-    func getMounts(query: String) -> SignalProducer<ReactiveResults<[MountProtocol]>, ReactiveSwiftRealmError> {
-        return localRepository.getMounts(query: query)
+    func getMounts(query: String, sortKey: String = "key") -> SignalProducer<ReactiveResults<[MountProtocol]>, ReactiveSwiftRealmError> {
+        return localRepository.getMounts(query: query, sortKey: sortKey)
     }
 }
