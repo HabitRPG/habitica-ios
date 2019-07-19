@@ -10,6 +10,12 @@ import Foundation
 
 class MountOverviewViewController: StableOverviewViewController<MountOverviewDataSource> {
     
+    override var organizeByColor: Bool {
+        didSet {
+            datasource?.organizeByColor = organizeByColor
+        }
+    }
+    
     override func viewDidLoad() {
         datasource = MountOverviewDataSource()
         datasource?.collectionView = collectionView
@@ -28,7 +34,8 @@ class MountOverviewViewController: StableOverviewViewController<MountOverviewDat
                 return
             }
             let indexPath = collectionView?.indexPath(for: cell)
-            destination?.eggType = datasource?.item(at: indexPath)?.eggType ?? ""
+            destination?.searchKey = datasource?.item(at: indexPath)?.searchKey ?? ""
+            destination?.searchEggs = !organizeByColor
             destination?.mountType = datasource?.item(at: indexPath)?.type ?? ""
         }
     }

@@ -342,6 +342,8 @@
 "stable.standard" = "Standard";
 "stable.premium" = "Magic Potion";
 "stable.feed" = "Feed";
+"stable.color" = "Color";
+"stable.type" = "Type";
 "equip" = "Equip";
 "unequip" = "Unequip";
 "equipment.equipment" = "Equipment";
@@ -764,3 +766,4 @@
 "achievements.seasonal" = "Seasonal Achievements";
 "achievements.special" = "Special Achievements";
 "achievements.quests" = "Quest Achievements";
+"organize_by" = "Organize By";

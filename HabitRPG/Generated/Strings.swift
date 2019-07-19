@@ -322,6 +322,8 @@ public enum L10n {
   public static var openItunes: String { return L10n.tr("Mainstrings", "open_itunes") }
   /// Open Habitica Website
   public static var openWebsite: String { return L10n.tr("Mainstrings", "open_website") }
+  /// Organize By
+  public static var organizeBy: String { return L10n.tr("Mainstrings", "organize_by") }
   /// Password
   public static var password: String { return L10n.tr("Mainstrings", "password") }
   /// Pause Damage
@@ -1287,6 +1289,8 @@ public enum L10n {
   }
 
   public enum Stable {
+    /// Color
+    public static var color: String { return L10n.tr("Mainstrings", "stable.color") }
     /// Feed
     public static var feed: String { return L10n.tr("Mainstrings", "stable.feed") }
     /// Magic Potion
@@ -1305,6 +1309,8 @@ public enum L10n {
     public static var standardMounts: String { return L10n.tr("Mainstrings", "stable.standard_mounts") }
     /// Standard Pets
     public static var standardPets: String { return L10n.tr("Mainstrings", "stable.standard_pets") }
+    /// Type
+    public static var type: String { return L10n.tr("Mainstrings", "stable.type") }
     /// Wacky Mounts
     public static var wackyMounts: String { return L10n.tr("Mainstrings", "stable.wacky_mounts") }
     /// Wacky Pets

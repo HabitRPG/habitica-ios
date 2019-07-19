@@ -10,6 +10,12 @@ import Foundation
 
 class PetOverviewViewController: StableOverviewViewController<PetOverviewDataSource> {
     
+    override var organizeByColor: Bool {
+        didSet {
+            datasource?.organizeByColor = organizeByColor
+        }
+    }
+    
     override func viewDidLoad() {
         datasource = PetOverviewDataSource()
         datasource?.collectionView = collectionView
@@ -23,7 +29,8 @@ class PetOverviewViewController: StableOverviewViewController<PetOverviewDataSou
                 return
             }
             let indexPath = collectionView?.indexPath(for: cell)
-            destination?.eggType = datasource?.item(at: indexPath)?.eggType ?? ""
+            destination?.searchKey = datasource?.item(at: indexPath)?.searchKey ?? ""
+            destination?.searchEggs = !organizeByColor
             destination?.petType = datasource?.item(at: indexPath)?.type ?? ""
         }
     }
