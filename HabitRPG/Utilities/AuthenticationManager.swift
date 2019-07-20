@@ -59,6 +59,7 @@ class AuthenticationManager: NSObject {
 
         set(newKey) {
             if let userId = currentUserId {
+                keychain[userId] = newKey
                 localKeychain[userId] = newKey
             }
             NetworkAuthenticationManager.shared.currentUserKey = newKey
