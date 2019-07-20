@@ -40,7 +40,7 @@ class TaskManager: BaseRepository<TaskLocalRepository>, TaskRepositoryProtocol {
 
     func getValidTaskListFromSpokenPhrase(spokenPhrase: String) -> String? {
         for minimap in self.listSpokenPhraseMap {
-            if minimap.value.contains(spokenPhrase) {
+            if minimap.value.contains(spokenPhrase.lowercased()) {
                 return minimap.key
             }
         }
