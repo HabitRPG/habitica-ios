@@ -37,7 +37,7 @@ class TaskManager: BaseRepository<TaskLocalRepository>, TaskRepositoryProtocol {
         print("Auth at start id, ", AuthenticationManager.shared.currentUserId)
         print("Auth at start key, ", AuthenticationManager.shared.currentUserKey)
     }
-    
+
     func getValidTaskListFromSpokenPhrase(spokenPhrase: String) -> String? {
         for minimap in self.listSpokenPhraseMap {
             if minimap.value.contains(spokenPhrase) {
@@ -46,7 +46,7 @@ class TaskManager: BaseRepository<TaskLocalRepository>, TaskRepositoryProtocol {
         }
         return nil
     }
-    
+
     @objc
     func setupNetworkClient() {
         /*
@@ -65,7 +65,7 @@ class TaskManager: BaseRepository<TaskLocalRepository>, TaskRepositoryProtocol {
         //NetworkLogger.enableLogging(for: configuration)
         AuthenticatedCall.defaultConfiguration.urlConfiguration = configuration
     }
-    
+
     func updateServer() {
         /*
          Comment for code review, TODO, remove:
@@ -90,7 +90,7 @@ class TaskManager: BaseRepository<TaskLocalRepository>, TaskRepositoryProtocol {
             }
         }
     }
-    
+
     func getTasks(predicate: NSPredicate, sortKey: String = "order") -> SignalProducer<ReactiveResults<[TaskProtocol]>, ReactiveSwiftRealmError> {
         /*
          Comment for code review, TODO, remove:
@@ -98,7 +98,7 @@ class TaskManager: BaseRepository<TaskLocalRepository>, TaskRepositoryProtocol {
          may be a better solution to handle the project inegration, to avoid the duplicate
          code, but it's beyond what I know regarding swift project setup. Alternatively,
          we could separate the code, but that doesn't seem like a call I should make.
-         
+
          Adding TaskManagerImpl directly causes there to be a chain of inclusions which
          leads to inclusions of many of the UI elements as well. This seemed like to many
          dependencies for these two functions.
@@ -108,7 +108,7 @@ class TaskManager: BaseRepository<TaskLocalRepository>, TaskRepositoryProtocol {
             return self?.localRepository.getTasks(userID: userID, predicate: predicate, sortKey: sortKey) ?? SignalProducer.empty
         })
     }
-    
+
     func retrieveTasks(dueOnDay: Date? = nil, type: String? = "todo") -> Signal<[TaskProtocol]?, Never> {
         /*
          Comment for code review, TODO, remove:
@@ -116,7 +116,7 @@ class TaskManager: BaseRepository<TaskLocalRepository>, TaskRepositoryProtocol {
          may be a better solution to handle the project inegration, to avoid the duplicate
          code, but it's beyond what I know regarding swift project setup. Alternatively,
          we could separate the code, but that doesn't seem like a call I should make.
-         
+
          Adding TaskManagerImpl directly causes there to be a chain of inclusions which
          leads to inclusions of many of the UI elements as well. This seemed like to many
          dependencies for these two functions.
@@ -130,7 +130,7 @@ class TaskManager: BaseRepository<TaskLocalRepository>, TaskRepositoryProtocol {
             }
         })
     }
-    
+
     func tasksForList(withName name: String, oncompletion: @escaping ([String]) -> Void) {
         // The following calls have to run on the main thread to complete successfully
         DispatchQueue.main.sync{
@@ -160,7 +160,7 @@ class TaskManager: BaseRepository<TaskLocalRepository>, TaskRepositoryProtocol {
             self.retrieveTasks().observe(signalObserver)
         }
     }
-    
+
     func add(tasks: [String], type: String, oncompletion: @escaping () -> Void) {
         // validate that it's a known list, so far just todo's are supported, could add habits and dailies
         var addedTasks: [String] = []
@@ -173,7 +173,7 @@ class TaskManager: BaseRepository<TaskLocalRepository>, TaskRepositoryProtocol {
             }
         })
     }
-    
+
     func createTask(title: String, type: String) -> Signal<TaskProtocol?, Never> {
         // create a blank task
         let task = localRepository.getNewTask()
@@ -194,5 +194,5 @@ class TaskManager: BaseRepository<TaskLocalRepository>, TaskRepositoryProtocol {
             }
         })
     }
-    
+
 }
