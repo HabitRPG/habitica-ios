@@ -11,7 +11,9 @@ import ReactiveSwift
 import Prelude
 
 open class JsonNetworkCall: StubbableNetworkCall {
-    public lazy var jsonSignal: Signal<Any, Never> = self.dataSignal.skipNil().map(JsonDataHandler.serialize)
+    public lazy var jsonSignal: Signal<Any, Never> = self.dataSignal.skipNil().map {
+        return JsonDataHandler.serialize($0)
+    }
 
     public override init(configuration: ServerConfigurationProtocol, httpMethod: String, httpHeaders: Dictionary<String, String>? = nil, endpoint: String, postData: Data?,
                          networkErrorHandler: NetworkErrorHandler? = nil, stubHolder: StubHolderProtocol? = nil) {

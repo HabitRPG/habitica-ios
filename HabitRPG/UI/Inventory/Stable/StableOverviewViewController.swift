@@ -9,9 +9,11 @@
 import Foundation
 import Habitica_Models
 
-class StableOverviewViewController<DS>: HRPGCollectionViewController {
+class StableOverviewViewController<DS>: BaseCollectionViewController {
     
     var datasource: DS?
+    
+    var organizeByColor = false
     
     private let headerView = NPCBannerView(frame: CGRect(x: 0, y: -124, width: UIScreen.main.bounds.size.width, height: 124))
     
@@ -28,5 +30,9 @@ class StableOverviewViewController<DS>: HRPGCollectionViewController {
         
         collectionView?.addSubview(headerView)
         collectionView?.contentInset = UIEdgeInsets(top: 124, left: 0, bottom: 0, right: 0)
+    }
+    
+    override func applyTheme(theme: Theme) {
+        collectionView.backgroundColor = theme.contentBackgroundColor
     }
 }

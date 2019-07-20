@@ -141,30 +141,29 @@ class ToastView: UIView {
             backgroundView.layer.borderColor = UIColor.black.withAlphaComponent(0.1).cgColor
             backgroundView.layer.borderWidth = 1
             
-            self.isUserInteractionEnabled = false
+            isUserInteractionEnabled = false
             backgroundView.isUserInteractionEnabled = true
             
-            self.isAccessibilityElement = false
+            isAccessibilityElement = false
         }
     }
 
     func loadOptions() {
-        self.backgroundView.backgroundColor = options.backgroundColor.getUIColor()
-        self.backgroundView.layer.borderColor = options.backgroundColor.getUIColor().darker(by: 10).cgColor
+        backgroundView.backgroundColor = options.backgroundColor.getUIColor()
+        backgroundView.layer.borderColor = options.backgroundColor.getUIColor().darker(by: 10).cgColor
 
         topSpacing.constant = 6
         bottomSpacing.constant = 6
         leadingSpacing.constant = 8
         trailingSpacing.constant = 8
         
-        configureTitle(self.options.title)
-        configureSubtitle(self.options.subtitle)
-        configureLeftImage(self.options.leftImage)
-        configureRightView(icon: self.options.rightIcon, text: self.options.rightText, textColor: self.options.rightTextColor)
+        configureTitle(options.title)
+        configureSubtitle(options.subtitle)
+        configureLeftImage(options.leftImage)
+        configureRightView(icon: options.rightIcon, text: options.rightText, textColor: options.rightTextColor)
         
         priceContainerWidth.constant = 0
         
-        self.setNeedsLayout()
         setNeedsUpdateConstraints()
         updateConstraints()
         setNeedsLayout()
@@ -191,7 +190,7 @@ class ToastView: UIView {
             subtitleLabel.text = subtitle
             subtitleLabel.sizeToFit()
             subtitleLabel.numberOfLines = -1
-            self.titleLabel.font = UIFont.systemFont(ofSize: 16)
+            titleLabel.font = UIFont.systemFont(ofSize: 16)
             titleLabel.textAlignment = .center
         } else {
             subtitleLabel.isHidden = true
@@ -220,7 +219,7 @@ class ToastView: UIView {
             priceIconLabel.text = text
             priceIconLabel.textColor = textColor
             trailingSpacing.constant = 0
-            self.backgroundView.layer.borderColor = options.backgroundColor.getUIColor().cgColor
+            backgroundView.layer.borderColor = options.backgroundColor.getUIColor().cgColor
         } else {
             priceContainer.isHidden = true
             priceIconLabel.removeFromSuperview()

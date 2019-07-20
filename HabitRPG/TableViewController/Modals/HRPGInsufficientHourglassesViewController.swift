@@ -28,7 +28,7 @@ class HRPGInsufficientHourglassesViewController: HRPGSingleOptionModalViewContro
     
     @IBAction func subscribePressed() {
         dismiss(animated: true, completion: nil)
-        if let parentViewController = self.presentingViewController {
+        if let parentViewController = presentingViewController {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let navigationController = storyboard.instantiateViewController(withIdentifier: "PurchaseGemNavController")
             parentViewController.present(navigationController, animated: true, completion: nil)

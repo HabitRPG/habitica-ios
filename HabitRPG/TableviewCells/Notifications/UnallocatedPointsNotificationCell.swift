@@ -9,11 +9,10 @@
 import Foundation
 import Habitica_Models
 
-class UnallocatedPointsNotificationCell: BaseNotificationCell {
+class UnallocatedPointsNotificationCell: BaseNotificationCell<NotificationUnallocatedStatsProtocol> {
     
-    func configureFor(notification: NotificationUnallocatedStatsProtocol) {
-        isClosable = true
-        titleLabel.text = L10n.Notifications.unallocatedStatPoints(notification.points)
+    override func configureFor(notification: NotificationUnallocatedStatsProtocol) {
+        attributedTitle = try? HabiticaMarkdownHelper.toHabiticaAttributedString(L10n.Notifications.unallocatedStatPoints(notification.points))
         iconView.image = UIImage(asset: Asset.notificationsStats)
         super.configureFor(notification: notification)
         setNeedsLayout()

@@ -184,7 +184,8 @@ enum AppIconName: String {
     case tealAltBlack = "Teal Alternative Black"
     case blackAltBlack = "Black Alternative Black"
     case prideHabitica = "Pride"
-    case prideHabiticaAlt = "Pride Alt"
+    case prideHabiticaAlt = "Pride Alternative"
+    case prideHabiticaAltBlack = "Pride Alternative Black"
 
     var fileName: String? {
         switch self {
@@ -196,6 +197,8 @@ enum AppIconName: String {
             return "PrideHabitica"
         case .prideHabiticaAlt:
             return "PrideHabiticaAlt"
+        case .prideHabiticaAltBlack:
+            return "PrideHabiticaAltBlack"
         case .maroon:
             return "Maroon"
         case .red:
@@ -277,7 +280,10 @@ enum AppIconName: String {
             .greenAltBlack,
             .black,
             .blackAlt,
-            .blackAltBlack
+            .blackAltBlack,
+            .prideHabitica,
+            .prideHabiticaAlt,
+            .prideHabiticaAltBlack
         ]
     }
 }
@@ -329,11 +335,11 @@ class SettingsViewController: FormViewController, Themeable {
         form +++ Section(L10n.Settings.maintenance)
             <<< ButtonRow { row in
                 row.title = L10n.Settings.clearCache
-                row.onCellSelection({ (_, _) in
-                    let progressView = MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
+                row.onCellSelection({[weak self] (_, _) in
+                    let progressView = MRProgressOverlayView.showOverlayAdded(to: self?.view, animated: true)
                     progressView?.setTintColor(ThemeService.shared.theme.tintColor)
-                    self.contentRepository.clearDatabase()
-                    self.contentRepository.retrieveContent().withLatest(from: self.userRepository.retrieveUser())
+                    self?.contentRepository.clearDatabase()
+                    self?.contentRepository.retrieveContent().withLatest(from: self?.userRepository.retrieveUser() ?? Signal.empty)
                         .observeCompleted {
                             progressView?.dismiss(true)
                     }
@@ -341,10 +347,10 @@ class SettingsViewController: FormViewController, Themeable {
             }
             <<< ButtonRow { row in
                 row.title = L10n.Settings.reloadContent
-                }.onCellSelection({ (_, _) in
-                    let progressView = MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
+                }.onCellSelection({[weak self] (_, _) in
+                    let progressView = MRProgressOverlayView.showOverlayAdded(to: self?.view, animated: true)
                     progressView?.tintColor = ThemeService.shared.theme.tintColor
-                    self.contentRepository.retrieveContent().observeCompleted {
+                    self?.contentRepository.retrieveContent().observeCompleted {
                         progressView?.dismiss(true)
                     }
                 })
@@ -479,14 +485,14 @@ class SettingsViewController: FormViewController, Themeable {
                     cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
                     cell.tintColor = ThemeService.shared.theme.tintColor
                 }
-                }.onCellHighlightChanged({ (_, row) in
+                }.onCellHighlightChanged({[weak self] (_, row) in
                     if let date = row.value {
                         let calendar = Calendar.current
                         let hour = calendar.component(.hour, from: date)
-                        if hour == self.user?.preferences?.dayStart {
+                        if hour == self?.user?.preferences?.dayStart {
                             return
                         }
-                        self.userRepository.updateDayStartTime(hour).observeCompleted {}
+                        self?.userRepository.updateDayStartTime(hour).observeCompleted {}
                     }
                 })
             +++ Section(L10n.Settings.mentions) { section in
@@ -502,12 +508,12 @@ class SettingsViewController: FormViewController, Themeable {
                                LabeledFormValue(value: false, label: L10n.Settings.searchablePrivateSpaces)
                 ]
                 row.selectorTitle = row.title
-                row.onChange({ (row) in
-                    if row.value?.value == self.user?.preferences?.searchableUsername {
+                row.onChange({[weak self] (row) in
+                    if row.value?.value == self?.user?.preferences?.searchableUsername {
                         return
                     }
                     if let value = row.value {
-                        self.userRepository.updateUser(key: "preferences.searchableUsername", value: value.value).observeCompleted {}
+                        self?.userRepository.updateUser(key: "preferences.searchableUsername", value: value.value).observeCompleted {}
                     }
                 })
             }
@@ -518,12 +524,12 @@ class SettingsViewController: FormViewController, Themeable {
                     cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
                     cell.tintColor = ThemeService.shared.theme.tintColor
                 }
-                row.onChange({ (row) in
-                    if row.value == self.user?.preferences?.pushNotifications?.unsubscribeFromAll {
+                row.onChange({[weak self] (row) in
+                    if row.value == self?.user?.preferences?.pushNotifications?.unsubscribeFromAll {
                         return
                     }
                     if let value = row.value {
-                        self.userRepository.updateUser(key: "preferences.pushNotifications.unsubscribeFromAll", value: value).observeCompleted {}
+                        self?.userRepository.updateUser(key: "preferences.pushNotifications.unsubscribeFromAll", value: value).observeCompleted {}
                     }
                 })
             }
@@ -533,12 +539,12 @@ class SettingsViewController: FormViewController, Themeable {
                     cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
                     cell.tintColor = ThemeService.shared.theme.tintColor
                 }
-                row.onChange({ (row) in
-                    if row.value == self.user?.inbox?.optOut {
+                row.onChange({[weak self] (row) in
+                    if row.value == self?.user?.inbox?.optOut {
                         return
                     }
                     if let value = row.value {
-                        self.userRepository.updateUser(key: "inbox.optOut", value: value).observeCompleted {}
+                        self?.userRepository.updateUser(key: "inbox.optOut", value: value).observeCompleted {}
                     }
                 })
         }
@@ -554,9 +560,9 @@ class SettingsViewController: FormViewController, Themeable {
                 })
                 let language = LanguageHandler.getAppLanguage()
                 row.value = LabeledFormValue(value: language.rawValue, label: language.name)
-                row.onChange({ (row) in
+                row.onChange({[weak self] (row) in
                     if let value = row.value?.value, let newLanguage = AppLanguage(rawValue: value) {
-                        self.update(language: newLanguage)
+                        self?.update(language: newLanguage)
                     }
                 })
                 row.onPresent({ (_, to) in
@@ -574,12 +580,12 @@ class SettingsViewController: FormViewController, Themeable {
                 row.options = SoundTheme.allThemes.map({ (theme) -> LabeledFormValue<String> in
                     return LabeledFormValue(value: theme.rawValue, label: theme.niceName)
                 })
-                row.onChange({ (row) in
+                row.onChange({[weak self] (row) in
                     if let newTheme = SoundTheme(rawValue: row.value?.value ?? "") {
                         SoundManager.shared.currentTheme = newTheme
                     }
                     if let value = row.value?.value {
-                        self.userRepository.updateUser(key: "preferences.sound", value: value).observeCompleted {}
+                        self?.userRepository.updateUser(key: "preferences.sound", value: value).observeCompleted {}
                     }
                 })
                 row.onPresent({ (_, to) in
@@ -745,17 +751,17 @@ class SettingsViewController: FormViewController, Themeable {
         defaults.set(language.rawValue, forKey: "ChosenLanguage")
         LanguageHandler.setAppLanguage(language)
         self.userRepository.updateUser(key: "preferences.language", value: language.code)
-            .flatMap(.latest, { _ in
-                return self.contentRepository.retrieveContent()
+            .flatMap(.latest, {[weak self] _ in
+                return self?.contentRepository.retrieveContent() ?? Signal.empty
             })
-            .observeCompleted {
+            .observeCompleted {[weak self] in
                 progressView?.dismiss(true)
-                self.relaunchMainApp()
+                self?.relaunchMainApp()
         }
     }
     
     private func relaunchMainApp() {
-        self.dismiss(animated: true, completion: {
+        dismiss(animated: true, completion: {
             UIApplication.topViewController()?.dismiss(animated: true, completion: nil)
         })
     }

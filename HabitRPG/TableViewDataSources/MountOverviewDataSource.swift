@@ -17,8 +17,12 @@ class MountOverviewDataSource: StableOverviewDataSource<PetProtocol> {
         sections.append(ItemSection<StableOverviewItem>(title: L10n.Stable.questMounts))
         sections.append(ItemSection<StableOverviewItem>(title: L10n.Stable.wackyMounts))
         sections.append(ItemSection<StableOverviewItem>(title: L10n.Stable.specialMounts))
-        
-        disposable.inner.add(stableRepository.getOwnedMounts()
+        fetchData()
+    }
+    
+    override func fetchData() {
+        super.fetchData()
+        fetchDisposable = stableRepository.getOwnedMounts()
             .map({ data -> [String] in
                 return data.value.map({ (ownedMount) -> String in
                     return ownedMount.key ?? ""
@@ -26,9 +30,9 @@ class MountOverviewDataSource: StableOverviewDataSource<PetProtocol> {
                     return !key.isEmpty
                 })
             })
-            .combineLatest(with: self.stableRepository.getMounts())
-            .map({ (ownedMounts, mounts) in
-                return self.mapData(owned: ownedMounts, animals: mounts.value)
+            .combineLatest(with: self.stableRepository.getMounts(sortKey: (organizeByColor ? "potion" : "egg")))
+            .map({[weak self] (ownedMounts, mounts) in
+                return self?.mapData(owned: ownedMounts, animals: mounts.value) ?? [:]
             })
             .on(value: {[weak self]overviewItems in
                 self?.sections[0].items.removeAll()
@@ -40,14 +44,18 @@ class MountOverviewDataSource: StableOverviewDataSource<PetProtocol> {
                 self?.sections[3].items.removeAll()
                 self?.sections[3].items.append(contentsOf: overviewItems["special"] ?? [])
                 self?.collectionView?.reloadData()
-            }).start())
+            }).start()
     }
     
     override func getImageName(_ animal: AnimalProtocol) -> String {
         if animal.type == "special" {
             return "Mount_Icon_\(animal.key ?? "")"
         } else {
-            return "Mount_Icon_\(animal.egg ?? "")-Base"
+            if organizeByColor {
+                return "Pet_HatchingPotion_\(animal.potion ?? "")"
+            } else {
+                return "Mount_Icon_\(animal.egg ?? "")-Base"
+            }
         }
     }
 }

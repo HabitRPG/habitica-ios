@@ -62,6 +62,17 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         let inAppReward = reward
         pinButton.isHidden = inAppReward?.pinType == "armoire" || inAppReward?.pinType == "potion"
         
+        if #available(iOS 11.0, *) {
+            pinButton.layer.cornerRadius = 12
+            buyButton.layer.cornerRadius = 12
+            if pinButton.isHidden {
+                buyButton.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+            } else {
+                pinButton.layer.maskedCorners = [ .layerMinXMaxYCorner]
+                buyButton.layer.maskedCorners = [ .layerMaxXMaxYCorner]
+            }
+        }
+
         ThemeService.shared.addThemeable(themable: self)
         
         populateText()
@@ -286,8 +297,6 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         }
         inventoryRepository.togglePinnedItem(pinType: pinType, path: path).observeValues {[weak self] (_) in
             self?.isPinned = !(self?.isPinned ?? false)
-            if let shopViewController = self?.shopViewController {
-            }
         }
     }
     
@@ -457,15 +466,15 @@ extension NSLayoutConstraint {
 
 extension UIView {
     func addSingleViewWithConstraints(_ view: UIView) {
-        self.addSubview(view)
-        self.addConstraints(NSLayoutConstraint.defaultVerticalConstraints("V:|-0-[view]-0-|", ["view": view]))
-        self.addConstraints(NSLayoutConstraint.defaultHorizontalConstraints(view))
+        addSubview(view)
+        addConstraints(NSLayoutConstraint.defaultVerticalConstraints("V:|-0-[view]-0-|", ["view": view]))
+        addConstraints(NSLayoutConstraint.defaultHorizontalConstraints(view))
     }
     
     func triggerLayout() {
-        self.setNeedsUpdateConstraints()
-        self.updateConstraints()
-        self.setNeedsLayout()
-        self.layoutIfNeeded()
+        setNeedsUpdateConstraints()
+        updateConstraints()
+        setNeedsLayout()
+        layoutIfNeeded()
     }
 }

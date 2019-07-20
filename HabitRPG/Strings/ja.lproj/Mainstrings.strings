@@ -105,7 +105,7 @@
 /* (No Comment) */
 "groups.assign_new_leader" = "新しいリーダーを指定";
 /* (No Comment) */
-"groups.leader_challenges" = "リーダーだけが、チャレンジをつくることができます。";
+"groups.leader_challenges" = "リーダーだけが、チャレンジを作成できます";
 /* (No Comment) */
 "guilds.keep_challenges" = "チャレンジを続ける";
 /* (No Comment) */
@@ -113,7 +113,7 @@
 /* (No Comment) */
 "guilds.leave_guild_description" = "チャレンジをやめてタスクを保持または削除しますか？";
 /* (No Comment) */
-"guilds.leave_guild_title" = "ギルドをやめますか？";
+"guilds.leave_guild_title" = "ギルドを脱退しますか？";
 /* (No Comment) */
 "hatch_egg" = "たまごをかえす";
 /* (No Comment) */
@@ -135,7 +135,7 @@
 /* (No Comment) */
 "inventory.wrong_class" = "%@s だけが購入できます。クラスはセッティングから変更できます";
 /* (No Comment) */
-"invite_party" = "パーティーに招待する";
+"invite_party" = "パーティーを招待する";
 /* (No Comment) */
 "leader" = "リーダー";
 /* (No Comment) */
@@ -239,7 +239,7 @@
 /* (No Comment) */
 "quests.participants_header" = "参加者";
 /* (No Comment) */
-"quests.pending" = "未決";
+"quests.pending" = "保留";
 /* (No Comment) */
 "quests.rejected" = "拒否しました";
 /* (No Comment) */
@@ -329,7 +329,7 @@
 /* (No Comment) */
 "stable.special_pets" = "スペシャルペット";
 /* (No Comment) */
-"stable.standard" = "一般";
+"stable.standard" = "基本";
 /* (No Comment) */
 "stats.allocated" = "割り当て済み";
 /* (No Comment) */
@@ -371,13 +371,13 @@
 /* (No Comment) */
 "tasks.form.reminders" = "通知";
 /* (No Comment) */
-"tasks.form.repeats" = "繰り返し";
+"tasks.form.repeats" = "くり返し";
 /* (No Comment) */
 "tasks.form.reset_streak" = "実行回数のリセット";
 /* (No Comment) */
 "tasks.form.tags" = "タグ";
 /* (No Comment) */
-"tasks.form.trivial" = "ちょちょい";
+"tasks.form.trivial" = "ちょろい";
 /* (No Comment) */
 "tasks.habit" = "習慣";
 /* (No Comment) */
@@ -402,8 +402,8 @@
 "yearly" = "年間";
 "back" = "戻る";
 "all" = "すべて";
-"weak" = "強敵";
-"strong" = "ザコ敵";
+"weak" = "ザコ敵";
+"strong" = "強敵";
 "due" = "期限";
 "grey" = "グレー";
 "dated" = "期限付き";
@@ -441,22 +441,22 @@
 "stats.one_point_to_allocate" = "割り当てられるポイント：1";
 "stats.points_to_allocate" = "割り当てられるポイント：%d";
 "stats.auto_allocate_points" = "ポイントの自動割り当て";
-"stats.distribute_evenly" = "均等に能力値ポイントを割りあてる";
-"stats.distribute_evenly_help" = "各々の能力値に均等にポイントを割りあてます。";
-"stats.distribute_class" = "クラス基準で割りあてる";
-"stats.distribute_class_help" = "あなたのクラスにとって重要な能力値に、多めにポイントを割りあてます。";
-"stats.distribute_tasks" = "タスクの実践基準で割りあてる";
-"stats.distribute_tasks_help" = "完了したタスクの分類にもとづいて、力、知能 、体質、知覚にポイントを割りあてます。";
-"stats.character_build_title" = "キャラクターの育成";
+"stats.distribute_evenly" = "均等に能力値ポイントを割り当てる";
+"stats.distribute_evenly_help" = "各々の能力値に均等にポイントを割り当てます。";
+"stats.distribute_class" = "クラス基準で割り当てる";
+"stats.distribute_class_help" = "あなたのクラスにとって重要な能力値により多くのポイントを割り当てます。";
+"stats.distribute_tasks" = "タスクの実践基準で割り当てる";
+"stats.distribute_tasks_help" = "完了したタスクの分類にもとづいて、力、知能 、体質、知覚にポイントを割り当てます。";
+"stats.character_build_title" = "キャラクターの設定";
 "stats.character_build_text" = "レベルが上がるごとに、能力に割り当てられる 1 ポイントを得られます。手動で好きなように割り当てることもできますし、自動割り当て設定でおまかせにすることもできます。";
 "stats.stat_guide" = "能力値ガイド";
 "stats.strength_title" = "力";
 "stats.intelligence_title" = "知能";
-"stats.intelligence_text" = "タスクを完了した時に得られる経験値が多くなります。さらにマナの上限と回復速度を増やします。";
+"stats.intelligence_text" = "タスクの完了によって得られる経験値が増加します。また、マナの上限と時間回復の早さが増加します。";
 "stats.constitution_title" = "体質";
-"stats.constitution_text" = "タスクから受けるダメージを減らします。ボスから受けるダメージは減少しません。";
+"stats.constitution_text" = "タスクの失敗によって受けるダメージが減少します。ボスからのダメージは減少しません。";
 "stats.perception_title" = "知覚";
-"stats.perception_text" = "タスクを完了した時のアイテムドロップの確率、1日あたりのアイテム取得の上限、連続実行のボーナス、そしてタスク完了時に得られるゴールドの量が増えます。";
+"stats.perception_text" = "タスクを完了した時に落とし物を見つける確率、１日ごとの落とし物上限、連続実行ボーナス、タスクから獲得するゴールドの量などが増加します。";
 "controls" = "コントロール";
 "tasks.habits" = "習慣";
 "tasks.dailies" = "日課";
@@ -476,13 +476,13 @@
 "tasks.form.every" = "くり返しの間隔";
 "tasks.form.day_of_month" = "日にち";
 "tasks.form.day_of_week" = "曜日";
-"tasks.form.accessibility.positive_and_negative_enabled" = "良い習慣と悪い習慣のアクションを有効にしました";
-"tasks.form.accessibility.positive_enabled" = "良い習慣のアクションを有効にしました";
-"tasks.form.accessibility.negative_enabled" = "悪い習慣のアクションを有効にしました";
-"tasks.form.accessibility.enable_positive" = "良いアクションを有効にする";
-"tasks.form.accessibility.disable_positive" = "良いアクションを無効にする";
-"tasks.form.accessibility.enable_negative" = "悪いアクションを有効にする";
-"tasks.form.accessibility.disable_negative" = "悪いアクションを無効にする";
+"tasks.form.accessibility.positive_and_negative_enabled" = "良い習慣と悪い習慣のアクションを有効にしました。";
+"tasks.form.accessibility.positive_enabled" = "良い習慣のアクションを有効にしました。";
+"tasks.form.accessibility.negative_enabled" = "悪い習慣のアクションを有効にしました。";
+"tasks.form.accessibility.enable_positive" = "良いアクションを有効にする。";
+"tasks.form.accessibility.disable_positive" = "良いアクションを無効にする。";
+"tasks.form.accessibility.enable_negative" = "悪いアクションを有効にする。";
+"tasks.form.accessibility.disable_negative" = "悪いアクションを無効にする。";
 "tasks.form.accessibility.task_difficulty" = "難易度は %@ です";
 "tasks.form.accessibility.set_task_difficulty" = "難易度を %@ に変更する";
 "tasks.form.accessibility.enable" = "%@ を有効にする";
@@ -511,7 +511,7 @@
 "tasks.examples.habit_text" = "ここをタップして直したいと思う習慣を入力しましょう";
 "tasks.examples.habit_notes" = "または左にスワイプして削除";
 "tasks.examples.todo_text" = "Habiticaに参加する(チェックして完了してください！)";
-"tasks.examples.todo_notes" = "このTo-Doを完了したり、編集したり、削除することができます";
+"tasks.examples.todo_notes" = "このTo-Doを完了したり、編集したり、削除したりできます。";
 "tasks.examples.reward_text" = "自分へのごほうび";
 "tasks.examples.reward_notes" = "テレビを見る、ゲームをする、おやつを食べるなど。報酬はあなた次第です！";
 "tasks.examples.work_habit" = "Eメールを処理する";
@@ -730,8 +730,8 @@
 "tutorials.reorder_task" = "タスクを長押しして、場所を入れ替える";
 "tutorials.inbox" = "ここではプライベート メッセージを読んだり、返信したりできます。メッセージは相手のプロフィールからも送ることができます。";
 "tutorials.stats" = "グレーのボタンをタップして一度にポイントを能力値に割り当てるか、矢印をタップして１ポイントずつ割り当ててください";
-"world_boss.pending_strike" = "迫りくる一撃";
-"world_boss.rage_strike_explanation_button" = "怒りの一撃って何？";
+"world_boss.pending_strike" = "保留中の攻撃";
+"world_boss.rage_strike_explanation_button" = "怒りの攻撃って何？";
 "buffs" = "勢い( 能力値ボーナス )";
 "allocated" = "割り当て済み";
 "gems" = "ジェム";
@@ -777,7 +777,7 @@
 "unpin_from_rewards" = "ごほうびからピンを外す";
 "pin_to_rewards" = "ごほうびにピン留め";
 "moderator" = "モデレーター";
-"staff" = "杖";
+"staff" = "スタッフ";
 "report_x_violation" = "%@ を違反で報告しますか?";
 "not_getting_drops" = "欲しいものが見つからない？市場を確認して必要なものを買おう！";
 "streak_achievement_title" = "連続実行ボーナスを獲得しました！";
@@ -798,3 +798,141 @@
 "choose_task" = "タスクを選択";
 "shops.other_class_disclaimer" = "現在のクラスの装備のみ購入できます";
 "shops.purchased_all_gear" = "あなたはクラス固有の装備をすでに全部持っています！　春分・秋分や夏至・冬至の頃に開催される大祭で、新たな装備が追加されることでしょう。";
+"titles.skills" = "スキル";
+"titles.avatar" = "アバター";
+"stats.total" = "合計";
+"stats.strength_text" = "タスクを完了した時の会心の一撃のボーナスや発生率が増加します。また、ボスへ与えるダメージも増加します。 ";
+"tasks.team" = "チーム";
+"titles.gift_subscription" = "寄付会員特典を贈る";
+"tasks.due_today" = "期限　今日";
+"tasks.due_tomorrow" = "期限　明日";
+"tasks.due_in_x_days" = "期限　%d日後";
+"tasks.due_x" = "期限　%@";
+"tasks.every_x" = "毎%@";
+"tasks.repeats.repeats_every_on" = "%@を%@ごとにくり返す";
+"tasks.repeats.repeats_every" = "%@くり返す";
+"tasks.repeats.monthly_the" = "%@";
+"tasks.examples.team_habit" = "チームに伝える";
+"tasks.examples.team_daily_text" = "　";
+"tasks.examples.team_todo_text" = "チームプロジェクトを完了する";
+"settings.app_icon" = "アプリアイコン";
+"settings.server" = "サーバー";
+"settings.change_about_message" = "メッセージについて変更する";
+"settings.reset_account_description" = "【注意！】この操作はあなたのアカウントの多くの部分をリセットします。リセットは大変やる気を削ぐことですが、短時間だけサイトを遊んだ始めたばかりの段階にはリセットが役立つこともあるでしょう。\n\nすべてのレベル、ゴールド、経験値を失います。すべてのタスク（チャレンジ関連のものを除く）は完全に削除され、履歴データもすべて削除されます。すべての装備を失いますが、現在あなたがもっている限定装備や寄付会員向けのミステリーアイテムなども含めて、すべて買い戻すことができます（クラス固有の装備を再度購入するには、該当するクラスにならなくてはいけません）。現在のクラスと、ペットと乗騎は維持されます。あるいは「転生のオーブ」を使った方が良いかもしれません。タスクと所持品も維持される、より安全な選択肢です。";
+"settings.confirm_new_password" = "新しいパスワードを確認する";
+"settings.api_disclaimer" = "サードパーティのアプリケーションで使用する際にこちらをコピーしてください。しかし、APIトークンはパスワードのようなものですから、公開しないでください。ユーザーIDを求められる場合はありますが、GitHub など他人から見える場所には、APIトークンは絶対に投稿しないでください。";
+"settings.searchable_everywhere" = "どこでも";
+"settings.searchable_private_spaces" = "プライベートスペースのみ";
+"settings.mentions" = "返信";
+"guilds.guild_members" = "ギルドメンバー";
+"guilds.guild_description" = "ギルドの説明";
+"guilds.join_guild" = "ギルドに加入する";
+"guilds.guild_leader" = "ギルドリーダー";
+"avatar.body" = "体";
+"avatar.hair" = "髪";
+"avatar.extras" = "その他";
+"classes.warrior_description" = "戦士はタスクを完了したときに「会心の一撃」が出やすく、その効果も高いです。「会心の一撃」が出ると、ゴールド、経験値、アイテムドロップの確率にランダムにボーナスがつきます。また、戦士はボスに大きなダメージを与えます。予測できない一攫千金タイプの報酬でやる気が出る、もしくはボスクエストで活躍したいなら、戦士でプレイしましょう！";
+"classes.mage_description" = "魔道士は学習スピードが速く、他のクラスよりも多く経験値を得てレベルが早く上がります。また、特殊能力を使うためのマナも大量に獲得できます。Habiticaの戦略ゲーム的な側面を楽しみたいなら、あるいはレベルアップしたり追加要素をアンロックしたりするのがあなたにとって強いやる気になるなら、魔道士でプレイしましょう！ ";
+"party.create_party_description" = "仲間たちと一緒に、または各自で、クエストに挑戦しましょう。モンスターと戦ったり、チャレンジを作ったり…… そして、パーティーを通じてあなた自身を責任ある状態にし続けてみましょう。 ";
+"party.join_party_description" = "下の方に見えるユーザー名をパーティーメンバーに伝えると、メンバーはあなたに招待を送ることができます";
+"party.party_description" = "パーティーの説明";
+"groups.members" = "メンバー";
+"groups.invite_member" = "メンバーを招待する";
+"quests.reward_experience" = "%d 経験値";
+"quests.reward_gold" = "%d ゴールド";
+"quests.rage_attack" = "怒りの攻撃： %@";
+"open_app_store" = "App Store のページを開く";
+"tap_to_show" = "タップすると表示されます";
+"groups.invite.add_username" = "ユーザー名を追加する";
+"display_name" = "表示名";
+"repeat_password" = "パスワードをもう一度入力してください";
+"username_prompt_body" = "表示名は変更されていません。しかし、かつてのログイン名は、現在は招待・チャットでの＠返信・メッセージのやりとりなどで使用されるユーザー名になりました。";
+"username_prompt_wiki" = "この変更についてより詳しく知りたいときは、#<wk>wikiをご覧ください。#";
+"username_prompt_disclaimer" = "ユーザー名は、#<ts>サービス利用規約# と #<cg>コミュニティーガイドライン# を守ったものでなければなりません。もしあなたが以前にログイン名を設定していなかった場合、あなたのユーザー名は自動生成されました。";
+"settings.confirm_username_description" = "承認されたユーザー名は招待や@返信、メッセージなどで公開されます。ユーザー名はいつでも「設定」から変更可能です。";
+"settings.display_name_length_error" = "表示名は1～30文字以内にしてください。";
+"settings.searchable_username" = "ユーザー名を提案してもらう";
+"about.send_feedback" = "意見を送る";
+"about.leave_review" = "レビューを残す";
+"about.love_open_source" = "私たちはオープンソースのソフトウェアが大好きです。";
+"about.no_email_message" = "おっと、どうやらあなたはこの電話でメールアドレスを設定していないようです。このクイック報告オプションを使うには、iOSのメールアプリでアカウントを設定してください。もしくは、%@で直接私たちにメールを送ってください";
+"damage_paused" = "ダメージを一時停止する";
+"login.password_confirm_error" = "パスワードとパスワードの確認は一致していなければなりません。";
+"login.authentication_error" = "認証にエラーが発生しました。あとで再試行してください";
+"login.email_username" = "Eメール / ユーザー名";
+"login.forgot_password" = "パスワードを忘れた";
+"groups.error_name_required" = "名前は空白にできません。";
+"gift_recipient_title" = "誰に贈り物を送りたいですか？";
+"gift_recipient_subtitle" = "受け取る人の@ユーザー名を入力してください";
+"continue" = "続ける";
+"gift_confirmation_title" = "プレゼントを贈りました！";
+"gift_confirmation_body_g1g1" = "%@ に %@ヶ月分のHabitica寄付会員特典を送りました。そして、１つ贈って１つ無料で手に入れようキャンペーンによって、あなたのアカウントにも同じ寄付会員特典が適用されました！";
+"gift_confirmation_body" = "%@ に %@ヶ月分のHabitica寄付会員特典を送りました。";
+"gift_subscription_prompt" = "下の方から贈りたい寄付会員特典を選んでください！ この購入では、自動的に更新はされません。";
+"gem_cap" = "上限 %d ジェム";
+"hourglass_count" = "+%d個の神秘の砂時計";
+"intro.welcome_prompt" = "あなたを何と呼べばいいですか？";
+"intro.welcome_speechbubble" = "やあ、新人さんだね。僕はJustin。Habiticaの案内役だよ。\n\nまず、あなたを何と呼べばいいかな？ 僕の選んだものから自由に変更してね。準備が整ったら、自分のアバターを作ってみよう！";
+"intro.avatar_setup_speechbubble" = "では、どのような容姿にしたいですか？ 心配しないで、これはあとで変更することができます。";
+"intro.task_setup_speechbubble" = "素晴らしい！ さて、あなたはこの旅路を通して何に取り組むことに関心がありますか？";
+"intro.card2.text" = "実生活でタスクをこなし、ゲーム内の機能をアンロックしましょう。よろいやペットなどのさまざまなアイテムを、あなた自身の目標に近づいたごほうびとして獲得しましょう。 ";
+"never" = "しません";
+"keep_tasks" = "タスクを保持する";
+"delete_tasks" = "タスクを削除する";
+"welcome_back" = "おかえりなさい！";
+"write_a_message" = "メッセージを書く";
+"whats_world_boss" = "ワールドボスとは何ですか？";
+"tutorials.spells" = "スキルは、強力な効果を持つ特殊能力です！ スキルをタップして使いましょう。スキルを使うとマナ (青いバー) が減ります。マナは、毎日チェックして実生活のタスクを達成することで獲得できます。詳しくは、メニューのFAQをチェックしましょう！";
+"faint.title" = "体力がなくなった！";
+"faint.description" = "レベル、ゴールド、装備の一部を失ってしまいました。しかし、がんばればすべてを取り戻せます！";
+"faint.dont_despair" = "がっかりしないで！";
+"faint.good_luck" = "あなたなら、きっとやれる――幸あらんことを。";
+"faint.button" = "体力を復活させて、もう一度やってみよう";
+"agree_guidelines_prompt" = "ガイドラインに従うことに同意します";
+"rage_meter" = "怒りメーター";
+"world_boss.world_boss" = "ワールドボス";
+"world_boss.title" = "%@の攻撃！";
+"world_boss.action_prompt" = "%@の脅威からHabiticaを守り、ボスを倒して特別なごほうびを手に入れましょう！";
+"world_boss.description" = "ワールドボスは、コミュニティ全体がタスクによって強力なモンスターを協力して打ち倒す特別イベントです！";
+"world_boss.first_bullet" = "タスクを完了してボスにダメージを与えましょう";
+"world_boss.second_bullet" = "サボったタスクによってこのボスからダメージを受けることはありませんが、怒りメーターが上昇します。怒りメーターが満タンになるとボスは店主たちに攻撃します！";
+"world_boss.third_bullet" = "あなたは通常のクエストボスへもこれまで通り挑戦し続けることができて、ダメージはどちらのボスにも適用されます";
+"world_boss.fourth_bullet" = "キャンプ場でボス戦の進行状況と怒りの攻撃をチェックしましょう";
+"world_boss.rage_strike_warning" = "気をつけて…\nワールドボスは怒りゲージがたまる度に、わたしたちの味方である店主たちの一人に激しく攻撃してきます。日課をこなし続けて、攻撃されるのを防ぎましょう！";
+"world_boss.rage_strike_title" = "%@が攻撃を受けました！";
+"world_boss.rage_strike_damaged" = "%@は悲しみに打ちひしがれています！\n愛すべき%@は%@の攻撃で%@が破壊されてしまい途方に暮れています。急いでタスクに取り組んで、あの怪物を倒して再建の手助けをしましょう！";
+"world_boss.rage_strike_explanation" = "怒り攻撃が３回まで起こる可能性があります\nこのゲージはHabiticaの住人たちが日課を逃すとたまっていきます。ゲージが一杯になると、心蝕のディスハートナーはその強烈なハートブレイクをHabiticaの店主のうち一人に食らわせます。ですから必ずタスクを実行しましょう！";
+"checkin_yesterdays_dalies" = "昨日行った日課をチェックしましょう：";
+"start_my_day" = "一日を始める";
+"force_start" = "強制的に開始する";
+"accessibility.world_boss_pending_damage" = "ワールドボスの%@が保留しているダメージ： %@";
+"accessibility.score_habit_up" = "習慣スコアアップ";
+"accessibility.score_habit_down" = "習慣スコアダウン";
+"accessibility.not_completed_x" = "未完了の%@";
+"accessibility.not_due" = "期限ではない";
+"accessibility.not_completed" = "未完了";
+"accessibility.collapse_checklist" = "チェックリストをたたむ";
+"accessibility.expand_checklist" = "チェックリストを開く";
+"great" = "すばらしい";
+"leave_challenge" = "チャレンジをやめる";
+"join_challenge" = "チャレンジに参加する";
+"publish_challenge" = "公共のチャレンジ";
+"view_participant_progress" = "参加者の進捗を見る";
+"end_challenge" = "チャレンジを終了する";
+"subscription_info_1_description" = "商人のAlexanderが、ジェムを１個につき20ゴールドで売ってくれます。Alexanderと1ヵ月の間に取り引きできるジェムの数は、最初は25個に限定されています。しかし、寄付の継続3カ月ごとにその数が5個ずつ増えていき、最大で月に50個を買うことができます！";
+"subscription_info_2_description" = "毎月、アバターを個性的に装飾するアイテムが手に入ります！\n\nさらに寄付の継続3カ月ごとに、謎のタイムトラベラーによって、歴史的（そして未来的！）な装飾アイテムが入手可能になります。";
+"subscription_gift_explanation" = "寄付会員特典を誰かに贈りたいですか？";
+"subscription_gift_button" = "寄付会員特典を贈る";
+"subscription_support_developers" = "寄付することで開発者たちを支援して、\nHabiticaの運営を維持する手助けをしましょう";
+"subscribe" = "寄付";
+"send_gift" = "贈り物を送る";
+"gift_one_get_one_title" = "１つ贈って、１つ無料で手に入れよう！";
+"gift_one_get_one_description" = "このプロモーションが開催されている間は、贈り物を送った後に自動的に同じ寄付会員特典を受けることができます。";
+"gems_support_developers" = "ジェムを購入することで、開発者を支援し、\nHabitica の運営を維持する手助けができます";
+"buy_for_x" = "%@で買う";
+"earned_achievement_share" = "Habiticaで新しい実績を獲得したよ！ ";
+"invalid_recipient_message" = "受け取る人として有効なHabiticaユーザー名を指定する必要があります。";
+"invalid_recipient_title" = "無効なHabiticaユーザー名";
+"filter_by_tags" = "タグでフィルターをかける";
+"purchased" = "%@を購入しました";
+"buy_reward" = "'%@'を%fゴールドで購入しました";

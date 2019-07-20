@@ -421,7 +421,7 @@
 /* (No Comment) */
 "tasks.form.accessibility.negative_enabled" = "Acțiune negativă a obiceiului activată.";
 /* (No Comment) */
-"tasks.form.accessibility.positive_and_negative_enabled" = "Acțiunile pozitive și negative ale obiceiului activate. ";
+"tasks.form.accessibility.positive_and_negative_enabled" = "Acțiunile pozitive și negative ale obiceiului activate.";
 /* (No Comment) */
 "tasks.form.accessibility.positive_enabled" = "Acțiune pozitivă a obiceiului activată.";
 /* (No Comment) */
@@ -433,7 +433,7 @@
 /* (No Comment) */
 "tasks.form.clear" = "Șterge";
 /* (No Comment) */
-"tasks.form.confirm_delete" = "Ești sigur că vrei să ștergi acest țel?";
+"tasks.form.confirm_delete" = "Ești sigur că vrei să ștergi această sarcină?";
 /* (No Comment) */
 "tasks.form.controls" = "Controale";
 /* (No Comment) */
@@ -553,8 +553,8 @@
 "titles.tavern" = "Tavernă";
 "titles.party" = "Grup";
 "titles.guilds" = "Bresle";
-"titles.guild" = "Ghildă";
-"titles.challenges" = "Chemări";
+"titles.guild" = "Breaslă";
+"titles.challenges" = "Provocări";
 "titles.shops" = "Magazine";
 "titles.choose_user" = "Alege Utilizatorul";
 "titles.choose_recipient" = "Alege Destinatar";
@@ -568,24 +568,24 @@
 "stats.distribute_class" = "Distribuie în funcție de clasă";
 "stats.distribute_class_help" = "Repartizează mai multe puncte atributelor importante pentru Clasa ta.";
 "stats.distribute_tasks" = "Distribuie în funcție de activitatea sarcinii";
-"stats.distribute_tasks_help" = "Repartizează puncte în funcție de categoriile Forță, Inteligență, Constituție, și Percepție, asociate cu sarcinile completate.";
+"stats.distribute_tasks_help" = "Repartizează puncte în funcție de categoriile Forță, Inteligență, Constituție și Percepție, asociate cu sarcinile completate.";
 "stats.character_build_title" = "Definire Caracter";
 "stats.character_build_text" = "Fiecare nivel îți oferă un punct pe care-l poți repartiza unui atribut la alegerea ta. Poți face acest lucru manual, sau poți lăsa jocul să decidă pentru tine folosind una din opțiunile de Alocare Automată.";
-"stats.stat_guide" = "Ghidul Statusului";
+"stats.stat_guide" = "Ghidul de început";
 "stats.strength_title" = "Forță";
 "stats.intelligence_title" = "Inteligență";
-"stats.intelligence_text" = "Sporește EXP obținută pentru completarea sarcinilor. De asemenea, sporește limita de mana și cât de rapid se regenerează mana în timp.";
+"stats.intelligence_text" = "Sporește EXP obținut pentru completarea sarcinilor. De asemenea, sporește limita de mana și cât de rapid se regenerează mana în timp.";
 "stats.constitution_title" = "Constituție";
-"stats.constitution_text" = "Diminuează cantitatea de deteriorare suferită de către sarcinile tale. Nu diminează deteriorarea suferită în urma atacurilor căpcăunilor.";
+"stats.constitution_text" = "Diminuează cantitatea de deteriorare suferită de către sarcinile tale. Nu diminuează deteriorarea suferită în urma atacurilor căpcăunilor.";
 "stats.perception_title" = "Percepție";
-"stats.perception_text" = "Sporește probabilitatea găsirii obiectelor găsite atunci când îndeplinești Sarcini, obiectele găsite zilnic, bonusurile pentru șirul de activitate, cantitatea de aur acordată pentru Sarcini.";
+"stats.perception_text" = "Sporește probabilitatea găsirii obiectelor atunci când îndeplinești Sarcini, la primirea obiectului zilnic, la acordarea bonusurilor pentru șirul de activitate și la cantitatea de aur acordată pentru Sarcini.";
 "tasks.habits" = "Obiceiuri";
 "tasks.dailies" = "Cotidiene";
 "tasks.rewards" = "Recompense";
 "tasks.todos" = "Sarcini";
 "tasks.work" = "Muncă";
 "tasks.exercise" = "Fă exerciții";
-"tasks.health" = "Health";
+"tasks.health" = "Sănătate";
 "tasks.school" = "Școală";
 "tasks.chores" = "Treburi";
 "tasks.creativity" = "Creativitate";
@@ -605,7 +605,7 @@
 "tasks.quality.better" = "Mai bun";
 "tasks.quality.best" = "Cel mai bun";
 "tasks.examples.habit_text" = "Apasă aici pentru a schimba asta într-un obicei negativ la care îți dorești să renunți.";
-"tasks.examples.habit_notes" = "Sau șterge prin a da swipe la stânga";
+"tasks.examples.habit_notes" = "Sau șterge-l prin a da swipe la stânga";
 "tasks.examples.todo_text" = "Alătură-te la Habitica (Bifează-mă!)";
 "tasks.examples.todo_notes" = "Poți îndeplini această Sarcină, o poți edita sau elimina.";
 "tasks.examples.reward_text" = "Răsplătește-te!";
@@ -853,3 +853,43 @@
 "choose_task" = "Alege Sarcina";
 "shops.other_class_disclaimer" = "Poți achiziționa numai echipament pentru clasa ta actuală";
 "shops.purchased_all_gear" = "Ai deja tot echipamentul specific clasei tale! Mai multe echipamente vor apărea în timpul Galelor Grand, în apropierea solstițiilor și echinocțiilor.";
+"titles.skills" = "Abilități";
+"titles.avatar" = "Iconiță";
+"titles.gift_subscription" = "Trimite cadou";
+"stats.total" = "Total";
+"stats.strength_text" = "Sporește bonusul loviturilor critice și le face mai frecvente la terminarea unei sarcini. De asemenea, sporește loviturile către monștrii de tip \"Boss\" ";
+"tasks.form.accessibility.enable" = "Activează %@";
+"tasks.form.accessibility.disable" = "Dezactivează %@";
+"tasks.team" = "Echipă";
+"tasks.due_today" = "Termen limită azi";
+"tasks.due_tomorrow" = "Termen limită mâine";
+"tasks.due_in_x_days" = "Termen limită în %@ zile";
+"tasks.due_x" = "Termen limită %@";
+"tasks.every_x" = "la fiecare %@";
+"tasks.repeats.repeats_every_on" = "Se repetă din %@ în %@";
+"tasks.repeats.repeats_every" = "Se repetă %@";
+"tasks.repeats.monthly_the" = "%@ul\n%@a";
+"tasks.examples.team_habit" = "Interacționează cu echipa";
+"tasks.examples.team_daily_text" = "Actualizează echipa cu privire la statut";
+"tasks.examples.team_todo_text" = "Termină proiectul de echipă";
+"settings.app_icon" = "Iconița Aplicației";
+"settings.server" = "Server";
+"settings.change_about_message" = "Schimbare A Mesajului";
+"settings.confirm_new_password" = "Confirmă Parola Nouă";
+"settings.searchable_everywhere" = "Oriunde";
+"settings.searchable_private_spaces" = "Doar Spații Private";
+"settings.mentions" = "Mențiuni";
+"guilds.guild_members" = "Membrii Breslei";
+"guilds.guild_description" = "Descrierea Breslei";
+"guilds.join_guild" = "Alătură-te Breslelor";
+"guilds.guild_leader" = "Liderul Breslei";
+"avatar.body" = "Corp";
+"avatar.hair" = "Păr";
+"avatar.extras" = "Adiționale";
+"party.create_party_description" = "Începe aventuri cu prietenii sau pe cont propriu. Luptă cu monștri, creează Provocări, și reușește să rămâi responsabil prin Grupuri. ";
+"party.join_party_description" = "Trimite unui membru din Grup numele de utilizator de mai jos și îți vor putea trimite o invitație";
+"party.party_description" = "Descrierea Grupului";
+"groups.members" = "Membri";
+"groups.invite_member" = "Invită un Membru";
+"quests.reward_experience" = "%d Puncte de Experiență";
+"quests.reward_gold" = "%d Aur";

@@ -435,7 +435,7 @@ class TaskFormViewController: FormViewController {
     }
     
     private func updateDailySchedulingFooter() {
-        let values = form.values()
+        /*let values = form.values()
         let weekdays = values[TaskFormTags.repeatWeekdays] as? WeekdaysValue
         let summary = repeatablesSummaryInteractor.repeatablesSummary(frequency: values[TaskFormTags.dailyRepeat] as? String,
                                                                       everyX: values[TaskFormTags.dailyEvery] as? Int,
@@ -449,7 +449,7 @@ class TaskFormViewController: FormViewController {
                                                                       startDate: values[TaskFormTags.startDate] as? Date,
                                                                       daysOfMonth: [],
                                                                       weeksOfMonth: [])
-        /*schedulingSection?.footer = HeaderFooterView(title: summary)
+        schedulingSection?.footer = HeaderFooterView(title: summary)
         tableView.beginUpdates()
         tableView.reloadSections(IndexSet(integer: schedulingSection?.index ?? 2), with: .automatic)
         tableView.endUpdates()*/
@@ -521,7 +521,7 @@ class TaskFormViewController: FormViewController {
     }
     
     private func fillChecklistValues() {
-        var checklistSection = self.form.sectionBy(tag: TaskFormTags.checklistSection)
+        var checklistSection = form.sectionBy(tag: TaskFormTags.checklistSection)
         task.checklist.forEach { (item) in
             let row = TextRow(item.id) { row in
                 row.value = item.text
@@ -532,7 +532,7 @@ class TaskFormViewController: FormViewController {
     }
     
     private func fillReminderValues() {
-        var reminderSection = self.form.sectionBy(tag: TaskFormTags.reminderSection)
+        var reminderSection = form.sectionBy(tag: TaskFormTags.reminderSection)
         task.reminders.forEach { (reminder) in
             let row = TimeRow(reminder.id) { row in
                 row.value = reminder.time
@@ -693,9 +693,11 @@ class TaskFormViewController: FormViewController {
     private func deleteButtonTapped() {
         let alertController = HabiticaAlertController(title: L10n.Tasks.Form.confirmDelete)
         alertController.addCancelAction()
-        alertController.addAction(title: L10n.delete, style: .default, isMainAction: true) { (_) in
-            self.taskRepository.deleteTask(self.task).observeCompleted {}
-            self.dismiss(animated: true, completion: nil)
+        alertController.addAction(title: L10n.delete, style: .default, isMainAction: true) {[weak self] (_) in
+            if let task = self?.task {
+                self?.taskRepository.deleteTask(task).observeCompleted {}
+            }
+            self?.dismiss(animated: true, completion: nil)
         }
         alertController.show()
     }

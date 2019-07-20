@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol OIDAuthorizationFlowSession;
+@protocol OIDExternalUserAgentSession;
 @class HabiticaAppDelegate;
 
 @interface HRPGAppDelegate : UIResponder<UIApplicationDelegate, UIAlertViewDelegate>
@@ -16,5 +16,5 @@
 @property(strong, nonatomic, nullable) UIWindow *window;
 @property(strong, nonatomic, nonnull) HabiticaAppDelegate *swiftAppDelegate;
 
-@property(nonatomic, strong, nullable)id<OIDAuthorizationFlowSession> currentAuthorizationFlow;
+@property(nonatomic, strong, nullable)id<OIDExternalUserAgentSession> currentAuthorizationFlow;
 @end

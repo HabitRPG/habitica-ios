@@ -112,7 +112,7 @@ class RewardViewController: BaseCollectionViewController, UICollectionViewDelega
             } else {
                 destinationController.isCreating = true
             }
-            self.editedReward = nil
+            editedReward = nil
         }
     }
 }

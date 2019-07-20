@@ -27,20 +27,20 @@ public enum ReactiveSwiftRealmThread: Error {
 public typealias UpdateClosure<T> = (_ object: T) -> Void
 
 // - MARK: Helpers
-private func objectAlreadyExists(realm: Realm, object: Object) -> Bool {
-    if let primaryKey = type(of: object).primaryKey(), realm.object(ofType: type(of: object), forPrimaryKey: object.value(forKey: primaryKey)) != nil {
+private func objectAlreadyExists(realm: Realm, object: Object?) -> Bool {
+    if let object = object, let primaryKey = type(of: object).primaryKey(), realm.object(ofType: type(of: object), forPrimaryKey: object.value(forKey: primaryKey)) != nil {
         return true
     }
     return false
 }
 
-private func addOperation(realm: Realm, object: Object, update: Bool) {
+private func addOperation(realm: Realm, object: Object, update: Realm.UpdatePolicy) {
     realm.beginWrite()
     realm.add(object, update: update)
     try! realm.commitWrite()
 }
 
-private func addOperation(realm: Realm, objects: [Object], update: Bool) {
+private func addOperation(realm: Realm, objects: [Object], update: Realm.UpdatePolicy) {
     realm.beginWrite()
     realm.add(objects, update: update)
     try! realm.commitWrite()
@@ -60,24 +60,27 @@ private func deleteOperation(realm: Realm, objects: [Object]) {
 
 public extension ReactiveRealmOperable where Self: Object {
     
-    public func add(realm: Realm? = nil, update: Bool = false, thread: ReactiveSwiftRealmThread = .main) -> SignalProducer<(), ReactiveSwiftRealmError> {
-        return SignalProducer { observer, _ in
+    func add(realm: Realm? = nil, update: Realm.UpdatePolicy = .error, thread: ReactiveSwiftRealmThread = .main) -> SignalProducer<(), ReactiveSwiftRealmError> {
+        return SignalProducer {[weak self] observer, _ in
+            guard let thisSelf = self else {
+                return
+            }
             switch thread {
             case .main:
                 let threadRealm = try! realm ?? Realm()
-                if !update && objectAlreadyExists(realm: threadRealm, object: self) {
+                if update == .error && objectAlreadyExists(realm: threadRealm, object: thisSelf) {
                     observer.send(error: .alreadyExists)
                     return
                 }
-                addOperation(realm: threadRealm, object: self, update: update)
+                addOperation(realm: threadRealm, object: thisSelf, update: update)
                 observer.send(value: ())
                 observer.sendCompleted()
             case.background:
-                if self.realm == nil {
-                    let object = self
+                if self?.realm == nil {
+                    let object = thisSelf
                     DispatchQueue(label: "background").async {
                         let threadRealm = try! Realm()
-                        if !update && objectAlreadyExists(realm: threadRealm, object: object) {
+                        if update == .error && objectAlreadyExists(realm: threadRealm, object: object) {
                             observer.send(error: .alreadyExists)
                             return
                         }
@@ -90,14 +93,14 @@ public extension ReactiveRealmOperable where Self: Object {
                         }
                     }
                 } else {
-                    let objectRef = ThreadSafeReference(to: self)
+                    let objectRef = ThreadSafeReference(to: thisSelf)
                     DispatchQueue(label: "background").async {
                         let threadRealm = try! Realm()
                         guard let object = threadRealm.resolve(objectRef) else {
                             observer.send(error: .deletedInAnotherThread)
                             return
                         }
-                        if !update && objectAlreadyExists(realm: threadRealm, object: object) {
+                        if update == .error && objectAlreadyExists(realm: threadRealm, object: object) {
                             observer.send(error: .alreadyExists)
                             return
                         }
@@ -115,8 +118,11 @@ public extension ReactiveRealmOperable where Self: Object {
         }
     }
     
-    public func update(realm: Realm? = nil, thread: ReactiveSwiftRealmThread = .main, operation:@escaping UpdateClosure<Self>) -> SignalProducer<(), ReactiveSwiftRealmError> {
-        return SignalProducer { observer, _ in
+    func update(realm: Realm? = nil, thread: ReactiveSwiftRealmThread = .main, operation:@escaping UpdateClosure<Self>) -> SignalProducer<(), ReactiveSwiftRealmError> {
+        return SignalProducer {[weak self] observer, _ in
+            guard let thisSelf = self else {
+                return
+            }
             if !Thread.isMainThread {
                 observer.send(error: .wrongThread)
                 return
@@ -125,12 +131,12 @@ public extension ReactiveRealmOperable where Self: Object {
             case .main:
                 let threadRealm = try! realm ?? Realm()
                 threadRealm.beginWrite()
-                operation(self)
+                operation(thisSelf)
                 try! threadRealm.commitWrite()
                 observer.send(value: ())
                 observer.sendCompleted()
             case .background:
-                let objectRef = ThreadSafeReference(to: self)
+                let objectRef = ThreadSafeReference(to: thisSelf)
                 DispatchQueue(label: "background").async {
                     let threadRealm = try! Realm()
                     
@@ -151,17 +157,20 @@ public extension ReactiveRealmOperable where Self: Object {
         }
     }
     
-    public func delete(realm: Realm? = nil, thread: ReactiveSwiftRealmThread = .main) -> SignalProducer<(), ReactiveSwiftRealmError> {
-        return SignalProducer { observer, _ in
+    func delete(realm: Realm? = nil, thread: ReactiveSwiftRealmThread = .main) -> SignalProducer<(), ReactiveSwiftRealmError> {
+        return SignalProducer {[weak self] observer, _ in
+            guard let thisSelf = self else {
+                return
+            }
             switch thread {
             case .main:
                 let threadRealm = try! realm ?? Realm()
-                deleteOperation(realm: threadRealm, object: self)
+                deleteOperation(realm: threadRealm, object: thisSelf)
                 observer.send(value: ())
                 observer.sendCompleted()
             case.background:
-                if self.realm == nil {
-                    let object = self
+                if thisSelf.realm == nil {
+                    let object = thisSelf
                     DispatchQueue(label: "background").async {
                         let threadRealm = try! Realm()
                         deleteOperation(realm: threadRealm, object: object)
@@ -172,7 +181,7 @@ public extension ReactiveRealmOperable where Self: Object {
                         }
                     }
                 } else {
-                    let objectRef = ThreadSafeReference(to: self)
+                    let objectRef = ThreadSafeReference(to: thisSelf)
                     DispatchQueue(label: "background").async {
                         let threadRealm = try! Realm()
                         guard let object = threadRealm.resolve(objectRef) else {
@@ -195,7 +204,7 @@ public extension ReactiveRealmOperable where Self: Object {
 }
 
 public extension Array where Element: Object {
-    public func add(realm: Realm? = nil, update: Bool = false, thread: ReactiveSwiftRealmThread = .main) -> SignalProducer<(), ReactiveSwiftRealmError> {
+    func add(realm: Realm? = nil, update: Realm.UpdatePolicy = .error, thread: ReactiveSwiftRealmThread = .main) -> SignalProducer<(), ReactiveSwiftRealmError> {
         return SignalProducer { observer, _ in
             switch thread {
             case .main:
@@ -220,7 +229,7 @@ public extension Array where Element: Object {
         }
     }
     
-    public func update(realm: Realm? = nil, thread: ReactiveSwiftRealmThread = .main, operation:@escaping UpdateClosure<Array.Element>) -> SignalProducer<(), ReactiveSwiftRealmError> {
+    func update(realm: Realm? = nil, thread: ReactiveSwiftRealmThread = .main, operation:@escaping UpdateClosure<Array.Element>) -> SignalProducer<(), ReactiveSwiftRealmError> {
         return SignalProducer { observer, _ in
             if !Thread.isMainThread {
                 observer.send(error: .wrongThread)
@@ -263,7 +272,7 @@ public extension Array where Element: Object {
         }
     }
     
-    public func delete(realm: Realm? = nil, thread: ReactiveSwiftRealmThread = .main) -> SignalProducer<(), ReactiveSwiftRealmError> {
+    func delete(realm: Realm? = nil, thread: ReactiveSwiftRealmThread = .main) -> SignalProducer<(), ReactiveSwiftRealmError> {
         return SignalProducer { observer, _ in
             switch thread {
             case .main:
@@ -297,7 +306,7 @@ public extension Array where Element: Object {
 }
 
 public extension ReactiveRealmQueryable where Self: Object {
-    public static func findBy(key: Any, realm: Realm = try! Realm()) -> SignalProducer<Self?, ReactiveSwiftRealmError> {
+    static func findBy(key: Any, realm: Realm = try! Realm()) -> SignalProducer<Self?, ReactiveSwiftRealmError> {
         return SignalProducer { observer, _ in
             if !Thread.isMainThread {
                 observer.send(error: .wrongThread)
@@ -308,7 +317,7 @@ public extension ReactiveRealmQueryable where Self: Object {
         
     }
     
-    public static func findBy(query: String, realm: Realm = try! Realm()) -> SignalProducer<Results<Self>, ReactiveSwiftRealmError> {
+    static func findBy(query: String, realm: Realm = try! Realm()) -> SignalProducer<Results<Self>, ReactiveSwiftRealmError> {
         return SignalProducer { observer, _ in
             if !Thread.isMainThread {
                 observer.send(error: .wrongThread)
@@ -318,7 +327,7 @@ public extension ReactiveRealmQueryable where Self: Object {
         }
     }
     
-    public static func findBy(predicate: NSPredicate, realm: Realm = try! Realm()) -> SignalProducer<Results<Self>, ReactiveSwiftRealmError> {
+    static func findBy(predicate: NSPredicate, realm: Realm = try! Realm()) -> SignalProducer<Results<Self>, ReactiveSwiftRealmError> {
         return SignalProducer { observer, _ in
             if !Thread.isMainThread {
                 observer.send(error: .wrongThread)
@@ -328,7 +337,7 @@ public extension ReactiveRealmQueryable where Self: Object {
         }
     }
     
-    public static func findAll(realm: Realm = try! Realm()) -> SignalProducer<Results<Self>, ReactiveSwiftRealmError> {
+    static func findAll(realm: Realm = try! Realm()) -> SignalProducer<Results<Self>, ReactiveSwiftRealmError> {
         return SignalProducer { observer, _ in
             if !Thread.isMainThread {
                 observer.send(error: .wrongThread)
@@ -346,9 +355,9 @@ public extension SignalProducerProtocol where Value: NotificationEmitter, Error 
      :returns: signal containing updated values and optional ReactiveChangeset when changed
      */
     
-    public typealias ReactiveResults = (value: Self.Value, changes: ReactiveChangeset?)
+    typealias ReactiveResults = (value: Self.Value, changes: ReactiveChangeset?)
     
-    public  func reactive() -> SignalProducer<ReactiveResults, ReactiveSwiftRealmError> {
+     func reactive() -> SignalProducer<ReactiveResults, ReactiveSwiftRealmError> {
         return producer.flatMap(.latest) {results -> SignalProducer<ReactiveResults, ReactiveSwiftRealmError> in
             return SignalProducer { observer, lifetime in
                 Crashlytics.sharedInstance().setObjectValue(String(describing: results), forKey: "lastNotificationBlock")
@@ -379,9 +388,9 @@ public extension SignalProducerProtocol where Value: ObjectNotificationEmitter, 
      :returns: signal containing updated values and optional ReactiveChangeset when changed
      */
     
-    public typealias ReactiveObject = (value: Self.Value, changes: ReactiveChange?)
+    typealias ReactiveObject = (value: Self.Value, changes: ReactiveChange?)
     
-    public  func reactiveObject() -> SignalProducer<ReactiveObject, ReactiveSwiftRealmError> {
+    func reactiveObject() -> SignalProducer<ReactiveObject, ReactiveSwiftRealmError> {
         return producer.flatMap(.latest) {realmObject -> SignalProducer<ReactiveObject, ReactiveSwiftRealmError> in
             return SignalProducer { observer, lifetime in
                 observer.send(value: (value: realmObject, changes: nil))
@@ -412,13 +421,13 @@ public  extension SignalProducerProtocol where Value: SortableRealmResults, Erro
      :param: ascending true if the results sort order is ascending
      :returns: sorted SignalProducer
      */
-    public  func sorted(key: String, ascending: Bool = true) -> SignalProducer<Self.Value, ReactiveSwiftRealmError> {
+    func sorted(key: String, ascending: Bool = true) -> SignalProducer<Self.Value, ReactiveSwiftRealmError> {
         return producer.flatMap(.latest) { results in
             return SignalProducer(value: results.sorted(byKeyPath: key, ascending: ascending) as Self.Value) as SignalProducer<Self.Value, ReactiveSwiftRealmError>
         }
     }
     
-    public func distinct(by sequence: [String]) -> SignalProducer<Self.Value, ReactiveSwiftRealmError> {
+    func distinct(by sequence: [String]) -> SignalProducer<Self.Value, ReactiveSwiftRealmError> {
         return producer.map({ (results) in
             return results.distinct(by: sequence) as Self.Value
         })

@@ -9,8 +9,9 @@
 import UIKit
 import Habitica_Models
 
-class QuestDetailView: UIView {
+class QuestDetailView: UIView, Themeable {
     @IBOutlet weak var questTypeLabel: UILabel!
+    @IBOutlet weak var rewardsLabel: UILabel!
     @IBOutlet weak var rewardsStackView: UIStackView!
     @IBOutlet weak var ownerRewardsLabel: UILabel!
     @IBOutlet weak var ownerRewardsStackView: UIStackView!
@@ -37,15 +38,19 @@ class QuestDetailView: UIView {
             
             addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["view": view]))
             addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["view": view]))
-            
-            let theme = ThemeService.shared.theme
-            view.backgroundColor = theme.contentBackgroundColor
+            ThemeService.shared.addThemeable(themable: self)
             
             setNeedsUpdateConstraints()
             updateConstraints()
             setNeedsLayout()
             layoutIfNeeded()
         }
+    }
+    
+    func applyTheme(theme: Theme) {
+        rewardsLabel.textColor = theme.secondaryTextColor
+        ownerRewardsLabel.textColor = theme.secondaryTextColor
+        questTypeLabel.textColor = theme.secondaryTextColor
     }
     
     func configure(quest: QuestProtocol) {
@@ -82,11 +87,13 @@ class QuestDetailView: UIView {
     
     func makeRewardView(title: String?, imageName: String) -> UIView {
         if let view = UIView.fromNib(nibName: "QuestDetailRewardView") {
+            view.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
             if let imageView = view.viewWithTag(1) as? UIImageView {
                 imageView.setImagewith(name: imageName)
             }
             if let label = view.viewWithTag(2) as? UILabel {
                 label.text = title
+                label.textColor = ThemeService.shared.theme.primaryTextColor
             }
             return view
         }
@@ -95,11 +102,13 @@ class QuestDetailView: UIView {
     
     func makeRewardView(title: String?, image: UIImage) -> UIView {
         if let view = UIView.fromNib(nibName: "QuestDetailRewardView") {
+            view.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
             if let imageView = view.viewWithTag(1) as? UIImageView {
                 imageView.image = image
             }
             if let label = view.viewWithTag(2) as? UILabel {
                 label.text = title
+                label.textColor = ThemeService.shared.theme.primaryTextColor
             }
             return view
         }

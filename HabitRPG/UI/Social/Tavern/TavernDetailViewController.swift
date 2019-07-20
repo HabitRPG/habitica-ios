@@ -14,7 +14,10 @@ class TavernDetailViewController: GroupDetailViewController {
     
     @IBOutlet weak var tavernHeaderView: NPCBannerView!
     
-    @IBOutlet weak var innButton: UIButton!
+    @IBOutlet weak var innButton: HabiticaButton!
+    @IBOutlet weak var guidelinesButton: UIButton!
+    @IBOutlet weak var faqButton: UIButton!
+    @IBOutlet weak var reportButton: UIButton!
     @IBOutlet weak var worldBossStackView: CollapsibleStackView!
     @IBOutlet weak var innStackView: CollapsibleStackView!
     @IBOutlet weak var guidelinesStackView: CollapsibleStackView!
@@ -83,7 +86,14 @@ class TavernDetailViewController: GroupDetailViewController {
     
     override func populateText() {
         worldBossTitleView.text = L10n.WorldBoss.worldBoss
-        
+    }
+    
+    override func applyTheme(theme: Theme) {
+        super.applyTheme(theme: theme)
+        innButton.buttonColor = theme.warningColor
+        guidelinesButton.backgroundColor = theme.offsetBackgroundColor
+        faqButton.backgroundColor = theme.offsetBackgroundColor
+        reportButton.backgroundColor = theme.offsetBackgroundColor
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -99,26 +109,26 @@ class TavernDetailViewController: GroupDetailViewController {
     }
     
     @IBAction func innButtonTapped(_ sender: Any) {
-        self.configureInnButton(disabled: true)
-        userRepository.sleep().observeCompleted {
-            self.configureInnButton()
+        configureInnButton(disabled: true)
+        userRepository.sleep().observeCompleted {[weak self] in
+            self?.configureInnButton()
         }
     }
     
     @IBAction func guidelinesButtonTapped(_ sender: Any) {
-        self.performSegue(withIdentifier: "GuidelinesSegue", sender: self)
+        performSegue(withIdentifier: "GuidelinesSegue", sender: self)
     }
     
     @IBAction func faqButtonTapped(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "FAQOverviewViewController")
-        self.navigationController?.pushViewController(viewController, animated: true)
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
     @IBAction func reportBugButtonTapped(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "AboutViewController")
-        self.navigationController?.pushViewController(viewController, animated: true)
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
     func configureInnButton(disabled: Bool = false) {

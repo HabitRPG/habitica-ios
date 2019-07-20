@@ -103,25 +103,25 @@ class PillView: UIView {
     private let iconView: UIImageView
 
     override init(frame: CGRect) {
-        self.label = UILabel()
-        self.iconView = UIImageView()
+        label = UILabel()
+        iconView = UIImageView()
         super.init(frame: frame)
         setupView()
     }
 
     required init?(coder aDecoder: NSCoder) {
-        self.label = UILabel()
-        self.iconView = UIImageView()
+        label = UILabel()
+        iconView = UIImageView()
         super.init(coder: aDecoder)
         setupView()
     }
 
     func setupView() {
-        self.addSubview(self.label)
-        self.addSubview(self.iconView)
-        self.label.textAlignment = .center
-        self.label.font = UIFont.preferredFont(forTextStyle: .caption1)
-        self.iconView.contentMode = .center
+        addSubview(label)
+        addSubview(iconView)
+        label.textAlignment = .center
+        label.font = UIFont.preferredFont(forTextStyle: .caption1)
+        iconView.contentMode = .center
         
         if borderColor == nil {
             borderColor = UIColor.gray200()
@@ -130,15 +130,15 @@ class PillView: UIView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.iconView.frame = CGRect(x: 8, y: 0, width: 15, height: self.frame.size.height)
+        iconView.frame = CGRect(x: 8, y: 0, width: 15, height: frame.size.height)
         var labelOffset = CGFloat(0)
         if icon != nil {
             labelOffset = CGFloat(27)
         }
-        self.label.frame = CGRect(x: labelOffset, y: 0, width: self.frame.size.width-labelOffset, height: self.frame.size.height)
-        if self.isCircular {
+        label.frame = CGRect(x: labelOffset, y: 0, width: frame.size.width-labelOffset, height: frame.size.height)
+        if isCircular {
             layer.cornerRadius = frame.size.height / 2
-        } else if self.hasRoundedCorners {
+        } else if hasRoundedCorners {
             layer.cornerRadius = 5
         } else {
             layer.cornerRadius = 0
@@ -149,7 +149,7 @@ class PillView: UIView {
             if self.isHidden {
                 return CGSize(width: 0, height: 0)
             }
-            let originalSize = self.label.intrinsicContentSize
+            let originalSize = label.intrinsicContentSize
             var width = originalSize.width+16
             let height = originalSize.height+12
             if icon != nil {

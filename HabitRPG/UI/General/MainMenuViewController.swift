@@ -105,7 +105,6 @@ class MainMenuViewController: BaseTableViewController {
         navbarView?.notificationsAction = {[weak self] in
             self?.perform(segue: StoryboardSegue.Main.notificationsSegue)
         }
-        navbarView?.notificationsButton.isHidden = true
         
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
@@ -115,6 +114,14 @@ class MainMenuViewController: BaseTableViewController {
         
         disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
             self?.user = user
+        }).start())
+        disposable.inner.add(userRepository.getUnreadNotificationCount().on(value: {[weak self] count in
+            if count > 0 {
+                self?.navbarView?.notificationsBadge.text = String(count)
+                self?.navbarView?.notificationsBadge.isHidden = false
+            } else {
+                self?.navbarView?.notificationsBadge.isHidden = true
+            }
         }).start())
     }
     
@@ -133,7 +140,8 @@ class MainMenuViewController: BaseTableViewController {
             MenuSection(title: nil, iconAsset: nil, items: [
                 MenuItem(title: L10n.Menu.castSpells, segue: StoryboardSegue.Main.spellsSegue.rawValue),
                 //MenuItem(title: L10n.Menu.selectClass, segue: StoryboardSegue.Main.selectClassSegue.rawValue),
-                MenuItem(title: L10n.Titles.stats, segue: StoryboardSegue.Main.statsSegue.rawValue)
+                MenuItem(title: L10n.Titles.stats, segue: StoryboardSegue.Main.statsSegue.rawValue),
+                MenuItem(title: L10n.Titles.achievements, segue: StoryboardSegue.Main.achievementsSegue.rawValue)
                 ]),
             MenuSection(title: L10n.Menu.social, iconAsset: Asset.iconSocial, items: [
                 MenuItem(title: L10n.Titles.tavern, segue: StoryboardSegue.Main.tavernSegue.rawValue),
@@ -206,7 +214,7 @@ class MainMenuViewController: BaseTableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = visibleItemAt(indexPath: indexPath)
-        let cell = tableView .dequeueReusableCell(withIdentifier: item?.cellName ?? "", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: item?.cellName ?? "", for: indexPath)
         cell.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
         
         if item?.accessibilityLabel?.isEmpty != true {

@@ -103,7 +103,7 @@ class SubscriptionViewController: BaseTableViewController {
     override func populateText() {
         subscriptionBenefitsTitleLabel.text = L10n.subscriptionBenefitsTitle
         giftSubscriptionExplanationLabel.text = L10n.subscriptionGiftExplanation
-        giftSubscriptionButton.setTitle(L10n.subscriptionBenefitsTitle, for: .normal)
+        giftSubscriptionButton.setTitle(L10n.subscriptionGiftButton, for: .normal)
         subscriptionSupportLabel.text = L10n.subscriptionSupportDevelopers
     }
 
@@ -111,10 +111,10 @@ class SubscriptionViewController: BaseTableViewController {
         SwiftyStoreKit.retrieveProductsInfo(Set(PurchaseHandler.subscriptionIdentifiers)) { (result) in
             self.products = Array(result.retrievedProducts)
             self.products?.sort(by: { (product1, product2) -> Bool in
-                guard let firstIndex = PurchaseHandler.subscriptionIdentifiers.index(of: product1.productIdentifier) else {
+                guard let firstIndex = PurchaseHandler.subscriptionIdentifiers.firstIndex(of: product1.productIdentifier) else {
                     return false
                 }
-                guard let secondIndex = PurchaseHandler.subscriptionIdentifiers.index(of: product2.productIdentifier) else {
+                guard let secondIndex = PurchaseHandler.subscriptionIdentifiers.firstIndex(of: product2.productIdentifier) else {
                     return true
                 }
                 return firstIndex < secondIndex

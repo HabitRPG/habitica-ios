@@ -31,16 +31,16 @@ class HRPGSimpleShopItemView: UIView {
         set(shouldHideNotes) {
             if shouldHideNotes {
                 self.shopItemDescriptionLabel.isHidden = true
-                if let label = self.shopItemDescriptionLabel {
+                if let label = shopItemDescriptionLabel {
                     let constraint = NSLayoutConstraint(item: label, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal,
                                                         toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 0)
                     self.shopItemDescriptionLabel.addConstraint(constraint)
                     self.notesMargin.constant = 0
                 }
             } else {
-                self.shopItemDescriptionLabel.isHidden = false
-                self.shopItemDescriptionLabel.removeConstraints(self.shopItemDescriptionLabel.constraints)
-                self.notesMargin.constant = 12
+                shopItemDescriptionLabel.isHidden = false
+                shopItemDescriptionLabel.removeConstraints(shopItemDescriptionLabel.constraints)
+                notesMargin.constant = 12
             }
         }
     }
@@ -84,14 +84,14 @@ class HRPGSimpleShopItemView: UIView {
         setupView()
         self.user = user
         
-        self.shopItemTitleLabel.text = reward.text
+        shopItemTitleLabel.text = reward.text
 
         var purchaseType = ""
         if let availableUntil = reward.availableUntil {
             setAvailableUntil(date: availableUntil)
         }
-        self.imageName = reward.imageName ?? ""
-        self.setImage(name: imageName)
+        imageName = reward.imageName ?? ""
+        setImage(name: imageName)
         
         if reward.key == "potion" {
             imageName = "shop_potion"
@@ -113,10 +113,10 @@ class HRPGSimpleShopItemView: UIView {
             self.shopItemDescriptionLabel.text = notes
         } else {
             self.shopItemDescriptionLabel.text = ""
-            if let label = self.shopItemDescriptionLabel {
+            if let label = shopItemDescriptionLabel {
                 let constraint = NSLayoutConstraint(item: label, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal,
                                                     toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 0)
-                self.shopItemDescriptionLabel.addConstraint(constraint)
+                shopItemDescriptionLabel.addConstraint(constraint)
             }
         }
     }
@@ -126,10 +126,10 @@ class HRPGSimpleShopItemView: UIView {
         if imageName.contains(" ") {
             name = imageName.components(separatedBy: " ")[1]
         }
-        ImageManager.getImage(name: name) { (image, _) in
-            self.shopItemImageView.image = image
-            self.imageViewHeight.constant = image?.size.height ?? 0
-            self.setNeedsLayout()
+        ImageManager.getImage(name: name) {[weak self] (image, _) in
+            self?.shopItemImageView.image = image
+            self?.imageViewHeight.constant = image?.size.height ?? 0
+            self?.setNeedsLayout()
         }
     }
     
@@ -147,7 +147,7 @@ class HRPGSimpleShopItemView: UIView {
     }
     
     private func configureFor(key: String, purchaseType: String) {
-        if purchaseType == "gear", let user = self.user {
+        if purchaseType == "gear", let user = user {
             inventoryRepository.getGear(keys: [key])
                 .take(first: 1)
                 .map({ (gear, _) -> GearProtocol? in

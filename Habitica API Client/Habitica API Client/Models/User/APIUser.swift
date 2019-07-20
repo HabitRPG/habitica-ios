@@ -9,6 +9,10 @@
 import Foundation
 import Habitica_Models
 
+private class UserAchievements: Decodable {
+    var quests: [String: Int] = [:]
+}
+
 public class APIUser: UserProtocol, Decodable {
     public var party: UserPartyProtocol?
     
@@ -32,6 +36,7 @@ public class APIUser: UserProtocol, Decodable {
     public var invitations: [GroupInvitationProtocol]
     public var pushDevices: [PushDeviceProtocol]
     public var isValid: Bool { return true }
+    public var questAchievements: [AchievementProtocol]
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -54,6 +59,7 @@ public class APIUser: UserProtocol, Decodable {
         case hasNewMessages = "newMessages"
         case invitations
         case pushDevices
+        case achievements
     }
     
     public required init(from decoder: Decoder) throws {
@@ -93,5 +99,15 @@ public class APIUser: UserProtocol, Decodable {
         })
         invitations = (invitationsHelper?.guilds ?? []) + (invitationsHelper?.parties ?? [])
         pushDevices = (try? values.decode([APIPushDevice].self, forKey: .pushDevices)) ?? []
+        
+        questAchievements = []
+        try values.decode(UserAchievements.self, forKey: .achievements).quests.forEach({ (key, count) in
+            let achievement = APIAchievement()
+            achievement.key = key
+            achievement.earned = true
+            achievement.optionalCount = count
+            achievement.category = "quests"
+            questAchievements.append(achievement)
+        })
     }
 }

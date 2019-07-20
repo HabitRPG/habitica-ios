@@ -33,7 +33,7 @@ class RealmOwnedMount: Object, OwnedMountProtocol {
     
     convenience init(userID: String?, key: String, owned: Bool) {
         self.init()
-        combinedKey = (userID ?? "") + (key ?? "")
+        combinedKey = (userID ?? "") + (key)
         self.userID = userID
         self.key = key
         self.owned = owned

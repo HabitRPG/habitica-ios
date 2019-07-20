@@ -66,7 +66,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "29701FEA1F5848880097BBCC"
+               BlueprintIdentifier = "C8415990225F8B7800989FB8"
                BuildableName = "Habitica Snapshots.xctest"
                BlueprintName = "Habitica Snapshots"
                ReferencedContainer = "container:Habitica.xcodeproj">
@@ -107,7 +107,7 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "-FIRDebugEnabled"
+            argument = "-FIRDebugDisabled"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
@@ -119,6 +119,21 @@
          </EnvironmentVariable>
       </EnvironmentVariables>
       <AdditionalOptions>
+         <AdditionalOption
+            key = "MallocStackLogging"
+            value = ""
+            isEnabled = "YES">
+         </AdditionalOption>
+         <AdditionalOption
+            key = "PrefersMallocStackLoggingLite"
+            value = ""
+            isEnabled = "YES">
+         </AdditionalOption>
+         <AdditionalOption
+            key = "MallocScribble"
+            value = ""
+            isEnabled = "YES">
+         </AdditionalOption>
       </AdditionalOptions>
    </LaunchAction>
    <ProfileAction

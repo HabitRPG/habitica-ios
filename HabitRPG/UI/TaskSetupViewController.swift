@@ -164,7 +164,7 @@ class TaskSetupViewController: UIViewController, TypingTextViewController {
         
         initButtons()
     
-        if self.view.frame.size.height <= 568 {
+        if view.frame.size.height <= 568 {
             containerHeight.constant = 205
         }
     }
@@ -201,7 +201,7 @@ class TaskSetupViewController: UIViewController, TypingTextViewController {
     func toggleButton(_ sender: UIGestureRecognizer) {
         if let selectedCategory = getCategoryFor(view: sender.view) {
             if selectedCategories.contains(selectedCategory) {
-                if let index = selectedCategories.index(of: selectedCategory) {
+                if let index = selectedCategories.firstIndex(of: selectedCategory) {
                     selectedCategories.remove(at: index)
                 }
             } else {

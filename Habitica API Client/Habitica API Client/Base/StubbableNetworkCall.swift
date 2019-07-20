@@ -42,8 +42,8 @@ open class StubbableNetworkCall: NetworkCall {
     }
     
     open func stubCondition() -> ((URLRequest) -> Bool) {
-        return {
-            $0.url?.absoluteString == self.urlString(self.endpoint) && $0.httpMethod == self.httpMethod
+        return {[weak self] in
+            $0.url?.absoluteString == self?.urlString && $0.httpMethod == self?.httpMethod
         }
     }
 }

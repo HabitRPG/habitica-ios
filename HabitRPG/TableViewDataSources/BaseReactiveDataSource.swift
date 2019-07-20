@@ -71,6 +71,11 @@ class BaseReactiveDataSource<MODEL>: NSObject {
 class BaseReactiveTableViewDataSource<MODEL>: BaseReactiveDataSource<MODEL>, UITableViewDataSource {
     @objc weak var emptyDelegate: DataSourceEmptyDelegate?
     @objc var isEmpty: Bool = true
+    var emptyDataSource: UITableViewDataSource? {
+        didSet {
+            checkForEmpty()
+        }
+    }
     
     @objc weak var tableView: UITableView? {
         didSet {
@@ -84,15 +89,11 @@ class BaseReactiveTableViewDataSource<MODEL>: BaseReactiveDataSource<MODEL>, UIT
     }
     
     override func notify(changes: ReactiveChangeset?, section: Int = 0) {
-        guard let changes = changes else {
+        if changes == nil {
             return
         }
         if userDrivenDataUpdate {
             return
-        }
-        
-        if emptyDelegate == nil {
-            tableView?.reloadData()
         }
         //reload the whole tableview for now, since using the animations can cause issues
         //see https://github.com/realm/realm-cocoa/issues/4425
@@ -123,10 +124,25 @@ class BaseReactiveTableViewDataSource<MODEL>: BaseReactiveDataSource<MODEL>, UIT
         if sections.filter({ $0.items.isEmpty == false }).isEmpty {
             isEmpty = true
             emptyDelegate?.dataSourceIsEmpty()
+            if emptyDataSource != nil {
+                tableView?.dataSource = emptyDataSource
+                tableView?.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
+                tableView?.separatorStyle = .none
+                tableView?.allowsSelection = false
+                tableView?.bounces = false
+            }
         } else {
             isEmpty = false
             emptyDelegate?.dataSourceHasItems()
+            if emptyDataSource != nil {
+                tableView?.dataSource = self
+                tableView?.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
+                tableView?.separatorStyle = .singleLine
+                tableView?.allowsSelection = true
+                tableView?.bounces = true
+            }
         }
+        tableView?.reloadData()
     }
     
     @objc(numberOfSectionsInTableView:)

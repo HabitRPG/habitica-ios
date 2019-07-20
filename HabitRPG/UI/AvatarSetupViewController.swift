@@ -217,7 +217,7 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController {
         
         currentSubcategory = subcategories[0]
         
-        if let activeIndex = getSubcategoriesForCurrentCategory().index(of: currentSubcategory), let button = subCategoryContainer.arrangedSubviews[activeIndex] as? UIButton {
+        if let activeIndex = getSubcategoriesForCurrentCategory().firstIndex(of: currentSubcategory), let button = subCategoryContainer.arrangedSubviews[activeIndex] as? UIButton {
             self.view.layoutIfNeeded()
             updateSubcategoryIndicator(button)
         }
@@ -263,7 +263,7 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController {
     }
     
     private func updateSubcategoryButtons() {
-        let activeIndex = getSubcategoriesForCurrentCategory().index(of: currentSubcategory)
+        let activeIndex = getSubcategoriesForCurrentCategory().firstIndex(of: currentSubcategory)
         UIView.animate(withDuration: 0.2) {[weak self] in
             guard let weakSelf = self else {
                 return
@@ -298,7 +298,7 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController {
     @objc
     func subcategoryTapped(_ sender: UIButton!) {
         updateSubcategoryIndicator(sender)
-        guard let activeIndex = subCategoryContainer.arrangedSubviews.index(of: sender) else {
+        guard let activeIndex = subCategoryContainer.arrangedSubviews.firstIndex(of: sender) else {
             return
         }
         currentSubcategory = getSubcategoriesForCurrentCategory()[activeIndex]
@@ -327,7 +327,7 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController {
         guard let view = sender.view as? SetupCustomizationItemView else {
             return
         }
-        guard let activeIndex = contentContainer.arrangedSubviews.index(of: view) else {
+        guard let activeIndex = contentContainer.arrangedSubviews.firstIndex(of: view) else {
             return
         }
         
@@ -375,8 +375,8 @@ class AvatarSetupViewController: UIViewController, TypingTextViewController {
         if let title = button.title(for: .normal), let font = button.titleLabel?.font {
             let width = title.widthWithConstrainedHeight(CGFloat.greatestFiniteMagnitude, font: font)+30
             let middle = button.frame.origin.x+16+button.frame.size.width/2
-            self.subcategoryIndicatorPosition.constant = middle - width/2
-            self.subcategoryIndicatorWidth.constant = width
+            subcategoryIndicatorPosition.constant = middle - width/2
+            subcategoryIndicatorWidth.constant = width
         }
         UIView.animate(withDuration: 0.2) {[weak self] in
             self?.view.layoutIfNeeded()

@@ -85,6 +85,12 @@ public class InventoryLocalRepository: ContentLocalRepository {
         })
     }
     
+    public func getQuests(keys: [String]) -> SignalProducer<ReactiveResults<[QuestProtocol]>, ReactiveSwiftRealmError> {
+        return RealmQuest.findBy(predicate: NSPredicate(format: "key IN %@", keys)).reactive().map({ (value, changeset) -> ReactiveResults<[QuestProtocol]> in
+            return (value.map({ (item) -> QuestProtocol in return item }), changeset)
+        })
+    }
+    
     public func getShop(identifier: String) -> SignalProducer<ShopProtocol?, ReactiveSwiftRealmError> {
         return RealmShop.findBy(query: "identifier == '\(identifier)'").reactive().map({ shops -> ShopProtocol? in
             return shops.value.first
@@ -113,7 +119,7 @@ public class InventoryLocalRepository: ContentLocalRepository {
             ownedPet?.trained = trained
             ownedFood?.numberOwned -= 1
             if trained == -1 {
-                realm.add(RealmOwnedMount(userID: userID, key: key, owned: true), update: true)
+                realm.add(RealmOwnedMount(userID: userID, key: key, owned: true), update: .modified)
             }
         }
     }
@@ -132,8 +138,8 @@ public class InventoryLocalRepository: ContentLocalRepository {
         ownedGear.isOwned = true
         let user = realm.object(ofType: RealmUser.self, forPrimaryKey: userID)
         updateCall { realm in
-            realm.add(ownedGear, update: true)
-            let index = user?.purchased?.subscriptionPlan?.mysteryItems.index(of: key)
+            realm.add(ownedGear, update: .modified)
+            let index = user?.purchased?.subscriptionPlan?.mysteryItems.firstIndex(of: key)
             user?.purchased?.subscriptionPlan?.mysteryItems.remove(at: index ?? 0)
         }
     }

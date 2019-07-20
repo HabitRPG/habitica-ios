@@ -8,19 +8,33 @@
 
 import Foundation
 import Habitica_Models
+import ReactiveSwift
 
 struct StableOverviewItem {
     var imageName: String
     var text: String
     var numberOwned: Int
     var totalNumber: Int
-    var eggType: String
+    var searchKey: String
     var type: String
 }
 
 class StableOverviewDataSource<ANIMAL: AnimalProtocol>: BaseReactiveCollectionViewDataSource<StableOverviewItem> {
     
     internal let stableRepository = StableRepository()
+    internal var fetchDisposable: Disposable?
+    
+    var organizeByColor = false {
+        didSet {
+            fetchData()
+        }
+    }
+    
+    deinit {
+        if let disposable = fetchDisposable {
+            disposable.dispose()
+        }
+    }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
@@ -30,6 +44,12 @@ class StableOverviewDataSource<ANIMAL: AnimalProtocol>: BaseReactiveCollectionVi
         }
         
         return cell
+    }
+    
+    internal func fetchData() {
+        if let disposable = fetchDisposable {
+            disposable.dispose()
+        }
     }
     
     internal func mapData(owned: [String], animals: [AnimalProtocol]) -> [String: [StableOverviewItem]] {
@@ -43,8 +63,10 @@ class StableOverviewDataSource<ANIMAL: AnimalProtocol>: BaseReactiveCollectionVi
                 return
             }
             
-            if item?.text == nil || item?.text != animal.egg {
-                item = StableOverviewItem(imageName: getImageName(animal), text: animal.egg ?? "", numberOwned: 0, totalNumber: 0, eggType: animal.egg ?? animal.key ?? "", type: animal.type ?? "")
+            let searchText = ((animal.type == "special" || animal.type == "wacky") ? animal.key : (organizeByColor ? animal.potion : animal.egg)) ?? ""
+            
+            if item?.text == nil || item?.text != searchText {
+                item = StableOverviewItem(imageName: getImageName(animal), text: searchText, numberOwned: 0, totalNumber: 0, searchKey: searchText, type: animal.type ?? "")
                 if let item = item {
                     data[type]?.append(item)
                 }
@@ -67,8 +89,31 @@ class StableOverviewDataSource<ANIMAL: AnimalProtocol>: BaseReactiveCollectionVi
         if animal.type == "special" || animal.type == "wacky" {
             return "Pet-\(animal.key ?? "")"
         } else {
-            return "Pet_Egg_\(animal.egg ?? "")"
+            if organizeByColor {
+                return "Pet_HatchingPotion_\(animal.potion ?? "")"
+            } else {
+                return "Pet_Egg_\(animal.egg ?? "")"
+            }
         }
     }
     
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let reuseIdentifier = (kind == UICollectionView.elementKindSectionFooter) ? "SectionFooter" : "SectionHeader"
+        let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: reuseIdentifier, for: indexPath)
+        
+        if kind == UICollectionView.elementKindSectionHeader {
+            let label = view.viewWithTag(1) as? UILabel
+            label?.text = visibleSections[indexPath.section].title
+            let countLabel = view.viewWithTag(2) as? UILabel
+            countLabel?.textColor = ThemeService.shared.theme.ternaryTextColor
+            view.viewWithTag(3)?.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
+            var ownedCount = 0
+            visibleSections[indexPath.section].items.forEach { ownedCount += $0.numberOwned }
+            var totalCount = 0
+            visibleSections[indexPath.section].items.forEach { totalCount += $0.totalNumber }
+            countLabel?.text = "\(ownedCount)/\(totalCount)"
+        }
+        
+        return view
+    }
 }

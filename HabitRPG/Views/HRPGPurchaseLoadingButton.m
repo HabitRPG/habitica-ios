@@ -24,7 +24,6 @@
 
     if (self) {
         self.label = [[UILabel alloc] init];
-        self.label.layer.borderWidth = 1.0f;
         self.label.layer.cornerRadius = 5.0f;
         self.label.textAlignment = NSTextAlignmentCenter;
         self.label.textColor = [UIColor whiteColor];
@@ -57,6 +56,7 @@
     _text = text;
     if (self.state == HRPGPurchaseButtonStateLabel) {
         self.label.text = self.text;
+        self.label.textColor = [UIColor whiteColor];
     }
 }
 
@@ -116,7 +116,6 @@
 - (void)setTintColor:(UIColor *)tintColor {
     _tintColor = tintColor;
     self.label.layer.backgroundColor = [tintColor CGColor];
-    self.label.layer.borderColor = [tintColor CGColor];
 }
 
 - (void)addLabelToView {
@@ -153,7 +152,7 @@
     [UIView animateWithDuration:0.2
                      animations:^() {
                          self.layer.backgroundColor = [[UIColor clearColor] CGColor];
-                         self.label.textColor = self.tintColor;
+                         self.label.textColor = [UIColor whiteColor];
                      }];
 }
 

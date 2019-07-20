@@ -21,9 +21,9 @@ or alternatively using `brew cask install fastlane`
 fastlane ios test
 ```
 Runs all the tests
-### ios snap
+### ios screenshots
 ```
-fastlane ios snap
+fastlane ios screenshots
 ```
 
 ### ios beta

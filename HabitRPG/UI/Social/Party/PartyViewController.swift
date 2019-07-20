@@ -28,8 +28,8 @@ class PartyViewController: SplitSocialViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        ImageManager.getImage(name: "timeTravelersShop_background_fall") { (image, _) in
-            self.noPartyHeaderBackground.image = image?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: UIImage.ResizingMode.tile)
+        ImageManager.getImage(name: "timeTravelersShop_background_fall") {[weak self] (image, _) in
+            self?.noPartyHeaderBackground.image = image?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: UIImage.ResizingMode.tile)
         }
         let gradient = CAGradientLayer()
         let bgColor = ThemeService.shared.theme.contentBackgroundColor

@@ -14,7 +14,7 @@ public protocol EggProtocol: ItemProtocol {
 }
 
 public extension EggProtocol {
-    public var imageName: String {
+    var imageName: String {
         return "Pet_Egg_\(key ?? "")"
     }
 }

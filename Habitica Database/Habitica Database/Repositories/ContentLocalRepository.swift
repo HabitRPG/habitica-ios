@@ -51,7 +51,7 @@ public class ContentLocalRepository: BaseLocalRepository {
         
         saveMysteryItem()
         
-        save(objects: newObjects)
+        save(objects: newObjects, update: .modified)
     }
     
     public func saveMysteryItem() {
@@ -62,7 +62,7 @@ public class ContentLocalRepository: BaseLocalRepository {
         mysteryItem.isSubscriberItem = true
         mysteryItem.itemType = "special"
         updateCall { realm in
-            realm.add(mysteryItem, update: true)
+            realm.add(mysteryItem, update: .modified)
         }
     }
     

@@ -17,7 +17,7 @@ public class TaskLocalRepository: BaseLocalRepository {
         if let realmTask = task as? RealmTask {
             updateCall { realm in
                 realmTask.ownerID = userID
-                realm.add(realmTask, update: true)
+                realm.add(realmTask, update: .modified)
             }
             return
         }
@@ -49,12 +49,12 @@ public class TaskLocalRepository: BaseLocalRepository {
             })
         }
         save(objects: tasks.map { (task) in
-            task.order = taskOrder[(task.type ?? "")+"s"]?.index(of: task.id ?? "") ?? 0
+            task.order = taskOrder[(task.type ?? "")+"s"]?.firstIndex(of: task.id ?? "") ?? 0
             if let realmTask = task as? RealmTask {
                 return realmTask
             }
             return RealmTask(ownerID: userID, taskProtocol: task, tags: tags)
-        })
+        }, update: .modified)
         removeOldTasks(userID: userID, newTasks: tasks, removeCompletedTodos: removeCompletedTodos)
     }
     
@@ -257,7 +257,7 @@ public class TaskLocalRepository: BaseLocalRepository {
         }
         updateCall { _ in
             for task in tasks {
-                if let position = order.index(of: task.id ?? "") {
+                if let position = order.firstIndex(of: task.id ?? "") {
                     task.order = position
                 }
             }

@@ -43,7 +43,7 @@ public class StableLocalRepository: ContentLocalRepository {
         })
     }
     
-    public func getPets(keys: [String]?) -> SignalProducer<ReactiveResults<[PetProtocol]>, ReactiveSwiftRealmError> {
+    public func getPets(keys: [String]?, sortKey: String = "key") -> SignalProducer<ReactiveResults<[PetProtocol]>, ReactiveSwiftRealmError> {
         var producer: SignalProducer<Results<RealmPet>, ReactiveSwiftRealmError>?
         if let keys = keys {
             producer = RealmPet.findBy(predicate: NSPredicate(format: "key IN %@", keys))
@@ -51,18 +51,18 @@ public class StableLocalRepository: ContentLocalRepository {
             producer = RealmPet.findAll()
         }
         // swiftlint:disable:next force_unwrapping
-        return producer!.sorted(key: "key").reactive().map({ (value, changeset) -> ReactiveResults<[PetProtocol]> in
+        return producer!.sorted(key: sortKey).reactive().map({ (value, changeset) -> ReactiveResults<[PetProtocol]> in
             return (value.map({ (item) -> PetProtocol in return item }), changeset)
         })
     }
     
-    public func getPets(query: String) -> SignalProducer<ReactiveResults<[PetProtocol]>, ReactiveSwiftRealmError> {
-        return RealmPet.findBy(query: query).sorted(key: "key").reactive().map({ (value, changeset) -> ReactiveResults<[PetProtocol]> in
+    public func getPets(query: String, sortKey: String = "key") -> SignalProducer<ReactiveResults<[PetProtocol]>, ReactiveSwiftRealmError> {
+        return RealmPet.findBy(query: query).sorted(key: sortKey).reactive().map({ (value, changeset) -> ReactiveResults<[PetProtocol]> in
             return (value.map({ (item) -> PetProtocol in return item }), changeset)
         })
     }
     
-    public func getMounts(keys: [String]?) -> SignalProducer<ReactiveResults<[MountProtocol]>, ReactiveSwiftRealmError> {
+    public func getMounts(keys: [String]?, sortKey: String = "key") -> SignalProducer<ReactiveResults<[MountProtocol]>, ReactiveSwiftRealmError> {
         var producer: SignalProducer<Results<RealmMount>, ReactiveSwiftRealmError>?
         if let keys = keys {
             producer = RealmMount.findBy(predicate: NSPredicate(format: "key IN %@", keys))
@@ -70,13 +70,13 @@ public class StableLocalRepository: ContentLocalRepository {
             producer = RealmMount.findAll()
         }
         // swiftlint:disable:next force_unwrapping
-        return producer!.sorted(key: "key").reactive().map({ (value, changeset) -> ReactiveResults<[MountProtocol]> in
+        return producer!.sorted(key: sortKey).reactive().map({ (value, changeset) -> ReactiveResults<[MountProtocol]> in
             return (value.map({ (item) -> MountProtocol in return item }), changeset)
         })
     }
     
-    public func getMounts(query: String) -> SignalProducer<ReactiveResults<[MountProtocol]>, ReactiveSwiftRealmError> {
-        return RealmMount.findBy(query: query).sorted(key: "key").reactive().map({ (value, changeset) -> ReactiveResults<[MountProtocol]> in
+    public func getMounts(query: String, sortKey: String = "key") -> SignalProducer<ReactiveResults<[MountProtocol]>, ReactiveSwiftRealmError> {
+        return RealmMount.findBy(query: query).sorted(key: sortKey).reactive().map({ (value, changeset) -> ReactiveResults<[MountProtocol]> in
             return (value.map({ (item) -> MountProtocol in return item }), changeset)
         })
     }

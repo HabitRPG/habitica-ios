@@ -11,4 +11,5 @@ import Foundation
 public protocol NotificationNewChatProtocol: NotificationProtocol {
     var groupID: String? { get set }
     var groupName: String? { get set }
+    var isParty: Bool { get set }
 }

@@ -129,12 +129,12 @@ class InviteMembersViewController: FormViewController {
         doneButton.isEnabled = false
         if let groupID = groupID {
             socialRepository.invite(toGroup: groupID, members: members)
-                .on(event: { _ in
-                    self.doneButton.isEnabled = true
+                .on(event: {[weak self] _ in
+                    self?.doneButton.isEnabled = true
                 })
                 .skipNil()
-                .observeValues { _ in
-                    self.dismiss(animated: true, completion: nil)
+                .observeValues {[weak self] _ in
+                    self?.dismiss(animated: true, completion: nil)
             }
         } else {
             dismiss(animated: true, completion: nil)

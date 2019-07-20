@@ -266,6 +266,25 @@ class RealmUser: Object, UserProtocol {
     }
     var realmPushDevices = List<RealmPushDevice>()
     
+    var questAchievements: [AchievementProtocol] {
+        get {
+            return realmAchievements.map({ (achievement) -> AchievementProtocol in
+                return achievement
+            })
+        }
+        set {
+            realmAchievements.removeAll()
+            newValue.forEach { (achievement) in
+                if let realmAchievement = achievement as? RealmAchievement {
+                    realmAchievements.append(realmAchievement)
+                } else {
+                    realmAchievements.append(RealmAchievement(userID: id, protocolObject: achievement))
+                }
+            }
+        }
+    }
+    var realmAchievements = List<RealmAchievement>()
+    
     var needsCron: Bool = false
     var lastCron: Date?
     
@@ -278,7 +297,7 @@ class RealmUser: Object, UserProtocol {
     }
     
     override static func ignoredProperties() -> [String] {
-        return ["flags", "preferences", "stats", "profile", "contributor", "tasksOrder", "items", "tags", "inbox", "authentication", "purchased", "party", "invitations", "pushDevices"]
+        return ["flags", "preferences", "stats", "profile", "contributor", "tasksOrder", "items", "tags", "inbox", "authentication", "purchased", "party", "invitations", "pushDevices", "questAchievements"]
     }
     
     convenience init(_ user: UserProtocol) {
@@ -302,5 +321,6 @@ class RealmUser: Object, UserProtocol {
         hasNewMessages = user.hasNewMessages
         invitations = user.invitations
         pushDevices = user.pushDevices
+        questAchievements = user.questAchievements
     }
 }

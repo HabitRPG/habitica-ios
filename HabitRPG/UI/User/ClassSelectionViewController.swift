@@ -49,10 +49,11 @@ class ClassSelectionViewController: UIViewController {
         navigationController?.navigationBar.backgroundColor = .clear
         
         disposable.inner.add(userRepository.getUser()
+            .take(first: 1)
             .filter({ user in !user.canChooseClassForFree })
-            .flatMap(.latest, { (user) in
+            .flatMap(.latest) { _ in
                 return self.userRepository.selectClass()
-            }).start())
+            }.start())
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,17 +73,17 @@ class ClassSelectionViewController: UIViewController {
     }
     
     private func showView() {
-        UIView.animate(withDuration: 0.4, animations: {
-            self.navigationController?.view.alpha = 1
-        }, completion: { (_) in
-            self.set(class: .warrior)
-            UIView.animate(withDuration: 0.6) {
-                self.bottomView.pin.top(58%)
+        UIView.animate(withDuration: 0.4, animations: {[weak self] in
+            self?.navigationController?.view.alpha = 1
+        }, completion: {[weak self] (_) in
+            self?.set(class: .warrior)
+            UIView.animate(withDuration: 0.6) {[weak self] in
+                self?.bottomView.pin.top(58%)
             }
-            UIView.animate(withDuration: 0.2, delay: 0.5, options: [], animations: {
-                self.titleView.alpha = 1
-                self.descriptionView.alpha = 1
-                self.selectionButton.alpha = 1
+            UIView.animate(withDuration: 0.2, delay: 0.5, options: [], animations: {[weak self] in
+                self?.titleView.alpha = 1
+                self?.descriptionView.alpha = 1
+                self?.selectionButton.alpha = 1
             }, completion: nil)
         })
     }
@@ -138,14 +139,14 @@ class ClassSelectionViewController: UIViewController {
     }
     
     private func configure(className: String, description: String, textColor: UIColor, backgroundColor: UIColor, buttonColor: UIColor) {
-        UIView.animate(withDuration: 0.3) {
-            self.titleView.text = L10n.Classes.classHeader(className)
-            self.titleView.textColor = textColor
-            self.descriptionView.text = description
-            self.descriptionView.textColor = textColor
-            self.bottomView.backgroundColor = backgroundColor
-            self.selectionButton.backgroundColor = buttonColor
-            self.selectionButton.setTitle(L10n.Classes.becomeAClass(className), for: .normal)
+        UIView.animate(withDuration: 0.3) {[weak self] in
+            self?.titleView.text = L10n.Classes.classHeader(className)
+            self?.titleView.textColor = textColor
+            self?.descriptionView.text = description
+            self?.descriptionView.textColor = textColor
+            self?.bottomView.backgroundColor = backgroundColor
+            self?.selectionButton.backgroundColor = buttonColor
+            self?.selectionButton.setTitle(L10n.Classes.becomeAClass(className), for: .normal)
         }
     }
     
@@ -166,13 +167,13 @@ class ClassSelectionViewController: UIViewController {
                 selectedView = rogueOptionView
             }
             showLoadingSelection()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.userRepository.selectClass(selectedClass)
-                    .on(failed: { _ in
-                        self.isSelecting = false
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {[weak self] in
+                self?.userRepository.selectClass(selectedClass)
+                    .on(failed: {[weak self] _ in
+                        self?.isSelecting = false
                     })
                     .observeCompleted {
-                 self.dismiss(animated: true, completion: nil)
+                 self?.dismiss(animated: true, completion: nil)
                  }
             }
             
@@ -181,30 +182,30 @@ class ClassSelectionViewController: UIViewController {
     
     private func showLoadingSelection() {
         loadingIndicator.startAnimating()
-        if let selectedView = self.selectedView {
+        if let selectedView = selectedView {
             showBottomView = false
-            UIView.animate(withDuration: 0.3) {
-                self.navigationController?.navigationBar.alpha = 0
-                self.hideView(self.warriorOptionView)
-                self.hideView(self.mageOptionView)
-                self.hideView(self.healerOptionView)
-                self.hideView(self.rogueOptionView)
+            UIView.animate(withDuration: 0.3) {[weak self] in
+                self?.navigationController?.navigationBar.alpha = 0
+                self?.hideView(self?.warriorOptionView)
+                self?.hideView(self?.mageOptionView)
+                self?.hideView(self?.healerOptionView)
+                self?.hideView(self?.rogueOptionView)
             }
-            UIView.animate(withDuration: 0.6, animations: {
+            UIView.animate(withDuration: 0.6, animations: {[weak self] in
                 selectedView.pin.vCenter().hCenter()
-                self.bottomView.pin.top(100%)
-            }, completion: { (_) in
-                self.loadingIndicator.pin.below(of: selectedView).marginTop(12).hCenter()
-                UIView.animate(withDuration: 0.3, animations: {
-                    self.loadingIndicator.alpha = 1
+                self?.bottomView.pin.top(100%)
+            }, completion: {[weak self] (_) in
+                self?.loadingIndicator.pin.below(of: selectedView).marginTop(12).hCenter()
+                UIView.animate(withDuration: 0.3, animations: {[weak self] in
+                    self?.loadingIndicator.alpha = 1
                 })
             })
         }
     }
     
-    private func hideView(_ view: UIView) {
+    private func hideView(_ view: UIView?) {
         if selectedView != view {
-            view.alpha = 0
+            view?.alpha = 0
         }
     }
     
@@ -212,6 +213,6 @@ class ClassSelectionViewController: UIViewController {
         if !isSelecting {
             self.userRepository.disableClassSystem().observeCompleted {}
         }
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
 }

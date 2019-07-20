@@ -15,7 +15,7 @@ class StableOverviewCell: UICollectionViewCell {
     @IBOutlet weak var countLabel: UILabel!
     
     func configure(item: StableOverviewItem) {
-        backgroundColor = ThemeService.shared.theme.contentBackgroundColor
+        backgroundColor = ThemeService.shared.theme.windowBackgroundColor
         imageView.setImagewith(name: item.imageName)
         textLabel.text = item.text
         countLabel.text = "\(item.numberOwned)/\(item.totalNumber)"

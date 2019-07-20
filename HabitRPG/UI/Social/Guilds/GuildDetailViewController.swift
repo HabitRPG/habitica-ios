@@ -100,14 +100,14 @@ class GuildDetailViewController: GroupDetailViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == StoryboardSegue.Social.challengesSegue.rawValue, let groupID = self.groupProperty.value?.id {
+        if segue.identifier == StoryboardSegue.Social.challengesSegue.rawValue, let groupID = groupProperty.value?.id {
             let challengesViewController = segue.destination as? ChallengeTableViewController
             challengesViewController?.dataSource.shownGuilds = [groupID]
             challengesViewController?.showOnlyUserChallenges = false
-        } else if segue.identifier == StoryboardSegue.Social.userProfileSegue.rawValue, let leaderID = self.guildLeaderID {
+        } else if segue.identifier == StoryboardSegue.Social.userProfileSegue.rawValue, let leaderID = guildLeaderID {
             let profileViewController = segue.destination as? UserProfileViewController
             profileViewController?.userID = leaderID
-        } else if segue.identifier == StoryboardSegue.Social.sendMessageSegue.rawValue, let leaderID = self.guildLeaderID {
+        } else if segue.identifier == StoryboardSegue.Social.sendMessageSegue.rawValue, let leaderID = guildLeaderID {
             let navigationController = segue.destination as? UINavigationController
             let messageViewController = navigationController?.topViewController as? HRPGInboxChatViewController
             messageViewController?.isPresentedModally = true

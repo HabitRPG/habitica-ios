@@ -11,7 +11,8 @@ import Habitica_Models
 
 class PetDetailViewController: StableDetailViewController<PetDetailDataSource> {
     
-    var eggType: String = ""
+    var searchEggs = true
+    var searchKey: String = ""
     var petType: String = "drop"
     
     private let inventoryRepository = InventoryRepository()
@@ -22,13 +23,13 @@ class PetDetailViewController: StableDetailViewController<PetDetailDataSource> {
     private var selectedPet: PetProtocol?
     
     override func viewDidLoad() {
-        datasource = PetDetailDataSource(eggType: eggType)
+        datasource = PetDetailDataSource(searchEggs: searchEggs, searchKey: searchKey)
         if petType == "drop" || petType == "premium" {
             datasource?.types = ["drop", "premium"]
         } else {
             datasource?.types = [petType]
         }
-        datasource?.collectionView = self.collectionView
+        datasource?.collectionView = collectionView
         super.viewDidLoad()
         
         disposable.inner.add(userRepository.getUser().on(value: {[weak self]user in
@@ -70,7 +71,7 @@ class PetDetailViewController: StableDetailViewController<PetDetailDataSource> {
         } else {
             actionSheet.setSourceInCenter(view)
         }
-        actionSheet.show()
+        present(actionSheet, animated: true, completion: nil)
     }
     
     @IBAction func unwindToList(_ segue: UIStoryboardSegue) {

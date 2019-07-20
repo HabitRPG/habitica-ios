@@ -124,6 +124,9 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
         NetworkAuthenticationManager.shared.currentUserKey = AuthenticationManager.shared.currentUserKey
         updateServer()
         AuthenticatedCall.errorHandler = HabiticaNetworkErrorHandler()
+        AuthenticatedCall.notificationListener = {[weak self] notifications in
+            self?.userRepository.saveNotifications(notifications)
+        }
         let configuration = URLSessionConfiguration.default
         AuthenticatedCall.defaultConfiguration.urlConfiguration = configuration
     }
@@ -217,7 +220,7 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
     @objc
     func handleMaintenanceScreen() {
         let call = RetrieveMaintenanceInfoCall()
-        call.fire()
+        
         call.jsonSignal.map({ json -> [String: Any]? in
             let jsonDict = json as? [String: Any]
             return jsonDict
@@ -241,15 +244,15 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
             }
             .flatMap(.latest) { (_) -> Signal<Any, Never> in
                 let call = RetrieveDeprecationInfoCall()
-                call.fire()
+                
                 return call.jsonSignal
             }
             .map({ (jsonObject) in
                 return jsonObject as? [AnyHashable: Any]
             })
             .skipNil()
-            .observeValues { (json) in
-                self.displayMaintenanceScreen(data: json, isDeprecated: true)
+            .observeValues {[weak self] (json) in
+                self?.displayMaintenanceScreen(data: json, isDeprecated: true)
         }
     }
     
@@ -404,8 +407,8 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
     func displayInAppNotification(taskID: String, text: String) {
         let alertController = HabiticaAlertController(title: L10n.reminder, message: text)
         alertController.addCloseAction()
-        alertController.addAction(title: L10n.complete, style: .default, isMainAction: true, closeOnTap: true, identifier: nil) { _ in
-            self.scoreTask(taskID, direction: "up") {}
+        alertController.addAction(title: L10n.complete, style: .default, isMainAction: true, closeOnTap: true, identifier: nil) {[weak self] _ in
+            self?.scoreTask(taskID, direction: "up") {}
         }
         alertController.show()
         if #available(iOS 10.0, *) {

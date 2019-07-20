@@ -9,6 +9,7 @@
 import Foundation
 import ReactiveSwift
 import Keys
+import Habitica_Models
 
 enum HTTPMethod: String {
     case GET
@@ -30,6 +31,8 @@ public class AuthenticatedCall: JsonNetworkCall {
 
     public static var errorHandler: NetworkErrorHandler?
     public static var defaultConfiguration = HabiticaServerConfig.current
+    public static var notificationListener: (([NotificationProtocol]?) -> Void)?
+
     private var debugHandler: DebugOutputHandler?
     var customErrorHandler: NetworkErrorHandler?
     var needsAuthentication = true
@@ -52,7 +55,9 @@ public class AuthenticatedCall: JsonNetworkCall {
          httpMethod: HTTPMethod, httpHeaders: [String: String]? = AuthenticatedCall.jsonHeaders(),
          endpoint: String, postData: Data? = nil,
          stubHolder: StubHolderProtocol? = nil,
-         errorHandler: NetworkErrorHandler? = nil) {
+         errorHandler: NetworkErrorHandler? = nil,
+         needsAuthentication: Bool = true) {
+        self.needsAuthentication = needsAuthentication
         super.init(configuration: configuration ?? AuthenticatedCall.defaultConfiguration,
                    httpMethod: httpMethod.rawValue,
                    httpHeaders: httpHeaders,
@@ -62,7 +67,7 @@ public class AuthenticatedCall: JsonNetworkCall {
         
         customErrorHandler = errorHandler
         
-        debugHandler = DebugOutputHandler(httpMethod: httpMethod, url: urlString(endpoint))
+        debugHandler = DebugOutputHandler(httpMethod: httpMethod, url: urlString)
         debugHandler?.observe(call: self)
         
         setupErrorHandler()

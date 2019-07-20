@@ -57,9 +57,13 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
         return localRepository.getQuest(key: key)
     }
     
+    func getQuests(keys: [String]) ->SignalProducer<ReactiveResults<[QuestProtocol]>, ReactiveSwiftRealmError> {
+        return localRepository.getQuests(keys: keys)
+    }
+    
     func sell(item: ItemProtocol) -> Signal<UserProtocol?, Never> {
         let call = SellItemCall(item: item)
-        call.fire()
+        
         return call.objectSignal.on(value: {[weak self]user in
             if let user = user, let userID = self?.currentUserId {
                 self?.localUserRepository.updateUser(id: userID, updateUser: user)
@@ -69,7 +73,7 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
     
     func hatchPet(egg: EggProtocol, potion: HatchingPotionProtocol) -> Signal<UserItemsProtocol?, Never> {
         let call = HatchPetCall(egg: egg, potion: potion)
-        call.fire()
+        
         return call.objectSignal.on(value: {[weak self]userItems in
             if let userItems = userItems, let userID = self?.currentUserId {
                 self?.localUserRepository.updateUser(id: userID, userItems: userItems)
@@ -79,13 +83,13 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
     
     func inviteToQuest(quest: QuestProtocol) -> Signal<EmptyResponseProtocol?, Never> {
         let call = InviteToQuestCall(groupID: "party", quest: quest)
-        call.fire()
+        
         return call.objectSignal
     }
     
     func equip(type: String, key: String) -> Signal<UserItemsProtocol?, Never> {
         let call = EquipCall(type: type, itemKey: key)
-        call.fire()
+        
         return call.objectSignal.on(value: {[weak self]userItems in
             if let userItems = userItems, let userID = self?.currentUserId {
                 self?.localUserRepository.updateUser(id: userID, userItems: userItems)
@@ -95,7 +99,7 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
     
     func buyObject(key: String, price: Int, text: String) -> Signal<BuyResponseProtocol?, Never> {
         let call = BuyObjectCall(key: key)
-        call.fire()
+        
         return call.habiticaResponseSignal.on(value: {[weak self]habiticaResponse in
             if let buyResponse = habiticaResponse?.data, let userID = self?.currentUserId {
                 self?.localUserRepository.updateUser(id: userID, price: price, buyResponse: buyResponse)
@@ -143,7 +147,7 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
     
     func purchaseItem(purchaseType: String, key: String, value: Int, text: String) -> Signal<UserProtocol?, Never> {
         let call = PurchaseItemCall(purchaseType: purchaseType, key: key)
-        call.fire()
+        
         return call.objectSignal.on(value: {[weak self]updatedUser in
             if let updatedUser = updatedUser, let userID = self?.currentUserId {
                 self?.localUserRepository.updateUser(id: userID, balanceDiff: -(Float(value) / 4.0))
@@ -157,7 +161,7 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
     
     func purchaseHourglassItem(purchaseType: String, key: String, text: String) -> Signal<UserProtocol?, Never> {
         let call = PurchaseHourglassItemCall(purchaseType: purchaseType, key: key)
-        call.fire()
+        
         return call.objectSignal.on(value: {[weak self]updatedUser in
             if let updatedUser = updatedUser, let userID = self?.currentUserId {
                 self?.localUserRepository.updateUser(id: userID, updateUser: updatedUser)
@@ -170,7 +174,7 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
     
     func purchaseMysterySet(identifier: String, text: String) -> Signal<UserProtocol?, Never> {
         let call = PurchaseMysterySetCall(identifier: identifier)
-        call.fire()
+        
         return call.objectSignal.on(value: {[weak self]updatedUser in
             if let updatedUser = updatedUser, let userID = self?.currentUserId {
                 self?.localUserRepository.updateUser(id: userID, updateUser: updatedUser)
@@ -183,7 +187,7 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
     
     func openMysteryItem() -> Signal<GearProtocol?, Never> {
         let call = OpenMysteryItemCall()
-        call.fire()
+        
         return call.objectSignal
             .skipNil()
             .flatMap(.latest, {[weak self] (gear) -> SignalProducer<GearProtocol?, Never> in
@@ -206,7 +210,7 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
     
     func purchaseQuest(key: String, text: String) -> Signal<UserProtocol?, Never> {
         let call = PurchaseQuestCall(key: key)
-        call.fire()
+        
         return call.objectSignal.on(value: {[weak self]updatedUser in
             if let updatedUser = updatedUser, let userID = self?.currentUserId {
                 self?.localUserRepository.updateUser(id: userID, updateUser: updatedUser)
@@ -219,7 +223,7 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
     
     func togglePinnedItem(pinType: String, path: String) -> Signal<PinResponseProtocol?, Never> {
         let call = TogglePinnedItemCall(pinType: pinType, path: path)
-        call.fire()
+        
         return call.objectSignal.on(value: {[weak self] pinResponse in
             if let pinResponse = pinResponse, let userID = self?.currentUserId {
                 self?.localRepository.updatePinnedItems(userID: userID, pinResponse: pinResponse)
@@ -229,7 +233,7 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
     
     func retrieveShopInventory(identifier: String) -> Signal<ShopProtocol?, Never> {
         let call = RetrieveShopInventoryCall(identifier: identifier, language: LanguageHandler.getAppLanguage().code)
-        call.fire()
+        
         return call.objectSignal.on(value: {[weak self]shop in
             if let shop = shop {
                 shop.identifier = identifier
@@ -248,7 +252,7 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
     
     func feed(pet: PetProtocol, food: FoodProtocol) -> Signal<Int?, Never> {
         let call = FeedPetCall(pet: pet, food: food)
-        call.fire()
+        
         call.habiticaResponseSignal.observeValues { response in
             if let message = response?.message {
                 let toastView = ToastView(title: message, background: .green)

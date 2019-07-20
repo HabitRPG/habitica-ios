@@ -98,14 +98,14 @@ class HabiticaAlertController: UIViewController, Themeable {
     
     convenience init(title newTitle: String?, message newMessage: String? = nil) {
         self.init()
-        self.title = newTitle
-        self.message = newMessage
+        title = newTitle
+        message = newMessage
     }
     
     convenience init(title newTitle: String?, attributedMessage newMessage: NSAttributedString) {
         self.init()
-        self.title = newTitle
-        self.attributedMessage = newMessage
+        title = newTitle
+        attributedMessage = newMessage
     }
     
     init() {
@@ -172,8 +172,8 @@ class HabiticaAlertController: UIViewController, Themeable {
             let keyboardRectangle = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRectangle.height
             self.bottomOffsetConstraint.constant = keyboardHeight + 8
-            if self.centerConstraint.isActive {
-                self.centerConstraint.isActive = false
+            if centerConstraint.isActive {
+                centerConstraint.isActive = false
             }
         }
     }
@@ -181,8 +181,8 @@ class HabiticaAlertController: UIViewController, Themeable {
     @objc
     func keyboardWillHide(notification: NSNotification) {
         self.bottomOffsetConstraint.constant = 16
-        if !self.centerConstraint.isActive {
-            self.centerConstraint.isActive = true
+        if !centerConstraint.isActive {
+            centerConstraint.isActive = true
         }
         
     }
@@ -278,7 +278,7 @@ class HabiticaAlertController: UIViewController, Themeable {
             if let oldView = containerView.arrangedSubviews.first {
                 oldView.removeFromSuperview()
             }
-            self.containerView.addArrangedSubview(view)
+            containerView.addArrangedSubview(view)
         }
     }
     
@@ -310,8 +310,8 @@ class HabiticaAlertController: UIViewController, Themeable {
             while let presentedViewController = topController.presentedViewController {
                 topController = presentedViewController
             }
-            self.modalTransitionStyle = .crossDissolve
-            self.modalPresentationStyle = .overCurrentContext
+            modalTransitionStyle = .crossDissolve
+            modalPresentationStyle = .overCurrentContext
             topController.present(self, animated: true) {
             }
         }
@@ -320,16 +320,16 @@ class HabiticaAlertController: UIViewController, Themeable {
     @objc
     func buttonTapped(_ button: UIButton) {
         if shouldCloseOnButtonTap[button.tag] != false {
-        self.dismiss(animated: true, completion: {
-            self.buttonHandlers[button.tag]?(button)
+        dismiss(animated: true, completion: {[weak self] in
+            self?.buttonHandlers[button.tag]?(button)
         })
         } else {
-            self.buttonHandlers[button.tag]?(button)
+            buttonHandlers[button.tag]?(button)
         }
     }
     
     @IBAction func closeTapped(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
         if let action = closeAction {
             action()
         }
@@ -370,21 +370,21 @@ extension HabiticaAlertController {
     
     @objc
     func addCancelAction(handler: ((UIButton) -> Void)? = nil) {
-        self.addAction(title: L10n.cancel, identifier: "Cancel", handler: handler)
+        addAction(title: L10n.cancel, identifier: "Cancel", handler: handler)
     }
     
     @objc
     func addCloseAction(handler: ((UIButton) -> Void)? = nil) {
-        self.addAction(title: L10n.close, identifier: "Close", handler: handler)
+        addAction(title: L10n.close, identifier: "Close", handler: handler)
     }
     
     @objc
     func addShareAction(handler: ((UIButton) -> Void)? = nil) {
-        self.addAction(title: L10n.share, isMainAction: true, closeOnTap: false, handler: handler)
+        addAction(title: L10n.share, isMainAction: true, closeOnTap: false, handler: handler)
     }
     
     @objc
     func addOkAction(handler: ((UIButton) -> Void)? = nil) {
-        self.addAction(title: L10n.ok, handler: handler)
+        addAction(title: L10n.ok, handler: handler)
     }
 }

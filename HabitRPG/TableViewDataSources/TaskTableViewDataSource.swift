@@ -9,6 +9,7 @@
 import UIKit
 import Habitica_Models
 import ReactiveSwift
+import Crashlytics
 
 @objc
 public protocol TaskTableViewDataSourceProtocol {
@@ -100,9 +101,12 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
         if let disposable = fetchTasksDisposable, !disposable.isDisposed {
             disposable.dispose()
         }
-        fetchTasksDisposable = repository.getTasks(predicate: predicate, sortKey: sortKey).on(value: {[weak self] (tasks, changes) in
-            self?.sections[0].items = tasks
-            self?.notify(changes: changes)
+        fetchTasksDisposable = repository.getTasks(predicate: predicate, sortKey: sortKey).on(failed: {[weak self] error in
+                Crashlytics.sharedInstance().recordError(error)
+                self?.fetchTasks()
+            }, value: {[weak self] (tasks, changes) in
+                self?.sections[0].items = tasks
+                self?.notify(changes: changes)
         }).start()
     }
 
@@ -164,7 +168,7 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
     }
     
     internal func expandSelectedCell(indexPath: IndexPath) {
-        var expandedPath = self.expandedIndexPath
+        var expandedPath = expandedIndexPath
         if tableView?.numberOfRows(inSection: 0) ?? 0 < (expandedPath?.item ?? 0) {
             expandedPath = nil
         }
@@ -173,8 +177,8 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
         }
         self.expandedIndexPath = indexPath
         if expandedPath == nil || indexPath.item == expandedPath?.item {
-            if expandedPath?.item == self.expandedIndexPath?.item {
-                self.expandedIndexPath = nil
+            if expandedPath?.item == expandedIndexPath?.item {
+                expandedIndexPath = nil
             }
             tableView?.beginUpdates()
             tableView?.reloadRows(at: [indexPath], with: .none)

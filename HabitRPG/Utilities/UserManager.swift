@@ -48,7 +48,7 @@ class UserManager: NSObject {
                             return task.isDue && !task.completed
                         })
                     }).withLatest(from: SignalProducer<UserProtocol, Never>(value: user)) ?? Signal<([TaskProtocol], UserProtocol), Never>.empty
-            }).on(value: { (tasks, user) in
+            }).on(value: {[weak self] (tasks, user) in
                 var uncompletedTaskCount = 0
                 for task in tasks {
                     if task.type == "daily" && !task.completed {
@@ -68,7 +68,7 @@ class UserManager: NSObject {
                 Amplitude.instance()?.logEvent("show cron", withEventProperties: eventProperties)
                 
                 if uncompletedTaskCount == 0 {
-                    self.userRepository.runCron(tasks: [])
+                    self?.userRepository.runCron(tasks: [])
                         .on(failed: { error in
                             Crashlytics.sharedInstance().recordError(error)
                         })
@@ -86,7 +86,7 @@ class UserManager: NSObject {
                     if let controller = topController as? MainTabBarController {
                         controller.present(popup, animated: true) {
                         }
-                        self.yesterdailiesDialog = viewController
+                        self?.yesterdailiesDialog = viewController
                     }
                 }
             })
@@ -117,14 +117,14 @@ class UserManager: NSObject {
         
         let wasShown = checkClassSelection(user: user)
         
-        if !wasShown, let userLevel = self.userLevel {
+        if !wasShown, let userLevel = userLevel {
             if userLevel < (user.stats?.level ?? 0) {
                 let levelUpView = LevelUpOverlayView(avatar: user)
                 levelUpView.show()
                 SoundManager.shared.play(effect: .levelUp)
             }
         }
-        self.userLevel = user.stats?.level ?? 0
+        userLevel = user.stats?.level ?? 0
         
         userRepository.registerPushDevice(user: user).observeCompleted {}
         setTimezoneOffset(user)
@@ -140,18 +140,6 @@ class UserManager: NSObject {
                     verifyViewController.modalPresentationStyle = .overCurrentContext
                     controller.present(verifyViewController, animated: true, completion: nil)
                 }
-            }
-        }
-        
-        if let points = user.stats?.points, points > 0 {
-            if var notification = userRepository.createNotification(id: HabiticaNotificationType.unallocatedStatsPoints.rawValue, type: HabiticaNotificationType.unallocatedStatsPoints) as? NotificationUnallocatedStatsProtocol {
-                notification.points = points
-                userRepository.save(object: notification)
-            }
-        }
-        if user.flags?.hasNewStuff == true {
-            if let notification = userRepository.createNotification(id: HabiticaNotificationType.newStuff.rawValue, type: HabiticaNotificationType.newStuff) as? NotificationNewsProtocol {
-                userRepository.save(object: notification)
             }
         }
     }
@@ -170,7 +158,7 @@ class UserManager: NSObject {
             if let lastSelection = lastClassSelectionDisplayed, lastSelection.timeIntervalSinceNow > -300 {
                 return false
             }
-            if self.classSelectionViewController == nil {
+            if classSelectionViewController == nil {
                 let classSelectionController = StoryboardScene.Settings.classSelectionNavigationController.instantiate()
                 if var topController = UIApplication.shared.keyWindow?.rootViewController {
                     while let presentedViewController = topController.presentedViewController {

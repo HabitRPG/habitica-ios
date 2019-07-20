@@ -68,7 +68,7 @@ class ProfileSettingsViewController: BaseSettingsViewController {
             textField.text = value
         }
         alertController.setSourceInCenter(view)
-        self.present(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
     
     private func updateValue(path: String, newValue: String?, indexPath: IndexPath) {

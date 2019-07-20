@@ -102,6 +102,10 @@ public enum L10n {
   public static var dayStreaks: String { return L10n.tr("Mainstrings", "day_streaks") }
   /// days
   public static var days: String { return L10n.tr("Mainstrings", "days") }
+  /// Decline
+  public static var decline: String { return L10n.tr("Mainstrings", "decline") }
+  /// Defeat
+  public static var defeat: String { return L10n.tr("Mainstrings", "defeat") }
   /// Delete
   public static var delete: String { return L10n.tr("Mainstrings", "delete") }
   /// Delete Tasks
@@ -318,6 +322,8 @@ public enum L10n {
   public static var openItunes: String { return L10n.tr("Mainstrings", "open_itunes") }
   /// Open Habitica Website
   public static var openWebsite: String { return L10n.tr("Mainstrings", "open_website") }
+  /// Organize By
+  public static var organizeBy: String { return L10n.tr("Mainstrings", "organize_by") }
   /// Password
   public static var password: String { return L10n.tr("Mainstrings", "password") }
   /// Pause Damage
@@ -650,6 +656,17 @@ public enum L10n {
     }
   }
 
+  public enum Achievements {
+    /// Basic Achievements
+    public static var basic: String { return L10n.tr("Mainstrings", "achievements.basic") }
+    /// Quest Achievements
+    public static var quests: String { return L10n.tr("Mainstrings", "achievements.quests") }
+    /// Seasonal Achievements
+    public static var seasonal: String { return L10n.tr("Mainstrings", "achievements.seasonal") }
+    /// Special Achievements
+    public static var special: String { return L10n.tr("Mainstrings", "achievements.special") }
+  }
+
   public enum Avatar {
     /// Background
     public static var background: String { return L10n.tr("Mainstrings", "avatar.background") }
@@ -710,6 +727,44 @@ public enum L10n {
     public static var warrior: String { return L10n.tr("Mainstrings", "classes.warrior") }
     /// Warriors score more and better "critical hits", which randomly give bonus Gold, Experience, and drop chance for scoring a task. They also deal heavy damage to boss monsters. Play a Warrior if you find motivation from unpredictable jackpot-style rewards, or want to dish out the hurt in boss Quests!
     public static var warriorDescription: String { return L10n.tr("Mainstrings", "classes.warrior_description") }
+  }
+
+  public enum Empty {
+
+    public enum Dailies {
+      /// Dailies are tasks that repeat on a regular basis. Choose the schedule that works you!
+      public static var description: String { return L10n.tr("Mainstrings", "empty.dailies.description") }
+      /// These are your Dailies
+      public static var title: String { return L10n.tr("Mainstrings", "empty.dailies.title") }
+    }
+
+    public enum Habits {
+      /// Habits don't have a rigid schedule. You can check them off multiple times per day.
+      public static var description: String { return L10n.tr("Mainstrings", "empty.habits.description") }
+      /// These are your Habits
+      public static var title: String { return L10n.tr("Mainstrings", "empty.habits.title") }
+    }
+
+    public enum Notifications {
+      /// The notification fairies give you a raucous round of applause! Well done!
+      public static var description: String { return L10n.tr("Mainstrings", "empty.notifications.description") }
+      /// You're all caught up!
+      public static var title: String { return L10n.tr("Mainstrings", "empty.notifications.title") }
+    }
+
+    public enum Rewards {
+      /// Rewards are a great way to use Habitica and complete your tasks. Try adding a few today!
+      public static var description: String { return L10n.tr("Mainstrings", "empty.rewards.description") }
+      /// These are your Rewards
+      public static var title: String { return L10n.tr("Mainstrings", "empty.rewards.title") }
+    }
+
+    public enum Todos {
+      /// To-Dos need to be completed once. Add checklists to your To-Dos to increase their value.
+      public static var description: String { return L10n.tr("Mainstrings", "empty.todos.description") }
+      /// These are your To-Dos
+      public static var title: String { return L10n.tr("Mainstrings", "empty.todos.title") }
+    }
   }
 
   public enum Equipment {
@@ -968,11 +1023,39 @@ public enum L10n {
   }
 
   public enum Notifications {
+    /// Dismiss all
+    public static var dismissAll: String { return L10n.tr("Mainstrings", "notifications.dismiss_all") }
     /// New Bailey Update!
     public static var newBailey: String { return L10n.tr("Mainstrings", "notifications.new_bailey") }
-    /// You have %d unallocated Stat Points
+    /// You have new **Mystery Items**
+    public static var newMysteryItem: String { return L10n.tr("Mainstrings", "notifications.new_mystery_item") }
+    /// You were invited to join the Party **%s**
+    public static func partyInvite(_ p1: UnsafePointer<CChar>) -> String {
+      return L10n.tr("Mainstrings", "notifications.party_invite", p1)
+    }
+    /// You were invited to join the private guild **%s**
+    public static func privateGuildInvite(_ p1: UnsafePointer<CChar>) -> String {
+      return L10n.tr("Mainstrings", "notifications.private_guild_invite", p1)
+    }
+    /// You were invited to join the public guild **%s**
+    public static func publicGuildInvite(_ p1: UnsafePointer<CChar>) -> String {
+      return L10n.tr("Mainstrings", "notifications.public_guild_invite", p1)
+    }
+    /// You were invited to the Quest **%s**
+    public static func questInvite(_ p1: UnsafePointer<CChar>) -> String {
+      return L10n.tr("Mainstrings", "notifications.quest_invite", p1)
+    }
+    /// You have **%d unallocated Stat Points**
     public static func unallocatedStatPoints(_ p1: Int) -> String {
       return L10n.tr("Mainstrings", "notifications.unallocated_stat_points", p1)
+    }
+    /// **%@** has new posts.
+    public static func unreadGuildMessage(_ p1: String) -> String {
+      return L10n.tr("Mainstrings", "notifications.unread_guild_message", p1)
+    }
+    /// Your party, **%@**, has new posts.
+    public static func unreadPartyMessage(_ p1: String) -> String {
+      return L10n.tr("Mainstrings", "notifications.unread_party_message", p1)
     }
   }
 
@@ -1206,6 +1289,8 @@ public enum L10n {
   }
 
   public enum Stable {
+    /// Color
+    public static var color: String { return L10n.tr("Mainstrings", "stable.color") }
     /// Feed
     public static var feed: String { return L10n.tr("Mainstrings", "stable.feed") }
     /// Magic Potion
@@ -1224,6 +1309,8 @@ public enum L10n {
     public static var standardMounts: String { return L10n.tr("Mainstrings", "stable.standard_mounts") }
     /// Standard Pets
     public static var standardPets: String { return L10n.tr("Mainstrings", "stable.standard_pets") }
+    /// Type
+    public static var type: String { return L10n.tr("Mainstrings", "stable.type") }
     /// Wacky Mounts
     public static var wackyMounts: String { return L10n.tr("Mainstrings", "stable.wacky_mounts") }
     /// Wacky Pets
@@ -1595,6 +1682,8 @@ public enum L10n {
   public enum Titles {
     /// About
     public static var about: String { return L10n.tr("Mainstrings", "titles.about") }
+    /// Achievements
+    public static var achievements: String { return L10n.tr("Mainstrings", "titles.achievements") }
     /// API
     public static var api: String { return L10n.tr("Mainstrings", "titles.api") }
     /// Authentication
