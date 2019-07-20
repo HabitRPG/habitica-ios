@@ -7,7 +7,10 @@
 	<key>com.apple.developer.siri</key>
 	<true/>
 	<key>com.apple.security.application-groups</key>
-	<array/>
+	<array>
+		<string>group.habitica.TasksSiri</string>
+		<string>group.habitica</string>
+	</array>
 	<key>keychain-access-groups</key>
 	<array>
 		<string>$(AppIdentifierPrefix)com.habitrpg.ios.Habitica</string>
