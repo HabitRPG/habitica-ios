@@ -3,7 +3,10 @@
 <plist version="1.0">
 <dict>
 	<key>com.apple.security.application-groups</key>
-	<array/>
+	<array>
+		<string>group.habitica.TasksSiri</string>
+		<string>group.habitica</string>
+	</array>
 	<key>keychain-access-groups</key>
 	<array>
 		<string>$(AppIdentifierPrefix)com.habitrpg.ios.Habitica</string>
