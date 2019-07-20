@@ -52,8 +52,10 @@ class AuthenticationManager: NSObject {
     @objc var currentUserKey: String? {
         get {
             if let userId = currentUserId {
-                if keychain[userId] != nil {
-                    return keychain[userId]
+                let userKey = keychain[userId]
+                if userKey != nil {
+                    localKeychain[userId] = userKey
+                    return userKey
                 } else {
                     return localKeychain[userId]
                 }
