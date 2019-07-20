@@ -101,8 +101,8 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         if tasks.isEmpty == false {
             var signal = taskRepository.score(task: tasks[0], direction: .up)
             for task in tasks.dropFirst() {
-                signal = signal.flatMap(.concat, { _ in
-                    return self.taskRepository.score(task: task, direction: .up)
+                signal = signal.flatMap(.concat, {[weak self] _ in
+                    return self?.taskRepository.score(task: task, direction: .up) ?? Signal.empty
                 })
             }
             return signal.flatMap(.latest, { _ -> Signal<EmptyResponseProtocol?, Never> in

@@ -71,12 +71,23 @@ public struct DefaultDarkTheme: DarkTheme {
     public var backgroundTintColor: UIColor { return UIColor.purple200() }
     public var tintColor: UIColor { return UIColor.purple300() }
     public var dimmBackgroundColor: UIColor { return UIColor.purple10() }
+    public var taskOverlayTint: UIColor { return UIColor.blackPurple50().withAlphaComponent(0.15) }
 }
 
 public struct GreenDarkTheme: DarkTheme {
     public var backgroundTintColor: UIColor { return UIColor.green10() }
     public var tintColor: UIColor { return UIColor.green50() }
+    public var primaryTextColor: UIColor { return UIColor.gray700() }
+    public var secondaryTextColor: UIColor { return UIColor.gray600() }
+    public var ternaryTextColor: UIColor { return UIColor.gray500() }
+    public var dimmedTextColor: UIColor { return UIColor.gray200() }
+    public var separatorColor: UIColor { return UIColor.gray10() }
+    public var tableviewSeparatorColor: UIColor { return UIColor.gray100() }
+    public var navbarHiddenColor: UIColor { return contentBackgroundColor }
+    public var dimmedColor: UIColor { return UIColor.gray100() }
     public var dimmBackgroundColor: UIColor { return UIColor.green10() }
+    public var badgeColor: UIColor { return UIColor.gray200() }
+    public var taskOverlayTint: UIColor { return UIColor.blackPurple50().withAlphaComponent(0.30) }
 }
 
 public struct BlueDarkTheme: DarkTheme {
@@ -119,4 +130,6 @@ public struct GrayDarkTheme: DarkTheme {
     public var backgroundTintColor: UIColor { return UIColor.gray50() }
     public var tintColor: UIColor { return UIColor.gray100() }
     public var dimmBackgroundColor: UIColor { return UIColor.gray10() }
+    public var badgeColor: UIColor { return UIColor.gray100() }
+    public var taskOverlayTint: UIColor { return UIColor.black.withAlphaComponent(0.30) }
 }

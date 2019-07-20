@@ -127,7 +127,7 @@ class AchievementCell: UICollectionViewCell {
             descriptionlabel.pin.below(of: titleLabel)
         }
         if isQuestAchievement {
-            countBadge.pin.size(40).start(20).vCenter()
+            countBadge.pin.size(40).vCenter()
         } else {
             countBadge.pin.width(countBadge.frame.size.width + 8).minWidth(countBadge.frame.size.height + 4).height(countBadge.frame.size.height + 4)
         }
@@ -152,9 +152,6 @@ class AchievementCell: UICollectionViewCell {
             } else {
                 iconView.setImagewith(name: "achievement-unearned2x")
             }
-            iconView.isHidden = false
-        } else {
-            iconView.isHidden = true
         }
         descriptionlabel.text = achievement.text
         if achievement.optionalCount > 0 {

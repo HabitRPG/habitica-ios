@@ -33,7 +33,7 @@ public class AuthenticatedCall: JsonNetworkCall {
     public static var defaultConfiguration = HabiticaServerConfig.current
     public static var notificationListener: (([NotificationProtocol]?) -> Void)?
 
-    private var debugHandler = DebugOutputHandler()
+    private var debugHandler: DebugOutputHandler?
     var customErrorHandler: NetworkErrorHandler?
     var needsAuthentication = true
     
@@ -58,7 +58,6 @@ public class AuthenticatedCall: JsonNetworkCall {
          errorHandler: NetworkErrorHandler? = nil,
          needsAuthentication: Bool = true) {
         self.needsAuthentication = needsAuthentication
-        
         super.init(configuration: configuration ?? AuthenticatedCall.defaultConfiguration,
                    httpMethod: httpMethod.rawValue,
                    httpHeaders: httpHeaders,
@@ -67,6 +66,10 @@ public class AuthenticatedCall: JsonNetworkCall {
                    stubHolder: stubHolder)
         
         customErrorHandler = errorHandler
+        
+        debugHandler = DebugOutputHandler(httpMethod: httpMethod, url: urlString)
+        debugHandler?.observe(call: self)
+        
         setupErrorHandler()
     }
     
@@ -88,10 +91,7 @@ public class AuthenticatedCall: JsonNetworkCall {
                 return
             }
         }
-        debugHandler.httpMethod = httpMethod
-        debugHandler.url = urlString
-        debugHandler.observe(call: self)
-        debugHandler.startNetworkCall()
+        debugHandler?.startNetworkCall()
         super.fire()
     }
     
