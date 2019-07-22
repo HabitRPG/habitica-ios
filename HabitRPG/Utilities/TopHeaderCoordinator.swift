@@ -10,7 +10,7 @@ import UIKit
 
 class TopHeaderCoordinator: NSObject {
     
-    private weak var scrollView: UIScrollView?
+    weak var scrollView: UIScrollView?
     private weak var topHeaderNavigationController: (UINavigationController & TopHeaderNavigationControllerProtocol)?
     @objc weak var alternativeHeader: UIView?
     @objc var hideNavBar = false
@@ -127,6 +127,7 @@ class TopHeaderCoordinator: NSObject {
         if followScrollView {
             navController.startFollowing(scrollView: scrollView)
         }
+        navController.currentHeaderCoordinator = self
         if navController.state == .visible && scrollView.contentOffset.y > -navController.contentOffset {
             navController.scrollView(scrollView, scrolledToPosition: scrollView.contentOffset.y)
         }

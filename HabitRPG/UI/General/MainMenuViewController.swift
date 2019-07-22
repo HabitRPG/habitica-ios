@@ -45,11 +45,11 @@ class MainMenuViewController: BaseTableViewController {
     private var navbarColor = ThemeService.shared.theme.navbarHiddenColor {
         didSet {
             topHeaderCoordinator.navbarVisibleColor = navbarColor
-            navbarView?.backgroundColor = navbarColor
+            navbarView.backgroundColor = navbarColor
         }
     }
     private var worldBossTintColor: UIColor?
-    private var navbarView = MenuNavigationBarView.loadFromNib(nibName: "MenuNavigationBarView") as? MenuNavigationBarView
+    private var navbarView = MenuNavigationBarView()
     private var worldBossHeaderView: WorldBossMenuHeader?
     
     private var userRepository = UserRepository()
@@ -62,7 +62,7 @@ class MainMenuViewController: BaseTableViewController {
     private var user: UserProtocol? {
         didSet {
             if let user = self.user {
-                navbarView?.configure(user: user)
+                navbarView.configure(user: user)
             }
             if user?.stats?.habitClass == "wizard" || user?.stats?.habitClass == "healer" {
                 menuSections[0].items[0].title = L10n.Menu.castSpells
@@ -94,15 +94,15 @@ class MainMenuViewController: BaseTableViewController {
         topHeaderCoordinator?.alternativeHeader = navbarView
         topHeaderCoordinator?.navbarVisibleColor = navbarColor
         topHeaderCoordinator?.followScrollView = false
-        navbarView?.backgroundColor = navbarColor
+        navbarView.backgroundColor = navbarColor
         
-        navbarView?.messagesAction = {[weak self] in
+        navbarView.messagesAction = {[weak self] in
             self?.perform(segue: StoryboardSegue.Main.inboxSegue)
         }
-        navbarView?.settingsAction = {[weak self] in
+        navbarView.settingsAction = {[weak self] in
             self?.perform(segue: StoryboardSegue.Main.settingsSegue)
         }
-        navbarView?.notificationsAction = {[weak self] in
+        navbarView.notificationsAction = {[weak self] in
             self?.perform(segue: StoryboardSegue.Main.notificationsSegue)
         }
         
@@ -117,10 +117,10 @@ class MainMenuViewController: BaseTableViewController {
         }).start())
         disposable.inner.add(userRepository.getUnreadNotificationCount().on(value: {[weak self] count in
             if count > 0 {
-                self?.navbarView?.notificationsBadge.text = String(count)
-                self?.navbarView?.notificationsBadge.isHidden = false
+                self?.navbarView.notificationsBadge.text = String(count)
+                self?.navbarView.notificationsBadge.isHidden = false
             } else {
-                self?.navbarView?.notificationsBadge.isHidden = true
+                self?.navbarView.notificationsBadge.isHidden = true
             }
         }).start())
     }
