@@ -45,11 +45,11 @@ class MainMenuViewController: BaseTableViewController {
     private var navbarColor = ThemeService.shared.theme.navbarHiddenColor {
         didSet {
             topHeaderCoordinator.navbarVisibleColor = navbarColor
-            navbarView?.backgroundColor = navbarColor
+            navbarView.backgroundColor = navbarColor
         }
     }
     private var worldBossTintColor: UIColor?
-    private var navbarView = MenuNavigationBarView.loadFromNib(nibName: "MenuNavigationBarView") as? MenuNavigationBarView
+    private var navbarView = MenuNavigationBarView()
     private var worldBossHeaderView: WorldBossMenuHeader?
     
     private var userRepository = UserRepository()
@@ -62,7 +62,7 @@ class MainMenuViewController: BaseTableViewController {
     private var user: UserProtocol? {
         didSet {
             if let user = self.user {
-                navbarView?.configure(user: user)
+                navbarView.configure(user: user)
             }
             if user?.stats?.habitClass == "wizard" || user?.stats?.habitClass == "healer" {
                 menuSections[0].items[0].title = L10n.Menu.castSpells
@@ -94,15 +94,15 @@ class MainMenuViewController: BaseTableViewController {
         topHeaderCoordinator?.alternativeHeader = navbarView
         topHeaderCoordinator?.navbarVisibleColor = navbarColor
         topHeaderCoordinator?.followScrollView = false
-        navbarView?.backgroundColor = navbarColor
+        navbarView.backgroundColor = navbarColor
         
-        navbarView?.messagesAction = {[weak self] in
+        navbarView.messagesAction = {[weak self] in
             self?.perform(segue: StoryboardSegue.Main.inboxSegue)
         }
-        navbarView?.settingsAction = {[weak self] in
+        navbarView.settingsAction = {[weak self] in
             self?.perform(segue: StoryboardSegue.Main.settingsSegue)
         }
-        navbarView?.notificationsAction = {[weak self] in
+        navbarView.notificationsAction = {[weak self] in
             self?.perform(segue: StoryboardSegue.Main.notificationsSegue)
         }
         
@@ -117,12 +117,15 @@ class MainMenuViewController: BaseTableViewController {
         }).start())
         disposable.inner.add(userRepository.getUnreadNotificationCount().on(value: {[weak self] count in
             if count > 0 {
-                self?.navbarView?.notificationsBadge.text = String(count)
-                self?.navbarView?.notificationsBadge.isHidden = false
+                self?.navbarView.notificationsBadge.text = String(count)
+                self?.navbarView.notificationsBadge.isHidden = false
             } else {
-                self?.navbarView?.notificationsBadge.isHidden = true
+                self?.navbarView.notificationsBadge.isHidden = true
             }
         }).start())
+        
+        tableView.estimatedRowHeight = 44
+        tableView.rowHeight = UITableView.automaticDimension
     }
     
     override func applyTheme(theme: Theme) {
@@ -189,19 +192,20 @@ class MainMenuViewController: BaseTableViewController {
             return nil
         }
         
-        let labelFrame = CGRect(x: 30, y: 14, width: 290, height: 17)
-        let iconFrame = CGRect(x: 9, y: 14, width: 16, height: 16)
-        
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 37.5))
-        let label = UILabel(frame: labelFrame)
+        let view = UIView()
+        let label = UILabel()
         label.font = CustomFontMetrics.scaledSystemFont(ofSize: 14)
         label.textColor = ThemeService.shared.theme.primaryTextColor
+        label.text = self.tableView(tableView, titleForHeaderInSection: section)
         view.addSubview(label)
-        let iconView = UIImageView(frame: iconFrame)
+        let iconView = UIImageView()
         iconView.tintColor = ThemeService.shared.theme.primaryTextColor
         view.addSubview(iconView)
+        iconView.pin.start(9).size(16)
+        label.pin.after(of: iconView).top(14).marginStart(4).sizeToFit(.heightFlexible)
+        view.pin.width(view.frame.size.width).height(label.frame.size.height + 14)
+        iconView.pin.vCenter(to: label.edge.vCenter)
         
-        label.text = self.tableView(tableView, titleForHeaderInSection: section)
         if let iconAsset = menuSections[section].iconAsset {
             iconView.image = UIImage(asset: iconAsset)
         }
