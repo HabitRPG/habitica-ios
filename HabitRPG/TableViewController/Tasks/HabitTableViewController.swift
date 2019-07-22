@@ -34,17 +34,4 @@ class HabitTableViewController: TaskTableViewController {
     override func getCellNibName() -> String {
         return "HabitTableViewCell"
     }
-
-    override func getPredicate() -> NSPredicate {
-        let predicate = super.getPredicate()
-        if !HabiticaAppDelegate.isRunningLive() && lastLoggedPredicate != predicate.predicateFormat {
-            lastLoggedPredicate = predicate.predicateFormat
-            let userInfo = [
-                NSLocalizedDescriptionKey: predicate.predicateFormat
-            ]
-            let error = NSError(domain: "habit_filter", code: -1337, userInfo: userInfo)
-            Crashlytics.sharedInstance().recordError(error)
-        }
-        return predicate
-    }
 }
