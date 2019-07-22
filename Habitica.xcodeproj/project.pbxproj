@@ -305,7 +305,6 @@
 		29E162E21FFC21E100685640 /* CustomFontMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E162E11FFC21E100685640 /* CustomFontMetrics.swift */; };
 		29E162E5200227AA00685640 /* HRPGUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29E162E4200227AA00685640 /* HRPGUIViewController.m */; };
 		29E1630B200D050E00685640 /* TopHeaderNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E1630A200D050E00685640 /* TopHeaderNavigationController.swift */; };
-		29E1630D200E23A500685640 /* MenuNavigationBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29E1630C200E23A500685640 /* MenuNavigationBarView.xib */; };
 		29E1630F200E279900685640 /* MenuNavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E1630E200E279900685640 /* MenuNavigationBarView.swift */; };
 		29E16311200E5FEA00685640 /* QuestProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29E16310200E5FEA00685640 /* QuestProgressView.xib */; };
 		29E16313200E619400685640 /* QuestProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E16312200E619400685640 /* QuestProgressView.swift */; };
@@ -928,7 +927,6 @@
 		29E162E3200227AA00685640 /* HRPGUIViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HRPGUIViewController.h; sourceTree = "<group>"; };
 		29E162E4200227AA00685640 /* HRPGUIViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HRPGUIViewController.m; sourceTree = "<group>"; };
 		29E1630A200D050E00685640 /* TopHeaderNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopHeaderNavigationController.swift; sourceTree = "<group>"; };
-		29E1630C200E23A500685640 /* MenuNavigationBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuNavigationBarView.xib; sourceTree = "<group>"; };
 		29E1630E200E279900685640 /* MenuNavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuNavigationBarView.swift; sourceTree = "<group>"; };
 		29E16310200E5FEA00685640 /* QuestProgressView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestProgressView.xib; sourceTree = "<group>"; };
 		29E16312200E619400685640 /* QuestProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestProgressView.swift; sourceTree = "<group>"; };
@@ -2377,7 +2375,6 @@
 				29B6AD491F2A0C9700AC8878 /* LoginEntryView.xib */,
 				291DE9752099D85D0073182A /* MemberLlistView.swift */,
 				29E1630E200E279900685640 /* MenuNavigationBarView.swift */,
-				29E1630C200E23A500685640 /* MenuNavigationBarView.xib */,
 				D96C853C1DCB61EE003E3616 /* Notifications */,
 				49DCB7C11F40D7F00079FDD0 /* NPCBannerView.swift */,
 				49DCB7C31F40D80B0079FDD0 /* NPCBannerView.xib */,
@@ -2928,7 +2925,6 @@
 				296E4B6621AEF35E00DB3602 /* PrideHabiticaAlt@3x.png in Resources */,
 				296E4BCF21AEFE6100DB3602 /* Orange@2x.png in Resources */,
 				D9D17CCE1E6736B500AD9232 /* ChallengeDetailHeaderView.xib in Resources */,
-				29E1630D200E23A500685640 /* MenuNavigationBarView.xib in Resources */,
 				D99DEC89190842CA00FFD2B9 /* Placeholder.png in Resources */,
 				49DCB7B01F3923F20079FDD0 /* HRPGSimpleShopItemView.xib in Resources */,
 				296E4BC421AEFE6100DB3602 /* YellowAlt@2x.png in Resources */,
