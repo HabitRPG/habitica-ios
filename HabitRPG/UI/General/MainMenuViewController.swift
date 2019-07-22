@@ -202,7 +202,7 @@ class MainMenuViewController: BaseTableViewController {
         iconView.tintColor = ThemeService.shared.theme.primaryTextColor
         view.addSubview(iconView)
         iconView.pin.start(9).size(16)
-        label.pin.after(of: iconView).top(14).marginStart(4).sizeToFit(.heightFlexible)
+        label.pin.after(of: iconView).top(14).marginStart(6).sizeToFit(.heightFlexible)
         view.pin.width(view.frame.size.width).height(label.frame.size.height + 14)
         iconView.pin.vCenter(to: label.edge.vCenter)
         
@@ -210,6 +210,10 @@ class MainMenuViewController: BaseTableViewController {
             iconView.image = UIImage(asset: iconAsset)
         }
         return view
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return UITableView.automaticDimension
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
