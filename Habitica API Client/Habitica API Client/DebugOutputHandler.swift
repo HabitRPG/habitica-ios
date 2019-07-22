@@ -12,17 +12,12 @@ import ReactiveSwift
 class DebugOutputHandler {
     let disposable = ScopedDisposable(CompositeDisposable())
     
-    private var httpMethod: HTTPMethod
-    private var url: String
-    
-    init(httpMethod: HTTPMethod, url: String) {
-        self.httpMethod = httpMethod
-        self.url = url
-    }
+    var httpMethod: String = ""
+    var url: String = ""
     
     func startNetworkCall() {
         #if DEBUG
-            print(Date().debugDescription, "API Client >>>>", httpMethod.rawValue, url)
+            print(Date().debugDescription, "API Client >>>>", httpMethod, url)
         #endif
     }
     
@@ -32,7 +27,7 @@ class DebugOutputHandler {
                 print(Date().debugDescription, "ERROR: ", error.localizedDescription)
             }))
             disposable.inner.add(call.httpResponseSignal.observeValues({[weak self] (response) in
-                print(Date().debugDescription, "API Client <<<<", self?.httpMethod.rawValue ?? "", self?.url ?? "", response.statusCode, "\(response.expectedContentLength)bytes")
+                print(Date().debugDescription, "API Client <<<<", self?.httpMethod ?? "", self?.url ?? "", response.statusCode, "\(response.expectedContentLength)bytes")
             }))
         #endif
     }
