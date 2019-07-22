@@ -221,17 +221,19 @@ class MenuNavigationBarView: UIView, Themeable {
         let labelsHeight = displayNameLabel.frame.size.height + usernameLabel.frame.size.height
         displayNameLabel.pin.top((72 - labelsHeight) / 2)
         usernameLabel.pin.below(of: displayNameLabel)
-        settingsButton.pin.size(50).end(16)
+        settingsButton.pin.size(50)
         messagesButton.pin.size(50)
         notificationsButton.pin.size(50)
         var topOffset: CGFloat = 11
         var buttonSpacing: CGFloat = 0
+        var endSpacing: CGFloat = 10
         if displayInTwoRows {
             topOffset = 62
+            endSpacing = 58
             //take the full width, subtract spacing on the side and subtract the width of all 3 buttons. Remaining width is the divided evenly among the buttons
-            buttonSpacing = (parentWidth - 32 - 150) / 2
+            buttonSpacing = (parentWidth - (endSpacing * 2) - 150) / 2
         }
-        settingsButton.pin.top(topOffset)
+        settingsButton.pin.top(topOffset).end(endSpacing)
         messagesButton.pin.top(to: settingsButton.edge.top).before(of: settingsButton).marginEnd(buttonSpacing)
         notificationsButton.pin.top(to: settingsButton.edge.top).before(of: messagesButton).marginEnd(buttonSpacing)
         settingsBadge.pin.top(to: settingsButton.edge.top).start(to: settingsButton.edge.start).marginStart(30).sizeToFit(.heightFlexible)
