@@ -31,11 +31,17 @@ class MenuNavigationBarView: UIView, Themeable {
     private var displayNameLabel: UILabel = {
         let label = UILabel()
         label.font = CustomFontMetrics.scaledSystemFont(ofSize: 17, ofWeight: .semibold)
+        if #available(iOS 10.0, *) {
+            label.adjustsFontForContentSizeCategory = true
+        }
         return label
     }()
     private var usernameLabel: UILabel = {
         let label = UILabel()
         label.font = CustomFontMetrics.scaledSystemFont(ofSize: 15)
+        if #available(iOS 10.0, *) {
+            label.adjustsFontForContentSizeCategory = true
+        }
         return label
     }()
     
@@ -135,6 +141,11 @@ class MenuNavigationBarView: UIView, Themeable {
         notificationsBadge.textColor = theme.lightTextColor
     }
     
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        setNeedsLayout()
+    }
+    
     @objc
     public func configure(user: UserProtocol) {
         displayNameLabel.text = user.profile?.name
@@ -203,9 +214,13 @@ class MenuNavigationBarView: UIView, Themeable {
     }
     
     private func layout() {
+        let parentWidth = bounds.size.width
         avatarWrapper.pin.size(40).start(16).top(16)
-        displayNameLabel.pin.after(of: avatarWrapper).marginStart(16).sizeToFit(.heightFlexible).top(16)
-        usernameLabel.pin.after(of: avatarWrapper).marginStart(16).sizeToFit(.heightFlexible).below(of: displayNameLabel)
+        displayNameLabel.pin.after(of: avatarWrapper).marginStart(16).sizeToFit(.heightFlexible).maxWidth(parentWidth - 40 - 32)
+        usernameLabel.pin.after(of: avatarWrapper).marginStart(16).sizeToFit(.heightFlexible)
+        let labelsHeight = displayNameLabel.frame.size.height + usernameLabel.frame.size.height
+        displayNameLabel.pin.top((72 - labelsHeight) / 2)
+        usernameLabel.pin.below(of: displayNameLabel)
         settingsButton.pin.size(50).end(16)
         messagesButton.pin.size(50)
         notificationsButton.pin.size(50)
@@ -214,7 +229,7 @@ class MenuNavigationBarView: UIView, Themeable {
         if displayInTwoRows {
             topOffset = 62
             //take the full width, subtract spacing on the side and subtract the width of all 3 buttons. Remaining width is the divided evenly among the buttons
-            buttonSpacing = (bounds.size.width - 32 - 150) / 2
+            buttonSpacing = (parentWidth - 32 - 150) / 2
         }
         settingsButton.pin.top(topOffset)
         messagesButton.pin.top(to: settingsButton.edge.top).before(of: settingsButton).marginEnd(buttonSpacing)
