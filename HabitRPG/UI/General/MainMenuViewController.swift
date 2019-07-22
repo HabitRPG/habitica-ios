@@ -123,6 +123,9 @@ class MainMenuViewController: BaseTableViewController {
                 self?.navbarView.notificationsBadge.isHidden = true
             }
         }).start())
+        
+        tableView.estimatedRowHeight = 44
+        tableView.rowHeight = UITableView.automaticDimension
     }
     
     override func applyTheme(theme: Theme) {
@@ -189,19 +192,20 @@ class MainMenuViewController: BaseTableViewController {
             return nil
         }
         
-        let labelFrame = CGRect(x: 30, y: 14, width: 290, height: 17)
-        let iconFrame = CGRect(x: 9, y: 14, width: 16, height: 16)
-        
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 37.5))
-        let label = UILabel(frame: labelFrame)
+        let view = UIView()
+        let label = UILabel()
         label.font = CustomFontMetrics.scaledSystemFont(ofSize: 14)
         label.textColor = ThemeService.shared.theme.primaryTextColor
+        label.text = self.tableView(tableView, titleForHeaderInSection: section)
         view.addSubview(label)
-        let iconView = UIImageView(frame: iconFrame)
+        let iconView = UIImageView()
         iconView.tintColor = ThemeService.shared.theme.primaryTextColor
         view.addSubview(iconView)
+        iconView.pin.start(9).size(16)
+        label.pin.after(of: iconView).top(14).marginStart(4).sizeToFit(.heightFlexible)
+        view.pin.width(view.frame.size.width).height(label.frame.size.height + 14)
+        iconView.pin.vCenter(to: label.edge.vCenter)
         
-        label.text = self.tableView(tableView, titleForHeaderInSection: section)
         if let iconAsset = menuSections[section].iconAsset {
             iconView.image = UIImage(asset: iconAsset)
         }
