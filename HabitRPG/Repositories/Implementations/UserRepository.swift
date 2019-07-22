@@ -101,16 +101,14 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         if tasks.isEmpty == false {
             var signal = taskRepository.score(task: tasks[0], direction: .up)
             for task in tasks.dropFirst() {
-                signal = signal.flatMap(.concat, {[weak self] _ in
-                    return self?.taskRepository.score(task: task, direction: .up) ?? Signal.empty
+                signal = signal.flatMap(.concat, { _ in
+                    return self.taskRepository.score(task: task, direction: .up)
                 })
             }
             return signal.flatMap(.latest, { _ -> Signal<EmptyResponseProtocol?, Never> in
-                let call = RunCronCall()
-                
-                return call.objectSignal
-            }).flatMap(.latest, {[weak self] _ -> Signal<UserProtocol?, Never> in
-                return self?.retrieveUser() ?? Signal.empty
+                return RunCronCall().objectSignal
+            }).flatMap(.latest, { _ -> Signal<UserProtocol?, Never> in
+                return self.retrieveUser()
             })
         } else {
             let call = RunCronCall()
