@@ -75,8 +75,6 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
             for product in transactions {
                 CLSLogv("Purchase: %@", getVaList([product.payment.productIdentifier]))
             }
-            let error = NSError(domain: SKErrorDomain, code: -1001, userInfo: nil)
-            Crashlytics.sharedInstance().recordError(error)
         }
         SwiftyStoreKit.fetchReceipt(forceRefresh: false) { result in
             switch result {
