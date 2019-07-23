@@ -143,7 +143,7 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
             case "delta":
                 AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.delta
             default:
-                AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.production
+                AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.localhost
             }
         }
     }
@@ -152,9 +152,9 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
     func setupDatabase() {
         var config = Realm.Configuration.defaultConfiguration
         config.deleteRealmIfMigrationNeeded = true
-        let fileUrl = try? FileManager.default
-            .url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-        .appendingPathComponent("habitica.realm")
+        let fileUrl = FileManager.default
+            .containerURL(forSecurityApplicationGroupIdentifier: "group.habitrpg.habitica")?
+            .appendingPathComponent("habitica.realm")
         if let url = fileUrl {
             config.fileURL = url
         }
@@ -167,7 +167,6 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             UserManager.shared.beginListening()
         }
-        
     }
     
     @objc

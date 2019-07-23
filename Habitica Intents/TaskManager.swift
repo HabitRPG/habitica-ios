@@ -12,7 +12,7 @@ import Habitica_Database
 import ReactiveSwift
 import Habitica_Models
 import Intents
-
+import RealmSwift
 
 class TaskManager: BaseRepository<TaskLocalRepository>, TaskRepositoryProtocol {
     static let shared = TaskManager()
@@ -31,11 +31,10 @@ class TaskManager: BaseRepository<TaskLocalRepository>, TaskRepositoryProtocol {
                               identifier: "com.habitica."+$0)}
         super.init()
         self.setupNetworkClient()
+        setupDatabase()
         if let cid = AuthenticationManager.shared.currentUserId {
             AuthenticationManager.shared.currentUserKey = AuthenticationManager.shared.localKeychain[cid]
         }
-        print("Auth at start id, ", AuthenticationManager.shared.currentUserId)
-        print("Auth at start key, ", AuthenticationManager.shared.currentUserKey)
     }
 
     func getValidTaskListFromSpokenPhrase(spokenPhrase: String) -> String? {
@@ -64,6 +63,21 @@ class TaskManager: BaseRepository<TaskLocalRepository>, TaskRepositoryProtocol {
         let configuration = URLSessionConfiguration.default
         //NetworkLogger.enableLogging(for: configuration)
         AuthenticatedCall.defaultConfiguration.urlConfiguration = configuration
+    }
+    
+    @objc
+    func setupDatabase() {
+        var config = Realm.Configuration.defaultConfiguration
+        config.deleteRealmIfMigrationNeeded = true
+        let fileUrl = FileManager.default
+            .containerURL(forSecurityApplicationGroupIdentifier: "group.habitrpg.habitica")?
+            .appendingPathComponent("habitica.realm")
+        if let url = fileUrl {
+            config.fileURL = url
+        }
+        print("Realm stored at:", config.fileURL ?? "")
+        Realm.Configuration.defaultConfiguration = config
+        
     }
 
     func updateServer() {
@@ -123,7 +137,6 @@ class TaskManager: BaseRepository<TaskLocalRepository>, TaskRepositoryProtocol {
          - Chris Coffin
          */
         let call = RetrieveTasksCall(dueOnDay: dueOnDay, type: type)
-        call.fire()
         return call.arraySignal.on(value: {[weak self] tasks in
             if let tasks = tasks, dueOnDay == nil {
                 self?.localRepository.save(userID: self?.currentUserId, tasks: tasks)
@@ -134,14 +147,6 @@ class TaskManager: BaseRepository<TaskLocalRepository>, TaskRepositoryProtocol {
     func tasksForList(withName name: String, oncompletion: @escaping ([String]) -> Void) {
         // The following calls have to run on the main thread to complete successfully
         DispatchQueue.main.sync{
-            let signalObserver = Signal<[TaskProtocol]?, Never>.Observer(
-                value: { value in
-                    print("Got value from server ?? got no value", value ?? "no value")
-            }, completed: {
-                print("DEBUG completed")
-            }, interrupted: {
-                print("DEBUG interrupted")
-            })
             // start watching for a change in the local repo for todo items
             let taskSignalProducer = self.getTasks(predicate: NSPredicate(format: "type == 'todo'"))
             var disposable: Disposable?
@@ -152,12 +157,9 @@ class TaskManager: BaseRepository<TaskLocalRepository>, TaskRepositoryProtocol {
                         titles.append(taskTitle)
                     }
                 })
-                print("DEBUG have titles and changes", titles, changes)
                 oncompletion(titles)
                 disposable?.dispose()
             }).start()
-            // start getting the tasks from the server, which will trigger a local change
-            self.retrieveTasks().observe(signalObserver)
         }
     }
 
@@ -187,7 +189,6 @@ class TaskManager: BaseRepository<TaskLocalRepository>, TaskRepositoryProtocol {
         localRepository.save(userID: currentUserId, task: task)
         localRepository.setTaskSyncing(userID: currentUserId, task: task, isSyncing: true)
         let call = CreateTaskCall(task: task)
-        call.fire()
         return call.objectSignal.on(value: {[weak self]returnedTask in
             if let returnedTask = returnedTask {
                 self?.localRepository.save(userID: self?.currentUserId, task: returnedTask)
