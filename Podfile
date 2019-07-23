@@ -82,7 +82,7 @@ target 'Habitica' do
   pod 'Prelude'
 
   pod 'Magnetic'
-
+  
   target 'HabiticaTests' do
     inherit! :search_paths
     test_pods

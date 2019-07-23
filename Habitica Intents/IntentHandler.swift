@@ -124,7 +124,6 @@ class IntentHandler: INExtension, INAddTasksIntentHandling, INSearchForNotebookI
             return
         }
         guard let targetTaskList = intent.targetTaskList?.title else {
-            print("Could not find a target task list")
             completion(INAddTasksIntentResponse(code: .failure, userActivity: nil))
             // to require app launch
             //let response = INAddTasksIntentResponse(code: .failureRequiringAppLaunch, userActivity: nil)
