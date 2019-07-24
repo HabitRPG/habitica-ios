@@ -56,7 +56,6 @@ class AchievementCell: UICollectionViewCell {
     
     private var countBadge: UILabel = {
         let label = UILabel()
-        label.backgroundColor = ThemeService.shared.theme.secondaryBadgeColor
         label.textColor = ThemeService.shared.theme.lightTextColor
         label.textAlignment = .center
         label.font = CustomFontMetrics.scaledSystemFont(ofSize: 12)
@@ -140,7 +139,11 @@ class AchievementCell: UICollectionViewCell {
         } else {
             var height = titleLabel.sizeThatFits(CGSize(width: width - 84, height: 200)).height
             height += descriptionlabel.sizeThatFits(CGSize(width: width - 84, height: 200)).height
-            return max(height + 16, 80)
+            if isQuestAchievement {
+                return max(height + 16, 60)
+            } else {
+                return max(height + 16, 80)
+            }
         }
     }
     
@@ -153,14 +156,19 @@ class AchievementCell: UICollectionViewCell {
                 iconView.setImagewith(name: "achievement-unearned2x")
             }
             iconView.isHidden = false
+            countBadge.backgroundColor = ThemeService.shared.theme.secondaryBadgeColor
+            countBadge.textColor = ThemeService.shared.theme.lightTextColor
         } else {
             iconView.isHidden = true
+            countBadge.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
+            countBadge.textColor = ThemeService.shared.theme.secondaryTextColor
         }
         descriptionlabel.text = achievement.text
         if achievement.optionalCount > 0 {
             countBadge.text = String(achievement.optionalCount)
             countBadge.isHidden = false
         } else {
+            
             countBadge.isHidden = true
         }
         

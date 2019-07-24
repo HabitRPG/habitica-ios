@@ -950,7 +950,7 @@
 "gift_confirmation_body_g1g1" = "Вы отправили % @ % @-месячную подписку Habitica. Эта же подписка была применена к вашей учетной записи, благодаря участию в акции \"1+1\"!";
 "never" = "Никогда";
 "welcome_back" = "С возвращением!";
-"buy_reward" = "Вы купили '%@' за %f золота";
+"buy_reward" = "Вы купили '%@' за %@ золота";
 "settings.searchable_everywhere" = "Везде";
 "settings.searchable_private_spaces" = "Приватно";
 "about.love_open_source" = "Интернет обожает продукты с открытым исходным кодом.";

@@ -892,7 +892,7 @@
 "display_name" = "Angezeigter Name";
 "repeat_password" = "Passwort wiederholen";
 "username_prompt_wiki" = "Wenn Du mehr über diese Änderung wissen möchtest, #<wk>besuche unser Wiki.#";
-"buy_reward" = "Du hast '%@' für %f Gold gekauft";
+"buy_reward" = "Du hast '%@' für %@ Gold gekauft";
 "tasks.due_x" = "Fällig %@";
 "tasks.every_x" = "jeden %@";
 "tasks.repeats.repeats_every_on" = "Wiederholt %@ am %@";

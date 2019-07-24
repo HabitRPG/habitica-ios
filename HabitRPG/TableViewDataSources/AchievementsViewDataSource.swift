@@ -86,6 +86,8 @@ class AchievementsViewDataSource: BaseReactiveCollectionViewDataSource<Achieveme
             if (achievement.isQuestAchievement) {
                 if let quest = quests[achievement.key ?? ""] {
                     cell.configure(achievement: achievement, quest: quest)
+                } else {
+                    cell.configure(achievement: achievement)
                 }
             } else {
                 cell.configure(achievement: achievement)

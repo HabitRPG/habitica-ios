@@ -235,7 +235,7 @@ class MainMenuViewController: BaseTableViewController {
         label?.text = item?.title
         label?.font = CustomFontMetrics.scaledSystemFont(ofSize: 17)
         label?.textColor = ThemeService.shared.theme.primaryTextColor
-        label?.backgroundColor = cell.backgroundColor
+        label?.backgroundColor = .clear
         
         let indicatorView = cell.viewWithTag(2)
         indicatorView?.isHidden = item?.showIndicator == false
