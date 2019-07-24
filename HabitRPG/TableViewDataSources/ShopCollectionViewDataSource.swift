@@ -215,7 +215,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
             } else {
                 headerView.titleLabel.text = titleFor(section: indexPath.section)
             }
-            headerView.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+            headerView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
             return headerView
         }
         return UICollectionReusableView()
