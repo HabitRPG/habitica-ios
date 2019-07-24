@@ -356,7 +356,7 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
             header.alpha = 1
             header.layoutSubviews()
         }
-        view.setNeedsLayout()
+        viewWillLayoutSubviews()
     }
     
     @objc
@@ -370,6 +370,6 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
             self.backgroundView.addSubview(header)
             self.bottomBorderView.isHidden = false
         }
-        self.viewWillLayoutSubviews()
+        viewWillLayoutSubviews()
     }
 }
