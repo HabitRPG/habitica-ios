@@ -741,7 +741,7 @@
 "shops.other_class_disclaimer" = "You can only purchase gear for your current class";
 "shops.purchased_all_gear" = "You already have all your class equipment! More will be released during the Grand Galas, near the solstices and equinoxes.";
 "purchased" = "You purchased %@";
-"buy_reward" = "You bought '%@' for %f gold";
+"buy_reward" = "You bought '%@' for %@ gold";
 "notifications.unallocated_stat_points" = "You have **%d unallocated Stat Points**";
 "notifications.new_bailey" = "New Bailey Update!";
 "notifications.new_mystery_item" = "You have new **Mystery Items**";
@@ -765,5 +765,5 @@
 "achievements.basic" = "Basic Achievements";
 "achievements.seasonal" = "Seasonal Achievements";
 "achievements.special" = "Special Achievements";
-"achievements.quests" = "Quest Achievements";
+"achievements.quests" = "Quests completed";
 "organize_by" = "Organize By";

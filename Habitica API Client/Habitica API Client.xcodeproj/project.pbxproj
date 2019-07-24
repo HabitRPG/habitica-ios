@@ -745,8 +745,11 @@
 				2919FDD82090DF1B0096A53B /* PostInboxMessageCall.swift */,
 				295E9DDB20B3060200D58D45 /* PurchaseGemsCall.swift */,
 				296E480D21C4095300D15E4A /* PurchaseNoRenewSubscriptionCall.swift */,
+				2912C3C822CCD22000BC485F /* ReadNotificationCall.swift */,
+				2912C3CA22CCD28600BC485F /* ReadNotificationsCall.swift */,
 				29990DBB20E51FDD001ADD8B /* RegisterPushDeviceCall.swift */,
 				290B626C207BA6AB007287C4 /* ResetAccountCall.swift */,
+				2931150D22D74ECA00E4A9E3 /* RetrieveAchievements.swift */,
 				296AC81920ADD99900885682 /* RetrieveInAppRewardsCall.swift */,
 				29990DB320E4EB3F001ADD8B /* RetrieveInboxMessagesCall.swift */,
 				29323E182050528C00AC6D6F /* RetrieveUserCall.swift */,
@@ -766,9 +769,6 @@
 				290C302D206BD2020066AF5B /* UseSkillCall.swift */,
 				29DBFF0220CE91A500DF9CF2 /* UseTransformationItemCall.swift */,
 				29A62B06216CC6CC00D4BD90 /* VerifyUsernameCall.swift */,
-				2912C3C822CCD22000BC485F /* ReadNotificationCall.swift */,
-				2912C3CA22CCD28600BC485F /* ReadNotificationsCall.swift */,
-				2931150D22D74ECA00E4A9E3 /* RetrieveAchievements.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";

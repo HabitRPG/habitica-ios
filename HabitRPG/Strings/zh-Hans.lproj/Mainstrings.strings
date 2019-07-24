@@ -860,6 +860,6 @@
 "shops.other_class_disclaimer" = "你只能为你的当前职业购买装备";
 "shops.purchased_all_gear" = "你已经拥有了当前职业的所有基础职业装备！春分，夏至，秋分，冬至的盛典期间会推出更多装备。";
 "purchased" = "你购买了 %@";
-"buy_reward" = "你花 %f 金币买了 '%@'";
+"buy_reward" = "你花 %@ 金币买了 '%@'";
 "accessibility.score_habit_up" = "习惯得分上升了";
 "accessibility.score_habit_down" = "习惯得分下降了";

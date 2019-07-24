@@ -89,7 +89,10 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
             let goldDiff = (response.gold ?? 0) - stats.gold
             let questDamage = (response.temp?.quest?.progressDelta ?? 0)
             if task.type == "reward" {
-                ToastManager.show(text: L10n.buyReward(task.text ?? "", task.value), color: .green)
+                let formatter = NumberFormatter()
+                formatter.minimumFractionDigits = 0
+                formatter.maximumFractionDigits = 2
+                ToastManager.show(text: L10n.buyReward(task.text ?? "", formatter.string(from: NSNumber(value: task.value)) ?? ""), color: .green)
             } else if let taskId = task.id {
                 self?.localRepository.update(taskId: taskId, stats: stats, direction: direction, response: response)
                 if healthDiff + magicDiff + goldDiff + questDamage == 0 {
