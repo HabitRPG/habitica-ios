@@ -206,7 +206,7 @@ private class HabiticaStyler: Styler {
     func style(htmlInline str: NSMutableAttributedString) {}
     func style(customInline str: NSMutableAttributedString) {}
     func style(emphasis str: NSMutableAttributedString) {
-        if (str.attribute(.font, at: 0, effectiveRange: nil) as? UIFont)?.isItalic == true {
+        if (str.attribute(.font, at: 0, effectiveRange: nil) as? UIFont)?.isBold == true {
             str.addAttribute(.font, value: CustomFontMetrics.scaledBoldItalicSystemFont(ofSize: baseSize))
         } else {
             str.addAttribute(.font, value: CustomFontMetrics.scaledItalicSystemFont(ofSize: baseSize))

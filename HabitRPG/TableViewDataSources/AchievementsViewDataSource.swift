@@ -72,9 +72,9 @@ class AchievementsViewDataSource: BaseReactiveCollectionViewDataSource<Achieveme
         if let headerView = view {
             let section = sections[indexPath.section]
             headerView.titleLabel.text = section.title
-            headerView.earnedCountLabel.text = String(section.items.filter({ (achievement) -> Bool in
+            headerView.earnedCountLabel.number = section.items.filter({ (achievement) -> Bool in
                 return achievement.earned
-            }).count)
+            }).count
             return headerView
         }
         return UICollectionReusableView()
@@ -86,6 +86,8 @@ class AchievementsViewDataSource: BaseReactiveCollectionViewDataSource<Achieveme
             if (achievement.isQuestAchievement) {
                 if let quest = quests[achievement.key ?? ""] {
                     cell.configure(achievement: achievement, quest: quest)
+                } else {
+                    cell.configure(achievement: achievement)
                 }
             } else {
                 cell.configure(achievement: achievement)

@@ -929,4 +929,4 @@
 "accessibility.collapse_checklist" = "Réduire la liste";
 "accessibility.expand_checklist" = "Agrandir la liste";
 "great" = "Super";
-"buy_reward" = "Vous avez acheté '%@' pour %f pièces d'or";
+"buy_reward" = "Vous avez acheté '%@' pour %@ pièces d'or";

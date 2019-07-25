@@ -54,21 +54,14 @@ class AchievementCell: UICollectionViewCell {
         return view
     }()
     
-    private var countBadge: UILabel = {
-        let label = UILabel()
-        label.backgroundColor = ThemeService.shared.theme.secondaryBadgeColor
-        label.textColor = ThemeService.shared.theme.lightTextColor
-        label.textAlignment = .center
-        label.font = CustomFontMetrics.scaledSystemFont(ofSize: 12)
-        return label
-    }()
+    private var countBadge = BadgeView()
     
     private var isQuestAchievement: Bool = false {
         didSet {
             if isQuestAchievement {
                 countBadge.font = CustomFontMetrics.scaledSystemFont(ofSize: 14, ofWeight: .medium)
             } else {
-                countBadge.font = CustomFontMetrics.scaledSystemFont(ofSize: 10, ofWeight: .bold)
+                countBadge.font = CustomFontMetrics.scaledSystemFont(ofSize: 13)
             }
         }
     }
@@ -128,10 +121,7 @@ class AchievementCell: UICollectionViewCell {
         }
         if isQuestAchievement {
             countBadge.pin.size(40).start(20).vCenter()
-        } else {
-            countBadge.pin.width(countBadge.frame.size.width + 8).minWidth(countBadge.frame.size.height + 4).height(countBadge.frame.size.height + 4)
         }
-        countBadge.cornerRadius = countBadge.frame.size.height / 2
     }
     
     func heightForWidth(_ width: CGFloat) -> CGFloat {
@@ -140,7 +130,11 @@ class AchievementCell: UICollectionViewCell {
         } else {
             var height = titleLabel.sizeThatFits(CGSize(width: width - 84, height: 200)).height
             height += descriptionlabel.sizeThatFits(CGSize(width: width - 84, height: 200)).height
-            return max(height + 16, 80)
+            if isQuestAchievement {
+                return max(height + 16, 60)
+            } else {
+                return max(height + 16, 80)
+            }
         }
     }
     
@@ -153,14 +147,19 @@ class AchievementCell: UICollectionViewCell {
                 iconView.setImagewith(name: "achievement-unearned2x")
             }
             iconView.isHidden = false
+            countBadge.backgroundColor = ThemeService.shared.theme.secondaryBadgeColor
+            countBadge.textColor = ThemeService.shared.theme.lightTextColor
         } else {
             iconView.isHidden = true
+            countBadge.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
+            countBadge.textColor = ThemeService.shared.theme.secondaryTextColor
         }
         descriptionlabel.text = achievement.text
         if achievement.optionalCount > 0 {
-            countBadge.text = String(achievement.optionalCount)
+            countBadge.number = achievement.optionalCount
             countBadge.isHidden = false
         } else {
+            
             countBadge.isHidden = true
         }
         

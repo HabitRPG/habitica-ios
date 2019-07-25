@@ -66,24 +66,9 @@ class MenuNavigationBarView: UIView, Themeable {
         button.addTarget(self, action: #selector(notificationsButtonTapped), for: .touchUpInside)
         return button
     }()
-    var messagesBadge: PaddedLabel = {
-        let badge = PaddedLabel()
-        badge.font = CustomFontMetrics.scaledSystemFont(ofSize: 12)
-        badge.textAlignment = .center
-        return badge
-    }()
-    var settingsBadge: PaddedLabel = {
-        let badge = PaddedLabel()
-        badge.font = CustomFontMetrics.scaledSystemFont(ofSize: 12)
-        badge.textAlignment = .center
-        return badge
-    }()
-    var notificationsBadge: PaddedLabel = {
-        let badge = PaddedLabel()
-        badge.font = CustomFontMetrics.scaledSystemFont(ofSize: 12)
-        badge.textAlignment = .center
-        return badge
-    }()
+    var messagesBadge = BadgeView()
+    var settingsBadge = BadgeView()
+    var notificationsBadge = BadgeView()
     
     private var displayInTwoRows: Bool = false {
         didSet {
@@ -177,6 +162,7 @@ class MenuNavigationBarView: UIView, Themeable {
         displayNameLabel.pin.sizeToFit(.height)
         let labelWidth = displayNameLabel.frame.size.width
         displayInTwoRows = bounds.size.width - 32 - 40 - 16 - 150 < labelWidth
+        setNeedsLayout()
     }
     
     @objc
@@ -237,10 +223,7 @@ class MenuNavigationBarView: UIView, Themeable {
         messagesButton.pin.top(to: settingsButton.edge.top).before(of: settingsButton).marginEnd(buttonSpacing)
         notificationsButton.pin.top(to: settingsButton.edge.top).before(of: messagesButton).marginEnd(buttonSpacing)
         settingsBadge.pin.top(to: settingsButton.edge.top).start(to: settingsButton.edge.start).marginStart(30).sizeToFit(.heightFlexible)
-        settingsBadge.cornerRadius = settingsBadge.frame.size.height / 2
         messagesBadge.pin.top(to: messagesButton.edge.top).start(to: messagesButton.edge.start).marginStart(30).sizeToFit(.heightFlexible)
-        messagesBadge.cornerRadius = messagesBadge.frame.size.height / 2
         notificationsBadge.pin.top(to: notificationsButton.edge.top).start(to: notificationsButton.edge.start).marginStart(30).sizeToFit(.heightFlexible)
-        notificationsBadge.cornerRadius = notificationsBadge.frame.size.height / 2
     }
 }

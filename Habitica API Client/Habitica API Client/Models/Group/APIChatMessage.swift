@@ -48,11 +48,14 @@ public class APIChatMessage: ChatMessageProtocol, Codable {
         let messageContainer = try! decoder.container(keyedBy: ContainerCodingKeys.self)
         let values = try! messageContainer.contains(.message) ? messageContainer.nestedContainer(keyedBy: CodingKeys.self, forKey: .message) : decoder.container(keyedBy: CodingKeys.self)
         id = try values.decode(String.self, forKey: .id)
-        userID = try values.decode(String.self, forKey: .userID)
+        userID = try? values.decode(String.self, forKey: .userID)
         text = try? values.decode(String.self, forKey: .text)
-        let timeStampNumber = try values.decode(Double.self, forKey: .timestamp)
-        timestamp = Date(timeIntervalSince1970: timeStampNumber/1000)
-
+        let timeStampNumber = try? values.decode(Double.self, forKey: .timestamp)
+        if let number = timeStampNumber {
+            timestamp = Date(timeIntervalSince1970: number/1000)
+        } else {
+            timestamp = try? values.decode(Date.self, forKey: .timestamp)
+        }
         displayName = try? values.decode(String.self, forKey: .displayName)
         username = try? values.decode(String.self, forKey: .username)
         flagCount = try values.decode(Int.self, forKey: .flagCount)

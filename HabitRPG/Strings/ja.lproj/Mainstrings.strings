@@ -935,4 +935,4 @@
 "invalid_recipient_title" = "無効なHabiticaユーザー名";
 "filter_by_tags" = "タグでフィルターをかける";
 "purchased" = "%@を購入しました";
-"buy_reward" = "'%@'を%fゴールドで購入しました";
+"buy_reward" = "'%@'を%@ゴールドで購入しました";

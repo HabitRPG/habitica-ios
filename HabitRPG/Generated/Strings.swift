@@ -50,8 +50,8 @@ public enum L10n {
   public static func buyForX(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "buy_for_x", p1)
   }
-  /// You bought '%@' for %f gold
-  public static func buyReward(_ p1: String, _ p2: Float) -> String {
+  /// You bought '%@' for %@ gold
+  public static func buyReward(_ p1: String, _ p2: String) -> String {
     return L10n.tr("Mainstrings", "buy_reward", p1, p2)
   }
   /// Cancel
@@ -659,7 +659,7 @@ public enum L10n {
   public enum Achievements {
     /// Basic Achievements
     public static var basic: String { return L10n.tr("Mainstrings", "achievements.basic") }
-    /// Quest Achievements
+    /// Quests completed
     public static var quests: String { return L10n.tr("Mainstrings", "achievements.quests") }
     /// Seasonal Achievements
     public static var seasonal: String { return L10n.tr("Mainstrings", "achievements.seasonal") }
