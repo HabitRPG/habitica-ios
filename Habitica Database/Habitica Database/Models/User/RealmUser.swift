@@ -284,6 +284,7 @@ class RealmUser: Object, UserProtocol {
         }
     }
     var realmAchievements = List<RealmAchievement>()
+    var achievementStreak: Int = 0
     
     var needsCron: Bool = false
     var lastCron: Date?
@@ -322,5 +323,6 @@ class RealmUser: Object, UserProtocol {
         invitations = user.invitations
         pushDevices = user.pushDevices
         questAchievements = user.questAchievements
+        achievementStreak = user.achievementStreak
     }
 }

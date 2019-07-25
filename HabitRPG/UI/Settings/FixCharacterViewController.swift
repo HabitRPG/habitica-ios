@@ -16,12 +16,13 @@ class FixCharacterViewController: BaseTableViewController {
     
     let userRepository = UserRepository()
     
-    var stats: [String: Float] = [
+    var stats: [String: Encodable] = [
         "stats.hp": 0.0,
         "stats.exp": 0.0,
         "stats.mp": 0.0,
         "stats.gp": 0.0,
-        "stats.lvl": 0
+        "stats.lvl": 0,
+        "achievements.streak": 0
     ]
     
     private var headerView = UIView()
@@ -42,13 +43,13 @@ class FixCharacterViewController: BaseTableViewController {
         headerView.addSubview(headerLabel)
         tableView.tableHeaderView = headerView
         
-        disposable.inner.add(userRepository.getUser().on(value: {[weak self]user in
+        disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
             self?.stats["stats.hp"] = user.stats?.health
             self?.stats["stats.exp"] = user.stats?.experience
             self?.stats["stats.mp"] = user.stats?.mana
             self?.stats["stats.gp"] = user.stats?.gold
-            self?.stats["stats.lvl"] = Float(user.stats?.level ?? 0)
-            //self.stats["achievements.streak"] = user?.health
+            self?.stats["stats.lvl"] = user.stats?.level
+            self?.stats["achievements.streak"] = user.achievementStreak
             self?.habitClass = user.stats?.habitClass ?? ""
             self?.tableView.reloadData()
         }).start())
@@ -78,7 +79,7 @@ class FixCharacterViewController: BaseTableViewController {
             return ""
         }
     }
-    
+
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -106,7 +107,14 @@ class FixCharacterViewController: BaseTableViewController {
     }
     
     private func configure(item: Int, titleLabel: UILabel, iconView: UIImageView, valueField: UITextField) {
-        valueField.text = "\(stats[identifierFor(index: item)] ?? 0)"
+        let value = stats[identifierFor(index: item)]
+        if let intValue = value as? Int {
+            valueField.text = String(intValue)
+            valueField.keyboardType = .numberPad
+        } else if let floatValue = value as? Float {
+            valueField.text = "\(floatValue)"
+            valueField.keyboardType = .decimalPad
+        }
         switch item {
         case 0:
             titleLabel.text = L10n.health
@@ -156,7 +164,12 @@ class FixCharacterViewController: BaseTableViewController {
     
     @IBAction func textFieldChanged(_ sender: UITextField) {
         if let cell = sender.superview?.superview?.superview as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
-            stats[identifierFor(index: indexPath.item)] = Float(sender.text ?? "")
+            let value = stats[identifierFor(index: indexPath.item)]
+            if value is Int {
+                stats[identifierFor(index: indexPath.item)] = Int(sender.text ?? "") ?? 0
+            } else if value is Float {
+                stats[identifierFor(index: indexPath.item)] = Float(sender.text ?? "") ?? 0
+            }
         }
     }
     
