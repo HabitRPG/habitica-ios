@@ -19,6 +19,7 @@ class TaskManager: BaseRepository<TaskLocalRepository>, TaskRepositoryProtocol {
     let listSpokenPhraseMap = ["todo": ["todo", "to do", "to-do", "todos"],
                              "habit": ["habit", "habits"],
                              "daily": ["daily", "dailies", "dailys"]]
+    let spokenTaskTypes = ["Habits", "Dailies", "To-Dos"]
     var possibleTaskLists: [INTaskList]
 
     override init() {
