@@ -135,7 +135,7 @@ class QuestDetailViewController: BaseUIViewController {
             self.participants = participants
         }
         isQuestActive = group.quest?.active ?? false
-        if group.quest?.leaderID == userRepository.currentUserId {
+        if group.quest?.leaderID == userRepository.currentUserId || group.leaderID == userRepository.currentUserId {
             if isQuestActive {
                 abortButton.isHidden = false
                 cancelButton.isHidden = true
