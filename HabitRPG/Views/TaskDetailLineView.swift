@@ -248,11 +248,30 @@ class TaskDetailLineView: UIView {
             if task.type == "daily" {
                 reminderIconLabelSpacing.constant = 4
                 reminderIconView.tintColor = ThemeService.shared.theme.ternaryTextColor
-                if (reminders.count == 1), let time = reminders.first?.time {
-                    reminderLabel.text = reminderFormatter.string(from: time)
-                } else {
-                    reminderLabel.text = String(reminders.count)
+                let now = Date()
+                let nextReminder = reminders.first { reminder in
+                    guard let time = reminder.time else {
+                        return false
+                    }
+                    let calendar = Calendar.current
+                    var components = calendar.dateComponents([.year, .month, .day], from: now)
+                    let timeComponents = calendar.dateComponents([.hour, .minute], from: time)
+                    components.hour = timeComponents.hour
+                    components.minute = timeComponents.minute
+                    components.timeZone = TimeZone.current
+                    if let newDate = calendar.date(from: components) {
+                        return now < newDate
+                    }
+                    return false
                 }
+                var reminderString = ""
+                if let time = nextReminder?.time {
+                    reminderString += reminderFormatter.string(from: time)
+                }
+                if reminders.count > 1 {
+                    reminderString = "\(reminderString) (+\(reminders.count-1))"
+                }
+                reminderLabel.text = reminderString
                 reminderLabel.textColor = ThemeService.shared.theme.ternaryTextColor
             } else {
                 reminderIconLabelSpacing.constant = 0
