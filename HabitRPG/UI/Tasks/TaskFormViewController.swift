@@ -58,6 +58,13 @@ class TaskFormViewController: FormViewController {
             modalContainerViewController?.screenDimView.backgroundColor = taskTintColor.darker(by: 50).withAlphaComponent(0.6)
         }
     }
+    
+    let dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .full
+        dateFormatter.timeStyle = .none
+        return dateFormatter
+    }()
     var lightTaskTintColor: UIColor = UIColor.purple400()
     
     var taskId: String? {
@@ -356,11 +363,12 @@ class TaskFormViewController: FormViewController {
     
     private func setupToDoScheduling() {
         form +++ Section(L10n.Tasks.Form.scheduling)
-            <<< DateRow(TaskFormTags.dueDate) { row in
+            <<< DateRow(TaskFormTags.dueDate) {[weak self] row in
                 row.title = L10n.Tasks.Form.dueDate
+                row.dateFormatter = self?.dateFormatter
                 row.cellSetup({ (cell, _) in
-                    cell.tintColor = self.lightTaskTintColor
-                    cell.detailTextLabel?.textColor = self.lightTaskTintColor
+                    cell.tintColor = self?.lightTaskTintColor
+                    cell.detailTextLabel?.textColor = self?.lightTaskTintColor
                 }).onCellSelection({ (_, row) in
                     if row.value == nil {
                         row.value = Date()

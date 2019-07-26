@@ -100,6 +100,8 @@
 		292726B620B7094B009DD08A /* ChallengeTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292726B520B7094A009DD08A /* ChallengeTableViewDataSource.swift */; };
 		292844ED20DD1D4B0011DC43 /* GroupInvitationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292844EC20DD1D4B0011DC43 /* GroupInvitationView.swift */; };
 		292844EF20DD1D630011DC43 /* GroupInvitationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292844EE20DD1D630011DC43 /* GroupInvitationListView.swift */; };
+		2929AAB322E9E58E00DF9463 /* Habitica_Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2929AAB222E9E58E00DF9463 /* Habitica_Database.framework */; };
+		2929AAB522E9E59A00DF9463 /* Habitica_Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2929AAB422E9E59A00DF9463 /* Habitica_Models.framework */; };
 		292AA72420FE15090022CC5F /* UIFont-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292AA72320FE15090022CC5F /* UIFont-Extensions.swift */; };
 		292D6C9B2101FF080078288A /* InviteMembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292D6C9A2101FF080078288A /* InviteMembersViewController.swift */; };
 		292DEE3A204D9D290086D5F7 /* Habitica_Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE3B204D9D290086D5F7 /* Habitica_Models.framework */; };
@@ -245,6 +247,7 @@
 		298119B51F5048C000F9FB39 /* QuestGoalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 298119B41F5048C000F9FB39 /* QuestGoalView.xib */; };
 		298409CD203C3283003AD202 /* AvatarViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298409CA203C2B4A003AD202 /* AvatarViewTests.swift */; };
 		2986EB0B1FCC63F900B316F6 /* AttributePointsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2986EB0A1FCC63F900B316F6 /* AttributePointsViewController.swift */; };
+		2996AA1F22EB157800033D92 /* AppIntentVocabulary.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2996AA2122EB157800033D92 /* AppIntentVocabulary.plist */; };
 		299BD6221F505DFA00E22935 /* PaddedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299BD6211F505DFA00E22935 /* PaddedLabel.swift */; };
 		299BD6351F54346F00E22935 /* QuestDetailRewardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 299BD6341F54346F00E22935 /* QuestDetailRewardView.xib */; };
 		299BD6371F5457E100E22935 /* HabiticaIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299BD6361F5457E100E22935 /* HabiticaIcons.swift */; };
@@ -726,6 +729,8 @@
 		292726B520B7094A009DD08A /* ChallengeTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeTableViewDataSource.swift; sourceTree = "<group>"; };
 		292844EC20DD1D4B0011DC43 /* GroupInvitationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInvitationView.swift; sourceTree = "<group>"; };
 		292844EE20DD1D630011DC43 /* GroupInvitationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInvitationListView.swift; sourceTree = "<group>"; };
+		2929AAB222E9E58E00DF9463 /* Habitica_Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2929AAB422E9E59A00DF9463 /* Habitica_Models.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_Models.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		292AA72320FE15090022CC5F /* UIFont-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont-Extensions.swift"; sourceTree = "<group>"; };
 		292D6C9A2101FF080078288A /* InviteMembersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteMembersViewController.swift; sourceTree = "<group>"; };
 		292DEE3B204D9D290086D5F7 /* Habitica_Models.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_Models.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -892,6 +897,24 @@
 		298119B41F5048C000F9FB39 /* QuestGoalView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestGoalView.xib; sourceTree = "<group>"; };
 		298409CA203C2B4A003AD202 /* AvatarViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarViewTests.swift; sourceTree = "<group>"; };
 		2986EB0A1FCC63F900B316F6 /* AttributePointsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributePointsViewController.swift; sourceTree = "<group>"; };
+		2996AA2022EB157800033D92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = Base.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
+		2996AA2222EB158300033D92 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = cs; path = cs.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
+		2996AA2422EB159300033D92 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = ja; path = ja.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
+		2996AA2522EB159400033D92 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = it; path = it.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
+		2996AA2622EB159500033D92 /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = ro; path = ro.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
+		2996AA2722EB159600033D92 /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = hr; path = hr.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
+		2996AA2822EB159600033D92 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = nl; path = nl.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
+		2996AA2922EB159700033D92 /* bg */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = bg; path = bg.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
+		2996AA2A22EB159800033D92 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "zh-Hans"; path = "zh-Hans.lproj/AppIntentVocabulary.plist"; sourceTree = "<group>"; };
+		2996AA2B22EB159800033D92 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = ru; path = ru.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
+		2996AA2C22EB159900033D92 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "pt-BR"; path = "pt-BR.lproj/AppIntentVocabulary.plist"; sourceTree = "<group>"; };
+		2996AA2D22EB159A00033D92 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = pl; path = pl.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
+		2996AA2E22EB159A00033D92 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = he; path = he.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
+		2996AA2F22EB159B00033D92 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = da; path = da.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
+		2996AA3022EB159C00033D92 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = de; path = de.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
+		2996AA3122EB159C00033D92 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = es; path = es.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
+		2996AA3222EB159E00033D92 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = zh; path = zh.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
+		2996AA3322EB159F00033D92 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = fr; path = fr.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
 		299BD6211F505DFA00E22935 /* PaddedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddedLabel.swift; sourceTree = "<group>"; };
 		299BD6341F54346F00E22935 /* QuestDetailRewardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestDetailRewardView.xib; sourceTree = "<group>"; };
 		299BD6361F5457E100E22935 /* HabiticaIcons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabiticaIcons.swift; sourceTree = "<group>"; };
@@ -1348,6 +1371,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2929AAB522E9E59A00DF9463 /* Habitica_Models.framework in Frameworks */,
+				2929AAB322E9E58E00DF9463 /* Habitica_Database.framework in Frameworks */,
 				6AD6119E0A9CFA1670D5C1E2 /* Pods_Habitica_Intents.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2661,6 +2686,8 @@
 		D9EB4E8D18CB4A9400BB2094 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2929AAB422E9E59A00DF9463 /* Habitica_Models.framework */,
+				2929AAB222E9E58E00DF9463 /* Habitica_Database.framework */,
 				292DEE4D204DA1830086D5F7 /* Habitica_API_Client.framework */,
 				292DEE3D204D9D360086D5F7 /* Habitica_Database.framework */,
 				292DEE3B204D9D290086D5F7 /* Habitica_Models.framework */,
@@ -2745,6 +2772,7 @@
 				D9EB4E9A18CB4A9400BB2094 /* main.m */,
 				D9EB4E9C18CB4A9400BB2094 /* Habitica-Prefix.pch */,
 				D9A50E991A868DE400FC8B1A /* Launch Screen.xib */,
+				2996AA2122EB157800033D92 /* AppIntentVocabulary.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -3037,6 +3065,7 @@
 				293BB4A31FD07603003B6F4F /* StatsSliderView.xib in Resources */,
 				296E4BC921AEFE6100DB3602 /* TealAlt@2x.png in Resources */,
 				296E4B7221AEF35E00DB3602 /* PrideAlt@3x.png in Resources */,
+				2996AA1F22EB157800033D92 /* AppIntentVocabulary.plist in Resources */,
 				29E16311200E5FEA00685640 /* QuestProgressView.xib in Resources */,
 				C8FA550B22C5425E0017DD65 /* PrideHabiticaAltBlack.png in Resources */,
 				296E4BCB21AEFE6100DB3602 /* BlueAlt@3x.png in Resources */,
@@ -3998,6 +4027,31 @@
 				290279AE20583EF9006DACB9 /* Base */,
 			);
 			name = Intro.storyboard;
+			sourceTree = "<group>";
+		};
+		2996AA2122EB157800033D92 /* AppIntentVocabulary.plist */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2996AA2022EB157800033D92 /* Base */,
+				2996AA2222EB158300033D92 /* cs */,
+				2996AA2422EB159300033D92 /* ja */,
+				2996AA2522EB159400033D92 /* it */,
+				2996AA2622EB159500033D92 /* ro */,
+				2996AA2722EB159600033D92 /* hr */,
+				2996AA2822EB159600033D92 /* nl */,
+				2996AA2922EB159700033D92 /* bg */,
+				2996AA2A22EB159800033D92 /* zh-Hans */,
+				2996AA2B22EB159800033D92 /* ru */,
+				2996AA2C22EB159900033D92 /* pt-BR */,
+				2996AA2D22EB159A00033D92 /* pl */,
+				2996AA2E22EB159A00033D92 /* he */,
+				2996AA2F22EB159B00033D92 /* da */,
+				2996AA3022EB159C00033D92 /* de */,
+				2996AA3122EB159C00033D92 /* es */,
+				2996AA3222EB159E00033D92 /* zh */,
+				2996AA3322EB159F00033D92 /* fr */,
+			);
+			name = AppIntentVocabulary.plist;
 			sourceTree = "<group>";
 		};
 		29B478AC20BFE53500B6123F /* Main.strings */ = {

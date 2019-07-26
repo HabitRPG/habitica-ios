@@ -1432,7 +1432,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E7EF6D46CDBA4E678D7467CD /* Pods-Habitica API Client.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -1458,7 +1458,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 191CE8102BC4FC651F95BBBA /* Pods-Habitica API Client.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;

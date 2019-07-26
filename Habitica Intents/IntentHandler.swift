@@ -33,9 +33,9 @@ class IntentHandler: INExtension, INAddTasksIntentHandling, INSearchForNotebookI
     func resolveTitle(for intent: INSearchForNotebookItemsIntent, with completion: @escaping (INSpeakableStringResolutionResult) -> Void) {
         let result: INSpeakableStringResolutionResult
         if let taskList = intent.title {
-            guard let validTaskListTitle = TaskManager.shared.getValidTaskListFromSpokenPhrase(spokenPhrase: taskList.spokenPhrase) else {
+            if TaskManager.shared.getValidTaskListFromSpokenPhrase(spokenPhrase: taskList.spokenPhrase) == nil {
                 // we don't know what it is so ask for clarification
-                result = INSpeakableStringResolutionResult.disambiguation(with: TaskManager.shared.listSpokenPhraseMap.keys.map {
+                result = INSpeakableStringResolutionResult.disambiguation(with: TaskManager.shared.spokenTaskTypes.map {
                     return INSpeakableString(spokenPhrase: $0)})
                 completion(result)
                 return
@@ -63,7 +63,7 @@ class IntentHandler: INExtension, INAddTasksIntentHandling, INSearchForNotebookI
         let response = INSearchForNotebookItemsIntentResponse(code: .success, userActivity: NSUserActivity(activityType: NSStringFromClass(INSearchForNotebookItemsIntent.self)))
         // Initialize with found message's attributes
         response.tasks = []
-        TaskManager.shared.tasksForList(withName: "todo", oncompletion: {(taskTitles) in
+        TaskManager.shared.tasksForList(withName: validTaskListTitle, oncompletion: {(taskTitles) in
             for taskTitle in taskTitles {
                 response.tasks?.append(INTask(
                     title: INSpeakableString(spokenPhrase: taskTitle),
@@ -102,7 +102,7 @@ class IntentHandler: INExtension, INAddTasksIntentHandling, INSearchForNotebookI
     func resolveTargetTaskList(for intent: INAddTasksIntent, with completion: @escaping (INTaskListResolutionResult) -> Void) {
         let result: INTaskListResolutionResult
         if let taskList = intent.targetTaskList {
-            guard let validTaskListTitle = TaskManager.shared.getValidTaskListFromSpokenPhrase(spokenPhrase: taskList.title.spokenPhrase) else {
+            if TaskManager.shared.getValidTaskListFromSpokenPhrase(spokenPhrase: taskList.title.spokenPhrase) == nil {
                 // we don't know what it is so ask for clarification
                 result = INTaskListResolutionResult.disambiguation(with: TaskManager.shared.possibleTaskLists)
                 completion(result)
