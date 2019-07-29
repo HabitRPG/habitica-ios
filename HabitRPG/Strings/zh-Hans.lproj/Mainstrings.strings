@@ -384,7 +384,7 @@
 "tasks.due_tomorrow" = "明天到期";
 "tasks.due_in_x_days" = "%d 天后到期";
 "tasks.due_x" = "%@ 到期";
-"tasks.every_x" = "每 %@";
+"tasks.every_x" = "每 %d %@";
 "tasks.repeats.repeats_every_on" = "重复 %@ 在 %@";
 "tasks.repeats.repeats_every" = "%@ 重复";
 "tasks.repeats.daily" = "每日";
@@ -472,7 +472,7 @@
 "theme.maroon" = "栗色";
 "details" = "细节";
 "guilds.leave_guild_title" = "退出公会？";
-"guilds.leave_guild_description" = "您想退出公会并保留或删除挑战吗？";
+"guilds.leave_guild_description" = "您想要退出公会吗？您希望保留参与的工会挑战还是同时退出工会挑战？";
 "guilds.keep_challenges" = "保留挑战";
 "guilds.leave_challenges" = "终止挑战";
 "guilds.guild_members" = "公会成员";
@@ -540,7 +540,7 @@
 "quests.started_by" = "开始于 %@";
 "quests.reward_experience" = "%d 经验值";
 "quests.reward_gold" = "%d 个金币";
-"quests.rage_attack" = "愤怒攻击：％@";
+"quests.rage_attack" = "怒气攻击：％@";
 "groups.leader_challenges" = "只有会长可以创建挑战";
 "groups.assign_new_leader" = "选出新会长";
 "groups.guild_invitation_no_invitername" = "某人邀请你加入公会：%@";

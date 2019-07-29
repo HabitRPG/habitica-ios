@@ -89,7 +89,7 @@
 /* (No Comment) */
 "equipment.costume" = "Disfraz";
 /* (No Comment) */
-"equipment.costume_explanation" = "¡Selecciona \"Usar Disfraz\" para equipar los elementos de tu avatar sin afectar a las Estadísticas de tu Equipo de Batalla! Esto significa que puedes vestir a tu avatar con cualquier atuendo mientras mantienes tu mejor Equipo de Batalla equipado.";
+"equipment.costume_explanation" = "¡Selecciona \"Usar Disfraz\" para equipar los elementos de tu avatar sin afectar a los Atributos de tu Equipo de Batalla! Esto significa que puedes vestir a tu avatar con cualquier atuendo mientras mantienes tu mejor Equipo de Batalla equipado.";
 /* (No Comment) */
 "equipment.eyewear" = "Gafas";
 /* (No Comment) */
@@ -119,7 +119,7 @@
 /* (No Comment) */
 "guilds.leave_challenges" = "Abandonar desafíos";
 /* (No Comment) */
-"guilds.leave_guild_description" = "¿Quieres abandonar el gremio y mantener o eliminar los desafíos?";
+"guilds.leave_guild_description" = "¿Quieres abandonar el gremio y mantener o abandonar los desafíos?";
 /* (No Comment) */
 "guilds.leave_guild_title" = "¿Abandonar gremio?";
 /* (No Comment) */
@@ -147,7 +147,7 @@
 /* (No Comment) */
 "inventory.wrong_class" = "Solo disponible para %@s. Puedes cambiar tu clase en Ajustes";
 /* (No Comment) */
-"invite_party" = "Invitar al grupo";
+"invite_party" = "Invitar al Equipo";
 /* (No Comment) */
 "last_activity" = "Última actividad %@";
 /* (No Comment) */
@@ -509,7 +509,7 @@
 "titles.api" = "API";
 "titles.fix_values" = "Ajustar Valores";
 "titles.select_class" = "Elegir clase";
-"titles.stats" = "Estadísticas";
+"titles.stats" = "Atributos";
 "titles.equipment" = "Equipamiento";
 "titles.items" = "Objetos";
 "titles.faq" = "Preguntas Frecuentes";
@@ -779,7 +779,7 @@
 "tutorials.filter_task" = "Pulsa para filtrar las tareas.";
 "tutorials.reorder_task" = "Mantén presionado una tarea para moverla.";
 "tutorials.inbox" = "¡Aquí puedes leer y responder a tus mensajes privados! También puedes mandar mensajes a la gente desde su perfil.";
-"tutorials.stats" = "Tocar el botón gris para asignar los puntos de tus estadísticas a la vez, o toca las flechas para agregarlas punto por punto.";
+"tutorials.stats" = "Tocar el botón gris para asignar los puntos de tus atributos a la vez, o toca las flechas para agregarlas punto por punto.";
 "world_boss.pending_strike" = "Ataque pendiente";
 "world_boss.rage_strike_explanation_button" = "¿Qué es un Ataque de Ira?";
 "buffs" = "Mejoras";
@@ -858,7 +858,7 @@
 "tasks.due_tomorrow" = "Vence mañana";
 "tasks.due_in_x_days" = "Vence en %d días";
 "tasks.due_x" = "Vence %@";
-"tasks.every_x" = "cada %@";
+"tasks.every_x" = "cada %d %@";
 "tasks.repeats.repeats_every_on" = "Se repite %@ de %@";
 "tasks.repeats.repeats_every" = "Se repite %@";
 "tasks.repeats.monthly_the" = "El %@";
@@ -876,7 +876,7 @@
 "settings.mentions" = "Menciones";
 "guilds.guild_members" = "Miembros de Gremio";
 "guilds.guild_description" = "Descripción de Gremio";
-"guilds.join_guild" = "Juntar Gremios";
+"guilds.join_guild" = "Entrar al Gremio";
 "guilds.guild_leader" = "Líder de Gremio";
 "avatar.body" = "Cuerpo";
 "avatar.hair" = "Pelo";
@@ -984,3 +984,37 @@
 "filter_by_tags" = "Filtrar por Etiquetas";
 "purchased" = "Compraste %@";
 "buy_reward" = "Compraste '%@' a cambio de %f de oro";
+"titles.messages" = "Mensajes";
+"titles.notifications" = "Notificaciones";
+"settings.language" = "Idioma";
+"guilds.joined_guild" = "Entraste al gremio";
+"guilds.left_guild" = "Dejaste el gremio";
+"stable.wacky_pets" = "Mascotas Chifladas";
+"stable.wacky_mounts" = "Monturas Chifladas";
+"party.leave_party_title" = "¿Salir del Equipo?";
+"party.leave_party_description" = "¿Quieres dejar el equipo y mantener o abandonar los desafíos?";
+"about.new_version" = "Actualización disponible: %@";
+"about.whats_new" = "Ver novedades";
+"never_lower_case" = "nunca";
+"decline" = "Rechazar";
+"defeat" = "Derrotar";
+"notifications.unallocated_stat_points" = "Tienes **%d Puntos de Atributo sin asignar**";
+"notifications.new_bailey" = "¡Nuevas Novedades de Bailey!";
+"notifications.new_mystery_item" = "Tienes nuevos **Objetos Misteriosos**";
+"notifications.unread_guild_message" = "**%@** tiene nuevos mensajes.";
+"notifications.unread_party_message" = "Tu equipo, **%@**, tiene nuevos mensajes.";
+"notifications.party_invite" = "Has sido invitado a entrar al Equipo **%s**";
+"notifications.public_guild_invite" = "Has sido invitado a entrar al gremio público **%s**";
+"notifications.private_guild_invite" = "Has sido invitado a entrar al gremio privado **%s**";
+"notifications.quest_invite" = "Has sido invitado a la Misión **%s**";
+"notifications.dismiss_all" = "Ignorar todas";
+"empty.habits.title" = "Estos son tus Hábitos";
+"empty.habits.description" = "Los Hábitos no siguen un programa estricto. Puedes marcarlos varias veces al día.";
+"empty.dailies.title" = "Estas son tus Tareas Diarias";
+"empty.dailies.description" = "Las Tareas Diarias son tareas que se repiten con regularidad. ¡Prográmalas como mejor te funcione!";
+"empty.todos.title" = "Estas son tus Tareas Pendientes";
+"empty.todos.description" = "Las Tareas Pendientes requieren ser completadas una vez. Añade una lista de elementos a tus Tareas Pendientes para incrementar su valor.";
+"empty.rewards.title" = "Estas son tus Recompensas";
+"empty.rewards.description" = "Las Recompensas son una gran manera de usar Habitica y completar tus tareas. ¡Intenta añadir algunas hoy!";
+"empty.notifications.title" = "¡Estás al tanto de todo!";
+"empty.notifications.description" = "¡Las hadas de las notificaciones te aplauden! ¡Bien hecho!";
