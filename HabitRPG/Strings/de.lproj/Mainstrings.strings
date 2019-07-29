@@ -907,3 +907,9 @@
 "guilds.join_guild" = "Trete den Gilden bei";
 "guilds.guild_leader" = "Gildenleiter";
 "tasks.repeats.monthly_the" = "am %@";
+"titles.messages" = "Nachrichten";
+"titles.notifications" = "Benachrichtigungen";
+"settings.language" = "Sprache";
+"guilds.joined_guild" = "Du bist der Gilde beigetreten";
+"guilds.left_guild" = "Du hast die Gilde verlassen";
+"party.leave_party_title" = "Gruppe verlassen?";

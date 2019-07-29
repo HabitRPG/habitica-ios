@@ -109,7 +109,7 @@
 /* (No Comment) */
 "guilds.leave_challenges" = "Quitter les défis";
 /* (No Comment) */
-"guilds.leave_guild_description" = "Voulez-vous quitter la guilde et conserver ou supprimer les défis ?";
+"guilds.leave_guild_description" = "Voulez-vous quitter la guilde et conserver ou quitter les défis ?";
 /* (No Comment) */
 "hatch_egg" = "Faire éclore l'oeuf";
 /* (No Comment) */
@@ -811,7 +811,7 @@
 "tasks.due_tomorrow" = "Échéance demain";
 "tasks.due_in_x_days" = "Échéance dans %d jours";
 "tasks.due_x" = "Échéance %@";
-"tasks.every_x" = "chaque %@";
+"tasks.every_x" = "chaque %d %@";
 "tasks.repeats.repeats_every_on" = "Se répète %@ le %@";
 "tasks.repeats.repeats_every" = "Se répète %@";
 "tasks.repeats.monthly_the" = "le %@";
@@ -930,3 +930,37 @@
 "accessibility.expand_checklist" = "Agrandir la liste";
 "great" = "Super";
 "buy_reward" = "Vous avez acheté '%@' pour %f pièces d'or";
+"titles.messages" = "Messages";
+"titles.notifications" = "Notifications";
+"settings.language" = "Langue";
+"guilds.joined_guild" = "Vous avez rejoint la guilde";
+"guilds.left_guild" = "Vous avez quitté la guilde";
+"stable.wacky_pets" = "Familiers farfelus";
+"stable.wacky_mounts" = "Montures farfelues";
+"party.leave_party_title" = "Quitter l'équipe ?";
+"party.leave_party_description" = "Voulez vous quitter l'équipe et conserver ou quitter les défis ?";
+"about.new_version" = "Mise à jour disponible : %@";
+"about.whats_new" = "Voir les nouveautés";
+"never_lower_case" = "jamais";
+"decline" = "Refuser";
+"defeat" = "Vaincre";
+"notifications.unallocated_stat_points" = "Vous avez **%d points d'attributs non attribués**";
+"notifications.new_bailey" = "Nouvelle mise à jour de Bailey !";
+"notifications.new_mystery_item" = "Vous avez de nouveaux **objets mystère**";
+"notifications.unread_guild_message" = "**%@** a de nouveaux messages.";
+"notifications.unread_party_message" = "Votre équipe, **%@**, a de nouveaux messages.";
+"notifications.party_invite" = "Vous avez reçu une invitation de l'équipe **%s**";
+"notifications.public_guild_invite" = "Vous avez reçu une invitation de la guilde publique **%s**";
+"notifications.private_guild_invite" = "Vous avez reçu une invitation de la guilde privée **%s**";
+"notifications.quest_invite" = "Vous avez été invité à la quête **%s**";
+"notifications.dismiss_all" = "Tout effacer";
+"empty.habits.title" = "Voici vos habitudes";
+"empty.habits.description" = "Les habitudes n'ont pas une planification rigide. Vous pouvez les valider plusieurs fois par jour.";
+"empty.dailies.title" = "Voici vos quotidiennes";
+"empty.dailies.description" = "Les quotidiennes se répètent de façon régulière. Choisissez la planification qui marche pour vous !";
+"empty.todos.title" = "Voici vos tâches à faire";
+"empty.todos.description" = "Les tâches à faire on besoin de n'être validées qu'une seule fois. Ajoutez des listes de vérification à vos tâches pour augmenter leur valeur.";
+"empty.rewards.title" = "Voici vos récompenses";
+"empty.rewards.description" = "Les récompenses sont une bonne façon d'utiliser Habitica et de compléter vos tâches. Essayez d'en ajouter quelques une aujourd'hui !";
+"empty.notifications.title" = "Vous êtes à jour !";
+"empty.notifications.description" = "Les fées de la notification vous font un tonnerre d'applaudissements ! Bien joué !";
