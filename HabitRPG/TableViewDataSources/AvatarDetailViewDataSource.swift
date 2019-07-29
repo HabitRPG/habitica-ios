@@ -92,7 +92,7 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
                 }
             }
             if let set = customization.set {
-                if let index = sections.index(where: { (section) -> Bool in
+                if let index = sections.firstIndex(where: { (section) -> Bool in
                     return section.key == set.key
                 }) {
                     sections[index].items.append(customization)

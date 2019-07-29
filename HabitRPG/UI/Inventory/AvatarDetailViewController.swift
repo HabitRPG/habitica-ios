@@ -79,7 +79,7 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
         } else {
             alertController.setSourceInCenter(view)
         }
-        alertController.show()
+        present(alertController, animated: true, completion: nil)
     }
     
     private func showPurchaseDialog(gear: GearProtocol, withSource sourceView: UIView?) {
@@ -98,7 +98,7 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
         } else {
             alertController.setSourceInCenter(view)
         }
-        alertController.show()
+        present(alertController, animated: true, completion: nil)
     }
     
     private func showPurchaseDialog(customizationSet: CustomizationSetProtocol, withSource sourceView: UIView?) {
@@ -113,6 +113,6 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
         } else {
             alertController.setSourceInCenter(view)
         }
-        alertController.show()
+        present(alertController, animated: true, completion: nil)
     }
 }

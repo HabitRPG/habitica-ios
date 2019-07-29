@@ -50,8 +50,8 @@ public enum L10n {
   public static func buyForX(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "buy_for_x", p1)
   }
-  /// You bought '%@' for %f gold
-  public static func buyReward(_ p1: String, _ p2: Float) -> String {
+  /// You bought '%@' for %@ gold
+  public static func buyReward(_ p1: String, _ p2: String) -> String {
     return L10n.tr("Mainstrings", "buy_reward", p1, p2)
   }
   /// Cancel
@@ -322,6 +322,8 @@ public enum L10n {
   public static var openItunes: String { return L10n.tr("Mainstrings", "open_itunes") }
   /// Open Habitica Website
   public static var openWebsite: String { return L10n.tr("Mainstrings", "open_website") }
+  /// Organize By
+  public static var organizeBy: String { return L10n.tr("Mainstrings", "organize_by") }
   /// Password
   public static var password: String { return L10n.tr("Mainstrings", "password") }
   /// Pause Damage
@@ -652,6 +654,17 @@ public enum L10n {
     public static func worldBossPendingDamage(_ p1: String, _ p2: String) -> String {
       return L10n.tr("Mainstrings", "accessibility.world_boss_pending_damage", p1, p2)
     }
+  }
+
+  public enum Achievements {
+    /// Basic Achievements
+    public static var basic: String { return L10n.tr("Mainstrings", "achievements.basic") }
+    /// Quests completed
+    public static var quests: String { return L10n.tr("Mainstrings", "achievements.quests") }
+    /// Seasonal Achievements
+    public static var seasonal: String { return L10n.tr("Mainstrings", "achievements.seasonal") }
+    /// Special Achievements
+    public static var special: String { return L10n.tr("Mainstrings", "achievements.special") }
   }
 
   public enum Avatar {
@@ -1276,6 +1289,8 @@ public enum L10n {
   }
 
   public enum Stable {
+    /// Color
+    public static var color: String { return L10n.tr("Mainstrings", "stable.color") }
     /// Feed
     public static var feed: String { return L10n.tr("Mainstrings", "stable.feed") }
     /// Magic Potion
@@ -1294,6 +1309,8 @@ public enum L10n {
     public static var standardMounts: String { return L10n.tr("Mainstrings", "stable.standard_mounts") }
     /// Standard Pets
     public static var standardPets: String { return L10n.tr("Mainstrings", "stable.standard_pets") }
+    /// Type
+    public static var type: String { return L10n.tr("Mainstrings", "stable.type") }
     /// Wacky Mounts
     public static var wackyMounts: String { return L10n.tr("Mainstrings", "stable.wacky_mounts") }
     /// Wacky Pets
@@ -1665,6 +1682,8 @@ public enum L10n {
   public enum Titles {
     /// About
     public static var about: String { return L10n.tr("Mainstrings", "titles.about") }
+    /// Achievements
+    public static var achievements: String { return L10n.tr("Mainstrings", "titles.achievements") }
     /// API
     public static var api: String { return L10n.tr("Mainstrings", "titles.api") }
     /// Authentication

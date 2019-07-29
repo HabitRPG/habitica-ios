@@ -100,6 +100,8 @@
 		292726B620B7094B009DD08A /* ChallengeTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292726B520B7094A009DD08A /* ChallengeTableViewDataSource.swift */; };
 		292844ED20DD1D4B0011DC43 /* GroupInvitationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292844EC20DD1D4B0011DC43 /* GroupInvitationView.swift */; };
 		292844EF20DD1D630011DC43 /* GroupInvitationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292844EE20DD1D630011DC43 /* GroupInvitationListView.swift */; };
+		2929AAB322E9E58E00DF9463 /* Habitica_Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2929AAB222E9E58E00DF9463 /* Habitica_Database.framework */; };
+		2929AAB522E9E59A00DF9463 /* Habitica_Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2929AAB422E9E59A00DF9463 /* Habitica_Models.framework */; };
 		292AA72420FE15090022CC5F /* UIFont-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292AA72320FE15090022CC5F /* UIFont-Extensions.swift */; };
 		292D6C9B2101FF080078288A /* InviteMembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292D6C9A2101FF080078288A /* InviteMembersViewController.swift */; };
 		292DEE3A204D9D290086D5F7 /* Habitica_Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 292DEE3B204D9D290086D5F7 /* Habitica_Models.framework */; };
@@ -118,6 +120,9 @@
 		292F967E207239A700804151 /* ImageView-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292F967D207239A700804151 /* ImageView-Extensions.swift */; };
 		292F968020723A4D00804151 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292F967F20723A4D00804151 /* ImageManager.swift */; };
 		292F968320724B1100804151 /* GuildsOverviewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292F968220724B1100804151 /* GuildsOverviewDataSource.swift */; };
+		2931150422D744ED00E4A9E3 /* AchievementsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2931150322D744ED00E4A9E3 /* AchievementsCollectionViewController.swift */; };
+		2931150622D745A700E4A9E3 /* AchievementsViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2931150522D745A700E4A9E3 /* AchievementsViewDataSource.swift */; };
+		2931151022D75B4B00E4A9E3 /* AchievementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2931150F22D75B4B00E4A9E3 /* AchievementCell.swift */; };
 		29323E1B2050532D00AC6D6F /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E1A2050532D00AC6D6F /* UserRepository.swift */; };
 		29323E1F2050563700AC6D6F /* NetworkErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E1E2050563700AC6D6F /* NetworkErrorHandler.swift */; };
 		29323E352052008800AC6D6F /* UserTopHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E342052008800AC6D6F /* UserTopHeader.swift */; };
@@ -242,6 +247,7 @@
 		298119B51F5048C000F9FB39 /* QuestGoalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 298119B41F5048C000F9FB39 /* QuestGoalView.xib */; };
 		298409CD203C3283003AD202 /* AvatarViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298409CA203C2B4A003AD202 /* AvatarViewTests.swift */; };
 		2986EB0B1FCC63F900B316F6 /* AttributePointsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2986EB0A1FCC63F900B316F6 /* AttributePointsViewController.swift */; };
+		2996AA1F22EB157800033D92 /* AppIntentVocabulary.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2996AA2122EB157800033D92 /* AppIntentVocabulary.plist */; };
 		299BD6221F505DFA00E22935 /* PaddedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299BD6211F505DFA00E22935 /* PaddedLabel.swift */; };
 		299BD6351F54346F00E22935 /* QuestDetailRewardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 299BD6341F54346F00E22935 /* QuestDetailRewardView.xib */; };
 		299BD6371F5457E100E22935 /* HabiticaIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299BD6361F5457E100E22935 /* HabiticaIcons.swift */; };
@@ -302,7 +308,6 @@
 		29E162E21FFC21E100685640 /* CustomFontMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E162E11FFC21E100685640 /* CustomFontMetrics.swift */; };
 		29E162E5200227AA00685640 /* HRPGUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29E162E4200227AA00685640 /* HRPGUIViewController.m */; };
 		29E1630B200D050E00685640 /* TopHeaderNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E1630A200D050E00685640 /* TopHeaderNavigationController.swift */; };
-		29E1630D200E23A500685640 /* MenuNavigationBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29E1630C200E23A500685640 /* MenuNavigationBarView.xib */; };
 		29E1630F200E279900685640 /* MenuNavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E1630E200E279900685640 /* MenuNavigationBarView.swift */; };
 		29E16311200E5FEA00685640 /* QuestProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29E16310200E5FEA00685640 /* QuestProgressView.xib */; };
 		29E16313200E619400685640 /* QuestProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E16312200E619400685640 /* QuestProgressView.swift */; };
@@ -311,11 +316,13 @@
 		29E1631D200F62C100685640 /* TavernDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E1631C200F62C100685640 /* TavernDetailViewController.swift */; };
 		29E1631F200F62CB00685640 /* GroupChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E1631E200F62CB00685640 /* GroupChatViewController.swift */; };
 		29E30DE620D935AF00F74ECB /* LevelUpOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E30DE520D935AF00F74ECB /* LevelUpOverlayView.swift */; };
+		29E48F0D22E89DB3005C4B45 /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E48F0C22E89DB3005C4B45 /* BadgeView.swift */; };
 		29E779F8203F30A40079F269 /* HRPGGemCapReachedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E779F7203F30A40079F269 /* HRPGGemCapReachedViewController.swift */; };
 		29ED1AFB1F338E5D005A3895 /* SetupCustomizationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ED1AFA1F338E5D005A3895 /* SetupCustomizationRepository.swift */; };
 		29ED1AFD1F338ECC005A3895 /* SetupCustomization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ED1AFC1F338ECC005A3895 /* SetupCustomization.swift */; };
 		29ED1AFF1F339ACF005A3895 /* UIColor-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ED1AFE1F339ACF005A3895 /* UIColor-Extensions.swift */; };
 		29F89F1A1F47882A004E5B84 /* String-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F89F191F47882A004E5B84 /* String-Extensions.swift */; };
+		29F9761822DDFDA50079B945 /* AchievementHeaderReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F9761722DDFDA50079B945 /* AchievementHeaderReusableView.swift */; };
 		29FC5A6520402EF6008E88C8 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC5A6420402EF6008E88C8 /* Theme.swift */; };
 		29FC5A6720402FA3008E88C8 /* Themes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC5A6620402FA3008E88C8 /* Themes.swift */; };
 		29FC5A6920403011008E88C8 /* ThemeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC5A6820403011008E88C8 /* ThemeService.swift */; };
@@ -403,6 +410,17 @@
 		49E6F57E1FF9A2AE0062C8B2 /* DoubleButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49E6F57C1FF9A2AE0062C8B2 /* DoubleButtonTableViewCell.xib */; };
 		49EE3FD8201908AB00CD7608 /* ChallengeButtonStyleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE3FD7201908AB00CD7608 /* ChallengeButtonStyleProvider.swift */; };
 		49FA9FF720DC47AD0086C478 /* TaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FA9FF620DC47AD0086C478 /* TaskTableViewController.swift */; };
+		6AD6119E0A9CFA1670D5C1E2 /* Pods_Habitica_Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE753104274372FFC7182ACF /* Pods_Habitica_Intents.framework */; };
+		7A84E194228928AC0081E96F /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A84E193228928AC0081E96F /* IntentHandler.swift */; };
+		7A84E19C228928AD0081E96F /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A84E19B228928AD0081E96F /* IntentsUI.framework */; };
+		7A84E19F228928AD0081E96F /* IntentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A84E19E228928AD0081E96F /* IntentViewController.swift */; };
+		7A84E1A2228928AD0081E96F /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A84E1A0228928AD0081E96F /* MainInterface.storyboard */; };
+		7A84E1A6228928AD0081E96F /* Habitica IntentsUI.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7A84E19A228928AD0081E96F /* Habitica IntentsUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		7A84E1A9228928AD0081E96F /* Habitica Intents.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7A84E191228928AC0081E96F /* Habitica Intents.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		7A84E1B222898E9F0081E96F /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A84E1B122898E9F0081E96F /* TaskManager.swift */; };
+		7A84E1B32289963E0081E96F /* BaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC884D2010CCC2002B3D3F /* BaseRepository.swift */; };
+		7A84E1B42289968B0081E96F /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299BD6391F557FE700E22935 /* AuthenticationManager.swift */; };
+		7A84E1B5228996A90081E96F /* TaskRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE57204DA6E00086D5F7 /* TaskRepositoryProtocol.swift */; };
 		7F78DB0E270DE29CFAFBBA24 /* Pods_Habitica_Snapshots.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAD902171AE5A8C0E6177D71 /* Pods_Habitica_Snapshots.framework */; };
 		823F7132DD74058859184F61 /* Pods_HabiticaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC1D483830288A543073AEBA /* Pods_HabiticaTests.framework */; };
 		C8415994225F8B7800989FB8 /* Habitica_Snapshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8415993225F8B7800989FB8 /* Habitica_Snapshots.swift */; };
@@ -553,6 +571,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		7A84E1A4228928AD0081E96F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9EB4E8318CB4A9400BB2094 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7A84E199228928AD0081E96F;
+			remoteInfo = "Habitica IntentsUI";
+		};
+		7A84E1A7228928AD0081E96F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9EB4E8318CB4A9400BB2094 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7A84E190228928AC0081E96F;
+			remoteInfo = "Habitica Intents";
+		};
 		C8415996225F8B7800989FB8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D9EB4E8318CB4A9400BB2094 /* Project object */;
@@ -581,6 +613,18 @@
 				29265895206A4E84006C8B54 /* Habitica_API_Client.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A84E1B0228928AD0081E96F /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				7A84E1A9228928AD0081E96F /* Habitica Intents.appex in Embed App Extensions */,
+				7A84E1A6228928AD0081E96F /* Habitica IntentsUI.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -685,6 +729,8 @@
 		292726B520B7094A009DD08A /* ChallengeTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeTableViewDataSource.swift; sourceTree = "<group>"; };
 		292844EC20DD1D4B0011DC43 /* GroupInvitationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInvitationView.swift; sourceTree = "<group>"; };
 		292844EE20DD1D630011DC43 /* GroupInvitationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInvitationListView.swift; sourceTree = "<group>"; };
+		2929AAB222E9E58E00DF9463 /* Habitica_Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2929AAB422E9E59A00DF9463 /* Habitica_Models.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_Models.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		292AA72320FE15090022CC5F /* UIFont-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont-Extensions.swift"; sourceTree = "<group>"; };
 		292D6C9A2101FF080078288A /* InviteMembersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteMembersViewController.swift; sourceTree = "<group>"; };
 		292DEE3B204D9D290086D5F7 /* Habitica_Models.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Habitica_Models.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -703,6 +749,9 @@
 		292F967D207239A700804151 /* ImageView-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageView-Extensions.swift"; sourceTree = "<group>"; };
 		292F967F20723A4D00804151 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		292F968220724B1100804151 /* GuildsOverviewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuildsOverviewDataSource.swift; sourceTree = "<group>"; };
+		2931150322D744ED00E4A9E3 /* AchievementsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsCollectionViewController.swift; sourceTree = "<group>"; };
+		2931150522D745A700E4A9E3 /* AchievementsViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsViewDataSource.swift; sourceTree = "<group>"; };
+		2931150F22D75B4B00E4A9E3 /* AchievementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementCell.swift; sourceTree = "<group>"; };
 		29323E1A2050532D00AC6D6F /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		29323E1E2050563700AC6D6F /* NetworkErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorHandler.swift; sourceTree = "<group>"; };
 		29323E342052008800AC6D6F /* UserTopHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTopHeader.swift; sourceTree = "<group>"; };
@@ -848,6 +897,24 @@
 		298119B41F5048C000F9FB39 /* QuestGoalView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestGoalView.xib; sourceTree = "<group>"; };
 		298409CA203C2B4A003AD202 /* AvatarViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarViewTests.swift; sourceTree = "<group>"; };
 		2986EB0A1FCC63F900B316F6 /* AttributePointsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributePointsViewController.swift; sourceTree = "<group>"; };
+		2996AA2022EB157800033D92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = Base.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
+		2996AA2222EB158300033D92 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = cs; path = cs.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
+		2996AA2422EB159300033D92 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = ja; path = ja.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
+		2996AA2522EB159400033D92 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = it; path = it.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
+		2996AA2622EB159500033D92 /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = ro; path = ro.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
+		2996AA2722EB159600033D92 /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = hr; path = hr.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
+		2996AA2822EB159600033D92 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = nl; path = nl.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
+		2996AA2922EB159700033D92 /* bg */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = bg; path = bg.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
+		2996AA2A22EB159800033D92 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "zh-Hans"; path = "zh-Hans.lproj/AppIntentVocabulary.plist"; sourceTree = "<group>"; };
+		2996AA2B22EB159800033D92 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = ru; path = ru.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
+		2996AA2C22EB159900033D92 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "pt-BR"; path = "pt-BR.lproj/AppIntentVocabulary.plist"; sourceTree = "<group>"; };
+		2996AA2D22EB159A00033D92 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = pl; path = pl.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
+		2996AA2E22EB159A00033D92 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = he; path = he.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
+		2996AA2F22EB159B00033D92 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = da; path = da.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
+		2996AA3022EB159C00033D92 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = de; path = de.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
+		2996AA3122EB159C00033D92 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = es; path = es.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
+		2996AA3222EB159E00033D92 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = zh; path = zh.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
+		2996AA3322EB159F00033D92 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = fr; path = fr.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
 		299BD6211F505DFA00E22935 /* PaddedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddedLabel.swift; sourceTree = "<group>"; };
 		299BD6341F54346F00E22935 /* QuestDetailRewardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestDetailRewardView.xib; sourceTree = "<group>"; };
 		299BD6361F5457E100E22935 /* HabiticaIcons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabiticaIcons.swift; sourceTree = "<group>"; };
@@ -921,7 +988,6 @@
 		29E162E3200227AA00685640 /* HRPGUIViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HRPGUIViewController.h; sourceTree = "<group>"; };
 		29E162E4200227AA00685640 /* HRPGUIViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HRPGUIViewController.m; sourceTree = "<group>"; };
 		29E1630A200D050E00685640 /* TopHeaderNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopHeaderNavigationController.swift; sourceTree = "<group>"; };
-		29E1630C200E23A500685640 /* MenuNavigationBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuNavigationBarView.xib; sourceTree = "<group>"; };
 		29E1630E200E279900685640 /* MenuNavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuNavigationBarView.swift; sourceTree = "<group>"; };
 		29E16310200E5FEA00685640 /* QuestProgressView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestProgressView.xib; sourceTree = "<group>"; };
 		29E16312200E619400685640 /* QuestProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestProgressView.swift; sourceTree = "<group>"; };
@@ -931,11 +997,13 @@
 		29E1631E200F62CB00685640 /* GroupChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupChatViewController.swift; sourceTree = "<group>"; };
 		29E30DE520D935AF00F74ECB /* LevelUpOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelUpOverlayView.swift; sourceTree = "<group>"; };
 		29E30DE920DA8AFE00F74ECB /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Mainstrings.strings; sourceTree = "<group>"; };
+		29E48F0C22E89DB3005C4B45 /* BadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
 		29E779F7203F30A40079F269 /* HRPGGemCapReachedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRPGGemCapReachedViewController.swift; sourceTree = "<group>"; };
 		29ED1AFA1F338E5D005A3895 /* SetupCustomizationRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupCustomizationRepository.swift; sourceTree = "<group>"; };
 		29ED1AFC1F338ECC005A3895 /* SetupCustomization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupCustomization.swift; sourceTree = "<group>"; };
 		29ED1AFE1F339ACF005A3895 /* UIColor-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor-Extensions.swift"; sourceTree = "<group>"; };
 		29F89F191F47882A004E5B84 /* String-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String-Extensions.swift"; sourceTree = "<group>"; };
+		29F9761722DDFDA50079B945 /* AchievementHeaderReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementHeaderReusableView.swift; sourceTree = "<group>"; };
 		29FC5A6420402EF6008E88C8 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		29FC5A6620402FA3008E88C8 /* Themes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Themes.swift; sourceTree = "<group>"; };
 		29FC5A6820403011008E88C8 /* ThemeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeService.swift; sourceTree = "<group>"; };
@@ -1035,7 +1103,18 @@
 		49E6F57C1FF9A2AE0062C8B2 /* DoubleButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DoubleButtonTableViewCell.xib; sourceTree = "<group>"; };
 		49EE3FD7201908AB00CD7608 /* ChallengeButtonStyleProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeButtonStyleProvider.swift; sourceTree = "<group>"; };
 		49FA9FF620DC47AD0086C478 /* TaskTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewController.swift; sourceTree = "<group>"; };
+		7A84E191228928AC0081E96F /* Habitica Intents.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Habitica Intents.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A84E193228928AC0081E96F /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
+		7A84E195228928AC0081E96F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A84E19A228928AD0081E96F /* Habitica IntentsUI.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Habitica IntentsUI.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A84E19B228928AD0081E96F /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
+		7A84E19E228928AD0081E96F /* IntentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentViewController.swift; sourceTree = "<group>"; };
+		7A84E1A1228928AD0081E96F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		7A84E1A3228928AD0081E96F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A84E1B122898E9F0081E96F /* TaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
+		7A84E1B6228A5CB40081E96F /* Habitica Intents.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Habitica Intents.entitlements"; sourceTree = "<group>"; };
 		7FE9BA90152C83065EC5BA86 /* Pods-Habitica-Habitica Snapshots.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica-Habitica Snapshots.release.xcconfig"; path = "Pods/Target Support Files/Pods-Habitica-Habitica Snapshots/Pods-Habitica-Habitica Snapshots.release.xcconfig"; sourceTree = "<group>"; };
+		8AB87D57BF24FAE4B57CE55A /* Pods-Habitica Intents.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica Intents.release.xcconfig"; path = "Pods/Target Support Files/Pods-Habitica Intents/Pods-Habitica Intents.release.xcconfig"; sourceTree = "<group>"; };
 		9C2AF135C6B99AC360682846 /* Pods-Habitica Snapshots.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica Snapshots.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Habitica Snapshots/Pods-Habitica Snapshots.debug.xcconfig"; sourceTree = "<group>"; };
 		AAD902171AE5A8C0E6177D71 /* Pods_Habitica_Snapshots.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica_Snapshots.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC1D483830288A543073AEBA /* Pods_HabiticaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HabiticaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1049,6 +1128,8 @@
 		C8FA550822C5425D0017DD65 /* PrideHabiticaAltBlack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PrideHabiticaAltBlack.png; sourceTree = "<group>"; };
 		C8FA550922C5425E0017DD65 /* PrideHabiticaAltBlack@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PrideHabiticaAltBlack@3x.png"; sourceTree = "<group>"; };
 		C8FA550A22C5425E0017DD65 /* PrideHabiticaAltBlack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PrideHabiticaAltBlack@2x.png"; sourceTree = "<group>"; };
+		CE753104274372FFC7182ACF /* Pods_Habitica_Intents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica_Intents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D56154F5C7C0402DA7E06CF3 /* Pods-Habitica Intents.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica Intents.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Habitica Intents/Pods-Habitica Intents.debug.xcconfig"; sourceTree = "<group>"; };
 		D902AD861B53E1B60098A1BD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D902AD881B540AE30098A1BD /* HRPGBaseCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGBaseCollectionViewController.h; sourceTree = "<group>"; };
 		D902AD891B540AE30098A1BD /* HRPGBaseCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGBaseCollectionViewController.m; sourceTree = "<group>"; };
@@ -1286,6 +1367,24 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		7A84E18E228928AC0081E96F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2929AAB522E9E59A00DF9463 /* Habitica_Models.framework in Frameworks */,
+				2929AAB322E9E58E00DF9463 /* Habitica_Database.framework in Frameworks */,
+				6AD6119E0A9CFA1670D5C1E2 /* Pods_Habitica_Intents.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A84E197228928AD0081E96F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A84E19C228928AD0081E96F /* IntentsUI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C841598E225F8B7800989FB8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -1575,11 +1674,12 @@
 		2986EB091FCC63CC00B316F6 /* User */ = {
 			isa = PBXGroup;
 			children = (
-				295D42F520921F4200948E7E /* ClassSelectionViewController.swift */,
-				29A62B002167D55200D4BD90 /* VerifyUsernameModalViewController.swift */,
+				2931150322D744ED00E4A9E3 /* AchievementsCollectionViewController.swift */,
 				2986EB0A1FCC63F900B316F6 /* AttributePointsViewController.swift */,
 				293BB4A81FD0806C003B6F4F /* BulkStatsAllocationViewController.swift */,
+				295D42F520921F4200948E7E /* ClassSelectionViewController.swift */,
 				291E95AE20988025006EE585 /* NewsViewController.swift */,
+				29A62B002167D55200D4BD90 /* VerifyUsernameModalViewController.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -1821,6 +1921,7 @@
 				29DBFF0420CEB42F00DF9CF2 /* AvatarGearDetailViewDataSource.swift */,
 				2914485E2084E9F300F3A6B5 /* Stable */,
 				296AC81320AC85C200885682 /* RewardViewDataSource.swift */,
+				2931150522D745A700E4A9E3 /* AchievementsViewDataSource.swift */,
 			);
 			name = CVDataSources;
 			sourceTree = "<group>";
@@ -1829,6 +1930,7 @@
 			isa = PBXGroup;
 			children = (
 				494E54211F310BA00003683C /* HRPGShopSectionHeaderCollectionReusableView.swift */,
+				29F9761722DDFDA50079B945 /* AchievementHeaderReusableView.swift */,
 			);
 			name = "Collection View Cells";
 			sourceTree = "<group>";
@@ -1897,6 +1999,27 @@
 			name = Shop;
 			sourceTree = "<group>";
 		};
+		7A84E192228928AC0081E96F /* Habitica Intents */ = {
+			isa = PBXGroup;
+			children = (
+				7A84E1B6228A5CB40081E96F /* Habitica Intents.entitlements */,
+				7A84E193228928AC0081E96F /* IntentHandler.swift */,
+				7A84E195228928AC0081E96F /* Info.plist */,
+				7A84E1B122898E9F0081E96F /* TaskManager.swift */,
+			);
+			path = "Habitica Intents";
+			sourceTree = "<group>";
+		};
+		7A84E19D228928AD0081E96F /* Habitica IntentsUI */ = {
+			isa = PBXGroup;
+			children = (
+				7A84E19E228928AD0081E96F /* IntentViewController.swift */,
+				7A84E1A0228928AD0081E96F /* MainInterface.storyboard */,
+				7A84E1A3228928AD0081E96F /* Info.plist */,
+			);
+			path = "Habitica IntentsUI";
+			sourceTree = "<group>";
+		};
 		B4CD8E50098CF9B62A999CCD /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1908,6 +2031,8 @@
 				2AA9CAD02350FFCB017F32D0 /* Pods-Habitica Snapshots.release.xcconfig */,
 				032ED89EF6507A9AFEB61E4B /* Pods-Habitica-Habitica Snapshots.debug.xcconfig */,
 				7FE9BA90152C83065EC5BA86 /* Pods-Habitica-Habitica Snapshots.release.xcconfig */,
+				D56154F5C7C0402DA7E06CF3 /* Pods-Habitica Intents.debug.xcconfig */,
+				8AB87D57BF24FAE4B57CE55A /* Pods-Habitica Intents.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -2366,7 +2491,6 @@
 				29B6AD491F2A0C9700AC8878 /* LoginEntryView.xib */,
 				291DE9752099D85D0073182A /* MemberLlistView.swift */,
 				29E1630E200E279900685640 /* MenuNavigationBarView.swift */,
-				29E1630C200E23A500685640 /* MenuNavigationBarView.xib */,
 				D96C853C1DCB61EE003E3616 /* Notifications */,
 				49DCB7C11F40D7F00079FDD0 /* NPCBannerView.swift */,
 				49DCB7C31F40D80B0079FDD0 /* NPCBannerView.xib */,
@@ -2396,6 +2520,7 @@
 				2980E6081EEA25CD005B7100 /* YesterdailiesDialogView.swift */,
 				2980E6061EEA1F55005B7100 /* YesterdailiesDialogView.xib */,
 				2912C3AF22CA701C00BC485F /* QuestCompletedAlertController.swift */,
+				29E48F0C22E89DB3005C4B45 /* BadgeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2424,6 +2549,7 @@
 		D9C2570D1B9B4BFB00839F48 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				2931150F22D75B4B00E4A9E3 /* AchievementCell.swift */,
 				295BC6F7226F5B4A00DDDF1A /* Notifications */,
 				49A84FB41F9FCA54003E2956 /* Challenges */,
 				D9BB455C1E71C8C70002AE2E /* CheckedTableViewcell.swift */,
@@ -2537,6 +2663,8 @@
 				D9EB4E9418CB4A9400BB2094 /* Habitica */,
 				D94461841AB34F5C0015215E /* HabiticaTests */,
 				C8415992225F8B7800989FB8 /* Habitica Snapshots */,
+				7A84E192228928AC0081E96F /* Habitica Intents */,
+				7A84E19D228928AD0081E96F /* Habitica IntentsUI */,
 				D9EB4E8D18CB4A9400BB2094 /* Frameworks */,
 				D9EB4E8C18CB4A9400BB2094 /* Products */,
 				B4CD8E50098CF9B62A999CCD /* Pods */,
@@ -2549,6 +2677,8 @@
 				D9EB4E8B18CB4A9400BB2094 /* Habitica.app */,
 				D94461831AB34F5C0015215E /* HabiticaTests.xctest */,
 				C8415991225F8B7800989FB8 /* Habitica Snapshots.xctest */,
+				7A84E191228928AC0081E96F /* Habitica Intents.appex */,
+				7A84E19A228928AD0081E96F /* Habitica IntentsUI.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2556,6 +2686,8 @@
 		D9EB4E8D18CB4A9400BB2094 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2929AAB422E9E59A00DF9463 /* Habitica_Models.framework */,
+				2929AAB222E9E58E00DF9463 /* Habitica_Database.framework */,
 				292DEE4D204DA1830086D5F7 /* Habitica_API_Client.framework */,
 				292DEE3D204D9D360086D5F7 /* Habitica_Database.framework */,
 				292DEE3B204D9D290086D5F7 /* Habitica_Models.framework */,
@@ -2579,6 +2711,8 @@
 				BC1D483830288A543073AEBA /* Pods_HabiticaTests.framework */,
 				AAD902171AE5A8C0E6177D71 /* Pods_Habitica_Snapshots.framework */,
 				E242DD249519DA942627D702 /* Pods_Habitica_Habitica_Snapshots.framework */,
+				7A84E19B228928AD0081E96F /* IntentsUI.framework */,
+				CE753104274372FFC7182ACF /* Pods_Habitica_Intents.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -2638,6 +2772,7 @@
 				D9EB4E9A18CB4A9400BB2094 /* main.m */,
 				D9EB4E9C18CB4A9400BB2094 /* Habitica-Prefix.pch */,
 				D9A50E991A868DE400FC8B1A /* Launch Screen.xib */,
+				2996AA2122EB157800033D92 /* AppIntentVocabulary.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -2653,6 +2788,41 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		7A84E190228928AC0081E96F /* Habitica Intents */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A84E1AD228928AD0081E96F /* Build configuration list for PBXNativeTarget "Habitica Intents" */;
+			buildPhases = (
+				05538B92CB9D31C3A92F050F /* [CP] Check Pods Manifest.lock */,
+				7A84E18D228928AC0081E96F /* Sources */,
+				7A84E18E228928AC0081E96F /* Frameworks */,
+				7A84E18F228928AC0081E96F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Habitica Intents";
+			productName = "Habitica Intents";
+			productReference = 7A84E191228928AC0081E96F /* Habitica Intents.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		7A84E199228928AD0081E96F /* Habitica IntentsUI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A84E1AA228928AD0081E96F /* Build configuration list for PBXNativeTarget "Habitica IntentsUI" */;
+			buildPhases = (
+				7A84E196228928AD0081E96F /* Sources */,
+				7A84E197228928AD0081E96F /* Frameworks */,
+				7A84E198228928AD0081E96F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Habitica IntentsUI";
+			productName = "Habitica IntentsUI";
+			productReference = 7A84E19A228928AD0081E96F /* Habitica IntentsUI.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		C8415990225F8B7800989FB8 /* Habitica Snapshots */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C8415998225F8B7800989FB8 /* Build configuration list for PBXNativeTarget "Habitica Snapshots" */;
@@ -2710,10 +2880,13 @@
 				33CD4301B52F7B90A552FAC3 /* 📦 Embed Pods Frameworks */,
 				D97AEBC81E7D7622007FD4A2 /* Lint */,
 				29265896206A4E84006C8B54 /* Embed Frameworks */,
+				7A84E1B0228928AD0081E96F /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				7A84E1A5228928AD0081E96F /* PBXTargetDependency */,
+				7A84E1A8228928AD0081E96F /* PBXTargetDependency */,
 			);
 			name = Habitica;
 			productName = HabitRPG;
@@ -2727,10 +2900,28 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = HRPG;
-				LastSwiftUpdateCheck = 1010;
+				LastSwiftUpdateCheck = 1020;
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "HabitRPG Inc.";
 				TargetAttributes = {
+					7A84E190228928AC0081E96F = {
+						CreatedOnToolsVersion = 10.2.1;
+						DevelopmentTeam = 9Q9SMRMCNN;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
+					};
+					7A84E199228928AD0081E96F = {
+						CreatedOnToolsVersion = 10.2.1;
+						DevelopmentTeam = 9Q9SMRMCNN;
+						ProvisioningStyle = Automatic;
+					};
 					C8415990225F8B7800989FB8 = {
 						CreatedOnToolsVersion = 10.1;
 						DevelopmentTeam = 9Q9SMRMCNN;
@@ -2739,6 +2930,7 @@
 					};
 					D94461821AB34F5C0015215E = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = 9Q9SMRMCNN;
 						LastSwiftMigration = 0920;
 						TestTargetID = D9EB4E8A18CB4A9400BB2094;
 					};
@@ -2746,13 +2938,22 @@
 						DevelopmentTeam = 9Q9SMRMCNN;
 						LastSwiftMigration = 0820;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
 							com.apple.InAppPurchase = {
 								enabled = 1;
 							};
+							com.apple.Keychain = {
+								enabled = 1;
+							};
 							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.Siri = {
 								enabled = 1;
 							};
 						};
@@ -2793,11 +2994,28 @@
 				D9EB4E8A18CB4A9400BB2094 /* Habitica */,
 				D94461821AB34F5C0015215E /* HabiticaTests */,
 				C8415990225F8B7800989FB8 /* Habitica Snapshots */,
+				7A84E190228928AC0081E96F /* Habitica Intents */,
+				7A84E199228928AD0081E96F /* Habitica IntentsUI */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		7A84E18F228928AC0081E96F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A84E198228928AD0081E96F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A84E1A2228928AD0081E96F /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C841598F225F8B7800989FB8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2847,6 +3065,7 @@
 				293BB4A31FD07603003B6F4F /* StatsSliderView.xib in Resources */,
 				296E4BC921AEFE6100DB3602 /* TealAlt@2x.png in Resources */,
 				296E4B7221AEF35E00DB3602 /* PrideAlt@3x.png in Resources */,
+				2996AA1F22EB157800033D92 /* AppIntentVocabulary.plist in Resources */,
 				29E16311200E5FEA00685640 /* QuestProgressView.xib in Resources */,
 				C8FA550B22C5425E0017DD65 /* PrideHabiticaAltBlack.png in Resources */,
 				296E4BCB21AEFE6100DB3602 /* BlueAlt@3x.png in Resources */,
@@ -2916,7 +3135,6 @@
 				296E4B6621AEF35E00DB3602 /* PrideHabiticaAlt@3x.png in Resources */,
 				296E4BCF21AEFE6100DB3602 /* Orange@2x.png in Resources */,
 				D9D17CCE1E6736B500AD9232 /* ChallengeDetailHeaderView.xib in Resources */,
-				29E1630D200E23A500685640 /* MenuNavigationBarView.xib in Resources */,
 				D99DEC89190842CA00FFD2B9 /* Placeholder.png in Resources */,
 				49DCB7B01F3923F20079FDD0 /* HRPGSimpleShopItemView.xib in Resources */,
 				296E4BC421AEFE6100DB3602 /* YellowAlt@2x.png in Resources */,
@@ -2990,6 +3208,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		05538B92CB9D31C3A92F050F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Habitica Intents-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		290279682057F179006DACB9 /* Run SwiftGen */ = {
@@ -3113,6 +3353,7 @@
 				"${BUILT_PRODUCTS_DIR}/Keys/Keys.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/MRProgress/MRProgress.framework",
+				"${BUILT_PRODUCTS_DIR}/Magnetic/Magnetic.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/OHHTTPStubs/OHHTTPStubs.framework",
 				"${BUILT_PRODUCTS_DIR}/PinLayout/PinLayout.framework",
@@ -3151,6 +3392,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Keys.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MRProgress.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Magnetic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OHHTTPStubs.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PinLayout.framework",
@@ -3279,6 +3521,26 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		7A84E18D228928AC0081E96F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A84E1B5228996A90081E96F /* TaskRepositoryProtocol.swift in Sources */,
+				7A84E1B32289963E0081E96F /* BaseRepository.swift in Sources */,
+				7A84E1B42289968B0081E96F /* AuthenticationManager.swift in Sources */,
+				7A84E1B222898E9F0081E96F /* TaskManager.swift in Sources */,
+				7A84E194228928AC0081E96F /* IntentHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A84E196228928AD0081E96F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A84E19F228928AD0081E96F /* IntentViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C841598D225F8B7800989FB8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -3329,6 +3591,7 @@
 				292844ED20DD1D4B0011DC43 /* GroupInvitationView.swift in Sources */,
 				D9E9E0C41CCE55DA006D94A2 /* HRPGSharingManager.m in Sources */,
 				D922F0B11925314500B197EA /* HRPGNetworkIndicatorController.m in Sources */,
+				29F9761822DDFDA50079B945 /* AchievementHeaderReusableView.swift in Sources */,
 				29DC5AC220A1C63000993400 /* SeparatedStackView.swift in Sources */,
 				29701FE01F560D310097BBCC /* UIApplication-Extensions.swift in Sources */,
 				2919FDDF2091D87A0096A53B /* FaintViewController.swift in Sources */,
@@ -3399,6 +3662,7 @@
 				291448822087A13100F3A6B5 /* EquipmentDetailViewController.swift in Sources */,
 				29FC885C2018D47D002B3D3F /* Quest-Extensions.swift in Sources */,
 				D9BA33D41AB5E5820028AFEC /* HRPGLabeledProgressBar.m in Sources */,
+				2931150422D744ED00E4A9E3 /* AchievementsCollectionViewController.swift in Sources */,
 				299BD6221F505DFA00E22935 /* PaddedLabel.swift in Sources */,
 				D9F1E3E81E55DCEC0034D0F4 /* SubscriptionInformationCell.swift in Sources */,
 				290279732057FB4E006DACB9 /* FAQTableViewDataSource.swift in Sources */,
@@ -3532,6 +3796,7 @@
 				498E4D031FA17C31006933FF /* ChallengeDescriptionTableViewCell.swift in Sources */,
 				D9BB455B1E71C52F0002AE2E /* TaskTableViewCell.swift in Sources */,
 				291E95B720988B85006EE585 /* PartyDetailViewController.swift in Sources */,
+				2931151022D75B4B00E4A9E3 /* AchievementCell.swift in Sources */,
 				2912C3B022CA701C00BC485F /* QuestCompletedAlertController.swift in Sources */,
 				29E16315200E629800685640 /* QuestProgressBarView.swift in Sources */,
 				49E378512009540500E0DA3D /* ChallengeTableViewHeaderView.swift in Sources */,
@@ -3594,6 +3859,7 @@
 				292DEEA5204F6F6C0086D5F7 /* DailyTableViewDataSource.swift in Sources */,
 				292DEE8D204F458B0086D5F7 /* HabitTableViewDataSource.swift in Sources */,
 				D9FC1A7E1BC28F4700B97D23 /* HRPGTypingLabel.m in Sources */,
+				29E48F0D22E89DB3005C4B45 /* BadgeView.swift in Sources */,
 				D92A084B1D33FA08000F8B66 /* HRPGShopViewController.m in Sources */,
 				D92503BE1D5C9219006C9388 /* NSString+UUID.m in Sources */,
 				D9CE90471E4CDF3F00702578 /* Designable-Extensions.swift in Sources */,
@@ -3628,6 +3894,7 @@
 				29144896208A270800F3A6B5 /* AvatarDetailViewController.swift in Sources */,
 				49DCECE81F9A843E00982E99 /* MultiModelTableViewController.swift in Sources */,
 				293282181F39E1A400D42961 /* WelcomeViewController.swift in Sources */,
+				2931150622D745A700E4A9E3 /* AchievementsViewDataSource.swift in Sources */,
 				29144876208648D500F3A6B5 /* EquipmentOverviewViewController.swift in Sources */,
 				491C6E5B2020FE64005030A2 /* Challenge-Extensions.swift in Sources */,
 				D96C85451DCBAC90003E3616 /* HRPGStreakAchievementNotification.m in Sources */,
@@ -3671,6 +3938,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		7A84E1A5228928AD0081E96F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7A84E199228928AD0081E96F /* Habitica IntentsUI */;
+			targetProxy = 7A84E1A4228928AD0081E96F /* PBXContainerItemProxy */;
+		};
+		7A84E1A8228928AD0081E96F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7A84E190228928AC0081E96F /* Habitica Intents */;
+			targetProxy = 7A84E1A7228928AD0081E96F /* PBXContainerItemProxy */;
+		};
 		C8415997225F8B7800989FB8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D9EB4E8A18CB4A9400BB2094 /* Habitica */;
@@ -3756,6 +4033,31 @@
 			name = Intro.storyboard;
 			sourceTree = "<group>";
 		};
+		2996AA2122EB157800033D92 /* AppIntentVocabulary.plist */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2996AA2022EB157800033D92 /* Base */,
+				2996AA2222EB158300033D92 /* cs */,
+				2996AA2422EB159300033D92 /* ja */,
+				2996AA2522EB159400033D92 /* it */,
+				2996AA2622EB159500033D92 /* ro */,
+				2996AA2722EB159600033D92 /* hr */,
+				2996AA2822EB159600033D92 /* nl */,
+				2996AA2922EB159700033D92 /* bg */,
+				2996AA2A22EB159800033D92 /* zh-Hans */,
+				2996AA2B22EB159800033D92 /* ru */,
+				2996AA2C22EB159900033D92 /* pt-BR */,
+				2996AA2D22EB159A00033D92 /* pl */,
+				2996AA2E22EB159A00033D92 /* he */,
+				2996AA2F22EB159B00033D92 /* da */,
+				2996AA3022EB159C00033D92 /* de */,
+				2996AA3122EB159C00033D92 /* es */,
+				2996AA3222EB159E00033D92 /* zh */,
+				2996AA3322EB159F00033D92 /* fr */,
+			);
+			name = AppIntentVocabulary.plist;
+			sourceTree = "<group>";
+		};
 		29B478AC20BFE53500B6123F /* Main.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -3795,6 +4097,14 @@
 				2908E3502217245500D246CD /* nl */,
 			);
 			name = Mainstrings.strings;
+			sourceTree = "<group>";
+		};
+		7A84E1A0228928AD0081E96F /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7A84E1A1228928AD0081E96F /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 		D90576871BD83240009BB7BC /* InfoPlist.strings */ = {
@@ -3882,6 +4192,136 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		7A84E1AB228928AD0081E96F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "Habitica IntentsUI/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-IntentsUI";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7A84E1AC228928AD0081E96F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "Habitica IntentsUI/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-IntentsUI";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		7A84E1AE228928AD0081E96F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D56154F5C7C0402DA7E06CF3 /* Pods-Habitica Intents.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = "Habitica Intents/Habitica Intents.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "Habitica Intents/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-Intents";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7A84E1AF228928AD0081E96F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8AB87D57BF24FAE4B57CE55A /* Pods-Habitica Intents.release.xcconfig */;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = "Habitica Intents/Habitica Intents.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "Habitica Intents/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-Intents";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		C8415999225F8B7800989FB8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9C2AF135C6B99AC360682846 /* Pods-Habitica Snapshots.debug.xcconfig */;
@@ -3953,6 +4393,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
+				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -4029,6 +4470,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
+				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -4380,6 +4822,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		7A84E1AA228928AD0081E96F /* Build configuration list for PBXNativeTarget "Habitica IntentsUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A84E1AB228928AD0081E96F /* Debug */,
+				7A84E1AC228928AD0081E96F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7A84E1AD228928AD0081E96F /* Build configuration list for PBXNativeTarget "Habitica Intents" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A84E1AE228928AD0081E96F /* Debug */,
+				7A84E1AF228928AD0081E96F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C8415998225F8B7800989FB8 /* Build configuration list for PBXNativeTarget "Habitica Snapshots" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

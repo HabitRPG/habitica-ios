@@ -112,6 +112,9 @@
 		292F966C206E6D8A00804151 /* UpdateUserCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292F966B206E6D8A00804151 /* UpdateUserCall.swift */; };
 		292F96742072277D00804151 /* APIChatMessageReaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292F96732072277D00804151 /* APIChatMessageReaction.swift */; };
 		292F9676207227AB00804151 /* APIUserStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292F9675207227AB00804151 /* APIUserStyle.swift */; };
+		2931150C22D747F100E4A9E3 /* APIAchievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2931150B22D747F100E4A9E3 /* APIAchievement.swift */; };
+		2931150E22D74ECA00E4A9E3 /* RetrieveAchievements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2931150D22D74ECA00E4A9E3 /* RetrieveAchievements.swift */; };
+		2931151422D768DA00E4A9E3 /* APIAchievementList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2931151322D768DA00E4A9E3 /* APIAchievementList.swift */; };
 		29323E1520504F2300AC6D6F /* APIUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E1420504F2300AC6D6F /* APIUser.swift */; };
 		29323E1720504F5600AC6D6F /* APIStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E1620504F5600AC6D6F /* APIStats.swift */; };
 		29323E192050528C00AC6D6F /* RetrieveUserCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E182050528C00AC6D6F /* RetrieveUserCall.swift */; };
@@ -342,6 +345,9 @@
 		292F966B206E6D8A00804151 /* UpdateUserCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserCall.swift; sourceTree = "<group>"; };
 		292F96732072277D00804151 /* APIChatMessageReaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIChatMessageReaction.swift; sourceTree = "<group>"; };
 		292F9675207227AB00804151 /* APIUserStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIUserStyle.swift; sourceTree = "<group>"; };
+		2931150B22D747F100E4A9E3 /* APIAchievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIAchievement.swift; sourceTree = "<group>"; };
+		2931150D22D74ECA00E4A9E3 /* RetrieveAchievements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveAchievements.swift; sourceTree = "<group>"; };
+		2931151322D768DA00E4A9E3 /* APIAchievementList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIAchievementList.swift; sourceTree = "<group>"; };
 		29323E1420504F2300AC6D6F /* APIUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIUser.swift; sourceTree = "<group>"; };
 		29323E1620504F5600AC6D6F /* APIStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIStats.swift; sourceTree = "<group>"; };
 		29323E182050528C00AC6D6F /* RetrieveUserCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveUserCall.swift; sourceTree = "<group>"; };
@@ -569,6 +575,8 @@
 				29DBFF0E20D15BEA00DF9CF2 /* APIUserNewMessages.swift */,
 				291E95B4209888E1006EE585 /* APIUserParty.swift */,
 				29A62B04216CC6A100D4BD90 /* APIVerifyUsernameResponse.swift */,
+				2931150B22D747F100E4A9E3 /* APIAchievement.swift */,
+				2931151322D768DA00E4A9E3 /* APIAchievementList.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -737,8 +745,11 @@
 				2919FDD82090DF1B0096A53B /* PostInboxMessageCall.swift */,
 				295E9DDB20B3060200D58D45 /* PurchaseGemsCall.swift */,
 				296E480D21C4095300D15E4A /* PurchaseNoRenewSubscriptionCall.swift */,
+				2912C3C822CCD22000BC485F /* ReadNotificationCall.swift */,
+				2912C3CA22CCD28600BC485F /* ReadNotificationsCall.swift */,
 				29990DBB20E51FDD001ADD8B /* RegisterPushDeviceCall.swift */,
 				290B626C207BA6AB007287C4 /* ResetAccountCall.swift */,
+				2931150D22D74ECA00E4A9E3 /* RetrieveAchievements.swift */,
 				296AC81920ADD99900885682 /* RetrieveInAppRewardsCall.swift */,
 				29990DB320E4EB3F001ADD8B /* RetrieveInboxMessagesCall.swift */,
 				29323E182050528C00AC6D6F /* RetrieveUserCall.swift */,
@@ -758,8 +769,6 @@
 				290C302D206BD2020066AF5B /* UseSkillCall.swift */,
 				29DBFF0220CE91A500DF9CF2 /* UseTransformationItemCall.swift */,
 				29A62B06216CC6CC00D4BD90 /* VerifyUsernameCall.swift */,
-				2912C3C822CCD22000BC485F /* ReadNotificationCall.swift */,
-				2912C3CA22CCD28600BC485F /* ReadNotificationsCall.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -1180,9 +1189,11 @@
 				295610EB2056C6F600D9711A /* APIContent.swift in Sources */,
 				2956110D2056E18A00D9711A /* APIQuestCollect.swift in Sources */,
 				2912C3CB22CCD28600BC485F /* ReadNotificationsCall.swift in Sources */,
+				2931150C22D747F100E4A9E3 /* APIAchievement.swift in Sources */,
 				29A9B05F22817DBE0049291E /* NetworkErrorHandler.swift in Sources */,
 				295E9DD420B2EA4100D58D45 /* TogglePinnedItemCall.swift in Sources */,
 				292844EB20DD18380011DC43 /* APIGroupInvitation.swift in Sources */,
+				2931150E22D74ECA00E4A9E3 /* RetrieveAchievements.swift in Sources */,
 				295611012056D20B00D9711A /* APISkill.swift in Sources */,
 				29027991205835F7006DACB9 /* APIQuestState.swift in Sources */,
 				292DEEB1205039CA0086D5F7 /* TaskResponse.swift in Sources */,
@@ -1260,6 +1271,7 @@
 				295E9DBB20B2C72600D58D45 /* APIQuestDrop.swift in Sources */,
 				292F9676207227AB00804151 /* APIUserStyle.swift in Sources */,
 				292DEE88204E490A0086D5F7 /* APIReminder.swift in Sources */,
+				2931151422D768DA00E4A9E3 /* APIAchievementList.swift in Sources */,
 				29DBFF0720D01EE000DF9CF2 /* RetrieveChallengeTasksCall.swift in Sources */,
 				295E9DBD20B2C83400D58D45 /* APIQuestDropItem.swift in Sources */,
 				2912C3BD22CB5CE000BC485F /* APINotificationNewStuffData.swift in Sources */,
@@ -1430,7 +1442,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E7EF6D46CDBA4E678D7467CD /* Pods-Habitica API Client.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -1456,7 +1468,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 191CE8102BC4FC651F95BBBA /* Pods-Habitica API Client.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;

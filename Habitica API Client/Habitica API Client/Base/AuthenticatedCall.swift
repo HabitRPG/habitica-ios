@@ -33,7 +33,7 @@ public class AuthenticatedCall: JsonNetworkCall {
     public static var defaultConfiguration = HabiticaServerConfig.current
     public static var notificationListener: (([NotificationProtocol]?) -> Void)?
 
-    private var debugHandler: DebugOutputHandler?
+    private var debugHandler = DebugOutputHandler()
     var customErrorHandler: NetworkErrorHandler?
     var needsAuthentication = true
     
@@ -55,7 +55,10 @@ public class AuthenticatedCall: JsonNetworkCall {
          httpMethod: HTTPMethod, httpHeaders: [String: String]? = AuthenticatedCall.jsonHeaders(),
          endpoint: String, postData: Data? = nil,
          stubHolder: StubHolderProtocol? = nil,
-         errorHandler: NetworkErrorHandler? = nil) {
+         errorHandler: NetworkErrorHandler? = nil,
+         needsAuthentication: Bool = true) {
+        self.needsAuthentication = needsAuthentication
+        
         super.init(configuration: configuration ?? AuthenticatedCall.defaultConfiguration,
                    httpMethod: httpMethod.rawValue,
                    httpHeaders: httpHeaders,
@@ -64,10 +67,6 @@ public class AuthenticatedCall: JsonNetworkCall {
                    stubHolder: stubHolder)
         
         customErrorHandler = errorHandler
-        
-        debugHandler = DebugOutputHandler(httpMethod: httpMethod, url: urlString(endpoint))
-        debugHandler?.observe(call: self)
-        
         setupErrorHandler()
     }
     
@@ -85,10 +84,14 @@ public class AuthenticatedCall: JsonNetworkCall {
     public override func fire() {
         if needsAuthentication {
             if NetworkAuthenticationManager.shared.currentUserId == nil {
+                print("User ID is not set in authentication")
                 return
             }
         }
-        debugHandler?.startNetworkCall()
+        debugHandler.httpMethod = httpMethod
+        debugHandler.url = urlString
+        debugHandler.observe(call: self)
+        debugHandler.startNetworkCall()
         super.fire()
     }
     

@@ -49,6 +49,7 @@
 "titles.spells" = "Spells";
 "titles.messages" = "Messages";
 "titles.notifications" = "Notifications";
+"titles.achievements" = "Achievements";
 "stats.no_points_to_allocate" = "0 Points to Allocate";
 "stats.one_point_to_allocate" = "1 Point to Allocate";
 "stats.points_to_allocate" = "%d Point to Allocate";
@@ -341,6 +342,8 @@
 "stable.standard" = "Standard";
 "stable.premium" = "Magic Potion";
 "stable.feed" = "Feed";
+"stable.color" = "Color";
+"stable.type" = "Type";
 "equip" = "Equip";
 "unequip" = "Unequip";
 "equipment.equipment" = "Equipment";
@@ -738,7 +741,7 @@
 "shops.other_class_disclaimer" = "You can only purchase gear for your current class";
 "shops.purchased_all_gear" = "You already have all your class equipment! More will be released during the Grand Galas, near the solstices and equinoxes.";
 "purchased" = "You purchased %@";
-"buy_reward" = "You bought '%@' for %f gold";
+"buy_reward" = "You bought '%@' for %@ gold";
 "notifications.unallocated_stat_points" = "You have **%d unallocated Stat Points**";
 "notifications.new_bailey" = "New Bailey Update!";
 "notifications.new_mystery_item" = "You have new **Mystery Items**";
@@ -759,3 +762,8 @@
 "empty.rewards.description" = "Rewards are a great way to use Habitica and complete your tasks. Try adding a few today!";
 "empty.notifications.title" = "You're all caught up!";
 "empty.notifications.description" = "The notification fairies give you a raucous round of applause! Well done!";
+"achievements.basic" = "Basic Achievements";
+"achievements.seasonal" = "Seasonal Achievements";
+"achievements.special" = "Special Achievements";
+"achievements.quests" = "Quests completed";
+"organize_by" = "Organize By";

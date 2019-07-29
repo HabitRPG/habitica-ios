@@ -45,26 +45,29 @@ public class APIChatMessage: ChatMessageProtocol, Codable {
     }
     
     public required init(from decoder: Decoder) throws {
-        let messageContainer = try decoder.container(keyedBy: ContainerCodingKeys.self)
-        let values = try messageContainer.contains(.message) ? messageContainer.nestedContainer(keyedBy: CodingKeys.self, forKey: .message) : decoder.container(keyedBy: CodingKeys.self)
+        let messageContainer = try! decoder.container(keyedBy: ContainerCodingKeys.self)
+        let values = try! messageContainer.contains(.message) ? messageContainer.nestedContainer(keyedBy: CodingKeys.self, forKey: .message) : decoder.container(keyedBy: CodingKeys.self)
         id = try values.decode(String.self, forKey: .id)
-        userID = try values.decode(String.self, forKey: .userID)
-        text = try values.decode(String.self, forKey: .text)
-        let timeStampNumber = try values.decode(Double.self, forKey: .timestamp)
-        timestamp = Date(timeIntervalSince1970: timeStampNumber/1000)
-
-        displayName = try values.decode(String.self, forKey: .displayName)
-        username = try values.decode(String.self, forKey: .username)
+        userID = try? values.decode(String.self, forKey: .userID)
+        text = try? values.decode(String.self, forKey: .text)
+        let timeStampNumber = try? values.decode(Double.self, forKey: .timestamp)
+        if let number = timeStampNumber {
+            timestamp = Date(timeIntervalSince1970: number/1000)
+        } else {
+            timestamp = try? values.decode(Date.self, forKey: .timestamp)
+        }
+        displayName = try? values.decode(String.self, forKey: .displayName)
+        username = try? values.decode(String.self, forKey: .username)
         flagCount = try values.decode(Int.self, forKey: .flagCount)
-        contributor = (try values.decode(APIContributor.self, forKey: .contributor))
+        contributor = (try? values.decode(APIContributor.self, forKey: .contributor))
         if values.contains(.userStyles) {
-            userStyles = try values.decode(APIUserStyle.self, forKey: .userStyles)
+            userStyles = try? values.decode(APIUserStyle.self, forKey: .userStyles)
         }
         if values.contains(.likes) {
-            likes = APIChatMessageReaction.fromList(try values.decode([String: Bool].self, forKey: .likes))
+            likes = APIChatMessageReaction.fromList(try? values.decode([String: Bool].self, forKey: .likes))
         }
         if values.contains(.flags) {
-            flags = APIChatMessageReaction.fromList(try values.decode([String: Bool].self, forKey: .flags))
+            flags = APIChatMessageReaction.fromList(try? values.decode([String: Bool].self, forKey: .flags))
         }
     }
     

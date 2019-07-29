@@ -16,7 +16,7 @@ public protocol SpecialItemProtocol: ItemProtocol {
 }
 
 public extension SpecialItemProtocol {
-    public var imageName: String {
+    var imageName: String {
         return "\(key ?? "")"
     }
 }

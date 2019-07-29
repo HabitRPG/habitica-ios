@@ -15,7 +15,7 @@ public protocol HatchingPotionProtocol: ItemProtocol {
 }
 
 public extension HatchingPotionProtocol {
-    public var imageName: String {
+    var imageName: String {
         return "Pet_HatchingPotion_\(key ?? "")"
     }
 }

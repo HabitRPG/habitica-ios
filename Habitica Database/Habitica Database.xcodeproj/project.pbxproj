@@ -47,6 +47,7 @@
 		292F9660206E307800804151 /* RealmChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292F965F206E307800804151 /* RealmChatMessage.swift */; };
 		292F967820722BB300804151 /* RealmChatMessageReaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292F967720722BB300804151 /* RealmChatMessageReaction.swift */; };
 		292F967A20722C4B00804151 /* RealmUserStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292F967920722C4B00804151 /* RealmUserStyle.swift */; };
+		2931150A22D7473600E4A9E3 /* RealmAchievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2931150922D7473600E4A9E3 /* RealmAchievement.swift */; };
 		29323E1D2050537700AC6D6F /* UserLocalRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E1C2050537700AC6D6F /* UserLocalRepository.swift */; };
 		29323E312051FA8000AC6D6F /* RealmUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E302051FA8000AC6D6F /* RealmUser.swift */; };
 		29323E332051FA8700AC6D6F /* RealmStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E322051FA8700AC6D6F /* RealmStats.swift */; };
@@ -149,6 +150,7 @@
 		292F965F206E307800804151 /* RealmChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmChatMessage.swift; sourceTree = "<group>"; };
 		292F967720722BB300804151 /* RealmChatMessageReaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmChatMessageReaction.swift; sourceTree = "<group>"; };
 		292F967920722C4B00804151 /* RealmUserStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmUserStyle.swift; sourceTree = "<group>"; };
+		2931150922D7473600E4A9E3 /* RealmAchievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmAchievement.swift; sourceTree = "<group>"; };
 		29323E1C2050537700AC6D6F /* UserLocalRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocalRepository.swift; sourceTree = "<group>"; };
 		29323E302051FA8000AC6D6F /* RealmUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmUser.swift; sourceTree = "<group>"; };
 		29323E322051FA8700AC6D6F /* RealmStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmStats.swift; sourceTree = "<group>"; };
@@ -327,6 +329,7 @@
 				29323E572052F8BC00AC6D6F /* RealmUserItems.swift */,
 				291E95B2209887BF006EE585 /* RealmUserParty.swift */,
 				29DBFF0C20D15B0500DF9CF2 /* RealmUserNewMessages.swift */,
+				2931150922D7473600E4A9E3 /* RealmAchievement.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -659,6 +662,7 @@
 				2956111E2057C9B100D9711A /* RealmHatchingPotion.swift in Sources */,
 				290B62562073D99E007287C4 /* RealmInbox.swift in Sources */,
 				292726B220B7043C009DD08A /* RealmChallengeMembership.swift in Sources */,
+				2931150A22D7473600E4A9E3 /* RealmAchievement.swift in Sources */,
 				290C3048206D47A30066AF5B /* SocialLocalRepository.swift in Sources */,
 				291448A6208A3C7100F3A6B5 /* CustomizationLocalRepository.swift in Sources */,
 				2902798B20583479006DACB9 /* RealmQuestState.swift in Sources */,
@@ -832,7 +836,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FBC613B665533F6D81509FD4 /* Pods-Habitica Database.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -858,7 +862,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1A9C077122E72759532BE95C /* Pods-Habitica Database.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;

@@ -119,6 +119,9 @@ class PartyDetailViewController: GroupDetailViewController {
             }
         }
         for member in members {
+            if !member.isValid {
+                continue
+            }
             let view = MemberListView()
             view.configure(member: member, isLeader: member.id == groupProperty.value?.leaderID)
             view.viewTapped = {[weak self] in

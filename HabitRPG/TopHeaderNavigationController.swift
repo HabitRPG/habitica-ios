@@ -26,7 +26,8 @@ protocol TopHeaderNavigationControllerProtocol: class {
     @objc var shouldHideTopHeader: Bool { get set }
     @objc var contentInset: CGFloat { get }
     @objc var contentOffset: CGFloat { get }
-    
+    @objc weak var currentHeaderCoordinator: TopHeaderCoordinator? { get set }
+
     @objc
     func setShouldHideTopHeader(_ shouldHide: Bool, animated: Bool)
     @objc
@@ -58,6 +59,7 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
     private let upperBackgroundView = UIView()
     
     private var scrollableView: UIScrollView?
+    @objc weak var currentHeaderCoordinator: TopHeaderCoordinator?
     private var gestureRecognizer: UIPanGestureRecognizer?
     private var headerYPosition: CGFloat = 0
     
@@ -107,7 +109,7 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
     }
     
     var topHeaderHeight: CGFloat {
-        if let header = self.alternativeHeaderView {
+        if self.alternativeHeaderView != nil {
             return alternativeHeaderHeight
         } else {
             return defaultHeaderHeight
@@ -205,17 +207,29 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         let parentFrame = view.frame
+        let topHeaderHeight = self.topHeaderHeight
         backgroundView.frame = CGRect(x: 0.0, y: headerYPosition, width: parentFrame.size.width, height: topHeaderHeight + 2)
         upperBackgroundView.frame = CGRect(x: 0, y: 0, width: parentFrame.size.width, height: bgViewOffset)
         bottomBorderView.frame = CGRect(x: 0, y: backgroundView.frame.size.height - 2, width: parentFrame.size.width, height: 2)
         bottomBorderView.frame = CGRect(x: 0, y: backgroundView.frame.size.height - 2, width: parentFrame.size.width, height: 2)
         headerView?.frame = CGRect(x: 0, y: 0, width: parentFrame.size.width, height: defaultHeaderHeight)
         if let header = alternativeHeaderView {
-            let intrinsicHeight = header.intrinsicContentSize.height
-            if intrinsicHeight <= 0 {
+            if topHeaderHeight <= 0 {
                 header.frame = CGRect(x: 0, y: 0, width: parentFrame.size.width, height: header.frame.size.height)
             } else {
-                header.frame = CGRect(x: 0, y: 0, width: parentFrame.size.width, height: intrinsicHeight)
+                header.frame = CGRect(x: 0, y: 0, width: parentFrame.size.width, height: topHeaderHeight)
+            }
+        }
+        
+        if let scrollView = currentHeaderCoordinator?.scrollView {
+            if scrollView.contentInset.top != contentInset {
+                let existingInsets = scrollView.contentInset
+                var insets = UIEdgeInsets(top: contentInset, left: 0, bottom: 0, right: 0)
+                if existingInsets.bottom != 0 {
+                    insets = UIEdgeInsets(top: contentInset + (existingInsets.top - contentInset), left: 0, bottom: existingInsets.bottom, right: 0)
+                }
+                scrollView.contentInset = insets
+                scrollView.scrollIndicatorInsets = insets
             }
         }
     }
@@ -342,7 +356,7 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
             header.alpha = 1
             header.layoutSubviews()
         }
-        self.viewWillLayoutSubviews()
+        viewWillLayoutSubviews()
     }
     
     @objc
@@ -356,6 +370,6 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
             self.backgroundView.addSubview(header)
             self.bottomBorderView.isHidden = false
         }
-        self.viewWillLayoutSubviews()
+        viewWillLayoutSubviews()
     }
 }

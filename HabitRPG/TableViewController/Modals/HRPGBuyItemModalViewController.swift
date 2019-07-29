@@ -297,8 +297,6 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         }
         inventoryRepository.togglePinnedItem(pinType: pinType, path: path).observeValues {[weak self] (_) in
             self?.isPinned = !(self?.isPinned ?? false)
-            if let shopViewController = self?.shopViewController {
-            }
         }
     }
     

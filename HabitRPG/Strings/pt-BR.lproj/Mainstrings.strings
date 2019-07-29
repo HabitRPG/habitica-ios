@@ -983,7 +983,7 @@
 "invalid_recipient_title" = "Nome de Usuário Habitica Inválido";
 "filter_by_tags" = "Filtrar por tags";
 "purchased" = "Você comprou %@";
-"buy_reward" = "Você comprou '%@' para %f gold";
+"buy_reward" = "Você comprou '%@' para %@ gold";
 "titles.messages" = "Mensagens";
 "titles.notifications" = "Notificações";
 "settings.language" = "Idioma";

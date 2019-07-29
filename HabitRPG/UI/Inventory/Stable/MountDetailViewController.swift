@@ -11,7 +11,8 @@ import Habitica_Models
 
 class MountDetailViewController: StableDetailViewController<MountDetailDataSource> {
     
-    var eggType: String = ""
+    var searchEggs = true
+    var searchKey: String = ""
     var mountType: String = "drop"
     
     private var inventoryRepository = InventoryRepository()
@@ -21,7 +22,7 @@ class MountDetailViewController: StableDetailViewController<MountDetailDataSourc
     private var user: UserProtocol?
     
     override func viewDidLoad() {
-        datasource = MountDetailDataSource(eggType: eggType)
+        datasource = MountDetailDataSource(searchEggs: searchEggs, searchKey: searchKey)
         if mountType == "drop" || mountType == "premium" {
             datasource?.types = ["drop", "premium"]
         } else {
@@ -61,6 +62,6 @@ class MountDetailViewController: StableDetailViewController<MountDetailDataSourc
         } else {
             actionSheet.setSourceInCenter(view)
         }
-        actionSheet.show()
+        present(actionSheet, animated: true, completion: nil)
     }
 }

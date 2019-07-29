@@ -56,7 +56,7 @@ target 'Habitica' do
   pod 'Firebase/Performance'
   pod 'Firebase/RemoteConfig'
   pod 'Firebase/Messaging'
-  
+
   reactive_pods
 
   pod 'SwiftyStoreKit'
@@ -81,10 +81,18 @@ target 'Habitica' do
   pod 'OHHTTPStubs/Swift'
   pod 'Prelude'
 
+  pod 'Magnetic'
+  
   target 'HabiticaTests' do
     inherit! :search_paths
     test_pods
   end
+
+  target 'Habitica Intents' do
+    pod 'KeychainAccess'
+    inherit! :search_paths
+  end
+
 end
 
 target 'Habitica Snapshots' do

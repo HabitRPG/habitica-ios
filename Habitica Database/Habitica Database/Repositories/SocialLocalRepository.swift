@@ -121,7 +121,7 @@ public class SocialLocalRepository: BaseLocalRepository {
             if membershipsToRemove.isEmpty == false {
                 realm.delete(membershipsToRemove)
             }
-            realm.add(newMemberships, update: true)
+            realm.add(newMemberships, update: .modified)
         }
     }
     
@@ -139,7 +139,7 @@ public class SocialLocalRepository: BaseLocalRepository {
     public func save(challengeID: String?, tasks: [TaskProtocol], order: [String: [String]]) {
         let tags = getRealm()?.objects(RealmTag.self)
         save(objects: tasks.map { (task) in
-            task.order = order[(task.type ?? "")+"s"]?.index(of: task.id ?? "") ?? 0
+            task.order = order[(task.type ?? "")+"s"]?.firstIndex(of: task.id ?? "") ?? 0
             if let realmTask = task as? RealmTask {
                 return realmTask
             }
@@ -161,14 +161,14 @@ public class SocialLocalRepository: BaseLocalRepository {
     public func joinGroup(userID: String, groupID: String, group: GroupProtocol?) {
         let realm = getRealm()
         updateCall { realm in
-            realm.add(RealmGroupMembership(userID: userID, groupID: groupID), update: true)
+            realm.add(RealmGroupMembership(userID: userID, groupID: groupID), update: .modified)
         }
         if group?.type == "party", let user = realm?.object(ofType: RealmUser.self, forPrimaryKey: userID) {
             let userParty = RealmUserParty()
             userParty.id = groupID
             userParty.userID = userID
             updateCall { realm in
-                realm.add(userParty, update: true)
+                realm.add(userParty, update: .modified)
                 user.party = userParty
             }
         }
@@ -180,7 +180,7 @@ public class SocialLocalRepository: BaseLocalRepository {
             updateCall { realm in
                 realm.delete(membership)
                 if let group = group {
-                    realm.add(RealmGroup(group), update: true)
+                    realm.add(RealmGroup(group), update: .modified)
                 }
             }
         }
@@ -216,7 +216,7 @@ public class SocialLocalRepository: BaseLocalRepository {
     
     public func joinChallenge(userID: String, challengeID: String, challenge: ChallengeProtocol?) {
         updateCall { realm in
-            realm.add(RealmChallengeMembership(userID: userID, challengeID: challengeID), update: true)
+            realm.add(RealmChallengeMembership(userID: userID, challengeID: challengeID), update: .modified)
         }
     }
     
@@ -226,7 +226,7 @@ public class SocialLocalRepository: BaseLocalRepository {
             updateCall { realm in
                 realm.delete(membership)
                 if let challenge = challenge {
-                    realm.add(RealmChallenge(challenge), update: true)
+                    realm.add(RealmChallenge(challenge), update: .modified)
                 }
             }
         }

@@ -58,6 +58,13 @@ class TaskFormViewController: FormViewController {
             modalContainerViewController?.screenDimView.backgroundColor = taskTintColor.darker(by: 50).withAlphaComponent(0.6)
         }
     }
+    
+    let dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .full
+        dateFormatter.timeStyle = .none
+        return dateFormatter
+    }()
     var lightTaskTintColor: UIColor = UIColor.purple400()
     
     var taskId: String? {
@@ -356,11 +363,12 @@ class TaskFormViewController: FormViewController {
     
     private func setupToDoScheduling() {
         form +++ Section(L10n.Tasks.Form.scheduling)
-            <<< DateRow(TaskFormTags.dueDate) { row in
+            <<< DateRow(TaskFormTags.dueDate) {[weak self] row in
                 row.title = L10n.Tasks.Form.dueDate
+                row.dateFormatter = self?.dateFormatter
                 row.cellSetup({ (cell, _) in
-                    cell.tintColor = self.lightTaskTintColor
-                    cell.detailTextLabel?.textColor = self.lightTaskTintColor
+                    cell.tintColor = self?.lightTaskTintColor
+                    cell.detailTextLabel?.textColor = self?.lightTaskTintColor
                 }).onCellSelection({ (_, row) in
                     if row.value == nil {
                         row.value = Date()
@@ -435,7 +443,7 @@ class TaskFormViewController: FormViewController {
     }
     
     private func updateDailySchedulingFooter() {
-        let values = form.values()
+        /*let values = form.values()
         let weekdays = values[TaskFormTags.repeatWeekdays] as? WeekdaysValue
         let summary = repeatablesSummaryInteractor.repeatablesSummary(frequency: values[TaskFormTags.dailyRepeat] as? String,
                                                                       everyX: values[TaskFormTags.dailyEvery] as? Int,
@@ -449,7 +457,7 @@ class TaskFormViewController: FormViewController {
                                                                       startDate: values[TaskFormTags.startDate] as? Date,
                                                                       daysOfMonth: [],
                                                                       weeksOfMonth: [])
-        /*schedulingSection?.footer = HeaderFooterView(title: summary)
+        schedulingSection?.footer = HeaderFooterView(title: summary)
         tableView.beginUpdates()
         tableView.reloadSections(IndexSet(integer: schedulingSection?.index ?? 2), with: .automatic)
         tableView.endUpdates()*/

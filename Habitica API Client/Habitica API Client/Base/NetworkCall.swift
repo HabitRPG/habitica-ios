@@ -17,10 +17,7 @@ open class NetworkCall {
     public let postData: Data?
     public let httpHeaders: [String: String]?
     
-    open var requestFromEndpoint: (String) -> NSMutableURLRequest?
-    open var configuredRequest: (NSMutableURLRequest?) -> NSMutableURLRequest? = { request in request }
-    open var url: (String) -> URL?
-    open var urlString: (String) -> String
+    open var urlString: String
     
     public let dataTaskSignal: Signal<URLSessionDataTask, Never>
     
@@ -50,8 +47,7 @@ open class NetworkCall {
         self.endpoint = endpoint
         self.postData = postData
         
-        self.urlString = { endpoint in return (configuration |> NetworkCall.configurationToBaseUrlString) + endpoint }
-        self.url = URL.init(string:) <<< urlString
+        urlString = NetworkCall.configurationToBaseUrlString(configuration) + endpoint
         
         dataTaskSignal = dataTaskProperty.signal.skipNil()
         responseSignal = responseProperty.signal.skipNil()
@@ -59,16 +55,13 @@ open class NetworkCall {
         dataSignal = dataProperty.signal
         
         errorDataSignal = errorDataProperty.signal.skipNil()
-        if let handler = networkErrorHandler {
+        if networkErrorHandler != nil {
             errorSignal = errorProperty.signal.skipNil()
             serverErrorSignal = httpResponseSignal.filter({ $0.statusCode > 300 }).map({ NSError(domain: "Server", code: $0.statusCode, userInfo: ["url" : $0.url?.absoluteString as Any]) })
         } else {
             errorSignal = errorProperty.signal.skipNil()
             serverErrorSignal = httpResponseSignal.filter({ $0.statusCode > 300 }).map({ NSError(domain: "Server", code: $0.statusCode, userInfo: ["url" : $0.url?.absoluteString as Any]) })
         }
-        
-        self.requestFromEndpoint = (self.url <^> NSMutableURLRequest.init(url:))
-        self.configuredRequest = applyHeaders >>> applyHttpMethod >>> applyBody
         
         dataTaskSignal.observeValues { task in
             task.resume()
@@ -78,7 +71,7 @@ open class NetworkCall {
     
     open func fire() {
         let session = URLSession(configuration: configuration.urlConfiguration, delegate: nil, delegateQueue: OperationQueue.main)
-        if let request = self.mutableRequest() {
+        if let request = mutableRequest() {
             dataTaskProperty.value = session.dataTask(with: request as URLRequest) { (data, response, error) in
                 self.errorProperty.value = error as NSError?
                 self.responseProperty.value = response
@@ -95,7 +88,14 @@ open class NetworkCall {
     }
     
     open func mutableRequest() -> NSMutableURLRequest? {
-        return endpoint |> (requestFromEndpoint >>> configuredRequest)
+        var request: NSMutableURLRequest?
+        if let url = URL(string: urlString) {
+            request = NSMutableURLRequest(url: url)
+        }
+        request = applyHeaders(request)
+        request = applyHttpMethod(request)
+        request = applyBody(request)
+        return request
     }
     
     public static func configurationToBaseUrlString(_ configuration: ServerConfigurationProtocol) -> String {
@@ -107,8 +107,8 @@ open class NetworkCall {
         }
     }
     
-    open func applyHeaders(_ request: NSURLRequest?) -> NSMutableURLRequest? {
-        if let mutableRequest = request?.mutableCopy() as? NSMutableURLRequest {
+    open func applyHeaders(_ request: NSMutableURLRequest?) -> NSMutableURLRequest? {
+        if let mutableRequest = request {
             if let headers = httpHeaders {
                 for key in headers.keys {
                     if let header = headers[key] {
@@ -121,16 +121,16 @@ open class NetworkCall {
         return nil
     }
     
-    open func applyHttpMethod(_ request: NSURLRequest?) -> NSMutableURLRequest? {
-        if let mutableRequest = request?.mutableCopy() as? NSMutableURLRequest {
+    open func applyHttpMethod(_ request: NSMutableURLRequest?) -> NSMutableURLRequest? {
+        if let mutableRequest = request {
             mutableRequest.httpMethod = httpMethod
             return mutableRequest
         }
         return nil
     }
     
-    open func applyBody(_ request: NSURLRequest?) -> NSMutableURLRequest? {
-        if let mutableRequest = request?.mutableCopy() as? NSMutableURLRequest {
+    open func applyBody(_ request: NSMutableURLRequest?) -> NSMutableURLRequest? {
+        if let mutableRequest = request {
             mutableRequest.httpBody = postData
             return mutableRequest
         }

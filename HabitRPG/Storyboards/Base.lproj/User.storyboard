@@ -1109,7 +1109,51 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IXv-bk-ISX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-356" y="-4"/>
+            <point key="canvasLocation" x="-583" y="-5"/>
+        </scene>
+        <!--Achievements Collection View Controller-->
+        <scene sceneID="2VT-vv-1yM">
+            <objects>
+                <collectionViewController storyboardIdentifier="AchievementsCollectionViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mIM-SK-fyi" customClass="AchievementsCollectionViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="ebS-UO-aHg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="Fz1-hr-Rdc">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="eTP-75-hsc">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </view>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="mIM-SK-fyi" id="EZ0-na-Uh1"/>
+                            <outlet property="delegate" destination="mIM-SK-fyi" id="oOp-km-ywW"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" id="hM5-Cp-oie">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="c4a-at-ecL">
+                            <connections>
+                                <action selector="viewSwitcherTapped:" destination="mIM-SK-fyi" id="2lt-RU-mEb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="viewSwitcherButton" destination="c4a-at-ecL" id="eZM-e7-deT"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qqe-SI-eum" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="144" y="-5"/>
         </scene>
     </scenes>
     <resources>

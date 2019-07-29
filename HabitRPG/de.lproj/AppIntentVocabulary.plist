@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IntentPhrases</key>
+	<array>
+		<dict>
+			<key>IntentName</key>
+			<string>INAddTasksIntent</string>
+			<key>IntentExamples</key>
+			<array>
+				<string>Add Buy Groceries to my To-Dos in Habitica</string>
+				<string>Add Get up early to my dailies in Habitica</string>
+			</array>
+		</dict>
+		<dict>
+			<key>IntentName</key>
+			<string>INSearchForNotebookItemsIntent</string>
+			<key>IntentExamples</key>
+			<array>
+				<string>What are my To-Dos in Habitica</string>
+			</array>
+		</dict>
+		<dict>
+			<key>IntentName</key>
+			<string>INSetTaskAttributeIntent</string>
+			<key>IntentExamples</key>
+			<array>
+				<string></string>
+			</array>
+		</dict>
+	</array>
+</dict>
+</plist>

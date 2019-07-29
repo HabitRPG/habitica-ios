@@ -13,7 +13,6 @@ import ReactiveSwift
 public class LocalLoginCall: ResponseObjectCall<LoginResponseProtocol, APILoginResponse> {
     public init(username: String, password: String, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "user.json")) {
         let json = try? JSONSerialization.data(withJSONObject: ["username": username, "password": password], options: .prettyPrinted)
-        super.init(httpMethod: .POST, endpoint: "user/auth/local/login", postData: json, stubHolder: stubHolder)
-        needsAuthentication = false
+        super.init(httpMethod: .POST, endpoint: "user/auth/local/login", postData: json, stubHolder: stubHolder, needsAuthentication: false)
     }
 }

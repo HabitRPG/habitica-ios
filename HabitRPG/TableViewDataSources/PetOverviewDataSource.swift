@@ -17,8 +17,12 @@ class PetOverviewDataSource: StableOverviewDataSource<PetProtocol> {
         sections.append(ItemSection<StableOverviewItem>(title: L10n.Stable.questPets))
         sections.append(ItemSection<StableOverviewItem>(title: L10n.Stable.wackyPets))
         sections.append(ItemSection<StableOverviewItem>(title: L10n.Stable.specialPets))
-        
-        disposable.inner.add(stableRepository.getOwnedPets()
+        fetchData()
+    }
+    
+    override func fetchData() {
+        super.fetchData()
+        fetchDisposable = stableRepository.getOwnedPets()
             .map({ data -> [String] in
                 return data.value.map({ (ownedPet) -> String in
                     return ownedPet.key ?? ""
@@ -26,7 +30,7 @@ class PetOverviewDataSource: StableOverviewDataSource<PetProtocol> {
                     return !key.isEmpty
                 })
             })
-            .combineLatest(with: self.stableRepository.getPets())
+            .combineLatest(with: self.stableRepository.getPets(sortKey: (organizeByColor ? "potion" : "egg")))
             .map({[weak self] (ownedPets, pets) in
                 return self?.mapData(owned: ownedPets, animals: pets.value) ?? [:]
             })
@@ -40,6 +44,6 @@ class PetOverviewDataSource: StableOverviewDataSource<PetProtocol> {
                 self?.sections[3].items.removeAll()
                 self?.sections[3].items.append(contentsOf: overviewItems["special"] ?? [])
                 self?.collectionView?.reloadData()
-            }).start())
+            }).start()
     }
 }

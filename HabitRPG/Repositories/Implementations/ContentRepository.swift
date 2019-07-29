@@ -15,9 +15,7 @@ import ReactiveSwift
 class ContentRepository: BaseRepository<ContentLocalRepository> {
     
     func retrieveContent() -> Signal<ContentProtocol?, Never> {
-        let call = RetrieveContentCall(language: LanguageHandler.getAppLanguage().code)
-        
-        return call.objectSignal.on(value: {[weak self] content in
+        return RetrieveContentCall(language: LanguageHandler.getAppLanguage().code).objectSignal.on(value: {[weak self] content in
             if let content = content {
                 self?.localRepository.save(content)
             }
@@ -25,9 +23,7 @@ class ContentRepository: BaseRepository<ContentLocalRepository> {
     }
     
     func retrieveWorldState() -> Signal<WorldStateProtocol?, Never> {
-        let call = RetrieveWorldStateCall()
-        
-        return call.objectSignal.on(value: {[weak self] worldState in
+        return RetrieveWorldStateCall().objectSignal.on(value: {[weak self] worldState in
             if let worldState = worldState {
                 self?.localRepository.save(worldState)
             }
