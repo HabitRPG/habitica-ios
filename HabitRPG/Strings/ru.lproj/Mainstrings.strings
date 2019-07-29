@@ -839,7 +839,7 @@
 "tasks.team" = "Команда";
 "tasks.due_today" = "Истекает сегодня";
 "tasks.due_in_x_days" = "Через %d день";
-"tasks.every_x" = "каждый %@";
+"tasks.every_x" = "каждый %d%@";
 "tasks.repeats.repeats_every_on" = "Повторять %@ по %@";
 "tasks.repeats.repeats_every" = "Повторять %@";
 "tasks.repeats.monthly_the" = "%@";
@@ -970,3 +970,8 @@
 "gift_one_get_one_description" = "Пока эта акция действует,вы получите соответствующую подписку автоматически после отправления вашего подарка.";
 "gems_support_developers" = "Покупка самоцветов поддерживает разработчиков\nи помогает Habitica продолжать работать";
 "invalid_recipient_message" = "Вы должны указать действительное имя пользователя получателя в Habitica.";
+"titles.messages" = "Сообщения";
+"titles.notifications" = "Уведомления";
+"settings.language" = "Язык";
+"guilds.joined_guild" = "Вы присоединились к гильдии";
+"guilds.left_guild" = "Вы покинули гильдию";
