@@ -129,6 +129,7 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
         }
         let configuration = URLSessionConfiguration.default
         AuthenticatedCall.defaultConfiguration.urlConfiguration = configuration
+        AuthenticatedCall.indicatorController = IOSNetworkIndicatorController()
     }
     
     func updateServer() {

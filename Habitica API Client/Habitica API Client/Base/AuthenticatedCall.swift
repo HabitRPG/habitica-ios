@@ -32,6 +32,7 @@ public class AuthenticatedCall: JsonNetworkCall {
     public static var errorHandler: NetworkErrorHandler?
     public static var defaultConfiguration = HabiticaServerConfig.current
     public static var notificationListener: (([NotificationProtocol]?) -> Void)?
+    public static var indicatorController: NetworkIndicatorController?
 
     private var debugHandler = DebugOutputHandler()
     var customErrorHandler: NetworkErrorHandler?
@@ -92,7 +93,12 @@ public class AuthenticatedCall: JsonNetworkCall {
         debugHandler.url = urlString
         debugHandler.observe(call: self)
         debugHandler.startNetworkCall()
+        AuthenticatedCall.indicatorController?.beginNetworking()
         super.fire()
+    }
+    
+    public override func endCall() {
+        AuthenticatedCall.indicatorController?.endNetworking()
     }
     
     func setupErrorHandler() {

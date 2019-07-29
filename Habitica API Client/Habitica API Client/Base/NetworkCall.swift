@@ -83,8 +83,13 @@ open class NetworkCall {
                     self.dataProperty.value = data
                 }
                 session.finishTasksAndInvalidate()
+                self.endCall()
             }
         }
+    }
+    
+    open func endCall() {
+        
     }
     
     open func mutableRequest() -> NSMutableURLRequest? {
