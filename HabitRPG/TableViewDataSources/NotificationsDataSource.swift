@@ -159,6 +159,9 @@ class NotificationsDataSource: BaseReactiveTableViewDataSource<NotificationProto
                 if notif.isParty {
                     url = "/party"
                 } else {
+                    if !notif.isPublicGuild {
+                        return
+                    }
                     url = "/groups/guild/\(notif.groupID ?? "")"
                 }
             }
