@@ -32,8 +32,9 @@ public class AuthenticatedCall: JsonNetworkCall {
     public static var errorHandler: NetworkErrorHandler?
     public static var defaultConfiguration = HabiticaServerConfig.current
     public static var notificationListener: (([NotificationProtocol]?) -> Void)?
+    public static var indicatorController: NetworkIndicatorController?
 
-    private var debugHandler: DebugOutputHandler?
+    private var debugHandler = DebugOutputHandler()
     var customErrorHandler: NetworkErrorHandler?
     var needsAuthentication = true
     
@@ -58,6 +59,7 @@ public class AuthenticatedCall: JsonNetworkCall {
          errorHandler: NetworkErrorHandler? = nil,
          needsAuthentication: Bool = true) {
         self.needsAuthentication = needsAuthentication
+        
         super.init(configuration: configuration ?? AuthenticatedCall.defaultConfiguration,
                    httpMethod: httpMethod.rawValue,
                    httpHeaders: httpHeaders,
@@ -66,10 +68,6 @@ public class AuthenticatedCall: JsonNetworkCall {
                    stubHolder: stubHolder)
         
         customErrorHandler = errorHandler
-        
-        debugHandler = DebugOutputHandler(httpMethod: httpMethod, url: urlString)
-        debugHandler?.observe(call: self)
-        
         setupErrorHandler()
     }
     
@@ -91,8 +89,16 @@ public class AuthenticatedCall: JsonNetworkCall {
                 return
             }
         }
-        debugHandler?.startNetworkCall()
+        debugHandler.httpMethod = httpMethod
+        debugHandler.url = urlString
+        debugHandler.observe(call: self)
+        debugHandler.startNetworkCall()
+        AuthenticatedCall.indicatorController?.beginNetworking()
         super.fire()
+    }
+    
+    public override func endCall() {
+        AuthenticatedCall.indicatorController?.endNetworking()
     }
     
     func setupErrorHandler() {
