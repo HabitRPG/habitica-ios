@@ -18,6 +18,7 @@ class APIPushNotifications: PushNotificationsProtocol, Decodable {
     var hasNewPM: Bool = false
     var questStarted: Bool = false
     var wonChallenge: Bool = false
+    var majorUpdates: Bool = false
     var unsubscribeFromAll: Bool = false
     
     enum CodingKeys: String, CodingKey {
@@ -29,6 +30,7 @@ class APIPushNotifications: PushNotificationsProtocol, Decodable {
         case hasNewPM = "newPM"
         case questStarted
         case wonChallenge
+        case majorUpdates
         case unsubscribeFromAll
     }
 }
