@@ -19,5 +19,6 @@ public protocol PushNotificationsProtocol {
     var hasNewPM: Bool { get set }
     var questStarted: Bool { get set }
     var wonChallenge: Bool { get set }
+    var majorUpdates: Bool { get set }
     var unsubscribeFromAll: Bool { get set }
 }

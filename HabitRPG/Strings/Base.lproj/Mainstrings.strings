@@ -251,7 +251,6 @@
 "settings.custom_day_start" = "Custom Day Start";
 "settings.social" = "Social";
 "settings.disable_all_notifications" = "Disable all Push Notifications";
-"settings.push_notifications" = "Push Notifications";
 "settings.disable_pm" = "Disable Private Messages";
 "settings.maintenance" = "Maintenance";
 "settings.clear_cache" = "Clear Cache";
@@ -290,6 +289,17 @@
 "settings.searchable_private_spaces" = "Only Private Spaces";
 "settings.mentions" = "Mentions";
 "settings.language" = "Language";
+"settings.push_notifications.title" = "Push Notifications";
+"settings.push_notifications.received_pm" = "Received private message";
+"settings.push_notifications.won_challenge" = "You won a challenge!";
+"settings.push_notifications.gifted_gems" = "Gifted Gems";
+"settings.push_notifications.gifted_subscription" = "Gifted Subscription";
+"settings.push_notifications.invited_party" = "Invited to Party";
+"settings.push_notifications.invited_guid" = "Invited to Guild";
+//"settings.push_notifications.banned_group" = "Kicked from Group";
+"settings.push_notifications.quest_begun" = "Your quest has begun";
+"settings.push_notifications.invited_quest" = "Invited to Quest";
+"settings.push_notifications.important_announcement" = "Important Announcements";
 "theme.default_theme" = "Default";
 "theme.blue" = "Blue";
 "theme.teal" = "Teal";

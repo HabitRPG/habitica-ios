@@ -20,6 +20,7 @@ class RealmPushNotifications: Object, PushNotificationsProtocol {
     @objc dynamic var hasNewPM: Bool = false
     @objc dynamic var questStarted: Bool = false
     @objc dynamic var wonChallenge: Bool = false
+    @objc dynamic var majorUpdates: Bool = false
     @objc dynamic var unsubscribeFromAll: Bool = false
     
     override static func primaryKey() -> String {
@@ -37,6 +38,7 @@ class RealmPushNotifications: Object, PushNotificationsProtocol {
         hasNewPM = pnProtocol.hasNewPM
         questStarted = pnProtocol.questStarted
         wonChallenge = pnProtocol.wonChallenge
+        majorUpdates = pnProtocol.majorUpdates
         unsubscribeFromAll = pnProtocol.unsubscribeFromAll
     }
 }

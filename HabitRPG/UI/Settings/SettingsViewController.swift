@@ -19,6 +19,7 @@ enum SettingsTags {
     static let displayNotificationsBadge = "displayNotificationsBadge"
     static let customDayStart = "customDayStart"
     static let disableAllNotifications = "disableAllNotifications"
+    static let pushNotifications = "pushNotifications"
     static let disablePrivateMessages = "disablePrivateMessages"
     static let themeColor = "themeColor"
     static let appIcon = "appIcon"
@@ -291,6 +292,18 @@ enum AppIconName: String {
     }
 }
 
+private let pushNotificationsMapping = [
+    L10n.Settings.PushNotifications.giftedGems: "giftedGems",
+    L10n.Settings.PushNotifications.giftedSubscription: "giftedSubscription",
+    L10n.Settings.PushNotifications.receivedPm: "newPM",
+    L10n.Settings.PushNotifications.wonChallenge: "wonChallenge",
+    L10n.Settings.PushNotifications.invitedQuest: "invitedQuest",
+    L10n.Settings.PushNotifications.invitedParty: "invitedParty",
+    L10n.Settings.PushNotifications.invitedGuid: "invitedGuild",
+    L10n.Settings.PushNotifications.importantAnnouncement: "majorUpdates",
+    L10n.Settings.PushNotifications.questBegun: "questStarted"
+]
+
 class SettingsViewController: FormViewController, Themeable {
     
     private let userRepository = UserRepository()
@@ -299,6 +312,7 @@ class SettingsViewController: FormViewController, Themeable {
     private let configRepository = ConfigRepository()
     
     private var user: UserProtocol?
+    private var isSettingUserData = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -448,7 +462,8 @@ class SettingsViewController: FormViewController, Themeable {
                     cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
                     cell.tintColor = ThemeService.shared.theme.tintColor
                 }
-                }.onChange({ (row) in
+                }.onChange({[weak self] (row) in
+                    if self?.isSettingUserData == true { return }
                     let defaults = UserDefaults()
                     defaults.set(row.value ?? false, forKey: "dailyReminderActive")
                     if let appDelegate = UIApplication.shared.delegate as? HRPGAppDelegate {
@@ -464,7 +479,8 @@ class SettingsViewController: FormViewController, Themeable {
                     cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
                     cell.tintColor = ThemeService.shared.theme.tintColor
                 }
-                }.onChange({ (row) in
+                }.onChange({[weak self] (row) in
+                    if self?.isSettingUserData == true { return }
                     let defaults = UserDefaults()
                     defaults.set(row.value, forKey: "dailyReminderTime")
                     if let appDelegate = UIApplication.shared.delegate as? HRPGAppDelegate {
@@ -478,7 +494,8 @@ class SettingsViewController: FormViewController, Themeable {
                     cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
                     cell.tintColor = ThemeService.shared.theme.tintColor
                 }
-                }.onChange({ (row) in
+                }.onChange({[weak self] (row) in
+                    if self?.isSettingUserData == true { return }
                     let defaults = UserDefaults()
                     defaults.set(row.value ?? false, forKey: "appBadgeActive")
                 })
@@ -490,6 +507,7 @@ class SettingsViewController: FormViewController, Themeable {
                     cell.tintColor = ThemeService.shared.theme.tintColor
                 }
                 }.onCellHighlightChanged({[weak self] (_, row) in
+                    if self?.isSettingUserData == true { return }
                     if let date = row.value {
                         let calendar = Calendar.current
                         let hour = calendar.component(.hour, from: date)
@@ -529,12 +547,36 @@ class SettingsViewController: FormViewController, Themeable {
                     cell.tintColor = ThemeService.shared.theme.tintColor
                 }
                 row.onChange({[weak self] (row) in
+                    if self?.isSettingUserData == true { return }
                     if row.value == self?.user?.preferences?.pushNotifications?.unsubscribeFromAll {
                         return
                     }
                     if let value = row.value {
                         self?.userRepository.updateUser(key: "preferences.pushNotifications.unsubscribeFromAll", value: value).observeCompleted {}
                     }
+                })
+            }
+            <<< MultipleSelectorRow<String>(SettingsTags.pushNotifications) { row in
+                row.title = L10n.Settings.PushNotifications.title
+                row.options = [L10n.Settings.PushNotifications.receivedPm,
+                L10n.Settings.PushNotifications.wonChallenge,
+                L10n.Settings.PushNotifications.giftedGems,
+                L10n.Settings.PushNotifications.giftedSubscription,
+                L10n.Settings.PushNotifications.invitedParty,
+                L10n.Settings.PushNotifications.invitedGuid,
+                L10n.Settings.PushNotifications.invitedQuest,
+                L10n.Settings.PushNotifications.questBegun,
+                L10n.Settings.PushNotifications.importantAnnouncement]
+                row.disabled = Condition.function([SettingsTags.disableAllNotifications], { (form) -> Bool in
+                    return (form.rowBy(tag: SettingsTags.disableAllNotifications) as? SwitchRow)?.value == true
+                })
+                row.onChange({[weak self] (row) in
+                    if self?.isSettingUserData == true { return }
+                    var updateDict = [String: Encodable]()
+                    for (key, value) in pushNotificationsMapping {
+                        updateDict["preferences.pushNotifications.\(value)"] = row.value?.contains(key)
+                    }
+                    self?.userRepository.updateUser(updateDict).observeCompleted {}
                 })
             }
             <<< SwitchRow(SettingsTags.disablePrivateMessages) { row in
@@ -548,6 +590,7 @@ class SettingsViewController: FormViewController, Themeable {
                         return
                     }
                     if let value = row.value {
+                        if self?.isSettingUserData == true { return }
                         self?.userRepository.updateUser(key: "inbox.optOut", value: value).observeCompleted {}
                     }
                 })
@@ -565,6 +608,7 @@ class SettingsViewController: FormViewController, Themeable {
                 let language = LanguageHandler.getAppLanguage()
                 row.value = LabeledFormValue(value: language.rawValue, label: language.name)
                 row.onChange({[weak self] (row) in
+                    if self?.isSettingUserData == true { return }
                     if let value = row.value?.value, let newLanguage = AppLanguage(rawValue: value) {
                         self?.update(language: newLanguage)
                     }
@@ -585,6 +629,7 @@ class SettingsViewController: FormViewController, Themeable {
                     return LabeledFormValue(value: theme.rawValue, label: theme.niceName)
                 })
                 row.onChange({[weak self] (row) in
+                    if self?.isSettingUserData == true { return }
                     if let newTheme = SoundTheme(rawValue: row.value?.value ?? "") {
                         SoundManager.shared.currentTheme = newTheme
                     }
@@ -613,7 +658,8 @@ class SettingsViewController: FormViewController, Themeable {
                 }) {
                     row.value = LabeledFormValue(value: theme.rawValue, label: theme.niceName)
                 }
-                row.onChange({ (row) in
+                row.onChange({[weak self] (row) in
+                    if self?.isSettingUserData == true { return }
                     if let newTheme = ThemeName(rawValue: row.value?.value ?? "") {
                         ThemeService.shared.theme = newTheme.themeClass
                         let defaults = UserDefaults.standard
@@ -649,7 +695,8 @@ class SettingsViewController: FormViewController, Themeable {
                         cell.contentView.layoutMargins = UIEdgeInsets(top: 4, left: cell.layoutMargins.left, bottom: 4, right: cell.layoutMargins.right)
                     }
                 })
-                row.onChange({ (row) in
+                row.onChange({[weak self] (row) in
+                    if self?.isSettingUserData == true { return }
                     if let newAppIcon = AppIconName(rawValue: row.value ?? "") {
                         DispatchQueue.main.async {
                             UIApplication.shared.setAlternateIconName(newAppIcon.fileName) { (error) in
@@ -672,6 +719,7 @@ class SettingsViewController: FormViewController, Themeable {
     }
     
     private func setUser(_ user: UserProtocol) {
+        isSettingUserData = true
         let calendar = Calendar(identifier: .gregorian)
         let now = Date()
         var components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: now)
@@ -689,6 +737,10 @@ class SettingsViewController: FormViewController, Themeable {
         let disableNotificationsRow = (form.rowBy(tag: SettingsTags.disableAllNotifications) as? SwitchRow)
         disableNotificationsRow?.value = user.preferences?.pushNotifications?.unsubscribeFromAll
         disableNotificationsRow?.updateCell()
+        
+        let pushNotificationsRow = (form.rowBy(tag: SettingsTags.pushNotifications) as? MultipleSelectorRow<String>)
+        pushNotificationsRow?.value = getPushNotificationSet(forUser: user)
+        
         let disablePMRow = (form.rowBy(tag: SettingsTags.disablePrivateMessages) as? SwitchRow)
         disablePMRow?.value = user.inbox?.optOut
         disablePMRow?.updateCell()
@@ -726,6 +778,42 @@ class SettingsViewController: FormViewController, Themeable {
             serverRow?.hidden = false
             serverRow?.evaluateHidden()
         }
+        isSettingUserData = false
+    }
+    
+    private func getPushNotificationSet(forUser user: UserProtocol) -> Set<String> {
+        var pushNotifications = Set<String>()
+        guard let notificationPreferences = user.preferences?.pushNotifications else {
+            return pushNotifications
+        }
+        if notificationPreferences.giftedGems {
+            pushNotifications.insert(L10n.Settings.PushNotifications.giftedGems)
+        }
+        if notificationPreferences.giftedSubscription {
+            pushNotifications.insert(L10n.Settings.PushNotifications.giftedSubscription)
+        }
+        if notificationPreferences.hasNewPM {
+            pushNotifications.insert(L10n.Settings.PushNotifications.receivedPm)
+        }
+        if notificationPreferences.invitedGuild {
+            pushNotifications.insert(L10n.Settings.PushNotifications.invitedGuid)
+        }
+        if notificationPreferences.invitedParty {
+            pushNotifications.insert(L10n.Settings.PushNotifications.invitedParty)
+        }
+        if notificationPreferences.invitedQuest {
+            pushNotifications.insert(L10n.Settings.PushNotifications.invitedQuest)
+        }
+        if notificationPreferences.questStarted {
+            pushNotifications.insert(L10n.Settings.PushNotifications.questBegun)
+        }
+        if notificationPreferences.majorUpdates {
+            pushNotifications.insert(L10n.Settings.PushNotifications.importantAnnouncement)
+        }
+        if notificationPreferences.wonChallenge {
+            pushNotifications.insert(L10n.Settings.PushNotifications.wonChallenge)
+        }
+        return pushNotifications
     }
     
     private func classSelectionButtonTapped() {

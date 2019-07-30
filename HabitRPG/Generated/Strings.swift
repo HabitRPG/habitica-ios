@@ -1228,8 +1228,6 @@ public enum L10n {
     public static var preferences: String { return L10n.tr("Mainstrings", "settings.preferences") }
     /// Profile
     public static var profile: String { return L10n.tr("Mainstrings", "settings.profile") }
-    /// Push Notifications
-    public static var pushNotifications: String { return L10n.tr("Mainstrings", "settings.push_notifications") }
     /// Reload Content
     public static var reloadContent: String { return L10n.tr("Mainstrings", "settings.reload_content") }
     /// Reminder
@@ -1260,6 +1258,29 @@ public enum L10n {
     public static var usernameNotConfirmed: String { return L10n.tr("Mainstrings", "settings.username_not_confirmed") }
     /// Incorrect Password
     public static var wrongPassword: String { return L10n.tr("Mainstrings", "settings.wrong_password") }
+
+    public enum PushNotifications {
+      /// Gifted Gems
+      public static var giftedGems: String { return L10n.tr("Mainstrings", "settings.push_notifications.gifted_gems") }
+      /// Gifted Subscription
+      public static var giftedSubscription: String { return L10n.tr("Mainstrings", "settings.push_notifications.gifted_subscription") }
+      /// Important Announcements
+      public static var importantAnnouncement: String { return L10n.tr("Mainstrings", "settings.push_notifications.important_announcement") }
+      /// Invited to Guild
+      public static var invitedGuid: String { return L10n.tr("Mainstrings", "settings.push_notifications.invited_guid") }
+      /// Invited to Party
+      public static var invitedParty: String { return L10n.tr("Mainstrings", "settings.push_notifications.invited_party") }
+      /// Invited to Quest
+      public static var invitedQuest: String { return L10n.tr("Mainstrings", "settings.push_notifications.invited_quest") }
+      /// Your quest has begun
+      public static var questBegun: String { return L10n.tr("Mainstrings", "settings.push_notifications.quest_begun") }
+      /// Received private message
+      public static var receivedPm: String { return L10n.tr("Mainstrings", "settings.push_notifications.received_pm") }
+      /// Push Notifications
+      public static var title: String { return L10n.tr("Mainstrings", "settings.push_notifications.title") }
+      /// You won a challenge!
+      public static var wonChallenge: String { return L10n.tr("Mainstrings", "settings.push_notifications.won_challenge") }
+    }
   }
 
   public enum Shops {
