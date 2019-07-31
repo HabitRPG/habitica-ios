@@ -31,12 +31,12 @@ class LoadingViewController: UIViewController {
                 .flatMap(.latest, {[weak self] (_) in
                     return self?.userRepository?.retrieveInboxMessages() ?? Signal.empty
                 })
-                .on(value: {[weak self] _ in
+                .observeCompleted { [weak self] in
                     self?.userRepository = nil
                     if !hasUserData {
                         self?.segueForLoggedInUser()
                     }
-            }).observeCompleted {}
+            }
         }
     }
     
