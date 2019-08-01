@@ -143,9 +143,5 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
             }
         }
         userRepository.runCron(tasks: completedTasks)
-            .on(failed: { error in
-                Crashlytics.sharedInstance().recordError(error)
-            })
-            .observeCompleted {}
     }
 }

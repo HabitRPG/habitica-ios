@@ -11,22 +11,23 @@ import Habitica_Models
 import Habitica_Database
 import Habitica_API_Client
 import ReactiveSwift
+import Crashlytics
 
 class UserRepository: BaseRepository<UserLocalRepository> {
     
     var taskRepository = TaskRepository()
     
     func retrieveUser(withTasks: Bool = true) -> Signal<UserProtocol?, Never> {
-        let signal = RetrieveUserCall().objectSignal.on(value: {[weak self] user in
+        let signal = RetrieveUserCall().objectSignal.on(value: { user in
             if let user = user {
-                self?.localRepository.save(user)
+                self.localRepository.save(user)
             }
         })
         if withTasks {
             let taskCall = RetrieveTasksCall()
-            return signal.combineLatest(with: taskCall.arraySignal).on(value: {[weak self] (user, tasks) in
+            return signal.combineLatest(with: taskCall.arraySignal).on(value: { (user, tasks) in
                 if let tasks = tasks, let order = user?.tasksOrder {
-                    self?.taskRepository.save(tasks, order: order)
+                    self.taskRepository.save(tasks, order: order)
                 }
             }).map({ (user, _) in
                 return user
@@ -92,7 +93,8 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         })
     }
     
-    func runCron(tasks: [TaskProtocol]) -> Signal<UserProtocol?, Never> {
+    func runCron(tasks: [TaskProtocol]) {
+        var disposable: Disposable?
         getUser().take(first: 1).on(value: {[weak self]user in
             self?.localRepository.updateCall { _ in
                 user.needsCron = false
@@ -105,15 +107,23 @@ class UserRepository: BaseRepository<UserLocalRepository> {
                     return self.taskRepository.score(task: task, direction: .up)
                 })
             }
-            return signal.flatMap(.latest, { _ in
+            disposable = signal.flatMap(.latest, { _ in
                 return RunCronCall().responseSignal
             }).flatMap(.latest, { _ in
                 return self.retrieveUser()
-            })
+            }).on(failed: { error in
+                Crashlytics.sharedInstance().recordError(error)
+            }).observeCompleted {
+                disposable?.dispose()
+            }
         } else {
-            return RunCronCall().responseSignal.flatMap(.latest, { (_) in
+            disposable = RunCronCall().responseSignal.flatMap(.latest, { (_) in
                 return self.retrieveUser()
-            })
+            }).on(failed: { error in
+                Crashlytics.sharedInstance().recordError(error)
+            }).observeCompleted {
+                disposable?.dispose()
+            }
         }
     }
     
