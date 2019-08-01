@@ -69,10 +69,6 @@ class UserManager: NSObject {
                 
                 if uncompletedTaskCount == 0 {
                     self?.userRepository.runCron(tasks: [])
-                        .on(failed: { error in
-                            Crashlytics.sharedInstance().recordError(error)
-                        })
-                        .observeCompleted {}
                     return
                 }
                 
