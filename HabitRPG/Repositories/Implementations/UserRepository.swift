@@ -286,45 +286,31 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     }
     
     func disableClassSystem() -> Signal<UserProtocol?, Never> {
-        let call = DisableClassesCall()
-        
-        return call.objectSignal.on(value: handleUserUpdate())
+        return DisableClassesCall().objectSignal.on(value: handleUserUpdate())
     }
     
     func selectClass(_ habiticaClass: HabiticaClass? = nil) -> Signal<UserProtocol?, Never> {
-        let call = SelectClassCall(class: habiticaClass)
-        
-        return call.objectSignal.on(value: handleUserUpdate())
+        return SelectClassCall(class: habiticaClass).objectSignal.on(value: handleUserUpdate())
     }
     
     func reroll() -> Signal<UserProtocol?, Never> {
-        let call = RerollCall()
-        
-        return call.objectSignal.on(value: handleUserUpdate())
+        return RerollCall().objectSignal.on(value: handleUserUpdate())
     }
     
     func sendPasswordResetEmail(email: String) -> Signal<EmptyResponseProtocol?, Never> {
-        let call = SendPasswordResetEmailCall(email: email)
-        
-        return call.objectSignal
+        return SendPasswordResetEmailCall(email: email).objectSignal
     }
     
     func purchaseGems(receipt: [String: Any], recipient: String? = nil) -> Signal<EmptyResponseProtocol?, Never> {
-        let call = PurchaseGemsCall(receipt: receipt, recipient: recipient)
-        
-        return call.objectSignal
+        return PurchaseGemsCall(receipt: receipt, recipient: recipient).objectSignal
     }
     
     func purchaseNoRenewSubscription(identifier: String, receipt: [String: Any], recipient: String? = nil) -> Signal<EmptyResponseProtocol?, Never> {
-        let call = PurchaseNoRenewSubscriptionCall(identifier: identifier, receipt: receipt, recipient: recipient)
-        
-        return call.objectSignal
+        return PurchaseNoRenewSubscriptionCall(identifier: identifier, receipt: receipt, recipient: recipient).objectSignal
     }
     
     func subscribe(sku: String, receipt: String) -> Signal<EmptyResponseProtocol?, Never> {
-        let call = SubscribeCall(sku: sku, receipt: receipt)
-        
-        return call.objectSignal
+        return SubscribeCall(sku: sku, receipt: receipt).objectSignal
     }
     
     func getTags() -> SignalProducer<ReactiveResults<[TagProtocol]>, ReactiveSwiftRealmError> {
