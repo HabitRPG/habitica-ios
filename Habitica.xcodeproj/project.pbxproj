@@ -2984,6 +2984,7 @@
 				ro,
 				it,
 				ja,
+				cmn,
 			);
 			mainGroup = D9EB4E8218CB4A9400BB2094;
 			productRefGroup = D9EB4E8C18CB4A9400BB2094 /* Products */;
