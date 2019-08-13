@@ -10,8 +10,8 @@ import Foundation
 import Habitica_Models
 
 private class UserAchievements: Decodable {
-    var quests: [String: Int] = [:]
-    var streak: Int
+    var quests: [String: Int]? = [:]
+    var streak: Int?
 }
 
 public class APIUser: UserProtocol, Decodable {
@@ -103,9 +103,9 @@ public class APIUser: UserProtocol, Decodable {
         pushDevices = (try? values.decode([APIPushDevice].self, forKey: .pushDevices)) ?? []
         
         questAchievements = []
-        let userAchievements = try values.decode(UserAchievements.self, forKey: .achievements)
-        achievementStreak = userAchievements.streak
-        userAchievements.quests.forEach({ (key, count) in
+        let userAchievements = try? values.decode(UserAchievements.self, forKey: .achievements)
+        achievementStreak = userAchievements?.streak ?? 0
+        userAchievements?.quests?.forEach({ (key, count) in
             let achievement = APIAchievement()
             achievement.key = key
             achievement.earned = true
