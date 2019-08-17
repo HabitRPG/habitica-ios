@@ -27,4 +27,12 @@ class APIGroupInvitation: GroupInvitationProtocol, Decodable {
         case inviterID = "inviter"
         case isPublicGuild = "publicGuild"
     }
+    
+    public required init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        id = try? values.decode(String.self, forKey: .id)
+        name = try? values.decode(String.self, forKey: .name)
+        inviterID = try? values.decode(String.self, forKey: .inviterID)
+        isPublicGuild = (try? values.decode(Bool.self, forKey: .isPublicGuild)) ?? false
+    }
 }
