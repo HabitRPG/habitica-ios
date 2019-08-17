@@ -79,10 +79,7 @@ class AuthenticationManager: NSObject {
 
     @objc
     func hasAuthentication() -> Bool {
-        if let userId = currentUserId {
-            return userId.isEmpty == false
-        }
-        return false
+        return currentUserId?.isEmpty == false && currentUserKey?.isEmpty == false
     }
 
     @objc
