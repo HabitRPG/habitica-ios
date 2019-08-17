@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol NotificationProtocol {
+public protocol NotificationProtocol: BaseModelProtocol {
     
     var id: String { get set }
     var type: HabiticaNotificationType { get set }

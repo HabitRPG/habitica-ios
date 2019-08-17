@@ -57,6 +57,7 @@ class StableSplitViewController: HabiticaSplitViewController {
         actionSheet.addAction(UIAlertAction(title: L10n.Stable.type, style: .default, handler: {[weak self] _ in
             self?.organizeByColor = false
         }))
+        actionSheet.popoverPresentationController?.barButtonItem = organizeByButton
         present(actionSheet, animated: true, completion: nil)
     }
 }

@@ -386,6 +386,9 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     }
     
     func readNotification(notification: NotificationProtocol) -> Signal<[NotificationProtocol]?, Never> {
+        if !notification.isValid {
+            return Signal.empty
+        }
         if notification.id.contains("-invite-") {
             localRepository.delete(object: notification)
             return Signal.empty
