@@ -10,6 +10,8 @@ import Foundation
 import Habitica_Models
 
 public class APINotification: NotificationProtocol, NotificationNewsProtocol, NotificationNewChatProtocol, NotificationUnallocatedStatsProtocol, Decodable {
+    public var isValid: Bool = true
+    
     public var id: String = ""
     public var type: HabiticaNotificationType = .generic
     public var seen: Bool = false

@@ -42,6 +42,11 @@ class RealmNotification: Object,
     @objc dynamic var questKey: String?
     @objc dynamic var points: Int = 0
     
+    
+    var isValid: Bool {
+        return !isInvalidated
+    }
+    
     override static func primaryKey() -> String {
         return "id"
     }
