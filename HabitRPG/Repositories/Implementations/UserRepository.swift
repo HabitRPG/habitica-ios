@@ -15,6 +15,7 @@ import Crashlytics
 
 class UserRepository: BaseRepository<UserLocalRepository> {
     
+    var lastPushDeviceSync: Date?
     var taskRepository = TaskRepository()
     
     func retrieveUser(withTasks: Bool = true) -> Signal<UserProtocol?, Never> {
@@ -330,6 +331,9 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     }
     
     func registerPushDevice(user: UserProtocol) -> Signal<EmptyResponseProtocol?, Never> {
+        if (lastPushDeviceSync?.timeIntervalSinceNow ?? -3) > -2 {
+            return Signal.empty
+        }
         if let deviceID = UserDefaults().string(forKey: "PushNotificationDeviceToken") {
             if user.pushDevices.contains(where: { (pushDevice) -> Bool in
                 return pushDevice.regId == deviceID
