@@ -13,12 +13,18 @@ class APIShopCategory: ShopCategoryProtocol, Decodable {
     var identifier: String?
     var text: String?
     var notes: String?
+    var path: String?
+    var purchaseAll: Bool = false
+    var pinType: String?
     var items: [InAppRewardProtocol] = []
     
     enum CodingKeys: String, CodingKey {
         case identifier
         case text
         case notes
+        case path
+        case purchaseAll
+        case pinType
         case items
     }
     
@@ -27,6 +33,9 @@ class APIShopCategory: ShopCategoryProtocol, Decodable {
         identifier = try? values.decode(String.self, forKey: .identifier)
         text = try? values.decode(String.self, forKey: .text)
         notes = try? values.decode(String.self, forKey: .notes)
+        path = try? values.decode(String.self, forKey: .path)
+        purchaseAll = (try? values.decode(Bool.self, forKey: .purchaseAll)) ?? false
+        pinType = try? values.decode(String.self, forKey: .pinType)
         items = (try? values.decode([APIInAppReward].self, forKey: .items)) ?? []
     }
     

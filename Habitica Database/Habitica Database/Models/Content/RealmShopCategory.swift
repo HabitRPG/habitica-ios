@@ -16,6 +16,9 @@ class RealmShopCategory: Object, ShopCategoryProtocol {
     var identifier: String?
     var text: String?
     var notes: String?
+    var path: String?
+    var purchaseAll: Bool = false
+    var pinType: String?
     var items: [InAppRewardProtocol] {
         get {
             return realmItems.map({ (category) -> InAppRewardProtocol in
@@ -46,6 +49,9 @@ class RealmShopCategory: Object, ShopCategoryProtocol {
         identifier = protocolObject.identifier
         text = protocolObject.text
         notes = protocolObject.notes
+        path = protocolObject.path
+        purchaseAll = protocolObject.purchaseAll
+        pinType = protocolObject.pinType
         items = protocolObject.items
     }
 }
