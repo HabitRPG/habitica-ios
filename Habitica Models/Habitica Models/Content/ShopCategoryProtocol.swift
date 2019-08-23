@@ -13,5 +13,8 @@ public protocol ShopCategoryProtocol {
     var identifier: String? { get set }
     var text: String? { get set }
     var notes: String? { get set }
+    var path: String? { get set }
+    var purchaseAll: Bool { get set }
+    var pinType: String? { get set }
     var items: [InAppRewardProtocol] { get set }
 }

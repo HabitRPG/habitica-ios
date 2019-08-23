@@ -15,7 +15,7 @@ class TimeTravelersCollectionViewDataSource: ShopCollectionViewDataSource {
         sections.removeAll()
         for category in categories {
             for item in category.items {
-                if item.purchaseType == "pets" || item.purchaseType == "mounts" {
+                if item.category?.pinType != "mystery_set" {
                     if let lastSection = sections.last, lastSection.key == item.key {
                         lastSection.items.append(item)
                     } else {
