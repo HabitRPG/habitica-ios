@@ -35,7 +35,7 @@
 /* (No Comment) */
 "classes.rogue" = "Łotrzyk";
 /* (No Comment) */
-"classes.rogue_description" = "Sobota";
+"classes.rogue_description" = "Łotrzyki uwielbiają gromadzić bogactwo, zdobywając więcej złota niż ktokolwiek inny i są biegli w znajdowaniu losowych przedmiotów. Ich kultowa umiejętność ukrycia pozwala uchylać się od konsekwencji niezaliczonych zadań codziennych. Graj Łotrem, jeśli odnajdujesz silną motywację ze zdobywania nagród i osiągnięć oraz w dążeniu do zdobywania łupów i odznak!";
 /* (No Comment) */
 "classes.warrior" = "Wojownik";
 /* (No Comment) */
@@ -617,13 +617,28 @@
 "not_getting_drops" = "Nie otrzymujesz właściwych zdobyczy? Sprawdź Targ by kupić rzeczy, które potrzebujesz!";
 "streak_achievement_title" = "Zdobyłeś osiągnięcie serii!";
 "streak_achievement_description" = "Wykonałeś swój Codzienne przez 21 dni z rzędu! Wspaniała robota. Nie przerwij serii!";
-"next_checkin_prize_1_day" = "Twoja następna nagroda zostanie odblokowana w następnej wizycie";
+"next_checkin_prize_1_day" = "Twoja następna nagroda zostanie odblokowana przy następnej wizycie.";
 "next_checkin_prize_x_days" = "Twoja następna nagroda zostanie odblokowana za %dwizyt";
 "recipient" = "Odbiorca";
 "no_camera" = "Kamera jest niedostępna";
 "qr_invalid_id_title" = "Nieprawidłowy ID użytkownika Habitica";
-"qr_invalid_id_message" = "Zeskanowany kod QR nie zawiera poprawnego ID użytkownika Habitica";
+"qr_invalid_id_message" = "Zeskanowany kod QR nie zawiera poprawnego ID użytkownika Habitica.";
 "not_enough_gems" = "Niewystarczająca liczba Klejnotów";
 "choose_task" = "Wybierz Zadanie";
 "shops.purchased_all_gear" = "Już posiadasz wszystkie przedmioty dla swojej klasy. Więcej zostanie dodanych podczas Wielkich Gali zaczynających się w okolicach równonocy i przesileń.";
 "titles.skills" = "Umiejętności";
+"stats.intelligence_text" = "Zwiększa PD otrzymane za wykonanie zadania. Zwiększa również maksymalną ilość many i szybkość regeneracji many w czasie.";
+"titles.avatar" = "Awatar";
+"titles.gift_subscription" = "Subskrypcja w prezencie";
+"titles.messages" = "Wiadomości";
+"titles.notifications" = "Powiadomienia";
+"titles.achievements" = "Osiągnięcia";
+"stats.points_to_allocate" = "%d punkty do przydzielenia";
+"stats.total" = "Razem";
+"stats.auto_allocate_points" = "Automatyczne przydzielanie punktów";
+"stats.distribute_evenly" = "Rozdzielaj po równo";
+"stats.distribute_class" = "Rozdzielaj w oparciu o klasę";
+"stats.distribute_tasks" = "Rozdzielaj na podstawie zadań";
+"stable.wacky_pets" = "Zwariowane chowańce";
+"stable.standard_mounts" = "Standardowe Wierzchowce";
+"stable.wacky_mounts" = "Zwariowane wierzchowce";
