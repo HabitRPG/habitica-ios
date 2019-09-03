@@ -31,8 +31,6 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
     
     func retrieveGroups(_ groupType: String) -> Signal<[GroupProtocol]?, Never> {
         return RetrieveGroupsCall(groupType).arraySignal.on(value: {[weak self]groups in
-        
-        return call.arraySignal.on(value: {[weak self]groups in
             guard let groups = groups else {
                 return
             }

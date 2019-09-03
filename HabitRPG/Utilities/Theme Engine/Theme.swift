@@ -140,7 +140,6 @@ extension DarkTheme {
     public var successColor: UIColor { return UIColor.green10().withAlphaComponent(0.7) }
     public var errorColor: UIColor { return UIColor.red10() }
     public var warningColor: UIColor { return UIColor.yellow10().withAlphaComponent(0.7) }
-    public var badgeColor: UIColor { return tintColor }
 }
 
 @objc
