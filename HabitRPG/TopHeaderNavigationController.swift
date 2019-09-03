@@ -215,7 +215,6 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
         headerView?.frame = CGRect(x: 0, y: 0, width: parentFrame.size.width, height: defaultHeaderHeight)
         if let header = alternativeHeaderView {
             if topHeaderHeight <= 0 {
-            if intrinsicHeight <= 0 {
                 header.frame = CGRect(x: 0, y: 0, width: parentFrame.size.width, height: header.frame.size.height)
             } else {
                 header.frame = CGRect(x: 0, y: 0, width: parentFrame.size.width, height: topHeaderHeight)
