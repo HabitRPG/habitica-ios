@@ -232,27 +232,45 @@
 }
 
 + (UIColor *)contributorColorFor:(NSInteger)level {
-    if (level == 1) {
-        return [UIColor tier1Color];
-    } else if (level == 2) {
-        return [UIColor tier2Color];
-    } else if (level == 3) {
-        return [UIColor tier3Color];
-    } else if (level == 4) {
-        return [UIColor tier4Color];
-    } else if (level == 5) {
-        return [UIColor tier5Color];
-    } else if (level == 6) {
-        return [UIColor tier6Color];
-    } else if (level == 7) {
-        return [UIColor tier7Color];
-    } else if (level == 8) {
-        return [UIColor tierModColor];
-    } else if (level == 9) {
-        if ([ObjcThemeWrapper themeIsDark]) {
+    if ([ObjcThemeWrapper themeIsDark]) {
+        if (level == 1) {
+            return [UIColor tier1Color];
+        } else if (level == 2) {
+            return [UIColor tier2Color];
+        } else if (level == 3) {
+            return [UIColor tier3Color];
+        } else if (level == 4) {
+            return [UIColor tier4Color];
+        } else if (level == 5) {
+            return [UIColor tier5Color];
+        } else if (level == 6) {
+            return [UIColor tier6Color];
+        } else if (level == 7) {
+            return [UIColor tier7Color];
+        } else if (level == 8) {
+            return [UIColor tierModColor];
+        } else if (level == 9) {
             return [UIColor purple400];
-        } else {
-            return [UIColor purple300];
+        }
+    } else {
+        if (level == 1) {
+            return [UIColor tier1Color];
+        } else if (level == 2) {
+            return [UIColor tier2Color];
+        } else if (level == 3) {
+            return [UIColor tier3Color];
+        } else if (level == 4) {
+            return [UIColor tier4Color];
+        } else if (level == 5) {
+            return [UIColor tier5Color];
+        } else if (level == 6) {
+            return [UIColor tier6Color];
+        } else if (level == 7) {
+            return [UIColor tier7Color];
+        } else if (level == 8) {
+            return [UIColor tierModColor];
+        } else if (level == 9) {
+                return [UIColor purple300];
         }
     }
     return [ObjcThemeWrapper primaryTextColor];

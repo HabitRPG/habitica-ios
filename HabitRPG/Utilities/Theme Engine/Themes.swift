@@ -69,7 +69,7 @@ public struct DysheatenerTheme: Theme {
 
 public struct DefaultDarkTheme: DarkTheme {
     public var backgroundTintColor: UIColor { return UIColor.purple200() }
-    public var tintColor: UIColor { return UIColor.purple300() }
+    public var tintColor: UIColor { return UIColor.purple400() }
     public var dimmBackgroundColor: UIColor { return UIColor.purple10() }
     public var taskOverlayTint: UIColor { return UIColor.blackPurple50().withAlphaComponent(0.15) }
 }

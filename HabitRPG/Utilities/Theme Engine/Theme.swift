@@ -97,11 +97,11 @@ extension DarkTheme {
         }
     }
     public var contentBackgroundColor: UIColor { if #available(iOS 13.0, *) {
-        return UIColor.systemGray6
-    } else {
-        return UIColor.blackPurple50()
-        }
-        }
+            return UIColor.systemGray6
+        } else {
+            return UIColor.blackPurple50()
+            }
+            }
     public var offsetBackgroundColor: UIColor { if #available(iOS 13.0, *) {
         return UIColor.systemGray4
     } else {
@@ -135,7 +135,7 @@ extension DarkTheme {
     public var navbarHiddenColor: UIColor { return contentBackgroundColor }
     public var dimmedColor: UIColor { return UIColor.gray100() }
     public var dimmBackgroundColor: UIColor { return UIColor.gray50() }
-    public var badgeColor: UIColor { return UIColor.gray200() }
+    public var badgeColor: UIColor { return tintColor }
     public var taskOverlayTint: UIColor { return UIColor.blackPurple50().withAlphaComponent(0.30) }
     public var successColor: UIColor { return UIColor.green10().withAlphaComponent(0.7) }
     public var errorColor: UIColor { return UIColor.red10() }

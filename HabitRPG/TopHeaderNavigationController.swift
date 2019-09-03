@@ -195,6 +195,12 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
     }
 
     func applyTheme(theme: Theme) {
+        if (defaultNavbarHiddenColor == navbarHiddenColor) {
+            navbarHiddenColor = theme.navbarHiddenColor
+        }
+        if defaultNavbarVisibleColor == navbarVisibleColor {
+            navbarVisibleColor = theme.contentBackgroundColor
+        }
         defaultNavbarHiddenColor = theme.navbarHiddenColor
         defaultNavbarVisibleColor = theme.contentBackgroundColor
         visibleTintColor = theme.tintColor
@@ -202,6 +208,7 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
         bottomBorderView.backgroundColor = theme.separatorColor
         backgroundView.backgroundColor = theme.contentBackgroundColorDimmed
         upperBackgroundView.backgroundColor = theme.contentBackgroundColor
+        
     }
     
     override func viewWillLayoutSubviews() {
