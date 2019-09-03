@@ -32,6 +32,18 @@ class UserTopHeader: UIView, Themeable {
     @IBOutlet weak var goldView: HRPGCurrencyCountView!
     @IBOutlet weak var hourglassView: HRPGCurrencyCountView!
     
+    private var contributorTier: Int = 0 {
+        didSet {
+            if contributorTier > 0 {
+                usernameLabel.textColor = UIColor.contributorColor(forTier: contributorTier)
+                levelLabel.textColor = UIColor.contributorColor(forTier: contributorTier)
+            } else {
+                usernameLabel.textColor = ThemeService.shared.theme.primaryTextColor
+                levelLabel.textColor = ThemeService.shared.theme.primaryTextColor
+            }
+        }
+    }
+    
     private let repository = UserRepository()
     private let disposable = ScopedDisposable(CompositeDisposable())
     
@@ -117,6 +129,11 @@ class UserTopHeader: UIView, Themeable {
             magicLabel.iconView.alpha = 1.0
             classImageView.alpha = 1.0
         }
+        let tier = contributorTier
+        contributorTier = tier
+        goldView.updateStateValues()
+        gemView.updateStateValues()
+        hourglassView.updateStateValues()
     }
     
     private func set(user: UserProtocol) {
@@ -183,13 +200,7 @@ class UserTopHeader: UIView, Themeable {
             buffIconView.isHidden = stats.buffs?.isBuffed != true
         }
         usernameLabel.text = user.profile?.name
-        if let contributor = user.contributor, contributor.level > 0 {
-            usernameLabel.textColor = contributor.color
-            levelLabel.textColor = contributor.color
-        } else {
-            usernameLabel.textColor = ThemeService.shared.theme.primaryTextColor
-            levelLabel.textColor = ThemeService.shared.theme.primaryTextColor
-        }
+        contributorTier = user.contributor?.level ?? 0
         gemView.amount = user.gemCount
         
         if let hourglasses = user.purchased?.subscriptionPlan?.consecutive?.hourglasses {

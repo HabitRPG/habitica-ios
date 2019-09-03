@@ -117,7 +117,7 @@ class HRPGCurrencyCountView: UIView {
         layoutIfNeeded()
     }
     
-    private func updateStateValues() {
+    func updateStateValues() {
         switch state {
         case .normal:
             countLabel.textColor = currency.getTextColor()

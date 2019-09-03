@@ -7,7 +7,6 @@
 //
 
 #import "HRPGChoosePMRecipientViewController.h"
-#import "HRPGQRCodeScannerViewController.h"
 #import "NSString+UUID.h"
 #import "Habitica-Swift.h"
 
