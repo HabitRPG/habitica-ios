@@ -242,6 +242,7 @@ class TaskDetailLineView: UIView {
             reminderIconViewWidth.constant = 0
             challengeReminderSpacing.constant = 0
             reminderIconLabelSpacing.constant = 0
+            reminderLabel.text = nil
         } else {
             reminderIconViewWidth.constant = TaskDetailLineView.iconSize
             challengeReminderSpacing.constant = TaskDetailLineView.spacing

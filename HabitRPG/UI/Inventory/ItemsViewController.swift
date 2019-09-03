@@ -61,6 +61,27 @@ class ItemsViewController: BaseTableViewController {
         }
     }
     
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        if dataSource.isHatching {
+            let view = Bundle.main.loadNibNamed("ShopAdFooter", owner: self, options: nil)?.last as? UIView
+            let label = view?.viewWithTag(2) as? UILabel
+            let openShopButton = view?.viewWithTag(3) as? UIButton
+            openShopButton?.layer.borderColor = UIColor.purple400().cgColor
+            openShopButton?.layer.borderWidth = 1.0
+            openShopButton?.layer.cornerRadius = 5
+            
+            label?.text = L10n.notGettingDrops
+            openShopButton?.addTarget(self, action: #selector(openMarket), for: .touchUpInside)
+            return view
+        } else {
+            return nil
+        }
+    }
+    
+    @objc func openMarket() {
+        
+    }
+
     private func showActionSheet(item: ItemProtocol, withSource sourceView: UIView?) {
         let alertController = UIAlertController(title: item.text, message: nil, preferredStyle: .actionSheet)
         if item.itemType == ItemType.eggs {
