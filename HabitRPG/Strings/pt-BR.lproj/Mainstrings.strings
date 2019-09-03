@@ -495,7 +495,7 @@
 "back" = "Voltar";
 "all" = "Todos";
 "weak" = "Fraco";
-"strong" = "Fortes";
+"strong" = "Forte";
 "due" = "Para";
 "grey" = "Cinza";
 "dated" = "Com data";
@@ -1018,3 +1018,11 @@
 "empty.rewards.description" = "As Recompensas são uma ótima maneira de usar o Habitica e completar suas tarefas. Tente adicionar algumas hoje!";
 "empty.notifications.title" = "Você está com tudo em dias!";
 "empty.notifications.description" = "As fadas da notificação lhe deram uma salva de palmas barulhentas! Muito bem!";
+"titles.achievements" = "Conquistas";
+"stable.color" = "Cor";
+"stable.type" = "Tipo";
+"achievements.basic" = "Conquistas Básicas";
+"achievements.seasonal" = "Conquistas Sazonais";
+"achievements.special" = "Conquistas Especiais";
+"achievements.quests" = "Missões completas";
+"organize_by" = "Organizar por";

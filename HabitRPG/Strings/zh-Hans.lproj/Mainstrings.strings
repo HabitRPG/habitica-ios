@@ -863,3 +863,11 @@
 "buy_reward" = "你花 %@ 金币买了 '%@'";
 "accessibility.score_habit_up" = "习惯得分上升了";
 "accessibility.score_habit_down" = "习惯得分下降了";
+"titles.messages" = "信息";
+"titles.notifications" = "通知";
+"titles.achievements" = "成就";
+"settings.language" = "语言";
+"settings.push_notifications.won_challenge" = "你赢了挑战！";
+"settings.push_notifications.invited_party" = "被邀请加入队伍";
+"settings.push_notifications.important_announcement" = "重要消息";
+"empty.todos.title" = "这是你的待办清单";

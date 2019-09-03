@@ -1018,3 +1018,11 @@
 "empty.rewards.description" = "Las Recompensas son una gran manera de usar Habitica y completar tus tareas. ¡Intenta añadir algunas hoy!";
 "empty.notifications.title" = "¡Estás al tanto de todo!";
 "empty.notifications.description" = "¡Las hadas de las notificaciones te aplauden! ¡Bien hecho!";
+"titles.achievements" = "Logros";
+"stable.color" = "Color";
+"stable.type" = "Tipo";
+"achievements.basic" = "Logros Básicos";
+"achievements.seasonal" = "Logros de Temporada";
+"achievements.special" = "Logros Especiales";
+"achievements.quests" = "Misiones Completadas";
+"organize_by" = "Organizar por";
