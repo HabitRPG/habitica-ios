@@ -274,7 +274,7 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
     }
     
     @IBAction func unwindFilterChanged(segue: UIStoryboardSegue?) {
-        if let tagVC = segue?.source as? HRPGFilterViewController {
+        if let tagVC = segue?.source as? FilterViewController {
             if let tabVC = tabBarController as? MainTabBarController {
                 tabVC.selectedTags = tagVC.selectedTags
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "taskFilterChanged"), object: nil)
@@ -446,7 +446,7 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
         } else if segue.identifier == "FilterSegue" {
             if let tabVC = tabBarController as? MainTabBarController,
                 let navVC = segue.destination as? HRPGNavigationController,
-                let filterVC = navVC.topViewController as? HRPGFilterViewController {
+                let filterVC = navVC.topViewController as? FilterViewController {
                 navVC.sourceViewController = self
                 filterVC.selectedTags = tabVC.selectedTags
                 filterVC.taskType = typeName
