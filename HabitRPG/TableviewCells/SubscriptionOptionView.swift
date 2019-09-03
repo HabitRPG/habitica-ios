@@ -26,21 +26,21 @@ class SubscriptionOptionView: UITableViewCell {
         let animDuration = 0.3
         if selected {
             UIView.animate(withDuration: animDuration, animations: {[weak self] () in
-                self?.selectionView.backgroundColor = .purple300()
+                self?.selectionView.backgroundColor = UIColor.purple300
                 self?.selectionView.image = #imageLiteral(resourceName: "circle_selected")
                 self?.gemCapLabel.textColor = UIColor.white
-                self?.gemCapLabel.backgroundColor = UIColor.green100()
+                self?.gemCapLabel.backgroundColor = UIColor.green100
                 self?.mysticHourglassLabel.textColor = UIColor.white
-                self?.mysticHourglassLabel.backgroundColor = UIColor.green100()
+                self?.mysticHourglassLabel.backgroundColor = UIColor.green100
             })
         } else {
             UIView.animate(withDuration: animDuration, animations: {[weak self] () in
-                self?.selectionView.backgroundColor = .purple600()
+                self?.selectionView.backgroundColor = UIColor.purple600
                 self?.selectionView.image = #imageLiteral(resourceName: "circle_unselected")
-                self?.gemCapLabel.textColor = UIColor.gray50()
-                self?.gemCapLabel.backgroundColor = UIColor.gray600()
-                self?.mysticHourglassLabel.textColor = UIColor.gray50()
-                self?.mysticHourglassLabel.backgroundColor = UIColor.gray600()
+                self?.gemCapLabel.textColor = UIColor.gray50
+                self?.gemCapLabel.backgroundColor = UIColor.gray600
+                self?.mysticHourglassLabel.textColor = UIColor.gray50
+                self?.mysticHourglassLabel.backgroundColor = UIColor.gray600
             })
         }
         wrapperView.backgroundColor = ThemeService.shared.theme.windowBackgroundColor

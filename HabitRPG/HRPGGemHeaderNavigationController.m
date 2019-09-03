@@ -7,7 +7,6 @@
 //
 
 #import "HRPGGemHeaderNavigationController.h"
-#import "UIColor+Habitica.h"
 #import "Habitica-Swift.h"
 
 @interface HRPGGemHeaderNavigationController ()

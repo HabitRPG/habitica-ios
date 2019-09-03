@@ -29,20 +29,20 @@ public enum Currency: String {
         if ThemeService.shared.theme.isDark {
             switch self {
             case .gold:
-                return .yellow50()
+                return .yellow50
             case .gem:
-                return .green50()
+                return .green50
             case .hourglass:
-                return .blue50()
+                return .blue50
             }
         } else {
             switch self {
             case .gold:
-                return .yellow5()
+                return .yellow5
             case .gem:
-                return .green10()
+                return .green10
             case .hourglass:
-                return .blue10()
+                return .blue10
             }
         }
     }

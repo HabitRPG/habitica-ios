@@ -210,7 +210,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
             currencyCountView.state = .normal
         } else {
             if currencyCountView.currency == .gold {
-                buyLabel.textColor = .gray400()
+                buyLabel.textColor = .gray400
             }
             if isLocked {
                 currencyCountView.state = .locked

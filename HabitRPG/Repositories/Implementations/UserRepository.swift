@@ -77,7 +77,7 @@ class UserRepository: BaseRepository<UserLocalRepository> {
             let toastView = ToastView(title: L10n.Skills.useSkill(skill.text ?? ""),
                                       rightIcon: HabiticaIcons.imageOfMagic,
                                       rightText: "-\(skill.mana)",
-                rightTextColor: UIColor.blue10(),
+                rightTextColor: UIColor.blue10,
                 background: .blue)
                 ToastManager.show(toast: toastView)
                 if #available(iOS 10.0, *) {

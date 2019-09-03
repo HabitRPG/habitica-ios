@@ -17,7 +17,7 @@ class QuestParticipantView: UIView {
         view.showMount = false
         view.size = .compact
         view.cornerRadius = 20
-        view.backgroundColor = UIColor.gray600()
+        view.backgroundColor = UIColor.gray600
         return view
     }()
     let usernameLabel: UILabel = {
@@ -62,14 +62,14 @@ class QuestParticipantView: UIView {
         if participant.responded {
             if participant.accepted {
                 invitationLabel.text = L10n.Quests.accepted
-                invitationLabel.textColor = UIColor.green50()
+                invitationLabel.textColor = UIColor.green50
             } else {
                 invitationLabel.text = L10n.Quests.rejected
-                invitationLabel.textColor = UIColor.red50()
+                invitationLabel.textColor = UIColor.red50
             }
         } else {
             invitationLabel.text = L10n.Quests.pending
-            invitationLabel.textColor = UIColor.gray400()
+            invitationLabel.textColor = UIColor.gray400
         }
     }
     

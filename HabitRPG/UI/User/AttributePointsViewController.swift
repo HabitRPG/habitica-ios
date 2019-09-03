@@ -196,9 +196,9 @@ class AttributePointsViewController: HRPGUIViewController, Themeable {
         if !canAllocatePoints {
             pointsToAllocateLabel.text = L10n.Stats.noPointsToAllocate
             pointsToAllocateLabel.backgroundColor = UIColor.white
-            pointsToAllocateLabel.textColor = UIColor.gray300()
+            pointsToAllocateLabel.textColor = UIColor.gray300
         } else {
-            pointsToAllocateLabel.backgroundColor = UIColor.gray100()
+            pointsToAllocateLabel.backgroundColor = UIColor.gray100
             pointsToAllocateLabel.textColor = UIColor.white
             if pointsToAllocate == 1 {
                 pointsToAllocateLabel.text = L10n.Stats.onePointToAllocate

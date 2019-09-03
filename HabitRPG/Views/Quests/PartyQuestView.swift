@@ -65,7 +65,7 @@ class PartyQuestView: UIView {
             bossView.barBackgroundColor = ThemeService.shared.theme.dimmedColor
             bossView.title = boss.name
             bossView.maxValue = Float(boss.health)
-            bossView.barColor = UIColor.red100()
+            bossView.barColor = UIColor.red100
             bossView.currentValue = state.progress?.health ?? 0
             bossView.bigIcon = nil
             
@@ -82,7 +82,7 @@ class PartyQuestView: UIView {
                 rageView.barBackgroundColor = ThemeService.shared.theme.dimmedColor
                 rageView.title = rage.title
                 rageView.maxValue = Float(rage.value)
-                rageView.barColor = UIColor.orange100()
+                rageView.barColor = UIColor.orange100
                 rageView.currentValue = state.progress?.rage ?? 0
                 rageView.bigIcon = nil
             }
@@ -112,7 +112,7 @@ class PartyQuestView: UIView {
                     return collect.key == questCollect.key
                 })?.count
                 collectView.currentValue = Float(value ?? 0)
-                collectView.barColor = UIColor.green100()
+                collectView.barColor = UIColor.green100
                 ImageManager.getImage(name: "quest_\(quest.key ?? "")_\(questCollect.key ?? "")", completion: { (image, _) in
                     collectView.bigIcon = image
                 })
@@ -127,7 +127,7 @@ class PartyQuestView: UIView {
     
     func setPendingDamage(_ pending: Float) {
         if isBossQuest {
-            progressBarViews.first?.pendingBarColor = UIColor.yellow50()
+            progressBarViews.first?.pendingBarColor = UIColor.yellow50
             progressBarViews.first?.pendingTitle = L10n.pendingDamage
             progressBarViews.first?.pendingValue = pending
         }

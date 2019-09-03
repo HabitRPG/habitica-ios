@@ -63,13 +63,13 @@ class HabitControlsCell: Cell<HabitControlsValue>, CellType {
             if taskRow.value?.positive == true {
                 plusControlLabel.textColor = taskRow.tintColor
             } else {
-                plusControlLabel.textColor = UIColor.gray200()
+                plusControlLabel.textColor = UIColor.gray200
             }
             minusControlIconView.image = HabiticaIcons.imageOfHabitControlMinus(taskTintColor: taskRow.tintColor, isActive: taskRow.value?.negative ?? false)
             if taskRow.value?.negative == true {
                 minusControlLabel.textColor = taskRow.tintColor
             } else {
-                minusControlLabel.textColor = UIColor.gray200()
+                minusControlLabel.textColor = UIColor.gray200
             }
             applyAccessibility()
         }

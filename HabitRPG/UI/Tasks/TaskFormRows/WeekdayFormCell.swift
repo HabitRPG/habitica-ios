@@ -132,9 +132,9 @@ class WeekdayFormCell: Cell<WeekdaysValue>, CellType {
             view.textColor = .white
         } else {
             view.backgroundColor = .clear
-            view.borderColor = UIColor.gray400()
+            view.borderColor = UIColor.gray400
             view.borderWidth = 1
-            view.textColor = UIColor.gray400()
+            view.textColor = UIColor.gray400
         }
     }
     

@@ -20,14 +20,14 @@ class QuestTitleView: UIView {
     let titleLabel: UILabel = {
         let view = UILabel()
         view.font = CustomFontMetrics.scaledSystemFont(ofSize: 17)
-        view.textColor = UIColor.gray10()
+        view.textColor = UIColor.gray10
         view.numberOfLines = 2
         return view
     }()
     lazy var detailLabel: UILabel = {
         let view = UILabel()
         view.font = CustomFontMetrics.scaledSystemFont(ofSize: 15)
-        view.textColor = UIColor.gray300()
+        view.textColor = UIColor.gray300
         return view
     }()
     

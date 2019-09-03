@@ -7,7 +7,6 @@
 //
 
 #import "HRPGChoosePMRecipientViewController.h"
-#import "UIColor+Habitica.h"
 #import "HRPGQRCodeScannerViewController.h"
 #import "NSString+UUID.h"
 #import "Habitica-Swift.h"
@@ -38,7 +37,7 @@
            formRowDescriptorWithTag:@"username"
            rowType:XLFormRowDescriptorTypeText];
     self.usernameFormRow.title = objcL10n.username;
-    [self.usernameFormRow.cellConfig setObject:[UIColor purple400] forKey:@"self.tintColor"];
+    [self.usernameFormRow.cellConfig setObject:[ObjcThemeWrapper tintColor] forKey:@"self.tintColor"];
     [section addFormRow:self.usernameFormRow];
     [formDescriptor addFormSection:section];
 }

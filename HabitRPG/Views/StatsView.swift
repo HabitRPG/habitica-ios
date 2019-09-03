@@ -139,7 +139,7 @@ class StatsView: UIView, Themeable {
     }
     
     @IBAction func allocateButtonTapped(_ sender: Any) {
-        allocateButton.backgroundColor = UIColor.gray500()
+        allocateButton.backgroundColor = UIColor.gray500
         if let action = allocateAction {
             action()
         }

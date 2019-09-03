@@ -50,7 +50,7 @@ class GroupInvitationView: UIView {
     }()
     private let separatorView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.blue50()
+        view.backgroundColor = UIColor.blue50
         view.isHidden = true
         return view
     }()
@@ -87,9 +87,9 @@ class GroupInvitationView: UIView {
         
         let theme = ThemeService.shared.theme
         if theme.isDark {
-            backgroundColor = UIColor.blue10()
+            backgroundColor = UIColor.blue10
         } else {
-            backgroundColor = UIColor.blue100()
+            backgroundColor = UIColor.blue100
         }
         acceptButton.backgroundColor = theme.contentBackgroundColor
         declineButton.backgroundColor = theme.contentBackgroundColor

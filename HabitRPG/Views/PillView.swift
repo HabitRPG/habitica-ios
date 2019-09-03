@@ -60,7 +60,7 @@ class PillView: UIView {
         }
     }
 
-    @IBInspectable var pillColor: UIColor = UIColor.gray400() {
+    @IBInspectable var pillColor: UIColor = UIColor.gray400 {
         didSet {
             layer.backgroundColor = pillColor.cgColor
 
@@ -124,7 +124,7 @@ class PillView: UIView {
         iconView.contentMode = .center
         
         if borderColor == nil {
-            borderColor = UIColor.gray200()
+            borderColor = UIColor.gray200
         }
     }
 

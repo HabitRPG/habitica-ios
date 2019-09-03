@@ -48,7 +48,7 @@ class TaskFormViewController: FormViewController {
             updateTitle()
         }
     }
-    var taskTintColor: UIColor = UIColor.purple300() {
+    var taskTintColor: UIColor = UIColor.purple300 {
         didSet {
             updateTitleBarColor()
             self.view.tintColor = taskTintColor
@@ -65,7 +65,7 @@ class TaskFormViewController: FormViewController {
         dateFormatter.timeStyle = .none
         return dateFormatter
     }()
-    var lightTaskTintColor: UIColor = UIColor.purple400()
+    var lightTaskTintColor: UIColor = UIColor.purple400
     
     var taskId: String? {
         get {
@@ -83,8 +83,8 @@ class TaskFormViewController: FormViewController {
                 taskType = newTaskType
             }
             if isCreating {
-                lightTaskTintColor = UIColor.purple400()
-                taskTintColor = UIColor.purple300()
+                lightTaskTintColor = UIColor.purple400
+                taskTintColor = UIColor.purple300
             } else {
                 lightTaskTintColor = UIColor.forTaskValueLight(Int(task.value))
                 taskTintColor = UIColor.forTaskValue(Int(task.value))
@@ -167,7 +167,7 @@ class TaskFormViewController: FormViewController {
             form +++ Section()
                 <<< ButtonRow(TaskFormTags.delete) { row in
                     row.title = L10n.delete
-                    row.cell.tintColor = UIColor.red50()
+                    row.cell.tintColor = UIColor.red50
                     row.onCellSelection({ (_, _) in
                         self.deleteButtonTapped()
                     })

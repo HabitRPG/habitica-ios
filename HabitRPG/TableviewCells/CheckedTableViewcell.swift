@@ -44,17 +44,17 @@ class CheckedTableViewCell: TaskTableViewCell {
         handleChecklist(task)
 
         if task.completed || (!task.isDue && task.type == TaskType.daily.rawValue) {
-            self.checklistIndicator.backgroundColor = .gray500()
-            self.checklistDoneLabel.textColor = .gray300()
-            self.checklistAllLabel.textColor = .gray300()
-            self.checklistSeparator.backgroundColor = .gray300()
-            self.checklistLeftBorderView.backgroundColor = .gray400()
-            self.checklistRightBorderView.backgroundColor = .gray400()
+            self.checklistIndicator.backgroundColor = .gray500
+            self.checklistDoneLabel.textColor = .gray300
+            self.checklistAllLabel.textColor = .gray300
+            self.checklistSeparator.backgroundColor = .gray300
+            self.checklistLeftBorderView.backgroundColor = .gray400
+            self.checklistRightBorderView.backgroundColor = .gray400
         }
         
         if task.completed {
-            self.checklistIndicator.backgroundColor = .gray500()
-            self.titleLabel.textColor = .gray300()
+            self.checklistIndicator.backgroundColor = .gray500
+            self.titleLabel.textColor = .gray300
             self.backgroundColor = ThemeService.shared.theme.contentBackgroundColorDimmed
         } else {
             self.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
@@ -88,12 +88,12 @@ class CheckedTableViewCell: TaskTableViewCell {
             checklistAllLabel.textColor = .white
             checklistSeparator.backgroundColor = .white
             if checkedCount == checklistCount {
-                checklistIndicator.backgroundColor = .gray500()
-                checklistDoneLabel.textColor = .gray300()
-                checklistAllLabel.textColor = .gray300()
-                checklistSeparator.backgroundColor = .gray300()
-                checklistLeftBorderView.backgroundColor = .gray400()
-                checklistRightBorderView.backgroundColor = .gray400()
+                checklistIndicator.backgroundColor = .gray500
+                checklistDoneLabel.textColor = .gray300
+                checklistAllLabel.textColor = .gray300
+                checklistSeparator.backgroundColor = .gray300
+                checklistLeftBorderView.backgroundColor = .gray400
+                checklistRightBorderView.backgroundColor = .gray400
             }
             checklistDoneLabel.isHidden = false
             checklistAllLabel.isHidden = false

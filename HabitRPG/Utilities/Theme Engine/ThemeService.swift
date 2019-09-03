@@ -22,7 +22,8 @@ public class ThemeService: NSObject {
     }
     
     private var listeners = NSHashTable<AnyObject>.weakObjects()
-    
+    private var objcListeners = NSHashTable<AnyObject>.weakObjects()
+
     override public init() {
         if #available(iOS 12.0, *) {
             isDarkTheme = UIScreen.main.traitCollection.userInterfaceStyle == .dark
@@ -37,6 +38,17 @@ public class ThemeService: NSObject {
         
         if applyImmediately {
             themable.applyTheme(theme: theme)
+        }
+    }
+    
+    public func addThemeable(themable: ObjcThemeable, applyImmediately: Bool = true) {
+        guard !listeners.contains(themable) else {
+            return
+        }
+        objcListeners.add(themable)
+        
+        if applyImmediately {
+            themable.applyTheme()
         }
     }
     
@@ -107,6 +119,9 @@ public class ThemeService: NSObject {
         listeners.allObjects
             .compactMap { $0 as? Themeable }
             .forEach { $0.applyTheme(theme: theme) }
+        objcListeners.allObjects
+            .compactMap { $0 as? ObjcThemeable }
+            .forEach { $0.applyTheme() }
     }
     
     @available(iOS 12.0, *)
@@ -122,6 +137,12 @@ public class ThemeService: NSObject {
     }
 }
 
+
 public protocol Themeable: AnyObject {
     func applyTheme(theme: Theme)
+}
+
+@objc
+public protocol ObjcThemeable {
+    func applyTheme()
 }

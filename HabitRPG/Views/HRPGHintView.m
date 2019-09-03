@@ -7,7 +7,7 @@
 //
 
 #import "HRPGHintView.h"
-#import "UIColor+Habitica.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGHintView ()
 
@@ -24,11 +24,11 @@
     self = [super init];
 
     if (self) {
-        self.layer.borderColor = [UIColor purple300].CGColor;
+        self.layer.borderColor = [ObjcThemeWrapper tintColor].CGColor;
         self.layer.borderWidth = 2;
         self.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.7];
         self.pulseView = [[UIView alloc] init];
-        self.pulseView.layer.borderColor = [UIColor purple300].CGColor;
+        self.pulseView.layer.borderColor = [ObjcThemeWrapper tintColor].CGColor;
         self.pulseView.layer.borderWidth = 1;
         [self addSubview:self.pulseView];
     }

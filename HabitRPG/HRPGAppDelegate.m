@@ -14,7 +14,6 @@
 #import "Amplitude.h"
 #import "HRPGMaintenanceViewController.h"
 #import "HRPGInboxChatViewController.h"
-#import "UIColor+Habitica.h"
 #import <Keys/HabiticaKeys.h>
 #import "AppAuth.h"
 #import "Habitica-Swift.h"

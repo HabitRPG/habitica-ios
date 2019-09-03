@@ -30,7 +30,7 @@ class ChallengeTableViewCell: UITableViewCell {
         self.participatingBadge.isHidden = !isParticipating
         self.ownerBadge.isHidden = !isOwner
         
-        prizeLabel.textColor = UIColor.green100()
+        prizeLabel.textColor = UIColor.green100
         summaryLabel.textColor = ThemeService.shared.theme.secondaryTextColor
         memberCountLabel.textColor = ThemeService.shared.theme.secondaryTextColor
         

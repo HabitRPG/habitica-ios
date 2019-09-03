@@ -20,7 +20,7 @@ class ClassSelectionOptionView: UIView {
     }()
     private let labelWrapper: UIView = {
         let labelWrapper = UIView()
-        labelWrapper.backgroundColor = UIColor.gray700()
+        labelWrapper.backgroundColor = UIColor.gray700
         labelWrapper.layer.cornerRadius = 4
         return labelWrapper
     }()
@@ -98,19 +98,19 @@ class ClassSelectionOptionView: UIView {
         case .warrior:
             iconView.image = HabiticaIcons.imageOfWarriorLightBg
             label.text = L10n.Classes.warrior
-            tintColor = UIColor.red10()
+            tintColor = UIColor.red10
         case .mage:
             iconView.image = HabiticaIcons.imageOfMageLightBg
             label.text = L10n.Classes.mage
-            tintColor = UIColor.blue10()
+            tintColor = UIColor.blue10
         case .healer:
             iconView.image = HabiticaIcons.imageOfHealerLightBg
             label.text = L10n.Classes.healer
-            tintColor = UIColor.yellow5()
+            tintColor = UIColor.yellow5
         case .rogue:
             iconView.image = HabiticaIcons.imageOfRogueLightBg
             label.text = L10n.Classes.rogue
-            tintColor = UIColor.purple300()
+            tintColor = UIColor.purple300
         }
     }
     

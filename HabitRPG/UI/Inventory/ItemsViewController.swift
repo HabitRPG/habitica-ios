@@ -66,7 +66,7 @@ class ItemsViewController: BaseTableViewController {
             let view = Bundle.main.loadNibNamed("ShopAdFooter", owner: self, options: nil)?.last as? UIView
             let label = view?.viewWithTag(2) as? UILabel
             let openShopButton = view?.viewWithTag(3) as? UIButton
-            openShopButton?.layer.borderColor = UIColor.purple400().cgColor
+            openShopButton?.layer.borderColor = UIColor.purple400.cgColor
             openShopButton?.layer.borderWidth = 1.0
             openShopButton?.layer.cornerRadius = 5
             

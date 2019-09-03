@@ -25,5 +25,5 @@ struct LabeledFormValue<V: Equatable>: Equatable, CustomStringConvertible {
 typealias CombinedCell = BaseCell & CellType
 
 class TaskRow<C: CombinedCell>: Row<C> {
-    var tintColor: UIColor = UIColor.purple300()
+    var tintColor: UIColor = UIColor.purple300
 }

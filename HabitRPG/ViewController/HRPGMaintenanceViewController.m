@@ -8,7 +8,6 @@
 
 #import "HRPGMaintenanceViewController.h"
 #import "Masonry.h"
-#import "UIColor+Habitica.h"
 #import "UIViewController+Markdown.h"
 #import "Habitica-Swift.h"
 

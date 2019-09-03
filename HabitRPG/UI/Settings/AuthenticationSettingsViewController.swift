@@ -79,7 +79,7 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
                 cellDetailText = loginMethods.joined(separator: ", ")
             }
         } else {
-            cellTitleColor = UIColor.red50()
+            cellTitleColor = UIColor.red50
             cellName = "ButtonCell"
             if indexPath.item == 0 {
                 cellTitle = L10n.Settings.resetAccount
@@ -132,7 +132,7 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         let textView = UITextView()
         textView.text = L10n.Settings.deleteAccountDescription
         textView.font = UIFont.preferredFont(forTextStyle: .subheadline)
-        textView.textColor = UIColor.gray100()
+        textView.textColor = UIColor.gray100
         textView.isEditable = false
         textView.isScrollEnabled = false
         textView.isSelectable = false
@@ -168,7 +168,7 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         let textView = UITextView()
         textView.text = L10n.Settings.resetAccountDescription
         textView.font = UIFont.preferredFont(forTextStyle: .subheadline)
-        textView.textColor = UIColor.gray100()
+        textView.textColor = UIColor.gray100
         textView.isEditable = false
         textView.isScrollEnabled = false
         textView.isSelectable = false

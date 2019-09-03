@@ -110,8 +110,8 @@
 
 - (void)configureEmpty {
     HRPGSimpleShopItemView *closedShopInfoView = [[HRPGSimpleShopItemView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width - 40, 400)];
-    closedShopInfoView.shopItemTitleLabel.textColor = [UIColor gray200];
-    closedShopInfoView.shopItemDescriptionLabel.textColor = [UIColor gray300];
+    closedShopInfoView.shopItemTitleLabel.textColor = [ObjcThemeWrapper primaryTextColor];
+    closedShopInfoView.shopItemDescriptionLabel.textColor = [ObjcThemeWrapper secondaryTextColor];
     
     UIView *bgView = [[UIView alloc] initWithFrame:self.collectionView.frame];
     bgView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -135,8 +135,8 @@
         notes = @"Earn one Mystic Hourglass for every three months of consecutive subscription, then use them to unlock limited edition items, pets, and mounts from the past... and future!";
         
         UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width - 40, 38)];
-        button.backgroundColor = [UIColor gray600];
-        [button setTitleColor:[UIColor purple400] forState:UIControlStateNormal];
+        button.backgroundColor = [ObjcThemeWrapper windowBackgroundColor];
+        [button setTitleColor:[ObjcThemeWrapper dimmedTextColor] forState:UIControlStateNormal];
         [button setTitle:@"I want to Subscribe" forState:UIControlStateNormal];
         [button addConstraint:[NSLayoutConstraint constraintWithItem:button attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:38]];
         button.layer.cornerRadius = 6;

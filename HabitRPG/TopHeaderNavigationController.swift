@@ -50,7 +50,7 @@ protocol TopHeaderNavigationControllerProtocol: class {
 
 class TopHeaderViewController: UINavigationController, TopHeaderNavigationControllerProtocol, Themeable {
     @objc public var state: TopHeaderState = .visible
-    @objc public var defaultNavbarHiddenColor = UIColor.purple300()
+    @objc public var defaultNavbarHiddenColor = UIColor.purple300
     @objc public var defaultNavbarVisibleColor = ThemeService.shared.theme.contentBackgroundColor
     private var headerView: UIView?
     private var alternativeHeaderView: UIView?
@@ -63,12 +63,12 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
     private var gestureRecognizer: UIPanGestureRecognizer?
     private var headerYPosition: CGFloat = 0
     
-    private var visibleTintColor = UIColor.purple400()
+    private var visibleTintColor = UIColor.purple400
     private var hiddenTintColor = UIColor.white
     private var visibleTextColor = UIColor.black
     private var hiddenTextColor = UIColor.white
     
-    @objc public var navbarHiddenColor: UIColor = UIColor.purple300() {
+    @objc public var navbarHiddenColor: UIColor = UIColor.purple300 {
         didSet {
             let isHiddenLightColor = navbarHiddenColor.isLight()
             hiddenTintColor = isHiddenLightColor ? ThemeService.shared.theme.tintColor : UIColor.white

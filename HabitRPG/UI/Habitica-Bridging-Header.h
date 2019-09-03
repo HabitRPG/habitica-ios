@@ -3,7 +3,6 @@
 //
 
 #import "HRPGBaseViewController.h"
-#import "UIColor+Habitica.h"
 #import "OnePasswordExtension.h"
 #import "HRPGAppDelegate.h"
 #import "HRPGGemHeaderNavigationController.h"
@@ -33,7 +32,6 @@
 #import "HRPGSharingManager.h"
 #import "HRPGFeedViewController.h"
 #import "HRPGSpellTabBarController.h"
-#import "HRPGQRCodeView.h"
 #import "HRPGSearchDataManager.h"
 #import "HRPGCoachmarkFrameProvider.h"
 #import "HRPGFilterViewController.h"

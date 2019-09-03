@@ -101,17 +101,17 @@ class UserTopHeader: UIView, Themeable {
         magicLabel.progressBar.barBackgroundColor = theme.contentBackgroundColorDimmed
         
         if theme.isDark {
-            healthLabel.color = UIColor.red50().withAlphaComponent(0.75)
-            experienceLabel.color = UIColor.yellow50().withAlphaComponent(0.75)
-            magicLabel.color = UIColor.blue50().withAlphaComponent(0.75)
+            healthLabel.color = UIColor.red50.withAlphaComponent(0.75)
+            experienceLabel.color = UIColor.yellow50.withAlphaComponent(0.75)
+            magicLabel.color = UIColor.blue50.withAlphaComponent(0.75)
             healthLabel.iconView.alpha = 0.8
             experienceLabel.iconView.alpha = 0.8
             magicLabel.iconView.alpha = 0.8
             classImageView.alpha = 0.8
         } else {
-            healthLabel.color = UIColor.red100()
-            experienceLabel.color = UIColor.yellow100()
-            magicLabel.color = UIColor.blue100()
+            healthLabel.color = UIColor.red100
+            experienceLabel.color = UIColor.yellow100
+            magicLabel.color = UIColor.blue100
             healthLabel.iconView.alpha = 1.0
             experienceLabel.iconView.alpha = 1.0
             magicLabel.iconView.alpha = 1.0

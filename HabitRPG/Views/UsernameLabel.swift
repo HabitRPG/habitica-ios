@@ -12,7 +12,7 @@ class UsernameLabel: UILabel {
     
     @objc public var contributorLevel: Int = 0 {
         didSet {
-            textColor = UIColor.contributorColor(for: contributorLevel)
+            textColor = UIColor.contributorColor(forTier: contributorLevel)
             iconView.image = HabiticaIcons.imageOfContributorBadge(contributorTier: CGFloat(contributorLevel), isNPC: false)
         }
     }

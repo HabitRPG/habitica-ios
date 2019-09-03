@@ -65,11 +65,11 @@ class QuestProgressView: UIView {
             bossArtTitle.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(bossArtTitleTapped)))
             bossArtCarret.image = #imageLiteral(resourceName: "carret_down").withRenderingMode(.alwaysTemplate)
             
-            healthProgressView.barColor = UIColor.red50()
+            healthProgressView.barColor = UIColor.red50
             healthProgressView.icon = HabiticaIcons.imageOfHeartLightBg
-            healthProgressView.pendingBarColor = UIColor.red10().withAlphaComponent(0.3)
+            healthProgressView.pendingBarColor = UIColor.red10.withAlphaComponent(0.3)
             healthProgressView.pendingTitle = L10n.pendingDamage
-            rageProgressView.barColor = UIColor.orange100()
+            rageProgressView.barColor = UIColor.orange100
             rageProgressView.icon = #imageLiteral(resourceName: "icon_rage")
             rageStrikeCountLabelHeight.constant = 30
             rageStrikeContainerHeight.constant = 84
@@ -238,7 +238,7 @@ class QuestProgressView: UIView {
         attributedString.addAttribute(.foregroundColor, value: UIColor.black, range: firstLineRange)
         attributedString.addAttribute(.font, value: CustomFontMetrics.scaledSystemFont(ofSize: 15), range: NSRange.init(location: firstLineRange.length, length: string.count - firstLineRange.length))
         let alertController = HabiticaAlertController.alert(title: L10n.WorldBoss.rageStrikeExplanationButton, attributedMessage: attributedString)
-        alertController.titleBackgroundColor = UIColor.orange50()
+        alertController.titleBackgroundColor = UIColor.orange50
         alertController.addCloseAction()
         alertController.show()
         alertController.titleLabel.textColor = .white

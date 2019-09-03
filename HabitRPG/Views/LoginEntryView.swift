@@ -133,7 +133,7 @@ class LoginEntryView: UIView, UITextFieldDelegate {
         }
         
         if hasError {
-            bottomBorder.backgroundColor = UIColor.red50()
+            bottomBorder.backgroundColor = UIColor.red50
         } else {
             bottomBorder.backgroundColor = .white
         }

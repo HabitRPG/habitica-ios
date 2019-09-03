@@ -449,7 +449,7 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
         let textView = UITextView()
         textView.text = L10n.Login.enterEmail
         textView.font = UIFont.preferredFont(forTextStyle: .subheadline)
-        textView.textColor = UIColor.gray100()
+        textView.textColor = UIColor.gray100
         textView.isEditable = false
         textView.isScrollEnabled = false
         textView.isSelectable = false

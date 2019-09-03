@@ -25,9 +25,9 @@ class MemberListView: UIView {
     let healthBar: ProgressBar = {
         let view = ProgressBar()
         if ThemeService.shared.theme.isDark {
-            view.barColor = UIColor.red50()
+            view.barColor = UIColor.red50
         } else {
-            view.barColor = UIColor.red100()
+            view.barColor = UIColor.red100
         }
         return view
     }()
@@ -40,9 +40,9 @@ class MemberListView: UIView {
     let experienceBar: ProgressBar = {
         let view = ProgressBar()
         if ThemeService.shared.theme.isDark {
-            view.barColor = UIColor.yellow10()
+            view.barColor = UIColor.yellow10
         } else {
-            view.barColor = UIColor.yellow50()
+            view.barColor = UIColor.yellow50
         }
         return view
     }()
@@ -55,9 +55,9 @@ class MemberListView: UIView {
     let manaBar: ProgressBar = {
         let view = ProgressBar()
         if ThemeService.shared.theme.isDark {
-            view.barColor = UIColor.blue50()
+            view.barColor = UIColor.blue50
         } else {
-            view.barColor = UIColor.blue100()
+            view.barColor = UIColor.blue100
         }
         return view
     }()

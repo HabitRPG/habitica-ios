@@ -40,7 +40,7 @@ class WorldBossMenuHeader: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         hearthIconView.image = HabiticaIcons.imageOfHeartDarkBg
-        healthProgressBar.barColor = UIColor.red50()
+        healthProgressBar.barColor = UIColor.red50
         healthProgressBar.barBackgroundColor = UIColor(white: 1.0, alpha: 0.16)
         
         let userDefaults = UserDefaults()
@@ -118,7 +118,7 @@ class WorldBossMenuHeader: UIView {
         bossImageView.image = nil
         collapseButton.isHidden = true
         bossNameLabel.textAlignment = .left
-        typeLabel.textColor = UIColor.red100()
+        typeLabel.textColor = UIColor.red100
         
         let userDefaults = UserDefaults()
         userDefaults.set(true, forKey: "worldBossArtCollapsed")

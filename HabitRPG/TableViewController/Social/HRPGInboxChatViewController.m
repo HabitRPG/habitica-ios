@@ -56,8 +56,8 @@
 
     self.textView.placeholder = objcL10n.writeAMessage;
     self.textInputbar.maxCharCount = [[[ConfigRepository alloc] init] integerWithVariable:ConfigVariableMaxChatLength];
-    self.textInputbar.charCountLabelNormalColor = [UIColor gray400];
-    self.textInputbar.charCountLabelWarningColor = [UIColor red50];
+    self.textInputbar.charCountLabelNormalColor = [ObjcThemeWrapper dimmedTextColor];
+    self.textInputbar.charCountLabelWarningColor = [ObjcThemeWrapper errorColor];
     self.textInputbar.charCountLabel.font = [UIFont systemFontOfSize:11 weight:UIFontWeightBold];
     self.textInputbar.textView.backgroundColor = ObjcThemeWrapper.contentBackgroundColor;
     self.textInputbar.textView.placeholderColor = ObjcThemeWrapper.dimmedTextColor;
@@ -85,9 +85,9 @@
 - (void)textViewDidChange:(UITextView *)textView {
     [super textViewDidChange:textView];
     if (self.textView.text.length > (self.textInputbar.maxCharCount * 0.95)) {
-        self.textInputbar.charCountLabelNormalColor = [UIColor yellow5];
+        self.textInputbar.charCountLabelNormalColor = [ObjcThemeWrapper warningColor];
     } else {
-        self.textInputbar.charCountLabelNormalColor = [UIColor gray400];
+        self.textInputbar.charCountLabelNormalColor = [ObjcThemeWrapper dimmedTextColor];
     }
 }
 

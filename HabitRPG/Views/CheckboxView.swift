@@ -112,10 +112,10 @@ class CheckboxView: UIView {
             if task.completed {
                 boxFillColor = theme.dimmedTextColor
                 backgroundColor = theme.dimmedColor
-                checkColor = UIColor.gray200()
+                checkColor = UIColor.gray200
             } else {
                 backgroundColor = theme.offsetBackgroundColor
-                checkColor = UIColor.gray200()
+                checkColor = UIColor.gray200
                 if task.dueToday() {
                     backgroundColor = UIColor.forTaskValueLight(Int(task.value))
                     checkColor = UIColor.forTaskValue(Int(task.value))
@@ -126,7 +126,7 @@ class CheckboxView: UIView {
             if task.completed {
                 boxFillColor = theme.dimmedTextColor
                 backgroundColor = theme.offsetBackgroundColor
-                checkColor = UIColor.gray200()
+                checkColor = UIColor.gray200
             } else {
                 backgroundColor = UIColor.forTaskValueLight(Int(task.value))
                 checkColor = UIColor.forTaskValue(Int(task.value))
@@ -158,11 +158,11 @@ class CheckboxView: UIView {
             }
         }
         
-        label.textColor = checked ? UIColor.gray400() : UIColor.gray100()
+        label.textColor = checked ? UIColor.gray400 : UIColor.gray100
         backgroundColor = UIColor.clear
-        boxFillColor = checked ? UIColor.gray400() : UIColor.clear
-        boxBorderColor = checked ? nil : UIColor.gray400()
-        checkColor = UIColor.gray200()
+        boxFillColor = checked ? UIColor.gray400 : UIColor.clear
+        boxBorderColor = checked ? nil : UIColor.gray400
+        checkColor = UIColor.gray200
         boxCornerRadius = 3
         centerCheckbox = false
         size = 22

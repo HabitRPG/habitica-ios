@@ -24,8 +24,8 @@ class CustomRewardCell: UICollectionViewCell {
         didSet {
             if canAfford {
                 currencyImageView.alpha = 1.0
-                buyButton.backgroundColor = UIColor.yellow500().withAlphaComponent(0.3)
-                amountLabel.textColor = .yellow5()
+                buyButton.backgroundColor = UIColor.yellow500.withAlphaComponent(0.3)
+                amountLabel.textColor = .yellow5
             } else {
                 currencyImageView.alpha = 0.3
                 buyButton.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor

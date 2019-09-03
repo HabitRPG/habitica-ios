@@ -410,7 +410,7 @@ class SettingsViewController: FormViewController, Themeable {
                     cell.accessoryType = .disclosureIndicator
                     if self?.user?.flags?.verifiedUsername == false {
                         cell.detailTextLabel?.text = L10n.Settings.usernameNotConfirmed
-                        cell.detailTextLabel?.textColor = UIColor.red50()
+                        cell.detailTextLabel?.textColor = UIColor.red50
                     } else {
                         cell.detailTextLabel?.text = nil
                     }
@@ -445,7 +445,7 @@ class SettingsViewController: FormViewController, Themeable {
             <<< ButtonRow { row in
                 row.title = L10n.Settings.logOut
                 row.cellSetup({ (cell, _) in
-                    cell.tintColor = UIColor.red50()
+                    cell.tintColor = UIColor.red50
                 }).onCellSelection({ (_, _) in
                     self.userRepository.logoutAccount()
                     let loginViewController = StoryboardScene.Intro.loginTableViewController.instantiate()

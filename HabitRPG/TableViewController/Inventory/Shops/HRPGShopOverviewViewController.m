@@ -9,7 +9,6 @@
 #import "HRPGShopOverviewViewController.h"
 #import "HRPGShopViewController.h"
 #import "NSString+StripHTML.h"
-#import "UIColor+Habitica.h"
 #import "CAGradientLayer+HRPGShopGradient.h"
 #import "Habitica-Swift.h"
 #import "HRPGShopOverviewTableViewDataSource.h"

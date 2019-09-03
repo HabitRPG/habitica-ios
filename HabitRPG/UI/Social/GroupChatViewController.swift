@@ -61,8 +61,8 @@ class GroupChatViewController: SLKTextViewController {
         textView.registerMarkdownFormattingSymbol("~~", withTitle: "Strike")
         textView.placeholder = L10n.writeMessage
         textInputbar.maxCharCount = UInt(ConfigRepository().integer(variable: .maxChatLength))
-        textInputbar.charCountLabelNormalColor = UIColor.gray400()
-        textInputbar.charCountLabelWarningColor = UIColor.red50()
+        textInputbar.charCountLabelNormalColor = UIColor.gray400
+        textInputbar.charCountLabelWarningColor = UIColor.red50
         textInputbar.charCountLabel.font = UIFont.systemFont(ofSize: 11, weight: .bold)
         textInputbar.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
         textInputbar.textView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
@@ -148,9 +148,9 @@ class GroupChatViewController: SLKTextViewController {
         super.textViewDidChange(textView)
         let textLength = textView.text.count
         if textLength > Int(Double(textInputbar.maxCharCount) * 0.95) {
-            textInputbar.charCountLabelNormalColor = UIColor.yellow5()
+            textInputbar.charCountLabelNormalColor = UIColor.yellow5
         } else {
-            textInputbar.charCountLabelNormalColor = UIColor.gray400()
+            textInputbar.charCountLabelNormalColor = UIColor.gray400
         }
     }
     

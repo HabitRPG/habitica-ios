@@ -13,7 +13,7 @@ import Habitica_Models
 class ChallengeTaskListView: UIView {
 
     static let verticalSpacing = CGFloat(integerLiteral: 12)
-    static let borderColor = UIColor.gray400()
+    static let borderColor = UIColor.gray400
 
     let titleLabel = UILabel()
     let borderView = UIView()

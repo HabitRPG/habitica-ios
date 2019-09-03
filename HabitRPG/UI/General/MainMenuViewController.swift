@@ -245,7 +245,7 @@ class MainMenuViewController: BaseTableViewController {
         let subtitleLabel = cell.viewWithTag(3) as? UILabel
         subtitleLabel?.text = item?.subtitle
         subtitleLabel?.font = CustomFontMetrics.scaledSystemFont(ofSize: 12)
-        subtitleLabel?.textColor = UIColor.orange50()
+        subtitleLabel?.textColor = UIColor.orange50
         return cell
     }
     

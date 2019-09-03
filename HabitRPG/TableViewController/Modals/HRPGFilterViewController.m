@@ -7,10 +7,9 @@
 //
 
 #import "HRPGFilterViewController.h"
-#import "UIColor+Habitica.h"
 #import "Habitica-Swift.h"
 
-@interface HRPGFilterViewController ()
+@interface HRPGFilterViewController () <ObjcThemeable>
 
 @property UIView *headerView;
 @property UISegmentedControl *filterTypeControl;
@@ -64,9 +63,17 @@
 
     self.tableView.tableHeaderView = self.headerView;
     
-    self.tableView.backgroundColor = ObjcThemeWrapper.contentBackgroundColor;
+    [ObjcThemeWrapper addObjcThemeable:self];
     
     [self doneButtonTapped:nil];
+}
+
+- (void)applyTheme {
+    self.tableView.backgroundColor = ObjcThemeWrapper.contentBackgroundColor;
+    self.tableView.separatorColor = ObjcThemeWrapper.tableviewSeparatorColor;
+    self.navigationController.navigationBar.backgroundColor = ObjcThemeWrapper.contentBackgroundColor;
+    self.navigationController.navigationBar.tintColor = ObjcThemeWrapper.tintColor;
+    [self.tableView reloadData];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

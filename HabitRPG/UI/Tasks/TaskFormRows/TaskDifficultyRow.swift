@@ -79,28 +79,28 @@ public class TaskDifficultyCell: Cell<Float>, CellType {
                 trivialControlLabel.textColor = taskRow.tintColor
             } else {
                 trivialControlIconView.image = HabiticaIcons.imageOfTaskDifficultyStars(taskTintColor: taskRow.tintColor, difficulty: 0.1, isActive: false)
-                trivialControlLabel.textColor = UIColor.gray200()
+                trivialControlLabel.textColor = UIColor.gray200
             }
             if taskRow.value == 1 {
                 easyControlIconView.image = HabiticaIcons.imageOfTaskDifficultyStars(taskTintColor: taskRow.tintColor, difficulty: 1, isActive: true)
                 easyControlLabel.textColor = taskRow.tintColor
             } else {
                 easyControlIconView.image = HabiticaIcons.imageOfTaskDifficultyStars(taskTintColor: taskRow.tintColor, difficulty: 1, isActive: false)
-                easyControlLabel.textColor = UIColor.gray200()
+                easyControlLabel.textColor = UIColor.gray200
             }
             if taskRow.value == 1.5 {
                 mediumControlIconView.image = HabiticaIcons.imageOfTaskDifficultyStars(taskTintColor: taskRow.tintColor, difficulty: 1.5, isActive: true)
                 mediumControlLabel.textColor = taskRow.tintColor
             } else {
                 mediumControlIconView.image = HabiticaIcons.imageOfTaskDifficultyStars(taskTintColor: taskRow.tintColor, difficulty: 1.5, isActive: false)
-                mediumControlLabel.textColor = UIColor.gray200()
+                mediumControlLabel.textColor = UIColor.gray200
             }
             if taskRow.value == 2 {
                 hardControlIconView.image = HabiticaIcons.imageOfTaskDifficultyStars(taskTintColor: taskRow.tintColor, difficulty: 2, isActive: true)
                 hardControlLabel.textColor = taskRow.tintColor
             } else {
                 hardControlIconView.image = HabiticaIcons.imageOfTaskDifficultyStars(taskTintColor: taskRow.tintColor, difficulty: 2, isActive: false)
-                hardControlLabel.textColor = UIColor.gray200()
+                hardControlLabel.textColor = UIColor.gray200
             }
             applyAccessibility()
         }
