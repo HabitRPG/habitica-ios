@@ -26,4 +26,8 @@ typealias CombinedCell = BaseCell & CellType
 
 class TaskRow<C: CombinedCell>: Row<C> {
     var tintColor: UIColor = UIColor.purple300
+    
+    func updateTintColor(_ newTint: UIColor) {
+        self.tintColor = newTint
+    }
 }

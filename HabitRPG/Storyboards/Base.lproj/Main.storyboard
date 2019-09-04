@@ -44,7 +44,9 @@
                     <navigationItem key="navigationItem" id="Ueo-OS-iQj">
                         <barButtonItem key="leftBarButtonItem" id="r2M-pt-ZEv">
                             <connections>
-                                <segue destination="6vN-Em-JCA" kind="presentation" identifier="FilterSegue" id="njg-A8-lDq"/>
+                                <segue destination="6vN-Em-JCA" kind="popoverPresentation" identifier="FilterSegue" popoverAnchorBarButtonItem="r2M-pt-ZEv" id="njg-A8-lDq">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="eoD-0q-22r">
@@ -83,7 +85,9 @@
                     <navigationItem key="navigationItem" id="zec-6L-pJk">
                         <barButtonItem key="leftBarButtonItem" id="lJN-5G-qrz">
                             <connections>
-                                <segue destination="6vN-Em-JCA" kind="presentation" identifier="FilterSegue" id="04Z-5H-zfF"/>
+                                <segue destination="6vN-Em-JCA" kind="popoverPresentation" identifier="FilterSegue" popoverAnchorBarButtonItem="lJN-5G-qrz" id="04Z-5H-zfF">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="QMS-gq-G3V">
@@ -115,7 +119,9 @@
                         <barButtonItem key="leftBarButtonItem" id="7QR-Cq-K2a">
                             <connections>
                                 <action selector="editButtonSelected:" destination="sPQ-za-Ji6" id="cc5-TO-pi3"/>
-                                <segue destination="6vN-Em-JCA" kind="presentation" identifier="FilterSegue" id="iSa-66-Wjc"/>
+                                <segue destination="6vN-Em-JCA" kind="popoverPresentation" identifier="FilterSegue" popoverAnchorBarButtonItem="7QR-Cq-K2a" id="iSa-66-Wjc">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="txM-DJ-1EC">
@@ -2874,7 +2880,7 @@
         <image name="tabbar_todos" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="njg-A8-lDq"/>
+        <segue reference="04Z-5H-zfF"/>
         <segue reference="ETz-qE-xC2"/>
         <segue reference="nYO-SY-Og4"/>
         <segue reference="tO1-JH-hWy"/>

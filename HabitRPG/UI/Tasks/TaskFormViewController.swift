@@ -34,7 +34,7 @@ enum TaskFormTags {
 }
 
 //swiftlint:disable:next type_body_length
-class TaskFormViewController: FormViewController {
+class TaskFormViewController: FormViewController, Themeable {
 
     weak var modalContainerViewController: VisualEffectModalViewController?
     
@@ -82,12 +82,23 @@ class TaskFormViewController: FormViewController {
             if let type = task.type, let newTaskType = TaskType(rawValue: type) {
                 taskType = newTaskType
             }
+            let theme = ThemeService.shared.theme
             if isCreating {
-                lightTaskTintColor = UIColor.purple400
-                taskTintColor = UIColor.purple300
+                if theme.isDark {
+                    lightTaskTintColor = UIColor.purple300
+                    taskTintColor = UIColor.purple200
+                } else {
+                    lightTaskTintColor = UIColor.purple400
+                    taskTintColor = UIColor.purple300
+                }
             } else {
-                lightTaskTintColor = UIColor.forTaskValueLight(Int(task.value))
-                taskTintColor = UIColor.forTaskValue(Int(task.value))
+                if theme.isDark {
+                    lightTaskTintColor = UIColor.forTaskValue(Int(task.value))
+                    taskTintColor = UIColor.forTaskValueDark(Int(task.value))
+                } else {
+                    lightTaskTintColor = UIColor.forTaskValueLight(Int(task.value))
+                    taskTintColor = UIColor.forTaskValue(Int(task.value))
+                }
             }
         }
     }
@@ -189,6 +200,32 @@ class TaskFormViewController: FormViewController {
                 self.modalContainerViewController?.dismiss()
             }
         }
+        
+        ThemeService.shared.addThemeable(themable: self, applyImmediately: false)
+        tableView.separatorColor = ThemeService.shared.theme.tableviewSeparatorColor
+    }
+    
+    func applyTheme(theme: Theme) {
+        tableView.separatorColor = theme.tableviewSeparatorColor
+
+        if isCreating {
+            if theme.isDark {
+                lightTaskTintColor = UIColor.purple300
+                taskTintColor = UIColor.purple200
+            } else {
+                lightTaskTintColor = UIColor.purple400
+                taskTintColor = UIColor.purple300
+            }
+        } else {
+            if theme.isDark {
+                lightTaskTintColor = UIColor.forTaskValue(Int(task.value))
+                taskTintColor = UIColor.forTaskValueDark(Int(task.value))
+            } else {
+                lightTaskTintColor = UIColor.forTaskValueLight(Int(task.value))
+                taskTintColor = UIColor.forTaskValue(Int(task.value))
+            }
+        }
+        tableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -215,7 +252,9 @@ class TaskFormViewController: FormViewController {
             }
             <<< TaskTextInputRow(TaskFormTags.title) { row in
                 row.title = L10n.title
-                row.tintColor = taskTintColor
+                row.cellUpdate({ (cell, row) in
+                    cell.updateTintColor(self.taskTintColor)
+                })
                 row.topSpacing = 12
                 row.add(rule: RuleRequired())
                 row.validationOptions = .validatesOnDemand
@@ -228,7 +267,9 @@ class TaskFormViewController: FormViewController {
             <<< TaskTextInputRow(TaskFormTags.notes) { row in
                 row.title = L10n.notes
                 row.placeholder = L10n.Tasks.Form.notesPlaceholder
-                row.tintColor = taskTintColor
+                row.cellUpdate({ (cell, row) in
+                    cell.updateTintColor(self.taskTintColor)
+                })
                 row.topSpacing = 8
                 row.bottomSpacing = 12
                 row.onChange({[weak self] _ in
@@ -242,8 +283,10 @@ class TaskFormViewController: FormViewController {
     private func setupHabitControls() {
         form +++ Section(L10n.Tasks.Form.controls)
             <<< HabitControlsRow(TaskFormTags.habitControls) {row in
-                row.tintColor = taskTintColor
                 row.value = HabitControlsValue()
+                row.cellUpdate({ (cell, row) in
+                    cell.updateTintColor(self.taskTintColor)
+                })
         }
     }
     
@@ -254,7 +297,7 @@ class TaskFormViewController: FormViewController {
                                         section.addButtonProvider = { section in
                                             return ButtonRow { row in
                                                 row.title = L10n.Tasks.Form.newChecklistItem
-                                                row.cellSetup({ (cell, _) in
+                                                row.cellUpdate({ (cell, _) in
                                                     cell.tintColor = self.lightTaskTintColor
                                                 })
                                                 row.onCellSelection({[weak self] (_, _) in
@@ -264,8 +307,9 @@ class TaskFormViewController: FormViewController {
                                         }
                                         section.multivaluedRowToInsertAt = { index in
                                             return TextRow { row in
-                                                row.cellSetup({ (cell, _) in
+                                                row.cellUpdate({ (cell, _) in
                                                     cell.tintColor = self.lightTaskTintColor
+                                                    cell.textField.textColor = ThemeService.shared.theme.primaryTextColor
                                                 })
                                                 row.onCellHighlightChanged({[weak self] (_, _) in
                                                     self?.view.setNeedsLayout()
@@ -278,8 +322,10 @@ class TaskFormViewController: FormViewController {
     private func setupTaskDifficulty() {
         form +++ Section(L10n.Tasks.Form.difficulty)
             <<< TaskDifficultyRow(TaskFormTags.difficulty) { row in
-                row.tintColor = taskTintColor
                 row.value = 1
+                row.cellUpdate({ (cell, row) in
+                    cell.updateTintColor(self.taskTintColor)
+                })
         }
     }
     
@@ -288,7 +334,7 @@ class TaskFormViewController: FormViewController {
             <<< SegmentedRow<LabeledFormValue<String>>(TaskFormTags.habitResetStreak) { row in
                 row.options = TaskFormViewController.habitResetStreakOptions
                 row.value = TaskFormViewController.habitResetStreakOptions[0]
-                row.cellSetup({ (cell, _) in
+                row.cellUpdate({ (cell, row) in
                     cell.tintColor = self.taskTintColor
                     cell.segmentedControl.tintColor = self.taskTintColor
                 })
@@ -300,9 +346,10 @@ class TaskFormViewController: FormViewController {
             <<< DateRow(TaskFormTags.startDate) { row in
                 row.title = L10n.Tasks.Form.startDate
                 row.value = Date()
-                row.cellSetup({ (cell, _) in
+                row.cellUpdate({ (cell, row) in
                     cell.tintColor = self.lightTaskTintColor
                     cell.detailTextLabel?.textColor = self.lightTaskTintColor
+                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
                 })
                 row.onChange({[weak self] _ in
                     self?.updateDailySchedulingFooter()
@@ -313,9 +360,10 @@ class TaskFormViewController: FormViewController {
                 row.options = TaskFormViewController.dailyRepeatOptions
                 row.value = TaskFormViewController.dailyRepeatOptions[0]
                 row.selectorTitle = "Pick a repeat option"
-                row.cellSetup({ (cell, _) in
+                row.cellUpdate({ (cell, row) in
                     cell.tintColor = self.lightTaskTintColor
                     cell.detailTextLabel?.textColor = self.lightTaskTintColor
+                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
                 })
                 row.onChange({[weak self] _ in
                     self?.updateDailySchedulingFooter()
@@ -325,9 +373,10 @@ class TaskFormViewController: FormViewController {
                 row.title = L10n.Tasks.Form.every
                 row.options = Array(0...366)
                 row.value = 1
-                row.cellSetup({ (cell, _) in
+                row.cellUpdate({ (cell, row) in
                     cell.tintColor = self.lightTaskTintColor
                     cell.detailTextLabel?.textColor = self.lightTaskTintColor
+                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
                 })
                 row.onChange({[weak self] _ in
                     self?.updateDailySchedulingFooter()
@@ -339,7 +388,7 @@ class TaskFormViewController: FormViewController {
                 row.hidden = Condition.function([TaskFormTags.dailyRepeat], { (form) -> Bool in
                     return (form.rowBy(tag: TaskFormTags.dailyRepeat) as? ActionSheetRow<LabeledFormValue<String>>)?.value?.value != "monthly"
                 })
-                row.cellSetup({ (cell, _) in
+                row.cellUpdate({ (cell, row) in
                     cell.tintColor = self.taskTintColor
                     cell.segmentedControl.tintColor = self.taskTintColor
                 })
@@ -352,6 +401,9 @@ class TaskFormViewController: FormViewController {
                 row.hidden = Condition.function([TaskFormTags.dailyRepeat, TaskFormTags.repeatMonthlySegment], { (form) -> Bool in
                     return (form.rowBy(tag: TaskFormTags.dailyRepeat) as? ActionSheetRow<LabeledFormValue<String>>)?.value?.value != "weekly"
                 })
+                row.cellUpdate { (cell, row) in
+                    cell.updateTintColor(newTint: self.taskTintColor)
+                }
                 row.onChange({[weak self] _ in
                     self?.updateDailySchedulingFooter()
                 })
@@ -409,7 +461,7 @@ class TaskFormViewController: FormViewController {
                                         section.addButtonProvider = { section in
                                             return ButtonRow { row in
                                                 row.title = L10n.Tasks.Form.newReminder
-                                                row.cellSetup({ (cell, _) in
+                                                row.cellUpdate({ (cell, _) in
                                                     cell.tintColor = self.lightTaskTintColor
                                                 })
                                                 row.onCellSelection({[weak self] (_, _) in
@@ -421,7 +473,7 @@ class TaskFormViewController: FormViewController {
                                             return TimeRow { row in
                                                 row.title = L10n.Tasks.Form.remindMe
                                                 row.value = Date()
-                                                row.cellSetup({ (cell, _) in
+                                                row.cellUpdate({ (cell, _) in
                                                     cell.tintColor = self.lightTaskTintColor
                                                 })
                                                 row.onCellHighlightChanged({[weak self] (_, _) in

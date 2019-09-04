@@ -46,8 +46,7 @@ class WeekdayFormCell: Cell<WeekdaysValue>, CellType {
         fridayLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(fridayTapped)))
         saturdayLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(saturdayTapped)))
         sundayLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(sundayTapped)))
-        
-        contentView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor.withAlphaComponent(0.8)
+        backgroundColor = .clear
     }
     
     @objc
@@ -112,16 +111,26 @@ class WeekdayFormCell: Cell<WeekdaysValue>, CellType {
    
     public override func update() {
         if let taskRow = row as? WeekdayRow, let value = row.value {
-            styleView(mondayLabel, isActive: value.monday, tintColor: taskRow.tintColor)
-            styleView(tuesdayLabel, isActive: value.tuesday, tintColor: taskRow.tintColor)
-            styleView(wednesdayLabel, isActive: value.wednesday, tintColor: taskRow.tintColor)
-            styleView(thursdayLabel, isActive: value.thursday, tintColor: taskRow.tintColor)
-            styleView(fridayLabel, isActive: value.friday, tintColor: taskRow.tintColor)
-            styleView(saturdayLabel, isActive: value.saturday, tintColor: taskRow.tintColor)
-            styleView(sundayLabel, isActive: value.sunday, tintColor: taskRow.tintColor)
-            
+            updateViews(taskRow: taskRow, value: value)
             applyAccessibility()
         }
+        contentView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor.withAlphaComponent(0.8)
+    }
+    
+    private func updateViews(taskRow: WeekdayRow, value: WeekdaysValue) {
+        styleView(mondayLabel, isActive: value.monday, tintColor: taskRow.tintColor)
+        styleView(tuesdayLabel, isActive: value.tuesday, tintColor: taskRow.tintColor)
+        styleView(wednesdayLabel, isActive: value.wednesday, tintColor: taskRow.tintColor)
+        styleView(thursdayLabel, isActive: value.thursday, tintColor: taskRow.tintColor)
+        styleView(fridayLabel, isActive: value.friday, tintColor: taskRow.tintColor)
+        styleView(saturdayLabel, isActive: value.saturday, tintColor: taskRow.tintColor)
+        styleView(sundayLabel, isActive: value.sunday, tintColor: taskRow.tintColor)
+    }
+    
+    func updateTintColor(newTint: UIColor) {
+        self.tintColor = newTint
+        (row as? WeekdayRow)?.tintColor = newTint
+        update()
     }
     
     private func styleView(_ view: UILabel, isActive: Bool, tintColor: UIColor) {

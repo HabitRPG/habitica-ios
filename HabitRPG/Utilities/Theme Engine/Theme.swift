@@ -107,7 +107,7 @@ extension DarkTheme {
     public var dimmedTextColor: UIColor { return UIColor.gray200 }
     public var separatorColor: UIColor { return UIColor.gray10 }
     public var tableviewSeparatorColor: UIColor { if #available(iOS 13.0, *) {
-        return UIColor.opaqueSeparator.darker(by: 10)
+        return UIColor.opaqueSeparator
     } else {
         return UIColor.gray100
         }
