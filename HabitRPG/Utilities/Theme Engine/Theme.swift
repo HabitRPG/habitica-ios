@@ -84,30 +84,10 @@ extension Theme {
 
 extension DarkTheme {
     public var isDark: Bool { return true }
-    public var windowBackgroundColor: UIColor { if #available(iOS 13.0, *) {
-        return UIColor.systemGray5
-    } else {
-        return UIColor.blackPurple100.darker(by: 6)
-        }
-    }
-    public var contentBackgroundColorDimmed: UIColor { if #available(iOS 13.0, *) {
-        return UIColor.systemGray5
-    } else {
-        return UIColor.blackPurple100.darker(by: 7)
-        }
-    }
-    public var contentBackgroundColor: UIColor { if #available(iOS 13.0, *) {
-            return UIColor.systemGray6
-        } else {
-            return UIColor.blackPurple50
-            }
-            }
-    public var offsetBackgroundColor: UIColor { if #available(iOS 13.0, *) {
-        return UIColor.systemGray4
-    } else {
-        return UIColor.blackPurple100
-        }
-    }
+    public var windowBackgroundColor: UIColor { return UIColor.blackPurple100.darker(by: 7) }
+    public var contentBackgroundColorDimmed: UIColor { return UIColor.blackPurple100.darker(by: 7) }
+    public var contentBackgroundColor: UIColor { return UIColor.blackPurple50 }
+    public var offsetBackgroundColor: UIColor { return UIColor.blackPurple100 }
     public var lightlyTintedBackgroundColor: UIColor { return UIColor.gray300 }
     public var backgroundTintColor: UIColor { return UIColor.gray300 }
     public var tintColor: UIColor { return UIColor.gray500 }
