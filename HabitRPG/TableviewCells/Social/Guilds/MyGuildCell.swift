@@ -31,6 +31,8 @@ class MyGuildCell: UITableViewCell {
                                                                memberCount: CGFloat(group.memberCount),
                                                                memberCountLabel: String(describing: group.memberCount).stringWithAbbreviatedNumber(roundingIncrement: 0.1))
         
+        titleLabel.textColor = ThemeService.shared.theme.primaryTextColor
         titleLabel.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
+        backgroundColor = ThemeService.shared.theme.contentBackgroundColor
     }
 }
