@@ -59,7 +59,7 @@ class MenuNavigationBarView: UIView, Themeable {
         button.addTarget(self, action: #selector(settingsButtonTapped), for: .touchUpInside)
         return button
     }()
-    private var notificationsButton: UIButton = {
+    var notificationsButton: UIButton = {
         let button = UIButton()
         button.accessibilityLabel = L10n.Titles.notifications
         button.setImage(Asset.menuNotifications.image, for: .normal)

@@ -61,6 +61,8 @@ internal enum StoryboardScene {
 
     internal static let newsViewController = SceneType<Habitica.NewsViewController>(storyboard: Main.self, identifier: "NewsViewController")
 
+    internal static let notificationsNavigationController = SceneType<UIKit.UINavigationController>(storyboard: Main.self, identifier: "NotificationsNavigationController")
+
     internal static let petsOverviewViewController = SceneType<Habitica.PetOverviewViewController>(storyboard: Main.self, identifier: "PetsOverviewViewController")
 
     internal static let purchaseGemNavController = SceneType<HRPGGemHeaderNavigationController>(storyboard: Main.self, identifier: "PurchaseGemNavController")

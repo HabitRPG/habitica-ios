@@ -204,11 +204,11 @@
                         <segue destination="oL1-I7-dz0" kind="show" identifier="PartySegue" id="ynU-31-3VC"/>
                         <segue destination="id8-rI-GMs" kind="show" identifier="GuildsSegue" id="skH-kj-2aP"/>
                         <segue destination="Z6b-ez-Mmy" kind="show" identifier="ChallengesSegue" id="X0Z-Mc-n0d"/>
-                        <segue destination="Ne7-W6-6zE" kind="presentation" identifier="GemSubscriptionSegue" id="jU9-l6-uQc"/>
+                        <segue destination="Ne7-W6-6zE" kind="presentation" identifier="GemSubscriptionSegue" modalPresentationStyle="formSheet" id="jU9-l6-uQc"/>
                         <segue destination="HEh-dF-ytU" kind="show" identifier="StableSegue" id="GpE-7B-PT1"/>
                         <segue destination="AjM-Kx-nSU" kind="show" identifier="EquipmentSegue" id="mE7-db-9QB"/>
                         <segue destination="o49-Mt-AdO" kind="show" identifier="CustomizationSegue" id="9Yx-3K-EPv"/>
-                        <segue destination="nb1-qt-uKV" kind="presentation" identifier="NotificationsSegue" id="3jW-QR-Ocs"/>
+                        <segue destination="nb1-qt-uKV" kind="presentation" identifier="NotificationsSegue" modalPresentationStyle="formSheet" id="3jW-QR-Ocs"/>
                         <segue destination="hEH-25-nQA" kind="show" identifier="AchievementsSegue" id="ZL6-DZ-Nc4"/>
                     </connections>
                 </tableViewController>
@@ -2852,7 +2852,7 @@
         <!--Navigation Controller-->
         <scene sceneID="9x6-O0-kDN">
             <objects>
-                <navigationController id="nb1-qt-uKV" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NotificationsNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nb1-qt-uKV" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ZYy-Vi-MXT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>

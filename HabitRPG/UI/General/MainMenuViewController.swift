@@ -103,7 +103,12 @@ class MainMenuViewController: BaseTableViewController {
             self?.perform(segue: StoryboardSegue.Main.settingsSegue)
         }
         navbarView.notificationsAction = {[weak self] in
-            self?.perform(segue: StoryboardSegue.Main.notificationsSegue)
+            let viewController = StoryboardScene.Main.notificationsNavigationController.instantiate()
+            viewController.modalPresentationStyle = .popover
+            let popover: UIPopoverPresentationController = viewController.popoverPresentationController!
+            popover.sourceView = self?.navbarView
+            popover.sourceRect = self?.navbarView.notificationsButton.frame ?? CGRect.zero
+            self?.present(viewController, animated: true, completion:nil)
         }
         
         let refreshControl = UIRefreshControl()
