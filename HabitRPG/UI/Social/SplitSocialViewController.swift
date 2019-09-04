@@ -69,14 +69,17 @@ class SplitSocialViewController: HabiticaSplitViewController {
             }
         }
         navigationItem.rightBarButtonItem = nil
-        
-        view.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
     }
     
     deinit {
         if let disposable = fetchGroupDisposable {
             disposable.dispose()
         }
+    }
+    
+    override func applyTheme(theme: Theme) {
+        super.applyTheme(theme: theme)
+        view.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
     }
     
     func retrieveGroup() {

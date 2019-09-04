@@ -1,8 +1,3 @@
 Thanks for everyone helping with testing!
 
-We are currently investigating an issue that prevents users from creating habits. This build contains some logging that should help us figure this out. If you are affected by this bug, please contact us using the in-app reporting option from the about screen. Thanks for your help!
-
-The experimental dark themes for the app should now be fully working. If you find a spot that has unreadable text or is still white, please let us know!
-
-This build brings new markdown handling, that should provide a lot smoother scrolling in tasks and chat. There are still some issues (p.e. images are not correctly handled), that are being worked on.
-
+This is the first build with iOS 13 support. The way dark themes work has been changed, so that every theme color now has a light and dark variant. On iOS 13, the light/dark follows the system setting. Dark mode currently is not avaialble on iOS 12 and a way to enable it there will be added in a future beta.

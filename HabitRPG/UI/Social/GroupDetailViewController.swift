@@ -56,6 +56,7 @@ class GroupDetailViewController: HRPGUIViewController, UITextViewDelegate, Theme
     func applyTheme(theme: Theme) {
         groupNameLabel?.textColor = theme.primaryTextColor
         scrollView?.backgroundColor = theme.windowBackgroundColor
+        groupDescriptionStackView?.applyTheme(theme: theme)
     }
     
     override func viewWillAppear(_ animated: Bool) {

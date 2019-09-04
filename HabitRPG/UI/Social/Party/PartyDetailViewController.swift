@@ -35,6 +35,9 @@ class PartyDetailViewController: GroupDetailViewController {
     @IBOutlet weak var partyQuestView: PartyQuestView!
     @IBOutlet weak var mainStackviewOffset: NSLayoutConstraint!
     @IBOutlet weak var partyChallengesButton: UIButton!
+    @IBOutlet weak var partyChallengesBorder: UIView!
+    @IBOutlet weak var partyChallengesBorderBottom: UIView!
+    
     @IBOutlet weak var membersTitleView: CollapsibleTitle!
     @IBOutlet weak var descriptionTitleView: CollapsibleTitle!
     @IBOutlet weak var inviteMemberButton: UIButton!
@@ -91,6 +94,11 @@ class PartyDetailViewController: GroupDetailViewController {
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
         partyChallengesButton.backgroundColor = theme.contentBackgroundColor
+        partyChallengesBorder.backgroundColor = theme.separatorColor
+        partyChallengesBorderBottom.backgroundColor = theme.separatorColor
+        membersStackview.applyTheme(theme: theme)
+        questContentStackView.applyTheme(theme: theme)
+        questStackView.applyTheme(theme: theme)
     }
     
     override func populateText() {
