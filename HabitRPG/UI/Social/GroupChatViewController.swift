@@ -51,10 +51,8 @@ class GroupChatViewController: SLKTextViewController {
         tableView?.estimatedRowHeight = 90
         tableView?.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
 
-        if #available(iOS 10.0, *) {
-            tableView?.refreshControl = UIRefreshControl()
-            tableView?.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
-        }
+        tableView?.refreshControl = UIRefreshControl()
+        tableView?.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         
         textView.registerMarkdownFormattingSymbol("**", withTitle: "Bold")
         textView.registerMarkdownFormattingSymbol("*", withTitle: "Italics")
@@ -179,9 +177,7 @@ class GroupChatViewController: SLKTextViewController {
     @objc
     func refresh() {
         dataSource?.retrieveData(completed: {[weak self] in
-            if #available(iOS 10.0, *) {
-                self?.tableView?.refreshControl?.endRefreshing()
-            }
+            self?.tableView?.refreshControl?.endRefreshing()
         })
     }
     
@@ -189,9 +185,7 @@ class GroupChatViewController: SLKTextViewController {
         self.textView.refreshFirstResponder()
         let message = textView.text
         if let message = message, let groupID = self.groupID {
-            if #available(iOS 10.0, *) {
-                UIImpactFeedbackGenerator.oneShotImpactOccurred(.light)
-            }
+            UIImpactFeedbackGenerator.oneShotImpactOccurred(.light)
             socialRepository.post(chatMessage: message, toGroup: groupID).observeResult { (result) in
                 switch result {
                 case .failure:

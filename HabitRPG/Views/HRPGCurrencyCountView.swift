@@ -93,9 +93,7 @@ class HRPGCurrencyCountView: UIView {
         
         countLabel.text = "0"
         countLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 15)
-        if #available(iOS 10.0, *) {
-            countLabel.adjustsFontForContentSizeCategory = true
-        }
+        countLabel.adjustsFontForContentSizeCategory = true
         
         addSubview(countLabel)
         addSubview(currencyImageView)

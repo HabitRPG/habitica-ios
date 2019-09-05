@@ -105,10 +105,8 @@ public class ThemeService: NSObject {
         let view = UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self])
         view.tintColor = theme.tintColor
         // Update styles via UIAppearance
-        if #available(iOS 10.0, *) {
-            UITabBarItem.appearance().badgeColor = theme.badgeColor
-            UITabBar.appearance().unselectedItemTintColor = theme.dimmedTextColor
-        }
+        UITabBarItem.appearance().badgeColor = theme.badgeColor
+        UITabBar.appearance().unselectedItemTintColor = theme.dimmedTextColor
                 
         // The tintColor will trickle down to each view
         if let window = UIApplication.shared.keyWindow {

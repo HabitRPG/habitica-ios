@@ -79,10 +79,8 @@ class UserTopHeader: UIView, Themeable {
         
         usernameLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 16)
         levelLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 11)
-        if #available(iOS 10.0, *) {
-            usernameLabel.adjustsFontForContentSizeCategory = true
-            levelLabel.adjustsFontForContentSizeCategory = true
-        }
+        usernameLabel.adjustsFontForContentSizeCategory = true
+        levelLabel.adjustsFontForContentSizeCategory = true
         
         disposable.inner.add(repository.getUser().on(value: {[weak self] user in
             self?.set(user: user)

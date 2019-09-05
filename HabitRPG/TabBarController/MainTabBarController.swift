@@ -52,9 +52,7 @@ class MainTabBarController: UITabBarController, Themeable {
     
     func applyTheme(theme: Theme) {
         tabBar.tintColor = theme.tintColor
-        if #available(iOS 10.0, *) {
-            tabBar.items?.forEach({ $0.badgeColor = theme.badgeColor })
-        }
+        tabBar.items?.forEach({ $0.badgeColor = theme.badgeColor })
         if theme.isDark {
             tabBar.tintColor = theme.tintColor
             tabBar.backgroundColor = theme.windowBackgroundColor
