@@ -28,6 +28,7 @@ public protocol Theme {
     var primaryTextColor: UIColor { get }
     var secondaryTextColor: UIColor { get }
     var ternaryTextColor: UIColor { get }
+    var quadTextColor: UIColor { get }
     var dimmedTextColor: UIColor { get }
     var lightTextColor: UIColor { get }
     var badgeColor: UIColor { get }
@@ -61,6 +62,7 @@ extension Theme {
     public var primaryTextColor: UIColor { return UIColor.gray10 }
     public var secondaryTextColor: UIColor { return UIColor.gray100 }
     public var ternaryTextColor: UIColor { return UIColor.gray200 }
+    public var quadTextColor: UIColor { return UIColor.gray300 }
     public var dimmedTextColor: UIColor { return UIColor.gray400 }
     public var lightTextColor: UIColor { return UIColor.white }
     
@@ -104,6 +106,7 @@ extension DarkTheme {
         }
     }
     public var ternaryTextColor: UIColor { return UIColor.gray500 }
+    public var quadTextColor: UIColor { return UIColor.gray200 }
     public var dimmedTextColor: UIColor { return UIColor.gray200 }
     public var separatorColor: UIColor { return UIColor.gray10 }
     public var tableviewSeparatorColor: UIColor { if #available(iOS 13.0, *) {

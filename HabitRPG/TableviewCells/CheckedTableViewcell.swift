@@ -22,6 +22,8 @@ class CheckedTableViewCell: TaskTableViewCell {
     @IBOutlet weak var checklistLeftBorderView: UIView!
     @IBOutlet weak var checklistRightBorderView: UIView!
     @IBOutlet weak var checklistItemBackgroundView: UIView!
+    @IBOutlet weak var dimmOverlayRightView: UIView!
+    @IBOutlet weak var dimmOverlayLeftView: UIView!
     
     weak var task: TaskProtocol?
     @objc var isExpanded = false
@@ -44,17 +46,17 @@ class CheckedTableViewCell: TaskTableViewCell {
         handleChecklist(task)
 
         if task.completed || (!task.isDue && task.type == TaskType.daily.rawValue) {
-            self.checklistIndicator.backgroundColor = .gray500
-            self.checklistDoneLabel.textColor = .gray300
-            self.checklistAllLabel.textColor = .gray300
-            self.checklistSeparator.backgroundColor = .gray300
-            self.checklistLeftBorderView.backgroundColor = .gray400
-            self.checklistRightBorderView.backgroundColor = .gray400
+            checklistIndicator.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
+            checklistDoneLabel.textColor = ThemeService.shared.theme.quadTextColor
+            checklistAllLabel.textColor = ThemeService.shared.theme.quadTextColor
+            checklistSeparator.backgroundColor = ThemeService.shared.theme.quadTextColor
+            checklistLeftBorderView.backgroundColor = ThemeService.shared.theme.dimmedTextColor
+            checklistRightBorderView.backgroundColor = ThemeService.shared.theme.dimmedTextColor
         }
         
         if task.completed {
-            self.checklistIndicator.backgroundColor = .gray500
-            self.titleLabel.textColor = .gray300
+            self.checklistIndicator.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
+            self.titleLabel.textColor = ThemeService.shared.theme.quadTextColor
             self.backgroundColor = ThemeService.shared.theme.contentBackgroundColorDimmed
         } else {
             self.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
@@ -65,6 +67,11 @@ class CheckedTableViewCell: TaskTableViewCell {
         self.subtitleLabel.backgroundColor = self.backgroundColor
         self.contentView.backgroundColor = self.backgroundColor
         self.mainTaskWrapper.backgroundColor = self.backgroundColor
+        
+        dimmOverlayLeftView.isHidden = !ThemeService.shared.theme.isDark
+        dimmOverlayLeftView.backgroundColor = ThemeService.shared.theme.taskOverlayTint
+        dimmOverlayRightView.isHidden = !ThemeService.shared.theme.isDark
+        dimmOverlayRightView.backgroundColor = ThemeService.shared.theme.taskOverlayTint
         
         self.checklistIndicator.layoutIfNeeded()
     }
@@ -88,12 +95,12 @@ class CheckedTableViewCell: TaskTableViewCell {
             checklistAllLabel.textColor = .white
             checklistSeparator.backgroundColor = .white
             if checkedCount == checklistCount {
-                checklistIndicator.backgroundColor = .gray500
-                checklistDoneLabel.textColor = .gray300
-                checklistAllLabel.textColor = .gray300
-                checklistSeparator.backgroundColor = .gray300
-                checklistLeftBorderView.backgroundColor = .gray400
-                checklistRightBorderView.backgroundColor = .gray400
+                checklistIndicator.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
+                checklistDoneLabel.textColor = ThemeService.shared.theme.quadTextColor
+                checklistAllLabel.textColor = ThemeService.shared.theme.quadTextColor
+                checklistSeparator.backgroundColor = ThemeService.shared.theme.quadTextColor
+                checklistLeftBorderView.backgroundColor = ThemeService.shared.theme.dimmedTextColor
+                checklistRightBorderView.backgroundColor = ThemeService.shared.theme.dimmedTextColor
             }
             checklistDoneLabel.isHidden = false
             checklistAllLabel.isHidden = false

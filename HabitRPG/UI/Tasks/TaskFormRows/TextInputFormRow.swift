@@ -38,7 +38,7 @@ public class TaskTextInputCell: Cell<String>, CellType, UITextViewDelegate {
             //textField.attributedPlaceholder = NSAttributedString(string: taskRow.placeholder ?? "", attributes: [NSAttributedStringKey.foregroundColor: UIColor(white: 1.0, alpha: 0.5)])
             topSpacing = taskRow.topSpacing
             bottomSpacing = taskRow.bottomSpacing
-            separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: .greatestFiniteMagnitude)
+            separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
         }
     }
     

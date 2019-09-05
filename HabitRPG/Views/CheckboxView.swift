@@ -110,7 +110,6 @@ class CheckboxView: UIView {
         if task.type == "daily" {
             boxCornerRadius = 3
             if task.completed {
-                boxFillColor = theme.dimmedTextColor
                 backgroundColor = theme.offsetBackgroundColor
                 checkColor = theme.ternaryTextColor
             } else {
@@ -119,6 +118,8 @@ class CheckboxView: UIView {
                 if task.dueToday() {
                     backgroundColor = UIColor.forTaskValueLight(Int(task.value))
                     checkColor = UIColor.forTaskValue(Int(task.value))
+                } else {
+                    boxFillColor = theme.dimmedTextColor
                 }
             }
         } else {
