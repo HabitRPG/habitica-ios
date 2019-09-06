@@ -31,7 +31,6 @@ class EquipmentOverviewItemView: UIView {
     
     private func setupView() {
         if let view = viewFromNibForClass() {
-            
             view.frame = bounds
             addSubview(view)
       
@@ -71,11 +70,14 @@ class EquipmentOverviewItemView: UIView {
             imageView.setImagewith(name: "shop_\(key)")
             imageView.isHidden = false
             noEquipmentLabel.isHidden = true
-            imageView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
         } else {
             imageView.isHidden = true
             noEquipmentLabel.isHidden = false
         }
+    }
+    
+    func applyTheme(theme: Theme) {
+        imageView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
     }
     
     @objc

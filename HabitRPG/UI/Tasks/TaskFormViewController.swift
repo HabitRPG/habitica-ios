@@ -233,6 +233,16 @@ class TaskFormViewController: FormViewController, Themeable {
         
         isEditing = true
         tableView.isEditing = true
+        
+        if #available(iOS 13.0, *) {
+            if ThemeService.shared.themeMode == "dark" {
+                self.overrideUserInterfaceStyle = .dark
+            } else if ThemeService.shared.themeMode == "light" {
+                self.overrideUserInterfaceStyle = .light
+            } else {
+                self.overrideUserInterfaceStyle = .unspecified
+            }
+        }
     }
     
     override func viewWillLayoutSubviews() {

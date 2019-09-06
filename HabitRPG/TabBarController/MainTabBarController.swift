@@ -9,6 +9,7 @@
 import Foundation
 import Habitica_Models
 import ReactiveSwift
+import FirebaseAnalytics
 #if DEBUG
 import FLEX
 #endif
@@ -47,7 +48,31 @@ class MainTabBarController: UITabBarController, Themeable {
         tabBar.addGestureRecognizer(swipe)
         #endif
         
+        setupTheme()
+        
         ThemeService.shared.addThemeable(themable: self)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if #available(iOS 13.0, *) {
+            if ThemeService.shared.themeMode == "dark" {
+                self.overrideUserInterfaceStyle = .dark
+            } else if ThemeService.shared.themeMode == "light" {
+                self.overrideUserInterfaceStyle = .light
+            } else {
+                self.overrideUserInterfaceStyle = .unspecified
+            }
+        }
+    }
+    
+    //Put this method here since we need the traitCollection and can't get that in the AppDelegate
+    func setupTheme() {
+        ThemeService.shared.updateDarkMode(traitCollection: traitCollection)
+        let defaults = UserDefaults.standard
+        let themeName = ThemeName(rawValue: defaults.string(forKey: "theme") ?? "") ?? ThemeName.defaultTheme
+        Analytics.setUserProperty(themeName.rawValue, forName: "theme")
     }
     
     func applyTheme(theme: Theme) {

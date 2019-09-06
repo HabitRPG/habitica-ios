@@ -12,13 +12,17 @@ import PopupDialog
 
 @objc
 public class ThemeService: NSObject {
-    
+    private let defaults = UserDefaults.standard
+
     public static let shared = ThemeService()
     public var isDarkTheme = false
     public var theme: Theme = DefaultTheme() {
         didSet {
             applyTheme()
         }
+    }
+    public var themeMode: String {
+        get { return defaults.string(forKey: "themeMode") ?? ThemeMode.system.rawValue }
     }
     
     private var listeners = NSHashTable<AnyObject>.weakObjects()
@@ -125,10 +129,25 @@ public class ThemeService: NSObject {
     @available(iOS 12.0, *)
     func updateInterfaceStyle(newStyle: UIUserInterfaceStyle) {
         let isDark = newStyle == .dark
-        if isDark != self.isDarkTheme {
-            self.isDarkTheme = isDark
+        updateDarkMode(systemIsDark: isDark)
+    }
+    
+    func updateDarkMode(traitCollection: UITraitCollection) {
+        if #available(iOS 13.0, *) {
+            updateDarkMode(systemIsDark: traitCollection.userInterfaceStyle == .dark)
+        } else {
+            updateDarkMode(systemIsDark: false)
+        }
+    }
+    
+    func updateDarkMode(systemIsDark: Bool) {
+        var enabled = themeMode == ThemeMode.dark.rawValue
+        if themeMode == ThemeMode.system.rawValue {
+            enabled = systemIsDark
+        }
+        if enabled != self.isDarkTheme {
+            self.isDarkTheme = enabled
             
-            let defaults = UserDefaults.standard
             let themeName = ThemeName(rawValue: defaults.string(forKey: "theme") ?? "") ?? ThemeName.defaultTheme
             ThemeService.shared.theme = themeName.themeClass
         }

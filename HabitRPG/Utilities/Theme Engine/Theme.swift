@@ -93,28 +93,13 @@ extension DarkTheme {
     public var lightlyTintedBackgroundColor: UIColor { return UIColor.gray300 }
     public var backgroundTintColor: UIColor { return UIColor.gray300 }
     public var tintColor: UIColor { return UIColor.gray500 }
-    public var primaryTextColor: UIColor { if #available(iOS 13.0, *) {
-        return UIColor.label
-    } else {
-        return UIColor.gray700
-        }
-    }
-    public var secondaryTextColor: UIColor { if #available(iOS 13.0, *) {
-        return UIColor.secondaryLabel
-    } else {
-        return UIColor.gray600
-        }
-    }
+    public var primaryTextColor: UIColor { return UIColor.gray700 }
+    public var secondaryTextColor: UIColor { return UIColor.gray600 }
     public var ternaryTextColor: UIColor { return UIColor.gray500 }
     public var quadTextColor: UIColor { return UIColor.gray200 }
     public var dimmedTextColor: UIColor { return UIColor.gray200 }
     public var separatorColor: UIColor { return UIColor.gray10 }
-    public var tableviewSeparatorColor: UIColor { if #available(iOS 13.0, *) {
-        return UIColor.opaqueSeparator
-    } else {
-        return UIColor.gray100
-        }
-    }
+    public var tableviewSeparatorColor: UIColor { return UIColor.gray100 }
     public var navbarHiddenColor: UIColor { return contentBackgroundColor }
     public var dimmedColor: UIColor { return UIColor.gray100 }
     public var dimmBackgroundColor: UIColor { return UIColor.gray50 }
@@ -150,4 +135,6 @@ class ObjcThemeWrapper: NSObject {
     @objc public static func addObjcThemeable(_ themeable: ObjcThemeable) {
         ThemeService.shared.addThemeable(themable: themeable)
     }
+    
+    @objc public static var themeMode: String { return ThemeService.shared.themeMode }
 }

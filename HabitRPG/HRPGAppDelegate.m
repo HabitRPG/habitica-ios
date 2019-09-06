@@ -44,7 +44,6 @@
     [self.swiftAppDelegate setupPurchaseHandling];
     [self.swiftAppDelegate setupNetworkClient];
     [self.swiftAppDelegate setupDatabase];
-    [self.swiftAppDelegate setupTheme];
     [self.swiftAppDelegate setupFirebase];
     
     [self configureNotifications:application];

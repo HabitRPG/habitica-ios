@@ -114,15 +114,26 @@ class EquipmentOverviewView: UIView {
             addSubview(view)
 
             setupLabels()
-            titleLabel.textColor = ThemeService.shared.theme.primaryTextColor
-            switchLabelView.textColor = ThemeService.shared.theme.secondaryTextColor
-            backgroundColor = ThemeService.shared.theme.contentBackgroundColor
             
             setNeedsUpdateConstraints()
             updateConstraints()
             setNeedsLayout()
             layoutIfNeeded()
         }
+    }
+    
+    func applyTheme(theme: Theme) {
+        titleLabel.textColor = theme.primaryTextColor
+        switchLabelView.textColor = theme.secondaryTextColor
+        backgroundColor = theme.contentBackgroundColor
+        weaponItemView.applyTheme(theme: theme)
+        offHandItemView.applyTheme(theme: theme)
+        headItemView.applyTheme(theme: theme)
+        armorItemView.applyTheme(theme: theme)
+        headAccessoryItemView.applyTheme(theme: theme)
+        bodyAccessoryItemView.applyTheme(theme: theme)
+        backItemView.applyTheme(theme: theme)
+        eyewearItemView.applyTheme(theme: theme)
     }
     
     private func setupLabels() {

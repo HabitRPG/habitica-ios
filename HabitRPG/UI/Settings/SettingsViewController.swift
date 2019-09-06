@@ -22,6 +22,7 @@ enum SettingsTags {
     static let pushNotifications = "pushNotifications"
     static let disablePrivateMessages = "disablePrivateMessages"
     static let themeColor = "themeColor"
+    static let themeMode = "themeMode"
     static let appIcon = "appIcon"
     static let soundTheme = "soundTheme"
     static let changeClass = "changeClass"
@@ -144,7 +145,7 @@ enum ThemeName: String {
     }
     
     static var allNames: [ThemeName] {
-        var themes: [ThemeName] = [
+        return [
             .defaultTheme,
             .blue,
             .teal,
@@ -155,7 +156,34 @@ enum ThemeName: String {
             .maroon,
             .gray
         ]
-        return themes
+    }
+}
+
+enum ThemeMode: String {
+    case light
+    case dark
+    case system
+    
+    var niceName: String {
+        switch self {
+        case .light:
+            return L10n.Theme.alwaysLight
+        case .dark:
+            if #available(iOS 13.0, *) { return L10n.Theme.alwaysDark } else { return L10n.Theme.dark }
+        case .system:
+            if #available(iOS 13.0, *) { return L10n.Theme.followSystem } else { return L10n.Theme.light }
+        default:
+            return ""
+        }
+    }
+    
+    static var allModes: [ThemeMode] {
+        if #available(iOS 13.0, *) {
+            return [.system, .light, .dark]
+        } else {
+            // iOS 12 and below should use "system" as default, so that when upgrading to iOS 13 it adopt the automatic switching
+            return [.system, .dark]
+        }
     }
 }
 
@@ -388,6 +416,7 @@ class SettingsViewController: FormViewController, Themeable {
                 })
         }
     }
+    
     
     private func setupUserSection() {
         form +++ Section(L10n.Settings.user)
@@ -672,6 +701,37 @@ class SettingsViewController: FormViewController, Themeable {
                     }
                 })
             }
+        <<< PushRow<LabeledFormValue<String>>(SettingsTags.themeMode) { row in
+            row.title = L10n.Settings.themeMode
+            row.cellUpdate { cell, _ in
+                cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                cell.tintColor = ThemeService.shared.theme.tintColor
+            }
+            row.options = ThemeMode.allModes.map({ (theme) -> LabeledFormValue<String> in
+                return LabeledFormValue(value: theme.rawValue, label: theme.niceName)
+            })
+            let defaults = UserDefaults.standard
+            if let theme = ThemeMode.allModes.first(where: { (theme) -> Bool in
+                return theme.rawValue == defaults.string(forKey: "themeMode") ?? ThemeMode.allModes.first?.rawValue
+            }) {
+                row.value = LabeledFormValue(value: theme.rawValue, label: theme.niceName)
+            }
+            row.onChange({[weak self] (row) in
+                if self?.isSettingUserData == true { return }
+                if let newTheme = ThemeMode(rawValue: row.value?.value ?? "") {
+                    let defaults = UserDefaults.standard
+                    defaults.set(newTheme.rawValue, forKey: "themeMode")
+                    if let traitCollection = self?.traitCollection {
+                        ThemeService.shared.updateDarkMode(traitCollection: traitCollection)
+                    }
+                }
+            })
+            row.onPresent({ (_, to) in
+                to.selectableRowCellUpdate = { cell, row in
+                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                }
+            })
+        }
         form +++ section
         if UI_USER_INTERFACE_IDIOM() == .phone {
             section <<< PushRow<String>(SettingsTags.appIcon) { row in

@@ -257,6 +257,7 @@
 "settings.reload_content" = "Reload Content";
 "settings.preferences" = "Preferences";
 "settings.theme_color" = "Theme Color";
+"settings.theme_mode" = "Theme Mode";
 "settings.sound_theme" = "Sound Theme";
 "settings.wrong_password" = "Incorrect Password";
 "settings.are_you_sure" = "Are you sure?";
@@ -308,6 +309,11 @@
 "theme.orange" = "Orange";
 "theme.red" = "Red";
 "theme.maroon" = "Maroon";
+"theme.light" = "Light";
+"theme.dark" = "Dark";
+"theme.followSystem" = "Follow system setting";
+"theme.alwaysLight" = "Always Light";
+"theme.alwaysDark" = "Always Dark";
 "details" = "Details";
 "chat" = "Chat";
 "guilds.leave_guild_title" = "Leave Guild?";

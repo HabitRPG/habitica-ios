@@ -68,6 +68,12 @@ class EquipmentOverviewViewController: BaseUIViewController, UIScrollViewDelegat
         }).start())
     }
     
+    override func applyTheme(theme: Theme) {
+        super.applyTheme(theme: theme)
+        gearView.applyTheme(theme: theme)
+        costumeView.applyTheme(theme: theme)
+    }
+    
     override func viewWillLayoutSubviews() {
         gearViewHeightConstraint.constant = gearView.getTotalHeight(for: view.frame.width)
         costumeViewHeightConstraint.constant = costumeView.getTotalHeight(for: view.frame.width)

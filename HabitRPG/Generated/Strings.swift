@@ -1252,6 +1252,8 @@ public enum L10n {
     public static var soundTheme: String { return L10n.tr("Mainstrings", "settings.sound_theme") }
     /// Theme Color
     public static var themeColor: String { return L10n.tr("Mainstrings", "settings.theme_color") }
+    /// Theme Mode
+    public static var themeMode: String { return L10n.tr("Mainstrings", "settings.theme_mode") }
     /// User
     public static var user: String { return L10n.tr("Mainstrings", "settings.user") }
     /// Username not confirmed
@@ -1682,12 +1684,22 @@ public enum L10n {
   }
 
   public enum Theme {
+    /// Always Dark
+    public static var alwaysDark: String { return L10n.tr("Mainstrings", "theme.alwaysDark") }
+    /// Always Light
+    public static var alwaysLight: String { return L10n.tr("Mainstrings", "theme.alwaysLight") }
     /// Blue
     public static var blue: String { return L10n.tr("Mainstrings", "theme.blue") }
+    /// Dark
+    public static var dark: String { return L10n.tr("Mainstrings", "theme.dark") }
     /// Default
     public static var defaultTheme: String { return L10n.tr("Mainstrings", "theme.default_theme") }
+    /// Follow system setting
+    public static var followSystem: String { return L10n.tr("Mainstrings", "theme.followSystem") }
     /// Green
     public static var green: String { return L10n.tr("Mainstrings", "theme.green") }
+    /// Light
+    public static var light: String { return L10n.tr("Mainstrings", "theme.light") }
     /// Maroon
     public static var maroon: String { return L10n.tr("Mainstrings", "theme.maroon") }
     /// Orange

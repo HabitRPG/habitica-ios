@@ -103,14 +103,6 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
     }
     
     @objc
-    func setupTheme() {
-        let defaults = UserDefaults.standard
-        let themeName = ThemeName(rawValue: defaults.string(forKey: "theme") ?? "") ?? ThemeName.defaultTheme
-        ThemeService.shared.theme = themeName.themeClass
-        Analytics.setUserProperty(themeName.rawValue, forName: "theme")
-    }
-    
-    @objc
     func setupNetworkClient() {
         NetworkAuthenticationManager.shared.currentUserId = AuthenticationManager.shared.currentUserId
         NetworkAuthenticationManager.shared.currentUserKey = AuthenticationManager.shared.currentUserKey

@@ -17,5 +17,6 @@ class BaseCollectionViewController: HRPGBaseCollectionViewController, Themeable 
     
     func applyTheme(theme: Theme) {
         collectionView.backgroundColor = theme.windowBackgroundColor
+        collectionView.reloadData()
     }
 }
