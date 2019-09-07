@@ -964,7 +964,7 @@
 "tasks.due_tomorrow" = "Moet morgen gedaan zijn";
 "tasks.due_today" = "Moet vandaag gedaan zijn";
 "tasks.team" = "Team";
-"stats.strength_text" = "Verhoogd de bonus van kritieke treffers en verhoog de kans erop als je een taak voltooit. Verhoogd ook de schade toegebracht aan bazen. ";
+"stats.strength_text" = "Verhoogt de bonus van kritieke treffers en verhoogt de kans erop als je een taak voltooit. Verhoogt ook de schade toegebracht aan eindbazen. ";
 "titles.achievements" = "Prestaties";
 "titles.notifications" = "Meldingen";
 "titles.messages" = "Berichten";
