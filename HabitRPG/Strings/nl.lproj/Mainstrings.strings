@@ -964,11 +964,11 @@
 "tasks.due_tomorrow" = "Moet morgen gedaan zijn";
 "tasks.due_today" = "Moet vandaag gedaan zijn";
 "tasks.team" = "Team";
-"stats.strength_text" = "Vergroot de bonus van kritieke hits en zorgt ervoor dat ze vaker voorkomen als je een taak volbrengt. Vergroot daarnaast de schade aan eindbazen. ";
+"stats.strength_text" = "Verhoogd de bonus van kritieke treffers en verhoog de kans erop als je een taak voltooit. Verhoogd ook de schade toegebracht aan bazen. ";
 "titles.achievements" = "Prestaties";
 "titles.notifications" = "Meldingen";
 "titles.messages" = "Berichten";
-"titles.gift_subscription" = "Geef Abonnement Cadeau";
+"titles.gift_subscription" = "Doe een abonnement cadeau";
 "titles.avatar" = "Avatar";
 "world_boss.first_bullet" = "Volbreng je taken om de eindbaas te verslaan";
 "world_boss.description" = "Een wereld eindbaas is een speciaal evenement waar heel Habitica samenwerkt om met hun taken een supersterk monster te verslaan!";
