@@ -41,7 +41,7 @@
 /* (No Comment) */
 "classes.mage" = "Magiër";
 /* (No Comment) */
-"classes.mage_description" = "Magiërs leren snel, ze krijgen sneller ervaringspunten en niveaus dan de andere klassen. Je hebben ook veel mana beschikbaar voor speciale vaardigheden.  Speel een magiër als je houdt van de tactische aspecten van Habitica of als je erg gemotiveerd wordt door stijging in niveaus en het vrijspelen van nieuwe functionaliteiten!";
+"classes.mage_description" = "Magiërs leren snel, ze krijgen sneller ervaringspunten en niveaus dan de andere klassen. Je hebben ook veel mana beschikbaar voor speciale vaardigheden.  Speel een magiër als je van de tactische aspecten van Habitica  houdt, of als je erg gemotiveerd wordt door stijging in niveaus en het vrijspelen van nieuwe functionaliteiten! ";
 /* (No Comment) */
 "classes.rogue" = "Dief";
 /* (No Comment) */
@@ -83,11 +83,11 @@
 /* (No Comment) */
 "equipment.auto_equip" = "Nieuwe Automatisch Uitrusten";
 /* (No Comment) */
-"equipment.back" = "Rug Accessoire ";
+"equipment.back" = "Rugaccessoire";
 /* (No Comment) */
 "equipment.battle_gear" = "Gevechtsuitrusting";
 /* (No Comment) */
-"equipment.body" = "Lichaamsaccessoire  ";
+"equipment.body" = "Lichaamsaccessoire";
 /* (No Comment) */
 "equipment.costume" = "Kostuum";
 /* (No Comment) */
@@ -129,9 +129,9 @@
 /* (No Comment) */
 "guilds.leave_guild_title" = "VerlaatGilde?";
 /* (No Comment) */
-"hatch_egg" = "Broedt Ei?";
+"hatch_egg" = "Broed ei uit";
 /* (No Comment) */
-"hatch_potion" = "Uitbroeden met toverdrank?";
+"hatch_potion" = "Uitbroeden met toverdrank";
 /* (No Comment) */
 "hatching_potions" = "Uitbroeddrankjes";
 /* (No Comment) */
@@ -265,7 +265,7 @@
 /* (No Comment) */
 "quests.confirm_cancel_invitation" = "Weet je zeker dat je deze queeste af wilt breken? Alle geaccepteerde uitnodigingen gaan verloren. De eigenaar van de queeste houdt de queeste-perkamentrol.";
 /* (No Comment) */
-"quests.confirm_force_start" = "Weet je het zeker? Niet alle gezelschapsgenoten zijn deze Queeste aangegaan! Queesten starten automatisch wanneer alle spelers hun uitnodiging hebben geaccepteerd of afgewezen. ";
+"quests.confirm_force_start" = "Weet je het zeker? Niet alle gezelschapsgenoten zijn deze Queeste aangegaan! Queesten starten automatisch wanneer alle spelers hun uitnodiging hebben geaccepteerd of afgewezen.";
 /* (No Comment) */
 "quests.invitations_header" = "Uitnodigingen";
 /* (No Comment) */
@@ -411,13 +411,13 @@
 /* (No Comment) */
 "tasks.daily" = "Dagelijkse taak";
 /* (No Comment) */
-"tasks.form.accessibility.disable_negative" = "Maak negatieve actie onmogelijk";
+"tasks.form.accessibility.disable_negative" = "Maak negatieve actie onmogelijk.";
 /* (No Comment) */
-"tasks.form.accessibility.disable_positive" = "Maak positieve actie onmogelijk";
+"tasks.form.accessibility.disable_positive" = "Maak positieve actie onmogelijk.";
 /* (No Comment) */
-"tasks.form.accessibility.enable_negative" = "Maak negatieve actie mogelijk";
+"tasks.form.accessibility.enable_negative" = "Maak negatieve actie mogelijk.";
 /* (No Comment) */
-"tasks.form.accessibility.enable_positive" = "Maak positieve actie mogelijk";
+"tasks.form.accessibility.enable_positive" = "Maak positieve actie mogelijk.";
 /* (No Comment) */
 "tasks.form.accessibility.negative_enabled" = "Negatieve gewoonte actie mogelijk gemaakt.";
 /* (No Comment) */
@@ -624,7 +624,7 @@
 "tasks.examples.exercise_todo_notes" = "Tik om een checklijst toe te voegen!";
 "tasks.examples.health_habit" = "Eet gezond/junkfood";
 "tasks.examples.health_daily_text" = "Flossen";
-"tasks.examples.health_daily_notes" = "Tik om veranderingen te maken";
+"tasks.examples.health_daily_notes" = "Tik om iets te veranderen!";
 "tasks.examples.health_todo_text" = "Brainstorm over een gezonde verandering";
 "tasks.examples.health_todo_notes" = "Tik om checklijsten toe te voegen!";
 "tasks.examples.school_habit" = "Studeren/uitstellen";
@@ -704,7 +704,7 @@
 "users_invited" = "Uitnodiging is verzonden naar gebruikers.";
 "username" = "Gebruikersnaam";
 "password" = "Wachtwoord";
-"username_prompt_title" = "Het is tijd om een gebruikersnaam te kiezen";
+"username_prompt_title" = "Het is tijd om een gebruikersnaam te kiezen!";
 "confirm_username" = "Bevestig gebruikersnaam";
 "settings.confirm_username_prompt" = "Weet je zeker dat je jou huidige gebruikersnaam wilt bevestigen?";
 "username_confirmed_toast" = "Je gebruikersnaam is bevestigd";
