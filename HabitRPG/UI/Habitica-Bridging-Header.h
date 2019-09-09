@@ -21,12 +21,10 @@
 #import "HRPGShopViewController.h"
 #import "HRPGCopyTableViewCell.h"
 #import "HRPGUIViewController.h"
-#import "HRPGInboxChatViewController.h"
 #import <SlackTextViewController/SLKTextViewController.h>
 #import "HRPGFlagInformationOverlayView.h"
 #import "HRPGLabeledProgressBar.h"
 #import "HRPGNavigationController.h"
-#import "HRPGInboxTableViewController.h"
 #import "HRPGShopOverviewViewController.h"
 #import "HRPGSpellViewController.h"
 #import "HRPGSharingManager.h"

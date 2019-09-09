@@ -13,7 +13,6 @@
 #import <Fabric/Fabric.h>
 #import "Amplitude.h"
 #import "HRPGMaintenanceViewController.h"
-#import "HRPGInboxChatViewController.h"
 #import <Keys/HabiticaKeys.h>
 #import "AppAuth.h"
 #import "Habitica-Swift.h"
@@ -232,7 +231,7 @@
     UINavigationController *displayedNavigationController = [self displayTabAtIndex:4];
     if (displayedNavigationController) {
         if ([userInfo[@"identifier"] isEqualToString:@"newPM"] || [userInfo[@"identifier"] isEqualToString:@"giftedGems"] || [userInfo[@"identifier"] isEqualToString:@"giftedSubscription"]) {
-            HRPGInboxChatViewController *inboxChatViewController = (HRPGInboxChatViewController *)[self loadViewController:@"InboxChatViewController" fromStoryboard:@"Social"];
+            InboxChatViewController *inboxChatViewController = (InboxChatViewController *)[self loadViewController:@"InboxChatViewController" fromStoryboard:@"Social"];
             inboxChatViewController.userID = userInfo[@"replyTo"];
             [displayedNavigationController pushViewController:inboxChatViewController animated:YES];
         } else if ([userInfo[@"identifier"] isEqualToString:@"invitedParty"] || [userInfo[@"identifier"] isEqualToString:@"questStarted"]) {

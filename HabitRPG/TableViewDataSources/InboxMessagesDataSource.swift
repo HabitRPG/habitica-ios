@@ -9,25 +9,8 @@
 import Foundation
 import Habitica_Models
 
-@objc public protocol InboxMessagesDataSourceProtocol {
-    @objc weak var tableView: UITableView? { get set }
-    @objc weak var viewController: HRPGInboxChatViewController? { get set }
-    @objc var otherUsername: String? { get set }
-    
-    @objc
-    func sendMessage(messageText: String)
-}
-
-@objc
-class InboxMessagesDataSourceInstantiator: NSObject {
-    @objc
-    static func instantiate(otherUserID: String?) -> InboxMessagesDataSourceProtocol {
-        return InboxMessagesDataSource(otherUserID: otherUserID)
-    }
-}
-
-class InboxMessagesDataSource: BaseReactiveTableViewDataSource<InboxMessageProtocol>, InboxMessagesDataSourceProtocol {
-    @objc weak var viewController: HRPGInboxChatViewController?
+class InboxMessagesDataSource: BaseReactiveTableViewDataSource<InboxMessageProtocol> {
+    @objc weak var viewController: InboxChatViewController?
     
     private var expandedChatPath: IndexPath?
     
@@ -48,7 +31,7 @@ class InboxMessagesDataSource: BaseReactiveTableViewDataSource<InboxMessageProto
             self?.tableView?.reloadData()
         }).start())
         disposable.inner.add(socialRepository.getMember(userID: otherUserID ?? otherUsername ?? "", retrieveIfNotFound: true).on(value: {[weak self]member in
-            self?.viewController?.setTitleWithUsername(member?.profile?.name)
+            self?.viewController?.setTitleWith(username: member?.profile?.name)
         }).start())
         disposable.inner.add(socialRepository.getMessages(withUserID: otherUserID ?? otherUsername ?? "").on(value: {[weak self] (messages, changes) in
             self?.sections[0].items = messages
@@ -141,5 +124,11 @@ class InboxMessagesDataSource: BaseReactiveTableViewDataSource<InboxMessageProto
     
     func sendMessage(messageText: String) {
         socialRepository.post(inboxMessage: messageText, toUserID: otherUserID ?? otherUsername ?? "").observeCompleted {}
+    }
+    
+    func refresh(completed: @escaping (() -> Void)) {
+        userRepository.retrieveInboxMessages().observeCompleted {
+            completed()
+        }
     }
 }

@@ -402,7 +402,7 @@ class UserProfileViewController: BaseTableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == StoryboardSegue.Social.writeMessageSegue.rawValue {
             let navigationController = segue.destination as? UINavigationController
-            let chatViewController = navigationController?.topViewController as? HRPGInboxChatViewController
+            let chatViewController = navigationController?.topViewController as? InboxChatViewController
             chatViewController?.isPresentedModally = true
             chatViewController?.userID = userID
             chatViewController?.username = username

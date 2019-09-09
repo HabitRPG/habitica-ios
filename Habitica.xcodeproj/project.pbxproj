@@ -249,6 +249,8 @@
 		298119B51F5048C000F9FB39 /* QuestGoalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 298119B41F5048C000F9FB39 /* QuestGoalView.xib */; };
 		298409CD203C3283003AD202 /* AvatarViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298409CA203C2B4A003AD202 /* AvatarViewTests.swift */; };
 		2986EB0B1FCC63F900B316F6 /* AttributePointsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2986EB0A1FCC63F900B316F6 /* AttributePointsViewController.swift */; };
+		29951A1E2326670500918FC8 /* InboxOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29951A1D2326670500918FC8 /* InboxOverviewViewController.swift */; };
+		29951A20232669C600918FC8 /* InboxChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29951A1F232669C500918FC8 /* InboxChatViewController.swift */; };
 		2996AA1F22EB157800033D92 /* AppIntentVocabulary.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2996AA2122EB157800033D92 /* AppIntentVocabulary.plist */; };
 		299BD6221F505DFA00E22935 /* PaddedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299BD6211F505DFA00E22935 /* PaddedLabel.swift */; };
 		299BD6351F54346F00E22935 /* QuestDetailRewardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 299BD6341F54346F00E22935 /* QuestDetailRewardView.xib */; };
@@ -547,8 +549,6 @@
 		D9D17CD61E6899A800AD9232 /* ToDoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CD51E6899A800AD9232 /* ToDoTableViewCell.xib */; };
 		D9D17CDA1E69C68000AD9232 /* ChallengeDetailAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CD91E69C68000AD9232 /* ChallengeDetailAlert.xib */; };
 		D9D17CDE1E6AFFD900AD9232 /* ChallengeDetailAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D17CDD1E6AFFD900AD9232 /* ChallengeDetailAlert.swift */; };
-		D9D593581D004CC900D6C388 /* HRPGInboxTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D593571D004CC900D6C388 /* HRPGInboxTableViewController.m */; };
-		D9D593611D0058AE00D6C388 /* HRPGInboxChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D593601D0058AE00D6C388 /* HRPGInboxChatViewController.m */; };
 		D9E02EC61E5E0458002CFCE2 /* ChallengeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E02EC51E5E0458002CFCE2 /* ChallengeTableViewController.swift */; };
 		D9E46AFD1DAB98D700E390D7 /* HRPGGemHeaderNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E46AFC1DAB98D700E390D7 /* HRPGGemHeaderNavigationController.m */; };
 		D9E9E0C41CCE55DA006D94A2 /* HRPGSharingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E9E0C31CCE55DA006D94A2 /* HRPGSharingManager.m */; };
@@ -897,6 +897,8 @@
 		298119B41F5048C000F9FB39 /* QuestGoalView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestGoalView.xib; sourceTree = "<group>"; };
 		298409CA203C2B4A003AD202 /* AvatarViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarViewTests.swift; sourceTree = "<group>"; };
 		2986EB0A1FCC63F900B316F6 /* AttributePointsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributePointsViewController.swift; sourceTree = "<group>"; };
+		29951A1D2326670500918FC8 /* InboxOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InboxOverviewViewController.swift; path = HabitRPG/UI/Social/InboxOverviewViewController.swift; sourceTree = SOURCE_ROOT; };
+		29951A1F232669C500918FC8 /* InboxChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxChatViewController.swift; sourceTree = "<group>"; };
 		2996AA2022EB157800033D92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = Base.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
 		2996AA2222EB158300033D92 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = cs; path = cs.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
 		2996AA2422EB159300033D92 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = ja; path = ja.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
@@ -1324,10 +1326,6 @@
 		D9D17CD51E6899A800AD9232 /* ToDoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToDoTableViewCell.xib; sourceTree = "<group>"; };
 		D9D17CD91E69C68000AD9232 /* ChallengeDetailAlert.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChallengeDetailAlert.xib; sourceTree = "<group>"; };
 		D9D17CDD1E6AFFD900AD9232 /* ChallengeDetailAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeDetailAlert.swift; sourceTree = "<group>"; };
-		D9D593561D004CC900D6C388 /* HRPGInboxTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGInboxTableViewController.h; sourceTree = "<group>"; };
-		D9D593571D004CC900D6C388 /* HRPGInboxTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGInboxTableViewController.m; sourceTree = "<group>"; };
-		D9D5935F1D0058AE00D6C388 /* HRPGInboxChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGInboxChatViewController.h; sourceTree = "<group>"; };
-		D9D593601D0058AE00D6C388 /* HRPGInboxChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGInboxChatViewController.m; sourceTree = "<group>"; };
 		D9D795F71CAAE64E00112D38 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D9D795F81CAAE64E00112D38 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D9E02EC51E5E0458002CFCE2 /* ChallengeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeTableViewController.swift; sourceTree = "<group>"; };
@@ -1802,6 +1800,8 @@
 				29DC5ACC20A321C900993400 /* GroupFormViewController.swift */,
 				297D15F920B803D30048101F /* UserProfileViewController.swift */,
 				292D6C9A2101FF080078288A /* InviteMembersViewController.swift */,
+				29951A1D2326670500918FC8 /* InboxOverviewViewController.swift */,
+				29951A1F232669C500918FC8 /* InboxChatViewController.swift */,
 			);
 			path = Social;
 			sourceTree = "<group>";
@@ -2068,7 +2068,6 @@
 				D99F15BE191027D90081836E /* HRPGBaseViewController.h */,
 				D99F15BF191027D90081836E /* HRPGBaseViewController.m */,
 				49DCECE71F9A843E00982E99 /* MultiModelTableViewController.swift */,
-				D9436AC21C64F6DC008D1171 /* Social */,
 				D9C3D01C19509E3800D22A4A /* Inventory */,
 				D9E3654F1930D45500C056F1 /* Modals */,
 				D9E3654E1930D44300C056F1 /* Spells */,
@@ -2086,14 +2085,6 @@
 			);
 			name = DataSources;
 			path = TableViewDataSources;
-			sourceTree = "<group>";
-		};
-		D9436AC21C64F6DC008D1171 /* Social */ = {
-			isa = PBXGroup;
-			children = (
-				D9D593551D004CB400D6C388 /* Inbox */,
-			);
-			path = Social;
 			sourceTree = "<group>";
 		};
 		D94461841AB34F5C0015215E /* HabiticaTests */ = {
@@ -2589,17 +2580,6 @@
 				D9ADD34A1943BB16006202C1 /* HRPGFeedViewController.m */,
 			);
 			path = Inventory;
-			sourceTree = "<group>";
-		};
-		D9D593551D004CB400D6C388 /* Inbox */ = {
-			isa = PBXGroup;
-			children = (
-				D9D593561D004CC900D6C388 /* HRPGInboxTableViewController.h */,
-				D9D593571D004CC900D6C388 /* HRPGInboxTableViewController.m */,
-				D9D5935F1D0058AE00D6C388 /* HRPGInboxChatViewController.h */,
-				D9D593601D0058AE00D6C388 /* HRPGInboxChatViewController.m */,
-			);
-			name = Inbox;
 			sourceTree = "<group>";
 		};
 		D9E02EC41E5E02E7002CFCE2 /* Challenges */ = {
@@ -3622,7 +3602,6 @@
 				299FB2A12084A93100422522 /* HabiticaSplitViewController.swift in Sources */,
 				D9BB45591E71AFAF0002AE2E /* Down-Extensions.swift in Sources */,
 				292DEEA7204F6F8C0086D5F7 /* TodoTableViewDataSource.swift in Sources */,
-				D9D593611D0058AE00D6C388 /* HRPGInboxChatViewController.m in Sources */,
 				292DEE70204DEB120086D5F7 /* TaskTableViewDataSource.swift in Sources */,
 				D9D17CD01E673CCC00AD9232 /* UIView-Extensions.swift in Sources */,
 				299FB2A32084B3DF00422522 /* PetOverviewViewController.swift in Sources */,
@@ -3677,7 +3656,6 @@
 				290C302A206BA0B50066AF5B /* SkillTableViewCell.swift in Sources */,
 				290458D02021D6C60032BC5E /* TopHeaderCoordinator.swift in Sources */,
 				D98F5DCD1C6CB1330035CBEC /* HRPGFlagInformationOverlayView.m in Sources */,
-				D9D593581D004CC900D6C388 /* HRPGInboxTableViewController.m in Sources */,
 				29C1B6AB20594F500001D3EF /* VisualEffectsModalViewController.swift in Sources */,
 				D96BFC4C1E181B4A00266EEF /* IntroViewController.swift in Sources */,
 				2902799720583D82006DACB9 /* LoadingViewController.swift in Sources */,
@@ -3822,6 +3800,7 @@
 				D9709A541E8051DC0005F35B /* TaskRepeatablesSummaryInteractor.swift in Sources */,
 				29DBFF0520CEB42F00DF9CF2 /* AvatarGearDetailViewDataSource.swift in Sources */,
 				2974BDB42090926B00EC1A25 /* MainTabBarController.swift in Sources */,
+				29951A20232669C600918FC8 /* InboxChatViewController.swift in Sources */,
 				29323E352052008800AC6D6F /* UserTopHeader.swift in Sources */,
 				293BB4A51FD078EC003B6F4F /* StatsSliderView.swift in Sources */,
 				49EE3FD8201908AB00CD7608 /* ChallengeButtonStyleProvider.swift in Sources */,
@@ -3855,6 +3834,7 @@
 				299FB2A52084B40700422522 /* StableOverviewDataSource.swift in Sources */,
 				D99BC43419D4C34A006DC132 /* OnePasswordExtension.m in Sources */,
 				299FB29A2084A30400422522 /* StableRepository.swift in Sources */,
+				29951A1E2326670500918FC8 /* InboxOverviewViewController.swift in Sources */,
 				29028C422037131C00B7F704 /* SystemMessageTableViewCell.swift in Sources */,
 				29B3FEBA1F9A6FAD000B12CF /* AuthenticationSettingsViewController.swift in Sources */,
 				290279632057EC03006DACB9 /* FAQTableViewController.swift in Sources */,
@@ -4189,7 +4169,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 411;
+				CURRENT_PROJECT_VERSION = 412;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4224,7 +4204,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 411;
+				CURRENT_PROJECT_VERSION = 412;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4258,7 +4238,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 411;
+				CURRENT_PROJECT_VERSION = 412;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4295,7 +4275,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 411;
+				CURRENT_PROJECT_VERSION = 412;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4557,7 +4537,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 403;
+				CURRENT_PROJECT_VERSION = 404;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -4612,7 +4592,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 403;
+				CURRENT_PROJECT_VERSION = 404;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -4642,7 +4622,7 @@
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 411;
+				CURRENT_PROJECT_VERSION = 412;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_SOURCE_FILE_NAMES = "";
@@ -4735,7 +4715,7 @@
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 411;
+				CURRENT_PROJECT_VERSION = 412;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_SOURCE_FILE_NAMES = "FLEX*";
