@@ -42,6 +42,7 @@
     [self.swiftAppDelegate setupPopups];
     [self.swiftAppDelegate setupPurchaseHandling];
     [self.swiftAppDelegate setupNetworkClient];
+    [self.swiftAppDelegate setupTheme];
     [self.swiftAppDelegate setupDatabase];
     [self.swiftAppDelegate setupFirebase];
     

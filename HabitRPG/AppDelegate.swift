@@ -148,6 +148,14 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
     }
     
     @objc
+    func setupTheme() {
+        ThemeService.shared.updateDarkMode()
+        let defaults = UserDefaults.standard
+        let themeName = ThemeName(rawValue: defaults.string(forKey: "theme") ?? "") ?? ThemeName.defaultTheme
+        Analytics.setUserProperty(themeName.rawValue, forName: "theme")
+    }
+    
+    @objc
     func setupUserManager() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             UserManager.shared.beginListening()

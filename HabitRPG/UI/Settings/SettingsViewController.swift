@@ -76,7 +76,7 @@ enum ThemeName: String {
     case gray
     
     var themeClass: Theme {
-        if ThemeService.shared.isDarkTheme {
+        if ThemeService.shared.isDarkTheme == true {
             switch self {
             case .defaultTheme:
                 return DefaultDarkTheme()
@@ -721,9 +721,7 @@ class SettingsViewController: FormViewController, Themeable {
                 if let newTheme = ThemeMode(rawValue: row.value?.value ?? "") {
                     let defaults = UserDefaults.standard
                     defaults.set(newTheme.rawValue, forKey: "themeMode")
-                    if let traitCollection = self?.traitCollection {
-                        ThemeService.shared.updateDarkMode(traitCollection: traitCollection)
-                    }
+                    ThemeService.shared.updateDarkMode()
                 }
             })
             row.onPresent({ (_, to) in

@@ -15,7 +15,7 @@ public class ThemeService: NSObject {
     private let defaults = UserDefaults.standard
 
     public static let shared = ThemeService()
-    public var isDarkTheme = false
+    public var isDarkTheme: Bool?
     public var theme: Theme = DefaultTheme() {
         didSet {
             applyTheme()
@@ -29,8 +29,7 @@ public class ThemeService: NSObject {
     private var objcListeners = NSHashTable<AnyObject>.weakObjects()
 
     override public init() {
-        if #available(iOS 12.0, *) {
-            isDarkTheme = UIScreen.main.traitCollection.userInterfaceStyle == .dark
+        if #available(iOS 13.0, *) {
         }
     }
     
@@ -132,9 +131,9 @@ public class ThemeService: NSObject {
         updateDarkMode(systemIsDark: isDark)
     }
     
-    func updateDarkMode(traitCollection: UITraitCollection) {
+    func updateDarkMode() {
         if #available(iOS 13.0, *) {
-            updateDarkMode(systemIsDark: traitCollection.userInterfaceStyle == .dark)
+            updateDarkMode(systemIsDark: UIScreen.main.traitCollection.userInterfaceStyle == .dark)
         } else {
             updateDarkMode(systemIsDark: false)
         }
