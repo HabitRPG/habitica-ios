@@ -100,8 +100,8 @@ class NotificationsDataSource: BaseReactiveTableViewDataSource<NotificationProto
             }
         case .questInvite:
             if let cell = cell as? QuestInviteNotificationCell, let notif = notification as? NotificationQuestInviteProtocol {
-                if let result = inventoryRepository.getQuest(key: notif.questKey ?? "").first(), let quest = result.value, let thisQuest = quest {
-                    cell.configureFor(quest: thisQuest)
+                if let quest = try? inventoryRepository.getQuest(key: notif.questKey ?? "").first()?.get() {
+                    cell.configureFor(quest: quest)
                 }
                 cell.configureFor(notification: notif)
                 cell.declineAction = { [weak self] in self?.socialRepository.rejectQuestInvitation(groupID: "party").observeCompleted {
