@@ -14,8 +14,6 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel *amountLabel;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *promoHeight;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *promoGemsSpace;
 @property (weak, nonatomic) IBOutlet UILabel *gemsLabel;
 @property(nonatomic) void (^promoTapEvent)();
 
@@ -52,18 +50,6 @@
 
 - (void)setPurchaseTap:(void (^)(HRPGPurchaseLoadingButton *))purchaseTap {
     self.purchaseButton.onTouchEvent = purchaseTap;
-}
-
-- (void)showSeedsPromo:(BOOL)showPromo {
-    if (showPromo) {
-        self.seeds_promo.hidden = NO;
-        self.promoHeight.constant = 28;
-        self.promoGemsSpace.constant = 16;
-    } else {
-        self.seeds_promo.hidden = YES;
-        self.promoHeight.constant = 0;
-        self.promoGemsSpace.constant = 0;
-    }
 }
 
 @end

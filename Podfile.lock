@@ -186,7 +186,6 @@ PODS:
   - Realm/Headers (3.17.1)
   - RealmSwift (3.17.1):
     - Realm (= 3.17.1)
-  - SeedsSDK (0.5.0)
   - SimulatorStatusMagic (2.4.1)
   - SlackTextViewController (1.9.6)
   - SwiftGen (6.1.0)
@@ -227,7 +226,6 @@ DEPENDENCIES:
   - Quick (~> 1.2.0)
   - ReactiveCocoa (~> 10)
   - RealmSwift
-  - SeedsSDK
   - SimulatorStatusMagic
   - SlackTextViewController
   - SwiftGen
@@ -282,7 +280,6 @@ SPEC REPOS:
     - ReactiveSwift
     - Realm
     - RealmSwift
-    - SeedsSDK
     - SimulatorStatusMagic
     - SlackTextViewController
     - SwiftGen
@@ -341,7 +338,6 @@ SPEC CHECKSUMS:
   ReactiveSwift: 24b7ed245617bbfd30ee0c87779b6c64ac1b4518
   Realm: c204f1a890f07dea43b14132a6aad118c054b8f2
   RealmSwift: 4d3c9233544b9cd08a8913e0872b9038eb99b054
-  SeedsSDK: 8de27e088c15ff3eba33a6d2941ec507e4a5bb95
   SimulatorStatusMagic: 28d4a9d1a500ac7cea0b2b5a43c1c6ddb40ba56c
   SlackTextViewController: b854e62c1c156336bc4fd409c6ca79b5773e8f9d
   SwiftGen: f872ca75cbd17bf7103c17f13dcfa0d9a15667b0
@@ -350,6 +346,6 @@ SPEC CHECKSUMS:
   VTAcknowledgementsViewController: 3bb742da852a5161dc9f4b017e52f926a41ef5d3
   XLForm: b8d47a9a00fb6166981cb40de7169d70d611e9be
 
-PODFILE CHECKSUM: 94160c2de285c436b89e20000a8785be5a812989
+PODFILE CHECKSUM: d56e0df067aab0ed91bd000adb8f0b0413f795e0
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.7.5

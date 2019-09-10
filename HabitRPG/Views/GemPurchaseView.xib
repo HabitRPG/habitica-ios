@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14865.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14819.2"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -19,7 +17,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gems" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iZt-Wf-rfp">
-                        <rect key="frame" x="0.0" y="162" width="290" height="21"/>
+                        <rect key="frame" x="0.0" y="198" width="290" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" priority="500" constant="21" id="cER-RY-PVx"/>
                         </constraints>
@@ -28,16 +26,16 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="21_gems" translatesAutoresizingMaskIntoConstraints="NO" id="aHI-TN-dVp">
-                        <rect key="frame" x="0.0" y="0.0" width="290" height="141"/>
+                        <rect key="frame" x="0.0" y="0.0" width="290" height="177"/>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oA3-c2-Kf1" customClass="HRPGPurchaseLoadingButton">
-                        <rect key="frame" x="8" y="191" width="274" height="30"/>
+                        <rect key="frame" x="8" y="227" width="274" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="9W0-QJ-zlK"/>
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8CD-7L-CWx">
-                        <rect key="frame" x="0.0" y="141" width="290" height="21"/>
+                        <rect key="frame" x="0.0" y="177" width="290" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" priority="500" constant="21" id="guv-Pb-kSg"/>
                         </constraints>
@@ -45,46 +43,34 @@
                         <color key="textColor" red="0.16078431904315948" green="0.58431375026702881" blue="0.80392158031463623" alpha="1" colorSpace="deviceRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="seeds_promo" translatesAutoresizingMaskIntoConstraints="NO" id="PrB-ws-N1Y">
-                        <rect key="frame" x="0.0" y="225" width="290" height="28"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="28" id="36P-4T-Ien"/>
-                        </constraints>
-                    </imageView>
                 </subviews>
             </view>
             <constraints>
                 <constraint firstItem="8CD-7L-CWx" firstAttribute="top" secondItem="aHI-TN-dVp" secondAttribute="bottom" id="07d-TX-fQv"/>
                 <constraint firstAttribute="trailing" secondItem="iZt-Wf-rfp" secondAttribute="trailing" id="BVA-oC-gQG"/>
                 <constraint firstItem="aHI-TN-dVp" firstAttribute="top" secondItem="XB3-4A-WOm" secondAttribute="top" id="Ggk-wq-lk4"/>
-                <constraint firstAttribute="trailing" secondItem="PrB-ws-N1Y" secondAttribute="trailing" id="KWI-PD-edO"/>
                 <constraint firstItem="oA3-c2-Kf1" firstAttribute="leading" secondItem="XB3-4A-WOm" secondAttribute="leading" constant="8" id="WUk-BY-f9O"/>
-                <constraint firstAttribute="bottom" secondItem="PrB-ws-N1Y" secondAttribute="bottom" constant="8" id="ZD2-Vk-x1B"/>
                 <constraint firstItem="iZt-Wf-rfp" firstAttribute="top" secondItem="8CD-7L-CWx" secondAttribute="bottom" id="aWt-eB-lYN"/>
                 <constraint firstAttribute="trailing" secondItem="aHI-TN-dVp" secondAttribute="trailing" id="dq0-oc-6b6"/>
-                <constraint firstItem="PrB-ws-N1Y" firstAttribute="top" secondItem="oA3-c2-Kf1" secondAttribute="bottom" constant="4" id="fsp-Jq-ShN"/>
+                <constraint firstAttribute="bottom" secondItem="oA3-c2-Kf1" secondAttribute="bottom" constant="4" id="dvR-X3-ajj"/>
                 <constraint firstItem="iZt-Wf-rfp" firstAttribute="leading" secondItem="XB3-4A-WOm" secondAttribute="leading" id="nwy-Af-PoQ"/>
                 <constraint firstItem="oA3-c2-Kf1" firstAttribute="top" secondItem="iZt-Wf-rfp" secondAttribute="bottom" constant="8" id="ojC-p7-0j4"/>
                 <constraint firstAttribute="trailing" secondItem="oA3-c2-Kf1" secondAttribute="trailing" constant="8" id="sfQ-1J-kqd"/>
                 <constraint firstItem="8CD-7L-CWx" firstAttribute="leading" secondItem="XB3-4A-WOm" secondAttribute="leading" id="t6E-D9-ABN"/>
                 <constraint firstAttribute="trailing" secondItem="8CD-7L-CWx" secondAttribute="trailing" id="u1T-tA-31A"/>
                 <constraint firstItem="aHI-TN-dVp" firstAttribute="leading" secondItem="XB3-4A-WOm" secondAttribute="leading" id="xiw-nf-llb"/>
-                <constraint firstItem="PrB-ws-N1Y" firstAttribute="leading" secondItem="XB3-4A-WOm" secondAttribute="leading" id="yrD-Lz-Ulh"/>
             </constraints>
             <size key="customSize" width="290" height="261"/>
             <connections>
                 <outlet property="amountLabel" destination="8CD-7L-CWx" id="uXR-9n-amd"/>
                 <outlet property="gemsLabel" destination="iZt-Wf-rfp" id="qzD-z0-Hrh"/>
                 <outlet property="imageView" destination="aHI-TN-dVp" id="wbE-Wj-Ko4"/>
-                <outlet property="promoHeight" destination="36P-4T-Ien" id="iKI-6s-M7e"/>
                 <outlet property="purchaseButton" destination="oA3-c2-Kf1" id="jts-hj-6dE"/>
-                <outlet property="seeds_promo" destination="PrB-ws-N1Y" id="TU8-KJ-mdh"/>
             </connections>
             <point key="canvasLocation" x="154" y="599.5"/>
         </collectionViewCell>
     </objects>
     <resources>
         <image name="21_gems" width="47.5" height="54.5"/>
-        <image name="seeds_promo" width="241" height="56"/>
     </resources>
 </document>
