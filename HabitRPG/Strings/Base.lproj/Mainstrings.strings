@@ -497,7 +497,6 @@
 "groups.invite.add_userid" = "Add a User ID";
 "groups.invite.add_username" = "Add a Username";
 "groups.invite.add_email" = "Add an Email";
-"scan_QR_code" = "Scan QR Code";
 "users_invited" = "Invitation was sent to users.";
 "username" = "Username";
 "display_name" = "Display name";
@@ -743,8 +742,6 @@
 "invalid_recipient_message" = "You have to specify a valid Habitica Username as recipient.";
 "invalid_recipient_title" = "Invalid Habitica Username";
 "no_camera" = "No Camera available";
-"qr_invalid_id_title" = "Invalid Habitica User ID";
-"qr_invalid_id_message" = "The scanned QR-Code did not contain a valid Habitica User ID.";
 "not_enough_gems" = "Not enough Gems";
 "not_enough_hourglasses" = "Not enough Hourglasses";
 "subscribe_for_hourglasses" = "Subscribe for Hourglasses";

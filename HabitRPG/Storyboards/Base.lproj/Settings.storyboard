@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14865.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Mxq-5y-Lb4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Mxq-5y-Lb4">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14819.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -110,40 +110,6 @@
                                         <constraint firstItem="c5C-c8-WLD" firstAttribute="leading" secondItem="X0W-Ex-Zfn" secondAttribute="leadingMargin" id="GBY-SY-3dE"/>
                                         <constraint firstItem="c5C-c8-WLD" firstAttribute="top" secondItem="X0W-Ex-Zfn" secondAttribute="topMargin" id="uKl-VP-vET"/>
                                     </constraints>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="QRCodeCell" rowHeight="320" id="7os-8x-XfP" customClass="HRPGCopyTableViewCell">
-                                <rect key="frame" x="0.0" y="143.5" width="375" height="320"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7os-8x-XfP" id="UT0-ba-e5Z">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="320"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LAx-3w-uwb" customClass="HRPGQRCodeView">
-                                            <rect key="frame" x="34.5" y="7" width="306" height="306"/>
-                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="306" id="0Ov-h9-9W1"/>
-                                                <constraint firstAttribute="width" constant="306" id="C5X-Hd-7Ip"/>
-                                            </constraints>
-                                        </view>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="LAx-3w-uwb" firstAttribute="centerY" secondItem="UT0-ba-e5Z" secondAttribute="centerY" id="FIY-IV-aJQ"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="LAx-3w-uwb" secondAttribute="trailing" id="Lsa-Yd-P9P"/>
-                                        <constraint firstItem="LAx-3w-uwb" firstAttribute="top" secondItem="UT0-ba-e5Z" secondAttribute="topMargin" id="MMw-7j-NUp"/>
-                                        <constraint firstItem="LAx-3w-uwb" firstAttribute="leading" secondItem="UT0-ba-e5Z" secondAttribute="leadingMargin" id="Xgn-wl-BAa"/>
-                                        <constraint firstItem="LAx-3w-uwb" firstAttribute="centerX" secondItem="UT0-ba-e5Z" secondAttribute="centerX" id="ZKU-QY-3nN"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="LAx-3w-uwb" secondAttribute="bottom" id="cGT-J3-iQ9"/>
-                                    </constraints>
-                                    <variation key="default">
-                                        <mask key="constraints">
-                                            <exclude reference="Lsa-Yd-P9P"/>
-                                            <exclude reference="MMw-7j-NUp"/>
-                                            <exclude reference="Xgn-wl-BAa"/>
-                                            <exclude reference="cGT-J3-iQ9"/>
-                                        </mask>
-                                    </variation>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>

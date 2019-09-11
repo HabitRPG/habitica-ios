@@ -14,7 +14,6 @@ struct InviteMembersFormTags {
     static let userIDSection = "userIDSection"
     static let usernameSection = "usernameSection"
     static let emailsSection = "emailsSection"
-    static let qrCodeButton = "qrCodeButton"
 }
 
 class InviteMembersViewController: FormViewController {
