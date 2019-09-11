@@ -59,8 +59,8 @@ class InboxOverviewViewController: BaseTableViewController {
                     guard let indexPath = tableView.indexPath(for: cell) else {
                         return
                     }
-                    let message = dataSource.messageAt(indexPath: indexPath)
-                    chatViewController.userID = message?.userID
+                    let message = dataSource.item(at: indexPath)
+                    chatViewController.userID = message?.uuid
                     chatViewController.displayName = message?.displayName
                 }
             }

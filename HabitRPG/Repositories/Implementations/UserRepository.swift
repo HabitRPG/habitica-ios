@@ -318,12 +318,22 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         })
     }
     
-    func retrieveInboxMessages() -> Signal<[InboxMessageProtocol]?, Never> {
-        let call = RetrieveInboxMessagesCall()
+    func retrieveInboxMessages(conversationID: String, page: Int) -> Signal<[InboxMessageProtocol]?, Never> {
+        let call = RetrieveInboxMessagesCall(uuid: conversationID, page: page)
         
         return call.arraySignal.on(value: {[weak self] messages in
             if let messages = messages, let userID = self?.currentUserId {
                 self?.localRepository.save(userID: userID, messages: messages)
+            }
+        })
+    }
+    
+    func retrieveInboxConversations() -> Signal<[InboxConversationProtocol]?, Never> {
+        let call = RetrieveInboxConversationsCall()
+        
+        return call.arraySignal.on(value: {[weak self] conversations in
+            if let conversations = conversations, let userID = self?.currentUserId {
+                self?.localRepository.save(userID: userID, conversations: conversations)
             }
         })
     }

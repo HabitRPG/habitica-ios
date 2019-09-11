@@ -340,12 +340,11 @@ public class SocialLocalRepository: BaseLocalRepository {
         })
     }
     
-    public func getMessagesThreads(userID: String) -> SignalProducer<ReactiveResults<[InboxMessageProtocol]>, ReactiveSwiftRealmError> {
-        return RealmInboxMessage.findBy(query: "ownUserID == '\(userID)'")
+    public func getMessagesThreads(userID: String) -> SignalProducer<ReactiveResults<[InboxConversationProtocol]>, ReactiveSwiftRealmError> {
+        return RealmInboxConversation.findBy(query: "userID == '\(userID)'")
             .sorted(key: "timestamp", ascending: false)
-            .distinct(by: ["userID"])
-            .reactive().map({ (value, changeset) -> ReactiveResults<[InboxMessageProtocol]> in
-            return (value.map({ (message) -> InboxMessageProtocol in return message }), changeset)
+            .reactive().map({ (value, changeset) -> ReactiveResults<[InboxConversationProtocol]> in
+            return (value.map({ (conversation) -> InboxConversationProtocol in return conversation }), changeset)
         })
     }
     

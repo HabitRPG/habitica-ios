@@ -150,7 +150,7 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
     
     func post(inboxMessage: String, toUserID userID: String) -> Signal<[InboxMessageProtocol]?, Never> {
         return PostInboxMessageCall(userID: userID, inboxMessage: inboxMessage).objectSignal.flatMap(.latest, {[weak self] (_) in
-            return self?.userRepository.retrieveInboxMessages() ?? Signal.empty
+            return self?.userRepository.retrieveInboxMessages(conversationID: userID, page: 0) ?? Signal.empty
         })
     }
     
@@ -344,7 +344,7 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
         })
     }
     
-    public func getMessagesThreads() -> SignalProducer<ReactiveResults<[InboxMessageProtocol]>, ReactiveSwiftRealmError> {
+    public func getMessagesThreads() -> SignalProducer<ReactiveResults<[InboxConversationProtocol]>, ReactiveSwiftRealmError> {
         return currentUserIDProducer.skipNil().flatMap(.latest, {[weak self] (userID) in
             return self?.localRepository.getMessagesThreads(userID: userID) ?? SignalProducer.empty
         })

@@ -22,6 +22,7 @@ class InboxChatViewController: SLKTextViewController, Themeable {
 
     @IBOutlet var profileBarButton: UIBarButtonItem!
     @IBOutlet var doneBarButton: UIBarButtonItem!
+
     
     override class func tableViewStyle(for decoder: NSCoder) -> UITableView.Style {
         return .plain
@@ -37,14 +38,15 @@ class InboxChatViewController: SLKTextViewController, Themeable {
         tableView?.register(nib, forCellReuseIdentifier: "ChatMessageCell")
         
         if isPresentedModally {
-            navigationItem.setRightBarButton(doneBarButton, animated: false)
+            navigationItem.setRightBarButtonItems([doneBarButton], animated: false)
         } else {
-            navigationItem.setRightBarButton(profileBarButton, animated: false)
+            navigationItem.setRightBarButtonItems([profileBarButton], animated: false)
         }
         
         tableView?.separatorStyle = .none
         tableView?.rowHeight = UITableView.automaticDimension
         tableView?.estimatedRowHeight = 90
+        tableView?.delegate = self
         
         textView.registerMarkdownFormattingSymbol("**", withTitle: "Bold")
         textView.registerMarkdownFormattingSymbol("*", withTitle: "Italics")
@@ -76,9 +78,9 @@ class InboxChatViewController: SLKTextViewController, Themeable {
     
     @objc
     private func refresh() {
-       dataSource.refresh {[weak self] in
-           self?.refreshControl.endRefreshing()
-       }
+        dataSource.retrieveData(forced: true) {[weak self] in
+            self?.refreshControl.endRefreshing()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -112,7 +114,19 @@ class InboxChatViewController: SLKTextViewController, Themeable {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        if (segue.identifier == StoryboardSegue.Social.userProfileSegue.rawValue) {
+            let profileViewController = segue.destination as? UserProfileViewController
+            profileViewController?.userID = userID
+            profileViewController?.username = username
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.item == dataSource.tableView(tableView, numberOfRowsInSection: indexPath.section)-1 {
+            dataSource.retrieveData(forced: false) {
+                self.refreshControl.endRefreshing()
+            }
+        }
     }
     
     @IBAction func doneButtonTapped(_ sender: UIView) {

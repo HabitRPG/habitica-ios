@@ -21,6 +21,9 @@ class InboxMessagesDataSource: BaseReactiveTableViewDataSource<InboxMessageProto
     private let otherUserID: String?
     internal var otherUsername: String?
     
+    var loadedAllData = false
+    var isLoading = false
+    
     init(otherUserID: String?) {
         self.otherUserID = otherUserID
         super.init()
@@ -126,9 +129,25 @@ class InboxMessagesDataSource: BaseReactiveTableViewDataSource<InboxMessageProto
         socialRepository.post(inboxMessage: messageText, toUserID: otherUserID ?? otherUsername ?? "").observeCompleted {}
     }
     
-    func refresh(completed: @escaping (() -> Void)) {
-        userRepository.retrieveInboxMessages().observeCompleted {
-            completed()
+    func retrieveData(forced: Bool, completed: (() -> Void)?) {
+        var page = (self.visibleSections.first?.items.count ?? 0) / 10
+        if forced {
+            page = 0
+            loadedAllData = false
+        }
+        if loadedAllData || isLoading {
+            return
+        }
+        isLoading = true
+        userRepository.retrieveInboxMessages(conversationID: otherUserID ?? "", page: page)
+            .on(value: { messages in
+                if messages?.count ?? 0 < 10 {
+                    self.loadedAllData = true
+                }
+                self.isLoading = false
+            })
+            .observeCompleted {
+            completed?()
         }
     }
 }

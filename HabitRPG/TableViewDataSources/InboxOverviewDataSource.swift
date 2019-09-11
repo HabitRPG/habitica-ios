@@ -10,43 +10,20 @@ import Foundation
 import Habitica_Models
 import DateTools
 
-@objc public protocol InboxOverviewDataSourceProtocol {
-    @objc weak var tableView: UITableView? { get set }
 
-    @objc
-    func messageAt(indexPath: IndexPath) -> InboxMessageProtocol?
-    
-    @objc
-    func markInboxSeen()
-    @objc
-    func refresh(completed: @escaping (() -> Void))
-}
-
-@objc
-class InboxOverviewDataSourceInstantiator: NSObject {
-    @objc
-    static func instantiate() -> InboxOverviewDataSourceProtocol {
-        return InboxOverviewDataSource()
-    }
-}
-
-class InboxOverviewDataSource: BaseReactiveTableViewDataSource<InboxMessageProtocol>, InboxOverviewDataSourceProtocol {
+class InboxOverviewDataSource: BaseReactiveTableViewDataSource<InboxConversationProtocol> {
     
     private let socialRepository = SocialRepository()
     private let userRepository = UserRepository()
     
     override init() {
         super.init()
-        sections.append(ItemSection<InboxMessageProtocol>())
+        sections.append(ItemSection<InboxConversationProtocol>())
         
         disposable.inner.add(socialRepository.getMessagesThreads().on(value: {[weak self](messages, changes) in
             self?.sections[0].items = messages
             self?.notify(changes: changes)
         }).start())
-    }
-    
-    func messageAt(indexPath: IndexPath) -> InboxMessageProtocol? {
-        return item(at: indexPath)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -93,7 +70,7 @@ class InboxOverviewDataSource: BaseReactiveTableViewDataSource<InboxMessageProto
     }
     
     func refresh(completed: @escaping (() -> Void)) {
-        userRepository.retrieveInboxMessages().observeCompleted {
+        userRepository.retrieveInboxConversations().observeCompleted {
             completed()
         }
     }
