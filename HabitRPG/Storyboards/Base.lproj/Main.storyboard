@@ -2377,10 +2377,10 @@
             </objects>
             <point key="canvasLocation" x="1035" y="5827"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Themed Navigation Controller-->
         <scene sceneID="9Qs-Im-7zO">
             <objects>
-                <navigationController storyboardIdentifier="tagNavigationController" definesPresentationContext="YES" id="6vN-Em-JCA" customClass="HRPGNavigationController" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="tagNavigationController" definesPresentationContext="YES" id="6vN-Em-JCA" customClass="ThemedNavigationController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="biY-dp-rGo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2462,10 +2462,10 @@
             </objects>
             <point key="canvasLocation" x="1982" y="-815"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Themed Navigation Controller-->
         <scene sceneID="EPA-gN-a0D">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tLB-b1-3s8" customClass="HRPGNavigationController" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tLB-b1-3s8" customClass="ThemedNavigationController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="GEg-Ct-SF3"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="AhC-6Z-AYO">
@@ -2573,10 +2573,10 @@
             </objects>
             <point key="canvasLocation" x="343" y="2641"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Themed Navigation Controller-->
         <scene sceneID="5Un-yC-qQm">
             <objects>
-                <navigationController definesPresentationContext="YES" id="IOk-9k-SGo" customClass="HRPGNavigationController" sceneMemberID="viewController">
+                <navigationController definesPresentationContext="YES" id="IOk-9k-SGo" customClass="ThemedNavigationController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fUl-qS-mY6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2839,10 +2839,10 @@
             </objects>
             <point key="canvasLocation" x="2804" y="10417.241379310346"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Themed Navigation Controller-->
         <scene sceneID="WeW-04-8lU">
             <objects>
-                <navigationController storyboardIdentifier="GiftSubscriptionNavController" id="KOH-m5-9hA" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="GiftSubscriptionNavController" id="KOH-m5-9hA" customClass="ThemedNavigationController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="frT-yt-SsM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2855,10 +2855,10 @@
             </objects>
             <point key="canvasLocation" x="1993" y="10418"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Themed Navigation Controller-->
         <scene sceneID="9x6-O0-kDN">
             <objects>
-                <navigationController storyboardIdentifier="NotificationsNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nb1-qt-uKV" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NotificationsNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nb1-qt-uKV" customClass="ThemedNavigationController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ZYy-Vi-MXT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>

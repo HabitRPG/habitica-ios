@@ -53,6 +53,9 @@ class InboxChatViewController: SLKTextViewController, Themeable {
         textView.placeholder = L10n.writeAMessage
         textInputbar.maxCharCount = UInt(configRepository.integer(variable: .maxChatLength))
         textInputbar.charCountLabel.font = UIFont.systemFont(ofSize: 11, weight: .bold)
+        textInputbar.textView.isDynamicTypeEnabled = true
+        textInputbar.textView.placeholderFont = CustomFontMetrics.scaledSystemFont(ofSize: 13)
+        textInputbar.textView.font = CustomFontMetrics.scaledSystemFont(ofSize: 13)
         
         hrpgTopHeaderNavigationController()?.shouldHideTopHeader = true
         hrpgTopHeaderNavigationController()?.hideNavbar = false
@@ -68,6 +71,7 @@ class InboxChatViewController: SLKTextViewController, Themeable {
         textInputbar.charCountLabelNormalColor = theme.dimmedTextColor
         textInputbar.textView.backgroundColor = theme.contentBackgroundColor
         textInputbar.textView.textColor = theme.primaryTextColor
+        tableView?.reloadData()
     }
     
     @objc

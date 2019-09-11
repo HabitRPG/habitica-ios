@@ -45,7 +45,9 @@ class MainMenuViewController: BaseTableViewController {
     private var navbarColor = ThemeService.shared.theme.navbarHiddenColor {
         didSet {
             topHeaderCoordinator.navbarVisibleColor = navbarColor
-            navbarView.backgroundColor = navbarColor
+            if isVisible {
+                navbarView.backgroundColor = navbarColor
+            }
         }
     }
     private var worldBossTintColor: UIColor?

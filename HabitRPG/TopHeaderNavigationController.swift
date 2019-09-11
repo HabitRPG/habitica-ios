@@ -204,11 +204,10 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
         defaultNavbarHiddenColor = theme.navbarHiddenColor
         defaultNavbarVisibleColor = theme.contentBackgroundColor
         visibleTintColor = theme.tintColor
-        setNavigationBarColors(navbarColorBlendingAlpha)
         bottomBorderView.backgroundColor = theme.separatorColor
         backgroundView.backgroundColor = theme.contentBackgroundColorDimmed
         upperBackgroundView.backgroundColor = theme.contentBackgroundColor
-        
+        setNavigationBarColors(navbarColorBlendingAlpha)
     }
     
     override func viewWillLayoutSubviews() {

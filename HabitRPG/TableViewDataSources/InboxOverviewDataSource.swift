@@ -53,28 +53,33 @@ class InboxOverviewDataSource: BaseReactiveTableViewDataSource<InboxMessageProto
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
         if let message = item(at: indexPath) {
+            cell.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
             let displayNameLabel = cell.viewWithTag(1) as? UsernameLabel
             displayNameLabel?.text = message.displayName
             displayNameLabel?.contributorLevel = message.contributor?.level ?? 0
             displayNameLabel?.font = CustomFontMetrics.scaledSystemFont(ofSize: 17)
             let textLabel = cell.viewWithTag(2) as? UILabel
             textLabel?.text = message.text
+            textLabel?.textColor = ThemeService.shared.theme.secondaryTextColor
             let timeLabel = cell.viewWithTag(3) as? UILabel
             timeLabel?.text = (message.timestamp as NSDate?)?.timeAgoSinceNow()
+            timeLabel?.textColor = ThemeService.shared.theme.secondaryTextColor
             let usernameLabel = cell.viewWithTag(4) as? UILabel
             if let username = message.username {
                 usernameLabel?.text = "@\(username)"
             } else {
                 usernameLabel?.text = nil
             }
+            usernameLabel?.textColor = ThemeService.shared.theme.secondaryTextColor
             let avatarView = cell.viewWithTag(5) as? AvatarView
             avatarView?.size = .compact
             avatarView?.showMount = false
             avatarView?.showPet = false
             if let userStyle = message.userStyles {
                 avatarView?.avatar = AvatarViewModel(avatar: userStyle)
-                //temporarily hide this until it is sorted out whose avatar is stored in the messge
-                avatarView?.isHidden = true
+                let avatarWrapper = cell.viewWithTag(6)
+                avatarWrapper?.borderColor = ThemeService.shared.theme.offsetBackgroundColor
+                avatarView?.isHidden = false
             } else {
                 avatarView?.isHidden = true
             }

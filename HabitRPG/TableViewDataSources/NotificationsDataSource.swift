@@ -76,6 +76,7 @@ class NotificationsDataSource: BaseReactiveTableViewDataSource<NotificationProto
             return UITableViewCell()
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: notification.type.rawValue, for: indexPath)
+        cell.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
         
         switch notification.type {
         case .unallocatedStatsPoints:

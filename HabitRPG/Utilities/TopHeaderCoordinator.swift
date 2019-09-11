@@ -33,7 +33,7 @@ class TopHeaderCoordinator: NSObject {
     }
     @objc var navbarVisibleColor: UIColor? {
         didSet {
-            if didAppear {
+            if isVisible {
                 if let navbarVisibleColor = self.navbarVisibleColor ?? topHeaderNavigationController?.defaultNavbarVisibleColor {
                     topHeaderNavigationController?.navbarVisibleColor = navbarVisibleColor
                 }
@@ -42,6 +42,7 @@ class TopHeaderCoordinator: NSObject {
     }
     
     private var didAppear = false
+    private var isVisible = false
     
     @objc
     init(topHeaderNavigationController: UINavigationController & TopHeaderNavigationControllerProtocol) {
@@ -114,6 +115,7 @@ class TopHeaderCoordinator: NSObject {
             scrollView?.contentOffset = CGPoint(x: 0, y: 0)
         }
         didAppear = true
+        isVisible = true
     }
     
     @objc
@@ -139,6 +141,7 @@ class TopHeaderCoordinator: NSObject {
             return
         }
         navController.stopFollowingScrollView()
+        isVisible = false
     }
     
     @objc

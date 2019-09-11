@@ -30,6 +30,7 @@ class AchievementsCollectionViewController: BaseCollectionViewController {
     }
     
     override func applyTheme(theme: Theme) {
+        super.applyTheme(theme: theme)
         collectionView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
     }
     

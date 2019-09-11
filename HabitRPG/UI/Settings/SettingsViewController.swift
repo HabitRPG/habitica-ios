@@ -366,13 +366,6 @@ class SettingsViewController: FormViewController, Themeable {
     func applyTheme(theme: Theme) {
         tableView.backgroundColor = theme.windowBackgroundColor
         tableView.reloadData()
-        
-        navigationController?.navigationBar.tintColor = theme.tintColor
-        navigationController?.navigationBar.titleTextAttributes = [
-            NSAttributedString.Key.foregroundColor: theme.primaryTextColor
-        ]
-        navigationController?.navigationBar.backgroundColor = theme.contentBackgroundColor
-        navigationController?.navigationBar.barTintColor = theme.contentBackgroundColor
     }
     
     private func setupForm() {

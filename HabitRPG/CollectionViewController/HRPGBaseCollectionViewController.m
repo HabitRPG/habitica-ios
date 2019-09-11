@@ -7,7 +7,6 @@
 //
 
 #import "HRPGBaseCollectionViewController.h"
-#import "HRPGNavigationController.h"
 #import "UIViewcontroller+TutorialSteps.h"
 #import "UIViewController+HRPGTopHeaderNavigationController.h"
 
@@ -43,15 +42,6 @@
 
 - (void)preferredContentSizeChanged:(NSNotification *)notification {
     [self.collectionView reloadData];
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    UIViewController *destViewController = segue.destinationViewController;
-    if ([destViewController isKindOfClass:[HRPGNavigationController class]]) {
-        HRPGNavigationController *destNavigationController =
-            (HRPGNavigationController *)destViewController;
-        destNavigationController.sourceViewController = self;
-    }
 }
 
 @end

@@ -8,7 +8,6 @@
 
 #import "HRPGBaseViewController.h"
 #import "Amplitude+HRPGHelpers.h"
-#import "HRPGNavigationController.h"
 #import "UIViewController+TutorialSteps.h"
 #import "UIViewController+HRPGTopHeaderNavigationController.h"
 #import "Habitica-Swift.h"
@@ -53,6 +52,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    self.isVisible = YES;
     [super viewWillAppear:animated];
 
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -98,6 +98,7 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
+    self.isVisible = NO;
     [super viewWillDisappear:animated];
     [self.topHeaderCoordinator viewWillDisappear];
 }
@@ -121,15 +122,6 @@
 
 - (IBAction)unwindToListSave:(UIStoryboardSegue *)segue {
     // Skeletton method, so that it can be referenced from IB
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    UIViewController *destViewController = segue.destinationViewController;
-    if ([destViewController isKindOfClass:[HRPGNavigationController class]]) {
-        HRPGNavigationController *destNavigationController =
-            (HRPGNavigationController *)destViewController;
-        destNavigationController.sourceViewController = self;
-    }
 }
 
 - (BOOL)isIndexPathVisible:(NSIndexPath *)indexPath {

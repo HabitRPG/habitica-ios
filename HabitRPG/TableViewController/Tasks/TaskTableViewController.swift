@@ -445,9 +445,8 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
             }
         } else if segue.identifier == "FilterSegue" {
             if let tabVC = tabBarController as? MainTabBarController,
-                let navVC = segue.destination as? HRPGNavigationController,
+                let navVC = segue.destination as? UINavigationController,
                 let filterVC = navVC.topViewController as? FilterViewController {
-                navVC.sourceViewController = self
                 filterVC.selectedTags = tabVC.selectedTags
                 filterVC.taskType = typeName
             }
