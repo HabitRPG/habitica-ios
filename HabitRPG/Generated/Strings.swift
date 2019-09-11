@@ -352,10 +352,6 @@ public enum L10n {
   public static func purchased(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "purchased", p1)
   }
-  /// The scanned QR-Code did not contain a valid Habitica User ID.
-  public static var qrInvalidIdMessage: String { return L10n.tr("Mainstrings", "qr_invalid_id_message") }
-  /// Invalid Habitica User ID
-  public static var qrInvalidIdTitle: String { return L10n.tr("Mainstrings", "qr_invalid_id_title") }
   /// Quests
   public static var quests: String { return L10n.tr("Mainstrings", "quests") }
   /// Rage Meter
@@ -398,8 +394,6 @@ public enum L10n {
   public static var saturday: String { return L10n.tr("Mainstrings", "saturday") }
   /// Save
   public static var save: String { return L10n.tr("Mainstrings", "save") }
-  /// Scan QR Code
-  public static var scanQRCode: String { return L10n.tr("Mainstrings", "scan_QR_code") }
   /// Search
   public static var search: String { return L10n.tr("Mainstrings", "search") }
   /// Sell for %d gold
