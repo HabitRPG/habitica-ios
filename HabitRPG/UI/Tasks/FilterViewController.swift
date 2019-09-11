@@ -30,9 +30,9 @@ class FilterViewController: BaseTableViewController {
         self.clearButton.title = L10n.clear
         
         dataSource.tableView = tableView
-        //dataSource.selectedTagIds = selectedTags
+        dataSource.selectedTagIds = selectedTags
         
-        headerView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: 0)
+        headerView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: 46)
         
         if taskType == "habit" {
             filterTypeControl = UISegmentedControl(items: [L10n.all, L10n.weak, L10n.strong])
@@ -43,7 +43,7 @@ class FilterViewController: BaseTableViewController {
         }
         filterTypeControl.frame = CGRect(x: 8, y: headerView.frame.size.height - 30, width: headerView.frame.size.width - 16, height: 30)
         let defaults = UserDefaults.standard
-        filterTypeControl.selectedSegmentIndex = defaults.integer(forKey: "%(taskType)Filter")
+        filterTypeControl.selectedSegmentIndex = defaults.integer(forKey: "\(taskType ?? "")Filter")
         
         filterTypeControl.addTarget(self, action: #selector(filterTypeChanged), for: .valueChanged)
         headerView.addSubview(filterTypeControl)
@@ -103,8 +103,8 @@ class FilterViewController: BaseTableViewController {
     @objc
     private func filterTypeChanged() {
         let defaults = UserDefaults.standard
-        defaults.set(filterTypeControl.selectedSegmentIndex, forKey: "Filter")
-        //NotificationCenter.default.post(name: "taskFilterChanged", object: nil)
+        defaults.set(filterTypeControl.selectedSegmentIndex, forKey: "\(taskType ?? "")Filter")
+        NotificationCenter.default.post(name: Notification.Name("taskFilterChanged"), object: nil)
     }
     
     @IBAction func editButtonTapped(_ sender: UIBarButtonItem) {

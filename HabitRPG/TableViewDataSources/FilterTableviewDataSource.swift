@@ -47,7 +47,7 @@ class FilterTableViewDataSource: BaseReactiveTableViewDataSource<TagProtocol>, F
     private let userRepository = UserRepository()
     private let taskRepository = TaskRepository()
     
-    @objc var selectedTagIds = [String]()
+@objc var selectedTagIds = [String]()
     
     override func didSetTableView() {
         tableView?.reloadData()
