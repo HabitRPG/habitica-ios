@@ -12,7 +12,7 @@ import ReactiveSwift
 import Down
 import Crashlytics
 
-class GroupDetailViewController: HRPGUIViewController, UITextViewDelegate, Themeable {
+class GroupDetailViewController: BaseUIViewController, UITextViewDelegate {
     var groupID: String?
 
     var groupProperty = MutableProperty<GroupProtocol?>(nil)
@@ -53,7 +53,8 @@ class GroupDetailViewController: HRPGUIViewController, UITextViewDelegate, Theme
         ThemeService.shared.addThemeable(themable: self)
     }
     
-    func applyTheme(theme: Theme) {
+    override func applyTheme(theme: Theme) {
+        super.applyTheme(theme: theme)
         groupNameLabel?.textColor = theme.primaryTextColor
         scrollView?.backgroundColor = theme.windowBackgroundColor
         groupDescriptionStackView?.applyTheme(theme: theme)

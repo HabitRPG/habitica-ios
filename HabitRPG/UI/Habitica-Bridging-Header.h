@@ -31,3 +31,4 @@
 #import "HRPGSearchDataManager.h"
 #import "HRPGCoachmarkFrameProvider.h"
 #import "NSString+Emoji.h"
+#import "UIViewController+TutorialSteps.h"

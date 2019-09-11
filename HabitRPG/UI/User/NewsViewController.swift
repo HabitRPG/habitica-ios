@@ -9,7 +9,7 @@
 import Foundation
 import Habitica_Models
 
-class NewsViewController: HRPGUIViewController, UIWebViewDelegate {
+class NewsViewController: BaseUIViewController, UIWebViewDelegate {
     
     @IBOutlet private var newsWebView: UIWebView!
     @IBOutlet private var loadingIndicator: UIActivityIndicatorView!

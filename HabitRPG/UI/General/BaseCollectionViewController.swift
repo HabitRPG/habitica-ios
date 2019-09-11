@@ -16,6 +16,15 @@ class BaseCollectionViewController: HRPGBaseCollectionViewController, Themeable 
     }
     
     func applyTheme(theme: Theme) {
+        if #available(iOS 13.0, *) {
+            if ThemeService.shared.themeMode == "dark" {
+                self.overrideUserInterfaceStyle = .dark
+            } else if ThemeService.shared.themeMode == "light" {
+                self.overrideUserInterfaceStyle = .light
+            } else {
+                self.overrideUserInterfaceStyle = .unspecified
+            }
+        }
         collectionView.backgroundColor = theme.windowBackgroundColor
         collectionView.reloadData()
     }

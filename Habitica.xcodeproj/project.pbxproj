@@ -310,7 +310,6 @@
 		29DC5ACD20A321C900993400 /* GroupFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DC5ACC20A321C900993400 /* GroupFormViewController.swift */; };
 		29E162E01FFBBDDC00685640 /* UsernameLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E162DF1FFBBDDC00685640 /* UsernameLabel.swift */; };
 		29E162E21FFC21E100685640 /* CustomFontMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E162E11FFC21E100685640 /* CustomFontMetrics.swift */; };
-		29E162E5200227AA00685640 /* HRPGUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29E162E4200227AA00685640 /* HRPGUIViewController.m */; };
 		29E1630B200D050E00685640 /* TopHeaderNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E1630A200D050E00685640 /* TopHeaderNavigationController.swift */; };
 		29E1630F200E279900685640 /* MenuNavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E1630E200E279900685640 /* MenuNavigationBarView.swift */; };
 		29E16311200E5FEA00685640 /* QuestProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29E16310200E5FEA00685640 /* QuestProgressView.xib */; };
@@ -979,8 +978,6 @@
 		29DC5ACC20A321C900993400 /* GroupFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupFormViewController.swift; sourceTree = "<group>"; };
 		29E162DF1FFBBDDC00685640 /* UsernameLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameLabel.swift; sourceTree = "<group>"; };
 		29E162E11FFC21E100685640 /* CustomFontMetrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFontMetrics.swift; sourceTree = "<group>"; };
-		29E162E3200227AA00685640 /* HRPGUIViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HRPGUIViewController.h; sourceTree = "<group>"; };
-		29E162E4200227AA00685640 /* HRPGUIViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HRPGUIViewController.m; sourceTree = "<group>"; };
 		29E1630A200D050E00685640 /* TopHeaderNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopHeaderNavigationController.swift; sourceTree = "<group>"; };
 		29E1630E200E279900685640 /* MenuNavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuNavigationBarView.swift; sourceTree = "<group>"; };
 		29E16310200E5FEA00685640 /* QuestProgressView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestProgressView.xib; sourceTree = "<group>"; };
@@ -2023,8 +2020,6 @@
 				D914890B1CD23A900015B42D /* HRPGMaintenanceViewController.m */,
 				D92A08491D33FA08000F8B66 /* HRPGShopViewController.h */,
 				D92A084A1D33FA08000F8B66 /* HRPGShopViewController.m */,
-				29E162E3200227AA00685640 /* HRPGUIViewController.h */,
-				29E162E4200227AA00685640 /* HRPGUIViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -3687,7 +3682,6 @@
 				296D6F1D20A0908B00D9CAB5 /* PartyQuestView.swift in Sources */,
 				29A9B057228082BF0049291E /* BaseCollectionViewController.swift in Sources */,
 				298119AB1F50251300F9FB39 /* InventoryRepository.swift in Sources */,
-				29E162E5200227AA00685640 /* HRPGUIViewController.m in Sources */,
 				D9A28F721B08DF58002907E0 /* HRPGPurchaseButton.m in Sources */,
 				29255E431F3DD2120094A3E3 /* TutorialStepView.swift in Sources */,
 				494E54011F2D1ED90003683C /* CAGradientLayer+HRPGShopGradient.m in Sources */,

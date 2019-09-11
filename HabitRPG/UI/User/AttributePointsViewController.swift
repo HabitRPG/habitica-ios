@@ -11,7 +11,7 @@ import PopupDialog
 import Habitica_Models
 import ReactiveSwift
 
-class AttributePointsViewController: HRPGUIViewController, Themeable {
+class AttributePointsViewController: BaseUIViewController {
     
     @IBOutlet weak var pointsToAllocateLabel: PaddedLabel!
     @IBOutlet weak var pointsToAllocateRightView: UIImageView!
@@ -82,7 +82,7 @@ class AttributePointsViewController: HRPGUIViewController, Themeable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        topHeaderCoordinator?.hideHeader = true
+        topHeaderCoordinator.hideHeader = true
         tutorialIdentifier = "stats"
         
         let subscriber = Signal<CalculatedUserStats, NSError>.Observer(value: {[weak self] stats in
@@ -163,7 +163,8 @@ class AttributePointsViewController: HRPGUIViewController, Themeable {
         pointsToAllocateLabel.layer.cornerRadius = pointsToAllocateLabel.frame.size.height/2
     }
     
-    func applyTheme(theme: Theme) {
+    override func applyTheme(theme: Theme) {
+        super.applyTheme(theme: theme)
         distributeEvenlyCheckmark.image = HabiticaIcons.imageOfCheckmark(checkmarkColor: theme.tintColor, percentage: 1.0)
         distributeClassCheckmark.image = HabiticaIcons.imageOfCheckmark(checkmarkColor: theme.tintColor, percentage: 1.0)
         distributeTaskCheckmark.image = HabiticaIcons.imageOfCheckmark(checkmarkColor: theme.tintColor, percentage: 1.0)

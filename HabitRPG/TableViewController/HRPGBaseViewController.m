@@ -70,16 +70,6 @@
     [self.tableView deselectRowAtIndexPath:tableSelection animated:YES];
 
     [self.topHeaderCoordinator viewWillAppear];
-    
-    if (@available(iOS 13.0, *)) {
-        if ([ObjcThemeWrapper.themeMode  isEqual: @"dark"]) {
-            self.overrideUserInterfaceStyle = UIUserInterfaceStyleDark;
-        } else if ([ObjcThemeWrapper.themeMode  isEqual: @"light"]) {
-            self.overrideUserInterfaceStyle = UIUserInterfaceStyleLight;
-        } else {
-            self.overrideUserInterfaceStyle = UIUserInterfaceStyleUnspecified;
-        }
-    }
 }
 
 - (void)viewDidAppear:(BOOL)animated {
