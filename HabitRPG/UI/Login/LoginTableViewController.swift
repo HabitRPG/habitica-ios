@@ -9,6 +9,7 @@
 import UIKit
 import ReactiveCocoa
 import ReactiveSwift
+import AuthenticationServices
 
 class LoginTableViewController: UIViewController, UITextFieldDelegate {
 
@@ -22,6 +23,7 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak private var onePasswordButton: UIButton!
     @IBOutlet weak private var googleLoginButton: UIButton!
     @IBOutlet weak private var facebookLoginButton: UIButton!
+    @IBOutlet weak private var appleLoginButton: UIButton!
     @IBOutlet weak private var registerBeginButton: UIButton!
     @IBOutlet weak private var loginBeginButton: UIButton!
     @IBOutlet weak var backgroundScrollView: UIScrollView!
@@ -62,6 +64,11 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
 
         loginButton.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
         googleLoginButton.addTarget(self, action: #selector(googleLoginButtonPressed), for: .touchUpInside)
+        if #available(iOS 13.0, *) {
+            appleLoginButton.addTarget(self, action: #selector(appleLoginButtonPressed), for: .touchUpInside)
+        } else {
+            appleLoginButton.isHidden = true
+        }
         facebookLoginButton.addTarget(self, action: #selector(facebookLoginButtonPressed), for: .touchUpInside)
         forgotPasswordButton.addTarget(self, action: #selector(forgotPasswordButtonPressed), for: .touchUpInside)
 
@@ -82,6 +89,11 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHideNotification(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        viewModel.performExistingAccountSetupFlows()
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -100,6 +112,7 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
         
         facebookLoginButton.setTitle(L10n.Login.loginFacebook, for: .normal)
         googleLoginButton.setTitle(L10n.Login.loginGoogle, for: .normal)
+        appleLoginButton.setTitle(L10n.Login.loginApple, for: .normal)
         
         forgotPasswordButton.setTitle(L10n.Login.forgotPassword, for: .normal)
         
@@ -123,6 +136,7 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
         loginButton.setBackgroundImage(buttonBackground, for: .normal)
         facebookLoginButton.setBackgroundImage(buttonBackground, for: .normal)
         googleLoginButton.setBackgroundImage(buttonBackground, for: .normal)
+        appleLoginButton.setBackgroundImage(buttonBackground, for: .normal)
         
         backgroundScrollView.layoutIfNeeded()
         let contentOffset = CGPoint(x: 0, y: backgroundScrollView.contentSize.height-view.frame.size.height)
@@ -428,6 +442,11 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
     func googleLoginButtonPressed() {
         self.viewModel.inputs.googleLoginButtonPressed()
     }
+    
+    @objc
+    func appleLoginButtonPressed() {
+        self.viewModel.inputs.appleLoginButtonPressed()
+    }
 
     @objc
     func onePasswordButtonPressed() {
@@ -523,5 +542,46 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
         UIView.animate(withDuration: animationDuration, delay: 0.0, options: [.beginFromCurrentState, animationCurve], animations: {
             self.view.layoutIfNeeded()
         }, completion: nil)
+    }
+}
+
+@available(iOS 13.0, *)
+extension LoginTableViewController: ASAuthorizationControllerDelegate {
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
+            
+            let fullName = appleIDCredential.fullName
+            
+            var name = ""
+            if let givenName = fullName?.givenName {
+                name += givenName
+            }
+            if let familyName = fullName?.familyName {
+                if name.count > 0 {
+                    name += " "
+                }
+                name += familyName
+            }
+            
+            viewModel.performAppleLogin(identityToken: String(data: appleIDCredential.identityToken ?? Data(), encoding: .utf8) ?? "", name: name)
+        } else if let passwordCredential = authorization.credential as? ASPasswordCredential {
+            // Sign in using an existing iCloud Keychain credential.
+            let username = passwordCredential.user
+            let password = passwordCredential.password
+            
+            viewModel.usernameChanged(username: username)
+            viewModel.passwordChanged(password: password)
+        }
+    }
+    
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        // Handle error.
+    }
+}
+
+@available(iOS 13.0, *)
+extension LoginTableViewController: ASAuthorizationControllerPresentationContextProviding {
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        return view.window ?? UIWindow()
     }
 }

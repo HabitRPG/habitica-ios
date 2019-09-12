@@ -182,6 +182,15 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         })
     }
     
+    func loginApple(identityToken: String, name: String) -> Signal<LoginResponseProtocol?, Never> {
+        return AppleLoginCall(identityToken: identityToken, name: name).objectSignal.on(value: { loginResponse in
+            if let response = loginResponse {
+                AuthenticationManager.shared.currentUserId = response.id
+                AuthenticationManager.shared.currentUserKey = response.apiToken
+            }
+        })
+    }
+    
     func resetAccount() -> Signal<UserProtocol?, Never> {
         return ResetAccountCall().objectSignal.flatMap(.latest, {[weak self] (_) in
             return self?.retrieveUser() ?? Signal.empty

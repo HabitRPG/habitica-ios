@@ -71,7 +71,11 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
     @objc public var navbarHiddenColor: UIColor = UIColor.purple300 {
         didSet {
             let isHiddenLightColor = navbarHiddenColor.isLight()
-            hiddenTintColor = isHiddenLightColor ? ThemeService.shared.theme.tintColor : UIColor.white
+            if (ThemeService.shared.theme.isDark) {
+                hiddenTintColor = ThemeService.shared.theme.tintColor
+            } else {
+                hiddenTintColor = isHiddenLightColor ? ThemeService.shared.theme.tintColor : UIColor.white
+            }
             hiddenTextColor = isHiddenLightColor ? UIColor.black : UIColor.white
             setNavigationBarColors(navbarColorBlendingAlpha)
         }
@@ -79,7 +83,11 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
     @objc public var navbarVisibleColor: UIColor = UIColor.white {
         didSet {
             let isVisibleLightColor = navbarVisibleColor.isLight()
-            visibleTintColor = isVisibleLightColor ? ThemeService.shared.theme.tintColor : UIColor.white
+            if (ThemeService.shared.theme.isDark) {
+                visibleTintColor = ThemeService.shared.theme.tintColor
+            } else {
+                visibleTintColor = isVisibleLightColor ? ThemeService.shared.theme.tintColor : UIColor.white
+            }
             visibleTextColor = isVisibleLightColor ? UIColor.black : UIColor.white
             setNavigationBarColors(navbarColorBlendingAlpha)
         }

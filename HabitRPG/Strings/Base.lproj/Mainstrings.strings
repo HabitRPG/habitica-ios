@@ -534,6 +534,7 @@
 "login.email_username" = "Email / Username";
 "login.login_facebook" = "Login with Facebook";
 "login.login_google" = "Login with Google";
+"login.login_apple" = "Sign in with Apple";
 "login.forgot_password" = "Forgot Password";
 "login.email_password_link" = "Email a Password Reset Link";
 "login.enter_email" = "Enter the email address you used to register your Habitica account.";

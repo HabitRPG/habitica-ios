@@ -124,7 +124,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="QC8-Jd-4Uw">
-                                        <rect key="frame" x="16" y="198" width="288" height="466"/>
+                                        <rect key="frame" x="16" y="198" width="288" height="510"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u44-DM-dLI" customClass="LoginEntryView" customModule="Habitica" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="288" height="40"/>
@@ -209,15 +209,19 @@
                                                 <rect key="frame" x="0.0" y="361" width="288" height="32"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6MK-1s-xcx">
+                                                <rect key="frame" x="0.0" y="405" width="288" height="32"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W6d-TO-AE1">
-                                                <rect key="frame" x="0.0" y="405" width="288" height="20"/>
+                                                <rect key="frame" x="0.0" y="449" width="288" height="20"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="BRw-cI-Hg3"/>
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Ld-qT-Xe8">
-                                                <rect key="frame" x="0.0" y="437" width="288" height="29"/>
+                                                <rect key="frame" x="0.0" y="481" width="288" height="29"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <state key="normal" title="">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -273,13 +277,13 @@
                                 </constraints>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uAN-kx-bnR">
-                                <rect key="frame" x="16" y="0.0" width="30" height="30"/>
+                                <rect key="frame" x="16" y="12" width="30" height="30"/>
                                 <state key="normal">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TwO-74-NWY">
-                                <rect key="frame" x="277" y="0.0" width="27" height="27"/>
+                                <rect key="frame" x="277" y="12" width="27" height="27"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" image="onepassword-toolbar">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -292,7 +296,7 @@
                             <constraint firstItem="VHc-yB-sBi" firstAttribute="top" secondItem="LgY-Wx-7fl" secondAttribute="top" id="62c-hB-SCp"/>
                             <constraint firstItem="4cL-hC-wWl" firstAttribute="width" secondItem="LgY-Wx-7fl" secondAttribute="width" id="9hX-bu-N5l"/>
                             <constraint firstItem="SNG-tQ-QdC" firstAttribute="width" secondItem="LgY-Wx-7fl" secondAttribute="width" id="N6t-4E-e1U"/>
-                            <constraint firstItem="uAN-kx-bnR" firstAttribute="top" secondItem="dKj-Ja-sl9" secondAttribute="bottom" id="NLZ-uh-wss"/>
+                            <constraint firstItem="uAN-kx-bnR" firstAttribute="top" secondItem="dKj-Ja-sl9" secondAttribute="bottom" constant="12" id="NLZ-uh-wss"/>
                             <constraint firstItem="A2a-jv-aOl" firstAttribute="leading" secondItem="LgY-Wx-7fl" secondAttribute="leading" id="Py8-oN-1Xh"/>
                             <constraint firstItem="uAN-kx-bnR" firstAttribute="leading" secondItem="LgY-Wx-7fl" secondAttribute="leadingMargin" id="UnV-jn-7lb"/>
                             <constraint firstAttribute="bottom" secondItem="A2a-jv-aOl" secondAttribute="bottom" id="XXd-A0-FqZ"/>
@@ -301,7 +305,7 @@
                             <constraint firstAttribute="trailing" secondItem="VHc-yB-sBi" secondAttribute="trailing" id="gjr-im-oQC"/>
                             <constraint firstAttribute="bottom" secondItem="VHc-yB-sBi" secondAttribute="bottom" id="htO-C1-cqS"/>
                             <constraint firstItem="A2a-jv-aOl" firstAttribute="leading" secondItem="LgY-Wx-7fl" secondAttribute="leading" id="l5j-iu-aDC"/>
-                            <constraint firstItem="TwO-74-NWY" firstAttribute="top" secondItem="dKj-Ja-sl9" secondAttribute="bottom" id="oBT-VT-alE"/>
+                            <constraint firstItem="TwO-74-NWY" firstAttribute="top" secondItem="dKj-Ja-sl9" secondAttribute="bottom" constant="12" id="oBT-VT-alE"/>
                             <constraint firstItem="VHc-yB-sBi" firstAttribute="leading" secondItem="LgY-Wx-7fl" secondAttribute="leading" id="tDJ-54-kry"/>
                             <constraint firstAttribute="trailing" secondItem="A2a-jv-aOl" secondAttribute="trailing" id="xyl-9N-j9C"/>
                             <constraint firstAttribute="trailing" secondItem="A2a-jv-aOl" secondAttribute="trailing" id="zMu-hk-Chz"/>
@@ -313,6 +317,7 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <connections>
+                        <outlet property="appleLoginButton" destination="6MK-1s-xcx" id="v9A-AX-khi"/>
                         <outlet property="backButton" destination="uAN-kx-bnR" id="vJW-6t-hcO"/>
                         <outlet property="backgroundScrollView" destination="VHc-yB-sBi" id="ovg-gY-4Rc"/>
                         <outlet property="beginButtonContainer" destination="fnm-XO-uKx" id="6yB-WU-gX9"/>
@@ -1507,7 +1512,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="5Hb-dX-OsZ"/>
-        <segue reference="mhd-Im-RcK"/>
+        <segue reference="aKA-6e-Im9"/>
         <segue reference="6ya-X1-F2T"/>
     </inferredMetricsTieBreakers>
 </document>

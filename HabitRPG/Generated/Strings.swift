@@ -976,6 +976,8 @@ public enum L10n {
     public static var forgotPassword: String { return L10n.tr("Mainstrings", "login.forgot_password") }
     /// Login
     public static var login: String { return L10n.tr("Mainstrings", "login.login") }
+    /// Sign in with Apple
+    public static var loginApple: String { return L10n.tr("Mainstrings", "login.login_apple") }
     /// Login with Facebook
     public static var loginFacebook: String { return L10n.tr("Mainstrings", "login.login_facebook") }
     /// Login with Google
