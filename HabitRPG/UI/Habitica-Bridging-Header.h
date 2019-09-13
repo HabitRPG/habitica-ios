@@ -31,3 +31,4 @@
 #import "HRPGCoachmarkFrameProvider.h"
 #import "NSString+Emoji.h"
 #import "UIViewController+TutorialSteps.h"
+#import "HRPGTutorialUIViewController.h"

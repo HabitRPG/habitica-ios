@@ -53,12 +53,12 @@ class QuestDetailViewController: BaseUIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         topHeaderCoordinator = TopHeaderCoordinator(topHeaderNavigationController: hrpgTopHeaderNavigationController(), scrollView: scrollView)
-        topHeaderCoordinator.followScrollView = false
+        topHeaderCoordinator?.followScrollView = false
         
         let borderView = UIView(frame: CGRect(x: 0, y: headerView.intrinsicContentSize.height, width: self.view.bounds.size.width, height: 1))
         borderView.backgroundColor = UIColor.gray500
         headerView.addSubview(borderView)
-        topHeaderCoordinator.alternativeHeader = headerView
+        topHeaderCoordinator?.alternativeHeader = headerView
         
         disposable.inner.add(userRepository.getUser().on(value: {[weak self]user in
             self?.set(user: user)

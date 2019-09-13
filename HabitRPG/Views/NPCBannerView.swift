@@ -48,13 +48,18 @@ class NPCBannerView: UIView {
             
             plaqueImageView.image = UIImage(named: "Nameplate")?.resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: 21, bottom: 0, right: 21))
             
-            let theme = ThemeService.shared.theme
-            gradientView.startColor = theme.windowBackgroundColor.withAlphaComponent(0.8)
-            gradientView.endColor = theme.windowBackgroundColor
-            notesLabel.backgroundColor = theme.windowBackgroundColor
-            notesLabel.textColor = theme.primaryTextColor
-            bgWhiteView.backgroundColor = theme.windowBackgroundColor
         }
+    }
+    
+    @objc
+    func applyTheme(backgroundColor: UIColor) {
+        let theme = ThemeService.shared.theme
+        gradientView.startColor = backgroundColor.withAlphaComponent(0.8)
+        gradientView.endColor = backgroundColor
+        notesLabel.backgroundColor = backgroundColor
+        notesLabel.textColor = theme.primaryTextColor
+        bgWhiteView.backgroundColor = backgroundColor
+        self.backgroundColor = backgroundColor
     }
     
     override var intrinsicContentSize: CGSize {

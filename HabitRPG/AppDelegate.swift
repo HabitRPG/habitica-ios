@@ -126,7 +126,7 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
             case "gamma":
                 AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.gamma
             case "delta":
-                AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.localhost
+                AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.delta
             default:
                 AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.localhost
             }

@@ -82,7 +82,7 @@ class AttributePointsViewController: BaseUIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        topHeaderCoordinator.hideHeader = true
+        topHeaderCoordinator?.hideHeader = true
         tutorialIdentifier = "stats"
         
         let subscriber = Signal<CalculatedUserStats, NSError>.Observer(value: {[weak self] stats in
@@ -181,6 +181,13 @@ class AttributePointsViewController: BaseUIViewController {
         intelligenceTextLabel.textColor = theme.secondaryTextColor
         constitutionTextLabel.textColor = theme.secondaryTextColor
         perceptionTextLabel.textColor = theme.secondaryTextColor
+        if theme.isDark {
+            perceptionStatsView.tintColor = UIColor.purple400
+            perceptionTitleLabel.textColor = UIColor.purple400
+        } else {
+            perceptionStatsView.tintColor = UIColor.purple300
+            perceptionTitleLabel.textColor = UIColor.purple300
+        }
     }
     
     private func allocate(_ attribute: String) {

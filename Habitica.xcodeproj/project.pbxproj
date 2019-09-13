@@ -323,6 +323,7 @@
 		29E779F8203F30A40079F269 /* HRPGGemCapReachedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E779F7203F30A40079F269 /* HRPGGemCapReachedViewController.swift */; };
 		29EBDA762328FC43006611E3 /* NSString+Emoji.m in Sources */ = {isa = PBXBuildFile; fileRef = 29EBDA752328FC43006611E3 /* NSString+Emoji.m */; };
 		29EBDA83232A3ABA006611E3 /* KeychainItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EBDA82232A3ABA006611E3 /* KeychainItem.swift */; };
+		29EBDA88232BAC3A006611E3 /* HRPGTutorialUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29EBDA87232BAC3A006611E3 /* HRPGTutorialUIViewController.m */; };
 		29ED1AFB1F338E5D005A3895 /* SetupCustomizationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ED1AFA1F338E5D005A3895 /* SetupCustomizationRepository.swift */; };
 		29ED1AFD1F338ECC005A3895 /* SetupCustomization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ED1AFC1F338ECC005A3895 /* SetupCustomization.swift */; };
 		29ED1AFF1F339ACF005A3895 /* UIColor-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ED1AFE1F339ACF005A3895 /* UIColor-Extensions.swift */; };
@@ -994,6 +995,8 @@
 		29EBDA742328FC43006611E3 /* NSString+Emoji.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Emoji.h"; sourceTree = "<group>"; };
 		29EBDA752328FC43006611E3 /* NSString+Emoji.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Emoji.m"; sourceTree = "<group>"; };
 		29EBDA82232A3ABA006611E3 /* KeychainItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainItem.swift; sourceTree = "<group>"; };
+		29EBDA86232BAC3A006611E3 /* HRPGTutorialUIViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HRPGTutorialUIViewController.h; sourceTree = "<group>"; };
+		29EBDA87232BAC3A006611E3 /* HRPGTutorialUIViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HRPGTutorialUIViewController.m; sourceTree = "<group>"; };
 		29ED1AFA1F338E5D005A3895 /* SetupCustomizationRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupCustomizationRepository.swift; sourceTree = "<group>"; };
 		29ED1AFC1F338ECC005A3895 /* SetupCustomization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupCustomization.swift; sourceTree = "<group>"; };
 		29ED1AFE1F339ACF005A3895 /* UIColor-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor-Extensions.swift"; sourceTree = "<group>"; };
@@ -2022,6 +2025,8 @@
 				D914890B1CD23A900015B42D /* HRPGMaintenanceViewController.m */,
 				D92A08491D33FA08000F8B66 /* HRPGShopViewController.h */,
 				D92A084A1D33FA08000F8B66 /* HRPGShopViewController.m */,
+				29EBDA86232BAC3A006611E3 /* HRPGTutorialUIViewController.h */,
+				29EBDA87232BAC3A006611E3 /* HRPGTutorialUIViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -3710,6 +3715,7 @@
 				29701FE61F56DABC0097BBCC /* RoundedView.swift in Sources */,
 				29B3FEB11F9A37E3000B12CF /* BaseSettingsViewController.swift in Sources */,
 				290B62A4207F818E007287C4 /* ItemsViewDataSource.swift in Sources */,
+				29EBDA88232BAC3A006611E3 /* HRPGTutorialUIViewController.m in Sources */,
 				D9CE90451E4CDD6200702578 /* PillView.swift in Sources */,
 				29DC5ACD20A321C900993400 /* GroupFormViewController.swift in Sources */,
 				29ED1AFD1F338ECC005A3895 /* SetupCustomization.swift in Sources */,

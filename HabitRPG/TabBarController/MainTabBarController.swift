@@ -53,7 +53,14 @@ class MainTabBarController: UITabBarController, Themeable {
     
     func applyTheme(theme: Theme) {
         tabBar.tintColor = theme.tintColor
-        tabBar.items?.forEach({ $0.badgeColor = theme.badgeColor })
+        tabBar.items?.forEach({
+            $0.badgeColor = theme.badgeColor
+            if (theme.badgeColor.isLight()) {
+                $0.setBadgeTextAttributes([.foregroundColor: UIColor.gray50], for: .normal)
+            } else {
+                $0.setBadgeTextAttributes([.foregroundColor: UIColor.gray700], for: .normal)
+            }
+        })
         if theme.isDark {
             tabBar.tintColor = theme.tintColor
             tabBar.backgroundColor = theme.windowBackgroundColor

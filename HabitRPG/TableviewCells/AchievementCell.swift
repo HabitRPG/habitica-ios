@@ -140,6 +140,9 @@ class AchievementCell: UICollectionViewCell {
     
     func configure(achievement: AchievementProtocol) {
         titleLabel.text = achievement.title
+        titleLabel.textColor = ThemeService.shared.theme.primaryTextColor
+        descriptionlabel.text = achievement.text
+        descriptionlabel.textColor = ThemeService.shared.theme.secondaryTextColor
         if !achievement.isQuestAchievement {
             if achievement.earned {
                 iconView.setImagewith(name: (achievement.icon ?? "") + "2x")
@@ -154,12 +157,10 @@ class AchievementCell: UICollectionViewCell {
             countBadge.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
             countBadge.textColor = ThemeService.shared.theme.secondaryTextColor
         }
-        descriptionlabel.text = achievement.text
         if achievement.optionalCount > 0 {
             countBadge.number = achievement.optionalCount
             countBadge.isHidden = false
         } else {
-            
             countBadge.isHidden = true
         }
         

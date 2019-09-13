@@ -44,6 +44,7 @@
     [self refresh];
     
     self.collectionView.backgroundColor = ObjcThemeWrapper.contentBackgroundColor;
+    [self.shopBannerView applyThemeWithBackgroundColor:ObjcThemeWrapper.contentBackgroundColor];
 }
 
 - (void)populateText {

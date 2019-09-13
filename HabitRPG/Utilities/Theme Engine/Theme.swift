@@ -37,6 +37,7 @@ public protocol Theme {
     var errorColor: UIColor { get }
     var warningColor: UIColor { get }
     var taskOverlayTint: UIColor { get }
+    var segmentedTintColor: UIColor { get }
 }
 
 public protocol DarkTheme: Theme {
@@ -64,7 +65,7 @@ extension Theme {
     public var ternaryTextColor: UIColor { return UIColor.gray200 }
     public var quadTextColor: UIColor { return UIColor.gray300 }
     public var dimmedTextColor: UIColor { return UIColor.gray400 }
-    public var lightTextColor: UIColor { return UIColor.white }
+    public var lightTextColor: UIColor { return UIColor.gray700 }
     
     public var badgeColor: UIColor { return tintColor }
     public var secondaryBadgeColor: UIColor { return UIColor.gray200 }
@@ -72,6 +73,7 @@ extension Theme {
     public var errorColor: UIColor { return UIColor.red100 }
     public var warningColor: UIColor { return UIColor.yellow100 }
     public var taskOverlayTint: UIColor { return UIColor.white.withAlphaComponent(0) }
+    public var segmentedTintColor: UIColor { return backgroundTintColor}
     
     public func applyContentBackgroundColor(views: [UIView]) {
         applyBackgroundColor(views: views, color: contentBackgroundColor)
@@ -94,8 +96,8 @@ extension DarkTheme {
     public var backgroundTintColor: UIColor { return UIColor.gray300 }
     public var tintColor: UIColor { return UIColor.gray500 }
     public var primaryTextColor: UIColor { return UIColor.gray700 }
-    public var secondaryTextColor: UIColor { return UIColor.gray600 }
-    public var ternaryTextColor: UIColor { return UIColor.gray500 }
+    public var secondaryTextColor: UIColor { return UIColor.gray500 }
+    public var ternaryTextColor: UIColor { return UIColor.gray400 }
     public var quadTextColor: UIColor { return UIColor.gray200 }
     public var dimmedTextColor: UIColor { return UIColor.gray200 }
     public var separatorColor: UIColor { return UIColor.gray10 }
@@ -108,6 +110,7 @@ extension DarkTheme {
     public var successColor: UIColor { return UIColor.green10.withAlphaComponent(0.7) }
     public var errorColor: UIColor { return UIColor.red10 }
     public var warningColor: UIColor { return UIColor.yellow10.withAlphaComponent(0.7) }
+    public var segmentedTintColor: UIColor { return backgroundTintColor}
 }
 
 @objc

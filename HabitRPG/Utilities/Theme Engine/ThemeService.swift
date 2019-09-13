@@ -82,7 +82,7 @@ public class ThemeService: NSObject {
         UIToolbar.appearance().backgroundColor = theme.contentBackgroundColor
         UIToolbar.appearance().barTintColor = theme.contentBackgroundColor
         UIRefreshControl.appearance().tintColor = theme.tintColor
-        UISegmentedControl.appearance().tintColor = theme.backgroundTintColor
+        UISegmentedControl.appearance().tintColor = theme.segmentedTintColor
         UISwitch.appearance().onTintColor = theme.backgroundTintColor
         //UIButton.appearance().tintColor = theme.tintColor
         UISearchBar.appearance().backgroundColor = theme.windowBackgroundColor

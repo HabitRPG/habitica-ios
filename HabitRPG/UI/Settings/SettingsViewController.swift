@@ -402,6 +402,10 @@ class SettingsViewController: FormViewController, Themeable {
                 if let server = Servers(rawValue: UserDefaults().string(forKey: "chosenServer") ?? "") {
                     row.value = LabeledFormValue(value: server.rawValue, label: server.niceName)
                 }
+                row.cellUpdate({ (cell, _) in
+                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    cell.textLabel?.textAlignment = .natural
+                })
                 row.onChange({ (row) in
                     UserDefaults().set(row.value?.value, forKey: "chosenServer")
                     let appDelegate = UIApplication.shared.delegate as? HRPGAppDelegate

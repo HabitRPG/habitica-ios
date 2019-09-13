@@ -33,6 +33,7 @@ public class TaskDifficultyCell: Cell<Float>, CellType {
         mediumControlView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(mediumTapped)))
         hardControlView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hardTapped)))
         backgroundColor = .clear
+        selectionStyle = .none
     }
     
     @objc

@@ -29,7 +29,6 @@ class EquipmentOverviewViewController: BaseUIViewController, UIScrollViewDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         topHeaderCoordinator = TopHeaderCoordinator(topHeaderNavigationController: hrpgTopHeaderNavigationController(), scrollView: scrollView)
-        topHeaderCoordinator.viewDidLoad()
         scrollView.delegate = self
         
         gearView.title = L10n.Equipment.battleGear
@@ -81,7 +80,7 @@ class EquipmentOverviewViewController: BaseUIViewController, UIScrollViewDelegat
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        topHeaderCoordinator.scrollViewDidScroll()
+        topHeaderCoordinator?.scrollViewDidScroll()
     }
     
     override func populateText() {

@@ -36,8 +36,8 @@ class HabiticaSplitViewController: BaseUIViewController, UIScrollViewDelegate {
         segmentedWrapper.containedView = segmentedControl
         borderView.frame = CGRect(x: 0, y: segmentedWrapper.intrinsicContentSize.height+1, width: self.view.bounds.size.width, height: 1)
         segmentedWrapper.addSubview(borderView)
-        topHeaderCoordinator.alternativeHeader = segmentedWrapper
-        topHeaderCoordinator.hideHeader = canShowAsSplitView && showAsSplitView
+        topHeaderCoordinator?.alternativeHeader = segmentedWrapper
+        topHeaderCoordinator?.hideHeader = canShowAsSplitView && showAsSplitView
         
         scrollView.delegate = self
         scrollView.bounces = false
@@ -91,7 +91,7 @@ class HabiticaSplitViewController: BaseUIViewController, UIScrollViewDelegate {
         showAsSplitView = canShowAsSplitView && (collection.horizontalSizeClass == .regular && collection.verticalSizeClass == .regular)
         separatorView.isHidden = !showAsSplitView
         scrollView.isScrollEnabled = !showAsSplitView
-        topHeaderCoordinator.hideHeader = showAsSplitView
+        topHeaderCoordinator?.hideHeader = showAsSplitView
         if showAsSplitView {
             leftViewWidthConstraint = leftViewWidthConstraint.setMultiplier(multiplier: 0.333)
             rightViewWidthConstraint = rightViewWidthConstraint.setMultiplier(multiplier: 0.666)

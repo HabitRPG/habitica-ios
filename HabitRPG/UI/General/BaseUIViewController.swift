@@ -8,32 +8,35 @@
 
 import Foundation
 
-class BaseUIViewController: UIViewController, Themeable {
+class BaseUIViewController: HRPGTutorialUIViewController, Themeable {
     
-    lazy var topHeaderCoordinator: TopHeaderCoordinator = {
-        return TopHeaderCoordinator(topHeaderNavigationController: hrpgTopHeaderNavigationController())
+    lazy var topHeaderCoordinator: TopHeaderCoordinator? = {
+        if (hrpgTopHeaderNavigationController() != nil) {
+            return TopHeaderCoordinator(topHeaderNavigationController: hrpgTopHeaderNavigationController())
+        }
+        return nil
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         populateText()
         ThemeService.shared.addThemeable(themable: self)
-        topHeaderCoordinator.viewDidLoad()
+        topHeaderCoordinator?.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        topHeaderCoordinator.viewWillAppear()
+        topHeaderCoordinator?.viewWillAppear()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         displayTutorialStep()
-        topHeaderCoordinator.viewDidAppear()
+        topHeaderCoordinator?.viewDidAppear()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        topHeaderCoordinator.viewWillDisappear()
+        topHeaderCoordinator?.viewWillDisappear()
         super.viewWillDisappear(animated)
     }
     

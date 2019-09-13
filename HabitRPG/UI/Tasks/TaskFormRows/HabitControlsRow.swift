@@ -36,6 +36,7 @@ class HabitControlsCell: Cell<HabitControlsValue>, CellType {
             row.value = HabitControlsValue()
         }
         backgroundColor = .clear
+        selectionStyle = .none
     }
 
     @objc

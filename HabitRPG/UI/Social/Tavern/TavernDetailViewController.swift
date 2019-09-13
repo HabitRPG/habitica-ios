@@ -24,7 +24,9 @@ class TavernDetailViewController: GroupDetailViewController {
     @IBOutlet weak var linksStackView: CollapsibleStackView!
     @IBOutlet weak var questProgressView: QuestProgressView!
     @IBOutlet weak var worldBossTitleView: CollapsibleTitle!
-
+    @IBOutlet weak var innTextView: UITextView!
+    @IBOutlet weak var guidelinesTextView: UITextView!
+    
     var quest: QuestProtocol? {
         didSet {
             if let quest = self.quest {
@@ -94,6 +96,9 @@ class TavernDetailViewController: GroupDetailViewController {
         guidelinesButton.backgroundColor = theme.offsetBackgroundColor
         faqButton.backgroundColor = theme.offsetBackgroundColor
         reportButton.backgroundColor = theme.offsetBackgroundColor
+        innTextView.textColor = theme.secondaryTextColor
+        guidelinesTextView.textColor = theme.secondaryTextColor
+        tavernHeaderView.applyTheme(backgroundColor: theme.windowBackgroundColor)
     }
     
     override func viewWillAppear(_ animated: Bool) {

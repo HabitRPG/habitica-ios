@@ -47,6 +47,7 @@ class WeekdayFormCell: Cell<WeekdaysValue>, CellType {
         saturdayLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(saturdayTapped)))
         sundayLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(sundayTapped)))
         backgroundColor = .clear
+        selectionStyle = .none
     }
     
     @objc

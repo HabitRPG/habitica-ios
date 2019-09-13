@@ -39,7 +39,11 @@ class InAppRewardCell: UICollectionViewCell {
     private var isLocked = false {
         didSet {
             if isLocked {
-                infoImageView.image = HabiticaIcons.imageOfItemIndicatorLocked()
+                if (ThemeService.shared.theme.isDark) {
+                    infoImageView.image = HabiticaIcons.imageOfItemIndicatorLockedDark()
+                } else {
+                    infoImageView.image = HabiticaIcons.imageOfItemIndicatorLocked()
+                }
                 infoImageView.isHidden = false
                 infoLabel.isHidden = true
             } else {

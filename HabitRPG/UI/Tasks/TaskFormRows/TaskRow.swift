@@ -20,6 +20,7 @@ struct LabeledFormValue<V: Equatable>: Equatable, CustomStringConvertible {
     var description: String {
         return label
     }
+    
 }
 
 typealias CombinedCell = BaseCell & CellType
