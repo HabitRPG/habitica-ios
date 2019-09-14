@@ -277,7 +277,7 @@
 "titles.shops" = "商店";
 "titles.gift_subscription" = "赠送会员订阅";
 "titles.feed_pet" = "喂宠物";
-"stats.points_to_allocate" = "%d 点待分配";
+"stats.points_to_allocate" = "%d点待分配";
 "stats.auto_allocate_points" = "自动分配属性点";
 "stats.distribute_evenly" = "平均分配";
 "stats.distribute_evenly_help" = "为每个属性分配相同的点数。";
@@ -352,7 +352,7 @@
 "grey" = "灰色";
 "dated" = "截止日期";
 "stats.no_points_to_allocate" = "可分配的点数为0";
-"stats.one_point_to_allocate" = "0 个点数可分配";
+"stats.one_point_to_allocate" = "1个点数可分配";
 "stats.buffs" = "增益魔法";
 "stats.total" = "总计";
 "stats.character_build_title" = "性格锻炼";
@@ -432,7 +432,7 @@
 "tasks.examples.creativity_todo_text" = "结束创作项目";
 "tasks.examples.creativity_todo_notes" = "轻触为你的项目设置名称";
 "menu" = "菜单";
-"filter" = "筛选";
+"filter" = "过滤条件";
 "one_filter" = "1 个筛选";
 "x_filters" = "%ld 个筛选";
 "tasks.form.notes_placeholder" = "添加任何备注以供参考";
@@ -907,3 +907,12 @@
 "settings.push_notifications.received_pm" = "收到私信";
 "settings.push_notifications.title" = "推送通知";
 "empty.notifications.description" = "小信使仙女们围着你欢快得鼓起了热烈的掌声！恭喜，做得太棒了！";
+"organize_by" = "组织者";
+"achievements.quests" = "完成的副本";
+"achievements.special" = "特殊成就";
+"achievements.seasonal" = "季节性成就";
+"achievements.basic" = "基本成就";
+"empty.notifications.title" = "你们都赶上了！";
+"empty.rewards.description" = "奖励是使用Habitica并完成任务的好方法。\n立即尝试添加几个！";
+"empty.rewards.title" = "这些是你的奖励";
+"empty.todos.description" = "To-Dos需要完成一次。\n将清单添加到您的待办事项以增加其价值。";
