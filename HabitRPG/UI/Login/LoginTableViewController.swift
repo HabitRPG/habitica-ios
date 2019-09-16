@@ -64,11 +64,7 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
 
         loginButton.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
         googleLoginButton.addTarget(self, action: #selector(googleLoginButtonPressed), for: .touchUpInside)
-        if #available(iOS 13.0, *) {
-            appleLoginButton.addTarget(self, action: #selector(appleLoginButtonPressed), for: .touchUpInside)
-        } else {
-            appleLoginButton.isHidden = true
-        }
+        appleLoginButton.addTarget(self, action: #selector(appleLoginButtonPressed), for: .touchUpInside)
         facebookLoginButton.addTarget(self, action: #selector(facebookLoginButtonPressed), for: .touchUpInside)
         forgotPasswordButton.addTarget(self, action: #selector(forgotPasswordButtonPressed), for: .touchUpInside)
 
@@ -113,6 +109,7 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
         facebookLoginButton.setTitle(L10n.Login.loginFacebook, for: .normal)
         googleLoginButton.setTitle(L10n.Login.loginGoogle, for: .normal)
         appleLoginButton.setTitle(L10n.Login.loginApple, for: .normal)
+        appleLoginButton.isHidden = true
         
         forgotPasswordButton.setTitle(L10n.Login.forgotPassword, for: .normal)
         
