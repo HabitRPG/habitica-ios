@@ -134,6 +134,7 @@
 		29323E6A2056BC2A00AC6D6F /* RetrieveUserCallSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29323E692056BC2A00AC6D6F /* RetrieveUserCallSpec.swift */; };
 		29323E6C2056BCB400AC6D6F /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = 29323E6B2056BCB400AC6D6F /* user.json */; };
 		29323E6E2056C0E900AC6D6F /* content.json in Resources */ = {isa = PBXBuildFile; fileRef = 29323E6D2056C0E900AC6D6F /* content.json */; };
+		293F22DD232FBF4B00A33928 /* RemoveMemberCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293F22DC232FBF4B00A33928 /* RemoveMemberCall.swift */; };
 		294973C62080F92400F02AC3 /* SellItemCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294973C52080F92400F02AC3 /* SellItemCall.swift */; };
 		294973C82080F98600F02AC3 /* HatchPetCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294973C72080F98600F02AC3 /* HatchPetCall.swift */; };
 		294973CA2080F9F600F02AC3 /* EquipGearCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294973C92080F9F600F02AC3 /* EquipGearCall.swift */; };
@@ -371,6 +372,7 @@
 		29323E692056BC2A00AC6D6F /* RetrieveUserCallSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveUserCallSpec.swift; sourceTree = "<group>"; };
 		29323E6B2056BCB400AC6D6F /* user.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = user.json; sourceTree = "<group>"; };
 		29323E6D2056C0E900AC6D6F /* content.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = content.json; sourceTree = "<group>"; };
+		293F22DC232FBF4B00A33928 /* RemoveMemberCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveMemberCall.swift; sourceTree = "<group>"; };
 		294973C52080F92400F02AC3 /* SellItemCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellItemCall.swift; sourceTree = "<group>"; };
 		294973C72080F98600F02AC3 /* HatchPetCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HatchPetCall.swift; sourceTree = "<group>"; };
 		294973C92080F9F600F02AC3 /* EquipGearCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipGearCall.swift; sourceTree = "<group>"; };
@@ -655,6 +657,7 @@
 				292D6C982101F5660078288A /* InviteToGroupCall.swift */,
 				296E480921BEBC0600D15E4A /* RetrieveMemberUsernameCall.swift */,
 				2913BC59220C62D9001ECF00 /* FindUsernamesCall.swift */,
+				293F22DC232FBF4B00A33928 /* RemoveMemberCall.swift */,
 			);
 			path = Group;
 			sourceTree = "<group>";
@@ -1063,20 +1066,30 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Habitica API ClientTests/Pods-Habitica API ClientTests-frameworks.sh",
+				"${SRCROOT}/../Pods/Target Support Files/Pods-Habitica API ClientTests/Pods-Habitica API ClientTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
 				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
 				"${BUILT_PRODUCTS_DIR}/iOSSnapshotTestCase/FBSnapshotTestCase.framework",
+				"${BUILT_PRODUCTS_DIR}/Keys/Keys.framework",
+				"${BUILT_PRODUCTS_DIR}/OHHTTPStubs/OHHTTPStubs.framework",
+				"${BUILT_PRODUCTS_DIR}/Prelude/Prelude.framework",
+				"${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/ReactiveSwift/ReactiveSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSnapshotTestCase.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Keys.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OHHTTPStubs.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Prelude.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Habitica API ClientTests/Pods-Habitica API ClientTests-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-Habitica API ClientTests/Pods-Habitica API ClientTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C1BDEF6207AFD20B4975AB7F /* [CP] Check Pods Manifest.lock */ = {
@@ -1152,6 +1165,7 @@
 				290B6277207BA86F007287C4 /* SendPasswordResetEmailCall.swift in Sources */,
 				290C3028206B98A50066AF5B /* APIOwnedItem.swift in Sources */,
 				290C3032206CF0190066AF5B /* APISkillResponse.swift in Sources */,
+				293F22DD232FBF4B00A33928 /* RemoveMemberCall.swift in Sources */,
 				295610E22056C3AC00D9711A /* RetrieveContentCall.swift in Sources */,
 				299FB29420849EDD00422522 /* APIOwnedPet.swift in Sources */,
 				2974BDB220908E4600EC1A25 /* APIInboxMessages.swift in Sources */,

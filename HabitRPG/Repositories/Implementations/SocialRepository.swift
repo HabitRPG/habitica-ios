@@ -426,4 +426,31 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
             }
         })
     }
+    
+    func transferOwnership(groupID: String, userID: String) -> SignalProducer<GroupProtocol?, ReactiveSwiftRealmError> {
+        return localRepository.getGroup(groupID: groupID).take(first: 1)
+            .skipNil()
+            .map({ group in
+                let newGroup = self.localRepository.getNewGroup()
+                newGroup.id = group.id
+                newGroup.name = group.name
+                newGroup.groupDescription = group.groupDescription
+                newGroup.summary = group.summary
+                newGroup.leaderID = userID
+                newGroup.name = group.name
+                newGroup.type = group.type
+                newGroup.privacy = group.privacy
+                return newGroup
+            })
+            .flatMap(.latest) { group in
+                return self.updateGroup(group).producer
+        }
+    }
+    
+    func removeMember(groupID: String, userID: String) -> Signal<GroupProtocol?, Never> {
+        return RemoveMemberCall(groupID: groupID, userID: userID).objectSignal
+            .flatMap(.latest) { _ in
+                return self.retrieveGroup(groupID: groupID)
+        }
+    }
 }

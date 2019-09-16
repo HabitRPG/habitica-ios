@@ -370,6 +370,8 @@ public enum L10n {
   public static var rememberCheckOffDailies: String { return L10n.tr("Mainstrings", "remember_check_off_dailies") }
   /// Reminder
   public static var reminder: String { return L10n.tr("Mainstrings", "reminder") }
+  /// Remove
+  public static var remove: String { return L10n.tr("Mainstrings", "remove") }
   /// Repeat Password
   public static var repeatPassword: String { return L10n.tr("Mainstrings", "repeat_password") }
   /// Reply
@@ -476,6 +478,10 @@ public enum L10n {
   public static var thursday: String { return L10n.tr("Mainstrings", "thursday") }
   /// Title
   public static var title: String { return L10n.tr("Mainstrings", "title") }
+  /// Transfer
+  public static var transfer: String { return L10n.tr("Mainstrings", "transfer") }
+  /// Transfer ownership
+  public static var transferOwnership: String { return L10n.tr("Mainstrings", "transfer_ownership") }
   /// Tuesday
   public static var tuesday: String { return L10n.tr("Mainstrings", "tuesday") }
   /// Two-Handed
@@ -1092,8 +1098,18 @@ public enum L10n {
     public static func questParticipantCount(_ p1: Int) -> String {
       return L10n.tr("Mainstrings", "party.quest_participant_count", p1)
     }
+    /// Remove from Party
+    public static var removeFromParty: String { return L10n.tr("Mainstrings", "party.remove_from_party") }
+    /// Are you sure you want to remove %@ from the party?
+    public static func removeMemberTitle(_ p1: String) -> String {
+      return L10n.tr("Mainstrings", "party.remove_member_title", p1)
+    }
     /// Start a Quest
     public static var startQuest: String { return L10n.tr("Mainstrings", "party.start_quest") }
+    /// Are you sure you want to transfer the ownership to %@?
+    public static func transferOwnershipTitle(_ p1: String) -> String {
+      return L10n.tr("Mainstrings", "party.transfer_ownership_title", p1)
+    }
   }
 
   public enum Quests {

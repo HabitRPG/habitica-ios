@@ -426,6 +426,12 @@
 "party.start_quest" = "Start a Quest";
 "party.leave_party_title" = "Leave Party?";
 "party.leave_party_description" = "Do you want to leave the party and keep or leave the challenges?";
+"party.transfer_ownership_title" = "Are you sure you want to transfer the ownership to %@?";
+"party.remove_member_title" = "Are you sure you want to remove %@ from the party?";
+"transfer_ownership" = "Transfer ownership";
+"transfer" = "Transfer";
+"remove" = "Remove";
+"party.remove_from_party" = "Remove from Party";
 "groups.members" = "Members";
 "groups.invite_member" = "Invite a Member";
 "pending_damage" = "Pending damage";

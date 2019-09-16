@@ -83,4 +83,27 @@ class PetDetailViewController: StableDetailViewController<PetDetailDataSource> {
             inventoryRepository.feed(pet: pet, food: food).observeCompleted {}
         }
     }
+    
+    @available(iOS 13.0, *)
+    override func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        guard let stableItem = datasource?.item(at: indexPath) else {
+            return nil
+        }
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil, actionProvider: { suggestedActions in
+            var actions = [UIAction]()
+            if stableItem.trained > 0 && stableItem.pet?.type != "special" && stableItem.canRaise {
+                actions.append(UIAction(title: L10n.Stable.feed, handler: {[weak self] (_) in
+                    self?.selectedPet = stableItem.pet
+                    self?.perform(segue: StoryboardSegue.Main.feedSegue)
+                }))
+            }
+            if stableItem.trained > 0 {
+                var equipString = L10n.equip
+                actions.append(UIAction(title: equipString, handler: {[weak self] _ in
+                    self?.inventoryRepository.equip(type: "pet", key: stableItem.pet?.key ?? "").observeCompleted {}
+                }))
+            }
+            return UIMenu(title: stableItem.pet?.text ?? "", children: actions)
+        })
+    }
 }

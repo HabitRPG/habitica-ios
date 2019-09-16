@@ -136,6 +136,22 @@ class PartyDetailViewController: GroupDetailViewController {
                 self?.selectedMember = member
                 self?.perform(segue: StoryboardSegue.Social.userProfileSegue)
             }
+            view.moreButtonTapped = {[weak self] in
+                let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+                actionSheet.addAction(UIAlertAction(title: L10n.writeMessage, style: .default, handler: { _ in
+                    
+                }))
+                if (self?.groupProperty.value?.leaderID == self?.userRepository.currentUserId && self?.groupProperty.value?.leaderID != member.id) {
+                    actionSheet.addAction(UIAlertAction(title: L10n.transferOwnership, style: .default, handler: { _ in
+                        self?.showTransferOwnershipDialog(memberID: member.id ?? "", displayName: member.profile?.name ?? "")
+                    }))
+                    actionSheet.addAction(UIAlertAction(title: L10n.Party.removeFromParty, style: .default, handler: { _ in
+                        self?.showRemoveMemberDialog(memberID: member.id ?? "", displayName: member.profile?.name ?? "")
+                    }))
+                }
+                actionSheet.addAction(UIAlertAction.cancelAction())
+                self?.present(actionSheet, animated: true, completion: nil)
+            }
             membersStackview.addArrangedSubview(view)
         }
     }
@@ -259,5 +275,23 @@ class PartyDetailViewController: GroupDetailViewController {
         let itemViewController = itemNavigationController.topViewController as? ItemsViewController
         itemViewController?.itemType = "quests"
         present(itemNavigationController, animated: true, completion: nil)
+    }
+    
+    private func showTransferOwnershipDialog(memberID: String, displayName: String) {
+        let alert = HabiticaAlertController(title: L10n.Party.transferOwnershipTitle(displayName))
+        alert.addAction(title: L10n.transfer, style: .default, isMainAction: true) {[weak self] _ in
+            self?.socialRepository.transferOwnership(groupID: self?.groupID ?? "", userID: memberID).start()
+        }
+        alert.addCancelAction()
+        alert.show()
+    }
+    
+    private func showRemoveMemberDialog(memberID: String, displayName: String) {
+        let alert = HabiticaAlertController(title: L10n.Party.removeMemberTitle(displayName))
+        alert.addAction(title: L10n.remove, style: .destructive, isMainAction: true) {[weak self] _ in
+            self?.socialRepository.removeMember(groupID: self?.groupID ?? "", userID: memberID).observeCompleted {}
+        }
+        alert.addCancelAction()
+        alert.show()
     }
 }

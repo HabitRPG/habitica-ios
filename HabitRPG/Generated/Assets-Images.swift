@@ -48,6 +48,7 @@ internal enum Asset {
   internal static let menuMessages = ImageAsset(name: "MenuMessages")
   internal static let menuNotifications = ImageAsset(name: "MenuNotifications")
   internal static let menuSettings = ImageAsset(name: "MenuSettings")
+  internal static let moreButton = ImageAsset(name: "MoreButton")
   internal static let moreInteractionsIcon = ImageAsset(name: "MoreInteractionsIcon")
   internal static let nameplate = ImageAsset(name: "Nameplate")
   internal static let noPartyBanner = ImageAsset(name: "NoPartyBanner")

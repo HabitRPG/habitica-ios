@@ -13,6 +13,7 @@ import PinLayout
 class MemberListView: UIView {
 
     var viewTapped: (() -> Void)?
+    var moreButtonTapped: (() -> Void)?
     
     let avatarView: AvatarView = AvatarView()
     let displayNameLabel: UsernameLabel = UsernameLabel()
@@ -78,6 +79,14 @@ class MemberListView: UIView {
         view.textAlignment = .center
         view.text = L10n.leader
         return view
+    }()
+    let moreButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .clear
+        button.setImage(Asset.moreInteractionsIcon.image, for: .normal)
+        button.tintColor = ThemeService.shared.theme.tintColor
+        button.addTarget(self, action: #selector(onMoreButtonTapped), for: .touchUpInside)
+        return button
     }()
 
     func configure(member: MemberProtocol, isLeader: Bool) {
@@ -145,6 +154,7 @@ class MemberListView: UIView {
         addSubview(manaLabel)
         addSubview(classIconView)
         addSubview(buffIconView)
+        addSubview(moreButton)
         
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapView)))
     }
@@ -157,8 +167,10 @@ class MemberListView: UIView {
     func layout() {
         avatarView.pin.start().width(97).height(99).vCenter()
         displayNameLabel.pin.top(14).after(of: avatarView).marginStart(16).height(21).sizeToFit(.height)
+        moreButton.pin.top(to: displayNameLabel.edge.top).height(20).sizeToFit(.height)
+        moreButton.pin.end()
         leaderView.pin.top(to: displayNameLabel.edge.top).height(20).sizeToFit(.height)
-        leaderView.pin.width(leaderView.bounds.size.width + 16).end()
+        leaderView.pin.width(leaderView.bounds.size.width + 16).before(of: moreButton).marginEnd(4)
         sublineLabel.pin.after(of: avatarView).marginStart(16).below(of: displayNameLabel).marginTop(4).height(18).sizeToFit(.height)
 
         healthLabel.pin.below(of: sublineLabel).height(16).sizeToFit(.height)
@@ -191,6 +203,13 @@ class MemberListView: UIView {
     @objc
     private func tapView() {
         if let action = viewTapped {
+            action()
+        }
+    }
+    
+    @objc
+    private func onMoreButtonTapped() {
+        if let action = moreButtonTapped {
             action()
         }
     }
