@@ -595,6 +595,10 @@ class TaskFormViewController: FormViewController, Themeable {
         task.checklist.forEach { (item) in
             let row = TextRow(item.id) { row in
                 row.value = item.text
+                row.cellUpdate({ (cell, _) in
+                    cell.tintColor = self.lightTaskTintColor
+                    cell.textField.textColor = ThemeService.shared.theme.primaryTextColor
+                })
             }
             let lastIndex = (checklistSection?.count ?? 1) - 1
             checklistSection?.insert(row, at: lastIndex)
