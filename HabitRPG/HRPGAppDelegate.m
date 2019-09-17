@@ -247,6 +247,12 @@
         } else if ([userInfo[@"identifier"] isEqualToString:@"changeUsername"]) {
             AuthenticationSettingsViewController *authSettingsViewcontroller = (AuthenticationSettingsViewController *)[self loadViewController:@"AuthenticationSettingsViewController" fromStoryboard:@"Settings"];
             [displayedNavigationController pushViewController:authSettingsViewcontroller animated:YES];
+        } else if ([userInfo[@"identifier"] isEqualToString:@"groupActivity"] || [userInfo[@"identifier"] isEqualToString:@"chatMention"]) {
+            if ([userInfo[@"type"] isEqual:@"party"]) {
+                [RouterHandler.shared handleWithUrlString:@"/party"];
+            } else {
+                [RouterHandler.shared handleWithUrlString:[NSString stringWithFormat:@"/groups/guild/%@", userInfo[@"groupID"]]];
+            }
         }
     } else if ([self.window.rootViewController isKindOfClass:[LoadingViewController class]]) {
         LoadingViewController *loadingViewController =
@@ -322,9 +328,7 @@
 }
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    NSString *token = [[deviceToken description] stringByTrimmingCharactersInSet: [NSCharacterSet characterSetWithCharactersInString:@"<>"]];
-    token = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
-    [[NSUserDefaults standardUserDefaults] setObject:token forKey:@"PushNotificationDeviceToken"];
+    [self.swiftAppDelegate saveDeviceToken:deviceToken];
 }
 
 - (void)completeTaskWithId:(NSString *)taskID completionHandler:(void (^)())completionHandler {

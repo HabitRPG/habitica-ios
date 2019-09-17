@@ -79,6 +79,12 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
     }
     
     @objc
+    func saveDeviceToken(_ deviceToken: Data) {
+        let token = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
+        UserDefaults.standard.set(token, forKey: "PushNotificationDeviceToken")
+    }
+    
+    @objc
     func setupLogging() {
         let userID = AuthenticationManager.shared.currentUserId
         FirebaseApp.configure()
