@@ -73,6 +73,7 @@ class InboxChatViewController: SLKTextViewController, Themeable {
         textInputbar.charCountLabelNormalColor = theme.dimmedTextColor
         textInputbar.textView.backgroundColor = theme.contentBackgroundColor
         textInputbar.textView.textColor = theme.primaryTextColor
+        view.backgroundColor = theme.contentBackgroundColor
         tableView?.reloadData()
     }
     

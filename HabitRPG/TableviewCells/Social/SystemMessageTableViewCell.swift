@@ -31,5 +31,6 @@ class SystemMessageTableViewCell: UITableViewCell {
         backgroundColor = theme.windowBackgroundColor
         contentView.backgroundColor = theme.windowBackgroundColor
         messageTextView.textColor = theme.tintColor
+        messageWrapper.borderColor = theme.separatorColor
     }
 }

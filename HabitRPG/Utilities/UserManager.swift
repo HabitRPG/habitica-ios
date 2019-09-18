@@ -120,7 +120,7 @@ class UserManager: NSObject {
                 SoundManager.shared.play(effect: .levelUp)
             }
         }
-        userLevel = user.stats?.level ?? 0
+        userLevel = user.stats?.level
         
         userRepository.registerPushDevice(user: user).observeCompleted {}
         setTimezoneOffset(user)
@@ -141,7 +141,7 @@ class UserManager: NSObject {
     }
     
     private func checkFainting(user: UserProtocol) -> FaintViewController? {
-        if (user.stats?.health ?? 0) <= 0.0 && faintViewController == nil {
+        if user.stats != nil && (user.stats?.health ?? 0) <= 0.0 && faintViewController == nil {
             let faintView = FaintViewController()
             faintView.show()
             return faintView

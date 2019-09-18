@@ -12,7 +12,7 @@ import Down
 import Habitica_Models
 import ReactiveSwift
 
-class GroupChatViewController: SLKTextViewController {
+class GroupChatViewController: SLKTextViewController, Themeable {
     
     @objc public var groupID: String? {
         didSet {
@@ -49,7 +49,6 @@ class GroupChatViewController: SLKTextViewController {
         tableView?.separatorStyle = .none
         tableView?.rowHeight = UITableView.automaticDimension
         tableView?.estimatedRowHeight = 90
-        tableView?.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
 
         tableView?.refreshControl = UIRefreshControl()
         tableView?.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
@@ -62,10 +61,6 @@ class GroupChatViewController: SLKTextViewController {
         textInputbar.charCountLabelNormalColor = UIColor.gray400
         textInputbar.charCountLabelWarningColor = UIColor.red50
         textInputbar.charCountLabel.font = UIFont.systemFont(ofSize: 11, weight: .bold)
-        textInputbar.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
-        textInputbar.textView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
-        textInputbar.textView.placeholderColor = ThemeService.shared.theme.dimmedTextColor
-        textInputbar.textView.textColor = ThemeService.shared.theme.primaryTextColor
         
         disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
             self?.checkGuidelinesAccepted(user: user)
@@ -113,6 +108,17 @@ class GroupChatViewController: SLKTextViewController {
                 self?.showAutoCompletionView(self?.autocompleteEmojis.isEmpty == false)
             })
         )
+        
+        ThemeService.shared.addThemeable(themable: self)
+    }
+    
+    func applyTheme(theme: Theme) {
+        textInputbar.backgroundColor = theme.windowBackgroundColor
+        textInputbar.textView.backgroundColor = theme.contentBackgroundColor
+        textInputbar.textView.placeholderColor = theme.dimmedTextColor
+        textInputbar.textView.textColor = theme.primaryTextColor
+        tableView?.backgroundColor = theme.windowBackgroundColor
+        tableView?.reloadData()
     }
     
     override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {

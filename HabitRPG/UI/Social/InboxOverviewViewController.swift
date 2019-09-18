@@ -29,6 +29,7 @@ class InboxOverviewViewController: BaseTableViewController {
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
         tableView.backgroundColor = theme.contentBackgroundColor
+        view.backgroundColor = theme.contentBackgroundColor
     }
     
     override func viewDidAppear(_ animated: Bool) {

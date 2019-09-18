@@ -40,13 +40,23 @@ class GroupFormViewController: FormViewController {
             }
             <<< TextRow(GroupFormTags.name) { row in
                 row.title = L10n.name
-                row.cell.tintColor = ThemeService.shared.theme.tintColor
+                row.cellUpdate { (cell, _) in
+                    cell.tintColor = ThemeService.shared.theme.tintColor
+                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    cell.textField.textColor = ThemeService.shared.theme.primaryTextColor
+                }
                 row.add(rule: RuleRequired(msg: L10n.Groups.errorNameRequired))
                 row.validationOptions = .validatesOnChange
             }
             <<< TextAreaRow(GroupFormTags.summary) { row in
                 row.placeholder = L10n.summary
-                row.cell.tintColor = ThemeService.shared.theme.tintColor
+                row.cellUpdate { (cell, _) in
+                    cell.tintColor = ThemeService.shared.theme.tintColor
+                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    cell.textView?.textColor = ThemeService.shared.theme.primaryTextColor
+                    cell.textView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
+
+                }
                 row.textAreaHeight = TextAreaHeight.fixed(cellHeight: 200)
                 row.hidden = Condition.function([], { (_) -> Bool in
                     return self.isParty
@@ -54,18 +64,20 @@ class GroupFormViewController: FormViewController {
             }
             <<< TextAreaRow(GroupFormTags.groupDescription) { row in
                 row.placeholder = L10n.description
-                row.cell.tintColor = ThemeService.shared.theme.tintColor
+                row.cellUpdate { (cell, _) in
+                    cell.tintColor = ThemeService.shared.theme.tintColor
+                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    cell.textView.textColor = ThemeService.shared.theme.primaryTextColor
+                    cell.textView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
+                }
                 row.textAreaHeight = TextAreaHeight.fixed(cellHeight: 350)
             }
             <<< SwitchRow(GroupFormTags.leaderChallenges) { row in
                 row.title = L10n.Groups.leaderChallenges
-                row.cell.tintColor = ThemeService.shared.theme.tintColor
-        }
-            <<< PushRow<LabeledFormValue<String>>(GroupFormTags.newLeader) { row in
-                row.title = L10n.Groups.assignNewLeader
-                row.hidden = Condition.function([], { (_) -> Bool in
-                    return self.isCreating || !self.isParty
-                })
+                row.cellUpdate { (cell, _) in
+                    cell.tintColor = ThemeService.shared.theme.tintColor
+                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                }
         }
         
         loadGroup()
