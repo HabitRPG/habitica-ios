@@ -8,7 +8,6 @@ import UIKit
 
 private extension UITraitCollection {
     
-    @available(iOS 10.0, *)
     static let defaultContentSizeCategory = UITraitCollection(preferredContentSizeCategory: .large)
     
 }
@@ -24,13 +23,9 @@ private extension UIFont {
             return value
             
         }
-        if #available(iOS 10.0, *) {
-            let defaultFont = UIFont.preferredFont(forTextStyle: style, compatibleWith: .defaultContentSizeCategory)
-            return (value * bodyLeading) / defaultFont.bodyLeading
-        } else {
-            let defaultFont = UIFont.preferredFont(forTextStyle: style)
-            return (value * bodyLeading) / defaultFont.bodyLeading
-        }
+        let defaultFont = UIFont.preferredFont(forTextStyle: style, compatibleWith: .defaultContentSizeCategory)
+        return (value * bodyLeading) / defaultFont.bodyLeading
+
     }
     
 }
@@ -138,10 +133,7 @@ public class CustomFontMetrics: NSObject {
             return metrics.scaledFont(for: font, compatibleWith: traitCollection)
         case .legacy(let overrideStyle):
             let descriptor = font.fontDescriptor
-            var systemFont = UIFont.preferredFont(forTextStyle: overrideStyle)
-            if #available(iOS 10.0, *) {
-                systemFont = UIFont.preferredFont(forTextStyle: overrideStyle, compatibleWith: traitCollection)
-            }
+            let systemFont = UIFont.preferredFont(forTextStyle: overrideStyle, compatibleWith: traitCollection)
             
             /// Is it a system font? Then we can simply re-make it.
             if let originalStyle = descriptor.object(forKey: .textStyle) as? UIFont.TextStyle, CustomFontMetrics.supportedDynamicTypeStyles.contains(originalStyle) {
@@ -170,11 +162,7 @@ public class CustomFontMetrics: NSObject {
         case .modern(let metrics):
             return metrics.scaledValue(for: value, compatibleWith: traitCollection)
         case .legacy(let style):
-            if #available(iOS 10.0, *) {
-                return UIFont.preferredFont(forTextStyle: style, compatibleWith: traitCollection).scaledValue(forValue: value).roundedForDisplay(compatibleWith: traitCollection)
-            } else {
-                return UIFont.preferredFont(forTextStyle: style).scaledValue(forValue: value).roundedForDisplay(compatibleWith: traitCollection)
-            }
+            return UIFont.preferredFont(forTextStyle: style, compatibleWith: traitCollection).scaledValue(forValue: value).roundedForDisplay(compatibleWith: traitCollection)
         }
     }
     

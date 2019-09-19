@@ -391,7 +391,7 @@ class SubscriptionViewController: BaseTableViewController {
         let textField = UITextField()
         textField.autocorrectionType = .no
         textField.autocapitalizationType = .none
-        textField.borderColor = UIColor.gray300()
+        textField.borderColor = UIColor.gray300
         textField.borderWidth = 1
         textField.tintColor = ThemeService.shared.theme.tintColor
         alertController.contentView = textField

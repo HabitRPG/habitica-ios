@@ -48,7 +48,7 @@ class TutorialStepView: UIView {
             view.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
             addSubview(view)
             
-            backgroundView.dimColor = UIColor.purple50().withAlphaComponent(0.6)
+            backgroundView.dimColor = UIColor.purple50.withAlphaComponent(0.6)
             
             shouldGroupAccessibilityChildren = true
             isAccessibilityElement = true

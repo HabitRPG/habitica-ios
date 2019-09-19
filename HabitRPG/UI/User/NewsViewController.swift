@@ -9,7 +9,7 @@
 import Foundation
 import Habitica_Models
 
-class NewsViewController: HRPGUIViewController, UIWebViewDelegate {
+class NewsViewController: BaseUIViewController, UIWebViewDelegate {
     
     @IBOutlet private var newsWebView: UIWebView!
     @IBOutlet private var loadingIndicator: UIActivityIndicatorView!
@@ -19,7 +19,7 @@ class NewsViewController: HRPGUIViewController, UIWebViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        topHeaderCoordinator.hideHeader = true
+        topHeaderCoordinator?.hideHeader = true
         if let url = URL(string: "https://habitica.com/static/new-stuff") {
             let request = URLRequest(url: url)
             newsWebView.delegate = self

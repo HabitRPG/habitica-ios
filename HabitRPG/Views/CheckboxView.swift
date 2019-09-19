@@ -99,26 +99,27 @@ class CheckboxView: UIView {
     }
     
     func configure(task: TaskProtocol) {
-        boxFillColor = UIColor(white: 1.0, alpha: 0.7)
         checked = task.completed
         if let layer = self.layer as? CheckmarkLayer {
             layer.drawPercentage = checked ? 1 : 0
         }
         
         let theme = ThemeService.shared.theme
+        boxFillColor = UIColor(white: theme.isDark ? 0.0 : 1.0, alpha: theme.isDark ? 0.25 : 0.7)
         
         if task.type == "daily" {
             boxCornerRadius = 3
             if task.completed {
-                boxFillColor = theme.dimmedTextColor
-                backgroundColor = theme.dimmedColor
-                checkColor = UIColor.gray200()
+                backgroundColor = theme.offsetBackgroundColor
+                checkColor = theme.ternaryTextColor
             } else {
                 backgroundColor = theme.offsetBackgroundColor
-                checkColor = UIColor.gray200()
+                checkColor = theme.ternaryTextColor
                 if task.dueToday() {
                     backgroundColor = UIColor.forTaskValueLight(Int(task.value))
                     checkColor = UIColor.forTaskValue(Int(task.value))
+                } else {
+                    boxFillColor = theme.dimmedTextColor
                 }
             }
         } else {
@@ -126,7 +127,7 @@ class CheckboxView: UIView {
             if task.completed {
                 boxFillColor = theme.dimmedTextColor
                 backgroundColor = theme.offsetBackgroundColor
-                checkColor = UIColor.gray200()
+                checkColor = theme.ternaryTextColor
             } else {
                 backgroundColor = UIColor.forTaskValueLight(Int(task.value))
                 checkColor = UIColor.forTaskValue(Int(task.value))
@@ -157,12 +158,12 @@ class CheckboxView: UIView {
                 label.text = checklistItem.text
             }
         }
-        
-        label.textColor = checked ? UIColor.gray400() : UIColor.gray100()
+        let theme = ThemeService.shared.theme
+        label.textColor = checked ? theme.dimmedTextColor : theme.primaryTextColor
         backgroundColor = UIColor.clear
-        boxFillColor = checked ? UIColor.gray400() : UIColor.clear
-        boxBorderColor = checked ? nil : UIColor.gray400()
-        checkColor = UIColor.gray200()
+        boxFillColor = checked ? theme.dimmedTextColor : UIColor.clear
+        boxBorderColor = checked ? nil : theme.dimmedTextColor
+        checkColor = theme.ternaryTextColor
         boxCornerRadius = 3
         centerCheckbox = false
         size = 22

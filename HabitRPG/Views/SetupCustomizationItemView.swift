@@ -35,7 +35,7 @@ class SetupCustomizationItemView: UIView {
             view.frame = bounds
             view.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
             addSubview(view)
-            borderView.layer.borderColor = UIColor.purple400().cgColor
+            borderView.layer.borderColor = UIColor.purple400.cgColor
         }
     }
     

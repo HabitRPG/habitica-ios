@@ -12,12 +12,12 @@ import VTAcknowledgementsViewController
 import Habitica_Models
 import MessageUI
 
-class AboutViewController: HRPGBaseViewController, MFMailComposeViewControllerDelegate {
+class AboutViewController: BaseTableViewController, MFMailComposeViewControllerDelegate {
     
     private let configRepository = ConfigRepository()
     private let userRepository = UserRepository()
     
-    private var headerView: UIView?
+    private var headerView: GradientView?
     private var selectedIndexPath: IndexPath?
     private var supportEmail = ""
     private var user: UserProtocol?
@@ -33,9 +33,12 @@ class AboutViewController: HRPGBaseViewController, MFMailComposeViewControllerDe
         super.viewDidLoad()
         clearsSelectionOnViewWillAppear = false
         
-        headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 150))
+        headerView = GradientView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 160))
+        headerView?.startColor = UIColor.purple300
+        headerView?.endColor = UIColor.purple50
         let headerImageView = UIImageView(frame: CGRect(x: (view.frame.size.width - 130)/2, y: 10, width: 130, height: 130))
-        headerImageView.image = Asset.logo.image
+        headerImageView.image = Asset.gryphon.image.withRenderingMode(.alwaysTemplate)
+        headerImageView.tintColor = .white
         headerView?.addSubview(headerImageView)
         tableView.tableHeaderView = headerView
         

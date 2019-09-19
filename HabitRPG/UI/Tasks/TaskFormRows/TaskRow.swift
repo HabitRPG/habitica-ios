@@ -20,10 +20,15 @@ struct LabeledFormValue<V: Equatable>: Equatable, CustomStringConvertible {
     var description: String {
         return label
     }
+    
 }
 
 typealias CombinedCell = BaseCell & CellType
 
 class TaskRow<C: CombinedCell>: Row<C> {
-    var tintColor: UIColor = UIColor.purple300()
+    var tintColor: UIColor = UIColor.purple300
+    
+    func updateTintColor(_ newTint: UIColor) {
+        self.tintColor = newTint
+    }
 }

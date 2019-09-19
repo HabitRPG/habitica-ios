@@ -23,7 +23,7 @@ class FAQDetailViewController: BaseUIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        topHeaderCoordinator.hideHeader = true
+        topHeaderCoordinator?.hideHeader = true
         
         answerTextView.textContainerInset = UIEdgeInsets(top: 0, left: 16, bottom: 16, right: 16)
         

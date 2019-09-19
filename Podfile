@@ -11,12 +11,6 @@ plugin 'cocoapods-keys', {
     "GoogleClient",
     "GoogleRedirectUrl",
     "AmplitudeApiKey",
-    "SeedsDevApiKey",
-    "SeedsReleaseApiKey",
-    "SeedsDevGemsInterstitial",
-    "SeedsReleaseGemsInterstitial",
-    "SeedsReleaseShareInterstitial",
-    "SeedsDevShareInterstitial",
     "ItunesSharedSecret",
     "StagingKey",
   ]
@@ -41,11 +35,10 @@ target 'Habitica' do
   pod 'FLEX', '~> 3.0', :configurations => ['Debug']
   pod 'MRProgress'
   pod 'KLCPopup'
-  pod 'Amplitude-iOS', '~> 4.6.0'
+  pod 'Amplitude-iOS', '~> 4.8.0'
   pod 'Masonry'
   pod "SlackTextViewController"
   pod 'AppAuth'
-  pod 'SeedsSDK'
 
   pod 'FBSDKCoreKit', '~> 5'
   pod 'FBSDKLoginKit', '~> 5'

@@ -105,4 +105,8 @@ class SeparatedStackView: StackView {
         }
         layer.setNeedsLayout()
     }
+    
+    func applyTheme(theme: Theme) {
+        separatorColor = theme.separatorColor
+    }
 }

@@ -54,10 +54,8 @@ class ChallengeTableViewController: BaseTableViewController, UISearchBarDelegate
         topHeaderCoordinator.followScrollView = false
         layoutHeader()
         
-        if #available(iOS 10.0, *) {
-            self.tableView?.refreshControl = UIRefreshControl()
-            self.tableView?.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
-        }
+        self.tableView?.refreshControl = UIRefreshControl()
+        self.tableView?.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
 
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 100

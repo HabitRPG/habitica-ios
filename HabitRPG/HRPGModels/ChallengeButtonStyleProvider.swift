@@ -50,10 +50,10 @@ class JoinLeaveButtonAttributeProvider: ChallengeButtonStyleProvider {
         let joinStyleSignal = buttonStateSignal.filter { $0 == .join }
         let leaveStyleSignal = buttonStateSignal.filter { $0 == .leave }
         
-        let greenSignal = joinStyleSignal.map { _ in UIColor.green100() }
+        let greenSignal = joinStyleSignal.map { _ in UIColor.green100 }
         let joinTitleSignal = joinStyleSignal.signal.map { _ in L10n.joinChallenge }
         
-        let redSignal = leaveStyleSignal.map { _ in UIColor.red100() }
+        let redSignal = leaveStyleSignal.map { _ in UIColor.red100 }
         let leaveTitleSignal = leaveStyleSignal.signal.map { _ in L10n.leaveChallenge }
         
         bgColorSignal = Signal.merge(greenSignal, redSignal)
@@ -129,7 +129,7 @@ class PublishButtonAttributeProvider: HRPGButtonAttributeProvider, HRPGButtonMod
         
         let publishSignal = buttonStateSignal.filter { $0 == .publishEnabled || $0 == .publishDisabled }
         
-        bgColorSignal = publishSignal.map { _ in UIColor.purple300() }
+        bgColorSignal = publishSignal.map { _ in UIColor.purple300 }
         titleSignal = publishSignal.signal.map { _ in L10n.publishChallenge }
         enabledSignal = buttonStateSignal.map { $0 != .publishDisabled }
         
@@ -177,7 +177,7 @@ class ParticipantsButtonAttributeProvider: HRPGButtonAttributeProvider, HRPGButt
         
         let participantsSignal =  buttonStateSignal.filter { $0 == .viewParticipants }
         
-        bgColorSignal = participantsSignal.map { _ in UIColor.gray600() }
+        bgColorSignal = participantsSignal.map { _ in UIColor.gray600 }
         titleSignal = participantsSignal.signal.map { _ in L10n.viewParticipantProgress }
         enabledSignal = buttonStateSignal.map { $0 != .publishDisabled }
     }
@@ -217,7 +217,7 @@ class EndChallengeButtonAttributeProvider: HRPGButtonAttributeProvider, HRPGButt
         
         let endSignal =  buttonStateSignal.filter { $0 == .endChallenge }
         
-        bgColorSignal = endSignal.map { _ in UIColor.red100() }
+        bgColorSignal = endSignal.map { _ in UIColor.red100 }
         titleSignal = endSignal.signal.map { _ in L10n.endChallenge }
         enabledSignal = buttonStateSignal.map { $0 != .publishDisabled }
     }

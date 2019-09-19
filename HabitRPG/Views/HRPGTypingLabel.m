@@ -7,7 +7,7 @@
 //
 
 #import "HRPGTypingLabel.h"
-#import "UIColor+Habitica.h"
+#import "Habitica-Swift.h"
 
 @interface HRPGTypingLabel ()
 
@@ -67,7 +67,7 @@
             self.finishedAction();
         }
     } else {
-        [self.setText addAttribute:NSForegroundColorAttributeName value:[UIColor gray50] range:NSMakeRange(0,self.index )];
+        [self.setText addAttribute:NSForegroundColorAttributeName value:[ObjcThemeWrapper primaryTextColor] range:NSMakeRange(0,self.index )];
         super.attributedText = self.setText;
     }
 }

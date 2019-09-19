@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14835.7" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14865.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14790.5"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14819.2"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -44,7 +44,9 @@
                     <navigationItem key="navigationItem" id="Ueo-OS-iQj">
                         <barButtonItem key="leftBarButtonItem" id="r2M-pt-ZEv">
                             <connections>
-                                <segue destination="6vN-Em-JCA" kind="presentation" identifier="FilterSegue" id="njg-A8-lDq"/>
+                                <segue destination="6vN-Em-JCA" kind="popoverPresentation" identifier="FilterSegue" popoverAnchorBarButtonItem="r2M-pt-ZEv" id="njg-A8-lDq">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="eoD-0q-22r">
@@ -83,7 +85,9 @@
                     <navigationItem key="navigationItem" id="zec-6L-pJk">
                         <barButtonItem key="leftBarButtonItem" id="lJN-5G-qrz">
                             <connections>
-                                <segue destination="6vN-Em-JCA" kind="presentation" identifier="FilterSegue" id="04Z-5H-zfF"/>
+                                <segue destination="6vN-Em-JCA" kind="popoverPresentation" identifier="FilterSegue" popoverAnchorBarButtonItem="lJN-5G-qrz" id="04Z-5H-zfF">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="QMS-gq-G3V">
@@ -115,7 +119,9 @@
                         <barButtonItem key="leftBarButtonItem" id="7QR-Cq-K2a">
                             <connections>
                                 <action selector="editButtonSelected:" destination="sPQ-za-Ji6" id="cc5-TO-pi3"/>
-                                <segue destination="6vN-Em-JCA" kind="presentation" identifier="FilterSegue" id="iSa-66-Wjc"/>
+                                <segue destination="6vN-Em-JCA" kind="popoverPresentation" identifier="FilterSegue" popoverAnchorBarButtonItem="7QR-Cq-K2a" id="iSa-66-Wjc">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="txM-DJ-1EC">
@@ -204,11 +210,11 @@
                         <segue destination="oL1-I7-dz0" kind="show" identifier="PartySegue" id="ynU-31-3VC"/>
                         <segue destination="id8-rI-GMs" kind="show" identifier="GuildsSegue" id="skH-kj-2aP"/>
                         <segue destination="Z6b-ez-Mmy" kind="show" identifier="ChallengesSegue" id="X0Z-Mc-n0d"/>
-                        <segue destination="Ne7-W6-6zE" kind="presentation" identifier="GemSubscriptionSegue" id="jU9-l6-uQc"/>
+                        <segue destination="Ne7-W6-6zE" kind="presentation" identifier="GemSubscriptionSegue" modalPresentationStyle="formSheet" id="jU9-l6-uQc"/>
                         <segue destination="HEh-dF-ytU" kind="show" identifier="StableSegue" id="GpE-7B-PT1"/>
                         <segue destination="AjM-Kx-nSU" kind="show" identifier="EquipmentSegue" id="mE7-db-9QB"/>
                         <segue destination="o49-Mt-AdO" kind="show" identifier="CustomizationSegue" id="9Yx-3K-EPv"/>
-                        <segue destination="nb1-qt-uKV" kind="presentation" identifier="NotificationsSegue" id="3jW-QR-Ocs"/>
+                        <segue destination="nb1-qt-uKV" kind="presentation" identifier="NotificationsSegue" modalPresentationStyle="formSheet" id="3jW-QR-Ocs"/>
                         <segue destination="hEH-25-nQA" kind="show" identifier="AchievementsSegue" id="ZL6-DZ-Nc4"/>
                     </connections>
                 </tableViewController>
@@ -385,14 +391,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2iE-Xy-7j2">
-                                <rect key="frame" x="0.0" y="96" width="375" height="522"/>
+                                <rect key="frame" x="0.0" y="76" width="375" height="542"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z5f-pj-SLH">
-                                <rect key="frame" x="16" y="80" width="343" height="0.0"/>
+                                <rect key="frame" x="16" y="60" width="343" height="0.0"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="500" constant="21" id="8kI-LC-7S3"/>
                                 </constraints>
@@ -1562,7 +1568,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="SubscriptionViewController" id="32f-nw-z2z" customClass="SubscriptionViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="61" sectionHeaderHeight="28" sectionFooterHeight="28" id="uHA-ok-e4Z">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="2y3-dE-HOI">
@@ -1584,7 +1590,7 @@
                             </constraints>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="0ge-iM-ebO">
-                            <rect key="frame" x="0.0" y="135" width="375" height="532"/>
+                            <rect key="frame" x="0.0" y="192" width="375" height="532"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qWw-qV-Dif">
@@ -2242,7 +2248,7 @@
         <!--Filter View Controller-->
         <scene sceneID="8q0-MG-Oh7">
             <objects>
-                <tableViewController id="CZc-T4-a1C" customClass="HRPGFilterViewController" sceneMemberID="viewController">
+                <tableViewController id="CZc-T4-a1C" customClass="FilterViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="Ub3-f1-o3K">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2371,10 +2377,10 @@
             </objects>
             <point key="canvasLocation" x="1035" y="5827"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Themed Navigation Controller-->
         <scene sceneID="9Qs-Im-7zO">
             <objects>
-                <navigationController storyboardIdentifier="tagNavigationController" definesPresentationContext="YES" id="6vN-Em-JCA" customClass="HRPGNavigationController" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="tagNavigationController" definesPresentationContext="YES" id="6vN-Em-JCA" customClass="ThemedNavigationController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="biY-dp-rGo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2456,10 +2462,10 @@
             </objects>
             <point key="canvasLocation" x="1982" y="-815"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Themed Navigation Controller-->
         <scene sceneID="EPA-gN-a0D">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tLB-b1-3s8" customClass="HRPGNavigationController" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tLB-b1-3s8" customClass="ThemedNavigationController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="GEg-Ct-SF3"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="AhC-6Z-AYO">
@@ -2567,10 +2573,10 @@
             </objects>
             <point key="canvasLocation" x="343" y="2641"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Themed Navigation Controller-->
         <scene sceneID="5Un-yC-qQm">
             <objects>
-                <navigationController definesPresentationContext="YES" id="IOk-9k-SGo" customClass="HRPGNavigationController" sceneMemberID="viewController">
+                <navigationController definesPresentationContext="YES" id="IOk-9k-SGo" customClass="ThemedNavigationController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fUl-qS-mY6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2833,10 +2839,10 @@
             </objects>
             <point key="canvasLocation" x="2804" y="10417.241379310346"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Themed Navigation Controller-->
         <scene sceneID="WeW-04-8lU">
             <objects>
-                <navigationController storyboardIdentifier="GiftSubscriptionNavController" id="KOH-m5-9hA" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="GiftSubscriptionNavController" id="KOH-m5-9hA" customClass="ThemedNavigationController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="frT-yt-SsM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2849,10 +2855,10 @@
             </objects>
             <point key="canvasLocation" x="1993" y="10418"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Themed Navigation Controller-->
         <scene sceneID="9x6-O0-kDN">
             <objects>
-                <navigationController id="nb1-qt-uKV" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NotificationsNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nb1-qt-uKV" customClass="ThemedNavigationController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ZYy-Vi-MXT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2874,7 +2880,7 @@
         <image name="tabbar_todos" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="njg-A8-lDq"/>
+        <segue reference="04Z-5H-zfF"/>
         <segue reference="ETz-qE-xC2"/>
         <segue reference="nYO-SY-Og4"/>
         <segue reference="tO1-JH-hWy"/>

@@ -248,10 +248,10 @@ class TaskSetupViewController: UIViewController, TypingTextViewController {
     func updateButton(_ button: UIButton) {
         if isSelected(button) {
             button.tintColor = .white
-            button.setTitleColor(UIColor.purple300(), for: .normal)
+            button.setTitleColor(UIColor.purple300, for: .normal)
             button.setImage(#imageLiteral(resourceName: "checkmark_small"), for: .normal)
         } else {
-            button.tintColor = UIColor.purple50()
+            button.tintColor = UIColor.purple50
             button.setTitleColor(.white, for: .normal)
             button.setImage(nil, for: .normal)
         }

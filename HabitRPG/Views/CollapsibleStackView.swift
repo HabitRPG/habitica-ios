@@ -105,13 +105,18 @@ class CollapsibleStackView: SeparatedStackView {
         }
         disableAnimations = false
         
-        let separatorColor = ThemeService.shared.theme.separatorColor
+        applyTheme(theme: ThemeService.shared.theme)
+        super.awakeFromNib()
+    }
+    
+    override func applyTheme(theme: Theme) {
+        super.applyTheme(theme: theme)
+        let separatorColor = theme.separatorColor
         topBorder = addTopBorderWithColor(color: separatorColor, width: 1)
         bottomBorder = addBottomBorderWithColor(color: separatorColor, width: 1)
         titleBottomBorder = addBottomBorderWithColor(color: separatorColor, width: 1)
         
-        backgroundColor = ThemeService.shared.theme.contentBackgroundColor
-        
-        super.awakeFromNib()
+        backgroundColor = theme.contentBackgroundColor
+        titleView?.textColor = theme.primaryTextColor
     }
 }

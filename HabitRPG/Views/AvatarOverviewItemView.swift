@@ -18,14 +18,14 @@ class AvatarOverviewItemView: UIView {
     }()
     var label: UILabel = {
         let label = UILabel()
-        label.textColor = UIColor.gray400()
+        label.textColor = UIColor.gray400
         label.font = CustomFontMetrics.scaledSystemFont(ofSize: 11)
         label.textAlignment = .center
         return label
     }()
     var noItemView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = UIColor.gray10()
+        imageView.backgroundColor = UIColor.gray10
         imageView.layer.cornerRadius = 4
         imageView.contentMode = .center
         imageView.image = HabiticaIcons.imageOfBlankAvatarIcon
@@ -55,7 +55,7 @@ class AvatarOverviewItemView: UIView {
         addSubview(label)
         addSubview(noItemView)
         
-        noItemBorder.strokeColor = UIColor.gray50().cgColor
+        noItemBorder.strokeColor = UIColor.gray50.cgColor
         noItemBorder.lineWidth = 2
         noItemBorder.lineDashPattern = [4, 4]
         noItemBorder.frame = CGRect(x: 10, y: 10, width: frame.size.width-20, height: 60)

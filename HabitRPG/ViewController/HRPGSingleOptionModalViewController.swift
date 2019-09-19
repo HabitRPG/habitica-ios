@@ -35,10 +35,10 @@ class HRPGSingleOptionModalViewController: UIViewController {
         titleLabel.superview?.bringSubviewToFront(imageTextView)
         
         actionButton?.layer.borderWidth = 0.5
-        actionButton?.layer.borderColor = UIColor.gray400().cgColor
-        actionButton?.setTitleColor(UIColor.purple400(), for: UIControl.State.normal)
+        actionButton?.layer.borderColor = UIColor.gray400.cgColor
+        actionButton?.setTitleColor(UIColor.purple400, for: UIControl.State.normal)
         
         imageTextView.shopItemTitleLabel.font = UIFont.systemFont(ofSize: 15)
-        imageTextView.shopItemTitleLabel.textColor = UIColor.gray200()
+        imageTextView.shopItemTitleLabel.textColor = UIColor.gray200
     }
 }

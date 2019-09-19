@@ -7,14 +7,14 @@
 //
 
 #import "CAGradientLayer+HRPGShopGradient.h"
-#import "UIColor+Habitica.h"
+#import "Habitica-Swift.h"
 
 @implementation CAGradientLayer (HRPGShopGradient)
 
 + (CAGradientLayer *)hrpgShopGradientLayer{
     CAGradientLayer *gradient = [CAGradientLayer layer];
     
-    gradient.colors = @[(id)[UIColor clearColor].CGColor, (id)[UIColor purple50].CGColor];
+    gradient.colors = @[(id)[UIColor clearColor].CGColor, (id)[ObjcThemeWrapper dimmBackgroundColor].CGColor];
     gradient.startPoint = CGPointMake(0.5, 0);
     gradient.endPoint = CGPointMake(1, 0);
     

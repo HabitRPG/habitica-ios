@@ -47,7 +47,7 @@ class FilterTableViewDataSource: BaseReactiveTableViewDataSource<TagProtocol>, F
     private let userRepository = UserRepository()
     private let taskRepository = TaskRepository()
     
-    @objc var selectedTagIds = [String]()
+@objc var selectedTagIds = [String]()
     
     override func didSetTableView() {
         tableView?.reloadData()
@@ -70,8 +70,10 @@ class FilterTableViewDataSource: BaseReactiveTableViewDataSource<TagProtocol>, F
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         if let tag = item(at: indexPath) {
+            cell.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
             let label = cell.viewWithTag(1) as? UILabel
             label?.text = tag.text
+            label?.textColor = ThemeService.shared.theme.primaryTextColor
             
             let checkboxView = cell.viewWithTag(2) as? CheckboxView
             checkboxView?.boxCornerRadius = (checkboxView?.size ?? 0) / 2

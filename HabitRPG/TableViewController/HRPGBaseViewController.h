@@ -22,6 +22,8 @@
 @property BOOL displayedTutorialStep;
 @property TutorialStepView *activeTutorialView;
 
+@property BOOL isVisible;
+
 @property TopHeaderCoordinator *topHeaderCoordinator;
 @property (nonatomic, readonly) UINavigationController<TopHeaderNavigationControllerProtocol> *topHeaderNavigationController;
 

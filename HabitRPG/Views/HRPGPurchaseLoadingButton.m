@@ -7,7 +7,6 @@
 //
 
 #import "HRPGPurchaseLoadingButton.h"
-#import "UIColor+Habitica.h"
 #import "Habitica-Swift.h"
 
 @interface HRPGPurchaseLoadingButton ()
@@ -30,7 +29,7 @@
         self.loadingView = [[UIActivityIndicatorView alloc] init];
         self.loadingView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
 
-        self.tintColor = [UIColor purple300];
+        self.tintColor = [ObjcThemeWrapper tintColor];
         self.layer.masksToBounds = YES;
         self.text = @"";
         self.confirmText = objcL10n.buy;
@@ -104,7 +103,7 @@
             [self removeLoadingIndicatorFromView];
             [self addLabelToView];
             self.originalTintColor = self.tintColor;
-            self.tintColor = [UIColor redColor];
+            self.tintColor = [ObjcThemeWrapper errorColor];
             self.label.text = [objcL10n.error localizedUppercaseString];
             break;
 

@@ -257,6 +257,7 @@
 "settings.reload_content" = "Reload Content";
 "settings.preferences" = "Preferences";
 "settings.theme_color" = "Theme Color";
+"settings.theme_mode" = "Theme Mode";
 "settings.sound_theme" = "Sound Theme";
 "settings.wrong_password" = "Incorrect Password";
 "settings.are_you_sure" = "Are you sure?";
@@ -308,6 +309,11 @@
 "theme.orange" = "Orange";
 "theme.red" = "Red";
 "theme.maroon" = "Maroon";
+"theme.light" = "Light";
+"theme.dark" = "Dark";
+"theme.followSystem" = "Follow system setting";
+"theme.alwaysLight" = "Always Light";
+"theme.alwaysDark" = "Always Dark";
 "details" = "Details";
 "chat" = "Chat";
 "guilds.leave_guild_title" = "Leave Guild?";
@@ -491,7 +497,6 @@
 "groups.invite.add_userid" = "Add a User ID";
 "groups.invite.add_username" = "Add a Username";
 "groups.invite.add_email" = "Add an Email";
-"scan_QR_code" = "Scan QR Code";
 "users_invited" = "Invitation was sent to users.";
 "username" = "Username";
 "display_name" = "Display name";
@@ -529,6 +534,7 @@
 "login.email_username" = "Email / Username";
 "login.login_facebook" = "Login with Facebook";
 "login.login_google" = "Login with Google";
+"login.login_apple" = "Sign in with Apple";
 "login.forgot_password" = "Forgot Password";
 "login.email_password_link" = "Email a Password Reset Link";
 "login.enter_email" = "Enter the email address you used to register your Habitica account.";
@@ -737,8 +743,6 @@
 "invalid_recipient_message" = "You have to specify a valid Habitica Username as recipient.";
 "invalid_recipient_title" = "Invalid Habitica Username";
 "no_camera" = "No Camera available";
-"qr_invalid_id_title" = "Invalid Habitica User ID";
-"qr_invalid_id_message" = "The scanned QR-Code did not contain a valid Habitica User ID.";
 "not_enough_gems" = "Not enough Gems";
 "not_enough_hourglasses" = "Not enough Hourglasses";
 "subscribe_for_hourglasses" = "Subscribe for Hourglasses";

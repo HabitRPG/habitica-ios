@@ -9,7 +9,7 @@
 import Foundation
 import Habitica_Models
 
-class EquipmentDetailViewController: HRPGBaseViewController {
+class EquipmentDetailViewController: BaseTableViewController {
     
     var selectedType: String?
     var selectedCostume = false

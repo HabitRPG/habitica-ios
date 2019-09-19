@@ -37,7 +37,7 @@ class VerifyUsernameModalViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
 
-        usernameIconView.image = HabiticaIcons.imageOfCheckmark(checkmarkColor: UIColor.green50(), percentage: 100)
+        usernameIconView.image = HabiticaIcons.imageOfCheckmark(checkmarkColor: UIColor.green50, percentage: 100)
         
         displayNameTextField.addTarget(self, action: #selector(displayNameChanged), for: .editingChanged)
         usernameTextField.addTarget(self, action: #selector(usernameChanged), for: .editingChanged)
@@ -52,7 +52,7 @@ class VerifyUsernameModalViewController: UIViewController {
         }).start()
         
         let descriptionString = NSMutableAttributedString(string: "\(L10n.usernamePromptBody)\n\n")
-        descriptionString.addAttribute(.foregroundColor, value: UIColor.gray100(), range: NSRange(location: 0, length: descriptionString.length))
+        descriptionString.addAttribute(.foregroundColor, value: UIColor.gray100, range: NSRange(location: 0, length: descriptionString.length))
         descriptionString.append(formattedWikiString())
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
@@ -74,7 +74,7 @@ class VerifyUsernameModalViewController: UIViewController {
             return name?.count ?? 0 > 1 && name?.count ?? 0 < 30
             }.on(value: {[weak self] isUsable in
                 if isUsable {
-                    self?.displayNameIconView.image = HabiticaIcons.imageOfCheckmark(checkmarkColor: UIColor.green50(), percentage: 100)
+                    self?.displayNameIconView.image = HabiticaIcons.imageOfCheckmark(checkmarkColor: UIColor.green50, percentage: 100)
                 } else {
                     self?.displayNameIconView.image = HabiticaIcons.imageOfAlertIcon
                 }
@@ -90,7 +90,7 @@ class VerifyUsernameModalViewController: UIViewController {
             .skipNil()
             .on(value: {[weak self] response in
                 if response.isUsable {
-                    self?.usernameIconView.image = HabiticaIcons.imageOfCheckmark(checkmarkColor: UIColor.green50(), percentage: 100)
+                    self?.usernameIconView.image = HabiticaIcons.imageOfCheckmark(checkmarkColor: UIColor.green50, percentage: 100)
                 } else {
                     self?.usernameIconView.image = HabiticaIcons.imageOfAlertIcon
                 }
@@ -179,7 +179,7 @@ class VerifyUsernameModalViewController: UIViewController {
             } else {
                 let attributedComponent = NSMutableAttributedString(string: String(component))
                 let range = NSRange(location: 0, length: attributedComponent.length)
-                attributedComponent.addAttribute(.foregroundColor, value: UIColor.gray100(), range: range)
+                attributedComponent.addAttribute(.foregroundColor, value: UIColor.gray100, range: range)
                 finalString.append(attributedComponent)
             }
         }
@@ -202,7 +202,7 @@ class VerifyUsernameModalViewController: UIViewController {
             } else {
                 let attributedComponent = NSMutableAttributedString(string: String(component))
                 let range = NSRange(location: 0, length: attributedComponent.length)
-                attributedComponent.addAttribute(.foregroundColor, value: UIColor.gray100(), range: range)
+                attributedComponent.addAttribute(.foregroundColor, value: UIColor.gray100, range: range)
                 finalString.append(attributedComponent)            }
         }
         let paragraphStyle = NSMutableParagraphStyle()

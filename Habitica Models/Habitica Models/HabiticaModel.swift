@@ -21,9 +21,7 @@ public extension HabiticaModel where Self: Codable {
     
     static func from(data: Data) -> Self? {
         let decoder = JSONDecoder()
-        if #available(iOS 10.0, *) {
-            decoder.dateDecodingStrategy = .iso8601
-        }
+        decoder.dateDecodingStrategy = .iso8601
         return try? decoder.decode(Self.self, from: data)
     }
 }

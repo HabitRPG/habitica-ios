@@ -11,6 +11,7 @@ import ReactiveSwift
 import AppAuth
 import Keys
 import FBSDKLoginKit
+import AuthenticationServices
 
 enum LoginViewAuthType {
     case none
@@ -41,6 +42,7 @@ protocol  LoginViewModelInputs {
     func loginButtonPressed()
     func googleLoginButtonPressed()
     func facebookLoginButtonPressed()
+    func appleLoginButtonPressed()
 
     func onSuccessfulLogin()
 
@@ -352,6 +354,50 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
                     }
                 }
             })
+        }
+    }
+    
+    private let appleLoginButtonPressedProperty = MutableProperty(())
+    func appleLoginButtonPressed() {
+        guard let viewController = self.viewController else {
+            return
+        }
+        if #available(iOS 13.0, *) {
+            let appleIDProvider = ASAuthorizationAppleIDProvider()
+            let request = appleIDProvider.createRequest()
+            request.requestedScopes = [.fullName, .email]
+            
+            let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+            authorizationController.delegate = viewController
+            authorizationController.presentationContextProvider = viewController
+            authorizationController.performRequests()
+        }
+    }
+    
+    func performExistingAccountSetupFlows() {
+        // Prepare requests for both Apple ID and password providers.
+        if #available(iOS 13.0, *) {
+            guard let viewController = self.viewController else {
+                return
+            }
+            let requests = [ASAuthorizationAppleIDProvider().createRequest(),
+                            ASAuthorizationPasswordProvider().createRequest()]
+            // Create an authorization controller with the given requests.
+            let authorizationController = ASAuthorizationController(authorizationRequests: requests)
+            authorizationController.delegate = viewController
+            authorizationController.presentationContextProvider = viewController
+            authorizationController.performRequests()
+        }
+    }
+    
+    func performAppleLogin(identityToken: String, name: String) {
+        userRepository.loginApple(identityToken: identityToken, name: name).observeResult {[weak self] (result) in
+            switch result {
+            case .success:
+                self?.onSuccessfulLogin()
+            case .failure:
+                self?.showErrorObserver.send(value: L10n.Login.authenticationError)
+            }
         }
     }
 

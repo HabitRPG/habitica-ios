@@ -64,8 +64,14 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
     @objc var selectedGearCategory: String? {
         didSet {
             fetchGear()
+            if selectedGearCategory == "mage" {
+                selectedInternalGearCategory = "wizard"
+            } else {
+                selectedInternalGearCategory = selectedGearCategory
+            }
         }
     }
+    private var selectedInternalGearCategory: String?
     
     override var collectionView: UICollectionView? {
         didSet {
@@ -139,7 +145,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
         fetchGearDisposable = inventoryRepository.getShop(identifier: Constants.GearMarketKey)
             .map({ (shop) -> [InAppRewardProtocol] in
                 return shop?.categories.first(where: {[weak self] (category) -> Bool in
-                    category.identifier == self?.selectedGearCategory
+                    category.identifier == self?.selectedInternalGearCategory
                 })?.items ?? []
             })
             .combineLatest(with: inventoryRepository.getOwnedGear()
@@ -210,7 +216,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
                 headerView.onGearCategoryLabelTapped = {[weak self] in
                     self?.delegate?.showGearSelection()
                 }
-                 headerView.otherClassDisclaimer.isHidden = userClass == selectedGearCategory
+                 headerView.otherClassDisclaimer.isHidden = userClass == selectedInternalGearCategory
                 headerView.otherClassDisclaimer.text = L10n.Shops.otherClassDisclaimer
             } else {
                 headerView.titleLabel.text = titleFor(section: indexPath.section)
@@ -223,7 +229,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
    
     override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         if section == 0 && needsGearSection {
-             if userClass != selectedGearCategory {
+             if userClass != selectedInternalGearCategory {
                 return CGSize(width: collectionView.bounds.width, height: 75)
             }
         }

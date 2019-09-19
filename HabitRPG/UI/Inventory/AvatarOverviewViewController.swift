@@ -39,7 +39,7 @@ class AvatarOverviewViewController: BaseUIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         topHeaderCoordinator = TopHeaderCoordinator(topHeaderNavigationController: hrpgTopHeaderNavigationController(), scrollView: scrollView)
-        topHeaderCoordinator.followScrollView = false
+        topHeaderCoordinator?.followScrollView = false
         
         setupItemViews()
         
@@ -63,7 +63,7 @@ class AvatarOverviewViewController: BaseUIViewController, UIScrollViewDelegate {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        topHeaderCoordinator.scrollViewDidScroll()
+        topHeaderCoordinator?.scrollViewDidScroll()
     }
     
     private func setupItemViews() {

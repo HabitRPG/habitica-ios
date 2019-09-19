@@ -7,7 +7,6 @@
 //
 
 #import "UIViewController+Markdown.h"
-#import "UIColor+Habitica.h"
 #import "Habitica-Swift.h"
 
 @implementation UIViewController (Markdown)

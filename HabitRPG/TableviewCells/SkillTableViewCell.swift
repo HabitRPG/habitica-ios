@@ -34,7 +34,7 @@ class SkillTableViewCell: UITableViewCell {
             magicIconView?.alpha = 0.3
             costLabel?.alpha = 0.3
         } else {
-            buyButton.backgroundColor = UIColor.blue500().withAlphaComponent(0.24)
+            buyButton.backgroundColor = UIColor.blue500.withAlphaComponent(0.24)
             magicIconView?.alpha = 1.0
             costLabel?.alpha = 1.0
         }

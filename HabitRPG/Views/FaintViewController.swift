@@ -45,7 +45,7 @@ class FaintViewController: UIViewController {
             view.addGestureRecognizer(gestureRecognizer)
         }
         
-        healthView.color = UIColor.red100()
+        healthView.color = UIColor.red100
         healthView.icon = HabiticaIcons.imageOfHeartLightBg
         healthView.type = L10n.health
         healthView.value = NSNumber(value: 0)

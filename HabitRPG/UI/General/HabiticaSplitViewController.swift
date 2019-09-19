@@ -23,6 +23,8 @@ class HabiticaSplitViewController: BaseUIViewController, UIScrollViewDelegate {
     
     internal var viewID: String?
     
+    private var borderView = UIView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         showAsSplitView = traitCollection.horizontalSizeClass == .regular && traitCollection.verticalSizeClass == .regular
@@ -32,14 +34,15 @@ class HabiticaSplitViewController: BaseUIViewController, UIScrollViewDelegate {
         segmentedControl.isHidden = false
         segmentedWrapper.insets = UIEdgeInsets(top: 4, left: 8, bottom: 10, right: 8)
         segmentedWrapper.containedView = segmentedControl
-        let borderView = UIView(frame: CGRect(x: 0, y: segmentedWrapper.intrinsicContentSize.height+1, width: self.view.bounds.size.width, height: 1))
-        borderView.backgroundColor = ThemeService.shared.theme.separatorColor
+        borderView.frame = CGRect(x: 0, y: segmentedWrapper.intrinsicContentSize.height+1, width: self.view.bounds.size.width, height: 1)
         segmentedWrapper.addSubview(borderView)
-        topHeaderCoordinator.alternativeHeader = segmentedWrapper
-        topHeaderCoordinator.hideHeader = canShowAsSplitView && showAsSplitView
+        topHeaderCoordinator?.alternativeHeader = segmentedWrapper
+        topHeaderCoordinator?.hideHeader = canShowAsSplitView && showAsSplitView
         
         scrollView.delegate = self
         scrollView.bounces = false
+        
+        ThemeService.shared.addThemeable(themable: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,6 +51,11 @@ class HabiticaSplitViewController: BaseUIViewController, UIScrollViewDelegate {
         if let navController = self.hrpgTopHeaderNavigationController() {
             scrollViewTopConstraint.constant = navController.contentInset
         }
+    }
+    
+    override func applyTheme(theme: Theme) {
+        super.applyTheme(theme: theme)
+        borderView.backgroundColor = ThemeService.shared.theme.separatorColor
     }
     
     override func viewDidLayoutSubviews() {

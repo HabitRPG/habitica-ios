@@ -31,13 +31,12 @@ class EquipmentOverviewItemView: UIView {
     
     private func setupView() {
         if let view = viewFromNibForClass() {
-            
             view.frame = bounds
             addSubview(view)
       
             addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewTapped)))
 
-            noEquipmentBorder.strokeColor = UIColor.gray50().cgColor
+            noEquipmentBorder.strokeColor = UIColor.gray50.cgColor
             noEquipmentBorder.lineWidth = 2
             noEquipmentBorder.lineDashPattern = [4, 4]
             noEquipmentBorder.frame = CGRect(x: 10, y: 10, width: frame.size.width-20, height: 60)
@@ -71,11 +70,14 @@ class EquipmentOverviewItemView: UIView {
             imageView.setImagewith(name: "shop_\(key)")
             imageView.isHidden = false
             noEquipmentLabel.isHidden = true
-            imageView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
         } else {
             imageView.isHidden = true
             noEquipmentLabel.isHidden = false
         }
+    }
+    
+    func applyTheme(theme: Theme) {
+        imageView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
     }
     
     @objc

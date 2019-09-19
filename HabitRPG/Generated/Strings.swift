@@ -352,10 +352,6 @@ public enum L10n {
   public static func purchased(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "purchased", p1)
   }
-  /// The scanned QR-Code did not contain a valid Habitica User ID.
-  public static var qrInvalidIdMessage: String { return L10n.tr("Mainstrings", "qr_invalid_id_message") }
-  /// Invalid Habitica User ID
-  public static var qrInvalidIdTitle: String { return L10n.tr("Mainstrings", "qr_invalid_id_title") }
   /// Quests
   public static var quests: String { return L10n.tr("Mainstrings", "quests") }
   /// Rage Meter
@@ -398,8 +394,6 @@ public enum L10n {
   public static var saturday: String { return L10n.tr("Mainstrings", "saturday") }
   /// Save
   public static var save: String { return L10n.tr("Mainstrings", "save") }
-  /// Scan QR Code
-  public static var scanQRCode: String { return L10n.tr("Mainstrings", "scan_QR_code") }
   /// Search
   public static var search: String { return L10n.tr("Mainstrings", "search") }
   /// Sell for %d gold
@@ -982,6 +976,8 @@ public enum L10n {
     public static var forgotPassword: String { return L10n.tr("Mainstrings", "login.forgot_password") }
     /// Login
     public static var login: String { return L10n.tr("Mainstrings", "login.login") }
+    /// Sign in with Apple
+    public static var loginApple: String { return L10n.tr("Mainstrings", "login.login_apple") }
     /// Login with Facebook
     public static var loginFacebook: String { return L10n.tr("Mainstrings", "login.login_facebook") }
     /// Login with Google
@@ -1252,6 +1248,8 @@ public enum L10n {
     public static var soundTheme: String { return L10n.tr("Mainstrings", "settings.sound_theme") }
     /// Theme Color
     public static var themeColor: String { return L10n.tr("Mainstrings", "settings.theme_color") }
+    /// Theme Mode
+    public static var themeMode: String { return L10n.tr("Mainstrings", "settings.theme_mode") }
     /// User
     public static var user: String { return L10n.tr("Mainstrings", "settings.user") }
     /// Username not confirmed
@@ -1682,12 +1680,22 @@ public enum L10n {
   }
 
   public enum Theme {
+    /// Always Dark
+    public static var alwaysDark: String { return L10n.tr("Mainstrings", "theme.alwaysDark") }
+    /// Always Light
+    public static var alwaysLight: String { return L10n.tr("Mainstrings", "theme.alwaysLight") }
     /// Blue
     public static var blue: String { return L10n.tr("Mainstrings", "theme.blue") }
+    /// Dark
+    public static var dark: String { return L10n.tr("Mainstrings", "theme.dark") }
     /// Default
     public static var defaultTheme: String { return L10n.tr("Mainstrings", "theme.default_theme") }
+    /// Follow system setting
+    public static var followSystem: String { return L10n.tr("Mainstrings", "theme.followSystem") }
     /// Green
     public static var green: String { return L10n.tr("Mainstrings", "theme.green") }
+    /// Light
+    public static var light: String { return L10n.tr("Mainstrings", "theme.light") }
     /// Maroon
     public static var maroon: String { return L10n.tr("Mainstrings", "theme.maroon") }
     /// Orange

@@ -1,6 +1,6 @@
 //
 //  NSString+Emoji.h
-//  
+//
 //
 //  Created by Valerio Mazzeo on 24/04/13.
 //  Copyright (c) 2013 Valerio Mazzeo. All rights reserved.
@@ -11,7 +11,7 @@
  NSString (Emoji) extends the NSString class to provide custom functionality
  related to the Emoji emoticons.
  
- Through this category, it is possible to turn cheat codes from 
+ Through this category, it is possible to turn cheat codes from
  Emoji Cheat Sheet <http://www.emoji-cheat-sheet.com> into unicode emoji characters
  and vice versa (useful if you need to POST a message typed by the user to a remote service).
  */
@@ -22,7 +22,7 @@
  from Emoji Cheat Sheet <http://www.emoji-cheat-sheet.com> are replaced by the
  corresponding unicode characters.
  
- Example: 
+ Example:
  "This is a smiley face :smiley:"
  
  Will be replaced with:

@@ -24,7 +24,6 @@ internal enum StoryboardSegue {
     case introSegue = "IntroSegue"
     case loginSegue = "LoginSegue"
     case mainSegue = "MainSegue"
-    case oauthWebViewSegue = "OauthWebViewSegue"
     case setupSegue = "SetupSegue"
     case taskSegue = "TaskSegue"
     case welcomeSegue = "WelcomeSegue"

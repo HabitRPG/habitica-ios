@@ -7,7 +7,6 @@
 //
 
 #import "HRPGFeedViewController.h"
-#import "UIColor+Habitica.h"
 #import "HRPGShopViewController.h"
 #import "Habitica-Swift.h"
 
@@ -48,7 +47,7 @@
     UILabel *label = [view viewWithTag:2];
     UIButton *openShopButton = [view viewWithTag:3];
     
-    openShopButton.layer.borderColor = [UIColor purple400].CGColor;
+    openShopButton.layer.borderColor = [ObjcThemeWrapper tintColor].CGColor;
     openShopButton.layer.borderWidth = 1.0;
     openShopButton.layer.cornerRadius = 5;
     

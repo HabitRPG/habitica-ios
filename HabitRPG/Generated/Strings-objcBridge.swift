@@ -79,10 +79,6 @@ public class objcL10n: NSObject {
     @objc static let invalidRecipientTitle = L10n.invalidRecipientTitle
     @objc static let invalidRecipientMessage = L10n.invalidRecipientMessage
     
-    @objc static let noCamera = L10n.noCamera
-    @objc static let qrInvalidIdTitle = L10n.qrInvalidIdTitle
-    @objc static let qrInvalidIdMessage = L10n.qrInvalidIdMessage
-    
     @objc
     static func reportXViolation(username: String) -> String {
         return L10n.reportXViolation(username)

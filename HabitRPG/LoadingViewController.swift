@@ -29,7 +29,7 @@ class LoadingViewController: UIViewController {
             let hasUserData = userRepository?.hasUserData() ?? false
             userRepository?.retrieveUser()
                 .flatMap(.latest, {[weak self] (_) in
-                    return self?.userRepository?.retrieveInboxMessages() ?? Signal.empty
+                    return self?.userRepository?.retrieveInboxConversations() ?? Signal.empty
                 })
                 .observeCompleted { [weak self] in
                     self?.userRepository = nil

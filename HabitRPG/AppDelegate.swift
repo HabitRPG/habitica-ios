@@ -63,27 +63,19 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
     
     @objc
     func setupFirebase() {
-        if #available(iOS 10.0, *) {
-            // For iOS 10 display notification (sent via APNS)
-            UNUserNotificationCenter.current().delegate = self
-            
-            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-            UNUserNotificationCenter.current().requestAuthorization(
-                options: authOptions,
-                completionHandler: { _, _ in })
-        } else {
-            let settings: UIUserNotificationSettings =
-                UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
-            application.registerUserNotificationSettings(settings)
-        }
+        // For iOS 10 display notification (sent via APNS)
+        UNUserNotificationCenter.current().delegate = self
+        
+        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+        UNUserNotificationCenter.current().requestAuthorization(
+            options: authOptions,
+            completionHandler: { _, _ in })
         
         application.registerForRemoteNotifications()
         Messaging.messaging().delegate = self
         
         Analytics.setUserProperty(LanguageHandler.getAppLanguage().code, forName: "app_language")
-        if #available(iOS 10.3, *) {
-            Analytics.setUserProperty(UIApplication.shared.alternateIconName, forName: "app_icon")
-        }
+        Analytics.setUserProperty(UIApplication.shared.alternateIconName, forName: "app_icon")
     }
     
     @objc
@@ -108,14 +100,6 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
         if HabiticaAppDelegate.isRunningLive() {
             PurchaseHandler.shared.completionHandler()
         }
-    }
-    
-    @objc
-    func setupTheme() {
-        let defaults = UserDefaults.standard
-        let themeName = ThemeName(rawValue: defaults.string(forKey: "theme") ?? "") ?? ThemeName.defaultTheme
-        ThemeService.shared.theme = themeName.themeClass
-        Analytics.setUserProperty(themeName.rawValue, forName: "theme")
     }
     
     @objc
@@ -161,6 +145,14 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
         }
         print("Realm stored at:", config.fileURL ?? "")
         Realm.Configuration.defaultConfiguration = config
+    }
+    
+    @objc
+    func setupTheme() {
+        ThemeService.shared.updateDarkMode()
+        let defaults = UserDefaults.standard
+        let themeName = ThemeName(rawValue: defaults.string(forKey: "theme") ?? "") ?? ThemeName.defaultTheme
+        Analytics.setUserProperty(themeName.rawValue, forName: "theme")
     }
     
     @objc
@@ -365,9 +357,7 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
     @objc
     func displayNotificationInApp(text: String) {
        ToastManager.show(text: text, color: .purple)
-        if #available(iOS 10.0, *) {
-            UINotificationFeedbackGenerator.oneShotNotificationOccurred(.success)
-        }
+        UINotificationFeedbackGenerator.oneShotNotificationOccurred(.success)
     }
     
     @objc
@@ -411,8 +401,6 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
             self?.scoreTask(taskID, direction: "up") {}
         }
         alertController.show()
-        if #available(iOS 10.0, *) {
-            UINotificationFeedbackGenerator.oneShotNotificationOccurred(.warning)
-        }
+        UINotificationFeedbackGenerator.oneShotNotificationOccurred(.warning)
     }
 }

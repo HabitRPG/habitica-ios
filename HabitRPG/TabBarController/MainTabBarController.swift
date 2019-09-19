@@ -9,6 +9,7 @@
 import Foundation
 import Habitica_Models
 import ReactiveSwift
+import FirebaseAnalytics
 #if DEBUG
 import FLEX
 #endif
@@ -46,11 +47,41 @@ class MainTabBarController: UITabBarController, Themeable {
         swipe.numberOfTouchesRequired = 1
         tabBar.addGestureRecognizer(swipe)
         #endif
-        
+                
         ThemeService.shared.addThemeable(themable: self)
     }
     
     func applyTheme(theme: Theme) {
+        tabBar.tintColor = theme.tintColor
+        tabBar.items?.forEach({
+            $0.badgeColor = theme.badgeColor
+            if (theme.badgeColor.isLight()) {
+                $0.setBadgeTextAttributes([.foregroundColor: UIColor.gray50], for: .normal)
+            } else {
+                $0.setBadgeTextAttributes([.foregroundColor: UIColor.gray700], for: .normal)
+            }
+        })
+        if theme.isDark {
+            tabBar.tintColor = theme.tintColor
+            tabBar.backgroundColor = theme.windowBackgroundColor
+            tabBar.barTintColor = .clear
+            tabBar.barStyle = .blackOpaque
+        } else {
+            tabBar.tintColor = theme.tintColor
+            tabBar.barTintColor = theme.contentBackgroundColor
+            tabBar.backgroundColor = .clear
+            tabBar.barStyle = .black
+        }
+        
+        if #available(iOS 13.0, *) {
+            if ThemeService.shared.themeMode == "dark" {
+                self.overrideUserInterfaceStyle = .dark
+            } else if ThemeService.shared.themeMode == "light" {
+                self.overrideUserInterfaceStyle = .light
+            } else {
+                self.overrideUserInterfaceStyle = .unspecified
+            }
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -58,7 +89,7 @@ class MainTabBarController: UITabBarController, Themeable {
         presentingViewController?.willMove(toParent: nil)
         presentingViewController?.removeFromParent()
     }
-    
+
     private func setupDailyIcon() {
         let calendarImage = #imageLiteral(resourceName: "tabbar_dailies")
         UIGraphicsBeginImageContextWithOptions(CGSize(width: calendarImage.size.width, height: calendarImage.size.height), false, 0)
@@ -168,6 +199,12 @@ class MainTabBarController: UITabBarController, Themeable {
             UIApplication.shared.applicationIconBadgeNumber = dueDailiesCount + dueToDosCount
         } else {
             UIApplication.shared.applicationIconBadgeNumber = 0
+        }
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        if #available(iOS 13.0, *) {
+            ThemeService.shared.updateInterfaceStyle(newStyle: traitCollection.userInterfaceStyle)
         }
     }
     

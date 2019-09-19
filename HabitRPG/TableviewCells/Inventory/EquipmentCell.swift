@@ -92,7 +92,7 @@ class EquipmentCell: UITableViewCell {
     }
     
     private func attributedLabel(title: String, value: String) -> NSAttributedString {
-        let titleString = NSAttributedString(string: title, attributes: [.foregroundColor: UIColor.gray200()])
-        return titleString + NSAttributedString(string: value, attributes: [.foregroundColor: UIColor.green50()])
+        let titleString = NSAttributedString(string: title, attributes: [.foregroundColor: UIColor.gray200])
+        return titleString + NSAttributedString(string: value, attributes: [.foregroundColor: UIColor.green50])
     }
 }

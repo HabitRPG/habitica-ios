@@ -15,17 +15,17 @@ import UIKit
     func getUIColor() -> UIColor {
         switch self {
         case .blue:
-            return UIColor.blue50()
+            return UIColor.blue50
         case .green:
-            return UIColor.green100()
+            return UIColor.green100
         case .red:
-            return UIColor.red10()
+            return UIColor.red10
         case .gray:
-            return UIColor.gray50()
+            return UIColor.gray50
         case .yellow:
-            return UIColor.yellow10()
+            return UIColor.yellow10
         case .purple:
-            return UIColor.purple200()
+            return UIColor.purple200
         }
     }
 }
@@ -132,5 +132,5 @@ struct ToastOptions {
     
     var rightIcon: UIImage?
     var rightText: String?
-    var rightTextColor = UIColor.gray50()
+    var rightTextColor = UIColor.gray50
 }

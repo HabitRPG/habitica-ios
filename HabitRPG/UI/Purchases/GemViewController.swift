@@ -7,14 +7,13 @@
 //
 
 import UIKit
-import SeedsSDK
 import SwiftyStoreKit
 import StoreKit
 import Keys
 import ReactiveSwift
 import Habitica_Models
 
-class GemViewController: BaseCollectionViewController, SeedsInterstitialsEventProtocol {
+class GemViewController: BaseCollectionViewController {
 
     
     var products: [SKProduct]?
@@ -43,10 +42,6 @@ class GemViewController: BaseCollectionViewController, SeedsInterstitialsEventPr
         disposable.inner.add(userRepository.getUser().on(value: {[weak self]user in
             self?.user = user
         }).start())
-        
-        Seeds.initWithAppKey(HabiticaKeys().seedsReleaseApiKey)
-        Seeds.interstitials()?.fetch(withId: HabiticaKeys().seedsReleaseGemsInterstitial)
-        Seeds.interstitials()?.setEventsHandler(self)
     }
     
     func retrieveProductList() {
@@ -102,7 +97,6 @@ class GemViewController: BaseCollectionViewController, SeedsInterstitialsEventPr
             return UICollectionViewCell()
         }
         cell.setPrice(product.localizedPrice)
-        cell.showSeedsPromo(false)
 
         if product.productIdentifier == "com.habitrpg.ios.Habitica.4gems" {
             cell.setGemAmount(4)
@@ -112,8 +106,6 @@ class GemViewController: BaseCollectionViewController, SeedsInterstitialsEventPr
             cell.setGemAmount(42)
         } else if product.productIdentifier == "com.habitrpg.ios.Habitica.84gems" {
             cell.setGemAmount(84)
-            cell.showSeedsPromo(configRepository.bool(variable: .showSeedsPromo))
-            cell.seeds_promo.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showSeedsPromo)))
         }
         
         cell.setPurchaseTap {[weak self] (purchaseButton) in
@@ -163,28 +155,5 @@ class GemViewController: BaseCollectionViewController, SeedsInterstitialsEventPr
         PurchaseHandler.shared.purchaseGems(identifier, applicationUsername: String(user.id?.hashValue ?? 0)) { _ in
             self.collectionView?.reloadData()
         }
-    }
-    
-    func interstitialDidClick(_ interstitial: SeedsInterstitial!) {
-        purchaseGems(identifier: "com.habitrpg.ios.Habitica.84gems")
-    }
-    
-    func interstitialDidShow(_ interstitial: SeedsInterstitial!) {
-        Amplitude.instance()?.logEvent("opened seeds promo")
-    }
-    
-    func interstitialDidLoad(_ interstitial: SeedsInterstitial!) {
-    }
-    
-    func interstitialDidClose(_ interstitial: SeedsInterstitial!) {
-    }
-    
-    func interstitial(_ interstitialId: String!, error: Error!) {
-    }
-    
-    @objc
-    private func showSeedsPromo() {
-        let promoID = HabiticaKeys().seedsReleaseGemsInterstitial
-        Seeds.interstitials()?.show(withId: promoID, on: self, inContext: "")
     }
 }

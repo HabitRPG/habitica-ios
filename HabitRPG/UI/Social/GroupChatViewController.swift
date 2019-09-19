@@ -51,18 +51,16 @@ class GroupChatViewController: SLKTextViewController {
         tableView?.estimatedRowHeight = 90
         tableView?.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
 
-        if #available(iOS 10.0, *) {
-            tableView?.refreshControl = UIRefreshControl()
-            tableView?.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
-        }
+        tableView?.refreshControl = UIRefreshControl()
+        tableView?.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         
         textView.registerMarkdownFormattingSymbol("**", withTitle: "Bold")
         textView.registerMarkdownFormattingSymbol("*", withTitle: "Italics")
         textView.registerMarkdownFormattingSymbol("~~", withTitle: "Strike")
         textView.placeholder = L10n.writeMessage
         textInputbar.maxCharCount = UInt(ConfigRepository().integer(variable: .maxChatLength))
-        textInputbar.charCountLabelNormalColor = UIColor.gray400()
-        textInputbar.charCountLabelWarningColor = UIColor.red50()
+        textInputbar.charCountLabelNormalColor = UIColor.gray400
+        textInputbar.charCountLabelWarningColor = UIColor.red50
         textInputbar.charCountLabel.font = UIFont.systemFont(ofSize: 11, weight: .bold)
         textInputbar.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
         textInputbar.textView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
@@ -148,9 +146,9 @@ class GroupChatViewController: SLKTextViewController {
         super.textViewDidChange(textView)
         let textLength = textView.text.count
         if textLength > Int(Double(textInputbar.maxCharCount) * 0.95) {
-            textInputbar.charCountLabelNormalColor = UIColor.yellow5()
+            textInputbar.charCountLabelNormalColor = UIColor.yellow5
         } else {
-            textInputbar.charCountLabelNormalColor = UIColor.gray400()
+            textInputbar.charCountLabelNormalColor = UIColor.gray400
         }
     }
     
@@ -179,9 +177,7 @@ class GroupChatViewController: SLKTextViewController {
     @objc
     func refresh() {
         dataSource?.retrieveData(completed: {[weak self] in
-            if #available(iOS 10.0, *) {
-                self?.tableView?.refreshControl?.endRefreshing()
-            }
+            self?.tableView?.refreshControl?.endRefreshing()
         })
     }
     
@@ -189,9 +185,7 @@ class GroupChatViewController: SLKTextViewController {
         self.textView.refreshFirstResponder()
         let message = textView.text
         if let message = message, let groupID = self.groupID {
-            if #available(iOS 10.0, *) {
-                UIImpactFeedbackGenerator.oneShotImpactOccurred(.light)
-            }
+            UIImpactFeedbackGenerator.oneShotImpactOccurred(.light)
             socialRepository.post(chatMessage: message, toGroup: groupID).observeResult { (result) in
                 switch result {
                 case .failure:

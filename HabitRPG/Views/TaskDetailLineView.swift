@@ -118,9 +118,9 @@ class TaskDetailLineView: UIView {
             calendarIconViewWidth.constant = TaskDetailLineView.iconSize
             calendarDetailSpacing.constant = 4
             if isUrgent {
-                calendarIconView.tintColor = .red100()
+                calendarIconView.tintColor = .red100
             } else {
-                calendarIconView.tintColor = .gray400()
+                calendarIconView.tintColor = .gray400
             }
             calendarIconView.tintColor = ThemeService.shared.theme.ternaryTextColor
         } else {
@@ -144,7 +144,7 @@ class TaskDetailLineView: UIView {
 
             if duedate.compare(today) == .orderedAscending {
                 setCalendarIcon(enabled: true, isUrgent: true)
-                self.detailLabel.textColor = .red10()
+                self.detailLabel.textColor = .red10
                 self.detailLabel.text = L10n.Tasks.dueX(formatter.string(from: duedate))
             } else {
                 detailLabel.textColor = ThemeService.shared.theme.ternaryTextColor
@@ -154,7 +154,7 @@ class TaskDetailLineView: UIView {
                 if differenceInDays < 7 {
                     if differenceInDays == 0 {
                         setCalendarIcon(enabled: true, isUrgent: true)
-                        detailLabel.textColor = .red10()
+                        detailLabel.textColor = .red10
                         detailLabel.text = L10n.Tasks.dueToday
                     } else if differenceInDays == 1 {
                         setCalendarIcon(enabled: true)

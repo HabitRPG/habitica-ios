@@ -47,7 +47,7 @@ internal enum StoryboardScene {
 
     internal static let gemPurchaseViewController = SceneType<Habitica.GemViewController>(storyboard: Main.self, identifier: "GemPurchaseViewController")
 
-    internal static let giftSubscriptionNavController = SceneType<UIKit.UINavigationController>(storyboard: Main.self, identifier: "GiftSubscriptionNavController")
+    internal static let giftSubscriptionNavController = SceneType<Habitica.ThemedNavigationController>(storyboard: Main.self, identifier: "GiftSubscriptionNavController")
 
     internal static let giftSubscriptionViewController = SceneType<Habitica.GiftSubscriptionViewController>(storyboard: Main.self, identifier: "GiftSubscriptionViewController")
 
@@ -60,6 +60,8 @@ internal enum StoryboardScene {
     internal static let mountsOverviewViewController = SceneType<Habitica.MountOverviewViewController>(storyboard: Main.self, identifier: "MountsOverviewViewController")
 
     internal static let newsViewController = SceneType<Habitica.NewsViewController>(storyboard: Main.self, identifier: "NewsViewController")
+
+    internal static let notificationsNavigationController = SceneType<Habitica.ThemedNavigationController>(storyboard: Main.self, identifier: "NotificationsNavigationController")
 
     internal static let petsOverviewViewController = SceneType<Habitica.PetOverviewViewController>(storyboard: Main.self, identifier: "PetsOverviewViewController")
 
@@ -75,12 +77,12 @@ internal enum StoryboardScene {
 
     internal static let spellTaskNavigationController = SceneType<UIKit.UINavigationController>(storyboard: Main.self, identifier: "spellTaskNavigationController")
 
-    internal static let tagNavigationController = SceneType<HRPGNavigationController>(storyboard: Main.self, identifier: "tagNavigationController")
+    internal static let tagNavigationController = SceneType<Habitica.ThemedNavigationController>(storyboard: Main.self, identifier: "tagNavigationController")
   }
   internal enum Settings: StoryboardType {
     internal static let storyboardName = "Settings"
 
-    internal static let initialScene = InitialSceneType<UIKit.UINavigationController>(storyboard: Settings.self)
+    internal static let initialScene = InitialSceneType<Habitica.ThemedNavigationController>(storyboard: Settings.self)
 
     internal static let authenticationSettingsViewController = SceneType<Habitica.AuthenticationSettingsViewController>(storyboard: Settings.self, identifier: "AuthenticationSettingsViewController")
 
@@ -101,25 +103,25 @@ internal enum StoryboardScene {
 
     internal static let challengeDetailViewController = SceneType<Habitica.ChallengeDetailsTableViewController>(storyboard: Social.self, identifier: "ChallengeDetailViewController")
 
-    internal static let challengeNavigationViewController = SceneType<UIKit.UINavigationController>(storyboard: Social.self, identifier: "ChallengeNavigationViewController")
+    internal static let challengeNavigationViewController = SceneType<Habitica.ThemedNavigationController>(storyboard: Social.self, identifier: "ChallengeNavigationViewController")
 
     internal static let challengeTableViewController = SceneType<Habitica.ChallengeTableViewController>(storyboard: Social.self, identifier: "ChallengeTableViewController")
 
     internal static let groupTableViewController = SceneType<Habitica.SplitSocialViewController>(storyboard: Social.self, identifier: "GroupTableViewController")
 
-    internal static let guidelinesNavigationViewController = SceneType<UIKit.UINavigationController>(storyboard: Social.self, identifier: "GuidelinesNavigationViewController")
+    internal static let guidelinesNavigationViewController = SceneType<Habitica.ThemedNavigationController>(storyboard: Social.self, identifier: "GuidelinesNavigationViewController")
 
     internal static let guidelinesViewController = SceneType<Habitica.GuidelinesViewController>(storyboard: Social.self, identifier: "GuidelinesViewController")
 
     internal static let guildsOverviewViewController = SceneType<Habitica.GuildOverviewViewController>(storyboard: Social.self, identifier: "GuildsOverviewViewController")
 
-    internal static let inboxChatViewController = SceneType<HRPGInboxChatViewController>(storyboard: Social.self, identifier: "InboxChatViewController")
+    internal static let inboxChatViewController = SceneType<Habitica.InboxChatViewController>(storyboard: Social.self, identifier: "InboxChatViewController")
 
-    internal static let inboxNavigationViewController = SceneType<UIKit.UINavigationController>(storyboard: Social.self, identifier: "InboxNavigationViewController")
+    internal static let inboxNavigationViewController = SceneType<Habitica.ThemedNavigationController>(storyboard: Social.self, identifier: "InboxNavigationViewController")
 
-    internal static let inboxViewController = SceneType<HRPGInboxTableViewController>(storyboard: Social.self, identifier: "InboxViewController")
+    internal static let inboxViewController = SceneType<Habitica.InboxOverviewViewController>(storyboard: Social.self, identifier: "InboxViewController")
 
-    internal static let partyNavigationViewController = SceneType<UIKit.UINavigationController>(storyboard: Social.self, identifier: "PartyNavigationViewController")
+    internal static let partyNavigationViewController = SceneType<Habitica.ThemedNavigationController>(storyboard: Social.self, identifier: "PartyNavigationViewController")
 
     internal static let partyViewController = SceneType<Habitica.PartyViewController>(storyboard: Social.self, identifier: "PartyViewController")
 
@@ -127,7 +129,7 @@ internal enum StoryboardScene {
 
     internal static let tavernChatViewController = SceneType<Habitica.GroupChatViewController>(storyboard: Social.self, identifier: "TavernChatViewController")
 
-    internal static let tavernNavigationViewController = SceneType<UIKit.UINavigationController>(storyboard: Social.self, identifier: "TavernNavigationViewController")
+    internal static let tavernNavigationViewController = SceneType<Habitica.ThemedNavigationController>(storyboard: Social.self, identifier: "TavernNavigationViewController")
 
     internal static let tavernViewController = SceneType<Habitica.TavernViewController>(storyboard: Social.self, identifier: "TavernViewController")
 

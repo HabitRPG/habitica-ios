@@ -57,14 +57,14 @@ class PartyViewController: SplitSocialViewController {
                 if partyID == nil {
                     self?.scrollView.isHidden = true
                     self?.noPartyContainerView.isHidden = false
-                    self?.topHeaderCoordinator.hideHeader = true
-                    self?.topHeaderCoordinator.navbarHiddenColor = .white
-                    self?.topHeaderCoordinator.showHideHeader(show: false)
+                    self?.topHeaderCoordinator?.hideHeader = true
+                    self?.topHeaderCoordinator?.navbarHiddenColor = ThemeService.shared.theme.contentBackgroundColor
+                    self?.topHeaderCoordinator?.showHideHeader(show: false)
                 } else {
                     self?.scrollView.isHidden = false
-                    self?.noPartyContainerView.isHidden = true
-                    self?.topHeaderCoordinator.hideHeader = false
-                    self?.topHeaderCoordinator.showHideHeader(show: true)
+                    self?.noPartyContainerView?.isHidden = true
+                    self?.topHeaderCoordinator?.hideHeader = false
+                    self?.topHeaderCoordinator?.showHideHeader(show: true)
                 }
             })
             .on(failed: { error in
@@ -77,6 +77,7 @@ class PartyViewController: SplitSocialViewController {
         super.applyTheme(theme: theme)
         createPartyButton.backgroundColor = theme.windowBackgroundColor
         userIDButton.backgroundColor = theme.windowBackgroundColor
+        view.backgroundColor = theme.contentBackgroundColor
     }
     
     override func populateText() {

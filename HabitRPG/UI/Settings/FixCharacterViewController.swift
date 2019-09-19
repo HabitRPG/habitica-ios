@@ -118,37 +118,37 @@ class FixCharacterViewController: BaseTableViewController {
         switch item {
         case 0:
             titleLabel.text = L10n.health
-            titleLabel.textColor = .red10()
-            iconView.backgroundColor = UIColor.red500().withAlphaComponent(0.5)
+            titleLabel.textColor = UIColor.red10
+            iconView.backgroundColor = UIColor.red500.withAlphaComponent(0.5)
             iconView.image = HabiticaIcons.imageOfHeartLightBg
             return
         case 1:
             titleLabel.text = L10n.experience
-            titleLabel.textColor = .yellow10()
-            iconView.backgroundColor = UIColor.yellow500().withAlphaComponent(0.5)
+            titleLabel.textColor = UIColor.yellow10
+            iconView.backgroundColor = UIColor.yellow500.withAlphaComponent(0.5)
             iconView.image = HabiticaIcons.imageOfExperience
             return
         case 2:
             titleLabel.text = L10n.manaPoints
-            titleLabel.textColor = .blue10()
-            iconView.backgroundColor = UIColor.blue500().withAlphaComponent(0.5)
+            titleLabel.textColor = UIColor.blue10
+            iconView.backgroundColor = UIColor.blue500.withAlphaComponent(0.5)
             iconView.image = HabiticaIcons.imageOfMagic
             return
         case 3:
             titleLabel.text = L10n.gold
-            titleLabel.textColor = .yellow10()
-            iconView.backgroundColor = UIColor.yellow500().withAlphaComponent(0.5)
+            titleLabel.textColor = UIColor.yellow10
+            iconView.backgroundColor = UIColor.yellow500.withAlphaComponent(0.5)
             iconView.image = HabiticaIcons.imageOfGold
             return
         case 4:
             titleLabel.text = L10n.characterLevel
-            titleLabel.textColor = .purple300()
+            titleLabel.textColor = UIColor.purple300
             configure(iconView: iconView, forHabitClass: habitClass)
             return
         case 5:
             titleLabel.text = L10n.dayStreaks
             titleLabel.textColor = ThemeService.shared.theme.primaryTextColor
-            iconView.backgroundColor = UIColor.gray500().withAlphaComponent(0.5)
+            iconView.backgroundColor = UIColor.gray500.withAlphaComponent(0.5)
             iconView.image = #imageLiteral(resourceName: "streak_achievement")
             return
         default:
@@ -176,19 +176,19 @@ class FixCharacterViewController: BaseTableViewController {
     func configure(iconView: UIImageView, forHabitClass habitClass: String) {
         switch habitClass {
         case "warrior":
-            iconView.backgroundColor = UIColor.red500().withAlphaComponent(0.5)
+            iconView.backgroundColor = UIColor.red500.withAlphaComponent(0.5)
             iconView.image = HabiticaIcons.imageOfWarriorLightBg
             return
         case "wizard":
-            iconView.backgroundColor = UIColor.blue500().withAlphaComponent(0.5)
+            iconView.backgroundColor = UIColor.blue500.withAlphaComponent(0.5)
             iconView.image = HabiticaIcons.imageOfMageLightBg
             return
         case "healer":
-            iconView.backgroundColor = UIColor.yellow500().withAlphaComponent(0.5)
+            iconView.backgroundColor = UIColor.yellow500.withAlphaComponent(0.5)
             iconView.image = HabiticaIcons.imageOfHealerLightBg
             return
         case "rogue":
-            iconView.backgroundColor = UIColor.purple400().withAlphaComponent(0.2)
+            iconView.backgroundColor = UIColor.purple400.withAlphaComponent(0.2)
             iconView.image = HabiticaIcons.imageOfRogueLightBg
             return
         default:

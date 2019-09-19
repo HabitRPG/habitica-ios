@@ -95,6 +95,7 @@
 		29A6B86C20690DF00086B2A6 /* RealmWeekRepeat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A6B86B20690DF00086B2A6 /* RealmWeekRepeat.swift */; };
 		29DBFEFB20CADB4100DF9CF2 /* RealmSpecialItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFEFA20CADB4100DF9CF2 /* RealmSpecialItem.swift */; };
 		29DBFF0D20D15B0500DF9CF2 /* RealmUserNewMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFF0C20D15B0500DF9CF2 /* RealmUserNewMessages.swift */; };
+		29EBDA7C23290E7A006611E3 /* RealmInboxConversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EBDA7B23290E7A006611E3 /* RealmInboxConversation.swift */; };
 		EFA96FFA3536BF094D7B36B3 /* Pods_Habitica_DatabaseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 930CE9895A927708C0C96A90 /* Pods_Habitica_DatabaseTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -201,6 +202,7 @@
 		29A6B86B20690DF00086B2A6 /* RealmWeekRepeat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmWeekRepeat.swift; sourceTree = "<group>"; };
 		29DBFEFA20CADB4100DF9CF2 /* RealmSpecialItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmSpecialItem.swift; sourceTree = "<group>"; };
 		29DBFF0C20D15B0500DF9CF2 /* RealmUserNewMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmUserNewMessages.swift; sourceTree = "<group>"; };
+		29EBDA7B23290E7A006611E3 /* RealmInboxConversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmInboxConversation.swift; sourceTree = "<group>"; };
 		46F1FDA07144B10D37712F09 /* Pods-Habitica DatabaseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica DatabaseTests.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Habitica DatabaseTests/Pods-Habitica DatabaseTests.debug.xcconfig"; sourceTree = "<group>"; };
 		930CE9895A927708C0C96A90 /* Pods_Habitica_DatabaseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica_DatabaseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D821314C12B6448718FD4120 /* Pods_Habitica_Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica_Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -244,6 +246,7 @@
 		292DEE69204DCF240086D5F7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				29EBDA7A23290E6F006611E3 /* Messages */,
 				295BC6F2226F3D5B00DDDF1A /* Notifications */,
 				292F965C206E305800804151 /* Group */,
 				2956110E2056EC0E00D9711A /* Content */,
@@ -417,6 +420,14 @@
 			path = "Habitica DatabaseTests";
 			sourceTree = "<group>";
 		};
+		29EBDA7A23290E6F006611E3 /* Messages */ = {
+			isa = PBXGroup;
+			children = (
+				29EBDA7B23290E7A006611E3 /* RealmInboxConversation.swift */,
+			);
+			path = Messages;
+			sourceTree = "<group>";
+		};
 		F0456787638F3B237BE48F81 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -562,30 +573,20 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/../Pods/Target Support Files/Pods-Habitica DatabaseTests/Pods-Habitica DatabaseTests-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Habitica DatabaseTests/Pods-Habitica DatabaseTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
 				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
 				"${BUILT_PRODUCTS_DIR}/iOSSnapshotTestCase/FBSnapshotTestCase.framework",
-				"${BUILT_PRODUCTS_DIR}/Keys/Keys.framework",
-				"${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework",
-				"${BUILT_PRODUCTS_DIR}/ReactiveSwift/ReactiveSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
-				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSnapshotTestCase.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Keys.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveCocoa.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-Habitica DatabaseTests/Pods-Habitica DatabaseTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Habitica DatabaseTests/Pods-Habitica DatabaseTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A8001DCFA0AD202CB6AC8AD1 /* [CP] Check Pods Manifest.lock */ = {
@@ -623,6 +624,7 @@
 				291448A2208A3ACD00F3A6B5 /* RealmCustomization.swift in Sources */,
 				2902797B2058107E006DACB9 /* RealmBuff.swift in Sources */,
 				292726A020B6FE50009DD08A /* RealmChallengeCategory.swift in Sources */,
+				29EBDA7C23290E7A006611E3 /* RealmInboxConversation.swift in Sources */,
 				2974BDA7208E1A5100EC1A25 /* RealmSubscriptionPlan.swift in Sources */,
 				295611182057C8EB00D9711A /* RealmItem.swift in Sources */,
 				298CB21520AF0B3A006DA349 /* RealmQuestDropItem.swift in Sources */,
@@ -847,7 +849,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Habitica Database/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.habitica.Habitica-Database";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -873,7 +875,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Habitica Database/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.habitica.Habitica-Database";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";

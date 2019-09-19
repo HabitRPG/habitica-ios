@@ -31,17 +31,13 @@ class MenuNavigationBarView: UIView, Themeable {
     private var displayNameLabel: UILabel = {
         let label = UILabel()
         label.font = CustomFontMetrics.scaledSystemFont(ofSize: 17, ofWeight: .semibold)
-        if #available(iOS 10.0, *) {
-            label.adjustsFontForContentSizeCategory = true
-        }
+        label.adjustsFontForContentSizeCategory = true
         return label
     }()
     private var usernameLabel: UILabel = {
         let label = UILabel()
         label.font = CustomFontMetrics.scaledSystemFont(ofSize: 15)
-        if #available(iOS 10.0, *) {
-            label.adjustsFontForContentSizeCategory = true
-        }
+        label.adjustsFontForContentSizeCategory = true
         return label
     }()
     
@@ -59,7 +55,7 @@ class MenuNavigationBarView: UIView, Themeable {
         button.addTarget(self, action: #selector(settingsButtonTapped), for: .touchUpInside)
         return button
     }()
-    private var notificationsButton: UIButton = {
+    var notificationsButton: UIButton = {
         let button = UIButton()
         button.accessibilityLabel = L10n.Titles.notifications
         button.setImage(Asset.menuNotifications.image, for: .normal)

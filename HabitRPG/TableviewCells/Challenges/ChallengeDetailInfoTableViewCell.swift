@@ -88,7 +88,7 @@ class ChallengeDetailInfoTableViewCell: UITableViewCell, ChallengeConfigurable {
         let label = emptyTagLabel()
         label.text = "  Owner  "
         label.textColor = UIColor.white
-        label.backgroundColor = UIColor.blue50()
+        label.backgroundColor = UIColor.blue50
         return label
     }
     
@@ -96,7 +96,7 @@ class ChallengeDetailInfoTableViewCell: UITableViewCell, ChallengeConfigurable {
         let label = emptyTagLabel()
         label.text = "  Official  "
         label.textColor = UIColor.white
-        label.backgroundColor = UIColor.purple300()
+        label.backgroundColor = UIColor.purple300
         
         return label
     }
@@ -105,7 +105,7 @@ class ChallengeDetailInfoTableViewCell: UITableViewCell, ChallengeConfigurable {
         let label = emptyTagLabel()
         label.text = "  Joined  "
         label.textColor = UIColor.white
-        label.backgroundColor = UIColor.green100()
+        label.backgroundColor = UIColor.green100
         
         return label
     }
@@ -113,7 +113,7 @@ class ChallengeDetailInfoTableViewCell: UITableViewCell, ChallengeConfigurable {
     func nameTag(_ shortName: String) -> UILabel {
         let label = emptyTagLabel()
         label.text = "  \(shortName.unicodeEmoji)  "
-        label.textColor = UIColor.gray200()
+        label.textColor = UIColor.gray200
         label.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
         
         return label

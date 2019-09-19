@@ -12,7 +12,7 @@ import Habitica_Models
 extension ContributorProtocol {
     
     var color: UIColor {
-        return UIColor.contributorColor(for: level)
+        return UIColor.contributorColor(forTier: level)
     }
     
 }

@@ -8,7 +8,6 @@
 
 import UIKit
 
-@available(iOS 10.0, *)
 extension UINotificationFeedbackGenerator {
     func safePrepare() {
         DispatchQueue.main.async {[weak self] in
@@ -31,7 +30,6 @@ extension UINotificationFeedbackGenerator {
     }
 }
 
-@available(iOS 10.0, *)
 extension UISelectionFeedbackGenerator {
     
     class func oneShotSelectionChanged() {
@@ -41,7 +39,6 @@ extension UISelectionFeedbackGenerator {
     }
 }
 
-@available(iOS 10.0, *)
 extension UIImpactFeedbackGenerator {
     
     class func oneShotImpactOccurred(_ style: UIImpactFeedbackGenerator.FeedbackStyle = .medium) {

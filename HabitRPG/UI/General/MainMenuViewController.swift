@@ -45,7 +45,9 @@ class MainMenuViewController: BaseTableViewController {
     private var navbarColor = ThemeService.shared.theme.navbarHiddenColor {
         didSet {
             topHeaderCoordinator.navbarVisibleColor = navbarColor
-            navbarView.backgroundColor = navbarColor
+            if isVisible {
+                navbarView.backgroundColor = navbarColor
+            }
         }
     }
     private var worldBossTintColor: UIColor?
@@ -103,7 +105,12 @@ class MainMenuViewController: BaseTableViewController {
             self?.perform(segue: StoryboardSegue.Main.settingsSegue)
         }
         navbarView.notificationsAction = {[weak self] in
-            self?.perform(segue: StoryboardSegue.Main.notificationsSegue)
+            let viewController = StoryboardScene.Main.notificationsNavigationController.instantiate()
+            viewController.modalPresentationStyle = .popover
+            let popover: UIPopoverPresentationController = viewController.popoverPresentationController!
+            popover.sourceView = self?.navbarView
+            popover.sourceRect = self?.navbarView.notificationsButton.frame ?? CGRect.zero
+            self?.present(viewController, animated: true, completion:nil)
         }
         
         let refreshControl = UIRefreshControl()
@@ -236,16 +243,16 @@ class MainMenuViewController: BaseTableViewController {
         label?.font = CustomFontMetrics.scaledSystemFont(ofSize: 17)
         label?.textColor = ThemeService.shared.theme.primaryTextColor
         label?.backgroundColor = .clear
-        
+
         let indicatorView = cell.viewWithTag(2)
         indicatorView?.isHidden = item?.showIndicator == false
         indicatorView?.layer.cornerRadius = (indicatorView?.frame.size.height ?? 0) / 2
-        indicatorView?.backgroundColor = ThemeService.shared.theme.backgroundTintColor
+        indicatorView?.backgroundColor = .clear
         
         let subtitleLabel = cell.viewWithTag(3) as? UILabel
         subtitleLabel?.text = item?.subtitle
         subtitleLabel?.font = CustomFontMetrics.scaledSystemFont(ofSize: 12)
-        subtitleLabel?.textColor = UIColor.orange50()
+        subtitleLabel?.textColor = UIColor.orange50
         return cell
     }
     

@@ -93,9 +93,7 @@ class HRPGCurrencyCountView: UIView {
         
         countLabel.text = "0"
         countLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 15)
-        if #available(iOS 10.0, *) {
-            countLabel.adjustsFontForContentSizeCategory = true
-        }
+        countLabel.adjustsFontForContentSizeCategory = true
         
         addSubview(countLabel)
         addSubview(currencyImageView)
@@ -117,13 +115,13 @@ class HRPGCurrencyCountView: UIView {
         layoutIfNeeded()
     }
     
-    private func updateStateValues() {
+    func updateStateValues() {
         switch state {
         case .normal:
             countLabel.textColor = currency.getTextColor()
             currencyImageView.alpha = 1.0
         case .cantAfford:
-            countLabel.textColor = .red100()
+            countLabel.textColor = .red100
             currencyImageView.alpha = 0.3
         case .locked:
             countLabel.textColor = ThemeService.shared.theme.dimmedTextColor

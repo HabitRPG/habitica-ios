@@ -32,6 +32,18 @@ class UserTopHeader: UIView, Themeable {
     @IBOutlet weak var goldView: HRPGCurrencyCountView!
     @IBOutlet weak var hourglassView: HRPGCurrencyCountView!
     
+    private var contributorTier: Int = 0 {
+        didSet {
+            if contributorTier > 0 {
+                usernameLabel.textColor = UIColor.contributorColor(forTier: contributorTier)
+                levelLabel.textColor = UIColor.contributorColor(forTier: contributorTier)
+            } else {
+                usernameLabel.textColor = ThemeService.shared.theme.primaryTextColor
+                levelLabel.textColor = ThemeService.shared.theme.primaryTextColor
+            }
+        }
+    }
+    
     private let repository = UserRepository()
     private let disposable = ScopedDisposable(CompositeDisposable())
     
@@ -67,10 +79,8 @@ class UserTopHeader: UIView, Themeable {
         
         usernameLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 16)
         levelLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 11)
-        if #available(iOS 10.0, *) {
-            usernameLabel.adjustsFontForContentSizeCategory = true
-            levelLabel.adjustsFontForContentSizeCategory = true
-        }
+        usernameLabel.adjustsFontForContentSizeCategory = true
+        levelLabel.adjustsFontForContentSizeCategory = true
         
         disposable.inner.add(repository.getUser().on(value: {[weak self] user in
             self?.set(user: user)
@@ -101,22 +111,27 @@ class UserTopHeader: UIView, Themeable {
         magicLabel.progressBar.barBackgroundColor = theme.contentBackgroundColorDimmed
         
         if theme.isDark {
-            healthLabel.color = UIColor.red50().withAlphaComponent(0.75)
-            experienceLabel.color = UIColor.yellow50().withAlphaComponent(0.75)
-            magicLabel.color = UIColor.blue50().withAlphaComponent(0.75)
+            healthLabel.color = UIColor.red50.withAlphaComponent(0.75)
+            experienceLabel.color = UIColor.yellow50.withAlphaComponent(0.75)
+            magicLabel.color = UIColor.blue50.withAlphaComponent(0.75)
             healthLabel.iconView.alpha = 0.8
             experienceLabel.iconView.alpha = 0.8
             magicLabel.iconView.alpha = 0.8
             classImageView.alpha = 0.8
         } else {
-            healthLabel.color = UIColor.red100()
-            experienceLabel.color = UIColor.yellow100()
-            magicLabel.color = UIColor.blue100()
+            healthLabel.color = UIColor.red100
+            experienceLabel.color = UIColor.yellow100
+            magicLabel.color = UIColor.blue100
             healthLabel.iconView.alpha = 1.0
             experienceLabel.iconView.alpha = 1.0
             magicLabel.iconView.alpha = 1.0
             classImageView.alpha = 1.0
         }
+        let tier = contributorTier
+        contributorTier = tier
+        goldView.updateStateValues()
+        gemView.updateStateValues()
+        hourglassView.updateStateValues()
     }
     
     private func set(user: UserProtocol) {
@@ -183,13 +198,7 @@ class UserTopHeader: UIView, Themeable {
             buffIconView.isHidden = stats.buffs?.isBuffed != true
         }
         usernameLabel.text = user.profile?.name
-        if let contributor = user.contributor, contributor.level > 0 {
-            usernameLabel.textColor = contributor.color
-            levelLabel.textColor = contributor.color
-        } else {
-            usernameLabel.textColor = ThemeService.shared.theme.primaryTextColor
-            levelLabel.textColor = ThemeService.shared.theme.primaryTextColor
-        }
+        contributorTier = user.contributor?.level ?? 0
         gemView.amount = user.gemCount
         
         if let hourglasses = user.purchased?.subscriptionPlan?.consecutive?.hourglasses {

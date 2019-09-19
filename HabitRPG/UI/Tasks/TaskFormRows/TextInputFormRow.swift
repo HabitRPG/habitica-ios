@@ -33,14 +33,19 @@ public class TaskTextInputCell: Cell<String>, CellType, UITextViewDelegate {
         }
         
         if let taskRow = row as? TaskTextInputRow {
-            cellBackgroundView.backgroundColor = taskRow.tintColor
-            textField.tintColor = taskRow.tintColor.lighter(by: 10)
             textField.keyboardAppearance = ThemeService.shared.theme.isDark ? .dark : .default
             titleLabel.textColor = UIColor(white: 1, alpha: 0.7)
             //textField.attributedPlaceholder = NSAttributedString(string: taskRow.placeholder ?? "", attributes: [NSAttributedStringKey.foregroundColor: UIColor(white: 1.0, alpha: 0.5)])
             topSpacing = taskRow.topSpacing
             bottomSpacing = taskRow.bottomSpacing
+            separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
         }
+    }
+    
+    func updateTintColor(_ newTint: UIColor) {
+        tintColor = newTint
+        cellBackgroundView.backgroundColor = newTint
+        textField.tintColor = newTint.lighter(by: 10)
     }
     
     public func textViewDidChange(_ textView: UITextView) {

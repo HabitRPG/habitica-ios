@@ -82,6 +82,15 @@ public class UserLocalRepository: BaseLocalRepository {
         })
     }
     
+    public func save(userID: String, conversations: [InboxConversationProtocol]) {
+        save(objects: conversations.map { (conversation) in
+            if let realmInboxConversation = conversation as? RealmInboxConversation {
+                return realmInboxConversation
+            }
+            return RealmInboxConversation(userID: userID, inboxConversatin: conversation)
+        })
+    }
+    
     public func save(userID: String, notifications: [NotificationProtocol]?) {
         save(objects: notifications?.map { (notification) in
             if let realmNotification = notification as? RealmNotification {

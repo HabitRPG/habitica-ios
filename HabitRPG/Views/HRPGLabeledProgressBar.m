@@ -66,10 +66,8 @@
     [self addSubview:self.typeView];
     self.fontSize = 11;
 
-    if (@available(iOS 10.0, *)) {
-        self.labelView.adjustsFontForContentSizeCategory = YES;
-        self.typeView.adjustsFontForContentSizeCategory = YES;
-    }
+    self.labelView.adjustsFontForContentSizeCategory = YES;
+    self.typeView.adjustsFontForContentSizeCategory = YES;
     
     UIUserInterfaceLayoutDirection direction = [UIView userInterfaceLayoutDirectionForSemanticContentAttribute:self.semanticContentAttribute];
     if (direction == UIUserInterfaceLayoutDirectionRightToLeft) {

@@ -21,11 +21,7 @@ class AchievementsCollectionViewController: BaseCollectionViewController {
         collectionView.register(AchievementCell.self, forCellWithReuseIdentifier: "Cell")
         collectionView.register(AchievementHeaderReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "SectionHeader")
         if let flowLayout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
-            if #available(iOS 10.0, *) {
-                flowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-            } else {
-                flowLayout.estimatedItemSize = CGSize(width: 100, height: 100)
-            }
+            flowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
             flowLayout.headerReferenceSize = CGSize(width: collectionView?.bounds.size.width ?? 50, height: 54)
         }
         dataSource?.collectionView = collectionView
@@ -34,6 +30,7 @@ class AchievementsCollectionViewController: BaseCollectionViewController {
     }
     
     override func applyTheme(theme: Theme) {
+        super.applyTheme(theme: theme)
         collectionView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
     }
     

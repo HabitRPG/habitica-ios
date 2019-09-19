@@ -35,8 +35,8 @@ class HabitControlsCell: Cell<HabitControlsValue>, CellType {
         if row.value == nil {
             row.value = HabitControlsValue()
         }
-        
-        contentView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor.withAlphaComponent(0.8)
+        backgroundColor = .clear
+        selectionStyle = .none
     }
 
     @objc
@@ -59,20 +59,31 @@ class HabitControlsCell: Cell<HabitControlsValue>, CellType {
 
     public override func update() {
         if let taskRow = row as? HabitControlsRow {
-            plusControlIconView.image = HabiticaIcons.imageOfHabitControlPlus(taskTintColor: taskRow.tintColor, isActive: taskRow.value?.positive ?? false)
-            if taskRow.value?.positive == true {
-                plusControlLabel.textColor = taskRow.tintColor
-            } else {
-                plusControlLabel.textColor = UIColor.gray200()
-            }
-            minusControlIconView.image = HabiticaIcons.imageOfHabitControlMinus(taskTintColor: taskRow.tintColor, isActive: taskRow.value?.negative ?? false)
-            if taskRow.value?.negative == true {
-                minusControlLabel.textColor = taskRow.tintColor
-            } else {
-                minusControlLabel.textColor = UIColor.gray200()
-            }
+            updateViews(taskRow: taskRow)
             applyAccessibility()
         }
+        contentView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor.withAlphaComponent(0.8)
+    }
+    
+    private func updateViews(taskRow: HabitControlsRow) {
+        plusControlIconView.image = HabiticaIcons.imageOfHabitControlPlus(taskTintColor: taskRow.tintColor, isActive: taskRow.value?.positive ?? false)
+        if taskRow.value?.positive == true {
+            plusControlLabel.textColor = taskRow.tintColor
+        } else {
+            plusControlLabel.textColor = UIColor.gray200
+        }
+        minusControlIconView.image = HabiticaIcons.imageOfHabitControlMinus(taskTintColor: taskRow.tintColor, isActive: taskRow.value?.negative ?? false)
+        if taskRow.value?.negative == true {
+            minusControlLabel.textColor = taskRow.tintColor
+        } else {
+            minusControlLabel.textColor = UIColor.gray200
+        }
+    }
+    
+    func updateTintColor(_ newTint: UIColor) {
+        self.tintColor = newTint
+        (row as? HabitControlsRow)?.tintColor = newTint
+        update()
     }
     
     private func applyAccessibility() {
@@ -107,5 +118,10 @@ final class HabitControlsRow: TaskRow<HabitControlsCell>, RowType {
     required public init(tag: String?) {
         super.init(tag: tag)
         cellProvider = CellProvider<HabitControlsCell>(nibName: "HabitControlsCell")
+    }
+    
+    override func updateTintColor(_ newTint: UIColor) {
+        super.updateTintColor(newTint)
+        cell.updateTintColor(newTint)
     }
 }

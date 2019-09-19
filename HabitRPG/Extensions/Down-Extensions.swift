@@ -13,7 +13,7 @@ import ReactiveSwift
 extension Down {
 
     func toHabiticaAttributedStringAsync(baseFont: UIFont = CustomFontMetrics.scaledSystemFont(ofSize: 15),
-                                         textColor: UIColor = UIColor.gray100(), onComplete: @escaping ((NSMutableAttributedString?) -> Void)) {
+                                         textColor: UIColor = UIColor.gray100, onComplete: @escaping ((NSMutableAttributedString?) -> Void)) {
         DispatchQueue.global(qos: .background).async {
             let string = try? self.toHabiticaAttributedString()
             DispatchQueue.main.async {
@@ -88,7 +88,7 @@ extension Down {
         let text = string.mutableString
         for mention in mentions {
             let range = text.range(of: String(mention))
-            string.addAttribute(.foregroundColor, value: UIColor.purple400(), range: range)
+            string.addAttribute(.foregroundColor, value: UIColor.purple400, range: range)
         }
     }
     
@@ -199,7 +199,7 @@ private class HabiticaStyler: Styler {
     func style(lineBreak str: NSMutableAttributedString) {}
     func style(code str: NSMutableAttributedString) {
         str.addAttributes([
-                .foregroundColor: UIColor.red50(),
+                .foregroundColor: UIColor.red50,
                 .font: CustomFontMetrics.scaledFont(for: UIFont(name: "Menlo", size: baseSize) ?? UIFont.systemFont(ofSize: baseSize))
             ], range: NSRange(location: 0, length: str.length))
     }

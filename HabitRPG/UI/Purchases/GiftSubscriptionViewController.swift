@@ -14,7 +14,7 @@ import ReactiveSwift
 import Habitica_Models
 import Crashlytics
 
-class GiftSubscriptionViewController: HRPGBaseViewController {
+class GiftSubscriptionViewController: BaseTableViewController {
     
     @IBOutlet weak var avatarView: AvatarView!
     @IBOutlet weak var displayNameLabel: UsernameLabel!

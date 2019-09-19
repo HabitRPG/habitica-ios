@@ -290,7 +290,7 @@ class ChallengeDetailViewModel: ChallengeDetailViewModelProtocol, ChallengeDetai
     
     func messagePressed(member: MemberProtocol) {
         let secondStoryBoard = UIStoryboard(name: "Social", bundle: nil)
-        if let chatViewController: HRPGInboxChatViewController = secondStoryBoard.instantiateViewController(withIdentifier: "InboxChatViewController") as? HRPGInboxChatViewController {
+        if let chatViewController: InboxChatViewController = secondStoryBoard.instantiateViewController(withIdentifier: "InboxChatViewController") as? InboxChatViewController {
             chatViewController.userID = member.id
             chatViewController.username = member.profile?.name
             chatViewController.isPresentedModally = true

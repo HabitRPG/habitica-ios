@@ -54,7 +54,7 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
         avatarSetupView.alpha = 0
         taskSetupView.isHidden = true
         taskSetupView.alpha = 0
-        previousButtonImageView.tintColor = UIColor.purple100()
+        previousButtonImageView.tintColor = UIColor.purple100
         
         let defaults = UserDefaults.standard
         defaults.set(true, forKey: "isInSetup")
@@ -149,7 +149,7 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
         updateIndicator(page)
         
         if page <= 0 {
-            previousButtonImageView.tintColor = UIColor.purple100()
+            previousButtonImageView.tintColor = UIColor.purple100
         } else {
             previousButtonImageView.tintColor = UIColor.white
         }
@@ -166,8 +166,8 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
             previousButtonTextView.textColor = UIColor.white
             previousButtonView.isUserInteractionEnabled = true
         } else {
-            previousButtonImageView.tintColor = UIColor.purple500()
-            previousButtonTextView.textColor = UIColor.purple500()
+            previousButtonImageView.tintColor = UIColor.purple500
+            previousButtonTextView.textColor = UIColor.purple500
             previousButtonView.isUserInteractionEnabled = false
         }
     }

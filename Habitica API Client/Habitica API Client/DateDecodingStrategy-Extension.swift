@@ -21,10 +21,8 @@ extension JSONDecoder {
             
             let dateStr = try container.decode(String.self)
             
-            if #available(iOS 10.0, *) {
-                if let date = ISO8601DateFormatter().date(from: dateStr) {
-                    return date
-                }
+            if let date = ISO8601DateFormatter().date(from: dateStr) {
+                return date
             }
             
             let dateFormatter = DateFormatter()

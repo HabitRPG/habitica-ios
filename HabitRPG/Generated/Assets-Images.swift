@@ -171,7 +171,6 @@ internal enum Asset {
   internal static let rageStrikeActive = ImageAsset(name: "rage_strike_active")
   internal static let rageStrikePending = ImageAsset(name: "rage_strike_pending")
   internal static let reminder = ImageAsset(name: "reminder")
-  internal static let seedsPromo = ImageAsset(name: "seeds_promo")
   internal static let shopEmptyHourglass = ImageAsset(name: "shop_empty_hourglass")
   internal static let shopEmptySeasonal = ImageAsset(name: "shop_empty_seasonal")
   internal static let speechBubble = ImageAsset(name: "speech_bubble")

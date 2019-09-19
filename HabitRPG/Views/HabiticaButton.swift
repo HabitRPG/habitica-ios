@@ -11,7 +11,7 @@ import UIKit
 @IBDesignable
 class HabiticaButton: UIButton {
     
-    @IBInspectable public var buttonColor: UIColor = UIColor.purple200() {
+    @IBInspectable public var buttonColor: UIColor = UIColor.purple200 {
         didSet {
             backgroundColor = buttonColor
         }
@@ -31,7 +31,7 @@ class HabiticaButton: UIButton {
     
     override open var isEnabled: Bool {
         didSet {
-            backgroundColor = isEnabled ? buttonColor : UIColor.gray400()
+            backgroundColor = isEnabled ? buttonColor : UIColor.gray400
         }
     }
     

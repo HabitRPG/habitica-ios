@@ -109,7 +109,7 @@ class GuildDetailViewController: GroupDetailViewController {
             profileViewController?.userID = leaderID
         } else if segue.identifier == StoryboardSegue.Social.sendMessageSegue.rawValue, let leaderID = guildLeaderID {
             let navigationController = segue.destination as? UINavigationController
-            let messageViewController = navigationController?.topViewController as? HRPGInboxChatViewController
+            let messageViewController = navigationController?.topViewController as? InboxChatViewController
             messageViewController?.isPresentedModally = true
             messageViewController?.userID = leaderID
         }

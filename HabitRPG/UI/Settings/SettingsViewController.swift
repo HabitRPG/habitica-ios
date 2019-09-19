@@ -22,6 +22,7 @@ enum SettingsTags {
     static let pushNotifications = "pushNotifications"
     static let disablePrivateMessages = "disablePrivateMessages"
     static let themeColor = "themeColor"
+    static let themeMode = "themeMode"
     static let appIcon = "appIcon"
     static let soundTheme = "soundTheme"
     static let changeClass = "changeClass"
@@ -73,36 +74,50 @@ enum ThemeName: String {
     case red
     case maroon
     case gray
-    case night
-    case darkNight
-    case trueBlack
     
     var themeClass: Theme {
-        switch self {
-        case .defaultTheme:
-            return DefaultTheme()
-        case .blue:
-            return BlueTheme()
-        case .teal:
-            return TealTheme()
-        case .green:
-            return GreenTheme()
-        case .yellow:
-            return YellowTheme()
-        case .orange:
-            return OrangeTheme()
-        case .red:
-            return RedTheme()
-        case .maroon:
-            return MaroonTheme()
-        case .gray:
-            return GrayTheme()
-        case .night:
-            return NightTheme()
-        case .darkNight:
-            return DarkNightTheme()
-        case .trueBlack:
-            return TrueBlackTheme()
+        if ThemeService.shared.isDarkTheme == true {
+            switch self {
+            case .defaultTheme:
+                return DefaultDarkTheme()
+            case .blue:
+                return BlueDarkTheme()
+            case .teal:
+                return TealDarkTheme()
+            case .green:
+                return GreenDarkTheme()
+            case .yellow:
+                return YellowDarkTheme()
+            case .orange:
+                return OrangeDarkTheme()
+            case .red:
+                return RedDarkTheme()
+            case .maroon:
+                return MaroonDarkTheme()
+            case .gray:
+                return GrayDarkTheme()
+            }
+        } else {
+            switch self {
+            case .defaultTheme:
+                return DefaultTheme()
+            case .blue:
+                return BlueTheme()
+            case .teal:
+                return TealTheme()
+            case .green:
+                return GreenTheme()
+            case .yellow:
+                return YellowTheme()
+            case .orange:
+                return OrangeTheme()
+            case .red:
+                return RedTheme()
+            case .maroon:
+                return MaroonTheme()
+            case .gray:
+                return GrayTheme()
+            }
         }
     }
     
@@ -126,17 +141,11 @@ enum ThemeName: String {
             return "Maroon"
         case .gray:
             return "Plain Gray"
-        case .night:
-            return "The Royal Night"
-        case .darkNight:
-            return "The Dark Task"
-        case .trueBlack:
-            return "True Black"
         }
     }
     
     static var allNames: [ThemeName] {
-        var themes: [ThemeName] = [
+        return [
             .defaultTheme,
             .blue,
             .teal,
@@ -147,12 +156,34 @@ enum ThemeName: String {
             .maroon,
             .gray
         ]
-        if !HabiticaAppDelegate.isRunningLive() {
-            themes.append(.night)
-            themes.append(.darkNight)
-            themes.append(.trueBlack)
+    }
+}
+
+enum ThemeMode: String {
+    case light
+    case dark
+    case system
+    
+    var niceName: String {
+        switch self {
+        case .light:
+            return L10n.Theme.alwaysLight
+        case .dark:
+            if #available(iOS 13.0, *) { return L10n.Theme.alwaysDark } else { return L10n.Theme.dark }
+        case .system:
+            if #available(iOS 13.0, *) { return L10n.Theme.followSystem } else { return L10n.Theme.light }
+        default:
+            return ""
         }
-        return themes
+    }
+    
+    static var allModes: [ThemeMode] {
+        if #available(iOS 13.0, *) {
+            return [.system, .light, .dark]
+        } else {
+            // iOS 12 and below should use "system" as default, so that when upgrading to iOS 13 it adopt the automatic switching
+            return [.system, .dark]
+        }
     }
 }
 
@@ -333,14 +364,8 @@ class SettingsViewController: FormViewController, Themeable {
     }
     
     func applyTheme(theme: Theme) {
+        tableView.backgroundColor = theme.windowBackgroundColor
         tableView.reloadData()
-        
-        navigationController?.navigationBar.tintColor = theme.tintColor
-        navigationController?.navigationBar.titleTextAttributes = [
-            NSAttributedString.Key.foregroundColor: theme.primaryTextColor
-        ]
-        navigationController?.navigationBar.backgroundColor = theme.contentBackgroundColor
-        navigationController?.navigationBar.barTintColor = theme.contentBackgroundColor
     }
     
     private func setupForm() {
@@ -377,6 +402,10 @@ class SettingsViewController: FormViewController, Themeable {
                 if let server = Servers(rawValue: UserDefaults().string(forKey: "chosenServer") ?? "") {
                     row.value = LabeledFormValue(value: server.rawValue, label: server.niceName)
                 }
+                row.cellUpdate({ (cell, _) in
+                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    cell.textLabel?.textAlignment = .natural
+                })
                 row.onChange({ (row) in
                     UserDefaults().set(row.value?.value, forKey: "chosenServer")
                     let appDelegate = UIApplication.shared.delegate as? HRPGAppDelegate
@@ -384,6 +413,7 @@ class SettingsViewController: FormViewController, Themeable {
                 })
         }
     }
+    
     
     private func setupUserSection() {
         form +++ Section(L10n.Settings.user)
@@ -406,7 +436,7 @@ class SettingsViewController: FormViewController, Themeable {
                     cell.accessoryType = .disclosureIndicator
                     if self?.user?.flags?.verifiedUsername == false {
                         cell.detailTextLabel?.text = L10n.Settings.usernameNotConfirmed
-                        cell.detailTextLabel?.textColor = UIColor.red50()
+                        cell.detailTextLabel?.textColor = UIColor.red50
                     } else {
                         cell.detailTextLabel?.text = nil
                     }
@@ -441,7 +471,7 @@ class SettingsViewController: FormViewController, Themeable {
             <<< ButtonRow { row in
                 row.title = L10n.Settings.logOut
                 row.cellSetup({ (cell, _) in
-                    cell.tintColor = UIColor.red50()
+                    cell.tintColor = UIColor.red50
                 }).onCellSelection({ (_, _) in
                     self.userRepository.logoutAccount()
                     let loginViewController = StoryboardScene.Intro.loginTableViewController.instantiate()
@@ -668,8 +698,37 @@ class SettingsViewController: FormViewController, Themeable {
                     }
                 })
             }
+        <<< PushRow<LabeledFormValue<String>>(SettingsTags.themeMode) { row in
+            row.title = L10n.Settings.themeMode
+            row.cellUpdate { cell, _ in
+                cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                cell.tintColor = ThemeService.shared.theme.tintColor
+            }
+            row.options = ThemeMode.allModes.map({ (theme) -> LabeledFormValue<String> in
+                return LabeledFormValue(value: theme.rawValue, label: theme.niceName)
+            })
+            let defaults = UserDefaults.standard
+            if let theme = ThemeMode.allModes.first(where: { (theme) -> Bool in
+                return theme.rawValue == defaults.string(forKey: "themeMode") ?? ThemeMode.allModes.first?.rawValue
+            }) {
+                row.value = LabeledFormValue(value: theme.rawValue, label: theme.niceName)
+            }
+            row.onChange({[weak self] (row) in
+                if self?.isSettingUserData == true { return }
+                if let newTheme = ThemeMode(rawValue: row.value?.value ?? "") {
+                    let defaults = UserDefaults.standard
+                    defaults.set(newTheme.rawValue, forKey: "themeMode")
+                    ThemeService.shared.updateDarkMode()
+                }
+            })
+            row.onPresent({ (_, to) in
+                to.selectableRowCellUpdate = { cell, row in
+                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                }
+            })
+        }
         form +++ section
-        if #available(iOS 10.3, *) {
+        if UI_USER_INTERFACE_IDIOM() == .phone {
             section <<< PushRow<String>(SettingsTags.appIcon) { row in
                 row.title = L10n.Settings.appIcon
                 row.cellUpdate { cell, _ in

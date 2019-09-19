@@ -77,12 +77,10 @@ class UserRepository: BaseRepository<UserLocalRepository> {
             let toastView = ToastView(title: L10n.Skills.useSkill(skill.text ?? ""),
                                       rightIcon: HabiticaIcons.imageOfMagic,
                                       rightText: "-\(skill.mana)",
-                rightTextColor: UIColor.blue10(),
+                rightTextColor: UIColor.blue10,
                 background: .blue)
                 ToastManager.show(toast: toastView)
-                if #available(iOS 10.0, *) {
-                    UINotificationFeedbackGenerator.oneShotNotificationOccurred(.success)
-                }
+                UINotificationFeedbackGenerator.oneShotNotificationOccurred(.success)
             })
     }
     
@@ -104,8 +102,8 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         if tasks.isEmpty == false {
             var signal = taskRepository.score(task: tasks[0], direction: .up)
             for task in tasks.dropFirst() {
-                signal = signal.flatMap(.concat, { _ in
-                    return self.taskRepository.score(task: task, direction: .up)
+                signal = signal.flatMap(.concat, {[weak self] _ in
+                    return self?.taskRepository.score(task: task, direction: .up) ?? Signal.empty
                 })
             }
             disposable = signal.flatMap(.latest, { _ in
@@ -177,6 +175,15 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     
     func login(userID: String, network: String, accessToken: String) -> Signal<LoginResponseProtocol?, Never> {
         return SocialLoginCall(userID: userID, network: network, accessToken: accessToken).objectSignal.on(value: { loginResponse in
+            if let response = loginResponse {
+                AuthenticationManager.shared.currentUserId = response.id
+                AuthenticationManager.shared.currentUserKey = response.apiToken
+            }
+        })
+    }
+    
+    func loginApple(identityToken: String, name: String) -> Signal<LoginResponseProtocol?, Never> {
+        return AppleLoginCall(identityToken: identityToken, name: name).objectSignal.on(value: { loginResponse in
             if let response = loginResponse {
                 AuthenticationManager.shared.currentUserId = response.id
                 AuthenticationManager.shared.currentUserKey = response.apiToken
@@ -320,12 +327,22 @@ class UserRepository: BaseRepository<UserLocalRepository> {
         })
     }
     
-    func retrieveInboxMessages() -> Signal<[InboxMessageProtocol]?, Never> {
-        let call = RetrieveInboxMessagesCall()
+    func retrieveInboxMessages(conversationID: String, page: Int) -> Signal<[InboxMessageProtocol]?, Never> {
+        let call = RetrieveInboxMessagesCall(uuid: conversationID, page: page)
         
         return call.arraySignal.on(value: {[weak self] messages in
             if let messages = messages, let userID = self?.currentUserId {
                 self?.localRepository.save(userID: userID, messages: messages)
+            }
+        })
+    }
+    
+    func retrieveInboxConversations() -> Signal<[InboxConversationProtocol]?, Never> {
+        let call = RetrieveInboxConversationsCall()
+        
+        return call.arraySignal.on(value: {[weak self] conversations in
+            if let conversations = conversations, let userID = self?.currentUserId {
+                self?.localRepository.save(userID: userID, conversations: conversations)
             }
         })
     }

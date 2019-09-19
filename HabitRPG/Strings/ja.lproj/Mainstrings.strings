@@ -111,7 +111,7 @@
 /* (No Comment) */
 "guilds.leave_challenges" = "チャレンジをやめる";
 /* (No Comment) */
-"guilds.leave_guild_description" = "ギルドを脱退して、チャレンジを続けたいまたはやめたいですか？";
+"guilds.leave_guild_description" = "チャレンジをやめてタスクを保持または削除しますか？";
 /* (No Comment) */
 "guilds.leave_guild_title" = "ギルドを脱退しますか？";
 /* (No Comment) */
@@ -765,7 +765,7 @@
 "edit_tag" = "タグを編集する";
 "create_tag" = "タグをつくる";
 "unlockDropsTitle" = "ドロップシステムをアンロックしました！";
-"unlockDropsDescription" = "落とし物のシステムがアンロックされました！ 今後タスクを達成すると、たまご、たまごがえしの薬、えさなどのアイテムを発見するちょっとしたチャンスがあります！";
+"unlockDropsDescription" = "ドロップシステムがアンロックされました！今後タスクを達成すると、たまごなどのアイテムや、薬、そしてエサの落とし物を発見するちょっとしたチャンスが訪れます！";
 "subscription_info_1_title" = "ゴールドでジェムを購入する";
 "subscription_info_2_title" = "毎月の限定アイテム";
 "subscription_info_3_title" = "詳細な履歴の保存";
@@ -782,8 +782,8 @@
 "not_getting_drops" = "欲しいものが見つからない？市場を確認して必要なものを買おう！";
 "streak_achievement_title" = "連続実行ボーナスを獲得しました！";
 "streak_achievement_description" = "日課を21日連続で実行しました！すばらしい業績です。連続実行を続けましょう！";
-"next_checkin_prize_1_day" = "次の賞品は、あと1回のチェックインでアンロックされます。";
-"next_checkin_prize_x_days" = "次の賞品は、%d回のチェックインでアンロックされます";
+"next_checkin_prize_1_day" = "次の賞は、あと1回のチェックインでアンロックされます。";
+"next_checkin_prize_x_days" = "次の賞は、%d回のチェックインでアンロックされます！";
 "recipient" = "送信先";
 "no_camera" = "カメラが利用できません";
 "qr_invalid_id_title" = "無効なユーザーID";
@@ -791,7 +791,7 @@
 "not_enough_gems" = "ジェムが足りません";
 "not_enough_hourglasses" = "砂時計が足りません";
 "subscribe_for_hourglasses" = "砂時計を定期購入する";
-"not_enough_gold" = "ゴールドが足りません";
+"not_enough_gold" = "ゴールドが不足しています";
 "take_me_back" = "戻る";
 "monthly_gem_cap_reached" = "今月のジェム上限に達しました";
 "your_balance" = "あなたの残高：";
@@ -808,7 +808,7 @@
 "tasks.due_tomorrow" = "期限　明日";
 "tasks.due_in_x_days" = "期限　%d日後";
 "tasks.due_x" = "期限　%@";
-"tasks.every_x" = "%d %@ ごと";
+"tasks.every_x" = "毎%@";
 "tasks.repeats.repeats_every_on" = "%@を%@ごとにくり返す";
 "tasks.repeats.repeats_every" = "%@くり返す";
 "tasks.repeats.monthly_the" = "%@";
@@ -936,45 +936,3 @@
 "filter_by_tags" = "タグでフィルターをかける";
 "purchased" = "%@を購入しました";
 "buy_reward" = "'%@'を%@ゴールドで購入しました";
-"titles.messages" = "メッセージ";
-"titles.notifications" = "お知らせ";
-"settings.language" = "言語";
-"guilds.joined_guild" = "ギルドに参加しました";
-"guilds.left_guild" = "ギルドを脱退しました";
-"stable.wacky_pets" = "へんてこなペット";
-"stable.wacky_mounts" = "へんてこな乗騎";
-"party.leave_party_title" = "パーティーを脱退しますか？";
-"party.leave_party_description" = "パーティーを脱退して、チャレンジを続けたいまたはやめたいですか？";
-"about.new_version" = "アップデートが利用可能です：%@";
-"about.whats_new" = "新着情報をご覧ください";
-"never_lower_case" = "しません";
-"decline" = "辞退";
-"notifications.new_bailey" = "Baileyから新しいお知らせがあります！";
-"notifications.unread_guild_message" = "**%@**に新しい投稿があります。";
-"notifications.unread_party_message" = "あなたのパーティー「**%@**」に新しい投稿があります。";
-"notifications.party_invite" = "パーティー「**%s**」に招待されました";
-"notifications.public_guild_invite" = "公共ギルド「**%s**」に招待されました";
-"notifications.private_guild_invite" = "プライベートギルド「**%s**」に招待されました";
-"notifications.quest_invite" = "クエスト「**%s**」に招待されました";
-"notifications.dismiss_all" = "すべて閉じる";
-"empty.rewards.title" = "これらはごほうびです";
-"empty.rewards.description" = "ごほうびは、Habiticaを使用してタスクを完了するための素晴らしい手段です。早速いくつか追加してみましょう！";
-"empty.notifications.title" = "全ての通知をチェックしました！";
-"empty.notifications.description" = "通知の妖精はパチパチとあなたに拍手を送っています！ えらい！";
-"titles.achievements" = "実績";
-"stable.color" = "色";
-"stable.type" = "種類";
-"defeat" = "撃破";
-"notifications.unallocated_stat_points" = "**%dポイント**が割り当てできます";
-"notifications.new_mystery_item" = "新しい**ミステリーアイテム**";
-"empty.habits.title" = "これらはあなたの習慣です";
-"empty.habits.description" = "習慣は、厳密な予定ではありません。１日につき複数回チェックすることができます。";
-"empty.dailies.title" = "これらはあなたの日課です";
-"empty.dailies.description" = "日課は、定期的なペースで繰り返すタスクです。自分が活動したいスケジュールを選びましょう！";
-"empty.todos.title" = "これらはあなたのTo-Doです";
-"empty.todos.description" = "To-Doは、１度だけ完了すべきことです。To-Doの報酬を増やすために、To-Doにチェックリストを追加してみましょう。";
-"achievements.basic" = "基本の実績";
-"achievements.seasonal" = "季節限定の実績";
-"achievements.special" = "特別な実績";
-"achievements.quests" = "完了したクエスト";
-"organize_by" = "整理する基準";

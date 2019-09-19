@@ -79,10 +79,10 @@ class ChatTableViewCell: UITableViewCell, UITextViewDelegate, Themeable {
             positionLabel.textColor = .white
             if contributorLevel == 8 {
                 positionLabel.text = L10n.moderator
-                positionLabel.backgroundColor = UIColor.blue10()
+                positionLabel.backgroundColor = UIColor.blue10
             } else if contributorLevel == 9 {
                 positionLabel.text = L10n.staff
-                positionLabel.backgroundColor = UIColor.purple300()
+                positionLabel.backgroundColor = UIColor.purple300
             }
         }
     }
@@ -246,8 +246,8 @@ class ChatTableViewCell: UITableViewCell, UITextViewDelegate, Themeable {
     
     private func stylePlusOneButton(likes: [ChatMessageReactionProtocol], userID: String) {
         plusOneButton.setTitle(nil, for: .normal)
-        plusOneButton.setTitleColor(UIColor.gray300(), for: .normal)
-        plusOneButton.tintColor = UIColor.gray300()
+        plusOneButton.setTitleColor(UIColor.gray300, for: .normal)
+        plusOneButton.tintColor = UIColor.gray300
         var wasLiked = false
         let likedMessageCount = likes.filter({ (like) -> Bool in
             return like.hasReacted == true
@@ -255,8 +255,8 @@ class ChatTableViewCell: UITableViewCell, UITextViewDelegate, Themeable {
         if likedMessageCount > 0 {
             plusOneButton.setTitle(" +\(likedMessageCount)", for: .normal)
             for like in likes where like.userID == userID && like.hasReacted == true {
-                plusOneButton.setTitleColor(UIColor.purple400(), for: .normal)
-                plusOneButton.tintColor = UIColor.purple400()
+                plusOneButton.setTitleColor(UIColor.purple400, for: .normal)
+                plusOneButton.tintColor = UIColor.purple400
                 wasLiked = true
                 break
             }

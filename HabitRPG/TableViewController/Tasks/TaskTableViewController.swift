@@ -66,6 +66,15 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
         navigationItem.leftBarButtonItem?.title = L10n.filter
     }
     
+    override func applyTheme(theme: Theme) {
+        super.applyTheme(theme: theme)
+        if theme.isDark {
+            searchBar.barStyle = .blackTranslucent
+        } else {
+            searchBar.barStyle = .default
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -265,7 +274,7 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
     }
     
     @IBAction func unwindFilterChanged(segue: UIStoryboardSegue?) {
-        if let tagVC = segue?.source as? HRPGFilterViewController {
+        if let tagVC = segue?.source as? FilterViewController {
             if let tabVC = tabBarController as? MainTabBarController {
                 tabVC.selectedTags = tagVC.selectedTags
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "taskFilterChanged"), object: nil)
@@ -436,9 +445,8 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
             }
         } else if segue.identifier == "FilterSegue" {
             if let tabVC = tabBarController as? MainTabBarController,
-                let navVC = segue.destination as? HRPGNavigationController,
-                let filterVC = navVC.topViewController as? HRPGFilterViewController {
-                navVC.sourceViewController = self
+                let navVC = segue.destination as? UINavigationController,
+                let filterVC = navVC.topViewController as? FilterViewController {
                 filterVC.selectedTags = tabVC.selectedTags
                 filterVC.taskType = typeName
             }

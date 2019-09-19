@@ -12,17 +12,26 @@ import PopupDialog
 
 @objc
 public class ThemeService: NSObject {
-    
+    private let defaults = UserDefaults.standard
+
     public static let shared = ThemeService()
+    public var isDarkTheme: Bool?
     public var theme: Theme = DefaultTheme() {
         didSet {
             applyTheme()
         }
     }
+    public var themeMode: String {
+        get { return defaults.string(forKey: "themeMode") ?? ThemeMode.system.rawValue }
+    }
     
     private var listeners = NSHashTable<AnyObject>.weakObjects()
-    
-    override public init() {}
+    private var objcListeners = NSHashTable<AnyObject>.weakObjects()
+
+    override public init() {
+        if #available(iOS 13.0, *) {
+        }
+    }
     
     public func addThemeable(themable: Themeable, applyImmediately: Bool = true) {
         guard !listeners.contains(themable) else {
@@ -32,6 +41,17 @@ public class ThemeService: NSObject {
         
         if applyImmediately {
             themable.applyTheme(theme: theme)
+        }
+    }
+    
+    public func addThemeable(themable: ObjcThemeable, applyImmediately: Bool = true) {
+        guard !listeners.contains(themable) else {
+            return
+        }
+        objcListeners.add(themable)
+        
+        if applyImmediately {
+            themable.applyTheme()
         }
     }
     
@@ -62,7 +82,7 @@ public class ThemeService: NSObject {
         UIToolbar.appearance().backgroundColor = theme.contentBackgroundColor
         UIToolbar.appearance().barTintColor = theme.contentBackgroundColor
         UIRefreshControl.appearance().tintColor = theme.tintColor
-        UISegmentedControl.appearance().tintColor = theme.backgroundTintColor
+        UISegmentedControl.appearance().tintColor = theme.segmentedTintColor
         UISwitch.appearance().onTintColor = theme.backgroundTintColor
         //UIButton.appearance().tintColor = theme.tintColor
         UISearchBar.appearance().backgroundColor = theme.windowBackgroundColor
@@ -88,10 +108,8 @@ public class ThemeService: NSObject {
         let view = UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self])
         view.tintColor = theme.tintColor
         // Update styles via UIAppearance
-        if #available(iOS 10.0, *) {
-            UITabBarItem.appearance().badgeColor = theme.badgeColor
-            UITabBar.appearance().unselectedItemTintColor = theme.dimmedTextColor
-        }
+        UITabBarItem.appearance().badgeColor = theme.badgeColor
+        UITabBar.appearance().unselectedItemTintColor = theme.dimmedTextColor
                 
         // The tintColor will trickle down to each view
         if let window = UIApplication.shared.keyWindow {
@@ -102,10 +120,45 @@ public class ThemeService: NSObject {
         listeners.allObjects
             .compactMap { $0 as? Themeable }
             .forEach { $0.applyTheme(theme: theme) }
+        objcListeners.allObjects
+            .compactMap { $0 as? ObjcThemeable }
+            .forEach { $0.applyTheme() }
     }
     
+    @available(iOS 12.0, *)
+    func updateInterfaceStyle(newStyle: UIUserInterfaceStyle) {
+        let isDark = newStyle == .dark
+        updateDarkMode(systemIsDark: isDark)
+    }
+    
+    func updateDarkMode() {
+        if #available(iOS 13.0, *) {
+            updateDarkMode(systemIsDark: UIScreen.main.traitCollection.userInterfaceStyle == .dark)
+        } else {
+            updateDarkMode(systemIsDark: false)
+        }
+    }
+    
+    func updateDarkMode(systemIsDark: Bool) {
+        var enabled = themeMode == ThemeMode.dark.rawValue
+        if themeMode == ThemeMode.system.rawValue {
+            enabled = systemIsDark
+        }
+        if enabled != self.isDarkTheme {
+            self.isDarkTheme = enabled
+            
+            let themeName = ThemeName(rawValue: defaults.string(forKey: "theme") ?? "") ?? ThemeName.defaultTheme
+            ThemeService.shared.theme = themeName.themeClass
+        }
+    }
 }
+
 
 public protocol Themeable: AnyObject {
     func applyTheme(theme: Theme)
+}
+
+@objc
+public protocol ObjcThemeable {
+    func applyTheme()
 }

@@ -47,8 +47,8 @@ class WelcomeViewController: UIViewController, TypingTextViewController, UITextF
         
         populateText()
         
-        displayNameIconView.image = HabiticaIcons.imageOfCheckmark(checkmarkColor: UIColor.green50(), percentage: 100)
-        usernameIconView.image = HabiticaIcons.imageOfCheckmark(checkmarkColor: UIColor.green50(), percentage: 100)
+        displayNameIconView.image = HabiticaIcons.imageOfCheckmark(checkmarkColor: UIColor.green50, percentage: 100)
+        usernameIconView.image = HabiticaIcons.imageOfCheckmark(checkmarkColor: UIColor.green50, percentage: 100)
         
         displayNameIconView.isHidden = true
         usernameIconView.isHidden = true

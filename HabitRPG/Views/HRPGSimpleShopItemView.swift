@@ -137,11 +137,11 @@ class HRPGSimpleShopItemView: UIView {
         let totalCount = self.user?.purchased?.subscriptionPlan?.gemCapTotal ?? 0
         topBannerLabel.text = L10n.Inventory.numberGemsLeft(gemsLeft, totalCount)
         if gemsLeft == 0 {
-            topBannerWrapper.backgroundColor = UIColor.orange10()
+            topBannerWrapper.backgroundColor = UIColor.orange10
             additionalInfoLabel.text = L10n.Inventory.noGemsLeft
-            additionalInfoLabel.textColor = UIColor.orange10()
+            additionalInfoLabel.textColor = UIColor.orange10
         } else {
-            topBannerWrapper.backgroundColor = UIColor.green10()
+            topBannerWrapper.backgroundColor = UIColor.green10
         }
         topBannerWrapper.isHidden = false
     }
@@ -164,7 +164,7 @@ class HRPGSimpleShopItemView: UIView {
                     }
                     if gearClass != user.stats?.habitClass && gearClass != nil && gearClass != "special" && gearClass != "armoire" {
                         self?.topBannerLabel.text = L10n.Inventory.wrongClass(gearClass?.capitalized ?? "")
-                        self?.topBannerWrapper.backgroundColor = UIColor.gray100()
+                        self?.topBannerWrapper.backgroundColor = UIColor.gray100
                         self?.topBannerWrapper.isHidden = false
                     }
             }).start()
@@ -178,7 +178,7 @@ class HRPGSimpleShopItemView: UIView {
         formatter.timeZone = TimeZone(identifier: "UTC")
         let dateString = formatter.string(from: date)
         topBannerLabel.text = L10n.Inventory.availableUntil(dateString)
-        topBannerWrapper.backgroundColor = UIColor.purple200()
+        topBannerWrapper.backgroundColor = UIColor.purple200
         topBannerWrapper.isHidden = false
     }
     

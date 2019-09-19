@@ -11,7 +11,7 @@ import PopupDialog
 import Habitica_Models
 import ReactiveSwift
 
-class AttributePointsViewController: HRPGUIViewController, Themeable {
+class AttributePointsViewController: BaseUIViewController {
     
     @IBOutlet weak var pointsToAllocateLabel: PaddedLabel!
     @IBOutlet weak var pointsToAllocateRightView: UIImageView!
@@ -163,7 +163,8 @@ class AttributePointsViewController: HRPGUIViewController, Themeable {
         pointsToAllocateLabel.layer.cornerRadius = pointsToAllocateLabel.frame.size.height/2
     }
     
-    func applyTheme(theme: Theme) {
+    override func applyTheme(theme: Theme) {
+        super.applyTheme(theme: theme)
         distributeEvenlyCheckmark.image = HabiticaIcons.imageOfCheckmark(checkmarkColor: theme.tintColor, percentage: 1.0)
         distributeClassCheckmark.image = HabiticaIcons.imageOfCheckmark(checkmarkColor: theme.tintColor, percentage: 1.0)
         distributeTaskCheckmark.image = HabiticaIcons.imageOfCheckmark(checkmarkColor: theme.tintColor, percentage: 1.0)
@@ -180,6 +181,13 @@ class AttributePointsViewController: HRPGUIViewController, Themeable {
         intelligenceTextLabel.textColor = theme.secondaryTextColor
         constitutionTextLabel.textColor = theme.secondaryTextColor
         perceptionTextLabel.textColor = theme.secondaryTextColor
+        if theme.isDark {
+            perceptionStatsView.tintColor = UIColor.purple400
+            perceptionTitleLabel.textColor = UIColor.purple400
+        } else {
+            perceptionStatsView.tintColor = UIColor.purple300
+            perceptionTitleLabel.textColor = UIColor.purple300
+        }
     }
     
     private func allocate(_ attribute: String) {
@@ -196,9 +204,9 @@ class AttributePointsViewController: HRPGUIViewController, Themeable {
         if !canAllocatePoints {
             pointsToAllocateLabel.text = L10n.Stats.noPointsToAllocate
             pointsToAllocateLabel.backgroundColor = UIColor.white
-            pointsToAllocateLabel.textColor = UIColor.gray300()
+            pointsToAllocateLabel.textColor = UIColor.gray300
         } else {
-            pointsToAllocateLabel.backgroundColor = UIColor.gray100()
+            pointsToAllocateLabel.backgroundColor = UIColor.gray100
             pointsToAllocateLabel.textColor = UIColor.white
             if pointsToAllocate == 1 {
                 pointsToAllocateLabel.text = L10n.Stats.onePointToAllocate

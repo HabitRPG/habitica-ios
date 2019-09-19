@@ -128,19 +128,19 @@ extension UIColor {
     @objc
     public static func forTaskValue(_ taskValue: Int) -> UIColor {
         if taskValue < -20 {
-            return UIColor.darkRed50()
+            return UIColor.maroon50
         } else if taskValue < -10 {
-            return UIColor.red50()
+            return UIColor.red50
         } else if taskValue < -1 {
-            return UIColor.orange50()
+            return UIColor.orange50
         } else if taskValue < 1 {
-            return UIColor.yellow50()
+            return UIColor.yellow50
         } else if taskValue < 5 {
-            return UIColor.green50()
+            return UIColor.green50
         } else if taskValue < 10 {
-            return UIColor.teal50()
+            return UIColor.teal50
         } else {
-            return UIColor.blue50()
+            return UIColor.blue50
         }
     }
     
@@ -152,19 +152,19 @@ extension UIColor {
     @objc
     public static func forTaskValueDark(_ taskValue: Int) -> UIColor {
         if taskValue < -20 {
-            return UIColor.darkRed10()
+            return UIColor.maroon10
         } else if taskValue < -10 {
-            return UIColor.red10()
+            return UIColor.red10
         } else if taskValue < -1 {
-            return UIColor.orange10()
+            return UIColor.orange10
         } else if taskValue < 1 {
-            return UIColor.yellow10()
+            return UIColor.yellow10
         } else if taskValue < 5 {
-            return UIColor.green10()
+            return UIColor.green10
         } else if taskValue < 10 {
-            return UIColor.teal10()
+            return UIColor.teal10
         } else {
-            return UIColor.blue10()
+            return UIColor.blue10
         }
     }
     
@@ -176,19 +176,19 @@ extension UIColor {
     @objc
     public static func forTaskValueLight(_ taskValue: Int) -> UIColor {
         if taskValue < -20 {
-            return UIColor.darkRed100()
+            return UIColor.maroon100
         } else if taskValue < -10 {
-            return UIColor.red100()
+            return UIColor.red100
         } else if taskValue < -1 {
-            return UIColor.orange100()
+            return UIColor.orange100
         } else if taskValue < 1 {
-            return UIColor.yellow100()
+            return UIColor.yellow100
         } else if taskValue < 5 {
-            return UIColor.green100()
+            return UIColor.green100
         } else if taskValue < 10 {
-            return UIColor.teal100()
+            return UIColor.teal100
         } else {
-            return UIColor.blue100()
+            return UIColor.blue100
         }
     }
     
@@ -248,5 +248,25 @@ func lighter(by percentage: CGFloat=30.0) -> UIColor {
         } else {
             return true
         }
+    }
+    
+    func blend(with infusion:UIColor, alpha:CGFloat) -> UIColor {
+        let alpha2 = min(1.0, max(0, alpha))
+        let beta = 1.0 - alpha2
+
+        var r1:CGFloat = 0, r2:CGFloat = 0
+        var g1:CGFloat = 0, g2:CGFloat = 0
+        var b1:CGFloat = 0, b2:CGFloat = 0
+        var a1:CGFloat = 0, a2:CGFloat = 0
+        if getRed(&r1, green: &g1, blue: &b1, alpha: &a1) &&
+            infusion.getRed(&r2, green: &g2, blue: &b2, alpha: &a2)
+        {
+            let red     = r1 * beta + r2 * alpha2;
+            let green   = g1 * beta + g2 * alpha2;
+            let blue    = b1 * beta + b2 * alpha2;
+            let alpha   = a1 * beta + a2 * alpha2;
+            return UIColor(red: red, green: green, blue: blue, alpha: alpha)
+        }
+        return self
     }
 }

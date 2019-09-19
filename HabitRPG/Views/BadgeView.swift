@@ -30,9 +30,7 @@ class BadgeView: PaddedLabel {
     internal func setupView() {
         font = CustomFontMetrics.scaledSystemFont(ofSize: 13)
         textAlignment = .center
-        if #available(iOS 10.0, *) {
-            adjustsFontForContentSizeCategory = true
-        }
+        adjustsFontForContentSizeCategory = true
         verticalPadding = 2
         horizontalPadding = 7
     }

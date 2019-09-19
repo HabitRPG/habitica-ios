@@ -114,6 +114,7 @@
 		29DBFEF920CAD7C200DF9CF2 /* SpecialItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFEF820CAD7C200DF9CF2 /* SpecialItemProtocol.swift */; };
 		29DBFF0920D1336000DF9CF2 /* EquatableStringEnumProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFF0820D1336000DF9CF2 /* EquatableStringEnumProtocol.swift */; };
 		29DBFF0B20D15A4A00DF9CF2 /* UserNewMessagesProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFF0A20D15A4A00DF9CF2 /* UserNewMessagesProtocol.swift */; };
+		29EBDA7923290E04006611E3 /* InboxConversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EBDA7823290E04006611E3 /* InboxConversation.swift */; };
 		CC135D3BB637D5CBF234BF6D /* Pods_Habitica_ModelsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 354641E24383776EED90C9B9 /* Pods_Habitica_ModelsTests.framework */; };
 		DC2C4767C68C2D9F295C7804 /* ProfileProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2C4B6483B722EF73FA7153 /* ProfileProtocol.swift */; };
 		DC2C49AA09AF07160BDB05BF /* PreferencesProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2C4C19F7CA64826BF23A5A /* PreferencesProtocol.swift */; };
@@ -241,6 +242,7 @@
 		29DBFEF820CAD7C200DF9CF2 /* SpecialItemProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialItemProtocol.swift; sourceTree = "<group>"; };
 		29DBFF0820D1336000DF9CF2 /* EquatableStringEnumProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquatableStringEnumProtocol.swift; sourceTree = "<group>"; };
 		29DBFF0A20D15A4A00DF9CF2 /* UserNewMessagesProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNewMessagesProtocol.swift; sourceTree = "<group>"; };
+		29EBDA7823290E04006611E3 /* InboxConversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxConversation.swift; sourceTree = "<group>"; };
 		354641E24383776EED90C9B9 /* Pods_Habitica_ModelsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica_ModelsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D2AB9C7436EBCC42FB88C1A /* Pods-Habitica ModelsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica ModelsTests.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Habitica ModelsTests/Pods-Habitica ModelsTests.release.xcconfig"; sourceTree = "<group>"; };
 		AA378A596E634CC872E72C65 /* Pods-Habitica ModelsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica ModelsTests.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Habitica ModelsTests/Pods-Habitica ModelsTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -430,6 +432,7 @@
 		298FB9D2204D9403004DDACC /* Habitica Models */ = {
 			isa = PBXGroup;
 			children = (
+				29EBDA7723290D94006611E3 /* Messages */,
 				295BC6E5226F0FE300DDDF1A /* Notifications */,
 				290C3035206D366A0066AF5B /* Group */,
 				295610E52056C5B500D9711A /* Content */,
@@ -460,6 +463,14 @@
 				290C3022206B8C150066AF5B /* Test Models */,
 			);
 			path = "Habitica ModelsTests";
+			sourceTree = "<group>";
+		};
+		29EBDA7723290D94006611E3 /* Messages */ = {
+			isa = PBXGroup;
+			children = (
+				29EBDA7823290E04006611E3 /* InboxConversation.swift */,
+			);
+			path = Messages;
 			sourceTree = "<group>";
 		};
 		370835497B6A761F7D59BB67 /* Frameworks */ = {
@@ -595,7 +606,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/../Pods/Target Support Files/Pods-Habitica ModelsTests/Pods-Habitica ModelsTests-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Habitica ModelsTests/Pods-Habitica ModelsTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Keys/Keys.framework",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
 				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
@@ -610,7 +621,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-Habitica ModelsTests/Pods-Habitica ModelsTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Habitica ModelsTests/Pods-Habitica ModelsTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		825C18ED3E86B319711737A9 /* [CP] Check Pods Manifest.lock */ = {
@@ -721,6 +732,7 @@
 				290C3011206A785A0066AF5B /* EmptyResponseProtocol.swift in Sources */,
 				295610E72056C5BF00D9711A /* ContentProtocol.swift in Sources */,
 				295611032056DBC900D9711A /* QuestProtocol.swift in Sources */,
+				29EBDA7923290E04006611E3 /* InboxConversation.swift in Sources */,
 				290C3030206CEED20066AF5B /* SkillResponseProtocol.swift in Sources */,
 				295E9DE620B3257700D58D45 /* ShopProtocol.swift in Sources */,
 				295BC6E7226F0FF700DDDF1A /* NotificationProtocol.swift in Sources */,
@@ -895,7 +907,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Habitica Models/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.habitica.Habitica-Models";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -920,7 +932,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Habitica Models/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.habitica.Habitica-Models";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";

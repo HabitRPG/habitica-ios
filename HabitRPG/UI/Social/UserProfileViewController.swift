@@ -212,10 +212,10 @@ class UserProfileViewController: BaseTableViewController {
         
         let healthLabel = cell.viewWithTag(2) as? HRPGLabeledProgressBar
         if ThemeService.shared.theme.isDark {
-            healthLabel?.color = UIColor.red50().withAlphaComponent(0.75)
+            healthLabel?.color = UIColor.red50.withAlphaComponent(0.75)
             healthLabel?.iconView.alpha = 0.8
         } else {
-            healthLabel?.color = UIColor.red100()
+            healthLabel?.color = UIColor.red100
             healthLabel?.iconView.alpha = 1.0
         }
         healthLabel?.icon = HabiticaIcons.imageOfHeartLightBg
@@ -225,10 +225,10 @@ class UserProfileViewController: BaseTableViewController {
         
         let experienceLabel = cell.viewWithTag(3) as? HRPGLabeledProgressBar
         if ThemeService.shared.theme.isDark {
-            experienceLabel?.color = UIColor.yellow50().withAlphaComponent(0.75)
+            experienceLabel?.color = UIColor.yellow50.withAlphaComponent(0.75)
             experienceLabel?.iconView.alpha = 0.8
         } else {
-            experienceLabel?.color = UIColor.yellow100()
+            experienceLabel?.color = UIColor.yellow100
             experienceLabel?.iconView.alpha = 1.0
         }
         experienceLabel?.icon = HabiticaIcons.imageOfExperience
@@ -239,10 +239,10 @@ class UserProfileViewController: BaseTableViewController {
         let magicLabel = cell.viewWithTag(4) as? HRPGLabeledProgressBar
         if stats.level >= 10 {
             if ThemeService.shared.theme.isDark {
-                magicLabel?.color = UIColor.blue50().withAlphaComponent(0.75)
+                magicLabel?.color = UIColor.blue50.withAlphaComponent(0.75)
                 magicLabel?.iconView.alpha = 0.8
             } else {
-                magicLabel?.color = UIColor.blue100()
+                magicLabel?.color = UIColor.blue100
                 magicLabel?.iconView.alpha = 1.0
             }
             magicLabel?.icon = HabiticaIcons.imageOfMagic
@@ -402,7 +402,7 @@ class UserProfileViewController: BaseTableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == StoryboardSegue.Social.writeMessageSegue.rawValue {
             let navigationController = segue.destination as? UINavigationController
-            let chatViewController = navigationController?.topViewController as? HRPGInboxChatViewController
+            let chatViewController = navigationController?.topViewController as? InboxChatViewController
             chatViewController?.isPresentedModally = true
             chatViewController?.userID = userID
             chatViewController?.username = username

@@ -53,12 +53,12 @@ class QuestDetailViewController: BaseUIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         topHeaderCoordinator = TopHeaderCoordinator(topHeaderNavigationController: hrpgTopHeaderNavigationController(), scrollView: scrollView)
-        topHeaderCoordinator.followScrollView = false
+        topHeaderCoordinator?.followScrollView = false
         
         let borderView = UIView(frame: CGRect(x: 0, y: headerView.intrinsicContentSize.height, width: self.view.bounds.size.width, height: 1))
-        borderView.backgroundColor = UIColor.gray500()
+        borderView.backgroundColor = UIColor.gray500
         headerView.addSubview(borderView)
-        topHeaderCoordinator.alternativeHeader = headerView
+        topHeaderCoordinator?.alternativeHeader = headerView
         
         disposable.inner.add(userRepository.getUser().on(value: {[weak self]user in
             self?.set(user: user)
@@ -160,15 +160,15 @@ class QuestDetailViewController: BaseUIViewController {
         
         let participantCount = group.quest?.members.count ?? 0
         if isQuestActive {
-            let attributedText = NSMutableAttributedString(string: L10n.Quests.participantsHeader, attributes: [.foregroundColor: UIColor.gray200()])
-            attributedText.append(NSAttributedString(string: " \(participantCount)", attributes: [.foregroundColor: UIColor.gray400()]))
+            let attributedText = NSMutableAttributedString(string: L10n.Quests.participantsHeader, attributes: [.foregroundColor: UIColor.gray200])
+            attributedText.append(NSAttributedString(string: " \(participantCount)", attributes: [.foregroundColor: UIColor.gray400]))
             invitationsHeader.attributedText = attributedText
         } else {
             let respondedCount = group.quest?.members.filter({ (participant) -> Bool in
                 return participant.responded
             }).count ?? 0
-            let attributedText = NSMutableAttributedString(string: L10n.Quests.invitationsHeader, attributes: [.foregroundColor: UIColor.gray200()])
-            attributedText.append(NSAttributedString(string: " \(respondedCount)/\(participantCount)", attributes: [.foregroundColor: UIColor.gray400()]))
+            let attributedText = NSMutableAttributedString(string: L10n.Quests.invitationsHeader, attributes: [.foregroundColor: UIColor.gray200])
+            attributedText.append(NSAttributedString(string: " \(respondedCount)/\(participantCount)", attributes: [.foregroundColor: UIColor.gray400]))
             invitationsHeader.attributedText = attributedText
         }
     }
