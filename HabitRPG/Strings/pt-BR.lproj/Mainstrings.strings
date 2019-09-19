@@ -852,7 +852,7 @@
 "titles.avatar" = "Avatar";
 "titles.gift_subscription" = "Presente de Assinatura";
 "stats.total" = "Total";
-"stats.strength_text" = "Aumenta o bônus de acertos críticos e os torna mais prováveis ao marcar uma tarefa. Também aumenta o dano causado aos chefes. ";
+"stats.strength_text" = "Aumenta o bônus de acertos críticos e os torna mais prováveis ao marcar uma tarefa. Também aumenta o dano causado aos chefões. ";
 "tasks.team" = "Time";
 "tasks.due_today" = "Devido hoje";
 "tasks.due_tomorrow" = "Amanha";
@@ -888,7 +888,7 @@
 "groups.invite_member" = "Convidar um membro";
 "quests.reward_experience" = "%d Pontos de Experiência";
 "quests.reward_gold" = "%d Ouro";
-"quests.rage_attack" = "Ataque de raiva: %@";
+"quests.rage_attack" = "Ataque de fúria: %@";
 "open_app_store" = "Abra a página da App Store";
 "tap_to_show" = "Toque para mostrar";
 "groups.invite.add_username" = "Adicione um nome de usuário";
