@@ -29,7 +29,7 @@ class RealmInboxConversation: Object, InboxConversationProtocol {
                 return
             }
             if let newContributor = newValue {
-                realmContributor = RealmContributor(id: uuid, contributor: newContributor)
+                realmContributor = RealmContributor(id: "c" + uuid, contributor: newContributor)
             }
         }
     }
@@ -44,7 +44,7 @@ class RealmInboxConversation: Object, InboxConversationProtocol {
                 return
             }
             if let newUserStyle = newValue {
-                realmUserStyles = RealmUserStyle(messageID: uuid, userStyleProtocol: newUserStyle)
+                realmUserStyles = RealmUserStyle(messageID: "c" + uuid, userStyleProtocol: newUserStyle)
             }
         }
     }
