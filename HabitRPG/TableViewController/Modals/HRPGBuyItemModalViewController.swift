@@ -291,7 +291,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     @IBAction func pinPressed() {
         var path = ""
         var pinType = ""
-        if let inAppReward = reward {
+        if let inAppReward = reward, inAppReward.isValid {
             path = inAppReward.path ?? ""
             pinType = inAppReward.pinType ?? ""
         }

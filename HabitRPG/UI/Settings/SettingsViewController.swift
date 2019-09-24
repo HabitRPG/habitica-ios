@@ -434,7 +434,7 @@ class SettingsViewController: FormViewController, Themeable {
                     cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
                     cell.textLabel?.textAlignment = .natural
                     cell.accessoryType = .disclosureIndicator
-                    if self?.user?.flags?.verifiedUsername == false {
+                    if self?.user?.isValid == true && self?.user?.flags?.verifiedUsername == false {
                         cell.detailTextLabel?.text = L10n.Settings.usernameNotConfirmed
                         cell.detailTextLabel?.textColor = UIColor.red50
                     } else {

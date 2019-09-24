@@ -217,12 +217,14 @@ class TaskFormViewController: FormViewController, Themeable {
                 taskTintColor = UIColor.purple300
             }
         } else {
-            if theme.isDark {
-                lightTaskTintColor = UIColor.forTaskValue(Int(task.value))
-                taskTintColor = UIColor.forTaskValueDark(Int(task.value))
-            } else {
-                lightTaskTintColor = UIColor.forTaskValueLight(Int(task.value))
-                taskTintColor = UIColor.forTaskValue(Int(task.value))
+            if (task.isValid) {
+                if theme.isDark {
+                    lightTaskTintColor = UIColor.forTaskValue(Int(task.value))
+                    taskTintColor = UIColor.forTaskValueDark(Int(task.value))
+                } else {
+                    lightTaskTintColor = UIColor.forTaskValueLight(Int(task.value))
+                    taskTintColor = UIColor.forTaskValue(Int(task.value))
+                }
             }
         }
         tableView.reloadData()
