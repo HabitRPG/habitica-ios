@@ -90,6 +90,7 @@
 		2974BD97208E0E0D00EC1A25 /* SubscriptionPlanProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BD96208E0E0D00EC1A25 /* SubscriptionPlanProtocol.swift */; };
 		2974BD99208E0E6800EC1A25 /* SubscriptionConsecutiveProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BD98208E0E6800EC1A25 /* SubscriptionConsecutiveProtocol.swift */; };
 		298184A020F8AC3E00F06D3D /* BaseModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2981849F20F8AC3E00F06D3D /* BaseModelProtocol.swift */; };
+		29865F37233AB4530041FAA4 /* TsakHistoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29865F36233AB4530041FAA4 /* TsakHistoryProtocol.swift */; };
 		298CB20D20AF0696006DA349 /* QuestBossRageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298CB20C20AF0696006DA349 /* QuestBossRageProtocol.swift */; };
 		298CB20F20AF06DD006DA349 /* QuestDropProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298CB20E20AF06DD006DA349 /* QuestDropProtocol.swift */; };
 		298CB21120AF0722006DA349 /* QuestDropItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298CB21020AF0722006DA349 /* QuestDropItemProtocol.swift */; };
@@ -215,6 +216,7 @@
 		2974BD96208E0E0D00EC1A25 /* SubscriptionPlanProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionPlanProtocol.swift; sourceTree = "<group>"; };
 		2974BD98208E0E6800EC1A25 /* SubscriptionConsecutiveProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionConsecutiveProtocol.swift; sourceTree = "<group>"; };
 		2981849F20F8AC3E00F06D3D /* BaseModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModelProtocol.swift; sourceTree = "<group>"; };
+		29865F36233AB4530041FAA4 /* TsakHistoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TsakHistoryProtocol.swift; sourceTree = "<group>"; };
 		298CB20C20AF0696006DA349 /* QuestBossRageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestBossRageProtocol.swift; sourceTree = "<group>"; };
 		298CB20E20AF06DD006DA349 /* QuestDropProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestDropProtocol.swift; sourceTree = "<group>"; };
 		298CB21020AF0722006DA349 /* QuestDropItemProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestDropItemProtocol.swift; sourceTree = "<group>"; };
@@ -303,6 +305,7 @@
 			isa = PBXGroup;
 			children = (
 				298FB9EA204D940E004DDACC /* TaskProtocol.swift */,
+				29865F36233AB4530041FAA4 /* TsakHistoryProtocol.swift */,
 				29A6B86920690D470086B2A6 /* WeekRepeatProtocol.swift */,
 				292DEE7B204E372E0086D5F7 /* ChecklistItemProtocol.swift */,
 				292DEE85204E48A80086D5F7 /* ReminderProtocol.swift */,
@@ -606,7 +609,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/../Pods/Target Support Files/Pods-Habitica ModelsTests/Pods-Habitica ModelsTests-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Habitica ModelsTests/Pods-Habitica ModelsTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Keys/Keys.framework",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
 				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
@@ -621,7 +624,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-Habitica ModelsTests/Pods-Habitica ModelsTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Habitica ModelsTests/Pods-Habitica ModelsTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		825C18ED3E86B319711737A9 /* [CP] Check Pods Manifest.lock */ = {
@@ -748,6 +751,7 @@
 				298CB20D20AF0696006DA349 /* QuestBossRageProtocol.swift in Sources */,
 				DC2C4767C68C2D9F295C7804 /* ProfileProtocol.swift in Sources */,
 				2914489A208A32B400F3A6B5 /* CustomizationProtocol.swift in Sources */,
+				29865F37233AB4530041FAA4 /* TsakHistoryProtocol.swift in Sources */,
 				295BC6ED226F113400DDDF1A /* NotificationNewChatProtocol.swift in Sources */,
 				2956110B2056E14300D9711A /* QuestCollectProtocol.swift in Sources */,
 				295E9DE820B3263E00D58D45 /* ShopCategoryProtocol.swift in Sources */,

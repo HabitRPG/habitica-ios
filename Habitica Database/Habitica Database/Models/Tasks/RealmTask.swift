@@ -133,6 +133,27 @@ class RealmTask: Object, TaskProtocol {
         }
     }
     var realmNextDue = List<Date>()
+    @objc dynamic var history: [TaskHistoryProtocol] {
+        get {
+            if realmHistory.isInvalidated {
+                return []
+            }
+            return realmHistory.map({ (tag) -> TaskHistoryProtocol in
+                return tag
+            })
+        }
+        set {
+            realmHistory.removeAll()
+            newValue.forEach { (history) in
+                if let realmHistoryEntry = history as? RealmTaskHistory {
+                    realmHistory.append(realmHistoryEntry)
+                } else {
+                    realmHistory.append(RealmTaskHistory(taskID: id ?? "", historyProtocol: history))
+                }
+            }
+        }
+    }
+    var realmHistory = List<RealmTaskHistory>()
     
     @objc dynamic var daysOfMonth: [Int] {
         get {
@@ -174,7 +195,7 @@ class RealmTask: Object, TaskProtocol {
     }
     
     override static func ignoredProperties() -> [String] {
-        return ["tags", "checklist", "reminders"]
+        return ["tags", "checklist", "reminders", "history"]
     }
     
     convenience init(ownerID: String?, taskProtocol: TaskProtocol, tags: Results<RealmTag>?) {
@@ -219,6 +240,7 @@ class RealmTask: Object, TaskProtocol {
         }
         checklist = taskProtocol.checklist
         reminders = taskProtocol.reminders
+        history = taskProtocol.history
         weekRepeat = taskProtocol.weekRepeat
         nextDue = taskProtocol.nextDue
         

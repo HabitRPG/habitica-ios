@@ -80,6 +80,7 @@
 		2974BDA7208E1A5100EC1A25 /* RealmSubscriptionPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BDA6208E1A5100EC1A25 /* RealmSubscriptionPlan.swift */; };
 		2974BDA9208E1AFB00EC1A25 /* RealmSubscriptionConsecutive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BDA8208E1AFB00EC1A25 /* RealmSubscriptionConsecutive.swift */; };
 		2974BDB020908BE500EC1A25 /* RealmInboxMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BDAF20908BE500EC1A25 /* RealmInboxMessage.swift */; };
+		29865F39233AB4EC0041FAA4 /* RealmTaskHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29865F38233AB4EC0041FAA4 /* RealmTaskHistory.swift */; };
 		298CB21320AF0B22006DA349 /* RealmQuestDrop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298CB21220AF0B22006DA349 /* RealmQuestDrop.swift */; };
 		298CB21520AF0B3A006DA349 /* RealmQuestDropItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298CB21420AF0B3A006DA349 /* RealmQuestDropItem.swift */; };
 		298FB9B6204D9338004DDACC /* Habitica_Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 298FB9AC204D9338004DDACC /* Habitica_Database.framework */; };
@@ -184,6 +185,7 @@
 		2974BDA6208E1A5100EC1A25 /* RealmSubscriptionPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmSubscriptionPlan.swift; sourceTree = "<group>"; };
 		2974BDA8208E1AFB00EC1A25 /* RealmSubscriptionConsecutive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmSubscriptionConsecutive.swift; sourceTree = "<group>"; };
 		2974BDAF20908BE500EC1A25 /* RealmInboxMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmInboxMessage.swift; sourceTree = "<group>"; };
+		29865F38233AB4EC0041FAA4 /* RealmTaskHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmTaskHistory.swift; sourceTree = "<group>"; };
 		298CB21220AF0B22006DA349 /* RealmQuestDrop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmQuestDrop.swift; sourceTree = "<group>"; };
 		298CB21420AF0B3A006DA349 /* RealmQuestDropItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmQuestDropItem.swift; sourceTree = "<group>"; };
 		298FB9AC204D9338004DDACC /* Habitica_Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Habitica_Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -292,6 +294,7 @@
 			isa = PBXGroup;
 			children = (
 				292DEE6A204DCF2E0086D5F7 /* RealmTask.swift */,
+				29865F38233AB4EC0041FAA4 /* RealmTaskHistory.swift */,
 				29A6B86B20690DF00086B2A6 /* RealmWeekRepeat.swift */,
 				292DEE83204E41AF0086D5F7 /* RealmChecklistItem.swift */,
 				292DEE89204E49600086D5F7 /* RealmReminder.swift */,
@@ -573,30 +576,20 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/../Pods/Target Support Files/Pods-Habitica DatabaseTests/Pods-Habitica DatabaseTests-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Habitica DatabaseTests/Pods-Habitica DatabaseTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
 				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
 				"${BUILT_PRODUCTS_DIR}/iOSSnapshotTestCase/FBSnapshotTestCase.framework",
-				"${BUILT_PRODUCTS_DIR}/Keys/Keys.framework",
-				"${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework",
-				"${BUILT_PRODUCTS_DIR}/ReactiveSwift/ReactiveSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
-				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSnapshotTestCase.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Keys.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveCocoa.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-Habitica DatabaseTests/Pods-Habitica DatabaseTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Habitica DatabaseTests/Pods-Habitica DatabaseTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A8001DCFA0AD202CB6AC8AD1 /* [CP] Check Pods Manifest.lock */ = {
@@ -675,6 +668,7 @@
 				290B62562073D99E007287C4 /* RealmInbox.swift in Sources */,
 				292726B220B7043C009DD08A /* RealmChallengeMembership.swift in Sources */,
 				2931150A22D7473600E4A9E3 /* RealmAchievement.swift in Sources */,
+				29865F39233AB4EC0041FAA4 /* RealmTaskHistory.swift in Sources */,
 				290C3048206D47A30066AF5B /* SocialLocalRepository.swift in Sources */,
 				291448A6208A3C7100F3A6B5 /* CustomizationLocalRepository.swift in Sources */,
 				2902798B20583479006DACB9 /* RealmQuestState.swift in Sources */,

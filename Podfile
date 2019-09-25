@@ -75,6 +75,8 @@ target 'Habitica' do
   pod 'Prelude'
 
   pod 'Magnetic'
+
+  pod 'Charts'
   
   target 'HabiticaTests' do
     inherit! :search_paths

@@ -188,6 +188,7 @@
 		2974BDA1208E16E100EC1A25 /* APISubscriptionConsecutive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BDA0208E16E100EC1A25 /* APISubscriptionConsecutive.swift */; };
 		2974BDAB208F4D6B00EC1A25 /* UnlockCustomizationsCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BDAA208F4D6B00EC1A25 /* UnlockCustomizationsCall.swift */; };
 		2974BDB220908E4600EC1A25 /* APIInboxMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BDB120908E4600EC1A25 /* APIInboxMessages.swift */; };
+		29865F3B233AB5A70041FAA4 /* APITaskHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29865F3A233AB5A70041FAA4 /* APITaskHistory.swift */; };
 		29990DB020E3E791001ADD8B /* APIQuestProgressCollect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29990DAF20E3E791001ADD8B /* APIQuestProgressCollect.swift */; };
 		29990DB420E4EB3F001ADD8B /* RetrieveInboxMessagesCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29990DB320E4EB3F001ADD8B /* RetrieveInboxMessagesCall.swift */; };
 		29990DBA20E51F54001ADD8B /* APIPushDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29990DB920E51F54001ADD8B /* APIPushDevice.swift */; };
@@ -426,6 +427,7 @@
 		2974BDA0208E16E100EC1A25 /* APISubscriptionConsecutive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISubscriptionConsecutive.swift; sourceTree = "<group>"; };
 		2974BDAA208F4D6B00EC1A25 /* UnlockCustomizationsCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockCustomizationsCall.swift; sourceTree = "<group>"; };
 		2974BDB120908E4600EC1A25 /* APIInboxMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIInboxMessages.swift; sourceTree = "<group>"; };
+		29865F3A233AB5A70041FAA4 /* APITaskHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITaskHistory.swift; sourceTree = "<group>"; };
 		29990DAF20E3E791001ADD8B /* APIQuestProgressCollect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIQuestProgressCollect.swift; sourceTree = "<group>"; };
 		29990DB320E4EB3F001ADD8B /* RetrieveInboxMessagesCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveInboxMessagesCall.swift; sourceTree = "<group>"; };
 		29990DB920E51F54001ADD8B /* APIPushDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIPushDevice.swift; sourceTree = "<group>"; };
@@ -596,6 +598,7 @@
 			isa = PBXGroup;
 			children = (
 				292DEE50204DA3A30086D5F7 /* APITask.swift */,
+				29865F3A233AB5A70041FAA4 /* APITaskHistory.swift */,
 				29A6B86D20690F0C0086B2A6 /* APIWeekRepeat.swift */,
 				292DEE81204E411C0086D5F7 /* APIChecklistItem.swift */,
 				292DEE87204E490A0086D5F7 /* APIReminder.swift */,
@@ -1066,30 +1069,20 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/../Pods/Target Support Files/Pods-Habitica API ClientTests/Pods-Habitica API ClientTests-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Habitica API ClientTests/Pods-Habitica API ClientTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
 				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
 				"${BUILT_PRODUCTS_DIR}/iOSSnapshotTestCase/FBSnapshotTestCase.framework",
-				"${BUILT_PRODUCTS_DIR}/Keys/Keys.framework",
-				"${BUILT_PRODUCTS_DIR}/OHHTTPStubs/OHHTTPStubs.framework",
-				"${BUILT_PRODUCTS_DIR}/Prelude/Prelude.framework",
-				"${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework",
-				"${BUILT_PRODUCTS_DIR}/ReactiveSwift/ReactiveSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSnapshotTestCase.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Keys.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OHHTTPStubs.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Prelude.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveCocoa.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-Habitica API ClientTests/Pods-Habitica API ClientTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Habitica API ClientTests/Pods-Habitica API ClientTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C1BDEF6207AFD20B4975AB7F /* [CP] Check Pods Manifest.lock */ = {
@@ -1129,6 +1122,7 @@
 				29B4788C20BEFBDC00B6123F /* ScoreChecklistItem.swift in Sources */,
 				2919FDD72090D2510096A53B /* DeleteInboxMessageCall.swift in Sources */,
 				299DDFC921F215E8002B67D5 /* UnlockGearCall.swift in Sources */,
+				29865F3B233AB5A70041FAA4 /* APITaskHistory.swift in Sources */,
 				295E9DC820B2DF9600D58D45 /* PurchaseItemCall.swift in Sources */,
 				290B6291207E1E76007287C4 /* RetrieveMemberCall.swift in Sources */,
 				2914489E208A346700F3A6B5 /* APICustomization.swift in Sources */,

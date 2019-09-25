@@ -29,8 +29,10 @@ enum TaskFormTags {
     static let rewardCost = "rewardCost"
     static let reminderSection = "reminderSection"
     static let tagSection = "tagSection"
+    static let historySection = "historySection"
     static let tags = "tags"
     static let delete = "delete"
+    static let historyButton = "historyButton"
 }
 
 //swiftlint:disable:next type_body_length
@@ -173,8 +175,21 @@ class TaskFormViewController: FormViewController, Themeable {
             setupReminders()
         }
         setupTags()
+
+        
         
         if !isCreating {
+            form +++ Section { section in
+                section.tag = TaskFormTags.historySection
+            }
+            <<< ButtonRow(TaskFormTags.historyButton) { row in
+                row.title = L10n.taskHistory
+                row.onCellSelection({ (_, _) in
+                    self.historyButtonTapped()
+                })
+                row.hidden = Condition(booleanLiteral: HabiticaAppDelegate.isRunningLive())
+            }
+            
             form +++ Section()
                 <<< ButtonRow(TaskFormTags.delete) { row in
                     row.title = L10n.delete
@@ -776,5 +791,13 @@ class TaskFormViewController: FormViewController, Themeable {
             self?.dismiss(animated: true, completion: nil)
         }
         alertController.show()
+    }
+        
+    private func historyButtonTapped() {
+        let nc = StoryboardScene.Tasks.taskHistoryNavigationController.instantiate()
+        if let historyViewController = nc.topViewController as? TaskHistoryViewController {
+            historyViewController.taskID = taskId
+        }
+        present(nc, animated: true, completion: nil)
     }
 }

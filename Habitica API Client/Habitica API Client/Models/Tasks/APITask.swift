@@ -38,6 +38,7 @@ public class APITask: TaskProtocol, Codable {
     public var tags: [TagProtocol] = []
     public var checklist: [ChecklistItemProtocol] = []
     public var reminders: [ReminderProtocol] = []
+    public var history: [TaskHistoryProtocol] = []
     public var createdAt: Date?
     public var updatedAt: Date?
     public var startDate: Date?
@@ -80,6 +81,7 @@ public class APITask: TaskProtocol, Codable {
         case tags
         case checklist
         case reminders
+        case history
         case weekRepeat = "repeat"
         case nextDue
         case daysOfMonth
@@ -119,6 +121,7 @@ public class APITask: TaskProtocol, Codable {
             } ?? []
         checklist = (try? values.decode([APIChecklistItem].self, forKey: .checklist)) ?? []
         reminders = (try? values.decode([APIReminder].self, forKey: .reminders)) ?? []
+        history = (try? values.decode([APITaskHistory].self, forKey: .history)) ?? []
         weekRepeat = try? values.decode(APIWeekRepeat.self, forKey: .weekRepeat)
         daysOfMonth = (try? values.decode([Int].self, forKey: .daysOfMonth)) ?? []
         weeksOfMonth = (try? values.decode([Int].self, forKey: .weeksOfMonth)) ?? []

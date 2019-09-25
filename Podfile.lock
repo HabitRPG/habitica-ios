@@ -5,6 +5,9 @@ PODS:
     - AppAuth/ExternalUserAgent (= 1.2.0)
   - AppAuth/Core (1.2.0)
   - AppAuth/ExternalUserAgent (1.2.0)
+  - Charts (3.3.0):
+    - Charts/Core (= 3.3.0)
+  - Charts/Core (3.3.0)
   - Crashlytics (3.14.0):
     - Fabric (~> 1.10.2)
   - DateTools (2.0.0)
@@ -213,6 +216,7 @@ PODS:
 DEPENDENCIES:
   - Amplitude-iOS (~> 4.8.0)
   - AppAuth
+  - Charts
   - Crashlytics
   - DateTools
   - DeepLinkKit
@@ -254,6 +258,7 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Amplitude-iOS
     - AppAuth
+    - Charts
     - Crashlytics
     - DateTools
     - DeepLinkKit
@@ -315,6 +320,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Amplitude-iOS: 6e2a21000b89aaa428a45cd22e56caed5e2360bf
   AppAuth: bce82c76043657c99d91e7882e8a9e1a93650cd4
+  Charts: e0dd4cd8f257bccf98407b58183ddca8e8d5b578
   Crashlytics: 540b7e5f5da5a042647227a5e3ac51d85eed06df
   DateTools: 933ac9c490f21f92127cf690ccd8c397e0126caf
   DeepLinkKit: 9f300348cbb20ef8389a5018a57d8c9952b1831c
@@ -370,6 +376,6 @@ SPEC CHECKSUMS:
   VTAcknowledgementsViewController: 3bb742da852a5161dc9f4b017e52f926a41ef5d3
   XLForm: b8d47a9a00fb6166981cb40de7169d70d611e9be
 
-PODFILE CHECKSUM: 16caa542b64c5e5366e5a92741b099539bc435c5
+PODFILE CHECKSUM: 8ebaad5717ce595dd382f81f0d19caecfd83a7d7
 
 COCOAPODS: 1.7.5

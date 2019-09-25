@@ -49,6 +49,7 @@ public protocol TaskProtocol: BaseRewardProtocol {
     var checklist: [ChecklistItemProtocol] { get set }
     var reminders: [ReminderProtocol] { get set }
     var weekRepeat: WeekRepeatProtocol? { get set }
+    var history: [TaskHistoryProtocol] { get set }
     var nextDue: [Date] { get set }
     var weeksOfMonth: [Int] { get set }
     var daysOfMonth: [Int] { get set }

@@ -470,6 +470,8 @@ public enum L10n {
   public static var takeMeBack: String { return L10n.tr("Mainstrings", "take_me_back") }
   /// Tap to Show
   public static var tapToShow: String { return L10n.tr("Mainstrings", "tap_to_show") }
+  /// Task History (Very Experimental)
+  public static var taskHistory: String { return L10n.tr("Mainstrings", "task_history") }
   /// Welcome to the Inn! Pull up a chair to chat, or take a break from your tasks.
   public static var tavernIntroHeader: String { return L10n.tr("Mainstrings", "tavern_intro_header") }
   /// Teleporting to Habitica
