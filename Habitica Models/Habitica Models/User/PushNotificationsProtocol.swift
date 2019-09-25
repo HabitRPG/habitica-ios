@@ -20,5 +20,9 @@ public protocol PushNotificationsProtocol {
     var questStarted: Bool { get set }
     var wonChallenge: Bool { get set }
     var majorUpdates: Bool { get set }
+    var partyActivity: Bool { get set }
+    var mentionParty: Bool { get set }
+    var mentionJoinedGuild: Bool { get set }
+    var mentionUnjoinedGuild: Bool { get set }
     var unsubscribeFromAll: Bool { get set }
 }

@@ -1288,6 +1288,14 @@ public enum L10n {
       public static var invitedParty: String { return L10n.tr("Mainstrings", "settings.push_notifications.invited_party") }
       /// Invited to Quest
       public static var invitedQuest: String { return L10n.tr("Mainstrings", "settings.push_notifications.invited_quest") }
+      /// @Mentions in joined Guilds
+      public static var mentionJoinedGuild: String { return L10n.tr("Mainstrings", "settings.push_notifications.mention_joined_guild") }
+      /// @Mentions in Party
+      public static var mentionParty: String { return L10n.tr("Mainstrings", "settings.push_notifications.mention_party") }
+      /// @Mentions in not joined Guilds
+      public static var mentionUnjoinedGuild: String { return L10n.tr("Mainstrings", "settings.push_notifications.mention_unjoined_guild") }
+      /// Party Activity
+      public static var partyActivity: String { return L10n.tr("Mainstrings", "settings.push_notifications.party_activity") }
       /// Your quest has begun
       public static var questBegun: String { return L10n.tr("Mainstrings", "settings.push_notifications.quest_begun") }
       /// Received private message

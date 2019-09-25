@@ -329,7 +329,11 @@ private let pushNotificationsMapping = [
     L10n.Settings.PushNotifications.invitedParty: "invitedParty",
     L10n.Settings.PushNotifications.invitedGuid: "invitedGuild",
     L10n.Settings.PushNotifications.importantAnnouncement: "majorUpdates",
-    L10n.Settings.PushNotifications.questBegun: "questStarted"
+    L10n.Settings.PushNotifications.questBegun: "questStarted",
+    L10n.Settings.PushNotifications.partyActivity: "partyActivity",
+    L10n.Settings.PushNotifications.mentionParty: "mentionParty",
+    L10n.Settings.PushNotifications.mentionJoinedGuild: "mentionJoinedGuild",
+    L10n.Settings.PushNotifications.mentionUnjoinedGuild: "mentionUnjoinedGuild"
 ]
 
 class SettingsViewController: FormViewController, Themeable {
@@ -592,7 +596,14 @@ class SettingsViewController: FormViewController, Themeable {
                 L10n.Settings.PushNotifications.invitedGuid,
                 L10n.Settings.PushNotifications.invitedQuest,
                 L10n.Settings.PushNotifications.questBegun,
-                L10n.Settings.PushNotifications.importantAnnouncement]
+                L10n.Settings.PushNotifications.importantAnnouncement,
+                L10n.Settings.PushNotifications.partyActivity]
+                if configRepository.bool(variable: .enablePushMentions) {
+                    row.options?.append(contentsOf: [
+                    L10n.Settings.PushNotifications.mentionParty,
+                    L10n.Settings.PushNotifications.mentionJoinedGuild,
+                    L10n.Settings.PushNotifications.mentionUnjoinedGuild])
+                }
                 row.disabled = Condition.function([SettingsTags.disableAllNotifications], { (form) -> Bool in
                     return (form.rowBy(tag: SettingsTags.disableAllNotifications) as? SwitchRow)?.value == true
                 })
@@ -867,6 +878,18 @@ class SettingsViewController: FormViewController, Themeable {
         }
         if notificationPreferences.wonChallenge {
             pushNotifications.insert(L10n.Settings.PushNotifications.wonChallenge)
+        }
+        if notificationPreferences.partyActivity {
+            pushNotifications.insert(L10n.Settings.PushNotifications.partyActivity)
+        }
+        if notificationPreferences.mentionParty {
+            pushNotifications.insert(L10n.Settings.PushNotifications.mentionParty)
+        }
+        if notificationPreferences.mentionJoinedGuild {
+            pushNotifications.insert(L10n.Settings.PushNotifications.mentionJoinedGuild)
+        }
+        if notificationPreferences.mentionUnjoinedGuild {
+            pushNotifications.insert(L10n.Settings.PushNotifications.mentionUnjoinedGuild)
         }
         return pushNotifications
     }

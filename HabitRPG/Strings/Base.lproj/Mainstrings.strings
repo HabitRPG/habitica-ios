@@ -301,6 +301,10 @@
 "settings.push_notifications.quest_begun" = "Your quest has begun";
 "settings.push_notifications.invited_quest" = "Invited to Quest";
 "settings.push_notifications.important_announcement" = "Important Announcements";
+"settings.push_notifications.party_activity" = "Party Activity";
+"settings.push_notifications.mention_party" = "@Mentions in Party";
+"settings.push_notifications.mention_joined_guild" = "@Mentions in joined Guilds";
+"settings.push_notifications.mention_unjoined_guild" = "@Mentions in not joined Guilds";
 "theme.default_theme" = "Default";
 "theme.blue" = "Blue";
 "theme.teal" = "Teal";

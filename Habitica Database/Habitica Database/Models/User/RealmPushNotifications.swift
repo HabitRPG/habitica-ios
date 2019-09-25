@@ -22,6 +22,10 @@ class RealmPushNotifications: Object, PushNotificationsProtocol {
     @objc dynamic var wonChallenge: Bool = false
     @objc dynamic var majorUpdates: Bool = false
     @objc dynamic var unsubscribeFromAll: Bool = false
+    @objc dynamic var partyActivity: Bool = false
+    @objc dynamic var mentionParty: Bool = false
+    @objc dynamic var mentionJoinedGuild: Bool = false
+    @objc dynamic var mentionUnjoinedGuild: Bool = false
     
     override static func primaryKey() -> String {
         return "id"
@@ -40,5 +44,9 @@ class RealmPushNotifications: Object, PushNotificationsProtocol {
         wonChallenge = pnProtocol.wonChallenge
         majorUpdates = pnProtocol.majorUpdates
         unsubscribeFromAll = pnProtocol.unsubscribeFromAll
+        partyActivity = pnProtocol.partyActivity
+        mentionParty = pnProtocol.mentionParty
+        mentionJoinedGuild = pnProtocol.mentionJoinedGuild
+        mentionUnjoinedGuild = pnProtocol.mentionUnjoinedGuild
     }
 }
