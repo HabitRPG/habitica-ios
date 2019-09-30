@@ -51,7 +51,17 @@ class AvatarView: UIView {
         "broad_armor_special_0": "gif",
         "broad_armor_special_1": "gif",
         "weapon_special_critical": "gif",
-        "Pet-Wolf-Cerberus": "gif"
+        "Pet-Wolf-Cerberus": "gif",
+        "armor_special_ks2019": "gif",
+        "slim_armor_special_ks2019": "gif",
+        "broad_armor_special_ks2019": "gif",
+        "eyewear_special_ks2019": "gif",
+        "head_special_ks2019": "gif",
+        "shield_special_ks2019": "gif",
+        "weapon_special_ks2019": "gif",
+        "Pet-Gryphon-Gryphatrice": "gif",
+        "Mount_Head_Gryphon-Gryphatrice": "gif",
+        "Mount_Body_Gryphon-Gryphatrice": "gif"
     ]
     
     private let viewOrder = [
