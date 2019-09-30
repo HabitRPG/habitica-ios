@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14865.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14819.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -163,9 +163,6 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B3d-7U-gIx">
                         <rect key="frame" x="343" y="82" width="32" height="59"/>
                         <color key="backgroundColor" red="0.76070064309999996" green="0.76083260770000005" blue="0.76069229839999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="32" id="bKb-pI-Gta"/>
-                        </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6f5-qQ-Ubz">
                         <rect key="frame" x="48" y="82" width="295" height="59"/>
@@ -178,7 +175,7 @@
                             <constraint firstAttribute="height" priority="500" id="MGG-dr-8Dc"/>
                         </constraints>
                     </stackView>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9XB-GP-lME">
+                    <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9XB-GP-lME">
                         <rect key="frame" x="343" y="0.0" width="32" height="141"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
@@ -193,6 +190,7 @@
                     <constraint firstItem="kZt-Pf-hDf" firstAttribute="top" secondItem="B5c-vl-zY0" secondAttribute="top" id="DrA-ff-6vl"/>
                     <constraint firstItem="jy7-IE-t1M" firstAttribute="height" secondItem="4AX-AP-buh" secondAttribute="height" id="Jyr-MP-Kaz"/>
                     <constraint firstItem="jy7-IE-t1M" firstAttribute="leading" secondItem="B5c-vl-zY0" secondAttribute="leading" id="PF5-lf-9SI"/>
+                    <constraint firstItem="B3d-7U-gIx" firstAttribute="width" secondItem="vIn-t1-fNp" secondAttribute="width" id="SlK-Lf-tdD"/>
                     <constraint firstItem="B3d-7U-gIx" firstAttribute="height" secondItem="4AX-AP-buh" secondAttribute="height" id="XJV-9H-2FK"/>
                     <constraint firstItem="kZt-Pf-hDf" firstAttribute="leading" secondItem="B5c-vl-zY0" secondAttribute="leading" id="aBh-Bt-6fZ"/>
                     <constraint firstItem="6f5-qQ-Ubz" firstAttribute="trailing" secondItem="4AX-AP-buh" secondAttribute="trailing" id="cSp-0b-fjE"/>
