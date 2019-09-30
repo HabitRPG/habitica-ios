@@ -247,7 +247,7 @@ class MainMenuViewController: BaseTableViewController {
         let indicatorView = cell.viewWithTag(2)
         indicatorView?.isHidden = item?.showIndicator == false
         indicatorView?.layer.cornerRadius = (indicatorView?.frame.size.height ?? 0) / 2
-        indicatorView?.backgroundColor = .clear
+        indicatorView?.backgroundColor = ThemeService.shared.theme.backgroundTintColor
         
         let subtitleLabel = cell.viewWithTag(3) as? UILabel
         subtitleLabel?.text = item?.subtitle
