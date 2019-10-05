@@ -247,7 +247,6 @@ class UserRepository: BaseRepository<UserLocalRepository> {
                     user.flags?.verifiedUsername = true
                 }
             }
-            ToastManager.show(text: L10n.usernameConfirmedToast, color: .green)
         })
     }
     
