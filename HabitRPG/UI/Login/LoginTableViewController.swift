@@ -474,6 +474,7 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
         textField.placeholder = L10n.email
         textField.borderStyle = .roundedRect
         textField.keyboardType = .emailAddress
+        textField.autocapitalizationType = .none
         stackView.addArrangedSubview(textField)
         alertController.contentView = stackView
         
