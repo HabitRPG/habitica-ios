@@ -103,7 +103,7 @@ class UserProfileViewController: BaseTableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return 5
+            return 6
         case 1, 2:
             return 8
         case 3:
@@ -126,8 +126,10 @@ class UserProfileViewController: BaseTableViewController {
             case 0:
                 cellname = "ProfileCell"
             case 2:
+                cellname = "ImageDetailSubtitleCell"
+            case 3:
                 cellname = "TextCell"
-            case 1, 3, 4:
+            case 1, 4, 5:
                 cellname = "SubtitleCell"
             default:
                 break
@@ -154,14 +156,23 @@ class UserProfileViewController: BaseTableViewController {
                 cell.textLabel?.text = L10n.username
                 cell.detailTextLabel?.text = member?.authentication?.local?.username
             case 2:
+                let textLabel = cell.viewWithTag(1) as? UILabel
+                let detailImage = cell.viewWithTag(2) as? UIImageView
+                let detailLabel = cell.viewWithTag(3) as? UILabel
+                let level = L10n.levelNumber(member?.stats?.level ?? 0)
+                let className = member?.stats?.habitClassNice ?? ""
+                textLabel?.text = L10n.level
+                detailImage?.image = HabiticaIcons.getIcon(forClass: member?.stats?.habitClass ?? "")
+                detailLabel?.text = "\(level) \(className.localizedCapitalized)"
+            case 3:
                 let textView = cell.viewWithTag(1) as? UITextView
                 textView?.attributedText = try? Down(markdownString: member?.profile?.blurb ?? "").toHabiticaAttributedString()
-            case 3:
+            case 4:
                 cell.textLabel?.text = L10n.Member.memberSince
                 if let date = member?.authentication?.timestamps?.createdAt {
                     cell.detailTextLabel?.text = DateFormatter.localizedString(from: date, dateStyle: .medium, timeStyle: .none)
                 }
-            case 4:
+            case 5:
                 cell.textLabel?.text = L10n.Member.lastLoggedIn
                 if let date = member?.authentication?.timestamps?.loggedIn {
                     cell.detailTextLabel?.text = DateFormatter.localizedString(from: date, dateStyle: .medium, timeStyle: .none)
@@ -207,8 +218,6 @@ class UserProfileViewController: BaseTableViewController {
         guard let stats = member.stats else {
             return
         }
-        let levelLabel = cell.viewWithTag(1) as? UILabel
-        levelLabel?.text = L10n.levelNumber(stats.level)
         
         let healthLabel = cell.viewWithTag(2) as? HRPGLabeledProgressBar
         if ThemeService.shared.theme.isDark {

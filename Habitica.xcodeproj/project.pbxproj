@@ -351,6 +351,7 @@
 		29FD8AA7203DA42A0094322E /* NSLayoutConstraint-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FD8AA6203DA42A0094322E /* NSLayoutConstraint-Extensions.swift */; };
 		29FEB278202B491600EA245A /* Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FEB277202B491600EA245A /* Avatar.swift */; };
 		29FEB27A202B4F0400EA245A /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FEB279202B4F0400EA245A /* AvatarView.swift */; };
+		2C28EBC3234AAC5600905508 /* HabiticaIcons+ClassHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C28EBC2234AAC5500905508 /* HabiticaIcons+ClassHelpers.swift */; };
 		49005B721F180589004830D9 /* HRPGCurrencyCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49005B711F180588004830D9 /* HRPGCurrencyCountView.swift */; };
 		49005B7C1F18371F004830D9 /* HRPGShopUserHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49005B7B1F18371E004830D9 /* HRPGShopUserHeaderView.swift */; };
 		49005B7E1F183775004830D9 /* HRPGShopUserHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49005B7D1F183775004830D9 /* HRPGShopUserHeaderView.xib */; };
@@ -1027,6 +1028,7 @@
 		29FEB279202B4F0400EA245A /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		29FFB19320F5080D0031D914 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/OnePasswordExtension.strings; sourceTree = "<group>"; };
 		2AA9CAD02350FFCB017F32D0 /* Pods-Habitica Snapshots.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica Snapshots.release.xcconfig"; path = "Pods/Target Support Files/Pods-Habitica Snapshots/Pods-Habitica Snapshots.release.xcconfig"; sourceTree = "<group>"; };
+		2C28EBC2234AAC5500905508 /* HabiticaIcons+ClassHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "HabiticaIcons+ClassHelpers.swift"; path = "HabitRPG/Utilities/HabiticaIcons+ClassHelpers.swift"; sourceTree = SOURCE_ROOT; };
 		2FD6A8DD61F63B61871C94A9 /* Pods-Habitica.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Habitica/Pods-Habitica.debug.xcconfig"; sourceTree = "<group>"; };
 		2FDBD03FA52D6A93D9B664CE /* Pods_Habitica.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BC569DB4F5A31ED940986A5 /* Pods-Habitica.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica.release.xcconfig"; path = "Pods/Target Support Files/Pods-Habitica/Pods-Habitica.release.xcconfig"; sourceTree = "<group>"; };
@@ -2256,6 +2258,7 @@
 				494E54001F2D1ED90003683C /* CAGradientLayer+HRPGShopGradient.m */,
 				29E162E11FFC21E100685640 /* CustomFontMetrics.swift */,
 				299BD6361F5457E100E22935 /* HabiticaIcons.swift */,
+				2C28EBC2234AAC5500905508 /* HabiticaIcons+ClassHelpers.swift */,
 				49E1664920E6AE9200D510B1 /* HRPGCoachmarkFrameProvider.h */,
 				49E1664A20E6AE9200D510B1 /* HRPGCoachmarkFrameProvider.m */,
 				D9E9E0C21CCE55DA006D94A2 /* HRPGSharingManager.h */,
@@ -3685,6 +3688,7 @@
 				29DBFF0120CE6FFF00DF9CF2 /* SoundManager.swift in Sources */,
 				49FA9FF720DC47AD0086C478 /* TaskTableViewController.swift in Sources */,
 				D9E46AFD1DAB98D700E390D7 /* HRPGGemHeaderNavigationController.m in Sources */,
+				2C28EBC3234AAC5600905508 /* HabiticaIcons+ClassHelpers.swift in Sources */,
 				C897F63C218CCF51002907C2 /* RouterHandler.swift in Sources */,
 				D914890D1CD23A900015B42D /* HRPGMaintenanceViewController.m in Sources */,
 				D9525F9D1E64739900C529B8 /* PaddedView.swift in Sources */,
