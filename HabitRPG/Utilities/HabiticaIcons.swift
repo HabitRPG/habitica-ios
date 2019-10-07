@@ -6549,8 +6549,16 @@ public class HabiticaIcons : NSObject {
         let labelRect = CGRect(x: 4, y: 20, width: 32, height: 13)
         let labelStyle = NSMutableParagraphStyle()
         labelStyle.alignment = .center
+
+        var font = UIFont(name: "HelveticaNeue", size: 12)!
+        
+        while font.pointSize > 0 && memberCountLabel.size(withAttributes: [
+            .font: font]).width > labelRect.width {
+                font = UIFont(name: "HelveticaNeue", size: font.pointSize - 1)!
+        }
+        
         let labelFontAttributes = [
-            .font: UIFont(name: "HelveticaNeue", size: 12)!,
+            .font: font,
             .foregroundColor: crestColor5,
             .paragraphStyle: labelStyle,
             ] as [NSAttributedString.Key: Any]
