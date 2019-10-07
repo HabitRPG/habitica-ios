@@ -33,7 +33,7 @@ env:
 script:
   - set -o pipefail
   - swiftlint --reporter "emoji"
-  - xcodebuild -workspace Habitica.xcworkspace -scheme HabiticaTests -destination "$DESTINATION" -sdk iphonesimulator12.1 clean build build-for-testing ONLY_ACTIVE_ARCH=NO | xcpretty  -f `xcpretty-travis-formatter`
-  - xcodebuild -workspace Habitica.xcworkspace -scheme HabiticaTests -destination "$DESTINATION" -sdk iphonesimulator12.1 test-without-building ONLY_ACTIVE_ARCH=NO | xcpretty  -f `xcpretty-travis-formatter`
+  - xcodebuild -workspace Habitica.xcworkspace -scheme HabiticaTests -destination "$DESTINATION" -sdk iphonesimulator12.2 clean build build-for-testing ONLY_ACTIVE_ARCH=NO | xcpretty  -f `xcpretty-travis-formatter`
+  - xcodebuild -workspace Habitica.xcworkspace -scheme HabiticaTests -destination "$DESTINATION" -sdk iphonesimulator12.2 test-without-building ONLY_ACTIVE_ARCH=NO | xcpretty  -f `xcpretty-travis-formatter`
 after_success:
   - sleep 10
