@@ -70,7 +70,7 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     }
     
     func useSkill(skill: SkillProtocol, targetId: String? = nil) -> Signal<SkillResponseProtocol?, Never> {
-        return UseSkillCall(skill: skill, target: targetId).objectSignal.on(value: {[weak self] skillResponse in
+        return UseSkillCall(key: skill.key ?? "", target: skill.target ?? "", targetID: targetId).objectSignal.on(value: {[weak self] skillResponse in
                 if let response = skillResponse {
                     self?.localRepository.save(userID: self?.currentUserId, skillResponse: response)
                 }
@@ -90,6 +90,12 @@ class UserRepository: BaseRepository<UserLocalRepository> {
             let toastView = ToastView(title: L10n.Skills.usedTransformationItem(item.text ?? ""), background: .gray)
             ToastManager.show(toast: toastView)
         })
+    }
+    
+    func useDebuffItem(key: String) -> Signal<UserProtocol?, Never> {
+        return UseSkillCall(key: key).objectSignal.flatMap(.latest) {[weak self] _ in
+            return self?.retrieveUser() ?? Signal.empty
+        }
     }
     
     func runCron(tasks: [TaskProtocol]) {

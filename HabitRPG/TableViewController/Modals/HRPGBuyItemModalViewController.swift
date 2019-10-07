@@ -423,6 +423,15 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                             HRPGBuyItemModalViewController.displayViewController(name: "InsufficientGoldViewController", parent: topViewController)
                         }
                     })
+                } else if (purchaseType == "debuffPotion") {
+                    userRepository.useDebuffItem(key: key).observeResult { (result) in
+                        switch result {
+                        case .success(_):
+                            successBlock()
+                        case .failure(_):
+                                HRPGBuyItemModalViewController.displayViewController(name: "InsufficientGoldViewController", parent: topViewController)
+                            }
+                        }
                 } else {
                     inventoryRepository.buyObject(key: key, price: value, text: text).observeResult({ (result) in
                     switch result {
