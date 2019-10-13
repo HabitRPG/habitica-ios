@@ -17,6 +17,9 @@ class ItemsViewController: BaseTableViewController {
     
     private var isHatching = false {
         didSet {
+			if !isPresentedModally {
+				cancelButton.hidden = !isHatching
+			}
             dataSource.isHatching = isHatching
         }
     }
@@ -32,7 +35,7 @@ class ItemsViewController: BaseTableViewController {
         dataSource.itemType = itemType
         
         if (navigationController as? TopHeaderViewController) != nil {
-            navigationItem.rightBarButtonItem = nil
+			navigationItem.rightBarButtonItem.hidden = true
             isPresentedModally = false
         } else {
             isPresentedModally = true
@@ -147,8 +150,9 @@ class ItemsViewController: BaseTableViewController {
         imageAlert.titleBackgroundColor = ThemeService.shared.theme.backgroundTintColor
         imageAlert.show()
     }
-    
+
     @IBAction func cancelButtonTapped(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+		isHatching = false
+		dismissIfNeeded()
     }
 }
