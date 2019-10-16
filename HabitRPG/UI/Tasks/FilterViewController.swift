@@ -31,9 +31,7 @@ class FilterViewController: BaseTableViewController {
         
         dataSource.tableView = tableView
         dataSource.selectedTagIds = selectedTags
-        
-        headerView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: 46)
-        
+                
         if taskType == "habit" {
             filterTypeControl = UISegmentedControl(items: [L10n.all, L10n.weak, L10n.strong])
         } else if taskType == "daily" {
@@ -41,7 +39,6 @@ class FilterViewController: BaseTableViewController {
         } else if taskType == "todo" {
             filterTypeControl = UISegmentedControl(items: [L10n.active, L10n.dated, L10n.done])
         }
-        filterTypeControl.frame = CGRect(x: 8, y: headerView.frame.size.height - 30, width: headerView.frame.size.width - 16, height: 30)
         let defaults = UserDefaults.standard
         filterTypeControl.selectedSegmentIndex = defaults.integer(forKey: "\(taskType ?? "")Filter")
         
@@ -65,6 +62,12 @@ class FilterViewController: BaseTableViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setToolbarHidden(true, animated: false)
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        headerView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: 46)
+        filterTypeControl.frame = CGRect(x: 8, y: headerView.frame.size.height - 30, width: headerView.frame.size.width - 16, height: 30)
     }
     
     override func applyTheme(theme: Theme) {

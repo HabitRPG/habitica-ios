@@ -150,6 +150,9 @@ class PartyDetailViewController: GroupDetailViewController {
                     }))
                 }
                 actionSheet.addAction(UIAlertAction.cancelAction())
+                actionSheet.popoverPresentationController?.sourceView = view
+                actionSheet.popoverPresentationController?.sourceRect = view.bounds
+
                 self?.present(actionSheet, animated: true, completion: nil)
             }
             membersStackview.addArrangedSubview(view)

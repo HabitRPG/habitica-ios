@@ -75,10 +75,12 @@ class TaskRepository: BaseRepository<TaskLocalRepository>, TaskRepositoryProtoco
     }
     
     func score(task: TaskProtocol, direction: TaskScoringDirection) -> Signal<TaskResponseProtocol?, Never> {
+        if !task.isValid { return Signal.empty }
         return ScoreTaskCall(task: task, direction: direction).objectSignal.withLatest(from: localRepository.getUserStats(id: AuthenticationManager.shared.currentUserId ?? "")
             .flatMapError({ (_) in
             return SignalProducer.empty
         })).on(value: {[weak self] (taskResponse, stats) in
+            if !task.isValid { return }
             guard let response = taskResponse else {
                 return
             }
