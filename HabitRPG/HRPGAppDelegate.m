@@ -218,7 +218,12 @@
     if ([UIApplication sharedApplication].applicationState == UIApplicationStateInactive) {
         [self handlePushNotification:userInfo];
     } else if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
-        [self.swiftAppDelegate displayNotificationInAppWithText:userInfo[@"aps"][@"alert"]];
+        if ([userInfo[@"aps"][@"alert"] isKindOfClass:[NSDictionary class]]) {
+            NSDictionary *dict = userInfo[@"aps"][@"alert"];
+            [self.swiftAppDelegate displayNotificationInAppWithTitle:dict[@"title"] text:dict[@"body"]];
+        } else {
+            [self.swiftAppDelegate displayNotificationInAppWithText:userInfo[@"aps"][@"alert"]];
+        }
     }
 }
 

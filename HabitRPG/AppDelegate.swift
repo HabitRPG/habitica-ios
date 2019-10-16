@@ -362,7 +362,13 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
     
     @objc
     func displayNotificationInApp(text: String) {
-       ToastManager.show(text: text, color: .purple)
+        ToastManager.show(text: text, color: .purple)
+        UINotificationFeedbackGenerator.oneShotNotificationOccurred(.success)
+    }
+    
+    @objc
+    func displayNotificationInApp(title: String, text: String) {
+        ToastManager.show(text: "\(title)\n\(text)", color: .purple)
         UINotificationFeedbackGenerator.oneShotNotificationOccurred(.success)
     }
     

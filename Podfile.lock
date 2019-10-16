@@ -255,7 +255,7 @@ DEPENDENCIES:
   - XLForm
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - Amplitude-iOS
     - AppAuth
     - Charts
@@ -378,4 +378,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 8ebaad5717ce595dd382f81f0d19caecfd83a7d7
 
-COCOAPODS: 1.7.5
+COCOAPODS: 1.8.3
