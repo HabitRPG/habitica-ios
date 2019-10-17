@@ -68,6 +68,8 @@ class SpeechbubbleView: UIView {
             
             textView.textContainerInset = UIEdgeInsets(top: 16, left: 20, bottom: 12, right: 12)
             textView.layer.cornerRadius = 4
+            textView.textColor = ThemeService.shared.theme.primaryTextColor
+            textView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
             
             namePlateBackgroundView.image = #imageLiteral(resourceName: "Nameplate").resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: 21, bottom: 0, right: 21))
         }
