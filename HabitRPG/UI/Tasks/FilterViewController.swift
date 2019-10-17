@@ -93,8 +93,13 @@ class FilterViewController: BaseTableViewController {
     }
     
     @IBAction func clearTags(_ sender: UIBarButtonItem) {
+	    resetFilterTypeControl()
         dataSource.clearTags()
     }
+
+	private func resetFilterTypeControl() {
+	    filterTypeControl.selectedSegmentIndex = 0
+	}
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         selectedTags = dataSource.selectedTagIds
