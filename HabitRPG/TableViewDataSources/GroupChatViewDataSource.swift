@@ -39,6 +39,8 @@ class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtoc
         }).start())
         let timerSignal: SignalProducer<Date, Never> = SignalProducer.timer(interval: .seconds(30), on: QueueScheduler.main)
         disposable.inner.add(timerSignal.on(value: {[weak self] date in self?.retrieveData(completed: nil) }).start())
+        
+        retrieveData(completed: nil)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
