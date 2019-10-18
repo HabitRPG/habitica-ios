@@ -456,6 +456,10 @@ public enum L10n {
   public static var subscriptionInfo4Description: String { return L10n.tr("Mainstrings", "subscription_info_4_description") }
   /// Daily drop-caps doubled
   public static var subscriptionInfo4Title: String { return L10n.tr("Mainstrings", "subscription_info_4_title") }
+  /// Become a Subscriber to buy Gems with gold, get monthly mystery items, increased drop caps and more!
+  public static var subscriptionPromoDescription: String { return L10n.tr("Mainstrings", "subscription_promo_description") }
+  /// Need Gems?
+  public static var subscriptionPromoTitle: String { return L10n.tr("Mainstrings", "subscription_promo_title") }
   /// Subscribing supports the developers\nand helps keep Habitica running
   public static var subscriptionSupportDevelopers: String { return L10n.tr("Mainstrings", "subscription_support_developers") }
   /// success
@@ -1010,8 +1014,8 @@ public enum L10n {
     public static var castSpells: String { return L10n.tr("Mainstrings", "menu.cast_spells") }
     /// Customize Avatar
     public static var customizeAvatar: String { return L10n.tr("Mainstrings", "menu.customize_avatar") }
-    /// Gems & Subscriptions
-    public static var gemsSubscriptions: String { return L10n.tr("Mainstrings", "menu.gems_subscriptions") }
+    /// Purchase Gems
+    public static var gems: String { return L10n.tr("Mainstrings", "menu.gems") }
     /// Help & FAQ
     public static var helpFaq: String { return L10n.tr("Mainstrings", "menu.help_faq") }
     /// Inventory
@@ -1022,6 +1026,8 @@ public enum L10n {
     public static var shops: String { return L10n.tr("Mainstrings", "menu.shops") }
     /// Social
     public static var social: String { return L10n.tr("Mainstrings", "menu.social") }
+    /// Subscription
+    public static var subscription: String { return L10n.tr("Mainstrings", "menu.subscription") }
     /// Use Skills
     public static var useSkills: String { return L10n.tr("Mainstrings", "menu.use_skills") }
   }

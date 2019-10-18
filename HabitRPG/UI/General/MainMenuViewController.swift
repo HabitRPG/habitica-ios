@@ -133,6 +133,10 @@ class MainMenuViewController: BaseTableViewController {
         
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableView.automaticDimension
+        
+        let view = SubscriptionPromoView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 148))
+        view.onButtonTapped = {[weak self] in self?.performSegue(withIdentifier: StoryboardSegue.Main.subscriptionSegue.rawValue, sender: self) }
+        tableView.tableFooterView = view
     }
     
     override func applyTheme(theme: Theme) {
