@@ -179,6 +179,8 @@ internal enum Asset {
   internal static let star = ImageAsset(name: "star")
   internal static let streak = ImageAsset(name: "streak")
   internal static let streakAchievement = ImageAsset(name: "streak_achievement")
+  internal static let subscriptionPromoGems = ImageAsset(name: "subscription_promo_gems")
+  internal static let subscriptionPromoGold = ImageAsset(name: "subscription_promo_gold")
   internal static let summerCoralBackground = ImageAsset(name: "summer_coral_background")
   internal static let summerIanScene = ImageAsset(name: "summer_ian_scene")
   internal static let supportArt = ImageAsset(name: "support_art")

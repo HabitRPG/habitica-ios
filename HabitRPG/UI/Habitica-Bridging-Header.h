@@ -5,7 +5,6 @@
 #import "HRPGBaseViewController.h"
 #import "OnePasswordExtension.h"
 #import "HRPGAppDelegate.h"
-#import "HRPGGemHeaderNavigationController.h"
 #import "HRPGTypingLabel.h"
 #import "HRPGHoledView.h"
 #import "HRPGHintView.h"

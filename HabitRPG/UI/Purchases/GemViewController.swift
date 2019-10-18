@@ -23,7 +23,7 @@ class GemViewController: BaseCollectionViewController {
     private let userRepository = UserRepository()
     private let configRepository = ConfigRepository()
     private let disposable = ScopedDisposable(CompositeDisposable())
-    
+ 
     var isSubscribed = false
     
     override func viewDidLoad() {
@@ -31,17 +31,25 @@ class GemViewController: BaseCollectionViewController {
         
         let nib = UINib.init(nibName: "GemPurchaseView", bundle: nil)
         self.collectionView?.register(nib, forCellWithReuseIdentifier: "Cell")
-        
-        if let navigationController = self.navigationController as? HRPGGemHeaderNavigationController {
-            let inset = UIEdgeInsets(top: navigationController.getContentInset(), left: 0, bottom: 0, right: 0)
-            self.collectionView?.contentInset = inset
-            self.collectionView?.scrollIndicatorInsets = inset
-        }
         retrieveProductList()
         
         disposable.inner.add(userRepository.getUser().on(value: {[weak self]user in
             self?.user = user
         }).start())
+        
+        if #available(iOS 13.0, *) {
+            navigationController?.navigationBar.standardAppearance.shadowColor = .clear
+            navigationController?.navigationBar.compactAppearance?.shadowColor = .clear
+        }
+    }
+    
+    override func applyTheme(theme: Theme) {
+        super.applyTheme(theme: theme)
+        if #available(iOS 13.0, *) {
+            navigationController?.navigationBar.standardAppearance.backgroundColor = theme.contentBackgroundColor
+        } else {
+            navigationController?.navigationBar.backgroundColor = theme.contentBackgroundColor
+        }
     }
     
     func retrieveProductList() {
@@ -57,26 +65,6 @@ class GemViewController: BaseCollectionViewController {
                 return firstIndex < secondIndex
             })
             self.collectionView?.reloadData()
-        }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        if let navigationController = self.navigationController as? HRPGGemHeaderNavigationController {
-            navigationController.start(following: self.collectionView)
-        }
-        super.viewDidAppear(animated)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        if let navigationController = self.navigationController as? HRPGGemHeaderNavigationController {
-            navigationController.stopFollowingScrollView()
-        }
-        super.viewWillDisappear(animated)
-    }
-    
-    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if let navigationController = self.navigationController as? HRPGGemHeaderNavigationController {
-            navigationController.scrollview(scrollView, scrolledToPosition: scrollView.contentOffset.y)
         }
     }
     
@@ -136,12 +124,19 @@ class GemViewController: BaseCollectionViewController {
         
         let view = collectionView .dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: identifier, for: indexPath)
         
-        if kind == UICollectionView.elementKindSectionHeader {
+        if kind == UICollectionView.elementKindSectionFooter {
             if let imageView = view.viewWithTag(1) as? UIImageView {
                 imageView.image = HabiticaIcons.imageOfHeartLarge
             }
             if let label = view.viewWithTag(2) as? UILabel {
                 label.text = L10n.gemsSupportDevelopers
+            }
+            if let promoView = view.viewWithTag(3) as? SubscriptionPromoView {
+                promoView.onButtonTapped = {[weak self] in self?.performSegue(withIdentifier: StoryboardSegue.Main.subscriptionSegue.rawValue, sender: self) }
+            }
+        } else if kind == UICollectionView.elementKindSectionHeader {
+            if let headerImage = view.viewWithTag(1) as? UIImageView {
+                headerImage.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
             }
         }
         
@@ -155,5 +150,9 @@ class GemViewController: BaseCollectionViewController {
         PurchaseHandler.shared.purchaseGems(identifier, applicationUsername: String(user.id?.hashValue ?? 0)) { _ in
             self.collectionView?.reloadData()
         }
+    }
+    
+    @IBAction func doneButtonTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
 }

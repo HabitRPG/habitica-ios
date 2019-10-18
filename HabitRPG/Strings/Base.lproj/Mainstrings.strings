@@ -223,7 +223,8 @@
 "menu.use_skills" = "Use Skills";
 "menu.shops" = "Shops";
 "menu.customize_avatar" = "Customize Avatar";
-"menu.gems_subscriptions" = "Gems & Subscriptions";
+"menu.gems" = "Purchase Gems";
+"menu.subscription" = "Subscription";
 "menu.help_faq" = "Help & FAQ";
 "skills.unlocks_at" = "Unlocks at level %d";
 "skills.use_skill" = "You use %@";
@@ -792,3 +793,5 @@
 "achievements.quests" = "Quests completed";
 "organize_by" = "Organize By";
 "task_history" = "Task History (Very Experimental)";
+"subscription_promo_title" = "Need Gems?";
+"subscription_promo_description" = "Become a Subscriber to buy Gems with gold, get monthly mystery items, increased drop caps and more!";

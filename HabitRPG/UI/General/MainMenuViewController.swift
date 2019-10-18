@@ -169,7 +169,8 @@ class MainMenuViewController: BaseTableViewController {
                 MenuItem(title: L10n.Titles.equipment, segue: StoryboardSegue.Main.equipmentSegue.rawValue),
                 MenuItem(title: L10n.Titles.items, segue: StoryboardSegue.Main.itemSegue.rawValue),
                 MenuItem(title: stableName, segue: StoryboardSegue.Main.stableSegue.rawValue),
-                MenuItem(title: L10n.Menu.gemsSubscriptions, segue: StoryboardSegue.Main.gemSubscriptionSegue.rawValue)
+                MenuItem(title: L10n.Menu.gems, segue: StoryboardSegue.Main.purchaseGemsSegue.rawValue),
+                MenuItem(title: L10n.Menu.subscription, segue: StoryboardSegue.Main.subscriptionSegue.rawValue)
                 ]),
             MenuSection(title: L10n.Titles.about, iconAsset: Asset.iconHelp, items: [
                 MenuItem(title: L10n.Titles.news, segue: StoryboardSegue.Main.newsSegue.rawValue),

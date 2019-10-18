@@ -27,6 +27,7 @@ class SubscriptionViewController: BaseTableViewController {
     @IBOutlet weak var giftSubscriptionExplanationLabel: UILabel!
     @IBOutlet weak var giftSubscriptionButton: UIButton!
     @IBOutlet weak var subscriptionSupportLabel: UILabel!
+    @IBOutlet weak var headerImage: UIImageView!
     
     var products: [SKProduct]?
     var selectedSubscriptionPlan: SKProduct?
@@ -83,21 +84,26 @@ class SubscriptionViewController: BaseTableViewController {
         let infoNib = UINib.init(nibName: "SubscriptionInformationCell", bundle: nil)
         self.tableView.register(infoNib, forCellReuseIdentifier: "InformationCell")
 
-        if let navigationController = self.navigationController as? HRPGGemHeaderNavigationController {
-            let inset = UIEdgeInsets(top: navigationController.getContentInset(), left: 0, bottom: 0, right: 0)
-            self.tableView.contentInset = inset
-            self.tableView.scrollIndicatorInsets = inset
-        }
         retrieveProductList()
 
         disposable.inner.add(userRepository.getUser().on(value: {[weak self]user in
             self?.user = user
         }).start())
+        
+        if #available(iOS 13.0, *) {
+            navigationController?.navigationBar.standardAppearance.shadowColor = .clear
+            navigationController?.navigationBar.compactAppearance?.shadowColor = .clear
+        }
     }
     
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
         tableView.backgroundColor = theme.contentBackgroundColor
+        if #available(iOS 13.0, *) {
+            navigationController?.navigationBar.standardAppearance.backgroundColor = theme.contentBackgroundColor
+        } else {
+            navigationController?.navigationBar.backgroundColor = theme.contentBackgroundColor
+        }
     }
     
     override func populateText() {
@@ -146,26 +152,6 @@ class SubscriptionViewController: BaseTableViewController {
             case .error(let error):
                 print("Receipt verification failed: \(error)")
             }
-        }
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        if let navigationController = self.navigationController as? HRPGGemHeaderNavigationController {
-            navigationController.start(following: self.tableView)
-        }
-        super.viewDidAppear(animated)
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        if let navigationController = self.navigationController as? HRPGGemHeaderNavigationController {
-            navigationController.stopFollowingScrollView()
-        }
-        super.viewWillDisappear(animated)
-    }
-
-    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if let navigationController = self.navigationController as? HRPGGemHeaderNavigationController {
-            navigationController.scrollview(scrollView, scrolledToPosition: scrollView.contentOffset.y)
         }
     }
 
@@ -413,5 +399,9 @@ class SubscriptionViewController: BaseTableViewController {
             let giftSubscriptionController = navigationController?.topViewController as? GiftSubscriptionViewController
             giftSubscriptionController?.giftRecipientUsername = giftRecipientUsername
         }
+    }
+    
+    @IBAction func doneButtonTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
 }

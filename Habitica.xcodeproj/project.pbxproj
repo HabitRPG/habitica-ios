@@ -224,6 +224,7 @@
 		296E4BD721AEFE6100DB3602 /* Green@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 296E4BB521AEFE6100DB3602 /* Green@3x.png */; };
 		296E4BD821AEFE6100DB3602 /* MaroonAlt@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 296E4BB621AEFE6100DB3602 /* MaroonAlt@3x.png */; };
 		296E4BD921AEFE6100DB3602 /* OrangeAlt@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 296E4BB721AEFE6100DB3602 /* OrangeAlt@3x.png */; };
+		296F51642358E5EF0019C872 /* SubscriptionPromoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296F51632358E5EF0019C872 /* SubscriptionPromoView.swift */; };
 		29701FE01F560D310097BBCC /* UIApplication-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29701FDF1F560D310097BBCC /* UIApplication-Extensions.swift */; };
 		29701FE21F5617900097BBCC /* ToastView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29701FE11F5617900097BBCC /* ToastView.xib */; };
 		29701FE41F56C2200097BBCC /* IconLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29701FE31F56C2200097BBCC /* IconLabel.swift */; };
@@ -544,7 +545,6 @@
 		D9D17CDA1E69C68000AD9232 /* ChallengeDetailAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D17CD91E69C68000AD9232 /* ChallengeDetailAlert.xib */; };
 		D9D17CDE1E6AFFD900AD9232 /* ChallengeDetailAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D17CDD1E6AFFD900AD9232 /* ChallengeDetailAlert.swift */; };
 		D9E02EC61E5E0458002CFCE2 /* ChallengeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E02EC51E5E0458002CFCE2 /* ChallengeTableViewController.swift */; };
-		D9E46AFD1DAB98D700E390D7 /* HRPGGemHeaderNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E46AFC1DAB98D700E390D7 /* HRPGGemHeaderNavigationController.m */; };
 		D9E9E0C41CCE55DA006D94A2 /* HRPGSharingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E9E0C31CCE55DA006D94A2 /* HRPGSharingManager.m */; };
 		D9E9E0C81CCE64A3006D94A2 /* HRPGImageOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9E9E0C71CCE64A3006D94A2 /* HRPGImageOverlayView.xib */; };
 		D9EB4E8F18CB4A9400BB2094 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9EB4E8E18CB4A9400BB2094 /* Foundation.framework */; };
@@ -860,6 +860,7 @@
 		296E4BB521AEFE6100DB3602 /* Green@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Green@3x.png"; sourceTree = "<group>"; };
 		296E4BB621AEFE6100DB3602 /* MaroonAlt@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MaroonAlt@3x.png"; sourceTree = "<group>"; };
 		296E4BB721AEFE6100DB3602 /* OrangeAlt@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OrangeAlt@3x.png"; sourceTree = "<group>"; };
+		296F51632358E5EF0019C872 /* SubscriptionPromoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionPromoView.swift; sourceTree = "<group>"; };
 		29701FDF1F560D310097BBCC /* UIApplication-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication-Extensions.swift"; sourceTree = "<group>"; };
 		29701FE11F5617900097BBCC /* ToastView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToastView.xib; sourceTree = "<group>"; };
 		29701FE31F56C2200097BBCC /* IconLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconLabel.swift; sourceTree = "<group>"; };
@@ -1309,8 +1310,6 @@
 		D9D795F71CAAE64E00112D38 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D9D795F81CAAE64E00112D38 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D9E02EC51E5E0458002CFCE2 /* ChallengeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeTableViewController.swift; sourceTree = "<group>"; };
-		D9E46AFB1DAB98D700E390D7 /* HRPGGemHeaderNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGGemHeaderNavigationController.h; sourceTree = "<group>"; };
-		D9E46AFC1DAB98D700E390D7 /* HRPGGemHeaderNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGGemHeaderNavigationController.m; sourceTree = "<group>"; };
 		D9E9E0C21CCE55DA006D94A2 /* HRPGSharingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGSharingManager.h; sourceTree = "<group>"; };
 		D9E9E0C31CCE55DA006D94A2 /* HRPGSharingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGSharingManager.m; sourceTree = "<group>"; };
 		D9E9E0C71CCE64A3006D94A2 /* HRPGImageOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPGImageOverlayView.xib; sourceTree = "<group>"; };
@@ -2463,6 +2462,7 @@
 				D91CCACF1BCF11CC001C6A0C /* UserTopHeader.xib */,
 				2980E6081EEA25CD005B7100 /* YesterdailiesDialogView.swift */,
 				2980E6061EEA1F55005B7100 /* YesterdailiesDialogView.xib */,
+				296F51632358E5EF0019C872 /* SubscriptionPromoView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2666,8 +2666,6 @@
 				29255E461F3E14920094A3E3 /* AppDelegate.swift */,
 				29A77B1E22EED4CE00FE41E4 /* NetworkIndicatorController.swift */,
 				29E1630A200D050E00685640 /* TopHeaderNavigationController.swift */,
-				D9E46AFB1DAB98D700E390D7 /* HRPGGemHeaderNavigationController.h */,
-				D9E46AFC1DAB98D700E390D7 /* HRPGGemHeaderNavigationController.m */,
 				29951A212327E94F00918FC8 /* ThemedNavigationController.swift */,
 				29FC5A6A20406932008E88C8 /* GuidelinesViewController.swift */,
 				2902799620583D82006DACB9 /* LoadingViewController.swift */,
@@ -3644,6 +3642,7 @@
 				4994065A20C83D4F0084CC40 /* DailyTableViewController.swift in Sources */,
 				292F968020723A4D00804151 /* ImageManager.swift in Sources */,
 				290B62412072711A007287C4 /* PublicGuildCell.swift in Sources */,
+				296F51642358E5EF0019C872 /* SubscriptionPromoView.swift in Sources */,
 				293BB4A91FD0806C003B6F4F /* BulkStatsAllocationViewController.swift in Sources */,
 				292DEE78204E1FFD0086D5F7 /* CheckboxView.swift in Sources */,
 				290B624A2073C37A007287C4 /* SettingsViewController.swift in Sources */,
@@ -3684,7 +3683,6 @@
 				2974BDB62090C03E00EC1A25 /* InboxOverviewDataSource.swift in Sources */,
 				29DBFF0120CE6FFF00DF9CF2 /* SoundManager.swift in Sources */,
 				49FA9FF720DC47AD0086C478 /* TaskTableViewController.swift in Sources */,
-				D9E46AFD1DAB98D700E390D7 /* HRPGGemHeaderNavigationController.m in Sources */,
 				C897F63C218CCF51002907C2 /* RouterHandler.swift in Sources */,
 				D914890D1CD23A900015B42D /* HRPGMaintenanceViewController.m in Sources */,
 				D9525F9D1E64739900C529B8 /* PaddedView.swift in Sources */,

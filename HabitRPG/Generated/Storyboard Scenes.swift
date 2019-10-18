@@ -65,13 +65,15 @@ internal enum StoryboardScene {
 
     internal static let petsOverviewViewController = SceneType<Habitica.PetOverviewViewController>(storyboard: Main.self, identifier: "PetsOverviewViewController")
 
-    internal static let purchaseGemNavController = SceneType<HRPGGemHeaderNavigationController>(storyboard: Main.self, identifier: "PurchaseGemNavController")
+    internal static let purchaseGemNavController = SceneType<UIKit.UINavigationController>(storyboard: Main.self, identifier: "PurchaseGemNavController")
 
     internal static let scanQRCodeNavController = SceneType<UIKit.UINavigationController>(storyboard: Main.self, identifier: "ScanQRCodeNavController")
 
     internal static let spellUserNavigationController = SceneType<UIKit.UINavigationController>(storyboard: Main.self, identifier: "SpellUserNavigationController")
 
     internal static let stableViewController = SceneType<Habitica.StableSplitViewController>(storyboard: Main.self, identifier: "StableViewController")
+
+    internal static let subscriptionNavController = SceneType<UIKit.UINavigationController>(storyboard: Main.self, identifier: "SubscriptionNavController")
 
     internal static let subscriptionViewController = SceneType<Habitica.SubscriptionViewController>(storyboard: Main.self, identifier: "SubscriptionViewController")
 

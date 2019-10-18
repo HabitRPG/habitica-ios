@@ -269,4 +269,8 @@ class GiftSubscriptionViewController: BaseTableViewController {
         }
         alertController.show()
     }
+
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
 }

@@ -42,7 +42,6 @@ internal enum StoryboardSegue {
     case feedSegue = "FeedSegue"
     case filterSegue = "FilterSegue"
     case formSegue = "FormSegue"
-    case gemSubscriptionSegue = "GemSubscriptionSegue"
     case guildsSegue = "GuildsSegue"
     case inboxSegue = "InboxSegue"
     case itemSegue = "ItemSegue"
@@ -61,6 +60,8 @@ internal enum StoryboardSegue {
     case tavernSegue = "TavernSegue"
     case equipmentDetailSegue
     case openGiftGemDialog
+    case purchaseGemsSegue
+    case subscriptionSegue
     case unwindSaveSegue
     case unwindSegue
   }
