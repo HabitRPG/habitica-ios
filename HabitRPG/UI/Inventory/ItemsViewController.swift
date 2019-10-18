@@ -18,7 +18,7 @@ class ItemsViewController: BaseTableViewController {
     private var isHatching = false {
         didSet {
 			if !isPresentedModally {
-				cancelButton.hidden = !isHatching
+                navigationItem.rightBarButtonItem = isHatching ? cancelButton : nil
 			}
             dataSource.isHatching = isHatching
         }
@@ -35,7 +35,7 @@ class ItemsViewController: BaseTableViewController {
         dataSource.itemType = itemType
         
         if (navigationController as? TopHeaderViewController) != nil {
-			navigationItem.rightBarButtonItem.hidden = true
+			navigationItem.rightBarButtonItem = nil
             isPresentedModally = false
         } else {
             isPresentedModally = true

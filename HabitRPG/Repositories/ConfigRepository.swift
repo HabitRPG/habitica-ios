@@ -22,6 +22,7 @@ enum ConfigVariable: Int {
     case lastVersionCode
     case randomizeAvatar
     case enablePushMentions
+    case showSubscriptionBanner
 
     func name() -> String {
         // swiftlint:disable switch_case_on_newline
@@ -37,6 +38,7 @@ enum ConfigVariable: Int {
         case .lastVersionCode: return "lastVersionCode"
         case .randomizeAvatar: return "randomizeAvatar"
         case .enablePushMentions: return "enablePushMentions"
+        case .showSubscriptionBanner: return "showSubscriptionBanner"
         }
         // swiftlint:enable switch_case_on_newline
     }
@@ -63,8 +65,10 @@ enum ConfigVariable: Int {
             return NSNumber(integerLiteral: 0)
         case .randomizeAvatar:
             return NSNumber(booleanLiteral: false)
-            case .enablePushMentions:
-                return NSNumber(booleanLiteral: false)
+        case .enablePushMentions:
+            return NSNumber(booleanLiteral: false)
+        case .showSubscriptionBanner:
+            return NSNumber(booleanLiteral: false)
         }
     }
     
