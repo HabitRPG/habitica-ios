@@ -395,7 +395,7 @@
 /* (No Comment) */
 "stats.level" = "Niveau";
 /* (No Comment) */
-"stats.no_points_to_allocate" = "0 punten om toe te wijzen";
+"stats.no_points_to_allocate" = "0 Punten om toe te wijzen";
 /* (No Comment) */
 "stats.one_point_to_allocate" = "1 Punt om toe te wijzen";
 /* (No Comment) */
@@ -550,23 +550,23 @@
 "titles.stable" = "Stal";
 "titles.pets" = "Huisdieren";
 "titles.mounts" = "Rijdieren";
-"titles.tavern" = "Taverne";
+"titles.tavern" = "Taveerne";
 "titles.party" = "Groep";
 "titles.guilds" = "Gilden";
 "titles.guild" = "Gilde";
 "titles.challenges" = "Uitdagingen";
 "titles.shops" = "Winkels";
 "titles.choose_user" = "Kies Gebruiker";
-"titles.choose_recipient" = "Kies ontvanger";
-"titles.feed_pet" = "Voer je huisdier";
+"titles.choose_recipient" = "Kies Ontvanger";
+"titles.feed_pet" = "Voer je Huisdier";
 "titles.guidelines" = "Richtlijnen";
-"titles.invite_members" = "Nodig leden uit";
+"titles.invite_members" = "Nodig Leden uit";
 "titles.spells" = "Toverspreuken";
 "stats.auto_allocate_points" = "Verdeel punten automatisch";
 "stats.distribute_evenly" = "Verdeel gelijkmatig";
 "stats.distribute_evenly_help" = "Wijst hetzelfde aantal punten toe aan elke eigenschap.";
-"stats.distribute_class" = "Verdeel op basis van klasse";
-"stats.distribute_class_help" = "Wijst meer punten toe aan de eigenschappen die belangrijk zijn voor jouw klasse.";
+"stats.distribute_class" = "Verdeel op basis van Klasse";
+"stats.distribute_class_help" = "Wijst meer punten toe aan de eigenschappen die belangrijk zijn voor jouw Klasse.";
 "stats.distribute_tasks" = "Verdeel op basis van taakactiviteit";
 "stats.distribute_tasks_help" = "Wijst punten toe op basis van de kracht, intelligentie, lichaam en perceptie categorieën die horen bij de taken die je vervuld hebt.";
 "stats.character_build_title" = "Karakterbouw";
