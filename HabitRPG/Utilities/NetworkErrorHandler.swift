@@ -33,7 +33,7 @@ class HabiticaNetworkErrorHandler: NetworkErrorHandler {
         if let errorMessage = errorMessageForCode(code: error.code) {
             notify(message: errorMessage.message, code: error.code)
         } else if !messages.isEmpty {
-            notify(message: messages[0], code: error.code)
+            notify(message: messages.joined(separator: "\n"), code: error.code)
         } else {
             notify(message: error.localizedDescription, code: 0)
         }

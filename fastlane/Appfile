@@ -1,7 +1,0 @@
-app_identifier "com.habitrpg.ios.habitica" # The bundle identifier of your app
-apple_id "admin@habitrpg.com" # Your Apple email address
-
-team_id "9Q9SMRMCNN" # Developer Portal Team ID
-
-# you can even provide different app identifiers, Apple IDs and team names per lane:
-# More information: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Appfile.md

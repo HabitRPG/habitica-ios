@@ -46,7 +46,18 @@ public class HabiticaResponseCall<T: Any, C: Decodable>: AuthenticatedCall {
         let errorHandler = customErrorHandler ?? AuthenticatedCall.errorHandler
         errorHandler?.observe(signal: errorSignal)
         errorHandler?.observe(signal: errorJsonSignal.map({ json -> [String] in
-            return [json["message"] as? String ?? ""]
+            var errors = [String]()
+            if let jsonErrors = json["errors"] as? [[String: Any]] {
+                for jsonError in jsonErrors {
+                    if let errorMessage = jsonError["message"] as? String {
+                        errors.append(errorMessage)
+                    }
+                }
+            }
+            if errors.isEmpty, let message = json["message"] as? String {
+                errors.append(message)
+            }
+            return errors
         }))
         errorHandler?.observe(signal: serverErrorSignal.combineLatest(with: jsonSignal)
             .map({ (error, jsonAny) -> (NSError, [String]) in

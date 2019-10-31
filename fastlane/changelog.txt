@@ -1,3 +1,3 @@
 Thanks for everyone helping with testing!
 
-This is the first build with iOS 13 support. The way dark themes work has been changed, so that every theme color now has a light and dark variant. On iOS 13, the light/dark follows the system setting.
+- Improved error handling when logging in

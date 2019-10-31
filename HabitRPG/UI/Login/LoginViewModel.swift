@@ -290,22 +290,26 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
                    passwordRepeat: authValues.passwordRepeat) {
             self.loadingIndicatorVisibilityObserver.send(value: true)
             if authValues.authType == .login {
-                userRepository.login(username: authValues.username ?? "", password: authValues.password ?? "").observeValues { loginResult in
+                userRepository.login(username: authValues.username ?? "", password: authValues.password ?? "")
+                    .on(completed: {
+                        self.loadingIndicatorVisibilityObserver.send(value: false)
+                    })
+                    .observeValues { loginResult in
                     if loginResult != nil {
                         self.onSuccessfulLogin()
-                    } else {
-                        self.loadingIndicatorVisibilityObserver.send(value: false)
                     }
                 }
             } else {
                 userRepository.register(username: authValues.username ?? "",
                                         password: authValues.password ?? "",
                                         confirmPassword: authValues.passwordRepeat ?? "",
-                                        email: authValues.email ?? "").observeValues { loginResult in
+                                        email: authValues.email ?? "")
+                    .on(completed: {
+                        self.loadingIndicatorVisibilityObserver.send(value: false)
+                    })
+                    .observeValues { loginResult in
                     if loginResult != nil {
                         self.onSuccessfulLogin()
-                    } else {
-                        self.loadingIndicatorVisibilityObserver.send(value: false)
                     }
                 }
             }
