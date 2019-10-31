@@ -87,6 +87,10 @@ class MainMenuViewController: BaseTableViewController {
             menuSections[1].items[0].subtitle = user?.preferences?.sleep == true ? L10n.damagePaused : nil
             
             tableView.reloadData()
+            
+            if user?.isSubscribed == true {
+                tableView.tableFooterView = nil
+            }
         }
     }
     
