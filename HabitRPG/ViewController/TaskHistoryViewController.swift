@@ -76,3 +76,14 @@ class TaskHistoryViewController: BaseUIViewController {
         dismiss(animated: true, completion: nil)
     }
 }
+
+public class DateAxisValueFormatter: IAxisValueFormatter{
+    private let formatter: DateFormatter = {
+        let formatter =  DateFormatter()
+        formatter.dateStyle = .short
+        return formatter
+    }()
+    public func stringForValue(_ value: Double, axis: AxisBase?) -> String {
+        return formatter.string(from: Date(timeIntervalSince1970: value))
+    }
+}
