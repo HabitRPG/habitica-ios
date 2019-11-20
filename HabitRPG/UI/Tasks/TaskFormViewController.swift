@@ -179,17 +179,18 @@ class TaskFormViewController: FormViewController, Themeable {
         
         
         if !isCreating {
+            if (taskType == .habit || taskType == .daily) && false {
             form +++ Section { section in
-                section.tag = TaskFormTags.historySection
+                 section.tag = TaskFormTags.historySection
+             }
+             <<< ButtonRow(TaskFormTags.historyButton) { row in
+                 row.title = L10n.taskHistory
+                 row.onCellSelection({ (_, _) in
+                     self.historyButtonTapped()
+                 })
+                 row.hidden = Condition(booleanLiteral: HabiticaAppDelegate.isRunningLive())
+             }
             }
-            <<< ButtonRow(TaskFormTags.historyButton) { row in
-                row.title = L10n.taskHistory
-                row.onCellSelection({ (_, _) in
-                    self.historyButtonTapped()
-                })
-                row.hidden = Condition(booleanLiteral: HabiticaAppDelegate.isRunningLive())
-            }
-            
             form +++ Section()
                 <<< ButtonRow(TaskFormTags.delete) { row in
                     row.title = L10n.delete

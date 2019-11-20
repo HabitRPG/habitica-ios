@@ -432,6 +432,8 @@ public enum L10n {
   public static var subscribe: String { return L10n.tr("Mainstrings", "subscribe") }
   /// Subscribe for Hourglasses
   public static var subscribeForHourglasses: String { return L10n.tr("Mainstrings", "subscribe_for_hourglasses") }
+  /// Want more than 2 weeks of data?
+  public static var subscribeForTaskHistory: String { return L10n.tr("Mainstrings", "subscribe_for_task_history") }
   /// Subscription
   public static var subscription: String { return L10n.tr("Mainstrings", "subscription") }
   /// Become a subscriber and you’ll get these useful benefits:

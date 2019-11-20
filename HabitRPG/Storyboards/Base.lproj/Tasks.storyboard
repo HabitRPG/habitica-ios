@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -175,17 +175,68 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C5Y-BF-kaT" customClass="LineChartView" customModule="Charts">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="6du-lH-ftX">
                                 <rect key="frame" x="0.0" y="44" width="375" height="623"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            </view>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C5Y-BF-kaT" customClass="LineChartView" customModule="Charts">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    </view>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EsJ-Sc-tGa">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KC4-xH-7Jo">
+                                                <rect key="frame" x="16" y="8" width="343" height="21"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="21" id="zPM-3z-PZf"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.3075395823" green="0.2903449535" blue="0.34151983260000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BFU-4K-1en">
+                                                <rect key="frame" x="147.5" y="37" width="80" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="04G-7K-Bsc"/>
+                                                    <constraint firstAttribute="width" priority="500" constant="46" id="2dY-q0-0Ip"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="REX-p6-Dgs"/>
+                                                </constraints>
+                                                <color key="tintColor" red="0.60365134480000004" green="0.38511508700000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" red="0.60365134480000004" green="0.38511508700000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="6"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <segue destination="u1z-Qj-5Ha" kind="presentation" id="ReX-VT-4mG"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="BFU-4K-1en" firstAttribute="top" secondItem="KC4-xH-7Jo" secondAttribute="bottom" constant="8" id="Flq-rX-P16"/>
+                                            <constraint firstAttribute="bottom" secondItem="BFU-4K-1en" secondAttribute="bottom" constant="8" id="H6o-4l-lnu"/>
+                                            <constraint firstItem="BFU-4K-1en" firstAttribute="centerX" secondItem="EsJ-Sc-tGa" secondAttribute="centerX" id="Jgx-GB-PKg"/>
+                                            <constraint firstItem="KC4-xH-7Jo" firstAttribute="top" secondItem="EsJ-Sc-tGa" secondAttribute="top" constant="8" id="W6N-ZR-CrX"/>
+                                            <constraint firstAttribute="height" priority="500" constant="100" id="apV-sa-hmz"/>
+                                            <constraint firstAttribute="trailing" secondItem="KC4-xH-7Jo" secondAttribute="trailing" constant="16" id="xS6-JL-Q6B"/>
+                                            <constraint firstItem="KC4-xH-7Jo" firstAttribute="leading" secondItem="EsJ-Sc-tGa" secondAttribute="leading" constant="16" id="xcH-tS-oBp"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="C5Y-BF-kaT" firstAttribute="leading" secondItem="3Jp-P4-amq" secondAttribute="leading" id="0RP-Wf-orw"/>
-                            <constraint firstItem="C5Y-BF-kaT" firstAttribute="top" secondItem="3Jp-P4-amq" secondAttribute="top" id="JGU-kb-1CE"/>
-                            <constraint firstItem="3Jp-P4-amq" firstAttribute="trailing" secondItem="C5Y-BF-kaT" secondAttribute="trailing" id="fe1-5W-RqQ"/>
-                            <constraint firstItem="3Jp-P4-amq" firstAttribute="bottom" secondItem="C5Y-BF-kaT" secondAttribute="bottom" id="gsR-3S-Kds"/>
+                            <constraint firstItem="6du-lH-ftX" firstAttribute="top" secondItem="3Jp-P4-amq" secondAttribute="top" id="N60-gx-fF8"/>
+                            <constraint firstItem="6du-lH-ftX" firstAttribute="leading" secondItem="3Jp-P4-amq" secondAttribute="leading" id="VLb-i5-DO4"/>
+                            <constraint firstItem="6du-lH-ftX" firstAttribute="trailing" secondItem="3Jp-P4-amq" secondAttribute="trailing" id="g0H-pt-jNo"/>
+                            <constraint firstItem="3Jp-P4-amq" firstAttribute="bottom" secondItem="6du-lH-ftX" secondAttribute="bottom" id="nGG-Gg-ufb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3Jp-P4-amq"/>
                     </view>
@@ -198,11 +249,22 @@
                     </navigationItem>
                     <connections>
                         <outlet property="chart" destination="C5Y-BF-kaT" id="265-5Q-qQ8"/>
+                        <outlet property="subscribeButton" destination="BFU-4K-1en" id="kAe-rn-nhX"/>
+                        <outlet property="subscribeLabel" destination="KC4-xH-7Jo" id="87P-w3-byR"/>
+                        <outlet property="subscribeWrapper" destination="EsJ-Sc-tGa" id="oVO-4k-R3N"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z2y-V9-da6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2356" y="357"/>
+        </scene>
+        <!--SubscriptionNavController-->
+        <scene sceneID="vAF-M6-ip0">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="SubscriptionNavController" id="u1z-Qj-5Ha" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E48-ac-Xrg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3194" y="282"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="XHS-dD-v7h">
