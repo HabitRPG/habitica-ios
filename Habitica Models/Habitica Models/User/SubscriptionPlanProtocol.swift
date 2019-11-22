@@ -29,7 +29,11 @@ public extension SubscriptionPlanProtocol {
                 return false
             }
         }
-        return planId != nil
+        return customerId != nil
+    }
+    
+    var isGifted: Bool {
+        return customerId == "Gift"
     }
     
     var gemCapTotal: Int {

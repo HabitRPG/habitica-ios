@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,23 +13,23 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="135"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Zew-JC-xiP" id="RYX-V6-Kpl">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="134.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="135"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rGG-fK-sIG">
-                        <rect key="frame" x="16" y="8" width="343" height="126.5"/>
+                    <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="rGG-fK-sIG">
+                        <rect key="frame" x="16" y="8" width="343" height="127"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle_unselected" translatesAutoresizingMaskIntoConstraints="NO" id="cN1-0z-yC8">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="126.5"/>
-                                <color key="backgroundColor" red="0.88664805889129639" green="0.84805387258529663" blue="0.99289208650588989" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="127"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="04Z-kh-kkI"/>
                                 </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ahl-VE-epw">
-                                <rect key="frame" x="58" y="29.5" width="277" height="67.5"/>
+                            <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Ahl-VE-epw">
+                                <rect key="frame" x="58" y="12" width="277" height="103"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="test" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lya-yE-68a">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" ambiguous="YES" text="test" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lya-yE-68a">
                                         <rect key="frame" x="0.0" y="0.0" width="277" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" priority="500" constant="10" id="TNd-5R-izk"/>
@@ -40,7 +38,7 @@
                                         <color key="textColor" red="0.29921266436576843" green="0.17604684829711914" blue="0.4975128173828125" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="123" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5yl-hB-j4J">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" ambiguous="YES" text="123" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5yl-hB-j4J">
                                         <rect key="frame" x="0.0" y="34" width="277" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="height" priority="500" constant="20" id="YFF-Oy-Qdz"/>
@@ -50,7 +48,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="100" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8G-oZ-Yon" customClass="PaddedLabel" customModule="Habitica" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="54" width="28.5" height="13.5"/>
+                                        <rect key="frame" x="0.0" y="89.5" width="28.5" height="13.5"/>
                                         <color key="backgroundColor" red="0.92813128229999997" green="0.92537832259999997" blue="0.93166613580000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" priority="500" constant="42" id="3JM-al-1nN"/>
@@ -66,7 +64,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="100" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Et-rt-l2T" customClass="PaddedLabel" customModule="Habitica" customModuleProvider="target">
-                                        <rect key="frame" x="36.5" y="54" width="28.5" height="13.5"/>
+                                        <rect key="frame" x="36.5" y="89.5" width="28.5" height="13.5"/>
                                         <color key="backgroundColor" red="0.92813128229999997" green="0.92537832259999997" blue="0.93166613580000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" priority="500" constant="42" id="Abu-XA-0SE"/>
@@ -103,11 +101,22 @@
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="cN1-0z-yC8" secondAttribute="bottom" id="8L5-qz-LYh"/>
                             <constraint firstItem="cN1-0z-yC8" firstAttribute="leading" secondItem="rGG-fK-sIG" secondAttribute="leading" id="AJV-mv-bCM"/>
+                            <constraint firstItem="Ahl-VE-epw" firstAttribute="top" secondItem="rGG-fK-sIG" secondAttribute="top" constant="12" id="DwM-Td-36h"/>
+                            <constraint firstAttribute="bottom" secondItem="Ahl-VE-epw" secondAttribute="bottom" constant="12" id="Hgq-Jm-VGS"/>
                             <constraint firstItem="cN1-0z-yC8" firstAttribute="top" secondItem="rGG-fK-sIG" secondAttribute="top" id="e6z-T2-vv6"/>
                             <constraint firstItem="Ahl-VE-epw" firstAttribute="leading" secondItem="cN1-0z-yC8" secondAttribute="trailing" constant="8" id="edD-SA-5mc"/>
+                            <constraint firstAttribute="height" priority="500" constant="100" id="qIy-LQ-TaV"/>
                             <constraint firstItem="Ahl-VE-epw" firstAttribute="centerY" secondItem="rGG-fK-sIG" secondAttribute="centerY" id="udr-NB-nbd"/>
                             <constraint firstAttribute="trailing" secondItem="Ahl-VE-epw" secondAttribute="trailing" constant="8" id="zMk-VP-zNB"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" red="0.60365134480000004" green="0.38511508700000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="8"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
                 <constraints>

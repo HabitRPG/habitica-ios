@@ -26,17 +26,21 @@ class SubscriptionOptionView: UITableViewCell {
         let animDuration = 0.3
         if selected {
             UIView.animate(withDuration: animDuration, animations: {[weak self] () in
-                self?.selectionView.backgroundColor = UIColor.purple300
-                self?.selectionView.image = #imageLiteral(resourceName: "circle_selected")
+                self?.wrapperView.borderWidth = 2
+                self?.selectionView.image = Asset.circleSelected.image
+                self?.titleLabel?.textColor = UIColor.purple300
+                self?.priceLabel?.textColor = UIColor.purple300
                 self?.gemCapLabel.textColor = UIColor.white
-                self?.gemCapLabel.backgroundColor = UIColor.green100
+                self?.gemCapLabel.backgroundColor = UIColor.purple400
                 self?.mysticHourglassLabel.textColor = UIColor.white
-                self?.mysticHourglassLabel.backgroundColor = UIColor.green100
+                self?.mysticHourglassLabel.backgroundColor = UIColor.purple400
             })
         } else {
             UIView.animate(withDuration: animDuration, animations: {[weak self] () in
-                self?.selectionView.backgroundColor = UIColor.purple600
-                self?.selectionView.image = #imageLiteral(resourceName: "circle_unselected")
+                self?.wrapperView.borderWidth = 0
+                self?.selectionView.image = Asset.circleUnselected.image
+                self?.titleLabel?.textColor = UIColor.gray50
+                self?.priceLabel?.textColor = UIColor.gray50
                 self?.gemCapLabel.textColor = UIColor.gray50
                 self?.gemCapLabel.backgroundColor = UIColor.gray600
                 self?.mysticHourglassLabel.textColor = UIColor.gray50

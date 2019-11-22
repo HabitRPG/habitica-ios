@@ -23,11 +23,11 @@ class SubscriptionViewController: BaseTableViewController {
     private let userRepository = UserRepository()
     private let disposable = ScopedDisposable(CompositeDisposable())
     
-    @IBOutlet weak var subscriptionBenefitsTitleLabel: UILabel!
     @IBOutlet weak var giftSubscriptionExplanationLabel: UILabel!
     @IBOutlet weak var giftSubscriptionButton: UIButton!
     @IBOutlet weak var subscriptionSupportLabel: UILabel!
     @IBOutlet weak var headerImage: UIImageView!
+    
     
     var products: [SKProduct]?
     var selectedSubscriptionPlan: SKProduct?
@@ -35,14 +35,15 @@ class SubscriptionViewController: BaseTableViewController {
         didSet {
             if user?.purchased?.subscriptionPlan?.isActive == true {
                 isSubscribed = true
+                showSubscribeOptions = false
                 restorePurchaseButton.isHidden = true
+                headerImage.image = Asset.subscriberHeader.image
             }
             hasTerminationDate = user?.purchased?.subscriptionPlan?.dateTerminated != nil
         }
     }
     let appleValidator: AppleReceiptValidator
     let itunesSharedSecret = HabiticaKeys().itunesSharedSecret
-    var expandedList = [Bool](repeating: false, count: 4)
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         #if DEBUG
@@ -64,12 +65,13 @@ class SubscriptionViewController: BaseTableViewController {
 
     var isSubscribed = false
     var hasTerminationDate = false
-
+    var showSubscribeOptions = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if let termsView = self.tableView.tableFooterView?.viewWithTag(2) as? UITextView {
-            let termsAttributedText = NSMutableAttributedString(string: "Once we've confirmed your purchase, the payment will be charged to your iTunes Account! Thank you so much for your support.\n\nPlease note that subscriptions automatically renew unless your auto-renew is turned off at least 24-hours before the end of the current period, which you can do by going to your Account Settings page after you've made your purchase. You can also manage subscriptions from the Account Settings page. If you have an active subscription, your account will be charged for renewal within 24-hours prior to the end of your current subscription period. When your subscription renews, you will be charged the same price that you initially paid. If you have any questions, feel free to ask in the Habitica Help Guild\nBy continuing you accept the Terms of Use and Privacy Policy")
+            let termsAttributedText = NSMutableAttributedString(string: "Once we’ve confirmed your purchase, the payment will be charged to your Apple ID.\n\nSubscriptions automatically renew unless auto-renewal is turned off at least 24-hours before the end of the current period. You can manage subscription renewal from your Apple IDSettings. If you have an active subscription, your account will be charged for renewal within 24-hours prior to the end of your current subscription period and you will be charged the same price you initially paid.\n\nBy continuing you accept the Terms of Use and Privacy Policy.")
             termsAttributedText.addAttribute(NSAttributedString.Key.foregroundColor, value: ThemeService.shared.theme.primaryTextColor, range: NSRange(location: 0, length: termsAttributedText.length))
             let termsRange = termsAttributedText.mutableString.range(of: "Terms of Use")
             termsAttributedText.addAttributes([NSAttributedString.Key.link: "https://habitica.com/static/terms"], range: termsRange)
@@ -90,6 +92,9 @@ class SubscriptionViewController: BaseTableViewController {
             self?.user = user
         }).start())
         
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 106
+        
         if #available(iOS 13.0, *) {
             navigationController?.navigationBar.standardAppearance.shadowColor = .clear
             navigationController?.navigationBar.compactAppearance?.shadowColor = .clear
@@ -107,7 +112,6 @@ class SubscriptionViewController: BaseTableViewController {
     }
     
     override func populateText() {
-        subscriptionBenefitsTitleLabel.text = L10n.subscriptionBenefitsTitle
         giftSubscriptionExplanationLabel.text = L10n.subscriptionGiftExplanation
         giftSubscriptionButton.setTitle(L10n.subscriptionGiftButton, for: .normal)
         subscriptionSupportLabel.text = L10n.subscriptionSupportDevelopers
@@ -127,7 +131,7 @@ class SubscriptionViewController: BaseTableViewController {
             })
             self.selectedSubscriptionPlan = self.products?.first
             self.tableView.reloadData()
-            self.tableView.selectRow(at: IndexPath(item: 0, section: 1), animated: true, scrollPosition: .none)
+            self.tableView.selectRow(at: IndexPath(item: 0, section: self.isSubscribed ? 2 : 1), animated: true, scrollPosition: .none)
         }
     }
 
@@ -165,41 +169,66 @@ class SubscriptionViewController: BaseTableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isInformationSection(section) {
-            return 4
+            return 5
         } else if isOptionSection(section) {
             guard let products = self.products else {
+                return 0
+            }
+            if isSubscribed && hasTerminationDate && !showSubscribeOptions {
                 return 0
             }
             return products.count
         } else if isDetailSection(section) {
             return 1
         } else {
-            if (isSubscribed && !hasTerminationDate) || self.products == nil || self.products?.isEmpty == true {
+            if (isSubscribed && !hasTerminationDate) || (isSubscribed && hasTerminationDate && !showSubscribeOptions) || self.products == nil || self.products?.isEmpty == true {
                 return 0
             } else {
                 return 1
             }
         }
     }
-
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if isInformationSection(indexPath.section) {
-            if self.expandedList[indexPath.item] {
-                let description = SubscriptionInformation.descriptions[indexPath.item] as NSString
-                let height = 90 + description.boundingRect(with: CGSize.init(width: self.viewWidth-80, height: CGFloat.infinity),
-                                                     options: NSStringDrawingOptions.usesLineFragmentOrigin,
-                                                     attributes: [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .body)],
-                                                     context: nil).size.height
-                return height
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 1))
+        if (isInformationSection(section)) {
+            let separatorView = UIImageView(image: Asset.separatorFancy.image)
+            separatorView.contentMode = .center
+            view.addSubview(separatorView)
+            let titleView = UILabel()
+            titleView.numberOfLines = 0
+            titleView.textColor = UIColor.purple300
+            titleView.font = CustomFontMetrics.scaledSystemFont(ofSize: 16)
+            titleView.textAlignment = .center
+            if isSubscribed {
+                titleView.text = L10n.subscriptionBenefitsTitleSubscribed
             } else {
-                return 50
+                titleView.text = L10n.subscriptionBenefitsTitle
             }
-        } else if isOptionSection(indexPath.section) {
-            return 96
-        } else if isDetailSection(indexPath.section) {
-            return 550
+            view.addSubview(titleView)
+            titleView.pin.start(50).end(50).top().sizeToFit(.width)
+            separatorView.pin.start().end().below(of: titleView).marginTop(16).height(16)
+            view.pin.height(separatorView.frame.origin.y + separatorView.frame.size.height + 16)
+        } else if isOptionSection(section) && showSubscribeOptions {
+            let separatorView = UIImageView(image: Asset.separatorFancy.image)
+            separatorView.contentMode = .center
+            view.addSubview(separatorView)
+            let titleView = UILabel()
+            titleView.numberOfLines = 0
+            titleView.textColor = UIColor.purple300
+            titleView.font = CustomFontMetrics.scaledSystemFont(ofSize: 16)
+            titleView.textAlignment = .center
+            titleView.text = L10n.subscriptionOptionsTitle
+            view.addSubview(titleView)
+            separatorView.pin.start().end().top(16).height(16)
+            titleView.pin.start(50).end(50).below(of: separatorView).marginTop(16).sizeToFit(.width)
+            view.pin.height(titleView.frame.origin.y + titleView.frame.size.height + 8)
         }
-        return 60
+        return view
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return self.tableView(tableView, viewForHeaderInSection: section)?.frame.size.height ?? 0
     }
 
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
@@ -221,13 +250,7 @@ class SubscriptionViewController: BaseTableViewController {
             }
             cell.title = SubscriptionInformation.titles[indexPath.item]
             cell.descriptionText = SubscriptionInformation.descriptions[indexPath.item]
-            cell.isExpanded = self.expandedList[indexPath.item]
-            cell.setExpandIcon(self.expandedList[indexPath.item])
-            cell.expandButtonPressedAction = { [weak self] isExpanded in
-                self?.expandedList[indexPath.item] = isExpanded
-                self?.tableView.reloadRows(at: [indexPath], with: .none)
-            }
-            cell.titleWrapper.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+            cell.iconView.image = SubscriptionInformation.images[indexPath.item]
             returnedCell = cell
         } else if self.isOptionSection(indexPath.section) {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "OptionCell", for: indexPath) as? SubscriptionOptionView else {
@@ -259,15 +282,21 @@ class SubscriptionViewController: BaseTableViewController {
             }
             if let subscriptionPlan = self.user?.purchased?.subscriptionPlan {
                 cell.setPlan(subscriptionPlan)
-                cell.cancelSubscriptionAction = {
-                    var url: URL?
-                    if subscriptionPlan.paymentMethod == "Apple" {
-                        url = URL(string: "https://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions")
+                cell.cancelSubscriptionAction = {[weak self] in
+                    if (self?.hasTerminationDate == true) {
+                        self?.showSubscribeOptions = true
+                        tableView.reloadData()
+                        tableView.scrollToRow(at: IndexPath(row: 0, section: 2), at: .top, animated: true)
                     } else {
-                        url = URL(string: "https://habitica.com")
-                    }
-                    if let applicationUrl = url {
-                        UIApplication.shared.openURL(applicationUrl)
+                        var url: URL?
+                        if subscriptionPlan.paymentMethod == "Apple" {
+                            url = URL(string: "https://buy.itunes.apple.com/WebObjects/MZFinance.woa/wa/manageSubscriptions")
+                        } else {
+                            url = URL(string: "https://habitica.com")
+                        }
+                        if let applicationUrl = url {
+                            UIApplication.shared.open(applicationUrl, options: [:], completionHandler: nil)
+                        }
                     }
                 }
             }
@@ -281,15 +310,15 @@ class SubscriptionViewController: BaseTableViewController {
     }
 
     func isInformationSection(_ section: Int) -> Bool {
-        return section == 0
+        return (section == 0 && !isSubscribed) || (section == 1 && isSubscribed)
     }
 
     func isOptionSection(_ section: Int) -> Bool {
-        return (!isSubscribed || hasTerminationDate) && section == 1
+        return (isSubscribed && section == 2) || (!isSubscribed && section == 1)
     }
 
     func isDetailSection(_ section: Int) -> Bool {
-        return (isSubscribed && !hasTerminationDate && section == 2) || (isSubscribed && hasTerminationDate && section == 3)
+        return isSubscribed && section == 0
     }
 
     @IBAction func subscribeButtonPressed(_ sender: Any) {

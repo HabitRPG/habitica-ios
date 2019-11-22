@@ -11,14 +11,9 @@ import UIKit
 class SubscriptionInformationCell: UITableViewCell {
 
     @IBOutlet weak private var titleLabel: UILabel!
-    @IBOutlet weak private var expandButton: UIButton!
-    @IBOutlet weak private var descriptionTextView: UITextView!
-    @IBOutlet weak var titleWrapper: UIView!
+    @IBOutlet weak private var descriptionTextView: UILabel!
+    @IBOutlet weak var iconView: UIImageView!
     
-    var expandButtonPressedAction: ((Bool) -> Void)?
-
-    var isExpanded = false
-
     var title: String {
         set {
             titleLabel.text = newValue
@@ -39,20 +34,14 @@ class SubscriptionInformationCell: UITableViewCell {
             return descriptionTextView.text ?? ""
         }
     }
-
-    @IBAction func expandButtonPressed(_ sender: Any) {
-        isExpanded = !isExpanded
-        if let action = expandButtonPressedAction {
-            action(isExpanded)
+    
+    var icon: UIImage? {
+        set {
+            iconView.image = newValue
         }
-        self.setExpandIcon(isExpanded)
-    }
-
-    func setExpandIcon(_ isExpanded: Bool) {
-        if isExpanded {
-            expandButton.setImage(#imageLiteral(resourceName: "carret_up"), for: .normal)
-        } else {
-            expandButton.setImage(#imageLiteral(resourceName: "carret_down"), for: .normal)
+        
+        get {
+            return iconView.image
         }
     }
 }

@@ -56,6 +56,10 @@ public enum L10n {
   }
   /// Cancel
   public static var cancel: String { return L10n.tr("Mainstrings", "cancel") }
+  /// Cancel Subscription
+  public static var cancelSubscription: String { return L10n.tr("Mainstrings", "cancel_subscription") }
+  /// Cancelled
+  public static var cancelled: String { return L10n.tr("Mainstrings", "cancelled") }
   /// Change
   public static var change: String { return L10n.tr("Mainstrings", "change") }
   /// Character Level
@@ -124,6 +128,14 @@ public enum L10n {
   public static var done: String { return L10n.tr("Mainstrings", "done") }
   /// Due
   public static var due: String { return L10n.tr("Mainstrings", "due") }
+  /// 12 months
+  public static var duration12month: String { return L10n.tr("Mainstrings", "duration_12month") }
+  /// 3 months
+  public static var duration3month: String { return L10n.tr("Mainstrings", "duration_3month") }
+  /// 6 months
+  public static var duration6month: String { return L10n.tr("Mainstrings", "duration_6month") }
+  /// month
+  public static var durationMonth: String { return L10n.tr("Mainstrings", "duration_month") }
   /// I earned a new achievement in Habitica! 
   public static var earnedAchievementShare: String { return L10n.tr("Mainstrings", "earned_achievement_share") }
   /// Edit
@@ -136,6 +148,10 @@ public enum L10n {
   public static var email: String { return L10n.tr("Mainstrings", "email") }
   /// End Challenge
   public static var endChallenge: String { return L10n.tr("Mainstrings", "end_challenge") }
+  /// Ending on %@
+  public static func endingOn(_ p1: String) -> String {
+    return L10n.tr("Mainstrings", "ending_on", p1)
+  }
   /// Equip
   public static var equip: String { return L10n.tr("Mainstrings", "equip") }
   /// Experience
@@ -306,6 +322,8 @@ public enum L10n {
   public static var notEnoughHourglasses: String { return L10n.tr("Mainstrings", "not_enough_hourglasses") }
   /// Not getting the right drops? Check out the Market to buy just the things you need!
   public static var notGettingDrops: String { return L10n.tr("Mainstrings", "not_getting_drops") }
+  /// Not Recurring
+  public static var notRecurring: String { return L10n.tr("Mainstrings", "not_recurring") }
   /// Notes
   public static var notes: String { return L10n.tr("Mainstrings", "notes") }
   /// OK
@@ -372,6 +390,12 @@ public enum L10n {
   public static var reminder: String { return L10n.tr("Mainstrings", "reminder") }
   /// Remove
   public static var remove: String { return L10n.tr("Mainstrings", "remove") }
+  /// Renew Subscription
+  public static var renewSubscription: String { return L10n.tr("Mainstrings", "renew_subscription") }
+  /// Want to continue your benefits? You can start a new subscription before this one runs out to keep your benefits active.
+  public static var renewSubscriptionDescription: String { return L10n.tr("Mainstrings", "renew_subscription_description") }
+  /// Want to continue your benefits? You can start a new subscription before your gifted one runs out to keep your benefits active.
+  public static var renewSubscriptionGiftedDescription: String { return L10n.tr("Mainstrings", "renew_subscription_gifted_description") }
   /// Repeat Password
   public static var repeatPassword: String { return L10n.tr("Mainstrings", "repeat_password") }
   /// Reply
@@ -384,6 +408,8 @@ public enum L10n {
   public static var resetTips: String { return L10n.tr("Mainstrings", "reset_tips") }
   /// Reset Streak
   public static var resetStreak: String { return L10n.tr("Mainstrings", "resetStreak") }
+  /// Resubscribe
+  public static var resubscribe: String { return L10n.tr("Mainstrings", "resubscribe") }
   /// Resume Damage
   public static var resumeDamage: String { return L10n.tr("Mainstrings", "resume_damage") }
   /// Resync
@@ -436,28 +462,40 @@ public enum L10n {
   public static var subscribeForTaskHistory: String { return L10n.tr("Mainstrings", "subscribe_for_task_history") }
   /// Subscription
   public static var subscription: String { return L10n.tr("Mainstrings", "subscription") }
-  /// Become a subscriber and you’ll get these useful benefits:
+  /// Become a subscriber and you’ll get these useful benefits
   public static var subscriptionBenefitsTitle: String { return L10n.tr("Mainstrings", "subscription_benefits_title") }
+  /// You get these benefits for being a Subscriber
+  public static var subscriptionBenefitsTitleSubscribed: String { return L10n.tr("Mainstrings", "subscription_benefits_title_subscribed") }
+  /// Recurring every %@
+  public static func subscriptionDuration(_ p1: String) -> String {
+    return L10n.tr("Mainstrings", "subscription_duration", p1)
+  }
   /// Gift a Subscription
   public static var subscriptionGiftButton: String { return L10n.tr("Mainstrings", "subscription_gift_button") }
   /// Want to give the benefits of a subscription to someone else?
   public static var subscriptionGiftExplanation: String { return L10n.tr("Mainstrings", "subscription_gift_explanation") }
-  /// Alexander the Merchant will sell you Gems at a cost of 20 gold per gem. His monthly shipments are initially capped at 25 Gems per month, but this cap increases by 5 Gems for every three months of consecutive subscription, up to a maximum of 50 Gems per month!
+  /// You’ll be able to buy Gems from the Market for 20 gold each!
   public static var subscriptionInfo1Description: String { return L10n.tr("Mainstrings", "subscription_info_1_description") }
-  /// Buy gems with gold
+  /// Gold for Gems
   public static var subscriptionInfo1Title: String { return L10n.tr("Mainstrings", "subscription_info_1_title") }
-  /// Each month you will receive a unique cosmetic item for your avatar!\n\nPlus, for every three months of consecutive subscription, the Mysterious Time Travelers will grant you access to historic (and futuristic!) cosmetic items.
+  /// Earn Mystic Hourglasses to purchase items in the Time Traveler’s Shop!
   public static var subscriptionInfo2Description: String { return L10n.tr("Mainstrings", "subscription_info_2_description") }
-  /// Exclusive monthly items
+  /// Mystic Hourglasses
   public static var subscriptionInfo2Title: String { return L10n.tr("Mainstrings", "subscription_info_2_title") }
-  /// Makes completed To-Dos and task history available for longer.
+  /// Subscribe now to get an exclusive set now and receive new items every month!
   public static var subscriptionInfo3Description: String { return L10n.tr("Mainstrings", "subscription_info_3_description") }
-  /// Retain additional history entries
+  /// Monthly Mystery Items
   public static var subscriptionInfo3Title: String { return L10n.tr("Mainstrings", "subscription_info_3_title") }
-  /// Double drop caps will let you receive more items from your completed tasks every day, helping you complete your stable faster!
+  /// Receive the Royal Purple Jackalope pet when you become a new subscriber.
   public static var subscriptionInfo4Description: String { return L10n.tr("Mainstrings", "subscription_info_4_description") }
-  /// Daily drop-caps doubled
+  /// Monthly Mystery Items
   public static var subscriptionInfo4Title: String { return L10n.tr("Mainstrings", "subscription_info_4_title") }
+  /// Discover even more items in Habitica with a 2x bonus daily drop rate.
+  public static var subscriptionInfo5Description: String { return L10n.tr("Mainstrings", "subscription_info_5_description") }
+  /// Double the Drops
+  public static var subscriptionInfo5Title: String { return L10n.tr("Mainstrings", "subscription_info_5_title") }
+  /// Choose the Subscription length that works for you
+  public static var subscriptionOptionsTitle: String { return L10n.tr("Mainstrings", "subscription_options_title") }
   /// Become a Subscriber to buy Gems with gold, get monthly mystery items, increased drop caps and more!
   public static var subscriptionPromoDescription: String { return L10n.tr("Mainstrings", "subscription_promo_description") }
   /// Need Gems?
