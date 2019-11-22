@@ -281,20 +281,20 @@ class PartyDetailViewController: GroupDetailViewController {
     }
     
     private func showTransferOwnershipDialog(memberID: String, displayName: String) {
-        let alert = HabiticaAlertController(title: L10n.Party.transferOwnershipTitle(displayName))
+        let alert = HabiticaAlertController(title: L10n.Party.transferOwnershipTitle, message: L10n.Party.transferOwnershipDescription(displayName))
+        alert.addCancelAction()
         alert.addAction(title: L10n.transfer, style: .default, isMainAction: true) {[weak self] _ in
             self?.socialRepository.transferOwnership(groupID: self?.groupID ?? "", userID: memberID).start()
         }
-        alert.addCancelAction()
         alert.show()
     }
     
     private func showRemoveMemberDialog(memberID: String, displayName: String) {
         let alert = HabiticaAlertController(title: L10n.Party.removeMemberTitle(displayName))
+        alert.addCancelAction()
         alert.addAction(title: L10n.remove, style: .destructive, isMainAction: true) {[weak self] _ in
             self?.socialRepository.removeMember(groupID: self?.groupID ?? "", userID: memberID).observeCompleted {}
         }
-        alert.addCancelAction()
         alert.show()
     }
 }

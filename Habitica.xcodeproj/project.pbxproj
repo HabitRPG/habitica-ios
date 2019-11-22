@@ -236,6 +236,7 @@
 		2974BDB62090C03E00EC1A25 /* InboxOverviewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2974BDB52090C03E00EC1A25 /* InboxOverviewDataSource.swift */; };
 		297517B41F30EBD100B5BCB9 /* AvatarSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297517B31F30EBD100B5BCB9 /* AvatarSetupViewController.swift */; };
 		297517B61F30EBFC00B5BCB9 /* TaskSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297517B51F30EBFC00B5BCB9 /* TaskSetupViewController.swift */; };
+		2975F00323881D05005DBF2E /* FlagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2975F00223881D05005DBF2E /* FlagView.swift */; };
 		297D15FA20B803D30048101F /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297D15F920B803D30048101F /* UserProfileViewController.swift */; };
 		297D15FD20B825DE0048101F /* HRPGSearchDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 297D15FB20B825DE0048101F /* HRPGSearchDataManager.m */; };
 		2980E6071EEA1F55005B7100 /* YesterdailiesDialogView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2980E6061EEA1F55005B7100 /* YesterdailiesDialogView.xib */; };
@@ -872,6 +873,7 @@
 		2974BDB52090C03E00EC1A25 /* InboxOverviewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxOverviewDataSource.swift; sourceTree = "<group>"; };
 		297517B31F30EBD100B5BCB9 /* AvatarSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarSetupViewController.swift; sourceTree = "<group>"; };
 		297517B51F30EBFC00B5BCB9 /* TaskSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskSetupViewController.swift; sourceTree = "<group>"; };
+		2975F00223881D05005DBF2E /* FlagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagView.swift; sourceTree = "<group>"; };
 		297AAB4720F508A300BD019D /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		297AAB4820F508A300BD019D /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/OnePasswordExtension.strings; sourceTree = "<group>"; };
 		297AAB4920F508A300BD019D /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -2439,6 +2441,7 @@
 				299BD6211F505DFA00E22935 /* PaddedLabel.swift */,
 				D9525F9C1E64739900C529B8 /* PaddedView.swift */,
 				D9CE90441E4CDD6200702578 /* PillView.swift */,
+				2975F00223881D05005DBF2E /* FlagView.swift */,
 				29FC8861201A300B002B3D3F /* ProgressBar.swift */,
 				2912C3AF22CA701C00BC485F /* QuestCompletedAlertController.swift */,
 				29FC8867201B7B61002B3D3F /* Quests */,
@@ -3625,6 +3628,7 @@
 				295E9DF420B456F100D58D45 /* FilterTableviewDataSource.swift in Sources */,
 				29FC885420175C70002B3D3F /* RageStrikeView.swift in Sources */,
 				4908641D1F43DE2B00BD9896 /* HRPGInsufficientGemsViewController.swift in Sources */,
+				2975F00323881D05005DBF2E /* FlagView.swift in Sources */,
 				292844EF20DD1D630011DC43 /* GroupInvitationListView.swift in Sources */,
 				2912C3C722CB956400BC485F /* GroupInviteNotificationCell.swift in Sources */,
 				29FD8AA7203DA42A0094322E /* NSLayoutConstraint-Extensions.swift in Sources */,

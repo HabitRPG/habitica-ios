@@ -157,5 +157,4 @@ class PillView: UIView {
             }
             return CGSize(width: width, height: height)
     }
-
 }

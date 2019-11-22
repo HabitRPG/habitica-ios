@@ -17,6 +17,7 @@ class SubscriptionOptionView: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var gemCapLabel: PaddedLabel!
     @IBOutlet weak var mysticHourglassLabel: PaddedLabel!
+    @IBOutlet weak var flagView: FlagView!
     //swiftlint:enable private_outlet
     
     private var isAlreadySelected = false

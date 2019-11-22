@@ -526,7 +526,7 @@ public enum L10n {
   public static var title: String { return L10n.tr("Mainstrings", "title") }
   /// Transfer
   public static var transfer: String { return L10n.tr("Mainstrings", "transfer") }
-  /// Transfer ownership
+  /// Transfer Leadership
   public static var transferOwnership: String { return L10n.tr("Mainstrings", "transfer_ownership") }
   /// Tuesday
   public static var tuesday: String { return L10n.tr("Mainstrings", "tuesday") }
@@ -1154,10 +1154,12 @@ public enum L10n {
     }
     /// Start a Quest
     public static var startQuest: String { return L10n.tr("Mainstrings", "party.start_quest") }
-    /// Are you sure you want to transfer the ownership to %@?
-    public static func transferOwnershipTitle(_ p1: String) -> String {
-      return L10n.tr("Mainstrings", "party.transfer_ownership_title", p1)
+    /// This will make %@ the new Party leader
+    public static func transferOwnershipDescription(_ p1: String) -> String {
+      return L10n.tr("Mainstrings", "party.transfer_ownership_description", p1)
     }
+    /// Transfer Leadership?
+    public static var transferOwnershipTitle: String { return L10n.tr("Mainstrings", "party.transfer_ownership_title") }
   }
 
   public enum Quests {

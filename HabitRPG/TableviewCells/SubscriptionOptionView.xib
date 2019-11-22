@@ -19,6 +19,19 @@
                     <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="rGG-fK-sIG">
                         <rect key="frame" x="16" y="8" width="343" height="127"/>
                         <subviews>
+                            <view contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="JQl-uq-L9i" customClass="FlagView" customModule="Habitica" customModuleProvider="target">
+                                <rect key="frame" x="323" y="8" width="20" height="24"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="13U-DT-J01"/>
+                                    <constraint firstAttribute="width" priority="500" constant="40" id="JS1-aG-9Fl"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="flagColor">
+                                        <color key="value" red="0.2394311428" green="0.71686321500000005" blue="0.49862980839999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle_unselected" translatesAutoresizingMaskIntoConstraints="NO" id="cN1-0z-yC8">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="127"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -103,8 +116,10 @@
                             <constraint firstItem="cN1-0z-yC8" firstAttribute="leading" secondItem="rGG-fK-sIG" secondAttribute="leading" id="AJV-mv-bCM"/>
                             <constraint firstItem="Ahl-VE-epw" firstAttribute="top" secondItem="rGG-fK-sIG" secondAttribute="top" constant="12" id="DwM-Td-36h"/>
                             <constraint firstAttribute="bottom" secondItem="Ahl-VE-epw" secondAttribute="bottom" constant="12" id="Hgq-Jm-VGS"/>
+                            <constraint firstItem="JQl-uq-L9i" firstAttribute="top" secondItem="rGG-fK-sIG" secondAttribute="top" constant="8" id="JM6-PN-shS"/>
                             <constraint firstItem="cN1-0z-yC8" firstAttribute="top" secondItem="rGG-fK-sIG" secondAttribute="top" id="e6z-T2-vv6"/>
                             <constraint firstItem="Ahl-VE-epw" firstAttribute="leading" secondItem="cN1-0z-yC8" secondAttribute="trailing" constant="8" id="edD-SA-5mc"/>
+                            <constraint firstAttribute="trailing" secondItem="JQl-uq-L9i" secondAttribute="trailing" id="f1h-lQ-MkD"/>
                             <constraint firstAttribute="height" priority="500" constant="100" id="qIy-LQ-TaV"/>
                             <constraint firstItem="Ahl-VE-epw" firstAttribute="centerY" secondItem="rGG-fK-sIG" secondAttribute="centerY" id="udr-NB-nbd"/>
                             <constraint firstAttribute="trailing" secondItem="Ahl-VE-epw" secondAttribute="trailing" constant="8" id="zMk-VP-zNB"/>
@@ -127,6 +142,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="flagView" destination="JQl-uq-L9i" id="i6R-rq-K5F"/>
                 <outlet property="gemCapLabel" destination="V8G-oZ-Yon" id="Fte-qz-G5j"/>
                 <outlet property="mysticHourglassLabel" destination="7Et-rt-l2T" id="JHD-1z-8Im"/>
                 <outlet property="priceLabel" destination="lya-yE-68a" id="IaO-ju-UXn"/>

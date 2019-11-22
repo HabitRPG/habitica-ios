@@ -136,6 +136,7 @@ internal enum Asset {
   internal static let crown = ImageAsset(name: "crown")
   internal static let downIcon = ImageAsset(name: "down_icon")
   internal static let filters = ImageAsset(name: "filters")
+  internal static let flagFlap = ImageAsset(name: "flag_flap")
   internal static let giftSubGift = ImageAsset(name: "gift_sub_gift")
   internal static let gryphon = ImageAsset(name: "gryphon")
   internal static let icChevronRightWhite = ImageAsset(name: "ic_chevron_right_white")
