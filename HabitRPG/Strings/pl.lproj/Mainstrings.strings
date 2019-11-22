@@ -642,3 +642,12 @@
 "stable.wacky_pets" = "Zwariowane chowańce";
 "stable.standard_mounts" = "Standardowe Wierzchowce";
 "stable.wacky_mounts" = "Zwariowane wierzchowce";
+"tasks.team" = "Zespół";
+"tasks.form.accessibility.set_task_difficulty" = "Zmień poziom trudności na %@";
+"tasks.form.accessibility.task_difficulty" = "Poziom trudności to %@";
+"tasks.form.day_of_week" = "Dzień tygodnia";
+"tasks.form.day_of_month" = "Dzień miesiąca";
+"tasks.form.remind_me" = "Przypomnij mi";
+"tasks.form.new_reminder" = "Nowe przypomnienie";
+"tasks.form.rewards_title_placeholder" = "Jak chcesz się nagradzać?";
+"tasks.form.dailies_title_placeholder" = "Co chcesz robić regularnie?";

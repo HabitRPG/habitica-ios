@@ -916,3 +916,5 @@
 "empty.rewards.description" = "奖励是使用Habitica并完成任务的好方法。\n立即尝试添加几个！";
 "empty.rewards.title" = "这些是你的奖励";
 "empty.todos.description" = "To-Dos需要完成一次。\n将清单添加到您的待办事项以增加其价值。";
+"login.login_apple" = "Apple登录";
+"settings.theme_mode" = "主题风格";

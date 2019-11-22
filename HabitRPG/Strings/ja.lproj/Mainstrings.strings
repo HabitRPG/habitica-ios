@@ -219,7 +219,7 @@
 /* (No Comment) */
 "pets" = "ペット";
 /* (No Comment) */
-"purchase_for_gems" = " %d ジェム購入する";
+"purchase_for_gems" = "%d ジェム購入する";
 /* (No Comment) */
 "quests" = "クエスト";
 /* (No Comment) */
@@ -421,7 +421,7 @@
 "titles.equipment" = "装備";
 "titles.items" = "アイテム";
 "titles.faq" = "よくある質問";
-"titles.about" = "自己紹介";
+"titles.about" = "Habiticaについて";
 "titles.news" = "ニュース";
 "titles.stable" = "動物小屋";
 "titles.pets" = "ペット";
@@ -673,7 +673,7 @@
 "character_level" = "キャラクターのレベル";
 "gold" = "ゴールド";
 "day_streaks" = "21日間継続する";
-"aboutText" = "自己紹介";
+"aboutText" = "Habiticaについて";
 "photo_url" = "写真のURL";
 "group_by" = "グループ化 :";
 "twoHanded" = "両手持ち";
@@ -833,7 +833,7 @@
 "avatar.extras" = "その他";
 "classes.warrior_description" = "戦士はタスクを完了したときに「会心の一撃」が出やすく、その効果も高いです。「会心の一撃」が出ると、ゴールド、経験値、アイテムドロップの確率にランダムにボーナスがつきます。また、戦士はボスに大きなダメージを与えます。予測できない一攫千金タイプの報酬でやる気が出る、もしくはボスクエストで活躍したいなら、戦士でプレイしましょう！";
 "classes.mage_description" = "魔道士は学習スピードが速く、他のクラスよりも多く経験値を得てレベルが早く上がります。また、特殊能力を使うためのマナも大量に獲得できます。Habiticaの戦略ゲーム的な側面を楽しみたいなら、あるいはレベルアップしたり追加要素をアンロックしたりするのがあなたにとって強いやる気になるなら、魔道士でプレイしましょう！ ";
-"party.create_party_description" = "仲間たちと一緒に、または各自で、クエストに挑戦しましょう。モンスターと戦ったり、チャレンジを作ったり…… そして、パーティーを通じてあなた自身を責任ある状態にし続けてみましょう。 ";
+"party.create_party_description" = "仲間たちと一緒に、または一人で、クエストに挑戦しましょう。モンスターと戦ったり、チャレンジを作ったり…… そして、パーティーを通じてあなた自身を責任ある状態にし続けてみましょう。 ";
 "party.join_party_description" = "下の方に見えるユーザー名をパーティーメンバーに伝えると、メンバーはあなたに招待を送ることができます";
 "party.party_description" = "パーティーの説明";
 "groups.members" = "メンバー";
@@ -936,3 +936,28 @@
 "filter_by_tags" = "タグでフィルターをかける";
 "purchased" = "%@を購入しました";
 "buy_reward" = "'%@'を%@ゴールドで購入しました";
+"party.leave_party_description" = "パーティーを脱退したい、そして、チャレンジを続けたいもしくはやめたいですか？";
+"party.leave_party_title" = "パーティーを脱退しますか？";
+"guilds.left_guild" = "ギルドを脱退しました";
+"guilds.joined_guild" = "ギルドに参加しました";
+"settings.push_notifications.party_activity" = "パーティーの活動";
+"settings.push_notifications.important_announcement" = "重要なお知らせ";
+"settings.push_notifications.invited_quest" = "クエストに招待しました";
+"stable.wacky_mounts" = "へんてこな乗騎";
+"stable.wacky_pets" = "へんてこなペット";
+"stable.color" = "カラー";
+"theme.light" = "ライト";
+"theme.dark" = "ダーク";
+"settings.push_notifications.gifted_subscription" = "寄付会員特典を贈られました";
+"settings.push_notifications.gifted_gems" = "ジェムを贈られました";
+"settings.push_notifications.invited_guid" = "ギルドに招待しました";
+"settings.push_notifications.invited_party" = "パーティーに招待しました";
+"settings.push_notifications.won_challenge" = "チャレンジで優勝しました！";
+"settings.push_notifications.received_pm" = "プライベートメッセージが届きました";
+"settings.push_notifications.title" = "プッシュ通知";
+"settings.language" = "言語";
+"settings.theme_mode" = "テーマモード";
+"titles.achievements" = "実績";
+"titles.messages" = "メッセージ";
+"titles.notifications" = "通知";
+"about.new_version" = "アップデートが利用可能です：%@";
