@@ -208,6 +208,8 @@ public enum L10n {
   public static var grey: String { return L10n.tr("Mainstrings", "grey") }
   /// Group By
   public static var groupBy: String { return L10n.tr("Mainstrings", "group_by") }
+  /// Group Plan
+  public static var groupPlan: String { return L10n.tr("Mainstrings", "group_plan") }
   /// Hatch egg
   public static var hatchEgg: String { return L10n.tr("Mainstrings", "hatch_egg") }
   /// Hatch with potion
@@ -272,6 +274,8 @@ public enum L10n {
   public static var mana: String { return L10n.tr("Mainstrings", "mana") }
   /// Mana Points
   public static var manaPoints: String { return L10n.tr("Mainstrings", "mana_points") }
+  /// Member of a Group Plan
+  public static var memberGroupPlan: String { return L10n.tr("Mainstrings", "member_group_plan") }
   /// Menu
   public static var menu: String { return L10n.tr("Mainstrings", "menu") }
   /// Moderator

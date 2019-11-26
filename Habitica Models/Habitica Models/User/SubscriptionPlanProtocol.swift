@@ -36,6 +36,10 @@ public extension SubscriptionPlanProtocol {
         return customerId == "Gift"
     }
     
+    var isGroupPlanSub: Bool {
+        return customerId == "group-plan"
+    }
+    
     var gemCapTotal: Int {
         return 25 + (consecutive?.gemCapExtra ?? 0)
     }

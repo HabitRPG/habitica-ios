@@ -38,6 +38,9 @@ class SubscriptionDetailView: UITableViewCell {
             if plan.isGifted {
                 statusPill.text = L10n.notRecurring
                 statusPill.pillColor = .yellow5
+            } else if plan.isGroupPlanSub {
+                statusPill.text = L10n.groupPlan
+                statusPill.pillColor = .purple300
             } else if plan.dateTerminated != nil {
                 statusPill.text = L10n.cancelled
                 statusPill.pillColor = .red10
@@ -68,6 +71,8 @@ class SubscriptionDetailView: UITableViewCell {
         }
         if let duration = duration {
             typeLabel.text = L10n.subscriptionDuration(duration)
+        } else if plan.isGroupPlanSub {
+            typeLabel.text = L10n.memberGroupPlan
         } else if let terminated = plan.dateTerminated {
             let formatter = DateFormatter()
             formatter.dateStyle = .medium
@@ -104,12 +109,16 @@ class SubscriptionDetailView: UITableViewCell {
         hourGlassCountPill.text = String(plan.consecutive?.hourglasses ?? 0)
 
         cancelTitleLabel.text = L10n.cancelSubscription
+        cancelDescriptionButton.isHidden = false
         if plan.paymentMethod == "Apple" {
             cancelDescriptionLabel.text = L10n.unsubscribeItunes
             cancelDescriptionButton.setTitle(L10n.openItunes, for: .normal)
         } else if plan.paymentMethod != nil {
             cancelDescriptionLabel.text = L10n.unsubscribeWebsite
             cancelDescriptionButton.setTitle(L10n.openWebsite, for: .normal)
+        } else if plan.isGroupPlanSub {
+            cancelDescriptionLabel.text = L10n.cancelSubscriptionGroupPlan
+            cancelDescriptionButton.isHidden = true
         } else if plan.dateTerminated != nil {
             cancelDescriptionButton.setTitle(L10n.renewSubscription, for: .normal)
             if plan.isGifted {
