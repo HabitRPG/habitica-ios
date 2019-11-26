@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "gems_4.png",
+      "filename" : "gem_purchase_header.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "gems_4@2x.png",
+      "filename" : "gem_purchase_header@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "gems_4@3x.png",
+      "filename" : "gem_purchase_header@3x.png",
       "scale" : "3x"
     }
   ],

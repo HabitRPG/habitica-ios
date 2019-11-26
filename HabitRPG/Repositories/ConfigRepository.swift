@@ -23,6 +23,7 @@ enum ConfigVariable: Int {
     case randomizeAvatar
     case enablePushMentions
     case showSubscriptionBanner
+    case useNewMysteryBenefits
 
     func name() -> String {
         // swiftlint:disable switch_case_on_newline
@@ -39,6 +40,7 @@ enum ConfigVariable: Int {
         case .randomizeAvatar: return "randomizeAvatar"
         case .enablePushMentions: return "enablePushMentions"
         case .showSubscriptionBanner: return "showSubscriptionBanner"
+        case .useNewMysteryBenefits: return "useNewMysteryBenefits"
         }
         // swiftlint:enable switch_case_on_newline
     }
@@ -52,7 +54,7 @@ enum ConfigVariable: Int {
         case .maxChatLength:
             return NSNumber(integerLiteral: 3000)
         case .enableGiftOneGetOne:
-            return NSNumber(booleanLiteral: false)
+            return NSNumber(booleanLiteral: true)
         case .enableUsernameAutocomplete:
             return NSNumber(booleanLiteral: false)
         case .spriteSubstitutions:
@@ -69,6 +71,8 @@ enum ConfigVariable: Int {
             return NSNumber(booleanLiteral: false)
         case .showSubscriptionBanner:
             return NSNumber(booleanLiteral: false)
+        case .useNewMysteryBenefits:
+            return NSNumber(booleanLiteral: false)
         }
     }
     
@@ -84,7 +88,8 @@ enum ConfigVariable: Int {
             .lastVersionNumber,
             .lastVersionCode,
             .randomizeAvatar,
-            .enablePushMentions
+            .enablePushMentions,
+            .useNewMysteryBenefits
         ]
     }
 }

@@ -92,7 +92,6 @@ public class ThemeService: NSObject {
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).textColor = theme.primaryTextColor
 
         UILabel.appearance(whenContainedInInstancesOf: [UITableViewHeaderFooterView.self]).textColor = theme.primaryTextColor
-        UILabel.appearance(whenContainedInInstancesOf: [UICollectionReusableView.self]).textColor = theme.primaryTextColor
         UILabel.appearance(whenContainedInInstancesOf: [UITableViewCell.self]).textColor = theme.primaryTextColor
         UIButton.appearance(whenContainedInInstancesOf: [UITableView.self]).tintColor = theme.tintColor
         UIButton.appearance(whenContainedInInstancesOf: [UICollectionView.self]).tintColor = theme.tintColor

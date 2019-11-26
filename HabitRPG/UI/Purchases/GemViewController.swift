@@ -13,7 +13,7 @@ import Keys
 import ReactiveSwift
 import Habitica_Models
 
-class GemViewController: BaseCollectionViewController {
+class GemViewController: BaseCollectionViewController, UICollectionViewDelegateFlowLayout {
 
     
     var products: [SKProduct]?
@@ -23,7 +23,7 @@ class GemViewController: BaseCollectionViewController {
     private let userRepository = UserRepository()
     private let configRepository = ConfigRepository()
     private let disposable = ScopedDisposable(CompositeDisposable())
- 
+    
     var isSubscribed = false
     
     override func viewDidLoad() {
@@ -50,6 +50,7 @@ class GemViewController: BaseCollectionViewController {
         } else {
             navigationController?.navigationBar.backgroundColor = theme.contentBackgroundColor
         }
+        collectionView.backgroundColor = theme.contentBackgroundColor
     }
     
     func retrieveProductList() {
@@ -85,6 +86,7 @@ class GemViewController: BaseCollectionViewController {
             return UICollectionViewCell()
         }
         cell.setPrice(product.localizedPrice)
+        cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
 
         if product.productIdentifier == "com.habitrpg.ios.Habitica.4gems" {
             cell.setGemAmount(4)
@@ -111,6 +113,14 @@ class GemViewController: BaseCollectionViewController {
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize{
+        if configRepository.bool(variable: .enableGiftOneGetOne) {
+            return CGSize(width: collectionView.frame.size.width, height: 320)
+        } else {
+            return CGSize(width: collectionView.frame.size.width, height: 239)
+        }
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         var identifier = "nil"
         
@@ -122,7 +132,7 @@ class GemViewController: BaseCollectionViewController {
             identifier = "FooterView"
         }
         
-        let view = collectionView .dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: identifier, for: indexPath)
+        let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: identifier, for: indexPath)
         
         if kind == UICollectionView.elementKindSectionFooter {
             if let imageView = view.viewWithTag(1) as? UIImageView {
@@ -137,6 +147,16 @@ class GemViewController: BaseCollectionViewController {
         } else if kind == UICollectionView.elementKindSectionHeader {
             if let headerImage = view.viewWithTag(1) as? UIImageView {
                 headerImage.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
+            }
+            
+            if configRepository.bool(variable: .enableGiftOneGetOne) {
+                if let promoView = view.viewWithTag(2) as? GiftOneGetOnePromoView {
+                    promoView.isHidden = false
+                    promoView.onTapped = {[weak self] in
+                        self?.showGiftSubscriptionModal()
+                    }
+                    //promoView.frame = CGRect(x: 0, y: 0, width: collectionView.frame.size.width, height: 411)
+                }
             }
         }
         
@@ -154,5 +174,37 @@ class GemViewController: BaseCollectionViewController {
     
     @IBAction func doneButtonTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+    private var giftRecipientUsername = ""
+
+    
+    private func showGiftSubscriptionModal() {
+        let alertController = HabiticaAlertController(title: L10n.giftRecipientTitle, message: L10n.giftRecipientSubtitle)
+        let textField = UITextField()
+        textField.autocorrectionType = .no
+        textField.autocapitalizationType = .none
+        textField.borderColor = UIColor.gray300
+        textField.borderWidth = 1
+        textField.tintColor = ThemeService.shared.theme.tintColor
+        alertController.contentView = textField
+        alertController.addCancelAction()
+        alertController.addAction(title: L10n.continue, style: .default, isMainAction: true, closeOnTap: true, handler: { _ in
+            if let username = textField.text, username.isEmpty == false {
+                self.giftRecipientUsername = username
+                self.perform(segue: StoryboardSegue.Main.openGiftSubscriptionDialog)
+            }
+        })
+        alertController.show()
+        alertController.containerViewSpacing = 8
+        alertController.containerView.spacing = 4
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == StoryboardSegue.Main.openGiftSubscriptionDialog.rawValue {
+            let navigationController = segue.destination as? UINavigationController
+            let giftSubscriptionController = navigationController?.topViewController as? GiftSubscriptionViewController
+            giftSubscriptionController?.giftRecipientUsername = giftRecipientUsername
+        }
     }
 }

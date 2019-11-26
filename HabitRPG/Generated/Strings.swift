@@ -190,10 +190,8 @@ public enum L10n {
   }
   /// Your gift was sent!
   public static var giftConfirmationTitle: String { return L10n.tr("Mainstrings", "gift_confirmation_title") }
-  /// While this promotion is active, you’ll receive a matching subscription automatically after sending your gift.
-  public static var giftOneGetOneDescription: String { return L10n.tr("Mainstrings", "gift_one_get_one_description") }
-  /// Gift one, Get one!
-  public static var giftOneGetOneTitle: String { return L10n.tr("Mainstrings", "gift_one_get_one_title") }
+  /// Gift a sub and get a sub free event going on now!
+  public static var giftOneGetOne: String { return L10n.tr("Mainstrings", "gift_one_get_one") }
   /// Enter recipient's @ username
   public static var giftRecipientSubtitle: String { return L10n.tr("Mainstrings", "gift_recipient_subtitle") }
   /// Who would you like to gift to?
@@ -336,7 +334,7 @@ public enum L10n {
   public static var `open`: String { return L10n.tr("Mainstrings", "open") }
   /// Open App Store Page
   public static var openAppStore: String { return L10n.tr("Mainstrings", "open_app_store") }
-  /// Open iTunes
+  /// Open Apple ID Subscriptions
   public static var openItunes: String { return L10n.tr("Mainstrings", "open_itunes") }
   /// Open Habitica Website
   public static var openWebsite: String { return L10n.tr("Mainstrings", "open_website") }
@@ -484,6 +482,10 @@ public enum L10n {
   public static var subscriptionInfo2Title: String { return L10n.tr("Mainstrings", "subscription_info_2_title") }
   /// Subscribe now to get an exclusive set now and receive new items every month!
   public static var subscriptionInfo3Description: String { return L10n.tr("Mainstrings", "subscription_info_3_description") }
+  /// Subscribe now to get this %@ set now and receive new items every month!
+  public static func subscriptionInfo3DescriptionNew(_ p1: String) -> String {
+    return L10n.tr("Mainstrings", "subscription_info_3_description_new", p1)
+  }
   /// Monthly Mystery Items
   public static var subscriptionInfo3Title: String { return L10n.tr("Mainstrings", "subscription_info_3_title") }
   /// Receive the Royal Purple Jackalope pet when you become a new subscriber.

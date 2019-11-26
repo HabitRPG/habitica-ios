@@ -12,6 +12,7 @@ import StoreKit
 import Keys
 import ReactiveSwift
 import Habitica_Models
+import PinLayout
 
 class SubscriptionViewController: BaseTableViewController {
 
@@ -21,12 +22,15 @@ class SubscriptionViewController: BaseTableViewController {
     ]
 
     private let userRepository = UserRepository()
+    private let inventoryRepository = InventoryRepository()
     private let disposable = ScopedDisposable(CompositeDisposable())
+    private let configRepository = ConfigRepository()
     
     @IBOutlet weak var giftSubscriptionExplanationLabel: UILabel!
     @IBOutlet weak var giftSubscriptionButton: UIButton!
     @IBOutlet weak var subscriptionSupportLabel: UILabel!
     @IBOutlet weak var headerImage: UIImageView!
+    @IBOutlet weak var giftOneGetOnePromoView: GiftOneGetOnePromoView!
     
     
     var products: [SKProduct]?
@@ -42,6 +46,7 @@ class SubscriptionViewController: BaseTableViewController {
             hasTerminationDate = user?.purchased?.subscriptionPlan?.dateTerminated != nil
         }
     }
+    var mysteryGear: GearProtocol?
     let appleValidator: AppleReceiptValidator
     let itunesSharedSecret = HabiticaKeys().itunesSharedSecret
 
@@ -98,6 +103,23 @@ class SubscriptionViewController: BaseTableViewController {
         if #available(iOS 13.0, *) {
             navigationController?.navigationBar.standardAppearance.shadowColor = .clear
             navigationController?.navigationBar.compactAppearance?.shadowColor = .clear
+        }
+        
+        if configRepository.bool(variable: .useNewMysteryBenefits) {
+            disposable.inner.add(inventoryRepository.getLatestMysteryGear().on(value: { gear in
+                self.mysteryGear = gear
+                }).start())
+        }
+        
+        if configRepository.bool(variable: .enableGiftOneGetOne) {
+            if let header = tableView.tableHeaderView {
+                header.frame = CGRect(x: header.frame.origin.x, y: header.frame.origin.y, width: header.frame.size.width, height: 165)
+            }
+            giftOneGetOnePromoView.isHidden = false
+            giftOneGetOnePromoView.onTapped = {[weak self] in
+                guard let weakSelf = self else { return }
+                weakSelf.giftSubscriptionButtonTapped(weakSelf.giftOneGetOnePromoView)
+            }
         }
     }
     
@@ -198,7 +220,7 @@ class SubscriptionViewController: BaseTableViewController {
             let titleView = UILabel()
             titleView.numberOfLines = 0
             titleView.textColor = UIColor.purple300
-            titleView.font = CustomFontMetrics.scaledSystemFont(ofSize: 16)
+            titleView.font = CustomFontMetrics.scaledSystemFont(ofSize: 17, ofWeight: .semibold)
             titleView.textAlignment = .center
             if isSubscribed {
                 titleView.text = L10n.subscriptionBenefitsTitleSubscribed
@@ -206,7 +228,7 @@ class SubscriptionViewController: BaseTableViewController {
                 titleView.text = L10n.subscriptionBenefitsTitle
             }
             view.addSubview(titleView)
-            titleView.pin.start(50).end(50).top().sizeToFit(.width)
+            titleView.pin.start(20%).end(20%).top().sizeToFit(.width)
             separatorView.pin.start().end().below(of: titleView).marginTop(16).height(16)
             view.pin.height(separatorView.frame.origin.y + separatorView.frame.size.height + 16)
         } else if isOptionSection(section) && showSubscribeOptions {
@@ -216,12 +238,12 @@ class SubscriptionViewController: BaseTableViewController {
             let titleView = UILabel()
             titleView.numberOfLines = 0
             titleView.textColor = UIColor.purple300
-            titleView.font = CustomFontMetrics.scaledSystemFont(ofSize: 16)
+            titleView.font = CustomFontMetrics.scaledSystemFont(ofSize: 17, ofWeight: .semibold)
             titleView.textAlignment = .center
             titleView.text = L10n.subscriptionOptionsTitle
             view.addSubview(titleView)
             separatorView.pin.start().end().top(16).height(16)
-            titleView.pin.start(50).end(50).below(of: separatorView).marginTop(16).sizeToFit(.width)
+            titleView.pin.start(20%).end(20%).below(of: separatorView).marginTop(16).sizeToFit(.width)
             view.pin.height(titleView.frame.origin.y + titleView.frame.size.height + 8)
         }
         return view
@@ -249,8 +271,13 @@ class SubscriptionViewController: BaseTableViewController {
                 fatalError()
             }
             cell.title = SubscriptionInformation.titles[indexPath.item]
-            cell.descriptionText = SubscriptionInformation.descriptions[indexPath.item]
-            cell.iconView.image = SubscriptionInformation.images[indexPath.item]
+            if (indexPath.item == 2 && mysteryGear != nil) {
+                cell.descriptionText = L10n.subscriptionInfo3DescriptionNew(mysteryGear?.text ?? "")
+                cell.iconView.setImagewith(name: "shop_set_mystery_\(mysteryGear?.key?.split(separator: "_").last ?? "")")
+            } else {
+                cell.descriptionText = SubscriptionInformation.descriptions[indexPath.item]
+                cell.iconView.image = SubscriptionInformation.images[indexPath.item]
+            }
             returnedCell = cell
         } else if self.isOptionSection(indexPath.section) {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "OptionCell", for: indexPath) as? SubscriptionOptionView else {
@@ -418,7 +445,7 @@ class SubscriptionViewController: BaseTableViewController {
         alertController.addAction(title: L10n.continue, style: .default, isMainAction: true, closeOnTap: true, handler: { _ in
             if let username = textField.text, username.isEmpty == false {
                 self.giftRecipientUsername = username
-                self.perform(segue: StoryboardSegue.Main.openGiftGemDialog)
+                self.perform(segue: StoryboardSegue.Main.openGiftSubscriptionDialog)
             }
         })
         alertController.show()
@@ -427,7 +454,7 @@ class SubscriptionViewController: BaseTableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == StoryboardSegue.Main.openGiftGemDialog.rawValue {
+        if segue.identifier == StoryboardSegue.Main.openGiftSubscriptionDialog.rawValue {
             let navigationController = segue.destination as? UINavigationController
             let giftSubscriptionController = navigationController?.topViewController as? GiftSubscriptionViewController
             giftSubscriptionController?.giftRecipientUsername = giftRecipientUsername

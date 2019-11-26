@@ -23,6 +23,7 @@
 
 - (void)setGemAmount:(NSInteger)amount {
     self.amountLabel.text = [@(amount) stringValue];
+    self.amountLabel.textColor = ObjcThemeWrapper.primaryTextColor;
     switch (amount) {
         case 4:
             self.imageView.image = [UIImage imageNamed:@"4_gems"];
@@ -42,6 +43,7 @@
     }
     
     self.gemsLabel.text = objcL10n.gems;
+    self.gemsLabel.textColor = ObjcThemeWrapper.primaryTextColor;
 }
 
 - (void)setPrice:(NSString *)price {

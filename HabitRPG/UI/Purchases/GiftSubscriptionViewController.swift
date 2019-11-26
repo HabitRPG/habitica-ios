@@ -153,6 +153,8 @@ class GiftSubscriptionViewController: BaseTableViewController {
             let product = self.products?[indexPath.item]
             cell.priceLabel.text = product?.localizedPrice
             cell.titleLabel.text = product?.localizedTitle
+            
+            cell.flagView.isHidden = true
             switch product?.productIdentifier {
             case PurchaseHandler.noRenewSubscriptionIdentifiers[0]:
                 cell.setMonthCount(1)
@@ -162,6 +164,9 @@ class GiftSubscriptionViewController: BaseTableViewController {
                 cell.setMonthCount(6)
             case PurchaseHandler.noRenewSubscriptionIdentifiers[3]:
                 cell.setMonthCount(12)
+                cell.flagView.text = "Save 20%"
+                cell.flagView.textColor = .white
+                cell.flagView.isHidden = false
             default:
                 break
             }

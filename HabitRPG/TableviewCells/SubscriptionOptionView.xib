@@ -20,7 +20,7 @@
                         <rect key="frame" x="16" y="8" width="343" height="127"/>
                         <subviews>
                             <view contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="JQl-uq-L9i" customClass="FlagView" customModule="Habitica" customModuleProvider="target">
-                                <rect key="frame" x="323" y="8" width="20" height="24"/>
+                                <rect key="frame" x="303" y="12" width="40" height="24"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="13U-DT-J01"/>
@@ -61,13 +61,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="100" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8G-oZ-Yon" customClass="PaddedLabel" customModule="Habitica" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="89.5" width="28.5" height="13.5"/>
+                                        <rect key="frame" x="0.0" y="89.5" width="29.5" height="13.5"/>
                                         <color key="backgroundColor" red="0.92813128229999997" green="0.92537832259999997" blue="0.93166613580000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" priority="500" constant="42" id="3JM-al-1nN"/>
                                             <constraint firstAttribute="height" priority="500" constant="21" id="ik9-FL-azR"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
                                         <color key="textColor" red="0.3075395823" green="0.2903449535" blue="0.34151983260000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                         <userDefinedRuntimeAttributes>
@@ -77,13 +77,13 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="100" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Et-rt-l2T" customClass="PaddedLabel" customModule="Habitica" customModuleProvider="target">
-                                        <rect key="frame" x="36.5" y="89.5" width="28.5" height="13.5"/>
+                                        <rect key="frame" x="37.5" y="89.5" width="29.5" height="13.5"/>
                                         <color key="backgroundColor" red="0.92813128229999997" green="0.92537832259999997" blue="0.93166613580000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" priority="500" constant="42" id="Abu-XA-0SE"/>
                                             <constraint firstAttribute="height" priority="500" constant="21" id="cRg-rh-FNf"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
                                         <color key="textColor" red="0.3075395823" green="0.2903449535" blue="0.34151983260000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                         <userDefinedRuntimeAttributes>
@@ -116,7 +116,7 @@
                             <constraint firstItem="cN1-0z-yC8" firstAttribute="leading" secondItem="rGG-fK-sIG" secondAttribute="leading" id="AJV-mv-bCM"/>
                             <constraint firstItem="Ahl-VE-epw" firstAttribute="top" secondItem="rGG-fK-sIG" secondAttribute="top" constant="12" id="DwM-Td-36h"/>
                             <constraint firstAttribute="bottom" secondItem="Ahl-VE-epw" secondAttribute="bottom" constant="12" id="Hgq-Jm-VGS"/>
-                            <constraint firstItem="JQl-uq-L9i" firstAttribute="top" secondItem="rGG-fK-sIG" secondAttribute="top" constant="8" id="JM6-PN-shS"/>
+                            <constraint firstItem="JQl-uq-L9i" firstAttribute="top" secondItem="rGG-fK-sIG" secondAttribute="top" constant="12" id="JM6-PN-shS"/>
                             <constraint firstItem="cN1-0z-yC8" firstAttribute="top" secondItem="rGG-fK-sIG" secondAttribute="top" id="e6z-T2-vv6"/>
                             <constraint firstItem="Ahl-VE-epw" firstAttribute="leading" secondItem="cN1-0z-yC8" secondAttribute="trailing" constant="8" id="edD-SA-5mc"/>
                             <constraint firstAttribute="trailing" secondItem="JQl-uq-L9i" secondAttribute="trailing" id="f1h-lQ-MkD"/>

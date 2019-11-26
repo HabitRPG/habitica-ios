@@ -267,4 +267,8 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
     func getNewInAppReward() -> InAppRewardProtocol {
         return localRepository.getNewInAppReward()
     }
+    
+    func getLatestMysteryGear() -> SignalProducer<GearProtocol?, ReactiveSwiftRealmError> {
+        return localRepository.getLatestMysteryGear()
+    }
 }

@@ -131,7 +131,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y8s-Ed-6hX" customClass="PillView" customModule="Habitica" customModuleProvider="target">
-                                        <rect key="frame" x="329" y="8" width="0.0" height="13"/>
+                                        <rect key="frame" x="329" y="14.5" width="0.0" height="0.0"/>
                                         <constraints>
                                             <constraint firstAttribute="width" priority="500" constant="42" id="Wv7-Iu-rxX"/>
                                             <constraint firstAttribute="height" priority="500" constant="21" id="kIo-lZ-IFs"/>
@@ -171,7 +171,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8e3-ov-uYH" customClass="PillView" customModule="Habitica" customModuleProvider="target">
-                                        <rect key="frame" x="329" y="8" width="0.0" height="13"/>
+                                        <rect key="frame" x="329" y="14.5" width="0.0" height="0.0"/>
                                         <constraints>
                                             <constraint firstAttribute="height" priority="500" constant="21" id="Vr9-3d-a0t"/>
                                             <constraint firstAttribute="width" priority="500" constant="42" id="fZ7-d7-VHs"/>
@@ -211,7 +211,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oCK-2t-7KY" customClass="PillView" customModule="Habitica" customModuleProvider="target">
-                                        <rect key="frame" x="329" y="8" width="0.0" height="13"/>
+                                        <rect key="frame" x="329" y="14.5" width="0.0" height="0.0"/>
                                         <constraints>
                                             <constraint firstAttribute="width" priority="500" constant="42" id="Ev5-sC-qak"/>
                                             <constraint firstAttribute="height" priority="500" constant="21" id="mzf-4v-yKH"/>
@@ -279,12 +279,18 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3CD-pP-Dy9">
                                 <rect key="frame" x="8" y="45" width="329" height="30"/>
+                                <color key="backgroundColor" red="0.60365134480000004" green="0.38511508700000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="500" constant="30" id="ghO-L2-yff"/>
                                 </constraints>
                                 <state key="normal">
-                                    <color key="titleColor" red="0.3803921639919281" green="0.20000000298023224" blue="0.70588237047195435" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="cancelButtonPressed:" destination="fDN-KX-ZVh" eventType="touchUpInside" id="OO5-5D-Lpy"/>
                                 </connections>

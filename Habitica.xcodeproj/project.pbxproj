@@ -237,6 +237,7 @@
 		297517B41F30EBD100B5BCB9 /* AvatarSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297517B31F30EBD100B5BCB9 /* AvatarSetupViewController.swift */; };
 		297517B61F30EBFC00B5BCB9 /* TaskSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297517B51F30EBFC00B5BCB9 /* TaskSetupViewController.swift */; };
 		2975F00323881D05005DBF2E /* FlagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2975F00223881D05005DBF2E /* FlagView.swift */; };
+		2975F005238C4996005DBF2E /* GiftOneGetOnePromoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2975F004238C4996005DBF2E /* GiftOneGetOnePromoView.swift */; };
 		297D15FA20B803D30048101F /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297D15F920B803D30048101F /* UserProfileViewController.swift */; };
 		297D15FD20B825DE0048101F /* HRPGSearchDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 297D15FB20B825DE0048101F /* HRPGSearchDataManager.m */; };
 		2980E6071EEA1F55005B7100 /* YesterdailiesDialogView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2980E6061EEA1F55005B7100 /* YesterdailiesDialogView.xib */; };
@@ -874,6 +875,7 @@
 		297517B31F30EBD100B5BCB9 /* AvatarSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarSetupViewController.swift; sourceTree = "<group>"; };
 		297517B51F30EBFC00B5BCB9 /* TaskSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskSetupViewController.swift; sourceTree = "<group>"; };
 		2975F00223881D05005DBF2E /* FlagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagView.swift; sourceTree = "<group>"; };
+		2975F004238C4996005DBF2E /* GiftOneGetOnePromoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftOneGetOnePromoView.swift; sourceTree = "<group>"; };
 		297AAB4720F508A300BD019D /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		297AAB4820F508A300BD019D /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/OnePasswordExtension.strings; sourceTree = "<group>"; };
 		297AAB4920F508A300BD019D /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -2466,6 +2468,7 @@
 				2980E6081EEA25CD005B7100 /* YesterdailiesDialogView.swift */,
 				2980E6061EEA1F55005B7100 /* YesterdailiesDialogView.xib */,
 				296F51632358E5EF0019C872 /* SubscriptionPromoView.swift */,
+				2975F004238C4996005DBF2E /* GiftOneGetOnePromoView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -3833,6 +3836,7 @@
 				295BC6F9226F5B6400DDDF1A /* BaseNotificationCell.swift in Sources */,
 				291448842088E2E000F3A6B5 /* EquipmentViewDataSource.swift in Sources */,
 				2919FDDD2091D5370096A53B /* UserManager.swift in Sources */,
+				2975F005238C4996005DBF2E /* GiftOneGetOnePromoView.swift in Sources */,
 				290B624320728E74007287C4 /* GuildOverviewViewController.swift in Sources */,
 				29ED1AFF1F339ACF005A3895 /* UIColor-Extensions.swift in Sources */,
 				291448662084FBAC00F3A6B5 /* PetDetailCell.swift in Sources */,
@@ -4487,7 +4491,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 432;
+				CURRENT_PROJECT_VERSION = 433;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -4542,7 +4546,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 432;
+				CURRENT_PROJECT_VERSION = 433;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
