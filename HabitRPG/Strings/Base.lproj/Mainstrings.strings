@@ -30,7 +30,7 @@
 "titles.faq" = "FAQ";
 "titles.about" = "About";
 "titles.news" = "News";
-"titles.stable" = "Stable";
+"titles.pets_and_mounts" = "Pets & Mounts";
 "titles.pets" = "Pets";
 "titles.mounts" = "Mounts";
 "titles.tavern" = "Tavern";
@@ -758,6 +758,8 @@
 "cancel_subscription_group_plan" = "You have a free subscription because you are a member a Party or Guild that has a Group Plan. This will end if you leave or the Group Plan is cancelled by the owner. Any months of extra subscription credit you have will be applied at the end of the Group Plan.";
 "send_gift" = "Send Gift";
 "gift_one_get_one" = "Gift a sub and get a sub free event going on now!";
+"gift_one_get_one_title" = "Gift One, Get One Event";
+"gift_one_get_one_description" = "Gift a subscription now and you’ll get the same sub for yourself free!";
 "gems_support_developers" = "Buying gems supports the developers\nand helps keep Habitica running";
 "gem_benefits_title" = "Gems allow you to buy fun extras for your account, including:";
 "unpin_from_rewards" = "Unpin from Rewards";
@@ -765,6 +767,8 @@
 "buy_for_x" = "Buy for %@";
 "moderator" = "Moderator";
 "staff" = "Staff";
+"sale" = "Sale";
+"get_more_habitica" = "Get more out of Habitica";
 "report_x_violation" = "Report %@ for violation?";
 "not_getting_drops" = "Not getting the right drops? Check out the Market to buy just the things you need!";
 "streak_achievement_title" = "You earned a streak achievement!";

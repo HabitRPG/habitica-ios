@@ -14,15 +14,19 @@ import ReactiveSwift
 struct MenuItem {
     var title: String
     var subtitle: String?
+    var subtitleColor: UIColor?
+    var pillText: String?
+    var pillColor: UIColor?
     var accessibilityLabel: String?
     var segue: String
     var cellName = "Cell"
     var showIndicator = false
     var isHidden = false
     
-    init(title: String, subtitle: String? = nil, accessibilityLabel: String? = nil, segue: String, cellName: String = "Cell", showIndicator: Bool = false) {
+    init(title: String, subtitle: String? = nil, pillText: String? = nil, accessibilityLabel: String? = nil, segue: String, cellName: String = "Cell", showIndicator: Bool = false) {
         self.title = title
         self.subtitle = subtitle
+        self.pillText = pillText
         self.accessibilityLabel = accessibilityLabel
         self.segue = segue
         self.cellName = cellName
@@ -88,8 +92,13 @@ class MainMenuViewController: BaseTableViewController {
             
             tableView.reloadData()
             
-            if user?.isSubscribed == true {
+            if user?.isSubscribed == true && !configRepository.bool(variable: .enableGiftOneGetOne) {
                 tableView.tableFooterView = nil
+            }
+            if user?.isSubscribed == true {
+                menuSections[2].items[6].subtitle = nil
+            } else {
+                menuSections[2].items[6].subtitle = L10n.getMoreHabitica
             }
         }
     }
@@ -138,7 +147,13 @@ class MainMenuViewController: BaseTableViewController {
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableView.automaticDimension
         
-        if configRepository.bool(variable: .showSubscriptionBanner) {
+        if configRepository.bool(variable: .enableGiftOneGetOne) {
+            let view = GiftOneGetOnePromoView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 148))
+            view.size = .large
+            view.cornerRadius = 0
+            view.onTapped = {[weak self] in self?.performSegue(withIdentifier: StoryboardSegue.Main.subscriptionSegue.rawValue, sender: self) }
+            tableView.tableFooterView = view
+        } else if configRepository.bool(variable: .showSubscriptionBanner) {
             let view = SubscriptionPromoView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 148))
             view.onButtonTapped = {[weak self] in self?.performSegue(withIdentifier: StoryboardSegue.Main.subscriptionSegue.rawValue, sender: self) }
             tableView.tableFooterView = view
@@ -152,10 +167,6 @@ class MainMenuViewController: BaseTableViewController {
     }
     
     private func setupMenu() {
-        var stableName = configRepository.string(variable: .stableName) ?? ""
-        if stableName.isEmpty != false {
-            stableName = L10n.Titles.stable
-        }
         menuSections = [
             MenuSection(title: nil, iconAsset: nil, items: [
                 MenuItem(title: L10n.Menu.castSpells, segue: StoryboardSegue.Main.spellsSegue.rawValue),
@@ -174,7 +185,7 @@ class MainMenuViewController: BaseTableViewController {
                 MenuItem(title: L10n.Menu.customizeAvatar, segue: StoryboardSegue.Main.customizationSegue.rawValue),
                 MenuItem(title: L10n.Titles.equipment, segue: StoryboardSegue.Main.equipmentSegue.rawValue),
                 MenuItem(title: L10n.Titles.items, segue: StoryboardSegue.Main.itemSegue.rawValue),
-                MenuItem(title: stableName, segue: StoryboardSegue.Main.stableSegue.rawValue),
+                MenuItem(title: L10n.Titles.petsAndMounts, segue: StoryboardSegue.Main.stableSegue.rawValue),
                 MenuItem(title: L10n.Menu.gems, segue: StoryboardSegue.Main.purchaseGemsSegue.rawValue),
                 MenuItem(title: L10n.Menu.subscription, segue: StoryboardSegue.Main.subscriptionSegue.rawValue)
                 ]),
@@ -184,6 +195,12 @@ class MainMenuViewController: BaseTableViewController {
                 MenuItem(title: L10n.Titles.about, segue: StoryboardSegue.Main.aboutSegue.rawValue)
                 ])
         ]
+        menuSections[1].items[0].subtitleColor = UIColor.orange10
+        
+        if configRepository.bool(variable: .enableGiftOneGetOne) {
+            menuSections[2].items[6].pillText = L10n.sale
+            menuSections[2].items[6].pillColor = .teal50
+        }
     }
     
     @objc
@@ -260,10 +277,16 @@ class MainMenuViewController: BaseTableViewController {
         indicatorView?.layer.cornerRadius = (indicatorView?.frame.size.height ?? 0) / 2
         indicatorView?.backgroundColor = ThemeService.shared.theme.backgroundTintColor
         
-        let subtitleLabel = cell.viewWithTag(3) as? UILabel
+        let pillView = cell.viewWithTag(3) as? PillView
+        pillView?.text = item?.pillText
+        pillView?.isHidden = item?.pillText == nil
+        pillView?.pillColor = item?.pillColor ?? UIColor.purple300
+        
+        let subtitleLabel = cell.viewWithTag(4) as? UILabel
         subtitleLabel?.text = item?.subtitle
-        subtitleLabel?.font = CustomFontMetrics.scaledSystemFont(ofSize: 12)
-        subtitleLabel?.textColor = UIColor.orange50
+        subtitleLabel?.isHidden = item?.subtitle == nil
+        subtitleLabel?.font = CustomFontMetrics.scaledSystemFont(ofSize: 11)
+        subtitleLabel?.textColor = item?.subtitleColor ?? ThemeService.shared.theme.secondaryTextColor
         return cell
     }
     

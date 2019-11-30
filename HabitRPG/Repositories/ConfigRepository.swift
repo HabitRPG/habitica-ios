@@ -114,6 +114,7 @@ class ConfigRepository: NSObject {
 
     @objc
     func bool(variable: ConfigVariable) -> Bool {
+        return true
         return ConfigRepository.remoteConfig.configValue(forKey: variable.name()).boolValue
     }
 

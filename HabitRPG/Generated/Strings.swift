@@ -58,6 +58,8 @@ public enum L10n {
   public static var cancel: String { return L10n.tr("Mainstrings", "cancel") }
   /// Cancel Subscription
   public static var cancelSubscription: String { return L10n.tr("Mainstrings", "cancel_subscription") }
+  /// You have a free subscription because you are a member a Party or Guild that has a Group Plan. This will end if you leave or the Group Plan is cancelled by the owner. Any months of extra subscription credit you have will be applied at the end of the Group Plan.
+  public static var cancelSubscriptionGroupPlan: String { return L10n.tr("Mainstrings", "cancel_subscription_group_plan") }
   /// Cancelled
   public static var cancelled: String { return L10n.tr("Mainstrings", "cancelled") }
   /// Change
@@ -180,6 +182,8 @@ public enum L10n {
   public static var gems: String { return L10n.tr("Mainstrings", "gems") }
   /// Buying gems supports the developers\nand helps keep Habitica running
   public static var gemsSupportDevelopers: String { return L10n.tr("Mainstrings", "gems_support_developers") }
+  /// Get more out of Habitica
+  public static var getMoreHabitica: String { return L10n.tr("Mainstrings", "get_more_habitica") }
   /// You sent %@ a %@-month Habitica subscription.
   public static func giftConfirmationBody(_ p1: String, _ p2: String) -> String {
     return L10n.tr("Mainstrings", "gift_confirmation_body", p1, p2)
@@ -192,6 +196,10 @@ public enum L10n {
   public static var giftConfirmationTitle: String { return L10n.tr("Mainstrings", "gift_confirmation_title") }
   /// Gift a sub and get a sub free event going on now!
   public static var giftOneGetOne: String { return L10n.tr("Mainstrings", "gift_one_get_one") }
+  /// Gift a subscription now and you’ll get the same sub for yourself free!
+  public static var giftOneGetOneDescription: String { return L10n.tr("Mainstrings", "gift_one_get_one_description") }
+  /// Gift One, Get One Event
+  public static var giftOneGetOneTitle: String { return L10n.tr("Mainstrings", "gift_one_get_one_title") }
   /// Enter recipient's @ username
   public static var giftRecipientSubtitle: String { return L10n.tr("Mainstrings", "gift_recipient_subtitle") }
   /// Who would you like to gift to?
@@ -420,6 +428,8 @@ public enum L10n {
   public static var resyncAll: String { return L10n.tr("Mainstrings", "resync_all") }
   /// Resync this task
   public static var resyncTask: String { return L10n.tr("Mainstrings", "resync_task") }
+  /// Sale
+  public static var sale: String { return L10n.tr("Mainstrings", "sale") }
   /// Saturday
   public static var saturday: String { return L10n.tr("Mainstrings", "saturday") }
   /// Save
@@ -1837,6 +1847,8 @@ public enum L10n {
     public static var party: String { return L10n.tr("Mainstrings", "titles.party") }
     /// Pets
     public static var pets: String { return L10n.tr("Mainstrings", "titles.pets") }
+    /// Pets & Mounts
+    public static var petsAndMounts: String { return L10n.tr("Mainstrings", "titles.pets_and_mounts") }
     /// Profile
     public static var profile: String { return L10n.tr("Mainstrings", "titles.profile") }
     /// Select Class
@@ -1849,8 +1861,6 @@ public enum L10n {
     public static var skills: String { return L10n.tr("Mainstrings", "titles.skills") }
     /// Spells
     public static var spells: String { return L10n.tr("Mainstrings", "titles.spells") }
-    /// Stable
-    public static var stable: String { return L10n.tr("Mainstrings", "titles.stable") }
     /// Stats
     public static var stats: String { return L10n.tr("Mainstrings", "titles.stats") }
     /// Tavern
