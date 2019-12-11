@@ -446,14 +446,16 @@ class TaskFormViewController: FormViewController, Themeable {
             <<< DateRow(TaskFormTags.dueDate) {[weak self] row in
                 row.title = L10n.Tasks.Form.dueDate
                 row.dateFormatter = self?.dateFormatter
-                row.cellSetup({ (cell, _) in
+                row.cellUpdate({ (cell, _) in
                     cell.tintColor = self?.lightTaskTintColor
                     cell.detailTextLabel?.textColor = self?.lightTaskTintColor
-                }).onCellSelection({ (_, row) in
+                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                }).onCellSelection({ (cell, row) in
                     if row.value == nil {
                         row.value = Date()
                         row.updateCell()
                     }
+                    cell.textLabel?.textColor = self?.lightTaskTintColor
                 })
             }
             <<< ButtonRow(TaskFormTags.dueDateClear) { row in
