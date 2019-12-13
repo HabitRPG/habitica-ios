@@ -55,6 +55,7 @@ class GiftOneGetOnePromoView: UIView, Themeable {
         button.setTitleColor(.teal10, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 14, weight: .bold)
         button.cornerRadius = 8
+        button.isUserInteractionEnabled = false
         return button
     }()
     

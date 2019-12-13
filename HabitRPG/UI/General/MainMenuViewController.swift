@@ -64,7 +64,8 @@ class MainMenuViewController: BaseTableViewController {
     private var disposable = ScopedDisposable(CompositeDisposable())
     
     private var menuSections = [MenuSection]()
-    
+    private var giftRecipientUsername = ""
+
     private var user: UserProtocol? {
         didSet {
             if let user = self.user {
@@ -151,7 +152,7 @@ class MainMenuViewController: BaseTableViewController {
             let view = GiftOneGetOnePromoView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 148))
             view.size = .large
             view.cornerRadius = 0
-            view.onTapped = {[weak self] in self?.performSegue(withIdentifier: StoryboardSegue.Main.subscriptionSegue.rawValue, sender: self) }
+            view.onTapped = {[weak self] in self?.giftSubscriptionButtonTapped() }
             tableView.tableFooterView = view
         } else if configRepository.bool(variable: .showSubscriptionBanner) {
             let view = SubscriptionPromoView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 148))
@@ -306,5 +307,34 @@ class MainMenuViewController: BaseTableViewController {
             return nil
         }
         return items[indexPath.item]
+    }
+    
+    func giftSubscriptionButtonTapped() {
+        let alertController = HabiticaAlertController(title: L10n.giftRecipientTitle, message: L10n.giftRecipientSubtitle)
+        let textField = UITextField()
+        textField.autocorrectionType = .no
+        textField.autocapitalizationType = .none
+        textField.borderColor = UIColor.gray300
+        textField.borderWidth = 1
+        textField.tintColor = ThemeService.shared.theme.tintColor
+        alertController.contentView = textField
+        alertController.addCancelAction()
+        alertController.addAction(title: L10n.continue, style: .default, isMainAction: true, closeOnTap: true, handler: { _ in
+            if let username = textField.text, username.isEmpty == false {
+                self.giftRecipientUsername = username
+                self.perform(segue: StoryboardSegue.Main.openGiftSubscriptionDialog)
+            }
+        })
+        alertController.show()
+        alertController.containerViewSpacing = 8
+        alertController.containerView.spacing = 4
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == StoryboardSegue.Main.openGiftSubscriptionDialog.rawValue {
+            let navigationController = segue.destination as? UINavigationController
+            let giftSubscriptionController = navigationController?.topViewController as? GiftSubscriptionViewController
+            giftSubscriptionController?.giftRecipientUsername = giftRecipientUsername
+        }
     }
 }

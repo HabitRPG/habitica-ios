@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -226,6 +226,7 @@
                         <segue destination="nb1-qt-uKV" kind="presentation" identifier="NotificationsSegue" modalPresentationStyle="formSheet" id="3jW-QR-Ocs"/>
                         <segue destination="hEH-25-nQA" kind="show" identifier="AchievementsSegue" id="ZL6-DZ-Nc4"/>
                         <segue destination="fhb-Uo-Rnv" kind="presentation" identifier="purchaseGemsSegue" id="2vn-wQ-bqg"/>
+                        <segue destination="KOH-m5-9hA" kind="presentation" identifier="openGiftSubscriptionDialog" id="FPm-Dv-Zos"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YVG-cg-SZN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2806,39 +2807,6 @@
                                 <constraint firstItem="evr-kJ-ljY" firstAttribute="top" secondItem="xvW-Tc-HI8" secondAttribute="bottom" constant="8" id="nxz-ns-EmA"/>
                             </constraints>
                         </view>
-                        <view key="tableFooterView" contentMode="scaleToFill" id="ev4-GE-6Md">
-                            <rect key="frame" x="0.0" y="326" width="375" height="111"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vqR-47-Okh">
-                                    <rect key="frame" x="16" y="16" width="343" height="0.0"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" priority="500" constant="21" id="YF5-zM-xfc"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b7s-sU-IE0">
-                                    <rect key="frame" x="40" y="20" width="295" height="0.0"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" priority="500" constant="21" id="T5l-kL-oeU"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                            <color key="backgroundColor" red="0.24680608510971069" green="0.70955049991607666" blue="0.75657778978347778" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="trailing" secondItem="b7s-sU-IE0" secondAttribute="trailing" constant="40" id="GAI-co-lcW"/>
-                                <constraint firstItem="vqR-47-Okh" firstAttribute="top" secondItem="ev4-GE-6Md" secondAttribute="top" constant="16" id="NcG-Tr-ajw"/>
-                                <constraint firstItem="vqR-47-Okh" firstAttribute="leading" secondItem="ev4-GE-6Md" secondAttribute="leading" constant="16" id="aSn-7Y-ns5"/>
-                                <constraint firstItem="b7s-sU-IE0" firstAttribute="top" secondItem="vqR-47-Okh" secondAttribute="bottom" constant="4" id="mwE-lv-4zr"/>
-                                <constraint firstItem="b7s-sU-IE0" firstAttribute="leading" secondItem="ev4-GE-6Md" secondAttribute="leading" constant="40" id="vdU-Uk-t3R"/>
-                                <constraint firstAttribute="trailing" secondItem="vqR-47-Okh" secondAttribute="trailing" constant="16" id="xV8-Pc-CKD"/>
-                            </constraints>
-                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SubscribeButtonCell" rowHeight="70" id="vN3-lc-K1M">
                                 <rect key="frame" x="0.0" y="228" width="375" height="70"/>
@@ -2891,8 +2859,6 @@
                         <outlet property="avatarView" destination="QfC-at-thI" id="mEj-ID-lER"/>
                         <outlet property="displayNameLabel" destination="NMm-pQ-wSm" id="lXg-bT-m3c"/>
                         <outlet property="explanationTitle" destination="evr-kJ-ljY" id="RQA-9R-rZB"/>
-                        <outlet property="giftOneGetOneDescriptionLabel" destination="b7s-sU-IE0" id="73T-VD-C7e"/>
-                        <outlet property="giftOneGetOneTitleLabel" destination="vqR-47-Okh" id="Q6U-qm-rbB"/>
                         <outlet property="usernameLabel" destination="xvW-Tc-HI8" id="gRf-Zg-b2d"/>
                     </connections>
                 </tableViewController>
@@ -2962,7 +2928,7 @@
         <image name="tabbar_todos" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ImE-mD-NfV"/>
+        <segue reference="FPm-Dv-Zos"/>
         <segue reference="04Z-5H-zfF"/>
         <segue reference="ETz-qE-xC2"/>
         <segue reference="jU9-l6-uQc"/>

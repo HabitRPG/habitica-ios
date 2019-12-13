@@ -122,7 +122,7 @@ class SubscriptionViewController: BaseTableViewController {
             }
         }
     }
-    
+        
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
         tableView.backgroundColor = theme.contentBackgroundColor
