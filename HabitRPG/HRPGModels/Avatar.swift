@@ -227,7 +227,11 @@ class AvatarViewModel: NSObject, Avatar {
                 return "avatar_floral_\(avatar?.stats?.habitClass ?? "warrior")"
             }
             if buff.snowball {
-                return "snowman"
+                if (Calendar.current.component(.year, from: Date()) > 2019) {
+                    return "avatar_snowball_\(avatar?.stats?.habitClass ?? "warrior")"
+                } else {
+                    return "snowman"
+                }
             }
             if buff.spookySparkles {
                 return "ghost"

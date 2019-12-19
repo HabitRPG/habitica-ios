@@ -127,7 +127,7 @@ class GiftSubscriptionViewController: BaseTableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return 96
+            return 106
         }
         return 70
     }
@@ -194,6 +194,7 @@ class GiftSubscriptionViewController: BaseTableViewController {
         guard let identifier = self.selectedSubscriptionPlan?.productIdentifier else {
             return
         }
+        PurchaseHandler.shared.pendingGifts[identifier] = self.giftedUser?.id
         SwiftyStoreKit.purchaseProduct(identifier, atomically: false) { result in
             switch result {
             case .success(let product):
@@ -201,28 +202,6 @@ class GiftSubscriptionViewController: BaseTableViewController {
                 print("Purchase Success: \(product.productId)")
             case .error(let error):
                 print("Purchase Failed: \(error)")
-            }
-        }
-    }
-    
-    func verifyAndSubscribe(_ product: PurchaseDetails) {
-        SwiftyStoreKit.fetchReceipt(forceRefresh: false) { result in
-            switch result {
-            case .success(let receiptData):
-                // Verify the purchase of a Subscription
-                PurchaseHandler.shared.activateNoRenewSubscription(product.productId, receipt: receiptData, recipientID: self.giftedUser?.id) { status in
-                    if status {
-                        if product.needsFinishTransaction {
-                            SwiftyStoreKit.finishTransaction(product.transaction)
-                        }
-                        DispatchQueue.main.async {
-                            self.displayConfirmationDialog()
-                        }
-                    }
-                }
-            case .error(let error):
-                Crashlytics.sharedInstance().recordError(error)
-                print("Receipt verification failed: \(error)")
             }
         }
     }

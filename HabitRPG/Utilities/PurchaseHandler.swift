@@ -29,7 +29,7 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
     private let appleValidator: AppleReceiptValidator
     private let userRepository = UserRepository()
     
-    private var pendingGifts = [String: String]()
+    var pendingGifts = [String: String]()
 
     private var hasCompletionHandler = false
     override private init() {

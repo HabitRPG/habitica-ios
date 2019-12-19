@@ -103,9 +103,7 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
     
     @objc
     func setupPurchaseHandling() {
-        if HabiticaAppDelegate.isRunningLive() {
-            PurchaseHandler.shared.completionHandler()
-        }
+        PurchaseHandler.shared.completionHandler()
     }
     
     @objc
@@ -125,6 +123,8 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
     func updateServer() {
         if let chosenServer = UserDefaults().string(forKey: "chosenServer") {
             switch chosenServer {
+            case "production":
+                AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.production
             case "staging":
                 AuthenticatedCall.defaultConfiguration = HabiticaServerConfig.staging
             case "beta":
