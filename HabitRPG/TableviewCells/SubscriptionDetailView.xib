@@ -264,7 +264,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="fEG-g5-om2"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <color key="textColor" red="0.94901961088180542" green="0.18823529779911041" blue="0.20784313976764679" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>

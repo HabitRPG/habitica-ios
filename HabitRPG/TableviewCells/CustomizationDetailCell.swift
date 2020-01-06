@@ -24,11 +24,6 @@ class CustomizationDetailCell: UICollectionViewCell {
         }
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        currencyView.currency = .gem
-    }
-    
     func configure(customization: CustomizationProtocol, preferences: PreferencesProtocol?) {
         if customization.key == "0" {
             imageView.image = HabiticaIcons.imageOfBlankAvatarIcon
@@ -36,6 +31,11 @@ class CustomizationDetailCell: UICollectionViewCell {
             imageView.setImagewith(name: customization.imageName(forUserPreferences: preferences))
         } else {
             imageView.setImagewith(name: customization.iconName(forUserPreferences: preferences))
+        }
+        if (customization.set?.key?.contains("timeTravel") == true) {
+            currencyView.currency = .hourglass
+        } else {
+            currencyView.currency = .gem
         }
         currencyView.amount = Int(customization.price)
         applyTheme()

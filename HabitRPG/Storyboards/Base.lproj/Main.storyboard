@@ -159,16 +159,16 @@
                                             <rect key="frame" x="20" y="4" width="316" height="36"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="n0l-QM-LJV">
-                                                    <rect key="frame" x="0.0" y="0.0" width="284" height="36"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="250" height="36"/>
                                                     <subviews>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7mY-LD-ILX">
-                                                            <rect key="frame" x="0.0" y="0.0" width="284" height="36"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="250" height="36"/>
                                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="999" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qfa-RN-CGk">
-                                                            <rect key="frame" x="0.0" y="36" width="284" height="0.0"/>
+                                                            <rect key="frame" x="0.0" y="36" width="250" height="0.0"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                             <nil key="highlightedColor"/>
@@ -176,7 +176,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <view tag="3" contentMode="scaleToFill" horizontalHuggingPriority="999" horizontalCompressionResistancePriority="999" translatesAutoresizingMaskIntoConstraints="NO" id="USe-72-kBx" customClass="PillView" customModule="Habitica" customModuleProvider="target">
-                                                    <rect key="frame" x="284" y="12" width="16" height="12"/>
+                                                    <rect key="frame" x="250" y="0.0" width="50" height="36"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 </view>
                                                 <view clipsSubviews="YES" tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y81-RX-OwJ">
@@ -1615,10 +1615,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="2y3-dE-HOI">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="84"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="92"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="bnu-w7-MYl">
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="bnu-w7-MYl">
                                     <rect key="frame" x="20" y="0.0" width="335" height="84"/>
                                     <subviews>
                                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EPN-wI-Kmz" customClass="GiftOneGetOnePromoView" customModule="Habitica" customModuleProvider="target">
@@ -1640,12 +1640,12 @@
                             <constraints>
                                 <constraint firstItem="bnu-w7-MYl" firstAttribute="top" secondItem="2y3-dE-HOI" secondAttribute="top" id="3OZ-dt-1AS"/>
                                 <constraint firstAttribute="trailing" secondItem="bnu-w7-MYl" secondAttribute="trailing" constant="20" id="bOY-HH-TGJ"/>
-                                <constraint firstAttribute="bottom" secondItem="bnu-w7-MYl" secondAttribute="bottom" id="go7-Uo-7A1"/>
+                                <constraint firstAttribute="bottom" secondItem="bnu-w7-MYl" secondAttribute="bottom" constant="8" id="go7-Uo-7A1"/>
                                 <constraint firstItem="bnu-w7-MYl" firstAttribute="leading" secondItem="2y3-dE-HOI" secondAttribute="leading" constant="20" id="wmn-aS-EmF"/>
                             </constraints>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="0ge-iM-ebO">
-                            <rect key="frame" x="0.0" y="218.5" width="375" height="400"/>
+                            <rect key="frame" x="0.0" y="226.5" width="375" height="490"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qWw-qV-Dif">
@@ -1655,7 +1655,7 @@
                                     </constraints>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P89-QO-UcF">
-                                    <rect key="frame" x="0.0" y="354" width="375" height="30"/>
+                                    <rect key="frame" x="0.0" y="444" width="375" height="30"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="30" id="FRr-fd-XWw"/>
                                     </constraints>
@@ -1732,7 +1732,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SubscribeButtonCell" rowHeight="61" id="gBX-7d-nGt">
-                                <rect key="frame" x="0.0" y="139.5" width="375" height="61"/>
+                                <rect key="frame" x="0.0" y="147.5" width="375" height="61"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gBX-7d-nGt" id="wdr-8P-A8u">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="61"/>
@@ -2817,7 +2817,7 @@
                                     <subviews>
                                         <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hf5-hq-Cbp">
                                             <rect key="frame" x="16" y="0.0" width="343" height="36"/>
-                                            <color key="backgroundColor" red="0.37997829910000003" green="0.1982949376" blue="0.70615965130000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" red="0.60365134480000004" green="0.38511508700000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="36" id="RYc-Vh-fEt"/>
                                             </constraints>
@@ -2930,7 +2930,7 @@
         <image name="tabbar_todos" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="FPm-Dv-Zos"/>
+        <segue reference="ImE-mD-NfV"/>
         <segue reference="04Z-5H-zfF"/>
         <segue reference="ETz-qE-xC2"/>
         <segue reference="jU9-l6-uQc"/>

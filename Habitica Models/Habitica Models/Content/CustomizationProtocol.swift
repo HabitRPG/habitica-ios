@@ -29,7 +29,7 @@ public extension CustomizationProtocol {
         case "skin":
             return "skin_\(key)"
         case "background":
-            return "background_\(key)"
+            return "icon_background_\(key)"
         case "chair":
             return "chair_\(key)"
         case "hair":

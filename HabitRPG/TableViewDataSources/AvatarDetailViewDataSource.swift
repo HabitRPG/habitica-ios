@@ -110,9 +110,9 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
             sections = sections.filter({ section -> Bool in
                 return section.items.isEmpty == false
             }).sorted { (firstSection, secondSection) -> Bool in
-                if firstSection.key?.contains("incentive") == true {
+                if firstSection.key?.contains("incentive") == true || firstSection.key?.contains("timeTravel") == true {
                     return true
-                } else if secondSection.key?.contains("incentive") == true {
+                } else if secondSection.key?.contains("incentive") == true || secondSection.key?.contains("timeTravel") == true {
                     return false
                 }
                 
@@ -178,7 +178,7 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
                 headerView.configure(customizationSet: set, isBackground: customizationType == "background")
                 if set.setItems?.contains(where: { (customization) -> Bool in
                     return !self.owns(customization: customization)
-                }) == true && set.setPrice != 0 {
+                }) == true && set.setPrice != 0 && set.key?.contains("timeTravel") != true {
                     headerView.purchaseButton.isHidden = false
                 } else {
                     headerView.purchaseButton.isHidden = true

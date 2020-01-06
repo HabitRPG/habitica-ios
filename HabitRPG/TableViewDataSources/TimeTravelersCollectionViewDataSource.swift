@@ -16,7 +16,7 @@ class TimeTravelersCollectionViewDataSource: ShopCollectionViewDataSource {
         for category in categories {
             for item in category.items {
                 if item.category?.pinType != "mystery_set" {
-                    if let lastSection = sections.last, lastSection.key == item.key {
+                    if let lastSection = sections.last, lastSection.key == item.key || item.purchaseType == lastSection.key {
                         lastSection.items.append(item)
                     } else {
                         let section = ItemSection<InAppRewardProtocol>()
@@ -53,8 +53,6 @@ class TimeTravelersCollectionViewDataSource: ShopCollectionViewDataSource {
                 }
             }
         }
-        //Flip the order to have pets and mounts first
-        sections.reverse()
         collectionView?.reloadData()
     }
 }

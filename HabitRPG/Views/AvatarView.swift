@@ -61,7 +61,10 @@ class AvatarView: UIView {
         "weapon_special_ks2019": "gif",
         "Pet-Gryphon-Gryphatrice": "gif",
         "Mount_Head_Gryphon-Gryphatrice": "gif",
-        "Mount_Body_Gryphon-Gryphatrice": "gif"
+        "Mount_Body_Gryphon-Gryphatrice": "gif",
+        "background_clocktower" : "gif",
+        "background_airship" : "gif",
+        "background_steamworks" : "gif"
     ]
     
     private let viewOrder = [

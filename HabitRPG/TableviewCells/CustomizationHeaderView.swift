@@ -31,17 +31,20 @@ class CustomizationHeaderView: UICollectionReusableView {
         if isBackground {
             if customizationSet.key?.contains("incentive") == true {
                 label.text = L10n.plainBackgrounds
+            } else if customizationSet.key?.contains("timeTravel") == true {
+                label.text = L10n.timeTravelBackgrounds
             } else if let key = customizationSet.key?.replacingOccurrences(of: "backgrounds", with: "") {
                 let index = key.index(key.startIndex, offsetBy: 2)
                 let month = Int(key[..<index]) ?? 0
                 let year = Int(key[index...]) ?? 0
                 let dateFormatter = DateFormatter()
-                let monthName = dateFormatter.monthSymbols[month-1]
+                let monthName = month > 0 ? dateFormatter.monthSymbols[month-1] : ""
                 label.text = "\(monthName) \(year)"
             }
         } else {
             label.text = customizationSet.text
         }
+        label.textColor = ThemeService.shared.theme.primaryTextColor
         currencyView.amount = Int(customizationSet.setPrice)
         
         purchaseButton.backgroundColor = ThemeService.shared.theme.windowBackgroundColor

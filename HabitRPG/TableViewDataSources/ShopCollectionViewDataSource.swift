@@ -220,6 +220,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
                 headerView.otherClassDisclaimer.text = L10n.Shops.otherClassDisclaimer
             } else {
                 headerView.titleLabel.text = titleFor(section: indexPath.section)
+                headerView.titleLabel.textColor = ThemeService.shared.theme.primaryTextColor
             }
             headerView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
             return headerView

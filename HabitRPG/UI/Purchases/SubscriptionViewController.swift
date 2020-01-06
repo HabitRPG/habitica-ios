@@ -450,7 +450,8 @@ class SubscriptionViewController: BaseTableViewController {
         })
         alertController.show()
         alertController.containerViewSpacing = 8
-        alertController.containerView.spacing = 4
+        alertController.containerView.spacing = 8
+        textField.becomeFirstResponder()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

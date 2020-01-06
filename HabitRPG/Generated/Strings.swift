@@ -506,7 +506,7 @@ public enum L10n {
   public static var subscriptionInfo4Description: String { return L10n.tr("Mainstrings", "subscription_info_4_description") }
   /// Monthly Mystery Items
   public static var subscriptionInfo4Title: String { return L10n.tr("Mainstrings", "subscription_info_4_title") }
-  /// Discover even more items in Habitica with a 2x bonus daily drop rate.
+  /// Discover even more items in Habitica with a 2x bonus daily drop cap.
   public static var subscriptionInfo5Description: String { return L10n.tr("Mainstrings", "subscription_info_5_description") }
   /// Double the Drops
   public static var subscriptionInfo5Title: String { return L10n.tr("Mainstrings", "subscription_info_5_title") }
@@ -538,6 +538,8 @@ public enum L10n {
   public static var teleportingHabitica: String { return L10n.tr("Mainstrings", "teleporting_habitica") }
   /// Thursday
   public static var thursday: String { return L10n.tr("Mainstrings", "thursday") }
+  /// Time Travelers Backgrounds
+  public static var timeTravelBackgrounds: String { return L10n.tr("Mainstrings", "time_travel_backgrounds") }
   /// Title
   public static var title: String { return L10n.tr("Mainstrings", "title") }
   /// Transfer

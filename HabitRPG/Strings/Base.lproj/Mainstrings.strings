@@ -478,6 +478,7 @@
 "member_group_plan" = "Member of a Group Plan";
 "open_website" = "Open Habitica Website";
 "plain_backgrounds" = "Plain Backgrounds";
+"time_travel_backgrounds" = "Time Travelers Backgrounds";
 "glasses" = "Glasses";
 "size" = "Size";
 "shirt" = "Shirt";
@@ -733,7 +734,7 @@
 "subscription_info_4_title" = "Monthly Mystery Items";
 "subscription_info_4_description" = "Receive the Royal Purple Jackalope pet when you become a new subscriber.";
 "subscription_info_5_title" = "Double the Drops";
-"subscription_info_5_description" = "Discover even more items in Habitica with a 2x bonus daily drop rate.";
+"subscription_info_5_description" = "Discover even more items in Habitica with a 2x bonus daily drop cap.";
 "subscription_benefits_title" = "Become a subscriber and you’ll get these useful benefits";
 "subscription_benefits_title_subscribed" = "You get these benefits for being a Subscriber";
 "subscription_options_title" = "Choose the Subscription length that works for you";
