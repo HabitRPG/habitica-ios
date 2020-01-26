@@ -211,7 +211,7 @@
 /* (No Comment) */
 "mounts" = "Montarias";
 /* (No Comment) */
-"my_challenges" = "Meus desafios";
+"my_challenges" = "Meus Desafios";
 /* (No Comment) */
 "my_guilds" = "Minhas Guildas";
 /* (No Comment) */
@@ -241,7 +241,7 @@
 /* (No Comment) */
 "plain_backgrounds" = "Cenários Básicos";
 /* (No Comment) */
-"purchase_for_gems" = "Comprar por %d Gemas";
+"purchase_for_gems" = "Comprar por %d Gema(s)";
 /* (No Comment) */
 "quests" = "Missões";
 /* (No Comment) */
@@ -285,7 +285,7 @@
 /* (No Comment) */
 "settings.api" = "API";
 /* (No Comment) */
-"settings.are_you_sure" = "Tem certeza?";
+"settings.are_you_sure" = "Você tem certeza?";
 /* (No Comment) */
 "settings.authentication" = "Autenticação";
 /* (No Comment) */
@@ -319,13 +319,13 @@
 /* (No Comment) */
 "settings.notification_badge" = "Notificação";
 /* (No Comment) */
-"settings.preferences" = "Preferencias";
+"settings.preferences" = "Preferências";
 /* (No Comment) */
 "settings.profile" = "Perfil";
 /* (No Comment) */
 "settings.push_notifications" = "Notificações em Push";
 /* (No Comment) */
-"settings.reload_content" = "Recarregar Conteúdo";
+"settings.reload_content" = "Recarregar conteúdo";
 /* (No Comment) */
 "settings.reminder" = "Lembrete";
 /* (No Comment) */
@@ -333,13 +333,13 @@
 /* (No Comment) */
 "settings.social" = "Social";
 /* (No Comment) */
-"settings.sound_theme" = "Tema Sonoro";
+"settings.sound_theme" = "Tema sonoro";
 /* (No Comment) */
-"settings.theme_color" = "Cor Tema";
+"settings.theme_color" = "Cor do tema";
 /* (No Comment) */
 "settings.user" = "Usuário";
 /* (No Comment) */
-"settings.wrong_password" = "Senha Incorreta";
+"settings.wrong_password" = "Senha incorreta";
 /* (No Comment) */
 "share" = "Compartilhar";
 /* (No Comment) */
@@ -537,7 +537,7 @@
 "stats.distribute_class_help" = "Atribui mais pontos para os atributos importantes para sua Classe.";
 "stats.distribute_tasks" = "Distribuir de acordo com suas tarefas";
 "stats.distribute_tasks_help" = "Atribui pontos baseados nas etiquetas Força, Inteligência, Constituição e Percepção associadas às tarefas que você completa.";
-"stats.character_build_title" = "Construção de Personagem";
+"stats.character_build_title" = "Construção de personagem";
 "stats.character_build_text" = "A cada nível que alcançar você terá um ponto para distribuir para um atributo de sua escolha. Você pode fazer isso manualmente, ou deixar o jogo decidir por você usando uma das opções de Distribuição Automática.";
 "stats.stat_guide" = "Guia de Atributos";
 "stats.strength_title" = "Força";
@@ -628,16 +628,16 @@
 "settings.fix_values_description" = "Se você encontrou um bug ou cometeu um erro que mudou seu personagem injustamente, você pode corrigir seus atributos manualmente aqui.";
 "settings.change_display_name" = "Alterar Nome de Exibição";
 "settings.change_photo_url" = "Alterar link da foto";
-"settings.danger_zone" = "Zona de Perigo";
-"settings.login_methods" = "Método de Login";
-"settings.reset_account" = "Resetar Conta";
-"settings.delete_account" = "Excluir Conta";
+"settings.danger_zone" = "Zona de risco";
+"settings.login_methods" = "Método de login";
+"settings.reset_account" = "Reiniciar conta";
+"settings.delete_account" = "Excluir conta";
 "settings.delete_account_description" = "Você tem certeza? Isso apagará sua conta para sempre e ela nunca mais poderá ser recuperada! Você precisará registrar uma nova conta para usar o Habitica novamente. Gemas gastas ou armazenadas não serão reembolsadas. Se você tiver certeza absoluta, digite sua senha na caixa de texto abaixo.";
 "settings.change_email" = "Alterar Email";
 "settings.new_email" = "Novo E-mail";
 "settings.change_username" = "Alterar Nome de Usuário";
 "settings.new_username" = "Novo Nome de Usuário";
-"settings.change_password" = "Alterar Senha";
+"settings.change_password" = "Alterar senha";
 "settings.new_password" = "Nova Senha";
 "settings.old_password" = "Senha Antiga";
 "settings.local" = "Local";
@@ -694,7 +694,7 @@
 "username_confirmed_toast" = "Seu nome de usuário foi confirmado";
 "settings.username_not_confirmed" = "Nome de Usuário não confirmado";
 "about.website" = "Site";
-"about.report_bug" = "Reportar um Problema";
+"about.report_bug" = "Reportar um problema";
 "about.view_source_code" = "Ver Código Fonte";
 "about.acknowledgements" = "Agradecimentos";
 "about.version" = "Versão";
@@ -725,15 +725,15 @@
 "day_streaks" = "Combos de 21-dias";
 "aboutText" = "Sobre";
 "photo_url" = "URL da Foto";
-"group_by" = "Organizar Por";
-"twoHanded" = "Duas Mãos";
-"body_size" = "Tamanho do Corpo";
+"group_by" = "Organizar por";
+"twoHanded" = "Duas mãos";
+"body_size" = "Tamanho do corpo";
 "slim" = "Magro";
 "broad" = "Largo";
-"buy_all" = "Comprar Tudo";
-"no_benefit" = "Sem Benefícios";
+"buy_all" = "Comprar tudo";
+"no_benefit" = "Sem benefícios";
 "errors.error" = "Erro";
-"errors.sync" = "Erro de Sincronização";
+"errors.sync" = "Erro de sincronização";
 "errors.sync_message" = "Houve um erro ao sincronizar algumas alterações.";
 "errors.quest_invite_accept" = "Houve um erro ao tentar aceitar o convite de missão";
 "errors.quest_invite_reject" = "Houve um erro ao tentar rejeitar o convite de missão";
@@ -816,13 +816,13 @@
 "create_tag" = "Criar Etiqueta";
 "unlockDropsTitle" = "Você desbloqueou o sistema de drop!";
 "unlockDropsDescription" = "Você desbloqueou o sistema de drop! Agora quando completar tarefas, você terá uma pequena chance de encontrar um item, incluindo ovos, poções e comida!";
-"subscription_info_1_title" = "Compre gemas com moedas de ouro";
-"subscription_info_2_title" = "Itens exclusivos mensais";
-"subscription_info_3_title" = "Manter histórico de entradas adicional";
-"subscription_info_3_description" = "Faz com que o histórico de tarefas fique disponíveis por mais tempo.";
-"subscription_info_4_title" = "Capacidade diária de drop dobrada";
-"subscription_info_4_description" = "Capacidade diária de drop dobrada irá permitir que você receba mais itens ao completar tarefas todos os dias, ajudando você a completar seu estábulo mais rápido!";
-"subscription_benefits_title" = "Assine e ganhe estes ótimos benefícios:";
+"subscription_info_1_title" = "Ouro por Gemas";
+"subscription_info_2_title" = "Ampulhetas Místicas";
+"subscription_info_3_title" = "Itens Misteriosos mensalmente";
+"subscription_info_3_description" = "Assine já para obter um conjunto exclusivo agora e receber novos itens mensalmente!";
+"subscription_info_4_title" = "Itens Misteriosos mensalmente";
+"subscription_info_4_description" = "Receba o mascote Lebrílope Roxo Real quando você se tornar um assinante.";
+"subscription_benefits_title" = "Torne-se um assinante e ganhe estes ótimos benefícios";
 "gem_benefits_title" = "Gemas permitem que você compre coisas divertidas para sua conta, incluindo:";
 "unpin_from_rewards" = "Desfixar das Recompensas";
 "pin_to_rewards" = "Fixar nas Recompensas";
@@ -967,8 +967,8 @@
 "publish_challenge" = "Publicar desafio";
 "view_participant_progress" = "Visualizar progresso do participante";
 "end_challenge" = "Desafio Final";
-"subscription_info_1_description" = "Alexandre, o Mercador, venderá pedras preciosas a um custo de 20 de ouro por gema. Suas remessas mensais são inicialmente limitadas a 25 Gemas por mês, mas esse limite aumenta em 5 Gemas para cada três meses de assinatura consecutiva, até um máximo de 50 Gemas por mês!";
-"subscription_info_2_description" = "Cada mês você receberá um item cosmético exclusivo para o seu avatar!\n\nAlém disso, para cada três meses de assinatura consecutiva, o misterioso viajante do tempo concederá acesso a itens cosméticos históricos (e futuristas!).";
+"subscription_info_1_description" = "Você poderá comprar Gemas no Mercado por 20 peças de Ouro cada uma!";
+"subscription_info_2_description" = "Ganhe Ampulhetas Místicas para comprar itens na Loja dos Viajantes do Tempo!";
 "subscription_gift_explanation" = "Quer dar os benefícios de uma assinatura para outra pessoa?";
 "subscription_gift_button" = "Assinatura de presente";
 "subscription_support_developers" = "Subscrever suporta os desenvolvedores\ne ajuda a manter o Habitica rodando";
@@ -999,7 +999,7 @@
 "theme.followSystem" = "Seguir configuração do sistema";
 "theme.dark" = "Escuro";
 "theme.light" = "Claro";
-"settings.theme_mode" = "Modo Temático";
+"settings.theme_mode" = "Modo temático";
 "settings.push_notifications.important_announcement" = "Anúncios Importantes";
 "settings.push_notifications.invited_quest" = "Convidado(a) para Missão";
 //"settings.push_notifications.banned_group" = "Kicked from Group";
@@ -1048,10 +1048,33 @@
 "party.remove_from_party" = "Remover do Grupo";
 "remove" = "Remover";
 "transfer" = "Transferir";
-"transfer_ownership" = "Transferir propriedade";
+"transfer_ownership" = "Transferir liderança";
 "party.remove_member_title" = "Tem certeza de que deseja remover %@ do Grupo?";
-"party.transfer_ownership_title" = "Você tem certeza que quer transferir a propriedade para %@?";
+"party.transfer_ownership_title" = "Transferir liderança?";
 "settings.push_notifications.mention_unjoined_guild" = "@Menções em Guildas em que não participa";
 "settings.push_notifications.mention_joined_guild" = "@Menções em Guildas em que participa";
 "settings.push_notifications.mention_party" = "@Menções no Grupo";
 "settings.push_notifications.party_activity" = "Atividade do Grupo";
+"subscription_benefits_title_subscribed" = "Você adquire estes benefícios por se tornar um assinante";
+"subscription_info_5_description" = "Descubra mais itens no Habitica com um bônus diário de 2x na taxa de drop.";
+"subscription_info_5_title" = "Dobro de drops";
+"party.transfer_ownership_description" = "Isto fará com que %@ se torne o(a) novo(a) líder do Grupo";
+"menu.subscription" = "Assinatura";
+"menu.gems" = "Comprar Gemas";
+"subscribe_for_task_history" = "Deseja mais do que 2 semanas de dados?";
+"subscription_promo_description" = "Torne-se um(a) Assinante para comprar Gemas com ouro, obter itens misteriosos mensalmente, aumentar sua capacidade de drops e muito mais!";
+"subscription_promo_title" = "Precisa de Gemas?";
+"renew_subscription_gifted_description" = "Deseja continuar seus benefícios? Você pode iniciar uma nova assinatura antes que seus benefícios acabem para manter mantê-los ativos.";
+"renew_subscription_description" = "Deseja continuar seus benefícios? Você pode iniciar uma nova assinatura antes que esta acabe para manter seus benefícios ativos.";
+"cancel_subscription" = "Cancelar Assinatura";
+"cancelled" = "Cancelado";
+"not_recurring" = "Não recorrente";
+"ending_on" = "Finalizando em %@";
+"renew_subscription" = "Renovar Assinatura";
+"resubscribe" = "Reinscrever";
+"subscription_duration" = "Recorrente a cada %@";
+"duration_12month" = "12 meses";
+"duration_6month" = "6 meses";
+"duration_3month" = "3 meses";
+"duration_month" = "mês";
+"subscription_options_title" = "Escolha a validade de Assinatura que funciona para você";

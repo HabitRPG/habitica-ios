@@ -105,9 +105,9 @@
 /* (No Comment) */
 "glasses" = "Очки";
 /* (No Comment) */
-"groups.assign_new_leader" = "Назначить нового лидера";
+"groups.assign_new_leader" = "Назначить нового предводителя";
 /* (No Comment) */
-"groups.leader_challenges" = "Только лидер может создавать Испытания";
+"groups.leader_challenges" = "Только предводитель может создавать Испытания";
 /* (No Comment) */
 "guilds.keep_challenges" = "Оставить испытания";
 /* (No Comment) */
@@ -215,7 +215,7 @@
 /* (No Comment) */
 "open" = "Открыть";
 /* (No Comment) */
-"open_itunes" = "Открыть iTunes";
+"open_itunes" = "Открыть подписки Apple ID";
 /* (No Comment) */
 "open_website" = "Открыть веб-сайт Habitica";
 /* (No Comment) */
@@ -325,7 +325,7 @@
 /* (No Comment) */
 "settings.sound_theme" = "Звуковая тема";
 /* (No Comment) */
-"settings.theme_color" = "Цвет темы";
+"settings.theme_color" = "Цветовая схема";
 /* (No Comment) */
 "settings.user" = "Пользователь";
 /* (No Comment) */
@@ -800,13 +800,13 @@
 "create_tag" = "Создать тэг";
 "unlockDropsTitle" = "Вы разблокировали систему трофеев!";
 "unlockDropsDescription" = "Вы открыли систему выпадения трофеев! Теперь, когда вы выполняете задания, у вас есть маленький шанс найти предмет, включая яйца, эликсиры и еду!";
-"subscription_info_1_title" = "Купить самоцветы за золото";
-"subscription_info_2_title" = "Эксклюзивные предметы месяца";
-"subscription_info_3_title" = "Увеличенный список выполненных задач";
-"subscription_info_3_description" = "Завершённые задачи дольше дольше не архивируются и доступны для просмотра.";
-"subscription_info_4_title" = "Увеличение дневного предела выпадения предметов в 2 раза";
-"subscription_info_4_description" = "Увеличенный вдвое лимит трофеев позволит вам получать больше предметов за выполнение задач каждый день, помогая заполнить стойла быстрее!";
-"subscription_benefits_title" = "Станьте подписчиком, и вы получите следующие преимущества:";
+"subscription_info_1_title" = "Самоцветы за золото";
+"subscription_info_2_title" = "Мистические песочные часы";
+"subscription_info_3_title" = "Ежемесячные Таинственные Предметы";
+"subscription_info_3_description" = "Подпишитесь сейчас, чтобы обзавестись  эксклюзивным костюмом и получать новые предметы ежемесячно!";
+"subscription_info_4_title" = "Ежемесячные Таинственные Предметы";
+"subscription_info_4_description" = "Пополните коллекцию питомцев Королевской фиолетовой Шакалопой при оформлении подписки.";
+"subscription_benefits_title" = "Станьте подписчиком, и вы получите эти преимущества";
 "gem_benefits_title" = "Самоцветы дают возможность купить веселые дополнения для аккаунта, в том числе:";
 "unpin_from_rewards" = "Убрать из наград";
 "pin_to_rewards" = "Добавить к наградам";
@@ -964,10 +964,10 @@
 "accessibility.score_habit_down" = "Оценка привычки вниз";
 "accessibility.not_due" = "Не из-за";
 "great" = "Превосходно";
-"subscription_info_1_description" = "Торговец Александр продаст вам Самоцветы по 20 золото за штуку.Первоначально его ежемесячные поставки ограничены 25 Самоцветами в месяц,но это количество увеличивается на 5 Самоцветов каждые три месяца последовательной подписки,вплоть до максимума в размере 50 Самоцветов в месяц!";
-"subscription_info_2_description" = "Каждый месяц вы будете получать уникальный косметический предмет для вашего аватара!\n\nЕщё,за каждые три месяца последовательной подписки,Таинственные Путешественники Во Времени предоставят вам доступ к историческим (и футуристическим!) косметическим предметам.";
-"gift_one_get_one_title" = "Подари один,Получи один!";
-"gift_one_get_one_description" = "Пока эта акция действует,вы получите соответствующую подписку автоматически после отправления вашего подарка.";
+"subscription_info_1_description" = "Вы сможете купить самоцветы на рынке по 20 золотых за штуку!";
+"subscription_info_2_description" = "Зарабатывайте Таинственные Песочные Часы чтобы покупать предметы в Магазине Путешественника во Времени!";
+"gift_one_get_one_title" = "Событие Подари один, Получи один";
+"gift_one_get_one_description" = "Подари подписку сейчас и ты получишь такую же для себя бесплатно!";
 "gems_support_developers" = "Покупка самоцветов поддерживает разработчиков\nи помогает Habitica продолжать работать";
 "invalid_recipient_message" = "Вы должны указать действительное имя пользователя получателя в Habitica.";
 "titles.achievements" = "Достижения";
@@ -1018,3 +1018,57 @@
 "settings.push_notifications.received_pm" = "Получено личное сообщение";
 "settings.push_notifications.title" = "Push-уведомления";
 "settings.language" = "Язык";
+"duration_12month" = "12 месяцев";
+"duration_6month" = "6 месяцев";
+"duration_3month" = "3 месяца";
+"duration_month" = "месяц";
+"renew_subscription_gifted_description" = "Нравятся преимущества подписки? Вы можете купить новую подписку до окончания подарочной, сохранив бонусы.";
+"transfer" = "Перенести";
+"settings.theme_mode" = "Режим (Темный/Светлый)";
+"subscribe_for_task_history" = "Хотите получить данные за более ранний срок?";
+"subscription_promo_description" = "Станьте подписчиком, чтобы получать самоцветы за золото, ежемесячно получать таинственные предметы, больше добычи с монстров и многое другое!";
+"task_history" = "Журнал задач (Очень экспериментальный)";
+"empty.rewards.description" = "Награды - прекрасная грань Хабитики, мотивирующая к завершению задач. Попробуйте добавить несколько наград сегодня!";
+"renew_subscription_description" = "Нравятся преимущества подписки? Вы можете купить новую подписку до того, как закончится текущая, сохранив бонусы.";
+"subscription_info_5_description" = "Откройте ещё больше предметов Хабитики с удвоенным шансом их выпадения.";
+"subscription_promo_title" = "Нужны самоцветы?";
+"achievements.quests" = "Завершённые квесты";
+"empty.dailies.description" = "Ежедневные задания - это дела, которые повторяются регулярно. Выберите подходящий Вам график их выполнения!";
+"empty.habits.description" = "У Привычек нет строгих ограничений. Можно отмечать их несколько раз в день.";
+"cancel_subscription" = "Отменить Подписку";
+"cancelled" = "Отменена";
+"not_recurring" = "Без обновления";
+"ending_on" = "Заканчивается %@";
+"renew_subscription" = "Обновить Подписку";
+"resubscribe" = "Подписаться снова";
+"subscription_duration" = "Обновление с периодом в %@";
+"subscription_options_title" = "Выберите длину подписки, которая подходит Вам";
+"subscription_benefits_title_subscribed" = "Получите следующие преимущества, став Подписчиком";
+"subscription_info_5_title" = "Удвойте количество выпадающих предметов";
+"remove" = "Изгнать";
+"party.remove_from_party" = "Изгнать из команды";
+"transfer_ownership" = "Изменить Лидера";
+"party.remove_member_title" = "Вы точно хотите изгнать %@ из Команды?";
+"party.transfer_ownership_description" = "После этого %@ станет новым лидером Команды";
+"party.transfer_ownership_title" = "Изменить Лидера?";
+"theme.alwaysDark" = "Постоянно Тёмная";
+"theme.alwaysLight" = "Всегда Светлая";
+"settings.push_notifications.mention_unjoined_guild" = "@Упоминания в остальных Гильдиях";
+"settings.push_notifications.mention_joined_guild" = "@Упоминания в моих Гильдиях";
+"settings.push_notifications.mention_party" = "@Упоминания в Группе";
+"settings.push_notifications.party_activity" = "Действия группы";
+"menu.subscription" = "Подписка";
+"menu.gems" = "Приобрести самоцветы";
+"notifications.new_bailey" = "Новости от Бейли!";
+"empty.notifications.description" = "Феи уведомлений бурно вам аплодируют! Отлично сработано!";
+"empty.todos.description" = "Общие задачи выполняются один раз. Добавьте контрольные списки в свои задачи, чтобы увеличить их ценность.";
+"notifications.private_guild_invite" = "Вас пригласили вступить в закрытую гильдию **% s **";
+"notifications.public_guild_invite" = "Вас пригласили присоединиться к публичной гильдии **% s **";
+"sale" = "Распродажа";
+"get_more_habitica" = "Получить больше от Habitica";
+"subscription_info_3_description_new" = "Оформите подписку сейчас, чтобы получить этот %@ костюм сейчас, а также получать новые предметы ежемесячно!";
+"member_group_plan" = "Участник группового тарифа";
+"group_plan" = "Групповой тариф";
+"titles.pets_and_mounts" = "Питомцы и Скакуны";
+"gift_one_get_one" = "Сейчас активна акция подари подписку и получи ещё одну бесплатно!";
+"cancel_subscription_group_plan" = "У вас бесплатная подписка, потому что вы состоите в команде или гильдии с активным групповым тарифом. Если вы покинете группу, или владелец отменит групповой тариф, ваша подписка закончится. Все дополнительно оплаченные месяцы подписки будут добавлены по истечении группового тарифа.";

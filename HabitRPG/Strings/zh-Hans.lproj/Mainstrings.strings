@@ -79,7 +79,7 @@
 /* (No Comment) */
 "leave" = "离开";
 /* (No Comment) */
-"levelup_description" = "通过完成现实世界中的目标，你已经达到了%Id级！";
+"levelup_description" = "通过完成现实世界中的目标，你已经达到了%ld级！";
 /* (No Comment) */
 "levelup_share" = "我在Habitica中通过改善我现实生活中的习惯到达了%ld级！";
 /* (No Comment) */
@@ -131,11 +131,11 @@
 /* (No Comment) */
 "my_challenges" = "我的挑战";
 /* (No Comment) */
-"my_guilds" = "我的工会";
+"my_guilds" = "我的公会";
 /* (No Comment) */
 "name" = "名称";
 /* (No Comment) */
-"notes" = "备注";
+"notes" = "注释";
 /* (No Comment) */
 "ok" = "OK";
 /* (No Comment) */
@@ -209,9 +209,9 @@
 /* (No Comment) */
 "stable.feed" = "喂食";
 /* (No Comment) */
-"stable.quest_mounts" = "任务坐骑";
+"stable.quest_mounts" = "副本坐骑";
 /* (No Comment) */
-"stable.quest_pets" = "剧情任务宠物";
+"stable.quest_pets" = "剧情副本宠物";
 /* (No Comment) */
 "stable.special_mounts" = "特殊坐骑";
 /* (No Comment) */
@@ -275,7 +275,7 @@
 "titles.guild" = "公会";
 "titles.challenges" = "挑战";
 "titles.shops" = "商店";
-"titles.gift_subscription" = "赠送会员订阅";
+"titles.gift_subscription" = "赠送订阅";
 "titles.feed_pet" = "喂宠物";
 "stats.points_to_allocate" = "%d点待分配";
 "stats.auto_allocate_points" = "自动分配属性点";
@@ -516,7 +516,7 @@
 "purchase_gems" = "购买金币";
 "level" = "等级";
 "classes.class_header" = "%@ 职业";
-"party.invited_to_quest" = "%@ 邀请你参加一个任务";
+"party.invited_to_quest" = "%@ 邀请你参加一个副本";
 "party.quest_number_responded" = "%d/%d 个成员 接受";
 "party.invitation_no_invitername" = "有人邀请你加入他们的队伍";
 "party.invitation_invitername" = "%@ 邀请你加入他们的队伍";
@@ -526,17 +526,17 @@
 "party.join_party_description" = "给一个队伍成员发送下方的用户名，这样他们就能邀请你";
 "party.party_description" = "队伍描述";
 "party.party_challenges" = "队伍挑战";
-"party.start_quest" = "开始一个任务";
+"party.start_quest" = "开始一个副本";
 "groups.members" = "成员";
 "groups.invite_member" = "邀请一个成员";
 "pending_damage" = "即将造成的伤害";
 "quests.boss_battle" = "Boss战";
-"quests.collection_quest" = "收集任务";
+"quests.collection_quest" = "收集副本";
 "quests.invitations_header" = "邀请";
 "quests.rejected" = "拒绝";
-"quests.confirm_cancel_invitation" = "你确定想取消这个任务吗？所有已接受的任务邀请都会无效。任务卷轴仍然会保留。";
-"quests.confirm_force_start" = "你确定吗？不是所有队伍成员都加入了任务！任务会在所有成员都加入或拒绝后自动开始。";
-"quests.confirm_abort" = "你确定要中止任务吗？队伍中的所有人都会中止任务并丢失全部进度。任务卷轴仍然会保留。";
+"quests.confirm_cancel_invitation" = "你确定想取消这个副本吗？所有已接受的副本邀请都会无效。副本卷轴仍然会保留。";
+"quests.confirm_force_start" = "你确定吗？不是所有队伍成员都加入了副本！副本会在所有成员都加入或拒绝后自动开始。";
+"quests.confirm_abort" = "你确定要中止副本吗？队伍中的所有人都会中止副本并丢失全部进度。副本卷轴仍然会保留。";
 "quests.started_by" = "开始于 %@";
 "quests.reward_experience" = "%d 经验值";
 "quests.reward_gold" = "%d 个金币";
@@ -553,7 +553,7 @@
 "one_month" = "一个月";
 "x_months" = "%d 个月";
 "unsubscribe_itunes" = "不想再要会员了？你可以在iTunes里取消。";
-"open_itunes" = "打开iTunes";
+"open_itunes" = "打开Apple ID Subscriptions";
 "open_app_store" = "打开App Store";
 "unsubscribe_website" = "不想再要会员了？由于你的支付方式，你只能在网页上取消。";
 "open_website" = "打开Habitica网站";
@@ -663,8 +663,8 @@
 "errors.error" = "错误";
 "errors.sync" = "同步错误";
 "errors.sync_message" = "同步时发生了一些错误。";
-"errors.quest_invite_accept" = "接受任务邀请时发生了错误";
-"errors.quest_invite_reject" = "拒绝任务邀请时发生了错误";
+"errors.quest_invite_accept" = "接受副本邀请时发生了错误";
+"errors.quest_invite_reject" = "拒绝副本邀请时发生了错误";
 "errors.reply" = "消息发送失败。";
 "never" = "从不";
 "days" = "日";
@@ -677,7 +677,7 @@
 "delete_tasks" = "删除任务";
 "locations.market" = "市场";
 "locations.tavern" = "酒馆";
-"locations.quest_shop" = "任务商店";
+"locations.quest_shop" = "副本商店";
 "locations.seasonal_shop" = "季度商店";
 "locations.stable" = "马厩";
 "titles.api" = "API";
@@ -710,7 +710,7 @@
 "errors.request" = "在处理你的请求时发生了错误: %@";
 "NPCs.alex" = "商人Alex";
 "NPCs.daniel" = "客栈老板Daniel";
-"NPCs.ian" = "探索任务向导Ian";
+"NPCs.ian" = "探索副本向导Ian";
 "NPCs.seasonalSorceress" = "季度商店";
 "NPCs.matt" = "驯兽师 Matt";
 "welcome_back" = "欢迎回来！";
@@ -772,7 +772,7 @@
 "subscription" = "会员";
 "remember_check_off_dailies" = "记得完成你的日常任务！";
 "complete" = "完成";
-"accept" = "同意";
+"accept" = "接受";
 "reject" = "拒绝";
 "abort" = "中止";
 "force_start" = "强制开始";
@@ -813,21 +813,21 @@
 "view_participant_progress" = "查看参与者进度";
 "end_challenge" = "终止挑战";
 "subscription_info_1_title" = "用金币买宝石";
-"subscription_info_1_description" = "商人Alexander可以按每个宝石20金币的价格向你出售宝石。他每个月的初始进货量是25个宝石，进货量会随着您的捐助时长而增加，每三个月宝石上限就会增加5，最大直到1个月50颗宝石！";
-"subscription_info_2_title" = "独家月度商品";
-"subscription_info_2_description" = "每个月你将会收到一件独特的角色饰品！\n\n另外，每连续捐助三个月，神秘的时间旅行者将授予你得到过去(和将来)的饰品的资格。";
-"subscription_info_3_title" = "保留更多历史条目";
-"subscription_info_3_description" = "使完成的待办事项和任务的历史记录保留更长时间。";
-"subscription_info_4_title" = "每日掉落上限翻倍";
-"subscription_info_4_description" = "双倍掉落让你每天能够从完成的任务中得到更多的物品，帮助你更快地驯服坐骑！";
-"subscription_benefits_title" = "成为会员你会得到这些好处：";
+"subscription_info_1_description" = "您可以在市场用20金币买1块宝石！";
+"subscription_info_2_title" = "神秘沙漏";
+"subscription_info_2_description" = "用神秘沙漏在时空穿越者的商店买东西！";
+"subscription_info_3_title" = "每月神秘物品";
+"subscription_info_3_description" = "现在订阅，可以得到赠品，和每月得到新的物品！";
+"subscription_info_4_title" = "每月神秘物品";
+"subscription_info_4_description" = "如果您变成订阅者，您可以获得紫御鹿角兔宠物。";
+"subscription_benefits_title" = "成为会员你会得到这些好处";
 "subscription_gift_explanation" = "想赠送会员给别人吗？";
 "subscription_gift_button" = "赠送会员";
 "subscription_support_developers" = "开通会员支持开发者\n以及帮助维持Habitica运作";
 "subscribe" = "会员";
 "send_gift" = "赠送礼物";
-"gift_one_get_one_title" = "买一赠一！";
-"gift_one_get_one_description" = "当促销活动正在进行时，你的赠送会员时长会在你赠送完他人会员后到账。";
+"gift_one_get_one_title" = "买一赠一";
+"gift_one_get_one_description" = "如果您赠送订阅，您会免费得到同样的订阅！";
 "gems_support_developers" = "购买宝石来支持开发者\n以及帮助Habitica运作";
 "gem_benefits_title" = "你可以通过宝石给你的账户购买更多有趣的额外物品，包括：";
 "unpin_from_rewards" = "取消置顶";
@@ -876,7 +876,7 @@
 "empty.habits.description" = "习惯没有严格的时间表。你可以每天多次检查它们。";
 "empty.habits.title" = "这些是你的习惯";
 "notifications.dismiss_all" = "忽略全部";
-"notifications.quest_invite" = "你被邀请加入任务：**%s**";
+"notifications.quest_invite" = "你被邀请加入副本：**%s**";
 "notifications.private_guild_invite" = "你被邀请加入私人公会：**%s**";
 "notifications.public_guild_invite" = "你被邀请加入**%s**公会";
 "notifications.party_invite" = "你被邀请进队伍：**%@**";
@@ -887,7 +887,7 @@
 "settings.push_notifications.gifted_subscription" = "赠礼订阅";
 "notifications.unallocated_stat_points" = "你有 **%d unallocated Stat Points**点未分配的点数";
 "defeat" = "击败";
-"decline" = "减少";
+"decline" = "拒绝";
 "never_lower_case" = "从不";
 "about.whats_new" = "来看新闻";
 "about.new_version" = "剩余点数: %@";
@@ -899,9 +899,9 @@
 "stable.wacky_pets" = "古怪宠物";
 "guilds.left_guild" = "你离开了公会";
 "guilds.joined_guild" = "你加入了公会";
-"settings.push_notifications.invited_quest" = "邀请参与任务";
+"settings.push_notifications.invited_quest" = "邀请参与副本";
 //"settings.push_notifications.banned_group" = "Kicked from Group";
-"settings.push_notifications.quest_begun" = "你的任务已经开始";
+"settings.push_notifications.quest_begun" = "你的副本已经开始";
 "settings.push_notifications.invited_guid" = "邀请进公会";
 "settings.push_notifications.gifted_gems" = "礼物宝石";
 "settings.push_notifications.received_pm" = "收到私信";
@@ -918,3 +918,50 @@
 "empty.todos.description" = "To-Dos需要完成一次。\n将清单添加到您的待办事项以增加其价值。";
 "login.login_apple" = "Apple登录";
 "settings.theme_mode" = "主题风格";
+"settings.push_notifications.mention_unjoined_guild" = "来自未加入的公会的提醒";
+"settings.push_notifications.mention_joined_guild" = "来自你加入的公会的提醒";
+"settings.push_notifications.mention_party" = "来自队伍的提醒";
+"settings.push_notifications.party_activity" = "队伍活动";
+"task_history" = "任务历史 (很实验性)";
+"party.remove_member_title" = "你想将%@从队伍中移除吗？";
+"party.transfer_ownership_title" = "你想转让所有权吗？";
+"transfer" = "转让";
+"party.remove_from_party" = "移除成员";
+"remove" = "移除";
+"transfer_ownership" = "转让所有权";
+"theme.alwaysDark" = "强制深色";
+"theme.alwaysLight" = "强制浅色";
+"theme.followSystem" = "跟随系统";
+"theme.dark" = "深色";
+"theme.light" = "浅色";
+"cancel_subscription" = "取消订阅";
+"subscribe_for_task_history" = "要超过两个星期的数据吗？";
+"subscription_promo_description" = "如果您成为订阅者、您可以用金币买宝石、每月可得到神秘物品、增加掉落顶线和更多好处！";
+"subscription_promo_title" = "需要宝石吗？";
+"get_more_habitica" = "从Habitica中得到更多";
+"sale" = "特卖";
+"member_group_plan" = "团队计划的队员";
+"group_plan" = "团队计划";
+"menu.subscription" = "订阅";
+"menu.gems" = "买宝石";
+"titles.pets_and_mounts" = "宠物和坐骑";
+"gift_one_get_one" = "赠送订阅，得免费订阅的特别项目进行中！";
+"cancel_subscription_group_plan" = "因为你的小组拥有团队计划，所以你现在就有免费的订阅。如果你离开了小组，你的订阅便会被取消。你购买的订阅会加在团队计划后。";
+"renew_subscription_gifted_description" = "要继续用您的订阅增值？您可以在现在的赠送的订阅结束前开始新的订阅，就能继续使用。";
+"renew_subscription_description" = "要继续用您的订阅增值？您可以在现在的订阅结束前开始新的订阅，就能继续使用。";
+"cancelled" = "取消了";
+"not_recurring" = "不会更新";
+"ending_on" = "在%@结束";
+"renew_subscription" = "更新订阅";
+"resubscribe" = "重新订阅";
+"subscription_duration" = "更新每个%@";
+"duration_12month" = "12月";
+"duration_6month" = "6月";
+"duration_3month" = "3月";
+"duration_month" = "月";
+"subscription_options_title" = "选择最适合的订阅计划";
+"subscription_benefits_title_subscribed" = "成为会员你会得到这些好处";
+"subscription_info_5_description" = "双倍掉落让你每天能够从完成的任务中得到更多的物品。";
+"subscription_info_5_title" = "双倍掉落";
+"subscription_info_3_description_new" = "现在订阅，可以得到%@套装和每月得到新的物品！";
+"party.transfer_ownership_description" = "%@会变成新的队长";

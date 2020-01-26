@@ -111,7 +111,7 @@
 /* (No Comment) */
 "guilds.leave_challenges" = "チャレンジをやめる";
 /* (No Comment) */
-"guilds.leave_guild_description" = "チャレンジをやめてタスクを保持または削除しますか？";
+"guilds.leave_guild_description" = "ギルドを脱退して、チャレンジを続けたいまたはやめたいですか？";
 /* (No Comment) */
 "guilds.leave_guild_title" = "ギルドを脱退しますか？";
 /* (No Comment) */
@@ -335,7 +335,7 @@
 /* (No Comment) */
 "stats.battle_gear" = "武装";
 /* (No Comment) */
-"stats.buffs" = "勢い( 能力値ボーナス )";
+"stats.buffs" = "勢いボーナス";
 /* (No Comment) */
 "stats.class_bonus" = "クラスボーナス";
 /* (No Comment) */
@@ -347,7 +347,7 @@
 /* (No Comment) */
 "tags" = "タグ";
 /* (No Comment) */
-"tasks.daily" = "日間";
+"tasks.daily" = "日課";
 /* (No Comment) */
 "tasks.form.checklist" = "チェックリスト";
 /* (No Comment) */
@@ -517,17 +517,17 @@
 "tasks.examples.work_habit" = "Eメールを処理する";
 "tasks.examples.work_daily_text" = "今日の最重要タスクに取り組んだ";
 "tasks.examples.work_daily_notes" = "タップして最も重要なタスクを書き込もう";
-"tasks.examples.work_todo_text" = "仕事のプロジェクトを完了する";
+"tasks.examples.work_todo_text" = "作業プロジェクトを完了する";
 "tasks.examples.work_todo_notes" = "タップして現在のプロジェクトの名前を書き込み、締切を設定しよう";
 "tasks.examples.exercise_habit" = "10分間運動する";
 "tasks.examples.exercise_daily_text" = "毎日の筋トレ";
 "tasks.examples.exercise_daily_notes" = "タップしてスケジュールと運動を書き込もう";
 "tasks.examples.exercise_todo_text" = "運動の予定を組む";
 "tasks.examples.exercise_todo_notes" = "タップしてタスクを追加します。";
-"tasks.examples.health_habit" = "体にいいものを食べる・ジャンクフードを食べる";
+"tasks.examples.health_habit" = "体にいいものを食べる / ジャンクフードを食べる";
 "tasks.examples.health_daily_text" = "フロス ( ていねいな歯みがき )";
-"tasks.examples.health_daily_notes" = "タップして変更";
-"tasks.examples.health_todo_text" = "健康のために変えるべきことのアイディアを考える";
+"tasks.examples.health_daily_notes" = "タップして何か変更してみましょう！";
+"tasks.examples.health_todo_text" = "健康の変化についてブレインストーミングする";
 "tasks.examples.health_todo_notes" = "タップしてタスクを追加します。";
 "tasks.examples.school_habit" = "勉強する / 後回しにする";
 "tasks.examples.school_daily_text" = "宿題をやる";
@@ -542,9 +542,9 @@
 "tasks.examples.chores_todo_text" = "散らかしたものを片付ける";
 "tasks.examples.chores_todo_notes" = "タップして散らかった場所を指定しよう";
 "tasks.examples.creativity_habit" = "新しい創作技法を練習した";
-"tasks.examples.creativity_daily_text" = "クリエイティブなプロジェクトで働く";
+"tasks.examples.creativity_daily_text" = "創造的なプロジェクトの作業をする";
 "tasks.examples.creativity_daily_notes" = "タップして現在のプロジェクトの名前を書き込み、スケジュールを設定しよう";
-"tasks.examples.creativity_todo_text" = "創造的な事業を仕上げる";
+"tasks.examples.creativity_todo_text" = "創造的なプロジェクトを仕上げる";
 "tasks.examples.creativity_todo_notes" = "タップして現在のプロジェクトの名前を書き込もう";
 "menu" = "メニュー";
 "filter" = "フィルター";
@@ -732,7 +732,7 @@
 "tutorials.stats" = "グレーのボタンをタップして一度にポイントを能力値に割り当てるか、矢印をタップして１ポイントずつ割り当ててください";
 "world_boss.pending_strike" = "保留中の攻撃";
 "world_boss.rage_strike_explanation_button" = "怒りの攻撃って何？";
-"buffs" = "勢い( 能力値ボーナス )";
+"buffs" = "勢いボーナス";
 "allocated" = "割り当て済み";
 "gems" = "ジェム";
 "teleporting_habitica" = "Habiticaへ転送中";
@@ -760,19 +760,19 @@
 "accessibility.complete_task" = "完了したタスク";
 "accessibility.due" = "期限";
 "accessibility.completed" = "完了";
-"collect" = "獲得";
+"collect" = "収集";
 "mystery_sets" = "ミステリー セット";
 "edit_tag" = "タグを編集する";
 "create_tag" = "タグをつくる";
 "unlockDropsTitle" = "ドロップシステムをアンロックしました！";
 "unlockDropsDescription" = "ドロップシステムがアンロックされました！今後タスクを達成すると、たまごなどのアイテムや、薬、そしてエサの落とし物を発見するちょっとしたチャンスが訪れます！";
-"subscription_info_1_title" = "ゴールドでジェムを購入する";
-"subscription_info_2_title" = "毎月の限定アイテム";
-"subscription_info_3_title" = "詳細な履歴の保存";
-"subscription_info_3_description" = "完了した To-Do やタスクの履歴を、より長期間閲覧可能になります。";
-"subscription_info_4_title" = "日課のドロップ確率が2倍";
-"subscription_info_4_description" = "ドロップ確率を二倍にすることで日々のタスクから得られるアイテムをふやし、動物小屋をより早く満たすことができます！";
-"subscription_benefits_title" = "寄付会員になることで、こんな特典を得ることができます:";
+"subscription_info_1_title" = "ゴールドがジェムに";
+"subscription_info_2_title" = "神秘の砂時計";
+"subscription_info_3_title" = "毎月のミステリーアイテム";
+"subscription_info_3_description" = "今すぐ寄付して限定セットや毎月の新しいアイテムを受けとりましょう！";
+"subscription_info_4_title" = "限定のペット";
+"subscription_info_4_description" = "新しい寄付会員になって、高貴な紫のジャッカロープのペットを迎えましょう。";
+"subscription_benefits_title" = "寄付会員になって、これらの優れた特典を手に入れましょう";
 "gem_benefits_title" = "ジェムを使って、あなたのアカウントを彩る 楽しいおまけを購入できます。例えば：";
 "unpin_from_rewards" = "ごほうびからピンを外す";
 "pin_to_rewards" = "ごほうびにピン留め";
@@ -903,7 +903,7 @@
 "world_boss.rage_strike_damaged" = "%@は悲しみに打ちひしがれています！\n愛すべき%@は%@の攻撃で%@が破壊されてしまい途方に暮れています。急いでタスクに取り組んで、あの怪物を倒して再建の手助けをしましょう！";
 "world_boss.rage_strike_explanation" = "怒り攻撃が３回まで起こる可能性があります\nこのゲージはHabiticaの住人たちが日課を逃すとたまっていきます。ゲージが一杯になると、心蝕のディスハートナーはその強烈なハートブレイクをHabiticaの店主のうち一人に食らわせます。ですから必ずタスクを実行しましょう！";
 "checkin_yesterdays_dalies" = "昨日行った日課をチェックしましょう：";
-"start_my_day" = "一日を始める";
+"start_my_day" = "一日を始めましょう";
 "force_start" = "強制的に開始する";
 "accessibility.world_boss_pending_damage" = "ワールドボスの%@が保留しているダメージ： %@";
 "accessibility.score_habit_up" = "習慣スコアアップ";
@@ -919,8 +919,8 @@
 "publish_challenge" = "公共のチャレンジ";
 "view_participant_progress" = "参加者の進捗を見る";
 "end_challenge" = "チャレンジを終了する";
-"subscription_info_1_description" = "商人のAlexanderが、ジェムを１個につき20ゴールドで売ってくれます。Alexanderと1ヵ月の間に取り引きできるジェムの数は、最初は25個に限定されています。しかし、寄付の継続3カ月ごとにその数が5個ずつ増えていき、最大で月に50個を買うことができます！";
-"subscription_info_2_description" = "毎月、アバターを個性的に装飾するアイテムが手に入ります！\n\nさらに寄付の継続3カ月ごとに、謎のタイムトラベラーによって、歴史的（そして未来的！）な装飾アイテムが入手可能になります。";
+"subscription_info_1_description" = "市場で20ゴールドごとにジェムを買えるようになります！";
+"subscription_info_2_description" = "タイムトラベラーの店でアイテムを購入できる神秘の砂時計が手に入ります！";
 "subscription_gift_explanation" = "寄付会員特典を誰かに贈りたいですか？";
 "subscription_gift_button" = "寄付会員特典を贈る";
 "subscription_support_developers" = "寄付することで開発者たちを支援して、\nHabiticaの運営を維持する手助けをしましょう";
@@ -930,13 +930,13 @@
 "gift_one_get_one_description" = "このプロモーションが開催されている間は、贈り物を送った後に自動的に同じ寄付会員特典を受けることができます。";
 "gems_support_developers" = "ジェムを購入することで、開発者を支援し、\nHabitica の運営を維持する手助けができます";
 "buy_for_x" = "%@で買う";
-"earned_achievement_share" = "Habiticaで新しい実績を獲得したよ！ ";
+"earned_achievement_share" = "Habiticaで新しい実績を解除したよ！ ";
 "invalid_recipient_message" = "受け取る人として有効なHabiticaユーザー名を指定する必要があります。";
 "invalid_recipient_title" = "無効なHabiticaユーザー名";
 "filter_by_tags" = "タグでフィルターをかける";
 "purchased" = "%@を購入しました";
 "buy_reward" = "'%@'を%@ゴールドで購入しました";
-"party.leave_party_description" = "パーティーを脱退したい、そして、チャレンジを続けたいもしくはやめたいですか？";
+"party.leave_party_description" = "パーティーを脱退したい、そしてチャレンジを続けたいもしくはやめたいですか？";
 "party.leave_party_title" = "パーティーを脱退しますか？";
 "guilds.left_guild" = "ギルドを脱退しました";
 "guilds.joined_guild" = "ギルドに参加しました";
@@ -961,3 +961,72 @@
 "titles.messages" = "メッセージ";
 "titles.notifications" = "通知";
 "about.new_version" = "アップデートが利用可能です：%@";
+"organize_by" = "並べ替え";
+"task_history" = "タスクの履歴（非常に試験的です）";
+"empty.rewards.description" = "ごほうびは、タスクを完了させるための、Habiticaのすばらしい使い道です。近いうちに追加してみましょう！";
+"empty.rewards.title" = "こちらはごほうびです";
+"empty.todos.description" = "To-Doは、1度だけ完了する必要があるものです。報酬を増加させたいときはTo-Doにチェックリストを追加しましょう。";
+"empty.todos.title" = "こちらはTo-Doです";
+"empty.dailies.description" = "日課は、定期的な間隔でくり返すタスクです。作動させたい日程を選びましょう！";
+"empty.dailies.title" = "こちらは日課です";
+"empty.habits.description" = "習慣は、厳密な予定ではありません。1日に何度でもチェックすることができます。";
+"empty.habits.title" = "こちらは習慣です";
+"defeat" = "討伐";
+"login.login_apple" = "Appleでログイン";
+"about.whats_new" = "新着情報を見る";
+"theme.followSystem" = "システム設定に従う";
+"notifications.dismiss_all" = "すべて閉じる";
+"notifications.quest_invite" = "クエスト **%s** に招待されました。";
+"notifications.private_guild_invite" = "プライベートギルド **%s** に招待されました。";
+"notifications.public_guild_invite" = "公開ギルド **%s** に招待されました。";
+"notifications.party_invite" = "パーティー **%s** に招待されました。";
+"notifications.unread_guild_message" = "**%@**に新しい投稿があります。";
+"notifications.new_mystery_item" = "新しい**ミステリーアイテム**があります";
+"party.remove_member_title" = "%@をパーティーから解雇して本当によろしいですか？";
+"party.remove_from_party" = "パーティーから解雇する";
+"remove" = "解雇する";
+"notifications.new_bailey" = "Baileyから新しいお知らせがあります！";
+"notifications.unallocated_stat_points" = "**%dポイントが割り当てできます**";
+"decline" = "断る";
+"never_lower_case" = "しません";
+"transfer" = "移譲する";
+"transfer_ownership" = "リーダーの権限を移譲する";
+"party.transfer_ownership_title" = "リーダーの権限を移譲しますか？";
+"settings.push_notifications.mention_unjoined_guild" = "参加していないギルドの@返信";
+"settings.push_notifications.mention_joined_guild" = "参加中のギルドの@返信";
+"settings.push_notifications.mention_party" = "パーティーの@返信";
+"empty.notifications.description" = "通知の妖精はパチパチとあなたに拍手を送っています！ えらい！";
+"empty.notifications.title" = "全ての通知をチェックしました！";
+"notifications.unread_party_message" = "あなたのパーティー、**%@**に新しい投稿があります。";
+"achievements.basic" = "基本の実績";
+"achievements.special" = "特別な実績";
+"achievements.seasonal" = "季節の実績";
+"achievements.quests" = "達成したクエスト";
+"stable.type" = "種類";
+"theme.alwaysDark" = "常にダーク";
+"theme.alwaysLight" = "常にライト";
+//"settings.push_notifications.banned_group" = "Kicked from Group";
+"settings.push_notifications.quest_begun" = "あなたのクエストが始まりました";
+"renew_subscription_gifted_description" = "特典を継続して受けたいですか？ 特典を有効にしたままにするために、あなたに贈られた寄付会員特典の期限が切れる前に新しい寄付をはじめることができます。";
+"renew_subscription_description" = "特典を継続して受けたいですか？ 特典を有効にしたままにするために、この寄付の期限が切れる前に新しい寄付をはじめることができます。";
+"subscribe_for_task_history" = "２週間以上のデータがほしいですか？";
+"subscription_promo_description" = "寄付会員になって、ゴールドでジェムを購入したり、月ごとのミステリーアイテムを手に入れたり、落とし物の上限を増やしたり、他にもいろいろな特典を受けましょう！";
+"not_recurring" = "くり返さない";
+"ending_on" = "%@に止める";
+"subscription_duration" = "%@ごとにくり返す";
+"subscription_options_title" = "あなたのご都合にあった寄付の期間を選びましょう";
+"subscription_benefits_title_subscribed" = "寄付会員になるとこれらの特典を得られます";
+"subscription_info_5_description" = "日課で落とし物を見つける確率が２倍になるボーナスによって、Habiticaでよりいっそうアイテムを発見しましょう。";
+"subscription_info_5_title" = "落とし物が２倍";
+"party.transfer_ownership_description" = "これにより%@が新しいパーティーリーダーになります";
+"duration_12month" = "12ヶ月";
+"duration_6month" = "6ヶ月";
+"duration_3month" = "3ヶ月";
+"duration_month" = "1ヶ月";
+"renew_subscription" = "寄付を再開する";
+"resubscribe" = "寄付の再開";
+"subscription_promo_title" = "ジェムが必要ですか？";
+"cancel_subscription" = "寄付のキャンセル";
+"cancelled" = "キャンセルしました";
+"menu.subscription" = "寄付する";
+"menu.gems" = "ジェムを買う";

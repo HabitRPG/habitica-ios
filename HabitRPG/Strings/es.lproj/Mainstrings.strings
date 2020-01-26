@@ -37,7 +37,7 @@
 /* (No Comment) */
 "classes.healer" = "Sanador";
 /* (No Comment) */
-"classes.healer_description" = "Los sanadores se mantienen impertérritos ante los daños y ofrecen esa protección a los demás. Las tareas diarias sin cumplir y los hábitos negativos no les quitan el sueño, y tienen maneras de recuperar la salud cuando algo va mal. Juega como sanador si te gusta ayudar a los otros miembros del grupo o si te atrae la idea de esquivar a la Muerte con tu esfuerzo.";
+"classes.healer_description" = "Los sanadores se mantienen impertérritos ante los daños y ofrecen esa protección a los demás. Las tareas diarias sin cumplir y los hábitos negativos no les quitan el sueño, y tienen maneras de recuperar la salud cuando algo va mal. ¡Juega como sanador si te gusta ayudar a los otros miembros del grupo o si te atrae la idea de esquivar a la Muerte con tu esfuerzo!";
 /* (No Comment) */
 "classes.mage" = "Mago";
 /* (No Comment) */
@@ -45,7 +45,7 @@
 /* (No Comment) */
 "classes.rogue" = "Pícaro";
 /* (No Comment) */
-"classes.rogue_description" = "A los pícaros les encanta acumular riquezas: ganan más oro que ninguna otra clase y son expertos en encontrar artículos por azar. Su habilidad más característica, la del sigilo, les permite eludir las consecuencias de no completar las tareas diarias. Juega como pícaro si lo que más te motiva es conseguir recompensas, logros, botines e insignias.";
+"classes.rogue_description" = "A los pícaros les encanta acumular riquezas: ganan más oro que ninguna otra clase y son expertos en encontrar artículos por azar. Su habilidad más característica, la del sigilo, les permite eludir las consecuencias de no completar las tareas diarias. ¡Juega como pícaro si lo que más te motiva es conseguir recompensas, logros, botines e insignias!";
 /* (No Comment) */
 "classes.warrior" = "Guerrero";
 /* (No Comment) */
@@ -225,7 +225,7 @@
 /* (No Comment) */
 "open" = "Abrir";
 /* (No Comment) */
-"open_itunes" = "Abrir iTunes";
+"open_itunes" = "Abrir Suscripciones de Apple ID";
 /* (No Comment) */
 "open_website" = "Abrir sitio web de Habitica";
 /* (No Comment) */
@@ -479,7 +479,7 @@
 /* (No Comment) */
 "theme.yellow" = "Amarillo";
 /* (No Comment) */
-"title" = "Títul";
+"title" = "Título";
 /* (No Comment) */
 "unequip" = "Quitar";
 /* (No Comment) */
@@ -816,13 +816,13 @@
 "create_tag" = "Crear una etiqueta";
 "unlockDropsTitle" = "¡Has desbloqueado el sistema de botín!";
 "unlockDropsDescription" = "¡Has desbloqueado el sistema de botines! Ahora, al completar tareas, tienes una pequeña posibilidad de encontrar un artículo, ¡incluyendo huevos, pociones y alimentos!";
-"subscription_info_1_title" = "Comprar las gemas con oro";
-"subscription_info_2_title" = "Artículos exclusivos mensuales";
-"subscription_info_3_title" = "Retener entradas adicionales al historial";
-"subscription_info_3_description" = "Hace que las Tareas Pendientes completadas y el historial de tareas estén disponibles durante más tiempo.";
-"subscription_info_4_title" = "El doble de botín diario";
+"subscription_info_1_title" = "Oro por gemas";
+"subscription_info_2_title" = "Relojes de Arena Místicos";
+"subscription_info_3_title" = "Artículos Misteriosos Mensuales";
+"subscription_info_3_description" = "¡Suscríbete ahora para conseguir un set exclusivo y recibir nuevos objetos cada mes!";
+"subscription_info_4_title" = "Objetos misteriosos menusalmente";
 "subscription_info_4_description" = "¡El doble de botín te permite recibir más objetos por tus tareas completadas cada día, lo que te ayuda a completar tu establo más rápido!";
-"subscription_benefits_title" = "Conviértete en un suscriptor y tendrás todos estos beneficios:";
+"subscription_benefits_title" = "Conviértete en un suscriptor y tendrás todos estos beneficios";
 "gem_benefits_title" = "Las Gemas te permiten comprar cosas extra divertidas para tu cuenta, incluyendo:";
 "unpin_from_rewards" = "Quitar de Recompensas";
 "pin_to_rewards" = "Fijar en Recompensas";
@@ -887,8 +887,8 @@
 "quests.reward_gold" = "%d de oro";
 "groups.members" = "Miembros";
 "groups.invite_member" = "Invitar a un miembro";
-"quests.reward_experience" = "%d Puntos de Experiencia";
-"quests.rage_attack" = "Ataque furioso: %@";
+"quests.reward_experience" = "%d puntos de experiencia";
+"quests.rage_attack" = "Ataque de rabia: %@";
 "open_app_store" = "Abrir la AppStore";
 "tap_to_show" = "Pulsa para mostrar";
 "groups.invite.add_username" = "Ingresa un nombre de usuario";
@@ -967,15 +967,15 @@
 "publish_challenge" = "Publicar Desafío";
 "view_participant_progress" = "Ver Progreso del Participante";
 "end_challenge" = "Finalizar Desafío";
-"subscription_info_1_description" = "Alexander el Mercader te venderá Gemas a un costo de 20 de oro por gema. Sus cargamentos mensuales están inicialmente limitados a 20 gemas por mes, pero este límite incrementa en 5 Gemas por cada tres meses de suscripción consecutivos, hasta un máximo de ¡50 Gemas por mes!";
+"subscription_info_1_description" = "¡Podrás comprar gemas del mercado por 20 oros cada una!";
 "subscription_info_2_description" = "¡Cada mes recibirás un artículo cosmético único para tu avatar!\n\nAdemás, por cada tres meses de suscripción consecutiva, los Misteriosos Viajeros del Tiempo te otorgarán acceso a artículos cosméticos históricos (¡y futuristas!).";
 "subscription_gift_explanation" = "¿Quieres darle los beneficios de una suscripción a alguien más?";
 "subscription_gift_button" = "Regalar una Suscripción";
 "subscription_support_developers" = "Suscribirse sirve para apoyar a los desarrolladores\ny ayuda a mantener Habitica";
 "subscribe" = "Suscribirse";
 "send_gift" = "Enviar Regalo";
-"gift_one_get_one_title" = "Regala uno, Obtén uno!";
-"gift_one_get_one_description" = "Mientras esta promoción esté activa, recibirás una suscripción igual automáticamente después de enviar tu regalo.";
+"gift_one_get_one_title" = "Regala uno, obtén uno";
+"gift_one_get_one_description" = "¡Regala una suscripción ahora y tú tendrás la misma suscripción para ti gratis!";
 "gems_support_developers" = "Comprar gemas sirve para apoyar a los desarrolladores\ny ayuda a mantener Habitica";
 "buy_for_x" = "Comprar por %@";
 "earned_achievement_share" = "¡Conseguí un nuevo logro en Habitica! ";
@@ -1042,9 +1042,9 @@
 "party.remove_from_party" = "Remover del Equipo";
 "remove" = "Remover";
 "transfer" = "Transferir";
-"transfer_ownership" = "Transferir propiedad";
+"transfer_ownership" = "Transferir liderazgo";
 "party.remove_member_title" = "¿Estás seguro de querer remover a %@ del equipo?";
-"party.transfer_ownership_title" = "¿Estás seguro de querer transferir la propiedad a %@?";
+"party.transfer_ownership_title" = "¿Transferir la propiedad a %@?";
 "party.leave_party_description" = "¿Quieres abandonar el equipo y conservar o abandonar los desafíos?";
 "party.leave_party_title" = "¿Abandonar Equipo?";
 "stable.wacky_mounts" = "Monturas Chifladas";
@@ -1055,3 +1055,31 @@
 "settings.push_notifications.mention_joined_guild" = "@Menciones en mis Gremios";
 "settings.push_notifications.mention_party" = "@Menciones en el Equipo";
 "settings.push_notifications.party_activity" = "Actividad de Equipo";
+"resubscribe" = "Resuscríbete";
+"subscribe_for_task_history" = "¿Quieres más de dos semanas de datos?";
+"subscription_promo_title" = "¿Necesitas gemas?";
+"sale" = "Oferta";
+"cancel_subscription_group_plan" = "Tienes una suscripción gratis porque eres miembro de un grupo o gremio que tiene un plan grupal. Acabará si lo abandonas o si el propietario cancela el plan grupal. Cualquier mes de suscripción extra  que ya tengas será aplicado cuando termine el plan grupal.";
+"renew_subscription_gifted_description" = "¿Quieres continuar con tus ventajas? Puedes comenzar una nueva suscripción antes de que la regalada termine para conservar tus ventajas activas.";
+"renew_subscription_description" = "¿Quieres continuar con tus ventajas? Puedes comenzar una nueva suscripción antes de que esta termine para conservar tus ventajas activas.";
+"cancel_subscription" = "Cancelar suscripción";
+"cancelled" = "Cancelado";
+"ending_on" = "Termina el %@";
+"renew_subscription" = "Renovar la suscripción";
+"duration_12month" = "12 meses";
+"duration_6month" = "6 meses";
+"duration_3month" = "3 meses";
+"duration_month" = "mes";
+"subscription_benefits_title_subscribed" = "Consigues estos beneficios al ser un suscriptor";
+"subscription_info_3_description_new" = "¡Suscríbete ahora para conseguir este set de %@ y recibir nuevos objetos cada mes!";
+"member_group_plan" = "Miembro de un plan de grupo";
+"group_plan" = "Plan del grupo";
+"party.transfer_ownership_description" = "Esto hará que %@ sea el nuevo líder del grupo";
+"menu.subscription" = "Suscripción";
+"menu.gems" = "Comprar gemas";
+"titles.pets_and_mounts" = "Mascotas y monturas";
+"subscription_options_title" = "Elige la duración de suscripción que te convenga";
+"subscription_promo_description" = "Suscríbete para comprar Gemas con oro, conseguir Artículos Misteriosos mensuales, e incrementar los límites de artículos obtenidos al azar";
+"get_more_habitica" = "Aprovecha Habitica a tope";
+"not_recurring" = "Que no se repite";
+"subscription_duration" = "Repitiéndose cada %@";
