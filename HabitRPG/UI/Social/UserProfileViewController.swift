@@ -215,7 +215,11 @@ class UserProfileViewController: BaseTableViewController {
             return
         }
         let levelLabel = cell.viewWithTag(1) as? UILabel
-        levelLabel?.text = L10n.levelNumber(stats.level)
+        if let className = stats.habitClassNice {
+            levelLabel?.text = className + " - " + L10n.levelNumber(stats.level)
+        } else {
+            levelLabel?.text = L10n.levelNumber(stats.level)
+        }
         
         let healthLabel = cell.viewWithTag(2) as? HRPGLabeledProgressBar
         if ThemeService.shared.theme.isDark {
