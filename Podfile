@@ -40,9 +40,8 @@ target 'Habitica' do
   pod "SlackTextViewController"
   pod 'AppAuth'
 
-  pod 'FBSDKCoreKit', '~> 5'
-  pod 'FBSDKLoginKit', '~> 5'
-
+  pod 'FacebookSDK'
+  pod 'FacebookSDK/LoginKit'
   pod 'Firebase/Core'
   pod 'Fabric'
   pod 'Crashlytics'

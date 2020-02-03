@@ -103,7 +103,7 @@ class UserProfileViewController: BaseTableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return 5
+            return 6
         case 1, 2:
             return 8
         case 3:
@@ -125,9 +125,11 @@ class UserProfileViewController: BaseTableViewController {
             switch indexPath.item {
             case 0:
                 cellname = "ProfileCell"
+            case 3:
+                cellname = "ImageCell"
             case 2:
                 cellname = "TextCell"
-            case 1, 3, 4:
+            case 1, 4, 5:
                 cellname = "SubtitleCell"
             default:
                 break
@@ -157,11 +159,16 @@ class UserProfileViewController: BaseTableViewController {
                 let textView = cell.viewWithTag(1) as? UITextView
                 textView?.attributedText = try? Down(markdownString: member?.profile?.blurb ?? "").toHabiticaAttributedString()
             case 3:
+                if let imageUrl = member?.profile?.photoUrl {
+                    let imageView = cell.viewWithTag(1) as? UIImageView
+                    imageView?.kf.setImage(with: URL(string: imageUrl))
+                }
+            case 4:
                 cell.textLabel?.text = L10n.Member.memberSince
                 if let date = member?.authentication?.timestamps?.createdAt {
                     cell.detailTextLabel?.text = DateFormatter.localizedString(from: date, dateStyle: .medium, timeStyle: .none)
                 }
-            case 4:
+            case 5:
                 cell.textLabel?.text = L10n.Member.lastLoggedIn
                 if let date = member?.authentication?.timestamps?.loggedIn {
                     cell.detailTextLabel?.text = DateFormatter.localizedString(from: date, dateStyle: .medium, timeStyle: .none)
