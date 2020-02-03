@@ -95,6 +95,7 @@ extension DarkTheme {
     public var lightlyTintedBackgroundColor: UIColor { return UIColor.gray300 }
     public var backgroundTintColor: UIColor { return UIColor.gray300 }
     public var tintColor: UIColor { return UIColor.gray500 }
+    
     public var primaryTextColor: UIColor { return UIColor.gray700 }
     public var secondaryTextColor: UIColor { return UIColor.gray500 }
     public var ternaryTextColor: UIColor { return UIColor.gray400 }

@@ -21,6 +21,7 @@ class HRPGSimpleShopItemView: UIView {
     @IBOutlet weak var notesMargin: NSLayoutConstraint!
     @IBOutlet weak var additionalInfoLabel: UILabel!
     @IBOutlet weak var imageViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var imageViewWidth: NSLayoutConstraint!
     
     private var user: UserProtocol?
     
@@ -62,12 +63,6 @@ class HRPGSimpleShopItemView: UIView {
             shopItemTitleLabel.text = newTitle
         }
     }
-    
-    var imageName = "" {
-        didSet {
-            setImage(name: imageName)
-        }
-    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -90,8 +85,12 @@ class HRPGSimpleShopItemView: UIView {
         if let availableUntil = reward.availableUntil {
             setAvailableUntil(date: availableUntil)
         }
-        imageName = reward.imageName ?? ""
-        setImage(name: imageName)
+        var imageName = reward.imageName ?? ""
+        if (reward.path?.contains("timeTravel") == true) {
+            setImage(name: imageName.replacingOccurrences(of: "icon_", with: ""), fileExtension: "gif")
+        } else {
+            setImage(name: imageName)
+        }
         
         if reward.key == "potion" {
             imageName = "shop_potion"
@@ -121,14 +120,15 @@ class HRPGSimpleShopItemView: UIView {
         }
     }
     
-    private func setImage(name: String) {
-        var name = imageName
+    private func setImage(name: String, fileExtension: String = "png") {
+        var imageName = name
         if imageName.contains(" ") {
-            name = imageName.components(separatedBy: " ")[1]
+            imageName = imageName.components(separatedBy: " ")[1]
         }
-        ImageManager.getImage(name: name) {[weak self] (image, _) in
+        ImageManager.getImage(name: imageName, extension: fileExtension) {[weak self] (image, _) in
             self?.shopItemImageView.image = image
             self?.imageViewHeight.constant = image?.size.height ?? 0
+            self?.imageViewWidth.constant = image?.size.width ?? 0
             self?.setNeedsLayout()
         }
     }

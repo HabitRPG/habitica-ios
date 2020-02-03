@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -13,6 +11,7 @@
             <connections>
                 <outlet property="additionalInfoLabel" destination="cA4-aX-MqB" id="ps4-sy-074"/>
                 <outlet property="imageViewHeight" destination="DRU-cT-F48" id="uNq-Kj-hEd"/>
+                <outlet property="imageViewWidth" destination="7Sb-S5-mYO" id="UXf-4G-5RX"/>
                 <outlet property="notesMargin" destination="rSP-8g-K9a" id="5n3-hN-5tf"/>
                 <outlet property="shopItemDescriptionLabel" destination="LtK-tD-fxk" id="FzD-ga-KBf"/>
                 <outlet property="shopItemImageView" destination="orr-Zt-z3s" id="4hp-rI-4td"/>
@@ -26,9 +25,10 @@
             <rect key="frame" x="0.0" y="0.0" width="385" height="197"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="orr-Zt-z3s">
-                    <rect key="frame" x="16" y="14.5" width="353" height="100"/>
+                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="orr-Zt-z3s" customClass="AnimatedImageView" customModule="Kingfisher">
+                    <rect key="frame" x="142.5" y="14.5" width="100" height="100"/>
                     <constraints>
+                        <constraint firstAttribute="width" constant="100" id="7Sb-S5-mYO"/>
                         <constraint firstAttribute="height" constant="100" id="DRU-cT-F48"/>
                     </constraints>
                 </imageView>
@@ -80,13 +80,12 @@
                 <constraint firstItem="SQH-qG-Ds5" firstAttribute="top" secondItem="orr-Zt-z3s" secondAttribute="bottom" constant="12" id="EMX-35-8Ss"/>
                 <constraint firstItem="LtK-tD-fxk" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="ME2-Ih-XS0"/>
                 <constraint firstItem="YEq-hb-9GU" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="O0Z-Mr-VYH"/>
+                <constraint firstItem="orr-Zt-z3s" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="QVm-hH-UQD"/>
                 <constraint firstItem="cA4-aX-MqB" firstAttribute="top" secondItem="YEq-hb-9GU" secondAttribute="bottom" constant="-4" id="QW5-IA-dfx"/>
-                <constraint firstItem="orr-Zt-z3s" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="Qfy-H2-KG8"/>
                 <constraint firstAttribute="trailing" secondItem="YEq-hb-9GU" secondAttribute="trailing" id="UAx-gj-LiN"/>
                 <constraint firstAttribute="trailing" secondItem="cA4-aX-MqB" secondAttribute="trailing" constant="16" id="YPW-kg-Lr3"/>
                 <constraint firstItem="cA4-aX-MqB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="afS-9q-XXF"/>
                 <constraint firstItem="SQH-qG-Ds5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="e00-uc-UfS"/>
-                <constraint firstAttribute="trailing" secondItem="orr-Zt-z3s" secondAttribute="trailing" constant="16" id="qb4-Kj-CdL"/>
                 <constraint firstItem="LtK-tD-fxk" firstAttribute="top" secondItem="SQH-qG-Ds5" secondAttribute="bottom" constant="12" id="rSP-8g-K9a"/>
                 <constraint firstAttribute="bottom" secondItem="LtK-tD-fxk" secondAttribute="bottom" constant="20" id="uuG-sc-e8G"/>
                 <constraint firstAttribute="trailing" secondItem="LtK-tD-fxk" secondAttribute="trailing" constant="16" id="y8v-xJ-Osl"/>

@@ -401,6 +401,7 @@
 "avatar.extras" = "Extras";
 "purchase_for_gems" = "Purchase for %d Gems";
 "purchase_gems" = "Purchase Gems";
+"more_options" = "More Options";
 "health" = "Health";
 "mana" = "Mana";
 "experience" = "Experience";
@@ -823,3 +824,6 @@
 "subscription_promo_title" = "Need Gems?";
 "subscription_promo_description" = "Become a Subscriber to buy Gems with gold, get monthly mystery items, increased drop caps and more!";
 "subscribe_for_task_history" = "Want more than 2 weeks of data?";
+"purchase_customization" = "Purchase Customization";
+"purchase_from_time_travelers_shop" = "You can purchase this customization from the Time Travelers shop";
+"go_shopping" = "Go Shopping";

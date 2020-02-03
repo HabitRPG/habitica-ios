@@ -56,7 +56,11 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
             if !customization.isPurchasable || datasource.owns(customization: customization) == true {
                 userRepository.updateUser(key: customization.userPath, value: customization.key ?? "").observeCompleted {}
             } else {
-                showPurchaseDialog(customization: customization, withSource: cell)
+                if customization.set?.key?.contains("timeTravel") == true {
+                    showTimeTravelDialog()
+                } else {
+                    showPurchaseDialog(customization: customization, withSource: cell)
+                }
             }
         } else if let datasource = gearDataSource, let gear = datasource.item(at: indexPath) {
             if datasource.owns(gear: gear) {
@@ -114,5 +118,18 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
             alertController.setSourceInCenter(view)
         }
         present(alertController, animated: true, completion: nil)
+    }
+    
+    private func showTimeTravelDialog() {
+        let alertController = HabiticaAlertController(title: L10n.purchaseCustomization, message: L10n.purchaseFromTimeTravelersShop)
+        alertController.addCancelAction()
+        alertController.addAction(title: L10n.goShopping, isMainAction: true) { _ in
+            let storyboard = UIStoryboard(name: "Shop", bundle: nil)
+            if let viewController = storyboard.instantiateInitialViewController() as? HRPGShopViewController {
+                viewController.shopIdentifier = Constants.TimeTravelersShopKey;
+                self.navigationController!.pushViewController(viewController, animated: true)
+            }
+        }
+        alertController.show()
     }
 }

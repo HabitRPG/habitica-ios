@@ -137,13 +137,10 @@ class InAppRewardCell: UICollectionViewCell {
         var canAfford = false
 
         if let user = user {
-            switch currency {
-            case .gold:
+            if currency == .gold {
                 canAfford = price < user.stats?.gold ?? 0
-            case .gem:
-                canAfford = price < Float(user.gemCount)
-            case .hourglass:
-                canAfford = price < Float(user.purchased?.subscriptionPlan?.consecutive?.hourglasses ?? 0)
+            } else {
+                canAfford = true
             }
         }
     

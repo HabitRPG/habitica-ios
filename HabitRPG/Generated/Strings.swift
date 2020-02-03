@@ -208,6 +208,8 @@ public enum L10n {
   public static var giftSubscriptionPrompt: String { return L10n.tr("Mainstrings", "gift_subscription_prompt") }
   /// Glasses
   public static var glasses: String { return L10n.tr("Mainstrings", "glasses") }
+  /// Go Shopping
+  public static var goShopping: String { return L10n.tr("Mainstrings", "go_shopping") }
   /// Gold
   public static var gold: String { return L10n.tr("Mainstrings", "gold") }
   /// Great
@@ -296,6 +298,8 @@ public enum L10n {
   public static var monthlyGemCapReached: String { return L10n.tr("Mainstrings", "monthly_gem_cap_reached") }
   /// months
   public static var months: String { return L10n.tr("Mainstrings", "months") }
+  /// More Options
+  public static var moreOptions: String { return L10n.tr("Mainstrings", "more_options") }
   /// Mounts
   public static var mounts: String { return L10n.tr("Mainstrings", "mounts") }
   /// My Challenges
@@ -370,10 +374,14 @@ public enum L10n {
   public static var ponytail: String { return L10n.tr("Mainstrings", "ponytail") }
   /// Publish Challenge
   public static var publishChallenge: String { return L10n.tr("Mainstrings", "publish_challenge") }
+  /// Purchase Customization
+  public static var purchaseCustomization: String { return L10n.tr("Mainstrings", "purchase_customization") }
   /// Purchase for %d Gems
   public static func purchaseForGems(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "purchase_for_gems", p1)
   }
+  /// You can purchase this customization from the Time Travelers shop
+  public static var purchaseFromTimeTravelersShop: String { return L10n.tr("Mainstrings", "purchase_from_time_travelers_shop") }
   /// Purchase Gems
   public static var purchaseGems: String { return L10n.tr("Mainstrings", "purchase_gems") }
   /// You purchased %@

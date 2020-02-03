@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="PIR-jb-93G">
-    <device id="ipad9_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="PIR-jb-93G">
+    <device id="ipad9_7" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -213,14 +211,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GRl-EB-mZX" customClass="HRPGCloseableShopModalView" customModule="Habitica" customModuleProvider="target">
-                                <rect key="frame" x="184" y="367" width="400" height="290"/>
+                                <rect key="frame" x="184" y="312" width="400" height="400"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="290" id="KO8-zR-per"/>
+                                    <constraint firstAttribute="height" constant="400" id="KO8-zR-per"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CV4-Pe-f0l">
-                                <rect key="frame" x="184" y="367" width="400" height="236"/>
+                                <rect key="frame" x="184" y="312" width="400" height="346"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C3v-IP-fUG">
                                         <rect key="frame" x="200" y="15" width="0.0" height="0.0"/>
@@ -229,7 +227,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f5k-Rr-PH2" customClass="HRPGSimpleShopItemView" customModule="Habitica" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="46" width="400" height="168.5"/>
+                                        <rect key="frame" x="0.0" y="46" width="400" height="166"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="image" keyPath="image" value="84_gems"/>
@@ -238,7 +236,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u6f-ro-Ehm">
-                                        <rect key="frame" x="0.0" y="214.5" width="400" height="50"/>
+                                        <rect key="frame" x="0.0" y="296" width="400" height="50"/>
                                         <color key="backgroundColor" red="0.97647058819999999" green="0.96862745100000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="Enx-lB-SGa"/>
@@ -248,15 +246,60 @@
                                             <action selector="actionButtonPressed" destination="mJy-hz-jsh" eventType="touchUpInside" id="CVW-98-rAr"/>
                                         </connections>
                                     </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hUB-b8-wWN">
+                                        <rect key="frame" x="32" y="220" width="336" height="64"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="4_gems" translatesAutoresizingMaskIntoConstraints="NO" id="zFh-Dr-VwC">
+                                                <rect key="frame" x="4" y="0.0" width="64" height="64"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="zFh-Dr-VwC" secondAttribute="height" multiplier="1:1" id="Lzq-dT-e7y"/>
+                                                </constraints>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DNF-NM-beI" customClass="HRPGPurchaseButton">
+                                                <rect key="frame" x="270" y="17" width="50" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="04r-Ga-nK1"/>
+                                                    <constraint firstAttribute="width" constant="50" id="gNM-my-o03"/>
+                                                </constraints>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Fg-sp-EZd">
+                                                <rect key="frame" x="68" y="0.0" width="202" height="64"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.3075395823" green="0.2903449535" blue="0.34151983260000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.93181443210000003" green="0.90785628559999998" blue="0.96255093810000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="zFh-Dr-VwC" secondAttribute="bottom" id="49g-Kd-hvK"/>
+                                            <constraint firstItem="zFh-Dr-VwC" firstAttribute="top" secondItem="hUB-b8-wWN" secondAttribute="top" id="CkV-ag-vUq"/>
+                                            <constraint firstItem="DNF-NM-beI" firstAttribute="centerY" secondItem="hUB-b8-wWN" secondAttribute="centerY" id="CxD-0I-b5o"/>
+                                            <constraint firstItem="DNF-NM-beI" firstAttribute="leading" secondItem="0Fg-sp-EZd" secondAttribute="trailing" id="SiV-nA-1Hz"/>
+                                            <constraint firstItem="0Fg-sp-EZd" firstAttribute="top" secondItem="hUB-b8-wWN" secondAttribute="top" id="o3g-aX-20q"/>
+                                            <constraint firstAttribute="bottom" secondItem="0Fg-sp-EZd" secondAttribute="bottom" id="s3M-2Y-gx7"/>
+                                            <constraint firstAttribute="height" constant="64" id="sMZ-nI-ERL"/>
+                                            <constraint firstItem="0Fg-sp-EZd" firstAttribute="leading" secondItem="zFh-Dr-VwC" secondAttribute="trailing" id="tdV-dF-VjI"/>
+                                            <constraint firstAttribute="trailing" secondItem="DNF-NM-beI" secondAttribute="trailing" constant="16" id="wfu-ze-koo"/>
+                                            <constraint firstItem="zFh-Dr-VwC" firstAttribute="leading" secondItem="hUB-b8-wWN" secondAttribute="leading" constant="4" id="z6t-Sr-QMx"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="f5k-Rr-PH2" firstAttribute="leading" secondItem="CV4-Pe-f0l" secondAttribute="leading" id="01C-e5-4Ow"/>
                                     <constraint firstItem="u6f-ro-Ehm" firstAttribute="leading" secondItem="CV4-Pe-f0l" secondAttribute="leading" id="0Tq-kI-UQx"/>
+                                    <constraint firstItem="hUB-b8-wWN" firstAttribute="top" secondItem="f5k-Rr-PH2" secondAttribute="bottom" constant="8" id="1I3-Bq-0xI"/>
                                     <constraint firstItem="f5k-Rr-PH2" firstAttribute="top" secondItem="CV4-Pe-f0l" secondAttribute="top" constant="46" id="2D2-wk-Z97"/>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="400" id="4VI-9X-igy"/>
+                                    <constraint firstItem="hUB-b8-wWN" firstAttribute="leading" secondItem="CV4-Pe-f0l" secondAttribute="leading" constant="32" id="Ab1-MH-lxE"/>
+                                    <constraint firstItem="u6f-ro-Ehm" firstAttribute="top" secondItem="hUB-b8-wWN" secondAttribute="bottom" constant="12" id="BZL-VV-ocJ"/>
                                     <constraint firstItem="C3v-IP-fUG" firstAttribute="top" secondItem="CV4-Pe-f0l" secondAttribute="top" constant="15" id="Fgn-yr-Rv4"/>
-                                    <constraint firstItem="u6f-ro-Ehm" firstAttribute="top" secondItem="f5k-Rr-PH2" secondAttribute="bottom" id="Kif-FR-gcR"/>
+                                    <constraint firstAttribute="trailing" secondItem="hUB-b8-wWN" secondAttribute="trailing" constant="32" id="Ku2-mk-DSb"/>
                                     <constraint firstAttribute="trailing" secondItem="u6f-ro-Ehm" secondAttribute="trailing" id="Lyg-dJ-SHX"/>
                                     <constraint firstAttribute="trailing" secondItem="f5k-Rr-PH2" secondAttribute="trailing" id="iMK-JD-dJt"/>
                                     <constraint firstItem="C3v-IP-fUG" firstAttribute="centerX" secondItem="CV4-Pe-f0l" secondAttribute="centerX" id="m4g-ON-Zht"/>
@@ -284,13 +327,17 @@
                     <connections>
                         <outlet property="actionButton" destination="u6f-ro-Ehm" id="zb6-Q1-0BY"/>
                         <outlet property="backgroundModalView" destination="GRl-EB-mZX" id="vOT-kb-1Z9"/>
+                        <outlet property="buyButton" destination="DNF-NM-beI" id="Vra-dn-HJ5"/>
+                        <outlet property="buyLabel" destination="0Fg-sp-EZd" id="FVb-7P-lyc"/>
+                        <outlet property="buyWrapper" destination="hUB-b8-wWN" id="cl9-PX-aQS"/>
+                        <outlet property="heightConstraint" destination="KO8-zR-per" id="3F0-cm-hMC"/>
                         <outlet property="imageTextView" destination="f5k-Rr-PH2" id="R58-6c-FiL"/>
                         <outlet property="titleLabel" destination="C3v-IP-fUG" id="nGM-CT-RXQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nxf-1J-VGp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="352" y="-315"/>
+            <point key="canvasLocation" x="351.5625" y="-315.234375"/>
         </scene>
         <!--Insufficient Gold View Controller-->
         <scene sceneID="cWi-pm-kiG">
@@ -544,8 +591,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="21_gems" width="47.5" height="54.5"/>
-        <image name="84_gems" width="65" height="63.5"/>
+        <image name="21_gems" width="48" height="54"/>
+        <image name="4_gems" width="50" height="53"/>
+        <image name="84_gems" width="97" height="63"/>
     </resources>
     <color key="tintColor" red="0.6058621407" green="0.38462612029999999" blue="0.99835687880000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

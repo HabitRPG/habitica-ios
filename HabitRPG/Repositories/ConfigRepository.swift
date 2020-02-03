@@ -24,6 +24,8 @@ enum ConfigVariable: Int {
     case enablePushMentions
     case showSubscriptionBanner
     case useNewMysteryBenefits
+    case insufficientGemPurchase
+    case insufficientGemPurchaseAdjust
 
     func name() -> String {
         // swiftlint:disable switch_case_on_newline
@@ -41,6 +43,8 @@ enum ConfigVariable: Int {
         case .enablePushMentions: return "enablePushMentions"
         case .showSubscriptionBanner: return "showSubscriptionBanner"
         case .useNewMysteryBenefits: return "useNewMysteryBenefits"
+        case .insufficientGemPurchase:return "insufficientGemPurchase"
+        case .insufficientGemPurchaseAdjust: return "insufficientGemPurchaseAdjust"
         }
         // swiftlint:enable switch_case_on_newline
     }
@@ -54,7 +58,7 @@ enum ConfigVariable: Int {
         case .maxChatLength:
             return NSNumber(integerLiteral: 3000)
         case .enableGiftOneGetOne:
-            return NSNumber(booleanLiteral: true)
+            return NSNumber(booleanLiteral: false)
         case .enableUsernameAutocomplete:
             return NSNumber(booleanLiteral: false)
         case .spriteSubstitutions:
@@ -73,6 +77,10 @@ enum ConfigVariable: Int {
             return NSNumber(booleanLiteral: false)
         case .useNewMysteryBenefits:
             return NSNumber(booleanLiteral: false)
+        case .insufficientGemPurchase:
+            return NSNumber(booleanLiteral: false)
+        case .insufficientGemPurchaseAdjust:
+            return NSNumber(booleanLiteral: false)
         }
     }
     
@@ -89,7 +97,9 @@ enum ConfigVariable: Int {
             .lastVersionCode,
             .randomizeAvatar,
             .enablePushMentions,
-            .useNewMysteryBenefits
+            .useNewMysteryBenefits,
+            .insufficientGemPurchase,
+            .insufficientGemPurchaseAdjust
         ]
     }
 }
@@ -114,7 +124,6 @@ class ConfigRepository: NSObject {
 
     @objc
     func bool(variable: ConfigVariable) -> Bool {
-        return true
         return ConfigRepository.remoteConfig.configValue(forKey: variable.name()).boolValue
     }
 

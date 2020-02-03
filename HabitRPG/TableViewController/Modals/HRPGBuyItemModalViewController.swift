@@ -206,7 +206,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
             }
             currencyCountView.amount = Int(reward.value)
         }
-        if canAfford() && !isLocked {
+        if (Currency(rawValue: reward?.currency ?? "gold") != .gold || canAfford()) && !isLocked {
             currencyCountView.state = .normal
         } else {
             if currencyCountView.currency == .gold {
@@ -364,7 +364,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                 }
                 
                 if let name = viewControllerName {
-                    HRPGBuyItemModalViewController.displayViewController(name: name, parent: topViewController)
+                    HRPGBuyItemModalViewController.displayViewController(name: name, parent: topViewController, value: value)
                 }
                 
                 return
@@ -400,7 +400,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                         if key == "gem" {
                             HRPGBuyItemModalViewController.displayViewController(name: "GemCapReachedViewController", parent: topViewController)
                         } else {
-                            HRPGBuyItemModalViewController.displayViewController(name: "InsufficientGemsViewController", parent: topViewController)
+                            HRPGBuyItemModalViewController.displayViewController(name: "InsufficientGemsViewController", parent: topViewController, value: value)
                         }
                     }
                 })
@@ -446,11 +446,14 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         }
     }
     
-    private static func displayViewController(name: String, parent: UIViewController?) {
+    private static func displayViewController(name: String, parent: UIViewController?, value: Int = 0) {
         let storyboard = UIStoryboard(name: "BuyModal", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: name)
         viewController.modalTransitionStyle = .crossDissolve
         viewController.modalPresentationStyle = .overFullScreen
+        if let gemViewController = viewController as? HRPGInsufficientGemsViewController {
+            gemViewController.gemPrice = value
+        }
         parent?.present(viewController, animated: true, completion: nil)
     }
     
