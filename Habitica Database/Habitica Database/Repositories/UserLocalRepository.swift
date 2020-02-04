@@ -256,6 +256,9 @@ public class UserLocalRepository: BaseLocalRepository {
                     realm?.add(realmOutfit, update: .modified)
                     existingUser.items?.gear?.equipped = realmOutfit
                 }
+                if let ownedGear = buyResponse.items?.gear?.owned {
+                    existingUser.items?.gear?.owned = ownedGear
+                }
             }
         }
     }
