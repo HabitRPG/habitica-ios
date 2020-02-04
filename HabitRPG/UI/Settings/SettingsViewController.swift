@@ -478,6 +478,7 @@ class SettingsViewController: FormViewController, Themeable {
                     cell.tintColor = UIColor.red50
                 }).onCellSelection({ (_, _) in
                     self.userRepository.logoutAccount()
+                    self.contentRepository.retrieveContent().observeCompleted {}
                     let loginViewController = StoryboardScene.Intro.loginTableViewController.instantiate()
                     loginViewController.modalPresentationStyle = .fullScreen
                     self.present(loginViewController, animated: true, completion: nil)
