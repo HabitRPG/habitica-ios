@@ -46,6 +46,11 @@ class FAQTableViewController: BaseTableViewController {
         navigationItem.title = L10n.Titles.faq
     }
     
+    override func applyTheme(theme: Theme) {
+        super.applyTheme(theme: theme)
+        resetTutorialButton.setTitleColor(theme.tintColor, for: .normal)
+    }
+    
     override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         searchBar.resignFirstResponder()
         searchBar.setShowsCancelButton(false, animated: true)
