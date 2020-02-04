@@ -353,13 +353,14 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     }
     
     func registerPushDevice(user: UserProtocol) -> Signal<EmptyResponseProtocol?, Never> {
-        if (lastPushDeviceSync?.timeIntervalSinceNow ?? -3) > -2 {
+        if (lastPushDeviceSync?.timeIntervalSinceNow ?? -31) > -30 {
             return Signal.empty
         }
         if let deviceID = UserDefaults().string(forKey: "PushNotificationDeviceToken") {
             if user.pushDevices.contains(where: { (pushDevice) -> Bool in
                 return pushDevice.regId == deviceID
             }) != true {
+                lastPushDeviceSync = Date()
                 let call = RegisterPushDeviceCall(regID: deviceID)
                 
                 return call.objectSignal
