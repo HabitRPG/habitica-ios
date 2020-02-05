@@ -94,6 +94,10 @@ public enum L10n {
   public static var copiedMessage: String { return L10n.tr("Mainstrings", "copied_message") }
   /// Copied to Clipboard
   public static var copiedToClipboard: String { return L10n.tr("Mainstrings", "copied_to_clipboard") }
+  /// Copied %@ to Clipboard
+  public static func copiedXToClipboard(_ p1: String) -> String {
+    return L10n.tr("Mainstrings", "copied_x_to_clipboard", p1)
+  }
   /// Create
   public static var create: String { return L10n.tr("Mainstrings", "create") }
   /// Create Tag

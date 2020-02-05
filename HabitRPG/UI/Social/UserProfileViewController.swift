@@ -103,7 +103,7 @@ class UserProfileViewController: BaseTableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return 6
+            return 7
         case 1, 2:
             return 8
         case 3:
@@ -125,11 +125,11 @@ class UserProfileViewController: BaseTableViewController {
             switch indexPath.item {
             case 0:
                 cellname = "ProfileCell"
-            case 3:
+            case 4:
                 cellname = "ImageCell"
-            case 2:
+            case 3:
                 cellname = "TextCell"
-            case 1, 4, 5:
+            case 1, 2, 5, 6:
                 cellname = "SubtitleCell"
             default:
                 break
@@ -156,19 +156,22 @@ class UserProfileViewController: BaseTableViewController {
                 cell.textLabel?.text = L10n.username
                 cell.detailTextLabel?.text = member?.authentication?.local?.username
             case 2:
+                cell.textLabel?.text = L10n.userID
+                cell.detailTextLabel?.text = member?.id
+            case 3:
                 let textView = cell.viewWithTag(1) as? UITextView
                 textView?.attributedText = try? Down(markdownString: member?.profile?.blurb ?? "").toHabiticaAttributedString()
-            case 3:
+            case 4:
                 if let imageUrl = member?.profile?.photoUrl {
                     let imageView = cell.viewWithTag(1) as? UIImageView
                     imageView?.kf.setImage(with: URL(string: imageUrl))
                 }
-            case 4:
+            case 5:
                 cell.textLabel?.text = L10n.Member.memberSince
                 if let date = member?.authentication?.timestamps?.createdAt {
                     cell.detailTextLabel?.text = DateFormatter.localizedString(from: date, dateStyle: .medium, timeStyle: .none)
                 }
-            case 5:
+            case 6:
                 cell.textLabel?.text = L10n.Member.lastLoggedIn
                 if let date = member?.authentication?.timestamps?.loggedIn {
                     cell.detailTextLabel?.text = DateFormatter.localizedString(from: date, dateStyle: .medium, timeStyle: .none)
@@ -196,7 +199,14 @@ class UserProfileViewController: BaseTableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if indexPath.section == 3 {
+        if indexPath.section == 0 {
+            if indexPath.item == 1 || indexPath.item == 2 {
+                let cell = tableView.cellForRow(at: indexPath)
+                let pasteboard = UIPasteboard.general
+                pasteboard.string = cell?.detailTextLabel?.text
+                ToastManager.show(text: L10n.copiedXToClipboard(cell?.textLabel?.text ?? ""), color: .green)
+            }
+        } else if indexPath.section == 3 {
             isAttributesExpanded = !isAttributesExpanded
             let rows = [IndexPath(item: 1, section: 3), IndexPath(item: 2, section: 3), IndexPath(item: 3, section: 3), IndexPath(item: 4, section: 3), IndexPath(item: 5, section: 3)]
             if isAttributesExpanded {
