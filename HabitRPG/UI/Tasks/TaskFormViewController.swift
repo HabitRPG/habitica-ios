@@ -450,7 +450,8 @@ class TaskFormViewController: FormViewController, Themeable {
                     cell.tintColor = self?.lightTaskTintColor
                     cell.detailTextLabel?.textColor = self?.lightTaskTintColor
                     cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
-                }).onCellSelection({ (cell, row) in
+                })
+                row.onCellSelection({ (cell, row) in
                     if row.value == nil {
                         row.value = Date()
                         row.updateCell()

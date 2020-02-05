@@ -8,11 +8,23 @@
 
 import UIKit
 
-class EmptyTableViewCell: UITableViewCell {
+class EmptyTableViewCell: UITableViewCell, Themeable {
     @IBOutlet weak var emptyImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var firstParagraphLabel: UILabel!
     @IBOutlet weak var secondParagraphLabel: UILabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        ThemeService.shared.addThemeable(themable: self)
+    }
+    
+    func applyTheme(theme: Theme) {
+        backgroundColor = theme.windowBackgroundColor
+        titleLabel.textColor = theme.ternaryTextColor
+        firstParagraphLabel.textColor = theme.ternaryTextColor
+        secondParagraphLabel.textColor = theme.ternaryTextColor
+    }
     
     static func habitsStyle(cell: EmptyTableViewCell) {
         cell.emptyImageView.image = Asset.tabbarHabits.image
