@@ -60,32 +60,54 @@ class QuestDetailViewController: BaseUIViewController {
         headerView.addSubview(borderView)
         topHeaderCoordinator?.alternativeHeader = headerView
         
-        disposable.inner.add(userRepository.getUser().on(value: {[weak self]user in
-            self?.set(user: user)
-        }).start())
+        loadUser()
         if let questKey = questKey {
-            disposable.inner.add(inventoryRepository.getQuest(key: questKey).skipNil().on(value: {[weak self]quest in
-                self?.set(quest: quest)
-            }).start())
+            loadQuest(questKey: questKey)
         }
         if let groupID = groupID {
-            disposable.inner.add(socialRepository.getGroup(groupID: groupID).skipNil()
-                .on(value: {[weak self]group in
-                self?.set(group: group)
-            })
-                .flatMap(.latest, {[weak self] (group) in
-                    return self?.socialRepository.getMembers(userIDs: group.quest?.members.map({ user in
-                        return user.userID ?? ""
-                    }) ?? []) ?? SignalProducer.empty
-                })
-                .on(value: {[weak self](members, _) in
-                    self?.set(members: members)
-                })
-                .start())
+            loadGroup(groupID: groupID)
         }
         
         descriptionTextView.textContainerInset = UIEdgeInsets.zero
         descriptionTextView.textContainer.lineFragmentPadding = 0
+    }
+    
+    private func loadUser() {
+        disposable.inner.add(userRepository.getUser().on(value: {[weak self]user in
+            self?.set(user: user)
+            if self?.groupID == nil {
+                if let groupID = user.party?.id {
+                    self?.loadGroup(groupID: groupID)
+                }
+            }
+        }).start())
+    }
+    
+    private func loadGroup(groupID: String) {
+        disposable.inner.add(socialRepository.getGroup(groupID: groupID).skipNil()
+            .on(value: {[weak self]group in
+            self?.set(group: group)
+                if self?.questKey == nil {
+                    if let questKey = group.quest?.key {
+                        self?.loadQuest(questKey: questKey)
+                    }
+                }
+        })
+            .flatMap(.latest, {[weak self] (group) in
+                return self?.socialRepository.getMembers(userIDs: group.quest?.members.map({ user in
+                    return user.userID ?? ""
+                }) ?? []) ?? SignalProducer.empty
+            })
+            .on(value: {[weak self](members, _) in
+                self?.set(members: members)
+            })
+            .start())
+    }
+    
+    private func loadQuest(questKey: String) {
+        disposable.inner.add(inventoryRepository.getQuest(key: questKey).skipNil().on(value: {[weak self]quest in
+            self?.set(quest: quest)
+        }).start())
     }
     
     override func applyTheme(theme: Theme) {
