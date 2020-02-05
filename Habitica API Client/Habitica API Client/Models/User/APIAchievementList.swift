@@ -20,6 +20,7 @@ public class APIAchievementList: Decodable, AchievementListProtocol {
         case basic
         case seasonal
         case special
+        case onboarding
     }
     
     required public init(from decoder: Decoder) throws {
@@ -38,6 +39,11 @@ public class APIAchievementList: Decodable, AchievementListProtocol {
         try? values.decode(AchievementCategory.self, forKey: .special).achievements.forEach({ (key, achievement) in
             achievement.key = key
             achievement.category = "special"
+            achievements.append(achievement)
+        })
+        try? values.decode(AchievementCategory.self, forKey: .onboarding).achievements.forEach({ (key, achievement) in
+            achievement.key = key
+            achievement.category = "onboarding"
             achievements.append(achievement)
         })
     }

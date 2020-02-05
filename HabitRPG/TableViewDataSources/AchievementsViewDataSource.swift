@@ -39,16 +39,18 @@ class AchievementsViewDataSource: BaseReactiveCollectionViewDataSource<Achieveme
     
     override init() {
         super.init()
+        sections.append(ItemSection<AchievementProtocol>(title: L10n.Achievements.onboarding))
         sections.append(ItemSection<AchievementProtocol>(title: L10n.Achievements.basic))
         sections.append(ItemSection<AchievementProtocol>(title: L10n.Achievements.seasonal))
         sections.append(ItemSection<AchievementProtocol>(title: L10n.Achievements.special))
         sections.append(ItemSection<AchievementProtocol>(title: L10n.Achievements.quests))
 
         disposable.inner.add(userRepository.getAchievements().on(value: {[weak self] (achievements, changes) in
-            self?.sections[0].items = achievements.filter({ $0.category == "basic" })
-            self?.sections[1].items = achievements.filter({ $0.category == "seasonal" })
-            self?.sections[2].items = achievements.filter({ $0.category == "special" })
-            self?.sections[3].items = achievements.filter({ $0.category == "quests" })
+            self?.sections[0].items = achievements.filter({ $0.category == "onboarding" })
+            self?.sections[1].items = achievements.filter({ $0.category == "basic" })
+            self?.sections[2].items = achievements.filter({ $0.category == "seasonal" })
+            self?.sections[3].items = achievements.filter({ $0.category == "special" })
+            self?.sections[4].items = achievements.filter({ $0.category == "quests" })
         }).flatMap(.latest, {[weak self] (achievements, changes) in
             return self?.inventoryReqpository.getQuests(keys: achievements.map { $0.key ?? "" }) ?? SignalProducer.empty
         }).on(value: {[weak self] (quests, changes) in
