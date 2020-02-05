@@ -372,7 +372,10 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
             
             if currency == .hourglass {
                 if purchaseType == "gear" || purchaseType == "mystery_set" {
-                    inventoryRepository.purchaseMysterySet(identifier: setIdentifier, text: text).observeResult({ (result) in
+                    inventoryRepository.purchaseMysterySet(identifier: setIdentifier, text: text)
+                    .flatMap(.latest, { _ in
+                        return self.userRepository.retrieveUser()
+                    }).observeResult({ (result) in
                         switch result {
                         case .success(_):
                             successBlock()
@@ -382,7 +385,10 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                         }
                     })
                 } else {
-                    inventoryRepository.purchaseHourglassItem(purchaseType: purchaseType, key: key, text: text).observeResult({ (result) in
+                    inventoryRepository.purchaseHourglassItem(purchaseType: purchaseType, key: key, text: text)
+                    .flatMap(.latest, { _ in
+                        return self.userRepository.retrieveUser()
+                    }).observeResult({ (result) in
                         switch result {
                         case .success(_):
                             successBlock()
@@ -392,7 +398,10 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                     })
                 }
             } else if currency == .gem || purchaseType == "gems" {
-                inventoryRepository.purchaseItem(purchaseType: purchaseType, key: key, value: value, text: text).observeResult({ (result) in
+                inventoryRepository.purchaseItem(purchaseType: purchaseType, key: key, value: value, text: text)
+                .flatMap(.latest, { _ in
+                    return self.userRepository.retrieveUser()
+                }).observeResult({ (result) in
                 switch result {
                 case .success(_):
                     successBlock()
@@ -415,7 +424,11 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                 })
             } else {
                 if currency == .gold && purchaseType == "quests" {
-                    inventoryRepository.purchaseQuest(key: key, text: text).observeResult({ (result) in
+                    inventoryRepository.purchaseQuest(key: key, text: text)
+                        .flatMap(.latest, { _ in
+                            return self.userRepository.retrieveUser()
+                        })
+                        .observeResult({ (result) in
                     switch result {
                     case .success(_):
                         successBlock()
