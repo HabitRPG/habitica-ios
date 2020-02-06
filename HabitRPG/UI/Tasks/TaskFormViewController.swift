@@ -33,6 +33,8 @@ enum TaskFormTags {
     static let tags = "tags"
     static let delete = "delete"
     static let historyButton = "historyButton"
+    static let attributeSection = "attributeSection"
+    static let attribute = "attribute"
 }
 
 //swiftlint:disable:next type_body_length
@@ -107,8 +109,11 @@ class TaskFormViewController: FormViewController, Themeable {
     
     private let viewModel = TaskFormViewModel()
     private let taskRepository = TaskRepository()
+    private let userRepository = UserRepository()
     private let disposable = ScopedDisposable(CompositeDisposable())
     private let repeatablesSummaryInteractor = TaskRepeatablesSummaryInteractor()
+    
+    private var showAttributeSection = false
     
     private var schedulingSection: Section?
     
@@ -153,6 +158,12 @@ class TaskFormViewController: FormViewController, Themeable {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        userRepository.getUser().take(first: 1).on(value: {[weak self] user in
+            let allocationMode = user.preferences?.allocationMode ?? ""
+            self?.showAttributeSection = allocationMode == "taskbased"
+            self?.form.sectionBy(tag: TaskFormTags.attributeSection)?.evaluateHidden()
+        }).start()
+        
         setupBasicTaskInput()
         if taskType == .habit {
             setupHabitControls()
@@ -174,9 +185,22 @@ class TaskFormViewController: FormViewController, Themeable {
         if taskType != .habit && taskType != .reward {
             setupReminders()
         }
-        setupTags()
-
         
+        if taskType != .reward {
+            form +++ Section {[weak self] section in
+                section.tag = TaskFormTags.attributeSection
+                section.hidden = Condition.function([], { form -> Bool in
+                    return self?.showAttributeSection != true
+                })
+                } <<< TaskAttributeRow(TaskFormTags.attribute) { row in
+                    row.value = "str"
+                    row.cellUpdate { (cell, _) in
+                        cell.updateTintColor(self.taskTintColor)
+                    }
+            }
+        }
+        
+        setupTags()
         
         if !isCreating {
             if (taskType == .habit || taskType == .daily) && false {
@@ -550,7 +574,8 @@ class TaskFormViewController: FormViewController, Themeable {
         form.setValues([
             TaskFormTags.title: task.text,
             TaskFormTags.notes: task.notes,
-            TaskFormTags.difficulty: task.priority
+            TaskFormTags.difficulty: task.priority,
+            TaskFormTags.attribute: task.attribute
             ])
         if taskType == .habit {
             fillHabitValues()
@@ -668,6 +693,7 @@ class TaskFormViewController: FormViewController, Themeable {
         task.text = values[TaskFormTags.title] as? String
         task.notes = values[TaskFormTags.notes] as? String
         task.priority = values[TaskFormTags.difficulty] as? Float ?? 1
+        task.attribute = values[TaskFormTags.attribute] as? String
     }
     
     private func saveHabit(values: [String: Any?]) {

@@ -1716,6 +1716,10 @@ public enum L10n {
       public static var trivial: String { return L10n.tr("Mainstrings", "tasks.form.trivial") }
 
       public enum Accessibility {
+        /// Attribute is %@
+        public static func attribute(_ p1: String) -> String {
+          return L10n.tr("Mainstrings", "tasks.form.accessibility.attribute", p1)
+        }
         /// Disable %@
         public static func disable(_ p1: String) -> String {
           return L10n.tr("Mainstrings", "tasks.form.accessibility.disable", p1)
@@ -1738,6 +1742,10 @@ public enum L10n {
         public static var positiveAndNegativeEnabled: String { return L10n.tr("Mainstrings", "tasks.form.accessibility.positive_and_negative_enabled") }
         /// Positive habit action enabled.
         public static var positiveEnabled: String { return L10n.tr("Mainstrings", "tasks.form.accessibility.positive_enabled") }
+        /// Change attribute to %@
+        public static func setAttribute(_ p1: String) -> String {
+          return L10n.tr("Mainstrings", "tasks.form.accessibility.set_attribute", p1)
+        }
         /// Change difficuly to %@
         public static func setTaskDifficulty(_ p1: String) -> String {
           return L10n.tr("Mainstrings", "tasks.form.accessibility.set_task_difficulty", p1)

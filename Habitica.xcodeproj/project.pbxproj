@@ -268,6 +268,8 @@
 		299FB2A52084B40700422522 /* StableOverviewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB2A42084B40700422522 /* StableOverviewDataSource.swift */; };
 		299FB2A72084B44000422522 /* PetOverviewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB2A62084B44000422522 /* PetOverviewDataSource.swift */; };
 		299FB2AA2084BA6200422522 /* StableOverviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB2A92084BA6200422522 /* StableOverviewCell.swift */; };
+		29A06E1923EBED1E003BADE9 /* TaskAttributeRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A06E1823EBED1E003BADE9 /* TaskAttributeRow.swift */; };
+		29A06E1B23EBEFCC003BADE9 /* TaskAttributeRow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29A06E1A23EBEFCC003BADE9 /* TaskAttributeRow.xib */; };
 		29A0FD81203DF49900590BDE /* GuidelinesPromptView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29A0FD80203DF49900590BDE /* GuidelinesPromptView.xib */; };
 		29A1B9B91F6ACC2F0055CF57 /* UIAlertAction-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A1B9B81F6ACC2F0055CF57 /* UIAlertAction-Extensions.swift */; };
 		29A62B012167D55200D4BD90 /* VerifyUsernameModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A62B002167D55200D4BD90 /* VerifyUsernameModalViewController.swift */; };
@@ -928,6 +930,8 @@
 		299FB2A42084B40700422522 /* StableOverviewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StableOverviewDataSource.swift; sourceTree = "<group>"; };
 		299FB2A62084B44000422522 /* PetOverviewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetOverviewDataSource.swift; sourceTree = "<group>"; };
 		299FB2A92084BA6200422522 /* StableOverviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StableOverviewCell.swift; sourceTree = "<group>"; };
+		29A06E1823EBED1E003BADE9 /* TaskAttributeRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskAttributeRow.swift; sourceTree = "<group>"; };
+		29A06E1A23EBEFCC003BADE9 /* TaskAttributeRow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskAttributeRow.xib; sourceTree = "<group>"; };
 		29A0FD80203DF49900590BDE /* GuidelinesPromptView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GuidelinesPromptView.xib; sourceTree = "<group>"; };
 		29A1B9B81F6ACC2F0055CF57 /* UIAlertAction-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertAction-Extensions.swift"; sourceTree = "<group>"; };
 		29A62B002167D55200D4BD90 /* VerifyUsernameModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyUsernameModalViewController.swift; sourceTree = "<group>"; };
@@ -1504,6 +1508,8 @@
 				29205E342062DF710024E355 /* TextInputFormRow.swift */,
 				29A6B86520644CA40086B2A6 /* WeekdayFormCell.swift */,
 				29A6B86320644BFE0086B2A6 /* WeekdayFormCell.xib */,
+				29A06E1823EBED1E003BADE9 /* TaskAttributeRow.swift */,
+				29A06E1A23EBEFCC003BADE9 /* TaskAttributeRow.xib */,
 			);
 			path = TaskFormRows;
 			sourceTree = "<group>";
@@ -3040,6 +3046,7 @@
 				29028BB120319E4000B7F704 /* RageStrikeActiveContentView.xib in Resources */,
 				29C1B6AE205952E40001D3EF /* Tasks.storyboard in Resources */,
 				29A6B86220641FEA0086B2A6 /* TaskDifficultyCell.xib in Resources */,
+				29A06E1B23EBEFCC003BADE9 /* TaskAttributeRow.xib in Resources */,
 				D9BBF32E1DBD128700C4114C /* ShopAdFooter.xib in Resources */,
 				D9D17CD61E6899A800AD9232 /* ToDoTableViewCell.xib in Resources */,
 				2914487C20864EB800F3A6B5 /* EquipmentOverviewItemView.xib in Resources */,
@@ -3547,6 +3554,7 @@
 				2912C3C522CB955B00BC485F /* QuestInviteNotificationCell.swift in Sources */,
 				298119B11F50453100F9FB39 /* QuestGoalView.swift in Sources */,
 				D9D17CCC1E6736A600AD9232 /* ChallengeDetailHeaderView.swift in Sources */,
+				29A06E1923EBED1E003BADE9 /* TaskAttributeRow.swift in Sources */,
 				291448A8208A3DD200F3A6B5 /* CustomizationRepository.swift in Sources */,
 				2912C3B222CB415100BC485F /* UnreadGroupNotificationCell.swift in Sources */,
 				D9BB45D61E79968B0002AE2E /* ChallengeFilterAlert.swift in Sources */,

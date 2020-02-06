@@ -131,6 +131,8 @@
 "tasks.form.accessibility.set_task_difficulty" = "Change difficuly to %@";
 "tasks.form.accessibility.enable" = "Enable %@";
 "tasks.form.accessibility.disable" = "Disable %@";
+"tasks.form.accessibility.set_attribute" = "Change attribute to %@";
+"tasks.form.accessibility.attribute" = "Attribute is %@";
 "tasks.work" = "Work";
 "tasks.exercise" = "Exercise";
 "tasks.health" = "Health";
