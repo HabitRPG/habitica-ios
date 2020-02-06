@@ -2184,7 +2184,7 @@
                                                         <rect key="frame" x="0.0" y="155" width="375" height="65"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xaF-jb-gQA">
-                                                                <rect key="frame" x="335" y="20.5" width="24" height="24"/>
+                                                                <rect key="frame" x="311" y="8.5" width="48" height="48"/>
                                                                 <state key="normal" image="messages"/>
                                                                 <connections>
                                                                     <action selector="guildLeaderMessageButtonTapped:" destination="ZmK-Mz-PPG" eventType="touchUpInside" id="YbY-fd-uFU"/>

@@ -108,6 +108,7 @@
 		299FB27E208494E200422522 /* MountProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB27D208494E200422522 /* MountProtocol.swift */; };
 		299FB28C20849DF300422522 /* OwnedPetProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB28B20849DF300422522 /* OwnedPetProtocol.swift */; };
 		299FB28E20849E0B00422522 /* OwnedMountProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB28D20849E0B00422522 /* OwnedMountProtocol.swift */; };
+		29A06E1323EB3340003BADE9 /* EmailNotificationsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A06E1223EB3340003BADE9 /* EmailNotificationsProtocol.swift */; };
 		29A62B03216CC66F00D4BD90 /* VerifyUsernameResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A62B02216CC66F00D4BD90 /* VerifyUsernameResponse.swift */; };
 		29A6B86A20690D470086B2A6 /* WeekRepeatProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A6B86920690D470086B2A6 /* WeekRepeatProtocol.swift */; };
 		29B478BF20C5304F00B6123F /* BuyResponseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B478BE20C5304F00B6123F /* BuyResponseProtocol.swift */; };
@@ -237,6 +238,7 @@
 		299FB27D208494E200422522 /* MountProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountProtocol.swift; sourceTree = "<group>"; };
 		299FB28B20849DF300422522 /* OwnedPetProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnedPetProtocol.swift; sourceTree = "<group>"; };
 		299FB28D20849E0B00422522 /* OwnedMountProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnedMountProtocol.swift; sourceTree = "<group>"; };
+		29A06E1223EB3340003BADE9 /* EmailNotificationsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailNotificationsProtocol.swift; sourceTree = "<group>"; };
 		29A62B02216CC66F00D4BD90 /* VerifyUsernameResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyUsernameResponse.swift; sourceTree = "<group>"; };
 		29A6B86920690D470086B2A6 /* WeekRepeatProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekRepeatProtocol.swift; sourceTree = "<group>"; };
 		29B478BE20C5304F00B6123F /* BuyResponseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyResponseProtocol.swift; sourceTree = "<group>"; };
@@ -320,12 +322,15 @@
 		29323E0E20504D9900AC6D6F /* User */ = {
 			isa = PBXGroup;
 			children = (
+				2931151122D768BD00E4A9E3 /* AchievementListProtocol.swift */,
+				2931150722D745E700E4A9E3 /* AchievementProtocol.swift */,
 				290B625A207B8A09007287C4 /* AuthenticationProtocol.swift */,
 				290B625C207B945A007287C4 /* AuthenticationTimestampsProtocol.swift */,
 				292F967B20722E5800804151 /* AvatarProtocol.swift */,
 				2902797620580E87006DACB9 /* BaseStatsProtocol.swift */,
 				2902797420580E3E006DACB9 /* BuffProtocol.swift */,
 				29323E4220521A7900AC6D6F /* ContributorProtocol.swift */,
+				29A06E1223EB3340003BADE9 /* EmailNotificationsProtocol.swift */,
 				DC2C4E928EBDE3260EBA94B5 /* FlagsProtocol.swift */,
 				2914488F208A1B1500F3A6B5 /* HairProtocol.swift */,
 				290B624F2073D82A007287C4 /* InboxMessageProtocol.swift */,
@@ -340,6 +345,7 @@
 				DC2C4C19F7CA64826BF23A5A /* PreferencesProtocol.swift */,
 				DC2C4B6483B722EF73FA7153 /* ProfileProtocol.swift */,
 				2974BD94208E0DB700EC1A25 /* PurchasedProtocol.swift */,
+				29990DB520E51C4B001ADD8B /* PushDeviceProtocol.swift */,
 				290B624B2073D73A007287C4 /* PushNotificationsProtocol.swift */,
 				290C302F206CEED20066AF5B /* SkillResponseProtocol.swift */,
 				29323E1120504DCE00AC6D6F /* StatsProtocol.swift */,
@@ -349,12 +355,9 @@
 				295D42FF2097380700948E7E /* TutorialStepProtocol.swift */,
 				29323E4E2052F68A00AC6D6F /* UserGearProtocol.swift */,
 				29323E4A2052F4CF00AC6D6F /* UserItemsProtocol.swift */,
-				29323E0F20504DA600AC6D6F /* UserProtocol.swift */,
-				291E95B020988706006EE585 /* UserPartyProtocol.swift */,
 				29DBFF0A20D15A4A00DF9CF2 /* UserNewMessagesProtocol.swift */,
-				29990DB520E51C4B001ADD8B /* PushDeviceProtocol.swift */,
-				2931150722D745E700E4A9E3 /* AchievementProtocol.swift */,
-				2931151122D768BD00E4A9E3 /* AchievementListProtocol.swift */,
+				291E95B020988706006EE585 /* UserPartyProtocol.swift */,
+				29323E0F20504DA600AC6D6F /* UserProtocol.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -706,6 +709,7 @@
 				2974BD99208E0E6800EC1A25 /* SubscriptionConsecutiveProtocol.swift in Sources */,
 				295610ED2056C72000D9711A /* FoodProtocol.swift in Sources */,
 				2974BD97208E0E0D00EC1A25 /* SubscriptionPlanProtocol.swift in Sources */,
+				29A06E1323EB3340003BADE9 /* EmailNotificationsProtocol.swift in Sources */,
 				29990DC220E65C33001ADD8B /* TaskResponseTempProtocol.swift in Sources */,
 				292F9672207220BF00804151 /* UserStyleProtocol.swift in Sources */,
 				296AC81620AC86B900885682 /* BaseRewardProtocol.swift in Sources */,

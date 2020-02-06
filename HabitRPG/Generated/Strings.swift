@@ -1280,6 +1280,8 @@ public enum L10n {
     public static var deleteAccount: String { return L10n.tr("Mainstrings", "settings.delete_account") }
     /// Are you sure? This will delete your account forever, and it can never be restored! You will need to register a new account to use Habitica again. Banked or spent Gems will not be refunded. If you're absolutely certain, type your password into the text box below.
     public static var deleteAccountDescription: String { return L10n.tr("Mainstrings", "settings.delete_account_description") }
+    /// Disable all Emails
+    public static var disableAllEmails: String { return L10n.tr("Mainstrings", "settings.disable_all_emails") }
     /// Disable all Push Notifications
     public static var disableAllNotifications: String { return L10n.tr("Mainstrings", "settings.disable_all_notifications") }
     /// Disable Private Messages
@@ -1354,6 +1356,15 @@ public enum L10n {
     public static var usernameNotConfirmed: String { return L10n.tr("Mainstrings", "settings.username_not_confirmed") }
     /// Incorrect Password
     public static var wrongPassword: String { return L10n.tr("Mainstrings", "settings.wrong_password") }
+
+    public enum EmailNotifications {
+      /// Kicked from Group
+      public static var bannedGroup: String { return L10n.tr("Mainstrings", "settings.email_notifications.banned_group") }
+      /// Subscription Reminders
+      public static var subscriptionReminders: String { return L10n.tr("Mainstrings", "settings.email_notifications.subscription_reminders") }
+      /// Emails
+      public static var title: String { return L10n.tr("Mainstrings", "settings.email_notifications.title") }
+    }
 
     public enum PushNotifications {
       /// Gifted Gems

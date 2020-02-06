@@ -45,6 +45,21 @@ class RealmPreferences: Object, PreferencesProtocol {
         }
     }
     @objc dynamic var realmPushNotifications: RealmPushNotifications?
+    var emailNotifications: EmailNotificationsProtocol? {
+        get {
+            return realmEmailNotifications
+        }
+        set {
+            if let newItems = newValue as? RealmEmailNotifications {
+                realmEmailNotifications = newItems
+                return
+            }
+            if let newItems = newValue {
+                realmEmailNotifications = RealmEmailNotifications(id: id, pnProtocol: newItems)
+            }
+        }
+    }
+    @objc dynamic var realmEmailNotifications: RealmEmailNotifications?
     var hair: HairProtocol? {
         get {
             return realmHair
@@ -89,6 +104,7 @@ class RealmPreferences: Object, PreferencesProtocol {
         sound = preferences.sound
         autoEquip = preferences.autoEquip
         pushNotifications = preferences.pushNotifications
+        emailNotifications = preferences.emailNotifications
         hair = preferences.hair
         searchableUsername = preferences.searchableUsername
     }

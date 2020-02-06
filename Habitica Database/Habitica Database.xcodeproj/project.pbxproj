@@ -93,6 +93,7 @@
 		299FB29020849E7300422522 /* RealmOwnedPet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB28F20849E7300422522 /* RealmOwnedPet.swift */; };
 		299FB29220849E9E00422522 /* RealmOwnedMount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB29120849E9E00422522 /* RealmOwnedMount.swift */; };
 		299FB2982084A17A00422522 /* StableLocalRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB2972084A17A00422522 /* StableLocalRepository.swift */; };
+		29A06E1523EB3381003BADE9 /* RealmEmailNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A06E1423EB3381003BADE9 /* RealmEmailNotifications.swift */; };
 		29A6B86C20690DF00086B2A6 /* RealmWeekRepeat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A6B86B20690DF00086B2A6 /* RealmWeekRepeat.swift */; };
 		29DBFEFB20CADB4100DF9CF2 /* RealmSpecialItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFEFA20CADB4100DF9CF2 /* RealmSpecialItem.swift */; };
 		29DBFF0D20D15B0500DF9CF2 /* RealmUserNewMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFF0C20D15B0500DF9CF2 /* RealmUserNewMessages.swift */; };
@@ -201,6 +202,7 @@
 		299FB28F20849E7300422522 /* RealmOwnedPet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmOwnedPet.swift; sourceTree = "<group>"; };
 		299FB29120849E9E00422522 /* RealmOwnedMount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmOwnedMount.swift; sourceTree = "<group>"; };
 		299FB2972084A17A00422522 /* StableLocalRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StableLocalRepository.swift; sourceTree = "<group>"; };
+		29A06E1423EB3381003BADE9 /* RealmEmailNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmEmailNotifications.swift; sourceTree = "<group>"; };
 		29A6B86B20690DF00086B2A6 /* RealmWeekRepeat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmWeekRepeat.swift; sourceTree = "<group>"; };
 		29DBFEFA20CADB4100DF9CF2 /* RealmSpecialItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmSpecialItem.swift; sourceTree = "<group>"; };
 		29DBFF0C20D15B0500DF9CF2 /* RealmUserNewMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmUserNewMessages.swift; sourceTree = "<group>"; };
@@ -336,6 +338,7 @@
 				291E95B2209887BF006EE585 /* RealmUserParty.swift */,
 				29DBFF0C20D15B0500DF9CF2 /* RealmUserNewMessages.swift */,
 				2931150922D7473600E4A9E3 /* RealmAchievement.swift */,
+				29A06E1423EB3381003BADE9 /* RealmEmailNotifications.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -695,6 +698,7 @@
 				2927269E20B6FE31009DD08A /* RealmChallenge.swift in Sources */,
 				292DEE8A204E49600086D5F7 /* RealmReminder.swift in Sources */,
 				29323E412052145900AC6D6F /* RealmProfile.swift in Sources */,
+				29A06E1523EB3381003BADE9 /* RealmEmailNotifications.swift in Sources */,
 				292844E520DD16BE0011DC43 /* RealmGroupInvitation.swift in Sources */,
 				29A6B86C20690DF00086B2A6 /* RealmWeekRepeat.swift in Sources */,
 				290C3026206B96320066AF5B /* RealmOwnedItem.swift in Sources */,

@@ -202,6 +202,7 @@
 		299FB28A2084988500422522 /* APIMount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB2892084988500422522 /* APIMount.swift */; };
 		299FB29420849EDD00422522 /* APIOwnedPet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB29320849EDD00422522 /* APIOwnedPet.swift */; };
 		299FB29620849F1500422522 /* APIOwnedMount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB29520849F1500422522 /* APIOwnedMount.swift */; };
+		29A06E1723EB33F0003BADE9 /* APIEmailNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A06E1623EB33F0003BADE9 /* APIEmailNotifications.swift */; };
 		29A62B05216CC6A100D4BD90 /* APIVerifyUsernameResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A62B04216CC6A100D4BD90 /* APIVerifyUsernameResponse.swift */; };
 		29A62B07216CC6CC00D4BD90 /* VerifyUsernameCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A62B06216CC6CC00D4BD90 /* VerifyUsernameCall.swift */; };
 		29A6B86E20690F0C0086B2A6 /* APIWeekRepeat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A6B86D20690F0C0086B2A6 /* APIWeekRepeat.swift */; };
@@ -441,6 +442,7 @@
 		299FB2892084988500422522 /* APIMount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIMount.swift; sourceTree = "<group>"; };
 		299FB29320849EDD00422522 /* APIOwnedPet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIOwnedPet.swift; sourceTree = "<group>"; };
 		299FB29520849F1500422522 /* APIOwnedMount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIOwnedMount.swift; sourceTree = "<group>"; };
+		29A06E1623EB33F0003BADE9 /* APIEmailNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEmailNotifications.swift; sourceTree = "<group>"; };
 		29A62B04216CC6A100D4BD90 /* APIVerifyUsernameResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIVerifyUsernameResponse.swift; sourceTree = "<group>"; };
 		29A62B06216CC6CC00D4BD90 /* VerifyUsernameCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyUsernameCall.swift; sourceTree = "<group>"; };
 		29A6B86D20690F0C0086B2A6 /* APIWeekRepeat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIWeekRepeat.swift; sourceTree = "<group>"; };
@@ -590,6 +592,7 @@
 				29A62B04216CC6A100D4BD90 /* APIVerifyUsernameResponse.swift */,
 				2931150B22D747F100E4A9E3 /* APIAchievement.swift */,
 				2931151322D768DA00E4A9E3 /* APIAchievementList.swift */,
+				29A06E1623EB33F0003BADE9 /* APIEmailNotifications.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -1152,6 +1155,7 @@
 				290B6295207E3E6C007287C4 /* LeaveGroupCall.swift in Sources */,
 				290B626F207BA6FB007287C4 /* DeleteAccountCall.swift in Sources */,
 				295E9DE020B31B8600D58D45 /* CreateTagCall.swift in Sources */,
+				29A06E1723EB33F0003BADE9 /* APIEmailNotifications.swift in Sources */,
 				29DBFF0320CE91A500DF9CF2 /* UseTransformationItemCall.swift in Sources */,
 				295E9DD620B2ECB900D58D45 /* RetrieveShopInventoryCall.swift in Sources */,
 				291DE97A209B443D0073182A /* APIQuestParticipant.swift in Sources */,

@@ -27,6 +27,7 @@ class APIPreferences: PreferencesProtocol, Decodable {
     var sound: String?
     var autoEquip: Bool = false
     var pushNotifications: PushNotificationsProtocol?
+    var emailNotifications: EmailNotificationsProtocol?
     var hair: HairProtocol?
     var searchableUsername: Bool = false
     
@@ -48,6 +49,7 @@ class APIPreferences: PreferencesProtocol, Decodable {
         case sound
         case autoEquip
         case pushNotifications
+        case emailNotifications
         case hair
         case searchableUsername
     }
@@ -71,6 +73,7 @@ class APIPreferences: PreferencesProtocol, Decodable {
         sound = try? values.decode(String.self, forKey: .sound)
         autoEquip = (try? values.decode(Bool.self, forKey: .autoEquip)) ?? false
         pushNotifications = try? values.decode(APIPushNotifications.self, forKey: .pushNotifications)
+        emailNotifications = try? values.decode(APIEmailNotifications.self, forKey: .emailNotifications)
         hair = try? values.decode(APIHair.self, forKey: .hair)
         searchableUsername = (try? values.decode(Bool.self, forKey: .searchableUsername)) ?? false
     }

@@ -24,6 +24,7 @@ public protocol PreferencesProtocol {
     var sound: String? { get set }
     var autoEquip: Bool { get set }
     var pushNotifications: PushNotificationsProtocol? { get set }
+    var emailNotifications: EmailNotificationsProtocol? { get set }
     var hair: HairProtocol? { get set }
     var searchableUsername: Bool { get set }
 }

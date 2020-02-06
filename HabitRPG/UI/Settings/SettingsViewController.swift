@@ -20,6 +20,8 @@ enum SettingsTags {
     static let customDayStart = "customDayStart"
     static let disableAllNotifications = "disableAllNotifications"
     static let pushNotifications = "pushNotifications"
+    static let disableAllEmails = "disableAllEmails"
+    static let emailNotifications = "emailNotifications"
     static let disablePrivateMessages = "disablePrivateMessages"
     static let themeColor = "themeColor"
     static let themeMode = "themeMode"
@@ -336,6 +338,19 @@ private let pushNotificationsMapping = [
     L10n.Settings.PushNotifications.mentionUnjoinedGuild: "mentionUnjoinedGuild"
 ]
 
+private let emailNotificationsMapping = [
+    L10n.Settings.PushNotifications.giftedGems: "giftedGems",
+    L10n.Settings.PushNotifications.giftedSubscription: "giftedSubscription",
+    L10n.Settings.PushNotifications.receivedPm: "newPM",
+    L10n.Settings.PushNotifications.wonChallenge: "wonChallenge",
+    L10n.Settings.PushNotifications.invitedQuest: "invitedQuest",
+    L10n.Settings.PushNotifications.invitedParty: "invitedParty",
+    L10n.Settings.PushNotifications.invitedGuid: "invitedGuild",
+    L10n.Settings.PushNotifications.importantAnnouncement: "majorUpdates",
+    L10n.Settings.PushNotifications.questBegun: "questStarted",
+    L10n.Settings.EmailNotifications.bannedGroup: "kickedGroup"
+]
+
 class SettingsViewController: FormViewController, Themeable {
     
     private let userRepository = UserRepository()
@@ -618,6 +633,46 @@ class SettingsViewController: FormViewController, Themeable {
                     self?.userRepository.updateUser(updateDict).observeCompleted {}
                 })
             }
+            <<< SwitchRow(SettingsTags.disableAllEmails) { row in
+                row.title = L10n.Settings.disableAllEmails
+                row.cellUpdate { cell, _ in
+                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    cell.tintColor = ThemeService.shared.theme.tintColor
+                }
+                row.onChange({[weak self] (row) in
+                    if self?.isSettingUserData == true { return }
+                    if row.value == self?.user?.preferences?.emailNotifications?.unsubscribeFromAll {
+                        return
+                    }
+                    if let value = row.value {
+                        self?.userRepository.updateUser(key: "preferences.emailNotifications.unsubscribeFromAll", value: value).observeCompleted {}
+                    }
+                })
+            }
+            <<< MultipleSelectorRow<String>(SettingsTags.emailNotifications) { row in
+                row.title = L10n.Settings.EmailNotifications.title
+                row.options = [L10n.Settings.PushNotifications.receivedPm,
+                L10n.Settings.PushNotifications.wonChallenge,
+                L10n.Settings.PushNotifications.giftedGems,
+                L10n.Settings.PushNotifications.giftedSubscription,
+                L10n.Settings.PushNotifications.invitedParty,
+                L10n.Settings.PushNotifications.invitedGuid,
+                L10n.Settings.PushNotifications.invitedQuest,
+                L10n.Settings.PushNotifications.questBegun,
+                L10n.Settings.PushNotifications.importantAnnouncement,
+                L10n.Settings.EmailNotifications.bannedGroup]
+                row.disabled = Condition.function([SettingsTags.disableAllEmails], { (form) -> Bool in
+                    return (form.rowBy(tag: SettingsTags.disableAllEmails) as? SwitchRow)?.value == true
+                })
+                row.onChange({[weak self] (row) in
+                    if self?.isSettingUserData == true { return }
+                    var updateDict = [String: Encodable]()
+                    for (key, value) in emailNotificationsMapping {
+                        updateDict["preferences.emailNotifications.\(value)"] = row.value?.contains(key)
+                    }
+                    self?.userRepository.updateUser(updateDict).observeCompleted {}
+                })
+            }
             <<< SwitchRow(SettingsTags.disablePrivateMessages) { row in
                 row.title = L10n.Settings.disablePm
                 row.cellUpdate { cell, _ in
@@ -809,6 +864,13 @@ class SettingsViewController: FormViewController, Themeable {
         let pushNotificationsRow = (form.rowBy(tag: SettingsTags.pushNotifications) as? MultipleSelectorRow<String>)
         pushNotificationsRow?.value = getPushNotificationSet(forUser: user)
         
+        let disableEmailsRow = (form.rowBy(tag: SettingsTags.disableAllEmails) as? SwitchRow)
+        disableEmailsRow?.value = user.preferences?.pushNotifications?.unsubscribeFromAll
+        disableEmailsRow?.updateCell()
+        
+        let emailNotificationsRow = (form.rowBy(tag: SettingsTags.emailNotifications) as? MultipleSelectorRow<String>)
+        emailNotificationsRow?.value = getEmailNotificationSet(forUser: user)
+        
         let disablePMRow = (form.rowBy(tag: SettingsTags.disablePrivateMessages) as? SwitchRow)
         disablePMRow?.value = user.inbox?.optOut
         disablePMRow?.updateCell()
@@ -892,6 +954,44 @@ class SettingsViewController: FormViewController, Themeable {
         }
         if notificationPreferences.mentionUnjoinedGuild {
             pushNotifications.insert(L10n.Settings.PushNotifications.mentionUnjoinedGuild)
+        }
+        return pushNotifications
+    }
+    
+    private func getEmailNotificationSet(forUser user: UserProtocol) -> Set<String> {
+        var pushNotifications = Set<String>()
+        guard let notificationPreferences = user.preferences?.emailNotifications else {
+            return pushNotifications
+        }
+        if notificationPreferences.giftedGems {
+            pushNotifications.insert(L10n.Settings.PushNotifications.giftedGems)
+        }
+        if notificationPreferences.giftedSubscription {
+            pushNotifications.insert(L10n.Settings.PushNotifications.giftedSubscription)
+        }
+        if notificationPreferences.hasNewPM {
+            pushNotifications.insert(L10n.Settings.PushNotifications.receivedPm)
+        }
+        if notificationPreferences.invitedGuild {
+            pushNotifications.insert(L10n.Settings.PushNotifications.invitedGuid)
+        }
+        if notificationPreferences.invitedParty {
+            pushNotifications.insert(L10n.Settings.PushNotifications.invitedParty)
+        }
+        if notificationPreferences.invitedQuest {
+            pushNotifications.insert(L10n.Settings.PushNotifications.invitedQuest)
+        }
+        if notificationPreferences.questStarted {
+            pushNotifications.insert(L10n.Settings.PushNotifications.questBegun)
+        }
+        if notificationPreferences.majorUpdates {
+            pushNotifications.insert(L10n.Settings.PushNotifications.importantAnnouncement)
+        }
+        if notificationPreferences.wonChallenge {
+            pushNotifications.insert(L10n.Settings.PushNotifications.wonChallenge)
+        }
+        if notificationPreferences.kickedGroup {
+            pushNotifications.insert(L10n.Settings.EmailNotifications.bannedGroup)
         }
         return pushNotifications
     }
