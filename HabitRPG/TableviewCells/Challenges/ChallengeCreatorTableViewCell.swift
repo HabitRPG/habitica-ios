@@ -23,6 +23,7 @@ class ChallengeCreatorTableViewCell: UITableViewCell, ChallengeConfigurable {
     private var member: MemberProtocol? {
         didSet {
             if let member = member {
+                avatarView.size = .compact
                 avatarView.avatar = AvatarViewModel(avatar: member)
                 userNameLabel.text = member.profile?.name
             }

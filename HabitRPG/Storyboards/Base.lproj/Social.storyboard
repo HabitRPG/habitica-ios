@@ -203,7 +203,7 @@
                         <viewControllerLayoutGuide type="bottom" id="ucE-b4-Own"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="43x-Iu-HK8">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="627"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.97636467218399048" green="0.97653168439865112" blue="0.97635418176651001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -803,7 +803,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="ChallengeDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="LJL-4h-PRX" customClass="ChallengeDetailsTableViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="mSs-Sh-idc">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="627"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -842,7 +842,7 @@
                         <viewControllerLayoutGuide type="bottom" id="P6N-Fc-Wb3"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Lyy-sF-5bz">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="627"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
@@ -872,7 +872,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="UserProfileViewController" id="MTH-Re-wqo" customClass="UserProfileViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="WTt-7r-yfN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="627"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
@@ -1358,7 +1358,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="ChallengeTableViewController" automaticallyAdjustsScrollViewInsets="NO" id="BE2-xn-Wwl" customClass="ChallengeTableViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="86" sectionHeaderHeight="28" sectionFooterHeight="28" id="SWx-Y1-cyG">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="627"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <connections>
@@ -1400,7 +1400,7 @@
                         <viewControllerLayoutGuide type="bottom" id="TZb-fU-Xjd"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="npj-FE-ave">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XQ3-dk-VGA">
@@ -1985,7 +1985,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Mt2-dF-B4p"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Czc-6v-sm8">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="clS-8V-xVt">
@@ -2184,7 +2184,7 @@
                                                         <rect key="frame" x="0.0" y="155" width="375" height="65"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xaF-jb-gQA">
-                                                                <rect key="frame" x="311" y="8.5" width="48" height="48"/>
+                                                                <rect key="frame" x="335" y="20.5" width="24" height="24"/>
                                                                 <state key="normal" image="messages"/>
                                                                 <connections>
                                                                     <action selector="guildLeaderMessageButtonTapped:" destination="ZmK-Mz-PPG" eventType="touchUpInside" id="YbY-fd-uFU"/>
@@ -2200,12 +2200,29 @@
                                                                 <color key="textColor" red="0.086274509799999996" green="0.4941176471" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JuB-qY-9Ry" customClass="AvatarView" customModule="Habitica" customModuleProvider="target">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ui9-xp-u3g">
                                                                 <rect key="frame" x="16" y="12.5" width="40" height="40"/>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <subviews>
+                                                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JuB-qY-9Ry" customClass="AvatarView" customModule="Habitica" customModuleProvider="target">
+                                                                        <rect key="frame" x="-9" y="0.0" width="50" height="50"/>
+                                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="50" id="Gp6-AH-udB"/>
+                                                                            <constraint firstAttribute="height" constant="50" id="v1E-9Q-Y5H"/>
+                                                                        </constraints>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="showBackground" value="YES"/>
+                                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="showMount" value="NO"/>
+                                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="showPet" value="NO"/>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                    </view>
+                                                                </subviews>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" constant="40" id="Gp6-AH-udB"/>
-                                                                    <constraint firstAttribute="height" constant="40" id="v1E-9Q-Y5H"/>
+                                                                    <constraint firstAttribute="width" constant="40" id="OSr-Kz-zu1"/>
+                                                                    <constraint firstAttribute="height" constant="40" id="mHI-1g-UEa"/>
+                                                                    <constraint firstItem="JuB-qY-9Ry" firstAttribute="leading" secondItem="ui9-xp-u3g" secondAttribute="leading" constant="-9" id="omo-P8-3kg"/>
+                                                                    <constraint firstItem="JuB-qY-9Ry" firstAttribute="top" secondItem="ui9-xp-u3g" secondAttribute="top" id="p3E-bi-K8N"/>
                                                                 </constraints>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -2221,14 +2238,14 @@
                                                             </label>
                                                         </subviews>
                                                         <constraints>
-                                                            <constraint firstItem="dqf-HT-q0B" firstAttribute="leading" secondItem="JuB-qY-9Ry" secondAttribute="trailing" constant="12" id="E4a-jp-Dxj"/>
+                                                            <constraint firstItem="Sqv-0g-s6n" firstAttribute="leading" secondItem="ui9-xp-u3g" secondAttribute="trailing" constant="12" id="84U-hr-dBQ"/>
                                                             <constraint firstItem="dqf-HT-q0B" firstAttribute="top" secondItem="fwD-XM-c7N" secondAttribute="top" constant="12" id="IXC-l6-pGt"/>
-                                                            <constraint firstItem="JuB-qY-9Ry" firstAttribute="leading" secondItem="fwD-XM-c7N" secondAttribute="leading" constant="16" id="SEw-f6-3E5"/>
-                                                            <constraint firstItem="Sqv-0g-s6n" firstAttribute="leading" secondItem="JuB-qY-9Ry" secondAttribute="trailing" constant="12" id="Zrr-Bq-0qc"/>
+                                                            <constraint firstItem="ui9-xp-u3g" firstAttribute="leading" secondItem="fwD-XM-c7N" secondAttribute="leading" constant="16" id="LPf-kI-xQN"/>
+                                                            <constraint firstItem="dqf-HT-q0B" firstAttribute="leading" secondItem="ui9-xp-u3g" secondAttribute="trailing" constant="12" id="czP-U5-FrX"/>
                                                             <constraint firstAttribute="trailing" secondItem="xaF-jb-gQA" secondAttribute="trailing" constant="16" id="ddr-Em-jm8"/>
                                                             <constraint firstItem="xaF-jb-gQA" firstAttribute="centerY" secondItem="fwD-XM-c7N" secondAttribute="centerY" id="htP-tY-O5L"/>
                                                             <constraint firstAttribute="height" constant="65" id="idk-2n-iCz"/>
-                                                            <constraint firstItem="JuB-qY-9Ry" firstAttribute="centerY" secondItem="fwD-XM-c7N" secondAttribute="centerY" id="jgP-JS-HbH"/>
+                                                            <constraint firstItem="ui9-xp-u3g" firstAttribute="centerY" secondItem="fwD-XM-c7N" secondAttribute="centerY" id="mEC-Sd-Vwz"/>
                                                             <constraint firstItem="Sqv-0g-s6n" firstAttribute="top" secondItem="dqf-HT-q0B" secondAttribute="bottom" constant="4" id="z2Q-LN-26i"/>
                                                         </constraints>
                                                     </view>
@@ -2387,7 +2404,7 @@
                         <viewControllerLayoutGuide type="bottom" id="362-wL-UUI"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="CnB-FN-klm">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GuM-7B-owL">
@@ -2743,13 +2760,13 @@
     <inferredMetricsTieBreakers>
         <segue reference="71z-UW-WBb"/>
         <segue reference="Cwl-t5-j4W"/>
-        <segue reference="wNf-J0-D2P"/>
+        <segue reference="BKi-xg-gxr"/>
         <segue reference="9hs-wq-6bn"/>
         <segue reference="jXp-j5-lvy"/>
-        <segue reference="Hfa-0k-B92"/>
-        <segue reference="Nsp-ag-Sds"/>
+        <segue reference="RWA-7r-R8g"/>
+        <segue reference="yXa-uT-GhF"/>
         <segue reference="C12-ty-sO4"/>
-        <segue reference="2EH-Sz-Osv"/>
+        <segue reference="rs9-Lf-2VQ"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.6058621407" green="0.38462612029999999" blue="0.99835687880000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

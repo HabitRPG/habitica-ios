@@ -59,6 +59,7 @@ class GuildDetailViewController: GroupDetailViewController {
         }).on(value: {[weak self] guildLeader in
             self?.guildLeaderID = guildLeader.id
             self?.guildLeaderNameLabel.text = guildLeader.profile?.name
+            self?.guildLeaderAvatarView.size = .compact
             self?.guildLeaderAvatarView.avatar = AvatarViewModel(avatar: guildLeader)
         }).start())
         
