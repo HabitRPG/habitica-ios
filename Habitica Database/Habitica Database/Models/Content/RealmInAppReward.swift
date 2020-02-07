@@ -28,6 +28,10 @@ class RealmInAppReward: Object, InAppRewardProtocol {
     @objc dynamic var type: String?
     @objc dynamic var value: Float = 0
     @objc dynamic var isSubscriberItem: Bool = false
+    @objc dynamic var unlockConditionReason: String?
+    @objc dynamic var unlockConditionIncentiveThreshold: Int = 0
+    @objc dynamic var previous: String?
+    @objc dynamic var level: Int = 0
     
     @objc dynamic var category: ShopCategoryProtocol? {
         get {
@@ -63,5 +67,9 @@ class RealmInAppReward: Object, InAppRewardProtocol {
         type = protocolObject.type
         value = protocolObject.value
         isSubscriberItem = protocolObject.isSubscriberItem
+        unlockConditionReason = protocolObject.unlockConditionReason
+        unlockConditionIncentiveThreshold = protocolObject.unlockConditionIncentiveThreshold
+        previous = protocolObject.previous
+        level = protocolObject.level
     }
 }

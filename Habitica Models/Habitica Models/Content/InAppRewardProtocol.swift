@@ -21,6 +21,10 @@ public protocol InAppRewardProtocol: BaseRewardProtocol {
     var purchaseType: String? { get set }
     var imageName: String? { get set }
     var isSubscriberItem: Bool { get set }
+    var unlockConditionReason: String? { get set }
+    var unlockConditionIncentiveThreshold: Int { get set }
+    var previous: String? { get set }
+    var level: Int { get set }
     
     var category: ShopCategoryProtocol? { get }
 }

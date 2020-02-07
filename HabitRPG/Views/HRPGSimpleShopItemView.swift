@@ -118,6 +118,13 @@ class HRPGSimpleShopItemView: UIView {
                 shopItemDescriptionLabel.addConstraint(constraint)
             }
         }
+        
+        if let lockedReason = reward.lockedReason, reward.locked {
+            topBannerWrapper.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
+            topBannerLabel.textColor = ThemeService.shared.theme.secondaryTextColor
+            topBannerLabel.text = lockedReason
+        }
+        topBannerWrapper.isHidden = false
     }
     
     private func setImage(name: String, fileExtension: String = "png") {

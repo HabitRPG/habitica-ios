@@ -1231,6 +1231,26 @@ public enum L10n {
     public static func startedBy(_ p1: String) -> String {
       return L10n.tr("Mainstrings", "quests.started_by", p1)
     }
+    /// Unlock by inviting friends to your party
+    public static var unlockInvite: String { return L10n.tr("Mainstrings", "quests.unlock_invite") }
+    /// Invite Friends
+    public static var unlockInviteShort: String { return L10n.tr("Mainstrings", "quests.unlock_invite_short") }
+    /// Unlock by reaching level %d
+    public static func unlockLevel(_ p1: Int) -> String {
+      return L10n.tr("Mainstrings", "quests.unlock_level", p1)
+    }
+    /// Level %d
+    public static func unlockLevelShort(_ p1: Int) -> String {
+      return L10n.tr("Mainstrings", "quests.unlock_level_short", p1)
+    }
+    /// Unlock by finishing Quest %d
+    public static func unlockPrevious(_ p1: Int) -> String {
+      return L10n.tr("Mainstrings", "quests.unlock_previous", p1)
+    }
+    /// Finish Quest %d
+    public static func unlockPreviousShort(_ p1: Int) -> String {
+      return L10n.tr("Mainstrings", "quests.unlock_previous_short", p1)
+    }
   }
 
   public enum Settings {

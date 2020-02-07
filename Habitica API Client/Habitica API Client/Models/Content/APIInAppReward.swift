@@ -9,6 +9,11 @@
 import Foundation
 import Habitica_Models
 
+private struct APIUnlockCondition: Decodable {
+    var reason: String?
+    var incentiveThreshold: Int = 0
+}
+
 public class APIInAppReward: InAppRewardProtocol, Decodable {
     public var category: ShopCategoryProtocol?
     public var key: String?
@@ -27,6 +32,10 @@ public class APIInAppReward: InAppRewardProtocol, Decodable {
     public var value: Float = 0
     public var isSubscriberItem: Bool = false
     public var isValid: Bool { return true }
+    public var unlockConditionReason: String?
+    public var unlockConditionIncentiveThreshold: Int = 0
+    public var previous: String?
+    public var level: Int = 0
     
     enum CodingKeys: String, CodingKey {
         case key
@@ -43,6 +52,9 @@ public class APIInAppReward: InAppRewardProtocol, Decodable {
         case notes
         case type
         case value
+        case unlockCondition
+        case previous
+        case level
     }
     
     public required init(from decoder: Decoder) throws {
@@ -61,6 +73,11 @@ public class APIInAppReward: InAppRewardProtocol, Decodable {
         type = try? values.decode(String.self, forKey: .type)
         value = (try? values.decode(Float.self, forKey: .value)) ?? 0
         currency = try? values.decode(String.self, forKey: .currency)
+        let unlockCondition = try? values.decode(APIUnlockCondition.self, forKey: .unlockCondition)
+        unlockConditionReason = unlockCondition?.reason
+        unlockConditionIncentiveThreshold = unlockCondition?.incentiveThreshold ?? 0
+        previous = try? values.decode(String.self, forKey: .previous)
+        level = (try? values.decode(Int.self, forKey: .level)) ?? 0
     }
     
     init() {

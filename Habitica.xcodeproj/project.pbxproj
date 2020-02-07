@@ -270,6 +270,7 @@
 		299FB2AA2084BA6200422522 /* StableOverviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB2A92084BA6200422522 /* StableOverviewCell.swift */; };
 		29A06E1923EBED1E003BADE9 /* TaskAttributeRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A06E1823EBED1E003BADE9 /* TaskAttributeRow.swift */; };
 		29A06E1B23EBEFCC003BADE9 /* TaskAttributeRow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29A06E1A23EBEFCC003BADE9 /* TaskAttributeRow.xib */; };
+		29A06E1D23ED4125003BADE9 /* InAppRewardProtocol-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A06E1C23ED4125003BADE9 /* InAppRewardProtocol-Extensions.swift */; };
 		29A0FD81203DF49900590BDE /* GuidelinesPromptView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29A0FD80203DF49900590BDE /* GuidelinesPromptView.xib */; };
 		29A1B9B91F6ACC2F0055CF57 /* UIAlertAction-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A1B9B81F6ACC2F0055CF57 /* UIAlertAction-Extensions.swift */; };
 		29A62B012167D55200D4BD90 /* VerifyUsernameModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A62B002167D55200D4BD90 /* VerifyUsernameModalViewController.swift */; };
@@ -932,6 +933,7 @@
 		299FB2A92084BA6200422522 /* StableOverviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StableOverviewCell.swift; sourceTree = "<group>"; };
 		29A06E1823EBED1E003BADE9 /* TaskAttributeRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskAttributeRow.swift; sourceTree = "<group>"; };
 		29A06E1A23EBEFCC003BADE9 /* TaskAttributeRow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskAttributeRow.xib; sourceTree = "<group>"; };
+		29A06E1C23ED4125003BADE9 /* InAppRewardProtocol-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InAppRewardProtocol-Extensions.swift"; sourceTree = "<group>"; };
 		29A0FD80203DF49900590BDE /* GuidelinesPromptView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GuidelinesPromptView.xib; sourceTree = "<group>"; };
 		29A1B9B81F6ACC2F0055CF57 /* UIAlertAction-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertAction-Extensions.swift"; sourceTree = "<group>"; };
 		29A62B002167D55200D4BD90 /* VerifyUsernameModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyUsernameModalViewController.swift; sourceTree = "<group>"; };
@@ -2141,6 +2143,7 @@
 				29A62B0A216CF4E200D4BD90 /* UIDevice-Extensions.swift */,
 				29A9B06622843DEB0049291E /* UINotificationFeedbackGenerator.swift */,
 				291CE4B5231E828D0001A243 /* UIColor-Habitica.swift */,
+				29A06E1C23ED4125003BADE9 /* InAppRewardProtocol-Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -3547,6 +3550,7 @@
 				292F9662206E363000804151 /* GroupChatViewDataSource.swift in Sources */,
 				C897F63F218CE054002907C2 /* Storyboard Scenes.swift in Sources */,
 				295BC6E4226F0F9500DDDF1A /* NotificationsTableViewController.swift in Sources */,
+				29A06E1D23ED4125003BADE9 /* InAppRewardProtocol-Extensions.swift in Sources */,
 				D984D58B1E4A1F59006E84F8 /* SubscriptionViewController.swift in Sources */,
 				299FB29D2084A67D00422522 /* StableOverviewViewController.swift in Sources */,
 				290B6287207CD6B5007287C4 /* GroupDetailViewController.swift in Sources */,
@@ -4140,7 +4144,7 @@
 				INFOPLIST_FILE = "Habitica IntentsUI/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 2.6.2;
+				MARKETING_VERSION = 2.7;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-IntentsUI";
@@ -4175,7 +4179,7 @@
 				INFOPLIST_FILE = "Habitica IntentsUI/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 2.6.2;
+				MARKETING_VERSION = 2.7;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-IntentsUI";
@@ -4209,7 +4213,7 @@
 				INFOPLIST_FILE = "Habitica Intents/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 2.6.2;
+				MARKETING_VERSION = 2.7;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-Intents";
@@ -4246,7 +4250,7 @@
 				INFOPLIST_FILE = "Habitica Intents/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 2.6.2;
+				MARKETING_VERSION = 2.7;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-Intents";
@@ -4499,7 +4503,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 441;
+				CURRENT_PROJECT_VERSION = 442;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -4554,7 +4558,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 441;
+				CURRENT_PROJECT_VERSION = 442;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -4628,7 +4632,7 @@
 				INFOPLIST_FILE = "HabitRPG/Habitica-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 2.6.2;
+				MARKETING_VERSION = 2.7;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-framework",
@@ -4721,7 +4725,7 @@
 				INFOPLIST_FILE = "HabitRPG/Habitica-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 2.6.2;
+				MARKETING_VERSION = 2.7;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-framework",

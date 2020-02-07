@@ -19,6 +19,7 @@ class InAppRewardCell: UICollectionViewCell {
     @IBOutlet weak var purchaseConfirmationView: UIImageView!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var currencyBackgroundView: UIView!
+    @IBOutlet weak var unlockLabel: UILabel!
     
     private var itemName = ""
     
@@ -110,6 +111,15 @@ class InAppRewardCell: UICollectionViewCell {
         }
         availableUntil = reward.availableUntil
         applyAccessibility()
+        
+        if let lockedReason = reward.shortLockedReason, reward.locked {
+            unlockLabel.text = lockedReason
+            unlockLabel.isHidden = false
+            currencyView.isHidden = true
+        } else {
+            unlockLabel.isHidden = true
+            currencyView.isHidden = false
+        }
         
         let theme = ThemeService.shared.theme
         backgroundColor = theme.contentBackgroundColor

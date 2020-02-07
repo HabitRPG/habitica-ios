@@ -461,6 +461,12 @@
 "quests.reward_experience" = "%d Experience Points";
 "quests.reward_gold" = "%d Gold";
 "quests.rage_attack" = "Rage attack: %@";
+"quests.unlock_invite" = "Unlock by inviting friends to your party";
+"quests.unlock_invite_short" = "Invite Friends";
+"quests.unlock_level" = "Unlock by reaching level %d";
+"quests.unlock_level_short" = "Level %d";
+"quests.unlock_previous" = "Unlock by finishing Quest %d";
+"quests.unlock_previous_short" = "Finish Quest %d";
 "groups.leader_challenges" = "Only leader can create Challenges";
 "groups.assign_new_leader" = "Assign new Leader";
 "groups.guild_invitation_no_invitername" = "Someone invited you to join Guild: %@";
