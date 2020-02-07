@@ -16,6 +16,7 @@ import Crashlytics
 class UserRepository: BaseRepository<UserLocalRepository> {
     
     var lastPushDeviceSync: Date?
+    var lastClassSelection: Date?
     var taskRepository = TaskRepository()
     
     func retrieveUser(withTasks: Bool = true) -> Signal<UserProtocol?, Never> {
@@ -299,10 +300,18 @@ class UserRepository: BaseRepository<UserLocalRepository> {
     }
     
     func disableClassSystem() -> Signal<UserProtocol?, Never> {
+        if (lastClassSelection?.timeIntervalSinceNow ?? -31) > -30 {
+            return Signal.empty
+        }
+        lastClassSelection = Date()
         return DisableClassesCall().objectSignal.on(value: handleUserUpdate())
     }
     
     func selectClass(_ habiticaClass: HabiticaClass? = nil) -> Signal<UserProtocol?, Never> {
+        if (lastClassSelection?.timeIntervalSinceNow ?? -31) > -30 {
+            return Signal.empty
+        }
+        lastClassSelection = Date()
         return SelectClassCall(class: habiticaClass).objectSignal.on(value: handleUserUpdate())
     }
     
