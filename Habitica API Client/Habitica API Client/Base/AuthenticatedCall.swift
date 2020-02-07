@@ -28,16 +28,16 @@ public class AuthenticatedCall: JsonNetworkCall {
         .map(JsonDataHandler.serialize).map({ json in
             return json as? Dictionary<String, Any>
         }).skipNil()
-
+    
     public static var errorHandler: NetworkErrorHandler?
     public static var defaultConfiguration = HabiticaServerConfig.current
     public static var notificationListener: (([NotificationProtocol]?) -> Void)?
     public static var indicatorController: NetworkIndicatorController?
-
+    
     private var debugHandler = DebugOutputHandler()
     var customErrorHandler: NetworkErrorHandler?
     var needsAuthentication = true
-    
+    let queue = DispatchQueue(label: "work", qos: .userInteractive);
     private init(configuration: ServerConfigurationProtocol? = nil,
                  httpMethod: String,
                  httpHeaders: [String: String]?,
@@ -72,33 +72,38 @@ public class AuthenticatedCall: JsonNetworkCall {
     }
     
     public static override func jsonHeaders() -> [String: String] {
-        var headers = super.jsonHeaders()
-        if let apiKey = NetworkAuthenticationManager.shared.currentUserKey, let userId = NetworkAuthenticationManager.shared.currentUserId {
-            headers[AuthenticatedCall.apiKeyHeader] = apiKey
-            headers[AuthenticatedCall.apiUserIdHeader] = userId
-        }
-        headers["Authorization"] = "Basic \(HabiticaKeys().stagingKey)"
-        headers[AuthenticatedCall.clientHeader] = "habitica-ios"
-        return headers
+            var headers = super.jsonHeaders()
+            if let apiKey = NetworkAuthenticationManager.shared.currentUserKey, let userId = NetworkAuthenticationManager.shared.currentUserId {
+                headers[AuthenticatedCall.apiKeyHeader] = apiKey
+                headers[AuthenticatedCall.apiUserIdHeader] = userId
+            }
+            headers["Authorization"] = "Basic \(HabiticaKeys().stagingKey)"
+            headers[AuthenticatedCall.clientHeader] = "habitica-ios"
+            return headers
+        
     }
     
     public override func fire() {
-        if needsAuthentication {
-            if NetworkAuthenticationManager.shared.currentUserId == nil {
-                print("User ID is not set in authentication")
-                return
+        queue.async {
+            if self.needsAuthentication {
+                if NetworkAuthenticationManager.shared.currentUserId == nil {
+                    print("User ID is not set in authentication")
+                    return
+                }
             }
+            self.debugHandler.httpMethod = self.httpMethod
+            self.debugHandler.url = self.urlString
+            self.debugHandler.observe(call: self)
+            self.debugHandler.startNetworkCall()
+            AuthenticatedCall.indicatorController?.beginNetworking()
+            super.fire()
         }
-        debugHandler.httpMethod = httpMethod
-        debugHandler.url = urlString
-        debugHandler.observe(call: self)
-        debugHandler.startNetworkCall()
-        AuthenticatedCall.indicatorController?.beginNetworking()
-        super.fire()
     }
     
     public override func endCall() {
-        AuthenticatedCall.indicatorController?.endNetworking()
+        queue.async {
+            AuthenticatedCall.indicatorController?.endNetworking()
+        }
     }
     
     func setupErrorHandler() {
