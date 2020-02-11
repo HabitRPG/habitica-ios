@@ -40,6 +40,9 @@ public class TaskTextInputCell: Cell<String>, CellType, UITextViewDelegate {
             bottomSpacing = taskRow.bottomSpacing
             separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
         }
+        
+        shouldGroupAccessibilityChildren = true
+        accessibilityLabel = textField.accessibilityLabel
     }
     
     func updateTintColor(_ newTint: UIColor) {

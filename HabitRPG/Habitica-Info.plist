@@ -306,7 +306,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>442</string>
+	<string>443</string>
 	<key>CustomDomain</key>
 	<string>${CUSTOM_DOMAIN}</string>
 	<key>DisableSSL</key>

@@ -43,6 +43,7 @@ public class TaskDifficultyCell: Cell<Float>, CellType {
         if #available(iOS 10, *) {
             UISelectionFeedbackGenerator.oneShotSelectionChanged()
         }
+        accessibilityValue = L10n.Tasks.Form.Accessibility.taskDifficulty(L10n.Tasks.Form.trivial)
     }
     
     @objc
@@ -52,6 +53,7 @@ public class TaskDifficultyCell: Cell<Float>, CellType {
         if #available(iOS 10, *) {
             UISelectionFeedbackGenerator.oneShotSelectionChanged()
         }
+        accessibilityValue = L10n.Tasks.Form.Accessibility.taskDifficulty(L10n.Tasks.Form.easy)
     }
     
     @objc
@@ -61,6 +63,7 @@ public class TaskDifficultyCell: Cell<Float>, CellType {
         if #available(iOS 10, *) {
             UISelectionFeedbackGenerator.oneShotSelectionChanged()
         }
+        accessibilityValue = L10n.Tasks.Form.Accessibility.taskDifficulty(L10n.Tasks.Form.medium)
     }
     
     @objc
@@ -70,6 +73,7 @@ public class TaskDifficultyCell: Cell<Float>, CellType {
         if #available(iOS 10, *) {
             UISelectionFeedbackGenerator.oneShotSelectionChanged()
         }
+        accessibilityValue = L10n.Tasks.Form.Accessibility.taskDifficulty(L10n.Tasks.Form.hard)
     }
 
     public override func update() {
@@ -121,33 +125,46 @@ public class TaskDifficultyCell: Cell<Float>, CellType {
         if let taskRow = row as? TaskDifficultyRow {
             shouldGroupAccessibilityChildren = true
             isAccessibilityElement = true
-            
-            accessibilityCustomActions = [
-            UIAccessibilityCustomAction(name: L10n.Tasks.Form.Accessibility.setTaskDifficulty(L10n.Tasks.Form.trivial),
-                                                                           target: self,
-                                                                           selector: #selector(trivialTapped)),
-            UIAccessibilityCustomAction(name: L10n.Tasks.Form.Accessibility.setTaskDifficulty(L10n.Tasks.Form.easy),
-                                                                           target: self,
-                                                                           selector: #selector(easyTapped)),
-            UIAccessibilityCustomAction(name: L10n.Tasks.Form.Accessibility.setTaskDifficulty(L10n.Tasks.Form.medium),
-                                                                           target: self,
-                                                                           selector: #selector(mediumTapped)),
-            UIAccessibilityCustomAction(name: L10n.Tasks.Form.Accessibility.setTaskDifficulty(L10n.Tasks.Form.hard),
-                                                                           target: self,
-                                                                           selector: #selector(hardTapped))
-            ]
+            accessibilityTraits = .adjustable
             if taskRow.value == 0.1 {
                 accessibilityLabel = L10n.Tasks.Form.Accessibility.taskDifficulty(L10n.Tasks.Form.trivial)
-                accessibilityCustomActions?.remove(at: 0)
             } else if taskRow.value == 1.0 {
                 accessibilityLabel = L10n.Tasks.Form.Accessibility.taskDifficulty(L10n.Tasks.Form.easy)
-                accessibilityCustomActions?.remove(at: 1)
             } else if taskRow.value == 1.5 {
                 accessibilityLabel = L10n.Tasks.Form.Accessibility.taskDifficulty(L10n.Tasks.Form.medium)
-                accessibilityCustomActions?.remove(at: 2)
             } else if taskRow.value == 2.0 {
                 accessibilityLabel = L10n.Tasks.Form.Accessibility.taskDifficulty(L10n.Tasks.Form.hard)
-                accessibilityCustomActions?.remove(at: 3)
+            }
+        }
+    }
+    
+    public override func accessibilityIncrement() {
+        super.accessibilityIncrement()
+        if let taskRow = row as? TaskDifficultyRow {
+            if taskRow.value == 0.1 {
+                easyTapped()
+            } else if taskRow.value == 1.0 {
+                mediumTapped()
+            } else if taskRow.value == 1.5 {
+                hardTapped()
+            } else if taskRow.value == 2.0 {
+                trivialTapped()
+            }
+        }
+    }
+    
+    public override func accessibilityDecrement() {
+        super.accessibilityIncrement()
+        if let taskRow = row as? TaskDifficultyRow {
+            if taskRow.value == 0.1 {
+                hardTapped()
+                
+            } else if taskRow.value == 1.0 {
+                trivialTapped()
+            } else if taskRow.value == 1.5 {
+                easyTapped()
+            } else if taskRow.value == 2.0 {
+                mediumTapped()
             }
         }
     }

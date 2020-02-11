@@ -86,6 +86,10 @@ class MountDetailDataSource: BaseReactiveCollectionViewDataSource<MountStableIte
             let ownedCount = visibleSections[indexPath.section].items.filter { $0.owned }.count
             let totalCount = visibleSections[indexPath.section].items.count
             countLabel?.text = "\(ownedCount)/\(totalCount)"
+            
+            view.shouldGroupAccessibilityChildren = true
+            view.isAccessibilityElement = true
+            view.accessibilityLabel = visibleSections[indexPath.section].title ?? "" + " " + L10n.Accessibility.xofx(ownedCount, totalCount)
         }
         
         return view

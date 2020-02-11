@@ -716,6 +716,10 @@ public enum L10n {
     }
     /// Not Due
     public static var notDue: String { return L10n.tr("Mainstrings", "accessibility.not_due") }
+    /// Not owned
+    public static var notOwned: String { return L10n.tr("Mainstrings", "accessibility.notOwned") }
+    /// Owned
+    public static var owned: String { return L10n.tr("Mainstrings", "accessibility.owned") }
     /// Reply to Message
     public static var replyToMessage: String { return L10n.tr("Mainstrings", "accessibility.reply_to_message") }
     /// Report Message
@@ -726,9 +730,23 @@ public enum L10n {
     public static var scoreHabitUp: String { return L10n.tr("Mainstrings", "accessibility.score_habit_up") }
     /// Double tap to hide boss art
     public static var tapHideBossArt: String { return L10n.tr("Mainstrings", "accessibility.tap_hide_boss_art") }
+    /// Unknown
+    public static var unknown: String { return L10n.tr("Mainstrings", "accessibility.unknown") }
+    /// Unknown Mount
+    public static var unknownMount: String { return L10n.tr("Mainstrings", "accessibility.unknown_mount") }
+    /// Unknown Pet
+    public static var unknownPet: String { return L10n.tr("Mainstrings", "accessibility.unknown_pet") }
+    /// View %@
+    public static func viewX(_ p1: String) -> String {
+      return L10n.tr("Mainstrings", "accessibility.viewX", p1)
+    }
     /// %@, World Boss, pending damage: %@
     public static func worldBossPendingDamage(_ p1: String, _ p2: String) -> String {
       return L10n.tr("Mainstrings", "accessibility.world_boss_pending_damage", p1, p2)
+    }
+    /// %d of %d
+    public static func xofx(_ p1: Int, _ p2: Int) -> String {
+      return L10n.tr("Mainstrings", "accessibility.xofx", p1, p2)
     }
   }
 

@@ -48,6 +48,9 @@ class EquipmentOverviewItemView: UIView {
             updateConstraints()
             setNeedsLayout()
             layoutIfNeeded()
+            
+            shouldGroupAccessibilityChildren = true
+            isAccessibilityElement = true
         }
     }
     
@@ -63,6 +66,8 @@ class EquipmentOverviewItemView: UIView {
     func setup(title: String, itemTapped: @escaping (() -> Void)) {
         label.text = title
         self.itemTapped = itemTapped
+        
+        accessibilityLabel = L10n.Accessibility.viewX(title)
     }
     
     func configure(_ gearKey: String?, isTwoHanded: Bool = false) {

@@ -20,10 +20,12 @@ class PetDetailCell: UICollectionViewCell {
         if let key = petItem.pet?.key {
             if petItem.trained != 0 {
                 imageView.setImagewith(name: "Pet-\(key)")
+                accessibilityLabel = petItem.pet?.text
             } else {
                 ImageManager.getImage(name: "Pet-\(key)") {[weak self] (image, _) in
                     self?.imageView.image = image?.withRenderingMode(.alwaysTemplate)
                 }
+                accessibilityLabel = L10n.Accessibility.unknownPet
             }
         }
         if petItem.trained == -1 {
@@ -39,5 +41,8 @@ class PetDetailCell: UICollectionViewCell {
         } else {
             progressView.isHidden = true
         }
+        
+        shouldGroupAccessibilityChildren = true
+        isAccessibilityElement = true
     }
 }

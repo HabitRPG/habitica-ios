@@ -112,6 +112,10 @@ class StableOverviewDataSource<ANIMAL: AnimalProtocol>: BaseReactiveCollectionVi
             var totalCount = 0
             visibleSections[indexPath.section].items.forEach { totalCount += $0.totalNumber }
             countLabel?.text = "\(ownedCount)/\(totalCount)"
+            
+            view.shouldGroupAccessibilityChildren = true
+            view.isAccessibilityElement = true
+            view.accessibilityLabel = visibleSections[indexPath.section].title ?? "" + " " + L10n.Accessibility.xofx(ownedCount, totalCount)
         }
         
         return view

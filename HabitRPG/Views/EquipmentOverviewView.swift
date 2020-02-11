@@ -40,6 +40,7 @@ class EquipmentOverviewView: UIView {
         }
         set {
             switchLabelView.text = newValue
+            switchView.accessibilityLabel = newValue
         }
     }
     

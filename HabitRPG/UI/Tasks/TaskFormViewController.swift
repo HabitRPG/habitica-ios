@@ -656,6 +656,10 @@ class TaskFormViewController: FormViewController, Themeable {
         task.reminders.forEach { (reminder) in
             let row = TimeRow(reminder.id) { row in
                 row.value = reminder.time
+                row.cellUpdate { (cell, row) in
+                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    cell.detailTextLabel?.textColor = ThemeService.shared.theme.secondaryTextColor
+                }
             }
             let lastIndex = (reminderSection?.count ?? 1) - 1
             reminderSection?.insert(row, at: lastIndex)

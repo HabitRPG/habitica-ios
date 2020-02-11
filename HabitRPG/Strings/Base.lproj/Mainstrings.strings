@@ -724,6 +724,13 @@
 "accessibility.not_completed" = "Not Completed";
 "accessibility.collapse_checklist" = "Collapse Checklist";
 "accessibility.expand_checklist" = "Expand Checklist";
+"accessibility.xofx" = "%d of %d";
+"accessibility.unknown_pet" = "Unknown Pet";
+"accessibility.unknown_mount" = "Unknown Mount";
+"accessibility.unknown" = "Unknown";
+"accessibility.owned" = "Owned";
+"accessibility.notOwned" = "Not owned";
+"accessibility.viewX" = "View %@";
 "collect" = "Collect";
 "defeat" = "Defeat";
 "mystery_sets" = "Mystery Sets";

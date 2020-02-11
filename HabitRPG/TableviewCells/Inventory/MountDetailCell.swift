@@ -19,11 +19,16 @@ class MountDetailCell: UICollectionViewCell {
         if let key = mountItem.mount?.key {
             if mountItem.owned {
                 imageView.setImagewith(name: "Mount_Icon_\(key)")
+                accessibilityLabel = mountItem.mount?.text
             } else {
                 ImageManager.getImage(name: "Mount_Icon_\(key)") {[weak self] (image, _) in
                     self?.imageView.image = image?.withRenderingMode(.alwaysTemplate)
                 }
+                accessibilityLabel = L10n.Accessibility.unknownMount
             }
         }
+        
+        shouldGroupAccessibilityChildren = true
+        isAccessibilityElement = true
     }
 }
