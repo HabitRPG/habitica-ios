@@ -440,6 +440,7 @@
 "party.transfer_ownership_title" = "Transfer Leadership?";
 "party.transfer_ownership_description" = "This will make %@ the new Party leader";
 "party.remove_member_title" = "Are you sure you want to remove %@ from the party?";
+"party.quest_not_participating" = "You are not participating";
 "transfer_ownership" = "Transfer Leadership";
 "transfer" = "Transfer";
 "remove" = "Remove";
