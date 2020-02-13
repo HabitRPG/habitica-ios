@@ -88,7 +88,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
         self.delegate = delegate
         super.init()
         sections.append(ItemSection<InAppRewardProtocol>())
-        sections[0].showIfEmpty = true
+        sections[0].showIfEmpty = hasGearSection()
         
         disposable.inner.add(inventoryRepository.getShop(identifier: identifier).combineLatest(with: userRepository.getUser()).on(value: {[weak self] (shop, user) in
             let sectionCount = self?.sections.count ?? 0
@@ -200,7 +200,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
     // MARK: Collection view data source and delegate methods
 
     func titleFor(section: Int) -> String? {
-        return sections[section].title
+        return visibleSections[section].title
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
