@@ -26,10 +26,10 @@ class InAppRewardCell: UICollectionViewCell {
     var itemsLeft = 0 {
         didSet {
             if itemsLeft > 0 {
-                infoImageView.image = HabiticaIcons.imageOfItemIndicatorNumber()
-                infoImageView.isHidden = false
                 infoLabel.isHidden = false
                 infoLabel.text = String(describing: itemsLeft)
+                infoLabel.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
+                infoLabel.textColor = ThemeService.shared.theme.ternaryTextColor
             } else {
                 infoImageView.isHidden = true
                 infoLabel.isHidden = true
@@ -125,6 +125,7 @@ class InAppRewardCell: UICollectionViewCell {
         backgroundColor = theme.contentBackgroundColor
         containerView.backgroundColor = theme.windowBackgroundColor
         currencyBackgroundView.backgroundColor = theme.offsetBackgroundColor
+        unlockLabel.textColor = theme.secondaryTextColor
     }
     
     func wasRecentlyPurchased(_ lastPurchase: Date) -> Bool {

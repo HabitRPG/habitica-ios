@@ -130,7 +130,11 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         stackView.axis = .vertical
         stackView.spacing = 16
         let textView = UITextView()
-        textView.text = L10n.Settings.deleteAccountDescription
+        if user?.authentication?.local?.email != nil {
+            textView.text = L10n.Settings.deleteAccountDescription
+        } else {
+            textView.text = L10n.Settings.deleteAccountDescriptionSocial
+        }
         textView.font = UIFont.preferredFont(forTextStyle: .subheadline)
         textView.textColor = ThemeService.shared.theme.secondaryTextColor
         textView.isEditable = false
@@ -139,11 +143,13 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         textView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
         stackView.addArrangedSubview(textView)
         let textField = UITextField()
-        textField.placeholder = L10n.password
+        if user?.authentication?.local?.email != nil {
+            textField.attributedPlaceholder = NSAttributedString(string: L10n.password, attributes: [.foregroundColor: ThemeService.shared.theme.dimmedTextColor])
+        }
         textField.isSecureTextEntry = true
         textField.returnKeyType = .done
         textField.borderStyle = .roundedRect
-        textField.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+        textField.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
         textField.textColor = ThemeService.shared.theme.primaryTextColor
         stackView.addArrangedSubview(textField)
         alertController.contentView = stackView

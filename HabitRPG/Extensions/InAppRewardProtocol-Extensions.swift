@@ -17,9 +17,9 @@ extension InAppRewardProtocol {
                 if reason == "party invite" {
                     return L10n.Quests.unlockInvite
                 }
-            } else if let previous = previous {
-                let number = previous.last?.wholeNumberValue
-                return L10n.Quests.unlockPrevious(number ?? 1)
+            } else if previous != nil {
+                let number = key?.last?.wholeNumberValue
+                return L10n.Quests.unlockPrevious((number ?? 1)-1)
             } else if level > 0 {
                 return L10n.Quests.unlockLevel(level)
             }
@@ -33,9 +33,9 @@ extension InAppRewardProtocol {
                 if reason == "party invite" {
                     return L10n.Quests.unlockInviteShort
                 }
-            } else if let previous = previous {
-                let number = previous.last?.wholeNumberValue
-                return L10n.Quests.unlockPreviousShort(number ?? 1)
+            } else if previous != nil {
+                let number = key?.last?.wholeNumberValue
+                return L10n.Quests.unlockPreviousShort((number ?? 1)-1)
             } else if level > 0 {
                return L10n.Quests.unlockLevelShort(level)
            }

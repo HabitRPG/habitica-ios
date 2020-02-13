@@ -82,7 +82,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
     }
     
     private let shopIdentifier: String
-
+    
     init(identifier: String, delegate: ShopCollectionViewDataSourceDelegate) {
         self.shopIdentifier = identifier
         self.delegate = delegate
@@ -112,6 +112,17 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
                 })
             }).on(value: {[weak self]rewards in
                 self?.pinnedItems = rewards
+            }).start())
+        
+        disposable.inner.add(inventoryRepository.getOwnedItems().map({ (items, _) -> [String: OwnedItemProtocol] in
+            var ownedItems: [String: OwnedItemProtocol] = [:]
+            for item in items where item.key != nil {
+                ownedItems[item.key ?? ""] = item
+            }
+            return ownedItems
+        }).on(value: {[weak self] items in
+            self?.ownedItems = items
+            self?.collectionView?.reloadData()
             }).start())
     }
     

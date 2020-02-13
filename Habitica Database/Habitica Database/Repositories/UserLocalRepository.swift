@@ -233,7 +233,7 @@ public class UserLocalRepository: BaseLocalRepository {
     public func updateUser(id: String, price: Int, buyResponse: BuyResponseProtocol) {
         let realm = getRealm()
         if let existingUser = realm?.object(ofType: RealmUser.self, forPrimaryKey: id) {
-            updateCall { _ in
+            updateCall { realm in
                 if let stats = existingUser.stats {
                     stats.health = buyResponse.health ?? stats.health
                     stats.experience = buyResponse.experience ?? stats.experience
@@ -247,17 +247,21 @@ public class UserLocalRepository: BaseLocalRepository {
                     stats.perception = buyResponse.perception ?? stats.perception
                     if let newBuffs = buyResponse.buffs {
                         let realmBuffs = RealmBuff(id: id, buff: newBuffs)
-                        realm?.add(realmBuffs, update: .modified)
+                        realm.add(realmBuffs, update: .modified)
                         stats.buffs = realmBuffs
                     }
                 }
                 if let outfit = buyResponse.items?.gear?.equipped {
                     let realmOutfit = RealmOutfit(id: id, type: "equipped", outfit: outfit)
-                    realm?.add(realmOutfit, update: .modified)
+                    realm.add(realmOutfit, update: .modified)
                     existingUser.items?.gear?.equipped = realmOutfit
                 }
                 if let ownedGear = buyResponse.items?.gear?.owned {
-                    existingUser.items?.gear?.owned = ownedGear
+                    existingUser.items?.gear?.owned = ownedGear.map({ ownedGear in
+                        let realmGear = RealmOwnedGear(userID: existingUser.id, gearProtocol: ownedGear)
+                        realm.add(realmGear, update: .all)
+                        return realmGear
+                    })
                 }
             }
         }

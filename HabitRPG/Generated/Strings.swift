@@ -1188,6 +1188,8 @@ public enum L10n {
     public static var partyChallenges: String { return L10n.tr("Mainstrings", "party.party_challenges") }
     /// Party Description
     public static var partyDescription: String { return L10n.tr("Mainstrings", "party.party_description") }
+    /// You are not participating
+    public static var questNotParticipating: String { return L10n.tr("Mainstrings", "party.quest_not_participating") }
     /// %d/%d Members responded
     public static func questNumberResponded(_ p1: Int, _ p2: Int) -> String {
       return L10n.tr("Mainstrings", "party.quest_number_responded", p1, p2)
@@ -1316,8 +1318,10 @@ public enum L10n {
     public static var dayStart: String { return L10n.tr("Mainstrings", "settings.day_start") }
     /// Delete Account
     public static var deleteAccount: String { return L10n.tr("Mainstrings", "settings.delete_account") }
-    /// Are you sure? This will delete your account forever, and it can never be restored! You will need to register a new account to use Habitica again. Banked or spent Gems will not be refunded. If you're absolutely certain, type your password into the text box below.
+    /// This will delete your account forever, and it can never be restored! Banked or spent Gems will not be refunded. If you’re absolutely certain, type your password into the text box below.
     public static var deleteAccountDescription: String { return L10n.tr("Mainstrings", "settings.delete_account_description") }
+    /// This will delete your account forever, and it can never be restored! Banked or spent Gems will not be refunded. If you’re absolutely certain, type DELETE into the text box below.
+    public static var deleteAccountDescriptionSocial: String { return L10n.tr("Mainstrings", "settings.delete_account_description_social") }
     /// Disable all Emails
     public static var disableAllEmails: String { return L10n.tr("Mainstrings", "settings.disable_all_emails") }
     /// Disable all Push Notifications

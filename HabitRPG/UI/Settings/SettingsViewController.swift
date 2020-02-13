@@ -624,6 +624,15 @@ class SettingsViewController: FormViewController, Themeable {
                 row.disabled = Condition.function([SettingsTags.disableAllNotifications], { (form) -> Bool in
                     return (form.rowBy(tag: SettingsTags.disableAllNotifications) as? SwitchRow)?.value == true
                 })
+                row.cellUpdate { (cell, _) in
+                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    cell.tintColor = ThemeService.shared.theme.tintColor
+                }
+                row.onPresent({ (_, to) in
+                    to.selectableRowCellUpdate = { cell, row in
+                        cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    }
+                })
                 row.onChange({[weak self] (row) in
                     if self?.isSettingUserData == true { return }
                     var updateDict = [String: Encodable]()
@@ -663,6 +672,15 @@ class SettingsViewController: FormViewController, Themeable {
                 L10n.Settings.EmailNotifications.bannedGroup]
                 row.disabled = Condition.function([SettingsTags.disableAllEmails], { (form) -> Bool in
                     return (form.rowBy(tag: SettingsTags.disableAllEmails) as? SwitchRow)?.value == true
+                })
+                row.cellUpdate { (cell, _) in
+                    cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    cell.tintColor = ThemeService.shared.theme.tintColor
+                }
+                row.onPresent({ (_, to) in
+                    to.selectableRowCellUpdate = { cell, row in
+                        cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
+                    }
                 })
                 row.onChange({[weak self] (row) in
                     if self?.isSettingUserData == true { return }

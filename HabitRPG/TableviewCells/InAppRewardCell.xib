@@ -22,9 +22,9 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="827-G9-ba1">
                                 <rect key="frame" x="0.0" y="76" width="78" height="32"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VOi-Qt-8Fn">
-                                        <rect key="frame" x="4" y="4" width="70" height="24"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VOi-Qt-8Fn">
+                                        <rect key="frame" x="4" y="2" width="70" height="28"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <color key="textColor" red="0.3075395823" green="0.2903449535" blue="0.34151983260000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -42,14 +42,14 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.95675891637802124" green="0.95692259073257446" blue="0.95674854516983032" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="VOi-Qt-8Fn" firstAttribute="top" secondItem="827-G9-ba1" secondAttribute="top" constant="4" id="1jn-Yu-AjF"/>
+                                    <constraint firstItem="VOi-Qt-8Fn" firstAttribute="top" secondItem="827-G9-ba1" secondAttribute="top" constant="2" id="1jn-Yu-AjF"/>
                                     <constraint firstAttribute="height" constant="32" id="3Cu-3k-KMy"/>
                                     <constraint firstItem="Ky0-YM-H79" firstAttribute="top" secondItem="827-G9-ba1" secondAttribute="top" id="65k-KO-icN"/>
                                     <constraint firstAttribute="trailing" secondItem="Ky0-YM-H79" secondAttribute="trailing" id="BYf-og-21L"/>
                                     <constraint firstItem="e3y-4x-dBE" firstAttribute="centerX" secondItem="827-G9-ba1" secondAttribute="centerX" id="E40-5h-PyA"/>
                                     <constraint firstAttribute="bottom" secondItem="Ky0-YM-H79" secondAttribute="bottom" id="PTE-iI-5la"/>
                                     <constraint firstItem="e3y-4x-dBE" firstAttribute="top" secondItem="827-G9-ba1" secondAttribute="top" id="R60-Ec-Fdg"/>
-                                    <constraint firstAttribute="bottom" secondItem="VOi-Qt-8Fn" secondAttribute="bottom" constant="4" id="dbh-Hf-Ug9"/>
+                                    <constraint firstAttribute="bottom" secondItem="VOi-Qt-8Fn" secondAttribute="bottom" constant="2" id="dbh-Hf-Ug9"/>
                                     <constraint firstItem="VOi-Qt-8Fn" firstAttribute="leading" secondItem="827-G9-ba1" secondAttribute="leading" constant="4" id="idS-Sg-dgf"/>
                                     <constraint firstAttribute="trailing" secondItem="VOi-Qt-8Fn" secondAttribute="trailing" constant="4" id="kZC-rn-iqP"/>
                                     <constraint firstAttribute="bottom" secondItem="e3y-4x-dBE" secondAttribute="bottom" id="lg5-YW-TON"/>
@@ -101,6 +101,11 @@
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="14"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </label>
                 </subviews>
             </view>

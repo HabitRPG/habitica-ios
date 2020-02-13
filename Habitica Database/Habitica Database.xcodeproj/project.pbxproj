@@ -307,10 +307,12 @@
 		29323E562052F8B000AC6D6F /* User */ = {
 			isa = PBXGroup;
 			children = (
+				2931150922D7473600E4A9E3 /* RealmAchievement.swift */,
 				290B626A207B9A60007287C4 /* RealmAuthentication.swift */,
 				290B6266207B990D007287C4 /* RealmAuthenticationTimestamps.swift */,
 				2902797A2058107E006DACB9 /* RealmBuff.swift */,
 				29323E4420521ABC00AC6D6F /* RealmContributor.swift */,
+				29A06E1423EB3381003BADE9 /* RealmEmailNotifications.swift */,
 				29323E3C205213EF00AC6D6F /* RealmFlags.swift */,
 				29144891208A1BD000F3A6B5 /* RealmHair.swift */,
 				290B62552073D99E007287C4 /* RealmInbox.swift */,
@@ -325,6 +327,7 @@
 				29323E3E2052142600AC6D6F /* RealmPreferences.swift */,
 				29323E402052145900AC6D6F /* RealmProfile.swift */,
 				2974BDA2208E176700EC1A25 /* RealmPurchased.swift */,
+				29990DB720E51DFF001ADD8B /* RealmPushDevice.swift */,
 				290B62572073DA41007287C4 /* RealmPushNotifications.swift */,
 				29323E322051FA8700AC6D6F /* RealmStats.swift */,
 				2974BDA8208E1AFB00EC1A25 /* RealmSubscriptionConsecutive.swift */,
@@ -332,13 +335,10 @@
 				292DEE7F204E3A000086D5F7 /* RealmTag.swift */,
 				295D430320973A3F00948E7E /* RealmTutorialStep.swift */,
 				29323E302051FA8000AC6D6F /* RealmUser.swift */,
-				29990DB720E51DFF001ADD8B /* RealmPushDevice.swift */,
 				29323E5B2052F8E900AC6D6F /* RealmUserGear.swift */,
 				29323E572052F8BC00AC6D6F /* RealmUserItems.swift */,
-				291E95B2209887BF006EE585 /* RealmUserParty.swift */,
 				29DBFF0C20D15B0500DF9CF2 /* RealmUserNewMessages.swift */,
-				2931150922D7473600E4A9E3 /* RealmAchievement.swift */,
-				29A06E1423EB3381003BADE9 /* RealmEmailNotifications.swift */,
+				291E95B2209887BF006EE585 /* RealmUserParty.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
