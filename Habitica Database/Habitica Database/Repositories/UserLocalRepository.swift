@@ -250,6 +250,10 @@ public class UserLocalRepository: BaseLocalRepository {
                         realm.add(realmBuffs, update: .modified)
                         stats.buffs = realmBuffs
                     }
+                    
+                    if buyResponse.armoire?.type == "experience" && buyResponse.experience == nil {
+                        stats.experience = stats.experience + (buyResponse.armoire?.value ?? 0)
+                    }
                 }
                 if let outfit = buyResponse.items?.gear?.equipped {
                     let realmOutfit = RealmOutfit(id: id, type: "equipped", outfit: outfit)
