@@ -462,6 +462,8 @@ public enum L10n {
   public static var share: String { return L10n.tr("Mainstrings", "share") }
   /// Shirt
   public static var shirt: String { return L10n.tr("Mainstrings", "shirt") }
+  /// Show Details
+  public static var showDetails: String { return L10n.tr("Mainstrings", "show_details") }
   /// Size
   public static var size: String { return L10n.tr("Mainstrings", "size") }
   /// Skip

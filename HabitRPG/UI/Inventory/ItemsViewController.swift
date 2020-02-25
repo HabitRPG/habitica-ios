@@ -98,6 +98,21 @@ class ItemsViewController: BaseTableViewController {
                 self?.isHatching = true
             }))
         } else if item.itemType == ItemType.quests {
+            alertController.addAction(UIAlertAction(title: L10n.showDetails, style: .default, handler: {[weak self] (_) in
+                if let quest = item as? QuestProtocol {
+                    let alertController = HabiticaAlertController(title: quest.text)
+                    let detailView = QuestDetailView(frame: CGRect.zero)
+                    detailView.configure(quest: quest)
+                    alertController.contentView = detailView
+                    alertController.addCloseAction()
+                    alertController.addAction(title: L10n.inviteParty, style: .default, isMainAction: true) {[weak self] _ in
+                        self?.inventoryRepository.inviteToQuest(quest: quest).observeCompleted {
+                            self?.dismissIfNeeded()
+                        }
+                    }
+                    alertController.show()
+                }
+            }))
             alertController.addAction(UIAlertAction(title: L10n.inviteParty, style: .default, handler: {[weak self] (_) in
                 if let quest = item as? QuestProtocol {
                     self?.inventoryRepository.inviteToQuest(quest: quest).observeCompleted {
