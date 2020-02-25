@@ -12,8 +12,8 @@ import ReactiveSwift
 
 public class RetrieveMemberCall: ResponseObjectCall<MemberProtocol, APIMember> {
     public init(userID: String, stubHolder: StubHolderProtocol? = StubHolder(responseCode: 200, stubFileName: "member.json")) {
-        if let uuid = UUID(uuidString: userID) {
-            super.init(httpMethod: .GET, endpoint: "members/\(uuid)", stubHolder: stubHolder)
+        if UUID(uuidString: userID) != nil {
+            super.init(httpMethod: .GET, endpoint: "members/\(userID)", stubHolder: stubHolder)
         } else {
             super.init(httpMethod: .GET, endpoint: "members/username/\(userID)", stubHolder: stubHolder)
         }

@@ -41,6 +41,7 @@ class HabitControlsCell: Cell<HabitControlsValue>, CellType {
 
     @objc
     private func plusTapped() {
+        if row.isDisabled { return }
         row.value?.positive = !(row.value?.positive ?? false)
         row.updateCell()
         if #available(iOS 10, *) {
@@ -50,6 +51,7 @@ class HabitControlsCell: Cell<HabitControlsValue>, CellType {
     
     @objc
     private func minusTapped() {
+        if row.isDisabled { return }
         row.value?.negative = !(row.value?.negative ?? false)
         row.updateCell()
         if #available(iOS 10, *) {

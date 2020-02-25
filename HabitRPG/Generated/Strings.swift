@@ -146,6 +146,8 @@ public enum L10n {
   public static var earnedAchievementShare: String { return L10n.tr("Mainstrings", "earned_achievement_share") }
   /// Edit
   public static var edit: String { return L10n.tr("Mainstrings", "edit") }
+  /// Challenge tasks only offer limited editing.
+  public static var editChallengeTasks: String { return L10n.tr("Mainstrings", "edit_challenge_tasks") }
   /// Edit Tag
   public static var editTag: String { return L10n.tr("Mainstrings", "edit_tag") }
   /// Eggs

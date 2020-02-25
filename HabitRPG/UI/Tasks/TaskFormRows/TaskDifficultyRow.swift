@@ -38,6 +38,7 @@ public class TaskDifficultyCell: Cell<Float>, CellType {
     
     @objc
     private func trivialTapped() {
+        if row.isDisabled { return }
         row.value = 0.1
         row.updateCell()
         if #available(iOS 10, *) {
@@ -48,6 +49,7 @@ public class TaskDifficultyCell: Cell<Float>, CellType {
     
     @objc
     private func easyTapped() {
+        if row.isDisabled { return }
         row.value = 1
         row.updateCell()
         if #available(iOS 10, *) {
@@ -58,6 +60,7 @@ public class TaskDifficultyCell: Cell<Float>, CellType {
     
     @objc
     private func mediumTapped() {
+        if row.isDisabled { return }
         row.value = 1.5
         row.updateCell()
         if #available(iOS 10, *) {
@@ -68,6 +71,7 @@ public class TaskDifficultyCell: Cell<Float>, CellType {
     
     @objc
     private func hardTapped() {
+        if row.isDisabled { return }
         row.value = 2
         row.updateCell()
         if #available(iOS 10, *) {

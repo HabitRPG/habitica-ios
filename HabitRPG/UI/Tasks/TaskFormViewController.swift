@@ -297,12 +297,21 @@ class TaskFormViewController: FormViewController, Themeable {
     }
     
     private func setupBasicTaskInput() {
-        form +++ Section { section in
+        let section = Section { section in
             var header = HeaderFooterView<UIView>(.class)
             header.height = { 0 }
             section.header = header
             }
-            <<< TaskTextInputRow(TaskFormTags.title) { row in
+        if (task.isChallengeTask) {
+            section <<< LabelRow() { row in
+                row.title = L10n.editChallengeTasks
+                row.cellUpdate { (cell, row) in
+                    cell.backgroundColor = UIColor.red50
+                    cell.textLabel?.textColor = UIColor.white
+                }
+            }
+        }
+            section <<< TaskTextInputRow(TaskFormTags.title) { row in
                 row.title = L10n.title
                 row.cellUpdate({ (cell, row) in
                     cell.updateTintColor(self.taskTintColor)
@@ -310,6 +319,7 @@ class TaskFormViewController: FormViewController, Themeable {
                 row.topSpacing = 12
                 row.add(rule: RuleRequired())
                 row.validationOptions = .validatesOnDemand
+                row.disabled = Condition(booleanLiteral: task.isChallengeTask)
                 row.onChange({[weak self] _ in
                     self?.tableView.beginUpdates()
                     self?.tableView.endUpdates()
@@ -330,12 +340,14 @@ class TaskFormViewController: FormViewController, Themeable {
                     self?.view.setNeedsLayout()
                 })
         }
+        form +++ section
     }
     
     private func setupHabitControls() {
         form +++ Section(L10n.Tasks.Form.controls)
             <<< HabitControlsRow(TaskFormTags.habitControls) {row in
                 row.value = HabitControlsValue()
+                row.disabled = Condition(booleanLiteral: task.isChallengeTask)
                 row.cellUpdate({ (cell, row) in
                     cell.updateTintColor(self.taskTintColor)
                 })
@@ -346,6 +358,7 @@ class TaskFormViewController: FormViewController, Themeable {
         form +++ MultivaluedSection(multivaluedOptions: [.Reorder, .Insert, .Delete],
                                     header: L10n.Tasks.Form.checklist) { section in
                                         section.tag = TaskFormTags.checklistSection
+                                        if (!task.isChallengeTask) {
                                         section.addButtonProvider = { section in
                                             return ButtonRow { row in
                                                 row.title = L10n.Tasks.Form.newChecklistItem
@@ -356,6 +369,7 @@ class TaskFormViewController: FormViewController, Themeable {
                                                     self?.view.setNeedsLayout()
                                                 })
                                             }
+                                        }
                                         }
                                         section.multivaluedRowToInsertAt = { index in
                                             return TextRow { row in
@@ -375,6 +389,7 @@ class TaskFormViewController: FormViewController, Themeable {
         form +++ Section(L10n.Tasks.Form.difficulty)
             <<< TaskDifficultyRow(TaskFormTags.difficulty) { row in
                 row.value = 1
+                row.disabled = Condition(booleanLiteral: task.isChallengeTask)
                 row.cellUpdate({ (cell, row) in
                     cell.updateTintColor(self.taskTintColor)
                 })
@@ -386,6 +401,7 @@ class TaskFormViewController: FormViewController, Themeable {
             <<< SegmentedRow<LabeledFormValue<String>>(TaskFormTags.habitResetStreak) { row in
                 row.options = TaskFormViewController.habitResetStreakOptions
                 row.value = TaskFormViewController.habitResetStreakOptions[0]
+                row.disabled = Condition(booleanLiteral: task.isChallengeTask)
                 row.cellUpdate({ (cell, row) in
                     cell.tintColor = self.taskTintColor
                     cell.segmentedControl.tintColor = self.taskTintColor
@@ -397,6 +413,7 @@ class TaskFormViewController: FormViewController, Themeable {
         schedulingSection = Section(L10n.Tasks.Form.scheduling)
             <<< DateRow(TaskFormTags.startDate) { row in
                 row.title = L10n.Tasks.Form.startDate
+                row.disabled = Condition(booleanLiteral: task.isChallengeTask)
                 row.value = Date()
                 row.cellUpdate({ (cell, row) in
                     cell.tintColor = self.lightTaskTintColor
@@ -409,6 +426,7 @@ class TaskFormViewController: FormViewController, Themeable {
         }
             <<< ActionSheetRow<LabeledFormValue<String>>(TaskFormTags.dailyRepeat) { row in
                 row.title = L10n.Tasks.Form.repeats
+                row.disabled = Condition(booleanLiteral: task.isChallengeTask)
                 row.options = TaskFormViewController.dailyRepeatOptions
                 row.value = TaskFormViewController.dailyRepeatOptions[0]
                 row.selectorTitle = "Pick a repeat option"
@@ -423,6 +441,7 @@ class TaskFormViewController: FormViewController, Themeable {
         }
             <<< PickerInputRow<Int>(TaskFormTags.dailyEvery) { row in
                 row.title = L10n.Tasks.Form.every
+                row.disabled = Condition(booleanLiteral: task.isChallengeTask)
                 row.options = Array(0...366)
                 row.value = 1
                 row.cellUpdate({ (cell, row) in
@@ -436,6 +455,7 @@ class TaskFormViewController: FormViewController, Themeable {
         }
             <<< SegmentedRow<String>(TaskFormTags.repeatMonthlySegment) { row in
                 row.options = [L10n.Tasks.Form.dayOfMonth, L10n.Tasks.Form.dayOfWeek]
+                row.disabled = Condition(booleanLiteral: task.isChallengeTask)
                 row.value = L10n.Tasks.Form.dayOfMonth
                 row.hidden = Condition.function([TaskFormTags.dailyRepeat], { (form) -> Bool in
                     return (form.rowBy(tag: TaskFormTags.dailyRepeat) as? ActionSheetRow<LabeledFormValue<String>>)?.value?.value != "monthly"
@@ -450,6 +470,7 @@ class TaskFormViewController: FormViewController, Themeable {
         }
             <<< WeekdayRow(TaskFormTags.repeatWeekdays) { row in
                 row.tintColor = self.taskTintColor
+                row.disabled = Condition(booleanLiteral: task.isChallengeTask)
                 row.hidden = Condition.function([TaskFormTags.dailyRepeat, TaskFormTags.repeatMonthlySegment], { (form) -> Bool in
                     return (form.rowBy(tag: TaskFormTags.dailyRepeat) as? ActionSheetRow<LabeledFormValue<String>>)?.value?.value != "weekly"
                 })
@@ -469,6 +490,7 @@ class TaskFormViewController: FormViewController, Themeable {
         form +++ Section(L10n.Tasks.Form.scheduling)
             <<< DateRow(TaskFormTags.dueDate) {[weak self] row in
                 row.title = L10n.Tasks.Form.dueDate
+                row.disabled = Condition(booleanLiteral: task.isChallengeTask)
                 row.dateFormatter = self?.dateFormatter
                 row.cellUpdate({ (cell, _) in
                     cell.tintColor = self?.lightTaskTintColor
@@ -485,6 +507,7 @@ class TaskFormViewController: FormViewController, Themeable {
             }
             <<< ButtonRow(TaskFormTags.dueDateClear) { row in
                 row.title = L10n.Tasks.Form.clear
+                row.disabled = Condition(booleanLiteral: task.isChallengeTask)
                 row.hidden = Condition.function([TaskFormTags.dueDate], { (form) -> Bool in
                     return (form.rowBy(tag: TaskFormTags.dueDate) as? DateRow)?.value == nil
                 })
@@ -503,6 +526,7 @@ class TaskFormViewController: FormViewController, Themeable {
         form +++ Section(L10n.Tasks.Form.cost)
             <<< DecimalRow(TaskFormTags.rewardCost) { row in
                 row.title = L10n.Tasks.Form.cost
+                row.disabled = Condition(booleanLiteral: task.isChallengeTask)
                 row.cellSetup({ (cell, _) in
                     cell.tintColor = self.taskTintColor
                 })

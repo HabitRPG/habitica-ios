@@ -52,6 +52,7 @@ class WeekdayFormCell: Cell<WeekdaysValue>, CellType {
     
     @objc
     func mondayTapped() {
+        if row.isDisabled { return }
         row.value?.monday = !(row.value?.monday ?? false)
         row.updateCell()
         if #available(iOS 10, *) {
@@ -61,6 +62,7 @@ class WeekdayFormCell: Cell<WeekdaysValue>, CellType {
     
     @objc
     func tuesdayTapped() {
+        if row.isDisabled { return }
         row.value?.tuesday = !(row.value?.tuesday ?? false)
         row.updateCell()
         if #available(iOS 10, *) {
@@ -70,6 +72,7 @@ class WeekdayFormCell: Cell<WeekdaysValue>, CellType {
     
     @objc
     func wednesdayTapped() {
+        if row.isDisabled { return }
         row.value?.wednesday = !(row.value?.wednesday ?? false)
         row.updateCell()
         if #available(iOS 10, *) {
@@ -79,6 +82,7 @@ class WeekdayFormCell: Cell<WeekdaysValue>, CellType {
     
     @objc
     func thursdayTapped() {
+        if row.isDisabled { return }
         row.value?.thursday = !(row.value?.thursday ?? false)
         row.updateCell()
         if #available(iOS 10, *) {
@@ -88,6 +92,7 @@ class WeekdayFormCell: Cell<WeekdaysValue>, CellType {
     
     @objc
     func fridayTapped() {
+        if row.isDisabled { return }
         row.value?.friday = !(row.value?.friday ?? false)
         row.updateCell()
         if #available(iOS 10, *) {

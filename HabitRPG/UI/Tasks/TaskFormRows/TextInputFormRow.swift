@@ -28,6 +28,7 @@ public class TaskTextInputCell: Cell<String>, CellType, UITextViewDelegate {
 
     public override func update() {
         titleLabel.text = row.title
+        textField.isUserInteractionEnabled = !row.isDisabled
         if textField.text != row.value {
             textField.text = row.value
         }
