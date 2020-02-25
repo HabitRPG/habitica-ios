@@ -12,6 +12,8 @@ class InboxOverviewViewController: BaseTableViewController {
     
     private let dataSource = InboxOverviewDataSource()
     
+    private var newMessageUsername: String?
+    
     override func viewDidLoad() {
         tutorialIdentifier = "inbox"
         super.viewDidLoad()
@@ -22,8 +24,6 @@ class InboxOverviewViewController: BaseTableViewController {
         
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
-        
-        navigationItem.leftBarButtonItem = nil
     }
     
     override func applyTheme(theme: Theme) {
@@ -53,18 +53,48 @@ class InboxOverviewViewController: BaseTableViewController {
         return nil
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == StoryboardSegue.Social.chatSegue.rawValue {
-            if let chatViewController = segue.destination as? InboxChatViewController {
-                if let cell = sender as? UITableViewCell {
-                    guard let indexPath = tableView.indexPath(for: cell) else {
-                        return
-                    }
-                    let message = dataSource.item(at: indexPath)
-                    chatViewController.userID = message?.uuid
-                    chatViewController.displayName = message?.displayName
-                }
+       override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+           if segue.identifier == StoryboardSegue.Social.chatSegue.rawValue {
+               if let chatViewController = segue.destination as? InboxChatViewController {
+                   if let username = newMessageUsername {
+                       chatViewController.username = username
+                       newMessageUsername = nil
+                   } else {
+                       if let cell = sender as? UITableViewCell {
+                         guard let indexPath = tableView.indexPath(for: cell) else {
+                             return
+                         }
+                         let message = dataSource.item(at: indexPath)
+                         chatViewController.userID = message?.uuid
+                         chatViewController.displayName = message?.displayName
+                       }
+                   }
+               }
+           }
+       }
+
+    @IBAction func showNewMessageAlert(_ sender: Any) {
+        let alertController = HabiticaAlertController(title: L10n.newMessage)
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 16
+        let usernameTextField = UITextField()
+        usernameTextField.placeholder = L10n.username
+        usernameTextField.borderStyle = .roundedRect
+        usernameTextField.autocapitalizationType = .none
+        usernameTextField.spellCheckingType = .no
+        usernameTextField.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+        usernameTextField.textColor = ThemeService.shared.theme.primaryTextColor
+        stackView.addArrangedSubview(usernameTextField)
+        alertController.contentView = stackView
+        
+        alertController.addCancelAction()
+        alertController.addAction(title: L10n.next, isMainAction: true) {[weak self] _ in
+            if let username = usernameTextField.text {
+                self?.newMessageUsername = username
+                self?.perform(segue: StoryboardSegue.Social.chatSegue)
             }
         }
+        alertController.show()
     }
 }

@@ -24,13 +24,17 @@ class InboxMessagesDataSource: BaseReactiveTableViewDataSource<InboxMessageProto
     var loadedAllData = false
     var isLoading = false
     
-    init(otherUserID: String?) {
+    init(otherUserID: String?, otherUsername: String?) {
         self.otherUserID = otherUserID
+        self.otherUsername = otherUsername
         super.init()
         sections.append(ItemSection<InboxMessageProtocol>())
         
         disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
             self?.user = user
+            if (self?.otherUserID == nil) {
+                self?.otherUserID = user.id
+            }
             self?.tableView?.reloadData()
         }).start())
         disposable.inner.add(socialRepository.getMember(userID: otherUserID ?? otherUsername ?? "", retrieveIfNotFound: true).on(value: {[weak self]member in

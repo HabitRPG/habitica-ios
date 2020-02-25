@@ -15,7 +15,7 @@ class InboxChatViewController: SLKTextViewController, Themeable {
     var isScrolling = false
     
     private lazy var dataSource: InboxMessagesDataSource = {
-        return InboxMessagesDataSource(otherUserID: userID)
+        return InboxMessagesDataSource(otherUserID: userID, otherUsername: username)
     }()
     private var configRepository = ConfigRepository()
     private let refreshControl = UIRefreshControl()
@@ -30,7 +30,6 @@ class InboxChatViewController: SLKTextViewController, Themeable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        dataSource.otherUsername = username
         dataSource.tableView = tableView
         dataSource.viewController = self
         

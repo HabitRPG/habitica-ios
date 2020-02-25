@@ -318,6 +318,8 @@ public enum L10n {
   public static var never: String { return L10n.tr("Mainstrings", "never") }
   /// never
   public static var neverLowerCase: String { return L10n.tr("Mainstrings", "never_lower_case") }
+  /// New Message
+  public static var newMessage: String { return L10n.tr("Mainstrings", "new_message") }
   /// Next
   public static var next: String { return L10n.tr("Mainstrings", "next") }
   /// Your next prize unlocks in 1 Check-In.
