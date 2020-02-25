@@ -14,8 +14,8 @@ import Habitica_Models
 class TaskTableViewCell: UITableViewCell, UITextViewDelegate {
 
     //swiftlint:disable private_outlet
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var subtitleLabel: UILabel!
+    @IBOutlet weak var titleLabel: UITextView!
+    @IBOutlet weak var subtitleLabel: UITextView!
     @IBOutlet weak var taskDetailLine: TaskDetailLineView!
     @IBOutlet weak var mainTaskWrapper: UIView!
     @IBOutlet weak var syncingIndicator: UIActivityIndicatorView!
@@ -27,12 +27,22 @@ class TaskTableViewCell: UITableViewCell, UITextViewDelegate {
     @objc public var isLocked: Bool = false
 
     @objc var syncErrorTouched: (() -> Void)?
+    @objc var openForm: (() -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         syncErrorIndicator.image = HabiticaIcons.imageOfInfoIcon(infoIconColor: UIColor.red50)
         
         syncErrorIndicator.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(syncErrorTapped)))
+        
+        var gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(openFormTapped))
+        gestureRecognizer.delegate = self
+        gestureRecognizer.cancelsTouchesInView = false
+        titleLabel.addGestureRecognizer(gestureRecognizer)
+        gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(openFormTapped))
+        gestureRecognizer.delegate = self
+        gestureRecognizer.cancelsTouchesInView = false
+        subtitleLabel.addGestureRecognizer(gestureRecognizer)
     }
     
     @objc
@@ -97,7 +107,45 @@ class TaskTableViewCell: UITableViewCell, UITextViewDelegate {
         }
     }
     
+    @objc
+    private func openFormTapped() {
+        if let action = openForm {
+            action()
+        }
+    }
+    
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
         return !RouterHandler.shared.handle(url: URL)
+    }
+    
+    override func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        let location = touch.location(in: titleLabel.superview)
+        if titleLabel.frame.contains(location) && titleLabel == gestureRecognizer.view {
+            let layoutManager = titleLabel.layoutManager
+            var messageViewLocation = touch.location(in: titleLabel)
+            messageViewLocation.x -= titleLabel.textContainerInset.left
+            messageViewLocation.y -= titleLabel.textContainerInset.top
+            let characterIndex = layoutManager.characterIndex(for: messageViewLocation, in: titleLabel.textContainer, fractionOfDistanceBetweenInsertionPoints: nil)
+            if characterIndex < titleLabel.textStorage.length {
+                let attributes = titleLabel.textStorage.attributes(at: characterIndex, effectiveRange: nil)
+                if attributes[NSAttributedString.Key.link] != nil {
+                    return false
+                }
+            }
+        }
+        if subtitleLabel.frame.contains(location) && subtitleLabel == gestureRecognizer.view {
+            let layoutManager = subtitleLabel.layoutManager
+            var messageViewLocation = touch.location(in: subtitleLabel)
+            messageViewLocation.x -= subtitleLabel.textContainerInset.left
+            messageViewLocation.y -= subtitleLabel.textContainerInset.top
+            let characterIndex = layoutManager.characterIndex(for: messageViewLocation, in: subtitleLabel.textContainer, fractionOfDistanceBetweenInsertionPoints: nil)
+            if characterIndex < subtitleLabel.textStorage.length {
+                let attributes = subtitleLabel.textStorage.attributes(at: characterIndex, effectiveRange: nil)
+                if attributes[NSAttributedString.Key.link] != nil {
+                    return false
+                }
+            }
+        }
+        return true
     }
 }

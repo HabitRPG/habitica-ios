@@ -29,6 +29,10 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
         super.viewDidLoad()
         
         dataSource?.tableView = tableView
+        dataSource?.onOpenForm = {[weak self] indexPath in
+            self?.dataSource?.selectRowAt(indexPath: indexPath)
+            self?.performSegue(withIdentifier: "FormSegue", sender: self)
+        }
         tableView.register(UINib(nibName: "EmptyTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "emptyCell")
 
         let nib = UINib(nibName: getCellNibName() ?? "", bundle: nil)

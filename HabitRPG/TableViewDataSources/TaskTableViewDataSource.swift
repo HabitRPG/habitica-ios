@@ -46,6 +46,8 @@ public protocol TaskTableViewDataSourceProtocol {
 
 class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, TaskTableViewDataSourceProtocol {
     
+    var onOpenForm: ((IndexPath) -> Void)?
+    
     var taskType: TaskType
     var tasks: [TaskProtocol] {
         get {
@@ -164,6 +166,11 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
             })
             alertController.addCancelAction()
             alertController.show()
+        }
+        cell.openForm = {[weak self] in
+            if let action = self?.onOpenForm {
+                action(indexPath)
+            }
         }
     }
     

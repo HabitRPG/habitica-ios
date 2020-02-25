@@ -18,7 +18,7 @@ class InboxMessagesDataSource: BaseReactiveTableViewDataSource<InboxMessageProto
     private let userRepository = UserRepository()
     private let configRepository = ConfigRepository()
     private var user: UserProtocol?
-    private let otherUserID: String?
+    private var otherUserID: String?
     internal var otherUsername: String?
     
     var loadedAllData = false
