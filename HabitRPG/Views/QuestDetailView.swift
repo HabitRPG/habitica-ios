@@ -16,6 +16,7 @@ class QuestDetailView: UIView, Themeable {
     @IBOutlet weak var ownerRewardsLabel: UILabel!
     @IBOutlet weak var ownerRewardsStackView: UIStackView!
     @IBOutlet weak var questGoalView: QuestGoalView!
+    @IBOutlet weak var questGoalHeight: NSLayoutConstraint!
     
     override init(frame: CGRect) {
         super.init(frame: CGRect(x: 0, y: 0, width: 154, height: 36))

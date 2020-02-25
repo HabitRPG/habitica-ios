@@ -392,6 +392,8 @@ public enum L10n {
   public static func purchased(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "purchased", p1)
   }
+  /// Quest Completed!
+  public static var questCompletedTitle: String { return L10n.tr("Mainstrings", "quest_completed_title") }
   /// Quests
   public static var quests: String { return L10n.tr("Mainstrings", "quests") }
   /// Rage Meter

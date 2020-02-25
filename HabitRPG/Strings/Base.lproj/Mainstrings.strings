@@ -506,6 +506,7 @@
 "levelup_title" = "You gained a level!";
 "levelup_description" = "By accomplishing your real-life goals, you've grown to Level %ld!";
 "levelup_share" = "I got to level %ld in Habitica by improving my real-life habits!";
+"quest_completed_title" = "Quest Completed!";
 "copied_to_clipboard" = "Copied to Clipboard";
 "copied_x_to_clipboard" = "Copied %@ to Clipboard";
 "open" = "Open";

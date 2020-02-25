@@ -2411,6 +2411,8 @@
 				2914487920864A3300F3A6B5 /* EquipmentOverviewView.xib */,
 				2919FDDE2091D87A0096A53B /* FaintViewController.swift */,
 				D99E42671D6B1FD500811B6D /* FaintViewController.xib */,
+				2975F00223881D05005DBF2E /* FlagView.swift */,
+				2975F004238C4996005DBF2E /* GiftOneGetOnePromoView.swift */,
 				4904C73F1F1ED87400F80723 /* GradientImageView.swift */,
 				29AAA15C1F2A3AA600029737 /* GradientView.swift */,
 				292844EE20DD1D630011DC43 /* GroupInvitationListView.swift */,
@@ -2452,7 +2454,6 @@
 				299BD6211F505DFA00E22935 /* PaddedLabel.swift */,
 				D9525F9C1E64739900C529B8 /* PaddedView.swift */,
 				D9CE90441E4CDD6200702578 /* PillView.swift */,
-				2975F00223881D05005DBF2E /* FlagView.swift */,
 				29FC8861201A300B002B3D3F /* ProgressBar.swift */,
 				2912C3AF22CA701C00BC485F /* QuestCompletedAlertController.swift */,
 				29FC8867201B7B61002B3D3F /* Quests */,
@@ -2466,6 +2467,7 @@
 				293BB4A21FD07603003B6F4F /* StatsSliderView.xib */,
 				293BB4991FCD7DC0003B6F4F /* StatsView.swift */,
 				293BB49B1FCD7DC8003B6F4F /* StatsView.xib */,
+				296F51632358E5EF0019C872 /* SubscriptionPromoView.swift */,
 				299BD6321F5420D600E22935 /* Tasks */,
 				29255E4A1F3E236C0094A3E3 /* ToastManager.swift */,
 				29255E481F3E1B0F0094A3E3 /* ToastView.swift */,
@@ -2476,8 +2478,6 @@
 				D91CCACF1BCF11CC001C6A0C /* UserTopHeader.xib */,
 				2980E6081EEA25CD005B7100 /* YesterdailiesDialogView.swift */,
 				2980E6061EEA1F55005B7100 /* YesterdailiesDialogView.xib */,
-				296F51632358E5EF0019C872 /* SubscriptionPromoView.swift */,
-				2975F004238C4996005DBF2E /* GiftOneGetOnePromoView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -4144,7 +4144,7 @@
 				INFOPLIST_FILE = "Habitica IntentsUI/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 2.7;
+				MARKETING_VERSION = 2.8;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-IntentsUI";
@@ -4179,7 +4179,7 @@
 				INFOPLIST_FILE = "Habitica IntentsUI/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 2.7;
+				MARKETING_VERSION = 2.8;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-IntentsUI";
@@ -4213,7 +4213,7 @@
 				INFOPLIST_FILE = "Habitica Intents/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 2.7;
+				MARKETING_VERSION = 2.8;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-Intents";
@@ -4250,7 +4250,7 @@
 				INFOPLIST_FILE = "Habitica Intents/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 2.7;
+				MARKETING_VERSION = 2.8;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-Intents";
@@ -4632,7 +4632,7 @@
 				INFOPLIST_FILE = "HabitRPG/Habitica-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 2.7;
+				MARKETING_VERSION = 2.8;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-framework",
@@ -4725,7 +4725,7 @@
 				INFOPLIST_FILE = "HabitRPG/Habitica-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 2.7;
+				MARKETING_VERSION = 2.8;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-framework",

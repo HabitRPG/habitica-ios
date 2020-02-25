@@ -122,6 +122,12 @@ class UserManager: NSObject {
         }
         userLevel = user.stats?.level
         
+ if let questKey = user.party?.quest?.completed, !questKey.isEmpty {
+      let completionView = QuestCompletedAlertController(questKey: questKey)
+      completionView.show()
+      userRepository.updateUser(key: "party.quest.completed", value: "").observeCompleted {}
+  }
+        
         userRepository.registerPushDevice(user: user).observeCompleted {}
         setTimezoneOffset(user)
 
