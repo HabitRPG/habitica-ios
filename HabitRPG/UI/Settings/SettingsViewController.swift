@@ -494,10 +494,8 @@ class SettingsViewController: FormViewController, Themeable {
                 }).onCellSelection({ (_, _) in
                     self.userRepository.logoutAccount()
                     self.contentRepository.retrieveContent().observeCompleted {}
-                    let loginViewController = StoryboardScene.Intro.loginTableViewController.instantiate()
-                    loginViewController.modalPresentationStyle = .fullScreen
-                    self.dismiss(animated: true, completion: nil)
-                    self.dismiss(animated: true, completion: nil)
+                    self.navigationController?.dismiss(animated: true, completion: nil)
+                    self.presentingViewController?.dismiss(animated: true, completion: nil)
                 })
         }
     }
