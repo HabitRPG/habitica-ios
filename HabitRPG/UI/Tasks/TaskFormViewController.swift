@@ -721,7 +721,11 @@ class TaskFormViewController: FormViewController, Themeable {
         task.text = values[TaskFormTags.title] as? String
         task.notes = values[TaskFormTags.notes] as? String
         task.priority = values[TaskFormTags.difficulty] as? Float ?? 1
-        task.attribute = values[TaskFormTags.attribute] as? String
+        if let attribute = values[TaskFormTags.attribute] as? String {
+            task.attribute = attribute
+        } else {
+            task.attribute = "str"
+        }
     }
     
     private func saveHabit(values: [String: Any?]) {
