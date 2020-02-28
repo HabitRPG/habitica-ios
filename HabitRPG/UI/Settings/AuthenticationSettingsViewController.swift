@@ -60,22 +60,33 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
                 cellTitleColor = ThemeService.shared.theme.successColor
             } else if indexPath.item == 1 + confirmOffset {
                 cellTitle = L10n.email
-                cellDetailText = user?.authentication?.local?.email
+                if let email = user?.authentication?.local?.email {
+                    cellDetailText = email
+                } else {
+                    cellDetailText = "No Email set"
+                }
             } else if indexPath.item == 2 + confirmOffset {
                 cellName = "ButtonCell"
-                cellTitle = L10n.Settings.changePassword
+                if user?.authentication?.local?.email != nil {
+                    cellTitle = L10n.Settings.changePassword
+                } else {
+                    cellTitle = L10n.Settings.addEmailAndPassword
+                }
             } else if indexPath.item == 3 + confirmOffset {
                 cellTitle = L10n.Settings.loginMethods
                 var loginMethods = [String]()
-                if user?.authentication?.local?.email != nil {
+                if user?.authentication?.hasLocalAuth == true {
                     loginMethods.append(L10n.Settings.local)
                 }
-                /*if user?.facebookID != nil {
+                if user?.authentication?.facebookID != nil {
                     loginMethods.append("Facebook")
                 }
-                if user?.googleID != nil {
+                if user?.authentication?.googleID != nil {
                     loginMethods.append("Google")
-                }*/
+                }
+                if user?.authentication?.appleID != nil {
+                    loginMethods.append("Apple")
+                }
                 cellDetailText = loginMethods.joined(separator: ", ")
             }
         } else {
@@ -112,7 +123,11 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
             } else if indexPath.item == 1 + confirmOffset {
                 showEmailChangeAlert()
             } else if indexPath.item == 2 + confirmOffset {
-                showPasswordChangeAlert()
+                if (user?.authentication?.hasLocalAuth == true) {
+                    showPasswordChangeAlert()
+                } else {
+                    showAddLocalAuthAlert()
+                }
             }
         } else if indexPath.section == 1 {
             if indexPath.item == 0 {
@@ -290,6 +305,45 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         }
         alertController.show()
     }
+    
+    private func showAddLocalAuthAlert() {
+        let alertController = HabiticaAlertController(title: L10n.Settings.addEmailAndPassword)
+        
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 16
+        let emailTextField = UITextField()
+        emailTextField.placeholder = L10n.Settings.newEmail
+        emailTextField.borderStyle = .roundedRect
+        emailTextField.isSecureTextEntry = true
+        emailTextField.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+        emailTextField.textColor = ThemeService.shared.theme.primaryTextColor
+        stackView.addArrangedSubview(emailTextField)
+        let paswordTextField = UITextField()
+        paswordTextField.placeholder = L10n.Settings.newPassword
+        paswordTextField.borderStyle = .roundedRect
+        paswordTextField.isSecureTextEntry = true
+        paswordTextField.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+        paswordTextField.textColor = ThemeService.shared.theme.primaryTextColor
+        stackView.addArrangedSubview(paswordTextField)
+        let confirmTextField = UITextField()
+        confirmTextField.placeholder = L10n.Settings.confirmNewPassword
+        confirmTextField.borderStyle = .roundedRect
+        confirmTextField.isSecureTextEntry = true
+        confirmTextField.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+        confirmTextField.textColor = ThemeService.shared.theme.primaryTextColor
+        stackView.addArrangedSubview(confirmTextField)
+        alertController.contentView = stackView
+        
+        alertController.addCancelAction()
+        alertController.addAction(title: L10n.add, isMainAction: true) {[weak self] _ in
+            if let password = paswordTextField.text, let email = emailTextField.text, let confirmPassword = confirmTextField.text {
+                self?.userRepository.register(username: self?.user?.username ?? "", password: password, confirmPassword: confirmPassword, email: email).observeCompleted {}
+            }
+        }
+        alertController.show()
+    }
+    
     
     private func showConfirmUsernameAlert() {
         let alertController = HabiticaAlertController(title: L10n.Settings.confirmUsernamePrompt, message: L10n.Settings.confirmUsernameDescription)

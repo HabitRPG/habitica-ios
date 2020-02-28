@@ -496,7 +496,8 @@ class SettingsViewController: FormViewController, Themeable {
                     self.contentRepository.retrieveContent().observeCompleted {}
                     let loginViewController = StoryboardScene.Intro.loginTableViewController.instantiate()
                     loginViewController.modalPresentationStyle = .fullScreen
-                    self.present(loginViewController, animated: true, completion: nil)
+                    self.dismiss(animated: true, completion: nil)
+                    self.dismiss(animated: true, completion: nil)
                 })
         }
     }

@@ -22,6 +22,8 @@ public enum L10n {
   public static func activeOn(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "active_on", p1)
   }
+  /// Add
+  public static var add: String { return L10n.tr("Mainstrings", "add") }
   /// I agree to follow the guidelines
   public static var agreeGuidelinesPrompt: String { return L10n.tr("Mainstrings", "agree_guidelines_prompt") }
   /// All
@@ -1282,6 +1284,8 @@ public enum L10n {
   }
 
   public enum Settings {
+    /// Add Email and Password authentication
+    public static var addEmailAndPassword: String { return L10n.tr("Mainstrings", "settings.add_email_and_password") }
     /// API
     public static var api: String { return L10n.tr("Mainstrings", "settings.api") }
     /// Copy these for use in third party applications. However, think of your API Token like a password, and do not share it publicly. You may occasionally be asked for your User ID, but never post your API Token where others can see it, including on Github.

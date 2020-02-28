@@ -312,6 +312,7 @@
 "settings.push_notifications.mention_party" = "@Mentions in Party";
 "settings.push_notifications.mention_joined_guild" = "@Mentions in joined Guilds";
 "settings.push_notifications.mention_unjoined_guild" = "@Mentions in not joined Guilds";
+"settings.add_email_and_password" = "Add Email and Password authentication";
 "theme.default_theme" = "Default";
 "theme.blue" = "Blue";
 "theme.teal" = "Teal";
@@ -853,3 +854,4 @@
 "show_details" = "Show Details";
 "new_message" = "New Message";
 "edit_challenge_tasks" = "Challenge tasks only offer limited editing.";
+"add" = "Add";

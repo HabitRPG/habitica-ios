@@ -41,6 +41,9 @@ class RealmAuthentication: Object, AuthenticationProtocol {
     @objc dynamic var realmLocal: RealmLocalAuthentication?
     
     @objc dynamic var id: String?
+    @objc dynamic var facebookID: String?
+    @objc dynamic var googleID: String?
+    @objc dynamic var appleID: String?
     override static func primaryKey() -> String {
         return "id"
     }
@@ -50,5 +53,8 @@ class RealmAuthentication: Object, AuthenticationProtocol {
         self.id = userID
         timestamps = protocolObject.timestamps
         local = protocolObject.local
+        facebookID = protocolObject.facebookID
+        googleID = protocolObject.googleID
+        appleID = protocolObject.appleID
     }
 }
