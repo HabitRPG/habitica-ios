@@ -1288,6 +1288,8 @@ public enum L10n {
   public enum Settings {
     /// Add Email and Password authentication
     public static var addEmailAndPassword: String { return L10n.tr("Mainstrings", "settings.add_email_and_password") }
+    /// Successfully added email and password
+    public static var addedLocalAuth: String { return L10n.tr("Mainstrings", "settings.added_local_auth") }
     /// API
     public static var api: String { return L10n.tr("Mainstrings", "settings.api") }
     /// Copy these for use in third party applications. However, think of your API Token like a password, and do not share it publicly. You may occasionally be asked for your User ID, but never post your API Token where others can see it, including on Github.

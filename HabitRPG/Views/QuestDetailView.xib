@@ -33,7 +33,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c4o-RZ-fmE" customClass="QuestGoalView" customModule="Habitica" customModuleProvider="target">
-                    <rect key="frame" x="16" y="4" width="343" height="68"/>
+                    <rect key="frame" x="0.0" y="4" width="375" height="68"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="68" id="ZPe-61-5U5"/>
                     </constraints>
@@ -57,13 +57,13 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="fMK-ki-ck2">
-                    <rect key="frame" x="16" y="114" width="343" height="20"/>
+                    <rect key="frame" x="0.0" y="114" width="375" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" priority="500" constant="20" id="Khb-Ur-Tb4"/>
                     </constraints>
                 </stackView>
                 <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Imt-qe-XV9">
-                    <rect key="frame" x="16" y="176" width="343" height="20"/>
+                    <rect key="frame" x="0.0" y="176" width="375" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" priority="500" constant="20" id="9vI-FW-xHj"/>
                     </constraints>
@@ -71,23 +71,23 @@
             </subviews>
             <constraints>
                 <constraint firstItem="6kB-a3-bZU" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="5nO-or-JUR"/>
-                <constraint firstItem="fMK-ki-ck2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="6SD-D4-w3f"/>
+                <constraint firstItem="fMK-ki-ck2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="6SD-D4-w3f"/>
                 <constraint firstItem="tPx-bH-EDa" firstAttribute="top" secondItem="fMK-ki-ck2" secondAttribute="bottom" constant="16" id="6lL-v7-C7g"/>
                 <constraint firstAttribute="trailing" secondItem="6kB-a3-bZU" secondAttribute="trailing" id="BGn-ia-cpw"/>
                 <constraint firstItem="Imt-qe-XV9" firstAttribute="top" secondItem="tPx-bH-EDa" secondAttribute="bottom" constant="8" id="Eyf-Un-Zjs"/>
                 <constraint firstItem="DgU-Oy-n2i" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="GWT-Fh-iMb"/>
                 <constraint firstItem="DgU-Oy-n2i" firstAttribute="top" secondItem="c4o-RZ-fmE" secondAttribute="bottom" constant="16" id="NLv-ql-efT"/>
-                <constraint firstAttribute="trailing" secondItem="c4o-RZ-fmE" secondAttribute="trailing" constant="16" id="Pxc-Xo-7aa"/>
+                <constraint firstAttribute="trailing" secondItem="c4o-RZ-fmE" secondAttribute="trailing" id="Pxc-Xo-7aa"/>
                 <constraint firstItem="6kB-a3-bZU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="SrW-MF-g04"/>
-                <constraint firstAttribute="trailing" secondItem="fMK-ki-ck2" secondAttribute="trailing" constant="16" id="TQI-Ss-tCD"/>
+                <constraint firstAttribute="trailing" secondItem="fMK-ki-ck2" secondAttribute="trailing" id="TQI-Ss-tCD"/>
                 <constraint firstItem="c4o-RZ-fmE" firstAttribute="top" secondItem="6kB-a3-bZU" secondAttribute="bottom" constant="4" id="W1s-rA-6cM"/>
                 <constraint firstAttribute="bottom" secondItem="Imt-qe-XV9" secondAttribute="bottom" id="Yre-uS-6mT"/>
-                <constraint firstItem="Imt-qe-XV9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="aZF-kO-jdN"/>
-                <constraint firstItem="c4o-RZ-fmE" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="fsa-yY-IEn"/>
+                <constraint firstItem="Imt-qe-XV9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="aZF-kO-jdN"/>
+                <constraint firstItem="c4o-RZ-fmE" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="fsa-yY-IEn"/>
                 <constraint firstItem="tPx-bH-EDa" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="hIO-or-Wlj"/>
                 <constraint firstAttribute="trailing" secondItem="tPx-bH-EDa" secondAttribute="trailing" id="iP1-Uc-pYZ"/>
                 <constraint firstAttribute="trailing" secondItem="DgU-Oy-n2i" secondAttribute="trailing" id="kDg-9t-Ydz"/>
-                <constraint firstAttribute="trailing" secondItem="Imt-qe-XV9" secondAttribute="trailing" constant="16" id="nqu-35-Ojb"/>
+                <constraint firstAttribute="trailing" secondItem="Imt-qe-XV9" secondAttribute="trailing" id="nqu-35-Ojb"/>
                 <constraint firstItem="fMK-ki-ck2" firstAttribute="top" secondItem="DgU-Oy-n2i" secondAttribute="bottom" constant="8" id="ryg-kT-1cf"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

@@ -23,7 +23,7 @@ public extension QuestDropItemProtocol {
         case "quests":
             return "inventory_quest_scroll_\(key ?? "")"
         case "eggs":
-            return "pet_Egg_\(key ?? "")"
+            return "Pet_Egg_\(key ?? "")"
         case "food":
             return "Pet_Food_\(key ?? "")"
         case "hatchingPotions":

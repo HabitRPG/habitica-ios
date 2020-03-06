@@ -103,7 +103,16 @@ class ItemsViewController: BaseTableViewController {
                     let alertController = HabiticaAlertController(title: quest.text)
                     let detailView = QuestDetailView(frame: CGRect.zero)
                     detailView.configure(quest: quest)
-                    alertController.contentView = detailView
+                    let imageView = UIImageView()
+                    ImageManager.setImage(on: imageView, name: "quest_" + (quest.key ?? ""))
+                    let textView = UITextView()
+                    textView.isScrollEnabled = false
+                    textView.text = quest.notes
+                    textView.font = CustomFontMetrics.scaledSystemFont(ofSize: 14)
+                    let stackView = UIStackView(arrangedSubviews: [imageView, detailView, textView])
+                    stackView.axis = .vertical
+                    stackView.spacing = 12
+                    alertController.contentView = stackView
                     alertController.addCloseAction()
                     alertController.addAction(title: L10n.inviteParty, style: .default, isMainAction: true) {[weak self] _ in
                         self?.inventoryRepository.inviteToQuest(quest: quest).observeCompleted {

@@ -12,6 +12,8 @@ class InboxOverviewViewController: BaseTableViewController {
     
     private let dataSource = InboxOverviewDataSource()
     
+    private let socialRepository = SocialRepository()
+    
     private var newMessageUsername: String?
     
     override func viewDidLoad() {
@@ -79,7 +81,7 @@ class InboxOverviewViewController: BaseTableViewController {
         stackView.axis = .vertical
         stackView.spacing = 16
         let usernameTextField = UITextField()
-        usernameTextField.placeholder = L10n.username
+        usernameTextField.attributedPlaceholder = NSAttributedString(string: L10n.username, attributes: [.foregroundColor: ThemeService.shared.theme.dimmedTextColor])
         usernameTextField.borderStyle = .roundedRect
         usernameTextField.autocapitalizationType = .none
         usernameTextField.spellCheckingType = .no
@@ -88,11 +90,26 @@ class InboxOverviewViewController: BaseTableViewController {
         stackView.addArrangedSubview(usernameTextField)
         alertController.contentView = stackView
         
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.isHidden = true
+        stackView.addArrangedSubview(activityIndicator)
+
         alertController.addCancelAction()
-        alertController.addAction(title: L10n.next, isMainAction: true) {[weak self] _ in
+        alertController.addAction(title: L10n.next, isMainAction: true, closeOnTap: false) {[weak self] dialog in
+            activityIndicator.isHidden = false
+            activityIndicator.startAnimating()
             if let username = usernameTextField.text {
+                self?.socialRepository.retrieveMember(userID: username).on(
+                    value: { _ in
+                        alertController.dismiss(animated: true, completion: {
+                            self?.perform(segue: StoryboardSegue.Social.chatSegue)
+                        })
+                }
+                ).observeCompleted {
+                    activityIndicator.isHidden = true
+                }
                 self?.newMessageUsername = username
-                self?.perform(segue: StoryboardSegue.Social.chatSegue)
+                
             }
         }
         alertController.show()
