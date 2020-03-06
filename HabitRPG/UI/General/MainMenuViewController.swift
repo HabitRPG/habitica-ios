@@ -186,10 +186,10 @@ class MainMenuViewController: BaseTableViewController {
                 MenuItem(title: L10n.Titles.challenges, segue: StoryboardSegue.Main.challengesSegue.rawValue)
                 ]),
             MenuSection(title: L10n.Menu.shops, iconAsset: Asset.iconInventory, items: [
-                MenuItem(title: L10n.Locations.market, segue: StoryboardSegue.Main.shopsSegue.rawValue),
-                MenuItem(title: L10n.Locations.questShop, segue: StoryboardSegue.Main.shopsSegue.rawValue),
-                MenuItem(title: L10n.Locations.seasonalShop, segue: StoryboardSegue.Main.shopsSegue.rawValue),
-                MenuItem(title: L10n.Locations.timeTravelersShop, segue: StoryboardSegue.Main.shopsSegue.rawValue),
+                MenuItem(title: L10n.Locations.market, segue: StoryboardSegue.Main.showMarketSegue.rawValue),
+                MenuItem(title: L10n.Locations.questShop, segue: StoryboardSegue.Main.showQuestShopSegue.rawValue),
+                MenuItem(title: L10n.Locations.seasonalShop, segue: StoryboardSegue.Main.showSeasonalShopSegue.rawValue),
+                MenuItem(title: L10n.Locations.timeTravelersShop, segue: StoryboardSegue.Main.showTimeTravelersSegue.rawValue),
             ]),
             MenuSection(title: L10n.Menu.inventory, iconAsset: Asset.iconInventory, items: [
                 MenuItem(title: L10n.Titles.shops, segue: StoryboardSegue.Main.shopsSegue.rawValue),
@@ -353,6 +353,14 @@ class MainMenuViewController: BaseTableViewController {
             let navigationController = segue.destination as? UINavigationController
             let giftSubscriptionController = navigationController?.topViewController as? GiftSubscriptionViewController
             giftSubscriptionController?.giftRecipientUsername = giftRecipientUsername
+        } else if (segue.identifier == StoryboardSegue.Main.showMarketSegue.rawValue) {
+            (segue.destination as? HRPGShopViewController)?.shopIdentifier = "market"
+        } else if (segue.identifier == StoryboardSegue.Main.showQuestShopSegue.rawValue) {
+            (segue.destination as? HRPGShopViewController)?.shopIdentifier = "questShop"
+        } else if (segue.identifier == StoryboardSegue.Main.showSeasonalShopSegue.rawValue) {
+            (segue.destination as? HRPGShopViewController)?.shopIdentifier = "seasonalShop"
+        } else if (segue.identifier == StoryboardSegue.Main.showTimeTravelersSegue.rawValue) {
+            (segue.destination as? HRPGShopViewController)?.shopIdentifier = "timeTravelersShop"
         }
     }
 }
