@@ -37,6 +37,7 @@ struct MenuItem {
 struct MenuSection {
     let title: String?
     let iconAsset: ImageAsset?
+    var isHidden: Bool = false
     var items: [MenuItem]
     
     var visibleItems: [MenuItem] {
@@ -64,6 +65,9 @@ class MainMenuViewController: BaseTableViewController {
     private var disposable = ScopedDisposable(CompositeDisposable())
     
     private var menuSections = [MenuSection]()
+    var visibleSections: [MenuSection] {
+        return menuSections.filter { (section) in !section.isHidden}
+    }
     private var giftRecipientUsername = ""
 
     private var user: UserProtocol? {
@@ -78,7 +82,7 @@ class MainMenuViewController: BaseTableViewController {
             }
             menuSections[0].items[0].isHidden = user?.canUseSkills == false
             menuSections[0].items[1].isHidden = user?.needsToChooseClass == true
-            menuSections[3].items[0].showIndicator = user?.flags?.hasNewStuff == true
+            menuSections[4].items[0].showIndicator = user?.flags?.hasNewStuff == true
             
             if let partyID = user?.party?.id {
                 let hasPartActivity = user?.hasNewMessages.first(where: { (newMessages) -> Bool in
@@ -97,9 +101,9 @@ class MainMenuViewController: BaseTableViewController {
                 tableView.tableFooterView = nil
             }
             if user?.isSubscribed == true {
-                menuSections[2].items[6].subtitle = nil
+                menuSections[3].items[6].subtitle = nil
             } else {
-                menuSections[2].items[6].subtitle = L10n.getMoreHabitica
+                menuSections[3].items[6].subtitle = L10n.getMoreHabitica
             }
         }
     }
@@ -181,6 +185,12 @@ class MainMenuViewController: BaseTableViewController {
                 MenuItem(title: L10n.Titles.guilds, segue: StoryboardSegue.Main.guildsSegue.rawValue),
                 MenuItem(title: L10n.Titles.challenges, segue: StoryboardSegue.Main.challengesSegue.rawValue)
                 ]),
+            MenuSection(title: L10n.Menu.shops, iconAsset: Asset.iconInventory, items: [
+                MenuItem(title: L10n.Locations.market, segue: StoryboardSegue.Main.shopsSegue.rawValue),
+                MenuItem(title: L10n.Locations.questShop, segue: StoryboardSegue.Main.shopsSegue.rawValue),
+                MenuItem(title: L10n.Locations.seasonalShop, segue: StoryboardSegue.Main.shopsSegue.rawValue),
+                MenuItem(title: L10n.Locations.timeTravelersShop, segue: StoryboardSegue.Main.shopsSegue.rawValue),
+            ]),
             MenuSection(title: L10n.Menu.inventory, iconAsset: Asset.iconInventory, items: [
                 MenuItem(title: L10n.Titles.shops, segue: StoryboardSegue.Main.shopsSegue.rawValue),
                 MenuItem(title: L10n.Menu.customizeAvatar, segue: StoryboardSegue.Main.customizationSegue.rawValue),
@@ -202,6 +212,14 @@ class MainMenuViewController: BaseTableViewController {
             menuSections[2].items[6].pillText = L10n.sale
             menuSections[2].items[6].pillColor = .teal50
         }
+        
+        if configRepository.bool(variable: .raiseShops) {
+            menuSections[3].items[0].isHidden = true
+            menuSections[2].isHidden = false
+        } else {
+            menuSections[2].isHidden = true
+            menuSections[3].items[0].isHidden = false
+        }
     }
     
     @objc
@@ -212,7 +230,7 @@ class MainMenuViewController: BaseTableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return menuSections.count
+        return visibleSections.count
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -242,7 +260,7 @@ class MainMenuViewController: BaseTableViewController {
         view.pin.width(view.frame.size.width).height(label.frame.size.height + 14)
         iconView.pin.vCenter(to: label.edge.vCenter)
         
-        if let iconAsset = menuSections[section].iconAsset {
+        if let iconAsset = visibleSections[section].iconAsset {
             iconView.image = UIImage(asset: iconAsset)
         }
         return view
@@ -253,7 +271,7 @@ class MainMenuViewController: BaseTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: menuSections[indexPath.section].visibleItems[indexPath.item].segue, sender: self)
+        performSegue(withIdentifier: visibleSections[indexPath.section].visibleItems[indexPath.item].segue, sender: self)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -292,10 +310,10 @@ class MainMenuViewController: BaseTableViewController {
     }
     
     private func sectionAt(index: Int) -> MenuSection? {
-        if menuSections.count <= index {
+        if visibleSections.count <= index {
             return nil
         }
-        return menuSections[index]
+        return visibleSections[index]
     }
     
     private func visibleItemAt(indexPath: IndexPath) -> MenuItem? {

@@ -1,3 +1,2 @@
 Thanks for everyone helping with testing!
 
-Charts for your habit and daily history! These are still in a very early stage, so things are still rough around the edges.

@@ -1073,6 +1073,8 @@ public enum L10n {
     public static var stable: String { return L10n.tr("Mainstrings", "locations.stable") }
     /// Tavern
     public static var tavern: String { return L10n.tr("Mainstrings", "locations.tavern") }
+    /// Time Travelers Shop
+    public static var timeTravelersShop: String { return L10n.tr("Mainstrings", "locations.time_travelers_shop") }
   }
 
   public enum Login {

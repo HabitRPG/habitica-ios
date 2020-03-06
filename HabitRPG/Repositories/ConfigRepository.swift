@@ -26,6 +26,7 @@ enum ConfigVariable: Int {
     case useNewMysteryBenefits
     case insufficientGemPurchase
     case insufficientGemPurchaseAdjust
+    case raiseShops
 
     func name() -> String {
         // swiftlint:disable switch_case_on_newline
@@ -45,6 +46,7 @@ enum ConfigVariable: Int {
         case .useNewMysteryBenefits: return "useNewMysteryBenefits"
         case .insufficientGemPurchase:return "insufficientGemPurchase"
         case .insufficientGemPurchaseAdjust: return "insufficientGemPurchaseAdjust"
+        case .raiseShops: return "raiseShops"
         }
         // swiftlint:enable switch_case_on_newline
     }
@@ -81,6 +83,8 @@ enum ConfigVariable: Int {
             return NSNumber(booleanLiteral: false)
         case .insufficientGemPurchaseAdjust:
             return NSNumber(booleanLiteral: false)
+        case .raiseShops:
+            return NSNumber(booleanLiteral: false)
         }
     }
     
@@ -99,7 +103,8 @@ enum ConfigVariable: Int {
             .enablePushMentions,
             .useNewMysteryBenefits,
             .insufficientGemPurchase,
-            .insufficientGemPurchaseAdjust
+            .insufficientGemPurchaseAdjust,
+            .raiseShops
         ]
     }
 }

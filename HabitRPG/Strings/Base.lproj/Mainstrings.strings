@@ -632,6 +632,7 @@
 "locations.tavern" = "Tavern";
 "locations.quest_shop" = "Quest Shop";
 "locations.seasonal_shop" = "Seasonal Shop";
+"locations.time_travelers_shop" = "Time Travelers Shop";
 "locations.stable" = "Stable";
 "NPCs.alex" = "Alex the Merchant";
 "NPCs.daniel" = "Daniel the inn keeper";
