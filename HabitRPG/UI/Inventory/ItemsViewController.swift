@@ -104,11 +104,14 @@ class ItemsViewController: BaseTableViewController {
                     let detailView = QuestDetailView(frame: CGRect.zero)
                     detailView.configure(quest: quest)
                     let imageView = UIImageView()
+                    imageView.contentMode = .center
                     ImageManager.setImage(on: imageView, name: "quest_" + (quest.key ?? ""))
                     let textView = UITextView()
                     textView.isScrollEnabled = false
-                    textView.text = quest.notes
+                    textView.attributedText = try? HabiticaMarkdownHelper.toHabiticaAttributedString(quest.notes ?? "")
                     textView.font = CustomFontMetrics.scaledSystemFont(ofSize: 14)
+                    textView.textColor = ThemeService.shared.theme.primaryTextColor
+                    textView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
                     let stackView = UIStackView(arrangedSubviews: [imageView, detailView, textView])
                     stackView.axis = .vertical
                     stackView.spacing = 12

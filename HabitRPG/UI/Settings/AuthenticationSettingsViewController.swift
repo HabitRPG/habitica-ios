@@ -207,13 +207,16 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
     }
     
     private func showEmailChangeAlert() {
+        if user?.authentication?.local?.email == nil {
+            return
+        }
         let alertController = HabiticaAlertController(title: L10n.Settings.changeEmail)
         
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 16
         let emailTextField = UITextField()
-        emailTextField.placeholder = L10n.Settings.newEmail
+        emailTextField.attributedPlaceholder = NSAttributedString(string: L10n.Settings.newEmail, attributes: [.foregroundColor: ThemeService.shared.theme.dimmedTextColor])
         emailTextField.borderStyle = .roundedRect
         emailTextField.keyboardType = .emailAddress
         emailTextField.autocapitalizationType = .none
@@ -223,7 +226,7 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         emailTextField.textColor = ThemeService.shared.theme.primaryTextColor
         stackView.addArrangedSubview(emailTextField)
         let passwordTextField = UITextField()
-        passwordTextField.placeholder = L10n.password
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: L10n.password, attributes: [.foregroundColor: ThemeService.shared.theme.dimmedTextColor])
         passwordTextField.isSecureTextEntry = true
         passwordTextField.borderStyle = .roundedRect
         passwordTextField.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
@@ -340,7 +343,9 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
             if let password = passwordTextField.text, let email = emailTextField.text, let confirmPassword = confirmTextField.text {
                 self?.userRepository.register(username: self?.user?.username ?? "", password: password, confirmPassword: confirmPassword, email: email).observeCompleted {
                     ToastManager.show(text: L10n.Settings.addedLocalAuth, color: .green)
-                    self?.userRepository.retrieveUser()
+                    self?.userRepository.retrieveUser().observeCompleted {
+                        self?.tableView.reloadData()
+                    }
                 }
             }
         }

@@ -41,8 +41,10 @@ class QuestCompletedAlertController: HabiticaAlertController {
                 stackView.addArrangedSubview(imageView)
             }
             let endTextView = UITextView()
-            endTextView.text = quest.completion
+            endTextView.attributedText = try? HabiticaMarkdownHelper.toHabiticaAttributedString(quest.completion ?? "")
             endTextView.font = CustomFontMetrics.scaledSystemFont(ofSize: 14)
+            endTextView.textColor = ThemeService.shared.theme.primaryTextColor
+            endTextView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
             endTextView.isScrollEnabled = false
             stackView.addArrangedSubview(endTextView)
         }).start()
