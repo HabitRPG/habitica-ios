@@ -48,6 +48,7 @@
 
 - (void)setPrice:(NSString *)price {
     [self.purchaseButton setText:price];
+    self.purchaseButton.tintColor = ObjcThemeWrapper.backgroundTintColor;
 }
 
 - (void)setPurchaseTap:(void (^)(HRPGPurchaseLoadingButton *))purchaseTap {

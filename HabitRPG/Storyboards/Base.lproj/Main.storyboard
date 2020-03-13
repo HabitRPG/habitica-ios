@@ -1381,7 +1381,7 @@
                                                 <constraint firstAttribute="height" constant="84" id="HN6-9G-pMA"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Gems allow you to buy fun extras for your account, including:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xhA-8b-NmG">
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Gems allow you to buy fun extras for your account, including:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xhA-8b-NmG">
                                             <rect key="frame" x="0.0" y="94" width="335" height="41"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" priority="500" constant="21" id="Myz-28-LqS"/>
@@ -1390,155 +1390,17 @@
                                             <color key="textColor" red="0.20000000000000001" green="0.086274509799999996" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="999" verticalCompressionResistancePriority="1000" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xmc-Sz-mph">
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="999" verticalCompressionResistancePriority="1000" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xmc-Sz-mph">
                                             <rect key="frame" x="0.0" y="145" width="335" height="82"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" priority="500" constant="21" id="Ns1-9T-eqn"/>
                                             </constraints>
-                                            <attributedString key="attributedText">
-                                                <fragment content="✔">
-                                                    <attributes>
-                                                        <color key="NSBackgroundColor" red="0.20000000000000001" green="0.086274509799999996" blue="0.37647058820000001" alpha="0.0" colorSpace="calibratedRGB"/>
-                                                        <color key="NSColor" red="0.20000000000000001" green="0.086274509799999996" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <font key="NSFont" size="12" name="ZapfDingbatsITC"/>
-                                                        <real key="NSKern" value="0.0"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" lineSpacing="6" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
-                                                            <tabStops/>
-                                                        </paragraphStyle>
-                                                        <color key="NSStrokeColor" red="0.14901960784313725" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment content=" ">
-                                                    <attributes>
-                                                        <color key="NSBackgroundColor" red="0.20000000000000001" green="0.086274509799999996" blue="0.37647058820000001" alpha="0.0" colorSpace="calibratedRGB"/>
-                                                        <color key="NSColor" red="0.20000000000000001" green="0.086274509799999996" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <font key="NSFont" metaFont="label" size="12"/>
-                                                        <real key="NSKern" value="0.0"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" lineSpacing="6" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
-                                                            <tabStops/>
-                                                        </paragraphStyle>
-                                                        <color key="NSStrokeColor" red="0.14901960784313725" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment>
-                                                    <string key="content">Cool costumes for your avatar
-</string>
-                                                    <attributes>
-                                                        <color key="NSBackgroundColor" red="0.20000000000000001" green="0.086274509799999996" blue="0.37647058820000001" alpha="0.0" colorSpace="calibratedRGB"/>
-                                                        <color key="NSColor" red="0.20000000000000001" green="0.086274509799999996" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <font key="NSFont" metaFont="label" size="12"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" lineSpacing="6" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
-                                                            <tabStops/>
-                                                        </paragraphStyle>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment content="✔">
-                                                    <attributes>
-                                                        <color key="NSBackgroundColor" red="0.20000000000000001" green="0.086274509799999996" blue="0.37647058820000001" alpha="0.0" colorSpace="calibratedRGB"/>
-                                                        <color key="NSColor" red="0.20000000000000001" green="0.086274509799999996" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <font key="NSFont" size="12" name="ZapfDingbatsITC"/>
-                                                        <real key="NSKern" value="0.0"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
-                                                            <tabStops/>
-                                                        </paragraphStyle>
-                                                        <color key="NSStrokeColor" red="0.14901960784313725" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment content=" ">
-                                                    <attributes>
-                                                        <color key="NSBackgroundColor" red="0.20000000000000001" green="0.086274509799999996" blue="0.37647058820000001" alpha="0.0" colorSpace="calibratedRGB"/>
-                                                        <color key="NSColor" red="0.20000000000000001" green="0.086274509799999996" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <font key="NSFont" metaFont="label" size="12"/>
-                                                        <real key="NSKern" value="0.0"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
-                                                            <tabStops/>
-                                                        </paragraphStyle>
-                                                        <color key="NSStrokeColor" red="0.14901960784313725" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment>
-                                                    <string key="content">Awesome backgrounds
-</string>
-                                                    <attributes>
-                                                        <color key="NSBackgroundColor" red="0.20000000000000001" green="0.086274509799999996" blue="0.37647058820000001" alpha="0.0" colorSpace="calibratedRGB"/>
-                                                        <color key="NSColor" red="0.20000000000000001" green="0.086274509799999996" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <font key="NSFont" metaFont="label" size="12"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
-                                                            <tabStops/>
-                                                        </paragraphStyle>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment content="✔">
-                                                    <attributes>
-                                                        <color key="NSBackgroundColor" red="0.20000000000000001" green="0.086274509799999996" blue="0.37647058820000001" alpha="0.0" colorSpace="calibratedRGB"/>
-                                                        <color key="NSColor" red="0.20000000000000001" green="0.086274509799999996" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <font key="NSFont" size="12" name="ZapfDingbatsITC"/>
-                                                        <real key="NSKern" value="0.0"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
-                                                            <tabStops/>
-                                                        </paragraphStyle>
-                                                        <color key="NSStrokeColor" red="0.14901960784313725" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment content=" ">
-                                                    <attributes>
-                                                        <color key="NSBackgroundColor" red="0.20000000000000001" green="0.086274509799999996" blue="0.37647058820000001" alpha="0.0" colorSpace="calibratedRGB"/>
-                                                        <color key="NSColor" red="0.20000000000000001" green="0.086274509799999996" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <font key="NSFont" metaFont="label" size="12"/>
-                                                        <real key="NSKern" value="0.0"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
-                                                            <tabStops/>
-                                                        </paragraphStyle>
-                                                        <color key="NSStrokeColor" red="0.14901960784313725" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment>
-                                                    <string key="content">Quests that reward you with pet eggs
-</string>
-                                                    <attributes>
-                                                        <color key="NSBackgroundColor" red="0.20000000000000001" green="0.086274509799999996" blue="0.37647058820000001" alpha="0.0" colorSpace="calibratedRGB"/>
-                                                        <color key="NSColor" red="0.20000000000000001" green="0.086274509799999996" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <font key="NSFont" metaFont="label" size="12"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
-                                                            <tabStops/>
-                                                        </paragraphStyle>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment content="✔">
-                                                    <attributes>
-                                                        <color key="NSBackgroundColor" red="0.20000000000000001" green="0.086274509799999996" blue="0.37647058820000001" alpha="0.0" colorSpace="calibratedRGB"/>
-                                                        <color key="NSColor" red="0.20000000000000001" green="0.086274509799999996" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <font key="NSFont" size="12" name="ZapfDingbatsITC"/>
-                                                        <real key="NSKern" value="0.0"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
-                                                            <tabStops/>
-                                                        </paragraphStyle>
-                                                        <color key="NSStrokeColor" red="0.14901960784313725" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment content=" ">
-                                                    <attributes>
-                                                        <color key="NSBackgroundColor" red="0.20000000000000001" green="0.086274509799999996" blue="0.37647058820000001" alpha="0.0" colorSpace="calibratedRGB"/>
-                                                        <color key="NSColor" red="0.20000000000000001" green="0.086274509799999996" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <font key="NSFont" metaFont="label" size="12"/>
-                                                        <real key="NSKern" value="0.0"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
-                                                            <tabStops/>
-                                                        </paragraphStyle>
-                                                        <color key="NSStrokeColor" red="0.14901960784313725" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment content="The ability to change your class before level 100">
-                                                    <attributes>
-                                                        <color key="NSBackgroundColor" red="0.20000000000000001" green="0.086274509799999996" blue="0.37647058820000001" alpha="0.0" colorSpace="calibratedRGB"/>
-                                                        <color key="NSColor" red="0.20000000000000001" green="0.086274509799999996" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <font key="NSFont" metaFont="label" size="12"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
-                                                            <tabStops/>
-                                                        </paragraphStyle>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
+                                            <string key="text">✔ Cool costumes for your avatar
+✔ Awesome backgrounds
+✔ Quests that reward you with pet eggs
+✔ The ability to change your class before level 100</string>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" red="0.20000000000000001" green="0.086274509799999996" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -2936,10 +2798,10 @@
         <image name="tabbar_todos" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="FPm-Dv-Zos"/>
+        <segue reference="ImE-mD-NfV"/>
         <segue reference="04Z-5H-zfF"/>
         <segue reference="ETz-qE-xC2"/>
-        <segue reference="jU9-l6-uQc"/>
+        <segue reference="mRM-bY-AV4"/>
         <segue reference="qTg-hC-uiS"/>
         <segue reference="tO1-JH-hWy"/>
     </inferredMetricsTieBreakers>

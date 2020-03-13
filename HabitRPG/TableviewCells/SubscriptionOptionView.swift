@@ -25,12 +25,18 @@ class SubscriptionOptionView: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         let animDuration = 0.3
+        let theme = ThemeService.shared.theme
         if selected {
             UIView.animate(withDuration: animDuration, animations: {[weak self] () in
                 self?.wrapperView.borderWidth = 2
                 self?.selectionView.image = Asset.circleSelected.image
-                self?.titleLabel?.textColor = UIColor.purple300
-                self?.priceLabel?.textColor = UIColor.purple300
+                if theme.isDark {
+                    self?.titleLabel?.textColor = UIColor.purple500
+                    self?.priceLabel?.textColor = UIColor.purple500
+                } else {
+                    self?.titleLabel?.textColor = UIColor.purple300
+                    self?.priceLabel?.textColor = UIColor.purple300
+                }
                 self?.gemCapLabel.textColor = UIColor.white
                 self?.gemCapLabel.backgroundColor = UIColor.purple400
                 self?.mysticHourglassLabel.textColor = UIColor.white
@@ -40,12 +46,12 @@ class SubscriptionOptionView: UITableViewCell {
             UIView.animate(withDuration: animDuration, animations: {[weak self] () in
                 self?.wrapperView.borderWidth = 0
                 self?.selectionView.image = Asset.circleUnselected.image
-                self?.titleLabel?.textColor = UIColor.gray50
-                self?.priceLabel?.textColor = UIColor.gray50
-                self?.gemCapLabel.textColor = UIColor.gray50
-                self?.gemCapLabel.backgroundColor = UIColor.gray600
-                self?.mysticHourglassLabel.textColor = UIColor.gray50
-                self?.mysticHourglassLabel.backgroundColor = UIColor.gray600
+                self?.titleLabel?.textColor = theme.secondaryTextColor
+                self?.priceLabel?.textColor = theme.secondaryTextColor
+                self?.gemCapLabel.textColor = theme.secondaryTextColor
+                self?.gemCapLabel.backgroundColor = theme.offsetBackgroundColor
+                self?.mysticHourglassLabel.textColor = theme.secondaryTextColor
+                self?.mysticHourglassLabel.backgroundColor = theme.offsetBackgroundColor
             })
         }
         wrapperView.backgroundColor = ThemeService.shared.theme.windowBackgroundColor

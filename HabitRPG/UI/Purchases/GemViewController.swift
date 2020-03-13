@@ -146,7 +146,20 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
             }
         } else if kind == UICollectionView.elementKindSectionHeader {
             if let headerImage = view.viewWithTag(1) as? UIImageView {
+                if (ThemeService.shared.theme.isDark) {
+                    headerImage.image = Asset.gemPurchaseHeaderDark.image
+                } else {
+                    headerImage.image = Asset.gemPurchaseHeader.image
+                }
                 headerImage.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
+            }
+            
+            if let headerLabel = view.viewWithTag(3) as? UILabel {
+                headerLabel.textColor = ThemeService.shared.theme.tintColor
+            }
+            
+            if let listLabel = view.viewWithTag(4) as? UILabel {
+                listLabel.textColor = ThemeService.shared.theme.tintColor
             }
             
             if configRepository.bool(variable: .enableGiftOneGetOne) {
