@@ -57,5 +57,28 @@ class EmptyTableViewCell: UITableViewCell, Themeable {
         cell.titleLabel.textColor = ThemeService.shared.theme.secondaryTextColor
         cell.firstParagraphLabel.textColor = ThemeService.shared.theme.secondaryTextColor
     }
+    
+    static func inboxChatStyle(cell: EmptyTableViewCell) {
+        cell.firstParagraphLabel.text = L10n.Empty.Inbox.description
+        cell.transform = CGAffineTransform(scaleX: 1, y: -1)
+    }
+    
+    static func inboxChatStyleUsername(displayName: String, contributorTier: Int?, username: String) -> (EmptyTableViewCell) -> () {
+        return { cell in
+            cell.secondParagraphLabel.text = displayName
+            cell.secondParagraphLabel.textColor = UIColor.contributorColor(forTier: contributorTier ?? 0)
+            cell.secondParagraphLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 16)
+            cell.firstParagraphLabel.text = "@\(username)"
+            cell.firstParagraphLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 12)
+            cell.titleLabel.text = L10n.Empty.Inbox.description
+            cell.titleLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 14)
+            cell.titleLabel.numberOfLines = 0
+            cell.secondParagraphLabel.transform = CGAffineTransform(scaleX: 1, y: -1)
+            cell.firstParagraphLabel.transform = CGAffineTransform(scaleX: 1, y: -1)
+            cell.titleLabel.transform = CGAffineTransform(scaleX: 1, y: -1)
+            cell.transform = CGAffineTransform(scaleX: 1, y: 1)
+            cell.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
+        }
+    }
 }
 

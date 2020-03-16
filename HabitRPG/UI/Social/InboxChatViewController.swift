@@ -35,6 +35,8 @@ class InboxChatViewController: SLKTextViewController, Themeable {
         
         let nib = UINib(nibName: "ChatMessageCell", bundle: nil)
         tableView?.register(nib, forCellReuseIdentifier: "ChatMessageCell")
+        tableView?.register(UINib(nibName: "EmptyTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "emptyCell")
+        dataSource.emptyDataSource = SingleItemTableViewDataSource<EmptyTableViewCell>(cellIdentifier: "emptyCell", styleFunction: EmptyTableViewCell.inboxChatStyle)
         
         if isPresentedModally {
             navigationItem.setRightBarButtonItems([doneBarButton], animated: false)

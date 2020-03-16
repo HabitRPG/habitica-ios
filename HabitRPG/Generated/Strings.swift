@@ -851,6 +851,11 @@ public enum L10n {
       public static var title: String { return L10n.tr("Mainstrings", "empty.habits.title") }
     }
 
+    public enum Inbox {
+      /// Start chatting below! Remember to be friendly and follow the Community Guidelines.
+      public static var description: String { return L10n.tr("Mainstrings", "empty.inbox.description") }
+    }
+
     public enum Notifications {
       /// The notification fairies give you a raucous round of applause! Well done!
       public static var description: String { return L10n.tr("Mainstrings", "empty.notifications.description") }

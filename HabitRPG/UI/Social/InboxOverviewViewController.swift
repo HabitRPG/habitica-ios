@@ -125,5 +125,6 @@ class InboxOverviewViewController: BaseTableViewController {
             }
         }
         alertController.show()
+        usernameTextField.becomeFirstResponder()
     }
 }

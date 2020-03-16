@@ -39,6 +39,8 @@ class InboxMessagesDataSource: BaseReactiveTableViewDataSource<InboxMessageProto
         }).start())
         disposable.inner.add(socialRepository.getMember(userID: otherUserID ?? otherUsername ?? "", retrieveIfNotFound: true).on(value: {[weak self]member in
             self?.viewController?.setTitleWith(username: member?.profile?.name)
+            (self?.emptyDataSource as? SingleItemTableViewDataSource)?.styleFunction = EmptyTableViewCell.inboxChatStyleUsername(displayName: member?.profile?.name ?? "", contributorTier: member?.contributor?.level, username: member?.username ?? "")
+            self?.tableView?.reloadData()
         }).start())
         disposable.inner.add(socialRepository.getMessages(withUserID: otherUserID ?? otherUsername ?? "").on(value: {[weak self] (messages, changes) in
             self?.sections[0].items = messages
@@ -130,7 +132,9 @@ class InboxMessagesDataSource: BaseReactiveTableViewDataSource<InboxMessageProto
     }
     
     func sendMessage(messageText: String) {
-        socialRepository.post(inboxMessage: messageText, toUserID: otherUserID ?? otherUsername ?? "").observeCompleted {}
+        socialRepository.post(inboxMessage: messageText, toUserID: otherUserID ?? otherUsername ?? "").observeCompleted {
+            self.tableView?.reloadData()
+        }
     }
     
     func retrieveData(forced: Bool, completed: (() -> Void)?) {
@@ -153,5 +157,10 @@ class InboxMessagesDataSource: BaseReactiveTableViewDataSource<InboxMessageProto
             .observeCompleted {
             completed?()
         }
+    }
+    
+    override func checkForEmpty() {
+        super.checkForEmpty()
+        tableView?.separatorStyle = .none
     }
 }
