@@ -31,8 +31,8 @@ class SubscriptionOptionView: UITableViewCell {
                 self?.wrapperView.borderWidth = 2
                 self?.selectionView.image = Asset.circleSelected.image
                 if theme.isDark {
-                    self?.titleLabel?.textColor = UIColor.purple500
-                    self?.priceLabel?.textColor = UIColor.purple500
+                    self?.titleLabel?.textColor = UIColor.white
+                    self?.priceLabel?.textColor = UIColor.white
                 } else {
                     self?.titleLabel?.textColor = UIColor.purple300
                     self?.priceLabel?.textColor = UIColor.purple300
@@ -46,8 +46,8 @@ class SubscriptionOptionView: UITableViewCell {
             UIView.animate(withDuration: animDuration, animations: {[weak self] () in
                 self?.wrapperView.borderWidth = 0
                 self?.selectionView.image = Asset.circleUnselected.image
-                self?.titleLabel?.textColor = theme.secondaryTextColor
-                self?.priceLabel?.textColor = theme.secondaryTextColor
+                self?.titleLabel?.textColor = theme.ternaryTextColor
+                self?.priceLabel?.textColor = theme.ternaryTextColor
                 self?.gemCapLabel.textColor = theme.secondaryTextColor
                 self?.gemCapLabel.backgroundColor = theme.offsetBackgroundColor
                 self?.mysticHourglassLabel.textColor = theme.secondaryTextColor

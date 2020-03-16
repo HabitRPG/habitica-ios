@@ -131,6 +131,8 @@ class SubscriptionViewController: BaseTableViewController {
         } else {
             navigationController?.navigationBar.backgroundColor = theme.contentBackgroundColor
         }
+        giftSubscriptionExplanationLabel.textColor = theme.ternaryTextColor
+        subscriptionSupportLabel.textColor = theme.secondaryTextColor
     }
     
     override func populateText() {
@@ -219,7 +221,7 @@ class SubscriptionViewController: BaseTableViewController {
             view.addSubview(separatorView)
             let titleView = UILabel()
             titleView.numberOfLines = 0
-            titleView.textColor = UIColor.purple300
+            titleView.textColor = ThemeService.shared.theme.tintColor
             titleView.font = CustomFontMetrics.scaledSystemFont(ofSize: 17, ofWeight: .semibold)
             titleView.textAlignment = .center
             if isSubscribed {
@@ -237,7 +239,7 @@ class SubscriptionViewController: BaseTableViewController {
             view.addSubview(separatorView)
             let titleView = UILabel()
             titleView.numberOfLines = 0
-            titleView.textColor = UIColor.purple300
+            titleView.textColor = ThemeService.shared.theme.tintColor
             titleView.font = CustomFontMetrics.scaledSystemFont(ofSize: 17, ofWeight: .semibold)
             titleView.textAlignment = .center
             titleView.text = L10n.subscriptionOptionsTitle
