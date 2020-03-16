@@ -925,6 +925,8 @@ public enum L10n {
     public static var sync: String { return L10n.tr("Mainstrings", "errors.sync") }
     /// There was an error syncing some changes.
     public static var syncMessage: String { return L10n.tr("Mainstrings", "errors.sync_message") }
+    /// User not found.
+    public static var userNotFound: String { return L10n.tr("Mainstrings", "errors.user_not_found") }
   }
 
   public enum Faint {

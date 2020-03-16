@@ -109,7 +109,6 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
         facebookLoginButton.setTitle(L10n.Login.loginFacebook, for: .normal)
         googleLoginButton.setTitle(L10n.Login.loginGoogle, for: .normal)
         appleLoginButton.setTitle(L10n.Login.loginApple, for: .normal)
-        appleLoginButton.isHidden = true
         
         forgotPasswordButton.setTitle(L10n.Login.forgotPassword, for: .normal)
         

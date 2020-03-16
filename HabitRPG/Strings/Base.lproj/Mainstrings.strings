@@ -619,6 +619,7 @@
 "errors.quest_invite_reject" = "There was an error rejecting the quest invitation";
 "errors.reply" = "Your message could not be sent.";
 "errors.request" = "There was an error with your request: %@";
+"errors.user_not_found" = "User not found.";
 "never" = "Never";
 "never_lower_case" = "never";
 "days" = "days";

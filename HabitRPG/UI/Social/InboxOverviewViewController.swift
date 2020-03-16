@@ -93,20 +93,32 @@ class InboxOverviewViewController: BaseTableViewController {
         let activityIndicator = UIActivityIndicatorView()
         activityIndicator.isHidden = true
         stackView.addArrangedSubview(activityIndicator)
+        
+        let errorView = UILabel()
+        errorView.isHidden = true
+        errorView.textColor = ThemeService.shared.theme.errorColor
+        errorView.text = L10n.Errors.userNotFound
+        stackView.addArrangedSubview(errorView)
 
         alertController.addCancelAction()
+        var foundUser = false
         alertController.addAction(title: L10n.next, isMainAction: true, closeOnTap: false) {[weak self] dialog in
             activityIndicator.isHidden = false
+            errorView.isHidden = true
             activityIndicator.startAnimating()
             if let username = usernameTextField.text {
                 self?.socialRepository.retrieveMember(userID: username).on(
                     value: { _ in
+                        foundUser = true
                         alertController.dismiss(animated: true, completion: {
                             self?.perform(segue: StoryboardSegue.Social.chatSegue)
                         })
                 }
                 ).observeCompleted {
                     activityIndicator.isHidden = true
+                    if !foundUser {
+                        errorView.isHidden = false
+                    }
                 }
                 self?.newMessageUsername = username
                 
