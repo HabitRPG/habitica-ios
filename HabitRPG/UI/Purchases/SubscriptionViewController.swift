@@ -133,6 +133,12 @@ class SubscriptionViewController: BaseTableViewController {
         }
         giftSubscriptionExplanationLabel.textColor = theme.ternaryTextColor
         subscriptionSupportLabel.textColor = theme.secondaryTextColor
+        
+        if theme.isDark {
+            headerImage.image = Asset.subscribeHeaderDark.image
+        } else {
+            headerImage.image = Asset.subscribeHeader.image
+        }
     }
     
     override func populateText() {

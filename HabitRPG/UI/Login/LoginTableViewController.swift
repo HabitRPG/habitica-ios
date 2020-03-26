@@ -223,6 +223,15 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
 
     func setupButtons() {
         self.loginButton.reactive.title <~ self.viewModel.outputs.loginButtonTitle
+        self.facebookLoginButton.reactive.title <~ self.viewModel.outputs.socialLoginButtonTitle.map({ (title) in
+            return title("Facebook")
+        })
+        self.googleLoginButton.reactive.title <~ self.viewModel.outputs.socialLoginButtonTitle.map({ (title) in
+            return title("Google")
+        })
+        self.appleLoginButton.reactive.title <~ self.viewModel.outputs.socialLoginButtonTitle.map({ (title) in
+            return title("Apple")
+        })
         self.loginButton.reactive.isEnabled <~ self.viewModel.outputs.isFormValid
     }
 

@@ -88,12 +88,12 @@ class ItemsViewController: BaseTableViewController {
     private func showActionSheet(item: ItemProtocol, withSource sourceView: UIView?) {
         let alertController = UIAlertController(title: item.text, message: nil, preferredStyle: .actionSheet)
         if item.itemType == ItemType.eggs {
-            alertController.addAction(UIAlertAction(title: L10n.hatchEgg, style: .default, handler: {[weak self] (_) in
+            alertController.addAction(UIAlertAction(title: L10n.hatchPotion, style: .default, handler: {[weak self] (_) in
                 self?.dataSource.hatchingItem = item
                 self?.isHatching = true
             }))
         } else if item.itemType == ItemType.hatchingPotions {
-            alertController.addAction(UIAlertAction(title: L10n.hatchPotion, style: .default, handler: {[weak self] (_) in
+            alertController.addAction(UIAlertAction(title: L10n.hatchEgg, style: .default, handler: {[weak self] (_) in
                 self?.dataSource.hatchingItem = item
                 self?.isHatching = true
             }))

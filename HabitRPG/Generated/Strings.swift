@@ -228,7 +228,7 @@ public enum L10n {
   public static var groupBy: String { return L10n.tr("Mainstrings", "group_by") }
   /// Group Plan
   public static var groupPlan: String { return L10n.tr("Mainstrings", "group_plan") }
-  /// Hatch egg
+  /// Use with egg
   public static var hatchEgg: String { return L10n.tr("Mainstrings", "hatch_egg") }
   /// Hatch with potion
   public static var hatchPotion: String { return L10n.tr("Mainstrings", "hatch_potion") }
@@ -1109,6 +1109,14 @@ public enum L10n {
     public static var register: String { return L10n.tr("Mainstrings", "login.register") }
     /// If we have your email on file, instructions for setting a new password have been sent to your email.
     public static var resetPasswordResponse: String { return L10n.tr("Mainstrings", "login.reset_password_response") }
+    /// Login with %@
+    public static func socialLogin(_ p1: String) -> String {
+      return L10n.tr("Mainstrings", "login.social_login", p1)
+    }
+    /// Register with %@
+    public static func socialRegister(_ p1: String) -> String {
+      return L10n.tr("Mainstrings", "login.social_register", p1)
+    }
   }
 
   public enum Member {

@@ -32,12 +32,12 @@ class InboxMessagesDataSource: BaseReactiveTableViewDataSource<InboxMessageProto
         
         disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
             self?.user = user
+        }).start())
+        disposable.inner.add(socialRepository.getMember(userID: otherUserID ?? otherUsername ?? "", retrieveIfNotFound: true).on(value: {[weak self] member in
             if (self?.otherUserID == nil) {
-                self?.otherUserID = user.id
+                self?.otherUserID = member?.id
             }
             self?.tableView?.reloadData()
-        }).start())
-        disposable.inner.add(socialRepository.getMember(userID: otherUserID ?? otherUsername ?? "", retrieveIfNotFound: true).on(value: {[weak self]member in
             self?.viewController?.setTitleWith(username: member?.profile?.name)
             (self?.emptyDataSource as? SingleItemTableViewDataSource)?.styleFunction = EmptyTableViewCell.inboxChatStyleUsername(displayName: member?.profile?.name ?? "", contributorTier: member?.contributor?.level, username: member?.username ?? "")
             self?.tableView?.reloadData()

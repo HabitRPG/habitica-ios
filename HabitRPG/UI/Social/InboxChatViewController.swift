@@ -67,6 +67,8 @@ class InboxChatViewController: SLKTextViewController, Themeable {
         tableView?.refreshControl = refreshControl
         
         ThemeService.shared.addThemeable(themable: self)
+        
+        refresh()
     }
     
     func applyTheme(theme: Theme) {

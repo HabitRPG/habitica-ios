@@ -54,6 +54,7 @@ protocol LoginViewModelOutputs {
     var authTypeButtonTitle: Signal<String, Never> { get }
     var usernameFieldTitle: Signal<String, Never> { get }
     var loginButtonTitle: Signal<String, Never> { get }
+    var socialLoginButtonTitle: Signal<(String) -> String, Never> { get }
     var isFormValid: Signal<Bool, Never> { get }
 
     var emailFieldVisibility: Signal<Bool, Never> { get }
@@ -128,6 +129,17 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
                 return nil
             }
         }.skipNil()
+        
+        self.socialLoginButtonTitle = authTypeProperty.signal.map { value -> (String) -> String in
+            switch value {
+            case .login:
+                return L10n.Login.socialLogin
+            case .register:
+                return L10n.Login.socialRegister
+            case .none:
+                return { _ in return ""}
+            }
+        }
 
         self.usernameFieldTitle = authTypeProperty.signal.map { value -> String? in
             switch value {
@@ -439,6 +451,7 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
 
     internal var authTypeButtonTitle: Signal<String, Never>
     internal var loginButtonTitle: Signal<String, Never>
+    internal var socialLoginButtonTitle: Signal<(String) -> String, Never>
     internal var usernameFieldTitle: Signal<String, Never>
     internal var isFormValid: Signal<Bool, Never>
     internal var emailFieldVisibility: Signal<Bool, Never>

@@ -196,6 +196,7 @@ internal enum Asset {
   internal static let subBenefitsHourglasses = ImageAsset(name: "sub_benefits_hourglasses")
   internal static let subBenefitsPet = ImageAsset(name: "sub_benefits_pet")
   internal static let subscribeHeader = ImageAsset(name: "subscribe_header")
+  internal static let subscribeHeaderDark = ImageAsset(name: "subscribe_header_dark")
   internal static let subscriberHeader = ImageAsset(name: "subscriber_header")
   internal static let subscriptionPromoGems = ImageAsset(name: "subscription_promo_gems")
   internal static let subscriptionPromoGold = ImageAsset(name: "subscription_promo_gold")

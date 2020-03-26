@@ -350,7 +350,7 @@
 "quests" = "Quests";
 "specialItems" = "Special Items";
 "sell" = "Sell for %d gold";
-"hatch_egg" = "Hatch egg";
+"hatch_egg" = "Use with egg";
 "hatch_potion" = "Hatch with potion";
 "invite_party" = "Invite Party";
 "share" = "Share";
@@ -563,7 +563,9 @@
 "login.password_confirm_error" = "Password and password confirmation have to match.";
 "login.authentication_error" = "There was an error with the authentication. Try again later";
 "login.register" = "Register";
+"login.social_register" = "Register with %@";
 "login.login" = "Login";
+"login.social_login" = "Login with %@";
 "login.email_username" = "Email / Username";
 "login.login_facebook" = "Login with Facebook";
 "login.login_google" = "Login with Google";

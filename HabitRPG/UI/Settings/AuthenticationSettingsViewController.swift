@@ -338,9 +338,20 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         stackView.addArrangedSubview(confirmTextField)
         alertController.contentView = stackView
         
+        let errorView = UILabel()
+        errorView.text = L10n.Login.passwordConfirmError
+        errorView.textColor = ThemeService.shared.theme.errorColor
+        errorView.isHidden = true
+        stackView.addArrangedSubview(errorView)
+        
         alertController.addCancelAction()
         alertController.addAction(title: L10n.add, isMainAction: true) {[weak self] _ in
+            errorView.isHidden = true
             if let password = passwordTextField.text, let email = emailTextField.text, let confirmPassword = confirmTextField.text {
+                if (password != confirmPassword) {
+                    errorView.isHidden = false
+                    return
+                }
                 self?.userRepository.register(username: self?.user?.username ?? "", password: password, confirmPassword: confirmPassword, email: email).observeCompleted {
                     ToastManager.show(text: L10n.Settings.addedLocalAuth, color: .green)
                     self?.userRepository.retrieveUser().observeCompleted {
