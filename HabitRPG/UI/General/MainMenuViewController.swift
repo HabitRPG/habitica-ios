@@ -354,13 +354,13 @@ class MainMenuViewController: BaseTableViewController {
             let giftSubscriptionController = navigationController?.topViewController as? GiftSubscriptionViewController
             giftSubscriptionController?.giftRecipientUsername = giftRecipientUsername
         } else if (segue.identifier == StoryboardSegue.Main.showMarketSegue.rawValue) {
-            (segue.destination as? HRPGShopViewController)?.shopIdentifier = "market"
+            (segue.destination as? HRPGShopViewController)?.shopIdentifier = Constants.MarketKey
         } else if (segue.identifier == StoryboardSegue.Main.showQuestShopSegue.rawValue) {
-            (segue.destination as? HRPGShopViewController)?.shopIdentifier = "questShop"
+            (segue.destination as? HRPGShopViewController)?.shopIdentifier = Constants.QuestShopKey
         } else if (segue.identifier == StoryboardSegue.Main.showSeasonalShopSegue.rawValue) {
-            (segue.destination as? HRPGShopViewController)?.shopIdentifier = "seasonalShop"
+            (segue.destination as? HRPGShopViewController)?.shopIdentifier = Constants.SeasonalShopKey
         } else if (segue.identifier == StoryboardSegue.Main.showTimeTravelersSegue.rawValue) {
-            (segue.destination as? HRPGShopViewController)?.shopIdentifier = "timeTravelersShop"
+            (segue.destination as? HRPGShopViewController)?.shopIdentifier = Constants.TimeTravelersShopKey
         }
     }
 }
