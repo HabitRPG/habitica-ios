@@ -347,10 +347,14 @@
 "food" = "Food";
 "eggs" = "Eggs";
 "hatching_potions" = "Hatching Potions";
+"egg" = "Egg";
+"hatching_potion" = "Hatching Potion";
+"food_singular" = "Food";
+"quest" = "Quest";
 "quests" = "Quests";
 "specialItems" = "Special Items";
-"sell" = "Sell for %d gold";
-"hatch_egg" = "Use with egg";
+"sell" = "Sell for %d Gold";
+"hatch_egg" = "Use on Egg";
 "hatch_potion" = "Hatch with potion";
 "invite_party" = "Invite Party";
 "share" = "Share";

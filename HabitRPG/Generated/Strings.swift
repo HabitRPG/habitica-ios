@@ -152,6 +152,8 @@ public enum L10n {
   public static var editChallengeTasks: String { return L10n.tr("Mainstrings", "edit_challenge_tasks") }
   /// Edit Tag
   public static var editTag: String { return L10n.tr("Mainstrings", "edit_tag") }
+  /// Egg
+  public static var egg: String { return L10n.tr("Mainstrings", "egg") }
   /// Eggs
   public static var eggs: String { return L10n.tr("Mainstrings", "eggs") }
   /// Email
@@ -176,6 +178,8 @@ public enum L10n {
   public static var flower: String { return L10n.tr("Mainstrings", "flower") }
   /// Food
   public static var food: String { return L10n.tr("Mainstrings", "food") }
+  /// Food
+  public static var foodSingular: String { return L10n.tr("Mainstrings", "food_singular") }
   /// Force Start
   public static var forceStart: String { return L10n.tr("Mainstrings", "force_start") }
   /// Friday
@@ -228,10 +232,12 @@ public enum L10n {
   public static var groupBy: String { return L10n.tr("Mainstrings", "group_by") }
   /// Group Plan
   public static var groupPlan: String { return L10n.tr("Mainstrings", "group_plan") }
-  /// Use with egg
+  /// Use on Egg
   public static var hatchEgg: String { return L10n.tr("Mainstrings", "hatch_egg") }
   /// Hatch with potion
   public static var hatchPotion: String { return L10n.tr("Mainstrings", "hatch_potion") }
+  /// Hatching Potion
+  public static var hatchingPotion: String { return L10n.tr("Mainstrings", "hatching_potion") }
   /// Hatching Potions
   public static var hatchingPotions: String { return L10n.tr("Mainstrings", "hatching_potions") }
   /// Headband
@@ -398,6 +404,8 @@ public enum L10n {
   public static func purchased(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "purchased", p1)
   }
+  /// Quest
+  public static var quest: String { return L10n.tr("Mainstrings", "quest") }
   /// Quest Completed!
   public static var questCompletedTitle: String { return L10n.tr("Mainstrings", "quest_completed_title") }
   /// Quests
@@ -456,7 +464,7 @@ public enum L10n {
   public static var save: String { return L10n.tr("Mainstrings", "save") }
   /// Search
   public static var search: String { return L10n.tr("Mainstrings", "search") }
-  /// Sell for %d gold
+  /// Sell for %d Gold
   public static func sell(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "sell", p1)
   }

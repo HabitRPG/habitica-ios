@@ -101,7 +101,24 @@ class ItemsViewController: BaseTableViewController {
     }
 
     private func showActionSheet(item: ItemProtocol, withSource sourceView: UIView?) {
-        let alertController = UIAlertController(title: item.text, message: nil, preferredStyle: .actionSheet)
+        var type = ""
+        switch item.itemType {
+        case "egg":
+            type = L10n.egg
+            break
+        case "hatchingPotion":
+            type = L10n.hatchingPotion
+            break
+        case "food":
+            type = L10n.food
+            break
+        case "quest":
+            type = L10n.quest
+            break
+        default:
+            break
+        }
+        let alertController = UIAlertController(title: "\(item.text) \(type)", message: nil, preferredStyle: .actionSheet)
         if item.itemType == ItemType.eggs {
             alertController.addAction(UIAlertAction(title: L10n.hatchPotion, style: .default, handler: {[weak self] (_) in
                 self?.dataSource.hatchingItem = item

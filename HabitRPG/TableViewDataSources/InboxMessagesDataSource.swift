@@ -36,13 +36,21 @@ class InboxMessagesDataSource: BaseReactiveTableViewDataSource<InboxMessageProto
         disposable.inner.add(socialRepository.getMember(userID: otherUserID ?? otherUsername ?? "", retrieveIfNotFound: true).on(value: {[weak self] member in
             if (self?.otherUserID == nil) {
                 self?.otherUserID = member?.id
+                self?.loadMessages()
             }
             self?.tableView?.reloadData()
             self?.viewController?.setTitleWith(username: member?.profile?.name)
             (self?.emptyDataSource as? SingleItemTableViewDataSource)?.styleFunction = EmptyTableViewCell.inboxChatStyleUsername(displayName: member?.profile?.name ?? "", contributorTier: member?.contributor?.level, username: member?.username ?? "")
             self?.tableView?.reloadData()
         }).start())
-        disposable.inner.add(socialRepository.getMessages(withUserID: otherUserID ?? otherUsername ?? "").on(value: {[weak self] (messages, changes) in
+        loadMessages()
+    }
+    
+    private func loadMessages() {
+        guard let userID = self.otherUserID else {
+            return
+        }
+        disposable.inner.add(socialRepository.getMessages(withUserID: userID).on(value: {[weak self] (messages, changes) in
             self?.sections[0].items = messages
             self?.notify(changes: changes)
         }).start())
