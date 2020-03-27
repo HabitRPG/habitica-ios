@@ -564,7 +564,9 @@
 "about.no_email_title" = "Your email isn't set up yet";
 "about.no_email_message" = "Whoops, looks like you haven't set up your email on this phone yet. Configure an account in the iOS mail app to use this quick-reporting option, or just email us directly at %@";
 "damage_paused" = "Damage Paused";
-"login.password_confirm_error" = "Password and password confirmation have to match.";
+"login.password_confirm_error" = "Password and password confirmation have to match and be longer than 8 characters.";
+"login.email_invalid" = "Please enter a valid email.";
+"login.register_error" = "There was an issue with the request. Please check all data carefully.";
 "login.authentication_error" = "There was an error with the authentication. Try again later";
 "login.register" = "Register";
 "login.social_register" = "Register with %@";

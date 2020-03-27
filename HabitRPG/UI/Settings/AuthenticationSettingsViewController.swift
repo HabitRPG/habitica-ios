@@ -339,23 +339,47 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         alertController.contentView = stackView
         
         let errorView = UILabel()
-        errorView.text = L10n.Login.passwordConfirmError
         errorView.textColor = ThemeService.shared.theme.errorColor
+        errorView.numberOfLines = 0
         errorView.isHidden = true
         stackView.addArrangedSubview(errorView)
         
+        let loadingView = UIActivityIndicatorView()
+        loadingView.isHidden = true
+        stackView.addArrangedSubview(loadingView)
+        
         alertController.addCancelAction()
-        alertController.addAction(title: L10n.add, isMainAction: true) {[weak self] _ in
+        alertController.addAction(title: L10n.add, isMainAction: true, closeOnTap: false) {[weak self] _ in
             errorView.isHidden = true
             if let password = passwordTextField.text, let email = emailTextField.text, let confirmPassword = confirmTextField.text {
-                if (password != confirmPassword) {
+                if (password != confirmPassword || password.count < 8) {
+                    errorView.text = L10n.Login.passwordConfirmError
                     errorView.isHidden = false
                     return
                 }
-                self?.userRepository.register(username: self?.user?.username ?? "", password: password, confirmPassword: confirmPassword, email: email).observeCompleted {
-                    ToastManager.show(text: L10n.Settings.addedLocalAuth, color: .green)
-                    self?.userRepository.retrieveUser().observeCompleted {
-                        self?.tableView.reloadData()
+                if (email.count == 0) {
+                    errorView.text = L10n.Login.emailInvalid
+                    errorView.isHidden = false
+                    return
+                }
+                loadingView.isHidden = false
+                loadingView.startAnimating()
+                emailTextField.resignFirstResponder()
+                passwordTextField.resignFirstResponder()
+                confirmTextField.resignFirstResponder()
+                self?.userRepository.register(username: self?.user?.username ?? "", password: password, confirmPassword: confirmPassword, email: email).observeResult { result in
+                    loadingView.isHidden = true
+                    if (try? result.get()) != nil {
+                        alertController.dismiss(animated: true, completion: nil)
+                        self?.userRepository.retrieveUser().observeValues { user in
+                            if user?.authentication?.local?.email != nil {
+                                ToastManager.show(text: L10n.Settings.addedLocalAuth, color: .green)
+                            }
+                            self?.tableView.reloadData()
+                        }
+                    } else {
+                        errorView.text = L10n.Login.emailInvalid
+                        errorView.isHidden = false
                     }
                 }
             }

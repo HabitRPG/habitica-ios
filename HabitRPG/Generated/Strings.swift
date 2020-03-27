@@ -1095,6 +1095,8 @@ public enum L10n {
   public enum Login {
     /// There was an error with the authentication. Try again later
     public static var authenticationError: String { return L10n.tr("Mainstrings", "login.authentication_error") }
+    /// Please enter a valid email.
+    public static var emailInvalid: String { return L10n.tr("Mainstrings", "login.email_invalid") }
     /// Email a Password Reset Link
     public static var emailPasswordLink: String { return L10n.tr("Mainstrings", "login.email_password_link") }
     /// Email / Username
@@ -1111,10 +1113,12 @@ public enum L10n {
     public static var loginFacebook: String { return L10n.tr("Mainstrings", "login.login_facebook") }
     /// Login with Google
     public static var loginGoogle: String { return L10n.tr("Mainstrings", "login.login_google") }
-    /// Password and password confirmation have to match.
+    /// Password and password confirmation have to match and be longer than 8 characters.
     public static var passwordConfirmError: String { return L10n.tr("Mainstrings", "login.password_confirm_error") }
     /// Register
     public static var register: String { return L10n.tr("Mainstrings", "login.register") }
+    /// There was an issue with the request. Please check all data carefully.
+    public static var registerError: String { return L10n.tr("Mainstrings", "login.register_error") }
     /// If we have your email on file, instructions for setting a new password have been sent to your email.
     public static var resetPasswordResponse: String { return L10n.tr("Mainstrings", "login.reset_password_response") }
     /// Login with %@
