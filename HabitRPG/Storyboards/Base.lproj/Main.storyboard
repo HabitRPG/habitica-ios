@@ -1129,7 +1129,7 @@
                                             <color key="textColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" tag="3" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tnL-5m-eCi">
+                                        <imageView userInteractionEnabled="NO" tag="3" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tnL-5m-eCi" customClass="AnimatedImageView" customModule="Kingfisher">
                                             <rect key="frame" x="8" y="0.0" width="68" height="68"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="68" id="FLy-AU-ha2"/>
@@ -1190,7 +1190,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" tag="3" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uYF-on-EP6">
+                                        <imageView userInteractionEnabled="NO" tag="3" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uYF-on-EP6" customClass="AnimatedImageView" customModule="Kingfisher">
                                             <rect key="frame" x="16" y="10" width="80" height="80"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="80" id="kBl-x5-qV3"/>
@@ -1876,7 +1876,7 @@
                                             <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" tag="3" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LPU-bD-OrN">
+                                        <imageView userInteractionEnabled="NO" tag="3" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LPU-bD-OrN" customClass="AnimatedImageView" customModule="Kingfisher">
                                             <rect key="frame" x="8" y="0.0" width="68" height="68"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="68" id="dF9-9O-Zgd"/>
@@ -2802,7 +2802,7 @@
         <segue reference="04Z-5H-zfF"/>
         <segue reference="ETz-qE-xC2"/>
         <segue reference="mRM-bY-AV4"/>
-        <segue reference="qTg-hC-uiS"/>
+        <segue reference="V6b-ej-qnx"/>
         <segue reference="tO1-JH-hWy"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.44783598184585571" green="0.10848048329353333" blue="0.9984632134437561" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

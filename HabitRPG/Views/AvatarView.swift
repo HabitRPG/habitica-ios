@@ -41,32 +41,6 @@ class AvatarView: UIView {
     private var nameDictionary: [String: String?] = [:]
     private var viewDictionary: [String: Bool] = [:]
     
-    private let formatDictionary = [
-        "head_special_0": "gif",
-        "head_special_1": "gif",
-        "shield_special_0": "gif",
-        "weapon_special_0": "gif",
-        "slim_armor_special_0": "gif",
-        "slim_armor_special_1": "gif",
-        "broad_armor_special_0": "gif",
-        "broad_armor_special_1": "gif",
-        "weapon_special_critical": "gif",
-        "Pet-Wolf-Cerberus": "gif",
-        "armor_special_ks2019": "gif",
-        "slim_armor_special_ks2019": "gif",
-        "broad_armor_special_ks2019": "gif",
-        "eyewear_special_ks2019": "gif",
-        "head_special_ks2019": "gif",
-        "shield_special_ks2019": "gif",
-        "weapon_special_ks2019": "gif",
-        "Pet-Gryphon-Gryphatrice": "gif",
-        "Mount_Head_Gryphon-Gryphatrice": "gif",
-        "Mount_Body_Gryphon-Gryphatrice": "gif",
-        "background_clocktower" : "gif",
-        "background_airship" : "gif",
-        "background_steamworks" : "gif"
-    ]
-    
     private let viewOrder = [
         "background",
         "mount-body",
@@ -231,7 +205,7 @@ class AvatarView: UIView {
         guard let name = nameDictionary[type] else {
             return
         }
-        imageView.setImagewith(name: name, extension: getFormat(name: name ?? ""), completion: { image, error in
+        imageView.setImagewith(name: name, completion: { image, error in
             if let image = image, type != "background" {
                 self.resize(view: imageView, image: image, size: self.size)
                 self.setLayout(imageView, type: type)
@@ -282,9 +256,5 @@ class AvatarView: UIView {
         } else {
             constraintsDictionary[type]?(self, imageView, size, offset)
         }
-    }
-    
-    private func getFormat(name: String) -> String {
-        return formatDictionary[name] ?? "png"
     }
 }

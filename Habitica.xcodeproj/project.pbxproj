@@ -2116,8 +2116,8 @@
 		D95704371E106BF3004F6804 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				29255E4C1F3E25910094A3E3 /* CGRect-Extensions.swift */,
 				29DC5ABF20A1B81C00993400 /* CALayer-Extensions.swift */,
+				29255E4C1F3E25910094A3E3 /* CGRect-Extensions.swift */,
 				491C6E5A2020FE64005030A2 /* Challenge-Extensions.swift */,
 				29323E4820521FD500AC6D6F /* ContributorProtocol-Extensions.swift */,
 				D9CE90461E4CDF3F00702578 /* Designable-Extensions.swift */,
@@ -2125,6 +2125,7 @@
 				D9525F9E1E65A18300C529B8 /* EmojifiedString.swift */,
 				D95704421E1528F2004F6804 /* Event-Extensions.swift */,
 				292F967D207239A700804151 /* ImageView-Extensions.swift */,
+				29A06E1C23ED4125003BADE9 /* InAppRewardProtocol-Extensions.swift */,
 				291448872088F3F700F3A6B5 /* NSAttributedString.swift */,
 				29FD8AA6203DA42A0094322E /* NSLayoutConstraint-Extensions.swift */,
 				29FC885B2018D47D002B3D3F /* Quest-Extensions.swift */,
@@ -2132,15 +2133,14 @@
 				29F89F191F47882A004E5B84 /* String-Extensions.swift */,
 				29646DE0205C18FA0050886C /* TaskType-Extensions.swift */,
 				29A1B9B81F6ACC2F0055CF57 /* UIAlertAction-Extensions.swift */,
-				292AA72320FE15090022CC5F /* UIFont-Extensions.swift */,
 				D96BFC4E1E191D7200266EEF /* UIAlertController-Extensions.swift */,
 				29701FDF1F560D310097BBCC /* UIApplication-Extensions.swift */,
 				29ED1AFE1F339ACF005A3895 /* UIColor-Extensions.swift */,
-				D9D17CCF1E673CCC00AD9232 /* UIView-Extensions.swift */,
-				29A62B0A216CF4E200D4BD90 /* UIDevice-Extensions.swift */,
-				29A9B06622843DEB0049291E /* UINotificationFeedbackGenerator.swift */,
 				291CE4B5231E828D0001A243 /* UIColor-Habitica.swift */,
-				29A06E1C23ED4125003BADE9 /* InAppRewardProtocol-Extensions.swift */,
+				29A62B0A216CF4E200D4BD90 /* UIDevice-Extensions.swift */,
+				292AA72320FE15090022CC5F /* UIFont-Extensions.swift */,
+				29A9B06622843DEB0049291E /* UINotificationFeedbackGenerator.swift */,
+				D9D17CCF1E673CCC00AD9232 /* UIView-Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -4129,7 +4129,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 452;
+				CURRENT_PROJECT_VERSION = 454;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4164,7 +4164,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 452;
+				CURRENT_PROJECT_VERSION = 454;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4198,7 +4198,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 452;
+				CURRENT_PROJECT_VERSION = 454;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4235,7 +4235,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 452;
+				CURRENT_PROJECT_VERSION = 454;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4497,7 +4497,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 452;
+				CURRENT_PROJECT_VERSION = 454;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -4552,7 +4552,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 452;
+				CURRENT_PROJECT_VERSION = 454;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -4582,7 +4582,7 @@
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 452;
+				CURRENT_PROJECT_VERSION = 454;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_SOURCE_FILE_NAMES = "";
@@ -4675,7 +4675,7 @@
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 452;
+				CURRENT_PROJECT_VERSION = 454;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_SOURCE_FILE_NAMES = "FLEX*";

@@ -345,6 +345,7 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         stackView.addArrangedSubview(errorView)
         
         let loadingView = UIActivityIndicatorView()
+        loadingView.color = ThemeService.shared.theme.tintColor
         loadingView.isHidden = true
         stackView.addArrangedSubview(loadingView)
         
@@ -369,7 +370,8 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
                 confirmTextField.resignFirstResponder()
                 self?.userRepository.register(username: self?.user?.username ?? "", password: password, confirmPassword: confirmPassword, email: email).observeResult { result in
                     loadingView.isHidden = true
-                    if (try? result.get()) != nil {
+                    switch result {
+                    case .success:
                         alertController.dismiss(animated: true, completion: nil)
                         self?.userRepository.retrieveUser().observeValues { user in
                             if user?.authentication?.local?.email != nil {
@@ -377,8 +379,8 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
                             }
                             self?.tableView.reloadData()
                         }
-                    } else {
-                        errorView.text = L10n.Login.emailInvalid
+                    case .failure:
+                        errorView.text = L10n.Login.registerError
                         errorView.isHidden = false
                     }
                 }

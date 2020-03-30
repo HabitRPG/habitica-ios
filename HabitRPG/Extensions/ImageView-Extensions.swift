@@ -11,13 +11,13 @@ import Kingfisher
 
 extension ImageView {
     
-    func setImagewith(name: String?, extension fileExtension: String = "png", completion: ((UIImage?, NSError?) -> Void)? = nil) {
+    func setImagewith(name: String?, extension fileExtension: String = "", completion: ((UIImage?, NSError?) -> Void)? = nil) {
         if let name = name {
             ImageManager.setImage(on: self, name: name, extension: fileExtension, completion: completion)
         }
     }
     
-    func setShopImagewith(name: String?, extension fileExtension: String = "png", completion: ((UIImage?, NSError?) -> Void)? = nil) {
+    func setShopImagewith(name: String?, extension fileExtension: String = "", completion: ((UIImage?, NSError?) -> Void)? = nil) {
         if let name = name {
             ImageManager.setImage(on: self, name: "shop_\(name)", extension: fileExtension, completion: completion)
         }
