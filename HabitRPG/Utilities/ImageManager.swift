@@ -38,7 +38,8 @@ class ImageManager: NSObject {
         "background_airship" : "gif",
         "background_steamworks" : "gif",
         "Pet_HatchingPotion_Veggie" : "gif",
-        "Pet_HatchingPotion_Dessert" : "gif"
+        "Pet_HatchingPotion_Dessert" : "gif",
+        "Pet-HatchingPotion-Dessert" : "gif"
     ]
     
     @objc

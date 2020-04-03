@@ -22,6 +22,7 @@ class RealmFlags: Object, FlagsProtocol {
     @objc dynamic var classSelected: Bool = false
     @objc dynamic var itemsEnabled: Bool = false
     @objc dynamic var verifiedUsername: Bool = false
+    @objc dynamic var welcomed: Bool = false
     var tutorials: [TutorialStepProtocol] {
         get {
             return realmTutorials.map({ (quest) -> TutorialStepProtocol in
@@ -60,5 +61,6 @@ class RealmFlags: Object, FlagsProtocol {
         itemsEnabled = flags.itemsEnabled
         tutorials = flags.tutorials
         verifiedUsername = flags.verifiedUsername
+        welcomed = flags.welcomed
     }
 }

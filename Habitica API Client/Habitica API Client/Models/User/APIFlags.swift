@@ -21,6 +21,7 @@ class APIFlags: FlagsProtocol, Decodable {
     var itemsEnabled: Bool = false
     var verifiedUsername: Bool = false
     var tutorials: [TutorialStepProtocol]
+    var welcomed: Bool = false
     
     enum CodingKeys: String, CodingKey {
         case armoireEmpty
@@ -34,6 +35,7 @@ class APIFlags: FlagsProtocol, Decodable {
         case itemsEnabled
         case verifiedUsername
         case tutorials = "tutorial"
+        case welcomed
     }
     
     public required init(from decoder: Decoder) throws {
@@ -48,6 +50,7 @@ class APIFlags: FlagsProtocol, Decodable {
         classSelected = (try? values.decode(Bool.self, forKey: .classSelected)) ?? false
         itemsEnabled = (try? values.decode(Bool.self, forKey: .itemsEnabled)) ?? false
         verifiedUsername = (try? values.decode(Bool.self, forKey: .verifiedUsername)) ?? false
+        welcomed = (try? values.decode(Bool.self, forKey: .welcomed)) ?? false
         tutorials = []
         try? values.decode([String: [String: Bool]].self, forKey: .tutorials).forEach({ tutorialTypes in
                 tutorialTypes.value.forEach({ (key, wasSeen) in

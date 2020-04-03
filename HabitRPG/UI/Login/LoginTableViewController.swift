@@ -100,15 +100,10 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
         registerBeginButton.setTitle(L10n.Login.register, for: .normal)
         loginBeginButton.setTitle(L10n.Login.login, for: .normal)
         backButton.setTitle(L10n.back, for: .normal)
-        
         usernameField.placeholderText = L10n.username
         emailField.placeholderText = L10n.email
         passwordField.placeholderText = L10n.password
         passwordRepeatField.placeholderText = L10n.repeatPassword
-        
-        facebookLoginButton.setTitle(L10n.Login.loginFacebook, for: .normal)
-        googleLoginButton.setTitle(L10n.Login.loginGoogle, for: .normal)
-        appleLoginButton.setTitle(L10n.Login.loginApple, for: .normal)
         
         forgotPasswordButton.setTitle(L10n.Login.forgotPassword, for: .normal)
         
@@ -130,9 +125,6 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
     private func initialUISetup() {
         let buttonBackground = #imageLiteral(resourceName: "LoginButton").resizableImage(withCapInsets: UIEdgeInsets(top: 21, left: 21, bottom: 21, right: 21))
         loginButton.setBackgroundImage(buttonBackground, for: .normal)
-        facebookLoginButton.setBackgroundImage(buttonBackground, for: .normal)
-        googleLoginButton.setBackgroundImage(buttonBackground, for: .normal)
-        appleLoginButton.setBackgroundImage(buttonBackground, for: .normal)
         
         backgroundScrollView.layoutIfNeeded()
         let contentOffset = CGPoint(x: 0, y: backgroundScrollView.contentSize.height-view.frame.size.height)
@@ -223,15 +215,6 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
 
     func setupButtons() {
         self.loginButton.reactive.title <~ self.viewModel.outputs.loginButtonTitle
-        self.facebookLoginButton.reactive.title <~ self.viewModel.outputs.socialLoginButtonTitle.map({ (title) in
-            return title("Facebook")
-        })
-        self.googleLoginButton.reactive.title <~ self.viewModel.outputs.socialLoginButtonTitle.map({ (title) in
-            return title("Google")
-        })
-        self.appleLoginButton.reactive.title <~ self.viewModel.outputs.socialLoginButtonTitle.map({ (title) in
-            return title("Apple")
-        })
         self.loginButton.reactive.isEnabled <~ self.viewModel.outputs.isFormValid
     }
 
@@ -256,10 +239,12 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
                 weakSelf.passwordRepeatField.isHidden = false
                 weakSelf.passwordRepeatField.entryView.isEnabled = true
                 weakSelf.privacyPolicyLabel.isHidden = false
+                weakSelf.forgotPasswordButton.isHidden = true
             } else {
                 weakSelf.passwordRepeatField.isHidden = true
                 weakSelf.passwordRepeatField.entryView.isEnabled = false
                 weakSelf.privacyPolicyLabel.isHidden = true
+                weakSelf.forgotPasswordButton.isHidden = false
             }
         }
     }

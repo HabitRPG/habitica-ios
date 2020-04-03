@@ -197,9 +197,12 @@ class SetupViewController: UIViewController, UIScrollViewDelegate {
         }
         createTag {[weak self] in
             self?.createTasks {
-                self?.userRepository.retrieveUser().observeCompleted {
-                    self?.showMainView()
-                }
+                self?.userRepository.updateUser(key: "flags.welcomed", value: true)
+                    .flatMap(.latest, { _ in
+                        return (self?.userRepository.retrieveUser() ?? Signal.empty)
+                    }).observeCompleted {
+                        self?.showMainView()
+                    }
             }
         }
     }

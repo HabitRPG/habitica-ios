@@ -20,6 +20,9 @@ class InboxMessagesDataSource: BaseReactiveTableViewDataSource<InboxMessageProto
     private var user: UserProtocol?
     private var otherUserID: String?
     internal var otherUsername: String?
+    private var member: MemberProtocol?
+    
+    private var startedEmpty: Bool?
     
     var loadedAllData = false
     var isLoading = false
@@ -34,6 +37,7 @@ class InboxMessagesDataSource: BaseReactiveTableViewDataSource<InboxMessageProto
             self?.user = user
         }).start())
         disposable.inner.add(socialRepository.getMember(userID: otherUserID ?? otherUsername ?? "", retrieveIfNotFound: true).on(value: {[weak self] member in
+            self?.member = member
             if (self?.otherUserID == nil) {
                 self?.otherUserID = member?.id
                 self?.loadMessages()
@@ -51,18 +55,34 @@ class InboxMessagesDataSource: BaseReactiveTableViewDataSource<InboxMessageProto
             return
         }
         disposable.inner.add(socialRepository.getMessages(withUserID: userID).on(value: {[weak self] (messages, changes) in
+            if self?.startedEmpty == nil {
+                self?.startedEmpty = messages.count == 0
+            }
             self?.sections[0].items = messages
             self?.notify(changes: changes)
         }).start())
     }
     
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let count = super.tableView(tableView, numberOfRowsInSection: section)
+        if (startedEmpty == true) {
+            return count + 1
+        } else {
+            return count
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let message = item(at: indexPath)
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ChatMessageCell", for: indexPath)
-        if let message = message {
-            if let chatCell = cell as? ChatTableViewCell {
-                self.configure(cell: chatCell, message: message, indexPath: indexPath)
+        guard let message = item(at: indexPath) else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "emptyCell", for: indexPath)
+            if let emptyCell = cell as? EmptyTableViewCell {
+                EmptyTableViewCell.inboxChatStyleUsername(displayName: member?.profile?.name ?? "", contributorTier: member?.contributor?.level, username: member?.username ?? "")(emptyCell)
             }
+            return cell
+        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ChatMessageCell", for: indexPath)
+        if let chatCell = cell as? ChatTableViewCell {
+            self.configure(cell: chatCell, message: message, indexPath: indexPath)
         }
         return cell
     }

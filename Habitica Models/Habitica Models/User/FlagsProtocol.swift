@@ -18,4 +18,5 @@ public protocol FlagsProtocol {
     var itemsEnabled: Bool { get set }
     var tutorials: [TutorialStepProtocol] { get set }
     var verifiedUsername: Bool { get set }
+    var welcomed: Bool { get set }
 }
