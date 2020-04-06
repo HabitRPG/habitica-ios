@@ -1034,13 +1034,12 @@ class SettingsViewController: FormViewController, Themeable {
     }
     
     private func enableClassSystemAndShowClassSelection() {
-        disposable.inner.add { [weak self] in
-            self?.userRepository.selectClass(nil)
+        disposable.inner.add(userRepository.selectClass(nil)
                 .observe(on: UIScheduler())
                 .observeCompleted { [weak self] in
                     self?.showClassSelectionViewController()
             }
-        }
+        )
     }
     
     private func showClassSelectionViewController() {
