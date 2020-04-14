@@ -156,7 +156,6 @@ public class ThemeService: NSObject {
     }
 }
 
-
 public protocol Themeable: AnyObject {
     func applyTheme(theme: Theme)
 }

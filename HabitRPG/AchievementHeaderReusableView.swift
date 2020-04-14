@@ -1,4 +1,3 @@
-
 //
 //  AchievementHeaderSupplementView.swift
 //  Habitica

@@ -66,7 +66,7 @@ class MainMenuViewController: BaseTableViewController {
     
     private var menuSections = [MenuSection]()
     var visibleSections: [MenuSection] {
-        return menuSections.filter { (section) in !section.isHidden}
+        return menuSections.filter { (section) in !section.isHidden }
     }
     private var giftRecipientUsername = ""
 
@@ -125,10 +125,12 @@ class MainMenuViewController: BaseTableViewController {
         navbarView.notificationsAction = {[weak self] in
             let viewController = StoryboardScene.Main.notificationsNavigationController.instantiate()
             viewController.modalPresentationStyle = .popover
-            let popover: UIPopoverPresentationController = viewController.popoverPresentationController!
+            guard let popover = viewController.popoverPresentationController else {
+                return
+            }
             popover.sourceView = self?.navbarView
             popover.sourceRect = self?.navbarView.notificationsButton.frame ?? CGRect.zero
-            self?.present(viewController, animated: true, completion:nil)
+            self?.present(viewController, animated: true, completion: nil)
         }
         
         let refreshControl = UIRefreshControl()
@@ -140,9 +142,9 @@ class MainMenuViewController: BaseTableViewController {
         disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
             self?.user = user
         }).start())
-        disposable.inner.add(userRepository.getUnreadNotificationCount().on(value: {[weak self] count in
-            if count > 0 {
-                self?.navbarView.notificationsBadge.text = String(count)
+        disposable.inner.add(userRepository.getUnreadNotificationCount().on(value: {[weak self] notificationCount in
+            if notificationCount > 0 {
+                self?.navbarView.notificationsBadge.text = String(notificationCount)
                 self?.navbarView.notificationsBadge.isHidden = false
             } else {
                 self?.navbarView.notificationsBadge.isHidden = true
@@ -156,11 +158,11 @@ class MainMenuViewController: BaseTableViewController {
             let view = GiftOneGetOnePromoView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 148))
             view.size = .large
             view.cornerRadius = 0
-            view.onTapped = {[weak self] in self?.giftSubscriptionButtonTapped() }
+            view.onTapped = { [weak self] in self?.giftSubscriptionButtonTapped() }
             tableView.tableFooterView = view
         } else if configRepository.bool(variable: .showSubscriptionBanner) {
             let view = SubscriptionPromoView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 148))
-            view.onButtonTapped = {[weak self] in self?.performSegue(withIdentifier: StoryboardSegue.Main.subscriptionSegue.rawValue, sender: self) }
+            view.onButtonTapped = { [weak self] in self?.performSegue(withIdentifier: StoryboardSegue.Main.subscriptionSegue.rawValue, sender: self) }
             tableView.tableFooterView = view
         }
     }
@@ -189,7 +191,7 @@ class MainMenuViewController: BaseTableViewController {
                 MenuItem(title: L10n.Locations.market, segue: StoryboardSegue.Main.showMarketSegue.rawValue),
                 MenuItem(title: L10n.Locations.questShop, segue: StoryboardSegue.Main.showQuestShopSegue.rawValue),
                 MenuItem(title: L10n.Locations.seasonalShop, segue: StoryboardSegue.Main.showSeasonalShopSegue.rawValue),
-                MenuItem(title: L10n.Locations.timeTravelersShop, segue: StoryboardSegue.Main.showTimeTravelersSegue.rawValue),
+                MenuItem(title: L10n.Locations.timeTravelersShop, segue: StoryboardSegue.Main.showTimeTravelersSegue.rawValue)
             ]),
             MenuSection(title: L10n.Menu.inventory, iconAsset: Asset.iconInventory, items: [
                 MenuItem(title: L10n.Titles.shops, segue: StoryboardSegue.Main.shopsSegue.rawValue),

@@ -73,7 +73,7 @@ extension Theme {
     public var errorColor: UIColor { return UIColor.red100 }
     public var warningColor: UIColor { return UIColor.yellow100 }
     public var taskOverlayTint: UIColor { return UIColor.white.withAlphaComponent(0) }
-    public var segmentedTintColor: UIColor { return backgroundTintColor}
+    public var segmentedTintColor: UIColor { return backgroundTintColor }
     
     public func applyContentBackgroundColor(views: [UIView]) {
         applyBackgroundColor(views: views, color: contentBackgroundColor)
@@ -111,7 +111,7 @@ extension DarkTheme {
     public var successColor: UIColor { return UIColor.green10.withAlphaComponent(0.7) }
     public var errorColor: UIColor { return UIColor.red10 }
     public var warningColor: UIColor { return UIColor.yellow10.withAlphaComponent(0.7) }
-    public var segmentedTintColor: UIColor { return backgroundTintColor}
+    public var segmentedTintColor: UIColor { return backgroundTintColor }
 }
 
 @objc
@@ -134,7 +134,7 @@ class ObjcThemeWrapper: NSObject {
     @objc public static var tableviewSeparatorColor: UIColor { return ThemeService.shared.theme.tableviewSeparatorColor }
     
     @available(iOS 12.0, *)
-    @objc public static func updateUserInterfaceStyle(_ newStyle: UIUserInterfaceStyle) { ThemeService.shared.updateInterfaceStyle(newStyle: newStyle)}
+    @objc public static func updateUserInterfaceStyle(_ newStyle: UIUserInterfaceStyle) { ThemeService.shared.updateInterfaceStyle(newStyle: newStyle) }
     
     @objc public static func addObjcThemeable(_ themeable: ObjcThemeable) {
         ThemeService.shared.addThemeable(themable: themeable)

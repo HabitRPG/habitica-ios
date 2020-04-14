@@ -122,7 +122,6 @@ class MenuNavigationBarView: UIView, Themeable {
         notificationsBadge.textColor = theme.lightTextColor
     }
     
-    
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         setNeedsLayout()
     }

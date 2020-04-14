@@ -351,6 +351,8 @@ private let emailNotificationsMapping = [
     L10n.Settings.EmailNotifications.bannedGroup: "kickedGroup"
 ]
 
+
+// swiftlint:disable:next type_body_length
 class SettingsViewController: FormViewController, Themeable {
     
     private let userRepository = UserRepository()
@@ -433,7 +435,6 @@ class SettingsViewController: FormViewController, Themeable {
         }
     }
     
-    
     private func setupUserSection() {
         form +++ Section(L10n.Settings.user)
             <<< ButtonRow { row in
@@ -499,7 +500,7 @@ class SettingsViewController: FormViewController, Themeable {
                 })
         }
     }
-    // swiftlint:disable:next function_body_length
+    // swiftlint:disable:next cyclomatic_complexity function_body_length
     private func setupSettingsSections() {
         form +++ Section(L10n.Settings.reminder)
             <<< SwitchRow(SettingsTags.dailyReminder) { row in
@@ -509,7 +510,9 @@ class SettingsViewController: FormViewController, Themeable {
                     cell.tintColor = ThemeService.shared.theme.tintColor
                 }
                 }.onChange({[weak self] (row) in
-                    if self?.isSettingUserData == true { return }
+                    if self?.isSettingUserData == true {
+                        return
+                    }
                     let defaults = UserDefaults()
                     defaults.set(row.value ?? false, forKey: "dailyReminderActive")
                     if let appDelegate = UIApplication.shared.delegate as? HRPGAppDelegate {
@@ -526,7 +529,9 @@ class SettingsViewController: FormViewController, Themeable {
                     cell.tintColor = ThemeService.shared.theme.tintColor
                 }
                 }.onChange({[weak self] (row) in
-                    if self?.isSettingUserData == true { return }
+                    if self?.isSettingUserData == true {
+                        return
+                    }
                     let defaults = UserDefaults()
                     defaults.set(row.value, forKey: "dailyReminderTime")
                     if let appDelegate = UIApplication.shared.delegate as? HRPGAppDelegate {
@@ -541,7 +546,9 @@ class SettingsViewController: FormViewController, Themeable {
                     cell.tintColor = ThemeService.shared.theme.tintColor
                 }
                 }.onChange({[weak self] (row) in
-                    if self?.isSettingUserData == true { return }
+                if self?.isSettingUserData == true {
+                    return
+                }
                     let defaults = UserDefaults()
                     defaults.set(row.value ?? false, forKey: "appBadgeActive")
                 })
@@ -553,7 +560,9 @@ class SettingsViewController: FormViewController, Themeable {
                     cell.tintColor = ThemeService.shared.theme.tintColor
                 }
                 }.onCellHighlightChanged({[weak self] (_, row) in
-                    if self?.isSettingUserData == true { return }
+                if self?.isSettingUserData == true {
+                    return
+                }
                     if let date = row.value {
                         let calendar = Calendar.current
                         let hour = calendar.component(.hour, from: date)
@@ -593,7 +602,9 @@ class SettingsViewController: FormViewController, Themeable {
                     cell.tintColor = ThemeService.shared.theme.tintColor
                 }
                 row.onChange({[weak self] (row) in
-                    if self?.isSettingUserData == true { return }
+                if self?.isSettingUserData == true {
+                    return
+                }
                     if row.value == self?.user?.preferences?.pushNotifications?.unsubscribeFromAll {
                         return
                     }
@@ -628,7 +639,7 @@ class SettingsViewController: FormViewController, Themeable {
                     cell.tintColor = ThemeService.shared.theme.tintColor
                 }
                 row.onPresent({ (_, to) in
-                    to.selectableRowCellUpdate = { cell, row in
+                    to.selectableRowCellUpdate = { cell, _ in
                         cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
                     }
                 })
@@ -677,7 +688,7 @@ class SettingsViewController: FormViewController, Themeable {
                     cell.tintColor = ThemeService.shared.theme.tintColor
                 }
                 row.onPresent({ (_, to) in
-                    to.selectableRowCellUpdate = { cell, row in
+                    to.selectableRowCellUpdate = { cell, _ in
                         cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
                     }
                 })
@@ -725,7 +736,7 @@ class SettingsViewController: FormViewController, Themeable {
                     }
                 })
                 row.onPresent({ (_, to) in
-                    to.selectableRowCellUpdate = { cell, row in
+                    to.selectableRowCellUpdate = { cell, _ in
                         cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
                     }
                 })
@@ -749,7 +760,7 @@ class SettingsViewController: FormViewController, Themeable {
                     }
                 })
                 row.onPresent({ (_, to) in
-                    to.selectableRowCellUpdate = { cell, row in
+                    to.selectableRowCellUpdate = { cell, _ in
                         cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
                     }
                 })
@@ -778,7 +789,7 @@ class SettingsViewController: FormViewController, Themeable {
                     }
                 })
                 row.onPresent({ (_, to) in
-                    to.selectableRowCellUpdate = { cell, row in
+                    to.selectableRowCellUpdate = { cell, _ in
                         cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
                     }
                 })
@@ -807,7 +818,7 @@ class SettingsViewController: FormViewController, Themeable {
                 }
             })
             row.onPresent({ (_, to) in
-                to.selectableRowCellUpdate = { cell, row in
+                to.selectableRowCellUpdate = { cell, _ in
                     cell.textLabel?.textColor = ThemeService.shared.theme.primaryTextColor
                 }
             })
@@ -871,7 +882,7 @@ class SettingsViewController: FormViewController, Themeable {
         timeRow?.updateCell()
         
         let searchableUsernameRow = (form.rowBy(tag: SettingsTags.searchableUsername) as? AlertRow<LabeledFormValue<Bool>>)
-        searchableUsernameRow?.value = user.preferences?.searchableUsername == true ? LabeledFormValue(value: true,label: L10n.Settings.searchableEverywhere) : LabeledFormValue(value: false, label: L10n.Settings.searchablePrivateSpaces)
+        searchableUsernameRow?.value = user.preferences?.searchableUsername == true ? LabeledFormValue(value: true, label: L10n.Settings.searchableEverywhere) : LabeledFormValue(value: false, label: L10n.Settings.searchablePrivateSpaces)
         searchableUsernameRow?.updateCell()
         
         let disableNotificationsRow = (form.rowBy(tag: SettingsTags.disableAllNotifications) as? SwitchRow)

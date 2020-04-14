@@ -32,6 +32,7 @@ class CheckedTableViewCell: TaskTableViewCell {
     @objc var checklistItemTouched: ((_ item: ChecklistItemProtocol) -> Void)?
 
     override func awakeFromNib() {
+        super.awakeFromNib()
         checklistIndicator.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(expandTask)))
     }
     

@@ -34,12 +34,12 @@ class ImageManager: NSObject {
         "Pet-Gryphon-Gryphatrice": "gif",
         "Mount_Head_Gryphon-Gryphatrice": "gif",
         "Mount_Body_Gryphon-Gryphatrice": "gif",
-        "background_clocktower" : "gif",
-        "background_airship" : "gif",
-        "background_steamworks" : "gif",
-        "Pet_HatchingPotion_Veggie" : "gif",
-        "Pet_HatchingPotion_Dessert" : "gif",
-        "Pet-HatchingPotion-Dessert" : "gif"
+        "background_clocktower": "gif",
+        "background_airship": "gif",
+        "background_steamworks": "gif",
+        "Pet_HatchingPotion_Veggie": "gif",
+        "Pet_HatchingPotion_Dessert": "gif",
+        "Pet-HatchingPotion-Dessert": "gif"
     ]
     
     @objc
@@ -84,9 +84,8 @@ class ImageManager: NSObject {
         ImageCache.default.clearMemoryCache()
     }
     
-    
     private static func getFormat(name: String, format: String) -> String {
-        if (format.count > 0) {
+        if (!format.isEmpty) {
             return format
         }
         return formatDictionary[name] ?? "png"

@@ -377,9 +377,9 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                         return self.userRepository.retrieveUser()
                     }).observeResult({ (result) in
                         switch result {
-                        case .success(_):
+                        case .success:
                             successBlock()
-                        case .failure(_):
+                        case .failure:
                         HRPGBuyItemModalViewController.displayViewController(name: "InsufficientHourglassesViewController", parent: topViewController)
                             
                         }
@@ -390,9 +390,9 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                         return self.userRepository.retrieveUser()
                     }).observeResult({ (result) in
                         switch result {
-                        case .success(_):
+                        case .success:
                             successBlock()
-                        case .failure(_):
+                        case .failure:
                             HRPGBuyItemModalViewController.displayViewController(name: "InsufficientHourglassesViewController", parent: topViewController)
                         }
                     })
@@ -403,9 +403,9 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                     return self.userRepository.retrieveUser()
                 }).observeResult({ (result) in
                 switch result {
-                case .success(_):
+                case .success:
                     successBlock()
-                case .failure(_):
+                case .failure:
                         if key == "gem" {
                             HRPGBuyItemModalViewController.displayViewController(name: "GemCapReachedViewController", parent: topViewController)
                         } else {
@@ -416,9 +416,9 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
             } else if purchaseType == "fortify" {
                 userRepository.reroll().observeResult({ (result) in
                 switch result {
-                case .success(_):
+                case .success:
                     successBlock()
-                case .failure(_):
+                case .failure:
                         HRPGBuyItemModalViewController.displayViewController(name: "InsufficientGoldViewController", parent: topViewController)
                     }
                 })
@@ -430,27 +430,27 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                         })
                         .observeResult({ (result) in
                     switch result {
-                    case .success(_):
+                    case .success:
                         successBlock()
-                    case .failure(_):
+                    case .failure:
                             HRPGBuyItemModalViewController.displayViewController(name: "InsufficientGoldViewController", parent: topViewController)
                         }
                     })
                 } else if (purchaseType == "debuffPotion") {
                     userRepository.useDebuffItem(key: key).observeResult { (result) in
                         switch result {
-                        case .success(_):
+                        case .success:
                             successBlock()
-                        case .failure(_):
+                        case .failure:
                                 HRPGBuyItemModalViewController.displayViewController(name: "InsufficientGoldViewController", parent: topViewController)
                             }
                         }
                 } else {
                     inventoryRepository.buyObject(key: key, price: value, text: text).observeResult({ (result) in
                     switch result {
-                    case .success(_):
+                    case .success:
                         successBlock()
-                    case .failure(_):
+                    case .failure:
                             HRPGBuyItemModalViewController.displayViewController(name: "InsufficientGoldViewController", parent: topViewController)
                         }
                     })

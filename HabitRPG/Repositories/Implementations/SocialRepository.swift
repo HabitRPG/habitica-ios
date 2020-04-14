@@ -12,7 +12,6 @@ import Habitica_Models
 import Habitica_API_Client
 import Habitica_Database
 
-
 class SocialRepository: BaseRepository<SocialLocalRepository> {
     
     private let userRepository = UserRepository()

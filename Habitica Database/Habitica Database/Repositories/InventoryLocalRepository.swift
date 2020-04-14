@@ -177,7 +177,7 @@ public class InventoryLocalRepository: ContentLocalRepository {
     public func getLatestMysteryGear() -> SignalProducer<GearProtocol?, ReactiveSwiftRealmError> {
         return RealmGear.findBy(query: "key CONTAINS 'mystery_2'").sorted(key: "key", ascending: false)
         .reactive()
-            .map { (result, changes) in
+            .map { (result, _) in
                 return result.first
         }
     }

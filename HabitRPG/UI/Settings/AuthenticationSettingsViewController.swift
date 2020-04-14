@@ -353,12 +353,12 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         alertController.addAction(title: L10n.add, isMainAction: true, closeOnTap: false) {[weak self] _ in
             errorView.isHidden = true
             if let password = passwordTextField.text, let email = emailTextField.text, let confirmPassword = confirmTextField.text {
-                if (password != confirmPassword || password.count < 8) {
+                if password != confirmPassword || password.count < 8 {
                     errorView.text = L10n.Login.passwordConfirmError
                     errorView.isHidden = false
                     return
                 }
-                if (email.count == 0) {
+                if email.isEmpty {
                     errorView.text = L10n.Login.emailInvalid
                     errorView.isHidden = false
                     return
@@ -388,7 +388,6 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         }
         alertController.show()
     }
-    
     
     private func showConfirmUsernameAlert() {
         let alertController = HabiticaAlertController(title: L10n.Settings.confirmUsernamePrompt, message: L10n.Settings.confirmUsernameDescription)

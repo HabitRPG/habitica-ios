@@ -38,7 +38,7 @@ class AchievementCell: UICollectionViewCell {
         label.font = CustomFontMetrics.scaledSystemFont(ofSize: 14, ofWeight: .medium)
         label.cornerRadius = 6
         if #available(iOS 11.0, *) {
-            label.layer.maskedCorners = [.layerMinXMaxYCorner,.layerMaxXMaxYCorner]
+            label.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         }
         return label
     }()

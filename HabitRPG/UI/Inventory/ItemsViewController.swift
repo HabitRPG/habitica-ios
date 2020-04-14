@@ -67,7 +67,7 @@ class ItemsViewController: BaseTableViewController {
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         if section == (dataSource.numberOfSections(in: tableView) - 1) {
             return 150
-        }else {
+        } else {
             return 0
         }
     }
@@ -95,8 +95,8 @@ class ItemsViewController: BaseTableViewController {
     @objc func openMarket() {
         let storyboard = UIStoryboard(name: "Shop", bundle: nil)
         if let viewController = storyboard.instantiateInitialViewController() as? HRPGShopViewController {
-            viewController.shopIdentifier = Constants.MarketKey;
-            self.navigationController!.pushViewController(viewController, animated: true)
+            viewController.shopIdentifier = Constants.MarketKey
+            self.navigationController?.pushViewController(viewController, animated: true)
         }
     }
 
@@ -105,16 +105,12 @@ class ItemsViewController: BaseTableViewController {
         switch item.itemType {
         case "eggs":
             type = L10n.egg
-            break
         case "hatchingPotions":
             type = L10n.hatchingPotion
-            break
         case "food":
             type = L10n.food
-            break
         case "quests":
             type = L10n.quest
-            break
         default:
             break
         }

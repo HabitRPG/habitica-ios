@@ -37,7 +37,7 @@ public class AuthenticatedCall: JsonNetworkCall {
     private var debugHandler = DebugOutputHandler()
     var customErrorHandler: NetworkErrorHandler?
     var needsAuthentication = true
-    let queue = DispatchQueue(label: "work", qos: .userInteractive);
+    let queue = DispatchQueue(label: "work", qos: .userInteractive)
     private init(configuration: ServerConfigurationProtocol? = nil,
                  httpMethod: String,
                  httpHeaders: [String: String]?,

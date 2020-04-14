@@ -185,7 +185,7 @@ public class SocialLocalRepository: BaseLocalRepository {
             }
         }
         if group?.type == "party", let userParty = realm?.object(ofType: RealmUserParty.self, forPrimaryKey: userID) {
-            updateCall { realm in
+            updateCall { _ in
                 userParty.id = nil
             }
         }

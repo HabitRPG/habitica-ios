@@ -33,6 +33,7 @@ class SubscriptionDetailView: UITableViewCell {
     
     var cancelSubscriptionAction: (() -> Void)?
 
+    // swiftlint:disable:next cyclomatic_complexity
     public func setPlan(_ plan: SubscriptionPlanProtocol) {
         if plan.isActive {
             if plan.isGifted {
@@ -54,20 +55,20 @@ class SubscriptionDetailView: UITableViewCell {
         }
         var duration: String?
         switch plan.planId {
-            case "basic_earned":
-                    duration = L10n.durationMonth
-            case "basic":
-                    duration = L10n.durationMonth
-            case "basic_3mo":
-                duration = L10n.duration3month
-            case "basic_6mo":
-                duration = L10n.duration6month
-            case "google_6mo":
-                duration = L10n.duration6month
-            case "basic_12mo":
-                    duration = L10n.duration12month
-            default:
-                break
+        case "basic_earned":
+                duration = L10n.durationMonth
+        case "basic":
+                duration = L10n.durationMonth
+        case "basic_3mo":
+            duration = L10n.duration3month
+        case "basic_6mo":
+            duration = L10n.duration6month
+        case "google_6mo":
+            duration = L10n.duration6month
+        case "basic_12mo":
+                duration = L10n.duration12month
+        default:
+            break
         }
         if let duration = duration {
             typeLabel.text = L10n.subscriptionDuration(duration)
@@ -80,21 +81,21 @@ class SubscriptionDetailView: UITableViewCell {
             typeLabel.text = L10n.endingOn(formatter.string(from: terminated))
         }
         switch plan.paymentMethod {
-            case "Amazon Payments":
-                paymentMethodIconView.image = Asset.paymentAmazon.image
-            case "Apple":
-                paymentMethodIconView.image = Asset.paymentApple.image
-            case "Google":
-                paymentMethodIconView.image = Asset.paymentGoogle.image
-            case "PayPal":
-                paymentMethodIconView.image = Asset.paymentPaypal.image
-            case "Stripe":
-                paymentMethodIconView.image = Asset.paymentStripe.image
-            default:
-                if plan.isGifted {
-                    paymentMethodIconView.image = Asset.paymentGift.image
-                } else {
-                    paymentMethodIconView.image = nil
+        case "Amazon Payments":
+            paymentMethodIconView.image = Asset.paymentAmazon.image
+        case "Apple":
+            paymentMethodIconView.image = Asset.paymentApple.image
+        case "Google":
+            paymentMethodIconView.image = Asset.paymentGoogle.image
+        case "PayPal":
+            paymentMethodIconView.image = Asset.paymentPaypal.image
+        case "Stripe":
+            paymentMethodIconView.image = Asset.paymentStripe.image
+        default:
+            if plan.isGifted {
+                paymentMethodIconView.image = Asset.paymentGift.image
+            } else {
+                paymentMethodIconView.image = nil
             }
         }
 
@@ -108,6 +109,12 @@ class SubscriptionDetailView: UITableViewCell {
         gemCapPill.text = String(plan.gemCapTotal)
         hourGlassCountPill.text = String(plan.consecutive?.hourglasses ?? 0)
 
+        setCancelDescription(plan)
+        
+        applyTheme()
+    }
+    
+    private func setCancelDescription(_ plan: SubscriptionPlanProtocol) {
         cancelTitleLabel.text = L10n.cancelSubscription
         cancelDescriptionButton.isHidden = false
         if plan.paymentMethod == "Apple" {
@@ -129,8 +136,8 @@ class SubscriptionDetailView: UITableViewCell {
                 cancelTitleLabel.text = L10n.resubscribe
             }
         }
-        applyTheme()
     }
+    
     @IBAction func cancelButtonPressed(_ sender: Any) {
         if let action = self.cancelSubscriptionAction {
             action()

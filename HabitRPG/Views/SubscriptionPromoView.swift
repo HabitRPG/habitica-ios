@@ -8,7 +8,7 @@
 
 import Foundation
 
-class SubscriptionPromoView : UIView, Themeable {
+class SubscriptionPromoView: UIView, Themeable {
     
     var onButtonTapped: (() -> Void)?
     

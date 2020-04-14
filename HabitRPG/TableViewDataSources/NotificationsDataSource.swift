@@ -35,7 +35,7 @@ class NotificationsDataSource: BaseReactiveTableViewDataSource<NotificationProto
     func headerView(forSection section: Int, frame: CGRect) -> UIView? {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: 54))
         view.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
-        if sections[0].items.count == 0 {
+        if sections[0].items.isEmpty {
             return view
         }
         let label = UILabel()
@@ -87,7 +87,7 @@ class NotificationsDataSource: BaseReactiveTableViewDataSource<NotificationProto
                 cell.closeAction = { [weak self] in self?.dismiss(notification: notification) }
             }
         case .newStuff:
-            if let cell = cell as? NewsNotificationCell,  let notif = notification as? NotificationNewsProtocol {
+            if let cell = cell as? NewsNotificationCell, let notif = notification as? NotificationNewsProtocol {
                 cell.configureFor(notification: notif)
                 cell.closeAction = { [weak self] in self?.dismiss(notification: notification) }
             }
@@ -155,7 +155,7 @@ class NotificationsDataSource: BaseReactiveTableViewDataSource<NotificationProto
     
     private func openNotification(notification: NotificationProtocol) {
         // This could be handled better
-        var url: String? = nil
+        var url: String?
         switch notification.type {
         case .groupInvite:
             if let notif = notification as? NotificationGroupInviteProtocol {

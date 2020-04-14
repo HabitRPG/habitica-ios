@@ -45,16 +45,16 @@ class AchievementsViewDataSource: BaseReactiveCollectionViewDataSource<Achieveme
         sections.append(ItemSection<AchievementProtocol>(title: L10n.Achievements.special))
         sections.append(ItemSection<AchievementProtocol>(title: L10n.Achievements.quests))
 
-        disposable.inner.add(userRepository.getAchievements().on(value: {[weak self] (achievements, changes) in
+        disposable.inner.add(userRepository.getAchievements().on(value: {[weak self] (achievements, _) in
             self?.sections[0].items = achievements.filter({ $0.category == "onboarding" })
             self?.sections[1].items = achievements.filter({ $0.category == "basic" })
             self?.sections[2].items = achievements.filter({ $0.category == "seasonal" })
             self?.sections[3].items = achievements.filter({ $0.category == "special" })
             self?.sections[4].items = achievements.filter({ $0.category == "quests" })
-        }).flatMap(.latest, {[weak self] (achievements, changes) in
+        }).flatMap(.latest, {[weak self] (achievements, _) in
             return self?.inventoryReqpository.getQuests(keys: achievements.map { $0.key ?? "" }) ?? SignalProducer.empty
         }).on(value: {[weak self] (quests, changes) in
-            self?.quests = Dictionary(uniqueKeysWithValues: quests.map{ ($0.key ?? "", $0) })
+            self?.quests = Dictionary(uniqueKeysWithValues: quests.map { ($0.key ?? "", $0) })
             self?.notify(changes: changes)
         }).start())
     }

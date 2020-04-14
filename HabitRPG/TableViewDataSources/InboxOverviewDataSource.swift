@@ -10,7 +10,6 @@ import Foundation
 import Habitica_Models
 import DateTools
 
-
 class InboxOverviewDataSource: BaseReactiveTableViewDataSource<InboxConversationProtocol> {
     
     private let socialRepository = SocialRepository()

@@ -72,7 +72,7 @@ public struct DefaultDarkTheme: DarkTheme {
     public var tintColor: UIColor { return UIColor.purple500 }
     public var dimmBackgroundColor: UIColor { return UIColor.purple10 }
     public var taskOverlayTint: UIColor { return UIColor.blackPurple50.withAlphaComponent(0.15) }
-    public var segmentedTintColor: UIColor { return UIColor.purple500}
+    public var segmentedTintColor: UIColor { return UIColor.purple500 }
 }
 
 public struct GreenDarkTheme: DarkTheme {

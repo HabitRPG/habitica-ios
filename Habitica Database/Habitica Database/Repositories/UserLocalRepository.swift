@@ -25,7 +25,7 @@ public class UserLocalRepository: BaseLocalRepository {
         
         if user.party?.quest?.rsvpNeeded == true {
             let notification = createNotification(userID: userID, id: "quest-invite-\(userID)", type: .questInvite)
-            if var notification = notification as? NotificationQuestInviteProtocol {
+            if let notification = notification as? NotificationQuestInviteProtocol {
                 notification.questKey = user.party?.quest?.key
             }
             if let notification = notification as? RealmNotification {
@@ -34,13 +34,13 @@ public class UserLocalRepository: BaseLocalRepository {
         } else {
             removeNotification("quest-invite-\(userID)")
         }
-        if let inviteNotifications = getRealm()?.objects(RealmNotification.self).filter("id BEGINSWITH 'group-invite-\(userID)'"), inviteNotifications.count > 0 {
+        if let inviteNotifications = getRealm()?.objects(RealmNotification.self).filter("id BEGINSWITH 'group-invite-\(userID)'"), !inviteNotifications.isEmpty {
             try? getRealm()?.write { getRealm()?.delete(inviteNotifications) }
         }
-        if user.invitations.count > 0 {
+        if !user.invitations.isEmpty {
             let notifications = user.invitations.map { (invitation) -> RealmNotification? in
                 let notification = createNotification(userID: userID, id: "group-invite-\(userID)-\(invitation.id ?? "")", type: .groupInvite)
-                if var notification = notification as? NotificationGroupInviteProtocol {
+                if let notification = notification as? NotificationGroupInviteProtocol {
                     notification.groupID = invitation.id
                     notification.groupName = invitation.name
                     notification.inviterID = invitation.inviterID
@@ -171,6 +171,7 @@ public class UserLocalRepository: BaseLocalRepository {
     
     private func removeNotification(_ id: String) {
         let realm = getRealm()
+        // swiftlint:disable:next first_where
         if let notification = realm?.objects(RealmNotification.self).filter("id == '\(id)'").first {
             realm?.refresh()
             try? realm?.write {
@@ -252,7 +253,7 @@ public class UserLocalRepository: BaseLocalRepository {
                     }
                     
                     if buyResponse.armoire?.type == "experience" && buyResponse.experience == nil {
-                        stats.experience = stats.experience + (buyResponse.armoire?.value ?? 0)
+                        stats.experience += (buyResponse.armoire?.value ?? 0)
                     }
                 }
                 if let outfit = buyResponse.items?.gear?.equipped {
@@ -312,7 +313,7 @@ public class UserLocalRepository: BaseLocalRepository {
     }
     
     public func getUnreadNotificationCount(userID: String) -> SignalProducer<Int, ReactiveSwiftRealmError> {
-        return RealmNotification.findBy(query: "userID == '\(userID)' && realmType != '' && seen == false").reactive().map({ (value, changeset) -> Int in
+        return RealmNotification.findBy(query: "userID == '\(userID)' && realmType != '' && seen == false").reactive().map({ (value, _) -> Int in
             return value.count
         })
     }

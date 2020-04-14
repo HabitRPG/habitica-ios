@@ -1,6 +1,6 @@
 //
 //  InboxChatViewController.swift
-//  
+//
 //
 //  Created by Phillip Thelen on 09.09.19.
 //
@@ -22,7 +22,6 @@ class InboxChatViewController: SLKTextViewController, Themeable {
 
     @IBOutlet var profileBarButton: UIBarButtonItem!
     @IBOutlet var doneBarButton: UIBarButtonItem!
-
     
     override class func tableViewStyle(for decoder: NSCoder) -> UITableView.Style {
         return .plain

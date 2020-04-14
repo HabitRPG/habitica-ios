@@ -151,14 +151,14 @@ class BaseReactiveTableViewDataSource<MODEL>: BaseReactiveDataSource<MODEL>, UIT
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if visibleSections.count == 0 {
+        if visibleSections.isEmpty {
             return 0
         }
         return visibleSections[section].items.count
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if visibleSections.count == 0 {
+        if visibleSections.isEmpty {
             return nil
         }
         return visibleSections[section].title

@@ -143,7 +143,7 @@ class FilterViewController: BaseTableViewController {
         
         let alertController = UIAlertController(title: title, message: nil, preferredStyle: .alert)
         alertController.addAction(UIAlertAction.cancelAction())
-        alertController.addAction(UIAlertAction(title: L10n.save, style: .default, handler: { (action) in
+        alertController.addAction(UIAlertAction(title: L10n.save, style: .default, handler: { (_) in
             let textField = alertController.textFields?[0]
             let newTagName = textField?.text ?? ""
             if tag != nil {
@@ -158,8 +158,7 @@ class FilterViewController: BaseTableViewController {
                 textField.text = tag?.text
             }
         }
-        present(alertController, animated: true
-            , completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {

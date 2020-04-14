@@ -38,7 +38,7 @@ class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtoc
             self?.notify(changes: changes)
         }).start())
         let timerSignal: SignalProducer<Date, Never> = SignalProducer.timer(interval: .seconds(30), on: QueueScheduler.main)
-        disposable.inner.add(timerSignal.on(value: {[weak self] date in self?.retrieveData(completed: nil) }).start())
+        disposable.inner.add(timerSignal.on(value: { [weak self] _ in self?.retrieveData(completed: nil) }).start())
         
         retrieveData(completed: nil)
     }

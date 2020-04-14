@@ -46,7 +46,7 @@ class InboxOverviewViewController: BaseTableViewController {
         }
     }
     
-    override func getDefinitonForTutorial(_ tutorialIdentifier: String!) -> [AnyHashable : Any]! {
+    override func getDefinitonForTutorial(_ tutorialIdentifier: String!) -> [AnyHashable: Any]! {
         if tutorialIdentifier == self.tutorialIdentifier {
             return [
                 "text": L10n.Tutorials.inbox
@@ -102,7 +102,7 @@ class InboxOverviewViewController: BaseTableViewController {
 
         alertController.addCancelAction()
         var foundUser = false
-        alertController.addAction(title: L10n.next, isMainAction: true, closeOnTap: false) {[weak self] dialog in
+        alertController.addAction(title: L10n.next, isMainAction: true, closeOnTap: false) {[weak self] _ in
             activityIndicator.isHidden = false
             errorView.isHidden = true
             activityIndicator.startAnimating()

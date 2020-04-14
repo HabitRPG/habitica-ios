@@ -137,7 +137,7 @@ class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewModelOu
             case .register:
                 return L10n.Login.socialRegister
             case .none:
-                return { _ in return ""}
+                return { _ in return "" }
             }
         }
 

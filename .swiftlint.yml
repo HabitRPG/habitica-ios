@@ -1,6 +1,7 @@
 disabled_rules:
   - private_outlet
 opt_in_rules:
+  - overridden_super_call
   - attributes
   - conditional_returns_on_newline
   - closure_spacing
@@ -52,4 +53,6 @@ contains_over_first_not_nil: error
 first_where: error
 last_where: error
 sorted_first_last: error
+overridden_super_call:
+  severity: error
 reporter: "xcode"

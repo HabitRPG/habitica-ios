@@ -38,7 +38,7 @@ class InboxMessagesDataSource: BaseReactiveTableViewDataSource<InboxMessageProto
         }).start())
         disposable.inner.add(socialRepository.getMember(userID: otherUserID ?? otherUsername ?? "", retrieveIfNotFound: true).on(value: {[weak self] member in
             self?.member = member
-            if (self?.otherUserID == nil) {
+            if self?.otherUserID == nil {
                 self?.otherUserID = member?.id
                 self?.loadMessages()
             }
@@ -56,7 +56,7 @@ class InboxMessagesDataSource: BaseReactiveTableViewDataSource<InboxMessageProto
         }
         disposable.inner.add(socialRepository.getMessages(withUserID: userID).on(value: {[weak self] (messages, changes) in
             if self?.startedEmpty == nil {
-                self?.startedEmpty = messages.count == 0
+                self?.startedEmpty = messages.isEmpty
             }
             self?.sections[0].items = messages
             self?.notify(changes: changes)
@@ -65,7 +65,7 @@ class InboxMessagesDataSource: BaseReactiveTableViewDataSource<InboxMessageProto
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let count = super.tableView(tableView, numberOfRowsInSection: section)
-        if (startedEmpty == true) {
+        if startedEmpty == true {
             return count + 1
         } else {
             return count

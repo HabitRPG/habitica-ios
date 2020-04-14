@@ -61,7 +61,9 @@ struct KeychainItem {
     
     func saveItem(_ password: String) throws {
         // Encode the password into an Data object.
-        let encodedPassword = password.data(using: String.Encoding.utf8)!
+        guard let encodedPassword = password.data(using: String.Encoding.utf8) else {
+            return
+        }
         
         do {
             // Check for an existing item in the keychain.

@@ -21,9 +21,9 @@ open class StubHolder: StubHolderProtocol {
     public let stubFileName: String?
     public let bundle: Bundle
     public let stubData: Data?
-    public let responseHeaders: [String : String]
+    public let responseHeaders: [String: String]
     
-    public init(responseCode: Int32 = 200, stubFileName: String? = nil, stubData: Data? = nil, responseHeaders: [String: String] = ["Content-type":"application/json"], bundle: Bundle = Bundle.main) {
+    public init(responseCode: Int32 = 200, stubFileName: String? = nil, stubData: Data? = nil, responseHeaders: [String: String] = ["Content-type": "application/json"], bundle: Bundle = Bundle.main) {
         self.responseCode = responseCode
         self.stubFileName = stubFileName
         self.bundle = bundle

@@ -14,7 +14,6 @@ import ReactiveSwift
 import Habitica_Models
 
 class GemViewController: BaseCollectionViewController, UICollectionViewDelegateFlowLayout {
-
     
     var products: [SKProduct]?
     var user: UserProtocol?
@@ -113,7 +112,7 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize{
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         if configRepository.bool(variable: .enableGiftOneGetOne) {
             return CGSize(width: collectionView.frame.size.width, height: 320)
         } else {
@@ -142,7 +141,7 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
                 label.text = L10n.gemsSupportDevelopers
             }
             if let promoView = view.viewWithTag(3) as? SubscriptionPromoView {
-                promoView.onButtonTapped = {[weak self] in self?.performSegue(withIdentifier: StoryboardSegue.Main.subscriptionSegue.rawValue, sender: self) }
+                promoView.onButtonTapped = { [weak self] in self?.performSegue(withIdentifier: StoryboardSegue.Main.subscriptionSegue.rawValue, sender: self) }
             }
         } else if kind == UICollectionView.elementKindSectionHeader {
             if let headerImage = view.viewWithTag(1) as? UIImageView {
@@ -189,7 +188,6 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
         dismiss(animated: true, completion: nil)
     }
     private var giftRecipientUsername = ""
-
     
     private func showGiftSubscriptionModal() {
         let alertController = HabiticaAlertController(title: L10n.giftRecipientTitle, message: L10n.giftRecipientSubtitle)
@@ -211,7 +209,6 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
         alertController.containerViewSpacing = 8
         alertController.containerView.spacing = 4
     }
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == StoryboardSegue.Main.openGiftSubscriptionDialog.rawValue {

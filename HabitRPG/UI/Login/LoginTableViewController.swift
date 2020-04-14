@@ -123,7 +123,7 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func initialUISetup() {
-        let buttonBackground = #imageLiteral(resourceName: "LoginButton").resizableImage(withCapInsets: UIEdgeInsets(top: 21, left: 21, bottom: 21, right: 21))
+        let buttonBackground = Asset.loginButton.image.resizableImage(withCapInsets: UIEdgeInsets(top: 21, left: 16, bottom: 21, right: 16))
         loginButton.setBackgroundImage(buttonBackground, for: .normal)
         
         backgroundScrollView.layoutIfNeeded()
@@ -215,7 +215,15 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
 
     func setupButtons() {
         self.loginButton.reactive.title <~ self.viewModel.outputs.loginButtonTitle
-        self.loginButton.reactive.isEnabled <~ self.viewModel.outputs.isFormValid
+        self.viewModel.outputs.isFormValid.observeValues { (isValid) in
+            self.loginButton.isEnabled = isValid
+            if isValid {
+                self.loginButton.tintColor = .white
+            } else {
+                self.loginButton.tintColor = .purple100
+            }
+        }
+        
     }
 
     func setupFieldVisibility() {
@@ -375,7 +383,10 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
     func setupOnePassword() {
         self.onePasswordButton.reactive.isHidden <~ self.viewModel.outputs.onePasswordButtonHidden
         self.viewModel.outputs.onePasswordFindLogin.observeValues {[weak self] _ in
-            OnePasswordExtension.shared().findLogin(forURLString: "https://habitica.com", for: self!, sender: self?.onePasswordButton, completion: { (data, _) in
+            guard let weakSelf = self else {
+                return
+            }
+            OnePasswordExtension.shared().findLogin(forURLString: "https://habitica.com", for: weakSelf, sender: self?.onePasswordButton, completion: { (data, _) in
                 guard let loginData = data else {
                     return
                 }
@@ -548,7 +559,7 @@ extension LoginTableViewController: ASAuthorizationControllerDelegate {
                 name += givenName
             }
             if let familyName = fullName?.familyName {
-                if name.count > 0 {
+                if !name.isEmpty {
                     name += " "
                 }
                 name += familyName

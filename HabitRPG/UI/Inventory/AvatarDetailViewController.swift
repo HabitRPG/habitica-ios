@@ -126,8 +126,8 @@ class AvatarDetailViewController: BaseCollectionViewController, UICollectionView
         alertController.addAction(title: L10n.goShopping, isMainAction: true) { _ in
             let storyboard = UIStoryboard(name: "Shop", bundle: nil)
             if let viewController = storyboard.instantiateInitialViewController() as? HRPGShopViewController {
-                viewController.shopIdentifier = Constants.TimeTravelersShopKey;
-                self.navigationController!.pushViewController(viewController, animated: true)
+                viewController.shopIdentifier = Constants.TimeTravelersShopKey
+                self.navigationController?.pushViewController(viewController, animated: true)
             }
         }
         alertController.show()

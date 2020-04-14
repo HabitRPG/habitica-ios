@@ -32,7 +32,7 @@ public class APIInboxConversation: InboxConversationProtocol, Codable {
     }
 
     public required init(from decoder: Decoder) throws {
-        let values = try! decoder.container(keyedBy: CodingKeys.self)
+        let values = try decoder.container(keyedBy: CodingKeys.self)
         uuid = try values.decode(String.self, forKey: .uuid)
         text = try? values.decode(String.self, forKey: .text)
         let timeStampNumber = try? values.decode(Double.self, forKey: .timestamp)
@@ -53,4 +53,3 @@ public class APIInboxConversation: InboxConversationProtocol, Codable {
         
     }
 }
-

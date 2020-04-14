@@ -63,7 +63,7 @@ class EmptyTableViewCell: UITableViewCell, Themeable {
         cell.transform = CGAffineTransform(scaleX: 1, y: -1)
     }
     
-    static func inboxChatStyleUsername(displayName: String, contributorTier: Int?, username: String) -> (EmptyTableViewCell) -> () {
+    static func inboxChatStyleUsername(displayName: String, contributorTier: Int?, username: String) -> (EmptyTableViewCell) -> Void {
         return { cell in
             cell.secondParagraphLabel.text = displayName
             cell.secondParagraphLabel.textColor = UIColor.contributorColor(forTier: contributorTier ?? 0)
@@ -81,4 +81,3 @@ class EmptyTableViewCell: UITableViewCell, Themeable {
         }
     }
 }
-

@@ -22,7 +22,6 @@ class RealmAchievement: Object, AchievementProtocol {
     var index: Int = 0
     var optionalCount: Int = -1
     
-    
     override static func primaryKey() -> String {
         return "combinedID"
     }

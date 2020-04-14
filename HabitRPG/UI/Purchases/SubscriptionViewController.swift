@@ -32,7 +32,6 @@ class SubscriptionViewController: BaseTableViewController {
     @IBOutlet weak var headerImage: UIImageView!
     @IBOutlet weak var giftOneGetOnePromoView: GiftOneGetOnePromoView!
     
-    
     var products: [SKProduct]?
     var selectedSubscriptionPlan: SKProduct?
     var user: UserProtocol? {
@@ -117,7 +116,9 @@ class SubscriptionViewController: BaseTableViewController {
             }
             giftOneGetOnePromoView.isHidden = false
             giftOneGetOnePromoView.onTapped = {[weak self] in
-                guard let weakSelf = self else { return }
+                guard let weakSelf = self else {
+                    return
+                }
                 weakSelf.giftSubscriptionButtonTapped(weakSelf.giftOneGetOnePromoView)
             }
         }

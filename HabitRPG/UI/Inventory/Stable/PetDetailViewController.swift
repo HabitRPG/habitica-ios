@@ -89,7 +89,7 @@ class PetDetailViewController: StableDetailViewController<PetDetailDataSource> {
         guard let stableItem = datasource?.item(at: indexPath) else {
             return nil
         }
-        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil, actionProvider: { suggestedActions in
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil, actionProvider: { _ in
             var actions = [UIAction]()
             if stableItem.trained > 0 && stableItem.pet?.type != "special" && stableItem.canRaise {
                 actions.append(UIAction(title: L10n.Stable.feed, handler: {[weak self] (_) in
