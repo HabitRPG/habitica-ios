@@ -32,10 +32,19 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     
     @objc public weak var shopViewController: HRPGShopViewController?
     
+    private var bulkView: HRPGBulkPurchaseView?
+    var itemView: HRPGSimpleShopItemView?
+
     private var user: UserProtocol? {
         didSet {
             refreshBalances()
             updateBuyButton()
+            
+            if reward?.key == "gem" {
+                bulkView?.maxValue = user?.purchased?.subscriptionPlan?.gemsRemaining ?? 0
+                itemView?.setGemsLeft(user?.purchased?.subscriptionPlan?.gemsRemaining ?? 0,
+                                      gemsTotal: user?.purchased?.subscriptionPlan?.gemCapTotal ?? 0)
+            }
         }
     }
 
@@ -46,6 +55,12 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
             } else {
                 pinButton.setTitle(L10n.pinToRewards, for: .normal)
             }
+        }
+    }
+    
+    private var purchaseQuantity = 1 {
+        didSet {
+            updateBuyButton()
         }
     }
     
@@ -131,7 +146,6 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     
     func setupItem() {
         if let contentView = closableShopModal.shopModalBgView.contentView {
-            var itemView: HRPGSimpleShopItemView?
             if let reward = self.reward {
                 itemView = HRPGSimpleShopItemView(withReward: reward, withUser: user, for: contentView)
             }
@@ -149,7 +163,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                 case "mystery_set":
                     addItemSet(itemView: itemView, to: contentView)
                 default:
-                    contentView.addSingleViewWithConstraints(itemView)
+                    addItemSet(itemView: itemView, to: contentView)
                 }
             }
             contentView.translatesAutoresizingMaskIntoConstraints = false
@@ -196,6 +210,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     func updateBuyButton() {
         var isLocked = itemIsLocked()
         if let reward = self.reward {
+            let totalValue = Int(reward.value) * purchaseQuantity
             if let currencyString = reward.currency, let currency = Currency(rawValue: currencyString) {
                 currencyCountView.currency = currency
                 if reward.key == "gem" && user?.purchased?.subscriptionPlan?.gemsRemaining == 0 {
@@ -204,7 +219,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
             } else {
                 currencyCountView.currency = .gold
             }
-            currencyCountView.amount = Int(reward.value)
+            currencyCountView.amount = totalValue
         }
         if (Currency(rawValue: reward?.currency ?? "gold") != .gold || canAfford()) && !isLocked {
             currencyCountView.state = .normal
@@ -235,7 +250,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
             } else {
                 currency = Currency.gold
             }
-            price = inAppReward.value
+            price = inAppReward.value * Float(purchaseQuantity)
         }
         
         if let user = self.user, let selectedCurrency = currency {
@@ -276,14 +291,37 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         contentView.addSubview(itemView)
         contentView.addSubview(detailView)
         contentView.addConstraints(NSLayoutConstraint.defaultHorizontalConstraints(itemView))
-        contentView.addConstraints(NSLayoutConstraint.defaultVerticalConstraints("V:|-0-[itemView]-0-[detailView]-20-|", views))
+        if canBulkPurchase() {
+            let bulkView = HRPGBulkPurchaseView(for: contentView)
+            bulkView.onValueChanged = {[weak self] value in
+                self?.purchaseQuantity = value
+            }
+            bulkView.maxValue = user?.purchased?.subscriptionPlan?.gemsRemaining ?? 0
+            contentView.addSubview(bulkView)
+            self.bulkView = bulkView
+            contentView.addConstraints(NSLayoutConstraint.defaultHorizontalConstraints(bulkView))
+            contentView.addConstraints(NSLayoutConstraint.defaultVerticalConstraints("V:|-0-[itemView]-0-[detailView]-0-[detailView]-20-|", ["itemView": itemView, "detailView": detailView, "bulkView": bulkView]))
+        } else {
+            contentView.addConstraints(NSLayoutConstraint.defaultVerticalConstraints("V:|-0-[itemView]-0-[detailView]-20-|", views))
+        }
         contentView.addConstraints(NSLayoutConstraint.defaultHorizontalConstraints(detailView))
     }
     
     func addItemSet(itemView: UIView, to contentView: UIView) {
         contentView.addSubview(itemView)
         contentView.addConstraints(NSLayoutConstraint.defaultHorizontalConstraints(itemView))
-        contentView.addConstraints(NSLayoutConstraint.defaultVerticalConstraints("V:|-0-[itemView]-20-|", ["itemView": itemView]))
+        if canBulkPurchase() {
+            let bulkView = HRPGBulkPurchaseView(for: contentView)
+            bulkView.onValueChanged = {[weak self] value in
+                self?.purchaseQuantity = value
+            }
+            contentView.addSubview(bulkView)
+            self.bulkView = bulkView
+            contentView.addConstraints(NSLayoutConstraint.defaultHorizontalConstraints(bulkView))
+            contentView.addConstraints(NSLayoutConstraint.defaultVerticalConstraints("V:|-0-[itemView]-0-[bulkView]-20-|", ["itemView": itemView, "bulkView": bulkView]))
+        } else {
+            contentView.addConstraints(NSLayoutConstraint.defaultVerticalConstraints("V:|-0-[itemView]-20-|", ["itemView": itemView]))
+        }
     }
     
     // MARK: actions
@@ -298,6 +336,10 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         inventoryRepository.togglePinnedItem(pinType: pinType, path: path).observeValues {[weak self] (_) in
             self?.isPinned = !(self?.isPinned ?? false)
         }
+    }
+    
+    private func canBulkPurchase() -> Bool {
+        return reward?.key == "gem"
     }
     
     //swiftlint:disable function_body_length
@@ -398,7 +440,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                     })
                 }
             } else if currency == .gem || purchaseType == "gems" {
-                inventoryRepository.purchaseItem(purchaseType: purchaseType, key: key, value: value, text: text)
+                inventoryRepository.purchaseItem(purchaseType: purchaseType, key: key, value: value, quantity: purchaseQuantity, text: text)
                 .flatMap(.latest, { _ in
                     return self.userRepository.retrieveUser()
                 }).observeResult({ (result) in
@@ -436,7 +478,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                             HRPGBuyItemModalViewController.displayViewController(name: "InsufficientGoldViewController", parent: topViewController)
                         }
                     })
-                } else if (purchaseType == "debuffPotion") {
+                } else if purchaseType == "debuffPotion" {
                     userRepository.useDebuffItem(key: key).observeResult { (result) in
                         switch result {
                         case .success:
@@ -446,7 +488,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                             }
                         }
                 } else {
-                    inventoryRepository.buyObject(key: key, price: value, text: text).observeResult({ (result) in
+                    inventoryRepository.buyObject(key: key, quantity: purchaseQuantity, price: value, text: text).observeResult({ (result) in
                     switch result {
                     case .success:
                         successBlock()

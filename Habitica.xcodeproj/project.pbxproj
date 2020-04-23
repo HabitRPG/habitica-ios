@@ -288,6 +288,8 @@
 		29AAA15F1F2B596900029737 /* SpeechbubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AAA15E1F2B596900029737 /* SpeechbubbleView.swift */; };
 		29AAA1611F2B597400029737 /* SpeechbubbleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29AAA1601F2B597400029737 /* SpeechbubbleView.xib */; };
 		29AAA1631F2B6D2000029737 /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AAA1621F2B6D2000029737 /* SetupViewController.swift */; };
+		29AAE55724508FC600220DB1 /* HRPGBulkPurchaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AAE55624508FC600220DB1 /* HRPGBulkPurchaseView.swift */; };
+		29AAE5592450934C00220DB1 /* HRPGBulkPurchaseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29AAE5582450934C00220DB1 /* HRPGBulkPurchaseView.xib */; };
 		29B388E11EF2BB7600A72950 /* YesterdailyChecklistItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29B388E01EF2BB7600A72950 /* YesterdailyChecklistItem.xib */; };
 		29B3FEAC1F9A3395000B12CF /* ProfileSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B3FEAB1F9A3395000B12CF /* ProfileSettingsViewController.swift */; };
 		29B3FEAF1F9A33AB000B12CF /* APISettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B3FEAE1F9A33AB000B12CF /* APISettingsViewController.swift */; };
@@ -950,6 +952,8 @@
 		29AAA15E1F2B596900029737 /* SpeechbubbleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechbubbleView.swift; sourceTree = "<group>"; };
 		29AAA1601F2B597400029737 /* SpeechbubbleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpeechbubbleView.xib; sourceTree = "<group>"; };
 		29AAA1621F2B6D2000029737 /* SetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
+		29AAE55624508FC600220DB1 /* HRPGBulkPurchaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRPGBulkPurchaseView.swift; sourceTree = "<group>"; };
+		29AAE5582450934C00220DB1 /* HRPGBulkPurchaseView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HRPGBulkPurchaseView.xib; sourceTree = "<group>"; };
 		29B388E01EF2BB7600A72950 /* YesterdailyChecklistItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YesterdailyChecklistItem.xib; sourceTree = "<group>"; };
 		29B3FEAB1F9A3395000B12CF /* ProfileSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsViewController.swift; sourceTree = "<group>"; };
 		29B3FEAE1F9A33AB000B12CF /* APISettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISettingsViewController.swift; sourceTree = "<group>"; };
@@ -1976,6 +1980,8 @@
 				298119AE1F5040DA00F9FB39 /* QuestDetailView.swift */,
 				298119AC1F5040B900F9FB39 /* QuestDetailView.xib */,
 				D9BBF32D1DBD128700C4114C /* ShopAdFooter.xib */,
+				29AAE55624508FC600220DB1 /* HRPGBulkPurchaseView.swift */,
+				29AAE5582450934C00220DB1 /* HRPGBulkPurchaseView.xib */,
 			);
 			name = Shop;
 			sourceTree = "<group>";
@@ -3049,6 +3055,7 @@
 				D9D17CD61E6899A800AD9232 /* ToDoTableViewCell.xib in Resources */,
 				2914487C20864EB800F3A6B5 /* EquipmentOverviewItemView.xib in Resources */,
 				49A84FB31F9FCA30003E2956 /* ChallengeDetailInfoTableViewCell.xib in Resources */,
+				29AAE5592450934C00220DB1 /* HRPGBulkPurchaseView.xib in Resources */,
 				49A37A8420C0FA49008C28F5 /* EmptyTableViewCell.xib in Resources */,
 				296E4B7A21AEF35E00DB3602 /* PrideAlt@2x.png in Resources */,
 				296E4BC321AEFE6100DB3602 /* BlueAlt@2x.png in Resources */,
@@ -3693,6 +3700,7 @@
 				290279702057F4A4006DACB9 /* FAQDetailViewController.swift in Sources */,
 				D92A08481D33EC38000F8B66 /* HRPGShopOverviewViewController.m in Sources */,
 				2974BDB62090C03E00EC1A25 /* InboxOverviewDataSource.swift in Sources */,
+				29AAE55724508FC600220DB1 /* HRPGBulkPurchaseView.swift in Sources */,
 				29DBFF0120CE6FFF00DF9CF2 /* SoundManager.swift in Sources */,
 				49FA9FF720DC47AD0086C478 /* TaskTableViewController.swift in Sources */,
 				C897F63C218CCF51002907C2 /* RouterHandler.swift in Sources */,
@@ -4128,7 +4136,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 459;
+				CURRENT_PROJECT_VERSION = 458;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4137,7 +4145,7 @@
 				INFOPLIST_FILE = "Habitica IntentsUI/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 2.8;
+				MARKETING_VERSION = 2.9;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-IntentsUI";
@@ -4163,7 +4171,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 459;
+				CURRENT_PROJECT_VERSION = 458;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4172,7 +4180,7 @@
 				INFOPLIST_FILE = "Habitica IntentsUI/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 2.8;
+				MARKETING_VERSION = 2.9;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-IntentsUI";
@@ -4197,7 +4205,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 459;
+				CURRENT_PROJECT_VERSION = 458;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4206,7 +4214,7 @@
 				INFOPLIST_FILE = "Habitica Intents/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 2.8;
+				MARKETING_VERSION = 2.9;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-Intents";
@@ -4234,7 +4242,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 459;
+				CURRENT_PROJECT_VERSION = 458;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4243,7 +4251,7 @@
 				INFOPLIST_FILE = "Habitica Intents/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 2.8;
+				MARKETING_VERSION = 2.9;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-Intents";
@@ -4496,7 +4504,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 455;
+				CURRENT_PROJECT_VERSION = 457;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -4551,7 +4559,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 455;
+				CURRENT_PROJECT_VERSION = 457;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -4581,7 +4589,7 @@
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 459;
+				CURRENT_PROJECT_VERSION = 458;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_SOURCE_FILE_NAMES = "";
@@ -4625,7 +4633,7 @@
 				INFOPLIST_FILE = "HabitRPG/Habitica-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 2.8;
+				MARKETING_VERSION = 2.9;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-framework",
@@ -4674,7 +4682,7 @@
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 459;
+				CURRENT_PROJECT_VERSION = 458;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_SOURCE_FILE_NAMES = "FLEX*";
@@ -4718,7 +4726,7 @@
 				INFOPLIST_FILE = "HabitRPG/Habitica-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 2.8;
+				MARKETING_VERSION = 2.9;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-framework",

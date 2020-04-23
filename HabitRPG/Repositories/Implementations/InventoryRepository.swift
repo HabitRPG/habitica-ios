@@ -97,8 +97,8 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
         })
     }
     
-    func buyObject(key: String, price: Int, text: String) -> Signal<BuyResponseProtocol?, Never> {
-        let call = BuyObjectCall(key: key)
+    func buyObject(key: String, quantity: Int, price: Int, text: String) -> Signal<BuyResponseProtocol?, Never> {
+        let call = BuyObjectCall(key: key, quantity: quantity)
         
         return call.habiticaResponseSignal.on(value: {[weak self]habiticaResponse in
             if let buyResponse = habiticaResponse?.data, let userID = self?.currentUserId {
@@ -143,8 +143,8 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
         })
     }
     
-    func purchaseItem(purchaseType: String, key: String, value: Int, text: String) -> Signal<UserProtocol?, Never> {
-        let call = PurchaseItemCall(purchaseType: purchaseType, key: key)
+    func purchaseItem(purchaseType: String, key: String, value: Int, quantity: Int, text: String) -> Signal<UserProtocol?, Never> {
+        let call = PurchaseItemCall(purchaseType: purchaseType, key: key, quantity: quantity)
         
         return call.objectSignal.on(value: {[weak self]updatedUser in
             if let updatedUser = updatedUser, let userID = self?.currentUserId {

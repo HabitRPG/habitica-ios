@@ -23,6 +23,7 @@ class HRPGSimpleShopItemView: UIView {
     @IBOutlet weak var imageViewHeight: NSLayoutConstraint!
     @IBOutlet weak var imageViewWidth: NSLayoutConstraint!
     
+    
     private var user: UserProtocol?
     
     @IBInspectable var shouldHideNotes: Bool {
@@ -86,7 +87,7 @@ class HRPGSimpleShopItemView: UIView {
             setAvailableUntil(date: availableUntil)
         }
         var imageName = reward.imageName ?? ""
-        if (reward.path?.contains("timeTravel") == true) {
+        if reward.path?.contains("timeTravel") == true {
             setImage(name: imageName.replacingOccurrences(of: "icon_", with: ""), fileExtension: "gif")
         } else {
             setImage(name: imageName)
@@ -100,10 +101,7 @@ class HRPGSimpleShopItemView: UIView {
         if let inAppPurchaseType = reward.purchaseType {
             purchaseType = inAppPurchaseType
         }
-        
-        if reward.key == "gem" {
-            //setGemsLeft(inAppReward.itemsLeft?.intValue ?? 0)
-        }
+
         if !purchaseType.isEmpty {
             configureFor(key: reward.key ?? "", purchaseType: purchaseType)
         }
@@ -139,10 +137,9 @@ class HRPGSimpleShopItemView: UIView {
             self?.setNeedsLayout()
         }
     }
-    
-    private func setGemsLeft(_ gemsLeft: Int) {
-        let totalCount = self.user?.purchased?.subscriptionPlan?.gemCapTotal ?? 0
-        topBannerLabel.text = L10n.Inventory.numberGemsLeft(gemsLeft, totalCount)
+
+    func setGemsLeft(_ gemsLeft: Int, gemsTotal: Int) {
+        topBannerLabel.text = L10n.Inventory.numberGemsLeft(gemsLeft, gemsTotal)
         if gemsLeft == 0 {
             topBannerWrapper.backgroundColor = UIColor.orange10
             additionalInfoLabel.text = L10n.Inventory.noGemsLeft

@@ -294,6 +294,6 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
                 return firstObject.pinType == "marketGear"
             }
         }
-        return false
+        return shopIdentifier == Constants.MarketKey
     }
 }
