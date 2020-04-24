@@ -48,6 +48,8 @@ class TaskTableViewCell: UITableViewCell, UITextViewDelegate {
     @objc
     func configure(task: TaskProtocol) {
         self.titleLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 16)
+        self.titleLabel.textContainerInset = UIEdgeInsets.zero
+        self.subtitleLabel.textContainerInset = UIEdgeInsets.zero
         if let text = task.text {
             self.titleLabel.attributedText = try? Down(markdownString: text.unicodeEmoji).toHabiticaAttributedString(baseSize: 16, textColor: ThemeService.shared.theme.primaryTextColor)
         }
