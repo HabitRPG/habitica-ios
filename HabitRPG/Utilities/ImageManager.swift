@@ -90,4 +90,16 @@ class ImageManager: NSObject {
         }
         return formatDictionary[name] ?? "png"
     }
+    
+    
+    private static func substituteSprite(name: String?) -> String? {
+        for (key, value) in substitutions {
+            if let keyString = key as? String, name?.contains(keyString) == true {
+                return value as? String
+            }
+        }
+        return name
+    }
+    
+    static var substitutions = ConfigRepository().dictionary(variable: .spriteSubstitutions)
 }

@@ -37,8 +37,6 @@ protocol Avatar {
 
     var isSleep: Bool { get }
     var size: String? { get }
-    
-    var substitutions: NSDictionary? { get set }
 }
 
 extension Avatar {
@@ -131,7 +129,7 @@ class AvatarViewModel: NSObject, Avatar {
     }
     
     var background: String? {
-        return substituteSprite(name: avatar?.preferences?.background, substitutions: substitutions?.value(forKey: "backgrounds") as? NSDictionary)
+        return avatar?.preferences?.background
     }
     var chair: String? {
         return avatar?.preferences?.chair
@@ -227,11 +225,7 @@ class AvatarViewModel: NSObject, Avatar {
                 return "avatar_floral_\(avatar?.stats?.habitClass ?? "warrior")"
             }
             if buff.snowball {
-                if (Calendar.current.component(.year, from: Date()) > 2019) {
-                    return "avatar_snowball_\(avatar?.stats?.habitClass ?? "warrior")"
-                } else {
-                    return "snowman"
-                }
+                return "avatar_snowball_\(avatar?.stats?.habitClass ?? "warrior")"
             }
             if buff.spookySparkles {
                 return "ghost"
@@ -241,7 +235,7 @@ class AvatarViewModel: NSObject, Avatar {
     }
     
     var mount: String? {
-        return substituteSprite(name: avatar?.items?.currentMount, substitutions: substitutions?.value(forKey: "mounts") as? NSDictionary)
+        return avatar?.items?.currentMount
     }
     
     var knockout: String? {
@@ -249,7 +243,7 @@ class AvatarViewModel: NSObject, Avatar {
     }
     
     var pet: String? {
-        return substituteSprite(name: avatar?.items?.currentPet, substitutions: substitutions?.value(forKey: "pets") as? NSDictionary)
+        return avatar?.items?.currentPet
     }
     
     var isSleep: Bool {
@@ -259,17 +253,5 @@ class AvatarViewModel: NSObject, Avatar {
     var size: String? {
         return avatar?.preferences?.size
     }
-    
-    private func substituteSprite(name: String?, substitutions: NSDictionary?) -> String? {
-        if let substitutions = substitutions {
-            for (key, value) in substitutions {
-                if let keyString = key as? String, name?.contains(keyString) == true {
-                    return value as? String
-                }
-            }
-        }
-        return name
-    }
-    
-    var substitutions: NSDictionary?
+
 }
