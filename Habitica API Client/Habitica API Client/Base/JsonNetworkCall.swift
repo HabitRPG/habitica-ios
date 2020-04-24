@@ -24,6 +24,7 @@ open class JsonNetworkCall: StubbableNetworkCall {
         return ["Content-Type": "application/json", "Accept": "application/json"]
     }
     
+    
     open class func addJsonHeaders(_ headers: [String: String]?) -> [String: String] {
         if var newHeaders = headers {
             for key in jsonHeaders().keys {

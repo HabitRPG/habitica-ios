@@ -11,6 +11,7 @@ import ReactiveSwift
 import Prelude
 
 open class NetworkCall {
+    
     public let configuration: ServerConfigurationProtocol
     public let endpoint: String
     public let httpMethod: String
@@ -51,7 +52,21 @@ open class NetworkCall {
         
         dataTaskSignal = dataTaskProperty.signal.skipNil()
         responseSignal = responseProperty.signal.skipNil()
-        httpResponseSignal = responseSignal.map({ $0 as? HTTPURLResponse }).skipNil()
+        httpResponseSignal = responseSignal.map({ $0 as? HTTPURLResponse }).skipNil().on(value: { response in
+            if response.allHeaderFields.keys.contains("Etag") {
+                guard let etag = response.allHeaderFields["Etag"] as? String else {
+                    return
+                }
+                guard let urlString = response.url?.absoluteString else {
+                    return
+                }
+                if HabiticaServerConfig.etags[urlString] != etag {
+                    UserDefaults.standard.set(etag, forKey: "etag\(urlString)")
+                }
+                HabiticaServerConfig.etags[urlString] = etag
+                
+            }
+        })
         dataSignal = dataProperty.signal
         
         errorDataSignal = errorDataProperty.signal.skipNil()
@@ -119,6 +134,11 @@ open class NetworkCall {
                     if let header = headers[key] {
                         mutableRequest.addValue(header, forHTTPHeaderField: key)
                     }
+                }
+            }
+            if let urlString = request?.url?.absoluteString {
+                if let etag = HabiticaServerConfig.etags[urlString] {
+                    mutableRequest.addValue(etag, forHTTPHeaderField: "If-None-Match")
                 }
             }
             return mutableRequest

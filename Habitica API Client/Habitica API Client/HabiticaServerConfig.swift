@@ -20,4 +20,6 @@ public class HabiticaServerConfig {
     public static var current = production
     
     public static var aws = ServerConfiguration(scheme: "https", host: "s3.amazonaws.com", apiRoute: "habitica-assets/mobileApp/endpoint")
+    
+    public static var etags: [String: String] = [:]
 }
