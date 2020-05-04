@@ -435,7 +435,7 @@
 "party.invitation_no_invitername" = "Someone invited you to join their party";
 "party.invitation_invitername" = "%@ invited you to join their party";
 "party.create_party_title" = "Play Habitica in a Party";
-"party.create_party_description" = "Take on quests with friends or on your own. Battle monsters, create Challenges, and help yourself stay accountable through Parties. ";
+"party.create_party_description" = "Take on quests with friends or on your own. Battle monsters, create Challenges, and help yourself stay accountable through Parties.";
 "party.create_party_button" = "Create a new Party";
 "party.join_party_title" = "Want to join a party?";
 "party.join_party_description" = "Give a Party member the username found below and they can send you an invite";
@@ -598,7 +598,7 @@
 "intro.card1.text" = "It’s time to have fun while you get things done. Join over 2 million others improving their life one task at a time.";
 "intro.card2.title" = "Progress in the game";
 "intro.card2.subtitle" = "Progress in life";
-"intro.card2.text" = "Unlock features in the game by checking off your real life tasks. Earn armor, pets, and more as rewards for meeting your goals. ";
+"intro.card2.text" = "Unlock features in the game by checking off your real life tasks. Earn armor, pets, and more as rewards for meeting your goals.";
 "intro.card3.title" = "Get social";
 "intro.card3.subtitle" = "Fight monsters";
 "intro.card3.text" = "Keep your goals on track with help from your friends. Support each other in life and in battle as you improve together!";
@@ -809,7 +809,7 @@
 "not_getting_drops" = "Not getting the right drops? Check out the Market to buy just the things you need!";
 "streak_achievement_title" = "You earned a streak achievement!";
 "streak_achievement_description" = "You've completed your Daily for 21 days in a row! Amazing job. Don't break the streak!";
-"earned_achievement_share" = "I earned a new achievement in Habitica! ";
+"earned_achievement_share" = "I earned a new achievement in Habitica!";
 "next_checkin_prize_1_day" = "Your next prize unlocks in 1 Check-In.";
 "next_checkin_prize_x_days" = "Your next prize unlocks in %d Check-Ins";
 "recipient" = "Recipient";
