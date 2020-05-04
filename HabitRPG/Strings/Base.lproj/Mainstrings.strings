@@ -70,7 +70,7 @@
 "stats.character_build_text" = "Each level earns you one point to assign to an attribute of your choice. You can do so manually, or let the game decide for you using one of the Automatic Allocation options.";
 "stats.stat_guide" = "Stat guide";
 "stats.strength_title" = "Strength";
-"stats.strength_text" = "Increases the bonus of critical hits and makes them more likely when scoring a task. Also increases damage dealt to bosses. ";
+"stats.strength_text" = "Increases the bonus of critical hits and makes them more likely when scoring a task. Also increases damage dealt to bosses.";
 "stats.intelligence_title" = "Intelligence";
 "stats.intelligence_text" = "Increases EXP earned from completing tasks. Also increases your mana cap and how fast mana regenerates over time.";
 "stats.constitution_title" = "Constitution";
