@@ -238,7 +238,6 @@ class QuestProgressView: UIView {
         attributedString.addAttribute(.foregroundColor, value: UIColor.black, range: firstLineRange)
         attributedString.addAttribute(.font, value: CustomFontMetrics.scaledSystemFont(ofSize: 15), range: NSRange.init(location: firstLineRange.length, length: string.count - firstLineRange.length))
         let alertController = HabiticaAlertController.alert(title: L10n.WorldBoss.rageStrikeExplanationButton, attributedMessage: attributedString)
-        alertController.titleBackgroundColor = UIColor.orange50
         alertController.addCloseAction()
         alertController.show()
         alertController.titleLabel.textColor = .white

@@ -144,12 +144,12 @@ class ItemsViewController: BaseTableViewController {
                     stackView.axis = .vertical
                     stackView.spacing = 12
                     alertController.contentView = stackView
-                    alertController.addCloseAction()
                     alertController.addAction(title: L10n.inviteParty, style: .default, isMainAction: true) {[weak self] _ in
                         self?.inventoryRepository.inviteToQuest(quest: quest).observeCompleted {
                             self?.dismissIfNeeded()
                         }
                     }
+                    alertController.addCloseAction()
                     alertController.show()
                 }
             }))
@@ -193,16 +193,18 @@ class ItemsViewController: BaseTableViewController {
     
     private func showHatchedDialog(egg: EggProtocol, potion: HatchingPotionProtocol) {
         let imageAlert = ImageOverlayView(imageName: "Pet-\(egg.key ?? "")-\(potion.key ?? "")", title: L10n.Inventory.hatched, message: "\(potion.text ?? "") \(egg.text ?? "")")
-        imageAlert.addShareAction { (_) in
+        imageAlert.addAction(title: L10n.equip, isMainAction: true) {[weak self] _ in
+            self?.inventoryRepository.equip(type: "pet", key: "\(egg.key ?? "")-\(potion.key ?? "")").observeCompleted {}
+        }
+        imageAlert.addAction(title: L10n.share) { (_) in
             HRPGSharingManager.shareItems([
                     L10n.Inventory.hatchedSharing(egg.text ?? "", potion.text ?? "")
                 ], withPresenting: imageAlert, withSourceView: nil)
         }
+        imageAlert.arrangeMessageLast = true
         imageAlert.containerViewSpacing = 12
-        imageAlert.addCloseAction()
+        imageAlert.setCloseAction(title: L10n.close, handler: {})
         imageAlert.imageHeight = 99
-        imageAlert.titleLabel.textColor = .white
-        imageAlert.titleBackgroundColor = ThemeService.shared.theme.backgroundTintColor
         imageAlert.show()
     }
 

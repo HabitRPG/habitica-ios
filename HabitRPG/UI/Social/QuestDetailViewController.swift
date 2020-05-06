@@ -232,7 +232,6 @@ class QuestDetailViewController: BaseUIViewController {
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
         let alertController = HabiticaAlertController(title: nil, message: L10n.Quests.confirmCancelInvitation)
-        alertController.addCancelAction()
         alertController.addAction(title: L10n.confirm, style: .destructive, isMainAction: true, handler: {[weak self] (_) in
             if let groupID = self?.groupID {
                 self?.disposable.inner.add(self?.socialRepository.cancelQuestInvitation(groupID: groupID).observeCompleted {
@@ -240,12 +239,12 @@ class QuestDetailViewController: BaseUIViewController {
                 })
             }
         })
+        alertController.addCancelAction()
         alertController.show()
     }
     
     @IBAction func abortButtonTapped(_ sender: Any) {
         let alertController = HabiticaAlertController(title: nil, message: L10n.Quests.confirmAbort)
-        alertController.addCancelAction()
         alertController.addAction(title: L10n.confirm, style: .destructive, isMainAction: true, handler: {[weak self] (_) in
             if let groupID = self?.groupID {
                 self?.disposable.inner.add(self?.socialRepository.abortQuest(groupID: groupID).observeCompleted {
@@ -253,17 +252,18 @@ class QuestDetailViewController: BaseUIViewController {
                 })
             }
         })
+        alertController.addCancelAction()
         alertController.show()
     }
     
     @IBAction func forceStartButtonTapped(_ sender: Any) {
         let alertController = HabiticaAlertController(title: nil, message: L10n.Quests.confirmForceStart)
-        alertController.addCancelAction()
         alertController.addAction(title: L10n.confirm, style: .default, isMainAction: true, handler: {[weak self] (_) in
             if let groupID = self?.groupID {
                 self?.disposable.inner.add(self?.socialRepository.forceStartQuest(groupID: groupID).observeCompleted {})
             }
         })
+        alertController.addCancelAction()
         alertController.show()
     }
 }

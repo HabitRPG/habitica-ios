@@ -23,12 +23,13 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     @IBOutlet weak var hourglassCountView: HRPGCurrencyCountView!
     @IBOutlet weak var gemCountView: HRPGCurrencyCountView!
     @IBOutlet weak var goldCountView: HRPGCurrencyCountView!
-    @IBOutlet weak var pinButton: UIButton!
     @IBOutlet weak var buyButton: UIView!
     @IBOutlet weak var buyLabel: UILabel!
     @IBOutlet weak var currencyCountView: HRPGCurrencyCountView!
     @IBOutlet weak var closableShopModal: HRPGCloseableShopModalView!
-    @IBOutlet weak var balanceLabel: UILabel!
+    @IBOutlet weak var pinButton: UIButton!
+    @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var buttonSeparatorView: UIView!
     
     @objc public weak var shopViewController: HRPGShopViewController?
     
@@ -51,9 +52,13 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     private var isPinned: Bool = false {
         didSet {
             if isPinned {
-                pinButton.setTitle(L10n.unpinFromRewards, for: .normal)
+                pinButton.setTitle(L10n.unpin, for: .normal)
+                pinButton.setTitleColor(.red10, for: .normal)
+                pinButton.setImage(HabiticaIcons.imageOfUnpinItem.withRenderingMode(.alwaysTemplate), for: .normal)
             } else {
-                pinButton.setTitle(L10n.pinToRewards, for: .normal)
+                pinButton.setTitle(L10n.pin, for: .normal)
+                pinButton.setTitleColor(.purple400, for: .normal)
+                pinButton.setImage(HabiticaIcons.imageOfPinItem, for: .normal)
             }
         }
     }
@@ -72,21 +77,10 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         styleViews()
         setupItem()
         
-        closableShopModal.closeButton.addTarget(self, action: #selector(closePressed), for: UIControl.Event.touchUpInside)
+        closeButton.addTarget(self, action: #selector(closePressed), for: UIControl.Event.touchUpInside)
         buyButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(buyPressed)))
         let inAppReward = reward
         pinButton.isHidden = inAppReward?.pinType == "armoire" || inAppReward?.pinType == "potion"
-        
-        if #available(iOS 11.0, *) {
-            pinButton.layer.cornerRadius = 12
-            buyButton.layer.cornerRadius = 12
-            if pinButton.isHidden {
-                buyButton.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
-            } else {
-                pinButton.layer.maskedCorners = [ .layerMinXMaxYCorner]
-                buyButton.layer.maskedCorners = [ .layerMaxXMaxYCorner]
-            }
-        }
 
         ThemeService.shared.addThemeable(themable: self)
         
@@ -101,32 +95,28 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     }
     
     func populateText() {
-        pinButton.setTitle(L10n.pinToRewards, for: .normal)
+        closeButton.setTitle(L10n.close, for: .normal)
         buyLabel.text = L10n.buy.localizedCapitalized
-        balanceLabel.text = L10n.yourBalance
+        pinButton.setTitle(L10n.pin, for: .normal)
     }
     
     func applyTheme(theme: Theme) {
         pinButton.setTitleColor(theme.tintColor, for: .normal)
-        pinButton.backgroundColor = theme.backgroundTintColor.withAlphaComponent(0.05)
-        pinButton.layer.borderColor = theme.dimmedColor.cgColor
-        buyButton.backgroundColor = theme.backgroundTintColor.withAlphaComponent(0.05)
-        buyButton.layer.borderColor = theme.dimmedColor.cgColor
-        closableShopModal.closeButton.setTitleColor(theme.tintColor, for: .normal)
-        closableShopModal.closeButton.backgroundColor = theme.contentBackgroundColor
+        pinButton.backgroundColor = theme.windowBackgroundColor
+        buyButton.backgroundColor = theme.contentBackgroundColor
+        closeButton.setTitleColor(theme.tintColor, for: .normal)
+        closeButton.backgroundColor = theme.contentBackgroundColor
         closableShopModal.shopModalBgView.backgroundColor = theme.contentBackgroundColor
         closableShopModal.shopModalBgView.contentView.backgroundColor = theme.contentBackgroundColor
-
+        buttonSeparatorView.backgroundColor = theme.separatorColor
         if !itemIsLocked() {
             buyLabel.textColor = theme.tintColor
         }
         view.backgroundColor = theme.backgroundTintColor.darker(by: 50).withAlphaComponent(0.6)
+        topContentView.backgroundColor = theme.windowBackgroundColor
     }
     
     func styleViews() {
-        pinButton.layer.borderWidth = 0.5
-        
-        buyButton.layer.borderWidth = 0.5
         currencyCountView.font = UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.semibold)
         
         hourglassCountView.currency = .hourglass
@@ -222,11 +212,16 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
             currencyCountView.amount = totalValue
         }
         if (Currency(rawValue: reward?.currency ?? "gold") != .gold || canAfford()) && !isLocked {
+            buyLabel.textColor = .white
+            currencyCountView.textColor = .white
+            buyButton.backgroundColor = ThemeService.shared.theme.tintColor
             currencyCountView.state = .normal
         } else {
             if currencyCountView.currency == .gold {
-                buyLabel.textColor = .gray400
+                buyLabel.textColor = ThemeService.shared.theme.dimmedTextColor
+                currencyCountView.textColor = ThemeService.shared.theme.dimmedTextColor
             }
+            buyButton.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
             if isLocked {
                 currencyCountView.state = .locked
             } else {
@@ -356,24 +351,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         var value = 0
         var successBlock = {}
         var text = ""
-        /*if let shopItem = item {
-            key = shopItem.key ?? ""
-            purchaseType = shopItem.purchaseType ?? ""
-            text = shopItem.text ?? ""
-            imageName = shopItem.imageName ?? ""
-            setIdentifier = shopItem.category?.identifier ?? shopItem.key ?? ""
-            value = shopItem.value?.intValue ?? 0
-            if let currencyString = shopItem.currency, let thisCurrency = Currency(rawValue: currencyString) {
-                currency = thisCurrency
-            }
-            successBlock = {
-                if purchaseType == "gear" {
-                    self.inventoryRepository.retrieveShopInventory(identifier: GearMarketKey).observeCompleted {}
-                } else if let identifier = self.shopIdentifier {
-                    self.inventoryRepository.retrieveShopInventory(identifier: identifier).observeCompleted {}
-                }
-            }
-        } else*/ if let inAppReward = reward {
+        if let inAppReward = reward {
             key = inAppReward.key ?? ""
             purchaseType = inAppReward.purchaseType ?? ""
             setIdentifier = inAppReward.key ?? ""
@@ -383,7 +361,9 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                 currency = thisCurrency
             }
             successBlock = {
-                self.userRepository.retrieveInAppRewards().observeCompleted {}
+                self.userRepository.retrieveInAppRewards().observeCompleted {
+                    
+                }
             }
         }
         

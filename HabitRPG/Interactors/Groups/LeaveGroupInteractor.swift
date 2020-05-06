@@ -37,13 +37,13 @@ class LeaveGroupInteractor: Interactor<GroupProtocol, GroupProtocol?> {
         let message = group.type == "party" ? L10n.Party.leavePartyDescription : L10n.Guilds.leaveGuildDescription
         let alert = HabiticaAlertController(title: title,
                                             message: message)
-        alert.addAction(title: L10n.Guilds.keepChallenges, handler: { (_) in
+        alert.addAction(title: L10n.Guilds.keepChallenges, isMainAction: true, handler: { (_) in
             observer.send(value: (true, true, group.id ?? ""))
         })
         alert.addAction(title: L10n.Guilds.leaveChallenges, style: .destructive, handler: { (_) in
             observer.send(value: (true, false, group.id ?? ""))
         })
-        alert.setCloseAction(title: L10n.cancel, handler: {
+        alert.setCloseAction(title: L10n.close, handler: {
             observer.send(value: (false, false, group.id ?? ""))
         })
         alert.show()

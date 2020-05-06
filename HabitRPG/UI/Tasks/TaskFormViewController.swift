@@ -845,13 +845,13 @@ class TaskFormViewController: FormViewController, Themeable {
     
     private func deleteButtonTapped() {
         let alertController = HabiticaAlertController(title: L10n.Tasks.Form.confirmDelete)
-        alertController.addCancelAction()
         alertController.addAction(title: L10n.delete, style: .default, isMainAction: true) {[weak self] (_) in
             if let task = self?.task {
                 self?.taskRepository.deleteTask(task).observeCompleted {}
             }
             self?.dismiss(animated: true, completion: nil)
         }
+        alertController.addCancelAction()
         alertController.show()
     }
         

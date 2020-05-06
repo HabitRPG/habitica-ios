@@ -100,7 +100,6 @@ class InboxOverviewViewController: BaseTableViewController {
         errorView.text = L10n.Errors.userNotFound
         stackView.addArrangedSubview(errorView)
 
-        alertController.addCancelAction()
         var foundUser = false
         alertController.addAction(title: L10n.next, isMainAction: true, closeOnTap: false) {[weak self] _ in
             activityIndicator.isHidden = false
@@ -124,6 +123,7 @@ class InboxOverviewViewController: BaseTableViewController {
                 
             }
         }
+        alertController.addCancelAction()
         alertController.show()
         usernameTextField.becomeFirstResponder()
     }

@@ -127,7 +127,6 @@ class RageStrikeView: UIView {
             let alertController = HabiticaAlertController.alert(title: L10n.WorldBoss.rageStrikeTitle(locationName))
             alertController.contentViewInsets = UIEdgeInsets(top: 0, left: 0, bottom: 16, right: 0)
             alertController.containerViewSpacing = 0
-            alertController.titleBackgroundColor = UIColor.orange50
             alertController.addCloseAction()
             guard let contentView = Bundle.main.loadNibNamed("RageStrikeActiveContentView", owner: self, options: nil)?.first as? UIView else {
                 return
@@ -155,7 +154,6 @@ class RageStrikeView: UIView {
             attributedString.addAttribute(.foregroundColor, value: UIColor.black, range: firstLineRange)
             attributedString.addAttribute(.font, value: CustomFontMetrics.scaledSystemFont(ofSize: 15), range: NSRange.init(location: firstLineRange.length, length: string.count - firstLineRange.length))
             let alertController = HabiticaAlertController.alert(title: L10n.WorldBoss.pendingStrike, attributedMessage: attributedString)
-            alertController.titleBackgroundColor = UIColor.orange50
             alertController.addCloseAction()
             alertController.show()
             alertController.titleLabel.textColor = .white

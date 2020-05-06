@@ -24,6 +24,7 @@ class LevelUpOverlayView: HabiticaAlertController {
         title = L10n.levelupTitle
         message = L10n.levelupDescription(avatar.stats?.level ?? 0)
         setupAvatarView(avatar: avatar)
+        addAction(title: L10n.onwards, isMainAction: true)
         addShareAction {[weak self] (_) in
             var items: [Any] = [
                 L10n.levelupShare(avatar.stats?.level ?? 0)
@@ -35,7 +36,6 @@ class LevelUpOverlayView: HabiticaAlertController {
                 HRPGSharingManager.shareItems(items, withPresenting: weakSelf, withSourceView: nil)
             }
         }
-        addCloseAction()
     }
     
     required init?(coder aDecoder: NSCoder) {

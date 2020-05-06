@@ -58,6 +58,12 @@ class HRPGCurrencyCountView: UIView {
         }
     }
     
+    public var textColor: UIColor? {
+        didSet {
+            updateStateValues()
+        }
+    }
+    
     @objc public var font: UIFont {
         get {
             return countLabel.font
@@ -118,10 +124,14 @@ class HRPGCurrencyCountView: UIView {
     func updateStateValues() {
         switch state {
         case .normal:
-            countLabel.textColor = currency.getTextColor()
+            if let color = textColor {
+                countLabel.textColor = color
+            } else {
+                countLabel.textColor = currency.getTextColor()
+            }
             currencyImageView.alpha = 1.0
         case .cantAfford:
-            countLabel.textColor = .red100
+            countLabel.textColor = ThemeService.shared.theme.errorColor
             currencyImageView.alpha = 0.3
         case .locked:
             countLabel.textColor = ThemeService.shared.theme.dimmedTextColor

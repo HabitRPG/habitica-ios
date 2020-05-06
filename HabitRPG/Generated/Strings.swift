@@ -362,6 +362,8 @@ public enum L10n {
   public static var oneFilter: String { return L10n.tr("Mainstrings", "one_filter") }
   /// 1 Month
   public static var oneMonth: String { return L10n.tr("Mainstrings", "one_month") }
+  /// Onwards
+  public static var onwards: String { return L10n.tr("Mainstrings", "onwards") }
   /// Open
   public static var `open`: String { return L10n.tr("Mainstrings", "open") }
   /// Open App Store Page
@@ -382,8 +384,8 @@ public enum L10n {
   public static var pets: String { return L10n.tr("Mainstrings", "pets") }
   /// Photo URL
   public static var photoUrl: String { return L10n.tr("Mainstrings", "photo_url") }
-  /// Pin to Rewards
-  public static var pinToRewards: String { return L10n.tr("Mainstrings", "pin_to_rewards") }
+  /// Pin
+  public static var pin: String { return L10n.tr("Mainstrings", "pin") }
   /// Plain Backgrounds
   public static var plainBackgrounds: String { return L10n.tr("Mainstrings", "plain_backgrounds") }
   /// Ponytail
@@ -590,8 +592,8 @@ public enum L10n {
   public static var unlocksLevelTen: String { return L10n.tr("Mainstrings", "unlocks_level_ten") }
   /// Unlocks after selecting a class
   public static var unlocksSelectingClass: String { return L10n.tr("Mainstrings", "unlocks_selecting_class") }
-  /// Unpin from Rewards
-  public static var unpinFromRewards: String { return L10n.tr("Mainstrings", "unpin_from_rewards") }
+  /// Unpin
+  public static var unpin: String { return L10n.tr("Mainstrings", "unpin") }
   /// No longer want to subscribe? You can manage your subscription from iTunes.
   public static var unsubscribeItunes: String { return L10n.tr("Mainstrings", "unsubscribe_itunes") }
   /// No longer want to subscribe? Due to your payment method, you can only unsubscribe through the website.

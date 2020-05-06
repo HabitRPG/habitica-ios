@@ -482,12 +482,12 @@ class LoginTableViewController: UIViewController, UITextFieldDelegate {
         stackView.addArrangedSubview(textField)
         alertController.contentView = stackView
         
-        alertController.addCancelAction()
         alertController.addAction(title: L10n.send, isMainAction: true) { _ in
             self.userRepository.sendPasswordResetEmail(email: textField.text ?? "").observeCompleted {
                 ToastManager.show(text: L10n.Login.resetPasswordResponse, color: .green, duration: 4.0)
             }
         }
+        alertController.addCancelAction()
         alertController.show()
     }
 

@@ -22,14 +22,8 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var headerWrapperView: UIView!
     
     @IBOutlet weak var tableViewWrapper: UIView!
-    @IBOutlet weak var checkinWrapper: UIView!
-    @IBOutlet weak var checkinIcon: UIImageView!
-    @IBOutlet weak var checkinIconHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var checkinTitle: UILabel!
-    @IBOutlet weak var checkinDescription: UILabel!
     @IBOutlet weak var checkinYesterdaysDailiesLabel: UILabel!
     @IBOutlet weak var startDayButton: UIButton!
-    @IBOutlet weak var separatorView: UIView!
     
     let taskRepository = TaskRepository()
     private let userRepository = UserRepository()
@@ -48,30 +42,33 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
         yesterdailiesTableView.estimatedRowHeight = 60
 
         updateTitleBanner()
-        updateCheckinScreen()
         
-        checkinYesterdaysDailiesLabel.text = L10n.checkinYesterdaysDalies
         startDayButton.setTitle(L10n.startMyDay, for: .normal)
         
         ThemeService.shared.addThemeable(themable: self)
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        view.cornerRadius = 16
+        view.superview?.superview?.cornerRadius = 16
     }
     
     func applyTheme(theme: Theme) {
         view.backgroundColor = theme.contentBackgroundColor
-        startDayButton.tintColor = theme.tintColor
-        startDayButton.backgroundColor = theme.offsetBackgroundColor
-        headerWrapperView.backgroundColor = theme.offsetBackgroundColor
+        startDayButton.setTitleColor(.white, for: .normal)
+        startDayButton.backgroundColor = theme.tintColor
         tableViewWrapper.backgroundColor = theme.windowBackgroundColor
-        checkinTitle.textColor = theme.primaryTextColor
-        checkinDescription.textColor = theme.secondaryTextColor
         checkinCountView.textColor = theme.primaryTextColor
-        separatorView.backgroundColor = theme.separatorColor
+        nextCheckinCountView.textColor = theme.secondaryTextColor
     }
 
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         if let window = view.window {
-            heightConstraint.constant = window.frame.size.height - 200
+            heightConstraint.constant = window.frame.size.height - 300
         }
             yesterdailiesHeightConstraint.constant = yesterdailiesTableView.contentSize.height
     }
@@ -116,13 +113,7 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
 
     func updateTitleBanner() {
         checkinCountView.text = L10n.welcomeBack
-        nextCheckinCountView.text = nil
-    }
-
-    func updateCheckinScreen() {
-        checkinIconHeightConstraint.constant = 0
-        checkinTitle.text = nil
-        checkinDescription.text = nil
+        nextCheckinCountView.text = L10n.checkinYesterdaysDalies
     }
 
     @IBAction func allDoneTapped(_ sender: Any) {

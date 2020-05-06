@@ -42,7 +42,6 @@ class TavernDetailViewController: GroupDetailViewController {
                     view?.questColorLight = quest.uicolorLight
                     view?.questColorExtraLight = quest.uicolorExtraLight
                     alertController.contentView = view
-                    alertController.titleBackgroundColor = quest.uicolorLight
                     alertController.addCloseAction()
                     alertController.show()
                     alertController.titleLabel.textColor = .white

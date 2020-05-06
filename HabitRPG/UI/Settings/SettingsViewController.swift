@@ -1036,10 +1036,10 @@ class SettingsViewController: FormViewController, Themeable {
             }
         } else {
             let alertController = HabiticaAlertController(title: L10n.Settings.areYouSure, message: L10n.Settings.changeClassDisclaimer)
-            alertController.addCancelAction()
             alertController.addAction(title: L10n.Settings.changeClass) {[weak self] _ in
                 self?.showClassSelectionViewController()
             }
+            alertController.addCancelAction()
             alertController.show()
         }
     }

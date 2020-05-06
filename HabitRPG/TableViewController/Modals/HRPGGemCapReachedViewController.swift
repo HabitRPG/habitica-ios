@@ -15,7 +15,6 @@ class HRPGGemCapReachedViewController: HRPGSingleOptionModalViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        backgroundModalView.closeButton.addTarget(self, action: #selector(closePressed), for: UIControl.Event.touchUpInside)
         backgroundModalView.sendSubviewToBack(backgroundModalView.shopModalBgView)
     }
     

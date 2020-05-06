@@ -798,8 +798,8 @@
 "gift_one_get_one_description" = "Gift a subscription now and you’ll get the same sub for yourself free!";
 "gems_support_developers" = "Buying gems supports the developers\nand helps keep Habitica running";
 "gem_benefits_title" = "Gems allow you to buy fun extras for your account, including:";
-"unpin_from_rewards" = "Unpin from Rewards";
-"pin_to_rewards" = "Pin to Rewards";
+"unpin" = "Unpin";
+"pin" = "Pin";
 "buy_for_x" = "Buy for %@";
 "moderator" = "Moderator";
 "staff" = "Staff";
@@ -867,3 +867,4 @@
 "new_message" = "New Message";
 "edit_challenge_tasks" = "Challenge tasks only offer limited editing.";
 "add" = "Add";
+"onwards" = "Onwards";
