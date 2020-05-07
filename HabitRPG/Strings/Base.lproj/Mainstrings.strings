@@ -788,7 +788,6 @@
 "not_recurring" = "Not Recurring";
 "cancelled" = "Cancelled";
 "cancel_subscription" = "Cancel Subscription";
-"renew_subscription" = "Renew Subscription";
 "renew_subscription_description" = "Want to continue your benefits? You can start a new subscription before this one runs out to keep your benefits active.";
 "renew_subscription_gifted_description" = "Want to continue your benefits? You can start a new subscription before your gifted one runs out to keep your benefits active.";
 "cancel_subscription_group_plan" = "You have a free subscription because you are a member a Party or Guild that has a Group Plan. This will end if you leave or the Group Plan is cancelled by the owner. Any months of extra subscription credit you have will be applied at the end of the Group Plan.";
