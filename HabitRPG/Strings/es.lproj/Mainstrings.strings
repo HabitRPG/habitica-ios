@@ -492,7 +492,7 @@
 "x_months" = "%d meses";
 /* (No Comment) */
 "yearly" = "Anualmente";
-"back" = "Espalda";
+"back" = "Atrás";
 "all" = "Todo";
 "weak" = "Débiles";
 "strong" = "Fuertes";
@@ -525,7 +525,7 @@
 "titles.challenges" = "Desafíos";
 "titles.shops" = "Tiendas";
 "titles.choose_user" = "Elegir Usuarios";
-"titles.choose_recipient" = "Elegir al Recipiente";
+"titles.choose_recipient" = "Elegir destinatario";
 "titles.feed_pet" = "Alimentar Mascota";
 "titles.guidelines" = "Normas";
 "titles.invite_members" = "Invitar a miembros";
@@ -576,7 +576,7 @@
 "tasks.repeats.every_day" = "cada día";
 "tasks.repeats.weekdays" = "días de la semana";
 "tasks.repeats.weekends" = "fines de semana";
-"tasks.quality.worst" = "El peor";
+"tasks.quality.worst" = "Pésimo";
 "tasks.quality.worse" = "Peor";
 "tasks.quality.bad" = "Mal";
 "tasks.quality.neutral" = "Neutral";
@@ -820,7 +820,7 @@
 "subscription_info_2_title" = "Relojes de Arena Místicos";
 "subscription_info_3_title" = "Artículos Misteriosos Mensuales";
 "subscription_info_3_description" = "¡Suscríbete ahora para conseguir un set exclusivo y recibir nuevos objetos cada mes!";
-"subscription_info_4_title" = "Objetos misteriosos menusalmente";
+"subscription_info_4_title" = "Objetos misteriosos mensualmente";
 "subscription_info_4_description" = "¡El doble de botín te permite recibir más objetos por tus tareas completadas cada día, lo que te ayuda a completar tu establo más rápido!";
 "subscription_benefits_title" = "Conviértete en un suscriptor y tendrás todos estos beneficios";
 "gem_benefits_title" = "Las Gemas te permiten comprar cosas extra divertidas para tu cuenta, incluyendo:";
@@ -1049,8 +1049,8 @@
 "party.leave_party_title" = "¿Abandonar Equipo?";
 "stable.wacky_mounts" = "Monturas Chifladas";
 "stable.wacky_pets" = "Mascotas Chifladas";
-"theme.followSystem" = "Seguir configuración del sistema";
-"theme.light" = "Luz";
+"theme.followSystem" = "Utilizar configuración del sistema";
+"theme.light" = "Claro";
 "settings.push_notifications.mention_unjoined_guild" = "@Menciones en otros Gremios";
 "settings.push_notifications.mention_joined_guild" = "@Menciones en mis Gremios";
 "settings.push_notifications.mention_party" = "@Menciones en el Equipo";
@@ -1079,7 +1079,17 @@
 "menu.gems" = "Comprar gemas";
 "titles.pets_and_mounts" = "Mascotas y monturas";
 "subscription_options_title" = "Elige la duración de suscripción que te convenga";
-"subscription_promo_description" = "Suscríbete para comprar Gemas con oro, conseguir Artículos Misteriosos mensuales, e incrementar los límites de artículos obtenidos al azar";
+"subscription_promo_description" = "Suscríbete para comprar Gemas con oro, conseguir Artículos Misteriosos mensuales e incrementar los límites de tu botín.";
 "get_more_habitica" = "Aprovecha Habitica a tope";
 "not_recurring" = "Que no se repite";
 "subscription_duration" = "Repitiéndose cada %@";
+"go_shopping" = "Ir de compras";
+"purchase_from_time_travelers_shop" = "Puedes comprar ésta personalización en la tienda de los viajeros del tiempo";
+"purchase_customization" = "Comprar personalización";
+"subscription_info_5_description" = "¡Descubre aún más objetos en Habitica con un tope de botín duplicado!";
+"subscription_info_5_title" = "Duplica tu botín";
+"time_travel_backgrounds" = "Fondos para viajeros del tiempo";
+"more_options" = "Más opciones";
+"gift_one_get_one" = "¡El evento Regala una suscripción y obtén una gratis está sucediendo!";
+"tasks.form.accessibility.attribute" = "Atributo es %@";
+"tasks.form.accessibility.set_attribute" = "Cambiar atributo a %@";

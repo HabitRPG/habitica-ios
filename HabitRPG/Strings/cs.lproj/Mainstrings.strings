@@ -531,7 +531,7 @@
 "titles.guidelines" = "Pokyny";
 "stats.no_points_to_allocate" = "0 bodů pro přidělení";
 "stats.one_point_to_allocate" = "1 bod pro přídělení";
-"stats.points_to_allocate" = "%d bodů pro přídělení";
+"stats.points_to_allocate" = "%d bodů pro přidělení";
 "stats.class_bonus" = "Bonus třídy";
 "stats.total" = "Celkový";
 "titles.messages" = "Zprávy";
