@@ -166,10 +166,10 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         textField.borderStyle = .roundedRect
         textField.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
         textField.textColor = ThemeService.shared.theme.primaryTextColor
+        textField.borderColor = ThemeService.shared.theme.offsetBackgroundColor
         stackView.addArrangedSubview(textField)
         alertController.contentView = stackView
         
-        alertController.addCancelAction()
         alertController.addAction(title: L10n.Settings.deleteAccount, style: .destructive, isMainAction: true) {[weak self] _ in
             self?.userRepository.deleteAccount(password: textField.text ?? "").observeValues({ response in
                 if response.statusCode == 200 {
@@ -183,6 +183,7 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
                 }
             })
         }
+        alertController.addCancelAction()
         alertController.show()
     }
     
@@ -199,10 +200,10 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         textView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
         alertController.contentView = textView
         
-        alertController.addCancelAction()
         alertController.addAction(title: L10n.Settings.resetAccount, style: .destructive, isMainAction: true) {[weak self] _ in
             self?.userRepository.resetAccount().observeCompleted {}
         }
+        alertController.addCancelAction()
         alertController.show()
     }
     
@@ -224,6 +225,7 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         emailTextField.text = user?.authentication?.local?.email
         emailTextField.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
         emailTextField.textColor = ThemeService.shared.theme.primaryTextColor
+        emailTextField.borderColor = ThemeService.shared.theme.offsetBackgroundColor
         stackView.addArrangedSubview(emailTextField)
         let passwordTextField = UITextField()
         passwordTextField.attributedPlaceholder = NSAttributedString(string: L10n.password, attributes: [.foregroundColor: ThemeService.shared.theme.dimmedTextColor])
@@ -231,15 +233,16 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         passwordTextField.borderStyle = .roundedRect
         passwordTextField.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
         passwordTextField.textColor = ThemeService.shared.theme.primaryTextColor
+        passwordTextField.borderColor = ThemeService.shared.theme.offsetBackgroundColor
         stackView.addArrangedSubview(passwordTextField)
         alertController.contentView = stackView
         
-        alertController.addCancelAction()
         alertController.addAction(title: L10n.change, isMainAction: true) {[weak self] _ in
             if let email = emailTextField.text, let password = passwordTextField.text {
                 self?.userRepository.updateEmail(newEmail: email, password: password).observeCompleted {}
             }
         }
+        alertController.addCancelAction()
         alertController.show()
     }
     
@@ -259,15 +262,16 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         loginNameTextField.text = user?.username
         loginNameTextField.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
         loginNameTextField.textColor = ThemeService.shared.theme.primaryTextColor
+        loginNameTextField.borderColor = ThemeService.shared.theme.offsetBackgroundColor
         stackView.addArrangedSubview(loginNameTextField)
         alertController.contentView = stackView
         
-        alertController.addCancelAction()
         alertController.addAction(title: L10n.change, isMainAction: true) {[weak self] _ in
             if let username = loginNameTextField.text {
                 self?.userRepository.updateUsername(newUsername: username).observeCompleted {}
             }
         }
+        alertController.addCancelAction()
         alertController.show()
     }
     
@@ -283,6 +287,7 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         oldPasswordTextField.isSecureTextEntry = true
         oldPasswordTextField.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
         oldPasswordTextField.textColor = ThemeService.shared.theme.primaryTextColor
+        oldPasswordTextField.borderColor = ThemeService.shared.theme.offsetBackgroundColor
         stackView.addArrangedSubview(oldPasswordTextField)
         let newPasswordTextField = UITextField()
         newPasswordTextField.attributedPlaceholder = NSAttributedString(string: L10n.Settings.newPassword, attributes: [.foregroundColor: ThemeService.shared.theme.dimmedTextColor])
@@ -290,6 +295,7 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         newPasswordTextField.isSecureTextEntry = true
         newPasswordTextField.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
         newPasswordTextField.textColor = ThemeService.shared.theme.primaryTextColor
+        newPasswordTextField.borderColor = ThemeService.shared.theme.offsetBackgroundColor
         stackView.addArrangedSubview(newPasswordTextField)
         let confirmTextField = UITextField()
         confirmTextField.attributedPlaceholder = NSAttributedString(string: L10n.Settings.confirmNewPassword, attributes: [.foregroundColor: ThemeService.shared.theme.dimmedTextColor])
@@ -297,15 +303,16 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         confirmTextField.isSecureTextEntry = true
         confirmTextField.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
         confirmTextField.textColor = ThemeService.shared.theme.primaryTextColor
+        confirmTextField.borderColor = ThemeService.shared.theme.offsetBackgroundColor
         stackView.addArrangedSubview(confirmTextField)
         alertController.contentView = stackView
         
-        alertController.addCancelAction()
         alertController.addAction(title: L10n.change, isMainAction: true) {[weak self] _ in
             if let newPassword = newPasswordTextField.text, let password = oldPasswordTextField.text, let confirmPassword = confirmTextField.text {
                 self?.userRepository.updatePassword(newPassword: newPassword, password: password, confirmPassword: confirmPassword).observeCompleted {}
             }
         }
+        alertController.addCancelAction()
         alertController.show()
     }
     
@@ -320,7 +327,8 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         emailTextField.borderStyle = .roundedRect
         emailTextField.keyboardType = .emailAddress
         emailTextField.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
-        emailTextField.textColor = ThemeService.shared.theme.primaryTextColor
+        emailTextField.borderColor = ThemeService.shared.theme.primaryTextColor
+        emailTextField.textColor = ThemeService.shared.theme.secondaryTextColor
         stackView.addArrangedSubview(emailTextField)
         let passwordTextField = UITextField()
         passwordTextField.attributedPlaceholder = NSAttributedString(string: L10n.Settings.newPassword, attributes: [.foregroundColor: ThemeService.shared.theme.dimmedTextColor])
@@ -328,6 +336,7 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         passwordTextField.isSecureTextEntry = true
         passwordTextField.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
         passwordTextField.textColor = ThemeService.shared.theme.primaryTextColor
+        passwordTextField.borderColor = ThemeService.shared.theme.offsetBackgroundColor
         stackView.addArrangedSubview(passwordTextField)
         let confirmTextField = UITextField()
         confirmTextField.attributedPlaceholder = NSAttributedString(string: L10n.Settings.confirmNewPassword, attributes: [.foregroundColor: ThemeService.shared.theme.dimmedTextColor])
@@ -335,6 +344,7 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         confirmTextField.isSecureTextEntry = true
         confirmTextField.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
         confirmTextField.textColor = ThemeService.shared.theme.primaryTextColor
+        confirmTextField.borderColor = ThemeService.shared.theme.offsetBackgroundColor
         stackView.addArrangedSubview(confirmTextField)
         alertController.contentView = stackView
         
@@ -349,7 +359,6 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         loadingView.isHidden = true
         stackView.addArrangedSubview(loadingView)
         
-        alertController.addCancelAction()
         alertController.addAction(title: L10n.add, isMainAction: true, closeOnTap: false) {[weak self] _ in
             errorView.isHidden = true
             if let password = passwordTextField.text, let email = emailTextField.text, let confirmPassword = confirmTextField.text {
@@ -386,17 +395,18 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
                 }
             }
         }
+        alertController.addCancelAction()
         alertController.show()
     }
     
     private func showConfirmUsernameAlert() {
         let alertController = HabiticaAlertController(title: L10n.Settings.confirmUsernamePrompt, message: L10n.Settings.confirmUsernameDescription)
-        alertController.addCancelAction()
         alertController.addAction(title: L10n.confirm, isMainAction: true) {[weak self] _ in
             if let username = self?.user?.username {
                 self?.userRepository.updateUsername(newUsername: username).observeCompleted {}
             }
         }
+        alertController.addCancelAction()
         alertController.show()
     }
 }

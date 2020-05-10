@@ -450,13 +450,13 @@ class SubscriptionViewController: BaseTableViewController {
         textField.borderWidth = 1
         textField.tintColor = ThemeService.shared.theme.tintColor
         alertController.contentView = textField
-        alertController.addCancelAction()
         alertController.addAction(title: L10n.continue, style: .default, isMainAction: true, closeOnTap: true, handler: { _ in
             if let username = textField.text, username.isEmpty == false {
                 self.giftRecipientUsername = username
                 self.perform(segue: StoryboardSegue.Main.openGiftSubscriptionDialog)
             }
         })
+        alertController.addCancelAction()
         alertController.show()
         alertController.containerViewSpacing = 8
         alertController.containerView.spacing = 8

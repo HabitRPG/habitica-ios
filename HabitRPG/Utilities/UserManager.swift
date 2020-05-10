@@ -26,6 +26,7 @@ class UserManager: NSObject {
     private weak var faintViewController: FaintViewController?
     private weak var classSelectionViewController: ClassSelectionViewController?
     private var lastClassSelectionDisplayed: Date?
+    private var lastQuestCompletionDisplayed: Date?
     weak var yesterdailiesDialog: YesterdailiesDialogView?
     
     private var tutorialSteps = [String: Bool]()
@@ -122,11 +123,7 @@ class UserManager: NSObject {
         }
         userLevel = user.stats?.level
         
- if let questKey = user.party?.quest?.completed, !questKey.isEmpty {
-      let completionView = QuestCompletedAlertController(questKey: questKey)
-      completionView.show()
-      userRepository.updateUser(key: "party.quest.completed", value: "").observeCompleted {}
-  }
+        handleQuestCompletion(user)
         
         userRepository.registerPushDevice(user: user).observeCompleted {}
         setTimezoneOffset(user)
@@ -143,6 +140,18 @@ class UserManager: NSObject {
                     controller.present(verifyViewController, animated: true, completion: nil)
                 }
             }
+        }
+    }
+    
+    private func handleQuestCompletion(_ user: UserProtocol) {
+        if let questKey = user.party?.quest?.completed, !questKey.isEmpty {
+            if let lastCompletion = lastQuestCompletionDisplayed, lastCompletion.timeIntervalSinceNow > -5000 {
+                return
+            }
+            lastQuestCompletionDisplayed = Date()
+            let completionView = QuestCompletedAlertController(questKey: questKey)
+            completionView.show()
+            userRepository.updateUser(key: "party.quest.completed", value: "").observeCompleted {}
         }
     }
     

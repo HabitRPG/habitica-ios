@@ -85,7 +85,7 @@ class AchievementsViewDataSource: BaseReactiveCollectionViewDataSource<Achieveme
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
         if let cell = cell as? AchievementCell, let achievement = item(at: indexPath) {
-            if (achievement.isQuestAchievement) {
+            if achievement.isQuestAchievement {
                 if let quest = quests[achievement.key ?? ""] {
                     cell.configure(achievement: achievement, quest: quest)
                 } else {

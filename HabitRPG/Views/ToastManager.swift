@@ -85,15 +85,17 @@ class ToastManager: NSObject {
      }
     
     private func display(toast: ToastView) {
-        present(toast: toast) {
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+toast.options.displayDuration) {[weak self] in
-                self?.dismiss(toast: toast) { () -> Void in
-                    if self?.displayQueue.isEmpty == true {
-                        return
-                    }
-                    self?.displayQueue.removeFirst()
-                    if let toast = self?.displayQueue.first {
-                        self?.display(toast: toast)
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + toast.options.delayDuration) {[weak self] in
+            self?.present(toast: toast) {
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+toast.options.displayDuration) {[weak self] in
+                    self?.dismiss(toast: toast) { () -> Void in
+                        if self?.displayQueue.isEmpty == true {
+                            return
+                        }
+                        self?.displayQueue.removeFirst()
+                        if let toast = self?.displayQueue.first {
+                            self?.display(toast: toast)
+                        }
                     }
                 }
             }
@@ -114,7 +116,7 @@ class ToastManager: NSObject {
         shared.add(toast: toast)
     }
     
-    class func show(text: String, color: ToastColor, duration: Double? = nil) {
+    class func show(text: String, color: ToastColor, duration: Double? = nil, delay: Double? = nil) {
         ToastManager.show(toast: ToastView(title: text, background: color, duration: duration))
     }
 }
@@ -127,6 +129,7 @@ struct ToastOptions {
     var leftImage: UIImage?
     
     var displayDuration = 2.0
+    var delayDuration = 0.0
 
     var backgroundColor = ToastColor.red
     

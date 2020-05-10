@@ -98,7 +98,7 @@ class PetDetailViewController: StableDetailViewController<PetDetailDataSource> {
                 }))
             }
             if stableItem.trained > 0 {
-                var equipString = L10n.equip
+                let equipString = L10n.equip
                 actions.append(UIAction(title: equipString, handler: {[weak self] _ in
                     self?.inventoryRepository.equip(type: "pet", key: stableItem.pet?.key ?? "").observeCompleted {}
                 }))

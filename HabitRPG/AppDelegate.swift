@@ -414,11 +414,11 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
     
     @objc
     func displayInAppNotification(taskID: String, text: String) {
-        let alertController = HabiticaAlertController(title: L10n.reminder, message: text)
-        alertController.addCloseAction()
+        let alertController = HabiticaAlertController(title: text)
         alertController.addAction(title: L10n.complete, style: .default, isMainAction: true, closeOnTap: true, identifier: nil) {[weak self] _ in
             self?.scoreTask(taskID, direction: "up") {}
         }
+        alertController.addCloseAction()
         alertController.show()
         UINotificationFeedbackGenerator.oneShotNotificationOccurred(.warning)
     }

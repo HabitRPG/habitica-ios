@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15705"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HRPGCloseableShopModalView" customModule="Habitica" customModuleProvider="target">
             <connections>
-                <outlet property="closeButton" destination="xtJ-Cr-jE1" id="OqZ-qO-hfm"/>
                 <outlet property="shopModalBgView" destination="TKo-B1-cGw" id="on4-P9-WjV"/>
             </connections>
         </placeholder>
@@ -21,7 +18,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="TKo-B1-cGw" customClass="HRPGShopModalBgView" customModule="Habitica" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="0.0" width="343" height="302"/>
+                    <rect key="frame" x="0.0" y="0.0" width="343" height="356"/>
                     <color key="backgroundColor" red="0.97647058819999999" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -29,25 +26,13 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
-                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xtJ-Cr-jE1">
-                    <rect key="frame" x="0.0" y="310" width="343" height="46"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="46" id="vEd-GA-A3I"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                    <state key="normal" title="Close"/>
-                </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="TKo-B1-cGw" firstAttribute="top" secondItem="FKP-Ok-U4p" secondAttribute="top" id="8ds-0b-J8O"/>
                 <constraint firstAttribute="trailing" secondItem="TKo-B1-cGw" secondAttribute="trailing" id="Fd7-a6-n6E"/>
-                <constraint firstAttribute="trailing" secondItem="xtJ-Cr-jE1" secondAttribute="trailing" id="MJl-3Z-XQR"/>
                 <constraint firstItem="TKo-B1-cGw" firstAttribute="leading" secondItem="FKP-Ok-U4p" secondAttribute="leading" id="YGZ-LN-bbW"/>
-                <constraint firstItem="xtJ-Cr-jE1" firstAttribute="top" secondItem="TKo-B1-cGw" secondAttribute="bottom" constant="8" id="nvH-SW-w9F"/>
-                <constraint firstItem="xtJ-Cr-jE1" firstAttribute="leading" secondItem="FKP-Ok-U4p" secondAttribute="leading" id="rIe-Vy-5Lx"/>
-                <constraint firstAttribute="bottom" secondItem="xtJ-Cr-jE1" secondAttribute="bottom" id="u9h-Z1-Klm"/>
+                <constraint firstAttribute="bottom" secondItem="TKo-B1-cGw" secondAttribute="bottom" id="fbK-Az-Qzw"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>

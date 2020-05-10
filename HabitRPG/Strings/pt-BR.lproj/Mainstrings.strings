@@ -225,7 +225,7 @@
 /* (No Comment) */
 "open" = "Abrir";
 /* (No Comment) */
-"open_itunes" = "Abrir iTunes";
+"open_itunes" = "Abrir assinaturas com ID Apple";
 /* (No Comment) */
 "open_website" = "Abrir site do Habitica";
 /* (No Comment) */
@@ -295,7 +295,7 @@
 /* (No Comment) */
 "settings.clear_cache" = "Limpar Cache";
 /* (No Comment) */
-"settings.custom_day_start" = "Início de Dia Personalizado";
+"settings.custom_day_start" = "Início do dia personalizado";
 /* (No Comment) */
 "settings.daily_reminder" = "Lembrete Diário";
 /* (No Comment) */
@@ -632,7 +632,7 @@
 "settings.login_methods" = "Método de login";
 "settings.reset_account" = "Reiniciar conta";
 "settings.delete_account" = "Excluir conta";
-"settings.delete_account_description" = "Você tem certeza? Isso apagará sua conta para sempre e ela nunca mais poderá ser recuperada! Você precisará registrar uma nova conta para usar o Habitica novamente. Gemas gastas ou armazenadas não serão reembolsadas. Se você tiver certeza absoluta, digite sua senha na caixa de texto abaixo.";
+"settings.delete_account_description" = "Isso apagará sua conta para sempre e ela nunca mais poderá ser recuperada! Gemas gastas ou armazenadas não serão reembolsadas. Se você tiver certeza absoluta, digite sua senha na caixa de texto abaixo.";
 "settings.change_email" = "Alterar Email";
 "settings.new_email" = "Novo E-mail";
 "settings.change_username" = "Alterar Nome de Usuário";
@@ -760,9 +760,9 @@
 "copied_message" = "Mensagem Copiada";
 "write_message" = "Escrever Mensagem";
 "write_to" = "Escrever para %@";
-"tavern_intro_header" = "Bem-vindo a Taverna. Puxe uma cadeira e se junte ao chat ou dê um descanso de suas tarefas.";
-"resume_damage" = "Reativar Dano";
-"pause_damage" = "Pausar Dano";
+"tavern_intro_header" = "Boas-vindas à Taverna. Puxe uma cadeira e junte-se ao bate-papo, ou dê um descanso de suas tarefas.";
+"resume_damage" = "Reativar dano";
+"pause_damage" = "Pausar dano";
 "world_boss_intro_header" = "Oh céus, não se preocupe com o monstro embaixo -- aqui ainda é seguro para bater um papo enquanto descansa.";
 "tutorials.habits_1" = "Primeiro, os Hábitos. Eles podem ser Hábitos positivos caso queira melhorar ou negativos caso queira largar.";
 "tutorials.habits_2" = "Sempre que realizar um Hábito positivo, toque no + para obter experiência e ouro!";
@@ -927,9 +927,9 @@
 "never" = "Nunca";
 "keep_tasks" = "Mantenha as tarefas";
 "delete_tasks" = "Excluir tarefas";
-"welcome_back" = "Bem vindo de volta!";
+"welcome_back" = "Bem-vindo(a) de volta!";
 "write_a_message" = "Escreve uma mensagem";
-"whats_world_boss" = "O que é um chefe do mundo?";
+"whats_world_boss" = "O que é um chefão global?";
 "tutorials.spells" = "Habilidades são habilidades especiais que têm efeitos poderosos! Toque em uma habilidade para usá-lo. Vai custar Mana (a barra azul), que você ganha verificando todos os dias e completando suas tarefas da vida real. Confira o FAQ no menu para mais informações!";
 "faint.title" = "Você ficou sem saúde!";
 "faint.description" = "Você perdeu um nível, seu ouro e um equipamento, mas pode recuperá-los com muito trabalho!";
@@ -973,9 +973,9 @@
 "subscription_gift_button" = "Assinatura de presente";
 "subscription_support_developers" = "Subscrever suporta os desenvolvedores\ne ajuda a manter o Habitica rodando";
 "subscribe" = "Inscrição";
-"send_gift" = "Enviar Presente";
-"gift_one_get_one_title" = "Presenteie um, ganhe um!";
-"gift_one_get_one_description" = "Enquanto esta promoção estiver ativa, você receberá uma assinatura correspondente automaticamente depois de enviar seu presente.";
+"send_gift" = "Enviar presente";
+"gift_one_get_one_title" = "Presenteie um, ganhe um";
+"gift_one_get_one_description" = "Dê uma assinatura de presente agora e você irá receber uma assinatura idêntica para você, de graça!";
 "gems_support_developers" = "Comprar gems suporta os desenvolvedores\ne ajuda a manter o Habitica rodando";
 "buy_for_x" = "Compre por %@";
 "earned_achievement_share" = "Eu ganhei uma nova conquista em Habitica! ";
@@ -1056,7 +1056,7 @@
 "settings.push_notifications.mention_party" = "@Menções no Grupo";
 "settings.push_notifications.party_activity" = "Atividade do Grupo";
 "subscription_benefits_title_subscribed" = "Você adquire estes benefícios por se tornar um assinante";
-"subscription_info_5_description" = "Descubra mais itens no Habitica com um bônus diário de 2x na taxa de drop.";
+"subscription_info_5_description" = "Descubra mais itens no Habitica com um bônus diário de 2x na capacidade de drop.";
 "subscription_info_5_title" = "Dobro de drops";
 "party.transfer_ownership_description" = "Isto fará com que %@ se torne o(a) novo(a) líder do Grupo";
 "menu.subscription" = "Assinatura";
@@ -1078,3 +1078,45 @@
 "duration_3month" = "3 meses";
 "duration_month" = "mês";
 "subscription_options_title" = "Escolha a validade de Assinatura que funciona para você";
+"go_shopping" = "Ir às compras";
+"purchase_from_time_travelers_shop" = "Você pode comprar essa customização na loja dos Viajantes do Tempo";
+"purchase_customization" = "Comprar customização";
+"get_more_habitica" = "Aproveite melhor o Habitica";
+"sale" = "Venda";
+"gift_one_get_one" = "O evento \"Dê uma assinatura de presente e ganhe outra\" está acontecendo agora!";
+"cancel_subscription_group_plan" = "Você tem uma assinatura grátis, pois é membro de um Grupo ou Guilda que tem um Plano de Time ativo. Isto irá finalizar se você deixar o Grupo/Guilda ou o Plano de Time for cancelado pelo proprietário. Quaisquer meses de crédito de assinatura extra que você tiver serão aplicados no final do Plano de Grupo.";
+"subscription_info_3_description_new" = "Assine já para obter esse %@ conjunto agora e receber novos itens mensalmente!";
+"time_travel_backgrounds" = "Cenários dos Viajantes do Tempo";
+"member_group_plan" = "Membro de um plano de Time";
+"group_plan" = "Plano de Time";
+"more_options" = "Mais opções";
+"titles.pets_and_mounts" = "Mascotes & Montarias";
+"achievements.onboarding" = "Conquistas de integração";
+"copied_x_to_clipboard" = "Copiado %@ para a área de transferência";
+"quests.unlock_previous_short" = "Finalizar missão %d";
+"quests.unlock_previous" = "Desbloqueie ao finalizar a Missão %d";
+"quests.unlock_level_short" = "Nível %d";
+"quests.unlock_level" = "Desbloqueie ao atingir o nível %d";
+"quests.unlock_invite_short" = "Convidar amigos";
+"quests.unlock_invite" = "Desbloqueie convidando amigos para seu grupo";
+"settings.email_notifications.subscription_reminders" = "Lembretes de assinatura";
+"settings.email_notifications.banned_group" = "Expulso do Time";
+"settings.email_notifications.title" = "E-mails";
+"settings.disable_all_emails" = "Desativar todos os e-mails";
+"tasks.form.accessibility.attribute" = "O Atributo é %@";
+"tasks.form.accessibility.set_attribute" = "Alterar Atributo para %@";
+"accessibility.viewX" = "Visualizar %@";
+"accessibility.notOwned" = "Não obtido(a)";
+"accessibility.owned" = "Obtido(a)";
+"accessibility.unknown" = "Desconhecido(a)";
+"accessibility.unknown_mount" = "Montaria desconhecida";
+"accessibility.unknown_pet" = "Mascote desconhecido";
+"accessibility.xofx" = "%d de %d";
+"party.quest_not_participating" = "Você não está participando";
+"add" = "Adicionar";
+"edit_challenge_tasks" = "As tarefas de Desafio têm edição limitada.";
+"new_message" = "Nova mensagem";
+"show_details" = "Exibir detalhes";
+"quest_completed_title" = "Missão concluída!";
+"settings.add_email_and_password" = "Adicionar e-mail e senha de autenticação";
+"settings.delete_account_description_social" = "Isso apagará sua conta para sempre e ela nunca mais poderá ser recuperada! Gemas gastas ou armazenadas não serão reembolsadas. Se você tiver certeza absoluta, digite DELETAR na caixa de texto abaixo.";

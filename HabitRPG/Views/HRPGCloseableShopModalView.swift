@@ -11,7 +11,6 @@ import UIKit
 @IBDesignable
 class HRPGCloseableShopModalView: UIView {
     @IBOutlet weak var shopModalBgView: HRPGShopModalBgView!
-    @IBOutlet weak var closeButton: UIButton!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -22,17 +21,7 @@ class HRPGCloseableShopModalView: UIView {
         super.init(coder: aDecoder)
         setupView()
     }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        styleViews()
-    }
-    
-    func styleViews() {
-        closeButton.layer.cornerRadius = 12
-        closeButton.setTitleColor(ThemeService.shared.theme.tintColor, for: UIControl.State.normal)
-    }
-    
+
     // MARK: - Private Helper Methods
     
     private func setupView() {

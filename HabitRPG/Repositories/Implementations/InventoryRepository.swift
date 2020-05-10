@@ -253,7 +253,7 @@ class InventoryRepository: BaseRepository<InventoryLocalRepository> {
         
         call.habiticaResponseSignal.observeValues { response in
             if let message = response?.message {
-                let toastView = ToastView(title: message, background: .green)
+                let toastView = ToastView(title: message, background: .green, delay: 1.0)
                 ToastManager.show(toast: toastView)
             }
         }

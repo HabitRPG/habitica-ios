@@ -115,7 +115,7 @@
 /* (No Comment) */
 "guilds.leave_guild_title" = "ギルドを脱退しますか？";
 /* (No Comment) */
-"hatch_egg" = "たまごをかえす";
+"hatch_egg" = "たまごに使う";
 /* (No Comment) */
 "hatch_potion" = "たまごがえしの薬でかえす";
 /* (No Comment) */
@@ -219,7 +219,7 @@
 /* (No Comment) */
 "pets" = "ペット";
 /* (No Comment) */
-"purchase_for_gems" = "%d ジェム購入する";
+"purchase_for_gems" = "%dジェム購入する";
 /* (No Comment) */
 "quests" = "クエスト";
 /* (No Comment) */
@@ -245,7 +245,7 @@
 /* (No Comment) */
 "quests.started_by" = "%@ が開始しました";
 /* (No Comment) */
-"reset_tips" = "Justin によるワザの紹介をリセットする";
+"reset_tips" = "Justinによる助言をリセットする";
 /* (No Comment) */
 "resetStreak" = "実行回数のリセット";
 /* (No Comment) */
@@ -421,7 +421,7 @@
 "titles.equipment" = "装備";
 "titles.items" = "アイテム";
 "titles.faq" = "よくある質問";
-"titles.about" = "Habiticaについて";
+"titles.about" = "プロフィール";
 "titles.news" = "ニュース";
 "titles.stable" = "動物小屋";
 "titles.pets" = "ペット";
@@ -566,7 +566,7 @@
 "settings.login_methods" = "ログイン方法";
 "settings.reset_account" = "アカウントを削除する";
 "settings.delete_account" = "アカウントを削除する";
-"settings.delete_account_description" = "本当にいいのですか? この操作であなたのアカウントは完全に削除され、復元はできません! 　もう一度 Habitica を使うには、新しいアカウントを登録しなくてはなりません。貯めているジェム、使ったジェムは、返金できません。本当にアカウントを削除するのなら、下のテキストボックスにパスワードを入力してください。";
+"settings.delete_account_description" = "この操作であなたのアカウントは完全に削除され、決して復元はできません！ 貯めているジェム、使ったジェムは、返金できません。本当にアカウントを削除するのなら、下のテキストボックスにパスワードを入力してください。";
 "settings.change_email" = "メールアドレスを変更する";
 "settings.new_email" = "新しいメールアドレス";
 "settings.change_username" = "ユーザー名を変更する";
@@ -605,7 +605,7 @@
 "one_month" = "1 ヶ月";
 "x_months" = "%d 月";
 "unsubscribe_itunes" = "もう寄付をしたくないですか？ iTunesから寄付を管理することができます。";
-"open_itunes" = "iTunesを開く";
+"open_itunes" = "Apple ID サブスクリプションを開く";
 "unsubscribe_website" = "もう寄付をしたくないですか？ あなたの支払の方法により、ウェブサイトを通してのみ寄付をやめることができます。";
 "open_website" = "Habitica のウェブサイトを開く";
 "plain_backgrounds" = "シンプルな背景";
@@ -646,7 +646,7 @@
 "about.website" = "Web サイト";
 "about.report_bug" = "バグを報告する";
 "about.view_source_code" = "ソースコードを表示する";
-"about.acknowledgements" = "了承";
+"about.acknowledgements" = "謝辞";
 "about.version" = "バージョン";
 "about.export_database" = "データをエクスポート";
 "about.no_email_title" = "メールアドレスが未だ設定されていません";
@@ -673,7 +673,7 @@
 "character_level" = "キャラクターのレベル";
 "gold" = "ゴールド";
 "day_streaks" = "21日間継続する";
-"aboutText" = "Habiticaについて";
+"aboutText" = "プロフィール";
 "photo_url" = "写真のURL";
 "group_by" = "グループ化 :";
 "twoHanded" = "両手持ち";
@@ -769,7 +769,7 @@
 "subscription_info_1_title" = "ゴールドがジェムに";
 "subscription_info_2_title" = "神秘の砂時計";
 "subscription_info_3_title" = "毎月のミステリーアイテム";
-"subscription_info_3_description" = "今すぐ寄付して限定セットや毎月の新しいアイテムを受けとりましょう！";
+"subscription_info_3_description" = "今すぐ寄付して限定セットや毎月の新しいアイテムを受け取りましょう！";
 "subscription_info_4_title" = "限定のペット";
 "subscription_info_4_description" = "新しい寄付会員になって、高貴な紫のジャッカロープのペットを迎えましょう。";
 "subscription_benefits_title" = "寄付会員になって、これらの優れた特典を手に入れましょう";
@@ -857,7 +857,7 @@
 "about.love_open_source" = "私たちはオープンソースのソフトウェアが大好きです。";
 "about.no_email_message" = "おっと、どうやらあなたはこの電話でメールアドレスを設定していないようです。このクイック報告オプションを使うには、iOSのメールアプリでアカウントを設定してください。もしくは、%@で直接私たちにメールを送ってください";
 "damage_paused" = "ダメージを一時停止する";
-"login.password_confirm_error" = "パスワードとパスワードの確認は一致していなければなりません。";
+"login.password_confirm_error" = "パスワードとパスワードの確認は一致しなくてはなりません。なおかつ8文字以上である必要があります。";
 "login.authentication_error" = "認証にエラーが発生しました。あとで再試行してください";
 "login.email_username" = "Eメール / ユーザー名";
 "login.forgot_password" = "パスワードを忘れた";
@@ -926,8 +926,8 @@
 "subscription_support_developers" = "寄付することで開発者たちを支援して、\nHabiticaの運営を維持する手助けをしましょう";
 "subscribe" = "寄付";
 "send_gift" = "贈り物を送る";
-"gift_one_get_one_title" = "１つ贈って、１つ無料で手に入れよう！";
-"gift_one_get_one_description" = "このプロモーションが開催されている間は、贈り物を送った後に自動的に同じ寄付会員特典を受けることができます。";
+"gift_one_get_one_title" = "誰かに寄付会員特典を贈ると、自分も無料で寄付会員特典を受けられるイベント";
+"gift_one_get_one_description" = "いま寄付会員特典を贈ると、無料であなた自身も同じ寄付会員特典を受けることができます！";
 "gems_support_developers" = "ジェムを購入することで、開発者を支援し、\nHabitica の運営を維持する手助けができます";
 "buy_for_x" = "%@で買う";
 "earned_achievement_share" = "Habiticaで新しい実績を解除したよ！ ";
@@ -1016,7 +1016,7 @@
 "subscription_duration" = "%@ごとにくり返す";
 "subscription_options_title" = "あなたのご都合にあった寄付の期間を選びましょう";
 "subscription_benefits_title_subscribed" = "寄付会員になるとこれらの特典を得られます";
-"subscription_info_5_description" = "日課で落とし物を見つける確率が２倍になるボーナスによって、Habiticaでよりいっそうアイテムを発見しましょう。";
+"subscription_info_5_description" = "落とし物を見つける数の１日ごとの上限が２倍になるボーナスによって、Habiticaでよりいっそうアイテムを発見しましょう。";
 "subscription_info_5_title" = "落とし物が２倍";
 "party.transfer_ownership_description" = "これにより%@が新しいパーティーリーダーになります";
 "duration_12month" = "12ヶ月";
@@ -1030,3 +1030,53 @@
 "cancelled" = "キャンセルしました";
 "menu.subscription" = "寄付する";
 "menu.gems" = "ジェムを買う";
+"time_travel_backgrounds" = "タイムトラベラーの背景";
+"member_group_plan" = "グループプランのメンバー";
+"group_plan" = "グループプラン";
+"settings.email_notifications.title" = "メール";
+"titles.pets_and_mounts" = "ペットと乗騎";
+"quests.unlock_level_short" = "レベル%d";
+"quests.unlock_level" = "レベル%dに達するとアンロックされます";
+"more_options" = "より多くのオプション";
+"accessibility.unknown" = "未発見";
+"accessibility.xofx" = "%dの%d";
+"copied_x_to_clipboard" = "%@をクリップボードにコピーしました";
+"tasks.form.accessibility.attribute" = "属性は%@です";
+"tasks.form.accessibility.set_attribute" = "属性を%@に変更する";
+"go_shopping" = "買い物に行く";
+"accessibility.unknown_mount" = "未発見の乗騎";
+"accessibility.unknown_pet" = "未発見のペット";
+"quests.unlock_invite" = "パーティーに仲間を招待するとアンロックされます";
+"quests.unlock_invite_short" = "仲間を招待する";
+"settings.email_notifications.subscription_reminders" = "寄付のリマインダー";
+"settings.email_notifications.banned_group" = "グループから退出させました";
+"settings.disable_all_emails" = "すべてのメールを無効にする";
+"new_message" = "新しいメッセージ";
+"add" = "追加";
+"party.quest_not_participating" = "あなたは参加していません";
+"quest_completed_title" = "クエストを達成しました！";
+"quests.unlock_previous_short" = "%d クエストを完了する";
+"quests.unlock_previous" = "%d クエストを完了するとアンロックされます";
+"settings.add_email_and_password" = "メールアドレスとパスワードの認証を追加する";
+"purchase_customization" = "カスタマイズを購入する";
+"gift_one_get_one" = "寄付会員特典を贈ると自分も無料で寄付会員特典を受けられるイベントがただいま開催中です！";
+"accessibility.viewX" = "%@を見る";
+"achievements.onboarding" = "初心者入門の実績";
+"edit_challenge_tasks" = "チャレンジのタスクは限られた編集だけが行えるように制限されています。";
+"show_details" = "詳細を表示する";
+"purchase_from_time_travelers_shop" = "タイムトラベラーの店でこのカスタマイズを購入できます";
+"sale" = "セール";
+"get_more_habitica" = "Habiticaをさらに楽しみましょう";
+"accessibility.notOwned" = "オーナーではない";
+"accessibility.owned" = "オーナーである";
+"subscription_info_3_description_new" = "今すぐ寄付してこの%@セットや毎月の新しいアイテムを受け取りましょう！";
+"settings.delete_account_description_social" = "この操作であなたのアカウントは完全に削除され、決して復元はできません！ 貯めているジェム、使ったジェムは、返金できません。本当にアカウントを削除するのなら、下のテキストボックスに「DELETE」と入力してください。";
+"cancel_subscription_group_plan" = "あなたはグループプランに加入したパーティーかギルドのメンバーであるため、無料の寄付会員特典が付与されています。これはあなたがグループを離れるか、オーナーによってグループプランがキャンセルされた場合に終了します。グループプランの終了の際には、あなたが持つ寄付会員特典の残りの月が適用されます。";
+"locations.time_travelers_shop" = "タイムトラベラーの店";
+"egg" = "たまご";
+"settings.added_local_auth" = "メールアドレスとパスワードが正常に追加されました";
+"login.register_error" = "リクエストに問題がありました。すべてのデータをよくご確認ください。";
+"login.email_invalid" = "正しいメールアドレスを入力してください。";
+"quest" = "クエスト";
+"food_singular" = "えさ";
+"hatching_potion" = "たまごがえしの薬";

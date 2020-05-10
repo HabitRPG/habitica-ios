@@ -301,7 +301,7 @@
 /* (No Comment) */
 "tasks.form.difficulty" = "Trudność";
 /* (No Comment) */
-"tasks.form.easy" = "Łatwe";
+"tasks.form.easy" = "Łatwy";
 /* (No Comment) */
 "tasks.form.edit" = "Edytuj %@";
 /* (No Comment) */
@@ -319,7 +319,7 @@
 /* (No Comment) */
 "tasks.form.tags" = "Tagi";
 /* (No Comment) */
-"tasks.form.trivial" = "Banalne";
+"tasks.form.trivial" = "Trywialny";
 /* (No Comment) */
 "tasks.habit" = "Nawyk";
 /* (No Comment) */
@@ -607,7 +607,7 @@
 "subscription_info_3_description" = "Historia ukończonych Do-Zrobienia i zadań jest dostępna dłużej.";
 "subscription_info_4_title" = "Dzienny limit zdobyczy podwojony";
 "subscription_info_4_description" = "Podwojone limity zdobyczy pozwolą ci zdobyć więcej przedmiotów z wykonanych zadań każdego dnia, pozwalając ci uzupełnić swoją stajnie szybciej!";
-"subscription_benefits_title" = "Wspieraj Habitikę zostając subskrybentem, aby dostać te wspaniałe nagrody:";
+"subscription_benefits_title" = "Zostań subskrybentem, aby dostać te przydatne nagrody";
 "gem_benefits_title" = "Klejnoty pozwalają Ci kupować dodatkowe atrybuty takie jak:";
 "unpin_from_rewards" = "Odepnij z Nagród";
 "pin_to_rewards" = "Przypnij do Nagród";
@@ -651,3 +651,22 @@
 "tasks.form.new_reminder" = "Nowe przypomnienie";
 "tasks.form.rewards_title_placeholder" = "Jak chcesz się nagradzać?";
 "tasks.form.dailies_title_placeholder" = "Co chcesz robić regularnie?";
+"theme.alwaysDark" = "Zawsze ciemny";
+"theme.alwaysLight" = "Zawsze jasny";
+"theme.dark" = "Ciemny";
+"theme.light" = "Jasny";
+"theme.orange" = "Pomarańczowy";
+"theme.teal" = "Turkusowy";
+"settings.push_notifications.received_pm" = "Otrzymano wiadomość prywatną";
+"settings.confirm_new_password" = "Potwierdź nowe hasło";
+"settings.server" = "Serwer";
+"settings.wrong_password" = "Nieprawidłowe hasło";
+"settings.every_day" = "Każdego dnia o";
+"level_number" = "Poziom %d";
+"skills.cant_cast_on_challenge_tasks" = "Nie można rzucić czaru na zadanie z wyzwania";
+"skills.unlocks_at" = "Zostanie odblokowane na poziomie %d";
+"tasks.examples.team_todo_text" = "Skończ projekt grupowy";
+"tasks.due_tomorrow" = "Do jutra";
+"tasks.due_today" = "Do dzisiaj";
+"renew_subscription" = "Odnów subskrypcję";
+"titles.pets_and_mounts" = "Chowańce i Wierzchowce";

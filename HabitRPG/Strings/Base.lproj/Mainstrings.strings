@@ -788,7 +788,6 @@
 "not_recurring" = "Not Recurring";
 "cancelled" = "Cancelled";
 "cancel_subscription" = "Cancel Subscription";
-"renew_subscription" = "Renew Subscription";
 "renew_subscription_description" = "Want to continue your benefits? You can start a new subscription before this one runs out to keep your benefits active.";
 "renew_subscription_gifted_description" = "Want to continue your benefits? You can start a new subscription before your gifted one runs out to keep your benefits active.";
 "cancel_subscription_group_plan" = "You have a free subscription because you are a member a Party or Guild that has a Group Plan. This will end if you leave or the Group Plan is cancelled by the owner. Any months of extra subscription credit you have will be applied at the end of the Group Plan.";
@@ -798,8 +797,8 @@
 "gift_one_get_one_description" = "Gift a subscription now and you’ll get the same sub for yourself free!";
 "gems_support_developers" = "Buying gems supports the developers\nand helps keep Habitica running";
 "gem_benefits_title" = "Gems allow you to buy fun extras for your account, including:";
-"unpin_from_rewards" = "Unpin from Rewards";
-"pin_to_rewards" = "Pin to Rewards";
+"unpin" = "Unpin";
+"pin" = "Pin";
 "buy_for_x" = "Buy for %@";
 "moderator" = "Moderator";
 "staff" = "Staff";
@@ -867,3 +866,4 @@
 "new_message" = "New Message";
 "edit_challenge_tasks" = "Challenge tasks only offer limited editing.";
 "add" = "Add";
+"onwards" = "Onwards";

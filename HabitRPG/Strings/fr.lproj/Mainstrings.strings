@@ -111,7 +111,7 @@
 /* (No Comment) */
 "guilds.leave_guild_description" = "Voulez-vous quitter la guilde et conserver ou supprimer les défis ?";
 /* (No Comment) */
-"hatch_egg" = "Faire éclore l'oeuf";
+"hatch_egg" = "Utiliser sur l’œuf";
 /* (No Comment) */
 "hatch_potion" = "Faire éclore avec la potion";
 /* (No Comment) */
@@ -247,7 +247,7 @@
 /* (No Comment) */
 "search" = "Rechercher";
 /* (No Comment) */
-"sell" = "Vendre pour %d Or";
+"sell" = "Vendre pour %d or";
 /* (No Comment) */
 "settings.api" = "API";
 /* (No Comment) */
@@ -557,7 +557,7 @@
 "settings.login_methods" = "Méthode de connexion";
 "settings.reset_account" = "Réinitialiser le compte";
 "settings.delete_account" = "Supprimer le compte";
-"settings.delete_account_description" = "Êtes-vous sûr ? Cela va supprimer votre compte définitivement et il ne pourra pas être restauré ! Vous devrez créer un nouveau compte pour ré-utiliser Habitica. Les gemmes sur votre compte ou celles dépensées ne seront pas remboursées. Si vous confirmez définitivement, tapez votre mot de passe dans le champ de texte ci-dessous.";
+"settings.delete_account_description" = "Cela va supprimer votre compte définitivement et il ne pourra pas être restauré ! Les gemmes sur votre compte ou celles dépensées ne seront pas remboursées. Si vous confirmez définitivement, tapez votre mot de passe dans le champ de texte ci-dessous.";
 "settings.change_email" = "Changer votre adresse Email";
 "settings.new_email" = "Nouvelle Email";
 "settings.change_username" = "Changer l'Identifiant";
@@ -857,7 +857,7 @@
 "about.love_open_source" = "Le web aime les logiciels open-source.";
 "about.no_email_message" = "Oups, on dirait que vous n'avez pas encore défini votre email sur ce téléphone. Configurez un compte dans l'application mail d'iOS pour utiliser cette option, ou écrivez nous directement à %@";
 "damage_paused" = "Dégâts en pause";
-"login.password_confirm_error" = "Le mot de passe et la confirmation de mot de passe doivent correspondre.";
+"login.password_confirm_error" = "Le mot de passe et la confirmation de mot de passe doivent correspondre et faire plus de 8 caractères.";
 "login.authentication_error" = "Il y a eu une erreur d'authentification. Réessayez plus tard";
 "login.email_username" = "Email / Identifiant";
 "login.forgot_password" = "Mot de passe oublié";
@@ -1020,7 +1020,7 @@
 "duration_month" = "mois";
 "subscription_options_title" = "Choisissez la durée d'abonnement qui marche pour vous";
 "subscription_benefits_title_subscribed" = "Vous avez ces bonus grâce à votre abonnement";
-"subscription_info_5_description" = "Trouvez encore plus d'objets dans Habitica avec un bonus de 2x le taux de butin habituel.";
+"subscription_info_5_description" = "Trouvez encore plus d'objets dans Habitica avec un bonus de 2x la limite de butin habituelle.";
 "subscription_info_5_title" = "Double le butin";
 "menu.subscription" = "Abonnement";
 "menu.gems" = "Acheter des gemmes";
@@ -1032,3 +1032,49 @@
 "member_group_plan" = "Membre d'une offre de groupe";
 "group_plan" = "Offre de groupe";
 "titles.pets_and_mounts" = "Familiers & montures";
+"go_shopping" = "Faire des emplettes";
+"purchase_from_time_travelers_shop" = "Vous pouvez acheter cette personnalisation à la boutique des voyageurs temporels";
+"purchase_customization" = "Acheter la personnalisation";
+"time_travel_backgrounds" = "Arrière-plans des voyageurs temporels";
+"more_options" = "Plus d'options";
+"achievements.onboarding" = "Succès de démarrage";
+"copied_x_to_clipboard" = "%@ a été copié dans le presse-papier";
+"quests.unlock_previous_short" = "Finir la quête %d";
+"quests.unlock_previous" = "Débloqué en finissant la quête %d";
+"quests.unlock_level_short" = "Niveau %d";
+"quests.unlock_level" = "Débloqué en atteignant le niveau %d";
+"quests.unlock_invite_short" = "Inviter des amis";
+"quests.unlock_invite" = "Débloqué en invitant des amis dans votre équipe";
+"settings.email_notifications.subscription_reminders" = "Rappels de souscription";
+"settings.email_notifications.banned_group" = "Sortie d'un groupe";
+"settings.email_notifications.title" = "Emails";
+"settings.disable_all_emails" = "Désactiver tous les emails";
+"tasks.form.accessibility.attribute" = "L'attribut est %@";
+"tasks.form.accessibility.set_attribute" = "Changer l'attribut à %@";
+"accessibility.viewX" = "Voir %@";
+"accessibility.notOwned" = "Non possédé";
+"accessibility.owned" = "Possédé";
+"accessibility.unknown" = "Inconnu";
+"accessibility.unknown_mount" = "Monture inconnue";
+"accessibility.unknown_pet" = "Familier inconnu";
+"accessibility.xofx" = "%d de %d";
+"party.quest_not_participating" = "Vous ne participez pas";
+"edit_challenge_tasks" = "Les tâches de défi ne peuvent être que partiellement modifiées.";
+"new_message" = "Nouveau message";
+"show_details" = "Montrer les détails";
+"quest_completed_title" = "Quête terminée !";
+"settings.delete_account_description_social" = "Cela va définitivement supprimer votre compte, et il ne pourra pas être restauré ! Les gemmes sur votre compte ou celles dépensées ne seront pas remboursées. Si vous confirmez définitivement, tapez DELETE dans le champ ci-dessous.";
+"add" = "Ajouter";
+"settings.add_email_and_password" = "Ajouter une authentification par courriel et mot de passe";
+"empty.inbox.description" = "Commencez à discuter ci-dessous ! Faites preuve de politesse et respectez les règles de vie en communauté.";
+"locations.time_travelers_shop" = "Boutique des voyageurs temporels";
+"errors.user_not_found" = "Utilisateur introuvable.";
+"login.social_login" = "Se connecter avec %@";
+"login.social_register" = "S'inscrire avec %@";
+"login.register_error" = "Il y a eu un problème avec la requête. Vérifiez les données avec attention.";
+"login.email_invalid" = "Veuillez renseigner un email valide.";
+"quest" = "Quête";
+"food_singular" = "Nourriture";
+"hatching_potion" = "Potion d'éclosion";
+"egg" = "œuf";
+"settings.added_local_auth" = "Email et mot de passe ajoutés avec succès";

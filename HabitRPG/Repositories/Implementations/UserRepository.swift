@@ -218,10 +218,8 @@ class UserRepository: BaseRepository<UserLocalRepository> {
             AuthenticationManager.shared.clearAuthentication(userId: userID)
         }
         deregisterPushDevice().observeCompleted {}
-        let defaults = UserDefaults()
-        defaults.set("", forKey: "habitFilter")
-        defaults.set("", forKey: "dailyFilter")
-        defaults.set("", forKey: "todoFilter")
+        let defaults = UserDefaults.standard
+        defaults.dictionaryRepresentation().keys.forEach { defaults.removeObject(forKey: $0) }
     }
     
     func updateEmail(newEmail: String, password: String) -> Signal<UserProtocol, ReactiveSwiftRealmError> {

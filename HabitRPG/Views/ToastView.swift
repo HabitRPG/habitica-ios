@@ -32,7 +32,7 @@ class ToastView: UIView {
     
     var options: ToastOptions = ToastOptions()
     
-    public convenience init(title: String, subtitle: String, background: ToastColor, duration: Double? = nil) {
+    public convenience init(title: String, subtitle: String, background: ToastColor, duration: Double? = nil, delay: Double? = nil) {
         self.init(frame: CGRect.zero)
         options.title = title
         options.subtitle = subtitle
@@ -40,22 +40,28 @@ class ToastView: UIView {
         if let duration = duration {
             options.displayDuration = duration
         }
+        if let delay = delay {
+            options.delayDuration = delay
+        }
         loadOptions()
         accessibilityLabel = "\(title), \(subtitle)"
     }
     
-    public convenience init(title: String, background: ToastColor, duration: Double? = nil) {
+    public convenience init(title: String, background: ToastColor, duration: Double? = nil, delay: Double? = nil) {
         self.init(frame: CGRect.zero)
         options.title = title
         options.backgroundColor = background
         if let duration = duration {
             options.displayDuration = duration
         }
+        if let delay = delay {
+            options.delayDuration = delay
+        }
         loadOptions()
         accessibilityLabel = title
     }
     
-    public convenience init(title: String, subtitle: String, icon: UIImage, background: ToastColor, duration: Double? = nil) {
+    public convenience init(title: String, subtitle: String, icon: UIImage, background: ToastColor, duration: Double? = nil, delay: Double? = nil) {
         self.init(frame: CGRect.zero)
         options.title = title
         options.subtitle = subtitle
@@ -64,11 +70,14 @@ class ToastView: UIView {
         if let duration = duration {
             options.displayDuration = duration
         }
+        if let delay = delay {
+            options.delayDuration = delay
+        }
         loadOptions()
         accessibilityLabel = "\(title), \(subtitle)"
     }
     
-    public convenience init(title: String, icon: UIImage, background: ToastColor, duration: Double? = nil) {
+    public convenience init(title: String, icon: UIImage, background: ToastColor, duration: Double? = nil, delay: Double? = nil) {
         self.init(frame: CGRect.zero)
         options.title = title
         options.backgroundColor = background
@@ -76,11 +85,14 @@ class ToastView: UIView {
         if let duration = duration {
             options.displayDuration = duration
         }
+        if let delay = delay {
+            options.delayDuration = delay
+        }
         loadOptions()
         accessibilityLabel = title
     }
     
-    public convenience init(title: String, rightIcon: UIImage, rightText: String, rightTextColor: UIColor, background: ToastColor, duration: Double? = nil) {
+    public convenience init(title: String, rightIcon: UIImage, rightText: String, rightTextColor: UIColor, background: ToastColor, duration: Double? = nil, delay: Double? = nil) {
         self.init(frame: CGRect.zero)
         options.title = title
         options.backgroundColor = background
@@ -90,11 +102,14 @@ class ToastView: UIView {
         if let duration = duration {
             options.displayDuration = duration
         }
+        if let delay = delay {
+            options.delayDuration = delay
+        }
         loadOptions()
         accessibilityLabel = title
     }
     
-    public convenience init(healthDiff: Float, magicDiff: Float, expDiff: Float, goldDiff: Float, questDamage: Float, background: ToastColor, duration: Double? = nil) {
+    public convenience init(healthDiff: Float, magicDiff: Float, expDiff: Float, goldDiff: Float, questDamage: Float, background: ToastColor, duration: Double? = nil, delay: Double? = nil) {
         self.init(frame: CGRect.zero)
         accessibilityLabel = "You received "
         addStatsView(HabiticaIcons.imageOfHeartDarkBg, diff: healthDiff, label: "Health")
