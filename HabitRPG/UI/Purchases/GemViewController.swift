@@ -134,18 +134,23 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
         let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: identifier, for: indexPath)
         
         if kind == UICollectionView.elementKindSectionFooter {
-            if let imageView = view.viewWithTag(1) as? UIImageView {
-                imageView.image = HabiticaIcons.imageOfHeartLarge
-            }
             if let label = view.viewWithTag(2) as? UILabel {
-                label.text = L10n.gemsSupportDevelopers
+                label.text = L10n.giftGemsPrompt
+                label.textColor = ThemeService.shared.theme.quadTextColor
             }
             if let promoView = view.viewWithTag(3) as? SubscriptionPromoView {
                 promoView.onButtonTapped = { [weak self] in self?.performSegue(withIdentifier: StoryboardSegue.Main.subscriptionSegue.rawValue, sender: self) }
             }
+            if let label = view.viewWithTag(4) as? UILabel {
+                label.text = L10n.gemsSupportDevelopers
+                label.textColor = ThemeService.shared.theme.quadTextColor
+            }
+            if let view = view.viewWithTag(5) {
+                view.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+            }
         } else if kind == UICollectionView.elementKindSectionHeader {
             if let headerImage = view.viewWithTag(1) as? UIImageView {
-                if (ThemeService.shared.theme.isDark) {
+                if ThemeService.shared.theme.isDark {
                     headerImage.image = Asset.gemPurchaseHeaderDark.image
                 } else {
                     headerImage.image = Asset.gemPurchaseHeader.image
@@ -154,11 +159,11 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
             }
             
             if let headerLabel = view.viewWithTag(3) as? UILabel {
-                headerLabel.textColor = ThemeService.shared.theme.tintColor
+                headerLabel.textColor = ThemeService.shared.theme.backgroundTintColor
             }
             
             if let listLabel = view.viewWithTag(4) as? UILabel {
-                listLabel.textColor = ThemeService.shared.theme.tintColor
+                listLabel.textColor = ThemeService.shared.theme.backgroundTintColor
             }
             
             if configRepository.bool(variable: .enableGiftOneGetOne) {

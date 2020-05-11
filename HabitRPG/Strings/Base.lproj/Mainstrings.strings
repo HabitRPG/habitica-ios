@@ -588,6 +588,7 @@
 "gift_confirmation_body_g1g1" = "You sent %@ a %@-month Habitica subscription and the same subscription was applied to your account for our Gift One Get One promotion!";
 "gift_confirmation_body" = "You sent %@ a %@-month Habitica subscription.";
 "gift_subscription_prompt" = "Choose the subscription you’d like to gift below! This purchase won’t automatically renew.";
+"gift_gems_prompt" = "Want to bestow a shiny haul of Gems to someone else?";
 "gem_cap" = "%d Gem cap";
 "hourglass_count" = "+%d Mystic Hourglass";
 "intro.welcome_prompt" = "What should we call you?";
@@ -775,7 +776,7 @@
 "subscription_options_title" = "Choose the Subscription length that works for you";
 "subscription_gift_explanation" = "Want to give the benefits of a subscription to someone else?";
 "subscription_gift_button" = "Gift a Subscription";
-"subscription_support_developers" = "Subscribing supports the developers\nand helps keep Habitica running";
+"subscription_support_developers" = "Subscribing supports our small team and helps keep Habitica running";
 "subscribe" = "Subscribe";
 "duration_month" = "month";
 "duration_3month" = "3 months";
@@ -795,7 +796,7 @@
 "gift_one_get_one" = "Gift a sub and get a sub free event going on now!";
 "gift_one_get_one_title" = "Gift One, Get One Event";
 "gift_one_get_one_description" = "Gift a subscription now and you’ll get the same sub for yourself free!";
-"gems_support_developers" = "Buying gems supports the developers\nand helps keep Habitica running";
+"gems_support_developers" = "Purchasing Gems supports our small team and helps keep Habitica running";
 "gem_benefits_title" = "Gems allow you to buy fun extras for your account, including:";
 "unpin" = "Unpin";
 "pin" = "Pin";

@@ -192,7 +192,7 @@ public enum L10n {
   }
   /// Gems
   public static var gems: String { return L10n.tr("Mainstrings", "gems") }
-  /// Buying gems supports the developers\nand helps keep Habitica running
+  /// Purchasing Gems supports our small team and helps keep Habitica running
   public static var gemsSupportDevelopers: String { return L10n.tr("Mainstrings", "gems_support_developers") }
   /// Get more out of Habitica
   public static var getMoreHabitica: String { return L10n.tr("Mainstrings", "get_more_habitica") }
@@ -206,6 +206,8 @@ public enum L10n {
   }
   /// Your gift was sent!
   public static var giftConfirmationTitle: String { return L10n.tr("Mainstrings", "gift_confirmation_title") }
+  /// Want to bestow a shiny haul of Gems to someone else?
+  public static var giftGemsPrompt: String { return L10n.tr("Mainstrings", "gift_gems_prompt") }
   /// Gift a sub and get a sub free event going on now!
   public static var giftOneGetOne: String { return L10n.tr("Mainstrings", "gift_one_get_one") }
   /// Gift a subscription now and you’ll get the same sub for yourself free!
@@ -548,7 +550,7 @@ public enum L10n {
   public static var subscriptionPromoDescription: String { return L10n.tr("Mainstrings", "subscription_promo_description") }
   /// Need Gems?
   public static var subscriptionPromoTitle: String { return L10n.tr("Mainstrings", "subscription_promo_title") }
-  /// Subscribing supports the developers\nand helps keep Habitica running
+  /// Subscribing supports our small team and helps keep Habitica running
   public static var subscriptionSupportDevelopers: String { return L10n.tr("Mainstrings", "subscription_support_developers") }
   /// success
   public static var success: String { return L10n.tr("Mainstrings", "success") }

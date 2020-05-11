@@ -78,11 +78,15 @@ class HRPGBulkPurchaseView: UIView {
             
             let theme = ThemeService.shared.theme
             view.backgroundColor = theme.contentBackgroundColor
+            textField.textColor = theme.primaryTextColor
+            errorLabel.textColor = theme.ternaryTextColor
             
             setNeedsUpdateConstraints()
             updateConstraints()
             setNeedsLayout()
             layoutIfNeeded()
+            
+            addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapped)))
             
             value = 1
             addButton.setImage(Asset.plus.image.withRenderingMode(.alwaysTemplate), for: .normal)
@@ -105,6 +109,13 @@ class HRPGBulkPurchaseView: UIView {
         }
         if intValue != value {
             value = intValue
+        }
+    }
+    
+    @objc
+    func tapped() {
+        if textField.isFirstResponder {
+            textField.resignFirstResponder()
         }
     }
 }

@@ -207,7 +207,6 @@ class HabiticaAlertController: UIViewController, Themeable {
             button.layer.shadowOffset = CGSize(width: 1, height: 1)
             button.layer.shadowOpacity = 1
             button.layer.masksToBounds = false
-            button.borderWidth = 1
         } else {
             button.setTitleColor(color, for: .normal)
             button.titleLabel?.font = CustomFontMetrics.scaledSystemFont(ofSize: 17)
@@ -388,7 +387,7 @@ extension HabiticaAlertController {
     
     @objc
     func addShareAction(handler: ((UIButton) -> Void)? = nil) {
-        addAction(title: L10n.share, isMainAction: true, closeOnTap: false, handler: handler)
+        addAction(title: L10n.share, closeOnTap: false, handler: handler)
     }
     
     @objc

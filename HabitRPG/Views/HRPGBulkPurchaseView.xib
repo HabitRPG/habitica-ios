@@ -21,7 +21,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="9gi-KQ-2jh">
-                    <rect key="frame" x="97" y="0.0" width="220" height="70"/>
+                    <rect key="frame" x="97" y="0.0" width="220" height="58"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="wEh-PJ-TKM">
                             <rect key="frame" x="0.0" y="0.0" width="220" height="40"/>
@@ -45,7 +45,7 @@
                                     <rect key="frame" x="60" y="0.0" width="100" height="40"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="eG4-xg-Qxh">
-                                            <rect key="frame" x="21" y="0.0" width="58" height="39"/>
+                                            <rect key="frame" x="16" y="0.0" width="68" height="39"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Gem" translatesAutoresizingMaskIntoConstraints="NO" id="32r-fk-ZUp">
                                                     <rect key="frame" x="0.0" y="0.0" width="24" height="39"/>
@@ -54,13 +54,13 @@
                                                     </constraints>
                                                 </imageView>
                                                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3gf-e3-UFI">
-                                                    <rect key="frame" x="28" y="0.0" width="30" height="39"/>
+                                                    <rect key="frame" x="28" y="0.0" width="40" height="39"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="ZIE-4q-ulJ"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="ZIE-4q-ulJ"/>
                                                         <constraint firstAttribute="width" priority="500" constant="150" id="iuv-y4-b75"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done"/>
                                                     <connections>
                                                         <action selector="textFieldDidChange:" destination="-1" eventType="editingChanged" id="9xT-1L-nGp"/>
                                                     </connections>
@@ -99,7 +99,7 @@
                             </constraints>
                         </stackView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are unable to buy that amount" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dDv-eH-wWP">
-                            <rect key="frame" x="0.0" y="55.5" width="220" height="14.5"/>
+                            <rect key="frame" x="0.0" y="46" width="220" height="12"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" red="0.53023332359999997" green="0.50720638039999999" blue="0.56472396849999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -109,7 +109,7 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="9gi-KQ-2jh" secondAttribute="bottom" id="SCz-Kd-WWw"/>
+                <constraint firstAttribute="bottom" secondItem="9gi-KQ-2jh" secondAttribute="bottom" constant="12" id="SCz-Kd-WWw"/>
                 <constraint firstItem="9gi-KQ-2jh" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="c7J-e7-lvK"/>
                 <constraint firstItem="9gi-KQ-2jh" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="zkV-6p-uv1"/>
             </constraints>

@@ -1390,17 +1390,75 @@
                                             <color key="textColor" red="0.20000000000000001" green="0.086274509799999996" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="999" verticalCompressionResistancePriority="1000" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xmc-Sz-mph">
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="999" verticalCompressionResistancePriority="1000" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xmc-Sz-mph">
                                             <rect key="frame" x="0.0" y="145" width="335" height="82"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" priority="500" constant="21" id="Ns1-9T-eqn"/>
                                             </constraints>
-                                            <string key="text">✔ Cool costumes for your avatar
-✔ Awesome backgrounds
-✔ Quests that reward you with pet eggs
-✔ The ability to change your class before level 100</string>
-                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                            <color key="textColor" red="0.20000000000000001" green="0.086274509799999996" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <attributedString key="attributedText">
+                                                <fragment content="✔">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.21176470589999999" green="0.12549019610000001" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <font key="NSFont" size="13" name="ZapfDingbatsITC"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="3" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                                <fragment>
+                                                    <string key="content"> Cool costumes for your avatar
+</string>
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.21176470589999999" green="0.12549019610000001" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <font key="NSFont" metaFont="system"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="3" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                                <fragment content="✔">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.21176470589999999" green="0.12549019610000001" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <font key="NSFont" size="13" name="ZapfDingbatsITC"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="3" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                                <fragment>
+                                                    <string key="content"> Awesome backgrounds
+</string>
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.21176470589999999" green="0.12549019610000001" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <font key="NSFont" metaFont="system"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="3" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                                <fragment content="✔">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.21176470589999999" green="0.12549019610000001" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <font key="NSFont" size="13" name="ZapfDingbatsITC"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="3" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                                <fragment>
+                                                    <string key="content"> Quests that reward you with pet eggs
+</string>
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.21176470589999999" green="0.12549019610000001" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <font key="NSFont" metaFont="system"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="3" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                                <fragment content="✔">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.21176470589999999" green="0.12549019610000001" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <font key="NSFont" size="13" name="ZapfDingbatsITC"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="3" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                                <fragment content=" The ability to change your class before level 100">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.21176470589999999" green="0.12549019610000001" blue="0.36470588240000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <font key="NSFont" metaFont="system"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="3" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -1420,37 +1478,63 @@
                             <rect key="frame" x="0.0" y="239" width="375" height="317"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="421-JA-vci">
-                                    <rect key="frame" x="8" y="52" width="359" height="97"/>
+                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="421-JA-vci">
+                                    <rect key="frame" x="40" y="68" width="295" height="0.0"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" priority="500" constant="40" id="Glh-tL-HTw"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" red="0.16078431904315948" green="0.58431375026702881" blue="0.80392158031463623" alpha="1" colorSpace="deviceRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <imageView userInteractionEnabled="NO" tag="1" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="McX-fu-cEX">
-                                    <rect key="frame" x="169.5" y="16" width="36" height="36"/>
+                                <imageView userInteractionEnabled="NO" tag="1" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gift_sub_gift" translatesAutoresizingMaskIntoConstraints="NO" id="McX-fu-cEX">
+                                    <rect key="frame" x="169.5" y="32" width="36" height="36"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="36" id="Stk-pd-YeO"/>
                                         <constraint firstAttribute="height" constant="36" id="ZfH-Ya-fcD"/>
                                     </constraints>
                                 </imageView>
-                                <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BHv-8q-phh" customClass="SubscriptionPromoView" customModule="Habitica" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="149" width="375" height="160"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <view tag="5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n8g-Us-K2Y">
+                                    <rect key="frame" x="0.0" y="217" width="375" height="100"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="svD-mO-hfn">
+                                            <rect key="frame" x="68" y="0.0" width="239" height="100"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="100" id="MYy-Hy-GbW"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="160" id="0rT-l5-kMt"/>
+                                        <constraint firstAttribute="bottom" secondItem="svD-mO-hfn" secondAttribute="bottom" id="Ayl-di-e5v"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="svD-mO-hfn" secondAttribute="trailing" constant="60" id="Kzm-s7-agk"/>
+                                        <constraint firstItem="svD-mO-hfn" firstAttribute="leading" secondItem="n8g-Us-K2Y" secondAttribute="leadingMargin" constant="60" id="obg-Mm-Tel"/>
+                                        <constraint firstAttribute="height" constant="100" id="pXO-f8-Sh3"/>
                                     </constraints>
                                 </view>
+                                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lhc-vl-WcB">
+                                    <rect key="frame" x="153" y="80" width="69" height="30"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="30" id="Hbu-zl-sxs"/>
+                                        <constraint firstAttribute="width" priority="500" constant="60" id="s0O-s1-9M3"/>
+                                    </constraints>
+                                    <state key="normal" title="Gift Gems"/>
+                                </button>
                             </subviews>
                             <constraints>
-                                <constraint firstItem="McX-fu-cEX" firstAttribute="top" secondItem="n9Z-3I-42b" secondAttribute="top" constant="16" id="46d-wB-Btr"/>
-                                <constraint firstAttribute="bottomMargin" secondItem="BHv-8q-phh" secondAttribute="bottom" id="Cxa-1n-bg0"/>
-                                <constraint firstItem="BHv-8q-phh" firstAttribute="top" secondItem="421-JA-vci" secondAttribute="bottom" id="R1K-vi-qGm"/>
+                                <constraint firstAttribute="trailing" secondItem="n8g-Us-K2Y" secondAttribute="trailing" id="1TW-Tw-Tew"/>
+                                <constraint firstItem="McX-fu-cEX" firstAttribute="top" secondItem="n9Z-3I-42b" secondAttribute="top" constant="32" id="46d-wB-Btr"/>
+                                <constraint firstItem="Lhc-vl-WcB" firstAttribute="centerX" secondItem="n9Z-3I-42b" secondAttribute="centerX" id="6OZ-rH-nEY"/>
+                                <constraint firstAttribute="bottom" secondItem="n8g-Us-K2Y" secondAttribute="bottom" id="FjW-Xv-oXh"/>
+                                <constraint firstItem="Lhc-vl-WcB" firstAttribute="top" secondItem="421-JA-vci" secondAttribute="bottom" constant="12" id="Py9-M7-am0"/>
                                 <constraint firstItem="McX-fu-cEX" firstAttribute="centerX" secondItem="n9Z-3I-42b" secondAttribute="centerX" id="XbO-vb-H1m"/>
-                                <constraint firstItem="BHv-8q-phh" firstAttribute="leading" secondItem="n9Z-3I-42b" secondAttribute="leadingMargin" constant="-8" id="kUf-8j-6oI"/>
-                                <constraint firstAttribute="trailingMargin" secondItem="421-JA-vci" secondAttribute="trailing" id="q0P-MZ-G4a"/>
+                                <constraint firstItem="n8g-Us-K2Y" firstAttribute="leading" secondItem="n9Z-3I-42b" secondAttribute="leading" id="fB8-AW-TGl"/>
+                                <constraint firstAttribute="trailingMargin" secondItem="421-JA-vci" secondAttribute="trailing" constant="32" id="q0P-MZ-G4a"/>
                                 <constraint firstItem="421-JA-vci" firstAttribute="top" secondItem="McX-fu-cEX" secondAttribute="bottom" id="qyP-IK-6jx"/>
-                                <constraint firstAttribute="trailingMargin" secondItem="BHv-8q-phh" secondAttribute="trailing" constant="-8" id="xUC-Ol-OnR"/>
-                                <constraint firstItem="421-JA-vci" firstAttribute="leading" secondItem="n9Z-3I-42b" secondAttribute="leadingMargin" id="xfB-5j-3tx"/>
+                                <constraint firstItem="421-JA-vci" firstAttribute="leading" secondItem="n9Z-3I-42b" secondAttribute="leadingMargin" constant="32" id="xfB-5j-3tx"/>
                             </constraints>
                         </collectionReusableView>
                         <connections>
@@ -2798,7 +2882,7 @@
         <image name="tabbar_todos" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ImE-mD-NfV"/>
+        <segue reference="0lO-rm-fRj"/>
         <segue reference="04Z-5H-zfF"/>
         <segue reference="ETz-qE-xC2"/>
         <segue reference="mRM-bY-AV4"/>
