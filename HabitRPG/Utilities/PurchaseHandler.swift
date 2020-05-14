@@ -129,6 +129,20 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
         }
     }
     
+    func giftGems(_ identifier: String, applicationUsername: String, recipientID: String, completion: @escaping (Bool) -> Void) {
+        pendingGifts[identifier] = recipientID
+        SwiftyStoreKit.purchaseProduct(identifier, quantity: 1, atomically: false, applicationUsername: applicationUsername) { (result) in
+            switch result {
+            case .success(let product):
+                self.verifyPurchase(product)
+                completion(true)
+            case .error(let error):
+                Crashlytics.sharedInstance().recordError(error)
+                completion(false)
+            }
+        }
+    }
+    
     func verifyPurchase(_ product: PurchaseDetails) {
         SwiftyStoreKit.fetchReceipt(forceRefresh: false) { result in
             switch result {
@@ -149,8 +163,15 @@ class PurchaseHandler: NSObject, SKPaymentTransactionObserver {
     }
     
     func activatePurchase(_ identifier: String, receipt: Data, completion: @escaping (Bool) -> Void) {
-        userRepository.purchaseGems(receipt: ["receipt": receipt.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))]).observeValues { (result) in
+        var recipientID: String? = nil
+        if let id = pendingGifts[identifier] {
+            recipientID = id
+        }
+        userRepository.purchaseGems(receipt: ["receipt": receipt.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))], recipient: recipientID).observeValues {[weak self] (result) in
             if result != nil {
+                if recipientID != nil {
+                    self?.pendingGifts.removeValue(forKey: identifier)
+                }
                 completion(true)
             } else {
                 completion(false)

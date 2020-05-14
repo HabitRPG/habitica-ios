@@ -42,6 +42,7 @@ internal enum StoryboardSegue {
     case feedSegue = "FeedSegue"
     case filterSegue = "FilterSegue"
     case formSegue = "FormSegue"
+    case giftGemsSegue = "GiftGemsSegue"
     case guildsSegue = "GuildsSegue"
     case inboxSegue = "InboxSegue"
     case itemSegue = "ItemSegue"

@@ -260,6 +260,7 @@
 		299BD6351F54346F00E22935 /* QuestDetailRewardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 299BD6341F54346F00E22935 /* QuestDetailRewardView.xib */; };
 		299BD6371F5457E100E22935 /* HabiticaIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299BD6361F5457E100E22935 /* HabiticaIcons.swift */; };
 		299BD63A1F557FE700E22935 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299BD6391F557FE700E22935 /* AuthenticationManager.swift */; };
+		299F93ED246960A1008DB702 /* GiftGemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299F93EC246960A1008DB702 /* GiftGemsViewController.swift */; };
 		299FB29A2084A30400422522 /* StableRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB2992084A30400422522 /* StableRepository.swift */; };
 		299FB29D2084A67D00422522 /* StableOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB29C2084A67D00422522 /* StableOverviewViewController.swift */; };
 		299FB29F2084A8FD00422522 /* StableSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB29E2084A8FD00422522 /* StableSplitViewController.swift */; };
@@ -924,6 +925,7 @@
 		299BD6341F54346F00E22935 /* QuestDetailRewardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestDetailRewardView.xib; sourceTree = "<group>"; };
 		299BD6361F5457E100E22935 /* HabiticaIcons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabiticaIcons.swift; sourceTree = "<group>"; };
 		299BD6391F557FE700E22935 /* AuthenticationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
+		299F93EC246960A1008DB702 /* GiftGemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftGemsViewController.swift; sourceTree = "<group>"; };
 		299FB2992084A30400422522 /* StableRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StableRepository.swift; sourceTree = "<group>"; };
 		299FB29C2084A67D00422522 /* StableOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StableOverviewViewController.swift; sourceTree = "<group>"; };
 		299FB29E2084A8FD00422522 /* StableSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StableSplitViewController.swift; sourceTree = "<group>"; };
@@ -2256,6 +2258,7 @@
 				D984D58A1E4A1F59006E84F8 /* SubscriptionViewController.swift */,
 				2907F99D1F694C4000328AEE /* GemViewController.swift */,
 				296E480721BE86F800D15E4A /* GiftSubscriptionViewController.swift */,
+				299F93EC246960A1008DB702 /* GiftGemsViewController.swift */,
 			);
 			path = Purchases;
 			sourceTree = "<group>";
@@ -3588,6 +3591,7 @@
 				296AC81420AC85C200885682 /* RewardViewDataSource.swift in Sources */,
 				29C1B6B420599E6D0001D3EF /* TaskFormViewController.swift in Sources */,
 				290B6285207BD531007287C4 /* GuildDetailViewController.swift in Sources */,
+				299F93ED246960A1008DB702 /* GiftGemsViewController.swift in Sources */,
 				D9525F9F1E65A18300C529B8 /* EmojifiedString.swift in Sources */,
 				2908D8742232D45D00DDECA1 /* BaseTableViewController.swift in Sources */,
 				29E30DE620D935AF00F74ECB /* LevelUpOverlayView.swift in Sources */,

@@ -206,6 +206,16 @@ public enum L10n {
   }
   /// Your gift was sent!
   public static var giftConfirmationTitle: String { return L10n.tr("Mainstrings", "gift_confirmation_title") }
+  /// Enter recipient's @username
+  public static var giftGemsAlertPrompt: String { return L10n.tr("Mainstrings", "gift_gems_alert_prompt") }
+  /// Who would you like to send your gifts to?
+  public static var giftGemsAlertTitle: String { return L10n.tr("Mainstrings", "gift_gems_alert_title") }
+  /// Habitica will never require you to gift gems to other players. Begging people for gems is a violation of the Community Guidelines and should be reported to admin@habitica.com.
+  public static var giftGemsDisclaimer: String { return L10n.tr("Mainstrings", "gift_gems_disclaimer") }
+  /// Enter how many of your Gems you’d like to gift or switch tabs to purchase Gems to gift
+  public static var giftGemsExplanationBalance: String { return L10n.tr("Mainstrings", "gift_gems_explanation_balance") }
+  /// Choose how many Gems to gift below or switch tabs to gift Gems from your current balance
+  public static var giftGemsExplanationPurchase: String { return L10n.tr("Mainstrings", "gift_gems_explanation_purchase") }
   /// Want to bestow a shiny haul of Gems to someone else?
   public static var giftGemsPrompt: String { return L10n.tr("Mainstrings", "gift_gems_prompt") }
   /// Gift a sub and get a sub free event going on now!

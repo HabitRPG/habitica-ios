@@ -20,6 +20,7 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
     var expandedList = [Bool](repeating: false, count: 4)
     
     private let userRepository = UserRepository()
+    private let socialRepository = SocialRepository()
     private let configRepository = ConfigRepository()
     private let disposable = ScopedDisposable(CompositeDisposable())
     
@@ -220,6 +221,63 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
             let navigationController = segue.destination as? UINavigationController
             let giftSubscriptionController = navigationController?.topViewController as? GiftSubscriptionViewController
             giftSubscriptionController?.giftRecipientUsername = giftRecipientUsername
+        } else if segue.identifier == StoryboardSegue.Main.giftGemsSegue.rawValue {
+            let navigationController = segue.destination as? UINavigationController
+            let giftSubscriptionController = navigationController?.topViewController as? GiftGemsViewController
+            giftSubscriptionController?.giftRecipientUsername = giftRecipientUsername
         }
+    }
+    
+    @IBAction func giftGemsTapped(_ sender: Any) {
+        let alertController = HabiticaAlertController(title: L10n.giftGemsPrompt, message: L10n.giftGemsAlertPrompt)
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 16
+        let usernameTextField = UITextField()
+        usernameTextField.attributedPlaceholder = NSAttributedString(string: L10n.username, attributes: [.foregroundColor: ThemeService.shared.theme.dimmedTextColor])
+        usernameTextField.borderStyle = .roundedRect
+        usernameTextField.autocapitalizationType = .none
+        usernameTextField.spellCheckingType = .no
+        usernameTextField.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+        usernameTextField.textColor = ThemeService.shared.theme.primaryTextColor
+        stackView.addArrangedSubview(usernameTextField)
+        alertController.contentView = stackView
+        
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.isHidden = true
+        stackView.addArrangedSubview(activityIndicator)
+        
+        let errorView = UILabel()
+        errorView.isHidden = true
+        errorView.textColor = ThemeService.shared.theme.errorColor
+        errorView.text = L10n.Errors.userNotFound
+        stackView.addArrangedSubview(errorView)
+
+        var foundUser = false
+        alertController.addAction(title: L10n.continue, isMainAction: true, closeOnTap: false) {[weak self] _ in
+            activityIndicator.isHidden = false
+            errorView.isHidden = true
+            activityIndicator.startAnimating()
+            if let username = usernameTextField.text {
+                self?.socialRepository.retrieveMember(userID: username).on(
+                    value: { _ in
+                        foundUser = true
+                        alertController.dismiss(animated: true, completion: {
+                            self?.giftRecipientUsername = username
+                            self?.perform(segue: StoryboardSegue.Main.giftGemsSegue)
+                        })
+                }
+                ).observeCompleted {
+                    activityIndicator.isHidden = true
+                    if !foundUser {
+                        errorView.isHidden = false
+                    }
+                }
+                
+            }
+        }
+        alertController.addCancelAction()
+        alertController.show()
+        usernameTextField.becomeFirstResponder()
     }
 }
