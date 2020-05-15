@@ -14,8 +14,8 @@ import ReactiveSwift
 
 class ContentRepository: BaseRepository<ContentLocalRepository> {
     
-    func retrieveContent() -> Signal<ContentProtocol?, Never> {
-        return RetrieveContentCall(language: LanguageHandler.getAppLanguage().code).objectSignal.on(value: {[weak self] content in
+    func retrieveContent(force: Bool = false) -> Signal<ContentProtocol?, Never> {
+        return RetrieveContentCall(language: LanguageHandler.getAppLanguage().code, forceLoading: force).objectSignal.on(value: {[weak self] content in
             if let content = content {
                 self?.localRepository.save(content)
             }

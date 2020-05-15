@@ -261,6 +261,7 @@
 		299BD6371F5457E100E22935 /* HabiticaIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299BD6361F5457E100E22935 /* HabiticaIcons.swift */; };
 		299BD63A1F557FE700E22935 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299BD6391F557FE700E22935 /* AuthenticationManager.swift */; };
 		299F93ED246960A1008DB702 /* GiftGemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299F93EC246960A1008DB702 /* GiftGemsViewController.swift */; };
+		299F93F1246D9C49008DB702 /* PaddedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299F93F0246D9C49008DB702 /* PaddedTextField.swift */; };
 		299FB29A2084A30400422522 /* StableRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB2992084A30400422522 /* StableRepository.swift */; };
 		299FB29D2084A67D00422522 /* StableOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB29C2084A67D00422522 /* StableOverviewViewController.swift */; };
 		299FB29F2084A8FD00422522 /* StableSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299FB29E2084A8FD00422522 /* StableSplitViewController.swift */; };
@@ -926,6 +927,7 @@
 		299BD6361F5457E100E22935 /* HabiticaIcons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabiticaIcons.swift; sourceTree = "<group>"; };
 		299BD6391F557FE700E22935 /* AuthenticationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		299F93EC246960A1008DB702 /* GiftGemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftGemsViewController.swift; sourceTree = "<group>"; };
+		299F93F0246D9C49008DB702 /* PaddedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddedTextField.swift; sourceTree = "<group>"; };
 		299FB2992084A30400422522 /* StableRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StableRepository.swift; sourceTree = "<group>"; };
 		299FB29C2084A67D00422522 /* StableOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StableOverviewViewController.swift; sourceTree = "<group>"; };
 		299FB29E2084A8FD00422522 /* StableSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StableSplitViewController.swift; sourceTree = "<group>"; };
@@ -2484,6 +2486,7 @@
 				D91CCACF1BCF11CC001C6A0C /* UserTopHeader.xib */,
 				2980E6081EEA25CD005B7100 /* YesterdailiesDialogView.swift */,
 				2980E6061EEA1F55005B7100 /* YesterdailiesDialogView.xib */,
+				299F93F0246D9C49008DB702 /* PaddedTextField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -3707,6 +3710,7 @@
 				29AAE55724508FC600220DB1 /* HRPGBulkPurchaseView.swift in Sources */,
 				29DBFF0120CE6FFF00DF9CF2 /* SoundManager.swift in Sources */,
 				49FA9FF720DC47AD0086C478 /* TaskTableViewController.swift in Sources */,
+				299F93F1246D9C49008DB702 /* PaddedTextField.swift in Sources */,
 				C897F63C218CCF51002907C2 /* RouterHandler.swift in Sources */,
 				D914890D1CD23A900015B42D /* HRPGMaintenanceViewController.m in Sources */,
 				D9525F9D1E64739900C529B8 /* PaddedView.swift in Sources */,
@@ -4140,7 +4144,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 459;
+				CURRENT_PROJECT_VERSION = 460;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4175,7 +4179,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 459;
+				CURRENT_PROJECT_VERSION = 460;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4209,7 +4213,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 459;
+				CURRENT_PROJECT_VERSION = 460;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4246,7 +4250,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 459;
+				CURRENT_PROJECT_VERSION = 460;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4508,7 +4512,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 459;
+				CURRENT_PROJECT_VERSION = 460;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -4563,7 +4567,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 459;
+				CURRENT_PROJECT_VERSION = 460;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -4593,7 +4597,7 @@
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 459;
+				CURRENT_PROJECT_VERSION = 460;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_SOURCE_FILE_NAMES = "";
@@ -4686,7 +4690,7 @@
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 459;
+				CURRENT_PROJECT_VERSION = 460;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_SOURCE_FILE_NAMES = "FLEX*";

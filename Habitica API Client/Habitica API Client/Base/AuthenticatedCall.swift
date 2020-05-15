@@ -43,13 +43,14 @@ public class AuthenticatedCall: JsonNetworkCall {
                  httpHeaders: [String: String]?,
                  endpoint: String,
                  postData: Data?,
-                 stubHolder: StubHolderProtocol?) {
+                 stubHolder: StubHolderProtocol?, ignoreEtag: Bool = false) {
         super.init(configuration: configuration ?? AuthenticatedCall.defaultConfiguration,
                    httpMethod: httpMethod,
                    httpHeaders: httpHeaders,
                    endpoint: endpoint,
                    postData: postData,
-                   stubHolder: stubHolder)
+                   stubHolder: stubHolder,
+                   ignoreEtag: ignoreEtag)
     }
     
     init(configuration: ServerConfigurationProtocol? = nil,
@@ -57,7 +58,7 @@ public class AuthenticatedCall: JsonNetworkCall {
          endpoint: String, postData: Data? = nil,
          stubHolder: StubHolderProtocol? = nil,
          errorHandler: NetworkErrorHandler? = nil,
-         needsAuthentication: Bool = true) {
+         needsAuthentication: Bool = true, ignoreEtag: Bool = false) {
         self.needsAuthentication = needsAuthentication
         
         super.init(configuration: configuration ?? AuthenticatedCall.defaultConfiguration,
@@ -65,7 +66,8 @@ public class AuthenticatedCall: JsonNetworkCall {
                    httpHeaders: httpHeaders,
                    endpoint: endpoint,
                    postData: postData,
-                   stubHolder: stubHolder)
+                   stubHolder: stubHolder,
+                   ignoreEtag: ignoreEtag)
         
         customErrorHandler = errorHandler
         setupErrorHandler()

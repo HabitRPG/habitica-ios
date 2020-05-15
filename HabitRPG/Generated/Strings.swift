@@ -144,7 +144,7 @@ public enum L10n {
   public static var duration6month: String { return L10n.tr("Mainstrings", "duration_6month") }
   /// month
   public static var durationMonth: String { return L10n.tr("Mainstrings", "duration_month") }
-  /// I earned a new achievement in Habitica! 
+  /// I earned a new achievement in Habitica!
   public static var earnedAchievementShare: String { return L10n.tr("Mainstrings", "earned_achievement_share") }
   /// Edit
   public static var edit: String { return L10n.tr("Mainstrings", "edit") }
@@ -845,7 +845,7 @@ public enum L10n {
     public static var healerDescription: String { return L10n.tr("Mainstrings", "classes.healer_description") }
     /// Mage
     public static var mage: String { return L10n.tr("Mainstrings", "classes.mage") }
-    /// Mages learn swiftly, gaining Experience and Levels faster than other classes. They also get a great deal of Mana for using special abilities. Play a Mage if you enjoy the tactical game aspects of Habitica, or if you are strongly motivated by leveling up and unlocking advanced features! 
+    /// Mages learn swiftly, gaining Experience and Levels faster than other classes. They also get a great deal of Mana for using special abilities. Play a Mage if you enjoy the tactical game aspects of Habitica, or if you are strongly motivated by leveling up and unlocking advanced features!
     public static var mageDescription: String { return L10n.tr("Mainstrings", "classes.mage_description") }
     /// Rogue
     public static var rogue: String { return L10n.tr("Mainstrings", "classes.rogue") }
@@ -1052,7 +1052,7 @@ public enum L10n {
     public enum Card2 {
       /// Progress in life
       public static var subtitle: String { return L10n.tr("Mainstrings", "intro.card2.subtitle") }
-      /// Unlock features in the game by checking off your real life tasks. Earn armor, pets, and more as rewards for meeting your goals. 
+      /// Unlock features in the game by checking off your real life tasks. Earn armor, pets, and more as rewards for meeting your goals.
       public static var text: String { return L10n.tr("Mainstrings", "intro.card2.text") }
       /// Progress in the game
       public static var title: String { return L10n.tr("Mainstrings", "intro.card2.title") }
@@ -1215,7 +1215,7 @@ public enum L10n {
   public enum Party {
     /// Create a new Party
     public static var createPartyButton: String { return L10n.tr("Mainstrings", "party.create_party_button") }
-    /// Take on quests with friends or on your own. Battle monsters, create Challenges, and help yourself stay accountable through Parties. 
+    /// Take on quests with friends or on your own. Battle monsters, create Challenges, and help yourself stay accountable through Parties.
     public static var createPartyDescription: String { return L10n.tr("Mainstrings", "party.create_party_description") }
     /// Play Habitica in a Party
     public static var createPartyTitle: String { return L10n.tr("Mainstrings", "party.create_party_title") }
@@ -1603,7 +1603,7 @@ public enum L10n {
     }
     /// Stat guide
     public static var statGuide: String { return L10n.tr("Mainstrings", "stats.stat_guide") }
-    /// Increases the bonus of critical hits and makes them more likely when scoring a task. Also increases damage dealt to bosses. 
+    /// Increases the bonus of critical hits and makes them more likely when scoring a task. Also increases damage dealt to bosses.
     public static var strengthText: String { return L10n.tr("Mainstrings", "stats.strength_text") }
     /// Strength
     public static var strengthTitle: String { return L10n.tr("Mainstrings", "stats.strength_title") }

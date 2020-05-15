@@ -146,12 +146,12 @@ class AboutViewController: BaseTableViewController, MFMailComposeViewControllerD
     
     private func open(url urlString: String) {
         if let url = URL(string: urlString) {
-            UIApplication.shared.openURL(url)
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }
     
     private func handleAppFeedback() {
-        sendEmail(subject: "[iOS] Feedback")
+        open(url: configRepository.string(variable: .feedbackURL) ?? "")
     }
     
     private func handleBugReport() {

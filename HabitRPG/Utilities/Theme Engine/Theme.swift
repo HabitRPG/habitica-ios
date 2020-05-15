@@ -70,7 +70,7 @@ extension Theme {
     public var badgeColor: UIColor { return tintColor }
     public var secondaryBadgeColor: UIColor { return UIColor.gray200 }
     public var successColor: UIColor { return UIColor.green100 }
-    public var errorColor: UIColor { return UIColor.red100 }
+    public var errorColor: UIColor { return UIColor.maroon100 }
     public var warningColor: UIColor { return UIColor.yellow100 }
     public var taskOverlayTint: UIColor { return UIColor.white.withAlphaComponent(0) }
     public var segmentedTintColor: UIColor { return backgroundTintColor }

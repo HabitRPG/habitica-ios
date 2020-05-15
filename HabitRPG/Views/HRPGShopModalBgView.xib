@@ -24,7 +24,7 @@
                     <items/>
                 </tabBar>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Q0-LU-z7k">
-                    <rect key="frame" x="0.0" y="52" width="375" height="316"/>
+                    <rect key="frame" x="0.0" y="52" width="375" height="296"/>
                     <subviews>
                         <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="yzx-qy-agh">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
@@ -55,7 +55,7 @@
                 <constraint firstAttribute="trailing" secondItem="rKG-5L-EWP" secondAttribute="trailing" id="m7m-N5-NJo"/>
                 <constraint firstItem="yzx-qy-agh" firstAttribute="width" secondItem="pSG-iV-odl" secondAttribute="width" id="qOM-M0-jvW"/>
                 <constraint firstItem="rKG-5L-EWP" firstAttribute="top" secondItem="pSG-iV-odl" secondAttribute="top" id="sbs-H3-AqG"/>
-                <constraint firstAttribute="bottom" secondItem="5Q0-LU-z7k" secondAttribute="bottom" constant="50" id="wKi-gc-va9"/>
+                <constraint firstAttribute="bottom" secondItem="5Q0-LU-z7k" secondAttribute="bottom" constant="70" id="wKi-gc-va9"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>

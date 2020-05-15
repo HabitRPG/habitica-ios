@@ -123,7 +123,7 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
             } else if indexPath.item == 1 + confirmOffset {
                 showEmailChangeAlert()
             } else if indexPath.item == 2 + confirmOffset {
-                if (user?.authentication?.hasLocalAuth == true) {
+                if user?.authentication?.hasLocalAuth == true {
                     showPasswordChangeAlert()
                 } else {
                     showAddLocalAuthAlert()
@@ -143,7 +143,7 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.spacing = 16
+        stackView.spacing = 8
         let textView = UITextView()
         if user?.authentication?.local?.email != nil {
             textView.text = L10n.Settings.deleteAccountDescription
@@ -151,22 +151,20 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
             textView.text = L10n.Settings.deleteAccountDescriptionSocial
         }
         textView.font = UIFont.preferredFont(forTextStyle: .subheadline)
-        textView.textColor = ThemeService.shared.theme.secondaryTextColor
+        textView.textColor = ThemeService.shared.theme.ternaryTextColor
         textView.isEditable = false
         textView.isScrollEnabled = false
         textView.isSelectable = false
+        textView.textAlignment = .center
         textView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
         stackView.addArrangedSubview(textView)
-        let textField = UITextField()
+        let textField = PaddedTextField()
         if user?.authentication?.local?.email != nil {
             textField.attributedPlaceholder = NSAttributedString(string: L10n.password, attributes: [.foregroundColor: ThemeService.shared.theme.dimmedTextColor])
         }
+        configureTextField(textField)
         textField.isSecureTextEntry = true
         textField.returnKeyType = .done
-        textField.borderStyle = .roundedRect
-        textField.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
-        textField.textColor = ThemeService.shared.theme.primaryTextColor
-        textField.borderColor = ThemeService.shared.theme.offsetBackgroundColor
         stackView.addArrangedSubview(textField)
         alertController.contentView = stackView
         
@@ -193,10 +191,11 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         let textView = UITextView()
         textView.text = L10n.Settings.resetAccountDescription
         textView.font = UIFont.preferredFont(forTextStyle: .subheadline)
-        textView.textColor = ThemeService.shared.theme.secondaryTextColor
+        textView.textColor = ThemeService.shared.theme.ternaryTextColor
         textView.isEditable = false
         textView.isScrollEnabled = false
         textView.isSelectable = false
+        textView.textAlignment = .center
         textView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
         alertController.contentView = textView
         
@@ -216,24 +215,18 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 16
-        let emailTextField = UITextField()
+        let emailTextField = PaddedTextField()
         emailTextField.attributedPlaceholder = NSAttributedString(string: L10n.Settings.newEmail, attributes: [.foregroundColor: ThemeService.shared.theme.dimmedTextColor])
-        emailTextField.borderStyle = .roundedRect
+        configureTextField(emailTextField)
         emailTextField.keyboardType = .emailAddress
         emailTextField.autocapitalizationType = .none
         emailTextField.spellCheckingType = .no
         emailTextField.text = user?.authentication?.local?.email
-        emailTextField.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
-        emailTextField.textColor = ThemeService.shared.theme.primaryTextColor
-        emailTextField.borderColor = ThemeService.shared.theme.offsetBackgroundColor
         stackView.addArrangedSubview(emailTextField)
-        let passwordTextField = UITextField()
-        passwordTextField.attributedPlaceholder = NSAttributedString(string: L10n.password, attributes: [.foregroundColor: ThemeService.shared.theme.dimmedTextColor])
+        let passwordTextField = PaddedTextField()
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: L10n.Settings.oldPassword, attributes: [.foregroundColor: ThemeService.shared.theme.dimmedTextColor])
+        configureTextField(passwordTextField)
         passwordTextField.isSecureTextEntry = true
-        passwordTextField.borderStyle = .roundedRect
-        passwordTextField.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
-        passwordTextField.textColor = ThemeService.shared.theme.primaryTextColor
-        passwordTextField.borderColor = ThemeService.shared.theme.offsetBackgroundColor
         stackView.addArrangedSubview(passwordTextField)
         alertController.contentView = stackView
         
@@ -248,21 +241,17 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
     
     private func showLoginNameChangeAlert() {
         let title = L10n.Settings.changeUsername
-        let placeholder = L10n.Settings.newUsername
         let alertController = HabiticaAlertController(title: title)
         
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 16
-        let loginNameTextField = UITextField()
-        loginNameTextField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [.foregroundColor: ThemeService.shared.theme.dimmedTextColor])
-        loginNameTextField.borderStyle = .roundedRect
+        let loginNameTextField = PaddedTextField()
+        loginNameTextField.attributedPlaceholder = NSAttributedString(string: L10n.Settings.newUsername, attributes: [.foregroundColor: ThemeService.shared.theme.dimmedTextColor])
+        configureTextField(loginNameTextField)
         loginNameTextField.autocapitalizationType = .none
         loginNameTextField.spellCheckingType = .no
         loginNameTextField.text = user?.username
-        loginNameTextField.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
-        loginNameTextField.textColor = ThemeService.shared.theme.primaryTextColor
-        loginNameTextField.borderColor = ThemeService.shared.theme.offsetBackgroundColor
         stackView.addArrangedSubview(loginNameTextField)
         alertController.contentView = stackView
         
@@ -281,29 +270,20 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 16
-        let oldPasswordTextField = UITextField()
+        let oldPasswordTextField = PaddedTextField()
         oldPasswordTextField.attributedPlaceholder = NSAttributedString(string: L10n.Settings.oldPassword, attributes: [.foregroundColor: ThemeService.shared.theme.dimmedTextColor])
-        oldPasswordTextField.borderStyle = .roundedRect
+        configureTextField(oldPasswordTextField)
         oldPasswordTextField.isSecureTextEntry = true
-        oldPasswordTextField.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
-        oldPasswordTextField.textColor = ThemeService.shared.theme.primaryTextColor
-        oldPasswordTextField.borderColor = ThemeService.shared.theme.offsetBackgroundColor
         stackView.addArrangedSubview(oldPasswordTextField)
-        let newPasswordTextField = UITextField()
+        let newPasswordTextField = PaddedTextField()
         newPasswordTextField.attributedPlaceholder = NSAttributedString(string: L10n.Settings.newPassword, attributes: [.foregroundColor: ThemeService.shared.theme.dimmedTextColor])
-        newPasswordTextField.borderStyle = .roundedRect
+        configureTextField(newPasswordTextField)
         newPasswordTextField.isSecureTextEntry = true
-        newPasswordTextField.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
-        newPasswordTextField.textColor = ThemeService.shared.theme.primaryTextColor
-        newPasswordTextField.borderColor = ThemeService.shared.theme.offsetBackgroundColor
         stackView.addArrangedSubview(newPasswordTextField)
-        let confirmTextField = UITextField()
+        let confirmTextField = PaddedTextField()
         confirmTextField.attributedPlaceholder = NSAttributedString(string: L10n.Settings.confirmNewPassword, attributes: [.foregroundColor: ThemeService.shared.theme.dimmedTextColor])
-        confirmTextField.borderStyle = .roundedRect
+        configureTextField(confirmTextField)
         confirmTextField.isSecureTextEntry = true
-        confirmTextField.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
-        confirmTextField.textColor = ThemeService.shared.theme.primaryTextColor
-        confirmTextField.borderColor = ThemeService.shared.theme.offsetBackgroundColor
         stackView.addArrangedSubview(confirmTextField)
         alertController.contentView = stackView
         
@@ -322,29 +302,20 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 16
-        let emailTextField = UITextField()
+        let emailTextField = PaddedTextField()
         emailTextField.attributedPlaceholder = NSAttributedString(string: L10n.Settings.newEmail, attributes: [.foregroundColor: ThemeService.shared.theme.dimmedTextColor])
-        emailTextField.borderStyle = .roundedRect
+        configureTextField(emailTextField)
         emailTextField.keyboardType = .emailAddress
-        emailTextField.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
-        emailTextField.borderColor = ThemeService.shared.theme.primaryTextColor
-        emailTextField.textColor = ThemeService.shared.theme.secondaryTextColor
         stackView.addArrangedSubview(emailTextField)
-        let passwordTextField = UITextField()
+        let passwordTextField = PaddedTextField()
         passwordTextField.attributedPlaceholder = NSAttributedString(string: L10n.Settings.newPassword, attributes: [.foregroundColor: ThemeService.shared.theme.dimmedTextColor])
-        passwordTextField.borderStyle = .roundedRect
+        configureTextField(passwordTextField)
         passwordTextField.isSecureTextEntry = true
-        passwordTextField.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
-        passwordTextField.textColor = ThemeService.shared.theme.primaryTextColor
-        passwordTextField.borderColor = ThemeService.shared.theme.offsetBackgroundColor
         stackView.addArrangedSubview(passwordTextField)
-        let confirmTextField = UITextField()
+        let confirmTextField = PaddedTextField()
         confirmTextField.attributedPlaceholder = NSAttributedString(string: L10n.Settings.confirmNewPassword, attributes: [.foregroundColor: ThemeService.shared.theme.dimmedTextColor])
-        confirmTextField.borderStyle = .roundedRect
+        configureTextField(confirmTextField)
         confirmTextField.isSecureTextEntry = true
-        confirmTextField.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
-        confirmTextField.textColor = ThemeService.shared.theme.primaryTextColor
-        confirmTextField.borderColor = ThemeService.shared.theme.offsetBackgroundColor
         stackView.addArrangedSubview(confirmTextField)
         alertController.contentView = stackView
         
@@ -409,4 +380,15 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         alertController.addCancelAction()
         alertController.show()
     }
+    
+    private func configureTextField(_ textField: PaddedTextField) {
+        textField.borderStyle = .none
+        textField.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+        textField.borderColor = ThemeService.shared.theme.offsetBackgroundColor
+        textField.borderWidth = 1
+        textField.cornerRadius = 8
+        textField.textInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
+        textField.textColor = ThemeService.shared.theme.secondaryTextColor
+    }
 }
+

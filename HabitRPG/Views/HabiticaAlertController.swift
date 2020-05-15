@@ -29,6 +29,8 @@ class HabiticaAlertController: UIViewController, Themeable {
     private var buttonHandlers = [Int: ((UIButton) -> Swift.Void)]()
     private var buttons = [UIButton]()
     private var shouldCloseOnButtonTap = [Int: Bool]()
+    
+    var dismissOnBackgroundTap = true
 
     
     var contentView: UIView? {
@@ -114,6 +116,8 @@ class HabiticaAlertController: UIViewController, Themeable {
         super.viewDidLoad()
         
         ThemeService.shared.addThemeable(themable: self, applyImmediately: true)
+        
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(backgroundTapped)))
     }
     
     func applyTheme(theme: Theme) {
@@ -339,6 +343,12 @@ class HabiticaAlertController: UIViewController, Themeable {
         dismiss(animated: true, completion: nil)
         if let action = closeAction {
             action()
+        }
+    }
+    
+    @objc func backgroundTapped() {
+        if (dismissOnBackgroundTap) {
+            dismiss(animated: true, completion: nil)
         }
     }
 }

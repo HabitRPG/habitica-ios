@@ -46,7 +46,6 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
         startDayButton.setTitle(L10n.startMyDay, for: .normal)
         
         ThemeService.shared.addThemeable(themable: self)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {

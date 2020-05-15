@@ -19,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="di7-JQ-KmH" customClass="HRPGCloseableShopModalView" customModule="Habitica" customModuleProvider="target">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="di7-JQ-KmH" customClass="HRPGCloseableShopModalView" customModule="Habitica" customModuleProvider="target">
                                 <rect key="frame" x="184" y="411" width="400" height="202"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g3P-N6-MBj">
@@ -74,14 +74,14 @@
                                             <constraint firstAttribute="bottom" secondItem="HHo-iA-MV0" secondAttribute="bottom" constant="8" id="nYT-5u-non"/>
                                         </constraints>
                                     </view>
-                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7w1-M9-yF5">
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7w1-M9-yF5">
                                         <rect key="frame" x="0.0" y="122" width="400" height="80"/>
                                         <subviews>
                                             <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="lLq-BF-AiO">
-                                                <rect key="frame" x="16" y="16" width="368" height="64"/>
+                                                <rect key="frame" x="16" y="16" width="368" height="48"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TiK-yj-cOf">
-                                                        <rect key="frame" x="0.0" y="12" width="50" height="40"/>
+                                                        <rect key="frame" x="0.0" y="4" width="50" height="40"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="GpK-xG-o2L"/>
@@ -90,7 +90,7 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     </button>
                                                     <view contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="e3z-QN-KcI">
-                                                        <rect key="frame" x="220" y="12" width="148" height="40"/>
+                                                        <rect key="frame" x="220" y="4" width="148" height="40"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="dSN-o6-cbs">
                                                                 <rect key="frame" x="20" y="0.0" width="108" height="40"/>
@@ -155,7 +155,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="lLq-BF-AiO" secondAttribute="trailing" constant="16" id="CSa-wT-xvK"/>
-                                            <constraint firstAttribute="bottom" secondItem="lLq-BF-AiO" secondAttribute="bottom" id="HuM-0l-dnx"/>
+                                            <constraint firstAttribute="bottom" secondItem="lLq-BF-AiO" secondAttribute="bottom" constant="16" id="HuM-0l-dnx"/>
                                             <constraint firstItem="fqA-Gf-Y0Z" firstAttribute="top" secondItem="7w1-M9-yF5" secondAttribute="top" constant="8" id="MgI-ro-Mca"/>
                                             <constraint firstItem="lLq-BF-AiO" firstAttribute="leading" secondItem="7w1-M9-yF5" secondAttribute="leading" constant="16" id="dFz-eR-PK8"/>
                                             <constraint firstItem="lLq-BF-AiO" firstAttribute="top" secondItem="7w1-M9-yF5" secondAttribute="top" constant="16" id="lPo-GT-NVN"/>

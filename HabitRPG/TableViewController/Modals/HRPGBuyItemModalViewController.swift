@@ -295,7 +295,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
             contentView.addSubview(bulkView)
             self.bulkView = bulkView
             contentView.addConstraints(NSLayoutConstraint.defaultHorizontalConstraints(bulkView))
-            contentView.addConstraints(NSLayoutConstraint.defaultVerticalConstraints("V:|-0-[itemView]-0-[detailView]-0-[detailView]-20-|", ["itemView": itemView, "detailView": detailView, "bulkView": bulkView]))
+            contentView.addConstraints(NSLayoutConstraint.defaultVerticalConstraints("V:|-0-[itemView]-0-[detailView]-0-[bulkView]-20-|", ["itemView": itemView, "detailView": detailView, "bulkView": bulkView]))
         } else {
             contentView.addConstraints(NSLayoutConstraint.defaultVerticalConstraints("V:|-0-[itemView]-0-[detailView]-20-|", views))
         }

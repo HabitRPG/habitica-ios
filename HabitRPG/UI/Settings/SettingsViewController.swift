@@ -399,7 +399,7 @@ class SettingsViewController: FormViewController, Themeable {
                     let progressView = MRProgressOverlayView.showOverlayAdded(to: self?.view, animated: true)
                     progressView?.setTintColor(ThemeService.shared.theme.tintColor)
                     self?.contentRepository.clearDatabase()
-                    self?.contentRepository.retrieveContent().withLatest(from: self?.userRepository.retrieveUser() ?? Signal.empty)
+                    self?.contentRepository.retrieveContent(force: true).withLatest(from: self?.userRepository.retrieveUser() ?? Signal.empty)
                         .observeCompleted {
                             progressView?.dismiss(true)
                     }
@@ -410,7 +410,7 @@ class SettingsViewController: FormViewController, Themeable {
                 }.onCellSelection({[weak self] (_, _) in
                     let progressView = MRProgressOverlayView.showOverlayAdded(to: self?.view, animated: true)
                     progressView?.tintColor = ThemeService.shared.theme.tintColor
-                    self?.contentRepository.retrieveContent().observeCompleted {
+                    self?.contentRepository.retrieveContent(force: true).observeCompleted {
                         progressView?.dismiss(true)
                     }
                 })
@@ -494,7 +494,7 @@ class SettingsViewController: FormViewController, Themeable {
                     cell.tintColor = UIColor.red50
                 }).onCellSelection({ (_, _) in
                     self.userRepository.logoutAccount()
-                    self.contentRepository.retrieveContent().observeCompleted {}
+                    self.contentRepository.retrieveContent(force: true).observeCompleted {}
                     self.navigationController?.dismiss(animated: true, completion: nil)
                     self.presentingViewController?.dismiss(animated: true, completion: nil)
                 })
@@ -1068,7 +1068,7 @@ class SettingsViewController: FormViewController, Themeable {
         LanguageHandler.setAppLanguage(language)
         self.userRepository.updateUser(key: "preferences.language", value: language.code)
             .flatMap(.latest, {[weak self] _ in
-                return self?.contentRepository.retrieveContent() ?? Signal.empty
+                return self?.contentRepository.retrieveContent(force: true) ?? Signal.empty
             })
             .observeCompleted {[weak self] in
                 progressView?.dismiss(true)

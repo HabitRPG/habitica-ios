@@ -44,7 +44,7 @@ class HRPGBulkPurchaseView: UIView {
             if let action = onValueChanged {
                 action(value)
             }
-            errorLabel.isHidden = true
+            errorLabel.alpha = 0
         }
     }
 

@@ -41,12 +41,15 @@ open class NetworkCall {
     
     let fireProperty = MutableProperty(())
     
-    public init(configuration: ServerConfigurationProtocol, httpMethod: String = "GET", httpHeaders: Dictionary<String, String>? = [:], endpoint: String, postData: Data?, networkErrorHandler: NetworkErrorHandler? = nil) {
+    var ignoreEtag = false
+    
+    public init(configuration: ServerConfigurationProtocol, httpMethod: String = "GET", httpHeaders: Dictionary<String, String>? = [:], endpoint: String, postData: Data?, networkErrorHandler: NetworkErrorHandler? = nil, ignoreEtag: Bool = false) {
         self.configuration = configuration
         self.httpMethod = httpMethod
         self.httpHeaders = httpHeaders
         self.endpoint = endpoint
         self.postData = postData
+        self.ignoreEtag = ignoreEtag
         
         urlString = NetworkCall.configurationToBaseUrlString(configuration) + endpoint
         
@@ -64,7 +67,6 @@ open class NetworkCall {
                     UserDefaults.standard.set(etag, forKey: "etag\(urlString)")
                 }
                 HabiticaServerConfig.etags[urlString] = etag
-                
             }
         })
         dataSignal = dataProperty.signal
@@ -136,9 +138,11 @@ open class NetworkCall {
                     }
                 }
             }
-            if let urlString = request?.url?.absoluteString {
-                if let etag = HabiticaServerConfig.etags[urlString] {
-                    mutableRequest.addValue(etag, forHTTPHeaderField: "If-None-Match")
+            if !ignoreEtag {
+                if let urlString = request?.url?.absoluteString {
+                    if let etag = HabiticaServerConfig.etags[urlString] {
+                        mutableRequest.addValue(etag, forHTTPHeaderField: "If-None-Match")
+                    }
                 }
             }
             return mutableRequest
