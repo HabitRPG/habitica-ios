@@ -20,7 +20,7 @@ class GiftGemsViewController: BaseUIViewController, UICollectionViewDataSource, 
     @IBOutlet weak var displayNameLabel: UsernameLabel!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var giftingExplanationLabel: UILabel!
-    @IBOutlet weak var giftingDisclaimerLabel: UILabel!
+    @IBOutlet weak var giftingDisclaimerLabel: UITextView!
     @IBOutlet weak var balanceWrapperView: UIStackView!
     @IBOutlet weak var gemBalanceCountView: HRPGCurrencyCountView!
     @IBOutlet weak var sendGiftBalanceButton: UIButton!
@@ -116,6 +116,7 @@ class GiftGemsViewController: BaseUIViewController, UICollectionViewDataSource, 
             navigationController?.navigationBar.backgroundColor = theme.contentBackgroundColor
         }
         collectionView.backgroundColor = theme.contentBackgroundColor
+        giftingDisclaimerLabel.tintColor = theme.tintColor
     }
     
     func retrieveProductList() {
@@ -150,7 +151,7 @@ class GiftGemsViewController: BaseUIViewController, UICollectionViewDataSource, 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         purchaseGems(identifier: PurchaseHandler.IAPIdentifiers[indexPath.item])
     }
-    
+        
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let product = self.products?[indexPath.item], let cell = self.collectionView?.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? HRPGGemPurchaseView else {
             return UICollectionViewCell()
@@ -216,7 +217,9 @@ class GiftGemsViewController: BaseUIViewController, UICollectionViewDataSource, 
     
     @IBAction func sendGemsFromBalance(_ sender: Any) {
         if let user = giftedUser {
-            userRepository.sendGems(amount: balanceAmount, recipient: user.id ?? "")
+            userRepository.sendGems(amount: balanceAmount, recipient: user.id ?? "").observeCompleted {[weak self] in
+                self?.dismiss(animated: true, completion: nil)
+            }
         }
     }
 }

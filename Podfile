@@ -17,7 +17,8 @@ plugin 'cocoapods-keys', {
 }
 
 def reactive_pods
-  pod 'ReactiveCocoa', '~> 10'
+  pod 'ReactiveCocoa'
+  pod 'ReactiveSwift'
 end
 
 def test_pods
@@ -61,7 +62,7 @@ target 'Habitica' do
   pod 'SwiftLint'
   pod 'Eureka'
 
-  pod 'RealmSwift'
+  pod 'RealmSwift', '4.4.1'
 
   pod 'Kingfisher'
 
@@ -116,7 +117,7 @@ end
 
 target "Habitica Database" do
   project 'Habitica Database/Habitica Database.xcodeproj'
-  pod "RealmSwift"
+  pod "RealmSwift", '4.4.1'
 
   pod 'Fabric'
   pod 'Crashlytics'

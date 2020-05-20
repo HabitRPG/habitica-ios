@@ -9,8 +9,9 @@
 import UIKit
 import Habitica_Models
 import ReactiveSwift
+import FirebaseAnalytics
 
-class BulkStatsAllocationViewController: UIViewController {
+class BulkStatsAllocationViewController: UIViewController, Themeable {
     private let disposable = ScopedDisposable(CompositeDisposable())
     private let userRepository = UserRepository()
 
@@ -26,17 +27,19 @@ class BulkStatsAllocationViewController: UIViewController {
             value += perceptionSliderView.value
             return value
         }
-        set {
-        }
     }
     
+    @IBOutlet weak var headerWrapper: UIView!
     @IBOutlet weak var allocatedCountLabel: UILabel!
+    @IBOutlet weak var allocatedLabel: UILabel!
     @IBOutlet weak var strengthSliderView: StatsSliderView!
     @IBOutlet weak var intelligenceSliderView: StatsSliderView!
     @IBOutlet weak var constitutionSliderView: StatsSliderView!
     @IBOutlet weak var perceptionSliderView: StatsSliderView!
+    @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
-
+    @IBOutlet weak var buttonSeparator: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -45,6 +48,29 @@ class BulkStatsAllocationViewController: UIViewController {
             self?.pointsToAllocate = user.stats?.points ?? 0
             self?.updateUI()
         }).start())
+        
+        ThemeService.shared.addThemeable(themable: self)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        Analytics.logEvent("open_bulk_stats", parameters: nil)
+    }
+    
+    func applyTheme(theme: Theme) {
+        view.backgroundColor = theme.contentBackgroundColor
+        headerWrapper.backgroundColor = theme.windowBackgroundColor
+        allocatedLabel.textColor = theme.secondaryTextColor
+        cancelButton.tintColor = theme.tintColor
+        buttonSeparator.backgroundColor = theme.separatorColor
+        
+        saveButton.layer.shadowColor = ThemeService.shared.theme.dimmedTextColor.cgColor
+        saveButton.layer.shadowRadius = 2
+        saveButton.layer.shadowOffset = CGSize(width: 1, height: 1)
+        saveButton.layer.shadowOpacity = 0.5
+        saveButton.layer.masksToBounds = false
+        
+        updateUI()
     }
     
     private func updateUI() {
@@ -116,6 +142,15 @@ class BulkStatsAllocationViewController: UIViewController {
     
     private func updateAllocatedCountLabel() {
         allocatedCountLabel.text = "\(pointsAllocated)/\(pointsToAllocate)"
+        if pointsAllocated > 0 {
+            allocatedCountLabel.textColor = ThemeService.shared.theme.tintColor
+            saveButton.backgroundColor = ThemeService.shared.theme.tintColor
+            saveButton.setTitleColor(.white, for: .normal)
+        } else {
+            allocatedCountLabel.textColor = ThemeService.shared.theme.secondaryTextColor
+            saveButton.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+            saveButton.setTitleColor(ThemeService.shared.theme.quadTextColor, for: .normal)
+        }
     }
 
     @IBAction func cancelButtonTapped(_ sender: Any) {

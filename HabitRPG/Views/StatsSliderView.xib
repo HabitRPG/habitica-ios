@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StatsSliderView" customModule="Habitica" customModuleProvider="target">
             <connections>
+                <outlet property="addPlusLabel" destination="bbi-hz-BxL" id="SYJ-Nc-XNv"/>
+                <outlet property="addWrapper" destination="Q9P-gI-3vm" id="Gvu-dp-fLA"/>
                 <outlet property="allocatedTextField" destination="Z2Q-x4-n96" id="GKK-CI-rGq"/>
                 <outlet property="originalValueLabel" destination="xIo-Qa-QRl" id="a3D-i4-A9X"/>
                 <outlet property="slider" destination="Wf4-f0-mrF" id="rKw-LY-Agl"/>
@@ -29,7 +29,7 @@
                         <constraint firstAttribute="height" constant="52" id="7KO-nj-OV8"/>
                         <constraint firstAttribute="width" constant="50" id="Imv-9H-1CK"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.94854217770000004" green="0.18609553579999999" blue="0.20925292370000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -50,7 +50,7 @@
                     <rect key="frame" x="319" y="6" width="56" height="40"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bbi-hz-BxL">
-                            <rect key="frame" x="4" y="0.0" width="11" height="40"/>
+                            <rect key="frame" x="6" y="0.0" width="11" height="36"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="11" id="NBX-ge-iH0"/>
                             </constraints>
@@ -58,8 +58,8 @@
                             <color key="textColor" red="0.40768876669999998" green="0.3832124174" blue="0.4558907747" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z2Q-x4-n96">
-                            <rect key="frame" x="19" y="0.0" width="37" height="40"/>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z2Q-x4-n96">
+                            <rect key="frame" x="25" y="0.0" width="31" height="40"/>
                             <color key="textColor" red="0.53023332357406616" green="0.50720638036727905" blue="0.56472396850585938" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
@@ -67,19 +67,19 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="bbi-hz-BxL" secondAttribute="bottom" id="1d7-Gk-hw5"/>
+                        <constraint firstAttribute="bottom" secondItem="bbi-hz-BxL" secondAttribute="bottom" constant="4" id="1d7-Gk-hw5"/>
                         <constraint firstItem="Z2Q-x4-n96" firstAttribute="top" secondItem="Q9P-gI-3vm" secondAttribute="top" id="55W-5N-cg9"/>
                         <constraint firstAttribute="width" constant="56" id="AIj-QY-JhV"/>
                         <constraint firstItem="bbi-hz-BxL" firstAttribute="top" secondItem="Q9P-gI-3vm" secondAttribute="top" id="CU2-pu-iYh"/>
-                        <constraint firstItem="Z2Q-x4-n96" firstAttribute="leading" secondItem="bbi-hz-BxL" secondAttribute="trailing" constant="4" id="ZUL-LT-G2J"/>
+                        <constraint firstItem="Z2Q-x4-n96" firstAttribute="leading" secondItem="bbi-hz-BxL" secondAttribute="trailing" constant="8" id="ZUL-LT-G2J"/>
                         <constraint firstAttribute="height" constant="40" id="hcX-d1-thC"/>
-                        <constraint firstItem="bbi-hz-BxL" firstAttribute="leading" secondItem="Q9P-gI-3vm" secondAttribute="leading" constant="4" id="mhO-Cv-Aqb"/>
+                        <constraint firstItem="bbi-hz-BxL" firstAttribute="leading" secondItem="Q9P-gI-3vm" secondAttribute="leading" constant="6" id="mhO-Cv-Aqb"/>
                         <constraint firstAttribute="bottom" secondItem="Z2Q-x4-n96" secondAttribute="bottom" id="rkF-R5-8vr"/>
                         <constraint firstAttribute="trailing" secondItem="Z2Q-x4-n96" secondAttribute="trailing" id="tTG-dW-o6m"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                            <real key="value" value="2"/>
+                            <real key="value" value="4"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                             <color key="value" red="0.92813128229999997" green="0.92537832259999997" blue="0.93166613580000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -90,7 +90,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Uan-kl-DwY" secondAttribute="bottom" id="JOk-gn-2Kb"/>
                 <constraint firstItem="Wf4-f0-mrF" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="LbD-HY-vzm"/>

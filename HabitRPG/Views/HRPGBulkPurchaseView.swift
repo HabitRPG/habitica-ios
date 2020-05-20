@@ -10,12 +10,13 @@ import UIKit
 import Habitica_Models
 
 @IBDesignable
-class HRPGBulkPurchaseView: UIView {
+class HRPGBulkPurchaseView: UIView, Themeable {
     private let inventoryRepository = InventoryRepository()
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var subtractButton: UIButton!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet weak var inputContainer: UIView!
     
     private var user: UserProtocol?
     
@@ -75,16 +76,22 @@ class HRPGBulkPurchaseView: UIView {
             
             addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["view": view]))
             addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["view": view]))
-            
-            let theme = ThemeService.shared.theme
-            view.backgroundColor = theme.contentBackgroundColor
-            textField.textColor = theme.primaryTextColor
-            errorLabel.textColor = theme.ternaryTextColor
-            
+                        
             setNeedsUpdateConstraints()
             updateConstraints()
             setNeedsLayout()
             layoutIfNeeded()
+            view.backgroundColor = .clear
+            ThemeService.shared.addThemeable(themable: self)
+            
+            let keyboardDoneButtonView = UIToolbar.init()
+            keyboardDoneButtonView.sizeToFit()
+            let doneButton = UIBarButtonItem.init(barButtonSystemItem: .done,
+                                                               target: self,
+                                                               action: #selector(doneClicked(sender:)))
+
+            keyboardDoneButtonView.items = [doneButton]
+            textField.inputAccessoryView = keyboardDoneButtonView
             
             addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapped)))
             
@@ -92,6 +99,18 @@ class HRPGBulkPurchaseView: UIView {
             addButton.setImage(Asset.plus.image.withRenderingMode(.alwaysTemplate), for: .normal)
             subtractButton.setImage(Asset.minus.image.withRenderingMode(.alwaysTemplate), for: .normal)
         }
+    }
+    
+    @objc
+    func doneClicked(sender: AnyObject) {
+      textField.endEditing(true)
+    }
+    
+    func applyTheme(theme: Theme) {
+        textField.textColor = theme.primaryTextColor
+        errorLabel.textColor = theme.ternaryTextColor
+        inputContainer.backgroundColor = theme.windowBackgroundColor
+        inputContainer.borderColor = theme.separatorColor
     }
     
     @IBAction func addButtonTapped(_ sender: Any) {

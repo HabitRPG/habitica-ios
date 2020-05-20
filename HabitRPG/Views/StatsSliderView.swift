@@ -8,12 +8,14 @@
 
 import UIKit
 
-class StatsSliderView: UIView {
+class StatsSliderView: UIView, Themeable {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var originalValueLabel: UILabel!
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var allocatedTextField: UITextField!
+    @IBOutlet weak var addWrapper: UIView!
+    @IBOutlet weak var addPlusLabel: UILabel!
     
     @IBInspectable var title: String = "" {
         didSet {
@@ -24,7 +26,9 @@ class StatsSliderView: UIView {
     @IBInspectable var attributeColor: UIColor? {
         didSet {
             slider.minimumTrackTintColor = attributeColor
+            slider.tintColor = attributeColor
             titleLabel.textColor = attributeColor
+            slider.setThumbImage(Asset.sliderThumb.image, for: .normal)
         }
     }
     
@@ -54,6 +58,17 @@ class StatsSliderView: UIView {
         super.awakeFromNib()
         slider.addTarget(self, action: #selector(sliderChanged), for: .valueChanged)
         allocatedTextField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
+        
+        ThemeService.shared.addThemeable(themable: self)
+    }
+    
+    func applyTheme(theme: Theme) {
+        originalValueLabel.textColor = theme.ternaryTextColor
+        addWrapper.borderColor = theme.offsetBackgroundColor
+        addWrapper.backgroundColor = theme.windowBackgroundColor
+        addPlusLabel.textColor = theme.secondaryTextColor
+        allocatedTextField.textColor = theme.ternaryTextColor
+        backgroundColor = theme.contentBackgroundColor
     }
     
     @objc

@@ -11,6 +11,7 @@
             <connections>
                 <outlet property="addButton" destination="BiA-ea-dB0" id="qt1-jM-pzr"/>
                 <outlet property="errorLabel" destination="dDv-eH-wWP" id="VUE-cQ-Jnn"/>
+                <outlet property="inputContainer" destination="qH0-CU-x2N" id="002-oj-LDx"/>
                 <outlet property="subtractButton" destination="BDu-43-0PS" id="dZy-Ug-tIv"/>
                 <outlet property="textField" destination="3gf-e3-UFI" id="slU-0M-P2i"/>
             </connections>
@@ -24,10 +25,10 @@
                     <rect key="frame" x="97" y="0.0" width="220" height="58"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="wEh-PJ-TKM">
-                            <rect key="frame" x="0.0" y="0.0" width="220" height="40"/>
+                            <rect key="frame" x="0.0" y="0.0" width="220" height="50"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BiA-ea-dB0">
-                                    <rect key="frame" x="0.0" y="0.0" width="24" height="40"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="24" height="50"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="24" id="a7D-2A-P6Z"/>
                                     </constraints>
@@ -41,20 +42,20 @@
                                         <action selector="addButtonTapped:" destination="-1" eventType="touchUpInside" id="Nbr-ph-2jy"/>
                                     </connections>
                                 </button>
-                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="afN-hD-gyU">
-                                    <rect key="frame" x="60" y="0.0" width="100" height="40"/>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qH0-CU-x2N">
+                                    <rect key="frame" x="54" y="0.0" width="112" height="50"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="eG4-xg-Qxh">
-                                            <rect key="frame" x="16" y="0.0" width="68" height="39"/>
+                                            <rect key="frame" x="29" y="0.0" width="71" height="50"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Gem" translatesAutoresizingMaskIntoConstraints="NO" id="32r-fk-ZUp">
-                                                    <rect key="frame" x="0.0" y="0.0" width="24" height="39"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="24" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="24" id="hKM-jw-R1B"/>
                                                     </constraints>
                                                 </imageView>
                                                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3gf-e3-UFI">
-                                                    <rect key="frame" x="28" y="0.0" width="40" height="39"/>
+                                                    <rect key="frame" x="28" y="0.0" width="43" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="ZIE-4q-ulJ"/>
                                                         <constraint firstAttribute="width" priority="500" constant="150" id="iuv-y4-b75"/>
@@ -67,18 +68,27 @@
                                                 </textField>
                                             </subviews>
                                         </stackView>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BlU-gV-y9X">
-                                            <rect key="frame" x="0.0" y="39" width="100" height="1"/>
-                                            <color key="backgroundColor" red="0.88328301909999996" green="0.87696492670000004" blue="0.89030760529999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="100" id="38e-7U-MUm"/>
-                                                <constraint firstAttribute="height" constant="1" id="mb9-SZ-OsH"/>
-                                            </constraints>
-                                        </view>
                                     </subviews>
-                                </stackView>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="eG4-xg-Qxh" secondAttribute="bottom" id="HIi-3h-Qvj"/>
+                                        <constraint firstItem="eG4-xg-Qxh" firstAttribute="leading" secondItem="qH0-CU-x2N" secondAttribute="leading" constant="29" id="HKo-ke-TO4"/>
+                                        <constraint firstAttribute="trailing" secondItem="eG4-xg-Qxh" secondAttribute="trailing" constant="12" id="LOW-0h-E13"/>
+                                        <constraint firstAttribute="height" constant="50" id="dG6-Sq-YCg"/>
+                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="112" id="iFa-04-iTD"/>
+                                        <constraint firstItem="eG4-xg-Qxh" firstAttribute="top" secondItem="qH0-CU-x2N" secondAttribute="top" id="nJ9-7P-jOR"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="8"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                            <real key="value" value="1"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BDu-43-0PS">
-                                    <rect key="frame" x="196" y="0.0" width="24" height="40"/>
+                                    <rect key="frame" x="196" y="0.0" width="24" height="50"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="24" id="gvf-0L-abl"/>
                                     </constraints>
@@ -94,12 +104,12 @@
                                 </button>
                             </subviews>
                             <constraints>
-                                <constraint firstAttribute="height" constant="40" id="F01-hh-8Lg"/>
+                                <constraint firstAttribute="height" constant="50" id="F01-hh-8Lg"/>
                                 <constraint firstAttribute="width" constant="220" id="rko-WL-IrV"/>
                             </constraints>
                         </stackView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are unable to buy that amount" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dDv-eH-wWP">
-                            <rect key="frame" x="0.0" y="46" width="220" height="12"/>
+                            <rect key="frame" x="0.0" y="56" width="220" height="2"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" red="0.53023332359999997" green="0.50720638039999999" blue="0.56472396849999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>

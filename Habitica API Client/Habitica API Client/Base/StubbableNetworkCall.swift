@@ -29,12 +29,12 @@ open class StubbableNetworkCall: NetworkCall {
                         print("Could not find path for file: \(fileName); is it in the right bundle?")
                     }
                 } else if let stubData = stubHolder.stubData {
-                    return OHHTTPStubsResponse(data: stubData, statusCode: stubHolder.responseCode, headers: stubHolder.responseHeaders)
+                    return HTTPStubsResponse(data: stubData, statusCode: stubHolder.responseCode, headers: stubHolder.responseHeaders)
                 }
-                return OHHTTPStubsResponse(data: Data(), statusCode: stubHolder.responseCode, headers: stubHolder.responseHeaders)
+                return HTTPStubsResponse(data: Data(), statusCode: stubHolder.responseCode, headers: stubHolder.responseHeaders)
             }
             self.responseProperty.signal.observeValues({ _ in
-                OHHTTPStubs.removeStub(stubDesc)
+                HTTPStubs.removeStub(stubDesc)
             })
         }
         

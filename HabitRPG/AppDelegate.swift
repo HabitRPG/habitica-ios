@@ -44,21 +44,12 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
     @objc
     func handleLaunchArgs() {
         let launchArgs = ProcessInfo.processInfo.environment
-        if (launchArgs["userid"] != nil) {
+        if launchArgs["userid"] != nil {
             AuthenticationManager.shared.currentUserId = launchArgs["userid"]
         }
-        if (launchArgs["apikey"] != nil) {
+        if launchArgs["apikey"] != nil {
             AuthenticationManager.shared.currentUserKey = launchArgs["apikey"]
         }
-    }
-    
-    @objc
-    func setupPopups() {
-        let appearance = PopupDialogOverlayView.appearance()
-        appearance.opacity = 0.6
-        appearance.blurEnabled = false
-        let dialogAppearance = PopupDialogDefaultView.appearance()
-        dialogAppearance.cornerRadius = 12
     }
     
     @objc

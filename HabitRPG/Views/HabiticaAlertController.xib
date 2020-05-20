@@ -66,10 +66,9 @@
                                             <rect key="frame" x="0.0" y="44" width="300" height="200"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ZV8-ae-TgB">
-                                                    <rect key="frame" x="16" y="0.0" width="268" height="1"/>
+                                                    <rect key="frame" x="16" y="0.0" width="268" height="200"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" priority="500" constant="1" id="eOJ-y0-GwI"/>
-                                                        <constraint firstAttribute="width" priority="500" constant="160" id="osO-3d-A6O"/>
+                                                        <constraint firstAttribute="height" priority="500" constant="200" id="eOJ-y0-GwI"/>
                                                     </constraints>
                                                 </stackView>
                                             </subviews>

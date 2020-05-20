@@ -23,9 +23,10 @@
 
     if (self) {
         self.label = [[UILabel alloc] init];
-        self.label.layer.cornerRadius = 5.0f;
+        self.label.layer.cornerRadius = 8.0f;
         self.label.textAlignment = NSTextAlignmentCenter;
         self.label.textColor = [UIColor whiteColor];
+        self.label.font = [UIFont systemFontOfSize:16];
         self.loadingView = [[UIActivityIndicatorView alloc] init];
         self.loadingView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
 
@@ -40,6 +41,12 @@
         tapGestureRecognizer.minimumPressDuration = 0.001;
         [self addGestureRecognizer:tapGestureRecognizer];
         self.userInteractionEnabled = YES;
+        
+        self.layer.shadowColor = [[ObjcThemeWrapper dimmedTextColor] CGColor];
+        self.layer.shadowRadius = 2;
+        self.layer.shadowOffset = CGSizeMake(1, 1);
+        self.layer.shadowOpacity = 0.5;
+        self.layer.masksToBounds = false;
     }
 
     return self;

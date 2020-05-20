@@ -58,7 +58,7 @@ class FixCharacterViewController: BaseTableViewController {
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
         headerView.backgroundColor = theme.windowBackgroundColor
-        headerLabel.textColor = theme.dimmedTextColor
+        headerLabel.textColor = theme.quadTextColor
     }
     
     private func identifierFor(index: Int) -> String {

@@ -142,6 +142,41 @@ class HabiticaMarkdownHelper: NSObject {
 }
 
 private class HabiticaStyler: Styler {
+    func style(blockQuote str: NSMutableAttributedString, nestDepth: Int) {
+        
+    }
+    
+    func style(list str: NSMutableAttributedString, nestDepth: Int) {
+        
+    }
+    
+    func style(item str: NSMutableAttributedString, prefixLength: Int) {
+        
+    }
+    
+    func style(heading str: NSMutableAttributedString, level: Int) {
+        switch level {
+        case 1:
+            str.addAttribute(.font, value: CustomFontMetrics.scaledBoldSystemFont(ofSize: 27))
+        case 2:
+            str.addAttribute(.font, value: CustomFontMetrics.scaledBoldSystemFont(ofSize: 21))
+        case 3:
+            str.addAttribute(.font, value: CustomFontMetrics.scaledBoldSystemFont(ofSize: 17))
+        case 4:
+            str.addAttribute(.font, value: CustomFontMetrics.scaledBoldSystemFont(ofSize: 15))
+        case 5:
+            str.addAttribute(.font, value: CustomFontMetrics.scaledBoldSystemFont(ofSize: 13))
+        case 6:
+            str.addAttribute(.font, value: CustomFontMetrics.scaledBoldSystemFont(ofSize: 12))
+        default:
+            return
+        }
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 4
+        paragraphStyle.paragraphSpacing = 16
+        str.addAttribute(.paragraphStyle, value: paragraphStyle)
+    }
+    
     let baseSize: CGFloat
     let textColor: UIColor
     
@@ -168,27 +203,7 @@ private class HabiticaStyler: Styler {
         paragraphStyle.paragraphSpacing = 7
         str.addAttribute(.paragraphStyle, value: paragraphStyle)
     }
-    func style(heading str: NSMutableAttributedString, level: Int) {
-        switch level {
-        case 1:
-            str.addAttribute(.font, value: CustomFontMetrics.scaledBoldSystemFont(ofSize: 27))
-        case 2:
-            str.addAttribute(.font, value: CustomFontMetrics.scaledBoldSystemFont(ofSize: 21))
-        case 3:
-            str.addAttribute(.font, value: CustomFontMetrics.scaledBoldSystemFont(ofSize: 17))
-        case 4:
-            str.addAttribute(.font, value: CustomFontMetrics.scaledBoldSystemFont(ofSize: 15))
-        case 5:
-            str.addAttribute(.font, value: CustomFontMetrics.scaledBoldSystemFont(ofSize: 13))
-        case 6:
-            str.addAttribute(.font, value: CustomFontMetrics.scaledBoldSystemFont(ofSize: 12))
-        default:
-            return
-        }
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineSpacing = 4
-        paragraphStyle.paragraphSpacing = 16
-        str.addAttribute(.paragraphStyle, value: paragraphStyle)
+    func style(listItemPrefix str: NSMutableAttributedString) {
     }
     func style(thematicBreak str: NSMutableAttributedString) {}
     func style(text str: NSMutableAttributedString) {

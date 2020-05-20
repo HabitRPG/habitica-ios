@@ -160,16 +160,16 @@
                                             <rect key="frame" x="20" y="4" width="316" height="36"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="n0l-QM-LJV">
-                                                    <rect key="frame" x="0.0" y="0.0" width="250" height="36"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="284" height="36"/>
                                                     <subviews>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7mY-LD-ILX">
-                                                            <rect key="frame" x="0.0" y="0.0" width="250" height="36"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="284" height="36"/>
                                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="999" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qfa-RN-CGk">
-                                                            <rect key="frame" x="0.0" y="36" width="250" height="0.0"/>
+                                                            <rect key="frame" x="0.0" y="36" width="284" height="0.0"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                             <nil key="highlightedColor"/>
@@ -177,7 +177,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <view tag="3" contentMode="scaleToFill" horizontalHuggingPriority="999" horizontalCompressionResistancePriority="999" translatesAutoresizingMaskIntoConstraints="NO" id="USe-72-kBx" customClass="PillView" customModule="Habitica" customModuleProvider="target">
-                                                    <rect key="frame" x="250" y="0.0" width="50" height="36"/>
+                                                    <rect key="frame" x="284" y="12" width="16" height="12"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 </view>
                                                 <view clipsSubviews="YES" tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y81-RX-OwJ">
@@ -2743,10 +2743,10 @@
                                 <rect key="frame" x="0.0" y="102" width="375" height="545"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BJC-jA-n9n">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="406"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="422"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="DTc-7P-cRY">
-                                                <rect key="frame" x="23" y="0.0" width="329" height="406"/>
+                                                <rect key="frame" x="23" y="0.0" width="329" height="422"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="OKZ-XW-X2r">
                                                         <rect key="frame" x="119.5" y="0.0" width="90" height="190"/>
@@ -2793,7 +2793,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" priority="500" constant="410" id="4cw-IS-IJ2"/>
                                                         </constraints>
-                                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="kmc-OS-RGn">
+                                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="kmc-OS-RGn">
                                                             <size key="itemSize" width="160" height="200"/>
                                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -2811,7 +2811,7 @@
                                                         </cells>
                                                     </collectionView>
                                                     <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="cSZ-m2-vLK">
-                                                        <rect key="frame" x="14.5" y="380" width="300" height="156"/>
+                                                        <rect key="frame" x="14.5" y="380" width="300" height="174"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="bml-Px-Q0U">
                                                                 <rect key="frame" x="70" y="0.0" width="160" height="20"/>
@@ -2833,15 +2833,15 @@
                                                                 </subviews>
                                                             </stackView>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VLG-qn-A1o" customClass="HRPGBulkPurchaseView" customModule="Habitica" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="44" width="300" height="50"/>
+                                                                <rect key="frame" x="0.0" y="44" width="300" height="68"/>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="300" id="6Fm-Jf-bkv"/>
-                                                                    <constraint firstAttribute="height" constant="50" id="MCx-ET-I6Q"/>
+                                                                    <constraint firstAttribute="height" constant="68" id="yce-RF-BbD"/>
                                                                 </constraints>
                                                             </view>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iuu-pC-cLk">
-                                                                <rect key="frame" x="81" y="118" width="138" height="38"/>
+                                                                <rect key="frame" x="81" y="136" width="138" height="38"/>
                                                                 <color key="backgroundColor" red="0.60365134480000004" green="0.38511508700000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="38" id="Uu6-no-W5t"/>
@@ -2862,12 +2862,14 @@
                                                             </button>
                                                         </subviews>
                                                     </stackView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iOK-HY-gLH">
-                                                        <rect key="frame" x="148" y="390" width="33" height="16"/>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Swc-iV-Dde">
+                                                        <rect key="frame" x="159.5" y="390" width="10" height="32"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                        <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                                                    </textView>
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstItem="tD7-vg-TCA" firstAttribute="width" secondItem="DTc-7P-cRY" secondAttribute="width" id="uqy-ed-ouE"/>
@@ -2887,7 +2889,7 @@
                                     <constraint firstItem="BJC-jA-n9n" firstAttribute="top" secondItem="vIw-NX-YTf" secondAttribute="top" id="1Lw-xG-aAz"/>
                                     <constraint firstItem="BJC-jA-n9n" firstAttribute="leading" secondItem="vIw-NX-YTf" secondAttribute="leading" id="6lZ-3g-Sbw"/>
                                     <constraint firstAttribute="trailing" secondItem="BJC-jA-n9n" secondAttribute="trailing" id="ISm-Z5-EqN"/>
-                                    <constraint firstAttribute="bottom" secondItem="BJC-jA-n9n" secondAttribute="bottom" id="i7F-KZ-5g8"/>
+                                    <constraint firstAttribute="bottom" secondItem="BJC-jA-n9n" secondAttribute="bottom" constant="80" id="i7F-KZ-5g8"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="iAn-aj-OYF"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="BZX-nE-GhQ"/>
@@ -2920,7 +2922,7 @@
                         <outlet property="displayNameLabel" destination="GBH-vv-doZ" id="7mL-ls-5yD"/>
                         <outlet property="gemBalanceCountView" destination="4eq-bb-hYm" id="3bw-bo-gLk"/>
                         <outlet property="giftModeControl" destination="lcf-yP-12X" id="pOz-mt-uzx"/>
-                        <outlet property="giftingDisclaimerLabel" destination="iOK-HY-gLH" id="pgw-7I-Duh"/>
+                        <outlet property="giftingDisclaimerLabel" destination="Swc-iV-Dde" id="H71-Yh-eoW"/>
                         <outlet property="giftingExplanationLabel" destination="KTN-1x-sCf" id="A0m-XX-8qf"/>
                         <outlet property="sendGiftBalanceButton" destination="Iuu-pC-cLk" id="qcj-7l-QCq"/>
                         <outlet property="usernameLabel" destination="Ql2-43-X4M" id="MzW-Gp-eXT"/>

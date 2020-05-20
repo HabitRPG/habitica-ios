@@ -39,7 +39,6 @@
     [self.swiftAppDelegate setupLogging];
     [self.swiftAppDelegate setupAnalytics];
     [self.swiftAppDelegate setupRouter];
-    [self.swiftAppDelegate setupPopups];
     [self.swiftAppDelegate setupPurchaseHandling];
     [self.swiftAppDelegate setupNetworkClient];
     [self.swiftAppDelegate setupTheme];

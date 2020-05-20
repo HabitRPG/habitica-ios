@@ -55,10 +55,12 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                 pinButton.setTitle(L10n.unpin, for: .normal)
                 pinButton.setTitleColor(.red10, for: .normal)
                 pinButton.setImage(HabiticaIcons.imageOfUnpinItem.withRenderingMode(.alwaysTemplate), for: .normal)
+                pinButton.tintColor = .red10
             } else {
                 pinButton.setTitle(L10n.pin, for: .normal)
-                pinButton.setTitleColor(.purple400, for: .normal)
-                pinButton.setImage(HabiticaIcons.imageOfPinItem, for: .normal)
+                pinButton.setTitleColor(ThemeService.shared.theme.tintColor, for: .normal)
+                pinButton.setImage(HabiticaIcons.imageOfPinItem.withRenderingMode(.alwaysTemplate), for: .normal)
+                pinButton.tintColor = ThemeService.shared.theme.tintColor
             }
         }
     }
@@ -83,6 +85,8 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         pinButton.isHidden = inAppReward?.pinType == "armoire" || inAppReward?.pinType == "potion"
 
         ThemeService.shared.addThemeable(themable: self)
+        
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(backgroundTapped)))
         
         populateText()
     }
@@ -122,6 +126,11 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         hourglassCountView.currency = .hourglass
         gemCountView.currency = .gem
         goldCountView.currency = .gold
+    }
+    
+    @objc
+    private func backgroundTapped() {
+        dismiss(animated: true, completion: nil)
     }
     
     func refreshBalances() {

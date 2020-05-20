@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="PIR-jb-93G">
-    <device id="ipad9_7" orientation="portrait" layout="fullscreen" appearance="light"/>
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
@@ -16,17 +16,17 @@
                         <viewControllerLayoutGuide type="bottom" id="2rS-0a-WMm"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="38B-cY-EDq">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="di7-JQ-KmH" customClass="HRPGCloseableShopModalView" customModule="Habitica" customModuleProvider="target">
-                                <rect key="frame" x="184" y="411" width="400" height="202"/>
+                                <rect key="frame" x="16" y="305" width="343" height="202"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g3P-N6-MBj">
-                                        <rect key="frame" x="0.0" y="0.0" width="400" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="JUY-rH-EEf">
-                                                <rect key="frame" x="214" y="11.5" width="174" height="27"/>
+                                                <rect key="frame" x="157" y="11.666666666666686" width="174" height="27"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="X0F-mm-9ZG" customClass="HRPGCurrencyCountView" customModule="Habitica" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="50" height="27"/>
@@ -75,13 +75,13 @@
                                         </constraints>
                                     </view>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7w1-M9-yF5">
-                                        <rect key="frame" x="0.0" y="122" width="400" height="80"/>
+                                        <rect key="frame" x="0.0" y="122" width="343" height="80"/>
                                         <subviews>
                                             <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="lLq-BF-AiO">
-                                                <rect key="frame" x="16" y="16" width="368" height="48"/>
+                                                <rect key="frame" x="20" y="16" width="303" height="50"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TiK-yj-cOf">
-                                                        <rect key="frame" x="0.0" y="4" width="50" height="40"/>
+                                                        <rect key="frame" x="0.0" y="5" width="50" height="40"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="GpK-xG-o2L"/>
@@ -90,7 +90,7 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     </button>
                                                     <view contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="e3z-QN-KcI">
-                                                        <rect key="frame" x="220" y="4" width="148" height="40"/>
+                                                        <rect key="frame" x="155" y="5" width="148" height="40"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="dSN-o6-cbs">
                                                                 <rect key="frame" x="20" y="0.0" width="108" height="40"/>
@@ -145,7 +145,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fqA-Gf-Y0Z">
-                                                <rect key="frame" x="0.0" y="8" width="400" height="1"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="1"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="foF-tI-NLL"/>
@@ -154,10 +154,10 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="lLq-BF-AiO" secondAttribute="trailing" constant="16" id="CSa-wT-xvK"/>
-                                            <constraint firstAttribute="bottom" secondItem="lLq-BF-AiO" secondAttribute="bottom" constant="16" id="HuM-0l-dnx"/>
-                                            <constraint firstItem="fqA-Gf-Y0Z" firstAttribute="top" secondItem="7w1-M9-yF5" secondAttribute="top" constant="8" id="MgI-ro-Mca"/>
-                                            <constraint firstItem="lLq-BF-AiO" firstAttribute="leading" secondItem="7w1-M9-yF5" secondAttribute="leading" constant="16" id="dFz-eR-PK8"/>
+                                            <constraint firstAttribute="trailing" secondItem="lLq-BF-AiO" secondAttribute="trailing" constant="20" id="CSa-wT-xvK"/>
+                                            <constraint firstAttribute="bottom" secondItem="lLq-BF-AiO" secondAttribute="bottom" constant="14" id="HuM-0l-dnx"/>
+                                            <constraint firstItem="fqA-Gf-Y0Z" firstAttribute="top" secondItem="7w1-M9-yF5" secondAttribute="top" id="MgI-ro-Mca"/>
+                                            <constraint firstItem="lLq-BF-AiO" firstAttribute="leading" secondItem="7w1-M9-yF5" secondAttribute="leading" constant="20" id="dFz-eR-PK8"/>
                                             <constraint firstItem="lLq-BF-AiO" firstAttribute="top" secondItem="7w1-M9-yF5" secondAttribute="top" constant="16" id="lPo-GT-NVN"/>
                                             <constraint firstItem="fqA-Gf-Y0Z" firstAttribute="leading" secondItem="7w1-M9-yF5" secondAttribute="leading" id="lmd-ST-pFs"/>
                                             <constraint firstAttribute="height" constant="80" id="pTV-Ps-kxw"/>
@@ -229,27 +229,27 @@
                         <viewControllerLayoutGuide type="bottom" id="h9m-1V-pC1"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="yYx-4g-8hd">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GRl-EB-mZX" customClass="HRPGCloseableShopModalView" customModule="Habitica" customModuleProvider="target">
-                                <rect key="frame" x="184" y="312" width="400" height="400"/>
+                                <rect key="frame" x="16" y="206" width="343" height="400"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="400" id="KO8-zR-per"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CV4-Pe-f0l">
-                                <rect key="frame" x="184" y="312" width="400" height="346"/>
+                                <rect key="frame" x="16" y="206" width="343" height="346"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C3v-IP-fUG">
-                                        <rect key="frame" x="200" y="15" width="0.0" height="0.0"/>
+                                        <rect key="frame" x="171.66666666666666" y="15" width="0.0" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <color key="textColor" red="0.40784313729999999" green="0.38431372549999998" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f5k-Rr-PH2" customClass="HRPGSimpleShopItemView" customModule="Habitica" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="46" width="400" height="166"/>
+                                        <rect key="frame" x="0.0" y="46" width="343" height="166"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="image" keyPath="image" value="84_gems"/>
@@ -258,7 +258,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u6f-ro-Ehm">
-                                        <rect key="frame" x="0.0" y="296" width="400" height="50"/>
+                                        <rect key="frame" x="0.0" y="296" width="343" height="50"/>
                                         <color key="backgroundColor" red="0.97647058819999999" green="0.96862745100000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="Enx-lB-SGa"/>
@@ -269,7 +269,7 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hUB-b8-wWN">
-                                        <rect key="frame" x="32" y="220" width="336" height="64"/>
+                                        <rect key="frame" x="32" y="220" width="279" height="64"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="4_gems" translatesAutoresizingMaskIntoConstraints="NO" id="zFh-Dr-VwC">
                                                 <rect key="frame" x="4" y="0.0" width="64" height="64"/>
@@ -278,14 +278,14 @@
                                                 </constraints>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DNF-NM-beI" customClass="HRPGPurchaseButton">
-                                                <rect key="frame" x="270" y="17" width="50" height="30"/>
+                                                <rect key="frame" x="213" y="17" width="50" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="04r-Ga-nK1"/>
                                                     <constraint firstAttribute="width" constant="50" id="gNM-my-o03"/>
                                                 </constraints>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Fg-sp-EZd">
-                                                <rect key="frame" x="68" y="0.0" width="202" height="64"/>
+                                                <rect key="frame" x="68" y="0.0" width="145" height="64"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.3075395823" green="0.2903449535" blue="0.34151983260000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -370,20 +370,20 @@
                         <viewControllerLayoutGuide type="bottom" id="Q1P-3l-hBT"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="VOR-qR-YWz">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XMT-e1-oa1" customClass="HRPGShopModalBgView" customModule="Habitica" customModuleProvider="target">
-                                <rect key="frame" x="184" y="390.5" width="400" height="243"/>
+                                <rect key="frame" x="16" y="255.66666666666666" width="343" height="300.66666666666674"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MAF-Nb-1hY">
-                                        <rect key="frame" x="200" y="15" width="0.0" height="0.0"/>
+                                        <rect key="frame" x="171.66666666666666" y="15.000000000000028" width="0.0" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <color key="textColor" red="0.40784313729999999" green="0.38431372549999998" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wl4-Aq-qfJ">
-                                        <rect key="frame" x="0.0" y="193" width="400" height="50"/>
+                                        <rect key="frame" x="0.0" y="250.66666666666663" width="343" height="50"/>
                                         <color key="backgroundColor" red="0.97647058819999999" green="0.96862745100000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="pMb-uf-UO2"/>
@@ -394,7 +394,7 @@
                                         </connections>
                                     </button>
                                     <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="JPn-ef-wu2" customClass="HRPGSimpleShopItemView" customModule="Habitica" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="52" width="400" height="139"/>
+                                        <rect key="frame" x="0.0" y="52.000000000000043" width="343" height="196.66666666666663"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="139" id="clb-WV-yX3"/>
@@ -448,27 +448,27 @@
                         <viewControllerLayoutGuide type="bottom" id="R8r-Qm-gts"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="X3q-EW-gRp">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HsQ-qc-HER" customClass="HRPGCloseableShopModalView" customModule="Habitica" customModuleProvider="target">
-                                <rect key="frame" x="184" y="367" width="400" height="290"/>
+                                <rect key="frame" x="16" y="261" width="343" height="290"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="290" id="xEE-Ej-P9q"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vg2-zG-ztx">
-                                <rect key="frame" x="184" y="367" width="400" height="236"/>
+                                <rect key="frame" x="16" y="261" width="343" height="236"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z4L-Zx-0jp">
-                                        <rect key="frame" x="200" y="15" width="0.0" height="0.0"/>
+                                        <rect key="frame" x="171.66666666666666" y="15" width="0.0" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <color key="textColor" red="0.40784313729999999" green="0.38431372549999998" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8iQ-Ji-0DG" customClass="HRPGSimpleShopItemView" customModule="Habitica" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="46" width="400" height="139"/>
+                                        <rect key="frame" x="0.0" y="45.999999999999986" width="343" height="196.66666666666663"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="title" value="You'll need more Mystic Hourglasses to buy this item!"/>
@@ -476,7 +476,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4E3-xU-II9">
-                                        <rect key="frame" x="0.0" y="186" width="400" height="50"/>
+                                        <rect key="frame" x="0.0" y="243.66666666666669" width="343" height="50"/>
                                         <color key="backgroundColor" red="0.97647058819999999" green="0.96862745100000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="S4I-Ib-Kbi"/>
@@ -541,27 +541,27 @@
                         <viewControllerLayoutGuide type="bottom" id="3kT-Jn-D84"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="aTg-Aw-jGl">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6YK-vA-Y5L" customClass="HRPGCloseableShopModalView" customModule="Habitica" customModuleProvider="target">
-                                <rect key="frame" x="184" y="367" width="400" height="290"/>
+                                <rect key="frame" x="16" y="261" width="343" height="290"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="290" id="jdk-ck-jVa"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cDm-Nx-OXI">
-                                <rect key="frame" x="184" y="367" width="400" height="236"/>
+                                <rect key="frame" x="16" y="261" width="343" height="236"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="osQ-wn-dQZ">
-                                        <rect key="frame" x="200" y="15" width="0.0" height="0.0"/>
+                                        <rect key="frame" x="171.66666666666666" y="15" width="0.0" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <color key="textColor" red="0.40784313729999999" green="0.38431372549999998" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UVF-vB-P8d" customClass="HRPGSimpleShopItemView" customModule="Habitica" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="46" width="400" height="190"/>
+                                        <rect key="frame" x="0.0" y="46" width="343" height="190"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="image" keyPath="image" value="21_gems"/>

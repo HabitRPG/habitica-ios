@@ -103,7 +103,11 @@ public class ThemeService: NSObject {
         
         let appearance = PopupDialogOverlayView.appearance()
         appearance.color = theme.dimmBackgroundColor
-        appearance.cornerRadius = 16
+        appearance.opacity = 0.6
+        appearance.blurEnabled = false
+        let containerAppearance = PopupDialogContainerView.appearance()
+        containerAppearance.shadowEnabled = false
+        containerAppearance.cornerRadius = 16.0 as Float
         
         let view = UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self])
         if #available(iOS 13.0, *) {

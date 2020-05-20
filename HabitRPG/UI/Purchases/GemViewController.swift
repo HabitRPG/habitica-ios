@@ -229,17 +229,26 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
     }
     
     @IBAction func giftGemsTapped(_ sender: Any) {
-        let alertController = HabiticaAlertController(title: L10n.giftGemsPrompt, message: L10n.giftGemsAlertPrompt)
+        let alertController = HabiticaAlertController(title: L10n.giftGemsAlertTitle)
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.spacing = 16
-        let usernameTextField = UITextField()
+        stackView.spacing = 12
+        let label = UILabel()
+        label.text = L10n.giftGemsAlertPrompt
+        label.font = CustomFontMetrics.scaledSystemFont(ofSize: 15)
+        label.textColor = ThemeService.shared.theme.ternaryTextColor
+        stackView.addArrangedSubview(label)
+        let usernameTextField = PaddedTextField()
         usernameTextField.attributedPlaceholder = NSAttributedString(string: L10n.username, attributes: [.foregroundColor: ThemeService.shared.theme.dimmedTextColor])
-        usernameTextField.borderStyle = .roundedRect
         usernameTextField.autocapitalizationType = .none
         usernameTextField.spellCheckingType = .no
+        usernameTextField.borderStyle = .none
         usernameTextField.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
-        usernameTextField.textColor = ThemeService.shared.theme.primaryTextColor
+        usernameTextField.borderColor = ThemeService.shared.theme.offsetBackgroundColor
+        usernameTextField.borderWidth = 1
+        usernameTextField.cornerRadius = 8
+        usernameTextField.textInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
+        usernameTextField.textColor = ThemeService.shared.theme.secondaryTextColor
         stackView.addArrangedSubview(usernameTextField)
         alertController.contentView = stackView
         
@@ -251,6 +260,8 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
         errorView.isHidden = true
         errorView.textColor = ThemeService.shared.theme.errorColor
         errorView.text = L10n.Errors.userNotFound
+        errorView.textAlignment = .center
+        errorView.font = CustomFontMetrics.scaledSystemFont(ofSize: 12)
         stackView.addArrangedSubview(errorView)
 
         var foundUser = false

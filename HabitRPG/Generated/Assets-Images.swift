@@ -189,6 +189,7 @@ internal enum Asset {
   internal static let separatorFancy = ImageAsset(name: "separator_fancy")
   internal static let shopEmptyHourglass = ImageAsset(name: "shop_empty_hourglass")
   internal static let shopEmptySeasonal = ImageAsset(name: "shop_empty_seasonal")
+  internal static let sliderThumb = ImageAsset(name: "slider_thumb")
   internal static let speechBubble = ImageAsset(name: "speech_bubble")
   internal static let speechbubbleCaret = ImageAsset(name: "speechbubble_caret")
   internal static let star = ImageAsset(name: "star")

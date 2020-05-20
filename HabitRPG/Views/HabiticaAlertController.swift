@@ -118,6 +118,7 @@ class HabiticaAlertController: UIViewController, Themeable {
         ThemeService.shared.addThemeable(themable: self, applyImmediately: true)
         
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(backgroundTapped)))
+        alertBackgroundView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(alertTapped)))
     }
     
     func applyTheme(theme: Theme) {
@@ -149,6 +150,7 @@ class HabiticaAlertController: UIViewController, Themeable {
     }
     
     override func viewWillLayoutSubviews() {
+        containerView.setNeedsUpdateConstraints()
         let height = containerView.frame.size.height
         var maximumHeight = view.frame.size.height
         if #available(iOS 11.0, *) {
@@ -156,11 +158,7 @@ class HabiticaAlertController: UIViewController, Themeable {
             maximumHeight = guide.layoutFrame.size.height
         }
         maximumHeight -= 32 + 140
-        if height > maximumHeight {
-            scrollviewHeightConstraint.constant = maximumHeight
-        } else {
-            scrollviewHeightConstraint.constant = height
-        }
+        scrollviewHeightConstraint.constant = min(height, maximumHeight)
         super.viewWillLayoutSubviews()
     }
     
@@ -206,10 +204,10 @@ class HabiticaAlertController: UIViewController, Themeable {
             button.titleLabel?.font = CustomFontMetrics.scaledSystemFont(ofSize: 17, ofWeight: .semibold)
             button.backgroundColor = color
             button.cornerRadius = 8
-            button.layer.shadowColor = UIColor.gray400.cgColor
-            button.layer.shadowRadius = 3
+            button.layer.shadowColor = ThemeService.shared.theme.dimmedTextColor.cgColor
+            button.layer.shadowRadius = 2
             button.layer.shadowOffset = CGSize(width: 1, height: 1)
-            button.layer.shadowOpacity = 1
+            button.layer.shadowOpacity = 0.5
             button.layer.masksToBounds = false
         } else {
             button.setTitleColor(color, for: .normal)
@@ -350,6 +348,10 @@ class HabiticaAlertController: UIViewController, Themeable {
         if (dismissOnBackgroundTap) {
             dismiss(animated: true, completion: nil)
         }
+    }
+    
+    @objc func alertTapped() {
+        // if the alert is tapped, it should not be dismissed
     }
 }
 

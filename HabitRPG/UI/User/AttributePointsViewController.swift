@@ -344,8 +344,7 @@ class AttributePointsViewController: BaseUIViewController {
     @objc
     func openBulkAssignView() {
         let viewController = BulkStatsAllocationViewController(nibName: "BulkStatsAllocationView", bundle: Bundle.main)
-        let popup = PopupDialog(viewController: viewController, tapGestureDismissal: false) {
-        }
+        let popup = PopupDialog(viewController: viewController)
     
         present(popup, animated: true, completion: nil)
     }
