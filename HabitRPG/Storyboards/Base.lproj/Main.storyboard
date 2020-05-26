@@ -2907,8 +2907,6 @@
                                     <constraint firstAttribute="trailing" secondItem="BJC-jA-n9n" secondAttribute="trailing" id="ISm-Z5-EqN"/>
                                     <constraint firstAttribute="bottom" secondItem="BJC-jA-n9n" secondAttribute="bottom" constant="80" id="i7F-KZ-5g8"/>
                                 </constraints>
-                                <viewLayoutGuide key="contentLayoutGuide" id="iAn-aj-OYF"/>
-                                <viewLayoutGuide key="frameLayoutGuide" id="BZX-nE-GhQ"/>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
