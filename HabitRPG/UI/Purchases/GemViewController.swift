@@ -211,9 +211,8 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
             }
         })
         alertController.addCancelAction()
+        alertController.containerViewSpacing = 4
         alertController.show()
-        alertController.containerViewSpacing = 8
-        alertController.containerView.spacing = 4
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -237,6 +236,7 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
         label.text = L10n.giftGemsAlertPrompt
         label.font = CustomFontMetrics.scaledSystemFont(ofSize: 15)
         label.textColor = ThemeService.shared.theme.ternaryTextColor
+        label.textAlignment = .center
         stackView.addArrangedSubview(label)
         let usernameTextField = PaddedTextField()
         usernameTextField.attributedPlaceholder = NSAttributedString(string: L10n.username, attributes: [.foregroundColor: ThemeService.shared.theme.dimmedTextColor])

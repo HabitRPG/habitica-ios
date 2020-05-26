@@ -38,6 +38,7 @@ public protocol Theme {
     var warningColor: UIColor { get }
     var taskOverlayTint: UIColor { get }
     var segmentedTintColor: UIColor { get }
+    var buttonShadowColor: UIColor { get }
 }
 
 public protocol DarkTheme: Theme {
@@ -74,6 +75,7 @@ extension Theme {
     public var warningColor: UIColor { return UIColor.yellow100 }
     public var taskOverlayTint: UIColor { return UIColor.white.withAlphaComponent(0) }
     public var segmentedTintColor: UIColor { return backgroundTintColor }
+    public var buttonShadowColor: UIColor { return UIColor.gray400 }
     
     public func applyContentBackgroundColor(views: [UIView]) {
         applyBackgroundColor(views: views, color: contentBackgroundColor)
@@ -112,6 +114,7 @@ extension DarkTheme {
     public var errorColor: UIColor { return UIColor.red10 }
     public var warningColor: UIColor { return UIColor.yellow10.withAlphaComponent(0.7) }
     public var segmentedTintColor: UIColor { return backgroundTintColor }
+    public var buttonShadowColor: UIColor { return UIColor.black }
 }
 
 @objc
@@ -132,6 +135,8 @@ class ObjcThemeWrapper: NSObject {
     @objc public static var lightTextColor: UIColor { return ThemeService.shared.theme.lightTextColor }
     @objc public static var themeIsDark: Bool { return ThemeService.shared.theme.isDark }
     @objc public static var tableviewSeparatorColor: UIColor { return ThemeService.shared.theme.tableviewSeparatorColor }
+    
+    @objc public static var buttonShadowColor: UIColor { return ThemeService.shared.theme.buttonShadowColor }
     
     @available(iOS 12.0, *)
     @objc public static func updateUserInterfaceStyle(_ newStyle: UIUserInterfaceStyle) { ThemeService.shared.updateInterfaceStyle(newStyle: newStyle) }

@@ -16,15 +16,21 @@ class LevelUpOverlayView: HabiticaAlertController {
         let view = AvatarView()
         return view
     }()
-    
+    private var borderView: UIImageView = {
+        let view = UIImageView()
+        view.image = HabiticaIcons.imageOfDashBorder
+        return view
+    }()
     private var avatarWrapper = UIView()
     
     init(avatar: AvatarProtocol) {
         super.init()
-        title = L10n.levelupTitle
-        message = L10n.levelupDescription(avatar.stats?.level ?? 0)
+        title = L10n.levelupTitle(avatar.stats?.level ?? 0)
+        messageFont = CustomFontMetrics.scaledSystemFont(ofSize: 15)
+        messageColor = ThemeService.shared.theme.ternaryTextColor
+        message = L10n.levelupDescription
         arrangeMessageLast = true
-        containerView.spacing = 18
+        containerViewSpacing = 18
         setupAvatarView(avatar: avatar)
         addAction(title: L10n.onwards, isMainAction: true)
         addShareAction {[weak self] (_) in
@@ -46,12 +52,14 @@ class LevelUpOverlayView: HabiticaAlertController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        avatarView.pin.width(140).height(147).hCenter().top()
+        avatarView.pin.width(94).height(98).hCenter().top(8)
+        borderView.pin.width(113).height(116).hCenter().top()
     }
     
     private func setupAvatarView(avatar: AvatarProtocol) {
         contentView = avatarWrapper
         avatarWrapper.addSubview(avatarView)
+        avatarWrapper.addSubview(borderView)
         avatarView.translatesAutoresizingMaskIntoConstraints = true
         avatarView.avatar = AvatarViewModel(avatar: avatar)
         
@@ -61,6 +69,6 @@ class LevelUpOverlayView: HabiticaAlertController {
                                                        toItem: nil,
                                                        attribute: NSLayoutConstraint.Attribute.notAnAttribute,
                                                        multiplier: 1,
-                                                       constant: 160))
+                                                       constant: 116))
     }
 }

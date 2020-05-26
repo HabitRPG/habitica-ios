@@ -135,9 +135,6 @@ class MainTabBarController: UITabBarController, Themeable {
             if let tutorials = user.flags?.tutorials {
                 self?.updateTutorialSteps(tutorials)
             }
-            
-            let levelUpView = LevelUpOverlayView(avatar: user)
-            levelUpView.show()
         }).start())
         disposable.inner.add(taskRepository.getDueTasks().on(value: {[weak self] tasks in
             self?.dueDailiesCount = 0

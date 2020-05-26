@@ -134,8 +134,4 @@ extension UIView {
         self.setNeedsLayout()
         self.layoutIfNeeded()
     }
-    
-    func addHeightConstraint(height: CGFloat) {
-        addConstraint(NSLayoutConstraint(item: self, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: height))
-    }
 }

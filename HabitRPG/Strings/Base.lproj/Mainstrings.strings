@@ -509,8 +509,8 @@
 "wheelchair" = "Wheelchair";
 "animal_ears" = "Animal Ears";
 "headband" = "Headband";
-"levelup_title" = "You gained a level!";
-"levelup_description" = "By accomplishing your real-life goals, you've grown to Level %ld!";
+"levelup_title" = "You Reached Level %ld!";
+"levelup_description" = "By accomplishing your real life goals, you leveled up and are now fully healed!";
 "levelup_share" = "I got to level %ld in Habitica by improving my real-life habits!";
 "quest_completed_title" = "Quest Completed!";
 "copied_to_clipboard" = "Copied to Clipboard";
@@ -873,3 +873,5 @@
 "gift_gems_disclaimer" = "Habitica will never require you to gift gems to other players. Begging people for gems is a violation of the Community Guidelines and should be reported to admin@habitica.com.";
 "gift_gems_explanation_purchase" = "Choose how many Gems to gift below or switch tabs to gift Gems from your current balance";
 "gift_gems_explanation_balance" = "Enter how many of your Gems you’d like to gift or switch tabs to purchase Gems to gift";
+"gift_sent_confirmation" = "Your gift was sent!";
+"gift_sent_to" = "You sent %@:";

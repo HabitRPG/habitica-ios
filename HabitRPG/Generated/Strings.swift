@@ -228,6 +228,12 @@ public enum L10n {
   public static var giftRecipientSubtitle: String { return L10n.tr("Mainstrings", "gift_recipient_subtitle") }
   /// Who would you like to gift to?
   public static var giftRecipientTitle: String { return L10n.tr("Mainstrings", "gift_recipient_title") }
+  /// Your gift was sent!
+  public static var giftSentConfirmation: String { return L10n.tr("Mainstrings", "gift_sent_confirmation") }
+  /// You sent %@:
+  public static func giftSentTo(_ p1: String) -> String {
+    return L10n.tr("Mainstrings", "gift_sent_to", p1)
+  }
   /// Choose the subscription you’d like to gift below! This purchase won’t automatically renew.
   public static var giftSubscriptionPrompt: String { return L10n.tr("Mainstrings", "gift_subscription_prompt") }
   /// Glasses
@@ -296,16 +302,16 @@ public enum L10n {
   public static func levelNumber(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "level_number", p1)
   }
-  /// By accomplishing your real-life goals, you've grown to Level %ld!
-  public static func levelupDescription(_ p1: Int) -> String {
-    return L10n.tr("Mainstrings", "levelup_description", p1)
-  }
+  /// By accomplishing your real life goals, you leveled up and are now fully healed!
+  public static var levelupDescription: String { return L10n.tr("Mainstrings", "levelup_description") }
   /// I got to level %ld in Habitica by improving my real-life habits!
   public static func levelupShare(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "levelup_share", p1)
   }
-  /// You gained a level!
-  public static var levelupTitle: String { return L10n.tr("Mainstrings", "levelup_title") }
+  /// You Reached Level %ld!
+  public static func levelupTitle(_ p1: Int) -> String {
+    return L10n.tr("Mainstrings", "levelup_title", p1)
+  }
   /// Mana
   public static var mana: String { return L10n.tr("Mainstrings", "mana") }
   /// Mana Points

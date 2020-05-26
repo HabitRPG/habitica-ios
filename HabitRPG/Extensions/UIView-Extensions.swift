@@ -72,4 +72,36 @@ extension UIView {
         layer.addSublayer(border)
         return border
     }
+    
+    func addHeightConstraint(height: CGFloat) {
+        self.addConstraint(NSLayoutConstraint(item: self,
+            attribute: NSLayoutConstraint.Attribute.height,
+            relatedBy: NSLayoutConstraint.Relation.equal,
+            toItem: nil,
+            attribute: NSLayoutConstraint.Attribute.notAnAttribute,
+            multiplier: 1,
+            constant: height))
+    }
+    
+    func addWidthConstraint(width: CGFloat) {
+        self.addConstraint(NSLayoutConstraint(item: self,
+            attribute: NSLayoutConstraint.Attribute.height,
+            relatedBy: NSLayoutConstraint.Relation.equal,
+            toItem: nil,
+            attribute: NSLayoutConstraint.Attribute.notAnAttribute,
+            multiplier: 1,
+            constant: width))
+    }
+    
+    func addCenterXConstraint() {
+        if let superview = superview {
+            centerXAnchor.constraint(equalTo: superview.centerXAnchor).isActive = true
+        }
+    }
+    
+    func addCenterYConstraint() {
+        if let superview = superview {
+            centerYAnchor.constraint(equalTo: superview.centerYAnchor).isActive = true
+        }
+    }
 }

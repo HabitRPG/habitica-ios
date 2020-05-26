@@ -345,9 +345,8 @@ class MainMenuViewController: BaseTableViewController {
                 self.perform(segue: StoryboardSegue.Main.openGiftSubscriptionDialog)
             }
         })
+        alertController.containerViewSpacing = 4
         alertController.show()
-        alertController.containerViewSpacing = 8
-        alertController.containerView.spacing = 4
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

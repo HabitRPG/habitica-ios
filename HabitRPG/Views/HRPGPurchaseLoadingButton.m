@@ -42,7 +42,7 @@
         [self addGestureRecognizer:tapGestureRecognizer];
         self.userInteractionEnabled = YES;
         
-        self.layer.shadowColor = [[ObjcThemeWrapper dimmedTextColor] CGColor];
+        self.layer.shadowColor = [[ObjcThemeWrapper buttonShadowColor] CGColor];
         self.layer.shadowRadius = 2;
         self.layer.shadowOffset = CGSizeMake(1, 1);
         self.layer.shadowOpacity = 0.5;

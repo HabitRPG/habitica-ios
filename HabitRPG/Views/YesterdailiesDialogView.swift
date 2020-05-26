@@ -53,6 +53,11 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
         
         view.cornerRadius = 16
         view.superview?.superview?.cornerRadius = 16
+        
+        startDayButton.layer.shadowRadius = 2
+        startDayButton.layer.shadowOffset = CGSize(width: 1, height: 1)
+        startDayButton.layer.shadowOpacity = 0.5
+        startDayButton.layer.masksToBounds = false
     }
     
     func applyTheme(theme: Theme) {
@@ -62,6 +67,7 @@ class YesterdailiesDialogView: UIViewController, UITableViewDelegate, UITableVie
         tableViewWrapper.backgroundColor = theme.windowBackgroundColor
         checkinCountView.textColor = theme.primaryTextColor
         nextCheckinCountView.textColor = theme.secondaryTextColor
+        startDayButton.layer.shadowColor = ThemeService.shared.theme.buttonShadowColor.cgColor
     }
 
     override func viewWillLayoutSubviews() {

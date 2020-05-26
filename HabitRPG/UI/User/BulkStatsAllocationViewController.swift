@@ -64,7 +64,7 @@ class BulkStatsAllocationViewController: UIViewController, Themeable {
         cancelButton.tintColor = theme.tintColor
         buttonSeparator.backgroundColor = theme.separatorColor
         
-        saveButton.layer.shadowColor = ThemeService.shared.theme.dimmedTextColor.cgColor
+        saveButton.layer.shadowColor = ThemeService.shared.theme.buttonShadowColor.cgColor
         saveButton.layer.shadowRadius = 2
         saveButton.layer.shadowOffset = CGSize(width: 1, height: 1)
         saveButton.layer.shadowOpacity = 0.5

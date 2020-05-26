@@ -92,6 +92,7 @@ class GiftGemsViewController: BaseUIViewController, UICollectionViewDataSource, 
         if let username = giftRecipientUsername {
             disposable.inner.add(socialRepository.retrieveMemberWithUsername(username).observeValues({[weak self] member in
                 self?.giftedUser = member
+                self?.showConfirmationDialog(gemCount: 42)
             }))
         }
         disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
@@ -108,6 +109,7 @@ class GiftGemsViewController: BaseUIViewController, UICollectionViewDataSource, 
     
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
+        view.backgroundColor = theme.contentBackgroundColor
         giftingExplanationLabel.textColor = theme.secondaryTextColor
         giftingDisclaimerLabel.textColor = theme.quadTextColor
         if #available(iOS 13.0, *) {
@@ -149,7 +151,20 @@ class GiftGemsViewController: BaseUIViewController, UICollectionViewDataSource, 
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        purchaseGems(identifier: PurchaseHandler.IAPIdentifiers[indexPath.item])
+        guard let product = self.products?[indexPath.item] else {
+            return
+        }
+        var amount = 0
+        if product.productIdentifier == "com.habitrpg.ios.Habitica.4gems" {
+            amount = 4
+        } else if product.productIdentifier == "com.habitrpg.ios.Habitica.21gems" {
+            amount = 21
+        } else if product.productIdentifier == "com.habitrpg.ios.Habitica.42gems" {
+            amount = 42
+        } else if product.productIdentifier == "com.habitrpg.ios.Habitica.84gems" {
+            amount = 84
+        }
+        purchaseGems(identifier: PurchaseHandler.IAPIdentifiers[indexPath.item], amount: amount)
     }
         
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -158,22 +173,23 @@ class GiftGemsViewController: BaseUIViewController, UICollectionViewDataSource, 
         }
         cell.setPrice(product.localizedPrice)
         cell.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
-
-        if product.productIdentifier == "com.habitrpg.ios.Habitica.4gems" {
-            cell.setGemAmount(4)
-        } else if product.productIdentifier == "com.habitrpg.ios.Habitica.21gems" {
-            cell.setGemAmount(21)
-        } else if product.productIdentifier == "com.habitrpg.ios.Habitica.42gems" {
-            cell.setGemAmount(42)
-        } else if product.productIdentifier == "com.habitrpg.ios.Habitica.84gems" {
-            cell.setGemAmount(84)
-        }
         
+        var amount = 0
+        if product.productIdentifier == "com.habitrpg.ios.Habitica.4gems" {
+            amount = 4
+        } else if product.productIdentifier == "com.habitrpg.ios.Habitica.21gems" {
+            amount = 21
+        } else if product.productIdentifier == "com.habitrpg.ios.Habitica.42gems" {
+            amount = 42
+        } else if product.productIdentifier == "com.habitrpg.ios.Habitica.84gems" {
+            amount = 84
+        }
+        cell.setGemAmount(amount)
         cell.setPurchaseTap {[weak self] (purchaseButton) in
             switch purchaseButton?.state {
             case .some(HRPGPurchaseButtonStateError), .some(HRPGPurchaseButtonStateLabel):
                 purchaseButton?.state = HRPGPurchaseButtonStateLoading
-                self?.purchaseGems(identifier: product.productIdentifier)
+                self?.purchaseGems(identifier: product.productIdentifier, amount: amount)
             case .some(HRPGPurchaseButtonStateDone):
                 self?.dismiss(animated: true, completion: nil)
             default:
@@ -192,13 +208,14 @@ class GiftGemsViewController: BaseUIViewController, UICollectionViewDataSource, 
         }
     }
     
-    func purchaseGems(identifier: String) {
+    func purchaseGems(identifier: String, amount: Int) {
         guard let user = self.giftedUser else {
             return
         }
         PurchaseHandler.shared.purchaseGems(identifier, applicationUsername: String(user.id?.hashValue ?? 0)) { success in
             if success {
                 self.dismiss(animated: true, completion: nil)
+                self.showConfirmationDialog(gemCount: amount)
             }
         }
     }
@@ -219,7 +236,33 @@ class GiftGemsViewController: BaseUIViewController, UICollectionViewDataSource, 
         if let user = giftedUser {
             userRepository.sendGems(amount: balanceAmount, recipient: user.id ?? "").observeCompleted {[weak self] in
                 self?.dismiss(animated: true, completion: nil)
+                self?.showConfirmationDialog(gemCount: self?.balanceAmount ?? 0)
             }
         }
+    }
+    
+    func showConfirmationDialog(gemCount: Int) {
+        let alert = HabiticaAlertController(title: L10n.giftSentConfirmation, message: L10n.giftSentTo(displayNameLabel.text ?? ""))
+        let mainView = UIView()
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 112, height: 50))
+        view.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+        view.cornerRadius = 8
+        let innerStackView = UIStackView(frame: CGRect(x: 6, y: 0, width: 100, height: 50))
+        innerStackView.distribution = .equalSpacing
+        view.addSubview(innerStackView)
+        let iconView = UIImageView(image: HabiticaIcons.imageOfGem)
+        iconView.contentMode = .center
+        innerStackView.addArrangedSubview(iconView)
+        let label = UILabel()
+        label.textColor = UIColor.green10
+        label.font = CustomFontMetrics.scaledSystemFont(ofSize: 20, ofWeight: .semibold)
+        label.text = "\(gemCount)"
+        innerStackView.addArrangedSubview(label)
+        mainView.addSubview(view)
+        mainView.addHeightConstraint(height: 50)
+        alert.contentView = mainView
+        view.addWidthConstraint(width: 112)
+        view.addCenterXConstraint()
+        alert.show()
     }
 }

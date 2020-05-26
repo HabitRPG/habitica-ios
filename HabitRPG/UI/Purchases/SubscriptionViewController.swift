@@ -457,9 +457,8 @@ class SubscriptionViewController: BaseTableViewController {
             }
         })
         alertController.addCancelAction()
-        alertController.show()
         alertController.containerViewSpacing = 8
-        alertController.containerView.spacing = 8
+        alertController.show()
         textField.becomeFirstResponder()
     }
     
