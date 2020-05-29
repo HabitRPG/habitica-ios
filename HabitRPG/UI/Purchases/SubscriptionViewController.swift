@@ -104,11 +104,9 @@ class SubscriptionViewController: BaseTableViewController {
             navigationController?.navigationBar.compactAppearance?.shadowColor = .clear
         }
         
-        if configRepository.bool(variable: .useNewMysteryBenefits) {
-            disposable.inner.add(inventoryRepository.getLatestMysteryGear().on(value: { gear in
-                self.mysteryGear = gear
-                }).start())
-        }
+        disposable.inner.add(inventoryRepository.getLatestMysteryGear().on(value: { gear in
+            self.mysteryGear = gear
+        }).start())
         
         if configRepository.bool(variable: .enableGiftOneGetOne) {
             if let header = tableView.tableHeaderView {
@@ -280,7 +278,7 @@ class SubscriptionViewController: BaseTableViewController {
                 fatalError()
             }
             cell.title = SubscriptionInformation.titles[indexPath.item]
-            if (indexPath.item == 2 && mysteryGear != nil) {
+            if indexPath.item == 2 && mysteryGear != nil {
                 cell.descriptionText = L10n.subscriptionInfo3DescriptionNew(mysteryGear?.text ?? "")
                 cell.iconView.setImagewith(name: "shop_set_mystery_\(mysteryGear?.key?.split(separator: "_").last ?? "")")
             } else {

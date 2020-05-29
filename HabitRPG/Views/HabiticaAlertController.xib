@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -46,9 +46,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="36"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iMp-sa-Osx">
-                                                    <rect key="frame" x="30" y="12" width="260" height="24"/>
+                                                    <rect key="frame" x="37" y="12" width="246" height="24"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="246" id="SfM-zI-a3W"/>
                                                         <constraint firstAttribute="height" priority="500" constant="50" id="zoq-Za-Aqn"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
@@ -59,9 +60,10 @@
                                             <color key="backgroundColor" red="0.97592383620000001" green="0.97666221860000002" blue="0.97603815790000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstItem="iMp-sa-Osx" firstAttribute="top" secondItem="gtQ-qL-FhW" secondAttribute="top" constant="12" id="4Bo-fP-jHi"/>
-                                                <constraint firstAttribute="trailing" secondItem="iMp-sa-Osx" secondAttribute="trailing" constant="30" id="8pO-rn-3VJ"/>
+                                                <constraint firstAttribute="trailing" secondItem="iMp-sa-Osx" secondAttribute="trailing" priority="500" constant="30" id="8pO-rn-3VJ"/>
+                                                <constraint firstItem="iMp-sa-Osx" firstAttribute="centerX" secondItem="gtQ-qL-FhW" secondAttribute="centerX" id="Sq6-8H-Wwg"/>
                                                 <constraint firstAttribute="bottom" secondItem="iMp-sa-Osx" secondAttribute="bottom" id="YJA-Rv-kd6"/>
-                                                <constraint firstItem="iMp-sa-Osx" firstAttribute="leading" secondItem="gtQ-qL-FhW" secondAttribute="leading" constant="30" id="vT6-va-6ZS"/>
+                                                <constraint firstItem="iMp-sa-Osx" firstAttribute="leading" secondItem="gtQ-qL-FhW" secondAttribute="leading" priority="500" constant="30" id="vT6-va-6ZS"/>
                                             </constraints>
                                         </view>
                                         <scrollView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RtW-7X-FcT">

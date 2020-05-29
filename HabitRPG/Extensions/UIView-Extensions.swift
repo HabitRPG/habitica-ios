@@ -85,7 +85,7 @@ extension UIView {
     
     func addWidthConstraint(width: CGFloat) {
         self.addConstraint(NSLayoutConstraint(item: self,
-            attribute: NSLayoutConstraint.Attribute.height,
+            attribute: NSLayoutConstraint.Attribute.width,
             relatedBy: NSLayoutConstraint.Relation.equal,
             toItem: nil,
             attribute: NSLayoutConstraint.Attribute.notAnAttribute,

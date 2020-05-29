@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -2905,7 +2905,7 @@
                                     <constraint firstItem="BJC-jA-n9n" firstAttribute="top" secondItem="vIw-NX-YTf" secondAttribute="top" id="1Lw-xG-aAz"/>
                                     <constraint firstItem="BJC-jA-n9n" firstAttribute="leading" secondItem="vIw-NX-YTf" secondAttribute="leading" id="6lZ-3g-Sbw"/>
                                     <constraint firstAttribute="trailing" secondItem="BJC-jA-n9n" secondAttribute="trailing" id="ISm-Z5-EqN"/>
-                                    <constraint firstAttribute="bottom" secondItem="BJC-jA-n9n" secondAttribute="bottom" constant="80" id="i7F-KZ-5g8"/>
+                                    <constraint firstAttribute="bottom" secondItem="BJC-jA-n9n" secondAttribute="bottom" constant="60" id="i7F-KZ-5g8"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -2932,12 +2932,14 @@
                         <outlet property="avatarView" destination="JNh-pa-Mcc" id="XHK-lf-nn5"/>
                         <outlet property="balanceAmountView" destination="VLG-qn-A1o" id="yg1-q9-yrf"/>
                         <outlet property="balanceWrapperView" destination="cSZ-m2-vLK" id="B3D-G8-1hv"/>
+                        <outlet property="bottomSpacing" destination="i7F-KZ-5g8" id="eGk-0p-5em"/>
                         <outlet property="collectionView" destination="tD7-vg-TCA" id="Y8Y-Pb-wS4"/>
                         <outlet property="displayNameLabel" destination="GBH-vv-doZ" id="7mL-ls-5yD"/>
                         <outlet property="gemBalanceCountView" destination="4eq-bb-hYm" id="3bw-bo-gLk"/>
                         <outlet property="giftModeControl" destination="lcf-yP-12X" id="pOz-mt-uzx"/>
                         <outlet property="giftingDisclaimerLabel" destination="Swc-iV-Dde" id="H71-Yh-eoW"/>
                         <outlet property="giftingExplanationLabel" destination="KTN-1x-sCf" id="A0m-XX-8qf"/>
+                        <outlet property="scrollView" destination="vIw-NX-YTf" id="Ehx-4M-dS0"/>
                         <outlet property="sendGiftBalanceButton" destination="Iuu-pC-cLk" id="qcj-7l-QCq"/>
                         <outlet property="usernameLabel" destination="Ql2-43-X4M" id="MzW-Gp-eXT"/>
                     </connections>
@@ -3132,6 +3134,15 @@
             <point key="canvasLocation" x="94" y="9663"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="0lO-rm-fRj"/>
+        <segue reference="04Z-5H-zfF"/>
+        <segue reference="ETz-qE-xC2"/>
+        <segue reference="mRM-bY-AV4"/>
+        <segue reference="V6b-ej-qnx"/>
+        <segue reference="tO1-JH-hWy"/>
+    </inferredMetricsTieBreakers>
+    <color key="tintColor" red="0.44783598184585571" green="0.10848048329353333" blue="0.9984632134437561" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
     <resources>
         <image name="gem_purchase_header" width="254" height="68"/>
         <image name="gift_sub_gift" width="24" height="26"/>
@@ -3142,13 +3153,4 @@
         <image name="tabbar_rewards" width="32" height="32"/>
         <image name="tabbar_todos" width="32" height="32"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="0lO-rm-fRj"/>
-        <segue reference="04Z-5H-zfF"/>
-        <segue reference="ETz-qE-xC2"/>
-        <segue reference="mRM-bY-AV4"/>
-        <segue reference="V6b-ej-qnx"/>
-        <segue reference="tO1-JH-hWy"/>
-    </inferredMetricsTieBreakers>
-    <color key="tintColor" red="0.44783598184585571" green="0.10848048329353333" blue="0.9984632134437561" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

@@ -84,6 +84,8 @@ public enum L10n {
   public static var color: String { return L10n.tr("Mainstrings", "color") }
   /// Complete
   public static var complete: String { return L10n.tr("Mainstrings", "complete") }
+  /// You need to complete more tasks before you can afford this item!
+  public static var completeMoreTasks: String { return L10n.tr("Mainstrings", "complete_more_tasks") }
   /// Confirm
   public static var confirm: String { return L10n.tr("Mainstrings", "confirm") }
   /// Confirm Username
@@ -208,7 +210,7 @@ public enum L10n {
   public static var giftConfirmationTitle: String { return L10n.tr("Mainstrings", "gift_confirmation_title") }
   /// Enter recipient's @username
   public static var giftGemsAlertPrompt: String { return L10n.tr("Mainstrings", "gift_gems_alert_prompt") }
-  /// Who would you like to send your gifts to?
+  /// Who would you like to send your gift to?
   public static var giftGemsAlertTitle: String { return L10n.tr("Mainstrings", "gift_gems_alert_title") }
   /// Habitica will never require you to gift gems to other players. Begging people for gems is a violation of the Community Guidelines and should be reported to admin@habitica.com.
   public static var giftGemsDisclaimer: String { return L10n.tr("Mainstrings", "gift_gems_disclaimer") }
@@ -268,6 +270,10 @@ public enum L10n {
   }
   /// Inactive
   public static var inactive: String { return L10n.tr("Mainstrings", "inactive") }
+  /// You’ll need more Mystic Hourglasses to buy this item! Hourglasses are rewarded for being subscribed for consecutive months.
+  public static var insufficientHourglassesMessage: String { return L10n.tr("Mainstrings", "insufficient_hourglasses_message") }
+  /// You’ll need more Mystic Hourglasses to buy this item! Stay Subscribed to keep receiving your Hourglasses.
+  public static var insufficientHourglassesMessageSubscriber: String { return L10n.tr("Mainstrings", "insufficient_hourglasses_message_subscriber") }
   /// You have to specify a valid Habitica Username as recipient.
   public static var invalidRecipientMessage: String { return L10n.tr("Mainstrings", "invalid_recipient_message") }
   /// Invalid Habitica Username
@@ -288,6 +294,8 @@ public enum L10n {
   }
   /// Leader
   public static var leader: String { return L10n.tr("Mainstrings", "leader") }
+  /// Learn More
+  public static var learnMore: String { return L10n.tr("Mainstrings", "learn_more") }
   /// Leave
   public static var leave: String { return L10n.tr("Mainstrings", "leave") }
   /// Leave Challenge
@@ -330,6 +338,8 @@ public enum L10n {
   public static var monthlyGemCapReached: String { return L10n.tr("Mainstrings", "monthly_gem_cap_reached") }
   /// months
   public static var months: String { return L10n.tr("Mainstrings", "months") }
+  /// You’ll need more Gems to buy this item!
+  public static var moreGemsMessage: String { return L10n.tr("Mainstrings", "more_gems_message") }
   /// More Options
   public static var moreOptions: String { return L10n.tr("Mainstrings", "more_options") }
   /// Mounts
@@ -1085,7 +1095,7 @@ public enum L10n {
     public static func hatchedSharing(_ p1: String, _ p2: String) -> String {
       return L10n.tr("Mainstrings", "inventory.hatchedSharing", p1, p2)
     }
-    /// No more Gems available this month. More become available within the first 3 days of each month.
+    /// You have bought all the Gems you can this month. More become available within the first three days of each month. Thanks for subscribing!
     public static var noGemsLeft: String { return L10n.tr("Mainstrings", "inventory.no_gems_left") }
     /// Monthly Gems: %d/%d Remaining
     public static func numberGemsLeft(_ p1: Int, _ p2: Int) -> String {

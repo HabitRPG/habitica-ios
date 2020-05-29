@@ -12,12 +12,6 @@ import UIKit
 
 // swiftlint:disable explicit_type_interface identifier_name line_length type_body_length type_name
 internal enum StoryboardSegue {
-  internal enum BuyModal: String, SegueType {
-    case gemCapReached
-    case insufficientGems
-    case insufficientGold
-    case insufficientHourglasses
-  }
   internal enum Intro: String, SegueType {
     case avatarSegue = "AvatarSegue"
     case initialSegue = "InitialSegue"

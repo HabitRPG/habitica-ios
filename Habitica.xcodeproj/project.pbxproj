@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2354DBE87B77AA2822946B19 /* Pods_Habitica.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA30D777368D157F78256BF /* Pods_Habitica.framework */; };
 		290279632057EC03006DACB9 /* FAQTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290279622057EC03006DACB9 /* FAQTableViewController.swift */; };
 		2902796C2057F2C5006DACB9 /* Assets-Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290279692057F2C4006DACB9 /* Assets-Images.swift */; };
 		2902796D2057F2C5006DACB9 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2902796A2057F2C5006DACB9 /* Strings.swift */; };
@@ -331,7 +332,6 @@
 		29E1631F200F62CB00685640 /* GroupChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E1631E200F62CB00685640 /* GroupChatViewController.swift */; };
 		29E30DE620D935AF00F74ECB /* LevelUpOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E30DE520D935AF00F74ECB /* LevelUpOverlayView.swift */; };
 		29E48F0D22E89DB3005C4B45 /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E48F0C22E89DB3005C4B45 /* BadgeView.swift */; };
-		29E779F8203F30A40079F269 /* HRPGGemCapReachedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E779F7203F30A40079F269 /* HRPGGemCapReachedViewController.swift */; };
 		29EBDA762328FC43006611E3 /* NSString+Emoji.m in Sources */ = {isa = PBXBuildFile; fileRef = 29EBDA752328FC43006611E3 /* NSString+Emoji.m */; };
 		29EBDA83232A3ABA006611E3 /* KeychainItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EBDA82232A3ABA006611E3 /* KeychainItem.swift */; };
 		29EBDA88232BAC3A006611E3 /* HRPGTutorialUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29EBDA87232BAC3A006611E3 /* HRPGTutorialUIViewController.m */; };
@@ -365,9 +365,6 @@
 		49005B7C1F18371F004830D9 /* HRPGShopUserHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49005B7B1F18371E004830D9 /* HRPGShopUserHeaderView.swift */; };
 		49005B7E1F183775004830D9 /* HRPGShopUserHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49005B7D1F183775004830D9 /* HRPGShopUserHeaderView.xib */; };
 		4904C7401F1ED87400F80723 /* GradientImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4904C73F1F1ED87400F80723 /* GradientImageView.swift */; };
-		4908641D1F43DE2B00BD9896 /* HRPGInsufficientGemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4908641C1F43DE2B00BD9896 /* HRPGInsufficientGemsViewController.swift */; };
-		4908642E1F45316700BD9896 /* HRPGInsufficientGoldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4908642D1F45316700BD9896 /* HRPGInsufficientGoldViewController.swift */; };
-		490864301F45318600BD9896 /* HRPGInsufficientHourglassesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4908642F1F45318600BD9896 /* HRPGInsufficientHourglassesViewController.swift */; };
 		491C6E5B2020FE64005030A2 /* Challenge-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491C6E5A2020FE64005030A2 /* Challenge-Extensions.swift */; };
 		4924314E202CD19A00288278 /* ChallengeRewardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4924314C202CD19A00288278 /* ChallengeRewardTableViewCell.swift */; };
 		4924314F202CD19A00288278 /* ChallengeRewardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4924314D202CD19A00288278 /* ChallengeRewardTableViewCell.xib */; };
@@ -427,7 +424,6 @@
 		49E6F57E1FF9A2AE0062C8B2 /* DoubleButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49E6F57C1FF9A2AE0062C8B2 /* DoubleButtonTableViewCell.xib */; };
 		49EE3FD8201908AB00CD7608 /* ChallengeButtonStyleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EE3FD7201908AB00CD7608 /* ChallengeButtonStyleProvider.swift */; };
 		49FA9FF720DC47AD0086C478 /* TaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FA9FF620DC47AD0086C478 /* TaskTableViewController.swift */; };
-		6AD6119E0A9CFA1670D5C1E2 /* Pods_Habitica_Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE753104274372FFC7182ACF /* Pods_Habitica_Intents.framework */; };
 		7A84E194228928AC0081E96F /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A84E193228928AC0081E96F /* IntentHandler.swift */; };
 		7A84E19C228928AD0081E96F /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A84E19B228928AD0081E96F /* IntentsUI.framework */; };
 		7A84E19F228928AD0081E96F /* IntentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A84E19E228928AD0081E96F /* IntentViewController.swift */; };
@@ -438,8 +434,8 @@
 		7A84E1B32289963E0081E96F /* BaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FC884D2010CCC2002B3D3F /* BaseRepository.swift */; };
 		7A84E1B42289968B0081E96F /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299BD6391F557FE700E22935 /* AuthenticationManager.swift */; };
 		7A84E1B5228996A90081E96F /* TaskRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292DEE57204DA6E00086D5F7 /* TaskRepositoryProtocol.swift */; };
-		7F78DB0E270DE29CFAFBBA24 /* Pods_Habitica_Snapshots.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAD902171AE5A8C0E6177D71 /* Pods_Habitica_Snapshots.framework */; };
-		823F7132DD74058859184F61 /* Pods_HabiticaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC1D483830288A543073AEBA /* Pods_HabiticaTests.framework */; };
+		8A9EFF49EEC15BA9621F41AE /* Pods_Habitica_Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAF52781EFA40CF917137423 /* Pods_Habitica_Intents.framework */; };
+		90BD17F04375C02E86E05112 /* Pods_Habitica_Snapshots.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8BD1B9D0EC5AE436BE86A57 /* Pods_Habitica_Snapshots.framework */; };
 		C8415994225F8B7800989FB8 /* Habitica_Snapshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8415993225F8B7800989FB8 /* Habitica_Snapshots.swift */; };
 		C841599C225F8C2A00989FB8 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C841599B225F8C2900989FB8 /* SnapshotHelper.swift */; };
 		C897F63C218CCF51002907C2 /* RouterHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C897F63B218CCF51002907C2 /* RouterHandler.swift */; };
@@ -567,7 +563,7 @@
 		D9F1E3EC1E55E1DB0034D0F4 /* SubscriptionInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F1E3EB1E55E1DB0034D0F4 /* SubscriptionInformation.swift */; };
 		D9FC1A7E1BC28F4700B97D23 /* HRPGTypingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D9FC1A7D1BC28F4700B97D23 /* HRPGTypingLabel.m */; };
 		DC2C41815D97E02EF9D3BEF9 /* HRPGLabeledProgressBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2C40206801F9FB5D6D6190 /* HRPGLabeledProgressBarTests.swift */; };
-		F9E64EEA9B65CE54DBB87415 /* Pods_Habitica.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FDBD03FA52D6A93D9B664CE /* Pods_Habitica.framework */; };
+		EF44FD845575002C89E91A69 /* Pods_HabiticaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A065B1505AD1C3E29F85F1 /* Pods_HabiticaTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -630,8 +626,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		032ED89EF6507A9AFEB61E4B /* Pods-Habitica-Habitica Snapshots.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica-Habitica Snapshots.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Habitica-Habitica Snapshots/Pods-Habitica-Habitica Snapshots.debug.xcconfig"; sourceTree = "<group>"; };
-		281AC256BB298E2B402BE5DF /* Pods-HabiticaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HabiticaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HabiticaTests/Pods-HabiticaTests.debug.xcconfig"; sourceTree = "<group>"; };
+		033425B876F02F11B6DDF6E3 /* Pods-Habitica.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica.debug.xcconfig"; path = "Target Support Files/Pods-Habitica/Pods-Habitica.debug.xcconfig"; sourceTree = "<group>"; };
+		0CEAB7E832E78059B882CB19 /* Pods-Habitica.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica.release.xcconfig"; path = "Target Support Files/Pods-Habitica/Pods-Habitica.release.xcconfig"; sourceTree = "<group>"; };
 		290279622057EC03006DACB9 /* FAQTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQTableViewController.swift; sourceTree = "<group>"; };
 		290279692057F2C4006DACB9 /* Assets-Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Assets-Images.swift"; sourceTree = "<group>"; };
 		2902796A2057F2C5006DACB9 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
@@ -1011,7 +1007,6 @@
 		29E30DE520D935AF00F74ECB /* LevelUpOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelUpOverlayView.swift; sourceTree = "<group>"; };
 		29E30DE920DA8AFE00F74ECB /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Mainstrings.strings; sourceTree = "<group>"; };
 		29E48F0C22E89DB3005C4B45 /* BadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
-		29E779F7203F30A40079F269 /* HRPGGemCapReachedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HRPGGemCapReachedViewController.swift; sourceTree = "<group>"; };
 		29EBDA742328FC43006611E3 /* NSString+Emoji.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Emoji.h"; sourceTree = "<group>"; };
 		29EBDA752328FC43006611E3 /* NSString+Emoji.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Emoji.m"; sourceTree = "<group>"; };
 		29EBDA82232A3ABA006611E3 /* KeychainItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainItem.swift; sourceTree = "<group>"; };
@@ -1044,17 +1039,10 @@
 		29FEB277202B491600EA245A /* Avatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Avatar.swift; sourceTree = "<group>"; };
 		29FEB279202B4F0400EA245A /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		29FFB19320F5080D0031D914 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/OnePasswordExtension.strings; sourceTree = "<group>"; };
-		2AA9CAD02350FFCB017F32D0 /* Pods-Habitica Snapshots.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica Snapshots.release.xcconfig"; path = "Pods/Target Support Files/Pods-Habitica Snapshots/Pods-Habitica Snapshots.release.xcconfig"; sourceTree = "<group>"; };
-		2FD6A8DD61F63B61871C94A9 /* Pods-Habitica.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Habitica/Pods-Habitica.debug.xcconfig"; sourceTree = "<group>"; };
-		2FDBD03FA52D6A93D9B664CE /* Pods_Habitica.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3BC569DB4F5A31ED940986A5 /* Pods-Habitica.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica.release.xcconfig"; path = "Pods/Target Support Files/Pods-Habitica/Pods-Habitica.release.xcconfig"; sourceTree = "<group>"; };
 		49005B711F180588004830D9 /* HRPGCurrencyCountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGCurrencyCountView.swift; sourceTree = "<group>"; };
 		49005B7B1F18371E004830D9 /* HRPGShopUserHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGShopUserHeaderView.swift; sourceTree = "<group>"; };
 		49005B7D1F183775004830D9 /* HRPGShopUserHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPGShopUserHeaderView.xib; sourceTree = "<group>"; };
 		4904C73F1F1ED87400F80723 /* GradientImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientImageView.swift; sourceTree = "<group>"; };
-		4908641C1F43DE2B00BD9896 /* HRPGInsufficientGemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGInsufficientGemsViewController.swift; sourceTree = "<group>"; };
-		4908642D1F45316700BD9896 /* HRPGInsufficientGoldViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGInsufficientGoldViewController.swift; sourceTree = "<group>"; };
-		4908642F1F45318600BD9896 /* HRPGInsufficientHourglassesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGInsufficientHourglassesViewController.swift; sourceTree = "<group>"; };
 		491C6E5A2020FE64005030A2 /* Challenge-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Challenge-Extensions.swift"; sourceTree = "<group>"; };
 		4924314C202CD19A00288278 /* ChallengeRewardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeRewardTableViewCell.swift; sourceTree = "<group>"; };
 		4924314D202CD19A00288278 /* ChallengeRewardTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeRewardTableViewCell.xib; sourceTree = "<group>"; };
@@ -1121,6 +1109,8 @@
 		49E6F57C1FF9A2AE0062C8B2 /* DoubleButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DoubleButtonTableViewCell.xib; sourceTree = "<group>"; };
 		49EE3FD7201908AB00CD7608 /* ChallengeButtonStyleProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeButtonStyleProvider.swift; sourceTree = "<group>"; };
 		49FA9FF620DC47AD0086C478 /* TaskTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewController.swift; sourceTree = "<group>"; };
+		69D210CC8305351E751E5D01 /* Pods-Habitica Snapshots.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica Snapshots.debug.xcconfig"; path = "Target Support Files/Pods-Habitica Snapshots/Pods-Habitica Snapshots.debug.xcconfig"; sourceTree = "<group>"; };
+		77BD451346BB5FCD86DABDE3 /* Pods-Habitica Intents.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica Intents.release.xcconfig"; path = "Target Support Files/Pods-Habitica Intents/Pods-Habitica Intents.release.xcconfig"; sourceTree = "<group>"; };
 		7A84E191228928AC0081E96F /* Habitica Intents.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Habitica Intents.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A84E193228928AC0081E96F /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
 		7A84E195228928AC0081E96F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1131,11 +1121,8 @@
 		7A84E1A3228928AD0081E96F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A84E1B122898E9F0081E96F /* TaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
 		7A84E1B6228A5CB40081E96F /* Habitica Intents.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Habitica Intents.entitlements"; sourceTree = "<group>"; };
-		7FE9BA90152C83065EC5BA86 /* Pods-Habitica-Habitica Snapshots.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica-Habitica Snapshots.release.xcconfig"; path = "Pods/Target Support Files/Pods-Habitica-Habitica Snapshots/Pods-Habitica-Habitica Snapshots.release.xcconfig"; sourceTree = "<group>"; };
-		8AB87D57BF24FAE4B57CE55A /* Pods-Habitica Intents.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica Intents.release.xcconfig"; path = "Pods/Target Support Files/Pods-Habitica Intents/Pods-Habitica Intents.release.xcconfig"; sourceTree = "<group>"; };
-		9C2AF135C6B99AC360682846 /* Pods-Habitica Snapshots.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica Snapshots.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Habitica Snapshots/Pods-Habitica Snapshots.debug.xcconfig"; sourceTree = "<group>"; };
-		AAD902171AE5A8C0E6177D71 /* Pods_Habitica_Snapshots.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica_Snapshots.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BC1D483830288A543073AEBA /* Pods_HabiticaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HabiticaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		86A065B1505AD1C3E29F85F1 /* Pods_HabiticaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HabiticaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BBE191283D7F05A82CBEF126 /* Pods-Habitica Snapshots.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica Snapshots.release.xcconfig"; path = "Target Support Files/Pods-Habitica Snapshots/Pods-Habitica Snapshots.release.xcconfig"; sourceTree = "<group>"; };
 		C8415991225F8B7800989FB8 /* Habitica Snapshots.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Habitica Snapshots.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8415993225F8B7800989FB8 /* Habitica_Snapshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habitica_Snapshots.swift; sourceTree = "<group>"; };
 		C8415995225F8B7800989FB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1143,11 +1130,12 @@
 		C897F63B218CCF51002907C2 /* RouterHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterHandler.swift; sourceTree = "<group>"; };
 		C897F63D218CE052002907C2 /* Storyboard Scenes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Storyboard Scenes.swift"; sourceTree = "<group>"; };
 		C897F63E218CE052002907C2 /* Storyboard Segues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Storyboard Segues.swift"; sourceTree = "<group>"; };
+		C8BD1B9D0EC5AE436BE86A57 /* Pods_Habitica_Snapshots.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica_Snapshots.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8FA550822C5425D0017DD65 /* PrideHabiticaAltBlack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PrideHabiticaAltBlack.png; sourceTree = "<group>"; };
 		C8FA550922C5425E0017DD65 /* PrideHabiticaAltBlack@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PrideHabiticaAltBlack@3x.png"; sourceTree = "<group>"; };
 		C8FA550A22C5425E0017DD65 /* PrideHabiticaAltBlack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PrideHabiticaAltBlack@2x.png"; sourceTree = "<group>"; };
-		CE753104274372FFC7182ACF /* Pods_Habitica_Intents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica_Intents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D56154F5C7C0402DA7E06CF3 /* Pods-Habitica Intents.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica Intents.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Habitica Intents/Pods-Habitica Intents.debug.xcconfig"; sourceTree = "<group>"; };
+		CBA30D777368D157F78256BF /* Pods_Habitica.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFCEFD9FC57EF8EF1BCA4BE8 /* Pods-HabiticaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HabiticaTests.release.xcconfig"; path = "Target Support Files/Pods-HabiticaTests/Pods-HabiticaTests.release.xcconfig"; sourceTree = "<group>"; };
 		D902AD861B53E1B60098A1BD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D902AD881B540AE30098A1BD /* HRPGBaseCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGBaseCollectionViewController.h; sourceTree = "<group>"; };
 		D902AD891B540AE30098A1BD /* HRPGBaseCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGBaseCollectionViewController.m; sourceTree = "<group>"; };
@@ -1346,8 +1334,9 @@
 		D9FC1A7C1BC28F4700B97D23 /* HRPGTypingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPGTypingLabel.h; sourceTree = "<group>"; };
 		D9FC1A7D1BC28F4700B97D23 /* HRPGTypingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPGTypingLabel.m; sourceTree = "<group>"; };
 		DC2C40206801F9FB5D6D6190 /* HRPGLabeledProgressBarTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGLabeledProgressBarTests.swift; sourceTree = "<group>"; };
-		E242DD249519DA942627D702 /* Pods_Habitica_Habitica_Snapshots.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica_Habitica_Snapshots.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FF94C85B3E405C2849F2375A /* Pods-HabiticaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HabiticaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HabiticaTests/Pods-HabiticaTests.release.xcconfig"; sourceTree = "<group>"; };
+		DE57B34455BC51B1DFBA6A27 /* Pods-HabiticaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HabiticaTests.debug.xcconfig"; path = "Target Support Files/Pods-HabiticaTests/Pods-HabiticaTests.debug.xcconfig"; sourceTree = "<group>"; };
+		EAF52781EFA40CF917137423 /* Pods_Habitica_Intents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habitica_Intents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF20CF41EF91C4C2C682CA91 /* Pods-Habitica Intents.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habitica Intents.debug.xcconfig"; path = "Target Support Files/Pods-Habitica Intents/Pods-Habitica Intents.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1357,7 +1346,7 @@
 			files = (
 				2929AAB522E9E59A00DF9463 /* Habitica_Models.framework in Frameworks */,
 				2929AAB322E9E58E00DF9463 /* Habitica_Database.framework in Frameworks */,
-				6AD6119E0A9CFA1670D5C1E2 /* Pods_Habitica_Intents.framework in Frameworks */,
+				8A9EFF49EEC15BA9621F41AE /* Pods_Habitica_Intents.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1373,7 +1362,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F78DB0E270DE29CFAFBBA24 /* Pods_Habitica_Snapshots.framework in Frameworks */,
+				90BD17F04375C02E86E05112 /* Pods_Habitica_Snapshots.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1382,7 +1371,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D99EA7421B8667C90048BF6A /* libOCMock.a in Frameworks */,
-				823F7132DD74058859184F61 /* Pods_HabiticaTests.framework in Frameworks */,
+				EF44FD845575002C89E91A69 /* Pods_HabiticaTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1403,7 +1392,7 @@
 				D9EB4E9318CB4A9400BB2094 /* UIKit.framework in Frameworks */,
 				D9EB4E8F18CB4A9400BB2094 /* Foundation.framework in Frameworks */,
 				D9C89CF91B1F0E6C00A599B0 /* StoreKit.framework in Frameworks */,
-				F9E64EEA9B65CE54DBB87415 /* Pods_Habitica.framework in Frameworks */,
+				2354DBE87B77AA2822946B19 /* Pods_Habitica.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1856,10 +1845,6 @@
 			children = (
 				49DCB79A1F3422440079FDD0 /* HRPGBuyItemModalViewController.swift */,
 				49DCB7B11F3E6D400079FDD0 /* HRPGSingleOptionModalViewController.swift */,
-				4908641C1F43DE2B00BD9896 /* HRPGInsufficientGemsViewController.swift */,
-				4908642D1F45316700BD9896 /* HRPGInsufficientGoldViewController.swift */,
-				4908642F1F45318600BD9896 /* HRPGInsufficientHourglassesViewController.swift */,
-				29E779F7203F30A40079F269 /* HRPGGemCapReachedViewController.swift */,
 			);
 			name = Shop;
 			sourceTree = "<group>";
@@ -2011,21 +1996,19 @@
 			path = "Habitica IntentsUI";
 			sourceTree = "<group>";
 		};
-		B4CD8E50098CF9B62A999CCD /* Pods */ = {
+		C2CC6C72831C3578E8CE2B30 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				2FD6A8DD61F63B61871C94A9 /* Pods-Habitica.debug.xcconfig */,
-				3BC569DB4F5A31ED940986A5 /* Pods-Habitica.release.xcconfig */,
-				281AC256BB298E2B402BE5DF /* Pods-HabiticaTests.debug.xcconfig */,
-				FF94C85B3E405C2849F2375A /* Pods-HabiticaTests.release.xcconfig */,
-				9C2AF135C6B99AC360682846 /* Pods-Habitica Snapshots.debug.xcconfig */,
-				2AA9CAD02350FFCB017F32D0 /* Pods-Habitica Snapshots.release.xcconfig */,
-				032ED89EF6507A9AFEB61E4B /* Pods-Habitica-Habitica Snapshots.debug.xcconfig */,
-				7FE9BA90152C83065EC5BA86 /* Pods-Habitica-Habitica Snapshots.release.xcconfig */,
-				D56154F5C7C0402DA7E06CF3 /* Pods-Habitica Intents.debug.xcconfig */,
-				8AB87D57BF24FAE4B57CE55A /* Pods-Habitica Intents.release.xcconfig */,
+				033425B876F02F11B6DDF6E3 /* Pods-Habitica.debug.xcconfig */,
+				0CEAB7E832E78059B882CB19 /* Pods-Habitica.release.xcconfig */,
+				EF20CF41EF91C4C2C682CA91 /* Pods-Habitica Intents.debug.xcconfig */,
+				77BD451346BB5FCD86DABDE3 /* Pods-Habitica Intents.release.xcconfig */,
+				69D210CC8305351E751E5D01 /* Pods-Habitica Snapshots.debug.xcconfig */,
+				BBE191283D7F05A82CBEF126 /* Pods-Habitica Snapshots.release.xcconfig */,
+				DE57B34455BC51B1DFBA6A27 /* Pods-HabiticaTests.debug.xcconfig */,
+				CFCEFD9FC57EF8EF1BCA4BE8 /* Pods-HabiticaTests.release.xcconfig */,
 			);
-			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		C8415992225F8B7800989FB8 /* Habitica Snapshots */ = {
@@ -2616,7 +2599,7 @@
 				7A84E19D228928AD0081E96F /* Habitica IntentsUI */,
 				D9EB4E8D18CB4A9400BB2094 /* Frameworks */,
 				D9EB4E8C18CB4A9400BB2094 /* Products */,
-				B4CD8E50098CF9B62A999CCD /* Pods */,
+				C2CC6C72831C3578E8CE2B30 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -2656,12 +2639,11 @@
 				D9EB4E9018CB4A9400BB2094 /* CoreGraphics.framework */,
 				D9EB4E9218CB4A9400BB2094 /* UIKit.framework */,
 				D9EB4EB318CB4A9400BB2094 /* XCTest.framework */,
-				2FDBD03FA52D6A93D9B664CE /* Pods_Habitica.framework */,
-				BC1D483830288A543073AEBA /* Pods_HabiticaTests.framework */,
-				AAD902171AE5A8C0E6177D71 /* Pods_Habitica_Snapshots.framework */,
-				E242DD249519DA942627D702 /* Pods_Habitica_Habitica_Snapshots.framework */,
 				7A84E19B228928AD0081E96F /* IntentsUI.framework */,
-				CE753104274372FFC7182ACF /* Pods_Habitica_Intents.framework */,
+				CBA30D777368D157F78256BF /* Pods_Habitica.framework */,
+				EAF52781EFA40CF917137423 /* Pods_Habitica_Intents.framework */,
+				C8BD1B9D0EC5AE436BE86A57 /* Pods_Habitica_Snapshots.framework */,
+				86A065B1505AD1C3E29F85F1 /* Pods_HabiticaTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -2735,7 +2717,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7A84E1AD228928AD0081E96F /* Build configuration list for PBXNativeTarget "Habitica Intents" */;
 			buildPhases = (
-				05538B92CB9D31C3A92F050F /* [CP] Check Pods Manifest.lock */,
+				2E7E1EFB2F4DEF3146A6B031 /* [CP] Check Pods Manifest.lock */,
 				7A84E18D228928AC0081E96F /* Sources */,
 				7A84E18E228928AC0081E96F /* Frameworks */,
 				7A84E18F228928AC0081E96F /* Resources */,
@@ -2770,11 +2752,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C8415998225F8B7800989FB8 /* Build configuration list for PBXNativeTarget "Habitica Snapshots" */;
 			buildPhases = (
-				746042BA9680E270CEAEFD01 /* [CP] Check Pods Manifest.lock */,
+				4CC0B34CAB10AF0163DBBBC6 /* [CP] Check Pods Manifest.lock */,
 				C841598D225F8B7800989FB8 /* Sources */,
 				C841598E225F8B7800989FB8 /* Frameworks */,
 				C841598F225F8B7800989FB8 /* Resources */,
-				35A6723BFB3892232174D452 /* [CP] Embed Pods Frameworks */,
+				DDDF873F1284018787AF9A89 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2790,13 +2772,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D944618B1AB34F5C0015215E /* Build configuration list for PBXNativeTarget "HabiticaTests" */;
 			buildPhases = (
-				D60FCC9C9ED19CF3D2A020D0 /* [CP] Check Pods Manifest.lock */,
-				6992AA14F29A6357120A21A1 /* uD83DuDCE6 Check Pods Manifest.lock */,
+				3A05316F879429E285376D82 /* [CP] Check Pods Manifest.lock */,
 				D944617F1AB34F5C0015215E /* Sources */,
 				D94461801AB34F5C0015215E /* Frameworks */,
 				D94461811AB34F5C0015215E /* Resources */,
-				CAC33FCF49D4A93D53AF498F /* [CP] Embed Pods Frameworks */,
-				B2FE1A291D097FDD8A4DD843 /* 📦 Embed Pods Frameworks */,
+				0DA25CC99CC97DCA50D5693C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2812,18 +2792,16 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D9EB4EC318CB4A9400BB2094 /* Build configuration list for PBXNativeTarget "Habitica" */;
 			buildPhases = (
-				B8E09410940E157072E2B5EC /* [CP] Check Pods Manifest.lock */,
-				007923A6107F2803D806E4AE /* uD83DuDCE6 Check Pods Manifest.lock */,
+				115294CAF4DEB5C7A157DF0A /* [CP] Check Pods Manifest.lock */,
 				290279682057F179006DACB9 /* Run SwiftGen */,
 				D9EB4E8718CB4A9400BB2094 /* Sources */,
 				D9EB4E8818CB4A9400BB2094 /* Frameworks */,
 				D9EB4E8918CB4A9400BB2094 /* Resources */,
 				D940A7E01B0CF7E900370F2E /* ShellScript */,
-				9134C996D72DCF63C6CF68A7 /* [CP] Embed Pods Frameworks */,
-				33CD4301B52F7B90A552FAC3 /* 📦 Embed Pods Frameworks */,
 				D97AEBC81E7D7622007FD4A2 /* Lint */,
 				29265896206A4E84006C8B54 /* Embed Frameworks */,
 				7A84E1B0228928AD0081E96F /* Embed App Extensions */,
+				CAB1A9E3F9708BCDD52FEDE7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -3141,22 +3119,65 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		007923A6107F2803D806E4AE /* uD83DuDCE6 Check Pods Manifest.lock */ = {
+		0DA25CC99CC97DCA50D5693C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HabiticaTests/Pods-HabiticaTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
+				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
+				"${BUILT_PRODUCTS_DIR}/iOSSnapshotTestCase/FBSnapshotTestCase.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSnapshotTestCase.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HabiticaTests/Pods-HabiticaTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		115294CAF4DEB5C7A157DF0A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Habitica-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		290279682057F179006DACB9 /* Run SwiftGen */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "uD83DuDCE6 Check Pods Manifest.lock";
+			name = "Run SwiftGen";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
+			shellScript = "./Pods/SwiftGen/bin/swiftgen\n";
 		};
-		05538B92CB9D31C3A92F050F /* [CP] Check Pods Manifest.lock */ = {
+		2E7E1EFB2F4DEF3146A6B031 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -3178,77 +3199,29 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		290279682057F179006DACB9 /* Run SwiftGen */ = {
+		3A05316F879429E285376D82 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
+			inputFileListPaths = (
 			);
-			name = "Run SwiftGen";
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HabiticaTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Pods/SwiftGen/bin/swiftgen\n";
-		};
-		33CD4301B52F7B90A552FAC3 /* 📦 Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Habitica/Pods-Habitica-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		35A6723BFB3892232174D452 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Habitica Snapshots/Pods-Habitica Snapshots-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Keys/Keys.framework",
-				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
-				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
-				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
-				"${BUILT_PRODUCTS_DIR}/iOSSnapshotTestCase/FBSnapshotTestCase.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Keys.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSnapshotTestCase.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Habitica Snapshots/Pods-Habitica Snapshots-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6992AA14F29A6357120A21A1 /* uD83DuDCE6 Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "uD83DuDCE6 Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		746042BA9680E270CEAEFD01 /* [CP] Check Pods Manifest.lock */ = {
+		4CC0B34CAB10AF0163DBBBC6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -3270,7 +3243,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9134C996D72DCF63C6CF68A7 /* [CP] Embed Pods Frameworks */ = {
+		CAB1A9E3F9708BCDD52FEDE7 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -3360,79 +3333,6 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Habitica/Pods-Habitica-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B2FE1A291D097FDD8A4DD843 /* 📦 Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HabiticaTests/Pods-HabiticaTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B8E09410940E157072E2B5EC /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Habitica-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CAC33FCF49D4A93D53AF498F /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-HabiticaTests/Pods-HabiticaTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
-				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
-				"${BUILT_PRODUCTS_DIR}/iOSSnapshotTestCase/FBSnapshotTestCase.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSnapshotTestCase.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HabiticaTests/Pods-HabiticaTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D60FCC9C9ED19CF3D2A020D0 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-HabiticaTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		D940A7E01B0CF7E900370F2E /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -3460,6 +3360,32 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  ./Pods/SwiftLint/swiftlint\nfi\n";
+		};
+		DDDF873F1284018787AF9A89 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Habitica Snapshots/Pods-Habitica Snapshots-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Keys/Keys.framework",
+				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
+				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
+				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
+				"${BUILT_PRODUCTS_DIR}/iOSSnapshotTestCase/FBSnapshotTestCase.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Keys.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSnapshotTestCase.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Habitica Snapshots/Pods-Habitica Snapshots-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -3520,7 +3446,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4908642E1F45316700BD9896 /* HRPGInsufficientGoldViewController.swift in Sources */,
 				493ECBB31F47A1100099B1FC /* HRPGItemStatsView.swift in Sources */,
 				494E53FE1F2D0A330003683C /* UIViewController+HRPGTopHeaderNavigationController.m in Sources */,
 				498E4CFF1FA17C1A006933FF /* ChallengeCategoriesTableViewCell.swift in Sources */,
@@ -3539,7 +3464,6 @@
 				29701FE41F56C2200097BBCC /* IconLabel.swift in Sources */,
 				29B4788420BD6DED00B6123F /* SkillsUserTableViewController.swift in Sources */,
 				49E3784F200912BA00E0DA3D /* ResizableTableViewCell.swift in Sources */,
-				29E779F8203F30A40079F269 /* HRPGGemCapReachedViewController.swift in Sources */,
 				29FC8866201B7B5B002B3D3F /* WorldBossMenuHeader.swift in Sources */,
 				290922F02242628600645D0E /* LanguageHandler.swift in Sources */,
 				D97C71E418ECE09A0089FDC6 /* HRPGSpellViewController.m in Sources */,
@@ -3651,7 +3575,6 @@
 				292AA72420FE15090022CC5F /* UIFont-Extensions.swift in Sources */,
 				295E9DF420B456F100D58D45 /* FilterTableviewDataSource.swift in Sources */,
 				29FC885420175C70002B3D3F /* RageStrikeView.swift in Sources */,
-				4908641D1F43DE2B00BD9896 /* HRPGInsufficientGemsViewController.swift in Sources */,
 				2975F00323881D05005DBF2E /* FlagView.swift in Sources */,
 				292844EF20DD1D630011DC43 /* GroupInvitationListView.swift in Sources */,
 				2912C3C722CB956400BC485F /* GroupInviteNotificationCell.swift in Sources */,
@@ -3840,7 +3763,6 @@
 				29144876208648D500F3A6B5 /* EquipmentOverviewViewController.swift in Sources */,
 				29951A222327E94F00918FC8 /* ThemedNavigationController.swift in Sources */,
 				491C6E5B2020FE64005030A2 /* Challenge-Extensions.swift in Sources */,
-				490864301F45318600BD9896 /* HRPGInsufficientHourglassesViewController.swift in Sources */,
 				2914487820864A2900F3A6B5 /* EquipmentOverviewView.swift in Sources */,
 				29E1630B200D050E00685640 /* TopHeaderNavigationController.swift in Sources */,
 				29144872208628A300F3A6B5 /* FeedViewDataSource.swift in Sources */,
@@ -4146,7 +4068,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 463;
+				CURRENT_PROJECT_VERSION = 465;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4181,7 +4103,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 463;
+				CURRENT_PROJECT_VERSION = 465;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4203,7 +4125,7 @@
 		};
 		7A84E1AE228928AD0081E96F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D56154F5C7C0402DA7E06CF3 /* Pods-Habitica Intents.debug.xcconfig */;
+			baseConfigurationReference = EF20CF41EF91C4C2C682CA91 /* Pods-Habitica Intents.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -4215,7 +4137,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 463;
+				CURRENT_PROJECT_VERSION = 465;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4239,7 +4161,7 @@
 		};
 		7A84E1AF228928AD0081E96F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8AB87D57BF24FAE4B57CE55A /* Pods-Habitica Intents.release.xcconfig */;
+			baseConfigurationReference = 77BD451346BB5FCD86DABDE3 /* Pods-Habitica Intents.release.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -4252,7 +4174,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 463;
+				CURRENT_PROJECT_VERSION = 465;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4274,7 +4196,7 @@
 		};
 		C8415999225F8B7800989FB8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9C2AF135C6B99AC360682846 /* Pods-Habitica Snapshots.debug.xcconfig */;
+			baseConfigurationReference = 69D210CC8305351E751E5D01 /* Pods-Habitica Snapshots.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -4306,7 +4228,7 @@
 		};
 		C841599A225F8B7800989FB8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2AA9CAD02350FFCB017F32D0 /* Pods-Habitica Snapshots.release.xcconfig */;
+			baseConfigurationReference = BBE191283D7F05A82CBEF126 /* Pods-Habitica Snapshots.release.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -4337,7 +4259,7 @@
 		};
 		D944618C1AB34F5C0015215E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 281AC256BB298E2B402BE5DF /* Pods-HabiticaTests.debug.xcconfig */;
+			baseConfigurationReference = DE57B34455BC51B1DFBA6A27 /* Pods-HabiticaTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -4414,7 +4336,7 @@
 		};
 		D944618D1AB34F5C0015215E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FF94C85B3E405C2849F2375A /* Pods-HabiticaTests.release.xcconfig */;
+			baseConfigurationReference = CFCEFD9FC57EF8EF1BCA4BE8 /* Pods-HabiticaTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -4514,7 +4436,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 463;
+				CURRENT_PROJECT_VERSION = 465;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -4569,7 +4491,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 463;
+				CURRENT_PROJECT_VERSION = 465;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -4590,7 +4512,7 @@
 		};
 		D9EB4EC418CB4A9400BB2094 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2FD6A8DD61F63B61871C94A9 /* Pods-Habitica.debug.xcconfig */;
+			baseConfigurationReference = 033425B876F02F11B6DDF6E3 /* Pods-Habitica.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -4599,7 +4521,7 @@
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 463;
+				CURRENT_PROJECT_VERSION = 465;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_SOURCE_FILE_NAMES = "";
@@ -4683,7 +4605,7 @@
 		};
 		D9EB4EC518CB4A9400BB2094 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3BC569DB4F5A31ED940986A5 /* Pods-Habitica.release.xcconfig */;
+			baseConfigurationReference = 0CEAB7E832E78059B882CB19 /* Pods-Habitica.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -4692,7 +4614,7 @@
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 463;
+				CURRENT_PROJECT_VERSION = 465;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_SOURCE_FILE_NAMES = "FLEX*";

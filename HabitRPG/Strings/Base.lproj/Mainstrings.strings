@@ -480,7 +480,7 @@
 "groups.guild_invitation_no_invitername" = "Someone invited you to join Guild: %@";
 "groups.guild_invitation_invitername" = "%@ invited you to join Guild: %@";
 "confirm" = "Confirm";
-"inventory.no_gems_left" = "No more Gems available this month. More become available within the first 3 days of each month.";
+"inventory.no_gems_left" = "You have bought all the Gems you can this month. More become available within the first three days of each month. Thanks for subscribing!";
 "inventory.number_gems_left" = "Monthly Gems: %d/%d Remaining";
 "inventory.wrong_class" = "Only available for %@s. You can change your class from Settings";
 "inventory.available_until" = "Available Until %@";
@@ -868,10 +868,15 @@
 "edit_challenge_tasks" = "Challenge tasks only offer limited editing.";
 "add" = "Add";
 "onwards" = "Onwards";
-"gift_gems_alert_title" = "Who would you like to send your gifts to?";
+"gift_gems_alert_title" = "Who would you like to send your gift to?";
 "gift_gems_alert_prompt" = "Enter recipient's @username";
 "gift_gems_disclaimer" = "Habitica will never require you to gift gems to other players. Begging people for gems is a violation of the Community Guidelines and should be reported to admin@habitica.com.";
 "gift_gems_explanation_purchase" = "Choose how many Gems to gift below or switch tabs to gift Gems from your current balance";
 "gift_gems_explanation_balance" = "Enter how many of your Gems you’d like to gift or switch tabs to purchase Gems to gift";
 "gift_sent_confirmation" = "Your gift was sent!";
 "gift_sent_to" = "You sent %@:";
+"complete_more_tasks" = "You need to complete more tasks before you can afford this item!";
+"more_gems_message" = "You’ll need more Gems to buy this item!";
+"insufficient_hourglasses_message" = "You’ll need more Mystic Hourglasses to buy this item! Hourglasses are rewarded for being subscribed for consecutive months.";
+"insufficient_hourglasses_message_subscriber" = "You’ll need more Mystic Hourglasses to buy this item! Stay Subscribed to keep receiving your Hourglasses.";
+"learn_more" = "Learn More";

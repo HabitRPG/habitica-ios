@@ -26,6 +26,8 @@ class GiftGemsViewController: BaseUIViewController, UICollectionViewDataSource, 
     @IBOutlet weak var sendGiftBalanceButton: UIButton!
     @IBOutlet weak var balanceAmountView: HRPGBulkPurchaseView!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var bottomSpacing: NSLayoutConstraint!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     private let socialRepository = SocialRepository()
     private let userRepository = UserRepository()
@@ -92,7 +94,6 @@ class GiftGemsViewController: BaseUIViewController, UICollectionViewDataSource, 
         if let username = giftRecipientUsername {
             disposable.inner.add(socialRepository.retrieveMemberWithUsername(username).observeValues({[weak self] member in
                 self?.giftedUser = member
-                self?.showConfirmationDialog(gemCount: 42)
             }))
         }
         disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
@@ -106,6 +107,18 @@ class GiftGemsViewController: BaseUIViewController, UICollectionViewDataSource, 
             navigationController?.navigationBar.compactAppearance?.shadowColor = .clear
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShowNotification(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHideNotification(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+         super.viewWillDisappear(animated)
+         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+     }
     
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
@@ -214,7 +227,6 @@ class GiftGemsViewController: BaseUIViewController, UICollectionViewDataSource, 
         }
         PurchaseHandler.shared.purchaseGems(identifier, applicationUsername: String(user.id?.hashValue ?? 0)) { success in
             if success {
-                self.dismiss(animated: true, completion: nil)
                 self.showConfirmationDialog(gemCount: amount)
             }
         }
@@ -235,7 +247,6 @@ class GiftGemsViewController: BaseUIViewController, UICollectionViewDataSource, 
     @IBAction func sendGemsFromBalance(_ sender: Any) {
         if let user = giftedUser {
             userRepository.sendGems(amount: balanceAmount, recipient: user.id ?? "").observeCompleted {[weak self] in
-                self?.dismiss(animated: true, completion: nil)
                 self?.showConfirmationDialog(gemCount: self?.balanceAmount ?? 0)
             }
         }
@@ -244,13 +255,17 @@ class GiftGemsViewController: BaseUIViewController, UICollectionViewDataSource, 
     func showConfirmationDialog(gemCount: Int) {
         let alert = HabiticaAlertController(title: L10n.giftSentConfirmation, message: L10n.giftSentTo(displayNameLabel.text ?? ""))
         let mainView = UIView()
+        mainView.translatesAutoresizingMaskIntoConstraints = true
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 112, height: 50))
         view.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
         view.cornerRadius = 8
-        let innerStackView = UIStackView(frame: CGRect(x: 6, y: 0, width: 100, height: 50))
-        innerStackView.distribution = .equalSpacing
+        view.translatesAutoresizingMaskIntoConstraints = false
+        let innerStackView = UIStackView(frame: CGRect(x: 24, y: 0, width: 88, height: 50))
+        innerStackView.distribution = .fill
+        innerStackView.spacing = 12
         view.addSubview(innerStackView)
         let iconView = UIImageView(image: HabiticaIcons.imageOfGem)
+        iconView.addWidthConstraint(width: 20)
         iconView.contentMode = .center
         innerStackView.addArrangedSubview(iconView)
         let label = UILabel()
@@ -262,7 +277,34 @@ class GiftGemsViewController: BaseUIViewController, UICollectionViewDataSource, 
         mainView.addHeightConstraint(height: 50)
         alert.contentView = mainView
         view.addWidthConstraint(width: 112)
+        view.addHeightConstraint(height: 50)
         view.addCenterXConstraint()
+        mainView.setNeedsUpdateConstraints()
+        alert.addAction(title: L10n.onwards, isMainAction: true, handler: {[weak self] _ in
+            self?.dismiss(animated: true, completion: nil)
+        })
         alert.show()
+    }
+    
+    @objc
+    func keyboardWillShowNotification(notification: NSNotification) {
+        guard let userInfo = notification.userInfo else {
+            return
+        }
+        guard let keyboardEndFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+            return
+        }
+        let convertedKeyboardEndFrame = view.convert(keyboardEndFrame, from: view.window)
+        bottomSpacing.constant = view.bounds.maxY - convertedKeyboardEndFrame.minY
+        
+        let rectInScrollView = scrollView.convert(balanceAmountView.frame, from: balanceAmountView)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.scrollView.scrollRectToVisible(rectInScrollView, animated: true)
+        }
+    }
+    
+    @objc
+    func keyboardWillHideNotification(notification: NSNotification) {
+        bottomSpacing.constant = 60
     }
 }

@@ -87,6 +87,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         ThemeService.shared.addThemeable(themable: self)
         
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(backgroundTapped)))
+        closableShopModal.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(modalTapped)))
         
         populateText()
     }
@@ -127,6 +128,9 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         gemCountView.currency = .gem
         goldCountView.currency = .gold
     }
+    
+    @objc
+    private func modalTapped() {    }
     
     @objc
     private func backgroundTapped() {
@@ -379,25 +383,18 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         if key.isEmpty == false {
             self.dismiss(animated: true, completion: nil)
             
-            let topViewController = self.presentingViewController
             if !canBuy() {
-                var viewControllerName: String?
-                if !canAfford() {
+                if key == "gem" {
+                    HRPGBuyItemModalViewController.displayGemCapReachedModal()
+                } else if !canAfford() {
                     if currency == .hourglass {
-                        viewControllerName = "InsufficientHourglassesViewController"
+                        HRPGBuyItemModalViewController.displayInsufficientHourglassesModal(user: user)
                     } else if currency == .gem {
-                        viewControllerName = "InsufficientGemsViewController"
+                        HRPGBuyItemModalViewController.displayInsufficientGemsModal()
                     } else {
-                        viewControllerName = "InsufficientGoldViewController"
+                        HRPGBuyItemModalViewController.displayInsufficientGoldModal()
                     }
-                } else if key == "gem" {
-                    viewControllerName = "GemCapReachedViewController"
                 }
-                
-                if let name = viewControllerName {
-                    HRPGBuyItemModalViewController.displayViewController(name: name, parent: topViewController, value: value)
-                }
-                
                 return
             }
             
@@ -406,25 +403,24 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                     inventoryRepository.purchaseMysterySet(identifier: setIdentifier, text: text)
                     .flatMap(.latest, { _ in
                         return self.userRepository.retrieveUser()
-                    }).observeResult({ (result) in
+                    }).observeResult({[weak self] (result) in
                         switch result {
                         case .success:
                             successBlock()
                         case .failure:
-                        HRPGBuyItemModalViewController.displayViewController(name: "InsufficientHourglassesViewController", parent: topViewController)
-                            
+                            HRPGBuyItemModalViewController.displayInsufficientHourglassesModal(user: self?.user)
                         }
                     })
                 } else {
                     inventoryRepository.purchaseHourglassItem(purchaseType: purchaseType, key: key, text: text)
                     .flatMap(.latest, { _ in
                         return self.userRepository.retrieveUser()
-                    }).observeResult({ (result) in
+                    }).observeResult({[weak self] (result) in
                         switch result {
                         case .success:
                             successBlock()
                         case .failure:
-                            HRPGBuyItemModalViewController.displayViewController(name: "InsufficientHourglassesViewController", parent: topViewController)
+                            HRPGBuyItemModalViewController.displayInsufficientHourglassesModal(user: self?.user)
                         }
                     })
                 }
@@ -438,9 +434,9 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                     successBlock()
                 case .failure:
                         if key == "gem" {
-                            HRPGBuyItemModalViewController.displayViewController(name: "GemCapReachedViewController", parent: topViewController)
+                            HRPGBuyItemModalViewController.displayGemCapReachedModal()
                         } else {
-                            HRPGBuyItemModalViewController.displayViewController(name: "InsufficientGemsViewController", parent: topViewController, value: value)
+                            HRPGBuyItemModalViewController.displayInsufficientGemsModal()
                         }
                     }
                 })
@@ -450,7 +446,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                 case .success:
                     successBlock()
                 case .failure:
-                        HRPGBuyItemModalViewController.displayViewController(name: "InsufficientGoldViewController", parent: topViewController)
+                    HRPGBuyItemModalViewController.displayInsufficientGoldModal()
                     }
                 })
             } else {
@@ -464,7 +460,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                     case .success:
                         successBlock()
                     case .failure:
-                            HRPGBuyItemModalViewController.displayViewController(name: "InsufficientGoldViewController", parent: topViewController)
+                        HRPGBuyItemModalViewController.displayInsufficientGoldModal()
                         }
                     })
                 } else if purchaseType == "debuffPotion" {
@@ -473,7 +469,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                         case .success:
                             successBlock()
                         case .failure:
-                                HRPGBuyItemModalViewController.displayViewController(name: "InsufficientGoldViewController", parent: topViewController)
+                            HRPGBuyItemModalViewController.displayInsufficientGoldModal()
                             }
                         }
                 } else {
@@ -482,7 +478,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                     case .success:
                         successBlock()
                     case .failure:
-                            HRPGBuyItemModalViewController.displayViewController(name: "InsufficientGoldViewController", parent: topViewController)
+                        HRPGBuyItemModalViewController.displayInsufficientGoldModal()
                         }
                     })
                 }
@@ -490,15 +486,63 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         }
     }
     
-    private static func displayViewController(name: String, parent: UIViewController?, value: Int = 0) {
-        let storyboard = UIStoryboard(name: "BuyModal", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: name)
-        viewController.modalTransitionStyle = .crossDissolve
-        viewController.modalPresentationStyle = .overFullScreen
-        if let gemViewController = viewController as? HRPGInsufficientGemsViewController {
-            gemViewController.gemPrice = value
+    private static func displayInsufficientGemsModal() {
+        let alert = prepareInsufficientModal(title: L10n.notEnoughGems, message: L10n.moreGemsMessage, image: Asset.insufficientGems.image)
+        alert.addAction(title: L10n.purchaseGems, isMainAction: true, handler: { _ in
+            
+        })
+        alert.addCloseAction()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            //delay a bit to give the buying modal a chance to disappear
+            alert.show()
         }
-        parent?.present(viewController, animated: true, completion: nil)
+    }
+    
+    private static func displayInsufficientGoldModal() {
+        let alert = prepareInsufficientModal(title: L10n.notEnoughGold, message: L10n.completeMoreTasks, image: Asset.insufficientGold.image)
+        alert.addAction(title: L10n.takeMeBack, isMainAction: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            //delay a bit to give the buying modal a chance to disappear
+            alert.show()
+        }
+    }
+    
+    private static func displayInsufficientHourglassesModal(user: UserProtocol?) {
+        let alert = prepareInsufficientModal(title: L10n.notEnoughHourglasses, message: nil, image: Asset.insufficientHourglasses.image)
+        if user?.isSubscribed == true {
+            alert.message = L10n.insufficientHourglassesMessageSubscriber
+            alert.addAction(title: L10n.takeMeBack, isMainAction: true)
+        } else {
+            alert.message = L10n.insufficientHourglassesMessage
+            alert.addAction(title: L10n.learnMore, isMainAction: true, handler: { _ in
+                let navigationController = StoryboardScene.Main.subscriptionNavController.instantiate()
+                UIApplication.topViewController()?.present(navigationController, animated: true, completion: nil)
+            })
+            alert.addCloseAction()
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            //delay a bit to give the buying modal a chance to disappear
+            alert.show()
+        }
+    }
+    
+    private static func displayGemCapReachedModal() {
+        let alert = prepareInsufficientModal(title: L10n.monthlyGemCapReached, message: L10n.Inventory.noGemsLeft, image: Asset.insufficientGems.image)
+        alert.addAction(title: L10n.takeMeBack, isMainAction: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            //delay a bit to give the buying modal a chance to disappear
+            alert.show()
+        }
+    }
+    
+    private static func prepareInsufficientModal(title: String, message: String?, image: UIImage) -> HabiticaAlertController {
+        let alert = HabiticaAlertController(title: title, message: message)
+        let imageView = UIImageView(image: image)
+        imageView.contentMode = .center
+        alert.contentView = imageView
+        alert.containerViewSpacing = 20
+        alert.arrangeMessageLast = true
+        return alert
     }
     
     @objc

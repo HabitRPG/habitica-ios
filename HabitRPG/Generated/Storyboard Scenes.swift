@@ -17,15 +17,7 @@ internal enum StoryboardScene {
 
     internal static let initialScene = InitialSceneType<Habitica.HRPGBuyItemModalViewController>(storyboard: BuyModal.self)
 
-    internal static let gemCapReachedViewController = SceneType<Habitica.HRPGGemCapReachedViewController>(storyboard: BuyModal.self, identifier: "GemCapReachedViewController")
-
     internal static let hrpgBuyItemModalViewController = SceneType<Habitica.HRPGBuyItemModalViewController>(storyboard: BuyModal.self, identifier: "HRPGBuyItemModalViewController")
-
-    internal static let insufficientGemsViewController = SceneType<Habitica.HRPGInsufficientGemsViewController>(storyboard: BuyModal.self, identifier: "InsufficientGemsViewController")
-
-    internal static let insufficientGoldViewController = SceneType<Habitica.HRPGInsufficientGoldViewController>(storyboard: BuyModal.self, identifier: "InsufficientGoldViewController")
-
-    internal static let insufficientHourglassesViewController = SceneType<Habitica.HRPGInsufficientHourglassesViewController>(storyboard: BuyModal.self, identifier: "InsufficientHourglassesViewController")
   }
   internal enum Intro: StoryboardType {
     internal static let storyboardName = "Intro"

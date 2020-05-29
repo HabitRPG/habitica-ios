@@ -153,7 +153,7 @@ class HabiticaAlertController: UIViewController, Themeable {
             let guide = view.safeAreaLayoutGuide
             maximumSize = guide.layoutFrame.size
         }
-        maximumSize.width = min(320, maximumSize.width - 24)
+        maximumSize.width = min(300, maximumSize.width - 24)
         maximumSize.width -= contentViewInsets.left + contentViewInsets.right
         maximumSize.height -= contentViewInsets.top + contentViewInsets.bottom
         let maximumHeight = maximumSize.height - (32 + 140)
@@ -171,17 +171,17 @@ class HabiticaAlertController: UIViewController, Themeable {
         scrollviewHeightConstraint.constant = min(height, maximumHeight)
         if arrangeMessageLast {
             if let contentView = contentView {
-                contentView.pin.top(contentViewInsets.top).left(contentViewInsets.left).right(contentViewInsets.right).height(contentHeight)
-                messageView?.pin.top(contentHeight + containerViewSpacing).left(contentViewInsets.left).right(contentViewInsets.right).sizeToFit(.width)
+                contentView.pin.top(contentViewInsets.top).left(contentViewInsets.left).width(maximumSize.width).height(contentHeight)
+                messageView?.pin.top(contentHeight + containerViewSpacing).left(contentViewInsets.left).width(maximumSize.width).sizeToFit(.width)
             } else {
-                messageView?.pin.top(contentViewInsets.top).left(contentViewInsets.left).right(contentViewInsets.right).height(height)
+                messageView?.pin.top(contentViewInsets.top).left(contentViewInsets.left).width(maximumSize.width).height(height)
             }
         } else {
             if let messageView = messageView {
-                messageView.pin.top(contentViewInsets.top).left(contentViewInsets.left).right(contentViewInsets.right).sizeToFit(.width)
-                contentView?.pin.below(of: messageView).marginTop(containerViewSpacing).left(contentViewInsets.left).right(contentViewInsets.right).height(contentHeight)
+                messageView.pin.top(contentViewInsets.top).left(contentViewInsets.left).width(maximumSize.width).sizeToFit(.width)
+                contentView?.pin.below(of: messageView).marginTop(containerViewSpacing).left(contentViewInsets.left).width(maximumSize.width).height(contentHeight)
             } else {
-                contentView?.pin.top(contentViewInsets.top).left(contentViewInsets.left).right(contentViewInsets.right).height(contentHeight)
+                contentView?.pin.top(contentViewInsets.top).left(contentViewInsets.left).width(maximumSize.width).height(contentHeight)
             }
         }
         containerViewHeightConstraint.constant = height
