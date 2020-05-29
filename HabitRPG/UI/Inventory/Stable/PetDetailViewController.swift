@@ -37,6 +37,10 @@ class PetDetailViewController: StableDetailViewController<PetDetailDataSource> {
         }).start())
     }
     
+    deinit {
+        datasource?.dispose()
+    }
+    
     override func populateText() {
         navigationItem.title = L10n.Titles.pets
     }

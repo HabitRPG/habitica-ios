@@ -43,7 +43,7 @@ class ChallengeTableViewDataSource: BaseReactiveTableViewDataSource<ChallengePro
         sections.append(ItemSection<ChallengeProtocol>())
         fetchChallenges()
         
-        disposable.inner.add(socialRepository.getChallengeMemberships().on(value: {[weak self]memberships, _ in
+        disposable.add(socialRepository.getChallengeMemberships().on(value: {[weak self]memberships, _ in
             self?.membershipIDs.removeAll()
             memberships.forEach({ (membership) in
                 if let challengeID = membership.challengeID {

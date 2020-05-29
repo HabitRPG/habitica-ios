@@ -47,6 +47,10 @@
     [self.shopBannerView applyThemeWithBackgroundColor:ObjcThemeWrapper.contentBackgroundColor];
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [self.dataSource dispose];
+}
+
 - (void)populateText {
     
 }

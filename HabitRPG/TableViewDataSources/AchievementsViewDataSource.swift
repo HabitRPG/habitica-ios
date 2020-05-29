@@ -45,7 +45,7 @@ class AchievementsViewDataSource: BaseReactiveCollectionViewDataSource<Achieveme
         sections.append(ItemSection<AchievementProtocol>(title: L10n.Achievements.special))
         sections.append(ItemSection<AchievementProtocol>(title: L10n.Achievements.quests))
 
-        disposable.inner.add(userRepository.getAchievements().on(value: {[weak self] (achievements, _) in
+        disposable.add(userRepository.getAchievements().on(value: {[weak self] (achievements, _) in
             self?.sections[0].items = achievements.filter({ $0.category == "onboarding" })
             self?.sections[1].items = achievements.filter({ $0.category == "basic" })
             self?.sections[2].items = achievements.filter({ $0.category == "seasonal" })
@@ -60,7 +60,7 @@ class AchievementsViewDataSource: BaseReactiveCollectionViewDataSource<Achieveme
     }
     
     override func retrieveData(completed: (() -> Void)?) {
-        disposable.inner.add(userRepository.retrieveAchievements().observeCompleted {
+        disposable.add(userRepository.retrieveAchievements().observeCompleted {
             completed?()
         })
     }

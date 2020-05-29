@@ -21,15 +21,15 @@ class RewardViewDataSource: BaseReactiveCollectionViewDataSource<BaseRewardProto
         sections.append(ItemSection<BaseRewardProtocol>())
         sections.append(ItemSection<BaseRewardProtocol>())
         
-        disposable.inner.add(taskRepository.getTasks(predicate: NSPredicate(format: "type == 'reward'")).on(value: {[weak self](tasks, changes) in
+        disposable.add(taskRepository.getTasks(predicate: NSPredicate(format: "type == 'reward'")).on(value: {[weak self](tasks, changes) in
             self?.sections[0].items = tasks
             self?.notify(changes: changes)
         }).start())
-        disposable.inner.add(userRepository.getInAppRewards().on(value: {[weak self](inAppRewards, changes) in
+        disposable.add(userRepository.getInAppRewards().on(value: {[weak self](inAppRewards, changes) in
             self?.sections[1].items = inAppRewards
             self?.notify(changes: changes)
         }).start())
-        disposable.inner.add(userRepository.getUser().on(value: {[weak self]user in
+        disposable.add(userRepository.getUser().on(value: {[weak self]user in
             self?.user = user
         }).start())
     }

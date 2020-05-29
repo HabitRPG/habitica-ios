@@ -33,7 +33,7 @@ class PetDetailDataSource: BaseReactiveCollectionViewDataSource<PetStableItem> {
         } else {
             query = "potion == '\(searchKey)'"
         }
-        disposable.inner.add(SignalProducer.combineLatest(stableRepsository.getOwnedPets(query: "key CONTAINS '\(searchKey)'")
+        disposable.add(SignalProducer.combineLatest(stableRepsository.getOwnedPets(query: "key CONTAINS '\(searchKey)'")
             .map({ data -> [String: Int] in
                 var ownedPets = [String: Int]()
                 data.value

@@ -31,7 +31,7 @@ class MountDetailDataSource: BaseReactiveCollectionViewDataSource<MountStableIte
         } else {
             query = "potion == '\(searchKey)'"
         }
-        disposable.inner.add(stableRepsository.getOwnedMounts(query: "key CONTAINS '\(searchKey)'")
+        disposable.add(stableRepsository.getOwnedMounts(query: "key CONTAINS '\(searchKey)'")
             .map({ data -> [String: Bool] in
                 var ownedMounts = [String: Bool]()
                 data.value.forEach({ (ownedMount) in

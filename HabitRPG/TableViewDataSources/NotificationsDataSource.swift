@@ -26,7 +26,7 @@ class NotificationsDataSource: BaseReactiveTableViewDataSource<NotificationProto
     }
 
     private func fetchNotifications() {
-        disposable.inner.add(userRepository.getNotifications().on(value: {[weak self] (entries, changes) in
+        disposable.add(userRepository.getNotifications().on(value: {[weak self] (entries, changes) in
                 self?.sections[0].items = entries
                 self?.notify(changes: changes)
             }).start())
@@ -142,7 +142,7 @@ class NotificationsDataSource: BaseReactiveTableViewDataSource<NotificationProto
     }
     
     private func dismiss(notification: NotificationProtocol) {
-        disposable.inner.add(userRepository.readNotification(notification: notification).observeCompleted { })
+        disposable.add(userRepository.readNotification(notification: notification).observeCompleted { })
     }
     
     @objc
@@ -150,7 +150,7 @@ class NotificationsDataSource: BaseReactiveTableViewDataSource<NotificationProto
         let dismissableNotifications = sections[0].items.filter { (notification) -> Bool in
             return notification.isDismissable
         }
-        disposable.inner.add(userRepository.readNotifications(notifications: dismissableNotifications).observeCompleted {})
+        disposable.add(userRepository.readNotifications(notifications: dismissableNotifications).observeCompleted {})
     }
     
     private func openNotification(notification: NotificationProtocol) {

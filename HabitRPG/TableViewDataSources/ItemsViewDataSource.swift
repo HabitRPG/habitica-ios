@@ -71,7 +71,7 @@ class ItemsViewDataSource: BaseReactiveTableViewDataSource<ItemProtocol> {
         
         fetchItems()
         
-        disposable.inner.add(stableRepository.getOwnedPets()
+        disposable.add(stableRepository.getOwnedPets()
             .map({ pets -> [String] in
                 return pets.value.filter({ ownedPet -> Bool in
                     return ownedPet.isOwned
@@ -82,7 +82,7 @@ class ItemsViewDataSource: BaseReactiveTableViewDataSource<ItemProtocol> {
             .on(value: {[weak self]ownedPets in
                 self?.ownedPets = ownedPets
         }).start())
-        disposable.inner.add(stableRepository.getPets()
+        disposable.add(stableRepository.getPets()
             .map({ pets -> [String] in
                 return pets.value.map({ (pet) in
                     return pet.key ?? ""

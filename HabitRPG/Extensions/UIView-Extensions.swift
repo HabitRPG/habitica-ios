@@ -73,20 +73,20 @@ extension UIView {
         return border
     }
     
-    func addHeightConstraint(height: CGFloat) {
+    func addHeightConstraint(height: CGFloat, relatedBy: NSLayoutConstraint.Relation = NSLayoutConstraint.Relation.equal) {
         self.addConstraint(NSLayoutConstraint(item: self,
             attribute: NSLayoutConstraint.Attribute.height,
-            relatedBy: NSLayoutConstraint.Relation.equal,
+            relatedBy: relatedBy,
             toItem: nil,
             attribute: NSLayoutConstraint.Attribute.notAnAttribute,
             multiplier: 1,
             constant: height))
     }
     
-    func addWidthConstraint(width: CGFloat) {
+    func addWidthConstraint(width: CGFloat, relatedBy: NSLayoutConstraint.Relation = NSLayoutConstraint.Relation.equal) {
         self.addConstraint(NSLayoutConstraint(item: self,
             attribute: NSLayoutConstraint.Attribute.width,
-            relatedBy: NSLayoutConstraint.Relation.equal,
+            relatedBy: relatedBy,
             toItem: nil,
             attribute: NSLayoutConstraint.Attribute.notAnAttribute,
             multiplier: 1,

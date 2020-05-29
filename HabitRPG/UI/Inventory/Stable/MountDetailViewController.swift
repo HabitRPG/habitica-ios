@@ -36,6 +36,10 @@ class MountDetailViewController: StableDetailViewController<MountDetailDataSourc
         }).start())
     }
     
+    deinit {
+        datasource?.dispose()
+    }
+    
     override func populateText() {
         navigationItem.title = L10n.Titles.mounts
     }

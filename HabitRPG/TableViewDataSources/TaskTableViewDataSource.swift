@@ -92,7 +92,7 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
     }
     
     override func retrieveData(completed: (() -> Void)?) {
-        disposable.inner.add(userRepository.retrieveUser().observeCompleted {
+        disposable.add(userRepository.retrieveUser().observeCompleted {
             if let action = completed {
                 action()
             }

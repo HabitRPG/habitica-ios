@@ -18,7 +18,7 @@ class SkillsUserTableViewDataSource: BaseReactiveTableViewDataSource<MemberProto
     override init() {
         super.init()
         sections.append(ItemSection<MemberProtocol>())
-        disposable.inner.add(userRepository.getUser().map({ (user) -> String? in
+        disposable.add(userRepository.getUser().map({ (user) -> String? in
             return user.party?.id
         }).skipNil()
             .flatMap(.latest, {[weak self] (partyID) in
@@ -30,7 +30,7 @@ class SkillsUserTableViewDataSource: BaseReactiveTableViewDataSource<MemberProto
             }).start()
         )
         
-        disposable.inner.add(userRepository.getUser().map({ (user) -> String? in
+        disposable.add(userRepository.getUser().map({ (user) -> String? in
             return user.party?.id
         }).skipNil()
             .flatMap(.latest, {[weak self] (groupID) in

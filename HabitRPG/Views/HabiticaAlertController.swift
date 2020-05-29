@@ -223,7 +223,6 @@ class HabiticaAlertController: UIViewController, Themeable {
         var color = ThemeService.shared.theme.tintColor
         if style == .destructive {
             color = ThemeService.shared.theme.errorColor
-        } else {
         }
         
         if isMainAction {
@@ -240,6 +239,9 @@ class HabiticaAlertController: UIViewController, Themeable {
             button.setTitleColor(color, for: .normal)
             button.titleLabel?.font = CustomFontMetrics.scaledSystemFont(ofSize: 17)
         }
+        
+        button.addWidthConstraint(width: 150, relatedBy: NSLayoutConstraint.Relation.greaterThanOrEqual)
+        button.addHeightConstraint(height: 38)
         
         button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
     

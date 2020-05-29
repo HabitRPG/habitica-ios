@@ -35,7 +35,18 @@ class ItemSection<MODEL> {
 
 class BaseReactiveDataSource<MODEL>: NSObject {
     
-    let disposable = ScopedDisposable(CompositeDisposable())
+    let disposable = CompositeDisposable()
+    
+    deinit {
+        dispose()
+    }
+    
+    @objc
+    func dispose() {
+        if !disposable.isDisposed {
+            disposable.dispose()
+        }
+    }
     
     var sections = [ItemSection<MODEL>]()
     var visibleSections: [ItemSection<MODEL>] {

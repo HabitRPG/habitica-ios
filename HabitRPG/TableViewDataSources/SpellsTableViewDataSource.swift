@@ -66,13 +66,13 @@ class SpellsTableViewDataSource: BaseReactiveTableViewDataSource<Any>, SpellsTab
         super.init()
         sections.append(ItemSection<Any>())
         sections.append(ItemSection<Any>(title: L10n.Skills.transformationItems))
-        disposable.inner.add(userRepository.getUser().on(value: {[weak self]user in
+        disposable.add(userRepository.getUser().on(value: {[weak self]user in
             if let stats = user.stats {
                 self?.stats = stats
             }
         }).start())
         
-        disposable.inner.add(inventoryRepository.getOwnedItems(itemType: ItemType.special.rawValue)
+        disposable.add(inventoryRepository.getOwnedItems(itemType: ItemType.special.rawValue)
             .on(value: {[weak self]ownedItems in
                 self?.ownedItems.removeAll()
                 ownedItems.value.forEach({ (item) in
@@ -97,7 +97,7 @@ class SpellsTableViewDataSource: BaseReactiveTableViewDataSource<Any>, SpellsTab
     }
     
     private func getSkills(habitClass: String) {
-        disposable.inner.add(contentRepository.getSkills(habitClass: habitClass).on(value: {[weak self]result in
+        disposable.add(contentRepository.getSkills(habitClass: habitClass).on(value: {[weak self]result in
             self?.sections[0].items = result.value
             self?.notify(changes: result.changes)
         }).start())

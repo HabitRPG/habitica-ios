@@ -29,16 +29,16 @@ class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtoc
         sections.append(ItemSection<ChatMessageProtocol>())
         tableView?.reloadData()
         
-        disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
+        disposable.add(userRepository.getUser().on(value: {[weak self] user in
             self?.user = user
             self?.tableView?.reloadData()
         }).start())
-        disposable.inner.add(socialRepository.getChatMessages(groupID: groupID).on(value: {[weak self] (chatMessages, changes) in
+        disposable.add(socialRepository.getChatMessages(groupID: groupID).on(value: {[weak self] (chatMessages, changes) in
             self?.sections[0].items = chatMessages
             self?.notify(changes: changes)
         }).start())
         let timerSignal: SignalProducer<Date, Never> = SignalProducer.timer(interval: .seconds(30), on: QueueScheduler.main)
-        disposable.inner.add(timerSignal.on(value: { [weak self] _ in self?.retrieveData(completed: nil) }).start())
+        disposable.add(timerSignal.on(value: { [weak self] _ in self?.retrieveData(completed: nil) }).start())
         
         retrieveData(completed: nil)
     }
@@ -130,7 +130,7 @@ class GroupChatViewDataSource: BaseReactiveTableViewDataSource<ChatMessageProtoc
     }
     
     override func retrieveData(completed: (() -> Void)?) {
-        disposable.inner.add(socialRepository.retrieveChat(groupID: groupID).observeCompleted {
+        disposable.add(socialRepository.retrieveChat(groupID: groupID).observeCompleted {
             completed?()
         })
     }

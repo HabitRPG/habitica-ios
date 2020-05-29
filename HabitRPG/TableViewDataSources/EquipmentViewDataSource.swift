@@ -21,7 +21,7 @@ class EquipmentViewDataSource: BaseReactiveTableViewDataSource<GearProtocol> {
         super.init()
         sections.append(ItemSection<GearProtocol>())
         
-        disposable.inner.add(inventoryRepository.getOwnedGear()
+        disposable.add(inventoryRepository.getOwnedGear()
             .map({ (data) -> [String] in
                 return data.value.map({ (ownedGear) -> String in
                     return ownedGear.key ?? ""
@@ -38,7 +38,7 @@ class EquipmentViewDataSource: BaseReactiveTableViewDataSource<GearProtocol> {
             })
             .start())
         
-        disposable.inner.add(userRepository.getUser().on(value: {[weak self]user in
+        disposable.add(userRepository.getUser().on(value: {[weak self]user in
             if useCostume {
                 self?.equippedKey = user.items?.gear?.costume?.keyFor(type: gearType)
             } else {

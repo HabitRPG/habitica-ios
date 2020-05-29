@@ -19,6 +19,8 @@ protocol ShopCollectionViewDataSourceProtocol: UICollectionViewDelegateFlowLayou
     @objc var collectionView: UICollectionView? { get set }
     @objc
     func retrieveShopInventory(_ completed: (() -> Void)?)
+    @objc
+    func dispose()
 }
 
 @objc
@@ -90,7 +92,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
         sections.append(ItemSection<InAppRewardProtocol>())
         sections[0].showIfEmpty = hasGearSection()
         
-        disposable.inner.add(inventoryRepository.getShop(identifier: identifier).combineLatest(with: userRepository.getUser()).on(value: {[weak self] (shop, user) in
+        disposable.add(inventoryRepository.getShop(identifier: identifier).combineLatest(with: userRepository.getUser()).on(value: {[weak self] (shop, user) in
             let sectionCount = self?.sections.count ?? 0
             if sectionCount >= 2 {
                 self?.sections.removeLast(sectionCount - 1)
@@ -105,7 +107,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
             self?.delegate?.updateNavBar(gold: Int(user.stats?.gold ?? 0), gems: user.gemCount)
         }).start())
         
-        disposable.inner.add(userRepository.getInAppRewards()
+        disposable.add(userRepository.getInAppRewards()
             .map({ (rewards, _) in
                 return rewards.map({ (reward) in
                     return reward.key
@@ -114,7 +116,7 @@ class ShopCollectionViewDataSource: BaseReactiveCollectionViewDataSource<InAppRe
                 self?.pinnedItems = rewards
             }).start())
         
-        disposable.inner.add(inventoryRepository.getOwnedItems().map({ (items, _) -> [String: OwnedItemProtocol] in
+        disposable.add(inventoryRepository.getOwnedItems().map({ (items, _) -> [String: OwnedItemProtocol] in
             var ownedItems: [String: OwnedItemProtocol] = [:]
             for item in items where item.key != nil {
                 ownedItems[item.key ?? ""] = item

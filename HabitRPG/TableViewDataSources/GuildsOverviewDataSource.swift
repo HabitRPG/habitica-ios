@@ -44,7 +44,7 @@ class GuildsOverviewDataSource: BaseReactiveTableViewDataSource<GroupProtocol> {
         
         self.predicate = getPredicate()
 
-        disposable.inner.add(socialRepository.getGroupMemberships().on(value: {[weak self]memberships, _ in
+        disposable.add(socialRepository.getGroupMemberships().on(value: {[weak self]memberships, _ in
             self?.membershipIDs.removeAll()
             memberships.forEach({ (membership) in
                 if let groupID = membership.groupID {
@@ -54,7 +54,7 @@ class GuildsOverviewDataSource: BaseReactiveTableViewDataSource<GroupProtocol> {
             self?.updatePredicate()
         }).start())
         
-        disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
+        disposable.add(userRepository.getUser().on(value: {[weak self] user in
             self?.invitationListView?.set(invitations: user.invitations.filter({ (invitation) -> Bool in
                 return !invitation.isPartyInvitation
             }))

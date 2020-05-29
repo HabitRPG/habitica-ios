@@ -35,7 +35,7 @@ class FeedViewDataSource: BaseReactiveTableViewDataSource<FoodProtocol>, FeedVie
         super.init()
         sections.append(ItemSection<FoodProtocol>())
         
-        disposable.inner.add(inventoryRepository.getOwnedItems()
+        disposable.add(inventoryRepository.getOwnedItems()
             .map({ (items) -> [OwnedItemProtocol] in
                 let filteredItems = items.value.filter({ (ownedItem) -> Bool in
                     return ownedItem.itemType == "food"

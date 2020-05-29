@@ -31,13 +31,13 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
         self.customizationGroup = group
         super.init()
         
-        disposable.inner.add(customizationRepository.getCustomizations(type: customizationType, group: customizationGroup)
+        disposable.add(customizationRepository.getCustomizations(type: customizationType, group: customizationGroup)
             .combineLatest(with: customizationRepository.getOwnedCustomizations(type: customizationType, group: customizationGroup))
             .on(value: {[weak self](customizations, ownedCustomizations) in
                 self?.ownedCustomizations = ownedCustomizations.value
                 self?.configureSections(customizations.value)
         }).start())
-        disposable.inner.add(userRepository.getUser().on(value: {[weak self]user in
+        disposable.add(userRepository.getUser().on(value: {[weak self]user in
             self?.preferences = user.preferences
             
             self?.updateEquippedKey(user: user)

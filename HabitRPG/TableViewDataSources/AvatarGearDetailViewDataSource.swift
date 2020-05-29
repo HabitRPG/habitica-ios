@@ -31,13 +31,13 @@ class AvatarGearDetailViewDataSource: BaseReactiveCollectionViewDataSource<GearP
         if gearType == "eyewear" {
             predicate = NSPredicate(format: "gearSet == 'glasses' && type == 'eyewear'")
         }
-        disposable.inner.add(inventoryRepository.getGear(predicate: predicate)
+        disposable.add(inventoryRepository.getGear(predicate: predicate)
             .combineLatest(with: inventoryRepository.getOwnedGear())
             .on(value: {[weak self](gear, ownedGear) in
                 self?.ownedGear = ownedGear.value
                 self?.configureSections(gear.value)
             }).start())
-        disposable.inner.add(userRepository.getUser().on(value: {[weak self]user in
+        disposable.add(userRepository.getUser().on(value: {[weak self]user in
             self?.preferences = user.preferences
             let outfit = (user.preferences?.useCostume ?? false) ? user.items?.gear?.costume : user.items?.gear?.equipped
             switch self?.gearType {

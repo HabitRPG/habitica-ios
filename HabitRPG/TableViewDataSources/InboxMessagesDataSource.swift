@@ -33,10 +33,10 @@ class InboxMessagesDataSource: BaseReactiveTableViewDataSource<InboxMessageProto
         super.init()
         sections.append(ItemSection<InboxMessageProtocol>())
         
-        disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
+        disposable.add(userRepository.getUser().on(value: {[weak self] user in
             self?.user = user
         }).start())
-        disposable.inner.add(socialRepository.getMember(userID: otherUserID ?? otherUsername ?? "", retrieveIfNotFound: true).on(value: {[weak self] member in
+        disposable.add(socialRepository.getMember(userID: otherUserID ?? otherUsername ?? "", retrieveIfNotFound: true).on(value: {[weak self] member in
             self?.member = member
             if self?.otherUserID == nil {
                 self?.otherUserID = member?.id
@@ -54,7 +54,7 @@ class InboxMessagesDataSource: BaseReactiveTableViewDataSource<InboxMessageProto
         guard let userID = self.otherUserID else {
             return
         }
-        disposable.inner.add(socialRepository.getMessages(withUserID: userID).on(value: {[weak self] (messages, changes) in
+        disposable.add(socialRepository.getMessages(withUserID: userID).on(value: {[weak self] (messages, changes) in
             if self?.startedEmpty == nil {
                 self?.startedEmpty = messages.isEmpty
             }
