@@ -131,6 +131,8 @@ class GiftGemsViewController: BaseUIViewController, UICollectionViewDataSource, 
             navigationController?.navigationBar.backgroundColor = theme.contentBackgroundColor
         }
         collectionView.backgroundColor = theme.contentBackgroundColor
+        gemBalanceCountView.backgroundColor = theme.contentBackgroundColor
+        balanceAmountView.backgroundColor = theme.contentBackgroundColor
         giftingDisclaimerLabel.tintColor = theme.tintColor
     }
     
@@ -198,17 +200,7 @@ class GiftGemsViewController: BaseUIViewController, UICollectionViewDataSource, 
             amount = 84
         }
         cell.setGemAmount(amount)
-        cell.setPurchaseTap {[weak self] (purchaseButton) in
-            switch purchaseButton?.state {
-            case .some(HRPGPurchaseButtonStateError), .some(HRPGPurchaseButtonStateLabel):
-                purchaseButton?.state = HRPGPurchaseButtonStateLoading
-                self?.purchaseGems(identifier: product.productIdentifier, amount: amount)
-            case .some(HRPGPurchaseButtonStateDone):
-                self?.dismiss(animated: true, completion: nil)
-            default:
-                break
-            }
-        }
+        cell.purchaseButton.isUserInteractionEnabled = false
         
         return cell
     }

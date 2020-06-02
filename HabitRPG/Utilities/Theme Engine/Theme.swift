@@ -17,6 +17,7 @@ public protocol Theme {
     var backgroundTintColor: UIColor { get }
     var lightlyTintedBackgroundColor: UIColor { get }
     var tintColor: UIColor { get }
+    var fixedTintColor: UIColor { get }
     var separatorColor: UIColor { get }
     var tableviewSeparatorColor: UIColor { get }
     
@@ -53,6 +54,7 @@ extension Theme {
     public var backgroundTintColor: UIColor { return UIColor.purple300 }
     public var lightlyTintedBackgroundColor: UIColor { return UIColor.purple600 }
     public var tintColor: UIColor { return UIColor.purple400 }
+    public var fixedTintColor: UIColor { return tintColor }
     public var separatorColor: UIColor { return UIColor.gray600 }
     public var tableviewSeparatorColor: UIColor { return UIColor.gray500 }
     
@@ -97,6 +99,7 @@ extension DarkTheme {
     public var lightlyTintedBackgroundColor: UIColor { return UIColor.gray300 }
     public var backgroundTintColor: UIColor { return UIColor.gray300 }
     public var tintColor: UIColor { return UIColor.gray500 }
+    public var fixedTintColor: UIColor { return tintColor }
     
     public var primaryTextColor: UIColor { return UIColor.gray700 }
     public var secondaryTextColor: UIColor { return UIColor.gray500 }

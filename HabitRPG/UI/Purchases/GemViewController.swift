@@ -98,17 +98,7 @@ class GemViewController: BaseCollectionViewController, UICollectionViewDelegateF
             cell.setGemAmount(84)
         }
         
-        cell.setPurchaseTap {[weak self] (purchaseButton) in
-            switch purchaseButton?.state {
-            case .some(HRPGPurchaseButtonStateError), .some(HRPGPurchaseButtonStateLabel):
-                purchaseButton?.state = HRPGPurchaseButtonStateLoading
-                self?.purchaseGems(identifier: product.productIdentifier)
-            case .some(HRPGPurchaseButtonStateDone):
-                self?.dismiss(animated: true, completion: nil)
-            default:
-                break
-            }
-        }
+        cell.purchaseButton.isUserInteractionEnabled = false
         
         return cell
     }

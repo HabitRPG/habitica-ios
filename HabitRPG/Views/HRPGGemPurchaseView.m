@@ -15,7 +15,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel *amountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *gemsLabel;
-@property(nonatomic) void (^promoTapEvent)();
 
 @end
 
@@ -48,11 +47,7 @@
 
 - (void)setPrice:(NSString *)price {
     [self.purchaseButton setText:price];
-    self.purchaseButton.tintColor = ObjcThemeWrapper.backgroundTintColor;
-}
-
-- (void)setPurchaseTap:(void (^)(HRPGPurchaseLoadingButton *))purchaseTap {
-    self.purchaseButton.onTouchEvent = purchaseTap;
+    self.purchaseButton.tintColor = ObjcThemeWrapper.tintColor;
 }
 
 @end

@@ -111,6 +111,7 @@ class HRPGBulkPurchaseView: UIView, Themeable {
         errorLabel.textColor = theme.ternaryTextColor
         inputContainer.backgroundColor = theme.windowBackgroundColor
         inputContainer.borderColor = theme.separatorColor
+        backgroundColor = .clear
     }
     
     @IBAction func addButtonTapped(_ sender: Any) {

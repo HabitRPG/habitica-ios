@@ -220,7 +220,7 @@ class HabiticaAlertController: UIViewController, Themeable {
         button.titleLabel?.textAlignment = .center
         button.setTitle(title, for: .normal)
         button.contentEdgeInsets = UIEdgeInsets(top: 8, left: 24, bottom: 8, right: 24)
-        var color = ThemeService.shared.theme.tintColor
+        var color = ThemeService.shared.theme.fixedTintColor
         if style == .destructive {
             color = ThemeService.shared.theme.errorColor
         }
@@ -320,7 +320,7 @@ class HabiticaAlertController: UIViewController, Themeable {
         if closeButton != nil {
             closeButton.isHidden = closeAction == nil
             closeButton.setTitle(closeTitle, for: .normal)
-            closeButton.tintColor = ThemeService.shared.theme.tintColor
+            closeButton.tintColor = ThemeService.shared.theme.fixedTintColor
         }
     }
     

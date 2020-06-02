@@ -87,7 +87,7 @@ class HRPGSimpleShopItemView: UIView {
             setAvailableUntil(date: availableUntil)
         }
         var imageName = reward.imageName ?? ""
-        if reward.path?.contains("timeTravel") == true {
+        if reward.path?.contains("timeTravelBackgrounds") == true {
             setImage(name: imageName.replacingOccurrences(of: "icon_", with: ""), fileExtension: "gif")
         } else {
             setImage(name: imageName)
@@ -97,6 +97,8 @@ class HRPGSimpleShopItemView: UIView {
             imageName = "shop_potion"
         } else if reward.key == "armoire" {
             imageName = "shop_armoire"
+        } else if reward.imageName == "gem_shop" {
+            imageName = "shop_gem"
         }
         if let inAppPurchaseType = reward.purchaseType {
             purchaseType = inAppPurchaseType

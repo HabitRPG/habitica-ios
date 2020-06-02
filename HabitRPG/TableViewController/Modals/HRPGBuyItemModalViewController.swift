@@ -30,6 +30,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     @IBOutlet weak var pinButton: UIButton!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var buttonSeparatorView: UIView!
+    @IBOutlet weak var centerConstraint: NSLayoutConstraint!
     
     @objc public weak var shopViewController: HRPGShopViewController?
     
@@ -97,7 +98,15 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         disposable.inner.add(userRepository.getUser().on(value: {[weak self] user in
             self?.user = user
         }).start())
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShowNotification(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHideNotification(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+         super.viewWillDisappear(animated)
+         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+     }
     
     func populateText() {
         closeButton.setTitle(L10n.close, for: .normal)
@@ -130,7 +139,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     }
     
     @objc
-    private func modalTapped() {    }
+    private func modalTapped() { }
     
     @objc
     private func backgroundTapped() {
@@ -227,7 +236,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         if (Currency(rawValue: reward?.currency ?? "gold") != .gold || canAfford()) && !isLocked {
             buyLabel.textColor = .white
             currencyCountView.textColor = .white
-            buyButton.backgroundColor = ThemeService.shared.theme.tintColor
+            buyButton.backgroundColor = ThemeService.shared.theme.fixedTintColor
             currencyCountView.state = .normal
         } else {
             if currencyCountView.currency == .gold {
@@ -542,6 +551,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         alert.contentView = imageView
         alert.containerViewSpacing = 20
         alert.arrangeMessageLast = true
+        alert.messageFont = CustomFontMetrics.scaledSystemFont(ofSize: 15)
         return alert
     }
     
@@ -552,6 +562,16 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     
     override func viewWillLayoutSubviews() {
         closableShopModal.shopModalBgView.maxHeightConstraint.constant = view.frame.size.height - 200
+    }
+    
+    @objc
+    func keyboardWillShowNotification(notification: NSNotification) {
+        centerConstraint.constant = -50
+    }
+    
+    @objc
+    func keyboardWillHideNotification(notification: NSNotification) {
+        centerConstraint.constant = 0
     }
 }
 

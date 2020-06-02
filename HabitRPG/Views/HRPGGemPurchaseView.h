@@ -14,9 +14,6 @@
 - (void) setGemAmount:(NSInteger)amount;
 - (void) setPrice:(NSString *)price;
 
-- (void) setPurchaseTap:(void (^)(HRPGPurchaseLoadingButton *button))purchaseTap;
-
-
 @property (weak, nonatomic) IBOutlet HRPGPurchaseLoadingButton *purchaseButton;
 
 @end
