@@ -102,6 +102,7 @@ class WeekdayFormCell: Cell<WeekdaysValue>, CellType {
     
     @objc
     func saturdayTapped() {
+        if row.isDisabled { return }
         row.value?.saturday = !(row.value?.saturday ?? false)
         row.updateCell()
         if #available(iOS 10, *) {
@@ -111,8 +112,12 @@ class WeekdayFormCell: Cell<WeekdaysValue>, CellType {
     
     @objc
     func sundayTapped() {
+        if row.isDisabled { return }
         row.value?.sunday = !(row.value?.sunday ?? false)
         row.updateCell()
+        if #available(iOS 10, *) {
+            UISelectionFeedbackGenerator.oneShotSelectionChanged()
+        }
     }
    
     public override func update() {
