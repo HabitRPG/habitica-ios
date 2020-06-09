@@ -48,6 +48,8 @@ class WeekdayFormCell: Cell<WeekdaysValue>, CellType {
         sundayLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(sundayTapped)))
         backgroundColor = .clear
         selectionStyle = .none
+
+        setupDayLabels()
     }
     
     @objc
@@ -121,6 +123,19 @@ class WeekdayFormCell: Cell<WeekdaysValue>, CellType {
             applyAccessibility()
         }
         contentView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor.withAlphaComponent(0.8)
+    }
+
+    private func setupDayLabels() {
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.locale = Locale(identifier: LanguageHandler.getAppLanguage().code)
+        let days = calendar.veryShortWeekdaySymbols
+        sundayLabel.text = days[0]
+        mondayLabel.text = days[1]
+        tuesdayLabel.text = days[2]
+        wednesdayLabel.text = days[3]
+        thursdayLabel.text = days[4]
+        fridayLabel.text = days[5]
+        saturdayLabel.text = days[6]
     }
     
     private func updateViews(taskRow: WeekdayRow, value: WeekdaysValue) {
