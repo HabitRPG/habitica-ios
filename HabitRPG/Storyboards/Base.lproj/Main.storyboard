@@ -14,7 +14,7 @@
                 <tabBarController storyboardIdentifier="MainTabBarController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8YX-ce-x5E" customClass="MainTabBarController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="cA8-1O-89C"/>
                     <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" itemPositioning="fill" id="JQR-rB-NYL">
+                    <tabBar key="tabBar" contentMode="scaleToFill" itemPositioning="fill" id="JQR-rB-NYL" customClass="MainTabBar" customModule="Habitica" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="431" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2420,7 +2420,7 @@
         <scene sceneID="Vp9-dg-sDn">
             <objects>
                 <navigationController restorationIdentifier="ProfileNavigationController" definesPresentationContext="YES" id="JSb-MY-Gwo" customClass="TopHeaderViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="tabbar_menu" id="hyj-Mf-lvH"/>
+                    <tabBarItem key="tabBarItem" title="" image="tabbar_menu" selectedImage="tabbar_menu_selected" id="hyj-Mf-lvH"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gph-cu-5tJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2437,7 +2437,7 @@
         <scene sceneID="xdc-Uc-O5P">
             <objects>
                 <navigationController restorationIdentifier="TodoNavigationController" definesPresentationContext="YES" id="F9m-od-YIG" customClass="TopHeaderViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="tabbar_todos" id="Np7-ws-fF6"/>
+                    <tabBarItem key="tabBarItem" title="" image="tabbar_todos" selectedImage="tabbar_todos_selected" id="Np7-ws-fF6"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="mXU-6R-4bg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2454,7 +2454,7 @@
         <scene sceneID="qkM-wB-5kH">
             <objects>
                 <navigationController restorationIdentifier="DailyNavigationController" definesPresentationContext="YES" id="szj-Xo-0pc" customClass="TopHeaderViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" id="pdW-W9-wj6"/>
+                    <tabBarItem key="tabBarItem" title="" image="tabbar_dailies" selectedImage="tabbar_dailies_selected" id="pdW-W9-wj6"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Tc8-JW-aRd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2471,7 +2471,7 @@
         <scene sceneID="0w6-RO-vbL">
             <objects>
                 <navigationController restorationIdentifier="HabitNavigationController" definesPresentationContext="YES" id="ZPa-UZ-Rgq" customClass="TopHeaderViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="tabbar_habits" id="3G8-SH-Shd"/>
+                    <tabBarItem key="tabBarItem" title="" image="tabbar_habits" selectedImage="tabbar_habits_selected" id="3G8-SH-Shd"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="qQq-gV-VmG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2508,7 +2508,7 @@
         <scene sceneID="ADP-AR-Pd2">
             <objects>
                 <navigationController restorationIdentifier="RewardNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="tYf-ZM-zIQ" customClass="TopHeaderViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="tabbar_rewards" id="zFI-xr-RjT"/>
+                    <tabBarItem key="tabBarItem" title="" image="tabbar_rewards" selectedImage="tabbar_rewards_selected" id="zFI-xr-RjT"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="qZ5-Dx-RNg"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="n1T-X7-pMj">
@@ -3147,12 +3147,17 @@
     <color key="tintColor" red="0.44783598184585571" green="0.10848048329353333" blue="0.9984632134437561" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
     <resources>
         <image name="gem_purchase_header" width="254" height="68"/>
-        <image name="gift_sub_gift" width="24" height="26"/>
+        <image name="gift_sub_gift" width="24" height="25"/>
         <image name="subscribe_header" width="240" height="61"/>
         <image name="tabbar_dailies" width="32" height="32"/>
+        <image name="tabbar_dailies_selected" width="22" height="21"/>
         <image name="tabbar_habits" width="32" height="32"/>
-        <image name="tabbar_menu" width="36" height="28"/>
+        <image name="tabbar_habits_selected" width="30" height="20"/>
+        <image name="tabbar_menu" width="22" height="20"/>
+        <image name="tabbar_menu_selected" width="22" height="20"/>
         <image name="tabbar_rewards" width="32" height="32"/>
-        <image name="tabbar_todos" width="32" height="32"/>
+        <image name="tabbar_rewards_selected" width="26" height="20"/>
+        <image name="tabbar_todos" width="25" height="22"/>
+        <image name="tabbar_todos_selected" width="25" height="22"/>
     </resources>
 </document>

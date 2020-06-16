@@ -27,17 +27,11 @@ class MainTabBarController: UITabBarController, Themeable {
     private var tutorialDailyCount = 0
     private var tutorialToDoCount = 0
     
+    var badges = [Int: PaddedView]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setupDailyIcon()
-        
-        tabBar.items?[0].title = L10n.Tasks.habits
-        tabBar.items?[1].title = L10n.Tasks.dailies
-        tabBar.items?[2].title = L10n.Tasks.todos
-        tabBar.items?[3].title = L10n.Tasks.rewards
-        tabBar.items?[4].title = L10n.menu
-        
+                
         fetchData()
         
         #if DEBUG
@@ -55,7 +49,7 @@ class MainTabBarController: UITabBarController, Themeable {
         tabBar.tintColor = theme.tintColor
         tabBar.items?.forEach({
             $0.badgeColor = theme.badgeColor
-            if (theme.badgeColor.isLight()) {
+            if theme.badgeColor.isLight() {
                 $0.setBadgeTextAttributes([.foregroundColor: UIColor.gray50], for: .normal)
             } else {
                 $0.setBadgeTextAttributes([.foregroundColor: UIColor.gray700], for: .normal)
@@ -70,7 +64,7 @@ class MainTabBarController: UITabBarController, Themeable {
             tabBar.tintColor = theme.tintColor
             tabBar.barTintColor = theme.contentBackgroundColor
             tabBar.backgroundColor = .clear
-            tabBar.barStyle = .black
+            tabBar.barStyle = .default
         }
         
         if #available(iOS 13.0, *) {
@@ -84,32 +78,31 @@ class MainTabBarController: UITabBarController, Themeable {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        layoutBadges()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         presentingViewController?.willMove(toParent: nil)
         presentingViewController?.removeFromParent()
     }
-
-    private func setupDailyIcon() {
-        let calendarImage = #imageLiteral(resourceName: "tabbar_dailies")
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: calendarImage.size.width, height: calendarImage.size.height), false, 0)
-        calendarImage.draw(in: CGRect(x: 0, y: 0, width: calendarImage.size.width, height: calendarImage.size.height))
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd"
-        let dateString = dateFormatter.string(from: Date()) as NSString
-        let style = NSParagraphStyle.default.mutableCopy() as? NSMutableParagraphStyle
-        style?.alignment = .left
-        let textAttributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont.systemFont(ofSize: 10, weight: .semibold),
-            .paragraphStyle: style ?? NSParagraphStyle.default
-        ]
-        let size = dateString.size(withAttributes: textAttributes)
-        let offset = (calendarImage.size.width - size.width) / 2
-        dateString.draw(in: CGRect(x: offset + 1, y: 13, width: 20, height: 20), withAttributes: textAttributes)
-        let resultImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        tabBar.items?[1].image = resultImage
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        layoutBadges()
+    }
+    
+    private func layoutBadges() {
+        for entry in badges {
+            let frame = frameForTab(atIndex: entry.key)
+            let size = entry.value.intrinsicContentSize
+            let width = max(size.height, size.width)
+            // Find the edge of the icon and then center the badge there
+            entry.value.frame = CGRect(x: frame.origin.x + (frame.size.width/2) + 15 - (width/2), y: frame.origin.y + 4, width: width, height: size.height)
+            entry.value.cornerRadius = size.height / 2
+        }
     }
     
     private func fetchData() {
@@ -184,13 +177,41 @@ class MainTabBarController: UITabBarController, Themeable {
     }
     
     private func setBadgeCount(index: Int, count: Int) {
-        let item = tabBar.items?[index]
-        // swiftlint:disable:next empty_count
-        if count > 0 {
-            item?.badgeValue = "\(count)"
+        var badge = PaddedView()
+        if let oldBadge = badges[index] {
+            badge = oldBadge
         } else {
-            item?.badgeValue = nil
+            badges[index] = badge
+            badge.verticalPadding = 2
+            badge.horizontalPadding = 6
+            let label = UILabel()
+            label.textColor = .white
+            label.font = UIFont.systemFont(ofSize: 12)
+            label.textAlignment = .center
+            badge.containedView = label
         }
+        badge.backgroundColor = .gray50
+        if let label = badge.containedView as? UILabel {
+            label.text = "\(count)"
+        }
+        // swiftlint:disable:next empty_count
+        badge.isHidden = count == 0
+        tabBar.addSubview(badge)
+        layoutBadges()
+    }
+    
+    private func frameForTab(atIndex index: Int) -> CGRect {
+        var frames = tabBar.subviews.compactMap { (view: UIView) -> CGRect? in
+            if let view = view as? UIControl {
+                return view.frame
+            }
+            return nil
+        }
+        frames.sort { $0.origin.x < $1.origin.x }
+        if frames.count > index {
+            return frames[index]
+        }
+        return frames.last ?? CGRect.zero
     }
     
     private func updateAppBadge() {
@@ -216,4 +237,20 @@ class MainTabBarController: UITabBarController, Themeable {
         }
     }
     #endif
+}
+
+class MainTabBar: UITabBar {
+    
+    override open func sizeThatFits(_ size: CGSize) -> CGSize {
+        var sizeThatFits = super.sizeThatFits(size)
+        guard let window = UIApplication.shared.keyWindow else {
+            return sizeThatFits
+        }
+        if #available(iOS 11.0, *) {
+            if window.safeAreaInsets.bottom > 0 {
+                sizeThatFits.height = 42 + window.safeAreaInsets.bottom
+            }
+        }
+        return sizeThatFits
+    }
 }

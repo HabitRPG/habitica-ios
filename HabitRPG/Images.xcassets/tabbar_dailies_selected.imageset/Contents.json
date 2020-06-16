@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "todos_unselected.png",
+      "filename" : "dailies_selected.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "todos_unselected@2x.png",
+      "filename" : "dailies_selected@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "todos_unselected@3x.png",
+      "filename" : "dailies_selected@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
