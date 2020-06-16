@@ -27,8 +27,15 @@ class MainTabBarController: UITabBarController, Themeable {
     private var tutorialDailyCount = 0
     private var tutorialToDoCount = 0
     
-    var badges = [Int: PaddedView]()
-
+    private var badges: [Int: PaddedView]? {
+        set {
+            if let badges = newValue {
+                (tabBar as? MainTabBar)?.badges = badges
+            }
+        }
+        get { return (tabBar as? MainTabBar)?.badges }
+    }
+        
     override func viewDidLoad() {
         super.viewDidLoad()
                 
@@ -78,31 +85,10 @@ class MainTabBarController: UITabBarController, Themeable {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        layoutBadges()
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         presentingViewController?.willMove(toParent: nil)
         presentingViewController?.removeFromParent()
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        layoutBadges()
-    }
-    
-    private func layoutBadges() {
-        for entry in badges {
-            let frame = frameForTab(atIndex: entry.key)
-            let size = entry.value.intrinsicContentSize
-            let width = max(size.height, size.width)
-            // Find the edge of the icon and then center the badge there
-            entry.value.frame = CGRect(x: frame.origin.x + (frame.size.width/2) + 15 - (width/2), y: frame.origin.y + 4, width: width, height: size.height)
-            entry.value.cornerRadius = size.height / 2
-        }
     }
     
     private func fetchData() {
@@ -178,10 +164,10 @@ class MainTabBarController: UITabBarController, Themeable {
     
     private func setBadgeCount(index: Int, count: Int) {
         var badge = PaddedView()
-        if let oldBadge = badges[index] {
+        if let oldBadge = badges?[index] {
             badge = oldBadge
         } else {
-            badges[index] = badge
+            badges?[index] = badge
             badge.verticalPadding = 2
             badge.horizontalPadding = 6
             let label = UILabel()
@@ -197,21 +183,7 @@ class MainTabBarController: UITabBarController, Themeable {
         // swiftlint:disable:next empty_count
         badge.isHidden = count == 0
         tabBar.addSubview(badge)
-        layoutBadges()
-    }
-    
-    private func frameForTab(atIndex index: Int) -> CGRect {
-        var frames = tabBar.subviews.compactMap { (view: UIView) -> CGRect? in
-            if let view = view as? UIControl {
-                return view.frame
-            }
-            return nil
-        }
-        frames.sort { $0.origin.x < $1.origin.x }
-        if frames.count > index {
-            return frames[index]
-        }
-        return frames.last ?? CGRect.zero
+        (tabBar as? MainTabBar)?.layoutBadges()
     }
     
     private func updateAppBadge() {
@@ -240,7 +212,8 @@ class MainTabBarController: UITabBarController, Themeable {
 }
 
 class MainTabBar: UITabBar {
-    
+    var badges = [Int: PaddedView]()
+
     override open func sizeThatFits(_ size: CGSize) -> CGSize {
         var sizeThatFits = super.sizeThatFits(size)
         guard let window = UIApplication.shared.keyWindow else {
@@ -252,5 +225,36 @@ class MainTabBar: UITabBar {
             }
         }
         return sizeThatFits
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        layoutBadges()
+    }
+    
+    
+    func layoutBadges() {
+        for entry in badges {
+            let frame = frameForTab(atIndex: entry.key)
+            let size = entry.value.intrinsicContentSize
+            let width = max(size.height, size.width)
+            // Find the edge of the icon and then center the badge there
+            entry.value.frame = CGRect(x: frame.origin.x + (frame.size.width/2) + 15 - (width/2), y: frame.origin.y + 4, width: width, height: size.height)
+            entry.value.cornerRadius = size.height / 2
+        }
+    }
+    
+    private func frameForTab(atIndex index: Int) -> CGRect {
+        var frames = subviews.compactMap { (view: UIView) -> CGRect? in
+            if let view = view as? UIControl {
+                return view.frame
+            }
+            return nil
+        }
+        frames.sort { $0.origin.x < $1.origin.x }
+        if frames.count > index {
+            return frames[index]
+        }
+        return frames.last ?? CGRect.zero
     }
 }
