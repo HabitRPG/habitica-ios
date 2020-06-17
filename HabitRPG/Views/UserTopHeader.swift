@@ -27,6 +27,7 @@ class UserTopHeader: UIView, Themeable {
     
     @IBOutlet weak var classImageView: UIImageView!
     @IBOutlet weak var classImageViewWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var classImageViewLabelSpacing: NSLayoutConstraint!
     
     @IBOutlet weak var gemView: HRPGCurrencyCountView!
     @IBOutlet weak var goldView: HRPGCurrencyCountView!
@@ -77,7 +78,7 @@ class UserTopHeader: UIView, Themeable {
         
         gemView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showGemView)))
         
-        usernameLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 16)
+        usernameLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 15)
         levelLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 11)
         usernameLabel.adjustsFontForContentSizeCategory = true
         levelLabel.adjustsFontForContentSizeCategory = true
@@ -90,8 +91,8 @@ class UserTopHeader: UIView, Themeable {
     }
     
     func applyTheme(theme: Theme) {
-        backgroundColor = theme.contentBackgroundColor
         theme.applyBackgroundColor(views: [
+            self,
             bottomView,
             classImageView,
             usernameLabel,
@@ -99,14 +100,14 @@ class UserTopHeader: UIView, Themeable {
             hourglassView,
             gemView,
             goldView
-            ], color: theme.contentBackgroundColorDimmed)
-        healthLabel.textColor = theme.primaryTextColor
+            ], color: theme.contentBackgroundColor)
+        healthLabel.textColor = theme.secondaryTextColor
         healthLabel.backgroundColor = theme.contentBackgroundColor
         healthLabel.progressBar.barBackgroundColor = theme.contentBackgroundColorDimmed
-        experienceLabel.textColor = theme.primaryTextColor
+        experienceLabel.textColor = theme.secondaryTextColor
         experienceLabel.backgroundColor = theme.contentBackgroundColor
         experienceLabel.progressBar.barBackgroundColor = theme.contentBackgroundColorDimmed
-        magicLabel.textColor = theme.primaryTextColor
+        magicLabel.textColor = theme.secondaryTextColor
         magicLabel.backgroundColor = theme.contentBackgroundColor
         magicLabel.progressBar.barBackgroundColor = theme.contentBackgroundColorDimmed
         
@@ -172,8 +173,9 @@ class UserTopHeader: UIView, Themeable {
             }
             
             let levelString = L10n.level
+            usernameLabel.text = "\(levelString) \(stats.level)"
             if user.preferences?.disableClasses != true && stats.level >= 10 {
-                levelLabel.text = "\(levelString) \(stats.level) \(stats.habitClassNice?.capitalized ?? "")"
+                levelLabel.text = stats.habitClassNice?.capitalized
                 switch stats.habitClass ?? "" {
                 case "warrior":
                     classImageView.image = HabiticaIcons.imageOfWarriorLightBg
@@ -187,17 +189,18 @@ class UserTopHeader: UIView, Themeable {
                     classImageView.image = nil
                 }
                 classImageViewWidthConstraint.constant = 36
+                classImageViewLabelSpacing.constant = 8
             } else {
-                levelLabel.text = "\(levelString) \(stats.level)"
                 classImageView.image = nil
                 classImageViewWidthConstraint.constant = 0
+                classImageViewLabelSpacing.constant = 0
+                levelLabel.text = nil
             }
             
             goldView.amount = Int(stats.gold)
             
             buffIconView.isHidden = stats.buffs?.isBuffed != true
         }
-        usernameLabel.text = user.profile?.name
         contributorTier = user.contributor?.level ?? 0
         gemView.amount = user.gemCount
         

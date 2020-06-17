@@ -182,6 +182,7 @@ class MainTabBarController: UITabBarController, Themeable {
         }
         // swiftlint:disable:next empty_count
         badge.isHidden = count == 0
+        badge.isUserInteractionEnabled = false
         tabBar.addSubview(badge)
         (tabBar as? MainTabBar)?.layoutBadges()
     }

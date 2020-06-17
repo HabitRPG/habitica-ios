@@ -22,15 +22,6 @@ class TopHeaderCoordinator: NSObject {
         }
     }
     @objc var followScrollView = true
-    @objc var navbarHiddenColor: UIColor? {
-        didSet {
-            if didAppear {
-                if let navbarHiddenColor = self.navbarHiddenColor ?? topHeaderNavigationController?.defaultNavbarHiddenColor {
-                    topHeaderNavigationController?.navbarHiddenColor = navbarHiddenColor
-                }
-            }
-        }
-    }
     @objc var navbarVisibleColor: UIColor? {
         didSet {
             if isVisible {
@@ -92,11 +83,6 @@ class TopHeaderCoordinator: NSObject {
             navController.navbarVisibleColor = navbarVisibleColor
         } else {
             navController.navbarVisibleColor = navController.defaultNavbarVisibleColor
-        }
-        if let navbarHiddenColor = self.navbarHiddenColor {
-            navController.navbarHiddenColor = navbarHiddenColor
-        } else {
-            navController.navbarHiddenColor = navController.defaultNavbarHiddenColor
         }
         
         navController.view.setNeedsLayout()

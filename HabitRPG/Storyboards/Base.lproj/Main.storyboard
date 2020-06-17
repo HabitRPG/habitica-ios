@@ -43,14 +43,21 @@
                         <sections/>
                     </tableView>
                     <navigationItem key="navigationItem" id="Ueo-OS-iQj">
-                        <barButtonItem key="leftBarButtonItem" id="r2M-pt-ZEv">
-                            <connections>
-                                <segue destination="6vN-Em-JCA" kind="popoverPresentation" identifier="FilterSegue" popoverAnchorBarButtonItem="r2M-pt-ZEv" id="njg-A8-lDq">
-                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                </segue>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="eoD-0q-22r">
+                        <leftBarButtonItems>
+                            <barButtonItem image="filter_icon" id="ncU-9d-5zK">
+                                <connections>
+                                    <segue destination="6vN-Em-JCA" kind="popoverPresentation" popoverAnchorBarButtonItem="ncU-9d-5zK" id="WRT-c8-yJ5">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="search_icon" id="1px-Fy-VAc">
+                                <connections>
+                                    <action selector="searchButtonTapped:" destination="9wT-fg-nmz" id="FHv-84-Ph2"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" image="add_icon" id="eoD-0q-22r">
                             <connections>
                                 <segue destination="s5d-Hq-9de" kind="presentation" identifier="FormSegue" animates="NO" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="PHp-cT-md6"/>
                             </connections>
@@ -84,14 +91,21 @@
                         <sections/>
                     </tableView>
                     <navigationItem key="navigationItem" id="zec-6L-pJk">
-                        <barButtonItem key="leftBarButtonItem" id="lJN-5G-qrz">
-                            <connections>
-                                <segue destination="6vN-Em-JCA" kind="popoverPresentation" identifier="FilterSegue" popoverAnchorBarButtonItem="lJN-5G-qrz" id="04Z-5H-zfF">
-                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                </segue>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="QMS-gq-G3V">
+                        <leftBarButtonItems>
+                            <barButtonItem image="filter_icon" id="lJN-5G-qrz">
+                                <connections>
+                                    <segue destination="6vN-Em-JCA" kind="popoverPresentation" identifier="FilterSegue" popoverAnchorBarButtonItem="lJN-5G-qrz" id="04Z-5H-zfF">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="search_icon" id="9ks-PR-1nG">
+                                <connections>
+                                    <action selector="searchButtonTapped:" destination="YnE-7V-tix" id="sjV-Vg-uEZ"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" image="add_icon" id="QMS-gq-G3V">
                             <connections>
                                 <segue destination="s5d-Hq-9de" kind="presentation" identifier="FormSegue" animates="NO" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="WX7-CS-CSr"/>
                             </connections>
@@ -117,15 +131,22 @@
                         <sections/>
                     </tableView>
                     <navigationItem key="navigationItem" id="Tis-dF-qId">
-                        <barButtonItem key="leftBarButtonItem" id="7QR-Cq-K2a">
-                            <connections>
-                                <action selector="editButtonSelected:" destination="sPQ-za-Ji6" id="cc5-TO-pi3"/>
-                                <segue destination="6vN-Em-JCA" kind="popoverPresentation" identifier="FilterSegue" popoverAnchorBarButtonItem="7QR-Cq-K2a" id="iSa-66-Wjc">
-                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                </segue>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="txM-DJ-1EC">
+                        <leftBarButtonItems>
+                            <barButtonItem image="filter_icon" id="7QR-Cq-K2a">
+                                <connections>
+                                    <action selector="editButtonSelected:" destination="sPQ-za-Ji6" id="cc5-TO-pi3"/>
+                                    <segue destination="6vN-Em-JCA" kind="popoverPresentation" identifier="FilterSegue" popoverAnchorBarButtonItem="7QR-Cq-K2a" id="iSa-66-Wjc">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="search_icon" id="y3P-eL-NGK">
+                                <connections>
+                                    <action selector="searchButtonTapped:" destination="sPQ-za-Ji6" id="otG-KD-19W"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" image="add_icon" id="txM-DJ-1EC">
                             <connections>
                                 <segue destination="s5d-Hq-9de" kind="presentation" identifier="FormSegue" animates="NO" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="6tw-63-M3K"/>
                             </connections>
@@ -160,16 +181,16 @@
                                             <rect key="frame" x="20" y="4" width="316" height="36"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="n0l-QM-LJV">
-                                                    <rect key="frame" x="0.0" y="0.0" width="284" height="36"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="250" height="36"/>
                                                     <subviews>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7mY-LD-ILX">
-                                                            <rect key="frame" x="0.0" y="0.0" width="284" height="36"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="250" height="36"/>
                                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="999" verticalCompressionResistancePriority="1000" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qfa-RN-CGk">
-                                                            <rect key="frame" x="0.0" y="36" width="284" height="0.0"/>
+                                                            <rect key="frame" x="0.0" y="36" width="250" height="0.0"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                             <nil key="highlightedColor"/>
@@ -177,7 +198,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <view tag="3" contentMode="scaleToFill" horizontalHuggingPriority="999" horizontalCompressionResistancePriority="999" translatesAutoresizingMaskIntoConstraints="NO" id="USe-72-kBx" customClass="PillView" customModule="Habitica" customModuleProvider="target">
-                                                    <rect key="frame" x="284" y="12" width="16" height="12"/>
+                                                    <rect key="frame" x="250" y="0.0" width="50" height="36"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 </view>
                                                 <view clipsSubviews="YES" tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y81-RX-OwJ">
@@ -2554,7 +2575,7 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="HHL-mH-FJc">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="NiR-ou-IuB">
+                        <barButtonItem key="rightBarButtonItem" image="add_icon" id="NiR-ou-IuB">
                             <connections>
                                 <segue destination="s5d-Hq-9de" kind="presentation" identifier="FormSegue" animates="NO" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="tO1-JH-hWy"/>
                             </connections>
@@ -3138,18 +3159,21 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="0lO-rm-fRj"/>
-        <segue reference="04Z-5H-zfF"/>
+        <segue reference="WRT-c8-yJ5"/>
         <segue reference="ETz-qE-xC2"/>
         <segue reference="mRM-bY-AV4"/>
         <segue reference="V6b-ej-qnx"/>
-        <segue reference="tO1-JH-hWy"/>
+        <segue reference="PHp-cT-md6"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.44783598184585571" green="0.10848048329353333" blue="0.9984632134437561" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
     <resources>
+        <image name="add_icon" width="20" height="20"/>
+        <image name="filter_icon" width="22" height="17"/>
         <image name="gem_purchase_header" width="254" height="68"/>
         <image name="gift_sub_gift" width="24" height="25"/>
+        <image name="search_icon" width="20" height="20"/>
         <image name="subscribe_header" width="240" height="61"/>
-        <image name="tabbar_dailies" width="32" height="32"/>
+        <image name="tabbar_dailies" width="22" height="21"/>
         <image name="tabbar_dailies_selected" width="22" height="21"/>
         <image name="tabbar_habits" width="32" height="32"/>
         <image name="tabbar_habits_selected" width="30" height="20"/>
