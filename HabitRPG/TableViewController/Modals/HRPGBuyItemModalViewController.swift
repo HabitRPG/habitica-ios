@@ -661,11 +661,11 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                         }
                     }
                     let remaining = 20 - ownedCount
-                    onResult(remaining)
+                    onResult(max(0, remaining))
                 })
                 .start()
         } else if reward?.purchaseType == "hatchingPotions" {
-            stableRepository.getPets(query: "type == 'quest' && potion == '\(reward?.key ?? "")'").filter { pets -> Bool in
+            stableRepository.getPets(query: "type == 'premium' && potion == '\(reward?.key ?? "")'").filter { pets -> Bool in
                 return !pets.value.isEmpty
             }.flatMap(.latest) { _ in
                 return self.inventoryRepository.getOwnedItems(userID: nil, itemType: "hatchingPotions")
@@ -689,7 +689,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                         }
                     }
                     let remaining = 20 - ownedCount
-                    onResult(remaining)
+                    onResult(max(0, remaining))
                 })
                 .start()
         } else {
