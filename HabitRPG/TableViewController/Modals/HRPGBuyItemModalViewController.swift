@@ -318,6 +318,9 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
             self.bulkView = bulkView
             contentView.addConstraints(NSLayoutConstraint.defaultHorizontalConstraints(bulkView))
             contentView.addConstraints(NSLayoutConstraint.defaultVerticalConstraints("V:|-0-[itemView]-0-[detailView]-0-[bulkView]-20-|", ["itemView": itemView, "detailView": detailView, "bulkView": bulkView]))
+            if reward?.key != "gem" {
+                bulkView.iconView.isHidden = true
+            }
         } else {
             contentView.addConstraints(NSLayoutConstraint.defaultVerticalConstraints("V:|-0-[itemView]-0-[detailView]-20-|", views))
         }
@@ -356,7 +359,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     }
     
     private func canBulkPurchase() -> Bool {
-        return reward?.key == "gem"
+        return reward?.key == "gem" || ["eggs", "hatchingPotions", "food"].contains(reward?.purchaseType ?? "")
     }
     
     //swiftlint:disable function_body_length

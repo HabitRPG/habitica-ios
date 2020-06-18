@@ -71,7 +71,7 @@ class MainTabBarController: UITabBarController, Themeable {
             tabBar.tintColor = theme.tintColor
             tabBar.barTintColor = theme.contentBackgroundColor
             tabBar.backgroundColor = .clear
-            tabBar.barStyle = .default
+            tabBar.barStyle = .black
         }
         
         if #available(iOS 13.0, *) {

@@ -17,6 +17,7 @@ class HRPGBulkPurchaseView: UIView, Themeable {
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var inputContainer: UIView!
+    @IBOutlet weak var iconView: UIImageView!
     
     private var user: UserProtocol?
     
