@@ -880,3 +880,7 @@
 "insufficient_hourglasses_message" = "You’ll need more Mystic Hourglasses to buy this item! Hourglasses are rewarded for being subscribed for consecutive months.";
 "insufficient_hourglasses_message_subscriber" = "You’ll need more Mystic Hourglasses to buy this item! Stay Subscribed to keep receiving your Hourglasses.";
 "learn_more" = "Learn More";
+"excess_items" = "Excess Items";
+"excess_no_items_left" = "You've already hatched all possible %@ pets. Are you sure you want to purchase %d %@?";
+"excess_x_items_left" = "You only need %d %@ to hatch all possible pets. Are you sure you want to purchase %d?";
+"purchase_x" = "Purchase %d";

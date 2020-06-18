@@ -168,6 +168,16 @@ public enum L10n {
   }
   /// Equip
   public static var equip: String { return L10n.tr("Mainstrings", "equip") }
+  /// Excess Items
+  public static var excessItems: String { return L10n.tr("Mainstrings", "excess_items") }
+  /// You've already hatched all possible %@ pets. Are you sure you want to purchase %d %@?
+  public static func excessNoItemsLeft(_ p1: String, _ p2: Int, _ p3: String) -> String {
+    return L10n.tr("Mainstrings", "excess_no_items_left", p1, p2, p3)
+  }
+  /// You only need %d %@ to hatch all possible pets. Are you sure you want to purchase %d?
+  public static func excessXItemsLeft(_ p1: Int, _ p2: String, _ p3: Int) -> String {
+    return L10n.tr("Mainstrings", "excess_x_items_left", p1, p2, p3)
+  }
   /// Experience
   public static var experience: String { return L10n.tr("Mainstrings", "experience") }
   /// Filter
@@ -430,6 +440,10 @@ public enum L10n {
   public static var purchaseFromTimeTravelersShop: String { return L10n.tr("Mainstrings", "purchase_from_time_travelers_shop") }
   /// Purchase Gems
   public static var purchaseGems: String { return L10n.tr("Mainstrings", "purchase_gems") }
+  /// Purchase %d
+  public static func purchaseX(_ p1: Int) -> String {
+    return L10n.tr("Mainstrings", "purchase_x", p1)
+  }
   /// You purchased %@
   public static func purchased(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "purchased", p1)
