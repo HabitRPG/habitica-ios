@@ -654,14 +654,15 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                 }
                 return self.stableRepository.getOwnedMounts()
                 }.take(first: 1)
-                .on(value: { mounts in
+                .on(completed: {
+                    let remaining = 20 - ownedCount
+                    onResult(max(0, remaining))
+                }, value: { mounts in
                     for mount in mounts.value {
                         if mount.key?.contains(self.reward?.key ?? "") == true {
                             ownedCount += 1
                         }
                     }
-                    let remaining = 20 - ownedCount
-                    onResult(max(0, remaining))
                 })
                 .start()
         } else if reward?.purchaseType == "hatchingPotions" {
@@ -682,14 +683,15 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                 }
                 return self.stableRepository.getOwnedMounts()
                 }.take(first: 1)
-                .on(value: { mounts in
+                .on(completed: {
+                    let remaining = 20 - ownedCount
+                    onResult(max(0, remaining))
+                }, value: { mounts in
                     for mount in mounts.value {
                         if mount.key?.contains(self.reward?.key ?? "") == true {
                             ownedCount += 1
                         }
                     }
-                    let remaining = 20 - ownedCount
-                    onResult(max(0, remaining))
                 })
                 .start()
         } else {

@@ -170,7 +170,7 @@ public enum L10n {
   public static var equip: String { return L10n.tr("Mainstrings", "equip") }
   /// Excess Items
   public static var excessItems: String { return L10n.tr("Mainstrings", "excess_items") }
-  /// You've already hatched all possible %@ pets. Are you sure you want to purchase %d %@?
+  /// You already have everything you need for all %@ pets. Are you sure you want to purchase %d %@s?
   public static func excessNoItemsLeft(_ p1: String, _ p2: Int, _ p3: String) -> String {
     return L10n.tr("Mainstrings", "excess_no_items_left", p1, p2, p3)
   }
