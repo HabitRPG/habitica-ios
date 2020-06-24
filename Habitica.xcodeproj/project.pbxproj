@@ -361,6 +361,7 @@
 		29FD8AA7203DA42A0094322E /* NSLayoutConstraint-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FD8AA6203DA42A0094322E /* NSLayoutConstraint-Extensions.swift */; };
 		29FEB278202B491600EA245A /* Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FEB277202B491600EA245A /* Avatar.swift */; };
 		29FEB27A202B4F0400EA245A /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FEB279202B4F0400EA245A /* AvatarView.swift */; };
+		328C951E24A2C13100293E16 /* LinksOnlyTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328C951D24A2C13100293E16 /* LinksOnlyTextView.swift */; };
 		49005B721F180589004830D9 /* HRPGCurrencyCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49005B711F180588004830D9 /* HRPGCurrencyCountView.swift */; };
 		49005B7C1F18371F004830D9 /* HRPGShopUserHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49005B7B1F18371E004830D9 /* HRPGShopUserHeaderView.swift */; };
 		49005B7E1F183775004830D9 /* HRPGShopUserHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49005B7D1F183775004830D9 /* HRPGShopUserHeaderView.xib */; };
@@ -1039,6 +1040,7 @@
 		29FEB277202B491600EA245A /* Avatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Avatar.swift; sourceTree = "<group>"; };
 		29FEB279202B4F0400EA245A /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		29FFB19320F5080D0031D914 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/OnePasswordExtension.strings; sourceTree = "<group>"; };
+		328C951D24A2C13100293E16 /* LinksOnlyTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksOnlyTextView.swift; sourceTree = "<group>"; };
 		49005B711F180588004830D9 /* HRPGCurrencyCountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGCurrencyCountView.swift; sourceTree = "<group>"; };
 		49005B7B1F18371E004830D9 /* HRPGShopUserHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HRPGShopUserHeaderView.swift; sourceTree = "<group>"; };
 		49005B7D1F183775004830D9 /* HRPGShopUserHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRPGShopUserHeaderView.xib; sourceTree = "<group>"; };
@@ -2470,6 +2472,7 @@
 				D91CCACF1BCF11CC001C6A0C /* UserTopHeader.xib */,
 				2980E6081EEA25CD005B7100 /* YesterdailiesDialogView.swift */,
 				2980E6061EEA1F55005B7100 /* YesterdailiesDialogView.xib */,
+				328C951D24A2C13100293E16 /* LinksOnlyTextView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -3487,6 +3490,7 @@
 				299FB29D2084A67D00422522 /* StableOverviewViewController.swift in Sources */,
 				290B6287207CD6B5007287C4 /* GroupDetailViewController.swift in Sources */,
 				290B6298207E3F37007287C4 /* LeaveGroupInteractor.swift in Sources */,
+				328C951E24A2C13100293E16 /* LinksOnlyTextView.swift in Sources */,
 				2912C3C522CB955B00BC485F /* QuestInviteNotificationCell.swift in Sources */,
 				298119B11F50453100F9FB39 /* QuestGoalView.swift in Sources */,
 				D9D17CCC1E6736A600AD9232 /* ChallengeDetailHeaderView.swift in Sources */,

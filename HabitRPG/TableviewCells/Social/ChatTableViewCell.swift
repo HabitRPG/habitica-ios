@@ -20,7 +20,7 @@ class ChatTableViewCell: UITableViewCell, UITextViewDelegate, Themeable {
     @IBOutlet weak private var displaynameLabel: UsernameLabel!
     @IBOutlet weak private var positionLabel: PaddedLabel!
     @IBOutlet weak private var sublineLabel: UILabel!
-    @IBOutlet weak private var messageTextView: UITextView!
+    @IBOutlet weak private var messageTextView: LinksOnlyTextView!
     @IBOutlet weak private var plusOneButton: UIButton!
     @IBOutlet weak private var replyButton: UIButton!
     @IBOutlet weak private var copyButton: UIButton!
