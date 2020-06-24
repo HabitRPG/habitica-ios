@@ -95,10 +95,6 @@ class ChatTableViewCell: UITableViewCell, UITextViewDelegate, Themeable {
         wrapperTapRecognizer.delegate = self
         wrapperTapRecognizer.cancelsTouchesInView = false
         messageWrapper.addGestureRecognizer(wrapperTapRecognizer)
-        let messageTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(expandCell))
-        messageTapRecognizer.delegate = self
-        messageTapRecognizer.cancelsTouchesInView = false
-        messageTextView.addGestureRecognizer(messageTapRecognizer)
         
         displaynameLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(displayProfile)))
         avatarWrapper.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(displayProfile)))
