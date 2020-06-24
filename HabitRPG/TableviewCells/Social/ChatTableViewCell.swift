@@ -270,20 +270,8 @@ class ChatTableViewCell: UITableViewCell, UITextViewDelegate, Themeable {
             return false
         }
         if messageTextView.frame.contains(location) {
-            if messageTextView == gestureRecognizer.view {
-                return false
-            }
-            let layoutManager = messageTextView.layoutManager
-            var messageViewLocation = touch.location(in: messageTextView)
-            messageViewLocation.x -= messageTextView.textContainerInset.left
-            messageViewLocation.y -= messageTextView.textContainerInset.top
-            let characterIndex = layoutManager.characterIndex(for: messageViewLocation, in: messageTextView.textContainer, fractionOfDistanceBetweenInsertionPoints: nil)
-            if characterIndex < messageTextView.textStorage.length {
-                let attributes = messageTextView.textStorage.attributes(at: characterIndex, effectiveRange: nil)
-                if attributes[NSAttributedString.Key.link] != nil {
-                    return false
-                }
-            }
+            let relativeLocation = touch.location(in: messageTextView)
+            return !messageTextView.point(inside: relativeLocation, with: nil)
         }
         if displaynameLabel.frame.contains(location) {
             return false
