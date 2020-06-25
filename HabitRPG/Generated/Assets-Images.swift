@@ -55,6 +55,7 @@ internal enum Asset {
   internal static let welcomeDiamond = ImageAsset(name: "WelcomeDiamond")
   internal static let addIcon = ImageAsset(name: "add_icon")
   internal static let adventureGuideArt = ImageAsset(name: "adventureGuideArt")
+  internal static let adventureGuideStar = ImageAsset(name: "adventureGuideStar")
   internal static let bigGem = ImageAsset(name: "big_gem")
   internal static let buttonGrid = ImageAsset(name: "button_grid")
   internal static let buttonList = ImageAsset(name: "button_list")

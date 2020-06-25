@@ -36,6 +36,33 @@ class MainTabBarController: UITabBarController, Themeable {
         get { return (tabBar as? MainTabBar)?.badges }
     }
         
+    private var showAdventureGuideBadge = false {
+        didSet {
+            let badge = badges?[4]
+            if showAdventureGuideBadge {
+                if badge == nil || badge?.containedView is UILabel {
+                    badge?.removeFromSuperview()
+                    let newBadge = PaddedView()
+                    badges?[4] = newBadge
+                    newBadge.verticalPadding = 4
+                    newBadge.horizontalPadding = 4
+                    newBadge.backgroundColor = .yellow10
+                    newBadge.containedView = UIImageView(image: Asset.adventureGuideStar.image)
+                    newBadge.isUserInteractionEnabled = false
+                    tabBar.addSubview(newBadge)
+                    (tabBar as? MainTabBar)?.layoutBadges()
+                } else {
+                    return
+                }
+            } else {
+                if !(badge?.containedView is UILabel) {
+                    badge?.removeFromSuperview()
+                    badges?.removeValue(forKey: 4)
+                }
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
                 
@@ -109,9 +136,7 @@ class MainTabBarController: UITabBarController, Themeable {
                 }
                 
             }
-            if user.achievements?.hasCompletedOnboarding != true {
-                badgeCount += 1
-            }
+            self?.showAdventureGuideBadge = user.achievements?.hasCompletedOnboarding != true
             self?.setBadgeCount(index: 4, count: badgeCount)
             
             if let tutorials = user.flags?.tutorials {
@@ -166,11 +191,12 @@ class MainTabBarController: UITabBarController, Themeable {
     }
     
     private func setBadgeCount(index: Int, count: Int) {
-        var badge = PaddedView()
-        if let oldBadge = badges?[index] {
-            badge = oldBadge
-        } else {
-            badges?[index] = badge
+        if index == 4 && showAdventureGuideBadge {
+            return
+        }
+        let badge = badges?[index] ?? PaddedView()
+        badges?[index] = badge
+        if !(badge.containedView is UILabel) {
             badge.verticalPadding = 2
             badge.horizontalPadding = 6
             let label = UILabel()
