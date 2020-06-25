@@ -31,6 +31,7 @@ class RealmTask: Object, TaskProtocol {
     @objc dynamic var frequency: String? = "daily"
     @objc dynamic var everyX: Int = 1
     @objc dynamic var challengeID: String?
+    @objc dynamic var challengeBroken: String?
     @objc dynamic var createdAt: Date?
     @objc dynamic var updatedAt: Date?
     @objc dynamic var startDate: Date?
@@ -220,6 +221,7 @@ class RealmTask: Object, TaskProtocol {
         frequency = taskProtocol.frequency
         everyX = taskProtocol.everyX
         challengeID = taskProtocol.challengeID
+        challengeBroken = taskProtocol.challengeBroken
         startDate = taskProtocol.startDate
         createdAt = taskProtocol.createdAt
         updatedAt = taskProtocol.updatedAt

@@ -13,6 +13,7 @@ private struct ChallengeHelper: Decodable {
     var taskId: String?
     var id: String?
     var shortName: String?
+    var broken: String?
 }
 
 public class APITask: TaskProtocol, Codable {
@@ -35,6 +36,7 @@ public class APITask: TaskProtocol, Codable {
     public var frequency: String?
     public var everyX: Int = 0
     public var challengeID: String?
+    public var challengeBroken: String?
     public var tags: [TagProtocol] = []
     public var checklist: [ChecklistItemProtocol] = []
     public var reminders: [ReminderProtocol] = []
@@ -111,6 +113,7 @@ public class APITask: TaskProtocol, Codable {
         everyX = (try? values.decode(Int.self, forKey: .everyX)) ?? 0
         let challengeHelper = try? values.decode(ChallengeHelper.self, forKey: .challenge)
         challengeID = challengeHelper?.id
+        challengeBroken = challengeHelper?.broken
         createdAt = try? values.decode(Date.self, forKey: .createdAt)
         updatedAt = try? values.decode(Date.self, forKey: .updatedAt)
         startDate = try? values.decode(Date.self, forKey: .startDate)
