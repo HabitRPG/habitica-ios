@@ -61,7 +61,7 @@ class UserManager: NSObject {
                     return
                 }
                 
-                var eventProperties = Dictionary<AnyHashable, Any>()
+                var eventProperties = [AnyHashable: Any]()
                 eventProperties["eventAction"] = "show cron"
                 eventProperties["eventCategory"] = "behaviour"
                 eventProperties["event"] = "event"

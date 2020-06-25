@@ -200,6 +200,7 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
         bottomBorderView.backgroundColor = theme.contentBackgroundColor
         backgroundView.backgroundColor = theme.contentBackgroundColor
         upperBackgroundView.backgroundColor = theme.contentBackgroundColor
+        setNavigationBarColors()
         updateStatusbarColor()
     }
     

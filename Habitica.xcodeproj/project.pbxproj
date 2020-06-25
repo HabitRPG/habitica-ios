@@ -310,6 +310,10 @@
 		29C1B6AB20594F500001D3EF /* VisualEffectsModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C1B6AA20594F500001D3EF /* VisualEffectsModalViewController.swift */; };
 		29C1B6AE205952E40001D3EF /* Tasks.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29C1B6B0205952E40001D3EF /* Tasks.storyboard */; };
 		29C1B6B420599E6D0001D3EF /* TaskFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C1B6B320599E6D0001D3EF /* TaskFormViewController.swift */; };
+		29C38C8524A2466400F219A1 /* AdventureGuidePromoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C38C8424A2466400F219A1 /* AdventureGuidePromoView.swift */; };
+		29C38C8724A256F800F219A1 /* AdventureGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C38C8624A256F800F219A1 /* AdventureGuideViewController.swift */; };
+		29C38C8924A33E6600F219A1 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C38C8824A33E6600F219A1 /* NotificationManager.swift */; };
+		29C38C8B24A48F9D00F219A1 /* AchievementAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C38C8A24A48F9D00F219A1 /* AchievementAlertController.swift */; };
 		29DBFEF720C997D100DF9CF2 /* CalculateUserStatsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFEF620C997D100DF9CF2 /* CalculateUserStatsInteractor.swift */; };
 		29DBFF0120CE6FFF00DF9CF2 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFF0020CE6FFF00DF9CF2 /* SoundManager.swift */; };
 		29DBFF0520CEB42F00DF9CF2 /* AvatarGearDetailViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DBFF0420CEB42F00DF9CF2 /* AvatarGearDetailViewDataSource.swift */; };
@@ -978,6 +982,10 @@
 		29C1B6AA20594F500001D3EF /* VisualEffectsModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectsModalViewController.swift; sourceTree = "<group>"; };
 		29C1B6AF205952E40001D3EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Tasks.storyboard; sourceTree = "<group>"; };
 		29C1B6B320599E6D0001D3EF /* TaskFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFormViewController.swift; sourceTree = "<group>"; };
+		29C38C8424A2466400F219A1 /* AdventureGuidePromoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdventureGuidePromoView.swift; sourceTree = "<group>"; };
+		29C38C8624A256F800F219A1 /* AdventureGuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdventureGuideViewController.swift; sourceTree = "<group>"; };
+		29C38C8824A33E6600F219A1 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		29C38C8A24A48F9D00F219A1 /* AchievementAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementAlertController.swift; sourceTree = "<group>"; };
 		29C5A72B22F08C010083749D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/AppIntentVocabulary.plist; sourceTree = "<group>"; };
 		29C6009F20F508D8005CC6C1 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/OnePasswordExtension.strings; sourceTree = "<group>"; };
 		29C600A120F508D8005CC6C1 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Mainstrings.strings; sourceTree = "<group>"; };
@@ -1655,6 +1663,7 @@
 				295D42F520921F4200948E7E /* ClassSelectionViewController.swift */,
 				291E95AE20988025006EE585 /* NewsViewController.swift */,
 				29A62B002167D55200D4BD90 /* VerifyUsernameModalViewController.swift */,
+				29C38C8624A256F800F219A1 /* AdventureGuideViewController.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -2285,6 +2294,7 @@
 				2919FDDC2091D5370096A53B /* UserManager.swift */,
 				C897F63B218CCF51002907C2 /* RouterHandler.swift */,
 				290922EF2242628600645D0E /* LanguageHandler.swift */,
+				29C38C8824A33E6600F219A1 /* NotificationManager.swift */,
 				29EBDA742328FC43006611E3 /* NSString+Emoji.h */,
 				29EBDA752328FC43006611E3 /* NSString+Emoji.m */,
 				29EBDA82232A3ABA006611E3 /* KeychainItem.swift */,
@@ -2470,6 +2480,8 @@
 				D91CCACF1BCF11CC001C6A0C /* UserTopHeader.xib */,
 				2980E6081EEA25CD005B7100 /* YesterdailiesDialogView.swift */,
 				2980E6061EEA1F55005B7100 /* YesterdailiesDialogView.xib */,
+				29C38C8424A2466400F219A1 /* AdventureGuidePromoView.swift */,
+				29C38C8A24A48F9D00F219A1 /* AchievementAlertController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -3610,6 +3622,7 @@
 				29028C392034ABAF00B7F704 /* TaskRepositoryImpl.swift in Sources */,
 				D99F15C0191027D90081836E /* HRPGBaseViewController.m in Sources */,
 				D94AADBA192A5CE700546C8E /* HRPGSpellTabBarController.m in Sources */,
+				29C38C8524A2466400F219A1 /* AdventureGuidePromoView.swift in Sources */,
 				294FD5692064135500EABCC9 /* HabitControlsRow.swift in Sources */,
 				29FEB27A202B4F0400EA245A /* AvatarView.swift in Sources */,
 				D97ED0B21E6DE3BF006C2A26 /* LeaveChallengeInteractor.swift in Sources */,
@@ -3691,6 +3704,7 @@
 				295BC6F6226F4BC600DDDF1A /* NotificationsDataSource.swift in Sources */,
 				29144898208A271C00F3A6B5 /* AvatarDetailViewDataSource.swift in Sources */,
 				49A84FB21F9FCA30003E2956 /* ChallengeDetailInfoTableViewCell.swift in Sources */,
+				29C38C8924A33E6600F219A1 /* NotificationManager.swift in Sources */,
 				49DCECA71F96ECEF00982E99 /* MultiModelDataSource.swift in Sources */,
 				29646DD6205BE4C10050886C /* TaskFormViewModel.swift in Sources */,
 				2957B8B31F4B2D5A00E836EF /* RewardViewController.swift in Sources */,
@@ -3721,6 +3735,7 @@
 				297D15FD20B825DE0048101F /* HRPGSearchDataManager.m in Sources */,
 				D9BB455D1E71C8C70002AE2E /* CheckedTableViewcell.swift in Sources */,
 				292DEEA5204F6F6C0086D5F7 /* DailyTableViewDataSource.swift in Sources */,
+				29C38C8724A256F800F219A1 /* AdventureGuideViewController.swift in Sources */,
 				292DEE8D204F458B0086D5F7 /* HabitTableViewDataSource.swift in Sources */,
 				D9FC1A7E1BC28F4700B97D23 /* HRPGTypingLabel.m in Sources */,
 				29E48F0D22E89DB3005C4B45 /* BadgeView.swift in Sources */,
@@ -3749,6 +3764,7 @@
 				29B3FEAF1F9A33AB000B12CF /* APISettingsViewController.swift in Sources */,
 				498E4CFB1FA17B9E006933FF /* ChallengeCreatorTableViewCell.swift in Sources */,
 				D984D58D1E4A2F2D006E84F8 /* SubscriptionOptionView.swift in Sources */,
+				29C38C8B24A48F9D00F219A1 /* AchievementAlertController.swift in Sources */,
 				292726B620B7094B009DD08A /* ChallengeTableViewDataSource.swift in Sources */,
 				299FB2A72084B44000422522 /* PetOverviewDataSource.swift in Sources */,
 				29A6B85D20641C9B0086B2A6 /* TaskDifficultyRow.swift in Sources */,
@@ -4068,7 +4084,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 469;
+				CURRENT_PROJECT_VERSION = 500;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4077,7 +4093,7 @@
 				INFOPLIST_FILE = "Habitica IntentsUI/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 2.9;
+				MARKETING_VERSION = 2.10;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-IntentsUI";
@@ -4103,7 +4119,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 469;
+				CURRENT_PROJECT_VERSION = 500;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4112,7 +4128,7 @@
 				INFOPLIST_FILE = "Habitica IntentsUI/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 2.9;
+				MARKETING_VERSION = 2.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-IntentsUI";
@@ -4137,7 +4153,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 469;
+				CURRENT_PROJECT_VERSION = 500;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4146,7 +4162,7 @@
 				INFOPLIST_FILE = "Habitica Intents/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 2.9;
+				MARKETING_VERSION = 2.10;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-Intents";
@@ -4174,7 +4190,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 469;
+				CURRENT_PROJECT_VERSION = 500;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -4183,7 +4199,7 @@
 				INFOPLIST_FILE = "Habitica Intents/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 2.9;
+				MARKETING_VERSION = 2.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.habitrpg.ios.Habitica.Habitica-Intents";
@@ -4521,7 +4537,7 @@
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 469;
+				CURRENT_PROJECT_VERSION = 500;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_SOURCE_FILE_NAMES = "";
@@ -4565,7 +4581,7 @@
 				INFOPLIST_FILE = "HabitRPG/Habitica-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 2.9;
+				MARKETING_VERSION = 2.10;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-framework",
@@ -4614,7 +4630,7 @@
 				CODE_SIGN_ENTITLEMENTS = Habitica.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 469;
+				CURRENT_PROJECT_VERSION = 500;
 				DEVELOPMENT_TEAM = 9Q9SMRMCNN;
 				ENABLE_BITCODE = NO;
 				EXCLUDED_SOURCE_FILE_NAMES = "FLEX*";
@@ -4658,7 +4674,7 @@
 				INFOPLIST_FILE = "HabitRPG/Habitica-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 2.9;
+				MARKETING_VERSION = 2.10;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-framework",

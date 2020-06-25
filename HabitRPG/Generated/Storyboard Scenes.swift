@@ -31,6 +31,10 @@ internal enum StoryboardScene {
 
     internal static let aboutViewController = SceneType<Habitica.AboutViewController>(storyboard: Main.self, identifier: "AboutViewController")
 
+    internal static let adventureGuideNavigationViewController = SceneType<UIKit.UINavigationController>(storyboard: Main.self, identifier: "AdventureGuideNavigationViewController")
+
+    internal static let adventureGuideViewController = SceneType<Habitica.AdventureGuideViewController>(storyboard: Main.self, identifier: "AdventureGuideViewController")
+
     internal static let avatarOverviewViewController = SceneType<Habitica.AvatarOverviewViewController>(storyboard: Main.self, identifier: "AvatarOverviewViewController")
 
     internal static let equipmentOverviewViewController = SceneType<Habitica.EquipmentOverviewViewController>(storyboard: Main.self, identifier: "EquipmentOverviewViewController")

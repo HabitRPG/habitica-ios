@@ -56,6 +56,7 @@ internal enum StoryboardSegue {
     case equipmentDetailSegue
     case openGiftSubscriptionDialog
     case purchaseGemsSegue
+    case showAdventureGuide
     case showMarketSegue
     case showQuestShopSegue
     case showSeasonalShopSegue

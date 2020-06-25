@@ -109,6 +109,9 @@ class MainTabBarController: UITabBarController, Themeable {
                 }
                 
             }
+            if user.achievements?.hasCompletedOnboarding != true {
+                badgeCount += 1
+            }
             self?.setBadgeCount(index: 4, count: badgeCount)
             
             if let tutorials = user.flags?.tutorials {
@@ -232,7 +235,6 @@ class MainTabBar: UITabBar {
         super.layoutSubviews()
         layoutBadges()
     }
-    
     
     func layoutBadges() {
         for entry in badges {
