@@ -200,6 +200,7 @@ class UserTopHeader: UIView, Themeable {
             goldView.amount = Int(stats.gold)
             
             buffIconView.isHidden = stats.buffs?.isBuffed != true
+            layoutBuffIcon()
         }
         contributorTier = user.contributor?.level ?? 0
         gemView.amount = user.gemCount
@@ -221,8 +222,11 @@ class UserTopHeader: UIView, Themeable {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        let levelLabelSize = levelLabel.sizeThatFits(levelLabel.bounds.size)
-        buffIconView.pin.size(15).start(levelLabelSize.width + 6).bottom((levelLabelSize.height - 15)/2)
+        layoutBuffIcon()
+    }
+    
+    private func layoutBuffIcon() {
+        let usernameLabelSize = usernameLabel.sizeThatFits(levelLabel.bounds.size)
+        buffIconView.pin.size(15).start(usernameLabelSize.width + 6).top((usernameLabelSize.height - 15)/2)
     }
 }

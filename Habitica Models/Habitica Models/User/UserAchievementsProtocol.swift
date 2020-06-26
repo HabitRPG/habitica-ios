@@ -23,6 +23,17 @@ public protocol UserAchievementsProtocol: BaseModelProtocol {
 }
 
 public extension UserAchievementsProtocol {
+    
+    var onboardingAchievementKeys: [String] {
+        return [
+            "createdTask",
+            "completedTask",
+            "hatchedPet",
+            "fedPet",
+            "purchasedEquipment"
+        ]
+    }
+    
     var onboardingAchievements: [String: Bool] {
         return [
             "createdTask": createdTask,

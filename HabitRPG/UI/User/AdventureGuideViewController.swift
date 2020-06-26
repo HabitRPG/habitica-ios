@@ -38,7 +38,7 @@ class AdventureGuideViewController: BaseUIViewController {
                 self.progressView.setProgress(percentCompleted, animated: false)
                 self.progressLabel.text = L10n.percentComplete(Int(percentCompleted * 100.0))
                 
-                self.setAchievements(achievements)
+                self.setAchievements(keys: user.achievements?.onboardingAchievementKeys ?? [], achievements: achievements)
             }
             }).start()
     }
@@ -47,29 +47,38 @@ class AdventureGuideViewController: BaseUIViewController {
         super.applyTheme(theme: theme)
         view.backgroundColor = theme.contentBackgroundColor
         gettingStartedLabel.textColor = theme.primaryTextColor
-        progressView.backgroundColor = theme.offsetBackgroundColor
+        descriptionLabel.textColor = theme.primaryTextColor
+        progressView.trackTintColor = theme.offsetBackgroundColor
         progressView.tintColor = .yellow50
         progressLabel.textColor = .yellow5
         yourProgressLabel.textColor = theme.secondaryTextColor
         navigationController?.navigationBar.tintColor = theme.tintColor
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.barTintColor = theme.contentBackgroundColor
         navigationController?.navigationBar.backgroundColor = theme.contentBackgroundColor
     }
     
-    func setAchievements(_ achievements: [String: Bool]) {
+    func setAchievements(keys: [String], achievements: [String: Bool]) {
         achievementsStackview.subviews.forEach { $0.removeFromSuperview() }
-        for achievement in achievements {
+        for key in keys {
+            let achievement = achievements[key]
             let view = AdventureGuideAchievement()
-            view.setAchievement(title: AdventureGuideViewController.titles[achievement.key] ?? "", description: AdventureGuideViewController.descriptions[achievement.key] ?? "", iconName: achievement.key, isCompleted: achievement.value)
+            view.setAchievement(title: AdventureGuideViewController.titles[key] ?? "",
+                                description: AdventureGuideViewController.descriptions[key] ?? "",
+                                iconName: key,
+                                isCompleted: achievement ?? false)
             achievementsStackview.addArrangedSubview(view)
         }
     }
     
     static let titles = [
-        "createdTask": L10n.createdTaskTitle,
-        "completedTask": L10n.completedTaskTitle,
-        "hatchedPet": L10n.hatchedPetTitle,
-        "fedPet": L10n.fedPetTitle,
-        "purchasedEquipment": L10n.purchasedEquipmentTitle
+        "createdTask": L10n.createTaskTitle,
+        "completedTask": L10n.completeTaskTitle,
+        "hatchedPet": L10n.hatchPetTitle,
+        "fedPet": L10n.feedPetTitle,
+        "purchasedEquipment": L10n.purchaseEquipmentTitle
     ]
     static let descriptions = [
         "createdTask": L10n.createTaskDescription,
@@ -132,8 +141,13 @@ class AdventureGuideAchievement: UIView, Themeable {
     
     func applyTheme(theme: Theme) {
         if isCompleted {
-            titleLabel.textColor = theme.ternaryTextColor
-            descriptionLabel.textColor = theme.ternaryTextColor
+            if theme.isDark {
+                titleLabel.textColor = .gray300
+                descriptionLabel.textColor = .gray300
+            } else {
+                titleLabel.textColor = theme.ternaryTextColor
+                descriptionLabel.textColor = theme.ternaryTextColor
+            }
         } else {
             titleLabel.textColor = theme.primaryTextColor
             descriptionLabel.textColor = theme.primaryTextColor
@@ -145,7 +159,7 @@ class AdventureGuideAchievement: UIView, Themeable {
         descriptionLabel.text = description
         if isCompleted {
             let attributedTitle: NSMutableAttributedString =  NSMutableAttributedString(string: title)
-            attributedTitle.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributedTitle.length))
+            attributedTitle.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSRange(location: 0, length: attributedTitle.length))
             titleLabel.attributedText = attributedTitle
             iconView.setImagewith(name: "achievement-\(iconName)2x")
         } else {
@@ -167,9 +181,9 @@ class AdventureGuideAchievement: UIView, Themeable {
         iconView.pin.start().top().bottom().width(48)
         titleLabel.pin.after(of: iconView).marginStart(26).sizeToFit()
         descriptionLabel.pin.after(of: iconView).marginStart(26).right().sizeToFit(.width)
-        let textHeight = titleLabel.frame.size.height + descriptionLabel.frame.size.height
+        let textHeight = titleLabel.frame.size.height + descriptionLabel.frame.size.height + 4
         let offset = (frame.size.height - textHeight) / 2
         titleLabel.pin.top(offset)
-        descriptionLabel.pin.below(of: titleLabel)
+        descriptionLabel.pin.below(of: titleLabel).marginTop(4)
     }
 }

@@ -68,24 +68,19 @@
                                     <color key="textColor" red="0.37254901960784315" green="0.37254901960784315" blue="0.37254901960784315" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0dK-tZ-QKB">
-                                    <rect key="frame" x="6" y="-3.5" width="15" height="15"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="15" id="JCa-iu-L6L"/>
-                                        <constraint firstAttribute="height" constant="15" id="KK7-EU-3dX"/>
-                                    </constraints>
+                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0dK-tZ-QKB">
+                                    <rect key="frame" x="448" y="-7.5" width="15" height="15"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
                             </subviews>
                             <constraints>
                                 <constraint firstItem="AL5-B2-uxe" firstAttribute="leading" secondItem="J68-ym-ngp" secondAttribute="leading" id="6aI-XZ-kE7"/>
                                 <constraint firstAttribute="trailing" secondItem="v7A-NB-rwz" secondAttribute="trailing" id="L4J-Sv-8pC"/>
                                 <constraint firstItem="v7A-NB-rwz" firstAttribute="leading" secondItem="J68-ym-ngp" secondAttribute="leading" id="N87-8M-cmi"/>
-                                <constraint firstItem="0dK-tZ-QKB" firstAttribute="leading" secondItem="AL5-B2-uxe" secondAttribute="trailing" constant="6" id="O8q-ux-3So"/>
                                 <constraint firstItem="AL5-B2-uxe" firstAttribute="top" secondItem="v7A-NB-rwz" secondAttribute="bottom" constant="4" id="Wim-Qw-TAT"/>
                                 <constraint firstAttribute="bottom" secondItem="AL5-B2-uxe" secondAttribute="bottom" id="Zwe-hb-pyh"/>
                                 <constraint firstAttribute="height" priority="500" constant="128" id="j1Z-Uy-Kjq"/>
                                 <constraint firstItem="v7A-NB-rwz" firstAttribute="top" secondItem="J68-ym-ngp" secondAttribute="top" id="laC-K2-chz"/>
-                                <constraint firstItem="AL5-B2-uxe" firstAttribute="centerY" secondItem="0dK-tZ-QKB" secondAttribute="centerY" id="nbX-zP-5Ly"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="diH-Q0-CAQ" customClass="HRPGCurrencyCountView" customModule="Habitica" customModuleProvider="target">

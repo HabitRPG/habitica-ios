@@ -929,3 +929,8 @@
 "hatchedPetDescription" = "There are so many Pets to collect, you’re bound to have a favorite. If you feed them, they may just grow…";
 "fedPetDescription" = "Every Pet has a specific food they enjoy! Experiment to find out which will grow your Pet the fastest";
 "purchasedEquipmentDescription" = "Equipment can be practical or just fashionable. Raise your stats to get all sorts of benefits to your avatar";
+"create_task_title" = "Create a Task";
+"complete_task_title" = "Complete a Task";
+"hatch_pet_title" = "Hatch a Pet";
+"feedPet_title" = "Feed a Pet";
+"purchase_equipment_title" = "Purchase Equipment";

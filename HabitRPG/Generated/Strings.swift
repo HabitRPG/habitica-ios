@@ -96,6 +96,8 @@ public enum L10n {
   public static var completeMoreTasks: String { return L10n.tr("Mainstrings", "complete_more_tasks") }
   /// Check off any of your tasks to earn rewards
   public static var completeTaskDescription: String { return L10n.tr("Mainstrings", "complete_task_description") }
+  /// Complete a Task
+  public static var completeTaskTitle: String { return L10n.tr("Mainstrings", "complete_task_title") }
   /// Complete to earn 100 Gold!
   public static var completeToEarnGold: String { return L10n.tr("Mainstrings", "complete_to_earn_gold") }
   /// A task can be a Habit, Daily, or To Do. Continue completing them to receive all sorts of rewards!
@@ -124,6 +126,8 @@ public enum L10n {
   public static var createTag: String { return L10n.tr("Mainstrings", "create_tag") }
   /// Add a task for something you would like to accomplish this week
   public static var createTaskDescription: String { return L10n.tr("Mainstrings", "create_task_description") }
+  /// Create a Task
+  public static var createTaskTitle: String { return L10n.tr("Mainstrings", "create_task_title") }
   /// Keep it up! If you need help planning tasks, try thinking about what you’d like to do during a specific time of day
   public static var createdTaskDescription: String { return L10n.tr("Mainstrings", "createdTaskDescription") }
   /// Created your first task
@@ -208,6 +212,8 @@ public enum L10n {
   public static var fedPetTitle: String { return L10n.tr("Mainstrings", "fedPetTitle") }
   /// Complete tasks to get food! You can feed it to your pet from Pets & Mounts
   public static var feedPetDescription: String { return L10n.tr("Mainstrings", "feedPet_description") }
+  /// Feed a Pet
+  public static var feedPetTitle: String { return L10n.tr("Mainstrings", "feedPet_title") }
   /// Filter
   public static var filter: String { return L10n.tr("Mainstrings", "filter") }
   /// Filter by Tags
@@ -306,6 +312,8 @@ public enum L10n {
   public static var hatchEgg: String { return L10n.tr("Mainstrings", "hatch_egg") }
   /// Complete tasks to get a Hatching Potion and Egg then hatch your Pet!
   public static var hatchPetDescription: String { return L10n.tr("Mainstrings", "hatch_pet_description") }
+  /// Hatch a Pet
+  public static var hatchPetTitle: String { return L10n.tr("Mainstrings", "hatch_pet_title") }
   /// Hatch with potion
   public static var hatchPotion: String { return L10n.tr("Mainstrings", "hatch_potion") }
   /// There are so many Pets to collect, you’re bound to have a favorite. If you feed them, they may just grow…
