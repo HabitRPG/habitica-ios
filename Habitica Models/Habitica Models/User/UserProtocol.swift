@@ -35,8 +35,7 @@ public protocol UserProtocol: AvatarProtocol {
     var hasNewMessages: [UserNewMessagesProtocol] { get set }
     var invitations: [GroupInvitationProtocol] { get set }
     var pushDevices: [PushDeviceProtocol] { get set }
-    var questAchievements: [AchievementProtocol] { get set }
-    var achievementStreak: Int { get set }
+    var achievements: UserAchievementsProtocol? { get set }
 }
 
 public extension UserProtocol {

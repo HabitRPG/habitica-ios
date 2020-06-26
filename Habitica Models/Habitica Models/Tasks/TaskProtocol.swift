@@ -41,6 +41,7 @@ public protocol TaskProtocol: BaseRewardProtocol {
     var frequency: String? { get set }
     var everyX: Int { get set }
     var challengeID: String? { get set }
+    var challengeBroken: String? { get set }
     var createdAt: Date? { get set }
     var updatedAt: Date? { get set }
     var startDate: Date? { get set }

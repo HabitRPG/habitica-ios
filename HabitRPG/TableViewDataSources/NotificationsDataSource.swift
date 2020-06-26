@@ -184,7 +184,7 @@ class NotificationsDataSource: BaseReactiveTableViewDataSource<NotificationProto
             url = "/inventory/items"
         case .newStuff:
             url = "/static/new-stuff"
-        case .generic:
+        default:
             break
         }
         if let url = url {

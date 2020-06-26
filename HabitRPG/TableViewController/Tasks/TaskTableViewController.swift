@@ -44,10 +44,8 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
         refresher.addTarget(self, action: #selector(refresh), for: .valueChanged)
         refreshControl = refresher
         
-        searchBar.frame = CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 48)
         searchBar.placeholder = L10n.search
         searchBar.delegate = self
-        tableView.tableHeaderView = searchBar
         
         NotificationCenter.default.addObserver(self, selector: #selector(didChangeFilter), name: NSNotification.Name(rawValue: "taskFilterChanged"), object: nil)
         didChangeFilter()
@@ -77,6 +75,7 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
         } else {
             searchBar.barStyle = .default
         }
+        searchBar.backgroundColor = theme.contentBackgroundColor
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -137,14 +136,6 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
         
         if let tabBarController = tabBarController as? MainTabBarController {
             filterCount += tabBarController.selectedTags.count
-        }
-        
-        if filterCount == 0 {
-            navigationItem.leftBarButtonItem?.title = L10n.filter
-        } else if filterCount == 1 {
-            navigationItem.leftBarButtonItem?.title = L10n.oneFilter
-        } else {
-            navigationItem.leftBarButtonItem?.title = L10n.xFilters(filterCount)
         }
     }
     
@@ -430,7 +421,11 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
         searchBar.setShowsCancelButton(false, animated: true)
         
         HRPGSearchDataManager.shared().searchString = nil
-        
+        UIView.animate(withDuration: 0.3, animations: {
+            self.searchBar.alpha = 0
+        }) { _ in
+            self.searchBar.removeFromSuperview()
+        }
         tableView.reloadData()
     }
     
@@ -493,5 +488,15 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         dataSource?.tableView(tableView, commit: editingStyle, forRowAt: indexPath)
+    }
+    
+    @IBAction func searchButtonTapped(_ sender: Any) {
+        navigationController?.navigationBar.addSubview(searchBar)
+        searchBar.frame = CGRect(x: 12, y: 0, width: tableView.bounds.size.width - 24, height: navigationController?.navigationBar.frame.size.height ?? 48)
+        searchBar.becomeFirstResponder()
+        searchBar.alpha = 0
+        UIView.animate(withDuration: 0.3) {
+            self.searchBar.alpha = 1
+        }
     }
 }

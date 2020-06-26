@@ -18,9 +18,7 @@ enum TopHeaderState: Int {
 @objc
 protocol TopHeaderNavigationControllerProtocol: class {
     @objc var state: TopHeaderState { get set }
-    @objc var defaultNavbarHiddenColor: UIColor { get }
     @objc var defaultNavbarVisibleColor: UIColor { get }
-    @objc var navbarHiddenColor: UIColor { get set }
     @objc var navbarVisibleColor: UIColor { get set }
     @objc var hideNavbar: Bool { get set }
     @objc var shouldHideTopHeader: Bool { get set }
@@ -45,7 +43,7 @@ protocol TopHeaderNavigationControllerProtocol: class {
     @objc
     func scrollView(_ scrollView: UIScrollView?, scrolledToPosition position: CGFloat)
     @objc
-    func setNavigationBarColors(_ alpha: CGFloat)
+    func setNavigationBarColors()
 }
 
 class TopHeaderViewController: UINavigationController, TopHeaderNavigationControllerProtocol, Themeable {
@@ -63,33 +61,19 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
     private var gestureRecognizer: UIPanGestureRecognizer?
     private var headerYPosition: CGFloat = 0
     
-    private var visibleTintColor = UIColor.purple400
-    private var hiddenTintColor = UIColor.white
+    private var visibleTintColor = UIColor.gray50
     private var visibleTextColor = UIColor.black
-    private var hiddenTextColor = UIColor.white
-    
-    @objc public var navbarHiddenColor: UIColor = UIColor.purple300 {
-        didSet {
-            let isHiddenLightColor = navbarHiddenColor.isLight()
-            if (ThemeService.shared.theme.isDark) {
-                hiddenTintColor = ThemeService.shared.theme.tintColor
-            } else {
-                hiddenTintColor = isHiddenLightColor ? ThemeService.shared.theme.tintColor : UIColor.white
-            }
-            hiddenTextColor = isHiddenLightColor ? UIColor.black : UIColor.white
-            setNavigationBarColors(navbarColorBlendingAlpha)
-        }
-    }
+
     @objc public var navbarVisibleColor: UIColor = UIColor.white {
         didSet {
             let isVisibleLightColor = navbarVisibleColor.isLight()
             if (ThemeService.shared.theme.isDark) {
-                visibleTintColor = ThemeService.shared.theme.tintColor
+                visibleTintColor = ThemeService.shared.theme.primaryTextColor
             } else {
-                visibleTintColor = isVisibleLightColor ? ThemeService.shared.theme.tintColor : UIColor.white
+                visibleTintColor = isVisibleLightColor ? ThemeService.shared.theme.primaryTextColor : UIColor.white
             }
             visibleTextColor = isVisibleLightColor ? UIColor.black : UIColor.white
-            setNavigationBarColors(navbarColorBlendingAlpha)
+            setNavigationBarColors()
         }
     }
     
@@ -98,7 +82,6 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
             setNavigationBarHidden(hideNavbar, animated: false)
             view.setNeedsLayout()
             view.layoutIfNeeded()
-            setNavigationBarColors(navbarColorBlendingAlpha)
         }
     }
     
@@ -126,9 +109,9 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
     
     var defaultHeaderHeight: CGFloat {
         if UI_USER_INTERFACE_IDIOM() == .pad {
-            return 200
+            return 190
         } else {
-            return 162
+            return 152
         }
     }
     
@@ -203,19 +186,22 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
     }
 
     func applyTheme(theme: Theme) {
-        if (defaultNavbarHiddenColor == navbarHiddenColor) {
-            navbarHiddenColor = theme.navbarHiddenColor
-        }
         if defaultNavbarVisibleColor == navbarVisibleColor {
             navbarVisibleColor = theme.contentBackgroundColor
         }
+        navigationBar.titleTextAttributes = [
+            NSAttributedString.Key.foregroundColor: theme.primaryTextColor,
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: .semibold),
+            NSAttributedString.Key.kern: 0.6
+        ]
         defaultNavbarHiddenColor = theme.navbarHiddenColor
         defaultNavbarVisibleColor = theme.contentBackgroundColor
-        visibleTintColor = theme.tintColor
-        bottomBorderView.backgroundColor = theme.separatorColor
-        backgroundView.backgroundColor = theme.contentBackgroundColorDimmed
+        visibleTintColor = theme.primaryTextColor
+        bottomBorderView.backgroundColor = theme.contentBackgroundColor
+        backgroundView.backgroundColor = theme.contentBackgroundColor
         upperBackgroundView.backgroundColor = theme.contentBackgroundColor
-        setNavigationBarColors(navbarColorBlendingAlpha)
+        setNavigationBarColors()
+        updateStatusbarColor()
     }
     
     override func viewWillLayoutSubviews() {
@@ -286,7 +272,6 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
     
     func setNewFrame(_ frame: CGRect) {
         self.backgroundView.frame = frame
-        self.setNavigationBarColors(self.shouldHideTopHeader ? 1 : 0)
     }
     
     @objc
@@ -327,14 +312,13 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
         frame.origin.y = newYPos
         headerYPosition = frame.origin.y
         backgroundView.frame = frame
-        setNavigationBarColors(navbarColorBlendingAlpha)
     }
     
     @objc
-    public func setNavigationBarColors(_ alpha: CGFloat) {
-        upperBackgroundView.backgroundColor = navbarVisibleColor.blend(with: navbarHiddenColor, alpha: alpha)
-        backgroundView.backgroundColor = navbarVisibleColor.blend(with: navbarHiddenColor, alpha: alpha)
-        let tintColor = visibleTintColor.blend(with: hiddenTintColor, alpha: alpha)
+    public func setNavigationBarColors() {
+        upperBackgroundView.backgroundColor = navbarVisibleColor
+        backgroundView.backgroundColor = navbarVisibleColor
+        let tintColor = visibleTintColor
         navigationBar.tintColor = tintColor
         topViewController?.navigationItem.leftBarButtonItems?.forEach({ (button) in
             button.tintColor = tintColor
@@ -342,8 +326,6 @@ class TopHeaderViewController: UINavigationController, TopHeaderNavigationContro
         topViewController?.navigationItem.rightBarButtonItems?.forEach({ (button) in
             button.tintColor = tintColor
         })
-        navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: (visibleTextColor.blend(with: hiddenTextColor, alpha: alpha) ?? .white)]
-        updateStatusbarColor()
     }
     
     private func updateStatusbarColor() {

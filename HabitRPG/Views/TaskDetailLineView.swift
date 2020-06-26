@@ -89,7 +89,7 @@ class TaskDetailLineView: UIView {
         hasContent = false
         setTag(enabled: task.tags.isEmpty == false)
         setReminder(task: task, reminders: task.reminders)
-        setChallenge(enabled: task.isChallengeTask)
+        setChallenge(enabled: task.isChallengeTask, broken: task.challengeBroken)
         setStreak(count: task.streak)
 
         if task.type == "habit" {
@@ -122,7 +122,7 @@ class TaskDetailLineView: UIView {
             } else {
                 calendarIconView.tintColor = .gray400
             }
-            calendarIconView.tintColor = ThemeService.shared.theme.ternaryTextColor
+            calendarIconView.tintColor = ThemeService.shared.theme.dimmedTextColor
         } else {
             calendarIconViewWidth.constant = 0
             calendarDetailSpacing.constant = 0
@@ -147,7 +147,7 @@ class TaskDetailLineView: UIView {
                 self.detailLabel.textColor = .red10
                 self.detailLabel.text = L10n.Tasks.dueX(formatter.string(from: duedate))
             } else {
-                detailLabel.textColor = ThemeService.shared.theme.ternaryTextColor
+                detailLabel.textColor = ThemeService.shared.theme.dimmedTextColor
                 guard let differenceInDays = calendar.dateComponents([.day], from: today, to: duedate).day else {
                     return
                 }
@@ -183,8 +183,8 @@ class TaskDetailLineView: UIView {
             streakIconViewWidth.constant = TaskDetailLineView.spacing
             streakIconLabelSpacing.constant = 4
             detailStreakSpacing.constant = TaskDetailLineView.spacing
-            streakLabel.textColor = ThemeService.shared.theme.ternaryTextColor
-            streakIconView.tintColor = ThemeService.shared.theme.ternaryTextColor
+            streakLabel.textColor = ThemeService.shared.theme.dimmedTextColor
+            streakIconView.tintColor = ThemeService.shared.theme.dimmedTextColor
         } else {
             streakLabel.text = nil
             streakIconView.isHidden = true
@@ -213,8 +213,8 @@ class TaskDetailLineView: UIView {
             streakIconViewWidth.constant = 12
             streakIconLabelSpacing.constant = 4
             detailStreakSpacing.constant = TaskDetailLineView.spacing
-            streakLabel.textColor = ThemeService.shared.theme.ternaryTextColor
-            streakIconView.tintColor = ThemeService.shared.theme.ternaryTextColor
+            streakLabel.textColor = ThemeService.shared.theme.dimmedTextColor
+            streakIconView.tintColor = ThemeService.shared.theme.dimmedTextColor
         } else {
             streakLabel.text = nil
             streakIconView.isHidden = true
@@ -224,12 +224,17 @@ class TaskDetailLineView: UIView {
         }
     }
 
-    private func setChallenge(enabled: Bool) {
+    private func setChallenge(enabled: Bool, broken: String?) {
         challengeIconView.isHidden = !enabled
         if enabled {
+            if broken != nil {
+                challengeIconView.image = Asset.challengeBroken.image
+            } else {
+                challengeIconView.image = Asset.challenge.image
+            }
             challengeIconViewWidth.constant = TaskDetailLineView.iconSize
             streakChallengeSpacing.constant = TaskDetailLineView.spacing
-            challengeIconView.tintColor = ThemeService.shared.theme.ternaryTextColor
+            challengeIconView.tintColor = ThemeService.shared.theme.dimmedTextColor
         } else {
             challengeIconViewWidth.constant = 0
             streakChallengeSpacing.constant = 0
@@ -248,7 +253,7 @@ class TaskDetailLineView: UIView {
             challengeReminderSpacing.constant = TaskDetailLineView.spacing
             if task.type == "daily" {
                 reminderIconLabelSpacing.constant = 4
-                reminderIconView.tintColor = ThemeService.shared.theme.ternaryTextColor
+                reminderIconView.tintColor = ThemeService.shared.theme.dimmedTextColor
                 let now = Date()
                 let nextReminder = reminders.first { reminder in
                     guard let time = reminder.time else {
@@ -273,7 +278,7 @@ class TaskDetailLineView: UIView {
                     reminderString = "\(reminderString) (+\(reminders.count-1))"
                 }
                 reminderLabel.text = reminderString
-                reminderLabel.textColor = ThemeService.shared.theme.ternaryTextColor
+                reminderLabel.textColor = ThemeService.shared.theme.dimmedTextColor
             } else {
                 reminderIconLabelSpacing.constant = 0
             }
@@ -285,7 +290,7 @@ class TaskDetailLineView: UIView {
         if enabled {
             tagIconViewWidth.constant = TaskDetailLineView.iconSize
             reminderTagSpacing.constant = TaskDetailLineView.spacing
-            tagIconView.tintColor = ThemeService.shared.theme.ternaryTextColor
+            tagIconView.tintColor = ThemeService.shared.theme.dimmedTextColor
         } else {
             tagIconViewWidth.constant = 0
             reminderTagSpacing.constant = 0

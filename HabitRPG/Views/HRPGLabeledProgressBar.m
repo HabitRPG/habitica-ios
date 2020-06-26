@@ -84,15 +84,15 @@
     // iconView placement and size
     [self.iconView.leadingAnchor constraintEqualToAnchor:self.leadingAnchor].active = YES;
     [self.iconView.widthAnchor constraintEqualToConstant:18.0].active = YES;
-    [self.iconView.topAnchor constraintEqualToAnchor:self.topAnchor].active = YES;
+    [self.iconView.centerYAnchor constraintEqualToAnchor:self.centerYAnchor].active = YES;
     [self.iconView.heightAnchor constraintEqualToConstant:18.0].active = YES;
     
     // progressBar placement and size
     [self.progressBar.leadingAnchor constraintEqualToAnchor:self.iconView.trailingAnchor constant:6.0].active = YES;
     [self.progressBar.trailingAnchor constraintEqualToAnchor:self.trailingAnchor].active = YES;
 
-    [self.progressBar.heightAnchor constraintEqualToConstant:16.0].active = YES;
-    [self.progressBar.centerYAnchor constraintEqualToAnchor:self.iconView.centerYAnchor].active = YES;
+    [self.progressBar.heightAnchor constraintEqualToConstant:8.0].active = YES;
+    [self.progressBar.topAnchor constraintEqualToAnchor:self.iconView.topAnchor].active = YES;
     
     // label sizes will be intrinsic
     

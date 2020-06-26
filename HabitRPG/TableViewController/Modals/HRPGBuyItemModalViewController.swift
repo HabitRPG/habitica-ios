@@ -9,12 +9,15 @@
 import UIKit
 import Habitica_Models
 import ReactiveSwift
+import Habitica_Database
 
+// swiftlint:disable:next type_body_length
 class HRPGBuyItemModalViewController: UIViewController, Themeable {
     @objc var reward: InAppRewardProtocol?
     @objc var shopIdentifier: String?
     private let inventoryRepository = InventoryRepository()
     private let userRepository = UserRepository()
+    private let stableRepository = StableRepository()
     private let disposable = ScopedDisposable(CompositeDisposable())
         
     @IBOutlet weak var topContentView: UIView!
@@ -318,6 +321,9 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
             self.bulkView = bulkView
             contentView.addConstraints(NSLayoutConstraint.defaultHorizontalConstraints(bulkView))
             contentView.addConstraints(NSLayoutConstraint.defaultVerticalConstraints("V:|-0-[itemView]-0-[detailView]-0-[bulkView]-20-|", ["itemView": itemView, "detailView": detailView, "bulkView": bulkView]))
+            if reward?.key != "gem" {
+                bulkView.iconView.isHidden = true
+            }
         } else {
             contentView.addConstraints(NSLayoutConstraint.defaultVerticalConstraints("V:|-0-[itemView]-0-[detailView]-20-|", views))
         }
@@ -356,7 +362,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     }
     
     private func canBulkPurchase() -> Bool {
-        return reward?.key == "gem"
+        return reward?.key == "gem" || ["eggs", "hatchingPotions", "food"].contains(reward?.purchaseType ?? "")
     }
     
     //swiftlint:disable function_body_length
@@ -366,6 +372,41 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         if itemIsLocked() {
             return
         }
+        
+        if reward?.key?.isEmpty == false {
+            self.dismiss(animated: true, completion: nil)
+            var currency = Currency.gold
+            if let currencyString = reward?.currency, let thisCurrency = Currency(rawValue: currencyString) {
+                currency = thisCurrency
+            }
+            if !canBuy() {
+                if reward?.key == "gem" {
+                    HRPGBuyItemModalViewController.displayGemCapReachedModal()
+                } else if !canAfford() {
+                    if currency == .hourglass {
+                        HRPGBuyItemModalViewController.displayInsufficientHourglassesModal(user: user)
+                    } else if currency == .gem {
+                        HRPGBuyItemModalViewController.displayInsufficientGemsModal()
+                    } else {
+                        HRPGBuyItemModalViewController.displayInsufficientGoldModal()
+                    }
+                }
+                return
+            }
+            remainingPurchaseQuantity { remainingQuantity in
+                if remainingQuantity >= 0 {
+                    if remainingQuantity < self.purchaseQuantity {
+                        self.displayPurchaseConfirmationDialog(quantity: remainingQuantity)
+                        self.dismiss(animated: true, completion: nil)
+                        return
+                    }
+                }
+                self.buyItem(quantity: self.purchaseQuantity)
+            }
+        }
+    }
+    
+    private func buyItem(quantity: Int) {
         var key = ""
         var purchaseType = ""
         var currency = Currency.gold
@@ -388,69 +429,64 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                 }
             }
         }
-        
-        if key.isEmpty == false {
-            self.dismiss(animated: true, completion: nil)
-            
-            if !canBuy() {
-                if key == "gem" {
-                    HRPGBuyItemModalViewController.displayGemCapReachedModal()
-                } else if !canAfford() {
-                    if currency == .hourglass {
-                        HRPGBuyItemModalViewController.displayInsufficientHourglassesModal(user: user)
-                    } else if currency == .gem {
-                        HRPGBuyItemModalViewController.displayInsufficientGemsModal()
-                    } else {
-                        HRPGBuyItemModalViewController.displayInsufficientGoldModal()
-                    }
-                }
-                return
-            }
-            
-            if currency == .hourglass {
-                if purchaseType == "gear" || purchaseType == "mystery_set" {
-                    inventoryRepository.purchaseMysterySet(identifier: setIdentifier, text: text)
-                    .flatMap(.latest, { _ in
-                        return self.userRepository.retrieveUser()
-                    }).observeResult({[weak self] (result) in
-                        switch result {
-                        case .success:
-                            successBlock()
-                        case .failure:
-                            HRPGBuyItemModalViewController.displayInsufficientHourglassesModal(user: self?.user)
-                        }
-                    })
-                } else {
-                    inventoryRepository.purchaseHourglassItem(purchaseType: purchaseType, key: key, text: text)
-                    .flatMap(.latest, { _ in
-                        return self.userRepository.retrieveUser()
-                    }).observeResult({[weak self] (result) in
-                        switch result {
-                        case .success:
-                            successBlock()
-                        case .failure:
-                            HRPGBuyItemModalViewController.displayInsufficientHourglassesModal(user: self?.user)
-                        }
-                    })
-                }
-            } else if currency == .gem || purchaseType == "gems" {
-                inventoryRepository.purchaseItem(purchaseType: purchaseType, key: key, value: value, quantity: purchaseQuantity, text: text)
+        if currency == .hourglass {
+            if purchaseType == "gear" || purchaseType == "mystery_set" {
+                inventoryRepository.purchaseMysterySet(identifier: setIdentifier, text: text)
                 .flatMap(.latest, { _ in
                     return self.userRepository.retrieveUser()
-                }).observeResult({ (result) in
-                switch result {
-                case .success:
-                    successBlock()
-                case .failure:
-                        if key == "gem" {
-                            HRPGBuyItemModalViewController.displayGemCapReachedModal()
-                        } else {
-                            HRPGBuyItemModalViewController.displayInsufficientGemsModal()
-                        }
+                }).observeResult({[weak self] (result) in
+                    switch result {
+                    case .success:
+                        successBlock()
+                    case .failure:
+                        HRPGBuyItemModalViewController.displayInsufficientHourglassesModal(user: self?.user)
                     }
                 })
-            } else if purchaseType == "fortify" {
-                userRepository.reroll().observeResult({ (result) in
+            } else {
+                inventoryRepository.purchaseHourglassItem(purchaseType: purchaseType, key: key, text: text)
+                .flatMap(.latest, { _ in
+                    return self.userRepository.retrieveUser()
+                }).observeResult({[weak self] (result) in
+                    switch result {
+                    case .success:
+                        successBlock()
+                    case .failure:
+                        HRPGBuyItemModalViewController.displayInsufficientHourglassesModal(user: self?.user)
+                    }
+                })
+            }
+        } else if currency == .gem || purchaseType == "gems" {
+            inventoryRepository.purchaseItem(purchaseType: purchaseType, key: key, value: value, quantity: quantity, text: text)
+            .flatMap(.latest, { _ in
+                return self.userRepository.retrieveUser()
+            }).observeResult({ (result) in
+            switch result {
+            case .success:
+                successBlock()
+            case .failure:
+                    if key == "gem" {
+                        HRPGBuyItemModalViewController.displayGemCapReachedModal()
+                    } else {
+                        HRPGBuyItemModalViewController.displayInsufficientGemsModal()
+                    }
+                }
+            })
+        } else if purchaseType == "fortify" {
+            userRepository.reroll().observeResult({ (result) in
+            switch result {
+            case .success:
+                successBlock()
+            case .failure:
+                HRPGBuyItemModalViewController.displayInsufficientGoldModal()
+                }
+            })
+        } else {
+            if currency == .gold && purchaseType == "quests" {
+                inventoryRepository.purchaseQuest(key: key, text: text)
+                    .flatMap(.latest, { _ in
+                        return self.userRepository.retrieveUser()
+                    })
+                    .observeResult({ (result) in
                 switch result {
                 case .success:
                     successBlock()
@@ -458,39 +494,24 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                     HRPGBuyItemModalViewController.displayInsufficientGoldModal()
                     }
                 })
+            } else if purchaseType == "debuffPotion" {
+                userRepository.useDebuffItem(key: key).observeResult { (result) in
+                    switch result {
+                    case .success:
+                        successBlock()
+                    case .failure:
+                        HRPGBuyItemModalViewController.displayInsufficientGoldModal()
+                        }
+                    }
             } else {
-                if currency == .gold && purchaseType == "quests" {
-                    inventoryRepository.purchaseQuest(key: key, text: text)
-                        .flatMap(.latest, { _ in
-                            return self.userRepository.retrieveUser()
-                        })
-                        .observeResult({ (result) in
-                    switch result {
-                    case .success:
-                        successBlock()
-                    case .failure:
-                        HRPGBuyItemModalViewController.displayInsufficientGoldModal()
-                        }
-                    })
-                } else if purchaseType == "debuffPotion" {
-                    userRepository.useDebuffItem(key: key).observeResult { (result) in
-                        switch result {
-                        case .success:
-                            successBlock()
-                        case .failure:
-                            HRPGBuyItemModalViewController.displayInsufficientGoldModal()
-                            }
-                        }
-                } else {
-                    inventoryRepository.buyObject(key: key, quantity: purchaseQuantity, price: value, text: text).observeResult({ (result) in
-                    switch result {
-                    case .success:
-                        successBlock()
-                    case .failure:
-                        HRPGBuyItemModalViewController.displayInsufficientGoldModal()
-                        }
-                    })
-                }
+                inventoryRepository.buyObject(key: key, quantity: quantity, price: value, text: text).observeResult({ (result) in
+                switch result {
+                case .success:
+                    successBlock()
+                case .failure:
+                    HRPGBuyItemModalViewController.displayInsufficientGoldModal()
+                    }
+                })
             }
         }
     }
@@ -555,6 +576,45 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         return alert
     }
     
+    private func displayPurchaseConfirmationDialog(quantity: Int) {
+        if quantity == 0 {
+            displayNoRemainingConfirmationDialog()
+        } else {
+            displaySomeRemainingConfirmationDialog(quantity: quantity)
+        }
+    }
+    
+    private func displayNoRemainingConfirmationDialog() {
+        let alert = HabiticaAlertController(title: L10n.excessItems, message: L10n.excessNoItemsLeft(reward?.text ?? "", purchaseQuantity, reward?.text ?? ""))
+        alert.addAction(title: L10n.purchaseX(purchaseQuantity), isMainAction: false) { _ in
+            self.buyItem(quantity: self.purchaseQuantity)
+            alert.dismiss(animated: true, completion: nil)
+        }
+        alert.addCancelAction()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            alert.show()
+        }
+    }
+    
+    private func displaySomeRemainingConfirmationDialog(quantity: Int) {
+        let alert = HabiticaAlertController(title: L10n.excessItems, message: L10n.excessXItemsLeft(quantity, reward?.text ?? "", purchaseQuantity))
+        alert.addAction(title: L10n.purchaseX(purchaseQuantity), isMainAction: true) { _ in
+            self.buyItem(quantity: self.purchaseQuantity)
+            alert.dismiss(animated: true, completion: nil)
+        }
+        alert.addAction(title: L10n.purchaseX(quantity), isMainAction: true) { _ in
+            self.buyItem(quantity: quantity)
+            alert.dismiss(animated: true, completion: nil)
+        }
+        alert.closeTitle = L10n.cancel
+        alert.closeAction = {
+            alert.dismiss(animated: true, completion: nil)
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            alert.show()
+        }
+    }
+    
     @objc
     func closePressed() {
         dismiss(animated: true, completion: nil)
@@ -572,6 +632,71 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     @objc
     func keyboardWillHideNotification(notification: NSNotification) {
         centerConstraint.constant = 0
+    }
+    
+    private func remainingPurchaseQuantity(onResult: @escaping ((Int) -> Void)) {
+        var ownedCount = 0
+        if reward?.purchaseType == "eggs" {
+            stableRepository.getPets(query: "type == 'quest' && egg == '\(reward?.key ?? "")'").filter { pets -> Bool in
+                return !pets.value.isEmpty
+            }.flatMap(.latest) { _ in
+                return self.inventoryRepository.getOwnedItems(userID: nil, itemType: "eggs")
+            }.flatMap(.latest) { eggs -> SignalProducer<ReactiveResults<[OwnedPetProtocol]>, ReactiveSwiftRealmError> in
+                for egg in eggs.value where egg.key == self.reward?.key {
+                    ownedCount += egg.numberOwned
+                }
+                return self.stableRepository.getOwnedPets()
+            }.flatMap(.latest) { pets -> SignalProducer<ReactiveResults<[OwnedMountProtocol]>, ReactiveSwiftRealmError> in
+                for pet in pets.value {
+                    if pet.key?.contains(self.reward?.key ?? "") == true {
+                        ownedCount += 1
+                    }
+                }
+                return self.stableRepository.getOwnedMounts()
+                }.take(first: 1)
+                .on(completed: {
+                    let remaining = 20 - ownedCount
+                    onResult(max(0, remaining))
+                }, value: { mounts in
+                    for mount in mounts.value {
+                        if mount.key?.contains(self.reward?.key ?? "") == true {
+                            ownedCount += 1
+                        }
+                    }
+                })
+                .start()
+        } else if reward?.purchaseType == "hatchingPotions" {
+            stableRepository.getPets(query: "type == 'premium' && potion == '\(reward?.key ?? "")'").filter { pets -> Bool in
+                return !pets.value.isEmpty
+            }.flatMap(.latest) { _ in
+                return self.inventoryRepository.getOwnedItems(userID: nil, itemType: "hatchingPotions")
+            }.flatMap(.latest) { potions -> SignalProducer<ReactiveResults<[OwnedPetProtocol]>, ReactiveSwiftRealmError> in
+                for potion in potions.value where potion.key == self.reward?.key {
+                    ownedCount += potion.numberOwned
+                }
+                return self.stableRepository.getOwnedPets()
+            }.flatMap(.latest) { pets -> SignalProducer<ReactiveResults<[OwnedMountProtocol]>, ReactiveSwiftRealmError> in
+                for pet in pets.value {
+                    if pet.key?.contains(self.reward?.key ?? "") == true {
+                        ownedCount += 1
+                    }
+                }
+                return self.stableRepository.getOwnedMounts()
+                }.take(first: 1)
+                .on(completed: {
+                    let remaining = 20 - ownedCount
+                    onResult(max(0, remaining))
+                }, value: { mounts in
+                    for mount in mounts.value {
+                        if mount.key?.contains(self.reward?.key ?? "") == true {
+                            ownedCount += 1
+                        }
+                    }
+                })
+                .start()
+        } else {
+            onResult(-1)
+        }
     }
 }
 

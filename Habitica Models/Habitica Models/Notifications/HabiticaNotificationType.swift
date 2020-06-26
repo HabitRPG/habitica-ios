@@ -16,6 +16,20 @@ public enum HabiticaNotificationType: String, EquatableStringEnumProtocol {
     case unallocatedStatsPoints = "UNALLOCATED_STATS_POINTS"
     case questInvite = "QUEST_INVITE"
     case groupInvite = "GROUP_INVITE"
+    
+    //Achievements
+    case achievementPartyUp = "ACHIEVEMENT_PARTY_UP"
+    case achievementPartyOn = "ACHIEVEMENT_PARTY_ON"
+    case achievementBeastMaster = "ACHIEVEMENT_BEAST_MASTER"
+    case achievementMountMaster = "ACHIEVEMENT_MOUNT_MASTER"
+    case achievementTriadBingo = "ACHIEVEMENT_TRIAD_BINGO"
+    case achievementGuildJoined = "GUILD_JOINED_ACHIEVEMENT"
+    case achievementChallengeJoined = "CHALLENGE_JOINED_ACHIEVEMENT"
+    case achievementInvitedFriend = "INVITED_FRIEND_ACHIEVEMENT"
+    case achievementGeneric = "ACHIEVEMENT"
+    case achievementOnboardingComplete = "ONBOARDING_COMPLETE"
+
+    case firstDrop = "FIRST_DROPS"
 
     public var priority: Int {
         get {

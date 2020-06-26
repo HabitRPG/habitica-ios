@@ -9,7 +9,11 @@
 import Foundation
 import Habitica_Models
 
-public class APINotification: NotificationProtocol, NotificationNewsProtocol, NotificationNewChatProtocol, NotificationUnallocatedStatsProtocol, Decodable {
+private class APINotificationAchievementData: Decodable {
+    var achievement: String
+}
+
+public class APINotification: NotificationProtocol, NotificationNewsProtocol, NotificationNewChatProtocol, NotificationUnallocatedStatsProtocol, NotificationFirstDropProtocol, Decodable {
     public var isValid: Bool = true
     
     public var id: String = ""
@@ -20,6 +24,9 @@ public class APINotification: NotificationProtocol, NotificationNewsProtocol, No
     public var isParty: Bool = false
     public var title: String?
     public var points: Int = 0
+    public var achievementKey: String?
+    public var egg: String?
+    public var potion: String?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -44,10 +51,15 @@ public class APINotification: NotificationProtocol, NotificationNewsProtocol, No
         case .unallocatedStatsPoints:
             let data = try? values.decode(APINotificationUnallocatedStatsData.self, forKey: .data)
             points = data?.points ?? 0
-        case .generic: break
-        case .newMysteryItem: break
-        case .questInvite: break
-        case .groupInvite: break
+        case .achievementGeneric:
+            let data = try? values.decode(APINotificationAchievementData.self, forKey: .data)
+            achievementKey = data?.achievement
+        case .firstDrop:
+            let data = try? values.decode(APINotificationFirstDropData.self, forKey: .data)
+            egg = data?.egg
+            potion = data?.potion
+        default:
+            break
         }
     }
 }

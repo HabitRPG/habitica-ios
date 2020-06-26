@@ -77,6 +77,13 @@ class RouterHandler: NSObject {
             self.displayTab(index: 4)
             self.push(StoryboardScene.User.attributePointsViewController.instantiate())
         }
+        router.register("/user/achievements") { _ in
+            self.displayTab(index: 4)
+            self.push(StoryboardScene.User.achievementsCollectionViewController.instantiate())
+        }
+        router.register("/user/onboarding") { _ in
+            self.present(StoryboardScene.Main.adventureGuideNavigationViewController.instantiate())
+        }
         router.register("profile/:userID") { link in
             self.displayTab(index: 4)
             let viewController = StoryboardScene.Social.userProfileViewController.instantiate()

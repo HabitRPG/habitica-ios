@@ -38,6 +38,10 @@ public enum L10n {
   public static var back: String { return L10n.tr("Mainstrings", "back") }
   /// Bangs
   public static var bangs: String { return L10n.tr("Mainstrings", "bangs") }
+  /// You have earned the “Beast Master” Achievement for collecting all the pets!
+  public static var beastMasterDescription: String { return L10n.tr("Mainstrings", "beastMasterDescription") }
+  /// Beast Master
+  public static var beastMasterTitle: String { return L10n.tr("Mainstrings", "beastMasterTitle") }
   /// Body Size
   public static var bodySize: String { return L10n.tr("Mainstrings", "body_size") }
   /// Broad
@@ -64,6 +68,10 @@ public enum L10n {
   public static var cancelSubscriptionGroupPlan: String { return L10n.tr("Mainstrings", "cancel_subscription_group_plan") }
   /// Cancelled
   public static var cancelled: String { return L10n.tr("Mainstrings", "cancelled") }
+  /// You put themselves to the test by joining a Challenge!
+  public static var challengeJoinedDescription: String { return L10n.tr("Mainstrings", "challengeJoinedDescription") }
+  /// Joined a Challenge
+  public static var challengeJoinedTitle: String { return L10n.tr("Mainstrings", "challengeJoinedTitle") }
   /// Change
   public static var change: String { return L10n.tr("Mainstrings", "change") }
   /// Character Level
@@ -86,6 +94,14 @@ public enum L10n {
   public static var complete: String { return L10n.tr("Mainstrings", "complete") }
   /// You need to complete more tasks before you can afford this item!
   public static var completeMoreTasks: String { return L10n.tr("Mainstrings", "complete_more_tasks") }
+  /// Check off any of your tasks to earn rewards
+  public static var completeTaskDescription: String { return L10n.tr("Mainstrings", "complete_task_description") }
+  /// Complete to earn 100 Gold!
+  public static var completeToEarnGold: String { return L10n.tr("Mainstrings", "complete_to_earn_gold") }
+  /// A task can be a Habit, Daily, or To Do. Continue completing them to receive all sorts of rewards!
+  public static var completedTaskDescription: String { return L10n.tr("Mainstrings", "completedTaskDescription") }
+  /// Completed a task
+  public static var completedTaskTitle: String { return L10n.tr("Mainstrings", "completedTaskTitle") }
   /// Confirm
   public static var confirm: String { return L10n.tr("Mainstrings", "confirm") }
   /// Confirm Username
@@ -106,6 +122,12 @@ public enum L10n {
   public static var create: String { return L10n.tr("Mainstrings", "create") }
   /// Create Tag
   public static var createTag: String { return L10n.tr("Mainstrings", "create_tag") }
+  /// Add a task for something you would like to accomplish this week
+  public static var createTaskDescription: String { return L10n.tr("Mainstrings", "create_task_description") }
+  /// Keep it up! If you need help planning tasks, try thinking about what you’d like to do during a specific time of day
+  public static var createdTaskDescription: String { return L10n.tr("Mainstrings", "createdTaskDescription") }
+  /// Created your first task
+  public static var createdTaskTitle: String { return L10n.tr("Mainstrings", "createdTaskTitle") }
   /// Daily
   public static var daily: String { return L10n.tr("Mainstrings", "daily") }
   /// Damage Paused
@@ -168,14 +190,36 @@ public enum L10n {
   }
   /// Equip
   public static var equip: String { return L10n.tr("Mainstrings", "equip") }
+  /// Excess Items
+  public static var excessItems: String { return L10n.tr("Mainstrings", "excess_items") }
+  /// You already have everything you need for all %@ pets. Are you sure you want to purchase %d %@s?
+  public static func excessNoItemsLeft(_ p1: String, _ p2: Int, _ p3: String) -> String {
+    return L10n.tr("Mainstrings", "excess_no_items_left", p1, p2, p3)
+  }
+  /// You only need %d %@ to hatch all possible pets. Are you sure you want to purchase %d?
+  public static func excessXItemsLeft(_ p1: Int, _ p2: String, _ p3: Int) -> String {
+    return L10n.tr("Mainstrings", "excess_x_items_left", p1, p2, p3)
+  }
   /// Experience
   public static var experience: String { return L10n.tr("Mainstrings", "experience") }
+  /// Every Pet has a specific food they enjoy! Experiment to find out which will grow your Pet the fastest
+  public static var fedPetDescription: String { return L10n.tr("Mainstrings", "fedPetDescription") }
+  /// Fed a Pet
+  public static var fedPetTitle: String { return L10n.tr("Mainstrings", "fedPetTitle") }
+  /// Complete tasks to get food! You can feed it to your pet from Pets & Mounts
+  public static var feedPetDescription: String { return L10n.tr("Mainstrings", "feedPet_description") }
   /// Filter
   public static var filter: String { return L10n.tr("Mainstrings", "filter") }
   /// Filter by Tags
   public static var filterByTags: String { return L10n.tr("Mainstrings", "filter_by_tags") }
   /// Finish
   public static var finish: String { return L10n.tr("Mainstrings", "finish") }
+  /// Completing tasks gives you a chance to find eggs, hatching potions,  and pet food.
+  public static var firstDropExplanation1: String { return L10n.tr("Mainstrings", "first_drop_explanation1") }
+  /// Head to your Items and try combining your new Egg and Hatching Potion!
+  public static var firstDropExplanation2: String { return L10n.tr("Mainstrings", "first_drop_explanation2") }
+  /// You found new items!
+  public static var firstDropTitle: String { return L10n.tr("Mainstrings", "first_drop_title") }
   /// Flower
   public static var flower: String { return L10n.tr("Mainstrings", "flower") }
   /// Food
@@ -242,6 +286,8 @@ public enum L10n {
   public static var glasses: String { return L10n.tr("Mainstrings", "glasses") }
   /// Go Shopping
   public static var goShopping: String { return L10n.tr("Mainstrings", "go_shopping") }
+  /// Go to Items
+  public static var goToItems: String { return L10n.tr("Mainstrings", "go_to_items") }
   /// Gold
   public static var gold: String { return L10n.tr("Mainstrings", "gold") }
   /// Great
@@ -252,10 +298,20 @@ public enum L10n {
   public static var groupBy: String { return L10n.tr("Mainstrings", "group_by") }
   /// Group Plan
   public static var groupPlan: String { return L10n.tr("Mainstrings", "group_plan") }
+  /// Ventured into the social side of Habitica by joining a Guild!
+  public static var guildJoinedDescription: String { return L10n.tr("Mainstrings", "guildJoinedDescription") }
+  /// Joined a Guild
+  public static var guildJoinedTitle: String { return L10n.tr("Mainstrings", "guildJoinedTitle") }
   /// Use on Egg
   public static var hatchEgg: String { return L10n.tr("Mainstrings", "hatch_egg") }
+  /// Complete tasks to get a Hatching Potion and Egg then hatch your Pet!
+  public static var hatchPetDescription: String { return L10n.tr("Mainstrings", "hatch_pet_description") }
   /// Hatch with potion
   public static var hatchPotion: String { return L10n.tr("Mainstrings", "hatch_potion") }
+  /// There are so many Pets to collect, you’re bound to have a favorite. If you feed them, they may just grow…
+  public static var hatchedPetDescription: String { return L10n.tr("Mainstrings", "hatchedPetDescription") }
+  /// Hatched a Pet
+  public static var hatchedPetTitle: String { return L10n.tr("Mainstrings", "hatchedPetTitle") }
   /// Hatching Potion
   public static var hatchingPotion: String { return L10n.tr("Mainstrings", "hatching_potion") }
   /// Hatching Potions
@@ -282,6 +338,10 @@ public enum L10n {
   public static var invitations: String { return L10n.tr("Mainstrings", "invitations") }
   /// Invite Party
   public static var inviteParty: String { return L10n.tr("Mainstrings", "invite_party") }
+  /// You invited a friend (or friends) who joined you on your adventure!
+  public static var invitedFriendDescription: String { return L10n.tr("Mainstrings", "invitedFriendDescription") }
+  /// Invited a Friend
+  public static var invitedFriendTitle: String { return L10n.tr("Mainstrings", "invitedFriendTitle") }
   /// Join
   public static var join: String { return L10n.tr("Mainstrings", "join") }
   /// Join Challenge
@@ -342,6 +402,10 @@ public enum L10n {
   public static var moreGemsMessage: String { return L10n.tr("Mainstrings", "more_gems_message") }
   /// More Options
   public static var moreOptions: String { return L10n.tr("Mainstrings", "more_options") }
+  /// You have earned the “Mount Master” achievement for taming all the mounts!
+  public static var mountMasterDescription: String { return L10n.tr("Mainstrings", "mountMasterDescription") }
+  /// Mount Master
+  public static var mountMasterTitle: String { return L10n.tr("Mainstrings", "mountMasterTitle") }
   /// Mounts
   public static var mounts: String { return L10n.tr("Mainstrings", "mounts") }
   /// My Challenges
@@ -386,6 +450,14 @@ public enum L10n {
   public static var notes: String { return L10n.tr("Mainstrings", "notes") }
   /// OK
   public static var ok: String { return L10n.tr("Mainstrings", "ok") }
+  /// Onboarding Tasks
+  public static var onboardingTasks: String { return L10n.tr("Mainstrings", "onboarding_tasks") }
+  /// You completed your OnboardingTasks!
+  public static var onboardingCompleteAchievementTitle: String { return L10n.tr("Mainstrings", "onboardingComplete_achievement_title") }
+  /// If you want even more, check out Achievements and start collecting!
+  public static var onboardingCompleteDescription: String { return L10n.tr("Mainstrings", "onboardingCompleteDescription") }
+  /// You earned <b>5 Achievements</b> and <font color='#EE9109'><b>100 Gold</b></font> for your efforts.
+  public static var onboardingCompleteTitle: String { return L10n.tr("Mainstrings", "onboardingCompleteTitle") }
   /// 1 Filter
   public static var oneFilter: String { return L10n.tr("Mainstrings", "one_filter") }
   /// 1 Month
@@ -402,12 +474,24 @@ public enum L10n {
   public static var openWebsite: String { return L10n.tr("Mainstrings", "open_website") }
   /// Organize By
   public static var organizeBy: String { return L10n.tr("Mainstrings", "organize_by") }
+  /// Your party grew to 4 members!
+  public static var partyOnDescription: String { return L10n.tr("Mainstrings", "partyOnDescription") }
+  /// Party On
+  public static var partyOnTitle: String { return L10n.tr("Mainstrings", "partyOnTitle") }
+  /// You teamed up with a party member!
+  public static var partyUpDescription: String { return L10n.tr("Mainstrings", "partyUpDescription") }
+  /// Party Up
+  public static var partyUpTitle: String { return L10n.tr("Mainstrings", "partyUpTitle") }
   /// Password
   public static var password: String { return L10n.tr("Mainstrings", "password") }
   /// Pause Damage
   public static var pauseDamage: String { return L10n.tr("Mainstrings", "pause_damage") }
   /// Pending damage
   public static var pendingDamage: String { return L10n.tr("Mainstrings", "pending_damage") }
+  /// %d%% Complete
+  public static func percentComplete(_ p1: Int) -> String {
+    return L10n.tr("Mainstrings", "percent_complete", p1)
+  }
   /// Pets
   public static var pets: String { return L10n.tr("Mainstrings", "pets") }
   /// Photo URL
@@ -422,6 +506,10 @@ public enum L10n {
   public static var publishChallenge: String { return L10n.tr("Mainstrings", "publish_challenge") }
   /// Purchase Customization
   public static var purchaseCustomization: String { return L10n.tr("Mainstrings", "purchase_customization") }
+  /// Equipment is a way to customize your avatar and improve your stats
+  public static var purchaseEquipmentDescription: String { return L10n.tr("Mainstrings", "purchase_equipment_description") }
+  /// Purchase Equipment
+  public static var purchaseEquipmentTitle: String { return L10n.tr("Mainstrings", "purchase_equipment_title") }
   /// Purchase for %d Gems
   public static func purchaseForGems(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "purchase_for_gems", p1)
@@ -430,10 +518,18 @@ public enum L10n {
   public static var purchaseFromTimeTravelersShop: String { return L10n.tr("Mainstrings", "purchase_from_time_travelers_shop") }
   /// Purchase Gems
   public static var purchaseGems: String { return L10n.tr("Mainstrings", "purchase_gems") }
+  /// Purchase %d
+  public static func purchaseX(_ p1: Int) -> String {
+    return L10n.tr("Mainstrings", "purchase_x", p1)
+  }
   /// You purchased %@
   public static func purchased(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "purchased", p1)
   }
+  /// Equipment can be practical or just fashionable. Raise your stats to get all sorts of benefits to your avatar
+  public static var purchasedEquipmentDescription: String { return L10n.tr("Mainstrings", "purchasedEquipmentDescription") }
+  /// Purchased Equipment
+  public static var purchasedEquipmentTitle: String { return L10n.tr("Mainstrings", "purchasedEquipmentTitle") }
   /// Quest
   public static var quest: String { return L10n.tr("Mainstrings", "quest") }
   /// Quest Completed!
@@ -606,6 +702,10 @@ public enum L10n {
   public static var transfer: String { return L10n.tr("Mainstrings", "transfer") }
   /// Transfer Leadership
   public static var transferOwnership: String { return L10n.tr("Mainstrings", "transfer_ownership") }
+  /// You have earned the “Triad Bingo” achievement for finding all the pets, taming all the mounts, and finding all the pets again!
+  public static var triadBingoDescription: String { return L10n.tr("Mainstrings", "triadBingoDescription") }
+  /// Triad Bingo
+  public static var triadBingoTitle: String { return L10n.tr("Mainstrings", "triadBingoTitle") }
   /// Tuesday
   public static var tuesday: String { return L10n.tr("Mainstrings", "tuesday") }
   /// Two-Handed
@@ -644,6 +744,10 @@ public enum L10n {
   public static var usernamePromptWiki: String { return L10n.tr("Mainstrings", "username_prompt_wiki") }
   /// Invitation was sent to users.
   public static var usersInvited: String { return L10n.tr("Mainstrings", "users_invited") }
+  /// View Achievements
+  public static var viewAchievements: String { return L10n.tr("Mainstrings", "view_achievements") }
+  /// View Onboarding Tasks
+  public static var viewOnboardingTasks: String { return L10n.tr("Mainstrings", "view_onboarding_tasks") }
   /// View Participant Progress
   public static var viewParticipantProgress: String { return L10n.tr("Mainstrings", "view_participant_progress") }
   /// Weak
@@ -682,6 +786,8 @@ public enum L10n {
   public static var yearly: String { return L10n.tr("Mainstrings", "yearly") }
   /// years
   public static var years: String { return L10n.tr("Mainstrings", "years") }
+  /// You got an Achievement!
+  public static var youGotAchievement: String { return L10n.tr("Mainstrings", "you_got_achievement") }
   /// Your balance:
   public static var yourBalance: String { return L10n.tr("Mainstrings", "your_balance") }
 

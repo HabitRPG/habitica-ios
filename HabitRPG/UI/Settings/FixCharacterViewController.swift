@@ -49,7 +49,7 @@ class FixCharacterViewController: BaseTableViewController {
             self?.stats["stats.mp"] = user.stats?.mana
             self?.stats["stats.gp"] = user.stats?.gold
             self?.stats["stats.lvl"] = user.stats?.level
-            self?.stats["achievements.streak"] = user.achievementStreak
+            self?.stats["achievements.streak"] = user.achievements?.streak
             self?.habitClass = user.stats?.habitClass ?? ""
             self?.tableView.reloadData()
         }).start())

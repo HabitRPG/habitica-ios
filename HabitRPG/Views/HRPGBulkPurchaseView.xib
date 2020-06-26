@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HRPGBulkPurchaseView" customModule="Habitica" customModuleProvider="target">
             <connections>
-                <outlet property="addButton" destination="BiA-ea-dB0" id="qt1-jM-pzr"/>
+                <outlet property="addButton" destination="BDu-43-0PS" id="D3e-2I-ivt"/>
                 <outlet property="errorLabel" destination="dDv-eH-wWP" id="VUE-cQ-Jnn"/>
+                <outlet property="iconView" destination="32r-fk-ZUp" id="KJF-QN-eV4"/>
                 <outlet property="inputContainer" destination="qH0-CU-x2N" id="002-oj-LDx"/>
-                <outlet property="subtractButton" destination="BDu-43-0PS" id="dZy-Ug-tIv"/>
+                <outlet property="subtractButton" destination="BiA-ea-dB0" id="ChK-DM-ZG6"/>
                 <outlet property="textField" destination="3gf-e3-UFI" id="slU-0M-P2i"/>
             </connections>
         </placeholder>
@@ -32,14 +33,14 @@
                                     <constraints>
                                         <constraint firstAttribute="width" constant="24" id="a7D-2A-P6Z"/>
                                     </constraints>
-                                    <state key="normal" image="plus">
+                                    <state key="normal" image="minus">
                                         <color key="titleColor" red="0.37997829910000003" green="0.1982949376" blue="0.70615965130000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
                                     <state key="disabled">
                                         <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
                                     <connections>
-                                        <action selector="addButtonTapped:" destination="-1" eventType="touchUpInside" id="Nbr-ph-2jy"/>
+                                        <action selector="subtractButtonTapped:" destination="-1" eventType="touchUpInside" id="PZx-LW-NCv"/>
                                     </connections>
                                 </button>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qH0-CU-x2N">
@@ -92,14 +93,14 @@
                                     <constraints>
                                         <constraint firstAttribute="width" constant="24" id="gvf-0L-abl"/>
                                     </constraints>
-                                    <state key="normal" image="minus">
+                                    <state key="normal" image="plus">
                                         <color key="titleColor" red="0.37997829910000003" green="0.1982949376" blue="0.70615965130000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
                                     <state key="disabled">
                                         <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
                                     <connections>
-                                        <action selector="subtractButtonTapped:" destination="-1" eventType="touchUpInside" id="Oi7-6f-qFF"/>
+                                        <action selector="addButtonTapped:" destination="-1" eventType="touchUpInside" id="rVW-UQ-voF"/>
                                     </connections>
                                 </button>
                             </subviews>

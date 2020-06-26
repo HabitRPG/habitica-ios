@@ -105,6 +105,21 @@ class MainMenuViewController: BaseTableViewController {
             } else {
                 menuSections[3].items[6].subtitle = L10n.getMoreHabitica
             }
+            if configRepository.bool(variable: .enableAdventureGuide) {
+                if user?.achievements?.hasCompletedOnboarding == true {
+                    tableView.tableHeaderView = nil                } else {
+                    let view = AdventureGuideBannerView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 103))
+                    view.onTapped = { [weak self] in
+                        self?.perform(segue: StoryboardSegue.Main.showAdventureGuide)
+                    }
+                    if let achievements = user?.achievements?.onboardingAchievements {
+                        view.setProgress(earned: achievements.filter({ $0.value }).count, total:  achievements.count)
+                    }
+                    tableView.tableHeaderView = view
+                }
+            } else {
+                tableView.tableHeaderView = nil
+            }
         }
     }
     

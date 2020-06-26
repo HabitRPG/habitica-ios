@@ -16,7 +16,8 @@ class RealmNotification: Object,
     NotificationNewChatProtocol,
     NotificationQuestInviteProtocol,
     NotificationGroupInviteProtocol,
-    NotificationNewMysteryItemProtocol {
+    NotificationNewMysteryItemProtocol,
+NotificationFirstDropProtocol {
     @objc dynamic var id: String = ""
     @objc dynamic var realmType: String = ""
     var type: HabiticaNotificationType {
@@ -41,6 +42,9 @@ class RealmNotification: Object,
     @objc dynamic var isPublicGuild: Bool = false
     @objc dynamic var questKey: String?
     @objc dynamic var points: Int = 0
+    @objc dynamic var achievementKey: String?
+    @objc dynamic var egg: String?
+    @objc dynamic var potion: String?
     
     var isValid: Bool {
         return !isInvalidated
@@ -72,5 +76,6 @@ class RealmNotification: Object,
         if let notification = protocolObject as? NotificationNewsProtocol {
             title = notification.title
         }
+        achievementKey = protocolObject.achievementKey
     }
 }

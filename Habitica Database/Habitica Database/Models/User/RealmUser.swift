@@ -187,7 +187,21 @@ class RealmUser: Object, UserProtocol {
         }
     }
     @objc dynamic var realmParty: RealmUserParty?
-    
+    var achievements: UserAchievementsProtocol? {
+        get {
+            return realmAchievements
+        }
+        set {
+            if let value = newValue as? RealmUserAchievements {
+                realmAchievements = value
+                return
+            }
+            if let value = newValue {
+                realmAchievements = RealmUserAchievements(userID: id, protocolObject: value)
+            }
+        }
+    }
+    @objc dynamic var realmAchievements: RealmUserAchievements?
     var realmTags = List<RealmTag>()
     
     var challenges: [ChallengeMembershipProtocol] {
@@ -266,26 +280,6 @@ class RealmUser: Object, UserProtocol {
     }
     var realmPushDevices = List<RealmPushDevice>()
     
-    var questAchievements: [AchievementProtocol] {
-        get {
-            return realmAchievements.map({ (achievement) -> AchievementProtocol in
-                return achievement
-            })
-        }
-        set {
-            realmAchievements.removeAll()
-            newValue.forEach { (achievement) in
-                if let realmAchievement = achievement as? RealmAchievement {
-                    realmAchievements.append(realmAchievement)
-                } else {
-                    realmAchievements.append(RealmAchievement(userID: id, protocolObject: achievement))
-                }
-            }
-        }
-    }
-    var realmAchievements = List<RealmAchievement>()
-    var achievementStreak: Int = 0
-    
     var needsCron: Bool = false
     var lastCron: Date?
     
@@ -298,7 +292,7 @@ class RealmUser: Object, UserProtocol {
     }
     
     override static func ignoredProperties() -> [String] {
-        return ["flags", "preferences", "stats", "profile", "contributor", "tasksOrder", "items", "tags", "inbox", "authentication", "purchased", "party", "invitations", "pushDevices", "questAchievements"]
+        return ["flags", "preferences", "stats", "profile", "contributor", "tasksOrder", "items", "tags", "inbox", "authentication", "purchased", "party", "invitations", "pushDevices"]
     }
     
     convenience init(_ user: UserProtocol) {
@@ -322,7 +316,6 @@ class RealmUser: Object, UserProtocol {
         hasNewMessages = user.hasNewMessages
         invitations = user.invitations
         pushDevices = user.pushDevices
-        questAchievements = user.questAchievements
-        achievementStreak = user.achievementStreak
+        achievements = user.achievements
     }
 }

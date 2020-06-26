@@ -58,7 +58,6 @@ class PartyViewController: SplitSocialViewController {
                     self?.scrollView.isHidden = true
                     self?.noPartyContainerView.isHidden = false
                     self?.topHeaderCoordinator?.hideHeader = true
-                    self?.topHeaderCoordinator?.navbarHiddenColor = ThemeService.shared.theme.contentBackgroundColor
                     self?.topHeaderCoordinator?.showHideHeader(show: false)
                 } else {
                     self?.scrollView.isHidden = false

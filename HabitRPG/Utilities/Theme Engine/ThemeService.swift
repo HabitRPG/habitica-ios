@@ -56,7 +56,7 @@ public class ThemeService: NSObject {
     }
     
     private func applyTheme() {
-        UINavigationBar.appearance().tintColor = theme.tintColor
+        UINavigationBar.appearance().tintColor = theme.primaryTextColor
         UINavigationBar.appearance().titleTextAttributes = [
             NSAttributedString.Key.foregroundColor: theme.primaryTextColor
         ]
@@ -66,13 +66,13 @@ public class ThemeService: NSObject {
             UITabBar.appearance().tintColor = theme.tintColor
             UITabBar.appearance().backgroundColor = theme.windowBackgroundColor
             UITabBar.appearance().barTintColor = .clear
-            UITabBar.appearance().barStyle = .blackOpaque
+            UITabBar.appearance().barStyle = .black
             UISearchBar.appearance().barStyle = .blackTranslucent
             UITextField.appearance().keyboardAppearance = .dark
         } else {
             UITabBar.appearance().tintColor = theme.tintColor
             UITabBar.appearance().barTintColor = theme.contentBackgroundColor
-            UITabBar.appearance().backgroundColor = .clear
+            UITabBar.appearance().backgroundColor = theme.contentBackgroundColor
             UITabBar.appearance().barStyle = .black
             UISearchBar.appearance().barStyle = .default
             UITextField.appearance().keyboardAppearance = .default
