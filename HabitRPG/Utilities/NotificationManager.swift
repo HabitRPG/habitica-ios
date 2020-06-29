@@ -44,13 +44,17 @@ class NotificationManager {
                 NotificationManager.seenNotifications.insert(notification.id)
             }
         }
-        return notifications.filter { return !seenNotifications.contains($0.id) }
+        return notifications.filter {
+            return !seenNotifications.contains($0.id)
+        }
     }
     
     static func displayFirstDrop(notification: NotificationProtocol) -> Bool {
         guard let firstDropNotification = notification as? NotificationFirstDropProtocol else {
             return true
         }
+        userRepository.retrieveUser().observeCompleted {}
+        userRepository.readNotification(notification: notification).observeCompleted {}
         let alert = HabiticaAlertController(title: L10n.firstDropTitle)
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -60,14 +64,14 @@ class NotificationManager {
         iconStackView.axis = .horizontal
         iconStackView.spacing = 16
         let eggView = UIImageView()
-        eggView.setImagewith(name: firstDropNotification.egg)
+        eggView.setImagewith(name: "Pet_Egg_\(firstDropNotification.egg ?? "")")
         eggView.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
         eggView.cornerRadius = 4
         eggView.contentMode = .center
         iconStackView.addArrangedSubview(eggView)
         eggView.addWidthConstraint(width: 80)
         let potionView = UIImageView()
-        potionView.setImagewith(name: firstDropNotification.potion)
+        potionView.setImagewith(name: "Pet_HatchingPotion_\(firstDropNotification.hatchingPotion ?? "")")
         potionView.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
         potionView.cornerRadius = 4
         potionView.contentMode = .center
@@ -96,7 +100,9 @@ class NotificationManager {
         
         alert.contentView = stackView
         alert.addAction(title: L10n.goToItems, isMainAction: true) { _ in
-            RouterHandler.shared.handle(urlString: "/inventory/items")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                RouterHandler.shared.handle(urlString: "/inventory/items")
+            }
         }
         alert.addCloseAction()
         alert.show()
@@ -104,8 +110,8 @@ class NotificationManager {
     }
     
     static func displayAchievement(notification: NotificationProtocol, isOnboarding: Bool, isLastOnboardingAchievement: Bool) -> Bool {
-        userRepository.readNotification(notification: notification).observeCompleted {
-        }
+        userRepository.retrieveUser().observeCompleted {}
+        userRepository.readNotification(notification: notification).observeCompleted {}
         if !configRepository.bool(variable: .enableAdventureGuide) {
             if isOnboarding || notification.type == HabiticaNotificationType.achievementOnboardingComplete {
                 return true
@@ -120,7 +126,10 @@ class NotificationManager {
         }
         let alert = AchievementAlertController()
         alert.setNotification(notification: notification, isOnboarding: isOnboarding, isLastOnboardingAchievement: isLastOnboardingAchievement)
-        alert.show()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+            // add a slight delay to make sure that any running VC transitions are done
+            alert.show()
+        }
         return true
     }
 }

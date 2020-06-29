@@ -10,5 +10,5 @@ import Foundation
 
 public protocol NotificationFirstDropProtocol: NotificationProtocol {
     var egg: String? { get set }
-    var potion: String? { get set }
+    var hatchingPotion: String? { get set }
 }

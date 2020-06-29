@@ -44,7 +44,7 @@ NotificationFirstDropProtocol {
     @objc dynamic var points: Int = 0
     @objc dynamic var achievementKey: String?
     @objc dynamic var egg: String?
-    @objc dynamic var potion: String?
+    @objc dynamic var hatchingPotion: String?
     
     var isValid: Bool {
         return !isInvalidated

@@ -10,5 +10,5 @@ import Foundation
 
 class APINotificationFirstDropData: Decodable {
     var egg: String?
-    var potion: String?
+    var hatchingPotion: String?
 }

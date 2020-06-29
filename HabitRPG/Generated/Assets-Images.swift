@@ -60,6 +60,7 @@ internal enum Asset {
   internal static let buttonGrid = ImageAsset(name: "button_grid")
   internal static let buttonList = ImageAsset(name: "button_list")
   internal static let calendar = ImageAsset(name: "calendar")
+  internal static let caretRight = ImageAsset(name: "caret_right")
   internal static let carretDown = ImageAsset(name: "carret_down")
   internal static let carretUp = ImageAsset(name: "carret_up")
   internal static let categoryBody = ImageAsset(name: "category_body")

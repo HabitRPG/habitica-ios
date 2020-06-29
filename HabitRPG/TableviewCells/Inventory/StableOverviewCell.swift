@@ -22,9 +22,11 @@ class StableOverviewCell: UICollectionViewCell {
         
         countLabel.backgroundColor = ThemeService.shared.theme.offsetBackgroundColor
         textLabel.textColor = ThemeService.shared.theme.secondaryTextColor
+        imageView.alpha = 1.0
         if item.numberOwned == 0 {
             countLabel.textColor = ThemeService.shared.theme.dimmedTextColor
             textLabel.textColor = ThemeService.shared.theme.dimmedTextColor
+            imageView.alpha = 0.5
         } else if item.numberOwned == item.totalNumber {
             countLabel.backgroundColor = ThemeService.shared.theme.successColor
             countLabel.textColor = .white

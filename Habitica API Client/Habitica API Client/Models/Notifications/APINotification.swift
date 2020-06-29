@@ -26,7 +26,7 @@ public class APINotification: NotificationProtocol, NotificationNewsProtocol, No
     public var points: Int = 0
     public var achievementKey: String?
     public var egg: String?
-    public var potion: String?
+    public var hatchingPotion: String?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -57,7 +57,7 @@ public class APINotification: NotificationProtocol, NotificationNewsProtocol, No
         case .firstDrop:
             let data = try? values.decode(APINotificationFirstDropData.self, forKey: .data)
             egg = data?.egg
-            potion = data?.potion
+            hatchingPotion = data?.hatchingPotion
         default:
             break
         }

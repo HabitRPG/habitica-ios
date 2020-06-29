@@ -118,7 +118,7 @@ public class ThemeService: NSObject {
         // Update styles via UIAppearance
         UITabBarItem.appearance().badgeColor = theme.badgeColor
         UITabBar.appearance().unselectedItemTintColor = theme.dimmedTextColor
-                
+                        
         // The tintColor will trickle down to each view
         if let window = UIApplication.shared.keyWindow {
             window.tintColor = theme.tintColor
@@ -157,6 +157,18 @@ public class ThemeService: NSObject {
             
             let themeName = ThemeName(rawValue: defaults.string(forKey: "theme") ?? "") ?? ThemeName.defaultTheme
             ThemeService.shared.theme = themeName.themeClass
+            
+            if #available(iOS 13.0, *) {
+                if let window = UIApplication.shared.delegate?.window {
+                    if ThemeService.shared.themeMode == "dark" {
+                            window?.overrideUserInterfaceStyle = .dark
+                    } else if ThemeService.shared.themeMode == "light" {
+                        window?.overrideUserInterfaceStyle = .light
+                    } else {
+                        window?.overrideUserInterfaceStyle = .unspecified
+                    }
+                }
+            }
         }
     }
 }

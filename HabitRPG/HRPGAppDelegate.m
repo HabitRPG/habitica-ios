@@ -75,7 +75,10 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     [self.swiftAppDelegate setupUserManager];
+    [self.swiftAppDelegate setupTheme];
 }
+
+
 
 - (void)cleanAndRefresh:(UIApplication *)application {
     NSArray *scheduledNotifications =

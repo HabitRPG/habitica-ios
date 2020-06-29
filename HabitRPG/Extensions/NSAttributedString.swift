@@ -15,4 +15,14 @@ extension NSAttributedString {
         result.append(right)
         return result
     }
+
+}
+
+extension NSMutableAttributedString {
+    func addAttributesToSubstring(string: String, attributes: [NSAttributedString.Key: Any]) {
+        let range = (self.string as NSString).range(of: string)
+        if (range.length > 0) {
+             addAttributes(attributes, range: range)
+        }
+    }
 }

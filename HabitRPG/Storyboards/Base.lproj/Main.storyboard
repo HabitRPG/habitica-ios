@@ -474,7 +474,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="oGa-55-fMI">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="KrZ-kW-Zlx">
+                        <barButtonItem key="rightBarButtonItem" title="Close" id="KrZ-kW-Zlx">
                             <connections>
                                 <segue destination="tcH-c8-7GQ" kind="unwind" unwindAction="unwindToList:" id="3Nv-vc-lp3"/>
                             </connections>

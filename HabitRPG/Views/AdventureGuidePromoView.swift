@@ -27,7 +27,6 @@ class AdventureGuideBannerView: UIView, Themeable {
     private let completeLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 12)
-        label.text = L10n.completeToEarnGold
         return label
     }()
     
@@ -83,7 +82,13 @@ class AdventureGuideBannerView: UIView, Themeable {
     
     func applyTheme(theme: Theme) {
         titleLabel.textColor = theme.primaryTextColor
-        completeLabel.textColor = theme.primaryTextColor
+        let attrString = NSMutableAttributedString(string: L10n.completeToEarnGold)
+        attrString.addAttribute(NSAttributedString.Key.foregroundColor, value: theme.primaryTextColor, range: NSRange(location: 0, length: attrString.length))
+        attrString.addAttributesToSubstring(string: L10n.hundredGold, attributes: [
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12, weight: .bold),
+            NSAttributedString.Key.foregroundColor: UIColor.yellow5
+        ])
+        completeLabel.attributedText = attrString
         backgroundColor = theme.navbarHiddenColor
         if (theme.isDark) {
             container.backgroundColor = theme.windowBackgroundColor

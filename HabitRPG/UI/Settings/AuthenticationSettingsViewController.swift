@@ -171,9 +171,8 @@ class AuthenticationSettingsViewController: BaseSettingsViewController {
         alertController.addAction(title: L10n.Settings.deleteAccount, style: .destructive, isMainAction: true) {[weak self] _ in
             self?.userRepository.deleteAccount(password: textField.text ?? "").observeValues({ response in
                 if response.statusCode == 200 {
-                    let storyboard = UIStoryboard(name: "Intro", bundle: nil)
-                    let navigationController = storyboard.instantiateViewController(withIdentifier: "LoginTableViewController")
-                    self?.present(navigationController, animated: true, completion: nil)
+                    self?.navigationController?.dismiss(animated: true, completion: nil)
+                    self?.presentingViewController?.dismiss(animated: true, completion: nil)
                 } else if response.statusCode == 401 {
                     let alertView = HabiticaAlertController(title: L10n.Settings.wrongPassword)
                     alertView.addCloseAction()

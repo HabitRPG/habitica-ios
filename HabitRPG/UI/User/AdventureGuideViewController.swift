@@ -46,8 +46,21 @@ class AdventureGuideViewController: BaseUIViewController {
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
         view.backgroundColor = theme.contentBackgroundColor
-        gettingStartedLabel.textColor = theme.primaryTextColor
-        descriptionLabel.textColor = theme.primaryTextColor
+        var textColor = UIColor.gray50
+        if (theme.isDark) {
+            textColor = theme.primaryTextColor
+        }
+        gettingStartedLabel.textColor = textColor
+        let attrString = NSMutableAttributedString(string: L10n.adventureGuideDescription)
+        attrString.addAttribute(NSAttributedString.Key.foregroundColor, value: textColor, range: NSRange(location: 0, length: attrString.length))
+        attrString.addAttributesToSubstring(string: L10n.fiveAchievements, attributes: [
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14, weight: .bold)
+        ])
+        attrString.addAttributesToSubstring(string: L10n.hundredGold, attributes: [
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14, weight: .bold),
+            NSAttributedString.Key.foregroundColor: UIColor.yellow5
+        ])
+        descriptionLabel.attributedText = attrString
         progressView.trackTintColor = theme.offsetBackgroundColor
         progressView.tintColor = .yellow50
         progressLabel.textColor = .yellow5
@@ -85,7 +98,7 @@ class AdventureGuideViewController: BaseUIViewController {
         "completedTask": L10n.completeTaskDescription,
         "hatchedPet": L10n.hatchPetDescription,
         "fedPet": L10n.feedPetDescription,
-        "purchasedEquipment": L10n.purchasedEquipmentTitle
+        "purchasedEquipment": L10n.purchaseEquipmentTitle
     ]
 }
 
@@ -162,9 +175,11 @@ class AdventureGuideAchievement: UIView, Themeable {
             attributedTitle.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSRange(location: 0, length: attributedTitle.length))
             titleLabel.attributedText = attributedTitle
             iconView.setImagewith(name: "achievement-\(iconName)2x")
+            iconView.alpha = 1
         } else {
             titleLabel.text = title
             iconView.setImagewith(name: "achievement-unearned2x")
+            iconView.alpha = 0.5
         }
     }
     

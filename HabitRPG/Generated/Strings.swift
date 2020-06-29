@@ -24,6 +24,8 @@ public enum L10n {
   }
   /// Add
   public static var add: String { return L10n.tr("Mainstrings", "add") }
+  /// Complete these onboarding tasks and you’ll earn 5 Achievements and 100 Gold once you’re done!
+  public static var adventureGuideDescription: String { return L10n.tr("Mainstrings", "adventure_guide_description") }
   /// I agree to follow the guidelines
   public static var agreeGuidelinesPrompt: String { return L10n.tr("Mainstrings", "agree_guidelines_prompt") }
   /// All
@@ -226,6 +228,8 @@ public enum L10n {
   public static var firstDropExplanation2: String { return L10n.tr("Mainstrings", "first_drop_explanation2") }
   /// You found new items!
   public static var firstDropTitle: String { return L10n.tr("Mainstrings", "first_drop_title") }
+  /// 5 Achievements
+  public static var fiveAchievements: String { return L10n.tr("Mainstrings", "five_achievements") }
   /// Flower
   public static var flower: String { return L10n.tr("Mainstrings", "flower") }
   /// Food
@@ -332,6 +336,8 @@ public enum L10n {
   public static func hourglassCount(_ p1: Int) -> String {
     return L10n.tr("Mainstrings", "hourglass_count", p1)
   }
+  /// 100 Gold
+  public static var hundredGold: String { return L10n.tr("Mainstrings", "hundred_gold") }
   /// Inactive
   public static var inactive: String { return L10n.tr("Mainstrings", "inactive") }
   /// You’ll need more Mystic Hourglasses to buy this item! Hourglasses are rewarded for being subscribed for consecutive months.
@@ -464,7 +470,7 @@ public enum L10n {
   public static var onboardingCompleteAchievementTitle: String { return L10n.tr("Mainstrings", "onboardingComplete_achievement_title") }
   /// If you want even more, check out Achievements and start collecting!
   public static var onboardingCompleteDescription: String { return L10n.tr("Mainstrings", "onboardingCompleteDescription") }
-  /// You earned <b>5 Achievements</b> and <font color='#EE9109'><b>100 Gold</b></font> for your efforts.
+  /// You earned 5 Achievements and 100 Gold for your efforts.
   public static var onboardingCompleteTitle: String { return L10n.tr("Mainstrings", "onboardingCompleteTitle") }
   /// 1 Filter
   public static var oneFilter: String { return L10n.tr("Mainstrings", "one_filter") }
