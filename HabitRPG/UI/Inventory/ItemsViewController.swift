@@ -205,7 +205,7 @@ class ItemsViewController: BaseTableViewController {
         imageAlert.containerViewSpacing = 12
         imageAlert.setCloseAction(title: L10n.close, handler: {})
         imageAlert.imageHeight = 99
-        imageAlert.show()
+        imageAlert.enqueue()
     }
 
     @IBAction func cancelButtonTapped(_ sender: Any) {

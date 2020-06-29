@@ -275,7 +275,7 @@ class GiftGemsViewController: BaseUIViewController, UICollectionViewDataSource, 
         alert.addAction(title: L10n.onwards, isMainAction: true, handler: {[weak self] _ in
             self?.dismiss(animated: true, completion: nil)
         })
-        alert.show()
+        alert.enqueue()
     }
     
     @objc

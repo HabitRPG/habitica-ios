@@ -350,6 +350,16 @@ class HabiticaAlertController: UIViewController, Themeable {
             }
         }
     }
+
+    
+    @objc
+    func enqueue() {
+        HabiticaAlertController.addToQueue(alert: self)
+    }
+    
+    override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
+        super.dismiss(animated: flag, completion: completion)
+    }
     
     @objc
     func buttonTapped(_ button: UIButton) {
@@ -379,6 +389,24 @@ class HabiticaAlertController: UIViewController, Themeable {
     @objc
     func alertTapped() {
         // if the alert is tapped, it should not be dismissed
+    }
+    
+    private static var alertQueue = [HabiticaAlertController]()
+    
+    private static func showNextInQueue(currentAlert: HabiticaAlertController) {
+        if alertQueue.first == currentAlert {
+            alertQueue.removeFirst()
+        }
+        if !alertQueue.isEmpty {
+            alertQueue[0].show()
+        }
+    }
+    
+    private static func addToQueue(alert: HabiticaAlertController) {
+        if alertQueue.isEmpty {
+            alert.show()
+        }
+        alertQueue.append(alert)
     }
 }
 

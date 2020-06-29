@@ -524,7 +524,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         alert.addCloseAction()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             //delay a bit to give the buying modal a chance to disappear
-            alert.show()
+            alert.enqueue()
         }
     }
     
@@ -533,7 +533,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         alert.addAction(title: L10n.takeMeBack, isMainAction: true)
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             //delay a bit to give the buying modal a chance to disappear
-            alert.show()
+            alert.enqueue()
         }
     }
     
@@ -552,7 +552,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             //delay a bit to give the buying modal a chance to disappear
-            alert.show()
+            alert.enqueue()
         }
     }
     
@@ -561,7 +561,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         alert.addAction(title: L10n.takeMeBack, isMainAction: true)
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             //delay a bit to give the buying modal a chance to disappear
-            alert.show()
+            alert.enqueue()
         }
     }
     
@@ -592,7 +592,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
         }
         alert.addCancelAction()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            alert.show()
+            alert.enqueue()
         }
     }
     
@@ -611,7 +611,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
             alert.dismiss(animated: true, completion: nil)
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            alert.show()
+            alert.enqueue()
         }
     }
     

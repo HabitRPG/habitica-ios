@@ -105,7 +105,7 @@ class NotificationManager {
             }
         }
         alert.addCloseAction()
-        alert.show()
+        alert.enqueue()
         return true
     }
     
@@ -128,7 +128,7 @@ class NotificationManager {
         alert.setNotification(notification: notification, isOnboarding: isOnboarding, isLastOnboardingAchievement: isLastOnboardingAchievement)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
             // add a slight delay to make sure that any running VC transitions are done
-            alert.show()
+            alert.enqueue()
         }
         return true
     }
