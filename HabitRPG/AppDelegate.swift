@@ -414,7 +414,7 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
             self?.scoreTask(taskID, direction: "up") {}
         }
         alertController.addCloseAction()
-        alertController.show()
+        alertController.enqueue()
         UINotificationFeedbackGenerator.oneShotNotificationOccurred(.warning)
     }
 }

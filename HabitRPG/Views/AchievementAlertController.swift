@@ -33,6 +33,7 @@ class AchievementAlertController: HabiticaAlertController {
         let label = UILabel()
         label.font = .systemFont(ofSize: 16)
         label.textAlignment = .center
+        label.numberOfLines = 0
         return label
     }()
     private let descriptionLabel: UILabel = {
@@ -72,7 +73,6 @@ class AchievementAlertController: HabiticaAlertController {
         contentView = stackView
         stackView.addArrangedSubview(iconStackView)
         iconStackView.addArrangedSubview(iconView)
-        iconView.addHeightConstraint(height: 56)
         stackView.addArrangedSubview(achievementTitleLabel)
         stackView.addArrangedSubview(descriptionLabel)
     }
@@ -124,6 +124,8 @@ class AchievementAlertController: HabiticaAlertController {
     private func configureAlert(title: String, text: String, iconName: String) {
         if iconName == "onboardingComplete" {
             iconView.image = Asset.onboardingDoneArt.image
+            iconView.contentMode = .center
+            iconStackView.addHeightConstraint(height: 90)
         } else {
             iconStackView.insertArrangedSubview(leftSparkleView, at: 0)
             iconView.setImagewith(name: "achievement-\(iconName)2x")
@@ -140,7 +142,7 @@ class AchievementAlertController: HabiticaAlertController {
                 NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14, weight: .bold),
                 NSAttributedString.Key.foregroundColor: UIColor.yellow5
             ])
-            descriptionLabel.attributedText = attrString
+            descriptionLabel.text = text
         } else {
             descriptionLabel.text = text
             descriptionLabel.textColor = ThemeService.shared.theme.ternaryTextColor
