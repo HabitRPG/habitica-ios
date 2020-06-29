@@ -51,6 +51,7 @@ class AdventureGuideBannerView: UIView, Themeable {
     private let rightIndicator: UIImageView = {
         let view = UIImageView()
         view.contentMode = .center
+        view.image = Asset.caretRight.image
         return view
     }()
     

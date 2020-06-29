@@ -1,14 +1,17 @@
 {
   "images" : [
     {
+      "filename" : "Disclosure Indicator.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "Disclosure Indicator@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "Disclosure Indicator@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
