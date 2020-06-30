@@ -98,7 +98,7 @@ class AdventureGuideViewController: BaseUIViewController {
         "completedTask": L10n.completeTaskDescription,
         "hatchedPet": L10n.hatchPetDescription,
         "fedPet": L10n.feedPetDescription,
-        "purchasedEquipment": L10n.purchaseEquipmentTitle
+        "purchasedEquipment": L10n.purchaseEquipmentDescription
     ]
 }
 

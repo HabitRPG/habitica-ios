@@ -586,7 +586,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     
     private func displayNoRemainingConfirmationDialog() {
         let alert = HabiticaAlertController(title: L10n.excessItems, message: L10n.excessNoItemsLeft(reward?.text ?? "", purchaseQuantity, reward?.text ?? ""))
-        alert.addAction(title: L10n.purchaseX(purchaseQuantity), isMainAction: false) { _ in
+        alert.addAction(title: L10n.purchaseX(purchaseQuantity), isMainAction: true) { _ in
             self.buyItem(quantity: self.purchaseQuantity)
             alert.dismiss(animated: true, completion: nil)
         }
@@ -602,7 +602,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
             self.buyItem(quantity: self.purchaseQuantity)
             alert.dismiss(animated: true, completion: nil)
         }
-        alert.addAction(title: L10n.purchaseX(quantity), isMainAction: true) { _ in
+        alert.addAction(title: L10n.purchaseX(quantity), isMainAction: false) { _ in
             self.buyItem(quantity: quantity)
             alert.dismiss(animated: true, completion: nil)
         }

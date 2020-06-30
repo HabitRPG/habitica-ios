@@ -24,9 +24,7 @@ class TodoTableViewDataSource: TaskTableViewDataSource {
         if let todocell = cell as? ToDoTableViewCell {
             todocell.taskDetailLine.dateFormatter = dateFormatter
             todocell.checkboxTouched = {[weak self] in
-                self?.disposable.add(self?.repository.score(task: task, direction: task.completed ? .down : .up).observeCompleted {
-                    SoundManager.shared.play(effect: .todoCompleted)
-                    })
+                self?.scoreTask(task: task, direction: task.completed ? .down : .up, soundEffect: .todoCompleted)
             }
             todocell.checklistItemTouched = {[weak self] checklistItem in
                 self?.disposable.add(self?.repository.score(checklistItem: checklistItem, task: task).observeCompleted {})

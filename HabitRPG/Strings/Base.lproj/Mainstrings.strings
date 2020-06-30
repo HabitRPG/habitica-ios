@@ -85,12 +85,12 @@
 "save" = "Save";
 "tasks.habit" = "Habit";
 "tasks.daily" = "Daily";
-"tasks.todo" = "To-Do";
+"tasks.todo" = "To Do";
 "tasks.reward" = "Reward";
 "tasks.habits" = "Habits";
 "tasks.dailies" = "Dailies";
 "tasks.rewards" = "Rewards";
-"tasks.todos" = "To-Dos";
+"tasks.todos" = "To Do's";
 "tasks.form.create" = "New %@";
 "tasks.form.edit" = "Edit %@";
 "tasks.form.habit_title_placeholder" = "What habits do you want to foster or break?";
@@ -166,7 +166,7 @@
 "tasks.examples.habit_text" = "Tap here to edit this into a bad habit you'd like to quit";
 "tasks.examples.habit_notes" = "Or delete it by swiping left";
 "tasks.examples.todo_text" = "Join Habitica (Check me off!)";
-"tasks.examples.todo_notes" = "You can either complete this To-Do, edit it, or remove it.";
+"tasks.examples.todo_notes" = "You can either complete this To Do, edit it, or remove it.";
 "tasks.examples.reward_text" = "Reward yourself";
 "tasks.examples.reward_notes" = "Watch TV, play a game, eat a treat, it’s up to you!";
 "tasks.examples.work_habit" = "Process email";
@@ -668,8 +668,8 @@
 "tutorials.habits_4" = "Give it a shot! You can explore the other task types through the bottom navigation.";
 "tutorials.dailies_1" = "Make Dailies for time-sensitive tasks that need to be done on a regular schedule.";
 "tutorials.dailies_2" = "Be careful — if you miss one, your avatar will take damage overnight. Checking them off consistently brings great rewards!";
-"tutorials.todos_1" = "Use To-Dos to keep track of tasks you need to do just once.";
-"tutorials.todos_2" = "If your To-Do has to be done by a certain time, set a due date. Looks like you can check one off — go ahead!";
+"tutorials.todos_1" = "Use To Do's to keep track of tasks you need to do just once.";
+"tutorials.todos_2" = "If your To Do has to be done by a certain time, set a due date. Looks like you can check one off — go ahead!";
 "tutorials.rewards_1" = "Buy gear for your avatar with the gold you earn!";
 "tutorials.rewards_2" = "You can also make real-world Custom Rewards based on what motivates you.";
 "tutorials.add_task" = "Tap to add a new task.";
@@ -842,9 +842,9 @@
 "empty.habits.title" = "These are your Habits";
 "empty.habits.description" = "Habits don't have a rigid schedule. You can check them off multiple times per day.";
 "empty.dailies.title" = "These are your Dailies";
-"empty.dailies.description" = "Dailies are tasks that repeat on a regular basis. Choose the schedule that works you!";
-"empty.todos.title" = "These are your To-Dos";
-"empty.todos.description" = "To-Dos need to be completed once. Add checklists to your To-Dos to increase their value.";
+"empty.dailies.description" = "Dailies are tasks that repeat on a regular basis. Choose the schedule that works for you!";
+"empty.todos.title" = "These are your To Do's";
+"empty.todos.description" = "To Do's need to be completed once. Add checklists to your To Do's to increase their value.";
 "empty.rewards.title" = "These are your Rewards";
 "empty.rewards.description" = "Rewards are a great way to use Habitica and complete your tasks. Try adding a few today!";
 "empty.notifications.title" = "You're all caught up!";
@@ -933,7 +933,6 @@
 "complete_task_title" = "Complete a Task";
 "hatch_pet_title" = "Hatch a Pet";
 "feedPet_title" = "Feed a Pet";
-"purchase_equipment_title" = "Purchase Equipment";
 "hundred_gold" = "100 Gold";
 "five_achievements" = "5 Achievements";
 "adventure_guide_description" = "Complete these onboarding tasks and you’ll earn 5 Achievements and 100 Gold once you’re done!";

@@ -19,14 +19,10 @@ class HabitTableViewDataSource: TaskTableViewDataSource {
         super.configure(cell: cell, indexPath: indexPath, task: task)
         if let habitCell = cell as? HabitTableViewCell {
             habitCell.plusTouched = {[weak self] in
-                self?.disposable.add(self?.repository.score(task: task, direction: .up).observeCompleted {
-                    SoundManager.shared.play(effect: .habitPositive)
-                    })
+                self?.scoreTask(task: task, direction: .up, soundEffect: .habitPositive)
             }
             habitCell.minusTouched = {[weak self] in
-                self?.disposable.add(self?.repository.score(task: task, direction: .down).observeCompleted {
-                    SoundManager.shared.play(effect: .habitNegative)
-                    })
+            self?.scoreTask(task: task, direction: .down, soundEffect: .habitNegative)
             }
         }
     }

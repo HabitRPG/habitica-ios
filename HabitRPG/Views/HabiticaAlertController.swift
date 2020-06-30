@@ -359,6 +359,7 @@ class HabiticaAlertController: UIViewController, Themeable {
     
     override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
         super.dismiss(animated: flag, completion: completion)
+        HabiticaAlertController.showNextInQueue(currentAlert: self)
     }
     
     @objc
@@ -398,7 +399,9 @@ class HabiticaAlertController: UIViewController, Themeable {
             alertQueue.removeFirst()
         }
         if !alertQueue.isEmpty {
-            alertQueue[0].show()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                alertQueue[0].show()
+            }
         }
     }
     

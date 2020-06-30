@@ -142,11 +142,13 @@ class AchievementAlertController: HabiticaAlertController {
                 NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14, weight: .bold),
                 NSAttributedString.Key.foregroundColor: UIColor.yellow5
             ])
-            descriptionLabel.text = text
+            descriptionLabel.attributedText = attrString
         } else {
             descriptionLabel.text = text
             descriptionLabel.textColor = ThemeService.shared.theme.ternaryTextColor
         }
+        let titleSize = achievementTitleLabel.sizeThatFits(CGSize(width: 300, height: 600))
+        achievementTitleLabel.addHeightConstraint(height: titleSize.height)
         let size = descriptionLabel.sizeThatFits(CGSize(width: 300, height: 600))
         descriptionLabel.addHeightConstraint(height: size.height)
         

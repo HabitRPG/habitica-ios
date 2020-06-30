@@ -1029,9 +1029,9 @@ public enum L10n {
     }
 
     public enum Todos {
-      /// To-Dos need to be completed once. Add checklists to your To-Dos to increase their value.
+      /// To Do's need to be completed once. Add checklists to your To Do's to increase their value.
       public static var description: String { return L10n.tr("Mainstrings", "empty.todos.description") }
-      /// These are your To-Dos
+      /// These are your To Do's
       public static var title: String { return L10n.tr("Mainstrings", "empty.todos.title") }
     }
   }
@@ -1792,9 +1792,9 @@ public enum L10n {
     public static var school: String { return L10n.tr("Mainstrings", "tasks.school") }
     /// Team
     public static var team: String { return L10n.tr("Mainstrings", "tasks.team") }
-    /// To-Do
+    /// To Do
     public static var todo: String { return L10n.tr("Mainstrings", "tasks.todo") }
-    /// To-Dos
+    /// To Do's
     public static var todos: String { return L10n.tr("Mainstrings", "tasks.todos") }
     /// Work
     public static var work: String { return L10n.tr("Mainstrings", "tasks.work") }
@@ -1868,7 +1868,7 @@ public enum L10n {
       public static var teamTodoNotes: String { return L10n.tr("Mainstrings", "tasks.examples.team_todo_notes") }
       /// Complete team project
       public static var teamTodoText: String { return L10n.tr("Mainstrings", "tasks.examples.team_todo_text") }
-      /// You can either complete this To-Do, edit it, or remove it.
+      /// You can either complete this To Do, edit it, or remove it.
       public static var todoNotes: String { return L10n.tr("Mainstrings", "tasks.examples.todo_notes") }
       /// Join Habitica (Check me off!)
       public static var todoText: String { return L10n.tr("Mainstrings", "tasks.examples.todo_text") }
@@ -2168,9 +2168,9 @@ public enum L10n {
     public static var spells: String { return L10n.tr("Mainstrings", "tutorials.spells") }
     /// Tap the gray button to allocate lots of your stats at once, or tap the arrows to add them one point at a time.
     public static var stats: String { return L10n.tr("Mainstrings", "tutorials.stats") }
-    /// Use To-Dos to keep track of tasks you need to do just once.
+    /// Use To Do's to keep track of tasks you need to do just once.
     public static var todos1: String { return L10n.tr("Mainstrings", "tutorials.todos_1") }
-    /// If your To-Do has to be done by a certain time, set a due date. Looks like you can check one off — go ahead!
+    /// If your To Do has to be done by a certain time, set a due date. Looks like you can check one off — go ahead!
     public static var todos2: String { return L10n.tr("Mainstrings", "tutorials.todos_2") }
   }
 

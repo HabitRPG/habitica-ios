@@ -224,4 +224,16 @@ class TaskTableViewDataSource: BaseReactiveTableViewDataSource<TaskProtocol>, Ta
         predicates.append(NSPredicate(format: "type == %@", taskType.rawValue))
         return predicates
     }
+    
+    internal func scoreTask(task: TaskProtocol, direction: TaskScoringDirection, soundEffect: SoundEffect) {
+        disposable.add(repository.score(task: task, direction: direction)
+            .on(value: {[weak self] response in
+                if response?.temp?.drop?.key != nil {
+                    self?.disposable.add(self?.userRepository.retrieveUser().observeCompleted {})
+                }
+            })
+            .observeCompleted {
+                SoundManager.shared.play(effect: soundEffect)
+            })
+    }
 }
