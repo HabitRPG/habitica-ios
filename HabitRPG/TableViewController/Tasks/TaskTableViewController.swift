@@ -76,6 +76,7 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
             searchBar.barStyle = .default
         }
         searchBar.backgroundColor = theme.contentBackgroundColor
+        tableView.backgroundColor = theme.contentBackgroundColor
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -322,7 +322,7 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
             contentView.addConstraints(NSLayoutConstraint.defaultHorizontalConstraints(bulkView))
             contentView.addConstraints(NSLayoutConstraint.defaultVerticalConstraints("V:|-0-[itemView]-0-[detailView]-0-[bulkView]-20-|", ["itemView": itemView, "detailView": detailView, "bulkView": bulkView]))
             if reward?.key != "gem" {
-                bulkView.iconView.isHidden = true
+                bulkView.hideGemIcon(isHidden: true)
             }
         } else {
             contentView.addConstraints(NSLayoutConstraint.defaultVerticalConstraints("V:|-0-[itemView]-0-[detailView]-20-|", views))
@@ -340,6 +340,10 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
             }
             contentView.addSubview(bulkView)
             self.bulkView = bulkView
+            if reward?.key != "gem" {
+                bulkView.hideGemIcon(isHidden: true)
+            }
+
             contentView.addConstraints(NSLayoutConstraint.defaultHorizontalConstraints(bulkView))
             contentView.addConstraints(NSLayoutConstraint.defaultVerticalConstraints("V:|-0-[itemView]-0-[bulkView]-20-|", ["itemView": itemView, "bulkView": bulkView]))
         } else {
@@ -636,9 +640,12 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
     
     private func remainingPurchaseQuantity(onResult: @escaping ((Int) -> Void)) {
         var ownedCount = 0
+        var shouldWarn = true
+        var hasNoMounts = false
         if reward?.purchaseType == "eggs" {
-            stableRepository.getPets(query: "type == 'quest' && egg == '\(reward?.key ?? "")'").filter { pets -> Bool in
-                return !pets.value.isEmpty
+            stableRepository.getPets(query: "type == 'quest' && egg == '\(reward?.key ?? "")'").take(first: 1).filter { pets -> Bool in
+                shouldWarn = !pets.value.isEmpty
+                return shouldWarn
             }.flatMap(.latest) { _ in
                 return self.inventoryRepository.getOwnedItems(userID: nil, itemType: "eggs")
             }.flatMap(.latest) { eggs -> SignalProducer<ReactiveResults<[OwnedPetProtocol]>, ReactiveSwiftRealmError> in
@@ -655,6 +662,10 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                 return self.stableRepository.getOwnedMounts()
                 }.take(first: 1)
                 .on(completed: {
+                    if !shouldWarn {
+                        onResult(-1)
+                        return
+                    }
                     let remaining = 20 - ownedCount
                     onResult(max(0, remaining))
                 }, value: { mounts in
@@ -666,8 +677,12 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                 })
                 .start()
         } else if reward?.purchaseType == "hatchingPotions" {
-            stableRepository.getPets(query: "type == 'premium' && potion == '\(reward?.key ?? "")'").filter { pets -> Bool in
-                return !pets.value.isEmpty
+            stableRepository.getPets(query: "(type == 'premium' || type == 'wacky') && potion == '\(reward?.key ?? "")'").take(first: 1).filter { pets -> Bool in
+            shouldWarn = !pets.value.isEmpty
+                if pets.value.first?.type == "wacky" {
+                    hasNoMounts = true
+                }
+            return shouldWarn
             }.flatMap(.latest) { _ in
                 return self.inventoryRepository.getOwnedItems(userID: nil, itemType: "hatchingPotions")
             }.flatMap(.latest) { potions -> SignalProducer<ReactiveResults<[OwnedPetProtocol]>, ReactiveSwiftRealmError> in
@@ -684,7 +699,11 @@ class HRPGBuyItemModalViewController: UIViewController, Themeable {
                 return self.stableRepository.getOwnedMounts()
                 }.take(first: 1)
                 .on(completed: {
-                    let remaining = 20 - ownedCount
+                    if !shouldWarn {
+                        onResult(-1)
+                        return
+                    }
+                    let remaining = (hasNoMounts ? 9 : 18) - ownedCount
                     onResult(max(0, remaining))
                 }, value: { mounts in
                     for mount in mounts.value {

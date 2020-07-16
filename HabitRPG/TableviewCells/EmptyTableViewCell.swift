@@ -20,7 +20,7 @@ class EmptyTableViewCell: UITableViewCell, Themeable {
     }
     
     func applyTheme(theme: Theme) {
-        backgroundColor = theme.windowBackgroundColor
+        backgroundColor = theme.contentBackgroundColor
         titleLabel.textColor = theme.ternaryTextColor
         firstParagraphLabel.textColor = theme.ternaryTextColor
         secondParagraphLabel.textColor = theme.ternaryTextColor

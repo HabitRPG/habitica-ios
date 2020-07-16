@@ -13,6 +13,7 @@
                 <outlet property="errorLabel" destination="dDv-eH-wWP" id="VUE-cQ-Jnn"/>
                 <outlet property="iconView" destination="32r-fk-ZUp" id="KJF-QN-eV4"/>
                 <outlet property="inputContainer" destination="qH0-CU-x2N" id="002-oj-LDx"/>
+                <outlet property="leadingSpace" destination="HKo-ke-TO4" id="D0Z-VZ-wbF"/>
                 <outlet property="subtractButton" destination="BiA-ea-dB0" id="ChK-DM-ZG6"/>
                 <outlet property="textField" destination="3gf-e3-UFI" id="slU-0M-P2i"/>
             </connections>
@@ -55,7 +56,7 @@
                                                         <constraint firstAttribute="width" constant="24" id="hKM-jw-R1B"/>
                                                     </constraints>
                                                 </imageView>
-                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3gf-e3-UFI">
+                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3gf-e3-UFI">
                                                     <rect key="frame" x="28" y="0.0" width="43" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="ZIE-4q-ulJ"/>

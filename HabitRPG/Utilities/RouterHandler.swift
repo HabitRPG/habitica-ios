@@ -127,7 +127,11 @@ class RouterHandler: NSObject {
     }
     
     private var tabbarController: MainTabBarController? {
-        return UIApplication.shared.keyWindow?.rootViewController?.presentedViewController as? MainTabBarController
+        var viewController = UIApplication.shared.keyWindow?.rootViewController
+        while viewController != nil && viewController as? MainTabBarController == nil {
+            viewController = viewController?.presentedViewController
+        }
+        return viewController as? MainTabBarController
     }
     
     private var selectedNavigationController: UINavigationController? {

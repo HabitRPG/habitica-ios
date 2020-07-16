@@ -43,7 +43,11 @@ class AchievementAlertController: HabiticaAlertController {
         label.numberOfLines = 0
         return label
     }()
-    
+    private let spacerView: UIView = {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 1, height: 14))
+        view.backgroundColor = .clear
+        return view
+    }()
     private let leftSparkleView: UIImageView = {
         let view = UIImageView(frame: CGRect(x: 0, y: 0, width: 42, height: 56))
         view.image = Asset.sparkleStarsLeft.image
@@ -73,13 +77,15 @@ class AchievementAlertController: HabiticaAlertController {
         contentView = stackView
         stackView.addArrangedSubview(iconStackView)
         iconStackView.addArrangedSubview(iconView)
+        stackView.addArrangedSubview(spacerView)
+        spacerView.addHeightConstraint(height: 14)
         stackView.addArrangedSubview(achievementTitleLabel)
         stackView.addArrangedSubview(descriptionLabel)
     }
     
     override func applyTheme(theme: Theme) {
         super.applyTheme(theme: theme)
-        achievementTitleLabel.textColor = theme.primaryTextColor
+        descriptionLabel.textColor = theme.ternaryTextColor
     }
     
     func setNotification(notification: NotificationProtocol, isOnboarding: Bool, isLastOnboardingAchievement: Bool) {
@@ -131,9 +137,10 @@ class AchievementAlertController: HabiticaAlertController {
             iconView.setImagewith(name: "achievement-\(iconName)2x")
             iconStackView.addArrangedSubview(rightSparkleView)
         }
-        achievementTitleLabel.text = title
+        descriptionLabel.text = text
+        descriptionLabel.textColor = ThemeService.shared.theme.primaryTextColor
         if iconName == "onboardingComplete" {
-            let attrString = NSMutableAttributedString(string: text)
+            let attrString = NSMutableAttributedString(string: title)
             attrString.addAttribute(NSAttributedString.Key.foregroundColor, value: ThemeService.shared.theme.primaryTextColor, range: NSRange(location: 0, length: attrString.length))
             attrString.addAttributesToSubstring(string: L10n.fiveAchievements, attributes: [
                 NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14, weight: .bold)
@@ -142,29 +149,39 @@ class AchievementAlertController: HabiticaAlertController {
                 NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14, weight: .bold),
                 NSAttributedString.Key.foregroundColor: UIColor.yellow5
             ])
-            descriptionLabel.attributedText = attrString
+            achievementTitleLabel.attributedText = attrString
         } else {
-            descriptionLabel.text = text
-            descriptionLabel.textColor = ThemeService.shared.theme.ternaryTextColor
+            achievementTitleLabel.text = title
+            achievementTitleLabel.textColor = ThemeService.shared.theme.primaryTextColor
         }
-        let titleSize = achievementTitleLabel.sizeThatFits(CGSize(width: 300, height: 600))
+        let titleSize = achievementTitleLabel.sizeThatFits(CGSize(width: 240, height: 600))
         achievementTitleLabel.addHeightConstraint(height: titleSize.height)
-        let size = descriptionLabel.sizeThatFits(CGSize(width: 300, height: 600))
+        let size = descriptionLabel.sizeThatFits(CGSize(width: 240, height: 600))
         descriptionLabel.addHeightConstraint(height: size.height)
         
-        addAction(title: L10n.onwards, isMainAction: true)
+        containerViewSpacing = 12
+        
         if isOnboarding {
+            addAction(title: L10n.onwards, isMainAction: true)
             if !isLastOnboardingAchievement {
                 addAction(title: L10n.viewOnboardingTasks) { _ in
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                         RouterHandler.shared.handle(urlString: "/user/onboarding")
                     }
                 }
             }
+        } else if iconName == "onboardingComplete" {
+            addAction(title: L10n.viewAchievements, isMainAction: true) { _ in
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    RouterHandler.shared.handle(urlString: "/user/achievements")
+                }
+            }
+            addCloseAction()
         } else {
+            addAction(title: L10n.onwards, isMainAction: true)
             if !isLastOnboardingAchievement {
                 addAction(title: L10n.viewAchievements) { _ in
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                         RouterHandler.shared.handle(urlString: "/user/achievements")
                     }
                 }

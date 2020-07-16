@@ -18,6 +18,7 @@ class HRPGBulkPurchaseView: UIView, Themeable {
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var inputContainer: UIView!
     @IBOutlet weak var iconView: UIImageView!
+    @IBOutlet weak var leadingSpace: NSLayoutConstraint!
     
     private var user: UserProtocol?
     
@@ -137,6 +138,15 @@ class HRPGBulkPurchaseView: UIView, Themeable {
     func tapped() {
         if textField.isFirstResponder {
             textField.resignFirstResponder()
+        }
+    }
+    
+    func hideGemIcon(isHidden: Bool) {
+        iconView.isHidden = isHidden
+        if isHidden {
+            leadingSpace.constant = 12
+        } else {
+            leadingSpace.constant = 26
         }
     }
 }

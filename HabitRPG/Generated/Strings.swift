@@ -202,7 +202,7 @@ public enum L10n {
   public static func excessNoItemsLeft(_ p1: String, _ p2: Int, _ p3: String) -> String {
     return L10n.tr("Mainstrings", "excess_no_items_left", p1, p2, p3)
   }
-  /// You only need %d %@ to hatch all possible pets. Are you sure you want to purchase %d?
+  /// You only need %d %@s to hatch all possible pets. Are you sure you want to purchase %d?
   public static func excessXItemsLeft(_ p1: Int, _ p2: String, _ p3: Int) -> String {
     return L10n.tr("Mainstrings", "excess_x_items_left", p1, p2, p3)
   }
@@ -996,7 +996,7 @@ public enum L10n {
   public enum Empty {
 
     public enum Dailies {
-      /// Dailies are tasks that repeat on a regular basis. Choose the schedule that works you!
+      /// Dailies are tasks that repeat on a regular basis. Choose the schedule that works for you!
       public static var description: String { return L10n.tr("Mainstrings", "empty.dailies.description") }
       /// These are your Dailies
       public static var title: String { return L10n.tr("Mainstrings", "empty.dailies.title") }

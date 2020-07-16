@@ -100,7 +100,7 @@ class NotificationManager {
         
         alert.contentView = stackView
         alert.addAction(title: L10n.goToItems, isMainAction: true) { _ in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 RouterHandler.shared.handle(urlString: "/inventory/items")
             }
         }

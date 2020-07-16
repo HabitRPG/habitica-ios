@@ -33,10 +33,15 @@ class RewardViewController: BaseCollectionViewController, UICollectionViewDelega
         collectionView?.addSubview(refreshControl)
         
         tutorialIdentifier = "rewards"
-        navigationItem.title = L10n.Tasks.reward
+        navigationItem.title = L10n.Tasks.rewards
         refresh()
         
         ThemeService.shared.addThemeable(themable: self)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        collectionView.reloadData()
     }
     
     override func applyTheme(theme: Theme) {

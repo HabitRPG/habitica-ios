@@ -882,7 +882,7 @@
 "learn_more" = "Learn More";
 "excess_items" = "Excess Items";
 "excess_no_items_left" = "You already have everything you need for all %@ pets. Are you sure you want to purchase %d %@s?";
-"excess_x_items_left" = "You only need %d %@ to hatch all possible pets. Are you sure you want to purchase %d?";
+"excess_x_items_left" = "You only need %d %@s to hatch all possible pets. Are you sure you want to purchase %d?";
 "purchase_x" = "Purchase %d";
 "onboarding_tasks" = "Onboarding Tasks";
 "complete_to_earn_gold" = "Complete to earn 100 Gold!";

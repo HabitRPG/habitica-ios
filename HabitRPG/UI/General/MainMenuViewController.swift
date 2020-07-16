@@ -113,7 +113,7 @@ class MainMenuViewController: BaseTableViewController {
                         self?.perform(segue: StoryboardSegue.Main.showAdventureGuide)
                     }
                     if let achievements = user?.achievements?.onboardingAchievements {
-                        view.setProgress(earned: achievements.filter({ $0.value }).count, total:  achievements.count)
+                        view.setProgress(earned: achievements.filter({ $0.value }).count, total: achievements.count)
                     }
                     tableView.tableHeaderView = view
                 }
@@ -123,8 +123,25 @@ class MainMenuViewController: BaseTableViewController {
         }
     }
     
+    override init(style: UITableView.Style) {
+        if #available(iOS 13.0, *) {
+            super.init(style: .insetGrouped)
+        } else {
+            super.init(style: .grouped)
+        }
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        if #available(iOS 13.0, *) {
+            tableView = UITableView(frame: CGRect.zero, style: .insetGrouped)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.register(UINib(nibName: "MainTableviewCell", bundle: nil), forCellReuseIdentifier: "Cell")
+
         topHeaderCoordinator?.hideNavBar = true
         topHeaderCoordinator?.alternativeHeader = navbarView
         topHeaderCoordinator?.navbarVisibleColor = navbarColor
@@ -272,7 +289,11 @@ class MainMenuViewController: BaseTableViewController {
         let iconView = UIImageView()
         iconView.tintColor = ThemeService.shared.theme.primaryTextColor
         view.addSubview(iconView)
-        iconView.pin.start(9).size(16)
+        if #available(iOS 13.0, *) {
+            iconView.pin.start(4).size(16)
+        } else {
+            iconView.pin.start(8).size(16)
+        }
         label.pin.after(of: iconView).top(14).marginStart(6).sizeToFit(.heightFlexible)
         view.pin.width(view.frame.size.width).height(label.frame.size.height + 14)
         iconView.pin.vCenter(to: label.edge.vCenter)
@@ -284,7 +305,11 @@ class MainMenuViewController: BaseTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return UITableView.automaticDimension
+        if section == 0 {
+            return 20
+        } else {
+            return 40
+        }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -369,13 +394,13 @@ class MainMenuViewController: BaseTableViewController {
             let navigationController = segue.destination as? UINavigationController
             let giftSubscriptionController = navigationController?.topViewController as? GiftSubscriptionViewController
             giftSubscriptionController?.giftRecipientUsername = giftRecipientUsername
-        } else if (segue.identifier == StoryboardSegue.Main.showMarketSegue.rawValue) {
+        } else if segue.identifier == StoryboardSegue.Main.showMarketSegue.rawValue {
             (segue.destination as? HRPGShopViewController)?.shopIdentifier = Constants.MarketKey
-        } else if (segue.identifier == StoryboardSegue.Main.showQuestShopSegue.rawValue) {
+        } else if segue.identifier == StoryboardSegue.Main.showQuestShopSegue.rawValue {
             (segue.destination as? HRPGShopViewController)?.shopIdentifier = Constants.QuestShopKey
-        } else if (segue.identifier == StoryboardSegue.Main.showSeasonalShopSegue.rawValue) {
+        } else if segue.identifier == StoryboardSegue.Main.showSeasonalShopSegue.rawValue {
             (segue.destination as? HRPGShopViewController)?.shopIdentifier = Constants.SeasonalShopKey
-        } else if (segue.identifier == StoryboardSegue.Main.showTimeTravelersSegue.rawValue) {
+        } else if segue.identifier == StoryboardSegue.Main.showTimeTravelersSegue.rawValue {
             (segue.destination as? HRPGShopViewController)?.shopIdentifier = Constants.TimeTravelersShopKey
         }
     }
