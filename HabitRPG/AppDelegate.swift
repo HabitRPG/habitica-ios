@@ -283,15 +283,20 @@ class HabiticaAppDelegate: NSObject, MessagingDelegate, UNUserNotificationCenter
         let lastContentFetch = defaults.object(forKey: "lastContentFetch") as? NSDate
         let lastContentFetchVersion = defaults.object(forKey: "lastContentFetchVersion") as? String
         let currentBuildNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String
-        if lastContentFetch == nil || (lastContentFetch?.timeIntervalSinceNow ?? 0) < 1 || lastContentFetchVersion != currentBuildNumber {
-            contentRepository.retrieveContent()
-                .flatMap(.latest, {[weak self] (_) -> Signal<WorldStateProtocol?, Never> in
-                    return self?.contentRepository.retrieveWorldState() ?? Signal.empty
+        if lastContentFetch == nil || (lastContentFetch?.timeIntervalSinceNow ?? 0) < -300 || lastContentFetchVersion != currentBuildNumber {
+            contentRepository.getFAQEntries()
+                .take(first: 1)
+                .flatMap(.latest) {[weak self] (entries) in
+                    return self?.contentRepository.retrieveContent(force: entries.value.isEmpty)
+                        .flatMap(.latest, {[weak self] (_) -> Signal<WorldStateProtocol?, Never> in
+                            return self?.contentRepository.retrieveWorldState() ?? Signal.empty
+                        }) ?? Signal.empty
+                }
+                .on(completed: {
+                    defaults.setValue(Date(), forKey: "lastContentFetch")
+                    defaults.setValue(currentBuildNumber, forKey: "lastContentFetchVersion")
                 })
-                .observeCompleted {
-                defaults.setValue(Date(), forKey: "lastContentFetch")
-                defaults.setValue(currentBuildNumber, forKey: "lastContentFetchVersion")
-            }
+                .start()
         }
     }
     
