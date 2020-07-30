@@ -142,6 +142,10 @@ class MainTabBarController: UITabBarController, Themeable {
             if let tutorials = user.flags?.tutorials {
                 self?.updateTutorialSteps(tutorials)
             }
+            
+            if user.flags?.welcomed != true {
+                self?.userRepository.updateUser(key: "flags.welcomed", value: true).observeCompleted {}
+            }
         }).start())
         disposable.inner.add(taskRepository.getDueTasks().on(value: {[weak self] tasks in
             self?.dueDailiesCount = 0
