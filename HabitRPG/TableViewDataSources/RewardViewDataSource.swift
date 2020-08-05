@@ -46,8 +46,7 @@ class RewardViewDataSource: BaseReactiveCollectionViewDataSource<BaseRewardProto
         if isCustomRewardsSection(section) {
             return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         } else {
-            return UIEdgeInsets(top: 12, left: 6, bottom: 12, right: 6)
-        }
+            return UIEdgeInsets(top: 10, left: 4, bottom: 10, right: 4)        }
     }
     
     func isCustomRewardsSection(_ section: Int) -> Bool {

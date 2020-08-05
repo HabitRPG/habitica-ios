@@ -54,7 +54,7 @@ class CheckboxView: UIView {
             }
         }
     }
-    var size: CGFloat = 26
+    var size: CGFloat = 24
     var boxBorderColor: UIColor?
     var boxFillColor: UIColor = UIColor.white
     var boxCornerRadius: CGFloat = 0
@@ -110,8 +110,9 @@ class CheckboxView: UIView {
         if task.type == "daily" {
             boxCornerRadius = 3
             if task.completed {
-                backgroundColor = theme.offsetBackgroundColor
+                backgroundColor = theme.windowBackgroundColor
                 checkColor = theme.ternaryTextColor
+                boxFillColor = theme.offsetBackgroundColor
             } else {
                 backgroundColor = theme.offsetBackgroundColor
                 checkColor = theme.ternaryTextColor
@@ -119,7 +120,7 @@ class CheckboxView: UIView {
                     backgroundColor = UIColor.forTaskValueLight(Int(task.value))
                     checkColor = UIColor.forTaskValue(Int(task.value))
                 } else {
-                    boxFillColor = theme.dimmedTextColor
+                    boxFillColor = theme.windowBackgroundColor
                 }
             }
         } else {
@@ -140,13 +141,16 @@ class CheckboxView: UIView {
         layer.setNeedsDisplay()
     }
     
-    func configure(checklistItem: ChecklistItemProtocol, withTitle: Bool) {
+    func configure(checklistItem: ChecklistItemProtocol, withTitle: Bool, checkColor: UIColor) {
+        size = 20
+        boxCornerRadius = 4
+        padding = 10
         checked = checklistItem.completed
         if let layer = self.layer as? CheckmarkLayer {
             layer.drawPercentage = checked ? 1 : 0
         }
         if withTitle {
-            label.font = UIFont.preferredFont(forTextStyle: .subheadline)
+            label.font = CustomFontMetrics.scaledSystemFont(ofSize: 15)
             if label.superview == nil {
                 self.addSubview(label)
             }
@@ -161,12 +165,10 @@ class CheckboxView: UIView {
         let theme = ThemeService.shared.theme
         label.textColor = checked ? theme.dimmedTextColor : theme.primaryTextColor
         backgroundColor = UIColor.clear
-        boxFillColor = checked ? theme.dimmedTextColor : UIColor.clear
-        boxBorderColor = checked ? nil : theme.dimmedTextColor
-        checkColor = theme.ternaryTextColor
-        boxCornerRadius = 3
+        boxFillColor = theme.contentBackgroundColor.withAlphaComponent(0.65)
+        boxBorderColor = nil
+        self.checkColor = checkColor
         centerCheckbox = false
-        size = 22
         borderedBox = true
         layer.setNeedsDisplay()
     }
@@ -201,7 +203,7 @@ class CheckboxView: UIView {
     
     override func layoutSubviews() {
         let leftOffset = padding * 2 + size
-        label.frame = CGRect(x: leftOffset, y: 0, width: frame.size.width - leftOffset, height: frame.size.height)
+        label.frame = CGRect(x: leftOffset + 12, y: 0, width: frame.size.width - leftOffset, height: frame.size.height)
         dimmOverlayView.frame = frame
     }
     
@@ -232,5 +234,9 @@ class CheckboxView: UIView {
     
     override var intrinsicContentSize: CGSize {
         return CGSize(width: size + padding * 2, height: size + padding * 2)
+    }
+    
+    override func sizeThatFits(_ size: CGSize) -> CGSize {
+        return CGSize(width: size.width, height: self.size + padding * 2)
     }
 }

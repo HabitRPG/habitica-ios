@@ -47,7 +47,7 @@ class YesterdailyTaskCell: UITableViewCell {
                 let label = view.viewWithTag(2) as? UILabel
                 label?.attributedText = try? Down(markdownString: checklistItem.text?.unicodeEmoji ?? "").toHabiticaAttributedString()
                 let checkbox = view.viewWithTag(1) as? CheckboxView
-                checkbox?.configure(checklistItem: checklistItem, withTitle: false)
+                checkbox?.configure(checklistItem: checklistItem, withTitle: false, checkColor: ThemeService.shared.theme.dimmedTextColor)
                 checkbox?.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
                 checkbox?.wasTouched = {[weak self] in
                     if let checked = self?.onChecklistItemChecked {

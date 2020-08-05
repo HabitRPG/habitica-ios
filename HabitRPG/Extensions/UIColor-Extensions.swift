@@ -193,6 +193,30 @@ extension UIColor {
     }
     
     /**
+     The extra light color associated with a specific task value. Defaults to blue500.
+     
+     - parameter taskValue: NSNumber value.
+     */
+    @objc
+    public static func forTaskValueExtraLight(_ taskValue: Int) -> UIColor {
+        if taskValue < -20 {
+            return UIColor.maroon500
+        } else if taskValue < -10 {
+            return UIColor.red500
+        } else if taskValue < -1 {
+            return UIColor.orange500
+        } else if taskValue < 1 {
+            return UIColor.yellow500
+        } else if taskValue < 5 {
+            return UIColor.green500
+        } else if taskValue < 10 {
+            return UIColor.teal500
+        } else {
+            return UIColor.blue500
+        }
+    }
+    
+    /**
      Hex string of a UIColor instance.
      
      - parameter includeAlpha: Whether the alpha should be included.

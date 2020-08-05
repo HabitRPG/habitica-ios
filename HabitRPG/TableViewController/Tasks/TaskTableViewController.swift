@@ -77,6 +77,7 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
         }
         searchBar.backgroundColor = theme.contentBackgroundColor
         tableView.backgroundColor = theme.contentBackgroundColor
+        tableView.separatorColor = theme.contentBackgroundColor
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -105,8 +106,6 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
-        tableView.separatorInset = UIEdgeInsets.zero
         tableView.layoutMargins = UIEdgeInsets.zero
     }
     
@@ -335,7 +334,9 @@ class TaskTableViewController: BaseTableViewController, UISearchBarDelegate, UIT
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         if let task = dataSource?.item(at: indexPath) {
-            return !task.isChallengeTask
+            if task.isValid {
+                return !task.isChallengeTask
+            }
         }
         return true
     }

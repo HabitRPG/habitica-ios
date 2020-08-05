@@ -9,6 +9,7 @@
 import UIKit
 import Down
 import Habitica_Models
+import PinLayout
 
 @objc
 class TaskTableViewCell: UITableViewCell, UITextViewDelegate {
@@ -20,9 +21,13 @@ class TaskTableViewCell: UITableViewCell, UITextViewDelegate {
     @IBOutlet weak var mainTaskWrapper: UIView!
     @IBOutlet weak var syncingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var syncErrorIndicator: UIImageView!
-    @IBOutlet weak var syncIndicatorsWidth: NSLayoutConstraint!
-    @IBOutlet weak var syncIndicatorsSpacing: NSLayoutConstraint!
     //swiftlint:disable private_outlet
+    
+    var contentStartEdge: HorizontalEdge?
+    var contentEndEdge: HorizontalEdge?
+    var minHeight: CGFloat {
+        return 40
+    }
     
     @objc public var isLocked: Bool = false
 
@@ -43,20 +48,23 @@ class TaskTableViewCell: UITableViewCell, UITextViewDelegate {
         gestureRecognizer.delegate = self
         gestureRecognizer.cancelsTouchesInView = false
         subtitleLabel.addGestureRecognizer(gestureRecognizer)
+        
+        contentStartEdge = mainTaskWrapper.edge.start
+        contentEndEdge = mainTaskWrapper.edge.end
     }
     
     @objc
     func configure(task: TaskProtocol) {
-        self.titleLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 16)
+        self.titleLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 15)
         self.titleLabel.textContainerInset = UIEdgeInsets.zero
         self.subtitleLabel.textContainerInset = UIEdgeInsets.zero
         if let text = task.text {
-            self.titleLabel.attributedText = try? Down(markdownString: text.unicodeEmoji).toHabiticaAttributedString(baseSize: 16, textColor: ThemeService.shared.theme.primaryTextColor)
+            self.titleLabel.attributedText = try? Down(markdownString: text.unicodeEmoji).toHabiticaAttributedString(baseSize: 15, textColor: ThemeService.shared.theme.primaryTextColor)
         }
 
         if let trimmedNotes = task.notes?.trimmingCharacters(in: .whitespacesAndNewlines), trimmedNotes.isEmpty == false {
-            self.subtitleLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 13)
-            self.subtitleLabel.attributedText = try? Down(markdownString: trimmedNotes.unicodeEmoji).toHabiticaAttributedString(baseSize: 13, textColor: ThemeService.shared.theme.secondaryTextColor)
+            self.subtitleLabel.font = CustomFontMetrics.scaledSystemFont(ofSize: 11)
+            self.subtitleLabel.attributedText = try? Down(markdownString: trimmedNotes.unicodeEmoji).toHabiticaAttributedString(baseSize: 11, textColor: ThemeService.shared.theme.secondaryTextColor)
             self.subtitleLabel.isHidden = false
         } else {
             self.subtitleLabel.text = nil
@@ -71,23 +79,15 @@ class TaskTableViewCell: UITableViewCell, UITextViewDelegate {
             self.syncingIndicator.startAnimating()
         }
         self.syncErrorIndicator.isHidden = task.isSyncing || task.isSynced
-        
-        if self.syncingIndicator.isHidden && self.syncErrorIndicator.isHidden {
-            syncIndicatorsWidth.constant = 0
-            syncIndicatorsSpacing.constant = 0
-        } else {
-            syncIndicatorsWidth.constant = 20
-            syncIndicatorsSpacing.constant = 8
-        }
 
         self.setNeedsLayout()
         
         self.applyAccessibility(task)
-        
-        contentView.backgroundColor = ThemeService.shared.theme.contentBackgroundColor
-        mainTaskWrapper.backgroundColor = contentView.backgroundColor
-        titleLabel.backgroundColor = contentView.backgroundColor
-        subtitleLabel.backgroundColor = contentView.backgroundColor
+        backgroundColor = .clear
+        contentView.backgroundColor = .clear
+        mainTaskWrapper.backgroundColor = ThemeService.shared.theme.windowBackgroundColor
+        titleLabel.backgroundColor = mainTaskWrapper.backgroundColor
+        subtitleLabel.backgroundColor = mainTaskWrapper.backgroundColor
     }
     
     func applyAccessibility(_ task: TaskProtocol) {
@@ -149,5 +149,50 @@ class TaskTableViewCell: UITableViewCell, UITextViewDelegate {
             }
         }
         return true
+    }
+    
+    override func layoutSubviews() {
+        layout()
+        super.layoutSubviews()
+    }
+    
+    func layoutContentStartEdge() {
+        
+    }
+    
+    func layoutContentEndEdge() {
+        
+    }
+    
+    func layout() {
+        mainTaskWrapper.pin.horizontally(10).top(4)
+        var lastView: UIView = titleLabel
+        if let contentStartEdge = contentStartEdge, let contentEndEdge = contentEndEdge {
+            layoutContentStartEdge()
+            layoutContentEndEdge()
+            titleLabel.pin.top(10).start(to: contentStartEdge).marginHorizontal(10).end(to: contentEndEdge).sizeToFit(.width)
+            if !subtitleLabel.text.isEmpty {
+                subtitleLabel.pin.below(of: lastView).marginTop(1).start(to: contentStartEdge).marginHorizontal(10).end(to: contentEndEdge).sizeToFit(.width)
+                lastView = subtitleLabel
+            }
+            if !taskDetailLine.isHidden {
+                taskDetailLine.pin.below(of: lastView).marginTop(7).start(to: contentStartEdge).marginHorizontal(10).end(to: contentEndEdge).sizeToFit(.width)
+                lastView = taskDetailLine
+            }
+        }
+        var height = lastView.frame.origin.y + lastView.frame.size.height + 10
+        if lastView == subtitleLabel {
+            height += 7
+        }
+        mainTaskWrapper.pin.height(max(height, minHeight))
+        if lastView == titleLabel {
+            titleLabel.pin.vCenter()
+        }
+    }
+    
+    override func sizeThatFits(_ size: CGSize) -> CGSize {
+        contentView.pin.width(size.width)
+        layout()
+        return CGSize(width: contentView.frame.width, height: mainTaskWrapper.frame.size.height + 8)
     }
 }

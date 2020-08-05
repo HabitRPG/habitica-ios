@@ -124,7 +124,7 @@ class InAppRewardCell: UICollectionViewCell {
         let theme = ThemeService.shared.theme
         backgroundColor = theme.contentBackgroundColor
         containerView.backgroundColor = theme.windowBackgroundColor
-        currencyBackgroundView.backgroundColor = theme.offsetBackgroundColor
+        currencyBackgroundView.backgroundColor = theme.offsetBackgroundColor.withAlphaComponent(0.3)
         unlockLabel.textColor = theme.secondaryTextColor
     }
     

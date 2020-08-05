@@ -13,7 +13,7 @@ class HabitButton: UIView {
     
     private let label = UIImageView()
     private let roundedView = UIView()
-    private var buttonSize: CGFloat = 32
+    private var buttonSize: CGFloat = 24
     private var isActive = false
     var dimmOverlayView: UIView = {
         let view = UIView()
@@ -38,10 +38,10 @@ class HabitButton: UIView {
     private func setupView() {
         addSubview(roundedView)
         roundedView.layer.cornerRadius = buttonSize / 2
-        label.contentMode = .center
+        label.contentMode = .scaleAspectFit
         label.isUserInteractionEnabled = true
         label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap)))
-        roundedView.layer.borderWidth = 1
+        roundedView.layer.borderWidth = 2
         addSubview(dimmOverlayView)
         addSubview(label)
     }
@@ -49,35 +49,30 @@ class HabitButton: UIView {
     func configure(task: TaskProtocol, isNegative: Bool) {
         isActive = isNegative ? task.down : task.up
         let theme = ThemeService.shared.theme
+        if isNegative {
+            label.image = Asset.minus.image.withRenderingMode(.alwaysTemplate)
+        } else {
+            label.image = Asset.plus.image.withRenderingMode(.alwaysTemplate)
+        }
         if isActive {
-            if isNegative {
-                label.image = #imageLiteral(resourceName: "minus")
-            } else {
-                label.image = #imageLiteral(resourceName: "plus")
-            }
-            backgroundColor = UIColor.forTaskValue(Int(task.value))
+            backgroundColor = UIColor.forTaskValueLight(Int(task.value))
             
-            if task.value >= 10 && task.value < -1 {
-                roundedView.backgroundColor = UIColor.orange10
-            } else if task.value >= -1 && task.value < 1 {
+            if task.value >= -1 && task.value < 1 {
                 if ThemeService.shared.theme.isDark {
                     roundedView.backgroundColor = UIColor.yellow5
                 } else {
                     roundedView.backgroundColor = UIColor.yellow10
                 }
             } else {
-                roundedView.backgroundColor = UIColor(white: 0, alpha: 0.1)
+                roundedView.backgroundColor = UIColor.forTaskValue(Int(task.value))
             }
             roundedView.layer.borderColor = UIColor.clear.cgColor
+            label.tintColor = .white
         } else {
-            if isNegative {
-                label.image = #imageLiteral(resourceName: "minus_gray")
-            } else {
-                label.image = #imageLiteral(resourceName: "plus_gray")
-            }
-            backgroundColor = theme.contentBackgroundColorDimmed
+            backgroundColor = theme.windowBackgroundColor
             roundedView.layer.borderColor = theme.separatorColor.cgColor
-            roundedView.backgroundColor = theme.contentBackgroundColorDimmed
+            roundedView.backgroundColor = theme.windowBackgroundColor
+            label.tintColor = theme.separatorColor
         }
         
         dimmOverlayView.isHidden = !theme.isDark
@@ -85,13 +80,13 @@ class HabitButton: UIView {
     }
     
     override func layoutSubviews() {
-        super.layoutSubviews()
         let verticalCenter = frame.size.height / 2
         let horizontalCenter = frame.size.width / 2
         
         roundedView.frame = CGRect(x: horizontalCenter - buttonSize/2, y: verticalCenter - buttonSize/2, width: buttonSize, height: buttonSize)
-        label.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height)
+        label.frame = CGRect(x: horizontalCenter - 6, y: verticalCenter - 6, width: 12, height: 12)
         dimmOverlayView.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height)
+        super.layoutSubviews()
     }
     
     @objc

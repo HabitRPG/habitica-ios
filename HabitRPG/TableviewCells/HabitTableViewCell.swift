@@ -19,6 +19,13 @@ class HabitTableViewCell: TaskTableViewCell {
     @objc var plusTouched: (() -> Void)?
     @objc var minusTouched: (() -> Void)?
 
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        contentStartEdge = plusButton.edge.end
+        contentEndEdge = minusButton.edge.start
+    }
+    
     override func configure(task: TaskProtocol) {
         super.configure(task: task)
         plusButton.configure(task: task, isNegative: false)
@@ -41,6 +48,22 @@ class HabitTableViewCell: TaskTableViewCell {
             customActions.append(UIAccessibilityCustomAction(name: L10n.Accessibility.scoreHabitDown, target: self, selector: #selector(scoreDown)))
         }
         accessibilityCustomActions = customActions
+    }
+    
+    override func layoutContentStartEdge() {
+        plusButton.pin.width(40).start()
+    }
+    
+    override func layoutContentEndEdge() {
+        minusButton.pin.width(40).end()
+    }
+    
+    override func layout() {
+        super.layout()
+        plusButton.pin.top().bottom().start()
+        plusButton.updateLayout()
+        minusButton.pin.top().bottom().end()
+        minusButton.updateLayout()
     }
     
     @objc
