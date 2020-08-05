@@ -351,7 +351,6 @@ private let emailNotificationsMapping = [
     L10n.Settings.EmailNotifications.bannedGroup: "kickedGroup"
 ]
 
-
 // swiftlint:disable:next type_body_length
 class SettingsViewController: FormViewController, Themeable {
     
@@ -364,6 +363,11 @@ class SettingsViewController: FormViewController, Themeable {
     private var isSettingUserData = false
     
     override func viewDidLoad() {
+        if #available(iOS 13.0, *) {
+            tableView = UITableView(frame: view.bounds, style: .insetGrouped)
+            tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            tableView.cellLayoutMarginsFollowReadableWidth = false
+        }
         super.viewDidLoad()
         navigationItem.title = L10n.Titles.settings
         setupForm()

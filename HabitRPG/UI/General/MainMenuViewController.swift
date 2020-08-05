@@ -123,21 +123,6 @@ class MainMenuViewController: BaseTableViewController {
         }
     }
     
-    override init(style: UITableView.Style) {
-        if #available(iOS 13.0, *) {
-            super.init(style: .insetGrouped)
-        } else {
-            super.init(style: .grouped)
-        }
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        if #available(iOS 13.0, *) {
-            tableView = UITableView(frame: CGRect.zero, style: .insetGrouped)
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "MainTableviewCell", bundle: nil), forCellReuseIdentifier: "Cell")
