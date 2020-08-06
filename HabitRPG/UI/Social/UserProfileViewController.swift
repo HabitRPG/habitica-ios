@@ -14,8 +14,10 @@ import Down
 class UserProfileViewController: BaseTableViewController {
     
     private let socialRepository = SocialRepository()
+    private let userRepository = UserRepository()
     private let inventoryRepository = InventoryRepository()
     private let configRepository = ConfigRepository()
+    @IBOutlet weak var moreButton: UIBarButtonItem!
     
     var interactor = CalculateUserStatsInteractor()
     private let (lifetime, token) = Lifetime.make()
@@ -64,6 +66,9 @@ class UserProfileViewController: BaseTableViewController {
                 return self?.fetchGearStats(member: member) ?? SignalProducer.empty
             }).on(value: {[weak self] (member, gear) in
                 self?.member = member
+                if self?.username == nil {
+                    self?.username = member.username
+                }
                 self?.navigationItem.title = member.profile?.name
                 if let stats = member.stats {
                     self?.interactor.run(with: (stats, gear))
@@ -428,6 +433,55 @@ class UserProfileViewController: BaseTableViewController {
             chatViewController?.userID = userID
             chatViewController?.username = username
             chatViewController?.displayName = member?.profile?.name
+        } else if segue.identifier == StoryboardSegue.Social.giftSubscriptionSegue.rawValue {
+            let navigationController = segue.destination as? UINavigationController
+            let giftViewController = navigationController?.topViewController as? GiftSubscriptionViewController
+            giftViewController?.giftRecipientUsername = username
+        } else if segue.identifier == StoryboardSegue.Social.giftGemsSegue.rawValue {
+                   let navigationController = segue.destination as? UINavigationController
+                   let giftViewController = navigationController?.topViewController as? GiftGemsViewController
+                   giftViewController?.giftRecipientUsername = username
+               }
+    }
+    @IBAction func showOverflowMenu(_ sender: Any) {
+        userRepository.getUser().take(first: 1).on(
+            value: {[weak self] user in
+                let controller = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+                if user.id != self?.userID {
+                    if user.inbox?.blocks.contains(self?.userID ?? "") == true {
+                        controller.addAction(UIAlertAction(title: L10n.unblockUser, style: .destructive, handler: {[weak self] _ in
+                            self?.socialRepository.blockMember(userID: self?.userID ?? self?.username ?? "").observeCompleted {
+                                ToastManager.show(text: L10n.userWasUnblocked(self?.username ?? ""), color: .red)
+                            }
+                        }))
+                    } else {
+                        controller.addAction(UIAlertAction(title: L10n.blockUser, style: .destructive, handler: {[weak self] _ in
+                            self?.showBlockDialog()
+                        }))
+                    }
+                }
+                controller.addAction(UIAlertAction(title: L10n.giftGems, style: .default, handler: {[weak self] _ in
+                    self?.perform(segue: StoryboardSegue.Social.giftGemsSegue)
+                }))
+                controller.addAction(UIAlertAction(title: L10n.giftSubscription, style: .default, handler: {[weak self] _ in
+                    self?.perform(segue: StoryboardSegue.Social.giftSubscriptionSegue)
+                }))
+                controller.addAction(UIAlertAction(title: L10n.cancel, style: .cancel, handler: nil))
+                controller.popoverPresentationController?.barButtonItem = self?.moreButton
+                
+                self?.present(controller, animated: true, completion: nil)
         }
+        ).start()
+    }
+    
+    private func showBlockDialog() {
+        let alert = HabiticaAlertController(title: L10n.blockUsername(username ?? member?.profile?.name ?? userID ?? ""), message: L10n.blockDescription)
+        alert.addAction(title: L10n.block, style: .destructive, isMainAction: true) {[weak self] _ in
+            self?.socialRepository.blockMember(userID: self?.userID ?? self?.username ?? "").observeCompleted {
+                ToastManager.show(text: L10n.userWasBlocked(self?.username ?? ""), color: .red)
+            }
+        }
+        alert.addCancelAction()
+        alert.show()
     }
 }

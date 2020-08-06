@@ -198,11 +198,20 @@
                         <segue destination="s9t-re-NbM" kind="show" identifier="showSeasonalShopSegue" id="QQ7-lc-iLm"/>
                         <segue destination="s9t-re-NbM" kind="show" identifier="showTimeTravelersSegue" id="GNu-1J-ZVK"/>
                         <segue destination="WTd-tE-eOd" kind="presentation" identifier="showAdventureGuide" id="gXQ-dZ-OGd"/>
+                        <segue destination="x5n-fS-qd9" kind="presentation" identifier="showUserProfileSegue" id="K1h-r2-aQe"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YVG-cg-SZN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1993" y="1751"/>
+        </scene>
+        <!--UserProfileNavController-->
+        <scene sceneID="NiG-aR-Dc6">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Social" referencedIdentifier="UserProfileNavController" id="x5n-fS-qd9" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="037-zv-TYe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2638" y="1409"/>
         </scene>
         <!--About View Controller-->
         <scene sceneID="Whw-Wx-8Rx">
@@ -2833,7 +2842,7 @@
         <!--Themed Navigation Controller-->
         <scene sceneID="Nat-bP-7Es">
             <objects>
-                <navigationController id="pUF-pN-Tcq" customClass="ThemedNavigationController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="GiftGemsNavController" id="pUF-pN-Tcq" customClass="ThemedNavigationController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qIA-db-M8y">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>

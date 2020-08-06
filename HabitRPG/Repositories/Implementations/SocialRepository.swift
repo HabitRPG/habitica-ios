@@ -452,4 +452,10 @@ class SocialRepository: BaseRepository<SocialLocalRepository> {
                 return self.retrieveGroup(groupID: groupID)
         }
     }
+    
+    func blockMember(userID: String) -> Signal<UserProtocol?, Never> {
+        return BlockMemberCall(userID: userID).objectSignal.flatMap(.latest) { _ in
+            return self.userRepository.retrieveUser()
+        }
+    }
 }

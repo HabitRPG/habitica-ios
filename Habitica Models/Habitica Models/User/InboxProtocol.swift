@@ -12,4 +12,5 @@ import Foundation
 public protocol InboxProtocol {
     var optOut: Bool { get set }
     var numberNewMessages: Int { get set }
+    var blocks: [String] { get set }
 }

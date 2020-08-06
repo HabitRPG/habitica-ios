@@ -203,7 +203,7 @@
                         <viewControllerLayoutGuide type="bottom" id="ucE-b4-Own"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="43x-Iu-HK8">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="627"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.97636467218399048" green="0.97653168439865112" blue="0.97635418176651001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -372,19 +372,19 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" misplaced="YES" axis="vertical" distribution="fillProportionally" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="Q0X-P7-X28">
-                                        <rect key="frame" x="15" y="16" width="345" height="188230.5"/>
+                                        <rect key="frame" x="15" y="16" width="345" height="20168"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="vms-Gl-8Ff">
-                                                <rect key="frame" x="0.0" y="0.0" width="345" height="93994"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="345" height="10071"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hdi-g1-MiM">
-                                                        <rect key="frame" x="0.0" y="0.0" width="345" height="93923"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="345" height="10000"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <color key="textColor" red="0.53023332359999997" green="0.50720638039999999" blue="0.56472396849999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="V5p-do-14l">
-                                                        <rect key="frame" x="0.0" y="93931" width="345" height="63"/>
+                                                        <rect key="frame" x="0.0" y="10008" width="345" height="63"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="maA-rD-Xo6">
                                                                 <rect key="frame" x="0.0" y="0.0" width="63" height="63"/>
@@ -451,16 +451,16 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="UPz-xj-UTk">
-                                                <rect key="frame" x="0.0" y="94022" width="345" height="93714"/>
+                                                <rect key="frame" x="0.0" y="10099" width="345" height="10041"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PvU-aP-uYa">
-                                                        <rect key="frame" x="0.0" y="0.0" width="345" height="93673"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="345" height="10000"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <color key="textColor" red="0.53023332359999997" green="0.50720638039999999" blue="0.56472396849999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" scrollEnabled="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xdN-Nt-8pH">
-                                                        <rect key="frame" x="0.0" y="93681" width="345" height="33"/>
+                                                        <rect key="frame" x="0.0" y="10008" width="345" height="33"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" priority="500" constant="100" id="dum-SZ-kcm"/>
                                                         </constraints>
@@ -471,10 +471,10 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="03F-b3-D6O">
-                                                <rect key="frame" x="0.0" y="187764" width="345" height="466.5"/>
+                                                <rect key="frame" x="0.0" y="20168" width="345" height="0.0"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q4z-83-kc2">
-                                                        <rect key="frame" x="0.0" y="0.0" width="345" height="466.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="345" height="0.0"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <color key="textColor" red="0.53023332359999997" green="0.50720638039999999" blue="0.56472396849999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -487,7 +487,7 @@
                                         </constraints>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gLh-F8-lA2">
-                                        <rect key="frame" x="0.0" y="188261.5" width="375" height="70"/>
+                                        <rect key="frame" x="0.0" y="20199" width="375" height="70"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Tp5-9p-PEL">
                                                 <rect key="frame" x="16" y="18" width="343" height="36"/>
@@ -867,12 +867,28 @@
             </objects>
             <point key="canvasLocation" x="4327" y="1451"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="C4f-5F-Def">
+            <objects>
+                <navigationController storyboardIdentifier="UserProfileNavController" id="oLT-m4-I14" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="EzW-JX-RHc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="MTH-Re-wqo" kind="relationship" relationship="rootViewController" id="Bz1-IR-fTa"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ojG-J8-iNg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2012" y="743"/>
+        </scene>
         <!--User Profile View Controller-->
         <scene sceneID="9AG-Sl-966">
             <objects>
                 <tableViewController storyboardIdentifier="UserProfileViewController" id="MTH-Re-wqo" customClass="UserProfileViewController" customModule="Habitica" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="WTt-7r-yfN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="627"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
@@ -1233,12 +1249,24 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="GzV-Hd-Xry">
-                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="4jT-np-7Wu">
-                            <connections>
-                                <segue destination="jza-oe-b8O" kind="presentation" identifier="WriteMessageSegue" modalPresentationStyle="pageSheet" id="2EH-Sz-Osv"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="compose" id="4jT-np-7Wu">
+                                <connections>
+                                    <segue destination="jza-oe-b8O" kind="presentation" identifier="WriteMessageSegue" modalPresentationStyle="pageSheet" id="2EH-Sz-Osv"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="MoreInteractionsIcon" id="Xuw-Hi-kDu">
+                                <connections>
+                                    <action selector="showOverflowMenu:" destination="MTH-Re-wqo" id="dyD-DX-teM"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="moreButton" destination="Xuw-Hi-kDu" id="Xgf-vS-yoh"/>
+                        <segue destination="htQ-ij-W4p" kind="presentation" identifier="giftSubscriptionSegue" id="cUK-Wk-gnJ"/>
+                        <segue destination="HSy-Iu-F74" kind="presentation" identifier="giftGemsSegue" id="KTM-ya-39V"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="plR-qj-Mu3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1390,6 +1418,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vEH-Cl-wP7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="22" y="5030"/>
+        </scene>
+        <!--GiftSubscriptionNavController-->
+        <scene sceneID="P4q-jT-0lb">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="GiftSubscriptionNavController" id="htQ-ij-W4p" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YYB-fP-Xtx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3685" y="507"/>
         </scene>
         <!--Tavern Detail View Controller-->
         <scene sceneID="OLz-hR-cCg">
@@ -2752,6 +2788,14 @@
             </objects>
             <point key="canvasLocation" x="1920.8" y="1889.5052473763119"/>
         </scene>
+        <!--GiftGemsNavController-->
+        <scene sceneID="ouT-LN-ijx">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="GiftGemsNavController" id="HSy-Iu-F74" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KH2-sX-hwL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3685" y="569"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="71z-UW-WBb"/>
@@ -2759,13 +2803,14 @@
         <segue reference="BKi-xg-gxr"/>
         <segue reference="9hs-wq-6bn"/>
         <segue reference="jXp-j5-lvy"/>
-        <segue reference="RWA-7r-R8g"/>
+        <segue reference="Bz1-IR-fTa"/>
         <segue reference="yXa-uT-GhF"/>
         <segue reference="C12-ty-sO4"/>
-        <segue reference="rs9-Lf-2VQ"/>
+        <segue reference="2EH-Sz-Osv"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.6058621407" green="0.38462612029999999" blue="0.99835687880000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
     <resources>
+        <image name="MoreInteractionsIcon" width="20" height="4"/>
         <image name="NoPartyBanner" width="332" height="146"/>
         <image name="messages" width="24" height="24"/>
     </resources>

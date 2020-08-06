@@ -44,6 +44,16 @@ public enum L10n {
   public static var beastMasterDescription: String { return L10n.tr("Mainstrings", "beastMasterDescription") }
   /// Beast Master
   public static var beastMasterTitle: String { return L10n.tr("Mainstrings", "beastMasterTitle") }
+  /// Block
+  public static var block: String { return L10n.tr("Mainstrings", "block") }
+  /// A blocked user cannot send you Private Messages but you will still see their posts in Tavern or Guilds. This will have no effect if the person is a moderator now or in the future.
+  public static var blockDescription: String { return L10n.tr("Mainstrings", "block_description") }
+  /// Block
+  public static var blockUser: String { return L10n.tr("Mainstrings", "block_user") }
+  /// Block %@?
+  public static func blockUsername(_ p1: String) -> String {
+    return L10n.tr("Mainstrings", "block_username", p1)
+  }
   /// Body Size
   public static var bodySize: String { return L10n.tr("Mainstrings", "body_size") }
   /// Broad
@@ -262,6 +272,8 @@ public enum L10n {
   }
   /// Your gift was sent!
   public static var giftConfirmationTitle: String { return L10n.tr("Mainstrings", "gift_confirmation_title") }
+  /// Gift Gems
+  public static var giftGems: String { return L10n.tr("Mainstrings", "gift_gems") }
   /// Enter recipient's @username
   public static var giftGemsAlertPrompt: String { return L10n.tr("Mainstrings", "gift_gems_alert_prompt") }
   /// Who would you like to send your gift to?
@@ -290,6 +302,8 @@ public enum L10n {
   public static func giftSentTo(_ p1: String) -> String {
     return L10n.tr("Mainstrings", "gift_sent_to", p1)
   }
+  /// Gift Subscription
+  public static var giftSubscription: String { return L10n.tr("Mainstrings", "gift_subscription") }
   /// Choose the subscription you’d like to gift below! This purchase won’t automatically renew.
   public static var giftSubscriptionPrompt: String { return L10n.tr("Mainstrings", "gift_subscription_prompt") }
   /// Glasses
@@ -724,6 +738,8 @@ public enum L10n {
   public static var tuesday: String { return L10n.tr("Mainstrings", "tuesday") }
   /// Two-Handed
   public static var twoHanded: String { return L10n.tr("Mainstrings", "twoHanded") }
+  /// Un-block
+  public static var unblockUser: String { return L10n.tr("Mainstrings", "unblock_user") }
   /// Unequip
   public static var unequip: String { return L10n.tr("Mainstrings", "unequip") }
   /// You've unlocked the Drop System! Now when you complete tasks, you have a small chance of finding an item, including eggs, potions, and food!
@@ -742,6 +758,14 @@ public enum L10n {
   public static var unsubscribeWebsite: String { return L10n.tr("Mainstrings", "unsubscribe_website") }
   /// Use
   public static var use: String { return L10n.tr("Mainstrings", "use") }
+  /// You blocked %s.
+  public static func userWasBlocked(_ p1: UnsafePointer<CChar>) -> String {
+    return L10n.tr("Mainstrings", "user_was_blocked", p1)
+  }
+  /// You unblocked %s.
+  public static func userWasUnblocked(_ p1: UnsafePointer<CChar>) -> String {
+    return L10n.tr("Mainstrings", "user_was_unblocked", p1)
+  }
   /// User ID
   public static var userID: String { return L10n.tr("Mainstrings", "userID") }
   /// Username

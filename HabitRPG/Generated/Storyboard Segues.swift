@@ -61,6 +61,7 @@ internal enum StoryboardSegue {
     case showQuestShopSegue
     case showSeasonalShopSegue
     case showTimeTravelersSegue
+    case showUserProfileSegue
     case subscriptionSegue
     case unwindSaveSegue
     case unwindSegue
@@ -90,6 +91,8 @@ internal enum StoryboardSegue {
     case userProfileSegue = "UserProfileSegue"
     case writeMessageSegue = "WriteMessageSegue"
     case challengeDetailsSegue
+    case giftGemsSegue
+    case giftSubscriptionSegue
   }
   internal enum Tasks: String, SegueType {
     case embedSegue = "EmbedSegue"
