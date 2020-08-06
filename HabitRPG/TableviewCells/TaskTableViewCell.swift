@@ -170,17 +170,17 @@ class TaskTableViewCell: UITableViewCell, UITextViewDelegate {
         if let contentStartEdge = contentStartEdge, let contentEndEdge = contentEndEdge {
             layoutContentStartEdge()
             layoutContentEndEdge()
-            titleLabel.pin.top(10).start(to: contentStartEdge).marginHorizontal(10).end(to: contentEndEdge).sizeToFit(.width)
+            titleLabel.pin.top(8).start(to: contentStartEdge).marginStart(10).marginEnd(11).end(to: contentEndEdge).sizeToFit(.width)
             if !subtitleLabel.text.isEmpty {
-                subtitleLabel.pin.below(of: lastView).marginTop(1).start(to: contentStartEdge).marginHorizontal(10).end(to: contentEndEdge).sizeToFit(.width)
+                subtitleLabel.pin.below(of: lastView).marginTop(1).start(to: contentStartEdge).marginStart(10).marginEnd(11).end(to: contentEndEdge).sizeToFit(.width)
                 lastView = subtitleLabel
             }
             if !taskDetailLine.isHidden {
-                taskDetailLine.pin.below(of: lastView).marginTop(7).start(to: contentStartEdge).marginHorizontal(10).end(to: contentEndEdge).sizeToFit(.width)
+                taskDetailLine.pin.below(of: lastView).marginTop(7).start(to: contentStartEdge).marginStart(12).marginEnd(12).end(to: contentEndEdge).sizeToFit(.width)
                 lastView = taskDetailLine
             }
         }
-        var height = lastView.frame.origin.y + lastView.frame.size.height + 10
+        var height = lastView.frame.origin.y + lastView.frame.size.height + 8
         if lastView == subtitleLabel {
             height += 7
         }

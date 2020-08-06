@@ -13,6 +13,7 @@ class HabitButton: UIView {
     
     private let label = UIImageView()
     private let roundedView = UIView()
+    private let interactionOverlay = UIView()
     private var buttonSize: CGFloat = 24
     private var isActive = false
     var dimmOverlayView: UIView = {
@@ -39,11 +40,15 @@ class HabitButton: UIView {
         addSubview(roundedView)
         roundedView.layer.cornerRadius = buttonSize / 2
         label.contentMode = .scaleAspectFit
-        label.isUserInteractionEnabled = true
-        label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap)))
+        isUserInteractionEnabled = true
+        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap)))
         roundedView.layer.borderWidth = 2
         addSubview(dimmOverlayView)
         addSubview(label)
+        interactionOverlay.backgroundColor = .init(white: 1.0, alpha: 0.4)
+        interactionOverlay.isUserInteractionEnabled = false
+        interactionOverlay.alpha = 0
+        addSubview(interactionOverlay)
     }
     
     func configure(task: TaskProtocol, isNegative: Bool) {
@@ -86,6 +91,7 @@ class HabitButton: UIView {
         roundedView.frame = CGRect(x: horizontalCenter - buttonSize/2, y: verticalCenter - buttonSize/2, width: buttonSize, height: buttonSize)
         label.frame = CGRect(x: horizontalCenter - 6, y: verticalCenter - 6, width: 12, height: 12)
         dimmOverlayView.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height)
+        interactionOverlay.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height)
         super.layoutSubviews()
     }
     
@@ -96,11 +102,11 @@ class HabitButton: UIView {
                 action()
             }
             UIView.animate(withDuration: 0.2, animations: {[weak self] in
-                self?.label.backgroundColor = self?.backgroundColor?.lighter(by: 0.1)
+                self?.interactionOverlay.alpha = 1
             }, completion: {[weak self] (_) in
-                UIView.animate(withDuration: 0.2, animations: {
-                    self?.label.backgroundColor = nil
-                })
+            UIView.animate(withDuration: 0.2, delay: 0.1, options: .curveEaseInOut, animations: {
+                self?.interactionOverlay.alpha = 0
+            }, completion: nil)
             })
         }
     }

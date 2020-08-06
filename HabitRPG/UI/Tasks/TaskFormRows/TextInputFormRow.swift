@@ -39,7 +39,6 @@ public class TaskTextInputCell: Cell<String>, CellType, UITextViewDelegate {
             //textField.attributedPlaceholder = NSAttributedString(string: taskRow.placeholder ?? "", attributes: [NSAttributedStringKey.foregroundColor: UIColor(white: 1.0, alpha: 0.5)])
             topSpacing = taskRow.topSpacing
             bottomSpacing = taskRow.bottomSpacing
-            separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
         }
         
         shouldGroupAccessibilityChildren = true
@@ -66,7 +65,7 @@ public class TaskTextInputCell: Cell<String>, CellType, UITextViewDelegate {
         textViewBackgroundView.pin.below(of: titleLabel).marginTop(4).horizontally(16)
         textField.pin.top(4).horizontally(10).sizeToFit(.width)
         textViewBackgroundView.pin.height(textField.frame.size.height + 8)
-        cellBackgroundView.pin.top(-2).horizontally().height(textViewBackgroundView.frame.origin.y + textViewBackgroundView.frame.size.height + bottomSpacing + 4)
+        cellBackgroundView.pin.top(-4).horizontally().height(textViewBackgroundView.frame.origin.y + textViewBackgroundView.frame.size.height + bottomSpacing + 5)
         pin.height(cellBackgroundView.frame.size.height - 4)
     }
     
