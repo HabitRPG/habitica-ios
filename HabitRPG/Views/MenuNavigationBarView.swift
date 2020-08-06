@@ -11,6 +11,7 @@ import Habitica_Models
 
 class MenuNavigationBarView: UIView, Themeable {
     
+    @objc public var profileAction: (() -> Void)?
     @objc public var messagesAction: (() -> Void)?
     @objc public var settingsAction: (() -> Void)?
     @objc public var notificationsAction: (() -> Void)?
@@ -19,6 +20,7 @@ class MenuNavigationBarView: UIView, Themeable {
         let view = UIView()
         view.cornerRadius = 20
         view.clipsToBounds = true
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(profileAreaTapped)))
         return view
     }()
     private var avatarView: AvatarView = {
@@ -26,18 +28,23 @@ class MenuNavigationBarView: UIView, Themeable {
         view.showPet = false
         view.showMount = false
         view.size = .compact
+        view.isUserInteractionEnabled = true
         return view
     }()
     private var displayNameLabel: UILabel = {
         let label = UILabel()
         label.font = CustomFontMetrics.scaledSystemFont(ofSize: 17, ofWeight: .semibold)
         label.adjustsFontForContentSizeCategory = true
+        label.isUserInteractionEnabled = true
+        label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(profileAreaTapped)))
         return label
     }()
     private var usernameLabel: UILabel = {
         let label = UILabel()
         label.font = CustomFontMetrics.scaledSystemFont(ofSize: 15)
         label.adjustsFontForContentSizeCategory = true
+        label.isUserInteractionEnabled = true
+        label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(profileAreaTapped)))
         return label
     }()
     
@@ -97,6 +104,7 @@ class MenuNavigationBarView: UIView, Themeable {
         addSubview(messagesBadge)
         addSubview(settingsButton)
         addSubview(settingsBadge)
+        isUserInteractionEnabled = true
         ThemeService.shared.addThemeable(themable: self, applyImmediately: true)
         
         #if DEBUG
@@ -177,6 +185,13 @@ class MenuNavigationBarView: UIView, Themeable {
     @objc
     func notificationsButtonTapped() {
         if let action = notificationsAction {
+            action()
+        }
+    }
+    
+    @objc
+    func profileAreaTapped() {
+        if let action = profileAction {
             action()
         }
     }

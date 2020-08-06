@@ -149,6 +149,9 @@ class MainMenuViewController: BaseTableViewController {
             popover.sourceRect = self?.navbarView.notificationsButton.frame ?? CGRect.zero
             self?.present(viewController, animated: true, completion: nil)
         }
+        navbarView.profileAction = {[weak self] in
+            self?.perform(segue: StoryboardSegue.Main.showUserProfileSegue)
+        }
         
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
@@ -387,6 +390,9 @@ class MainMenuViewController: BaseTableViewController {
             (segue.destination as? HRPGShopViewController)?.shopIdentifier = Constants.SeasonalShopKey
         } else if segue.identifier == StoryboardSegue.Main.showTimeTravelersSegue.rawValue {
             (segue.destination as? HRPGShopViewController)?.shopIdentifier = Constants.TimeTravelersShopKey
+        } else if segue.identifier == StoryboardSegue.Main.showUserProfileSegue.rawValue {
+            (segue.destination as? UserProfileViewController)?.username = user?.username
+            (segue.destination as? UserProfileViewController)?.userID = user?.id
         }
     }
 }
