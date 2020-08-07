@@ -15,6 +15,7 @@ class SkillsUserTableViewController: UITableViewController {
     
     @objc var selectedUserID: String?
     @objc var skill: SkillProtocol?
+    @objc var item: ItemProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()

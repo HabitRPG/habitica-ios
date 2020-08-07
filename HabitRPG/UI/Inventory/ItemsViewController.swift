@@ -26,6 +26,7 @@ class ItemsViewController: BaseTableViewController {
     var itemType: String?
     
     private let inventoryRepository = InventoryRepository()
+    private let userRepository = UserRepository()
     private var isPresentedModally = false
     
     override func viewDidLoad() {
@@ -175,6 +176,15 @@ class ItemsViewController: BaseTableViewController {
                 }
             }))
         }
+        if item.key != "inventory_present" && item.itemType == ItemType.special {
+            alertController.addAction(UIAlertAction(title: L10n.use, style: .default, handler: {[weak self] _ in
+                let navigationController = StoryboardScene.Main.spellUserNavigationController.instantiate()
+                self?.present(navigationController, animated: true, completion: {
+                    let controller = navigationController.topViewController as? SkillsUserTableViewController
+                    controller?.item = item
+                })
+            }))
+        }
         alertController.addAction(UIAlertAction.cancelAction())
         if let sourceView = sourceView {
             alertController.popoverPresentationController?.sourceView = sourceView
@@ -211,5 +221,17 @@ class ItemsViewController: BaseTableViewController {
     @IBAction func cancelButtonTapped(_ sender: Any) {
 		isHatching = false
 		dismissIfNeeded()
+    }
+    
+    @IBAction func unwindToListSave(_ segue: UIStoryboardSegue) {
+        if segue.identifier == "CastUserSpellSegue" {
+            guard let userViewController = segue.source as? SkillsUserTableViewController else {
+                return
+            }
+            guard let item = userViewController.item as? SpecialItemProtocol else {
+                return
+            }
+            userRepository.useTransformationItem(item: item, targetId: userViewController.selectedUserID ?? "").observeCompleted {}
+        }
     }
 }
