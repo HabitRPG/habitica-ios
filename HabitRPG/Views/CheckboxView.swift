@@ -48,10 +48,7 @@ class CheckboxView: UIView {
     
     var checked = false {
         didSet {
-            if let layer = self.layer as? CheckmarkLayer {
-                layer.drawPercentage = checked ? 1 : 0
-                layer.setNeedsDisplay()
-            }
+            checkView.isHidden = !checked
         }
     }
     var size: CGFloat = 24
@@ -67,6 +64,12 @@ class CheckboxView: UIView {
         view.backgroundColor = ThemeService.shared.theme.taskOverlayTint
         view.isHidden = true
         view.isUserInteractionEnabled = false
+        return view
+    }()
+    var checkView: UIImageView = {
+        let view = UIImageView()
+        view.image = Asset.checkmarkSmall.image
+        view.contentMode = .center
         return view
     }()
     
@@ -95,6 +98,7 @@ class CheckboxView: UIView {
     private func setupView() {
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewTapped)))
         isUserInteractionEnabled = true
+        addSubview(checkView)
         addSubview(dimmOverlayView)
     }
     
@@ -138,6 +142,8 @@ class CheckboxView: UIView {
         dimmOverlayView.isHidden = !theme.isDark
         dimmOverlayView.backgroundColor = theme.taskOverlayTint
         
+        checkView.tintColor = checkColor
+        
         layer.setNeedsDisplay()
     }
     
@@ -170,6 +176,7 @@ class CheckboxView: UIView {
         self.checkColor = checkColor
         centerCheckbox = false
         borderedBox = true
+        checkView.tintColor = self.checkColor
         layer.setNeedsDisplay()
     }
     
@@ -178,7 +185,6 @@ class CheckboxView: UIView {
         if let action = wasTouched {
             checked = !checked
             action()
-            animateTo(value: checked ? 1 : 0)
         }
     }
     
@@ -205,6 +211,8 @@ class CheckboxView: UIView {
         let leftOffset = padding * 2 + size
         label.frame = CGRect(x: leftOffset + 12, y: 0, width: frame.size.width - leftOffset, height: frame.size.height)
         dimmOverlayView.frame = frame
+        let horizontalCenter = centerCheckbox ? bounds.size.width / 2 : padding + size / 2
+        checkView.frame = CGRect(x: horizontalCenter - size / 2, y: bounds.size.height / 2 - size / 2, width: size, height: size)
     }
     
     override func draw(_ rect: CGRect) {
@@ -225,10 +233,10 @@ class CheckboxView: UIView {
         }
         boxFillColor.setFill()
         borderPath.fill()
-        if let layer = self.layer as? CheckmarkLayer, layer.drawPercentage > 0 {
+        /*if let layer = self.layer as? CheckmarkLayer, layer.drawPercentage > 0 {
             let checkFrame = CGRect(x: horizontalCenter - size / 2, y: bounds.size.height / 2 - size / 2, width: size, height: size)
             HabiticaIcons.drawCheckmark(frame: checkFrame, resizing: .center, checkmarkColor: checkColor, percentage: layer.drawPercentage)
-        }
+        }*/
         UIGraphicsPopContext()
     }
     

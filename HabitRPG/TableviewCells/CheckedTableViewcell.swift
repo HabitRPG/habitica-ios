@@ -103,7 +103,7 @@ class CheckedTableViewCell: TaskTableViewCell {
     
     private func addChecklistViews(task: TaskProtocol) {
         var checkColor = UIColor.white
-        if task.completed && !task.isDue {
+        if task.completed || !task.isDue {
             checkColor = ThemeService.shared.theme.quadTextColor
         } else {
             checkColor = UIColor.forTaskValueDark(Int(task.value))

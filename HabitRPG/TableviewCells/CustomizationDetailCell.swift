@@ -32,7 +32,7 @@ class CustomizationDetailCell: UICollectionViewCell {
         } else {
             imageView.setImagewith(name: customization.iconName(forUserPreferences: preferences))
         }
-        if (customization.set?.key?.contains("timeTravel") == true) {
+        if customization.set?.key?.contains("timeTravel") == true {
             currencyView.currency = .hourglass
         } else {
             currencyView.currency = .gem

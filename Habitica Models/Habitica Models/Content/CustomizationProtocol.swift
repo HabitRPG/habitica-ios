@@ -68,7 +68,7 @@ public extension CustomizationProtocol {
     }
     
     var isPurchasable: Bool {
-        return price > 0 && (set?.isPurchasable ?? true)
+        return price > 0 && (set?.isPurchasable ?? true) && (set?.key?.contains("incentive") != true)
     }
     
     var path: String {

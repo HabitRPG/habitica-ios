@@ -14,6 +14,7 @@ class HabitButton: UIView {
     private let label = UIImageView()
     private let roundedView = UIView()
     private let interactionOverlay = UIView()
+    private let tapTarget = UIView()
     private var buttonSize: CGFloat = 24
     private var isActive = false
     var dimmOverlayView: UIView = {
@@ -40,8 +41,8 @@ class HabitButton: UIView {
         addSubview(roundedView)
         roundedView.layer.cornerRadius = buttonSize / 2
         label.contentMode = .scaleAspectFit
-        isUserInteractionEnabled = true
-        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap)))
+        tapTarget.isUserInteractionEnabled = true
+        tapTarget.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap)))
         roundedView.layer.borderWidth = 2
         addSubview(dimmOverlayView)
         addSubview(label)
@@ -49,6 +50,7 @@ class HabitButton: UIView {
         interactionOverlay.isUserInteractionEnabled = false
         interactionOverlay.alpha = 0
         addSubview(interactionOverlay)
+        addSubview(tapTarget)
     }
     
     func configure(task: TaskProtocol, isNegative: Bool) {
@@ -92,6 +94,7 @@ class HabitButton: UIView {
         label.frame = CGRect(x: horizontalCenter - 6, y: verticalCenter - 6, width: 12, height: 12)
         dimmOverlayView.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height)
         interactionOverlay.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height)
+        tapTarget.frame = CGRect(x: -12, y: -4, width: frame.size.width + 24, height: frame.size.height + 8)
         super.layoutSubviews()
     }
     

@@ -144,6 +144,11 @@ class AvatarDetailViewDataSource: BaseReactiveCollectionViewDataSource<Customiza
             customizationCell.configure(customization: customization, preferences: preferences)
             customizationCell.isCustomizationSelected = customization.key == equippedKey
             customizationCell.currencyView.isHidden = customization.isPurchasable == false || owns(customization: customization)
+            if customization.set?.key?.contains("incentive") == true {
+                customizationCell.imageView.alpha = owns(customization: customization) ? 1.0 : 0.3
+            } else {
+                customizationCell.imageView.alpha = 1.0
+            }
         }
         
         return cell
